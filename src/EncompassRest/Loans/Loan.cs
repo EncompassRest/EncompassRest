@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Loan
     /// </summary>
-    public sealed partial class Loan : ExtensibleObject, IIdentifiable
+    public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     {
         private AdditionalRequests _additionalRequests;
         /// <summary>
@@ -32,6 +32,16 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Agency Case #")]
         public string AgencyCaseIdentifier { get => _agencyCaseIdentifier; set => SetField(ref _agencyCaseIdentifier, value); }
+        private DirtyValue<string> _alertChangeCircumstanceApplyLECD;
+        /// <summary>
+        /// Loan AlertChangeCircumstanceApplyLECD
+        /// </summary>
+        public string AlertChangeCircumstanceApplyLECD { get => _alertChangeCircumstanceApplyLECD; set => SetField(ref _alertChangeCircumstanceApplyLECD, value); }
+        private DirtyList<AlertChangeCircumstance> _alertChangeCircumstances;
+        /// <summary>
+        /// Loan AlertChangeCircumstances
+        /// </summary>
+        public IList<AlertChangeCircumstance> AlertChangeCircumstances { get => GetField(ref _alertChangeCircumstances); set => SetField(ref _alertChangeCircumstances, value); }
         private DirtyValue<decimal?> _alterationsImprovementsOrRepairsAmount;
         /// <summary>
         /// Trans Details Alterations [967]

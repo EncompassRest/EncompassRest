@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Form
     /// </summary>
-    public sealed partial class Form : ExtensibleObject, IIdentifiable
+    public sealed partial class Form : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _formId;
         /// <summary>

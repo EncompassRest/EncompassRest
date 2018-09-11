@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// Residence
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(ApplicantType) + "," + nameof(MailingAddressIndicator) + "," + nameof(ResidencyType), SerializeWholeListWhenDirty = true)]
-    public sealed partial class Residence : ExtensibleObject, IIdentifiable
+    public sealed partial class Residence : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _accountName;
         /// <summary>

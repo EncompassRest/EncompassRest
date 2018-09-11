@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ATRQMCommon
     /// </summary>
-    public sealed partial class ATRQMCommon : ExtensibleObject, IIdentifiable
+    public sealed partial class ATRQMCommon : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _affiliatesFees;
         /// <summary>

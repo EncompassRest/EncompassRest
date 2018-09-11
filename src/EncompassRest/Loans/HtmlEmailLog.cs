@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// HtmlEmailLog
     /// </summary>
-    public sealed partial class HtmlEmailLog : ExtensibleObject, IIdentifiable
+    public sealed partial class HtmlEmailLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         /// <summary>

@@ -7,16 +7,19 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Webhook
 {
-    public sealed class WebhookSubscription : ExtensibleObject, IIdentifiable
+    public sealed class WebhookSubscription : DirtyExtensibleObject, IIdentifiable
     {
+        private string _endpoint;
         [JsonRequired]
-        public string Endpoint { get; set; }
-        public string SubscriptionId { get; set; }
+        public string Endpoint { get => _endpoint; set => SetField(ref _endpoint, value); }
+        private string _subscriptionId;
+        public string SubscriptionId { get => _subscriptionId; set => SetField(ref _subscriptionId, value); }
+        private StringEnumValue<WebhookResourceType> _resource;
         [JsonRequired]
-        public StringEnumValue<WebhookResourceType> Resource { get; set; }
-        private List<StringEnumValue<WebhookResourceEvent>> _events;
+        public StringEnumValue<WebhookResourceType> Resource { get => _resource; set => SetField(ref _resource, value); }
+        private IList<StringEnumValue<WebhookResourceEvent>> _events;
         [JsonRequired]
-        public IList<StringEnumValue<WebhookResourceEvent>> Events { get => _events ?? (_events = new List<StringEnumValue<WebhookResourceEvent>>()); set => _events = value != null ? new List<StringEnumValue<WebhookResourceEvent>>(value) : null; }
+        public IList<StringEnumValue<WebhookResourceEvent>> Events { get => GetField(ref _events); set => SetField(ref _events, value); }
         private WebhookFilters _filters;
         public WebhookFilters Filters { get => GetField(ref _filters); set => SetField(ref _filters, value); }
         private NeverSerializeValue<string> _objectUrn;

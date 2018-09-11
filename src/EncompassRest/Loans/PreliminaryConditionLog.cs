@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// PreliminaryConditionLog
     /// </summary>
-    public sealed partial class PreliminaryConditionLog : ExtensibleObject, IIdentifiable
+    public sealed partial class PreliminaryConditionLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _addedBy;
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EnumsNET;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Services.Appraisal
@@ -35,7 +36,12 @@ namespace EncompassRest.Services.Appraisal
         }
 
         public AppraisalProduct(EntityReference entityRef, AppraisalOptions options)
-            : base(entityRef, options, ServiceType.Appraisal)
+            : this(entityRef, options, ServiceType.Appraisal.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+        {
+        }
+
+        public AppraisalProduct(EntityReference entityRef, AppraisalOptions options, string name)
+            : base(entityRef, options, name)
         {
         }
     }

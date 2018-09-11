@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Gfe2010Page
     /// </summary>
-    public sealed partial class Gfe2010Page : ExtensibleObject, IIdentifiable
+    public sealed partial class Gfe2010Page : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _balloonPaymentDueInYears;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// DocumentTrackingLog
     /// </summary>
-    public sealed partial class DocumentTrackingLog : ExtensibleObject, IIdentifiable
+    public sealed partial class DocumentTrackingLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _action;
         /// <summary>

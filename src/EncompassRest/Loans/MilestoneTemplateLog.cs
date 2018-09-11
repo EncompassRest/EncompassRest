@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// MilestoneTemplateLog
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class MilestoneTemplateLog : ExtensibleObject, IIdentifiable
+    public sealed partial class MilestoneTemplateLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _elliLogRecordId;
         /// <summary>

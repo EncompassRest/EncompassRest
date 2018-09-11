@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LoanSubmission
     /// </summary>
-    public sealed partial class LoanSubmission : ExtensibleObject, IIdentifiable
+    public sealed partial class LoanSubmission : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _amountAvailable;
         /// <summary>

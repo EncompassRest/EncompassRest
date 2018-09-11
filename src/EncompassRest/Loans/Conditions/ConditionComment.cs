@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Loans.Conditions
 {
-    public sealed class ConditionComment : ExtensibleObject, IIdentifiable
+    public sealed class ConditionComment : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _commentId;
         public string CommentId { get => _commentId; set => SetField(ref _commentId, value); }

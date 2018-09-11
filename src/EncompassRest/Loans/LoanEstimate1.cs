@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LoanEstimate1
     /// </summary>
-    public sealed partial class LoanEstimate1 : ExtensibleObject, IIdentifiable
+    public sealed partial class LoanEstimate1 : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<TermType>> _adjustsTermType;
         /// <summary>

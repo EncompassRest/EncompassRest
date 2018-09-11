@@ -145,47 +145,18 @@ namespace EncompassRest.Loans
             }
         }
 
-        public FieldDescriptor this[string fieldId] => GetFieldDescriptor(fieldId, _customFields);
+        public FieldDescriptor this[string fieldId] => GetFieldDescriptor(fieldId, CustomFields);
 
-        private readonly ConcurrentDictionary<string, FieldDescriptor> _customFields = new ConcurrentDictionary<string, FieldDescriptor>(StringComparer.OrdinalIgnoreCase);
+        public ReadOnlyDictionary<string, FieldDescriptor> CustomFields => Client.CommonCache.CustomFields;
 
-        public ReadOnlyDictionary<string, FieldDescriptor> CustomFields { get; }
+        public DateTime? CustomFieldsLastRefreshedUtc => Client.CommonCache.CustomFieldsLastRefreshedUtc;
 
         internal LoanFieldDescriptors(EncompassRestClient client)
             : base(client, null)
         {
-            CustomFields = new ReadOnlyDictionary<string, FieldDescriptor>(_customFields);
         }
 
-        public async Task RefreshCustomFieldsAsync(CancellationToken cancellationToken = default)
-        {
-            var customFields = new Dictionary<string, FieldDescriptor>(StringComparer.OrdinalIgnoreCase);
-
-            var allCustomFields = await Client.Settings.Loan.CustomFields.GetCustomFieldsAsync(cancellationToken).ConfigureAwait(false);
-
-            foreach (var customField in allCustomFields)
-            {
-                customFields[customField.Id] = new NonStandardFieldDescriptor(customField.Id, CreateModelPath($"Loan.CustomFields[(FieldName == '{customField.Id}')].StringValue"), LoanFieldType.Custom, customField.Description, customField.Format, customField.Options?.Select(o => new FieldOption(o)).ToList(), false);
-            }
-
-            foreach (var pair in _customFields)
-            {
-                if (customFields.TryGetValue(pair.Key, out var descriptor))
-                {
-                    _customFields[pair.Key] = descriptor;
-                    customFields.Remove(pair.Key);
-                }
-                else
-                {
-                    _customFields.TryRemove(pair.Key, out _);
-                }
-            }
-
-            foreach (var pair in customFields)
-            {
-                _customFields[pair.Key] = pair.Value;
-            }
-        }
+        public Task RefreshCustomFieldsAsync(CancellationToken cancellationToken = default) => Client.CommonCache.RefreshCustomFieldsAsync(Client, cancellationToken);
 
         private sealed class VirtualFieldInfo
         {

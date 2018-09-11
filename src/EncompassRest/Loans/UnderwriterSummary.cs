@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// UnderwriterSummary
     /// </summary>
-    public sealed partial class UnderwriterSummary : ExtensibleObject, IIdentifiable
+    public sealed partial class UnderwriterSummary : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _appraisal;
         /// <summary>

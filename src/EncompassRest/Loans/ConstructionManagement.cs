@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ConstructionManagement
     /// </summary>
-    public sealed partial class ConstructionManagement : ExtensibleObject, IIdentifiable
+    public sealed partial class ConstructionManagement : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _additionalDisbursementsConditions;
         /// <summary>

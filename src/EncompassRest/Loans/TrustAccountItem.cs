@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// TrustAccountItem
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class TrustAccountItem : ExtensibleObject, IIdentifiable
+    public sealed partial class TrustAccountItem : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _date;
         /// <summary>

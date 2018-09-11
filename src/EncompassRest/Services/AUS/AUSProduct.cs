@@ -1,4 +1,5 @@
 ﻿using System;
+using EnumsNET;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Services.AUS
@@ -33,7 +34,12 @@ namespace EncompassRest.Services.AUS
         }
 
         public AUSProduct(EntityReference entityRef, AUSOptions options)
-            : base(entityRef, options, ServiceType.AUS)
+            : this(entityRef, options, ServiceType.AUS.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+        {
+        }
+
+        public AUSProduct(EntityReference entityRef, AUSOptions options, string name)
+            : base(entityRef, options, name)
         {
         }
     }

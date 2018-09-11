@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// FhaVaLoan
     /// </summary>
-    public sealed partial class FhaVaLoan : ExtensibleObject, IIdentifiable
+    public sealed partial class FhaVaLoan : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<AddendumType>> _addendumType;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// EmailDocument
     /// </summary>
-    public sealed partial class EmailDocument : ExtensibleObject, IIdentifiable
+    public sealed partial class EmailDocument : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _docId;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// OrderedDocumentOverflow
     /// </summary>
-    public sealed partial class OrderedDocumentOverflow : ExtensibleObject, IIdentifiable
+    public sealed partial class OrderedDocumentOverflow : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _coordinateBottom;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// CrmLog
     /// </summary>
-    public sealed partial class CrmLog : ExtensibleObject, IIdentifiable
+    public sealed partial class CrmLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         /// <summary>

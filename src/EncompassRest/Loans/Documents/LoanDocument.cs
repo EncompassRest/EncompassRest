@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans.Documents
 {
-    public sealed class LoanDocument : ExtensibleObject, IIdentifiable
+    public sealed class LoanDocument : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _documentId;
         public string DocumentId { get => _documentId; set => SetField(ref _documentId, value); }

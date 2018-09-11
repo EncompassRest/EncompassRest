@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ClosingDocument
     /// </summary>
-    public sealed partial class ClosingDocument : ExtensibleObject, IIdentifiable
+    public sealed partial class ClosingDocument : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _additionalLienHolderAddress;
         /// <summary>

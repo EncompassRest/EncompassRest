@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LockDenialLog
     /// </summary>
-    public sealed partial class LockDenialLog : ExtensibleObject, IIdentifiable
+    public sealed partial class LockDenialLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _alertIndicator;
         /// <summary>

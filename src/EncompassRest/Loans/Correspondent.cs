@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Correspondent
     /// </summary>
-    public sealed partial class Correspondent : ExtensibleObject, IIdentifiable
+    public sealed partial class Correspondent : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _additionalLateFeeCharge;
         /// <summary>

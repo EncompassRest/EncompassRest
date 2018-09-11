@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// StatementCreditDenial
     /// </summary>
-    public sealed partial class StatementCreditDenial : ExtensibleObject, IIdentifiable
+    public sealed partial class StatementCreditDenial : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _additionalStatement;
         /// <summary>

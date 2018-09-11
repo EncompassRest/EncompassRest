@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// RespaHudDetail
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(LineNumber))]
-    public sealed partial class RespaHudDetail : ExtensibleObject, IIdentifiable
+    public sealed partial class RespaHudDetail : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<CreditDebt>> _creditDebt;
         /// <summary>

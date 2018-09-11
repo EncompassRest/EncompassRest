@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// DocumentAuditAlert
     /// </summary>
-    public sealed partial class DocumentAuditAlert : ExtensibleObject, IIdentifiable
+    public sealed partial class DocumentAuditAlert : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<string> _fields;
         /// <summary>

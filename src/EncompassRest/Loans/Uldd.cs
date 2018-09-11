@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Uldd
     /// </summary>
-    public sealed partial class Uldd : ExtensibleObject, IIdentifiable
+    public sealed partial class Uldd : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _aCHABARoutingAndTransitIdentifier;
         /// <summary>

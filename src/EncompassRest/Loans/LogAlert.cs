@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LogAlert
     /// </summary>
-    public sealed partial class LogAlert : ExtensibleObject, IIdentifiable
+    public sealed partial class LogAlert : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _dueDate;
         /// <summary>

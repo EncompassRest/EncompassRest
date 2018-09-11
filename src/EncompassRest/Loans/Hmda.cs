@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Hmda
     /// </summary>
-    public sealed partial class Hmda : ExtensibleObject, IIdentifiable
+    public sealed partial class Hmda : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<ActionTaken>> _actionTaken;
         /// <summary>

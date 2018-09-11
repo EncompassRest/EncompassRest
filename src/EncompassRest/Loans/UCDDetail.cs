@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// UCDDetail
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(FeeIndex) + "," + nameof(LineNumber) + "," + nameof(Section))]
-    public sealed partial class UCDDetail : ExtensibleObject, IIdentifiable
+    public sealed partial class UCDDetail : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<UCDPayoffType>> _feeAccountType;
         /// <summary>

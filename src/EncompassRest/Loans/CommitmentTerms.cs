@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// CommitmentTerms
     /// </summary>
-    public sealed partial class CommitmentTerms : ExtensibleObject, IIdentifiable
+    public sealed partial class CommitmentTerms : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _actionDate;
         /// <summary>

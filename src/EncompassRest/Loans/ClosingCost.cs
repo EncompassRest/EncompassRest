@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ClosingCost
     /// </summary>
-    public sealed partial class ClosingCost : ExtensibleObject, IIdentifiable
+    public sealed partial class ClosingCost : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _adjustmentFactor;
         /// <summary>

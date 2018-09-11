@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LogComment
     /// </summary>
-    public sealed partial class LogComment : ExtensibleObject, IIdentifiable
+    public sealed partial class LogComment : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _addedBy;
         /// <summary>

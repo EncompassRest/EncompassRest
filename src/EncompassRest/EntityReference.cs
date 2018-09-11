@@ -1,6 +1,6 @@
 ﻿namespace EncompassRest
 {
-    public class EntityReference : ExtensibleObject, IIdentifiable
+    public class EntityReference : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _entityId;
         public string EntityId { get => _entityId; set => SetField(ref _entityId, value); }

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// StatusOnlineEvent
     /// </summary>
-    public sealed partial class StatusOnlineEvent : ExtensibleObject, IIdentifiable
+    public sealed partial class StatusOnlineEvent : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _dateText;
         /// <summary>

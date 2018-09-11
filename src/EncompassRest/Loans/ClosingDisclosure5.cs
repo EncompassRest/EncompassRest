@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ClosingDisclosure5
     /// </summary>
-    public sealed partial class ClosingDisclosure5 : ExtensibleObject, IIdentifiable
+    public sealed partial class ClosingDisclosure5 : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<CDLiabilityAfterForeclosure>> _cDLiabilityAfterForeclosure;
         /// <summary>

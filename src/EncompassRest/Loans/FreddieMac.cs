@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// FreddieMac
     /// </summary>
-    public sealed partial class FreddieMac : ExtensibleObject, IIdentifiable
+    public sealed partial class FreddieMac : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<AffordableProduct>> _affordableProduct;
         /// <summary>

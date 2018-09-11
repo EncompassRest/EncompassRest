@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Property
     /// </summary>
-    public sealed partial class Property : ExtensibleObject, IIdentifiable
+    public sealed partial class Property : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _assessorsParcelIdentifier;
         /// <summary>

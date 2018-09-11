@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
-    public abstract class Contact : ExtensibleObject, IIdentifiable
+    public abstract class Contact : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _firstName;
         public string FirstName { get => _firstName; set => SetField(ref _firstName, value); }

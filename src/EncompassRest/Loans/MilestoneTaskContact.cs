@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// MilestoneTaskContact
     /// </summary>
-    public sealed partial class MilestoneTaskContact : ExtensibleObject, IIdentifiable
+    public sealed partial class MilestoneTaskContact : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _address;
         /// <summary>

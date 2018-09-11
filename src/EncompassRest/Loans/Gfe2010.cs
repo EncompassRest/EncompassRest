@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Gfe2010
     /// </summary>
-    public sealed partial class Gfe2010 : ExtensibleObject, IIdentifiable
+    public sealed partial class Gfe2010 : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _adjustedOriginationCharges;
         /// <summary>

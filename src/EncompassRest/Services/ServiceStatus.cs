@@ -8,7 +8,7 @@ namespace EncompassRest.Services
         Pending = 0,
         [EnumMember(Value = "success")]
         Success = 1,
-        [EnumMember(Value = "fail")]
-        Fail = 2
+        [EnumMember(Value = "error")]
+        Error = 2
     }
 }

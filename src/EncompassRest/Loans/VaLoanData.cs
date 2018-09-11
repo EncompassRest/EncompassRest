@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// VaLoanData
     /// </summary>
-    public sealed partial class VaLoanData : ExtensibleObject, IIdentifiable
+    public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _acres;
         /// <summary>

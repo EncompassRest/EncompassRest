@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// Gfe2010WholePoc
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(Gfe2010WholePocIndex) + "," + nameof(LineNumber))]
-    public sealed partial class Gfe2010WholePoc : ExtensibleObject, IIdentifiable
+    public sealed partial class Gfe2010WholePoc : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _gfe2010WholePocIndex;
         /// <summary>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans.Conditions
 {
-    public abstract class LoanCondition : ExtensibleObject, IIdentifiable
+    public abstract class LoanCondition : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
         public string Id { get => _id; set => SetField(ref _id, value); }

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Gfe2010Section
     /// </summary>
-    public sealed partial class Gfe2010Section : ExtensibleObject, IIdentifiable
+    public sealed partial class Gfe2010Section : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _borrowerSelectIndicator903;
         /// <summary>

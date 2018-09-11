@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// InterimServicingTransaction
     /// </summary>
-    public sealed partial class InterimServicingTransaction : ExtensibleObject, IIdentifiable
+    public sealed partial class InterimServicingTransaction : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _comments;
         /// <summary>

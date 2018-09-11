@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// LockRequestBorrower
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class LockRequestBorrower : ExtensibleObject, IIdentifiable
+    public sealed partial class LockRequestBorrower : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _equifaxScore;
         /// <summary>

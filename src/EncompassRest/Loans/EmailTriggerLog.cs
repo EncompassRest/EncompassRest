@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// EmailTriggerLog
     /// </summary>
-    public sealed partial class EmailTriggerLog : ExtensibleObject, IIdentifiable
+    public sealed partial class EmailTriggerLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         /// <summary>

@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// RegulationZInterestRatePeriod
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(RegulationZInterestRatePeriodType))]
-    public sealed partial class RegulationZInterestRatePeriod : ExtensibleObject, IIdentifiable
+    public sealed partial class RegulationZInterestRatePeriod : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _adjustmentDate;
         /// <summary>

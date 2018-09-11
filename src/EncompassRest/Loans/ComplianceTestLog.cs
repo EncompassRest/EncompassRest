@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ComplianceTestLog
     /// </summary>
-    public sealed partial class ComplianceTestLog : ExtensibleObject, IIdentifiable
+    public sealed partial class ComplianceTestLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _details;
         /// <summary>

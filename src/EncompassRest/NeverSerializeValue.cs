@@ -4,7 +4,7 @@
     {
         public static implicit operator T(NeverSerializeValue<T> value) => value != null ? value._value : default;
 
-        public static implicit operator NeverSerializeValue<T>(T value) => new NeverSerializeValue<T>(value);
+        public static implicit operator NeverSerializeValue<T>(T value) => value != null ? new NeverSerializeValue<T>(value) : default;
 
         internal readonly T _value;
 

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// CustomModelFields
     /// </summary>
-    public sealed partial class CustomModelFields : ExtensibleObject, IIdentifiable
+    public sealed partial class CustomModelFields : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
         /// <summary>

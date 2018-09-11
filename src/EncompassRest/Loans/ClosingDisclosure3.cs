@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ClosingDisclosure3
     /// </summary>
-    public sealed partial class ClosingDisclosure3 : ExtensibleObject, IIdentifiable
+    public sealed partial class ClosingDisclosure3 : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _actualLECD3TotalClosingCostJFromLatestRec;
         /// <summary>

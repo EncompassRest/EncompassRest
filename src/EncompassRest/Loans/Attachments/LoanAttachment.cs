@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
-    public sealed class LoanAttachment : ExtensibleObject, IIdentifiable
+    public sealed class LoanAttachment : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _attachmentId;
         public string AttachmentId { get => _attachmentId; set => SetField(ref _attachmentId, value); }
@@ -41,7 +41,7 @@ namespace EncompassRest.Loans.Attachments
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public EntityReference Document { get => _document; set => SetField(ref _document, value); }
         private NeverSerializeValue<string> _mediaUrl;
-        public string MediaUrl { get => _mediaUrl; set => _mediaUrl = value; }
+        public string MediaUrl { get => _mediaUrl; set => SetField(ref _mediaUrl, value); }
         [IdPropertyName(nameof(AttachmentId))]
         string IIdentifiable.Id { get => AttachmentId; set => AttachmentId = value; }
 

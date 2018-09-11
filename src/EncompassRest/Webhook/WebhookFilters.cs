@@ -2,10 +2,10 @@
 
 namespace EncompassRest.Webhook
 {
-    public sealed class WebhookFilters : ExtensibleObject, IDirty
+    public sealed class WebhookFilters : DirtyExtensibleObject, IDirty
     {
-        private List<string> _attributes;
-        public IList<string> Attributes { get => _attributes ?? (_attributes = new List<string>()); set => _attributes = value != null ? new List<string>(value) : null; }
+        private IList<string> _attributes;
+        public IList<string> Attributes { get => GetField(ref _attributes); set => SetField(ref _attributes, value); }
 
         bool IDirty.Dirty { get => true; set { } }
     }

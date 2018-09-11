@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// EnergyEfficientMortgage
     /// </summary>
-    public sealed partial class EnergyEfficientMortgage : ExtensibleObject, IIdentifiable
+    public sealed partial class EnergyEfficientMortgage : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _appraisedValue;
         /// <summary>

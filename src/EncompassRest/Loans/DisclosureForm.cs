@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// DisclosureForm
     /// </summary>
-    public sealed partial class DisclosureForm : ExtensibleObject, IIdentifiable
+    public sealed partial class DisclosureForm : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _formName;
         /// <summary>

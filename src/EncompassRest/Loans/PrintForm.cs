@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// PrintForm
     /// </summary>
-    public sealed partial class PrintForm : ExtensibleObject, IIdentifiable
+    public sealed partial class PrintForm : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
         /// <summary>

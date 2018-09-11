@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ClosingDisclosure1
     /// </summary>
-    public sealed partial class ClosingDisclosure1 : ExtensibleObject, IIdentifiable
+    public sealed partial class ClosingDisclosure1 : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _cDDateIssued;
         /// <summary>

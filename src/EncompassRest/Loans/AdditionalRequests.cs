@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// AdditionalRequests
     /// </summary>
-    public sealed partial class AdditionalRequests : ExtensibleObject, IIdentifiable
+    public sealed partial class AdditionalRequests : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _appraisalContactCellPhone;
         /// <summary>

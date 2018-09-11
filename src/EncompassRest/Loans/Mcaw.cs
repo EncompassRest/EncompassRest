@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Mcaw
     /// </summary>
-    public sealed partial class Mcaw : ExtensibleObject, IIdentifiable
+    public sealed partial class Mcaw : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<AcceptOrReject>> _adequacyOfAvailableAssetsType;
         /// <summary>

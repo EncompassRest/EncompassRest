@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// MilestoneLog
     /// </summary>
-    public sealed partial class MilestoneLog : ExtensibleObject, IIdentifiable
+    public sealed partial class MilestoneLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         /// <summary>

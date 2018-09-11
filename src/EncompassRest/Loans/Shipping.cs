@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Shipping
     /// </summary>
-    public sealed partial class Shipping : ExtensibleObject, IIdentifiable
+    public sealed partial class Shipping : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _actualShipDate;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ProfitManagement
     /// </summary>
-    public sealed partial class ProfitManagement : ExtensibleObject, IIdentifiable
+    public sealed partial class ProfitManagement : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _commissionableGrossProfit;
         /// <summary>

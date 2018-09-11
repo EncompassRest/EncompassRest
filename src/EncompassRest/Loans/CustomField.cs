@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// CustomField
     /// </summary>
-    public sealed partial class CustomField : ExtensibleObject, IIdentifiable
+    public sealed partial class CustomField : DirtyExtensibleObject, IIdentifiable
     {
         internal DirtyValue<DateTime?> _dateValue;
         /// <summary>

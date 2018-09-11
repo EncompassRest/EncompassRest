@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LogSnapshotField
     /// </summary>
-    public sealed partial class LogSnapshotField : ExtensibleObject, IIdentifiable
+    public sealed partial class LogSnapshotField : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _fieldID;
         /// <summary>

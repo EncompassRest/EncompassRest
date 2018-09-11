@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ElliUCDDetail
     /// </summary>
-    public sealed partial class ElliUCDDetail : ExtensibleObject, IIdentifiable
+    public sealed partial class ElliUCDDetail : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyDictionary<string, string> _cDFields;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// RateLock
     /// </summary>
-    public sealed partial class RateLock : ExtensibleObject, IIdentifiable
+    public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _actualSellAmount;
         /// <summary>
@@ -76,6 +76,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Lock Request Loan Amnt Excluding MIP/PMI")]
         public decimal? BaseLoanAmount { get => _baseLoanAmount; set => SetField(ref _baseLoanAmount, value); }
+        private DirtyValue<string> _borrLenderPaid;
+        /// <summary>
+        /// RateLock BorrLenderPaid
+        /// </summary>
+        public string BorrLenderPaid { get => _borrLenderPaid; set => SetField(ref _borrLenderPaid, value); }
         private DirtyValue<decimal?> _borrowerRequestedLoanAmount;
         /// <summary>
         /// Lock Request Loan Amount [2965]
@@ -2587,6 +2592,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10, Description = "Rate Lock Request Base Price Tot Adjustment")]
         public decimal? RequestPriceTotalAdjustment { get => _requestPriceTotalAdjustment; set => SetField(ref _requestPriceTotalAdjustment, value); }
+        private DirtyValue<string> _requestProgramNotes;
+        /// <summary>
+        /// RateLock RequestProgramNotes
+        /// </summary>
+        public string RequestProgramNotes { get => _requestProgramNotes; set => SetField(ref _requestProgramNotes, value); }
         private DirtyValue<decimal?> _requestRate;
         /// <summary>
         /// Rate Lock Request Base Rate [2092]

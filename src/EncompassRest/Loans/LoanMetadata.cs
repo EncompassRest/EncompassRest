@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Loans
 {
-    public sealed class LoanMetadata : ExtensibleObject
+    public sealed class LoanMetadata : DirtyExtensibleObject
     {
         public string Id { get; set; }
         public DateTime ModifiedDate { get; set; }

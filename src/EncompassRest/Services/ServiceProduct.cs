@@ -19,10 +19,11 @@ namespace EncompassRest.Services
 
         internal virtual ServiceCredentials CredentialsInternal { get; set; }
 
-        internal ServiceProduct(EntityReference entityRef, ServiceOptions options, ServiceType name)
+        internal ServiceProduct(EntityReference entityRef, ServiceOptions options, string name)
         {
             Preconditions.NotNull(entityRef, nameof(entityRef));
             Preconditions.NotNull(options, nameof(options));
+            Preconditions.NotNullOrEmpty(name, nameof(name));
 
             EntityRef = entityRef;
             Options = options;

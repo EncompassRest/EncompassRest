@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// PostClosingConditionLog
     /// </summary>
-    public sealed partial class PostClosingConditionLog : ExtensibleObject, IIdentifiable
+    public sealed partial class PostClosingConditionLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _addedBy;
         /// <summary>

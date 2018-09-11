@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// ShippingContact
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(ShippingContactType))]
-    public sealed partial class ShippingContact : ExtensibleObject, IIdentifiable
+    public sealed partial class ShippingContact : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _address;
         /// <summary>

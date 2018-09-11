@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Borrower
     /// </summary>
-    public sealed partial class Borrower : ExtensibleObject, IIdentifiable
+    public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _acountChekAssetId;
         /// <summary>

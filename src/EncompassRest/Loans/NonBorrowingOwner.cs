@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// NonBorrowingOwner
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class NonBorrowingOwner : ExtensibleObject, IIdentifiable
+    public sealed partial class NonBorrowingOwner : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _addressCity;
         /// <summary>
@@ -41,6 +41,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Vesting Type")]
         public StringEnumValue<NonBorrowingOwnerBorrowerType> BorrowerType { get => _borrowerType; set => SetField(ref _borrowerType, value); }
+        private DirtyValue<string> _borrowerVestingRecordID;
+        /// <summary>
+        /// NonBorrowingOwner BorrowerVestingRecordID
+        /// </summary>
+        public string BorrowerVestingRecordID { get => _borrowerVestingRecordID; set => SetField(ref _borrowerVestingRecordID, value); }
         private DirtyValue<string> _businessPhoneNumber;
         /// <summary>
         /// Non-Borrowing Owner File Contact - Business Phone Number [NBOCNB13]
@@ -65,6 +70,36 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Email")]
         public string Email { get => _email; set => SetField(ref _email, value); }
+        private DirtyValue<bool?> _entityDeleted;
+        /// <summary>
+        /// NonBorrowingOwner EntityDeleted
+        /// </summary>
+        public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
+        private DirtyValue<DateTime?> _eSignConsentNBOCDateAccepted;
+        /// <summary>
+        /// NonBorrowingOwner ESignConsentNBOCDateAccepted
+        /// </summary>
+        public DateTime? ESignConsentNBOCDateAccepted { get => _eSignConsentNBOCDateAccepted; set => SetField(ref _eSignConsentNBOCDateAccepted, value); }
+        private DirtyValue<DateTime?> _eSignConsentNBOCDateSent;
+        /// <summary>
+        /// NonBorrowingOwner ESignConsentNBOCDateSent
+        /// </summary>
+        public DateTime? ESignConsentNBOCDateSent { get => _eSignConsentNBOCDateSent; set => SetField(ref _eSignConsentNBOCDateSent, value); }
+        private DirtyValue<string> _eSignConsentNBOCIPAddress;
+        /// <summary>
+        /// NonBorrowingOwner ESignConsentNBOCIPAddress
+        /// </summary>
+        public string ESignConsentNBOCIPAddress { get => _eSignConsentNBOCIPAddress; set => SetField(ref _eSignConsentNBOCIPAddress, value); }
+        private DirtyValue<string> _eSignConsentNBOCSource;
+        /// <summary>
+        /// NonBorrowingOwner ESignConsentNBOCSource
+        /// </summary>
+        public string ESignConsentNBOCSource { get => _eSignConsentNBOCSource; set => SetField(ref _eSignConsentNBOCSource, value); }
+        private DirtyValue<string> _eSignConsentNBOCStatus;
+        /// <summary>
+        /// NonBorrowingOwner ESignConsentNBOCStatus
+        /// </summary>
+        public string ESignConsentNBOCStatus { get => _eSignConsentNBOCStatus; set => SetField(ref _eSignConsentNBOCStatus, value); }
         private DirtyValue<string> _faxNumber;
         /// <summary>
         /// Non-Borrowing Owner File Contact - Fax Number [NBOCNB15]
@@ -83,6 +118,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Non-Borrowing Owner File Contact - Home Phone Number")]
         public string HomePhoneNumber { get => _homePhoneNumber; set => SetField(ref _homePhoneNumber, value); }
+        private DirtyValue<string> _id;
+        /// <summary>
+        /// NonBorrowingOwner Id
+        /// </summary>
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<string> _lastName;
         /// <summary>
         /// Non-Borrowing Owner File Contact - Last Name [NBOCNB03]
@@ -95,6 +135,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Middle Name")]
         public string MiddleName { get => _middleName; set => SetField(ref _middleName, value); }
+        private DirtyValue<string> _nBOID;
+        /// <summary>
+        /// NonBorrowingOwner NBOID
+        /// </summary>
+        public string NBOID { get => _nBOID; set => SetField(ref _nBOID, value); }
         private DirtyValue<bool?> _no3rdPartyEmailIndicator;
         /// <summary>
         /// Non-Borrowing Owner File Contact - No Third-Party Email Indicator [NBOCNB12]

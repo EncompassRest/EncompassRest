@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// PrivacyPolicy
     /// </summary>
-    public sealed partial class PrivacyPolicy : ExtensibleObject, IIdentifiable
+    public sealed partial class PrivacyPolicy : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _additionalRightsDescription;
         /// <summary>

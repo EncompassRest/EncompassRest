@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// EmDocument
     /// </summary>
-    public sealed partial class EmDocument : ExtensibleObject, IIdentifiable
+    public sealed partial class EmDocument : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _allngToNtPayToJrsdctn;
         /// <summary>

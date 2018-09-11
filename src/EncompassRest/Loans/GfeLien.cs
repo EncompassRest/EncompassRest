@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// GfeLien
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(GfeLienIndex) + "," + nameof(GfeLienType))]
-    public sealed partial class GfeLien : ExtensibleObject, IIdentifiable
+    public sealed partial class GfeLien : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _amountOwing;
         /// <summary>

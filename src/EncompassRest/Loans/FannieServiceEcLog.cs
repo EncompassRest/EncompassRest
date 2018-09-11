@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// FannieServiceEcLog
     /// </summary>
-    public sealed partial class FannieServiceEcLog : ExtensibleObject, IIdentifiable
+    public sealed partial class FannieServiceEcLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         /// <summary>
