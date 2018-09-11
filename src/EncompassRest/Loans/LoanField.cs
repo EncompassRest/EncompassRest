@@ -192,16 +192,17 @@ namespace EncompassRest.Loans
         {
             get
             {
-                var fieldLockData = Loan.FieldLockData.FirstOrDefault(f => _modelPath.Equals(f._modelPathInternal));
+                var fieldLockData = Loan.FieldLockData.GetById(ModelPath);
                 return fieldLockData != null && fieldLockData.LockRemoved != true;
             }
             set
             {
                 var allFieldLockData = Loan.FieldLockData;
-                var fieldLockData = allFieldLockData.FirstOrDefault(f => _modelPath.Equals(f._modelPathInternal));
+                var modelPath = ModelPath;
+                var fieldLockData = allFieldLockData.GetById(modelPath);
                 if (fieldLockData == null)
                 {
-                    fieldLockData = new FieldLockData { _modelPathInternal = _modelPath, _modelPath = ModelPath };
+                    fieldLockData = new FieldLockData { ModelPath = modelPath };
                     allFieldLockData.Add(fieldLockData);
                 }
                 fieldLockData.LockRemoved = !value;

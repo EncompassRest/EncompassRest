@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace EncompassRest.Loans
 {
@@ -9,7 +8,7 @@ namespace EncompassRest.Loans
         {
             get
             {
-                var customField = GetCustomField();
+                var customField = Loan.CustomFields.GetById(FieldId);
                 if (customField != null)
                 {
                     if (customField.DateValue.HasValue)
@@ -26,7 +25,7 @@ namespace EncompassRest.Loans
             }
             set
             {
-                var customField = GetCustomField();
+                var customField = Loan.CustomFields.GetById(FieldId);
                 if (customField == null)
                 {
                     customField = new CustomField { FieldName = FieldId };
@@ -76,7 +75,7 @@ namespace EncompassRest.Loans
 
         public override string ToString()
         {
-            var customField = GetCustomField();
+            var customField = Loan.CustomFields.GetById(FieldId);
             if (customField != null)
             {
                 if (customField.StringValue != null)
@@ -94,7 +93,5 @@ namespace EncompassRest.Loans
             }
             return null;
         }
-
-        private CustomField GetCustomField() => Loan.CustomFields.FirstOrDefault(f => string.Equals(FieldId, f.FieldName, StringComparison.OrdinalIgnoreCase));
     }
 }

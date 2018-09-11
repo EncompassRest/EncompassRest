@@ -865,13 +865,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
-        public async Task Loan_FieldsLocking_Simple() => await Loan_FieldsLocking(true);
-
-        [TestMethod]
-        [Ignore("Takes a long time to run, the simple version should suffice most of the time")]
-        public async Task Loan_FieldsLocking_Thorough() => await Loan_FieldsLocking(false);
-
-        private async Task Loan_FieldsLocking(bool simple)
+        public async Task Loan_FieldsLocking()
         {
             var client = await GetTestClientAsync();
             var loan = new Loan(client);
@@ -882,44 +876,28 @@ namespace EncompassRest.Tests
                 var distinctFieldMappings = LoanFieldDescriptors.FieldMappings._dictionary.Distinct(new FieldMappingComparer()).ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase);
 
                 var fieldsWhereLockingCausesEncompassError = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "NEWHUD.X769", "NEWHUD.X770", "CD1.X75", "LE1.X98" };
-
-                if (simple)
+                
+                foreach (var fieldId in fieldsWhereLockingCausesEncompassError)
                 {
-                    var fieldLockData = loan.FieldLockData;
-                    foreach (var pair in distinctFieldMappings)
+                    await Assert.ThrowsExceptionAsync<EncompassRestException>(() =>
                     {
-                        var field = loan.Fields[pair.Key];
-                        Assert.AreEqual(pair.Value.ModelPath, field.ModelPath);
-                        if (field.Descriptor.Type != LoanFieldType.Virtual && !fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
-                        {
-                            fieldLockData.Add(new FieldLockData { ModelPath = field.ModelPath });
-                        }
-                    }
+                        var newLoan = new Loan(client, loanId);
+                        var field = newLoan.Fields[fieldId];
+                        field.Locked = true;
+                        Assert.IsTrue(field.Locked);
+                        return client.Loans.UpdateLoanAsync(newLoan);
+                    });
                 }
-                else
-                {
-                    foreach (var fieldId in fieldsWhereLockingCausesEncompassError)
-                    {
-                        await Assert.ThrowsExceptionAsync<EncompassRestException>(() =>
-                        {
-                            var newLoan = new Loan(client, loanId);
-                            var field = newLoan.Fields[fieldId];
-                            field.Locked = true;
-                            Assert.IsTrue(field.Locked);
-                            return client.Loans.UpdateLoanAsync(newLoan);
-                        });
-                    }
                     
-                    foreach (var pair in distinctFieldMappings)
+                foreach (var pair in distinctFieldMappings)
+                {
+                    var field = loan.Fields[pair.Key];
+                    Assert.AreEqual(pair.Value.ModelPath, field.ModelPath);
+                    if (field.Descriptor.Type != LoanFieldType.Virtual && !fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
                     {
-                        var field = loan.Fields[pair.Key];
-                        Assert.AreEqual(pair.Value.ModelPath, field.ModelPath);
-                        if (field.Descriptor.Type != LoanFieldType.Virtual && !fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
-                        {
-                            Assert.IsFalse(field.Locked);
-                            field.Locked = true;
-                            Assert.IsTrue(field.Locked);
-                        }
+                        Assert.IsFalse(field.Locked);
+                        field.Locked = true;
+                        Assert.IsTrue(field.Locked);
                     }
                 }
 
@@ -1544,6 +1522,51 @@ namespace EncompassRest.Tests
                 catch
                 {
                 }
+            }
+        }
+
+        [TestMethod]
+        public void Loan_CustomFieldsGetById()
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            var loan = new Loan();
+#pragma warning restore CS0618 // Type or member is obsolete
+
+            var customFields = loan.CustomFields;
+            for (var letter = 'A'; letter <= 'Z'; ++letter)
+            {
+                customFields.Add(new CustomField { FieldName = $"CX.{letter}", StringValue = letter.ToString() });
+            }
+
+            for (var number = '0'; number <= '9'; ++number)
+            {
+                Assert.IsNull(customFields.GetById($"CX.{number}"));
+            }
+
+            for (var letter = 'A'; letter <= 'Z'; ++letter)
+            {
+                var fieldId = $"CX.{letter}";
+                var customField = customFields.GetById(fieldId);
+                Assert.IsNotNull(customField);
+                Assert.AreEqual(fieldId, customField.FieldName);
+                Assert.AreEqual(letter.ToString(), customField.StringValue);
+                customField.FieldName = $"CX.{letter}{letter}";
+                Assert.IsNull(customFields.GetById(fieldId));
+            }
+
+            for (var letter = 'A'; letter <= 'Z'; ++letter)
+            {
+                var oldFieldId = $"CX.{letter}";
+                Assert.IsNull(customFields.GetById(oldFieldId));
+                var newFieldId = $"CX.{letter}{letter}";
+                var customField = customFields.GetById(newFieldId);
+                Assert.IsNotNull(customField);
+                Assert.AreEqual(newFieldId, customField.FieldName);
+                Assert.AreEqual(letter.ToString(), customField.StringValue);
+                customFields.Remove(customField);
+                customField.FieldName = oldFieldId;
+                Assert.IsNull(customFields.GetById(newFieldId));
+                Assert.IsNull(customFields.GetById(oldFieldId));
             }
         }
     }

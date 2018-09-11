@@ -309,9 +309,8 @@ namespace EncompassRest.Utilities
                 {
                     contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object>)(((ExtensibleObject)o).ExtensionData)).GetDirtyItems().Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
                     contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
-                    var idProperty = GetIdProperty(objectTypeInfo);
-                    var idPropertyNameAttribute = idProperty.GetCustomAttribute<IdPropertyNameAttribute>(false);
-                    var idPropertyName = idPropertyNameAttribute != null ? CamelCaseNamingStrategy.GetPropertyName(idPropertyNameAttribute.IdPropertyName, false) : "id";
+                    var idPropertyName = ExtensibleObject.GetIdPropertyName(objectTypeInfo);
+                    idPropertyName = CamelCaseNamingStrategy.GetPropertyName(idPropertyName, false);
                     var property = contract.Properties.GetClosestMatchProperty(idPropertyName);
                     if (property != null)
                     {
@@ -332,8 +331,6 @@ namespace EncompassRest.Utilities
                 }
                 return contract;
             }
-
-            private static PropertyInfo GetIdProperty(TypeInfo typeInfo) => typeInfo.DeclaredProperties.FirstOrDefault(p => p.Name == "EncompassRest.IIdentifiable.Id") ?? typeInfo.DeclaredProperties.FirstOrDefault(p => p.Name == "Id") ?? GetIdProperty(typeInfo.BaseType.GetTypeInfo());
 
             protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
             {

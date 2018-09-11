@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
@@ -127,6 +129,9 @@ namespace EncompassRest
             }
         }
         bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
+
+        internal string LastId { get; set; }
+
         string IIdentifiable.Id { get => string.Empty; set { } }
         internal ExtensibleObject()
         {
@@ -135,5 +140,14 @@ namespace EncompassRest
 #if HAVE_ICLONEABLE
         object ICloneable.Clone() => this.Clone();
 #endif
+
+        internal static string GetIdPropertyName(TypeInfo typeInfo)
+        {
+            var idProperty = GetIdProperty(typeInfo);
+            var idPropertyNameAttribute = idProperty.GetCustomAttribute<IdPropertyNameAttribute>(false);
+            return idPropertyNameAttribute != null ? idPropertyNameAttribute.IdPropertyName : "Id";
+        }
+
+        private static PropertyInfo GetIdProperty(TypeInfo typeInfo) => typeInfo.DeclaredProperties.FirstOrDefault(p => p.Name == "EncompassRest.IIdentifiable.Id") ?? typeInfo.DeclaredProperties.FirstOrDefault(p => p.Name == "Id") ?? GetIdProperty(typeInfo.BaseType.GetTypeInfo());
     }
 }

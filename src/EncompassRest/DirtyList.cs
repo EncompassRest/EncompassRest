@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using EncompassRest.Loans;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
@@ -15,7 +17,8 @@ namespace EncompassRest
     [JsonConverter(typeof(DirtyListConverter<>))]
     internal sealed class DirtyList<T> : IList<T>, IList, IDirty
     {
-        private static readonly bool s_tIsIIdentifiable = TypeData<T>.TypeInfo.ImplementedInterfaces.Contains(TypeData<IIdentifiable>.Type);
+        private static readonly bool s_tIsIIdentifiable = TypeData<T>.TypeInfo.IsSubclassOf(TypeData<ExtensibleObject>.Type);
+        private static string s_idPropertyName = s_tIsIIdentifiable ? ExtensibleObject.GetIdPropertyName(TypeData<T>.TypeInfo) : string.Empty;
 
         internal readonly List<DirtyValue<T>> _list = new List<DirtyValue<T>>();
         private readonly Dictionary<string, T> _dictionary;
@@ -27,16 +30,26 @@ namespace EncompassRest
             {
                 if (s_tIsIIdentifiable)
                 {
-                    var existingValue = _list[index];
-                    var existingId = GetId(existingValue._value);
-                    if (!string.IsNullOrEmpty(existingId))
+                    var existingObj = (ExtensibleObject)(object)_list[index]._value;
+                    if (existingObj != null)
                     {
-                        _dictionary.Remove(existingId);
+                        var existingId = ((IIdentifiable)existingObj).Id;
+                        if (!string.IsNullOrEmpty(existingId))
+                        {
+                            _dictionary.Remove(existingId);
+                        }
+                        existingObj.PropertyChanged -= PropertyChangedHandler;
                     }
-                    var newId = GetId(value);
-                    if (!string.IsNullOrEmpty(newId))
+                    var newObj = (ExtensibleObject)(object)value;
+                    if (newObj != null)
                     {
-                        _dictionary[newId] = value;
+                        var newId = ((IIdentifiable)newObj).Id;
+                        if (!string.IsNullOrEmpty(newId))
+                        {
+                            _dictionary[newId] = value;
+                        }
+                        newObj.LastId = newId;
+                        newObj.PropertyChanged += PropertyChangedHandler;
                     }
                 }
                 _list[index] = value;
@@ -71,7 +84,12 @@ namespace EncompassRest
         {
             if (s_tIsIIdentifiable)
             {
-                _dictionary = new Dictionary<string, T>(StringComparer.Ordinal);
+                IEqualityComparer<string> comparer = StringComparer.OrdinalIgnoreCase;
+                if (TypeData<T>.Type == TypeData<FieldLockData>.Type)
+                {
+                    comparer = new StringModelPathComparer();
+                }
+                _dictionary = new Dictionary<string, T>(comparer);
             }
         }
 
@@ -87,30 +105,23 @@ namespace EncompassRest
             }
         }
 
-        private string GetId(T value) => ((IIdentifiable)value)?.Id;
-
         internal T GetById(string id) => s_tIsIIdentifiable && _dictionary.TryGetValue(id, out var value) ? value : default;
 
-        public void Add(T item)
-        {
-            _list.Add(item);
-            if (s_tIsIIdentifiable)
-            {
-                var id = GetId(item);
-                if (!string.IsNullOrEmpty(id))
-                {
-                    _dictionary[id] = item;
-                }
-            }
-        }
+        public void Add(T item) => Insert(Count, item);
 
         public void Clear()
         {
             if (s_tIsIIdentifiable)
             {
-                _dictionary.Clear();
+                for (var i = _list.Count - 1; i >= 0; --i)
+                {
+                    RemoveAt(i);
+                }
             }
-            _list.Clear();
+            else
+            {
+                _list.Clear();
+            }
         }
 
         public bool Contains(T item) => IndexOf(item) >= 0;
@@ -153,10 +164,16 @@ namespace EncompassRest
             _list.Insert(index, item);
             if (s_tIsIIdentifiable)
             {
-                var id = GetId(item);
-                if (!string.IsNullOrEmpty(id))
+                var obj = (ExtensibleObject)(object)item;
+                if (obj != null)
                 {
-                    _dictionary[id] = item;
+                    var id = ((IIdentifiable)obj)?.Id;
+                    if (!string.IsNullOrEmpty(id))
+                    {
+                        _dictionary[id] = item;
+                    }
+                    obj.LastId = id;
+                    obj.PropertyChanged += PropertyChangedHandler;
                 }
             }
         }
@@ -177,13 +194,36 @@ namespace EncompassRest
             var item = _list[index];
             if (s_tIsIIdentifiable)
             {
-                var id = GetId(item);
-                if (!string.IsNullOrEmpty(id))
+                var obj = (ExtensibleObject)(object)item._value;
+                if (obj != null)
                 {
-                    _dictionary.Remove(id);
+                    var id = ((IIdentifiable)obj)?.Id;
+                    if (!string.IsNullOrEmpty(id))
+                    {
+                        _dictionary.Remove(id);
+                    }
+                    obj.PropertyChanged -= PropertyChangedHandler;
                 }
             }
             _list.RemoveAt(index);
+        }
+
+        private void PropertyChangedHandler(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == s_idPropertyName)
+            {
+                var obj = (ExtensibleObject)sender;
+                if (!string.IsNullOrEmpty(obj.LastId))
+                {
+                    _dictionary.Remove(obj.LastId);
+                }
+                var newId = ((IIdentifiable)obj).Id;
+                if (!string.IsNullOrEmpty(newId))
+                {
+                    _dictionary[newId] = (T)sender;
+                }
+                obj.LastId = newId;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
