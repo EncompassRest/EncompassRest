@@ -6,7 +6,7 @@ You may wonder why this library exists when Ellie Mae has provided their own [En
 
 First, the Encompass API .NET Language Bindings were released long after the API's became available so users needed a common .NET library for consuming the Encompass API's, hence this library was born.
 
-Secondly, the swagger generated Encompass API .NET Language Bindings are less robust compared to the custom crafted, well thought-out, and thoroughly tested EncompassRest library.
+Second, the swagger generated Encompass API .NET Language Bindings are less robust compared to the custom crafted, well thought-out, and thoroughly tested EncompassRest library.
 
 ### More features
 * Field ID support
@@ -25,8 +25,9 @@ Secondly, the swagger generated Encompass API .NET Language Bindings are less ro
 ### Simpler
 * More convenient interface with a single defined entry point, the `EncompassRestClient` object which is the equivalent of the `Session` object in the SDK
 * Simpler Type names, e.g. `Loan` instead of `LoanContract`
-* Publicly exposes only relevant .NET API
 * Single NuGet package
+* No configuration files
+* Publicly exposes only relevant .NET API
 
 ### Optimized for performance
 * Serializes directly to output `Stream` meaning no string allocation
@@ -74,11 +75,11 @@ public void Main()
 ### Create an `EncompassRestClient` object
 The `EncompassRestClient` class implements `IDisposable` so it is recommended to use a `using` statement to automatically dispose of the object.
 
-#### From user credentials
+#### From user credentials which auto-retrieves new token when expired
 ```c#
-using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync(
+using (var client = await EncompassRestClient.CreateAsync(
     new ClientParameters("apiClientId", "apiClientSecret"),
-    "encompassInstanceId", "encompassUserId", "encompassPassword"))
+    tokenCreator => tokenCreator.FromUserCredentialsAsync("encompassInstanceId", "encompassUserId", "encompassPassword")))
 {
     // use client
 }
@@ -95,18 +96,8 @@ using (var client = await EncompassRestClient.CreateFromAuthorizationCodeAsync(
 
 #### From access token
 ```c#
-using (var client = EncompassRestClient.CreateFromAccessToken(
+using (var client = await EncompassRestClient.CreateFromAccessTokenAsync(
     new ClientParameters("apiClientId", "apiClientSecret"), "accessToken"))
-{
-    // use client
-}
-```
-
-#### Auto-retrieve new token when expired
-```c#
-using (var client = await EncompassRestClient.CreateAsync(
-    new ClientParameters("apiClientId", "apiClientSecret"),
-    tokenCreator => tokenCreator.FromUserCredentialsAsync("encompassInstanceId", "encompassUserId", "encompassPassword")))
 {
     // use client
 }
