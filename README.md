@@ -19,12 +19,14 @@ Secondly, the swagger generated Encompass API .NET Language Bindings are less ro
 * Extension data support, for when Ellie Mae adds properties to the returned json objects but the library isn't updated yet
 * `CancellationToken` support
 * Properties are lazily created upon gets so you don't need to new them up first to use them
+* `INotifyPropertyChanged` support
+* Uses `decimal` instead of `double` to prevent precision loss
 
-### Simpler API
+### Simpler
 * More convenient interface with a single defined entry point, the `EncompassRestClient` object which is the equivalent of the `Session` object in the SDK
 * Simpler Type names, e.g. `Loan` instead of `LoanContract`
 * Publicly exposes only relevant .NET API
-* Uses `decimal` instead of `double` to prevent precision loss
+* Single NuGet package
 
 ### Optimized for performance
 * Serializes directly to output `Stream` meaning no string allocation
