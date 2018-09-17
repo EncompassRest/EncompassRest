@@ -1,5 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
@@ -15,8 +16,32 @@ namespace EncompassRest.Contacts
         public string Referral { get => _referral; set => SetField(ref _referral, value); }
 
         /// <summary>
-        /// BorrowerContact creation constructor
+        /// Borrower contact creation constructor
         /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="personalEmail"></param>
+        public BorrowerContact(string firstName, string personalEmail)
+            : base(firstName, personalEmail)
+        {
+        }
+
+        /// <summary>
+        /// Borrower contact update constructor
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="contactId"></param>
+        /// <param name="firstName"></param>
+        /// <param name="personalEmail"></param>
+        public BorrowerContact(EncompassRestClient client, string contactId, string firstName, string personalEmail)
+            : base(client, contactId, firstName, personalEmail)
+        {
+        }
+
+        /// <summary>
+        /// Borrower contact deserialization constructor
+        /// </summary>
+        [Obsolete("Use another constructor instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         [JsonConstructor]
         public BorrowerContact()
         {
@@ -27,9 +52,11 @@ namespace EncompassRest.Contacts
         /// </summary>
         /// <param name="client"></param>
         /// <param name="contactId"></param>
+        [Obsolete("Use another constructor instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public BorrowerContact(EncompassRestClient client, string contactId)
-            : base(client, contactId)
         {
+            Initialize(client, contactId);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace EncompassRest
 {
     public static class CanonicalFieldExtensions
     {
-        public static string GetCanonicalName(this CanonicalLoanField value) => $"Loan.{value.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)}";
+        public static string GetCanonicalName(this CanonicalLoanField value) => $"Loan.{value.GetValue()}";
 
         public static bool IsDateValued(this CanonicalLoanField value) => value >= 0 && (int)value < 100;
 
@@ -12,7 +12,7 @@ namespace EncompassRest
 
         public static bool IsStringValued(this CanonicalLoanField value) => (int)value >= 200;
 
-        public static string GetCanonicalName(this CanonicalContactField value) => $"Contact.{value.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)}";
+        public static string GetCanonicalName(this CanonicalContactField value) => $"Contact.{value.GetValue()}";
 
         public static bool IsDateValued(this CanonicalContactField value) => value >= 0 && (int)value < 100;
 

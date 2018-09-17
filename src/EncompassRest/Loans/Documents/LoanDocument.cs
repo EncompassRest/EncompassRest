@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using EncompassRest.Utilities;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Documents
 {
@@ -89,5 +92,40 @@ namespace EncompassRest.Loans.Documents
         public IList<EntityReference> Roles { get => GetField(ref _roles); set => SetField(ref _roles, value); }
         [IdPropertyName(nameof(DocumentId))]
         string IIdentifiable.Id { get => DocumentId; set => DocumentId = value; }
+
+        /// <summary>
+        /// Loan document creation constructor
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="applicationId">Identifies which borrower pair (or “All”) the document will be assigned to.</param>
+        public LoanDocument(string title, string applicationId)
+        {
+            Preconditions.NotNullOrEmpty(title, nameof(title));
+            Preconditions.NotNullOrEmpty(applicationId, nameof(applicationId));
+
+            Title = title;
+            ApplicationId = applicationId;
+        }
+
+        /// <summary>
+        /// Loan document update constructor
+        /// </summary>
+        /// <param name="documentId"></param>
+        public LoanDocument(string documentId)
+        {
+            Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
+
+            DocumentId = documentId;
+        }
+
+        /// <summary>
+        /// Loan document deserialization constructor
+        /// </summary>
+        [Obsolete("Use another constructor instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [JsonConstructor]
+        public LoanDocument()
+        {
+        }
     }
 }

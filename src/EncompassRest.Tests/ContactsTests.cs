@@ -17,7 +17,9 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void BorrowerContact_Serialization()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var borrowerContact = new BorrowerContact { AccessLevel = ContactAccessLevel.Private };
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.AreEqual(@"{""accessLevel"":0}", borrowerContact.ToJson());
             borrowerContact.Dirty = false;
             Assert.AreEqual("{}", borrowerContact.ToJson());
@@ -26,7 +28,9 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void BusinessContact_Serialization()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var businessContact = new BusinessContact { AccessLevel = ContactAccessLevel.Private };
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.AreEqual(@"{""accessLevel"":0}", businessContact.ToJson());
             businessContact.Dirty = false;
             Assert.AreEqual("{}", businessContact.ToJson());
@@ -38,21 +42,41 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             if (client.AccessToken.Token != "Token")
             {
-                var borrowerContact = new BorrowerContact
-                {
-                    FirstName = "Bob",
-                    PersonalEmail = "Bob@gmail.com"
-                };
+                var borrowerContact = new BorrowerContact("Bob", "Bob@gmail.com");
                 var contactId = await client.BorrowerContacts.CreateContactAsync(borrowerContact).ConfigureAwait(false);
 
-                Assert.IsNotNull(contactId);
-                Assert.AreEqual(contactId, borrowerContact.Id);
+                try
+                {
 
-                var retrievedContact = await client.BorrowerContacts.GetContactAsync(contactId);
-                Assert.IsNotNull(retrievedContact);
-                Assert.AreEqual(contactId, retrievedContact.Id);
+                    Assert.IsNotNull(contactId);
+                    Assert.AreEqual(contactId, borrowerContact.Id);
 
-                Assert.IsTrue(await client.BorrowerContacts.DeleteContactAsync(contactId).ConfigureAwait(false));
+                    var retrievedContact = await client.BorrowerContacts.GetContactAsync(contactId);
+                    Assert.IsNotNull(retrievedContact);
+                    Assert.AreEqual(contactId, retrievedContact.Id);
+                    Assert.AreEqual(borrowerContact.FirstName, retrievedContact.FirstName);
+                    Assert.AreEqual(borrowerContact.PersonalEmail, retrievedContact.PersonalEmail);
+                    Assert.IsTrue(string.IsNullOrEmpty(retrievedContact.LastName));
+
+                    borrowerContact = new BorrowerContact(client, contactId, "Bob", "Bob@gmail.com") { LastName = "Smith" };
+                    await client.BorrowerContacts.UpdateContactAsync(borrowerContact);
+                    retrievedContact = await client.BorrowerContacts.GetContactAsync(contactId);
+                    Assert.IsNotNull(retrievedContact);
+                    Assert.AreEqual(contactId, retrievedContact.Id);
+                    Assert.AreEqual("Bob", retrievedContact.FirstName);
+                    Assert.AreEqual("Bob@gmail.com", retrievedContact.PersonalEmail);
+                    Assert.AreEqual("Smith", retrievedContact.LastName);
+                }
+                finally
+                {
+                    try
+                    {
+                        await client.BorrowerContacts.DeleteContactAsync(contactId).ConfigureAwait(false);
+                    }
+                    catch
+                    {
+                    }
+                }
             }
         }
 
@@ -60,20 +84,41 @@ namespace EncompassRest.Tests
         public async Task BusinessContact_CreateRetrieveAndDelete()
         {
             var client = await GetTestClientAsync();
-            var businessContact = new BusinessContact
-            {
-                FirstName = "Bob",
-                PersonalEmail = "Bob@gmail.com"
-            };
+            var businessContact = new BusinessContact("Bob", "Bob@gmail.com");
             var contactId = await client.BusinessContacts.CreateContactAsync(businessContact).ConfigureAwait(false);
-            Assert.IsNotNull(contactId);
-            Assert.AreEqual(contactId, businessContact.Id);
 
-            var retrievedContact = await client.BusinessContacts.GetContactAsync(contactId);
-            Assert.IsNotNull(retrievedContact);
-            Assert.AreEqual(contactId, retrievedContact.Id);
+            try
+            {
 
-            Assert.IsTrue(await client.BusinessContacts.DeleteContactAsync(contactId).ConfigureAwait(false));
+                Assert.IsNotNull(contactId);
+                Assert.AreEqual(contactId, businessContact.Id);
+
+                var retrievedContact = await client.BusinessContacts.GetContactAsync(contactId);
+                Assert.IsNotNull(retrievedContact);
+                Assert.AreEqual(contactId, retrievedContact.Id);
+                Assert.AreEqual(businessContact.FirstName, retrievedContact.FirstName);
+                Assert.AreEqual(businessContact.PersonalEmail, retrievedContact.PersonalEmail);
+                Assert.IsTrue(string.IsNullOrEmpty(retrievedContact.LastName));
+
+                businessContact = new BusinessContact(client, contactId, "Bob", "Bob@gmail.com") { LastName = "Smith" };
+                await client.BusinessContacts.UpdateContactAsync(businessContact);
+                retrievedContact = await client.BusinessContacts.GetContactAsync(contactId);
+                Assert.IsNotNull(retrievedContact);
+                Assert.AreEqual(contactId, retrievedContact.Id);
+                Assert.AreEqual("Bob", retrievedContact.FirstName);
+                Assert.AreEqual("Bob@gmail.com", retrievedContact.PersonalEmail);
+                Assert.AreEqual("Smith", retrievedContact.LastName);
+            }
+            finally
+            {
+                try
+                {
+                    await client.BusinessContacts.DeleteContactAsync(contactId).ConfigureAwait(false);
+                }
+                catch
+                {
+                }
+            }
         }
 
         [TestMethod]

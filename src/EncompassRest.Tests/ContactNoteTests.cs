@@ -11,7 +11,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void ContactNote_Serialization()
         {
-            var contactNote = new ContactNote { NoteId = "5" };
+            var contactNote = new ContactNote("5");
             Assert.AreEqual(contactNote.NoteIdInt, 5);
             Assert.AreEqual(@"{""noteId"":5}", contactNote.ToJson());
             contactNote.Dirty = false;
@@ -23,29 +23,43 @@ namespace EncompassRest.Tests
         {
             //create borrower contact to test notes
             var client = await GetTestClientAsync();
-            var businessContact = new BusinessContact
-            {
-                FirstName = "test",
-                PersonalEmail = "me@me.com"
-            };
+            var businessContact = new BusinessContact("test", "me@me.com");
             var contactId = await client.BusinessContacts.CreateContactAsync(businessContact);
 
-            //test notes
-            var note = new ContactNote
+            try
             {
-                Subject = "test",
-                Details = "testing data"
-            };
-            var noteId = await businessContact.Notes.CreateNoteAsync(note);
-            Assert.IsNotNull(noteId);
+                //test notes
+                var note = new ContactNote("test", "testing data");
+                var noteId = await businessContact.Notes.CreateNoteAsync(note);
+                Assert.IsNotNull(noteId);
 
-            var newNote = await businessContact.Notes.GetNoteAsync(noteId);
-            Assert.IsNotNull(newNote);
-            Assert.AreEqual(newNote.NoteId, noteId);
+                var retrievedNote = await businessContact.Notes.GetNoteAsync(noteId);
+                Assert.IsNotNull(retrievedNote);
+                Assert.AreEqual(noteId, retrievedNote.NoteId);
+                Assert.AreEqual(note.Subject, retrievedNote.Subject);
+                Assert.AreEqual(note.Details, retrievedNote.Details);
 
-            Assert.IsTrue(await businessContact.Notes.DeleteNoteAsync(noteId).ConfigureAwait(false));
+                note = new ContactNote(noteId) { Subject = "New Subject", Details = "New Details" };
+                await businessContact.Notes.UpdateNoteAsync(note);
+                retrievedNote = await businessContact.Notes.GetNoteAsync(noteId);
+                Assert.IsNotNull(retrievedNote);
+                Assert.AreEqual(noteId, retrievedNote.NoteId);
+                Assert.AreEqual(note.Subject, retrievedNote.Subject);
+                Assert.AreEqual(note.Details, retrievedNote.Details);
 
-            Assert.IsTrue(await client.BusinessContacts.DeleteContactAsync(contactId).ConfigureAwait(false));
+                Assert.IsTrue(await businessContact.Notes.DeleteNoteAsync(noteId).ConfigureAwait(false));
+                Assert.IsFalse(await businessContact.Notes.DeleteNoteAsync(noteId).ConfigureAwait(false));
+            }
+            finally
+            {
+                try
+                {
+                    await client.BusinessContacts.DeleteContactAsync(contactId);
+                }
+                catch
+                {
+                }
+            }
         }
     }
 }

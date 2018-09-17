@@ -66,7 +66,7 @@ namespace EncompassRest.Services.Appraisal
         public AppraisalPayment Payment { get; set; }
 
         public AppraisalOptions(AppraisalRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 

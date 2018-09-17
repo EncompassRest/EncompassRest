@@ -56,6 +56,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(note, nameof(note));
             Preconditions.NotNullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
+            note.Dirty = true; // To be removed if Ellie Mae updates API to only update provided properties.
             return PatchPopulateDirtyAsync(note.NoteId, JsonStreamContent.Create(note), nameof(UpdateNoteAsync), note.NoteId, note, populate, cancellationToken);
         }
 

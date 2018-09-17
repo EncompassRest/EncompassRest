@@ -28,7 +28,7 @@ namespace EncompassRest.Loans
     partial class LoanAssociate
     {
         public LoanAssociate(string id, LoanAssociateType loanAssociateType)
-            : this(id, loanAssociateType.Validate(nameof(loanAssociateType)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : this(id, loanAssociateType.Validate(nameof(loanAssociateType)).GetValue())
         {
         }
 

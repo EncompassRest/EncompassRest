@@ -1,5 +1,12 @@
-﻿namespace EncompassRest
+﻿using System;
+using System.ComponentModel;
+using EncompassRest.Utilities;
+using EnumsNET;
+using Newtonsoft.Json;
+
+namespace EncompassRest
 {
+    [Entity(PropertiesToAlwaysSerialize = nameof(EntityType))]
     public class EntityReference : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _entityId;
@@ -13,5 +20,26 @@
 
         [IdPropertyName(nameof(EntityId))]
         string IIdentifiable.Id { get => EntityId; set => EntityId = value; }
+
+        public EntityReference(string entityId, EntityType entityType)
+            : this(entityId, entityType.Validate(nameof(entityType)).GetValue())
+        {
+        }
+        
+        public EntityReference(string entityId, string entityType)
+        {
+            Preconditions.NotNullOrEmpty(entityId, nameof(entityId));
+            Preconditions.NotNullOrEmpty(entityType, nameof(entityType));
+
+            EntityId = entityId;
+            EntityType = entityType;
+        }
+
+        [Obsolete("Use another constructor instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [JsonConstructor]
+        public EntityReference()
+        {
+        }
     }
 }

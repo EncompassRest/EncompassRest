@@ -1,4 +1,6 @@
-﻿using EncompassRest.Utilities;
+﻿using System;
+using System.ComponentModel;
+using EncompassRest.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
 
@@ -20,11 +22,35 @@ namespace EncompassRest.Contacts
         private DirtyValue<bool?> _noSpam;
         public bool? NoSpam { get => _noSpam; set => SetField(ref _noSpam, value); }
         private DirtyValue<int?> _fees;
-        public int? Fees { get => Fees; set => SetField(ref _fees, value); }
+        public int? Fees { get => _fees; set => SetField(ref _fees, value); }
 
         /// <summary>
-        /// BusinessContact creation constructor
+        /// Business contact creation constructor
         /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="personalEmail"></param>
+        public BusinessContact(string firstName, string personalEmail)
+            : base(firstName, personalEmail)
+        {
+        }
+
+        /// <summary>
+        /// Business contact update constructor
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="contactId"></param>
+        /// <param name="firstName"></param>
+        /// <param name="personalEmail"></param>
+        public BusinessContact(EncompassRestClient client, string contactId, string firstName, string personalEmail)
+            : base(client, contactId, firstName, personalEmail)
+        {
+        }
+
+        /// <summary>
+        /// Business contact deserialization constructor
+        /// </summary>
+        [Obsolete("Use another constructor instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         [JsonConstructor]
         public BusinessContact()
         {
@@ -35,9 +61,11 @@ namespace EncompassRest.Contacts
         /// </summary>
         /// <param name="client"></param>
         /// <param name="contactId"></param>
+        [Obsolete("Use another constructor instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public BusinessContact(EncompassRestClient client, string contactId)
-            : base(client, contactId)
         {
+            Initialize(client, contactId);
         }
     }
 }

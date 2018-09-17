@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace EncompassRest.Loans.Attachments
 {
     public sealed class LoanAttachment : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _attachmentId;
+        private NeverSerializeValue<string> _attachmentId;
         public string AttachmentId { get => _attachmentId; set => SetField(ref _attachmentId, value); }
         private DirtyValue<DateTime?> _dateCreated;
         public DateTime? DateCreated { get => _dateCreated; set => SetField(ref _dateCreated, value); }
@@ -46,6 +47,43 @@ namespace EncompassRest.Loans.Attachments
         string IIdentifiable.Id { get => AttachmentId; set => AttachmentId = value; }
 
         internal LoanAttachments Attachments;
+
+        /// <summary>
+        /// Loan attachment creation constructor
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="fileWithExtension"></param>
+        /// <param name="createReason"></param>
+        public LoanAttachment(string title, string fileWithExtension, AttachmentCreateReason createReason)
+        {
+            Preconditions.NotNullOrEmpty(title, nameof(title));
+            Preconditions.NotNullOrEmpty(fileWithExtension, nameof(fileWithExtension));
+
+            Title = title;
+            FileWithExtension = fileWithExtension;
+            CreateReason = createReason;
+        }
+
+        /// <summary>
+        /// Loan attachment update constructor
+        /// </summary>
+        /// <param name="attachmentId"></param>
+        public LoanAttachment(string attachmentId)
+        {
+            Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
+
+            AttachmentId = attachmentId;
+        }
+
+        /// <summary>
+        /// Loan attachment deserialization constructor
+        /// </summary>
+        [Obsolete("Use another constructor instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [JsonConstructor]
+        public LoanAttachment()
+        {
+        }
 
         public async Task<byte[]> DownloadAsync(CancellationToken cancellationToken = default)
         {

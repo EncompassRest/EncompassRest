@@ -84,7 +84,7 @@ namespace EncompassRest.Services.Verification
         public IList<EV4506TResource> Resources { get; set; }
 
         public EV4506TOptions(EV4506TRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 

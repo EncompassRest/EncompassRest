@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using EncompassRest.Utilities;
 using EnumsNET;
@@ -31,7 +32,8 @@ namespace EncompassRest.Webhook
         [IdPropertyName(nameof(SubscriptionId))]
         string IIdentifiable.Id { get => SubscriptionId; set => SubscriptionId = value; }
 
-        [Obsolete("Use other constructor overloads instead.")]
+        [Obsolete("Use another constructor instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public WebhookSubscription(string endpoint)
         {
             Preconditions.NotNullOrEmpty(endpoint, nameof(endpoint));
@@ -40,7 +42,7 @@ namespace EncompassRest.Webhook
         }
 
         public WebhookSubscription(string endpoint, WebhookResourceType resource, IEnumerable<WebhookResourceEvent> events)
-            : this(endpoint, resource.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name), events?.Select(e => e.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)))
+            : this(endpoint, resource.Validate(nameof(resource)).GetValue(), events?.Select(e => e.Validate(nameof(events)).GetValue()))
         {
         }
 

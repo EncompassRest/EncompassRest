@@ -46,9 +46,19 @@ namespace EncompassRest.Contacts
         [JsonIgnore]
         public ContactNotes Notes { get; private set; }
 
-        internal Contact(EncompassRestClient client, string contactId)
+        internal Contact(EncompassRestClient client, string contactId, string firstName, string personalEmail)
+            : this(firstName, personalEmail)
         {
             Initialize(client, contactId);
+        }
+
+        internal Contact(string firstName, string personalEmail)
+        {
+            Preconditions.NotNullOrEmpty(firstName, nameof(firstName));
+            Preconditions.NotNullOrEmpty(personalEmail, nameof(personalEmail));
+
+            FirstName = firstName;
+            PersonalEmail = personalEmail;
         }
 
         internal Contact()

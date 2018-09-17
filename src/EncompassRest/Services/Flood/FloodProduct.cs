@@ -1,5 +1,4 @@
 ﻿using System;
-using EnumsNET;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Services.Flood
@@ -32,7 +31,7 @@ namespace EncompassRest.Services.Flood
         }
 
         public FloodProduct(EntityReference entityRef, FloodOptions options)
-            : base(entityRef, options, ServiceType.Flood.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : base(entityRef, options, ServiceType.Flood.GetValue())
         {
         }
 

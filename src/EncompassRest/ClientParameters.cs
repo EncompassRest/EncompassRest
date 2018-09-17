@@ -1,5 +1,6 @@
 ﻿using System;
 using EncompassRest.Utilities;
+using Newtonsoft.Json;
 
 namespace EncompassRest
 {
@@ -15,6 +16,7 @@ namespace EncompassRest
 
         public TimeSpan Timeout { get; set; }
 
+        [JsonIgnore]
         public CommonCache CommonCache { get; set; }
 
         public CacheInitialization CustomFieldsCacheInitialization { get; set; }

@@ -17,7 +17,7 @@ namespace EncompassRest.Tests
             foreach (var contactType in Enums.GetValues<ContactType>())
             {
                 var groupType = contactType == ContactType.Business ? ContactGroupType.Public : ContactGroupType.Private;
-                var groupAdded = new ContactGroup("ABC") { ContactType = contactType, GroupType = groupType, Description = "123" };
+                var groupAdded = new ContactGroup("ABC", contactType, groupType);
                 var groupId = await contactGroups.CreateGroupAsync(groupAdded, true);
                 try
                 {
@@ -36,15 +36,14 @@ namespace EncompassRest.Tests
                     Assert.AreEqual(groupAdded.ContactType.Value, retrievedGroup.ContactType.Value);
                     Assert.AreEqual(groupAdded.Name, retrievedGroup.Name);
                     Assert.AreEqual(groupAdded.GroupType.Value, retrievedGroup.GroupType.Value);
-                    Assert.AreEqual(groupAdded.Description, retrievedGroup.Description);
-                    groupAdded.Name = "DEF";
+
+                    groupAdded = new ContactGroup(groupId, "DEF", contactType, groupType);
                     await contactGroups.UpdateGroupAsync(groupAdded);
                     retrievedGroup = await contactGroups.GetGroupAsync(groupId);
                     Assert.IsNotNull(retrievedGroup);
                     Assert.AreEqual(groupAdded.ContactType.Value, retrievedGroup.ContactType.Value);
                     Assert.AreEqual(groupAdded.Name, retrievedGroup.Name);
                     Assert.AreEqual(groupAdded.GroupType.Value, retrievedGroup.GroupType.Value);
-                    Assert.AreEqual(groupAdded.Description, retrievedGroup.Description);
                 }
                 finally
                 {

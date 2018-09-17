@@ -10,6 +10,7 @@ using EncompassRest.Token;
 using EncompassRest.Utilities;
 using EncompassRest.Contacts;
 using EncompassRest.CustomDataObjects;
+using System.ComponentModel;
 
 namespace EncompassRest
 {
@@ -48,6 +49,7 @@ namespace EncompassRest
         }
 
         [Obsolete("Use the ClientParameters overload instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public static Task<EncompassRestClient> CreateFromUserCredentialsAsync(string apiClientId, string apiClientSecret, string instanceId, string userId, string password, CancellationToken cancellationToken = default) =>
             CreateFromUserCredentialsAsync(new ClientParameters(apiClientId, apiClientSecret), instanceId, userId, password, cancellationToken);
 
@@ -65,6 +67,7 @@ namespace EncompassRest
         }
 
         [Obsolete("Use the ClientParameters overload instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public static Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string apiClientId, string apiClientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken = default) =>
             CreateFromAuthorizationCodeAsync(new ClientParameters(apiClientId, apiClientSecret), redirectUri, authorizationCode, cancellationToken);
 
@@ -80,6 +83,7 @@ namespace EncompassRest
         }
 
         [Obsolete("Use CreateFromAccessTokenAsync instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public static EncompassRestClient CreateFromAccessToken(ClientParameters parameters, string accessToken)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
@@ -91,8 +95,8 @@ namespace EncompassRest
         }
 
         [Obsolete("Use the ClientParameters overload instead.")]
-        public static EncompassRestClient CreateFromAccessToken(string apiClientId, string apiClientSecret, string accessToken) =>
-            CreateFromAccessToken(new ClientParameters(apiClientId, apiClientSecret), accessToken);
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static EncompassRestClient CreateFromAccessToken(string apiClientId, string apiClientSecret, string accessToken) => CreateFromAccessToken(new ClientParameters(apiClientId, apiClientSecret), accessToken);
         
         private readonly Func<TokenCreator, Task<string>> _tokenInitializer;
         private int _timeoutRetryCount;

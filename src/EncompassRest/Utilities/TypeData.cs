@@ -21,6 +21,8 @@ namespace EncompassRest.Utilities
 
         public static Type OpenDirtyDictionaryType = typeof(DirtyDictionary<,>);
 
+        public static Type OpenNeverSerializeValueType = typeof(NeverSerializeValue<>);
+
         public static TypeData Get(Type type) => s_typeDatas.GetOrAdd(type, t => new TypeData(t));
 
         private bool? _isNullable;

@@ -40,7 +40,7 @@ namespace EncompassRest.CustomDataObjects
             DataObject = dataObject;
         }
 
-        [Obsolete("Use a different constructor instead.")]
+        [Obsolete("Use another constructor instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public CustomDataObject()
         {
