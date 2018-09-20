@@ -47,8 +47,8 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(note.Subject, retrievedNote.Subject);
                 Assert.AreEqual(note.Details, retrievedNote.Details);
 
-                Assert.IsTrue(await businessContact.Notes.DeleteNoteAsync(noteId).ConfigureAwait(false));
-                Assert.IsFalse(await businessContact.Notes.DeleteNoteAsync(noteId).ConfigureAwait(false));
+                Assert.IsTrue(await businessContact.Notes.DeleteNoteAsync(noteId));
+                Assert.IsFalse(await businessContact.Notes.DeleteNoteAsync(noteId));
             }
             finally
             {

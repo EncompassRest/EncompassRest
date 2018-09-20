@@ -43,7 +43,7 @@ namespace EncompassRest.Tests
             if (client.AccessToken.Token != "Token")
             {
                 var borrowerContact = new BorrowerContact("Bob", "Bob@gmail.com");
-                var contactId = await client.BorrowerContacts.CreateContactAsync(borrowerContact).ConfigureAwait(false);
+                var contactId = await client.BorrowerContacts.CreateContactAsync(borrowerContact);
 
                 try
                 {
@@ -71,7 +71,7 @@ namespace EncompassRest.Tests
                 {
                     try
                     {
-                        await client.BorrowerContacts.DeleteContactAsync(contactId).ConfigureAwait(false);
+                        await client.BorrowerContacts.DeleteContactAsync(contactId);
                     }
                     catch
                     {
@@ -85,7 +85,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var businessContact = new BusinessContact("Bob", "Bob@gmail.com");
-            var contactId = await client.BusinessContacts.CreateContactAsync(businessContact).ConfigureAwait(false);
+            var contactId = await client.BusinessContacts.CreateContactAsync(businessContact);
 
             try
             {
@@ -113,7 +113,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.BusinessContacts.DeleteContactAsync(contactId).ConfigureAwait(false);
+                    await client.BusinessContacts.DeleteContactAsync(contactId);
                 }
                 catch
                 {

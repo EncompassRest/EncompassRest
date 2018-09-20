@@ -16,31 +16,42 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
 
             var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
-            var loanApis = client.Loans.GetLoanApis(loanId);
-            var associates = await loanApis.Associates.GetAssociatesAsync();
-            foreach (var associate in associates)
+            try
             {
-                Assert.AreEqual(0, associate.ExtensionData.Count);
+                var loanApis = client.Loans.GetLoanApis(loanId);
+                var associates = await loanApis.Associates.GetAssociatesAsync();
+                foreach (var associate in associates)
+                {
+                    Assert.AreEqual(0, associate.ExtensionData.Count);
+                }
+                var milestones = await loanApis.Milestones.GetMilestonesAsync();
+                foreach (var milestone in milestones)
+                {
+                    Assert.AreEqual(0, milestone.ExtensionData.Count);
+                    Assert.AreEqual(0, milestone.LoanAssociate.ExtensionData.Count);
+                    var retrievedMilestone = await loanApis.Milestones.GetMilestoneAsync(milestone.Id);
+                    Assert.AreEqual(milestone.ToString(), retrievedMilestone.ToString());
+                }
+                var milestoneFreeRoles = await loanApis.MilestoneFreeRoles.GetMilestoneFreeRolesAsync();
+                foreach (var milestoneFreeRole in milestoneFreeRoles)
+                {
+                    Assert.AreEqual(0, milestoneFreeRole.ExtensionData.Count);
+                    Assert.AreEqual(0, milestoneFreeRole.LoanAssociate.ExtensionData.Count);
+                    var retrievedMilestoneFreeRole = await loanApis.MilestoneFreeRoles.GetMilestoneFreeRoleAsync(milestoneFreeRole.Id);
+                    Assert.AreEqual(milestoneFreeRole.ToString(), retrievedMilestoneFreeRole.ToString());
+                }
             }
-            var milestones = await loanApis.Milestones.GetMilestonesAsync();
-            foreach (var milestone in milestones)
+            finally
             {
-                Assert.AreEqual(0, milestone.ExtensionData.Count);
-                Assert.AreEqual(0, milestone.LoanAssociate.ExtensionData.Count);
-                var retrievedMilestone = await loanApis.Milestones.GetMilestoneAsync(milestone.Id);
-                Assert.AreEqual(milestone.ToString(), retrievedMilestone.ToString());
+                try
+                {
+                    await Task.Delay(5000);
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
-            var milestoneFreeRoles = await loanApis.MilestoneFreeRoles.GetMilestoneFreeRolesAsync();
-            foreach (var milestoneFreeRole in milestoneFreeRoles)
-            {
-                Assert.AreEqual(0, milestoneFreeRole.ExtensionData.Count);
-                Assert.AreEqual(0, milestoneFreeRole.LoanAssociate.ExtensionData.Count);
-                var retrievedMilestoneFreeRole = await loanApis.MilestoneFreeRoles.GetMilestoneFreeRoleAsync(milestoneFreeRole.Id);
-                Assert.AreEqual(milestoneFreeRole.ToString(), retrievedMilestoneFreeRole.ToString());
-            }
-
-            await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
         }
 
         [TestMethod]
@@ -87,12 +98,17 @@ namespace EncompassRest.Tests
                     milestones = await milestonesApi.GetMilestonesAsync();
                     nextMilestone = milestones.First(ms => ms.Id == nextMilestone.Id);
                     Assert.IsNull(nextMilestone.LoanAssociate.Id);
-
-                    await Task.Delay(5000);
                 }
                 finally
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    try
+                    {
+                        await Task.Delay(5000);
+                        await client.Loans.DeleteLoanAsync(loanId);
+                    }
+                    catch
+                    {
+                    }
                 }
             }
         }
@@ -119,7 +135,13 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
     }

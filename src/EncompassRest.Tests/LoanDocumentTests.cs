@@ -83,8 +83,14 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                await Task.Delay(5000);
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    await Task.Delay(5000);
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
     }
