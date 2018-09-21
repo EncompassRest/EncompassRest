@@ -24,41 +24,61 @@ namespace EncompassRest
 
         internal virtual void OnPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
+        internal void ClearPropertyChangedEvent() => PropertyChanged = null;
+
         internal void SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
+            var equals = EqualityComparer<T>.Default.Equals(field, value);
             field = value;
-            OnPropertyChanged(propertyName);
+            if (!equals)
+            {
+                OnPropertyChanged(propertyName);
+            }
         }
 
         internal void SetField<T>(ref NeverSerializeValue<T> field, T value, [CallerMemberName] string propertyName = null)
         {
+            var equals = EqualityComparer<T>.Default.Equals(field, value);
             field = value;
-            OnPropertyChanged(propertyName);
+            if (!equals)
+            {
+                OnPropertyChanged(propertyName);
+            }
         }
 
         internal void SetField<T>(ref DirtyValue<T> field, T value, [CallerMemberName] string propertyName = null)
         {
+            var equals = EqualityComparer<T>.Default.Equals(field, value);
             field = value;
-            OnPropertyChanged(propertyName);
+            if (!equals)
+            {
+                OnPropertyChanged(propertyName);
+            }
         }
 
         internal void SetField<T>(ref DirtyList<T> field, IList<T> value, [CallerMemberName] string propertyName = null)
         {
-            field = value != null ? new DirtyList<T>(value) : null;
-            OnPropertyChanged(propertyName);
+            if (!ReferenceEquals(field, value))
+            {
+                field = value != null ? new DirtyList<T>(value) : null;
+                OnPropertyChanged(propertyName);
+            }
         }
 
         internal void SetField(ref DirtyDictionary<string, string> field, IDictionary<string, string> value, [CallerMemberName] string propertyName = null)
         {
-            field = value != null ? new DirtyDictionary<string, string>(value, StringComparer.OrdinalIgnoreCase) : null;
-            OnPropertyChanged(propertyName);
+            if (!ReferenceEquals(field, value))
+            {
+                field = value != null ? new DirtyDictionary<string, string>(value, StringComparer.OrdinalIgnoreCase) : null;
+                OnPropertyChanged(propertyName);
+            }
         }
 
         internal T GetField<T>(ref T field) where T : DirtyExtensibleObject, new() => field ?? (field = new T());
 
         internal IList<T> GetField<T>(ref DirtyList<T> field) => field ?? (field = new DirtyList<T>());
 
-        internal IList<T> GetField<T>(ref IList<T> field) => field ?? (field = new List<T>());
+        internal IList<T> GetField<T>(ref List<T> field) => field ?? (field = new List<T>());
 
         internal IDictionary<string, string> GetField(ref DirtyDictionary<string, string> field) => field ?? (field = new DirtyDictionary<string, string>(StringComparer.OrdinalIgnoreCase));
 

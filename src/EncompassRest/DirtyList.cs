@@ -15,7 +15,7 @@ namespace EncompassRest
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [JsonConverter(typeof(DirtyListConverter<>))]
-    internal sealed class DirtyList<T> : IList<T>, IList, IDirty
+    internal sealed class DirtyList<T> : IList<T>, IReadOnlyList<T>, IList, IDirty, IGetById
     {
         private static readonly bool s_tIsIIdentifiable = TypeData<T>.TypeInfo.IsSubclassOf(TypeData<DirtyExtensibleObject>.Type);
         private static string s_idPropertyName = s_tIsIIdentifiable ? DirtyExtensibleObject.GetIdPropertyName(TypeData<T>.TypeInfo) : string.Empty;
@@ -106,6 +106,8 @@ namespace EncompassRest
         }
 
         internal T GetById(string id) => s_tIsIIdentifiable && _dictionary.TryGetValue(id, out var value) ? value : default;
+
+        DirtyExtensibleObject IGetById.GetById(string id) => (DirtyExtensibleObject)(object)GetById(id);
 
         public void Add(T item) => Insert(Count, item);
 

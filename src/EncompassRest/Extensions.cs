@@ -27,5 +27,14 @@ namespace EncompassRest
             }
             return list.FirstOrDefault(v => string.Equals(((IIdentifiable)v)?.Id, id, StringComparison.OrdinalIgnoreCase));
         }
+
+        internal static DirtyExtensibleObject GetById(this IEnumerable<DirtyExtensibleObject> list, string id)
+        {
+            if (list is IGetById dirtyList)
+            {
+                return dirtyList.GetById(id);
+            }
+            return list.FirstOrDefault(v => string.Equals(((IIdentifiable)v)?.Id, id, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

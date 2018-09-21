@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -1567,6 +1568,179 @@ namespace EncompassRest.Tests
                 customField.FieldName = oldFieldId;
                 Assert.IsNull(customFields.GetById(newFieldId));
                 Assert.IsNull(customFields.GetById(oldFieldId));
+            }
+        }
+
+        [TestMethod]
+        public async Task Loan_Populate()
+        {
+            var client = await GetTestClientAsync();
+            var borrower = new Borrower
+            {
+                FirstName = "Bob",
+                LastName = "Smith"
+            };
+            var priorResidence = new Residence
+            {
+                ResidencyType = ResidencyType.Prior,
+                AddressStreetLine1 = "20153 Fifth Street",
+                AddressCity = "Saint Charles",
+                AddressState = State.MO,
+                AddressPostalCode = "63303"
+            };
+            var currentResidence = new Residence
+            {
+                ResidencyType = ResidencyType.Current,
+                AddressStreetLine1 = "123 Main Street",
+                AddressCity = "Beverly Hills",
+                AddressState = State.CA,
+                AddressPostalCode = "90210"
+            };
+            var application = new Application
+            {
+                Borrower = borrower,
+                Residences = new[] { currentResidence, priorResidence }
+            };
+            var residences = application.Residences;
+            var loan = new Loan(client)
+            {
+                Applications = new[] { application }
+            };
+            var applications = loan.Applications;
+
+            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+            try
+            {
+                Assert.AreSame(applications, loan.Applications);
+                Assert.AreEqual(1, applications.Count);
+                Assert.AreSame(application, applications[0]);
+                Assert.AreSame(borrower, application.Borrower);
+                Assert.AreSame(residences, application.Residences);
+                Assert.AreEqual(2, residences.Count);
+                Assert.AreSame(currentResidence, residences[0]);
+                Assert.AreEqual(ResidencyType.Current.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name), currentResidence.ResidencyType.Value);
+                Assert.AreSame(priorResidence, residences[1]);
+                Assert.AreEqual(ResidencyType.Prior.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name), priorResidence.ResidencyType.Value);
+            }
+            finally
+            {
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        [TestMethod]
+        public void Loan_PropertyChanged()
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            var loan = new Loan();
+#pragma warning restore CS0618 // Type or member is obsolete
+
+            string propertyName = null;
+            loan.PropertyChanged += PropertyChanged;
+
+            var today = DateTime.Today;
+            loan.AdverseActionDate = today;
+            Assert.AreEqual(propertyName, nameof(loan.AdverseActionDate));
+            propertyName = null;
+            
+            loan.AdverseActionDate = today;
+            Assert.IsNull(propertyName);
+
+            loan.AdverseActionDate = today.AddDays(1);
+            Assert.AreEqual(propertyName, nameof(loan.AdverseActionDate));
+            propertyName = null;
+
+            loan.AgencyCaseIdentifier = null; // Already null
+            Assert.IsNull(propertyName);
+
+            loan.AgencyCaseIdentifier = "123";
+            Assert.AreEqual(propertyName, nameof(loan.AgencyCaseIdentifier));
+            propertyName = null;
+
+            loan.AgencyCaseIdentifier = "123";
+            Assert.IsNull(propertyName);
+
+            loan.AgencyCaseIdentifier = null;
+            Assert.AreEqual(propertyName, nameof(loan.AgencyCaseIdentifier));
+            propertyName = null;
+
+            loan.AlterationsImprovementsOrRepairsAmount = 5500M;
+            Assert.AreEqual(propertyName, nameof(loan.AlterationsImprovementsOrRepairsAmount));
+            propertyName = null;
+
+            loan.AlterationsImprovementsOrRepairsAmount = 5500M;
+            Assert.IsNull(propertyName);
+
+            loan.AlterationsImprovementsOrRepairsAmount = 10000M;
+            Assert.AreEqual(propertyName, nameof(loan.AlterationsImprovementsOrRepairsAmount));
+            propertyName = null;
+
+            loan.ApplicationTakenMethodType = ApplicationTakenMethodType.FaceToFace;
+            Assert.AreEqual(propertyName, nameof(loan.ApplicationTakenMethodType));
+            propertyName = null;
+
+            loan.ApplicationTakenMethodType = ApplicationTakenMethodType.FaceToFace;
+            Assert.IsNull(propertyName);
+
+            loan.ApplicationTakenMethodType = ApplicationTakenMethodType.Internet;
+            Assert.AreEqual(propertyName, nameof(loan.ApplicationTakenMethodType));
+            propertyName = null;
+
+            loan.BorrowerCoBorrowerMarriedIndicator = true;
+            Assert.AreEqual(propertyName, nameof(loan.BorrowerCoBorrowerMarriedIndicator));
+            propertyName = null;
+
+            loan.BorrowerCoBorrowerMarriedIndicator = true;
+            Assert.IsNull(propertyName);
+
+            loan.BorrowerCoBorrowerMarriedIndicator = false;
+            Assert.AreEqual(propertyName, nameof(loan.BorrowerCoBorrowerMarriedIndicator));
+            propertyName = null;
+
+            loan.LoanAmortizationTermMonths = 360;
+            Assert.AreEqual(propertyName, nameof(loan.LoanAmortizationTermMonths));
+            propertyName = null;
+
+            loan.LoanAmortizationTermMonths = 360;
+            Assert.IsNull(propertyName);
+
+            loan.LoanAmortizationTermMonths = 180;
+            Assert.AreEqual(propertyName, nameof(loan.LoanAmortizationTermMonths));
+            propertyName = null;
+
+            loan.AdditionalRequests = new AdditionalRequests();
+            Assert.AreEqual(propertyName, nameof(loan.AdditionalRequests));
+            propertyName = null;
+
+            loan.AdditionalRequests = loan.AdditionalRequests;
+            Assert.IsNull(propertyName);
+
+            loan.AdditionalRequests = null;
+            Assert.AreEqual(propertyName, nameof(loan.AdditionalRequests));
+            propertyName = null;
+
+            loan.Applications = new[] { new Application() };
+            Assert.AreEqual(propertyName, nameof(loan.Applications));
+            propertyName = null;
+
+            loan.Applications = loan.Applications;
+            Assert.IsNull(propertyName);
+
+            loan.Applications = null;
+            Assert.AreEqual(propertyName, nameof(loan.Applications));
+            propertyName = null;
+
+            loan.PropertyChanged -= PropertyChanged;
+
+            void PropertyChanged(object sender, PropertyChangedEventArgs e)
+            {
+                propertyName = e.PropertyName;
             }
         }
     }

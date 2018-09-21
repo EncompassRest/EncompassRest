@@ -1,11 +1,12 @@
 ﻿using System;
 using Newtonsoft.Json;
 using EncompassRest.Utilities;
+using System.Collections.Generic;
 
 namespace EncompassRest
 {
     [JsonConverter(typeof(NAConverter<>))]
-    public struct NA<T>
+    public struct NA<T> : IEquatable<NA<T>>
     {
         public static explicit operator T(NA<T> value) => value.Value;
 
@@ -60,6 +61,10 @@ namespace EncompassRest
         public override int GetHashCode() => _isNotNull ? (IsNA ? "NA".GetHashCode() : _value.GetHashCode()) : 0;
 
         public override string ToString() => _isNotNull ? (IsNA ? "NA" : _value.ToString()) : null;
+
+        public override bool Equals(object obj) => obj != null && obj is NA<T> na && Equals(na);
+
+        public bool Equals(NA<T> other) => IsNull ? other.IsNull : (IsNA ? other.IsNA : (other.HasValue && EqualityComparer<T>.Default.Equals(other._value, _value)));
     }
     
     internal sealed class NAConverter<T> : JsonConverter, IStringCreator

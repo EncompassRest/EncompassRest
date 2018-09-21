@@ -12,7 +12,7 @@ namespace EncompassRest
     /// </summary>
     /// <typeparam name="TEnum"></typeparam>
     [JsonConverter(typeof(StringEnumValueConverter<>))]
-    public struct StringEnumValue<TEnum>
+    public struct StringEnumValue<TEnum> : IEquatable<StringEnumValue<TEnum>>
         where TEnum : struct, Enum
     {
         public static implicit operator StringEnumValue<TEnum>(string value) => new StringEnumValue<TEnum>(value);
@@ -41,7 +41,9 @@ namespace EncompassRest
 
         public override int GetHashCode() => Value?.GetHashCode() ?? 0;
 
-        public override bool Equals(object obj) => obj != null && obj is StringEnumValue<TEnum> sev && sev.Value == Value;
+        public override bool Equals(object obj) => obj != null && obj is StringEnumValue<TEnum> sev && Equals(sev);
+
+        public bool Equals(StringEnumValue<TEnum> other) => other.Value == Value;
     }
 
     internal sealed class StringEnumValueConverter<TEnum> : JsonConverter, IStringCreator
