@@ -11,11 +11,13 @@ namespace EncompassRest.Loans
     public sealed partial class ElliUCDDetail : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyDictionary<string, string> _cDFields;
+        private DirtyDictionary<string, string> _lEFields;
+
         /// <summary>
         /// ElliUCDDetail CDFields
         /// </summary>
         public IDictionary<string, string> CDFields { get => GetField(ref _cDFields); set => SetField(ref _cDFields, value); }
-        private DirtyDictionary<string, string> _lEFields;
+
         /// <summary>
         /// ElliUCDDetail LEFields
         /// </summary>

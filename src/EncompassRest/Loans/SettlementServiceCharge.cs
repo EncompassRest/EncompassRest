@@ -12,16 +12,19 @@ namespace EncompassRest.Loans
     public sealed partial class SettlementServiceCharge : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _amount;
+        private DirtyValue<string> _description;
+        private DirtyValue<string> _id;
+
         /// <summary>
         /// SettlementServiceCharge Amount
         /// </summary>
         public string Amount { get => _amount; set => SetField(ref _amount, value); }
-        private DirtyValue<string> _description;
+
         /// <summary>
         /// SettlementServiceCharge Description
         /// </summary>
         public string Description { get => _description; set => SetField(ref _description, value); }
-        private DirtyValue<string> _id;
+
         /// <summary>
         /// SettlementServiceCharge Id
         /// </summary>

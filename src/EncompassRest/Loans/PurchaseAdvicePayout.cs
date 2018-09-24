@@ -12,29 +12,34 @@ namespace EncompassRest.Loans
     public sealed partial class PurchaseAdvicePayout : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _amount;
+        private DirtyValue<string> _description;
+        private DirtyValue<decimal?> _diffAmount;
+        private DirtyValue<decimal?> _expectedAmount;
+        private DirtyValue<string> _id;
+
         /// <summary>
         /// PurchaseAdvicePayout Amount
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
-        private DirtyValue<string> _description;
+
         /// <summary>
         /// PurchaseAdvicePayout Description
         /// </summary>
         public string Description { get => _description; set => SetField(ref _description, value); }
-        private DirtyValue<decimal?> _diffAmount;
+
         /// <summary>
         /// PurchaseAdvicePayout DiffAmount
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? DiffAmount { get => _diffAmount; set => SetField(ref _diffAmount, value); }
-        private DirtyValue<decimal?> _expectedAmount;
+
         /// <summary>
         /// PurchaseAdvicePayout ExpectedAmount
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExpectedAmount { get => _expectedAmount; set => SetField(ref _expectedAmount, value); }
-        private DirtyValue<string> _id;
+
         /// <summary>
         /// PurchaseAdvicePayout Id
         /// </summary>

@@ -12,22 +12,26 @@ namespace EncompassRest.Loans
     public sealed partial class PrepaymentPenalty : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>> _fullPrepaymentPenaltyOptionType;
+        private DirtyValue<string> _id;
+        private DirtyValue<decimal?> _prepaymentPenaltyPercent;
+        private DirtyValue<int?> _termMonthsCount;
+
         /// <summary>
         /// PrepaymentPenalty FullPrepaymentPenaltyOptionType
         /// </summary>
         public StringEnumValue<FullPrepaymentPenaltyOptionType> FullPrepaymentPenaltyOptionType { get => _fullPrepaymentPenaltyOptionType; set => SetField(ref _fullPrepaymentPenaltyOptionType, value); }
-        private DirtyValue<string> _id;
+
         /// <summary>
         /// PrepaymentPenalty Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
-        private DirtyValue<decimal?> _prepaymentPenaltyPercent;
+
         /// <summary>
         /// PrepaymentPenalty PrepaymentPenaltyPercent
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? PrepaymentPenaltyPercent { get => _prepaymentPenaltyPercent; set => SetField(ref _prepaymentPenaltyPercent, value); }
-        private DirtyValue<int?> _termMonthsCount;
+
         /// <summary>
         /// PrepaymentPenalty TermMonthsCount
         /// </summary>

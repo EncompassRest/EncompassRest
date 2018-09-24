@@ -12,40 +12,47 @@ namespace EncompassRest.Loans
     public sealed partial class RegulationZPayment : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _balance;
+        private DirtyValue<string> _id;
+        private DirtyValue<decimal?> _interestRatePercent;
+        private DirtyValue<decimal?> _monthlyPayment;
+        private DirtyValue<int?> _numberOfPayments;
+        private DirtyValue<DateTime?> _paymentDate;
+        private DirtyValue<int?> _regulationZPaymentIndex;
+
         /// <summary>
         /// RegulationZPayment Balance
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? Balance { get => _balance; set => SetField(ref _balance, value); }
-        private DirtyValue<string> _id;
+
         /// <summary>
         /// RegulationZPayment Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
-        private DirtyValue<decimal?> _interestRatePercent;
+
         /// <summary>
         /// RegulationZPayment InterestRatePercent
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? InterestRatePercent { get => _interestRatePercent; set => SetField(ref _interestRatePercent, value); }
-        private DirtyValue<decimal?> _monthlyPayment;
+
         /// <summary>
         /// RegulationZPayment MonthlyPayment
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }
-        private DirtyValue<int?> _numberOfPayments;
+
         /// <summary>
         /// RegulationZPayment NumberOfPayments
         /// </summary>
         public int? NumberOfPayments { get => _numberOfPayments; set => SetField(ref _numberOfPayments, value); }
-        private DirtyValue<DateTime?> _paymentDate;
+
         /// <summary>
         /// RegulationZPayment PaymentDate
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public DateTime? PaymentDate { get => _paymentDate; set => SetField(ref _paymentDate, value); }
-        private DirtyValue<int?> _regulationZPaymentIndex;
+
         /// <summary>
         /// RegulationZPayment RegulationZPaymentIndex
         /// </summary>

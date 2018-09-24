@@ -11,16 +11,19 @@ namespace EncompassRest.Loans
     public sealed partial class FieldLockData : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _lockRemoved;
+        internal DirtyValue<string> _modelPath;
+        private DirtyValue<string> _value;
+
         /// <summary>
         /// FieldLockData LockRemoved
         /// </summary>
         public bool? LockRemoved { get => _lockRemoved; set => SetField(ref _lockRemoved, value); }
-        internal DirtyValue<string> _modelPath;
+
         /// <summary>
         /// FieldLockData ModelPath
         /// </summary>
         public string ModelPath { get => _modelPath; set => SetField(ref _modelPath, value); }
-        private DirtyValue<string> _value;
+
         /// <summary>
         /// FieldLockData Value
         /// </summary>

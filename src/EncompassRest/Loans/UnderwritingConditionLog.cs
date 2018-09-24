@@ -11,294 +11,350 @@ namespace EncompassRest.Loans
     public sealed partial class UnderwritingConditionLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _addedBy;
+        private DirtyList<LogAlert> _alerts;
+        private DirtyValue<string> _alertsXml;
+        private DirtyValue<bool?> _allowToClearIndicator;
+        private DirtyValue<string> _category;
+        private DirtyValue<bool?> _cleared;
+        private DirtyValue<string> _clearedBy;
+        private DirtyList<LogComment> _commentList;
+        private DirtyValue<string> _commentListXml;
+        private DirtyValue<string> _comments;
+        private DirtyValue<DateTime?> _dateAddedUtc;
+        private DirtyValue<DateTime?> _dateClearedUtc;
+        private DirtyValue<DateTime?> _dateExpected;
+        private DirtyValue<DateTime?> _dateExpiredUtc;
+        private DirtyValue<DateTime?> _dateFulfilledUtc;
+        private DirtyValue<DateTime?> _dateReceived;
+        private DirtyValue<DateTime?> _dateReceivedUtc;
+        private DirtyValue<DateTime?> _dateRejectedUtc;
+        private DirtyValue<DateTime?> _dateRequestedUtc;
+        private DirtyValue<DateTime?> _dateRerequestedUtc;
+        private DirtyValue<DateTime?> _dateReviewedUtc;
+        private DirtyValue<DateTime?> _dateUtc;
+        private DirtyValue<DateTime?> _dateWaivedUtc;
+        private DirtyValue<string> _description;
+        private DirtyValue<string> _details;
+        private DirtyValue<bool?> _expected;
+        private DirtyValue<bool?> _fileAttachmentsMigrated;
+        private DirtyValue<int?> _forRoleId;
+        private DirtyValue<bool?> _fulfilled;
+        private DirtyValue<string> _fulfilledBy;
+        private DirtyValue<string> _guid;
+        private DirtyValue<string> _id;
+        private DirtyValue<bool?> _isExternalIndicator;
+        private DirtyValue<bool?> _isInternalIndicator;
+        private DirtyValue<bool?> _isPastDue;
+        private DirtyValue<bool?> _isSystemSpecificIndicator;
+        private DirtyValue<int?> _logRecordIndex;
+        private DirtyValue<string> _pairId;
+        private DirtyValue<string> _priorTo;
+        private DirtyValue<bool?> _received;
+        private DirtyValue<string> _receivedBy;
+        private DirtyValue<bool?> _rejected;
+        private DirtyValue<string> _rejectedBy;
+        private DirtyValue<bool?> _requested;
+        private DirtyValue<string> _requestedBy;
+        private DirtyValue<bool?> _rerequested;
+        private DirtyValue<string> _rerequestedBy;
+        private DirtyValue<bool?> _reviewed;
+        private DirtyValue<string> _reviewedBy;
+        private DirtyValue<string> _source;
+        private DirtyValue<string> _status;
+        private DirtyValue<string> _statusDescription;
+        private DirtyValue<string> _systemId;
+        private DirtyValue<string> _title;
+        private DirtyValue<bool?> _waived;
+        private DirtyValue<string> _waivedBy;
+
         /// <summary>
         /// UnderwritingConditionLog AddedBy
         /// </summary>
         public string AddedBy { get => _addedBy; set => SetField(ref _addedBy, value); }
-        private DirtyList<LogAlert> _alerts;
+
         /// <summary>
         /// UnderwritingConditionLog Alerts
         /// </summary>
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
-        private DirtyValue<string> _alertsXml;
+
         /// <summary>
         /// UnderwritingConditionLog AlertsXml
         /// </summary>
         public string AlertsXml { get => _alertsXml; set => SetField(ref _alertsXml, value); }
-        private DirtyValue<bool?> _allowToClearIndicator;
+
         /// <summary>
         /// UnderwritingConditionLog AllowToClearIndicator
         /// </summary>
         public bool? AllowToClearIndicator { get => _allowToClearIndicator; set => SetField(ref _allowToClearIndicator, value); }
-        private DirtyValue<string> _category;
+
         /// <summary>
         /// UnderwritingConditionLog Category
         /// </summary>
         public string Category { get => _category; set => SetField(ref _category, value); }
-        private DirtyValue<bool?> _cleared;
+
         /// <summary>
         /// UnderwritingConditionLog Cleared
         /// </summary>
         public bool? Cleared { get => _cleared; set => SetField(ref _cleared, value); }
-        private DirtyValue<string> _clearedBy;
+
         /// <summary>
         /// UnderwritingConditionLog ClearedBy
         /// </summary>
         public string ClearedBy { get => _clearedBy; set => SetField(ref _clearedBy, value); }
-        private DirtyList<LogComment> _commentList;
+
         /// <summary>
         /// UnderwritingConditionLog CommentList
         /// </summary>
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
-        private DirtyValue<string> _commentListXml;
+
         /// <summary>
         /// UnderwritingConditionLog CommentListXml
         /// </summary>
         public string CommentListXml { get => _commentListXml; set => SetField(ref _commentListXml, value); }
-        private DirtyValue<string> _comments;
+
         /// <summary>
         /// UnderwritingConditionLog Comments
         /// </summary>
         public string Comments { get => _comments; set => SetField(ref _comments, value); }
-        private DirtyValue<DateTime?> _dateAddedUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateAddedUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateAddedUtc { get => _dateAddedUtc; set => SetField(ref _dateAddedUtc, value); }
-        private DirtyValue<DateTime?> _dateClearedUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateClearedUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateClearedUtc { get => _dateClearedUtc; set => SetField(ref _dateClearedUtc, value); }
-        private DirtyValue<DateTime?> _dateExpected;
+
         /// <summary>
         /// UnderwritingConditionLog DateExpected
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpected { get => _dateExpected; set => SetField(ref _dateExpected, value); }
-        private DirtyValue<DateTime?> _dateExpiredUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateExpiredUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpiredUtc { get => _dateExpiredUtc; set => SetField(ref _dateExpiredUtc, value); }
-        private DirtyValue<DateTime?> _dateFulfilledUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateFulfilledUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateFulfilledUtc { get => _dateFulfilledUtc; set => SetField(ref _dateFulfilledUtc, value); }
-        private DirtyValue<DateTime?> _dateReceived;
+
         /// <summary>
         /// UnderwritingConditionLog DateReceived
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReceived { get => _dateReceived; set => SetField(ref _dateReceived, value); }
-        private DirtyValue<DateTime?> _dateReceivedUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateReceivedUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReceivedUtc { get => _dateReceivedUtc; set => SetField(ref _dateReceivedUtc, value); }
-        private DirtyValue<DateTime?> _dateRejectedUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateRejectedUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRejectedUtc { get => _dateRejectedUtc; set => SetField(ref _dateRejectedUtc, value); }
-        private DirtyValue<DateTime?> _dateRequestedUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateRequestedUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRequestedUtc { get => _dateRequestedUtc; set => SetField(ref _dateRequestedUtc, value); }
-        private DirtyValue<DateTime?> _dateRerequestedUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateRerequestedUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRerequestedUtc { get => _dateRerequestedUtc; set => SetField(ref _dateRerequestedUtc, value); }
-        private DirtyValue<DateTime?> _dateReviewedUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateReviewedUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReviewedUtc { get => _dateReviewedUtc; set => SetField(ref _dateReviewedUtc, value); }
-        private DirtyValue<DateTime?> _dateUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
-        private DirtyValue<DateTime?> _dateWaivedUtc;
+
         /// <summary>
         /// UnderwritingConditionLog DateWaivedUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateWaivedUtc { get => _dateWaivedUtc; set => SetField(ref _dateWaivedUtc, value); }
-        private DirtyValue<string> _description;
+
         /// <summary>
         /// UnderwritingConditionLog Description
         /// </summary>
         public string Description { get => _description; set => SetField(ref _description, value); }
-        private DirtyValue<string> _details;
+
         /// <summary>
         /// UnderwritingConditionLog Details
         /// </summary>
         public string Details { get => _details; set => SetField(ref _details, value); }
-        private DirtyValue<bool?> _expected;
+
         /// <summary>
         /// UnderwritingConditionLog Expected
         /// </summary>
         public bool? Expected { get => _expected; set => SetField(ref _expected, value); }
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
+
         /// <summary>
         /// UnderwritingConditionLog FileAttachmentsMigrated
         /// </summary>
         public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
-        private DirtyValue<int?> _forRoleId;
+
         /// <summary>
         /// UnderwritingConditionLog ForRoleId
         /// </summary>
         public int? ForRoleId { get => _forRoleId; set => SetField(ref _forRoleId, value); }
-        private DirtyValue<bool?> _fulfilled;
+
         /// <summary>
         /// UnderwritingConditionLog Fulfilled
         /// </summary>
         public bool? Fulfilled { get => _fulfilled; set => SetField(ref _fulfilled, value); }
-        private DirtyValue<string> _fulfilledBy;
+
         /// <summary>
         /// UnderwritingConditionLog FulfilledBy
         /// </summary>
         public string FulfilledBy { get => _fulfilledBy; set => SetField(ref _fulfilledBy, value); }
-        private DirtyValue<string> _guid;
+
         /// <summary>
         /// UnderwritingConditionLog Guid
         /// </summary>
         public string Guid { get => _guid; set => SetField(ref _guid, value); }
-        private DirtyValue<string> _id;
+
         /// <summary>
         /// UnderwritingConditionLog Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
-        private DirtyValue<bool?> _isExternalIndicator;
+
         /// <summary>
         /// UnderwritingConditionLog IsExternalIndicator
         /// </summary>
         public bool? IsExternalIndicator { get => _isExternalIndicator; set => SetField(ref _isExternalIndicator, value); }
-        private DirtyValue<bool?> _isInternalIndicator;
+
         /// <summary>
         /// UnderwritingConditionLog IsInternalIndicator
         /// </summary>
         public bool? IsInternalIndicator { get => _isInternalIndicator; set => SetField(ref _isInternalIndicator, value); }
-        private DirtyValue<bool?> _isPastDue;
+
         /// <summary>
         /// UnderwritingConditionLog IsPastDue
         /// </summary>
         public bool? IsPastDue { get => _isPastDue; set => SetField(ref _isPastDue, value); }
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
+
         /// <summary>
         /// UnderwritingConditionLog IsSystemSpecificIndicator
         /// </summary>
         public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
-        private DirtyValue<int?> _logRecordIndex;
+
         /// <summary>
         /// UnderwritingConditionLog LogRecordIndex
         /// </summary>
         public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
-        private DirtyValue<string> _pairId;
+
         /// <summary>
         /// UnderwritingConditionLog PairId
         /// </summary>
         public string PairId { get => _pairId; set => SetField(ref _pairId, value); }
-        private DirtyValue<string> _priorTo;
+
         /// <summary>
         /// UnderwritingConditionLog PriorTo
         /// </summary>
         public string PriorTo { get => _priorTo; set => SetField(ref _priorTo, value); }
-        private DirtyValue<bool?> _received;
+
         /// <summary>
         /// UnderwritingConditionLog Received
         /// </summary>
         public bool? Received { get => _received; set => SetField(ref _received, value); }
-        private DirtyValue<string> _receivedBy;
+
         /// <summary>
         /// UnderwritingConditionLog ReceivedBy
         /// </summary>
         public string ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
-        private DirtyValue<bool?> _rejected;
+
         /// <summary>
         /// UnderwritingConditionLog Rejected
         /// </summary>
         public bool? Rejected { get => _rejected; set => SetField(ref _rejected, value); }
-        private DirtyValue<string> _rejectedBy;
+
         /// <summary>
         /// UnderwritingConditionLog RejectedBy
         /// </summary>
         public string RejectedBy { get => _rejectedBy; set => SetField(ref _rejectedBy, value); }
-        private DirtyValue<bool?> _requested;
+
         /// <summary>
         /// UnderwritingConditionLog Requested
         /// </summary>
         public bool? Requested { get => _requested; set => SetField(ref _requested, value); }
-        private DirtyValue<string> _requestedBy;
+
         /// <summary>
         /// UnderwritingConditionLog RequestedBy
         /// </summary>
         public string RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
-        private DirtyValue<bool?> _rerequested;
+
         /// <summary>
         /// UnderwritingConditionLog Rerequested
         /// </summary>
         public bool? Rerequested { get => _rerequested; set => SetField(ref _rerequested, value); }
-        private DirtyValue<string> _rerequestedBy;
+
         /// <summary>
         /// UnderwritingConditionLog RerequestedBy
         /// </summary>
         public string RerequestedBy { get => _rerequestedBy; set => SetField(ref _rerequestedBy, value); }
-        private DirtyValue<bool?> _reviewed;
+
         /// <summary>
         /// UnderwritingConditionLog Reviewed
         /// </summary>
         public bool? Reviewed { get => _reviewed; set => SetField(ref _reviewed, value); }
-        private DirtyValue<string> _reviewedBy;
+
         /// <summary>
         /// UnderwritingConditionLog ReviewedBy
         /// </summary>
         public string ReviewedBy { get => _reviewedBy; set => SetField(ref _reviewedBy, value); }
-        private DirtyValue<string> _source;
+
         /// <summary>
         /// UnderwritingConditionLog Source
         /// </summary>
         public string Source { get => _source; set => SetField(ref _source, value); }
-        private DirtyValue<string> _status;
+
         /// <summary>
         /// UnderwritingConditionLog Status
         /// </summary>
         public string Status { get => _status; set => SetField(ref _status, value); }
-        private DirtyValue<string> _statusDescription;
+
         /// <summary>
         /// UnderwritingConditionLog StatusDescription
         /// </summary>
         public string StatusDescription { get => _statusDescription; set => SetField(ref _statusDescription, value); }
-        private DirtyValue<string> _systemId;
+
         /// <summary>
         /// UnderwritingConditionLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
-        private DirtyValue<string> _title;
+
         /// <summary>
         /// UnderwritingConditionLog Title
         /// </summary>
         public string Title { get => _title; set => SetField(ref _title, value); }
-        private DirtyValue<bool?> _waived;
+
         /// <summary>
         /// UnderwritingConditionLog Waived
         /// </summary>
         public bool? Waived { get => _waived; set => SetField(ref _waived, value); }
-        private DirtyValue<string> _waivedBy;
+
         /// <summary>
         /// UnderwritingConditionLog WaivedBy
         /// </summary>

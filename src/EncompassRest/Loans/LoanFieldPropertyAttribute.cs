@@ -11,10 +11,13 @@ namespace EncompassRest.Loans
         private Dictionary<string, string> _options;
         private List<string> _missingOptions;
         internal LoanFieldFormat? _format;
+        private bool _nonNullable;
 
         public LoanFieldFormat Format { get => _format.Value; set => _format = value; }
 
         public bool ReadOnly { get; set; }
+
+        public bool Nullable { get => !_nonNullable; set => _nonNullable = !value; }
 
         public string Description { get; set; }
 

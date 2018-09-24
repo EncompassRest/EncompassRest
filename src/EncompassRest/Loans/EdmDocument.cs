@@ -11,11 +11,13 @@ namespace EncompassRest.Loans
     public sealed partial class EdmDocument : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
+        private DirtyValue<string> _title;
+
         /// <summary>
         /// EdmDocument Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
-        private DirtyValue<string> _title;
+
         /// <summary>
         /// EdmDocument Title
         /// </summary>

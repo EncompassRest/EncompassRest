@@ -11,1467 +11,1712 @@ namespace EncompassRest.Loans
     public sealed partial class RegulationZ : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _acknowledgedDay;
+        private DirtyValue<string> _acknowledgedMonth;
+        private DirtyValue<string> _acknowledgedYear;
+        private DirtyValue<bool?> _acquisition;
+        private DirtyValue<string> _additionalArmInformation;
+        private DirtyValue<bool?> _allDateAndNumericalDisclosuresIndicator;
+        private DirtyValue<decimal?> _amountFinanced;
+        private DirtyValue<decimal?> _aprPercent;
+        private DirtyValue<string> _aprPercentUI;
+        private DirtyValue<string> _armDisclosureDescription;
+        private DirtyValue<StringEnumValue<AssumptionOnYourProperty>> _assumptionOnYourProperty;
+        private DirtyValue<DateTime?> _borrowerIntendToContinueDate;
+        private DirtyValue<bool?> _borrowerIntendToContinueIndicator;
+        private DirtyValue<string> _borrowerMiTerminationDate;
+        private DirtyValue<string> _calculateBasedOnRemainingBalance;
+        private DirtyValue<bool?> _chargesAddedToPaymentsIndicator;
+        private DirtyValue<bool?> _chargesAtLoanClosingIndicator;
+        private DirtyValue<string> _circumstanceChangeReason;
+        private DirtyValue<DateTime?> _circumstanceChangeReceivedDate;
+        private DirtyValue<DateTime?> _closingDisclosureReceivedDate;
+        private DirtyValue<DateTime?> _closingDisclosureSentDate;
+        private DirtyValue<StringEnumValue<ConstructionFirstIntChangeAdjType>> _constructionFirstIntChangeAdjType;
+        private DirtyValue<string> _constructionLoanDescription;
+        private DirtyValue<StringEnumValue<ConstructionLoanMethod>> _constructionLoanMethod;
+        private DirtyValue<int?> _constructionPeriodMonths;
+        private DirtyValue<decimal?> _constructionRatePercent;
+        private DirtyValue<bool?> _constructionRefinanceIndicator;
+        private DirtyValue<decimal?> _creditDisability;
+        private DirtyValue<bool?> _creditDisabilityIndicator;
+        private DirtyValue<decimal?> _creditLife;
+        private DirtyValue<decimal?> _creditLifeAndCreditDisability;
+        private DirtyValue<bool?> _creditLifeInsuranceIndicator;
+        private DirtyValue<bool?> _customizePaymentScheduleIndicator;
+        private DirtyValue<bool?> _demandFeatureIndicator;
+        private DirtyValue<decimal?> _disclosedAprPercent;
+        private DirtyValue<bool?> _disclosedByBrokerIndicator;
+        private DirtyValue<string> _disclosedComments;
+        private DirtyValue<decimal?> _disclosedDailyInterestCharge;
+        private DirtyValue<decimal?> _disclosedFinanceCharge;
+        private DirtyValue<bool?> _disclosedPrepayment;
+        private DirtyValue<string> _disclosedProduct;
+        private DirtyValue<StringEnumValue<DisclosureMethod>> _disclosureMethod;
+        private DirtyValue<StringEnumValue<DisclosureType>> _disclosureType;
+        private DirtyValue<int?> _discountPeriod;
+        private DirtyValue<decimal?> _discountRatePercent;
+        private DirtyValue<StringEnumValue<DiscountType>> _discountType;
+        private DirtyValue<DateTime?> _dueDate;
+        private DirtyValue<DateTime?> _earliestClosingDate;
+        private DirtyValue<DateTime?> _earliestFeeCollectionDate;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted1;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted2;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted3;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted4;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted5;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted6;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress1;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress2;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress3;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress4;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress5;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress6;
+        private DirtyValue<string> _eSignConsentBorrowerSource1;
+        private DirtyValue<string> _eSignConsentBorrowerSource2;
+        private DirtyValue<string> _eSignConsentBorrowerSource3;
+        private DirtyValue<string> _eSignConsentBorrowerSource4;
+        private DirtyValue<string> _eSignConsentBorrowerSource5;
+        private DirtyValue<string> _eSignConsentBorrowerSource6;
+        private DirtyValue<string> _eSignConsentBorrowerStatus1;
+        private DirtyValue<string> _eSignConsentBorrowerStatus2;
+        private DirtyValue<string> _eSignConsentBorrowerStatus3;
+        private DirtyValue<string> _eSignConsentBorrowerStatus4;
+        private DirtyValue<string> _eSignConsentBorrowerStatus5;
+        private DirtyValue<string> _eSignConsentBorrowerStatus6;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted1;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted2;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted3;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted4;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted5;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted6;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress1;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress2;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress3;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress4;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress5;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress6;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource1;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource2;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource3;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource4;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource5;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource6;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus1;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus2;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus3;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus4;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus5;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus6;
+        private DirtyValue<DateTime?> _eSignConsentDate;
+        private DirtyValue<decimal?> _extraPaymentForEarlyPayOff;
+        private DirtyValue<DateTime?> _feeCollectedDate;
+        private DirtyValue<bool?> _feeLevelDisclosuresIndicator;
+        private DirtyValue<decimal?> _filingFees;
+        private DirtyValue<DateTime?> _finalPaymentDate;
+        private DirtyValue<decimal?> _financeCharge;
+        private DirtyValue<decimal?> _financedAllGuaranteeFeeAmount;
+        private DirtyValue<decimal?> _financedAllGuaranteeFeePercent;
+        private DirtyValue<decimal?> _financedAllTotalLoanAmount;
+        private DirtyValue<decimal?> _financedPortionGuaranteeFeeAmount;
+        private DirtyValue<decimal?> _financedPortionGuaranteeFeePercent;
+        private DirtyValue<decimal?> _financedPortionTotalLoanAmount;
+        private DirtyValue<StringEnumValue<FinancingType>> _financingType;
+        private DirtyValue<DateTime?> _firstAmortizationPaymentDate;
+        private DirtyValue<bool?> _floodInsuranceIndicator;
+        private DirtyValue<DateTime?> _gfeApplicationDate;
+        private DirtyValue<bool?> _gfeChangedCircumstanceIndicator;
+        private DirtyValue<string> _gfeChangedCircumstanceItem;
+        private DirtyValue<string> _gFEChangedCirsumstanceItemCode;
+        private DirtyValue<DateTime?> _gfeDate;
+        private DirtyValue<DateTime?> _gfeExpirationDate;
+        private DirtyValue<string> _gfeExpirationPeriod;
+        private DirtyValue<bool?> _gfeRateLockRedisclosureRequiredIndicator;
+        private DirtyValue<DateTime?> _gfeRedisclosureProvidedDate;
+        private DirtyValue<DateTime?> _gfeRedisclosureReceivedDate;
+        private DirtyValue<DateTime?> _highCostDisclosure;
+        private DirtyValue<DateTime?> _homeCounselingProvidedDate;
+        private DirtyValue<bool?> _hud1ToleranceViolatedIndicator;
+        private DirtyValue<string> _hudToleranceResolutionComments;
+        private DirtyValue<DateTime?> _hudToleranceResolutionDate;
+        private DirtyValue<string> _hudToleranceResolvedBy;
+        private DirtyValue<string> _id;
+        private DirtyValue<bool?> _ifYouPurchaseIndicator;
+        private DirtyValue<StringEnumValue<IfYouPurchaseType>> _ifYouPurchaseType;
+        private DirtyValue<bool?> _includeMiIndicator;
+        private DirtyValue<bool?> _includePmiIndicator;
+        private DirtyValue<bool?> _includeTaxesInsuranceIndicator;
+        private DirtyValue<DateTime?> _initialAVMProvidedDate;
+        private DirtyValue<DateTime?> _initialDisclosureDueDate;
+        private DirtyValue<DateTime?> _initialDisclosureProvidedDate;
+        private DirtyValue<DateTime?> _initialGfeAffiliatedBusinessProvidedDate;
+        private DirtyValue<DateTime?> _initialGFEAppraisalProvidedDate;
+        private DirtyValue<DateTime?> _initialGfeCharmBookletProvidedDate;
+        private DirtyValue<DateTime?> _initialGfeDisclosureProvidedDate;
+        private DirtyValue<DateTime?> _initialGfeDisclosureReceivedDate;
+        private DirtyValue<DateTime?> _initialGfeHelocBrochureProvidedDate;
+        private DirtyValue<DateTime?> _initialGfeHudSpecialBookletProvidedDate;
+        private DirtyValue<DateTime?> _initialSubsequentAppraisalProvidedDate;
+        private DirtyValue<DateTime?> _initialTilDisclosureProvidedDate;
+        private DirtyValue<DateTime?> _initialTilDisclosureReceivedDate;
+        private DirtyValue<string> _insuranceRequiredDescription;
+        private DirtyValue<string> _interestInNameOf;
+        private DirtyValue<bool?> _interestOnly;
+        private DirtyValue<bool?> _interestOnlyIndicator;
+        private DirtyValue<int?> _interestOnlyMonths;
+        private DirtyValue<StringEnumValue<InterestRateType>> _interestRateType;
+        private DirtyValue<decimal?> _interestReserveAmount;
+        private DirtyValue<string> _lastDisclosedBy;
+        private DirtyValue<DateTime?> _lastDisclosedDate;
+        private DirtyValue<DateTime?> _lastDisclosedGfeReceivedDate;
+        private DirtyValue<decimal?> _lateChargeBasis;
+        private DirtyValue<string> _lateChargeComments;
+        private DirtyValue<int?> _lateChargeDays;
+        private DirtyValue<decimal?> _lateChargePercent;
+        private DirtyValue<StringEnumValue<LateChargeType>> _lateChargeType;
+        private DirtyValue<decimal?> _lateFee;
+        private DirtyValue<string> _lEIntentToProceedComment;
+        private DirtyValue<bool?> _lenderPaidMortgageInsuranceIndicator;
+        private DirtyValue<decimal?> _lendersInspectionFee;
+        private DirtyValue<string> _lEReceivedBy;
+        private DirtyValue<StringEnumValue<LEReceivedMethod>> _lEReceivedMethod;
+        private DirtyValue<string> _lEReceivedMethodOther;
+        private DirtyValue<DateTime?> _lESentOnDate;
+        private DirtyValue<decimal?> _marginPlusIndexPercent;
+        private DirtyValue<decimal?> _maximumLateCharge;
+        private DirtyValue<decimal?> _maximumPayment;
+        private DirtyValue<bool?> _meansAnEstimateIndicator;
+        private DirtyValue<decimal?> _miAdjustmentFactorLevel2;
+        private DirtyValue<bool?> _miDecliningRenewalsIndicator;
+        private DirtyValue<string> _midpointCancellation;
+        private DirtyValue<decimal?> _miMonthlyPaymentLevel1;
+        private DirtyValue<decimal?> _miMonthlyPaymentLevel2;
+        private DirtyValue<int?> _miMonthsOfAdjustmentLevel1;
+        private DirtyValue<int?> _miMonthsOfAdjustmentLevel2;
+        private DirtyValue<decimal?> _minimumLateCharge;
+        private DirtyValue<decimal?> _minimumPayment;
+        private DirtyValue<bool?> _mIPFactorLocked;
+        private DirtyValue<decimal?> _mIPrepaidAmount;
+        private DirtyValue<bool?> _miPrepaidIndicator;
+        private DirtyValue<string> _miScheduledTerminationDate;
+        private DirtyValue<bool?> _mmiIndicator;
+        private DirtyValue<decimal?> _monthlyTerm;
+        private DirtyValue<int?> _monthsOfMiPrepaid;
+        private DirtyValue<decimal?> _mortgageInsuranceCancelPercent;
+        private DirtyValue<string> _namePreparedBy;
+        private DirtyValue<string> _newConstructionIndicator;
+        private DirtyValue<int?> _numberOfPayments;
+        private DirtyValue<DateTime?> _occupancyCertDate;
+        private DirtyValue<DateTime?> _originalContractDate;
+        private DirtyValue<decimal?> _outstandingBalance;
+        private DirtyValue<string> _paymentFrequencyType;
+        private DirtyValue<decimal?> _paymentIncreasePercent;
+        private DirtyValue<string> _phonePreparedBy;
+        private DirtyValue<bool?> _pmiIndicator;
+        private DirtyValue<DateTime?> _pmiMidpointCancelationDate;
+        private DirtyValue<DateTime?> _postConsummationDisclosureReceivedDate;
+        private DirtyValue<DateTime?> _postConsummationDisclosureSentDate;
+        private DirtyValue<decimal?> _prepaidFinanceCharge;
+        private DirtyValue<bool?> _propertyInsuranceIndicator;
+        private DirtyValue<DateTime?> _rateLockGfeDueDate;
+        private DirtyValue<decimal?> _ratePercent;
+        private DirtyValue<int?> _recastPaidMonths;
+        private DirtyValue<int?> _recastStopMonths;
+        private DirtyValue<bool?> _refundPaymentIndicator;
+        private DirtyValue<bool?> _refundUnearnedMipIndicator;
+        private DirtyList<RegulationZInterestRatePeriod> _regulationZInterestRatePeriods;
+        private DirtyList<RegulationZPayment> _regulationZPayments;
+        private DirtyValue<string> _regzTableType;
+        private DirtyValue<bool?> _requiredDepositIndicator;
+        private DirtyValue<DateTime?> _revisedClosingDisclosureReceivedDate;
+        private DirtyValue<DateTime?> _revisedClosingDisclosureSentDate;
+        private DirtyValue<DateTime?> _revisedGfeDueDate;
+        private DirtyValue<decimal?> _roundedMarginPlusIndexPercent;
+        private DirtyValue<DateTime?> _safeHarborSentDate;
+        private DirtyValue<decimal?> _samplePayments;
+        private DirtyValue<StringEnumValue<SecurityType>> _securityType;
+        private DirtyValue<DateTime?> _sSPLSentDate;
+        private DirtyValue<DateTime?> _tilDate;
+        private DirtyValue<string> _tilDisclosedComments;
+        private DirtyValue<StringEnumValue<DisclosureMethod>> _tilDisclosureMethod;
+        private DirtyValue<DateTime?> _tilLastDisclosedBorrowerReceivedDate;
+        private DirtyValue<string> _tilLastDisclosedBy;
+        private DirtyValue<DateTime?> _tilLastDisclosedDate;
+        private DirtyValue<DateTime?> _tilRedisclosureProvidedDate;
+        private DirtyValue<DateTime?> _tilRedisclosureReceivedDate;
+        private DirtyValue<decimal?> _totalBrokerFees;
+        private DirtyValue<decimal?> _totalLatePayment;
+        private DirtyValue<decimal?> _totalLenderFees;
+        private DirtyValue<decimal?> _totalOfPayments;
+        private DirtyValue<decimal?> _totalOfPrincipalAndInterest;
+        private DirtyValue<bool?> _useCustomLenderProfile;
+        private DirtyValue<StringEnumValue<DaysInYear>> _useDaysInYears;
+        private DirtyValue<bool?> _usePitiForRatioIndicator;
+        private DirtyValue<bool?> _variableRateFeatureIndicator;
+        private DirtyValue<decimal?> _yearlyTerm;
+        private DirtyValue<string> _yearOfMaximumPayment;
+        private DirtyValue<int?> _years;
+
         /// <summary>
         /// REGZ Acknowledgement Day [REGZ_DAY]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Acknowledgement Day")]
         public string AcknowledgedDay { get => _acknowledgedDay; set => SetField(ref _acknowledgedDay, value); }
-        private DirtyValue<string> _acknowledgedMonth;
+
         /// <summary>
         /// REGZ Acknowledgement Mo [REGZ_MONTH]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Acknowledgement Mo")]
         public string AcknowledgedMonth { get => _acknowledgedMonth; set => SetField(ref _acknowledgedMonth, value); }
-        private DirtyValue<string> _acknowledgedYear;
+
         /// <summary>
         /// REGZ Acknowledgement Yr [REGZ_YR]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Acknowledgement Yr")]
         public string AcknowledgedYear { get => _acknowledgedYear; set => SetField(ref _acknowledgedYear, value); }
-        private DirtyValue<bool?> _acquisition;
+
         /// <summary>
         /// Initial Acquisition of Land [1964]
         /// </summary>
         [LoanFieldProperty(Description = "Initial Acquisition of Land")]
         public bool? Acquisition { get => _acquisition; set => SetField(ref _acquisition, value); }
-        private DirtyValue<string> _additionalArmInformation;
+
         /// <summary>
         /// REGZ Pymt Sched Additional Info [666]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Pymt Sched Additional Info")]
         public string AdditionalArmInformation { get => _additionalArmInformation; set => SetField(ref _additionalArmInformation, value); }
-        private DirtyValue<bool?> _allDateAndNumericalDisclosuresIndicator;
+
         /// <summary>
         /// Trans Details Dates/Num Discl Are Estimates [679]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Dates/Num Discl Are Estimates", OptionsJson = "{\"true\":\"all dates and numerical disclosures except the late payment disclosures are estimates.\"}")]
         public bool? AllDateAndNumericalDisclosuresIndicator { get => _allDateAndNumericalDisclosuresIndicator; set => SetField(ref _allDateAndNumericalDisclosuresIndicator, value); }
-        private DirtyValue<decimal?> _amountFinanced;
+
         /// <summary>
         /// REGZ Total Amt Financed [948]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "REGZ Total Amt Financed")]
         public decimal? AmountFinanced { get => _amountFinanced; set => SetField(ref _amountFinanced, value); }
-        private DirtyValue<decimal?> _aprPercent;
+
         /// <summary>
         /// Trans Details APR [799]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Trans Details APR")]
         public decimal? AprPercent { get => _aprPercent; set => SetField(ref _aprPercent, value); }
-        private DirtyValue<string> _aprPercentUI;
+
         /// <summary>
         /// Trans Details APR - Display field with KBYO rounding rules [KBYO.XD799]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details APR - Display field with KBYO rounding rules")]
         public string AprPercentUI { get => _aprPercentUI; set => SetField(ref _aprPercentUI, value); }
-        private DirtyValue<string> _armDisclosureDescription;
+
         /// <summary>
         /// Prequal ARM Index [1960]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Prequal ARM Index")]
         public string ArmDisclosureDescription { get => _armDisclosureDescription; set => SetField(ref _armDisclosureDescription, value); }
-        private DirtyValue<StringEnumValue<AssumptionOnYourProperty>> _assumptionOnYourProperty;
+
         /// <summary>
         /// Trans Details Assumption May/May Not [677]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Assumption May/May Not")]
         public StringEnumValue<AssumptionOnYourProperty> AssumptionOnYourProperty { get => _assumptionOnYourProperty; set => SetField(ref _assumptionOnYourProperty, value); }
-        private DirtyValue<DateTime?> _borrowerIntendToContinueDate;
+
         /// <summary>
         /// Borrower Intent to Continue Date [3197]
         /// </summary>
         [LoanFieldProperty(Description = "Borrower Intent to Continue Date")]
         public DateTime? BorrowerIntendToContinueDate { get => _borrowerIntendToContinueDate; set => SetField(ref _borrowerIntendToContinueDate, value); }
-        private DirtyValue<bool?> _borrowerIntendToContinueIndicator;
+
         /// <summary>
         /// Borrower Intends to Continue Chkbx [3164]
         /// </summary>
         [LoanFieldProperty(Description = "Borrower Intends to Continue Chkbx")]
         public bool? BorrowerIntendToContinueIndicator { get => _borrowerIntendToContinueIndicator; set => SetField(ref _borrowerIntendToContinueIndicator, value); }
-        private DirtyValue<string> _borrowerMiTerminationDate;
+
         /// <summary>
         /// Insurance Borr MI Termination Date [109]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Insurance Borr MI Termination Date")]
         public string BorrowerMiTerminationDate { get => _borrowerMiTerminationDate; set => SetField(ref _borrowerMiTerminationDate, value); }
-        private DirtyValue<string> _calculateBasedOnRemainingBalance;
+
         /// <summary>
         /// Expenses Calc MIP/PMI Based On Remain Bal [1775]
         /// </summary>
         [LoanFieldProperty(Description = "Expenses Calc MIP/PMI Based On Remain Bal")]
         public string CalculateBasedOnRemainingBalance { get => _calculateBasedOnRemainingBalance; set => SetField(ref _calculateBasedOnRemainingBalance, value); }
-        private DirtyValue<bool?> _chargesAddedToPaymentsIndicator;
+
         /// <summary>
         /// Charges for the insurance are added to your loan payments [3531]
         /// </summary>
         [LoanFieldProperty(Description = "Charges for the insurance are added to your loan payments")]
         public bool? ChargesAddedToPaymentsIndicator { get => _chargesAddedToPaymentsIndicator; set => SetField(ref _chargesAddedToPaymentsIndicator, value); }
-        private DirtyValue<bool?> _chargesAtLoanClosingIndicator;
+
         /// <summary>
         /// Charges for the insurance are collected upfront at loan closing [3532]
         /// </summary>
         [LoanFieldProperty(Description = "Charges for the insurance are collected upfront at loan closing")]
         public bool? ChargesAtLoanClosingIndicator { get => _chargesAtLoanClosingIndicator; set => SetField(ref _chargesAtLoanClosingIndicator, value); }
-        private DirtyValue<string> _circumstanceChangeReason;
+
         /// <summary>
         /// GFE Changed Circumstance Comments [3166]
         /// </summary>
         [LoanFieldProperty(Description = "GFE Changed Circumstance Comments")]
         public string CircumstanceChangeReason { get => _circumstanceChangeReason; set => SetField(ref _circumstanceChangeReason, value); }
-        private DirtyValue<DateTime?> _circumstanceChangeReceivedDate;
+
         /// <summary>
         /// Changed Circumstance Rcvd Date [3165]
         /// </summary>
         [LoanFieldProperty(Description = "Changed Circumstance Rcvd Date")]
         public DateTime? CircumstanceChangeReceivedDate { get => _circumstanceChangeReceivedDate; set => SetField(ref _circumstanceChangeReceivedDate, value); }
-        private DirtyValue<DateTime?> _closingDisclosureReceivedDate;
+
         /// <summary>
         /// Closing Disclosure Received Date [3978]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Closing Disclosure Received Date")]
         public DateTime? ClosingDisclosureReceivedDate { get => _closingDisclosureReceivedDate; set => SetField(ref _closingDisclosureReceivedDate, value); }
-        private DirtyValue<DateTime?> _closingDisclosureSentDate;
+
         /// <summary>
         /// Closing Disclosure Sent Date [3977]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Closing Disclosure Sent Date")]
         public DateTime? ClosingDisclosureSentDate { get => _closingDisclosureSentDate; set => SetField(ref _closingDisclosureSentDate, value); }
-        private DirtyValue<StringEnumValue<ConstructionFirstIntChangeAdjType>> _constructionFirstIntChangeAdjType;
+
         /// <summary>
         /// Construction 1st Int. Change Adj. [Constr.FstIntChgAdj]
         /// </summary>
         [LoanFieldProperty(Description = "Construction 1st Int. Change Adj.")]
         public StringEnumValue<ConstructionFirstIntChangeAdjType> ConstructionFirstIntChangeAdjType { get => _constructionFirstIntChangeAdjType; set => SetField(ref _constructionFirstIntChangeAdjType, value); }
-        private DirtyValue<string> _constructionLoanDescription;
+
         /// <summary>
         /// Loan Info Constr Loan Descr [1404]
         /// </summary>
         [LoanFieldProperty(Description = "Loan Info Constr Loan Descr")]
         public string ConstructionLoanDescription { get => _constructionLoanDescription; set => SetField(ref _constructionLoanDescription, value); }
-        private DirtyValue<StringEnumValue<ConstructionLoanMethod>> _constructionLoanMethod;
+
         /// <summary>
         /// REGZ Construction Mortgage Est Interest On [SYS.X6]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Construction Mortgage Est Interest On")]
         public StringEnumValue<ConstructionLoanMethod> ConstructionLoanMethod { get => _constructionLoanMethod; set => SetField(ref _constructionLoanMethod, value); }
-        private DirtyValue<int?> _constructionPeriodMonths;
+
         /// <summary>
         /// Loan Info Constr Loan Period [1176]
         /// </summary>
         [LoanFieldProperty(Description = "Loan Info Constr Loan Period")]
         public int? ConstructionPeriodMonths { get => _constructionPeriodMonths; set => SetField(ref _constructionPeriodMonths, value); }
-        private DirtyValue<decimal?> _constructionRatePercent;
+
         /// <summary>
         /// Loan Info Constr Loan Interest Rate [1677]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Loan Info Constr Loan Interest Rate")]
         public decimal? ConstructionRatePercent { get => _constructionRatePercent; set => SetField(ref _constructionRatePercent, value); }
-        private DirtyValue<bool?> _constructionRefinanceIndicator;
+
         /// <summary>
         /// Construction Refinance Indicator [Constr.Refi]
         /// </summary>
         [LoanFieldProperty(Description = "Construction Refinance Indicator")]
         public bool? ConstructionRefinanceIndicator { get => _constructionRefinanceIndicator; set => SetField(ref _constructionRefinanceIndicator, value); }
-        private DirtyValue<decimal?> _creditDisability;
+
         /// <summary>
         /// Insurance Premium Credit Disability [1704]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Premium Credit Disability")]
         public decimal? CreditDisability { get => _creditDisability; set => SetField(ref _creditDisability, value); }
-        private DirtyValue<bool?> _creditDisabilityIndicator;
+
         /// <summary>
         /// Insurance Credit Disability [1698]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Credit Disability", OptionsJson = "{\"true\":\"Credit insurance\"}")]
         public bool? CreditDisabilityIndicator { get => _creditDisabilityIndicator; set => SetField(ref _creditDisabilityIndicator, value); }
-        private DirtyValue<decimal?> _creditLife;
+
         /// <summary>
         /// Insurance Premium Credit Life [1703]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Premium Credit Life")]
         public decimal? CreditLife { get => _creditLife; set => SetField(ref _creditLife, value); }
-        private DirtyValue<decimal?> _creditLifeAndCreditDisability;
+
         /// <summary>
         /// Insurance Premium Credit Life/Disability [1705]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Premium Credit Life/Disability")]
         public decimal? CreditLifeAndCreditDisability { get => _creditLifeAndCreditDisability; set => SetField(ref _creditLifeAndCreditDisability, value); }
-        private DirtyValue<bool?> _creditLifeInsuranceIndicator;
+
         /// <summary>
         /// Insurance Credit Life [1697]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Credit Life", OptionsJson = "{\"true\":\"Credit life insurance\"}")]
         public bool? CreditLifeInsuranceIndicator { get => _creditLifeInsuranceIndicator; set => SetField(ref _creditLifeInsuranceIndicator, value); }
-        private DirtyValue<bool?> _customizePaymentScheduleIndicator;
+
         /// <summary>
         /// REGZ Pymt Sched Customize [1678]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Pymt Sched Customize", OptionsJson = "{\"true\":\"Customize\"}")]
         public bool? CustomizePaymentScheduleIndicator { get => _customizePaymentScheduleIndicator; set => SetField(ref _customizePaymentScheduleIndicator, value); }
-        private DirtyValue<bool?> _demandFeatureIndicator;
+
         /// <summary>
         /// REGZ Pymt Sched Demand Feature [663]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Pymt Sched Demand Feature", OptionsJson = "{\"true\":\"DEMAND FEATURE: This obligation has a demand feature.\"}")]
         public bool? DemandFeatureIndicator { get => _demandFeatureIndicator; set => SetField(ref _demandFeatureIndicator, value); }
-        private DirtyValue<decimal?> _disclosedAprPercent;
+
         /// <summary>
         /// Trans Details Disclosed APR [3121]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Trans Details Disclosed APR")]
         public decimal? DisclosedAprPercent { get => _disclosedAprPercent; set => SetField(ref _disclosedAprPercent, value); }
-        private DirtyValue<bool?> _disclosedByBrokerIndicator;
+
         /// <summary>
         /// Disclosed By Broker Chbx [3136]
         /// </summary>
         [LoanFieldProperty(Description = "Disclosed By Broker Chbx")]
         public bool? DisclosedByBrokerIndicator { get => _disclosedByBrokerIndicator; set => SetField(ref _disclosedByBrokerIndicator, value); }
-        private DirtyValue<string> _disclosedComments;
+
         /// <summary>
         /// GFE Disclosed Comments [3141]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "GFE Disclosed Comments")]
         public string DisclosedComments { get => _disclosedComments; set => SetField(ref _disclosedComments, value); }
-        private DirtyValue<decimal?> _disclosedDailyInterestCharge;
+
         /// <summary>
         /// Disclosed Daily Interest Charges [3887]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosed Daily Interest Charges")]
         public decimal? DisclosedDailyInterestCharge { get => _disclosedDailyInterestCharge; set => SetField(ref _disclosedDailyInterestCharge, value); }
-        private DirtyValue<decimal?> _disclosedFinanceCharge;
+
         /// <summary>
         /// Disclosed Fees Total Finance Charges [3246]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosed Fees Total Finance Charges")]
         public decimal? DisclosedFinanceCharge { get => _disclosedFinanceCharge; set => SetField(ref _disclosedFinanceCharge, value); }
-        private DirtyValue<bool?> _disclosedPrepayment;
+
         /// <summary>
         /// Disclosed Prepayment [4018]
         /// </summary>
         [LoanFieldProperty(Description = "Disclosed Prepayment")]
         public bool? DisclosedPrepayment { get => _disclosedPrepayment; set => SetField(ref _disclosedPrepayment, value); }
-        private DirtyValue<string> _disclosedProduct;
+
         /// <summary>
         /// Disclosed Product [4017]
         /// </summary>
         [LoanFieldProperty(Description = "Disclosed Product")]
         public string DisclosedProduct { get => _disclosedProduct; set => SetField(ref _disclosedProduct, value); }
-        private DirtyValue<StringEnumValue<DisclosureMethod>> _disclosureMethod;
+
         /// <summary>
         /// GFE Disclosure Method [3138]
         /// </summary>
         [LoanFieldProperty(Description = "GFE Disclosure Method")]
         public StringEnumValue<DisclosureMethod> DisclosureMethod { get => _disclosureMethod; set => SetField(ref _disclosureMethod, value); }
-        private DirtyValue<StringEnumValue<DisclosureType>> _disclosureType;
+
         /// <summary>
         /// Trans Details Initial/Final Disclosure [662]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Initial/Final Disclosure")]
         public StringEnumValue<DisclosureType> DisclosureType { get => _disclosureType; set => SetField(ref _disclosureType, value); }
-        private DirtyValue<int?> _discountPeriod;
+
         /// <summary>
         /// Loan Info ARM Pymt Discount Period [2552]
         /// </summary>
         [LoanFieldProperty(Description = "Loan Info ARM Pymt Discount Period")]
         public int? DiscountPeriod { get => _discountPeriod; set => SetField(ref _discountPeriod, value); }
-        private DirtyValue<decimal?> _discountRatePercent;
+
         /// <summary>
         /// Loan Info ARM Pymt Discount Rate [2551]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Loan Info ARM Pymt Discount Rate")]
         public decimal? DiscountRatePercent { get => _discountRatePercent; set => SetField(ref _discountRatePercent, value); }
-        private DirtyValue<StringEnumValue<DiscountType>> _discountType;
+
         /// <summary>
         /// Loan Info ARM Pymt Discount Type [2307]
         /// </summary>
         [LoanFieldProperty(Description = "Loan Info ARM Pymt Discount Type")]
         public StringEnumValue<DiscountType> DiscountType { get => _discountType; set => SetField(ref _discountType, value); }
-        private DirtyValue<DateTime?> _dueDate;
+
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Construction - Due Date [3287]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "REGZ-TIL Interest Rate and Payment Summary Table - Construction - Due Date")]
         public DateTime? DueDate { get => _dueDate; set => SetField(ref _dueDate, value); }
-        private DirtyValue<DateTime?> _earliestClosingDate;
+
         /// <summary>
         /// Earliest Closing Date [3147]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Earliest Closing Date")]
         public DateTime? EarliestClosingDate { get => _earliestClosingDate; set => SetField(ref _earliestClosingDate, value); }
-        private DirtyValue<DateTime?> _earliestFeeCollectionDate;
+
         /// <summary>
         /// Earliest Fee Collection Date [3145]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Earliest Fee Collection Date")]
         public DateTime? EarliestFeeCollectionDate { get => _earliestFeeCollectionDate; set => SetField(ref _earliestFeeCollectionDate, value); }
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted1;
+
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 1 [3985]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 1")]
         public DateTime? eSignConsentBorrowerDateAccepted1 { get => _eSignConsentBorrowerDateAccepted1; set => SetField(ref _eSignConsentBorrowerDateAccepted1, value); }
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted2;
+
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 2 [3993]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 2")]
         public DateTime? eSignConsentBorrowerDateAccepted2 { get => _eSignConsentBorrowerDateAccepted2; set => SetField(ref _eSignConsentBorrowerDateAccepted2, value); }
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted3;
+
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 3 [4024]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 3")]
         public DateTime? eSignConsentBorrowerDateAccepted3 { get => _eSignConsentBorrowerDateAccepted3; set => SetField(ref _eSignConsentBorrowerDateAccepted3, value); }
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted4;
+
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 4 [4032]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 4")]
         public DateTime? eSignConsentBorrowerDateAccepted4 { get => _eSignConsentBorrowerDateAccepted4; set => SetField(ref _eSignConsentBorrowerDateAccepted4, value); }
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted5;
+
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 5 [4040]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 5")]
         public DateTime? eSignConsentBorrowerDateAccepted5 { get => _eSignConsentBorrowerDateAccepted5; set => SetField(ref _eSignConsentBorrowerDateAccepted5, value); }
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted6;
+
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 6 [4048]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 6")]
         public DateTime? eSignConsentBorrowerDateAccepted6 { get => _eSignConsentBorrowerDateAccepted6; set => SetField(ref _eSignConsentBorrowerDateAccepted6, value); }
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress1;
+
         /// <summary>
         /// eConsent Borrower IP Address Pair 1 [3986]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 1")]
         public string eSignConsentBorrowerIPAddress1 { get => _eSignConsentBorrowerIPAddress1; set => SetField(ref _eSignConsentBorrowerIPAddress1, value); }
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress2;
+
         /// <summary>
         /// eConsent Borrower IP Address Pair 2 [3994]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 2")]
         public string eSignConsentBorrowerIPAddress2 { get => _eSignConsentBorrowerIPAddress2; set => SetField(ref _eSignConsentBorrowerIPAddress2, value); }
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress3;
+
         /// <summary>
         /// eConsent Borrower IP Address Pair 3 [4025]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 3")]
         public string eSignConsentBorrowerIPAddress3 { get => _eSignConsentBorrowerIPAddress3; set => SetField(ref _eSignConsentBorrowerIPAddress3, value); }
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress4;
+
         /// <summary>
         /// eConsent Borrower IP Address Pair 4 [4033]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 4")]
         public string eSignConsentBorrowerIPAddress4 { get => _eSignConsentBorrowerIPAddress4; set => SetField(ref _eSignConsentBorrowerIPAddress4, value); }
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress5;
+
         /// <summary>
         /// eConsent Borrower IP Address Pair 5 [4041]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 5")]
         public string eSignConsentBorrowerIPAddress5 { get => _eSignConsentBorrowerIPAddress5; set => SetField(ref _eSignConsentBorrowerIPAddress5, value); }
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress6;
+
         /// <summary>
         /// eConsent Borrower IP Address Pair 6 [4049]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 6")]
         public string eSignConsentBorrowerIPAddress6 { get => _eSignConsentBorrowerIPAddress6; set => SetField(ref _eSignConsentBorrowerIPAddress6, value); }
-        private DirtyValue<string> _eSignConsentBorrowerSource1;
+
         /// <summary>
         /// eConsent Borrower Source Pair 1 [3987]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Source Pair 1")]
         public string eSignConsentBorrowerSource1 { get => _eSignConsentBorrowerSource1; set => SetField(ref _eSignConsentBorrowerSource1, value); }
-        private DirtyValue<string> _eSignConsentBorrowerSource2;
+
         /// <summary>
         /// eConsent Borrower Source Pair 2 [3995]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Source Pair 2")]
         public string eSignConsentBorrowerSource2 { get => _eSignConsentBorrowerSource2; set => SetField(ref _eSignConsentBorrowerSource2, value); }
-        private DirtyValue<string> _eSignConsentBorrowerSource3;
+
         /// <summary>
         /// eConsent Borrower Source Pair 3 [4026]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Source Pair 3")]
         public string eSignConsentBorrowerSource3 { get => _eSignConsentBorrowerSource3; set => SetField(ref _eSignConsentBorrowerSource3, value); }
-        private DirtyValue<string> _eSignConsentBorrowerSource4;
+
         /// <summary>
         /// eConsent Borrower Source Pair 4 [4034]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Source Pair 4")]
         public string eSignConsentBorrowerSource4 { get => _eSignConsentBorrowerSource4; set => SetField(ref _eSignConsentBorrowerSource4, value); }
-        private DirtyValue<string> _eSignConsentBorrowerSource5;
+
         /// <summary>
         /// eConsent Borrower Source Pair 5 [4042]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Source Pair 5")]
         public string eSignConsentBorrowerSource5 { get => _eSignConsentBorrowerSource5; set => SetField(ref _eSignConsentBorrowerSource5, value); }
-        private DirtyValue<string> _eSignConsentBorrowerSource6;
+
         /// <summary>
         /// eConsent Borrower Source Pair 6 [4050]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Borrower Source Pair 6")]
         public string eSignConsentBorrowerSource6 { get => _eSignConsentBorrowerSource6; set => SetField(ref _eSignConsentBorrowerSource6, value); }
-        private DirtyValue<string> _eSignConsentBorrowerStatus1;
+
         /// <summary>
         /// Borrower 1 eConsent Status [3984]
         /// </summary>
         [LoanFieldProperty(Description = "Borrower 1 eConsent Status")]
         public string eSignConsentBorrowerStatus1 { get => _eSignConsentBorrowerStatus1; set => SetField(ref _eSignConsentBorrowerStatus1, value); }
-        private DirtyValue<string> _eSignConsentBorrowerStatus2;
+
         /// <summary>
         /// Borrower 2 eConsent Status [3992]
         /// </summary>
         [LoanFieldProperty(Description = "Borrower 2 eConsent Status")]
         public string eSignConsentBorrowerStatus2 { get => _eSignConsentBorrowerStatus2; set => SetField(ref _eSignConsentBorrowerStatus2, value); }
-        private DirtyValue<string> _eSignConsentBorrowerStatus3;
+
         /// <summary>
         /// Borrower 3 eConsent Status [4023]
         /// </summary>
         [LoanFieldProperty(Description = "Borrower 3 eConsent Status")]
         public string eSignConsentBorrowerStatus3 { get => _eSignConsentBorrowerStatus3; set => SetField(ref _eSignConsentBorrowerStatus3, value); }
-        private DirtyValue<string> _eSignConsentBorrowerStatus4;
+
         /// <summary>
         /// Borrower 4 eConsent Status [4031]
         /// </summary>
         [LoanFieldProperty(Description = "Borrower 4 eConsent Status")]
         public string eSignConsentBorrowerStatus4 { get => _eSignConsentBorrowerStatus4; set => SetField(ref _eSignConsentBorrowerStatus4, value); }
-        private DirtyValue<string> _eSignConsentBorrowerStatus5;
+
         /// <summary>
         /// Borrower 5 eConsent Status [4039]
         /// </summary>
         [LoanFieldProperty(Description = "Borrower 5 eConsent Status")]
         public string eSignConsentBorrowerStatus5 { get => _eSignConsentBorrowerStatus5; set => SetField(ref _eSignConsentBorrowerStatus5, value); }
-        private DirtyValue<string> _eSignConsentBorrowerStatus6;
+
         /// <summary>
         /// Borrower 6 eConsent Status [4047]
         /// </summary>
         [LoanFieldProperty(Description = "Borrower 6 eConsent Status")]
         public string eSignConsentBorrowerStatus6 { get => _eSignConsentBorrowerStatus6; set => SetField(ref _eSignConsentBorrowerStatus6, value); }
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted1;
+
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 1 [3989]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 1")]
         public DateTime? eSignConsentCoBorrowerDateAccepted1 { get => _eSignConsentCoBorrowerDateAccepted1; set => SetField(ref _eSignConsentCoBorrowerDateAccepted1, value); }
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted2;
+
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 2 [3997]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 2")]
         public DateTime? eSignConsentCoBorrowerDateAccepted2 { get => _eSignConsentCoBorrowerDateAccepted2; set => SetField(ref _eSignConsentCoBorrowerDateAccepted2, value); }
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted3;
+
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 3 [4028]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 3")]
         public DateTime? eSignConsentCoBorrowerDateAccepted3 { get => _eSignConsentCoBorrowerDateAccepted3; set => SetField(ref _eSignConsentCoBorrowerDateAccepted3, value); }
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted4;
+
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 4 [4036]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 4")]
         public DateTime? eSignConsentCoBorrowerDateAccepted4 { get => _eSignConsentCoBorrowerDateAccepted4; set => SetField(ref _eSignConsentCoBorrowerDateAccepted4, value); }
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted5;
+
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 5 [4044]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 5")]
         public DateTime? eSignConsentCoBorrowerDateAccepted5 { get => _eSignConsentCoBorrowerDateAccepted5; set => SetField(ref _eSignConsentCoBorrowerDateAccepted5, value); }
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted6;
+
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 6 [4052]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 6")]
         public DateTime? eSignConsentCoBorrowerDateAccepted6 { get => _eSignConsentCoBorrowerDateAccepted6; set => SetField(ref _eSignConsentCoBorrowerDateAccepted6, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress1;
+
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 1 [3990]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 1")]
         public string eSignConsentCoBorrowerIPAddress1 { get => _eSignConsentCoBorrowerIPAddress1; set => SetField(ref _eSignConsentCoBorrowerIPAddress1, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress2;
+
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 2 [3998]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 2")]
         public string eSignConsentCoBorrowerIPAddress2 { get => _eSignConsentCoBorrowerIPAddress2; set => SetField(ref _eSignConsentCoBorrowerIPAddress2, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress3;
+
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 3 [4029]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 3")]
         public string eSignConsentCoBorrowerIPAddress3 { get => _eSignConsentCoBorrowerIPAddress3; set => SetField(ref _eSignConsentCoBorrowerIPAddress3, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress4;
+
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 4 [4037]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 4")]
         public string eSignConsentCoBorrowerIPAddress4 { get => _eSignConsentCoBorrowerIPAddress4; set => SetField(ref _eSignConsentCoBorrowerIPAddress4, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress5;
+
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 5 [4045]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 5")]
         public string eSignConsentCoBorrowerIPAddress5 { get => _eSignConsentCoBorrowerIPAddress5; set => SetField(ref _eSignConsentCoBorrowerIPAddress5, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress6;
+
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 6 [4053]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 6")]
         public string eSignConsentCoBorrowerIPAddress6 { get => _eSignConsentCoBorrowerIPAddress6; set => SetField(ref _eSignConsentCoBorrowerIPAddress6, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerSource1;
+
         /// <summary>
         /// eConsent Co-Borrower Source Pair 1 [3991]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 1")]
         public string eSignConsentCoBorrowerSource1 { get => _eSignConsentCoBorrowerSource1; set => SetField(ref _eSignConsentCoBorrowerSource1, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerSource2;
+
         /// <summary>
         /// eConsent Co-Borrower Source Pair 2 [3999]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 2")]
         public string eSignConsentCoBorrowerSource2 { get => _eSignConsentCoBorrowerSource2; set => SetField(ref _eSignConsentCoBorrowerSource2, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerSource3;
+
         /// <summary>
         /// eConsent Co-Borrower Source Pair 3 [4030]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 3")]
         public string eSignConsentCoBorrowerSource3 { get => _eSignConsentCoBorrowerSource3; set => SetField(ref _eSignConsentCoBorrowerSource3, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerSource4;
+
         /// <summary>
         /// eConsent Co-Borrower Source Pair 4 [4038]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 4")]
         public string eSignConsentCoBorrowerSource4 { get => _eSignConsentCoBorrowerSource4; set => SetField(ref _eSignConsentCoBorrowerSource4, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerSource5;
+
         /// <summary>
         /// eConsent Co-Borrower Source Pair 5 [4046]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 5")]
         public string eSignConsentCoBorrowerSource5 { get => _eSignConsentCoBorrowerSource5; set => SetField(ref _eSignConsentCoBorrowerSource5, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerSource6;
+
         /// <summary>
         /// eConsent Co-Borrower Source Pair 6 [4054]
         /// </summary>
         [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 6")]
         public string eSignConsentCoBorrowerSource6 { get => _eSignConsentCoBorrowerSource6; set => SetField(ref _eSignConsentCoBorrowerSource6, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus1;
+
         /// <summary>
         /// Co-Borrower 1 eConsent Status [3988]
         /// </summary>
         [LoanFieldProperty(Description = "Co-Borrower 1 eConsent Status")]
         public string eSignConsentCoBorrowerStatus1 { get => _eSignConsentCoBorrowerStatus1; set => SetField(ref _eSignConsentCoBorrowerStatus1, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus2;
+
         /// <summary>
         /// Co-Borrower 2 eConsent Status [3996]
         /// </summary>
         [LoanFieldProperty(Description = "Co-Borrower 2 eConsent Status")]
         public string eSignConsentCoBorrowerStatus2 { get => _eSignConsentCoBorrowerStatus2; set => SetField(ref _eSignConsentCoBorrowerStatus2, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus3;
+
         /// <summary>
         /// Co-Borrower 3 eConsent Status [4027]
         /// </summary>
         [LoanFieldProperty(Description = "Co-Borrower 3 eConsent Status")]
         public string eSignConsentCoBorrowerStatus3 { get => _eSignConsentCoBorrowerStatus3; set => SetField(ref _eSignConsentCoBorrowerStatus3, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus4;
+
         /// <summary>
         /// Co-Borrower 4 eConsent Status [4035]
         /// </summary>
         [LoanFieldProperty(Description = "Co-Borrower 4 eConsent Status")]
         public string eSignConsentCoBorrowerStatus4 { get => _eSignConsentCoBorrowerStatus4; set => SetField(ref _eSignConsentCoBorrowerStatus4, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus5;
+
         /// <summary>
         /// Co-Borrower 5 eConsent Status [4043]
         /// </summary>
         [LoanFieldProperty(Description = "Co-Borrower 5 eConsent Status")]
         public string eSignConsentCoBorrowerStatus5 { get => _eSignConsentCoBorrowerStatus5; set => SetField(ref _eSignConsentCoBorrowerStatus5, value); }
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus6;
+
         /// <summary>
         /// Co-Borrower 6 eConsent Status [4051]
         /// </summary>
         [LoanFieldProperty(Description = "Co-Borrower 6 eConsent Status")]
         public string eSignConsentCoBorrowerStatus6 { get => _eSignConsentCoBorrowerStatus6; set => SetField(ref _eSignConsentCoBorrowerStatus6, value); }
-        private DirtyValue<DateTime?> _eSignConsentDate;
+
         /// <summary>
         /// eConsent Date [3983]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "eConsent Date")]
         public DateTime? eSignConsentDate { get => _eSignConsentDate; set => SetField(ref _eSignConsentDate, value); }
-        private DirtyValue<decimal?> _extraPaymentForEarlyPayOff;
+
         /// <summary>
         /// Trans Details Amort Type GPM Extra Pymt [312]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Details Amort Type GPM Extra Pymt")]
         public decimal? ExtraPaymentForEarlyPayOff { get => _extraPaymentForEarlyPayOff; set => SetField(ref _extraPaymentForEarlyPayOff, value); }
-        private DirtyValue<DateTime?> _feeCollectedDate;
+
         /// <summary>
         /// Fee Collected Date [3146]
         /// </summary>
         [LoanFieldProperty(Description = "Fee Collected Date")]
         public DateTime? FeeCollectedDate { get => _feeCollectedDate; set => SetField(ref _feeCollectedDate, value); }
-        private DirtyValue<bool?> _feeLevelDisclosuresIndicator;
+
         /// <summary>
         /// Fee Level Disclosures Indicator [4461]
         /// </summary>
         [LoanFieldProperty(Description = "Fee Level Disclosures Indicator")]
         public bool? FeeLevelDisclosuresIndicator { get => _feeLevelDisclosuresIndicator; set => SetField(ref _feeLevelDisclosuresIndicator, value); }
-        private DirtyValue<decimal?> _filingFees;
+
         /// <summary>
         /// Trans Details Filing Fees [1707]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Details Filing Fees")]
         public decimal? FilingFees { get => _filingFees; set => SetField(ref _filingFees, value); }
-        private DirtyValue<DateTime?> _finalPaymentDate;
+
         /// <summary>
         /// REGZ Construction Mortgage Final Pymt Date [1961]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Construction Mortgage Final Pymt Date")]
         public DateTime? FinalPaymentDate { get => _finalPaymentDate; set => SetField(ref _finalPaymentDate, value); }
-        private DirtyValue<decimal?> _financeCharge;
+
         /// <summary>
         /// Fees Total Finance Charges [1206]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Total Finance Charges")]
         public decimal? FinanceCharge { get => _financeCharge; set => SetField(ref _financeCharge, value); }
-        private DirtyValue<decimal?> _financedAllGuaranteeFeeAmount;
+
         /// <summary>
         /// Financed Guarantee Fee - Guarantee Amount [3561]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Financed Guarantee Fee - Guarantee Amount")]
         public decimal? FinancedAllGuaranteeFeeAmount { get => _financedAllGuaranteeFeeAmount; set => SetField(ref _financedAllGuaranteeFeeAmount, value); }
-        private DirtyValue<decimal?> _financedAllGuaranteeFeePercent;
+
         /// <summary>
         /// Financed Guarantee Fee - Guarantee Percentage [3560]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Financed Guarantee Fee - Guarantee Percentage", OptionsJson = "{\"0.50\":\"0.50\",\"1.00\":\"1.00\",\"1.25\":\"1.25\",\"1.50\":\"1.50\",\"1.75\":\"1.75\",\"2.00\":\"2.00\",\"2.25\":\"2.25\",\"2.50\":\"2.50\",\"2.75\":\"2.75\",\"3.00\":\"3.00\",\"3.25\":\"3.25\",\"3.50\":\"3.50\",\"3.75\":\"3.75\",\"4.00\":\"4.00\"}")]
         public decimal? FinancedAllGuaranteeFeePercent { get => _financedAllGuaranteeFeePercent; set => SetField(ref _financedAllGuaranteeFeePercent, value); }
-        private DirtyValue<decimal?> _financedAllTotalLoanAmount;
+
         /// <summary>
         /// Financed Guarantee Fee - Total Loan Amount [3562]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Financed Guarantee Fee - Total Loan Amount")]
         public decimal? FinancedAllTotalLoanAmount { get => _financedAllTotalLoanAmount; set => SetField(ref _financedAllTotalLoanAmount, value); }
-        private DirtyValue<decimal?> _financedPortionGuaranteeFeeAmount;
+
         /// <summary>
         /// Portion of Financed Guarantee Fee - Guarantee Amount [3564]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Portion of Financed Guarantee Fee - Guarantee Amount")]
         public decimal? FinancedPortionGuaranteeFeeAmount { get => _financedPortionGuaranteeFeeAmount; set => SetField(ref _financedPortionGuaranteeFeeAmount, value); }
-        private DirtyValue<decimal?> _financedPortionGuaranteeFeePercent;
+
         /// <summary>
         /// Portion of Financed Guarantee Fee - Guarantee Percentage [3563]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Portion of Financed Guarantee Fee - Guarantee Percentage")]
         public decimal? FinancedPortionGuaranteeFeePercent { get => _financedPortionGuaranteeFeePercent; set => SetField(ref _financedPortionGuaranteeFeePercent, value); }
-        private DirtyValue<decimal?> _financedPortionTotalLoanAmount;
+
         /// <summary>
         /// Portion of Financed Guarantee Fee - Total Loan Amount [3565]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Portion of Financed Guarantee Fee - Total Loan Amount")]
         public decimal? FinancedPortionTotalLoanAmount { get => _financedPortionTotalLoanAmount; set => SetField(ref _financedPortionTotalLoanAmount, value); }
-        private DirtyValue<StringEnumValue<FinancingType>> _financingType;
+
         /// <summary>
         /// USDA Financing Type [3566]
         /// </summary>
         [LoanFieldProperty(Description = "USDA Financing Type")]
         public StringEnumValue<FinancingType> FinancingType { get => _financingType; set => SetField(ref _financingType, value); }
-        private DirtyValue<DateTime?> _firstAmortizationPaymentDate;
+
         /// <summary>
         /// REGZ Construction Mortgage 1st Amortization Date [1963]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Construction Mortgage 1st Amortization Date")]
         public DateTime? FirstAmortizationPaymentDate { get => _firstAmortizationPaymentDate; set => SetField(ref _firstAmortizationPaymentDate, value); }
-        private DirtyValue<bool?> _floodInsuranceIndicator;
+
         /// <summary>
         /// Insurance Flood [676]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Flood", OptionsJson = "{\"true\":\"Flood insurance\"}")]
         public bool? FloodInsuranceIndicator { get => _floodInsuranceIndicator; set => SetField(ref _floodInsuranceIndicator, value); }
-        private DirtyValue<DateTime?> _gfeApplicationDate;
+
         /// <summary>
         /// Application Date [3142]
         /// </summary>
         [LoanFieldProperty(Description = "Application Date")]
         public DateTime? GfeApplicationDate { get => _gfeApplicationDate; set => SetField(ref _gfeApplicationDate, value); }
-        private DirtyValue<bool?> _gfeChangedCircumstanceIndicator;
+
         /// <summary>
         /// Changed Circumstance Chkbx [3168]
         /// </summary>
         [LoanFieldProperty(Description = "Changed Circumstance Chkbx")]
         public bool? GfeChangedCircumstanceIndicator { get => _gfeChangedCircumstanceIndicator; set => SetField(ref _gfeChangedCircumstanceIndicator, value); }
-        private DirtyValue<string> _gfeChangedCircumstanceItem;
+
         /// <summary>
         /// GFE Changed Circumstance [3169]
         /// </summary>
         [LoanFieldProperty(Description = "GFE Changed Circumstance")]
         public string GfeChangedCircumstanceItem { get => _gfeChangedCircumstanceItem; set => SetField(ref _gfeChangedCircumstanceItem, value); }
-        private DirtyValue<string> _gFEChangedCirsumstanceItemCode;
+
         /// <summary>
         /// GFE Changed Circumstance Code [3627]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "GFE Changed Circumstance Code")]
         public string GFEChangedCirsumstanceItemCode { get => _gFEChangedCirsumstanceItemCode; set => SetField(ref _gFEChangedCirsumstanceItemCode, value); }
-        private DirtyValue<DateTime?> _gfeDate;
+
         /// <summary>
         /// GFE Date for Printed Form [3170]
         /// </summary>
         [LoanFieldProperty(Description = "GFE Date for Printed Form")]
         public DateTime? GfeDate { get => _gfeDate; set => SetField(ref _gfeDate, value); }
-        private DirtyValue<DateTime?> _gfeExpirationDate;
+
         /// <summary>
         /// GFE Expiration Date [3140]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "GFE Expiration Date")]
         public DateTime? GfeExpirationDate { get => _gfeExpirationDate; set => SetField(ref _gfeExpirationDate, value); }
-        private DirtyValue<string> _gfeExpirationPeriod;
+
         /// <summary>
         /// No. of Days GFE Valid After Received [3162]
         /// </summary>
         [LoanFieldProperty(Description = "No. of Days GFE Valid After Received")]
         public string GfeExpirationPeriod { get => _gfeExpirationPeriod; set => SetField(ref _gfeExpirationPeriod, value); }
-        private DirtyValue<bool?> _gfeRateLockRedisclosureRequiredIndicator;
+
         /// <summary>
         /// GFE Redisclosure Required Due to Rate Lock [3201]
         /// </summary>
         [LoanFieldProperty(Description = "GFE Redisclosure Required Due to Rate Lock")]
         public bool? GfeRateLockRedisclosureRequiredIndicator { get => _gfeRateLockRedisclosureRequiredIndicator; set => SetField(ref _gfeRateLockRedisclosureRequiredIndicator, value); }
-        private DirtyValue<DateTime?> _gfeRedisclosureProvidedDate;
+
         /// <summary>
         /// GFE Redisclosure Provided Date [3150]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "GFE Redisclosure Provided Date")]
         public DateTime? GfeRedisclosureProvidedDate { get => _gfeRedisclosureProvidedDate; set => SetField(ref _gfeRedisclosureProvidedDate, value); }
-        private DirtyValue<DateTime?> _gfeRedisclosureReceivedDate;
+
         /// <summary>
         /// GFE Redisclosure Received Date [3151]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "GFE Redisclosure Received Date")]
         public DateTime? GfeRedisclosureReceivedDate { get => _gfeRedisclosureReceivedDate; set => SetField(ref _gfeRedisclosureReceivedDate, value); }
-        private DirtyValue<DateTime?> _highCostDisclosure;
+
         /// <summary>
         /// The Date that the High Cost Disclosure is signed [4022]
         /// </summary>
         [LoanFieldProperty(Description = "The Date that the High Cost Disclosure is signed")]
         public DateTime? HighCostDisclosure { get => _highCostDisclosure; set => SetField(ref _highCostDisclosure, value); }
-        private DirtyValue<DateTime?> _homeCounselingProvidedDate;
+
         /// <summary>
         /// Date the Home Counseling Disclosure Provided to the Borrower [3859]
         /// </summary>
         [LoanFieldProperty(Description = "Date the Home Counseling Disclosure Provided to the Borrower")]
         public DateTime? HomeCounselingProvidedDate { get => _homeCounselingProvidedDate; set => SetField(ref _homeCounselingProvidedDate, value); }
-        private DirtyValue<bool?> _hud1ToleranceViolatedIndicator;
+
         /// <summary>
         /// HUD-1Tolerance Lmt Violation [3160]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "HUD-1Tolerance Lmt Violation")]
         public bool? Hud1ToleranceViolatedIndicator { get => _hud1ToleranceViolatedIndicator; set => SetField(ref _hud1ToleranceViolatedIndicator, value); }
-        private DirtyValue<string> _hudToleranceResolutionComments;
+
         /// <summary>
         /// HUD-1 Tolerance Resolution Comments [3172]
         /// </summary>
         [LoanFieldProperty(Description = "HUD-1 Tolerance Resolution Comments")]
         public string HudToleranceResolutionComments { get => _hudToleranceResolutionComments; set => SetField(ref _hudToleranceResolutionComments, value); }
-        private DirtyValue<DateTime?> _hudToleranceResolutionDate;
+
         /// <summary>
         /// HUD-1 Tolerance Resolution Date [3171]
         /// </summary>
         [LoanFieldProperty(Description = "HUD-1 Tolerance Resolution Date")]
         public DateTime? HudToleranceResolutionDate { get => _hudToleranceResolutionDate; set => SetField(ref _hudToleranceResolutionDate, value); }
-        private DirtyValue<string> _hudToleranceResolvedBy;
+
         /// <summary>
         /// HUD-1 Tolerance Resolution User [3173]
         /// </summary>
         [LoanFieldProperty(Description = "HUD-1 Tolerance Resolution User")]
         public string HudToleranceResolvedBy { get => _hudToleranceResolvedBy; set => SetField(ref _hudToleranceResolvedBy, value); }
-        private DirtyValue<string> _id;
+
         /// <summary>
         /// RegulationZ Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
-        private DirtyValue<bool?> _ifYouPurchaseIndicator;
+
         /// <summary>
         /// Insurance Premium If you purchase [1708]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Premium If you purchase", OptionsJson = "{\"true\":\"If you purchase\"}")]
         public bool? IfYouPurchaseIndicator { get => _ifYouPurchaseIndicator; set => SetField(ref _ifYouPurchaseIndicator, value); }
-        private DirtyValue<StringEnumValue<IfYouPurchaseType>> _ifYouPurchaseType;
+
         /// <summary>
         /// Insurance Premium Haz/Flood/Haz&amp;Flood [1709]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Premium Haz/Flood/Haz&Flood")]
         public StringEnumValue<IfYouPurchaseType> IfYouPurchaseType { get => _ifYouPurchaseType; set => SetField(ref _ifYouPurchaseType, value); }
-        private DirtyValue<bool?> _includeMiIndicator;
+
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Include Mortgage Insurance [3266]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ-TIL Interest Rate and Payment Summary Table - Include Mortgage Insurance")]
         public bool? IncludeMiIndicator { get => _includeMiIndicator; set => SetField(ref _includeMiIndicator, value); }
-        private DirtyValue<bool?> _includePmiIndicator;
+
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Include Private Mortgage Insurance [3265]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "REGZ-TIL Interest Rate and Payment Summary Table - Include Private Mortgage Insurance")]
         public bool? IncludePmiIndicator { get => _includePmiIndicator; set => SetField(ref _includePmiIndicator, value); }
-        private DirtyValue<bool?> _includeTaxesInsuranceIndicator;
+
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Include Escrowed Taxes and Insurance [3264]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "REGZ-TIL Interest Rate and Payment Summary Table - Include Escrowed Taxes and Insurance")]
         public bool? IncludeTaxesInsuranceIndicator { get => _includeTaxesInsuranceIndicator; set => SetField(ref _includeTaxesInsuranceIndicator, value); }
-        private DirtyValue<DateTime?> _initialAVMProvidedDate;
+
         /// <summary>
         /// Date the AVM Provided to the Borrower [3858]
         /// </summary>
         [LoanFieldProperty(Description = "Date the AVM Provided to the Borrower")]
         public DateTime? InitialAVMProvidedDate { get => _initialAVMProvidedDate; set => SetField(ref _initialAVMProvidedDate, value); }
-        private DirtyValue<DateTime?> _initialDisclosureDueDate;
+
         /// <summary>
         /// Initial Disclosure Due Date [3143]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Initial Disclosure Due Date")]
         public DateTime? InitialDisclosureDueDate { get => _initialDisclosureDueDate; set => SetField(ref _initialDisclosureDueDate, value); }
-        private DirtyValue<DateTime?> _initialDisclosureProvidedDate;
+
         /// <summary>
         /// Initial Disclosure Provided Date [3144]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Initial Disclosure Provided Date")]
         public DateTime? InitialDisclosureProvidedDate { get => _initialDisclosureProvidedDate; set => SetField(ref _initialDisclosureProvidedDate, value); }
-        private DirtyValue<DateTime?> _initialGfeAffiliatedBusinessProvidedDate;
+
         /// <summary>
         /// GFE Initial GFE Disclosure Affiliated Business Disclosure Provided Date [3544]
         /// </summary>
         [LoanFieldProperty(Description = "GFE Initial GFE Disclosure Affiliated Business Disclosure Provided Date")]
         public DateTime? InitialGfeAffiliatedBusinessProvidedDate { get => _initialGfeAffiliatedBusinessProvidedDate; set => SetField(ref _initialGfeAffiliatedBusinessProvidedDate, value); }
-        private DirtyValue<DateTime?> _initialGFEAppraisalProvidedDate;
+
         /// <summary>
         /// Date the Appraisal was provided to the Borrower [3624]
         /// </summary>
         [LoanFieldProperty(Description = "Date the Appraisal was provided to the Borrower")]
         public DateTime? InitialGFEAppraisalProvidedDate { get => _initialGFEAppraisalProvidedDate; set => SetField(ref _initialGFEAppraisalProvidedDate, value); }
-        private DirtyValue<DateTime?> _initialGfeCharmBookletProvidedDate;
+
         /// <summary>
         /// GFE Initial GFE Disclosure CHARM Booklet Provided Date [3545]
         /// </summary>
         [LoanFieldProperty(Description = "GFE Initial GFE Disclosure CHARM Booklet Provided Date")]
         public DateTime? InitialGfeCharmBookletProvidedDate { get => _initialGfeCharmBookletProvidedDate; set => SetField(ref _initialGfeCharmBookletProvidedDate, value); }
-        private DirtyValue<DateTime?> _initialGfeDisclosureProvidedDate;
+
         /// <summary>
         /// GFE Initial GFE Disclosure Provided Date [3148]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "GFE Initial GFE Disclosure Provided Date")]
         public DateTime? InitialGfeDisclosureProvidedDate { get => _initialGfeDisclosureProvidedDate; set => SetField(ref _initialGfeDisclosureProvidedDate, value); }
-        private DirtyValue<DateTime?> _initialGfeDisclosureReceivedDate;
+
         /// <summary>
         /// GFE Initial GFE Disclosure Received Date [3149]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "GFE Initial GFE Disclosure Received Date")]
         public DateTime? InitialGfeDisclosureReceivedDate { get => _initialGfeDisclosureReceivedDate; set => SetField(ref _initialGfeDisclosureReceivedDate, value); }
-        private DirtyValue<DateTime?> _initialGfeHelocBrochureProvidedDate;
+
         /// <summary>
         /// GFE Initial GFE Disclosure HELOC Brochure Provided Date [3547]
         /// </summary>
         [LoanFieldProperty(Description = "GFE Initial GFE Disclosure HELOC Brochure Provided Date")]
         public DateTime? InitialGfeHelocBrochureProvidedDate { get => _initialGfeHelocBrochureProvidedDate; set => SetField(ref _initialGfeHelocBrochureProvidedDate, value); }
-        private DirtyValue<DateTime?> _initialGfeHudSpecialBookletProvidedDate;
+
         /// <summary>
         /// GFE Initial GFE Disclosure HUD Special Booklet Provided Date [3546]
         /// </summary>
         [LoanFieldProperty(Description = "GFE Initial GFE Disclosure HUD Special Booklet Provided Date")]
         public DateTime? InitialGfeHudSpecialBookletProvidedDate { get => _initialGfeHudSpecialBookletProvidedDate; set => SetField(ref _initialGfeHudSpecialBookletProvidedDate, value); }
-        private DirtyValue<DateTime?> _initialSubsequentAppraisalProvidedDate;
+
         /// <summary>
         /// Date the Subsequent Appraisal Provided to the Borrower [3857]
         /// </summary>
         [LoanFieldProperty(Description = "Date the Subsequent Appraisal Provided to the Borrower")]
         public DateTime? InitialSubsequentAppraisalProvidedDate { get => _initialSubsequentAppraisalProvidedDate; set => SetField(ref _initialSubsequentAppraisalProvidedDate, value); }
-        private DirtyValue<DateTime?> _initialTilDisclosureProvidedDate;
+
         /// <summary>
         /// TIL Intl Disclosure Provided Date [3152]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "TIL Intl Disclosure Provided Date")]
         public DateTime? InitialTilDisclosureProvidedDate { get => _initialTilDisclosureProvidedDate; set => SetField(ref _initialTilDisclosureProvidedDate, value); }
-        private DirtyValue<DateTime?> _initialTilDisclosureReceivedDate;
+
         /// <summary>
         /// TIL Intl TIL Disclosure Rcvd Date [3153]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "TIL Intl TIL Disclosure Rcvd Date")]
         public DateTime? InitialTilDisclosureReceivedDate { get => _initialTilDisclosureReceivedDate; set => SetField(ref _initialTilDisclosureReceivedDate, value); }
-        private DirtyValue<string> _insuranceRequiredDescription;
+
         /// <summary>
         /// Insurance Required [1702]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Required")]
         public string InsuranceRequiredDescription { get => _insuranceRequiredDescription; set => SetField(ref _insuranceRequiredDescription, value); }
-        private DirtyValue<string> _interestInNameOf;
+
         /// <summary>
         /// Trans Details Security Interest [1603]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Security Interest")]
         public string InterestInNameOf { get => _interestInNameOf; set => SetField(ref _interestInNameOf, value); }
-        private DirtyValue<bool?> _interestOnly;
+
         /// <summary>
         /// Interest Only Indicator [Terms.IntrOnly]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Interest Only Indicator")]
         public bool? InterestOnly { get => _interestOnly; set => SetField(ref _interestOnly, value); }
-        private DirtyValue<bool?> _interestOnlyIndicator;
+
         /// <summary>
         /// Trans Details Interest Only Indicator [2982]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Interest Only Indicator")]
         public bool? InterestOnlyIndicator { get => _interestOnlyIndicator; set => SetField(ref _interestOnlyIndicator, value); }
-        private DirtyValue<int?> _interestOnlyMonths;
+
         /// <summary>
         /// Trans Details Interest Only Mos [1177]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Interest Only Mos")]
         public int? InterestOnlyMonths { get => _interestOnlyMonths; set => SetField(ref _interestOnlyMonths, value); }
-        private DirtyValue<StringEnumValue<InterestRateType>> _interestRateType;
+
         /// <summary>
         /// REGZ Construction Mortgage Interest Rate Type [2820]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Construction Mortgage Interest Rate Type")]
         public StringEnumValue<InterestRateType> InterestRateType { get => _interestRateType; set => SetField(ref _interestRateType, value); }
-        private DirtyValue<decimal?> _interestReserveAmount;
+
         /// <summary>
         /// Loan Info Constr Loan Required Resrv [1265]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Info Constr Loan Required Resrv")]
         public decimal? InterestReserveAmount { get => _interestReserveAmount; set => SetField(ref _interestReserveAmount, value); }
-        private DirtyValue<string> _lastDisclosedBy;
+
         /// <summary>
         /// GFE Last Disclosed By [3139]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "GFE Last Disclosed By")]
         public string LastDisclosedBy { get => _lastDisclosedBy; set => SetField(ref _lastDisclosedBy, value); }
-        private DirtyValue<DateTime?> _lastDisclosedDate;
+
         /// <summary>
         /// GFE Last Disclosed Date [3137]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "GFE Last Disclosed Date")]
         public DateTime? LastDisclosedDate { get => _lastDisclosedDate; set => SetField(ref _lastDisclosedDate, value); }
-        private DirtyValue<DateTime?> _lastDisclosedGfeReceivedDate;
+
         /// <summary>
         /// GFE Last Disclosure Rcvd Date [3163]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "GFE Last Disclosure Rcvd Date")]
         public DateTime? LastDisclosedGfeReceivedDate { get => _lastDisclosedGfeReceivedDate; set => SetField(ref _lastDisclosedGfeReceivedDate, value); }
-        private DirtyValue<decimal?> _lateChargeBasis;
+
         /// <summary>
         /// Late Charge Basis [4186]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Late Charge Basis")]
         public decimal? LateChargeBasis { get => _lateChargeBasis; set => SetField(ref _lateChargeBasis, value); }
-        private DirtyValue<string> _lateChargeComments;
+
         /// <summary>
         /// Trans Details Late Charge Additional Detail [1854]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Late Charge Additional Detail")]
         public string LateChargeComments { get => _lateChargeComments; set => SetField(ref _lateChargeComments, value); }
-        private DirtyValue<int?> _lateChargeDays;
+
         /// <summary>
         /// Trans Details Late Charge Days [672]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Late Charge Days")]
         public int? LateChargeDays { get => _lateChargeDays; set => SetField(ref _lateChargeDays, value); }
-        private DirtyValue<decimal?> _lateChargePercent;
+
         /// <summary>
         /// Trans Details Late Charge % [674]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Trans Details Late Charge %")]
         public decimal? LateChargePercent { get => _lateChargePercent; set => SetField(ref _lateChargePercent, value); }
-        private DirtyValue<StringEnumValue<LateChargeType>> _lateChargeType;
+
         /// <summary>
         /// Trans Details Late Charge % Based On [1719]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Late Charge % Based On")]
         public StringEnumValue<LateChargeType> LateChargeType { get => _lateChargeType; set => SetField(ref _lateChargeType, value); }
-        private DirtyValue<decimal?> _lateFee;
+
         /// <summary>
         /// Trans Details Late Fee [3876]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Trans Details Late Fee")]
         public decimal? LateFee { get => _lateFee; set => SetField(ref _lateFee, value); }
-        private DirtyValue<string> _lEIntentToProceedComment;
+
         /// <summary>
         /// LE Intent To Proceed Comment [3976]
         /// </summary>
         [LoanFieldProperty(Description = "LE Intent To Proceed Comment")]
         public string LEIntentToProceedComment { get => _lEIntentToProceedComment; set => SetField(ref _lEIntentToProceedComment, value); }
-        private DirtyValue<bool?> _lenderPaidMortgageInsuranceIndicator;
+
         /// <summary>
         /// Lender Paid Mortgage Insurance [3533]
         /// </summary>
         [LoanFieldProperty(Description = "Lender Paid Mortgage Insurance")]
         public bool? LenderPaidMortgageInsuranceIndicator { get => _lenderPaidMortgageInsuranceIndicator; set => SetField(ref _lenderPaidMortgageInsuranceIndicator, value); }
-        private DirtyValue<decimal?> _lendersInspectionFee;
+
         /// <summary>
         /// REGZ Construction Mortgage Lenders Inspection Rate [3899]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "REGZ Construction Mortgage Lenders Inspection Rate")]
         public decimal? LendersInspectionFee { get => _lendersInspectionFee; set => SetField(ref _lendersInspectionFee, value); }
-        private DirtyValue<string> _lEReceivedBy;
+
         /// <summary>
         /// LE Intent To Proceed Received By [3973]
         /// </summary>
         [LoanFieldProperty(Description = "LE Intent To Proceed Received By")]
         public string LEReceivedBy { get => _lEReceivedBy; set => SetField(ref _lEReceivedBy, value); }
-        private DirtyValue<StringEnumValue<LEReceivedMethod>> _lEReceivedMethod;
+
         /// <summary>
         /// LE Intent To Proceed Received Method [3974]
         /// </summary>
         [LoanFieldProperty(Description = "LE Intent To Proceed Received Method")]
         public StringEnumValue<LEReceivedMethod> LEReceivedMethod { get => _lEReceivedMethod; set => SetField(ref _lEReceivedMethod, value); }
-        private DirtyValue<string> _lEReceivedMethodOther;
+
         /// <summary>
         /// LE Intent To Proceed Received Method Other [3975]
         /// </summary>
         [LoanFieldProperty(Description = "LE Intent To Proceed Received Method Other")]
         public string LEReceivedMethodOther { get => _lEReceivedMethodOther; set => SetField(ref _lEReceivedMethodOther, value); }
-        private DirtyValue<DateTime?> _lESentOnDate;
+
         /// <summary>
         /// LE Intent To Proceed Sent On Date [3972]
         /// </summary>
         [LoanFieldProperty(Description = "LE Intent To Proceed Sent On Date")]
         public DateTime? LESentOnDate { get => _lESentOnDate; set => SetField(ref _lESentOnDate, value); }
-        private DirtyValue<decimal?> _marginPlusIndexPercent;
+
         /// <summary>
         /// Loan Info ARM Margin + Index [1827]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true, Description = "Loan Info ARM Margin + Index")]
         public decimal? MarginPlusIndexPercent { get => _marginPlusIndexPercent; set => SetField(ref _marginPlusIndexPercent, value); }
-        private DirtyValue<decimal?> _maximumLateCharge;
+
         /// <summary>
         /// Trans Details Maximum Late Charge [2832]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Details Maximum Late Charge")]
         public decimal? MaximumLateCharge { get => _maximumLateCharge; set => SetField(ref _maximumLateCharge, value); }
-        private DirtyValue<decimal?> _maximumPayment;
+
         /// <summary>
         /// Prequal Maximum Payment [1896]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Prequal Maximum Payment")]
         public decimal? MaximumPayment { get => _maximumPayment; set => SetField(ref _maximumPayment, value); }
-        private DirtyValue<bool?> _meansAnEstimateIndicator;
+
         /// <summary>
         /// Trans Details E Means Estimate [680]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details E Means Estimate", OptionsJson = "{\"true\":\"means an estimate\"}")]
         public bool? MeansAnEstimateIndicator { get => _meansAnEstimateIndicator; set => SetField(ref _meansAnEstimateIndicator, value); }
-        private DirtyValue<decimal?> _miAdjustmentFactorLevel2;
+
         /// <summary>
         /// Insurance Mtg Ins Periodic Factor 2 [1201]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_6, Description = "Insurance Mtg Ins Periodic Factor 2")]
         public decimal? MiAdjustmentFactorLevel2 { get => _miAdjustmentFactorLevel2; set => SetField(ref _miAdjustmentFactorLevel2, value); }
-        private DirtyValue<bool?> _miDecliningRenewalsIndicator;
+
         /// <summary>
         /// Insurance Mtg Declining Renewals [3248]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Mtg Declining Renewals")]
         public bool? MiDecliningRenewalsIndicator { get => _miDecliningRenewalsIndicator; set => SetField(ref _miDecliningRenewalsIndicator, value); }
-        private DirtyValue<string> _midpointCancellation;
+
         /// <summary>
         /// Expenses Calc MIP/PMI Midpoint Pymt Cancel [1753]
         /// </summary>
         [LoanFieldProperty(Description = "Expenses Calc MIP/PMI Midpoint Pymt Cancel")]
         public string MidpointCancellation { get => _midpointCancellation; set => SetField(ref _midpointCancellation, value); }
-        private DirtyValue<decimal?> _miMonthlyPaymentLevel1;
+
         /// <summary>
         /// Insurance Mtg Ins Pymt 1 [1766]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Mtg Ins Pymt 1")]
         public decimal? MiMonthlyPaymentLevel1 { get => _miMonthlyPaymentLevel1; set => SetField(ref _miMonthlyPaymentLevel1, value); }
-        private DirtyValue<decimal?> _miMonthlyPaymentLevel2;
+
         /// <summary>
         /// Insurance Mtg Ins Pymt 2 [1770]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Mtg Ins Pymt 2")]
         public decimal? MiMonthlyPaymentLevel2 { get => _miMonthlyPaymentLevel2; set => SetField(ref _miMonthlyPaymentLevel2, value); }
-        private DirtyValue<int?> _miMonthsOfAdjustmentLevel1;
+
         /// <summary>
         /// Insurance Mtg Ins Period 1 [1198]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Mtg Ins Period 1")]
         public int? MiMonthsOfAdjustmentLevel1 { get => _miMonthsOfAdjustmentLevel1; set => SetField(ref _miMonthsOfAdjustmentLevel1, value); }
-        private DirtyValue<int?> _miMonthsOfAdjustmentLevel2;
+
         /// <summary>
         /// Insurance Mtg Ins Period 2 [1200]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Mtg Ins Period 2")]
         public int? MiMonthsOfAdjustmentLevel2 { get => _miMonthsOfAdjustmentLevel2; set => SetField(ref _miMonthsOfAdjustmentLevel2, value); }
-        private DirtyValue<decimal?> _minimumLateCharge;
+
         /// <summary>
         /// Trans Details Minimum Late Charge [2831]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Details Minimum Late Charge")]
         public decimal? MinimumLateCharge { get => _minimumLateCharge; set => SetField(ref _minimumLateCharge, value); }
-        private DirtyValue<decimal?> _minimumPayment;
+
         /// <summary>
         /// Prequal Minimum Payment [1895]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Prequal Minimum Payment")]
         public decimal? MinimumPayment { get => _minimumPayment; set => SetField(ref _minimumPayment, value); }
-        private DirtyValue<bool?> _mIPFactorLocked;
+
         /// <summary>
         /// MI Factor Field Locked [3625]
         /// </summary>
         [LoanFieldProperty(Description = "MI Factor Field Locked")]
         public bool? MIPFactorLocked { get => _mIPFactorLocked; set => SetField(ref _mIPFactorLocked, value); }
-        private DirtyValue<decimal?> _mIPrepaidAmount;
+
         /// <summary>
         /// MI Prepaid Amount [3971]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "MI Prepaid Amount")]
         public decimal? MIPrepaidAmount { get => _mIPrepaidAmount; set => SetField(ref _mIPrepaidAmount, value); }
-        private DirtyValue<bool?> _miPrepaidIndicator;
+
         /// <summary>
         /// Insurance Mtg Ins Mnths Prepaid [2978]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Mtg Ins Mnths Prepaid")]
         public bool? MiPrepaidIndicator { get => _miPrepaidIndicator; set => SetField(ref _miPrepaidIndicator, value); }
-        private DirtyValue<string> _miScheduledTerminationDate;
+
         /// <summary>
         /// Insurance Calculation Borr MI Termination Date [118]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Insurance Calculation Borr MI Termination Date")]
         public string MiScheduledTerminationDate { get => _miScheduledTerminationDate; set => SetField(ref _miScheduledTerminationDate, value); }
-        private DirtyValue<bool?> _mmiIndicator;
+
         /// <summary>
         /// Insurance MMI [723]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance MMI", OptionsJson = "{\"true\":\"MMI\"}")]
         public bool? MmiIndicator { get => _mmiIndicator; set => SetField(ref _mmiIndicator, value); }
-        private DirtyValue<decimal?> _monthlyTerm;
+
         /// <summary>
         /// Insurance Premium 1 Monthly Term Pymt [4081]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Premium 1 Monthly Term Pymt")]
         public decimal? MonthlyTerm { get => _monthlyTerm; set => SetField(ref _monthlyTerm, value); }
-        private DirtyValue<int?> _monthsOfMiPrepaid;
+
         /// <summary>
         /// Insurance Mtg Ins Mos Prepaid [1209]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Mtg Ins Mos Prepaid")]
         public int? MonthsOfMiPrepaid { get => _monthsOfMiPrepaid; set => SetField(ref _monthsOfMiPrepaid, value); }
-        private DirtyValue<decimal?> _mortgageInsuranceCancelPercent;
+
         /// <summary>
         /// Insurance Mtg Ins Cancel at % [1205]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Insurance Mtg Ins Cancel at %")]
         public decimal? MortgageInsuranceCancelPercent { get => _mortgageInsuranceCancelPercent; set => SetField(ref _mortgageInsuranceCancelPercent, value); }
-        private DirtyValue<string> _namePreparedBy;
+
         /// <summary>
         /// Loan Info Prepared By Name [2026]
         /// </summary>
         [LoanFieldProperty(Description = "Loan Info Prepared By Name")]
         public string NamePreparedBy { get => _namePreparedBy; set => SetField(ref _namePreparedBy, value); }
-        private DirtyValue<string> _newConstructionIndicator;
+
         /// <summary>
         /// Construction Loan New Construction Indicator [2645]
         /// </summary>
         [LoanFieldProperty(Description = "Construction Loan New Construction Indicator")]
         public string NewConstructionIndicator { get => _newConstructionIndicator; set => SetField(ref _newConstructionIndicator, value); }
-        private DirtyValue<int?> _numberOfPayments;
+
         /// <summary>
         /// REGZ Total # Pymts [1701]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "REGZ Total # Pymts")]
         public int? NumberOfPayments { get => _numberOfPayments; set => SetField(ref _numberOfPayments, value); }
-        private DirtyValue<DateTime?> _occupancyCertDate;
+
         /// <summary>
         /// Occupancy Cert Date [4080]
         /// </summary>
         [LoanFieldProperty(Description = "Occupancy Cert Date")]
         public DateTime? OccupancyCertDate { get => _occupancyCertDate; set => SetField(ref _occupancyCertDate, value); }
-        private DirtyValue<DateTime?> _originalContractDate;
+
         /// <summary>
         /// Construction Loan Original Contract Date [2646]
         /// </summary>
         [LoanFieldProperty(Description = "Construction Loan Original Contract Date")]
         public DateTime? OriginalContractDate { get => _originalContractDate; set => SetField(ref _originalContractDate, value); }
-        private DirtyValue<decimal?> _outstandingBalance;
+
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Construction - Outstanding Balance [3288]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "REGZ-TIL Interest Rate and Payment Summary Table - Construction - Outstanding Balance")]
         public decimal? OutstandingBalance { get => _outstandingBalance; set => SetField(ref _outstandingBalance, value); }
-        private DirtyValue<string> _paymentFrequencyType;
+
         /// <summary>
         /// REGZ Payment Frequency Type Description [3291]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "REGZ Payment Frequency Type Description")]
         public string PaymentFrequencyType { get => _paymentFrequencyType; set => SetField(ref _paymentFrequencyType, value); }
-        private DirtyValue<decimal?> _paymentIncreasePercent;
+
         /// <summary>
         /// GPM Payment Increase [Terms.GPMPmtIncr]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "GPM Payment Increase")]
         public decimal? PaymentIncreasePercent { get => _paymentIncreasePercent; set => SetField(ref _paymentIncreasePercent, value); }
-        private DirtyValue<string> _phonePreparedBy;
+
         /// <summary>
         /// Loan Info Prepared By Phone [2027]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Loan Info Prepared By Phone")]
         public string PhonePreparedBy { get => _phonePreparedBy; set => SetField(ref _phonePreparedBy, value); }
-        private DirtyValue<bool?> _pmiIndicator;
+
         /// <summary>
         /// Insurance PMI [8]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance PMI", OptionsJson = "{\"true\":\"PMI\"}")]
         public bool? PmiIndicator { get => _pmiIndicator; set => SetField(ref _pmiIndicator, value); }
-        private DirtyValue<DateTime?> _pmiMidpointCancelationDate;
+
         /// <summary>
         /// PMI Midpoint Cancelation Date [3548]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "PMI Midpoint Cancelation Date")]
         public DateTime? PmiMidpointCancelationDate { get => _pmiMidpointCancelationDate; set => SetField(ref _pmiMidpointCancelationDate, value); }
-        private DirtyValue<DateTime?> _postConsummationDisclosureReceivedDate;
+
         /// <summary>
         /// Post Consummation Disclosure Received Date [3982]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Post Consummation Disclosure Received Date")]
         public DateTime? PostConsummationDisclosureReceivedDate { get => _postConsummationDisclosureReceivedDate; set => SetField(ref _postConsummationDisclosureReceivedDate, value); }
-        private DirtyValue<DateTime?> _postConsummationDisclosureSentDate;
+
         /// <summary>
         /// Post Consummation Disclosure Sent Date [3981]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Post Consummation Disclosure Sent Date")]
         public DateTime? PostConsummationDisclosureSentDate { get => _postConsummationDisclosureSentDate; set => SetField(ref _postConsummationDisclosureSentDate, value); }
-        private DirtyValue<decimal?> _prepaidFinanceCharge;
+
         /// <summary>
         /// Fees Total Prepaid Finance Charges [949]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Fees Total Prepaid Finance Charges")]
         public decimal? PrepaidFinanceCharge { get => _prepaidFinanceCharge; set => SetField(ref _prepaidFinanceCharge, value); }
-        private DirtyValue<bool?> _propertyInsuranceIndicator;
+
         /// <summary>
         /// Insurance Property [1242]
         /// </summary>
         [LoanFieldProperty(Description = "Insurance Property", OptionsJson = "{\"true\":\"Hazard Insurance\"}")]
         public bool? PropertyInsuranceIndicator { get => _propertyInsuranceIndicator; set => SetField(ref _propertyInsuranceIndicator, value); }
-        private DirtyValue<DateTime?> _rateLockGfeDueDate;
+
         /// <summary>
         /// Rate Lock GFE Due Date [3161]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Rate Lock GFE Due Date")]
         public DateTime? RateLockGfeDueDate { get => _rateLockGfeDueDate; set => SetField(ref _rateLockGfeDueDate, value); }
-        private DirtyValue<decimal?> _ratePercent;
+
         /// <summary>
         /// Trans Details Amort Type GPM Rate [1267]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Trans Details Amort Type GPM Rate")]
         public decimal? RatePercent { get => _ratePercent; set => SetField(ref _ratePercent, value); }
-        private DirtyValue<int?> _recastPaidMonths;
+
         /// <summary>
         /// Loan Info ARM Recast Period [1712]
         /// </summary>
         [LoanFieldProperty(Description = "Loan Info ARM Recast Period")]
         public int? RecastPaidMonths { get => _recastPaidMonths; set => SetField(ref _recastPaidMonths, value); }
-        private DirtyValue<int?> _recastStopMonths;
+
         /// <summary>
         /// Loan Info ARM Recast Stop [1713]
         /// </summary>
         [LoanFieldProperty(Description = "Loan Info ARM Recast Stop")]
         public int? RecastStopMonths { get => _recastStopMonths; set => SetField(ref _recastStopMonths, value); }
-        private DirtyValue<bool?> _refundPaymentIndicator;
+
         /// <summary>
         /// Trans Details Prepymt - May/Will Not Refund [670]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Prepymt - May/Will Not Refund", OptionsJson = "{\"true\":\"may\",\"false\":\"will not\"}")]
         public bool? RefundPaymentIndicator { get => _refundPaymentIndicator; set => SetField(ref _refundPaymentIndicator, value); }
-        private DirtyValue<bool?> _refundUnearnedMipIndicator;
+
         /// <summary>
         /// Refund prorated unearned Up Front MI Premiums [3262]
         /// </summary>
         [LoanFieldProperty(Description = "Refund prorated unearned Up Front MI Premiums")]
         public bool? RefundUnearnedMipIndicator { get => _refundUnearnedMipIndicator; set => SetField(ref _refundUnearnedMipIndicator, value); }
-        private DirtyList<RegulationZInterestRatePeriod> _regulationZInterestRatePeriods;
+
         /// <summary>
         /// RegulationZ RegulationZInterestRatePeriods
         /// </summary>
         public IList<RegulationZInterestRatePeriod> RegulationZInterestRatePeriods { get => GetField(ref _regulationZInterestRatePeriods); set => SetField(ref _regulationZInterestRatePeriods, value); }
-        private DirtyList<RegulationZPayment> _regulationZPayments;
+
         /// <summary>
         /// RegulationZ RegulationZPayments
         /// </summary>
         public IList<RegulationZPayment> RegulationZPayments { get => GetField(ref _regulationZPayments); set => SetField(ref _regulationZPayments, value); }
-        private DirtyValue<string> _regzTableType;
+
         /// <summary>
         /// REGZ Summary Table Type Used in REGZ-TIL Output [REGZ_TABLETYPE]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "REGZ Summary Table Type Used in REGZ-TIL Output")]
         public string RegzTableType { get => _regzTableType; set => SetField(ref _regzTableType, value); }
-        private DirtyValue<bool?> _requiredDepositIndicator;
+
         /// <summary>
         /// REGZ Pymt Sched Required Deposit [664]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Pymt Sched Required Deposit", OptionsJson = "{\"true\":\"REQUIRED DEPOSIT: The annual % rate does not take into account your required deposit.\"}")]
         public bool? RequiredDepositIndicator { get => _requiredDepositIndicator; set => SetField(ref _requiredDepositIndicator, value); }
-        private DirtyValue<DateTime?> _revisedClosingDisclosureReceivedDate;
+
         /// <summary>
         /// Revised Closing Disclosure received date [3980]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Revised Closing Disclosure received date")]
         public DateTime? RevisedClosingDisclosureReceivedDate { get => _revisedClosingDisclosureReceivedDate; set => SetField(ref _revisedClosingDisclosureReceivedDate, value); }
-        private DirtyValue<DateTime?> _revisedClosingDisclosureSentDate;
+
         /// <summary>
         /// Revised Closing Disclosure sent date [3979]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Revised Closing Disclosure sent date")]
         public DateTime? RevisedClosingDisclosureSentDate { get => _revisedClosingDisclosureSentDate; set => SetField(ref _revisedClosingDisclosureSentDate, value); }
-        private DirtyValue<DateTime?> _revisedGfeDueDate;
+
         /// <summary>
         /// Revised GFE Due Date [3167]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Revised GFE Due Date")]
         public DateTime? RevisedGfeDueDate { get => _revisedGfeDueDate; set => SetField(ref _revisedGfeDueDate, value); }
-        private DirtyValue<decimal?> _roundedMarginPlusIndexPercent;
+
         /// <summary>
         /// Loan Info ARM Rounded Margin + Index [3296]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true, Description = "Loan Info ARM Rounded Margin + Index")]
         public decimal? RoundedMarginPlusIndexPercent { get => _roundedMarginPlusIndexPercent; set => SetField(ref _roundedMarginPlusIndexPercent, value); }
-        private DirtyValue<DateTime?> _safeHarborSentDate;
+
         /// <summary>
         /// Safe Harbor Sent Date [4015]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Safe Harbor Sent Date")]
         public DateTime? SafeHarborSentDate { get => _safeHarborSentDate; set => SetField(ref _safeHarborSentDate, value); }
-        private DirtyValue<decimal?> _samplePayments;
+
         /// <summary>
         /// Prequal Sample Pymt Amt [1958]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Prequal Sample Pymt Amt")]
         public decimal? SamplePayments { get => _samplePayments; set => SetField(ref _samplePayments, value); }
-        private DirtyValue<StringEnumValue<SecurityType>> _securityType;
+
         /// <summary>
         /// Trans Details Goods Prchsd/Prprty Owned [671]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Goods Prchsd/Prprty Owned")]
         public StringEnumValue<SecurityType> SecurityType { get => _securityType; set => SetField(ref _securityType, value); }
-        private DirtyValue<DateTime?> _sSPLSentDate;
+
         /// <summary>
         /// Settlement Services Provider List Sent Date [4014]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Settlement Services Provider List Sent Date")]
         public DateTime? SSPLSentDate { get => _sSPLSentDate; set => SetField(ref _sSPLSentDate, value); }
-        private DirtyValue<DateTime?> _tilDate;
+
         /// <summary>
         /// Rans Details Disclosed Date [3122]
         /// </summary>
         [LoanFieldProperty(Description = "Rans Details Disclosed Date")]
         public DateTime? TilDate { get => _tilDate; set => SetField(ref _tilDate, value); }
-        private DirtyValue<string> _tilDisclosedComments;
+
         /// <summary>
         /// TIL Disclosed Comments [3159]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "TIL Disclosed Comments")]
         public string TilDisclosedComments { get => _tilDisclosedComments; set => SetField(ref _tilDisclosedComments, value); }
-        private DirtyValue<StringEnumValue<DisclosureMethod>> _tilDisclosureMethod;
+
         /// <summary>
         /// TIL Disclosure Method Drpdwn [3157]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "TIL Disclosure Method Drpdwn")]
         public StringEnumValue<DisclosureMethod> TilDisclosureMethod { get => _tilDisclosureMethod; set => SetField(ref _tilDisclosureMethod, value); }
-        private DirtyValue<DateTime?> _tilLastDisclosedBorrowerReceivedDate;
+
         /// <summary>
         /// TIL Last Disclosed Borrower Received Date [3247]
         /// </summary>
         [LoanFieldProperty(Description = "TIL Last Disclosed Borrower Received Date")]
         public DateTime? TilLastDisclosedBorrowerReceivedDate { get => _tilLastDisclosedBorrowerReceivedDate; set => SetField(ref _tilLastDisclosedBorrowerReceivedDate, value); }
-        private DirtyValue<string> _tilLastDisclosedBy;
+
         /// <summary>
         /// TIL Last Disclosed By [3158]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "TIL Last Disclosed By")]
         public string TilLastDisclosedBy { get => _tilLastDisclosedBy; set => SetField(ref _tilLastDisclosedBy, value); }
-        private DirtyValue<DateTime?> _tilLastDisclosedDate;
+
         /// <summary>
         ///  Last CD Sent Date [3156]
         /// </summary>
         [LoanFieldProperty(Description = " Last CD Sent Date")]
         public DateTime? TilLastDisclosedDate { get => _tilLastDisclosedDate; set => SetField(ref _tilLastDisclosedDate, value); }
-        private DirtyValue<DateTime?> _tilRedisclosureProvidedDate;
+
         /// <summary>
         /// TIL Redisclosure Provided Date [3154]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "TIL Redisclosure Provided Date")]
         public DateTime? TilRedisclosureProvidedDate { get => _tilRedisclosureProvidedDate; set => SetField(ref _tilRedisclosureProvidedDate, value); }
-        private DirtyValue<DateTime?> _tilRedisclosureReceivedDate;
+
         /// <summary>
         /// TIL Redisclosure Rcvd Date [3155]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "TIL Redisclosure Rcvd Date")]
         public DateTime? TilRedisclosureReceivedDate { get => _tilRedisclosureReceivedDate; set => SetField(ref _tilRedisclosureReceivedDate, value); }
-        private DirtyValue<decimal?> _totalBrokerFees;
+
         /// <summary>
         /// Total Broker Fees Collected [3310]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Total Broker Fees Collected")]
         public decimal? TotalBrokerFees { get => _totalBrokerFees; set => SetField(ref _totalBrokerFees, value); }
-        private DirtyValue<decimal?> _totalLatePayment;
+
         /// <summary>
         /// Trans Details Total Late Payment [3877]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Trans Details Total Late Payment")]
         public decimal? TotalLatePayment { get => _totalLatePayment; set => SetField(ref _totalLatePayment, value); }
-        private DirtyValue<decimal?> _totalLenderFees;
+
         /// <summary>
         /// Total Lender Fees Collected [3311]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Total Lender Fees Collected")]
         public decimal? TotalLenderFees { get => _totalLenderFees; set => SetField(ref _totalLenderFees, value); }
-        private DirtyValue<decimal?> _totalOfPayments;
+
         /// <summary>
         /// REGZ Total Amt All Pymts [1207]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "REGZ Total Amt All Pymts")]
         public decimal? TotalOfPayments { get => _totalOfPayments; set => SetField(ref _totalOfPayments, value); }
-        private DirtyValue<decimal?> _totalOfPrincipalAndInterest;
+
         /// <summary>
         /// REGZ Total Amt All Principal and Interest [4071]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "REGZ Total Amt All Principal and Interest")]
         public decimal? TotalOfPrincipalAndInterest { get => _totalOfPrincipalAndInterest; set => SetField(ref _totalOfPrincipalAndInterest, value); }
-        private DirtyValue<bool?> _useCustomLenderProfile;
+
         /// <summary>
         /// Use Custom Lender Profile [3626]
         /// </summary>
         [LoanFieldProperty(Description = "Use Custom Lender Profile")]
         public bool? UseCustomLenderProfile { get => _useCustomLenderProfile; set => SetField(ref _useCustomLenderProfile, value); }
-        private DirtyValue<StringEnumValue<DaysInYear>> _useDaysInYears;
+
         /// <summary>
         /// Trans Details Amort Type Biweekly Days/Yr [SYS.X2]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Amort Type Biweekly Days/Yr")]
         public StringEnumValue<DaysInYear> UseDaysInYears { get => _useDaysInYears; set => SetField(ref _useDaysInYears, value); }
-        private DirtyValue<bool?> _usePitiForRatioIndicator;
+
         /// <summary>
         /// Trans Details Qualify Using P&amp;I [1853]
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Qualify Using P&I", OptionsJson = "{\"true\":\"Qualify using P&I\"}")]
         public bool? UsePitiForRatioIndicator { get => _usePitiForRatioIndicator; set => SetField(ref _usePitiForRatioIndicator, value); }
-        private DirtyValue<bool?> _variableRateFeatureIndicator;
+
         /// <summary>
         /// REGZ Pymt Sched Variable Rate Feature [665]
         /// </summary>
         [LoanFieldProperty(Description = "REGZ Pymt Sched Variable Rate Feature", OptionsJson = "{\"true\":\"VARIABLE RATE FEATURE: This loan contains a variable rate feature.\"}")]
         public bool? VariableRateFeatureIndicator { get => _variableRateFeatureIndicator; set => SetField(ref _variableRateFeatureIndicator, value); }
-        private DirtyValue<decimal?> _yearlyTerm;
+
         /// <summary>
         /// Insurance Premium 1 Yr Term Pymt [1710]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Premium 1 Yr Term Pymt")]
         public decimal? YearlyTerm { get => _yearlyTerm; set => SetField(ref _yearlyTerm, value); }
-        private DirtyValue<string> _yearOfMaximumPayment;
+
         /// <summary>
         /// Prequal Max Pymt Yr [1957]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Prequal Max Pymt Yr")]
         public string YearOfMaximumPayment { get => _yearOfMaximumPayment; set => SetField(ref _yearOfMaximumPayment, value); }
-        private DirtyValue<int?> _years;
+
         /// <summary>
         /// Trans Details Amort Type GPM Yrs [1266]
         /// </summary>

@@ -12,11 +12,13 @@ namespace EncompassRest.Loans
     public sealed partial class TQLDocument : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
+        private DirtyValue<DateTime?> _tQLDocumentDeliveredDate;
+
         /// <summary>
         /// TQLDocument Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
-        private DirtyValue<DateTime?> _tQLDocumentDeliveredDate;
+
         /// <summary>
         /// TQL Documents Delivered to Investor [TQLDOCDATENN01]
         /// </summary>

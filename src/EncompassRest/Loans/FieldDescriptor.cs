@@ -143,6 +143,8 @@ namespace EncompassRest.Loans
 
         public virtual bool ReadOnly => ParentDescriptor?.ReadOnly ?? Type == LoanFieldType.Virtual || PropertyAttribute?.ReadOnly == true;
 
+        public virtual bool Nullable => ParentDescriptor?.Nullable ?? Type != LoanFieldType.Virtual && PropertyAttribute?.Nullable != false;
+
         public virtual string Description => ParentDescriptor?.Description ?? PropertyAttribute?.Description;
 
         public virtual LoanEntity? LoanEntity

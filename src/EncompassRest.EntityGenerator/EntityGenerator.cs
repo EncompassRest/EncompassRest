@@ -648,6 +648,9 @@ namespace {@namespace}
                 }
             }
 
+            var fields = new StringBuilder();
+            var properties = new StringBuilder();
+
             foreach (var pair in entitySchema.Properties.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
             {
                 var propertyName = pair.Key.Replace("_", string.Empty);
@@ -683,7 +686,11 @@ namespace {@namespace}
                     }
                     if (propertySchema.ReadOnly == true)
                     {
-                        attributeProperties.Add($"ReadOnly = {propertySchema.ReadOnly?.ToString().ToLower()}");
+                        attributeProperties.Add($"ReadOnly = true");
+                    }
+                    if (propertySchema.Nullable == false)
+                    {
+                        attributeProperties.Add($"Nullable = false");
                     }
                     if (!string.IsNullOrEmpty(propertySchema.Description))
                     {
@@ -780,17 +787,24 @@ namespace {@namespace}
                         propertyType = $"DirtyList<{elementType}>";
                     }
                     var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                    sb.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {(isEntity || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
-                    sb.AppendLine($@"        /// <summary>
+                    var isNullable = propertySchema.Nullable == true;
+                    fields.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {((isEntity && !isNullable) || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
+                    properties.AppendLine($@"        /// <summary>
         /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
         /// </summary>");
                     if (attributeProperties.Count > 0)
                     {
-                        sb.AppendLine($"        [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
+                        properties.AppendLine($"        [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
                     }
-                    sb.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {(isEntity || isList || isStringDictionary ? $"GetField(ref {fieldName})" : fieldName)}; set => SetField(ref {fieldName}, value); }}");
+                    properties.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {((isEntity && !isNullable) || isList || isStringDictionary ? $"GetField(ref {fieldName})" : fieldName)}; set => SetField(ref {fieldName}, value); }}").AppendLine();
                 }
             }
+
+            sb.AppendLine(fields.ToString());
+
+            properties.Length -= Environment.NewLine.Length;
+
+            sb.Append(properties.ToString());
 
             sb.Append(
 @"    }
