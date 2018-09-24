@@ -196,6 +196,12 @@ namespace EncompassRest.Loans
         FreddieServiceLpaLog = 190,
         FreddieServiceLqaLog = 191,
         NonBorrowingOwner = 192,
-        AlertChangeCircumstance = 193
+        AlertChangeCircumstance = 193,
+        CollateralTracking = 194,
+        ExportLog = 195,
+        ExportLogServiceType = 196,
+        MIServiceArchLog = 197,
+        MIServiceMgicLog = 198,
+        MIServiceRadianLog = 199
     }
 }
