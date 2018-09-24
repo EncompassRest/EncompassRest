@@ -41,7 +41,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfePayment GfePaymentIndex
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\",\"4\":\"4\",\"5\":\"5\",\"6\":\"6\"}")]
         public int? GfePaymentIndex { get => _gfePaymentIndex; set => SetField(ref _gfePaymentIndex, value); }
 
         /// <summary>

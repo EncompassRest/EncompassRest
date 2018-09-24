@@ -33,7 +33,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RemovedLogRecord DateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
 
         /// <summary>

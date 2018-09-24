@@ -48,7 +48,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NewYorkPrimaryLender NewYorkPrimaryLenderIndex
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\"}")]
         public int? NewYorkPrimaryLenderIndex { get => _newYorkPrimaryLenderIndex; set => SetField(ref _newYorkPrimaryLenderIndex, value); }
 
         /// <summary>

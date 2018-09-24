@@ -88,43 +88,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreliminaryConditionLog DateAddedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateAddedUtc { get => _dateAddedUtc; set => SetField(ref _dateAddedUtc, value); }
 
         /// <summary>
         /// PreliminaryConditionLog DateExpected
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpected { get => _dateExpected; set => SetField(ref _dateExpected, value); }
 
         /// <summary>
         /// PreliminaryConditionLog DateFulfilled
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateFulfilled { get => _dateFulfilled; set => SetField(ref _dateFulfilled, value); }
 
         /// <summary>
         /// PreliminaryConditionLog DateReceived
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReceived { get => _dateReceived; set => SetField(ref _dateReceived, value); }
 
         /// <summary>
         /// PreliminaryConditionLog DateRequestedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRequestedUtc { get => _dateRequestedUtc; set => SetField(ref _dateRequestedUtc, value); }
 
         /// <summary>
         /// PreliminaryConditionLog DateRerequestedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRerequestedUtc { get => _dateRerequestedUtc; set => SetField(ref _dateRerequestedUtc, value); }
 
         /// <summary>
         /// PreliminaryConditionLog DateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
 
         /// <summary>

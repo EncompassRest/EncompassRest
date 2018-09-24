@@ -47,7 +47,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _confirmedCRPFS;
         private DirtyValue<bool?> _confirmedOther;
         private DirtyValue<string> _confirmedOtherDescription;
-        private EntityReference _contact;
+        private DirtyValue<EntityReference> _contact;
         private DirtyValue<bool?> _creditCounseling;
         private DirtyValue<DateTime?> _creditReceivedDate;
         private DirtyValue<StringEnumValue<CreditReportAuthorizationMethod>> _creditReportAuthorizationMethod;
@@ -543,9 +543,9 @@ namespace EncompassRest.Loans
         public string ConfirmedOtherDescription { get => _confirmedOtherDescription; set => SetField(ref _confirmedOtherDescription, value); }
 
         /// <summary>
-        /// Borrower Contact
+        /// Borrower Contact (Nullable)
         /// </summary>
-        public EntityReference Contact { get => GetField(ref _contact); set => SetField(ref _contact, value); }
+        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Underwriting Credit Counseling [2566]

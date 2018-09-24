@@ -39,7 +39,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogComment Date
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? Date { get => _date; set => SetField(ref _date, value); }
 
         /// <summary>
@@ -70,7 +69,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogComment ReviewedDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ReviewedDate { get => _reviewedDate; set => SetField(ref _reviewedDate, value); }
     }
 }

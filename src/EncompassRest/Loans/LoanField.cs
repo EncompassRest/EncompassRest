@@ -53,8 +53,6 @@ namespace EncompassRest.Loans
 
         public bool ReadOnly => Descriptor.ReadOnly;
 
-        public bool Nullable => Descriptor.Nullable;
-
         [Obsolete("Use Descriptor.Description instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public string Description => Descriptor.Description;
@@ -150,10 +148,6 @@ namespace EncompassRest.Loans
                 if (ReadOnly)
                 {
                     throw new InvalidOperationException($"cannot set value of field '{FieldId}' as it's read-only");
-                }
-                if (value == null && !Nullable)
-                {
-                    throw new InvalidOperationException($"cannot set field '{FieldId}' to null as it's non-nullable");
                 }
                 _modelPath.SetValue(Loan, propertyType =>
                 {

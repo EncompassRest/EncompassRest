@@ -24,7 +24,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _businessOwnedPercent;
         private DirtyValue<string> _businessPhone;
         private DirtyValue<decimal?> _commissionsAmount;
-        private EntityReference _contact;
+        private DirtyValue<EntityReference> _contact;
         private DirtyValue<bool?> _currentEmploymentIndicator;
         private DirtyValue<string> _email;
         private DirtyValue<string> _employerComments;
@@ -126,9 +126,9 @@ namespace EncompassRest.Loans
         public decimal? CommissionsAmount { get => _commissionsAmount; set => SetField(ref _commissionsAmount, value); }
 
         /// <summary>
-        /// Employment Contact
+        /// Employment Contact (Nullable)
         /// </summary>
-        public EntityReference Contact { get => GetField(ref _contact); set => SetField(ref _contact, value); }
+        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Employment CurrentEmploymentIndicator

@@ -44,7 +44,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog BuySideExpirationDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? BuySideExpirationDate { get => _buySideExpirationDate; set => SetField(ref _buySideExpirationDate, value); }
 
         /// <summary>
@@ -75,7 +74,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog DateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
 
         /// <summary>
@@ -116,13 +114,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog SellSideDeliveryDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? SellSideDeliveryDate { get => _sellSideDeliveryDate; set => SetField(ref _sellSideDeliveryDate, value); }
 
         /// <summary>
         /// LockConfirmLog SellSideExpirationDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? SellSideExpirationDate { get => _sellSideExpirationDate; set => SetField(ref _sellSideExpirationDate, value); }
 
         /// <summary>

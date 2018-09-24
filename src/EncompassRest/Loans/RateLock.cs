@@ -1026,7 +1026,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideExtendedLockExpires
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CompSideExtendedLockExpires { get => _compSideExtendedLockExpires; set => SetField(ref _compSideExtendedLockExpires, value); }
 
         /// <summary>
@@ -1037,7 +1036,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideInvestorStatusDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CompSideInvestorStatusDate { get => _compSideInvestorStatusDate; set => SetField(ref _compSideInvestorStatusDate, value); }
 
         /// <summary>
@@ -1112,7 +1110,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideOriginalLockExpires
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CompSideOriginalLockExpires { get => _compSideOriginalLockExpires; set => SetField(ref _compSideOriginalLockExpires, value); }
 
         /// <summary>

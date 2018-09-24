@@ -120,79 +120,66 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UnderwritingConditionLog DateAddedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateAddedUtc { get => _dateAddedUtc; set => SetField(ref _dateAddedUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateClearedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateClearedUtc { get => _dateClearedUtc; set => SetField(ref _dateClearedUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateExpected
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpected { get => _dateExpected; set => SetField(ref _dateExpected, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateExpiredUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpiredUtc { get => _dateExpiredUtc; set => SetField(ref _dateExpiredUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateFulfilledUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateFulfilledUtc { get => _dateFulfilledUtc; set => SetField(ref _dateFulfilledUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateReceived
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReceived { get => _dateReceived; set => SetField(ref _dateReceived, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateReceivedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReceivedUtc { get => _dateReceivedUtc; set => SetField(ref _dateReceivedUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateRejectedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRejectedUtc { get => _dateRejectedUtc; set => SetField(ref _dateRejectedUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateRequestedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRequestedUtc { get => _dateRequestedUtc; set => SetField(ref _dateRequestedUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateRerequestedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRerequestedUtc { get => _dateRerequestedUtc; set => SetField(ref _dateRerequestedUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateReviewedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReviewedUtc { get => _dateReviewedUtc; set => SetField(ref _dateReviewedUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog DateWaivedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateWaivedUtc { get => _dateWaivedUtc; set => SetField(ref _dateWaivedUtc, value); }
 
         /// <summary>

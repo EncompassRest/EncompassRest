@@ -609,7 +609,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUSTrackingLog LogCreatedOn
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? LogCreatedOn { get => _logCreatedOn; set => SetField(ref _logCreatedOn, value); }
 
         /// <summary>

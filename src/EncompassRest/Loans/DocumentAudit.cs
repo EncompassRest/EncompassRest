@@ -27,7 +27,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentAudit TimeStamp
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? TimeStamp { get => _timeStamp; set => SetField(ref _timeStamp, value); }
     }
 }

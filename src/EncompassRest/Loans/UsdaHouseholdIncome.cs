@@ -85,7 +85,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UsdaHouseholdIncome UsdaHouseholdIncomeIndex
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\",\"4\":\"4\",\"5\":\"5\",\"6\":\"6\"}")]
         public int? UsdaHouseholdIncomeIndex { get => _usdaHouseholdIncomeIndex; set => SetField(ref _usdaHouseholdIncomeIndex, value); }
     }
 }

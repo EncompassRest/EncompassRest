@@ -18,7 +18,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _attention;
         private DirtyValue<string> _borrowerId;
         private DirtyValue<decimal?> _cashOrMarketValueAmount;
-        private EntityReference _contact;
+        private DirtyValue<EntityReference> _contact;
         private DirtyValue<string> _depositoryAccountName;
         private DirtyValue<DateTime?> _depositoryRequestDate;
         private DirtyValue<string> _description;
@@ -86,9 +86,9 @@ namespace EncompassRest.Loans
         public decimal? CashOrMarketValueAmount { get => _cashOrMarketValueAmount; set => SetField(ref _cashOrMarketValueAmount, value); }
 
         /// <summary>
-        /// Asset Contact
+        /// Asset Contact (Nullable)
         /// </summary>
-        public EntityReference Contact { get => GetField(ref _contact); set => SetField(ref _contact, value); }
+        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Asset DepositoryAccountName

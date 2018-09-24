@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _guid;
         private DirtyValue<string> _id;
         private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private LoanAssociate _loanAssociate;
+        private DirtyValue<LoanAssociate> _loanAssociate;
         private DirtyValue<int?> _logRecordIndex;
         private DirtyValue<string> _milestoneIdString;
         private DirtyValue<bool?> _reviewedIndicator;
@@ -48,7 +48,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneLog DateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
 
         /// <summary>
@@ -87,9 +86,9 @@ namespace EncompassRest.Loans
         public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
 
         /// <summary>
-        /// MilestoneLog LoanAssociate
+        /// MilestoneLog LoanAssociate (Nullable)
         /// </summary>
-        public LoanAssociate LoanAssociate { get => GetField(ref _loanAssociate); set => SetField(ref _loanAssociate, value); }
+        public LoanAssociate LoanAssociate { get => _loanAssociate; set => SetField(ref _loanAssociate, value); }
 
         /// <summary>
         /// MilestoneLog LogRecordIndex

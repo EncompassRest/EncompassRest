@@ -46,13 +46,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EscrowDisbursementTransaction CreatedDateTimeUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CreatedDateTimeUtc { get => _createdDateTimeUtc; set => SetField(ref _createdDateTimeUtc, value); }
 
         /// <summary>
         /// EscrowDisbursementTransaction DisbursementDueDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DisbursementDueDate { get => _disbursementDueDate; set => SetField(ref _disbursementDueDate, value); }
 
         /// <summary>
@@ -93,7 +91,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EscrowDisbursementTransaction ModifiedDateTimeUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ModifiedDateTimeUtc { get => _modifiedDateTimeUtc; set => SetField(ref _modifiedDateTimeUtc, value); }
 
         /// <summary>
@@ -114,7 +111,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EscrowDisbursementTransaction TransactionDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? TransactionDate { get => _transactionDate; set => SetField(ref _transactionDate, value); }
     }
 }

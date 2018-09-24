@@ -688,10 +688,6 @@ namespace {@namespace}
                     {
                         attributeProperties.Add($"ReadOnly = true");
                     }
-                    if (propertySchema.Nullable == false)
-                    {
-                        attributeProperties.Add($"Nullable = false");
-                    }
                     if (!string.IsNullOrEmpty(propertySchema.Description))
                     {
                         attributeProperties.Add($@"Description = ""{propertySchema.Description.Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
@@ -790,9 +786,10 @@ namespace {@namespace}
                     var isNullable = propertySchema.Nullable == true;
                     fields.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {((isEntity && !isNullable) || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                     properties.AppendLine($@"        /// <summary>
-        /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
+        /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}{(isNullable ? " (Nullable)" : string.Empty)}
         /// </summary>");
-                    if (attributeProperties.Count > 0)
+                    var isField = !string.IsNullOrEmpty(propertySchema.FieldId) || propertySchema.FieldInstances?.Count > 0 || propertySchema.FieldPatterns?.Count > 0;
+                    if (isField && attributeProperties.Count > 0)
                     {
                         properties.AppendLine($"        [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
                     }

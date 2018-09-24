@@ -47,7 +47,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreviousVaLoan PreviousVaLoanIndex
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\",\"4\":\"4\",\"5\":\"5\",\"6\":\"6\"}")]
         public int? PreviousVaLoanIndex { get => _previousVaLoanIndex; set => SetField(ref _previousVaLoanIndex, value); }
 
         /// <summary>

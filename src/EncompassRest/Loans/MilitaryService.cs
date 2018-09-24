@@ -39,7 +39,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilitaryService MilitaryServiceIndex
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\",\"4\":\"4\",\"5\":\"5\",\"6\":\"6\",\"7\":\"7\"}")]
         public int? MilitaryServiceIndex { get => _militaryServiceIndex; set => SetField(ref _militaryServiceIndex, value); }
 
         /// <summary>

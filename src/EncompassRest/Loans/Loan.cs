@@ -67,7 +67,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _currentApplicationIsPrimary;
         private DirtyValue<StringEnumValue<CurrentFirstMortgageHolderType>> _currentFirstMortgageHolderType;
         private DirtyList<CustomField> _customFields;
-        private CustomModelFields _customModelFields;
+        private DirtyValue<CustomModelFields> _customModelFields;
         private DirtyList<DataTracLog> _dataTracLogs;
         private DirtyValue<bool?> _dBIndicator;
         private DirtyValue<bool?> _deductOverwireAmountIndicator;
@@ -87,7 +87,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _downPaymentPercent;
         private DirtyValue<int?> _eDeliveryVersion;
         private DirtyList<EdmLog> _edmLogs;
-        private ElliUCDDetail _elliUCDFields;
+        private DirtyValue<ElliUCDDetail> _elliUCDFields;
         private DirtyList<EmailTriggerLog> _emailTriggerLogs;
         private EmDocument _emDocument;
         private EmDocumentInvestor _emDocumentInvestor;
@@ -289,7 +289,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _referralFeeAmount;
         private DirtyValue<string> _referralPostalCode;
         private DirtyValue<string> _referralSource;
-        private EntityReference _referralSourceContact;
+        private DirtyValue<EntityReference> _referralSourceContact;
         private DirtyValue<StringEnumValue<State>> _referralState;
         private DirtyValue<decimal?> _refinanceIncludingDebtsToBePaidOffAmount;
         private DirtyList<RegistrationLog> _registrationLogs;
@@ -685,9 +685,9 @@ namespace EncompassRest.Loans
         public IList<CustomField> CustomFields { get => GetField(ref _customFields); set => SetField(ref _customFields, value); }
 
         /// <summary>
-        /// Loan CustomModelFields
+        /// Loan CustomModelFields (Nullable)
         /// </summary>
-        public CustomModelFields CustomModelFields { get => GetField(ref _customModelFields); set => SetField(ref _customModelFields, value); }
+        public CustomModelFields CustomModelFields { get => _customModelFields; set => SetField(ref _customModelFields, value); }
 
         /// <summary>
         /// Loan DataTracLogs
@@ -794,9 +794,9 @@ namespace EncompassRest.Loans
         public IList<EdmLog> EdmLogs { get => GetField(ref _edmLogs); set => SetField(ref _edmLogs, value); }
 
         /// <summary>
-        /// Loan ElliUCDFields
+        /// Loan ElliUCDFields (Nullable)
         /// </summary>
-        public ElliUCDDetail ElliUCDFields { get => GetField(ref _elliUCDFields); set => SetField(ref _elliUCDFields, value); }
+        public ElliUCDDetail ElliUCDFields { get => _elliUCDFields; set => SetField(ref _elliUCDFields, value); }
 
         /// <summary>
         /// Loan EmailTriggerLogs
@@ -1945,9 +1945,9 @@ namespace EncompassRest.Loans
         public string ReferralSource { get => _referralSource; set => SetField(ref _referralSource, value); }
 
         /// <summary>
-        /// Loan ReferralSourceContact
+        /// Loan ReferralSourceContact (Nullable)
         /// </summary>
-        public EntityReference ReferralSourceContact { get => GetField(ref _referralSourceContact); set => SetField(ref _referralSourceContact, value); }
+        public EntityReference ReferralSourceContact { get => _referralSourceContact; set => SetField(ref _referralSourceContact, value); }
 
         /// <summary>
         /// File Contacts Referral State [1832]

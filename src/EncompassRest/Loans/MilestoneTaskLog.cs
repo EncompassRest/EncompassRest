@@ -46,7 +46,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskLog AddDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? AddDate { get => _addDate; set => SetField(ref _addDate, value); }
 
         /// <summary>
@@ -102,7 +101,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskLog CompletedDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CompletedDateUtc { get => _completedDateUtc; set => SetField(ref _completedDateUtc, value); }
 
         /// <summary>
@@ -123,7 +121,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskLog DateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
 
         /// <summary>
@@ -139,7 +136,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskLog ExpectedDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ExpectedDate { get => _expectedDate; set => SetField(ref _expectedDate, value); }
 
         /// <summary>
@@ -175,7 +171,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskLog MilestoneTaskLogDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? MilestoneTaskLogDateUtc { get => _milestoneTaskLogDateUtc; set => SetField(ref _milestoneTaskLogDateUtc, value); }
 
         /// <summary>

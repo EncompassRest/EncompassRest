@@ -45,7 +45,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ProfitManagementItem ProfitManagementItemIndex
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\",\"4\":\"4\"}")]
         public int? ProfitManagementItemIndex { get => _profitManagementItemIndex; set => SetField(ref _profitManagementItemIndex, value); }
 
         /// <summary>

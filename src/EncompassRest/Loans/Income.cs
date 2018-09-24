@@ -48,7 +48,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Income OtherIncomeIndex
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\"}")]
         public int? OtherIncomeIndex { get => _otherIncomeIndex; set => SetField(ref _otherIncomeIndex, value); }
 
         /// <summary>

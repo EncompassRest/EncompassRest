@@ -19,7 +19,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CustomField DateValue
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateValue { get => _dateValue; set => SetField(ref _dateValue, value); }
 
         /// <summary>

@@ -51,13 +51,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegistrationLog DateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
 
         /// <summary>
         /// RegistrationLog ExpiredDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ExpiredDate { get => _expiredDate; set => SetField(ref _expiredDate, value); }
 
         /// <summary>
@@ -108,7 +106,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegistrationLog RegisteredDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? RegisteredDate { get => _registeredDate; set => SetField(ref _registeredDate, value); }
 
         /// <summary>

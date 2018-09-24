@@ -105,7 +105,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PaymentTransaction CommonDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CommonDate { get => _commonDate; set => SetField(ref _commonDate, value); }
 
         /// <summary>
@@ -121,7 +120,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PaymentTransaction CreatedDateTimeUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CreatedDateTimeUtc { get => _createdDateTimeUtc; set => SetField(ref _createdDateTimeUtc, value); }
 
         /// <summary>
@@ -222,7 +220,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PaymentTransaction LatePaymentDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? LatePaymentDate { get => _latePaymentDate; set => SetField(ref _latePaymentDate, value); }
 
         /// <summary>
@@ -243,25 +240,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PaymentTransaction ModifiedDateTimeUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ModifiedDateTimeUtc { get => _modifiedDateTimeUtc; set => SetField(ref _modifiedDateTimeUtc, value); }
 
         /// <summary>
         /// PaymentTransaction PaymentDepositedDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? PaymentDepositedDate { get => _paymentDepositedDate; set => SetField(ref _paymentDepositedDate, value); }
 
         /// <summary>
         /// PaymentTransaction PaymentDueDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? PaymentDueDate { get => _paymentDueDate; set => SetField(ref _paymentDueDate, value); }
 
         /// <summary>
         /// PaymentTransaction PaymentIndexDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? PaymentIndexDate { get => _paymentIndexDate; set => SetField(ref _paymentIndexDate, value); }
 
         /// <summary>
@@ -272,7 +265,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PaymentTransaction PaymentReceivedDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? PaymentReceivedDate { get => _paymentReceivedDate; set => SetField(ref _paymentReceivedDate, value); }
 
         /// <summary>
@@ -303,7 +295,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PaymentTransaction StatementDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? StatementDate { get => _statementDate; set => SetField(ref _statementDate, value); }
 
         /// <summary>
@@ -324,7 +315,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PaymentTransaction TransactionDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? TransactionDate { get => _transactionDate; set => SetField(ref _transactionDate, value); }
     }
 }

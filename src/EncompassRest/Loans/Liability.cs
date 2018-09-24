@@ -14,7 +14,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _accountIdentifier;
         private DirtyValue<bool?> _accountIndicator;
         private DirtyValue<string> _attention;
-        private EntityReference _contact;
+        private DirtyValue<EntityReference> _contact;
         private DirtyValue<DateTime?> _date;
         private DirtyValue<string> _description;
         private DirtyValue<string> _descriptionOfPurpose;
@@ -78,7 +78,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability AccountIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"true\"}")]
         public bool? AccountIndicator { get => _accountIndicator; set => SetField(ref _accountIndicator, value); }
 
         /// <summary>
@@ -88,9 +87,9 @@ namespace EncompassRest.Loans
         public string Attention { get => _attention; set => SetField(ref _attention, value); }
 
         /// <summary>
-        /// Liability Contact
+        /// Liability Contact (Nullable)
         /// </summary>
-        public EntityReference Contact { get => GetField(ref _contact); set => SetField(ref _contact, value); }
+        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Liability Request Date [FLNN98]

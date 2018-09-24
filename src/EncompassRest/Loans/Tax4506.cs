@@ -123,7 +123,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 HistoryIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"false\":\"false\",\"true\":\"true\"}")]
         public bool? HistoryIndicator { get => _historyIndicator; set => SetField(ref _historyIndicator, value); }
 
         /// <summary>
@@ -349,7 +348,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 Tax4506TIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"false\":\"false\",\"true\":\"true\"}")]
         public bool? Tax4506TIndicator { get => _tax4506TIndicator; set => SetField(ref _tax4506TIndicator, value); }
 
         /// <summary>

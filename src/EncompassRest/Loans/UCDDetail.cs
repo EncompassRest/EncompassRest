@@ -54,7 +54,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UCDDetail FeeIndex
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\",\"4\":\"4\",\"5\":\"5\",\"6\":\"6\",\"7\":\"7\",\"8\":\"8\",\"9\":\"9\",\"10\":\"10\",\"11\":\"11\",\"12\":\"12\",\"13\":\"13\",\"14\":\"14\",\"15\":\"15\",\"16\":\"16\",\"17\":\"17\",\"18\":\"18\",\"19\":\"19\",\"20\":\"20\",\"21\":\"21\",\"0\":\"0\"}")]
         public int? FeeIndex { get => _feeIndex; set => SetField(ref _feeIndex, value); }
 
         /// <summary>
@@ -80,7 +79,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UCDDetail LineNumber
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"4\":\"4\",\"5\":\"5\",\"6\":\"6\",\"7\":\"7\",\"8\":\"8\",\"9\":\"9\",\"10\":\"10\",\"11\":\"11\",\"17\":\"17\",\"3\":\"3\",\"16\":\"16\",\"13\":\"13\",\"19\":\"19\",\"12\":\"12\",\"14\":\"14\",\"15\":\"15\",\"18\":\"18\"}")]
         public int? LineNumber { get => _lineNumber; set => SetField(ref _lineNumber, value); }
 
         /// <summary>

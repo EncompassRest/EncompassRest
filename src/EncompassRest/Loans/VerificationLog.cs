@@ -97,7 +97,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VerificationLog AccessedDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? AccessedDateUtc { get => _accessedDateUtc; set => SetField(ref _accessedDateUtc, value); }
 
         /// <summary>
@@ -133,7 +132,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VerificationLog ArchiveDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ArchiveDateUtc { get => _archiveDateUtc; set => SetField(ref _archiveDateUtc, value); }
 
         /// <summary>
@@ -179,43 +177,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VerificationLog DateAddedUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateAddedUtc { get => _dateAddedUtc; set => SetField(ref _dateAddedUtc, value); }
 
         /// <summary>
         /// VerificationLog DateExpected
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpected { get => _dateExpected; set => SetField(ref _dateExpected, value); }
 
         /// <summary>
         /// VerificationLog DateExpires
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpires { get => _dateExpires; set => SetField(ref _dateExpires, value); }
 
         /// <summary>
         /// VerificationLog DateReceived
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReceived { get => _dateReceived; set => SetField(ref _dateReceived, value); }
 
         /// <summary>
         /// VerificationLog DateRequested
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRequested { get => _dateRequested; set => SetField(ref _dateRequested, value); }
 
         /// <summary>
         /// VerificationLog DateRerequested
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRerequested { get => _dateRerequested; set => SetField(ref _dateRerequested, value); }
 
         /// <summary>
         /// VerificationLog DateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
 
         /// <summary>
@@ -351,7 +342,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VerificationLog LastAttachmentDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? LastAttachmentDateUtc { get => _lastAttachmentDateUtc; set => SetField(ref _lastAttachmentDateUtc, value); }
 
         /// <summary>
@@ -367,7 +357,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VerificationLog OrderDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? OrderDateUtc { get => _orderDateUtc; set => SetField(ref _orderDateUtc, value); }
 
         /// <summary>
@@ -388,7 +377,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VerificationLog ReceiveDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ReceiveDateUtc { get => _receiveDateUtc; set => SetField(ref _receiveDateUtc, value); }
 
         /// <summary>
@@ -399,7 +387,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VerificationLog ReorderDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ReorderDateUtc { get => _reorderDateUtc; set => SetField(ref _reorderDateUtc, value); }
 
         /// <summary>
@@ -440,7 +427,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VerificationLog ReviewedDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ReviewedDateUtc { get => _reviewedDateUtc; set => SetField(ref _reviewedDateUtc, value); }
 
         /// <summary>
@@ -456,7 +442,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VerificationLog ShippingReadyDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ShippingReadyDateUtc { get => _shippingReadyDateUtc; set => SetField(ref _shippingReadyDateUtc, value); }
 
         /// <summary>
@@ -492,7 +477,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VerificationLog UnderwritingReadyDateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? UnderwritingReadyDateUtc { get => _underwritingReadyDateUtc; set => SetField(ref _underwritingReadyDateUtc, value); }
     }
 }

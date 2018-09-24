@@ -19,7 +19,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _addressStreetLine1;
         private DirtyValue<string> _altId;
         private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _applicantType;
-        private EntityReference _contact;
+        private DirtyValue<EntityReference> _contact;
         private DirtyValue<string> _county;
         private DirtyValue<int?> _durationTermMonths;
         private DirtyValue<int?> _durationTermYears;
@@ -91,9 +91,9 @@ namespace EncompassRest.Loans
         public StringEnumValue<BorrowerOrCoBorrower> ApplicantType { get => _applicantType; set => SetField(ref _applicantType, value); }
 
         /// <summary>
-        /// Residence Contact
+        /// Residence Contact (Nullable)
         /// </summary>
-        public EntityReference Contact { get => GetField(ref _contact); set => SetField(ref _contact, value); }
+        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Residence County
@@ -176,7 +176,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Residence MailingAddressIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"false\":\"false\",\"true\":\"true\"}")]
         public bool? MailingAddressIndicator { get => _mailingAddressIndicator; set => SetField(ref _mailingAddressIndicator, value); }
 
         /// <summary>

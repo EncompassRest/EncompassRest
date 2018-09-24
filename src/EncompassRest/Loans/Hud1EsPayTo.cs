@@ -98,7 +98,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo Hud1EsPayToIndex
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\"}")]
         public int? Hud1EsPayToIndex { get => _hud1EsPayToIndex; set => SetField(ref _hud1EsPayToIndex, value); }
 
         /// <summary>

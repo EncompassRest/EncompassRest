@@ -48,7 +48,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CrmLog DateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
 
         /// <summary>
