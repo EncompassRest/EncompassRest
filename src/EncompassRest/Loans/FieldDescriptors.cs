@@ -46,9 +46,14 @@ namespace EncompassRest.Loans
             _fieldPatternMappingsCollection = fieldPatternMappingsCollection;
         }
 
-        public bool ContainsKey(string fieldId) => _fieldMappingsCollection.TryGetValue(fieldId, out _) || _fieldPatternMappingsCollection.TryGetDescriptorForFieldId(fieldId, out _);
+        public bool ContainsKey(string fieldId) => TryGetValue(fieldId, out _);
 
-        public bool TryGetValue(string fieldId, out FieldDescriptor descriptor) => _fieldMappingsCollection.TryGetValue(fieldId, out descriptor) || _fieldPatternMappingsCollection.TryGetDescriptorForFieldId(fieldId, out descriptor);
+        public bool TryGetValue(string fieldId, out FieldDescriptor descriptor)
+        {
+            Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
+
+            return _fieldMappingsCollection.TryGetValue(fieldId, out descriptor) || _fieldPatternMappingsCollection.TryGetDescriptorForFieldId(fieldId, out descriptor);
+        }
 
         public IEnumerator<KeyValuePair<string, FieldDescriptor>> GetEnumerator()
         {
