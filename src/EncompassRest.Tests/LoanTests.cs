@@ -873,7 +873,7 @@ namespace EncompassRest.Tests
 
             try
             {
-                var distinctFieldMappings = LoanFieldDescriptors.FieldMappings._dictionary.Distinct(new FieldMappingComparer()).ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase);
+                var distinctFieldMappings = LoanFieldDescriptors.FieldMappings._standardFields.Distinct(new FieldMappingComparer()).ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase);
 
                 var fieldsWhereLockingCausesEncompassError = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "NEWHUD.X769", "NEWHUD.X770", "CD1.X75", "LE1.X98", "USDA.X17", "USDA.X16", "USDA.X170", "USDA.X164", "USDA.X165", "USDA.X168" };
                 
@@ -893,7 +893,7 @@ namespace EncompassRest.Tests
                 {
                     var field = loan.Fields[pair.Key];
                     Assert.AreEqual(pair.Value.ModelPath, field.ModelPath);
-                    if (field.Descriptor.Type != LoanFieldType.Virtual && !fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
+                    if (!fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
                     {
                         Assert.IsFalse(field.Locked);
                         field.Locked = true;
@@ -909,7 +909,7 @@ namespace EncompassRest.Tests
                 foreach (var pair in distinctFieldMappings)
                 {
                     var field = loan.Fields[pair.Key];
-                    if (field.Descriptor.Type != LoanFieldType.Virtual && !fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
+                    if (!fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
                     {
                         if (!field.Locked)
                         {
@@ -1582,6 +1582,16 @@ namespace EncompassRest.Tests
             Assert.AreEqual(@"{""referralSourceContact"":null}", loan.ToJson());
             loan.ReferralSourceContact = new EntityReference { EntityType = "BorrowerContact", EntityId = "123" };
             Assert.AreEqual(@"{""referralSourceContact"":{""entityId"":""123"",""entityType"":""BorrowerContact""}}", loan.ToJson());
+        }
+
+        [TestMethod]
+        public void Loan_FieldDescriptions()
+        {
+            Assert.AreEqual("Trans Details Current Status Date", LoanFieldDescriptors.StandardFields["749"].Description);
+            Assert.AreEqual("Closing Disclosure Page 3 - Due from Borrower at Closing (line 10) - Fee Account Type", LoanFieldDescriptors.StandardFields["CD3.X263"].Description);
+            Assert.AreEqual("Affiliated Business Arrangements - Affiliate Name #5", LoanFieldDescriptors.StandardFields["AB0506"].Description);
+            Assert.AreEqual("# of Co-Mortgagers", LoanFieldDescriptors.VirtualFields["COMORTGAGORCOUNT"].Description);
+            Assert.AreEqual("Last Snapshot - AUS Tracking - Underwriting Risk Assess Type - 22", LoanFieldDescriptors.VirtualFields["AUSTRACKING.AUS.X1.22"].Description);
         }
     }
 }

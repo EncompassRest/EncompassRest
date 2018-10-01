@@ -22,31 +22,29 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Itemize Escrow Payment Date [AEANN01]
         /// </summary>
-        [LoanFieldProperty(Description = "Itemize Escrow Payment Date")]
         public string Date { get => _date; set => SetField(ref _date, value); }
 
         /// <summary>
         /// Itemize Escrow Payment Balance [AEANN05]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Itemize Escrow Payment Balance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EscrowPaymentBalance { get => _escrowPaymentBalance; set => SetField(ref _escrowPaymentBalance, value); }
 
         /// <summary>
         /// Itemize Escrow Payment Description [AEANN04]
         /// </summary>
-        [LoanFieldProperty(Description = "Itemize Escrow Payment Description")]
         public string EscrowPaymentDescription { get => _escrowPaymentDescription; set => SetField(ref _escrowPaymentDescription, value); }
 
         /// <summary>
         /// Itemize Escrow Payment From [AEANN03]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Itemize Escrow Payment From")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EscrowPaymentFrom { get => _escrowPaymentFrom; set => SetField(ref _escrowPaymentFrom, value); }
 
         /// <summary>
         /// Itemize Escrow Payment To [AEANN02]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Itemize Escrow Payment To")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EscrowPaymentTo { get => _escrowPaymentTo; set => SetField(ref _escrowPaymentTo, value); }
 
         /// <summary>

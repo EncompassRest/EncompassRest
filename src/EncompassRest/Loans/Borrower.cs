@@ -451,7 +451,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Bankruptcy Status [2570]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Bankruptcy Status")]
         public StringEnumValue<BankruptcyForeclosureStatus> BankruptcyStatus { get => _bankruptcyStatus; set => SetField(ref _bankruptcyStatus, value); }
 
         /// <summary>
@@ -509,7 +508,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Credit Report Comment [4079]
         /// </summary>
-        [LoanFieldProperty(Description = "Credit Report Comment")]
         public string CommentOfCreditReport { get => _commentOfCreditReport; set => SetField(ref _commentOfCreditReport, value); }
 
         /// <summary>
@@ -550,13 +548,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Credit Counseling [2566]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Credit Counseling")]
         public bool? CreditCounseling { get => _creditCounseling; set => SetField(ref _creditCounseling, value); }
 
         /// <summary>
         /// Underwriting Credit Received Date [2336]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Credit Received Date")]
         public DateTime? CreditReceivedDate { get => _creditReceivedDate; set => SetField(ref _creditReceivedDate, value); }
 
         /// <summary>
@@ -577,13 +573,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Date of Bankruptcy [2340]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Date of Bankruptcy")]
         public DateTime? DateOfBankruptcy { get => _dateOfBankruptcy; set => SetField(ref _dateOfBankruptcy, value); }
 
         /// <summary>
         /// Underwriting Date of Foreclosure [2341]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Date of Foreclosure")]
         public DateTime? DateOfForeclosure { get => _dateOfForeclosure; set => SetField(ref _dateOfForeclosure, value); }
 
         /// <summary>
@@ -619,31 +613,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Equifax 120 Days [2335]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Equifax 120 Days")]
         public int? Equifax120Days { get => _equifax120Days; set => SetField(ref _equifax120Days, value); }
 
         /// <summary>
         /// Underwriting Equifax 150 Days [2557]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Equifax 150 Days")]
         public int? Equifax150Days { get => _equifax150Days; set => SetField(ref _equifax150Days, value); }
 
         /// <summary>
         /// Underwriting Equifax 30 Days [2332]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Equifax 30 Days")]
         public int? Equifax30Days { get => _equifax30Days; set => SetField(ref _equifax30Days, value); }
 
         /// <summary>
         /// Underwriting Equifax 60 Days [2333]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Equifax 60 Days")]
         public int? Equifax60Days { get => _equifax60Days; set => SetField(ref _equifax60Days, value); }
 
         /// <summary>
         /// Underwriting Equifax 90 Days [2334]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Equifax 90 Days")]
         public int? Equifax90Days { get => _equifax90Days; set => SetField(ref _equifax90Days, value); }
 
         /// <summary>
@@ -724,31 +713,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Experian 120 Days [2327]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Experian 120 Days")]
         public int? Experian120Days { get => _experian120Days; set => SetField(ref _experian120Days, value); }
 
         /// <summary>
         /// Underwriting Experian 150 Days [2555]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Experian 150 Days")]
         public int? Experian150Days { get => _experian150Days; set => SetField(ref _experian150Days, value); }
 
         /// <summary>
         /// Underwriting Experian 30 Days [2324]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Experian 30 Days")]
         public int? Experian30Days { get => _experian30Days; set => SetField(ref _experian30Days, value); }
 
         /// <summary>
         /// Underwriting Experian 60 Days [2325]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Experian 60 Days")]
         public int? Experian60Days { get => _experian60Days; set => SetField(ref _experian60Days, value); }
 
         /// <summary>
         /// Underwriting Experian 90 Days [2326]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Experian 90 Days")]
         public int? Experian90Days { get => _experian90Days; set => SetField(ref _experian90Days, value); }
 
         /// <summary>
@@ -854,13 +838,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Foreclosure Satisfied [2571]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Foreclosure Satisfied")]
         public DateTime? ForeclosureSatisfied { get => _foreclosureSatisfied; set => SetField(ref _foreclosureSatisfied, value); }
 
         /// <summary>
         /// Underwriting Foreclosure Status [2572]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Foreclosure Status")]
         public StringEnumValue<BankruptcyForeclosureStatus> ForeclosureStatus { get => _foreclosureStatus; set => SetField(ref _foreclosureStatus, value); }
 
         /// <summary>
@@ -886,7 +868,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Highest Credit Limit [2567]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Underwriting Highest Credit Limit")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HighestCreditLimit { get => _highestCreditLimit; set => SetField(ref _highestCreditLimit, value); }
 
         /// <summary>
@@ -1090,7 +1072,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// No Co-applicant Indicator [3840]
         /// </summary>
-        [LoanFieldProperty(Description = "No Co-applicant Indicator", OptionsJson = "{\"true\":\"No Co-applicant\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"No Co-applicant\"}")]
         public bool? HmdaNoCoApplicantIndicator { get => _hmdaNoCoApplicantIndicator; set => SetField(ref _hmdaNoCoApplicantIndicator, value); }
 
         /// <summary>
@@ -1358,7 +1340,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Mortgage on Credit [2563]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Mortgage on Credit")]
         public bool? MortgageOnCredit { get => _mortgageOnCredit; set => SetField(ref _mortgageOnCredit, value); }
 
         /// <summary>
@@ -1412,25 +1393,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Co-Borr Race No Co Applicant [4188]
         /// </summary>
-        [LoanFieldProperty(Description = "Co-Borr Race No Co Applicant", OptionsJson = "{\"true\":\"No co-applicant\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"No co-applicant\"}")]
         public bool? NoCoApplicantEthnicityIndicator { get => _noCoApplicantEthnicityIndicator; set => SetField(ref _noCoApplicantEthnicityIndicator, value); }
 
         /// <summary>
         /// Co-Borr Race No Co Applicant [3174]
         /// </summary>
-        [LoanFieldProperty(Description = "Co-Borr Race No Co Applicant", OptionsJson = "{\"true\":\"No co-applicant\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"No co-applicant\"}")]
         public bool? NoCoApplicantIndicator { get => _noCoApplicantIndicator; set => SetField(ref _noCoApplicantIndicator, value); }
 
         /// <summary>
         /// Co-Borr Race No Co Applicant [4189]
         /// </summary>
-        [LoanFieldProperty(Description = "Co-Borr Race No Co Applicant", OptionsJson = "{\"true\":\"No co-applicant\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"No co-applicant\"}")]
         public bool? NoCoApplicantSexIndicator { get => _noCoApplicantSexIndicator; set => SetField(ref _noCoApplicantSexIndicator, value); }
 
         /// <summary>
         /// Underwriting Number of Tradelines [2564]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Number of Tradelines")]
         public int? NumberofTradelines { get => _numberofTradelines; set => SetField(ref _numberofTradelines, value); }
 
         /// <summary>
@@ -1441,7 +1421,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Open Bankruptcy [2568]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Open Bankruptcy")]
         public StringEnumValue<OpenBankruptcy> OpenBankruptcy2 { get => _openBankruptcy2; set => SetField(ref _openBankruptcy2, value); }
 
         /// <summary>
@@ -1469,31 +1448,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Mortgage 120 Days [2561]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Mortgage 120 Days")]
         public int? Pass120Days { get => _pass120Days; set => SetField(ref _pass120Days, value); }
 
         /// <summary>
         /// Underwriting Mortgage 150 Days [2562]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Mortgage 150 Days")]
         public int? Pass150Days { get => _pass150Days; set => SetField(ref _pass150Days, value); }
 
         /// <summary>
         /// Underwriting Mortgage 30 Days [2558]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Mortgage 30 Days")]
         public int? Pass30Days { get => _pass30Days; set => SetField(ref _pass30Days, value); }
 
         /// <summary>
         /// Underwriting Mortgaget 60 Days [2559]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Mortgaget 60 Days")]
         public int? Pass60Days { get => _pass60Days; set => SetField(ref _pass60Days, value); }
 
         /// <summary>
         /// Underwriting Mortgage 90 Days [2560]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Mortgage 90 Days")]
         public int? Pass90Days { get => _pass90Days; set => SetField(ref _pass90Days, value); }
 
         /// <summary>
@@ -1572,13 +1546,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Prior Bankruptcy [2569]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Prior Bankruptcy")]
         public DateTime? PriorBankruptcy2 { get => _priorBankruptcy2; set => SetField(ref _priorBankruptcy2, value); }
 
         /// <summary>
         /// Underwriting Prior Foreclosure [2339]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Prior Foreclosure")]
         public bool? PriorForeclosure { get => _priorForeclosure; set => SetField(ref _priorForeclosure, value); }
 
         /// <summary>
@@ -1644,7 +1616,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Assets Subtotal Liquid Assets [915]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Assets Subtotal Liquid Assets")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? SubtotalLiquidAssetsMinusGiftAmount { get => _subtotalLiquidAssetsMinusGiftAmount; set => SetField(ref _subtotalLiquidAssetsMinusGiftAmount, value); }
 
         /// <summary>
@@ -1655,61 +1627,51 @@ namespace EncompassRest.Loans
         /// <summary>
         /// TQL - Borrower 4506T Orders - Last 4506T Investor [TQL.X7]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Borrower 4506T Orders - Last 4506T Investor")]
         public string Tax4506LastInvestor { get => _tax4506LastInvestor; set => SetField(ref _tax4506LastInvestor, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Last 4506T Order Number [TQL.X6]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Borrower 4506T Orders - Last 4506T Order Number")]
         public string Tax4506LastOrderNumber { get => _tax4506LastOrderNumber; set => SetField(ref _tax4506LastOrderNumber, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Last 4506T Year 1 [TQL.X8]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Borrower 4506T Orders - Last 4506T Year 1")]
         public int? Tax4506LastOrderYear1 { get => _tax4506LastOrderYear1; set => SetField(ref _tax4506LastOrderYear1, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Last 4506T Year 2 [TQL.X9]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Borrower 4506T Orders - Last 4506T Year 2")]
         public int? Tax4506LastOrderYear2 { get => _tax4506LastOrderYear2; set => SetField(ref _tax4506LastOrderYear2, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Last 4506T Year 3 [TQL.X10]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Borrower 4506T Orders - Last 4506T Year 3")]
         public int? Tax4506LastOrderYear3 { get => _tax4506LastOrderYear3; set => SetField(ref _tax4506LastOrderYear3, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Last 4506T Year 4 [TQL.X11]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Borrower 4506T Orders - Last 4506T Year 4")]
         public int? Tax4506LastOrderYear4 { get => _tax4506LastOrderYear4; set => SetField(ref _tax4506LastOrderYear4, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Last 4506T Products Ordered [TQL.X12]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Borrower 4506T Orders - Last 4506T Products Ordered")]
         public string Tax4506LastProductsOrdered { get => _tax4506LastProductsOrdered; set => SetField(ref _tax4506LastProductsOrdered, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Last 4506T Status [TQL.X5]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Borrower 4506T Orders - Last 4506T Status")]
         public string Tax4506LastStatus { get => _tax4506LastStatus; set => SetField(ref _tax4506LastStatus, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Last 4506T Transcript Type [TQL.X13]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Borrower 4506T Orders - Last 4506T Transcript Type")]
         public string Tax4506LastTranscriptType { get => _tax4506LastTranscriptType; set => SetField(ref _tax4506LastTranscriptType, value); }
 
         /// <summary>
         /// TQL - Coborrower 4506T Orders - Last User ID of Person Who Ordered 4506T [TQL.X26]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Coborrower 4506T Orders - Last User ID of Person Who Ordered 4506T")]
         public string Tax4506LastUserIDWhoOrdered { get => _tax4506LastUserIDWhoOrdered; set => SetField(ref _tax4506LastUserIDWhoOrdered, value); }
 
         /// <summary>
@@ -1739,25 +1701,25 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Income Year 1 Total Joint Income Borr and Co-Borrower [3327]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Income Year 1 Total Joint Income Borr and Co-Borrower")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyJointIncome1 { get => _tax4506TotalYearlyJointIncome1; set => SetField(ref _tax4506TotalYearlyJointIncome1, value); }
 
         /// <summary>
         /// Income Year 2 Total Joint Income Borr and Co-Borrower [3328]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Income Year 2 Total Joint Income Borr and Co-Borrower")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyJointIncome2 { get => _tax4506TotalYearlyJointIncome2; set => SetField(ref _tax4506TotalYearlyJointIncome2, value); }
 
         /// <summary>
         /// TQL - Coborrower 4506T Orders - Income Year 3 Total Joint Income Borr and Co-Borrower [TQL.X18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "TQL - Coborrower 4506T Orders - Income Year 3 Total Joint Income Borr and Co-Borrower")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyJointIncome3 { get => _tax4506TotalYearlyJointIncome3; set => SetField(ref _tax4506TotalYearlyJointIncome3, value); }
 
         /// <summary>
         /// TQL - Coborrower 4506T Orders - Income Year 4 Total Joint Income Borr and Co-Borrower [TQL.X19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "TQL - Coborrower 4506T Orders - Income Year 4 Total Joint Income Borr and Co-Borrower")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyJointIncome4 { get => _tax4506TotalYearlyJointIncome4; set => SetField(ref _tax4506TotalYearlyJointIncome4, value); }
 
         /// <summary>
@@ -1787,25 +1749,25 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Income Year 1 Total Variance Joint Income Borr and Co-Borrower [3329]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Income Year 1 Total Variance Joint Income Borr and Co-Borrower")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceJointIncome1 { get => _tax4506TotalYearlyVarianceJointIncome1; set => SetField(ref _tax4506TotalYearlyVarianceJointIncome1, value); }
 
         /// <summary>
         /// Income Year 2 Total Variance Joint Income Borr and Co-Borrower [3330]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Income Year 2 Total Variance Joint Income Borr and Co-Borrower")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceJointIncome2 { get => _tax4506TotalYearlyVarianceJointIncome2; set => SetField(ref _tax4506TotalYearlyVarianceJointIncome2, value); }
 
         /// <summary>
         /// TQL - Coborrower 4506T Orders - Income Year 3 Total Variance Joint Income Borr and Co-Borrower [TQL.X24]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "TQL - Coborrower 4506T Orders - Income Year 3 Total Variance Joint Income Borr and Co-Borrower")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceJointIncome3 { get => _tax4506TotalYearlyVarianceJointIncome3; set => SetField(ref _tax4506TotalYearlyVarianceJointIncome3, value); }
 
         /// <summary>
         /// TQL - Coborrower 4506T Orders - Income Year 4 Total Variance Joint Income Borr and Co-Borrower [TQL.X25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "TQL - Coborrower 4506T Orders - Income Year 4 Total Variance Joint Income Borr and Co-Borrower")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceJointIncome4 { get => _tax4506TotalYearlyVarianceJointIncome4; set => SetField(ref _tax4506TotalYearlyVarianceJointIncome4, value); }
 
         /// <summary>
@@ -1817,7 +1779,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liabilities Total Liability Balance [733]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Liabilities Total Liability Balance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalLiabilitiesBalanceAmount { get => _totalLiabilitiesBalanceAmount; set => SetField(ref _totalLiabilitiesBalanceAmount, value); }
 
         /// <summary>
@@ -1835,7 +1797,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Expenses Present Total Housing [737]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Expenses Present Total Housing")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalPresentHousingExpenseAmount { get => _totalPresentHousingExpenseAmount; set => SetField(ref _totalPresentHousingExpenseAmount, value); }
 
         /// <summary>
@@ -1846,31 +1808,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Trans Union 120 Days [2331]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Trans Union 120 Days")]
         public int? TransUnion120Days { get => _transUnion120Days; set => SetField(ref _transUnion120Days, value); }
 
         /// <summary>
         /// Underwriting Trans Union 150 Days [2556]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Trans Union 150 Days")]
         public int? TransUnion150Days { get => _transUnion150Days; set => SetField(ref _transUnion150Days, value); }
 
         /// <summary>
         /// Underwriting Trans Union 30 Days [2328]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Trans Union 30 Days")]
         public int? TransUnion30Days { get => _transUnion30Days; set => SetField(ref _transUnion30Days, value); }
 
         /// <summary>
         /// Underwriting Trans Union 60 Days [2329]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Trans Union 60 Days")]
         public int? TransUnion60Days { get => _transUnion60Days; set => SetField(ref _transUnion60Days, value); }
 
         /// <summary>
         /// Underwriting Trans Union 90 Days [2330]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Trans Union 90 Days")]
         public int? TransUnion90Days { get => _transUnion90Days; set => SetField(ref _transUnion90Days, value); }
 
         /// <summary>
@@ -2040,43 +1997,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GSE Vendor Provider Data - BankVOD (Bor,CoBor) [GSEVENDOR.X25]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - BankVOD (Bor,CoBor)")]
         public string Vendor13 { get => _vendor13; set => SetField(ref _vendor13, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - LendSnap (Bor,CoBor) [GSEVENDOR.X26]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - LendSnap (Bor,CoBor)")]
         public string Vendor14 { get => _vendor14; set => SetField(ref _vendor14, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - Quovo (Bor,CoBor) [GSEVENDOR.X27]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - Quovo (Bor,CoBor)")]
         public string Vendor15 { get => _vendor15; set => SetField(ref _vendor15, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - Roostify (Bor,CoBor) [GSEVENDOR.X28]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - Roostify (Bor,CoBor)")]
         public string Vendor16 { get => _vendor16; set => SetField(ref _vendor16, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - CoreLogic (VOE/VOI) (Bor,CoBor) [GSEVENDOR.X29]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - CoreLogic (VOE/VOI) (Bor,CoBor)")]
         public string Vendor17 { get => _vendor17; set => SetField(ref _vendor17, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - Advanced Data Income Tax Verification (Bor,CoBor) [GSEVENDOR.X30]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - Advanced Data Income Tax Verification (Bor,CoBor)")]
         public string Vendor18 { get => _vendor18; set => SetField(ref _vendor18, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - Partners Credit (IncomeVerify) (Bor,CoBor) [GSEVENDOR.X31]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - Partners Credit (IncomeVerify) (Bor,CoBor)")]
         public string Vendor19 { get => _vendor19; set => SetField(ref _vendor19, value); }
 
         /// <summary>
@@ -2087,43 +2037,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GSE Vendor Provider Data - Taxdoor 4506-T Service (Chronos) (Bor,CoBor) [GSEVENDOR.X32]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - Taxdoor 4506-T Service (Chronos) (Bor,CoBor)")]
         public string Vendor20 { get => _vendor20; set => SetField(ref _vendor20, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - ComplianceEase IRS Tax Transcript (Bor,CoBor) [GSEVENDOR.X33]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - ComplianceEase IRS Tax Transcript (Bor,CoBor)")]
         public string Vendor21 { get => _vendor21; set => SetField(ref _vendor21, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - Private Eyes (4506-Transcripts.com) (Bor,CoBor) [GSEVENDOR.X34]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - Private Eyes (4506-Transcripts.com) (Bor,CoBor)")]
         public string Vendor22 { get => _vendor22; set => SetField(ref _vendor22, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - BankVOD IRS (Bor,CoBor) [GSEVENDOR.X35]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - BankVOD IRS (Bor,CoBor)")]
         public string Vendor23 { get => _vendor23; set => SetField(ref _vendor23, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - QuestSoft (Bor,CoBor) [GSEVENDOR.X36]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - QuestSoft (Bor,CoBor)")]
         public string Vendor24 { get => _vendor24; set => SetField(ref _vendor24, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - GSEVENDOR.X37  [GSEVENDOR.X37]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - GSEVENDOR.X37 ")]
         public string Vendor25 { get => _vendor25; set => SetField(ref _vendor25, value); }
 
         /// <summary>
         /// GSE Vendor Provider Data - GSEVENDOR.X38 [GSEVENDOR.X38]
         /// </summary>
-        [LoanFieldProperty(Description = "GSE Vendor Provider Data - GSEVENDOR.X38")]
         public string Vendor26 { get => _vendor26; set => SetField(ref _vendor26, value); }
 
         /// <summary>
@@ -2179,7 +2122,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Years of Credit on File [2565]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Years of Credit on File")]
         public int? YearsofCreditOnFile { get => _yearsofCreditOnFile; set => SetField(ref _yearsofCreditOnFile, value); }
     }
 }

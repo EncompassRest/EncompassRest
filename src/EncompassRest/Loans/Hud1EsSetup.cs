@@ -36,43 +36,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Escrow Setup Annual Fee Prepaid [HUDNN58]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Annual Fee Prepaid")]
         public bool? AnnualFeePrepaid { get => _annualFeePrepaid; set => SetField(ref _annualFeePrepaid, value); }
 
         /// <summary>
         /// Escrow Setup Annual Fees [HUDNN21]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Annual Fees")]
         public int? AnnualFees { get => _annualFees; set => SetField(ref _annualFees, value); }
 
         /// <summary>
         /// Escrow Setup Date [HUDNN12]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Date")]
         public string Date { get => _date; set => SetField(ref _date, value); }
 
         /// <summary>
         /// Escrow Setup Flood Ins Disb [HUDNN16]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Flood Ins Disb")]
         public int? FloodInsDisb { get => _floodInsDisb; set => SetField(ref _floodInsDisb, value); }
 
         /// <summary>
         /// Escrow Setup Flood Ins Prepaid [HUDNN53]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Flood Ins Prepaid")]
         public bool? FloodInsPrepaid { get => _floodInsPrepaid; set => SetField(ref _floodInsPrepaid, value); }
 
         /// <summary>
         /// Escrow Setup Haz Ins Disb [HUDNN14]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Haz Ins Disb")]
         public int? HazInsDisb { get => _hazInsDisb; set => SetField(ref _hazInsDisb, value); }
 
         /// <summary>
         /// Escrow Setup Haz Ins Prepaid [HUDNN51]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Haz Ins Prepaid")]
         public bool? HazInsPrepaid { get => _hazInsPrepaid; set => SetField(ref _hazInsPrepaid, value); }
 
         /// <summary>
@@ -88,73 +81,61 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Escrow Setup Mtg Ins Disb [HUDNN15]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Mtg Ins Disb")]
         public int? MtgInsDisb { get => _mtgInsDisb; set => SetField(ref _mtgInsDisb, value); }
 
         /// <summary>
         /// Escrow Setup Mtg Ins Prepaid [HUDNN52]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Mtg Ins Prepaid")]
         public bool? MtgInsPrepaid { get => _mtgInsPrepaid; set => SetField(ref _mtgInsPrepaid, value); }
 
         /// <summary>
         /// Escrow Setup City Taxes [HUDNN17]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup City Taxes")]
         public int? SchoolTaxes { get => _schoolTaxes; set => SetField(ref _schoolTaxes, value); }
 
         /// <summary>
         /// Escrow Setup City Taxes Prepaid [HUDNN54]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup City Taxes Prepaid")]
         public bool? SchoolTaxesPrepaid { get => _schoolTaxesPrepaid; set => SetField(ref _schoolTaxesPrepaid, value); }
 
         /// <summary>
         /// Escrow Setup Tax Disb [HUDNN13]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Tax Disb")]
         public int? TaxDisb { get => _taxDisb; set => SetField(ref _taxDisb, value); }
 
         /// <summary>
         /// Escrow Setup Tax Prepaid [HUDNN50]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup Tax Prepaid")]
         public bool? TaxPrepaid { get => _taxPrepaid; set => SetField(ref _taxPrepaid, value); }
 
         /// <summary>
         /// Escrow Setup User Defined 1 [HUDNN18]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup User Defined 1")]
         public int? UserDefined1 { get => _userDefined1; set => SetField(ref _userDefined1, value); }
 
         /// <summary>
         /// Escrow Setup User Defined 2 [HUDNN19]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup User Defined 2")]
         public int? UserDefined2 { get => _userDefined2; set => SetField(ref _userDefined2, value); }
 
         /// <summary>
         /// Escrow Setup User Defined 3 [HUDNN20]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup User Defined 3")]
         public int? UserDefined3 { get => _userDefined3; set => SetField(ref _userDefined3, value); }
 
         /// <summary>
         /// Escrow Setup User Defined 1 Prepaid [HUDNN55]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup User Defined 1 Prepaid")]
         public bool? UserDefinedPrepaid1 { get => _userDefinedPrepaid1; set => SetField(ref _userDefinedPrepaid1, value); }
 
         /// <summary>
         /// Escrow Setup User Defined 2 Prepaid [HUDNN56]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup User Defined 2 Prepaid")]
         public bool? UserDefinedPrepaid2 { get => _userDefinedPrepaid2; set => SetField(ref _userDefinedPrepaid2, value); }
 
         /// <summary>
         /// Escrow Setup User Defined 3 Prepaid [HUDNN57]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Setup User Defined 3 Prepaid")]
         public bool? UserDefinedPrepaid3 { get => _userDefinedPrepaid3; set => SetField(ref _userDefinedPrepaid3, value); }
     }
 }

@@ -40,31 +40,27 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Non-Borrowing Owner File Contact - Address City [NBOCNB06]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Address City")]
         public string AddressCity { get => _addressCity; set => SetField(ref _addressCity, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Address Postal Code [NBOCNB08]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Non-Borrowing Owner File Contact - Address Postal Code")]
+        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string AddressPostalCode { get => _addressPostalCode; set => SetField(ref _addressPostalCode, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Address State [NBOCNB07]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Address State")]
         public StringEnumValue<State> AddressState { get => _addressState; set => SetField(ref _addressState, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Address Street [NBOCNB05]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Address Street")]
         public string AddressStreet { get => _addressStreet; set => SetField(ref _addressStreet, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Vesting Type [NBOCNB09]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Vesting Type")]
         public StringEnumValue<NonBorrowingOwnerBorrowerType> BorrowerType { get => _borrowerType; set => SetField(ref _borrowerType, value); }
 
         /// <summary>
@@ -75,25 +71,23 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Non-Borrowing Owner File Contact - Business Phone Number [NBOCNB13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Non-Borrowing Owner File Contact - Business Phone Number")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string BusinessPhoneNumber { get => _businessPhoneNumber; set => SetField(ref _businessPhoneNumber, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Cell Phone Number [NBOCNB14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Non-Borrowing Owner File Contact - Cell Phone Number")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string CellPhoneNumber { get => _cellPhoneNumber; set => SetField(ref _cellPhoneNumber, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Date of Birth [NBOCNB16]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Date of Birth")]
         public DateTime? DateOfBirth { get => _dateOfBirth; set => SetField(ref _dateOfBirth, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Email [NBOCNB11]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Email")]
         public string Email { get => _email; set => SetField(ref _email, value); }
 
         /// <summary>
@@ -129,19 +123,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Non-Borrowing Owner File Contact - Fax Number [NBOCNB15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Non-Borrowing Owner File Contact - Fax Number")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string FaxNumber { get => _faxNumber; set => SetField(ref _faxNumber, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - First Name [NBOCNB01]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - First Name")]
         public string FirstName { get => _firstName; set => SetField(ref _firstName, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Home Phone Number [NBOCNB10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Non-Borrowing Owner File Contact - Home Phone Number")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string HomePhoneNumber { get => _homePhoneNumber; set => SetField(ref _homePhoneNumber, value); }
 
         /// <summary>
@@ -152,13 +145,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Non-Borrowing Owner File Contact - Last Name [NBOCNB03]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Last Name")]
         public string LastName { get => _lastName; set => SetField(ref _lastName, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Middle Name [NBOCNB02]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Middle Name")]
         public string MiddleName { get => _middleName; set => SetField(ref _middleName, value); }
 
         /// <summary>
@@ -169,13 +160,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Non-Borrowing Owner File Contact - No Third-Party Email Indicator [NBOCNB12]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - No Third-Party Email Indicator")]
         public bool? No3rdPartyEmailIndicator { get => _no3rdPartyEmailIndicator; set => SetField(ref _no3rdPartyEmailIndicator, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Suffix Name [NBOCNB04]
         /// </summary>
-        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Suffix Name")]
         public string SuffixName { get => _suffixName; set => SetField(ref _suffixName, value); }
     }
 }

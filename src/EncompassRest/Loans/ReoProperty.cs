@@ -46,19 +46,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Date Acquired [FMNN22]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Date Acquired")]
         public DateTime? AcquiredDate { get => _acquiredDate; set => SetField(ref _acquiredDate, value); }
 
         /// <summary>
         /// Mortgage Property City [FMNN06]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property City")]
         public string City { get => _city; set => SetField(ref _city, value); }
 
         /// <summary>
         /// Mortgage Property Disposition Status [FMNN24]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Disposition Status")]
         public StringEnumValue<DispositionStatusType> DispositionStatusType { get => _dispositionStatusType; set => SetField(ref _dispositionStatusType, value); }
 
         /// <summary>
@@ -69,7 +66,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Type [FMNN18]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Type")]
         public StringEnumValue<GsePropertyType> GsePropertyType { get => _gsePropertyType; set => SetField(ref _gsePropertyType, value); }
 
         /// <summary>
@@ -85,97 +81,93 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Monthly Payment [FMNN16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Mortgage Property Monthly Payment")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LienInstallmentAmount { get => _lienInstallmentAmount; set => SetField(ref _lienInstallmentAmount, value); }
 
         /// <summary>
         /// Mortgage Property Unpaid Balance [FMNN17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Mortgage Property Unpaid Balance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LienUpbAmount { get => _lienUpbAmount; set => SetField(ref _lienUpbAmount, value); }
 
         /// <summary>
         /// Mortgage Property Monthly Expense [FMNN21]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Monthly Expense")]
         public string MaintenanceExpenseAmount { get => _maintenanceExpenseAmount; set => SetField(ref _maintenanceExpenseAmount, value); }
 
         /// <summary>
         /// Mortgage Property Market Value [FMNN19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Mortgage Property Market Value")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MarketValueAmount { get => _marketValueAmount; set => SetField(ref _marketValueAmount, value); }
 
         /// <summary>
         /// Mortgage Property No Link to Doc Tracking [FMNN97]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Mortgage Property No Link to Doc Tracking")]
+        [LoanFieldProperty(ReadOnly = true)]
         public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => SetField(ref _noLinkToDocTrackIndicator, value); }
 
         /// <summary>
         /// Mortgage Property Participation Percent [FMNN14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Mortgage Property Participation Percent")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ParticipationPercentage { get => _participationPercentage; set => SetField(ref _participationPercentage, value); }
 
         /// <summary>
         /// Mortgage Property Percent of Units Rented [FMNN26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Mortgage Property Percent of Units Rented")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PercentageofRental { get => _percentageofRental; set => SetField(ref _percentageofRental, value); }
 
         /// <summary>
         /// Mortgage Property Zipcode [FMNN08]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Mortgage Property Zipcode")]
+        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
 
         /// <summary>
         /// Mortgage Property Print - See Attached Authorization [FMNN36]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Print - See Attached Authorization", OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
         public bool? PrintAttachIndicator { get => _printAttachIndicator; set => SetField(ref _printAttachIndicator, value); }
 
         /// <summary>
         /// Mortgage Property Print User Name as Title [FMNN38]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Print User Name as Title", OptionsJson = "{\"true\":\"Print user's name as title\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's name as title\"}")]
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
 
         /// <summary>
         /// Mortgage Property Use of Property [FMNN41]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Use of Property", OptionsJson = "{\"PrimaryResidence\":\"Primary Residence\",\"SecondHome\":\"Second Home\",\"Investor\":\"Investment Property\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"PrimaryResidence\":\"Primary Residence\",\"SecondHome\":\"Second Home\",\"Investor\":\"Investment Property\"}")]
         public StringEnumValue<PropertyUsageType> PropertyUsageType { get => _propertyUsageType; set => SetField(ref _propertyUsageType, value); }
 
         /// <summary>
         /// Mortgage Property Purchase Price [FMNN23]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Purchase Price")]
         public int? PurchasePrice { get => _purchasePrice; set => SetField(ref _purchasePrice, value); }
 
         /// <summary>
         /// Mortgage Property Monthly Gross Rental Income [FMNN20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Mortgage Property Monthly Gross Rental Income")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RentalIncomeGrossAmount { get => _rentalIncomeGrossAmount; set => SetField(ref _rentalIncomeGrossAmount, value); }
 
         /// <summary>
         /// Mortgage Property Net Rental Income [FMNN32]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Net Rental Income")]
         public decimal? RentalIncomeNetAmount { get => _rentalIncomeNetAmount; set => SetField(ref _rentalIncomeNetAmount, value); }
 
         /// <summary>
         /// Mortgage Property Comments [FMNN25]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Comments")]
         public string ReoComments { get => _reoComments; set => SetField(ref _reoComments, value); }
 
         /// <summary>
         /// Mortgage Property REO ID [FMNN43]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Mortgage Property REO ID")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string ReoId { get => _reoId; set => SetField(ref _reoId, value); }
 
         /// <summary>
@@ -186,43 +178,39 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Request Date [FMNN98]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Request Date")]
         public DateTime? RequestDate { get => _requestDate; set => SetField(ref _requestDate, value); }
 
         /// <summary>
         /// Mortgage Property State [FMNN07]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property State")]
         public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
 
         /// <summary>
         /// Mortgage Property Address [FMNN04]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Address")]
         public string StreetAddress { get => _streetAddress; set => SetField(ref _streetAddress, value); }
 
         /// <summary>
         /// Mortgage Property Is the Subject Property [FMNN28]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property Is the Subject Property", OptionsJson = "{\"true\":\"Subject Property\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Subject Property\"}")]
         public bool? SubjectIndicator { get => _subjectIndicator; set => SetField(ref _subjectIndicator, value); }
 
         /// <summary>
         /// Mortgage Property From Title [FMNN37]
         /// </summary>
-        [LoanFieldProperty(Description = "Mortgage Property From Title")]
         public string Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// Mortgage Property From Fax [FMNN45]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Mortgage Property From Fax")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
 
         /// <summary>
         /// Mortgage Property From Phone [FMNN44]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Mortgage Property From Phone")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
     }
 }

@@ -55,7 +55,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Request ID [DDNN35]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Depository Request ID")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string AltId { get => _altId; set => SetField(ref _altId, value); }
 
         /// <summary>
@@ -71,7 +71,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Attention Contact [DDNN03]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository Attention Contact")]
         public string Attention { get => _attention; set => SetField(ref _attention, value); }
 
         /// <summary>
@@ -98,7 +97,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Request Date [DDNN98]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository Request Date")]
         public DateTime? DepositoryRequestDate { get => _depositoryRequestDate; set => SetField(ref _depositoryRequestDate, value); }
 
         /// <summary>
@@ -114,43 +112,38 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Attention City [DDNN05]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository Attention City")]
         public string HolderAddressCity { get => _holderAddressCity; set => SetField(ref _holderAddressCity, value); }
 
         /// <summary>
         /// Depository Attention Zipcode [DDNN07]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Depository Attention Zipcode")]
+        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string HolderAddressPostalCode { get => _holderAddressPostalCode; set => SetField(ref _holderAddressPostalCode, value); }
 
         /// <summary>
         /// Depository Attention State [DDNN06]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository Attention State")]
         public StringEnumValue<State> HolderAddressState { get => _holderAddressState; set => SetField(ref _holderAddressState, value); }
 
         /// <summary>
         /// Depository Address [DDNN04]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository Address")]
         public string HolderAddressStreetLine1 { get => _holderAddressStreetLine1; set => SetField(ref _holderAddressStreetLine1, value); }
 
         /// <summary>
         /// Depository Comments [DDNN29]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository Comments")]
         public string HolderComments { get => _holderComments; set => SetField(ref _holderComments, value); }
 
         /// <summary>
         /// Depository Email [DDNN28]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository Email")]
         public string HolderEmail { get => _holderEmail; set => SetField(ref _holderEmail, value); }
 
         /// <summary>
         /// Depository Fax [DDNN27]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Depository Fax")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string HolderFax { get => _holderFax; set => SetField(ref _holderFax, value); }
 
         /// <summary>
@@ -161,7 +154,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Phone [DDNN26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Depository Phone")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string HolderPhone { get => _holderPhone; set => SetField(ref _holderPhone, value); }
 
         /// <summary>
@@ -182,7 +175,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Assets Life Ins Face Amt [303]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Assets Life Ins Face Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LifeInsuranceFaceValueAmount { get => _lifeInsuranceFaceValueAmount; set => SetField(ref _lifeInsuranceFaceValueAmount, value); }
 
         /// <summary>
@@ -193,49 +186,47 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository No Link to Doc Tracking [DDNN97]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Depository No Link to Doc Tracking")]
+        [LoanFieldProperty(ReadOnly = true)]
         public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => SetField(ref _noLinkToDocTrackIndicator, value); }
 
         /// <summary>
         /// Depository Request is For [DDNN24]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository Request is For")]
         public StringEnumValue<Owner> Owner { get => _owner; set => SetField(ref _owner, value); }
 
         /// <summary>
         /// Depository Print - See Attached Authorization [DDNN36]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository Print - See Attached Authorization", OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
 
         /// <summary>
         /// Depository Print User Name as Title [DDNN38]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository Print User Name as Title", OptionsJson = "{\"true\":\"Print user's name as title\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's name as title\"}")]
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
 
         /// <summary>
         /// Depository From Title [DDNN37]
         /// </summary>
-        [LoanFieldProperty(Description = "Depository From Title")]
         public string Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// Depository From Fax [DDNN45]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Depository From Fax")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
 
         /// <summary>
         /// Depository From Phone [DDNN44]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Depository From Phone")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
 
         /// <summary>
         /// Depository Total Balance [DDNN34]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Depository Total Balance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? Total { get => _total; set => SetField(ref _total, value); }
 
         /// <summary>

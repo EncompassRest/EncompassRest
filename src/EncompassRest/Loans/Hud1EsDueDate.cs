@@ -26,19 +26,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Escrow Annual Fee Date [HUDNN49]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Annual Fee Date")]
         public DateTime? AnnualFee { get => _annualFee; set => SetField(ref _annualFee, value); }
 
         /// <summary>
         /// Escrow Flood Ins Disb Date [HUDNN44]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Flood Ins Disb Date")]
         public DateTime? FloodInsDisb { get => _floodInsDisb; set => SetField(ref _floodInsDisb, value); }
 
         /// <summary>
         /// Escrow Haz Ins Disb Date [HUDNN42]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Haz Ins Disb Date")]
         public DateTime? HazInsDisb { get => _hazInsDisb; set => SetField(ref _hazInsDisb, value); }
 
         /// <summary>
@@ -54,37 +51,31 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Escrow Mtg Ins Disb Date [HUDNN43]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Mtg Ins Disb Date")]
         public DateTime? MtgInsDisb { get => _mtgInsDisb; set => SetField(ref _mtgInsDisb, value); }
 
         /// <summary>
         /// Escrow City Taxes Date [HUDNN45]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow City Taxes Date")]
         public DateTime? SchoolTaxes { get => _schoolTaxes; set => SetField(ref _schoolTaxes, value); }
 
         /// <summary>
         /// Escrow Tax Disb Date [HUDNN41]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow Tax Disb Date")]
         public DateTime? TaxDisb { get => _taxDisb; set => SetField(ref _taxDisb, value); }
 
         /// <summary>
         /// Escrow User Defined 1 Date [HUDNN46]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow User Defined 1 Date")]
         public DateTime? UserDefined1 { get => _userDefined1; set => SetField(ref _userDefined1, value); }
 
         /// <summary>
         /// Escrow User Defined 2 Date [HUDNN47]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow User Defined 2 Date")]
         public DateTime? UserDefined2 { get => _userDefined2; set => SetField(ref _userDefined2, value); }
 
         /// <summary>
         /// Escrow User Defined 3 Date [HUDNN48]
         /// </summary>
-        [LoanFieldProperty(Description = "Escrow User Defined 3 Date")]
         public DateTime? UserDefined3 { get => _userDefined3; set => SetField(ref _userDefined3, value); }
     }
 }

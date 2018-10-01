@@ -32,7 +32,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Initial Adjustment Months [3289]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "REGZ-TIL Interest Rate and Payment Summary Table - Initial Adjustment Months")]
+        [LoanFieldProperty(ReadOnly = true)]
         public int? AdjustmentMonths { get => _adjustmentMonths; set => SetField(ref _adjustmentMonths, value); }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Worst Case Scenario Monthly Payment [3290]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "REGZ-TIL Interest Rate and Payment Summary Table - Worst Case Scenario Monthly Payment")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }
 
         /// <summary>

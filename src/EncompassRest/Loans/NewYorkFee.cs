@@ -26,37 +26,32 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NY Fees Company Address [NYFEESNN02]
         /// </summary>
-        [LoanFieldProperty(Description = "NY Fees Company Address")]
         public string Address { get => _address; set => SetField(ref _address, value); }
 
         /// <summary>
         /// NY Fees Amount [NYFEESNN08]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "NY Fees Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
 
         /// <summary>
         /// NY Fees Company City [NYFEESNN03]
         /// </summary>
-        [LoanFieldProperty(Description = "NY Fees Company City")]
         public string City { get => _city; set => SetField(ref _city, value); }
 
         /// <summary>
         /// NY Fees Comments [NYFEESNN06]
         /// </summary>
-        [LoanFieldProperty(Description = "NY Fees Comments")]
         public string Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// NY Fees Date [NYFEESNN07]
         /// </summary>
-        [LoanFieldProperty(Description = "NY Fees Date")]
         public DateTime? Date { get => _date; set => SetField(ref _date, value); }
 
         /// <summary>
         /// NY Fees Descr [NYFEESNN09]
         /// </summary>
-        [LoanFieldProperty(Description = "NY Fees Descr")]
         public string FeeType { get => _feeType; set => SetField(ref _feeType, value); }
 
         /// <summary>
@@ -67,7 +62,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NY Fees Company Name [NYFEESNN01]
         /// </summary>
-        [LoanFieldProperty(Description = "NY Fees Company Name")]
         public string Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
@@ -78,13 +72,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NY Fees Company Zip [NYFEESNN05]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "NY Fees Company Zip")]
+        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
 
         /// <summary>
         /// NY Fees Company State [NYFEESNN04]
         /// </summary>
-        [LoanFieldProperty(Description = "NY Fees Company State")]
         public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
     }
 }

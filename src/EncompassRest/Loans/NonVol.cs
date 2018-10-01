@@ -27,25 +27,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Adjustment Amount [UNFLNN04]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Adjustment Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentAmount { get => _adjustmentAmount; set => SetField(ref _adjustmentAmount, value); }
 
         /// <summary>
         /// Adjustment Description [UNFLNN02]
         /// </summary>
-        [LoanFieldProperty(Description = "Adjustment Description")]
         public string AdjustmentDescription { get => _adjustmentDescription; set => SetField(ref _adjustmentDescription, value); }
 
         /// <summary>
         /// Adjustment Other Description [UNFLNN03]
         /// </summary>
-        [LoanFieldProperty(Description = "Adjustment Other Description")]
         public string AdjustmentOtherDescription { get => _adjustmentOtherDescription; set => SetField(ref _adjustmentOtherDescription, value); }
 
         /// <summary>
         /// UCD Adjustment Type [UNFLNN01]
         /// </summary>
-        [LoanFieldProperty(Description = "UCD Adjustment Type")]
         public StringEnumValue<NonVolAdjustmentType> AdjustmentType { get => _adjustmentType; set => SetField(ref _adjustmentType, value); }
 
         /// <summary>
@@ -56,7 +53,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Will be Paid Off and will be included [UNFLNN05]
         /// </summary>
-        [LoanFieldProperty(Description = "Liability Will be Paid Off and will be included", OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
         public bool? IncludedIndicator { get => _includedIndicator; set => SetField(ref _includedIndicator, value); }
 
         /// <summary>
@@ -72,25 +69,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Paid By [UNFLNN07]
         /// </summary>
-        [LoanFieldProperty(Description = "Paid By")]
         public StringEnumValue<PaidToOrBy> PaidBy { get => _paidBy; set => SetField(ref _paidBy, value); }
 
         /// <summary>
         /// Paid To [UNFLNN09]
         /// </summary>
-        [LoanFieldProperty(Description = "Paid To")]
         public StringEnumValue<PaidToOrBy> PaidTo { get => _paidTo; set => SetField(ref _paidTo, value); }
 
         /// <summary>
         /// POC Indicator [UNFLNN06]
         /// </summary>
-        [LoanFieldProperty(Description = "POC Indicator", OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
         public bool? POCIndicator { get => _pOCIndicator; set => SetField(ref _pOCIndicator, value); }
 
         /// <summary>
         /// PrincipalCureAddendum Amount [UNFLNN08]
         /// </summary>
-        [LoanFieldProperty(Description = "PrincipalCureAddendum Amount")]
         public string PrincipalCureAddendum { get => _principalCureAddendum; set => SetField(ref _principalCureAddendum, value); }
     }
 }

@@ -41,7 +41,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD 92900 LT Seller Funded DAP [3008]
         /// </summary>
-        [LoanFieldProperty(Description = "HUD 92900 LT Seller Funded DAP")]
         public bool? SellerFundedDapIndicator { get => _sellerFundedDapIndicator; set => SetField(ref _sellerFundedDapIndicator, value); }
 
         /// <summary>

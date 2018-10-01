@@ -28,7 +28,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Profit Mgt Other Descr [PM27]
         /// </summary>
-        [LoanFieldProperty(Description = "Profit Mgt Other Descr")]
         public string Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>

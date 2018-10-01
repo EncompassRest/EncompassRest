@@ -32,7 +32,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - House Income - Written Analysis Documenting Annual and Repayment Income [USDA.X193]
         /// </summary>
-        [LoanFieldProperty(Description = "USDA - House Income - Written Analysis Documenting Annual and Repayment Income")]
         public string AnalysisDocumenting { get => _analysisDocumenting; set => SetField(ref _analysisDocumenting, value); }
 
         /// <summary>

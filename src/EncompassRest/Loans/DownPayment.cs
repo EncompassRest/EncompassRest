@@ -18,13 +18,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Down Pymt Amt [1335]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Details Down Pymt Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
 
         /// <summary>
         /// Borr Funds to Close - Down Pymt Source [34]
         /// </summary>
-        [LoanFieldProperty(Description = "Borr Funds to Close - Down Pymt Source")]
         public StringEnumValue<DownPaymentType> DownPaymentType { get => _downPaymentType; set => SetField(ref _downPaymentType, value); }
 
         /// <summary>
@@ -35,7 +34,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr Funds to Close - Down Pymt Source Descr [191]
         /// </summary>
-        [LoanFieldProperty(Description = "Borr Funds to Close - Down Pymt Source Descr")]
         public string SourceDescription { get => _sourceDescription; set => SetField(ref _sourceDescription, value); }
     }
 }

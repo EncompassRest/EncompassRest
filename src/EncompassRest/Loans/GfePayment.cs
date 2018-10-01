@@ -51,25 +51,23 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Pymt S5 Index Rate [RE88395.X313]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "MLDS Pymt S5 Index Rate")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? IndexRate { get => _indexRate; set => SetField(ref _indexRate, value); }
 
         /// <summary>
         /// MLDS Pymt S6 Is Loan Balance Reduced [RE88395.X311]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Pymt S6 Is Loan Balance Reduced")]
         public StringEnumValue<YesOrNo> IsBalanceReduced { get => _isBalanceReduced; set => SetField(ref _isBalanceReduced, value); }
 
         /// <summary>
         /// MLDS Pymt S6 Loan Type Explanation [RE88395.X306]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Pymt S6 Loan Type Explanation")]
         public string LoanTypeExplanation { get => _loanTypeExplanation; set => SetField(ref _loanTypeExplanation, value); }
 
         /// <summary>
         /// MLDS Pymt S5 Margin Rate [RE88395.X314]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "MLDS Pymt S5 Margin Rate")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? MarginRate { get => _marginRate; set => SetField(ref _marginRate, value); }
 
         /// <summary>
@@ -134,7 +132,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Pymt S5 Rate Month 2 Thru Yr 5 [RE88395.X304]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "MLDS Pymt S5 Rate Month 2 Thru Yr 5")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? RateInMonth2 { get => _rateInMonth2; set => SetField(ref _rateInMonth2, value); }
 
         /// <summary>
@@ -146,7 +144,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Pymt S6 Loan Balance Reduced Status [RE88395.X312]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Pymt S6 Loan Balance Reduced Status")]
         public StringEnumValue<ReducedStatus> ReducedStatus { get => _reducedStatus; set => SetField(ref _reducedStatus, value); }
     }
 }

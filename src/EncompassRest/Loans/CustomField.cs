@@ -39,7 +39,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Custom Field Value [CUSTNNFV]
         /// </summary>
-        [LoanFieldProperty(Description = "Custom Field Value")]
         public string StringValue { get => _stringValue; set => SetField(ref _stringValue, value); }
     }
 }

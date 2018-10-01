@@ -259,775 +259,685 @@ namespace EncompassRest.Loans
         /// <summary>
         /// REGZ Acknowledgement Day [REGZ_DAY]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Acknowledgement Day")]
         public string AcknowledgedDay { get => _acknowledgedDay; set => SetField(ref _acknowledgedDay, value); }
 
         /// <summary>
         /// REGZ Acknowledgement Mo [REGZ_MONTH]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Acknowledgement Mo")]
         public string AcknowledgedMonth { get => _acknowledgedMonth; set => SetField(ref _acknowledgedMonth, value); }
 
         /// <summary>
         /// REGZ Acknowledgement Yr [REGZ_YR]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Acknowledgement Yr")]
         public string AcknowledgedYear { get => _acknowledgedYear; set => SetField(ref _acknowledgedYear, value); }
 
         /// <summary>
         /// Initial Acquisition of Land [1964]
         /// </summary>
-        [LoanFieldProperty(Description = "Initial Acquisition of Land")]
         public bool? Acquisition { get => _acquisition; set => SetField(ref _acquisition, value); }
 
         /// <summary>
         /// REGZ Pymt Sched Additional Info [666]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Pymt Sched Additional Info")]
         public string AdditionalArmInformation { get => _additionalArmInformation; set => SetField(ref _additionalArmInformation, value); }
 
         /// <summary>
         /// Trans Details Dates/Num Discl Are Estimates [679]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Dates/Num Discl Are Estimates", OptionsJson = "{\"true\":\"all dates and numerical disclosures except the late payment disclosures are estimates.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"all dates and numerical disclosures except the late payment disclosures are estimates.\"}")]
         public bool? AllDateAndNumericalDisclosuresIndicator { get => _allDateAndNumericalDisclosuresIndicator; set => SetField(ref _allDateAndNumericalDisclosuresIndicator, value); }
 
         /// <summary>
         /// REGZ Total Amt Financed [948]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "REGZ Total Amt Financed")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountFinanced { get => _amountFinanced; set => SetField(ref _amountFinanced, value); }
 
         /// <summary>
         /// Trans Details APR [799]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Trans Details APR")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? AprPercent { get => _aprPercent; set => SetField(ref _aprPercent, value); }
 
         /// <summary>
         /// Trans Details APR - Display field with KBYO rounding rules [KBYO.XD799]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details APR - Display field with KBYO rounding rules")]
         public string AprPercentUI { get => _aprPercentUI; set => SetField(ref _aprPercentUI, value); }
 
         /// <summary>
         /// Prequal ARM Index [1960]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Prequal ARM Index")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string ArmDisclosureDescription { get => _armDisclosureDescription; set => SetField(ref _armDisclosureDescription, value); }
 
         /// <summary>
         /// Trans Details Assumption May/May Not [677]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Assumption May/May Not")]
         public StringEnumValue<AssumptionOnYourProperty> AssumptionOnYourProperty { get => _assumptionOnYourProperty; set => SetField(ref _assumptionOnYourProperty, value); }
 
         /// <summary>
         /// Borrower Intent to Continue Date [3197]
         /// </summary>
-        [LoanFieldProperty(Description = "Borrower Intent to Continue Date")]
         public DateTime? BorrowerIntendToContinueDate { get => _borrowerIntendToContinueDate; set => SetField(ref _borrowerIntendToContinueDate, value); }
 
         /// <summary>
         /// Borrower Intends to Continue Chkbx [3164]
         /// </summary>
-        [LoanFieldProperty(Description = "Borrower Intends to Continue Chkbx")]
         public bool? BorrowerIntendToContinueIndicator { get => _borrowerIntendToContinueIndicator; set => SetField(ref _borrowerIntendToContinueIndicator, value); }
 
         /// <summary>
         /// Insurance Borr MI Termination Date [109]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Insurance Borr MI Termination Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string BorrowerMiTerminationDate { get => _borrowerMiTerminationDate; set => SetField(ref _borrowerMiTerminationDate, value); }
 
         /// <summary>
         /// Expenses Calc MIP/PMI Based On Remain Bal [1775]
         /// </summary>
-        [LoanFieldProperty(Description = "Expenses Calc MIP/PMI Based On Remain Bal")]
         public string CalculateBasedOnRemainingBalance { get => _calculateBasedOnRemainingBalance; set => SetField(ref _calculateBasedOnRemainingBalance, value); }
 
         /// <summary>
         /// Charges for the insurance are added to your loan payments [3531]
         /// </summary>
-        [LoanFieldProperty(Description = "Charges for the insurance are added to your loan payments")]
         public bool? ChargesAddedToPaymentsIndicator { get => _chargesAddedToPaymentsIndicator; set => SetField(ref _chargesAddedToPaymentsIndicator, value); }
 
         /// <summary>
         /// Charges for the insurance are collected upfront at loan closing [3532]
         /// </summary>
-        [LoanFieldProperty(Description = "Charges for the insurance are collected upfront at loan closing")]
         public bool? ChargesAtLoanClosingIndicator { get => _chargesAtLoanClosingIndicator; set => SetField(ref _chargesAtLoanClosingIndicator, value); }
 
         /// <summary>
         /// GFE Changed Circumstance Comments [3166]
         /// </summary>
-        [LoanFieldProperty(Description = "GFE Changed Circumstance Comments")]
         public string CircumstanceChangeReason { get => _circumstanceChangeReason; set => SetField(ref _circumstanceChangeReason, value); }
 
         /// <summary>
         /// Changed Circumstance Rcvd Date [3165]
         /// </summary>
-        [LoanFieldProperty(Description = "Changed Circumstance Rcvd Date")]
         public DateTime? CircumstanceChangeReceivedDate { get => _circumstanceChangeReceivedDate; set => SetField(ref _circumstanceChangeReceivedDate, value); }
 
         /// <summary>
         /// Closing Disclosure Received Date [3978]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Closing Disclosure Received Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? ClosingDisclosureReceivedDate { get => _closingDisclosureReceivedDate; set => SetField(ref _closingDisclosureReceivedDate, value); }
 
         /// <summary>
         /// Closing Disclosure Sent Date [3977]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Closing Disclosure Sent Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? ClosingDisclosureSentDate { get => _closingDisclosureSentDate; set => SetField(ref _closingDisclosureSentDate, value); }
 
         /// <summary>
         /// Construction 1st Int. Change Adj. [Constr.FstIntChgAdj]
         /// </summary>
-        [LoanFieldProperty(Description = "Construction 1st Int. Change Adj.")]
         public StringEnumValue<ConstructionFirstIntChangeAdjType> ConstructionFirstIntChangeAdjType { get => _constructionFirstIntChangeAdjType; set => SetField(ref _constructionFirstIntChangeAdjType, value); }
 
         /// <summary>
         /// Loan Info Constr Loan Descr [1404]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Info Constr Loan Descr")]
         public string ConstructionLoanDescription { get => _constructionLoanDescription; set => SetField(ref _constructionLoanDescription, value); }
 
         /// <summary>
         /// REGZ Construction Mortgage Est Interest On [SYS.X6]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Construction Mortgage Est Interest On")]
         public StringEnumValue<ConstructionLoanMethod> ConstructionLoanMethod { get => _constructionLoanMethod; set => SetField(ref _constructionLoanMethod, value); }
 
         /// <summary>
         /// Loan Info Constr Loan Period [1176]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Info Constr Loan Period")]
         public int? ConstructionPeriodMonths { get => _constructionPeriodMonths; set => SetField(ref _constructionPeriodMonths, value); }
 
         /// <summary>
         /// Loan Info Constr Loan Interest Rate [1677]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Loan Info Constr Loan Interest Rate")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? ConstructionRatePercent { get => _constructionRatePercent; set => SetField(ref _constructionRatePercent, value); }
 
         /// <summary>
         /// Construction Refinance Indicator [Constr.Refi]
         /// </summary>
-        [LoanFieldProperty(Description = "Construction Refinance Indicator")]
         public bool? ConstructionRefinanceIndicator { get => _constructionRefinanceIndicator; set => SetField(ref _constructionRefinanceIndicator, value); }
 
         /// <summary>
         /// Insurance Premium Credit Disability [1704]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Premium Credit Disability")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditDisability { get => _creditDisability; set => SetField(ref _creditDisability, value); }
 
         /// <summary>
         /// Insurance Credit Disability [1698]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Credit Disability", OptionsJson = "{\"true\":\"Credit insurance\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Credit insurance\"}")]
         public bool? CreditDisabilityIndicator { get => _creditDisabilityIndicator; set => SetField(ref _creditDisabilityIndicator, value); }
 
         /// <summary>
         /// Insurance Premium Credit Life [1703]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Premium Credit Life")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditLife { get => _creditLife; set => SetField(ref _creditLife, value); }
 
         /// <summary>
         /// Insurance Premium Credit Life/Disability [1705]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Premium Credit Life/Disability")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditLifeAndCreditDisability { get => _creditLifeAndCreditDisability; set => SetField(ref _creditLifeAndCreditDisability, value); }
 
         /// <summary>
         /// Insurance Credit Life [1697]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Credit Life", OptionsJson = "{\"true\":\"Credit life insurance\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Credit life insurance\"}")]
         public bool? CreditLifeInsuranceIndicator { get => _creditLifeInsuranceIndicator; set => SetField(ref _creditLifeInsuranceIndicator, value); }
 
         /// <summary>
         /// REGZ Pymt Sched Customize [1678]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Pymt Sched Customize", OptionsJson = "{\"true\":\"Customize\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Customize\"}")]
         public bool? CustomizePaymentScheduleIndicator { get => _customizePaymentScheduleIndicator; set => SetField(ref _customizePaymentScheduleIndicator, value); }
 
         /// <summary>
         /// REGZ Pymt Sched Demand Feature [663]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Pymt Sched Demand Feature", OptionsJson = "{\"true\":\"DEMAND FEATURE: This obligation has a demand feature.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"DEMAND FEATURE: This obligation has a demand feature.\"}")]
         public bool? DemandFeatureIndicator { get => _demandFeatureIndicator; set => SetField(ref _demandFeatureIndicator, value); }
 
         /// <summary>
         /// Trans Details Disclosed APR [3121]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Trans Details Disclosed APR")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? DisclosedAprPercent { get => _disclosedAprPercent; set => SetField(ref _disclosedAprPercent, value); }
 
         /// <summary>
         /// Disclosed By Broker Chbx [3136]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosed By Broker Chbx")]
         public bool? DisclosedByBrokerIndicator { get => _disclosedByBrokerIndicator; set => SetField(ref _disclosedByBrokerIndicator, value); }
 
         /// <summary>
         /// GFE Disclosed Comments [3141]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "GFE Disclosed Comments")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string DisclosedComments { get => _disclosedComments; set => SetField(ref _disclosedComments, value); }
 
         /// <summary>
         /// Disclosed Daily Interest Charges [3887]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosed Daily Interest Charges")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DisclosedDailyInterestCharge { get => _disclosedDailyInterestCharge; set => SetField(ref _disclosedDailyInterestCharge, value); }
 
         /// <summary>
         /// Disclosed Fees Total Finance Charges [3246]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosed Fees Total Finance Charges")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DisclosedFinanceCharge { get => _disclosedFinanceCharge; set => SetField(ref _disclosedFinanceCharge, value); }
 
         /// <summary>
         /// Disclosed Prepayment [4018]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosed Prepayment")]
         public bool? DisclosedPrepayment { get => _disclosedPrepayment; set => SetField(ref _disclosedPrepayment, value); }
 
         /// <summary>
         /// Disclosed Product [4017]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosed Product")]
         public string DisclosedProduct { get => _disclosedProduct; set => SetField(ref _disclosedProduct, value); }
 
         /// <summary>
         /// GFE Disclosure Method [3138]
         /// </summary>
-        [LoanFieldProperty(Description = "GFE Disclosure Method")]
         public StringEnumValue<DisclosureMethod> DisclosureMethod { get => _disclosureMethod; set => SetField(ref _disclosureMethod, value); }
 
         /// <summary>
         /// Trans Details Initial/Final Disclosure [662]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Initial/Final Disclosure")]
         public StringEnumValue<DisclosureType> DisclosureType { get => _disclosureType; set => SetField(ref _disclosureType, value); }
 
         /// <summary>
         /// Loan Info ARM Pymt Discount Period [2552]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Info ARM Pymt Discount Period")]
         public int? DiscountPeriod { get => _discountPeriod; set => SetField(ref _discountPeriod, value); }
 
         /// <summary>
         /// Loan Info ARM Pymt Discount Rate [2551]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Loan Info ARM Pymt Discount Rate")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? DiscountRatePercent { get => _discountRatePercent; set => SetField(ref _discountRatePercent, value); }
 
         /// <summary>
         /// Loan Info ARM Pymt Discount Type [2307]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Info ARM Pymt Discount Type")]
         public StringEnumValue<DiscountType> DiscountType { get => _discountType; set => SetField(ref _discountType, value); }
 
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Construction - Due Date [3287]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "REGZ-TIL Interest Rate and Payment Summary Table - Construction - Due Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? DueDate { get => _dueDate; set => SetField(ref _dueDate, value); }
 
         /// <summary>
         /// Earliest Closing Date [3147]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Earliest Closing Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? EarliestClosingDate { get => _earliestClosingDate; set => SetField(ref _earliestClosingDate, value); }
 
         /// <summary>
         /// Earliest Fee Collection Date [3145]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Earliest Fee Collection Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? EarliestFeeCollectionDate { get => _earliestFeeCollectionDate; set => SetField(ref _earliestFeeCollectionDate, value); }
 
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 1 [3985]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 1")]
         public DateTime? eSignConsentBorrowerDateAccepted1 { get => _eSignConsentBorrowerDateAccepted1; set => SetField(ref _eSignConsentBorrowerDateAccepted1, value); }
 
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 2 [3993]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 2")]
         public DateTime? eSignConsentBorrowerDateAccepted2 { get => _eSignConsentBorrowerDateAccepted2; set => SetField(ref _eSignConsentBorrowerDateAccepted2, value); }
 
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 3 [4024]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 3")]
         public DateTime? eSignConsentBorrowerDateAccepted3 { get => _eSignConsentBorrowerDateAccepted3; set => SetField(ref _eSignConsentBorrowerDateAccepted3, value); }
 
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 4 [4032]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 4")]
         public DateTime? eSignConsentBorrowerDateAccepted4 { get => _eSignConsentBorrowerDateAccepted4; set => SetField(ref _eSignConsentBorrowerDateAccepted4, value); }
 
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 5 [4040]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 5")]
         public DateTime? eSignConsentBorrowerDateAccepted5 { get => _eSignConsentBorrowerDateAccepted5; set => SetField(ref _eSignConsentBorrowerDateAccepted5, value); }
 
         /// <summary>
         /// eConsent Borrower Date Accepted Pair 6 [4048]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Date Accepted Pair 6")]
         public DateTime? eSignConsentBorrowerDateAccepted6 { get => _eSignConsentBorrowerDateAccepted6; set => SetField(ref _eSignConsentBorrowerDateAccepted6, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 1 [3986]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 1")]
         public string eSignConsentBorrowerIPAddress1 { get => _eSignConsentBorrowerIPAddress1; set => SetField(ref _eSignConsentBorrowerIPAddress1, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 2 [3994]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 2")]
         public string eSignConsentBorrowerIPAddress2 { get => _eSignConsentBorrowerIPAddress2; set => SetField(ref _eSignConsentBorrowerIPAddress2, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 3 [4025]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 3")]
         public string eSignConsentBorrowerIPAddress3 { get => _eSignConsentBorrowerIPAddress3; set => SetField(ref _eSignConsentBorrowerIPAddress3, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 4 [4033]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 4")]
         public string eSignConsentBorrowerIPAddress4 { get => _eSignConsentBorrowerIPAddress4; set => SetField(ref _eSignConsentBorrowerIPAddress4, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 5 [4041]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 5")]
         public string eSignConsentBorrowerIPAddress5 { get => _eSignConsentBorrowerIPAddress5; set => SetField(ref _eSignConsentBorrowerIPAddress5, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 6 [4049]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower IP Address Pair 6")]
         public string eSignConsentBorrowerIPAddress6 { get => _eSignConsentBorrowerIPAddress6; set => SetField(ref _eSignConsentBorrowerIPAddress6, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 1 [3987]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Source Pair 1")]
         public string eSignConsentBorrowerSource1 { get => _eSignConsentBorrowerSource1; set => SetField(ref _eSignConsentBorrowerSource1, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 2 [3995]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Source Pair 2")]
         public string eSignConsentBorrowerSource2 { get => _eSignConsentBorrowerSource2; set => SetField(ref _eSignConsentBorrowerSource2, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 3 [4026]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Source Pair 3")]
         public string eSignConsentBorrowerSource3 { get => _eSignConsentBorrowerSource3; set => SetField(ref _eSignConsentBorrowerSource3, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 4 [4034]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Source Pair 4")]
         public string eSignConsentBorrowerSource4 { get => _eSignConsentBorrowerSource4; set => SetField(ref _eSignConsentBorrowerSource4, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 5 [4042]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Source Pair 5")]
         public string eSignConsentBorrowerSource5 { get => _eSignConsentBorrowerSource5; set => SetField(ref _eSignConsentBorrowerSource5, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 6 [4050]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Borrower Source Pair 6")]
         public string eSignConsentBorrowerSource6 { get => _eSignConsentBorrowerSource6; set => SetField(ref _eSignConsentBorrowerSource6, value); }
 
         /// <summary>
         /// Borrower 1 eConsent Status [3984]
         /// </summary>
-        [LoanFieldProperty(Description = "Borrower 1 eConsent Status")]
         public string eSignConsentBorrowerStatus1 { get => _eSignConsentBorrowerStatus1; set => SetField(ref _eSignConsentBorrowerStatus1, value); }
 
         /// <summary>
         /// Borrower 2 eConsent Status [3992]
         /// </summary>
-        [LoanFieldProperty(Description = "Borrower 2 eConsent Status")]
         public string eSignConsentBorrowerStatus2 { get => _eSignConsentBorrowerStatus2; set => SetField(ref _eSignConsentBorrowerStatus2, value); }
 
         /// <summary>
         /// Borrower 3 eConsent Status [4023]
         /// </summary>
-        [LoanFieldProperty(Description = "Borrower 3 eConsent Status")]
         public string eSignConsentBorrowerStatus3 { get => _eSignConsentBorrowerStatus3; set => SetField(ref _eSignConsentBorrowerStatus3, value); }
 
         /// <summary>
         /// Borrower 4 eConsent Status [4031]
         /// </summary>
-        [LoanFieldProperty(Description = "Borrower 4 eConsent Status")]
         public string eSignConsentBorrowerStatus4 { get => _eSignConsentBorrowerStatus4; set => SetField(ref _eSignConsentBorrowerStatus4, value); }
 
         /// <summary>
         /// Borrower 5 eConsent Status [4039]
         /// </summary>
-        [LoanFieldProperty(Description = "Borrower 5 eConsent Status")]
         public string eSignConsentBorrowerStatus5 { get => _eSignConsentBorrowerStatus5; set => SetField(ref _eSignConsentBorrowerStatus5, value); }
 
         /// <summary>
         /// Borrower 6 eConsent Status [4047]
         /// </summary>
-        [LoanFieldProperty(Description = "Borrower 6 eConsent Status")]
         public string eSignConsentBorrowerStatus6 { get => _eSignConsentBorrowerStatus6; set => SetField(ref _eSignConsentBorrowerStatus6, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 1 [3989]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 1")]
         public DateTime? eSignConsentCoBorrowerDateAccepted1 { get => _eSignConsentCoBorrowerDateAccepted1; set => SetField(ref _eSignConsentCoBorrowerDateAccepted1, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 2 [3997]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 2")]
         public DateTime? eSignConsentCoBorrowerDateAccepted2 { get => _eSignConsentCoBorrowerDateAccepted2; set => SetField(ref _eSignConsentCoBorrowerDateAccepted2, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 3 [4028]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 3")]
         public DateTime? eSignConsentCoBorrowerDateAccepted3 { get => _eSignConsentCoBorrowerDateAccepted3; set => SetField(ref _eSignConsentCoBorrowerDateAccepted3, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 4 [4036]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 4")]
         public DateTime? eSignConsentCoBorrowerDateAccepted4 { get => _eSignConsentCoBorrowerDateAccepted4; set => SetField(ref _eSignConsentCoBorrowerDateAccepted4, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 5 [4044]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 5")]
         public DateTime? eSignConsentCoBorrowerDateAccepted5 { get => _eSignConsentCoBorrowerDateAccepted5; set => SetField(ref _eSignConsentCoBorrowerDateAccepted5, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 6 [4052]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Date Accepted Pair 6")]
         public DateTime? eSignConsentCoBorrowerDateAccepted6 { get => _eSignConsentCoBorrowerDateAccepted6; set => SetField(ref _eSignConsentCoBorrowerDateAccepted6, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 1 [3990]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 1")]
         public string eSignConsentCoBorrowerIPAddress1 { get => _eSignConsentCoBorrowerIPAddress1; set => SetField(ref _eSignConsentCoBorrowerIPAddress1, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 2 [3998]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 2")]
         public string eSignConsentCoBorrowerIPAddress2 { get => _eSignConsentCoBorrowerIPAddress2; set => SetField(ref _eSignConsentCoBorrowerIPAddress2, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 3 [4029]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 3")]
         public string eSignConsentCoBorrowerIPAddress3 { get => _eSignConsentCoBorrowerIPAddress3; set => SetField(ref _eSignConsentCoBorrowerIPAddress3, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 4 [4037]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 4")]
         public string eSignConsentCoBorrowerIPAddress4 { get => _eSignConsentCoBorrowerIPAddress4; set => SetField(ref _eSignConsentCoBorrowerIPAddress4, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 5 [4045]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 5")]
         public string eSignConsentCoBorrowerIPAddress5 { get => _eSignConsentCoBorrowerIPAddress5; set => SetField(ref _eSignConsentCoBorrowerIPAddress5, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 6 [4053]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower IP Address Pair 6")]
         public string eSignConsentCoBorrowerIPAddress6 { get => _eSignConsentCoBorrowerIPAddress6; set => SetField(ref _eSignConsentCoBorrowerIPAddress6, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 1 [3991]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 1")]
         public string eSignConsentCoBorrowerSource1 { get => _eSignConsentCoBorrowerSource1; set => SetField(ref _eSignConsentCoBorrowerSource1, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 2 [3999]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 2")]
         public string eSignConsentCoBorrowerSource2 { get => _eSignConsentCoBorrowerSource2; set => SetField(ref _eSignConsentCoBorrowerSource2, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 3 [4030]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 3")]
         public string eSignConsentCoBorrowerSource3 { get => _eSignConsentCoBorrowerSource3; set => SetField(ref _eSignConsentCoBorrowerSource3, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 4 [4038]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 4")]
         public string eSignConsentCoBorrowerSource4 { get => _eSignConsentCoBorrowerSource4; set => SetField(ref _eSignConsentCoBorrowerSource4, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 5 [4046]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 5")]
         public string eSignConsentCoBorrowerSource5 { get => _eSignConsentCoBorrowerSource5; set => SetField(ref _eSignConsentCoBorrowerSource5, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 6 [4054]
         /// </summary>
-        [LoanFieldProperty(Description = "eConsent Co-Borrower Source Pair 6")]
         public string eSignConsentCoBorrowerSource6 { get => _eSignConsentCoBorrowerSource6; set => SetField(ref _eSignConsentCoBorrowerSource6, value); }
 
         /// <summary>
         /// Co-Borrower 1 eConsent Status [3988]
         /// </summary>
-        [LoanFieldProperty(Description = "Co-Borrower 1 eConsent Status")]
         public string eSignConsentCoBorrowerStatus1 { get => _eSignConsentCoBorrowerStatus1; set => SetField(ref _eSignConsentCoBorrowerStatus1, value); }
 
         /// <summary>
         /// Co-Borrower 2 eConsent Status [3996]
         /// </summary>
-        [LoanFieldProperty(Description = "Co-Borrower 2 eConsent Status")]
         public string eSignConsentCoBorrowerStatus2 { get => _eSignConsentCoBorrowerStatus2; set => SetField(ref _eSignConsentCoBorrowerStatus2, value); }
 
         /// <summary>
         /// Co-Borrower 3 eConsent Status [4027]
         /// </summary>
-        [LoanFieldProperty(Description = "Co-Borrower 3 eConsent Status")]
         public string eSignConsentCoBorrowerStatus3 { get => _eSignConsentCoBorrowerStatus3; set => SetField(ref _eSignConsentCoBorrowerStatus3, value); }
 
         /// <summary>
         /// Co-Borrower 4 eConsent Status [4035]
         /// </summary>
-        [LoanFieldProperty(Description = "Co-Borrower 4 eConsent Status")]
         public string eSignConsentCoBorrowerStatus4 { get => _eSignConsentCoBorrowerStatus4; set => SetField(ref _eSignConsentCoBorrowerStatus4, value); }
 
         /// <summary>
         /// Co-Borrower 5 eConsent Status [4043]
         /// </summary>
-        [LoanFieldProperty(Description = "Co-Borrower 5 eConsent Status")]
         public string eSignConsentCoBorrowerStatus5 { get => _eSignConsentCoBorrowerStatus5; set => SetField(ref _eSignConsentCoBorrowerStatus5, value); }
 
         /// <summary>
         /// Co-Borrower 6 eConsent Status [4051]
         /// </summary>
-        [LoanFieldProperty(Description = "Co-Borrower 6 eConsent Status")]
         public string eSignConsentCoBorrowerStatus6 { get => _eSignConsentCoBorrowerStatus6; set => SetField(ref _eSignConsentCoBorrowerStatus6, value); }
 
         /// <summary>
         /// eConsent Date [3983]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "eConsent Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? eSignConsentDate { get => _eSignConsentDate; set => SetField(ref _eSignConsentDate, value); }
 
         /// <summary>
         /// Trans Details Amort Type GPM Extra Pymt [312]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Details Amort Type GPM Extra Pymt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExtraPaymentForEarlyPayOff { get => _extraPaymentForEarlyPayOff; set => SetField(ref _extraPaymentForEarlyPayOff, value); }
 
         /// <summary>
         /// Fee Collected Date [3146]
         /// </summary>
-        [LoanFieldProperty(Description = "Fee Collected Date")]
         public DateTime? FeeCollectedDate { get => _feeCollectedDate; set => SetField(ref _feeCollectedDate, value); }
 
         /// <summary>
         /// Fee Level Disclosures Indicator [4461]
         /// </summary>
-        [LoanFieldProperty(Description = "Fee Level Disclosures Indicator")]
         public bool? FeeLevelDisclosuresIndicator { get => _feeLevelDisclosuresIndicator; set => SetField(ref _feeLevelDisclosuresIndicator, value); }
 
         /// <summary>
         /// Trans Details Filing Fees [1707]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Details Filing Fees")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FilingFees { get => _filingFees; set => SetField(ref _filingFees, value); }
 
         /// <summary>
         /// REGZ Construction Mortgage Final Pymt Date [1961]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Construction Mortgage Final Pymt Date")]
         public DateTime? FinalPaymentDate { get => _finalPaymentDate; set => SetField(ref _finalPaymentDate, value); }
 
         /// <summary>
         /// Fees Total Finance Charges [1206]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Total Finance Charges")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinanceCharge { get => _financeCharge; set => SetField(ref _financeCharge, value); }
 
         /// <summary>
         /// Financed Guarantee Fee - Guarantee Amount [3561]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Financed Guarantee Fee - Guarantee Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedAllGuaranteeFeeAmount { get => _financedAllGuaranteeFeeAmount; set => SetField(ref _financedAllGuaranteeFeeAmount, value); }
 
         /// <summary>
         /// Financed Guarantee Fee - Guarantee Percentage [3560]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Financed Guarantee Fee - Guarantee Percentage", OptionsJson = "{\"0.50\":\"0.50\",\"1.00\":\"1.00\",\"1.25\":\"1.25\",\"1.50\":\"1.50\",\"1.75\":\"1.75\",\"2.00\":\"2.00\",\"2.25\":\"2.25\",\"2.50\":\"2.50\",\"2.75\":\"2.75\",\"3.00\":\"3.00\",\"3.25\":\"3.25\",\"3.50\":\"3.50\",\"3.75\":\"3.75\",\"4.00\":\"4.00\"}")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, OptionsJson = "{\"0.50\":\"0.50\",\"1.00\":\"1.00\",\"1.25\":\"1.25\",\"1.50\":\"1.50\",\"1.75\":\"1.75\",\"2.00\":\"2.00\",\"2.25\":\"2.25\",\"2.50\":\"2.50\",\"2.75\":\"2.75\",\"3.00\":\"3.00\",\"3.25\":\"3.25\",\"3.50\":\"3.50\",\"3.75\":\"3.75\",\"4.00\":\"4.00\"}")]
         public decimal? FinancedAllGuaranteeFeePercent { get => _financedAllGuaranteeFeePercent; set => SetField(ref _financedAllGuaranteeFeePercent, value); }
 
         /// <summary>
         /// Financed Guarantee Fee - Total Loan Amount [3562]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Financed Guarantee Fee - Total Loan Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedAllTotalLoanAmount { get => _financedAllTotalLoanAmount; set => SetField(ref _financedAllTotalLoanAmount, value); }
 
         /// <summary>
         /// Portion of Financed Guarantee Fee - Guarantee Amount [3564]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Portion of Financed Guarantee Fee - Guarantee Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedPortionGuaranteeFeeAmount { get => _financedPortionGuaranteeFeeAmount; set => SetField(ref _financedPortionGuaranteeFeeAmount, value); }
 
         /// <summary>
         /// Portion of Financed Guarantee Fee - Guarantee Percentage [3563]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Portion of Financed Guarantee Fee - Guarantee Percentage")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedPortionGuaranteeFeePercent { get => _financedPortionGuaranteeFeePercent; set => SetField(ref _financedPortionGuaranteeFeePercent, value); }
 
         /// <summary>
         /// Portion of Financed Guarantee Fee - Total Loan Amount [3565]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Portion of Financed Guarantee Fee - Total Loan Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedPortionTotalLoanAmount { get => _financedPortionTotalLoanAmount; set => SetField(ref _financedPortionTotalLoanAmount, value); }
 
         /// <summary>
         /// USDA Financing Type [3566]
         /// </summary>
-        [LoanFieldProperty(Description = "USDA Financing Type")]
         public StringEnumValue<FinancingType> FinancingType { get => _financingType; set => SetField(ref _financingType, value); }
 
         /// <summary>
         /// REGZ Construction Mortgage 1st Amortization Date [1963]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Construction Mortgage 1st Amortization Date")]
         public DateTime? FirstAmortizationPaymentDate { get => _firstAmortizationPaymentDate; set => SetField(ref _firstAmortizationPaymentDate, value); }
 
         /// <summary>
         /// Insurance Flood [676]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Flood", OptionsJson = "{\"true\":\"Flood insurance\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Flood insurance\"}")]
         public bool? FloodInsuranceIndicator { get => _floodInsuranceIndicator; set => SetField(ref _floodInsuranceIndicator, value); }
 
         /// <summary>
         /// Application Date [3142]
         /// </summary>
-        [LoanFieldProperty(Description = "Application Date")]
         public DateTime? GfeApplicationDate { get => _gfeApplicationDate; set => SetField(ref _gfeApplicationDate, value); }
 
         /// <summary>
         /// Changed Circumstance Chkbx [3168]
         /// </summary>
-        [LoanFieldProperty(Description = "Changed Circumstance Chkbx")]
         public bool? GfeChangedCircumstanceIndicator { get => _gfeChangedCircumstanceIndicator; set => SetField(ref _gfeChangedCircumstanceIndicator, value); }
 
         /// <summary>
         /// GFE Changed Circumstance [3169]
         /// </summary>
-        [LoanFieldProperty(Description = "GFE Changed Circumstance")]
         public string GfeChangedCircumstanceItem { get => _gfeChangedCircumstanceItem; set => SetField(ref _gfeChangedCircumstanceItem, value); }
 
         /// <summary>
         /// GFE Changed Circumstance Code [3627]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "GFE Changed Circumstance Code")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string GFEChangedCirsumstanceItemCode { get => _gFEChangedCirsumstanceItemCode; set => SetField(ref _gFEChangedCirsumstanceItemCode, value); }
 
         /// <summary>
         /// GFE Date for Printed Form [3170]
         /// </summary>
-        [LoanFieldProperty(Description = "GFE Date for Printed Form")]
         public DateTime? GfeDate { get => _gfeDate; set => SetField(ref _gfeDate, value); }
 
         /// <summary>
         /// GFE Expiration Date [3140]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "GFE Expiration Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? GfeExpirationDate { get => _gfeExpirationDate; set => SetField(ref _gfeExpirationDate, value); }
 
         /// <summary>
         /// No. of Days GFE Valid After Received [3162]
         /// </summary>
-        [LoanFieldProperty(Description = "No. of Days GFE Valid After Received")]
         public string GfeExpirationPeriod { get => _gfeExpirationPeriod; set => SetField(ref _gfeExpirationPeriod, value); }
 
         /// <summary>
         /// GFE Redisclosure Required Due to Rate Lock [3201]
         /// </summary>
-        [LoanFieldProperty(Description = "GFE Redisclosure Required Due to Rate Lock")]
         public bool? GfeRateLockRedisclosureRequiredIndicator { get => _gfeRateLockRedisclosureRequiredIndicator; set => SetField(ref _gfeRateLockRedisclosureRequiredIndicator, value); }
 
         /// <summary>
         /// GFE Redisclosure Provided Date [3150]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "GFE Redisclosure Provided Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? GfeRedisclosureProvidedDate { get => _gfeRedisclosureProvidedDate; set => SetField(ref _gfeRedisclosureProvidedDate, value); }
 
         /// <summary>
         /// GFE Redisclosure Received Date [3151]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "GFE Redisclosure Received Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? GfeRedisclosureReceivedDate { get => _gfeRedisclosureReceivedDate; set => SetField(ref _gfeRedisclosureReceivedDate, value); }
 
         /// <summary>
         /// The Date that the High Cost Disclosure is signed [4022]
         /// </summary>
-        [LoanFieldProperty(Description = "The Date that the High Cost Disclosure is signed")]
         public DateTime? HighCostDisclosure { get => _highCostDisclosure; set => SetField(ref _highCostDisclosure, value); }
 
         /// <summary>
         /// Date the Home Counseling Disclosure Provided to the Borrower [3859]
         /// </summary>
-        [LoanFieldProperty(Description = "Date the Home Counseling Disclosure Provided to the Borrower")]
         public DateTime? HomeCounselingProvidedDate { get => _homeCounselingProvidedDate; set => SetField(ref _homeCounselingProvidedDate, value); }
 
         /// <summary>
         /// HUD-1Tolerance Lmt Violation [3160]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "HUD-1Tolerance Lmt Violation")]
+        [LoanFieldProperty(ReadOnly = true)]
         public bool? Hud1ToleranceViolatedIndicator { get => _hud1ToleranceViolatedIndicator; set => SetField(ref _hud1ToleranceViolatedIndicator, value); }
 
         /// <summary>
         /// HUD-1 Tolerance Resolution Comments [3172]
         /// </summary>
-        [LoanFieldProperty(Description = "HUD-1 Tolerance Resolution Comments")]
         public string HudToleranceResolutionComments { get => _hudToleranceResolutionComments; set => SetField(ref _hudToleranceResolutionComments, value); }
 
         /// <summary>
         /// HUD-1 Tolerance Resolution Date [3171]
         /// </summary>
-        [LoanFieldProperty(Description = "HUD-1 Tolerance Resolution Date")]
         public DateTime? HudToleranceResolutionDate { get => _hudToleranceResolutionDate; set => SetField(ref _hudToleranceResolutionDate, value); }
 
         /// <summary>
         /// HUD-1 Tolerance Resolution User [3173]
         /// </summary>
-        [LoanFieldProperty(Description = "HUD-1 Tolerance Resolution User")]
         public string HudToleranceResolvedBy { get => _hudToleranceResolvedBy; set => SetField(ref _hudToleranceResolvedBy, value); }
 
         /// <summary>
@@ -1038,499 +948,462 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Premium If you purchase [1708]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Premium If you purchase", OptionsJson = "{\"true\":\"If you purchase\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"If you purchase\"}")]
         public bool? IfYouPurchaseIndicator { get => _ifYouPurchaseIndicator; set => SetField(ref _ifYouPurchaseIndicator, value); }
 
         /// <summary>
         /// Insurance Premium Haz/Flood/Haz&amp;Flood [1709]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Premium Haz/Flood/Haz&Flood")]
         public StringEnumValue<IfYouPurchaseType> IfYouPurchaseType { get => _ifYouPurchaseType; set => SetField(ref _ifYouPurchaseType, value); }
 
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Include Mortgage Insurance [3266]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ-TIL Interest Rate and Payment Summary Table - Include Mortgage Insurance")]
         public bool? IncludeMiIndicator { get => _includeMiIndicator; set => SetField(ref _includeMiIndicator, value); }
 
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Include Private Mortgage Insurance [3265]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "REGZ-TIL Interest Rate and Payment Summary Table - Include Private Mortgage Insurance")]
+        [LoanFieldProperty(ReadOnly = true)]
         public bool? IncludePmiIndicator { get => _includePmiIndicator; set => SetField(ref _includePmiIndicator, value); }
 
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Include Escrowed Taxes and Insurance [3264]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "REGZ-TIL Interest Rate and Payment Summary Table - Include Escrowed Taxes and Insurance")]
+        [LoanFieldProperty(ReadOnly = true)]
         public bool? IncludeTaxesInsuranceIndicator { get => _includeTaxesInsuranceIndicator; set => SetField(ref _includeTaxesInsuranceIndicator, value); }
 
         /// <summary>
         /// Date the AVM Provided to the Borrower [3858]
         /// </summary>
-        [LoanFieldProperty(Description = "Date the AVM Provided to the Borrower")]
         public DateTime? InitialAVMProvidedDate { get => _initialAVMProvidedDate; set => SetField(ref _initialAVMProvidedDate, value); }
 
         /// <summary>
         /// Initial Disclosure Due Date [3143]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Initial Disclosure Due Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? InitialDisclosureDueDate { get => _initialDisclosureDueDate; set => SetField(ref _initialDisclosureDueDate, value); }
 
         /// <summary>
         /// Initial Disclosure Provided Date [3144]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Initial Disclosure Provided Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? InitialDisclosureProvidedDate { get => _initialDisclosureProvidedDate; set => SetField(ref _initialDisclosureProvidedDate, value); }
 
         /// <summary>
         /// GFE Initial GFE Disclosure Affiliated Business Disclosure Provided Date [3544]
         /// </summary>
-        [LoanFieldProperty(Description = "GFE Initial GFE Disclosure Affiliated Business Disclosure Provided Date")]
         public DateTime? InitialGfeAffiliatedBusinessProvidedDate { get => _initialGfeAffiliatedBusinessProvidedDate; set => SetField(ref _initialGfeAffiliatedBusinessProvidedDate, value); }
 
         /// <summary>
         /// Date the Appraisal was provided to the Borrower [3624]
         /// </summary>
-        [LoanFieldProperty(Description = "Date the Appraisal was provided to the Borrower")]
         public DateTime? InitialGFEAppraisalProvidedDate { get => _initialGFEAppraisalProvidedDate; set => SetField(ref _initialGFEAppraisalProvidedDate, value); }
 
         /// <summary>
         /// GFE Initial GFE Disclosure CHARM Booklet Provided Date [3545]
         /// </summary>
-        [LoanFieldProperty(Description = "GFE Initial GFE Disclosure CHARM Booklet Provided Date")]
         public DateTime? InitialGfeCharmBookletProvidedDate { get => _initialGfeCharmBookletProvidedDate; set => SetField(ref _initialGfeCharmBookletProvidedDate, value); }
 
         /// <summary>
         /// GFE Initial GFE Disclosure Provided Date [3148]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "GFE Initial GFE Disclosure Provided Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? InitialGfeDisclosureProvidedDate { get => _initialGfeDisclosureProvidedDate; set => SetField(ref _initialGfeDisclosureProvidedDate, value); }
 
         /// <summary>
         /// GFE Initial GFE Disclosure Received Date [3149]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "GFE Initial GFE Disclosure Received Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? InitialGfeDisclosureReceivedDate { get => _initialGfeDisclosureReceivedDate; set => SetField(ref _initialGfeDisclosureReceivedDate, value); }
 
         /// <summary>
         /// GFE Initial GFE Disclosure HELOC Brochure Provided Date [3547]
         /// </summary>
-        [LoanFieldProperty(Description = "GFE Initial GFE Disclosure HELOC Brochure Provided Date")]
         public DateTime? InitialGfeHelocBrochureProvidedDate { get => _initialGfeHelocBrochureProvidedDate; set => SetField(ref _initialGfeHelocBrochureProvidedDate, value); }
 
         /// <summary>
         /// GFE Initial GFE Disclosure HUD Special Booklet Provided Date [3546]
         /// </summary>
-        [LoanFieldProperty(Description = "GFE Initial GFE Disclosure HUD Special Booklet Provided Date")]
         public DateTime? InitialGfeHudSpecialBookletProvidedDate { get => _initialGfeHudSpecialBookletProvidedDate; set => SetField(ref _initialGfeHudSpecialBookletProvidedDate, value); }
 
         /// <summary>
         /// Date the Subsequent Appraisal Provided to the Borrower [3857]
         /// </summary>
-        [LoanFieldProperty(Description = "Date the Subsequent Appraisal Provided to the Borrower")]
         public DateTime? InitialSubsequentAppraisalProvidedDate { get => _initialSubsequentAppraisalProvidedDate; set => SetField(ref _initialSubsequentAppraisalProvidedDate, value); }
 
         /// <summary>
         /// TIL Intl Disclosure Provided Date [3152]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "TIL Intl Disclosure Provided Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? InitialTilDisclosureProvidedDate { get => _initialTilDisclosureProvidedDate; set => SetField(ref _initialTilDisclosureProvidedDate, value); }
 
         /// <summary>
         /// TIL Intl TIL Disclosure Rcvd Date [3153]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "TIL Intl TIL Disclosure Rcvd Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? InitialTilDisclosureReceivedDate { get => _initialTilDisclosureReceivedDate; set => SetField(ref _initialTilDisclosureReceivedDate, value); }
 
         /// <summary>
         /// Insurance Required [1702]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Required")]
         public string InsuranceRequiredDescription { get => _insuranceRequiredDescription; set => SetField(ref _insuranceRequiredDescription, value); }
 
         /// <summary>
         /// Trans Details Security Interest [1603]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Security Interest")]
         public string InterestInNameOf { get => _interestInNameOf; set => SetField(ref _interestInNameOf, value); }
 
         /// <summary>
         /// Interest Only Indicator [Terms.IntrOnly]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Interest Only Indicator")]
+        [LoanFieldProperty(ReadOnly = true)]
         public bool? InterestOnly { get => _interestOnly; set => SetField(ref _interestOnly, value); }
 
         /// <summary>
         /// Trans Details Interest Only Indicator [2982]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Interest Only Indicator")]
         public bool? InterestOnlyIndicator { get => _interestOnlyIndicator; set => SetField(ref _interestOnlyIndicator, value); }
 
         /// <summary>
         /// Trans Details Interest Only Mos [1177]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Interest Only Mos")]
         public int? InterestOnlyMonths { get => _interestOnlyMonths; set => SetField(ref _interestOnlyMonths, value); }
 
         /// <summary>
         /// REGZ Construction Mortgage Interest Rate Type [2820]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Construction Mortgage Interest Rate Type")]
         public StringEnumValue<InterestRateType> InterestRateType { get => _interestRateType; set => SetField(ref _interestRateType, value); }
 
         /// <summary>
         /// Loan Info Constr Loan Required Resrv [1265]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Info Constr Loan Required Resrv")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InterestReserveAmount { get => _interestReserveAmount; set => SetField(ref _interestReserveAmount, value); }
 
         /// <summary>
         /// GFE Last Disclosed By [3139]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "GFE Last Disclosed By")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string LastDisclosedBy { get => _lastDisclosedBy; set => SetField(ref _lastDisclosedBy, value); }
 
         /// <summary>
         /// GFE Last Disclosed Date [3137]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "GFE Last Disclosed Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? LastDisclosedDate { get => _lastDisclosedDate; set => SetField(ref _lastDisclosedDate, value); }
 
         /// <summary>
         /// GFE Last Disclosure Rcvd Date [3163]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "GFE Last Disclosure Rcvd Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? LastDisclosedGfeReceivedDate { get => _lastDisclosedGfeReceivedDate; set => SetField(ref _lastDisclosedGfeReceivedDate, value); }
 
         /// <summary>
         /// Late Charge Basis [4186]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Late Charge Basis")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LateChargeBasis { get => _lateChargeBasis; set => SetField(ref _lateChargeBasis, value); }
 
         /// <summary>
         /// Trans Details Late Charge Additional Detail [1854]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Late Charge Additional Detail")]
         public string LateChargeComments { get => _lateChargeComments; set => SetField(ref _lateChargeComments, value); }
 
         /// <summary>
         /// Trans Details Late Charge Days [672]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Late Charge Days")]
         public int? LateChargeDays { get => _lateChargeDays; set => SetField(ref _lateChargeDays, value); }
 
         /// <summary>
         /// Trans Details Late Charge % [674]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Trans Details Late Charge %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? LateChargePercent { get => _lateChargePercent; set => SetField(ref _lateChargePercent, value); }
 
         /// <summary>
         /// Trans Details Late Charge % Based On [1719]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Late Charge % Based On")]
         public StringEnumValue<LateChargeType> LateChargeType { get => _lateChargeType; set => SetField(ref _lateChargeType, value); }
 
         /// <summary>
         /// Trans Details Late Fee [3876]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Trans Details Late Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? LateFee { get => _lateFee; set => SetField(ref _lateFee, value); }
 
         /// <summary>
         /// LE Intent To Proceed Comment [3976]
         /// </summary>
-        [LoanFieldProperty(Description = "LE Intent To Proceed Comment")]
         public string LEIntentToProceedComment { get => _lEIntentToProceedComment; set => SetField(ref _lEIntentToProceedComment, value); }
 
         /// <summary>
         /// Lender Paid Mortgage Insurance [3533]
         /// </summary>
-        [LoanFieldProperty(Description = "Lender Paid Mortgage Insurance")]
         public bool? LenderPaidMortgageInsuranceIndicator { get => _lenderPaidMortgageInsuranceIndicator; set => SetField(ref _lenderPaidMortgageInsuranceIndicator, value); }
 
         /// <summary>
         /// REGZ Construction Mortgage Lenders Inspection Rate [3899]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "REGZ Construction Mortgage Lenders Inspection Rate")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LendersInspectionFee { get => _lendersInspectionFee; set => SetField(ref _lendersInspectionFee, value); }
 
         /// <summary>
         /// LE Intent To Proceed Received By [3973]
         /// </summary>
-        [LoanFieldProperty(Description = "LE Intent To Proceed Received By")]
         public string LEReceivedBy { get => _lEReceivedBy; set => SetField(ref _lEReceivedBy, value); }
 
         /// <summary>
         /// LE Intent To Proceed Received Method [3974]
         /// </summary>
-        [LoanFieldProperty(Description = "LE Intent To Proceed Received Method")]
         public StringEnumValue<LEReceivedMethod> LEReceivedMethod { get => _lEReceivedMethod; set => SetField(ref _lEReceivedMethod, value); }
 
         /// <summary>
         /// LE Intent To Proceed Received Method Other [3975]
         /// </summary>
-        [LoanFieldProperty(Description = "LE Intent To Proceed Received Method Other")]
         public string LEReceivedMethodOther { get => _lEReceivedMethodOther; set => SetField(ref _lEReceivedMethodOther, value); }
 
         /// <summary>
         /// LE Intent To Proceed Sent On Date [3972]
         /// </summary>
-        [LoanFieldProperty(Description = "LE Intent To Proceed Sent On Date")]
         public DateTime? LESentOnDate { get => _lESentOnDate; set => SetField(ref _lESentOnDate, value); }
 
         /// <summary>
         /// Loan Info ARM Margin + Index [1827]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true, Description = "Loan Info ARM Margin + Index")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? MarginPlusIndexPercent { get => _marginPlusIndexPercent; set => SetField(ref _marginPlusIndexPercent, value); }
 
         /// <summary>
         /// Trans Details Maximum Late Charge [2832]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Details Maximum Late Charge")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumLateCharge { get => _maximumLateCharge; set => SetField(ref _maximumLateCharge, value); }
 
         /// <summary>
         /// Prequal Maximum Payment [1896]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Prequal Maximum Payment")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? MaximumPayment { get => _maximumPayment; set => SetField(ref _maximumPayment, value); }
 
         /// <summary>
         /// Trans Details E Means Estimate [680]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details E Means Estimate", OptionsJson = "{\"true\":\"means an estimate\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"means an estimate\"}")]
         public bool? MeansAnEstimateIndicator { get => _meansAnEstimateIndicator; set => SetField(ref _meansAnEstimateIndicator, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Periodic Factor 2 [1201]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_6, Description = "Insurance Mtg Ins Periodic Factor 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_6)]
         public decimal? MiAdjustmentFactorLevel2 { get => _miAdjustmentFactorLevel2; set => SetField(ref _miAdjustmentFactorLevel2, value); }
 
         /// <summary>
         /// Insurance Mtg Declining Renewals [3248]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Mtg Declining Renewals")]
         public bool? MiDecliningRenewalsIndicator { get => _miDecliningRenewalsIndicator; set => SetField(ref _miDecliningRenewalsIndicator, value); }
 
         /// <summary>
         /// Expenses Calc MIP/PMI Midpoint Pymt Cancel [1753]
         /// </summary>
-        [LoanFieldProperty(Description = "Expenses Calc MIP/PMI Midpoint Pymt Cancel")]
         public string MidpointCancellation { get => _midpointCancellation; set => SetField(ref _midpointCancellation, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Pymt 1 [1766]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Mtg Ins Pymt 1")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MiMonthlyPaymentLevel1 { get => _miMonthlyPaymentLevel1; set => SetField(ref _miMonthlyPaymentLevel1, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Pymt 2 [1770]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Mtg Ins Pymt 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MiMonthlyPaymentLevel2 { get => _miMonthlyPaymentLevel2; set => SetField(ref _miMonthlyPaymentLevel2, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Period 1 [1198]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Mtg Ins Period 1")]
         public int? MiMonthsOfAdjustmentLevel1 { get => _miMonthsOfAdjustmentLevel1; set => SetField(ref _miMonthsOfAdjustmentLevel1, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Period 2 [1200]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Mtg Ins Period 2")]
         public int? MiMonthsOfAdjustmentLevel2 { get => _miMonthsOfAdjustmentLevel2; set => SetField(ref _miMonthsOfAdjustmentLevel2, value); }
 
         /// <summary>
         /// Trans Details Minimum Late Charge [2831]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Details Minimum Late Charge")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MinimumLateCharge { get => _minimumLateCharge; set => SetField(ref _minimumLateCharge, value); }
 
         /// <summary>
         /// Prequal Minimum Payment [1895]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Prequal Minimum Payment")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? MinimumPayment { get => _minimumPayment; set => SetField(ref _minimumPayment, value); }
 
         /// <summary>
         /// MI Factor Field Locked [3625]
         /// </summary>
-        [LoanFieldProperty(Description = "MI Factor Field Locked")]
         public bool? MIPFactorLocked { get => _mIPFactorLocked; set => SetField(ref _mIPFactorLocked, value); }
 
         /// <summary>
         /// MI Prepaid Amount [3971]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "MI Prepaid Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? MIPrepaidAmount { get => _mIPrepaidAmount; set => SetField(ref _mIPrepaidAmount, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Mnths Prepaid [2978]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Mtg Ins Mnths Prepaid")]
         public bool? MiPrepaidIndicator { get => _miPrepaidIndicator; set => SetField(ref _miPrepaidIndicator, value); }
 
         /// <summary>
         /// Insurance Calculation Borr MI Termination Date [118]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Insurance Calculation Borr MI Termination Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string MiScheduledTerminationDate { get => _miScheduledTerminationDate; set => SetField(ref _miScheduledTerminationDate, value); }
 
         /// <summary>
         /// Insurance MMI [723]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance MMI", OptionsJson = "{\"true\":\"MMI\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"MMI\"}")]
         public bool? MmiIndicator { get => _mmiIndicator; set => SetField(ref _mmiIndicator, value); }
 
         /// <summary>
         /// Insurance Premium 1 Monthly Term Pymt [4081]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Premium 1 Monthly Term Pymt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyTerm { get => _monthlyTerm; set => SetField(ref _monthlyTerm, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Mos Prepaid [1209]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Mtg Ins Mos Prepaid")]
         public int? MonthsOfMiPrepaid { get => _monthsOfMiPrepaid; set => SetField(ref _monthsOfMiPrepaid, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Cancel at % [1205]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Insurance Mtg Ins Cancel at %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? MortgageInsuranceCancelPercent { get => _mortgageInsuranceCancelPercent; set => SetField(ref _mortgageInsuranceCancelPercent, value); }
 
         /// <summary>
         /// Loan Info Prepared By Name [2026]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Info Prepared By Name")]
         public string NamePreparedBy { get => _namePreparedBy; set => SetField(ref _namePreparedBy, value); }
 
         /// <summary>
         /// Construction Loan New Construction Indicator [2645]
         /// </summary>
-        [LoanFieldProperty(Description = "Construction Loan New Construction Indicator")]
         public string NewConstructionIndicator { get => _newConstructionIndicator; set => SetField(ref _newConstructionIndicator, value); }
 
         /// <summary>
         /// REGZ Total # Pymts [1701]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "REGZ Total # Pymts")]
+        [LoanFieldProperty(ReadOnly = true)]
         public int? NumberOfPayments { get => _numberOfPayments; set => SetField(ref _numberOfPayments, value); }
 
         /// <summary>
         /// Occupancy Cert Date [4080]
         /// </summary>
-        [LoanFieldProperty(Description = "Occupancy Cert Date")]
         public DateTime? OccupancyCertDate { get => _occupancyCertDate; set => SetField(ref _occupancyCertDate, value); }
 
         /// <summary>
         /// Construction Loan Original Contract Date [2646]
         /// </summary>
-        [LoanFieldProperty(Description = "Construction Loan Original Contract Date")]
         public DateTime? OriginalContractDate { get => _originalContractDate; set => SetField(ref _originalContractDate, value); }
 
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Construction - Outstanding Balance [3288]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "REGZ-TIL Interest Rate and Payment Summary Table - Construction - Outstanding Balance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? OutstandingBalance { get => _outstandingBalance; set => SetField(ref _outstandingBalance, value); }
 
         /// <summary>
         /// REGZ Payment Frequency Type Description [3291]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "REGZ Payment Frequency Type Description")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string PaymentFrequencyType { get => _paymentFrequencyType; set => SetField(ref _paymentFrequencyType, value); }
 
         /// <summary>
         /// GPM Payment Increase [Terms.GPMPmtIncr]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "GPM Payment Increase")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? PaymentIncreasePercent { get => _paymentIncreasePercent; set => SetField(ref _paymentIncreasePercent, value); }
 
         /// <summary>
         /// Loan Info Prepared By Phone [2027]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Loan Info Prepared By Phone")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string PhonePreparedBy { get => _phonePreparedBy; set => SetField(ref _phonePreparedBy, value); }
 
         /// <summary>
         /// Insurance PMI [8]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance PMI", OptionsJson = "{\"true\":\"PMI\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"PMI\"}")]
         public bool? PmiIndicator { get => _pmiIndicator; set => SetField(ref _pmiIndicator, value); }
 
         /// <summary>
         /// PMI Midpoint Cancelation Date [3548]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "PMI Midpoint Cancelation Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? PmiMidpointCancelationDate { get => _pmiMidpointCancelationDate; set => SetField(ref _pmiMidpointCancelationDate, value); }
 
         /// <summary>
         /// Post Consummation Disclosure Received Date [3982]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Post Consummation Disclosure Received Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? PostConsummationDisclosureReceivedDate { get => _postConsummationDisclosureReceivedDate; set => SetField(ref _postConsummationDisclosureReceivedDate, value); }
 
         /// <summary>
         /// Post Consummation Disclosure Sent Date [3981]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Post Consummation Disclosure Sent Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? PostConsummationDisclosureSentDate { get => _postConsummationDisclosureSentDate; set => SetField(ref _postConsummationDisclosureSentDate, value); }
 
         /// <summary>
         /// Fees Total Prepaid Finance Charges [949]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Fees Total Prepaid Finance Charges")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? PrepaidFinanceCharge { get => _prepaidFinanceCharge; set => SetField(ref _prepaidFinanceCharge, value); }
 
         /// <summary>
         /// Insurance Property [1242]
         /// </summary>
-        [LoanFieldProperty(Description = "Insurance Property", OptionsJson = "{\"true\":\"Hazard Insurance\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Hazard Insurance\"}")]
         public bool? PropertyInsuranceIndicator { get => _propertyInsuranceIndicator; set => SetField(ref _propertyInsuranceIndicator, value); }
 
         /// <summary>
         /// Rate Lock GFE Due Date [3161]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Rate Lock GFE Due Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? RateLockGfeDueDate { get => _rateLockGfeDueDate; set => SetField(ref _rateLockGfeDueDate, value); }
 
         /// <summary>
         /// Trans Details Amort Type GPM Rate [1267]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Trans Details Amort Type GPM Rate")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? RatePercent { get => _ratePercent; set => SetField(ref _ratePercent, value); }
 
         /// <summary>
         /// Loan Info ARM Recast Period [1712]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Info ARM Recast Period")]
         public int? RecastPaidMonths { get => _recastPaidMonths; set => SetField(ref _recastPaidMonths, value); }
 
         /// <summary>
         /// Loan Info ARM Recast Stop [1713]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Info ARM Recast Stop")]
         public int? RecastStopMonths { get => _recastStopMonths; set => SetField(ref _recastStopMonths, value); }
 
         /// <summary>
         /// Trans Details Prepymt - May/Will Not Refund [670]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Prepymt - May/Will Not Refund", OptionsJson = "{\"true\":\"may\",\"false\":\"will not\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"may\",\"false\":\"will not\"}")]
         public bool? RefundPaymentIndicator { get => _refundPaymentIndicator; set => SetField(ref _refundPaymentIndicator, value); }
 
         /// <summary>
         /// Refund prorated unearned Up Front MI Premiums [3262]
         /// </summary>
-        [LoanFieldProperty(Description = "Refund prorated unearned Up Front MI Premiums")]
         public bool? RefundUnearnedMipIndicator { get => _refundUnearnedMipIndicator; set => SetField(ref _refundUnearnedMipIndicator, value); }
 
         /// <summary>
@@ -1546,181 +1419,174 @@ namespace EncompassRest.Loans
         /// <summary>
         /// REGZ Summary Table Type Used in REGZ-TIL Output [REGZ_TABLETYPE]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "REGZ Summary Table Type Used in REGZ-TIL Output")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string RegzTableType { get => _regzTableType; set => SetField(ref _regzTableType, value); }
 
         /// <summary>
         /// REGZ Pymt Sched Required Deposit [664]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Pymt Sched Required Deposit", OptionsJson = "{\"true\":\"REQUIRED DEPOSIT: The annual % rate does not take into account your required deposit.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"REQUIRED DEPOSIT: The annual % rate does not take into account your required deposit.\"}")]
         public bool? RequiredDepositIndicator { get => _requiredDepositIndicator; set => SetField(ref _requiredDepositIndicator, value); }
 
         /// <summary>
         /// Revised Closing Disclosure received date [3980]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Revised Closing Disclosure received date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? RevisedClosingDisclosureReceivedDate { get => _revisedClosingDisclosureReceivedDate; set => SetField(ref _revisedClosingDisclosureReceivedDate, value); }
 
         /// <summary>
         /// Revised Closing Disclosure sent date [3979]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Revised Closing Disclosure sent date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? RevisedClosingDisclosureSentDate { get => _revisedClosingDisclosureSentDate; set => SetField(ref _revisedClosingDisclosureSentDate, value); }
 
         /// <summary>
         /// Revised GFE Due Date [3167]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Revised GFE Due Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? RevisedGfeDueDate { get => _revisedGfeDueDate; set => SetField(ref _revisedGfeDueDate, value); }
 
         /// <summary>
         /// Loan Info ARM Rounded Margin + Index [3296]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true, Description = "Loan Info ARM Rounded Margin + Index")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? RoundedMarginPlusIndexPercent { get => _roundedMarginPlusIndexPercent; set => SetField(ref _roundedMarginPlusIndexPercent, value); }
 
         /// <summary>
         /// Safe Harbor Sent Date [4015]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Safe Harbor Sent Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? SafeHarborSentDate { get => _safeHarborSentDate; set => SetField(ref _safeHarborSentDate, value); }
 
         /// <summary>
         /// Prequal Sample Pymt Amt [1958]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Prequal Sample Pymt Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? SamplePayments { get => _samplePayments; set => SetField(ref _samplePayments, value); }
 
         /// <summary>
         /// Trans Details Goods Prchsd/Prprty Owned [671]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Goods Prchsd/Prprty Owned")]
         public StringEnumValue<SecurityType> SecurityType { get => _securityType; set => SetField(ref _securityType, value); }
 
         /// <summary>
         /// Settlement Services Provider List Sent Date [4014]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Settlement Services Provider List Sent Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? SSPLSentDate { get => _sSPLSentDate; set => SetField(ref _sSPLSentDate, value); }
 
         /// <summary>
         /// Rans Details Disclosed Date [3122]
         /// </summary>
-        [LoanFieldProperty(Description = "Rans Details Disclosed Date")]
         public DateTime? TilDate { get => _tilDate; set => SetField(ref _tilDate, value); }
 
         /// <summary>
         /// TIL Disclosed Comments [3159]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "TIL Disclosed Comments")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string TilDisclosedComments { get => _tilDisclosedComments; set => SetField(ref _tilDisclosedComments, value); }
 
         /// <summary>
         /// TIL Disclosure Method Drpdwn [3157]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "TIL Disclosure Method Drpdwn")]
+        [LoanFieldProperty(ReadOnly = true)]
         public StringEnumValue<DisclosureMethod> TilDisclosureMethod { get => _tilDisclosureMethod; set => SetField(ref _tilDisclosureMethod, value); }
 
         /// <summary>
         /// TIL Last Disclosed Borrower Received Date [3247]
         /// </summary>
-        [LoanFieldProperty(Description = "TIL Last Disclosed Borrower Received Date")]
         public DateTime? TilLastDisclosedBorrowerReceivedDate { get => _tilLastDisclosedBorrowerReceivedDate; set => SetField(ref _tilLastDisclosedBorrowerReceivedDate, value); }
 
         /// <summary>
         /// TIL Last Disclosed By [3158]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "TIL Last Disclosed By")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string TilLastDisclosedBy { get => _tilLastDisclosedBy; set => SetField(ref _tilLastDisclosedBy, value); }
 
         /// <summary>
         ///  Last CD Sent Date [3156]
         /// </summary>
-        [LoanFieldProperty(Description = " Last CD Sent Date")]
         public DateTime? TilLastDisclosedDate { get => _tilLastDisclosedDate; set => SetField(ref _tilLastDisclosedDate, value); }
 
         /// <summary>
         /// TIL Redisclosure Provided Date [3154]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "TIL Redisclosure Provided Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? TilRedisclosureProvidedDate { get => _tilRedisclosureProvidedDate; set => SetField(ref _tilRedisclosureProvidedDate, value); }
 
         /// <summary>
         /// TIL Redisclosure Rcvd Date [3155]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "TIL Redisclosure Rcvd Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? TilRedisclosureReceivedDate { get => _tilRedisclosureReceivedDate; set => SetField(ref _tilRedisclosureReceivedDate, value); }
 
         /// <summary>
         /// Total Broker Fees Collected [3310]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Total Broker Fees Collected")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalBrokerFees { get => _totalBrokerFees; set => SetField(ref _totalBrokerFees, value); }
 
         /// <summary>
         /// Trans Details Total Late Payment [3877]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Trans Details Total Late Payment")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalLatePayment { get => _totalLatePayment; set => SetField(ref _totalLatePayment, value); }
 
         /// <summary>
         /// Total Lender Fees Collected [3311]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Total Lender Fees Collected")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalLenderFees { get => _totalLenderFees; set => SetField(ref _totalLenderFees, value); }
 
         /// <summary>
         /// REGZ Total Amt All Pymts [1207]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "REGZ Total Amt All Pymts")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalOfPayments { get => _totalOfPayments; set => SetField(ref _totalOfPayments, value); }
 
         /// <summary>
         /// REGZ Total Amt All Principal and Interest [4071]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "REGZ Total Amt All Principal and Interest")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalOfPrincipalAndInterest { get => _totalOfPrincipalAndInterest; set => SetField(ref _totalOfPrincipalAndInterest, value); }
 
         /// <summary>
         /// Use Custom Lender Profile [3626]
         /// </summary>
-        [LoanFieldProperty(Description = "Use Custom Lender Profile")]
         public bool? UseCustomLenderProfile { get => _useCustomLenderProfile; set => SetField(ref _useCustomLenderProfile, value); }
 
         /// <summary>
         /// Trans Details Amort Type Biweekly Days/Yr [SYS.X2]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Amort Type Biweekly Days/Yr")]
         public StringEnumValue<DaysInYear> UseDaysInYears { get => _useDaysInYears; set => SetField(ref _useDaysInYears, value); }
 
         /// <summary>
         /// Trans Details Qualify Using P&amp;I [1853]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Qualify Using P&I", OptionsJson = "{\"true\":\"Qualify using P&I\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Qualify using P&I\"}")]
         public bool? UsePitiForRatioIndicator { get => _usePitiForRatioIndicator; set => SetField(ref _usePitiForRatioIndicator, value); }
 
         /// <summary>
         /// REGZ Pymt Sched Variable Rate Feature [665]
         /// </summary>
-        [LoanFieldProperty(Description = "REGZ Pymt Sched Variable Rate Feature", OptionsJson = "{\"true\":\"VARIABLE RATE FEATURE: This loan contains a variable rate feature.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"VARIABLE RATE FEATURE: This loan contains a variable rate feature.\"}")]
         public bool? VariableRateFeatureIndicator { get => _variableRateFeatureIndicator; set => SetField(ref _variableRateFeatureIndicator, value); }
 
         /// <summary>
         /// Insurance Premium 1 Yr Term Pymt [1710]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Insurance Premium 1 Yr Term Pymt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? YearlyTerm { get => _yearlyTerm; set => SetField(ref _yearlyTerm, value); }
 
         /// <summary>
         /// Prequal Max Pymt Yr [1957]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Prequal Max Pymt Yr")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string YearOfMaximumPayment { get => _yearOfMaximumPayment; set => SetField(ref _yearOfMaximumPayment, value); }
 
         /// <summary>
         /// Trans Details Amort Type GPM Yrs [1266]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Amort Type GPM Yrs")]
         public int? Years { get => _years; set => SetField(ref _years, value); }
     }
 }

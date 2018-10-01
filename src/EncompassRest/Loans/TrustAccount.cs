@@ -19,7 +19,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trust Acct Balance [TABALANCE]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trust Acct Balance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Balance { get => _balance; set => SetField(ref _balance, value); }
 
         /// <summary>
@@ -30,13 +30,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trust Acct Pymts Total [TATOTAL1]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trust Acct Pymts Total")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Total1 { get => _total1; set => SetField(ref _total1, value); }
 
         /// <summary>
         /// Trust Acct Receipts Total [TATOTAL2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trust Acct Receipts Total")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Total2 { get => _total2; set => SetField(ref _total2, value); }
 
         /// <summary>

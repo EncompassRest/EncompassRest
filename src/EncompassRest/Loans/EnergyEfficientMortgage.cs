@@ -45,61 +45,61 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EEM Appraised Value [EEM.X64]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Appraised Value")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AppraisedValue { get => _appraisedValue; set => SetField(ref _appraisedValue, value); }
 
         /// <summary>
         /// EEM Audit Cost [EEM.X70]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Audit Cost")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AuditCost { get => _auditCost; set => SetField(ref _auditCost, value); }
 
         /// <summary>
         /// EEM Total Debt-to-Income (Back) Ratio [EEM.X89]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true, Description = "EEM Total Debt-to-Income (Back) Ratio")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? BackRatio { get => _backRatio; set => SetField(ref _backRatio, value); }
 
         /// <summary>
         /// EEM Base Loan Amount From Loan Transmittal [EEM.X75]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Base Loan Amount From Loan Transmittal")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BaseLoanAmtFromTsum { get => _baseLoanAmtFromTsum; set => SetField(ref _baseLoanAmtFromTsum, value); }
 
         /// <summary>
         /// EEM Cost (All Costs Supported by Receipts) [EEM.X72]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Cost (All Costs Supported by Receipts)")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CostEffectiveEnergyPackage { get => _costEffectiveEnergyPackage; set => SetField(ref _costEffectiveEnergyPackage, value); }
 
         /// <summary>
         /// EEM Maximum Amount of EE Improvement Cost Per The EEM Calculator in FHA Connection (Note 3) [EEM.X73]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Maximum Amount of EE Improvement Cost Per The EEM Calculator in FHA Connection (Note 3)")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EeCostMaximumAmount { get => _eeCostMaximumAmount; set => SetField(ref _eeCostMaximumAmount, value); }
 
         /// <summary>
         /// EEM Installed Cost of EE Improvements (B1 or B2) [EEM.X69]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Installed Cost of EE Improvements (B1 or B2)")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EeImprovementsInstalledCost { get => _eeImprovementsInstalledCost; set => SetField(ref _eeImprovementsInstalledCost, value); }
 
         /// <summary>
         /// EEM Installed Cost of Energy Improvements (Existing Construction) [EEM.X67]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Installed Cost of Energy Improvements (Existing Construction)")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EnergyCost { get => _energyCost; set => SetField(ref _energyCost, value); }
 
         /// <summary>
         /// EEM Expected Energy Savings Over Useful Life of Improvements (Calculated at Present Value) Per Audit Report [EEM.X68]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Expected Energy Savings Over Useful Life of Improvements (Calculated at Present Value) Per Audit Report")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EnergySavings { get => _energySavings; set => SetField(ref _energySavings, value); }
 
         /// <summary>
         /// EEM Total Monthly Housing Payment - HOA [EEM.X84]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Total Monthly Housing Payment - HOA")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Hoa { get => _hoa; set => SetField(ref _hoa, value); }
 
         /// <summary>
@@ -110,121 +110,120 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EEM Cost of Improvements That Exceed 2000 IECC (New Construction Only) [EEM.X66]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Cost of Improvements That Exceed 2000 IECC (New Construction Only)")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ImprovementCostExceed2000 { get => _improvementCostExceed2000; set => SetField(ref _improvementCostExceed2000, value); }
 
         /// <summary>
         /// EEM Inspection(s) Cost [EEM.X71]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Inspection(s) Cost")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InspectionCost { get => _inspectionCost; set => SetField(ref _inspectionCost, value); }
 
         /// <summary>
         /// EEM Lesser of C1 or C2 (This is The Cost-Effective Energy Package And The Amount That May be Added to the Base Loan Amount) (Note 4) [EEM.X74]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "EEM Lesser of C1 or C2 (This is The Cost-Effective Energy Package And The Amount That May be Added to the Base Loan Amount) (Note 4)")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? LesserC1ORC2 { get => _lesserC1ORC2; set => SetField(ref _lesserC1ORC2, value); }
 
         /// <summary>
         /// EEM Total Monthly Housing Payment for E1 + E2  (PITI) [EEM.X83]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Total Monthly Housing Payment for E1 + E2  (PITI)")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyHousingPayment { get => _monthlyHousingPayment; set => SetField(ref _monthlyHousingPayment, value); }
 
         /// <summary>
         /// EEM Total Monthly Housing Payment - Monthly MI [EEM.X85]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Total Monthly Housing Payment - Monthly MI")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyMI { get => _monthlyMI; set => SetField(ref _monthlyMI, value); }
 
         /// <summary>
         /// EEM Mortgage Amount Used for Qualifying Ratios [EEM.X82]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "EEM Mortgage Amount Used for Qualifying Ratios")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? MortgageAmountUsedForQualifyingRate { get => _mortgageAmountUsedForQualifyingRate; set => SetField(ref _mortgageAmountUsedForQualifyingRate, value); }
 
         /// <summary>
         /// EEM Mortgage Amount Used for Qualifying Ratios - D1 [EEM.X80]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Mortgage Amount Used for Qualifying Ratios - D1")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MortgageAmountUsedForQualifyingRateD1 { get => _mortgageAmountUsedForQualifyingRateD1; set => SetField(ref _mortgageAmountUsedForQualifyingRateD1, value); }
 
         /// <summary>
         /// EEM Either New or Existing Construction [EEM.X90]
         /// </summary>
-        [LoanFieldProperty(Description = "EEM Either New or Existing Construction")]
         public bool? NewOrExisting { get => _newOrExisting; set => SetField(ref _newOrExisting, value); }
 
         /// <summary>
         /// EEM Original Sales Price if Owned less than 12 months [EEM.X63]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Original Sales Price if Owned less than 12 months")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginalSalesPriceIfLess12Months { get => _originalSalesPriceIfLess12Months; set => SetField(ref _originalSalesPriceIfLess12Months, value); }
 
         /// <summary>
         /// EEM Total Monthly Housing Payment - Other/etc. [EEM.X86]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Total Monthly Housing Payment - Other/etc.")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherHousingPayment { get => _otherHousingPayment; set => SetField(ref _otherHousingPayment, value); }
 
         /// <summary>
         /// EEM Weatherization And/Or Solar Not Yet Included in A1, A3 Or A4 [EEM.X65]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Weatherization And/Or Solar Not Yet Included in A1, A3 Or A4")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SolarNotIncluded { get => _solarNotIncluded; set => SetField(ref _solarNotIncluded, value); }
 
         /// <summary>
         /// EEM Solar System Cost Allowance [EEM.X76]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Solar System Cost Allowance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SolarSystemCostAllowance { get => _solarSystemCostAllowance; set => SetField(ref _solarSystemCostAllowance, value); }
 
         /// <summary>
         /// EEM Total Actual Amount [EEM.X61]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "EEM Total Actual Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalActualAmount { get => _totalActualAmount; set => SetField(ref _totalActualAmount, value); }
 
         /// <summary>
         /// EEM Total FHA Allowed Amount [EEM.X62]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "EEM Total FHA Allowed Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalAllowedAmount { get => _totalAllowedAmount; set => SetField(ref _totalAllowedAmount, value); }
 
         /// <summary>
         /// EEM Total Base EEM Loan Amount (D1 + D2 + D3) [EEM.X77]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "EEM Total Base EEM Loan Amount (D1 + D2 + D3)")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalBaseEemLoanAmount { get => _totalBaseEemLoanAmount; set => SetField(ref _totalBaseEemLoanAmount, value); }
 
         /// <summary>
         /// EEM Total Combined Loan Amount (D4 + D5) (Note: Only Whole Dollar Amounts May be Insured by FHA) [EEM.X79]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "EEM Total Combined Loan Amount (D4 + D5) (Note: Only Whole Dollar Amounts May be Insured by FHA)")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalCombinedLoanAmount { get => _totalCombinedLoanAmount; set => SetField(ref _totalCombinedLoanAmount, value); }
 
         /// <summary>
         /// EEM Total Monthly Housing Payment [EEM.X87]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "EEM Total Monthly Housing Payment")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalMonthlyHousingPayment { get => _totalMonthlyHousingPayment; set => SetField(ref _totalMonthlyHousingPayment, value); }
 
         /// <summary>
         /// EEM Total Monthly Obligations [EEM.X88]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true, Description = "EEM Total Monthly Obligations")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? TotalMonthlyObligations { get => _totalMonthlyObligations; set => SetField(ref _totalMonthlyObligations, value); }
 
         /// <summary>
         /// EEM Mortgage Amount Used for Qualifying Ratios - UFMIP Based on D1 [EEM.X81]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM Mortgage Amount Used for Qualifying Ratios - UFMIP Based on D1")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UfmipBasedOn { get => _ufmipBasedOn; set => SetField(ref _ufmipBasedOn, value); }
 
         /// <summary>
         /// EEM UFMIP (Factor Applied to D4) [EEM.X78]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "EEM UFMIP (Factor Applied to D4)")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UfmipFactor { get => _ufmipFactor; set => SetField(ref _ufmipFactor, value); }
     }
 }

@@ -91,115 +91,109 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Broker Street Address [RE88395.X338]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Broker Street Address")]
         public string Address { get => _address; set => SetField(ref _address, value); }
 
         /// <summary>
         /// Fees Aggregate Adj [558]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Aggregate Adj")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AgregateAdjustment { get => _agregateAdjustment; set => SetField(ref _agregateAdjustment, value); }
 
         /// <summary>
         /// MLDS RE882 Broker Commission/Origination Fee [RE882.X26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS RE882 Broker Commission/Origination Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerCommission { get => _brokerCommission; set => SetField(ref _brokerCommission, value); }
 
         /// <summary>
         /// File Contacts Broker License # [RE88395.X182]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Broker License #")]
         public string BrokerLicense { get => _brokerLicense; set => SetField(ref _brokerLicense, value); }
 
         /// <summary>
         /// MLDS Broker Name [RE88395.X150]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Broker Name")]
         public string BrokerName { get => _brokerName; set => SetField(ref _brokerName, value); }
 
         /// <summary>
         /// MLDS Broker Rep [RE88395.X151]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Broker Rep")]
         public string BrokerRepresentative { get => _brokerRepresentative; set => SetField(ref _brokerRepresentative, value); }
 
         /// <summary>
         /// MLDS Broker City [RE88395.X339]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Broker City")]
         public string City { get => _city; set => SetField(ref _city, value); }
 
         /// <summary>
         /// MLDS Broker Comp Add From Lender $ [RE88395.X179]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Broker Comp Add From Lender $")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CompensationFromLenderAmount { get => _compensationFromLenderAmount; set => SetField(ref _compensationFromLenderAmount, value); }
 
         /// <summary>
         /// MLDS Broker Comp Add From Lender % [RE88395.X154]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "MLDS Broker Comp Add From Lender %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? CompensationFromLenderPercentage { get => _compensationFromLenderPercentage; set => SetField(ref _compensationFromLenderPercentage, value); }
 
         /// <summary>
         /// MLDS Broker Comp Add From Lender Amt [RE88395.X109]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "MLDS Broker Comp Add From Lender Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? CompensationFromLenderTotalAmount { get => _compensationFromLenderTotalAmount; set => SetField(ref _compensationFromLenderTotalAmount, value); }
 
         /// <summary>
         /// MLDS Credit Life/Disability Premium [RE88395.X111]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Credit Life/Disability Premium")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditLifeOrDisabilityPremium { get => _creditLifeOrDisabilityPremium; set => SetField(ref _creditLifeOrDisabilityPremium, value); }
 
         /// <summary>
         /// MLDS RE882 Credit to Borrower Amount [RE882.X67]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS RE882 Credit to Borrower Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditToBorrowerAmount { get => _creditToBorrowerAmount; set => SetField(ref _creditToBorrowerAmount, value); }
 
         /// <summary>
         /// MLDS Est Cash at Closing [RE88395.X118]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "MLDS Est Cash at Closing")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? EstimatedCashAtClosing { get => _estimatedCashAtClosing; set => SetField(ref _estimatedCashAtClosing, value); }
 
         /// <summary>
         /// MLDS RE882 Estimated Cash Payable to Borrower [RE882.X6]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "MLDS RE882 Estimated Cash Payable to Borrower")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? EstimatedCashToBorrower { get => _estimatedCashToBorrower; set => SetField(ref _estimatedCashToBorrower, value); }
 
         /// <summary>
         /// MLDS Balloon Pymt Due Date [RE88395.X122]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Balloon Pymt Due Date")]
         public DateTime? EstimatedDueDate { get => _estimatedDueDate; set => SetField(ref _estimatedDueDate, value); }
 
         /// <summary>
         /// MLDS Final Balloon Pymt Amt [RE88395.X121]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Final Balloon Pymt Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinalBalloonPayment { get => _finalBalloonPayment; set => SetField(ref _finalBalloonPayment, value); }
 
         /// <summary>
         /// MLDS S3 1st Monthly Pymt [RE88395.X324]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS S3 1st Monthly Pymt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FirstChangePayment { get => _firstChangePayment; set => SetField(ref _firstChangePayment, value); }
 
         /// <summary>
         /// MLDS S3 1st Change Percent [RE88395.X323]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "MLDS S3 1st Change Percent")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? FirstChangePercent { get => _firstChangePercent; set => SetField(ref _firstChangePercent, value); }
 
         /// <summary>
         /// Expenses Calc MIP/PMI MIP Funding Amt [1826]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Expenses Calc MIP/PMI MIP Funding Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FundingAmount { get => _fundingAmount; set => SetField(ref _fundingAmount, value); }
 
         /// <summary>
@@ -225,25 +219,23 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details GFE Provided By Broker [1814]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details GFE Provided By Broker", OptionsJson = "{\"true\":\"This Good Faith Estimate is being provided by broker...\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"This Good Faith Estimate is being provided by broker...\"}")]
         public bool? GfeProvidedByBrokerIndicator { get => _gfeProvidedByBrokerIndicator; set => SetField(ref _gfeProvidedByBrokerIndicator, value); }
 
         /// <summary>
         /// MLDS RE882 Add?l Comp Will/May Be Received from Lender [RE882.X4]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS RE882 Add?l Comp Will/May Be Received from Lender")]
         public bool? HasAdditionalCompensationIndicator { get => _hasAdditionalCompensationIndicator; set => SetField(ref _hasAdditionalCompensationIndicator, value); }
 
         /// <summary>
         /// Loan has late charges [RE882.X48]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan has late charges")]
         public bool? HasLateChargesIndicator { get => _hasLateChargesIndicator; set => SetField(ref _hasLateChargesIndicator, value); }
 
         /// <summary>
         /// MLDS Prepymt Penalty [RE88395.X322]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Prepymt Penalty", OptionsJson = "{\"true\":\"Prepayment penalty\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Prepayment penalty\"}")]
         public bool? HasPrepaymentPenaltyIndicator { get => _hasPrepaymentPenaltyIndicator; set => SetField(ref _hasPrepaymentPenaltyIndicator, value); }
 
         /// <summary>
@@ -254,109 +246,96 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Loan Type Check Boxes [RE88395.X326]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Loan Type Check Boxes")]
         public StringEnumValue<InitialFixedOrArmType> InitialFixedOrArmType { get => _initialFixedOrArmType; set => SetField(ref _initialFixedOrArmType, value); }
 
         /// <summary>
         /// MLDS RE882 Lender Origination Fee/Discounts [RE882.X27]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS RE882 Lender Origination Fee/Discounts")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderOriginationFee { get => _lenderOriginationFee; set => SetField(ref _lenderOriginationFee, value); }
 
         /// <summary>
         /// MLDS Loan May/May not be from Broker funds [RE88395.X149]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Loan May/May not be from Broker funds")]
         public StringEnumValue<LoanFromBrokerControledFundsType> LoanFromBrokerControledFundsType { get => _loanFromBrokerControledFundsType; set => SetField(ref _loanFromBrokerControledFundsType, value); }
 
         /// <summary>
         /// Expenses Calc MIP/PMI Lock [1765]
         /// </summary>
-        [LoanFieldProperty(Description = "Expenses Calc MIP/PMI Lock")]
         public bool? LockField { get => _lockField; set => SetField(ref _lockField, value); }
 
         /// <summary>
         /// MLDS S3 Max Life Monthly Pymt [RE88395.X325]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS S3 Max Life Monthly Pymt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaxLifePayment { get => _maxLifePayment; set => SetField(ref _maxLifePayment, value); }
 
         /// <summary>
         /// MLDS S3 Months to Max Life Monthly Pymt [RE88395.X327]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS S3 Months to Max Life Monthly Pymt")]
         public int? MaxPaymentAfterMonth { get => _maxPaymentAfterMonth; set => SetField(ref _maxPaymentAfterMonth, value); }
 
         /// <summary>
         /// MLDS Monthly Pymt With Escrow [RE88395.X318]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "MLDS Monthly Pymt With Escrow")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? MonthlyPaymentAndEscrow { get => _monthlyPaymentAndEscrow; set => SetField(ref _monthlyPaymentAndEscrow, value); }
 
         /// <summary>
         /// MLDS Broker Commission Fee Amt [1119]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Broker Commission Fee Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MortgageBrokerComissionFee { get => _mortgageBrokerComissionFee; set => SetField(ref _mortgageBrokerComissionFee, value); }
 
         /// <summary>
         /// MLDS Broker Commission Fee Descr [RE88395.X190]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Broker Commission Fee Descr")]
         public string MortgageBrokerComissionFeePaidToName { get => _mortgageBrokerComissionFeePaidToName; set => SetField(ref _mortgageBrokerComissionFeePaidToName, value); }
 
         /// <summary>
         /// MLDS RE882 Nature of Lien 1 Descr Remain on Property [RE882.X52]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS RE882 Nature of Lien 1 Descr Remain on Property")]
         public string NatureLien1Description { get => _natureLien1Description; set => SetField(ref _natureLien1Description, value); }
 
         /// <summary>
         /// MLDS RE882 Nature Lien 1 Descr Borr Obligated to Pay [RE882.X49]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS RE882 Nature Lien 1 Descr Borr Obligated to Pay")]
         public string NatureLien1PayoffDescription { get => _natureLien1PayoffDescription; set => SetField(ref _natureLien1PayoffDescription, value); }
 
         /// <summary>
         /// MLDS RE882 Nature of Lien 2 Descr Remain on Property [RE882.X53]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS RE882 Nature of Lien 2 Descr Remain on Property")]
         public string NatureLien2Description { get => _natureLien2Description; set => SetField(ref _natureLien2Description, value); }
 
         /// <summary>
         /// MLDS RE882 Nature Lien 2 Descr Borr Obligated to Pay [RE882.X50]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS RE882 Nature Lien 2 Descr Borr Obligated to Pay")]
         public string NatureLien2PayoffDescription { get => _natureLien2PayoffDescription; set => SetField(ref _natureLien2PayoffDescription, value); }
 
         /// <summary>
         /// MLDS RE882 Nature of Lien 3 Descr Remain on Property [RE882.X54]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS RE882 Nature of Lien 3 Descr Remain on Property")]
         public string NatureLien3Description { get => _natureLien3Description; set => SetField(ref _natureLien3Description, value); }
 
         /// <summary>
         /// MLDS RE882 Nature Lien 3 Descr Borr Obligated to Pay [RE882.X51]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS RE882 Nature Lien 3 Descr Borr Obligated to Pay")]
         public string NatureLien3PayoffDescription { get => _natureLien3PayoffDescription; set => SetField(ref _natureLien3PayoffDescription, value); }
 
         /// <summary>
         /// MLDS Prepymt Penalty [RE88395.X191]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Prepymt Penalty", OptionsJson = "{\"true\":\"Any payment of principle in excess of 20% of the\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Any payment of principle in excess of 20% of the\"}")]
         public bool? PaymentOfPrincipleIndicator { get => _paymentOfPrincipleIndicator; set => SetField(ref _paymentOfPrincipleIndicator, value); }
 
         /// <summary>
         /// MLDS Prepymt Penalty Orig/Unpaid Bal [RE88395.X126]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Prepymt Penalty Orig/Unpaid Bal")]
         public StringEnumValue<PaymentOfPrincipleType> PaymentOfPrincipleType { get => _paymentOfPrincipleType; set => SetField(ref _paymentOfPrincipleType, value); }
 
         /// <summary>
         /// MLDS Prepymt Penalty Not To Exceed [RE88395.X127]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Prepymt Penalty Not To Exceed")]
         public int? PenaltyNotToExceedMonths { get => _penaltyNotToExceedMonths; set => SetField(ref _penaltyNotToExceedMonths, value); }
 
         /// <summary>
@@ -380,169 +359,163 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Broker Zip Code [RE88395.X341]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "MLDS Broker Zip Code")]
+        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
 
         /// <summary>
         /// MLDS Prepymt Other Descr [RE88395.X317]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Prepymt Other Descr")]
         public string PrepaymentOtherDescription { get => _prepaymentOtherDescription; set => SetField(ref _prepaymentOtherDescription, value); }
 
         /// <summary>
         /// MLDS Prepymt - Other [RE88395.X124]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Prepymt - Other", OptionsJson = "{\"true\":\"Other (see loan documents for details)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Other (see loan documents for details)\"}")]
         public bool? PrepaymentOtherTypeIndicator { get => _prepaymentOtherTypeIndicator; set => SetField(ref _prepaymentOtherTypeIndicator, value); }
 
         /// <summary>
         /// MLDS Prepymt Penalty Amt [RE88395.X315]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Prepymt Penalty Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PrepaymentPenaltyAmount { get => _prepaymentPenaltyAmount; set => SetField(ref _prepaymentPenaltyAmount, value); }
 
         /// <summary>
         /// MLDS Prepymt Penalty None [RE88395.X123]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Prepymt Penalty None", OptionsJson = "{\"true\":\"No prepayment penalty\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"No prepayment penalty\"}")]
         public bool? PrepaymentPenaltyIndicator { get => _prepaymentPenaltyIndicator; set => SetField(ref _prepaymentPenaltyIndicator, value); }
 
         /// <summary>
         /// MLDS Prepymt Penalty Period [RE88395.X316]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Prepymt Penalty Period")]
         public int? PrepaymentPenaltyPeriod { get => _prepaymentPenaltyPeriod; set => SetField(ref _prepaymentPenaltyPeriod, value); }
 
         /// <summary>
         /// MLDS RE882 Principal Amount [RE882.X55]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS RE882 Principal Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PrincipalAmount { get => _principalAmount; set => SetField(ref _principalAmount, value); }
 
         /// <summary>
         /// MLDS Purchase/Payoff Amt [RE88395.X193]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Purchase/Payoff Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PurchasePayOff { get => _purchasePayOff; set => SetField(ref _purchasePayOff, value); }
 
         /// <summary>
         /// MLDS RE882 Add'l Comp Will be Received from Lender [RE882.X5]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS RE882 Add'l Comp Will be Received from Lender")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Re882AdditionalCompensation { get => _re882AdditionalCompensation; set => SetField(ref _re882AdditionalCompensation, value); }
 
         /// <summary>
         /// MLDS RE882 Received From Lender Amount [RE882.X66]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS RE882 Received From Lender Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReceivedFromLenderAmount { get => _receivedFromLenderAmount; set => SetField(ref _receivedFromLenderAmount, value); }
 
         /// <summary>
         /// File Contacts Broker Rep License # [RE88395.X183]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Broker Rep License #")]
         public string RepresentativeLicense { get => _representativeLicense; set => SetField(ref _representativeLicense, value); }
 
         /// <summary>
         /// MLDS Prepymt - Sources Deemed Reliable [RE88395.X337]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Prepymt - Sources Deemed Reliable")]
         public bool? SourcesDeemedReliableIndicator { get => _sourcesDeemedReliableIndicator; set => SetField(ref _sourcesDeemedReliableIndicator, value); }
 
         /// <summary>
         /// MLDS Broker State [RE88395.X340]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Broker State")]
         public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
 
         /// <summary>
         /// Trans Details Subtotal of Deductions [RE88395.X116]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Trans Details Subtotal of Deductions")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? SubtotalOfAllDeductions { get => _subtotalOfAllDeductions; set => SetField(ref _subtotalOfAllDeductions, value); }
 
         /// <summary>
         /// MLDS RE882 Total Amount of Compensation Retained by Broker [RE882.X63]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS RE882 Total Amount of Compensation Retained by Broker")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalBrokerCompensationAmount { get => _totalBrokerCompensationAmount; set => SetField(ref _totalBrokerCompensationAmount, value); }
 
         /// <summary>
         /// Fees Total Closing Cost [TOTAL_CC]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Fees Total Closing Cost")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalClosingCostWithDiscount { get => _totalClosingCostWithDiscount; set => SetField(ref _totalClosingCostWithDiscount, value); }
 
         /// <summary>
         /// MLDS RE882 Total Costs and Expenses [RE882.X47]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "MLDS RE882 Total Costs and Expenses")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalCostsExpenses { get => _totalCostsExpenses; set => SetField(ref _totalCostsExpenses, value); }
 
         /// <summary>
         /// MLDS RE882 Total Est Max Costs and Expenses [RE882.X25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "MLDS RE882 Total Est Max Costs and Expenses")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalMaximumCostsExpenses { get => _totalMaximumCostsExpenses; set => SetField(ref _totalMaximumCostsExpenses, value); }
 
         /// <summary>
         /// Fees Total Fees, Commiss, Costs, Exp [RE88395.X108]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Fees Total Fees, Commiss, Costs, Exp")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalOfInitialFees { get => _totalOfInitialFees; set => SetField(ref _totalOfInitialFees, value); }
 
         /// <summary>
         /// Fees Total Prepaid Cost [TOTAL_PREPAID]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Fees Total Prepaid Cost")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalPrepaidClosingCost { get => _totalPrepaidClosingCost; set => SetField(ref _totalPrepaidClosingCost, value); }
 
         /// <summary>
         /// Fees Total Closing Costs Borr [304]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Total Closing Costs Borr")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalSettlementCharges { get => _totalSettlementCharges; set => SetField(ref _totalSettlementCharges, value); }
 
         /// <summary>
         /// MLDS Total Tax and Insurance [RE88395.X321]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "MLDS Total Tax and Insurance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalTaxAndInsurance { get => _totalTaxAndInsurance; set => SetField(ref _totalTaxAndInsurance, value); }
 
         /// <summary>
         /// MLDS Prepymt - Yearly Flood Insurance [RE88395.X334]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Prepymt - Yearly Flood Insurance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? YearlyFloodInsurance { get => _yearlyFloodInsurance; set => SetField(ref _yearlyFloodInsurance, value); }
 
         /// <summary>
         /// MLDS Yearly Insurance [RE88395.X320]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Yearly Insurance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? YearlyInsurance { get => _yearlyInsurance; set => SetField(ref _yearlyInsurance, value); }
 
         /// <summary>
         /// MLDS Prepymt - Yearly Mortgage Insurance [RE88395.X333]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Prepymt - Yearly Mortgage Insurance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? YearlyMortgageInsurance { get => _yearlyMortgageInsurance; set => SetField(ref _yearlyMortgageInsurance, value); }
 
         /// <summary>
         /// MLDS Prepymt - Yearly Other Insurance [RE88395.X335]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Prepymt - Yearly Other Insurance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? YearlyOtherInsurance { get => _yearlyOtherInsurance; set => SetField(ref _yearlyOtherInsurance, value); }
 
         /// <summary>
         /// MLDS Prepymt - Yearly Other Insurance Description [RE88395.X336]
         /// </summary>
-        [LoanFieldProperty(Description = "MLDS Prepymt - Yearly Other Insurance Description")]
         public string YearlyOtherInsuranceDescription { get => _yearlyOtherInsuranceDescription; set => SetField(ref _yearlyOtherInsuranceDescription, value); }
 
         /// <summary>
         /// MLDS Yearly Tax [RE88395.X319]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "MLDS Yearly Tax")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? YearlyTax { get => _yearlyTax; set => SetField(ref _yearlyTax, value); }
     }
 }

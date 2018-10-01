@@ -150,79 +150,72 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Line 903 Borr Select [NEWHUD.X651]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 903 Borr Select")]
         public bool? BorrowerSelectIndicator903 { get => _borrowerSelectIndicator903; set => SetField(ref _borrowerSelectIndicator903, value); }
 
         /// <summary>
         /// Fees Line 904 Borr Select [NEWHUD.X597]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 904 Borr Select")]
         public bool? BorrowerSelectIndicator904 { get => _borrowerSelectIndicator904; set => SetField(ref _borrowerSelectIndicator904, value); }
 
         /// <summary>
         /// Fees Line 906 Borr Select [NEWHUD.X598]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 906 Borr Select")]
         public bool? BorrowerSelectIndicator906 { get => _borrowerSelectIndicator906; set => SetField(ref _borrowerSelectIndicator906, value); }
 
         /// <summary>
         /// Fees Line 907 Borr Select [NEWHUD.X599]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 907 Borr Select")]
         public bool? BorrowerSelectIndicator907 { get => _borrowerSelectIndicator907; set => SetField(ref _borrowerSelectIndicator907, value); }
 
         /// <summary>
         /// Fees Line 908 Borr Select [NEWHUD.X600]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 908 Borr Select")]
         public bool? BorrowerSelectIndicator908 { get => _borrowerSelectIndicator908; set => SetField(ref _borrowerSelectIndicator908, value); }
 
         /// <summary>
         /// Fees Line 909 Borr Select [NEWHUD.X601]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 909 Borr Select")]
         public bool? BorrowerSelectIndicator909 { get => _borrowerSelectIndicator909; set => SetField(ref _borrowerSelectIndicator909, value); }
 
         /// <summary>
         /// Fees Line 910 Borr Select [NEWHUD.X602]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 910 Borr Select")]
         public bool? BorrowerSelectIndicator910 { get => _borrowerSelectIndicator910; set => SetField(ref _borrowerSelectIndicator910, value); }
 
         /// <summary>
         /// Fees Line 1109 Applied to GFE [NEWHUD.X565]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Line 1109 Applied to GFE")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HudGfeLine1109 { get => _hudGfeLine1109; set => SetField(ref _hudGfeLine1109, value); }
 
         /// <summary>
         /// Fees Line 1110 Applied to GFE [NEWHUD.X566]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Line 1110 Applied to GFE")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HudGfeLine1110 { get => _hudGfeLine1110; set => SetField(ref _hudGfeLine1110, value); }
 
         /// <summary>
         /// Fees Line 1111 Applied to GFE [NEWHUD.X567]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Line 1111 Applied to GFE")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HudGfeLine1111 { get => _hudGfeLine1111; set => SetField(ref _hudGfeLine1111, value); }
 
         /// <summary>
         /// Fees Line 1112 Applied to GFE [NEWHUD.X568]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Line 1112 Applied to GFE")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HudGfeLine1112 { get => _hudGfeLine1112; set => SetField(ref _hudGfeLine1112, value); }
 
         /// <summary>
         /// Fees Line 1113 Applied to GFE [NEWHUD.X569]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Line 1113 Applied to GFE")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HudGfeLine1113 { get => _hudGfeLine1113; set => SetField(ref _hudGfeLine1113, value); }
 
         /// <summary>
         /// Fees Line 1114 Applied to GFE [NEWHUD.X570]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Line 1114 Applied to GFE")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HudGfeLine1114 { get => _hudGfeLine1114; set => SetField(ref _hudGfeLine1114, value); }
 
         /// <summary>
@@ -238,7 +231,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr Fees Line 1001 for HUD-1 Page 2 [NEWHUD.X1716]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Borr Fees Line 1001 for HUD-1 Page 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Line1001BorPaidTotal { get => _line1001BorPaidTotal; set => SetField(ref _line1001BorPaidTotal, value); }
 
         /// <summary>
@@ -294,181 +287,157 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Title Serv &amp; Lender Title Ins Provider [NEWHUD.X202]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Serv & Lender Title Ins Provider")]
         public string Line1101 { get => _line1101; set => SetField(ref _line1101, value); }
 
         /// <summary>
         /// Borr Fees Line 1101 for HUD-1 Page 2 [NEWHUD.X775]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Borr Fees Line 1101 for HUD-1 Page 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Line1101BorPaidTotal { get => _line1101BorPaidTotal; set => SetField(ref _line1101BorPaidTotal, value); }
 
         /// <summary>
         /// Seller Fees Line 1101 for HUD-1 Page 2 [NEWHUD.X708]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Seller Fees Line 1101 for HUD-1 Page 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Line1101SellerPaidAtoF { get => _line1101SellerPaidAtoF; set => SetField(ref _line1101SellerPaidAtoF, value); }
 
         /// <summary>
         /// Sttlmnt or Closing Fee Provider [NEWHUD.X203]
         /// </summary>
-        [LoanFieldProperty(Description = "Sttlmnt or Closing Fee Provider")]
         public string Line1102 { get => _line1102; set => SetField(ref _line1102, value); }
 
         /// <summary>
         /// Owner Title Ins Provider [NEWHUD.X204]
         /// </summary>
-        [LoanFieldProperty(Description = "Owner Title Ins Provider")]
         public string Line1103 { get => _line1103; set => SetField(ref _line1103, value); }
 
         /// <summary>
         /// Owner's Title Insurance Paid To Affiliate Amount [NEWHUD.X1724]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Owner's Title Insurance Paid To Affiliate Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Line1103PTAAmount { get => _line1103PTAAmount; set => SetField(ref _line1103PTAAmount, value); }
 
         /// <summary>
         /// Lender Title Ins Provider [NEWHUD.X205]
         /// </summary>
-        [LoanFieldProperty(Description = "Lender Title Ins Provider")]
         public string Line1104 { get => _line1104; set => SetField(ref _line1104, value); }
 
         /// <summary>
         /// Lender's Title Insurance Paid To Affiliate Amount [NEWHUD.X1725]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Lender's Title Insurance Paid To Affiliate Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Line1104PTAAmount { get => _line1104PTAAmount; set => SetField(ref _line1104PTAAmount, value); }
 
         /// <summary>
         /// Total Title Ins Prem - Recipient Agent Portion [NEWHUD.X206]
         /// </summary>
-        [LoanFieldProperty(Description = "Total Title Ins Prem - Recipient Agent Portion")]
         public string Line1107 { get => _line1107; set => SetField(ref _line1107, value); }
 
         /// <summary>
         /// Total Title Ins Prem - Recipient Underwiter Portion [NEWHUD.X207]
         /// </summary>
-        [LoanFieldProperty(Description = "Total Title Ins Prem - Recipient Underwiter Portion")]
         public string Line1108 { get => _line1108; set => SetField(ref _line1108, value); }
 
         /// <summary>
         /// Fees Line 1109 Descr [NEWHUD.X208]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1109 Descr")]
         public string Line1109 { get => _line1109; set => SetField(ref _line1109, value); }
 
         /// <summary>
         /// Fees Line 1110 Descr [NEWHUD.X209]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1110 Descr")]
         public string Line1110 { get => _line1110; set => SetField(ref _line1110, value); }
 
         /// <summary>
         /// Fees Line 1115 Descr [NEWHUD.X1602]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1115 Descr")]
         public string Line1115 { get => _line1115; set => SetField(ref _line1115, value); }
 
         /// <summary>
         /// Fees Line 1116 Descr [NEWHUD.X1610]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1116 Descr")]
         public string Line1116 { get => _line1116; set => SetField(ref _line1116, value); }
 
         /// <summary>
         /// Borr Fees Line 1201 for HUD-1 Page 2 [NEWHUD.X776]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Borr Fees Line 1201 for HUD-1 Page 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Line1201BorPaidTotal { get => _line1201BorPaidTotal; set => SetField(ref _line1201BorPaidTotal, value); }
 
         /// <summary>
         /// Fees Line 1209 Descr [NEWHUD.X1618]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1209 Descr")]
         public string Line1209 { get => _line1209; set => SetField(ref _line1209, value); }
 
         /// <summary>
         /// Fees Line 1210 Descr [NEWHUD.X1625]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1210 Descr")]
         public string Line1210 { get => _line1210; set => SetField(ref _line1210, value); }
 
         /// <summary>
         /// Borr Fees Line 1301 for HUD-1 Page 2 [NEWHUD.X777]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Borr Fees Line 1301 for HUD-1 Page 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Line1301BorPaidTotal { get => _line1301BorPaidTotal; set => SetField(ref _line1301BorPaidTotal, value); }
 
         /// <summary>
         /// Fees Line 1302 Descr [NEWHUD.X251]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1302 Descr")]
         public string Line1302 { get => _line1302; set => SetField(ref _line1302, value); }
 
         /// <summary>
         /// Fees Line 1310 Descr [NEWHUD.X252]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1310 Descr")]
         public string Line1310 { get => _line1310; set => SetField(ref _line1310, value); }
 
         /// <summary>
         /// Fees Line 1311 Descr [NEWHUD.X253]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1311 Descr")]
         public string Line1311 { get => _line1311; set => SetField(ref _line1311, value); }
 
         /// <summary>
         /// Fees Line 1312 Descr [NEWHUD.X1632]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1312 Descr")]
         public string Line1312 { get => _line1312; set => SetField(ref _line1312, value); }
 
         /// <summary>
         /// Fees Line 1313 Descr [NEWHUD.X1640]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1313 Descr")]
         public string Line1313 { get => _line1313; set => SetField(ref _line1313, value); }
 
         /// <summary>
         /// Fees Line 1314 Descr [NEWHUD.X1648]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1314 Descr")]
         public string Line1314 { get => _line1314; set => SetField(ref _line1314, value); }
 
         /// <summary>
         /// Fees Line 1315 Descr [NEWHUD.X1656]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1315 Descr")]
         public string Line1315 { get => _line1315; set => SetField(ref _line1315, value); }
 
         /// <summary>
         /// Fees Line 1316 Descr [NEWHUD2.X4610]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1316 Descr")]
         public string Line1316 { get => _line1316; set => SetField(ref _line1316, value); }
 
         /// <summary>
         /// Fees Line 1317 Descr [NEWHUD2.X4617]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1317 Descr")]
         public string Line1317 { get => _line1317; set => SetField(ref _line1317, value); }
 
         /// <summary>
         /// Fees Line 1318 Descr [NEWHUD2.X4624]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1318 Descr")]
         public string Line1318 { get => _line1318; set => SetField(ref _line1318, value); }
 
         /// <summary>
         /// Fees Line 1319 Descr [NEWHUD2.X4631]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1319 Descr")]
         public string Line1319 { get => _line1319; set => SetField(ref _line1319, value); }
 
         /// <summary>
         /// Fees Line 1320 Descr [NEWHUD2.X4638]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1320 Descr")]
         public string Line1320 { get => _line1320; set => SetField(ref _line1320, value); }
 
         /// <summary>
@@ -494,217 +463,182 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Line 803 Description [NEWHUD2.X7]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 803 Description")]
         public string Line803x { get => _line803x; set => SetField(ref _line803x, value); }
 
         /// <summary>
         /// Flood Certification To [NEWHUD.X399]
         /// </summary>
-        [LoanFieldProperty(Description = "Flood Certification To")]
         public string Line807Company { get => _line807Company; set => SetField(ref _line807Company, value); }
 
         /// <summary>
         /// Fees Line 808 Descr [NEWHUD.X126]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 808 Descr")]
         public string Line808 { get => _line808; set => SetField(ref _line808, value); }
 
         /// <summary>
         /// Fees Line 809 Descr [NEWHUD.X127]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 809 Descr")]
         public string Line809 { get => _line809; set => SetField(ref _line809, value); }
 
         /// <summary>
         /// Fees Line 810 Descr [NEWHUD.X128]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 810 Descr")]
         public string Line810 { get => _line810; set => SetField(ref _line810, value); }
 
         /// <summary>
         /// Fees Line 811 Descr [NEWHUD.X129]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 811 Descr")]
         public string Line811 { get => _line811; set => SetField(ref _line811, value); }
 
         /// <summary>
         /// Fees Line 812 Descr [NEWHUD.X130]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 812 Descr")]
         public string Line812 { get => _line812; set => SetField(ref _line812, value); }
 
         /// <summary>
         /// Fees Line 835 Descr [NEWHUD.X656]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 835 Descr")]
         public string Line819 { get => _line819; set => SetField(ref _line819, value); }
 
         /// <summary>
         /// Fees Line 818 Descr [NEWHUD.X1291]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 818 Descr")]
         public string Line820 { get => _line820; set => SetField(ref _line820, value); }
 
         /// <summary>
         /// Fees Line 819 Descr [NEWHUD.X1299]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 819 Descr")]
         public string Line821 { get => _line821; set => SetField(ref _line821, value); }
 
         /// <summary>
         /// Fees Line 820 Descr [NEWHUD.X1307]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 820 Descr")]
         public string Line822 { get => _line822; set => SetField(ref _line822, value); }
 
         /// <summary>
         /// Fees Line 821 Descr [NEWHUD.X1315]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 821 Descr")]
         public string Line823 { get => _line823; set => SetField(ref _line823, value); }
 
         /// <summary>
         /// Fees Line 822 Descr [NEWHUD.X1323]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 822 Descr")]
         public string Line824 { get => _line824; set => SetField(ref _line824, value); }
 
         /// <summary>
         /// Fees Line 823 Descr [NEWHUD.X1331]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 823 Descr")]
         public string Line825 { get => _line825; set => SetField(ref _line825, value); }
 
         /// <summary>
         /// Fees Line 824 Descr [NEWHUD.X1339]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 824 Descr")]
         public string Line826 { get => _line826; set => SetField(ref _line826, value); }
 
         /// <summary>
         /// Fees Line 825 Descr [NEWHUD.X1347]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 825 Descr")]
         public string Line827 { get => _line827; set => SetField(ref _line827, value); }
 
         /// <summary>
         /// Fees Line 826 Descr [NEWHUD.X1355]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 826 Descr")]
         public string Line828 { get => _line828; set => SetField(ref _line828, value); }
 
         /// <summary>
         /// Fees Line 827 Descr [NEWHUD.X1363]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 827 Descr")]
         public string Line829 { get => _line829; set => SetField(ref _line829, value); }
 
         /// <summary>
         /// Fees Line 828 Descr [NEWHUD.X1371]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 828 Descr")]
         public string Line830 { get => _line830; set => SetField(ref _line830, value); }
 
         /// <summary>
         /// Fees Line 829 Descr [NEWHUD.X1379]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 829 Descr")]
         public string Line831 { get => _line831; set => SetField(ref _line831, value); }
 
         /// <summary>
         /// Fees Line 830 Descr [NEWHUD.X1387]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 830 Descr")]
         public string Line832 { get => _line832; set => SetField(ref _line832, value); }
 
         /// <summary>
         /// Fees Line 831 Descr [NEWHUD.X1395]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 831 Descr")]
         public string Line833 { get => _line833; set => SetField(ref _line833, value); }
 
         /// <summary>
         /// Fees Line 832 Descr [NEWHUD.X1403]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 832 Descr")]
         public string Line834 { get => _line834; set => SetField(ref _line834, value); }
 
         /// <summary>
         /// Fees Line 833 Descr [NEWHUD.X1411]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 833 Descr")]
         public string Line835 { get => _line835; set => SetField(ref _line835, value); }
 
         /// <summary>
         /// Fees Line 904 User Def Fee Descr [NEWHUD.X582]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 904 User Def Fee Descr")]
         public string Line904 { get => _line904; set => SetField(ref _line904, value); }
 
         /// <summary>
         /// Fees Line 909 User Def Fee Descr [NEWHUD.X583]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 909 User Def Fee Descr")]
         public string Line909 { get => _line909; set => SetField(ref _line909, value); }
 
         /// <summary>
         /// Fees Line 910 User Def Fee Descr [NEWHUD.X584]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 910 User Def Fee Descr")]
         public string Line910 { get => _line910; set => SetField(ref _line910, value); }
 
         /// <summary>
         /// Fees Line 911 Descr [NEWHUD.X1586]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 911 Descr")]
         public string Line911 { get => _line911; set => SetField(ref _line911, value); }
 
         /// <summary>
         /// Fees Line 912 Descr [NEWHUD.X1594]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 912 Descr")]
         public string Line912 { get => _line912; set => SetField(ref _line912, value); }
 
         /// <summary>
         /// Fees Line PC1 Descr [NEWHUD2.X4660]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line PC1 Descr")]
         public string LinePC1 { get => _linePC1; set => SetField(ref _linePC1, value); }
 
         /// <summary>
         /// Fees Line PC2 Descr [NEWHUD2.X4683]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line PC2 Descr")]
         public string LinePC2 { get => _linePC2; set => SetField(ref _linePC2, value); }
 
         /// <summary>
         /// Fees Line PC3 Descr [NEWHUD2.X4706]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line PC3 Descr")]
         public string LinePC3 { get => _linePC3; set => SetField(ref _linePC3, value); }
 
         /// <summary>
         /// Fees Line PC4 Descr [NEWHUD2.X4729]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line PC4 Descr")]
         public string LinePC4 { get => _linePC4; set => SetField(ref _linePC4, value); }
 
         /// <summary>
         /// Loan Term Table Is Customized [LOANTERMTABLE.CUSTOMIZE]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Term Table Is Customized")]
         public bool? LoanTermTableCustomized { get => _loanTermTableCustomized; set => SetField(ref _loanTermTableCustomized, value); }
 
         /// <summary>
         /// Itemize Fees on Line 802 [NEWHUD.X1140]
         /// </summary>
-        [LoanFieldProperty(Description = "Itemize Fees on Line 802")]
         public bool? LoCompensationItemizeFeesIndicator { get => _loCompensationItemizeFeesIndicator; set => SetField(ref _loCompensationItemizeFeesIndicator, value); }
 
         /// <summary>
         /// Total Credit for Rate Chosen [NEWHUD.X1149]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Total Credit for Rate Chosen")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? LoCompensationLenderTotalPaidOriginatorAmount { get => _loCompensationLenderTotalPaidOriginatorAmount; set => SetField(ref _loCompensationLenderTotalPaidOriginatorAmount, value); }
 
         /// <summary>
@@ -720,157 +654,140 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LO Compensation - GFE -Total Lender Paid Originator Compensation [NEWHUD.X1206]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "LO Compensation - GFE -Total Lender Paid Originator Compensation")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? LoCompensationNewHudLenderTotalPaidOriginatorAmount { get => _loCompensationNewHudLenderTotalPaidOriginatorAmount; set => SetField(ref _loCompensationNewHudLenderTotalPaidOriginatorAmount, value); }
 
         /// <summary>
         /// LO Compensation - GFE -Total Borrower Paid Discount Point Amount [NEWHUD.X1215]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "LO Compensation - GFE -Total Borrower Paid Discount Point Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? LoCompensationNewHudTotalBorrowerPaidDiscountPointAmount { get => _loCompensationNewHudTotalBorrowerPaidDiscountPointAmount; set => SetField(ref _loCompensationNewHudTotalBorrowerPaidDiscountPointAmount, value); }
 
         /// <summary>
         /// LO Compensation - GFE -Total Origination or Discount Points [NEWHUD.X1216]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "LO Compensation - GFE -Total Origination or Discount Points")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LoCompensationNewHudTotalLoCompensationAmount { get => _loCompensationNewHudTotalLoCompensationAmount; set => SetField(ref _loCompensationNewHudTotalLoCompensationAmount, value); }
 
         /// <summary>
         /// LO Compensation - TotalBorrower Paid Discount Point Amount Line 4 [NEWHUD.X1165]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "LO Compensation - TotalBorrower Paid Discount Point Amount Line 4")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? LoCompensationTotalBorrowerPaidDiscountPointAmount4 { get => _loCompensationTotalBorrowerPaidDiscountPointAmount4; set => SetField(ref _loCompensationTotalBorrowerPaidDiscountPointAmount4, value); }
 
         /// <summary>
         /// LO Compensation - Total Origination or Discount Points [NEWHUD.X1191]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "LO Compensation - Total Origination or Discount Points")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? LoCompensationTotalLoCompensationAmount { get => _loCompensationTotalLoCompensationAmount; set => SetField(ref _loCompensationTotalLoCompensationAmount, value); }
 
         /// <summary>
         /// LO Compensation - Total Seller Paid Discount Point Amount Line 4 [NEWHUD.X1166]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "LO Compensation - Total Seller Paid Discount Point Amount Line 4")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? LoCompensationTotalSellerPaidDiscountPointAmount4 { get => _loCompensationTotalSellerPaidDiscountPointAmount4; set => SetField(ref _loCompensationTotalSellerPaidDiscountPointAmount4, value); }
 
         /// <summary>
         /// Itemize Fees on Line 802 Use LO Compensation Tool [NEWHUD.X1139]
         /// </summary>
-        [LoanFieldProperty(Description = "Itemize Fees on Line 802 Use LO Compensation Tool")]
         public bool? LoCompensationUseLoCompensationToolIndicator { get => _loCompensationUseLoCompensationToolIndicator; set => SetField(ref _loCompensationUseLoCompensationToolIndicator, value); }
 
         /// <summary>
         /// Projected Payment Table number of columns [NEWHUD2.XPJTCOLUMNS]
         /// </summary>
-        [LoanFieldProperty(Description = "Projected Payment Table number of columns")]
         public string ProjectedPaymentTableColumns { get => _projectedPaymentTableColumns; set => SetField(ref _projectedPaymentTableColumns, value); }
 
         /// <summary>
         /// Projected Payment Table Is Customized [PAYMENTTABLE.CUSTOMIZE]
         /// </summary>
-        [LoanFieldProperty(Description = "Projected Payment Table Is Customized")]
         public bool? ProjectedPaymentTableCustomized { get => _projectedPaymentTableCustomized; set => SetField(ref _projectedPaymentTableCustomized, value); }
 
         /// <summary>
         /// Projected Payment Table [NEWHUD2.XPJT]
         /// </summary>
-        [LoanFieldProperty(Description = "Projected Payment Table")]
         public string ProjectedPaymentTableType { get => _projectedPaymentTableType; set => SetField(ref _projectedPaymentTableType, value); }
 
         /// <summary>
         /// Fees Line 1010 Aggregate Adjust Applied to GFE [NEWHUD.X948]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Fees Line 1010 Aggregate Adjust Applied to GFE")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? Section1000AggregateAdjust { get => _section1000AggregateAdjust; set => SetField(ref _section1000AggregateAdjust, value); }
 
         /// <summary>
         /// Fees Line 1010 Guarantee Fee APR [NEWHUD.X1711]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1010 Guarantee Fee APR")]
         public bool? Section1000HudGuaranteeFeeAprIndicator { get => _section1000HudGuaranteeFeeAprIndicator; set => SetField(ref _section1000HudGuaranteeFeeAprIndicator, value); }
 
         /// <summary>
         /// Fees Line 1104 Borr Selects [NEWHUD.X573]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1104 Borr Selects")]
         public bool? Section1100BorrowerSelectIndicator1 { get => _section1100BorrowerSelectIndicator1; set => SetField(ref _section1100BorrowerSelectIndicator1, value); }
 
         /// <summary>
         /// Fees Line 1102 Borr Select [NEWHUD.X646]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1102 Borr Select")]
         public bool? Section1100BorrowerSelectIndicator10 { get => _section1100BorrowerSelectIndicator10; set => SetField(ref _section1100BorrowerSelectIndicator10, value); }
 
         /// <summary>
         /// Fees Line 1107 Borr Selects [NEWHUD.X574]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1107 Borr Selects")]
         public bool? Section1100BorrowerSelectIndicator2 { get => _section1100BorrowerSelectIndicator2; set => SetField(ref _section1100BorrowerSelectIndicator2, value); }
 
         /// <summary>
         /// Fees Line 1108 Borr Selects [NEWHUD.X575]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1108 Borr Selects")]
         public bool? Section1100BorrowerSelectIndicator3 { get => _section1100BorrowerSelectIndicator3; set => SetField(ref _section1100BorrowerSelectIndicator3, value); }
 
         /// <summary>
         /// Fees Line 1109 Borr Selects [NEWHUD.X576]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1109 Borr Selects")]
         public bool? Section1100BorrowerSelectIndicator4 { get => _section1100BorrowerSelectIndicator4; set => SetField(ref _section1100BorrowerSelectIndicator4, value); }
 
         /// <summary>
         /// Fees Line 1110 Borr Selects [NEWHUD.X577]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1110 Borr Selects")]
         public bool? Section1100BorrowerSelectIndicator5 { get => _section1100BorrowerSelectIndicator5; set => SetField(ref _section1100BorrowerSelectIndicator5, value); }
 
         /// <summary>
         /// Fees Line 1111 Borr Selects [NEWHUD.X578]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1111 Borr Selects")]
         public bool? Section1100BorrowerSelectIndicator6 { get => _section1100BorrowerSelectIndicator6; set => SetField(ref _section1100BorrowerSelectIndicator6, value); }
 
         /// <summary>
         /// Fees Line 1112 Borr Selects [NEWHUD.X579]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1112 Borr Selects")]
         public bool? Section1100BorrowerSelectIndicator7 { get => _section1100BorrowerSelectIndicator7; set => SetField(ref _section1100BorrowerSelectIndicator7, value); }
 
         /// <summary>
         /// Fees Line 1113 Borr Selects [NEWHUD.X580]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1113 Borr Selects")]
         public bool? Section1100BorrowerSelectIndicator8 { get => _section1100BorrowerSelectIndicator8; set => SetField(ref _section1100BorrowerSelectIndicator8, value); }
 
         /// <summary>
         /// Fees Line 1114 Borr Selects [NEWHUD.X581]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Line 1114 Borr Selects")]
         public bool? Section1100BorrowerSelectIndicator9 { get => _section1100BorrowerSelectIndicator9; set => SetField(ref _section1100BorrowerSelectIndicator9, value); }
 
         /// <summary>
         /// Itemize Fees on Line 1101 [NEWHUD.X1017]
         /// </summary>
-        [LoanFieldProperty(Description = "Itemize Fees on Line 1101")]
         public bool? Section1100ItemizeFeesIndicator { get => _section1100ItemizeFeesIndicator; set => SetField(ref _section1100ItemizeFeesIndicator, value); }
 
         /// <summary>
         /// Trans Tax Total for HUD-1 Page 2 [NEWHUD.X778]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Tax Total for HUD-1 Page 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Section1200TotalTransferTaxes { get => _section1200TotalTransferTaxes; set => SetField(ref _section1200TotalTransferTaxes, value); }
 
         /// <summary>
         /// Fees Bona Fide Indicator [NEWHUD.X1067]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Bona Fide Indicator")]
         public bool? Section800BonaFideIndicator { get => _section800BonaFideIndicator; set => SetField(ref _section800BonaFideIndicator, value); }
 
         /// <summary>
         /// Fees Borrower Paid Initial Discount Point Amount [NEWHUD.X1723]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Fees Borrower Paid Initial Discount Point Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? Section800BorrowerPaidInitialDiscountPointAmount { get => _section800BorrowerPaidInitialDiscountPointAmount; set => SetField(ref _section800BorrowerPaidInitialDiscountPointAmount, value); }
 
         /// <summary>
@@ -882,67 +799,63 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Include Points/Credit in Orig Chrg [NEWHUD.X713]
         /// </summary>
-        [LoanFieldProperty(Description = "Include Points/Credit in Orig Chrg")]
         public StringEnumValue<CreditChargeType> Section800CreditChargeType { get => _section800CreditChargeType; set => SetField(ref _section800CreditChargeType, value); }
 
         /// <summary>
         /// Borr Receives Credit/Pays Fee [NEWHUD.X715]
         /// </summary>
-        [LoanFieldProperty(Description = "Borr Receives Credit/Pays Fee")]
         public StringEnumValue<IncludeOriginationPointsCreditType> Section800IncludeOriginationPointsCreditType { get => _section800IncludeOriginationPointsCreditType; set => SetField(ref _section800IncludeOriginationPointsCreditType, value); }
 
         /// <summary>
         /// Fees Initial Discount Point [NEWHUD.X1721]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Fees Initial Discount Point")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? Section800InitialDiscountPoint { get => _section800InitialDiscountPoint; set => SetField(ref _section800InitialDiscountPoint, value); }
 
         /// <summary>
         /// Fees Initial Discount Point Additional Amount [NEWHUD.X1722]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Initial Discount Point Additional Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Section800InitialDiscountPointAdditionalAmount { get => _section800InitialDiscountPointAdditionalAmount; set => SetField(ref _section800InitialDiscountPointAdditionalAmount, value); }
 
         /// <summary>
         /// Fees Initial Discount Rate [NEWHUD.X1720]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Fees Initial Discount Rate")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? Section800InitialDiscountRate { get => _section800InitialDiscountRate; set => SetField(ref _section800InitialDiscountRate, value); }
 
         /// <summary>
         /// Itemize Fees on Line 801 [NEWHUD.X750]
         /// </summary>
-        [LoanFieldProperty(Description = "Itemize Fees on Line 801")]
         public bool? Section800ItemizeFeesIndicator { get => _section800ItemizeFeesIndicator; set => SetField(ref _section800ItemizeFeesIndicator, value); }
 
         /// <summary>
         /// Fees Line 802 Orig Charge Amt Seller [NEWHUD.X788]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Line 802 Orig Charge Amt Seller")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Section800SelChargeAmount { get => _section800SelChargeAmount; set => SetField(ref _section800SelChargeAmount, value); }
 
         /// <summary>
         /// Trans Tax Total HUD-1 P3 [NEWHUD.X700]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trans Tax Total HUD-1 P3")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Section800TotalTransferTaxes { get => _section800TotalTransferTaxes; set => SetField(ref _section800TotalTransferTaxes, value); }
 
         /// <summary>
         /// New HUD Homeowner Ins Total Amt [NEWHUD.X723]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "New HUD Homeowner Ins Total Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Section900HomeownerInsurance { get => _section900HomeownerInsurance; set => SetField(ref _section900HomeownerInsurance, value); }
 
         /// <summary>
         /// Fees Line 905 Fee Applied to GFE [NEWHUD.X661]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Line 905 Fee Applied to GFE")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Section900HudGfeVaFundingFee { get => _section900HudGfeVaFundingFee; set => SetField(ref _section900HudGfeVaFundingFee, value); }
 
         /// <summary>
         /// Projected Payment Table - Use Actual Payment Change [PAYMENTTABLE.USEACTUALPAYMENTCHANGE]
         /// </summary>
-        [LoanFieldProperty(Description = "Projected Payment Table - Use Actual Payment Change")]
         public bool? UseActualPaymentChange { get => _useActualPaymentChange; set => SetField(ref _useActualPaymentChange, value); }
     }
 }

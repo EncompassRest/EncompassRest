@@ -1,3281 +1,3281 @@
 [
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X1.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Underwriting Risk Assess Type"
+    "Description": "Last Snapshot - AUS Tracking - Underwriting Risk Assess Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X10.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Doc Class (Freddie)"
+    "Description": "Last Snapshot - AUS Tracking - Doc Class (Freddie) - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X100.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Income Name"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Income Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X101.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Income Type"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Income Type - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X102.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Income Amount"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Income Amount - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X103.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Income Name"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Income Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X104.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Income Type"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Income Type - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X105.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Income Amount"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Income Amount - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X106.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Asset Name"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Asset Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X107.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Asset Type"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Asset Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X108.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Institution Name"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Institution Name - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X109.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Asset Amount"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Asset Amount - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X11.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - LTV"
+    "Description": "Last Snapshot - AUS Tracking - LTV - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X110.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Asset Name"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Asset Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X111.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Asset Type"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Asset Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X112.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Institution Name"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Institution Name - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X113.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Asset Amount"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Asset Amount - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X114.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - AUS Transaction #"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - AUS Transaction # - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X115.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Loan Prospector ID"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Loan Prospector ID - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X116.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Transaction ID"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Transaction ID - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X117.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Risk Class"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Risk Class - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X118.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Documentation Level"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Documentation Level - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X119.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Mortgage Type"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Mortgage Type - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X12.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - CLTV"
+    "Description": "Last Snapshot - AUS Tracking - CLTV - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X120.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Purchase Eligibility"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Purchase Eligibility - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X121.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - AUS Status"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - AUS Status - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X122.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Loan Processing Stage"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Loan Processing Stage - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X123.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Assessment Type"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Assessment Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X124.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - LP Version"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - LP Version - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X125.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Appraisal Type/MAF"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Appraisal Type/MAF - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X126.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - MI Decision"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - MI Decision - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X127.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Accept Plus Eligible"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Accept Plus Eligible - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X128.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Indicator Score"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Indicator Score - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X129.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Selected Repository"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Selected Repository - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X13.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - HLCTV"
+    "Description": "Last Snapshot - AUS Tracking - HLCTV - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X130.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Selected Borrower"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Selected Borrower - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "AUSTRACKING.AUS.X131.{0}",
-    "Format": 301,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - LP Assmt. Exp. Date"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - LP Assmt. Exp. Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X132.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Borrower Experian/FICO"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Borrower Experian/FICO - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X133.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Borrower Trans Union/Empirica"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Borrower Trans Union/Empirica - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X134.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Borrower Equifax/BEACON"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Borrower Equifax/BEACON - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X135.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - CoBorrower Experian FICO"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - CoBorrower Experian FICO - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X136.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - CoBorrower Trans Union/Empirica"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - CoBorrower Trans Union/Empirica - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X137.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - CoBorrower Equifax BEACON"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - CoBorrower Equifax BEACON - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X138.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Present Address"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Present Address - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X139.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Present Address City"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Present Address City - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X14.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Housing Expense Ratio"
+    "Description": "Last Snapshot - AUS Tracking - Housing Expense Ratio - {0}"
   },
   {
+    "Format": 105,
     "FieldId": "AUSTRACKING.AUS.X140.{0}",
-    "Format": 105,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Present Address State"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Present Address State - {0}"
   },
   {
+    "Format": 104,
     "FieldId": "AUSTRACKING.AUS.X141.{0}",
-    "Format": 104,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Present Address Zipcode"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Present Address Zipcode - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X142.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Loan Application #"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Loan Application # - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "AUSTRACKING.AUS.X143.{0}",
-    "Format": 201,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Balloon Term"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Balloon Term - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "AUSTRACKING.AUS.X144.{0}",
-    "Format": 201,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Amortization Months"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Amortization Months - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X145.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - ARM Qualifying Rate"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - ARM Qualifying Rate - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X146.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - TLTV"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - TLTV - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X147.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - HTLTV"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - HTLTV - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X148.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Housing Ratio"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Housing Ratio - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X149.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Debt Ratio"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Debt Ratio - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X15.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Total Expense Ratio"
+    "Description": "Last Snapshot - AUS Tracking - Total Expense Ratio - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X150.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Occupant Housing Ratio"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Occupant Housing Ratio - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X151.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Occupant Debt Ratio"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Occupant Debt Ratio - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X152.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Neg. Amortization Type"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Neg. Amortization Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X153.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Temporary Subsidy Buydown"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Temporary Subsidy Buydown - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X154.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - New Construction"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - New Construction - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X155.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Affordable Product Type"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Affordable Product Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X156.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Offering Identifier"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Offering Identifier - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X157.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Intended Use of Property"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Intended Use of Property - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X158.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Cash Out Amount"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Cash Out Amount - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X159.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Reserves"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Reserves - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X16.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Total Loan Amount"
+    "Description": "Last Snapshot - AUS Tracking - Total Loan Amount - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X160.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Proposed Housing (PITI)"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Proposed Housing (PITI) - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X161.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Present Housing Expense"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Present Housing Expense - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X162.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Max Mortgage Limit"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Max Mortgage Limit - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X163.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Sales Concessions"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Sales Concessions - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X164.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Originating Company"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Originating Company - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X165.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Submitting Company"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Submitting Company - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X166.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Seller Number"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Seller Number - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X167.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - TPO Number"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - TPO Number - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X168.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Date Time Requested"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Date Time Requested - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X169.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Date Time Assessed"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Date Time Assessed - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X17.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Sales Price"
+    "Description": "Last Snapshot - AUS Tracking - Sales Price - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X170.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - # of Submissions"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - # of Submissions - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X171.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - NOTP Number"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - NOTP Number - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X172.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Property Type"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac - Property Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X173.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Submission Time"
+    "Description": "Last Snapshot - AUS Tracking - Submission Time - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X174.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - First Submission Time"
+    "Description": "Last Snapshot - AUS Tracking - First Submission Time - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X175.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Data Compare Result"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Data Compare Result - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X176.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - LP Key"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - LP Key - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "AUSTRACKING.AUS.X177.{0}",
-    "Format": 304,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Submission DateTime"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Submission DateTime - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X178.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Data Compare Field Name"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Data Compare Field Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X179.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Data Compare Field Conclusion"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Data Compare Field Conclusion - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "AUSTRACKING.AUS.X18.{0}",
-    "Format": 201,
-    "Description": "Last Snapshot - AUS Tracking - Appraised Value"
+    "Description": "Last Snapshot - AUS Tracking - Appraised Value - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X180.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Risk Assessment Key"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Risk Assessment Key - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X181.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Credit Risk Assessment Conclusion"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Credit Risk Assessment Conclusion - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X182.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Purchase Eligibility Result"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Purchase Eligibility Result - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X183.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Collateral Rep and Warranty Service Conclusion"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LQA - Collateral Rep and Warranty Service Conclusion - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X184.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Type 1"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Type 1 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X185.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Conclusion 1"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Conclusion 1 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X186.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Type 2"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Type 2 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X187.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Conclusion 2"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Conclusion 2 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X188.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Type 3"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Type 3 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X189.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Conclusion 3"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Conclusion 3 - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X19.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Note Rate"
+    "Description": "Last Snapshot - AUS Tracking - Note Rate - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X190.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Type 4"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - Evaluated Service Type 4 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X191.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - LCLAEvaluated Service Conclusion 4"
+    "Description": "Last Snapshot - AUS Tracking - Freddie Mac LCLA - LCLAEvaluated Service Conclusion 4 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X2.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Underwriting Risk Assess Other Type"
+    "Description": "Last Snapshot - AUS Tracking - Underwriting Risk Assess Other Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X20.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Loan Type"
+    "Description": "Last Snapshot - AUS Tracking - Loan Type - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "AUSTRACKING.AUS.X21.{0}",
-    "Format": 201,
-    "Description": "Last Snapshot - AUS Tracking - Loan Term"
+    "Description": "Last Snapshot - AUS Tracking - Loan Term - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X22.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Amortization Type"
+    "Description": "Last Snapshot - AUS Tracking - Amortization Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X23.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Loan Purpose"
+    "Description": "Last Snapshot - AUS Tracking - Loan Purpose - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X24.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Refinance Purpose"
+    "Description": "Last Snapshot - AUS Tracking - Refinance Purpose - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X25.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - First P&I"
+    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - First P&I - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X26.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Second P&I"
+    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Second P&I - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X27.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Hazard Insurance"
+    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Hazard Insurance - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X28.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Taxes"
+    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Taxes - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X29.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Mortgage Insurance"
+    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Mortgage Insurance - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "AUSTRACKING.AUS.X3.{0}",
-    "Format": 301,
-    "Description": "Last Snapshot - AUS Tracking - Submission Date"
+    "Description": "Last Snapshot - AUS Tracking - Submission Date - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X30.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - HOA Fees"
+    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - HOA Fees - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X31.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Other"
+    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Other - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X32.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Total Housing Payment"
+    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Total Housing Payment - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X33.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Total Monthly Debt"
+    "Description": "Last Snapshot - AUS Tracking - Proposed Monthly Payment / Debt - Total Monthly Debt - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X34.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Base"
+    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Base - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X35.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Commission"
+    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Commission - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X36.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Bonus"
+    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Bonus - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X37.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Overtime"
+    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Overtime - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X38.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Other"
+    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Other - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X39.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Positive Net Rental"
+    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Positive Net Rental - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "AUSTRACKING.AUS.X4.{0}",
-    "Format": 301,
-    "Description": "Last Snapshot - AUS Tracking - First Submission Date"
+    "Description": "Last Snapshot - AUS Tracking - First Submission Date - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X40.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Subj. Pos. Cash Flow"
+    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Subj. Pos. Cash Flow - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X41.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Total Monthly Income"
+    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Total Monthly Income - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X42.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Total Assets"
+    "Description": "Last Snapshot - AUS Tracking - Income / Assets - Total Assets - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X43.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Name"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X44.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Lender Loan #"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Lender Loan # - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X45.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Coborrower Name"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Coborrower Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X46.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Property Address"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Property Address - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X47.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Property City"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Property City - {0}"
   },
   {
-    "FieldId": "AUSTRACKING.AUS.X48.{0}",
     "Format": 105,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Property State"
+    "FieldId": "AUSTRACKING.AUS.X48.{0}",
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Property State - {0}"
   },
   {
-    "FieldId": "AUSTRACKING.AUS.X49.{0}",
     "Format": 104,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Property Zipcode"
+    "FieldId": "AUSTRACKING.AUS.X49.{0}",
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Property Zipcode - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X5.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Submission Number"
+    "Description": "Last Snapshot - AUS Tracking - Submission Number - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X50.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Property Type"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Property Type - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "AUSTRACKING.AUS.X51.{0}",
-    "Format": 201,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - No Units"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - No Units - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X52.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Occupancy Status"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Occupancy Status - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X53.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Balloon"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Balloon - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X54.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Community Lending"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Community Lending - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "AUSTRACKING.AUS.X55.{0}",
-    "Format": 201,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Payment Frequency"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Payment Frequency - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X56.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Lien Type"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Lien Type - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X57.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Amt. Subordinate Fin."
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Amt. Subordinate Fin. - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X58.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Owner Existing Mtg."
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Owner Existing Mtg. - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X59.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Buydown"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Buydown - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X6.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - AUS Recommendation"
+    "Description": "Last Snapshot - AUS Tracking - AUS Recommendation - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X60.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Loan Amount"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Loan Amount - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X61.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Financed MI Amount"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Financed MI Amount - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X62.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - P & I"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - P & I - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X63.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Qualifying Rate"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Qualifying Rate - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "AUSTRACKING.AUS.X64.{0}",
-    "Format": 204,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Bought Down Rate"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Bought Down Rate - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X65.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Housing Expense"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Housing Expense - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X66.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Total Expense"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Total Expense - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X67.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Including Less Than 10 Mos."
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Including Less Than 10 Mos. - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X68.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - With Undisclosed Debt"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - With Undisclosed Debt - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X69.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Negative Net Rental"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Negative Net Rental - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X7.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - DU Case ID/ LP AUS Key #"
+    "Description": "Last Snapshot - AUS Tracking - DU Case ID/ LP AUS Key # - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X70.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Subj. Neg. Cash Flow"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Subj. Neg. Cash Flow - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X71.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - All Other Payments"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - All Other Payments - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X72.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Total Expense Pmt"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Total Expense Pmt - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X73.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Present/Principal Housing Payment"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Present/Principal Housing Payment - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X74.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Funds Required to Close"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Funds Required to Close - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X75.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Reserves Req'ed to be Verified"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Reserves Req'ed to be Verified - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X76.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Total Funds to be Verified"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Total Funds to be Verified - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X77.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Cash Back"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Cash Back - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X78.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Net Cash Back"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Net Cash Back - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "AUSTRACKING.AUS.X79.{0}",
-    "Format": 203,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Excess Available Assets, not required to be Verified"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Excess Available Assets, not required to be Verified - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X8.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Submitted By"
+    "Description": "Last Snapshot - AUS Tracking - Submitted By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X80.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Code 1"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Code 1 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X81.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Code Description 1"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Code Description 1 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X82.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Code 2"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Code 2 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X83.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Code Description 2"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Code Description 2 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X84.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Type"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X85.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Agency 1"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Agency 1 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X86.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Report ID 1"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Report ID 1 - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "AUSTRACKING.AUS.X87.{0}",
-    "Format": 301,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Report Date 1"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Report Date 1 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X88.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Type 2"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Type 2 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X89.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Agency 2"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Agency 2 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X9.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - AUS Version #"
+    "Description": "Last Snapshot - AUS Tracking - AUS Version # - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X90.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Report ID 2"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Report ID 2 - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "AUSTRACKING.AUS.X91.{0}",
-    "Format": 301,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Report Date 2"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Credit Report Date 2 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X92.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Score Name"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Score Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X93.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Credit Score 1"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Credit Score 1 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X94.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Credit Score 2"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Credit Score 2 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X95.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Credit Score 3"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - Borrower Credit Score 3 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X96.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Score Name 2"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Score Name 2 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X97.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Credit Score 1"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Credit Score 1 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X98.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Credit Score 2"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Credit Score 2 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X99.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Credit Score 3"
+    "Description": "Last Snapshot - AUS Tracking - Fannie Mae - CoBorrower Credit Score 3 - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X999.{0}",
-    "Format": 101,
-    "Description": "Last Snapshot - AUS Tracking - AUS Tracking Type"
+    "Description": "Last Snapshot - AUS Tracking - AUS Tracking Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.AddedBy.{0}",
-    "Format": 101,
-    "Description": "Condition Added By"
+    "Description": "Condition Added By - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "Condition.AllowToClear.{0}",
-    "Format": 102,
-    "Description": "Condition Allow to Clear"
+    "Description": "Condition Allow to Clear - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.Category.{0}",
-    "Format": 101,
-    "Description": "Condition Category"
+    "Description": "Condition Category - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.ClearedBy.{0}",
-    "Format": 101,
-    "Description": "Condition Cleared By"
+    "Description": "Condition Cleared By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.Comments.{0}",
-    "Format": 101,
-    "Description": "Condition Comments"
+    "Description": "Condition Comments - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Condition.DateAdded.{0}",
-    "Format": 301,
-    "Description": "Condition Date Added"
+    "Description": "Condition Date Added - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Condition.DateCleared.{0}",
-    "Format": 301,
-    "Description": "Condition Date Cleared"
+    "Description": "Condition Date Cleared - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Condition.DateReceived.{0}",
-    "Format": 301,
-    "Description": "Condition Date Received"
+    "Description": "Condition Date Received - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Condition.DateReviewed.{0}",
-    "Format": 301,
-    "Description": "Condition Date Reviewed"
+    "Description": "Condition Date Reviewed - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Condition.DateWaived.{0}",
-    "Format": 301,
-    "Description": "Condition Date Waived"
+    "Description": "Condition Date Waived - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.Description.{0}",
-    "Format": 101,
-    "Description": "Condition Description"
+    "Description": "Condition Description - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "Condition.IsCleared.{0}",
-    "Format": 102,
-    "Description": "Condition Is Cleared"
+    "Description": "Condition Is Cleared - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "Condition.IsInternal.{0}",
-    "Format": 102,
-    "Description": "Condition Is Internal"
+    "Description": "Condition Is Internal - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "Condition.IsReceived.{0}",
-    "Format": 102,
-    "Description": "Condition Is Received"
+    "Description": "Condition Is Received - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "Condition.IsReviewed.{0}",
-    "Format": 102,
-    "Description": "Condition Is Reviewed"
+    "Description": "Condition Is Reviewed - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "Condition.IsWaived.{0}",
-    "Format": 102,
-    "Description": "Condition Is Waived"
+    "Description": "Condition Is Waived - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.PriorTo.{0}",
-    "Format": 101,
-    "Description": "Condition Prior To"
+    "Description": "Condition Prior To - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.ReceivedBy.{0}",
-    "Format": 101,
-    "Description": "Condition Received By"
+    "Description": "Condition Received By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.ReviewedBy.{0}",
-    "Format": 101,
-    "Description": "Condition Reviewed By"
+    "Description": "Condition Reviewed By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.Status.{0}",
-    "Format": 101,
-    "Description": "Condition Status"
+    "Description": "Condition Status - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.Title.{0}",
-    "Format": 101,
-    "Description": "Condition Title"
+    "Description": "Condition Title - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Condition.WaivedBy.{0}",
-    "Format": 101,
-    "Description": "Condition Waived By"
+    "Description": "Condition Waived By - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDCD.BorrowerActualReceivedDate.{0}",
-    "Format": 301,
-    "Description": "CD Borrower Actual Received Date"
+    "Description": "CD Borrower Actual Received Date - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDCD.BorrowerPresumedReceivedDate.{0}",
-    "Format": 301,
-    "Description": "CD Borrower Presumed Received Date"
+    "Description": "CD Borrower Presumed Received Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.BorrowerReceivedMethod.{0}",
-    "Format": 101,
-    "Description": "CD Borrower Received Method"
+    "Description": "CD Borrower Received Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.BorrowerReceivedOtherMethod.{0}",
-    "Format": 101,
-    "Description": "CD Borrower Received Other Method"
+    "Description": "CD Borrower Received Other Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.BorrowerType.{0}",
-    "Format": 101,
-    "Description": "CD Borrower Type"
+    "Description": "CD Borrower Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.ChangedCircumstanceDetails.{0}",
-    "Format": 101,
-    "Description": "CD Changed Circumstance Details"
+    "Description": "CD Changed Circumstance Details - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDCD.CoBorrowerActualReceivedDate.{0}",
-    "Format": 301,
-    "Description": "CD CoBorrower Actual Received Date"
+    "Description": "CD CoBorrower Actual Received Date - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDCD.CoBorrowerPresumedReceivedDate.{0}",
-    "Format": 301,
-    "Description": "CD CoBorrower Presumed Received Date"
+    "Description": "CD CoBorrower Presumed Received Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.CoBorrowerReceivedMethod.{0}",
-    "Format": 101,
-    "Description": "CD CoBorrower Received Method"
+    "Description": "CD CoBorrower Received Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.CoBorrowerReceivedOtherMethod.{0}",
-    "Format": 101,
-    "Description": "CD CoBorrower Received Other Method"
+    "Description": "CD CoBorrower Received Other Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.CoBorrowerType.{0}",
-    "Format": 101,
-    "Description": "CD CoBorrower Type"
+    "Description": "CD CoBorrower Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.DisclosureType.{0}",
-    "Format": 101,
-    "Description": "CD Disclosure Type"
+    "Description": "CD Disclosure Type - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDCD.LoanSnapshot_ApplicationDate.{0}",
-    "Format": 301,
-    "Description": "CD Loan Snapshot - Application Date"
+    "Description": "CD Loan Snapshot - Application Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.LoanSnapshot_DisclosedAPR.{0}",
-    "Format": 101,
-    "Description": "CD Loan Snapshot - Disclosed APR"
+    "Description": "CD Loan Snapshot - Disclosed APR - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.LoanSnapshot_DisclosedRate.{0}",
-    "Format": 101,
-    "Description": "CD Loan Snapshot - Disclosed Rate"
+    "Description": "CD Loan Snapshot - Disclosed Rate - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.LoanSnapshot_FinanceCharge.{0}",
-    "Format": 101,
-    "Description": "CD Loan Snapshot - Finance Charge"
+    "Description": "CD Loan Snapshot - Finance Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.LoanSnapshot_LoanAmount.{0}",
-    "Format": 101,
-    "Description": "CD Loan Snapshot - Loan Amount"
+    "Description": "CD Loan Snapshot - Loan Amount - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.LoanSnapshot_LoanProgram.{0}",
-    "Format": 101,
-    "Description": "CD Loan Snapshot - Loan Program"
+    "Description": "CD Loan Snapshot - Loan Program - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.OtherMethod.{0}",
-    "Format": 101,
-    "Description": "CD Other Method"
+    "Description": "CD Other Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.OtherReason.{0}",
-    "Format": 101,
-    "Description": "CD Other Reason"
+    "Description": "CD Other Reason - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.Reason_InterestRatedependentcharges.{0}",
-    "Format": 101,
-    "Description": "CD Reason - Interest Rate dependent charges?"
+    "Description": "CD Reason - Interest Rate dependent charges? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.Reason_Other.{0}",
-    "Format": 101,
-    "Description": "CD Reason - Other?"
+    "Description": "CD Reason - Other? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.Reason_RevisionsrequestedbytheConsumer.{0}",
-    "Format": 101,
-    "Description": "CD Reason - Revisions requested by the Consumer?"
+    "Description": "CD Reason - Revisions requested by the Consumer? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.Reason24hourAdvancedPreview.{0}",
-    "Format": 101,
-    "Description": "CD Reason - 24-hour Advanced Preview?"
+    "Description": "CD Reason - 24-hour Advanced Preview? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.ReasonChangedCircumstanceEligibility.{0}",
-    "Format": 101,
-    "Description": "CD Reason - Changed Circumstance - Eligibility?"
+    "Description": "CD Reason - Changed Circumstance - Eligibility? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.ReasonChangeinAPR.{0}",
-    "Format": 101,
-    "Description": "CD Reason - Change in APR?"
+    "Description": "CD Reason - Change in APR? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.ReasonChangeinLoanProduct.{0}",
-    "Format": 101,
-    "Description": "CD Reason - Change in Loan Product?"
+    "Description": "CD Reason - Change in Loan Product? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.ReasonChangeinSettlementCharges.{0}",
-    "Format": 101,
-    "Description": "CD Reason - Change in Settlement Charges?"
+    "Description": "CD Reason - Change in Settlement Charges? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.ReasonClericalErrorCorrection.{0}",
-    "Format": 101,
-    "Description": "CD Reason - Clerical Error Correction?"
+    "Description": "CD Reason - Clerical Error Correction? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.ReasonComments.{0}",
-    "Format": 101,
-    "Description": "CD Reason Comments"
+    "Description": "CD Reason Comments - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.ReasonPrepaymentPenaltyAdded.{0}",
-    "Format": 101,
-    "Description": "CD Reason - Prepayment Penalty Added?"
+    "Description": "CD Reason - Prepayment Penalty Added? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.ReasonToleranceCure.{0}",
-    "Format": 101,
-    "Description": "CD Reason - Tolerance Cure?"
+    "Description": "CD Reason - Tolerance Cure? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.SentBy.{0}",
-    "Format": 101,
-    "Description": "CD Sent By"
+    "Description": "CD Sent By - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDCD.SentDate.{0}",
-    "Format": 301,
-    "Description": "CD Sent Date"
+    "Description": "CD Sent Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDCD.SentMethod.{0}",
-    "Format": 101,
-    "Description": "CD Sent Method"
+    "Description": "CD Sent Method - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.ApplicationDate.{0}",
-    "Format": 301,
-    "Description": "GFE Disclosure Application Date"
+    "Description": "GFE Disclosure Application Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.BorrowerName.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Borrower Name"
+    "Description": "GFE Disclosure Borrower Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.CoBorrowerName.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure CoBorrower Name"
+    "Description": "GFE Disclosure CoBorrower Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Comments.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Comments"
+    "Description": "GFE Disclosure Comments - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.DeliveryMethod.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Delivery Method"
+    "Description": "GFE Disclosure Delivery Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.DisclosedBy.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Disclosed By"
+    "Description": "GFE Disclosure Disclosed By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.FinanceCharge.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Finance Charge"
+    "Description": "GFE Disclosure Finance Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.LoanAmount.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Loan Amount"
+    "Description": "GFE Disclosure Loan Amount - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.LoanProgram.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Loan Program"
+    "Description": "GFE Disclosure Loan Program - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.PropertyAddress.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Property Address"
+    "Description": "GFE Disclosure Property Address - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.PropertyCity.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Property City"
+    "Description": "GFE Disclosure Property City - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.PropertyState.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Property State"
+    "Description": "GFE Disclosure Property State - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.PropertyZip.{0}",
-    "Format": 101,
-    "Description": "GFE Disclosure Property Zip"
+    "Description": "GFE Disclosure Property Zip - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "DISCLOSEDGFE.ReceivedDate.{0}",
-    "Format": 304,
-    "Description": "GFE Disclosure Received Date"
+    "Description": "GFE Disclosure Received Date - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.SentDate.{0}",
-    "Format": 301,
-    "Description": "GFE Disclosure Sent Date"
+    "Description": "GFE Disclosure Sent Date - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "DISCLOSEDGFE.Snapshot.1014.{0}",
-    "Format": 204,
-    "Description": "GFE Snapshot - Trans Details Qual Rate"
+    "Description": "GFE Snapshot - Trans Details Qual Rate - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.1063.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Trans Details Loan Type Other"
+    "Description": "GFE Snapshot - Trans Details Loan Type Other - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.1109.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Trans Details Loan Amt"
+    "Description": "GFE Snapshot - Trans Details Loan Amt - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.1172.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Trans Details Loan Type"
+    "Description": "GFE Snapshot - Trans Details Loan Type - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "DISCLOSEDGFE.Snapshot.1266.{0}",
-    "Format": 201,
-    "Description": "GFE Snapshot - Trans Details Amort Type GPM Yrs"
+    "Description": "GFE Snapshot - Trans Details Amort Type GPM Yrs - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "DISCLOSEDGFE.Snapshot.1267.{0}",
-    "Format": 204,
-    "Description": "GFE Snapshot - Trans Details Amort Type GPM Rate"
+    "Description": "GFE Snapshot - Trans Details Amort Type GPM Rate - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "DISCLOSEDGFE.Snapshot.1347.{0}",
-    "Format": 201,
-    "Description": "GFE Snapshot - Trans Details Loan Term"
+    "Description": "GFE Snapshot - Trans Details Loan Term - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.1401.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Trans Details Loan Program"
+    "Description": "GFE Snapshot - Trans Details Loan Program - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.1550.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Underwriting Escrow"
+    "Description": "GFE Snapshot - Underwriting Escrow - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.1659.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Trans Details Amort Type Balloon"
+    "Description": "GFE Snapshot - Trans Details Amort Type Balloon - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.1785.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Trans Details Closing Cost Program"
+    "Description": "GFE Snapshot - Trans Details Closing Cost Program - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.19.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Trans Details Loan Purpose"
+    "Description": "GFE Snapshot - Trans Details Loan Purpose - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.2.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Trans Details Total Loan Amt (w/ MIP/FF)"
+    "Description": "GFE Snapshot - Trans Details Total Loan Amt (w/ MIP/FF) - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "DISCLOSEDGFE.Snapshot.3.{0}",
-    "Format": 204,
-    "Description": "GFE Snapshot - Trans Details Interest Rate"
+    "Description": "GFE Snapshot - Trans Details Interest Rate - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.3136.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Disclosed By Broker Chbx"
+    "Description": "GFE Snapshot - Disclosed By Broker Chbx - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.3137.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - GFE Last Disclosed Date"
+    "Description": "GFE Snapshot - GFE Last Disclosed Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.3138.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - GFE Disclosure Method"
+    "Description": "GFE Snapshot - GFE Disclosure Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.3139.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - GFE Last Disclosed By"
+    "Description": "GFE Snapshot - GFE Last Disclosed By - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.3140.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - GFE Expiration Date"
+    "Description": "GFE Snapshot - GFE Expiration Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.3162.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - No. of Days GFE Valid After Received"
+    "Description": "GFE Snapshot - No. of Days GFE Valid After Received - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.3163.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - GFE Last Disclosure Rcvd Date"
+    "Description": "GFE Snapshot - GFE Last Disclosure Rcvd Date - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.3164.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Borrower Intends to Continue Chkbx"
+    "Description": "GFE Snapshot - Borrower Intends to Continue Chkbx - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.3165.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - Changed Circumstance Rcvd Date"
+    "Description": "GFE Snapshot - Changed Circumstance Rcvd Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.3166.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - GFE Changed Circumstance Comments"
+    "Description": "GFE Snapshot - GFE Changed Circumstance Comments - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.3167.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - Revised GFE Due Date"
+    "Description": "GFE Snapshot - Revised GFE Due Date - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.3168.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Changed Circumstance Chkbx"
+    "Description": "GFE Snapshot - Changed Circumstance Chkbx - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.3169.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - GFE Changed Circumstance"
+    "Description": "GFE Snapshot - GFE Changed Circumstance - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.3170.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - GFE Date for Printed Form"
+    "Description": "GFE Snapshot - GFE Date for Printed Form - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "DISCLOSEDGFE.Snapshot.325.{0}",
-    "Format": 201,
-    "Description": "GFE Snapshot - Trans Details Term Due In"
+    "Description": "GFE Snapshot - Trans Details Term Due In - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "DISCLOSEDGFE.Snapshot.332.{0}",
-    "Format": 201,
-    "Description": "GFE Snapshot - Fees Interest # of Days"
+    "Description": "GFE Snapshot - Fees Interest # of Days - {0}"
   },
   {
-    "FieldId": "DISCLOSEDGFE.Snapshot.333.{0}",
     "Format": 205,
-    "Description": "GFE Snapshot - Fees Interest Per Day"
+    "FieldId": "DISCLOSEDGFE.Snapshot.333.{0}",
+    "Description": "GFE Snapshot - Fees Interest Per Day - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.364.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Trans Details Loan #"
+    "Description": "GFE Snapshot - Trans Details Loan # - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "DISCLOSEDGFE.Snapshot.4.{0}",
-    "Format": 201,
-    "Description": "GFE Snapshot - Trans Details Term (Mos)"
+    "Description": "GFE Snapshot - Trans Details Term (Mos) - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.5.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Trans Details Mo Pymt (P&I)"
+    "Description": "GFE Snapshot - Trans Details Mo Pymt (P&I) - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.608.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Trans Details Amort Type"
+    "Description": "GFE Snapshot - Trans Details Amort Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.617.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - File Contacts Appraisal Co Name"
+    "Description": "GFE Snapshot - File Contacts Appraisal Co Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.624.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - File Contacts Cred Rpt Agency Name"
+    "Description": "GFE Snapshot - File Contacts Cred Rpt Agency Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.675.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Prepayment Penalty"
+    "Description": "GFE Snapshot - Prepayment Penalty - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.682.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - Trans Details First Pymt Date"
+    "Description": "GFE Snapshot - Trans Details First Pymt Date - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.761.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - Trans Details Lock Date"
+    "Description": "GFE Snapshot - Trans Details Lock Date - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.762.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - Trans Details Rate Lock Expires"
+    "Description": "GFE Snapshot - Trans Details Rate Lock Expires - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.763.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - Trans Details Est Closing Date"
+    "Description": "GFE Snapshot - Trans Details Est Closing Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.9.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Trans Details Loan Purpose other"
+    "Description": "GFE Snapshot - Trans Details Loan Purpose other - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.994.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Trans Details Amort Type Other Descr"
+    "Description": "GFE Snapshot - Trans Details Amort Type Other Descr - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.995.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Trans Details Amort Type ARM Descr"
+    "Description": "GFE Snapshot - Trans Details Amort Type ARM Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.HUD24.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - HUD Escrow Monthly Payment"
+    "Description": "GFE Snapshot - HUD Escrow Monthly Payment - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.L224.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Fees Tax Svc Fee Descr"
+    "Description": "GFE Snapshot - Fees Tax Svc Fee Descr - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.L244.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - Fees Interest From"
+    "Description": "GFE Snapshot - Fees Interest From - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.L245.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - Fees Interest To"
+    "Description": "GFE Snapshot - Fees Interest To - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.L248.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - File Contacts Mtg Ins Co Name"
+    "Description": "GFE Snapshot - File Contacts Mtg Ins Co Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X1.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Avail Date for GFE Interest Rate"
+    "Description": "GFE Snapshot - Avail Date for GFE Interest Rate - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X10.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Max Mthly Pymt After 1st Increase"
+    "Description": "GFE Snapshot - Max Mthly Pymt After 1st Increase - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X1000.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101f Paid By"
+    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101f Paid By - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X1002.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101f Borrower Selects"
+    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101f Borrower Selects - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X1003.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101f APR"
+    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101f APR - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X1005.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101a Whole POC Amount"
+    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101a Whole POC Amount - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X1006.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101b Whole POC Amount"
+    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101b Whole POC Amount - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X1008.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101d Whole POC Amount"
+    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101d Whole POC Amount - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X1009.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101e Whole POC Amount"
+    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101e Whole POC Amount - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X101.{0}",
-    "Format": 204,
-    "Description": "GFE Snapshot - Lower Int Rate-Initial Interest Rate"
+    "Description": "GFE Snapshot - Lower Int Rate-Initial Interest Rate - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X1011.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101a Whole POC Paid By"
+    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101a Whole POC Paid By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X1012.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101b Whole POC Paid By"
+    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101b Whole POC Paid By - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X102.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Lower Int Rate-Initial Monthly Amt Owed"
+    "Description": "GFE Snapshot - Lower Int Rate-Initial Monthly Amt Owed - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X103.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Lower Int Rate-Mnthly Pymt Reduction"
+    "Description": "GFE Snapshot - Lower Int Rate-Mnthly Pymt Reduction - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X104.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Lower Int Rate-Sttlmnt Chrgs Increase"
+    "Description": "GFE Snapshot - Lower Int Rate-Sttlmnt Chrgs Increase - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X105.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Lower Int Rate-Total Est Sttlmnt Chrgs"
+    "Description": "GFE Snapshot - Lower Int Rate-Total Est Sttlmnt Chrgs - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X108.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Fees Line 1302 Borr Selects"
+    "Description": "GFE Snapshot - Fees Line 1302 Borr Selects - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X109.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Fees Line 1303 Borr Selects"
+    "Description": "GFE Snapshot - Fees Line 1303 Borr Selects - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X11.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Maximum Monthly Payment"
+    "Description": "GFE Snapshot - Maximum Monthly Payment - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X110.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Fees Line 1304 Borr Selects"
+    "Description": "GFE Snapshot - Fees Line 1304 Borr Selects - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X111.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Fees Line 1305 Borr Selects"
+    "Description": "GFE Snapshot - Fees Line 1305 Borr Selects - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X112.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Fees Line 1306 Borr Selects"
+    "Description": "GFE Snapshot - Fees Line 1306 Borr Selects - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X113.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Fees Line 1307 Borr Selects"
+    "Description": "GFE Snapshot - Fees Line 1307 Borr Selects - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X114.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Fees Line 1308 Borr Selects"
+    "Description": "GFE Snapshot - Fees Line 1308 Borr Selects - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X115.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Fees Line 1309 Borr Selects"
+    "Description": "GFE Snapshot - Fees Line 1309 Borr Selects - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X119.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 1"
+    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 1 - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X12.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Total Est Origination Charges"
+    "Description": "GFE Snapshot - Total Est Origination Charges - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X120.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 2"
+    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 2 - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X121.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 3"
+    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 3 - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X122.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 4"
+    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 4 - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X123.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 5"
+    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 5 - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X124.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 6"
+    "Description": "GFE Snapshot - Borr Selects Homeowner Ins - Line 6 - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X13.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Cred/Chrgs for Spec Int Rate Applied to GFE"
+    "Description": "GFE Snapshot - Cred/Chrgs for Spec Int Rate Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X14.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Can Monthly Payment Rise"
+    "Description": "GFE Snapshot - Can Monthly Payment Rise - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X16.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Adj Orig Chrgs Applied to GFE"
+    "Description": "GFE Snapshot - Fees Adj Orig Chrgs Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X17.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Services We Select"
+    "Description": "GFE Snapshot - Required Services We Select - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X18.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Required Service 1 Descr"
+    "Description": "GFE Snapshot - Required Service 1 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X19.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Service 1 Charge"
+    "Description": "GFE Snapshot - Required Service 1 Charge - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X2.{0}",
-    "Format": 301,
-    "Description": "GFE Snapshot - Avail Date for All Other GFE Sttlmnt Chrgs"
+    "Description": "GFE Snapshot - Avail Date for All Other GFE Sttlmnt Chrgs - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X20.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Required Service 2 Descr"
+    "Description": "GFE Snapshot - Required Service 2 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X21.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Service 2 Charge"
+    "Description": "GFE Snapshot - Required Service 2 Charge - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X214.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1201 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1201 Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X217.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Initial Mthly Pymt Princpl, Int, & Mrtg Ins"
+    "Description": "GFE Snapshot - Initial Mthly Pymt Princpl, Int, & Mrtg Ins - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X22.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - New HUD Field Required Service Description 3"
+    "Description": "GFE Snapshot - New HUD Field Required Service Description 3 - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X23.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Service 3 Charge"
+    "Description": "GFE Snapshot - Required Service 3 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X24.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Required Service 4 Descr"
+    "Description": "GFE Snapshot - Required Service 4 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X25.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Service 4 Charge"
+    "Description": "GFE Snapshot - Required Service 4 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X26.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Required Service 5 Descr"
+    "Description": "GFE Snapshot - Required Service 5 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X27.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Service 5 Charge"
+    "Description": "GFE Snapshot - Required Service 5 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X28.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Required Service 6 Descr"
+    "Description": "GFE Snapshot - Required Service 6 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X29.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Service 6 Charge"
+    "Description": "GFE Snapshot - Required Service 6 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X3.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Days Before Sttlmtn to Lock Int Rate"
+    "Description": "GFE Snapshot - Days Before Sttlmtn to Lock Int Rate - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X30.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Required Service 7 Descr"
+    "Description": "GFE Snapshot - Required Service 7 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X31.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Service 7 Charge"
+    "Description": "GFE Snapshot - Required Service 7 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X32.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Required Service 8 Descr"
+    "Description": "GFE Snapshot - Required Service 8 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X33.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Service 8 Charge"
+    "Description": "GFE Snapshot - Required Service 8 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X34.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Required Service 9 Descr"
+    "Description": "GFE Snapshot - Required Service 9 Descr - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X348.{0}",
-    "Format": 201,
-    "Description": "GFE Snapshot - Years Until Balloon Pymt Due"
+    "Description": "GFE Snapshot - Years Until Balloon Pymt Due - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X349.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Escrow Acct Chrg Type All Prop Taxes"
+    "Description": "GFE Snapshot - Escrow Acct Chrg Type All Prop Taxes - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X35.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Service 9 Charge"
+    "Description": "GFE Snapshot - Required Service 9 Charge - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X350.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Escrow Acct Chrg Type All Insurance"
+    "Description": "GFE Snapshot - Escrow Acct Chrg Type All Insurance - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X351.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Escrow Acct Chrg Type Other"
+    "Description": "GFE Snapshot - Escrow Acct Chrg Type Other - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X36.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Required Service 10 Descr"
+    "Description": "GFE Snapshot - Required Service 10 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X37.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Required Service 10 Charge"
+    "Description": "GFE Snapshot - Required Service 10 Charge - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X38.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Serv & Lender's Title Ins Applied to GFE"
+    "Description": "GFE Snapshot - Title Serv & Lender's Title Ins Applied to GFE - {0}"
   },
   {
-    "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X39.{0}",
     "Format": 110,
-    "Description": "GFE Snapshot - Owner's Title Ins Applied to GFE"
+    "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X39.{0}",
+    "Description": "GFE Snapshot - Owner's Title Ins Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X399.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Flood Certification To"
+    "Description": "GFE Snapshot - Flood Certification To - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X4.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Initial Loan Amount"
+    "Description": "GFE Snapshot - Initial Loan Amount - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X40.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1301l Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1301l Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X401.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Title Service 1 Descr"
+    "Description": "GFE Snapshot - Title Service 1 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X402.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Service 1 Charge"
+    "Description": "GFE Snapshot - Title Service 1 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X403.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Title Service 2 Descr"
+    "Description": "GFE Snapshot - Title Service 2 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X404.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Service 2 Charge"
+    "Description": "GFE Snapshot - Title Service 2 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X405.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Title Service 3 Descr"
+    "Description": "GFE Snapshot - Title Service 3 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X406.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Service 3 Charge"
+    "Description": "GFE Snapshot - Title Service 3 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X407.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Title Service 4 Descr"
+    "Description": "GFE Snapshot - Title Service 4 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X408.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Service 4 Charge"
+    "Description": "GFE Snapshot - Title Service 4 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X409.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Title Service 5 Descr"
+    "Description": "GFE Snapshot - Title Service 5 Descr - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X41.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Shop Service 1 Descr"
+    "Description": "GFE Snapshot - Shop Service 1 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X410.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Service 5 Charge"
+    "Description": "GFE Snapshot - Title Service 5 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X411.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Title Service 6 Descr"
+    "Description": "GFE Snapshot - Title Service 6 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X412.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Service 6 Charge"
+    "Description": "GFE Snapshot - Title Service 6 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X413.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Title Service 7 Descr"
+    "Description": "GFE Snapshot - Title Service 7 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X414.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Service 7 Charge"
+    "Description": "GFE Snapshot - Title Service 7 Charge - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X42.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1302 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1302 Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X43.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Shop Service 2 Descr"
+    "Description": "GFE Snapshot - Shop Service 2 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X44.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1303 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1303 Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X45.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Shop Service 3 Descr"
+    "Description": "GFE Snapshot - Shop Service 3 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X46.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1304 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1304 Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X47.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Shop Service 4 Descr"
+    "Description": "GFE Snapshot - Shop Service 4 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X48.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1305 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1305 Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X49.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Shop Service 5 Descr"
+    "Description": "GFE Snapshot - Shop Service 5 Descr - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X5.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Can Your Interest Rate Rise"
+    "Description": "GFE Snapshot - Can Your Interest Rate Rise - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X50.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1306 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1306 Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X51.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Shop Service 6 Descr"
+    "Description": "GFE Snapshot - Shop Service 6 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X52.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1307 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1307 Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X53.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Shop Service 7 Descr"
+    "Description": "GFE Snapshot - Shop Service 7 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X54.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1308 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1308 Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X55.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Shop Service 8 Descr"
+    "Description": "GFE Snapshot - Shop Service 8 Descr - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X555.{0}",
-    "Format": 204,
-    "Description": "GFE Snapshot - ARM Max Life Interest Cap"
+    "Description": "GFE Snapshot - ARM Max Life Interest Cap - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X556.{0}",
-    "Format": 201,
-    "Description": "GFE Snapshot - ARM First Period Change"
+    "Description": "GFE Snapshot - ARM First Period Change - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X559.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Title Service 8 Descr"
+    "Description": "GFE Snapshot - Title Service 8 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X56.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1309 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1309 Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X560.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Service 8 Charge"
+    "Description": "GFE Snapshot - Title Service 8 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X561.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Title Service 9 Descr"
+    "Description": "GFE Snapshot - Title Service 9 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X562.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Service 9 Charge"
+    "Description": "GFE Snapshot - Title Service 9 Charge - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X6.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Can Your Loan Balance Rise"
+    "Description": "GFE Snapshot - Can Your Loan Balance Rise - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X604.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1202 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1202 Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X609.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Apprsl Fee Applied to GFE"
+    "Description": "GFE Snapshot - Fees Apprsl Fee Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X610.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Credit Report Fee Applied to GFE"
+    "Description": "GFE Snapshot - Fees Credit Report Fee Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X611.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Tax Service Fee Applied to GFE"
+    "Description": "GFE Snapshot - Fees Tax Service Fee Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X612.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Flood Cert Fee Applied to GFE"
+    "Description": "GFE Snapshot - Fees Flood Cert Fee Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X622.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Mtg Ins Premium Applied to GFE"
+    "Description": "GFE Snapshot - Fees Mtg Ins Premium Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X642.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Title Service 10 Descr"
+    "Description": "GFE Snapshot - Title Service 10 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X643.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Title Service 10 Charge"
+    "Description": "GFE Snapshot - Title Service 10 Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X653.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Homeowner Ins 7 Descr"
+    "Description": "GFE Snapshot - Homeowner Ins 7 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X654.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Homeowner Ins 7 Chrg"
+    "Description": "GFE Snapshot - Homeowner Ins 7 Chrg - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X655.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Homeowner Ins 7 Borr Select"
+    "Description": "GFE Snapshot - Homeowner Ins 7 Borr Select - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X691.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1001 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1001 Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X7.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - HUD-Maximum Loan Balance"
+    "Description": "GFE Snapshot - HUD-Maximum Loan Balance - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X701.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Daily Int Chrgs Applied to GFE"
+    "Description": "GFE Snapshot - Fees Daily Int Chrgs Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X719.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - No. Days from Rate Lock to Settlement"
+    "Description": "GFE Snapshot - No. Days from Rate Lock to Settlement - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X721.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Borr Orig Fee Credit for Int Rate"
+    "Description": "GFE Snapshot - Borr Orig Fee Credit for Int Rate - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X722.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Borr Charge Amt for Points - GFE"
+    "Description": "GFE Snapshot - Borr Charge Amt for Points - GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X724.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1206 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1206 Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X76.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Transfer Tax Total GFE"
+    "Description": "GFE Snapshot - Transfer Tax Total GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X771.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1207 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1207 Applied to GFE - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X772.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Fees Line 1208 Applied to GFE"
+    "Description": "GFE Snapshot - Fees Line 1208 Applied to GFE - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X78.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Other Escrow Descr"
+    "Description": "GFE Snapshot - Other Escrow Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X79.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Homeowner Ins Total Amt"
+    "Description": "GFE Snapshot - Homeowner Ins Total Amt - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X8.{0}",
-    "Format": 102,
-    "Description": "GFE Snapshot - Can Monthly Payments Rise"
+    "Description": "GFE Snapshot - Can Monthly Payments Rise - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X80.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Homeowner Ins 1 Descr"
+    "Description": "GFE Snapshot - Homeowner Ins 1 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X81.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Homeowner Ins 1 Chrg"
+    "Description": "GFE Snapshot - Homeowner Ins 1 Chrg - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X82.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Homeowner Ins 2 Descr"
+    "Description": "GFE Snapshot - Homeowner Ins 2 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X83.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Homeowner Ins 2 Chrg"
+    "Description": "GFE Snapshot - Homeowner Ins 2 Chrg - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X84.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Homeowner Ins 3 Descr"
+    "Description": "GFE Snapshot - Homeowner Ins 3 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X85.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Homeowner Ins 3 Chrg"
+    "Description": "GFE Snapshot - Homeowner Ins 3 Chrg - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X86.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Homeowner Ins 4 Descr"
+    "Description": "GFE Snapshot - Homeowner Ins 4 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X87.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Homeowner Ins 4 Chrg"
+    "Description": "GFE Snapshot - Homeowner Ins 4 Chrg - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X88.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Homeowner Ins 5 Descr"
+    "Description": "GFE Snapshot - Homeowner Ins 5 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X89.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Homeowner Ins 5 Chrg"
+    "Description": "GFE Snapshot - Homeowner Ins 5 Chrg - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X9.{0}",
-    "Format": 201,
-    "Description": "GFE Snapshot - Mnths Until 1st Mnthly Pymt Increase"
+    "Description": "GFE Snapshot - Mnths Until 1st Mnthly Pymt Increase - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X90.{0}",
-    "Format": 101,
-    "Description": "GFE Snapshot - Homeowner Ins 6 Descr"
+    "Description": "GFE Snapshot - Homeowner Ins 6 Descr - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X91.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Homeowner Ins 6 Chrg"
+    "Description": "GFE Snapshot - Homeowner Ins 6 Chrg - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X92.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - HUD-All Other Settlement Services"
+    "Description": "GFE Snapshot - HUD-All Other Settlement Services - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X93.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - HUD-Est Total Settlement Charges"
+    "Description": "GFE Snapshot - HUD-Est Total Settlement Charges - {0}"
   },
   {
+    "Format": 204,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X95.{0}",
-    "Format": 204,
-    "Description": "GFE Snapshot - Lower Sttlmnt Chrgs-Intl Int Rate"
+    "Description": "GFE Snapshot - Lower Sttlmnt Chrgs-Intl Int Rate - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X96.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Lower Sttlmnt Chrgs-Intl  Mnthly Amt Owed"
+    "Description": "GFE Snapshot - Lower Sttlmnt Chrgs-Intl  Mnthly Amt Owed - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X97.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Lower Sttlmnt Chrgs-Mthly Pymt Increase"
+    "Description": "GFE Snapshot - Lower Sttlmnt Chrgs-Mthly Pymt Increase - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X98.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Lower Sttlmnt Chrgs-Sttlmnt Chrgs Reduction"
+    "Description": "GFE Snapshot - Lower Sttlmnt Chrgs-Sttlmnt Chrgs Reduction - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X99.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Lower Sttlmnt Chrgs-Total Est Sttlmnt Chrgs"
+    "Description": "GFE Snapshot - Lower Sttlmnt Chrgs-Total Est Sttlmnt Chrgs - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X999.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101f GFE Amount"
+    "Description": "GFE Snapshot - Component Fee of Line 1101 Additional Line 1101f GFE Amount - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.RE88395.X121.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - MLDS Final Balloon Pymt Amt"
+    "Description": "GFE Snapshot - MLDS Final Balloon Pymt Amt - {0}"
   },
   {
+    "Format": 203,
     "FieldId": "DISCLOSEDGFE.Snapshot.RE88395.X315.{0}",
-    "Format": 203,
-    "Description": "GFE Snapshot - MLDS Prepymt Penalty Amt"
+    "Description": "GFE Snapshot - MLDS Prepymt Penalty Amt - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDLE.BorrowerActualReceivedDate.{0}",
-    "Format": 301,
-    "Description": "LE Borrower Actual Received Date"
+    "Description": "LE Borrower Actual Received Date - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDLE.BorrowerPresumedReceivedDate.{0}",
-    "Format": 301,
-    "Description": "LE Borrower Presumed Received Date"
+    "Description": "LE Borrower Presumed Received Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.BorrowerReceivedMethod.{0}",
-    "Format": 101,
-    "Description": "LE Borrower Received Method"
+    "Description": "LE Borrower Received Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.BorrowerReceivedOtherMethod.{0}",
-    "Format": 101,
-    "Description": "LE Borrower Received Other Method"
+    "Description": "LE Borrower Received Other Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.BorrowerType.{0}",
-    "Format": 101,
-    "Description": "LE Borrower Type"
+    "Description": "LE Borrower Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.ChangedCircumstanceDetails.{0}",
-    "Format": 101,
-    "Description": "LE Changed Circumstance Details"
+    "Description": "LE Changed Circumstance Details - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDLE.CoBorrowerActualReceivedDate.{0}",
-    "Format": 301,
-    "Description": "LE CoBorrower Actual Received Date"
+    "Description": "LE CoBorrower Actual Received Date - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDLE.CoBorrowerPresumedReceivedDate.{0}",
-    "Format": 301,
-    "Description": "LE CoBorrower Presumed Received Date"
+    "Description": "LE CoBorrower Presumed Received Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.CoBorrowerReceivedMethod.{0}",
-    "Format": 101,
-    "Description": "LE CoBorrower Received Method"
+    "Description": "LE CoBorrower Received Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.CoBorrowerReceivedOtherMethod.{0}",
-    "Format": 101,
-    "Description": "LE CoBorrower Received Other Method"
+    "Description": "LE CoBorrower Received Other Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.CoBorrowerType.{0}",
-    "Format": 101,
-    "Description": "LE CoBorrower Type"
+    "Description": "LE CoBorrower Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.DisclosedbyBroker.{0}",
-    "Format": 101,
-    "Description": "LE Disclosed by Broker?"
+    "Description": "LE Disclosed by Broker? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.DisclosureType.{0}",
-    "Format": 101,
-    "Description": "LE Disclosure Type"
+    "Description": "LE Disclosure Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.IntentComments.{0}",
-    "Format": 101,
-    "Description": "LE Intent Comments"
+    "Description": "LE Intent Comments - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDLE.IntentDate.{0}",
-    "Format": 301,
-    "Description": "LE Intent Date"
+    "Description": "LE Intent Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.IntentReceivedBy.{0}",
-    "Format": 101,
-    "Description": "LE Intent Received By"
+    "Description": "LE Intent Received By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.IntentReceivedMethod.{0}",
-    "Format": 101,
-    "Description": "LE Intent Received Method"
+    "Description": "LE Intent Received Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.IntentReceivedOtherMethod.{0}",
-    "Format": 101,
-    "Description": "LE Intent Received Other Method"
+    "Description": "LE Intent Received Other Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.IntenttoProceed.{0}",
-    "Format": 101,
-    "Description": "LE Intent to Proceed?"
+    "Description": "LE Intent to Proceed? - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDLE.LoanSnapshot_ApplicationDate.{0}",
-    "Format": 301,
-    "Description": "LE Loan Snapshot - Application Date"
+    "Description": "LE Loan Snapshot - Application Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.LoanSnapshot_DisclosedAPR.{0}",
-    "Format": 101,
-    "Description": "LE Loan Snapshot - Disclosed APR"
+    "Description": "LE Loan Snapshot - Disclosed APR - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.LoanSnapshot_DisclosedRate.{0}",
-    "Format": 101,
-    "Description": "LE Loan Snapshot - Disclosed Rate"
+    "Description": "LE Loan Snapshot - Disclosed Rate - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.LoanSnapshot_FinanceCharge.{0}",
-    "Format": 101,
-    "Description": "LE Loan Snapshot - Finance Charge"
+    "Description": "LE Loan Snapshot - Finance Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.LoanSnapshot_LoanAmount.{0}",
-    "Format": 101,
-    "Description": "LE Loan Snapshot - Loan Amount"
+    "Description": "LE Loan Snapshot - Loan Amount - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.LoanSnapshot_LoanProgram.{0}",
-    "Format": 101,
-    "Description": "LE Loan Snapshot - Loan Program"
+    "Description": "LE Loan Snapshot - Loan Program - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.OtherMethod.{0}",
-    "Format": 101,
-    "Description": "LE Other Method"
+    "Description": "LE Other Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.OtherReason.{0}",
-    "Format": 101,
-    "Description": "LE Other Reason"
+    "Description": "LE Other Reason - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.Reason_ChangedCircumstance_Eligibility.{0}",
-    "Format": 101,
-    "Description": "LE Reason - Changed Circumstance - Eligibility?"
+    "Description": "LE Reason - Changed Circumstance - Eligibility? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.Reason_ChangedCircumstance_SettmentCharges.{0}",
-    "Format": 101,
-    "Description": "LE Reason - Changed Circumstance - Settlement Charges?"
+    "Description": "LE Reason - Changed Circumstance - Settlement Charges? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.Reason_DelayedSettmentonConstructionLoans.{0}",
-    "Format": 101,
-    "Description": "LE Reason - Delayed Settlement on Construction Loans?"
+    "Description": "LE Reason - Delayed Settlement on Construction Loans? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.Reason_Expiration.{0}",
-    "Format": 101,
-    "Description": "LE Reason - Expiration?"
+    "Description": "LE Reason - Expiration? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.Reason_InterestRatedependentcharges.{0}",
-    "Format": 101,
-    "Description": "LE Reason - Interest Rate dependent charges?"
+    "Description": "LE Reason - Interest Rate dependent charges? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.Reason_Other.{0}",
-    "Format": 101,
-    "Description": "LE Reason - Other?"
+    "Description": "LE Reason - Other? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.Reason_RevisionsrequestedbytheConsumer.{0}",
-    "Format": 101,
-    "Description": "LE Reason - Revisions requested by the Consumer?"
+    "Description": "LE Reason - Revisions requested by the Consumer? - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.ReasonComments.{0}",
-    "Format": 101,
-    "Description": "LE Reason Comments"
+    "Description": "LE Reason Comments - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.SentBy.{0}",
-    "Format": 101,
-    "Description": "LE Sent By"
+    "Description": "LE Sent By - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDLE.SentDate.{0}",
-    "Format": 301,
-    "Description": "LE Sent Date"
+    "Description": "LE Sent Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDLE.SentMethod.{0}",
-    "Format": 101,
-    "Description": "LE Sent Method"
+    "Description": "LE Sent Method - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDTIL.ApplicationDate.{0}",
-    "Format": 301,
-    "Description": "TIL Disclosure Application Date"
+    "Description": "TIL Disclosure Application Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.BorrowerName.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Borrower Name"
+    "Description": "TIL Disclosure Borrower Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.CoBorrowerName.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure CoBorrower Name"
+    "Description": "TIL Disclosure CoBorrower Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.Comments.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Comments"
+    "Description": "TIL Disclosure Comments - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.DeliveryMethod.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Delivery Method"
+    "Description": "TIL Disclosure Delivery Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.DisclosedAPR.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Disclosed APR"
+    "Description": "TIL Disclosure Disclosed APR - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.DisclosedBy.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Disclosed By"
+    "Description": "TIL Disclosure Disclosed By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.ExternalByField.{0}",
-    "Format": 101,
-    "Description": "TIL External Disclosure Disclosed By"
+    "Description": "TIL External Disclosure Disclosed By - {0}"
   },
   {
-    "FieldId": "DISCLOSEDTIL.ExternalDisclosedAPRField.{0}",
     "Format": 204,
-    "Description": "TIL External Disclosure APR"
+    "FieldId": "DISCLOSEDTIL.ExternalDisclosedAPRField.{0}",
+    "Description": "TIL External Disclosure APR - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.ExternalDisclosedMethod.{0}",
-    "Format": 101,
-    "Description": "TIL External Disclosure Method"
+    "Description": "TIL External Disclosure Method - {0}"
   },
   {
-    "FieldId": "DISCLOSEDTIL.ExternalFinanceChargeField.{0}",
     "Format": 203,
-    "Description": "TIL External Disclosure Finance Charge"
+    "FieldId": "DISCLOSEDTIL.ExternalFinanceChargeField.{0}",
+    "Description": "TIL External Disclosure Finance Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.FinanceCharge.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Finance Charge"
+    "Description": "TIL Disclosure Finance Charge - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.LoanAmount.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Loan Amount"
+    "Description": "TIL Disclosure Loan Amount - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.LoanProgram.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Loan Program"
+    "Description": "TIL Disclosure Loan Program - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.PropertyAddress.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Property Address"
+    "Description": "TIL Disclosure Property Address - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.PropertyCity.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Property City"
+    "Description": "TIL Disclosure Property City - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.PropertyState.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Property State"
+    "Description": "TIL Disclosure Property State - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "DISCLOSEDTIL.PropertyZip.{0}",
-    "Format": 101,
-    "Description": "TIL Disclosure Property Zip"
+    "Description": "TIL Disclosure Property Zip - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "DISCLOSEDTIL.ReceivedDate.{0}",
-    "Format": 304,
-    "Description": "TIL Disclosure Received Date"
+    "Description": "TIL Disclosure Received Date - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "DISCLOSEDTIL.SentDate.{0}",
-    "Format": 301,
-    "Description": "TIL Disclosure Sent Date"
+    "Description": "TIL Disclosure Sent Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Document.Comments.{0}",
-    "Format": 101,
-    "Description": "Document Comments"
+    "Description": "Document Comments - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Document.Company.{0}",
-    "Format": 101,
-    "Description": "Document Company"
+    "Description": "Document Company - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Document.DateOrdered.{0}",
-    "Format": 301,
-    "Description": "Document Date Ordered"
+    "Description": "Document Date Ordered - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Document.DateReceived.{0}",
-    "Format": 301,
-    "Description": "Document Date Received"
+    "Description": "Document Date Received - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Document.DateReordered.{0}",
-    "Format": 301,
-    "Description": "Document Date Reordered"
+    "Description": "Document Date Reordered - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Document.DateReviewed.{0}",
-    "Format": 301,
-    "Description": "Document Date Reviewed"
+    "Description": "Document Date Reviewed - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Document.DateShippingReady.{0}",
-    "Format": 301,
-    "Description": "Document Date Shipping Ready"
+    "Description": "Document Date Shipping Ready - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Document.DateUnderwritingReady.{0}",
-    "Format": 301,
-    "Description": "Document Date Underwriting Ready"
+    "Description": "Document Date Underwriting Ready - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Document.DaysToExpiration.{0}",
-    "Format": 101,
-    "Description": "Document Days To Expiration"
+    "Description": "Document Days To Expiration - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Document.DaysToReceived.{0}",
-    "Format": 101,
-    "Description": "Document Days To Received"
+    "Description": "Document Days To Received - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Document.ExpectedDate.{0}",
-    "Format": 301,
-    "Description": "Document Expected Date"
+    "Description": "Document Expected Date - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Document.ExpirationDate.{0}",
-    "Format": 301,
-    "Description": "Document Expiration Date"
+    "Description": "Document Expiration Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Document.Milestone.{0}",
-    "Format": 101,
-    "Description": "Document Milestone"
+    "Description": "Document Milestone - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Document.Status.{0}",
-    "Format": 101,
-    "Description": "Document Status"
+    "Description": "Document Status - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Document.Title.{0}",
-    "Format": 101,
-    "Description": "Document Title"
+    "Description": "Document Title - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "EDISCLOSED2015TRK.eDisclosureActualReceivedDate.{0}",
-    "Format": 301,
-    "Description": "2015 Fulfillment Actual Received Date"
+    "Description": "2015 Fulfillment Actual Received Date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSED2015TRK.eDisclosureBorrowerConsent.{0}",
-    "Format": 101,
-    "Description": "2015 Borrower Consent when eDisclosure was sent"
+    "Description": "2015 Borrower Consent when eDisclosure was sent - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSED2015TRK.eDisclosureCoBorrowerConsent.{0}",
-    "Format": 101,
-    "Description": "2015 Co-Borrower Consent when eDisclosure was sent"
+    "Description": "2015 Co-Borrower Consent when eDisclosure was sent - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "EDISCLOSED2015TRK.eDisclosurePresumedReceivedDate.{0}",
-    "Format": 301,
-    "Description": "2015 Fulfillment Presumed Received Date"
+    "Description": "2015 Fulfillment Presumed Received Date - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "EDISCLOSED2015TRK.eDisclosureSentDate.{0}",
-    "Format": 301,
-    "Description": "2015 Fulfillment Sent Date"
+    "Description": "2015 Fulfillment Sent Date - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.BorrowerDateAccepted.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date Borrowers Accepted Consent Form"
+    "Description": "eDisclosure Date Borrowers Accepted Consent Form - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.BorrowerDateAuthenticated.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date Borrowers Authenticated"
+    "Description": "eDisclosure Date Borrowers Authenticated - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.BorrowerDateESigned.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date Borrowers eSigned Disclosures"
+    "Description": "eDisclosure Date Borrowers eSigned Disclosures - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.BorrowerDateRejected.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date Borrowers Rejected Consent Form"
+    "Description": "eDisclosure Date Borrowers Rejected Consent Form - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.BorrowerDateViewMessage.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date Borrowers Viewed Message"
+    "Description": "eDisclosure Date Borrowers Viewed Message - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.BorrowerDocumentViewedDate.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Borrower Document Viewed date"
+    "Description": "eDisclosure Borrower Document Viewed date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.BorrowerEmailAddress.{0}",
-    "Format": 101,
-    "Description": "eDisclosure Borrower's Email Address"
+    "Description": "eDisclosure Borrower's Email Address - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.BorrowerIPAddressAccepted.{0}",
-    "Format": 101,
-    "Description": "eDisclosure IP Address Borrowers Accepted Consent Form"
+    "Description": "eDisclosure IP Address Borrowers Accepted Consent Form - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.BorrowerIPAddressAuthenticated.{0}",
-    "Format": 101,
-    "Description": "eDisclosure IP Address Borrowers Authenticated"
+    "Description": "eDisclosure IP Address Borrowers Authenticated - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.BorrowerIPAddressESigned.{0}",
-    "Format": 101,
-    "Description": "eDisclosure IP Address Borrowers eSigned Disclosures"
+    "Description": "eDisclosure IP Address Borrowers eSigned Disclosures - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.BorrowerIPAddressRejected.{0}",
-    "Format": 101,
-    "Description": "eDisclosure IP Address Borrowers Rejected Consent Form"
+    "Description": "eDisclosure IP Address Borrowers Rejected Consent Form - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.BorrowerName.{0}",
-    "Format": 101,
-    "Description": "eDisclosure Borrower's Name"
+    "Description": "eDisclosure Borrower's Name - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerDateAccepted.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date CoBorrowers Accepted Consent Form"
+    "Description": "eDisclosure Date CoBorrowers Accepted Consent Form - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerDateAuthenticated.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date CoBorrowers Authenticated"
+    "Description": "eDisclosure Date CoBorrowers Authenticated - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerDateESigned.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date CoBorrowers eSigned Disclosures"
+    "Description": "eDisclosure Date CoBorrowers eSigned Disclosures - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerDateRejected.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date CoBorrowers Rejected Consent Form"
+    "Description": "eDisclosure Date CoBorrowers Rejected Consent Form - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerDateViewMessage.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date CoBorrowers Viewed Message"
+    "Description": "eDisclosure Date CoBorrowers Viewed Message - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerDocumentViewedDate.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Co-Borrower Document Viewed date"
+    "Description": "eDisclosure Co-Borrower Document Viewed date - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerEmailAddress.{0}",
-    "Format": 101,
-    "Description": "eDisclosure CoBorrower's Email Address"
+    "Description": "eDisclosure CoBorrower's Email Address - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerIPAddressAccepted.{0}",
-    "Format": 101,
-    "Description": "eDisclosure IP Address CoBorrowers Accepted Consent Form"
+    "Description": "eDisclosure IP Address CoBorrowers Accepted Consent Form - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerIPAddressAuthenticated.{0}",
-    "Format": 101,
-    "Description": "eDisclosure IP Address CoBorrowers Authenticated"
+    "Description": "eDisclosure IP Address CoBorrowers Authenticated - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerIPAddressESigned.{0}",
-    "Format": 101,
-    "Description": "eDisclosure IP Address CoBorrowers eSigned Disclosures"
+    "Description": "eDisclosure IP Address CoBorrowers eSigned Disclosures - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerIPAddressRejected.{0}",
-    "Format": 101,
-    "Description": "eDisclosure IP Address CoBorrowers Rejected Consent Form"
+    "Description": "eDisclosure IP Address CoBorrowers Rejected Consent Form - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.CoBorrowerName.{0}",
-    "Format": 101,
-    "Description": "eDisclosure CoBorrower's Name"
+    "Description": "eDisclosure CoBorrower's Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.Comments.{0}",
-    "Format": 101,
-    "Description": "Disclosure Comments"
+    "Description": "Disclosure Comments - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.DateTimeFulfilled.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date Time Fulfilled"
+    "Description": "eDisclosure Date Time Fulfilled - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.DisclosureMethod.{0}",
-    "Format": 101,
-    "Description": "Disclosure Method"
+    "Description": "Disclosure Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.FulfilledBy.{0}",
-    "Format": 101,
-    "Description": "Disclosure Fullfilled By"
+    "Description": "Disclosure Fullfilled By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.FulfillmentComment.{0}",
-    "Format": 101,
-    "Description": "eDisclosure Fulfillment Comment"
+    "Description": "eDisclosure Fulfillment Comment - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.FulfillmentMethod.{0}",
-    "Format": 101,
-    "Description": "eDisclosure Fulfillment Method"
+    "Description": "eDisclosure Fulfillment Method - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.FulfillmentOrderedBy.{0}",
-    "Format": 101,
-    "Description": "eDisclosure Fulfillment Fullfilled By"
+    "Description": "eDisclosure Fulfillment Fullfilled By - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.LoanOriginatorDateESigned.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date Loan Originator eSigned Disclosures"
+    "Description": "eDisclosure Date Loan Originator eSigned Disclosures - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.LoanOriginatorDateViewMessage.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date Loan Originator Viewed Message"
+    "Description": "eDisclosure Date Loan Originator Viewed Message - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.LoanOriginatorIPAddressESigned.{0}",
-    "Format": 101,
-    "Description": "eDisclosure IP Address Loan Originator eSigned Disclosures"
+    "Description": "eDisclosure IP Address Loan Originator eSigned Disclosures - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "EDISCLOSEDTRK.LoanOriginatorName.{0}",
-    "Format": 101,
-    "Description": "eDisclosure Loan Originator's Name"
+    "Description": "eDisclosure Loan Originator's Name - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "EDISCLOSEDTRK.SentDate.{0}",
-    "Format": 304,
-    "Description": "eDisclosure Date Time Sent"
+    "Description": "eDisclosure Date Time Sent - {0}"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "User",
+        "text": "User"
+      },
+      {
+        "value": "Group",
+        "text": "Group"
+      }
+    ],
     "FieldId": "LoanTeamMember.AssociateType.{0}",
-    "Format": 101,
-    "Description": "Loan Team Member Type",
-    "Options": [
-      {
-        "Text": "User",
-        "Value": "User"
-      },
-      {
-        "Text": "Group",
-        "Value": "Group"
-      }
-    ]
+    "Description": "Loan Team Member Type - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "LoanTeamMember.Cell.{0}",
-    "Format": 101,
-    "Description": "Loan Team Member Cell Phone"
+    "Description": "Loan Team Member Cell Phone - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "LoanTeamMember.Email.{0}",
-    "Format": 101,
-    "Description": "Loan Team Member Email"
+    "Description": "Loan Team Member Email - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "LoanTeamMember.Fax.{0}",
-    "Format": 101,
-    "Description": "Loan Team Member Fax"
+    "Description": "Loan Team Member Fax - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "LoanTeamMember.LoanAssociateAccess.{0}",
-    "Format": 102,
-    "Description": "Loan Team Member Access"
+    "Description": "Loan Team Member Access - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "LoanTeamMember.Name.{0}",
-    "Format": 101,
-    "Description": "Loan Team Member Name"
+    "Description": "Loan Team Member Name - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "LoanTeamMember.Phone.{0}",
-    "Format": 101,
-    "Description": "Loan Team Member Phone"
+    "Description": "Loan Team Member Phone - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "LoanTeamMember.UserID.{0}",
-    "Format": 101,
-    "Description": "Loan Team Member User ID"
+    "Description": "Loan Team Member User ID - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Log.Alert.ActivatedBy.{0}",
-    "Format": 101,
-    "Description": "Alert Activated By"
+    "Description": "Alert Activated By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Log.Alert.ClearedBy.{0}",
-    "Format": 101,
-    "Description": "Alert Cleared By"
+    "Description": "Alert Cleared By - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "Log.Alert.DateActivated.{0}",
-    "Format": 304,
-    "Description": "Alert Activation Date/Time"
+    "Description": "Alert Activation Date/Time - {0}"
   },
   {
+    "Format": 304,
     "FieldId": "Log.Alert.DateCleared.{0}",
-    "Format": 304,
-    "Description": "Alert Cleared Date/Time"
+    "Description": "Alert Cleared Date/Time - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Log.MS.Comments.{0}",
-    "Format": 101,
-    "Description": "Milestone Comments"
+    "Description": "Milestone Comments - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Log.MS.Date.{0}",
-    "Format": 301,
-    "Description": "Milestone Date"
+    "Description": "Milestone Date - {0}"
   },
   {
-    "FieldId": "Log.MS.DateTime.{0}",
     "Format": 304,
-    "Description": "Milestone Date/Time"
+    "FieldId": "Log.MS.DateTime.{0}",
+    "Description": "Milestone Date/Time - {0}"
   },
   {
+    "Format": 201,
     "FieldId": "Log.MS.Duration.{0}",
-    "Format": 201,
-    "Description": "Milestone Duration"
+    "Description": "Milestone Duration - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Log.MS.ExpectedDate.{0}",
-    "Format": 301,
-    "Description": "Milestone Expected Completion Date"
+    "Description": "Milestone Expected Completion Date - {0}"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Expected",
+        "text": "Expected"
+      },
+      {
+        "value": "Achieved",
+        "text": "Achieved"
+      }
+    ],
     "FieldId": "Log.MS.Status.{0}",
-    "Format": 101,
-    "Description": "Milestone Status",
-    "Options": [
-      {
-        "Text": "Expected",
-        "Value": "Expected"
-      },
-      {
-        "Text": "Achieved",
-        "Value": "Achieved"
-      }
-    ]
+    "Description": "Milestone Status - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Log.MS.TPOConnectStatus.{0}",
-    "Format": 101,
-    "Description": "Milestone TPO Connect Status"
+    "Description": "Milestone TPO Connect Status - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.AddedBy.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Added By"
+    "Description": "Post-Condition Added By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.ClearedBy.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Cleared By"
+    "Description": "Post-Condition Cleared By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.Comments.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Comments"
+    "Description": "Post-Condition Comments - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "PostCondition.DateAdded.{0}",
-    "Format": 301,
-    "Description": "Post-Condition Date Added"
+    "Description": "Post-Condition Date Added - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "PostCondition.DateCleared.{0}",
-    "Format": 301,
-    "Description": "Post-Condition Date Cleared"
+    "Description": "Post-Condition Date Cleared - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "PostCondition.DateExpected.{0}",
-    "Format": 301,
-    "Description": "Post-Condition Date Expected"
+    "Description": "Post-Condition Date Expected - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "PostCondition.DateReceived.{0}",
-    "Format": 301,
-    "Description": "Post-Condition Date Received"
+    "Description": "Post-Condition Date Received - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "PostCondition.DateRequested.{0}",
-    "Format": 301,
-    "Description": "Post-Condition Date Requested"
+    "Description": "Post-Condition Date Requested - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "PostCondition.DateRerequested.{0}",
-    "Format": 301,
-    "Description": "Post-Condition Date Rerequested"
+    "Description": "Post-Condition Date Rerequested - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "PostCondition.DateSent.{0}",
-    "Format": 301,
-    "Description": "Post-Condition Date Sent"
+    "Description": "Post-Condition Date Sent - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.Description.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Description"
+    "Description": "Post-Condition Description - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "PostCondition.IsCleared.{0}",
-    "Format": 102,
-    "Description": "Post-Condition Is Cleared"
+    "Description": "Post-Condition Is Cleared - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "PostCondition.IsReceived.{0}",
-    "Format": 102,
-    "Description": "Post-Condition Is Received"
+    "Description": "Post-Condition Is Received - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "PostCondition.IsRequested.{0}",
-    "Format": 102,
-    "Description": "Post-Condition Is Requested"
+    "Description": "Post-Condition Is Requested - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "PostCondition.IsRerequested.{0}",
-    "Format": 102,
-    "Description": "Post-Condition Is Rerequested"
+    "Description": "Post-Condition Is Rerequested - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "PostCondition.IsSent.{0}",
-    "Format": 102,
-    "Description": "Post-Condition Is Sent"
+    "Description": "Post-Condition Is Sent - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.ReceivedBy.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Received By"
+    "Description": "Post-Condition Received By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.Recipient.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Recipient"
+    "Description": "Post-Condition Recipient - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.RequestedBy.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Requested By"
+    "Description": "Post-Condition Requested By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.RequestedFrom.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Requested From"
+    "Description": "Post-Condition Requested From - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.RerequestedBy.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Rerequested By"
+    "Description": "Post-Condition Rerequested By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.SentBy.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Sent By"
+    "Description": "Post-Condition Sent By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.Source.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Source"
+    "Description": "Post-Condition Source - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.Status.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Status"
+    "Description": "Post-Condition Status - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PostCondition.Title.{0}",
-    "Format": 101,
-    "Description": "Post-Condition Title"
+    "Description": "Post-Condition Title - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PreliminaryCondition.AddedBy.{0}",
-    "Format": 101,
-    "Description": "Preliminary Condition Added By"
+    "Description": "Preliminary Condition Added By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PreliminaryCondition.Category.{0}",
-    "Format": 101,
-    "Description": "Preliminary Condition Category"
+    "Description": "Preliminary Condition Category - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PreliminaryCondition.Comments.{0}",
-    "Format": 101,
-    "Description": "Preliminary Condition Comments"
+    "Description": "Preliminary Condition Comments - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "PreliminaryCondition.DateAdded.{0}",
-    "Format": 301,
-    "Description": "Preliminary Condition Date Added"
+    "Description": "Preliminary Condition Date Added - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "PreliminaryCondition.DateFulfilled.{0}",
-    "Format": 301,
-    "Description": "Preliminary Condition Date Fulfilled"
+    "Description": "Preliminary Condition Date Fulfilled - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PreliminaryCondition.Description.{0}",
-    "Format": 101,
-    "Description": "Preliminary Condition Description"
+    "Description": "Preliminary Condition Description - {0}"
   },
   {
+    "Format": 102,
     "FieldId": "PreliminaryCondition.Fulfilled.{0}",
-    "Format": 102,
-    "Description": "Preliminary Condition Is Fulfilled"
+    "Description": "Preliminary Condition Is Fulfilled - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PreliminaryCondition.FulfilledBy.{0}",
-    "Format": 101,
-    "Description": "Preliminary Condition Fulfilled By"
+    "Description": "Preliminary Condition Fulfilled By - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PreliminaryCondition.PriorTo.{0}",
-    "Format": 101,
-    "Description": "Preliminary Condition Prior To"
+    "Description": "Preliminary Condition Prior To - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PreliminaryCondition.Status.{0}",
-    "Format": 101,
-    "Description": "Preliminary Condition Status"
+    "Description": "Preliminary Condition Status - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "PreliminaryCondition.Title.{0}",
-    "Format": 101,
-    "Description": "Preliminary Condition Title"
+    "Description": "Preliminary Condition Title - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Task.AddedBy.{0}",
-    "Format": 101,
-    "Description": "Task Creator"
+    "Description": "Task Creator - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Task.Comments.{0}",
-    "Format": 101,
-    "Description": "Task Comments"
+    "Description": "Task Comments - {0}"
   },
   {
-    "FieldId": "Task.Completed.{0}",
     "Format": 102,
-    "Description": "Task Completed"
+    "FieldId": "Task.Completed.{0}",
+    "Description": "Task Completed - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Task.CompletedBy.{0}",
-    "Format": 101,
-    "Description": "User Who Completed Task"
+    "Description": "User Who Completed Task - {0}"
   },
   {
-    "FieldId": "Task.ContactCount.{0}",
     "Format": 201,
-    "Description": "Number of Task Contacts"
+    "FieldId": "Task.ContactCount.{0}",
+    "Description": "Number of Task Contacts - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Task.DateAdded.{0}",
-    "Format": 301,
-    "Description": "Date Task Added"
+    "Description": "Date Task Added - {0}"
   },
   {
+    "Format": 301,
     "FieldId": "Task.DateCompleted.{0}",
-    "Format": 301,
-    "Description": "Date Task Completed"
+    "Description": "Date Task Completed - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Task.Description.{0}",
-    "Format": 101,
-    "Description": "Task Description"
+    "Description": "Task Description - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Task.Milestone.{0}",
-    "Format": 101,
-    "Description": "Task Milestone"
+    "Description": "Task Milestone - {0}"
   },
   {
+    "Format": 101,
     "FieldId": "Task.Name.{0}",
-    "Format": 101,
-    "Description": "Task Name"
+    "Description": "Task Name - {0}"
   },
   {
-    "FieldId": "Task.Priority.{0}",
     "Format": 101,
-    "Description": "Task Priority",
     "Options": [
       {
-        "Text": "Low",
-        "Value": "Low"
+        "value": "Low",
+        "text": "Low"
       },
       {
-        "Text": "Normal",
-        "Value": "Normal"
+        "value": "Normal",
+        "text": "Normal"
       },
       {
-        "Text": "High",
-        "Value": "High"
+        "value": "High",
+        "text": "High"
       }
-    ]
+    ],
+    "FieldId": "Task.Priority.{0}",
+    "Description": "Task Priority - {0}"
   },
   {
-    "FieldId": "Task.Required.{0}",
     "Format": 102,
-    "Description": "Task Required Flag"
+    "FieldId": "Task.Required.{0}",
+    "Description": "Task Required Flag - {0}"
   }
 ]

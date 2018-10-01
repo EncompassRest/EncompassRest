@@ -259,7 +259,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// IRS - Selected Record Number [IRS4506.X98]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "IRS - Selected Record Number")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string SelectedRecordNumber { get => _selectedRecordNumber; set => SetField(ref _selectedRecordNumber, value); }
 
         /// <summary>
@@ -307,7 +307,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// IRS 4506T - Signatory Attestation [IRS4506.X62]
         /// </summary>
-        [LoanFieldProperty(Description = "IRS 4506T - Signatory Attestation")]
         public bool? SignatoryAttestationT { get => _signatoryAttestationT; set => SetField(ref _signatoryAttestationT, value); }
 
         /// <summary>

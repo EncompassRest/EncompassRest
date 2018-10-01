@@ -213,7 +213,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Anti-Steering Disclosure - Loan Option 1 - Loan Type [DISCLOSURE.X689]
         /// </summary>
-        [LoanFieldProperty(Description = "Anti-Steering Disclosure - Loan Option 1 - Loan Type")]
         public StringEnumValue<AmortizationType> LoanType { get => _loanType; set => SetField(ref _loanType, value); }
 
         /// <summary>

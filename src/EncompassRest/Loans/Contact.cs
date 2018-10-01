@@ -127,7 +127,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts Broker Lender Address 2 [1954]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "File Contacts Broker Lender Address 2")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string Address2 { get => _address2; set => SetField(ref _address2, value); }
 
         /// <summary>
@@ -138,7 +138,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts Appraisal Co Appraisal Made (As Is or As Improved) [4091]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Appraisal Co Appraisal Made (As Is or As Improved)")]
         public StringEnumValue<AppraisalMade> AppraisalMade { get => _appraisalMade; set => SetField(ref _appraisalMade, value); }
 
         /// <summary>
@@ -169,7 +168,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts General Contractor BorrowerActingAsContractorIndicator [VEND.X1009]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts General Contractor BorrowerActingAsContractorIndicator")]
         public bool? BorrowerActingAsContractorIndicator { get => _borrowerActingAsContractorIndicator; set => SetField(ref _borrowerActingAsContractorIndicator, value); }
 
         /// <summary>
@@ -207,7 +205,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts Broker Check Confirmed Date [VEND.X368]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "File Contacts Broker Check Confirmed Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? CheckConfirmedDate { get => _checkConfirmedDate; set => SetField(ref _checkConfirmedDate, value); }
 
         /// <summary>
@@ -218,19 +216,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts Mortgagee Clause [VEND.X496]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Mortgagee Clause")]
         public string Clause { get => _clause; set => SetField(ref _clause, value); }
 
         /// <summary>
         /// File Contacts Settlement Agent - Closing Agent Web URL [VEND.X1041]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Settlement Agent - Closing Agent Web URL")]
         public string ClosingAgentWebURL { get => _closingAgentWebURL; set => SetField(ref _closingAgentWebURL, value); }
 
         /// <summary>
         /// File Contacts Settlement Agent - Closing Company Web URL [VEND.X1040]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Settlement Agent - Closing Company Web URL")]
         public string ClosingCompanyWebURL { get => _closingCompanyWebURL; set => SetField(ref _closingCompanyWebURL, value); }
 
         /// <summary>
@@ -241,13 +236,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts Broker Lender Company ID [3237]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Broker Lender Company ID")]
         public string CompanyId { get => _companyId; set => SetField(ref _companyId, value); }
 
         /// <summary>
         /// File Contacts General Contractor Completion Affidavit Punch List Total [VEND.X1024]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "File Contacts General Contractor Completion Affidavit Punch List Total")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CompletionAffidavitPunchListTotal { get => _completionAffidavitPunchListTotal; set => SetField(ref _completionAffidavitPunchListTotal, value); }
 
         /// <summary>
@@ -263,7 +257,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts Settlement Agent Contact NMLS Number [VEND.X675]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Settlement Agent Contact NMLS Number")]
         public string ContactNMLSNo { get => _contactNMLSNo; set => SetField(ref _contactNMLSNo, value); }
 
         /// <summary>
@@ -279,7 +272,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Appointment Of Designee DesigneeAcceptedDate [VEND.X1026]
         /// </summary>
-        [LoanFieldProperty(Description = "Appointment Of Designee DesigneeAcceptedDate")]
         public DateTime? DesigneeAcceptedDate { get => _designeeAcceptedDate; set => SetField(ref _designeeAcceptedDate, value); }
 
         /// <summary>
@@ -290,7 +282,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts General Contractor Employer Liability Insurance Min [VEND.X1018]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "File Contacts General Contractor Employer Liability Insurance Min")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EmployerLiabilityInsuranceMin { get => _employerLiabilityInsuranceMin; set => SetField(ref _employerLiabilityInsuranceMin, value); }
 
         /// <summary>
@@ -302,19 +294,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts Submitting Broker - Lender Fax [2844]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "File Contacts Submitting Broker - Lender Fax")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string Fax2 { get => _fax2; set => SetField(ref _fax2, value); }
 
         /// <summary>
         /// FHA Lender ID [1059]
         /// </summary>
-        [LoanFieldProperty(Description = "FHA Lender ID")]
         public string FhaLenderId { get => _fhaLenderId; set => SetField(ref _fhaLenderId, value); }
 
         /// <summary>
         /// File Contacts General Contractor General Liability Insurance Min [VEND.X1017]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "File Contacts General Contractor General Liability Insurance Min")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GeneralLiabilityInsuranceMin { get => _generalLiabilityInsuranceMin; set => SetField(ref _generalLiabilityInsuranceMin, value); }
 
         /// <summary>
@@ -325,7 +316,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Flood Info Cert Number [2363]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Flood Info Cert Number")]
         public string InsuranceCertNumber { get => _insuranceCertNumber; set => SetField(ref _insuranceCertNumber, value); }
 
         /// <summary>
@@ -337,31 +327,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Flood Info Determination Date [2365]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Flood Info Determination Date")]
         public DateTime? InsuranceDeterminationDate { get => _insuranceDeterminationDate; set => SetField(ref _insuranceDeterminationDate, value); }
 
         /// <summary>
         /// Underwriting Flood Info Determination Number [2364]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Flood Info Determination Number")]
         public string InsuranceDeterminationNumber { get => _insuranceDeterminationNumber; set => SetField(ref _insuranceDeterminationNumber, value); }
 
         /// <summary>
         /// Underwriting Flood Info Flood Zone [2366]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Flood Info Flood Zone")]
         public bool? InsuranceFloodZone { get => _insuranceFloodZone; set => SetField(ref _insuranceFloodZone, value); }
 
         /// <summary>
         /// Underwriting Property Info Map ID [2368]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Property Info Map ID")]
         public string InsuranceMap { get => _insuranceMap; set => SetField(ref _insuranceMap, value); }
 
         /// <summary>
         /// Underwriting Property Info Number of Bedrooms [2369]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Property Info Number of Bedrooms")]
         public int? InsuranceNoOfBedrooms { get => _insuranceNoOfBedrooms; set => SetField(ref _insuranceNoOfBedrooms, value); }
 
         /// <summary>
@@ -373,7 +358,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Property Info Project Type [2367]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Property Info Project Type")]
         public StringEnumValue<ProjectType> InsuranceProjectType { get => _insuranceProjectType; set => SetField(ref _insuranceProjectType, value); }
 
         /// <summary>
@@ -384,25 +368,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Investor Info Grade 1 [2343]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Investor Info Grade 1")]
         public string InvestorGrade1 { get => _investorGrade1; set => SetField(ref _investorGrade1, value); }
 
         /// <summary>
         /// Underwriting Investor Info Grade 2 [2346]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Investor Info Grade 2")]
         public string InvestorGrade2 { get => _investorGrade2; set => SetField(ref _investorGrade2, value); }
 
         /// <summary>
         /// Underwriting Investor Info Grade 3 [2349]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Investor Info Grade 3")]
         public string InvestorGrade3 { get => _investorGrade3; set => SetField(ref _investorGrade3, value); }
 
         /// <summary>
         /// File Contacts Investor License # [VEND.X650]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Investor License #")]
         public string InvestorLicense { get => _investorLicense; set => SetField(ref _investorLicense, value); }
 
         /// <summary>
@@ -413,37 +393,31 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Investor Info Name 1 [2342]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Investor Info Name 1")]
         public string InvestorName1 { get => _investorName1; set => SetField(ref _investorName1, value); }
 
         /// <summary>
         /// Underwriting Investor Info Name 2 [2345]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Investor Info Name 2")]
         public string InvestorName2 { get => _investorName2; set => SetField(ref _investorName2, value); }
 
         /// <summary>
         /// Underwriting Investor Info Name 3 [2348]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Investor Info Name 3")]
         public string InvestorName3 { get => _investorName3; set => SetField(ref _investorName3, value); }
 
         /// <summary>
         /// Underwriting Investor Info Score 1 [2344]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Investor Info Score 1")]
         public string InvestorScore1 { get => _investorScore1; set => SetField(ref _investorScore1, value); }
 
         /// <summary>
         /// Underwriting Investor Info Score 2 [2347]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Investor Info Score 2")]
         public string InvestorScore2 { get => _investorScore2; set => SetField(ref _investorScore2, value); }
 
         /// <summary>
         /// Underwriting Investor Info Score 3 [2350]
         /// </summary>
-        [LoanFieldProperty(Description = "Underwriting Investor Info Score 3")]
         public string InvestorScore3 { get => _investorScore3; set => SetField(ref _investorScore3, value); }
 
         /// <summary>
@@ -464,7 +438,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts-Lender License Home State [3896]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts-Lender License Home State")]
         public StringEnumValue<State> LicenseHomeState { get => _licenseHomeState; set => SetField(ref _licenseHomeState, value); }
 
         /// <summary>
@@ -485,25 +458,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts Broker - Mortgage Broker Company Web URL [VEND.X1036]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Broker - Mortgage Broker Company Web URL")]
         public string MortgageBrokerCompanyWebURL { get => _mortgageBrokerCompanyWebURL; set => SetField(ref _mortgageBrokerCompanyWebURL, value); }
 
         /// <summary>
         /// File Contacts Broker - Mortgage Broker Loan Officer Web URL [VEND.X1037]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Broker - Mortgage Broker Loan Officer Web URL")]
         public string MortgageBrokerLoanOfficerWebURL { get => _mortgageBrokerLoanOfficerWebURL; set => SetField(ref _mortgageBrokerLoanOfficerWebURL, value); }
 
         /// <summary>
         /// File Contacts Lender - Mortgage Lender Company Web URL [VEND.X1034]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Lender - Mortgage Lender Company Web URL")]
         public string MortgageLenderCompanyWebURL { get => _mortgageLenderCompanyWebURL; set => SetField(ref _mortgageLenderCompanyWebURL, value); }
 
         /// <summary>
         /// File Contacts Lender - Mortgage Lender Loan Officer Web URL [VEND.X1035]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Lender - Mortgage Lender Loan Officer Web URL")]
         public string MortgageLenderLoanOfficerWebURL { get => _mortgageLenderLoanOfficerWebURL; set => SetField(ref _mortgageLenderLoanOfficerWebURL, value); }
 
         /// <summary>
@@ -577,19 +546,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts Broker - Real Estate Agency Web URL [VEND.X1038]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Broker - Real Estate Agency Web URL")]
         public string RealEstateAgencyWebURL { get => _realEstateAgencyWebURL; set => SetField(ref _realEstateAgencyWebURL, value); }
 
         /// <summary>
         /// File Contacts Broker - Real Estate Agent Web URL [VEND.X1039]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Broker - Real Estate Agent Web URL")]
         public string RealEstateAgentWebURL { get => _realEstateAgentWebURL; set => SetField(ref _realEstateAgentWebURL, value); }
 
         /// <summary>
         /// File Contacts Broker Rec City [VEND.X308]
         /// </summary>
-        [LoanFieldProperty(Description = "File Contacts Broker Rec City")]
         public string RecCity { get => _recCity; set => SetField(ref _recCity, value); }
 
         /// <summary>
@@ -620,31 +586,31 @@ namespace EncompassRest.Loans
         /// <summary>
         /// TQL Comment History [3355]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "TQL Comment History")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string TqlCommentHistory { get => _tqlCommentHistory; set => SetField(ref _tqlCommentHistory, value); }
 
         /// <summary>
         /// Consent Selection in TQL Portal [CCVP.X1]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Consent Selection in TQL Portal")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string TQLConsentSelection { get => _tQLConsentSelection; set => SetField(ref _tQLConsentSelection, value); }
 
         /// <summary>
         /// TQL InvestorID [3318]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "TQL InvestorID")]
+        [LoanFieldProperty(ReadOnly = true)]
         public int? TqlId { get => _tqlId; set => SetField(ref _tqlId, value); }
 
         /// <summary>
         /// Is Published to Investor [3333]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Is Published to Investor")]
+        [LoanFieldProperty(ReadOnly = true)]
         public bool? TqlIsPublishingIndicator { get => _tqlIsPublishingIndicator; set => SetField(ref _tqlIsPublishingIndicator, value); }
 
         /// <summary>
         /// TQL Investor Name [3317]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "TQL Investor Name")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string TqlName { get => _tqlName; set => SetField(ref _tqlName, value); }
     }
 }

@@ -29,7 +29,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// 1084A/1040 Business Information - Business Name [FM1084.X177]
         /// </summary>
-        [LoanFieldProperty(Description = "1084A/1040 Business Information - Business Name")]
         public string BusinessName { get => _businessName; set => SetField(ref _businessName, value); }
 
         /// <summary>

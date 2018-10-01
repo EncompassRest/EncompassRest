@@ -60,7 +60,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr Present County [FR0109]
         /// </summary>
-        [LoanFieldProperty(Description = "Borr Present County")]
         public string AddressCounty { get => _addressCounty; set => SetField(ref _addressCounty, value); }
 
         /// <summary>

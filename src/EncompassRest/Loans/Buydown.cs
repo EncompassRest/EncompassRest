@@ -41,7 +41,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info Buydown Terms [1557]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Info Buydown Terms")]
         public int? DurationMonthsCount { get => _durationMonthsCount; set => SetField(ref _durationMonthsCount, value); }
 
         /// <summary>

@@ -53,25 +53,23 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Vesting Party - Alias [TRNN02]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - Alias")]
         public string Alias { get => _alias; set => SetField(ref _alias, value); }
 
         /// <summary>
         /// Closing Docs Loss Payee Assignee [1953]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Closing Docs Loss Payee Assignee")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string Assignee { get => _assignee; set => SetField(ref _assignee, value); }
 
         /// <summary>
         /// Vesting Party - Authorized to Sign [TRNN09]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - Authorized to Sign", OptionsJson = "{\"true\":\"Authorized to Sign\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Authorized to Sign\"}")]
         public bool? AuthorizedToSignIndicator { get => _authorizedToSignIndicator; set => SetField(ref _authorizedToSignIndicator, value); }
 
         /// <summary>
         /// Vesting Party - Borrower Pair ID [TRNN05]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - Borrower Pair ID")]
         public string BorrowerPair { get => _borrowerPair; set => SetField(ref _borrowerPair, value); }
 
         /// <summary>
@@ -88,25 +86,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing docs Recordable Doc Comments [2980]
         /// </summary>
-        [LoanFieldProperty(Description = "Closing docs Recordable Doc Comments")]
         public string Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// Closing Docs Recordable Doc Trustee County [3901]
         /// </summary>
-        [LoanFieldProperty(Description = "Closing Docs Recordable Doc Trustee County")]
         public string County { get => _county; set => SetField(ref _county, value); }
 
         /// <summary>
         /// Vesting Party - POA Date of Birth [TRNN12]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - POA Date of Birth")]
         public DateTime? DateOfBirth { get => _dateOfBirth; set => SetField(ref _dateOfBirth, value); }
 
         /// <summary>
         /// Closing Docs Lender Fax [1922]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true, Description = "Closing Docs Lender Fax")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true)]
         public string Fax { get => _fax; set => SetField(ref _fax, value); }
 
         /// <summary>
@@ -122,13 +117,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Vesting Party - POA Occupancy Intent [TRNN14]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - POA Occupancy Intent")]
         public StringEnumValue<OccupancyIntent> OccupancyIntent { get => _occupancyIntent; set => SetField(ref _occupancyIntent, value); }
 
         /// <summary>
         /// Vesting Party - POA Occupancy Status [TRNN13]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - POA Occupancy Status")]
         public StringEnumValue<PropertyUsageType> OccupancyStatus { get => _occupancyStatus; set => SetField(ref _occupancyStatus, value); }
 
         /// <summary>
@@ -146,25 +139,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Docs Recordable Doc Trustee Phone Number [3552]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Closing Docs Recordable Doc Trustee Phone Number")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string Phone { get => _phone; set => SetField(ref _phone, value); }
 
         /// <summary>
         /// Closing Docs Lender Phone 1 [1920]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true, Description = "Closing Docs Lender Phone 1")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true)]
         public string Phone1 { get => _phone1; set => SetField(ref _phone1, value); }
 
         /// <summary>
         /// Closing Docs Lender Phone 2 [1921]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true, Description = "Closing Docs Lender Phone 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true)]
         public string Phone2 { get => _phone2; set => SetField(ref _phone2, value); }
 
         /// <summary>
         /// Vesting Party - POA Signature Text [TRNN11]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - POA Signature Text")]
         public string PoaSignatureText { get => _poaSignatureText; set => SetField(ref _poaSignatureText, value); }
 
         /// <summary>
@@ -176,25 +168,23 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Vesting Party - Power of Attroney [TRNN07]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - Power of Attroney")]
         public string PowerOfAttorney { get => _powerOfAttorney; set => SetField(ref _powerOfAttorney, value); }
 
         /// <summary>
         /// Closing docs Recordable Doc Trust Date [2979]
         /// </summary>
-        [LoanFieldProperty(Description = "Closing docs Recordable Doc Trust Date")]
         public DateTime? RecordableDocumentTrustDate { get => _recordableDocumentTrustDate; set => SetField(ref _recordableDocumentTrustDate, value); }
 
         /// <summary>
         /// Closing Docs Lender Record City [1923]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Closing Docs Lender Record City")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string RecordCity { get => _recordCity; set => SetField(ref _recordCity, value); }
 
         /// <summary>
         /// Vesting Party - Social Security Number [TRNN03]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.SSN, Description = "Vesting Party - Social Security Number")]
+        [LoanFieldProperty(Format = LoanFieldFormat.SSN)]
         public string Ssn { get => _ssn; set => SetField(ref _ssn, value); }
 
         /// <summary>
@@ -212,7 +202,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower Vesting Seller Org Tax ID [1866]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Borrower Vesting Seller Org Tax ID")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string TaxIdentificationNumberIdentifier { get => _taxIdentificationNumberIdentifier; set => SetField(ref _taxIdentificationNumberIdentifier, value); }
 
         /// <summary>
@@ -223,25 +213,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Vesting Seller Corp/Trust Officer 1 Name [Vesting.SelOfcr1Nm]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Seller Corp/Trust Officer 1 Name")]
         public string TrustOfficerName1 { get => _trustOfficerName1; set => SetField(ref _trustOfficerName1, value); }
 
         /// <summary>
         /// Vesting Seller Corp/Trust Officer 2 Name [Vesting.SelOfcr2Nm]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Seller Corp/Trust Officer 2 Name")]
         public string TrustOfficerName2 { get => _trustOfficerName2; set => SetField(ref _trustOfficerName2, value); }
 
         /// <summary>
         /// Vesting Seller Corp/Trust Officer 1 Title [Vesting.SelOfcr1Titl]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Seller Corp/Trust Officer 1 Title")]
         public string TrustOfficerTitle1 { get => _trustOfficerTitle1; set => SetField(ref _trustOfficerTitle1, value); }
 
         /// <summary>
         /// Vesting Seller Corp/Trust Officer 2 Title [Vesting.SelOfcr2Titl]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Seller Corp/Trust Officer 2 Title")]
         public string TrustOfficerTitle2 { get => _trustOfficerTitle2; set => SetField(ref _trustOfficerTitle2, value); }
 
         /// <summary>
@@ -253,25 +239,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Vesting Party - Vesting [TRNN08]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - Vesting")]
         public string Vesting { get => _vesting; set => SetField(ref _vesting, value); }
 
         /// <summary>
         /// Vesting Party - Unique ID [TRNN10]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Vesting Party - Unique ID")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string VestingGuid { get => _vestingGuid; set => SetField(ref _vestingGuid, value); }
 
         /// <summary>
         /// Vesting Party - Trustee Of [TRNN06]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - Trustee Of")]
         public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get => _vestingTrusteeOfType; set => SetField(ref _vestingTrusteeOfType, value); }
 
         /// <summary>
         /// Vesting Party - Vesting Type [TRNN04]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - Vesting Type")]
         public StringEnumValue<BorrowerType> VestingType { get => _vestingType; set => SetField(ref _vestingType, value); }
     }
 }

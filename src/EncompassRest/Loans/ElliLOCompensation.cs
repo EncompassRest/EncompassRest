@@ -53,127 +53,125 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Adjusted Plan Additional Amount [LCP.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Adjusted Plan Additional Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustedPlanAdditonalAmountForBroker { get => _adjustedPlanAdditonalAmountForBroker; set => SetField(ref _adjustedPlanAdditonalAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Adjusted Plan Additional Amount [LCP.X34]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Loan Officer Plan Details - Adjusted Plan Additional Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustedPlanAdditonalAmountForOfficer { get => _adjustedPlanAdditonalAmountForOfficer; set => SetField(ref _adjustedPlanAdditonalAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Adjusted Plan Amount [LCP.X13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Adjusted Plan Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustedPlanAmountForBroker { get => _adjustedPlanAmountForBroker; set => SetField(ref _adjustedPlanAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Adjusted Plan Amount [LCP.X35]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Loan Officer Plan Details - Adjusted Plan Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustedPlanAmountForOfficer { get => _adjustedPlanAmountForOfficer; set => SetField(ref _adjustedPlanAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Adjusted Plan Percentage [LCP.X11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_5, Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Adjusted Plan Percentage")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_5)]
         public decimal? AdjustedPlanRateForBroker { get => _adjustedPlanRateForBroker; set => SetField(ref _adjustedPlanRateForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Adjusted Plan Percentage [LCP.X33]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_5, Description = "Loan Compensation Plan - Loan Officer Plan Details - Adjusted Plan Percentage")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_5)]
         public decimal? AdjustedPlanRateForOfficer { get => _adjustedPlanRateForOfficer; set => SetField(ref _adjustedPlanRateForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Adjustment Description [LCP.X15]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Adjustment Description")]
         public string AdjustmentDescription { get => _adjustmentDescription; set => SetField(ref _adjustmentDescription, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Adjustment Description [LCP.X37]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Loan Officer Plan Details - Adjustment Description")]
         public string AdjustmentDescriptionForOfficer { get => _adjustmentDescriptionForOfficer; set => SetField(ref _adjustmentDescriptionForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Additional Amount [LCP.X7]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Additional Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanAdditonalAmountForBroker { get => _basePlanAdditonalAmountForBroker; set => SetField(ref _basePlanAdditonalAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Base Plan Additional Amount [LCP.X26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Loan Officer Plan Details - Base Plan Additional Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanAdditonalAmountForOfficer { get => _basePlanAdditonalAmountForOfficer; set => SetField(ref _basePlanAdditonalAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Amount [LCP.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanAmountForBroker { get => _basePlanAmountForBroker; set => SetField(ref _basePlanAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Base Plan Amount [LCP.X27]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Loan Officer Plan Details - Base Plan Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanAmountForOfficer { get => _basePlanAmountForOfficer; set => SetField(ref _basePlanAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Maximum Amount [LCP.X10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Maximum Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanMaximumAmountForBroker { get => _basePlanMaximumAmountForBroker; set => SetField(ref _basePlanMaximumAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Base Plan Maximum Amount [LCP.X29]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Loan Officer Plan Details - Base Plan Maximum Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanMaximumAmountForOfficer { get => _basePlanMaximumAmountForOfficer; set => SetField(ref _basePlanMaximumAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Minimum Amount [LCP.X9]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Minimum Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanMinimumAmountForBroker { get => _basePlanMinimumAmountForBroker; set => SetField(ref _basePlanMinimumAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Base Plan Minimum Amount [LCP.X28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Loan Officer Plan Details - Base Plan Minimum Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanMinimumAmountForOfficer { get => _basePlanMinimumAmountForOfficer; set => SetField(ref _basePlanMinimumAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Percentage [LCP.X6]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_5, Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Percentage")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_5)]
         public decimal? BasePlanRateForBroker { get => _basePlanRateForBroker; set => SetField(ref _basePlanRateForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Base Plan Percentage [LCP.X25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_5, Description = "Loan Compensation Plan - Loan Officer Plan Details - Base Plan Percentage")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_5)]
         public decimal? BasePlanRateForOfficer { get => _basePlanRateForOfficer; set => SetField(ref _basePlanRateForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Bonus Comp Additional Amount [LCP.X31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Loan Officer Plan Details - Bonus Comp Additional Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BonusCompAdditonalAmount { get => _bonusCompAdditonalAmount; set => SetField(ref _bonusCompAdditonalAmount, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Bonus Comp Amount [LCP.X32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Loan Officer Plan Details - Bonus Comp Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BonusCompAmount { get => _bonusCompAmount; set => SetField(ref _bonusCompAmount, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Bonus Comp Percentage [LCP.X30]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_5, Description = "Loan Compensation Plan - Loan Officer Plan Details - Bonus Comp Percentage")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_5)]
         public decimal? BonusCompRate { get => _bonusCompRate; set => SetField(ref _bonusCompRate, value); }
 
         /// <summary>
@@ -184,103 +182,90 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Compensation Plan - Last Applied Date [LCP.X20]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Loan Compensation Plan - Last Applied Date")]
+        [LoanFieldProperty(ReadOnly = true)]
         public DateTime? LastAppliedDate { get => _lastAppliedDate; set => SetField(ref _lastAppliedDate, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Last Applied Date and Time [LCP.X19]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Loan Compensation Plan - Last Applied Date and Time")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string LastAppliedDateTime { get => _lastAppliedDateTime; set => SetField(ref _lastAppliedDateTime, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Loan Amount Type [LCP.X17]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Loan Amount Type")]
         public StringEnumValue<LoanAmountType> LoanAmountType { get => _loanAmountType; set => SetField(ref _loanAmountType, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Loan Amount Type [LCP.X24]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Loan Officer Plan Details - Loan Amount Type")]
         public StringEnumValue<LoanAmountType> LoanAmountTypeForOfficer { get => _loanAmountTypeForOfficer; set => SetField(ref _loanAmountTypeForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Loan Originator ID [LCP.X18]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Loan Originator ID")]
         public string LoanOriginatorID { get => _loanOriginatorID; set => SetField(ref _loanOriginatorID, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Loan Officer ID [LCP.X38]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Loan Officer Plan Details - Loan Officer ID")]
         public string LoanOriginatorIDForOfficer { get => _loanOriginatorIDForOfficer; set => SetField(ref _loanOriginatorIDForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Loan Originator Name [LCP.X2]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Loan Originator Name")]
         public string LoanOriginatorName { get => _loanOriginatorName; set => SetField(ref _loanOriginatorName, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Loan Officer Name [LCP.X21]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Loan Officer Plan Details - Loan Officer Name")]
         public string LoanOriginatorNameForOfficer { get => _loanOriginatorNameForOfficer; set => SetField(ref _loanOriginatorNameForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Net Adjusted Amount [LCP.X14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Net Adjusted Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NetAdjustedAmountForBroker { get => _netAdjustedAmountForBroker; set => SetField(ref _netAdjustedAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Net Adjusted Amount [LCP.X36]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Loan Compensation Plan - Loan Officer Plan Details - Net Adjusted Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NetAdjustedAmountForOfficer { get => _netAdjustedAmountForOfficer; set => SetField(ref _netAdjustedAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Plan Date [LCP.X5]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Plan Date")]
         public DateTime? PlanDate { get => _planDate; set => SetField(ref _planDate, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Plan Name [LCP.X3]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Plan Name")]
         public string PlanName { get => _planName; set => SetField(ref _planName, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Plan Name [LCP.X22]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Loan Officer Plan Details - Plan Name")]
         public string PlanNameForOfficer { get => _planNameForOfficer; set => SetField(ref _planNameForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Rounding Method [LCP.X16]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Wholesale/Broker Plan Details - Rounding Method")]
         public StringEnumValue<RoundingMethod> RoundingMethod { get => _roundingMethod; set => SetField(ref _roundingMethod, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Rounding Method [LCP.X23]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Loan Officer Plan Details - Rounding Method")]
         public StringEnumValue<RoundingMethod> RoundingMethodForOfficer { get => _roundingMethodForOfficer; set => SetField(ref _roundingMethodForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Trigger Field [LCP.X4]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Trigger Field")]
         public string TriggerField { get => _triggerField; set => SetField(ref _triggerField, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Brrower/Lender Paid [LCP.X1]
         /// </summary>
-        [LoanFieldProperty(Description = "Loan Compensation Plan - Brrower/Lender Paid")]
         public StringEnumValue<WhoPaidCompensation> WhoPaidCompensation { get => _whoPaidCompensation; set => SetField(ref _whoPaidCompensation, value); }
     }
 }

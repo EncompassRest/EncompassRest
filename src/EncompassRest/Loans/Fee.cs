@@ -54,7 +54,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Interest Per Day [333]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_4, ReadOnly = true, Description = "Fees Interest Per Day")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_4, ReadOnly = true)]
         public decimal? AmountPerDay { get => _amountPerDay; set => SetField(ref _amountPerDay, value); }
 
         /// <summary>
@@ -66,19 +66,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Interest From [L244]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Interest From")]
         public DateTime? DateFrom { get => _dateFrom; set => SetField(ref _dateFrom, value); }
 
         /// <summary>
         /// Fees Interest To [L245]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Interest To")]
         public DateTime? DateTo { get => _dateTo; set => SetField(ref _dateTo, value); }
 
         /// <summary>
         /// Fees Interest # of Days [332]
         /// </summary>
-        [LoanFieldProperty(Description = "Fees Interest # of Days")]
         public int? Days { get => _days; set => SetField(ref _days, value); }
 
         /// <summary>
@@ -125,7 +122,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Line 1109 Lender's Coverage Amount [2409]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Line 1109 Lender's Coverage Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderCoverage { get => _lenderCoverage; set => SetField(ref _lenderCoverage, value); }
 
         /// <summary>
@@ -153,7 +150,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Line 1110 Owner's Coverage Amount [2410]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Line 1110 Owner's Coverage Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OwnerCoverage { get => _ownerCoverage; set => SetField(ref _ownerCoverage, value); }
 
         /// <summary>
@@ -208,7 +205,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Recording Fee Releases Amount [2404]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Fees Recording Fee Releases Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReleasesAmount { get => _releasesAmount; set => SetField(ref _releasesAmount, value); }
 
         /// <summary>
@@ -220,13 +217,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Unrounded and Truncated Fees Interest Per Day [335]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Unrounded and Truncated Fees Interest Per Day")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TruncatedAmountPerDay { get => _truncatedAmountPerDay; set => SetField(ref _truncatedAmountPerDay, value); }
 
         /// <summary>
         /// Number of Decimals for Fees Interest # of Days [SYS.X8]
         /// </summary>
-        [LoanFieldProperty(Description = "Number of Decimals for Fees Interest # of Days")]
         public bool? Use4Decimals { get => _use4Decimals; set => SetField(ref _use4Decimals, value); }
     }
 }

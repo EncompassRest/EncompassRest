@@ -22,7 +22,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// TQL Documents Delivered to Investor [TQLDOCDATENN01]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL Documents Delivered to Investor")]
         public DateTime? TQLDocumentDeliveredDate { get => _tQLDocumentDeliveredDate; set => SetField(ref _tQLDocumentDeliveredDate, value); }
     }
 }

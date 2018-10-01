@@ -50,43 +50,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Affiliated Business Arrangements - Affiliate Name [ABNN06]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Affiliate Name")]
         public string AffiliateName { get => _affiliateName; set => SetField(ref _affiliateName, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 1 [ABNN16]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Charge or Range of Charges Line 1")]
         public string ChargeRangeChargesDescription1 { get => _chargeRangeChargesDescription1; set => SetField(ref _chargeRangeChargesDescription1, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 2 [ABNN17]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Charge or Range of Charges Line 2")]
         public string ChargeRangeChargesDescription2 { get => _chargeRangeChargesDescription2; set => SetField(ref _chargeRangeChargesDescription2, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 3 [ABNN18]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Charge or Range of Charges Line 3")]
         public string ChargeRangeChargesDescription3 { get => _chargeRangeChargesDescription3; set => SetField(ref _chargeRangeChargesDescription3, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 4 [ABNN19]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Charge or Range of Charges Line 4")]
         public string ChargeRangeChargesDescription4 { get => _chargeRangeChargesDescription4; set => SetField(ref _chargeRangeChargesDescription4, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 5 [ABNN20]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Charge or Range of Charges Line 5")]
         public string ChargeRangeChargesDescription5 { get => _chargeRangeChargesDescription5; set => SetField(ref _chargeRangeChargesDescription5, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 6 [ABNN21]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Charge or Range of Charges Line 6")]
         public string ChargeRangeChargesDescription6 { get => _chargeRangeChargesDescription6; set => SetField(ref _chargeRangeChargesDescription6, value); }
 
         /// <summary>
@@ -97,127 +90,108 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Affiliated Business Arrangements - Lender's Address [ABNN02]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Lender's Address")]
         public string LenderAddress { get => _lenderAddress; set => SetField(ref _lenderAddress, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Lender's Address City [ABNN03]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Lender's Address City")]
         public string LenderAddressCity { get => _lenderAddressCity; set => SetField(ref _lenderAddressCity, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Lender's Address State [ABNN04]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Lender's Address State")]
         public StringEnumValue<State> LenderAddressState { get => _lenderAddressState; set => SetField(ref _lenderAddressState, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Lender's Address Zipcode [ABNN05]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Affiliated Business Arrangements - Lender's Address Zipcode")]
+        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string LenderAddressZipcode { get => _lenderAddressZipcode; set => SetField(ref _lenderAddressZipcode, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Lender Name [ABNN01]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Lender Name")]
         public string LenderName { get => _lenderName; set => SetField(ref _lenderName, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Nature of Relationship [ABNN07]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Nature of Relationship")]
         public string NatureOfRelationship { get => _natureOfRelationship; set => SetField(ref _natureOfRelationship, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Percentage of Ownership Interest [ABNN28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Affiliated Business Arrangements - Percentage of Ownership Interest")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PercentOwnershipInterest { get => _percentOwnershipInterest; set => SetField(ref _percentOwnershipInterest, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Purchase/Sale/Refinance Indicator [ABNN09]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Purchase/Sale/Refinance Indicator")]
         public bool? PurchaseSaleRefinanceIndicator { get => _purchaseSaleRefinanceIndicator; set => SetField(ref _purchaseSaleRefinanceIndicator, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Required Use Indicator Line 1 [ABNN22]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Required Use Indicator Line 1")]
         public bool? RequiredUseIndicator1 { get => _requiredUseIndicator1; set => SetField(ref _requiredUseIndicator1, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Required Use Indicator Line 2 [ABNN23]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Required Use Indicator Line 2")]
         public bool? RequiredUseIndicator2 { get => _requiredUseIndicator2; set => SetField(ref _requiredUseIndicator2, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Required Use Indicator Line 3 [ABNN24]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Required Use Indicator Line 3")]
         public bool? RequiredUseIndicator3 { get => _requiredUseIndicator3; set => SetField(ref _requiredUseIndicator3, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Required Use Indicator Line 4 [ABNN25]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Required Use Indicator Line 4")]
         public bool? RequiredUseIndicator4 { get => _requiredUseIndicator4; set => SetField(ref _requiredUseIndicator4, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Required Use Indicator Line 5 [ABNN26]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Required Use Indicator Line 5")]
         public bool? RequiredUseIndicator5 { get => _requiredUseIndicator5; set => SetField(ref _requiredUseIndicator5, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Required Use Indicator Line 6 [ABNN27]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Required Use Indicator Line 6")]
         public bool? RequiredUseIndicator6 { get => _requiredUseIndicator6; set => SetField(ref _requiredUseIndicator6, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 1 [ABNN10]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Service Description Line 1")]
         public string ServiceDescription1 { get => _serviceDescription1; set => SetField(ref _serviceDescription1, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 2 [ABNN11]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Service Description Line 2")]
         public string ServiceDescription2 { get => _serviceDescription2; set => SetField(ref _serviceDescription2, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 3 [ABNN12]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Service Description Line 3")]
         public string ServiceDescription3 { get => _serviceDescription3; set => SetField(ref _serviceDescription3, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 4 [ABNN13]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Service Description Line 4")]
         public string ServiceDescription4 { get => _serviceDescription4; set => SetField(ref _serviceDescription4, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 5 [ABNN14]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Service Description Line 5")]
         public string ServiceDescription5 { get => _serviceDescription5; set => SetField(ref _serviceDescription5, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 6 [ABNN15]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Service Description Line 6")]
         public string ServiceDescription6 { get => _serviceDescription6; set => SetField(ref _serviceDescription6, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Settlement Indicator [ABNN08]
         /// </summary>
-        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Settlement Indicator")]
         public bool? SettlementIndicator { get => _settlementIndicator; set => SetField(ref _settlementIndicator, value); }
     }
 }

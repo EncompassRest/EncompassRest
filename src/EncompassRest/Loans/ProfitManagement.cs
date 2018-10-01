@@ -27,61 +27,57 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Profit Mgt Commissionable Gross Profit [PM10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Profit Mgt Commissionable Gross Profit")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? CommissionableGrossProfit { get => _commissionableGrossProfit; set => SetField(ref _commissionableGrossProfit, value); }
 
         /// <summary>
         /// Profit Mgt Expenses 1 Amt [PM03]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Profit Mgt Expenses 1 Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExpenseAmount1 { get => _expenseAmount1; set => SetField(ref _expenseAmount1, value); }
 
         /// <summary>
         /// Profit Mgt Expenses 2 Amt [PM05]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Profit Mgt Expenses 2 Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExpenseAmount2 { get => _expenseAmount2; set => SetField(ref _expenseAmount2, value); }
 
         /// <summary>
         /// Profit Mgt Expenses 3 Amt [PM07]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Profit Mgt Expenses 3 Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExpenseAmount3 { get => _expenseAmount3; set => SetField(ref _expenseAmount3, value); }
 
         /// <summary>
         /// Profit Mgt Expenses 4 Amt [PM09]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Profit Mgt Expenses 4 Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExpenseAmount4 { get => _expenseAmount4; set => SetField(ref _expenseAmount4, value); }
 
         /// <summary>
         /// Profit Mgt Expenses 1 [PM02]
         /// </summary>
-        [LoanFieldProperty(Description = "Profit Mgt Expenses 1")]
         public string ExpenseDescription1 { get => _expenseDescription1; set => SetField(ref _expenseDescription1, value); }
 
         /// <summary>
         /// Profit Mgt Expenses 2 [PM04]
         /// </summary>
-        [LoanFieldProperty(Description = "Profit Mgt Expenses 2")]
         public string ExpenseDescription2 { get => _expenseDescription2; set => SetField(ref _expenseDescription2, value); }
 
         /// <summary>
         /// Profit Mgt Expenses 3 [PM06]
         /// </summary>
-        [LoanFieldProperty(Description = "Profit Mgt Expenses 3")]
         public string ExpenseDescription3 { get => _expenseDescription3; set => SetField(ref _expenseDescription3, value); }
 
         /// <summary>
         /// Profit Mgt Expenses 4 [PM08]
         /// </summary>
-        [LoanFieldProperty(Description = "Profit Mgt Expenses 4")]
         public string ExpenseDescription4 { get => _expenseDescription4; set => SetField(ref _expenseDescription4, value); }
 
         /// <summary>
         /// Profit Mgt Gross Check Amt [PM01]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Profit Mgt Gross Check Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GrossCheckAmount { get => _grossCheckAmount; set => SetField(ref _grossCheckAmount, value); }
 
         /// <summary>
@@ -92,7 +88,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Profit Mgt Net Profit [PM28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Profit Mgt Net Profit")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? NetProfit { get => _netProfit; set => SetField(ref _netProfit, value); }
 
         /// <summary>

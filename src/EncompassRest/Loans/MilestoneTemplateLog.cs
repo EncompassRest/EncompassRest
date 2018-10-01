@@ -31,13 +31,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Milestone Dates Mode [3670]
         /// </summary>
-        [LoanFieldProperty(Description = "Milestone Dates Mode")]
         public bool? IsTemplateDatesLocked { get => _isTemplateDatesLocked; set => SetField(ref _isTemplateDatesLocked, value); }
 
         /// <summary>
         /// Milestones List Lock [3669]
         /// </summary>
-        [LoanFieldProperty(Description = "Milestones List Lock")]
         public bool? IsTemplateLocked { get => _isTemplateLocked; set => SetField(ref _isTemplateLocked, value); }
 
         /// <summary>

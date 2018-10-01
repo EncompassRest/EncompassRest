@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Elli.Api.Loans.Model;
@@ -14,7 +15,6 @@ using EncompassRest.Tests;
 using EnumsNET;
 using EnumsNET.NonGeneric;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace EncompassRest
 {
@@ -204,7 +204,18 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_ignoredEntities = new HashSet<string> { "NonBorrowingOwnerContract" };
 
-        public static async Task Main(string[] args)
+        private static readonly string s_encompassSDKFolder = Path.Combine(Directory.EnumerateDirectories("C:\\SmartClientCache\\Apps\\UAC\\Ellie Mae\\").First(), "Encompass360");
+
+        public static Task Main(string[] args)
+        {
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+
+            return RunAsync(args);
+        }
+
+        private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args) => Assembly.LoadFrom(Path.Combine(s_encompassSDKFolder, $"{args.Name.Substring(0, args.Name.IndexOf(","))}.dll"));
+
+        public static async Task RunAsync(string[] args)
         {
             try
             {
@@ -249,11 +260,11 @@ namespace EncompassRest
                 Directory.CreateDirectory(destinationPath);
 
                 var loanEntitySchema = entityTypes["Loan"];
-                var fields = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-                var fieldPatterns = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+                var fields = new Dictionary<string, LoanFieldDescriptors.StandardFieldInfo>(StringComparer.OrdinalIgnoreCase);
+                var fieldPatterns = new Dictionary<string, LoanFieldDescriptors.StandardFieldInfo>(StringComparer.OrdinalIgnoreCase)
                 {
-                    { "CX.{0}", "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue" },
-                    { "CUST{0:00}FV", "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue" }
+                    { "CX.{0}", new LoanFieldDescriptors.StandardFieldInfo { FieldId = "CX.{0}", ModelPath = "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue" } },
+                    { "CUST{0:00}FV", new LoanFieldDescriptors.StandardFieldInfo { FieldId = "CUST{0:00}FV", ModelPath = "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue" } }
                 };
 
                 var otherEnums = new Dictionary<string, Dictionary<string, string>>();
@@ -272,25 +283,15 @@ namespace EncompassRest
                     }
                 }
 
-                var orderedFields = fields.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOfAny(new[] { '.', '[' }))).ThenBy(p => p.Value).ToList();
-                fields = new Dictionary<string, string>();
-                foreach (var pair in orderedFields)
-                {
-                    fields[pair.Key] = pair.Value;
-                }
+                var orderedFields = fields.Values.OrderBy(p => p.ModelPath.Substring(0, p.ModelPath.LastIndexOfAny(new[] { '.', '[' }))).ThenBy(p => p.ModelPath).ToList();
 
-                var orderedFieldPatterns = fieldPatterns.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOf('.'))).ThenBy(p => p.Value).ToList();
-                fieldPatterns = new Dictionary<string, string>();
-                foreach (var pair in orderedFieldPatterns)
-                {
-                    fieldPatterns[pair.Key] = pair.Value;
-                }
+                var orderedFieldPatterns = fieldPatterns.Values.OrderBy(p => p.ModelPath.Substring(0, p.ModelPath.LastIndexOf('.'))).ThenBy(p => p.ModelPath).ToList();
 
                 using (var fs = new FileStream("LoanFields.json", FileMode.Create))
                 {
                     using (var sw = new StreamWriter(fs))
                     {
-                        JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, fields);
+                        JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, orderedFields);
                     }
                 }
 
@@ -298,7 +299,62 @@ namespace EncompassRest
                 {
                     using (var sw = new StreamWriter(fs))
                     {
-                        JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, fieldPatterns);
+                        JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, orderedFieldPatterns);
+                    }
+                }
+
+                var virtualFields = new List<LoanFieldDescriptors.VirtualFieldInfo>();
+                var virtualFieldPatterns = new List<LoanFieldDescriptors.VirtualFieldInfo>();
+                foreach (var virtualField in EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.VirtualFields.Cast<EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptor>())
+                {
+                    var virtualFieldInfo = new LoanFieldDescriptors.VirtualFieldInfo { Format = (LoanFieldFormat)virtualField.Format };
+                    if (virtualField.Options.Count > 0)
+                    {
+                        virtualFieldInfo.Options = new List<FieldOption>();
+                        foreach (var option in virtualField.Options.Cast<EllieMae.Encompass.BusinessObjects.Loans.FieldOption>())
+                        {
+                            virtualFieldInfo.Options.Add(new FieldOption(option.Value, option.Text));
+                        }
+                    }
+                    if (virtualField.MultiInstance)
+                    {
+                        virtualFieldInfo.FieldId = $"{virtualField.FieldID}.{{0}}";
+                        var instanceField = virtualField.GetInstanceDescriptor(virtualField.InstanceSpecifierType == EllieMae.Encompass.BusinessObjects.Loans.MultiInstanceSpecifierType.Index ? (object)1 : "1");
+                        var instanceFieldId = instanceField.FieldID;
+                        var instanceFieldId2 = string.Format(virtualFieldInfo.FieldId, 1);
+                        if (instanceFieldId != instanceFieldId2)
+                        {
+                            Console.WriteLine($"{instanceFieldId} != {instanceFieldId2}");
+                        }
+                        var description = instanceField.Description;
+                        description = description.Replace(" - 1", " - {0}");
+                        virtualFieldInfo.Description = description;
+                        virtualFieldPatterns.Add(virtualFieldInfo);
+                    }
+                    else
+                    {
+                        virtualFieldInfo.FieldId = virtualField.FieldID;
+                        virtualFieldInfo.Description = virtualField.Description;
+                        virtualFields.Add(virtualFieldInfo);
+                    }
+                }
+
+                var orderedVirtualFields = virtualFields.OrderBy(v => v.FieldId).ToList();
+                var orderedVirtualFieldPatterns = virtualFieldPatterns.OrderBy(v => v.FieldId).ToList();
+
+                using (var fs = new FileStream("VirtualFields.json", FileMode.Create))
+                {
+                    using (var sw = new StreamWriter(fs))
+                    {
+                        JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, orderedVirtualFields);
+                    }
+                }
+
+                using (var fs = new FileStream("VirtualFieldPatterns.json", FileMode.Create))
+                {
+                    using (var sw = new StreamWriter(fs))
+                    {
+                        JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, orderedVirtualFieldPatterns);
                     }
                 }
 
@@ -311,45 +367,25 @@ namespace EncompassRest
                         var loanFieldsEntry = zip.CreateEntry("LoanFields.json", CompressionLevel.Optimal);
                         using (var sw = new StreamWriter(loanFieldsEntry.Open()))
                         {
-                            serializer.Serialize(sw, fields);
+                            serializer.Serialize(sw, orderedFields);
                         }
 
                         var loanFieldPatternsEntry = zip.CreateEntry("LoanFieldPatterns.json", CompressionLevel.Optimal);
                         using (var sw = new StreamWriter(loanFieldPatternsEntry.Open()))
                         {
-                            serializer.Serialize(sw, fieldPatterns);
+                            serializer.Serialize(sw, orderedFieldPatterns);
                         }
 
                         var virtualFieldsEntry = zip.CreateEntry("VirtualFields.json", CompressionLevel.Optimal);
                         using (var sw = new StreamWriter(virtualFieldsEntry.Open()))
                         {
-                            using (var virtualFieldsFs = new FileStream("VirtualFields.json", FileMode.Open))
-                            {
-                                using (var sr = new StreamReader(virtualFieldsFs))
-                                {
-                                    using (var jr = new JsonTextReader(sr))
-                                    {
-                                        var virtualFields = serializer.Deserialize<JArray>(jr);
-                                        serializer.Serialize(sw, virtualFields);
-                                    }
-                                }
-                            }
+                            serializer.Serialize(sw, orderedVirtualFields);
                         }
 
                         var virtualFieldPatternsEntry = zip.CreateEntry("VirtualFieldPatterns.json", CompressionLevel.Optimal);
                         using (var sw = new StreamWriter(virtualFieldPatternsEntry.Open()))
                         {
-                            using (var virtualFieldPatternsFs = new FileStream("VirtualFieldPatterns.json", FileMode.Open))
-                            {
-                                using (var sr = new StreamReader(virtualFieldPatternsFs))
-                                {
-                                    using (var jr = new JsonTextReader(sr))
-                                    {
-                                        var virtualFieldPatterns = serializer.Deserialize<JArray>(jr);
-                                        serializer.Serialize(sw, virtualFieldPatterns);
-                                    }
-                                }
-                            }
+                            serializer.Serialize(sw, orderedVirtualFieldPatterns);
                         }
                     }
                 }
@@ -392,7 +428,7 @@ namespace EncompassRest
             Console.ReadLine();
         }
 
-        private static void PopulateFieldMappings(string destinationPath, string @namespace, string entityName, string currentPath, Type ellieType, EntitySchema entitySchema, EntitySchema previousEntitySchema, Dictionary<string, EntitySchema> entityTypes, Dictionary<string, string> fields, Dictionary<string, string> fieldPatterns, Dictionary<string, Dictionary<string, string>> otherEnums)
+        private static void PopulateFieldMappings(string destinationPath, string @namespace, string entityName, string currentPath, Type ellieType, EntitySchema entitySchema, EntitySchema previousEntitySchema, Dictionary<string, EntitySchema> entityTypes, Dictionary<string, LoanFieldDescriptors.StandardFieldInfo> fields, Dictionary<string, LoanFieldDescriptors.StandardFieldInfo> fieldPatterns, Dictionary<string, Dictionary<string, string>> otherEnums)
         {
             var requiredProperties = new HashSet<string>();
             var serializeWholeList = false;
@@ -401,11 +437,23 @@ namespace EncompassRest
             {
                 var propertyName = pair.Key;
                 var propertySchema = pair.Value;
+                var description = propertySchema.Description;
                 var ellieProperty = ellieType?.GetProperty(propertyName);
                 var elliePropertyType = ellieProperty?.PropertyType;
-                if (!string.IsNullOrEmpty(propertySchema.FieldId))
+                var fieldId = propertySchema.FieldId;
+                if (!string.IsNullOrEmpty(fieldId))
                 {
-                    fields.Add(propertySchema.FieldId, $"{currentPath}.{propertyName}");
+                    if (string.IsNullOrEmpty(description))
+                    {
+                        try
+                        {
+                            description = EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId].Description;
+                        }
+                        catch
+                        {
+                        }
+                    }
+                    fields.Add(fieldId, new LoanFieldDescriptors.StandardFieldInfo { FieldId = fieldId, ModelPath = $"{currentPath}.{propertyName}", Description = description });
                 }
                 else if (propertySchema.Type == PropertySchemaType.Entity && entityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
                 {
@@ -439,7 +487,15 @@ namespace EncompassRest
                     {
                         foreach (var fieldInstancePair in propertySchema.FieldInstances)
                         {
-                            var fieldId = fieldInstancePair.Key;
+                            fieldId = fieldInstancePair.Key;
+                            try
+                            {
+                                description = EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId].Description;
+                            }
+                            catch
+                            {
+                            }
+                            string modelPath = null;
                             if (fieldInstancePair.Value.Count != 1)
                             {
                                 Console.WriteLine($"There must be just one field instance value for {fieldId}");
@@ -447,7 +503,7 @@ namespace EncompassRest
                             var fieldInstancePath = fieldInstancePair.Value[0];
                             if (fieldInstancePath == "Borrower" || fieldInstancePath == "Coborrower")
                             {
-                                fields.Add(fieldId, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{fieldInstancePath}.{propertyName}");
+                                modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{fieldInstancePath}.{propertyName}";
                             }
                             else
                             {
@@ -468,7 +524,7 @@ namespace EncompassRest
                                                 Console.WriteLine($"There must be just one int list instance value for {fieldInstancePath}");
                                             }
                                             serializeWholeList = true;
-                                            fields.Add(fieldId, $"{currentPath}[{intListInstance[0]}].{propertyName}");
+                                            modelPath = $"{currentPath}[{intListInstance[0]}].{propertyName}";
                                             break;
                                         case StringListInstance stringListInstance:
                                             foreach (var (s, i) in stringListInstance.Select((s, i) => (s, i)))
@@ -489,7 +545,7 @@ namespace EncompassRest
                                                 }
                                             }
 
-                                            fields.Add(fieldId, $"{currentPath}[({string.Join(" && ", stringListInstance.Select((s, i) => (s, i)).Where(t => !string.IsNullOrEmpty(t.s)).Select(t => $"{listPropertySchema.KeyProperties[t.i]} == '{t.s}'"))})].{propertyName}");
+                                            modelPath = $"{currentPath}[({string.Join(" && ", stringListInstance.Select((s, i) => (s, i)).Where(t => !string.IsNullOrEmpty(t.s)).Select(t => $"{listPropertySchema.KeyProperties[t.i]} == '{t.s}'"))})].{propertyName}";
                                             break;
                                         case StringDictionaryInstance stringDictionaryInstance:
                                             foreach (var p in stringDictionaryInstance)
@@ -510,7 +566,7 @@ namespace EncompassRest
                                                 }
                                             }
 
-                                            fields.Add(fieldId, $"{currentPath}[({string.Join(" && ", stringDictionaryInstance.Select(p => $"{p.Key} == '{p.Value}'"))})].{propertyName}");
+                                            modelPath = $"{currentPath}[({string.Join(" && ", stringDictionaryInstance.Select(p => $"{p.Key} == '{p.Value}'"))})].{propertyName}";
                                             break;
                                         default:
                                             Console.WriteLine($"Bad instance type for {fieldInstancePath}");
@@ -549,9 +605,10 @@ namespace EncompassRest
                                         }
                                     }
 
-                                    fields.Add(fieldId, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{index}].{propertyName}");
+                                    modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{index}].{propertyName}";
                                 }
                             }
+                            fields.Add(fieldId, new LoanFieldDescriptors.StandardFieldInfo { FieldId = fieldId, Description = description, ModelPath = modelPath });
                         }
                     }
                     if (propertySchema.FieldPatterns != null)
@@ -597,7 +654,20 @@ namespace EncompassRest
                                     }
                                 }
 
-                                fieldPatterns.Add(fieldPattern.StartsWith("NBOCNB") ? fieldPattern.Replace("NBOCNB", "NBOC{0:00}") : fieldPattern.Replace("NN", "{0:00}"), $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}");
+                                fieldId = fieldPattern.StartsWith("NBOCNB") ? fieldPattern.Replace("NBOCNB", "NBOC{0:00}") : fieldPattern.Replace("NN", "{0:00}");
+
+                                try
+                                {
+                                    description = EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[string.Format(fieldId, 1)].Description;
+                                    description = description.Replace(" #11", " #{0}").Replace(" #1", " #{0}");
+                                }
+                                catch
+                                {
+                                }
+
+                                var modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}";
+
+                                fieldPatterns.Add(fieldId, new LoanFieldDescriptors.StandardFieldInfo { FieldId = fieldId, Description = description, ModelPath = modelPath });
                             }
                         }
                     }
@@ -687,10 +757,6 @@ namespace {@namespace}
                     if (propertySchema.ReadOnly == true)
                     {
                         attributeProperties.Add($"ReadOnly = true");
-                    }
-                    if (!string.IsNullOrEmpty(propertySchema.Description))
-                    {
-                        attributeProperties.Add($@"Description = ""{propertySchema.Description.Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                     }
                     var propertyType = GetPropertyOrElementType(entityName, propertyName, propertySchema, out var isEntity, out var isList);
                     if (s_explicitStringEnumValues.TryGetValue(entityPropertyName, out var enumName))

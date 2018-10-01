@@ -25,19 +25,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// TQL - Compliance Orders - Last Alert Categories [TQLCOMPLIANCEALERTNN01]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Compliance Orders - Last Alert Categories")]
         public string LastComplianceOrderAlertCategories { get => _lastComplianceOrderAlertCategories; set => SetField(ref _lastComplianceOrderAlertCategories, value); }
 
         /// <summary>
         /// TQL - Compliance Orders - Last Alert Message [TQLCOMPLIANCEALERTNN03]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Compliance Orders - Last Alert Message")]
         public string LastComplianceOrderAlertMessage { get => _lastComplianceOrderAlertMessage; set => SetField(ref _lastComplianceOrderAlertMessage, value); }
 
         /// <summary>
         /// TQL - Compliance Orders - Last Alert Category Result [TQLCOMPLIANCEALERTNN02]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Compliance Orders - Last Alert Category Result")]
         public string LastComplianceOrderDescriptionOfAlerts { get => _lastComplianceOrderDescriptionOfAlerts; set => SetField(ref _lastComplianceOrderDescriptionOfAlerts, value); }
 
         /// <summary>

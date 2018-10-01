@@ -233,559 +233,514 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Borr Accept [FLMTGCM.X10]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Borr Accept", OptionsJson = "{\"true\":\"The date by which the commitment must be accepted by the borrower is\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"The date by which the commitment must be accepted by the borrower is\"}")]
         public bool? AcceptedByBorrowerIndicator { get => _acceptedByBorrowerIndicator; set => SetField(ref _acceptedByBorrowerIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Accept Date [FLMTGCM.X11]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Borr Accept Date")]
         public DateTime? AcceptedDate { get => _acceptedDate; set => SetField(ref _acceptedDate, value); }
 
         /// <summary>
         /// Disclosure-TX Act Descr 1 [DISCLOSURE.X77]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Act Descr 1")]
         public string ActingOtherDescription1 { get => _actingOtherDescription1; set => SetField(ref _actingOtherDescription1, value); }
 
         /// <summary>
         /// Disclosure-TX Act Descr 2 [DISCLOSURE.X78]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Act Descr 2")]
         public string ActingOtherDescription2 { get => _actingOtherDescription2; set => SetField(ref _actingOtherDescription2, value); }
 
         /// <summary>
         /// Disclosure-TX Act as Follows [DISCLOSURE.X76]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Act as Follows", OptionsJson = "{\"true\":\"We will be acting as follows:\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"We will be acting as follows:\"}")]
         public bool? ActingOthersIndicator { get => _actingOthersIndicator; set => SetField(ref _actingOthersIndicator, value); }
 
         /// <summary>
         /// Disclosure-AZ Advance Fee Agreement In Effect Number Of Days [DISCLOSURE.X915]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-AZ Advance Fee Agreement In Effect Number Of Days")]
         public int? AdvFeeAgmtInEfctNumDay { get => _advFeeAgmtInEfctNumDay; set => SetField(ref _advFeeAgmtInEfctNumDay, value); }
 
         /// <summary>
         /// Disclosure-NY Acknowledge 1 [DISCLOSURE.X105]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Acknowledge 1")]
         public string AdvisoryCondition1 { get => _advisoryCondition1; set => SetField(ref _advisoryCondition1, value); }
 
         /// <summary>
         /// Disclosure-NY Acknowledge 2 [DISCLOSURE.X106]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Acknowledge 2")]
         public string AdvisoryCondition2 { get => _advisoryCondition2; set => SetField(ref _advisoryCondition2, value); }
 
         /// <summary>
         /// Disclosure-NY Acknowledge 3 [DISCLOSURE.X107]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Acknowledge 3")]
         public string AdvisoryCondition3 { get => _advisoryCondition3; set => SetField(ref _advisoryCondition3, value); }
 
         /// <summary>
         /// Disclosure-NY Acknowledge 4 [DISCLOSURE.X108]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Acknowledge 4")]
         public string AdvisoryCondition4 { get => _advisoryCondition4; set => SetField(ref _advisoryCondition4, value); }
 
         /// <summary>
         /// Disclosure - AK - Amended Acquisition Cost [DISCLOSURE.X974]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure - AK - Amended Acquisition Cost")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmendedAcquisitionCost { get => _amendedAcquisitionCost; set => SetField(ref _amendedAcquisitionCost, value); }
 
         /// <summary>
         /// Disclosure-NY Application Date [DISCLOSURE.X172]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Application Date")]
         public DateTime? ApplicationDate { get => _applicationDate; set => SetField(ref _applicationDate, value); }
 
         /// <summary>
         /// Disclosure-TX Appraisal Fee Descr [DISCLOSURE.X84]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Appraisal Fee Descr")]
         public string AppraisalContact { get => _appraisalContact; set => SetField(ref _appraisalContact, value); }
 
         /// <summary>
         /// Disclosure-FL Appraisal Fee [DISCLOSURE.X69]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Appraisal Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AppraisalDeposit { get => _appraisalDeposit; set => SetField(ref _appraisalDeposit, value); }
 
         /// <summary>
         /// Disclosure - AK - Areas [DISCLOSURE.X960]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - AK - Areas")]
         public StringEnumValue<Areas> Areas { get => _areas; set => SetField(ref _areas, value); }
 
         /// <summary>
         /// Disclosure-TX Role - Attorney [DISCLOSURE.X99]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Role - Attorney", OptionsJson = "{\"true\":\"as an attorney for\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"as an attorney for\"}")]
         public bool? AsAttorneyIndicator { get => _asAttorneyIndicator; set => SetField(ref _asAttorneyIndicator, value); }
 
         /// <summary>
         /// Disclosure-TX Role - RE Broker/Agent [DISCLOSURE.X95]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Role - RE Broker/Agent", OptionsJson = "{\"true\":\"as a real estate broker, agent, or salesperson for\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"as a real estate broker, agent, or salesperson for\"}")]
         public bool? AsRealBrokerIndicator { get => _asRealBrokerIndicator; set => SetField(ref _asRealBrokerIndicator, value); }
 
         /// <summary>
         /// Disclosure-TX Attorney for Buyer [DISCLOSURE.X101]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Attorney for Buyer", OptionsJson = "{\"true\":\"you (the buyer)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"you (the buyer)\"}")]
         public bool? AttorneyForTheBuyerIndicator { get => _attorneyForTheBuyerIndicator; set => SetField(ref _attorneyForTheBuyerIndicator, value); }
 
         /// <summary>
         /// Disclosure-TX Attorney for Buyer/Seller [DISCLOSURE.X102]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Attorney for Buyer/Seller", OptionsJson = "{\"true\":\"the lender\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"the lender\"}")]
         public bool? AttorneyForTheLenderIndicator { get => _attorneyForTheLenderIndicator; set => SetField(ref _attorneyForTheLenderIndicator, value); }
 
         /// <summary>
         /// Disclosure-TX Attorney for Seller [DISCLOSURE.X100]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Attorney for Seller", OptionsJson = "{\"true\":\"the seller\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"the seller\"}")]
         public bool? AttorneyForTheSellerIndicator { get => _attorneyForTheSellerIndicator; set => SetField(ref _attorneyForTheSellerIndicator, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document Description 1 [DISCLOSURE.X917]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-AZ AZ Complete Blank Spaces Document Description 1")]
         public string AZCmplBlankSpcsDoc1BlankFldDesc1 { get => _aZCmplBlankSpcsDoc1BlankFldDesc1; set => SetField(ref _aZCmplBlankSpcsDoc1BlankFldDesc1, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document Description 2 [DISCLOSURE.X919]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-AZ AZ Complete Blank Spaces Document Description 2")]
         public string AZCmplBlankSpcsDoc1BlankFldDesc2 { get => _aZCmplBlankSpcsDoc1BlankFldDesc2; set => SetField(ref _aZCmplBlankSpcsDoc1BlankFldDesc2, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document Description 3 [DISCLOSURE.X921]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-AZ AZ Complete Blank Spaces Document Description 3")]
         public string AZCmplBlankSpcsDoc1BlankFldDesc3 { get => _aZCmplBlankSpcsDoc1BlankFldDesc3; set => SetField(ref _aZCmplBlankSpcsDoc1BlankFldDesc3, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document 1 [DISCLOSURE.X916]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-AZ AZ Complete Blank Spaces Document 1")]
         public string AZCmplBlankSpcsDoc1Nm { get => _aZCmplBlankSpcsDoc1Nm; set => SetField(ref _aZCmplBlankSpcsDoc1Nm, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document 2 [DISCLOSURE.X918]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-AZ AZ Complete Blank Spaces Document 2")]
         public string AZCmplBlankSpcsDoc2Nm { get => _aZCmplBlankSpcsDoc2Nm; set => SetField(ref _aZCmplBlankSpcsDoc2Nm, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document 3 [DISCLOSURE.X920]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-AZ AZ Complete Blank Spaces Document 3")]
         public string AZCmplBlankSpcsDoc3Nm { get => _aZCmplBlankSpcsDoc3Nm; set => SetField(ref _aZCmplBlankSpcsDoc3Nm, value); }
 
         /// <summary>
         /// Disclosure-TX Compensated Based on Others Description [DISCLOSURE.X909]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Compensated Based on Others Description")]
         public string BasedOnOthersDescription { get => _basedOnOthersDescription; set => SetField(ref _basedOnOthersDescription, value); }
 
         /// <summary>
         /// Disclosure-TX Compensated Based on Others [DISCLOSURE.X908]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Compensated Based on Others")]
         public bool? BasedOnOthersIndicator { get => _basedOnOthersIndicator; set => SetField(ref _basedOnOthersIndicator, value); }
 
         /// <summary>
         /// Disclosure-TX Compensated Wholesale Options [DISCLOSURE.X80]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Compensated Wholesale Options", OptionsJson = "{\"true\":\"Our pricing for your loan is based upon current wholesale options available to us\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Our pricing for your loan is based upon current wholesale options available to us\"}")]
         public bool? BasedOnWholesaleOptionsIndicator { get => _basedOnWholesaleOptionsIndicator; set => SetField(ref _basedOnWholesaleOptionsIndicator, value); }
 
         /// <summary>
         /// Disclosure- CA Borrower Elects To Establish Escrow Account Amount [DISCLOSURE.X914]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure- CA Borrower Elects To Establish Escrow Account Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorrowerElectsEstablishEscrowAmount { get => _borrowerElectsEstablishEscrowAmount; set => SetField(ref _borrowerElectsEstablishEscrowAmount, value); }
 
         /// <summary>
         /// Disclosure- CA Borrower Elects To Establish Escrow Account Indicator [DISCLOSURE.X913]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure- CA Borrower Elects To Establish Escrow Account Indicator")]
         public bool? BorrowerElectsEstablishEscrowIndicator { get => _borrowerElectsEstablishEscrowIndicator; set => SetField(ref _borrowerElectsEstablishEscrowIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Broker Fee Amt [DISCLOSURE.X62]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Borr Paid Broker Fee Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerageFeeAddition1 { get => _brokerageFeeAddition1; set => SetField(ref _brokerageFeeAddition1, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Comp From Amt [DISCLOSURE.X64]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Borr Paid Comp From Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerageFeeAddition2 { get => _brokerageFeeAddition2; set => SetField(ref _brokerageFeeAddition2, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Comp To Amt [DISCLOSURE.X66]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Borr Paid Comp To Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerageFeeAddition3 { get => _brokerageFeeAddition3; set => SetField(ref _brokerageFeeAddition3, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Broker Fee Total [FLGFE.X38]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Disclosure-FL Borr Paid Broker Fee Total")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? BrokerageFeeAmount1 { get => _brokerageFeeAmount1; set => SetField(ref _brokerageFeeAmount1, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Comp From Total [FLGFE.X39]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Disclosure-FL Borr Paid Comp From Total")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? BrokerageFeeAmount2 { get => _brokerageFeeAmount2; set => SetField(ref _brokerageFeeAmount2, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Comp To Total [FLGFE.X40]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true, Description = "Disclosure-FL Borr Paid Comp To Total")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? BrokerageFeeAmount3 { get => _brokerageFeeAmount3; set => SetField(ref _brokerageFeeAmount3, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Broker Fee # Days [FLGFE.X41]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Borr Paid Broker Fee # Days")]
         public int? BrokerageFeeDays { get => _brokerageFeeDays; set => SetField(ref _brokerageFeeDays, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Broker Fee % [DISCLOSURE.X61]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-FL Borr Paid Broker Fee %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? BrokerageFeePercent1 { get => _brokerageFeePercent1; set => SetField(ref _brokerageFeePercent1, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Comp From % [DISCLOSURE.X63]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-FL Borr Paid Comp From %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? BrokerageFeePercent2 { get => _brokerageFeePercent2; set => SetField(ref _brokerageFeePercent2, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Comp To % [DISCLOSURE.X65]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-FL Borr Paid Comp To %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? BrokerageFeePercent3 { get => _brokerageFeePercent3; set => SetField(ref _brokerageFeePercent3, value); }
 
         /// <summary>
         /// Disclosure-NV Broker Authorized Signing Representative Name [DISCLOSURE.X922]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Broker Authorized Signing Representative Name")]
         public string BrokerAuthorizedSigningRepName { get => _brokerAuthorizedSigningRepName; set => SetField(ref _brokerAuthorizedSigningRepName, value); }
 
         /// <summary>
         /// Disclosure-NV Broker Authorized Signing Representative Title [DISCLOSURE.X923]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Broker Authorized Signing Representative Title")]
         public string BrokerAuthorizedSigningRepTitle { get => _brokerAuthorizedSigningRepTitle; set => SetField(ref _brokerAuthorizedSigningRepTitle, value); }
 
         /// <summary>
         /// Disclosure-TX Broker for Seller/Buyer/Buyer and Seller [DISCLOSURE.X96]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Broker for Seller/Buyer/Buyer and Seller")]
         public StringEnumValue<BrokerForTheSeller> BrokerForTheSeller { get => _brokerForTheSeller; set => SetField(ref _brokerForTheSeller, value); }
 
         /// <summary>
         /// Disclosure-TX License # [DISCLOSURE.X73]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX License #")]
         public string BrokerLicense { get => _brokerLicense; set => SetField(ref _brokerLicense, value); }
 
         /// <summary>
         /// Disclosure-TX Broker/Loan Officer [DISCLOSURE.X72]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Broker/Loan Officer")]
         public string BrokerName { get => _brokerName; set => SetField(ref _brokerName, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Fee + [DISCLOSURE.X98]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Broker Paid Fee +")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerPayAddition { get => _brokerPayAddition; set => SetField(ref _brokerPayAddition, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Fee Amt [DISCLOSURE.X116]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Broker Paid Fee Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerPayAmount { get => _brokerPayAmount; set => SetField(ref _brokerPayAmount, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Fee [DISCLOSURE.X114]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Broker Paid Fee", OptionsJson = "{\"true\":\"I will pay you a fee of\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"I will pay you a fee of\"}")]
         public bool? BrokerPayIndicator { get => _brokerPayIndicator; set => SetField(ref _brokerPayIndicator, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Fee % [DISCLOSURE.X115]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-NY Broker Paid Fee %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? BrokerPayPercent { get => _brokerPayPercent; set => SetField(ref _brokerPayPercent, value); }
 
         /// <summary>
         /// Disclosure-FL Federal CHARM booklet [FLGFE.X73]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Federal CHARM booklet")]
         public bool? CHARMBookletIndicator { get => _cHARMBookletIndicator; set => SetField(ref _cHARMBookletIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL Check Payable To [DISCLOSURE.X170]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Check Payable To")]
         public string CheckPayableTo { get => _checkPayableTo; set => SetField(ref _checkPayableTo, value); }
 
         /// <summary>
         /// Disclosure-FL Interest Rate Fee Amt [FLMTGCM.X15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Interest Rate Fee Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CommitmentAmount { get => _commitmentAmount; set => SetField(ref _commitmentAmount, value); }
 
         /// <summary>
         /// Disclosure-NY Loan Commit Conditions 1 [DISCLOSURE.X103]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Loan Commit Conditions 1")]
         public string CommitmentCondition1 { get => _commitmentCondition1; set => SetField(ref _commitmentCondition1, value); }
 
         /// <summary>
         /// Disclosure-NY Loan Commit Conditions 2 [DISCLOSURE.X104]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Loan Commit Conditions 2")]
         public string CommitmentCondition2 { get => _commitmentCondition2; set => SetField(ref _commitmentCondition2, value); }
 
         /// <summary>
         /// Disclosure-FL Commitment Fee [FLMTGCM.X7]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Commitment Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CommitmentFee { get => _commitmentFee; set => SetField(ref _commitmentFee, value); }
 
         /// <summary>
         /// Disclosure-FL Interest Rate Fee % [FLMTGCM.X14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-FL Interest Rate Fee %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? CommitmentPercent { get => _commitmentPercent; set => SetField(ref _commitmentPercent, value); }
 
         /// <summary>
         /// Disclosure-FL Lender Paid Broker Comp To % [FLGFE.X51]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true, Description = "Disclosure-FL Lender Paid Broker Comp To %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? CompensationAddition { get => _compensationAddition; set => SetField(ref _compensationAddition, value); }
 
         /// <summary>
         /// Disclosure-FL Lender Paid Broker Comp From % [FLGFE.X50]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true, Description = "Disclosure-FL Lender Paid Broker Comp From %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? CompensationPercent { get => _compensationPercent; set => SetField(ref _compensationPercent, value); }
 
         /// <summary>
         /// Disclosure-FL Credit Deposit [DISCLOSURE.X70]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Credit Deposit")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditDeposit { get => _creditDeposit; set => SetField(ref _creditDeposit, value); }
 
         /// <summary>
         /// Disclosure Credit Score Used From The Credit Report to Set the Terms of Credit [DISCLOSURE.X637]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure Credit Score Used From The Credit Report to Set the Terms of Credit")]
         public string CreditIsUsedForReason { get => _creditIsUsedForReason; set => SetField(ref _creditIsUsedForReason, value); }
 
         /// <summary>
         /// Disclosure-TX Credit Rpt Fee Descr [DISCLOSURE.X86]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Credit Rpt Fee Descr")]
         public string CreditReportContact { get => _creditReportContact; set => SetField(ref _creditReportContact, value); }
 
         /// <summary>
         /// Disclosure-FL Rate Est # Days Before Close [FLMTGCM.X6]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Rate Est # Days Before Close")]
         public int? DaysBeforeClosing { get => _daysBeforeClosing; set => SetField(ref _daysBeforeClosing, value); }
 
         /// <summary>
         /// Disclosure-FL Receipt of Deposit Amt [FLGFE.X53]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Receipt of Deposit Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DepositReceipt { get => _depositReceipt; set => SetField(ref _depositReceipt, value); }
 
         /// <summary>
         /// Disclosure-FL Deposit Refundable [FLGFE.X55]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Disclosure-FL Deposit Refundable", OptionsJson = "{\"true\":\"Refundable by\"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"true\":\"Refundable by\"}")]
         public bool? DepositRefundableIndicator { get => _depositRefundableIndicator; set => SetField(ref _depositRefundableIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL Direct inquiries To [FLGFE.X70]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Disclosure-FL Direct inquiries To")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string DirectContact { get => _directContact; set => SetField(ref _directContact, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Direct Amt [DISCLOSURE.X121]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Broker Paid Direct Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DirectPayAmount { get => _directPayAmount; set => SetField(ref _directPayAmount, value); }
 
         /// <summary>
         /// Disclosure-NY  Broker Paid Direct at Close [DISCLOSURE.X119]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY  Broker Paid Direct at Close")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DirectPayClosing { get => _directPayClosing; set => SetField(ref _directPayClosing, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Direct at Commit [DISCLOSURE.X118]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Broker Paid Direct at Commit")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DirectPayCommitment { get => _directPayCommitment; set => SetField(ref _directPayCommitment, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Direct [DISCLOSURE.X117]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Broker Paid Direct", OptionsJson = "{\"true\":\"I will pay you directly, upon my signed acceptance of a commitment\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"I will pay you directly, upon my signed acceptance of a commitment\"}")]
         public bool? DirectPayIndicator { get => _directPayIndicator; set => SetField(ref _directPayIndicator, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Direct % [DISCLOSURE.X120]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-NY Broker Paid Direct %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? DirectPayPercent { get => _directPayPercent; set => SetField(ref _directPayPercent, value); }
 
         /// <summary>
         /// Disclosure - TX - Disclosure Delivered By [DISCLOSURE.X957]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - TX - Disclosure Delivered By")]
         public StringEnumValue<DisclosureDeliveredBy> DisclosureDeliveredBy { get => _disclosureDeliveredBy; set => SetField(ref _disclosureDeliveredBy, value); }
 
         /// <summary>
         /// Disclosure - TX - Disclosure Delivered By Other Method [DISCLOSURE.X958]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - TX - Disclosure Delivered By Other Method")]
         public string DisclosureDeliveredByOtherMethod { get => _disclosureDeliveredByOtherMethod; set => SetField(ref _disclosureDeliveredByOtherMethod, value); }
 
         /// <summary>
         /// Disclosure - TX - Disclosure Delivered Date [DISCLOSURE.X959]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - TX - Disclosure Delivered Date")]
         public DateTime? DisclosureDeliveredDate { get => _disclosureDeliveredDate; set => SetField(ref _disclosureDeliveredDate, value); }
 
         /// <summary>
         /// Disclosure-TX Estimated fees Will be Shown on the Good Faith Estimate Which We are Providing Now or Within three (3) Days. [DISCLOSURE.X910]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Estimated fees Will be Shown on the Good Faith Estimate Which We are Providing Now or Within three (3) Days.")]
         public bool? EstimatedChargeShownOnGFEIndicator { get => _estimatedChargeShownOnGFEIndicator; set => SetField(ref _estimatedChargeShownOnGFEIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL Expiration Date [FLMTGCM.X1]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Expiration Date")]
         public DateTime? ExpirationDate { get => _expirationDate; set => SetField(ref _expirationDate, value); }
 
         /// <summary>
         /// Disclosure - AK - Federally-Subsidized Amount [DISCLOSURE.X964]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure - AK - Federally-Subsidized Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FederallySubsidizedAmount { get => _federallySubsidizedAmount; set => SetField(ref _federallySubsidizedAmount, value); }
 
         /// <summary>
         /// Disclosure - AK - Federally-Subsidized Amount Percentage [DISCLOSURE.X963]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure - AK - Federally-Subsidized Amount Percentage")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? FederallySubsidizedAmountPercentage { get => _federallySubsidizedAmountPercentage; set => SetField(ref _federallySubsidizedAmountPercentage, value); }
 
         /// <summary>
         /// Disclosure-NY Fee Amt [DISCLOSURE.X150]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Fee Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeReceived1 { get => _feeReceived1; set => SetField(ref _feeReceived1, value); }
 
         /// <summary>
         /// Disclosure-NY Recipient Fee Amt [DISCLOSURE.X152]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Recipient Fee Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeReceived2 { get => _feeReceived2; set => SetField(ref _feeReceived2, value); }
 
         /// <summary>
         /// Disclosure-FL Lender Fee Refund/Non-Refund [FLGFE.X71]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Lender Fee Refund/Non-Refund")]
         public StringEnumValue<RefundableType> FeeReceivedByLender { get => _feeReceivedByLender; set => SetField(ref _feeReceivedByLender, value); }
 
         /// <summary>
         /// Disclosure-TX Rec $ Fees [DISCLOSURE.X81]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-TX Rec $ Fees")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeesReceiving { get => _feesReceiving; set => SetField(ref _feesReceiving, value); }
 
         /// <summary>
         /// Disclosure-FL Application Fee [DISCLOSURE.X67]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Application Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FloridaApplicationFee { get => _floridaApplicationFee; set => SetField(ref _floridaApplicationFee, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 1 Amt [FLMTGCM.X18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Other Fee 1 Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FloridaOtherFee1 { get => _floridaOtherFee1; set => SetField(ref _floridaOtherFee1, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 3 Amt [FLMTGCM.X21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Other Fee 3 Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FloridaOtherFee2 { get => _floridaOtherFee2; set => SetField(ref _floridaOtherFee2, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 1 Descr [FLMTGCM.X17]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Other Fee 1 Descr")]
         public string FloridaOtherFeeTo1 { get => _floridaOtherFeeTo1; set => SetField(ref _floridaOtherFeeTo1, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 2 Descr [FLMTGCM.X19]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Other Fee 2 Descr")]
         public string FloridaOtherFeeTo2 { get => _floridaOtherFeeTo2; set => SetField(ref _floridaOtherFeeTo2, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 3 Descr [FLMTGCM.X20]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Other Fee 3 Descr")]
         public string FloridaOtherFeeTo3 { get => _floridaOtherFeeTo3; set => SetField(ref _floridaOtherFeeTo3, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 4 Descr [FLMTGCM.X22]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Other Fee 4 Descr")]
         public string FloridaOtherFeeTo4 { get => _floridaOtherFeeTo4; set => SetField(ref _floridaOtherFeeTo4, value); }
 
         /// <summary>
         /// Disclosure-NV Further Explanation of Any Fee Earned by Mortgage Broker [DISCLOSURE.X949]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Further Explanation of Any Fee Earned by Mortgage Broker")]
         public string FurtherFeesEarnedByMortgageBroker { get => _furtherFeesEarnedByMortgageBroker; set => SetField(ref _furtherFeesEarnedByMortgageBroker, value); }
 
         /// <summary>
         /// Disclosure-NY GFE Amt [DISCLOSURE.X151]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY GFE Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GFEFeeReceived1 { get => _gFEFeeReceived1; set => SetField(ref _gFEFeeReceived1, value); }
 
         /// <summary>
         /// Disclosure-NY Recipient GFE Amt [DISCLOSURE.X153]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Recipient GFE Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GFEFeeReceived2 { get => _gFEFeeReceived2; set => SetField(ref _gFEFeeReceived2, value); }
 
         /// <summary>
         /// Disclosure-FL HUD settlement booklet [FLGFE.X75]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL HUD settlement booklet")]
         public bool? HUDBookletIndicator { get => _hUDBookletIndicator; set => SetField(ref _hUDBookletIndicator, value); }
 
         /// <summary>
@@ -796,187 +751,173 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Act as Independent Contractor [DISCLOSURE.X75]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Act as Independent Contractor", OptionsJson = "{\"true\":\"We are acting as an independent contractor\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"We are acting as an independent contractor\"}")]
         public bool? IndependentContractorIndicator { get => _independentContractorIndicator; set => SetField(ref _independentContractorIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL Int Rate Index Used [DISCLOSURE.X168]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Int Rate Index Used")]
         public string IndexUsed { get => _indexUsed; set => SetField(ref _indexUsed, value); }
 
         /// <summary>
         /// Disclosure-FL Int Rate Index Info [DISCLOSURE.X169]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Int Rate Index Info")]
         public string InformationAboutTheIndexCanBeFound { get => _informationAboutTheIndexCanBeFound; set => SetField(ref _informationAboutTheIndexCanBeFound, value); }
 
         /// <summary>
         /// Disclosure Licensed No [DISCLOSURE.X1027]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure Licensed No")]
         public string InLicensedNo { get => _inLicensedNo; set => SetField(ref _inLicensedNo, value); }
 
         /// <summary>
         /// Disclosure Licensed Type [DISCLOSURE.X1028]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure Licensed Type")]
         public StringEnumValue<InLicensedType> InLicensedType { get => _inLicensedType; set => SetField(ref _inLicensedType, value); }
 
         /// <summary>
         /// Disclosure-FL is Estimate [FLMTGCM.X12]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL is Estimate", OptionsJson = "{\"true\":\"This disclosure is an ESTIMATE. Some of the information necessary for an accurate disclosure is unknown to the lender. This disclosure is based upon the best information reasonably available to the lender at this time.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"This disclosure is an ESTIMATE. Some of the information necessary for an accurate disclosure is unknown to the lender. This disclosure is based upon the best information reasonably available to the lender at this time.\"}")]
         public bool? IsEstimateIndicator { get => _isEstimateIndicator; set => SetField(ref _isEstimateIndicator, value); }
 
         /// <summary>
         /// Disclosure - KS - Kansas UCCC Election [DISCLOSURE.X954]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - KS - Kansas UCCC Election", OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
         public bool? KsUcccElectionIndicator { get => _ksUcccElectionIndicator; set => SetField(ref _ksUcccElectionIndicator, value); }
 
         /// <summary>
         /// Disclosure - KY - Kentucky Home Solicitation Loan [DISCLOSURE.X956]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - KY - Kentucky Home Solicitation Loan", OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
         public bool? KyHomeSolicationLoanIndicator { get => _kyHomeSolicationLoanIndicator; set => SetField(ref _kyHomeSolicationLoanIndicator, value); }
 
         /// <summary>
         /// Disclosure - AK - Lease Agreement Date [DISCLOSURE.X975]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - AK - Lease Agreement Date")]
         public DateTime? LeaseAgreementDate { get => _leaseAgreementDate; set => SetField(ref _leaseAgreementDate, value); }
 
         /// <summary>
         /// Disclosure-NY Date [DISCLOSURE.X156]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Date")]
         public DateTime? LenderDate { get => _lenderDate; set => SetField(ref _lenderDate, value); }
 
         /// <summary>
         /// Disclosure-NY Lender [DISCLOSURE.X154]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Lender")]
         public string LenderName { get => _lenderName; set => SetField(ref _lenderName, value); }
 
         /// <summary>
         /// Disclosure-FL Lender fee paid to licensee [FLGFE.X77]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Lender fee paid to licensee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderPaid { get => _lenderPaid; set => SetField(ref _lenderPaid, value); }
 
         /// <summary>
         /// Disclosure-NY Lender Paid Fee Amt [DISCLOSURE.X111]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Lender Paid Fee Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderPayAmount { get => _lenderPayAmount; set => SetField(ref _lenderPayAmount, value); }
 
         /// <summary>
         /// Disclosure-NY Lender Paid Fee [DISCLOSURE.X109]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Lender Paid Fee", OptionsJson = "{\"true\":\"The lender will pay you a fee of\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"The lender will pay you a fee of\"}")]
         public bool? LenderPayIndicator { get => _lenderPayIndicator; set => SetField(ref _lenderPayIndicator, value); }
 
         /// <summary>
         /// Disclosure-NY Lender Paid Points Max [DISCLOSURE.X113]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Lender Paid Points Max")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderPayMaxPoint { get => _lenderPayMaxPoint; set => SetField(ref _lenderPayMaxPoint, value); }
 
         /// <summary>
         /// Disclosure-NY Lender Paid Fee % [DISCLOSURE.X110]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-NY Lender Paid Fee %")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? LenderPayPercent { get => _lenderPayPercent; set => SetField(ref _lenderPayPercent, value); }
 
         /// <summary>
         /// Disclosure-NY Lender Paid Points [DISCLOSURE.X112]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Lender Paid Points")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderPayPoint { get => _lenderPayPoint; set => SetField(ref _lenderPayPoint, value); }
 
         /// <summary>
         /// Disclosure-NY Lender Fee Unknown [DISCLOSURE.X97]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Lender Fee Unknown", OptionsJson = "{\"true\":\"The fee the lender will pay you is not known. The maximum points paid including premium pricing shall not\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"The fee the lender will pay you is not known. The maximum points paid including premium pricing shall not\"}")]
         public bool? LenderPayUnknownIndicator { get => _lenderPayUnknownIndicator; set => SetField(ref _lenderPayUnknownIndicator, value); }
 
         /// <summary>
         /// Disclosure-NY Status/Disposition [DISCLOSURE.X155]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Status/Disposition")]
         public string LenderStatus { get => _lenderStatus; set => SetField(ref _lenderStatus, value); }
 
         /// <summary>
         /// Disclosure - AK - Lessor Name [DISCLOSURE.X976]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - AK - Lessor Name")]
         public string LessorName { get => _lessorName; set => SetField(ref _lessorName, value); }
 
         /// <summary>
         /// Disclosure-Loan Terms Fixed Through Date of Loan Closing [DISCLOSURE.X951]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-Loan Terms Fixed Through Date of Loan Closing")]
         public bool? LoanTermsFixedThroughDateofLoanClosingIndicator { get => _loanTermsFixedThroughDateofLoanClosingIndicator; set => SetField(ref _loanTermsFixedThroughDateofLoanClosingIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL Lock-in Fee [FLMTGCM.X13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Lock-in Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LockInFee { get => _lockInFee; set => SetField(ref _lockInFee, value); }
 
         /// <summary>
         /// Disclosure-FL Rate Index at Closing [FLMTGCM.X4]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Rate Index at Closing")]
         public string MethodDescription { get => _methodDescription; set => SetField(ref _methodDescription, value); }
 
         /// <summary>
         /// Disclosure-FL Rate Index Subject to Change [FLMTGCM.X3]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Rate Index Subject to Change")]
         public StringEnumValue<MethodDetermine> MethodDetermine { get => _methodDetermine; set => SetField(ref _methodDetermine, value); }
 
         /// <summary>
         /// Disclosure-FL Mortgage loan origination agreement [FLGFE.X72]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Mortgage loan origination agreement")]
         public bool? MortgageAgreementIndicator { get => _mortgageAgreementIndicator; set => SetField(ref _mortgageAgreementIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL Broker License # [FLGFE.X57]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Disclosure-FL Broker License #")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string MtgBrokerLicense { get => _mtgBrokerLicense; set => SetField(ref _mtgBrokerLicense, value); }
 
         /// <summary>
         /// Disclosure-FL Licensee Name [DISCLOSURE.X171]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Licensee Name")]
         public string NameOfLicensee { get => _nameOfLicensee; set => SetField(ref _nameOfLicensee, value); }
 
         /// <summary>
         /// Disclosure-NY New Money Amount [DISCLOSURE.X993]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY New Money Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewMoneyAmount { get => _newMoneyAmount; set => SetField(ref _newMoneyAmount, value); }
 
         /// <summary>
         /// Disclosure-NY Application Fee [DISCLOSURE.X122]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Application Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewYorkApplicationFee { get => _newYorkApplicationFee; set => SetField(ref _newYorkApplicationFee, value); }
 
         /// <summary>
         /// Disclosure-NY Appraisal Fee [DISCLOSURE.X123]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Appraisal Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewYorkAppraisalFee { get => _newYorkAppraisalFee; set => SetField(ref _newYorkAppraisalFee, value); }
 
         /// <summary>
         /// Disclosure-NY Credit Fee [DISCLOSURE.X124]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Credit Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewYorkCreditReportFee { get => _newYorkCreditReportFee; set => SetField(ref _newYorkCreditReportFee, value); }
 
         /// <summary>
@@ -992,553 +933,508 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Processing Fee [DISCLOSURE.X127]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Processing Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewYorkProcessingFee { get => _newYorkProcessingFee; set => SetField(ref _newYorkProcessingFee, value); }
 
         /// <summary>
         /// Disclosure-TX Non-Refundable Amt [DISCLOSURE.X94]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-TX Non-Refundable Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NotRefundableAmount { get => _notRefundableAmount; set => SetField(ref _notRefundableAmount, value); }
 
         /// <summary>
         /// Disclosure-TX Compensated Retail Price [DISCLOSURE.X79]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Compensated Retail Price", OptionsJson = "{\"true\":\"The retail price we offer you\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"The retail price we offer you\"}")]
         public bool? OfferRetailPriceIndicator { get => _offerRetailPriceIndicator; set => SetField(ref _offerRetailPriceIndicator, value); }
 
         /// <summary>
         /// Disclosure - AK - Original Acquisition Cost [DISCLOSURE.X973]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure - AK - Original Acquisition Cost")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginalAcquisitionCost { get => _originalAcquisitionCost; set => SetField(ref _originalAcquisitionCost, value); }
 
         /// <summary>
         /// Disclosure-NV Origination Fee Charged Amount [DISCLOSURE.X925]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NV Origination Fee Charged Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginationFeeChargedAmount { get => _originationFeeChargedAmount; set => SetField(ref _originationFeeChargedAmount, value); }
 
         /// <summary>
         /// Disclosure-NV Origination Fee Charged Indicator [DISCLOSURE.X924]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Origination Fee Charged Indicator")]
         public bool? OriginationFeeChargedIndicator { get => _originationFeeChargedIndicator; set => SetField(ref _originationFeeChargedIndicator, value); }
 
         /// <summary>
         /// Disclosure-NV Origination Fee Decreases Interest Rate By [DISCLOSURE.X928]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-NV Origination Fee Decreases Interest Rate By")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? OriginationFeeDecreasesRate { get => _originationFeeDecreasesRate; set => SetField(ref _originationFeeDecreasesRate, value); }
 
         /// <summary>
         /// Disclosure-NV Origination Fee Increases Interest Rate By [DISCLOSURE.X929]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-NV Origination Fee Increases Interest Rate By")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? OriginationFeeIncreasesRate { get => _originationFeeIncreasesRate; set => SetField(ref _originationFeeIncreasesRate, value); }
 
         /// <summary>
         /// Disclosure-NV Identify one of three possible impacts of Origination Fee on the Interest Rate [DISCLOSURE.X927]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Identify one of three possible impacts of Origination Fee on the Interest Rate")]
         public StringEnumValue<InterestRateImpactedStatus> OriginationFeeInterestRateImpactedStatus { get => _originationFeeInterestRateImpactedStatus; set => SetField(ref _originationFeeInterestRateImpactedStatus, value); }
 
         /// <summary>
         /// Disclosure-NV Origination Fee Paid By [DISCLOSURE.X926]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Origination Fee Paid By")]
         public StringEnumValue<StateDisclosureFeePaidBy> OriginationFeePaidBy { get => _originationFeePaidBy; set => SetField(ref _originationFeePaidBy, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Fee Borr [DISCLOSURE.X158]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Broker Fee Borr")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidByBorrower { get => _paidByBorrower; set => SetField(ref _paidByBorrower, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Fee Lender Paid [DISCLOSURE.X157]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Broker Fee Lender Paid")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidByLender { get => _paidByLender; set => SetField(ref _paidByLender, value); }
 
         /// <summary>
         /// Disclosure-NY Other Fee 1 Amt [DISCLOSURE.X160]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Other Fee 1 Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidByOther1 { get => _paidByOther1; set => SetField(ref _paidByOther1, value); }
 
         /// <summary>
         /// Disclosure-NY Other Fee 2 Amt [DISCLOSURE.X162]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Other Fee 2 Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidByOther2 { get => _paidByOther2; set => SetField(ref _paidByOther2, value); }
 
         /// <summary>
         /// Disclosure-NY Other Fee 1 Descr [DISCLOSURE.X159]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Other Fee 1 Descr")]
         public string PaidByOtherDescription1 { get => _paidByOtherDescription1; set => SetField(ref _paidByOtherDescription1, value); }
 
         /// <summary>
         /// Disclosure-NY Other Fee 2 Descr [DISCLOSURE.X161]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Other Fee 2 Descr")]
         public string PaidByOtherDescription2 { get => _paidByOtherDescription2; set => SetField(ref _paidByOtherDescription2, value); }
 
         /// <summary>
         /// Disclosure-NY Previous Mortgage Amount 1 [DISCLOSURE.X994]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Previous Mortgage Amount 1")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PreviousMortgageAmountOne { get => _previousMortgageAmountOne; set => SetField(ref _previousMortgageAmountOne, value); }
 
         /// <summary>
         /// Disclosure-NY Previous Mortgage Amount 2 [DISCLOSURE.X995]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Previous Mortgage Amount 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PreviousMortgageAmountTwo { get => _previousMortgageAmountTwo; set => SetField(ref _previousMortgageAmountTwo, value); }
 
         /// <summary>
         /// Disclosure - AK - Print Certification O fCosts [DISCLOSURE.X962]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - AK - Print Certification O fCosts", OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
         public bool? PrintCertificationOfCosts { get => _printCertificationOfCosts; set => SetField(ref _printCertificationOfCosts, value); }
 
         /// <summary>
         /// Disclosure - AK - Print Interest Rate Reduction Rider [DISCLOSURE.X961]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - AK - Print Interest Rate Reduction Rider", OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
         public bool? PrintInterestRateReductionRider { get => _printInterestRateReductionRider; set => SetField(ref _printInterestRateReductionRider, value); }
 
         /// <summary>
         /// Disclosure-MD Print MD Delivery of Net Proceeds Authorization Disclosure [DISCLOSURE.X911]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-MD Print MD Delivery of Net Proceeds Authorization Disclosure")]
         public bool? PrintMDDeliveryIndicator { get => _printMDDeliveryIndicator; set => SetField(ref _printMDDeliveryIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL GFE Provided By [FLGFE.X67]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL GFE Provided By")]
         public StringEnumValue<ProvidedBy> ProvidedBy { get => _providedBy; set => SetField(ref _providedBy, value); }
 
         /// <summary>
         /// Disclosure-NY Ques/Comments To [DISCLOSURE.X128]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Ques/Comments To")]
         public string QuestionContact { get => _questionContact; set => SetField(ref _questionContact, value); }
 
         /// <summary>
         /// Disclosure-NY Ques/Comments Phone [DISCLOSURE.X129]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Disclosure-NY Ques/Comments Phone")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string QuestionContactPhone { get => _questionContactPhone; set => SetField(ref _questionContactPhone, value); }
 
         /// <summary>
         /// Disclosure-NY Ques/Comments Toll Free [DISCLOSURE.X130]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Disclosure-NY Ques/Comments Toll Free")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string QuestionContactTollFree { get => _questionContactTollFree; set => SetField(ref _questionContactTollFree, value); }
 
         /// <summary>
         /// Disclosure-NY-Rate Lock honored only if loan closes at least 3 business days prior to the Lock Expiration Date [DISCLOSURE.X950]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY-Rate Lock honored only if loan closes at least 3 business days prior to the Lock Expiration Date")]
         public bool? RateLockHonoredIndicator { get => _rateLockHonoredIndicator; set => SetField(ref _rateLockHonoredIndicator, value); }
 
         /// <summary>
         /// Disclosure-NY Fee Recipient [DISCLOSURE.X149]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Fee Recipient")]
         public string ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
 
         /// <summary>
         /// Disclosure-FL Refi Fee [FLMTGCM.X16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Refi Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RefinancingFee { get => _refinancingFee; set => SetField(ref _refinancingFee, value); }
 
         /// <summary>
         /// Disclosure-FL Deposit Refundable By [FLGFE.X56]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Disclosure-FL Deposit Refundable By")]
+        [LoanFieldProperty(ReadOnly = true)]
         public string RefundableBy { get => _refundableBy; set => SetField(ref _refundableBy, value); }
 
         /// <summary>
         /// Disclosure-FL Commitment Fee Refundable If [FLMTGCM.X8]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Commitment Fee Refundable If", OptionsJson = "{\"true\":\"Refundable If\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Refundable If\"}")]
         public bool? RefundableIndicator { get => _refundableIndicator; set => SetField(ref _refundableIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL Appl Fee Refund/Non Refund [DISCLOSURE.X68]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Appl Fee Refund/Non Refund")]
         public StringEnumValue<RefundableType> RefundableType { get => _refundableType; set => SetField(ref _refundableType, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 1 [DISCLOSURE.X125]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Appl Fee Refund If 1")]
         public string RefundCondition1 { get => _refundCondition1; set => SetField(ref _refundCondition1, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 2 [DISCLOSURE.X126]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Appl Fee Refund If 2")]
         public string RefundCondition2 { get => _refundCondition2; set => SetField(ref _refundCondition2, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 3 [DISCLOSURE.X164]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Appl Fee Refund If 3")]
         public string RefundCondition3 { get => _refundCondition3; set => SetField(ref _refundCondition3, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 4 [DISCLOSURE.X165]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Appl Fee Refund If 4")]
         public string RefundCondition4 { get => _refundCondition4; set => SetField(ref _refundCondition4, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 5 [DISCLOSURE.X166]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Appl Fee Refund If 5")]
         public string RefundCondition5 { get => _refundCondition5; set => SetField(ref _refundCondition5, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 6 [DISCLOSURE.X167]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Appl Fee Refund If 6")]
         public string RefundCondition6 { get => _refundCondition6; set => SetField(ref _refundCondition6, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Address [DISCLOSURE.X1064]
         /// </summary>
-        [LoanFieldProperty(Description = "South Carolina State Specific Disclosure -  Regulator Address")]
         public string RegulatorAddress { get => _regulatorAddress; set => SetField(ref _regulatorAddress, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator City [DISCLOSURE.X1065]
         /// </summary>
-        [LoanFieldProperty(Description = "South Carolina State Specific Disclosure -  Regulator City")]
         public string RegulatorCity { get => _regulatorCity; set => SetField(ref _regulatorCity, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Mailing Address [DISCLOSURE.X1070]
         /// </summary>
-        [LoanFieldProperty(Description = "South Carolina State Specific Disclosure -  Regulator Mailing Address")]
         public string RegulatorMailingAddress { get => _regulatorMailingAddress; set => SetField(ref _regulatorMailingAddress, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Mailing City [DISCLOSURE.X1071]
         /// </summary>
-        [LoanFieldProperty(Description = "South Carolina State Specific Disclosure -  Regulator Mailing City")]
         public string RegulatorMailingCity { get => _regulatorMailingCity; set => SetField(ref _regulatorMailingCity, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Mailing State [DISCLOSURE.X1072]
         /// </summary>
-        [LoanFieldProperty(Description = "South Carolina State Specific Disclosure -  Regulator Mailing State")]
         public StringEnumValue<State> RegulatorMailingState { get => _regulatorMailingState; set => SetField(ref _regulatorMailingState, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Mailing Zip Code [DISCLOSURE.X1073]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "South Carolina State Specific Disclosure -  Regulator Mailing Zip Code")]
+        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string RegulatorMailingZipCode { get => _regulatorMailingZipCode; set => SetField(ref _regulatorMailingZipCode, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Phone [DISCLOSURE.X1068]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "South Carolina State Specific Disclosure -  Regulator Phone")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string RegulatorPhone { get => _regulatorPhone; set => SetField(ref _regulatorPhone, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator State [DISCLOSURE.X1066]
         /// </summary>
-        [LoanFieldProperty(Description = "South Carolina State Specific Disclosure -  Regulator State")]
         public StringEnumValue<State> RegulatorState { get => _regulatorState; set => SetField(ref _regulatorState, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Toll-free Phone [DISCLOSURE.X1069]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "South Carolina State Specific Disclosure -  Regulator Toll-free Phone")]
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string RegulatorTollFreePhone { get => _regulatorTollFreePhone; set => SetField(ref _regulatorTollFreePhone, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure - Regulatory Agency - Web Address [DISCLOSURE.X1156]
         /// </summary>
-        [LoanFieldProperty(Description = "South Carolina State Specific Disclosure - Regulatory Agency - Web Address")]
         public string RegulatorWebAddress { get => _regulatorWebAddress; set => SetField(ref _regulatorWebAddress, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Zip Code [DISCLOSURE.X1067]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "South Carolina State Specific Disclosure -  Regulator Zip Code")]
+        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string RegulatorZipCode { get => _regulatorZipCode; set => SetField(ref _regulatorZipCode, value); }
 
         /// <summary>
         /// Disclosure-MD The schedule of charges is Estimated, subject to change or Final, not subject to change [DISCLOSURE.X912]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-MD The schedule of charges is Estimated, subject to change or Final, not subject to change")]
         public StringEnumValue<ScheduleOfChargesEstimatedFinalIndicator> ScheduleOfChargesEstimatedFinalIndicator { get => _scheduleOfChargesEstimatedFinalIndicator; set => SetField(ref _scheduleOfChargesEstimatedFinalIndicator, value); }
 
         /// <summary>
         /// Disclosure - SC - Regulatory Agency [DISCLOSURE.X953]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - SC - Regulatory Agency")]
         public StringEnumValue<ScRegulatoryAgencyType> ScRegulatoryAgencyType { get => _scRegulatoryAgencyType; set => SetField(ref _scRegulatoryAgencyType, value); }
 
         /// <summary>
         /// Disclosure-NY Lender Division of Fees Is Selected [DISCLOSURE.X181]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Lender Division of Fees Is Selected")]
         public bool? SelectDivisionFeesIndicator { get => _selectDivisionFeesIndicator; set => SetField(ref _selectDivisionFeesIndicator, value); }
 
         /// <summary>
         /// Disclosure-NY Lender Primary Lender Is Selected [DISCLOSURE.X179]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Lender Primary Lender Is Selected")]
         public bool? SelectPrimaryLenderIndicator { get => _selectPrimaryLenderIndicator; set => SetField(ref _selectPrimaryLenderIndicator, value); }
 
         /// <summary>
         /// Disclosure-NY Lender Private Lender Is Selected [DISCLOSURE.X180]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Lender Private Lender Is Selected")]
         public bool? SelectPrivateLenderIndicator { get => _selectPrivateLenderIndicator; set => SetField(ref _selectPrivateLenderIndicator, value); }
 
         /// <summary>
         /// Disclosure-NV Servicing Fee Charged Amount [DISCLOSURE.X940]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NV Servicing Fee Charged Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ServicingFeeChargedAmount { get => _servicingFeeChargedAmount; set => SetField(ref _servicingFeeChargedAmount, value); }
 
         /// <summary>
         /// Disclosure-NV Servicing Fee Indicator [DISCLOSURE.X939]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Servicing Fee Indicator")]
         public bool? ServicingFeeChargedIndicator { get => _servicingFeeChargedIndicator; set => SetField(ref _servicingFeeChargedIndicator, value); }
 
         /// <summary>
         /// Disclosure-NV Servicing Fee Paid By [DISCLOSURE.X941]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Servicing Fee Paid By")]
         public StringEnumValue<StateDisclosureFeePaidBy> ServicingFeePaidBy { get => _servicingFeePaidBy; set => SetField(ref _servicingFeePaidBy, value); }
 
         /// <summary>
         /// Disclosure-NV Servicing Fee Paid Frequency [DISCLOSURE.X942]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Servicing Fee Paid Frequency")]
         public StringEnumValue<ServicingFeePaidFrequence> ServicingFeePaidFrequence { get => _servicingFeePaidFrequence; set => SetField(ref _servicingFeePaidFrequence, value); }
 
         /// <summary>
         /// Disclosure-FL GFE of settlemnt chrgs dated/signed by borrower [FLGFE.X76]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL GFE of settlemnt chrgs dated/signed by borrower")]
         public bool? SignedByBorrowerIndicator { get => _signedByBorrowerIndicator; set => SetField(ref _signedByBorrowerIndicator, value); }
 
         /// <summary>
         /// Disclosure-FL Specific ARM rates, terms, and conditions [FLGFE.X74]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Specific ARM rates, terms, and conditions")]
         public bool? SpecificARMIndicator { get => _specificARMIndicator; set => SetField(ref _specificARMIndicator, value); }
 
         /// <summary>
         /// Disclosure-TX Will Submit to Lender [DISCLOSURE.X74]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Will Submit to Lender", OptionsJson = "{\"true\":\"We will submit your loan application to a participating lender\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"We will submit your loan application to a participating lender\"}")]
         public bool? SubmitToLenderIndicator { get => _submitToLenderIndicator; set => SetField(ref _submitToLenderIndicator, value); }
 
         /// <summary>
         /// Disclosure - AK - Assessments [DISCLOSURE.X968]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure - AK - Assessments")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationAssessments { get => _taxExemptAcquisitionCostCertificationAssessments; set => SetField(ref _taxExemptAcquisitionCostCertificationAssessments, value); }
 
         /// <summary>
         /// Disclosure - AK - Other [DISCLOSURE.X970]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - AK - Other")]
         public string TaxExemptAcquisitionCostCertificationOther { get => _taxExemptAcquisitionCostCertificationOther; set => SetField(ref _taxExemptAcquisitionCostCertificationOther, value); }
 
         /// <summary>
         /// Disclosure - AK - Other Amount [DISCLOSURE.X971]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure - AK - Other Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationOtherAmount { get => _taxExemptAcquisitionCostCertificationOtherAmount; set => SetField(ref _taxExemptAcquisitionCostCertificationOtherAmount, value); }
 
         /// <summary>
         /// Disclosure - AK - Owners Title Insurance [DISCLOSURE.X965]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure - AK - Owners Title Insurance")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationOwnersTitleInsurance { get => _taxExemptAcquisitionCostCertificationOwnersTitleInsurance; set => SetField(ref _taxExemptAcquisitionCostCertificationOwnersTitleInsurance, value); }
 
         /// <summary>
         /// Disclosure - AK - Real Estate Commission [DISCLOSURE.X967]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure - AK - Real Estate Commission")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationRealEstateCommission { get => _taxExemptAcquisitionCostCertificationRealEstateCommission; set => SetField(ref _taxExemptAcquisitionCostCertificationRealEstateCommission, value); }
 
         /// <summary>
         /// Disclosure - AK - Repairs/Improvements [DISCLOSURE.X969]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure - AK - Repairs/Improvements")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationRepairsImprovements { get => _taxExemptAcquisitionCostCertificationRepairsImprovements; set => SetField(ref _taxExemptAcquisitionCostCertificationRepairsImprovements, value); }
 
         /// <summary>
         /// Disclosure - AK - Survey [DISCLOSURE.X966]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure - AK - Survey")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationSurvey { get => _taxExemptAcquisitionCostCertificationSurvey; set => SetField(ref _taxExemptAcquisitionCostCertificationSurvey, value); }
 
         /// <summary>
         /// Disclosure - AK - Total Adjustments [DISCLOSURE.X972]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure - AK - Total Adjustments")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationTotalAdjustments { get => _taxExemptAcquisitionCostCertificationTotalAdjustments; set => SetField(ref _taxExemptAcquisitionCostCertificationTotalAdjustments, value); }
 
         /// <summary>
         /// Disclosure-FL Terms Are/Are Not Subject to Change [FLMTGCM.X2]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-FL Terms Are/Are Not Subject to Change")]
         public StringEnumValue<TermsChange> TermsChange { get => _termsChange; set => SetField(ref _termsChange, value); }
 
         /// <summary>
         /// Disclosure-TX Application Fee [DISCLOSURE.X82]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-TX Application Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasApplicationFee { get => _texasApplicationFee; set => SetField(ref _texasApplicationFee, value); }
 
         /// <summary>
         /// Disclosure-TX Appraisal Fee [DISCLOSURE.X85]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-TX Appraisal Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasAppraisalFee { get => _texasAppraisalFee; set => SetField(ref _texasAppraisalFee, value); }
 
         /// <summary>
         /// Disclosure-TX Credit Rpt Fee [DISCLOSURE.X87]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-TX Credit Rpt Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasCreditReportFee { get => _texasCreditReportFee; set => SetField(ref _texasCreditReportFee, value); }
 
         /// <summary>
         /// Disclosure-TX Other Fee 1 [DISCLOSURE.X91]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-TX Other Fee 1")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasOtherFee1 { get => _texasOtherFee1; set => SetField(ref _texasOtherFee1, value); }
 
         /// <summary>
         /// Disclosure-TX Other Fee 2 [DISCLOSURE.X93]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-TX Other Fee 2")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasOtherFee2 { get => _texasOtherFee2; set => SetField(ref _texasOtherFee2, value); }
 
         /// <summary>
         /// Disclosure-TX Other Fee 1 Descr [DISCLOSURE.X90]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Other Fee 1 Descr")]
         public string TexasOtherFeeContact1 { get => _texasOtherFeeContact1; set => SetField(ref _texasOtherFeeContact1, value); }
 
         /// <summary>
         /// Disclosure-TX Other Fee 2 Descr [DISCLOSURE.X92]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Other Fee 2 Descr")]
         public string TexasOtherFeeContact2 { get => _texasOtherFeeContact2; set => SetField(ref _texasOtherFeeContact2, value); }
 
         /// <summary>
         /// Disclosure-TX Processing Fee [DISCLOSURE.X83]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-TX Processing Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasProcessingFee { get => _texasProcessingFee; set => SetField(ref _texasProcessingFee, value); }
 
         /// <summary>
         /// Disclosure-FL Third Party Fee Amt [FLGFE.X54]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-FL Third Party Fee Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ThirdPartyFee { get => _thirdPartyFee; set => SetField(ref _thirdPartyFee, value); }
 
         /// <summary>
         /// Disclosure-NY Total Broker Fee [DISCLOSURE.X163]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NY Total Broker Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalFee { get => _totalFee; set => SetField(ref _totalFee, value); }
 
         /// <summary>
         /// Disclosure-NV Service Rights Transfer Fee Charged Amount [DISCLOSURE.X937]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NV Service Rights Transfer Fee Charged Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TransferFeeChargedAmount { get => _transferFeeChargedAmount; set => SetField(ref _transferFeeChargedAmount, value); }
 
         /// <summary>
         /// Disclosure-NV Service Rights Transfer Fee Indicator [DISCLOSURE.X936]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Service Rights Transfer Fee Indicator")]
         public bool? TransferFeeChargedIndicator { get => _transferFeeChargedIndicator; set => SetField(ref _transferFeeChargedIndicator, value); }
 
         /// <summary>
         /// Disclosure-NV Service Rights Transfer Fee Paid By [DISCLOSURE.X938]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Service Rights Transfer Fee Paid By")]
         public StringEnumValue<StateDisclosureFeePaidBy> TransferFeePaidBy { get => _transferFeePaidBy; set => SetField(ref _transferFeePaidBy, value); }
 
         /// <summary>
         /// Disclosure - TX - Texas Veterans Land Board [DISCLOSURE.X955]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure - TX - Texas Veterans Land Board", OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
         public bool? TxVeteransLandBoardIndicator { get => _txVeteransLandBoardIndicator; set => SetField(ref _txVeteransLandBoardIndicator, value); }
 
         /// <summary>
         /// Disclosure-NY Type of Property [DISCLOSURE.X996]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NY Type of Property")]
         public StringEnumValue<TypeOfProperty> TypeOfProperty { get => _typeOfProperty; set => SetField(ref _typeOfProperty, value); }
 
         /// <summary>
         /// Disclosure-TX Underwriting Fee Descr [DISCLOSURE.X88]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-TX Underwriting Fee Descr")]
         public string UnderwritingContact { get => _underwritingContact; set => SetField(ref _underwritingContact, value); }
 
         /// <summary>
         /// Disclosure-TX Underwriting Fee [DISCLOSURE.X89]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-TX Underwriting Fee")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UnderwritingFee { get => _underwritingFee; set => SetField(ref _underwritingFee, value); }
 
         /// <summary>
         /// Disclosure-NV Yield Spread Premium (YSP) Charged Amount [DISCLOSURE.X931]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclosure-NV Yield Spread Premium (YSP) Charged Amount")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? YSPChargedAmount { get => _ySPChargedAmount; set => SetField(ref _ySPChargedAmount, value); }
 
         /// <summary>
         /// Disclosure-NV Yield Spread Premium (YSP) Indicator [DISCLOSURE.X930]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Yield Spread Premium (YSP) Indicator")]
         public bool? YSPChargedIndicator { get => _ySPChargedIndicator; set => SetField(ref _ySPChargedIndicator, value); }
 
         /// <summary>
         /// Disclosure-NV Yield Spread Premium (YSP) Decreases Interest Rate By [DISCLOSURE.X934]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-NV Yield Spread Premium (YSP) Decreases Interest Rate By")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? YSPDecreasesRate { get => _ySPDecreasesRate; set => SetField(ref _ySPDecreasesRate, value); }
 
         /// <summary>
         /// Disclosure-NV Yield Spread Premium (YSP) Increases Interest Rate By [DISCLOSURE.X935]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "Disclosure-NV Yield Spread Premium (YSP) Increases Interest Rate By")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? YSPIncreasesRate { get => _ySPIncreasesRate; set => SetField(ref _ySPIncreasesRate, value); }
 
         /// <summary>
         /// Disclosure-NV Identify one of three possible impacts of Yield Spread Premium (YSP) on the Interest Rate [DISCLOSURE.X933]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Identify one of three possible impacts of Yield Spread Premium (YSP) on the Interest Rate")]
         public StringEnumValue<InterestRateImpactedStatus> YSPInterestRateImpactedStatus { get => _ySPInterestRateImpactedStatus; set => SetField(ref _ySPInterestRateImpactedStatus, value); }
 
         /// <summary>
         /// Disclosure-NV Yield Spread Premium (YSP)  Paid By [DISCLOSURE.X932]
         /// </summary>
-        [LoanFieldProperty(Description = "Disclosure-NV Yield Spread Premium (YSP)  Paid By")]
         public StringEnumValue<StateDisclosureFeePaidBy> YSPPaidBy { get => _ySPPaidBy; set => SetField(ref _ySPPaidBy, value); }
     }
 }

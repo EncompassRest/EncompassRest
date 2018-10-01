@@ -34,7 +34,8 @@ namespace EncompassRest
 
             foreach (var customField in customFieldsList)
             {
-                retrievedCustomFields[customField.Id] = new NonStandardFieldDescriptor(customField.Id, LoanFieldDescriptors.CreateModelPath($"Loan.CustomFields[(FieldName == '{customField.Id}')].StringValue"), LoanFieldType.Custom, customField.Description, customField.Format, customField.Options?.Select(o => new FieldOption(o)).ToList(), false);
+                var modelPath = $"Loan.CustomFields[(FieldName == '{customField.Id}')].StringValue";
+                retrievedCustomFields[customField.Id] = new NonStandardFieldDescriptor(customField.Id, LoanFieldDescriptors.CreateModelPath(modelPath), modelPath, customField.Description, customField.Format, customField.Options?.Select(o => new FieldOption(o)).ToList(), false);
             }
 
             var customFields = _customFields;

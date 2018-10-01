@@ -24,13 +24,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trust Acct Trans Descr Date [TANNDT]
         /// </summary>
-        [LoanFieldProperty(Description = "Trust Acct Trans Descr Date")]
         public DateTime? Date { get => _date; set => SetField(ref _date, value); }
 
         /// <summary>
         /// Trust Acct Trans Descr [TANNDS]
         /// </summary>
-        [LoanFieldProperty(Description = "Trust Acct Trans Descr")]
         public string Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
@@ -41,31 +39,28 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trust Acct Trans Descr Notes [TANNNO]
         /// </summary>
-        [LoanFieldProperty(Description = "Trust Acct Trans Descr Notes")]
         public string Notes { get => _notes; set => SetField(ref _notes, value); }
 
         /// <summary>
         /// Trust Acct Trans Descr Pymt Amt [TANNPA]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trust Acct Trans Descr Pymt Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaymentAmount { get => _paymentAmount; set => SetField(ref _paymentAmount, value); }
 
         /// <summary>
         /// Trust Acct Trans Descr Pymt Check [TANNPC]
         /// </summary>
-        [LoanFieldProperty(Description = "Trust Acct Trans Descr Pymt Check")]
         public string PaymentCheckNo { get => _paymentCheckNo; set => SetField(ref _paymentCheckNo, value); }
 
         /// <summary>
         /// Trust Acct Trans Descr Receipt Amt [TANNRA]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Trust Acct Trans Descr Receipt Amt")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReceiptAmount { get => _receiptAmount; set => SetField(ref _receiptAmount, value); }
 
         /// <summary>
         /// Trust Acct Trans Descr Receipt Check [TANNRC]
         /// </summary>
-        [LoanFieldProperty(Description = "Trust Acct Trans Descr Receipt Check")]
         public string ReceiptCheckNo { get => _receiptCheckNo; set => SetField(ref _receiptCheckNo, value); }
 
         /// <summary>
