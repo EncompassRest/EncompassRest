@@ -1,6 +1,4 @@
-﻿using EncompassRest.Loans.Apis;
-
-namespace EncompassRest.Loans
+﻿namespace EncompassRest.Loans
 {
     public sealed class LoanObjectBoundApis : LoanApis
     {
@@ -13,7 +11,5 @@ namespace EncompassRest.Loans
         {
             Loan = loan;
         }
-
-        internal override BorrowerPairs CreateBorrowerPairs() => new BorrowerPairs(Client, this);
     }
 }

@@ -44,6 +44,8 @@ namespace EncompassRest
 
         internal Task<List<T>> GetDirtyListAsync<T>(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) where T : class, IDirty => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, DirtyFuncCache<T>.ReadAsDirtyListFunc);
 
+        internal Task GetPopulateDirtyAsync(string requestUri, string queryString, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, target, populate, cancellationToken);
+
         internal Task<string> GetRawAsync(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
         internal Task<T> PostAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, FuncCache<T>.ReadAsFunc);

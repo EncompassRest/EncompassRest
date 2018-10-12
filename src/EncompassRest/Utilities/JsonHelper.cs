@@ -163,7 +163,7 @@ namespace EncompassRest.Utilities
                     }
                     if (setValue)
                     {
-                        propertyValueProvider.SetValue(target, sourceValue);
+                        propertyValueProvider.SetValue(target, sourceValue is IValue v ? v.Value : sourceValue);
                     }
                 }
             }
@@ -233,7 +233,7 @@ namespace EncompassRest.Utilities
                 {
                     var targetItem = (DirtyExtensibleObject)target[i];
                     var id = ((IIdentifiable)targetItem)?.Id;
-                    if (!string.IsNullOrEmpty(id) && sourceEnumerable.GetById(id) == null)
+                    if (!string.IsNullOrEmpty(id) && Extensions.IndexOf(sourceEnumerable, id) < 0)
                     {
                         target.RemoveAt(i);
                         targetItem.ClearPropertyChangedEvent();
@@ -246,7 +246,11 @@ namespace EncompassRest.Utilities
                     DirtyExtensibleObject existing = null;
                     if (!string.IsNullOrEmpty(id))
                     {
-                        existing = targetEnumerable.GetById(id);
+                        var index = Extensions.IndexOf(targetEnumerable, id);
+                        if (index >= 0)
+                        {
+                            existing = (DirtyExtensibleObject)target[index];
+                        }
                     }
                     if (existing != null)
                     {

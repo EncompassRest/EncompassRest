@@ -9,19 +9,14 @@ namespace EncompassRest.Loans.Apis
 {
     public sealed class BorrowerPairs : LoanApiObject<Application>
     {
-        internal BorrowerPairs(EncompassRestClient client, LoanObjectBoundApis loanObjectBoundApis)
-            : base(client, loanObjectBoundApis, "applications")
-        {
-        }
-
-        internal BorrowerPairs(EncompassRestClient client, string loanId)
-            : base(client, loanId, "applications")
+        internal BorrowerPairs(EncompassRestClient client, LoanObjectBoundApis loanObjectBoundApis, string loanId)
+            : base(client, loanObjectBoundApis, loanId, "applications")
         {
         }
 
         internal override IList<Application> GetInLoan(Loan loan) => loan.Applications;
 
-        public Task<List<Application>> GetBorrowerPairsAsync(CancellationToken cancellationToken = default) => GetAllAsync<Application>(nameof(GetBorrowerPairsAsync), cancellationToken);
+        public Task<IList<Application>> GetBorrowerPairsAsync(CancellationToken cancellationToken = default) => GetAllAsync(nameof(GetBorrowerPairsAsync), cancellationToken);
 
         public Task<string> GetBorrowerPairsRawAsync(string queryString = null, CancellationToken cancellation = default) => GetRawAsync(null, queryString, nameof(GetBorrowerPairsRawAsync), null, cancellation);
 
@@ -29,7 +24,7 @@ namespace EncompassRest.Loans.Apis
         {
             Preconditions.NotNullOrEmpty(applicationId, nameof(applicationId));
 
-            return GetAsync<Application>(applicationId, nameof(GetBorrowerPairAsync), cancellationToken);
+            return GetAsync(applicationId, nameof(GetBorrowerPairAsync), cancellationToken);
         }
 
         public Task<string> GetBorrowerPairRawAsync(string applicationId, string queryString = null, CancellationToken cancellationToken = default)
@@ -78,7 +73,7 @@ namespace EncompassRest.Loans.Apis
         {
             Preconditions.NotNullOrEmpty(applicationId, nameof(applicationId));
 
-            return DeleteAsync<Application>(applicationId, cancellationToken);
+            return DeleteAsync(applicationId, cancellationToken);
         }
 
         public async Task MoveBorrowerPairsAsync(IList<Application> applications, CancellationToken cancellationToken = default)

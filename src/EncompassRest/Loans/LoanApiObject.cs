@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
@@ -20,52 +19,59 @@ namespace EncompassRest.Loans
     }
 
     public abstract class LoanApiObject<T> : LoanApiObject
-        where T : class
+        where T : DirtyExtensibleObject
     {
         internal readonly LoanObjectBoundApis LoanObjectBoundApis;
 
-        internal LoanApiObject(EncompassRestClient client, LoanObjectBoundApis loanObjectBoundApis, string baseApiPath)
-            : this(client, loanObjectBoundApis.LoanId, baseApiPath)
+        internal LoanApiObject(EncompassRestClient client, LoanObjectBoundApis loanObjectBoundApis, string loanId, string baseApiPath)
+            : base(client, loanId, baseApiPath)
         {
             LoanObjectBoundApis = loanObjectBoundApis;
         }
 
-        internal LoanApiObject(EncompassRestClient client, string loanId, string baseApiPath)
-            : base(client, loanId, baseApiPath)
-        {
-        }
-
         internal abstract IList<T> GetInLoan(Loan loan);
 
-        internal async Task<List<TClass>> GetAllAsync<TClass>(string methodName, CancellationToken cancellationToken)
-            where TClass : class, T, IDirty, IIdentifiable
+        internal async Task<IList<T>> GetAllAsync(string methodName, CancellationToken cancellationToken)
         {
-            var list = await GetDirtyListAsync<TClass>(null, null, methodName, null, cancellationToken).ConfigureAwait(false);
+            IList<T> list;
             if (LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
-                var existing = GetInLoan(LoanObjectBoundApis.Loan);
-                existing.Clear();
-                foreach (var item in list)
-                {
-                    existing.Add(item);
-                }
+                list = GetInLoan(LoanObjectBoundApis.Loan);
+                await GetPopulateDirtyAsync(null, null, methodName, null, (IDirty)list, true, cancellationToken).ConfigureAwait(false);
+            }
+            else
+            {
+                list = await GetDirtyListAsync<T>(null, null, methodName, null, cancellationToken).ConfigureAwait(false);
             }
             return list;
         }
 
-        internal async Task<TClass> GetAsync<TClass>(string id, string methodName, CancellationToken cancellationToken)
-            where TClass : class, T, IDirty, IIdentifiable
+        internal async Task<T> GetAsync(string id, string methodName, CancellationToken cancellationToken)
         {
-            var value = await GetDirtyAsync<TClass>(id, null, methodName, id, cancellationToken).ConfigureAwait(false);
+            T value;
             if (LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
-                AddToOrUpdateLoan(value);
+                var list = GetInLoan(LoanObjectBoundApis.Loan);
+                var index = list.IndexOf(id);
+                if (index >= 0)
+                {
+                    value = list[index];
+                    await GetPopulateDirtyAsync(id, null, methodName, id, value, true, cancellationToken).ConfigureAwait(false);
+                }
+                else
+                {
+                    value = await GetDirtyAsync<T>(id, null, methodName, id, cancellationToken).ConfigureAwait(false);
+                    list.Add(value);
+                }
+            }
+            else
+            {
+                value = await GetDirtyAsync<T>(id, null, methodName, id, cancellationToken).ConfigureAwait(false);
             }
             return value;
         }
 
-        internal async Task<string> CreateAsync<TClass>(TClass value, string methodName, bool populate, CancellationToken cancellationToken)
-            where TClass : class, T, IDirty, IIdentifiable
+        internal async Task<string> CreateAsync(T value, string methodName, bool populate, CancellationToken cancellationToken)
         {
             var id = await PostPopulateDirtyAsync(null, methodName, value, populate, cancellationToken).ConfigureAwait(false);
             if (LoanObjectBoundApis?.ReflectToLoanObject == true)
@@ -75,53 +81,51 @@ namespace EncompassRest.Loans
             return id;
         }
 
-        internal async Task UpdateAsync<TClass>(TClass value, string methodName, bool populate, CancellationToken cancellationToken)
-            where TClass : class, T, IDirty, IIdentifiable
+        internal async Task UpdateAsync(T value, string methodName, bool populate, CancellationToken cancellationToken)
         {
-            await PatchPopulateDirtyAsync(value.Id, JsonStreamContent.Create(value), methodName, value.Id, value, populate, cancellationToken).ConfigureAwait(false);
+            var id = ((IIdentifiable)value).Id;
+            var content = JsonStreamContent.Create(value);
             if (LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
-                AddToOrUpdateLoan(value);
+                var list = GetInLoan(LoanObjectBoundApis.Loan);
+                var index = list.IndexOf(id);
+                if (index >= 0)
+                {
+                    var existing = list[index];
+                    await PatchPopulateDirtyAsync(id, content, methodName, id, existing, populate, cancellationToken).ConfigureAwait(false);
+                    if (!populate)
+                    {
+                        content = JsonStreamContent.Create(value);
+                        await content.PopulateAsync(existing).ConfigureAwait(false);
+                        value.Dirty = false;
+                        existing.Dirty = false;
+                    }
+                }
+                else
+                {
+                    await PatchPopulateDirtyAsync(id, content, methodName, id, value, populate, cancellationToken).ConfigureAwait(false);
+                    list.Add(value);
+                }
+            }
+            else
+            {
+                await PatchPopulateDirtyAsync(id, content, methodName, id, value, populate, cancellationToken).ConfigureAwait(false);
             }
         }
 
-        internal async Task<bool> DeleteAsync<TClass>(string id, CancellationToken cancellationToken)
-            where TClass : class, T, IDirty, IIdentifiable
+        internal async Task<bool> DeleteAsync(string id, CancellationToken cancellationToken)
         {
             var success = await DeleteAsync(id, null, cancellationToken).ConfigureAwait(false);
             if (success && LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 var list = GetInLoan(LoanObjectBoundApis.Loan);
-                for (var i = 0; i < list.Count; ++i)
+                var index = list.IndexOf(id);
+                if (index >= 0)
                 {
-                    if (string.Equals(((IIdentifiable)list[i]).Id, id, StringComparison.OrdinalIgnoreCase))
-                    {
-                        list.RemoveAt(i);
-                        break;
-                    }
+                    list.RemoveAt(index);
                 }
             }
             return success;
-        }
-
-        private void AddToOrUpdateLoan<TClass>(TClass item)
-            where TClass : class, T, IDirty, IIdentifiable
-        {
-            var list = GetInLoan(LoanObjectBoundApis.Loan);
-            var found = false;
-            for (var i = 0; i < list.Count; ++i)
-            {
-                if (string.Equals(((IIdentifiable)list[i]).Id, item.Id, StringComparison.OrdinalIgnoreCase))
-                {
-                    list[i] = item;
-                    found = true;
-                    break;
-                }
-            }
-            if (!found)
-            {
-                list.Add(item);
-            }
         }
     }
 }

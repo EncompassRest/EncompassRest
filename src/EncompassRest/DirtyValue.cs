@@ -7,7 +7,7 @@ namespace EncompassRest
     /// Value wrapper to use for dirty checking.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal sealed class DirtyValue<T> : IDirty
+    internal sealed class DirtyValue<T> : IDirty, IValue
     {
         public static implicit operator T(DirtyValue<T> value) => value != null ? value._value : default;
 
@@ -33,6 +33,8 @@ namespace EncompassRest
                 }
             }
         }
+
+        object IValue.Value => _value;
 
         public DirtyValue(T value)
         {

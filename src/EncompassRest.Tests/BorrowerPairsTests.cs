@@ -29,8 +29,8 @@ namespace EncompassRest.Tests
             Assert.AreEqual(0, loan.Applications.Count);
             loan.LoanApis.ReflectToLoanObject = true;
             var borrowerPairs = await loan.LoanApis.BorrowerPairs.GetBorrowerPairsAsync();
+            Assert.AreSame(loan.Applications, borrowerPairs);
             Assert.IsTrue(loan.Applications.Count > 0);
-            Assert.AreEqual(borrowerPairs.Count, loan.Applications.Count);
             Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToJson());
             var oldCount = loan.Applications.Count;
             var application = new Application();

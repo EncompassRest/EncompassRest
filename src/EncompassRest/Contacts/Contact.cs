@@ -1,4 +1,5 @@
-﻿using EncompassRest.Utilities;
+﻿using System;
+using EncompassRest.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
 
@@ -6,6 +7,8 @@ namespace EncompassRest.Contacts
 {
     public abstract class Contact : DirtyExtensibleObject, IIdentifiable
     {
+        private ContactNotes _notes;
+
         private DirtyValue<string> _firstName;
         public string FirstName { get => _firstName; set => SetField(ref _firstName, value); }
         private DirtyValue<string> _lastName;
@@ -44,7 +47,7 @@ namespace EncompassRest.Contacts
         public EncompassRestClient Client { get; private set; }
 
         [JsonIgnore]
-        public ContactNotes Notes { get; private set; }
+        public ContactNotes Notes => _notes ?? throw new InvalidOperationException("Contact object must be initialized to use Notes");
 
         internal Contact(EncompassRestClient client, string contactId)
         {
@@ -64,7 +67,7 @@ namespace EncompassRest.Contacts
             {
                 Client = client;
                 Id = contactId;
-                Notes = new ContactNotes(client, Id, ApiPath);
+                _notes = new ContactNotes(client, Id, ApiPath);
             }
         }
     }
