@@ -10,6 +10,7 @@ namespace EncompassRest
     public abstract class ExtensibleObject : SerializableObject
     {
         private protected DirtyDictionary<string, object> _extensionData;
+
         /// <summary>
         /// Extension Data
         /// </summary>

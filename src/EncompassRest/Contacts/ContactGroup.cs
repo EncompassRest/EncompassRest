@@ -10,21 +10,27 @@ namespace EncompassRest.Contacts
     public sealed class ContactGroup : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
+        private StringEnumValue<ContactType> _contactType;
+        private StringEnumValue<ContactGroupType> _groupType;
+        private string _name;
+        private DirtyValue<string> _description;
+        private NeverSerializeValue<DateTime?> _createdDate;
+
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get => _id; set => SetField(ref _id, value); }
-        private StringEnumValue<ContactType> _contactType;
+
         [JsonRequired]
         public StringEnumValue<ContactType> ContactType { get => _contactType; set => SetField(ref _contactType, value); }
-        private StringEnumValue<ContactGroupType> _groupType;
+
         [JsonRequired]
         public StringEnumValue<ContactGroupType> GroupType { get => _groupType; set => SetField(ref _groupType, value); }
-        private string _name;
+
         [JsonRequired]
         public string Name { get => _name; set => SetField(ref _name, value); }
-        private DirtyValue<string> _description;
+
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get => _description; set => SetField(ref _description, value); }
-        private NeverSerializeValue<DateTime?> _createdDate;
+
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public DateTime? CreatedDate { get => _createdDate; private set => SetField(ref _createdDate, value); }
 
