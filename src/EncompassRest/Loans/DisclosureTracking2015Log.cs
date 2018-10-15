@@ -11,6 +11,15 @@ namespace EncompassRest.Loans
     public sealed partial class DisclosureTracking2015Log : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _actualFulfillmentDate;
+        private DirtyValue<string> _actualLECD3TotalClosingCostJFromLatestRec;
+        private DirtyValue<string> _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec;
+        private DirtyValue<string> _actualLELoanAmountFromLatestRec;
+        private DirtyValue<string> _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec;
+        private DirtyValue<string> _actualSTDLEClosingCostFinancedFromLatestRec;
+        private DirtyValue<string> _actualSTDLEDepositFromLatestRec;
+        private DirtyValue<string> _actualSTDLEFundForBorrowerFromLatestRec;
+        private DirtyValue<string> _actualSTDLESellerCreditsFromLatestRec;
+        private DirtyValue<string> _actualSTDLETotalClosingCostJFromLatestRec;
         private DirtyList<LogAlert> _alerts;
         private DirtyValue<string> _alertsXml;
         private DirtyValue<DateTime?> _applicationDate;
@@ -19,11 +28,13 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _borrowerActualReceivedDate;
         private DirtyValue<string> _borrowerDisclosedMethod;
         private DirtyValue<string> _borrowerDisclosedMethodOther;
+        private DirtyValue<bool?> _borrowerLoanLevelConsentMapForCC;
         private DirtyValue<string> _borrowerName;
         private DirtyValue<string> _borrowerPairId;
         private DirtyValue<DateTime?> _borrowerPresumedReceivedDate;
         private DirtyValue<string> _borrowerType;
         private DirtyValue<bool?> _brokerDisclosed;
+        private DirtyValue<DateTime?> _cDDateIssued;
         private DirtyValue<bool?> _cDReasonIs24HourAdvancePreview;
         private DirtyValue<bool?> _cDReasonIsChangedCircumstanceEligibility;
         private DirtyValue<bool?> _cDReasonIsChangeInAPR;
@@ -45,9 +56,11 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _chargesThatCannotDecreaseLE7;
         private DirtyValue<string> _chargesThatCannotIncreaseItemization13;
         private DirtyValue<string> _chargesThatCannotIncreaseLE11;
+        private DirtyValue<DateTime?> _closingDate;
         private DirtyValue<DateTime?> _coBorrowerActualReceivedDate;
         private DirtyValue<string> _coBorrowerDisclosedMethod;
         private DirtyValue<string> _coBorrowerDisclosedMethodOther;
+        private DirtyValue<bool?> _coBorrowerLoanLevelConsentMapForCC;
         private DirtyValue<string> _coBorrowerName;
         private DirtyValue<DateTime?> _coBorrowerPresumedReceivedDate;
         private DirtyValue<string> _coBorrowerType;
@@ -122,6 +135,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _eDisclosurePackageId;
         private DirtyValue<string> _eDisclosurePackageViewableFile;
         private DirtyValue<bool?> _eDisclosureThreeDayPackageIndicator;
+        private DirtyValue<string> _eDSRequestGuid;
         private DirtyValue<string> _estimatedTotalPayoffsAndPaymentsAmount;
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         private DirtyValue<string> _financeCharge;
@@ -183,6 +197,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _line912InsuranceIndicator2015;
         private DirtyValue<string> _line912PropertyIndicator2015;
         private DirtyValue<string> _line912TaxesIndicator2015;
+        private DirtyValue<string> _linkedGuid;
         private DirtyValue<string> _loanAdjustmentsOtherCredits;
         private DirtyValue<string> _loanAmount;
         private DirtyValue<string> _loanClosingCost2BorrowerClosingCostAtClosing;
@@ -248,12 +263,59 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _revisedDueDate;
         private DirtyList<LogSnapshotField> _snapshotFields;
         private DirtyValue<string> _snapshotXml;
+        private DirtyValue<string> _sTDAdjustmentAndOtherCreditsRemark;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// DisclosureTracking2015Log ActualFulfillmentDate
         /// </summary>
         public DateTime? ActualFulfillmentDate { get => _actualFulfillmentDate; set => SetField(ref _actualFulfillmentDate, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log ActualLECD3TotalClosingCostJFromLatestRec
+        /// </summary>
+        public string ActualLECD3TotalClosingCostJFromLatestRec { get => _actualLECD3TotalClosingCostJFromLatestRec; set => SetField(ref _actualLECD3TotalClosingCostJFromLatestRec, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log ActualLECD3TotalPayoffsAndPaymentsKFromLatestRec
+        /// </summary>
+        public string ActualLECD3TotalPayoffsAndPaymentsKFromLatestRec { get => _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec; set => SetField(ref _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log ActualLELoanAmountFromLatestRec
+        /// </summary>
+        public string ActualLELoanAmountFromLatestRec { get => _actualLELoanAmountFromLatestRec; set => SetField(ref _actualLELoanAmountFromLatestRec, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log ActualSTDLEAdjustmentAndOtherCreditsFromLatestRec
+        /// </summary>
+        public string ActualSTDLEAdjustmentAndOtherCreditsFromLatestRec { get => _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec; set => SetField(ref _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log ActualSTDLEClosingCostFinancedFromLatestRec
+        /// </summary>
+        public string ActualSTDLEClosingCostFinancedFromLatestRec { get => _actualSTDLEClosingCostFinancedFromLatestRec; set => SetField(ref _actualSTDLEClosingCostFinancedFromLatestRec, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log ActualSTDLEDepositFromLatestRec
+        /// </summary>
+        public string ActualSTDLEDepositFromLatestRec { get => _actualSTDLEDepositFromLatestRec; set => SetField(ref _actualSTDLEDepositFromLatestRec, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log ActualSTDLEFundForBorrowerFromLatestRec
+        /// </summary>
+        public string ActualSTDLEFundForBorrowerFromLatestRec { get => _actualSTDLEFundForBorrowerFromLatestRec; set => SetField(ref _actualSTDLEFundForBorrowerFromLatestRec, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log ActualSTDLESellerCreditsFromLatestRec
+        /// </summary>
+        public string ActualSTDLESellerCreditsFromLatestRec { get => _actualSTDLESellerCreditsFromLatestRec; set => SetField(ref _actualSTDLESellerCreditsFromLatestRec, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log ActualSTDLETotalClosingCostJFromLatestRec
+        /// </summary>
+        public string ActualSTDLETotalClosingCostJFromLatestRec { get => _actualSTDLETotalClosingCostJFromLatestRec; set => SetField(ref _actualSTDLETotalClosingCostJFromLatestRec, value); }
 
         /// <summary>
         /// DisclosureTracking2015Log Alerts
@@ -296,6 +358,11 @@ namespace EncompassRest.Loans
         public string BorrowerDisclosedMethodOther { get => _borrowerDisclosedMethodOther; set => SetField(ref _borrowerDisclosedMethodOther, value); }
 
         /// <summary>
+        /// DisclosureTracking2015Log BorrowerLoanLevelConsentMapForCC
+        /// </summary>
+        public bool? BorrowerLoanLevelConsentMapForCC { get => _borrowerLoanLevelConsentMapForCC; set => SetField(ref _borrowerLoanLevelConsentMapForCC, value); }
+
+        /// <summary>
         /// DisclosureTracking2015Log BorrowerName
         /// </summary>
         public string BorrowerName { get => _borrowerName; set => SetField(ref _borrowerName, value); }
@@ -319,6 +386,11 @@ namespace EncompassRest.Loans
         /// DisclosureTracking2015Log BrokerDisclosed
         /// </summary>
         public bool? BrokerDisclosed { get => _brokerDisclosed; set => SetField(ref _brokerDisclosed, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log CDDateIssued
+        /// </summary>
+        public DateTime? CDDateIssued { get => _cDDateIssued; set => SetField(ref _cDDateIssued, value); }
 
         /// <summary>
         /// DisclosureTracking2015Log CDReasonIs24HourAdvancePreview
@@ -426,6 +498,11 @@ namespace EncompassRest.Loans
         public string ChargesThatCannotIncreaseLE11 { get => _chargesThatCannotIncreaseLE11; set => SetField(ref _chargesThatCannotIncreaseLE11, value); }
 
         /// <summary>
+        /// DisclosureTracking2015Log ClosingDate
+        /// </summary>
+        public DateTime? ClosingDate { get => _closingDate; set => SetField(ref _closingDate, value); }
+
+        /// <summary>
         /// DisclosureTracking2015Log CoBorrowerActualReceivedDate
         /// </summary>
         public DateTime? CoBorrowerActualReceivedDate { get => _coBorrowerActualReceivedDate; set => SetField(ref _coBorrowerActualReceivedDate, value); }
@@ -439,6 +516,11 @@ namespace EncompassRest.Loans
         /// DisclosureTracking2015Log CoBorrowerDisclosedMethodOther
         /// </summary>
         public string CoBorrowerDisclosedMethodOther { get => _coBorrowerDisclosedMethodOther; set => SetField(ref _coBorrowerDisclosedMethodOther, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log CoBorrowerLoanLevelConsentMapForCC
+        /// </summary>
+        public bool? CoBorrowerLoanLevelConsentMapForCC { get => _coBorrowerLoanLevelConsentMapForCC; set => SetField(ref _coBorrowerLoanLevelConsentMapForCC, value); }
 
         /// <summary>
         /// DisclosureTracking2015Log CoBorrowerName
@@ -811,6 +893,11 @@ namespace EncompassRest.Loans
         public bool? EDisclosureThreeDayPackageIndicator { get => _eDisclosureThreeDayPackageIndicator; set => SetField(ref _eDisclosureThreeDayPackageIndicator, value); }
 
         /// <summary>
+        /// DisclosureTracking2015Log EDSRequestGuid
+        /// </summary>
+        public string EDSRequestGuid { get => _eDSRequestGuid; set => SetField(ref _eDSRequestGuid, value); }
+
+        /// <summary>
         /// DisclosureTracking2015Log EstimatedTotalPayoffsAndPaymentsAmount
         /// </summary>
         public string EstimatedTotalPayoffsAndPaymentsAmount { get => _estimatedTotalPayoffsAndPaymentsAmount; set => SetField(ref _estimatedTotalPayoffsAndPaymentsAmount, value); }
@@ -1114,6 +1201,11 @@ namespace EncompassRest.Loans
         /// DisclosureTracking2015Log Line912TaxesIndicator2015
         /// </summary>
         public string Line912TaxesIndicator2015 { get => _line912TaxesIndicator2015; set => SetField(ref _line912TaxesIndicator2015, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log LinkedGuid
+        /// </summary>
+        public string LinkedGuid { get => _linkedGuid; set => SetField(ref _linkedGuid, value); }
 
         /// <summary>
         /// DisclosureTracking2015Log LoanAdjustmentsOtherCredits
@@ -1441,8 +1533,18 @@ namespace EncompassRest.Loans
         public string SnapshotXml { get => _snapshotXml; set => SetField(ref _snapshotXml, value); }
 
         /// <summary>
+        /// DisclosureTracking2015Log STDAdjustmentAndOtherCreditsRemark
+        /// </summary>
+        public string STDAdjustmentAndOtherCreditsRemark { get => _sTDAdjustmentAndOtherCreditsRemark; set => SetField(ref _sTDAdjustmentAndOtherCreditsRemark, value); }
+
+        /// <summary>
         /// DisclosureTracking2015Log SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

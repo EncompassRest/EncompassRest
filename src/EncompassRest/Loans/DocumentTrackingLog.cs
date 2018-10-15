@@ -21,6 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _logDate;
         private DirtyValue<string> _organization;
         private DirtyValue<bool?> _phone;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// DocumentTrackingLog Action
@@ -76,5 +77,10 @@ namespace EncompassRest.Loans
         /// DocumentTrackingLog Phone
         /// </summary>
         public bool? Phone { get => _phone; set => SetField(ref _phone, value); }
+
+        /// <summary>
+        /// DocumentTrackingLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

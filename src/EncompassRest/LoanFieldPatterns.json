@@ -140,6 +140,81 @@
     "Description": "Affiliated Business Arrangements - Settlement Indicator #{0}"
   },
   {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].AlertTriggerFieldID",
+    "FieldId": "XCOC{0:00}01",
+    "Description": "Good Faith Change of Circumstance - Alert Trigger Field ID #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].AltId",
+    "FieldId": "XCOC{0:00}98",
+    "Description": "Good Faith Change of Circumstance - Record ID #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceAlertBaseline",
+    "FieldId": "XCOC{0:00}12",
+    "Description": "Good Faith Change of Circumstance - Alert - Baseline #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceAlertDisclosedAmount",
+    "FieldId": "XCOC{0:00}13",
+    "Description": "Good Faith Change of Circumstance - Alert - Disclosed Amount #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceAlertFeeDescription",
+    "FieldId": "XCOC{0:00}10",
+    "Description": "Good Faith Change of Circumstance - Alert - Fee Description #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceAlertInitialAmount",
+    "FieldId": "XCOC{0:00}11",
+    "Description": "Good Faith Change of Circumstance - Alert - Initial Amount #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceAlertItemizationAmount",
+    "FieldId": "XCOC{0:00}14",
+    "Description": "Good Faith Change of Circumstance - Alert - Itemization Amount #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceAlertVarianceAmount",
+    "FieldId": "XCOC{0:00}15",
+    "Description": "Good Faith Change of Circumstance - Alert - Variance Amount #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceCategory",
+    "FieldId": "XCOC{0:00}09",
+    "Description": "Good Faith Change of Circumstance - Changed Circumstance Category #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceComments",
+    "FieldId": "XCOC{0:00}06",
+    "Description": "Good Faith Change of Circumstance - Changed Circumstance Comments #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceDate",
+    "FieldId": "XCOC{0:00}03",
+    "Description": "Good Faith Change of Circumstance - Changes Received Date #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceDescription",
+    "FieldId": "XCOC{0:00}05",
+    "Description": "Good Faith Change of Circumstance - Changed Circumstance Description #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceReason",
+    "FieldId": "XCOC{0:00}07",
+    "Description": "Good Faith Change of Circumstance - Changed Circumstance Reason #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].ChangedCircumstanceReasonOther",
+    "FieldId": "XCOC{0:00}08",
+    "Description": "Good Faith Change of Circumstance - Changed Circumstance Reason Other #{0}"
+  },
+  {
+    "ModelPath": "Loan.AlertChangeCircumstances[{0}].RevisedDueDate",
+    "FieldId": "XCOC{0:00}04",
+    "Description": "Good Faith Change of Circumstance - Revised LE/CD Due Date #{0}"
+  },
+  {
     "ModelPath": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].Alias",
     "FieldId": "TR{0:00}02",
     "Description": "Vesting Party - Alias #{0}"
@@ -158,6 +233,11 @@
     "ModelPath": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].DateOfBirth",
     "FieldId": "TR{0:00}12",
     "Description": "Vesting Party - POA Date of Birth #{0}"
+  },
+  {
+    "ModelPath": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].NBORecordID",
+    "FieldId": "TR{0:00}99",
+    "Description": "Vesting Party - Non-Borrowing Owner Record ID #{0}"
   },
   {
     "ModelPath": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].OccupancyIntent",
@@ -740,6 +820,21 @@
     "Description": "Liability Creditor Contact #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].BankLiabilityConsideredIndicator",
+    "FieldId": "FL{0:00}30",
+    "Description": "Bank Liability Considered in Exposure Indicator #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].CreditLimit",
+    "FieldId": "FL{0:00}31",
+    "Description": "Credit Limit #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].CurrentLienPosition",
+    "FieldId": "FL{0:00}28",
+    "Description": "Current Lien Position #{0}"
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].Date",
     "FieldId": "FL{0:00}98",
     "Description": "Liability Request Date #{0}"
@@ -895,6 +990,11 @@
     "Description": "Liabilities Install Mos to Exclude #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].MortgageType",
+    "FieldId": "FL{0:00}32",
+    "Description": "Mortgage Type #{0}"
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].NameInAccount",
     "FieldId": "FL{0:00}09",
     "Description": "Liability Account Name #{0}"
@@ -935,6 +1035,11 @@
     "Description": "Liability Print User Name as Title #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].ProposedLienPosition",
+    "FieldId": "FL{0:00}29",
+    "Description": "Proposed Lien Position #{0}"
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].RemainingTermMonths",
     "FieldId": "FL{0:00}12",
     "Description": "Liability Months Remaining #{0}"
@@ -953,6 +1058,11 @@
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].SubjectLoanResubordinationIndicator",
     "FieldId": "FL{0:00}26",
     "Description": "Liability Resubordinated Indicator #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].SubjectPropertyIndicator",
+    "FieldId": "FL{0:00}27",
+    "Description": "Subject Property Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].Title",
@@ -3000,6 +3110,11 @@
     "Description": "Non-Borrowing Owner File Contact - Vesting Type #{0}"
   },
   {
+    "ModelPath": "Loan.NonBorrowingOwners[{0}].BorrowerVestingRecordID",
+    "FieldId": "NBOC{0:00}99",
+    "Description": "Non-Borrowing Owner File Contact - Borrower Vesting Record ID #{0}"
+  },
+  {
     "ModelPath": "Loan.NonBorrowingOwners[{0}].BusinessPhoneNumber",
     "FieldId": "NBOC{0:00}13",
     "Description": "Non-Borrowing Owner File Contact - Business Phone Number #{0}"
@@ -3018,6 +3133,31 @@
     "ModelPath": "Loan.NonBorrowingOwners[{0}].Email",
     "FieldId": "NBOC{0:00}11",
     "Description": "Non-Borrowing Owner File Contact - Email #{0}"
+  },
+  {
+    "ModelPath": "Loan.NonBorrowingOwners[{0}].eSignConsentNBOCDateAccepted",
+    "FieldId": "NBOC{0:00}18",
+    "Description": "Non-Borrowing Owner eConsent Date Accepted #{0}"
+  },
+  {
+    "ModelPath": "Loan.NonBorrowingOwners[{0}].eSignConsentNBOCDateSent",
+    "FieldId": "NBOC{0:00}21",
+    "Description": "Non-Borrowing Owner eConsent Sent Date #{0}"
+  },
+  {
+    "ModelPath": "Loan.NonBorrowingOwners[{0}].eSignConsentNBOCIPAddress",
+    "FieldId": "NBOC{0:00}19",
+    "Description": "Non-Borrowing Owner eConsent IP Address #{0}"
+  },
+  {
+    "ModelPath": "Loan.NonBorrowingOwners[{0}].eSignConsentNBOCSource",
+    "FieldId": "NBOC{0:00}20",
+    "Description": "Non-Borrowing Owner eConsent Source #{0}"
+  },
+  {
+    "ModelPath": "Loan.NonBorrowingOwners[{0}].eSignConsentNBOCStatus",
+    "FieldId": "NBOC{0:00}17",
+    "Description": "Non-Borrowing Owner eConsent Status #{0}"
   },
   {
     "ModelPath": "Loan.NonBorrowingOwners[{0}].FaxNumber",
@@ -3043,6 +3183,11 @@
     "ModelPath": "Loan.NonBorrowingOwners[{0}].MiddleName",
     "FieldId": "NBOC{0:00}02",
     "Description": "Non-Borrowing Owner File Contact - Middle Name #{0}"
+  },
+  {
+    "ModelPath": "Loan.NonBorrowingOwners[{0}].NBOID",
+    "FieldId": "NBOC{0:00}98",
+    "Description": "Non-Borrowing Owner File Contact - NBO Record ID #{0}"
   },
   {
     "ModelPath": "Loan.NonBorrowingOwners[{0}].No3rdPartyEmailIndicator",

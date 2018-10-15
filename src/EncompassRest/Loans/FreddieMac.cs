@@ -218,7 +218,7 @@ namespace EncompassRest.Loans
         public string FreddieFiel14 { get => _freddieFiel14; set => SetField(ref _freddieFiel14, value); }
 
         /// <summary>
-        /// Freddie Mac Freddie Field 15 [CASASRN.X35]
+        /// Correspondent Assignment Name [CASASRN.X35]
         /// </summary>
         public string FreddieFiel15 { get => _freddieFiel15; set => SetField(ref _freddieFiel15, value); }
 
@@ -228,7 +228,7 @@ namespace EncompassRest.Loans
         public string FreddieField3 { get => _freddieField3; set => SetField(ref _freddieField3, value); }
 
         /// <summary>
-        /// Freddie Mac Freddie Field 7 [CASASRN.X166]
+        /// LoanBeam [CASASRN.X166]
         /// </summary>
         public string FreddieField7 { get => _freddieField7; set => SetField(ref _freddieField7, value); }
 

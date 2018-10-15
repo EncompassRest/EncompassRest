@@ -25,6 +25,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _requestGuid;
         private DirtyValue<string> _systemId;
         private DirtyValue<string> _timeCancelled;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// LockCancellationLog AlertIndicator
@@ -100,5 +101,10 @@ namespace EncompassRest.Loans
         /// LockCancellationLog TimeCancelled
         /// </summary>
         public string TimeCancelled { get => _timeCancelled; set => SetField(ref _timeCancelled, value); }
+
+        /// <summary>
+        /// LockCancellationLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

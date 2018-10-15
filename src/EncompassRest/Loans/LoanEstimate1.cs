@@ -30,7 +30,6 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _disclosureSentMethod;
         private DirtyValue<decimal?> _estimatedTaxesInsuranceAssessments;
         private DirtyValue<string> _estimatedTaxesInsuranceAssessmentsUI;
-        private DirtyValue<DateTime?> _feeChangedDate;
         private DirtyValue<decimal?> _highestMonthlyPI;
         private DirtyValue<string> _id;
         private DirtyValue<string> _inEscrowHomeownerInsurance;
@@ -145,6 +144,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - Interest Rate - Adjusts Every Months/Year/Years [LE1.X14]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Month\"]")]
         public StringEnumValue<TermType> AdjustsTermType { get => _adjustsTermType; set => SetField(ref _adjustsTermType, value); }
 
         /// <summary>
@@ -243,11 +243,6 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string EstimatedTaxesInsuranceAssessmentsUI { get => _estimatedTaxesInsuranceAssessmentsUI; set => SetField(ref _estimatedTaxesInsuranceAssessmentsUI, value); }
-
-        /// <summary>
-        /// LE Fee Changed Date [LE1.X98]
-        /// </summary>
-        public DateTime? FeeChangedDate { get => _feeChangedDate; set => SetField(ref _feeChangedDate, value); }
 
         /// <summary>
         /// Loan Estimate - Monthly Principal and Interest Will be Adjusted in Year [LE1.X24]
@@ -746,6 +741,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - Prepayment Penalty - In Year/Month [LE1.X91]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Month\"]")]
         public StringEnumValue<TermType> PrepaymentPenaltyPayOffInDateType { get => _prepaymentPenaltyPayOffInDateType; set => SetField(ref _prepaymentPenaltyPayOffInDateType, value); }
 
         /// <summary>

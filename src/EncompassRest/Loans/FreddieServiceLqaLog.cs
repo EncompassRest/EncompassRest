@@ -24,6 +24,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _result;
         private DirtyValue<bool?> _showAlert;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// FreddieServiceLqaLog Alerts
@@ -94,5 +95,10 @@ namespace EncompassRest.Loans
         /// FreddieServiceLqaLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// FreddieServiceLqaLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

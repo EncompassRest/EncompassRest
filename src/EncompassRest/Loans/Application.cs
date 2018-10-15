@@ -952,7 +952,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Co-Mortgagor Primary Exp [1379]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PrimaryResidenceComortSet { get => _primaryResidenceComortSet; set => SetField(ref _primaryResidenceComortSet, value); }
 
         /// <summary>
@@ -969,7 +969,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting First Mtg P&amp;I [1724]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ProposedFirstMortgageAmount { get => _proposedFirstMortgageAmount; set => SetField(ref _proposedFirstMortgageAmount, value); }
 
         /// <summary>
@@ -999,7 +999,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Second Mtg P&amp;I [1725]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ProposedOtherMortgagesAmount { get => _proposedOtherMortgagesAmount; set => SetField(ref _proposedOtherMortgagesAmount, value); }
 
         /// <summary>

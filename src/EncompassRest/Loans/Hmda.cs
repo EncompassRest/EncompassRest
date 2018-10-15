@@ -44,7 +44,9 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<FederalAgency>> _federalAgency;
         private DirtyValue<string> _federalTaxpayerIdNumber;
         private DirtyValue<string> _financialInstitutionName;
+        private DirtyValue<string> _hMDACensusTrack;
         private DirtyValue<bool?> _hmdaCltvIndicator;
+        private DirtyValue<string> _hMDACountyCode;
         private DirtyValue<bool?> _hmdaDtiIndicator;
         private DirtyValue<bool?> _hmdaIncomeIndicator;
         private DirtyValue<bool?> _hmdaInterestOnlyIndicator;
@@ -299,10 +301,20 @@ namespace EncompassRest.Loans
         public string FinancialInstitutionName { get => _financialInstitutionName; set => SetField(ref _financialInstitutionName, value); }
 
         /// <summary>
+        /// CFPB HMDA Census Track [HMDA.X112]
+        /// </summary>
+        public string HMDACensusTrack { get => _hMDACensusTrack; set => SetField(ref _hMDACensusTrack, value); }
+
+        /// <summary>
         /// HMDA CLTV [HMDA.X98]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"true\":\"HMDA CLTV\"}")]
         public bool? HmdaCltvIndicator { get => _hmdaCltvIndicator; set => SetField(ref _hmdaCltvIndicator, value); }
+
+        /// <summary>
+        /// CFPB HMDA County Code [HMDA.X111]
+        /// </summary>
+        public string HMDACountyCode { get => _hMDACountyCode; set => SetField(ref _hMDACountyCode, value); }
 
         /// <summary>
         /// HMDA DTI [HMDA.X97]

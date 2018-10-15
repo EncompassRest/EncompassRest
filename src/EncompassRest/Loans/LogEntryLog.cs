@@ -21,6 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _isSystemSpecificIndicator;
         private DirtyValue<int?> _logRecordIndex;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
         private DirtyValue<string> _userId;
 
         /// <summary>
@@ -77,6 +78,11 @@ namespace EncompassRest.Loans
         /// LogEntryLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// LogEntryLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
 
         /// <summary>
         /// LogEntryLog UserId

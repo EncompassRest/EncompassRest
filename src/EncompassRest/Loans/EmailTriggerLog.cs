@@ -25,6 +25,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _sender;
         private DirtyValue<string> _subject;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// EmailTriggerLog Alerts
@@ -100,5 +101,10 @@ namespace EncompassRest.Loans
         /// EmailTriggerLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// EmailTriggerLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

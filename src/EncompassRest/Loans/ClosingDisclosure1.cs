@@ -24,7 +24,6 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _documentGUIDFinalExecutedCopyofSellerCD;
         private DirtyValue<string> _documentGUIDFinalExecutedCopyofStandardCD;
         private DirtyValue<decimal?> _estimatedTaxesInsuranceAssessments;
-        private DirtyValue<DateTime?> _feeChangedDate;
         private DirtyValue<string> _id;
         private DirtyValue<string> _inEscrowHomeownerInsurance;
         private DirtyValue<string> _inEscrowOther;
@@ -191,11 +190,6 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EstimatedTaxesInsuranceAssessments { get => _estimatedTaxesInsuranceAssessments; set => SetField(ref _estimatedTaxesInsuranceAssessments, value); }
-
-        /// <summary>
-        /// CD Fee Changed Date [CD1.X75]
-        /// </summary>
-        public DateTime? FeeChangedDate { get => _feeChangedDate; set => SetField(ref _feeChangedDate, value); }
 
         /// <summary>
         /// ClosingDisclosure1 Id

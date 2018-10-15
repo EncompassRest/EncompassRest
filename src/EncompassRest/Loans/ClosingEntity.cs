@@ -110,7 +110,7 @@ namespace EncompassRest.Loans
         public string Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// ClosingEntity NBORecordID
+        /// Vesting Party - Non-Borrowing Owner Record ID [TRNN99]
         /// </summary>
         public string NBORecordID { get => _nBORecordID; set => SetField(ref _nBORecordID, value); }
 

@@ -14,6 +14,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _name;
         private DirtyValue<string> _result;
         private DirtyValue<bool?> _showAlert;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// ComplianceTestLog Details
@@ -34,5 +35,10 @@ namespace EncompassRest.Loans
         /// ComplianceTestLog ShowAlert
         /// </summary>
         public bool? ShowAlert { get => _showAlert; set => SetField(ref _showAlert, value); }
+
+        /// <summary>
+        /// ComplianceTestLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

@@ -24,6 +24,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _printedByFullName;
         private DirtyList<PrintForm> _printForms;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// PrintLog Action
@@ -94,5 +95,10 @@ namespace EncompassRest.Loans
         /// PrintLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// PrintLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

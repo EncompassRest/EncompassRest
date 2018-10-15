@@ -15,6 +15,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _comments;
         private DirtyValue<string> _creator;
         private DirtyValue<DateTime?> _dateUtc;
+        private DirtyValue<string> _description;
         private DirtyList<StatusOnlineEvent> _events;
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         private DirtyValue<string> _guid;
@@ -22,6 +23,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _isSystemSpecificIndicator;
         private DirtyValue<int?> _logRecordIndex;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// StatusOnlineLog Alerts
@@ -47,6 +49,11 @@ namespace EncompassRest.Loans
         /// StatusOnlineLog DateUtc
         /// </summary>
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
+
+        /// <summary>
+        /// StatusOnlineLog Description
+        /// </summary>
+        public string Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// StatusOnlineLog Events
@@ -82,5 +89,10 @@ namespace EncompassRest.Loans
         /// StatusOnlineLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// StatusOnlineLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

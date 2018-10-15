@@ -21,6 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<LoanAssociate> _loanAssociate;
         private DirtyValue<int?> _logRecordIndex;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// MilestoneFreeRoleLog Alerts
@@ -76,5 +77,10 @@ namespace EncompassRest.Loans
         /// MilestoneFreeRoleLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// MilestoneFreeRoleLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

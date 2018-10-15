@@ -49,6 +49,8 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _housingExpenseTerm2;
         private DirtyValue<string> _id;
         private DirtyValue<bool?> _isSameAddresswithPayer;
+        private DirtyValue<DateTime?> _lastFeeImportDate;
+        private DirtyValue<string> _lenderFeeQuoteID;
         private DirtyValue<string> _line1006Excluded;
         private DirtyValue<string> _line1007Excluded;
         private DirtyValue<string> _line1008Excluded;
@@ -85,6 +87,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _outstandingMtgPrincipalDate;
         private DirtyValue<bool?> _participateHomePoints;
         private DirtyValue<string> _partnerEmail;
+        private DirtyValue<string> _partnerFeeQuoteID;
         private DirtyValue<string> _partnerName;
         private DirtyValue<string> _partnerPhone;
         private DirtyValue<decimal?> _pointsPaid;
@@ -329,6 +332,17 @@ namespace EncompassRest.Loans
         public bool? IsSameAddresswithPayer { get => _isSameAddresswithPayer; set => SetField(ref _isSameAddresswithPayer, value); }
 
         /// <summary>
+        /// Last Fee Import Date to Support Data Imports [4498]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? LastFeeImportDate { get => _lastFeeImportDate; set => SetField(ref _lastFeeImportDate, value); }
+
+        /// <summary>
+        /// Lender Fee Quote ID to Support Fee Data Imports [4496]
+        /// </summary>
+        public string LenderFeeQuoteID { get => _lenderFeeQuoteID; set => SetField(ref _lenderFeeQuoteID, value); }
+
+        /// <summary>
         /// Expenses Calc Other Hous Exp 1007 User Def Excl [1802]
         /// </summary>
         public string Line1006Excluded { get => _line1006Excluded; set => SetField(ref _line1006Excluded, value); }
@@ -534,6 +548,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string PartnerEmail { get => _partnerEmail; set => SetField(ref _partnerEmail, value); }
+
+        /// <summary>
+        /// Partner Fee Quote ID to Support Fee Data Imports [4497]
+        /// </summary>
+        public string PartnerFeeQuoteID { get => _partnerFeeQuoteID; set => SetField(ref _partnerFeeQuoteID, value); }
 
         /// <summary>
         /// Trans Details Processing Network Partner Name [EPN.X1]

@@ -9,6 +9,10 @@ namespace EncompassRest.Loans.Enums
     public enum TermType
     {
         /// <summary>
+        /// Month
+        /// </summary>
+        Month = -1,
+        /// <summary>
         /// Months
         /// </summary>
         Months = 0,

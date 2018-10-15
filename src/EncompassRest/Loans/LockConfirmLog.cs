@@ -30,6 +30,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _sellSideExpirationDate;
         private DirtyValue<string> _systemId;
         private DirtyValue<string> _timeConfirmed;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// LockConfirmLog AlertIndicator
@@ -130,5 +131,10 @@ namespace EncompassRest.Loans
         /// LockConfirmLog TimeConfirmed
         /// </summary>
         public string TimeConfirmed { get => _timeConfirmed; set => SetField(ref _timeConfirmed, value); }
+
+        /// <summary>
+        /// LockConfirmLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

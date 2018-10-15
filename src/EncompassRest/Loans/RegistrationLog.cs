@@ -27,6 +27,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _registeredByName;
         private DirtyValue<DateTime?> _registeredDate;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// RegistrationLog Alerts
@@ -112,5 +113,10 @@ namespace EncompassRest.Loans
         /// RegistrationLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// RegistrationLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

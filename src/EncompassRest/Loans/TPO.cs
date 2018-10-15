@@ -64,7 +64,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _importSource;
         private DirtyValue<DateTime?> _initialApplicationDate;
         private DirtyValue<DateTime?> _initialSubmitDate;
-        private DirtyValue<string> _lEIssuedBy;
+        private DirtyValue<StringEnumValue<LEIssuedBy>> _lEIssuedBy;
         private DirtyValue<string> _lOAddress;
         private DirtyValue<string> _lOAEName;
         private DirtyValue<string> _lOAEUserName;
@@ -379,9 +379,9 @@ namespace EncompassRest.Loans
         public DateTime? InitialSubmitDate { get => _initialSubmitDate; set => SetField(ref _initialSubmitDate, value); }
 
         /// <summary>
-        /// TPO LEIssuedBy
+        /// Loan Estimate Issued By [TPO.X109]
         /// </summary>
-        public string LEIssuedBy { get => _lEIssuedBy; set => SetField(ref _lEIssuedBy, value); }
+        public StringEnumValue<LEIssuedBy> LEIssuedBy { get => _lEIssuedBy; set => SetField(ref _lEIssuedBy, value); }
 
         /// <summary>
         /// TPO Loan Officer Address [TPO.X68]
@@ -542,7 +542,7 @@ namespace EncompassRest.Loans
         public DateTime? ReadytoDiscloseDateUtc { get => _readytoDiscloseDateUtc; set => SetField(ref _readytoDiscloseDateUtc, value); }
 
         /// <summary>
-        /// TPO Registeration Date [TPO.X3]
+        /// TPO Registration Date [TPO.X3]
         /// </summary>
         public DateTime? RegisterDate { get => _registerDate; set => SetField(ref _registerDate, value); }
 

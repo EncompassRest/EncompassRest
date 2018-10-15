@@ -29,6 +29,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _stage;
         private DirtyValue<string> _systemId;
         private DirtyValue<string> _tPOConnectStatus;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// MilestoneLog Alerts
@@ -124,5 +125,10 @@ namespace EncompassRest.Loans
         /// MilestoneLog TPOConnectStatus
         /// </summary>
         public string TPOConnectStatus { get => _tPOConnectStatus; set => SetField(ref _tPOConnectStatus, value); }
+
+        /// <summary>
+        /// MilestoneLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

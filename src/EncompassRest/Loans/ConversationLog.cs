@@ -26,6 +26,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _name;
         private DirtyValue<string> _phone;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
         private DirtyValue<string> _userId;
 
         /// <summary>
@@ -107,6 +108,11 @@ namespace EncompassRest.Loans
         /// ConversationLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// ConversationLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
 
         /// <summary>
         /// ConversationLog UserId

@@ -108,6 +108,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _eSignConsentCoBorrowerStatus5;
         private DirtyValue<string> _eSignConsentCoBorrowerStatus6;
         private DirtyValue<DateTime?> _eSignConsentDate;
+        private DirtyValue<string> _externaleConsent;
         private DirtyValue<decimal?> _extraPaymentForEarlyPayOff;
         private DirtyValue<DateTime?> _feeCollectedDate;
         private DirtyValue<bool?> _feeLevelDisclosuresIndicator;
@@ -133,6 +134,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _gfeRateLockRedisclosureRequiredIndicator;
         private DirtyValue<DateTime?> _gfeRedisclosureProvidedDate;
         private DirtyValue<DateTime?> _gfeRedisclosureReceivedDate;
+        private DirtyValue<int?> _helocTeaserRatePeriod;
         private DirtyValue<DateTime?> _highCostDisclosure;
         private DirtyValue<DateTime?> _homeCounselingProvidedDate;
         private DirtyValue<bool?> _hud1ToleranceViolatedIndicator;
@@ -771,6 +773,12 @@ namespace EncompassRest.Loans
         public DateTime? eSignConsentDate { get => _eSignConsentDate; set => SetField(ref _eSignConsentDate, value); }
 
         /// <summary>
+        /// Flag to know whether loan is external eConsent [4499]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string ExternaleConsent { get => _externaleConsent; set => SetField(ref _externaleConsent, value); }
+
+        /// <summary>
         /// Trans Details Amort Type GPM Extra Pymt [312]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -908,6 +916,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public DateTime? GfeRedisclosureReceivedDate { get => _gfeRedisclosureReceivedDate; set => SetField(ref _gfeRedisclosureReceivedDate, value); }
+
+        /// <summary>
+        /// Heloc Teaser Rate Period Months [4492]
+        /// </summary>
+        public int? HelocTeaserRatePeriod { get => _helocTeaserRatePeriod; set => SetField(ref _helocTeaserRatePeriod, value); }
 
         /// <summary>
         /// The Date that the High Cost Disclosure is signed [4022]

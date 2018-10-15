@@ -39,6 +39,8 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _buydownRatePercent;
         private DirtyValue<decimal?> _cashFromToBorrowerAmount;
         private DirtyValue<StringEnumValue<Channel>> _channel;
+        private DirtyValue<decimal?> _closedEndPrimaryMortgageLoanAmount;
+        private DirtyValue<decimal?> _closedEndSubordinateMortgageLoanAmount;
         private DirtyValue<DateTime?> _closingBillingDate;
         private ClosingCost _closingCost;
         private DirtyValue<string> _closingCostProgram;
@@ -47,6 +49,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _closingDocsStackingOrder;
         private ClosingDocument _closingDocument;
         private DirtyValue<int?> _collateralManagerScore;
+        private CollateralTracking _collateralTracking;
         private DirtyValue<decimal?> _combinedLtv;
         private DirtyValue<string> _commitmentNumber;
         private CommitmentTerms _commitmentTerms;
@@ -100,6 +103,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _estimatedConstructionInterest;
         private DirtyValue<decimal?> _estimatedPrepaidItemsAmount;
         private DirtyValue<StringEnumValue<ExportLoanNumber>> _exportLoanNumber;
+        private DirtyList<ExportLog> _exportLogs;
         private FannieMae _fannieMae;
         private DirtyList<Fee> _fees;
         private DirtyValue<decimal?> _fhaMiPremiumRefundAmount;
@@ -157,6 +161,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _isRequiredInterestReserveCompoundInterest;
         private DirtyValue<decimal?> _landIfAcquiredSeperatelyAmount;
         private DirtyValue<string> _leadSource;
+        private DirtyValue<string> _leadSourceID;
         private DirtyValue<string> _lenderCaseIdentifier;
         private DirtyValue<StringEnumValue<LenderChannel>> _lenderChannel;
         private DirtyValue<decimal?> _lenderCreditsInFunding;
@@ -341,6 +346,7 @@ namespace EncompassRest.Loans
         private TrustAccount _trustAccount;
         private Tsum _tsum;
         private DirtyValue<bool?> _twelveMonthMortgageRentalHistoryIndicator;
+        private DirtyValue<string> _uCDCaseFileID;
         private Uldd _uldd;
         private UnderwriterSummary _underwriterSummary;
         private DirtyList<UnderwritingConditionLog> _underwritingConditionLogs;
@@ -381,7 +387,7 @@ namespace EncompassRest.Loans
         public string AgencyCaseIdentifier { get => _agencyCaseIdentifier; set => SetField(ref _agencyCaseIdentifier, value); }
 
         /// <summary>
-        /// Loan AlertChangeCircumstanceApplyLECD
+        /// Good Faith Change of Circumstance - Apply to LEorCD [4462]
         /// </summary>
         public string AlertChangeCircumstanceApplyLECD { get => _alertChangeCircumstanceApplyLECD; set => SetField(ref _alertChangeCircumstanceApplyLECD, value); }
 
@@ -522,6 +528,18 @@ namespace EncompassRest.Loans
         public StringEnumValue<Channel> Channel { get => _channel; set => SetField(ref _channel, value); }
 
         /// <summary>
+        /// Closed End Primary Mortgage Loan Amount [4487]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? ClosedEndPrimaryMortgageLoanAmount { get => _closedEndPrimaryMortgageLoanAmount; set => SetField(ref _closedEndPrimaryMortgageLoanAmount, value); }
+
+        /// <summary>
+        /// Closed End Subordinate Mortgage Loan Amount [4488]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? ClosedEndSubordinateMortgageLoanAmount { get => _closedEndSubordinateMortgageLoanAmount; set => SetField(ref _closedEndSubordinateMortgageLoanAmount, value); }
+
+        /// <summary>
         /// Closing Date for Billing Purposes [3260]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
@@ -564,6 +582,11 @@ namespace EncompassRest.Loans
         /// Collateral Manager Score # [3356]
         /// </summary>
         public int? CollateralManagerScore { get => _collateralManagerScore; set => SetField(ref _collateralManagerScore, value); }
+
+        /// <summary>
+        /// Loan CollateralTracking
+        /// </summary>
+        public CollateralTracking CollateralTracking { get => GetField(ref _collateralTracking); set => SetField(ref _collateralTracking, value); }
 
         /// <summary>
         /// Trans Details Comb Loan to Value (CLTV) [976]
@@ -844,6 +867,11 @@ namespace EncompassRest.Loans
         /// Export Investor or Lender Loan Number [2573]
         /// </summary>
         public StringEnumValue<ExportLoanNumber> ExportLoanNumber { get => _exportLoanNumber; set => SetField(ref _exportLoanNumber, value); }
+
+        /// <summary>
+        /// Loan ExportLogs
+        /// </summary>
+        public IList<ExportLog> ExportLogs { get => GetField(ref _exportLogs); set => SetField(ref _exportLogs, value); }
 
         /// <summary>
         /// Loan FannieMae
@@ -1146,6 +1174,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string LeadSource { get => _leadSource; set => SetField(ref _leadSource, value); }
+
+        /// <summary>
+        /// Loan Info Lead Source ID [4495]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string LeadSourceID { get => _leadSourceID; set => SetField(ref _leadSourceID, value); }
 
         /// <summary>
         /// File Contacts Lender Case # [305]
@@ -2141,6 +2175,11 @@ namespace EncompassRest.Loans
         /// Borrower Can Demonstrate 12-Month Mortgage/Rental History [3515]
         /// </summary>
         public bool? TwelveMonthMortgageRentalHistoryIndicator { get => _twelveMonthMortgageRentalHistoryIndicator; set => SetField(ref _twelveMonthMortgageRentalHistoryIndicator, value); }
+
+        /// <summary>
+        /// UCD Case File ID [4486]
+        /// </summary>
+        public string UCDCaseFileID { get => _uCDCaseFileID; set => SetField(ref _uCDCaseFileID, value); }
 
         /// <summary>
         /// Loan Uldd

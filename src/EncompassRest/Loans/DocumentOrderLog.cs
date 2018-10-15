@@ -17,6 +17,7 @@ namespace EncompassRest.Loans
         private DirtyList<OrderedDocument> _orderedDocuments;
         private DirtyValue<string> _orderId;
         private DirtyValue<string> _orderType;
+        private DirtyValue<DateTime?> _updatedDateUtc;
         private DirtyValue<string> _userId;
 
         /// <summary>
@@ -53,6 +54,11 @@ namespace EncompassRest.Loans
         /// DocumentOrderLog OrderType
         /// </summary>
         public string OrderType { get => _orderType; set => SetField(ref _orderType, value); }
+
+        /// <summary>
+        /// DocumentOrderLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
 
         /// <summary>
         /// DocumentOrderLog UserId

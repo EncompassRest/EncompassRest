@@ -53,6 +53,11 @@ namespace EncompassRest.Loans.Enums
         /// MH Select
         /// </summary>
         [Description("MH Select")]
-        MHSelect = 9
+        MHSelect = 9,
+        /// <summary>
+        /// MH Advantage
+        /// </summary>
+        [Description("MH Advantage")]
+        MHAdvantage = 10
     }
 }

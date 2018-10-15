@@ -42,6 +42,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _taskDescription;
         private DirtyValue<string> _taskGuid;
         private DirtyValue<string> _taskName;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// MilestoneTaskLog AddDate
@@ -202,5 +203,10 @@ namespace EncompassRest.Loans
         /// MilestoneTaskLog TaskName
         /// </summary>
         public string TaskName { get => _taskName; set => SetField(ref _taskName, value); }
+
+        /// <summary>
+        /// MilestoneTaskLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

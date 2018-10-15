@@ -88,6 +88,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _underwritingReady;
         private DirtyValue<string> _underwritingReadyBy;
         private DirtyValue<DateTime?> _underwritingReadyDateUtc;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// DocumentLog AccessedBy
@@ -478,5 +479,10 @@ namespace EncompassRest.Loans
         /// DocumentLog UnderwritingReadyDateUtc
         /// </summary>
         public DateTime? UnderwritingReadyDateUtc { get => _underwritingReadyDateUtc; set => SetField(ref _underwritingReadyDateUtc, value); }
+
+        /// <summary>
+        /// DocumentLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

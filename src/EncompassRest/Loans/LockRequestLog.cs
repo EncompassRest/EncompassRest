@@ -49,6 +49,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _snapshotXml;
         private DirtyValue<string> _systemId;
         private DirtyValue<string> _timeRequested;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// LockRequestLog Alerts
@@ -244,5 +245,10 @@ namespace EncompassRest.Loans
         /// LockRequestLog TimeRequested
         /// </summary>
         public string TimeRequested { get => _timeRequested; set => SetField(ref _timeRequested, value); }
+
+        /// <summary>
+        /// LockRequestLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

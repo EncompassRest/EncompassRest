@@ -23,6 +23,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _isSystemSpecificIndicator;
         private DirtyValue<int?> _logRecordIndex;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
         private DirtyValue<string> _url;
 
         /// <summary>
@@ -89,6 +90,11 @@ namespace EncompassRest.Loans
         /// EdmLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// EdmLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
 
         /// <summary>
         /// EdmLog Url

@@ -10,6 +10,7 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiable
     {
+        private DirtyValue<decimal?> _amountApplyToDownPayment;
         private DirtyValue<decimal?> _annualFeeNeededAmount;
         private DirtyValue<bool?> _applyLifeCapLowIndicator;
         private DirtyValue<StringEnumValue<IndexMargin>> _armDisclosureType;
@@ -37,7 +38,33 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<ProjectType>> _gseProjectClassificationType;
         private DirtyValue<StringEnumValue<PropertyType>> _gsePropertyType;
         private DirtyValue<int?> _hardPrepaymentPenaltyMonths;
+        private DirtyValue<StringEnumValue<HelocCalcSign>> _helocCalcSign;
+        private DirtyValue<bool?> _helocForceMinimumPayment;
+        private DirtyValue<int?> _helocFractionBalancedividend;
+        private DirtyValue<int?> _helocFractionBalancedivisor;
+        private DirtyValue<StringEnumValue<HelocBalance>> _helocInitialBalanceUsed;
+        private DirtyValue<StringEnumValue<HelocCalcSign>> _helocInitialCalcSign;
+        private DirtyValue<bool?> _helocInitialForceMinimumPayment;
+        private DirtyValue<int?> _helocInitialFractionBalancedividend;
+        private DirtyValue<int?> _helocInitialFractionBalancedivisor;
+        private DirtyValue<StringEnumValue<HelocPaymentBasis>> _helocInitialPaymentBasis;
+        private DirtyValue<decimal?> _helocInitialPercent;
+        private DirtyValue<decimal?> _helocInitialPercentageofBalance;
+        private DirtyValue<bool?> _helocInitialPI;
+        private DirtyValue<StringEnumValue<HelocInitialRate>> _helocInitialRate;
+        private DirtyValue<int?> _helocInitialTerm;
+        private DirtyValue<StringEnumValue<PerDiemCalculationMethodType>> _helocInitPerDiemCalculationMethodType;
+        private DirtyValue<bool?> _helocInterestOnly;
+        private DirtyValue<StringEnumValue<LienPosition>> _hELOCLienPosition;
+        private DirtyValue<decimal?> _helocNewFinancingNotLinkedCreditLimit;
+        private DirtyValue<decimal?> _helocNewFinancingNotLinkedDrawAmount;
+        private DirtyValue<StringEnumValue<HelocPaymentBasis>> _helocPaymentBasis;
+        private DirtyValue<decimal?> _helocPercent;
+        private DirtyValue<decimal?> _helocPercentageofBalance;
         private DirtyValue<string> _helocPeriodTemplateName;
+        private DirtyValue<StringEnumValue<HelocBalance>> _helocQualifyingBalance;
+        private DirtyValue<int?> _helocQualifyingTerm;
+        private DirtyValue<StringEnumValue<HelocRate>> _helocRate;
         private DirtyList<HelocRepaymentDrawPeriod> _helocRepaymentDrawPeriods;
         private DirtyValue<string> _id;
         private DirtyValue<decimal?> _indexCurrentValuePercent;
@@ -120,6 +147,12 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _totalSubsidyAmount;
         private DirtyValue<decimal?> _transactionFees;
         private DirtyValue<decimal?> _wireFee;
+
+        /// <summary>
+        /// HELOC Amount Apply To Down Payment [4493]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? AmountApplyToDownPayment { get => _amountApplyToDownPayment; set => SetField(ref _amountApplyToDownPayment, value); }
 
         /// <summary>
         /// HELOC Annual Fee [1891]
@@ -264,10 +297,150 @@ namespace EncompassRest.Loans
         public int? HardPrepaymentPenaltyMonths { get => _hardPrepaymentPenaltyMonths; set => SetField(ref _hardPrepaymentPenaltyMonths, value); }
 
         /// <summary>
+        /// HELOC Calculation Sign [4466]
+        /// </summary>
+        public StringEnumValue<HelocCalcSign> HelocCalcSign { get => _helocCalcSign; set => SetField(ref _helocCalcSign, value); }
+
+        /// <summary>
+        /// HELOC Force Minimum Payment [4472]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Force Minimum Payment\"}")]
+        public bool? HelocForceMinimumPayment { get => _helocForceMinimumPayment; set => SetField(ref _helocForceMinimumPayment, value); }
+
+        /// <summary>
+        /// HELOC Fraction Balance Dividend [4469]
+        /// </summary>
+        public int? HelocFractionBalancedividend { get => _helocFractionBalancedividend; set => SetField(ref _helocFractionBalancedividend, value); }
+
+        /// <summary>
+        /// HELOC Fraction Balance Divisor [4470]
+        /// </summary>
+        public int? HelocFractionBalancedivisor { get => _helocFractionBalancedivisor; set => SetField(ref _helocFractionBalancedivisor, value); }
+
+        /// <summary>
+        /// Heloc Initial Balance Used [4484]
+        /// </summary>
+        public StringEnumValue<HelocBalance> HelocInitialBalanceUsed { get => _helocInitialBalanceUsed; set => SetField(ref _helocInitialBalanceUsed, value); }
+
+        /// <summary>
+        /// HELOC Initial Calculation Sign [4477]
+        /// </summary>
+        public StringEnumValue<HelocCalcSign> HelocInitialCalcSign { get => _helocInitialCalcSign; set => SetField(ref _helocInitialCalcSign, value); }
+
+        /// <summary>
+        /// HELOC Initial Force Minimum Payment [4483]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Force Minimum Payment\"}")]
+        public bool? HelocInitialForceMinimumPayment { get => _helocInitialForceMinimumPayment; set => SetField(ref _helocInitialForceMinimumPayment, value); }
+
+        /// <summary>
+        /// HELOC Initial Fraction Balance Dividend [4480]
+        /// </summary>
+        public int? HelocInitialFractionBalancedividend { get => _helocInitialFractionBalancedividend; set => SetField(ref _helocInitialFractionBalancedividend, value); }
+
+        /// <summary>
+        /// HELOC Initial Fraction Balance Divisor [4481]
+        /// </summary>
+        public int? HelocInitialFractionBalancedivisor { get => _helocInitialFractionBalancedivisor; set => SetField(ref _helocInitialFractionBalancedivisor, value); }
+
+        /// <summary>
+        /// HELOC Initial Payment Basis [4475]
+        /// </summary>
+        public StringEnumValue<HelocPaymentBasis> HelocInitialPaymentBasis { get => _helocInitialPaymentBasis; set => SetField(ref _helocInitialPaymentBasis, value); }
+
+        /// <summary>
+        /// HELOC Initial Percent [4478]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? HelocInitialPercent { get => _helocInitialPercent; set => SetField(ref _helocInitialPercent, value); }
+
+        /// <summary>
+        /// HELOC Initial Percentage of Balance [4482]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? HelocInitialPercentageofBalance { get => _helocInitialPercentageofBalance; set => SetField(ref _helocInitialPercentageofBalance, value); }
+
+        /// <summary>
+        /// Heloc initial P &amp; I [4479]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"P & I\"}")]
+        public bool? HelocInitialPI { get => _helocInitialPI; set => SetField(ref _helocInitialPI, value); }
+
+        /// <summary>
+        /// HELOC Initial Rate [4476]
+        /// </summary>
+        public StringEnumValue<HelocInitialRate> HelocInitialRate { get => _helocInitialRate; set => SetField(ref _helocInitialRate, value); }
+
+        /// <summary>
+        /// Heloc Initial Term [4485]
+        /// </summary>
+        public int? HelocInitialTerm { get => _helocInitialTerm; set => SetField(ref _helocInitialTerm, value); }
+
+        /// <summary>
+        /// HELOC Initial Mortgage Number of Days [4491]
+        /// </summary>
+        public StringEnumValue<PerDiemCalculationMethodType> HelocInitPerDiemCalculationMethodType { get => _helocInitPerDiemCalculationMethodType; set => SetField(ref _helocInitPerDiemCalculationMethodType, value); }
+
+        /// <summary>
+        /// Heloc Interest Only [4468]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Interest Only\"}")]
+        public bool? HelocInterestOnly { get => _helocInterestOnly; set => SetField(ref _helocInterestOnly, value); }
+
+        /// <summary>
+        /// HELOC Lien Position [4494]
+        /// </summary>
+        public StringEnumValue<LienPosition> HELOCLienPosition { get => _hELOCLienPosition; set => SetField(ref _hELOCLienPosition, value); }
+
+        /// <summary>
+        /// Heloc New Financing Not Linked Credit Limit  [4490]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? HelocNewFinancingNotLinkedCreditLimit { get => _helocNewFinancingNotLinkedCreditLimit; set => SetField(ref _helocNewFinancingNotLinkedCreditLimit, value); }
+
+        /// <summary>
+        /// Heloc New Financing Not Linked Draw Amount [4489]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? HelocNewFinancingNotLinkedDrawAmount { get => _helocNewFinancingNotLinkedDrawAmount; set => SetField(ref _helocNewFinancingNotLinkedDrawAmount, value); }
+
+        /// <summary>
+        /// HELOC Payment Basis [4464]
+        /// </summary>
+        public StringEnumValue<HelocPaymentBasis> HelocPaymentBasis { get => _helocPaymentBasis; set => SetField(ref _helocPaymentBasis, value); }
+
+        /// <summary>
+        /// HELOC Percent [4467]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? HelocPercent { get => _helocPercent; set => SetField(ref _helocPercent, value); }
+
+        /// <summary>
+        /// HELOC Percentage of Balance [4471]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? HelocPercentageofBalance { get => _helocPercentageofBalance; set => SetField(ref _helocPercentageofBalance, value); }
+
+        /// <summary>
         /// HELOC Period Template Name [1985]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string HelocPeriodTemplateName { get => _helocPeriodTemplateName; set => SetField(ref _helocPeriodTemplateName, value); }
+
+        /// <summary>
+        /// HELOC Qualifying Balance [4473]
+        /// </summary>
+        public StringEnumValue<HelocBalance> HelocQualifyingBalance { get => _helocQualifyingBalance; set => SetField(ref _helocQualifyingBalance, value); }
+
+        /// <summary>
+        /// HELOC Qualifying Term [4474]
+        /// </summary>
+        public int? HelocQualifyingTerm { get => _helocQualifyingTerm; set => SetField(ref _helocQualifyingTerm, value); }
+
+        /// <summary>
+        /// HELOC Rate [4465]
+        /// </summary>
+        public StringEnumValue<HelocRate> HelocRate { get => _helocRate; set => SetField(ref _helocRate, value); }
 
         /// <summary>
         /// LoanProductData HelocRepaymentDrawPeriods
@@ -321,6 +494,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Lien Position [420]
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"SecondLien\":\"Subordinate\"}")]
         public StringEnumValue<LienType> LienPriorityType { get => _lienPriorityType; set => SetField(ref _lienPriorityType, value); }
 
         /// <summary>

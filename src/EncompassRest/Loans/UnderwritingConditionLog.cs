@@ -64,6 +64,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _statusDescription;
         private DirtyValue<string> _systemId;
         private DirtyValue<string> _title;
+        private DirtyValue<DateTime?> _updatedDateUtc;
         private DirtyValue<bool?> _waived;
         private DirtyValue<string> _waivedBy;
 
@@ -336,6 +337,11 @@ namespace EncompassRest.Loans
         /// UnderwritingConditionLog Title
         /// </summary>
         public string Title { get => _title; set => SetField(ref _title, value); }
+
+        /// <summary>
+        /// UnderwritingConditionLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
 
         /// <summary>
         /// UnderwritingConditionLog Waived

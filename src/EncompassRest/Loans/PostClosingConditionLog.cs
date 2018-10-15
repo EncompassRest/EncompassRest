@@ -52,6 +52,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _statusDescription;
         private DirtyValue<string> _systemId;
         private DirtyValue<string> _title;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// PostClosingConditionLog AddedBy
@@ -262,5 +263,10 @@ namespace EncompassRest.Loans
         /// PostClosingConditionLog Title
         /// </summary>
         public string Title { get => _title; set => SetField(ref _title, value); }
+
+        /// <summary>
+        /// PostClosingConditionLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

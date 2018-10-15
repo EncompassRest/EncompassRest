@@ -25,6 +25,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _requestGuid;
         private DirtyValue<string> _systemId;
         private DirtyValue<string> _timeDenied;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// LockDenialLog AlertIndicator
@@ -100,5 +101,10 @@ namespace EncompassRest.Loans
         /// LockDenialLog TimeDenied
         /// </summary>
         public string TimeDenied { get => _timeDenied; set => SetField(ref _timeDenied, value); }
+
+        /// <summary>
+        /// LockDenialLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

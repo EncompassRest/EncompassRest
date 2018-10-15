@@ -11,7 +11,7 @@ namespace EncompassRest.Loans
     public sealed partial class ClosingDisclosure4 : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<DemandFeature>> _demandFeature;
-        private DirtyValue<string> _escrowedPropertyCostsBasis;
+        private DirtyValue<StringEnumValue<EscrowedPropertyCostsBasis>> _escrowedPropertyCostsBasis;
         private DirtyValue<bool?> _escrowIndicator;
         private DirtyValue<decimal?> _estimatedPropertyCosts;
         private DirtyValue<string> _firstChangeAmt;
@@ -54,9 +54,9 @@ namespace EncompassRest.Loans
         public StringEnumValue<DemandFeature> DemandFeature { get => _demandFeature; set => SetField(ref _demandFeature, value); }
 
         /// <summary>
-        /// ClosingDisclosure4 EscrowedPropertyCostsBasis
+        /// Escrowed Property Costs Basis [CD4.X51]
         /// </summary>
-        public string EscrowedPropertyCostsBasis { get => _escrowedPropertyCostsBasis; set => SetField(ref _escrowedPropertyCostsBasis, value); }
+        public StringEnumValue<EscrowedPropertyCostsBasis> EscrowedPropertyCostsBasis { get => _escrowedPropertyCostsBasis; set => SetField(ref _escrowedPropertyCostsBasis, value); }
 
         /// <summary>
         /// Closing Disclosure Page 4 Escrow Indicator [CD4.X9]
@@ -121,7 +121,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Interest Only Payments [CD4.X23]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public bool? InterestOnlyPayments { get => _interestOnlyPayments; set => SetField(ref _interestOnlyPayments, value); }
 
         /// <summary>

@@ -121,9 +121,16 @@ namespace EncompassRest
                 typeof(BorrowerOrCoBorrower),
                 typeof(State),
                 typeof(NonVolAdjustmentType),
-                typeof(HudLoanDataResidencyType)
+                typeof(HudLoanDataResidencyType),
+                typeof(LienPosition),
+                typeof(HelocCalcSign),
+                typeof(HelocPaymentBasis),
+                typeof(HelocBalance),
+                typeof(MortgageType),
+                typeof(RefinanceType),
+                typeof(PerDiemCalculationMethodType)
             };
-            s_sharedEnums = new Dictionary<string, HashSet<string>>();
+            s_sharedEnums = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (var sharedEnumType in sharedEnumTypes)
             {
                 s_sharedEnums.Add(sharedEnumType.Name, new HashSet<string>(NonGenericEnums.GetMembers(sharedEnumType).Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))));
@@ -144,10 +151,13 @@ namespace EncompassRest
             "AUSRecommendation5",
             "DenialReason2",
             "DenialReason3",
-            "DenialReason4"
+            "DenialReason4",
+            "AdjustsTermType",
+            "PrepaymentPenaltyPayOffInDateType",
+            "LogDUPropertyType"
         };
 
-        private static readonly HashSet<string> s_enumPropertyNamesToUseEntityTypeInName = new HashSet<string>
+        private static readonly HashSet<string> s_enumPropertyNamesToUseEntityTypeInName = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             "PurposeOfLoan",
             "LoanType",
@@ -157,16 +167,30 @@ namespace EncompassRest
             "LoanPurpose",
             "BorrowerType",
             "MortgageOriginator",
-            "AppraisalType"
+            "AppraisalType",
+            "MortgageType",
+            "RefinanceType"
         };
 
-        private static readonly Dictionary<string, string> s_explicitStringEnumValues = new Dictionary<string, string> { { "LoanAssociate.LoanAssociateType", nameof(LoanAssociateType) }, { "AdditionalStateDisclosure.StateCode", nameof(State) } };
+        private static readonly Dictionary<string, string> s_explicitStringEnumValues = new Dictionary<string, string>
+        {
+            { "LoanAssociate.LoanAssociateType", nameof(LoanAssociateType) },
+            { "AdditionalStateDisclosure.StateCode", nameof(State) },
+            { "LoanAssociate.EnableWriteAccess", nameof(YOrN) },
+            { "FreddieMac.CondoClass", nameof(CondoClass) }
+        };
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
 
         private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Borrower.Application" };
 
         private static readonly HashSet<string> s_propertiesWithInternalFields = new HashSet<string> { "CustomField.DateValue", "CustomField.NumericValue", "CustomField.StringValue", "FieldLockData.ModelPath" };
+
+        private static readonly Dictionary<string, Dictionary<string, string>> s_propertiesToRename = new Dictionary<string, Dictionary<string, string>>
+        {
+            { "AlertChangeCircumstance", new Dictionary<string, string> { { "AlertTriggerFielDID", "AlertTriggerFieldID" } } },
+            { "ExportLogServiceType", new Dictionary<string, string> { { "name", "Name" } } }
+        };
 
         private static readonly Dictionary<string, EntitySchema> s_explicitSchemas = new Dictionary<string, EntitySchema>
         {
@@ -175,8 +199,7 @@ namespace EncompassRest
             { "DocumentAuditAlert", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "Source", new PropertySchema { Type = PropertySchemaType.String } }, { "Type", new PropertySchema { Type = PropertySchemaType.String } }, { "Text", new PropertySchema { Type = PropertySchemaType.String } }, { "Fields", new PropertySchema { Type = PropertySchemaType.List, ElementType = "string" } } } } },
             { "EmailDocument", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "DocId", new PropertySchema { Type = PropertySchemaType.String } }, { "DocTitle", new PropertySchema { Type = PropertySchemaType.String } } } } },
             { "OrderedDocument", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "Id", new PropertySchema { Type = PropertySchemaType.String } }, { "Title", new PropertySchema { Type = PropertySchemaType.String } }, { "Type", new PropertySchema { Type = PropertySchemaType.String } }, { "Category", new PropertySchema { Type = PropertySchemaType.String } }, { "SignatureType", new PropertySchema { Type = PropertySchemaType.String } }, { "PairId", new PropertySchema { Type = PropertySchemaType.String } }, { "DataKey", new PropertySchema { Type = PropertySchemaType.String } }, { "Size", new PropertySchema { Type = PropertySchemaType.Int } }, { "TemplateId", new PropertySchema { Type = PropertySchemaType.String } }, { "DocumentServiceId", new PropertySchema { Type = PropertySchemaType.String } }, { "OverflowDataKey", new PropertySchema { Type = PropertySchemaType.String } }, { "Overflows", new PropertySchema { Type = PropertySchemaType.List, ElementType = "OrderedDocumentOverflow" } } } } },
-            { "OrderedDocumentOverflow", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "CoordinateBottom", new PropertySchema { Type = PropertySchemaType.String } }, { "CoordinateTop", new PropertySchema { Type = PropertySchemaType.String } }, { "CoordinateLeft", new PropertySchema { Type = PropertySchemaType.String } }, { "CoordinateRight", new PropertySchema { Type = PropertySchemaType.String } }, { "OriginalText", new PropertySchema { Type = PropertySchemaType.String } }, { "PageNumber", new PropertySchema { Type = PropertySchemaType.Int } }, { "TemplateFieldName", new PropertySchema { Type = PropertySchemaType.String } } } } },
-            { "AlertChangeCircumstance", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "Id", new PropertySchema { Type = PropertySchemaType.String } }, { "AlertTriggerFieldID", new PropertySchema { Type = PropertySchemaType.String } }, { "ChangedCircumstanceDate", new PropertySchema { Type = PropertySchemaType.Date } }, { "RevisedDueDate", new PropertySchema { Type = PropertySchemaType.Date } }, { "ChangedCircumstanceDescription", new PropertySchema { Type = PropertySchemaType.String } }, { "ChangedCircumstanceComments", new PropertySchema { Type = PropertySchemaType.String } }, { "ChangedCircumstanceReason", new PropertySchema { Type = PropertySchemaType.String } }, { "ChangedCircumstanceReasonOther", new PropertySchema { Type = PropertySchemaType.String } }, { "ChangedCircumstanceCategory", new PropertySchema { Type = PropertySchemaType.String } }, { "ChangedCircumstanceAlertFeeDescription", new PropertySchema { Type = PropertySchemaType.String } }, { "ChangedCircumstanceAlertInitialAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "ChangedCircumstanceAlertBaseline", new PropertySchema { Type = PropertySchemaType.String } }, { "ChangedCircumstanceAlertDisclosedAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "ChangedCircumstanceAlertItemizationAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "ChangedCircumstanceAlertVarianceAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "AltId", new PropertySchema { Type = PropertySchemaType.String } } } } }
+            { "OrderedDocumentOverflow", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "CoordinateBottom", new PropertySchema { Type = PropertySchemaType.String } }, { "CoordinateTop", new PropertySchema { Type = PropertySchemaType.String } }, { "CoordinateLeft", new PropertySchema { Type = PropertySchemaType.String } }, { "CoordinateRight", new PropertySchema { Type = PropertySchemaType.String } }, { "OriginalText", new PropertySchema { Type = PropertySchemaType.String } }, { "PageNumber", new PropertySchema { Type = PropertySchemaType.Int } }, { "TemplateFieldName", new PropertySchema { Type = PropertySchemaType.String } } } } }
         };
 
         private static readonly Dictionary<string, Dictionary<string, PropertySchema>> s_explicitPropertySchemas = new Dictionary<string, Dictionary<string, PropertySchema>>
@@ -185,24 +208,19 @@ namespace EncompassRest
             { "CrmLog", new Dictionary<string, PropertySchema> { { "Alerts", new PropertySchema { Type = PropertySchemaType.List, ElementType = LoanEntity.LogAlert } }, { "CommentList", new PropertySchema { Type = PropertySchemaType.List, ElementType = LoanEntity.LogComment } }, { "Comments", new PropertySchema { Type = PropertySchemaType.String } }, { "DateUtc", new PropertySchema { Type = PropertySchemaType.DateTime } }, { "FileAttachmentsMigrated", new PropertySchema { Type = PropertySchemaType.Bool } }, { "Guid", new PropertySchema { Type = PropertySchemaType.String } }, { "IsSystemSpecificIndicator", new PropertySchema { Type = PropertySchemaType.Bool } }, { "LogRecordIndex", new PropertySchema { Type = PropertySchemaType.Int } } } },
             { "DocumentOrderLog", new Dictionary<string, PropertySchema> { { "OrderedDocuments", new PropertySchema { Type = PropertySchemaType.List, ElementType = "OrderedDocument" } } } },
             { "FundingFee", new Dictionary<string, PropertySchema> { { "Amount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PtcAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocBorrower2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocSeller2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocBroker2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocOther2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacBroker2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacLender2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacOther2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocLender2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, } },
-            { "HtmlEmailLog", new Dictionary<string, PropertySchema> { { "DocList", new PropertySchema { Type = PropertySchemaType.List, ElementType = "EmailDocument" } } } },
-            { "ClosingDisclosure4", new Dictionary<string, PropertySchema> { { "EscrowedPropertyCostsBasis", new PropertySchema { Type = PropertySchemaType.String } } } },
-            { "ClosingEntity", new Dictionary<string, PropertySchema> { { "NBORecordID", new PropertySchema { Type = PropertySchemaType.String } }, { "TrusteeIndex", new PropertySchema { Type = PropertySchemaType.Int } } } },
-            { "RateLock", new Dictionary<string, PropertySchema> { { "RequestProgramNotes", new PropertySchema { Type = PropertySchemaType.String } }, { "BorrLenderPaid", new PropertySchema { Type = PropertySchemaType.String } } } },
-            { "NonBorrowingOwner", new Dictionary<string, PropertySchema> { { "Id", new PropertySchema { Type = PropertySchemaType.String } }, { "ESignConsentNBOCStatus", new PropertySchema { Type = PropertySchemaType.String } }, { "ESignConsentNBOCDateAccepted", new PropertySchema { Type = PropertySchemaType.Date } }, { "ESignConsentNBOCIPAddress", new PropertySchema { Type = PropertySchemaType.String } }, { "ESignConsentNBOCSource", new PropertySchema { Type = PropertySchemaType.String } }, { "ESignConsentNBOCDateSent", new PropertySchema { Type = PropertySchemaType.Date } }, { "BorrowerVestingRecordID", new PropertySchema { Type = PropertySchemaType.String } }, { "EntityDeleted", new PropertySchema { Type = PropertySchemaType.Bool } }, { "NBOID", new PropertySchema { Type = PropertySchemaType.String } } } },
-            { "TPO", new Dictionary<string, PropertySchema> { { "LEIssuedBy", new PropertySchema { Type = PropertySchemaType.String } } } },
-            { "Usda", new Dictionary<string, PropertySchema> { { "RefinanceType", new PropertySchema { Type = PropertySchemaType.String } } } },
-            { "Loan", new Dictionary<string, PropertySchema> { { "AlertChangeCircumstances", new PropertySchema { Type = PropertySchemaType.List, ElementType = "AlertChangeCircumstance" } }, { "AlertChangeCircumstanceApplyLECD", new PropertySchema { Type = PropertySchemaType.String } } } },
-            { "DisclosureTracking2015Log", new Dictionary<string, PropertySchema> { { "CureAppliedToLenderCredit", new PropertySchema { Type = PropertySchemaType.String } }, { "CureAppliedToPrincipalReduction", new PropertySchema { Type = PropertySchemaType.String } } } },
-            { "LoanAssociate", new Dictionary<string, PropertySchema> { { "EnableWriteAccess", new PropertySchema { Type = PropertySchemaType.String, AllowedValues = new List<FieldOption> { new FieldOption("Y", "Yes"), new FieldOption("N", "No") } } } } }
+            { "HtmlEmailLog", new Dictionary<string, PropertySchema> { { "DocList", new PropertySchema { Type = PropertySchemaType.List, ElementType = "EmailDocument" } } } }
         };
+
+        private static readonly HashSet<string> s_explicitDateTimeProperties = new HashSet<string> { "DisclosureTracking2015Log.ActualFulfillmentDate", "DisclosureTracking2015Log.ApplicationDate", "DisclosureTracking2015Log.BorrowerActualReceivedDate", "DisclosureTracking2015Log.BorrowerPresumedReceivedDate", "DisclosureTracking2015Log.CDDateIssued", "DisclosureTracking2015Log.ClosingDate", "DisclosureTracking2015Log.CoBorrowerActualReceivedDate", "DisclosureTracking2015Log.CoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.DisclosedDate", "DisclosureTracking2015Log.IntentToProceedDate", "DisclosureTracking2015Log.LockedBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedCoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedDisclosedDateField", "DisclosureTracking2015Log.LockedDisclosedReceivedDate", "DisclosureTracking2015Log.PresumedFulfillmentDate", "DisclosureTracking2015Log.ReceivedDate", "DisclosureTracking2015Log.RevisedDueDate" };
 
         private static readonly Dictionary<string, HashSet<string>> s_enumOptionsToIgnore = new Dictionary<string, HashSet<string>>
         {
             { "LoanDocumentationType", new HashSet<string> { "NoIncomeon1003" } }
         };
 
-        private static readonly HashSet<string> s_ignoredEntities = new HashSet<string> { "NonBorrowingOwnerContract" };
+        private static readonly HashSet<string> s_ignoredEntities = new HashSet<string> { };
+
+        private static readonly Dictionary<string, List<string>> s_mergeEntities = new Dictionary<string, List<string>> { { "NonBorrowingOwner", new List<string> { "NonBorrowingOwnerContract" } }, { "AlertChangeCircumstance", new List<string> { "AlertChangeCircumstanceContract" } } };
 
         private static readonly string s_encompassSDKFolder = Path.Combine(Directory.EnumerateDirectories("C:\\SmartClientCache\\Apps\\UAC\\Ellie Mae\\").First(), "Encompass360");
 
@@ -224,6 +242,26 @@ namespace EncompassRest
                 {
                     entityTypes = (await client.Schema.GetLoanSchemaAsync(true).ConfigureAwait(false)).EntityTypes;
                 }
+
+                foreach (var pair in s_mergeEntities)
+                {
+                    var properties = entityTypes[pair.Key].Properties;
+                    foreach (var entityToMerge in pair.Value)
+                    {
+                        var entityTypeToMerge = entityTypes[entityToMerge];
+                        foreach (var p in entityTypeToMerge.Properties)
+                        {
+                            var name = p.Key;
+                            if (!properties.ContainsKey(name))
+                            {
+                                properties.Add(name, p.Value);
+                                Console.WriteLine($"Merged {entityToMerge}.{name} into {pair.Key}");
+                            }
+                        }
+                        entityTypes.Remove(entityToMerge);
+                    }
+                }
+
                 foreach (var pair in s_explicitSchemas)
                 {
                     var entityName = pair.Key;
@@ -251,6 +289,20 @@ namespace EncompassRest
                         else
                         {
                             properties.Add(propertyName, p.Value);
+                        }
+                    }
+                }
+
+                foreach (var pair in entityTypes)
+                {
+                    if (s_propertiesToRename.TryGetValue(pair.Key, out var propertiesToRename))
+                    {
+                        var properties = pair.Value.Properties;
+                        foreach (var p in propertiesToRename)
+                        {
+                            var property = properties[p.Key];
+                            properties.Remove(p.Key);
+                            properties.Add(p.Value, property);
                         }
                     }
                 }
@@ -433,7 +485,8 @@ namespace EncompassRest
             var requiredProperties = new HashSet<string>();
             var serializeWholeList = false;
 
-            foreach (var pair in entitySchema.Properties)
+            var properties = entitySchema.Properties;
+            foreach (var pair in properties)
             {
                 var propertyName = pair.Key;
                 var propertySchema = pair.Value;
@@ -531,7 +584,7 @@ namespace EncompassRest
                                             {
                                                 var keyPropertyName = listPropertySchema.KeyProperties[i];
                                                 requiredProperties.Add(keyPropertyName);
-                                                var property = entitySchema.Properties[keyPropertyName];
+                                                var property = properties[keyPropertyName];
                                                 var allowedValues = property.AllowedValues;
                                                 if (allowedValues == null)
                                                 {
@@ -552,7 +605,7 @@ namespace EncompassRest
                                             {
                                                 var keyPropertyName = p.Key;
                                                 requiredProperties.Add(keyPropertyName);
-                                                var property = entitySchema.Properties[keyPropertyName];
+                                                var property = properties[keyPropertyName];
                                                 var allowedValues = property.AllowedValues;
                                                 if (allowedValues == null)
                                                 {
@@ -590,7 +643,7 @@ namespace EncompassRest
                                         {
                                             var keyPropertyName = p.Key;
                                             requiredProperties.Add(keyPropertyName);
-                                            var property = entitySchema.Properties[keyPropertyName];
+                                            var property = properties[keyPropertyName];
                                             var allowedValues = property.AllowedValues;
                                             if (allowedValues == null)
                                             {
@@ -639,7 +692,7 @@ namespace EncompassRest
                                     {
                                         var keyPropertyName = p.Key;
                                         requiredProperties.Add(keyPropertyName);
-                                        var property = entitySchema.Properties[keyPropertyName];
+                                        var property = properties[keyPropertyName];
                                         var allowedValues = property.AllowedValues;
                                         if (allowedValues == null)
                                         {
@@ -762,6 +815,10 @@ namespace {@namespace}
                     if (s_explicitStringEnumValues.TryGetValue(entityPropertyName, out var enumName))
                     {
                         propertyType = $"StringEnumValue<{enumName}>";
+                    }
+                    else if (s_explicitDateTimeProperties.Contains(entityPropertyName))
+                    {
+                        propertyType = "DateTime?";
                     }
                     else if (propertySchema.AllowedValues?.Count > 0)
                     {

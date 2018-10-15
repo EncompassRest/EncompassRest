@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _amountReceived;
         private DirtyValue<int?> _balloonLoanMaturityTermMonths;
         private DirtyValue<decimal?> _baseLoanAmount;
-        private DirtyValue<string> _borrLenderPaid;
+        private DirtyValue<StringEnumValue<BorrLenderPaid>> _borrLenderPaid;
         private DirtyValue<decimal?> _borrowerRequestedLoanAmount;
         private DirtyValue<DateTime?> _branchApprovalDate;
         private DirtyValue<string> _branchApprovedby;
@@ -587,9 +587,9 @@ namespace EncompassRest.Loans
         public decimal? BaseLoanAmount { get => _baseLoanAmount; set => SetField(ref _baseLoanAmount, value); }
 
         /// <summary>
-        /// RateLock BorrLenderPaid
+        /// Rate Lock Request - Borrower/Lender Paid [4463]
         /// </summary>
-        public string BorrLenderPaid { get => _borrLenderPaid; set => SetField(ref _borrLenderPaid, value); }
+        public StringEnumValue<BorrLenderPaid> BorrLenderPaid { get => _borrLenderPaid; set => SetField(ref _borrLenderPaid, value); }
 
         /// <summary>
         /// Lock Request Loan Amount [2965]
@@ -2891,7 +2891,7 @@ namespace EncompassRest.Loans
         public decimal? RequestPriceTotalAdjustment { get => _requestPriceTotalAdjustment; set => SetField(ref _requestPriceTotalAdjustment, value); }
 
         /// <summary>
-        /// RateLock RequestProgramNotes
+        /// Rate Lock Request Program Notes [4456]
         /// </summary>
         public string RequestProgramNotes { get => _requestProgramNotes; set => SetField(ref _requestProgramNotes, value); }
 

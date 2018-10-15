@@ -706,6 +706,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Property Type [AUS.X50]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"MHAdvantage\"]")]
         public StringEnumValue<PropertyType> LogDUPropertyType { get => _logDUPropertyType; set => SetField(ref _logDUPropertyType, value); }
 
         /// <summary>

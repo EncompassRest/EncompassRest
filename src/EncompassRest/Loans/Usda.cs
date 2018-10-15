@@ -10,16 +10,13 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Usda : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _additionalIncomeFromPrimaryEmployment;
         private DirtyValue<decimal?> _additionalMemberBaseIncome;
-        private DirtyValue<decimal?> _adjustedAnnualIncome;
         private DirtyValue<string> _adjustedIncomeCalculationDescription1;
         private DirtyValue<string> _adjustedIncomeCalculationDescription2;
         private DirtyValue<string> _adjustedIncomeCalculationDescription3;
         private DirtyValue<decimal?> _advanceAmountToDate;
         private DirtyValue<decimal?> _amountLoanlineCredit;
         private DirtyValue<decimal?> _annualChildCareExpenses;
-        private DirtyValue<decimal?> _annualIncome;
         private DirtyValue<string> _annualIncomeCalculationDescription1;
         private DirtyValue<string> _annualIncomeCalculationDescription2;
         private DirtyValue<string> _annualIncomeCalculationDescription3;
@@ -28,9 +25,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _annualReviewDate;
         private DirtyValue<string> _applicationNumber;
         private DirtyValue<string> _approvedLenderTaxId;
-        private DirtyValue<decimal?> _assetIncome;
         private DirtyValue<decimal?> _balanceOwedOnLoan;
-        private DirtyValue<decimal?> _borrowerBaseIncome;
         private DirtyValue<decimal?> _borrowerTotalStableIncome;
         private DirtyValue<StringEnumValue<BorrowerTypeCode>> _borrowerTypeCode;
         private DirtyValue<decimal?> _buydownInterestAssistanceRate;
@@ -48,7 +43,6 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _childCareProviderZip;
         private DirtyValue<decimal?> _childCostPerMonth;
         private DirtyValue<decimal?> _childCostPerWeek;
-        private DirtyValue<decimal?> _coborrowerBaseIncome;
         private DirtyValue<decimal?> _coborrowerStableBaseIncome;
         private DirtyValue<string> _coborrowerStableBaseIncomeDesc;
         private DirtyValue<decimal?> _coborrowerStableOtherIncome;
@@ -119,7 +113,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _purchaseOrRefinanceDescription;
         private DirtyValue<StringEnumValue<RdsfhRefinancedLoanIndicatorType>> _rdsfhRefinancedLoanIndicatorType;
         private DirtyValue<bool?> _refinanceLoanIndicator;
-        private DirtyValue<string> _refinanceType;
+        private DirtyValue<StringEnumValue<UsdaRefinanceType>> _refinanceType;
         private DirtyValue<decimal?> _repairOtherAmount;
         private DirtyValue<string> _repairOtherDescription;
         private DirtyValue<decimal?> _reservationAmountRequested;
@@ -153,22 +147,10 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _verificationCode;
 
         /// <summary>
-        /// USDA - Additional Income to Primary Employment (Commission, Bonus, Overtime, Automobile Allowance, Mortgage Differential, Tips, Military, Secondary Employment, Seasonal Employment, Unemployment) [USDA.X168]
-        /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
-        public decimal? AdditionalIncomeFromPrimaryEmployment { get => _additionalIncomeFromPrimaryEmployment; set => SetField(ref _additionalIncomeFromPrimaryEmployment, value); }
-
-        /// <summary>
         /// USDA - Additional Adult Household Member(s) (Base Income: Primary Employment from Wages, Salary, self-Employed, Additional income to Primary Employment, Other Income) [USDA.X167]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdditionalMemberBaseIncome { get => _additionalMemberBaseIncome; set => SetField(ref _additionalMemberBaseIncome, value); }
-
-        /// <summary>
-        /// USDA - Adjusted Annual income for the household [USDA.X17]
-        /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
-        public decimal? AdjustedAnnualIncome { get => _adjustedAnnualIncome; set => SetField(ref _adjustedAnnualIncome, value); }
 
         /// <summary>
         /// USDA - Adjusted Income Calculation - Calculate and Record how the calculation of deduction in the space below line 8 [USDA.X214]
@@ -202,12 +184,6 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualChildCareExpenses { get => _annualChildCareExpenses; set => SetField(ref _annualChildCareExpenses, value); }
-
-        /// <summary>
-        /// USDA - Annual income for the household [USDA.X16]
-        /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
-        public decimal? AnnualIncome { get => _annualIncome; set => SetField(ref _annualIncome, value); }
 
         /// <summary>
         /// USDA - Annual Income Calculation - Calculate and Record how the calculation of each income source/type was determined in the space below line 1 [USDA.X209]
@@ -250,22 +226,10 @@ namespace EncompassRest.Loans
         public string ApprovedLenderTaxId { get => _approvedLenderTaxId; set => SetField(ref _approvedLenderTaxId, value); }
 
         /// <summary>
-        /// USDA - Asset Income (Income from household assets as described in 1980.347(d) of RD Instruction 1980-D) [USDA.X170]
-        /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
-        public decimal? AssetIncome { get => _assetIncome; set => SetField(ref _assetIncome, value); }
-
-        /// <summary>
         /// USDA - Loan Closing - Balance Owed On Loan [USDA.X144]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BalanceOwedOnLoan { get => _balanceOwedOnLoan; set => SetField(ref _balanceOwedOnLoan, value); }
-
-        /// <summary>
-        /// USDA - Annual Income - Applicant Base Income [USDA.X164]
-        /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
-        public decimal? BorrowerBaseIncome { get => _borrowerBaseIncome; set => SetField(ref _borrowerBaseIncome, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Borrower Total Stable Income [USDA.X201]
@@ -357,12 +321,6 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ChildCostPerWeek { get => _childCostPerWeek; set => SetField(ref _childCostPerWeek, value); }
-
-        /// <summary>
-        /// USDA - Annual Income - Co-Applicant Base Income [USDA.X165]
-        /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
-        public decimal? CoborrowerBaseIncome { get => _coborrowerBaseIncome; set => SetField(ref _coborrowerBaseIncome, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Co-Borrower Stable Dependable Monthly Income (parties to note only) [USDA.X202]
@@ -739,9 +697,9 @@ namespace EncompassRest.Loans
         public bool? RefinanceLoanIndicator { get => _refinanceLoanIndicator; set => SetField(ref _refinanceLoanIndicator, value); }
 
         /// <summary>
-        /// Usda RefinanceType
+        /// USDA - Refinance Type [USDA.X218]
         /// </summary>
-        public string RefinanceType { get => _refinanceType; set => SetField(ref _refinanceType, value); }
+        public StringEnumValue<UsdaRefinanceType> RefinanceType { get => _refinanceType; set => SetField(ref _refinanceType, value); }
 
         /// <summary>
         /// USDA - Repair / Other Amount [USDA.X24]

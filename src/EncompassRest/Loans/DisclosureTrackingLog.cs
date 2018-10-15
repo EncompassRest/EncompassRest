@@ -85,6 +85,7 @@ namespace EncompassRest.Loans
         private DirtyList<LogSnapshotField> _snapshotFields;
         private DirtyValue<string> _snapshotXml;
         private DirtyValue<string> _systemId;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// DisclosureTrackingLog Alerts
@@ -460,5 +461,10 @@ namespace EncompassRest.Loans
         /// DisclosureTrackingLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// DisclosureTrackingLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

@@ -49,6 +49,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _systemId;
         private DirtyValue<string> _title;
         private DirtyValue<bool?> _underwriterAccessIndicator;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// PreliminaryConditionLog AddedBy
@@ -244,5 +245,10 @@ namespace EncompassRest.Loans
         /// PreliminaryConditionLog UnderwriterAccessIndicator
         /// </summary>
         public bool? UnderwriterAccessIndicator { get => _underwriterAccessIndicator; set => SetField(ref _underwriterAccessIndicator, value); }
+
+        /// <summary>
+        /// PreliminaryConditionLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

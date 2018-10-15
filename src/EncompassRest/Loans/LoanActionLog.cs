@@ -17,6 +17,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _id;
         private DirtyValue<string> _loanActionType;
         private DirtyValue<string> _triggeredBy;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// LoanActionLog Alerts
@@ -52,5 +53,10 @@ namespace EncompassRest.Loans
         /// LoanActionLog TriggeredBy
         /// </summary>
         public string TriggeredBy { get => _triggeredBy; set => SetField(ref _triggeredBy, value); }
+
+        /// <summary>
+        /// LoanActionLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

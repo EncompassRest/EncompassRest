@@ -28,6 +28,12 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _landEstimatedValueAmount;
         private DirtyValue<string> _legalDescriptionText1;
         private DirtyValue<string> _legalDescriptionText2;
+        private DirtyValue<decimal?> _linkedAmountApplyToDownPayment;
+        private DirtyValue<decimal?> _linkedClosedEndPrimaryMortgageLoanAmount;
+        private DirtyValue<decimal?> _linkedClosedEndSubordinateMortgageLoanAmount;
+        private DirtyValue<decimal?> _linkedHelocNewFinancingNotLinkedCreditLimit;
+        private DirtyValue<decimal?> _linkedHelocNewFinancingNotLinkedDrawAmount;
+        private DirtyValue<decimal?> _linkedInitialAdvanceAmount;
         private DirtyValue<bool?> _linkedIsConstructionPhaseDisclosedSeparately;
         private DirtyValue<StringEnumValue<LienType>> _linkedLienPriorityType;
         private DirtyValue<string> _linkedLoanPurposeType;
@@ -162,6 +168,42 @@ namespace EncompassRest.Loans
         /// Subject Property Legal Descr 2 [1824]
         /// </summary>
         public string LegalDescriptionText2 { get => _legalDescriptionText2; set => SetField(ref _legalDescriptionText2, value); }
+
+        /// <summary>
+        /// HELOC Amount Apply To Down Payment - Copied from Linked Loan [LINK_4493]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedAmountApplyToDownPayment { get => _linkedAmountApplyToDownPayment; set => SetField(ref _linkedAmountApplyToDownPayment, value); }
+
+        /// <summary>
+        /// Closed End Primary Mortgage Loan Amount Copied from Linked Loan [LINK_4487]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedClosedEndPrimaryMortgageLoanAmount { get => _linkedClosedEndPrimaryMortgageLoanAmount; set => SetField(ref _linkedClosedEndPrimaryMortgageLoanAmount, value); }
+
+        /// <summary>
+        /// Closed End Subordinate Mortgage Loan Amount - Copied from Linked Loan [LINK_4488]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedClosedEndSubordinateMortgageLoanAmount { get => _linkedClosedEndSubordinateMortgageLoanAmount; set => SetField(ref _linkedClosedEndSubordinateMortgageLoanAmount, value); }
+
+        /// <summary>
+        /// Heloc New Financing Not Linked Credit Limit - Copied from Linked Loan [LINK_4490]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedHelocNewFinancingNotLinkedCreditLimit { get => _linkedHelocNewFinancingNotLinkedCreditLimit; set => SetField(ref _linkedHelocNewFinancingNotLinkedCreditLimit, value); }
+
+        /// <summary>
+        /// Heloc New Financing Not Linked Draw Amount - Copied from Linked Loan [LINK_4489]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedHelocNewFinancingNotLinkedDrawAmount { get => _linkedHelocNewFinancingNotLinkedDrawAmount; set => SetField(ref _linkedHelocNewFinancingNotLinkedDrawAmount, value); }
+
+        /// <summary>
+        /// HELOC Initial Advance - Copied from Linked Loan [LINK_1888]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedInitialAdvanceAmount { get => _linkedInitialAdvanceAmount; set => SetField(ref _linkedInitialAdvanceAmount, value); }
 
         /// <summary>
         /// Trans Details Construction Phase Disclosed Separately - Copied from Linekd Loan [LINK_4084]

@@ -64,8 +64,9 @@ namespace EncompassRest.Loans
         public StringEnumValue<NonBorrowingOwnerBorrowerType> BorrowerType { get => _borrowerType; set => SetField(ref _borrowerType, value); }
 
         /// <summary>
-        /// NonBorrowingOwner BorrowerVestingRecordID
+        /// Non-Borrowing Owner File Contact - Borrower Vesting Record ID [NBOCNB99]
         /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
         public string BorrowerVestingRecordID { get => _borrowerVestingRecordID; set => SetField(ref _borrowerVestingRecordID, value); }
 
         /// <summary>
@@ -96,29 +97,29 @@ namespace EncompassRest.Loans
         public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
 
         /// <summary>
-        /// NonBorrowingOwner ESignConsentNBOCDateAccepted
+        /// Non-Borrowing Owner eConsent Date Accepted [NBOCNB18]
         /// </summary>
-        public DateTime? ESignConsentNBOCDateAccepted { get => _eSignConsentNBOCDateAccepted; set => SetField(ref _eSignConsentNBOCDateAccepted, value); }
+        public DateTime? eSignConsentNBOCDateAccepted { get => _eSignConsentNBOCDateAccepted; set => SetField(ref _eSignConsentNBOCDateAccepted, value); }
 
         /// <summary>
-        /// NonBorrowingOwner ESignConsentNBOCDateSent
+        /// Non-Borrowing Owner eConsent Sent Date [NBOCNB21]
         /// </summary>
-        public DateTime? ESignConsentNBOCDateSent { get => _eSignConsentNBOCDateSent; set => SetField(ref _eSignConsentNBOCDateSent, value); }
+        public DateTime? eSignConsentNBOCDateSent { get => _eSignConsentNBOCDateSent; set => SetField(ref _eSignConsentNBOCDateSent, value); }
 
         /// <summary>
-        /// NonBorrowingOwner ESignConsentNBOCIPAddress
+        /// Non-Borrowing Owner eConsent IP Address [NBOCNB19]
         /// </summary>
-        public string ESignConsentNBOCIPAddress { get => _eSignConsentNBOCIPAddress; set => SetField(ref _eSignConsentNBOCIPAddress, value); }
+        public string eSignConsentNBOCIPAddress { get => _eSignConsentNBOCIPAddress; set => SetField(ref _eSignConsentNBOCIPAddress, value); }
 
         /// <summary>
-        /// NonBorrowingOwner ESignConsentNBOCSource
+        /// Non-Borrowing Owner eConsent Source [NBOCNB20]
         /// </summary>
-        public string ESignConsentNBOCSource { get => _eSignConsentNBOCSource; set => SetField(ref _eSignConsentNBOCSource, value); }
+        public string eSignConsentNBOCSource { get => _eSignConsentNBOCSource; set => SetField(ref _eSignConsentNBOCSource, value); }
 
         /// <summary>
-        /// NonBorrowingOwner ESignConsentNBOCStatus
+        /// Non-Borrowing Owner eConsent Status [NBOCNB17]
         /// </summary>
-        public string ESignConsentNBOCStatus { get => _eSignConsentNBOCStatus; set => SetField(ref _eSignConsentNBOCStatus, value); }
+        public string eSignConsentNBOCStatus { get => _eSignConsentNBOCStatus; set => SetField(ref _eSignConsentNBOCStatus, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Fax Number [NBOCNB15]
@@ -153,8 +154,9 @@ namespace EncompassRest.Loans
         public string MiddleName { get => _middleName; set => SetField(ref _middleName, value); }
 
         /// <summary>
-        /// NonBorrowingOwner NBOID
+        /// Non-Borrowing Owner File Contact - NBO Record ID [NBOCNB98]
         /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
         public string NBOID { get => _nBOID; set => SetField(ref _nBOID, value); }
 
         /// <summary>

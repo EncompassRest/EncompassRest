@@ -17,6 +17,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _isTemplateLocked;
         private DirtyValue<string> _milestoneTemplateID;
         private DirtyValue<string> _milestoneTemplateName;
+        private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
         /// MilestoneTemplateLog ElliLogRecordId
@@ -47,5 +48,10 @@ namespace EncompassRest.Loans
         /// MilestoneTemplateLog MilestoneTemplateName
         /// </summary>
         public string MilestoneTemplateName { get => _milestoneTemplateName; set => SetField(ref _milestoneTemplateName, value); }
+
+        /// <summary>
+        /// MilestoneTemplateLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
     }
 }

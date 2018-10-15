@@ -14,7 +14,10 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _accountIdentifier;
         private DirtyValue<bool?> _accountIndicator;
         private DirtyValue<string> _attention;
+        private DirtyValue<bool?> _bankLiabilityConsideredIndicator;
         private DirtyValue<EntityReference> _contact;
+        private DirtyValue<decimal?> _creditLimit;
+        private DirtyValue<StringEnumValue<LienPosition>> _currentLienPosition;
         private DirtyValue<DateTime?> _date;
         private DirtyValue<string> _description;
         private DirtyValue<string> _descriptionOfPurpose;
@@ -50,6 +53,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<LiabilityType>> _liabilityType;
         private DirtyValue<decimal?> _monthlyPaymentAmount;
         private DirtyValue<int?> _monthsToExclude;
+        private DirtyValue<StringEnumValue<LiabilityMortgageType>> _mortgageType;
         private DirtyValue<string> _nameInAccount;
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         private DirtyValue<StringEnumValue<Owner>> _owner;
@@ -58,10 +62,12 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _prepaymentPenaltyAmount;
         private DirtyValue<bool?> _printAttachmentIndicator;
         private DirtyValue<bool?> _printUserNameIndicator;
+        private DirtyValue<StringEnumValue<LienPosition>> _proposedLienPosition;
         private DirtyValue<int?> _remainingTermMonths;
         private DirtyValue<string> _reoId;
         private DirtyValue<string> _requestId;
         private DirtyValue<bool?> _subjectLoanResubordinationIndicator;
+        private DirtyValue<bool?> _subjectPropertyIndicator;
         private DirtyValue<string> _title;
         private DirtyValue<string> _titleFax;
         private DirtyValue<string> _titlePhone;
@@ -86,9 +92,26 @@ namespace EncompassRest.Loans
         public string Attention { get => _attention; set => SetField(ref _attention, value); }
 
         /// <summary>
+        /// Bank Liability Considered in Exposure Indicator [FLNN30]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Bank Liability Considered in Exposure Indicator\"}")]
+        public bool? BankLiabilityConsideredIndicator { get => _bankLiabilityConsideredIndicator; set => SetField(ref _bankLiabilityConsideredIndicator, value); }
+
+        /// <summary>
         /// Liability Contact (Nullable)
         /// </summary>
         public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+
+        /// <summary>
+        /// Credit Limit [FLNN31]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? CreditLimit { get => _creditLimit; set => SetField(ref _creditLimit, value); }
+
+        /// <summary>
+        /// Current Lien Position [FLNN28]
+        /// </summary>
+        public StringEnumValue<LienPosition> CurrentLienPosition { get => _currentLienPosition; set => SetField(ref _currentLienPosition, value); }
 
         /// <summary>
         /// Liability Request Date [FLNN98]
@@ -272,6 +295,11 @@ namespace EncompassRest.Loans
         public int? MonthsToExclude { get => _monthsToExclude; set => SetField(ref _monthsToExclude, value); }
 
         /// <summary>
+        /// Mortgage Type [FLNN32]
+        /// </summary>
+        public StringEnumValue<LiabilityMortgageType> MortgageType { get => _mortgageType; set => SetField(ref _mortgageType, value); }
+
+        /// <summary>
         /// Liability Account Name [FLNN09]
         /// </summary>
         public string NameInAccount { get => _nameInAccount; set => SetField(ref _nameInAccount, value); }
@@ -318,6 +346,11 @@ namespace EncompassRest.Loans
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
 
         /// <summary>
+        /// Proposed Lien Position [FLNN29]
+        /// </summary>
+        public StringEnumValue<LienPosition> ProposedLienPosition { get => _proposedLienPosition; set => SetField(ref _proposedLienPosition, value); }
+
+        /// <summary>
         /// Liability RemainingTermMonths [FLNN12]
         /// </summary>
         public int? RemainingTermMonths { get => _remainingTermMonths; set => SetField(ref _remainingTermMonths, value); }
@@ -339,6 +372,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"true\":\"Resubordinated Indicator\"}")]
         public bool? SubjectLoanResubordinationIndicator { get => _subjectLoanResubordinationIndicator; set => SetField(ref _subjectLoanResubordinationIndicator, value); }
+
+        /// <summary>
+        /// Subject Property Indicator [FLNN27]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Subject Property Indicator\"}")]
+        public bool? SubjectPropertyIndicator { get => _subjectPropertyIndicator; set => SetField(ref _subjectPropertyIndicator, value); }
 
         /// <summary>
         /// Liability From Title [FLNN37]
