@@ -19,7 +19,7 @@ namespace EncompassRest.Tests
             var loanSchema = await client.Schema.GetLoanSchemaAsync(true);
 
             var loanEntities = new HashSet<string>(loanSchema.EntityTypes.Keys);
-            var ignoredLoanEntities = new HashSet<string>(new[] { "NonBorrowingOwnerContract" });
+            var ignoredLoanEntities = new HashSet<string>(new[] { "NonBorrowingOwnerContract", "AlertChangeCircumstanceContract" });
             loanEntities.ExceptWith(ignoredLoanEntities);
             var existingLoanEntities = new HashSet<string>(Enums.GetMembers<LoanEntity>().Select(m => m.AsString(EnumFormat.Name)));
             var newLoanEntities = loanEntities.Except(existingLoanEntities).ToList();

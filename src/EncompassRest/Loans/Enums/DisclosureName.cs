@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.Enums
@@ -2497,6 +2496,58 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// OptionalEscrow
         /// </summary>
-        OptionalEscrow = 611
+        OptionalEscrow = 611,
+        /// <summary>
+        /// OriginationFeeAmount
+        /// </summary>
+        OriginationFeeAmount = 612,
+        /// <summary>
+        /// OtherFee4Amount
+        /// </summary>
+        OtherFee4Amount = 613,
+        /// <summary>
+        /// OtherFee1Name
+        /// </summary>
+        OtherFee1Name = 614,
+        /// <summary>
+        /// OtherFee2Name
+        /// </summary>
+        OtherFee2Name = 615,
+        /// <summary>
+        /// OtherFee3Name
+        /// </summary>
+        OtherFee3Name = 616,
+        /// <summary>
+        /// OtherFee4Name
+        /// </summary>
+        OtherFee4Name = 617,
+        /// <summary>
+        /// IsOtherFee1Refundable
+        /// </summary>
+        IsOtherFee1Refundable = 618,
+        /// <summary>
+        /// IsOtherFee2Refundable
+        /// </summary>
+        IsOtherFee2Refundable = 619,
+        /// <summary>
+        /// IsOtherFee3Refundable
+        /// </summary>
+        IsOtherFee3Refundable = 620,
+        /// <summary>
+        /// IsOtherFee4Refundable
+        /// </summary>
+        IsOtherFee4Refundable = 621,
+        /// <summary>
+        /// AdditionalPaymentsDisclosureOther
+        /// </summary>
+        AdditionalPaymentsDisclosureOther = 622,
+        /// <summary>
+        /// AdditionalPaymentsDisclosureHELOC
+        /// </summary>
+        AdditionalPaymentsDisclosureHELOC = 623,
+        /// <summary>
+        /// CommitmentExpiredDate
+        /// </summary>
+        CommitmentExpiredDate = 624
     }
 }

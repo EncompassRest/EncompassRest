@@ -82,34 +82,30 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var borrowerContactFieldDefinitions = await client.Settings.BorrowerContacts.GetCanonicalNamesAsync();
             var businessContactFieldDefinitions = await client.Settings.BusinessContacts.GetCanonicalNamesAsync();
+            var allContactFieldDefinitions = borrowerContactFieldDefinitions.Concat(businessContactFieldDefinitions).ToList();
 
-            foreach (var borrowerContactFieldDefinition in borrowerContactFieldDefinitions)
+            foreach (var contactFieldDefinition in allContactFieldDefinitions)
             {
-                Assert.AreEqual(0, borrowerContactFieldDefinition.ExtensionData.Count);
+                Assert.AreEqual(0, contactFieldDefinition.ExtensionData.Count);
             }
 
-            foreach (var businessContactFieldDefinition in businessContactFieldDefinitions)
-            {
-                Assert.AreEqual(0, businessContactFieldDefinition.ExtensionData.Count);
-            }
-
-            Assert.IsTrue(borrowerContactFieldDefinitions.Concat(businessContactFieldDefinitions).All(fd => fd.Category.EnumValue.HasValue));
             var existingCategories = new HashSet<string>(Enums.GetMembers<FieldDefinitionCategory>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)), StringComparer.Ordinal);
-            var categories = new HashSet<string>(borrowerContactFieldDefinitions.Select(fd => fd.Category.Value).Concat(businessContactFieldDefinitions.Select(fd => fd.Category.Value)), StringComparer.Ordinal);
+            var categories = new HashSet<string>(allContactFieldDefinitions.Select(fd => fd.Category.Value), StringComparer.Ordinal);
             var newCategories = categories.Except(existingCategories).ToList();
             Assert.AreEqual(0, newCategories.Count);
+            Assert.IsTrue(allContactFieldDefinitions.All(fd => fd.Category.EnumValue.HasValue));
 
-            Assert.IsTrue(borrowerContactFieldDefinitions.Concat(businessContactFieldDefinitions).All(fd => fd.DataSource.EnumValue.HasValue));
             var existingDataSources = new HashSet<string>(Enums.GetMembers<FieldDefinitionDataSource>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)), StringComparer.Ordinal);
-            var dataSources = new HashSet<string>(borrowerContactFieldDefinitions.Select(fd => fd.DataSource.Value).Concat(businessContactFieldDefinitions.Select(fd => fd.DataSource.Value)), StringComparer.Ordinal);
+            var dataSources = new HashSet<string>(allContactFieldDefinitions.Select(fd => fd.DataSource.Value), StringComparer.Ordinal);
             var newDataSources = dataSources.Except(existingDataSources).ToList();
             Assert.AreEqual(0, newDataSources.Count);
+            Assert.IsTrue(allContactFieldDefinitions.All(fd => fd.DataSource.EnumValue.HasValue));
 
-            Assert.IsTrue(borrowerContactFieldDefinitions.Concat(businessContactFieldDefinitions).All(fd => fd.DataType.EnumValue.HasValue));
             var existingFieldFormats = new HashSet<string>(Enums.GetMembers<LoanFieldFormat>().Select(m => m.AsString(EnumFormat.Name)), StringComparer.Ordinal);
-            var fieldFormats = new HashSet<string>(borrowerContactFieldDefinitions.Select(fd => fd.DataType.Value).Concat(businessContactFieldDefinitions.Select(fd => fd.DataType.Value)), StringComparer.Ordinal);
+            var fieldFormats = new HashSet<string>(allContactFieldDefinitions.Select(fd => fd.DataType.Value), StringComparer.Ordinal);
             var newFieldFormats = fieldFormats.Except(existingFieldFormats).ToList();
             Assert.AreEqual(0, newFieldFormats.Count);
+            Assert.IsTrue(allContactFieldDefinitions.All(fd => fd.DataType.EnumValue.HasValue));
         }
 
         [TestMethod]

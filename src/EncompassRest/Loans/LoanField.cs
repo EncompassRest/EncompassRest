@@ -163,7 +163,7 @@ namespace EncompassRest.Loans
                         }
                         if (value != null && (propertyType == TypeData<string>.Type || propertyType == TypeData<DateTime?>.Type || propertyType == TypeData<decimal?>.Type || propertyType == TypeData<int?>.Type || propertyType == TypeData<bool?>.Type))
                         {
-                            return Convert.ChangeType(value, Nullable.GetUnderlyingType(propertyType) ?? propertyType);
+                            return Convert.ChangeType(value, System.Nullable.GetUnderlyingType(propertyType) ?? propertyType);
                         }
                         else
                         {

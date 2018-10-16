@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using EncompassRest.Loans.Enums;
+﻿using EncompassRest.Loans.Enums;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
