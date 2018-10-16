@@ -23,7 +23,7 @@ namespace EncompassRest.Schema
 
         public Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<string> entities, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(false, entities, cancellationToken);
 
-        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(includeFieldExtensions, entities?.Select(e => e.AsString()), cancellationToken);
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(includeFieldExtensions, entities?.Select(e => e.Validate(nameof(entities)).GetName()), cancellationToken);
 
         public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<string> entities, CancellationToken cancellationToken = default)
         {

@@ -29,14 +29,23 @@ namespace EncompassRest.Schema
         }
 
         public void Add(int item) => _values.Add(item);
+
         public void Clear() => _values.Clear();
+
         public bool Contains(int item) => _values.Contains(item);
+
         public void CopyTo(int[] array, int arrayIndex) => _values.CopyTo(array, arrayIndex);
+
         public IEnumerator<int> GetEnumerator() => ((IList<int>)_values).GetEnumerator();
+
         public int IndexOf(int item) => _values.IndexOf(item);
+
         public void Insert(int index, int item) => _values.Insert(index, item);
+
         public bool Remove(int item) => _values.Remove(item);
+
         public void RemoveAt(int index) => _values.RemoveAt(index);
+
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

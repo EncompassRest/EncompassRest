@@ -30,7 +30,7 @@ namespace EncompassRest.Tests
                             credentials = JsonHelper.FromJson<TestClientCredentials>(sr);
                         }
                     }
-                    client = await EncompassRestClient.CreateAsync(credentials.Parameters, tc => tc.FromUserCredentialsAsync(credentials.InstanceId, credentials.UserId, credentials.Password)).ConfigureAwait(false);
+                    client = await EncompassRestClient.CreateAsync(credentials.Parameters, tc => tc.FromUserCredentialsAsync(credentials.InstanceId, credentials.UserId, credentials.Password));
                     Console.WriteLine("Using test client credentials file");
                 }
                 else

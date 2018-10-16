@@ -80,13 +80,15 @@ namespace EncompassRest.Loans.Documents
             return PatchRawAsync(documentId, queryString, new JsonStringContent(document), nameof(UpdateDocumentRawAsync), documentId, cancellationToken);
         }
 
-        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken = default)
+        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken = default) => AssignDocumentAttachmentsAsync(documentId, action.Validate(nameof(action)).GetValue(), attachmentEntities, cancellationToken);
+
+        public Task AssignDocumentAttachmentsAsync(string documentId, string action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
-            action.Validate(nameof(action));
+            Preconditions.NotNullOrEmpty(action, nameof(action));
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
 
-            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.AsString(EnumJsonConverter.CamelCaseNameFormat)));
+            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action));
             return PatchAsync($"{documentId}/attachments", queryParameters.ToString(), JsonStreamContent.Create(attachmentEntities), nameof(AssignDocumentAttachmentsAsync), documentId, cancellationToken);
         }
 

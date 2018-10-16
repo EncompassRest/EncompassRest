@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest
 {
@@ -27,5 +28,7 @@ namespace EncompassRest
             }
             return list.FirstOrDefault(v => string.Equals(((IIdentifiable)v)?.Id, id, StringComparison.OrdinalIgnoreCase));
         }
+
+        internal static string GetValue<TEnum>(this TEnum value) where TEnum : struct, Enum => value.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
     }
 }

@@ -33,15 +33,25 @@ namespace EncompassRest.Schema
         }
 
         public void Add(string key, string value) => _dictionary.Add(key, value);
+
         public void Add(KeyValuePair<string, string> item) => ((IDictionary<string, string>)_dictionary).Add(item);
+
         public void Clear() => _dictionary.Clear();
+
         public bool Contains(KeyValuePair<string, string> item) => ((IDictionary<string, string>)_dictionary).Contains(item);
+
         public bool ContainsKey(string key) => _dictionary.ContainsKey(key);
+
         public void CopyTo(KeyValuePair<string, string>[] array, int arrayIndex) => ((IDictionary<string, string>)_dictionary).CopyTo(array, arrayIndex);
+
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator() => ((IDictionary<string, string>)_dictionary).GetEnumerator();
+
         public bool Remove(string key) => _dictionary.Remove(key);
+
         public bool Remove(KeyValuePair<string, string> item) => ((IDictionary<string, string>)_dictionary).Remove(item);
+
         public bool TryGetValue(string key, out string value) => _dictionary.TryGetValue(key, out value);
+
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

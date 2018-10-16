@@ -27,7 +27,7 @@ namespace EncompassRest.Services.AUS
         public string CreditProviderAffiliateCode { get; set; }
 
         public AUSOptions(AUSRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 

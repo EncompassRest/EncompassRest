@@ -12,7 +12,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public async Task FieldReader_GetValues()
         {
-            var client = await GetTestClientAsync().ConfigureAwait(false);
+            var client = await GetTestClientAsync();
             var loan = new Loan(client);
             var fieldValues = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
@@ -39,7 +39,13 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
     }

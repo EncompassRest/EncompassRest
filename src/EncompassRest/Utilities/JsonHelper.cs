@@ -312,9 +312,10 @@ namespace EncompassRest.Utilities
                     if (TypeData<DirtyExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                     {
                         var idPropertyName = DirtyExtensibleObject.GetIdPropertyName(objectTypeInfo);
+                        var backingFieldTypeInfo = GetBackingFieldInfo(objectType, idPropertyName)?.FieldInfo.FieldType.GetTypeInfo();
                         idPropertyName = CamelCaseNamingStrategy.GetPropertyName(idPropertyName, false);
                         var property = contract.Properties.GetClosestMatchProperty(idPropertyName);
-                        if (property != null)
+                        if (property != null && (backingFieldTypeInfo == null || !backingFieldTypeInfo.IsGenericType || backingFieldTypeInfo.IsGenericTypeDefinition || backingFieldTypeInfo.GetGenericTypeDefinition() != TypeData.OpenNeverSerializeValueType))
                         {
                             property.ShouldSerialize = o => ((IIdentifiable)o).Id != null;
                         }

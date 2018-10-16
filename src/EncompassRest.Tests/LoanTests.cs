@@ -80,13 +80,26 @@ namespace EncompassRest.Tests
             
             var loanId = await client.Loans.CreateLoanAsync(loan, true);
             Assert.IsNotNull(loanId);
-            Assert.AreEqual(loanId, loan.EncompassId);
-            var json = JsonConvert.SerializeObject(loan, serializerSettings);
-            var deserializedLoan = JsonConvert.DeserializeObject<Loan>(json, serializerSettings);
-            var newJson = JsonConvert.SerializeObject(loan, serializerSettings);
-            Assert.AreEqual(json, newJson);
-            await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+
+            try
+            {
+                Assert.AreEqual(loanId, loan.EncompassId);
+                var json = JsonConvert.SerializeObject(loan, serializerSettings);
+                var deserializedLoan = JsonConvert.DeserializeObject<Loan>(json, serializerSettings);
+                var newJson = JsonConvert.SerializeObject(loan, serializerSettings);
+                Assert.AreEqual(json, newJson);
+            }
+            finally
+            {
+                try
+                {
+                    await Task.Delay(5000);
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
         }
 
         [TestMethod]
@@ -136,7 +149,13 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
 
@@ -278,30 +297,30 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var loan = new Loan(client);
-            var loanId = await client.Loans.CreateLoanAsync(loan, true).ConfigureAwait(false);
+            var loanId = await client.Loans.CreateLoanAsync(loan, true);
             Assert.IsNotNull(loanId);
             Assert.AreEqual(loanId, loan.EncompassId);
             await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
         }
 
         [TestMethod]
         public async Task Loan_CreateRawAndDelete()
         {
             var client = await GetTestClientAsync();
-            var loanId = await client.Loans.CreateLoanRawAsync("{}").ConfigureAwait(false);
+            var loanId = await client.Loans.CreateLoanRawAsync("{}");
             Assert.IsNotNull(loanId);
             Assert.IsFalse(loanId.StartsWith("{"));
             await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
 
-            var json = await client.Loans.CreateLoanRawAsync("{}", "?view=entity").ConfigureAwait(false);
+            var json = await client.Loans.CreateLoanRawAsync("{}", "?view=entity");
             Assert.IsNotNull(json);
             Assert.IsTrue(json.StartsWith("{"));
             var loan = JToken.Parse(json);
             loanId = loan["encompassId"].ToString();
             await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
         }
 
         [TestMethod]
@@ -310,18 +329,31 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var loanId = await client.Loans.CreateLoanRawAsync("{}");
             Assert.IsNotNull(loanId);
-            var ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanRawAsync(loanId, "{invalidJson}"));
-            Assert.AreEqual(HttpStatusCode.BadRequest, ex.StatusCode);
-            Assert.AreEqual("{invalidJson}", ex.RequestContent);
-            var loan = new Loan(client, Guid.NewGuid().ToString("D"))
+
+            try
             {
-                Tltv = 85.00M
-            };
-            ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanAsync(loan));
-            Assert.AreEqual(HttpStatusCode.NotFound, ex.StatusCode);
-            Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}"",""tltv"":85.00}}", ex.RequestContent);
-            await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+                var ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanRawAsync(loanId, "{invalidJson}"));
+                Assert.AreEqual(HttpStatusCode.BadRequest, ex.StatusCode);
+                Assert.AreEqual("{invalidJson}", ex.RequestContent);
+                var loan = new Loan(client, Guid.NewGuid().ToString("D"))
+                {
+                    Tltv = 85.00M
+                };
+                ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanAsync(loan));
+                Assert.AreEqual(HttpStatusCode.NotFound, ex.StatusCode);
+                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}"",""tltv"":85.00}}", ex.RequestContent);
+            }
+            finally
+            {
+                try
+                {
+                    await Task.Delay(5000);
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
         }
 
         [TestMethod]
@@ -332,18 +364,43 @@ namespace EncompassRest.Tests
             {
                 var loan = new Loan(client);
                 var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanFolder = "My Pipeline" });
-                var metaData = await loan.LoanApis.GetMetadataAsync();
-                Assert.AreEqual("My Pipeline", metaData.LoanFolder);
-                //await client.LoanFolders.MoveLoanToFolderAsync(loanId, "OAPI"); // Unauthorized error
-                //metaData = await loan.LoanApis.GetMetadataAsync();
-                //Assert.AreEqual("OAPI", metaData.LoanFolder);
+                try
+                {
+                    var metaData = await loan.LoanApis.GetMetadataAsync();
+                    Assert.AreEqual("My Pipeline", metaData.LoanFolder);
+                    //await client.LoanFolders.MoveLoanToFolderAsync(loanId, "OAPI"); // Unauthorized error
+                    //metaData = await loan.LoanApis.GetMetadataAsync();
+                    //Assert.AreEqual("OAPI", metaData.LoanFolder);
+                }
+                finally
+                {
+                    try
+                    {
+                        await Task.Delay(5000);
+                        await client.Loans.DeleteLoanAsync(loanId);
+                    }
+                    catch
+                    {
+                    }
+                }
                 var loan2 = new Loan(client);
                 var loanId2 = await client.Loans.CreateLoanAsync(loan2, new CreateLoanOptions { LoanFolder = "OAPI" });
-                var metaData2 = await loan2.LoanApis.GetMetadataAsync();
-                Assert.AreEqual("OAPI", metaData2.LoanFolder);
-                await Task.Delay(5000);
-                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
-                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId2));
+                try
+                {
+                    var metaData2 = await loan2.LoanApis.GetMetadataAsync();
+                    Assert.AreEqual("OAPI", metaData2.LoanFolder);
+                }
+                finally
+                {
+                    try
+                    {
+                        await Task.Delay(5000);
+                        await client.Loans.DeleteLoanAsync(loanId2);
+                    }
+                    catch
+                    {
+                    }
+                }
             }
         }
 
@@ -1310,21 +1367,21 @@ namespace EncompassRest.Tests
         [TestMethod]
         public async Task Loan_NoExtensionData()
         {
-            var client = await GetTestClientAsync().ConfigureAwait(false);
-            var list = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new StringFieldFilter(CanonicalLoanField.LoanFolder, StringFieldMatchType.Exact, "IncludeAllFolders", false)), 200).ConfigureAwait(false);
+            var client = await GetTestClientAsync();
+            var list = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new StringFieldFilter(CanonicalLoanField.LoanFolder, StringFieldMatchType.Exact, "IncludeAllFolders", false)), 200);
             var tasks = new List<Task>();
             foreach (var item in list)
             {
                 tasks.Add(client.Loans.GetLoanAsync(item.LoanGuid).ContinueWith(async task =>
                 {
-                    var loan = await task.ConfigureAwait(false);
+                    var loan = await task;
                     var fails = new List<string>();
                     TestForExtensionData(loan, new List<string> { "Loan" }, fails);
                     Assert.AreEqual(0, fails.Count, $@"{loan.EncompassId} has the following extension data.
 {string.Join(Environment.NewLine, fails)}");
                 }));
             }
-            await Task.WhenAll(tasks).ConfigureAwait(false);
+            await Task.WhenAll(tasks);
         }
 
         private void TestForExtensionData(DirtyExtensibleObject value, List<string> path, List<string> fails)
@@ -1388,7 +1445,13 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
 

@@ -33,7 +33,7 @@ namespace EncompassRest.Loans.Milestones
 
         public Task UpdateMilestoneAsync(LoanMilestone milestone, CancellationToken cancellationToken = default) => UpdateMilestoneAsync(milestone, null, cancellationToken);
 
-        public Task UpdateMilestoneAsync(LoanMilestone milestone, MilestoneAction action, CancellationToken cancellationToken = default) => UpdateMilestoneAsync(milestone, action.Validate(nameof(action)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name), cancellationToken);
+        public Task UpdateMilestoneAsync(LoanMilestone milestone, MilestoneAction action, CancellationToken cancellationToken = default) => UpdateMilestoneAsync(milestone, action.Validate(nameof(action)).GetValue(), cancellationToken);
 
         public Task UpdateMilestoneAsync(LoanMilestone milestone, string action, CancellationToken cancellationToken = default)
         {

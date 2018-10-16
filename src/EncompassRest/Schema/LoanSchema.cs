@@ -8,6 +8,7 @@ namespace EncompassRest.Schema
     public sealed class LoanSchema : ExtensibleObject
     {
         public string SchemaVersion { get; set; }
+
         public Dictionary<string, EntitySchema> EntityTypes { get; set; }
     }
 }

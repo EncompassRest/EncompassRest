@@ -8,8 +8,11 @@ namespace EncompassRest.Schema
     public sealed class InstancePattern : ExtensibleObject
     {
         public int IndexOffset { get; set; }
+
         public string IndexToken { get; set; }
+
         public int MaxIndex { get; set; }
+
         public Dictionary<string, string> Match { get; set; }
     }
 }

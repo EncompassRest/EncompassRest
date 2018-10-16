@@ -1,5 +1,4 @@
-﻿using EnumsNET;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace EncompassRest.Services.Credit
 {
@@ -11,7 +10,7 @@ namespace EncompassRest.Services.Credit
         public CreditPreferences Preferences { get; set; }
 
         public CreditProduct(EntityReference entityRef, CreditOptions options)
-            : this(entityRef, options, ServiceType.Credit.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : this(entityRef, options, ServiceType.Credit.GetValue())
         {
         }
 

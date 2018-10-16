@@ -13,16 +13,17 @@ namespace EncompassRest.Contacts
         {
         }
 
-        public Task<List<ContactGroup>> GetGroupsAsync(ContactType contactType, ContactGroupType? groupType = null, CancellationToken cancellationToken = default)
+        public Task<List<ContactGroup>> GetGroupsAsync(ContactType contactType, ContactGroupType? groupType = null, CancellationToken cancellationToken = default) => GetGroupsAsync(contactType.Validate(nameof(contactType)).GetValue(), groupType?.Validate(nameof(groupType)).GetValue(), cancellationToken);
+
+        public Task<List<ContactGroup>> GetGroupsAsync(string contactType, string groupType = null, CancellationToken cancellationToken = default)
         {
-            contactType.Validate(nameof(contactType));
+            Preconditions.NotNullOrEmpty(contactType, nameof(contactType));
 
             var queryParameters = new QueryParameters();
-            queryParameters.Add(nameof(contactType), contactType.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name));
-            if (groupType.HasValue)
+            queryParameters.Add(nameof(contactType), contactType);
+            if (!string.IsNullOrEmpty(groupType))
             {
-                groupType.GetValueOrDefault().Validate(nameof(groupType));
-                queryParameters.Add(nameof(groupType), groupType.GetValueOrDefault().AsString(EnumFormat.EnumMemberValue, EnumFormat.Name));
+                queryParameters.Add(nameof(groupType), groupType);
             }
 
             return GetDirtyListAsync<ContactGroup>(null, queryParameters.ToString(), nameof(GetGroupsAsync), null, cancellationToken);
@@ -91,13 +92,15 @@ namespace EncompassRest.Contacts
             return PostRawAsync(null, queryString, new JsonStringContent(group), nameof(CreateGroupRawAsync), null, cancellationToken);
         }
 
-        public Task AssignGroupContactsAsync(string groupId, AssignmentAction action, IEnumerable<EntityReference> contacts, CancellationToken cancellationToken = default)
+        public Task AssignGroupContactsAsync(string groupId, AssignmentAction action, IEnumerable<EntityReference> contacts, CancellationToken cancellationToken = default) => AssignGroupContactsAsync(groupId, action.Validate(nameof(action)).GetValue(), contacts, cancellationToken);
+
+        public Task AssignGroupContactsAsync(string groupId, string action, IEnumerable<EntityReference> contacts, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
-            action.Validate(nameof(action));
+            Preconditions.NotNullOrEmpty(action, nameof(action));
             Preconditions.NotNullOrEmpty(contacts, nameof(contacts));
 
-            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.AsString(EnumJsonConverter.CamelCaseNameFormat)));
+            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action));
             return PatchAsync($"{groupId}/contacts", queryParameters.ToString(), JsonStreamContent.Create(contacts), nameof(AssignGroupContactsAsync), groupId, cancellationToken);
         }
 

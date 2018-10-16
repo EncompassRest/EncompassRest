@@ -7,6 +7,7 @@ namespace EncompassRest.Schema
     {
         [JsonProperty(ItemConverterType = typeof(FieldOptionConverter))]
         public List<FieldOption> Options { get; set; }
+
         public bool? RequireValueFromList { get; set; }
     }
 }
