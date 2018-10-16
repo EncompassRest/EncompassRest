@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans

@@ -744,21 +744,10 @@ namespace EncompassRest
                 entityArguments += $"{(entityArguments.Length > 0 ? ", " : string.Empty)}SerializeWholeListWhenDirty = true";
             }
 
-            sb.Append(
-$@"using System;
-using System.Collections.Generic;
-using {@namespace}.Enums;
-using EncompassRest.Schema;
-
-namespace {@namespace}
-{{
-    /// <summary>
-    /// {entityName}
-    /// </summary>
-    {(entityArguments.Length > 0 ? $@"[Entity({entityArguments})]
-    " : string.Empty)}public sealed partial class {entityName} : DirtyExtensibleObject, IIdentifiable
-    {{
-");
+            var systemNamespace = false;
+            var collectionsNamespace = false;
+            var enumsNamespace = false;
+            var schemaNamespace = false;
 
             if (ellieType != null)
             {
@@ -791,11 +780,13 @@ namespace {@namespace}
                 {
                     var propertySchema = pair.Value;
                     var attributeProperties = new List<string>();
+                    var isField = !string.IsNullOrEmpty(propertySchema.FieldId) || propertySchema.FieldInstances?.Count > 0 || propertySchema.FieldPatterns?.Count > 0;
                     if (!string.IsNullOrEmpty(propertySchema.Format))
                     {
                         if (propertySchema.Format.EnumValue != LoanFieldFormat.STATE)
                         {
                             attributeProperties.Add($"Format = LoanFieldFormat.{propertySchema.Format.EnumValue?.GetName()}");
+                            schemaNamespace = isField;
                         }
                     }
                     else
@@ -804,6 +795,7 @@ namespace {@namespace}
                         {
                             case PropertySchemaType.DateTime:
                                 attributeProperties.Add($"Format = LoanFieldFormat.DATETIME");
+                                schemaNamespace = isField;
                                 break;
                         }
                     }
@@ -895,15 +887,25 @@ namespace {@namespace}
                             }
                         }
                     }
+                    if (propertyType.StartsWith("StringEnumValue<"))
+                    {
+                        enumsNamespace = true;
+                    }
+                    else if (propertyType == "DateTime?")
+                    {
+                        systemNamespace = true;
+                    }
                     var elementType = propertyType;
                     var isStringDictionary = s_stringDictionaryProperties.Contains(entityPropertyName);
                     if (isStringDictionary)
                     {
                         propertyType = "DirtyDictionary<string, string>";
+                        collectionsNamespace = true;
                     }
                     else if (isList)
                     {
                         propertyType = $"DirtyList<{elementType}>";
+                        collectionsNamespace = true;
                     }
                     var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
                     var isNullable = propertySchema.Nullable == true;
@@ -911,7 +913,6 @@ namespace {@namespace}
                     properties.AppendLine($@"        /// <summary>
         /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}{(isNullable ? " (Nullable)" : string.Empty)}
         /// </summary>");
-                    var isField = !string.IsNullOrEmpty(propertySchema.FieldId) || propertySchema.FieldInstances?.Count > 0 || propertySchema.FieldPatterns?.Count > 0;
                     if (isField && attributeProperties.Count > 0)
                     {
                         properties.AppendLine($"        [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
@@ -920,35 +921,37 @@ namespace {@namespace}
                 }
             }
 
-            sb.AppendLine(fields.ToString());
+            fields.Length -= Environment.NewLine.Length;
+            properties.Length -= 2 * Environment.NewLine.Length;
 
-            properties.Length -= Environment.NewLine.Length;
-
-            sb.Append(properties.ToString());
-
-            sb.Append(
-@"    }
-}");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityName + ".cs")))
             {
-                sw.Write(sb.ToString());
+                sw.Write($@"{(systemNamespace ? @"using System;
+" : string.Empty)}{(collectionsNamespace ? @"using System.Collections.Generic;
+" : string.Empty)}{(enumsNamespace ? $@"using {@namespace}.Enums;
+" : string.Empty)}{(schemaNamespace ? @"using EncompassRest.Schema;
+" : string.Empty)}{(systemNamespace || collectionsNamespace || enumsNamespace || schemaNamespace ? Environment.NewLine : string.Empty)}namespace {@namespace}
+{{
+    /// <summary>
+    /// {entityName}
+    /// </summary>
+    {(entityArguments.Length > 0 ? $@"[Entity({entityArguments})]
+    " : string.Empty)}public sealed partial class {entityName} : DirtyExtensibleObject, IIdentifiable
+    {{
+{fields}
+
+{properties}
+    }}
+}}");
             }
         }
 
         private static void GenerateEnumFileFromOptions(string destinationPath, string @namespace, string enumName, Dictionary<string, string> options)
         {
-            var sb = new StringBuilder();
-            sb.AppendLine(
-$@"using System.ComponentModel;
-using System.Runtime.Serialization;
+            var componentModelNamespace = false;
+            var serializationNamespace = false;
 
-namespace {@namespace}
-{{
-    /// <summary>
-    /// {enumName}
-    /// </summary>
-    public enum {enumName}
-    {{");
+            var members = new StringBuilder();
 
             var enumMemberNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             var existingEnumType = typeof(EncompassRestClient).Assembly.GetType($"{@namespace}.{enumName}");
@@ -960,7 +963,7 @@ namespace {@namespace}
                 {
                     if (!first)
                     {
-                        sb.AppendLine(",");
+                        members.AppendLine(",");
                     }
                     var name = member.Name;
                     var value = member.AsString(EnumFormat.EnumMemberValue);
@@ -969,23 +972,25 @@ namespace {@namespace}
                     {
                         text = optionText;
                     }
-                    sb.AppendLine($@"        /// <summary>
+                    members.AppendLine($@"        /// <summary>
         /// {(text ?? value ?? name).Replace("&", "&amp;")}
         /// </summary>");
 
                     if (!string.IsNullOrEmpty(text) && !string.Equals(text, value ?? name, StringComparison.Ordinal))
                     {
-                        sb.AppendLine($@"        [Description(""{text.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        members.AppendLine($@"        [Description(""{text.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        componentModelNamespace = true;
                     }
                     if (value != null && !string.Equals(value, name, StringComparison.Ordinal))
                     {
-                        sb.AppendLine($@"        [EnumMember(Value = ""{value.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        members.AppendLine($@"        [EnumMember(Value = ""{value.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        serializationNamespace = true;
                     }
                     enumMemberNames.Add(name);
                     options.Remove(value ?? name);
                     var intValue = member.ToInt32();
                     existingEnumValues.Add(intValue);
-                    sb.Append($"        {name} = {intValue}");
+                    members.Append($"        {name} = {intValue}");
                     first = false;
                 }
             }
@@ -998,7 +1003,7 @@ namespace {@namespace}
                 }
                 if (!first)
                 {
-                    sb.AppendLine(",");
+                    members.AppendLine(",");
                 }
                 var value = pair.Key;
                 var text = pair.Value;
@@ -1036,34 +1041,43 @@ namespace {@namespace}
                 var name = nameBuilder.ToString();
                 if (name.Length > 0 && enumMemberNames.Add(name))
                 {
-                    sb.AppendLine($@"        /// <summary>
+                    members.AppendLine($@"        /// <summary>
         /// {(text ?? value).Replace("&", "&amp;")}
         /// </summary>");
                     if (!string.IsNullOrEmpty(text) && !string.Equals(value, text, StringComparison.Ordinal))
                     {
-                        sb.AppendLine($@"        [Description(""{text.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        members.AppendLine($@"        [Description(""{text.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        componentModelNamespace = true;
                     }
                     if (!string.Equals(value, name, StringComparison.Ordinal))
                     {
-                        sb.AppendLine($@"        [EnumMember(Value = ""{value.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        members.AppendLine($@"        [EnumMember(Value = ""{value.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        serializationNamespace = true;
                     }
-                    sb.Append($"        {name} = {i}");
+                    members.Append($"        {name} = {i}");
                     first = false;
                     ++i;
                 }
                 else if (i > 0)
                 {
-                    sb.Length -= 1 + Environment.NewLine.Length;
+                    members.Length -= 1 + Environment.NewLine.Length;
                 }
             }
-            sb.AppendLine();
 
-            sb.Append(
-@"    }
-}");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, enumName + ".cs")))
             {
-                sw.Write(sb.ToString());
+                sw.Write($@"{(componentModelNamespace ? @"using System.ComponentModel;
+" : string.Empty)}{(serializationNamespace ? @"using System.Runtime.Serialization;
+" : string.Empty)}{(componentModelNamespace || serializationNamespace ? Environment.NewLine : string.Empty)}namespace {@namespace}
+{{
+    /// <summary>
+    /// {enumName}
+    /// </summary>
+    public enum {enumName}
+    {{
+{members}
+    }}
+}}");
             }
         }
 
