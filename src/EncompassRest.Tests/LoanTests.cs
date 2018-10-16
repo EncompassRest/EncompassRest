@@ -875,7 +875,7 @@ namespace EncompassRest.Tests
             {
                 var distinctFieldMappings = LoanFieldDescriptors.FieldMappings._standardFields.Distinct(new FieldMappingComparer()).ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase);
 
-                var fieldsWhereLockingCausesEncompassError = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "NEWHUD.X769", "NEWHUD.X770", "CD1.X75", "LE1.X98", "USDA.X17", "USDA.X16", "USDA.X170", "USDA.X164", "USDA.X165", "USDA.X168" };
+                var fieldsWhereLockingCausesEncompassError = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "NEWHUD.X769", "NEWHUD.X770" };
                 
                 foreach (var fieldId in fieldsWhereLockingCausesEncompassError)
                 {
@@ -957,7 +957,7 @@ namespace EncompassRest.Tests
             try
             {
                 const int patternCount = 10;
-                var fieldPatternMappings = LoanFieldDescriptors.FieldPatternMappings.Where(p => !p.Key.StartsWith("TQL4506T") && !p.Key.StartsWith("LP") && !p.Key.StartsWith("CX.") && !p.Key.StartsWith("FBE") && !p.Key.StartsWith("FCE")).ToList();
+                var fieldPatternMappings = LoanFieldDescriptors.FieldPatternMappings.Where(p => !p.Key.StartsWith("TQL4506T") && !p.Key.StartsWith("LP") && !p.Key.StartsWith("CX.") && !p.Key.StartsWith("FBE") && !p.Key.StartsWith("FCE") && !p.Key.StartsWith("XCOC") && !p.Key.StartsWith("CUST")).ToList();
                 foreach (var pair in fieldPatternMappings)
                 {
                     var fieldPattern = pair.Key;

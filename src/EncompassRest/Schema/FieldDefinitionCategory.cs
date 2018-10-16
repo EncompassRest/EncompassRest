@@ -27,6 +27,8 @@ namespace EncompassRest.Schema
         Appointments = 16,
         [EnumMember(Value = "Business Contact")]
         BusinessContact = 17,
-        BizPartnerCustomField = 18
+        BizPartnerCustomField = 18,
+        [EnumMember(Value = "Audit Trail")]
+        AuditTrail = 19
     }
 }
