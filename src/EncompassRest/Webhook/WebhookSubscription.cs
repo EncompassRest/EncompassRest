@@ -18,6 +18,7 @@ namespace EncompassRest.Webhook
         private NeverSerializeValue<string> _objectUrn;
         private NeverSerializeValue<string> _clientId;
         private NeverSerializeValue<string> _instanceId;
+        private string _signingKey;
 
         [JsonRequired]
         public string Endpoint { get => _endpoint; set => SetField(ref _endpoint, value); }
@@ -37,6 +38,8 @@ namespace EncompassRest.Webhook
         public string ClientId { get => _clientId; set => SetField(ref _clientId, value); }
 
         public string InstanceId { get => _instanceId; set => SetField(ref _instanceId, value); }
+
+        public string SigningKey { get => _signingKey; set => SetField(ref _signingKey, value); }
 
         [IdPropertyName(nameof(SubscriptionId))]
         string IIdentifiable.Id { get => SubscriptionId; set => SubscriptionId = value; }
