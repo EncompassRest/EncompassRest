@@ -42,9 +42,7 @@ namespace EncompassRest.Loans
 
         public LoanConditions Conditions => _conditions ?? (_conditions = new LoanConditions(Client, LoanId));
 
-        public BorrowerPairs BorrowerPairs => _borrowerPairs ?? (_borrowerPairs = CreateBorrowerPairs());
-
-        internal virtual BorrowerPairs CreateBorrowerPairs() => new BorrowerPairs(Client, LoanId);
+        public BorrowerPairs BorrowerPairs => _borrowerPairs ?? (_borrowerPairs = new BorrowerPairs(Client, this as LoanObjectBoundApis, LoanId));
 
         internal LoanApis(EncompassRestClient client, string loanId)
             : base(client, loanId, null)

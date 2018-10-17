@@ -1,6 +1,6 @@
 ﻿namespace EncompassRest
 {
-    internal sealed class NeverSerializeValue<T> : IDirty
+    internal sealed class NeverSerializeValue<T> : IDirty, IValue
     {
         public static implicit operator T(NeverSerializeValue<T> value) => value != null ? value._value : default;
 
@@ -9,6 +9,8 @@
         internal readonly T _value;
 
         public bool Dirty { get => false; set { } }
+
+        object IValue.Value => _value;
 
         public NeverSerializeValue(T value)
         {

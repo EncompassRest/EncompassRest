@@ -12,22 +12,26 @@ namespace EncompassRest.Loans
     partial class Loan
     {
         private LoanFields _fields;
+        private LoanObjectBoundApis _loanApis;
         internal List<TransientLoanUpdate> TransientLoanUpdates;
 
         [JsonIgnore]
         public EncompassRestClient Client { get; internal set; }
 
         [JsonIgnore]
+        [Obsolete("Use LoanApis.Documents instead.")]
         public LoanDocuments Documents => LoanApis.Documents;
 
         [JsonIgnore]
+        [Obsolete("Use LoanApis.Attachments instead.")]
         public LoanAttachments Attachments => LoanApis.Attachments;
 
         [JsonIgnore]
+        [Obsolete("Use LoanApis.CustomDataObjects instead.")]
         public LoanCustomDataObjects CustomDataObjects => LoanApis.CustomDataObjects;
 
         [JsonIgnore]
-        public LoanObjectBoundApis LoanApis { get; private set; }
+        public LoanObjectBoundApis LoanApis => _loanApis ?? throw new InvalidOperationException("Loan object must be initialized to use LoanApis");
 
         [JsonIgnore]
         public LoanFields Fields => _fields ?? (_fields = new LoanFields(this));
@@ -55,18 +59,6 @@ namespace EncompassRest.Loans
                     _currentApplication = currentApplication;
                 }
                 return currentApplication;
-            }
-            set
-            {
-                _currentApplication = value;
-                if (value != null)
-                {
-                    if (!value.ApplicationIndex.HasValue)
-                    {
-                        value.ApplicationIndex = CurrentApplicationIndex ?? 0;
-                    }
-                    CurrentApplicationIndex = value.ApplicationIndex;
-                }
             }
         }
 
@@ -111,12 +103,12 @@ namespace EncompassRest.Loans
                 throw new InvalidOperationException("Cannot initialize with different loanId");
             }
 
-            if (!ReferenceEquals(Client, client) || LoanApis == null)
+            if (!ReferenceEquals(Client, client) || _loanApis == null)
             {
                 Client = client;
                 EncompassId = loanId;
                 _encompassId.Dirty = false;
-                LoanApis = new LoanObjectBoundApis(client, this);
+                _loanApis = new LoanObjectBoundApis(client, this);
             }
         }
 

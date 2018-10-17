@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Utilities
 {
-    public static class TaskHelper
+    internal static class TaskHelper
     {
         public static Task CompletedTask { get; } = Task.FromResult(0);
     }

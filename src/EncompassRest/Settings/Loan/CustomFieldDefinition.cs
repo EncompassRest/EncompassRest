@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using EncompassRest.Schema;
 using EncompassRest.Utilities;
 using EnumsNET;
@@ -24,9 +25,9 @@ namespace EncompassRest.Settings.Loan
         private FieldAudit _audit;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public FieldAudit Audit { get => _audit; set => SetField(ref _audit, value); }
-        private IList<string> _options;
+        private List<string> _options;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public IList<string> Options { get => _options; set => SetField(ref _options, value); }
+        public IList<string> Options { get => _options; set => SetField(ref _options, value?.ToList()); }
         private NeverSerializeValue<string> _modelPath;
         public string ModelPath { get => _modelPath; internal set => SetField(ref _modelPath, value); }
         private NeverSerializeValue<bool> _isCalculatedField;

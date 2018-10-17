@@ -15,13 +15,13 @@ namespace EncompassRest
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [JsonConverter(typeof(DirtyListConverter<>))]
-    internal sealed class DirtyList<T> : IList<T>, IList, IDirty
+    internal sealed class DirtyList<T> : IList<T>, IReadOnlyList<T>, IList, IDirty, IIndexOfId
     {
         private static readonly bool s_tIsIIdentifiable = TypeData<T>.TypeInfo.IsSubclassOf(TypeData<DirtyExtensibleObject>.Type);
         private static string s_idPropertyName = s_tIsIIdentifiable ? DirtyExtensibleObject.GetIdPropertyName(TypeData<T>.TypeInfo) : string.Empty;
 
         internal readonly List<DirtyValue<T>> _list = new List<DirtyValue<T>>();
-        private readonly Dictionary<string, T> _dictionary;
+        private readonly Dictionary<string, WrapperObject<int>> _dictionary;
 
         public T this[int index]
         {
@@ -46,7 +46,7 @@ namespace EncompassRest
                         var newId = ((IIdentifiable)newObj).Id;
                         if (!string.IsNullOrEmpty(newId))
                         {
-                            _dictionary[newId] = value;
+                            _dictionary[newId] = index;
                         }
                         newObj.LastId = newId;
                         newObj.PropertyChanged += PropertyChangedHandler;
@@ -71,7 +71,7 @@ namespace EncompassRest
         public int Count => _list.Count;
 
         public bool IsReadOnly => false;
-        
+
         bool IList.IsFixedSize => ((IList)_list).IsFixedSize;
 
         bool ICollection.IsSynchronized => ((IList)_list).IsSynchronized;
@@ -89,7 +89,7 @@ namespace EncompassRest
                 {
                     comparer = new StringModelPathComparer();
                 }
-                _dictionary = new Dictionary<string, T>(comparer);
+                _dictionary = new Dictionary<string, WrapperObject<int>>(comparer);
             }
         }
 
@@ -105,7 +105,7 @@ namespace EncompassRest
             }
         }
 
-        internal T GetById(string id) => s_tIsIIdentifiable && _dictionary.TryGetValue(id, out var value) ? value : default;
+        public int IndexOf(string id) => s_tIsIIdentifiable && _dictionary.TryGetValue(id, out var wrapperObject) ? wrapperObject.Value : -1;
 
         public void Add(T item) => Insert(Count, item);
 
@@ -131,7 +131,7 @@ namespace EncompassRest
             Preconditions.NotNull(array, nameof(array));
             Preconditions.LessThan(arrayIndex, nameof(arrayIndex), array.Length, $"{nameof(array)}.Length");
             Preconditions.GreaterThanOrEquals(array.Length - arrayIndex, $"{nameof(array)}.Length - {nameof(arrayIndex)}", Count, nameof(Count));
-            
+
             for (var i = 0; i < _list.Count; ++i)
             {
                 array[arrayIndex + i] = _list[i];
@@ -149,6 +149,15 @@ namespace EncompassRest
         public int IndexOf(T item)
         {
             var equalityComparer = EqualityComparer<T>.Default;
+            if (s_tIsIIdentifiable && item != null)
+            {
+                var obj = (DirtyExtensibleObject)(object)item;
+                var id = ((IIdentifiable)obj).Id;
+                if (!string.IsNullOrEmpty(id))
+                {
+                    return _dictionary.TryGetValue(id, out var wrapperObject) && equalityComparer.Equals(_list[wrapperObject], item) ? wrapperObject.Value : -1;
+                }
+            }
             for (var i = 0; i < _list.Count; ++i)
             {
                 if (equalityComparer.Equals(_list[i], item))
@@ -164,13 +173,23 @@ namespace EncompassRest
             _list.Insert(index, item);
             if (s_tIsIIdentifiable)
             {
+                if (index < _list.Count - 1)
+                {
+                    foreach (var pair in _dictionary)
+                    {
+                        if (pair.Value >= index)
+                        {
+                            ++pair.Value.Value;
+                        }
+                    }
+                }
                 var obj = (DirtyExtensibleObject)(object)item;
                 if (obj != null)
                 {
                     var id = ((IIdentifiable)obj)?.Id;
                     if (!string.IsNullOrEmpty(id))
                     {
-                        _dictionary[id] = item;
+                        _dictionary[id] = index;
                     }
                     obj.LastId = id;
                     obj.PropertyChanged += PropertyChangedHandler;
@@ -194,6 +213,16 @@ namespace EncompassRest
             var item = _list[index];
             if (s_tIsIIdentifiable)
             {
+                if (index < _list.Count - 1)
+                {
+                    foreach (var pair in _dictionary)
+                    {
+                        if (pair.Value > index)
+                        {
+                            --pair.Value.Value;
+                        }
+                    }
+                }
                 var obj = (DirtyExtensibleObject)(object)item._value;
                 if (obj != null)
                 {
@@ -213,14 +242,31 @@ namespace EncompassRest
             if (e.PropertyName == s_idPropertyName)
             {
                 var obj = (DirtyExtensibleObject)sender;
-                if (!string.IsNullOrEmpty(obj.LastId))
+                int? index = null;
+                var lastId = obj.LastId;
+                if (!string.IsNullOrEmpty(lastId))
                 {
-                    _dictionary.Remove(obj.LastId);
+                    if (_dictionary.TryGetValue(lastId, out var wrapperObject))
+                    {
+                        index = wrapperObject;
+                        _dictionary.Remove(lastId);
+                    }
                 }
                 var newId = ((IIdentifiable)obj).Id;
                 if (!string.IsNullOrEmpty(newId))
                 {
-                    _dictionary[newId] = (T)sender;
+                    if (!index.HasValue)
+                    {
+                        for (var i = 0; i < _list.Count; ++i)
+                        {
+                            if (_list[i] == sender)
+                            {
+                                index = i;
+                                break;
+                            }
+                        }
+                    }
+                    _dictionary[newId] = index.GetValueOrDefault();
                 }
                 obj.LastId = newId;
             }

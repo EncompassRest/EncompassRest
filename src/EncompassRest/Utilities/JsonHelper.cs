@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
@@ -9,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Utilities
@@ -94,7 +96,215 @@ namespace EncompassRest.Utilities
             }
         }
 
-        public static void PopulateFromJson(TextReader reader, object target) => s_serializer.Populate(reader, target);
+        public static void PopulateFromJson(TextReader reader, object target)
+        {
+            Preconditions.NotNull(target, nameof(target));
+
+            var type = target.GetType();
+            using (var jReader = new JsonTextReader(reader))
+            {
+                var jToken = s_serializer.Deserialize<JToken>(jReader);
+                var source = jToken.ToObject(type, s_serializer);
+
+                var contract = InternalPrivateContractResolver.ResolveContract(type);
+                switch (contract)
+                {
+                    case JsonObjectContract objectContract:
+                        PopulateObject((JObject)jToken, objectContract, (ExtensibleObject)source, (ExtensibleObject)target);
+                        break;
+                    case JsonDictionaryContract dictionaryContract:
+                        PopulateDictionary((JObject)jToken, dictionaryContract, (IDictionary)source, (IDictionary)target);
+                        break;
+                    case JsonArrayContract arrayContract:
+                        PopulateArray((JArray)jToken, arrayContract, (IList)source, (IList)target);
+                        break;
+                    default:
+                        throw new InvalidOperationException($"Invalid type for population");
+                }
+            }
+        }
+
+        private static void PopulateObject(JObject jObject, JsonObjectContract objectContract, ExtensibleObject source, ExtensibleObject target)
+        {
+            var targetExtensionData = target.ExtensionData;
+            foreach (var jProperty in jObject.Properties())
+            {
+                var property = objectContract.Properties.GetClosestMatchProperty(jProperty.Name);
+                if (property == null)
+                {
+                    targetExtensionData[jProperty.Name] = jProperty.Value;
+                }
+                else
+                {
+                    var propertyValueProvider = property.ValueProvider;
+                    var valueProvider = InternalPrivateContractResolver.GetBackingFieldInfo(objectContract.UnderlyingType, property.UnderlyingName)?.ValueProvider ?? propertyValueProvider;
+                    var targetValue = valueProvider.GetValue(target);
+                    var sourceValue = valueProvider.GetValue(source);
+                    var value = jProperty.Value;
+                    var setValue = true;
+                    if (targetValue != null && sourceValue != null && !(value is JValue))
+                    {
+                        var propertyContract = InternalPrivateContractResolver.ResolveContract(property.PropertyType);
+                        switch (propertyContract)
+                        {
+                            case JsonObjectContract propertyObjectContract:
+                                PopulateObject((JObject)value, propertyObjectContract, (ExtensibleObject)sourceValue, (ExtensibleObject)targetValue);
+                                setValue = false;
+                                break;
+                            case JsonDictionaryContract dictionaryContract:
+                                PopulateDictionary((JObject)value, dictionaryContract, (IDictionary)sourceValue, (IDictionary)targetValue);
+                                setValue = false;
+                                break;
+                            case JsonArrayContract arrayContract:
+                                PopulateArray((JArray)value, arrayContract, (IList)sourceValue, (IList)targetValue);
+                                setValue = false;
+                                break;
+                        }
+                    }
+                    if (setValue)
+                    {
+                        propertyValueProvider.SetValue(target, sourceValue is IValue v ? v.Value : sourceValue);
+                    }
+                }
+            }
+        }
+
+        private static void PopulateDictionary(JObject jObject, JsonDictionaryContract dictionaryContract, IDictionary source, IDictionary target)
+        {
+            var valueContract = InternalPrivateContractResolver.ResolveContract(dictionaryContract.DictionaryValueType);
+            foreach (DictionaryEntry entry in source)
+            {
+                var key = entry.Key;
+                var value = entry.Value;
+                var setValue = true;
+                if (value != null && target.Contains(key))
+                {
+                    var existingValue = target[key];
+                    if (existingValue != null)
+                    {
+                        var jToken = jObject[key];
+                        switch (valueContract)
+                        {
+                            case JsonObjectContract objectContract:
+                                PopulateObject((JObject)jToken, objectContract, (ExtensibleObject)value, (ExtensibleObject)existingValue);
+                                setValue = false;
+                                break;
+                            case JsonDictionaryContract jsonDictionaryContract:
+                                PopulateDictionary((JObject)jToken, jsonDictionaryContract, (IDictionary)value, (IDictionary)existingValue);
+                                setValue = false;
+                                break;
+                            case JsonArrayContract arrayContract:
+                                PopulateArray((JArray)jToken, arrayContract, (IList)value, (IList)existingValue);
+                                setValue = false;
+                                break;
+                        }
+                    }
+                }
+                if (setValue)
+                {
+                    target[key] = value;
+                }
+            }
+            var entriesToDelete = new List<DictionaryEntry>();
+            foreach (DictionaryEntry entry in target)
+            {
+                if (!source.Contains(entry.Key))
+                {
+                    entriesToDelete.Add(entry);
+                }
+            }
+            foreach (var entryToDelete in entriesToDelete)
+            {
+                target.Remove(entryToDelete.Key);
+                if (entryToDelete.Value is DirtyExtensibleObject dirtyExtensibleObject)
+                {
+                    dirtyExtensibleObject.ClearPropertyChangedEvent();
+                }
+            }
+        }
+        
+        private static void PopulateArray(JArray jArray, JsonArrayContract arrayContract, IList source, IList target)
+        {
+            if (target.Count > 0 && target is IEnumerable<DirtyExtensibleObject> targetEnumerable)
+            {
+                var objectContract = (JsonObjectContract)InternalPrivateContractResolver.ResolveContract(arrayContract.CollectionItemType);
+                var sourceEnumerable = (IEnumerable<DirtyExtensibleObject>)source;
+                for (var i = target.Count - 1; i >= 0; --i)
+                {
+                    var targetItem = (DirtyExtensibleObject)target[i];
+                    var id = ((IIdentifiable)targetItem)?.Id;
+                    if (!string.IsNullOrEmpty(id) && Extensions.IndexOf(sourceEnumerable, id) < 0)
+                    {
+                        target.RemoveAt(i);
+                        targetItem.ClearPropertyChangedEvent();
+                    }
+                }
+                for (var i = 0; i < source.Count; ++i)
+                {
+                    var sourceItem = (DirtyExtensibleObject)source[i];
+                    var id = ((IIdentifiable)sourceItem)?.Id;
+                    DirtyExtensibleObject existing = null;
+                    if (!string.IsNullOrEmpty(id))
+                    {
+                        var index = Extensions.IndexOf(targetEnumerable, id);
+                        if (index >= 0)
+                        {
+                            existing = (DirtyExtensibleObject)target[index];
+                        }
+                    }
+                    if (existing != null)
+                    {
+                        var index = i;
+                        while (!ReferenceEquals(target[index], existing))
+                        {
+                            ++index;
+                        }
+                        if (index > i)
+                        {
+                            for (var j = i; j < index; ++j)
+                            {
+                                target[j + 1] = target[j];
+                            }
+                            target[i] = existing;
+                        }
+                    }
+                    else
+                    {
+                        if (i == target.Count)
+                        {
+                            target.Add(sourceItem);
+                        }
+                        else
+                        {
+                            existing = (DirtyExtensibleObject)target[i];
+                            if (!string.IsNullOrEmpty(((IIdentifiable)existing)?.Id))
+                            {
+                                target.Insert(i, sourceItem);
+                                existing = null;
+                            }
+                        }
+                    }
+                    if (existing != null)
+                    {
+                        PopulateObject((JObject)jArray[i], objectContract, sourceItem, existing);
+                    }
+                }
+                for (var i = target.Count - 1; i >= source.Count; --i)
+                {
+                    var targetItem = (DirtyExtensibleObject)target[i];
+                    target.RemoveAt(i);
+                    targetItem.ClearPropertyChangedEvent();
+                }
+            }
+            else
+            {
+                target.Clear();
+                foreach (var item in source)
+                {
+                    target.Add(item);
+                }
+            }
+        }
 
         public static string ToJson<T>(this T value) => ToJson(value, TypeData<T>.Type);
 
@@ -219,13 +429,15 @@ namespace EncompassRest.Utilities
                 var valueProvider = base.CreateMemberValueProvider(member);
                 if (member is PropertyInfo propertyInfo)
                 {
-                    var propertyTypeInfo = propertyInfo.PropertyType.GetTypeInfo();
+                    var propertyType = propertyInfo.PropertyType;
+                    var propertyTypeInfo = propertyType.GetTypeInfo();
                     if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition)
                     {
                         var genericTypeDefinition = propertyTypeInfo.GetGenericTypeDefinition();
                         if (genericTypeDefinition == TypeData.OpenStringEnumValueType || genericTypeDefinition == TypeData.OpenNaType)
                         {
-                            valueProvider = new StringValueProvider(valueProvider);
+                            var propertyContract = ResolveContract(propertyType);
+                            valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter);
                         }
                     }
                 }
@@ -247,15 +459,17 @@ namespace EncompassRest.Utilities
             private class StringValueProvider : IValueProvider
             {
                 private readonly IValueProvider _valueProvider;
+                private readonly IStringCreator _stringCreator;
 
-                public StringValueProvider(IValueProvider valueProvider)
+                public StringValueProvider(IValueProvider valueProvider, IStringCreator stringCreator)
                 {
                     _valueProvider = valueProvider;
+                    _stringCreator = stringCreator;
                 }
 
                 public object GetValue(object target) => _valueProvider.GetValue(target).ToString();
 
-                public void SetValue(object target, object value) => _valueProvider.SetValue(target, value);
+                public void SetValue(object target, object value) => _valueProvider.SetValue(target, value is string str ? _stringCreator.Create(str) : value);
             }
         }
 

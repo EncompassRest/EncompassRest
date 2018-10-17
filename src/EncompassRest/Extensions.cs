@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using EncompassRest.Utilities;
 using EnumsNET;
 
@@ -19,14 +18,32 @@ namespace EncompassRest
         public static T GetById<T>(this IList<T> list, string id)
             where T : DirtyExtensibleObject
         {
+            var index = list.IndexOf(id);
+            return index >= 0 ? list[index] : default;
+        }
+
+        public static int IndexOf<T>(this IList<T> list, string id)
+            where T : DirtyExtensibleObject => IndexOf((IEnumerable<DirtyExtensibleObject>)list, id);
+
+        internal static int IndexOf(IEnumerable<DirtyExtensibleObject> list, string id)
+        {
             Preconditions.NotNull(list, nameof(list));
             Preconditions.NotNullOrEmpty(id, nameof(id));
 
-            if (list is DirtyList<T> dirtyList)
+            if (list is IIndexOfId indexOfId)
             {
-                return dirtyList.GetById(id);
+                return indexOfId.IndexOf(id);
             }
-            return list.FirstOrDefault(v => string.Equals(((IIdentifiable)v)?.Id, id, StringComparison.OrdinalIgnoreCase));
+            var index = 0;
+            foreach (var item in list)
+            {
+                if (string.Equals(((IIdentifiable)item)?.Id, id, StringComparison.OrdinalIgnoreCase))
+                {
+                    return index;
+                }
+                ++index;
+            }
+            return -1;
         }
 
         internal static string GetValue<TEnum>(this TEnum value) where TEnum : struct, Enum => value.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
