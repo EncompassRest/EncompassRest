@@ -13,7 +13,7 @@ namespace EncompassRest.Webhook
         private string _endpoint;
         private string _subscriptionId;
         private StringEnumValue<WebhookResourceType> _resource;
-        private IList<StringEnumValue<WebhookResourceEvent>> _events;
+        private List<StringEnumValue<WebhookResourceEvent>> _events;
         private WebhookFilters _filters;
         private NeverSerializeValue<string> _objectUrn;
         private NeverSerializeValue<string> _clientId;
