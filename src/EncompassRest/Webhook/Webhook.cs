@@ -18,7 +18,7 @@ namespace EncompassRest.Webhook
 
         public Task<string> GetResourcesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("resources", queryString, nameof(GetResourcesRawAsync), null, cancellationToken);
 
-        public Task<WebhookResource> GetResourceAsync(WebhookResourceType resourceName, CancellationToken cancellationToken = default) => GetResourceAsync(resourceName.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name), cancellationToken);
+        public Task<WebhookResource> GetResourceAsync(WebhookResourceType resourceName, CancellationToken cancellationToken = default) => GetResourceAsync(resourceName.Validate(nameof(resourceName)).GetValue(), cancellationToken);
 
         public Task<WebhookResource> GetResourceAsync(string resourceName, CancellationToken cancellationToken = default)
         {
@@ -34,7 +34,7 @@ namespace EncompassRest.Webhook
             return GetRawAsync($"resources/{resourceName}", queryString, nameof(GetResourcesRawAsync), null, cancellationToken);
         }
 
-        public Task<List<StringEnumValue<WebhookResourceEvent>>> GetResourceEventsAsync(WebhookResourceType resourceName, CancellationToken cancellationToken = default) => GetResourceEventsAsync(resourceName.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name), cancellationToken);
+        public Task<List<StringEnumValue<WebhookResourceEvent>>> GetResourceEventsAsync(WebhookResourceType resourceName, CancellationToken cancellationToken = default) => GetResourceEventsAsync(resourceName.Validate(nameof(resourceName)).GetValue(), cancellationToken);
 
         public Task<List<StringEnumValue<WebhookResourceEvent>>> GetResourceEventsAsync(string resourceName, CancellationToken cancellationToken = default)
         {
@@ -66,7 +66,7 @@ namespace EncompassRest.Webhook
 
         public Task<List<WebhookSubscription>> GetSubscriptionsAsync(CancellationToken cancellationToken = default) => GetSubscriptionsAsync((IEnumerable<string>)null, null, cancellationToken);
 
-        public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<WebhookResourceType> resources, IEnumerable<WebhookResourceEvent> events, CancellationToken cancellationToken = default) => GetSubscriptionsAsync(resources?.Select(r => r.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)), events?.Select(e => e.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)), cancellationToken);
+        public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<WebhookResourceType> resources, IEnumerable<WebhookResourceEvent> events, CancellationToken cancellationToken = default) => GetSubscriptionsAsync(resources?.Select(r => r.Validate(nameof(resources)).GetValue()), events?.Select(e => e.Validate(nameof(events)).GetValue()), cancellationToken);
 
         public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken = default)
         {

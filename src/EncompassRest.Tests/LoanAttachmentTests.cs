@@ -14,7 +14,9 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void LoanAttachment_Serialization()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var loanAttachment = new LoanAttachment { AttachmentType = AttachmentType.Image };
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.AreEqual(@"{""attachmentType"":1}", loanAttachment.ToJson());
         }
 
@@ -27,12 +29,7 @@ namespace EncompassRest.Tests
             var loanId = await client.Loans.CreateLoanAsync(loan);
             try
             {
-                var attachment = new LoanAttachment
-                {
-                    Title = "Testing Attachment",
-                    FileWithExtension = "Text.txt",
-                    CreateReason = AttachmentCreateReason.Upload
-                };
+                var attachment = new LoanAttachment("Testing Attachment", "Text.txt", AttachmentCreateReason.Upload);
                 var text = "TESTING, TESTING, 1, 2, 3";
                 var attachmentId = await loan.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text), true);
                 Assert.IsFalse(string.IsNullOrEmpty(attachmentId));
@@ -56,6 +53,7 @@ namespace EncompassRest.Tests
                 }
 
                 attachment = await loan.Attachments.GetAttachmentAsync(attachmentId, true);
+                Assert.AreEqual("Testing Attachment", attachment.Title);
                 Assert.IsFalse(string.IsNullOrEmpty(attachment.MediaUrl));
                 retrievedText = Encoding.UTF8.GetString(await attachment.DownloadAsync());
                 Assert.AreEqual(text, retrievedText);
@@ -65,12 +63,12 @@ namespace EncompassRest.Tests
                     Assert.AreEqual(text, sr.ReadToEnd());
                 }
 
-                var newAttachment = new LoanAttachment
-                {
-                    Title = "Bob",
-                    FileWithExtension = "Bobby.txt",
-                    CreateReason = AttachmentCreateReason.Upload
-                };
+                attachment = new LoanAttachment(attachmentId) { Title = "Updated Title" };
+                await loan.Attachments.UpdateAttachmentAsync(attachment);
+                attachment = await loan.Attachments.GetAttachmentAsync(attachmentId);
+                Assert.AreEqual("Updated Title", attachment.Title);
+
+                var newAttachment = new LoanAttachment("Bob", "Bobby.txt", AttachmentCreateReason.Upload);
                 var newText = "This is a test of the emergency broadcast system, this is only a test.";
                 var newAttachmentId = await loan.Attachments.UploadAttachmentAsync(newAttachment, new MemoryStream(Encoding.UTF8.GetBytes(newText)), true);
                 Assert.IsFalse(string.IsNullOrEmpty(newAttachmentId));
@@ -94,6 +92,7 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(newText, newRetrievedText);
 
                 newAttachment = await loan.Attachments.GetAttachmentAsync(newAttachmentId, true);
+                Assert.AreEqual("Bob", newAttachment.Title);
                 Assert.IsFalse(string.IsNullOrEmpty(newAttachment.MediaUrl));
                 newRetrievedText = Encoding.UTF8.GetString(await newAttachment.DownloadAsync());
                 Assert.AreEqual(newText, newRetrievedText);
@@ -105,8 +104,14 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                await Task.Delay(5000);
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    await Task.Delay(5000);
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
     }

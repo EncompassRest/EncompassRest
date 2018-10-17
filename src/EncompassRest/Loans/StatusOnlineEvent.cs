@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
-
 namespace EncompassRest.Loans
 {
     /// <summary>
@@ -11,16 +6,19 @@ namespace EncompassRest.Loans
     public sealed partial class StatusOnlineEvent : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _dateText;
+        private DirtyValue<string> _description;
+        private DirtyValue<string> _id;
+
         /// <summary>
         /// StatusOnlineEvent DateText
         /// </summary>
         public string DateText { get => _dateText; set => SetField(ref _dateText, value); }
-        private DirtyValue<string> _description;
+
         /// <summary>
         /// StatusOnlineEvent Description
         /// </summary>
         public string Description { get => _description; set => SetField(ref _description, value); }
-        private DirtyValue<string> _id;
+
         /// <summary>
         /// StatusOnlineEvent Id
         /// </summary>

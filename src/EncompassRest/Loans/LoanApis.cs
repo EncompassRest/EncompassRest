@@ -59,14 +59,14 @@ namespace EncompassRest.Loans
 
         public Task<string> LockAsync(ResourceLockType lockType, CancellationToken cancellationToken = default) => LockAsync(lockType, false, cancellationToken);
 
-        public Task<string> LockAsync(ResourceLockType lockType, bool force, CancellationToken cancellationToken = default) => LockAsync(lockType.Validate(nameof(lockType)).AsString(), force, cancellationToken);
+        public Task<string> LockAsync(ResourceLockType lockType, bool force, CancellationToken cancellationToken = default) => LockAsync(lockType.Validate(nameof(lockType)).GetValue(), force, cancellationToken);
 
         public Task<string> LockAsync(string lockType, CancellationToken cancellationToken = default) => LockAsync(lockType, false, cancellationToken);
 
-        public Task<string> LockAsync(string lockType, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.LockResourceAsync(lockType, LoanId, EntityType.Loan, force, cancellationToken);
+        public Task<string> LockAsync(string lockType, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.LockResourceAsync(lockType, LoanId, EntityType.Loan.GetName(), force, cancellationToken);
 
         public Task<bool> UnlockAsync(string lockId, CancellationToken cancellationToken = default) => UnlockAsync(lockId, false, cancellationToken);
 
-        public Task<bool> UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.UnlockResourceAsync(lockId, LoanId, EntityType.Loan, force, cancellationToken);
+        public Task<bool> UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.UnlockResourceAsync(lockId, LoanId, EntityType.Loan.GetName(), force, cancellationToken);
     }
 }

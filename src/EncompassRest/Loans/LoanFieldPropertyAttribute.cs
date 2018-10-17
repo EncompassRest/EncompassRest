@@ -16,8 +16,6 @@ namespace EncompassRest.Loans
 
         public bool ReadOnly { get; set; }
 
-        public string Description { get; set; }
-
         public string OptionsJson { get; set; }
 
         public string MissingOptionsJson { get; set; }

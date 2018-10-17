@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using EncompassRest.Filters;
 using Newtonsoft.Json;
@@ -32,11 +33,13 @@ namespace EncompassRest.Contacts
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public StringEnumValue<ContactLoanMatchType> LoanMatchType { get; set; }
 
+        [JsonConstructor]
         public ContactListParameters()
         {
         }
 
-        [Obsolete("Explicitly set the Fields property in the initializer")]
+        [Obsolete("Use another constructor and explicitly set the Fields property in the initializer instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public ContactListParameters(IEnumerable<string> fields)
         {
             Fields = fields;

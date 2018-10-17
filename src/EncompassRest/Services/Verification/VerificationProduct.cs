@@ -1,5 +1,4 @@
-﻿using EnumsNET;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace EncompassRest.Services.Verification
 {
@@ -9,7 +8,7 @@ namespace EncompassRest.Services.Verification
         public VerificationPreferences Preferences { get; set; }
 
         internal VerificationProduct(EntityReference entityRef, ServiceOptions options)
-            : this(entityRef, options, ServiceType.Verification.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : this(entityRef, options, ServiceType.Verification.GetValue())
         {
         }
 

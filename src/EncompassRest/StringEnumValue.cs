@@ -33,7 +33,7 @@ namespace EncompassRest
         }
 
         public StringEnumValue(TEnum? value)
-            : this(value?.Validate(nameof(value)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : this(value?.Validate(nameof(value)).GetValue())
         {
         }
 

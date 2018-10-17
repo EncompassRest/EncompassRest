@@ -1,6 +1,3 @@
-using System.ComponentModel;
-using System.Runtime.Serialization;
-
 namespace EncompassRest.Loans.Enums
 {
     /// <summary>
@@ -15,6 +12,14 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// LockExtensionAdjustment
         /// </summary>
-        LockExtensionAdjustment = 1
+        LockExtensionAdjustment = 1,
+        /// <summary>
+        /// ReLockFeeAdjustment
+        /// </summary>
+        ReLockFeeAdjustment = 2,
+        /// <summary>
+        /// CustomPriceAdjustment
+        /// </summary>
+        CustomPriceAdjustment = 3
     }
 }

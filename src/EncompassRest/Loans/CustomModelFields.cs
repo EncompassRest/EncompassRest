@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
-
 namespace EncompassRest.Loans
 {
     /// <summary>
@@ -11,26 +6,31 @@ namespace EncompassRest.Loans
     public sealed partial class CustomModelFields : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
+        private DirtyValue<bool?> _provideAmortizationScenario;
+        private DirtyValue<bool?> _provideBestCaseScenario;
+        private DirtyValue<bool?> _provideFHAScenario;
+        private DirtyValue<bool?> _provideWorstCaseScenario;
+
         /// <summary>
         /// CustomModelFields Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
-        private DirtyValue<bool?> _provideAmortizationScenario;
+
         /// <summary>
         /// CustomModelFields ProvideAmortizationScenario
         /// </summary>
         public bool? ProvideAmortizationScenario { get => _provideAmortizationScenario; set => SetField(ref _provideAmortizationScenario, value); }
-        private DirtyValue<bool?> _provideBestCaseScenario;
+
         /// <summary>
         /// CustomModelFields ProvideBestCaseScenario
         /// </summary>
         public bool? ProvideBestCaseScenario { get => _provideBestCaseScenario; set => SetField(ref _provideBestCaseScenario, value); }
-        private DirtyValue<bool?> _provideFHAScenario;
+
         /// <summary>
         /// CustomModelFields ProvideFHAScenario
         /// </summary>
         public bool? ProvideFHAScenario { get => _provideFHAScenario; set => SetField(ref _provideFHAScenario, value); }
-        private DirtyValue<bool?> _provideWorstCaseScenario;
+
         /// <summary>
         /// CustomModelFields ProvideWorstCaseScenario
         /// </summary>

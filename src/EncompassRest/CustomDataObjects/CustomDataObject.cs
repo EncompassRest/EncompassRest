@@ -9,6 +9,8 @@ namespace EncompassRest.CustomDataObjects
     public sealed class CustomDataObject : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _name;
+        private DirtyValue<byte[]> _dataObject;
+
         public string Name
         {
             get => _name;
@@ -19,7 +21,7 @@ namespace EncompassRest.CustomDataObjects
                 SetField(ref _name, value);
             }
         }
-        private DirtyValue<byte[]> _dataObject;
+
         public byte[] DataObject
         {
             get => _dataObject;
@@ -30,6 +32,7 @@ namespace EncompassRest.CustomDataObjects
                 SetField(ref _dataObject, value);
             }
         }
+
         [IdPropertyName(nameof(Name))]
         string IIdentifiable.Id { get => Name; set => Name = value; }
 
@@ -40,7 +43,7 @@ namespace EncompassRest.CustomDataObjects
             DataObject = dataObject;
         }
 
-        [Obsolete("Use a different constructor instead.")]
+        [Obsolete("Use another constructor instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public CustomDataObject()
         {

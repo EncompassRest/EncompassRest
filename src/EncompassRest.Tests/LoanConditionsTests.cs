@@ -41,7 +41,13 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
 
@@ -78,7 +84,13 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
 
@@ -115,7 +127,13 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
     }

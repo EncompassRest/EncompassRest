@@ -139,7 +139,7 @@ namespace EncompassRest
 
         internal virtual string BaseAddress => "https://api.elliemae.com/";
 
-        private string GetFullUri(string requestUri) => $"{BaseAddress}{_baseApiPath}{requestUri?.PrecedeWith("/")}";
+        private string GetFullUri(string requestUri) => $"{BaseAddress}{_baseApiPath}{((BaseAddress?.Length ?? _baseApiPath?.Length ?? 0) == 0 ? requestUri : requestUri?.PrecedeWith("/"))}";
 
         internal static class FuncCache<T>
         {

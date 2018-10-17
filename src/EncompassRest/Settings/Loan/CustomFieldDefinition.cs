@@ -10,6 +10,7 @@ namespace EncompassRest.Settings.Loan
     public sealed class CustomFieldDefinition : DirtyExtensibleObject, IIdentifiable
     {
         private string _id;
+        [JsonRequired]
         public string Id { get => _id; set => SetField(ref _id, value); }
         private string _description;
         public string Description { get => _description; set => SetField(ref _description, value); }
@@ -33,7 +34,7 @@ namespace EncompassRest.Settings.Loan
         public bool IsCalculatedField { get => _isCalculatedField; internal set => SetField(ref _isCalculatedField, value); }
 
         public CustomFieldDefinition(string id, string description, LoanFieldFormat format)
-            : this(id, description, format.Validate(nameof(format)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : this(id, description, format.Validate(nameof(format)).GetValue())
         {
         }
         

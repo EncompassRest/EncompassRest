@@ -1,6 +1,3 @@
-using System.ComponentModel;
-using System.Runtime.Serialization;
-
 namespace EncompassRest.Loans.Enums
 {
     /// <summary>
@@ -8,6 +5,10 @@ namespace EncompassRest.Loans.Enums
     /// </summary>
     public enum TermType
     {
+        /// <summary>
+        /// Month
+        /// </summary>
+        Month = -1,
         /// <summary>
         /// Months
         /// </summary>

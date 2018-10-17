@@ -6,8 +6,6 @@ namespace EncompassRest.Loans
 {
     internal sealed class NonStandardFieldDescriptor : FieldDescriptor
     {
-        public override string Description { get; }
-
         public override ReadOnlyCollection<FieldOption> Options { get; }
 
         public override LoanFieldFormat? Format { get; }
@@ -40,10 +38,9 @@ namespace EncompassRest.Loans
 
         public override bool ReadOnly { get; }
 
-        internal NonStandardFieldDescriptor(string fieldId, ModelPath modelPath, LoanFieldType type, string description, LoanFieldFormat? format, IList<FieldOption> options, bool readOnly, bool multiInstance = false)
-            : base(fieldId, modelPath, type, multiInstance: multiInstance)
+        internal NonStandardFieldDescriptor(string fieldId, ModelPath modelPath, string modelPathString, string description, LoanFieldFormat? format, IList<FieldOption> options, bool readOnly, bool multiInstance = false)
+            : base(fieldId, modelPath, modelPathString, description, multiInstance: multiInstance)
         {
-            Description = description;
             Format = format;
             if (options == null)
             {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest
 {
@@ -44,5 +45,7 @@ namespace EncompassRest
             }
             return -1;
         }
+
+        internal static string GetValue<TEnum>(this TEnum value) where TEnum : struct, Enum => value.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
     }
 }

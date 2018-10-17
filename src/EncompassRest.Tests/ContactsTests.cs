@@ -17,7 +17,9 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void BorrowerContact_Serialization()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var borrowerContact = new BorrowerContact { AccessLevel = ContactAccessLevel.Private };
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.AreEqual(@"{""accessLevel"":0}", borrowerContact.ToJson());
             borrowerContact.Dirty = false;
             Assert.AreEqual("{}", borrowerContact.ToJson());
@@ -26,7 +28,9 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void BusinessContact_Serialization()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var businessContact = new BusinessContact { AccessLevel = ContactAccessLevel.Private };
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.AreEqual(@"{""accessLevel"":0}", businessContact.ToJson());
             businessContact.Dirty = false;
             Assert.AreEqual("{}", businessContact.ToJson());
@@ -38,21 +42,41 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             if (client.AccessToken.Token != "Token")
             {
-                var borrowerContact = new BorrowerContact
+                var borrowerContact = new BorrowerContact("Bob", "Bob@gmail.com");
+                var contactId = await client.BorrowerContacts.CreateContactAsync(borrowerContact);
+
+                try
                 {
-                    FirstName = "Bob",
-                    PersonalEmail = "Bob@gmail.com"
-                };
-                var contactId = await client.BorrowerContacts.CreateContactAsync(borrowerContact).ConfigureAwait(false);
 
-                Assert.IsNotNull(contactId);
-                Assert.AreEqual(contactId, borrowerContact.Id);
+                    Assert.IsNotNull(contactId);
+                    Assert.AreEqual(contactId, borrowerContact.Id);
 
-                var retrievedContact = await client.BorrowerContacts.GetContactAsync(contactId);
-                Assert.IsNotNull(retrievedContact);
-                Assert.AreEqual(contactId, retrievedContact.Id);
+                    var retrievedContact = await client.BorrowerContacts.GetContactAsync(contactId);
+                    Assert.IsNotNull(retrievedContact);
+                    Assert.AreEqual(contactId, retrievedContact.Id);
+                    Assert.AreEqual(borrowerContact.FirstName, retrievedContact.FirstName);
+                    Assert.AreEqual(borrowerContact.PersonalEmail, retrievedContact.PersonalEmail);
+                    Assert.IsTrue(string.IsNullOrEmpty(retrievedContact.LastName));
 
-                Assert.IsTrue(await client.BorrowerContacts.DeleteContactAsync(contactId).ConfigureAwait(false));
+                    borrowerContact = new BorrowerContact(client, contactId, "Bob", "Bob@gmail.com") { LastName = "Smith" };
+                    await client.BorrowerContacts.UpdateContactAsync(borrowerContact);
+                    retrievedContact = await client.BorrowerContacts.GetContactAsync(contactId);
+                    Assert.IsNotNull(retrievedContact);
+                    Assert.AreEqual(contactId, retrievedContact.Id);
+                    Assert.AreEqual("Bob", retrievedContact.FirstName);
+                    Assert.AreEqual("Bob@gmail.com", retrievedContact.PersonalEmail);
+                    Assert.AreEqual("Smith", retrievedContact.LastName);
+                }
+                finally
+                {
+                    try
+                    {
+                        await client.BorrowerContacts.DeleteContactAsync(contactId);
+                    }
+                    catch
+                    {
+                    }
+                }
             }
         }
 
@@ -60,20 +84,41 @@ namespace EncompassRest.Tests
         public async Task BusinessContact_CreateRetrieveAndDelete()
         {
             var client = await GetTestClientAsync();
-            var businessContact = new BusinessContact
+            var businessContact = new BusinessContact("Bob", "Bob@gmail.com");
+            var contactId = await client.BusinessContacts.CreateContactAsync(businessContact);
+
+            try
             {
-                FirstName = "Bob",
-                PersonalEmail = "Bob@gmail.com"
-            };
-            var contactId = await client.BusinessContacts.CreateContactAsync(businessContact).ConfigureAwait(false);
-            Assert.IsNotNull(contactId);
-            Assert.AreEqual(contactId, businessContact.Id);
 
-            var retrievedContact = await client.BusinessContacts.GetContactAsync(contactId);
-            Assert.IsNotNull(retrievedContact);
-            Assert.AreEqual(contactId, retrievedContact.Id);
+                Assert.IsNotNull(contactId);
+                Assert.AreEqual(contactId, businessContact.Id);
 
-            Assert.IsTrue(await client.BusinessContacts.DeleteContactAsync(contactId).ConfigureAwait(false));
+                var retrievedContact = await client.BusinessContacts.GetContactAsync(contactId);
+                Assert.IsNotNull(retrievedContact);
+                Assert.AreEqual(contactId, retrievedContact.Id);
+                Assert.AreEqual(businessContact.FirstName, retrievedContact.FirstName);
+                Assert.AreEqual(businessContact.PersonalEmail, retrievedContact.PersonalEmail);
+                Assert.IsTrue(string.IsNullOrEmpty(retrievedContact.LastName));
+
+                businessContact = new BusinessContact(client, contactId, "Bob", "Bob@gmail.com") { LastName = "Smith" };
+                await client.BusinessContacts.UpdateContactAsync(businessContact);
+                retrievedContact = await client.BusinessContacts.GetContactAsync(contactId);
+                Assert.IsNotNull(retrievedContact);
+                Assert.AreEqual(contactId, retrievedContact.Id);
+                Assert.AreEqual("Bob", retrievedContact.FirstName);
+                Assert.AreEqual("Bob@gmail.com", retrievedContact.PersonalEmail);
+                Assert.AreEqual("Smith", retrievedContact.LastName);
+            }
+            finally
+            {
+                try
+                {
+                    await client.BusinessContacts.DeleteContactAsync(contactId);
+                }
+                catch
+                {
+                }
+            }
         }
 
         [TestMethod]
@@ -82,34 +127,30 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var borrowerContactFieldDefinitions = await client.Settings.BorrowerContacts.GetCanonicalNamesAsync();
             var businessContactFieldDefinitions = await client.Settings.BusinessContacts.GetCanonicalNamesAsync();
+            var allContactFieldDefinitions = borrowerContactFieldDefinitions.Concat(businessContactFieldDefinitions).ToList();
 
-            foreach (var borrowerContactFieldDefinition in borrowerContactFieldDefinitions)
+            foreach (var contactFieldDefinition in allContactFieldDefinitions)
             {
-                Assert.AreEqual(0, borrowerContactFieldDefinition.ExtensionData.Count);
+                Assert.AreEqual(0, contactFieldDefinition.ExtensionData.Count);
             }
 
-            foreach (var businessContactFieldDefinition in businessContactFieldDefinitions)
-            {
-                Assert.AreEqual(0, businessContactFieldDefinition.ExtensionData.Count);
-            }
-
-            Assert.IsTrue(borrowerContactFieldDefinitions.Concat(businessContactFieldDefinitions).All(fd => fd.Category.EnumValue.HasValue));
             var existingCategories = new HashSet<string>(Enums.GetMembers<FieldDefinitionCategory>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)), StringComparer.Ordinal);
-            var categories = new HashSet<string>(borrowerContactFieldDefinitions.Select(fd => fd.Category.Value).Concat(businessContactFieldDefinitions.Select(fd => fd.Category.Value)), StringComparer.Ordinal);
+            var categories = new HashSet<string>(allContactFieldDefinitions.Select(fd => fd.Category.Value), StringComparer.Ordinal);
             var newCategories = categories.Except(existingCategories).ToList();
             Assert.AreEqual(0, newCategories.Count);
+            Assert.IsTrue(allContactFieldDefinitions.All(fd => fd.Category.EnumValue.HasValue));
 
-            Assert.IsTrue(borrowerContactFieldDefinitions.Concat(businessContactFieldDefinitions).All(fd => fd.DataSource.EnumValue.HasValue));
             var existingDataSources = new HashSet<string>(Enums.GetMembers<FieldDefinitionDataSource>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)), StringComparer.Ordinal);
-            var dataSources = new HashSet<string>(borrowerContactFieldDefinitions.Select(fd => fd.DataSource.Value).Concat(businessContactFieldDefinitions.Select(fd => fd.DataSource.Value)), StringComparer.Ordinal);
+            var dataSources = new HashSet<string>(allContactFieldDefinitions.Select(fd => fd.DataSource.Value), StringComparer.Ordinal);
             var newDataSources = dataSources.Except(existingDataSources).ToList();
             Assert.AreEqual(0, newDataSources.Count);
+            Assert.IsTrue(allContactFieldDefinitions.All(fd => fd.DataSource.EnumValue.HasValue));
 
-            Assert.IsTrue(borrowerContactFieldDefinitions.Concat(businessContactFieldDefinitions).All(fd => fd.DataType.EnumValue.HasValue));
             var existingFieldFormats = new HashSet<string>(Enums.GetMembers<LoanFieldFormat>().Select(m => m.AsString(EnumFormat.Name)), StringComparer.Ordinal);
-            var fieldFormats = new HashSet<string>(borrowerContactFieldDefinitions.Select(fd => fd.DataType.Value).Concat(businessContactFieldDefinitions.Select(fd => fd.DataType.Value)), StringComparer.Ordinal);
+            var fieldFormats = new HashSet<string>(allContactFieldDefinitions.Select(fd => fd.DataType.Value), StringComparer.Ordinal);
             var newFieldFormats = fieldFormats.Except(existingFieldFormats).ToList();
             Assert.AreEqual(0, newFieldFormats.Count);
+            Assert.IsTrue(allContactFieldDefinitions.All(fd => fd.DataType.EnumValue.HasValue));
         }
 
         [TestMethod]

@@ -24,7 +24,7 @@ Second, the swagger generated Encompass API .NET Language Bindings are less robu
 
 ### Simpler
 * More convenient interface with a single defined entry point, the `EncompassRestClient` object which is the equivalent of the `Session` object in the SDK
-* Simpler Type names, e.g. `Loan` instead of `LoanContract`
+* Simpler Type names, e.g. `UCDDetail` instead of `LoanContractClosingCostClosingDisclosure3UCDDetails`
 * Single NuGet package
 * No configuration files
 * Publicly exposes only relevant .NET API

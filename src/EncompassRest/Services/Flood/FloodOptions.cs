@@ -11,7 +11,7 @@ namespace EncompassRest.Services.Flood
         public FloodProductDetails ProductDetails { get; set; }
 
         public FloodOptions(FloodRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,17 +24,13 @@ namespace EncompassRest.Loans
             new KeyValuePair<string, ModelPathSettings>("Loan.CurrentApplication.Employment", new ModelPathSettings(new Dictionary<string, string> { { nameof(Employment.CurrentEmploymentIndicator), "true" } }))
         }, 1, name => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(name.Replace("_", string.Empty), false));
 
-        internal static readonly ConcurrentDictionary<string, FieldDescriptor> s_standardFields = new ConcurrentDictionary<string, FieldDescriptor>(StringComparer.OrdinalIgnoreCase);
-
-        internal static readonly ConcurrentDictionary<string, FieldDescriptor> s_virtualFields = new ConcurrentDictionary<string, FieldDescriptor>(StringComparer.OrdinalIgnoreCase);
-
-        public static ReadOnlyDictionary<string, FieldDescriptor> StandardFields { get; } = new ReadOnlyDictionary<string, FieldDescriptor>(s_standardFields);
-
-        public static ReadOnlyDictionary<string, FieldDescriptor> VirtualFields { get; } = new ReadOnlyDictionary<string, FieldDescriptor>(s_virtualFields);
-
         public static LoanFieldMappings FieldMappings { get; } = new LoanFieldMappings();
 
         public static LoanFieldPatternMappings FieldPatternMappings { get; } = new LoanFieldPatternMappings();
+
+        public static ReadOnlyDictionary<string, FieldDescriptor> StandardFields { get; } = new ReadOnlyDictionary<string, FieldDescriptor>(new FieldDescriptors(FieldMappings._standardFields, FieldPatternMappings._standardFieldPatterns));
+
+        public static ReadOnlyDictionary<string, FieldDescriptor> VirtualFields { get; } = new ReadOnlyDictionary<string, FieldDescriptor>(new FieldDescriptors(FieldMappings._virtualFields, FieldPatternMappings._virtualFieldPatterns));
 
         internal static ModelPath CreateModelPath(string modelPath)
         {
@@ -60,7 +54,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            if (!FieldMappings._dictionary.TryGetValue(fieldId, out var descriptor) && customFields?.TryGetValue(fieldId, out descriptor) != true && !FieldPatternMappings.TryGetDescriptorForFieldId(fieldId, out descriptor))
+            if (!FieldMappings.TryGetDescriptor(fieldId, out var descriptor) && customFields?.TryGetValue(fieldId, out descriptor) != true && !FieldPatternMappings.TryGetDescriptorForFieldId(fieldId, out descriptor))
             {
                 throw new ArgumentException($"Could not find field '{fieldId}'");
             }
@@ -80,12 +74,13 @@ namespace EncompassRest.Loans
                         {
                             using (var jr = new JsonTextReader(sr))
                             {
-                                var dictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-                                JsonHelper.DefaultPublicSerializer.Populate(jr, dictionary);
+                                var loanFields = JsonHelper.DefaultPublicSerializer.Deserialize<List<StandardFieldInfo>>(jr);
                                 
-                                foreach (var pair in dictionary)
+                                foreach (var loanField in loanFields)
                                 {
-                                    FieldMappings.TryAdd(pair.Key, pair.Value);
+                                    var modelPath = loanField.ModelPath;
+                                    var descriptor = new FieldDescriptor(loanField.FieldId, CreateModelPath(modelPath), modelPath, loanField.Description);
+                                    FieldMappings.AddField(descriptor);
                                 }
                             }
                         }
@@ -101,8 +96,9 @@ namespace EncompassRest.Loans
 
                                 foreach (var virtualField in virtualFields)
                                 {
-                                    var fieldDescriptor = new NonStandardFieldDescriptor(virtualField.FieldId, CreateModelPath($"Loan.VirtualFields['{virtualField.FieldId}']"), LoanFieldType.Virtual, virtualField.Description, virtualField.Format, virtualField.Options, true);
-                                    FieldMappings.AddVirtualField(fieldDescriptor);
+                                    var modelPath = $"Loan.VirtualFields['{virtualField.FieldId}']";
+                                    var descriptor = new NonStandardFieldDescriptor(virtualField.FieldId, CreateModelPath(modelPath), modelPath, virtualField.Description, virtualField.Format, virtualField.Options, true);
+                                    FieldMappings.AddField(descriptor);
                                 }
                             }
                         }
@@ -114,12 +110,13 @@ namespace EncompassRest.Loans
                         {
                             using (var jr = new JsonTextReader(sr))
                             {
-                                var dictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-                                JsonHelper.DefaultPublicSerializer.Populate(jr, dictionary);
+                                var loanFieldPatterns = JsonHelper.DefaultPublicSerializer.Deserialize<List<StandardFieldInfo>>(jr);
 
-                                foreach (var pair in dictionary)
+                                foreach (var loanFieldPattern in loanFieldPatterns)
                                 {
-                                    FieldPatternMappings.TryAdd(pair.Key, pair.Value);
+                                    var modelPathPattern = loanFieldPattern.ModelPath;
+                                    var descriptor = new FieldDescriptor(loanFieldPattern.FieldId, CreateModelPath(string.Format(modelPathPattern, 1)), modelPathPattern, loanFieldPattern.Description, true);
+                                    FieldPatternMappings.AddField(descriptor);
                                 }
                             }
                         }
@@ -135,8 +132,9 @@ namespace EncompassRest.Loans
 
                                 foreach (var virtualFieldPattern in virtualFieldPatterns)
                                 {
-                                    var fieldDescriptor = new NonStandardFieldDescriptor(virtualFieldPattern.FieldId, CreateModelPath($"Loan.VirtualFields['{virtualFieldPattern.FieldId}']"), LoanFieldType.Virtual, virtualFieldPattern.Description, virtualFieldPattern.Format, virtualFieldPattern.Options, true, true);
-                                    FieldPatternMappings.AddVirtualField(virtualFieldPattern.FieldId, fieldDescriptor);
+                                    var modelPathPattern = $"Loan.VirtualFields['{virtualFieldPattern.FieldId}']";
+                                    var descriptor = new NonStandardFieldDescriptor(virtualFieldPattern.FieldId, CreateModelPath(string.Format(modelPathPattern, 1)), modelPathPattern, virtualFieldPattern.Description, virtualFieldPattern.Format, virtualFieldPattern.Options, true, true);
+                                    FieldPatternMappings.AddField(descriptor);
                                 }
                             }
                         }
@@ -158,14 +156,23 @@ namespace EncompassRest.Loans
 
         public Task RefreshCustomFieldsAsync(CancellationToken cancellationToken = default) => Client.CommonCache.RefreshCustomFieldsAsync(Client, cancellationToken);
 
-        private sealed class VirtualFieldInfo
+        internal abstract class FieldInfo
         {
             public string FieldId { get; set; }
 
+            public string Description { get; set; }
+        }
+
+        internal sealed class StandardFieldInfo : FieldInfo
+        {
+            public string ModelPath { get; set; }
+        }
+
+        internal sealed class VirtualFieldInfo : FieldInfo
+        {
             public LoanFieldFormat Format { get; set; }
 
-            public string Description { get; set; }
-
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public List<FieldOption> Options { get; set; }
         }
     }

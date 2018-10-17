@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using EncompassRest.Loans.Enums;
@@ -143,7 +144,7 @@ namespace EncompassRest.Loans
 
         public virtual bool ReadOnly => ParentDescriptor?.ReadOnly ?? Type == LoanFieldType.Virtual || PropertyAttribute?.ReadOnly == true;
 
-        public virtual string Description => ParentDescriptor?.Description ?? PropertyAttribute?.Description;
+        public string Description { get; }
 
         public virtual LoanEntity? LoanEntity
         {
@@ -248,12 +249,14 @@ namespace EncompassRest.Loans
         {
             get
             {
+                var propertyAttribute = _propertyAttribute;
                 if (!_propertyAttributeIsSet)
                 {
-                    _propertyAttribute = _modelPath.GetAttribute<LoanFieldPropertyAttribute>(TypeData<Loan>.Type);
+                    propertyAttribute = _modelPath.GetAttribute<LoanFieldPropertyAttribute>(TypeData<Loan>.Type);
+                    _propertyAttribute = propertyAttribute;
                     _propertyAttributeIsSet = true;
                 }
-                return _propertyAttribute;
+                return propertyAttribute;
             }
         }
 
@@ -299,26 +302,29 @@ namespace EncompassRest.Loans
             }
         }
 
-        internal FieldDescriptor(string fieldId, ModelPath modelPath, LoanFieldType type, bool isBorrowerPairSpecific = false, bool multiInstance = false, string instanceSpecifier = null, FieldDescriptor parentDescriptor = null)
+        internal FieldDescriptor(string fieldId, ModelPath modelPath, string modelPathString, string description, bool multiInstance = false, string instanceSpecifier = null, FieldDescriptor parentDescriptor = null)
         {
             FieldId = fieldId;
             _modelPath = modelPath;
-            ModelPath = modelPath.ToString();
-            Type = type;
-            IsBorrowerPairSpecific = isBorrowerPairSpecific;
+            ModelPath = modelPathString;
+            
+            if (modelPathString.StartsWith("Loan.CustomFields", StringComparison.OrdinalIgnoreCase))
+            {
+                Type = LoanFieldType.Custom;
+            }
+            else if (modelPathString.StartsWith("Loan.VirtualFields", StringComparison.OrdinalIgnoreCase))
+            {
+                Type = LoanFieldType.Virtual;
+            }
+            else if (modelPathString.StartsWith("Loan.CurrentApplication.", StringComparison.OrdinalIgnoreCase))
+            {
+                IsBorrowerPairSpecific = true;
+            }
+            
+            Description = description ?? string.Empty;
             MultiInstance = multiInstance;
             InstanceSpecifier = instanceSpecifier;
             ParentDescriptor = parentDescriptor;
-        }
-
-        internal FieldDescriptor(string fieldPattern, string modelPathPattern, LoanFieldType type, bool isBorrowerPairSpecific = false)
-        {
-            FieldId = fieldPattern;
-            _modelPath = LoanFieldDescriptors.CreateModelPath(string.Format(modelPathPattern, 1));
-            ModelPath = modelPathPattern;
-            Type = type;
-            IsBorrowerPairSpecific = isBorrowerPairSpecific;
-            MultiInstance = true;
         }
 
         public FieldDescriptor GetInstanceDescriptor(string instanceSpecifier)
@@ -334,7 +340,9 @@ namespace EncompassRest.Loans
                 throw new InvalidOperationException("cannot retrieve an instance descriptor of an instance descriptor");
             }
 
-            return new FieldDescriptor(string.Format(FieldId, instanceSpecifier), LoanFieldDescriptors.CreateModelPath(string.Format(ModelPath, instanceSpecifier)), Type, IsBorrowerPairSpecific, true, instanceSpecifier, this);
+            var formatArg = int.TryParse(instanceSpecifier, NumberStyles.None, null, out var i) ? (object)i : instanceSpecifier;
+            var modelPathString = string.Format(ModelPath, formatArg);
+            return new FieldDescriptor(string.Format(FieldId, formatArg), LoanFieldDescriptors.CreateModelPath(modelPathString), modelPathString, string.Format(Description, formatArg), MultiInstance, instanceSpecifier, this);
         }
     }
 }

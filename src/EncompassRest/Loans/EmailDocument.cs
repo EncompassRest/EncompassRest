@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
-
 namespace EncompassRest.Loans
 {
     /// <summary>
@@ -11,11 +6,13 @@ namespace EncompassRest.Loans
     public sealed partial class EmailDocument : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _docId;
+        private DirtyValue<string> _docTitle;
+
         /// <summary>
         /// EmailDocument DocId
         /// </summary>
         public string DocId { get => _docId; set => SetField(ref _docId, value); }
-        private DirtyValue<string> _docTitle;
+
         /// <summary>
         /// EmailDocument DocTitle
         /// </summary>

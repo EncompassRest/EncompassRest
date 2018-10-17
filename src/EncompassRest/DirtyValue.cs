@@ -20,10 +20,10 @@ namespace EncompassRest
 
         public bool Dirty
         {
-            get => s_tImplementsIDirty ? ((IDirty)_value).Dirty : _dirty;
+            get => s_tImplementsIDirty && _value != null ? ((IDirty)_value).Dirty : _dirty;
             set
             {
-                if (s_tImplementsIDirty)
+                if (s_tImplementsIDirty && _value != null)
                 {
                     ((IDirty)_value).Dirty = value;
                 }

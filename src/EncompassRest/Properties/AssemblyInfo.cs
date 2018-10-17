@@ -7,3 +7,4 @@ using System.Security;
 
 // Release assemblies should be signed
 [assembly: InternalsVisibleTo("EncompassRest.Tests")]
+[assembly: InternalsVisibleTo("EncompassRest.EntityGenerator")]

@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -11,38 +8,43 @@ namespace EncompassRest.Loans
     public sealed partial class LogAlert : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _dueDate;
+        private DirtyValue<DateTime?> _followedUpDate;
+        private DirtyValue<string> _id;
+        private DirtyValue<LogRecord> _logRecord;
+        private DirtyValue<int?> _roleId;
+        private DirtyValue<string> _systemId;
+        private DirtyValue<string> _userId;
+
         /// <summary>
         /// LogAlert DueDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DueDate { get => _dueDate; set => SetField(ref _dueDate, value); }
-        private DirtyValue<DateTime?> _followedUpDate;
+
         /// <summary>
         /// LogAlert FollowedUpDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? FollowedUpDate { get => _followedUpDate; set => SetField(ref _followedUpDate, value); }
-        private DirtyValue<string> _id;
+
         /// <summary>
         /// LogAlert Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
-        private LogRecord _logRecord;
+
         /// <summary>
-        /// LogAlert LogRecord
+        /// LogAlert LogRecord (Nullable)
         /// </summary>
-        public LogRecord LogRecord { get => GetField(ref _logRecord); set => SetField(ref _logRecord, value); }
-        private DirtyValue<int?> _roleId;
+        public LogRecord LogRecord { get => _logRecord; set => SetField(ref _logRecord, value); }
+
         /// <summary>
         /// LogAlert RoleId
         /// </summary>
         public int? RoleId { get => _roleId; set => SetField(ref _roleId, value); }
-        private DirtyValue<string> _systemId;
+
         /// <summary>
         /// LogAlert SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
-        private DirtyValue<string> _userId;
+
         /// <summary>
         /// LogAlert UserId
         /// </summary>

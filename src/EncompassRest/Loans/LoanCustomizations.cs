@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
@@ -87,6 +88,7 @@ namespace EncompassRest.Loans
         /// </summary>
         [JsonConstructor]
         [Obsolete("Use EncompassRestClient parameter constructor instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Loan()
         {
         }

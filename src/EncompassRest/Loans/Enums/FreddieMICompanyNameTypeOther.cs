@@ -46,6 +46,11 @@ namespace EncompassRest.Loans.Enums
         /// Wisc Mtg Assr
         /// </summary>
         [EnumMember(Value = "Wisc Mtg Assr")]
-        WiscMtgAssr = 8
+        WiscMtgAssr = 8,
+        /// <summary>
+        /// ArchMI (FRE added 05/2015)
+        /// </summary>
+        [Description("ArchMI (FRE added 05/2015)")]
+        ArchMI = 9
     }
 }

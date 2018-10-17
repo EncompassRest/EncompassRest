@@ -21,7 +21,7 @@ namespace EncompassRest.ResourceLocks
             return GetResourceLockAsync(resourceLock.Id, resourceLock.Resource.EntityId, resourceLock.Resource.EntityType, cancellationToken);
         }
 
-        public Task<ResourceLock> GetResourceLockAsync(string lockId, string resourceId, EntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLockAsync(lockId, resourceId, resourceType.AsString(), cancellationToken);
+        public Task<ResourceLock> GetResourceLockAsync(string lockId, string resourceId, EntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLockAsync(lockId, resourceId, resourceType.Validate(nameof(resourceType)).GetName(), cancellationToken);
 
         public Task<ResourceLock> GetResourceLockAsync(string lockId, string resourceId, string resourceType, CancellationToken cancellationToken = default)
         {
@@ -44,7 +44,7 @@ namespace EncompassRest.ResourceLocks
             return GetRawAsync(lockId, queryString, nameof(GetResourceLockRawAsync), lockId, cancellationToken);
         }
 
-        public Task<List<ResourceLock>> GetResourceLocksAsync(string resourceId, EntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLocksAsync(resourceId, resourceType.AsString(), cancellationToken);
+        public Task<List<ResourceLock>> GetResourceLocksAsync(string resourceId, EntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLocksAsync(resourceId, resourceType.Validate(nameof(resourceType)).GetName(), cancellationToken);
 
         public Task<List<ResourceLock>> GetResourceLocksAsync(string resourceId, string resourceType, CancellationToken cancellationToken = default)
         {
@@ -87,13 +87,7 @@ namespace EncompassRest.ResourceLocks
         }
 
         public Task<string> LockResourceAsync(ResourceLockType lockType, string resourceId, EntityType resourceType, bool force, CancellationToken cancellationToken = default) =>
-            LockResourceAsync(lockType.AsString(), resourceId, resourceType.AsString(), force, cancellationToken);
-
-        public Task<string> LockResourceAsync(string lockType, string resourceId, EntityType resourceType, bool force, CancellationToken cancellationToken = default) =>
-            LockResourceAsync(lockType, resourceId, resourceType.AsString(), force, cancellationToken);
-
-        public Task<string> LockResourceAsync(ResourceLockType lockType, string resourceId, string resourceType, bool force, CancellationToken cancellationToken = default) =>
-            LockResourceAsync(lockType.AsString(), resourceId, resourceType, force, cancellationToken);
+            LockResourceAsync(lockType.Validate(nameof(lockType)).GetValue(), resourceId, resourceType.Validate(nameof(resourceType)).GetName(), force, cancellationToken);
 
         public Task<string> LockResourceAsync(string lockType, string resourceId, string resourceType, bool force, CancellationToken cancellationToken = default)
         {
@@ -104,11 +98,7 @@ namespace EncompassRest.ResourceLocks
             var resourceLock = new ResourceLock
             {
                 LockType = lockType,
-                Resource = new EntityReference
-                {
-                    EntityId = resourceId,
-                    EntityType = resourceType
-                }
+                Resource = new EntityReference(resourceId, resourceType)
             };
 
             return LockResourceAsync(resourceLock, force, false, cancellationToken);
@@ -125,7 +115,7 @@ namespace EncompassRest.ResourceLocks
             UnlockResourceAsync(lockId, resourceId, resourceType, false, cancellationToken);
 
         public Task<bool> UnlockResourceAsync(string lockId, string resourceId, EntityType resourceType, bool force, CancellationToken cancellationToken = default) =>
-            UnlockResourceAsync(lockId, resourceId, resourceType.AsString(), force, cancellationToken);
+            UnlockResourceAsync(lockId, resourceId, resourceType.Validate(nameof(resourceType)).GetName(), force, cancellationToken);
 
         public Task<bool> UnlockResourceAsync(string lockId, string resourceId, string resourceType, CancellationToken cancellationToken = default) =>
             UnlockResourceAsync(lockId, resourceId, resourceType, false, cancellationToken);

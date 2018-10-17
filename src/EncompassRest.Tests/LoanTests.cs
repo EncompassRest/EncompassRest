@@ -81,13 +81,26 @@ namespace EncompassRest.Tests
             
             var loanId = await client.Loans.CreateLoanAsync(loan, true);
             Assert.IsNotNull(loanId);
-            Assert.AreEqual(loanId, loan.EncompassId);
-            var json = JsonConvert.SerializeObject(loan, serializerSettings);
-            var deserializedLoan = JsonConvert.DeserializeObject<Loan>(json, serializerSettings);
-            var newJson = JsonConvert.SerializeObject(loan, serializerSettings);
-            Assert.AreEqual(json, newJson);
-            await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+
+            try
+            {
+                Assert.AreEqual(loanId, loan.EncompassId);
+                var json = JsonConvert.SerializeObject(loan, serializerSettings);
+                var deserializedLoan = JsonConvert.DeserializeObject<Loan>(json, serializerSettings);
+                var newJson = JsonConvert.SerializeObject(loan, serializerSettings);
+                Assert.AreEqual(json, newJson);
+            }
+            finally
+            {
+                try
+                {
+                    await Task.Delay(5000);
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
         }
 
         [TestMethod]
@@ -137,7 +150,13 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
 
@@ -279,30 +298,30 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var loan = new Loan(client);
-            var loanId = await client.Loans.CreateLoanAsync(loan, true).ConfigureAwait(false);
+            var loanId = await client.Loans.CreateLoanAsync(loan, true);
             Assert.IsNotNull(loanId);
             Assert.AreEqual(loanId, loan.EncompassId);
             await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
         }
 
         [TestMethod]
         public async Task Loan_CreateRawAndDelete()
         {
             var client = await GetTestClientAsync();
-            var loanId = await client.Loans.CreateLoanRawAsync("{}").ConfigureAwait(false);
+            var loanId = await client.Loans.CreateLoanRawAsync("{}");
             Assert.IsNotNull(loanId);
             Assert.IsFalse(loanId.StartsWith("{"));
             await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
 
-            var json = await client.Loans.CreateLoanRawAsync("{}", "?view=entity").ConfigureAwait(false);
+            var json = await client.Loans.CreateLoanRawAsync("{}", "?view=entity");
             Assert.IsNotNull(json);
             Assert.IsTrue(json.StartsWith("{"));
             var loan = JToken.Parse(json);
             loanId = loan["encompassId"].ToString();
             await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
         }
 
         [TestMethod]
@@ -311,18 +330,31 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var loanId = await client.Loans.CreateLoanRawAsync("{}");
             Assert.IsNotNull(loanId);
-            var ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanRawAsync(loanId, "{invalidJson}"));
-            Assert.AreEqual(HttpStatusCode.BadRequest, ex.StatusCode);
-            Assert.AreEqual("{invalidJson}", ex.RequestContent);
-            var loan = new Loan(client, Guid.NewGuid().ToString("D"))
+
+            try
             {
-                Tltv = 85.00M
-            };
-            ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanAsync(loan));
-            Assert.AreEqual(HttpStatusCode.NotFound, ex.StatusCode);
-            Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}"",""tltv"":85.00}}", ex.RequestContent);
-            await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+                var ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanRawAsync(loanId, "{invalidJson}"));
+                Assert.AreEqual(HttpStatusCode.BadRequest, ex.StatusCode);
+                Assert.AreEqual("{invalidJson}", ex.RequestContent);
+                var loan = new Loan(client, Guid.NewGuid().ToString("D"))
+                {
+                    Tltv = 85.00M
+                };
+                ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanAsync(loan));
+                Assert.AreEqual(HttpStatusCode.NotFound, ex.StatusCode);
+                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}"",""tltv"":85.00}}", ex.RequestContent);
+            }
+            finally
+            {
+                try
+                {
+                    await Task.Delay(5000);
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
         }
 
         [TestMethod]
@@ -333,18 +365,43 @@ namespace EncompassRest.Tests
             {
                 var loan = new Loan(client);
                 var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanFolder = "My Pipeline" });
-                var metaData = await loan.LoanApis.GetMetadataAsync();
-                Assert.AreEqual("My Pipeline", metaData.LoanFolder);
-                //await client.LoanFolders.MoveLoanToFolderAsync(loanId, "OAPI"); // Unauthorized error
-                //metaData = await loan.LoanApis.GetMetadataAsync();
-                //Assert.AreEqual("OAPI", metaData.LoanFolder);
+                try
+                {
+                    var metaData = await loan.LoanApis.GetMetadataAsync();
+                    Assert.AreEqual("My Pipeline", metaData.LoanFolder);
+                    //await client.LoanFolders.MoveLoanToFolderAsync(loanId, "OAPI"); // Unauthorized error
+                    //metaData = await loan.LoanApis.GetMetadataAsync();
+                    //Assert.AreEqual("OAPI", metaData.LoanFolder);
+                }
+                finally
+                {
+                    try
+                    {
+                        await Task.Delay(5000);
+                        await client.Loans.DeleteLoanAsync(loanId);
+                    }
+                    catch
+                    {
+                    }
+                }
                 var loan2 = new Loan(client);
                 var loanId2 = await client.Loans.CreateLoanAsync(loan2, new CreateLoanOptions { LoanFolder = "OAPI" });
-                var metaData2 = await loan2.LoanApis.GetMetadataAsync();
-                Assert.AreEqual("OAPI", metaData2.LoanFolder);
-                await Task.Delay(5000);
-                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
-                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId2));
+                try
+                {
+                    var metaData2 = await loan2.LoanApis.GetMetadataAsync();
+                    Assert.AreEqual("OAPI", metaData2.LoanFolder);
+                }
+                finally
+                {
+                    try
+                    {
+                        await Task.Delay(5000);
+                        await client.Loans.DeleteLoanAsync(loanId2);
+                    }
+                    catch
+                    {
+                    }
+                }
             }
         }
 
@@ -874,9 +931,9 @@ namespace EncompassRest.Tests
 
             try
             {
-                var distinctFieldMappings = LoanFieldDescriptors.FieldMappings._dictionary.Distinct(new FieldMappingComparer()).ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase);
+                var distinctFieldMappings = LoanFieldDescriptors.FieldMappings._standardFields.Distinct(new FieldMappingComparer()).ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase);
 
-                var fieldsWhereLockingCausesEncompassError = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "NEWHUD.X769", "NEWHUD.X770", "CD1.X75", "LE1.X98" };
+                var fieldsWhereLockingCausesEncompassError = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "NEWHUD.X769", "NEWHUD.X770" };
                 
                 foreach (var fieldId in fieldsWhereLockingCausesEncompassError)
                 {
@@ -894,7 +951,7 @@ namespace EncompassRest.Tests
                 {
                     var field = loan.Fields[pair.Key];
                     Assert.AreEqual(pair.Value.ModelPath, field.ModelPath);
-                    if (field.Descriptor.Type != LoanFieldType.Virtual && !fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
+                    if (!fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
                     {
                         Assert.IsFalse(field.Locked);
                         field.Locked = true;
@@ -910,7 +967,7 @@ namespace EncompassRest.Tests
                 foreach (var pair in distinctFieldMappings)
                 {
                     var field = loan.Fields[pair.Key];
-                    if (field.Descriptor.Type != LoanFieldType.Virtual && !fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
+                    if (!fieldsWhereLockingCausesEncompassError.Contains(field.FieldId))
                     {
                         if (!field.Locked)
                         {
@@ -921,7 +978,7 @@ namespace EncompassRest.Tests
 
                 var fieldsWithBadModelPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "MORNET.X68", "181", "1416", "1417", "1418", "1419", "1519", "1520", "1521", "1522", "FR0504", "FR0506", "FR0507", "FR0508", "FR0524", "FR0515", "FR0512", "FR0599", "FR0598", "FR0624", "FR0607", "FR0606", "FR0604", "FR0608", "FR0615", "FR0612", "FR0698", "FR0699", "FR0324", "FR0306", "FR0307", "FR0304", "FR0308", "FR0312", "FR0315", "FR0399", "FR0398", "FR0404", "FR0407", "FR0406", "FR0408", "FR0415", "FR0412", "FR0424", "FR0498", "FR0499", "FR0224", "FR0207", "FR0206", "FR0204", "FR0208", "FR0212", "FR0215", "FR0298", "FR0299", "FR0104", "FR0106", "FR0107", "FR0108", "FR0124", "FR0112", "FR0115", "FR0199", "FR0198" };
 
-                var fieldsUnableToLock = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "4177", "4175", "4174", "4178", "NEWHUD.X720", "NEWHUD2.X3728", "NEWHUD2.X3761", "NEWHUD2.X3794", "NEWHUD2.X3530", "NEWHUD2.X3563", "NEWHUD2.X3596", "NEWHUD2.X3629", "NEWHUD2.X3695", "NEWHUD2.X3662", "NEWHUD2.X3365", "NEWHUD2.X3332", "NEWHUD2.X3398", "NEWHUD2.X3431", "NEWHUD2.X3464", "NEWHUD2.X3497", "NEWHUD2.X3167", "NEWHUD2.X3134", "NEWHUD2.X3101", "NEWHUD2.X3266", "NEWHUD2.X3233", "NEWHUD2.X3200", "NEWHUD2.X3299", "NEWHUD2.X3068", "NEWHUD2.X3035", "NEWHUD2.X3002", "CD1.X52", "CD1.X53", "CD1.X54", "CD1.X55", "CD1.X56", "CD1.X57", "CD1.X58", "CD1.X59", "CD1.X67", "CD1.X66", "CD1.X68", "NEWHUD.X13", "NEWHUD2.X3992", "NEWHUD2.X3959", "NEWHUD2.X3926",  "NEWHUD2.X3893", "NEWHUD2.X3860", "NEWHUD2.X3827", "NMLS.X4", "NEWHUD2.X2705", "NEWHUD2.X2738", "NEWHUD2.X2771", "NEWHUD2.X2606", "NEWHUD2.X2639", "NEWHUD2.X2672", "NEWHUD2.X2507", "NEWHUD2.X2573", "NEWHUD2.X2540", "NEWHUD2.X2408", "NEWHUD2.X2441", "NEWHUD2.X2474", "NEWHUD2.X2342", "NEWHUD2.X2375", "NEWHUD2.X2309", "NEWHUD2.X2243", "NEWHUD2.X2276", "NEWHUD2.X2210", "NEWHUD2.X2177", "NEWHUD2.X2144", "NEWHUD2.X2111", "NEWHUD2.X2045", "NEWHUD2.X2078", "NEWHUD2.X2012", "NEWHUD2.X2969", "NEWHUD2.X2936", "NEWHUD2.X2903", "NEWHUD2.X2870", "NEWHUD2.X2804", "NEWHUD2.X2837", "NEWHUD2.X2832", "NEWHUD2.X1517", "NEWHUD2.X1550", "NEWHUD2.X1583", "NEWHUD2.X1715", "NEWHUD2.X1748", "NEWHUD2.X1781", "NEWHUD2.X1418", "NEWHUD2.X1451", "NEWHUD2.X1484", "NEWHUD2.X1154", "NEWHUD2.X1121", "NEWHUD2.X1187", "NEWHUD2.X1616", "NEWHUD2.X1649", "NEWHUD2.X1682", "NEWHUD2.X1352", "NEWHUD2.X1319", "NEWHUD2.X1385", "NEWHUD2.X1055", "NEWHUD2.X1022", "NEWHUD2.X1088", "NEWHUD2.X1253", "NEWHUD2.X1220", "NEWHUD2.X1286", "NEWHUD2.X1946", "NEWHUD2.X1979", "NEWHUD2.X1913", "NEWHUD2.X428", "NEWHUD2.X461", "NEWHUD2.X494", "NEWHUD2.X626", "NEWHUD2.X659", "NEWHUD2.X692", "NEWHUD2.X1880", "NEWHUD2.X1847", "NEWHUD2.X1814", "NEWHUD2.X527", "NEWHUD2.X593", "NEWHUD2.X560", "NEWHUD2.X725", "NEWHUD2.X758", "NEWHUD2.X791", "NEWHUD2.X263", "NEWHUD2.X230", "NEWHUD2.X296", "NEWHUD2.X362", "NEWHUD2.X329", "NEWHUD2.X395", "NEWHUD2.X890", "NEWHUD2.X857", "NEWHUD2.X824", "334", "NEWHUD2.X989", "NEWHUD2.X956", "NEWHUD2.X4124", "NEWHUD2.X4157", "NEWHUD2.X4190", "NEWHUD2.X4025", "NEWHUD2.X4058", "NEWHUD2.X4091", "NEWHUD2.X4322", "NEWHUD2.X4355", "NEWHUD2.X4388", "NEWHUD2.X4223", "NEWHUD2.X4256", "NEWHUD2.X4289", "NEWHUD2.X4540", "NEWHUD2.X4573", "NEWHUD2.X4507", "NEWHUD2.X4474", "NEWHUD2.X4606", "LE1.X83", "LE1.X82", "LE1.X81", "LE1.X80", "LE1.X84", "LE1.X78", "LE1.X79", "NEWHUD2.X4764", "NEWHUD2.X4765", "NEWHUD2.X4766", "NEWHUD2.X4767", "RE88395.X316" };
+                var fieldsUnableToLock = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "4177", "4175", "4174", "4178", "NEWHUD.X720", "NEWHUD2.X3728", "NEWHUD2.X3761", "NEWHUD2.X3794", "NEWHUD2.X3530", "NEWHUD2.X3563", "NEWHUD2.X3596", "NEWHUD2.X3629", "NEWHUD2.X3695", "NEWHUD2.X3662", "NEWHUD2.X3365", "NEWHUD2.X3332", "NEWHUD2.X3398", "NEWHUD2.X3431", "NEWHUD2.X3464", "NEWHUD2.X3497", "NEWHUD2.X3167", "NEWHUD2.X3134", "NEWHUD2.X3101", "NEWHUD2.X3266", "NEWHUD2.X3233", "NEWHUD2.X3200", "NEWHUD2.X3299", "NEWHUD2.X3068", "NEWHUD2.X3035", "NEWHUD2.X3002", "CD1.X52", "CD1.X53", "CD1.X54", "CD1.X55", "CD1.X56", "CD1.X57", "CD1.X58", "CD1.X59", "CD1.X67", "CD1.X66", "CD1.X68", "NEWHUD.X13", "NEWHUD2.X3992", "NEWHUD2.X3959", "NEWHUD2.X3926",  "NEWHUD2.X3893", "NEWHUD2.X3860", "NEWHUD2.X3827", "NMLS.X4", "NEWHUD2.X2705", "NEWHUD2.X2738", "NEWHUD2.X2771", "NEWHUD2.X2606", "NEWHUD2.X2639", "NEWHUD2.X2672", "NEWHUD2.X2507", "NEWHUD2.X2573", "NEWHUD2.X2540", "NEWHUD2.X2408", "NEWHUD2.X2441", "NEWHUD2.X2474", "NEWHUD2.X2342", "NEWHUD2.X2375", "NEWHUD2.X2309", "NEWHUD2.X2243", "NEWHUD2.X2276", "NEWHUD2.X2210", "NEWHUD2.X2177", "NEWHUD2.X2144", "NEWHUD2.X2111", "NEWHUD2.X2045", "NEWHUD2.X2078", "NEWHUD2.X2012", "NEWHUD2.X2969", "NEWHUD2.X2936", "NEWHUD2.X2903", "NEWHUD2.X2870", "NEWHUD2.X2804", "NEWHUD2.X2837", "NEWHUD2.X2832", "NEWHUD2.X1517", "NEWHUD2.X1550", "NEWHUD2.X1583", "NEWHUD2.X1715", "NEWHUD2.X1748", "NEWHUD2.X1781", "NEWHUD2.X1418", "NEWHUD2.X1451", "NEWHUD2.X1484", "NEWHUD2.X1154", "NEWHUD2.X1121", "NEWHUD2.X1187", "NEWHUD2.X1616", "NEWHUD2.X1649", "NEWHUD2.X1682", "NEWHUD2.X1352", "NEWHUD2.X1319", "NEWHUD2.X1385", "NEWHUD2.X1055", "NEWHUD2.X1022", "NEWHUD2.X1088", "NEWHUD2.X1253", "NEWHUD2.X1220", "NEWHUD2.X1286", "NEWHUD2.X1946", "NEWHUD2.X1979", "NEWHUD2.X1913", "NEWHUD2.X428", "NEWHUD2.X461", "NEWHUD2.X494", "NEWHUD2.X626", "NEWHUD2.X659", "NEWHUD2.X692", "NEWHUD2.X1880", "NEWHUD2.X1847", "NEWHUD2.X1814", "NEWHUD2.X527", "NEWHUD2.X593", "NEWHUD2.X560", "NEWHUD2.X725", "NEWHUD2.X758", "NEWHUD2.X791", "NEWHUD2.X263", "NEWHUD2.X230", "NEWHUD2.X296", "NEWHUD2.X362", "NEWHUD2.X329", "NEWHUD2.X395", "NEWHUD2.X890", "NEWHUD2.X857", "NEWHUD2.X824", "334", "NEWHUD2.X989", "NEWHUD2.X956", "NEWHUD2.X4124", "NEWHUD2.X4157", "NEWHUD2.X4190", "NEWHUD2.X4025", "NEWHUD2.X4058", "NEWHUD2.X4091", "NEWHUD2.X4322", "NEWHUD2.X4355", "NEWHUD2.X4388", "NEWHUD2.X4223", "NEWHUD2.X4256", "NEWHUD2.X4289", "NEWHUD2.X4540", "NEWHUD2.X4573", "NEWHUD2.X4507", "NEWHUD2.X4474", "NEWHUD2.X4606", "LE1.X83", "LE1.X82", "LE1.X81", "LE1.X80", "LE1.X84", "LE1.X78", "LE1.X79", "NEWHUD2.X4764", "NEWHUD2.X4765", "NEWHUD2.X4766", "NEWHUD2.X4767", "RE88395.X316", "HMDA.X43" };
 
                 fieldsUnableToLock.UnionWith(fieldsWithBadModelPaths);
 
@@ -958,7 +1015,7 @@ namespace EncompassRest.Tests
             try
             {
                 const int patternCount = 10;
-                var fieldPatternMappings = LoanFieldDescriptors.FieldPatternMappings.Where(p => !p.Key.StartsWith("TQL4506T") && !p.Key.StartsWith("LP") && !p.Key.StartsWith("CX.") && !p.Key.StartsWith("FBE") && !p.Key.StartsWith("FCE")).ToList();
+                var fieldPatternMappings = LoanFieldDescriptors.FieldPatternMappings.Where(p => !p.Key.StartsWith("TQL4506T") && !p.Key.StartsWith("LP") && !p.Key.StartsWith("CX.") && !p.Key.StartsWith("FBE") && !p.Key.StartsWith("FCE") && !p.Key.StartsWith("XCOC") && !p.Key.StartsWith("CUST")).ToList();
                 foreach (var pair in fieldPatternMappings)
                 {
                     var fieldPattern = pair.Key;
@@ -1311,21 +1368,21 @@ namespace EncompassRest.Tests
         [TestMethod]
         public async Task Loan_NoExtensionData()
         {
-            var client = await GetTestClientAsync().ConfigureAwait(false);
-            var list = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new StringFieldFilter(CanonicalLoanField.LoanFolder, StringFieldMatchType.Exact, "IncludeAllFolders", false)), 200).ConfigureAwait(false);
+            var client = await GetTestClientAsync();
+            var list = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new StringFieldFilter(CanonicalLoanField.LoanFolder, StringFieldMatchType.Exact, "IncludeAllFolders", false)), 200);
             var tasks = new List<Task>();
             foreach (var item in list)
             {
                 tasks.Add(client.Loans.GetLoanAsync(item.LoanGuid).ContinueWith(async task =>
                 {
-                    var loan = await task.ConfigureAwait(false);
+                    var loan = await task;
                     var fails = new List<string>();
                     TestForExtensionData(loan, new List<string> { "Loan" }, fails);
                     Assert.AreEqual(0, fails.Count, $@"{loan.EncompassId} has the following extension data.
 {string.Join(Environment.NewLine, fails)}");
                 }));
             }
-            await Task.WhenAll(tasks).ConfigureAwait(false);
+            await Task.WhenAll(tasks);
         }
 
         private void TestForExtensionData(DirtyExtensibleObject value, List<string> path, List<string> fails)
@@ -1389,7 +1446,13 @@ namespace EncompassRest.Tests
             }
             finally
             {
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
             }
         }
 
@@ -1640,7 +1703,6 @@ namespace EncompassRest.Tests
 #pragma warning disable CS0618 // Type or member is obsolete
             var loan = new Loan();
 #pragma warning restore CS0618 // Type or member is obsolete
-
             string propertyName = null;
             loan.PropertyChanged += PropertyChanged;
 
@@ -1742,6 +1804,28 @@ namespace EncompassRest.Tests
             {
                 propertyName = e.PropertyName;
             }
+        }
+
+        public void Loan_NullableEntityProperty()
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            var loan = new Loan();
+#pragma warning restore CS0618 // Type or member is obsolete
+            Assert.IsNull(loan.ReferralSourceContact);
+            loan.ReferralSourceContact = null;
+            Assert.AreEqual(@"{""referralSourceContact"":null}", loan.ToJson());
+            loan.ReferralSourceContact = new EntityReference { EntityType = "BorrowerContact", EntityId = "123" };
+            Assert.AreEqual(@"{""referralSourceContact"":{""entityId"":""123"",""entityType"":""BorrowerContact""}}", loan.ToJson());
+        }
+
+        [TestMethod]
+        public void Loan_FieldDescriptions()
+        {
+            Assert.AreEqual("Trans Details Current Status Date", LoanFieldDescriptors.StandardFields["749"].Description);
+            Assert.AreEqual("Closing Disclosure Page 3 - Due from Borrower at Closing (line 10) - Fee Account Type", LoanFieldDescriptors.StandardFields["CD3.X263"].Description);
+            Assert.AreEqual("Affiliated Business Arrangements - Affiliate Name #5", LoanFieldDescriptors.StandardFields["AB0506"].Description);
+            Assert.AreEqual("# of Co-Mortgagers", LoanFieldDescriptors.VirtualFields["COMORTGAGORCOUNT"].Description);
+            Assert.AreEqual("Last Snapshot - AUS Tracking - Underwriting Risk Assess Type - 22", LoanFieldDescriptors.VirtualFields["AUSTRACKING.AUS.X1.22"].Description);
         }
     }
 }

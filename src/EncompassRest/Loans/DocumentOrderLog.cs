@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -11,43 +9,55 @@ namespace EncompassRest.Loans
     public sealed partial class DocumentOrderLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _dateFilesPurged;
+        private DirtyValue<DateTime?> _dateUtc;
+        private DirtyValue<DocumentAudit> _documentAudit;
+        private DirtyDictionary<string, string> _documentFields;
+        private DirtyList<OrderedDocument> _orderedDocuments;
+        private DirtyValue<string> _orderId;
+        private DirtyValue<string> _orderType;
+        private DirtyValue<DateTime?> _updatedDateUtc;
+        private DirtyValue<string> _userId;
+
         /// <summary>
         /// DocumentOrderLog DateFilesPurged
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateFilesPurged { get => _dateFilesPurged; set => SetField(ref _dateFilesPurged, value); }
-        private DirtyValue<DateTime?> _dateUtc;
+
         /// <summary>
         /// DocumentOrderLog DateUtc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
-        private DocumentAudit _documentAudit;
+
         /// <summary>
-        /// DocumentOrderLog DocumentAudit
+        /// DocumentOrderLog DocumentAudit (Nullable)
         /// </summary>
-        public DocumentAudit DocumentAudit { get => GetField(ref _documentAudit); set => SetField(ref _documentAudit, value); }
-        private DirtyDictionary<string, string> _documentFields;
+        public DocumentAudit DocumentAudit { get => _documentAudit; set => SetField(ref _documentAudit, value); }
+
         /// <summary>
         /// DocumentOrderLog DocumentFields
         /// </summary>
         public IDictionary<string, string> DocumentFields { get => GetField(ref _documentFields); set => SetField(ref _documentFields, value); }
-        private DirtyList<OrderedDocument> _orderedDocuments;
+
         /// <summary>
         /// DocumentOrderLog OrderedDocuments
         /// </summary>
         public IList<OrderedDocument> OrderedDocuments { get => GetField(ref _orderedDocuments); set => SetField(ref _orderedDocuments, value); }
-        private DirtyValue<string> _orderId;
+
         /// <summary>
         /// DocumentOrderLog OrderId
         /// </summary>
         public string OrderId { get => _orderId; set => SetField(ref _orderId, value); }
-        private DirtyValue<string> _orderType;
+
         /// <summary>
         /// DocumentOrderLog OrderType
         /// </summary>
         public string OrderType { get => _orderType; set => SetField(ref _orderType, value); }
-        private DirtyValue<string> _userId;
+
+        /// <summary>
+        /// DocumentOrderLog UpdatedDateUtc
+        /// </summary>
+        public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+
         /// <summary>
         /// DocumentOrderLog UserId
         /// </summary>

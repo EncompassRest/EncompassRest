@@ -116,9 +116,9 @@ namespace EncompassRest.Loans.Enums
         [Description("Conventional Mortgage Rate")]
         CMR = 20,
         /// <summary>
-        /// Federal Housing Finance Board National Average Contract Mortgage Rate
+        /// National Average Contract Mortgage Rate
         /// </summary>
-        [Description("Federal Housing Finance Board National Average Contract Mortgage Rate")]
+        [Description("National Average Contract Mortgage Rate")]
         [EnumMember(Value = "FHFB_NACMR")]
         FHFBNACMR = 21,
         /// <summary>

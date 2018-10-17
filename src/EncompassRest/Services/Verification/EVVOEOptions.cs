@@ -35,7 +35,7 @@ namespace EncompassRest.Services.Verification
         public string AlternateId { get; set; }
 
         public EVVOEOptions(EVVOERequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 
