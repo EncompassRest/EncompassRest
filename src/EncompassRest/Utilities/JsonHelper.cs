@@ -139,7 +139,9 @@ namespace EncompassRest.Utilities
                     var propertyValueProvider = property.ValueProvider;
                     var valueProvider = InternalPrivateContractResolver.GetBackingFieldInfo(objectContract.UnderlyingType, property.UnderlyingName)?.ValueProvider ?? propertyValueProvider;
                     var targetValue = valueProvider.GetValue(target);
+                    targetValue = targetValue is IValue tv ? tv.Value : targetValue;
                     var sourceValue = valueProvider.GetValue(source);
+                    sourceValue = sourceValue is IValue sv ? sv.Value : sourceValue;
                     var value = jProperty.Value;
                     var setValue = true;
                     if (targetValue != null && sourceValue != null && !(value is JValue))
@@ -163,7 +165,7 @@ namespace EncompassRest.Utilities
                     }
                     if (setValue)
                     {
-                        propertyValueProvider.SetValue(target, sourceValue is IValue v ? v.Value : sourceValue);
+                        propertyValueProvider.SetValue(target, sourceValue);
                     }
                 }
             }
