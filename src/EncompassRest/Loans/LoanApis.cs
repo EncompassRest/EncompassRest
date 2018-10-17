@@ -25,6 +25,7 @@ namespace EncompassRest.Loans
         private LoanFieldReader _fieldReader;
         private LoanConditions _conditions;
         private BorrowerPairs _borrowerPairs;
+        private DisclosureTracking2015Logs _disclosureTracking2015Logs;
 
         public LoanDocuments Documents => _documents ?? (_documents = new LoanDocuments(Client, LoanId));
 
@@ -43,6 +44,8 @@ namespace EncompassRest.Loans
         public LoanConditions Conditions => _conditions ?? (_conditions = new LoanConditions(Client, LoanId));
 
         public BorrowerPairs BorrowerPairs => _borrowerPairs ?? (_borrowerPairs = new BorrowerPairs(Client, this as LoanObjectBoundApis, LoanId));
+
+        public DisclosureTracking2015Logs DisclosureTracking2015Logs => _disclosureTracking2015Logs ?? (_disclosureTracking2015Logs = new DisclosureTracking2015Logs(Client, this as LoanObjectBoundApis, LoanId));
 
         internal LoanApis(EncompassRestClient client, string loanId)
             : base(client, loanId, null)
