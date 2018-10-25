@@ -18,11 +18,7 @@ namespace EncompassRest.Tests
         {
             var parameters = new OrderCreditParameters(
                 new CreditProduct(
-                    new EntityReference
-                    {
-                        EntityId = "0b683692-c314-4a03-9e75-f382397d3141#_borrower1",
-                        EntityType = "urn:elli:encompass:loan:borrower"
-                    },
+                    new EntityReference("0b683692-c314-4a03-9e75-f382397d3141#_borrower1", "urn:elli:encompass:loan:borrower"),
                     new CreditOptions(CreditRequestType.NewRequest)
                     {
                         DigiCert = true,
@@ -51,11 +47,7 @@ namespace EncompassRest.Tests
         {
             var parameters = new OrderEV4506TParameters(
                 new EV4506TProduct(
-                    new EntityReference
-                    {
-                        EntityId = "0b683692-c314-4a03-9e75-f382397d3141#_borrower1",
-                        EntityType = "urn:elli:encompass:loan:borrower"
-                    },
+                    new EntityReference("0b683692-c314-4a03-9e75-f382397d3141#_borrower1", "urn:elli:encompass:loan:borrower"),
                     new EV4506TOptions(EV4506TRequestType.NewRequest)
                     {
                         DigiCert = true,
@@ -82,11 +74,7 @@ namespace EncompassRest.Tests
         {
             var parameters = new OrderEVVOEParameters(
                 new EVVOEProduct(
-                    new EntityReference
-                    {
-                        EntityId = "0b683692-c314-4a03-9e75-f382397d3141#_borrower1",
-                        EntityType = "urn:elli:encompass:loan:borrower"
-                    },
+                    new EntityReference("0b683692-c314-4a03-9e75-f382397d3141#_borrower1", "urn:elli:encompass:loan:borrower"),
                     new EVVOEOptions(EVVOERequestType.OrderVerification)
                     {
                         DigiCert = true,
@@ -113,11 +101,7 @@ namespace EncompassRest.Tests
         {
             var parameters = new OrderAUSParameters(
                 new AUSProduct(
-                    new EntityReference
-                    {
-                        EntityId = "0b683692-c314-4a03-9e75-f382397d3141#_borrower1",
-                        EntityType = "urn:elli:encompass:loan:borrower"
-                    },
+                    new EntityReference("0b683692-c314-4a03-9e75-f382397d3141#_borrower1", "urn:elli:encompass:loan:borrower"),
                     new AUSOptions(AUSRequestType.NewOrder)
                     {
                         AUSReportIdentifier = "123",
@@ -150,11 +134,7 @@ namespace EncompassRest.Tests
         {
             var parameters = new OrderAppraisalParameters(
                 new AppraisalProduct(
-                    new EntityReference
-                    {
-                        EntityId = "0b683692-c314-4a03-9e75-f382397d3141#_borrower1",
-                        EntityType = "urn:elli:encompass:loan:borrower"
-                    },
+                    new EntityReference("0b683692-c314-4a03-9e75-f382397d3141#_borrower1", "urn:elli:encompass:loan:borrower"),
                     new AppraisalOptions(AppraisalRequestType.NewOrder)
                     {
                         LoanPurpose = AppraisalLoanPurpose.Purchase,
@@ -190,11 +170,7 @@ namespace EncompassRest.Tests
         {
             var parameters = new OrderFloodParameters(
                 new FloodProduct(
-                    new EntityReference
-                    {
-                        EntityId = "0b683692-c314-4a03-9e75-f382397d3141#_borrower1",
-                        EntityType = "urn:elli:encompass:loan:borrower"
-                    },
+                    new EntityReference("0b683692-c314-4a03-9e75-f382397d3141#_borrower1", "urn:elli:encompass:loan:borrower"),
                     new FloodOptions(FloodRequestType.NewRequest)
                     {
                         ProductDetails = new FloodProductDetails

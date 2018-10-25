@@ -21,11 +21,7 @@ namespace EncompassRest.Tests
 
             foreach (var resource in resources)
             {
-                Assert.AreEqual(0, resource.ExtensionData.Count);
-                foreach (var @event in resource.Events)
-                {
-                    Assert.AreEqual(0, @event.ExtensionData.Count);
-                }
+                AssertNoExtensionData(resource, "Resource", resource.Name);
             }
 
             Assert.IsTrue(resources.All(r => r.Name.EnumValue.HasValue));

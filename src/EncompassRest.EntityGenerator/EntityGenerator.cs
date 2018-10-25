@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Elli.Api.Loans.Model;
+using EncompassRest.Company.Users.Rights;
 using EncompassRest.Loans;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
@@ -15,6 +16,7 @@ using EncompassRest.Tests;
 using EnumsNET;
 using EnumsNET.NonGeneric;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace EncompassRest
 {
@@ -238,10 +240,17 @@ namespace EncompassRest
             try
             {
                 Dictionary<string, EntitySchema> entityTypes;
+                //string userRights;
                 using (var client = await TestBaseClass.GetTestClientAsync().ConfigureAwait(false))
                 {
                     entityTypes = (await client.Schema.GetLoanSchemaAsync(true).ConfigureAwait(false)).EntityTypes;
+                    //userRights = await client.Company.Users.GetUserApis("me").Rights.GetRightsRawAsync(UserRightsType.Effective).ConfigureAwait(false);
                 }
+
+                //var rightsPath = "Company\\Users\\Rights";
+                //Directory.CreateDirectory(rightsPath);
+
+                //GenerateClassesFromJson(rightsPath, "EncompassRest.Company.Users.Rights", "UserRights", null, JObject.Parse(userRights), new HashSet<string>(StringComparer.OrdinalIgnoreCase), "Rights");
 
                 foreach (var pair in s_mergeEntities)
                 {
@@ -478,6 +487,113 @@ namespace EncompassRest
             }
             Console.Write("Press Enter to End.");
             Console.ReadLine();
+        }
+
+        private static void GenerateClassesFromJson(string destinationPath, string @namespace, string entityName, JObject jObject, HashSet<string> names, string nameSuffix = null)
+        {
+            var systemNamespace = false;
+            var collectionsNamespace = false;
+            var newtonsoftNamespace = false;
+
+            var fields = new StringBuilder();
+            var properties = new StringBuilder();
+            var entities = new List<(string entityName, JObject jObject)>();
+
+            foreach (var property in jObject.Properties().OrderBy(p => p.Name, StringComparer.OrdinalIgnoreCase))
+            {
+                var name = property.Name;
+                var cleanName = new string(name.Where(c => char.IsLetterOrDigit(c)).ToArray());
+                var fieldName = $"_{cleanName}";
+                var propertyName = $"{char.ToUpper(cleanName[0])}{cleanName.Substring(1)}";
+                string fieldType;
+                string propertyType;
+                string getter = fieldName;
+                switch (property.Value.Type)
+                {
+                    case JTokenType.Boolean:
+                        propertyType = "bool?";
+                        fieldType = "DirtyValue<bool?>";
+                        break;
+                    case JTokenType.Date:
+                        propertyType = "DateTime?";
+                        fieldType = "DirtyValue<DateTime?>";
+                        systemNamespace = true;
+                        break;
+                    case JTokenType.Float:
+                        propertyType = "decimal?";
+                        fieldType = "DirtyValue<decimal?>";
+                        break;
+                    case JTokenType.Guid:
+                    case JTokenType.String:
+                        propertyType = "string";
+                        fieldType = "DirtyValue<string>";
+                        break;
+                    case JTokenType.Object:
+                        propertyType = $"{propertyName}{nameSuffix}";
+                        if (!names.Add(propertyType))
+                        {
+                            propertyType = $"{entityName.Substring(0, entityName.Length - nameSuffix?.Length ?? 0)}{propertyName}{nameSuffix}";
+                            if (!names.Add(propertyType))
+                            {
+                                propertyType = $"{propertyName}Class{nameSuffix}";
+                                if (!names.Add(propertyType))
+                                {
+                                    propertyType = $"{entityName.Substring(0, entityName.Length - nameSuffix?.Length ?? 0)}{propertyName}Class{nameSuffix}";
+                                    if (!names.Add(propertyType))
+                                    {
+                                        throw new InvalidOperationException();
+                                    }
+                                }
+                            }
+                        }
+                        fieldType = propertyType;
+                        entities.Add((propertyType, (JObject)property.Value));
+                        getter = $"GetField(ref {fieldName})";
+                        break;
+                    default:
+                        // Need to handle the array case
+                        throw new NotSupportedException();
+                }
+
+                fields.AppendLine($"        private {fieldType} {fieldName};");
+                properties.AppendLine($@"        /// <summary>
+        /// {entityName} {propertyName}
+        /// </summary>");
+                if (cleanName != name)
+                {
+                    properties.AppendLine($"        [JsonProperty(\"{name}\")]");
+                    newtonsoftNamespace = true;
+                }
+                properties.AppendLine($"        public {propertyType} {propertyName} {{ get => {getter}; set => SetField(ref {fieldName}, value); }}")
+                    .AppendLine();
+            }
+
+            fields.Length -= Environment.NewLine.Length;
+            properties.Length -= 2 * Environment.NewLine.Length;
+
+            using (var sw = new StreamWriter(Path.Combine(destinationPath, entityName + ".cs")))
+            {
+                sw.Write($@"{(systemNamespace ? @"using System;
+" : string.Empty)}{(collectionsNamespace ? @"using System.Collections.Generic;
+" : string.Empty)}{(newtonsoftNamespace ? @"using Newtonsoft.Json;
+" : string.Empty)}{(systemNamespace || collectionsNamespace || newtonsoftNamespace ? Environment.NewLine : string.Empty)}namespace {@namespace}
+{{
+    /// <summary>
+    /// {entityName}
+    /// </summary>
+    public sealed class {entityName} : DirtyExtensibleObject
+    {{
+{fields}
+
+{properties}
+    }}
+}}");
+            }
+
+            foreach (var entity in entities)
+            {
+                GenerateClassesFromJson(destinationPath, @namespace, entity.entityName, entity.jObject, names, nameSuffix);
+            }
         }
 
         private static void PopulateFieldMappings(string destinationPath, string @namespace, string entityName, string currentPath, Type ellieType, EntitySchema entitySchema, EntitySchema previousEntitySchema, Dictionary<string, EntitySchema> entityTypes, Dictionary<string, LoanFieldDescriptors.StandardFieldInfo> fields, Dictionary<string, LoanFieldDescriptors.StandardFieldInfo> fieldPatterns, Dictionary<string, Dictionary<string, string>> otherEnums)

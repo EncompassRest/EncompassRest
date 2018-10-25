@@ -27,25 +27,25 @@ namespace EncompassRest.Loans
         /// </summary>
         public string AttributePath => _modelPath.ToString(name => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(name, false), true).Replace("/currentApplication", "/applications/*");
 
-        [Obsolete("Use Descriptor.MultiInstance instead.")]
+        [Obsolete("Use LoanField.Descriptor.MultiInstance instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool MultiInstance => Descriptor.MultiInstance;
 
-        [Obsolete("Use Descriptor.InstanceSpecifier instead.")]
+        [Obsolete("Use LoanField.Descriptor.InstanceSpecifier instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public string InstanceSpecifier => Descriptor.InstanceSpecifier;
 
-        [Obsolete("Use Descriptor.IsBorrowerPairSpecific instead.")]
+        [Obsolete("Use LoanField.Descriptor.IsBorrowerPairSpecific instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsBorrowerPairSpecific => Descriptor.IsBorrowerPairSpecific;
 
         public int? BorrowerPairIndex { get; }
 
-        [Obsolete("Use Descriptor.ValueType instead.")]
+        [Obsolete("Use LoanField.Descriptor.ValueType instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public LoanFieldValueType ValueType => Descriptor.ValueType;
 
-        [Obsolete("Use Descriptor.Type instead.")]
+        [Obsolete("Use LoanField.Descriptor.Type instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public LoanFieldType Type => Descriptor.Type;
 
@@ -53,7 +53,7 @@ namespace EncompassRest.Loans
 
         public bool ReadOnly => Descriptor.ReadOnly;
 
-        [Obsolete("Use Descriptor.Description instead.")]
+        [Obsolete("Use LoanField.Descriptor.Description instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public string Description => Descriptor.Description;
 
@@ -209,7 +209,7 @@ namespace EncompassRest.Loans
             }
         }
 
-        [Obsolete("Use Descriptor.Options instead.")]
+        [Obsolete("Use LoanField.Descriptor.Options instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public ReadOnlyCollection<FieldOption> Options => Descriptor.Options;
 

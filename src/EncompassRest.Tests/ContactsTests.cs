@@ -131,7 +131,7 @@ namespace EncompassRest.Tests
 
             foreach (var contactFieldDefinition in allContactFieldDefinitions)
             {
-                Assert.AreEqual(0, contactFieldDefinition.ExtensionData.Count);
+                AssertNoExtensionData(contactFieldDefinition, "ContactFieldDefinition", contactFieldDefinition.CanonicalName);
             }
 
             var existingCategories = new HashSet<string>(Enums.GetMembers<FieldDefinitionCategory>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)), StringComparer.Ordinal);
@@ -164,7 +164,7 @@ namespace EncompassRest.Tests
 
             foreach (var contact in allContacts)
             {
-                Assert.AreEqual(0, contact.ExtensionData.Count);
+                AssertNoExtensionData(contact, "Contact", contact.Id);
                 Assert.IsFalse(string.IsNullOrEmpty(contact.Id));
                 Assert.IsNotNull(contact.Fields);
                 Assert.AreEqual(fields.Length, contact.Fields.Count);

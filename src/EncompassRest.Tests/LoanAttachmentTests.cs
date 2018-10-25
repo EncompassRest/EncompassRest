@@ -31,12 +31,12 @@ namespace EncompassRest.Tests
             {
                 var attachment = new LoanAttachment("Testing Attachment", "Text.txt", AttachmentCreateReason.Upload);
                 var text = "TESTING, TESTING, 1, 2, 3";
-                var attachmentId = await loan.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text), true);
+                var attachmentId = await loan.LoanApis.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text), true);
                 Assert.IsFalse(string.IsNullOrEmpty(attachmentId));
                 await Task.Delay(10000);
-                var retrievedText = Encoding.UTF8.GetString(await loan.Attachments.DownloadAttachmentAsync(attachmentId));
+                var retrievedText = Encoding.UTF8.GetString(await loan.LoanApis.Attachments.DownloadAttachmentAsync(attachmentId));
                 Assert.AreEqual(text, retrievedText);
-                var stream = await loan.Attachments.DownloadAttachmentStreamAsync(attachmentId);
+                var stream = await loan.LoanApis.Attachments.DownloadAttachmentStreamAsync(attachmentId);
                 using (var sr = new StreamReader(stream, Encoding.UTF8))
                 {
                     Assert.AreEqual(text, sr.ReadToEnd());
@@ -52,7 +52,7 @@ namespace EncompassRest.Tests
                     Assert.AreEqual(text, sr.ReadToEnd());
                 }
 
-                attachment = await loan.Attachments.GetAttachmentAsync(attachmentId, true);
+                attachment = await loan.LoanApis.Attachments.GetAttachmentAsync(attachmentId, true);
                 Assert.AreEqual("Testing Attachment", attachment.Title);
                 Assert.IsFalse(string.IsNullOrEmpty(attachment.MediaUrl));
                 retrievedText = Encoding.UTF8.GetString(await attachment.DownloadAsync());
@@ -64,18 +64,18 @@ namespace EncompassRest.Tests
                 }
 
                 attachment = new LoanAttachment(attachmentId) { Title = "Updated Title" };
-                await loan.Attachments.UpdateAttachmentAsync(attachment);
-                attachment = await loan.Attachments.GetAttachmentAsync(attachmentId);
+                await loan.LoanApis.Attachments.UpdateAttachmentAsync(attachment);
+                attachment = await loan.LoanApis.Attachments.GetAttachmentAsync(attachmentId);
                 Assert.AreEqual("Updated Title", attachment.Title);
 
                 var newAttachment = new LoanAttachment("Bob", "Bobby.txt", AttachmentCreateReason.Upload);
                 var newText = "This is a test of the emergency broadcast system, this is only a test.";
-                var newAttachmentId = await loan.Attachments.UploadAttachmentAsync(newAttachment, new MemoryStream(Encoding.UTF8.GetBytes(newText)), true);
+                var newAttachmentId = await loan.LoanApis.Attachments.UploadAttachmentAsync(newAttachment, new MemoryStream(Encoding.UTF8.GetBytes(newText)), true);
                 Assert.IsFalse(string.IsNullOrEmpty(newAttachmentId));
                 await Task.Delay(10000);
-                var newRetrievedText = Encoding.UTF8.GetString(await loan.Attachments.DownloadAttachmentAsync(newAttachmentId));
+                var newRetrievedText = Encoding.UTF8.GetString(await loan.LoanApis.Attachments.DownloadAttachmentAsync(newAttachmentId));
                 Assert.AreEqual(newText, newRetrievedText);
-                var newStream = await loan.Attachments.DownloadAttachmentStreamAsync(newAttachmentId);
+                var newStream = await loan.LoanApis.Attachments.DownloadAttachmentStreamAsync(newAttachmentId);
                 using (var newSr = new StreamReader(newStream, Encoding.UTF8))
                 {
                     Assert.AreEqual(newText, newSr.ReadToEnd());
@@ -91,7 +91,7 @@ namespace EncompassRest.Tests
                 newRetrievedText = Encoding.UTF8.GetString(await newAttachment.DownloadAsync());
                 Assert.AreEqual(newText, newRetrievedText);
 
-                newAttachment = await loan.Attachments.GetAttachmentAsync(newAttachmentId, true);
+                newAttachment = await loan.LoanApis.Attachments.GetAttachmentAsync(newAttachmentId, true);
                 Assert.AreEqual("Bob", newAttachment.Title);
                 Assert.IsFalse(string.IsNullOrEmpty(newAttachment.MediaUrl));
                 newRetrievedText = Encoding.UTF8.GetString(await newAttachment.DownloadAsync());
