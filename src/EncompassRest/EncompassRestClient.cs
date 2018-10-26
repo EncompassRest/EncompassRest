@@ -118,6 +118,7 @@ namespace EncompassRest
         private LoanFolders.LoanFolders _loanFolders;
         private Settings.Settings _settings;
         private Services.Services _services;
+        private Organizations.Organizations _organizations;
         private BaseApiClient _baseApiClient;
 
         #region Properties
@@ -282,6 +283,18 @@ namespace EncompassRest
             {
                 var services = _services;
                 return services ?? Interlocked.CompareExchange(ref _services, (services = new Services.Services(this)), null) ?? services;
+            }
+        }
+
+        /// <summary>
+        /// Organizations Apis
+        /// </summary>
+        public Organizations.Organizations Organizations
+        {
+            get
+            {
+                var organizations = _organizations;
+                return organizations ?? Interlocked.CompareExchange(ref _organizations, (organizations = new Organizations.Organizations(this)), null) ?? organizations;
             }
         }
 

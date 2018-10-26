@@ -13,7 +13,7 @@ namespace EncompassRest.Contacts
         private DirtyValue<string> _lastName;
         private DirtyValue<string> _ownerId;
         private DirtyValue<ContactAccessLevel?> _accessLevel;
-        private ContactAddress _currentMailingAddress;
+        private Address _currentMailingAddress;
         private DirtyValue<string> _businessWebUrl;
         private DirtyValue<string> _jobTitle;
         private DirtyValue<string> _workPhone;
@@ -34,7 +34,7 @@ namespace EncompassRest.Contacts
         [EnumFormat(EnumFormat.DecimalValue)]
         public ContactAccessLevel? AccessLevel { get => _accessLevel; set => SetField(ref _accessLevel, value); }
 
-        public ContactAddress CurrentMailingAddress { get => GetField(ref _currentMailingAddress); set => SetField(ref _currentMailingAddress, value); }
+        public Address CurrentMailingAddress { get => GetField(ref _currentMailingAddress); set => SetField(ref _currentMailingAddress, value); }
 
         public string BusinessWebUrl { get => _businessWebUrl; set => SetField(ref _businessWebUrl, value); }
 
