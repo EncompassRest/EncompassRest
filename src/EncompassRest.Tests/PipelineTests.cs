@@ -37,36 +37,7 @@ namespace EncompassRest.Tests
             var newCanonicalFieldNames = canonicalFieldNames.Except(existingCanonicalFieldNames, StringComparer.OrdinalIgnoreCase).ToList();
             Assert.AreEqual(0, newCanonicalFieldNames.Count, $"{nameof(CanonicalLoanField)}: {string.Join(", ", newCanonicalFieldNames)}");
 
-            Assert.AreEqual(0, canonicalNames.ExtensionData.Count, $"CanonicalNames has the following ExtensionData {JsonHelper.ToJson(canonicalNames.ExtensionData)}");
-
-            foreach (var pipelineFieldDef in canonicalNames.PipelineLoanReportFieldDefs)
-            {
-                Assert.AreEqual(0, pipelineFieldDef.ExtensionData.Count, $"CanonicalNames.PipelineLoanReportFieldDef has the following ExtensionData {JsonHelper.ToJson(pipelineFieldDef.ExtensionData)}");
-
-                ValidateNoExtensionData(pipelineFieldDef.FieldDefinition);
-            }
-        }
-
-        private void ValidateNoExtensionData(FieldDefinition fieldDefinition)
-        {
-            Assert.AreEqual(0, fieldDefinition.ExtensionData.Count, $"CanonicalNames.PipelineLoanReportFieldDef.FieldDefinition has the following ExtensionData {JsonHelper.ToJson(fieldDefinition.ExtensionData)}");
-
-            var fieldOptions = fieldDefinition.FieldOptions;
-            if (fieldOptions != null)
-            {
-                Assert.AreEqual(0, fieldOptions.ExtensionData.Count, $"CanonicalNames.PipelineLoanReportFieldDef.FieldDefinition.FieldOptions has the following ExtensionData {JsonHelper.ToJson(fieldOptions.ExtensionData)}");
-
-                foreach (var option in fieldOptions.Options)
-                {
-                    Assert.AreEqual(0, option.ExtensionData.Count, $"CanonicalNames.PipelineLoanReportFieldDef.FieldDefinition.FieldOptions.Options has the following ExtensionData {JsonHelper.ToJson(option.ExtensionData)}");
-                }
-            }
-
-            var parentField = fieldDefinition.ParentField;
-            if (parentField != null)
-            {
-                ValidateNoExtensionData(parentField);
-            }
+            AssertNoExtensionData(canonicalNames, "CanonicalNames", "CanonicalNames");
         }
 
         [TestMethod]

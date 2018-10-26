@@ -1376,57 +1376,10 @@ namespace EncompassRest.Tests
                 tasks.Add(client.Loans.GetLoanAsync(item.LoanGuid).ContinueWith(async task =>
                 {
                     var loan = await task;
-                    var fails = new List<string>();
-                    TestForExtensionData(loan, new List<string> { "Loan" }, fails);
-                    Assert.AreEqual(0, fails.Count, $@"{loan.EncompassId} has the following extension data.
-{string.Join(Environment.NewLine, fails)}");
+                    AssertNoExtensionData(loan, "Loan", loan.EncompassId);
                 }));
             }
             await Task.WhenAll(tasks);
-        }
-
-        private void TestForExtensionData(DirtyExtensibleObject value, List<string> path, List<string> fails)
-        {
-            if (value.ExtensionData.Count > 0)
-            {
-                fails.Add($"{string.Concat(path)}: {JsonConvert.SerializeObject(new Dictionary<string, object>(value.ExtensionData))}");
-            }
-            var type = value.GetType();
-            var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(type);
-            switch (contract)
-            {
-                case JsonObjectContract jsonObjectContract:
-                    foreach (var property in jsonObjectContract.Properties)
-                    {
-                        var propertyUnderlyingName = property.UnderlyingName;
-                        var propertyValue = property.ValueProvider.GetValue(value);
-                        if (propertyValue != null)
-                        {
-                            switch (propertyValue)
-                            {
-                                case DirtyExtensibleObject extensibleObject:
-                                    path.Add($".{propertyUnderlyingName}");
-                                    TestForExtensionData(extensibleObject, path, fails);
-                                    path.RemoveAt(path.Count - 1);
-                                    break;
-                                case IList list:
-                                    var i = 0;
-                                    foreach (var element in list)
-                                    {
-                                        if (element is DirtyExtensibleObject extObj)
-                                        {
-                                            path.Add($".{propertyUnderlyingName}[{i}]");
-                                            TestForExtensionData(extObj, path, fails);
-                                            path.RemoveAt(path.Count - 1);
-                                        }
-                                        ++i;
-                                    }
-                                    break;
-                            }
-                        }
-                    }
-                    break;
-            }
         }
 
         [TestMethod]
@@ -1814,7 +1767,7 @@ namespace EncompassRest.Tests
             Assert.IsNull(loan.ReferralSourceContact);
             loan.ReferralSourceContact = null;
             Assert.AreEqual(@"{""referralSourceContact"":null}", loan.ToJson());
-            loan.ReferralSourceContact = new EntityReference { EntityType = "BorrowerContact", EntityId = "123" };
+            loan.ReferralSourceContact = new EntityReference("123", "BorrowerContact");
             Assert.AreEqual(@"{""referralSourceContact"":{""entityId"":""123"",""entityType"":""BorrowerContact""}}", loan.ToJson());
         }
 

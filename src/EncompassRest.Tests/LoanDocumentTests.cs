@@ -43,43 +43,43 @@ namespace EncompassRest.Tests
             try
             {
                 var document = new LoanDocument("Final 1003", "All");
-                var documentId = await loan.Documents.CreateDocumentAsync(document, true);
+                var documentId = await loan.LoanApis.Documents.CreateDocumentAsync(document, true);
                 Assert.IsFalse(string.IsNullOrEmpty(documentId));
 
-                document = await loan.Documents.GetDocumentAsync(documentId);
+                document = await loan.LoanApis.Documents.GetDocumentAsync(documentId);
                 Assert.AreEqual("Final 1003", document.Title);
                 Assert.AreEqual("All", document.ApplicationId);
                 Assert.AreEqual(0, document.Attachments.Count);
 
                 document = new LoanDocument(documentId) { Title = "Updated Title" };
-                await loan.Documents.UpdateDocumentAsync(document);
-                document = await loan.Documents.GetDocumentAsync(documentId);
+                await loan.LoanApis.Documents.UpdateDocumentAsync(document);
+                document = await loan.LoanApis.Documents.GetDocumentAsync(documentId);
                 Assert.AreEqual("Updated Title", document.Title);
                 Assert.AreEqual("All", document.ApplicationId);
                 Assert.AreEqual(0, document.Attachments.Count);
 
                 var attachment = new LoanAttachment("Testing Attachment", "Text.txt", AttachmentCreateReason.Upload);
                 var text = "TESTING, TESTING, 1, 2, 3";
-                var attachmentId = await loan.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text), true);
+                var attachmentId = await loan.LoanApis.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text), true);
                 Assert.IsFalse(string.IsNullOrEmpty(attachmentId));
                 await Task.Delay(10000);
-                var retrievedText = Encoding.UTF8.GetString(await loan.Attachments.DownloadAttachmentAsync(attachmentId));
+                var retrievedText = Encoding.UTF8.GetString(await loan.LoanApis.Attachments.DownloadAttachmentAsync(attachmentId));
                 Assert.AreEqual(text, retrievedText);
-                var stream = await loan.Attachments.DownloadAttachmentStreamAsync(attachmentId);
+                var stream = await loan.LoanApis.Attachments.DownloadAttachmentStreamAsync(attachmentId);
                 using (var sr = new StreamReader(stream, Encoding.UTF8))
                 {
                     Assert.AreEqual(text, sr.ReadToEnd());
                 }
 
                 var entityReference = new EntityReference(attachmentId, EntityType.Attachment);
-                await loan.Documents.AssignDocumentAttachmentsAsync(documentId, AssignmentAction.Add, new[] { entityReference });
+                await loan.LoanApis.Documents.AssignDocumentAttachmentsAsync(documentId, AssignmentAction.Add, new[] { entityReference });
 
-                document = await loan.Documents.GetDocumentAsync(documentId);
+                document = await loan.LoanApis.Documents.GetDocumentAsync(documentId);
                 Assert.AreEqual("Updated Title", document.Title);
                 Assert.AreEqual("All", document.ApplicationId);
                 Assert.AreEqual(1, document.Attachments.Count);
                 Assert.AreEqual(attachmentId, document.Attachments[0].EntityId);
-                Assert.AreEqual(entityReference.EntityType.Value, document.Attachments[0].EntityType.Value);
+                Assert.AreEqual(entityReference.EntityType.EnumValue, document.Attachments[0].EntityType.EnumValue);
             }
             finally
             {
