@@ -65,11 +65,11 @@ namespace EncompassRest
             }
         }
 
-        internal void SetField(ref DirtyDictionary<string, string> field, IDictionary<string, string> value, [CallerMemberName] string propertyName = null)
+        internal void SetField<T>(ref DirtyDictionary<string, T> field, IDictionary<string, T> value, [CallerMemberName] string propertyName = null)
         {
             if (!ReferenceEquals(field, value))
             {
-                field = value != null ? new DirtyDictionary<string, string>(value, StringComparer.OrdinalIgnoreCase) : null;
+                field = value != null ? new DirtyDictionary<string, T>(value, StringComparer.OrdinalIgnoreCase) : null;
                 OnPropertyChanged(propertyName);
             }
         }
@@ -80,7 +80,7 @@ namespace EncompassRest
 
         internal IList<T> GetField<T>(ref List<T> field) => field ?? (field = new List<T>());
 
-        internal IDictionary<string, string> GetField(ref DirtyDictionary<string, string> field) => field ?? (field = new DirtyDictionary<string, string>(StringComparer.OrdinalIgnoreCase));
+        internal IDictionary<string, T> GetField<T>(ref DirtyDictionary<string, T> field) => field ?? (field = new DirtyDictionary<string, T>(StringComparer.OrdinalIgnoreCase));
 
         private bool _gettingDirty;
         private bool _settingDirty;

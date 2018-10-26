@@ -52,33 +52,7 @@ namespace EncompassRest.Tests
             var newFormats = formats.Except(existingFormats).ToList();
             Assert.AreEqual(0, newFormats.Count, $"{nameof(LoanFieldFormat)}: {string.Join(", ", newFormats)}");
 
-            Assert.AreEqual(0, loanSchema.ExtensionData.Count);
-
-            foreach (var entitySchema in loanSchema.EntityTypes.Values)
-            {
-                Assert.AreEqual(0, entitySchema.ExtensionData.Count);
-
-                foreach (var propertySchema in entitySchema.Properties.Values)
-                {
-                    Assert.AreEqual(0, propertySchema.ExtensionData.Count);
-
-                    if (propertySchema.AllowedValues != null)
-                    {
-                        foreach (var option in propertySchema.AllowedValues)
-                        {
-                            Assert.AreEqual(0, option.ExtensionData.Count);
-                        }
-                    }
-
-                    if (propertySchema.InstancePatterns != null)
-                    {
-                        foreach (var instancePattern in propertySchema.InstancePatterns.Values)
-                        {
-                            Assert.AreEqual(0, instancePattern.ExtensionData.Count);
-                        }
-                    }
-                }
-            }
+            AssertNoExtensionData(loanSchema, "LoanSchema", "LoanSchema");
         }
 
         [TestMethod]

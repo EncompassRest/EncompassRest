@@ -118,6 +118,7 @@ namespace EncompassRest
         private LoanFolders.LoanFolders _loanFolders;
         private Settings.Settings _settings;
         private Services.Services _services;
+        private Company.Company _company;
         private Organizations.Organizations _organizations;
         private BaseApiClient _baseApiClient;
 
@@ -241,6 +242,7 @@ namespace EncompassRest
             }
         }
 
+        [Obsolete("Use EncompassRestClient.Company.GlobalCustomDataObjects instead.")]
         public GlobalCustomDataObjects GlobalCustomDataObjects
         {
             get
@@ -250,6 +252,7 @@ namespace EncompassRest
             }
         }
 
+        [Obsolete("Use EncompassRestClient.Company.Users.GetUserApis(userId).CustomDataObjects instead.")]
         public Users.Users Users
         {
             get
@@ -283,6 +286,18 @@ namespace EncompassRest
             {
                 var services = _services;
                 return services ?? Interlocked.CompareExchange(ref _services, (services = new Services.Services(this)), null) ?? services;
+            }
+        }
+
+        /// <summary>
+        /// Company Apis
+        /// </summary>
+        public Company.Company Company
+        {
+            get
+            {
+                var company = _company;
+                return company ?? Interlocked.CompareExchange(ref _company, (company = new Company.Company(this)), null) ?? company;
             }
         }
 

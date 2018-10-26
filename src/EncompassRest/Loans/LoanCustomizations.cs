@@ -19,15 +19,15 @@ namespace EncompassRest.Loans
         public EncompassRestClient Client { get; internal set; }
 
         [JsonIgnore]
-        [Obsolete("Use LoanApis.Documents instead.")]
+        [Obsolete("Use Loan.LoanApis.Documents instead.")]
         public LoanDocuments Documents => LoanApis.Documents;
 
         [JsonIgnore]
-        [Obsolete("Use LoanApis.Attachments instead.")]
+        [Obsolete("Use Loan.LoanApis.Attachments instead.")]
         public LoanAttachments Attachments => LoanApis.Attachments;
 
         [JsonIgnore]
-        [Obsolete("Use LoanApis.CustomDataObjects instead.")]
+        [Obsolete("Use Loan.LoanApis.CustomDataObjects instead.")]
         public LoanCustomDataObjects CustomDataObjects => LoanApis.CustomDataObjects;
 
         [JsonIgnore]

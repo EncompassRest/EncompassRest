@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest
 {
-    [Entity(PropertiesToAlwaysSerialize = nameof(EntityType))]
+    [Entity(SerializeWholeListWhenDirty = true, PropertiesToAlwaysSerialize = nameof(EntityType))]
     public class EntityReference : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _entityId;
