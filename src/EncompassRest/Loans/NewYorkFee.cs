@@ -1,5 +1,4 @@
 using System;
-using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans

@@ -31,13 +31,13 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(addedCondition.Title, conditions[0].Title);
                 Assert.AreEqual(addedCondition.Source.Value, conditions[0].Source.Value);
                 Assert.AreEqual(addedCondition.ForAllApplications, conditions[0].ForAllApplications);
-                AssertNoExtensionData(conditions[0], "Conditions[0]", conditions[0].Title);
+                AssertNoExtensionData(conditions[0], "Conditions[0]", conditions[0].Title, true);
                 var retrievedCondition = await underwritingConditions.GetConditionAsync(conditionId);
                 Assert.IsNotNull(retrievedCondition);
                 Assert.AreEqual(addedCondition.Title, retrievedCondition.Title);
                 Assert.AreEqual(addedCondition.Source.Value, retrievedCondition.Source.Value);
                 Assert.AreEqual(addedCondition.ForAllApplications, retrievedCondition.ForAllApplications);
-                AssertNoExtensionData(retrievedCondition, "RetrievedCondition", retrievedCondition.Title);
+                AssertNoExtensionData(retrievedCondition, "RetrievedCondition", retrievedCondition.Title, true);
             }
             finally
             {
@@ -74,13 +74,13 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(addedCondition.Title, conditions[0].Title);
                 Assert.AreEqual(addedCondition.Source.Value, conditions[0].Source.Value);
                 Assert.AreEqual(addedCondition.ForAllApplications, conditions[0].ForAllApplications);
-                AssertNoExtensionData(conditions[0], "Conditions[0]", conditions[0].Title);
+                AssertNoExtensionData(conditions[0], "Conditions[0]", conditions[0].Title, true);
                 var retrievedCondition = await postClosingConditions.GetConditionAsync(conditionId);
                 Assert.IsNotNull(retrievedCondition);
                 Assert.AreEqual(addedCondition.Title, retrievedCondition.Title);
                 Assert.AreEqual(addedCondition.Source.Value, retrievedCondition.Source.Value);
                 Assert.AreEqual(addedCondition.ForAllApplications, retrievedCondition.ForAllApplications);
-                AssertNoExtensionData(retrievedCondition, "RetrievedCondition", retrievedCondition.Title);
+                AssertNoExtensionData(retrievedCondition, "RetrievedCondition", retrievedCondition.Title, true);
             }
             finally
             {
@@ -117,13 +117,13 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(addedCondition.Title, conditions[0].Title);
                 Assert.AreEqual(addedCondition.Source.Value, conditions[0].Source.Value);
                 Assert.AreEqual(addedCondition.ForAllApplications, conditions[0].ForAllApplications);
-                AssertNoExtensionData(conditions[0], "Conditions[0]", conditions[0].Title);
+                AssertNoExtensionData(conditions[0], "Conditions[0]", conditions[0].Title, true);
                 var retrievedCondition = await preliminaryConditions.GetConditionAsync(conditionId);
                 Assert.IsNotNull(retrievedCondition);
                 Assert.AreEqual(addedCondition.Title, retrievedCondition.Title);
                 Assert.AreEqual(addedCondition.Source.Value, retrievedCondition.Source.Value);
                 Assert.AreEqual(addedCondition.ForAllApplications, retrievedCondition.ForAllApplications);
-                AssertNoExtensionData(retrievedCondition, "RetrievedCondition", retrievedCondition.Title);
+                AssertNoExtensionData(retrievedCondition, "RetrievedCondition", retrievedCondition.Title, true);
             }
             finally
             {

@@ -1,6 +1,4 @@
-﻿using EnumsNET;
-
-namespace EncompassRest
+﻿namespace EncompassRest
 {
     public static class CanonicalFieldExtensions
     {

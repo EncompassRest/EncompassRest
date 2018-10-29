@@ -16,6 +16,7 @@
         Organization = 11,
         Persona = 12,
         UserGroup = 13,
-        CompensationPlan = 14
+        CompensationPlan = 14,
+        HmdaProfile = 15
     }
 }

@@ -18,7 +18,7 @@ namespace EncompassRest.Company.Users
         /// </summary>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<UserCompensation> GetCompensationPlansAsync(CancellationToken cancellationToken = default) => GetDirtyAsync<UserCompensation>(null, null, nameof(GetCompensationPlansAsync), null, cancellationToken);
+        public Task<CompensationPlans> GetCompensationPlansAsync(CancellationToken cancellationToken = default) => GetDirtyAsync<CompensationPlans>(null, null, nameof(GetCompensationPlansAsync), null, cancellationToken);
 
         /// <summary>
         /// Gets the user's compensation plans as raw json.

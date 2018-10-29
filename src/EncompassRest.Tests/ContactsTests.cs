@@ -1,11 +1,8 @@
 ﻿using EncompassRest.Contacts;
 using EncompassRest.Filters;
-using EncompassRest.Schema;
 using EncompassRest.Utilities;
-using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -127,30 +124,11 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var borrowerContactFieldDefinitions = await client.Settings.BorrowerContacts.GetCanonicalNamesAsync();
             var businessContactFieldDefinitions = await client.Settings.BusinessContacts.GetCanonicalNamesAsync();
-            var allContactFieldDefinitions = borrowerContactFieldDefinitions.Concat(businessContactFieldDefinitions).ToList();
 
-            foreach (var contactFieldDefinition in allContactFieldDefinitions)
+            foreach (var contactFieldDefinition in borrowerContactFieldDefinitions.Concat(businessContactFieldDefinitions))
             {
-                AssertNoExtensionData(contactFieldDefinition, "ContactFieldDefinition", contactFieldDefinition.CanonicalName);
+                AssertNoExtensionData(contactFieldDefinition, "ContactFieldDefinition", contactFieldDefinition.CanonicalName, true);
             }
-
-            var existingCategories = new HashSet<string>(Enums.GetMembers<FieldDefinitionCategory>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)), StringComparer.Ordinal);
-            var categories = new HashSet<string>(allContactFieldDefinitions.Select(fd => fd.Category.Value), StringComparer.Ordinal);
-            var newCategories = categories.Except(existingCategories).ToList();
-            Assert.AreEqual(0, newCategories.Count);
-            Assert.IsTrue(allContactFieldDefinitions.All(fd => fd.Category.EnumValue.HasValue));
-
-            var existingDataSources = new HashSet<string>(Enums.GetMembers<FieldDefinitionDataSource>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)), StringComparer.Ordinal);
-            var dataSources = new HashSet<string>(allContactFieldDefinitions.Select(fd => fd.DataSource.Value), StringComparer.Ordinal);
-            var newDataSources = dataSources.Except(existingDataSources).ToList();
-            Assert.AreEqual(0, newDataSources.Count);
-            Assert.IsTrue(allContactFieldDefinitions.All(fd => fd.DataSource.EnumValue.HasValue));
-
-            var existingFieldFormats = new HashSet<string>(Enums.GetMembers<LoanFieldFormat>().Select(m => m.AsString(EnumFormat.Name)), StringComparer.Ordinal);
-            var fieldFormats = new HashSet<string>(allContactFieldDefinitions.Select(fd => fd.DataType.Value), StringComparer.Ordinal);
-            var newFieldFormats = fieldFormats.Except(existingFieldFormats).ToList();
-            Assert.AreEqual(0, newFieldFormats.Count);
-            Assert.IsTrue(allContactFieldDefinitions.All(fd => fd.DataType.EnumValue.HasValue));
         }
 
         [TestMethod]
@@ -164,7 +142,7 @@ namespace EncompassRest.Tests
 
             foreach (var contact in allContacts)
             {
-                AssertNoExtensionData(contact, "Contact", contact.Id);
+                AssertNoExtensionData(contact, "Contact", contact.Id, true);
                 Assert.IsFalse(string.IsNullOrEmpty(contact.Id));
                 Assert.IsNotNull(contact.Fields);
                 Assert.AreEqual(fields.Length, contact.Fields.Count);

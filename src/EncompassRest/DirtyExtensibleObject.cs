@@ -67,9 +67,8 @@ namespace EncompassRest
 
         internal void SetField<T>(ref DirtyDictionary<string, T> field, IDictionary<string, T> value, [CallerMemberName] string propertyName = null)
         {
-            if (!ReferenceEquals(field, value))
+            if (base.SetField(ref field, value))
             {
-                field = value != null ? new DirtyDictionary<string, T>(value, StringComparer.OrdinalIgnoreCase) : null;
                 OnPropertyChanged(propertyName);
             }
         }
@@ -80,7 +79,7 @@ namespace EncompassRest
 
         internal IList<T> GetField<T>(ref List<T> field) => field ?? (field = new List<T>());
 
-        internal IDictionary<string, T> GetField<T>(ref DirtyDictionary<string, T> field) => field ?? (field = new DirtyDictionary<string, T>(StringComparer.OrdinalIgnoreCase));
+        internal new IDictionary<string, T> GetField<T>(ref DirtyDictionary<string, T> field) => base.GetField(ref field);
 
         private bool _gettingDirty;
         private bool _settingDirty;
@@ -132,9 +131,10 @@ namespace EncompassRest
                             }
                         }
                     }
-                    if (_extensionData != null)
+                    var extensionData = _extensionData;
+                    if (extensionData != null)
                     {
-                        _extensionData.Dirty = value;
+                        extensionData.Dirty = value;
                     }
                     _settingDirty = false;
                 }

@@ -8,42 +8,42 @@ namespace EncompassRest.Company.Users
     public sealed class UsersRetrievalOptions
     {
         /// <summary>
-        /// Optionally include the email signature in the response object.
+        /// Indicates whether the email signature should be returned as part of the response.
         /// </summary>
         public bool? ViewEmailSignature { get; set; }
 
         /// <summary>
-        /// Optionally filters results on group id.
+        /// List users who belong to the specified User Group ID.
         /// </summary>
         public string GroupId { get; set; }
 
         /// <summary>
-        /// Optionally filters results on role id.
+        /// List users with the specified Role ID.
         /// </summary>
         public string RoleId { get; set; }
 
         /// <summary>
-        /// Optionally filters results on persona id.
+        /// List users with the specified User Persona ID.
         /// </summary>
         public string PersonaId { get; set; }
 
         /// <summary>
-        /// Optionally filters results on organization id.
+        /// List users who belong to the specified organization ID.
         /// </summary>
         public string OrganizationId { get; set; }
 
         /// <summary>
-        /// Optionally filters results on users' names containing this value.
+        /// List users with the specified string in their name.
         /// </summary>
         public string UserName { get; set; }
 
         /// <summary>
-        /// Optional start index.
+        /// Starting index or record number from which to retrieve the contacts. The default is 1.
         /// </summary>
         public int? Start { get; set; }
 
         /// <summary>
-        /// Optional limit of number of users to return.
+        /// The maximum number of records to return in a page. Response size is limited to 6 MB and is recalculated if the response exceeds 6 MB. The default value is 1000. The maximum value is limited to 10000.
         /// </summary>
         public int? Limit { get; set; }
 

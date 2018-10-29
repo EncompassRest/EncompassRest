@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,7 +14,6 @@ using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Tests
 {
@@ -27,13 +25,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var supportedEntities = await client.Loans.GetSupportedEntitiesAsync();
-            var ignoredEntities = new HashSet<string>(new[] { "CoBorrower", "LOCompensation" });
-            var entities = new HashSet<string>(supportedEntities.Select(e => e.Value));
-            entities.ExceptWith(ignoredEntities);
-            var existingEntities = new HashSet<string>(Enums.GetMembers<LoanEntity>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
-            var newEntities = entities.Except(existingEntities).ToList();
-            Assert.AreEqual(0, newEntities.Count, $"'{string.Join("', '", newEntities)}'");
-            Assert.IsTrue(supportedEntities.All(e => e.EnumValue.HasValue || ignoredEntities.Contains(e.Value)));
+            AssertNoUndefinedEnumOptions(supportedEntities, "SupportedEntities", new Dictionary<Type, HashSet<string>> { { typeof(LoanEntity), new HashSet<string>(new[] { "CoBorrower", "LOCompensation" }, StringComparer.OrdinalIgnoreCase) } });
         }
 
         [TestMethod]
@@ -1376,7 +1368,7 @@ namespace EncompassRest.Tests
                 tasks.Add(client.Loans.GetLoanAsync(item.LoanGuid).ContinueWith(async task =>
                 {
                     var loan = await task;
-                    AssertNoExtensionData(loan, "Loan", loan.EncompassId);
+                    AssertNoExtensionData(loan, "Loan", loan.EncompassId, true);
                 }));
             }
             await Task.WhenAll(tasks);
