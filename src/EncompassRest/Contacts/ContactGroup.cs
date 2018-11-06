@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
+    /// <summary>
+    /// ContactGroup
+    /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(Name) + "," + nameof(Description))]
     public sealed class ContactGroup : DirtyExtensibleObject, IIdentifiable
     {
@@ -16,21 +19,39 @@ namespace EncompassRest.Contacts
         private DirtyValue<string> _description;
         private NeverSerializeValue<DateTime?> _createdDate;
 
+        /// <summary>
+        /// The unique identifier of the group.
+        /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get => _id; set => SetField(ref _id, value); }
 
+        /// <summary>
+        /// The contact type.
+        /// </summary>
         [JsonRequired]
         public StringEnumValue<ContactType> ContactType { get => _contactType; set => SetField(ref _contactType, value); }
 
+        /// <summary>
+        /// The contact group type.
+        /// </summary>
         [JsonRequired]
         public StringEnumValue<ContactGroupType> GroupType { get => _groupType; set => SetField(ref _groupType, value); }
 
+        /// <summary>
+        /// The name of the group.
+        /// </summary>
         [JsonRequired]
         public string Name { get => _name; set => SetField(ref _name, value); }
 
+        /// <summary>
+        /// Detailed explanation of a group.
+        /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get => _description; set => SetField(ref _description, value); }
 
+        /// <summary>
+        /// System-generated date and time when the group was created.
+        /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public DateTime? CreatedDate { get => _createdDate; private set => SetField(ref _createdDate, value); }
 

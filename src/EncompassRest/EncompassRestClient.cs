@@ -142,6 +142,9 @@ namespace EncompassRest
 
         public event EventHandler<TimeoutRetryEventArgs> TimeoutRetry;
 
+        /// <summary>
+        /// The Loans Apis.
+        /// </summary>
         public Loans.Loans Loans
         {
             get
@@ -151,6 +154,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Schema Apis.
+        /// </summary>
         public Schema.Schema Schema
         {
             get
@@ -160,6 +166,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Webhook Apis.
+        /// </summary>
         public Webhook.Webhook Webhook
         {
             get
@@ -169,6 +178,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Loan Pipeline Apis.
+        /// </summary>
         public Pipeline Pipeline
         {
             get
@@ -178,6 +190,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Loan Batch Update Apis.
+        /// </summary>
         public BatchUpdate BatchUpdate
         {
             get
@@ -187,6 +202,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Borrower Contacts Apis.
+        /// </summary>
         public BorrowerContacts BorrowerContacts
         {
             get
@@ -196,6 +214,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Business Contacts Apis.
+        /// </summary>
         public BusinessContacts BusinessContacts
         {
             get
@@ -205,6 +226,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Borrower Contact Selector Apis.
+        /// </summary>
         public BorrowerContactSelector BorrowerContactSelector
         {
             get
@@ -214,6 +238,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Business Contact Selector Apis.
+        /// </summary>
         public BusinessContactSelector BusinessContactSelector
         {
             get
@@ -223,6 +250,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Contact Groups Apis.
+        /// </summary>
         public ContactGroups ContactGroups
         {
             get
@@ -261,6 +291,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Loan Folders Apis.
+        /// </summary>
         public LoanFolders.LoanFolders LoanFolders
         {
             get
@@ -270,6 +303,9 @@ namespace EncompassRest
             }
         }
 
+        /// <summary>
+        /// The Settings Apis.
+        /// </summary>
         public Settings.Settings Settings
         {
             get
@@ -289,7 +325,7 @@ namespace EncompassRest
         }
 
         /// <summary>
-        /// Company Apis
+        /// The Company Apis.
         /// </summary>
         public Company.Company Company
         {

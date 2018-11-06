@@ -6,9 +6,15 @@ using System.Linq;
 
 namespace EncompassRest.Schema
 {
+    /// <summary>
+    /// Instance
+    /// </summary>
     [JsonConverter(typeof(InstanceConverter))]
     public abstract class Instance
     {
+        /// <summary>
+        /// The instance type.
+        /// </summary>
         [JsonIgnore]
         public abstract InstanceType Type { get; }
     }

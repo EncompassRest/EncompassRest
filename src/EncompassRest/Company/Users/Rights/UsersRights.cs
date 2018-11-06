@@ -56,7 +56,7 @@ namespace EncompassRest.Company.Users.Rights
         /// Gets the users rights as raw json for the specified rights <paramref name="type"/>.
         /// </summary>
         /// <param name="type">The user rights type.</param>
-        /// <param name="queryString">The query string to send in the request.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<string> GetRightsRawAsync(UserRightsType type, string queryString = null, CancellationToken cancellationToken = default)

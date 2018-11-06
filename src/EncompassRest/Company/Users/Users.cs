@@ -67,7 +67,7 @@ namespace EncompassRest.Company.Users
         /// <summary>
         /// Gets users as raw json.
         /// </summary>
-        /// <param name="queryString">The query string to send in the request.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<string> GetUsersRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetUsersRawAsync), null, cancellationToken);
@@ -120,7 +120,7 @@ namespace EncompassRest.Company.Users
         /// Gets user as raw json.
         /// </summary>
         /// <param name="userId">The user's id.</param>
-        /// <param name="queryString">The query string to send in the request.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<string> GetUserRawAsync(string userId, string queryString = null, CancellationToken cancellationToken = default)

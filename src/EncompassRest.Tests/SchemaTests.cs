@@ -87,7 +87,7 @@ namespace EncompassRest.Tests
             paths = await client.Schema.GeneratePathsAsync(new string[0]);
             Assert.IsTrue(paths.Count > 10000);
 
-            paths = await client.Schema.GeneratePathsAsync(new string[0], "address");
+            paths = await client.Schema.GeneratePathsAsync("address");
             Assert.IsTrue(paths.Count > 0);
             foreach (var pair in paths)
             {

@@ -4,6 +4,9 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans
 {
+    /// <summary>
+    /// The loan fields collection.
+    /// </summary>
     public sealed class LoanFields
     {
         [Obsolete("Use LoanFieldDescriptors.FieldMappings instead.")]
@@ -16,6 +19,11 @@ namespace EncompassRest.Loans
 
         private readonly Loan _loan;
 
+        /// <summary>
+        /// Gets the loan field with the specified <paramref name="fieldId"/>.
+        /// </summary>
+        /// <param name="fieldId">The field id of the loan field to get. Borrower pair specified fields are supported, e.g. "4000#2".</param>
+        /// <returns></returns>
         public LoanField this[string fieldId]
         {
             get
@@ -25,7 +33,7 @@ namespace EncompassRest.Loans
                 FieldDescriptor descriptor;
                 int? borrowerPairIndex = null;
                 ModelPath modelPath = null;
-                if (fieldId.Length >= 2 && fieldId[fieldId.Length - 2] == '#')
+                if (fieldId.Length > 2 && fieldId[fieldId.Length - 2] == '#')
                 {
                     borrowerPairIndex = fieldId[fieldId.Length - 1] - '1';
                     if (borrowerPairIndex < 0 || borrowerPairIndex > 5)
@@ -36,14 +44,13 @@ namespace EncompassRest.Loans
                     var strippedFieldId = fieldId.Substring(0, fieldId.Length - 2);
 
                     descriptor = LoanFieldDescriptors.GetFieldDescriptor(strippedFieldId, _loan.Client?.Loans.FieldDescriptors.CustomFields);
-
-                    var path = descriptor.ModelPath;
-                    if (!path.StartsWith("Loan.CurrentApplication.", StringComparison.OrdinalIgnoreCase))
+                    
+                    if (!descriptor.IsBorrowerPairSpecific)
                     {
                         throw new ArgumentException($"Could not find field '{fieldId}'");
                     }
 
-                    modelPath = LoanFieldDescriptors.CreateModelPath($"Loan.Applications[(ApplicationIndex == '{borrowerPairIndex}')]{path.Substring(23)}");
+                    modelPath = LoanFieldDescriptors.CreateModelPath($"Loan.Applications[(ApplicationIndex == '{borrowerPairIndex}')]{descriptor.ModelPath.Substring(23)}");
                 }
                 else
                 {

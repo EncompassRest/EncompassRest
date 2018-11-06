@@ -2,11 +2,18 @@
 
 namespace EncompassRest.Loans.Milestones
 {
+    /// <summary>
+    /// MilestoneAction
+    /// </summary>
     public enum MilestoneAction
     {
-        [EnumMember(Value = "finish")]
+        /// <summary>
+        /// Finish
+        /// </summary>
         Finish = 0,
-        [EnumMember(Value = "unfinish")]
+        /// <summary>
+        /// Unfinish
+        /// </summary>
         Unfinish = 1
     }
 }
