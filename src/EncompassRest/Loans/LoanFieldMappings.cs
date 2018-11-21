@@ -7,11 +7,19 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans
 {
+    /// <summary>
+    /// LoanFieldMappings
+    /// </summary>
     public sealed class LoanFieldMappings : IDictionary<string, string>, IReadOnlyDictionary<string, string>
     {
         internal readonly ConcurrentDictionary<string, FieldDescriptor> _standardFields = new ConcurrentDictionary<string, FieldDescriptor>(StringComparer.OrdinalIgnoreCase);
         internal readonly ConcurrentDictionary<string, FieldDescriptor> _virtualFields = new ConcurrentDictionary<string, FieldDescriptor>(StringComparer.OrdinalIgnoreCase);
 
+        /// <summary>
+        /// Gets or sets the loan field mapping for the specified field id. e.g. HMDA.X32 => Loan.Hmda.Income, VEND.X263 => Loan.Contacts[(ContactType == 'INVESTOR')].Name
+        /// </summary>
+        /// <param name="fieldId">The field id to get or set its loan field mapping.</param>
+        /// <returns></returns>
         public string this[string fieldId]
         {
             get
@@ -34,10 +42,19 @@ namespace EncompassRest.Loans
             }
         }
 
-        public ICollection<string> FieldIds => _standardFields.Keys.Concat(_virtualFields.Keys).ToList();
+        /// <summary>
+        /// The field ids in the collection.
+        /// </summary>
+        public ICollection<string> FieldIds => ((IReadOnlyDictionary<string, string>)this).Keys.ToList();
 
-        public ICollection<string> ModelPaths => _standardFields.Values.Concat(_virtualFields.Values).Select(d => d.ModelPath).ToList();
+        /// <summary>
+        /// The model paths in the collection.
+        /// </summary>
+        public ICollection<string> ModelPaths => ((IReadOnlyDictionary<string, string>)this).Values.ToList();
 
+        /// <summary>
+        /// The number of field mappings in the collection.
+        /// </summary>
         public int Count => _standardFields.Count + _virtualFields.Count;
 
         bool ICollection<KeyValuePair<string, string>>.IsReadOnly => false;
@@ -46,14 +63,21 @@ namespace EncompassRest.Loans
 
         ICollection<string> IDictionary<string, string>.Values => ModelPaths;
 
-        IEnumerable<string> IReadOnlyDictionary<string, string>.Keys => FieldIds;
+        IEnumerable<string> IReadOnlyDictionary<string, string>.Keys => _standardFields.Keys.Concat(_virtualFields.Keys);
 
-        IEnumerable<string> IReadOnlyDictionary<string, string>.Values => ModelPaths;
+        IEnumerable<string> IReadOnlyDictionary<string, string>.Values => _standardFields.Values.Concat(_virtualFields.Values).Select(d => d.ModelPath);
 
         internal LoanFieldMappings()
         {
         }
 
+        /// <summary>
+        /// Tries to add the specified field mapping to the colleciton.
+        /// </summary>
+        /// <param name="fieldId">The field id to add.</param>
+        /// <param name="modelPath">The field's model path to add.</param>
+        /// <param name="validatePathExists">Indicates whether the model path should validate if the path exists in the loan object.</param>
+        /// <returns></returns>
         public bool TryAdd(string fieldId, string modelPath, bool validatePathExists = true)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
@@ -65,6 +89,11 @@ namespace EncompassRest.Loans
 
         internal void AddField(FieldDescriptor descriptor) => (descriptor.Type == LoanFieldType.Virtual ? _virtualFields : _standardFields).TryAdd(descriptor.FieldId, descriptor);
 
+        /// <summary>
+        /// Indicates whether the specified field is contained within the collection.
+        /// </summary>
+        /// <param name="fieldId">The field id to search for.</param>
+        /// <returns></returns>
         public bool ContainsKey(string fieldId)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
@@ -72,6 +101,10 @@ namespace EncompassRest.Loans
             return _standardFields.ContainsKey(fieldId) || _virtualFields.ContainsKey(fieldId);
         }
 
+        /// <summary>
+        /// Gets an enumerator for iterating over the collection.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
         {
             foreach (var pair in _standardFields)
@@ -85,6 +118,12 @@ namespace EncompassRest.Loans
             }
         }
 
+        /// <summary>
+        /// Tries to remove the specified field from the collection.
+        /// </summary>
+        /// <param name="fieldId">The field id to remove.</param>
+        /// <param name="modelPath">The model path associated with the removed field.</param>
+        /// <returns></returns>
         public bool TryRemove(string fieldId, out string modelPath)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
@@ -98,6 +137,12 @@ namespace EncompassRest.Loans
             return false;
         }
 
+        /// <summary>
+        /// Tries to retrieve the model path associated with the specified field id.
+        /// </summary>
+        /// <param name="fieldId">The field id to search for.</param>
+        /// <param name="modelPath">The model path associated with the field.</param>
+        /// <returns></returns>
         public bool TryGetValue(string fieldId, out string modelPath)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
@@ -113,8 +158,20 @@ namespace EncompassRest.Loans
 
         internal bool TryGetDescriptor(string fieldId, out FieldDescriptor descriptor) => _standardFields.TryGetValue(fieldId, out descriptor) || _virtualFields.TryGetValue(fieldId, out descriptor);
 
+        /// <summary>
+        /// Gets or adds the model path for the specified field id.
+        /// </summary>
+        /// <param name="fieldId">The field id to search for or add.</param>
+        /// <param name="modelPath">The model path to add if necessary.</param>
+        /// <returns></returns>
         public string GetOrAdd(string fieldId, string modelPath) => GetOrAdd(fieldId, () => modelPath);
 
+        /// <summary>
+        /// Gets or adds the model path for the specified field id.
+        /// </summary>
+        /// <param name="fieldId">The field id to search for or add.</param>
+        /// <param name="modelPathFactory">The function to retrieve a model path to add if necessary.</param>
+        /// <returns></returns>
         public string GetOrAdd(string fieldId, Func<string> modelPathFactory)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));

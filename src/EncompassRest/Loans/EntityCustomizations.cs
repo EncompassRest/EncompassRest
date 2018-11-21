@@ -29,18 +29,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// The loan associate constructor.
         /// </summary>
-        /// <param name="id">The loan associated id.</param>
-        /// <param name="loanAssociateType">The loan associated type.</param>
+        /// <param name="id">The loan associate id.</param>
+        /// <param name="loanAssociateType">The loan associate type.</param>
         public LoanAssociate(string id, LoanAssociateType loanAssociateType)
             : this(id, loanAssociateType.Validate(nameof(loanAssociateType)).GetValue())
         {
         }
 
         /// <summary>
-        /// The loan associated constructor.
+        /// The loan associate constructor.
         /// </summary>
-        /// <param name="id">The loan associated id.</param>
-        /// <param name="loanAssociateType">The loan associated type.</param>
+        /// <param name="id">The loan associate id.</param>
+        /// <param name="loanAssociateType">The loan associate type.</param>
         public LoanAssociate(string id, string loanAssociateType)
         {
             Preconditions.NotNullOrEmpty(id, nameof(id));
@@ -51,7 +51,7 @@ namespace EncompassRest.Loans
         }
 
         /// <summary>
-        /// The loan associated constructor.
+        /// The loan associate constructor.
         /// </summary>
         [JsonConstructor]
         public LoanAssociate()
