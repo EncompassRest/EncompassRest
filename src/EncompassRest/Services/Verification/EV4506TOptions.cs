@@ -45,7 +45,7 @@ namespace EncompassRest.Services.Verification
         public string Address { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string State { get; set; }
+        public StringEnumValue<State> State { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string City { get; set; }

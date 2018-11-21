@@ -11,7 +11,7 @@ namespace EncompassRest.Services.Appraisal
         public string City { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string State { get; set; }
+        public StringEnumValue<State> State { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Zip { get; set; }
