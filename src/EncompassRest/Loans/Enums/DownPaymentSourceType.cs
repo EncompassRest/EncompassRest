@@ -46,6 +46,11 @@ namespace EncompassRest.Loans.Enums
         /// State Agency
         /// </summary>
         [Description("State Agency")]
-        StateAgency = 8
+        StateAgency = 8,
+        /// <summary>
+        /// Originating Lender
+        /// </summary>
+        [Description("Originating Lender")]
+        OriginatingLender = 9
     }
 }

@@ -21,6 +21,11 @@ namespace EncompassRest.Loans.Enums
         /// Level 1 Property Inspection Waiver
         /// </summary>
         [Description("Level 1 Property Inspection Waiver")]
-        Level1PropertyInspectionWaiver = 2
+        Level1PropertyInspectionWaiver = 2,
+        /// <summary>
+        /// Property Inspection Waiver
+        /// </summary>
+        [Description("Property Inspection Waiver")]
+        PropertyInspectionWaiver = 3
     }
 }
