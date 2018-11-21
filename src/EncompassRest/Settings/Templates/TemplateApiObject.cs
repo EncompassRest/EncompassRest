@@ -16,7 +16,7 @@ namespace EncompassRest.Settings.Templates
         }
 
         /// <summary>
-        /// Retrieves a list of template folders from the specified template <paramref name="path"/>.
+        /// Retrieves a list of template folders from the specified location.
         /// </summary>
         /// <param name="path">Location of the loan template folder. The default parent path starts with public or personal.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -29,7 +29,7 @@ namespace EncompassRest.Settings.Templates
         }
 
         /// <summary>
-        /// Retrieves a list of template folders from the specified <paramref name="path"/> as raw json.
+        /// Retrieves a list of template folders from the specified location as raw json.
         /// </summary>
         /// <param name="path">Location of the loan template folder. The default parent path starts with public or personal.</param>
         /// <param name="queryString">The query string to include in the request.</param>
@@ -43,9 +43,9 @@ namespace EncompassRest.Settings.Templates
         }
 
         /// <summary>
-        /// Retrieves a list of template files from the specified template <paramref name="path"/>.
+        /// Retrieves a list of template files from the specified template path.
         /// </summary>
-        /// <param name="path">Location of the loan template folder. The default parent path starts with public or personal.</param>
+        /// <param name="path">Path to where the template files are located.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<List<EntityReference>> GetTemplateFilesAsync(string path, CancellationToken cancellationToken = default)

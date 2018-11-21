@@ -102,7 +102,7 @@ namespace EncompassRest.Contacts
         public string Salutation { get => _salutation; set => SetField(ref _salutation, value); }
 
         /// <summary>
-        /// The contactId (or id) is the unique identifier of the borrower contact.
+        /// The contactId (or id) is the unique identifier of the contact.
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
 
@@ -147,8 +147,8 @@ namespace EncompassRest.Contacts
         /// <summary>
         /// Initializes the contact object with the specified <paramref name="client"/> and <paramref name="contactId"/>. This allows the use of the <see cref="Notes"/> property.
         /// </summary>
-        /// <param name="client"></param>
-        /// <param name="contactId"></param>
+        /// <param name="client">The <see cref="EncompassRestClient"/> to associate with this object.</param>
+        /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
         public void Initialize(EncompassRestClient client, string contactId)
         {
             Preconditions.NotNull(client, nameof(client));

@@ -271,7 +271,7 @@ namespace EncompassRest.Loans.Documents
         /// <summary>
         /// Loan document creation constructor
         /// </summary>
-        /// <param name="title"></param>
+        /// <param name="title">The title of the file.</param>
         /// <param name="applicationId">Identifies which borrower pair (or “All”) the document will be assigned to.</param>
         public LoanDocument(string title, string applicationId)
         {
@@ -285,7 +285,7 @@ namespace EncompassRest.Loans.Documents
         /// <summary>
         /// Loan document update constructor
         /// </summary>
-        /// <param name="documentId"></param>
+        /// <param name="documentId">The document id.</param>
         public LoanDocument(string documentId)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));

@@ -48,8 +48,8 @@ namespace EncompassRest.CustomDataObjects
         /// <summary>
         /// CustomDataObject constructor.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="dataObject"></param>
+        /// <param name="name">The name of the custom data object to retrieve. It is also known as the objectName.</param>
+        /// <param name="dataObject">The Base64 encoded content of the file.</param>
         [JsonConstructor]
         public CustomDataObject(string name, byte[] dataObject)
         {

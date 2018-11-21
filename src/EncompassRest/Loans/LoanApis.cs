@@ -77,14 +77,14 @@ namespace EncompassRest.Loans
         }
 
         /// <summary>
-        /// Retrieves the metadata for the loan.
+        /// Retrieves metadata from the loan.
         /// </summary>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<LoanMetadata> GetMetadataAsync(CancellationToken cancellationToken = default) => GetAsync<LoanMetadata>("metadata", null, nameof(GetMetadataAsync), null, cancellationToken);
 
         /// <summary>
-        /// Retrieves the metadata for the loan as raw json.
+        /// Retrieves metadata from the loan as raw json.
         /// </summary>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>

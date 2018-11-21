@@ -50,8 +50,8 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Gets conditions for the loan.
         /// </summary>
-        /// <param name="queryParameters"></param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="queryParameters">The condition query parameters to sent in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<List<TCondition>> GetConditionsAsync(ConditionQueryParameters queryParameters = null, CancellationToken cancellationToken = default) => GetDirtyListAsync<TCondition>(null, queryParameters?.ToString(), nameof(GetConditionsAsync), null, cancellationToken);
 

@@ -45,27 +45,27 @@ namespace EncompassRest.Loans
         }
 
         /// <summary>
-        /// Gets the loan with the specified <paramref name="loanId"/>.
+        /// Returns the entire loan.
         /// </summary>
-        /// <param name="loanId">The loan id of the loan to get.</param>
+        /// <param name="loanId">The unique identifier assigned to the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<Loan> GetLoanAsync(string loanId, CancellationToken cancellationToken = default) => GetLoanAsync(loanId, (IEnumerable<string>)null, cancellationToken);
 
         /// <summary>
-        /// Gets the loan with the specified <paramref name="loanId"/> including just the <paramref name="entities"/> specified.
+        /// Returns the specific entities of a loan.
         /// </summary>
-        /// <param name="loanId">The loan id of the loan to get.</param>
-        /// <param name="entities">The loan entities to include in the response object.</param>
+        /// <param name="loanId">The unique identifier assigned to the loan.</param>
+        /// <param name="entities">The list of loan entities to retrieve from the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<Loan> GetLoanAsync(string loanId, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken = default) => GetLoanAsync(loanId, entities?.Select(e => e.Validate(nameof(entities)).GetValue()), cancellationToken);
 
         /// <summary>
-        /// Gets the loan with the specified <paramref name="loanId"/> including just the <paramref name="entities"/> specified.
+        /// Returns the specific entities of a loan.
         /// </summary>
-        /// <param name="loanId">The loan id of the loan to get.</param>
-        /// <param name="entities">The loan entities to include in the response object.</param>
+        /// <param name="loanId">The unique identifier assigned to the loan.</param>
+        /// <param name="entities">The list of loan entities to retrieve from the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public async Task<Loan> GetLoanAsync(string loanId, IEnumerable<string> entities, CancellationToken cancellationToken = default)
@@ -84,9 +84,9 @@ namespace EncompassRest.Loans
         }
 
         /// <summary>
-        /// Gets the loan with the specified <paramref name="loanId"/> as raw json.
+        /// Returns the entire loan or specific entities of a loan as raw json.
         /// </summary>
-        /// <param name="loanId">The loan id of the loan to get.</param>
+        /// <param name="loanId">The unique identifier assigned to the loan.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -98,14 +98,14 @@ namespace EncompassRest.Loans
         }
 
         /// <summary>
-        /// Gets a list of loan entities that can be retrieved from a loan.
+        /// Returns the list of loan entities that can be retrieved from a loan.
         /// </summary>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<List<StringEnumValue<LoanEntity>>> GetSupportedEntitiesAsync(CancellationToken cancellationToken = default) => GetAsync<List<StringEnumValue<LoanEntity>>>("supportedEntities", null, nameof(GetSupportedEntitiesAsync), null, cancellationToken);
 
         /// <summary>
-        /// Gets a list of loan entities that can be retrieved from a loan as raw json.
+        /// Returns the list of loan entities that can be retrieved from a loan as raw json.
         /// </summary>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -161,7 +161,7 @@ namespace EncompassRest.Loans
         }
 
         /// <summary>
-        /// Updates the specified <paramref name="loan"/> in Encompass.
+        /// Updates an existing loan by modifying the values of the loan data elements passed.
         /// </summary>
         /// <param name="loan">The loan to update.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -169,7 +169,7 @@ namespace EncompassRest.Loans
         public Task UpdateLoanAsync(Loan loan, CancellationToken cancellationToken = default) => UpdateLoanAsync(loan, null, cancellationToken);
 
         /// <summary>
-        /// Updates the specified <paramref name="loan"/> in Encompass and optionally populates the loan object with the response's body through the use of the entity view query parameter.
+        /// Updates an existing loan by modifying the values of the loan data elements passed and optionally populates the loan object with the response's body through the use of the entity view query parameter.
         /// </summary>
         /// <param name="loan">The loan to update.</param>
         /// <param name="populate">Indicates if the loan object should be populated with the response's body through the use of the entity view query parameter.</param>
@@ -178,7 +178,7 @@ namespace EncompassRest.Loans
         public Task UpdateLoanAsync(Loan loan, bool populate, CancellationToken cancellationToken = default) => UpdateLoanAsync(loan, new UpdateLoanOptions { Populate = populate }, cancellationToken);
 
         /// <summary>
-        /// Updates the specified <paramref name="loan"/> in Encompass with the optionally specified <paramref name="updateLoanOptions"/>.
+        /// Updates an existing loan by modifying the values of the loan data elements passed with the optionally specified <paramref name="updateLoanOptions"/>.
         /// </summary>
         /// <param name="loan">The loan to update.</param>
         /// <param name="updateLoanOptions">The loan update options.</param>
@@ -231,7 +231,7 @@ namespace EncompassRest.Loans
         }
 
         /// <summary>
-        /// Updates the loan in Encompass with the specified <paramref name="loanId"/> using raw json.
+        /// Updates an existing loan by modifying the values of the loan data elements passed or by applying a loan template using raw json.
         /// </summary>
         /// <param name="loanId">The loan id of the loan to update.</param>
         /// <param name="loan">The loan to update as raw json.</param>
@@ -247,9 +247,9 @@ namespace EncompassRest.Loans
         }
 
         /// <summary>
-        /// Deletes the loan in Encompass with the specified <paramref name="loanId"/>.
+        /// Deletes a specified loan by moving it to the Recycle Bin or Trash folder.
         /// </summary>
-        /// <param name="loanId">The loan id of the loan to delete.</param>
+        /// <param name="loanId">The unique identifier assigned to the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<bool> DeleteLoanAsync(string loanId, CancellationToken cancellationToken = default)

@@ -14,7 +14,7 @@ namespace EncompassRest.Schema
         /// <summary>
         /// The StringListInstance indexer.
         /// </summary>
-        /// <param name="index"></param>
+        /// <param name="index">The index of the item to get or set.</param>
         /// <returns></returns>
         public string this[int index] { get => _values[index]; set => _values[index] = value; }
 

@@ -166,7 +166,7 @@ namespace EncompassRest.Loans.Attachments
         /// <summary>
         /// Downloads the attachment's file contents as a stream. Uses <see cref="MediaUrl"/> if populated from using the generateUrl option on getting the attachment, otherwise falls back to getting the download url first to get the file contents.
         /// </summary>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public async Task<Stream> DownloadStreamAsync(CancellationToken cancellationToken = default)
         {
