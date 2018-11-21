@@ -1,5 +1,4 @@
 ﻿using System.Runtime.Serialization;
-using EnumsNET;
 
 namespace EncompassRest.Loans.Conditions
 {
