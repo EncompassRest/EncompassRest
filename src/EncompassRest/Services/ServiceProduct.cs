@@ -39,7 +39,8 @@ namespace EncompassRest.Services
         /// <summary>
         /// This object contains the resources (documents and attachments) associated with the loan that are being shared with the service partner with respect to the service request.
         /// </summary>
-        public List<EntityReference> Resources { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public IList<EntityReference> Resources { get; set; }
 
         internal virtual ServiceCredentials CredentialsInternal { get; set; }
 

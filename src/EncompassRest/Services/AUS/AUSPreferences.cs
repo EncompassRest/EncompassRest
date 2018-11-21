@@ -5,7 +5,7 @@ namespace EncompassRest.Services.AUS
     /// <summary>
     /// AUSPreferences
     /// </summary>
-    public sealed class AUSPreferences : SerializableObject
+    public sealed class AUSPreferences : ExtensibleObject
     {
         /// <summary>
         /// Whether or not user to import the underwriting conditions specified by Fannie Mae in its underwriting report returned in their response.
