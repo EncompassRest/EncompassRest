@@ -184,7 +184,10 @@ namespace EncompassRest
             { "LoanAssociate.LoanAssociateType", nameof(LoanAssociateType) },
             { "AdditionalStateDisclosure.StateCode", nameof(State) },
             { "LoanAssociate.EnableWriteAccess", nameof(YOrN) },
-            { "FreddieMac.CondoClass", nameof(CondoClass) }
+            { "FreddieMac.CondoClass", nameof(CondoClass) },
+            { "Hmda.StateCode", nameof(State) },
+            { "MilestoneTaskContact.State", nameof(State) },
+            { "Miscellaneous.State", nameof(State) }
         };
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
