@@ -10,7 +10,7 @@ namespace EncompassRest
 {
     public abstract class ApiObject
     {
-        private static readonly HttpMethod s_patchMethod = new HttpMethod("PATCH");
+        internal static readonly HttpMethod PatchMethod = new HttpMethod("PATCH");
 
         internal static readonly Func<HttpResponseMessage, Task<string>> ReadAsStringFunc = response => response.Content.ReadAsStringAsync();
 
@@ -70,15 +70,15 @@ namespace EncompassRest
 
         internal Task<T> PostAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode);
 
-        internal Task PatchAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync<string>(s_patchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, null);
+        internal Task PatchAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync<string>(PatchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, null);
 
-        internal Task<string> PatchRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(s_patchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
+        internal Task<string> PatchRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(PatchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
-        internal Task PatchPopulateDirtyAsync(string requestUri, HttpContent content, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(s_patchMethod, requestUri, populate ? ViewEntityQueryString : null, content, methodName, resourceId, target, populate, cancellationToken);
+        internal Task PatchPopulateDirtyAsync(string requestUri, HttpContent content, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(PatchMethod, requestUri, populate ? ViewEntityQueryString : null, content, methodName, resourceId, target, populate, cancellationToken);
 
-        internal Task PatchPopulateDirtyAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(s_patchMethod, requestUri, queryString, content, methodName, resourceId, target, populate, cancellationToken);
+        internal Task PatchPopulateDirtyAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(PatchMethod, requestUri, queryString, content, methodName, resourceId, target, populate, cancellationToken);
 
-        internal Task<T> PatchAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) => SendAsync(s_patchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, func);
+        internal Task<T> PatchAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) => SendAsync(PatchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, func);
 
         internal Task PutAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync<string>(HttpMethod.Put, requestUri, queryString, content, methodName, resourceId, cancellationToken, null);
 
