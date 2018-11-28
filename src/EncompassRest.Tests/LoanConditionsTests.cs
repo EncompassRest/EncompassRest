@@ -40,6 +40,7 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(addedCondition.ForAllApplications, retrievedCondition.ForAllApplications);
                 AssertNoExtensionData(retrievedCondition, "RetrievedCondition", retrievedCondition.Title);
                 addedCondition.Title = "DEF";
+                addedCondition.ForAllApplications = true;
                 await underwritingConditions.UpdateConditionsAsync(new[] { addedCondition });
                 await Task.Delay(1000);
                 retrievedCondition = await underwritingConditions.GetConditionAsync(conditionId);
