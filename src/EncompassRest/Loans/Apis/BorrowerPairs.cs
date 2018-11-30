@@ -39,7 +39,7 @@ namespace EncompassRest.Loans.Apis
         private Task<string> CreateBorrowerPairAsync(Application application, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(application, nameof(application));
-            Preconditions.NullOrEmpty(application.ApplicationId, $"{nameof(application)}.{nameof(application.ApplicationId)}");
+            Preconditions.NullOrEmpty(application.Id, $"{nameof(application)}.{nameof(application.Id)}");
 
             return CreateAsync(application, nameof(CreateBorrowerPairAsync), populate, cancellationToken);
         }
@@ -56,7 +56,7 @@ namespace EncompassRest.Loans.Apis
         private Task UpdateBorrowerPairAsync(Application application, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(application, nameof(application));
-            Preconditions.NotNullOrEmpty(application.ApplicationId, $"{nameof(application)}.{nameof(application.ApplicationId)}");
+            Preconditions.NotNullOrEmpty(application.Id, $"{nameof(application)}.{nameof(application.Id)}");
 
             return UpdateAsync(application, nameof(UpdateBorrowerPairAsync), populate, cancellationToken);
         }

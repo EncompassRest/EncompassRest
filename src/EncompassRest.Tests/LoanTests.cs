@@ -1780,5 +1780,41 @@ namespace EncompassRest.Tests
             Assert.AreEqual("# of Co-Mortgagers", LoanFieldDescriptors.VirtualFields["COMORTGAGORCOUNT"].Description);
             Assert.AreEqual("Last Snapshot - AUS Tracking - Underwriting Risk Assess Type - 22", LoanFieldDescriptors.VirtualFields["AUSTRACKING.AUS.X1.22"].Description);
         }
+
+        [TestMethod]
+        public async Task Loan_UpdateIncome()
+        {
+            var client = await GetTestClientAsync();
+            var loan = new Loan(client);
+            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+
+            try
+            {
+                var income = loan.CurrentApplication.Income.First(x => x.IncomeType == "OtherIncome" && x.OtherIncomeIndex == 1);
+                income.Owner = BorrowerOrCoBorrower.CoBorrower;
+                income.Description = Description.MilitaryCombatPay;
+                income.Amount = 10000M;
+
+                await client.Loans.UpdateLoanAsync(loan);
+
+                loan = await client.Loans.GetLoanAsync(loanId);
+
+                income = loan.CurrentApplication.Income.First(x => x.IncomeType == "OtherIncome" && x.OtherIncomeIndex == 1);
+
+                Assert.AreEqual("CoBorrower", income.Owner.Value);
+                Assert.AreEqual("MilitaryCombatPay", income.Description.Value);
+                Assert.AreEqual(10000M, income.Amount);
+            }
+            finally
+            {
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
+        }
     }
 }
