@@ -38,15 +38,21 @@ namespace EncompassRest.Loans
 
         [Obsolete("Use LoanField.Descriptor.MultiInstance instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public bool MultiInstance => Descriptor.MultiInstance;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         [Obsolete("Use LoanField.Descriptor.InstanceSpecifier instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string InstanceSpecifier => Descriptor.InstanceSpecifier;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         [Obsolete("Use LoanField.Descriptor.IsBorrowerPairSpecific instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public bool IsBorrowerPairSpecific => Descriptor.IsBorrowerPairSpecific;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// The field's borrower pair index.
@@ -55,11 +61,15 @@ namespace EncompassRest.Loans
 
         [Obsolete("Use LoanField.Descriptor.ValueType instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public LoanFieldValueType ValueType => Descriptor.ValueType;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         [Obsolete("Use LoanField.Descriptor.Type instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public LoanFieldType Type => Descriptor.Type;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// The loan field's format.
@@ -73,7 +83,9 @@ namespace EncompassRest.Loans
 
         [Obsolete("Use LoanField.Descriptor.Description instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public string Description => Descriptor.Description;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// The field's unformatted value.
@@ -244,7 +256,9 @@ namespace EncompassRest.Loans
 
         [Obsolete("Use LoanField.Descriptor.Options instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public ReadOnlyCollection<FieldOption> Options => Descriptor.Options;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         internal LoanField(FieldDescriptor descriptor, Loan loan, ModelPath modelPath = null, int? borrowerPairIndex = null)
         {

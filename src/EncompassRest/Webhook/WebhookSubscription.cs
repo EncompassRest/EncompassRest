@@ -77,7 +77,9 @@ namespace EncompassRest.Webhook
 
         [Obsolete("Use another constructor instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public WebhookSubscription(string endpoint)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             Preconditions.NotNullOrEmpty(endpoint, nameof(endpoint));
 

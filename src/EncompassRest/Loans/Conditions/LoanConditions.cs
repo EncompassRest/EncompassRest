@@ -249,7 +249,7 @@ namespace EncompassRest.Loans.Conditions
         /// <param name="comments">The condition comments to create.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task CreateConditionCommentsAsync(string conditionId, IEnumerable<ConditionComment> comments, CancellationToken cancellationToken = default) => CreateConditionCommentsAsync(conditionId, comments, false, cancellationToken);
+        public Task CreateConditionCommentsAsync(string conditionId, IEnumerable<Comment> comments, CancellationToken cancellationToken = default) => CreateConditionCommentsAsync(conditionId, comments, false, cancellationToken);
 
         /// <summary>
         /// Creates multiple comments for the loan condition and optionally populates the comment objects with the response's body through the use of the entity view query parameter.
@@ -259,12 +259,12 @@ namespace EncompassRest.Loans.Conditions
         /// <param name="populate">Indicates if the comment objects should be populated with the response's body through the use of the entity view query parameter.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task CreateConditionCommentsAsync(string conditionId, IEnumerable<ConditionComment> comments, bool populate, CancellationToken cancellationToken = default)
+        public Task CreateConditionCommentsAsync(string conditionId, IEnumerable<Comment> comments, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(conditionId, nameof(conditionId));
             Preconditions.NotNull(comments, nameof(comments));
 
-            var dirtyList = new DirtyList<ConditionComment>(comments);
+            var dirtyList = new DirtyList<Comment>(comments);
 
             var i = 0;
             foreach (var comment in dirtyList)

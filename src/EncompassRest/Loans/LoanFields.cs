@@ -11,11 +11,15 @@ namespace EncompassRest.Loans
     {
         [Obsolete("Use LoanFieldDescriptors.FieldMappings instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public static LoanFieldMappings FieldMappings => LoanFieldDescriptors.FieldMappings;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         [Obsolete("Use LoanFieldDescriptors.FieldPatternMappings instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public static LoanFieldPatternMappings FieldPatternMappings => LoanFieldDescriptors.FieldPatternMappings;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         private readonly Loan _loan;
 

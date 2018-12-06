@@ -117,7 +117,9 @@ namespace EncompassRest.Contacts
 
         [Obsolete("Use another constructor instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public ContactGroup(string name)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             Preconditions.NotNullOrEmpty(name, nameof(name));
 
