@@ -6,6 +6,9 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.Conditions
 {
+    /// <summary>
+    /// ConditionQueryParameters
+    /// </summary>
     public sealed class ConditionQueryParameters
     {
         private ReadOnlyCollection<FieldSort> _sort;
@@ -13,6 +16,9 @@ namespace EncompassRest.Loans.Conditions
         private int? _start;
         private int? _limit;
 
+        /// <summary>
+        /// Sort parameters.
+        /// </summary>
         public IEnumerable<FieldSort> Sort
         {
             get => _sort;
@@ -32,6 +38,9 @@ namespace EncompassRest.Loans.Conditions
             }
         }
 
+        /// <summary>
+        /// Filter parameters.
+        /// </summary>
         public IEnumerable<FieldFilter> Filter
         {
             get => _filter;
@@ -51,6 +60,9 @@ namespace EncompassRest.Loans.Conditions
             }
         }
 
+        /// <summary>
+        /// Zero-based starting index or record number. The default is 1.
+        /// </summary>
         public int? Start
         {
             get => _start;
@@ -64,6 +76,9 @@ namespace EncompassRest.Loans.Conditions
             }
         }
 
+        /// <summary>
+        /// The maximum number of items to return per page.
+        /// </summary>
         public int? Limit
         {
             get => _limit;
@@ -77,8 +92,15 @@ namespace EncompassRest.Loans.Conditions
             }
         }
 
+        /// <summary>
+        /// Indicates whether to include conditions that have been deleted in the results.
+        /// </summary>
         public bool? IncludeRemoved { get; set; }
 
+        /// <summary>
+        /// Gets the query parameters string representation.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             var queryParameters = new QueryParameters();

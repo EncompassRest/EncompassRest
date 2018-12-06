@@ -4,6 +4,9 @@ using EncompassRest.Settings.Loan;
 
 namespace EncompassRest.Settings
 {
+    /// <summary>
+    /// The Settings Apis.
+    /// </summary>
     public sealed class Settings : ApiObject
     {
         private Templates.Templates _templates;
@@ -11,6 +14,9 @@ namespace EncompassRest.Settings
         private BusinessContactsSettings _businessContacts;
         private LoanSettings _loan;
 
+        /// <summary>
+        /// The Templates Apis.
+        /// </summary>
         public Templates.Templates Templates
         {
             get
@@ -20,6 +26,9 @@ namespace EncompassRest.Settings
             }
         }
 
+        /// <summary>
+        /// The Borrower Contacts Settings Apis.
+        /// </summary>
         public BorrowerContactsSettings BorrowerContacts
         {
             get
@@ -29,6 +38,9 @@ namespace EncompassRest.Settings
             }
         }
 
+        /// <summary>
+        /// The Business Contacts Settings Apis.
+        /// </summary>
         public BusinessContactsSettings BusinessContacts
         {
             get
@@ -38,6 +50,9 @@ namespace EncompassRest.Settings
             }
         }
 
+        /// <summary>
+        /// The Loan Settings Apis.
+        /// </summary>
         public LoanSettings Loan
         {
             get

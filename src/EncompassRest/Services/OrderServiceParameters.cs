@@ -2,8 +2,14 @@
 
 namespace EncompassRest.Services
 {
-    public abstract class OrderServiceParameters : SerializableObject
+    /// <summary>
+    /// The parameters to specify when ordering a service.
+    /// </summary>
+    public abstract class OrderServiceParameters : ExtensibleObject
     {
+        /// <summary>
+        /// Object containing all the necessary product information needed for a service provider to process a service request.
+        /// </summary>
         public ServiceProduct Product { get; }
 
         internal OrderServiceParameters(ServiceProduct product)

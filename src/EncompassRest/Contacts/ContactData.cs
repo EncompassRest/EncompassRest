@@ -3,12 +3,21 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Contacts
 {
+    /// <summary>
+    /// ContactData
+    /// </summary>
     public sealed class ContactData : ExtensibleObject
     {
         private Dictionary<string, string> _fields;
 
+        /// <summary>
+        /// ContactData Id
+        /// </summary>
         public string Id { get; set; }
 
+        /// <summary>
+        /// ContactData Fields
+        /// </summary>
         public Dictionary<string, string> Fields
         {
             get => _fields;

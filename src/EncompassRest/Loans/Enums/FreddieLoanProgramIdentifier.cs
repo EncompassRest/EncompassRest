@@ -156,6 +156,10 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// ShortTermStandBy
         /// </summary>
-        ShortTermStandBy = 37
+        ShortTermStandBy = 37,
+        /// <summary>
+        /// HomePossibleHomeReady
+        /// </summary>
+        HomePossibleHomeReady = 38
     }
 }

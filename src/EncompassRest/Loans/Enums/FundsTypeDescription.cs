@@ -21,6 +21,10 @@ namespace EncompassRest.Loans.Enums
         /// Secondary Financing HELOC
         /// </summary>
         [Description("Secondary Financing HELOC")]
-        SecondaryFinancingHELOC = 2
+        SecondaryFinancingHELOC = 2,
+        /// <summary>
+        /// Grant
+        /// </summary>
+        Grant = 3
     }
 }

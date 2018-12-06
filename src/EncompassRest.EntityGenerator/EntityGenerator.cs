@@ -154,7 +154,12 @@ namespace EncompassRest
             "DenialReason4",
             "AdjustsTermType",
             "PrepaymentPenaltyPayOffInDateType",
-            "LogDUPropertyType"
+            "LogDUPropertyType",
+            "ClosingCost2FundsTypeOtherDescription",
+            "ClosingCost3FundsTypeOtherDescription",
+            "ClosingCost4FundsTypeOtherDescription",
+            "ClosingCostFundsTypeOtherDescription",
+            "DownPaymentOtherTypeDescription"
         };
 
         private static readonly HashSet<string> s_enumPropertyNamesToUseEntityTypeInName = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -177,7 +182,10 @@ namespace EncompassRest
             { "LoanAssociate.LoanAssociateType", nameof(LoanAssociateType) },
             { "AdditionalStateDisclosure.StateCode", nameof(State) },
             { "LoanAssociate.EnableWriteAccess", nameof(YOrN) },
-            { "FreddieMac.CondoClass", nameof(CondoClass) }
+            { "FreddieMac.CondoClass", nameof(CondoClass) },
+            { "Hmda.StateCode", nameof(State) },
+            { "MilestoneTaskContact.State", nameof(State) },
+            { "Miscellaneous.State", nameof(State) }
         };
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
@@ -211,7 +219,7 @@ namespace EncompassRest
             { "HtmlEmailLog", new Dictionary<string, PropertySchema> { { "DocList", new PropertySchema { Type = PropertySchemaType.List, ElementType = "EmailDocument" } } } }
         };
 
-        private static readonly HashSet<string> s_explicitDateTimeProperties = new HashSet<string> { "DisclosureTracking2015Log.ActualFulfillmentDate", "DisclosureTracking2015Log.ApplicationDate", "DisclosureTracking2015Log.BorrowerActualReceivedDate", "DisclosureTracking2015Log.BorrowerPresumedReceivedDate", "DisclosureTracking2015Log.CDDateIssued", "DisclosureTracking2015Log.ClosingDate", "DisclosureTracking2015Log.CoBorrowerActualReceivedDate", "DisclosureTracking2015Log.CoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.DisclosedDate", "DisclosureTracking2015Log.IntentToProceedDate", "DisclosureTracking2015Log.LockedBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedCoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedDisclosedDateField", "DisclosureTracking2015Log.LockedDisclosedReceivedDate", "DisclosureTracking2015Log.PresumedFulfillmentDate", "DisclosureTracking2015Log.ReceivedDate", "DisclosureTracking2015Log.RevisedDueDate" };
+        private static readonly HashSet<string> s_explicitDateTimeProperties = new HashSet<string> { "DisclosureTracking2015Log.ActualFulfillmentDate", "DisclosureTracking2015Log.ApplicationDate", "DisclosureTracking2015Log.BorrowerActualReceivedDate", "DisclosureTracking2015Log.BorrowerPresumedReceivedDate", "DisclosureTracking2015Log.CDDateIssued", "DisclosureTracking2015Log.ClosingDate", "DisclosureTracking2015Log.CoBorrowerActualReceivedDate", "DisclosureTracking2015Log.CoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.DisclosedDate", "DisclosureTracking2015Log.IntentToProceedDate", "DisclosureTracking2015Log.LockedBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedCoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedDisclosedDateField", "DisclosureTracking2015Log.LockedDisclosedReceivedDate", "DisclosureTracking2015Log.PresumedFulfillmentDate", "DisclosureTracking2015Log.ReceivedDate", "DisclosureTracking2015Log.RevisedDueDate", "DisclosureTracking2015Log.ChangesReceivedDate" };
 
         private static readonly Dictionary<string, HashSet<string>> s_enumOptionsToIgnore = new Dictionary<string, HashSet<string>>
         {

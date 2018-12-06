@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Filters
 {
+    /// <summary>
+    /// Filter base class.
+    /// </summary>
     public class Filter : SerializableObject
     {
         [JsonProperty("operator", NullValueHandling = NullValueHandling.Ignore)]
@@ -23,8 +26,18 @@ namespace EncompassRest.Filters
             _terms = terms;
         }
 
+        /// <summary>
+        /// Returns a new filter which is the combination of this filter with the specified <paramref name="filter"/> using And semantics.
+        /// </summary>
+        /// <param name="filter">The other filter to combine with.</param>
+        /// <returns></returns>
         public Filter And(Filter filter) => Combine(FilterOperator.And, filter);
 
+        /// <summary>
+        /// Returns a new filter which is the combination of this filter with the specified <paramref name="filter"/> using Or semantics.
+        /// </summary>
+        /// <param name="filter">The other filter to combine with.</param>
+        /// <returns></returns>
         public Filter Or(Filter filter) => Combine(FilterOperator.Or, filter);
 
         private Filter Combine(FilterOperator @operator, Filter filter)

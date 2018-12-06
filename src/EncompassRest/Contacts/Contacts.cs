@@ -4,14 +4,39 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Contacts
 {
+    /// <summary>
+    /// The Base Contacts Apis.
+    /// </summary>
+    /// <typeparam name="TContact"></typeparam>
     public abstract class Contacts<TContact> : ApiObject
         where TContact : Contact
     {
+        private readonly string _apiPath;
+
         internal Contacts(EncompassRestClient client, string baseApiPath)
             : base(client, baseApiPath)
         {
+            _apiPath = baseApiPath;
         }
 
+        /// <summary>
+        /// Gets the Contact Notes Apis for the contact with the specified <paramref name="contactId"/>.
+        /// </summary>
+        /// <param name="contactId">The unique identifier that is returned in the response when the contact is created.</param>
+        /// <returns></returns>
+        public ContactNotes GetContactNotes(string contactId)
+        {
+            Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
+
+            return new ContactNotes(Client, contactId, _apiPath);
+        }
+
+        /// <summary>
+        /// Retrieves contact information for the specified contact ID.
+        /// </summary>
+        /// <param name="contactId">The unique identifier that is returned in the response when the contact is created.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public async Task<TContact> GetContactAsync(string contactId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -21,6 +46,13 @@ namespace EncompassRest.Contacts
             return contact;
         }
 
+        /// <summary>
+        /// Retrieves contact information for the specified contact ID as raw json.
+        /// </summary>
+        /// <param name="contactId">The unique identifier that is returned in the response when the contact is created.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task<string> GetContactRawAsync(string contactId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -28,6 +60,12 @@ namespace EncompassRest.Contacts
             return GetRawAsync(contactId, queryString, nameof(GetContactRawAsync), contactId, cancellationToken);
         }
 
+        /// <summary>
+        /// Creates a new contact and returns its contact id.
+        /// </summary>
+        /// <param name="contact">The contact to create.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task<string> CreateContactAsync(TContact contact, CancellationToken cancellationToken = default) => CreateContactAsync(contact, false, cancellationToken);
 
         private async Task<string> CreateContactAsync(TContact contact, bool populate, CancellationToken cancellationToken = default)
@@ -40,6 +78,13 @@ namespace EncompassRest.Contacts
             return contactId;
         }
 
+        /// <summary>
+        /// Creates a new contact from raw json and returns the responses body if not empty else its contact id.
+        /// </summary>
+        /// <param name="contact">The contact to create as raw json.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task<string> CreateContactRawAsync(string contact, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
@@ -47,6 +92,12 @@ namespace EncompassRest.Contacts
             return PostAsync(null, queryString, new JsonStringContent(contact), nameof(CreateContactRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
+        /// <summary>
+        /// Updates contact information for the specified contact ID.
+        /// </summary>
+        /// <param name="contact">The contact to update.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task UpdateContactAsync(TContact contact, CancellationToken cancellationToken = default) => UpdateContactAsync(contact, false, cancellationToken);
 
         private Task UpdateContactAsync(TContact contact, bool populate, CancellationToken cancellationToken = default)
@@ -59,6 +110,14 @@ namespace EncompassRest.Contacts
             return PatchPopulateDirtyAsync(contact.Id, JsonStreamContent.Create(contact), nameof(UpdateContactAsync), contact.Id, contact, populate, cancellationToken);
         }
 
+        /// <summary>
+        /// Updates contact information for the specified contact ID from raw json.
+        /// </summary>
+        /// <param name="contactId">The unique identifier that is returned in the response when the contact is created.</param>
+        /// <param name="contact">The contact to update as raw json.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task<string> UpdateContactRawAsync(string contactId, string contact, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -67,6 +126,12 @@ namespace EncompassRest.Contacts
             return PatchRawAsync(contactId, queryString, new JsonStringContent(contact), nameof(UpdateContactRawAsync), contactId, cancellationToken);
         }
 
+        /// <summary>
+        /// Permanently deletes the specified contact.
+        /// </summary>
+        /// <param name="contactId">The unique identifier that is returned in the response when the contact is created.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task<bool> DeleteContactAsync(string contactId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));

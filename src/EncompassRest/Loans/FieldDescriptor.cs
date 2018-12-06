@@ -11,6 +11,9 @@ using EnumsNET.NonGeneric;
 
 namespace EncompassRest.Loans
 {
+    /// <summary>
+    /// The loan field descriptor.
+    /// </summary>
     public class FieldDescriptor
     {
         internal readonly ModelPath _modelPath;
@@ -25,15 +28,18 @@ namespace EncompassRest.Loans
         private bool _enumTypeIsSet;
         private Type _enumType;
 
+        /// <summary>
+        /// The field id.
+        /// </summary>
         public string FieldId { get; }
 
         /// <summary>
-        /// For use with loan field locking.
+        /// The field model path for use with loan field locking.
         /// </summary>
         public string ModelPath { get; }
 
         /// <summary>
-        /// For use with Webhook filter attributes.
+        /// The field attribute path for use with Webhook filter attributes.
         /// </summary>
         public string AttributePath
         {
@@ -48,14 +54,29 @@ namespace EncompassRest.Loans
             }
         }
 
+        /// <summary>
+        /// Indicates if the field descriptor is a multi-instance descriptor.
+        /// </summary>
         public bool MultiInstance { get; }
 
+        /// <summary>
+        /// The instance specifier for an instance field descriptor.
+        /// </summary>
         public string InstanceSpecifier { get; }
 
+        /// <summary>
+        /// Indicates if the field descriptor is an instance of a multi-instance descriptor.
+        /// </summary>
         public bool IsInstance => MultiInstance && !string.IsNullOrEmpty(InstanceSpecifier);
 
+        /// <summary>
+        /// Indicates if the field descriptor is borrower pair specific.
+        /// </summary>
         public bool IsBorrowerPairSpecific { get; }
 
+        /// <summary>
+        /// The loan field's value type.
+        /// </summary>
         public virtual LoanFieldValueType ValueType
         {
             get
@@ -110,8 +131,14 @@ namespace EncompassRest.Loans
             }
         }
 
+        /// <summary>
+        /// The loan field's type.
+        /// </summary>
         public LoanFieldType Type { get; }
 
+        /// <summary>
+        /// The loan field's format.
+        /// </summary>
         public virtual LoanFieldFormat? Format
         {
             get
@@ -141,10 +168,19 @@ namespace EncompassRest.Loans
             }
         }
 
+        /// <summary>
+        /// Indicates if the field is read only.
+        /// </summary>
         public virtual bool ReadOnly => ParentDescriptor?.ReadOnly ?? Type == LoanFieldType.Virtual || PropertyAttribute?.ReadOnly == true;
 
+        /// <summary>
+        /// The field's description.
+        /// </summary>
         public string Description { get; }
 
+        /// <summary>
+        /// The field's loan entity.
+        /// </summary>
         public virtual LoanEntity? LoanEntity
         {
             get
@@ -186,6 +222,9 @@ namespace EncompassRest.Loans
             }
         }
 
+        /// <summary>
+        /// The field's options.
+        /// </summary>
         public virtual ReadOnlyCollection<FieldOption> Options
         {
             get
@@ -242,6 +281,9 @@ namespace EncompassRest.Loans
             }
         }
 
+        /// <summary>
+        /// The parent descriptor for instance field descriptors.
+        /// </summary>
         public FieldDescriptor ParentDescriptor { get; }
 
         private LoanFieldPropertyAttribute PropertyAttribute
@@ -326,6 +368,11 @@ namespace EncompassRest.Loans
             ParentDescriptor = parentDescriptor;
         }
 
+        /// <summary>
+        /// Creates an instance descriptor with the specified <paramref name="instanceSpecifier"/>.
+        /// </summary>
+        /// <param name="instanceSpecifier">The instance specifier for an instance field descriptor.</param>
+        /// <returns></returns>
         public FieldDescriptor GetInstanceDescriptor(string instanceSpecifier)
         {
             Preconditions.NotNullOrEmpty(instanceSpecifier, nameof(instanceSpecifier));

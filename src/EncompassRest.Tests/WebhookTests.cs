@@ -40,7 +40,7 @@ namespace EncompassRest.Tests
         public void WebhookSubscription_Serialization()
         {
             var subscription = new WebhookSubscription("https://google.com", WebhookResourceType.Loan, new[] { WebhookResourceEvent.Create, WebhookResourceEvent.Update }) { ClientId = "1234567890" };
-            Assert.AreEqual(@"{""endpoint"":""https://google.com"",""resource"":""Loan"",""events"":[""create"",""update""]}", subscription.ToJson());
+            Assert.AreEqual(@"{""events"":[""create"",""update""],""endpoint"":""https://google.com"",""resource"":""Loan""}", subscription.ToJson());
         }
 
         [TestMethod]

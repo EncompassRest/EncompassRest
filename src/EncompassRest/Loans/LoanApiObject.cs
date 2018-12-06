@@ -5,8 +5,14 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans
 {
+    /// <summary>
+    /// Base Loan Api Class.
+    /// </summary>
     public abstract class LoanApiObject : ApiObject
     {
+        /// <summary>
+        /// The loan id associated with the Api.
+        /// </summary>
         public string LoanId { get; }
 
         internal LoanApiObject(EncompassRestClient client, string loanId, string baseApiPath)
@@ -18,6 +24,10 @@ namespace EncompassRest.Loans
         internal override string CreateErrorMessage(string methodName, string resourceId = null) => base.CreateErrorMessage(methodName, $"{LoanId}{resourceId?.PrecedeWith("/")}");
     }
 
+    /// <summary>
+    /// Base Loan Api Class.
+    /// </summary>
+    /// <typeparam name="T">The type of the loan elements.</typeparam>
     public abstract class LoanApiObject<T> : LoanApiObject
         where T : DirtyExtensibleObject
     {

@@ -2,10 +2,16 @@
 
 namespace EncompassRest.Settings.Loan
 {
+    /// <summary>
+    /// The Loan Settings Apis.
+    /// </summary>
     public sealed class LoanSettings : ApiObject
     {
         private CustomFieldDefinitions _customFields;
 
+        /// <summary>
+        /// The Loan Custom Fields Apis.
+        /// </summary>
         public CustomFieldDefinitions CustomFields
         {
             get

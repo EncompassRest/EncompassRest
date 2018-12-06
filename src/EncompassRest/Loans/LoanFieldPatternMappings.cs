@@ -7,11 +7,19 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans
 {
+    /// <summary>
+    /// LoanFieldPatternMappings
+    /// </summary>
     public sealed class LoanFieldPatternMappings : IDictionary<string, string>, IReadOnlyDictionary<string, string>
     {
         internal readonly LoanFieldPatternMappingsCollection _standardFieldPatterns = new LoanFieldPatternMappingsCollection();
         internal readonly LoanFieldPatternMappingsCollection _virtualFieldPatterns = new LoanFieldPatternMappingsCollection();
 
+        /// <summary>
+        /// Gets or sets the loan field mapping for the specified field pattern. e.g. HUD{0:00}01 => Loan.Hud1Es.Hud1EsDates[{0}].Date
+        /// </summary>
+        /// <param name="fieldPattern">The field pattern to get or set its loan field mapping.</param>
+        /// <returns></returns>
         public string this[string fieldPattern]
         {
             get => TryGetValue(fieldPattern, out var modelPathPattern) ? modelPathPattern : throw new KeyNotFoundException();
@@ -25,10 +33,19 @@ namespace EncompassRest.Loans
             }
         }
 
-        public ICollection<string> FieldPatterns => _standardFieldPatterns.FieldPatterns.Concat(_virtualFieldPatterns.FieldPatterns).ToList();
+        /// <summary>
+        /// The field id patterns in the collection.
+        /// </summary>
+        public ICollection<string> FieldPatterns => ((IReadOnlyDictionary<string, string>)this).Keys.ToList();
 
-        public ICollection<string> ModelPathPatterns => _standardFieldPatterns.Descriptors.Concat(_virtualFieldPatterns.Descriptors).Select(d => d.ModelPath).ToList();
+        /// <summary>
+        /// The model path patterns in the collection.
+        /// </summary>
+        public ICollection<string> ModelPathPatterns => ((IReadOnlyDictionary<string, string>)this).Values.ToList();
 
+        /// <summary>
+        /// The number of field pattern mappings in the collection.
+        /// </summary>
         public int Count => _standardFieldPatterns.Count + _virtualFieldPatterns.Count;
 
         bool ICollection<KeyValuePair<string, string>>.IsReadOnly => false;
@@ -37,14 +54,20 @@ namespace EncompassRest.Loans
 
         ICollection<string> IDictionary<string, string>.Values => ModelPathPatterns;
 
-        IEnumerable<string> IReadOnlyDictionary<string, string>.Keys => FieldPatterns;
+        IEnumerable<string> IReadOnlyDictionary<string, string>.Keys => _standardFieldPatterns.FieldPatterns.Concat(_virtualFieldPatterns.FieldPatterns);
 
-        IEnumerable<string> IReadOnlyDictionary<string, string>.Values => ModelPathPatterns;
+        IEnumerable<string> IReadOnlyDictionary<string, string>.Values => _standardFieldPatterns.Descriptors.Concat(_virtualFieldPatterns.Descriptors).Select(d => d.ModelPath);
 
         internal LoanFieldPatternMappings()
         {
         }
 
+        /// <summary>
+        /// Tries to add the specified field pattern mapping to the colleciton.
+        /// </summary>
+        /// <param name="fieldPattern">The field pattern to add.</param>
+        /// <param name="modelPathPattern">The field pattern's model path pattern to add.</param>
+        /// <returns></returns>
         public bool TryAdd(string fieldPattern, string modelPathPattern)
         {
             Preconditions.NotNullOrEmpty(fieldPattern, nameof(fieldPattern));
@@ -56,6 +79,12 @@ namespace EncompassRest.Loans
 
         internal void AddField(FieldDescriptor descriptor) => (descriptor.Type == LoanFieldType.Virtual ? _virtualFieldPatterns : _standardFieldPatterns).TryAdd(descriptor.FieldId, descriptor);
 
+        /// <summary>
+        /// Tries to remove the specified field pattern from the collection.
+        /// </summary>
+        /// <param name="fieldPattern">The field pattern to remove.</param>
+        /// <param name="modelPathPattern">The model path pattern associated with the removed field pattern.</param>
+        /// <returns></returns>
         public bool TryRemove(string fieldPattern, out string modelPathPattern)
         {
             Preconditions.NotNullOrEmpty(fieldPattern, nameof(fieldPattern));
@@ -69,6 +98,12 @@ namespace EncompassRest.Loans
             return false;
         }
 
+        /// <summary>
+        /// Tries to retrieve the model path pattern associated with the specified field pattern.
+        /// </summary>
+        /// <param name="fieldPattern">The field pattern to search for.</param>
+        /// <param name="modelPathPattern">The model path pattern associated with the field pattern.</param>
+        /// <returns></returns>
         public bool TryGetValue(string fieldPattern, out string modelPathPattern)
         {
             Preconditions.NotNullOrEmpty(fieldPattern, nameof(fieldPattern));
@@ -82,8 +117,20 @@ namespace EncompassRest.Loans
             return false;
         }
 
+        /// <summary>
+        /// Gets or adds the model path pattern for the specified field pattern.
+        /// </summary>
+        /// <param name="fieldPattern">The field pattern to search for or add.</param>
+        /// <param name="modelPathPattern">The model path pattern to add if necessary.</param>
+        /// <returns></returns>
         public string GetOrAdd(string fieldPattern, string modelPathPattern) => GetOrAdd(fieldPattern, () => modelPathPattern);
 
+        /// <summary>
+        /// Gets or adds the model path pattern for the specified field pattern.
+        /// </summary>
+        /// <param name="fieldPattern">The field pattern to search for or add.</param>
+        /// <param name="modelPathPatternFactory">The function to retrieve a model path pattern to add if necessary.</param>
+        /// <returns></returns>
         public string GetOrAdd(string fieldPattern, Func<string> modelPathPatternFactory)
         {
             Preconditions.NotNullOrEmpty(fieldPattern, nameof(fieldPattern));
@@ -98,8 +145,13 @@ namespace EncompassRest.Loans
             return descriptor.ModelPath;
         }
 
-        public void CopyTo(KeyValuePair<string, string>[] array, int arrayIndex) => this.ToList().CopyTo(array, arrayIndex);
+        void ICollection<KeyValuePair<string, string>>.CopyTo(KeyValuePair<string, string>[] array, int arrayIndex) => this.ToList().CopyTo(array, arrayIndex);
 
+        /// <summary>
+        /// Indicates whether the specified field pattern is contained within the collection.
+        /// </summary>
+        /// <param name="fieldPattern">The field pattern to search for.</param>
+        /// <returns></returns>
         public bool ContainsKey(string fieldPattern) => TryGetValue(fieldPattern, out _);
 
         internal bool TryGetDescriptorForFieldId(string fieldId, out FieldDescriptor descriptor) => _standardFieldPatterns.TryGetDescriptorForFieldId(fieldId, out descriptor) || _virtualFieldPatterns.TryGetDescriptorForFieldId(fieldId, out descriptor);
@@ -137,6 +189,10 @@ namespace EncompassRest.Loans
 
         bool ICollection<KeyValuePair<string, string>>.Contains(KeyValuePair<string, string> item) => TryGetValue(item.Key, out var modelPathPattern) && string.Equals(item.Value, modelPathPattern, StringComparison.OrdinalIgnoreCase);
 
+        /// <summary>
+        /// Gets an enumerator for iterating over the collection.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
         {
             foreach (var pair in _standardFieldPatterns)

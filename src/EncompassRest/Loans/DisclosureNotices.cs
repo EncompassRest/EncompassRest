@@ -233,7 +233,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Property Community participates in NFIP [NOTICES.X48]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Community in which the property is located participates in the National Flood Insurance program (NFIP). Federal law will not allow us to make the loan that you have applied for if you do not purchase flood insurance.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Community in which the property is located participates in the National Flood Insurance Program (NFIP) where federal flood insurance is available.\"}")]
         public bool? LocatedInNfipIndicator { get => _locatedInNfipIndicator; set => SetField(ref _locatedInNfipIndicator, value); }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Property Community does not participates in NFIP [NOTICES.X49]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Flood insurance coverage is not available for the property securing the loan because the community in which the property is located does not participate in NFIP.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Community in which the property is located does not participate in the NFIP.Federal flood insurance is not available.\"}")]
         public bool? NotLocatedInNfipIndicator { get => _notLocatedInNfipIndicator; set => SetField(ref _notLocatedInNfipIndicator, value); }
 
         /// <summary>

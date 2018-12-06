@@ -22,7 +22,8 @@ namespace EncompassRest.Tests
                 Assert.IsNotNull(conditions);
                 Assert.AreEqual(0, conditions.Count);
                 var addedCondition = new UnderwritingCondition { Title = "ABC", Source = ConditionSource.RecordersOffice, ForAllApplications = true };
-                var conditionId = await underwritingConditions.CreateConditionAsync(addedCondition);
+                await underwritingConditions.CreateConditionsAsync(new[] { addedCondition });
+                var conditionId = addedCondition.Id;
                 Assert.IsFalse(string.IsNullOrEmpty(conditionId));
                 await Task.Delay(1000);
                 conditions = await underwritingConditions.GetConditionsAsync();
@@ -38,6 +39,15 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(addedCondition.Source.Value, retrievedCondition.Source.Value);
                 Assert.AreEqual(addedCondition.ForAllApplications, retrievedCondition.ForAllApplications);
                 AssertNoExtensionData(retrievedCondition, "RetrievedCondition", retrievedCondition.Title, true);
+                addedCondition.Title = "DEF";
+                addedCondition.ForAllApplications = true;
+                await underwritingConditions.UpdateConditionsAsync(new[] { addedCondition });
+                await Task.Delay(1000);
+                retrievedCondition = await underwritingConditions.GetConditionAsync(conditionId);
+                Assert.AreEqual(addedCondition.Title, retrievedCondition.Title);
+                Assert.IsTrue(await underwritingConditions.DeleteConditionsAsync(new[] { conditionId }));
+                await Task.Delay(1000);
+                Assert.AreEqual(0, (await underwritingConditions.GetConditionsAsync()).Count);
             }
             finally
             {

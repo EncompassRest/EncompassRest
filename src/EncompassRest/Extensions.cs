@@ -5,8 +5,17 @@ using EnumsNET;
 
 namespace EncompassRest
 {
+    /// <summary>
+    /// General Extensions.
+    /// </summary>
     public static class Extensions
     {
+        /// <summary>
+        /// Clones the object.
+        /// </summary>
+        /// <typeparam name="T">The object type.</typeparam>
+        /// <param name="value">The object to clone.</param>
+        /// <returns></returns>
         public static T Clone<T>(this T value)
             where T : DirtyExtensibleObject
         {
@@ -15,6 +24,13 @@ namespace EncompassRest
             return JsonHelper.DefaultPublicSerializer.Clone(value);
         }
 
+        /// <summary>
+        /// Gets the item with the specified id or else returns <c>null</c>.
+        /// </summary>
+        /// <typeparam name="T">The list's element type.</typeparam>
+        /// <param name="list">The list to search.</param>
+        /// <param name="id">The id to search for.</param>
+        /// <returns></returns>
         public static T GetById<T>(this IList<T> list, string id)
             where T : DirtyExtensibleObject
         {
@@ -22,6 +38,13 @@ namespace EncompassRest
             return index >= 0 ? list[index] : default;
         }
 
+        /// <summary>
+        /// Gets the index of the item with the specified id or else returns -1.
+        /// </summary>
+        /// <typeparam name="T">The list's element type.</typeparam>
+        /// <param name="list">The list to search.</param>
+        /// <param name="id">The id to search for.</param>
+        /// <returns></returns>
         public static int IndexOf<T>(this IList<T> list, string id)
             where T : DirtyExtensibleObject => IndexOf((IEnumerable<DirtyExtensibleObject>)list, id);
 

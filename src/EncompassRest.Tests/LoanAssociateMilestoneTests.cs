@@ -92,7 +92,9 @@ namespace EncompassRest.Tests
                     Assert.IsFalse(milestone.DoneIndicator == true);
 
                     // Test unassigning user
+#pragma warning disable CS0618 // Type or member is obsolete
                     await loanApis.Associates.UnassignAssociateAsync(nextMilestone.Id);
+#pragma warning restore CS0618 // Type or member is obsolete
                     milestones = await milestonesApi.GetMilestonesAsync();
                     nextMilestone = milestones.First(ms => ms.Id == nextMilestone.Id);
                     Assert.IsNull(nextMilestone.LoanAssociate.Id);

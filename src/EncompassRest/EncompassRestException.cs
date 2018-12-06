@@ -8,6 +8,9 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest
 {
+    /// <summary>
+    /// The exception class used when there are Api errors.
+    /// </summary>
     public sealed class EncompassRestException : Exception
     {
         internal static async Task<EncompassRestException> CreateAsync(string message, HttpResponseMessage response)
@@ -48,16 +51,34 @@ namespace EncompassRest
             return sb.ToString();
         }
 
+        /// <summary>
+        /// The Api request.
+        /// </summary>
         public HttpRequestMessage Request => Response.RequestMessage;
 
+        /// <summary>
+        /// The Api request body.
+        /// </summary>
         public string RequestContent { get; }
 
+        /// <summary>
+        /// The Api response status code.
+        /// </summary>
         public HttpStatusCode StatusCode => Response.StatusCode;
 
+        /// <summary>
+        /// The Api response.
+        /// </summary>
         public HttpResponseMessage Response { get; }
 
+        /// <summary>
+        /// The Api response body.
+        /// </summary>
         public string ResponseContent { get; }
 
+        /// <summary>
+        /// The Api response correlation id as specified in the X-Correlation-ID header. Useful to Ellie Mae for inspecting issues.
+        /// </summary>
         public string CorrelationId => Response.Headers.TryGetValues("X-Correlation-ID", out var values) ? values.FirstOrDefault() : null;
 
         private EncompassRestException(string message, HttpResponseMessage response, string responseContent, string requestContent)
