@@ -5,6 +5,9 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Settings.Loan
 {
+    /// <summary>
+    /// The Loan Custom Fields Apis.
+    /// </summary>
     public sealed class CustomFieldDefinitions : ApiObject
     {
         internal CustomFieldDefinitions(EncompassRestClient client)
@@ -12,10 +15,27 @@ namespace EncompassRest.Settings.Loan
         {
         }
 
+        /// <summary>
+        /// Gets all custom field definitions.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task<List<CustomFieldDefinition>> GetCustomFieldsAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<CustomFieldDefinition>(null, null, nameof(GetCustomFieldsAsync), null, cancellationToken);
 
+        /// <summary>
+        /// Gets all custom field definitions as raw json.
+        /// </summary>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task<string> GetCustomFieldsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetCustomFieldsRawAsync), null, cancellationToken);
 
+        /// <summary>
+        /// Gets the custom field definition with the specified <paramref name="fieldId"/>.
+        /// </summary>
+        /// <param name="fieldId">The field id of the custom field definition to get.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task<CustomFieldDefinition> GetCustomFieldAsync(string fieldId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
@@ -23,6 +43,13 @@ namespace EncompassRest.Settings.Loan
             return GetDirtyAsync<CustomFieldDefinition>(fieldId, null, nameof(GetCustomFieldAsync), fieldId, cancellationToken);
         }
 
+        /// <summary>
+        /// Gets the custom field definition with the specified <paramref name="fieldId"/> as raw json.
+        /// </summary>
+        /// <param name="fieldId">The field id of the custom field definition to get.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task<string> GetCustomFieldRawAsync(string fieldId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));

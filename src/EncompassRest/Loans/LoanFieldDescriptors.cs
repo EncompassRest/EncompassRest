@@ -12,6 +12,9 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    /// <summary>
+    /// LoanFieldDescriptors
+    /// </summary>
     public sealed class LoanFieldDescriptors : ApiObject
     {
         private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new[]
@@ -24,12 +27,24 @@ namespace EncompassRest.Loans
             new KeyValuePair<string, ModelPathSettings>("Loan.CurrentApplication.Employment", new ModelPathSettings(new Dictionary<string, string> { { nameof(Employment.CurrentEmploymentIndicator), "true" } }))
         }, 1, name => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(name.Replace("_", string.Empty), false));
 
+        /// <summary>
+        /// All basic field mappings. e.g. fields 2, VEND.X263, etc.
+        /// </summary>
         public static LoanFieldMappings FieldMappings { get; } = new LoanFieldMappings();
 
+        /// <summary>
+        /// All field pattern mappings. e.g. fields HUDNN01, BENN05, etc.
+        /// </summary>
         public static LoanFieldPatternMappings FieldPatternMappings { get; } = new LoanFieldPatternMappings();
 
+        /// <summary>
+        /// The standard fields. These are statically populated.
+        /// </summary>
         public static ReadOnlyDictionary<string, FieldDescriptor> StandardFields { get; } = new ReadOnlyDictionary<string, FieldDescriptor>(new FieldDescriptors(FieldMappings._standardFields, FieldPatternMappings._standardFieldPatterns));
 
+        /// <summary>
+        /// The virtual fields. These are statically populated.
+        /// </summary>
         public static ReadOnlyDictionary<string, FieldDescriptor> VirtualFields { get; } = new ReadOnlyDictionary<string, FieldDescriptor>(new FieldDescriptors(FieldMappings._virtualFields, FieldPatternMappings._virtualFieldPatterns));
 
         internal static ModelPath CreateModelPath(string modelPath)
@@ -143,10 +158,21 @@ namespace EncompassRest.Loans
             }
         }
 
+        /// <summary>
+        /// Retrieves the field descriptor for the specified field id.
+        /// </summary>
+        /// <param name="fieldId">The field id of the field descriptor to get.</param>
+        /// <returns></returns>
         public FieldDescriptor this[string fieldId] => GetFieldDescriptor(fieldId, CustomFields);
 
+        /// <summary>
+        /// The custom fields cache. To retrieve the Standard and Virtual fields use the static properties <see cref="StandardFields"/> and <see cref="VirtualFields"/> respectively.
+        /// </summary>
         public ReadOnlyDictionary<string, FieldDescriptor> CustomFields => Client.CommonCache.CustomFields;
 
+        /// <summary>
+        /// The utc date and time custom fields were last refreshed.
+        /// </summary>
         public DateTime? CustomFieldsLastRefreshedUtc => Client.CommonCache.CustomFieldsLastRefreshedUtc;
 
         internal LoanFieldDescriptors(EncompassRestClient client)
@@ -154,6 +180,11 @@ namespace EncompassRest.Loans
         {
         }
 
+        /// <summary>
+        /// Refreshes the custom fields cache.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
         public Task RefreshCustomFieldsAsync(CancellationToken cancellationToken = default) => Client.CommonCache.RefreshCustomFieldsAsync(Client, cancellationToken);
 
         internal abstract class FieldInfo

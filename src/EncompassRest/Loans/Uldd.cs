@@ -456,6 +456,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Mac - Closing Cost Funds Type Other Description [ULDD.FRE.CLOSINGCOST2FUNDSTYPEOTHERDESC]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Grant\"]")]
         public StringEnumValue<FundsTypeDescription> ClosingCost2FundsTypeOtherDescription { get => _closingCost2FundsTypeOtherDescription; set => SetField(ref _closingCost2FundsTypeOtherDescription, value); }
 
         /// <summary>
@@ -482,6 +483,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Mac - Closing Cost Funds Type Other Description [ULDD.FRE.CLOSINGCOST3FUNDSTYPEOTHERDESC]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Grant\"]")]
         public StringEnumValue<FundsTypeDescription> ClosingCost3FundsTypeOtherDescription { get => _closingCost3FundsTypeOtherDescription; set => SetField(ref _closingCost3FundsTypeOtherDescription, value); }
 
         /// <summary>
@@ -508,6 +510,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Mac - Closing Cost Funds Type Other Description [ULDD.FRE.CLOSINGCOST4FUNDSTYPEOTHERDESC]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Grant\"]")]
         public StringEnumValue<FundsTypeDescription> ClosingCost4FundsTypeOtherDescription { get => _closingCost4FundsTypeOtherDescription; set => SetField(ref _closingCost4FundsTypeOtherDescription, value); }
 
         /// <summary>
@@ -534,6 +537,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Mac - Closing Cost Funds Type Other Description [ULDD.X107]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Grant\"]")]
         public StringEnumValue<FundsTypeDescription> ClosingCostFundsTypeOtherDescription { get => _closingCostFundsTypeOtherDescription; set => SetField(ref _closingCostFundsTypeOtherDescription, value); }
 
         /// <summary>
@@ -650,6 +654,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Mac - Down Payment Other Type Description [ULDD.X113]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Grant\"]")]
         public StringEnumValue<FundsTypeDescription> DownPaymentOtherTypeDescription { get => _downPaymentOtherTypeDescription; set => SetField(ref _downPaymentOtherTypeDescription, value); }
 
         /// <summary>

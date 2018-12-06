@@ -2,8 +2,14 @@
 
 namespace EncompassRest.Services
 {
-    public abstract class ServiceOptions : SerializableObject
+    /// <summary>
+    /// ServiceOptions
+    /// </summary>
+    public abstract class ServiceOptions : ExtensibleObject
     {
+        /// <summary>
+        /// Indicates the request type being submitted.
+        /// </summary>
         public string RequestType { get; }
 
         internal ServiceOptions(string requestType)

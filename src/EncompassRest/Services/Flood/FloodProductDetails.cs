@@ -3,10 +3,16 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Services.Flood
 {
-    public sealed class FloodProductDetails : SerializableObject
+    /// <summary>
+    /// FloodProductDetails
+    /// </summary>
+    public sealed class FloodProductDetails : ExtensibleObject
     {
         private StringEnumValue<FloodProductName> _name;
 
+        /// <summary>
+        /// The name of the flood product being ordered.
+        /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public StringEnumValue<FloodProductName> Name
         {
@@ -18,6 +24,9 @@ namespace EncompassRest.Services.Flood
             }
         }
 
+        /// <summary>
+        /// ServiceLink product identifier for the specific Flood product being requested.
+        /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
     }

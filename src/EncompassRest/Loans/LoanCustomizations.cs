@@ -15,6 +15,9 @@ namespace EncompassRest.Loans
         private LoanObjectBoundApis _loanApis;
         internal List<TransientLoanUpdate> TransientLoanUpdates;
 
+        /// <summary>
+        /// The <see cref="EncompassRestClient"/> associated with this object.
+        /// </summary>
         [JsonIgnore]
         public EncompassRestClient Client { get; internal set; }
 
@@ -30,9 +33,15 @@ namespace EncompassRest.Loans
         [Obsolete("Use Loan.LoanApis.CustomDataObjects instead.")]
         public LoanCustomDataObjects CustomDataObjects => LoanApis.CustomDataObjects;
 
+        /// <summary>
+        /// The Loan Apis for this loan. Loan object must be initialized to use this.
+        /// </summary>
         [JsonIgnore]
         public LoanObjectBoundApis LoanApis => _loanApis ?? throw new InvalidOperationException("Loan object must be initialized to use LoanApis");
 
+        /// <summary>
+        /// The loan fields collection.
+        /// </summary>
         [JsonIgnore]
         public LoanFields Fields => _fields ?? (_fields = new LoanFields(this));
 
@@ -40,6 +49,10 @@ namespace EncompassRest.Loans
         string IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }
 
         private Application _currentApplication;
+
+        /// <summary>
+        /// The current application/borrower pair.
+        /// </summary>
         [JsonIgnore]
         public Application CurrentApplication
         {
@@ -63,19 +76,19 @@ namespace EncompassRest.Loans
         }
 
         /// <summary>
-        /// Loan update constructor
+        /// The Loan update constructor.
         /// </summary>
-        /// <param name="client"></param>
-        /// <param name="loanId"></param>
+        /// <param name="client">The client to initialize the loan object with.</param>
+        /// <param name="loanId">The loan id of the Encompass loan to update.</param>
         public Loan(EncompassRestClient client, string loanId)
         {
             Initialize(client, loanId);
         }
 
         /// <summary>
-        /// Loan creation constructor
+        /// The Loan creation constructor.
         /// </summary>
-        /// <param name="client"></param>
+        /// <param name="client">The client to associate the object with.</param>
         public Loan(EncompassRestClient client)
         {
             Preconditions.NotNull(client, nameof(client));
@@ -84,7 +97,7 @@ namespace EncompassRest.Loans
         }
 
         /// <summary>
-        /// Loan deserialization constructor
+        /// The Loan deserialization constructor.
         /// </summary>
         [JsonConstructor]
         [Obsolete("Use EncompassRestClient parameter constructor instead.")]
@@ -93,6 +106,11 @@ namespace EncompassRest.Loans
         {
         }
 
+        /// <summary>
+        /// Initializes the loan object with the specified <paramref name="client"/> and <paramref name="loanId"/>. This allows the use of the <see cref="LoanApis"/> property.
+        /// </summary>
+        /// <param name="client">The client to initialize the loan object with.</param>
+        /// <param name="loanId">The loan id of the Encompass loan.</param>
         public void Initialize(EncompassRestClient client, string loanId)
         {
             Preconditions.NotNull(client, nameof(client));

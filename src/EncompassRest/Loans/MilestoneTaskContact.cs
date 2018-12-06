@@ -1,3 +1,5 @@
+using EncompassRest.Loans.Enums;
+
 namespace EncompassRest.Loans
 {
     /// <summary>
@@ -14,7 +16,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _name;
         private DirtyValue<string> _phone;
         private DirtyValue<string> _role;
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         private DirtyValue<string> _zip;
 
         /// <summary>
@@ -65,7 +67,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskContact State
         /// </summary>
-        public string State { get => _state; set => SetField(ref _state, value); }
+        public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
 
         /// <summary>
         /// MilestoneTaskContact Zip

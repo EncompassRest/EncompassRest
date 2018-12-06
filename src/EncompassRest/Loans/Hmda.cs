@@ -107,7 +107,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<TypeOfPurchaser>> _repurchasedTypeOfPurchaser;
         private DirtyValue<string> _respondentID;
         private DirtyValue<StringEnumValue<ReverseMortgage>> _reverseMortgage;
-        private DirtyValue<string> _stateCode;
+        private DirtyValue<StringEnumValue<State>> _stateCode;
         private DirtyValue<StringEnumValue<SubmissionOfApplication>> _submissionOfApplication;
         private DirtyValue<string> _totalLoanCosts;
         private DirtyValue<string> _totalPointsAndFees;
@@ -641,7 +641,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property State Code [1395]
         /// </summary>
-        public string StateCode { get => _stateCode; set => SetField(ref _stateCode, value); }
+        public StringEnumValue<State> StateCode { get => _stateCode; set => SetField(ref _stateCode, value); }
 
         /// <summary>
         /// Submission of Application [HMDA.X42]

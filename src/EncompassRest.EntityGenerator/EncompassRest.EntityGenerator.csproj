@@ -36,14 +36,14 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elli.Api.Base, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6aaa18227aa217d3, processorArchitecture=MSIL">
-      <HintPath>..\packages\Elli.Api.Base.1.3.0\lib\Elli.Api.Base.dll</HintPath>
+    <Reference Include="Elli.Api.Base, Version=1.0.0.0, Culture=neutral, PublicKeyToken=86643d5400a17684, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elli.Api.Base.1.4.1\lib\Elli.Api.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Elli.Api.Loans, Version=1.3.0.0, Culture=neutral, PublicKeyToken=6aaa18227aa217d3, processorArchitecture=MSIL">
-      <HintPath>..\packages\Elli.Api.Loans.1.3.0\lib\Elli.Api.Loans.dll</HintPath>
+    <Reference Include="Elli.Api.Loans, Version=1.4.1.0, Culture=neutral, PublicKeyToken=86643d5400a17684, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elli.Api.Loans.1.4.1\lib\Elli.Api.Loans.dll</HintPath>
     </Reference>
-    <Reference Include="Elli.Api.OAuth, Version=1.3.0.0, Culture=neutral, PublicKeyToken=6aaa18227aa217d3, processorArchitecture=MSIL">
-      <HintPath>..\packages\Elli.Api.Base.1.3.0\lib\Elli.Api.OAuth.dll</HintPath>
+    <Reference Include="Elli.Api.OAuth, Version=1.4.1.0, Culture=neutral, PublicKeyToken=86643d5400a17684, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elli.Api.Base.1.4.1\lib\Elli.Api.OAuth.dll</HintPath>
     </Reference>
     <Reference Include="EncompassObjects">
       <HintPath>C:\SmartClientCache\Apps\Ellie Mae\Encompass\SDK\EncompassObjects.dll</HintPath>
