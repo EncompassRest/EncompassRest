@@ -7,8 +7,7 @@ namespace EncompassRest.Loans
 {
     partial class Application
     {
-        [IdPropertyName(nameof(ApplicationId))]
-        string IIdentifiable.Id { get => ApplicationId ?? Id; set { ApplicationId = value; Id = value; } }
+        string IIdentifiable.Id { get => Id ?? ApplicationId; set { Id = value; ApplicationId = value; } }
     }
 
     partial class CustomField
