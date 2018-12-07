@@ -34,7 +34,7 @@ namespace EncompassRest.Tests
                 {
                     Assert.IsTrue(fieldValues.TryGetValue(loanFieldValue.FieldId, out var value));
                     Assert.AreEqual(value, loanFieldValue.Value);
-                    AssertNoExtensionData(loanFieldValue, "LoanFieldValue", loanFieldValue.FieldId);
+                    AssertNoExtensionData(loanFieldValue, "LoanFieldValue", loanFieldValue.FieldId, true);
                 }
             }
             finally

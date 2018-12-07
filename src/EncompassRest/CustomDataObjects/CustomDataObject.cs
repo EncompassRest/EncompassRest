@@ -59,7 +59,9 @@ namespace EncompassRest.CustomDataObjects
 
         [Obsolete("Use another constructor instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public CustomDataObject()
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
         }
     }

@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest
 {
     /// <summary>
     /// State

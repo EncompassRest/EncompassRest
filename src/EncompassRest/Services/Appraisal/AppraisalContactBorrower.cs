@@ -23,7 +23,7 @@ namespace EncompassRest.Services.Appraisal
         /// The borrower's state.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string State { get; set; }
+        public StringEnumValue<State> State { get; set; }
 
         /// <summary>
         /// The borrower's zip code.

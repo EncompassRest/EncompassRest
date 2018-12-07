@@ -1,12 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Filters;
 using EncompassRest.LoanPipeline;
-using EncompassRest.Schema;
 using EncompassRest.Utilities;
-using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
@@ -20,24 +17,7 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var canonicalNames = await client.Pipeline.GetCanonicalNamesAsync();
 
-            var categories = new HashSet<string>(canonicalNames.PipelineLoanReportFieldDefs.Select(p => p.Category.Value));
-            categories.Remove(null);
-            var existingCategories = new HashSet<string>(Enums.GetMembers<FieldDefinitionCategory>().Select((EnumMember<FieldDefinitionCategory> m) => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
-            var newCategories = categories.Except(existingCategories).ToList();
-            Assert.AreEqual(0, newCategories.Count, $"{nameof(FieldDefinitionCategory)}: {string.Join(", ", newCategories)}");
-            Assert.IsTrue(canonicalNames.PipelineLoanReportFieldDefs.All(p => p.Category.EnumValue.HasValue || p.Category.Value == null));
-
-            var fieldFormats = new HashSet<LoanFieldFormat>(canonicalNames.PipelineLoanReportFieldDefs.Select(p => p.FieldDefinition.Format));
-            var existingFieldFormats = new HashSet<LoanFieldFormat>(Enums.GetValues<LoanFieldFormat>());
-            var newFieldFormats = fieldFormats.Except(existingFieldFormats).ToList();
-            Assert.AreEqual(0, newFieldFormats.Count, $"{nameof(LoanFieldFormat)}: {string.Join(", ", newFieldFormats)}");
-
-            var canonicalFieldNames = new HashSet<string>(canonicalNames.PipelineLoanReportFieldDefs.Select(p => p.CriterionFieldName).Where(n => n?.StartsWith("Loan.") == true));
-            var existingCanonicalFieldNames = new HashSet<string>(Enums.GetValues<CanonicalLoanField>().Select(v => v.GetCanonicalName()));
-            var newCanonicalFieldNames = canonicalFieldNames.Except(existingCanonicalFieldNames, StringComparer.OrdinalIgnoreCase).ToList();
-            Assert.AreEqual(0, newCanonicalFieldNames.Count, $"{nameof(CanonicalLoanField)}: {string.Join(", ", newCanonicalFieldNames)}");
-
-            AssertNoExtensionData(canonicalNames, "CanonicalNames", "CanonicalNames");
+            AssertNoExtensionData(canonicalNames, "CanonicalNames", "CanonicalNames", true);
         }
 
         [TestMethod]

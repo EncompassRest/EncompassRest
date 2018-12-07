@@ -90,7 +90,7 @@ namespace EncompassRest.Services.Verification
         /// State of the borrower's company. Required if ordering a business product (Form 1065 or Form 1120).
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string State { get; set; }
+        public StringEnumValue<State> State { get; set; }
 
         /// <summary>
         /// City of the borrower's company. Required if ordering a business product (Form 1065 or Form 1120).

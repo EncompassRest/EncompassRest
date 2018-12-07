@@ -22,19 +22,19 @@ namespace EncompassRest.Tests
                 var associates = await loanApis.Associates.GetAssociatesAsync();
                 foreach (var associate in associates)
                 {
-                    AssertNoExtensionData(associate, "Associate", associate.Id);
+                    AssertNoExtensionData(associate, "Associate", associate.Id, true);
                 }
                 var milestones = await loanApis.Milestones.GetMilestonesAsync();
                 foreach (var milestone in milestones)
                 {
-                    AssertNoExtensionData(milestone, "Milestone", milestone.MilestoneName);
+                    AssertNoExtensionData(milestone, "Milestone", milestone.MilestoneName, true);
                     var retrievedMilestone = await loanApis.Milestones.GetMilestoneAsync(milestone.Id);
                     Assert.AreEqual(milestone.ToString(), retrievedMilestone.ToString());
                 }
                 var milestoneFreeRoles = await loanApis.MilestoneFreeRoles.GetMilestoneFreeRolesAsync();
                 foreach (var milestoneFreeRole in milestoneFreeRoles)
                 {
-                    AssertNoExtensionData(milestoneFreeRole, "MilestoneFreeRole", milestoneFreeRole.Id);
+                    AssertNoExtensionData(milestoneFreeRole, "MilestoneFreeRole", milestoneFreeRole.Id, true);
                     var retrievedMilestoneFreeRole = await loanApis.MilestoneFreeRoles.GetMilestoneFreeRoleAsync(milestoneFreeRole.Id);
                     Assert.AreEqual(milestoneFreeRole.ToString(), retrievedMilestoneFreeRole.ToString());
                 }

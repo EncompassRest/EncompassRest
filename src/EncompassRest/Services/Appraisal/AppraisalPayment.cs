@@ -53,7 +53,7 @@ namespace EncompassRest.Services.Appraisal
         /// State under billing address.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string State { get; set; }
+        public StringEnumValue<State> State { get; set; }
 
         /// <summary>
         /// Zip code under billing address.

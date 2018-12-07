@@ -82,7 +82,7 @@ namespace EncompassRest.Company.Users
         /// <summary>
         /// Gets the current user and optionally includes the email signature in the response object.
         /// </summary>
-        /// <param name="viewEmailSignature">Optionally include the email signature in the response object.</param>
+        /// <param name="viewEmailSignature">Indicates whether the email signature should be returned as part of the response.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<User> GetCurrentUserAsync(bool? viewEmailSignature, CancellationToken cancellationToken = default) => GetUserAsync("me", viewEmailSignature, cancellationToken);
@@ -99,7 +99,7 @@ namespace EncompassRest.Company.Users
         /// Gets the user with the specified <paramref name="userId"/> and optionally includes the email signature in the response object.
         /// </summary>
         /// <param name="userId">The user's id.</param>
-        /// <param name="viewEmailSignature">Optionally include the email signature in the response object.</param>
+        /// <param name="viewEmailSignature">Indicates whether the email signature should be returned as part of the response.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public async Task<User> GetUserAsync(string userId, bool? viewEmailSignature, CancellationToken cancellationToken = default)

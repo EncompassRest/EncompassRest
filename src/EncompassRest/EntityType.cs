@@ -64,6 +64,10 @@
         /// <summary>
         /// CompensationPlan
         /// </summary>
-        CompensationPlan = 14
+        CompensationPlan = 14,
+        /// <summary>
+        /// HmdaProfile
+        /// </summary>
+        HmdaProfile = 15
     }
 }

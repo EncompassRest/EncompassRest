@@ -1,5 +1,4 @@
 ﻿using System;
-using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Company.Users
 {

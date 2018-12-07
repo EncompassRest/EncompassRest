@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Utilities;
 using EncompassRest.Webhook;
-using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
@@ -21,26 +19,8 @@ namespace EncompassRest.Tests
 
             foreach (var resource in resources)
             {
-                AssertNoExtensionData(resource, "Resource", resource.Name);
+                AssertNoExtensionData(resource, "Resource", resource.Name, true);
             }
-
-            Assert.IsTrue(resources.All(r => r.Name.EnumValue.HasValue));
-            var webhookResourceTypes = new HashSet<string>(resources.Select(r => r.Name.Value));
-            var existingWebhookResourceTypes = new HashSet<string>(Enums.GetMembers<WebhookResourceType>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
-            var newWebhookResourceTypes = webhookResourceTypes.Except(existingWebhookResourceTypes).ToList();
-            Assert.AreEqual(0, newWebhookResourceTypes.Count);
-
-            Assert.IsTrue(resources.All(r => r.Events.All(e => e.Name.EnumValue.HasValue)));
-            var webhookEvents = new HashSet<string>(resources.SelectMany(r => r.Events.Select(e => e.Name.Value)));
-            var existingWebhookEvents = new HashSet<string>(Enums.GetMembers<WebhookResourceEvent>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
-            var newWebhookEvents = webhookEvents.Except(existingWebhookEvents).ToList();
-            Assert.AreEqual(0, newWebhookEvents.Count);
-
-            Assert.IsTrue(resources.All(r => r.Status.EnumValue.HasValue));
-            var webhookStatuses = new HashSet<string>(resources.Select(r => r.Status.Value));
-            var existingWebhookStatuses = new HashSet<string>(Enums.GetMembers<WebhookResourceStatus>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
-            var newWebhookStatuses = webhookStatuses.Except(existingWebhookStatuses).ToList();
-            Assert.AreEqual(0, newWebhookStatuses.Count);
         }
 
         [TestMethod]

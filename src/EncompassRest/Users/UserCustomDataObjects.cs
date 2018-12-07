@@ -2,6 +2,7 @@
 
 namespace EncompassRest.Users
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public sealed class UserCustomDataObjects : CustomDataObjects.CustomDataObjects
     {
         public string UserId { get; }
@@ -14,4 +15,5 @@ namespace EncompassRest.Users
 
         internal override string CreateErrorMessage(string methodName, string resourceId = null) => base.CreateErrorMessage(methodName, $"{UserId}{resourceId?.PrecedeWith("/")}");
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Elli.Api.Loans.Model;
-using EncompassRest.Company.Users.Rights;
 using EncompassRest.Loans;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
@@ -121,7 +120,6 @@ namespace EncompassRest
                 typeof(HmdaLoanPurpose),
                 typeof(PaidToOrBy),
                 typeof(BorrowerOrCoBorrower),
-                typeof(State),
                 typeof(NonVolAdjustmentType),
                 typeof(HudLoanDataResidencyType),
                 typeof(LienPosition),
@@ -248,17 +246,10 @@ namespace EncompassRest
             try
             {
                 Dictionary<string, EntitySchema> entityTypes;
-                //string userRights;
                 using (var client = await TestBaseClass.GetTestClientAsync().ConfigureAwait(false))
                 {
                     entityTypes = (await client.Schema.GetLoanSchemaAsync(true).ConfigureAwait(false)).EntityTypes;
-                    //userRights = await client.Company.Users.GetUserApis("me").Rights.GetRightsRawAsync(UserRightsType.Effective).ConfigureAwait(false);
                 }
-
-                //var rightsPath = "Company\\Users\\Rights";
-                //Directory.CreateDirectory(rightsPath);
-
-                //GenerateClassesFromJson(rightsPath, "EncompassRest.Company.Users.Rights", "UserRights", null, JObject.Parse(userRights), new HashSet<string>(StringComparer.OrdinalIgnoreCase), "Rights");
 
                 foreach (var pair in s_mergeEntities)
                 {
@@ -1013,7 +1004,10 @@ namespace EncompassRest
                     }
                     if (propertyType.StartsWith("StringEnumValue<"))
                     {
-                        enumsNamespace = true;
+                        if (propertyType != "StringEnumValue<State>")
+                        {
+                            enumsNamespace = true;
+                        }
                     }
                     else if (propertyType == "DateTime?")
                     {

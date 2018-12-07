@@ -1,5 +1,3 @@
-using EncompassRest.Loans.Enums;
-
 namespace EncompassRest.Loans
 {
     /// <summary>

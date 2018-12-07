@@ -23,15 +23,21 @@ namespace EncompassRest.Loans
 
         [JsonIgnore]
         [Obsolete("Use Loan.LoanApis.Documents instead.")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public LoanDocuments Documents => LoanApis.Documents;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         [JsonIgnore]
         [Obsolete("Use Loan.LoanApis.Attachments instead.")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public LoanAttachments Attachments => LoanApis.Attachments;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         [JsonIgnore]
         [Obsolete("Use Loan.LoanApis.CustomDataObjects instead.")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public LoanCustomDataObjects CustomDataObjects => LoanApis.CustomDataObjects;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// The Loan Apis for this loan. Loan object must be initialized to use this.

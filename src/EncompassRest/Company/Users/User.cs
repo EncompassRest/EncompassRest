@@ -36,140 +36,146 @@ namespace EncompassRest.Company.Users
         private DirtyValue<string> _comments;
         private DirtyList<EntityReference> _personas;
         private ConsumerConnectSite _ccSite;
+        private DirtyValue<string> _title;
         private UserApis _userApis;
 
         /// <summary>
-        /// User Id
+        /// User ID belonging to a user in the organization.
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// User LastName
+        /// The user's last name.
         /// </summary>
         public string LastName { get => _lastName; set => SetField(ref _lastName, value); }
 
         /// <summary>
-        /// User FirstName
+        /// The user's first name.
         /// </summary>
         public string FirstName { get => _firstName; set => SetField(ref _firstName, value); }
 
         /// <summary>
-        /// User FullName
+        /// The user's full name.
         /// </summary>
         public string FullName { get => _fullName; set => SetField(ref _fullName, value); }
 
         /// <summary>
-        /// User Email
+        /// The user's email address. The address is displayed in areas such as Conversation Log entries and file contact lists.
         /// </summary>
         public string Email { get => _email; set => SetField(ref _email, value); }
 
         /// <summary>
-        /// User Phone
+        /// The user's phone number. The number is displayed in areas such as Conversation Log entries and file contact lists.
         /// </summary>
         public string Phone { get => _phone; set => SetField(ref _phone, value); }
 
         /// <summary>
-        /// User CellPhone
+        /// The user's cell phone number.
         /// </summary>
         public string CellPhone { get => _cellPhone; set => SetField(ref _cellPhone, value); }
 
         /// <summary>
-        /// User Fax
+        /// The user's fax number, if applicable.
         /// </summary>
         public string Fax { get => _fax; set => SetField(ref _fax, value); }
 
         /// <summary>
-        /// User EmployeeId
+        /// The Employee ID Number is intended for use with the Commissions360 product, which can import the field data from Encompass and pass the employee ID number to third-party payroll systems to streamline payments to Encompass users via the Commissions360 system.
         /// </summary>
         public string EmployeeId { get => _employeeId; set => SetField(ref _employeeId, value); }
 
         /// <summary>
-        /// User ApiUser
+        /// Indicates if the user is an API User.
         /// </summary>
         public bool? ApiUser { get => _apiUser; set => SetField(ref _apiUser, value); }
 
         /// <summary>
-        /// User OAuthClientId
+        /// The assigned oAuth Client ID of the user, if the user is defined as an API User.
         /// </summary>
         public string OAuthClientId { get => _oAuthClientId; set => SetField(ref _oAuthClientId, value); }
 
         /// <summary>
-        /// User WorkingFolder
+        /// The default folder for the user's loans.
         /// </summary>
         public string WorkingFolder { get => _workingFolder; set => SetField(ref _workingFolder, value); }
 
         /// <summary>
-        /// User Organization
+        /// EntityReference containing organization details.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public EntityReference Organization { get => _organization; set => SetField(ref _organization, value); }
 
         /// <summary>
-        /// User SubordinateLoanAccess
+        /// Indicates type of access that the user has to all loans in the organization hierarchy below their level.
         /// </summary>
         public StringEnumValue<SubordinateLoanAccess> SubordinateLoanAccess { get => _subordinateLoanAccess; set => SetField(ref _subordinateLoanAccess, value); }
 
         /// <summary>
-        /// User UserIndicators
+        /// Includes list of indicators that are set to <c>true</c>.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IList<string> UserIndicators { get => GetField(ref _userIndicators); set => SetField(ref _userIndicators, value); }
 
         /// <summary>
-        /// User PeerLoanAccess
+        /// Indicates whether the user has access to edit loans in the same level of the organization hierarchy.
         /// </summary>
         public StringEnumValue<PeerLoanAccess> PeerLoanAccess { get => _peerLoanAccess; set => SetField(ref _peerLoanAccess, value); }
 
         /// <summary>
-        /// User LastLogin
+        /// The date and time the user last logged into Encompass.
         /// </summary>
         public DateTime? LastLogin { get => _lastLogin; set => SetField(ref _lastLogin, value); }
 
         /// <summary>
-        /// User EncompassVersion
+        /// The version number of Encompass the user is using.
         /// </summary>
         public string EncompassVersion { get => _encompassVersion; set => SetField(ref _encompassVersion, value); }
 
         /// <summary>
-        /// User ChumId
+        /// The number assigned to the user for the HUD Computerized Homes Underwriting Management System (CHUMS).
         /// </summary>
         public string ChumId { get => _chumId; set => SetField(ref _chumId, value); }
 
         /// <summary>
-        /// User NmlsOriginatorId
+        /// The number assigned to the user by the Nationwide Mortgage Licensing System (NMLS).
         /// </summary>
         public string NmlsOriginatorId { get => _nmlsOriginatorId; set => SetField(ref _nmlsOriginatorId, value); }
 
         /// <summary>
-        /// User NmlsExpirationDate
+        /// The expiration date of the user's NMLS license.
         /// </summary>
         public DateTime? NmlsExpirationDate { get => _nmlsExpirationDate; set => SetField(ref _nmlsExpirationDate, value); }
 
         /// <summary>
-        /// User EmailSignature
+        /// The user's signature inserted into the email templates used for the Status Online feature.
         /// </summary>
         public string EmailSignature { get => _emailSignature; set => SetField(ref _emailSignature, value); }
 
         /// <summary>
-        /// User PersonalStatusOnline
+        /// Indicates whether the user is authorized to use the Status Online feature. If so, a Status Online update is triggered when the user exits a loan after making changes that match the criteria set configured in the status online templates.
         /// </summary>
         public bool? PersonalStatusOnline { get => _personalStatusOnline; set => SetField(ref _personalStatusOnline, value); }
 
         /// <summary>
-        /// User Comments
+        /// Comments added to the user's profile.
         /// </summary>
         public string Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
-        /// User Personas
+        /// EntityReferences containing the user's persona information. The persona controls the views and features available to the user.
         /// </summary>
         public IList<EntityReference> Personas { get => GetField(ref _personas); set => SetField(ref _personas, value); }
 
         /// <summary>
-        /// User CcSite
+        /// Object containing information about the user's Encompass Consumer Connect site.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public ConsumerConnectSite CcSite { get => _ccSite; set => SetField(ref _ccSite, value); }
+
+        /// <summary>
+        /// User Title
+        /// </summary>
+        public string Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// User UserApis

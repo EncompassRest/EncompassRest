@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using EncompassRest.Loans.Enums;
 using EncompassRest.Utilities;
 using EnumsNET;
 
@@ -27,7 +26,7 @@ namespace EncompassRest.Company.Users
         /// <summary>
         /// Gets the user's licenses for a particular state.
         /// </summary>
-        /// <param name="state">The requested license's state.</param>
+        /// <param name="state">The state code for which to return license information.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<List<UserLicenseDetail>> GetLicenseDetailsAsync(State state, CancellationToken cancellationToken = default) => GetLicenseDetailsAsync(state.Validate(nameof(state)).GetValue(), cancellationToken);
@@ -35,7 +34,7 @@ namespace EncompassRest.Company.Users
         /// <summary>
         /// Gets the user's licenses and for a particular state if specified.
         /// </summary>
-        /// <param name="state">The requested license's state if specified.</param>
+        /// <param name="state">The state code for which to return license information.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public Task<List<UserLicenseDetail>> GetLicenseDetailsAsync(string state, CancellationToken cancellationToken = default)

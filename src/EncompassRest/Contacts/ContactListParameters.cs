@@ -58,7 +58,9 @@ namespace EncompassRest.Contacts
 
         [Obsolete("Use another constructor and explicitly set the Fields property in the initializer instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public ContactListParameters(IEnumerable<string> fields)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             Fields = fields;
         }

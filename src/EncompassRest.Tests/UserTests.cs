@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using EncompassRest.Company.Users.Rights;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,7 +21,7 @@ namespace EncompassRest.Tests
             {
                 Assert.IsNotNull(user.Client);
                 Assert.IsNotNull(user.UserApis);
-                AssertNoExtensionData(user, "User", user.Id);
+                AssertNoExtensionData(user, "User", user.Id, true);
             }
         }
 
@@ -33,10 +36,10 @@ namespace EncompassRest.Tests
                 if (user.Id.All(c => char.IsLetter(c)))
                 {
                     var effectiveRights = await user.UserApis.Rights.GetRightsAsync(UserRightsType.Effective);
-                    AssertNoExtensionData(effectiveRights, "EffectiveRights", user.Id);
+                    AssertNoExtensionData(effectiveRights, "EffectiveRights", user.Id, true);
 
                     var assignedRights = await user.UserApis.Rights.GetRightsAsync(UserRightsType.Assigned);
-                    AssertNoExtensionData(assignedRights, "AssignedRights", user.Id);
+                    AssertNoExtensionData(assignedRights, "AssignedRights", user.Id, true);
                 }
             }
         }
@@ -52,7 +55,7 @@ namespace EncompassRest.Tests
                 if (user.Id.All(c => char.IsLetter(c)))
                 {
                     var groups = await user.UserApis.Groups.GetGroupsAsync();
-                    AssertNoExtensionData(groups, "UserGroup", user.Id);
+                    AssertNoExtensionData(groups, "UserGroup", user.Id, true);
                 }
             }
         }
@@ -68,7 +71,7 @@ namespace EncompassRest.Tests
                 if (user.Id.All(c => char.IsLetter(c)))
                 {
                     var compensation = await user.UserApis.Compensation.GetCompensationPlansAsync();
-                    AssertNoExtensionData(compensation, "Compensation", user.Id);
+                    AssertNoExtensionData(compensation, "Compensation", user.Id, true);
                 }
             }
         }
@@ -84,7 +87,7 @@ namespace EncompassRest.Tests
                 if (user.Id.All(c => char.IsLetter(c)))
                 {
                     var licenses = await user.UserApis.Licenses.GetLicenseDetailsAsync();
-                    AssertNoExtensionData(licenses, "License", user.Id);
+                    AssertNoExtensionData(licenses, "License", user.Id, true);
                 }
             }
         }

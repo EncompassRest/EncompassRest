@@ -69,7 +69,9 @@ namespace EncompassRest
 
         [Obsolete("Use the ClientParameters overload instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public static Task<EncompassRestClient> CreateFromUserCredentialsAsync(string apiClientId, string apiClientSecret, string instanceId, string userId, string password, CancellationToken cancellationToken = default) =>
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
             CreateFromUserCredentialsAsync(new ClientParameters(apiClientId, apiClientSecret), instanceId, userId, password, cancellationToken);
 
         /// <summary>
@@ -95,7 +97,9 @@ namespace EncompassRest
 
         [Obsolete("Use the ClientParameters overload instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public static Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string apiClientId, string apiClientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken = default) =>
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
             CreateFromAuthorizationCodeAsync(new ClientParameters(apiClientId, apiClientSecret), redirectUri, authorizationCode, cancellationToken);
 
         /// <summary>
@@ -118,7 +122,9 @@ namespace EncompassRest
 
         [Obsolete("Use CreateFromAccessTokenAsync instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public static EncompassRestClient CreateFromAccessToken(ClientParameters parameters, string accessToken)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             Preconditions.NotNull(parameters, nameof(parameters));
             Preconditions.NotNullOrEmpty(accessToken, nameof(accessToken));
@@ -130,8 +136,10 @@ namespace EncompassRest
 
         [Obsolete("Use the ClientParameters overload instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public static EncompassRestClient CreateFromAccessToken(string apiClientId, string apiClientSecret, string accessToken) => CreateFromAccessToken(new ClientParameters(apiClientId, apiClientSecret), accessToken);
-        
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+
         private readonly Func<TokenCreator, Task<string>> _tokenInitializer;
         private int _timeoutRetryCount;
 
@@ -153,6 +161,7 @@ namespace EncompassRest
         private Settings.Settings _settings;
         private Services.Services _services;
         private Company.Company _company;
+        private Organizations.Organizations _organizations;
         private BaseApiClient _baseApiClient;
 
         #region Properties
@@ -321,7 +330,9 @@ namespace EncompassRest
         }
 
         [Obsolete("Use EncompassRestClient.Company.GlobalCustomDataObjects instead.")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public GlobalCustomDataObjects GlobalCustomDataObjects
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             get
             {
@@ -331,7 +342,9 @@ namespace EncompassRest
         }
 
         [Obsolete("Use EncompassRestClient.Company.Users.GetUserApis(userId).CustomDataObjects instead.")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public Users.Users Users
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         {
             get
             {
@@ -385,6 +398,18 @@ namespace EncompassRest
             {
                 var company = _company;
                 return company ?? Interlocked.CompareExchange(ref _company, (company = new Company.Company(this)), null) ?? company;
+            }
+        }
+
+        /// <summary>
+        /// Organizations Apis
+        /// </summary>
+        public Organizations.Organizations Organizations
+        {
+            get
+            {
+                var organizations = _organizations;
+                return organizations ?? Interlocked.CompareExchange(ref _organizations, (organizations = new Organizations.Organizations(this)), null) ?? organizations;
             }
         }
 
