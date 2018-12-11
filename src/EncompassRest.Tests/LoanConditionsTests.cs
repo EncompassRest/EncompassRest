@@ -25,7 +25,7 @@ namespace EncompassRest.Tests
                 await underwritingConditions.CreateConditionsAsync(new[] { addedCondition });
                 var conditionId = addedCondition.Id;
                 Assert.IsFalse(string.IsNullOrEmpty(conditionId));
-                Assert.AreEqual(addedCondition.OwnerRole.EntityId, "6");
+                Assert.AreEqual("6", addedCondition.OwnerRole.EntityId);
                 await Task.Delay(1000);
                 conditions = await underwritingConditions.GetConditionsAsync();
                 Assert.IsNotNull(conditions);
