@@ -6,6 +6,7 @@ namespace EncompassRest.Loans.Conditions
     /// <summary>
     /// LoanCondition
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(ForAllApplications) + "," + nameof(Application))]
     public abstract class LoanCondition : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
@@ -14,7 +15,7 @@ namespace EncompassRest.Loans.Conditions
         private DirtyValue<bool?> _isRemoved;
         private DirtyValue<string> _title;
         private DirtyValue<string> _description;
-        private EntityReference _application;
+        private DirtyValue<EntityReference> _application;
         private DirtyValue<bool?> _forAllApplications;
         private DirtyValue<StringEnumValue<ConditionSource>> _source;
         private DirtyValue<DateTime?> _expectedDate;
@@ -23,16 +24,16 @@ namespace EncompassRest.Loans.Conditions
         private DirtyValue<int?> _daysToReceive;
         private DirtyValue<string> _requestedFrom;
         private DirtyValue<DateTime?> _createdDate;
-        private EntityReference _createdBy;
+        private DirtyValue<EntityReference> _createdBy;
         private DirtyValue<bool?> _isRequested;
         private DirtyValue<DateTime?> _requestedDate;
-        private EntityReference _requestedBy;
+        private DirtyValue<EntityReference> _requestedBy;
         private DirtyValue<bool?> _isRerequested;
         private DirtyValue<DateTime?> _rerequestedDate;
-        private EntityReference _rerequestedBy;
+        private DirtyValue<EntityReference> _rerequestedBy;
         private DirtyValue<bool?> _isReceived;
         private DirtyValue<DateTime?> _receivedDate;
-        private EntityReference _receivedBy;
+        private DirtyValue<EntityReference> _receivedBy;
         private DirtyValue<bool?> _isAddedToConditionSet;
         private DirtyList<Comment> _comments;
         private DirtyList<EntityReference> _documents;
@@ -70,7 +71,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Loan application to which to apply the condition. Required if applying condition to a specific application. If you want to apply the condition to all applications of the loan, set <see cref="ForAllApplications"/> to <c>true</c>.
         /// </summary>
-        public EntityReference Application { get => GetField(ref _application); set => SetField(ref _application, value); }
+        public EntityReference Application { get => _application; set => SetField(ref _application, value); }
 
         /// <summary>
         /// A value of <c>true</c> indicates the condition will be linked to all applications or only for a specified application. If linked to a specified application, the application ID must be provided.
@@ -115,7 +116,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who created the condition.
         /// </summary>
-        public EntityReference CreatedBy { get => GetField(ref _createdBy); set => SetField(ref _createdBy, value); }
+        public EntityReference CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Requested.
@@ -130,7 +131,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who requested the condition.
         /// </summary>
-        public EntityReference RequestedBy { get => GetField(ref _requestedBy); set => SetField(ref _requestedBy, value); }
+        public EntityReference RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Re-requested.
@@ -145,7 +146,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who re-requested the condition.
         /// </summary>
-        public EntityReference RerequestedBy { get => GetField(ref _rerequestedBy); set => SetField(ref _rerequestedBy, value); }
+        public EntityReference RerequestedBy { get => _rerequestedBy; set => SetField(ref _rerequestedBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Received.
@@ -160,7 +161,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who received the condition.
         /// </summary>
-        public EntityReference ReceivedBy { get => GetField(ref _receivedBy); set => SetField(ref _receivedBy, value); }
+        public EntityReference ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
 
         /// <summary>
         /// Whether the condition belongs to a condition set.

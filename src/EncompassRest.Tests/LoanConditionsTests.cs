@@ -40,7 +40,57 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(addedCondition.ForAllApplications, retrievedCondition.ForAllApplications);
                 AssertNoExtensionData(retrievedCondition, "RetrievedCondition", retrievedCondition.Title, true);
                 addedCondition.Title = "DEF";
-                addedCondition.ForAllApplications = true;
+                await underwritingConditions.UpdateConditionsAsync(new[] { addedCondition });
+                await Task.Delay(1000);
+                retrievedCondition = await underwritingConditions.GetConditionAsync(conditionId);
+                Assert.AreEqual(addedCondition.Title, retrievedCondition.Title);
+                Assert.IsTrue(await underwritingConditions.DeleteConditionsAsync(new[] { conditionId }));
+                await Task.Delay(1000);
+                Assert.AreEqual(0, (await underwritingConditions.GetConditionsAsync()).Count);
+            }
+            finally
+            {
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        [TestMethod]
+        public async Task LoanConditions_UpdateUnderwritingCondition()
+        {
+            var client = await GetTestClientAsync();
+            var loan = new Loan(client);
+            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+            try
+            {
+                await Task.Delay(1000);
+                var underwritingConditions = loan.LoanApis.Conditions.Underwriting;
+                var conditions = await underwritingConditions.GetConditionsAsync();
+                Assert.IsNotNull(conditions);
+                Assert.AreEqual(0, conditions.Count);
+                var addedCondition = new UnderwritingCondition { Title = "ABC", Source = ConditionSource.RecordersOffice, Application = new EntityReference(loan.CurrentApplication.Id, EntityType.Application) };
+                var conditionId = await underwritingConditions.CreateConditionAsync(addedCondition);
+                Assert.IsFalse(string.IsNullOrEmpty(conditionId));
+                await Task.Delay(1000);
+                conditions = await underwritingConditions.GetConditionsAsync();
+                Assert.IsNotNull(conditions);
+                Assert.AreEqual(1, conditions.Count);
+                Assert.AreEqual(addedCondition.Title, conditions[0].Title);
+                Assert.AreEqual(addedCondition.Source.Value, conditions[0].Source.Value);
+                Assert.AreEqual(addedCondition.Application.EntityId, conditions[0].Application.EntityId);
+                AssertNoExtensionData(conditions[0], "Conditions[0]", conditions[0].Title, true);
+                var retrievedCondition = await underwritingConditions.GetConditionAsync(conditionId);
+                Assert.IsNotNull(retrievedCondition);
+                Assert.AreEqual(addedCondition.Title, retrievedCondition.Title);
+                Assert.AreEqual(addedCondition.Source.Value, retrievedCondition.Source.Value);
+                Assert.AreEqual(addedCondition.Application.EntityId, retrievedCondition.Application.EntityId);
+                AssertNoExtensionData(retrievedCondition, "RetrievedCondition", retrievedCondition.Title, true);
+                addedCondition.Title = "DEF";
                 await underwritingConditions.UpdateConditionsAsync(new[] { addedCondition });
                 await Task.Delay(1000);
                 retrievedCondition = await underwritingConditions.GetConditionAsync(conditionId);
