@@ -10,10 +10,10 @@ namespace EncompassRest.Loans.Conditions
         private DirtyValue<string> _recipient;
         private DirtyValue<bool?> _isSent;
         private DirtyValue<DateTime?> _sentDate;
-        private EntityReference _sentBy;
+        private DirtyValue<EntityReference> _sentBy;
         private DirtyValue<bool?> _isCleared;
         private DirtyValue<DateTime?> _clearedDate;
-        private EntityReference _clearedBy;
+        private DirtyValue<EntityReference> _clearedBy;
 
         /// <summary>
         /// Recipient of the condition.
@@ -33,7 +33,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// User that sent the condition.
         /// </summary>
-        public EntityReference SentBy { get => GetField(ref _sentBy); set => SetField(ref _sentBy, value); }
+        public EntityReference SentBy { get => _sentBy; set => SetField(ref _sentBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Cleared.
@@ -48,6 +48,6 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who cleared the condition.
         /// </summary>
-        public EntityReference ClearedBy { get => GetField(ref _clearedBy); set => SetField(ref _clearedBy, value); }
+        public EntityReference ClearedBy { get => _clearedBy; set => SetField(ref _clearedBy, value); }
     }
 }

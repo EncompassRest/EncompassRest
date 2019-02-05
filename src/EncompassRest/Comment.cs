@@ -10,7 +10,7 @@ namespace EncompassRest
         private DirtyValue<string> _commentId;
         private DirtyValue<string> _comments;
         private DirtyValue<int?> _forRoleId;
-        private EntityReference _forRole;
+        private DirtyValue<EntityReference> _forRole;
         private DirtyValue<DateTime?> _dateCreated;
         private DirtyValue<string> _createdBy;
         private DirtyValue<string> _createdByName;
@@ -35,7 +35,7 @@ namespace EncompassRest
         /// <summary>
         /// Information about the Encompass role ID that has access to this comment.
         /// </summary>
-        public EntityReference ForRole { get => GetField(ref _forRole); set => SetField(ref _forRole, value); }
+        public EntityReference ForRole { get => _forRole; set => SetField(ref _forRole, value); }
 
         /// <summary>
         /// Date the comment was created.

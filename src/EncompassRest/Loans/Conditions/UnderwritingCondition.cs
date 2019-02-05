@@ -16,19 +16,19 @@ namespace EncompassRest.Loans.Conditions
         private DirtyValue<DateTime?> _expirationDate;
         private DirtyValue<bool?> _isFulfilled;
         private DirtyValue<DateTime?> _fulfilledDate;
-        private EntityReference _fulfilledBy;
+        private DirtyValue<EntityReference> _fulfilledBy;
         private DirtyValue<bool?> _isReviewed;
         private DirtyValue<DateTime?> _reviewedDate;
-        private EntityReference _reviewedBy;
+        private DirtyValue<EntityReference> _reviewedBy;
         private DirtyValue<bool?> _isRejected;
         private DirtyValue<DateTime?> _rejectedDate;
-        private EntityReference _rejectedBy;
+        private DirtyValue<EntityReference> _rejectedBy;
         private DirtyValue<bool?> _isCleared;
         private DirtyValue<DateTime?> _clearedDate;
-        private EntityReference _clearedBy;
+        private DirtyValue<EntityReference> _clearedBy;
         private DirtyValue<bool?> _isWaived;
         private DirtyValue<DateTime?> _waivedDate;
-        private EntityReference _waivedBy;
+        private DirtyValue<EntityReference> _waivedBy;
 
         /// <summary>
         /// The milestones to describe when the condition must be satisfied.
@@ -78,7 +78,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who fulfilled the condition.
         /// </summary>
-        public EntityReference FulfilledBy { get => GetField(ref _fulfilledBy); set => SetField(ref _fulfilledBy, value); }
+        public EntityReference FulfilledBy { get => _fulfilledBy; set => SetField(ref _fulfilledBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Reviewed.
@@ -93,7 +93,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who reviewed the condition.
         /// </summary>
-        public EntityReference ReviewedBy { get => GetField(ref _reviewedBy); set => SetField(ref _reviewedBy, value); }
+        public EntityReference ReviewedBy { get => _reviewedBy; set => SetField(ref _reviewedBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Rejected.
@@ -108,7 +108,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who rejected the condition.
         /// </summary>
-        public EntityReference RejectedBy { get => GetField(ref _rejectedBy); set => SetField(ref _rejectedBy, value); }
+        public EntityReference RejectedBy { get => _rejectedBy; set => SetField(ref _rejectedBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Cleared.
@@ -123,7 +123,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who cleared the condition.
         /// </summary>
-        public EntityReference ClearedBy { get => GetField(ref _clearedBy); set => SetField(ref _clearedBy, value); }
+        public EntityReference ClearedBy { get => _clearedBy; set => SetField(ref _clearedBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Waived.
@@ -138,6 +138,6 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who waived the condition.
         /// </summary>
-        public EntityReference WaivedBy { get => GetField(ref _waivedBy); set => SetField(ref _waivedBy, value); }
+        public EntityReference WaivedBy { get => _waivedBy; set => SetField(ref _waivedBy, value); }
     }
 }
