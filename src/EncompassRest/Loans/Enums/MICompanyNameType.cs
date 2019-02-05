@@ -8,9 +8,9 @@ namespace EncompassRest.Loans.Enums
     public enum MICompanyNameType
     {
         /// <summary>
-        /// CMG (FRE removed 05/2015)
+        /// CMG (FNM Removed 1/2017)
         /// </summary>
-        [Description("CMG (FRE removed 05/2015)")]
+        [Description("CMG (FNM Removed 1/2017)")]
         CMG = 0,
         /// <summary>
         /// Essent

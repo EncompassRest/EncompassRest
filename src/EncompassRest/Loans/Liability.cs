@@ -60,6 +60,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _payoffStatusIndicator;
         private DirtyValue<decimal?> _prepaymentPenaltyAmount;
         private DirtyValue<bool?> _printAttachmentIndicator;
+        private DirtyValue<bool?> _printUserJobTitleIndicator;
         private DirtyValue<bool?> _printUserNameIndicator;
         private DirtyValue<StringEnumValue<LienPosition>> _proposedLienPosition;
         private DirtyValue<int?> _remainingTermMonths;
@@ -337,6 +338,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
+
+        /// <summary>
+        /// Liability Print User Job Title [FLNN64]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's job title\"}")]
+        public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
 
         /// <summary>
         /// Liability Print User Name as Title [FLNN38]

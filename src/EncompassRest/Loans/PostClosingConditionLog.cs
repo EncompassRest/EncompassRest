@@ -31,6 +31,8 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         private DirtyValue<string> _guid;
         private DirtyValue<string> _id;
+        private DirtyValue<bool?> _isExternalIndicator;
+        private DirtyValue<bool?> _isInternalIndicator;
         private DirtyValue<bool?> _isPastDue;
         private DirtyValue<bool?> _isSystemSpecificIndicator;
         private DirtyValue<int?> _logRecordIndex;
@@ -166,6 +168,16 @@ namespace EncompassRest.Loans
         /// PostClosingConditionLog Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// PostClosingConditionLog IsExternalIndicator
+        /// </summary>
+        public bool? IsExternalIndicator { get => _isExternalIndicator; set => SetField(ref _isExternalIndicator, value); }
+
+        /// <summary>
+        /// PostClosingConditionLog IsInternalIndicator
+        /// </summary>
+        public bool? IsInternalIndicator { get => _isInternalIndicator; set => SetField(ref _isInternalIndicator, value); }
 
         /// <summary>
         /// PostClosingConditionLog IsPastDue

@@ -66,6 +66,11 @@ namespace EncompassRest.Loans.Enums
         /// DU Form 2075 = Desktop Underwriter Property Inspection Report
         /// </summary>
         [EnumMember(Value = "DU Form 2075 = Desktop Underwriter Property Inspection Report")]
-        DUForm2075DesktopUnderwriterPropertyInspectionReport = 11
+        DUForm2075DesktopUnderwriterPropertyInspectionReport = 11,
+        /// <summary>
+        /// FNM 1004D / FRE 442 = Appraisal Update And Or Completion Report (FRE Removed 5/2017)
+        /// </summary>
+        [EnumMember(Value = "FNM 1004D / FRE 442 = Appraisal Update And Or Completion Report (FRE Removed 5/2017)")]
+        FNM1004DFRE442AppraisalUpdateAndOrCompletionReportFRERemoved52017 = 12
     }
 }

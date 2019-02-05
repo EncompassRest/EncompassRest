@@ -357,6 +357,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Property Info Project Type [2367]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"V_NoReviewSiteCondo\"]")]
         public StringEnumValue<ProjectType> InsuranceProjectType { get => _insuranceProjectType; set => SetField(ref _insuranceProjectType, value); }
 
         /// <summary>

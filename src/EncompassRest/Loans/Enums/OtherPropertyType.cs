@@ -44,6 +44,11 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         [Description("Manufactured Multiwide")]
         [EnumMember(Value = "Manufactured Housing Multiwide")]
-        ManufacturedHousingMultiwide = 6
+        ManufacturedHousingMultiwide = 6,
+        /// <summary>
+        /// Detached Condominium
+        /// </summary>
+        [EnumMember(Value = "Detached Condominium")]
+        DetachedCondominium = 7
     }
 }

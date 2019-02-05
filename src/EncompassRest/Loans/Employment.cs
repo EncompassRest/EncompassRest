@@ -24,24 +24,33 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _businessPhone;
         private DirtyValue<decimal?> _commissionsAmount;
         private DirtyValue<EntityReference> _contact;
+        private DirtyValue<string> _countryCode;
         private DirtyValue<bool?> _currentEmploymentIndicator;
+        private DirtyValue<bool?> _doesNotApply;
         private DirtyValue<string> _email;
         private DirtyValue<string> _employerComments;
         private DirtyValue<string> _employerName;
+        private DirtyValue<decimal?> _employmentMonthlyIncomeAmount;
+        private DirtyValue<DateTime?> _employmentStartDate;
         private DirtyValue<DateTime?> _endDate;
         private DirtyValue<bool?> _entityDeleted;
         private DirtyValue<string> _fax;
         private DirtyValue<string> _id;
+        private DirtyValue<int?> _jobTermMonths;
+        private DirtyValue<decimal?> _militaryEntitlement;
         private DirtyValue<int?> _monthlyIncomeAmount;
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         private DirtyValue<decimal?> _otherAmount;
         private DirtyValue<decimal?> _overtimeAmount;
         private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _owner;
+        private DirtyValue<StringEnumValue<OwnershipInterestType>> _ownershipInterestType;
         private DirtyValue<string> _phoneNumber;
         private DirtyValue<string> _positionDescription;
         private DirtyValue<bool?> _printAttachmentIndicator;
+        private DirtyValue<bool?> _printUserJobTitleIndicator;
         private DirtyValue<bool?> _printUserNameIndicator;
         private DirtyValue<bool?> _selfEmployedIndicator;
+        private DirtyValue<bool?> _specialEmployerRelationshipIndicator;
         private DirtyValue<DateTime?> _startDate;
         private DirtyValue<int?> _timeInLineOfWorkMonths;
         private DirtyValue<int?> _timeInLineOfWorkYears;
@@ -50,6 +59,9 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _title;
         private DirtyValue<string> _titleFax;
         private DirtyValue<string> _titlePhone;
+        private DirtyValue<string> _unitNumber;
+        private DirtyValue<StringEnumValue<UnitType>> _unitType;
+        private DirtyValue<string> _uRLA2020StreetAddress;
         private DirtyValue<DateTime?> _verificationRequestDate;
 
         /// <summary>
@@ -130,10 +142,21 @@ namespace EncompassRest.Loans
         public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
+        /// Employment CountryCode
+        /// </summary>
+        public string CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
+
+        /// <summary>
         /// Employment CurrentEmploymentIndicator
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"true\":\"Current\",\"false\":\"Prior\"}")]
         public bool? CurrentEmploymentIndicator { get => _currentEmploymentIndicator; set => SetField(ref _currentEmploymentIndicator, value); }
+
+        /// <summary>
+        /// Employment DoesNotApply
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does Not Apply\"}")]
+        public bool? DoesNotApply { get => _doesNotApply; set => SetField(ref _doesNotApply, value); }
 
         /// <summary>
         /// Employment Email
@@ -149,6 +172,17 @@ namespace EncompassRest.Loans
         /// Employment EmployerName
         /// </summary>
         public string EmployerName { get => _employerName; set => SetField(ref _employerName, value); }
+
+        /// <summary>
+        /// Employment EmploymentMonthlyIncomeAmount
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? EmploymentMonthlyIncomeAmount { get => _employmentMonthlyIncomeAmount; set => SetField(ref _employmentMonthlyIncomeAmount, value); }
+
+        /// <summary>
+        /// Employment EmploymentStartDate
+        /// </summary>
+        public DateTime? EmploymentStartDate { get => _employmentStartDate; set => SetField(ref _employmentStartDate, value); }
 
         /// <summary>
         /// Employment EndDate
@@ -170,6 +204,17 @@ namespace EncompassRest.Loans
         /// Employment Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// Employment JobTermMonths
+        /// </summary>
+        public int? JobTermMonths { get => _jobTermMonths; set => SetField(ref _jobTermMonths, value); }
+
+        /// <summary>
+        /// Employment MilitaryEntitlement
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MilitaryEntitlement { get => _militaryEntitlement; set => SetField(ref _militaryEntitlement, value); }
 
         /// <summary>
         /// Employment MonthlyIncomeAmount
@@ -201,6 +246,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<BorrowerOrCoBorrower> Owner { get => _owner; set => SetField(ref _owner, value); }
 
         /// <summary>
+        /// Employment OwnershipInterestType
+        /// </summary>
+        public StringEnumValue<OwnershipInterestType> OwnershipInterestType { get => _ownershipInterestType; set => SetField(ref _ownershipInterestType, value); }
+
+        /// <summary>
         /// Employment PhoneNumber
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
@@ -217,6 +267,11 @@ namespace EncompassRest.Loans
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
 
         /// <summary>
+        /// Employment PrintUserJobTitleIndicator
+        /// </summary>
+        public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
+
+        /// <summary>
         /// Employment PrintUserNameIndicator
         /// </summary>
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
@@ -225,6 +280,12 @@ namespace EncompassRest.Loans
         /// Employment SelfEmployedIndicator
         /// </summary>
         public bool? SelfEmployedIndicator { get => _selfEmployedIndicator; set => SetField(ref _selfEmployedIndicator, value); }
+
+        /// <summary>
+        /// Employment SpecialEmployerRelationshipIndicator
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"I am employed by a family member, property seller, real estate agent, or other party to the transaction\"}")]
+        public bool? SpecialEmployerRelationshipIndicator { get => _specialEmployerRelationshipIndicator; set => SetField(ref _specialEmployerRelationshipIndicator, value); }
 
         /// <summary>
         /// Employment StartDate
@@ -267,6 +328,21 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
+
+        /// <summary>
+        /// Employment UnitNumber
+        /// </summary>
+        public string UnitNumber { get => _unitNumber; set => SetField(ref _unitNumber, value); }
+
+        /// <summary>
+        /// Employment UnitType
+        /// </summary>
+        public StringEnumValue<UnitType> UnitType { get => _unitType; set => SetField(ref _unitType, value); }
+
+        /// <summary>
+        /// Employment URLA2020StreetAddress
+        /// </summary>
+        public string URLA2020StreetAddress { get => _uRLA2020StreetAddress; set => SetField(ref _uRLA2020StreetAddress, value); }
 
         /// <summary>
         /// Employment VerificationRequestDate

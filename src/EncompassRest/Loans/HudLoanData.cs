@@ -309,7 +309,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k B2 Contingency Reserve on Repair Costs [MAX23K.X10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ContingencyReserveCostsAmount { get => _contingencyReserveCostsAmount; set => SetField(ref _contingencyReserveCostsAmount, value); }
 
         /// <summary>

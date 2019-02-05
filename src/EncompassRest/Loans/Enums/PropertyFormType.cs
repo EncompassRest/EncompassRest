@@ -71,6 +71,11 @@ namespace EncompassRest.Loans.Enums
         /// Loan Prospector Condition And Marketability
         /// </summary>
         [EnumMember(Value = "Loan Prospector Condition And Marketability")]
-        LoanProspectorConditionAndMarketability = 12
+        LoanProspectorConditionAndMarketability = 12,
+        /// <summary>
+        /// One Unit Residential Appraisal Desk Review Report
+        /// </summary>
+        [EnumMember(Value = "One Unit Residential Appraisal Desk Review Report")]
+        OneUnitResidentialAppraisalDeskReviewReport = 13
     }
 }

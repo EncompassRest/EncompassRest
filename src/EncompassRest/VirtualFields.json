@@ -76,8 +76,18 @@
   },
   {
     "Format": 101,
+    "FieldId": "CurrentTeamMemberAPIClientID",
+    "Description": "Current Loan Team Member API Client ID"
+  },
+  {
+    "Format": 101,
     "FieldId": "CurrentTeamMemberName",
     "Description": "Current Loan Team Member Name"
+  },
+  {
+    "Format": 101,
+    "FieldId": "CurrentTeamMemberTitle",
+    "Description": "Current Loan Team Member Title"
   },
   {
     "Format": 101,
@@ -3484,6 +3494,33 @@
     "Format": 201,
     "FieldId": "LOCKRATE.1821",
     "Description": "Rate Lock - Subject Property Est Value (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE.1825",
+    "Description": "Rate Lock - Trans Details Print 2003 Appl (Most Recent)"
   },
   {
     "Format": 101,
@@ -9950,6 +9987,33 @@
     "Format": 201,
     "FieldId": "LOCKRATE.CONFIRMED.1821",
     "Description": "Rate Request - Subject Property Est Value (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.1825",
+    "Description": "Rate Request - Trans Details Print 2003 Appl (Mostly Recent Confirmed)"
   },
   {
     "Format": 101,
@@ -16624,6 +16688,33 @@
     "Format": 201,
     "FieldId": "LOCKRATE.DENIED.1821",
     "Description": "Rate Lock Denial - Subject Property Est Value (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.1825",
+    "Description": "Rate Lock Denial - Trans Details Print 2003 Appl (Most Recent)"
   },
   {
     "Format": 101,
@@ -23436,6 +23527,33 @@
     "Format": 101,
     "Options": [
       {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.1825",
+    "Description": "Rate Lock Request - Trans Details Print 2003 Appl (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
         "value": "ConstructionToPermanent",
         "text": "Construction - Perm"
       },
@@ -30084,6 +30202,33 @@
     "Format": 101,
     "Options": [
       {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE1.1825",
+    "Description": "Rate Lock - Trans Details Print 2003 Appl (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
         "value": "ConstructionToPermanent",
         "text": "Construction - Perm"
       },
@@ -36540,6 +36685,33 @@
     "Format": 201,
     "FieldId": "LOCKRATE1.DENIED.1821",
     "Description": "Rate Lock Denial - Subject Property Est Value (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.1825",
+    "Description": "Rate Lock Denial - Trans Details Print 2003 Appl (Previous 1)"
   },
   {
     "Format": 101,
@@ -43266,6 +43438,33 @@
     "Format": 101,
     "Options": [
       {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.1825",
+    "Description": "Rate Lock Request - Trans Details Print 2003 Appl (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
         "value": "ConstructionToPermanent",
         "text": "Construction - Perm"
       },
@@ -49862,6 +50061,33 @@
     "Format": 101,
     "Options": [
       {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE2.1825",
+    "Description": "Rate Lock - Trans Details Print 2003 Appl (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
         "value": "ConstructionToPermanent",
         "text": "Construction - Perm"
       },
@@ -56318,6 +56544,33 @@
     "Format": 201,
     "FieldId": "LOCKRATE2.DENIED.1821",
     "Description": "Rate Lock Denial - Subject Property Est Value (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.1825",
+    "Description": "Rate Lock Denial - Trans Details Print 2003 Appl (Previous 2)"
   },
   {
     "Format": 101,
@@ -63044,6 +63297,33 @@
     "Format": 101,
     "Options": [
       {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.1825",
+    "Description": "Rate Lock Request - Trans Details Print 2003 Appl (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
         "value": "ConstructionToPermanent",
         "text": "Construction - Perm"
       },
@@ -69635,6 +69915,33 @@
     "Format": 201,
     "FieldId": "LOCKRATE3.1821",
     "Description": "Rate Request - Subject Property Est Value (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Print 2003 Application"
+      },
+      {
+        "value": "N",
+        "text": ""
+      },
+      {
+        "value": "2004",
+        "text": "Print 2004 & 2005 Application"
+      },
+      {
+        "value": "2006",
+        "text": "Print 2006 Application"
+      },
+      {
+        "value": "2009",
+        "text": "Print 2009 Application"
+      }
+    ],
+    "FieldId": "LOCKRATE3.1825",
+    "Description": "Rate Request - Trans Details Print 2003 Appl (Most Recent)"
   },
   {
     "Format": 101,
@@ -76273,8 +76580,18 @@
   },
   {
     "Format": 101,
+    "FieldId": "PreviousTeamMemberAPIClientID",
+    "Description": "Previous Loan Team Member API Client ID"
+  },
+  {
+    "Format": 101,
     "FieldId": "PreviousTeamMemberName",
     "Description": "Previous Loan Team Member Name"
+  },
+  {
+    "Format": 101,
+    "FieldId": "PreviousTeamMemberTitle",
+    "Description": "Previous Loan Team Member Title"
   },
   {
     "Format": 101,

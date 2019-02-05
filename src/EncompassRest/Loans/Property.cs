@@ -9,6 +9,9 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Property : DirtyExtensibleObject, IIdentifiable
     {
+        private DirtyValue<string> _addressLineText;
+        private DirtyValue<StringEnumValue<UnitType>> _addressUnitDesignatorType;
+        private DirtyValue<string> _addressUnitIdentifier;
         private DirtyValue<string> _assessorsParcelIdentifier;
         private DirtyValue<string> _blockIdentifier;
         private DirtyValue<bool?> _borrowerHomesteadIndicator;
@@ -17,6 +20,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _condotelIndicator;
         private DirtyValue<decimal?> _constructionImprovementCostsAmount;
         private DirtyValue<string> _county;
+        private DirtyValue<bool?> _fHASecondaryResidenceIndicator;
         private DirtyValue<int?> _financedNumberOfUnits;
         private DirtyValue<string> _floodCertificationIdentifier;
         private DirtyValue<decimal?> _freCashOutAmount;
@@ -38,11 +42,15 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _linkedLoanPurposeType;
         private DirtyValue<StringEnumValue<LoanType>> _linkedMortgageType;
         private DirtyValue<StringEnumValue<LoanPurposeType>> _loanPurposeType;
+        private DirtyValue<string> _loanPurposeTypeOtherDescription;
+        private DirtyValue<StringEnumValue<LoanPurposeTypeURLA>> _loanPurposeTypeURLA;
         private DirtyValue<decimal?> _lotAcres;
         private DirtyValue<string> _lotIdentifier;
         private DirtyValue<string> _nameRecordingJurisdiction;
         private DirtyValue<bool?> _nonwarrantableProjectIndicator;
         private DirtyValue<decimal?> _numberOfStories;
+        private DirtyValue<string> _occupancyDisplayField;
+        private DirtyValue<bool?> _oneTimeClose;
         private DirtyValue<string> _otherLoanPurposeDescription;
         private DirtyValue<string> _postalCode;
         private DirtyValue<string> _priorLoanRecordationBookNumber;
@@ -55,6 +63,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _propertyAcquiredYear;
         private DirtyValue<decimal?> _propertyExistingLienAmount;
         private DirtyValue<DateTime?> _propertyLeaseholdExpirationDate;
+        private DirtyValue<bool?> _propertyMixedUsageIndicator;
         private DirtyValue<decimal?> _propertyOriginalCostAmount;
         private DirtyValue<StringEnumValue<PropertyRightsType>> _propertyRightsType;
         private DirtyValue<string> _propertyUsageType;
@@ -72,8 +81,24 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _structureBuiltYear;
         private DirtyValue<bool?> _texasContinuousMoneyLoanIndicator;
         private DirtyValue<decimal?> _totalConstructionValueAmount;
+        private DirtyValue<bool?> _twoTimeClose;
         private DirtyValue<string> _typeRecordingJurisdiction;
         private DirtyValue<string> _unincorporatedAreaName;
+
+        /// <summary>
+        /// Property Address Line Text [URLA.X73]
+        /// </summary>
+        public string AddressLineText { get => _addressLineText; set => SetField(ref _addressLineText, value); }
+
+        /// <summary>
+        /// Address Unit Type Identifier [URLA.X74]
+        /// </summary>
+        public StringEnumValue<UnitType> AddressUnitDesignatorType { get => _addressUnitDesignatorType; set => SetField(ref _addressUnitDesignatorType, value); }
+
+        /// <summary>
+        /// Property Address Unit Identifier [URLA.X75]
+        /// </summary>
+        public string AddressUnitIdentifier { get => _addressUnitIdentifier; set => SetField(ref _addressUnitIdentifier, value); }
 
         /// <summary>
         /// Property Info Parcel # [1894]
@@ -115,6 +140,12 @@ namespace EncompassRest.Loans
         /// Subject Property County [13]
         /// </summary>
         public string County { get => _county; set => SetField(ref _county, value); }
+
+        /// <summary>
+        /// FHA Secondary Residence Indicator [URLA.X76]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"FHA Secondary Residence\"}")]
+        public bool? FHASecondaryResidenceIndicator { get => _fHASecondaryResidenceIndicator; set => SetField(ref _fHASecondaryResidenceIndicator, value); }
 
         /// <summary>
         /// Subject Property # Units [16]
@@ -230,6 +261,16 @@ namespace EncompassRest.Loans
         public StringEnumValue<LoanPurposeType> LoanPurposeType { get => _loanPurposeType; set => SetField(ref _loanPurposeType, value); }
 
         /// <summary>
+        /// Loan Purpose Other Description URLA [URLA.X72]
+        /// </summary>
+        public string LoanPurposeTypeOtherDescription { get => _loanPurposeTypeOtherDescription; set => SetField(ref _loanPurposeTypeOtherDescription, value); }
+
+        /// <summary>
+        /// Display Loan Purpose Type for Property [URLA.X71]
+        /// </summary>
+        public StringEnumValue<LoanPurposeTypeURLA> LoanPurposeTypeURLA { get => _loanPurposeTypeURLA; set => SetField(ref _loanPurposeTypeURLA, value); }
+
+        /// <summary>
         /// Property Info # of Lot Acres [3543]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -255,6 +296,16 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_1)]
         public decimal? NumberOfStories { get => _numberOfStories; set => SetField(ref _numberOfStories, value); }
+
+        /// <summary>
+        /// Property Address Occupancy Display Field [URLA.X108]
+        /// </summary>
+        public string OccupancyDisplayField { get => _occupancyDisplayField; set => SetField(ref _occupancyDisplayField, value); }
+
+        /// <summary>
+        /// Construction Type one time close  [URLA.X192]
+        /// </summary>
+        public bool? OneTimeClose { get => _oneTimeClose; set => SetField(ref _oneTimeClose, value); }
 
         /// <summary>
         /// Trans Details Loan Purpose other [9]
@@ -319,6 +370,12 @@ namespace EncompassRest.Loans
         /// Subject Property Leasehold Expir Date [1034]
         /// </summary>
         public DateTime? PropertyLeaseholdExpirationDate { get => _propertyLeaseholdExpirationDate; set => SetField(ref _propertyLeaseholdExpirationDate, value); }
+
+        /// <summary>
+        /// Mixed Use Property Indicator [URLA.X77]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"If you will occupy the property, will you set aside space within the property to operate your own business? \"}")]
+        public bool? PropertyMixedUsageIndicator { get => _propertyMixedUsageIndicator; set => SetField(ref _propertyMixedUsageIndicator, value); }
 
         /// <summary>
         /// Loan Info Constr Loan Original Cost [21]
@@ -410,6 +467,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalConstructionValueAmount { get => _totalConstructionValueAmount; set => SetField(ref _totalConstructionValueAmount, value); }
+
+        /// <summary>
+        /// Constrution Type two time close [URLA.X193]
+        /// </summary>
+        public bool? TwoTimeClose { get => _twoTimeClose; set => SetField(ref _twoTimeClose, value); }
 
         /// <summary>
         /// Property Info Type of Recording Jurisdiction [3558]

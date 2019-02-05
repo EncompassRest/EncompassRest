@@ -128,7 +128,18 @@ namespace EncompassRest
                 typeof(HelocBalance),
                 typeof(MortgageType),
                 typeof(RefinanceType),
-                typeof(PerDiemCalculationMethodType)
+                typeof(PerDiemCalculationMethodType),
+                typeof(UnitType),
+                typeof(HmdaCreditScoreForDecisionMaking),
+                typeof(HmdaCreditScoringModel),
+                typeof(YNOrPartiallyExempt),
+                typeof(RefinanceCashOutDeterminationType),
+                typeof(GovernmentRefinanceType),
+                typeof(ConstructionToPermanentClosingType),
+                typeof(AssetType),
+                typeof(OtherAssetType),
+                typeof(CounselingFormatType),
+                typeof(Description)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (var sharedEnumType in sharedEnumTypes)
@@ -159,7 +170,13 @@ namespace EncompassRest
             "ClosingCost3FundsTypeOtherDescription",
             "ClosingCost4FundsTypeOtherDescription",
             "ClosingCostFundsTypeOtherDescription",
-            "DownPaymentOtherTypeDescription"
+            "DownPaymentOtherTypeDescription",
+            "HmdaCreditScoreForDecisionMaking",
+            "HmdaCreditScoringModel",
+            "GovernmentRefinanceType",
+            "PropertyFormType",
+            "InsuranceProjectType",
+            "LogLPPropertyType"
         };
 
         private static readonly HashSet<string> s_enumPropertyNamesToUseEntityTypeInName = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -174,7 +191,11 @@ namespace EncompassRest
             "MortgageOriginator",
             "AppraisalType",
             "MortgageType",
-            "RefinanceType"
+            "RefinanceType",
+            "AssetType",
+            "Description",
+            "CounselingFormatType",
+            "Source"
         };
 
         private static readonly Dictionary<string, string> s_explicitStringEnumValues = new Dictionary<string, string>
@@ -190,7 +211,7 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
 
-        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Borrower.Application" };
+        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Borrower.Application", "Uldd.ENoteIndicator", "GoodFaithFeeVarianceCureLog.GffVAlertTriggerFieldLog" };
 
         private static readonly HashSet<string> s_propertiesWithInternalFields = new HashSet<string> { "CustomField.DateValue", "CustomField.NumericValue", "CustomField.StringValue", "FieldLockData.ModelPath" };
 
@@ -221,6 +242,17 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_explicitDateTimeProperties = new HashSet<string> { "DisclosureTracking2015Log.ActualFulfillmentDate", "DisclosureTracking2015Log.ApplicationDate", "DisclosureTracking2015Log.BorrowerActualReceivedDate", "DisclosureTracking2015Log.BorrowerPresumedReceivedDate", "DisclosureTracking2015Log.CDDateIssued", "DisclosureTracking2015Log.ClosingDate", "DisclosureTracking2015Log.CoBorrowerActualReceivedDate", "DisclosureTracking2015Log.CoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.DisclosedDate", "DisclosureTracking2015Log.IntentToProceedDate", "DisclosureTracking2015Log.LockedBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedCoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedDisclosedDateField", "DisclosureTracking2015Log.LockedDisclosedReceivedDate", "DisclosureTracking2015Log.PresumedFulfillmentDate", "DisclosureTracking2015Log.ReceivedDate", "DisclosureTracking2015Log.RevisedDueDate", "DisclosureTracking2015Log.ChangesReceivedDate" };
 
+        private static readonly HashSet<string> s_explicitNADecimalProperties = new HashSet<string>
+        {
+            "Hmda.CLTV",
+            "Hmda.DebtToIncomeRatio",
+            "Hmda.DiscountPoints",
+            "Hmda.InterestRate",
+            "Hmda.LenderCredits",
+            "Hmda.PropertyValue",
+            "Hmda.RateSpread"
+        };
+
         private static readonly Dictionary<string, HashSet<string>> s_enumOptionsToIgnore = new Dictionary<string, HashSet<string>>
         {
             { "LoanDocumentationType", new HashSet<string> { "NoIncomeon1003" } }
@@ -228,7 +260,7 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_ignoredEntities = new HashSet<string> { };
 
-        private static readonly Dictionary<string, List<string>> s_mergeEntities = new Dictionary<string, List<string>> { { "NonBorrowingOwner", new List<string> { "NonBorrowingOwnerContract" } }, { "AlertChangeCircumstance", new List<string> { "AlertChangeCircumstanceContract" } } };
+        private static readonly Dictionary<string, List<string>> s_mergeEntities = new Dictionary<string, List<string>> { { "NonBorrowingOwner", new List<string> { "NonBorrowingOwnerContract" } }, { "AlertChangeCircumstance", new List<string> { "AlertChangeCircumstanceContract" } }, { "OtherIncomeSource", new List<string> { "OtherIncomeSourceContract" } } };
 
         private static readonly string s_encompassSDKFolder = Path.Combine(Directory.EnumerateDirectories("C:\\SmartClientCache\\Apps\\UAC\\Ellie Mae\\").First(), "Encompass360");
 
@@ -926,6 +958,10 @@ namespace EncompassRest
                     else if (s_explicitDateTimeProperties.Contains(entityPropertyName))
                     {
                         propertyType = "DateTime?";
+                    }
+                    else if (s_explicitNADecimalProperties.Contains(entityPropertyName))
+                    {
+                        propertyType = "NA<decimal>";
                     }
                     else if (propertySchema.AllowedValues?.Count > 0)
                     {

@@ -2911,6 +2911,11 @@
   },
   {
     "Format": 101,
+    "FieldId": "LoanTeamMember.APIClientID.{0}",
+    "Description": "Loan Team Member API Client ID - {0}"
+  },
+  {
+    "Format": 101,
     "Options": [
       {
         "value": "User",
@@ -2953,6 +2958,11 @@
     "Format": 101,
     "FieldId": "LoanTeamMember.Phone.{0}",
     "Description": "Loan Team Member Phone - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LoanTeamMember.Title.{0}",
+    "Description": "Loan Team Member Title - {0}"
   },
   {
     "Format": 101,
@@ -3103,6 +3113,16 @@
     "Format": 102,
     "FieldId": "PostCondition.IsSent.{0}",
     "Description": "Post-Condition Is Sent - {0}"
+  },
+  {
+    "Format": 102,
+    "FieldId": "PostCondition.PrintExternally.{0}",
+    "Description": "Post-Condition Is Printed Externally - {0}"
+  },
+  {
+    "Format": 102,
+    "FieldId": "PostCondition.PrintInternally.{0}",
+    "Description": "Post-Condition Is Printed Internally - {0}"
   },
   {
     "Format": 101,

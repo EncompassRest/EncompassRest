@@ -61,6 +61,12 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         [Description("9. Not applicable")]
         [EnumMember(Value = "Not applicable")]
-        NotApplicable = 8
+        NotApplicable = 8,
+        /// <summary>
+        /// 1111 Partially Exempt
+        /// </summary>
+        [Description("1111 Partially Exempt")]
+        [EnumMember(Value = "Partially Exempt")]
+        PartiallyExempt = 9
     }
 }

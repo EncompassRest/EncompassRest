@@ -34,6 +34,12 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         [Description("Print 2009 Application")]
         [EnumMember(Value = "2009")]
-        n2009 = 2009
+        n2009 = 2009,
+        /// <summary>
+        /// Print 2020 Application
+        /// </summary>
+        [Description("Print 2020 Application")]
+        [EnumMember(Value = "2020")]
+        n2020 = 2020
     }
 }

@@ -10,7 +10,9 @@ namespace EncompassRest.Loans
     public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _acountChekAssetId;
+        private DirtyValue<bool?> _activeDuty;
         private DirtyValue<decimal?> _additionalIncomeFromPrimaryEmployment;
+        private DirtyValue<decimal?> _additionalOtherIncome;
         private DirtyValue<decimal?> _adjustedAnnualIncome;
         private DirtyValue<int?> _ageAtApplicationYearsCount;
         private DirtyValue<string> _aliasName;
@@ -32,6 +34,10 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _bankContactPostalCode;
         private DirtyValue<StringEnumValue<State>> _bankContactState;
         private DirtyValue<bool?> _bankruptcyIndicator;
+        private DirtyValue<bool?> _bankruptcyIndicatorChapterEleven;
+        private DirtyValue<bool?> _bankruptcyIndicatorChapterSeven;
+        private DirtyValue<bool?> _bankruptcyIndicatorChapterThirteen;
+        private DirtyValue<bool?> _bankruptcyIndicatorChapterTwelve;
         private DirtyValue<StringEnumValue<BankruptcyForeclosureStatus>> _bankruptcyStatus;
         private DirtyValue<decimal?> _baseIncome;
         private DirtyValue<string> _baseIncomeValidationMessage;
@@ -70,6 +76,9 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _dependentCount;
         private DirtyValue<string> _dependentsAgesDescription;
         private DirtyValue<bool?> _disabledIndicator;
+        private DirtyValue<StringEnumValue<DomesticRelationshipType>> _domesticRelationshipType;
+        private DirtyValue<bool?> _dUVerificationEmploymentIncomeIndicator;
+        private DirtyValue<string> _dUVerificationEmploymentIncomeMessage;
         private DirtyValue<string> _emailAddressText;
         private DirtyValue<bool?> _employmentVerificationAvailable;
         private DirtyValue<string> _employmentVerificationMessage;
@@ -124,9 +133,12 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _freddieMacPerson2;
         private DirtyValue<string> _fullName;
         private DirtyValue<string> _fullNameWithSuffix;
+        private DirtyValue<bool?> _giftsAndGrantsIndicatorBor;
         private DirtyValue<decimal?> _highestCreditLimit;
         private DirtyValue<string> _hmda2003OtherRaceNationalOriginDescription;
         private DirtyValue<StringEnumValue<Hmda2003RaceNationalOriginType>> _hmda2003RaceNationalOriginType;
+        private DirtyValue<StringEnumValue<HmdaCreditScoreForDecisionMaking>> _hmda2CreditScoreForDecisionMaking;
+        private DirtyValue<StringEnumValue<HmdaCreditScoringModel>> _hmda2CreditScoringModel;
         private DirtyValue<bool?> _hmdaAfricanAmericanIndicator;
         private DirtyValue<StringEnumValue<HmdaAge>> _hmdaAge;
         private DirtyValue<bool?> _hmdaAmericanIndianIndicator;
@@ -203,8 +215,13 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<YNOrNA>> _isSexBasedOnVisual;
         private DirtyValue<bool?> _isSocialSecurityAvailable;
         private DirtyValue<bool?> _isTaxReturnAvailable;
+        private DirtyValue<StringEnumValue<JointAssetLiabilityReportingIndicator>> _jointAssetLiabilityReportingIndicator;
+        private DirtyValue<string> _languageCodeOtherDescription;
+        private DirtyValue<StringEnumValue<LanguagePreference>> _languagePreference;
         private DirtyValue<string> _lastName;
         private DirtyValue<string> _lastNameWithSuffix;
+        private DirtyValue<bool?> _legalOtherThanSpouse;
+        private DirtyValue<bool?> _liabilitiesDoesNotApply;
         private DirtyValue<bool?> _loanForeclosureOrJudgementIndicator;
         private DirtyValue<string> _lpdGsa;
         private DirtyValue<bool?> _mailingAddressSameAsPresentIndicator;
@@ -212,6 +229,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _middleCreditScore;
         private DirtyValue<string> _middleFicoScore;
         private DirtyValue<string> _middleName;
+        private DirtyValue<DateTime?> _militaryServiceExpectedCompletionDate;
         private DirtyValue<string> _minFicoScore;
         private DirtyValue<string> _mobilePhone;
         private DirtyValue<bool?> _mortgageOnCredit;
@@ -230,11 +248,16 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _numberofTradelines;
         private DirtyValue<bool?> _obtainLoanFromRHSIndicator;
         private DirtyValue<StringEnumValue<OpenBankruptcy>> _openBankruptcy2;
+        private DirtyValue<bool?> _otherAssetsDoesNotApply;
+        private DirtyValue<bool?> _otherLiabilitiesDoesNotApply;
         private DirtyValue<decimal?> _otherMonthlyIncomeAmount;
+        private DirtyValue<string> _otherRelationshipTypeDescription;
+        private DirtyValue<bool?> _otherSrcIncomeDoesNotApply;
         private DirtyValue<decimal?> _otherSumAmount;
         private DirtyValue<bool?> _outstandingJudgementsIndicator;
         private DirtyValue<string> _overtimeValidationMessage;
         private DirtyValue<bool?> _partyToLawsuitIndicator;
+        private DirtyValue<bool?> _partyToLawsuitIndicatorURLA;
         private DirtyValue<int?> _pass120Days;
         private DirtyValue<int?> _pass150Days;
         private DirtyValue<int?> _pass30Days;
@@ -254,16 +277,27 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _powerOfAttorneyName;
         private DirtyValue<string> _powerOfAttorneyTitleDescription;
         private DirtyValue<bool?> _presentlyDelinquentIndicator;
+        private DirtyValue<bool?> _presentlyDelinquentIndicatorURLA;
+        private DirtyValue<bool?> _printOnAdditionalBorrowerPage;
         private DirtyValue<DateTime?> _priorBankruptcy2;
         private DirtyValue<bool?> _priorForeclosure;
+        private DirtyValue<bool?> _priorPropertyDeedInLieuConveyedIndicator;
+        private DirtyValue<bool?> _priorPropertyForeclosureCompletedIndicator;
+        private DirtyValue<bool?> _priorPropertyShortSaleCompletedIndicator;
         private DirtyValue<StringEnumValue<PriorPropertyTitleType>> _priorPropertyTitleType;
         private DirtyValue<StringEnumValue<PriorPropertyUsageType>> _priorPropertyUsageType;
         private DirtyValue<bool?> _propertyForeclosedPastSevenYearsIndicator;
+        private DirtyValue<bool?> _propertyProposedCleanEnergyLienIndicator;
+        private DirtyValue<bool?> _realEstateDoesNotApply;
         private DirtyValue<string> _relationshipDescription;
         private DirtyValue<bool?> _relationshipWithRDEmployeeIndicator;
+        private DirtyValue<bool?> _reserveNationalGuardReserveActivated;
         private DirtyValue<bool?> _retirementPensionIncomeAvailable;
         private DirtyValue<int?> _schoolingTermYears;
+        private DirtyValue<bool?> _selfDeclaredMilitaryServiceIndicator;
         private DirtyValue<string> _selfEmployedValidationMessage;
+        private DirtyValue<bool?> _specialBorrowerSellerRelationshipIndicator;
+        private DirtyValue<bool?> _spousalVABenefitsEligibilityIndicator;
         private DirtyValue<bool?> _sSA89BackgroundCheckIndicator;
         private DirtyValue<bool?> _sSA89BankingServiceIndicator;
         private DirtyValue<bool?> _sSA89CreditCheckIndicator;
@@ -271,6 +305,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _sSA89MortgageServiceIndicator;
         private DirtyValue<bool?> _sSA89OtherIndicator;
         private DirtyValue<string> _sSNValidationMessage;
+        private DirtyValue<StringEnumValue<State>> _state;
         private DirtyValue<decimal?> _subtotalLiquidAssetsMinusGiftAmount;
         private DirtyValue<string> _suffixToName;
         private DirtyValue<string> _tax4506LastInvestor;
@@ -301,9 +336,16 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _tax4506TotalYearlyVarianceJointIncome4;
         private DirtyValue<string> _taxIdentificationIdentifier;
         private DirtyValue<string> _taxReturnValidationMessage;
+        private DirtyValue<decimal?> _totalAdditionalLiabilitiesAmount;
+        private DirtyValue<decimal?> _totalAdditionalOtherLiabilitiesAmount;
+        private DirtyValue<decimal?> _totalAssets;
+        private DirtyValue<decimal?> _totalLiabilitiesAmount;
         private DirtyValue<decimal?> _totalLiabilitiesBalanceAmount;
         private DirtyValue<decimal?> _totalMonthlyIncomeAmount;
         private DirtyValue<decimal?> _totalMonthlyIncomeMinusNetRentalAmount;
+        private DirtyValue<decimal?> _totalOtherAssets;
+        private DirtyValue<decimal?> _totalOtherLiabilities;
+        private DirtyValue<decimal?> _totalOtherLiabilitiesAmount;
         private DirtyValue<decimal?> _totalPresentHousingExpenseAmount;
         private DirtyValue<string> _transactionPurposeDescription;
         private DirtyValue<int?> _transUnion120Days;
@@ -326,6 +368,13 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _transUnionKeyFactor5;
         private DirtyValue<bool?> _transUnionMaterialTermsCreditByScore;
         private DirtyValue<string> _transUnionScore;
+        private DirtyValue<decimal?> _undisclosedBorrowedFundsAmount;
+        private DirtyValue<bool?> _undisclosedBorrowedFundsIndicator;
+        private DirtyValue<bool?> _undisclosedComakerOfNoteIndicator;
+        private DirtyValue<bool?> _undisclosedCreditApplicationIndicator;
+        private DirtyValue<bool?> _undisclosedMortgageApplicationIndicator;
+        private DirtyValue<StringEnumValue<Urla2020CitizenshipResidencyType>> _urla2020CitizenshipResidencyType;
+        private DirtyValue<string> _uRLAAliasName;
         private DirtyValue<decimal?> _userDefinedIncome;
         private DirtyValue<decimal?> _vaFederalTaxAmount;
         private DirtyValue<int?> _validDaysForConsentCount;
@@ -375,6 +424,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _vendor8;
         private DirtyValue<string> _vendor9;
         private DirtyValue<StringEnumValue<VestingTrusteeOfType>> _vestingTrusteeOfType;
+        private DirtyValue<bool?> _veteran;
         private DirtyValue<bool?> _veteranIndicator;
         private DirtyValue<string> _workEmailAddress;
         private DirtyValue<int?> _yearsofCreditOnFile;
@@ -385,10 +435,22 @@ namespace EncompassRest.Loans
         public string AcountChekAssetId { get => _acountChekAssetId; set => SetField(ref _acountChekAssetId, value); }
 
         /// <summary>
+        /// Borrower ActiveDuty
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Currently serving on active duty\"}")]
+        public bool? ActiveDuty { get => _activeDuty; set => SetField(ref _activeDuty, value); }
+
+        /// <summary>
         /// USDA - Additional Income to Primary Employment (Commission, Bonus, Overtime, Automobile Allowance, Mortgage Differential, Tips, Military, Secondary Employment, Seasonal Employment, Unemployment) [USDA.X168]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdditionalIncomeFromPrimaryEmployment { get => _additionalIncomeFromPrimaryEmployment; set => SetField(ref _additionalIncomeFromPrimaryEmployment, value); }
+
+        /// <summary>
+        /// Borrower AdditionalOtherIncome
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? AdditionalOtherIncome { get => _additionalOtherIncome; set => SetField(ref _additionalOtherIncome, value); }
 
         /// <summary>
         /// USDA - Adjusted Annual income for the household [USDA.X17]
@@ -500,6 +562,26 @@ namespace EncompassRest.Loans
         /// Borrower BankruptcyIndicator
         /// </summary>
         public bool? BankruptcyIndicator { get => _bankruptcyIndicator; set => SetField(ref _bankruptcyIndicator, value); }
+
+        /// <summary>
+        /// Borrower BankruptcyIndicatorChapterEleven
+        /// </summary>
+        public bool? BankruptcyIndicatorChapterEleven { get => _bankruptcyIndicatorChapterEleven; set => SetField(ref _bankruptcyIndicatorChapterEleven, value); }
+
+        /// <summary>
+        /// Borrower BankruptcyIndicatorChapterSeven
+        /// </summary>
+        public bool? BankruptcyIndicatorChapterSeven { get => _bankruptcyIndicatorChapterSeven; set => SetField(ref _bankruptcyIndicatorChapterSeven, value); }
+
+        /// <summary>
+        /// Borrower BankruptcyIndicatorChapterThirteen
+        /// </summary>
+        public bool? BankruptcyIndicatorChapterThirteen { get => _bankruptcyIndicatorChapterThirteen; set => SetField(ref _bankruptcyIndicatorChapterThirteen, value); }
+
+        /// <summary>
+        /// Borrower BankruptcyIndicatorChapterTwelve
+        /// </summary>
+        public bool? BankruptcyIndicatorChapterTwelve { get => _bankruptcyIndicatorChapterTwelve; set => SetField(ref _bankruptcyIndicatorChapterTwelve, value); }
 
         /// <summary>
         /// Underwriting Bankruptcy Status [2570]
@@ -693,6 +775,21 @@ namespace EncompassRest.Loans
         /// Borrower DisabledIndicator
         /// </summary>
         public bool? DisabledIndicator { get => _disabledIndicator; set => SetField(ref _disabledIndicator, value); }
+
+        /// <summary>
+        /// Borrower DomesticRelationshipType
+        /// </summary>
+        public StringEnumValue<DomesticRelationshipType> DomesticRelationshipType { get => _domesticRelationshipType; set => SetField(ref _domesticRelationshipType, value); }
+
+        /// <summary>
+        /// Borrower DUVerificationEmploymentIncomeIndicator
+        /// </summary>
+        public bool? DUVerificationEmploymentIncomeIndicator { get => _dUVerificationEmploymentIncomeIndicator; set => SetField(ref _dUVerificationEmploymentIncomeIndicator, value); }
+
+        /// <summary>
+        /// Borrower DUVerificationEmploymentIncomeMessage
+        /// </summary>
+        public string DUVerificationEmploymentIncomeMessage { get => _dUVerificationEmploymentIncomeMessage; set => SetField(ref _dUVerificationEmploymentIncomeMessage, value); }
 
         /// <summary>
         /// Borrower EmailAddressText
@@ -965,6 +1062,12 @@ namespace EncompassRest.Loans
         public string FullNameWithSuffix { get => _fullNameWithSuffix; set => SetField(ref _fullNameWithSuffix, value); }
 
         /// <summary>
+        /// Borrower GiftsAndGrantsIndicatorBor
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does not apply\"}")]
+        public bool? GiftsAndGrantsIndicatorBor { get => _giftsAndGrantsIndicatorBor; set => SetField(ref _giftsAndGrantsIndicatorBor, value); }
+
+        /// <summary>
         /// Underwriting Highest Credit Limit [2567]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -979,6 +1082,16 @@ namespace EncompassRest.Loans
         /// Borrower Hmda2003RaceNationalOriginType
         /// </summary>
         public StringEnumValue<Hmda2003RaceNationalOriginType> Hmda2003RaceNationalOriginType { get => _hmda2003RaceNationalOriginType; set => SetField(ref _hmda2003RaceNationalOriginType, value); }
+
+        /// <summary>
+        /// Borrower Hmda2CreditScoreForDecisionMaking
+        /// </summary>
+        public StringEnumValue<HmdaCreditScoreForDecisionMaking> Hmda2CreditScoreForDecisionMaking { get => _hmda2CreditScoreForDecisionMaking; set => SetField(ref _hmda2CreditScoreForDecisionMaking, value); }
+
+        /// <summary>
+        /// Borrower Hmda2CreditScoringModel
+        /// </summary>
+        public StringEnumValue<HmdaCreditScoringModel> Hmda2CreditScoringModel { get => _hmda2CreditScoringModel; set => SetField(ref _hmda2CreditScoringModel, value); }
 
         /// <summary>
         /// Borrower HmdaAfricanAmericanIndicator
@@ -1026,11 +1139,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaCreditScoreForDecisionMaking
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Partially Exempt\"]")]
         public StringEnumValue<HmdaCreditScoreForDecisionMaking> HmdaCreditScoreForDecisionMaking { get => _hmdaCreditScoreForDecisionMaking; set => SetField(ref _hmdaCreditScoreForDecisionMaking, value); }
 
         /// <summary>
         /// Borrower HmdaCreditScoringModel
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Partially Exempt\"]")]
         public StringEnumValue<HmdaCreditScoringModel> HmdaCreditScoringModel { get => _hmdaCreditScoringModel; set => SetField(ref _hmdaCreditScoringModel, value); }
 
         /// <summary>
@@ -1385,6 +1500,21 @@ namespace EncompassRest.Loans
         public bool? IsTaxReturnAvailable { get => _isTaxReturnAvailable; set => SetField(ref _isTaxReturnAvailable, value); }
 
         /// <summary>
+        /// Borrower JointAssetLiabilityReportingIndicator
+        /// </summary>
+        public StringEnumValue<JointAssetLiabilityReportingIndicator> JointAssetLiabilityReportingIndicator { get => _jointAssetLiabilityReportingIndicator; set => SetField(ref _jointAssetLiabilityReportingIndicator, value); }
+
+        /// <summary>
+        /// Borrower LanguageCodeOtherDescription
+        /// </summary>
+        public string LanguageCodeOtherDescription { get => _languageCodeOtherDescription; set => SetField(ref _languageCodeOtherDescription, value); }
+
+        /// <summary>
+        /// Borrower LanguagePreference
+        /// </summary>
+        public StringEnumValue<LanguagePreference> LanguagePreference { get => _languagePreference; set => SetField(ref _languagePreference, value); }
+
+        /// <summary>
         /// Borrower LastName
         /// </summary>
         public string LastName { get => _lastName; set => SetField(ref _lastName, value); }
@@ -1393,6 +1523,16 @@ namespace EncompassRest.Loans
         /// Borrower LastNameWithSuffix
         /// </summary>
         public string LastNameWithSuffix { get => _lastNameWithSuffix; set => SetField(ref _lastNameWithSuffix, value); }
+
+        /// <summary>
+        /// Borrower LegalOtherThanSpouse
+        /// </summary>
+        public bool? LegalOtherThanSpouse { get => _legalOtherThanSpouse; set => SetField(ref _legalOtherThanSpouse, value); }
+
+        /// <summary>
+        /// Borrower LiabilitiesDoesNotApply
+        /// </summary>
+        public bool? LiabilitiesDoesNotApply { get => _liabilitiesDoesNotApply; set => SetField(ref _liabilitiesDoesNotApply, value); }
 
         /// <summary>
         /// Borrower LoanForeclosureOrJudgementIndicator
@@ -1429,6 +1569,11 @@ namespace EncompassRest.Loans
         /// Borrower MiddleName
         /// </summary>
         public string MiddleName { get => _middleName; set => SetField(ref _middleName, value); }
+
+        /// <summary>
+        /// Borrower MilitaryServiceExpectedCompletionDate
+        /// </summary>
+        public DateTime? MilitaryServiceExpectedCompletionDate { get => _militaryServiceExpectedCompletionDate; set => SetField(ref _militaryServiceExpectedCompletionDate, value); }
 
         /// <summary>
         /// Borrower MinFicoScore
@@ -1528,10 +1673,31 @@ namespace EncompassRest.Loans
         public StringEnumValue<OpenBankruptcy> OpenBankruptcy2 { get => _openBankruptcy2; set => SetField(ref _openBankruptcy2, value); }
 
         /// <summary>
+        /// Borrower OtherAssetsDoesNotApply
+        /// </summary>
+        public bool? OtherAssetsDoesNotApply { get => _otherAssetsDoesNotApply; set => SetField(ref _otherAssetsDoesNotApply, value); }
+
+        /// <summary>
+        /// Borrower OtherLiabilitiesDoesNotApply
+        /// </summary>
+        public bool? OtherLiabilitiesDoesNotApply { get => _otherLiabilitiesDoesNotApply; set => SetField(ref _otherLiabilitiesDoesNotApply, value); }
+
+        /// <summary>
         /// Borrower OtherMonthlyIncomeAmount
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? OtherMonthlyIncomeAmount { get => _otherMonthlyIncomeAmount; set => SetField(ref _otherMonthlyIncomeAmount, value); }
+
+        /// <summary>
+        /// Borrower OtherRelationshipTypeDescription
+        /// </summary>
+        public string OtherRelationshipTypeDescription { get => _otherRelationshipTypeDescription; set => SetField(ref _otherRelationshipTypeDescription, value); }
+
+        /// <summary>
+        /// Borrower OtherSrcIncomeDoesNotApply
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does Not Apply\"}")]
+        public bool? OtherSrcIncomeDoesNotApply { get => _otherSrcIncomeDoesNotApply; set => SetField(ref _otherSrcIncomeDoesNotApply, value); }
 
         /// <summary>
         /// Borrower OtherSumAmount
@@ -1553,6 +1719,11 @@ namespace EncompassRest.Loans
         /// Borrower PartyToLawsuitIndicator
         /// </summary>
         public bool? PartyToLawsuitIndicator { get => _partyToLawsuitIndicator; set => SetField(ref _partyToLawsuitIndicator, value); }
+
+        /// <summary>
+        /// Borrower PartyToLawsuitIndicatorURLA
+        /// </summary>
+        public bool? PartyToLawsuitIndicatorURLA { get => _partyToLawsuitIndicatorURLA; set => SetField(ref _partyToLawsuitIndicatorURLA, value); }
 
         /// <summary>
         /// Underwriting Mortgage 120 Days [2561]
@@ -1658,6 +1829,16 @@ namespace EncompassRest.Loans
         public bool? PresentlyDelinquentIndicator { get => _presentlyDelinquentIndicator; set => SetField(ref _presentlyDelinquentIndicator, value); }
 
         /// <summary>
+        /// Borrower PresentlyDelinquentIndicatorURLA
+        /// </summary>
+        public bool? PresentlyDelinquentIndicatorURLA { get => _presentlyDelinquentIndicatorURLA; set => SetField(ref _presentlyDelinquentIndicatorURLA, value); }
+
+        /// <summary>
+        /// Borrower PrintOnAdditionalBorrowerPage
+        /// </summary>
+        public bool? PrintOnAdditionalBorrowerPage { get => _printOnAdditionalBorrowerPage; set => SetField(ref _printOnAdditionalBorrowerPage, value); }
+
+        /// <summary>
         /// Underwriting Prior Bankruptcy [2569]
         /// </summary>
         public DateTime? PriorBankruptcy2 { get => _priorBankruptcy2; set => SetField(ref _priorBankruptcy2, value); }
@@ -1666,6 +1847,21 @@ namespace EncompassRest.Loans
         /// Underwriting Prior Foreclosure [2339]
         /// </summary>
         public bool? PriorForeclosure { get => _priorForeclosure; set => SetField(ref _priorForeclosure, value); }
+
+        /// <summary>
+        /// Borrower PriorPropertyDeedInLieuConveyedIndicator
+        /// </summary>
+        public bool? PriorPropertyDeedInLieuConveyedIndicator { get => _priorPropertyDeedInLieuConveyedIndicator; set => SetField(ref _priorPropertyDeedInLieuConveyedIndicator, value); }
+
+        /// <summary>
+        /// Borrower PriorPropertyForeclosureCompletedIndicator
+        /// </summary>
+        public bool? PriorPropertyForeclosureCompletedIndicator { get => _priorPropertyForeclosureCompletedIndicator; set => SetField(ref _priorPropertyForeclosureCompletedIndicator, value); }
+
+        /// <summary>
+        /// Borrower PriorPropertyShortSaleCompletedIndicator
+        /// </summary>
+        public bool? PriorPropertyShortSaleCompletedIndicator { get => _priorPropertyShortSaleCompletedIndicator; set => SetField(ref _priorPropertyShortSaleCompletedIndicator, value); }
 
         /// <summary>
         /// Borrower PriorPropertyTitleType
@@ -1683,6 +1879,16 @@ namespace EncompassRest.Loans
         public bool? PropertyForeclosedPastSevenYearsIndicator { get => _propertyForeclosedPastSevenYearsIndicator; set => SetField(ref _propertyForeclosedPastSevenYearsIndicator, value); }
 
         /// <summary>
+        /// Borrower PropertyProposedCleanEnergyLienIndicator
+        /// </summary>
+        public bool? PropertyProposedCleanEnergyLienIndicator { get => _propertyProposedCleanEnergyLienIndicator; set => SetField(ref _propertyProposedCleanEnergyLienIndicator, value); }
+
+        /// <summary>
+        /// Borrower RealEstateDoesNotApply
+        /// </summary>
+        public bool? RealEstateDoesNotApply { get => _realEstateDoesNotApply; set => SetField(ref _realEstateDoesNotApply, value); }
+
+        /// <summary>
         /// Borrower RelationshipDescription
         /// </summary>
         public string RelationshipDescription { get => _relationshipDescription; set => SetField(ref _relationshipDescription, value); }
@@ -1691,6 +1897,12 @@ namespace EncompassRest.Loans
         /// Borrower RelationshipWithRDEmployeeIndicator
         /// </summary>
         public bool? RelationshipWithRDEmployeeIndicator { get => _relationshipWithRDEmployeeIndicator; set => SetField(ref _relationshipWithRDEmployeeIndicator, value); }
+
+        /// <summary>
+        /// Borrower ReserveNationalGuardReserveActivated
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Only period of service was as a non-activated member of the Reserve or National Guard\"}")]
+        public bool? ReserveNationalGuardReserveActivated { get => _reserveNationalGuardReserveActivated; set => SetField(ref _reserveNationalGuardReserveActivated, value); }
 
         /// <summary>
         /// Borrower RetirementPensionIncomeAvailable
@@ -1703,9 +1915,25 @@ namespace EncompassRest.Loans
         public int? SchoolingTermYears { get => _schoolingTermYears; set => SetField(ref _schoolingTermYears, value); }
 
         /// <summary>
+        /// Borrower SelfDeclaredMilitaryServiceIndicator
+        /// </summary>
+        public bool? SelfDeclaredMilitaryServiceIndicator { get => _selfDeclaredMilitaryServiceIndicator; set => SetField(ref _selfDeclaredMilitaryServiceIndicator, value); }
+
+        /// <summary>
         /// Borrower SelfEmployedValidationMessage
         /// </summary>
         public string SelfEmployedValidationMessage { get => _selfEmployedValidationMessage; set => SetField(ref _selfEmployedValidationMessage, value); }
+
+        /// <summary>
+        /// Borrower SpecialBorrowerSellerRelationshipIndicator
+        /// </summary>
+        public bool? SpecialBorrowerSellerRelationshipIndicator { get => _specialBorrowerSellerRelationshipIndicator; set => SetField(ref _specialBorrowerSellerRelationshipIndicator, value); }
+
+        /// <summary>
+        /// Borrower SpousalVABenefitsEligibilityIndicator
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Surviving Spouse\"}")]
+        public bool? SpousalVABenefitsEligibilityIndicator { get => _spousalVABenefitsEligibilityIndicator; set => SetField(ref _spousalVABenefitsEligibilityIndicator, value); }
 
         /// <summary>
         /// Borrower SSA89BackgroundCheckIndicator
@@ -1741,6 +1969,11 @@ namespace EncompassRest.Loans
         /// Borrower SSNValidationMessage
         /// </summary>
         public string SSNValidationMessage { get => _sSNValidationMessage; set => SetField(ref _sSNValidationMessage, value); }
+
+        /// <summary>
+        /// Borrower State
+        /// </summary>
+        public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
 
         /// <summary>
         /// Assets Subtotal Liquid Assets [915]
@@ -1911,6 +2144,30 @@ namespace EncompassRest.Loans
         public string TaxReturnValidationMessage { get => _taxReturnValidationMessage; set => SetField(ref _taxReturnValidationMessage, value); }
 
         /// <summary>
+        /// Total Additional Liabilities Amount [URLA.X61]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalAdditionalLiabilitiesAmount { get => _totalAdditionalLiabilitiesAmount; set => SetField(ref _totalAdditionalLiabilitiesAmount, value); }
+
+        /// <summary>
+        /// Total Additional Other Liabilities Amount [URLA.X67]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalAdditionalOtherLiabilitiesAmount { get => _totalAdditionalOtherLiabilitiesAmount; set => SetField(ref _totalAdditionalOtherLiabilitiesAmount, value); }
+
+        /// <summary>
+        /// Borrower TotalAssets
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalAssets { get => _totalAssets; set => SetField(ref _totalAssets, value); }
+
+        /// <summary>
+        /// Total Liabilities Amount [URLA.X62]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalLiabilitiesAmount { get => _totalLiabilitiesAmount; set => SetField(ref _totalLiabilitiesAmount, value); }
+
+        /// <summary>
         /// Liabilities Total Liability Balance [733]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -1927,6 +2184,24 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalMonthlyIncomeMinusNetRentalAmount { get => _totalMonthlyIncomeMinusNetRentalAmount; set => SetField(ref _totalMonthlyIncomeMinusNetRentalAmount, value); }
+
+        /// <summary>
+        /// Borrower TotalOtherAssets
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalOtherAssets { get => _totalOtherAssets; set => SetField(ref _totalOtherAssets, value); }
+
+        /// <summary>
+        /// Borrower TotalOtherLiabilities
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalOtherLiabilities { get => _totalOtherLiabilities; set => SetField(ref _totalOtherLiabilities, value); }
+
+        /// <summary>
+        /// Total Other Liabilities Amount [URLA.X68]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalOtherLiabilitiesAmount { get => _totalOtherLiabilitiesAmount; set => SetField(ref _totalOtherLiabilitiesAmount, value); }
 
         /// <summary>
         /// Expenses Present Total Housing [737]
@@ -2038,6 +2313,42 @@ namespace EncompassRest.Loans
         /// Borrower TransUnionScore
         /// </summary>
         public string TransUnionScore { get => _transUnionScore; set => SetField(ref _transUnionScore, value); }
+
+        /// <summary>
+        /// Borrower UndisclosedBorrowedFundsAmount
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? UndisclosedBorrowedFundsAmount { get => _undisclosedBorrowedFundsAmount; set => SetField(ref _undisclosedBorrowedFundsAmount, value); }
+
+        /// <summary>
+        /// Borrower UndisclosedBorrowedFundsIndicator
+        /// </summary>
+        public bool? UndisclosedBorrowedFundsIndicator { get => _undisclosedBorrowedFundsIndicator; set => SetField(ref _undisclosedBorrowedFundsIndicator, value); }
+
+        /// <summary>
+        /// Borrower UndisclosedComakerOfNoteIndicator
+        /// </summary>
+        public bool? UndisclosedComakerOfNoteIndicator { get => _undisclosedComakerOfNoteIndicator; set => SetField(ref _undisclosedComakerOfNoteIndicator, value); }
+
+        /// <summary>
+        /// Borrower UndisclosedCreditApplicationIndicator
+        /// </summary>
+        public bool? UndisclosedCreditApplicationIndicator { get => _undisclosedCreditApplicationIndicator; set => SetField(ref _undisclosedCreditApplicationIndicator, value); }
+
+        /// <summary>
+        /// Borrower UndisclosedMortgageApplicationIndicator
+        /// </summary>
+        public bool? UndisclosedMortgageApplicationIndicator { get => _undisclosedMortgageApplicationIndicator; set => SetField(ref _undisclosedMortgageApplicationIndicator, value); }
+
+        /// <summary>
+        /// Borrower Urla2020CitizenshipResidencyType
+        /// </summary>
+        public StringEnumValue<Urla2020CitizenshipResidencyType> Urla2020CitizenshipResidencyType { get => _urla2020CitizenshipResidencyType; set => SetField(ref _urla2020CitizenshipResidencyType, value); }
+
+        /// <summary>
+        /// Borrower URLAAliasName
+        /// </summary>
+        public string URLAAliasName { get => _uRLAAliasName; set => SetField(ref _uRLAAliasName, value); }
 
         /// <summary>
         /// Borrower UserDefinedIncome
@@ -2292,6 +2603,12 @@ namespace EncompassRest.Loans
         /// Borrower VestingTrusteeOfType
         /// </summary>
         public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get => _vestingTrusteeOfType; set => SetField(ref _vestingTrusteeOfType, value); }
+
+        /// <summary>
+        /// Borrower Veteran
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Currently retired, discharged, or separated from service\"}")]
+        public bool? Veteran { get => _veteran; set => SetField(ref _veteran, value); }
 
         /// <summary>
         /// Borrower VeteranIndicator

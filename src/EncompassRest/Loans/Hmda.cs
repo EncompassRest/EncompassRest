@@ -20,7 +20,9 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<AUSRecommendation>> _aUSRecommendation3;
         private DirtyValue<StringEnumValue<AUSRecommendation>> _aUSRecommendation4;
         private DirtyValue<StringEnumValue<AUSRecommendation>> _aUSRecommendation5;
+        private DirtyValue<StringEnumValue<YNOrPartiallyExempt>> _balloonIndicator;
         private DirtyValue<StringEnumValue<BusinessOrCommercialPurpose>> _businessOrCommercialPurpose;
+        private DirtyValue<bool?> _cDRequired;
         private DirtyValue<string> _censusTrack;
         private DirtyValue<NA<decimal>> _cLTV;
         private DirtyValue<string> _contactEmailAddress;
@@ -42,6 +44,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<FederalAgency>> _federalAgency;
         private DirtyValue<string> _federalTaxpayerIdNumber;
         private DirtyValue<string> _financialInstitutionName;
+        private DirtyValue<StringEnumValue<YNOrPartiallyExempt>> _hmda2InterestOnlyIndicator;
         private DirtyValue<string> _hMDACensusTrack;
         private DirtyValue<bool?> _hmdaCltvIndicator;
         private DirtyValue<string> _hMDACountyCode;
@@ -73,6 +76,7 @@ namespace EncompassRest.Loans
         private DirtyValue<NA<decimal>> _lenderCredits;
         private DirtyValue<StringEnumValue<LienStatus>> _lienStatus;
         private DirtyValue<decimal?> _loanAmount;
+        private DirtyValue<StringEnumValue<YNOrPartiallyExempt>> _loanBalanceRiseIndicator;
         private DirtyValue<StringEnumValue<HmdaLoanPurpose>> _loanPurpose;
         private DirtyValue<string> _loanTerm;
         private DirtyValue<StringEnumValue<HmdaLoanType>> _loanType;
@@ -92,6 +96,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _parentName;
         private DirtyValue<StringEnumValue<State>> _parentState;
         private DirtyValue<string> _parentZip;
+        private DirtyValue<bool?> _partiallyExemptLoanIndicator;
         private DirtyValue<StringEnumValue<Preapprovals>> _preapprovals;
         private DirtyValue<string> _prepaymentPenaltyPeriod;
         private DirtyValue<StringEnumValue<HmdaPropertyType>> _propertyType;
@@ -132,25 +137,25 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS #2 [HMDA.X45]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<AUS> AUS2 { get => _aUS2; set => SetField(ref _aUS2, value); }
 
         /// <summary>
         /// AUS #3 [HMDA.X46]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<AUS> AUS3 { get => _aUS3; set => SetField(ref _aUS3, value); }
 
         /// <summary>
         /// AUS #4 [HMDA.X47]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<AUS> AUS4 { get => _aUS4; set => SetField(ref _aUS4, value); }
 
         /// <summary>
         /// AUS #5 [HMDA.X48]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<AUS> AUS5 { get => _aUS5; set => SetField(ref _aUS5, value); }
 
         /// <summary>
@@ -161,31 +166,41 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Recommendation #2 [HMDA.X51]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<AUSRecommendation> AUSRecommendation2 { get => _aUSRecommendation2; set => SetField(ref _aUSRecommendation2, value); }
 
         /// <summary>
         /// AUS Recommendation #3 [HMDA.X52]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<AUSRecommendation> AUSRecommendation3 { get => _aUSRecommendation3; set => SetField(ref _aUSRecommendation3, value); }
 
         /// <summary>
         /// AUS Recommendation #4 [HMDA.X53]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<AUSRecommendation> AUSRecommendation4 { get => _aUSRecommendation4; set => SetField(ref _aUSRecommendation4, value); }
 
         /// <summary>
         /// AUS Recommendation #5 [HMDA.X54]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<AUSRecommendation> AUSRecommendation5 { get => _aUSRecommendation5; set => SetField(ref _aUSRecommendation5, value); }
+
+        /// <summary>
+        /// Trans Details Amort Type Balloon [HMDA.X114]
+        /// </summary>
+        public StringEnumValue<YNOrPartiallyExempt> BalloonIndicator { get => _balloonIndicator; set => SetField(ref _balloonIndicator, value); }
 
         /// <summary>
         /// Business or Commercial Purpose [HMDA.X58]
         /// </summary>
         public StringEnumValue<BusinessOrCommercialPurpose> BusinessOrCommercialPurpose { get => _businessOrCommercialPurpose; set => SetField(ref _businessOrCommercialPurpose, value); }
+
+        /// <summary>
+        /// CD Required [HMDA.X121]
+        /// </summary>
+        public bool? CDRequired { get => _cDRequired; set => SetField(ref _cDRequired, value); }
 
         /// <summary>
         /// Subject Property Census Tract [700]
@@ -257,19 +272,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Denial Reason 2 [HMDA.X22]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<DenialReason> DenialReason2 { get => _denialReason2; set => SetField(ref _denialReason2, value); }
 
         /// <summary>
         /// Denial Reason 3 [HMDA.X23]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<DenialReason> DenialReason3 { get => _denialReason3; set => SetField(ref _denialReason3, value); }
 
         /// <summary>
         /// Denial Reason 4 [HMDA.X33]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Partially Exempt\"]")]
         public StringEnumValue<DenialReason> DenialReason4 { get => _denialReason4; set => SetField(ref _denialReason4, value); }
 
         /// <summary>
@@ -297,6 +312,11 @@ namespace EncompassRest.Loans
         /// HMDA Company Name [HMDA.X59]
         /// </summary>
         public string FinancialInstitutionName { get => _financialInstitutionName; set => SetField(ref _financialInstitutionName, value); }
+
+        /// <summary>
+        /// Trans Details Interest Only Indicator [HMDA.X120]
+        /// </summary>
+        public StringEnumValue<YNOrPartiallyExempt> Hmda2InterestOnlyIndicator { get => _hmda2InterestOnlyIndicator; set => SetField(ref _hmda2InterestOnlyIndicator, value); }
 
         /// <summary>
         /// CFPB HMDA Census Track [HMDA.X112]
@@ -466,6 +486,11 @@ namespace EncompassRest.Loans
         public decimal? LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
 
         /// <summary>
+        /// Can Your Loan Balance Rise [HMDA.X115]
+        /// </summary>
+        public StringEnumValue<YNOrPartiallyExempt> LoanBalanceRiseIndicator { get => _loanBalanceRiseIndicator; set => SetField(ref _loanBalanceRiseIndicator, value); }
+
+        /// <summary>
         /// Trans Details Loan Purpose [384]
         /// </summary>
         public StringEnumValue<HmdaLoanPurpose> LoanPurpose { get => _loanPurpose; set => SetField(ref _loanPurpose, value); }
@@ -560,6 +585,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string ParentZip { get => _parentZip; set => SetField(ref _parentZip, value); }
+
+        /// <summary>
+        /// Report loan as Partially Exempt [HMDA.X113]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Loan is Partially Exempt\"}")]
+        public bool? PartiallyExemptLoanIndicator { get => _partiallyExemptLoanIndicator; set => SetField(ref _partiallyExemptLoanIndicator, value); }
 
         /// <summary>
         /// Trans Details Preapprovals [HMDA.X12]

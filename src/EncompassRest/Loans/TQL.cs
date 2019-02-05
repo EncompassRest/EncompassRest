@@ -20,6 +20,10 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _drivePropertyVerifyScore;
         private DirtyValue<int?> _driveScore;
         private DirtyValue<string> _driveStatus;
+        private DirtyValue<DateTime?> _dUFindingsMessageDateTime;
+        private DirtyValue<string> _dUPropertyDataID;
+        private DirtyValue<string> _dUPropertyDataMessage;
+        private DirtyList<GSETracker> _gSETrackers;
         private DirtyValue<string> _homeward4506TBaselineReportRequired;
         private DirtyValue<string> _homewardComplianceBaselineReportRequired;
         private DirtyValue<string> _homewardFloodBaselineReportRequired;
@@ -53,6 +57,16 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _lastUserIDWhoOrderedCCVP;
         private DirtyValue<string> _lastUserIDWhoOrderedCompliance;
         private DirtyValue<string> _lastUserIDWhoOrderedFraudOrder;
+        private DirtyValue<string> _lPAppraisalWaiverMessage;
+        private DirtyValue<bool?> _lPAppraisalWaiverOffered;
+        private DirtyValue<string> _lPAPurchaseEligibility;
+        private DirtyValue<bool?> _lPAssetRepWarrantyIndicator;
+        private DirtyValue<string> _lPAssetRepWarrantyMessage;
+        private DirtyValue<string> _lPCollateralRepWarrantyMessage;
+        private DirtyValue<string> _lPDocumentationLevel;
+        private DirtyValue<string> _lPDocumentationLevelMessage;
+        private DirtyValue<bool?> _lPIncomeRepWarrantyIndicator;
+        private DirtyValue<string> _lPIncomeRepWarrantyMessage;
         private DirtyValue<bool?> _mIVendorsArchAutoOrderIndicator;
         private DirtyValue<bool?> _mIVendorsMgicAutoOrderIndicator;
         private DirtyValue<bool?> _mIVendorsRadianAutoOrderIndicator;
@@ -133,6 +147,27 @@ namespace EncompassRest.Loans
         /// DRIVE - Status [TQL.X81]
         /// </summary>
         public string DriveStatus { get => _driveStatus; set => SetField(ref _driveStatus, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Fannie Mae DU Findings Message Date Time stamp [TQL.X97]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? DUFindingsMessageDateTime { get => _dUFindingsMessageDateTime; set => SetField(ref _dUFindingsMessageDateTime, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Fannie Mae Property Data ID [TQL.X95]
+        /// </summary>
+        public string DUPropertyDataID { get => _dUPropertyDataID; set => SetField(ref _dUPropertyDataID, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Fannie Mae Property Data Message [TQL.X96]
+        /// </summary>
+        public string DUPropertyDataMessage { get => _dUPropertyDataMessage; set => SetField(ref _dUPropertyDataMessage, value); }
+
+        /// <summary>
+        /// TQL GSETrackers
+        /// </summary>
+        public IList<GSETracker> GSETrackers { get => GetField(ref _gSETrackers); set => SetField(ref _gSETrackers, value); }
 
         /// <summary>
         /// Homeward 4506T Baseline Report Required [TQL.X61]
@@ -299,6 +334,56 @@ namespace EncompassRest.Loans
         /// TQL - Fraud Orders - Last Userid of Person Who Ordered Report [TQL.X30]
         /// </summary>
         public string LastUserIDWhoOrderedFraudOrder { get => _lastUserIDWhoOrderedFraudOrder; set => SetField(ref _lastUserIDWhoOrderedFraudOrder, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Freddie Mac Appraisal Waiver Message [TQL.X86]
+        /// </summary>
+        public string LPAppraisalWaiverMessage { get => _lPAppraisalWaiverMessage; set => SetField(ref _lPAppraisalWaiverMessage, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Freddie Mac Appraisal Waiver Offered [TQL.X85]
+        /// </summary>
+        public bool? LPAppraisalWaiverOffered { get => _lPAppraisalWaiverOffered; set => SetField(ref _lPAppraisalWaiverOffered, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - LPA Purchase Eligibility [TQL.X89]
+        /// </summary>
+        public string LPAPurchaseEligibility { get => _lPAPurchaseEligibility; set => SetField(ref _lPAPurchaseEligibility, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Freddie Mac Asset Rep and Warranty [TQL.X91]
+        /// </summary>
+        public bool? LPAssetRepWarrantyIndicator { get => _lPAssetRepWarrantyIndicator; set => SetField(ref _lPAssetRepWarrantyIndicator, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Freddie Mac Asset Rep and Warranty Message [TQL.X92]
+        /// </summary>
+        public string LPAssetRepWarrantyMessage { get => _lPAssetRepWarrantyMessage; set => SetField(ref _lPAssetRepWarrantyMessage, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Freddie Mac Collateral Rep and Warranty Message [TQL.X90]
+        /// </summary>
+        public string LPCollateralRepWarrantyMessage { get => _lPCollateralRepWarrantyMessage; set => SetField(ref _lPCollateralRepWarrantyMessage, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Freddie Mac Documentation Level [TQL.X87]
+        /// </summary>
+        public string LPDocumentationLevel { get => _lPDocumentationLevel; set => SetField(ref _lPDocumentationLevel, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Freddie Mac Documentation Level Message [TQL.X88]
+        /// </summary>
+        public string LPDocumentationLevelMessage { get => _lPDocumentationLevelMessage; set => SetField(ref _lPDocumentationLevelMessage, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Freddie Mac Income Rep and Warranty [TQL.X93]
+        /// </summary>
+        public bool? LPIncomeRepWarrantyIndicator { get => _lPIncomeRepWarrantyIndicator; set => SetField(ref _lPIncomeRepWarrantyIndicator, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Freddie Mac Income Rep and Warranty Message [TQL.X94]
+        /// </summary>
+        public string LPIncomeRepWarrantyMessage { get => _lPIncomeRepWarrantyMessage; set => SetField(ref _lPIncomeRepWarrantyMessage, value); }
 
         /// <summary>
         /// MIVendors Arch Report Auto Order Indicator [MISERVICE.X1]

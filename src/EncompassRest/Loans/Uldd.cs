@@ -77,6 +77,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<FundsTypeDescription>> _downPaymentOtherTypeDescription;
         private DirtyValue<StringEnumValue<DownPaymentSourceType>> _downPaymentSourceType;
         private DirtyValue<StringEnumValue<SourceTypeDescription>> _downPaymentSourceTypeOtherDescription;
+        private DirtyValue<bool?> _eNoteIndicator;
         private DirtyValue<StringEnumValue<FannieARMIndexType>> _fannieARMIndexType;
         private DirtyValue<StringEnumValue<FannieAutoUWDec>> _fannieAutoUWDec;
         private DirtyValue<int?> _fannieBLTV;
@@ -666,6 +667,11 @@ namespace EncompassRest.Loans
         /// ULDD - Down Payment SourceType Other Description [ULDD.X90]
         /// </summary>
         public StringEnumValue<SourceTypeDescription> DownPaymentSourceTypeOtherDescription { get => _downPaymentSourceTypeOtherDescription; set => SetField(ref _downPaymentSourceTypeOtherDescription, value); }
+
+        /// <summary>
+        /// ULDD - eNote Indicator [ULDD.X196]
+        /// </summary>
+        public bool? eNoteIndicator { get => _eNoteIndicator; set => SetField(ref _eNoteIndicator, value); }
 
         /// <summary>
         /// ULDD Fannie ARM Index Type [ULDD.FNM.ARMIndexType]

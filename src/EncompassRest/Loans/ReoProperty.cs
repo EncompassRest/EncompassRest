@@ -12,20 +12,24 @@ namespace EncompassRest.Loans
     {
         private DirtyValue<DateTime?> _acquiredDate;
         private DirtyValue<string> _city;
+        private DirtyValue<string> _countryCode;
         private DirtyValue<StringEnumValue<DispositionStatusType>> _dispositionStatusType;
         private DirtyValue<bool?> _entityDeleted;
         private DirtyValue<StringEnumValue<GsePropertyType>> _gsePropertyType;
         private DirtyValue<string> _id;
         private DirtyValue<bool?> _isEmpty;
+        private DirtyValue<bool?> _liabilityDoesNotApply;
         private DirtyValue<decimal?> _lienInstallmentAmount;
         private DirtyValue<decimal?> _lienUpbAmount;
         private DirtyValue<string> _maintenanceExpenseAmount;
         private DirtyValue<decimal?> _marketValueAmount;
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
+        private DirtyValue<StringEnumValue<Owner>> _owner;
         private DirtyValue<decimal?> _participationPercentage;
         private DirtyValue<decimal?> _percentageofRental;
         private DirtyValue<string> _postalCode;
         private DirtyValue<bool?> _printAttachIndicator;
+        private DirtyValue<bool?> _printUserJobTitleIndicator;
         private DirtyValue<bool?> _printUserNameIndicator;
         private DirtyValue<StringEnumValue<PropertyUsageType>> _propertyUsageType;
         private DirtyValue<int?> _purchasePrice;
@@ -41,6 +45,9 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _title;
         private DirtyValue<string> _titleFax;
         private DirtyValue<string> _titlePhone;
+        private DirtyValue<string> _unitNumber;
+        private DirtyValue<StringEnumValue<UnitType>> _unitType;
+        private DirtyValue<string> _uRLA2020StreetAddress;
 
         /// <summary>
         /// Mortgage Property Date Acquired [FMNN22]
@@ -51,6 +58,11 @@ namespace EncompassRest.Loans
         /// Mortgage Property City [FMNN06]
         /// </summary>
         public string City { get => _city; set => SetField(ref _city, value); }
+
+        /// <summary>
+        /// Mortgage Property Country Code [FMNN51]
+        /// </summary>
+        public string CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
 
         /// <summary>
         /// Mortgage Property Disposition Status [FMNN24]
@@ -76,6 +88,11 @@ namespace EncompassRest.Loans
         /// ReoProperty IsEmpty
         /// </summary>
         public bool? IsEmpty { get => _isEmpty; set => SetField(ref _isEmpty, value); }
+
+        /// <summary>
+        /// Mortgage Property Not linked to Liability [FMNN49]
+        /// </summary>
+        public bool? LiabilityDoesNotApply { get => _liabilityDoesNotApply; set => SetField(ref _liabilityDoesNotApply, value); }
 
         /// <summary>
         /// Mortgage Property Monthly Payment [FMNN16]
@@ -107,6 +124,11 @@ namespace EncompassRest.Loans
         public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => SetField(ref _noLinkToDocTrackIndicator, value); }
 
         /// <summary>
+        /// Mortgage Property Owner [FMNN46]
+        /// </summary>
+        public StringEnumValue<Owner> Owner { get => _owner; set => SetField(ref _owner, value); }
+
+        /// <summary>
         /// Mortgage Property Participation Percent [FMNN14]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -129,6 +151,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
         public bool? PrintAttachIndicator { get => _printAttachIndicator; set => SetField(ref _printAttachIndicator, value); }
+
+        /// <summary>
+        /// Mortgage Property Print User Job Title [FMNN64]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's job title\"}")]
+        public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
 
         /// <summary>
         /// Mortgage Property Print User Name as Title [FMNN38]
@@ -211,5 +239,20 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
+
+        /// <summary>
+        /// Mortgage Property Unit Number [FMNN48]
+        /// </summary>
+        public string UnitNumber { get => _unitNumber; set => SetField(ref _unitNumber, value); }
+
+        /// <summary>
+        /// Mortgage Property Unit Type [FMNN47]
+        /// </summary>
+        public StringEnumValue<UnitType> UnitType { get => _unitType; set => SetField(ref _unitType, value); }
+
+        /// <summary>
+        /// Mortgage Property URLA 2020 Street Address [FMNN50]
+        /// </summary>
+        public string URLA2020StreetAddress { get => _uRLA2020StreetAddress; set => SetField(ref _uRLA2020StreetAddress, value); }
     }
 }

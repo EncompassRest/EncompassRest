@@ -2548,6 +2548,14 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// CommitmentExpiredDate
         /// </summary>
-        CommitmentExpiredDate = 624
+        CommitmentExpiredDate = 624,
+        /// <summary>
+        /// PayToThirdParty
+        /// </summary>
+        PayToThirdParty = 625,
+        /// <summary>
+        /// ReceiveFromThirdParty
+        /// </summary>
+        ReceiveFromThirdParty = 626
     }
 }

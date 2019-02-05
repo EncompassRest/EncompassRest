@@ -16,10 +16,14 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _addressPostalCode;
         private DirtyValue<StringEnumValue<State>> _addressState;
         private DirtyValue<string> _addressStreetLine1;
+        private DirtyValue<StringEnumValue<UnitType>> _addressUnitDesignatorType;
+        private DirtyValue<string> _addressUnitIdentifier;
         private DirtyValue<string> _altId;
         private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _applicantType;
         private DirtyValue<EntityReference> _contact;
+        private DirtyValue<string> _countryCode;
         private DirtyValue<string> _county;
+        private DirtyValue<bool?> _doesNotApplyIndicator;
         private DirtyValue<int?> _durationTermMonths;
         private DirtyValue<int?> _durationTermYears;
         private DirtyValue<bool?> _entityDeleted;
@@ -37,6 +41,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _mailingAddressIndicator;
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         private DirtyValue<bool?> _printAttachmentIndicator;
+        private DirtyValue<bool?> _printUserJobTitleIndicator;
         private DirtyValue<bool?> _printUserNameIndicator;
         private DirtyValue<int?> _rent;
         private DirtyValue<DateTime?> _requestDate;
@@ -45,6 +50,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _title;
         private DirtyValue<string> _titleFax;
         private DirtyValue<string> _titlePhone;
+        private DirtyValue<string> _uRLA2020StreetAddress;
 
         /// <summary>
         /// Residence AccountName
@@ -78,6 +84,16 @@ namespace EncompassRest.Loans
         public string AddressStreetLine1 { get => _addressStreetLine1; set => SetField(ref _addressStreetLine1, value); }
 
         /// <summary>
+        /// Residence AddressUnitDesignatorType
+        /// </summary>
+        public StringEnumValue<UnitType> AddressUnitDesignatorType { get => _addressUnitDesignatorType; set => SetField(ref _addressUnitDesignatorType, value); }
+
+        /// <summary>
+        /// Residence AddressUnitIdentifier
+        /// </summary>
+        public string AddressUnitIdentifier { get => _addressUnitIdentifier; set => SetField(ref _addressUnitIdentifier, value); }
+
+        /// <summary>
         /// Residence AltId
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
@@ -94,9 +110,19 @@ namespace EncompassRest.Loans
         public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
+        /// Residence CountryCode
+        /// </summary>
+        public string CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
+
+        /// <summary>
         /// Residence County
         /// </summary>
         public string County { get => _county; set => SetField(ref _county, value); }
+
+        /// <summary>
+        /// Residence DoesNotApplyIndicator
+        /// </summary>
+        public bool? DoesNotApplyIndicator { get => _doesNotApplyIndicator; set => SetField(ref _doesNotApplyIndicator, value); }
 
         /// <summary>
         /// Residence DurationTermMonths
@@ -188,6 +214,11 @@ namespace EncompassRest.Loans
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
 
         /// <summary>
+        /// Residence PrintUserJobTitleIndicator
+        /// </summary>
+        public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
+
+        /// <summary>
         /// Residence PrintUserNameIndicator
         /// </summary>
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
@@ -228,5 +259,10 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
+
+        /// <summary>
+        /// Residence URLA2020StreetAddress
+        /// </summary>
+        public string URLA2020StreetAddress { get => _uRLA2020StreetAddress; set => SetField(ref _uRLA2020StreetAddress, value); }
     }
 }

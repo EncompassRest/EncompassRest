@@ -1489,7 +1489,7 @@ namespace EncompassRest.Loans
         public DateTime? SSPLSentDate { get => _sSPLSentDate; set => SetField(ref _sSPLSentDate, value); }
 
         /// <summary>
-        /// Rans Details Disclosed Date [3122]
+        /// Trans Details Disclosed Date [3122]
         /// </summary>
         public DateTime? TilDate { get => _tilDate; set => SetField(ref _tilDate, value); }
 

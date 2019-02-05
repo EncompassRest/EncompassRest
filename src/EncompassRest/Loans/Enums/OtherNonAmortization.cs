@@ -19,6 +19,12 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         [Description("2. No other non-fully amortizing features")]
         [EnumMember(Value = "No other non-fully amortizing features")]
-        NoOtherNonFullyAmortizingFeatures = 1
+        NoOtherNonFullyAmortizingFeatures = 1,
+        /// <summary>
+        /// 1111 Partially Exempt
+        /// </summary>
+        [Description("1111 Partially Exempt")]
+        [EnumMember(Value = "Partially Exempt")]
+        PartiallyExempt = 2
     }
 }
