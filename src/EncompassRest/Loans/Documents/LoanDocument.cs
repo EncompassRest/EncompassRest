@@ -53,6 +53,7 @@ namespace EncompassRest.Loans.Documents
         private DirtyList<FileAttachmentReference> _attachments;
         private DirtyList<EntityReference> _roles;
         private DirtyValue<string> _titleWithIndex;
+        private DirtyList<EntityReference> _conditions;
 
         /// <summary>
         /// LoanDocument DocumentId.
@@ -250,20 +251,24 @@ namespace EncompassRest.Loans.Documents
         public IList<Comment> Comments { get => GetField(ref _comments); set => SetField(ref _comments, value); }
 
         /// <summary>
-        /// LoanDocument Attachments
+        /// LoanDocument Attachments.
         /// </summary>
         public IList<FileAttachmentReference> Attachments { get => GetField(ref _attachments); set => SetField(ref _attachments, value); }
 
         /// <summary>
-        /// LoanDocument Roles
+        /// LoanDocument Roles.
         /// </summary>
         public IList<EntityReference> Roles { get => GetField(ref _roles); set => SetField(ref _roles, value); }
-
 
         /// <summary>
         /// LoanDocument TitleWithIndex.
         /// </summary>
         public string TitleWithIndex { get => _titleWithIndex; set => SetField(ref _titleWithIndex, value); }
+
+        /// <summary>
+        /// LoanDocument Conditions.
+        /// </summary>
+        public IList<EntityReference> Conditions { get => GetField(ref _conditions); set => SetField(ref _conditions, value); }
 
         [IdPropertyName(nameof(DocumentId))]
         string IIdentifiable.Id { get => DocumentId; set => DocumentId = value; }

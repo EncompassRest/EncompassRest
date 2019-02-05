@@ -7,13 +7,13 @@ namespace EncompassRest.Organizations
     /// </summary>
     public sealed class LegalEntityIdentifierInformation : ParentInformation
     {
-        private EntityReference _hmdaProfile;
+        private DirtyValue<EntityReference> _hmdaProfile;
         private DirtyValue<string> _lei;
 
         /// <summary>
         /// The LEI associated with the organization.
         /// </summary>
-        public EntityReference HmdaProfile { get => GetField(ref _hmdaProfile); set => SetField(ref _hmdaProfile, value); }
+        public EntityReference HmdaProfile { get => _hmdaProfile; set => SetField(ref _hmdaProfile, value); }
 
         /// <summary>
         /// The LEI code that is associated with the organization's HMDA profile.

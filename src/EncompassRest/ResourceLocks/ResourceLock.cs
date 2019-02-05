@@ -8,7 +8,7 @@ namespace EncompassRest.ResourceLocks
     public sealed class ResourceLock : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
-        private EntityReference _resource;
+        private DirtyValue<EntityReference> _resource;
         private DirtyValue<string> _userId;
         private DirtyValue<StringEnumValue<ResourceLockType>> _lockType;
         private DirtyValue<DateTime?> _lockTime;
@@ -21,7 +21,7 @@ namespace EncompassRest.ResourceLocks
         /// <summary>
         /// References the entity ID and entity type.
         /// </summary>
-        public EntityReference Resource { get => GetField(ref _resource); set => SetField(ref _resource, value); }
+        public EntityReference Resource { get => _resource; set => SetField(ref _resource, value); }
 
         /// <summary>
         /// The Encompass user ID of the user holding the lock.

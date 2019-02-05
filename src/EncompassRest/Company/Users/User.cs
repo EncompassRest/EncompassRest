@@ -22,7 +22,7 @@ namespace EncompassRest.Company.Users
         private DirtyValue<bool?> _apiUser;
         private DirtyValue<string> _oAuthClientId;
         private DirtyValue<string> _workingFolder;
-        private EntityReference _organization;
+        private DirtyValue<EntityReference> _organization;
         private DirtyValue<StringEnumValue<SubordinateLoanAccess>> _subordinateLoanAccess;
         private DirtyList<string> _userIndicators;
         private DirtyValue<StringEnumValue<PeerLoanAccess>> _peerLoanAccess;

@@ -27,7 +27,7 @@ namespace EncompassRest.Loans.Attachments
         private DirtyValue<int?> _rotation;
         private DirtyValue<string> _title;
         private DirtyValue<string> _fileWithExtension;
-        private EntityReference _document;
+        private DirtyValue<EntityReference> _document;
         private NeverSerializeValue<string> _mediaUrl;
 
         /// <summary>

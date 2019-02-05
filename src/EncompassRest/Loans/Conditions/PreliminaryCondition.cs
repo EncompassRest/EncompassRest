@@ -12,7 +12,7 @@ namespace EncompassRest.Loans.Conditions
         private DirtyValue<StringEnumValue<ConditionCategory>> _category;
         private DirtyValue<bool?> _isFulfilled;
         private DirtyValue<DateTime?> _fulfilledDate;
-        private EntityReference _fulfilledBy;
+        private DirtyValue<EntityReference> _fulfilledBy;
 
         /// <summary>
         /// A value of <c>true</c> indicates that underwriting has access to this condition.
@@ -42,6 +42,6 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who fulfilled the condition.
         /// </summary>
-        public EntityReference FulfilledBy { get => GetField(ref _fulfilledBy); set => SetField(ref _fulfilledBy, value); }
+        public EntityReference FulfilledBy { get => _fulfilledBy; set => SetField(ref _fulfilledBy, value); }
     }
 }

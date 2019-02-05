@@ -530,26 +530,36 @@ namespace EncompassRest.Utilities
                         var idPropertyName = DirtyExtensibleObject.GetIdPropertyName(objectTypeInfo);
                         var backingFieldTypeInfo = GetBackingFieldInfo(objectType, idPropertyName)?.FieldInfo.FieldType.GetTypeInfo();
                         idPropertyName = CamelCaseNamingStrategy.GetPropertyName(idPropertyName, false);
-                        var property = contract.Properties.GetClosestMatchProperty(idPropertyName);
-                        if (property != null && (backingFieldTypeInfo == null || !backingFieldTypeInfo.IsGenericType || backingFieldTypeInfo.IsGenericTypeDefinition || backingFieldTypeInfo.GetGenericTypeDefinition() != TypeData.OpenNeverSerializeValueType))
+                        var idProperty = contract.Properties.GetClosestMatchProperty(idPropertyName);
+                        if (idProperty != null && (backingFieldTypeInfo == null || !backingFieldTypeInfo.IsGenericType || backingFieldTypeInfo.IsGenericTypeDefinition || backingFieldTypeInfo.GetGenericTypeDefinition() != TypeData.OpenNeverSerializeValueType))
                         {
-                            property.ShouldSerialize = o => ((IIdentifiable)o).Id != null;
+                            idProperty.ShouldSerialize = o => ((IIdentifiable)o).Id != null;
                         }
 
-                        var entityAttribute = objectTypeInfo.GetCustomAttribute<EntityAttribute>(false);
-                        if (entityAttribute != null && !string.IsNullOrEmpty(entityAttribute.PropertiesToAlwaysSerialize))
-                        {
-                            var propertiesToAlwaysSerialize = entityAttribute.PropertiesToAlwaysSerialize.Split(',');
-                            foreach (var propertyToAlwaysSerialize in propertiesToAlwaysSerialize)
-                            {
-                                property = contract.Properties.GetClosestMatchProperty(propertyToAlwaysSerialize);
-                                var valueProvider = property.ValueProvider;
-                                property.ShouldSerialize = o => valueProvider.GetValue(o) != null;
-                            }
-                        }
+                        ReadEntityAttributes(objectTypeInfo, contract);
                     }
                 }
                 return contract;
+            }
+
+            private static void ReadEntityAttributes(TypeInfo objectTypeInfo, JsonObjectContract contract)
+            {
+                var baseType = objectTypeInfo.BaseType;
+                if (baseType != null)
+                {
+                    ReadEntityAttributes(baseType.GetTypeInfo(), contract);
+                }
+                var entityAttribute = objectTypeInfo.GetCustomAttribute<EntityAttribute>(false);
+                if (entityAttribute != null && !string.IsNullOrEmpty(entityAttribute.PropertiesToAlwaysSerialize))
+                {
+                    var propertiesToAlwaysSerialize = entityAttribute.PropertiesToAlwaysSerialize.Split(',');
+                    foreach (var propertyToAlwaysSerialize in propertiesToAlwaysSerialize)
+                    {
+                        var property = contract.Properties.GetClosestMatchProperty(propertyToAlwaysSerialize);
+                        var valueProvider = property.ValueProvider;
+                        property.ShouldSerialize = o => valueProvider.GetValue(o) != null;
+                    }
+                }
             }
 
             protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
