@@ -183,7 +183,6 @@ namespace EncompassRest
             { "AdditionalStateDisclosure.StateCode", nameof(State) },
             { "LoanAssociate.EnableWriteAccess", nameof(YOrN) },
             { "FreddieMac.CondoClass", nameof(CondoClass) },
-            { "Hmda.StateCode", nameof(State) },
             { "MilestoneTaskContact.State", nameof(State) },
             { "Miscellaneous.State", nameof(State) }
         };
