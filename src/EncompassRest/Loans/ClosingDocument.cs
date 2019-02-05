@@ -22,6 +22,10 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _alternateLender;
         private DirtyValue<string> _altLenderId;
         private DirtyList<AntiSteeringLoanOption> _antiSteeringLoanOptions;
+        private DirtyValue<DateTime?> _appraisalOrderAccepted;
+        private DirtyValue<DateTime?> _appraisalOrderSent;
+        private DirtyValue<DateTime?> _appraiserSentDataForReview;
+        private DirtyValue<DateTime?> _appraiserSentDocForReview;
         private DirtyValue<string> _areAbleToServiceIndicator;
         private DirtyValue<string> _associatedDocumentNumber;
         private DirtyValue<string> _beneficiaries;
@@ -192,6 +196,8 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _textDescription;
         private DirtyValue<string> _thirdTransferYear;
         private DirtyValue<decimal?> _thirdTransferYearValue;
+        private DirtyValue<DateTime?> _titleClosingAgentSentDataForReview;
+        private DirtyValue<DateTime?> _titleClosingAgentSentDocForReview;
         private DirtyValue<string> _titleReportItemsDescription;
         private DirtyValue<string> _titleReportRequiredEndorsementsDescription;
         private DirtyValue<decimal?> _totalDisbursed;
@@ -260,6 +266,30 @@ namespace EncompassRest.Loans
         /// ClosingDocument AntiSteeringLoanOptions
         /// </summary>
         public IList<AntiSteeringLoanOption> AntiSteeringLoanOptions { get => GetField(ref _antiSteeringLoanOptions); set => SetField(ref _antiSteeringLoanOptions, value); }
+
+        /// <summary>
+        /// Appraisal Order Accepted [AP.WF.EVNT.APODRACCP]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? AppraisalOrderAccepted { get => _appraisalOrderAccepted; set => SetField(ref _appraisalOrderAccepted, value); }
+
+        /// <summary>
+        /// Appraisal Order Sent [AP.WF.EVNT.APODRSENT]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? AppraisalOrderSent { get => _appraisalOrderSent; set => SetField(ref _appraisalOrderSent, value); }
+
+        /// <summary>
+        /// Appraiser Sent Data for Review [AP.WF.EVNT.DATAREVIEW]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? AppraiserSentDataForReview { get => _appraiserSentDataForReview; set => SetField(ref _appraiserSentDataForReview, value); }
+
+        /// <summary>
+        /// Appraiser Sent Doc(s) for Review [AP.WF.EVNT.DOCREVIEW]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? AppraiserSentDocForReview { get => _appraiserSentDocForReview; set => SetField(ref _appraiserSentDocForReview, value); }
 
         /// <summary>
         /// Closing Docs RESPA Able to Service [1926]
@@ -1161,6 +1191,18 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? ThirdTransferYearValue { get => _thirdTransferYearValue; set => SetField(ref _thirdTransferYearValue, value); }
+
+        /// <summary>
+        /// Title Closing Disclosure - Title/Closing Agent Sent Data for Review [CL.WF.EVNT.DATAREVIEW]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? TitleClosingAgentSentDataForReview { get => _titleClosingAgentSentDataForReview; set => SetField(ref _titleClosingAgentSentDataForReview, value); }
+
+        /// <summary>
+        /// Title Closing Disclosure - Title/Closing Agent Sent Doc(s) for Review [CL.WF.EVNT.DOCREVIEW]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? TitleClosingAgentSentDocForReview { get => _titleClosingAgentSentDocForReview; set => SetField(ref _titleClosingAgentSentDocForReview, value); }
 
         /// <summary>
         /// Property Info Approved Items [L361]

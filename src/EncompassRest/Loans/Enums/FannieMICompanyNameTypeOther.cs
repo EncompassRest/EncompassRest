@@ -26,8 +26,9 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         NMI = 3,
         /// <summary>
-        /// SONYMA
+        /// SONYMA (FNM Removed 12/2016)
         /// </summary>
+        [Description("SONYMA (FNM Removed 12/2016)")]
         SONYMA = 4,
         /// <summary>
         /// ArchMI (FRE added 05/2015)

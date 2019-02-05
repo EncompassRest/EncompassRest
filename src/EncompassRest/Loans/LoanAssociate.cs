@@ -7,6 +7,7 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LoanAssociate : DirtyExtensibleObject, IIdentifiable
     {
+        private DirtyValue<string> _aPIClientID;
         private DirtyValue<string> _cellPhone;
         private DirtyValue<string> _email;
         private DirtyValue<StringEnumValue<YOrN>> _enableWriteAccess;
@@ -18,7 +19,13 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _phone;
         private DirtyValue<int?> _roleId;
         private DirtyValue<string> _roleName;
+        private DirtyValue<string> _title;
         private DirtyValue<string> _writeAccess;
+
+        /// <summary>
+        /// LoanAssociate APIClientID
+        /// </summary>
+        public string APIClientID { get => _aPIClientID; set => SetField(ref _aPIClientID, value); }
 
         /// <summary>
         /// LoanAssociate CellPhone
@@ -74,6 +81,11 @@ namespace EncompassRest.Loans
         /// LoanAssociate RoleName
         /// </summary>
         public string RoleName { get => _roleName; set => SetField(ref _roleName, value); }
+
+        /// <summary>
+        /// LoanAssociate Title
+        /// </summary>
+        public string Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// LoanAssociate WriteAccess

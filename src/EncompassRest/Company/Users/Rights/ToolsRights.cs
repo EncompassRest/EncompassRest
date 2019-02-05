@@ -36,6 +36,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _prequalification;
         private DirtyValue<bool?> _profitManagement;
         private DirtyValue<bool?> _rentVsOwn;
+        private RepAndWarrantTrackerRights _repAndWarrantTracker;
         private DirtyValue<bool?> _secondaryRegistration;
         private DirtyValue<bool?> _secureFormTransfer;
         private TasksRights _tasks;
@@ -194,6 +195,11 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [JsonProperty("rentVs.Own")]
         public bool? RentVsOwn { get => _rentVsOwn; set => SetField(ref _rentVsOwn, value); }
+
+        /// <summary>
+        /// ToolsRights RepAndWarrantTracker
+        /// </summary>
+        public RepAndWarrantTrackerRights RepAndWarrantTracker { get => GetField(ref _repAndWarrantTracker); set => SetField(ref _repAndWarrantTracker, value); }
 
         /// <summary>
         /// ToolsRights SecondaryRegistration

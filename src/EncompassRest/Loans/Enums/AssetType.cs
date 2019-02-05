@@ -103,8 +103,9 @@ namespace EncompassRest.Loans.Enums
         [Description("Net Equity")]
         NetEquity = 18,
         /// <summary>
-        /// LifeInsurance
+        /// Life Insurance
         /// </summary>
+        [Description("Life Insurance")]
         LifeInsurance = 19,
         /// <summary>
         /// Automobile
@@ -113,6 +114,24 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// Stock
         /// </summary>
-        Stock = 21
+        Stock = 21,
+        /// <summary>
+        /// Other
+        /// </summary>
+        Other = 22,
+        /// <summary>
+        /// Stock Options
+        /// </summary>
+        [Description("Stock Options")]
+        StockOptions = 23,
+        /// <summary>
+        /// Bond
+        /// </summary>
+        Bond = 24,
+        /// <summary>
+        /// Individual Development Account
+        /// </summary>
+        [Description("Individual Development Account")]
+        IndividualDevelopmentAccount = 25
     }
 }

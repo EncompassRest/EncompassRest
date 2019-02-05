@@ -19,6 +19,12 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         [Description("2. Not a reverse mortgage")]
         [EnumMember(Value = "Not a reverse mortgage")]
-        NotAReverseMortgage = 1
+        NotAReverseMortgage = 1,
+        /// <summary>
+        /// 1111 Partially Exempt
+        /// </summary>
+        [Description("1111 Partially Exempt")]
+        [EnumMember(Value = "Partially Exempt")]
+        PartiallyExempt = 2
     }
 }

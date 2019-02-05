@@ -19,6 +19,8 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _eFolderUFApprover;
         private DirtyValue<bool?> _externalSettingsTPOWCDocs;
         private DirtyValue<bool?> _externalSettingsTPOWCSiteManagement;
+        private DirtyValue<bool?> _fannieMaeUCDTransfer;
+        private DirtyValue<bool?> _freddieMacCAC;
         private DirtyValue<bool?> _globalTabNews;
         private DirtyValue<bool?> _inputFormsShowAllFormsCheckBox;
         private DirtyValue<bool?> _instantMessenger;
@@ -50,6 +52,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _settingsTabEDisclosureStackingTemplates;
         private DirtyValue<bool?> _settingsTabExtCompany;
         private DirtyValue<bool?> _settingsTabInputFormSets;
+        private DirtyValue<bool?> _settingsTabInsightsSetup;
         private DirtyValue<bool?> _settingsTabItemizationFeeManagement;
         private DirtyValue<bool?> _settingsTabLoanCustomFields;
         private DirtyValue<bool?> _settingsTabLoanErrorInformation;
@@ -148,6 +151,18 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [JsonProperty("externalSettings_TPOWCSiteManagement")]
         public bool? ExternalSettingsTPOWCSiteManagement { get => _externalSettingsTPOWCSiteManagement; set => SetField(ref _externalSettingsTPOWCSiteManagement, value); }
+
+        /// <summary>
+        /// MiscellaneousRights FannieMaeUCDTransfer
+        /// </summary>
+        [JsonProperty("fannie_Mae_UCD_Transfer")]
+        public bool? FannieMaeUCDTransfer { get => _fannieMaeUCDTransfer; set => SetField(ref _fannieMaeUCDTransfer, value); }
+
+        /// <summary>
+        /// MiscellaneousRights FreddieMacCAC
+        /// </summary>
+        [JsonProperty("freddie_Mac_CAC")]
+        public bool? FreddieMacCAC { get => _freddieMacCAC; set => SetField(ref _freddieMacCAC, value); }
 
         /// <summary>
         /// MiscellaneousRights GlobalTabNews
@@ -333,6 +348,12 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [JsonProperty("settingsTab_InputFormSets")]
         public bool? SettingsTabInputFormSets { get => _settingsTabInputFormSets; set => SetField(ref _settingsTabInputFormSets, value); }
+
+        /// <summary>
+        /// MiscellaneousRightsSettingsTabInsightsSetup
+        /// </summary>
+        [JsonProperty("settingsTab_InsightsSetup")]
+        public bool? SettingsTabInsightsSetup { get => _settingsTabInsightsSetup; set => SetField(ref _settingsTabInsightsSetup, value); }
 
         /// <summary>
         /// MiscellaneousRights SettingsTabItemizationFeeManagement

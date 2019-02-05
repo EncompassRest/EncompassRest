@@ -100,6 +100,54 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         [Description("17. Not applicable")]
         [EnumMember(Value = "Not applicable")]
-        NotApplicable = 16
+        NotApplicable = 16,
+        /// <summary>
+        /// 18. Accept/Eligible
+        /// </summary>
+        [Description("18. Accept/Eligible")]
+        [EnumMember(Value = "Accept/Eligible")]
+        AcceptEligible = 17,
+        /// <summary>
+        /// 19. Accept/Ineligible
+        /// </summary>
+        [Description("19. Accept/Ineligible")]
+        [EnumMember(Value = "Accept/Ineligible")]
+        AcceptIneligible = 18,
+        /// <summary>
+        /// 20. Accept/Unable to Determine
+        /// </summary>
+        [Description("20. Accept/Unable to Determine")]
+        [EnumMember(Value = "Accept/Unable to Determine")]
+        AcceptUnableToDetermine = 19,
+        /// <summary>
+        /// 21. Refer with Caution/Eligible
+        /// </summary>
+        [Description("21. Refer with Caution/Eligible")]
+        [EnumMember(Value = "Refer with Caution/Eligible")]
+        ReferWithCautionEligible = 20,
+        /// <summary>
+        /// 22. Refer with Caution/Ineligible
+        /// </summary>
+        [Description("22. Refer with Caution/Ineligible")]
+        [EnumMember(Value = "Refer with Caution/Ineligible")]
+        ReferWithCautionIneligible = 21,
+        /// <summary>
+        /// 23. Refer/Unable to Determine
+        /// </summary>
+        [Description("23. Refer/Unable to Determine")]
+        [EnumMember(Value = "Refer/Unable to Determine")]
+        ReferUnableToDetermine = 22,
+        /// <summary>
+        /// 24. Refer with Caution/Unable to Determine
+        /// </summary>
+        [Description("24. Refer with Caution/Unable to Determine")]
+        [EnumMember(Value = "Refer with Caution/Unable to Determine")]
+        ReferWithCautionUnableToDetermine = 23,
+        /// <summary>
+        /// 1111 Partially Exempt
+        /// </summary>
+        [Description("1111 Partially Exempt")]
+        [EnumMember(Value = "Partially Exempt")]
+        PartiallyExempt = 24
     }
 }

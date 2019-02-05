@@ -67,6 +67,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _freddieMacOccupantDebtRatio;
         private DirtyValue<decimal?> _freddieMacOccupantHousingRatio;
         private DirtyValue<decimal?> _freDebtToHousingGapRatio;
+        private DirtyList<GiftGrant> _giftsGrants;
         private DirtyValue<decimal?> _grossBaseIncomeAmount;
         private DirtyValue<decimal?> _grossIncomeForComortSet;
         private DirtyValue<decimal?> _grossNegativeCashFlow;
@@ -136,9 +137,13 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _monthlySecondHomeAmount;
         private DirtyValue<string> _mortgageInsuranceAmount;
         private DirtyValue<decimal?> _netWorthAmount;
+        private DirtyList<OtherAsset> _otherAssets;
         private DirtyValue<decimal?> _otherHousingExpenseAmount;
+        private DirtyList<OtherIncomeSource> _otherIncomeSources;
         private DirtyValue<decimal?> _otherItemsDeducted;
+        private DirtyList<OtherLiability> _otherLiabilities;
         private DirtyValue<decimal?> _otherMortgagePrincipalAndInterestAmount;
+        private DirtyValue<decimal?> _otherTotalIncome;
         private DirtyValue<StringEnumValue<PastCreditRecord>> _pastCreditRecord;
         private DirtyValue<decimal?> _presentHousingExpComortSet;
         private DirtyValue<decimal?> _primaryResidenceComortSet;
@@ -176,6 +181,8 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _spouseIncomeConsider;
         private DirtyList<Tax4506> _tax4506s;
         private DirtyValue<decimal?> _topRatioPercent;
+        private DirtyValue<decimal?> _totalAdditionalAssetsAmount;
+        private DirtyValue<decimal?> _totalAdditionalOtherAssetsAmount;
         private DirtyValue<decimal?> _totalAssetsAmount;
         private DirtyValue<decimal?> _totalBaseIncomeAmount;
         private DirtyValue<decimal?> _totalBonusAmount;
@@ -192,10 +199,12 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _totalNetRentalIncomeAmount;
         private DirtyValue<decimal?> _totalOther1Amount;
         private DirtyValue<decimal?> _totalOther2Amount;
+        private DirtyValue<decimal?> _totalOtherAssetsAmount;
         private DirtyValue<decimal?> _totalOvertimeAmount;
         private DirtyValue<decimal?> _totalPaymentsAmount;
         private DirtyValue<decimal?> _totalPrimaryHousingExpenseAmount;
         private DirtyValue<decimal?> _totalReoMarketValueAmount;
+        private DirtyValue<decimal?> _totalURLA2020AssetsAmount;
         private DirtyValue<decimal?> _totalUserDefinedIncome;
         private DirtyList<TQLReportInformation> _tQLReports;
         private DirtyValue<string> _transUnionAddress;
@@ -209,6 +218,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _transUnionScoreRangeTo;
         private DirtyValue<StringEnumValue<State>> _transUnionState;
         private DirtyValue<string> _transUnionWebsite;
+        private DirtyList<URLAAlternateName> _uRLAAlternateNames;
         private DirtyValue<decimal?> _userDefinedIncome;
         private DirtyValue<string> _userDefinedIncomeDescription;
         private DirtyValue<StringEnumValue<YOrN>> _vACreditStandards;
@@ -522,6 +532,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? FreDebtToHousingGapRatio { get => _freDebtToHousingGapRatio; set => SetField(ref _freDebtToHousingGapRatio, value); }
+
+        /// <summary>
+        /// Application GiftsGrants
+        /// </summary>
+        public IList<GiftGrant> GiftsGrants { get => GetField(ref _giftsGrants); set => SetField(ref _giftsGrants, value); }
 
         /// <summary>
         /// Income Total Base Income (Borr/Co-Borr) [273]
@@ -921,10 +936,20 @@ namespace EncompassRest.Loans
         public decimal? NetWorthAmount { get => _netWorthAmount; set => SetField(ref _netWorthAmount, value); }
 
         /// <summary>
+        /// Application OtherAssets
+        /// </summary>
+        public IList<OtherAsset> OtherAssets { get => GetField(ref _otherAssets); set => SetField(ref _otherAssets, value); }
+
+        /// <summary>
         /// Expenses Present Other Housing [126]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherHousingExpenseAmount { get => _otherHousingExpenseAmount; set => SetField(ref _otherHousingExpenseAmount, value); }
+
+        /// <summary>
+        /// Application OtherIncomeSources
+        /// </summary>
+        public IList<OtherIncomeSource> OtherIncomeSources { get => GetField(ref _otherIncomeSources); set => SetField(ref _otherIncomeSources, value); }
 
         /// <summary>
         /// Income Deductions Other Items Deducted [198]
@@ -933,10 +958,21 @@ namespace EncompassRest.Loans
         public decimal? OtherItemsDeducted { get => _otherItemsDeducted; set => SetField(ref _otherItemsDeducted, value); }
 
         /// <summary>
+        /// Application OtherLiabilities
+        /// </summary>
+        public IList<OtherLiability> OtherLiabilities { get => GetField(ref _otherLiabilities); set => SetField(ref _otherLiabilities, value); }
+
+        /// <summary>
         /// Expenses Present Other Pymt [121]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherMortgagePrincipalAndInterestAmount { get => _otherMortgagePrincipalAndInterestAmount; set => SetField(ref _otherMortgagePrincipalAndInterestAmount, value); }
+
+        /// <summary>
+        /// Borr Other Total Income [URLA.X44]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? OtherTotalIncome { get => _otherTotalIncome; set => SetField(ref _otherTotalIncome, value); }
 
         /// <summary>
         /// VA Past Credit Record [1326]
@@ -1144,6 +1180,18 @@ namespace EncompassRest.Loans
         public decimal? TopRatioPercent { get => _topRatioPercent; set => SetField(ref _topRatioPercent, value); }
 
         /// <summary>
+        /// Total Additional Assets Amount [URLA.X49]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalAdditionalAssetsAmount { get => _totalAdditionalAssetsAmount; set => SetField(ref _totalAdditionalAssetsAmount, value); }
+
+        /// <summary>
+        /// Total Additional Other Assets Amount [URLA.X53]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalAdditionalOtherAssetsAmount { get => _totalAdditionalOtherAssetsAmount; set => SetField(ref _totalAdditionalOtherAssetsAmount, value); }
+
+        /// <summary>
         /// Assets Total Assets [732]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
@@ -1240,6 +1288,12 @@ namespace EncompassRest.Loans
         public decimal? TotalOther2Amount { get => _totalOther2Amount; set => SetField(ref _totalOther2Amount, value); }
 
         /// <summary>
+        /// Total Other Assets Amount [URLA.X54]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalOtherAssetsAmount { get => _totalOtherAssetsAmount; set => SetField(ref _totalOtherAssetsAmount, value); }
+
+        /// <summary>
         /// Income Total Overtime (Borr/Co-Borr) [902]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
@@ -1261,6 +1315,12 @@ namespace EncompassRest.Loans
         /// Application TotalReoMarketValueAmount
         /// </summary>
         public decimal? TotalReoMarketValueAmount { get => _totalReoMarketValueAmount; set => SetField(ref _totalReoMarketValueAmount, value); }
+
+        /// <summary>
+        /// Total Assets Amount [URLA.X50]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalURLA2020AssetsAmount { get => _totalURLA2020AssetsAmount; set => SetField(ref _totalURLA2020AssetsAmount, value); }
 
         /// <summary>
         /// Income Total Other Income (User Defined) [1817]
@@ -1330,6 +1390,11 @@ namespace EncompassRest.Loans
         /// Disclosure Cred Bureau 2 Co Website [DISCLOSURE.X639]
         /// </summary>
         public string TransUnionWebsite { get => _transUnionWebsite; set => SetField(ref _transUnionWebsite, value); }
+
+        /// <summary>
+        /// Application URLAAlternateNames
+        /// </summary>
+        public IList<URLAAlternateName> URLAAlternateNames { get => GetField(ref _uRLAAlternateNames); set => SetField(ref _uRLAAlternateNames, value); }
 
         /// <summary>
         /// Application UserDefinedIncome

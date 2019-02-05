@@ -67,6 +67,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _lOAddress;
         private DirtyValue<string> _lOAEName;
         private DirtyValue<string> _lOAEUserName;
+        private DirtyValue<DateTime?> _loanEstimateRequestedDate;
         private DirtyValue<string> _lOBusinessFax;
         private DirtyValue<string> _lOBusinessPhone;
         private DirtyValue<string> _lOCellPhone;
@@ -103,6 +104,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _underwritingDelegated;
         private DirtyValue<bool?> _watchListFlag;
         private DirtyValue<StringEnumValue<WatchListReason>> _watchListReason;
+        private DirtyValue<DateTime?> _wholesaleWithdrawalDate;
 
         /// <summary>
         /// TPO Archived [TPO.X8]
@@ -398,6 +400,11 @@ namespace EncompassRest.Loans
         public string LOAEUserName { get => _lOAEUserName; set => SetField(ref _lOAEUserName, value); }
 
         /// <summary>
+        /// Loan Estimate Requested Date [TPO.X111]
+        /// </summary>
+        public DateTime? LoanEstimateRequestedDate { get => _loanEstimateRequestedDate; set => SetField(ref _loanEstimateRequestedDate, value); }
+
+        /// <summary>
         /// TPO Loan Officer Business Fax [TPO.X66]
         /// </summary>
         public string LOBusinessFax { get => _lOBusinessFax; set => SetField(ref _lOBusinessFax, value); }
@@ -579,5 +586,10 @@ namespace EncompassRest.Loans
         /// TPO WatchList Reason [TPO.X87]
         /// </summary>
         public StringEnumValue<WatchListReason> WatchListReason { get => _watchListReason; set => SetField(ref _watchListReason, value); }
+
+        /// <summary>
+        /// Wholesale Withdrawal Requested Date [TPO.X110]
+        /// </summary>
+        public DateTime? WholesaleWithdrawalDate { get => _wholesaleWithdrawalDate; set => SetField(ref _wholesaleWithdrawalDate, value); }
     }
 }

@@ -303,6 +303,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _diffSellSideSRP;
         private DirtyValue<decimal?> _diffSRP;
         private DirtyValue<decimal?> _diffSRPAmount;
+        private DirtyValue<StringEnumValue<IndexMargin>> _disclosureType;
         private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator1;
         private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator10;
         private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator11;
@@ -325,6 +326,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _extensionRequestPending;
         private DirtyValue<int?> _extensionSequenceNumber;
         private DirtyList<ExtraPayment> _extraPayments;
+        private DirtyValue<bool?> _fHASecondaryResidence;
         private DirtyValue<decimal?> _fHAUpfrontMIPremiumPercent;
         private DirtyValue<int?> _financedNumberOfUnits;
         private DirtyValue<StringEnumValue<PartyType>> _firstPaymenTo;
@@ -338,13 +340,17 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _gPMRate;
         private DirtyValue<int?> _gPMYears;
         private DirtyValue<StringEnumValue<PropertyType>> _gSEPropertyType;
+        private DirtyValue<decimal?> _hCLTVHTLTV;
         private DirtyValue<StringEnumValue<YOrN>> _hedging;
         private DirtyValue<string> _hELOCActualBalance;
+        private DirtyValue<decimal?> _hELOCCreditLimit;
         private DirtyValue<string> _id;
         private DirtyValue<decimal?> _impounds;
         private DirtyValue<StringEnumValue<ImpoundType>> _impoundType;
         private DirtyValue<string> _impoundWaived;
         private DirtyValue<StringEnumValue<ImpoundWaived>> _impoundWavied;
+        private DirtyValue<decimal?> _indexCurrentValuePercent;
+        private DirtyValue<decimal?> _initialAdvanceAmount;
         private DirtyValue<decimal?> _interest;
         private DirtyValue<string> _investorAddress;
         private DirtyValue<string> _investorCity;
@@ -510,8 +516,12 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _subjectPropertyCounty;
         private DirtyValue<bool?> _subjectPropertyNonWarrantableProjectIndicator;
         private DirtyValue<string> _subjectPropertyPostalCode;
+        private DirtyValue<string> _subjectPropertyPropertyStreetAddress;
         private DirtyValue<StringEnumValue<State>> _subjectPropertyState;
         private DirtyValue<string> _subjectPropertyStreetAddress;
+        private DirtyValue<string> _subjectPropertyUnitNumber;
+        private DirtyValue<StringEnumValue<UnitType>> _subjectPropertyUnitType;
+        private DirtyValue<decimal?> _teaserRate;
         private DirtyValue<string> _timeLockedWithInvestor;
         private DirtyValue<decimal?> _totalBuyPrice;
         private DirtyValue<decimal?> _totalForLesserOfSumAsIs;
@@ -2131,6 +2141,12 @@ namespace EncompassRest.Loans
         public decimal? DiffSRPAmount { get => _diffSRPAmount; set => SetField(ref _diffSRPAmount, value); }
 
         /// <summary>
+        /// Rate Lock Request - Loan Info ARM Disclosure Type [4512]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"UST1YW\":\"1 Year UST CM (weekly)\",\"UST3YW\":\"3 Year UST CM (weekly)\",\"UST5YW\":\"5 Year UST CM (weekly)\",\"UST7YW\":\"7 Year UST CM (weekly)\",\"UST10YW\":\"10 Year UST CM (weekly)\",\"UST20YW\":\"20 Year UST CM (weekly)\",\"UST30YW\":\"30 Year UST CM (weekly)\",\"UST1Y\":\"1 Year US Treasury CM (daily)\",\"UST3Y\":\"3 Year US Treasury CM (daily)\",\"UST5Y\":\"5 Year US Treasury CM (daily)\",\"UST7Y\":\"7 Year US Treasury CM (daily)\",\"UST10Y\":\"10 Year US Treasury CM (daily)\",\"UST20Y\":\"20 Year US Treasury CM (daily)\",\"UST30Y\":\"30 Year US Treasury CM (daily)\",\"3MoCD(12MoAvg)\":\"3-MonthCD (12-Month Avg)\",\"6MCDW\":\"6 Month CD (Secondary Market) weekly\",\"UST6M\":\"6 Month US Treasury CM (daily)\",\"FRBCommercial3M\":\"90 Day AA Commercial Paper Rates (Nonfinancial)\",\"WSJPrime\":\"WSJ Prime Rate (daily)\",\"WSJPrimeWkly\":\"WSJ Prime Rate (weekly)\"}")]
+        public StringEnumValue<IndexMargin> DisclosureType { get => _disclosureType; set => SetField(ref _disclosureType, value); }
+
+        /// <summary>
         /// Lock Request Borr Self Employed [3516]
         /// </summary>
         public bool? EmploymentBorrowerSelfEmployedIndicator1 { get => _employmentBorrowerSelfEmployedIndicator1; set => SetField(ref _employmentBorrowerSelfEmployedIndicator1, value); }
@@ -2249,6 +2265,11 @@ namespace EncompassRest.Loans
         public IList<ExtraPayment> ExtraPayments { get => GetField(ref _extraPayments); set => SetField(ref _extraPayments, value); }
 
         /// <summary>
+        /// Rate Lock Request - FHA Secondary Residence [4515]
+        /// </summary>
+        public bool? FHASecondaryResidence { get => _fHASecondaryResidence; set => SetField(ref _fHASecondaryResidence, value); }
+
+        /// <summary>
         /// Lock Request MI Premium/Funding Fee % [3044]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_6)]
@@ -2321,6 +2342,12 @@ namespace EncompassRest.Loans
         public StringEnumValue<PropertyType> GSEPropertyType { get => _gSEPropertyType; set => SetField(ref _gSEPropertyType, value); }
 
         /// <summary>
+        /// Rate Lock Request - Trans Details HCLTV/HTLTV [4514]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? HCLTVHTLTV { get => _hCLTVHTLTV; set => SetField(ref _hCLTVHTLTV, value); }
+
+        /// <summary>
         /// Rate Lock Hedging [2401]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
@@ -2330,6 +2357,12 @@ namespace EncompassRest.Loans
         /// Lock Request Freddie Mac HELOC Actual Bal [3846]
         /// </summary>
         public string HELOCActualBalance { get => _hELOCActualBalance; set => SetField(ref _hELOCActualBalance, value); }
+
+        /// <summary>
+        /// Rate Lock Request - Freddie Mac HELOC Credit Limit [4519]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? HELOCCreditLimit { get => _hELOCCreditLimit; set => SetField(ref _hELOCCreditLimit, value); }
 
         /// <summary>
         /// RateLock Id
@@ -2356,6 +2389,18 @@ namespace EncompassRest.Loans
         /// Trans Details Impounds Waived [2293]
         /// </summary>
         public StringEnumValue<ImpoundWaived> ImpoundWavied { get => _impoundWavied; set => SetField(ref _impoundWavied, value); }
+
+        /// <summary>
+        /// Rate Lock Request - Loan Info ARM Index [4513]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? IndexCurrentValuePercent { get => _indexCurrentValuePercent; set => SetField(ref _indexCurrentValuePercent, value); }
+
+        /// <summary>
+        /// Rate Lock Request - HELOC Initial Advance [4510]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? InitialAdvanceAmount { get => _initialAdvanceAmount; set => SetField(ref _initialAdvanceAmount, value); }
 
         /// <summary>
         /// Purchase Adv Actual Interest Payment from Investor [2834]
@@ -3247,6 +3292,11 @@ namespace EncompassRest.Loans
         public string SubjectPropertyPostalCode { get => _subjectPropertyPostalCode; set => SetField(ref _subjectPropertyPostalCode, value); }
 
         /// <summary>
+        /// Lock Request Subject Property Street Address [4516]
+        /// </summary>
+        public string SubjectPropertyPropertyStreetAddress { get => _subjectPropertyPropertyStreetAddress; set => SetField(ref _subjectPropertyPropertyStreetAddress, value); }
+
+        /// <summary>
         /// Lock Request Subject Property State [2945]
         /// </summary>
         public StringEnumValue<State> SubjectPropertyState { get => _subjectPropertyState; set => SetField(ref _subjectPropertyState, value); }
@@ -3255,6 +3305,22 @@ namespace EncompassRest.Loans
         /// Lock Request Subject Property Address [2942]
         /// </summary>
         public string SubjectPropertyStreetAddress { get => _subjectPropertyStreetAddress; set => SetField(ref _subjectPropertyStreetAddress, value); }
+
+        /// <summary>
+        /// Lock Request Subject Property Unit Number [4518]
+        /// </summary>
+        public string SubjectPropertyUnitNumber { get => _subjectPropertyUnitNumber; set => SetField(ref _subjectPropertyUnitNumber, value); }
+
+        /// <summary>
+        /// Lock Request Subject Property Unit Type [4517]
+        /// </summary>
+        public StringEnumValue<UnitType> SubjectPropertyUnitType { get => _subjectPropertyUnitType; set => SetField(ref _subjectPropertyUnitType, value); }
+
+        /// <summary>
+        /// Rate Lock Request - Teaser Rate [4511]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? TeaserRate { get => _teaserRate; set => SetField(ref _teaserRate, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Time Locked with Investor [2292]

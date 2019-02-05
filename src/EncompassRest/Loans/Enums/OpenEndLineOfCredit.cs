@@ -19,6 +19,12 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         [Description("2. Not an open-end line of credit")]
         [EnumMember(Value = "Not an open-end line of credit")]
-        NotAnOpenEndLineOfCredit = 1
+        NotAnOpenEndLineOfCredit = 1,
+        /// <summary>
+        /// 1111 Partially Exempt
+        /// </summary>
+        [Description("1111 Partially Exempt")]
+        [EnumMember(Value = "Partially Exempt")]
+        PartiallyExempt = 2
     }
 }

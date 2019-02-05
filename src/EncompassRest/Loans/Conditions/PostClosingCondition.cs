@@ -14,6 +14,7 @@ namespace EncompassRest.Loans.Conditions
         private DirtyValue<bool?> _isCleared;
         private DirtyValue<DateTime?> _clearedDate;
         private DirtyValue<EntityReference> _clearedBy;
+        private DirtyValue<bool?> _printExternally;
 
         /// <summary>
         /// Recipient of the condition.
@@ -49,5 +50,10 @@ namespace EncompassRest.Loans.Conditions
         /// Information about the Encompass user who cleared the condition.
         /// </summary>
         public EntityReference ClearedBy { get => _clearedBy; set => SetField(ref _clearedBy, value); }
+
+        /// <summary>
+        /// PostClosingCondition PrintExternally
+        /// </summary>
+        public bool? PrintExternally { get => _printExternally; set => SetField(ref _printExternally, value); }
     }
 }

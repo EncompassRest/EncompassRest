@@ -39,11 +39,13 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         private DirtyValue<StringEnumValue<Owner>> _owner;
         private DirtyValue<bool?> _printAttachmentIndicator;
+        private DirtyValue<bool?> _printUserJobTitleIndicator;
         private DirtyValue<bool?> _printUserNameIndicator;
         private DirtyValue<string> _title;
         private DirtyValue<string> _titleFax;
         private DirtyValue<string> _titlePhone;
         private DirtyValue<decimal?> _total;
+        private DirtyValue<decimal?> _urla2020CashOrMarketValueAmount;
         private DirtyValue<int?> _vodIndex;
 
         /// <summary>
@@ -68,7 +70,7 @@ namespace EncompassRest.Loans
         public StringEnumValue<AssetType> AssetType { get => _assetType; set => SetField(ref _assetType, value); }
 
         /// <summary>
-        /// Depository Attention Contact [DDNN03]
+        /// Asset Attention
         /// </summary>
         public string Attention { get => _attention; set => SetField(ref _attention, value); }
 
@@ -200,6 +202,12 @@ namespace EncompassRest.Loans
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
 
         /// <summary>
+        /// Depository Print User Job Title [DDNN64]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's job title\"}")]
+        public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
+
+        /// <summary>
         /// Depository Print User Name as Title [DDNN38]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's name as title\"}")]
@@ -227,6 +235,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? Total { get => _total; set => SetField(ref _total, value); }
+
+        /// <summary>
+        /// Asset Urla2020CashOrMarketValueAmount
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? Urla2020CashOrMarketValueAmount { get => _urla2020CashOrMarketValueAmount; set => SetField(ref _urla2020CashOrMarketValueAmount, value); }
 
         /// <summary>
         /// Asset VodIndex

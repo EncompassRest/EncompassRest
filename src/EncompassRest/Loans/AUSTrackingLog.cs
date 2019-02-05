@@ -939,6 +939,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Freddie Mac - Property Type [AUS.X172]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Detached Condominium\"]")]
         public StringEnumValue<OtherPropertyType> LogLPPropertyType { get => _logLPPropertyType; set => SetField(ref _logLPPropertyType, value); }
 
         /// <summary>
@@ -1375,6 +1376,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Underwriting Risk Assess Type [AUS.X1]
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"LP\":\"LPA\"}")]
         public StringEnumValue<RiskAssessmentType> LogUnderwritingRiskAssessType { get => _logUnderwritingRiskAssessType; set => SetField(ref _logUnderwritingRiskAssessType, value); }
 
         /// <summary>

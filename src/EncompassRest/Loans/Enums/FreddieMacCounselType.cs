@@ -26,6 +26,11 @@ namespace EncompassRest.Loans.Enums
         /// D: HUD Approved Agency
         /// </summary>
         [Description("D: HUD Approved Agency")]
-        D = 3
+        D = 3,
+        /// <summary>
+        /// E: Credit Smart Tutorial
+        /// </summary>
+        [Description("E: Credit Smart Tutorial")]
+        E = 4
     }
 }

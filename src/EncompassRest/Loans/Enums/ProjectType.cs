@@ -132,6 +132,12 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         [Description("G/Not in a Project or Development")]
         [EnumMember(Value = "G_NotInAProjectOrDevelopment")]
-        GNotInAProjectOrDevelopment = 21
+        GNotInAProjectOrDevelopment = 21,
+        /// <summary>
+        /// V/No Review-Site Condo
+        /// </summary>
+        [Description("V/No Review-Site Condo")]
+        [EnumMember(Value = "V_NoReviewSiteCondo")]
+        VNoReviewSiteCondo = 22
     }
 }

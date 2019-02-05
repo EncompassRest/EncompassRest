@@ -796,6 +796,54 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MIServiceRadianLog
         /// </summary>
-        MIServiceRadianLog = 199
+        MIServiceRadianLog = 199,
+        /// <summary>
+        /// GSETracker
+        /// </summary>
+        GSETracker = 200,
+        /// <summary>
+        /// OtherAsset
+        /// </summary>
+        OtherAsset = 201,
+        /// <summary>
+        /// OtherLiability
+        /// </summary>
+        OtherLiability = 202,
+        /// <summary>
+        /// GiftGrant
+        /// </summary>
+        GiftGrant = 203,
+        /// <summary>
+        /// OtherIncomeSource
+        /// </summary>
+        OtherIncomeSource = 204,
+        /// <summary>
+        /// URLAAlternateName
+        /// </summary>
+        URLAAlternateName = 205,
+        /// <summary>
+        /// LockRemovedLog
+        /// </summary>
+        LockRemovedLog = 206,
+        /// <summary>
+        /// GoodFaithFeeVarianceCureLog
+        /// </summary>
+        GoodFaithFeeVarianceCureLog = 207,
+        /// <summary>
+        /// MilestoneHistoryLog
+        /// </summary>
+        MilestoneHistoryLog = 208,
+        /// <summary>
+        /// ServicingPrintLog
+        /// </summary>
+        ServicingPrintLog = 209,
+        /// <summary>
+        /// ServicingPrintLogFieldList
+        /// </summary>
+        ServicingPrintLogFieldList = 210,
+        /// <summary>
+        /// PurchaseConditionLog
+        /// </summary>
+        PurchaseConditionLog = 211
     }
 }
