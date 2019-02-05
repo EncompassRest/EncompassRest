@@ -44,6 +44,11 @@ namespace EncompassRest.Tests
                     Assert.AreEqual(groupAdded.GroupType.Value, retrievedGroup.GroupType.Value);
 
                     groupAdded = new ContactGroup(groupId, "DEF", contactType, groupType);
+                    existingGroup = groups.FirstOrDefault(g => g.Name == groupAdded.Name);
+                    if (existingGroup != null)
+                    {
+                        await contactGroups.DeleteGroupAsync(existingGroup.Id);
+                    }
                     await contactGroups.UpdateGroupAsync(groupAdded);
                     retrievedGroup = await contactGroups.GetGroupAsync(groupId);
                     Assert.IsNotNull(retrievedGroup);

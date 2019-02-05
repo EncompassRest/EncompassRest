@@ -19,6 +19,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _floodService;
         private DirtyValue<bool?> _fraudService;
         private DirtyValue<bool?> _freddieMacCAC;
+        private DirtyValue<bool?> _freddieMacLPA;
         private DirtyValue<bool?> _freddieMacOrderAlert;
         private DirtyValue<bool?> _mortgageInsuranceService;
         private DirtyValue<bool?> _titleService;
@@ -86,6 +87,11 @@ namespace EncompassRest.Company.Users.Rights
         /// AdditionalServicesRights FreddieMacCAC
         /// </summary>
         public bool? FreddieMacCAC { get => _freddieMacCAC; set => SetField(ref _freddieMacCAC, value); }
+
+        /// <summary>
+        /// AdditionalServicesRights FreddieMacLPA
+        /// </summary>
+        public bool? FreddieMacLPA { get => _freddieMacLPA; set => SetField(ref _freddieMacLPA, value); }
 
         /// <summary>
         /// AdditionalServicesRights FreddieMacOrderAlert
