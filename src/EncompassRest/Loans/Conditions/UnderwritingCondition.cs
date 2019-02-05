@@ -9,7 +9,7 @@ namespace EncompassRest.Loans.Conditions
     {
         private DirtyValue<StringEnumValue<PriorToMilestone>> _priorTo;
         private DirtyValue<StringEnumValue<ConditionCategory>> _category;
-        private DirtyValue<string> _ownerRole;
+        private DirtyValue<EntityReference> _ownerRole;
         private DirtyValue<bool?> _allowToClear;
         private DirtyValue<bool?> _printExternally;
         private DirtyValue<bool?> _printInternally;
@@ -43,7 +43,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// The role of the Encompass user that owns the condition.
         /// </summary>
-        public string OwnerRole { get => _ownerRole; set => SetField(ref _ownerRole, value); }
+        public EntityReference OwnerRole { get => _ownerRole; set => SetField(ref _ownerRole, value); }
 
         /// <summary>
         /// Whether to allow the owner to clear the condition.
