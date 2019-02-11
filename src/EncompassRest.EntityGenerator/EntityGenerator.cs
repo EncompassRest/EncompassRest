@@ -812,10 +812,11 @@ namespace EncompassRest
                     }
                     if (propertySchema.FieldPatterns != null)
                     {
+                        var i = 1;
                         foreach (var fieldPatternPair in propertySchema.FieldPatterns)
                         {
                             var fieldPattern = fieldPatternPair.Key;
-                            if (!fieldPattern.StartsWith("DDNN") && !fieldPattern.StartsWith("CUSTNN"))
+                            if (fieldPattern != "URLAROLNN06" && !fieldPattern.StartsWith("CUSTNN"))
                             {
                                 serializeWholeList = true;
                                 if (fieldPatternPair.Value.Count != 1)
@@ -864,10 +865,20 @@ namespace EncompassRest
                                 {
                                 }
 
-                                var modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}";
+                                string modelPath;
+                                if (fieldPatternPath == "Application_Assets_NN")
+                                {
+                                    modelPath = $"Loan.CurrentApplication.Assets[(VodIndex == '{{0}}')]{(propertySchema.FieldPatterns.Count == 4 ? $"[{i}]": string.Empty)}.{propertyName}";
+                                    requiredProperties.Add(nameof(Asset.VodIndex));
+                                }
+                                else
+                                {
+                                    modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}";
+                                }
 
                                 fieldPatterns.Add(fieldId, new LoanFieldDescriptors.StandardFieldInfo { FieldId = fieldId, Description = description, ModelPath = modelPath });
                             }
+                            ++i;
                         }
                     }
                 }

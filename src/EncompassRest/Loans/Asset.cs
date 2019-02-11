@@ -7,7 +7,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Asset
     /// </summary>
-    [Entity(PropertiesToAlwaysSerialize = nameof(AssetType), SerializeWholeListWhenDirty = true)]
+    [Entity(PropertiesToAlwaysSerialize = nameof(AssetType) + "," + nameof(VodIndex), SerializeWholeListWhenDirty = true)]
     public sealed partial class Asset : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _accountIdentifier;
