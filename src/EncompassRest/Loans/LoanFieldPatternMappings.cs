@@ -172,6 +172,7 @@ namespace EncompassRest.Loans
                 throw new ArgumentException("bad modelPathPattern");
             }
 
+            descriptor._userAdded = true;
             return descriptor;
         }
 

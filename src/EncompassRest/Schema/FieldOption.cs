@@ -69,6 +69,6 @@ namespace EncompassRest.Schema
         /// Gets a hash code for the object.
         /// </summary>
         /// <returns></returns>
-        public override int GetHashCode() => Value?.GetHashCode() ?? 0;
+        public override int GetHashCode() => Value != null ? StringComparer.OrdinalIgnoreCase.GetHashCode(Value) : 0;
     }
 }

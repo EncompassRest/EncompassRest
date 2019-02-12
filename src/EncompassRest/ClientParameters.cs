@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using EncompassRest.Loans;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
@@ -38,6 +41,11 @@ namespace EncompassRest
         public CacheInitialization CustomFieldsCacheInitialization { get; set; }
 
         /// <summary>
+        /// Specifies when the standard fields cache should be refreshed.
+        /// </summary>
+        public CacheInitialization StandardFieldsCacheInitialization { get; set; }
+
+        /// <summary>
         /// The number of times to retry requests when there's a gateway timeout. Default is 0.
         /// </summary>
         public int TimeoutRetryCount
@@ -69,6 +77,18 @@ namespace EncompassRest
 
             ApiClientId = apiClientId;
             ApiClientSecret = apiClientSecret;
+        }
+
+        internal async Task TryInitializeAsync(EncompassRestClient client, CommonCache commonCache, CancellationToken cancellationToken)
+        {
+            if (CustomFieldsCacheInitialization != CacheInitialization.Never && !((DateTime.UtcNow - commonCache.CustomFieldsLastRefreshedUtc)?.TotalMinutes < (int)CustomFieldsCacheInitialization))
+            {
+                await commonCache.RefreshCustomFieldsAsync(client, cancellationToken).ConfigureAwait(false);
+            }
+            if (StandardFieldsCacheInitialization != CacheInitialization.Never && !((DateTime.UtcNow - LoanFieldDescriptors.StandardFieldsLastRefreshedUtc)?.TotalMinutes < (int)StandardFieldsCacheInitialization))
+            {
+                await LoanFieldDescriptors.RefreshStandardFieldsAsync(client, cancellationToken).ConfigureAwait(false);
+            }
         }
     }
 }

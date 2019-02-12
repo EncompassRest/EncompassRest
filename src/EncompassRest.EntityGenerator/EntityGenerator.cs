@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -360,7 +359,7 @@ namespace EncompassRest
 
                 var otherEnums = new Dictionary<string, Dictionary<string, string>>();
 
-                PopulateFieldMappings(destinationPath, @namespace, "Loan", "Loan", typeof(LoanContract), loanEntitySchema, null, entityTypes, fields, fieldPatterns, otherEnums);
+                LoanFieldDescriptors.PopulateFieldMappings("Loan", "Loan", typeof(LoanContract), loanEntitySchema, null, entityTypes, fields, fieldPatterns, extendedFieldInfo: false, (string entityName, Type ellieType, EntitySchema entitySchema, HashSet<string> requiredProperties, bool serializeWholeList) => GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums, requiredProperties, serializeWholeList), fieldId => EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId].Description, Console.Out);
 
                 entityTypes.Remove("Loan");
 
@@ -537,7 +536,7 @@ namespace EncompassRest
                 var propertyName = $"{char.ToUpper(cleanName[0])}{cleanName.Substring(1)}";
                 string fieldType;
                 string propertyType;
-                string getter = fieldName;
+                var getter = fieldName;
                 switch (property.Value.Type)
                 {
                     case JTokenType.Boolean:
@@ -624,256 +623,6 @@ namespace EncompassRest
             {
                 GenerateClassesFromJson(destinationPath, @namespace, entity.entityName, entity.jObject, names, nameSuffix);
             }
-        }
-
-        private static void PopulateFieldMappings(string destinationPath, string @namespace, string entityName, string currentPath, Type ellieType, EntitySchema entitySchema, EntitySchema previousEntitySchema, Dictionary<string, EntitySchema> entityTypes, Dictionary<string, LoanFieldDescriptors.StandardFieldInfo> fields, Dictionary<string, LoanFieldDescriptors.StandardFieldInfo> fieldPatterns, Dictionary<string, Dictionary<string, string>> otherEnums)
-        {
-            var requiredProperties = new HashSet<string>();
-            var serializeWholeList = false;
-
-            var properties = entitySchema.Properties;
-            foreach (var pair in properties)
-            {
-                var propertyName = pair.Key;
-                var propertySchema = pair.Value;
-                var description = propertySchema.Description;
-                var ellieProperty = ellieType?.GetProperty(propertyName);
-                var elliePropertyType = ellieProperty?.PropertyType;
-                var fieldId = propertySchema.FieldId;
-                if (!string.IsNullOrEmpty(fieldId))
-                {
-                    if (string.IsNullOrEmpty(description))
-                    {
-                        try
-                        {
-                            description = EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId].Description;
-                        }
-                        catch
-                        {
-                        }
-                    }
-                    fields.Add(fieldId, new LoanFieldDescriptors.StandardFieldInfo { FieldId = fieldId, ModelPath = $"{currentPath}.{propertyName}", Description = description });
-                }
-                else if (propertySchema.Type == PropertySchemaType.Entity && entityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
-                {
-                    entityTypes.Remove(propertySchema.EntityType);
-                    if (ellieType == typeof(LoanContract) && propertyName == "CurrentApplication")
-                    {
-                        elliePropertyType = typeof(LoanContractApplications);
-                    }
-                    else if (ellieType != null && elliePropertyType == null)
-                    {
-                        Console.WriteLine($"Did not get ellie type for {currentPath}.{propertyName} of type {propertySchema.EntityType.Value}");
-                    }
-                    PopulateFieldMappings(destinationPath, @namespace, propertySchema.EntityType, $"{currentPath}.{propertyName}", elliePropertyType, nestedEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, otherEnums);
-                }
-                else if ((propertySchema.Type == PropertySchemaType.List || propertySchema.Type == PropertySchemaType.Set) && entityTypes.TryGetValue(propertySchema.ElementType, out var elementEntitySchema))
-                {
-                    entityTypes.Remove(propertySchema.ElementType);
-                    if (ellieProperty != null)
-                    {
-                        elliePropertyType = elliePropertyType.GetInterface("IEnumerable`1").GenericTypeArguments[0];
-                    }
-                    else if (ellieType != null)
-                    {
-                        Console.WriteLine($"Did not get ellie type for {currentPath}.{propertyName} of type {propertySchema.ElementType.Value}");
-                    }
-                    PopulateFieldMappings(destinationPath, @namespace, propertySchema.ElementType, $"{currentPath}.{propertyName}", elliePropertyType, elementEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, otherEnums);
-                }
-                else
-                {
-                    if (propertySchema.FieldInstances != null)
-                    {
-                        foreach (var fieldInstancePair in propertySchema.FieldInstances)
-                        {
-                            fieldId = fieldInstancePair.Key;
-                            try
-                            {
-                                description = EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId].Description;
-                            }
-                            catch
-                            {
-                            }
-                            string modelPath = null;
-                            if (fieldInstancePair.Value.Count != 1)
-                            {
-                                Console.WriteLine($"There must be just one field instance value for {fieldId}");
-                            }
-                            var fieldInstancePath = fieldInstancePair.Value[0];
-                            if (fieldInstancePath == "Borrower" || fieldInstancePath == "Coborrower")
-                            {
-                                modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{fieldInstancePath}.{propertyName}";
-                            }
-                            else
-                            {
-                                var firstUnderscore = fieldInstancePath.IndexOf('_');
-                                var secondUnderscore = fieldInstancePath.IndexOf('_', firstUnderscore + 1);
-                                var listPropertyName = fieldInstancePath.Substring(firstUnderscore + 1, secondUnderscore - firstUnderscore - 1);
-
-                                var listPropertySchema = previousEntitySchema.Properties[listPropertyName];
-
-                                Instance instance = null;
-                                if (listPropertySchema.Instances?.TryGetValue(fieldInstancePath, out instance) == true)
-                                {
-                                    switch (instance)
-                                    {
-                                        case IntListInstance intListInstance:
-                                            if (intListInstance.Count != 1)
-                                            {
-                                                Console.WriteLine($"There must be just one int list instance value for {fieldInstancePath}");
-                                            }
-                                            serializeWholeList = true;
-                                            modelPath = $"{currentPath}[{intListInstance[0]}].{propertyName}";
-                                            break;
-                                        case StringListInstance stringListInstance:
-                                            foreach (var (s, i) in stringListInstance.Select((s, i) => (s, i)))
-                                            {
-                                                var keyPropertyName = listPropertySchema.KeyProperties[i];
-                                                requiredProperties.Add(keyPropertyName);
-                                                var property = properties[keyPropertyName];
-                                                var allowedValues = property.AllowedValues;
-                                                if (allowedValues == null)
-                                                {
-                                                    allowedValues = new List<FieldOption>();
-                                                    property.AllowedValues = allowedValues;
-                                                }
-                                                var option = new FieldOption(s);
-                                                if (!allowedValues.Contains(option))
-                                                {
-                                                    allowedValues.Add(option);
-                                                }
-                                            }
-
-                                            modelPath = $"{currentPath}[({string.Join(" && ", stringListInstance.Select((s, i) => (s, i)).Where(t => !string.IsNullOrEmpty(t.s)).Select(t => $"{listPropertySchema.KeyProperties[t.i]} == '{t.s}'"))})].{propertyName}";
-                                            break;
-                                        case StringDictionaryInstance stringDictionaryInstance:
-                                            foreach (var p in stringDictionaryInstance)
-                                            {
-                                                var keyPropertyName = p.Key;
-                                                requiredProperties.Add(keyPropertyName);
-                                                var property = properties[keyPropertyName];
-                                                var allowedValues = property.AllowedValues;
-                                                if (allowedValues == null)
-                                                {
-                                                    allowedValues = new List<FieldOption>();
-                                                    property.AllowedValues = allowedValues;
-                                                }
-                                                var option = new FieldOption(p.Value);
-                                                if (!allowedValues.Contains(option))
-                                                {
-                                                    allowedValues.Add(option);
-                                                }
-                                            }
-
-                                            modelPath = $"{currentPath}[({string.Join(" && ", stringDictionaryInstance.Select(p => $"{p.Key} == '{p.Value}'"))})].{propertyName}";
-                                            break;
-                                        default:
-                                            Console.WriteLine($"Bad instance type for {fieldInstancePath}");
-                                            break;
-                                    }
-                                }
-                                else
-                                {
-                                    serializeWholeList = true;
-                                    var colonIndex = fieldInstancePath.LastIndexOf(':');
-                                    var index = 0;
-                                    InstancePattern instancePattern = null;
-                                    if (colonIndex < 0 || !int.TryParse(fieldInstancePath.Substring(colonIndex + 1), NumberStyles.None, null, out index) || listPropertySchema.InstancePatterns?.TryGetValue(fieldInstancePath.Substring(0, colonIndex), out instancePattern) != true)
-                                    {
-                                        Console.WriteLine($"[{fieldId}]: {fieldInstancePath}");
-                                    }
-
-                                    if (instancePattern.Match != null)
-                                    {
-                                        foreach (var p in instancePattern.Match)
-                                        {
-                                            var keyPropertyName = p.Key;
-                                            requiredProperties.Add(keyPropertyName);
-                                            var property = properties[keyPropertyName];
-                                            var allowedValues = property.AllowedValues;
-                                            if (allowedValues == null)
-                                            {
-                                                allowedValues = new List<FieldOption>();
-                                                property.AllowedValues = allowedValues;
-                                            }
-                                            var option = new FieldOption(p.Value);
-                                            if (!allowedValues.Contains(option))
-                                            {
-                                                allowedValues.Add(option);
-                                            }
-                                        }
-                                    }
-
-                                    modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{index}].{propertyName}";
-                                }
-                            }
-                            fields.Add(fieldId, new LoanFieldDescriptors.StandardFieldInfo { FieldId = fieldId, Description = description, ModelPath = modelPath });
-                        }
-                    }
-                    if (propertySchema.FieldPatterns != null)
-                    {
-                        foreach (var fieldPatternPair in propertySchema.FieldPatterns)
-                        {
-                            var fieldPattern = fieldPatternPair.Key;
-                            if (!fieldPattern.StartsWith("DDNN") && !fieldPattern.StartsWith("CUSTNN"))
-                            {
-                                serializeWholeList = true;
-                                if (fieldPatternPair.Value.Count != 1)
-                                {
-                                    Console.WriteLine($"There must be just one field pattern value for {fieldPattern}");
-                                }
-                                var fieldPatternPath = fieldPatternPair.Value[0];
-
-                                var firstUnderscore = fieldPatternPath.IndexOf('_');
-                                var secondUnderscore = fieldPatternPath.IndexOf('_', firstUnderscore + 1);
-                                var listPropertyName = fieldPatternPath.Substring(firstUnderscore + 1, secondUnderscore - firstUnderscore - 1);
-
-                                var listPropertySchema = previousEntitySchema.Properties[listPropertyName];
-
-                                var instancePattern = listPropertySchema.InstancePatterns[fieldPatternPath];
-
-                                if (instancePattern.Match != null)
-                                {
-                                    foreach (var p in instancePattern.Match)
-                                    {
-                                        var keyPropertyName = p.Key;
-                                        requiredProperties.Add(keyPropertyName);
-                                        var property = properties[keyPropertyName];
-                                        var allowedValues = property.AllowedValues;
-                                        if (allowedValues == null)
-                                        {
-                                            allowedValues = new List<FieldOption>();
-                                            property.AllowedValues = allowedValues;
-                                        }
-                                        var option = new FieldOption(p.Value);
-                                        if (!allowedValues.Contains(option))
-                                        {
-                                            allowedValues.Add(option);
-                                        }
-                                    }
-                                }
-
-                                fieldId = fieldPattern.StartsWith("NBOCNB") ? fieldPattern.Replace("NBOCNB", "NBOC{0:00}") : fieldPattern.Replace("NN", "{0:00}");
-
-                                try
-                                {
-                                    description = EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[string.Format(fieldId, 1)].Description;
-                                    description = description.Replace(" #11", " #{0}").Replace(" #1", " #{0}");
-                                }
-                                catch
-                                {
-                                }
-
-                                var modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}";
-
-                                fieldPatterns.Add(fieldId, new LoanFieldDescriptors.StandardFieldInfo { FieldId = fieldId, Description = description, ModelPath = modelPath });
-                            }
-                        }
-                    }
-                }
-            }
-
-            GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums, requiredProperties, serializeWholeList);
         }
 
         private static void GenerateClassFileFromSchema(string destinationPath, string @namespace, string entityName, Type ellieType, EntitySchema entitySchema, Dictionary<string, Dictionary<string, string>> otherEnums, HashSet<string> requiredProperties, bool serializeWholeList)
