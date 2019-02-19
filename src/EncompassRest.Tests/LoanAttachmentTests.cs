@@ -17,7 +17,7 @@ namespace EncompassRest.Tests
 #pragma warning disable CS0618 // Type or member is obsolete
             var loanAttachment = new LoanAttachment { AttachmentType = AttachmentType.Image };
 #pragma warning restore CS0618 // Type or member is obsolete
-            Assert.AreEqual(@"{""attachmentType"":1}", loanAttachment.ToJson());
+            Assert.AreEqual(@"{""attachmentType"":1}", loanAttachment.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]

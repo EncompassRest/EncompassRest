@@ -16,21 +16,21 @@ namespace EncompassRest.Tests
         public void LoanDocument_Serialization()
         {
             var document = new LoanDocument("Mortgage Insurance", "All");
-            Assert.AreEqual(@"{""title"":""Mortgage Insurance"",""applicationId"":""All""}", document.ToJson());
+            Assert.AreEqual(@"{""title"":""Mortgage Insurance"",""applicationId"":""All""}", document.ToString(SerializationOptions.Dirty));
             document.Dirty = false;
-            Assert.AreEqual("{}", document.ToJson());
+            Assert.AreEqual("{}", document.ToString(SerializationOptions.Dirty));
             document.Status = "expected";
             Assert.IsNotNull(document.Status.EnumValue);
             Assert.AreEqual(DocumentStatus.Expected, document.Status.EnumValue.GetValueOrDefault());
-            Assert.AreEqual(@"{""status"":""expected""}", document.ToJson());
+            Assert.AreEqual(@"{""status"":""expected""}", document.ToString(SerializationOptions.Dirty));
             document.Status = "ready to ship";
             Assert.IsNull(document.Status.EnumValue);
-            Assert.AreEqual(@"{""status"":""ready to ship""}", document.ToJson());
+            Assert.AreEqual(@"{""status"":""ready to ship""}", document.ToString(SerializationOptions.Dirty));
             document.Dirty = false;
-            Assert.AreEqual("{}", document.ToJson());
+            Assert.AreEqual("{}", document.ToString(SerializationOptions.Dirty));
             document.Status = DocumentStatus.Added;
             Assert.AreEqual("added", document.Status.Value);
-            Assert.AreEqual(@"{""status"":""added""}", document.ToJson());
+            Assert.AreEqual(@"{""status"":""added""}", document.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]

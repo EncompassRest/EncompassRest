@@ -33,17 +33,17 @@ namespace EncompassRest.Tests
                 var borrowerPairs = await loan.LoanApis.BorrowerPairs.GetBorrowerPairsAsync();
                 Assert.AreSame(loan.Applications, borrowerPairs);
                 Assert.IsTrue(loan.Applications.Count > 0);
-                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToJson());
+                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 var oldCount = loan.Applications.Count;
                 var application = new Application();
                 var applicationId = await loan.LoanApis.BorrowerPairs.CreateBorrowerPairAsync(application);
-                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToJson());
+                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(oldCount + 1, loan.Applications.Count);
                 Assert.AreSame(application, loan.Applications.First(a => a.Id == applicationId));
                 application.ApplicationSignedDate = DateTime.Now.AddDays(-5);
                 var newApplication = new Application { Id = applicationId, ApplicationSignedDate = DateTime.Now.AddDays(2), Borrower = new Borrower { FirstName = "Bob", LastName = "Smith" }, Coborrower = new Borrower { FirstName = "Jane", LastName = "Doe" } };
                 await loan.LoanApis.BorrowerPairs.UpdateBorrowerPairAsync(newApplication);
-                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToJson());
+                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(newApplication.ApplicationSignedDate, loan.Applications.First(a => a.Id == applicationId).ApplicationSignedDate);
 
                 borrowerPairs = await loan.LoanApis.BorrowerPairs.GetBorrowerPairsAsync();
@@ -67,7 +67,7 @@ namespace EncompassRest.Tests
 
                 oldCount = loan.Applications.Count;
                 Assert.IsTrue(await loan.LoanApis.BorrowerPairs.DeleteBorrowerPairAsync(applicationId));
-                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToJson());
+                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(oldCount - 1, loan.Applications.Count);
                 Assert.IsNull(loan.Applications.FirstOrDefault(a => a.Id == applicationId));
             }
@@ -108,18 +108,18 @@ namespace EncompassRest.Tests
             try
             {
                 var borrowerPairs = await loanApis.BorrowerPairs.GetBorrowerPairsAsync();
-                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToJson());
+                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(0, loan.Applications.Count);
                 var application = new Application();
                 var applicationId = await loanApis.BorrowerPairs.CreateBorrowerPairAsync(application);
-                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToJson());
+                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(0, loan.Applications.Count);
                 var newApplication = new Application { Id = applicationId, ApplicationSignedDate = DateTime.Now.AddDays(2) };
                 await loanApis.BorrowerPairs.UpdateBorrowerPairAsync(newApplication);
-                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToJson());
+                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(0, loan.Applications.Count);
                 Assert.IsTrue(await loanApis.BorrowerPairs.DeleteBorrowerPairAsync(applicationId));
-                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToJson());
+                Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(0, loan.Applications.Count);
             }
             finally

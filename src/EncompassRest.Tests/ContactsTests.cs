@@ -17,9 +17,9 @@ namespace EncompassRest.Tests
 #pragma warning disable CS0618 // Type or member is obsolete
             var borrowerContact = new BorrowerContact { AccessLevel = ContactAccessLevel.Private };
 #pragma warning restore CS0618 // Type or member is obsolete
-            Assert.AreEqual(@"{""accessLevel"":0}", borrowerContact.ToJson());
+            Assert.AreEqual(@"{""accessLevel"":0}", borrowerContact.ToString(SerializationOptions.Dirty));
             borrowerContact.Dirty = false;
-            Assert.AreEqual("{}", borrowerContact.ToJson());
+            Assert.AreEqual("{}", borrowerContact.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]
@@ -28,9 +28,9 @@ namespace EncompassRest.Tests
 #pragma warning disable CS0618 // Type or member is obsolete
             var businessContact = new BusinessContact { AccessLevel = ContactAccessLevel.Private };
 #pragma warning restore CS0618 // Type or member is obsolete
-            Assert.AreEqual(@"{""accessLevel"":0}", businessContact.ToJson());
+            Assert.AreEqual(@"{""accessLevel"":0}", businessContact.ToString(SerializationOptions.Dirty));
             businessContact.Dirty = false;
-            Assert.AreEqual("{}", businessContact.ToJson());
+            Assert.AreEqual("{}", businessContact.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]

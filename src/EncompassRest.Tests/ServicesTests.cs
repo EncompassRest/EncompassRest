@@ -39,7 +39,7 @@ namespace EncompassRest.Tests
                     }
                 });
 
-            Assert.AreEqual($@"{{""product"":{{""options"":{{""digiCert"":true,""requestType"":""NewRequest"",""reportOn"":""Individual"",""reportType"":""Merge"",""creditReportIdentifier"":""abc"",""creditBureauEquifax"":true}},""preferences"":{{""importLiabilities"":true}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""CREDITIQ"",""credentials"":{{""userName"":""Joe"",""password"":""password1""}}}}}}", parameters.ToJson());
+            Assert.AreEqual($@"{{""product"":{{""options"":{{""digiCert"":true,""requestType"":""NewRequest"",""reportOn"":""Individual"",""reportType"":""Merge"",""creditReportIdentifier"":""abc"",""creditBureauEquifax"":true}},""preferences"":{{""importLiabilities"":true}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""CREDITIQ"",""credentials"":{{""userName"":""Joe"",""password"":""password1""}}}}}}", parameters.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]
@@ -66,7 +66,7 @@ namespace EncompassRest.Tests
                     }
                 });
 
-            Assert.AreEqual($@"{{""product"":{{""options"":{{""digiCert"":true,""requestType"":""newRequest"",""product_1040"":""1"",""transcriptType_1040"":""Account Transcript""}},""preferences"":{{""importLiabilities"":true}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""VERIF"",""credentials"":{{""userName"":""Joe"",""password"":""password1""}}}}}}", parameters.ToJson());
+            Assert.AreEqual($@"{{""product"":{{""options"":{{""digiCert"":true,""requestType"":""newRequest"",""product_1040"":""1"",""transcriptType_1040"":""Account Transcript""}},""preferences"":{{""importLiabilities"":true}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""VERIF"",""credentials"":{{""userName"":""Joe"",""password"":""password1""}}}}}}", parameters.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]
@@ -93,7 +93,7 @@ namespace EncompassRest.Tests
                     }
                 });
 
-            Assert.AreEqual($@"{{""product"":{{""options"":{{""requestType"":""OrderVerification"",""reportOn"":""Co-Borrower"",""employment"":""EmploymentOnly"",""digiCert"":true}},""preferences"":{{""importLiabilities"":true}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""VERIF"",""credentials"":{{""userName"":""Joe"",""password"":""password1""}}}}}}", parameters.ToJson());
+            Assert.AreEqual($@"{{""product"":{{""options"":{{""requestType"":""OrderVerification"",""reportOn"":""Co-Borrower"",""employment"":""EmploymentOnly"",""digiCert"":true}},""preferences"":{{""importLiabilities"":true}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""VERIF"",""credentials"":{{""userName"":""Joe"",""password"":""password1""}}}}}}", parameters.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]
@@ -126,7 +126,7 @@ namespace EncompassRest.Tests
                     }
                 });
 
-            Assert.AreEqual($@"{{""product"":{{""options"":{{""requestType"":""newOrder"",""ausReportIdentifier"":""123"",""orderCreditDetails"":[{{""applicationId"":""abc""}}]}},""preferences"":{{""conditionType"":""underwriting""}},""credentials"":{{""lpPassword"":""password2"",""userName"":""Joe"",""password"":""password1""}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""AUS""}}}}", parameters.ToJson());
+            Assert.AreEqual($@"{{""product"":{{""options"":{{""requestType"":""newOrder"",""ausReportIdentifier"":""123"",""orderCreditDetails"":[{{""applicationId"":""abc""}}]}},""preferences"":{{""conditionType"":""underwriting""}},""credentials"":{{""lpPassword"":""password2"",""userName"":""Joe"",""password"":""password1""}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""AUS""}}}}", parameters.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]
@@ -162,7 +162,7 @@ namespace EncompassRest.Tests
                     }
                 });
 
-            Assert.AreEqual($@"{{""product"":{{""options"":{{""requestType"":""newOrder"",""loanPurpose"":""Purchase"",""loanType"":""VA"",""propertyType"":""Single Family"",""contacts"":{{""contact"":{{""borrower"":{{""state"":""MO"",""name"":""George""}}}},""appointmentContact"":""borrower""}}}},""credentials"":{{""accountId"":""ace"",""userName"":""Joe"",""password"":""password1""}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""APPRAISAL""}}}}", parameters.ToJson());
+            Assert.AreEqual($@"{{""product"":{{""options"":{{""requestType"":""newOrder"",""loanPurpose"":""Purchase"",""loanType"":""VA"",""propertyType"":""Single Family"",""contacts"":{{""contact"":{{""borrower"":{{""state"":""MO"",""name"":""George""}}}},""appointmentContact"":""borrower""}}}},""credentials"":{{""accountId"":""ace"",""userName"":""Joe"",""password"":""password1""}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""APPRAISAL""}}}}", parameters.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]
@@ -187,7 +187,7 @@ namespace EncompassRest.Tests
                     }
                 });
 
-            Assert.AreEqual($@"{{""product"":{{""options"":{{""requestType"":""newRequest"",""productDetails"":{{""name"":""Life of Loan Determination"",""id"":""26""}}}},""credentials"":{{""accountId"":""ace"",""userName"":""Joe"",""password"":""password1""}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""FLOOD""}}}}", parameters.ToJson());
+            Assert.AreEqual($@"{{""product"":{{""options"":{{""requestType"":""newRequest"",""productDetails"":{{""name"":""Life of Loan Determination"",""id"":""26""}}}},""credentials"":{{""accountId"":""ace"",""userName"":""Joe"",""password"":""password1""}},""entityRef"":{{""entityId"":""{parameters.Product.EntityRef.EntityId}"",""entityType"":""{parameters.Product.EntityRef.EntityType}""}},""name"":""FLOOD""}}}}", parameters.ToString(SerializationOptions.Dirty));
         }
     }
 }
