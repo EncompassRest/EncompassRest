@@ -9,6 +9,7 @@ namespace EncompassRest.Tests
     public class LoanConditionsTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task LoanConditions_GetUnderwritingConditions()
         {
             var client = await GetTestClientAsync();
@@ -62,6 +63,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task LoanConditions_UpdateUnderwritingCondition()
         {
             var client = await GetTestClientAsync();
@@ -113,6 +115,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task LoanConditions_GetPostClosingConditions()
         {
             var client = await GetTestClientAsync();
@@ -156,6 +159,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task LoanConditions_GetPreliminaryConditions()
         {
             var client = await GetTestClientAsync();

@@ -34,6 +34,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task BorrowerContact_CreateRetrieveAndDelete()
         {
             var client = await GetTestClientAsync();
@@ -78,6 +79,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task BusinessContact_CreateRetrieveAndDelete()
         {
             var client = await GetTestClientAsync();
@@ -119,6 +121,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Contacts_GetCanonicalNames()
         {
             var client = await GetTestClientAsync();
@@ -132,6 +135,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Contacts_GetContactList()
         {
             var client = await GetTestClientAsync();
@@ -154,6 +158,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Contacts_Cursor()
         {
             var client = await GetTestClientAsync();

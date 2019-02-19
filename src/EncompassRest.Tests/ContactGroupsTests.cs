@@ -10,6 +10,7 @@ namespace EncompassRest.Tests
     public class ContactGroupsTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task ContactGroups_CreateUpdateAndDelete()
         {
             var client = await GetTestClientAsync();

@@ -12,6 +12,7 @@ namespace EncompassRest.Tests
     public class SchemaTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task Schema_GetLoanSchema()
         {
             var client = await GetTestClientAsync();
@@ -28,6 +29,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Schema_GenerateContract()
         {
             var client = await GetTestClientAsync();
@@ -46,6 +48,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Schema_GeneratePaths()
         {
             var client = await GetTestClientAsync();
@@ -68,6 +71,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task LoanFieldDescriptors_RefreshStandardFields_NoUpdates()
         {
             var client = await GetTestClientAsync();
@@ -82,6 +86,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task LoanFieldDescriptors_RefreshStandardFields_DoesNotAffectUserAddedFields()
         {
             var client = await GetTestClientAsync();

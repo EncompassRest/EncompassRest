@@ -11,6 +11,7 @@ namespace EncompassRest.Tests
     public class BorrowerPairsTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task BorrowerPairs_ReflectToLoanObject()
         {
             var client = await GetTestClientAsync();
@@ -84,6 +85,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task BorrowerPairs_DontReflectToLoanObject()
         {
             var client = await GetTestClientAsync();
@@ -94,6 +96,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task BorrowerPairs()
         {
             var client = await GetTestClientAsync();

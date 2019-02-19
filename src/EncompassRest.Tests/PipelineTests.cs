@@ -12,6 +12,7 @@ namespace EncompassRest.Tests
     public class PipelineTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_GetCanonicalNames()
         {
             var client = await GetTestClientAsync();
@@ -28,6 +29,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_ViewPipeline()
         {
             var client = await GetTestClientAsync();
@@ -41,6 +43,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_ViewPipeline_NotEmptyFieldFilter_Numeric()
         {
             var client = await GetTestClientAsync();
@@ -57,6 +60,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_ViewPipeline_EmptyFieldFilter_Numeric()
         {
             var client = await GetTestClientAsync();
@@ -73,6 +77,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_ViewPipeline_NotEmptyFieldFilter_Date()
         {
             var client = await GetTestClientAsync();
@@ -89,6 +94,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_ViewPipeline_EmptyFieldFilter_Date()
         {
             var client = await GetTestClientAsync();
@@ -105,6 +111,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_CreateCursor_EmptyFieldFilter_Date()
         {
             var client = await GetTestClientAsync();
@@ -121,39 +128,60 @@ namespace EncompassRest.Tests
             }
         }
 
+        // Currently fails
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_ViewPipeline_NotEmptyFieldFilter_String()
         {
-            var client = await GetTestClientAsync();
-            var field = CanonicalLoanField.CoBorrowerLastName.GetCanonicalName();
-            var fields = new[] { field };
-            var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new NotEmptyFieldFilter(field), fields));
-            Assert.IsNotNull(pipelineData);
-            Assert.IsTrue(pipelineData.Count > 0);
-            foreach (var item in pipelineData)
+            try
             {
-                ValidateItem(item, fields);
-                Assert.IsFalse(string.IsNullOrEmpty(item.Fields[field]));
+                var client = await GetTestClientAsync();
+                var field = CanonicalLoanField.CoBorrowerLastName.GetCanonicalName();
+                var fields = new[] { field };
+                var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new NotEmptyFieldFilter(field), fields));
+                Assert.IsNotNull(pipelineData);
+                Assert.IsTrue(pipelineData.Count > 0);
+                foreach (var item in pipelineData)
+                {
+                    ValidateItem(item, fields);
+                    Assert.IsFalse(string.IsNullOrEmpty(item.Fields[field]));
+                }
+                throw new Exception("NotEmptyFieldFilter now supports string fields");
+            }
+            catch (AssertFailedException ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
 
+        // Currently fails
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_ViewPipeline_EmptyFieldFilter_String()
         {
-            var client = await GetTestClientAsync();
-            var field = CanonicalLoanField.CoBorrowerLastName.GetCanonicalName();
-            var fields = new[] { field };
-            var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new EmptyFieldFilter(field), fields));
-            Assert.IsNotNull(pipelineData);
-            Assert.IsTrue(pipelineData.Count > 0);
-            foreach (var item in pipelineData)
+            try
             {
-                ValidateItem(item, fields);
-                Assert.IsTrue(string.IsNullOrEmpty(item.Fields[field]));
+                var client = await GetTestClientAsync();
+                var field = CanonicalLoanField.CoBorrowerLastName.GetCanonicalName();
+                var fields = new[] { field };
+                var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new EmptyFieldFilter(field), fields));
+                Assert.IsNotNull(pipelineData);
+                Assert.IsTrue(pipelineData.Count > 0);
+                foreach (var item in pipelineData)
+                {
+                    ValidateItem(item, fields);
+                    Assert.IsTrue(string.IsNullOrEmpty(item.Fields[field]));
+                }
+                throw new Exception("EmptyFieldFilter now supports string fields");
+            }
+            catch (AssertFailedException ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_CreateCursor_ReturnsNonNullForNoResults()
         {
             var client = await GetTestClientAsync();
@@ -164,6 +192,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_Cursor_GetItem()
         {
             var client = await GetTestClientAsync();
@@ -182,6 +211,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_Cursor_GetItems()
         {
             var client = await GetTestClientAsync();
@@ -225,6 +255,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_Cursor_IgnoreInvalidFields()
         {
             var client = await GetTestClientAsync();
@@ -236,6 +267,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Pipeline_ViewPipeline_IgnoreInvalidFields()
         {
             var client = await GetTestClientAsync();

@@ -7,6 +7,7 @@ namespace EncompassRest.Tests
     public class ClientTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task Client_ApiResponse()
         {
             var client = await GetTestClientAsync();

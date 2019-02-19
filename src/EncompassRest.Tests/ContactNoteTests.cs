@@ -19,6 +19,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task ContactNote_CreateRetrieveAndDelete()
         {
             //create borrower contact to test notes
