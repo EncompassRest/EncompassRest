@@ -244,37 +244,23 @@ namespace EncompassRest.Utilities
                 for (var i = 0; i < source.Count; ++i)
                 {
                     var sourceItem = (DirtyExtensibleObject)source[i];
-                    var id = ((IIdentifiable)sourceItem)?.Id;
-                    DirtyExtensibleObject existing = null;
-                    if (!string.IsNullOrEmpty(id))
+                    if (i == target.Count)
                     {
-                        var index = Extensions.IndexOf(targetEnumerable, id);
-                        if (index >= 0)
+                        target.Add(sourceItem);
+                    }
+                    else
+                    {
+                        DirtyExtensibleObject existing = null;
+                        var id = ((IIdentifiable)sourceItem)?.Id;
+                        int index;
+                        if (!string.IsNullOrEmpty(id) && (index = Extensions.IndexOf(targetEnumerable, id)) >= i)
                         {
                             existing = (DirtyExtensibleObject)target[index];
-                        }
-                    }
-                    if (existing != null)
-                    {
-                        var index = i;
-                        while (!ReferenceEquals(target[index], existing))
-                        {
-                            ++index;
-                        }
-                        if (index > i)
-                        {
                             for (var j = i; j < index; ++j)
                             {
                                 target[j + 1] = target[j];
                             }
                             target[i] = existing;
-                        }
-                    }
-                    else
-                    {
-                        if (i == target.Count)
-                        {
-                            target.Add(sourceItem);
                         }
                         else
                         {
@@ -285,10 +271,10 @@ namespace EncompassRest.Utilities
                                 existing = null;
                             }
                         }
-                    }
-                    if (existing != null)
-                    {
-                        PopulateObject((JObject)jArray[i], objectContract, sourceItem, existing);
+                        if (existing != null)
+                        {
+                            PopulateObject((JObject)jArray[i], objectContract, sourceItem, existing);
+                        }
                     }
                 }
                 for (var i = target.Count - 1; i >= source.Count; --i)
