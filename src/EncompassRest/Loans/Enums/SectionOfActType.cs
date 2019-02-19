@@ -66,12 +66,6 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// 203H
         /// </summary>
-        [Description("203H")]
-        [EnumMember(Value = "203")]
-        n203 = 11,
-        /// <summary>
-        /// 203H
-        /// </summary>
         [EnumMember(Value = "203H")]
         n203H = 12
     }

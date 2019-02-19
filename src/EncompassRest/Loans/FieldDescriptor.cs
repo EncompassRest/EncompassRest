@@ -17,6 +17,7 @@ namespace EncompassRest.Loans
     public class FieldDescriptor
     {
         internal readonly ModelPath _modelPath;
+        internal bool _userAdded;
         private LoanFieldValueType? _valueType;
         private bool _loanEntityIsSet;
         private LoanEntity? _loanEntity;

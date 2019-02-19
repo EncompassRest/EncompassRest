@@ -27,10 +27,6 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         Estimation = 3,
         /// <summary>
-        /// FieldReview
-        /// </summary>
-        FieldReview = 4,
-        /// <summary>
         /// Full Appraisal
         /// </summary>
         [Description("Full Appraisal")]
