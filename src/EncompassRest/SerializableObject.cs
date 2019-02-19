@@ -38,7 +38,7 @@ namespace EncompassRest
         /// Serializes object to it's json representation using the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The serialization options.</param>
-        /// <returns></returns>
+        /// <returns>Json representation of the object.</returns>
         public string ToString(SerializationOptions options)
         {
             options.Validate(nameof(options));
