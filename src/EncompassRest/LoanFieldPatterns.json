@@ -290,8 +290,208 @@
     "Description": "Vesting Party - Vesting Type #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Assets[{0}].Attention",
-    "FieldId": "URLAROL{0:00}06",
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].AltId",
+    "FieldId": "DD{0:00}35",
+    "Description": "Depository Request ID #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].Attention",
+    "FieldId": "DD{0:00}03",
+    "Description": "Depository Attention Contact #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].DepositoryRequestDate",
+    "FieldId": "DD{0:00}98",
+    "Description": "Depository Request Date #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderAddressCity",
+    "FieldId": "DD{0:00}05",
+    "Description": "Depository Attention City #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderAddressPostalCode",
+    "FieldId": "DD{0:00}07",
+    "Description": "Depository Attention Zipcode #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderAddressState",
+    "FieldId": "DD{0:00}06",
+    "Description": "Depository Attention State #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderAddressStreetLine1",
+    "FieldId": "DD{0:00}04",
+    "Description": "Depository Address #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderComments",
+    "FieldId": "DD{0:00}29",
+    "Description": "Depository Comments #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderEmail",
+    "FieldId": "DD{0:00}28",
+    "Description": "Depository Email #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderFax",
+    "FieldId": "DD{0:00}27",
+    "Description": "Depository Fax #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderName",
+    "FieldId": "DD{0:00}02",
+    "Description": "Depository Name #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderPhone",
+    "FieldId": "DD{0:00}26",
+    "Description": "Depository Phone #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].NoLinkToDocTrackIndicator",
+    "FieldId": "DD{0:00}97",
+    "Description": "Depository No Link to Doc Tracking #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].Owner",
+    "FieldId": "DD{0:00}24",
+    "Description": "Depository Request is For #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].PrintAttachmentIndicator",
+    "FieldId": "DD{0:00}36",
+    "Description": "Depository Print - See Attached Authorization #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].PrintUserJobTitleIndicator",
+    "FieldId": "DD{0:00}64",
+    "Description": "Depository Print User Job Title"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].PrintUserNameIndicator",
+    "FieldId": "DD{0:00}38",
+    "Description": "Depository Print User Name as Title #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].Title",
+    "FieldId": "DD{0:00}37",
+    "Description": "Depository From Title #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].TitleFax",
+    "FieldId": "DD{0:00}45",
+    "Description": "Depository From Fax #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].TitlePhone",
+    "FieldId": "DD{0:00}44",
+    "Description": "Depository From Phone #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].Total",
+    "FieldId": "DD{0:00}34",
+    "Description": "Depository Total Balance #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][1].AccountIdentifier",
+    "FieldId": "DD{0:00}10",
+    "Description": "Depository Account 1 Identifier #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][1].AssetType",
+    "FieldId": "DD{0:00}08",
+    "Description": "Depository Account 1 Type #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][1].CashOrMarketValueAmount",
+    "FieldId": "DD{0:00}11",
+    "Description": "Depository Account 1 Balance #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][1].DepositoryAccountName",
+    "FieldId": "DD{0:00}09",
+    "Description": "Depository Account 1 Name #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][1].Urla2020CashOrMarketValueAmount",
+    "FieldId": "DD{0:00}48",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][2].AccountIdentifier",
+    "FieldId": "DD{0:00}14",
+    "Description": "Depository Account 2 Identifier #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][2].AssetType",
+    "FieldId": "DD{0:00}12",
+    "Description": "Depository Account 2 Type #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][2].CashOrMarketValueAmount",
+    "FieldId": "DD{0:00}15",
+    "Description": "Depository Account 2 Balance #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][2].DepositoryAccountName",
+    "FieldId": "DD{0:00}13",
+    "Description": "Depository Account 2 Name #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][2].Urla2020CashOrMarketValueAmount",
+    "FieldId": "DD{0:00}49",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][3].AccountIdentifier",
+    "FieldId": "DD{0:00}18",
+    "Description": "Depository Account 3 Identifier #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][3].AssetType",
+    "FieldId": "DD{0:00}16",
+    "Description": "Depository Account 3 Type #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][3].CashOrMarketValueAmount",
+    "FieldId": "DD{0:00}19",
+    "Description": "Depository Account 3 Balance #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][3].DepositoryAccountName",
+    "FieldId": "DD{0:00}17",
+    "Description": "Depository Account 3 Name #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][3].Urla2020CashOrMarketValueAmount",
+    "FieldId": "DD{0:00}50",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][4].AccountIdentifier",
+    "FieldId": "DD{0:00}22",
+    "Description": "Depository Account 4 Identifier #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][4].AssetType",
+    "FieldId": "DD{0:00}20",
+    "Description": "Depository Account 4 Type #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][4].CashOrMarketValueAmount",
+    "FieldId": "DD{0:00}23",
+    "Description": "Depository Account 4 Balance #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][4].DepositoryAccountName",
+    "FieldId": "DD{0:00}21",
+    "Description": "Depository Account 4 Name #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][4].Urla2020CashOrMarketValueAmount",
+    "FieldId": "DD{0:00}51",
     "Description": null
   },
   {
