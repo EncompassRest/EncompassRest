@@ -18,18 +18,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Tests", "Enco
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CI|Any CPU = CI|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BC65F57-9279-4E7E-A43F-0DE40DE559E4}.CI|Any CPU.ActiveCfg = CI|Any CPU
+		{1BC65F57-9279-4E7E-A43F-0DE40DE559E4}.CI|Any CPU.Build.0 = CI|Any CPU
 		{1BC65F57-9279-4E7E-A43F-0DE40DE559E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1BC65F57-9279-4E7E-A43F-0DE40DE559E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BC65F57-9279-4E7E-A43F-0DE40DE559E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BC65F57-9279-4E7E-A43F-0DE40DE559E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E9302C6-748E-478C-A6A2-5B9C5D4A13E2}.CI|Any CPU.ActiveCfg = CI|Any CPU
 		{7E9302C6-748E-478C-A6A2-5B9C5D4A13E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E9302C6-748E-478C-A6A2-5B9C5D4A13E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E9302C6-748E-478C-A6A2-5B9C5D4A13E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E9302C6-748E-478C-A6A2-5B9C5D4A13E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3292C30A-1F1D-40A4-886C-3FE0477B6D56}.CI|Any CPU.ActiveCfg = CI|Any CPU
+		{3292C30A-1F1D-40A4-886C-3FE0477B6D56}.CI|Any CPU.Build.0 = CI|Any CPU
 		{3292C30A-1F1D-40A4-886C-3FE0477B6D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3292C30A-1F1D-40A4-886C-3FE0477B6D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3292C30A-1F1D-40A4-886C-3FE0477B6D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
