@@ -230,6 +230,7 @@ namespace EncompassRest.Loans
                 throw new ArgumentException("modelPath must resolve to a valid property type");
             }
 
+            descriptor._userAdded = true;
             return descriptor;
         }
     }

@@ -18,11 +18,6 @@ namespace EncompassRest.Loans.Enums
         [EnumMember(Value = "FNM 1004C / FRE 70B = Manufactured Home Appraisal Report")]
         FNM1004CFRE70BManufacturedHomeAppraisalReport = 1,
         /// <summary>
-        /// FNM 1004D / FRE 442 = Appraisal Update And Or Completion Report
-        /// </summary>
-        [EnumMember(Value = "FNM 1004D / FRE 442 = Appraisal Update And Or Completion Report")]
-        FNM1004DFRE442AppraisalUpdateAndOrCompletionReport = 2,
-        /// <summary>
         /// FNM 1025 / FRE 72 = Small Residential Income Property Appraisal Report
         /// </summary>
         [EnumMember(Value = "FNM 1025 / FRE 72 = Small Residential Income Property Appraisal Report")]

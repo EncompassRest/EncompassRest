@@ -40,7 +40,7 @@ namespace EncompassRest
             var client = new EncompassRestClient(parameters, tokenInitializer);
             var accessToken = await tokenInitializer(new TokenCreator(client, cancellationToken)).ConfigureAwait(false);
             client.AccessToken.Token = accessToken;
-            await client.CommonCache.TryInitializeAsync(client, parameters, cancellationToken).ConfigureAwait(false);
+            await parameters.TryInitializeAsync(client, client.CommonCache, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
@@ -63,7 +63,7 @@ namespace EncompassRest
             var client = new EncompassRestClient(parameters);
             var accessToken = await client.AccessToken.GetTokenFromUserCredentialsAsync(instanceId, userId, password, nameof(CreateFromUserCredentialsAsync), cancellationToken).ConfigureAwait(false);
             client.AccessToken.Token = accessToken;
-            await client.CommonCache.TryInitializeAsync(client, parameters, cancellationToken).ConfigureAwait(false);
+            await parameters.TryInitializeAsync(client, client.CommonCache, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
@@ -91,7 +91,7 @@ namespace EncompassRest
             var client = new EncompassRestClient(parameters);
             var accessToken = await client.AccessToken.GetTokenFromAuthorizationCodeAsync(redirectUri, authorizationCode, nameof(CreateFromAuthorizationCodeAsync), cancellationToken).ConfigureAwait(false);
             client.AccessToken.Token = accessToken;
-            await client.CommonCache.TryInitializeAsync(client, parameters, cancellationToken).ConfigureAwait(false);
+            await parameters.TryInitializeAsync(client, client.CommonCache, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
@@ -116,7 +116,7 @@ namespace EncompassRest
 
             var client = new EncompassRestClient(parameters);
             client.AccessToken.Token = accessToken;
-            await client.CommonCache.TryInitializeAsync(client, parameters, cancellationToken).ConfigureAwait(false);
+            await parameters.TryInitializeAsync(client, client.CommonCache, cancellationToken).ConfigureAwait(false);
             return client;
         }
 

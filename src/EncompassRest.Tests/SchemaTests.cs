@@ -66,5 +66,36 @@ namespace EncompassRest.Tests
                 Assert.IsTrue(pair.Value.IndexOf("address", StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
+
+        [TestMethod]
+        public async Task LoanFieldDescriptors_RefreshStandardFields_NoUpdates()
+        {
+            var client = await GetTestClientAsync();
+
+            var count = LoanFieldDescriptors.StandardFields.Count;
+            await LoanFieldDescriptors.RefreshStandardFieldsAsync(client);
+            Assert.AreEqual(count, LoanFieldDescriptors.StandardFields.Count);
+            foreach (var pair in LoanFieldDescriptors.StandardFields)
+            {
+                Assert.AreEqual(pair.Value.GetType(), typeof(FieldDescriptor), pair.Key);
+            }
+        }
+
+        [TestMethod]
+        public async Task LoanFieldDescriptors_RefreshStandardFields_DoesNotAffectUserAddedFields()
+        {
+            var client = await GetTestClientAsync();
+
+            const string newFieldId = "NEWFIELD";
+            Assert.IsTrue(LoanFieldDescriptors.FieldMappings.TryAdd(newFieldId, "Loan.NewField", false));
+            var count = LoanFieldDescriptors.StandardFields.Count;
+            await LoanFieldDescriptors.RefreshStandardFieldsAsync(client);
+            Assert.AreEqual(count, LoanFieldDescriptors.StandardFields.Count);
+            foreach (var pair in LoanFieldDescriptors.StandardFields)
+            {
+                Assert.AreEqual(pair.Value.GetType(), typeof(FieldDescriptor), pair.Key);
+            }
+            Assert.IsTrue(LoanFieldDescriptors.FieldMappings.ContainsKey(newFieldId));
+        }
     }
 }

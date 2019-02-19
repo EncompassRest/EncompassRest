@@ -16,7 +16,7 @@ namespace EncompassRest
     /// </summary>
     public sealed class CommonCache
     {
-        private ConcurrentDictionary<string, FieldDescriptor> _customFields = new ConcurrentDictionary<string, FieldDescriptor>(StringComparer.OrdinalIgnoreCase);
+        private readonly ConcurrentDictionary<string, FieldDescriptor> _customFields = new ConcurrentDictionary<string, FieldDescriptor>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// The custom fields cache.
@@ -76,15 +76,6 @@ namespace EncompassRest
             }
 
             CustomFieldsLastRefreshedUtc = DateTime.UtcNow;
-        }
-
-        internal Task TryInitializeAsync(EncompassRestClient client, ClientParameters parameters, CancellationToken cancellationToken)
-        {
-            if (parameters.CustomFieldsCacheInitialization != CacheInitialization.Never && !((DateTime.UtcNow - CustomFieldsLastRefreshedUtc)?.TotalMinutes < (int)parameters.CustomFieldsCacheInitialization))
-            {
-                return RefreshCustomFieldsAsync(client, cancellationToken);
-            }
-            return TaskHelper.CompletedTask;
         }
     }
 }
