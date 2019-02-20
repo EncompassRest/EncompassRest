@@ -73,7 +73,7 @@ namespace EncompassRest.Calculators
         /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public async Task CalculateLoanAsync(Loan loan, IEnumerable<string> entities, bool? calcAllOnly, CancellationToken cancellationToken = default)
+        public Task CalculateLoanAsync(Loan loan, IEnumerable<string> entities, bool? calcAllOnly, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
@@ -84,7 +84,8 @@ namespace EncompassRest.Calculators
                 queryParameters.Add(nameof(calcAllOnly), calcAllOnly.ToString().ToLower());
             }
             var body = new CalculateLoanBody { LoanData = loan, Entities = entities };
-            await PostAsync("loan", queryParameters.ToString(), JsonStreamContent.Create(body), nameof(CalculateLoanAsync), loan.EncompassId, cancellationToken, async (HttpResponseMessage response) =>
+            loan.Initialize(Client, loan.EncompassId);
+            return PostAsync("loan", queryParameters.ToString(), JsonStreamContent.Create(body), nameof(CalculateLoanAsync), loan.EncompassId, cancellationToken, async (HttpResponseMessage response) =>
             {
                 var loanAsJson = loan.ToString(SerializationOptions.Dirty);
                 await response.Content.PopulateAsync(loan).ConfigureAwait(false);
@@ -93,7 +94,7 @@ namespace EncompassRest.Calculators
                 // This may overwrite calculated values but they shouldn't have been dirty to begin with if they're calculated values.
                 JsonHelper.PopulateFromJson(loanAsJson, loan);
                 return string.Empty;
-            }).ConfigureAwait(false);
+            });
         }
 
         /// <summary>
