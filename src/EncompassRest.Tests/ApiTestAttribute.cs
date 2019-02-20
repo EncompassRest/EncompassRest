@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EncompassRest.Tests
 {
     /// <summary>
-    /// ApiTestAttribute
+    /// ApiTestAttribute for skipping the test when live unit testing
     /// </summary>
     public sealed class ApiTestAttribute : TestCategoryBaseAttribute
     {
