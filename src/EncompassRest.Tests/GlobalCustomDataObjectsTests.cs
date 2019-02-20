@@ -10,6 +10,7 @@ namespace EncompassRest.Tests
     public class GlobalCustomDataObjectsTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task CreateGetAppendAndDeleteCustomDataObject()
         {
             var client = await GetTestClientAsync();

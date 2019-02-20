@@ -9,6 +9,7 @@ namespace EncompassRest.Tests
     public class OrganizationTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task Organization_NoExtensionData()
         {
             var client = await GetTestClientAsync();
@@ -27,6 +28,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task RootOrganization_NoExtensionData()
         {
             var client = await GetTestClientAsync();
@@ -38,6 +40,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task OrganizationChildren_NoExtensionData()
         {
             var client = await GetTestClientAsync();

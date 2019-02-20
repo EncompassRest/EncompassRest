@@ -10,6 +10,7 @@ namespace EncompassRest.Tests
     public class CustomFieldDefinitionsTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task CustomFieldDefitions_GetAll()
         {
             var client = await GetTestClientAsync();
@@ -18,6 +19,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task CustomFieldDefitions_Get()
         {
             var client = await GetTestClientAsync();
@@ -28,6 +30,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task CustomFieldDefitions_CreateUpdateAndDelete()
         {
             var client = await GetTestClientAsync();
@@ -52,6 +55,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task CustomFieldDefitions_CreateDropdownField()
         {
             var client = await GetTestClientAsync();
@@ -74,6 +78,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task CustomFieldDefitions_CreateAuditField()
         {
             var client = await GetTestClientAsync();
@@ -97,6 +102,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task FieldDescriptors_RefreshCustomFields()
         {
             var client = await GetTestClientAsync();

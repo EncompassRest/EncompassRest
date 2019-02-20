@@ -10,6 +10,7 @@ namespace EncompassRest.Tests
     public class ResourceLocksTest : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task Lock_LoanLockAndUnlock()
         {
             var client = await GetTestClientAsync();

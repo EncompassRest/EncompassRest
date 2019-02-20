@@ -11,6 +11,7 @@ namespace EncompassRest.Tests
     public class BaseApiClientTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task BaseApiClient_GetLoanFolders()
         {
             var client = await GetTestClientAsync();
@@ -24,6 +25,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task BaseApiClient_CreateGetAppendAndDeleteCustomDataObject()
         {
             var client = await GetTestClientAsync();

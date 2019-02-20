@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Company.Users.Rights;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,6 +9,7 @@ namespace EncompassRest.Tests
     public class UserTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task User_NoExtensionData()
         {
             var client = await GetTestClientAsync();
@@ -26,6 +24,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task UserRights_NoExtensionData()
         {
             var client = await GetTestClientAsync();
@@ -45,6 +44,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task UserGroups_NoExtensionData()
         {
             var client = await GetTestClientAsync();
@@ -61,6 +61,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task UserCompensation_NoExtensionData()
         {
             var client = await GetTestClientAsync();
@@ -77,6 +78,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task UserLicenses_NoExtensionData()
         {
             var client = await GetTestClientAsync();

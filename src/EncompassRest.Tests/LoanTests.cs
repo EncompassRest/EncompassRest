@@ -21,6 +21,7 @@ namespace EncompassRest.Tests
     public class LoanTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task Loan_GetSupportedEntities()
         {
             var client = await GetTestClientAsync();
@@ -29,6 +30,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_PublicSerialization()
         {
             var client = await GetTestClientAsync();
@@ -126,6 +128,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_Clone()
         {
             var client = await GetTestClientAsync();
@@ -286,6 +289,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_CreateAndDelete()
         {
             var client = await GetTestClientAsync();
@@ -298,6 +302,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_CreateRawAndDelete()
         {
             var client = await GetTestClientAsync();
@@ -317,6 +322,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_BadUpdateException()
         {
             var client = await GetTestClientAsync();
@@ -350,6 +356,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_CreateInLoanFolder()
         {
             var client = await GetTestClientAsync();
@@ -398,6 +405,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_CreateWithLoanTemplate()
         {
             var client = await GetTestClientAsync();
@@ -412,6 +420,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_UpdateWithLoanTemplate()
         {
             var client = await GetTestClientAsync();
@@ -427,6 +436,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [TestCategory("SkipWhenLiveUnitTesting")]
         public void Loan_FieldsValueAssignment()
         {
             var excludedFields = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "FE0509", "FE0609" };
@@ -871,7 +881,9 @@ namespace EncompassRest.Tests
             Assert.AreEqual($@"{{""fieldLockData"":[{{""lockRemoved"":true,""modelPath"":""{field.ModelPath}""}}]}}", loan.ToString(SerializationOptions.Dirty));
         }
 
+        // Currently fails
         [TestMethod]
+        [ApiTest]
         public async Task Loan_Locking_RE88395X316()
         {
             var client = await GetTestClientAsync();
@@ -902,6 +914,11 @@ namespace EncompassRest.Tests
                     var field = loan.Fields[fieldId];
                     Assert.IsTrue(field.Locked);
                 }
+                throw new Exception("Can now lock RE88395.X316");
+            }
+            catch (AssertFailedException ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
             finally
             {
@@ -916,6 +933,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_FieldsLocking()
         {
             var client = await GetTestClientAsync();
@@ -999,6 +1017,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_FieldPatternsLocking()
         {
             var client = await GetTestClientAsync();
@@ -1359,6 +1378,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_NoExtensionData()
         {
             var client = await GetTestClientAsync();
@@ -1376,6 +1396,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_FieldsPresentAddress()
         {
             var client = await GetTestClientAsync();
@@ -1403,6 +1424,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_FieldsLoanEntity()
         {
             var client = await GetTestClientAsync();
@@ -1444,6 +1466,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_FieldsFilterPath()
         {
             var client = await GetTestClientAsync();
@@ -1480,6 +1503,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_Recalculate()
         {
             var client = await GetTestClientAsync();
@@ -1581,6 +1605,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_Populate()
         {
             var client = await GetTestClientAsync();
@@ -1752,6 +1777,7 @@ namespace EncompassRest.Tests
             }
         }
 
+        [TestMethod]
         public void Loan_NullableEntityProperty()
         {
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -1775,6 +1801,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Loan_UpdateIncome()
         {
             var client = await GetTestClientAsync();

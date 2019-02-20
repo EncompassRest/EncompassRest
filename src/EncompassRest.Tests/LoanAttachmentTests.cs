@@ -21,6 +21,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task LoanAttachments_Upload()
         {
             var client = await GetTestClientAsync();

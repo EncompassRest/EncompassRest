@@ -11,6 +11,7 @@ namespace EncompassRest.Tests
     public class LoanAssociateMilestoneTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task LoanAssociatesMilestones()
         {
             var client = await GetTestClientAsync();
@@ -53,6 +54,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task LoanMilestonesFinish()
         {
             var client = await GetTestClientAsync();
@@ -114,6 +116,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task LoanMilestoneComments()
         {
             var client = await GetTestClientAsync();

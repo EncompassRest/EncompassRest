@@ -12,6 +12,7 @@ namespace EncompassRest.Tests
     public class WebhookTests : TestBaseClass
     {
         [TestMethod]
+        [ApiTest]
         public async Task Webhook_GetResources()
         {
             var client = await GetTestClientAsync();
@@ -24,6 +25,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Webhook_GetResource()
         {
             var client = await GetTestClientAsync();
@@ -44,6 +46,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Webhook_CreateAndDelete()
         {
             var client = await GetTestClientAsync();
@@ -73,6 +76,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Webhook_CreateRawAndDelete()
         {
             var client = await GetTestClientAsync();
@@ -89,6 +93,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        [ApiTest]
         public async Task Webhook_FilterAttributes()
         {
             var client = await GetTestClientAsync();
