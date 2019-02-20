@@ -13,7 +13,6 @@ namespace EncompassRest.Loans
     {
         private LoanFields _fields;
         private LoanObjectBoundApis _loanApis;
-        internal List<TransientLoanUpdate> TransientLoanUpdates;
 
         /// <summary>
         /// The <see cref="EncompassRestClient"/> associated with this object.
@@ -145,13 +144,6 @@ namespace EncompassRest.Loans
                     _currentApplication = null;
                     break;
             }
-        }
-
-        internal sealed class TransientLoanUpdate
-        {
-            public string Body { get; set; }
-
-            public string QueryString { get; set; }
         }
     }
 }

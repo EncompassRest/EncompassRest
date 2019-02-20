@@ -184,50 +184,13 @@ namespace EncompassRest.Loans
         /// <param name="updateLoanOptions">The loan update options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public async Task UpdateLoanAsync(Loan loan, UpdateLoanOptions updateLoanOptions, CancellationToken cancellationToken = default)
+        public Task UpdateLoanAsync(Loan loan, UpdateLoanOptions updateLoanOptions, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
             loan.Initialize(Client, loan.EncompassId);
-            HttpContent content;
-            if (updateLoanOptions?.Persistent == false)
-            {
-                var body = loan.ToJson();
-                content = new JsonStringContent(body);
-            }
-            else
-            {
-                var transientLoanUpdates = loan.TransientLoanUpdates;
-                if (transientLoanUpdates?.Count > 0)
-                {
-                    foreach (var transientLoanUpdate in transientLoanUpdates)
-                    {
-                        await PatchAsync(loan.EncompassId, transientLoanUpdate.QueryString, new JsonStringContent(transientLoanUpdate.Body), nameof(UpdateLoanAsync), loan.EncompassId, cancellationToken).ConfigureAwait(false);
-                    }
-                    transientLoanUpdates.Clear();
-                }
-                content = JsonStreamContent.Create(loan);
-            }
-            await PatchAsync(loan.EncompassId, updateLoanOptions?.ToQueryParameters().ToString(), content, nameof(UpdateLoanAsync), loan.EncompassId, cancellationToken, async (HttpResponseMessage response) =>
-            {
-                if (updateLoanOptions?.Populate == true)
-                {
-                    await response.Content.PopulateAsync(loan).ConfigureAwait(false);
-                }
-                loan.Dirty = false;
-                if (updateLoanOptions?.Persistent == false)
-                {
-                    var transientLoanUpdates = loan.TransientLoanUpdates;
-                    if (transientLoanUpdates == null)
-                    {
-                        transientLoanUpdates = new List<Loan.TransientLoanUpdate>();
-                        loan.TransientLoanUpdates = transientLoanUpdates;
-                    }
-                    transientLoanUpdates.Add(new Loan.TransientLoanUpdate { Body = ((JsonStringContent)content).Json, QueryString = updateLoanOptions.ToQueryParameters(true).ToString() });
-                }
-                return string.Empty;
-            }).ConfigureAwait(false);
+            return PatchPopulateDirtyAsync(loan.EncompassId, updateLoanOptions?.ToQueryParameters().ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, loan, updateLoanOptions?.Populate == true, cancellationToken);
         }
 
         /// <summary>

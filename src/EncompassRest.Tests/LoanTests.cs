@@ -1529,8 +1529,10 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(250000M, retrievedLoan.BorrowerRequestedLoanAmount);
                 Assert.AreEqual(250000M, retrievedLoan.BaseLoanAmount);
                 loan.BorrowerRequestedLoanAmount = 200000M;
-                await client.Loans.UpdateLoanAsync(loan, new UpdateLoanOptions { Populate = true, Persistent = false });
-                Assert.IsFalse(loan.Dirty);
+                var loanAsJson = loan.ToString(SerializationOptions.Dirty);
+                await client.Calculators.CalculateLoanAsync(loan);
+                Assert.IsTrue(loan.Dirty);
+                Assert.AreEqual(loanAsJson, loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(200000M, loan.BorrowerRequestedLoanAmount);
                 Assert.AreEqual(200000M, loan.BaseLoanAmount);
                 retrievedLoan = await client.Loans.GetLoanAsync(loanId, new[] { LoanEntity.Loan });
@@ -1652,9 +1654,9 @@ namespace EncompassRest.Tests
                 Assert.AreSame(residences, application.Residences);
                 Assert.AreEqual(2, residences.Count);
                 Assert.AreSame(currentResidence, residences[0]);
-                Assert.AreEqual(ResidencyType.Current.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name), currentResidence.ResidencyType.Value);
+                Assert.AreEqual(ResidencyType.Current.GetValue(), currentResidence.ResidencyType.Value);
                 Assert.AreSame(priorResidence, residences[1]);
-                Assert.AreEqual(ResidencyType.Prior.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name), priorResidence.ResidencyType.Value);
+                Assert.AreEqual(ResidencyType.Prior.GetValue(), priorResidence.ResidencyType.Value);
             }
             finally
             {

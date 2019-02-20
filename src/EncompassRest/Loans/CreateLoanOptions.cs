@@ -12,7 +12,7 @@ namespace EncompassRest.Loans
         /// </summary>
         public string LoanFolder { get; set; }
 
-        internal override QueryParameters ToQueryParameters(bool forPersistingTransientUpdates = false)
+        internal override QueryParameters ToQueryParameters()
         {
             var queryParameters = base.ToQueryParameters();
             if (!string.IsNullOrEmpty(LoanFolder))

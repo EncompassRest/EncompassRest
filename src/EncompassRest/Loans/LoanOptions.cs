@@ -21,10 +21,10 @@ namespace EncompassRest.Loans
         {
         }
 
-        internal virtual QueryParameters ToQueryParameters(bool forPersistingTransientUpdates = false)
+        internal virtual QueryParameters ToQueryParameters()
         {
             var queryParameters = new QueryParameters();
-            if (Populate && !forPersistingTransientUpdates)
+            if (Populate)
             {
                 queryParameters.Add("view", "entity");
             }
