@@ -543,6 +543,23 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public void Loan_FieldsAssignField()
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            var loan = new Loan();
+#pragma warning restore CS0618 // Type or member is obsolete
+            var today = DateTime.Today;
+            var field = loan.Fields["745"];
+            field.Value = today;
+            Assert.AreEqual(today, (DateTime?)field.Value);
+            Assert.AreEqual(today, field.ToDateTime());
+            var otherField = loan.Fields["3142"];
+            otherField.Value = field;
+            Assert.AreEqual(today, (DateTime?)otherField.Value);
+            Assert.AreEqual(today, otherField.ToDateTime());
+        }
+
+        [TestMethod]
         public void Loan_FieldsString()
         {
 #pragma warning disable CS0618 // Type or member is obsolete
