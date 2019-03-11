@@ -162,6 +162,7 @@ namespace EncompassRest
         private Services.Services _services;
         private Company.Company _company;
         private Organizations.Organizations _organizations;
+        private Calculators.Calculators _calculators;
         private BaseApiClient _baseApiClient;
 
         #region Properties
@@ -402,7 +403,7 @@ namespace EncompassRest
         }
 
         /// <summary>
-        /// Organizations Apis
+        /// The Organizations Apis.
         /// </summary>
         public Organizations.Organizations Organizations
         {
@@ -410,6 +411,18 @@ namespace EncompassRest
             {
                 var organizations = _organizations;
                 return organizations ?? Interlocked.CompareExchange(ref _organizations, (organizations = new Organizations.Organizations(this)), null) ?? organizations;
+            }
+        }
+
+        /// <summary>
+        /// The Calculators Apis.
+        /// </summary>
+        public Calculators.Calculators Calculators
+        {
+            get
+            {
+                var calculators = _calculators;
+                return calculators ?? Interlocked.CompareExchange(ref _calculators, (calculators = new Calculators.Calculators(this)), null) ?? calculators;
             }
         }
 

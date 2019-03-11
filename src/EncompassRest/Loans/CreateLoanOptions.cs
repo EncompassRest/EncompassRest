@@ -11,13 +11,13 @@ namespace EncompassRest.Loans
         /// Name of the loan folder.
         /// </summary>
         public string LoanFolder { get; set; }
-
+        
         /// <summary>
         /// The unique identifier of the User you want to assign as Loan Officer to the loan at the time of loan creation.
         /// </summary>
         public string LoId { get; set; }
 
-        internal override QueryParameters ToQueryParameters(bool forPersistingTransientUpdates = false)
+        internal override QueryParameters ToQueryParameters()
         {
             var queryParameters = base.ToQueryParameters();
             if (!string.IsNullOrEmpty(LoanFolder))
