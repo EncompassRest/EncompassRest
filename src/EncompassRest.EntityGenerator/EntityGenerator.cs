@@ -235,7 +235,17 @@ namespace EncompassRest
             { "CrmLog", new Dictionary<string, PropertySchema> { { "Alerts", new PropertySchema { Type = PropertySchemaType.List, ElementType = LoanEntity.LogAlert } }, { "CommentList", new PropertySchema { Type = PropertySchemaType.List, ElementType = LoanEntity.LogComment } }, { "Comments", new PropertySchema { Type = PropertySchemaType.String } }, { "DateUtc", new PropertySchema { Type = PropertySchemaType.DateTime } }, { "FileAttachmentsMigrated", new PropertySchema { Type = PropertySchemaType.Bool } }, { "Guid", new PropertySchema { Type = PropertySchemaType.String } }, { "IsSystemSpecificIndicator", new PropertySchema { Type = PropertySchemaType.Bool } }, { "LogRecordIndex", new PropertySchema { Type = PropertySchemaType.Int } } } },
             { "DocumentOrderLog", new Dictionary<string, PropertySchema> { { "OrderedDocuments", new PropertySchema { Type = PropertySchemaType.List, ElementType = "OrderedDocument" } } } },
             { "FundingFee", new Dictionary<string, PropertySchema> { { "Amount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PtcAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocBorrower2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocSeller2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocBroker2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocOther2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacBroker2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacLender2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacOther2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocLender2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, } },
-            { "HtmlEmailLog", new Dictionary<string, PropertySchema> { { "DocList", new PropertySchema { Type = PropertySchemaType.List, ElementType = "EmailDocument" } } } }
+            { "HtmlEmailLog", new Dictionary<string, PropertySchema> { { "DocList", new PropertySchema { Type = PropertySchemaType.List, ElementType = "EmailDocument" } } } },
+            { "SelfEmployedIncome", new Dictionary<string, PropertySchema> { { "FieldValue", new PropertySchema { Type = PropertySchemaType.String, FieldInstances = new Dictionary<string, List<string>>
+                {
+                    { "FM1084.X105", new List<string> { "Application_SelfEmployedIncomes_Form1065_OwnershipPercent" } },
+                    { "FM1084.X114", new List<string> { "Application_SelfEmployedIncomes_Form1120S_OwnershipPercent" } },
+                    { "FM1084.X127", new List<string> { "Application_SelfEmployedIncomes_Form1120_OwnershipPercent" } },
+                    { "FM1084.X134", new List<string> { "Application_SelfEmployedIncomes_None_Year2_FormB" } },
+                    { "FM1084.X50", new List<string> { "Application_SelfEmployedIncomes_None_Year2_FormA" } },
+                    { "FM1084.X6", new List<string> { "Application_SelfEmployedIncomes_None_Year1_FormA" } },
+                    { "FM1084.X96", new List<string> { "Application_SelfEmployedIncomes_None_Year1_FormB" } }
+                } } } } }
         };
 
         private static readonly HashSet<string> s_explicitDateTimeProperties = new HashSet<string> { "DisclosureTracking2015Log.ActualFulfillmentDate", "DisclosureTracking2015Log.ApplicationDate", "DisclosureTracking2015Log.BorrowerActualReceivedDate", "DisclosureTracking2015Log.BorrowerPresumedReceivedDate", "DisclosureTracking2015Log.CDDateIssued", "DisclosureTracking2015Log.ClosingDate", "DisclosureTracking2015Log.CoBorrowerActualReceivedDate", "DisclosureTracking2015Log.CoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.DisclosedDate", "DisclosureTracking2015Log.IntentToProceedDate", "DisclosureTracking2015Log.LockedBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedCoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedDisclosedDateField", "DisclosureTracking2015Log.LockedDisclosedReceivedDate", "DisclosureTracking2015Log.PresumedFulfillmentDate", "DisclosureTracking2015Log.ReceivedDate", "DisclosureTracking2015Log.RevisedDueDate", "DisclosureTracking2015Log.ChangesReceivedDate" };
@@ -306,6 +316,7 @@ namespace EncompassRest
                     if (entityTypes.ContainsKey(entityName))
                     {
                         Console.WriteLine($"Can now retrieve schema for {entityName}");
+                        entityTypes[entityName] = pair.Value;
                     }
                     else
                     {
@@ -323,6 +334,7 @@ namespace EncompassRest
                         if (properties.ContainsKey(propertyName))
                         {
                             Console.WriteLine($"Can now retrieve schema property {entityName}.{propertyName}");
+                            properties[propertyName] = p.Value;
                         }
                         else
                         {

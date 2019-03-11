@@ -406,6 +406,33 @@ namespace EncompassRest.Tests
 
         [TestMethod]
         [ApiTest]
+        public async Task Loan_CreateWithLoanOfficer()
+        {
+            var client = await GetTestClientAsync();
+            if (client.AccessToken.Token == "Token")
+            {
+                var loan = new Loan(client);
+                var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoId = "officer", Populate = true });
+                try
+                {
+                    Assert.AreEqual("officer", loan.Contacts.First(c => c.ContactType == ContactType.LOANOFFICER).LoginId);
+                }
+                finally
+                {
+                    try
+                    {
+                        await Task.Delay(5000);
+                        await client.Loans.DeleteLoanAsync(loanId);
+                    }
+                    catch
+                    {
+                    }
+                }
+            }
+        }
+
+        [TestMethod]
+        [ApiTest]
         public async Task Loan_CreateWithLoanTemplate()
         {
             var client = await GetTestClientAsync();
@@ -540,6 +567,23 @@ namespace EncompassRest.Tests
                     }
                 }
             }
+        }
+
+        [TestMethod]
+        public void Loan_FieldsAssignField()
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            var loan = new Loan();
+#pragma warning restore CS0618 // Type or member is obsolete
+            var today = DateTime.Today;
+            var field = loan.Fields["745"];
+            field.Value = today;
+            Assert.AreEqual(today, (DateTime?)field.Value);
+            Assert.AreEqual(today, field.ToDateTime());
+            var otherField = loan.Fields["3142"];
+            otherField.Value = field;
+            Assert.AreEqual(today, (DateTime?)otherField.Value);
+            Assert.AreEqual(today, otherField.ToDateTime());
         }
 
         [TestMethod]
