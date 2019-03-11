@@ -406,6 +406,33 @@ namespace EncompassRest.Tests
 
         [TestMethod]
         [ApiTest]
+        public async Task Loan_CreateWithLoanOfficer()
+        {
+            var client = await GetTestClientAsync();
+            if (client.AccessToken.Token == "Token")
+            {
+                var loan = new Loan(client);
+                var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoId = "officer", Populate = true });
+                try
+                {
+                    Assert.AreEqual("officer", loan.Contacts.First(c => c.ContactType == ContactType.LOANOFFICER).LoginId);
+                }
+                finally
+                {
+                    try
+                    {
+                        await Task.Delay(5000);
+                        await client.Loans.DeleteLoanAsync(loanId);
+                    }
+                    catch
+                    {
+                    }
+                }
+            }
+        }
+
+        [TestMethod]
+        [ApiTest]
         public async Task Loan_CreateWithLoanTemplate()
         {
             var client = await GetTestClientAsync();
