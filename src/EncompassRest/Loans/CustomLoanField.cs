@@ -25,6 +25,11 @@ namespace EncompassRest.Loans
             }
             set
             {
+                if (value is LoanField loanField)
+                {
+                    value = loanField.Value;
+                }
+
                 var customField = Loan.CustomFields.GetById(FieldId);
                 if (customField == null)
                 {

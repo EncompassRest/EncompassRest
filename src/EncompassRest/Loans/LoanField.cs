@@ -188,6 +188,12 @@ namespace EncompassRest.Loans
                 {
                     throw new InvalidOperationException($"cannot set value of field '{FieldId}' as it's read-only");
                 }
+
+                if (value is LoanField loanField)
+                {
+                    value = loanField.Value;
+                }
+
                 _modelPath.SetValue(Loan, propertyType =>
                 {
                     if (propertyType != null)
@@ -202,7 +208,7 @@ namespace EncompassRest.Loans
                         }
                         if (value != null && (propertyType == TypeData<string>.Type || propertyType == TypeData<DateTime?>.Type || propertyType == TypeData<decimal?>.Type || propertyType == TypeData<int?>.Type || propertyType == TypeData<bool?>.Type))
                         {
-                            return Convert.ChangeType(value, System.Nullable.GetUnderlyingType(propertyType) ?? propertyType);
+                            return Convert.ChangeType(value, Nullable.GetUnderlyingType(propertyType) ?? propertyType);
                         }
                         else
                         {
