@@ -16,6 +16,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _loanPricingDecimalPlaces;
         private DirtyValue<bool?> _lockDeskSetup;
         private DirtyValue<bool?> _lockRequestAdditionalFields;
+        private DirtyValue<bool?> _normalizedBidTapeTemplate;
         private DirtyValue<bool?> _productandPricing;
         private DirtyValue<bool?> _purchaseAdviceForm;
         private DirtyValue<bool?> _secondaryLockFields;
@@ -68,6 +69,11 @@ namespace EncompassRest.Company.Users.Rights
         /// SecondarySetupRights LockRequestAdditionalFields
         /// </summary>
         public bool? LockRequestAdditionalFields { get => _lockRequestAdditionalFields; set => SetField(ref _lockRequestAdditionalFields, value); }
+
+        /// <summary>
+        /// SecondarySetupRights NormalizedBidTapeTemplate
+        /// </summary>
+        public bool? NormalizedBidTapeTemplate { get => _normalizedBidTapeTemplate; set => SetField(ref _normalizedBidTapeTemplate, value); }
 
         /// <summary>
         /// SecondarySetupRights ProductandPricing

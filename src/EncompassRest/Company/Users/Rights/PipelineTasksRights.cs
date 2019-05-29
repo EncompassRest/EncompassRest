@@ -7,11 +7,13 @@ namespace EncompassRest.Company.Users.Rights
     {
         private DirtyValue<bool?> _automaticRefreshConfiguration;
         private DirtyValue<bool?> _deleteLoans;
+        private DirtyValue<bool?> _dueDiligence;
         private DuplicateLoansRights _duplicateLoans;
         private DirtyValue<bool?> _duplicateLoansforSecond;
         private DirtyValue<bool?> _exportDatatoExcel;
         private DirtyValue<bool?> _generateNMLSReport;
         private GSEServicesRights _gSEServices;
+        private DirtyValue<bool?> _hedgeAdvisory;
         private HMDAServicesRights _hMDAServices;
         private ImportLoansRights _importLoans;
         private DirtyValue<bool?> _includeArchiveFolders;
@@ -22,6 +24,7 @@ namespace EncompassRest.Company.Users.Rights
         private NewLoansRights _newLoans;
         private DirtyValue<bool?> _transferLoans;
         private TrashFolderTasksRights _trashFolderTasks;
+        private DirtyValue<bool?> _warehouseLenders;
 
         /// <summary>
         /// PipelineTasksRights AutomaticRefreshConfiguration
@@ -32,6 +35,11 @@ namespace EncompassRest.Company.Users.Rights
         /// PipelineTasksRights DeleteLoans
         /// </summary>
         public bool? DeleteLoans { get => _deleteLoans; set => SetField(ref _deleteLoans, value); }
+
+        /// <summary>
+        /// PipelineTasksRights DueDiligence
+        /// </summary>
+        public bool? DueDiligence { get => _dueDiligence; set => SetField(ref _dueDiligence, value); }
 
         /// <summary>
         /// PipelineTasksRights DuplicateLoans
@@ -57,6 +65,11 @@ namespace EncompassRest.Company.Users.Rights
         /// PipelineTasksRights GSEServices
         /// </summary>
         public GSEServicesRights GSEServices { get => GetField(ref _gSEServices); set => SetField(ref _gSEServices, value); }
+
+        /// <summary>
+        /// PipelineTasksRights HedgeAdvisory
+        /// </summary>
+        public bool? HedgeAdvisory { get => _hedgeAdvisory; set => SetField(ref _hedgeAdvisory, value); }
 
         /// <summary>
         /// PipelineTasksRights HMDAServices
@@ -107,5 +120,10 @@ namespace EncompassRest.Company.Users.Rights
         /// PipelineTasksRights TrashFolderTasks
         /// </summary>
         public TrashFolderTasksRights TrashFolderTasks { get => GetField(ref _trashFolderTasks); set => SetField(ref _trashFolderTasks, value); }
+
+        /// <summary>
+        /// PipelineTasksRights WarehouseLenders
+        /// </summary>
+        public bool? WarehouseLenders { get => _warehouseLenders; set => SetField(ref _warehouseLenders, value); }
     }
 }
