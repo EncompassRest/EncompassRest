@@ -44,6 +44,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _borrowerPaidDiscountPointsTotalAmount;
         private DirtyValue<StringEnumValue<BuildingType>> _buildingType;
         private DirtyValue<bool?> _buyerPurchasingLotSeparately;
+        private DirtyValue<decimal?> _cashDisbursedToBorrowerAmount;
         private DirtyValue<decimal?> _cashPaymentFromVeteran;
         private DirtyValue<StringEnumValue<ClaimDisabilityBenefits>> _claimDisabilityBenefits;
         private DirtyValue<bool?> _clothesWasherIndicator;
@@ -57,6 +58,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _dateOfAssignment;
         private DirtyValue<DateTime?> _dateSAR;
         private DirtyValue<decimal?> _disabilityAmountCollected;
+        private DirtyValue<decimal?> _disbursementsLessPayoffAmount;
         private DirtyValue<decimal?> _discountPercentage;
         private DirtyValue<decimal?> _discountPoint;
         private DirtyValue<bool?> _dishwasherIndicator;
@@ -65,7 +67,19 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _energyImprovementsAdditionOfFeature;
         private DirtyValue<string> _entitlementCode;
         private DirtyValue<string> _equipmentOtherDescription;
+        private DirtyValue<decimal?> _estimatedImpactofHomeEquityRemainingAmount;
+        private DirtyValue<decimal?> _estimatedImpactofInterestRate;
+        private DirtyValue<decimal?> _estimatedImpactofLoanBalanceAmount;
+        private DirtyValue<decimal?> _estimatedImpactofLTV;
+        private DirtyValue<int?> _estimatedImpactofRemainingTermMonths;
+        private DirtyValue<decimal?> _estimatedImpactofTotalRemainingPaymentAmount;
         private DirtyValue<bool?> _excludeTaxesInsuranceIndicator;
+        private DirtyValue<decimal?> _existingHomeEquityRemainingAmount;
+        private DirtyValue<decimal?> _existingLoanBalance;
+        private DirtyValue<DateTime?> _existingLoanFirstPaymentDate;
+        private DirtyValue<int?> _existingReasonableAppraisedValue;
+        private DirtyValue<decimal?> _existingTotalRemainingPaymentAmount;
+        private DirtyValue<string> _existingVALoanNumber;
         private DirtyValue<decimal?> _finalDiscountAmount;
         private DirtyValue<decimal?> _finalFundingFeeAmount;
         private DirtyValue<bool?> _firstChattelLoanType;
@@ -165,7 +179,9 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _propertyLegalDescription3;
         private DirtyValue<string> _propertyLegalDescription4;
         private DirtyValue<StringEnumValue<PropertyOccupancyType>> _propertyOccupancyType;
+        private DirtyValue<decimal?> _proposedHomeEquityRemainingAmount;
         private DirtyValue<bool?> _proposedSaleContractAttached;
+        private DirtyValue<decimal?> _proposedTotalRemainingPaymentAmount;
         private DirtyValue<StringEnumValue<VaLoanDataPurposeOfLoan>> _purposeOfLoan;
         private DirtyValue<bool?> _rangeOvenIndicator;
         private DirtyValue<bool?> _reasonableValueCompleted;
@@ -187,11 +203,13 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _titleLimitations3;
         private DirtyValue<decimal?> _totalBaths;
         private DirtyValue<int?> _totalBedrooms;
+        private DirtyValue<decimal?> _totalClosingCostLessGuaranteeFee;
         private DirtyValue<decimal?> _totalDebtMonthlyPayment;
         private DirtyValue<decimal?> _totalDiscountPointCharged;
         private DirtyValue<decimal?> _totalDiscountPointsCharged;
         private DirtyValue<decimal?> _totalForMaxLoanAmount;
         private DirtyValue<decimal?> _totalMonthlyPayment;
+        private DirtyValue<decimal?> _totalPaidOverLifeIncreasedAmount;
         private DirtyValue<decimal?> _totalProposedMonthlyPayment;
         private DirtyValue<int?> _totalRooms;
         private DirtyValue<decimal?> _totalUnpaidSpecialAssessments;
@@ -209,9 +227,16 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<VABenefitRelatedIndebtedness>> _vABenefitRelatedIndebtedness;
         private DirtyValue<string> _vABuilderDescription;
         private DirtyValue<string> _vABuilderIDNo;
+        private DirtyValue<StringEnumValue<VACashOutRefinanceType>> _vACashOutRefinanceType;
         private DirtyValue<string> _vAClaimFolderNumber;
         private DirtyValue<string> _vAClaimNumber;
         private DirtyValue<DateTime?> _vADateNOVAppraisalMailedToBorrower;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactInterestRateIndicator;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactLoanBalanceIndicator;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactLTVIndicator;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactRemainingEquityIndicator;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactRemainingTermIndicator;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactScheduledPaymentsIndicator;
         private DirtyValue<bool?> _vAIsDelinquent30Days;
         private DirtyValue<bool?> _vALatePaymentIn6Months;
         private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _vaLoanSummaryApplicantType;
@@ -452,6 +477,12 @@ namespace EncompassRest.Loans
         public bool? BuyerPurchasingLotSeparately { get => _buyerPurchasingLotSeparately; set => SetField(ref _buyerPurchasingLotSeparately, value); }
 
         /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Amount of Cash Directly Disbursed to Borrower(s) [VASUMM.X114]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? CashDisbursedToBorrowerAmount { get => _cashDisbursedToBorrowerAmount; set => SetField(ref _cashDisbursedToBorrowerAmount, value); }
+
+        /// <summary>
         /// VA Subtract Any Cash Payment from Veteran [VARRRWS.X1]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -524,6 +555,12 @@ namespace EncompassRest.Loans
         public decimal? DisabilityAmountCollected { get => _disabilityAmountCollected; set => SetField(ref _disabilityAmountCollected, value); }
 
         /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Amount of Disbursements less Mortgage Payoffs [VASUMM.X115]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? DisbursementsLessPayoffAmount { get => _disbursementsLessPayoffAmount; set => SetField(ref _disbursementsLessPayoffAmount, value); }
+
+        /// <summary>
         /// VA Loan Discount Fee % [VARRRWS.X9]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
@@ -569,9 +606,77 @@ namespace EncompassRest.Loans
         public string EquipmentOtherDescription { get => _equipmentOtherDescription; set => SetField(ref _equipmentOtherDescription, value); }
 
         /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Estimated Impact of Home Equity Remaining Amount [VASUMM.X113]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? EstimatedImpactofHomeEquityRemainingAmount { get => _estimatedImpactofHomeEquityRemainingAmount; set => SetField(ref _estimatedImpactofHomeEquityRemainingAmount, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Estimated Impact of Interest Rate [VASUMM.X105]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? EstimatedImpactofInterestRate { get => _estimatedImpactofInterestRate; set => SetField(ref _estimatedImpactofInterestRate, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Estimated Impact of Loan Balance Amount [VASUMM.X103]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? EstimatedImpactofLoanBalanceAmount { get => _estimatedImpactofLoanBalanceAmount; set => SetField(ref _estimatedImpactofLoanBalanceAmount, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Estimated Impact of Loan-to-Value Percentage [VASUMM.X109]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? EstimatedImpactofLTV { get => _estimatedImpactofLTV; set => SetField(ref _estimatedImpactofLTV, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Estimated Impact of Remaining Term Months [VASUMM.X104]
+        /// </summary>
+        public int? EstimatedImpactofRemainingTermMonths { get => _estimatedImpactofRemainingTermMonths; set => SetField(ref _estimatedImpactofRemainingTermMonths, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Estimated Impact of Total Remaining Scheduled Payments [VASUMM.X108]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? EstimatedImpactofTotalRemainingPaymentAmount { get => _estimatedImpactofTotalRemainingPaymentAmount; set => SetField(ref _estimatedImpactofTotalRemainingPaymentAmount, value); }
+
+        /// <summary>
         /// VA Management Tool - Exclude Taxes and Insurance [VASUMM.X100]
         /// </summary>
         public bool? ExcludeTaxesInsuranceIndicator { get => _excludeTaxesInsuranceIndicator; set => SetField(ref _excludeTaxesInsuranceIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Existing Home Equity Remaining Amount [VASUMM.X111]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? ExistingHomeEquityRemainingAmount { get => _existingHomeEquityRemainingAmount; set => SetField(ref _existingHomeEquityRemainingAmount, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Existing Loan Balance [VASUMM.X102]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? ExistingLoanBalance { get => _existingLoanBalance; set => SetField(ref _existingLoanBalance, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Existing Loan First Payment Date [VASUMM.X123]
+        /// </summary>
+        public DateTime? ExistingLoanFirstPaymentDate { get => _existingLoanFirstPaymentDate; set => SetField(ref _existingLoanFirstPaymentDate, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Existing Reasonable (Appraised) Value [VASUMM.X110]
+        /// </summary>
+        public int? ExistingReasonableAppraisedValue { get => _existingReasonableAppraisedValue; set => SetField(ref _existingReasonableAppraisedValue, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Existing Total of the Remaining Scheduled Payments [VASUMM.X106]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? ExistingTotalRemainingPaymentAmount { get => _existingTotalRemainingPaymentAmount; set => SetField(ref _existingTotalRemainingPaymentAmount, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Existing VA Loan Number [VASUMM.X101]
+        /// </summary>
+        public string ExistingVALoanNumber { get => _existingVALoanNumber; set => SetField(ref _existingVALoanNumber, value); }
 
         /// <summary>
         /// VA Discount (Based from line 9) [VARRRWS.X8]
@@ -1095,10 +1200,22 @@ namespace EncompassRest.Loans
         public StringEnumValue<PropertyOccupancyType> PropertyOccupancyType { get => _propertyOccupancyType; set => SetField(ref _propertyOccupancyType, value); }
 
         /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Proposed Home Equity Remaining Amount [VASUMM.X112]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? ProposedHomeEquityRemainingAmount { get => _proposedHomeEquityRemainingAmount; set => SetField(ref _proposedHomeEquityRemainingAmount, value); }
+
+        /// <summary>
         /// VA Proposed Sale Contract Attached [1036]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"true\":\"Proposed sale contract attached\"}")]
         public bool? ProposedSaleContractAttached { get => _proposedSaleContractAttached; set => SetField(ref _proposedSaleContractAttached, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Proposed Total of the Remaining Scheduled Payments [VASUMM.X107]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? ProposedTotalRemainingPaymentAmount { get => _proposedTotalRemainingPaymentAmount; set => SetField(ref _proposedTotalRemainingPaymentAmount, value); }
 
         /// <summary>
         /// VA Veteran Loan Purpose [956]
@@ -1214,6 +1331,12 @@ namespace EncompassRest.Loans
         public int? TotalBedrooms { get => _totalBedrooms; set => SetField(ref _totalBedrooms, value); }
 
         /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Total CLosing Cost Less Guarantee Fee [VASUMM.X124]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalClosingCostLessGuaranteeFee { get => _totalClosingCostLessGuaranteeFee; set => SetField(ref _totalClosingCostLessGuaranteeFee, value); }
+
+        /// <summary>
         /// VA Loan Analysis Total Debt Mo Pymt [VALA.X29]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
@@ -1242,6 +1365,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalMonthlyPayment { get => _totalMonthlyPayment; set => SetField(ref _totalMonthlyPayment, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Increase in Total Paid Over Life of Loan [VASUMM.X122]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalPaidOverLifeIncreasedAmount { get => _totalPaidOverLifeIncreasedAmount; set => SetField(ref _totalPaidOverLifeIncreasedAmount, value); }
 
         /// <summary>
         /// VA Management Tool - Total Proposed Monthly Payment [VASUMM.X99]
@@ -1331,6 +1460,11 @@ namespace EncompassRest.Loans
         public string VABuilderIDNo { get => _vABuilderIDNo; set => SetField(ref _vABuilderIDNo, value); }
 
         /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Cash-Out Refinance Type [VASUMM.X125]
+        /// </summary>
+        public StringEnumValue<VACashOutRefinanceType> VACashOutRefinanceType { get => _vACashOutRefinanceType; set => SetField(ref _vACashOutRefinanceType, value); }
+
+        /// <summary>
         /// VA Claim Folder # [VAVOB.X66]
         /// </summary>
         public string VAClaimFolderNumber { get => _vAClaimFolderNumber; set => SetField(ref _vAClaimFolderNumber, value); }
@@ -1344,6 +1478,36 @@ namespace EncompassRest.Loans
         /// VA Management Tool - Date NOV and Appraisal Mailed to Borrower [VASUMM.X77]
         /// </summary>
         public DateTime? VADateNOVAppraisalMailedToBorrower { get => _vADateNOVAppraisalMailedToBorrower; set => SetField(ref _vADateNOVAppraisalMailedToBorrower, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Impact Interest Rate Indicator [VASUMM.X118]
+        /// </summary>
+        public StringEnumValue<IncreaseOrDecrease> VAImpactInterestRateIndicator { get => _vAImpactInterestRateIndicator; set => SetField(ref _vAImpactInterestRateIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Impact Loan Balance Indicator [VASUMM.X116]
+        /// </summary>
+        public StringEnumValue<IncreaseOrDecrease> VAImpactLoanBalanceIndicator { get => _vAImpactLoanBalanceIndicator; set => SetField(ref _vAImpactLoanBalanceIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Impact LTV Indicator [VASUMM.X120]
+        /// </summary>
+        public StringEnumValue<IncreaseOrDecrease> VAImpactLTVIndicator { get => _vAImpactLTVIndicator; set => SetField(ref _vAImpactLTVIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Impact Remaining Equity Indicator [VASUMM.X121]
+        /// </summary>
+        public StringEnumValue<IncreaseOrDecrease> VAImpactRemainingEquityIndicator { get => _vAImpactRemainingEquityIndicator; set => SetField(ref _vAImpactRemainingEquityIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Impact Remaining Term Indicator [VASUMM.X117]
+        /// </summary>
+        public StringEnumValue<IncreaseOrDecrease> VAImpactRemainingTermIndicator { get => _vAImpactRemainingTermIndicator; set => SetField(ref _vAImpactRemainingTermIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Cash-Out Refinance - Impact Scheduled Payments Indicator [VASUMM.X119]
+        /// </summary>
+        public StringEnumValue<IncreaseOrDecrease> VAImpactScheduledPaymentsIndicator { get => _vAImpactScheduledPaymentsIndicator; set => SetField(ref _vAImpactScheduledPaymentsIndicator, value); }
 
         /// <summary>
         /// VA Management - Is the Veteran currently delinquent 30 days or more on the existing loan? [VASUMM.X36]

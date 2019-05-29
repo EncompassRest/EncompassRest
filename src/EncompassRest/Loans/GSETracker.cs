@@ -12,7 +12,9 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _dUFindingsMessageID;
         private DirtyValue<string> _dUFindingsMessageText;
         private DirtyValue<DateTime?> _gSECloseByDate;
+        private DirtyValue<DateTime?> _gSECloseByDate2;
         private DirtyValue<string> _id;
+        private DirtyValue<string> _recordTypeID;
 
         /// <summary>
         /// GSE Rep and Warrant Tracker - Identifier [TQLGSENN99]
@@ -35,8 +37,18 @@ namespace EncompassRest.Loans
         public DateTime? GSECloseByDate { get => _gSECloseByDate; set => SetField(ref _gSECloseByDate, value); }
 
         /// <summary>
+        /// GSE Rep and Warrant Tracker - GSE Close By Date 2 [TQLGSENN04]
+        /// </summary>
+        public DateTime? GSECloseByDate2 { get => _gSECloseByDate2; set => SetField(ref _gSECloseByDate2, value); }
+
+        /// <summary>
         /// GSETracker Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// GSE Rep and Warrant Tracker - Record Type ID [TQLGSENN98]
+        /// </summary>
+        public string RecordTypeID { get => _recordTypeID; set => SetField(ref _recordTypeID, value); }
     }
 }

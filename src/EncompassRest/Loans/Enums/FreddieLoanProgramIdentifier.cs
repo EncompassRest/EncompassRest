@@ -160,6 +160,14 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// HomePossibleHomeReady
         /// </summary>
-        HomePossibleHomeReady = 38
+        HomePossibleHomeReady = 38,
+        /// <summary>
+        /// HomePossibleAdvantage
+        /// </summary>
+        HomePossibleAdvantage = 39,
+        /// <summary>
+        /// HomePossibleAdvantageHFA
+        /// </summary>
+        HomePossibleAdvantageHFA = 40
     }
 }

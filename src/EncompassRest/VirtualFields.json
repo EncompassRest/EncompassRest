@@ -23293,6 +23293,10 @@
         "text": "Expired, New Lock Requested"
       },
       {
+        "value": "Expired-Extension-Request",
+        "text": "Expired, Extension Requested"
+      },
+      {
         "value": "Cancelled",
         "text": "Lock Cancelled"
       },

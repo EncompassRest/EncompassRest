@@ -12,6 +12,7 @@ namespace EncompassRest.Loans
     {
         private DirtyValue<string> _accountNumber1;
         private DirtyValue<string> _accountNumber2;
+        private DirtyList<AdditionalLoan> _additionalLoans;
         private DirtyValue<decimal?> _allOtherPaymentsAmount;
         private DirtyValue<string> _applicationId;
         private DirtyValue<int?> _applicationIndex;
@@ -182,7 +183,9 @@ namespace EncompassRest.Loans
         private DirtyList<Tax4506> _tax4506s;
         private DirtyValue<decimal?> _topRatioPercent;
         private DirtyValue<decimal?> _totalAdditionalAssetsAmount;
+        private DirtyValue<decimal?> _totalAdditionalLoansAmount;
         private DirtyValue<decimal?> _totalAdditionalOtherAssetsAmount;
+        private DirtyValue<decimal?> _totalAppliedToDownpayment;
         private DirtyValue<decimal?> _totalAssetsAmount;
         private DirtyValue<decimal?> _totalBaseIncomeAmount;
         private DirtyValue<decimal?> _totalBonusAmount;
@@ -234,6 +237,11 @@ namespace EncompassRest.Loans
         /// Liabilities Alternate Acct # 2 [1737]
         /// </summary>
         public string AccountNumber2 { get => _accountNumber2; set => SetField(ref _accountNumber2, value); }
+
+        /// <summary>
+        /// Application AdditionalLoans
+        /// </summary>
+        public IList<AdditionalLoan> AdditionalLoans { get => GetField(ref _additionalLoans); set => SetField(ref _additionalLoans, value); }
 
         /// <summary>
         /// Underwriting All Other Pymts [1733]
@@ -1186,10 +1194,22 @@ namespace EncompassRest.Loans
         public decimal? TotalAdditionalAssetsAmount { get => _totalAdditionalAssetsAmount; set => SetField(ref _totalAdditionalAssetsAmount, value); }
 
         /// <summary>
+        /// Total Additional Loans Amount [URLA.X229]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalAdditionalLoansAmount { get => _totalAdditionalLoansAmount; set => SetField(ref _totalAdditionalLoansAmount, value); }
+
+        /// <summary>
         /// Total Additional Other Assets Amount [URLA.X53]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalAdditionalOtherAssetsAmount { get => _totalAdditionalOtherAssetsAmount; set => SetField(ref _totalAdditionalOtherAssetsAmount, value); }
+
+        /// <summary>
+        /// Total Applied To Downpayment [URLA.X230]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalAppliedToDownpayment { get => _totalAppliedToDownpayment; set => SetField(ref _totalAppliedToDownpayment, value); }
 
         /// <summary>
         /// Assets Total Assets [732]

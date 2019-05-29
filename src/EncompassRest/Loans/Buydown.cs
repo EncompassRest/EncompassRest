@@ -16,6 +16,8 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _fundTotalAmount;
         private DirtyValue<string> _id;
         private DirtyValue<decimal?> _increaseRatePercent;
+        private DirtyValue<int?> _nonBorrowerChangeFrequencyMonthsCount;
+        private DirtyValue<decimal?> _nonBorrowerIncreaseRatePercent;
         private DirtyValue<int?> _remainingMonthsCount;
         private DirtyValue<decimal?> _subsidyAmount;
 
@@ -62,6 +64,17 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? IncreaseRatePercent { get => _increaseRatePercent; set => SetField(ref _increaseRatePercent, value); }
+
+        /// <summary>
+        /// Buydown NonBorrowerChangeFrequencyMonthsCount
+        /// </summary>
+        public int? NonBorrowerChangeFrequencyMonthsCount { get => _nonBorrowerChangeFrequencyMonthsCount; set => SetField(ref _nonBorrowerChangeFrequencyMonthsCount, value); }
+
+        /// <summary>
+        /// Buydown NonBorrowerIncreaseRatePercent
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? NonBorrowerIncreaseRatePercent { get => _nonBorrowerIncreaseRatePercent; set => SetField(ref _nonBorrowerIncreaseRatePercent, value); }
 
         /// <summary>
         /// Buydown RemainingMonthsCount

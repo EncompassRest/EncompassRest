@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace EncompassRest.Loans.Enums
 {
     /// <summary>
@@ -6,24 +8,28 @@ namespace EncompassRest.Loans.Enums
     public enum GovernmentRefinanceType
     {
         /// <summary>
-        /// FullDocumentation
+        /// Full Documentation
         /// </summary>
+        [Description("Full Documentation")]
         FullDocumentation = 0,
         /// <summary>
-        /// InterestRateReductionRefinanceLoan
+        /// Interest Rate Reduction Refinance Loan
         /// </summary>
+        [Description("Interest Rate Reduction Refinance Loan")]
         InterestRateReductionRefinanceLoan = 1,
         /// <summary>
         /// Other
         /// </summary>
         Other = 2,
         /// <summary>
-        /// StreamlineWithAppraisal
+        /// Streamline With Appraisal
         /// </summary>
+        [Description("Streamline With Appraisal")]
         StreamlineWithAppraisal = 3,
         /// <summary>
-        /// StreamlineWithoutAppraisal
+        /// Streamline Without Appraisal
         /// </summary>
+        [Description("Streamline Without Appraisal")]
         StreamlineWithoutAppraisal = 4
     }
 }

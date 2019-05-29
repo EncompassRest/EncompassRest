@@ -10,11 +10,16 @@ namespace EncompassRest.Loans
     public sealed partial class Correspondent : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _additionalLateFeeCharge;
+        private DirtyValue<string> _alternateLoanNumber;
         private DirtyValue<DateTime?> _approvedToFundDate;
         private DirtyValue<decimal?> _basePrice;
         private DirtyValue<DateTime?> _cancelledDate;
+        private DirtyValue<string> _collateralTrackingNumber;
         private DirtyValue<StringEnumValue<CommitmentType>> _commitmentType;
         private DirtyValue<DateTime?> _conditionsReceivedDate;
+        private DirtyValue<DateTime?> _correspondentCommitmentDate;
+        private DirtyValue<DateTime?> _correspondentCommitmentExpirationDate;
+        private DirtyValue<int?> _correspondentCommitmentPeriod;
         private DirtyValue<StringEnumValue<CorrespondentStatus>> _correspondentStatus;
         private DirtyValue<DateTime?> _deliveryExpirationDate;
         private DirtyValue<string> _deliveryType;
@@ -50,6 +55,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _lFSOtherDate;
         private DirtyValue<string> _lFSOtherDateValue;
         private DirtyValue<int?> _lFSStartOnWeekend;
+        private DirtyValue<bool?> _loanIsCommitted;
         private DirtyValue<DateTime?> _noteDate;
         private DirtyValue<decimal?> _originalPrincipalBalance;
         private DirtyValue<string> _ratesheet;
@@ -70,6 +76,11 @@ namespace EncompassRest.Loans
         public decimal? AdditionalLateFeeCharge { get => _additionalLateFeeCharge; set => SetField(ref _additionalLateFeeCharge, value); }
 
         /// <summary>
+        /// Correspondent Loan Status - Alternate Loan Number [4548]
+        /// </summary>
+        public string AlternateLoanNumber { get => _alternateLoanNumber; set => SetField(ref _alternateLoanNumber, value); }
+
+        /// <summary>
         /// Correspondent Loan Status - Cleared for Purchase Date [3921]
         /// </summary>
         public DateTime? ApprovedToFundDate { get => _approvedToFundDate; set => SetField(ref _approvedToFundDate, value); }
@@ -86,6 +97,11 @@ namespace EncompassRest.Loans
         public DateTime? CancelledDate { get => _cancelledDate; set => SetField(ref _cancelledDate, value); }
 
         /// <summary>
+        /// Correspondent Loan Status - Collateral Tracking Number [4547]
+        /// </summary>
+        public string CollateralTrackingNumber { get => _collateralTrackingNumber; set => SetField(ref _collateralTrackingNumber, value); }
+
+        /// <summary>
         /// Correspondent Loan Status - Commitment Type [4105]
         /// </summary>
         public StringEnumValue<CommitmentType> CommitmentType { get => _commitmentType; set => SetField(ref _commitmentType, value); }
@@ -94,6 +110,21 @@ namespace EncompassRest.Loans
         /// Correspondent Loan Status - Purchase Approval Date [3920]
         /// </summary>
         public DateTime? ConditionsReceivedDate { get => _conditionsReceivedDate; set => SetField(ref _conditionsReceivedDate, value); }
+
+        /// <summary>
+        /// Correspondent Loan Status - Commitment Date [4527]
+        /// </summary>
+        public DateTime? CorrespondentCommitmentDate { get => _correspondentCommitmentDate; set => SetField(ref _correspondentCommitmentDate, value); }
+
+        /// <summary>
+        /// Correspondent Loan Status - Commitment Expiration Date [4529]
+        /// </summary>
+        public DateTime? CorrespondentCommitmentExpirationDate { get => _correspondentCommitmentExpirationDate; set => SetField(ref _correspondentCommitmentExpirationDate, value); }
+
+        /// <summary>
+        /// Correspondent Loan Status - Commitment Period [4528]
+        /// </summary>
+        public int? CorrespondentCommitmentPeriod { get => _correspondentCommitmentPeriod; set => SetField(ref _correspondentCommitmentPeriod, value); }
 
         /// <summary>
         /// Correspondent Loan Status - Correspondent Status [3916]
@@ -274,6 +305,11 @@ namespace EncompassRest.Loans
         /// Correspondent Loan Status - External Late Fee Settings - StartOnWeekend [LATEFEESETTING.X10]
         /// </summary>
         public int? LFSStartOnWeekend { get => _lFSStartOnWeekend; set => SetField(ref _lFSStartOnWeekend, value); }
+
+        /// <summary>
+        /// Correspondent Loan Status - Loan is Committed [4532]
+        /// </summary>
+        public bool? LoanIsCommitted { get => _loanIsCommitted; set => SetField(ref _loanIsCommitted, value); }
 
         /// <summary>
         /// Correspondent Loan Status - Note Date [3925]

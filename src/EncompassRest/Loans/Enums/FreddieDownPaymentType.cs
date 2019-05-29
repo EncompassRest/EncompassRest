@@ -91,6 +91,11 @@ namespace EncompassRest.Loans.Enums
         /// Unsecured Borrowed Funds
         /// </summary>
         [Description("Unsecured Borrowed Funds")]
-        UnsecuredBorrowedFunds = 16
+        UnsecuredBorrowedFunds = 16,
+        /// <summary>
+        /// Forgivable Secured Loan
+        /// </summary>
+        [Description("Forgivable Secured Loan")]
+        ForgivableSecuredLoan = 17
     }
 }

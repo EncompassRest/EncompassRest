@@ -22,6 +22,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _businessName;
         private DirtyValue<decimal?> _businessOwnedPercent;
         private DirtyValue<string> _businessPhone;
+        private DirtyValue<decimal?> _clothingAllowance;
         private DirtyValue<decimal?> _commissionsAmount;
         private DirtyValue<EntityReference> _contact;
         private DirtyValue<string> _countryCode;
@@ -35,11 +36,20 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _endDate;
         private DirtyValue<bool?> _entityDeleted;
         private DirtyValue<string> _fax;
+        private DirtyValue<bool?> _foreignIncome;
         private DirtyValue<string> _id;
+        private DirtyValue<bool?> _individualEmployer;
         private DirtyValue<int?> _jobTermMonths;
+        private DirtyValue<decimal?> _militaryCombatPay;
+        private DirtyValue<bool?> _militaryEmployer;
         private DirtyValue<decimal?> _militaryEntitlement;
+        private DirtyValue<decimal?> _militaryFlightPay;
+        private DirtyValue<decimal?> _militaryHazardPay;
+        private DirtyValue<decimal?> _militaryOverseasPay;
+        private DirtyValue<decimal?> _militaryPropPay;
         private DirtyValue<int?> _monthlyIncomeAmount;
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
+        private DirtyValue<string> _otherAllowanceDescription;
         private DirtyValue<decimal?> _otherAmount;
         private DirtyValue<decimal?> _overtimeAmount;
         private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _owner;
@@ -49,6 +59,9 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _printAttachmentIndicator;
         private DirtyValue<bool?> _printUserJobTitleIndicator;
         private DirtyValue<bool?> _printUserNameIndicator;
+        private DirtyValue<decimal?> _quartersAllowance;
+        private DirtyValue<decimal?> _rationsAllowance;
+        private DirtyValue<bool?> _seasonalIncome;
         private DirtyValue<bool?> _selfEmployedIndicator;
         private DirtyValue<bool?> _specialEmployerRelationshipIndicator;
         private DirtyValue<DateTime?> _startDate;
@@ -62,6 +75,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _unitNumber;
         private DirtyValue<StringEnumValue<UnitType>> _unitType;
         private DirtyValue<string> _uRLA2020StreetAddress;
+        private DirtyValue<decimal?> _variableHousingAllowance;
         private DirtyValue<DateTime?> _verificationRequestDate;
 
         /// <summary>
@@ -129,6 +143,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string BusinessPhone { get => _businessPhone; set => SetField(ref _businessPhone, value); }
+
+        /// <summary>
+        /// Employment ClothingAllowance
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? ClothingAllowance { get => _clothingAllowance; set => SetField(ref _clothingAllowance, value); }
 
         /// <summary>
         /// Employment CommissionsAmount
@@ -201,9 +221,21 @@ namespace EncompassRest.Loans
         public string Fax { get => _fax; set => SetField(ref _fax, value); }
 
         /// <summary>
+        /// Employment ForeignIncome
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Foreign Income\"}")]
+        public bool? ForeignIncome { get => _foreignIncome; set => SetField(ref _foreignIncome, value); }
+
+        /// <summary>
         /// Employment Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// Employment IndividualEmployer
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Employer is an Individual\"}")]
+        public bool? IndividualEmployer { get => _individualEmployer; set => SetField(ref _individualEmployer, value); }
 
         /// <summary>
         /// Employment JobTermMonths
@@ -211,10 +243,46 @@ namespace EncompassRest.Loans
         public int? JobTermMonths { get => _jobTermMonths; set => SetField(ref _jobTermMonths, value); }
 
         /// <summary>
+        /// Employment MilitaryCombatPay
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MilitaryCombatPay { get => _militaryCombatPay; set => SetField(ref _militaryCombatPay, value); }
+
+        /// <summary>
+        /// Employment MilitaryEmployer
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Employer is Military\"}")]
+        public bool? MilitaryEmployer { get => _militaryEmployer; set => SetField(ref _militaryEmployer, value); }
+
+        /// <summary>
         /// Employment MilitaryEntitlement
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MilitaryEntitlement { get => _militaryEntitlement; set => SetField(ref _militaryEntitlement, value); }
+
+        /// <summary>
+        /// Employment MilitaryFlightPay
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MilitaryFlightPay { get => _militaryFlightPay; set => SetField(ref _militaryFlightPay, value); }
+
+        /// <summary>
+        /// Employment MilitaryHazardPay
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MilitaryHazardPay { get => _militaryHazardPay; set => SetField(ref _militaryHazardPay, value); }
+
+        /// <summary>
+        /// Employment MilitaryOverseasPay
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MilitaryOverseasPay { get => _militaryOverseasPay; set => SetField(ref _militaryOverseasPay, value); }
+
+        /// <summary>
+        /// Employment MilitaryPropPay
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MilitaryPropPay { get => _militaryPropPay; set => SetField(ref _militaryPropPay, value); }
 
         /// <summary>
         /// Employment MonthlyIncomeAmount
@@ -226,6 +294,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => SetField(ref _noLinkToDocTrackIndicator, value); }
+
+        /// <summary>
+        /// Employment OtherAllowanceDescription
+        /// </summary>
+        public string OtherAllowanceDescription { get => _otherAllowanceDescription; set => SetField(ref _otherAllowanceDescription, value); }
 
         /// <summary>
         /// Employment OtherAmount
@@ -275,6 +348,24 @@ namespace EncompassRest.Loans
         /// Employment PrintUserNameIndicator
         /// </summary>
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
+
+        /// <summary>
+        /// Employment QuartersAllowance
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? QuartersAllowance { get => _quartersAllowance; set => SetField(ref _quartersAllowance, value); }
+
+        /// <summary>
+        /// Employment RationsAllowance
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? RationsAllowance { get => _rationsAllowance; set => SetField(ref _rationsAllowance, value); }
+
+        /// <summary>
+        /// Employment SeasonalIncome
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Seasonal Income\"}")]
+        public bool? SeasonalIncome { get => _seasonalIncome; set => SetField(ref _seasonalIncome, value); }
 
         /// <summary>
         /// Employment SelfEmployedIndicator
@@ -343,6 +434,12 @@ namespace EncompassRest.Loans
         /// Employment URLA2020StreetAddress
         /// </summary>
         public string URLA2020StreetAddress { get => _uRLA2020StreetAddress; set => SetField(ref _uRLA2020StreetAddress, value); }
+
+        /// <summary>
+        /// Employment VariableHousingAllowance
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? VariableHousingAllowance { get => _variableHousingAllowance; set => SetField(ref _variableHousingAllowance, value); }
 
         /// <summary>
         /// Employment VerificationRequestDate

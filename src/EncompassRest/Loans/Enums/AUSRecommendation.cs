@@ -144,10 +144,9 @@ namespace EncompassRest.Loans.Enums
         [EnumMember(Value = "Refer with Caution/Unable to Determine")]
         ReferWithCautionUnableToDetermine = 23,
         /// <summary>
-        /// 1111 Partially Exempt
+        /// 1111. Exempt
         /// </summary>
-        [Description("1111 Partially Exempt")]
-        [EnumMember(Value = "Partially Exempt")]
-        PartiallyExempt = 24
+        [Description("1111. Exempt")]
+        Exempt = 24
     }
 }

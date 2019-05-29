@@ -77,6 +77,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _mIPremiums;
         private DirtyValue<string> _miscDataFile;
         private DirtyValue<int?> _monthsToExclude;
+        private DirtyValue<bool?> _newBuydownEnabled;
         private DirtyValue<string> _optimalBlueHistoryData;
         private DirtyValue<string> _optimalBlueRequest;
         private DirtyValue<string> _optimalBlueResponse;
@@ -113,6 +114,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _totalYearlyMi;
         private DirtyValue<bool?> _tPOConnectStatusUpdated;
         private DirtyValue<string> _useGfeTax;
+        private DirtyValue<bool?> _useOldBuydownUIandLogic;
         private DirtyValue<string> _useRegZMi;
         private DirtyValue<string> _zip;
 
@@ -504,6 +506,12 @@ namespace EncompassRest.Loans
         public int? MonthsToExclude { get => _monthsToExclude; set => SetField(ref _monthsToExclude, value); }
 
         /// <summary>
+        /// Buydown Calculation - New Buydown Feature Enabled Flag [COMPLIANCEVERSION.NEWBUYDOWNENABLED]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public bool? NewBuydownEnabled { get => _newBuydownEnabled; set => SetField(ref _newBuydownEnabled, value); }
+
+        /// <summary>
         /// History Data From Optimal Blue [OPTIMAL.HISTORY]
         /// </summary>
         public string OptimalBlueHistoryData { get => _optimalBlueHistoryData; set => SetField(ref _optimalBlueHistoryData, value); }
@@ -706,6 +714,12 @@ namespace EncompassRest.Loans
         /// Real Estate Tax Overide w/GFE Tax [USEGFETAX]
         /// </summary>
         public string UseGfeTax { get => _useGfeTax; set => SetField(ref _useGfeTax, value); }
+
+        /// <summary>
+        /// Buydown Calculation Indicator - Yes to use old logic [COMPLIANCEVERSION.CASASRNX141]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public bool? UseOldBuydownUIandLogic { get => _useOldBuydownUIandLogic; set => SetField(ref _useOldBuydownUIandLogic, value); }
 
         /// <summary>
         /// Expenses Calc Mtg Ins Override w/ REGZ MI [USEREGZMI]

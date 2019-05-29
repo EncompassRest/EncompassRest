@@ -77,6 +77,10 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator;
         private DirtyValue<bool?> _refinancingLoanIsHomeEquityIndicator;
         private DirtyValue<bool?> _refinancingRespondBonaFide;
+        private DirtyValue<bool?> _vABorrowerIncomeIncreasedIndicator;
+        private DirtyValue<bool?> _vANewLoanAlterPrimaryHomeIndicator;
+        private DirtyValue<bool?> _vANewLoanEqualorLess90Indicator;
+        private DirtyValue<bool?> _vATermShorterThanRefinancedLoanIndicator;
 
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - The APR of the new refinancing loan at consummation does not exceed by more than 2.5% for closed-end first lien loans...? [NTB.X52]
@@ -437,5 +441,25 @@ namespace EncompassRest.Loans
         /// Net Tangible Benefit Existing Loan Info - The Refinancing is Necessary to Respond to a Bona-Fide Personal Need or Order of a Court [NTB.X63]
         /// </summary>
         public bool? RefinancingRespondBonaFide { get => _refinancingRespondBonaFide; set => SetField(ref _refinancingRespondBonaFide, value); }
+
+        /// <summary>
+        /// Net Tangible Benefit Loan Info - VA Cashout Refinance - New Loan Results in an Increase in Borrower's Income [NTB.X69]
+        /// </summary>
+        public bool? VABorrowerIncomeIncreasedIndicator { get => _vABorrowerIncomeIncreasedIndicator; set => SetField(ref _vABorrowerIncomeIncreasedIndicator, value); }
+
+        /// <summary>
+        /// Net Tangible Benefit Loan Info - VA Cashout Refinance - The New Loan Refinances an Interim Loan to Construct, Alter or Repair Primary Home [NTB.X70]
+        /// </summary>
+        public bool? VANewLoanAlterPrimaryHomeIndicator { get => _vANewLoanAlterPrimaryHomeIndicator; set => SetField(ref _vANewLoanAlterPrimaryHomeIndicator, value); }
+
+        /// <summary>
+        /// Net Tangible Benefit Loan Info - VA Cashout Refinance - The New Loan Amount is Equal to or Less Than 90 Percentage of the Reasonable Value of the Home [NTB.X71]
+        /// </summary>
+        public bool? VANewLoanEqualorLess90Indicator { get => _vANewLoanEqualorLess90Indicator; set => SetField(ref _vANewLoanEqualorLess90Indicator, value); }
+
+        /// <summary>
+        /// Net Tangible Benefit Loan Info - VA Cashout Refinance - Term is shorter than refinanced loan [NTB.X68]
+        /// </summary>
+        public bool? VATermShorterThanRefinancedLoanIndicator { get => _vATermShorterThanRefinancedLoanIndicator; set => SetField(ref _vATermShorterThanRefinancedLoanIndicator, value); }
     }
 }

@@ -34,11 +34,13 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _linkedAmountApplyToDownPayment;
         private DirtyValue<decimal?> _linkedClosedEndPrimaryMortgageLoanAmount;
         private DirtyValue<decimal?> _linkedClosedEndSubordinateMortgageLoanAmount;
+        private DirtyValue<StringEnumValue<LienPosition>> _linkedHELOCLienPosition;
         private DirtyValue<decimal?> _linkedHelocNewFinancingNotLinkedCreditLimit;
         private DirtyValue<decimal?> _linkedHelocNewFinancingNotLinkedDrawAmount;
         private DirtyValue<decimal?> _linkedInitialAdvanceAmount;
         private DirtyValue<bool?> _linkedIsConstructionPhaseDisclosedSeparately;
         private DirtyValue<StringEnumValue<LienType>> _linkedLienPriorityType;
+        private DirtyValue<string> _linkedLoanNumber;
         private DirtyValue<string> _linkedLoanPurposeType;
         private DirtyValue<StringEnumValue<LoanType>> _linkedMortgageType;
         private DirtyValue<StringEnumValue<LoanPurposeType>> _loanPurposeType;
@@ -218,6 +220,11 @@ namespace EncompassRest.Loans
         public decimal? LinkedClosedEndSubordinateMortgageLoanAmount { get => _linkedClosedEndSubordinateMortgageLoanAmount; set => SetField(ref _linkedClosedEndSubordinateMortgageLoanAmount, value); }
 
         /// <summary>
+        /// HELOC Lien Position - Copied from Linked Loan [LINK_4494]
+        /// </summary>
+        public StringEnumValue<LienPosition> LinkedHELOCLienPosition { get => _linkedHELOCLienPosition; set => SetField(ref _linkedHELOCLienPosition, value); }
+
+        /// <summary>
         /// Heloc New Financing Not Linked Credit Limit - Copied from Linked Loan [LINK_4490]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -236,14 +243,19 @@ namespace EncompassRest.Loans
         public decimal? LinkedInitialAdvanceAmount { get => _linkedInitialAdvanceAmount; set => SetField(ref _linkedInitialAdvanceAmount, value); }
 
         /// <summary>
-        /// Trans Details Construction Phase Disclosed Separately - Copied from Linekd Loan [LINK_4084]
+        /// Trans Details Construction Phase Disclosed Separately - Copied from Linked Loan [LINK_4084]
         /// </summary>
         public bool? LinkedIsConstructionPhaseDisclosedSeparately { get => _linkedIsConstructionPhaseDisclosedSeparately; set => SetField(ref _linkedIsConstructionPhaseDisclosedSeparately, value); }
 
         /// <summary>
-        /// Trans Details Lien Position - Copied from Linekd Loan [LINK_420]
+        /// Trans Details Lien Position - Copied from Linked Loan [LINK_420]
         /// </summary>
         public StringEnumValue<LienType> LinkedLienPriorityType { get => _linkedLienPriorityType; set => SetField(ref _linkedLienPriorityType, value); }
+
+        /// <summary>
+        /// Trans Details Loan # - Copied from Linked Loan [LINK_364]
+        /// </summary>
+        public string LinkedLoanNumber { get => _linkedLoanNumber; set => SetField(ref _linkedLoanNumber, value); }
 
         /// <summary>
         /// Trans Details Loan Purpose - Copied from Linked Loan [LINK_19]
@@ -251,7 +263,7 @@ namespace EncompassRest.Loans
         public string LinkedLoanPurposeType { get => _linkedLoanPurposeType; set => SetField(ref _linkedLoanPurposeType, value); }
 
         /// <summary>
-        /// Trans Details Loan Type - Copied from Linekd Loan [LINK_1172]
+        /// Trans Details Loan Type - Copied from Linked Loan [LINK_1172]
         /// </summary>
         public StringEnumValue<LoanType> LinkedMortgageType { get => _linkedMortgageType; set => SetField(ref _linkedMortgageType, value); }
 

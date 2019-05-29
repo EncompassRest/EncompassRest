@@ -10,9 +10,11 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     {
+        private DirtyValue<bool?> _additionalLoanDoesNotApply;
         private AdditionalRequests _additionalRequests;
         private DirtyValue<DateTime?> _adverseActionDate;
         private DirtyList<AffiliatedBusinessArrangement> _affiliatedBusinessArrangements;
+        private DirtyValue<bool?> _affordableLoan;
         private DirtyValue<string> _agencyCaseIdentifier;
         private DirtyValue<string> _alertChangeCircumstanceApplyLECD;
         private DirtyList<AlertChangeCircumstance> _alertChangeCircumstances;
@@ -30,6 +32,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _borrCommunityPropertyStateResidentIndicator;
         private DirtyValue<decimal?> _borrEstimatedClosingCostsAmount;
         private DirtyValue<bool?> _borrowerCoBorrowerMarriedIndicator;
+        private DirtyValue<string> _borrowerCount;
         private DirtyValue<string> _borrowerFullName;
         private DirtyValue<decimal?> _borrowerPaidClosingCostsAmount;
         private DirtyValue<decimal?> _borrowerPaidDiscountPointsAmount;
@@ -61,6 +64,7 @@ namespace EncompassRest.Loans
         private CommitmentTerms _commitmentTerms;
         private DirtyValue<bool?> _communityPropertyStateResidentIndicator;
         private DirtyList<ComplianceTestLog> _complianceTestLogs;
+        private DirtyValue<bool?> _condominiumIndicator;
         private DirtyValue<StringEnumValue<ConformingJumbo>> _conformingJumbo;
         private DirtyValue<bool?> _constructionLoanIndicator;
         private ConstructionManagement _constructionManagement;
@@ -71,13 +75,12 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _contractSellerCreditAmount;
         private DirtyList<ConversationLog> _conversationLogs;
         private DirtyValue<bool?> _conversionOfContractForDeedIndicator;
+        private DirtyValue<bool?> _cooperativeIndicator;
         private DirtyValue<bool?> _copyBrokerToLenderIndicator;
         private DirtyValue<StringEnumValue<YOrN>> _copyLoanNumLenderCaseNum;
         private Correspondent _correspondent;
         private DirtyValue<string> _counselingBorrowerFullName;
         private DirtyValue<DateTime?> _counselingCompletedDate;
-        private DirtyValue<bool?> _counselingConfirmationIndicator;
-        private DirtyValue<StringEnumValue<LoanCounselingFormatType>> _counselingFormatType;
         private DirtyValue<string> _creditScoreToUse;
         private DirtyList<CrmLog> _crmLogs;
         private DirtyValue<int?> _currentApplicationIndex;
@@ -205,6 +208,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<AmortizationType>> _loanAmortizationType;
         private DirtyValue<string> _loanCreatedDate;
         private DirtyValue<DateTime?> _loanCreatedDateUtc;
+        private DirtyValue<bool?> _loanFeaturesOtherIndicator;
         private DirtyValue<string> _loanIdNumber;
         private DirtyValue<bool?> _loanImportStatusIndicator;
         private DirtyValue<StringEnumValue<LoanLinkSyncType>> _loanLinkSyncType;
@@ -229,6 +233,7 @@ namespace EncompassRest.Loans
         private DirtyList<LockRequestLog> _lockRequestLogs;
         private ElliLOCompensation _lOCompensation;
         private DirtyList<LogEntryLog> _logEntryLogs;
+        private DirtyValue<DateTime?> _lotAcquiredDate;
         private DirtyValue<decimal?> _ltv;
         private DirtyValue<decimal?> _ltvPropertyValue;
         private DirtyValue<string> _masterCommitmentNumber;
@@ -274,6 +279,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _msaIdentifier;
         private DirtyValue<StringEnumValue<NativeAmericanLandsType>> _nativeAmericanLandsType;
         private DirtyValue<StringEnumValue<NativeAmericanLandsTypeOtherDescription>> _nativeAmericanLandsTypeOtherDescription;
+        private DirtyValue<bool?> _negativeAmortization;
         private NetTangibleBenefit _netTangibleBenefit;
         private DirtyValue<decimal?> _newFirstMortgageAmount;
         private DirtyValue<string> _newHELOCCreditorName;
@@ -286,6 +292,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _noClosingCostOption;
         private DirtyList<NonBorrowingOwner> _nonBorrowingOwners;
         private DirtyList<NonVol> _nonVols;
+        private DirtyValue<bool?> _notInProjectIndicator;
         private DirtyValue<bool?> _notRequiredForPurchaseSaleOrRefinance;
         private DirtyValue<bool?> _notRequiredForSettlementOfYourLoan;
         private DirtyValue<StringEnumValue<OccupancyType>> _occupancyType;
@@ -309,20 +316,21 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _otherPaidClosingCostsAmount;
         private DirtyValue<decimal?> _overwireAmount;
         private DirtyValue<DateTime?> _ownershipCompletedDate;
-        private DirtyValue<bool?> _ownershipConfirmationIndicator;
-        private DirtyValue<StringEnumValue<OwnershipFormatType>> _ownershipFormatType;
-        private DirtyValue<string> _ownershipPartyRoleIdentifier;
-        private DirtyValue<string> _partyRoleIdentifier;
+        private DirtyValue<bool?> _paymentDeferredFirstFiveYears;
         private DirtyValue<bool?> _paymentScheduleCalcRequiredIndicator;
         private DirtyValue<string> _percentageOfOwnership;
         private DirtyValue<decimal?> _percentageOwnershipInterest;
         private DirtyValue<bool?> _pmiIndicator;
         private DirtyList<PostClosingConditionLog> _postClosingConditionLogs;
         private DirtyList<PreliminaryConditionLog> _preliminaryConditionLogs;
+        private DirtyValue<bool?> _prepaymentPenaltyTerm;
         private Prequalification _prequalification;
+        private DirtyValue<decimal?> _presentSupplementalPropertyInsuranceAmount;
         private DirtyValue<decimal?> _principalAndInterestMonthlyPaymentAmount;
         private DirtyValue<StringEnumValue<Print2003Application>> _print2003Application;
+        private DirtyValue<bool?> _printLenderPages;
         private DirtyList<PrintLog> _printLogs;
+        private DirtyValue<bool?> _printULIAndLoanNoURLA;
         private DirtyValue<bool?> _printULIonURLA;
         private PrivacyPolicy _privacyPolicy;
         private DirtyValue<string> _productDescription;
@@ -342,6 +350,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _proposedOtherAmount;
         private DirtyValue<decimal?> _proposedOtherMortgagesAmount;
         private DirtyValue<string> _proposedRealEstateTaxesAmount;
+        private DirtyValue<bool?> _pUDIndicator;
         private DirtyList<PurchaseConditionLog> _purchaseConditionLogs;
         private DirtyList<PurchaseCredit> _purchaseCredits;
         private DirtyValue<decimal?> _purchasePriceAmount;
@@ -396,12 +405,14 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _systemIdGuid;
         private DirtyValue<decimal?> _targetCLTV;
         private DirtyValue<decimal?> _targetHCLTV;
+        private DirtyValue<bool?> _temporaryOrInitialInterestRateBuydown;
         private DirtyValue<DateTime?> _tilApplicationDate;
         private DirtyValue<string> _titleHolderFullName;
         private DirtyValue<string> _titleHolderName1;
         private DirtyValue<string> _titleHolderName2;
         private DirtyValue<string> _titleWillBeFullName;
         private DirtyValue<decimal?> _tltv;
+        private DirtyValue<decimal?> _totalAdditionalMortgages;
         private DirtyValue<decimal?> _totalClosingCostsAmount;
         private DirtyValue<decimal?> _totalDeductionsAmount;
         private DirtyValue<decimal?> _totalFeesCostAmount;
@@ -415,6 +426,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _totalSubordinateFinancingAmount;
         private DirtyValue<decimal?> _totalWireTransferAmount;
         private TPO _tPO;
+        private DirtyValue<bool?> _tPOMigrationDone;
         private TQL _tQL;
         private TrustAccount _trustAccount;
         private DirtyValue<StringEnumValue<TrustClassificationType>> _trustClassificationType;
@@ -451,6 +463,12 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _websiteId;
 
         /// <summary>
+        /// 4b. Other New Mortgage Loans on the Property You are Buying or Refinancing Does not Apply [URLA.X237]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does not apply\"}")]
+        public bool? AdditionalLoanDoesNotApply { get => _additionalLoanDoesNotApply; set => SetField(ref _additionalLoanDoesNotApply, value); }
+
+        /// <summary>
         /// Loan AdditionalRequests
         /// </summary>
         public AdditionalRequests AdditionalRequests { get => GetField(ref _additionalRequests); set => SetField(ref _additionalRequests, value); }
@@ -464,6 +482,12 @@ namespace EncompassRest.Loans
         /// Loan AffiliatedBusinessArrangements
         /// </summary>
         public IList<AffiliatedBusinessArrangement> AffiliatedBusinessArrangements { get => GetField(ref _affiliatedBusinessArrangements); set => SetField(ref _affiliatedBusinessArrangements, value); }
+
+        /// <summary>
+        /// Affordable Loan Indicator [URLA.X210]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Affordable Loan \"}")]
+        public bool? AffordableLoan { get => _affordableLoan; set => SetField(ref _affordableLoan, value); }
 
         /// <summary>
         /// Trans Details Agency Case # [1040]
@@ -557,6 +581,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"true\":\"Borrower / Co-Borrower are Married\"}")]
         public bool? BorrowerCoBorrowerMarriedIndicator { get => _borrowerCoBorrowerMarriedIndicator; set => SetField(ref _borrowerCoBorrowerMarriedIndicator, value); }
+
+        /// <summary>
+        /// Borrower count  [URLA.X194]
+        /// </summary>
+        public string BorrowerCount { get => _borrowerCount; set => SetField(ref _borrowerCount, value); }
 
         /// <summary>
         /// Borrower Full Name [URLA.X158]
@@ -735,6 +764,11 @@ namespace EncompassRest.Loans
         public IList<ComplianceTestLog> ComplianceTestLogs { get => GetField(ref _complianceTestLogs); set => SetField(ref _complianceTestLogs, value); }
 
         /// <summary>
+        /// Condominium Project Type Indicator [URLA.X205]
+        /// </summary>
+        public bool? CondominiumIndicator { get => _condominiumIndicator; set => SetField(ref _condominiumIndicator, value); }
+
+        /// <summary>
         /// Conforming Loan Indicator [3331]
         /// </summary>
         public StringEnumValue<ConformingJumbo> ConformingJumbo { get => _conformingJumbo; set => SetField(ref _conformingJumbo, value); }
@@ -790,6 +824,11 @@ namespace EncompassRest.Loans
         public bool? ConversionOfContractForDeedIndicator { get => _conversionOfContractForDeedIndicator; set => SetField(ref _conversionOfContractForDeedIndicator, value); }
 
         /// <summary>
+        /// Cooperative Project Type Indicator [URLA.X206]
+        /// </summary>
+        public bool? CooperativeIndicator { get => _cooperativeIndicator; set => SetField(ref _cooperativeIndicator, value); }
+
+        /// <summary>
         /// Trans Details Copy to Lender Check Box [1969]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"true\":\"Copy to Lender\"}")]
@@ -815,16 +854,6 @@ namespace EncompassRest.Loans
         /// Counseling Completed Date [URLA.X163]
         /// </summary>
         public DateTime? CounselingCompletedDate { get => _counselingCompletedDate; set => SetField(ref _counselingCompletedDate, value); }
-
-        /// <summary>
-        /// Counseling Confirmation Indicator [URLA.X159]
-        /// </summary>
-        public bool? CounselingConfirmationIndicator { get => _counselingConfirmationIndicator; set => SetField(ref _counselingConfirmationIndicator, value); }
-
-        /// <summary>
-        /// Counseling Format Type [URLA.X160]
-        /// </summary>
-        public StringEnumValue<LoanCounselingFormatType> CounselingFormatType { get => _counselingFormatType; set => SetField(ref _counselingFormatType, value); }
 
         /// <summary>
         /// Lock Request Credit Score for Decision Making [2853]
@@ -1204,7 +1233,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Government Refinance Type [URLA.X166]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"StreamlineWithAppraisal\"]", OptionsJson = "{\"FullDocumentation\":\"Full Documentation\",\"InterestRateReductionRefinanceLoan\":\"Interest Rate Reduction Refinance Loan\",\"StreamlineWithoutAppraisal\":\"Streamline Without Appraisal\"}")]
         public StringEnumValue<GovernmentRefinanceType> GovernmentRefinanceType { get => _governmentRefinanceType; set => SetField(ref _governmentRefinanceType, value); }
 
         /// <summary>
@@ -1504,6 +1532,12 @@ namespace EncompassRest.Loans
         public DateTime? LoanCreatedDateUtc { get => _loanCreatedDateUtc; set => SetField(ref _loanCreatedDateUtc, value); }
 
         /// <summary>
+        /// Loan Features Other Indicator [URLA.X242]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Other\"}")]
+        public bool? LoanFeaturesOtherIndicator { get => _loanFeaturesOtherIndicator; set => SetField(ref _loanFeaturesOtherIndicator, value); }
+
+        /// <summary>
         /// Loan ID # [4063]
         /// </summary>
         public string LoanIdNumber { get => _loanIdNumber; set => SetField(ref _loanIdNumber, value); }
@@ -1624,6 +1658,11 @@ namespace EncompassRest.Loans
         /// Loan LogEntryLogs
         /// </summary>
         public IList<LogEntryLog> LogEntryLogs { get => GetField(ref _logEntryLogs); set => SetField(ref _logEntryLogs, value); }
+
+        /// <summary>
+        /// Constr Loan Info - Lot Acquired Date [URLA.X236]
+        /// </summary>
+        public DateTime? LotAcquiredDate { get => _lotAcquiredDate; set => SetField(ref _lotAcquiredDate, value); }
 
         /// <summary>
         /// Freddie Mac Loan To Value (LTV) [353]
@@ -1877,6 +1916,12 @@ namespace EncompassRest.Loans
         public StringEnumValue<NativeAmericanLandsTypeOtherDescription> NativeAmericanLandsTypeOtherDescription { get => _nativeAmericanLandsTypeOtherDescription; set => SetField(ref _nativeAmericanLandsTypeOtherDescription, value); }
 
         /// <summary>
+        /// Negative Amortization Indicator [URLA.X239]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Negative Amortization\"}")]
+        public bool? NegativeAmortization { get => _negativeAmortization; set => SetField(ref _negativeAmortization, value); }
+
+        /// <summary>
         /// Loan NetTangibleBenefit
         /// </summary>
         public NetTangibleBenefit NetTangibleBenefit { get => GetField(ref _netTangibleBenefit); set => SetField(ref _netTangibleBenefit, value); }
@@ -1939,6 +1984,11 @@ namespace EncompassRest.Loans
         /// Loan NonVols
         /// </summary>
         public IList<NonVol> NonVols { get => GetField(ref _nonVols); set => SetField(ref _nonVols, value); }
+
+        /// <summary>
+        /// Property is not located in a project Indicator [URLA.X208]
+        /// </summary>
+        public bool? NotInProjectIndicator { get => _notInProjectIndicator; set => SetField(ref _notInProjectIndicator, value); }
 
         /// <summary>
         /// Disclosure Purchase Sale or Refi [AFF.X6]
@@ -2060,24 +2110,10 @@ namespace EncompassRest.Loans
         public DateTime? OwnershipCompletedDate { get => _ownershipCompletedDate; set => SetField(ref _ownershipCompletedDate, value); }
 
         /// <summary>
-        /// Home Ownership Confirmation Indicator [URLA.X153]
+        ///  Payment Deferred for First Five Years Indicator [URLA.X209]
         /// </summary>
-        public bool? OwnershipConfirmationIndicator { get => _ownershipConfirmationIndicator; set => SetField(ref _ownershipConfirmationIndicator, value); }
-
-        /// <summary>
-        /// Ownership Format Type [URLA.X154]
-        /// </summary>
-        public StringEnumValue<OwnershipFormatType> OwnershipFormatType { get => _ownershipFormatType; set => SetField(ref _ownershipFormatType, value); }
-
-        /// <summary>
-        /// Party Role Identifier [URLA.X155]
-        /// </summary>
-        public string OwnershipPartyRoleIdentifier { get => _ownershipPartyRoleIdentifier; set => SetField(ref _ownershipPartyRoleIdentifier, value); }
-
-        /// <summary>
-        /// Party Role Identifier [URLA.X161]
-        /// </summary>
-        public string PartyRoleIdentifier { get => _partyRoleIdentifier; set => SetField(ref _partyRoleIdentifier, value); }
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Payment Deferred for First Five Years\"}")]
+        public bool? PaymentDeferredFirstFiveYears { get => _paymentDeferredFirstFiveYears; set => SetField(ref _paymentDeferredFirstFiveYears, value); }
 
         /// <summary>
         /// Payment Schedule Calculation is Required [CALCREQUIRED]
@@ -2112,9 +2148,21 @@ namespace EncompassRest.Loans
         public IList<PreliminaryConditionLog> PreliminaryConditionLogs { get => GetField(ref _preliminaryConditionLogs); set => SetField(ref _preliminaryConditionLogs, value); }
 
         /// <summary>
+        /// Prepayment Penalty / Prepayment Penalty Term Indicator [URLA.X240]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Prepayment Penalty / Prepayment Penalty Term\"}")]
+        public bool? PrepaymentPenaltyTerm { get => _prepaymentPenaltyTerm; set => SetField(ref _prepaymentPenaltyTerm, value); }
+
+        /// <summary>
         /// Loan Prequalification
         /// </summary>
         public Prequalification Prequalification { get => GetField(ref _prequalification); set => SetField(ref _prequalification, value); }
+
+        /// <summary>
+        /// Present Supplemental Property Insurance Amount [URLA.X212]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? PresentSupplementalPropertyInsuranceAmount { get => _presentSupplementalPropertyInsuranceAmount; set => SetField(ref _presentSupplementalPropertyInsuranceAmount, value); }
 
         /// <summary>
         /// Trans Details Mo Pymt (P&amp;I) [5]
@@ -2128,9 +2176,20 @@ namespace EncompassRest.Loans
         public StringEnumValue<Print2003Application> Print2003Application { get => _print2003Application; set => SetField(ref _print2003Application, value); }
 
         /// <summary>
+        /// PrintLenderPages [URLA.X231]
+        /// </summary>
+        public bool? PrintLenderPages { get => _printLenderPages; set => SetField(ref _printLenderPages, value); }
+
+        /// <summary>
         /// Loan PrintLogs
         /// </summary>
         public IList<PrintLog> PrintLogs { get => GetField(ref _printLogs); set => SetField(ref _printLogs, value); }
+
+        /// <summary>
+        /// Print both ULI / NULI and Loan Number [URLA.X238]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print both ULI / NULI and Loan Number\"}")]
+        public bool? PrintULIAndLoanNoURLA { get => _printULIAndLoanNoURLA; set => SetField(ref _printULIAndLoanNoURLA, value); }
 
         /// <summary>
         /// Print ULI on URLA [URLA.X119]
@@ -2232,6 +2291,11 @@ namespace EncompassRest.Loans
         /// Expenses Proposed Taxes [1405]
         /// </summary>
         public string ProposedRealEstateTaxesAmount { get => _proposedRealEstateTaxesAmount; set => SetField(ref _proposedRealEstateTaxesAmount, value); }
+
+        /// <summary>
+        /// Planned Unit Development Project Type Indicator [URLA.X207]
+        /// </summary>
+        public bool? PUDIndicator { get => _pUDIndicator; set => SetField(ref _pUDIndicator, value); }
 
         /// <summary>
         /// Loan PurchaseConditionLogs
@@ -2524,6 +2588,12 @@ namespace EncompassRest.Loans
         public decimal? TargetHCLTV { get => _targetHCLTV; set => SetField(ref _targetHCLTV, value); }
 
         /// <summary>
+        /// Temporary Interest Rate Buydown/Initial Buydown Rate [URLA.X241]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Temporary Interest Rate Buydown/Initial Buydown Rate\"}")]
+        public bool? TemporaryOrInitialInterestRateBuydown { get => _temporaryOrInitialInterestRateBuydown; set => SetField(ref _temporaryOrInitialInterestRateBuydown, value); }
+
+        /// <summary>
         /// TIL Application Date [3292]
         /// </summary>
         public DateTime? TilApplicationDate { get => _tilApplicationDate; set => SetField(ref _tilApplicationDate, value); }
@@ -2553,6 +2623,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? Tltv { get => _tltv; set => SetField(ref _tltv, value); }
+
+        /// <summary>
+        /// Total Additional Mortgages [URLA.X211]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalAdditionalMortgages { get => _totalAdditionalMortgages; set => SetField(ref _totalAdditionalMortgages, value); }
 
         /// <summary>
         /// Fees Total Closing Costs [TOTPCC]
@@ -2630,6 +2706,11 @@ namespace EncompassRest.Loans
         /// Loan TPO
         /// </summary>
         public TPO TPO { get => GetField(ref _tPO); set => SetField(ref _tPO, value); }
+
+        /// <summary>
+        /// Flag to indicate TPO Migration process is done [TPO_MIGRATION]
+        /// </summary>
+        public bool? TPOMigrationDone { get => _tPOMigrationDone; set => SetField(ref _tPOMigrationDone, value); }
 
         /// <summary>
         /// Loan TQL

@@ -1093,6 +1093,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Government Refinance Type [ULDD.GNM.GovRefType]
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"FullDocumentation\":\"FullDocumentation\",\"InterestRateReductionRefinanceLoan\":\"InterestRateReductionRefinanceLoan\",\"StreamlineWithAppraisal\":\"StreamlineWithAppraisal\",\"StreamlineWithoutAppraisal\":\"StreamlineWithoutAppraisal\"}")]
         public StringEnumValue<GovernmentRefinanceType> GovernmentRefinanceType { get => _governmentRefinanceType; set => SetField(ref _governmentRefinanceType, value); }
 
         /// <summary>

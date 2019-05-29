@@ -21,6 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _bonaFideDiscountPoint;
         private DirtyValue<decimal?> _bonaFideDiscountPointAmount;
         private DirtyValue<bool?> _brokerCompensationWhenRateSet;
+        private DirtyValue<decimal?> _buydownSellerPaidSec32PointsFees;
         private DirtyValue<StringEnumValue<CollateralRepandWarrReliefEligibilityType>> _collateralRepandWarrReliefEligibilityType;
         private DirtyValue<decimal?> _compensationPTBFees;
         private DirtyValue<decimal?> _creditInsPremiumFees;
@@ -289,6 +290,12 @@ namespace EncompassRest.Loans
         /// ATR QM - Qualification - Fees from 2010 Itemization - Broker Compensation when rate was set [QM.X372]
         /// </summary>
         public bool? BrokerCompensationWhenRateSet { get => _brokerCompensationWhenRateSet; set => SetField(ref _brokerCompensationWhenRateSet, value); }
+
+        /// <summary>
+        /// ATR QM - Qualification - Buydown Seller Paid Sec 32 Points and Fees [QM.X378]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? BuydownSellerPaidSec32PointsFees { get => _buydownSellerPaidSec32PointsFees; set => SetField(ref _buydownSellerPaidSec32PointsFees, value); }
 
         /// <summary>
         /// Collateral Rep and Warranty Relief Eligibility Type [AUSF.X61]
