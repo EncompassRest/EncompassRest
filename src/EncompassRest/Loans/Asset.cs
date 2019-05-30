@@ -32,6 +32,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _holderName;
         private DirtyValue<string> _holderPhone;
         private DirtyValue<string> _id;
+        private DirtyValue<bool?> _includeInAusExport;
         private DirtyValue<bool?> _isEmpty;
         private DirtyValue<bool?> _isVod;
         private DirtyValue<decimal?> _lifeInsuranceFaceValueAmount;
@@ -162,6 +163,12 @@ namespace EncompassRest.Loans
         /// Asset Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// Include In AUS/Export [DDNN52]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Include In AUS/Export\"}")]
+        public bool? IncludeInAusExport { get => _includeInAusExport; set => SetField(ref _includeInAusExport, value); }
 
         /// <summary>
         /// Asset IsEmpty

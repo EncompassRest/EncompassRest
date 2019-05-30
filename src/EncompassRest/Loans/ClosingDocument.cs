@@ -98,6 +98,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _disclosureAlternateLender;
         private DirtyValue<string> _disclosureCompanyFunction;
         private DirtyValue<string> _disclosurePlanCode;
+        private DirtyValue<DateTime?> _docOrMessageByLenderDateTime;
         private DirtyValue<string> _docReportGUID;
         private DirtyValue<DateTime?> _documentPreparationDate;
         private DirtyValue<DateTime?> _documentSigningDate;
@@ -679,6 +680,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string DisclosurePlanCode { get => _disclosurePlanCode; set => SetField(ref _disclosurePlanCode, value); }
+
+        /// <summary>
+        /// Title Closing Disclosure - Unspecified Event Occurred [CL.WF.EVNT.LENDOTHER]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? DocOrMessageByLenderDateTime { get => _docOrMessageByLenderDateTime; set => SetField(ref _docOrMessageByLenderDateTime, value); }
 
         /// <summary>
         /// REGZ Loan Info DOC Report GUID [3900]

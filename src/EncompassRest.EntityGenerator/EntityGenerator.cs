@@ -131,14 +131,19 @@ namespace EncompassRest
                 typeof(UnitType),
                 typeof(HmdaCreditScoreForDecisionMaking),
                 typeof(HmdaCreditScoringModel),
-                typeof(YNOrPartiallyExempt),
+                typeof(YNOrExempt),
                 typeof(RefinanceCashOutDeterminationType),
                 typeof(GovernmentRefinanceType),
                 typeof(ConstructionToPermanentClosingType),
                 typeof(AssetType),
                 typeof(OtherAssetType),
                 typeof(CounselingFormatType),
-                typeof(Description)
+                typeof(Description),
+                typeof(JointAssetLiabilityReportingIndicator),
+                typeof(IncreaseOrDecrease),
+                typeof(PaymentBasisType),
+                typeof(ReoPropertyUsageType),
+                typeof(AdditionalLoanLienPosition)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (var sharedEnumType in sharedEnumTypes)

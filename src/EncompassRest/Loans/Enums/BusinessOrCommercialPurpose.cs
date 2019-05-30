@@ -21,10 +21,9 @@ namespace EncompassRest.Loans.Enums
         [EnumMember(Value = "Not primarily for a business or commercial purpose")]
         NotPrimarilyForABusinessOrCommercialPurpose = 1,
         /// <summary>
-        /// 1111 Partially Exempt
+        /// 1111. Exempt
         /// </summary>
-        [Description("1111 Partially Exempt")]
-        [EnumMember(Value = "Partially Exempt")]
-        PartiallyExempt = 2
+        [Description("1111. Exempt")]
+        Exempt = 2
     }
 }

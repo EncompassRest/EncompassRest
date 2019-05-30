@@ -21,6 +21,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _externalSettingsTPOWCSiteManagement;
         private DirtyValue<bool?> _fannieMaeUCDTransfer;
         private DirtyValue<bool?> _freddieMacCAC;
+        private DirtyValue<bool?> _freddieMacLPABatch;
         private DirtyValue<bool?> _globalTabNews;
         private DirtyValue<bool?> _inputFormsShowAllFormsCheckBox;
         private DirtyValue<bool?> _instantMessenger;
@@ -163,6 +164,12 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [JsonProperty("freddie_Mac_CAC")]
         public bool? FreddieMacCAC { get => _freddieMacCAC; set => SetField(ref _freddieMacCAC, value); }
+
+        /// <summary>
+        /// MiscellaneousRights FreddieMacLPABatch
+        /// </summary>
+        [JsonProperty("freddie_Mac_LPA_Batch")]
+        public bool? FreddieMacLPABatch { get => _freddieMacLPABatch; set => SetField(ref _freddieMacLPABatch, value); }
 
         /// <summary>
         /// MiscellaneousRights GlobalTabNews

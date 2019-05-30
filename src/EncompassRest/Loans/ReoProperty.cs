@@ -17,6 +17,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _entityDeleted;
         private DirtyValue<StringEnumValue<GsePropertyType>> _gsePropertyType;
         private DirtyValue<string> _id;
+        private DirtyValue<bool?> _includeInAusExport;
         private DirtyValue<bool?> _isEmpty;
         private DirtyValue<bool?> _liabilityDoesNotApply;
         private DirtyValue<decimal?> _lienInstallmentAmount;
@@ -31,7 +32,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _printAttachIndicator;
         private DirtyValue<bool?> _printUserJobTitleIndicator;
         private DirtyValue<bool?> _printUserNameIndicator;
-        private DirtyValue<StringEnumValue<PropertyUsageType>> _propertyUsageType;
+        private DirtyValue<StringEnumValue<ReoPropertyUsageType>> _propertyUsageType;
         private DirtyValue<int?> _purchasePrice;
         private DirtyValue<decimal?> _rentalIncomeGrossAmount;
         private DirtyValue<decimal?> _rentalIncomeNetAmount;
@@ -48,6 +49,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _unitNumber;
         private DirtyValue<StringEnumValue<UnitType>> _unitType;
         private DirtyValue<string> _uRLA2020StreetAddress;
+        private DirtyValue<string> _yearBuilt;
 
         /// <summary>
         /// Mortgage Property Date Acquired [FMNN22]
@@ -83,6 +85,12 @@ namespace EncompassRest.Loans
         /// ReoProperty Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// Include In AUS/Export [FMNN52]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Include In AUS/Export\"}")]
+        public bool? IncludeInAusExport { get => _includeInAusExport; set => SetField(ref _includeInAusExport, value); }
 
         /// <summary>
         /// ReoProperty IsEmpty
@@ -167,8 +175,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Use of Property [FMNN41]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"PrimaryResidence\":\"Primary Residence\",\"SecondHome\":\"Second Home\",\"Investor\":\"Investment Property\"}")]
-        public StringEnumValue<PropertyUsageType> PropertyUsageType { get => _propertyUsageType; set => SetField(ref _propertyUsageType, value); }
+        public StringEnumValue<ReoPropertyUsageType> PropertyUsageType { get => _propertyUsageType; set => SetField(ref _propertyUsageType, value); }
 
         /// <summary>
         /// Mortgage Property Purchase Price [FMNN23]
@@ -254,5 +261,10 @@ namespace EncompassRest.Loans
         /// Mortgage Property URLA 2020 Street Address [FMNN50]
         /// </summary>
         public string URLA2020StreetAddress { get => _uRLA2020StreetAddress; set => SetField(ref _uRLA2020StreetAddress, value); }
+
+        /// <summary>
+        /// Mortgage Property Year in Which Built [FMNN53]
+        /// </summary>
+        public string YearBuilt { get => _yearBuilt; set => SetField(ref _yearBuilt, value); }
     }
 }

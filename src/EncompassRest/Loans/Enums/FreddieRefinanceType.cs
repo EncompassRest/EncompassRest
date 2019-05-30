@@ -36,6 +36,11 @@ namespace EncompassRest.Loans.Enums
         /// Texas Equity
         /// </summary>
         [EnumMember(Value = "Texas Equity")]
-        TexasEquity = 5
+        TexasEquity = 5,
+        /// <summary>
+        /// Enhanced Relief Refinance
+        /// </summary>
+        [EnumMember(Value = "Enhanced Relief Refinance")]
+        EnhancedReliefRefinance = 6
     }
 }

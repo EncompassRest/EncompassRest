@@ -290,6 +290,181 @@
     "Description": "Vesting Party - Vesting Type #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].AccountType",
+    "FieldId": "URLARAL{0:00}16",
+    "Description": "Additional Loans AccountType"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].AdditionalLoanRequestDate",
+    "FieldId": "URLARAL{0:00}98",
+    "Description": "Additional Loans Request Date"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].AffordableLoan",
+    "FieldId": "URLARAL{0:00}24",
+    "Description": "Additional Loans  Affordable Loan Indicator"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].AltId",
+    "FieldId": "URLARAL{0:00}99",
+    "Description": "Additional Loans ID"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].AmountAppliedToDownpayment",
+    "FieldId": "URLARAL{0:00}22",
+    "Description": "Additional Loans Amount Applied To Downpayment"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].Attention",
+    "FieldId": "URLARAL{0:00}03",
+    "Description": "Depository Attention Contact"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].BorrowerType",
+    "FieldId": "URLARAL{0:00}01",
+    "Description": "Additional Loans Borrower Type"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].HELOCCreditLimitAmount",
+    "FieldId": "URLARAL{0:00}20",
+    "Description": "Additional Loans : Loan Amount/HELOC Credit Limit"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].HELOCInitialDraw",
+    "FieldId": "URLARAL{0:00}21",
+    "Description": "Additional Loans HELOC Initial Draw"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].HolderAddressCity",
+    "FieldId": "URLARAL{0:00}05",
+    "Description": "Depository Attention City"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].HolderAddressPostalCode",
+    "FieldId": "URLARAL{0:00}07",
+    "Description": "Depository Attention Zipcode"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].HolderAddressState",
+    "FieldId": "URLARAL{0:00}06",
+    "Description": "Depository Attention State"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].HolderAddressStreetLine1",
+    "FieldId": "URLARAL{0:00}04",
+    "Description": "Depository Address"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].HolderEmail",
+    "FieldId": "URLARAL{0:00}10",
+    "Description": "Depository Email"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].HolderFax",
+    "FieldId": "URLARAL{0:00}09",
+    "Description": "Depository Fax"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].HolderName",
+    "FieldId": "URLARAL{0:00}02",
+    "Description": "Depository Name"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].HolderPhone",
+    "FieldId": "URLARAL{0:00}08",
+    "Description": "Depository Phone"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].IndividualCreditorIndicator",
+    "FieldId": "URLARAL{0:00}32",
+    "Description": "Creditor is an individual Indicator"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].LienPosition",
+    "FieldId": "URLARAL{0:00}17",
+    "Description": "Additional Loans Lien Position"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].LinkedPiggybackIndicator",
+    "FieldId": "URLARAL{0:00}25",
+    "Description": "Additional Loans Linked Piggyback Indicator"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].MaximumPILoanAmount",
+    "FieldId": "URLARAL{0:00}31",
+    "Description": "Additional Loans MaximumPILoanAmount"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].MaximumPINoteRate",
+    "FieldId": "URLARAL{0:00}29",
+    "Description": "Additional Loans : MaximumPINoteRate"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].MaximumPITerm",
+    "FieldId": "URLARAL{0:00}30",
+    "Description": "Additional Loans MaximumPITerm"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].MaximumPrincipalAndInterestIn5Years",
+    "FieldId": "URLARAL{0:00}19",
+    "Description": "Additional Loans Maximum Principal and Interest within 5 Years"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].MonthlyPILoanAmount",
+    "FieldId": "URLARAL{0:00}28",
+    "Description": "Additional Loans MonthlyPILoanAmount"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].MonthlyPINoteRate",
+    "FieldId": "URLARAL{0:00}26",
+    "Description": "Additional Loans calculator : MonthlyPINoteRate"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].MonthlyPITerm",
+    "FieldId": "URLARAL{0:00}27",
+    "Description": "Additional Loans MonthlyPITerm"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].MonthlyPrincipalAndInterest",
+    "FieldId": "URLARAL{0:00}18",
+    "Description": "Additional Loans Monthly Principal and Interest"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].PaymentDeferredFirstFiveYears",
+    "FieldId": "URLARAL{0:00}23",
+    "Description": "Additional Loans Payment Deferred First Five Years"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].PrintAttachmentIndicator",
+    "FieldId": "URLARAL{0:00}15",
+    "Description": "Depository Print - See Attached Authorization"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].PrintUserJobTitleIndicator",
+    "FieldId": "URLARAL{0:00}64",
+    "Description": "Depository Print User Job Title"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].PrintUserNameIndicator",
+    "FieldId": "URLARAL{0:00}12",
+    "Description": "Depository Print User Name as Title"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].Title",
+    "FieldId": "URLARAL{0:00}11",
+    "Description": "Depository From Title"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].TitleFax",
+    "FieldId": "URLARAL{0:00}14",
+    "Description": "Depository From Fax"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].TitlePhone",
+    "FieldId": "URLARAL{0:00}13",
+    "Description": "Depository From Phone"
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].AltId",
     "FieldId": "DD{0:00}35",
     "Description": "Depository Request ID #{0}"
@@ -348,6 +523,11 @@
     "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderPhone",
     "FieldId": "DD{0:00}26",
     "Description": "Depository Phone #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].IncludeInAusExport",
+    "FieldId": "DD{0:00}52",
+    "Description": "Include In AUS/Export"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].NoLinkToDocTrackIndicator",
@@ -630,6 +810,11 @@
     "Description": "Borr Employer Business Phone #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].ClothingAllowance",
+    "FieldId": "BE{0:00}69",
+    "Description": null
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].CommissionsAmount",
     "FieldId": "BE{0:00}22",
     "Description": "Borr Employer Commissions #{0}"
@@ -660,6 +845,16 @@
     "Description": "Borr Employer Name #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].EmploymentMonthlyIncomeAmount",
+    "FieldId": "BE{0:00}56",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].EmploymentStartDate",
+    "FieldId": "BE{0:00}51",
+    "Description": null
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].EndDate",
     "FieldId": "BE{0:00}14",
     "Description": "Borr Employer Date Terminated #{0}"
@@ -670,6 +865,56 @@
     "Description": "Borr Employer Fax #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].ForeignIncome",
+    "FieldId": "BE{0:00}75",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].IndividualEmployer",
+    "FieldId": "BE{0:00}62",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].JobTermMonths",
+    "FieldId": "BE{0:00}52",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].MilitaryCombatPay",
+    "FieldId": "BE{0:00}77",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].MilitaryEmployer",
+    "FieldId": "BE{0:00}63",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].MilitaryEntitlement",
+    "FieldId": "BE{0:00}53",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].MilitaryFlightPay",
+    "FieldId": "BE{0:00}65",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].MilitaryHazardPay",
+    "FieldId": "BE{0:00}66",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].MilitaryOverseasPay",
+    "FieldId": "BE{0:00}67",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].MilitaryPropPay",
+    "FieldId": "BE{0:00}68",
+    "Description": null
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].MonthlyIncomeAmount",
     "FieldId": "BE{0:00}12",
     "Description": "Borr Employer Total Monthly Income #{0}"
@@ -678,6 +923,11 @@
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].NoLinkToDocTrackIndicator",
     "FieldId": "BE{0:00}97",
     "Description": "Borr Employer No Link to Doc Tracking #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].OtherAllowanceDescription",
+    "FieldId": "BE{0:00}74",
+    "Description": null
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].OtherAmount",
@@ -693,6 +943,11 @@
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].Owner",
     "FieldId": "BE{0:00}08",
     "Description": "Borr Employer Verif is For Borrower #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].OwnershipInterestType",
+    "FieldId": "BE{0:00}55",
+    "Description": null
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].PhoneNumber",
@@ -720,9 +975,29 @@
     "Description": "Borr Employer Print User Name as Title #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].QuartersAllowance",
+    "FieldId": "BE{0:00}72",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].RationsAllowance",
+    "FieldId": "BE{0:00}70",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].SeasonalIncome",
+    "FieldId": "BE{0:00}76",
+    "Description": null
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].SelfEmployedIndicator",
     "FieldId": "BE{0:00}15",
     "Description": "Borr Self Employed #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].SpecialEmployerRelationshipIndicator",
+    "FieldId": "BE{0:00}54",
+    "Description": null
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].StartDate",
@@ -772,6 +1047,11 @@
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].URLA2020StreetAddress",
     "FieldId": "BE{0:00}60",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].VariableHousingAllowance",
+    "FieldId": "BE{0:00}71",
     "Description": null
   },
   {
@@ -915,6 +1195,11 @@
     "Description": "Co-Borr Employer Business Phone #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].ClothingAllowance",
+    "FieldId": "CE{0:00}69",
+    "Description": null
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].CommissionsAmount",
     "FieldId": "CE{0:00}22",
     "Description": "Co-Borr Employer Commissions #{0}"
@@ -945,6 +1230,16 @@
     "Description": "Co-Borr Employer Name #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].EmploymentMonthlyIncomeAmount",
+    "FieldId": "CE{0:00}56",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].EmploymentStartDate",
+    "FieldId": "CE{0:00}51",
+    "Description": null
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].EndDate",
     "FieldId": "CE{0:00}14",
     "Description": "Co-Borr Employer Date Terminated #{0}"
@@ -955,6 +1250,56 @@
     "Description": "Co-Borr Employer Fax #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].ForeignIncome",
+    "FieldId": "CE{0:00}75",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].IndividualEmployer",
+    "FieldId": "CE{0:00}62",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].JobTermMonths",
+    "FieldId": "CE{0:00}52",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].MilitaryCombatPay",
+    "FieldId": "CE{0:00}77",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].MilitaryEmployer",
+    "FieldId": "CE{0:00}63",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].MilitaryEntitlement",
+    "FieldId": "CE{0:00}53",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].MilitaryFlightPay",
+    "FieldId": "CE{0:00}65",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].MilitaryHazardPay",
+    "FieldId": "CE{0:00}66",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].MilitaryOverseasPay",
+    "FieldId": "CE{0:00}67",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].MilitaryPropPay",
+    "FieldId": "CE{0:00}68",
+    "Description": null
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].MonthlyIncomeAmount",
     "FieldId": "CE{0:00}12",
     "Description": "Co-Borr Employer Total Monthly Income #{0}"
@@ -963,6 +1308,11 @@
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].NoLinkToDocTrackIndicator",
     "FieldId": "CE{0:00}97",
     "Description": "Co-Borr Employer No Link to Doc Tracking #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].OtherAllowanceDescription",
+    "FieldId": "CE{0:00}74",
+    "Description": null
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].OtherAmount",
@@ -978,6 +1328,11 @@
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].Owner",
     "FieldId": "CE{0:00}08",
     "Description": "Co-Borr Employer Verif is For Co-borrower #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].OwnershipInterestType",
+    "FieldId": "CE{0:00}55",
+    "Description": null
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].PhoneNumber",
@@ -1005,9 +1360,29 @@
     "Description": "Co-Borr Employer Print User Name as Title #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].QuartersAllowance",
+    "FieldId": "CE{0:00}72",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].RationsAllowance",
+    "FieldId": "CE{0:00}70",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].SeasonalIncome",
+    "FieldId": "CE{0:00}76",
+    "Description": null
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].SelfEmployedIndicator",
     "FieldId": "CE{0:00}15",
     "Description": "Co-Borr Self Employed #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].SpecialEmployerRelationshipIndicator",
+    "FieldId": "CE{0:00}54",
+    "Description": null
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].StartDate",
@@ -1057,6 +1432,11 @@
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].URLA2020StreetAddress",
     "FieldId": "CE{0:00}60",
+    "Description": null
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].VariableHousingAllowance",
+    "FieldId": "CE{0:00}71",
     "Description": null
   },
   {
@@ -1265,6 +1645,11 @@
     "Description": "Liability Creditor Phone #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].IncludeTaxesAndInsuranceIndicator",
+    "FieldId": "FL{0:00}66",
+    "Description": "Payment includes Taxes and Insurance"
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].IsDebtNotSecuredToSubjectPropertyIndicator",
     "FieldId": "FL{0:00}61",
     "Description": "Liability Debt is NOT secured to Subject Property #{0}"
@@ -1373,6 +1758,11 @@
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].NoLinkToDocTrackIndicator",
     "FieldId": "FL{0:00}97",
     "Description": "Liability No Link to Doc Tracking #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].OtherDescription",
+    "FieldId": "FL{0:00}65",
+    "Description": "Other Account Type Description"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].Owner",
@@ -1755,6 +2145,11 @@
     "Description": "Other Liabilities Monthly Paymen"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].MonthsLeft",
+    "FieldId": "URLAROL{0:00}19",
+    "Description": "Months Left"
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].OtherDescription",
     "FieldId": "URLAROL{0:00}04",
     "Description": "Other Liabilities Other Description"
@@ -1813,6 +2208,11 @@
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].GsePropertyType",
     "FieldId": "FM{0:00}18",
     "Description": "Mortgage Property Type #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].IncludeInAusExport",
+    "FieldId": "FM{0:00}52",
+    "Description": "Include In AUS/Export"
   },
   {
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].LiabilityDoesNotApply",
@@ -1958,6 +2358,11 @@
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].URLA2020StreetAddress",
     "FieldId": "FM{0:00}50",
     "Description": "Mortgage Property URLA 2020 Street Address"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].YearBuilt",
+    "FieldId": "FM{0:00}53",
+    "Description": "Mortgage Property Year in Which Built"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'Borrower' && MailingAddressIndicator == 'false')][{0}].AccountName",
@@ -4328,6 +4733,16 @@
     "ModelPath": "Loan.TQL.GSETrackers[{0}].GSECloseByDate",
     "FieldId": "TQLGSE{0:00}03",
     "Description": "GSE Rep and Warrant Tracker - GSE Close By Date"
+  },
+  {
+    "ModelPath": "Loan.TQL.GSETrackers[{0}].GSECloseByDate2",
+    "FieldId": "TQLGSE{0:00}04",
+    "Description": "GSE Rep and Warrant Tracker - GSE Close By Date 2"
+  },
+  {
+    "ModelPath": "Loan.TQL.GSETrackers[{0}].RecordTypeID",
+    "FieldId": "TQLGSE{0:00}98",
+    "Description": "GSE Rep and Warrant Tracker - Record Type ID"
   },
   {
     "ModelPath": "Loan.TQL.TQLComplianceAlerts[{0}].LastComplianceOrderAlertCategories",

@@ -26,6 +26,11 @@ namespace EncompassRest.Loans.Enums
         /// High LTV Refi
         /// </summary>
         [EnumMember(Value = "High LTV Refi")]
-        HighLTVRefi = 3
+        HighLTVRefi = 3,
+        /// <summary>
+        /// Texas Equity
+        /// </summary>
+        [EnumMember(Value = "Texas Equity")]
+        TexasEquity = 4
     }
 }

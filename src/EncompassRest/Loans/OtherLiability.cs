@@ -27,6 +27,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _id;
         private DirtyValue<StringEnumValue<LiabilityOrExpenseType>> _liabilityOrExpenseType;
         private DirtyValue<decimal?> _monthlyPayment;
+        private DirtyValue<int?> _monthsLeft;
         private DirtyValue<string> _otherDescription;
         private DirtyValue<bool?> _printAttachmentIndicator;
         private DirtyValue<bool?> _printUserJobTitleIndicator;
@@ -124,6 +125,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }
+
+        /// <summary>
+        /// Months Left [URLAROLNN19]
+        /// </summary>
+        public int? MonthsLeft { get => _monthsLeft; set => SetField(ref _monthsLeft, value); }
 
         /// <summary>
         /// Other Liabilities Other Description [URLAROLNN04]

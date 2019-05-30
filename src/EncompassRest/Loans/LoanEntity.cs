@@ -844,6 +844,10 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PurchaseConditionLog
         /// </summary>
-        PurchaseConditionLog = 211
+        PurchaseConditionLog = 211,
+        /// <summary>
+        /// AdditionalLoan
+        /// </summary>
+        AdditionalLoan = 212
     }
 }

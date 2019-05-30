@@ -9,11 +9,10 @@ namespace EncompassRest.Loans.Enums
     public enum HmdaCreditScoreForDecisionMaking
     {
         /// <summary>
-        /// 1111 Partially Exempt
+        /// 1111. Exempt
         /// </summary>
-        [Description("1111 Partially Exempt")]
-        [EnumMember(Value = "Partially Exempt")]
-        PartiallyExempt = 1111,
+        [Description("1111. Exempt")]
+        Exempt = 1111,
         /// <summary>
         /// 7777. Credit score is not a number
         /// </summary>

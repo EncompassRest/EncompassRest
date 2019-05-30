@@ -109,6 +109,36 @@ namespace EncompassRest.Loans.Enums
         /// VA Benefits NonEducational
         /// </summary>
         [Description("VA Benefits NonEducational")]
-        VABenefitsNonEducational = 21
+        VABenefitsNonEducational = 21,
+        /// <summary>
+        /// Accessory Unit Income
+        /// </summary>
+        [Description("Accessory Unit Income")]
+        AccessoryUnitIncome = 22,
+        /// <summary>
+        /// Employment Related Account
+        /// </summary>
+        [Description("Employment Related Account")]
+        EmploymentRelatedAccount = 23,
+        /// <summary>
+        /// Housing Choice Voucher Program
+        /// </summary>
+        [Description("Housing Choice Voucher Program")]
+        HousingChoiceVoucherProgram = 24,
+        /// <summary>
+        /// Non Borrower Household Income
+        /// </summary>
+        [Description("Non Borrower Household Income")]
+        NonBorrowerHouseholdIncome = 25,
+        /// <summary>
+        /// Temporary Leave
+        /// </summary>
+        [Description("Temporary Leave")]
+        TemporaryLeave = 26,
+        /// <summary>
+        /// Tip Income
+        /// </summary>
+        [Description("Tip Income")]
+        TipIncome = 27
     }
 }

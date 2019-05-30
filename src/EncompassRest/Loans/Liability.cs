@@ -32,6 +32,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _holderName;
         private DirtyValue<string> _holderPhone;
         private DirtyValue<string> _id;
+        private DirtyValue<bool?> _includeTaxesAndInsuranceIndicator;
         private DirtyValue<bool?> _isDebtNotSecuredToSubjectPropertyIndicator;
         private DirtyValue<int?> _lates12Month120Day;
         private DirtyValue<int?> _lates12Month150Day;
@@ -55,6 +56,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<LiabilityMortgageType>> _mortgageType;
         private DirtyValue<string> _nameInAccount;
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
+        private DirtyValue<string> _otherDescription;
         private DirtyValue<StringEnumValue<Owner>> _owner;
         private DirtyValue<bool?> _payoffIncludedIndicator;
         private DirtyValue<bool?> _payoffStatusIndicator;
@@ -193,6 +195,12 @@ namespace EncompassRest.Loans
         public string Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
+        /// Payment includes Taxes and Insurance [FLNN66]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"Payment includes Taxes and Insurance\"}")]
+        public bool? IncludeTaxesAndInsuranceIndicator { get => _includeTaxesAndInsuranceIndicator; set => SetField(ref _includeTaxesAndInsuranceIndicator, value); }
+
+        /// <summary>
         /// Liability Debt is NOT secured to Subject Property [FLNN61]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"true\":\"This Debt is NOT secured to Subject Property?\"}")]
@@ -309,6 +317,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => SetField(ref _noLinkToDocTrackIndicator, value); }
+
+        /// <summary>
+        /// Other Account Type Description [FLNN65]
+        /// </summary>
+        public string OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
 
         /// <summary>
         /// Liability Verif is For [FLNN15]

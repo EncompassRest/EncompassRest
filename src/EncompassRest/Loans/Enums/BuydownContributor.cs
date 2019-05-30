@@ -40,6 +40,10 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// Employer
         /// </summary>
-        Employer = 7
+        Employer = 7,
+        /// <summary>
+        /// Lender
+        /// </summary>
+        Lender = 8
     }
 }

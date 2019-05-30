@@ -12,6 +12,7 @@ namespace EncompassRest.Company.Users.Rights
         private SettingsReportRights _settingsReport;
         private DirtyValue<bool?> _systemAuditTrail;
         private DirtyValue<bool?> _unlockLoanFile;
+        private DirtyValue<bool?> _unlockTrade;
 
         /// <summary>
         /// SystemAdministrationRights AllUserInformation
@@ -47,5 +48,10 @@ namespace EncompassRest.Company.Users.Rights
         /// SystemAdministrationRights UnlockLoanFile
         /// </summary>
         public bool? UnlockLoanFile { get => _unlockLoanFile; set => SetField(ref _unlockLoanFile, value); }
+
+        /// <summary>
+        /// SystemAdministrationRights UnlockTrade
+        /// </summary>
+        public bool? UnlockTrade { get => _unlockTrade; set => SetField(ref _unlockTrade, value); }
     }
 }

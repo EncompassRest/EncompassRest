@@ -48,6 +48,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _helocInitialFractionBalancedividend;
         private DirtyValue<int?> _helocInitialFractionBalancedivisor;
         private DirtyValue<StringEnumValue<HelocPaymentBasis>> _helocInitialPaymentBasis;
+        private DirtyValue<StringEnumValue<PaymentBasisType>> _helocInitialPaymentBasisType;
         private DirtyValue<decimal?> _helocInitialPercent;
         private DirtyValue<decimal?> _helocInitialPercentageofBalance;
         private DirtyValue<bool?> _helocInitialPI;
@@ -59,6 +60,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _helocNewFinancingNotLinkedCreditLimit;
         private DirtyValue<decimal?> _helocNewFinancingNotLinkedDrawAmount;
         private DirtyValue<StringEnumValue<HelocPaymentBasis>> _helocPaymentBasis;
+        private DirtyValue<StringEnumValue<PaymentBasisType>> _helocPaymentBasisType;
         private DirtyValue<decimal?> _helocPercent;
         private DirtyValue<decimal?> _helocPercentageofBalance;
         private DirtyValue<string> _helocPeriodTemplateName;
@@ -349,6 +351,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<HelocPaymentBasis> HelocInitialPaymentBasis { get => _helocInitialPaymentBasis; set => SetField(ref _helocInitialPaymentBasis, value); }
 
         /// <summary>
+        /// HELOC Initial Payment Basis Type [4530]
+        /// </summary>
+        public StringEnumValue<PaymentBasisType> HelocInitialPaymentBasisType { get => _helocInitialPaymentBasisType; set => SetField(ref _helocInitialPaymentBasisType, value); }
+
+        /// <summary>
         /// HELOC Initial Percent [4478]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
@@ -408,6 +415,11 @@ namespace EncompassRest.Loans
         /// HELOC Payment Basis [4464]
         /// </summary>
         public StringEnumValue<HelocPaymentBasis> HelocPaymentBasis { get => _helocPaymentBasis; set => SetField(ref _helocPaymentBasis, value); }
+
+        /// <summary>
+        /// HELOC Payment Basis Type [4531]
+        /// </summary>
+        public StringEnumValue<PaymentBasisType> HelocPaymentBasisType { get => _helocPaymentBasisType; set => SetField(ref _helocPaymentBasisType, value); }
 
         /// <summary>
         /// HELOC Percent [4467]
