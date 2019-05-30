@@ -22,10 +22,10 @@ namespace EncompassRest.Tests
         /// Do not dispose of this object as it is reused on tests
         /// </summary>
         /// <returns></returns>
-        public static async Task<EncompassRestClient> GetTestClientAsync()
+        public static async Task<EncompassRestClient> GetTestClientAsync(Action<ClientParameters> parametersInitializer = null)
         {
             var client = s_testClient;
-            if (client == null)
+            if (client == null || parametersInitializer != null)
             {
                 const string testClientCredentialsFile = "C:\\EncompassRestTestClientCredentials.json"; // Never include this file in source control
                 if (File.Exists(testClientCredentialsFile))
@@ -38,12 +38,20 @@ namespace EncompassRest.Tests
                             credentials = JsonHelper.FromJson<TestClientCredentials>(sr);
                         }
                     }
-                    client = await EncompassRestClient.CreateAsync(credentials.Parameters, tc => tc.FromUserCredentialsAsync(credentials.InstanceId, credentials.UserId, credentials.Password));
+                    var effectiveParameters = credentials.Parameters;
+                    if (parametersInitializer != null)
+                    {
+                        effectiveParameters = JsonHelper.DefaultPublicSerializer.Clone(effectiveParameters);
+                        parametersInitializer(effectiveParameters);
+                    }
+                    client = await EncompassRestClient.CreateAsync(effectiveParameters, tc => tc.FromUserCredentialsAsync(credentials.InstanceId, credentials.UserId, credentials.Password));
                     Console.WriteLine("Using test client credentials file");
                 }
                 else
                 {
-                    client = new EncompassRestClient(new ClientParameters("ApiClientId", "ApiClientSecret"));
+                    var parameters = new ClientParameters("ApiClientId", "ApiClientSecret");
+                    parametersInitializer?.Invoke(parameters);
+                    client = new EncompassRestClient(parameters);
                     var accessToken = client.AccessToken;
                     accessToken.Token = "Token";
                     var httpClient = client.HttpClient;
@@ -52,9 +60,13 @@ namespace EncompassRest.Tests
                     defaultRequestHeaders.Clear();
                     defaultRequestHeaders.Add("x-api-key", "9JsmcmHyzJuokoWeJJ8HGiRgS5GR8cSKVswz");
                     defaultRequestHeaders.Add("origin", string.Empty);
+                    await parameters.TryInitializeAsync(client, client.CommonCache, CancellationToken.None);
                     Console.WriteLine("Using Encompass Developer Connect Try It endpoint");
                 }
-                client = Interlocked.CompareExchange(ref s_testClient, client, null) ?? client;
+                if (parametersInitializer == null)
+                {
+                    client = Interlocked.CompareExchange(ref s_testClient, client, null) ?? client;
+                }
             }
             return client;
         }

@@ -1882,5 +1882,45 @@ namespace EncompassRest.Tests
                 }
             }
         }
+
+        [TestMethod]
+        [ApiTest]
+        public async Task Loan_UndefinedCustomFieldsError()
+        {
+            using (var client = await GetTestClientAsync(p => p.UndefinedCustomFieldHandling = UndefinedCustomFieldHandling.Error))
+            {
+                Assert.ThrowsException<ArgumentException>(() => client.Loans.FieldDescriptors["CX.ABC"]);
+                Assert.ThrowsException<ArgumentException>(() => new Loan(client).Fields["CX.123"]);
+            }
+        }
+
+        [TestMethod]
+        [ApiTest]
+        public async Task Loan_UndefinedCustomFieldsErrorIfCustomFieldsInitialized()
+        {
+            using (var client = await GetTestClientAsync(p =>
+                {
+                    p.UndefinedCustomFieldHandling = UndefinedCustomFieldHandling.ErrorIfCustomFieldsInitialized;
+                    p.CustomFieldsCacheInitialization = CacheInitialization.IfNotAlready;
+                }))
+            {
+                Assert.ThrowsException<ArgumentException>(() => client.Loans.FieldDescriptors["CX.ABC"]);
+                Assert.ThrowsException<ArgumentException>(() => new Loan(client).Fields["CX.123"]);
+            }
+        }
+
+        [TestMethod]
+        [ApiTest]
+        public async Task Loan_UndefinedCustomFieldsSucceedsIfCustomFieldsArentInitialized()
+        {
+            using (var client = await GetTestClientAsync(p =>
+                {
+                    p.UndefinedCustomFieldHandling = UndefinedCustomFieldHandling.ErrorIfCustomFieldsInitialized;
+                }))
+            {
+                Assert.IsNotNull(client.Loans.FieldDescriptors["CX.ABC"]);
+                Assert.IsNotNull(new Loan(client).Fields["CX.123"]);
+            }
+        }
     }
 }

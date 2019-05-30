@@ -202,6 +202,11 @@ namespace EncompassRest
         public event EventHandler<TimeoutRetryEventArgs> TimeoutRetry;
 
         /// <summary>
+        /// Specifies how the client should handle undefined custom fields.
+        /// </summary>
+        public UndefinedCustomFieldHandling UndefinedCustomFieldHandling { get; set; }
+
+        /// <summary>
         /// The Loans Apis.
         /// </summary>
         public Loans.Loans Loans
@@ -475,6 +480,7 @@ namespace EncompassRest
             _tokenInitializer = tokenInitializer;
             ApiResponse = parameters.ApiResponse;
             CommonCache = parameters.CommonCache ?? (parameters.CommonCache = new CommonCache());
+            UndefinedCustomFieldHandling = parameters.UndefinedCustomFieldHandling;
         }
 
         /// <summary>

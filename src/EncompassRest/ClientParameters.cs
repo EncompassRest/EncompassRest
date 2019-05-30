@@ -66,6 +66,11 @@ namespace EncompassRest
         public EventHandler<ApiResponseEventArgs> ApiResponse { get; set; }
 
         /// <summary>
+        /// Specifies how the client should handle undefined custom fields.
+        /// </summary>
+        public UndefinedCustomFieldHandling UndefinedCustomFieldHandling { get; set; }
+
+        /// <summary>
         /// The client parameters constructor.
         /// </summary>
         /// <param name="apiClientId">The Api Client Id.</param>

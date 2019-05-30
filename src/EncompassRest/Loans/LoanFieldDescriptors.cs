@@ -554,11 +554,11 @@ namespace EncompassRest.Loans
             return null;
         }
 
-        internal static FieldDescriptor GetFieldDescriptor(string fieldId, IDictionary<string, FieldDescriptor> customFields)
+        internal static FieldDescriptor GetFieldDescriptor(string fieldId, IDictionary<string, FieldDescriptor> customFields, UndefinedCustomFieldHandling undefinedCustomFieldHandling)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            if (!FieldMappings.TryGetDescriptor(fieldId, out var descriptor) && customFields?.TryGetValue(fieldId, out descriptor) != true && !FieldPatternMappings.TryGetDescriptorForFieldId(fieldId, out descriptor))
+            if (!FieldMappings.TryGetDescriptor(fieldId, out var descriptor) && customFields?.TryGetValue(fieldId, out descriptor) != true && (!FieldPatternMappings.TryGetDescriptorForFieldId(fieldId, out descriptor) || (descriptor.Type == LoanFieldType.Custom && (undefinedCustomFieldHandling == UndefinedCustomFieldHandling.Error || (undefinedCustomFieldHandling == UndefinedCustomFieldHandling.ErrorIfCustomFieldsInitialized && (customFields?.Count ?? 0) != 0)))))
             {
                 throw new ArgumentException($"Could not find field '{fieldId}'");
             }
@@ -570,7 +570,7 @@ namespace EncompassRest.Loans
         /// </summary>
         /// <param name="fieldId">The field id of the field descriptor to get.</param>
         /// <returns></returns>
-        public FieldDescriptor this[string fieldId] => GetFieldDescriptor(fieldId, CustomFields);
+        public FieldDescriptor this[string fieldId] => GetFieldDescriptor(fieldId, CustomFields, Client.UndefinedCustomFieldHandling);
 
         /// <summary>
         /// The custom fields cache. To retrieve the Standard and Virtual fields use the static properties <see cref="StandardFields"/> and <see cref="VirtualFields"/> respectively.
