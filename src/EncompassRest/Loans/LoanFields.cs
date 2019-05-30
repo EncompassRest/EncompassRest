@@ -47,7 +47,7 @@ namespace EncompassRest.Loans
 
                     var strippedFieldId = fieldId.Substring(0, fieldId.Length - 2);
 
-                    descriptor = LoanFieldDescriptors.GetFieldDescriptor(strippedFieldId, _loan.Client?.Loans.FieldDescriptors.CustomFields);
+                    descriptor = LoanFieldDescriptors.GetFieldDescriptor(strippedFieldId, _loan.Client?.Loans.FieldDescriptors.CustomFields, UndefinedCustomFieldHandling.Default);
                     
                     if (!descriptor.IsBorrowerPairSpecific)
                     {
@@ -58,7 +58,7 @@ namespace EncompassRest.Loans
                 }
                 else
                 {
-                    descriptor = LoanFieldDescriptors.GetFieldDescriptor(fieldId, _loan.Client?.Loans.FieldDescriptors.CustomFields);
+                    descriptor = LoanFieldDescriptors.GetFieldDescriptor(fieldId, _loan.Client?.Loans.FieldDescriptors.CustomFields, _loan.Client?.UndefinedCustomFieldHandling ?? UndefinedCustomFieldHandling.Default);
                 }
 
                 switch (descriptor.Type)
