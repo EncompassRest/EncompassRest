@@ -169,13 +169,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Employment CurrentEmploymentIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Current\",\"false\":\"Prior\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Current\",\"N\":\"Prior\"}")]
         public bool? CurrentEmploymentIndicator { get => _currentEmploymentIndicator; set => SetField(ref _currentEmploymentIndicator, value); }
 
         /// <summary>
         /// Employment DoesNotApply
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does Not Apply\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
         public bool? DoesNotApply { get => _doesNotApply; set => SetField(ref _doesNotApply, value); }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Employment ForeignIncome
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Foreign Income\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Foreign Income\"}")]
         public bool? ForeignIncome { get => _foreignIncome; set => SetField(ref _foreignIncome, value); }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Employment IndividualEmployer
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Employer is an Individual\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Employer is an Individual\"}")]
         public bool? IndividualEmployer { get => _individualEmployer; set => SetField(ref _individualEmployer, value); }
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Employment MilitaryEmployer
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Employer is Military\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Employer is Military\"}")]
         public bool? MilitaryEmployer { get => _militaryEmployer; set => SetField(ref _militaryEmployer, value); }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Employment SeasonalIncome
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Seasonal Income\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Seasonal Income\"}")]
         public bool? SeasonalIncome { get => _seasonalIncome; set => SetField(ref _seasonalIncome, value); }
 
         /// <summary>
@@ -375,7 +375,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Employment SpecialEmployerRelationshipIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"I am employed by a family member, property seller, real estate agent, or other party to the transaction\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"I am employed by a family member, property seller, real estate agent, or other party to the transaction\"}")]
         public bool? SpecialEmployerRelationshipIndicator { get => _specialEmployerRelationshipIndicator; set => SetField(ref _specialEmployerRelationshipIndicator, value); }
 
         /// <summary>

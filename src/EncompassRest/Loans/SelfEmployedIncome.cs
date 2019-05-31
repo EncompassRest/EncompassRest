@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SelfEmployedIncome BoolFieldValue
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Who have 25% or greater interest in a business\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Who have 25% or greater interest in a business\"}")]
         public bool? BoolFieldValue { get => _boolFieldValue; set => SetField(ref _boolFieldValue, value); }
 
         /// <summary>

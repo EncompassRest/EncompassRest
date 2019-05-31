@@ -507,6 +507,15 @@ namespace EncompassRest.Tests
                                     Assert.AreEqual(i, field.ToInt32(), fieldId);
                                     break;
                                 case LoanFieldValueType.Boolean:
+                                    if (field.Descriptor.Options.Count > 0 && (field.FieldId.Length != 6 || !field.FieldId.StartsWith("FE") || !field.FieldId.EndsWith("09")))
+                                    {
+                                        foreach (var option in field.Descriptor.Options)
+                                        {
+                                            field.Value = option.Value;
+                                            Assert.IsNotNull(field.Value, fieldId);
+                                            Assert.AreEqual(option.Value, field.ToString(), fieldId);
+                                        }
+                                    }
                                     var b = true;
                                     field.Value = b;
                                     Assert.AreEqual(b, (bool?)field.Value, fieldId);
@@ -1392,17 +1401,17 @@ namespace EncompassRest.Tests
             field = loan.Fields["3894"];
             options = field.Descriptor.Options;
             Assert.AreEqual(2, options.Count);
-            Assert.AreEqual("true", options[0].Value);
+            Assert.AreEqual("Y", options[0].Value);
             Assert.AreEqual("Yes", options[0].Text);
-            Assert.AreEqual("false", options[1].Value);
+            Assert.AreEqual("N", options[1].Value);
             Assert.AreEqual("No", options[1].Text);
 
             field = loan.Fields["100"];
             options = field.Descriptor.Options;
             Assert.AreEqual(2, options.Count);
-            Assert.AreEqual("true", options[0].Value);
+            Assert.AreEqual("Y", options[0].Value);
             Assert.AreEqual("Borrower / Co-Borrower are Married", options[0].Text);
-            Assert.AreEqual("false", options[1].Value);
+            Assert.AreEqual("N", options[1].Value);
             Assert.AreEqual("No", options[1].Text);
 
             field = loan.Fields["SYS.X2"];

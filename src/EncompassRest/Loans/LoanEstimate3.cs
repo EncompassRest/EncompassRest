@@ -49,13 +49,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - Construction Loan [LE3.X15]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Settlement will occur more than 60 days after initial disclosure.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Settlement will occur more than 60 days after initial disclosure.\"}")]
         public bool? ConstructionLoan { get => _constructionLoan; set => SetField(ref _constructionLoan, value); }
 
         /// <summary>
         /// Loan Estimate - Homeowner Insurance [LE3.X13]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Omit from print\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Omit from print\"}")]
         public bool? HomeownerInsurance { get => _homeownerInsurance; set => SetField(ref _homeownerInsurance, value); }
 
         /// <summary>

@@ -65,7 +65,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure 2 51-75% [RESPA.X16]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"51 to 75%\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"51 to 75%\"}")]
         public bool? FiftyOneTo75Indicator { get => _fiftyOneTo75Indicator; set => SetField(ref _fiftyOneTo75Indicator, value); }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure 2 76-100% [RESPA.X17]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"76 to 100%\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"76 to 100%\"}")]
         public bool? SeventySixTo100Indicator { get => _seventySixTo100Indicator; set => SetField(ref _seventySixTo100Indicator, value); }
 
         /// <summary>
@@ -92,13 +92,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure 3B This Is Our Record [RESPA.X21]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"This is our record of transferring the servicing of the first lien mortgage loans\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"This is our record of transferring the servicing of the first lien mortgage loans\"}")]
         public bool? ThisIsOurRecordOfTransferingIndicator { get => _thisIsOurRecordOfTransferingIndicator; set => SetField(ref _thisIsOurRecordOfTransferingIndicator, value); }
 
         /// <summary>
         /// Disclosure 2 26-50% [RESPA.X15]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"26 to 50%\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"26 to 50%\"}")]
         public bool? TwentySixTo50Indicator { get => _twentySixTo50Indicator; set => SetField(ref _twentySixTo50Indicator, value); }
 
         /// <summary>
@@ -109,37 +109,37 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure We Do Not Intend to Sell The Servicing of The Loan [RESPA.X28]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"We do not sell mortgage loans\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"We do not sell mortgage loans\"}")]
         public bool? WeDoNotSellMortgageLoansIndicator { get => _weDoNotSellMortgageLoansIndicator; set => SetField(ref _weDoNotSellMortgageLoansIndicator, value); }
 
         /// <summary>
         /// Disclosure 1B We Do Not Service [RESPA.X6]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"We do not service mortgage loans\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"We do not service mortgage loans\"}")]
         public bool? WeDoNotServiceMortgageLoansIndicator { get => _weDoNotServiceMortgageLoansIndicator; set => SetField(ref _weDoNotServiceMortgageLoansIndicator, value); }
 
         /// <summary>
         /// Disclosure 1B And We Have Not Serviced [RESPA.X7]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"and we have not serviced mortgage loans in 3 yrs\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"and we have not serviced mortgage loans in 3 yrs\"}")]
         public bool? WeHaveNotServicedMortgLoansIn3YrsIndicator { get => _weHaveNotServicedMortgLoansIn3YrsIndicator; set => SetField(ref _weHaveNotServicedMortgLoansIn3YrsIndicator, value); }
 
         /// <summary>
         /// Disclosure 3A We Have Previously [RESPA.X20]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"We have previously assigned, sold, or transferred the servicing\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"We have previously assigned, sold, or transferred the servicing\"}")]
         public bool? WeHavePreviouslyAssignedIndicator { get => _weHavePreviouslyAssignedIndicator; set => SetField(ref _weHavePreviouslyAssignedIndicator, value); }
 
         /// <summary>
         /// Disclosure 1A We May Assign [RESPA.X1]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"We May assign, sell or transfer the servicing while loan is outstanding\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"We May assign, sell or transfer the servicing while loan is outstanding\"}")]
         public bool? WeMayAssignIndicator { get => _weMayAssignIndicator; set => SetField(ref _weMayAssignIndicator, value); }
 
         /// <summary>
         /// Disclosure 2 0-25% [RESPA.X14]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"0 to 25%\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"0 to 25%\"}")]
         public bool? ZeroTo25Indicator { get => _zeroTo25Indicator; set => SetField(ref _zeroTo25Indicator, value); }
     }
 }

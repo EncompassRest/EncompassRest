@@ -89,7 +89,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Include In AUS/Export [FMNN52]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Include In AUS/Export\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Include In AUS/Export\"}")]
         public bool? IncludeInAusExport { get => _includeInAusExport; set => SetField(ref _includeInAusExport, value); }
 
         /// <summary>
@@ -157,19 +157,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Print - See Attached Authorization [FMNN36]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
         public bool? PrintAttachIndicator { get => _printAttachIndicator; set => SetField(ref _printAttachIndicator, value); }
 
         /// <summary>
         /// Mortgage Property Print User Job Title [FMNN64]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's job title\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
         public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
 
         /// <summary>
         /// Mortgage Property Print User Name as Title [FMNN38]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's name as title\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name as title\"}")]
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Is the Subject Property [FMNN28]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Subject Property\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Subject Property\"}")]
         public bool? SubjectIndicator { get => _subjectIndicator; set => SetField(ref _subjectIndicator, value); }
 
         /// <summary>

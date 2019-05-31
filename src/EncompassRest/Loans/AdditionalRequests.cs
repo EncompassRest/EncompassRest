@@ -104,19 +104,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Request Appraisal Prprty Access Key Pick Up [REQUEST.X24]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Key Pick Up\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Key Pick Up\"}")]
         public bool? AppraisalKeyPickUp { get => _appraisalKeyPickUp; set => SetField(ref _appraisalKeyPickUp, value); }
 
         /// <summary>
         /// Request Appraisal Prprty Access Lockbox [REQUEST.X23]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Lock Box\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Lock Box\"}")]
         public bool? AppraisalLockBox { get => _appraisalLockBox; set => SetField(ref _appraisalLockBox, value); }
 
         /// <summary>
         /// Request Appraisal Prprty Access Vacant [REQUEST.X22]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Vacant\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Vacant\"}")]
         public bool? AppraisalVacant { get => _appraisalVacant; set => SetField(ref _appraisalVacant, value); }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Request Title Commit Attach Contract [REQUEST.X13]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Contract\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Contract\"}")]
         public bool? TitleContract { get => _titleContract; set => SetField(ref _titleContract, value); }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Request Title Commit Attach Title Ins Req [REQUEST.X12]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Title Insurance Requirements\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Title Insurance Requirements\"}")]
         public bool? TitleInsRequirements { get => _titleInsRequirements; set => SetField(ref _titleInsRequirements, value); }
 
         /// <summary>
@@ -233,13 +233,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Request Title Commit Attach Prior Title Policy [REQUEST.X11]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Prior Title Policy\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Prior Title Policy\"}")]
         public bool? TitlePriorTitlePolicy { get => _titlePriorTitlePolicy; set => SetField(ref _titlePriorTitlePolicy, value); }
 
         /// <summary>
         /// Request Title Commit Attach Survey [REQUEST.X15]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Survey\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Survey\"}")]
         public bool? TitleSurvey { get => _titleSurvey; set => SetField(ref _titleSurvey, value); }
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Request Title Commit Attach Warranty Deed [REQUEST.X14]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Warranty Deed\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Warranty Deed\"}")]
         public bool? TitleWarrantyDeed { get => _titleWarrantyDeed; set => SetField(ref _titleWarrantyDeed, value); }
     }
 }

@@ -131,7 +131,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Commun Lending/AHI [1551]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Community Lending/Affordable Housing Initiative\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Community Lending/Affordable Housing Initiative\"}")]
         public bool? CommunityLendingAfordableHousingInitiative { get => _communityLendingAfordableHousingInitiative; set => SetField(ref _communityLendingAfordableHousingInitiative, value); }
 
         /// <summary>

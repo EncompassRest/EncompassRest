@@ -62,7 +62,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Additional Loans  Affordable Loan Indicator [URLARALNN24]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Affordable Loan \"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Affordable Loan \"}")]
         public bool? AffordableLoan { get => _affordableLoan; set => SetField(ref _affordableLoan, value); }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Creditor is an individual Indicator [URLARALNN32]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Creditor is an individual\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Creditor is an individual\"}")]
         public bool? IndividualCreditorIndicator { get => _individualCreditorIndicator; set => SetField(ref _individualCreditorIndicator, value); }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Additional Loans Linked Piggyback Indicator [URLARALNN25]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Linked Piggyback Indicator \"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Linked Piggyback Indicator \"}")]
         public bool? LinkedPiggybackIndicator { get => _linkedPiggybackIndicator; set => SetField(ref _linkedPiggybackIndicator, value); }
 
         /// <summary>
@@ -223,25 +223,25 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Additional Loans Payment Deferred First Five Years [URLARALNN23]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Payment Deferred for First Five Years\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Payment Deferred for First Five Years\"}")]
         public bool? PaymentDeferredFirstFiveYears { get => _paymentDeferredFirstFiveYears; set => SetField(ref _paymentDeferredFirstFiveYears, value); }
 
         /// <summary>
         /// Depository Print - See Attached Authorization [URLARALNN15]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
 
         /// <summary>
         /// Depository Print User Job Title [URLARALNN64]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's job title\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
         public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
 
         /// <summary>
         /// Depository Print User Name as Title [URLARALNN12]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's name as title\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name as title\"}")]
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
 
         /// <summary>

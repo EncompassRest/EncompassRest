@@ -465,7 +465,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// 4b. Other New Mortgage Loans on the Property You are Buying or Refinancing Does not Apply [URLA.X237]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does not apply\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does not apply\"}")]
         public bool? AdditionalLoanDoesNotApply { get => _additionalLoanDoesNotApply; set => SetField(ref _additionalLoanDoesNotApply, value); }
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Affordable Loan Indicator [URLA.X210]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Affordable Loan \"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Affordable Loan \"}")]
         public bool? AffordableLoan { get => _affordableLoan; set => SetField(ref _affordableLoan, value); }
 
         /// <summary>
@@ -544,7 +544,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fannie Mae Seller Prov Below Mkt Financing [MORNET.X12]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Seller Provided Below Market Financing\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Seller Provided Below Market Financing\"}")]
         public bool? BelowMarketSubordinateFinancingIndicator { get => _belowMarketSubordinateFinancingIndicator; set => SetField(ref _belowMarketSubordinateFinancingIndicator, value); }
 
         /// <summary>
@@ -567,7 +567,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// BORROWER Community Property State Resident Indicator [URLA.X129]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"At least one borrower lives in a community property state.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"At least one borrower lives in a community property state.\"}")]
         public bool? BorrCommunityPropertyStateResidentIndicator { get => _borrCommunityPropertyStateResidentIndicator; set => SetField(ref _borrCommunityPropertyStateResidentIndicator, value); }
 
         /// <summary>
@@ -579,7 +579,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr/Co-Borr Married Indicator [100]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Borrower / Co-Borrower are Married\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Borrower / Co-Borrower are Married\"}")]
         public bool? BorrowerCoBorrowerMarriedIndicator { get => _borrowerCoBorrowerMarriedIndicator; set => SetField(ref _borrowerCoBorrowerMarriedIndicator, value); }
 
         /// <summary>
@@ -637,7 +637,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info Buydown [425]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Buydown\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Buydown\"}")]
         public bool? BuydownIndicator { get => _buydownIndicator; set => SetField(ref _buydownIndicator, value); }
 
         /// <summary>
@@ -755,7 +755,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Community Property State Resident Indicator [URLA.X130]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"The property is in a comunity property state.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"The property is in a comunity property state.\"}")]
         public bool? CommunityPropertyStateResidentIndicator { get => _communityPropertyStateResidentIndicator; set => SetField(ref _communityPropertyStateResidentIndicator, value); }
 
         /// <summary>
@@ -776,7 +776,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Construction Loan Indicator [URLA.X133]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Construction-Conversion/Construction-to-Permanent\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Construction-Conversion/Construction-to-Permanent\"}")]
         public bool? ConstructionLoanIndicator { get => _constructionLoanIndicator; set => SetField(ref _constructionLoanIndicator, value); }
 
         /// <summary>
@@ -820,7 +820,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Conversion Of Contract For Deed Indicator [URLA.X131]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Conversion of Contract for Deed or Land Contract\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Conversion of Contract for Deed or Land Contract\"}")]
         public bool? ConversionOfContractForDeedIndicator { get => _conversionOfContractForDeedIndicator; set => SetField(ref _conversionOfContractForDeedIndicator, value); }
 
         /// <summary>
@@ -831,7 +831,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Copy to Lender Check Box [1969]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Copy to Lender\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Copy to Lender\"}")]
         public bool? CopyBrokerToLenderIndicator { get => _copyBrokerToLenderIndicator; set => SetField(ref _copyBrokerToLenderIndicator, value); }
 
         /// <summary>
@@ -965,7 +965,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Do not print line 824 and 825 Check Box [1970]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Do not print line 824 and 825\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Do not print line 824 and 825\"}")]
         public bool? DoNotPrintCompensationFees { get => _doNotPrintCompensationFees; set => SetField(ref _doNotPrintCompensationFees, value); }
 
         /// <summary>
@@ -1148,13 +1148,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fannie Mae Community Seconds [MORNET.X29]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Community Seconds\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Community Seconds\"}")]
         public bool? FnmCommunitySecondsIndicator { get => _fnmCommunitySecondsIndicator; set => SetField(ref _fnmCommunitySecondsIndicator, value); }
 
         /// <summary>
         /// Fannie Mae FannieNeighbors Elig [MORNET.X28]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"FannieNeighbors Eligible\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"FannieNeighbors Eligible\"}")]
         public bool? FnmNeighborsMortgageEligibilityIndicator { get => _fnmNeighborsMortgageEligibilityIndicator; set => SetField(ref _fnmNeighborsMortgageEligibilityIndicator, value); }
 
         /// <summary>
@@ -1534,7 +1534,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Features Other Indicator [URLA.X242]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Other\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Other\"}")]
         public bool? LoanFeaturesOtherIndicator { get => _loanFeaturesOtherIndicator; set => SetField(ref _loanFeaturesOtherIndicator, value); }
 
         /// <summary>
@@ -1918,7 +1918,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Negative Amortization Indicator [URLA.X239]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Negative Amortization\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Negative Amortization\"}")]
         public bool? NegativeAmortization { get => _negativeAmortization; set => SetField(ref _negativeAmortization, value); }
 
         /// <summary>
@@ -1993,13 +1993,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure Purchase Sale or Refi [AFF.X6]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"purchase, sale, or refinance of, the subject property.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"purchase, sale, or refinance of, the subject property.\"}")]
         public bool? NotRequiredForPurchaseSaleOrRefinance { get => _notRequiredForPurchaseSaleOrRefinance; set => SetField(ref _notRequiredForPurchaseSaleOrRefinance, value); }
 
         /// <summary>
         /// Disclosure Settlement of Loan [AFF.X5]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"settlement of your loan on,\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"settlement of your loan on,\"}")]
         public bool? NotRequiredForSettlementOfYourLoan { get => _notRequiredForSettlementOfYourLoan; set => SetField(ref _notRequiredForSettlementOfYourLoan, value); }
 
         /// <summary>
@@ -2112,7 +2112,7 @@ namespace EncompassRest.Loans
         /// <summary>
         ///  Payment Deferred for First Five Years Indicator [URLA.X209]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Payment Deferred for First Five Years\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Payment Deferred for First Five Years\"}")]
         public bool? PaymentDeferredFirstFiveYears { get => _paymentDeferredFirstFiveYears; set => SetField(ref _paymentDeferredFirstFiveYears, value); }
 
         /// <summary>
@@ -2134,7 +2134,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Private Mortgage Insurance Indicator [3336]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"PMI Included\",\"false\":\"PMI Not Included\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"PMI Included\",\"N\":\"PMI Not Included\"}")]
         public bool? PmiIndicator { get => _pmiIndicator; set => SetField(ref _pmiIndicator, value); }
 
         /// <summary>
@@ -2150,7 +2150,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Prepayment Penalty / Prepayment Penalty Term Indicator [URLA.X240]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Prepayment Penalty / Prepayment Penalty Term\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Prepayment Penalty / Prepayment Penalty Term\"}")]
         public bool? PrepaymentPenaltyTerm { get => _prepaymentPenaltyTerm; set => SetField(ref _prepaymentPenaltyTerm, value); }
 
         /// <summary>
@@ -2188,7 +2188,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Print both ULI / NULI and Loan Number [URLA.X238]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print both ULI / NULI and Loan Number\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print both ULI / NULI and Loan Number\"}")]
         public bool? PrintULIAndLoanNoURLA { get => _printULIAndLoanNoURLA; set => SetField(ref _printULIAndLoanNoURLA, value); }
 
         /// <summary>
@@ -2229,7 +2229,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fannie Mae Energy Effic Mtg Indicator [157]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Energy Efficient Mortgage\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Energy Efficient Mortgage\"}")]
         public bool? PropertyEnergyEfficientHomeIndicator { get => _propertyEnergyEfficientHomeIndicator; set => SetField(ref _propertyEnergyEfficientHomeIndicator, value); }
 
         /// <summary>
@@ -2240,7 +2240,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Property Existing Clean Energy Lien Indicator [URLA.X135]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Property is currently subject to a lien that could take priority over the first mortgage lien, such as a clean energy lien paid through property taxes (e.g., the Property Assessed  Clean Energy program).\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Property is currently subject to a lien that could take priority over the first mortgage lien, such as a clean energy lien paid through property taxes (e.g., the Property Assessed  Clean Energy program).\"}")]
         public bool? PropertyExistingCleanEnergyLienIndicator { get => _propertyExistingCleanEnergyLienIndicator; set => SetField(ref _propertyExistingCleanEnergyLienIndicator, value); }
 
         /// <summary>
@@ -2394,7 +2394,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Renovation Loan Indicator [URLA.X132]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Renovation\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Renovation\"}")]
         public bool? RenovationLoanIndicator { get => _renovationLoanIndicator; set => SetField(ref _renovationLoanIndicator, value); }
 
         /// <summary>
@@ -2406,7 +2406,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// 4c. Rental Income onthe Property You want to Purchase - For Purchase Only Does not Apply [URLA.X80]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does not apply\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does not apply\"}")]
         public bool? RentalIncomeSectionIndicator { get => _rentalIncomeSectionIndicator; set => SetField(ref _rentalIncomeSectionIndicator, value); }
 
         /// <summary>
@@ -2590,7 +2590,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Temporary Interest Rate Buydown/Initial Buydown Rate [URLA.X241]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Temporary Interest Rate Buydown/Initial Buydown Rate\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Temporary Interest Rate Buydown/Initial Buydown Rate\"}")]
         public bool? TemporaryOrInitialInterestRateBuydown { get => _temporaryOrInitialInterestRateBuydown; set => SetField(ref _temporaryOrInitialInterestRateBuydown, value); }
 
         /// <summary>
@@ -2785,7 +2785,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Escrow [1550]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Escrow (T&I)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Escrow (T&I)\"}")]
         public bool? UnderwritingEscrowIndicator { get => _underwritingEscrowIndicator; set => SetField(ref _underwritingEscrowIndicator, value); }
 
         /// <summary>
@@ -2845,7 +2845,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Use 2018 DI [4142]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Use 2018 DI\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Use 2018 DI\"}")]
         public bool? Use2018DiIndicator { get => _use2018DiIndicator; set => SetField(ref _use2018DiIndicator, value); }
 
         /// <summary>

@@ -74,7 +74,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 AccountTranscript [IRS4506.X47]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"b\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"b\"}")]
         public bool? AccountTranscript { get => _accountTranscript; set => SetField(ref _accountTranscript, value); }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 IfTaxRecordNotFound [IRS4506.X14]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"If we cannot find the tax return, we will refund the fee. If the refund should go to the third party listed on line 5, check here.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"If we cannot find the tax return, we will refund the fee. If the refund should go to the third party listed on line 5, check here.\"}")]
         public bool? IfTaxRecordNotFound { get => _ifTaxRecordNotFound; set => SetField(ref _ifTaxRecordNotFound, value); }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 NotifiedIrsIdentityTheftIndicator [IRS4506.X60]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
         public bool? NotifiedIrsIdentityTheftIndicator { get => _notifiedIrsIdentityTheftIndicator; set => SetField(ref _notifiedIrsIdentityTheftIndicator, value); }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 RecordOfAccount [IRS4506.X48]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"c\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"c\"}")]
         public bool? RecordOfAccount { get => _recordOfAccount; set => SetField(ref _recordOfAccount, value); }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 ReturnTranscript [IRS4506.X46]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"a\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"a\"}")]
         public bool? ReturnTranscript { get => _returnTranscript; set => SetField(ref _returnTranscript, value); }
 
         /// <summary>
@@ -356,7 +356,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 TheseCopiesMustBeCertified [IRS4506.X18]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Copies must be certified for court or administrative proceedings\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Copies must be certified for court or administrative proceedings\"}")]
         public bool? TheseCopiesMustBeCertified { get => _theseCopiesMustBeCertified; set => SetField(ref _theseCopiesMustBeCertified, value); }
 
         /// <summary>

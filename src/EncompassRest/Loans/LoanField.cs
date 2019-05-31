@@ -205,6 +205,24 @@ namespace EncompassRest.Loans
                             {
                                 return result;
                             }
+                            var i = 0;
+                            var options = Descriptor.Options;
+                            for (; i < options.Count; ++i)
+                            {
+                                if (options[i].Value.Equals(str, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    break;
+                                }
+                            }
+                            if (i == 0)
+                            {
+                                return true;
+                            }
+                            if (i == 1 && options.Count > 1)
+                            {
+                                return false;
+                            }
+                            return null;
                         }
                         if (value != null && (propertyType == TypeData<string>.Type || propertyType == TypeData<DateTime?>.Type || propertyType == TypeData<decimal?>.Type || propertyType == TypeData<int?>.Type || propertyType == TypeData<bool?>.Type))
                         {
@@ -278,7 +296,23 @@ namespace EncompassRest.Loans
         /// Returns the field's value as a <see cref="string"/>.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => Value?.ToString();
+        public override string ToString()
+        {
+            if (Descriptor.ValueType == LoanFieldValueType.Boolean && Descriptor.Options.Count > 0)
+            {
+                var value = ToBoolean();
+                if (value == true)
+                {
+                    return Descriptor.Options[0].Value;
+                }
+                if (value == false && Descriptor.Options.Count > 1)
+                {
+                    return Descriptor.Options[1].Value;
+                }
+                return null;
+            }
+            return Value?.ToString();
+        }
 
         /// <summary>
         /// Returns the field's value as a <see cref="DateTime"/>.
@@ -357,9 +391,11 @@ namespace EncompassRest.Loans
             switch (value.ToUpper())
             {
                 case "Y":
+                case "YES":
                 case "TRUE":
                     return true;
                 case "N":
+                case "NO":
                 case "FALSE":
                     return false;
             }

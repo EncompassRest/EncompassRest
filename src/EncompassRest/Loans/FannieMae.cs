@@ -51,7 +51,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fannie Mae Community Lending [MORNET.X72]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Community Lending\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Community Lending\"}")]
         public bool? CommunityLending { get => _communityLending; set => SetField(ref _communityLending, value); }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fannie Mae Start-Up Mtg [MORNET.X11]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Start-up Mortgage\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Start-up Mortgage\"}")]
         public bool? StartUpMortgage { get => _startUpMortgage; set => SetField(ref _startUpMortgage, value); }
 
         /// <summary>

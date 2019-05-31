@@ -399,7 +399,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k A1 Existing Debt [MAX23K.X75]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Existing Debt\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Existing Debt\"}")]
         public bool? ExistingDebt { get => _existingDebt; set => SetField(ref _existingDebt, value); }
 
         /// <summary>
@@ -457,13 +457,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Other Pending Appl [CAPIAP.X1]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Have other pending application for FHA Title I Loan\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Have other pending application for FHA Title I Loan\"}")]
         public bool? HaveOtherPendingApplicationForFHA { get => _haveOtherPendingApplicationForFHA; set => SetField(ref _haveOtherPendingApplicationForFHA, value); }
 
         /// <summary>
         /// FHA 203k Property HUD-Owned [MAX23K.X1]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"HUD-Owned\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"HUD-Owned\"}")]
         public bool? HUDOwned { get => _hUDOwned; set => SetField(ref _hUDOwned, value); }
 
         /// <summary>
@@ -554,7 +554,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Leased from Other [CAPIAP.X46]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Leased from someone else\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Leased from someone else\"}")]
         public bool? LeasedFromSomeoneElse { get => _leasedFromSomeoneElse; set => SetField(ref _leasedFromSomeoneElse, value); }
 
         /// <summary>
@@ -671,7 +671,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Mtg/Deed of Trust [CAPIAP.X48]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Mtg or deed of trust on property\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Mtg or deed of trust on property\"}")]
         public bool? MtgOrDeedOfTrusOnProperty { get => _mtgOrDeedOfTrusOnProperty; set => SetField(ref _mtgOrDeedOfTrusOnProperty, value); }
 
         /// <summary>
@@ -700,7 +700,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve New Res/Occ > 90 Days [CAPIAP.X56]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"This property is a new residential, and it has been occupied for longer than 90 days\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"This property is a new residential, and it has been occupied for longer than 90 days\"}")]
         public bool? NewResidential { get => _newResidential; set => SetField(ref _newResidential, value); }
 
         /// <summary>
@@ -726,7 +726,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Owned by Borr [CAPIAP.X45]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Owned by Borrower\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Owned by Borrower\"}")]
         public bool? OwnedByBorrower { get => _ownedByBorrower; set => SetField(ref _ownedByBorrower, value); }
 
         /// <summary>
@@ -808,7 +808,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Purch on Contract [CAPIAP.X47]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Being Purchased on contract\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Being Purchased on contract\"}")]
         public bool? PurchasedOnContract { get => _purchasedOnContract; set => SetField(ref _purchasedOnContract, value); }
 
         /// <summary>
@@ -838,7 +838,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Refi Title 1 Loan [CAPIAP.X2]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Refinancing a Title I loan\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Refinancing a Title I loan\"}")]
         public bool? RefinancingATitleILoan { get => _refinancingATitleILoan; set => SetField(ref _refinancingATitleILoan, value); }
 
         /// <summary>
@@ -905,7 +905,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k Streamlined [MAX23K.X78]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Streamlined (k)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Streamlined (k)\"}")]
         public bool? Streamlined { get => _streamlined; set => SetField(ref _streamlined, value); }
 
         /// <summary>

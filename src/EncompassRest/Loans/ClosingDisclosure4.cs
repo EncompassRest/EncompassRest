@@ -59,7 +59,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure Page 4 Escrow Indicator [CD4.X9]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Escrow (T&I)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Escrow (T&I)\"}")]
         public bool? EscrowIndicator { get => _escrowIndicator; set => SetField(ref _escrowIndicator, value); }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// your lender does not offer one. [CD4.X7]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"your lender does not offer one\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"your lender does not offer one\"}")]
         public bool? Lender { get => _lender; set => SetField(ref _lender, value); }
 
         /// <summary>

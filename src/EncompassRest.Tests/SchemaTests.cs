@@ -81,7 +81,10 @@ namespace EncompassRest.Tests
             Assert.AreEqual(count, LoanFieldDescriptors.StandardFields.Count);
             foreach (var pair in LoanFieldDescriptors.StandardFields)
             {
-                Assert.AreEqual(pair.Value.GetType(), typeof(FieldDescriptor), pair.Key);
+                if (pair.Value.ValueType != LoanFieldValueType.Boolean)
+                {
+                    Assert.AreEqual(pair.Value.GetType(), typeof(FieldDescriptor), pair.Key);
+                }
             }
         }
 
@@ -98,7 +101,10 @@ namespace EncompassRest.Tests
             Assert.AreEqual(count, LoanFieldDescriptors.StandardFields.Count);
             foreach (var pair in LoanFieldDescriptors.StandardFields)
             {
-                Assert.AreEqual(pair.Value.GetType(), typeof(FieldDescriptor), pair.Key);
+                if (pair.Value.ValueType != LoanFieldValueType.Boolean)
+                {
+                    Assert.AreEqual(pair.Value.GetType(), typeof(FieldDescriptor), pair.Key);
+                }
             }
             Assert.IsTrue(LoanFieldDescriptors.FieldMappings.ContainsKey(newFieldId));
         }

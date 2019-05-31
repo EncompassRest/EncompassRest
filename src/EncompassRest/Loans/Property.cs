@@ -146,7 +146,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Secondary Residence Indicator [URLA.X76]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"FHA Secondary Residence\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"FHA Secondary Residence\"}")]
         public bool? FHASecondaryResidenceIndicator { get => _fHASecondaryResidenceIndicator; set => SetField(ref _fHASecondaryResidenceIndicator, value); }
 
         /// <summary>
@@ -386,7 +386,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mixed Use Property Indicator [URLA.X77]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"If you will occupy the property, will you set aside space within the property to operate your own business? \"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"If you will occupy the property, will you set aside space within the property to operate your own business? \"}")]
         public bool? PropertyMixedUsageIndicator { get => _propertyMixedUsageIndicator; set => SetField(ref _propertyMixedUsageIndicator, value); }
 
         /// <summary>

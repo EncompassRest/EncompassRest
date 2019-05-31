@@ -109,7 +109,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Lender Allows Neg Amort [CASASRN.X85]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Allows Negative Amortization\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Allows Negative Amortization\"}")]
         public bool? AllowsNegativeAmortizationIndicator { get => _allowsNegativeAmortizationIndicator; set => SetField(ref _allowsNegativeAmortizationIndicator, value); }
 
         /// <summary>
@@ -125,13 +125,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Lender Arms-Length Trans [CASASRN.X81]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Arms-Length Transaction\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Arms-Length Transaction\"}")]
         public bool? ArmsLengthTransactionIndicator { get => _armsLengthTransactionIndicator; set => SetField(ref _armsLengthTransactionIndicator, value); }
 
         /// <summary>
         /// Borr Qualifies as Veteran [156]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"One or more borrowers qualifies as a veteran\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"One or more borrowers qualifies as a veteran\"}")]
         public bool? BorrowerQualifiesAsVeteranIndicator { get => _borrowerQualifiesAsVeteranIndicator; set => SetField(ref _borrowerQualifiesAsVeteranIndicator, value); }
 
         /// <summary>
@@ -325,13 +325,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Order Credit [CASASRN.X1]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"true\":\"Order Credit Evaluation\"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"Y\":\"Order Credit Evaluation\"}")]
         public bool? OrderCreditEvaluationIndicator { get => _orderCreditEvaluationIndicator; set => SetField(ref _orderCreditEvaluationIndicator, value); }
 
         /// <summary>
         /// Freddie Mac Order Merged Credit Rpt [CASASRN.X88]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"true\":\"Order Merged Credit Report\"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"Y\":\"Order Merged Credit Report\"}")]
         public bool? OrderMergedCreditReportIndicator { get => _orderMergedCreditReportIndicator; set => SetField(ref _orderMergedCreditReportIndicator, value); }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Order Risk Grade Eval [CASASRN.X4]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"true\":\"Order Risk Grade Evaluation\"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"Y\":\"Order Risk Grade Evaluation\"}")]
         public bool? OrderRiskGradeEvaluationIndicator { get => _orderRiskGradeEvaluationIndicator; set => SetField(ref _orderRiskGradeEvaluationIndicator, value); }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Lender Retail Loan [CASASRN.X77]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Retail loan\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Retail loan\"}")]
         public bool? RetailLoanIndicator { get => _retailLoanIndicator; set => SetField(ref _retailLoanIndicator, value); }
 
         /// <summary>
@@ -473,7 +473,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Lender 2nd Trust Pd on Closing [CASASRN.X30]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Second Trust Paid on closing\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Second Trust Paid on closing\"}")]
         public bool? SecondTrustRefiIndicator { get => _secondTrustRefiIndicator; set => SetField(ref _secondTrustRefiIndicator, value); }
 
         /// <summary>
@@ -520,7 +520,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Transfer Loan to Conduit [CASASRN.X10]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"true\":\"Transfer Loan to Conduit\"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"Y\":\"Transfer Loan to Conduit\"}")]
         public bool? TransferLoanToConduitIndicator { get => _transferLoanToConduitIndicator; set => SetField(ref _transferLoanToConduitIndicator, value); }
 
         /// <summary>

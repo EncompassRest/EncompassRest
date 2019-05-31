@@ -79,13 +79,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info ARM Impounds Flood [LOANSUB.X13]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Flood\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Flood\"}")]
         public bool? FloodIndicator { get => _floodIndicator; set => SetField(ref _floodIndicator, value); }
 
         /// <summary>
         /// Loan Info ARM Impounds Hazard [LOANSUB.X11]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Hazard\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Hazard\"}")]
         public bool? HazardIndicator { get => _hazardIndicator; set => SetField(ref _hazardIndicator, value); }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info ARM Impounds MMI/PMI [LOANSUB.X12]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"MMI / PMI\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"MMI / PMI\"}")]
         public bool? MmmPmiIndicator { get => _mmmPmiIndicator; set => SetField(ref _mmmPmiIndicator, value); }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info ARM Impounds Taxes [LOANSUB.X10]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Taxes\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Taxes\"}")]
         public bool? TaxesIndicator { get => _taxesIndicator; set => SetField(ref _taxesIndicator, value); }
 
         /// <summary>

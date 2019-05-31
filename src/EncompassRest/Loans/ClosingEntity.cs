@@ -63,7 +63,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Vesting Party - Authorized to Sign [TRNN09]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Authorized to Sign\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Authorized to Sign\"}")]
         public bool? AuthorizedToSignIndicator { get => _authorizedToSignIndicator; set => SetField(ref _authorizedToSignIndicator, value); }
 
         /// <summary>

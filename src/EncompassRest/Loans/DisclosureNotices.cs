@@ -64,7 +64,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure Anti-Coerc Stmnt [NOTICES.X16]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Anti-Coercion Statement\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Anti-Coercion Statement\"}")]
         public bool? AntiCoercionStatementIndicator { get => _antiCoercionStatementIndicator; set => SetField(ref _antiCoercionStatementIndicator, value); }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure Flood Ins Notif [NOTICES.X17]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Flood Insurance Notification\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Flood Insurance Notification\"}")]
         public bool? FloodInsuranceNotificationIndicator { get => _floodInsuranceNotificationIndicator; set => SetField(ref _floodInsuranceNotificationIndicator, value); }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure Info Discl Auth [NOTICES.X10]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Information Disclosure Authorization\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Disclosure Authorization\"}")]
         public bool? InformationDisclosureAuthorizationIndicator { get => _informationDisclosureAuthorizationIndicator; set => SetField(ref _informationDisclosureAuthorizationIndicator, value); }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Property Community participates in NFIP [NOTICES.X48]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Community in which the property is located participates in the National Flood Insurance Program (NFIP) where federal flood insurance is available.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Community in which the property is located participates in the National Flood Insurance Program (NFIP) where federal flood insurance is available.\"}")]
         public bool? LocatedInNfipIndicator { get => _locatedInNfipIndicator; set => SetField(ref _locatedInNfipIndicator, value); }
 
         /// <summary>
@@ -288,13 +288,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Property Community does not participates in NFIP [NOTICES.X49]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Community in which the property is located does not participate in the NFIP.Federal flood insurance is not available.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Community in which the property is located does not participate in the NFIP.Federal flood insurance is not available.\"}")]
         public bool? NotLocatedInNfipIndicator { get => _notLocatedInNfipIndicator; set => SetField(ref _notLocatedInNfipIndicator, value); }
 
         /// <summary>
         /// Disclosure Occupancy Stmnt [NOTICES.X1]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Occupancy Statement\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Occupancy Statement\"}")]
         public bool? OccupancyStatementIndicator { get => _occupancyStatementIndicator; set => SetField(ref _occupancyStatementIndicator, value); }
 
         /// <summary>
@@ -312,31 +312,31 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure Auth Bank Acct Verif [NOTICES.X13]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Banking (checking & savings) account of record\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Banking (checking & savings) account of record\"}")]
         public bool? ReleaseBankingInformationIndicator { get => _releaseBankingInformationIndicator; set => SetField(ref _releaseBankingInformationIndicator, value); }
 
         /// <summary>
         /// Disclosure Auth Empl Hist Verif [NOTICES.X12]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Employment History, dates, title(s), income, hours worked, etc.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Employment History, dates, title(s), income, hours worked, etc.\"}")]
         public bool? ReleaseEmploymentInformationIndicator { get => _releaseEmploymentInformationIndicator; set => SetField(ref _releaseEmploymentInformationIndicator, value); }
 
         /// <summary>
         /// Disclosure Auth Any Info Necessary [NOTICES.X15]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Any information deemed necessary in connection with consumer credit report for real estate transaction\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Any information deemed necessary in connection with consumer credit report for real estate transaction\"}")]
         public bool? ReleaseInformationInConnectionWithCreditReportIndicator { get => _releaseInformationInConnectionWithCreditReportIndicator; set => SetField(ref _releaseInformationInConnectionWithCreditReportIndicator, value); }
 
         /// <summary>
         /// Disclosure Auth Loan Rating Verif [NOTICES.X14]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Mortgage loan rating, (opening date, high credit, payment amount, loan balance and payment)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Mortgage loan rating, (opening date, high credit, payment amount, loan balance and payment)\"}")]
         public bool? ReleaseMortgageInformationIndicator { get => _releaseMortgageInformationIndicator; set => SetField(ref _releaseMortgageInformationIndicator, value); }
 
         /// <summary>
         /// Disclosure Right to Privacy Act [NOTICES.X9]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Right to Financial Privacy Act\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Right to Financial Privacy Act\"}")]
         public bool? RightToFinancialPrivacyActIndicator { get => _rightToFinancialPrivacyActIndicator; set => SetField(ref _rightToFinancialPrivacyActIndicator, value); }
     }
 }

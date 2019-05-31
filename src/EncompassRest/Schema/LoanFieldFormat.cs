@@ -76,7 +76,7 @@
         /// <summary>
         /// DECIMAL_5
         /// </summary>
-        DECIMAL_5 = 206,
+        DECIMAL_5 = 208,
         /// <summary>
         /// DECIMAL_6
         /// </summary>

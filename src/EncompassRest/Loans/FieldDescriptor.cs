@@ -239,8 +239,8 @@ namespace EncompassRest.Loans
                     {
                         if (declaredType == TypeData<bool?>.Type)
                         {
-                            dictionary.Add("true", "Yes");
-                            dictionary.Add("false", "No");
+                            dictionary.Add("Y", "Yes");
+                            dictionary.Add("N", "No");
                         }
                         else
                         {

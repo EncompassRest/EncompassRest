@@ -233,7 +233,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fannie Mae Escrow Waived [MORNET.X15]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Escrow will be waived\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Escrow will be waived\"}")]
         public bool? EscrowWaiverIndicator { get => _escrowWaiverIndicator; set => SetField(ref _escrowWaiverIndicator, value); }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Force Minimum Payment [4472]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Force Minimum Payment\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Force Minimum Payment\"}")]
         public bool? HelocForceMinimumPayment { get => _helocForceMinimumPayment; set => SetField(ref _helocForceMinimumPayment, value); }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Initial Force Minimum Payment [4483]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Force Minimum Payment\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Force Minimum Payment\"}")]
         public bool? HelocInitialForceMinimumPayment { get => _helocInitialForceMinimumPayment; set => SetField(ref _helocInitialForceMinimumPayment, value); }
 
         /// <summary>
@@ -370,7 +370,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Heloc initial P &amp; I [4479]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"P & I\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"P & I\"}")]
         public bool? HelocInitialPI { get => _helocInitialPI; set => SetField(ref _helocInitialPI, value); }
 
         /// <summary>
@@ -391,7 +391,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Heloc Interest Only [4468]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Interest Only\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Interest Only\"}")]
         public bool? HelocInterestOnly { get => _helocInterestOnly; set => SetField(ref _helocInterestOnly, value); }
 
         /// <summary>
@@ -642,13 +642,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NMLS Option ARM Indicator [NMLS.X4]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Option ARM\",\"false\":\"Not Option ARM\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Option ARM\",\"N\":\"Not Option ARM\"}")]
         public bool? NmlsOptionARMIndicator { get => _nmlsOptionARMIndicator; set => SetField(ref _nmlsOptionARMIndicator, value); }
 
         /// <summary>
         /// NMLS Piggyback or Funded HELOC Indicator [NMLS.X5]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Includes piggyback second or funded HELOC\",\"false\":\"Does not include piggyback second or funded HELOC\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Includes piggyback second or funded HELOC\",\"N\":\"Does not include piggyback second or funded HELOC\"}")]
         public bool? NmlsPiggyBackOrFundedHELOCIndicator { get => _nmlsPiggyBackOrFundedHELOCIndicator; set => SetField(ref _nmlsPiggyBackOrFundedHELOCIndicator, value); }
 
         /// <summary>
