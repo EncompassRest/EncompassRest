@@ -37,7 +37,6 @@ namespace EncompassRest
                         }
                         Increment(ref i);
                         c = modelPath[i];
-                        StringBuilder sb;
                         int? index;
                         string propertyName;
                         switch (c)
@@ -45,7 +44,6 @@ namespace EncompassRest
                             case '(':
                                 Increment(ref i);
                                 EatWhiteSpace(ref i);
-                                sb = new StringBuilder();
                                 c = modelPath[i];
                                 ObjectFilter filter = null;
                                 while (c != ')')
@@ -223,8 +221,8 @@ namespace EncompassRest
             // Local functions
             void Increment(ref int value)
             {
-                ++i;
-                if (i >= modelPath.Length)
+                ++value;
+                if (value >= modelPath.Length)
                 {
                     throw new ArgumentException("bad path");
                 }
