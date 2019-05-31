@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard1.1;net46;net45</TargetFrameworks>
-    <Version>0.6.0</Version>
+    <Version>1.0.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/EncompassRest/EncompassRest</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/EncompassRest/EncompassRest/blob/master/LICENSE</PackageLicenseUrl>
@@ -12,10 +12,13 @@
     <PublishRepositoryUrl>True</PublishRepositoryUrl>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <LangVersion>latest</LangVersion>
-    <AssemblyVersion>0.6.0.0</AssemblyVersion>
-    <FileVersion>0.6.0.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <Configurations>Debug;Release;CI</Configurations>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>encompassrest.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
