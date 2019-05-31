@@ -96,7 +96,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Bank Liability Considered in Exposure Indicator [FLNN30]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Bank Liability Considered in Exposure Indicator\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Bank Liability Considered in Exposure Indicator\"}")]
         public bool? BankLiabilityConsideredIndicator { get => _bankLiabilityConsideredIndicator; set => SetField(ref _bankLiabilityConsideredIndicator, value); }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Exclude from URLA Total [FLNN17]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Exclude from URLA page 2 Liabilities Total\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Exclude from URLA page 2 Liabilities Total\"}")]
         public bool? ExclusionIndicator { get => _exclusionIndicator; set => SetField(ref _exclusionIndicator, value); }
 
         /// <summary>
@@ -197,13 +197,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Payment includes Taxes and Insurance [FLNN66]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Payment includes Taxes and Insurance\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Payment includes Taxes and Insurance\"}")]
         public bool? IncludeTaxesAndInsuranceIndicator { get => _includeTaxesAndInsuranceIndicator; set => SetField(ref _includeTaxesAndInsuranceIndicator, value); }
 
         /// <summary>
         /// Liability Debt is NOT secured to Subject Property [FLNN61]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"This Debt is NOT secured to Subject Property?\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"This Debt is NOT secured to Subject Property?\"}")]
         public bool? IsDebtNotSecuredToSubjectPropertyIndicator { get => _isDebtNotSecuredToSubjectPropertyIndicator; set => SetField(ref _isDebtNotSecuredToSubjectPropertyIndicator, value); }
 
         /// <summary>
@@ -331,13 +331,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Will be Paid Off and will be included [FLNN63]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Paid off (*) will be included\"}")]
         public bool? PayoffIncludedIndicator { get => _payoffIncludedIndicator; set => SetField(ref _payoffIncludedIndicator, value); }
 
         /// <summary>
         /// Liability Will be Paid Off [FLNN18]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Will be paid off (*)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Will be paid off (*)\"}")]
         public bool? PayoffStatusIndicator { get => _payoffStatusIndicator; set => SetField(ref _payoffStatusIndicator, value); }
 
         /// <summary>
@@ -349,19 +349,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Print - See Attached Authorization [FLNN36]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
 
         /// <summary>
         /// Liability Print User Job Title [FLNN64]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's job title\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
         public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
 
         /// <summary>
         /// Liability Print User Name as Title [FLNN38]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's name as title\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name as title\"}")]
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
 
         /// <summary>
@@ -389,13 +389,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Resubordinated Indicator [FLNN26]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Resubordinated Indicator\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Resubordinated Indicator\"}")]
         public bool? SubjectLoanResubordinationIndicator { get => _subjectLoanResubordinationIndicator; set => SetField(ref _subjectLoanResubordinationIndicator, value); }
 
         /// <summary>
         /// Subject Property Indicator [FLNN27]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Subject Property Indicator\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Subject Property Indicator\"}")]
         public bool? SubjectPropertyIndicator { get => _subjectPropertyIndicator; set => SetField(ref _subjectPropertyIndicator, value); }
 
         /// <summary>

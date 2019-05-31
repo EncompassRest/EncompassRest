@@ -370,7 +370,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - Use Alternate [LE2.X28]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Use Alternate\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Use Alternate\"}")]
         public bool? UseAlternate { get => _useAlternate; set => SetField(ref _useAlternate, value); }
     }
 }

@@ -152,19 +152,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Other Income Source Print - See Attached Authorization [URLAROISNN04]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
 
         /// <summary>
         /// Other Income Source Print User Job Title [URLAROISNN64]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's job title\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
         public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
 
         /// <summary>
         /// Other Income Source Print User Name [URLAROISNN15]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's name\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name\"}")]
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
 
         /// <summary>

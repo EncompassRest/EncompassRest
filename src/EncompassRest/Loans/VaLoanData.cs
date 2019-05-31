@@ -473,7 +473,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Buyer Purch Lot Separately [1344]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Buyer is purchasing lot separately\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Buyer is purchasing lot separately\"}")]
         public bool? BuyerPurchasingLotSeparately { get => _buyerPurchasingLotSeparately; set => SetField(ref _buyerPurchasingLotSeparately, value); }
 
         /// <summary>
@@ -496,7 +496,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Equipment Clothes Washer [302]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Clothes / Washer\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Clothes / Washer\"}")]
         public bool? ClothesWasherIndicator { get => _clothesWasherIndicator; set => SetField(ref _clothesWasherIndicator, value); }
 
         /// <summary>
@@ -513,7 +513,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Constr Warranty Incl [722]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Construction Warranty Included\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Construction Warranty Included\"}")]
         public bool? ConstructionWarrantyIncluded { get => _constructionWarrantyIncluded; set => SetField(ref _constructionWarrantyIncluded, value); }
 
         /// <summary>
@@ -530,7 +530,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Currently on Military Duty [VAVOB.X68]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Currently on military duty\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Currently on military duty\"}")]
         public bool? CurrentlyOnMilitaryDuty { get => _currentlyOnMilitaryDuty; set => SetField(ref _currentlyOnMilitaryDuty, value); }
 
         /// <summary>
@@ -575,13 +575,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Equipment Dishwasher [301]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Dish Washer\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Dish Washer\"}")]
         public bool? DishwasherIndicator { get => _dishwasherIndicator; set => SetField(ref _dishwasherIndicator, value); }
 
         /// <summary>
         /// VA Equipment Dryer [308]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Dryer\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Dryer\"}")]
         public bool? DryerIndicator { get => _dryerIndicator; set => SetField(ref _dryerIndicator, value); }
 
         /// <summary>
@@ -592,7 +592,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Energy Improvements Addition of Feature [379]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Addition of Feature\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Addition of Feature\"}")]
         public bool? EnergyImprovementsAdditionOfFeature { get => _energyImprovementsAdditionOfFeature; set => SetField(ref _energyImprovementsAdditionOfFeature, value); }
 
         /// <summary>
@@ -703,13 +703,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Summ Discount Info [990]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Exempt\",\"false\":\"Not Exempt\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Exempt\",\"N\":\"Not Exempt\"}")]
         public bool? FundingFeeExempt { get => _fundingFeeExempt; set => SetField(ref _fundingFeeExempt, value); }
 
         /// <summary>
         /// VA Equipment Garbage Disposal [309]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Garbage Disposal\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Garbage Disposal\"}")]
         public bool? GarbageDisposalIndicator { get => _garbageDisposalIndicator; set => SetField(ref _garbageDisposalIndicator, value); }
 
         /// <summary>
@@ -732,7 +732,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Energy Improvements Insulation [380]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Insulation, Caulking\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Insulation, Caulking\"}")]
         public bool? Insulation { get => _insulation; set => SetField(ref _insulation, value); }
 
         /// <summary>
@@ -947,7 +947,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Energy Improvements None [376]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"None\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"None\"}")]
         public bool? NoEnergyImprovements { get => _noEnergyImprovements; set => SetField(ref _noEnergyImprovements, value); }
 
         /// <summary>
@@ -969,7 +969,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA On Military Duty Day Following Separation [VAVOB.X69]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"On military duty on the day following separation\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"On military duty on the day following separation\"}")]
         public bool? OnMilitaryDutyFollowingSeparation { get => _onMilitaryDutyFollowingSeparation; set => SetField(ref _onMilitaryDutyFollowingSeparation, value); }
 
         /// <summary>
@@ -1024,7 +1024,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Other Improvements [381]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Other Improvements\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Other Improvements\"}")]
         public bool? OtherImprovements { get => _otherImprovements; set => SetField(ref _otherImprovements, value); }
 
         /// <summary>
@@ -1208,7 +1208,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Proposed Sale Contract Attached [1036]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Proposed sale contract attached\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Proposed sale contract attached\"}")]
         public bool? ProposedSaleContractAttached { get => _proposedSaleContractAttached; set => SetField(ref _proposedSaleContractAttached, value); }
 
         /// <summary>
@@ -1225,7 +1225,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Equipment Range Oven [204]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Range / Oven\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Range / Oven\"}")]
         public bool? RangeOvenIndicator { get => _rangeOvenIndicator; set => SetField(ref _rangeOvenIndicator, value); }
 
         /// <summary>
@@ -1236,7 +1236,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Equipment Refrigerator [209]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Refrigerator\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Refrigerator\"}")]
         public bool? RefrigeratorIndicator { get => _refrigeratorIndicator; set => SetField(ref _refrigeratorIndicator, value); }
 
         /// <summary>
@@ -1247,7 +1247,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Energy Improvements Replacement of System [378]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Replacement of System\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Replacement of System\"}")]
         public bool? ReplacementOfSystem { get => _replacementOfSystem; set => SetField(ref _replacementOfSystem, value); }
 
         /// <summary>
@@ -1263,7 +1263,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Survey to Seller [377]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Solar Heating / Cooling\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Solar Heating / Cooling\"}")]
         public bool? SolarHeatingOrCooling { get => _solarHeatingOrCooling; set => SetField(ref _solarHeatingOrCooling, value); }
 
         /// <summary>
@@ -1695,13 +1695,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Equipment Vent Fan [316]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Vent / Fan\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Vent / Fan\"}")]
         public bool? VentFanIndicator { get => _ventFanIndicator; set => SetField(ref _ventFanIndicator, value); }
 
         /// <summary>
         /// VA Discharged/Have Svc-Connected Disabilities [VAELIG.X22]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Discharged / have any service-connected disabilities\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Discharged / have any service-connected disabilities\"}")]
         public bool? VeteranDischargedIndicator { get => _veteranDischargedIndicator; set => SetField(ref _veteranDischargedIndicator, value); }
 
         /// <summary>
@@ -1749,7 +1749,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Equipment W/W Carpet [318]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"W / W Carpet\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"W / W Carpet\"}")]
         public bool? WWCarpetIndicator { get => _wWCarpetIndicator; set => SetField(ref _wWCarpetIndicator, value); }
     }
 }

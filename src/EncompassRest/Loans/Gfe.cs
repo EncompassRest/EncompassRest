@@ -219,7 +219,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details GFE Provided By Broker [1814]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"This Good Faith Estimate is being provided by broker...\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"This Good Faith Estimate is being provided by broker...\"}")]
         public bool? GfeProvidedByBrokerIndicator { get => _gfeProvidedByBrokerIndicator; set => SetField(ref _gfeProvidedByBrokerIndicator, value); }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Prepymt Penalty [RE88395.X322]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Prepayment penalty\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Prepayment penalty\"}")]
         public bool? HasPrepaymentPenaltyIndicator { get => _hasPrepaymentPenaltyIndicator; set => SetField(ref _hasPrepaymentPenaltyIndicator, value); }
 
         /// <summary>
@@ -325,7 +325,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Prepymt Penalty [RE88395.X191]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Any payment of principle in excess of 20% of the\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Any payment of principle in excess of 20% of the\"}")]
         public bool? PaymentOfPrincipleIndicator { get => _paymentOfPrincipleIndicator; set => SetField(ref _paymentOfPrincipleIndicator, value); }
 
         /// <summary>
@@ -370,7 +370,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Prepymt - Other [RE88395.X124]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Other (see loan documents for details)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Other (see loan documents for details)\"}")]
         public bool? PrepaymentOtherTypeIndicator { get => _prepaymentOtherTypeIndicator; set => SetField(ref _prepaymentOtherTypeIndicator, value); }
 
         /// <summary>
@@ -382,7 +382,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Prepymt Penalty None [RE88395.X123]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"No prepayment penalty\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"No prepayment penalty\"}")]
         public bool? PrepaymentPenaltyIndicator { get => _prepaymentPenaltyIndicator; set => SetField(ref _prepaymentPenaltyIndicator, value); }
 
         /// <summary>

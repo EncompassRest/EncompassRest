@@ -813,7 +813,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Property Info Attach Legal Descr [1884]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Attach legal description\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Attach legal description\"}")]
         public bool? LegalAttached { get => _legalAttached; set => SetField(ref _legalAttached, value); }
 
         /// <summary>
@@ -1174,7 +1174,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Docs REGZ Loan Info Sync Prepaid Int [2852]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
         public bool? SyncInterestDateDisbursementDate { get => _syncInterestDateDisbursementDate; set => SetField(ref _syncInterestDateDisbursementDate, value); }
 
         /// <summary>

@@ -65,7 +65,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Commit Terms See Below [1365]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"See Below  (Appraisal done)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"See Below  (Appraisal done)\"}")]
         public bool? AppraisalDone { get => _appraisalDone; set => SetField(ref _appraisalDone, value); }
 
         /// <summary>
@@ -92,13 +92,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Conditional Commit Under Act [1141]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Conditional Commitment under Act\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Conditional Commitment under Act\"}")]
         public bool? ConditionalCommitmentUnderActg { get => _conditionalCommitmentUnderActg; set => SetField(ref _conditionalCommitmentUnderActg, value); }
 
         /// <summary>
         /// HUD Conditions Elig High Loan to Value Ratio [1342]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Eligible for high loan to value ratio\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Eligible for high loan to value ratio\"}")]
         public bool? EligibleForHighLtv { get => _eligibleForHighLtv; set => SetField(ref _eligibleForHighLtv, value); }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Manufactured Housing [603]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Manufactured Housing\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Manufactured Housing\"}")]
         public bool? ManufacturedHousing { get => _manufacturedHousing; set => SetField(ref _manufacturedHousing, value); }
 
         /// <summary>

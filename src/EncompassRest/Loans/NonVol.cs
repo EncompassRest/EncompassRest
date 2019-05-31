@@ -51,7 +51,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Will be Paid Off and will be included [UNFLNN05]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Paid off (*) will be included\"}")]
         public bool? IncludedIndicator { get => _includedIndicator; set => SetField(ref _includedIndicator, value); }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// POC Indicator [UNFLNN06]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Paid off (*) will be included\"}")]
         public bool? POCIndicator { get => _pOCIndicator; set => SetField(ref _pOCIndicator, value); }
 
         /// <summary>

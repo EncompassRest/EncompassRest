@@ -61,7 +61,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreviousVaLoan PropertyOwned
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"true\":\"Property Owned\"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"Y\":\"Property Owned\"}")]
         public bool? PropertyOwned { get => _propertyOwned; set => SetField(ref _propertyOwned, value); }
 
         /// <summary>

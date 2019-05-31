@@ -320,7 +320,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Appraised Value - Mult by 85% Check Box [1983]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"multiplied by 85%\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"multiplied by 85%\"}")]
         public bool? Use85PercentRuleIndicator { get => _use85PercentRuleIndicator; set => SetField(ref _use85PercentRuleIndicator, value); }
     }
 }

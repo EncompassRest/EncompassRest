@@ -286,7 +286,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Dates/Num Discl Are Estimates [679]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"all dates and numerical disclosures except the late payment disclosures are estimates.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"all dates and numerical disclosures except the late payment disclosures are estimates.\"}")]
         public bool? AllDateAndNumericalDisclosuresIndicator { get => _allDateAndNumericalDisclosuresIndicator; set => SetField(ref _allDateAndNumericalDisclosuresIndicator, value); }
 
         /// <summary>
@@ -410,7 +410,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Credit Disability [1698]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Credit insurance\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Credit insurance\"}")]
         public bool? CreditDisabilityIndicator { get => _creditDisabilityIndicator; set => SetField(ref _creditDisabilityIndicator, value); }
 
         /// <summary>
@@ -428,19 +428,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Credit Life [1697]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Credit life insurance\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Credit life insurance\"}")]
         public bool? CreditLifeInsuranceIndicator { get => _creditLifeInsuranceIndicator; set => SetField(ref _creditLifeInsuranceIndicator, value); }
 
         /// <summary>
         /// REGZ Pymt Sched Customize [1678]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Customize\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Customize\"}")]
         public bool? CustomizePaymentScheduleIndicator { get => _customizePaymentScheduleIndicator; set => SetField(ref _customizePaymentScheduleIndicator, value); }
 
         /// <summary>
         /// REGZ Pymt Sched Demand Feature [663]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"DEMAND FEATURE: This obligation has a demand feature.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"DEMAND FEATURE: This obligation has a demand feature.\"}")]
         public bool? DemandFeatureIndicator { get => _demandFeatureIndicator; set => SetField(ref _demandFeatureIndicator, value); }
 
         /// <summary>
@@ -860,7 +860,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Flood [676]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Flood insurance\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Flood insurance\"}")]
         public bool? FloodInsuranceIndicator { get => _floodInsuranceIndicator; set => SetField(ref _floodInsuranceIndicator, value); }
 
         /// <summary>
@@ -961,7 +961,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Premium If you purchase [1708]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"If you purchase\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"If you purchase\"}")]
         public bool? IfYouPurchaseIndicator { get => _ifYouPurchaseIndicator; set => SetField(ref _ifYouPurchaseIndicator, value); }
 
         /// <summary>
@@ -1202,7 +1202,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details E Means Estimate [680]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"means an estimate\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"means an estimate\"}")]
         public bool? MeansAnEstimateIndicator { get => _meansAnEstimateIndicator; set => SetField(ref _meansAnEstimateIndicator, value); }
 
         /// <summary>
@@ -1280,7 +1280,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance MMI [723]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"MMI\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"MMI\"}")]
         public bool? MmiIndicator { get => _mmiIndicator; set => SetField(ref _mmiIndicator, value); }
 
         /// <summary>
@@ -1353,7 +1353,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance PMI [8]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"PMI\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"PMI\"}")]
         public bool? PmiIndicator { get => _pmiIndicator; set => SetField(ref _pmiIndicator, value); }
 
         /// <summary>
@@ -1383,7 +1383,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Property [1242]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Hazard Insurance\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Hazard Insurance\"}")]
         public bool? PropertyInsuranceIndicator { get => _propertyInsuranceIndicator; set => SetField(ref _propertyInsuranceIndicator, value); }
 
         /// <summary>
@@ -1411,7 +1411,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Prepymt - May/Will Not Refund [670]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"may\",\"false\":\"will not\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"may\",\"N\":\"will not\"}")]
         public bool? RefundPaymentIndicator { get => _refundPaymentIndicator; set => SetField(ref _refundPaymentIndicator, value); }
 
         /// <summary>
@@ -1438,7 +1438,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// REGZ Pymt Sched Required Deposit [664]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"REQUIRED DEPOSIT: The annual % rate does not take into account your required deposit.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"REQUIRED DEPOSIT: The annual % rate does not take into account your required deposit.\"}")]
         public bool? RequiredDepositIndicator { get => _requiredDepositIndicator; set => SetField(ref _requiredDepositIndicator, value); }
 
         /// <summary>
@@ -1576,13 +1576,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Qualify Using P&amp;I [1853]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Qualify using P&I\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Qualify using P&I\"}")]
         public bool? UsePitiForRatioIndicator { get => _usePitiForRatioIndicator; set => SetField(ref _usePitiForRatioIndicator, value); }
 
         /// <summary>
         /// REGZ Pymt Sched Variable Rate Feature [665]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"VARIABLE RATE FEATURE: This loan contains a variable rate feature.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"VARIABLE RATE FEATURE: This loan contains a variable rate feature.\"}")]
         public bool? VariableRateFeatureIndicator { get => _variableRateFeatureIndicator; set => SetField(ref _variableRateFeatureIndicator, value); }
 
         /// <summary>

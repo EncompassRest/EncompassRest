@@ -711,13 +711,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve RE 1 FHA Insured [CAPIAP.X28]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"FHA Insured\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"FHA Insured\"}")]
         public bool? HudRealEstateFhaInsured1 { get => _hudRealEstateFhaInsured1; set => SetField(ref _hudRealEstateFhaInsured1, value); }
 
         /// <summary>
         /// HUD Property Improve RE 2 FHA Insured [CAPIAP.X30]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"FHA Insured\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"FHA Insured\"}")]
         public bool? HudRealEstateFhaInsured2 { get => _hudRealEstateFhaInsured2; set => SetField(ref _hudRealEstateFhaInsured2, value); }
 
         /// <summary>
@@ -779,13 +779,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Income of Spouse will not be used [35]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"The income/assets of the Borrower's spouse will not be used..\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"The income/assets of the Borrower's spouse will not be used..\"}")]
         public bool? IncomeOfBorrowersSpouseUsedIndicator { get => _incomeOfBorrowersSpouseUsedIndicator; set => SetField(ref _incomeOfBorrowersSpouseUsedIndicator, value); }
 
         /// <summary>
         /// Trans Details Income of Other will be used [307]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"The income/assets of a person other than Borrower will be used...\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"The income/assets of a person other than Borrower will be used...\"}")]
         public bool? IncomeOtherThanBorrowerUsedIndicator { get => _incomeOtherThanBorrowerUsedIndicator; set => SetField(ref _incomeOtherThanBorrowerUsedIndicator, value); }
 
         /// <summary>

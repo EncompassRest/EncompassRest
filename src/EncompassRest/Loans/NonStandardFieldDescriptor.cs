@@ -32,7 +32,7 @@ namespace EncompassRest.Loans
                 {
                     return LoanFieldValueType.Boolean;
                 }
-                return LoanFieldValueType.String;
+                return base.ValueType;
             }
         }
 

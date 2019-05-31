@@ -277,16 +277,16 @@ namespace EncompassRest
 
         private static readonly string s_encompassSDKFolder = Path.Combine(Directory.EnumerateDirectories("C:\\SmartClientCache\\Apps\\UAC\\Ellie Mae\\").First(), "Encompass360");
 
-        public static Task Main(string[] args)
+        public static Task Main()
         {
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
 
-            return RunAsync(args);
+            return RunAsync();
         }
 
         private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args) => Assembly.LoadFrom(Path.Combine(s_encompassSDKFolder, $"{args.Name.Substring(0, args.Name.IndexOf(","))}.dll"));
 
-        public static async Task RunAsync(string[] args)
+        public static async Task RunAsync()
         {
             try
             {
@@ -393,6 +393,25 @@ namespace EncompassRest
                 var orderedFields = fields.Values.OrderBy(p => p.ModelPath.Substring(0, p.ModelPath.LastIndexOfAny(new[] { '.', '[' }))).ThenBy(p => p.ModelPath).ToList();
 
                 var orderedFieldPatterns = fieldPatterns.Values.OrderBy(p => p.ModelPath.Substring(0, p.ModelPath.LastIndexOf('.'))).ThenBy(p => p.ModelPath).ToList();
+
+                foreach (var field in orderedFields)
+                {
+                    if (field.NonSerializedFormat == LoanFieldFormat.YN)
+                    {
+                        var sdkDescriptor = EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[field.FieldId];
+                        if (sdkDescriptor != null && sdkDescriptor.Format != EllieMae.Encompass.BusinessObjects.Loans.LoanFieldFormat.YN && sdkDescriptor.Options.Count > 0 && (sdkDescriptor.Options.Count != 2 || (sdkDescriptor.Options[0].Value != "Y" && sdkDescriptor.Options[0].Value != "N") || (sdkDescriptor.Options[1].Value != "Y" && sdkDescriptor.Options[1].Value != "N")))
+                        {
+                            field.Format = (LoanFieldFormat)sdkDescriptor.Format;
+                            field.Options = sdkDescriptor.Options.Cast<EllieMae.Encompass.BusinessObjects.Loans.FieldOption>().Select(o => new FieldOption(o.Value, o.Text)).ToList();
+                            if (field.Options.Count > 1 && field.Options[1].Value.StartsWith("Y", StringComparison.OrdinalIgnoreCase))
+                            {
+                                field.Options.Reverse();
+                            }
+                            field.ReadOnly = sdkDescriptor.ReadOnly;
+                            Console.WriteLine($"{field.FieldId} {sdkDescriptor.Format} != {field.NonSerializedFormat}");
+                        }
+                    }
+                }
 
                 using (var fs = new FileStream("LoanFields.json", FileMode.Create))
                 {
@@ -715,7 +734,7 @@ namespace EncompassRest
                     {
                         attributeProperties.Add($"ReadOnly = true");
                     }
-                    var propertyType = GetPropertyOrElementType(entityName, propertyName, propertySchema, out var isEntity, out var isList);
+                    var propertyType = GetPropertyOrElementType(propertySchema, out var isEntity, out var isList);
                     if (s_explicitStringEnumValues.TryGetValue(entityPropertyName, out var enumName))
                     {
                         propertyType = $"StringEnumValue<{enumName}>";
@@ -788,7 +807,7 @@ namespace EncompassRest
                         }
                         else if (propertyType == "bool?")
                         {
-                            var optionValues = propertySchema.AllowedValues.Where(o => !string.IsNullOrEmpty(o.Text) && ((string.Equals(o.Value, "true", StringComparison.Ordinal) && !string.Equals(o.Text, "Yes", StringComparison.Ordinal)) || (string.Equals(o.Value, "false", StringComparison.Ordinal) && !string.Equals(o.Text, "No", StringComparison.Ordinal)))).ToDictionary(o => o.Value, o => o.Text);
+                            var optionValues = propertySchema.AllowedValues.Where(o => !string.IsNullOrEmpty(o.Text) && ((string.Equals(o.Value, "true", StringComparison.Ordinal) && !string.Equals(o.Text, "Yes", StringComparison.Ordinal)) || (string.Equals(o.Value, "false", StringComparison.Ordinal) && !string.Equals(o.Text, "No", StringComparison.Ordinal)))).ToDictionary(o => string.Equals(o.Value, "true", StringComparison.Ordinal) ? "Y" : "N", o => o.Text);
                             if (optionValues.Count > 0)
                             {
                                 attributeProperties.Add($@"OptionsJson = ""{JsonConvert.SerializeObject(optionValues).Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
@@ -1000,7 +1019,7 @@ namespace EncompassRest
             }
         }
 
-        private static string GetPropertyOrElementType(string entityType, string propertyName, PropertySchema propertySchema, out bool isEntity, out bool isList)
+        private static string GetPropertyOrElementType(PropertySchema propertySchema, out bool isEntity, out bool isList)
         {
             isEntity = false;
             isList = false;

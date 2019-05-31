@@ -74,7 +74,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Deposited [URLARGGNN20]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Deposited\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Deposited\"}")]
         public bool? DepositedIndicator { get => _depositedIndicator; set => SetField(ref _depositedIndicator, value); }
 
         /// <summary>
@@ -153,19 +153,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gift or Grant Print - See Attached Authorization [URLARGGNN04]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
 
         /// <summary>
         /// Gift or Grant Print user's job title [URLARGGNN64]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's job title\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
         public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
 
         /// <summary>
         /// Gift or Grant Print User Name [URLARGGNN15]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Print user's name\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name\"}")]
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
 
         /// <summary>

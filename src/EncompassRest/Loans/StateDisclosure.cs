@@ -233,7 +233,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Borr Accept [FLMTGCM.X10]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"The date by which the commitment must be accepted by the borrower is\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"The date by which the commitment must be accepted by the borrower is\"}")]
         public bool? AcceptedByBorrowerIndicator { get => _acceptedByBorrowerIndicator; set => SetField(ref _acceptedByBorrowerIndicator, value); }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Act as Follows [DISCLOSURE.X76]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"We will be acting as follows:\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"We will be acting as follows:\"}")]
         public bool? ActingOthersIndicator { get => _actingOthersIndicator; set => SetField(ref _actingOthersIndicator, value); }
 
         /// <summary>
@@ -312,31 +312,31 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Role - Attorney [DISCLOSURE.X99]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"as an attorney for\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"as an attorney for\"}")]
         public bool? AsAttorneyIndicator { get => _asAttorneyIndicator; set => SetField(ref _asAttorneyIndicator, value); }
 
         /// <summary>
         /// Disclosure-TX Role - RE Broker/Agent [DISCLOSURE.X95]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"as a real estate broker, agent, or salesperson for\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"as a real estate broker, agent, or salesperson for\"}")]
         public bool? AsRealBrokerIndicator { get => _asRealBrokerIndicator; set => SetField(ref _asRealBrokerIndicator, value); }
 
         /// <summary>
         /// Disclosure-TX Attorney for Buyer [DISCLOSURE.X101]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"you (the buyer)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"you (the buyer)\"}")]
         public bool? AttorneyForTheBuyerIndicator { get => _attorneyForTheBuyerIndicator; set => SetField(ref _attorneyForTheBuyerIndicator, value); }
 
         /// <summary>
         /// Disclosure-TX Attorney for Buyer/Seller [DISCLOSURE.X102]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"the lender\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"the lender\"}")]
         public bool? AttorneyForTheLenderIndicator { get => _attorneyForTheLenderIndicator; set => SetField(ref _attorneyForTheLenderIndicator, value); }
 
         /// <summary>
         /// Disclosure-TX Attorney for Seller [DISCLOSURE.X100]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"the seller\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"the seller\"}")]
         public bool? AttorneyForTheSellerIndicator { get => _attorneyForTheSellerIndicator; set => SetField(ref _attorneyForTheSellerIndicator, value); }
 
         /// <summary>
@@ -382,7 +382,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Compensated Wholesale Options [DISCLOSURE.X80]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Our pricing for your loan is based upon current wholesale options available to us\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Our pricing for your loan is based upon current wholesale options available to us\"}")]
         public bool? BasedOnWholesaleOptionsIndicator { get => _basedOnWholesaleOptionsIndicator; set => SetField(ref _basedOnWholesaleOptionsIndicator, value); }
 
         /// <summary>
@@ -495,7 +495,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Broker Paid Fee [DISCLOSURE.X114]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"I will pay you a fee of\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"I will pay you a fee of\"}")]
         public bool? BrokerPayIndicator { get => _brokerPayIndicator; set => SetField(ref _brokerPayIndicator, value); }
 
         /// <summary>
@@ -584,7 +584,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Deposit Refundable [FLGFE.X55]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"true\":\"Refundable by\"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"Y\":\"Refundable by\"}")]
         public bool? DepositRefundableIndicator { get => _depositRefundableIndicator; set => SetField(ref _depositRefundableIndicator, value); }
 
         /// <summary>
@@ -614,7 +614,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Broker Paid Direct [DISCLOSURE.X117]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"I will pay you directly, upon my signed acceptance of a commitment\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"I will pay you directly, upon my signed acceptance of a commitment\"}")]
         public bool? DirectPayIndicator { get => _directPayIndicator; set => SetField(ref _directPayIndicator, value); }
 
         /// <summary>
@@ -751,7 +751,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Act as Independent Contractor [DISCLOSURE.X75]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"We are acting as an independent contractor\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"We are acting as an independent contractor\"}")]
         public bool? IndependentContractorIndicator { get => _independentContractorIndicator; set => SetField(ref _independentContractorIndicator, value); }
 
         /// <summary>
@@ -777,19 +777,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL is Estimate [FLMTGCM.X12]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"This disclosure is an ESTIMATE. Some of the information necessary for an accurate disclosure is unknown to the lender. This disclosure is based upon the best information reasonably available to the lender at this time.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"This disclosure is an ESTIMATE. Some of the information necessary for an accurate disclosure is unknown to the lender. This disclosure is based upon the best information reasonably available to the lender at this time.\"}")]
         public bool? IsEstimateIndicator { get => _isEstimateIndicator; set => SetField(ref _isEstimateIndicator, value); }
 
         /// <summary>
         /// Disclosure - KS - Kansas UCCC Election [DISCLOSURE.X954]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
         public bool? KsUcccElectionIndicator { get => _ksUcccElectionIndicator; set => SetField(ref _ksUcccElectionIndicator, value); }
 
         /// <summary>
         /// Disclosure - KY - Kentucky Home Solicitation Loan [DISCLOSURE.X956]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
         public bool? KyHomeSolicationLoanIndicator { get => _kyHomeSolicationLoanIndicator; set => SetField(ref _kyHomeSolicationLoanIndicator, value); }
 
         /// <summary>
@@ -822,7 +822,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Lender Paid Fee [DISCLOSURE.X109]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"The lender will pay you a fee of\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"The lender will pay you a fee of\"}")]
         public bool? LenderPayIndicator { get => _lenderPayIndicator; set => SetField(ref _lenderPayIndicator, value); }
 
         /// <summary>
@@ -846,7 +846,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Lender Fee Unknown [DISCLOSURE.X97]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"The fee the lender will pay you is not known. The maximum points paid including premium pricing shall not\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"The fee the lender will pay you is not known. The maximum points paid including premium pricing shall not\"}")]
         public bool? LenderPayUnknownIndicator { get => _lenderPayUnknownIndicator; set => SetField(ref _lenderPayUnknownIndicator, value); }
 
         /// <summary>
@@ -945,7 +945,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Compensated Retail Price [DISCLOSURE.X79]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"The retail price we offer you\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"The retail price we offer you\"}")]
         public bool? OfferRetailPriceIndicator { get => _offerRetailPriceIndicator; set => SetField(ref _offerRetailPriceIndicator, value); }
 
         /// <summary>
@@ -1036,13 +1036,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure - AK - Print Certification O fCosts [DISCLOSURE.X962]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
         public bool? PrintCertificationOfCosts { get => _printCertificationOfCosts; set => SetField(ref _printCertificationOfCosts, value); }
 
         /// <summary>
         /// Disclosure - AK - Print Interest Rate Reduction Rider [DISCLOSURE.X961]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
         public bool? PrintInterestRateReductionRider { get => _printInterestRateReductionRider; set => SetField(ref _printInterestRateReductionRider, value); }
 
         /// <summary>
@@ -1097,7 +1097,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Commitment Fee Refundable If [FLMTGCM.X8]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Refundable If\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Refundable If\"}")]
         public bool? RefundableIndicator { get => _refundableIndicator; set => SetField(ref _refundableIndicator, value); }
 
         /// <summary>
@@ -1253,7 +1253,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Will Submit to Lender [DISCLOSURE.X74]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"We will submit your loan application to a participating lender\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"We will submit your loan application to a participating lender\"}")]
         public bool? SubmitToLenderIndicator { get => _submitToLenderIndicator; set => SetField(ref _submitToLenderIndicator, value); }
 
         /// <summary>
@@ -1385,7 +1385,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure - TX - Texas Veterans Land Board [DISCLOSURE.X955]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
         public bool? TxVeteransLandBoardIndicator { get => _txVeteransLandBoardIndicator; set => SetField(ref _txVeteransLandBoardIndicator, value); }
 
         /// <summary>

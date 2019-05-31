@@ -546,7 +546,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Home Points Program Loan will Participate [2859]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"true\":\"Loan Will Participate in the HomePoints Program\"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"Y\":\"Loan Will Participate in the HomePoints Program\"}")]
         public bool? ParticipateHomePoints { get => _participateHomePoints; set => SetField(ref _participateHomePoints, value); }
 
         /// <summary>

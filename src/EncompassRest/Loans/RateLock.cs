@@ -725,7 +725,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Buy Side ONRP Eligible Flag [4059]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
         public bool? BuySideOnrpEligible { get => _buySideOnrpEligible; set => SetField(ref _buySideOnrpEligible, value); }
 
         /// <summary>
@@ -2882,7 +2882,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request ONRP Eligible Flag [4061]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"true\":\"Y\",\"false\":\"N\"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
         public bool? RequestOnrpEligible { get => _requestOnrpEligible; set => SetField(ref _requestOnrpEligible, value); }
 
         /// <summary>

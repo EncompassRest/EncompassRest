@@ -463,13 +463,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower ActiveDuty
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Currently serving on active duty\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Currently serving on active duty\"}")]
         public bool? ActiveDuty { get => _activeDuty; set => SetField(ref _activeDuty, value); }
 
         /// <summary>
         /// Borrower AdditionalEmploymentDoesNotApply
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does Not Apply\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
         public bool? AdditionalEmploymentDoesNotApply { get => _additionalEmploymentDoesNotApply; set => SetField(ref _additionalEmploymentDoesNotApply, value); }
 
         /// <summary>
@@ -556,7 +556,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower AuthorizedToSignIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Authorized to Sign\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Authorized to Sign\"}")]
         public bool? AuthorizedToSignIndicator { get => _authorizedToSignIndicator; set => SetField(ref _authorizedToSignIndicator, value); }
 
         /// <summary>
@@ -781,7 +781,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower CurrentEmploymentDoesNotApply
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does Not Apply\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
         public bool? CurrentEmploymentDoesNotApply { get => _currentEmploymentDoesNotApply; set => SetField(ref _currentEmploymentDoesNotApply, value); }
 
         /// <summary>
@@ -1112,7 +1112,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower GiftsAndGrantsIndicatorBor
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does not apply\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does not apply\"}")]
         public bool? GiftsAndGrantsIndicatorBor { get => _giftsAndGrantsIndicatorBor; set => SetField(ref _giftsAndGrantsIndicatorBor, value); }
 
         /// <summary>
@@ -1144,7 +1144,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaAfricanAmericanIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Black or African American\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Black or African American\"}")]
         public bool? HmdaAfricanAmericanIndicator { get => _hmdaAfricanAmericanIndicator; set => SetField(ref _hmdaAfricanAmericanIndicator, value); }
 
         /// <summary>
@@ -1155,7 +1155,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaAmericanIndianIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"American Indian or Alaska Native\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"American Indian or Alaska Native\"}")]
         public bool? HmdaAmericanIndianIndicator { get => _hmdaAmericanIndianIndicator; set => SetField(ref _hmdaAmericanIndianIndicator, value); }
 
         /// <summary>
@@ -1171,7 +1171,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaAsianIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Asian\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Asian\"}")]
         public bool? HmdaAsianIndicator { get => _hmdaAsianIndicator; set => SetField(ref _hmdaAsianIndicator, value); }
 
         /// <summary>
@@ -1204,31 +1204,31 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaEthnicityDoNotWishIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"I do not wish to provide this information\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
         public bool? HmdaEthnicityDoNotWishIndicator { get => _hmdaEthnicityDoNotWishIndicator; set => SetField(ref _hmdaEthnicityDoNotWishIndicator, value); }
 
         /// <summary>
         /// Borrower HmdaEthnicityHispanicLatinoIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Hispanic or Latino\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Hispanic or Latino\"}")]
         public bool? HmdaEthnicityHispanicLatinoIndicator { get => _hmdaEthnicityHispanicLatinoIndicator; set => SetField(ref _hmdaEthnicityHispanicLatinoIndicator, value); }
 
         /// <summary>
         /// Borrower HmdaEthnicityInfoNotProvided
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Information Not Provided\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Not Provided\"}")]
         public bool? HmdaEthnicityInfoNotProvided { get => _hmdaEthnicityInfoNotProvided; set => SetField(ref _hmdaEthnicityInfoNotProvided, value); }
 
         /// <summary>
         /// Borrower HmdaEthnicityNotApplicableIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Not Applicable\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not Applicable\"}")]
         public bool? HmdaEthnicityNotApplicableIndicator { get => _hmdaEthnicityNotApplicableIndicator; set => SetField(ref _hmdaEthnicityNotApplicableIndicator, value); }
 
         /// <summary>
         /// Borrower HmdaEthnicityNotHispanicLatinoIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Not Hispanic or Latino\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not Hispanic or Latino\"}")]
         public bool? HmdaEthnicityNotHispanicLatinoIndicator { get => _hmdaEthnicityNotHispanicLatinoIndicator; set => SetField(ref _hmdaEthnicityNotHispanicLatinoIndicator, value); }
 
         /// <summary>
@@ -1280,25 +1280,25 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaGendertypeDoNotWishIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"I do not wish to provide this information\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
         public bool? HmdaGendertypeDoNotWishIndicator { get => _hmdaGendertypeDoNotWishIndicator; set => SetField(ref _hmdaGendertypeDoNotWishIndicator, value); }
 
         /// <summary>
         /// Borrower HmdaGendertypeFemaleIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Female\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Female\"}")]
         public bool? HmdaGendertypeFemaleIndicator { get => _hmdaGendertypeFemaleIndicator; set => SetField(ref _hmdaGendertypeFemaleIndicator, value); }
 
         /// <summary>
         /// Borrower HmdaGendertypeMaleIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Male\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Male\"}")]
         public bool? HmdaGendertypeMaleIndicator { get => _hmdaGendertypeMaleIndicator; set => SetField(ref _hmdaGendertypeMaleIndicator, value); }
 
         /// <summary>
         /// Borrower HmdaGendertypeNotApplicableIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Not Applicable\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not Applicable\"}")]
         public bool? HmdaGendertypeNotApplicableIndicator { get => _hmdaGendertypeNotApplicableIndicator; set => SetField(ref _hmdaGendertypeNotApplicableIndicator, value); }
 
         /// <summary>
@@ -1334,19 +1334,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// No Co-applicant Indicator [3840]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"No Co-applicant\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"No Co-applicant\"}")]
         public bool? HmdaNoCoApplicantIndicator { get => _hmdaNoCoApplicantIndicator; set => SetField(ref _hmdaNoCoApplicantIndicator, value); }
 
         /// <summary>
         /// Borrower HmdaNotApplicableIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Not applicable\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not applicable\"}")]
         public bool? HmdaNotApplicableIndicator { get => _hmdaNotApplicableIndicator; set => SetField(ref _hmdaNotApplicableIndicator, value); }
 
         /// <summary>
         /// Borrower HmdaNotProvidedIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"I do not wish to provide this information\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
         public bool? HmdaNotProvidedIndicator { get => _hmdaNotProvidedIndicator; set => SetField(ref _hmdaNotProvidedIndicator, value); }
 
         /// <summary>
@@ -1372,7 +1372,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaPacificIslanderIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Native Hawaiian or Other Pacific Islander\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Native Hawaiian or Other Pacific Islander\"}")]
         public bool? HmdaPacificIslanderIndicator { get => _hmdaPacificIslanderIndicator; set => SetField(ref _hmdaPacificIslanderIndicator, value); }
 
         /// <summary>
@@ -1388,13 +1388,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaRaceDoNotWishProvideIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"I do not wish to provide this information\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
         public bool? HmdaRaceDoNotWishProvideIndicator { get => _hmdaRaceDoNotWishProvideIndicator; set => SetField(ref _hmdaRaceDoNotWishProvideIndicator, value); }
 
         /// <summary>
         /// Borrower HmdaRaceInfoNotProvided
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Information Not Provided\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Not Provided\"}")]
         public bool? HmdaRaceInfoNotProvided { get => _hmdaRaceInfoNotProvided; set => SetField(ref _hmdaRaceInfoNotProvided, value); }
 
         /// <summary>
@@ -1431,7 +1431,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaRefusalIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"I do not wish to furnish this info\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to furnish this info\"}")]
         public bool? HmdaRefusalIndicator { get => _hmdaRefusalIndicator; set => SetField(ref _hmdaRefusalIndicator, value); }
 
         /// <summary>
@@ -1442,7 +1442,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaSexInfoNotProvided
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Information Not Provided\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Not Provided\"}")]
         public bool? HmdaSexInfoNotProvided { get => _hmdaSexInfoNotProvided; set => SetField(ref _hmdaSexInfoNotProvided, value); }
 
         /// <summary>
@@ -1453,7 +1453,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaWhiteIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"White\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"White\"}")]
         public bool? HmdaWhiteIndicator { get => _hmdaWhiteIndicator; set => SetField(ref _hmdaWhiteIndicator, value); }
 
         /// <summary>
@@ -1610,7 +1610,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower MailingAddressSameAsPresentIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Same as present address\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Same as present address\"}")]
         public bool? MailingAddressSameAsPresentIndicator { get => _mailingAddressSameAsPresentIndicator; set => SetField(ref _mailingAddressSameAsPresentIndicator, value); }
 
         /// <summary>
@@ -1699,25 +1699,25 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower No3rdPartyEmailIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Borrower No Third-Party Email for HomePoints\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Borrower No Third-Party Email for HomePoints\"}")]
         public bool? No3rdPartyEmailIndicator { get => _no3rdPartyEmailIndicator; set => SetField(ref _no3rdPartyEmailIndicator, value); }
 
         /// <summary>
         /// Co-Borr Race No Co Applicant [4188]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"No co-applicant\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"No co-applicant\"}")]
         public bool? NoCoApplicantEthnicityIndicator { get => _noCoApplicantEthnicityIndicator; set => SetField(ref _noCoApplicantEthnicityIndicator, value); }
 
         /// <summary>
         /// Co-Borr Race No Co Applicant [3174]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"No co-applicant\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"No co-applicant\"}")]
         public bool? NoCoApplicantIndicator { get => _noCoApplicantIndicator; set => SetField(ref _noCoApplicantIndicator, value); }
 
         /// <summary>
         /// Co-Borr Race No Co Applicant [4189]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"No co-applicant\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"No co-applicant\"}")]
         public bool? NoCoApplicantSexIndicator { get => _noCoApplicantSexIndicator; set => SetField(ref _noCoApplicantSexIndicator, value); }
 
         /// <summary>
@@ -1759,7 +1759,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower OtherSrcIncomeDoesNotApply
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does Not Apply\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
         public bool? OtherSrcIncomeDoesNotApply { get => _otherSrcIncomeDoesNotApply; set => SetField(ref _otherSrcIncomeDoesNotApply, value); }
 
         /// <summary>
@@ -1903,7 +1903,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower PresentlyDelinquentIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Have any past due obligations owed to/insured by any agency of the Federal Government\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Have any past due obligations owed to/insured by any agency of the Federal Government\"}")]
         public bool? PresentlyDelinquentIndicator { get => _presentlyDelinquentIndicator; set => SetField(ref _presentlyDelinquentIndicator, value); }
 
         /// <summary>
@@ -1914,7 +1914,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower PreviousEmploymentDoesNotApply
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Does Not Apply\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
         public bool? PreviousEmploymentDoesNotApply { get => _previousEmploymentDoesNotApply; set => SetField(ref _previousEmploymentDoesNotApply, value); }
 
         /// <summary>
@@ -1985,7 +1985,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower ReserveNationalGuardReserveActivated
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Only period of service was as a non-activated member of the Reserve or National Guard\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Only period of service was as a non-activated member of the Reserve or National Guard\"}")]
         public bool? ReserveNationalGuardReserveActivated { get => _reserveNationalGuardReserveActivated; set => SetField(ref _reserveNationalGuardReserveActivated, value); }
 
         /// <summary>
@@ -2086,7 +2086,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower SpousalVABenefitsEligibilityIndicator
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Surviving Spouse\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Surviving Spouse\"}")]
         public bool? SpousalVABenefitsEligibilityIndicator { get => _spousalVABenefitsEligibilityIndicator; set => SetField(ref _spousalVABenefitsEligibilityIndicator, value); }
 
         /// <summary>
@@ -2761,7 +2761,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower Veteran
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"true\":\"Currently retired, discharged, or separated from service\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Currently retired, discharged, or separated from service\"}")]
         public bool? Veteran { get => _veteran; set => SetField(ref _veteran, value); }
 
         /// <summary>

@@ -72,7 +72,15 @@ namespace EncompassRest.Loans
                                 foreach (var loanField in loanFields)
                                 {
                                     var modelPath = loanField.ModelPath;
-                                    var descriptor = new FieldDescriptor(loanField.FieldId, CreateModelPath(modelPath), modelPath, loanField.Description);
+                                    FieldDescriptor descriptor;
+                                    if (loanField.Format.HasValue)
+                                    {
+                                        descriptor = new NonStandardFieldDescriptor(loanField.FieldId, CreateModelPath(modelPath), modelPath, loanField.Description, loanField.Format, loanField.Options, loanField.ReadOnly ?? false);
+                                    }
+                                    else
+                                    {
+                                        descriptor = new FieldDescriptor(loanField.FieldId, CreateModelPath(modelPath), modelPath, loanField.Description);
+                                    }
                                     FieldMappings.AddField(descriptor);
                                 }
                             }
@@ -244,9 +252,10 @@ namespace EncompassRest.Loans
                         }
                     }
                     var fieldInfo = new StandardFieldInfo { FieldId = fieldId, ModelPath = $"{currentPath}.{propertyName}", Description = description };
+                    fieldInfo.NonSerializedFormat = GetFormat(propertySchema);
                     if (extendedFieldInfo)
                     {
-                        fieldInfo.Format = GetFormat(propertySchema);
+                        fieldInfo.Format = fieldInfo.NonSerializedFormat;
                         fieldInfo.Options = GetOptions(propertySchema);
                         fieldInfo.ReadOnly = propertySchema.ReadOnly == true;
                     }
@@ -411,9 +420,10 @@ namespace EncompassRest.Loans
                                 }
                             }
                             var fieldInfo = new StandardFieldInfo { FieldId = fieldId, Description = description, ModelPath = modelPath };
+                            fieldInfo.NonSerializedFormat = GetFormat(propertySchema);
                             if (extendedFieldInfo)
                             {
-                                fieldInfo.Format = GetFormat(propertySchema);
+                                fieldInfo.Format = fieldInfo.NonSerializedFormat;
                                 fieldInfo.Options = GetOptions(propertySchema);
                                 fieldInfo.ReadOnly = propertySchema.ReadOnly == true;
                             }
@@ -490,9 +500,10 @@ namespace EncompassRest.Loans
                                 }
 
                                 var fieldInfo = new StandardFieldInfo { FieldId = fieldId, Description = description, ModelPath = modelPath };
+                                fieldInfo.NonSerializedFormat = GetFormat(propertySchema);
                                 if (extendedFieldInfo)
                                 {
-                                    fieldInfo.Format = GetFormat(propertySchema);
+                                    fieldInfo.Format = fieldInfo.NonSerializedFormat;
                                     fieldInfo.Options = GetOptions(propertySchema);
                                     fieldInfo.ReadOnly = propertySchema.ReadOnly == true;
                                 }
@@ -533,7 +544,7 @@ namespace EncompassRest.Loans
 
         private static List<FieldOption> GetOptions(PropertySchema propertySchema)
         {
-            return propertySchema.AllowedValues?.Where(o => !string.IsNullOrEmpty(o.Text) || !string.IsNullOrEmpty(o.Value)).Distinct().ToList();
+            return propertySchema.AllowedValues?.Where(o => !string.IsNullOrEmpty(o.Text) || !string.IsNullOrEmpty(o.Value)).Select(o => o.Value == "true" || o.Value == "false" ? new FieldOption(o.Value == "true" ? "Y" : "N", o.Text) : o).Distinct().ToList();
         }
 
         internal static ModelPath CreateModelPath(string modelPath)
@@ -613,6 +624,9 @@ namespace EncompassRest.Loans
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public bool? ReadOnly { get; set; }
+
+            [JsonIgnore]
+            public LoanFieldFormat? NonSerializedFormat { get; set; }
         }
 
         internal sealed class VirtualFieldInfo : FieldInfo
