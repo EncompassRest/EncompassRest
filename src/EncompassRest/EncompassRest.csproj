@@ -4,7 +4,7 @@
     <Version>1.0.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/EncompassRest/EncompassRest</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/EncompassRest/EncompassRest/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Title>EncompassRest</Title>
     <PackageTags>encompass rest api client</PackageTags>
     <Description>Encompass API Client Library for .NET</Description>
