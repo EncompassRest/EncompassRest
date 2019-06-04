@@ -1,5 +1,7 @@
-[![NuGet version (EncompassRest)](https://img.shields.io/nuget/v/EncompassRest.svg?style=flat-square)](https://www.nuget.org/packages/EncompassRest/)
-[![Build status](https://dev.azure.com/tydude4christ/Public/_apis/build/status/EncompassRest.EncompassRest?branchName=master)](https://dev.azure.com/tydude4christ/Public/_build/latest?definitionId=1)
+![GitHub last commit (master)](https://img.shields.io/github/last-commit/EncompassRest/EncompassRest/master.svg?logo=github&logoColor=lightgray&style=popout-square)
+[![NuGet Version](https://img.shields.io/nuget/v/EncompassRest.svg?style=popout-square&logoColor=lightgray&logo=nuget)](https://www.nuget.org/packages/EncompassRest/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/EncompassRest.svg?style=popout-square&logoColor=lightgray&logo=nuget)](https://www.nuget.org/packages/EncompassRest/)
+[![Build status](https://img.shields.io/azure-devops/build/tydude4christ/Public/1.svg?style=popout-square&logoColor=lightgray&logo=azuredevops)](https://dev.azure.com/tydude4christ/Public/_build?definitionId=1)
 
 # EncompassRest
 Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+.
