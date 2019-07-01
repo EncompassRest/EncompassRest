@@ -32,6 +32,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _legalDescriptionText1;
         private DirtyValue<string> _legalDescriptionText2;
         private DirtyValue<decimal?> _linkedAmountApplyToDownPayment;
+        private DirtyValue<decimal?> _linkedBaseLoanAmount;
         private DirtyValue<decimal?> _linkedClosedEndPrimaryMortgageLoanAmount;
         private DirtyValue<decimal?> _linkedClosedEndSubordinateMortgageLoanAmount;
         private DirtyValue<StringEnumValue<LienPosition>> _linkedHELOCLienPosition;
@@ -42,7 +43,11 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<LienType>> _linkedLienPriorityType;
         private DirtyValue<string> _linkedLoanNumber;
         private DirtyValue<string> _linkedLoanPurposeType;
+        private DirtyValue<decimal?> _linkedMax5YrsPrincipleAndInterest;
         private DirtyValue<StringEnumValue<LoanType>> _linkedMortgageType;
+        private DirtyValue<decimal?> _linkedProposedFirstMortgageAmount;
+        private DirtyValue<decimal?> _linkedProposedOtherAmount;
+        private DirtyValue<decimal?> _linkedProposedOtherMortgagesAmount;
         private DirtyValue<StringEnumValue<LoanPurposeType>> _loanPurposeType;
         private DirtyValue<string> _loanPurposeTypeOtherDescription;
         private DirtyValue<StringEnumValue<LoanPurposeTypeURLA>> _loanPurposeTypeURLA;
@@ -208,6 +213,12 @@ namespace EncompassRest.Loans
         public decimal? LinkedAmountApplyToDownPayment { get => _linkedAmountApplyToDownPayment; set => SetField(ref _linkedAmountApplyToDownPayment, value); }
 
         /// <summary>
+        /// Linked Trans Details Total Loan Amt (w/ MIP/FF) [LINK_2]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedBaseLoanAmount { get => _linkedBaseLoanAmount; set => SetField(ref _linkedBaseLoanAmount, value); }
+
+        /// <summary>
         /// Closed End Primary Mortgage Loan Amount Copied from Linked Loan [LINK_4487]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -263,9 +274,33 @@ namespace EncompassRest.Loans
         public string LinkedLoanPurposeType { get => _linkedLoanPurposeType; set => SetField(ref _linkedLoanPurposeType, value); }
 
         /// <summary>
+        /// Linked ATR QM - Qualification - Max Rate During First 5 Years - Max P &amp; I [LINK_QM.X337]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedMax5YrsPrincipleAndInterest { get => _linkedMax5YrsPrincipleAndInterest; set => SetField(ref _linkedMax5YrsPrincipleAndInterest, value); }
+
+        /// <summary>
         /// Trans Details Loan Type - Copied from Linked Loan [LINK_1172]
         /// </summary>
         public StringEnumValue<LoanType> LinkedMortgageType { get => _linkedMortgageType; set => SetField(ref _linkedMortgageType, value); }
+
+        /// <summary>
+        /// Linked Expenses Proposed Mtg Pymt [LINK_228]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedProposedFirstMortgageAmount { get => _linkedProposedFirstMortgageAmount; set => SetField(ref _linkedProposedFirstMortgageAmount, value); }
+
+        /// <summary>
+        /// Linked Expenses Proposed Other Housing [LINK_234]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedProposedOtherAmount { get => _linkedProposedOtherAmount; set => SetField(ref _linkedProposedOtherAmount, value); }
+
+        /// <summary>
+        /// Linked Expenses Proposed Other Pymt [LINK_229]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LinkedProposedOtherMortgagesAmount { get => _linkedProposedOtherMortgagesAmount; set => SetField(ref _linkedProposedOtherMortgagesAmount, value); }
 
         /// <summary>
         /// Trans Details Loan Purpose [19]

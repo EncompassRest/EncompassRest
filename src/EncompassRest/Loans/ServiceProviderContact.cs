@@ -14,6 +14,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _contactName;
         private DirtyValue<decimal?> _cost;
         private DirtyValue<string> _email;
+        private DirtyValue<bool?> _entityDeleted;
         private DirtyValue<string> _fax;
         private DirtyValue<decimal?> _feeAmt1;
         private DirtyValue<decimal?> _feeAmt10;
@@ -74,6 +75,11 @@ namespace EncompassRest.Loans
         /// Settlement Service Provider Email [SPNN15]
         /// </summary>
         public string Email { get => _email; set => SetField(ref _email, value); }
+
+        /// <summary>
+        /// ServiceProviderContact EntityDeleted
+        /// </summary>
+        public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
 
         /// <summary>
         /// Settlement Service Provider Fax [SPNN16]

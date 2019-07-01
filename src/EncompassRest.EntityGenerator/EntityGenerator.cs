@@ -143,7 +143,8 @@ namespace EncompassRest
                 typeof(IncreaseOrDecrease),
                 typeof(PaymentBasisType),
                 typeof(ReoPropertyUsageType),
-                typeof(AdditionalLoanLienPosition)
+                typeof(AdditionalLoanLienPosition),
+                typeof(BuydownContributor)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (var sharedEnumType in sharedEnumTypes)

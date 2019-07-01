@@ -21,6 +21,11 @@ namespace EncompassRest.Loans.Enums
         /// Investment Property
         /// </summary>
         [Description("Investment Property")]
-        Investment = 2
+        Investment = 2,
+        /// <summary>
+        /// FHA Secondary Residence
+        /// </summary>
+        [Description("FHA Secondary Residence")]
+        FHASecondaryResidence = 3
     }
 }

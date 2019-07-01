@@ -5,11 +5,18 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class CustomModelFields : DirtyExtensibleObject, IIdentifiable
     {
+        private DirtyValue<string> _helocExampleScheduleData;
         private DirtyValue<string> _id;
         private DirtyValue<bool?> _provideAmortizationScenario;
         private DirtyValue<bool?> _provideBestCaseScenario;
         private DirtyValue<bool?> _provideFHAScenario;
+        private DirtyValue<bool?> _provideHelocExampleSchedules;
         private DirtyValue<bool?> _provideWorstCaseScenario;
+
+        /// <summary>
+        /// CustomModelFields HelocExampleScheduleData
+        /// </summary>
+        public string HelocExampleScheduleData { get => _helocExampleScheduleData; set => SetField(ref _helocExampleScheduleData, value); }
 
         /// <summary>
         /// CustomModelFields Id
@@ -30,6 +37,11 @@ namespace EncompassRest.Loans
         /// CustomModelFields ProvideFHAScenario
         /// </summary>
         public bool? ProvideFHAScenario { get => _provideFHAScenario; set => SetField(ref _provideFHAScenario, value); }
+
+        /// <summary>
+        /// CustomModelFields ProvideHelocExampleSchedules
+        /// </summary>
+        public bool? ProvideHelocExampleSchedules { get => _provideHelocExampleSchedules; set => SetField(ref _provideHelocExampleSchedules, value); }
 
         /// <summary>
         /// CustomModelFields ProvideWorstCaseScenario

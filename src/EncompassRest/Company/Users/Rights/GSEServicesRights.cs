@@ -8,6 +8,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _exportFannieMaeformattedfile;
         private DirtyValue<bool?> _exportPDDtoGinnieMae;
         private DirtyValue<bool?> _exportUCDfile;
+        private DirtyValue<bool?> _exportUladForDu;
         private DirtyValue<bool?> _exportULDDtoFannieMae;
         private DirtyValue<bool?> _exportULDDtoFreddieMac;
 
@@ -25,6 +26,11 @@ namespace EncompassRest.Company.Users.Rights
         /// GSEServicesRights ExportUCDfile
         /// </summary>
         public bool? ExportUCDfile { get => _exportUCDfile; set => SetField(ref _exportUCDfile, value); }
+
+        /// <summary>
+        /// GSEServicesRights ExportUladForDu
+        /// </summary>
+        public bool? ExportUladForDu { get => _exportUladForDu; set => SetField(ref _exportUladForDu, value); }
 
         /// <summary>
         /// GSEServicesRights ExportULDDtoFannieMae

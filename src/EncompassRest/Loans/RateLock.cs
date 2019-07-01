@@ -26,6 +26,8 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _branchApprovalDate;
         private DirtyValue<string> _branchApprovedby;
         private DirtyValue<decimal?> _branchPrice;
+        private DirtyValue<StringEnumValue<BuydownContributor>> _buydownContributor;
+        private DirtyValue<string> _buydownType;
         private DirtyList<PriceAdjustment> _buySideAdjustments;
         private DirtyValue<string> _buySideComments;
         private DirtyValue<DateTime?> _buySideCommitmentDate;
@@ -414,6 +416,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _purchaseAdviceNumberOfDays;
         private DirtyList<PurchaseAdvicePayout> _purchaseAdvicePayouts;
         private DirtyValue<decimal?> _purchasePriceAmount;
+        private DirtyList<RateLockBuydown> _rateLockBuydowns;
         private DirtyValue<string> _rateRequestStatus;
         private DirtyValue<string> _rateStatus;
         private DirtyValue<string> _reasonforBranchApproval;
@@ -622,6 +625,16 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? BranchPrice { get => _branchPrice; set => SetField(ref _branchPrice, value); }
+
+        /// <summary>
+        /// Lock Request Buydown Contributor [4631]
+        /// </summary>
+        public StringEnumValue<BuydownContributor> BuydownContributor { get => _buydownContributor; set => SetField(ref _buydownContributor, value); }
+
+        /// <summary>
+        /// Lock Request Buydown Type [4632]
+        /// </summary>
+        public string BuydownType { get => _buydownType; set => SetField(ref _buydownType, value); }
 
         /// <summary>
         /// RateLock BuySideAdjustments
@@ -2731,6 +2744,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PurchasePriceAmount { get => _purchasePriceAmount; set => SetField(ref _purchasePriceAmount, value); }
+
+        /// <summary>
+        /// RateLock RateLockBuydowns
+        /// </summary>
+        public IList<RateLockBuydown> RateLockBuydowns { get => GetField(ref _rateLockBuydowns); set => SetField(ref _rateLockBuydowns, value); }
 
         /// <summary>
         /// RateLock RateRequestStatus

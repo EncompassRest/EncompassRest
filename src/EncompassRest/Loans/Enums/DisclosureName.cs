@@ -2556,6 +2556,18 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// ReceiveFromThirdParty
         /// </summary>
-        ReceiveFromThirdParty = 626
+        ReceiveFromThirdParty = 626,
+        /// <summary>
+        /// RMLA
+        /// </summary>
+        RMLA = 627,
+        /// <summary>
+        /// MICancelCondType
+        /// </summary>
+        MICancelCondType = 628,
+        /// <summary>
+        /// MICancelOtherCondDescr
+        /// </summary>
+        MICancelOtherCondDescr = 629
     }
 }

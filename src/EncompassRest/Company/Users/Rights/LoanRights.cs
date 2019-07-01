@@ -12,6 +12,7 @@ namespace EncompassRest.Company.Users.Rights
         private MilestoneWorkFlowManagementRights _milestoneWorkFlowManagement;
         private LoanOtherRights _other;
         private DirtyValue<bool?> _otherChangeRESPATILAFormVersion;
+        private DirtyValue<bool?> _otherChangeURLAFormVersion;
         private OtherDisplayMilestoneListChangeScreenRights _otherDisplayMilestoneListChangeScreen;
         private PrintRights _print;
 
@@ -41,6 +42,12 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [JsonProperty("other_ChangeRESPA-TILAFormVersion")]
         public bool? OtherChangeRESPATILAFormVersion { get => _otherChangeRESPATILAFormVersion; set => SetField(ref _otherChangeRESPATILAFormVersion, value); }
+
+        /// <summary>
+        /// LoanRights OtherChangeURLAFormVersion
+        /// </summary>
+        [JsonProperty("other_ChangeURLAFormVersion")]
+        public bool? OtherChangeURLAFormVersion { get => _otherChangeURLAFormVersion; set => SetField(ref _otherChangeURLAFormVersion, value); }
 
         /// <summary>
         /// LoanRights OtherDisplayMilestoneListChangeScreen

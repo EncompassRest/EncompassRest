@@ -12,8 +12,10 @@ namespace EncompassRest.Loans
     {
         private DirtyValue<string> _altId;
         private DirtyValue<string> _attention;
+        private DirtyValue<decimal?> _balance;
         private DirtyValue<StringEnumValue<Owner>> _borrowerType;
         private DirtyValue<EntityReference> _contact;
+        private DirtyValue<decimal?> _creditLimit;
         private DirtyValue<DateTime?> _depositoryRequestDate;
         private DirtyValue<bool?> _entityDeleted;
         private DirtyValue<string> _holderAddressCity;
@@ -43,9 +45,15 @@ namespace EncompassRest.Loans
         public string AltId { get => _altId; set => SetField(ref _altId, value); }
 
         /// <summary>
-        /// OtherLiability Attention
+        /// Depository Attention Contact [URLAROLNN06]
         /// </summary>
         public string Attention { get => _attention; set => SetField(ref _attention, value); }
+
+        /// <summary>
+        /// Other Liabilities Balance [URLAROLNN20]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? Balance { get => _balance; set => SetField(ref _balance, value); }
 
         /// <summary>
         /// Other Liabilities Borrower Type [URLAROLNN01]
@@ -56,6 +64,12 @@ namespace EncompassRest.Loans
         /// OtherLiability Contact (Nullable)
         /// </summary>
         public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+
+        /// <summary>
+        /// Other Liabilities Credit Limit [URLAROLNN21]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? CreditLimit { get => _creditLimit; set => SetField(ref _creditLimit, value); }
 
         /// <summary>
         /// Depository Request Date [URLAROLNN98]
@@ -121,7 +135,7 @@ namespace EncompassRest.Loans
         public StringEnumValue<LiabilityOrExpenseType> LiabilityOrExpenseType { get => _liabilityOrExpenseType; set => SetField(ref _liabilityOrExpenseType, value); }
 
         /// <summary>
-        /// Other Liabilities Monthly Paymen [URLAROLNN03]
+        /// Other Liabilities Monthly Payment [URLAROLNN03]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }

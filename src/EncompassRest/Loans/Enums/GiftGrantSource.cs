@@ -52,6 +52,28 @@ namespace EncompassRest.Loans.Enums
         /// Unmarried Partner
         /// </summary>
         [Description("Unmarried Partner")]
-        UnmarriedPartner = 9
+        UnmarriedPartner = 9,
+        /// <summary>
+        /// Institutional
+        /// </summary>
+        Institutional = 10,
+        /// <summary>
+        /// Lender
+        /// </summary>
+        Lender = 11,
+        /// <summary>
+        /// Non Parent Relative
+        /// </summary>
+        [Description("Non Parent Relative")]
+        NonParentRelative = 12,
+        /// <summary>
+        /// Parent
+        /// </summary>
+        Parent = 13,
+        /// <summary>
+        /// Unrelated Friend
+        /// </summary>
+        [Description("Unrelated Friend")]
+        UnrelatedFriend = 14
     }
 }

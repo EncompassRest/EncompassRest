@@ -18,6 +18,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _agencyCaseIdentifier;
         private DirtyValue<string> _alertChangeCircumstanceApplyLECD;
         private DirtyList<AlertChangeCircumstance> _alertChangeCircumstances;
+        private DirtyValue<bool?> _allowPrint2003Application;
         private DirtyValue<decimal?> _alterationsImprovementsOrRepairsAmount;
         private DirtyList<Application> _applications;
         private DirtyValue<StringEnumValue<ApplicationTakenMethodType>> _applicationTakenMethodType;
@@ -122,6 +123,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _estimatedPrepaidItemsAmount;
         private DirtyValue<decimal?> _existingLiensAndDrawUsed;
         private DirtyValue<decimal?> _existingLiensUsed;
+        private DirtyValue<int?> _expectedBorrowerCount;
         private DirtyValue<StringEnumValue<ExportLoanNumber>> _exportLoanNumber;
         private DirtyList<ExportLog> _exportLogs;
         private FannieMae _fannieMae;
@@ -153,7 +155,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _governmentLoanSponsorIdentifier;
         private DirtyValue<decimal?> _governmentMortgageCreditCertificateAmount;
         private DirtyValue<StringEnumValue<GovernmentRefinanceType>> _governmentRefinanceType;
-        private DirtyValue<string> _governmentRefinanceTypeOtherDescription;
+        private DirtyValue<StringEnumValue<GovernmentRefinanceTypeOtherDescription>> _governmentRefinanceTypeOtherDescription;
         private DirtyValue<string> _hasAbusinessRelationshipWith;
         private DirtyValue<decimal?> _hcltvHtltv;
         private DirtyValue<decimal?> _helocTeaserRate;
@@ -405,6 +407,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _systemIdGuid;
         private DirtyValue<decimal?> _targetCLTV;
         private DirtyValue<decimal?> _targetHCLTV;
+        private DirtyValue<string> _temporaryBuydown;
         private DirtyValue<bool?> _temporaryOrInitialInterestRateBuydown;
         private DirtyValue<DateTime?> _tilApplicationDate;
         private DirtyValue<string> _titleHolderFullName;
@@ -503,6 +506,11 @@ namespace EncompassRest.Loans
         /// Loan AlertChangeCircumstances
         /// </summary>
         public IList<AlertChangeCircumstance> AlertChangeCircumstances { get => GetField(ref _alertChangeCircumstances); set => SetField(ref _alertChangeCircumstances, value); }
+
+        /// <summary>
+        /// Loan AllowPrint2003Application
+        /// </summary>
+        public bool? AllowPrint2003Application { get => _allowPrint2003Application; set => SetField(ref _allowPrint2003Application, value); }
 
         /// <summary>
         /// Trans Details Alterations [967]
@@ -1073,6 +1081,11 @@ namespace EncompassRest.Loans
         public decimal? ExistingLiensUsed { get => _existingLiensUsed; set => SetField(ref _existingLiensUsed, value); }
 
         /// <summary>
+        /// Expected Borrower Count [URLA.X261]
+        /// </summary>
+        public int? ExpectedBorrowerCount { get => _expectedBorrowerCount; set => SetField(ref _expectedBorrowerCount, value); }
+
+        /// <summary>
         /// Export Investor or Lender Loan Number [2573]
         /// </summary>
         public StringEnumValue<ExportLoanNumber> ExportLoanNumber { get => _exportLoanNumber; set => SetField(ref _exportLoanNumber, value); }
@@ -1238,7 +1251,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Government Refinance Type Other Description [URLA.X167]
         /// </summary>
-        public string GovernmentRefinanceTypeOtherDescription { get => _governmentRefinanceTypeOtherDescription; set => SetField(ref _governmentRefinanceTypeOtherDescription, value); }
+        public StringEnumValue<GovernmentRefinanceTypeOtherDescription> GovernmentRefinanceTypeOtherDescription { get => _governmentRefinanceTypeOtherDescription; set => SetField(ref _governmentRefinanceTypeOtherDescription, value); }
 
         /// <summary>
         /// Disclosure Bus Affiliate Name [AFF.X2]
@@ -2586,6 +2599,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_6)]
         public decimal? TargetHCLTV { get => _targetHCLTV; set => SetField(ref _targetHCLTV, value); }
+
+        /// <summary>
+        /// Temporary Buydown [4645]
+        /// </summary>
+        public string TemporaryBuydown { get => _temporaryBuydown; set => SetField(ref _temporaryBuydown, value); }
 
         /// <summary>
         /// Temporary Interest Rate Buydown/Initial Buydown Rate [URLA.X241]

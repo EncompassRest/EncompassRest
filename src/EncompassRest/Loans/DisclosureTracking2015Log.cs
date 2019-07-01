@@ -263,6 +263,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _snapshotXml;
         private DirtyValue<string> _sTDAdjustmentAndOtherCreditsRemark;
         private DirtyValue<string> _systemId;
+        private DirtyValue<bool?> _uCDCreationError;
         private DirtyValue<DateTime?> _updatedDateUtc;
 
         /// <summary>
@@ -1539,6 +1540,11 @@ namespace EncompassRest.Loans
         /// DisclosureTracking2015Log SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log UCDCreationError
+        /// </summary>
+        public bool? UCDCreationError { get => _uCDCreationError; set => SetField(ref _uCDCreationError, value); }
 
         /// <summary>
         /// DisclosureTracking2015Log UpdatedDateUtc

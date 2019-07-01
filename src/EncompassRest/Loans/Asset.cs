@@ -71,7 +71,7 @@ namespace EncompassRest.Loans
         public StringEnumValue<AssetType> AssetType { get => _assetType; set => SetField(ref _assetType, value); }
 
         /// <summary>
-        /// Asset Attention
+        /// Depository Attention Contact [DDNN03]
         /// </summary>
         public string Attention { get => _attention; set => SetField(ref _attention, value); }
 

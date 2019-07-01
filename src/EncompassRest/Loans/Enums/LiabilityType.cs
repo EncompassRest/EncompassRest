@@ -75,6 +75,11 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// Alimony
         /// </summary>
-        Alimony = 14
+        Alimony = 14,
+        /// <summary>
+        /// Tax Lien
+        /// </summary>
+        [Description("Tax Lien")]
+        TaxLien = 15
     }
 }

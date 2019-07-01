@@ -3402,6 +3402,36 @@
     "Description": "Rate Lock - Subject Property City (Most Recent)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE.1269",
+    "Description": "Rate Lock - Loan Info Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.1270",
+    "Description": "Rate Lock - Loan Info Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.1271",
+    "Description": "Rate Lock - Loan Info Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.1272",
+    "Description": "Rate Lock - Loan Info Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.1273",
+    "Description": "Rate Lock - Loan Info Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.1274",
+    "Description": "Rate Lock - Loan Info Buydown Rate 6 (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.13",
     "Description": "Rate Lock - Subject Property County (Most Recent)"
@@ -3470,6 +3500,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE.16",
     "Description": "Rate Lock - Subject Property # Units (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.1613",
+    "Description": "Rate Lock - Loan Info Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.1614",
+    "Description": "Rate Lock - Loan Info Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.1615",
+    "Description": "Rate Lock - Loan Info Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.1616",
+    "Description": "Rate Lock - Loan Info Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.1617",
+    "Description": "Rate Lock - Loan Info Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.1618",
+    "Description": "Rate Lock - Loan Info Buydown Term 6 (Most Recent)"
   },
   {
     "Format": 101,
@@ -9793,6 +9853,45 @@
     "Description": "Rate Lock - Cancelled Date Time (Most Recent)"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE.CASASRN.X141",
+    "Description": "Rate Lock - Freddie Mac Buydown Contributor (Most Recent)"
+  },
+  {
     "Format": 201,
     "FieldId": "LOCKRATE.CONFIRMATIONCOUNT",
     "Description": "Rate Lock - Count of the number of lock confirmations"
@@ -9895,6 +9994,36 @@
     "Description": "Rate Request - Subject Property City (Mostly Recent Confirmed)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.1269",
+    "Description": "Rate Request - Loan Info Buydown Rate 1 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.1270",
+    "Description": "Rate Request - Loan Info Buydown Rate 2 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.1271",
+    "Description": "Rate Request - Loan Info Buydown Rate 3 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.1272",
+    "Description": "Rate Request - Loan Info Buydown Rate 4 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.1273",
+    "Description": "Rate Request - Loan Info Buydown Rate 5 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.1274",
+    "Description": "Rate Request - Loan Info Buydown Rate 6 (Mostly Recent Confirmed)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.CONFIRMED.13",
     "Description": "Rate Request - Subject Property County (Mostly Recent Confirmed)"
@@ -9963,6 +10092,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE.CONFIRMED.16",
     "Description": "Rate Request - Subject Property # Units (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.1613",
+    "Description": "Rate Request - Loan Info Buydown Term 1 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.1614",
+    "Description": "Rate Request - Loan Info Buydown Term 2 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.1615",
+    "Description": "Rate Request - Loan Info Buydown Term 3 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.1616",
+    "Description": "Rate Request - Loan Info Buydown Term 4 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.1617",
+    "Description": "Rate Request - Loan Info Buydown Term 5 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.1618",
+    "Description": "Rate Request - Loan Info Buydown Term 6 (Mostly Recent Confirmed)"
   },
   {
     "Format": 101,
@@ -16266,6 +16425,45 @@
     "Description": "Rate Request - Trans Details Comb Loan to Value (CLTV) (Mostly Recent Confirmed)"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.CASASRN.X141",
+    "Description": "Rate Request - Freddie Mac Buydown Contributor (Mostly Recent Confirmed)"
+  },
+  {
     "Format": 102,
     "Options": [
       {
@@ -16596,6 +16794,36 @@
     "Description": "Rate Lock Denial - Subject Property City (Most Recent)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.1269",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.1270",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.1271",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.1272",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.1273",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.1274",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 6 (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.DENIED.13",
     "Description": "Rate Lock Denial - Subject Property County (Most Recent)"
@@ -16664,6 +16892,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE.DENIED.16",
     "Description": "Rate Lock Denial - Subject Property # Units (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.1613",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.1614",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.1615",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.1616",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.1617",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.1618",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 6 (Most Recent)"
   },
   {
     "Format": 101,
@@ -22967,6 +23225,45 @@
     "Description": "Rate Lock Denial - Trans Details Comb Loan to Value (CLTV) (Most Recent)"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.CASASRN.X141",
+    "Description": "Rate Lock Denial - Freddie Mac Buydown Contributor (Most Recent)"
+  },
+  {
     "Format": 102,
     "Options": [
       {
@@ -23434,6 +23731,36 @@
     "Description": "Rate Lock Request - Subject Property City (Most Recent)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.1269",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.1270",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.1271",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.1272",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.1273",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.1274",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 6 (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.REQUEST.13",
     "Description": "Rate Lock Request - Subject Property County (Most Recent)"
@@ -23502,6 +23829,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE.REQUEST.16",
     "Description": "Rate Lock Request - Subject Property # Units (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.1613",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.1614",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.1615",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.1616",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.1617",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.1618",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 6 (Most Recent)"
   },
   {
     "Format": 101,
@@ -29805,6 +30162,45 @@
     "Description": "Rate Lock Request - Trans Details Comb Loan to Value (CLTV) (Most Recent)"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.CASASRN.X141",
+    "Description": "Rate Lock Request - Freddie Mac Buydown Contributor (Most Recent)"
+  },
+  {
     "Format": 102,
     "Options": [
       {
@@ -30109,6 +30505,36 @@
     "Description": "Rate Lock - Subject Property City (Previous 1)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.1269",
+    "Description": "Rate Lock - Loan Info Buydown Rate 1 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.1270",
+    "Description": "Rate Lock - Loan Info Buydown Rate 2 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.1271",
+    "Description": "Rate Lock - Loan Info Buydown Rate 3 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.1272",
+    "Description": "Rate Lock - Loan Info Buydown Rate 4 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.1273",
+    "Description": "Rate Lock - Loan Info Buydown Rate 5 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.1274",
+    "Description": "Rate Lock - Loan Info Buydown Rate 6 (Previous 1)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE1.13",
     "Description": "Rate Lock - Subject Property County (Previous 1)"
@@ -30177,6 +30603,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE1.16",
     "Description": "Rate Lock - Subject Property # Units (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.1613",
+    "Description": "Rate Lock - Loan Info Buydown Term 1 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.1614",
+    "Description": "Rate Lock - Loan Info Buydown Term 2 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.1615",
+    "Description": "Rate Lock - Loan Info Buydown Term 3 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.1616",
+    "Description": "Rate Lock - Loan Info Buydown Term 4 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.1617",
+    "Description": "Rate Lock - Loan Info Buydown Term 5 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.1618",
+    "Description": "Rate Lock - Loan Info Buydown Term 6 (Previous 1)"
   },
   {
     "Format": 101,
@@ -36481,6 +36937,45 @@
   },
   {
     "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE1.CASASRN.X141",
+    "Description": "Rate Lock - Freddie Mac Buydown Contributor (Previous 1)"
+  },
+  {
+    "Format": 101,
     "FieldId": "LOCKRATE1.CONFIRMEDREQUESTEDBY",
     "Description": "Rate Lock - Rate Requested By (Previous 1 in Confirmed Log)"
   },
@@ -36597,6 +37092,36 @@
     "Description": "Rate Lock Denial - Subject Property City (Previous 1)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.1269",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 1 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.1270",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 2 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.1271",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 3 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.1272",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 4 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.1273",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 5 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.1274",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 6 (Previous 1)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE1.DENIED.13",
     "Description": "Rate Lock Denial - Subject Property County (Previous 1)"
@@ -36665,6 +37190,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE1.DENIED.16",
     "Description": "Rate Lock Denial - Subject Property # Units (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.1613",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 1 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.1614",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 2 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.1615",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 3 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.1616",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 4 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.1617",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 5 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.1618",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 6 (Previous 1)"
   },
   {
     "Format": 101,
@@ -42968,6 +43523,45 @@
     "Description": "Rate Lock Denial - Trans Details Comb Loan to Value (CLTV) (Previous 1)"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.CASASRN.X141",
+    "Description": "Rate Lock Denial - Freddie Mac Buydown Contributor (Previous 1)"
+  },
+  {
     "Format": 102,
     "Options": [
       {
@@ -43345,6 +43939,36 @@
     "Description": "Rate Lock Request - Subject Property City (Previous 1)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.1269",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 1 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.1270",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 2 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.1271",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 3 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.1272",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 4 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.1273",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 5 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.1274",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 6 (Previous 1)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE1.REQUEST.13",
     "Description": "Rate Lock Request - Subject Property County (Previous 1)"
@@ -43413,6 +44037,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE1.REQUEST.16",
     "Description": "Rate Lock Request - Subject Property # Units (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.1613",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 1 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.1614",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 2 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.1615",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 3 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.1616",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 4 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.1617",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 5 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.1618",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 6 (Previous 1)"
   },
   {
     "Format": 101,
@@ -49716,6 +50370,45 @@
     "Description": "Rate Lock Request - Trans Details Comb Loan to Value (CLTV) (Previous 1)"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.CASASRN.X141",
+    "Description": "Rate Lock Request - Freddie Mac Buydown Contributor (Previous 1)"
+  },
+  {
     "Format": 102,
     "Options": [
       {
@@ -49968,6 +50661,36 @@
     "Description": "Rate Lock - Subject Property City (Previous 2)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.1269",
+    "Description": "Rate Lock - Loan Info Buydown Rate 1 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.1270",
+    "Description": "Rate Lock - Loan Info Buydown Rate 2 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.1271",
+    "Description": "Rate Lock - Loan Info Buydown Rate 3 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.1272",
+    "Description": "Rate Lock - Loan Info Buydown Rate 4 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.1273",
+    "Description": "Rate Lock - Loan Info Buydown Rate 5 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.1274",
+    "Description": "Rate Lock - Loan Info Buydown Rate 6 (Previous 2)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE2.13",
     "Description": "Rate Lock - Subject Property County (Previous 2)"
@@ -50036,6 +50759,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE2.16",
     "Description": "Rate Lock - Subject Property # Units (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.1613",
+    "Description": "Rate Lock - Loan Info Buydown Term 1 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.1614",
+    "Description": "Rate Lock - Loan Info Buydown Term 2 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.1615",
+    "Description": "Rate Lock - Loan Info Buydown Term 3 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.1616",
+    "Description": "Rate Lock - Loan Info Buydown Term 4 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.1617",
+    "Description": "Rate Lock - Loan Info Buydown Term 5 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.1618",
+    "Description": "Rate Lock - Loan Info Buydown Term 6 (Previous 2)"
   },
   {
     "Format": 101,
@@ -56340,6 +57093,45 @@
   },
   {
     "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE2.CASASRN.X141",
+    "Description": "Rate Lock - Freddie Mac Buydown Contributor (Previous 2)"
+  },
+  {
+    "Format": 101,
     "FieldId": "LOCKRATE2.CONFIRMEDREQUESTEDBY",
     "Description": "Rate Lock - Rate Requested By (Previous 2 in Confirmed Log)"
   },
@@ -56456,6 +57248,36 @@
     "Description": "Rate Lock Denial - Subject Property City (Previous 2)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.1269",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 1 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.1270",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 2 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.1271",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 3 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.1272",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 4 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.1273",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 5 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.1274",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 6 (Previous 2)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE2.DENIED.13",
     "Description": "Rate Lock Denial - Subject Property County (Previous 2)"
@@ -56524,6 +57346,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE2.DENIED.16",
     "Description": "Rate Lock Denial - Subject Property # Units (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.1613",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 1 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.1614",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 2 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.1615",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 3 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.1616",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 4 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.1617",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 5 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.1618",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 6 (Previous 2)"
   },
   {
     "Format": 101,
@@ -62827,6 +63679,45 @@
     "Description": "Rate Lock Denial - Trans Details Comb Loan to Value (CLTV) (Previous 2)"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.CASASRN.X141",
+    "Description": "Rate Lock Denial - Freddie Mac Buydown Contributor (Previous 2)"
+  },
+  {
     "Format": 102,
     "Options": [
       {
@@ -63204,6 +64095,36 @@
     "Description": "Rate Lock Request - Subject Property City (Previous 2)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.1269",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 1 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.1270",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 2 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.1271",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 3 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.1272",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 4 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.1273",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 5 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.1274",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 6 (Previous 2)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE2.REQUEST.13",
     "Description": "Rate Lock Request - Subject Property County (Previous 2)"
@@ -63272,6 +64193,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE2.REQUEST.16",
     "Description": "Rate Lock Request - Subject Property # Units (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.1613",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 1 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.1614",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 2 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.1615",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 3 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.1616",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 4 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.1617",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 5 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.1618",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 6 (Previous 2)"
   },
   {
     "Format": 101,
@@ -69575,6 +70526,45 @@
     "Description": "Rate Lock Request - Trans Details Comb Loan to Value (CLTV) (Previous 2)"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.CASASRN.X141",
+    "Description": "Rate Lock Request - Freddie Mac Buydown Contributor (Previous 2)"
+  },
+  {
     "Format": 102,
     "Options": [
       {
@@ -69827,6 +70817,36 @@
     "Description": "Rate Request - Subject Property City (Most Recent)"
   },
   {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.1269",
+    "Description": "Rate Request - Loan Info Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.1270",
+    "Description": "Rate Request - Loan Info Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.1271",
+    "Description": "Rate Request - Loan Info Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.1272",
+    "Description": "Rate Request - Loan Info Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.1273",
+    "Description": "Rate Request - Loan Info Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.1274",
+    "Description": "Rate Request - Loan Info Buydown Rate 6 (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE3.13",
     "Description": "Rate Request - Subject Property County (Most Recent)"
@@ -69895,6 +70915,36 @@
     "Format": 201,
     "FieldId": "LOCKRATE3.16",
     "Description": "Rate Request - Subject Property # Units (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.1613",
+    "Description": "Rate Request - Loan Info Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.1614",
+    "Description": "Rate Request - Loan Info Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.1615",
+    "Description": "Rate Request - Loan Info Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.1616",
+    "Description": "Rate Request - Loan Info Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.1617",
+    "Description": "Rate Request - Loan Info Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.1618",
+    "Description": "Rate Request - Loan Info Buydown Term 6 (Most Recent)"
   },
   {
     "Format": 101,
@@ -76198,6 +77248,45 @@
     "Description": "Rate Request - Trans Details Comb Loan to Value (CLTV) (Most Recent)"
   },
   {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE3.CASASRN.X141",
+    "Description": "Rate Request - Freddie Mac Buydown Contributor (Most Recent)"
+  },
+  {
     "Format": 102,
     "Options": [
       {
@@ -76596,6 +77685,216 @@
     "Format": 101,
     "FieldId": "PreviousTeamMemberTitle",
     "Description": "Previous Loan Team Member Title"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2101",
+    "Description": "Bid Tape - Rate Lock Request Base Price Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2102",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 1 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2103",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 1 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2104",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 2 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2105",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 2 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2106",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 3 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2107",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 3 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2108",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 4 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2109",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 4 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2110",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 5 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2111",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 5 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2112",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 6 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2113",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 6 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2114",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 7 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2115",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 7 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2116",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 8 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2117",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 8 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2118",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 9 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2119",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 9 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2120",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 10 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2121",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 10 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2122",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 11 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2123",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 11 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2124",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 12 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2125",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 12 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2126",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 13 Desc"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2128",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 14 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2129",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 14 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2130",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 15 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2131",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 15 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2132",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 16 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2133",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 16 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2134",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 17 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2135",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 17 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2136",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 18 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2137",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 18 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2138",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 19 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2139",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 19 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.2140",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 20 Desc"
+  },
+  {
+    "Format": 211,
+    "FieldId": "TGTTRADE.2141",
+    "Description": "Bid Tape - Rate Lock Request Base Price Adjustment 20 Rate"
+  },
+  {
+    "Format": 101,
+    "FieldId": "TGTTRADE.3907",
+    "Description": "Bid Tape - Commitment Number"
+  },
+  {
+    "Format": 204,
+    "FieldId": "TGTTRADE.4201",
+    "Description": "Bid Tape - Rate Lock Request SRP Paid Out"
   },
   {
     "Format": 101,
