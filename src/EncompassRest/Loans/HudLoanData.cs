@@ -127,6 +127,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _purchasePriceLessInducementToPurchase;
         private DirtyValue<decimal?> _refinanceMaximumMortgageAmount;
         private DirtyValue<bool?> _refinancingATitleILoan;
+        private DirtyValue<StringEnumValue<RehabConstructionPeriodMonths>> _rehabConstructionPeriodMonths;
         private DirtyValue<decimal?> _rehabilitationEscrowAccount;
         private DirtyValue<decimal?> _rehabilitationEscrowAmountBalanceForFutureDraws;
         private DirtyValue<decimal?> _rentalCashFlowBalance;
@@ -840,6 +841,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Refinancing a Title I loan\"}")]
         public bool? RefinancingATitleILoan { get => _refinancingATitleILoan; set => SetField(ref _refinancingATitleILoan, value); }
+
+        /// <summary>
+        /// FHA 203k - Rehabilitation Construction Period Months [MAX23K.X133]
+        /// </summary>
+        public StringEnumValue<RehabConstructionPeriodMonths> RehabConstructionPeriodMonths { get => _rehabConstructionPeriodMonths; set => SetField(ref _rehabConstructionPeriodMonths, value); }
 
         /// <summary>
         /// FHA 203k - Rehabilitation Escrow Account (Sum of A1 thru A3) [MAX23K.X103]

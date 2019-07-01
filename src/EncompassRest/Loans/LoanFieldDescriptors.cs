@@ -263,29 +263,35 @@ namespace EncompassRest.Loans
                 }
                 else if (propertySchema.Type == PropertySchemaType.Entity && entityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
                 {
-                    entityTypes.Remove(propertySchema.EntityType);
-                    if (ellieType?.Name == "LoanContract" && propertyName == "CurrentApplication")
+                    if (currentPath != "Loan.CurrentApplication" || propertyName != "ATRQMBorrower")
                     {
-                        elliePropertyType = ellieType.GetTypeInfo().GetDeclaredProperty("Applications").PropertyType.GetTypeInfo().ImplementedInterfaces.First(i => i.Name == "IEnumerable`1").GenericTypeArguments[0];
+                        entityTypes.Remove(propertySchema.EntityType);
+                        if (ellieType?.Name == "LoanContract" && propertyName == "CurrentApplication")
+                        {
+                            elliePropertyType = ellieType.GetTypeInfo().GetDeclaredProperty("Applications").PropertyType.GetTypeInfo().ImplementedInterfaces.First(i => i.Name == "IEnumerable`1").GenericTypeArguments[0];
+                        }
+                        else if (ellieType != null && elliePropertyType == null)
+                        {
+                            output?.WriteLine($"Did not get ellie type for {currentPath}.{propertyName} of type {propertySchema.EntityType.Value}");
+                        }
+                        PopulateFieldMappings(propertySchema.EntityType, $"{currentPath}.{propertyName}", elliePropertyType, nestedEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, extendedFieldInfo, action, descriptionRetriever, output);
                     }
-                    else if (ellieType != null && elliePropertyType == null)
-                    {
-                        output?.WriteLine($"Did not get ellie type for {currentPath}.{propertyName} of type {propertySchema.EntityType.Value}");
-                    }
-                    PopulateFieldMappings(propertySchema.EntityType, $"{currentPath}.{propertyName}", elliePropertyType, nestedEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, extendedFieldInfo, action, descriptionRetriever, output);
                 }
                 else if ((propertySchema.Type == PropertySchemaType.List || propertySchema.Type == PropertySchemaType.Set) && entityTypes.TryGetValue(propertySchema.ElementType, out var elementEntitySchema))
                 {
-                    entityTypes.Remove(propertySchema.ElementType);
-                    if (ellieProperty != null)
+                    if (currentPath != "Loan" || propertyName != "Applications")
                     {
-                        elliePropertyType = elliePropertyType.GetTypeInfo().ImplementedInterfaces.First(i => i.Name == "IEnumerable`1").GenericTypeArguments[0];
+                        entityTypes.Remove(propertySchema.ElementType);
+                        if (ellieProperty != null)
+                        {
+                            elliePropertyType = elliePropertyType.GetTypeInfo().ImplementedInterfaces.First(i => i.Name == "IEnumerable`1").GenericTypeArguments[0];
+                        }
+                        else if (ellieType != null)
+                        {
+                            output?.WriteLine($"Did not get ellie type for {currentPath}.{propertyName} of type {propertySchema.ElementType.Value}");
+                        }
+                        PopulateFieldMappings(propertySchema.ElementType, $"{currentPath}.{propertyName}", elliePropertyType, elementEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, extendedFieldInfo, action, descriptionRetriever, output);
                     }
-                    else if (ellieType != null)
-                    {
-                        output?.WriteLine($"Did not get ellie type for {currentPath}.{propertyName} of type {propertySchema.ElementType.Value}");
-                    }
-                    PopulateFieldMappings(propertySchema.ElementType, $"{currentPath}.{propertyName}", elliePropertyType, elementEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, extendedFieldInfo, action, descriptionRetriever, output);
                 }
                 else
                 {
@@ -356,7 +362,7 @@ namespace EncompassRest.Loans
                                                 ++index;
                                             }
 
-                                            modelPath = $"{currentPath}[({string.Join(" && ", stringListInstance.Select((s, i) => Tuple.Create(s, i)).Where(t => !string.IsNullOrEmpty(t.Item1)).Select(t => $"{listPropertySchema.KeyProperties[t.Item2]} == '{t.Item1}'"))})].{propertyName}";
+                                            modelPath = $"{currentPath}[({string.Join(" && ", stringListInstance.Select((s, i) => Tuple.Create(s, i)).Where(t => !string.IsNullOrEmpty(t.Item1)).OrderBy(t => listPropertySchema.KeyProperties[t.Item2]).Select(t => $"{listPropertySchema.KeyProperties[t.Item2]} == '{t.Item1}'"))})].{propertyName}";
                                             break;
                                         case StringDictionaryInstance stringDictionaryInstance:
                                             foreach (var p in stringDictionaryInstance)
@@ -377,7 +383,7 @@ namespace EncompassRest.Loans
                                                 }
                                             }
 
-                                            modelPath = $"{currentPath}[({string.Join(" && ", stringDictionaryInstance.Select(p => $"{p.Key} == '{p.Value}'"))})].{propertyName}";
+                                            modelPath = $"{currentPath}[({string.Join(" && ", stringDictionaryInstance.OrderBy(p => p.Key).Select(p => $"{p.Key} == '{p.Value}'"))})].{propertyName}";
                                             break;
                                         default:
                                             output?.WriteLine($"Bad instance type for {fieldInstancePath}");
@@ -416,7 +422,7 @@ namespace EncompassRest.Loans
                                         }
                                     }
 
-                                    modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{index}].{propertyName}";
+                                    modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.OrderBy(p => p.Key).Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{index}].{propertyName}";
                                 }
                             }
                             var fieldInfo = new StandardFieldInfo { FieldId = fieldId, Description = description, ModelPath = modelPath };
@@ -496,7 +502,7 @@ namespace EncompassRest.Loans
                                 }
                                 else
                                 {
-                                    modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}";
+                                    modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.OrderBy(p => p.Key).Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}";
                                 }
 
                                 var fieldInfo = new StandardFieldInfo { FieldId = fieldId, Description = description, ModelPath = modelPath };

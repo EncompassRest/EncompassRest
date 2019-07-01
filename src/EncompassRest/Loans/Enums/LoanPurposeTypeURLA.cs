@@ -33,6 +33,10 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// Other
         /// </summary>
-        Other = 5
+        Other = 5,
+        /// <summary>
+        /// Refinance
+        /// </summary>
+        Refinance = 6
     }
 }

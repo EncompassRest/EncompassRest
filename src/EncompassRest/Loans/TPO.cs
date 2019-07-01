@@ -61,6 +61,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _feeReviewStatus;
         private DirtyValue<DateTime?> _feeReviewStatusDate;
         private DirtyValue<string> _importSource;
+        private DirtyValue<DateTime?> _importSourceLastUpdatedDate;
         private DirtyValue<DateTime?> _initialApplicationDate;
         private DirtyValue<DateTime?> _initialSubmitDate;
         private DirtyValue<StringEnumValue<LEIssuedBy>> _lEIssuedBy;
@@ -368,6 +369,11 @@ namespace EncompassRest.Loans
         /// TPO Import Source [TPO.X9]
         /// </summary>
         public string ImportSource { get => _importSource; set => SetField(ref _importSource, value); }
+
+        /// <summary>
+        /// Import Source Last Updated Date [TPO.X112]
+        /// </summary>
+        public DateTime? ImportSourceLastUpdatedDate { get => _importSourceLastUpdatedDate; set => SetField(ref _importSourceLastUpdatedDate, value); }
 
         /// <summary>
         /// Initial TPO Application Date [TPO.X89]

@@ -13,6 +13,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _lOCompensation;
         private DirtyValue<bool?> _mITables;
         private DirtyValue<bool?> _stateTax;
+        private DirtyValue<bool?> _temporaryBuydown;
         private DirtyValue<bool?> _title;
         private DirtyValue<bool?> _userDefinedFee;
 
@@ -55,6 +56,11 @@ namespace EncompassRest.Company.Users.Rights
         /// TablesAndFeesRights StateTax
         /// </summary>
         public bool? StateTax { get => _stateTax; set => SetField(ref _stateTax, value); }
+
+        /// <summary>
+        /// TablesAndFeesRights TemporaryBuydown
+        /// </summary>
+        public bool? TemporaryBuydown { get => _temporaryBuydown; set => SetField(ref _temporaryBuydown, value); }
 
         /// <summary>
         /// TablesAndFeesRights Title

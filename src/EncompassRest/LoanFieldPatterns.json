@@ -675,78 +675,153 @@
     "Description": null
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].AddressCity",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].AddressCity",
     "FieldId": "FBE{0:00}05",
     "Description": "Co-Borr Employer City #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].AddressPostalCode",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].AddressPostalCode",
     "FieldId": "FBE{0:00}07",
     "Description": "Co-Borr Employer Zip #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].AddressState",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].AddressState",
     "FieldId": "FBE{0:00}06",
     "Description": "Co-Borr Employer State #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].AddressStreetLine1",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].AddressStreetLine1",
     "FieldId": "FBE{0:00}04",
     "Description": "Co-Borr Employer Addr #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].Attention",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].Attention",
     "FieldId": "FBE{0:00}03",
     "Description": "Co-Borr Employer Attention Contact #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].BasePayAmount",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].BasePayAmount",
     "FieldId": "FBE{0:00}19",
     "Description": "Co-Borr Employer Base Pay #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].CurrentEmploymentIndicator",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].CurrentEmploymentIndicator",
     "FieldId": "FBE{0:00}09",
     "Description": "Co-Borr Employer Current Indicator #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].EmployerName",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].EmployerName",
     "FieldId": "FBE{0:00}02",
     "Description": "Co-Borr Employer Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].EndDate",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].EndDate",
     "FieldId": "FBE{0:00}14",
     "Description": "Co-Borr Employer Date Terminated #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].MonthlyIncomeAmount",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].MonthlyIncomeAmount",
     "FieldId": "FBE{0:00}12",
     "Description": "Co-Borr Employer Total Monthly Income #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].PhoneNumber",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].PhoneNumber",
     "FieldId": "FBE{0:00}17",
     "Description": "Co-Borr Employer Phone #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].PositionDescription",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].PositionDescription",
     "FieldId": "FBE{0:00}10",
     "Description": "Co-Borr Employer Position #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].SelfEmployedIndicator",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].SelfEmployedIndicator",
     "FieldId": "FBE{0:00}15",
     "Description": "Co-Borr Self Employed #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].StartDate",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].StartDate",
     "FieldId": "FBE{0:00}11",
     "Description": "Co-Borr Employer Date Hired #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower' && CurrentEmploymentIndicator == 'false')][{0}].VerificationRequestDate",
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].VerificationRequestDate",
     "FieldId": "FBE{0:00}98",
+    "Description": "Co-Borr Employer Request Date #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].AddressCity",
+    "FieldId": "FCE{0:00}05",
+    "Description": "Co-Borr Employer City #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].AddressPostalCode",
+    "FieldId": "FCE{0:00}07",
+    "Description": "Co-Borr Employer Zip #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].AddressState",
+    "FieldId": "FCE{0:00}06",
+    "Description": "Co-Borr Employer State #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].AddressStreetLine1",
+    "FieldId": "FCE{0:00}04",
+    "Description": "Co-Borr Employer Addr #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].Attention",
+    "FieldId": "FCE{0:00}03",
+    "Description": "Co-Borr Employer Attention Contact #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].BasePayAmount",
+    "FieldId": "FCE{0:00}19",
+    "Description": "Co-Borr Employer Base Pay #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].CurrentEmploymentIndicator",
+    "FieldId": "FCE{0:00}09",
+    "Description": "Co-Borr Employer Current Indicator #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].EmployerName",
+    "FieldId": "FCE{0:00}02",
+    "Description": "Co-Borr Employer Name #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].EndDate",
+    "FieldId": "FCE{0:00}14",
+    "Description": "Co-Borr Employer Date Terminated #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].MonthlyIncomeAmount",
+    "FieldId": "FCE{0:00}12",
+    "Description": "Co-Borr Employer Total Monthly Income #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].PhoneNumber",
+    "FieldId": "FCE{0:00}17",
+    "Description": "Co-Borr Employer Phone #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].PositionDescription",
+    "FieldId": "FCE{0:00}10",
+    "Description": "Co-Borr Employer Position #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].SelfEmployedIndicator",
+    "FieldId": "FCE{0:00}15",
+    "Description": "Co-Borr Self Employed #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].StartDate",
+    "FieldId": "FCE{0:00}11",
+    "Description": "Co-Borr Employer Date Hired #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'CoBorrower')][{0}].VerificationRequestDate",
+    "FieldId": "FCE{0:00}98",
     "Description": "Co-Borr Employer Request Date #{0}"
   },
   {
@@ -1058,81 +1133,6 @@
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].VerificationRequestDate",
     "FieldId": "BE{0:00}98",
     "Description": "Borr Employer Request Date #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].AddressCity",
-    "FieldId": "FCE{0:00}05",
-    "Description": "Co-Borr Employer City #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].AddressPostalCode",
-    "FieldId": "FCE{0:00}07",
-    "Description": "Co-Borr Employer Zip #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].AddressState",
-    "FieldId": "FCE{0:00}06",
-    "Description": "Co-Borr Employer State #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].AddressStreetLine1",
-    "FieldId": "FCE{0:00}04",
-    "Description": "Co-Borr Employer Addr #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].Attention",
-    "FieldId": "FCE{0:00}03",
-    "Description": "Co-Borr Employer Attention Contact #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].BasePayAmount",
-    "FieldId": "FCE{0:00}19",
-    "Description": "Co-Borr Employer Base Pay #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].CurrentEmploymentIndicator",
-    "FieldId": "FCE{0:00}09",
-    "Description": "Co-Borr Employer Current Indicator #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].EmployerName",
-    "FieldId": "FCE{0:00}02",
-    "Description": "Co-Borr Employer Name #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].EndDate",
-    "FieldId": "FCE{0:00}14",
-    "Description": "Co-Borr Employer Date Terminated #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].MonthlyIncomeAmount",
-    "FieldId": "FCE{0:00}12",
-    "Description": "Co-Borr Employer Total Monthly Income #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].PhoneNumber",
-    "FieldId": "FCE{0:00}17",
-    "Description": "Co-Borr Employer Phone #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].PositionDescription",
-    "FieldId": "FCE{0:00}10",
-    "Description": "Co-Borr Employer Position #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].SelfEmployedIndicator",
-    "FieldId": "FCE{0:00}15",
-    "Description": "Co-Borr Self Employed #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].StartDate",
-    "FieldId": "FCE{0:00}11",
-    "Description": "Co-Borr Employer Date Hired #{0}"
-  },
-  {
-    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower' && CurrentEmploymentIndicator == 'false')][{0}].VerificationRequestDate",
-    "FieldId": "FCE{0:00}98",
-    "Description": "Co-Borr Employer Request Date #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].AddressCity",
@@ -2085,9 +2085,19 @@
     "Description": "Other Liabilities ID"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].Balance",
+    "FieldId": "URLAROL{0:00}20",
+    "Description": "Other Liabilities Balance"
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].BorrowerType",
     "FieldId": "URLAROL{0:00}01",
     "Description": "Other Liabilities Borrower Type"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].CreditLimit",
+    "FieldId": "URLAROL{0:00}21",
+    "Description": "Other Liabilities Credit Limit"
   },
   {
     "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].DepositoryRequestDate",
@@ -2142,7 +2152,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].MonthlyPayment",
     "FieldId": "URLAROL{0:00}03",
-    "Description": "Other Liabilities Monthly Paymen"
+    "Description": "Other Liabilities Monthly Payment"
   },
   {
     "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].MonthsLeft",
@@ -2715,447 +2725,447 @@
     "Description": null
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].Address",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].Address",
     "FieldId": "AR{0:00}35",
     "Description": "IRS4506 Record - Current Addr #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].City",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].City",
     "FieldId": "AR{0:00}36",
     "Description": "IRS4506 Record - Current City #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].CostForEachPeriod",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].CostForEachPeriod",
     "FieldId": "AR{0:00}52",
     "Description": "IRS4506 Record - Fee Per Yr/Period #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].CurrentFirst",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].CurrentFirst",
     "FieldId": "AR{0:00}39",
     "Description": "IRS4506 Record - Current Name First #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].CurrentLast",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].CurrentLast",
     "FieldId": "AR{0:00}40",
     "Description": "IRS4506 Record - Current Name Last #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].First",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].First",
     "FieldId": "AR{0:00}02",
     "Description": "IRS4506 Record - First Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].HistoryId",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].HistoryId",
     "FieldId": "AR{0:00}63",
     "Description": "IRS4506 Record ID #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].IfTaxRecordNotFound",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].IfTaxRecordNotFound",
     "FieldId": "AR{0:00}14",
     "Description": "IRS4506 Record - Refund to Third Party #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].Last",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].Last",
     "FieldId": "AR{0:00}03",
     "Description": "IRS4506 Record - Last Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].LastUpdatedDate",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].LastUpdatedDate",
     "FieldId": "AR{0:00}61",
     "Description": "IRS4506 Record - Last Updated Date #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].LastUpdatedTime",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].LastUpdatedTime",
     "FieldId": "AR{0:00}62",
     "Description": "IRS4506 Record - Last Updated Time #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].NumberOfPeriods",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].NumberOfPeriods",
     "FieldId": "AR{0:00}31",
     "Description": "IRS4506 Record - # Tax Periods Requested #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].Person",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].Person",
     "FieldId": "AR{0:00}01",
     "Description": "IRS4506 Record - Tax Form for Borr/Co-Borr/Both #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].RequestorPhoneNumber",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].RequestorPhoneNumber",
     "FieldId": "AR{0:00}27",
     "Description": "IRS4506 Record - Taxpayer Phone #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].RequestorTitle",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].RequestorTitle",
     "FieldId": "AR{0:00}28",
     "Description": "IRS4506 Record - Taxpayer Title #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].RequestYear1",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].RequestYear1",
     "FieldId": "AR{0:00}25",
     "Description": "IRS4506 Record - Yr/Period Requested 1 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].RequestYear2",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].RequestYear2",
     "FieldId": "AR{0:00}26",
     "Description": "IRS4506 Record - Yr/Period Requested 2 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].RequestYear3",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].RequestYear3",
     "FieldId": "AR{0:00}29",
     "Description": "IRS4506 Record - Yr/Period Requested 3 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].RequestYear4",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].RequestYear4",
     "FieldId": "AR{0:00}30",
     "Description": "IRS4506 Record - Yr/Period Requested 4 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].RequestYear5",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].RequestYear5",
     "FieldId": "AR{0:00}53",
     "Description": "IRS4506 Record - Yr/Period Requested 5 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].RequestYear6",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].RequestYear6",
     "FieldId": "AR{0:00}54",
     "Description": "IRS4506 Record - Yr/Period Requested 6 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].RequestYear7",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].RequestYear7",
     "FieldId": "AR{0:00}55",
     "Description": "IRS4506 Record - Yr/Period Requested 7 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].RequestYear8",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].RequestYear8",
     "FieldId": "AR{0:00}56",
     "Description": "IRS4506 Record - Yr/Period Requested 8 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].ReturnAddress",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].ReturnAddress",
     "FieldId": "AR{0:00}41",
     "Description": "IRS4506 Record - Return Addr #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].ReturnCity",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].ReturnCity",
     "FieldId": "AR{0:00}42",
     "Description": "IRS4506 Record - Return City #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].ReturnState",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].ReturnState",
     "FieldId": "AR{0:00}43",
     "Description": "IRS4506 Record - Return State #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].ReturnZip",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].ReturnZip",
     "FieldId": "AR{0:00}44",
     "Description": "IRS4506 Record - Return Zip #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SendAddress",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SendAddress",
     "FieldId": "AR{0:00}10",
     "Description": "IRS4506 Record - Send Return to Addr #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SendCity",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SendCity",
     "FieldId": "AR{0:00}11",
     "Description": "IRS4506 Record - Send Return to City #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SendFirst",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SendFirst",
     "FieldId": "AR{0:00}08",
     "Description": "IRS4506 Record - Send Return to First Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SendLast",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SendLast",
     "FieldId": "AR{0:00}09",
     "Description": "IRS4506 Record - Send Return to Last Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SendPhone",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SendPhone",
     "FieldId": "AR{0:00}45",
     "Description": "IRS4506 Record - Send Return to Phone #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SendState",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SendState",
     "FieldId": "AR{0:00}12",
     "Description": "IRS4506 Record - Send Return to State #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SendZip",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SendZip",
     "FieldId": "AR{0:00}13",
     "Description": "IRS4506 Record - Send Return to Zip #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SpouseFirst",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SpouseFirst",
     "FieldId": "AR{0:00}06",
     "Description": "IRS4506 Record - Spouse First Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SpouseLast",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SpouseLast",
     "FieldId": "AR{0:00}07",
     "Description": "IRS4506 Record - Spouse Last Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SpouseSSN",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SpouseSSN",
     "FieldId": "AR{0:00}05",
     "Description": "IRS4506 Record - Second SSN/Empl ID # #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SpouseUseEIN",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SpouseUseEIN",
     "FieldId": "AR{0:00}58",
     "Description": "IRS4506 Record - Second SSN/Empl ID Format # #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].SSN",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].SSN",
     "FieldId": "AR{0:00}04",
     "Description": "IRS4506 Record - First SSN/Empl ID # #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].State",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].State",
     "FieldId": "AR{0:00}37",
     "Description": "IRS4506 Record - Current State #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].TaxFormNumber",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].TaxFormNumber",
     "FieldId": "AR{0:00}24",
     "Description": "IRS4506 Record - Tax Return Requested Descr #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].TheseCopiesMustBeCertified",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].TheseCopiesMustBeCertified",
     "FieldId": "AR{0:00}18",
     "Description": "IRS4506 Record - Copies Certified #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].TotalCost",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].TotalCost",
     "FieldId": "AR{0:00}32",
     "Description": "IRS4506 Record - Total Cost #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].UseEIN",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].UseEIN",
     "FieldId": "AR{0:00}57",
     "Description": "IRS4506 Record - First SSN/Empl ID Format # #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].UseWellsFargoRules",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].UseWellsFargoRules",
     "FieldId": "AR{0:00}59",
     "Description": "IRS4506 Record - Default to Wells Fargo Rules #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'false' && HistoryIndicator == 'true')][{0}].Zip",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].Zip",
     "FieldId": "AR{0:00}38",
     "Description": "IRS4506 Record - Current Zip #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].AccountTranscript",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].AccountTranscript",
     "FieldId": "IR{0:00}47",
     "Description": "IRS Transcript - History Record - Account Transcript #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].Address",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].Address",
     "FieldId": "IR{0:00}35",
     "Description": "IRS4506 T Record - Current Addr #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].City",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].City",
     "FieldId": "IR{0:00}36",
     "Description": "IRS4506 T Record - Current City #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].CurrentFirst",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].CurrentFirst",
     "FieldId": "IR{0:00}39",
     "Description": "IRS4506 T Record - Current Name First #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].CurrentLast",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].CurrentLast",
     "FieldId": "IR{0:00}40",
     "Description": "IRS4506 T Record - Current Name Last #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].First",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].First",
     "FieldId": "IR{0:00}02",
     "Description": "IRS4506 T Record - First Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].FormsSeriesTranscript",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].FormsSeriesTranscript",
     "FieldId": "IR{0:00}50",
     "Description": "IRS Transcript - History Record - Form W-2/1099/1098/5498 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].HistoryId",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].HistoryId",
     "FieldId": "IR{0:00}63",
     "Description": "IRS4506 T Record ID #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].Last",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].Last",
     "FieldId": "IR{0:00}03",
     "Description": "IRS4506 T Record - Last Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].LastUpdatedDate",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].LastUpdatedDate",
     "FieldId": "IR{0:00}61",
     "Description": "IRS4506 T Record - Last Updated Date #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].LastUpdatedTime",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].LastUpdatedTime",
     "FieldId": "IR{0:00}62",
     "Description": "IRS4506 T Record - Last Updated Time #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].NotifiedIrsIdentityTheftIndicator",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].NotifiedIrsIdentityTheftIndicator",
     "FieldId": "IR{0:00}60",
     "Description": "IRS4506 T Record - Identified IRS Identity Theft #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].Person",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].Person",
     "FieldId": "IR{0:00}01",
     "Description": "IRS4506 T Record - Tax Form for Borr/Co-Borr/Both #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].RecordOfAccount",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].RecordOfAccount",
     "FieldId": "IR{0:00}48",
     "Description": "IRS Transcript - History Record - Record of Account #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].RequestorPhoneNumber",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].RequestorPhoneNumber",
     "FieldId": "IR{0:00}27",
     "Description": "IRS4506 T Record - Taxpayer Phone #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].RequestorTitle",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].RequestorTitle",
     "FieldId": "IR{0:00}28",
     "Description": "IRS4506 T Record - Taxpayer Title #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].RequestYear1",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].RequestYear1",
     "FieldId": "IR{0:00}25",
     "Description": "IRS4506 T Record - Yr/Period Requested 1 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].RequestYear2",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].RequestYear2",
     "FieldId": "IR{0:00}26",
     "Description": "IRS4506 T Record - Yr/Period Requested 2 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].RequestYear3",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].RequestYear3",
     "FieldId": "IR{0:00}29",
     "Description": "IRS4506 T Record - Yr/Period Requested 3 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].RequestYear4",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].RequestYear4",
     "FieldId": "IR{0:00}30",
     "Description": "IRS4506 T Record - Yr/Period Requested 4 #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].ReturnAddress",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].ReturnAddress",
     "FieldId": "IR{0:00}41",
     "Description": "IRS4506 T Record - Return Addr #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].ReturnCity",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].ReturnCity",
     "FieldId": "IR{0:00}42",
     "Description": "IRS4506 T Record - Return City #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].ReturnState",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].ReturnState",
     "FieldId": "IR{0:00}43",
     "Description": "IRS4506 T Record - Return State #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].ReturnTranscript",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].ReturnTranscript",
     "FieldId": "IR{0:00}46",
     "Description": "IRS Transcript - History Record - Return Transcript #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].ReturnZip",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].ReturnZip",
     "FieldId": "IR{0:00}44",
     "Description": "IRS4506 T Record - Return Zip #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SendAddress",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SendAddress",
     "FieldId": "IR{0:00}10",
     "Description": "IRS4506 T Record - Send Return to Addr #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SendCity",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SendCity",
     "FieldId": "IR{0:00}11",
     "Description": "IRS4506 T Record - Send Return to City #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SendFirst",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SendFirst",
     "FieldId": "IR{0:00}08",
     "Description": "IRS4506 T Record - Send Return to First Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SendLast",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SendLast",
     "FieldId": "IR{0:00}09",
     "Description": "IRS4506 T Record - Send Return to Last Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SendPhone",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SendPhone",
     "FieldId": "IR{0:00}45",
     "Description": "IRS4506 T Record - Send Return to Phone #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SendState",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SendState",
     "FieldId": "IR{0:00}12",
     "Description": "IRS4506 T Record - Send Return to State #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SendZip",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SendZip",
     "FieldId": "IR{0:00}13",
     "Description": "IRS4506 T Record - Send Return to Zip #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SpouseFirst",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SpouseFirst",
     "FieldId": "IR{0:00}06",
     "Description": "IRS4506 T Record - Spouse First Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SpouseLast",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SpouseLast",
     "FieldId": "IR{0:00}07",
     "Description": "IRS4506 T Record - Spouse Last Name #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SpouseSSN",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SpouseSSN",
     "FieldId": "IR{0:00}05",
     "Description": "IRS4506 T Record - Second SSN/Empl ID # #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SpouseUseEIN",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SpouseUseEIN",
     "FieldId": "IR{0:00}58",
     "Description": "IRS4506 T Record - Second SSN/Empl ID Format # #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].SSN",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].SSN",
     "FieldId": "IR{0:00}04",
     "Description": "IRS4506 T Record - First SSN/Empl ID # #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].State",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].State",
     "FieldId": "IR{0:00}37",
     "Description": "IRS4506 T Record - Current State #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].TaxFormNumber",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].TaxFormNumber",
     "FieldId": "IR{0:00}24",
     "Description": "IRS4506 T Record - Tax Return Requested Descr #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].UseEIN",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].UseEIN",
     "FieldId": "IR{0:00}57",
     "Description": "IRS4506 T Record - First SSN/Empl ID Format # #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].UseWellsFargoRules",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].UseWellsFargoRules",
     "FieldId": "IR{0:00}59",
     "Description": "IRS4506 T Record - Default to Wells Fargo Rules #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].VerificationOfNonfiling",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].VerificationOfNonfiling",
     "FieldId": "IR{0:00}49",
     "Description": "IRS Transcript - History Record - Verif of Nonfiling #{0}"
   },
   {
-    "ModelPath": "Loan.CurrentApplication.Tax4506s[(Tax4506TIndicator == 'true' && HistoryIndicator == 'true')][{0}].Zip",
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].Zip",
     "FieldId": "IR{0:00}38",
     "Description": "IRS4506 T Record - Current Zip #{0}"
   },
@@ -3668,6 +3678,16 @@
     "ModelPath": "Loan.Hud1Es.Hud1EsSetups[{0}].UserDefinedPrepaid3",
     "FieldId": "HUD{0:00}57",
     "Description": "Escrow Setup User Defined 3 Prepaid #{0}"
+  },
+  {
+    "ModelPath": "Loan.LoanProductData.HelocHistoricalIndexYearSettings[{0}].IndexRate",
+    "FieldId": "HHI{0:00}02",
+    "Description": "HELOC Index Table Index"
+  },
+  {
+    "ModelPath": "Loan.LoanProductData.HelocHistoricalIndexYearSettings[{0}].Year",
+    "FieldId": "HHI{0:00}01",
+    "Description": "HELOC Index Table Year"
   },
   {
     "ModelPath": "Loan.LoanProductData.HelocRepaymentDrawPeriods[(DrawIndicator == 'False')][{0}].Apr",

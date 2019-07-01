@@ -72,6 +72,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<CreditReportAuthorizationMethod>> _creditReportAuthorizationMethod;
         private DirtyValue<bool?> _creditScoreIndicator;
         private DirtyValue<bool?> _currentEmploymentDoesNotApply;
+        private DirtyValue<string> _dataVerify;
         private DirtyValue<DateTime?> _dateAuthorizedCreditReport;
         private DirtyValue<DateTime?> _dateOfBankruptcy;
         private DirtyValue<DateTime?> _dateOfForeclosure;
@@ -289,6 +290,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _presentlyDelinquentIndicator;
         private DirtyValue<bool?> _presentlyDelinquentIndicatorURLA;
         private DirtyValue<bool?> _previousEmploymentDoesNotApply;
+        private DirtyValue<decimal?> _previousGrossMonthlyIncome;
         private DirtyValue<bool?> _printOnAdditionalBorrowerPage;
         private DirtyValue<DateTime?> _priorBankruptcy2;
         private DirtyValue<bool?> _priorForeclosure;
@@ -306,19 +308,33 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _retirementPensionIncomeAvailable;
         private DirtyValue<int?> _schoolingTermYears;
         private DirtyValue<string> _sectionAExplanation;
+        private DirtyValue<bool?> _sectionAPrintExplanation;
         private DirtyValue<string> _sectionBExplanation;
+        private DirtyValue<bool?> _sectionBPrintExplanation;
         private DirtyValue<string> _sectionCExplanation;
+        private DirtyValue<bool?> _sectionCPrintExplanation;
+        private DirtyValue<bool?> _sectionD1PrintExplanation;
         private DirtyValue<string> _sectionD2Explanation;
+        private DirtyValue<bool?> _sectionD2PrintExplanation;
         private DirtyValue<string> _sectionDExplanation;
         private DirtyValue<string> _sectionEExplanation;
+        private DirtyValue<bool?> _sectionEPrintExplanation;
         private DirtyValue<string> _sectionFExplanation;
+        private DirtyValue<bool?> _sectionFPrintExplanation;
         private DirtyValue<string> _sectionGExplanation;
+        private DirtyValue<bool?> _sectionGPrintExplanation;
         private DirtyValue<string> _sectionHExplanation;
+        private DirtyValue<bool?> _sectionHPrintExplanation;
         private DirtyValue<string> _sectionIExplanation;
+        private DirtyValue<bool?> _sectionIPrintExplanation;
         private DirtyValue<string> _sectionJExplanation;
+        private DirtyValue<bool?> _sectionJPrintExplanation;
         private DirtyValue<string> _sectionKExplanation;
+        private DirtyValue<bool?> _sectionKPrintExplanation;
         private DirtyValue<string> _sectionLExplanation;
+        private DirtyValue<bool?> _sectionLPrintExplanation;
         private DirtyValue<string> _sectionMExplanation;
+        private DirtyValue<bool?> _sectionMPrintExplanation;
         private DirtyValue<bool?> _selfDeclaredMilitaryServiceIndicator;
         private DirtyValue<string> _selfEmployedValidationMessage;
         private DirtyValue<bool?> _specialBorrowerSellerRelationshipIndicator;
@@ -442,7 +458,11 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _vendor34;
         private DirtyValue<string> _vendor35;
         private DirtyValue<string> _vendor36;
+        private DirtyValue<string> _vendor37;
+        private DirtyValue<string> _vendor38;
+        private DirtyValue<string> _vendor39;
         private DirtyValue<string> _vendor4;
+        private DirtyValue<string> _vendor40;
         private DirtyValue<string> _vendor5;
         private DirtyValue<string> _vendor6;
         private DirtyValue<string> _vendor7;
@@ -783,6 +803,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
         public bool? CurrentEmploymentDoesNotApply { get => _currentEmploymentDoesNotApply; set => SetField(ref _currentEmploymentDoesNotApply, value); }
+
+        /// <summary>
+        /// GSE Vendor Provider Data - DataVerify [GSEVENDOR.X3]
+        /// </summary>
+        public string DataVerify { get => _dataVerify; set => SetField(ref _dataVerify, value); }
 
         /// <summary>
         /// Borrower DateAuthorizedCreditReport
@@ -1918,6 +1943,12 @@ namespace EncompassRest.Loans
         public bool? PreviousEmploymentDoesNotApply { get => _previousEmploymentDoesNotApply; set => SetField(ref _previousEmploymentDoesNotApply, value); }
 
         /// <summary>
+        /// Borrower PreviousGrossMonthlyIncome
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? PreviousGrossMonthlyIncome { get => _previousGrossMonthlyIncome; set => SetField(ref _previousGrossMonthlyIncome, value); }
+
+        /// <summary>
         /// Borrower PrintOnAdditionalBorrowerPage
         /// </summary>
         public bool? PrintOnAdditionalBorrowerPage { get => _printOnAdditionalBorrowerPage; set => SetField(ref _printOnAdditionalBorrowerPage, value); }
@@ -2004,9 +2035,19 @@ namespace EncompassRest.Loans
         public string SectionAExplanation { get => _sectionAExplanation; set => SetField(ref _sectionAExplanation, value); }
 
         /// <summary>
+        /// Print Section A explanation - Borrower [URLA.X247]
+        /// </summary>
+        public bool? SectionAPrintExplanation { get => _sectionAPrintExplanation; set => SetField(ref _sectionAPrintExplanation, value); }
+
+        /// <summary>
         /// Declarations Section B Explanation [URLA.X217]
         /// </summary>
         public string SectionBExplanation { get => _sectionBExplanation; set => SetField(ref _sectionBExplanation, value); }
+
+        /// <summary>
+        /// Print Section B explanation - Borrower [URLA.X248]
+        /// </summary>
+        public bool? SectionBPrintExplanation { get => _sectionBPrintExplanation; set => SetField(ref _sectionBPrintExplanation, value); }
 
         /// <summary>
         /// Declarations Section C Explanation [URLA.X218]
@@ -2014,9 +2055,24 @@ namespace EncompassRest.Loans
         public string SectionCExplanation { get => _sectionCExplanation; set => SetField(ref _sectionCExplanation, value); }
 
         /// <summary>
+        /// Print Section C explanation - Borrower [URLA.X249]
+        /// </summary>
+        public bool? SectionCPrintExplanation { get => _sectionCPrintExplanation; set => SetField(ref _sectionCPrintExplanation, value); }
+
+        /// <summary>
+        /// Print Section D1 explanation - Borrower [URLA.X250]
+        /// </summary>
+        public bool? SectionD1PrintExplanation { get => _sectionD1PrintExplanation; set => SetField(ref _sectionD1PrintExplanation, value); }
+
+        /// <summary>
         /// Declarations Section D2 Explanation [URLA.X235]
         /// </summary>
         public string SectionD2Explanation { get => _sectionD2Explanation; set => SetField(ref _sectionD2Explanation, value); }
+
+        /// <summary>
+        /// Print Section D2 explanation - Borrower [URLA.X251]
+        /// </summary>
+        public bool? SectionD2PrintExplanation { get => _sectionD2PrintExplanation; set => SetField(ref _sectionD2PrintExplanation, value); }
 
         /// <summary>
         /// Declarations Section D Explanation [URLA.X219]
@@ -2029,9 +2085,19 @@ namespace EncompassRest.Loans
         public string SectionEExplanation { get => _sectionEExplanation; set => SetField(ref _sectionEExplanation, value); }
 
         /// <summary>
+        /// Print Section E explanation - Borrower [URLA.X252]
+        /// </summary>
+        public bool? SectionEPrintExplanation { get => _sectionEPrintExplanation; set => SetField(ref _sectionEPrintExplanation, value); }
+
+        /// <summary>
         /// Declarations Section F Explanation [URLA.X221]
         /// </summary>
         public string SectionFExplanation { get => _sectionFExplanation; set => SetField(ref _sectionFExplanation, value); }
+
+        /// <summary>
+        /// Print Section F explanation - Borrower [URLA.X253]
+        /// </summary>
+        public bool? SectionFPrintExplanation { get => _sectionFPrintExplanation; set => SetField(ref _sectionFPrintExplanation, value); }
 
         /// <summary>
         /// Declarations Section G Explanation [URLA.X222]
@@ -2039,9 +2105,19 @@ namespace EncompassRest.Loans
         public string SectionGExplanation { get => _sectionGExplanation; set => SetField(ref _sectionGExplanation, value); }
 
         /// <summary>
+        /// Print Section G explanation - Borrower [URLA.X254]
+        /// </summary>
+        public bool? SectionGPrintExplanation { get => _sectionGPrintExplanation; set => SetField(ref _sectionGPrintExplanation, value); }
+
+        /// <summary>
         /// Declarations Section H Explanation [URLA.X223]
         /// </summary>
         public string SectionHExplanation { get => _sectionHExplanation; set => SetField(ref _sectionHExplanation, value); }
+
+        /// <summary>
+        /// Print Section H explanation - Borrower [URLA.X255]
+        /// </summary>
+        public bool? SectionHPrintExplanation { get => _sectionHPrintExplanation; set => SetField(ref _sectionHPrintExplanation, value); }
 
         /// <summary>
         /// Declarations Section I Explanation [URLA.X224]
@@ -2049,9 +2125,19 @@ namespace EncompassRest.Loans
         public string SectionIExplanation { get => _sectionIExplanation; set => SetField(ref _sectionIExplanation, value); }
 
         /// <summary>
+        /// Print Section I explanation - Borrower [URLA.X256]
+        /// </summary>
+        public bool? SectionIPrintExplanation { get => _sectionIPrintExplanation; set => SetField(ref _sectionIPrintExplanation, value); }
+
+        /// <summary>
         /// Declarations Section J Explanation [URLA.X225]
         /// </summary>
         public string SectionJExplanation { get => _sectionJExplanation; set => SetField(ref _sectionJExplanation, value); }
+
+        /// <summary>
+        /// Print Section J explanation - Borrower [URLA.X257]
+        /// </summary>
+        public bool? SectionJPrintExplanation { get => _sectionJPrintExplanation; set => SetField(ref _sectionJPrintExplanation, value); }
 
         /// <summary>
         /// Declarations Section K Explanation [URLA.X226]
@@ -2059,14 +2145,29 @@ namespace EncompassRest.Loans
         public string SectionKExplanation { get => _sectionKExplanation; set => SetField(ref _sectionKExplanation, value); }
 
         /// <summary>
+        /// Print Section K explanation - Borrower [URLA.X258]
+        /// </summary>
+        public bool? SectionKPrintExplanation { get => _sectionKPrintExplanation; set => SetField(ref _sectionKPrintExplanation, value); }
+
+        /// <summary>
         /// Declarations Section L Explanation [URLA.X227]
         /// </summary>
         public string SectionLExplanation { get => _sectionLExplanation; set => SetField(ref _sectionLExplanation, value); }
 
         /// <summary>
+        /// Print Section L explanation - Borrower [URLA.X259]
+        /// </summary>
+        public bool? SectionLPrintExplanation { get => _sectionLPrintExplanation; set => SetField(ref _sectionLPrintExplanation, value); }
+
+        /// <summary>
         /// Declarations Section M Explanation [URLA.X228]
         /// </summary>
         public string SectionMExplanation { get => _sectionMExplanation; set => SetField(ref _sectionMExplanation, value); }
+
+        /// <summary>
+        /// Print Section M explanation - Borrower [URLA.X260]
+        /// </summary>
+        public bool? SectionMPrintExplanation { get => _sectionMPrintExplanation; set => SetField(ref _sectionMPrintExplanation, value); }
 
         /// <summary>
         /// Borrower SelfDeclaredMilitaryServiceIndicator
@@ -2579,52 +2680,52 @@ namespace EncompassRest.Loans
         public string Vendor1 { get => _vendor1; set => SetField(ref _vendor1, value); }
 
         /// <summary>
-        /// Borrower Vendor10
+        /// GSE Vendor Provider Data - Inco-Check (Bor,CoBor) [GSEVENDOR.X17]
         /// </summary>
         public string Vendor10 { get => _vendor10; set => SetField(ref _vendor10, value); }
 
         /// <summary>
-        /// Borrower Vendor11
+        /// GSE Vendor Provider Data - Meridian Link (Bor,CoBor) [GSEVENDOR.X18]
         /// </summary>
         public string Vendor11 { get => _vendor11; set => SetField(ref _vendor11, value); }
 
         /// <summary>
-        /// Borrower Vendor12
+        /// GSE Vendor Provider Data - NCS (Bor,CoBor) [GSEVENDOR.X19]
         /// </summary>
         public string Vendor12 { get => _vendor12; set => SetField(ref _vendor12, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - BankVOD (Bor,CoBor) [GSEVENDOR.X25]
+        /// GSE Vendor Provider Data - Plaid (Bor,CoBor) [GSEVENDOR.X20]
         /// </summary>
         public string Vendor13 { get => _vendor13; set => SetField(ref _vendor13, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - LendSnap (Bor,CoBor) [GSEVENDOR.X26]
+        /// GSE Vendor Provider Data - PointServ (VOE/VOI/4506T/Asset) (Bor,CoBor) [GSEVENDOR.X21]
         /// </summary>
         public string Vendor14 { get => _vendor14; set => SetField(ref _vendor14, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - Quovo (Bor,CoBor) [GSEVENDOR.X27]
+        /// GSE Vendor Provider Data - SharperLending (Bor,CoBor) [GSEVENDOR.X22]
         /// </summary>
         public string Vendor15 { get => _vendor15; set => SetField(ref _vendor15, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - Roostify (Bor,CoBor) [GSEVENDOR.X28]
+        /// GSE Vendor Provider Data - VeriTax (Bor,CoBor) [GSEVENDOR.X23]
         /// </summary>
         public string Vendor16 { get => _vendor16; set => SetField(ref _vendor16, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - CoreLogic (VOE/VOI) (Bor,CoBor) [GSEVENDOR.X29]
+        /// GSE Vendor Provider Data - Yodlee (Bor,CoBor) [GSEVENDOR.X24]
         /// </summary>
         public string Vendor17 { get => _vendor17; set => SetField(ref _vendor17, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - Advanced Data Income Tax Verification (Bor,CoBor) [GSEVENDOR.X30]
+        /// GSE Vendor Provider Data - BankVOD (Bor,CoBor) [GSEVENDOR.X25]
         /// </summary>
         public string Vendor18 { get => _vendor18; set => SetField(ref _vendor18, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - Partners Credit (IncomeVerify) (Bor,CoBor) [GSEVENDOR.X31]
+        /// GSE Vendor Provider Data - LendSnap (Bor,CoBor) [GSEVENDOR.X26]
         /// </summary>
         public string Vendor19 { get => _vendor19; set => SetField(ref _vendor19, value); }
 
@@ -2634,52 +2735,52 @@ namespace EncompassRest.Loans
         public string Vendor2 { get => _vendor2; set => SetField(ref _vendor2, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - Taxdoor 4506-T Service (Chronos) (Bor,CoBor) [GSEVENDOR.X32]
+        /// GSE Vendor Provider Data - Quovo (Bor,CoBor) [GSEVENDOR.X27]
         /// </summary>
         public string Vendor20 { get => _vendor20; set => SetField(ref _vendor20, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - ComplianceEase IRS Tax Transcript (Bor,CoBor) [GSEVENDOR.X33]
+        /// GSE Vendor Provider Data - Roostify (Bor,CoBor) [GSEVENDOR.X28]
         /// </summary>
         public string Vendor21 { get => _vendor21; set => SetField(ref _vendor21, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - Private Eyes (4506-Transcripts.com) (Bor,CoBor) [GSEVENDOR.X34]
+        /// GSE Vendor Provider Data - CoreLogic (VOE/VOI) (Bor,CoBor) [GSEVENDOR.X29]
         /// </summary>
         public string Vendor22 { get => _vendor22; set => SetField(ref _vendor22, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - BankVOD IRS (Bor,CoBor) [GSEVENDOR.X35]
+        /// GSE Vendor Provider Data - Advanced Data Income Tax Verification (Bor,CoBor) [GSEVENDOR.X30]
         /// </summary>
         public string Vendor23 { get => _vendor23; set => SetField(ref _vendor23, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - QuestSoft (Bor,CoBor) [GSEVENDOR.X36]
+        /// GSE Vendor Provider Data - Partners Credit (IncomeVerify) (Bor,CoBor) [GSEVENDOR.X31]
         /// </summary>
         public string Vendor24 { get => _vendor24; set => SetField(ref _vendor24, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - GSEVENDOR.X37  [GSEVENDOR.X37]
+        /// GSE Vendor Provider Data - Taxdoor 4506-T Service (Chronos) (Bor,CoBor) [GSEVENDOR.X32]
         /// </summary>
         public string Vendor25 { get => _vendor25; set => SetField(ref _vendor25, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - GSEVENDOR.X38 [GSEVENDOR.X38]
+        /// GSE Vendor Provider Data - ComplianceEase IRS Tax Transcript (Bor,CoBor) [GSEVENDOR.X33]
         /// </summary>
         public string Vendor26 { get => _vendor26; set => SetField(ref _vendor26, value); }
 
         /// <summary>
-        /// Borrower Vendor27
+        /// GSE Vendor Provider Data - Private Eyes (4506-Transcripts.com) (Bor,CoBor) [GSEVENDOR.X34]
         /// </summary>
         public string Vendor27 { get => _vendor27; set => SetField(ref _vendor27, value); }
 
         /// <summary>
-        /// Borrower Vendor28
+        /// GSE Vendor Provider Data - BankVOD IRS (Bor,CoBor) [GSEVENDOR.X35]
         /// </summary>
         public string Vendor28 { get => _vendor28; set => SetField(ref _vendor28, value); }
 
         /// <summary>
-        /// Borrower Vendor29
+        /// GSE Vendor Provider Data - QuestSoft (Bor,CoBor) [GSEVENDOR.X36]
         /// </summary>
         public string Vendor29 { get => _vendor29; set => SetField(ref _vendor29, value); }
 
@@ -2724,9 +2825,29 @@ namespace EncompassRest.Loans
         public string Vendor36 { get => _vendor36; set => SetField(ref _vendor36, value); }
 
         /// <summary>
+        /// Borrower Vendor37
+        /// </summary>
+        public string Vendor37 { get => _vendor37; set => SetField(ref _vendor37, value); }
+
+        /// <summary>
+        /// Borrower Vendor38
+        /// </summary>
+        public string Vendor38 { get => _vendor38; set => SetField(ref _vendor38, value); }
+
+        /// <summary>
+        /// Borrower Vendor39
+        /// </summary>
+        public string Vendor39 { get => _vendor39; set => SetField(ref _vendor39, value); }
+
+        /// <summary>
         /// Borrower Vendor4
         /// </summary>
         public string Vendor4 { get => _vendor4; set => SetField(ref _vendor4, value); }
+
+        /// <summary>
+        /// Borrower Vendor40
+        /// </summary>
+        public string Vendor40 { get => _vendor40; set => SetField(ref _vendor40, value); }
 
         /// <summary>
         /// Borrower Vendor5
@@ -2739,17 +2860,17 @@ namespace EncompassRest.Loans
         public string Vendor6 { get => _vendor6; set => SetField(ref _vendor6, value); }
 
         /// <summary>
-        /// Borrower Vendor7
+        /// GSE Vendor Provider Data - Chronos (Bor,CoBor) [GSEVENDOR.X14]
         /// </summary>
         public string Vendor7 { get => _vendor7; set => SetField(ref _vendor7, value); }
 
         /// <summary>
-        /// Borrower Vendor8
+        /// GSE Vendor Provider Data - Finlocker (Bor,CoBor) [GSEVENDOR.X15]
         /// </summary>
         public string Vendor8 { get => _vendor8; set => SetField(ref _vendor8, value); }
 
         /// <summary>
-        /// Borrower Vendor9
+        /// GSE Vendor Provider Data - FirstAmerican (Bor,CoBor) [GSEVENDOR.X16]
         /// </summary>
         public string Vendor9 { get => _vendor9; set => SetField(ref _vendor9, value); }
 

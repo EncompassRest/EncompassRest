@@ -848,6 +848,14 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AdditionalLoan
         /// </summary>
-        AdditionalLoan = 212
+        AdditionalLoan = 212,
+        /// <summary>
+        /// HelocHistoricalIndexYearSetting
+        /// </summary>
+        HelocHistoricalIndexYearSetting = 213,
+        /// <summary>
+        /// RateLockBuydown
+        /// </summary>
+        RateLockBuydown = 214
     }
 }

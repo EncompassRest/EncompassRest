@@ -83,7 +83,7 @@ namespace EncompassRest.Tests
             {
                 if (pair.Value.ValueType != LoanFieldValueType.Boolean)
                 {
-                    Assert.AreEqual(pair.Value.GetType(), typeof(FieldDescriptor), pair.Key);
+                    Assert.AreEqual(typeof(FieldDescriptor), pair.Value.GetType(), pair.Key);
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace EncompassRest.Tests
             {
                 if (pair.Value.ValueType != LoanFieldValueType.Boolean)
                 {
-                    Assert.AreEqual(pair.Value.GetType(), typeof(FieldDescriptor), pair.Key);
+                    Assert.AreEqual(typeof(FieldDescriptor), pair.Value.GetType(), pair.Key);
                 }
             }
             Assert.IsTrue(LoanFieldDescriptors.FieldMappings.ContainsKey(newFieldId));

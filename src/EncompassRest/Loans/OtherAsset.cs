@@ -27,7 +27,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _holderPhone;
         private DirtyValue<string> _id;
         private DirtyValue<DateTime?> _otherAssetDate;
-        private DirtyValue<string> _otherDescription;
+        private DirtyValue<StringEnumValue<OtherDescription>> _otherDescription;
         private DirtyValue<bool?> _printAttachmentIndicator;
         private DirtyValue<bool?> _printUserJobTitleIndicator;
         private DirtyValue<bool?> _printUserNameIndicator;
@@ -128,7 +128,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Other Assets Other Description [URLAROANN04]
         /// </summary>
-        public string OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
+        public StringEnumValue<OtherDescription> OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
 
         /// <summary>
         /// Other Assets Print - See Attached Authorization [URLAROANN18]
