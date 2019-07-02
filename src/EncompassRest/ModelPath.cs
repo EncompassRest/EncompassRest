@@ -810,7 +810,7 @@ namespace EncompassRest
 
             public sealed override string ToString() => ToString(null, false);
 
-            public virtual string ToString(Func<string, string> propertyNameTransformer, bool attributePath) => string.Join(" && ", _terms.Select(term => term.ToString(propertyNameTransformer, attributePath)));
+            public virtual string ToString(Func<string, string> propertyNameTransformer, bool attributePath) => string.Join(" && ", _terms.Where(term => term.PropertyName != "Id").Select(term => term.ToString(propertyNameTransformer, attributePath)));
 
             public IEnumerator<PropertyFilter> GetEnumerator()
             {
