@@ -40,7 +40,7 @@ namespace EncompassRest
         /// <summary>
         /// Holds the Http Request Logger
         /// </summary>
-        private IHttpRequestLogger HttpRequestLoggerHolder { get; set; }
+        private static IHttpRequestLogger HttpRequestLoggerHolder { get; set; }
 
 #if NETSTANDARD1_1
         private IHttpRequestLogger HttpRequestLogger => null;
@@ -48,47 +48,7 @@ namespace EncompassRest
         /// <summary>
         /// The Http Logging interface for netstandard2.0, net45, net46
         /// </summary>
-        private IHttpRequestLogger HttpRequestLogger
-        {
-            get
-            {
-                if (IsUsingCustomHttpLogger == false)
-                {
-                    return null;
-                }
-
-                if (HttpRequestLoggerHolder != null)
-                {
-                    return HttpRequestLoggerHolder;
-                }
-
-                var loggingAssembly = System.Configuration.ConfigurationManager.AppSettings["LoggingAssembly"];
-
-                if (string.IsNullOrEmpty(loggingAssembly))
-                {
-                    IsUsingCustomHttpLogger = false;
-                    return null;
-                }
-
-                var assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-                var assembly = Assembly.LoadFile(Path.Combine(assemblyPath, loggingAssembly));
-
-                foreach (var type in assembly.GetExportedTypes())
-                {
-                    var currentType = type;
-
-                    var isHttpLoggingImplementor = currentType.GetInterfaces().Contains(typeof(IHttpRequestLogger));
-
-                    if (isHttpLoggingImplementor)
-                    {
-                        HttpRequestLoggerHolder = (IHttpRequestLogger)Activator.CreateInstance(type);
-                        return HttpRequestLoggerHolder;
-                    }
-                }
-                throw new EntryPointNotFoundException($"Failed to load implemenation class for interface IHttpRequestLogging from assembly: {assemblyPath}");
-            }
-        }
+        private static IHttpRequestLogger HttpRequestLogger => GetHttpRequestLogger();
 #endif
 
         /// <summary>
@@ -243,5 +203,45 @@ namespace EncompassRest
                 return list;
             };
         }
+
+        private static IHttpRequestLogger GetHttpRequestLogger()
+        {
+            if (IsUsingCustomHttpLogger == false)
+            {
+                return null;
+            }
+
+            if (HttpRequestLoggerHolder != null)
+            {
+                return HttpRequestLoggerHolder;
+            }
+
+            var loggingAssembly = System.Configuration.ConfigurationManager.AppSettings["LoggingAssembly"];
+
+            if (string.IsNullOrEmpty(loggingAssembly))
+            {
+                IsUsingCustomHttpLogger = false;
+                return null;
+            }
+
+            var assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            var assembly = Assembly.LoadFile(Path.Combine(assemblyPath, loggingAssembly));
+
+            foreach (var type in assembly.GetExportedTypes())
+            {
+                var currentType = type;
+
+                var isHttpLoggingImplementor = currentType.GetInterfaces().Contains(typeof(IHttpRequestLogger));
+
+                if (isHttpLoggingImplementor)
+                {
+                    HttpRequestLoggerHolder = (IHttpRequestLogger)Activator.CreateInstance(type);
+                    return HttpRequestLoggerHolder;
+                }
+            }
+            throw new EntryPointNotFoundException($"Failed to load implemenation class for interface IHttpRequestLogging from assembly: {assemblyPath}");
+        }
+
     }
 }
