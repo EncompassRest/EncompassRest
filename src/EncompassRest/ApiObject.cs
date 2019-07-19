@@ -43,7 +43,7 @@ namespace EncompassRest
         private static IHttpRequestLogger HttpRequestLoggerHolder { get; set; }
 
 #if NETSTANDARD1_1
-        private IHttpRequestLogger HttpRequestLogger => null;
+        private IHttpRequestLogger HttpRequestLogger => GetHttpRequestLogger();
 #else
         /// <summary>
         /// The Http Logging interface for netstandard2.0, net45, net46
@@ -204,6 +204,11 @@ namespace EncompassRest
             };
         }
 
+#if NETSTANDARD1_1
+        private static IHttpRequestLogger GetHttpRequestLogger(){
+            return null;
+        }
+#else
         private static IHttpRequestLogger GetHttpRequestLogger()
         {
             if (IsUsingCustomHttpLogger == false)
@@ -216,7 +221,7 @@ namespace EncompassRest
                 return HttpRequestLoggerHolder;
             }
 
-            var loggingAssembly = System.Configuration.ConfigurationManager.AppSettings["LoggingAssembly"];
+            var loggingAssembly = System.Configuration.ConfigurationManager.AppSettings["HttpLoggingAssembly"];
 
             if (string.IsNullOrEmpty(loggingAssembly))
             {
@@ -242,6 +247,6 @@ namespace EncompassRest
             }
             throw new EntryPointNotFoundException($"Failed to load implemenation class for interface IHttpRequestLogging from assembly: {assemblyPath}");
         }
-
+#endif
     }
 }
