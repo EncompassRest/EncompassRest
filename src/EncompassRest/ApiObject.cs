@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
+using System.Linq;
+using System.Reflection;
 
 namespace EncompassRest
 {
@@ -13,6 +15,8 @@ namespace EncompassRest
     /// </summary>
     public abstract class ApiObject
     {
+        internal static bool IsUsingCustomHttpLogger = true;
+
         internal static readonly HttpMethod PatchMethod = new HttpMethod("PATCH");
 
         internal static readonly Func<HttpResponseMessage, Task<string>> ReadAsStringFunc = response => response.Content.ReadAsStringAsync();
@@ -32,6 +36,60 @@ namespace EncompassRest
         internal static string GetLocation(HttpResponseMessage response) => Path.GetFileName(response.Headers.Location.OriginalString);
 
         private readonly string _baseApiPath;
+
+        /// <summary>
+        /// Holds the Http Request Logger
+        /// </summary>
+        private IHttpRequestLogger HttpRequestLoggerHolder { get; set; }
+
+#if NETSTANDARD1_1
+        private IHttpRequestLogger HttpRequestLogger => null;
+#else
+        /// <summary>
+        /// The Http Logging interface for netstandard2.0, net45, net46
+        /// </summary>
+        private IHttpRequestLogger HttpRequestLogger
+        {
+            get
+            {
+                if (IsUsingCustomHttpLogger == false)
+                {
+                    return null;
+                }
+
+                if (HttpRequestLoggerHolder != null)
+                {
+                    return HttpRequestLoggerHolder;
+                }
+
+                var loggingAssembly = System.Configuration.ConfigurationManager.AppSettings["LoggingAssembly"];
+
+                if (string.IsNullOrEmpty(loggingAssembly))
+                {
+                    IsUsingCustomHttpLogger = false;
+                    return null;
+                }
+
+                var assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+                var assembly = Assembly.LoadFile(Path.Combine(assemblyPath, loggingAssembly));
+
+                foreach (var type in assembly.GetExportedTypes())
+                {
+                    var currentType = type;
+
+                    var isHttpLoggingImplementor = currentType.GetInterfaces().Contains(typeof(IHttpRequestLogger));
+
+                    if (isHttpLoggingImplementor)
+                    {
+                        HttpRequestLoggerHolder = (IHttpRequestLogger)Activator.CreateInstance(type);
+                        return HttpRequestLoggerHolder;
+                    }
+                }
+                throw new EntryPointNotFoundException($"Failed to load implemenation class for interface IHttpRequestLogging from assembly: {assemblyPath}");
+            }
+        }
+#endif
 
         /// <summary>
         /// The <see cref="EncompassRestClient"/> associated with the Api object.
@@ -115,7 +173,20 @@ namespace EncompassRest
         {
             using (var request = new HttpRequestMessage(method, $"{requestUri}{queryString?.PrecedeWith("?")}") { Content = content })
             {
+                var httpRequestLogId = string.Empty;
+
+                if (HttpRequestLogger != null)
+                {
+                    httpRequestLogId = await HttpRequestLogger.LogHttpRequestMessageAsync(request).ConfigureAwait(false);
+                }
+
                 var response = await GetHttpClient().SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+
+                if (HttpRequestLogger != null)
+                {
+                    await HttpRequestLogger.LogHttpResponseMessageAsync(response, httpRequestLogId).ConfigureAwait(false);
+                }
+
                 try
                 {
                     if (throwOnNonSuccessStatusCode && !response.IsSuccessStatusCode)
