@@ -23,6 +23,7 @@
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
 
   <ItemGroup>
