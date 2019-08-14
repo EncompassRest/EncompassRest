@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <Configurations>Debug;Release</Configurations>
+    <Configurations>Debug;Release;CI</Configurations>
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>encompassrest.snk</AssemblyOriginatorKeyFile>
@@ -12,6 +12,9 @@
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CI|AnyCPU'">
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
