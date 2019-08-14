@@ -18,6 +18,9 @@ namespace EncompassRest
     /// The client object to make calls to the Encompass Apis. Use the static factory Create* methods to create a client object.
     /// </summary>
     public sealed class EncompassRestClient : IDisposable
+#if IASYNCDISPOSABLE
+        , IAsyncDisposable
+#endif
     {
 #if NET45
         static EncompassRestClient()
@@ -165,7 +168,7 @@ namespace EncompassRest
         private Calculators.Calculators _calculators;
         private BaseApiClient _baseApiClient;
 
-        #region Properties
+#region Properties
         /// <summary>
         /// The access token and related Apis.
         /// </summary>
@@ -465,7 +468,7 @@ namespace EncompassRest
                 return baseApiClient ?? Interlocked.CompareExchange(ref _baseApiClient, (baseApiClient = new BaseApiClient(this)), null) ?? baseApiClient;
             }
         }
-        #endregion
+#endregion
 
         /// <summary>
         /// An event that occurs when an Api response is received.
@@ -482,6 +485,17 @@ namespace EncompassRest
             CommonCache = parameters.CommonCache ?? (parameters.CommonCache = new CommonCache());
             UndefinedCustomFieldHandling = parameters.UndefinedCustomFieldHandling;
         }
+
+#if IASYNCDISPOSABLE
+        /// <summary>
+        /// Revokes the current access token and disposes of the client object asynchronously.
+        /// </summary>
+        public async ValueTask DisposeAsync()
+        {
+            await AccessToken.RevokeAsync().ConfigureAwait(false);
+            Dispose();
+        }
+#endif
 
         /// <summary>
         /// Disposes of the client object.

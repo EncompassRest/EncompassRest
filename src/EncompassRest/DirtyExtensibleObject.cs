@@ -13,7 +13,7 @@ namespace EncompassRest
     /// Base class that supports extension data and dirty json serialization.
     /// </summary>
     public abstract class DirtyExtensibleObject : ExtensibleObject, IDirty, IIdentifiable, INotifyPropertyChanged
-#if HAVE_ICLONEABLE
+#if ICLONEABLE
         , ICloneable
 #endif
     {
@@ -159,7 +159,7 @@ namespace EncompassRest
 
         private static PropertyInfo GetIdProperty(TypeInfo typeInfo) => typeInfo.DeclaredProperties.FirstOrDefault(p => p.Name == "EncompassRest.IIdentifiable.Id") ?? typeInfo.DeclaredProperties.FirstOrDefault(p => p.Name == "Id") ?? GetIdProperty(typeInfo.BaseType.GetTypeInfo());
 
-#if HAVE_ICLONEABLE
+#if ICLONEABLE
         object ICloneable.Clone() => this.Clone();
 #endif
     }
