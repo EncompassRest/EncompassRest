@@ -71,15 +71,17 @@ namespace EncompassRest.Loans
                                 
                                 foreach (var loanField in loanFields)
                                 {
-                                    var modelPath = loanField.ModelPath;
+                                    var modelPathString = loanField.ModelPath;
+                                    var modelPath = CreateModelPath(modelPathString);
+                                    modelPathString = modelPath.ToString();
                                     FieldDescriptor descriptor;
                                     if (loanField.Format.HasValue)
                                     {
-                                        descriptor = new NonStandardFieldDescriptor(loanField.FieldId, CreateModelPath(modelPath), modelPath, loanField.Description, loanField.Format, loanField.Options, loanField.ReadOnly ?? false);
+                                        descriptor = new NonStandardFieldDescriptor(loanField.FieldId, modelPath, modelPathString, loanField.Description, loanField.Format, loanField.Options, loanField.ReadOnly ?? false);
                                     }
                                     else
                                     {
-                                        descriptor = new FieldDescriptor(loanField.FieldId, CreateModelPath(modelPath), modelPath, loanField.Description);
+                                        descriptor = new FieldDescriptor(loanField.FieldId, modelPath, modelPathString, loanField.Description);
                                     }
                                     FieldMappings.AddField(descriptor);
                                 }
@@ -362,7 +364,13 @@ namespace EncompassRest.Loans
                                                 ++index;
                                             }
 
-                                            modelPath = $"{currentPath}[({string.Join(" && ", stringListInstance.Select((s, i) => Tuple.Create(s, i)).Where(t => !string.IsNullOrEmpty(t.Item1)).OrderBy(t => listPropertySchema.KeyProperties[t.Item2]).Select(t => $"{listPropertySchema.KeyProperties[t.Item2]} == '{t.Item1}'"))})].{propertyName}";
+                                            var tuples = stringListInstance.Select((s, i) => Tuple.Create(s, i)).Where(t => !string.IsNullOrEmpty(t.Item1));
+                                            var pairs = tuples.OrderBy(t => listPropertySchema.KeyProperties[t.Item2]).Select(t => $"{listPropertySchema.KeyProperties[t.Item2]} == '{t.Item1}'");
+                                            if (currentPath == "Loan.CurrentApplication.Income")
+                                            {
+                                                pairs = pairs.Concat(new[] { $"Id == '{string.Join("_", tuples.Select(t => t.Item1 == "OtherIncome" ? "Other" : t.Item1))}'" });
+                                            }
+                                            modelPath = $"{currentPath}[({string.Join(" && ", pairs)})].{propertyName}";
                                             break;
                                         case StringDictionaryInstance stringDictionaryInstance:
                                             foreach (var p in stringDictionaryInstance)

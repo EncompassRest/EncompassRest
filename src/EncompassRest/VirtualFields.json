@@ -3577,6 +3577,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE.1825",
@@ -9750,6 +9754,531 @@
     "Description": "Rate Lock - Rate Lock Request - Borrower/Lender Paid (Most Recent)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE.4510",
+    "Description": "Rate Lock - Rate Lock Request - HELOC Initial Advance (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4511",
+    "Description": "Rate Lock - Rate Lock Request - Teaser Rate (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE.4512",
+    "Description": "Rate Lock - Rate Lock Request - Loan Info ARM Disclosure Type (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4513",
+    "Description": "Rate Lock - Rate Lock Request - Loan Info ARM Index (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4514",
+    "Description": "Rate Lock - Rate Lock Request - Trans Details HCLTV/HTLTV (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.4515",
+    "Description": "Rate Lock - Rate Lock Request - FHA Secondary Residence (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.4516",
+    "Description": "Rate Lock - Lock Request Subject Property Street Address (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE.4517",
+    "Description": "Rate Lock - Lock Request Subject Property Unit Type (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.4518",
+    "Description": "Rate Lock - Lock Request Subject Property Unit Number (Most Recent)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE.4519",
+    "Description": "Rate Lock - Rate Lock Request - Freddie Mac HELOC Credit Limit (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4535",
+    "Description": "Rate Lock - Loan Info Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4536",
+    "Description": "Rate Lock - Loan Info Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4537",
+    "Description": "Rate Lock - Loan Info Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4538",
+    "Description": "Rate Lock - Loan Info Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4539",
+    "Description": "Rate Lock - Loan Info Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4540",
+    "Description": "Rate Lock - Loan Info Buydown Rate 6 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4541",
+    "Description": "Rate Lock - Loan Info Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4542",
+    "Description": "Rate Lock - Loan Info Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4543",
+    "Description": "Rate Lock - Loan Info Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4544",
+    "Description": "Rate Lock - Loan Info Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4545",
+    "Description": "Rate Lock - Loan Info Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4546",
+    "Description": "Rate Lock - Loan Info Buydown Term 6 (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE.4631",
+    "Description": "Rate Lock - Lock Request Buydown Contributor (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.4632",
+    "Description": "Rate Lock - Lock Request Buydown Type (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4633",
+    "Description": "Rate Lock - Lock Request Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4634",
+    "Description": "Rate Lock - Lock Request Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4635",
+    "Description": "Rate Lock - Lock Request Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4636",
+    "Description": "Rate Lock - Lock Request Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4637",
+    "Description": "Rate Lock - Lock Request Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.4638",
+    "Description": "Rate Lock - Lock Request Buydown Rate 6 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4639",
+    "Description": "Rate Lock - Lock Request Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4640",
+    "Description": "Rate Lock - Lock Request Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4641",
+    "Description": "Rate Lock - Lock Request Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4642",
+    "Description": "Rate Lock - Lock Request Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4643",
+    "Description": "Rate Lock - Lock Request Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.4644",
+    "Description": "Rate Lock - Lock Request Buydown Term 6 (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.4645",
+    "Description": "Rate Lock - Temporary Buydown (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.60",
     "Description": "Rate Lock - Co-Borr Experian FICO (Most Recent)"
@@ -9862,6 +10391,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -10169,6 +10702,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE.CONFIRMED.1825",
@@ -16342,6 +16879,531 @@
     "Description": "Rate Request - Rate Lock Request - Borrower/Lender Paid (Mostly Recent Confirmed)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE.CONFIRMED.4510",
+    "Description": "Rate Request - Rate Lock Request - HELOC Initial Advance (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4511",
+    "Description": "Rate Request - Rate Lock Request - Teaser Rate (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.4512",
+    "Description": "Rate Request - Rate Lock Request - Loan Info ARM Disclosure Type (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4513",
+    "Description": "Rate Request - Rate Lock Request - Loan Info ARM Index (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4514",
+    "Description": "Rate Request - Rate Lock Request - Trans Details HCLTV/HTLTV (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.4515",
+    "Description": "Rate Request - Rate Lock Request - FHA Secondary Residence (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.CONFIRMED.4516",
+    "Description": "Rate Request - Lock Request Subject Property Street Address (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.4517",
+    "Description": "Rate Request - Lock Request Subject Property Unit Type (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.CONFIRMED.4518",
+    "Description": "Rate Request - Lock Request Subject Property Unit Number (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE.CONFIRMED.4519",
+    "Description": "Rate Request - Rate Lock Request - Freddie Mac HELOC Credit Limit (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4535",
+    "Description": "Rate Request - Loan Info Buydown Rate 1 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4536",
+    "Description": "Rate Request - Loan Info Buydown Rate 2 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4537",
+    "Description": "Rate Request - Loan Info Buydown Rate 3 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4538",
+    "Description": "Rate Request - Loan Info Buydown Rate 4 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4539",
+    "Description": "Rate Request - Loan Info Buydown Rate 5 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4540",
+    "Description": "Rate Request - Loan Info Buydown Rate 6 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4541",
+    "Description": "Rate Request - Loan Info Buydown Term 1 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4542",
+    "Description": "Rate Request - Loan Info Buydown Term 2 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4543",
+    "Description": "Rate Request - Loan Info Buydown Term 3 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4544",
+    "Description": "Rate Request - Loan Info Buydown Term 4 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4545",
+    "Description": "Rate Request - Loan Info Buydown Term 5 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4546",
+    "Description": "Rate Request - Loan Info Buydown Term 6 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.4631",
+    "Description": "Rate Request - Lock Request Buydown Contributor (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.CONFIRMED.4632",
+    "Description": "Rate Request - Lock Request Buydown Type (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4633",
+    "Description": "Rate Request - Lock Request Buydown Rate 1 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4634",
+    "Description": "Rate Request - Lock Request Buydown Rate 2 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4635",
+    "Description": "Rate Request - Lock Request Buydown Rate 3 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4636",
+    "Description": "Rate Request - Lock Request Buydown Rate 4 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4637",
+    "Description": "Rate Request - Lock Request Buydown Rate 5 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.CONFIRMED.4638",
+    "Description": "Rate Request - Lock Request Buydown Rate 6 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4639",
+    "Description": "Rate Request - Lock Request Buydown Term 1 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4640",
+    "Description": "Rate Request - Lock Request Buydown Term 2 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4641",
+    "Description": "Rate Request - Lock Request Buydown Term 3 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4642",
+    "Description": "Rate Request - Lock Request Buydown Term 4 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4643",
+    "Description": "Rate Request - Lock Request Buydown Term 5 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.CONFIRMED.4644",
+    "Description": "Rate Request - Lock Request Buydown Term 6 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.CONFIRMED.4645",
+    "Description": "Rate Request - Temporary Buydown (Mostly Recent Confirmed)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.CONFIRMED.60",
     "Description": "Rate Request - Co-Borr Experian FICO (Mostly Recent Confirmed)"
@@ -16434,6 +17496,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -16602,6 +17668,134 @@
     ],
     "FieldId": "LOCKRATE.CONFIRMED.MORNET.X67",
     "Description": "Rate Request - Fannie Mae Loan Doc Type Code (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.CONFIRMED.URLA.X73",
+    "Description": "Rate Request - Property Address Line Text (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.URLA.X74",
+    "Description": "Rate Request - Address Unit Type Identifier (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.CONFIRMED.URLA.X75",
+    "Description": "Rate Request - Property Address Unit Identifier (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.URLA.X76",
+    "Description": "Rate Request - FHA Secondary Residence Indicator (Mostly Recent Confirmed)"
   },
   {
     "Format": 201,
@@ -16969,6 +18163,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE.DENIED.1825",
@@ -23142,6 +24340,531 @@
     "Description": "Rate Lock Denial - Rate Lock Request - Borrower/Lender Paid (Most Recent)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE.DENIED.4510",
+    "Description": "Rate Lock Denial - Rate Lock Request - HELOC Initial Advance (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4511",
+    "Description": "Rate Lock Denial - Rate Lock Request - Teaser Rate (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.4512",
+    "Description": "Rate Lock Denial - Rate Lock Request - Loan Info ARM Disclosure Type (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4513",
+    "Description": "Rate Lock Denial - Rate Lock Request - Loan Info ARM Index (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4514",
+    "Description": "Rate Lock Denial - Rate Lock Request - Trans Details HCLTV/HTLTV (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.4515",
+    "Description": "Rate Lock Denial - Rate Lock Request - FHA Secondary Residence (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.DENIED.4516",
+    "Description": "Rate Lock Denial - Lock Request Subject Property Street Address (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.4517",
+    "Description": "Rate Lock Denial - Lock Request Subject Property Unit Type (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.DENIED.4518",
+    "Description": "Rate Lock Denial - Lock Request Subject Property Unit Number (Most Recent)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE.DENIED.4519",
+    "Description": "Rate Lock Denial - Rate Lock Request - Freddie Mac HELOC Credit Limit (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4535",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4536",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4537",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4538",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4539",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4540",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 6 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4541",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4542",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4543",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4544",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4545",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4546",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 6 (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.4631",
+    "Description": "Rate Lock Denial - Lock Request Buydown Contributor (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.DENIED.4632",
+    "Description": "Rate Lock Denial - Lock Request Buydown Type (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4633",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4634",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4635",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4636",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4637",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.DENIED.4638",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 6 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4639",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4640",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4641",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4642",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4643",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.DENIED.4644",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 6 (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.DENIED.4645",
+    "Description": "Rate Lock Denial - Temporary Buydown (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.DENIED.60",
     "Description": "Rate Lock Denial - Co-Borr Experian FICO (Most Recent)"
@@ -23234,6 +24957,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -23402,6 +25129,134 @@
     ],
     "FieldId": "LOCKRATE.DENIED.MORNET.X67",
     "Description": "Rate Lock Denial - Fannie Mae Loan Doc Type Code (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.DENIED.URLA.X73",
+    "Description": "Rate Lock Denial - Property Address Line Text (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.URLA.X74",
+    "Description": "Rate Lock Denial - Address Unit Type Identifier (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.DENIED.URLA.X75",
+    "Description": "Rate Lock Denial - Property Address Unit Identifier (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.URLA.X76",
+    "Description": "Rate Lock Denial - FHA Secondary Residence Indicator (Most Recent)"
   },
   {
     "Format": 201,
@@ -23906,6 +25761,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE.REQUEST.1825",
@@ -30079,6 +31938,531 @@
     "Description": "Rate Lock Request - Rate Lock Request - Borrower/Lender Paid (Most Recent)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE.REQUEST.4510",
+    "Description": "Rate Lock Request - Rate Lock Request - HELOC Initial Advance (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4511",
+    "Description": "Rate Lock Request - Rate Lock Request - Teaser Rate (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.4512",
+    "Description": "Rate Lock Request - Rate Lock Request - Loan Info ARM Disclosure Type (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4513",
+    "Description": "Rate Lock Request - Rate Lock Request - Loan Info ARM Index (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4514",
+    "Description": "Rate Lock Request - Rate Lock Request - Trans Details HCLTV/HTLTV (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.4515",
+    "Description": "Rate Lock Request - Rate Lock Request - FHA Secondary Residence (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.REQUEST.4516",
+    "Description": "Rate Lock Request - Lock Request Subject Property Street Address (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.4517",
+    "Description": "Rate Lock Request - Lock Request Subject Property Unit Type (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.REQUEST.4518",
+    "Description": "Rate Lock Request - Lock Request Subject Property Unit Number (Most Recent)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE.REQUEST.4519",
+    "Description": "Rate Lock Request - Rate Lock Request - Freddie Mac HELOC Credit Limit (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4535",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4536",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4537",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4538",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4539",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4540",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 6 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4541",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4542",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4543",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4544",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4545",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4546",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 6 (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.4631",
+    "Description": "Rate Lock Request - Lock Request Buydown Contributor (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.REQUEST.4632",
+    "Description": "Rate Lock Request - Lock Request Buydown Type (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4633",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4634",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4635",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4636",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4637",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE.REQUEST.4638",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 6 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4639",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4640",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4641",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4642",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4643",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE.REQUEST.4644",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 6 (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.REQUEST.4645",
+    "Description": "Rate Lock Request - Temporary Buydown (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.REQUEST.60",
     "Description": "Rate Lock Request - Co-Borr Experian FICO (Most Recent)"
@@ -30171,6 +32555,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -30341,6 +32729,134 @@
     "Description": "Rate Lock Request - Fannie Mae Loan Doc Type Code (Most Recent)"
   },
   {
+    "Format": 101,
+    "FieldId": "LOCKRATE.REQUEST.URLA.X73",
+    "Description": "Rate Lock Request - Property Address Line Text (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.URLA.X74",
+    "Description": "Rate Lock Request - Address Unit Type Identifier (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.REQUEST.URLA.X75",
+    "Description": "Rate Lock Request - Property Address Unit Identifier (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.URLA.X76",
+    "Description": "Rate Lock Request - FHA Secondary Residence Indicator (Most Recent)"
+  },
+  {
     "Format": 201,
     "FieldId": "LOCKRATE.REQUEST.VASUMM.X23",
     "Description": "Rate Lock Request - VA Loan Summ Credit Score (Most Recent)"
@@ -30401,6 +32917,134 @@
     "Format": 201,
     "FieldId": "LOCKRATE.SELLLOCKCOUNT",
     "Description": "Rate Lock - Count of the number of sell side locks"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.URLA.X73",
+    "Description": "Rate Lock - Property Address Line Text (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE.URLA.X74",
+    "Description": "Rate Lock - Address Unit Type Identifier (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.URLA.X75",
+    "Description": "Rate Lock - Property Address Unit Identifier (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.URLA.X76",
+    "Description": "Rate Lock - FHA Secondary Residence Indicator (Most Recent)"
   },
   {
     "Format": 201,
@@ -30680,6 +33324,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE1.1825",
@@ -36853,6 +39501,531 @@
     "Description": "Rate Lock - Rate Lock Request - Borrower/Lender Paid (Previous 1)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE1.4510",
+    "Description": "Rate Lock - Rate Lock Request - HELOC Initial Advance (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4511",
+    "Description": "Rate Lock - Rate Lock Request - Teaser Rate (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE1.4512",
+    "Description": "Rate Lock - Rate Lock Request - Loan Info ARM Disclosure Type (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4513",
+    "Description": "Rate Lock - Rate Lock Request - Loan Info ARM Index (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4514",
+    "Description": "Rate Lock - Rate Lock Request - Trans Details HCLTV/HTLTV (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.4515",
+    "Description": "Rate Lock - Rate Lock Request - FHA Secondary Residence (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.4516",
+    "Description": "Rate Lock - Lock Request Subject Property Street Address (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE1.4517",
+    "Description": "Rate Lock - Lock Request Subject Property Unit Type (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.4518",
+    "Description": "Rate Lock - Lock Request Subject Property Unit Number (Previous 1)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE1.4519",
+    "Description": "Rate Lock - Rate Lock Request - Freddie Mac HELOC Credit Limit (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4535",
+    "Description": "Rate Lock - Loan Info Buydown Rate 1 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4536",
+    "Description": "Rate Lock - Loan Info Buydown Rate 2 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4537",
+    "Description": "Rate Lock - Loan Info Buydown Rate 3 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4538",
+    "Description": "Rate Lock - Loan Info Buydown Rate 4 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4539",
+    "Description": "Rate Lock - Loan Info Buydown Rate 5 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4540",
+    "Description": "Rate Lock - Loan Info Buydown Rate 6 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4541",
+    "Description": "Rate Lock - Loan Info Buydown Term 1 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4542",
+    "Description": "Rate Lock - Loan Info Buydown Term 2 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4543",
+    "Description": "Rate Lock - Loan Info Buydown Term 3 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4544",
+    "Description": "Rate Lock - Loan Info Buydown Term 4 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4545",
+    "Description": "Rate Lock - Loan Info Buydown Term 5 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4546",
+    "Description": "Rate Lock - Loan Info Buydown Term 6 (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE1.4631",
+    "Description": "Rate Lock - Lock Request Buydown Contributor (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.4632",
+    "Description": "Rate Lock - Lock Request Buydown Type (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4633",
+    "Description": "Rate Lock - Lock Request Buydown Rate 1 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4634",
+    "Description": "Rate Lock - Lock Request Buydown Rate 2 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4635",
+    "Description": "Rate Lock - Lock Request Buydown Rate 3 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4636",
+    "Description": "Rate Lock - Lock Request Buydown Rate 4 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4637",
+    "Description": "Rate Lock - Lock Request Buydown Rate 5 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.4638",
+    "Description": "Rate Lock - Lock Request Buydown Rate 6 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4639",
+    "Description": "Rate Lock - Lock Request Buydown Term 1 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4640",
+    "Description": "Rate Lock - Lock Request Buydown Term 2 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4641",
+    "Description": "Rate Lock - Lock Request Buydown Term 3 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4642",
+    "Description": "Rate Lock - Lock Request Buydown Term 4 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4643",
+    "Description": "Rate Lock - Lock Request Buydown Term 5 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.4644",
+    "Description": "Rate Lock - Lock Request Buydown Term 6 (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.4645",
+    "Description": "Rate Lock - Temporary Buydown (Previous 1)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE1.60",
     "Description": "Rate Lock - Co-Borr Experian FICO (Previous 1)"
@@ -36945,6 +40118,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -37267,6 +40444,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE1.DENIED.1825",
@@ -43440,6 +46621,531 @@
     "Description": "Rate Lock Denial - Rate Lock Request - Borrower/Lender Paid (Previous 1)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE1.DENIED.4510",
+    "Description": "Rate Lock Denial - Rate Lock Request - HELOC Initial Advance (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4511",
+    "Description": "Rate Lock Denial - Rate Lock Request - Teaser Rate (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.4512",
+    "Description": "Rate Lock Denial - Rate Lock Request - Loan Info ARM Disclosure Type (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4513",
+    "Description": "Rate Lock Denial - Rate Lock Request - Loan Info ARM Index (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4514",
+    "Description": "Rate Lock Denial - Rate Lock Request - Trans Details HCLTV/HTLTV (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.4515",
+    "Description": "Rate Lock Denial - Rate Lock Request - FHA Secondary Residence (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.DENIED.4516",
+    "Description": "Rate Lock Denial - Lock Request Subject Property Street Address (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.4517",
+    "Description": "Rate Lock Denial - Lock Request Subject Property Unit Type (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.DENIED.4518",
+    "Description": "Rate Lock Denial - Lock Request Subject Property Unit Number (Previous 1)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE1.DENIED.4519",
+    "Description": "Rate Lock Denial - Rate Lock Request - Freddie Mac HELOC Credit Limit (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4535",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 1 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4536",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 2 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4537",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 3 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4538",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 4 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4539",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 5 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4540",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 6 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4541",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 1 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4542",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 2 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4543",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 3 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4544",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 4 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4545",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 5 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4546",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 6 (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.4631",
+    "Description": "Rate Lock Denial - Lock Request Buydown Contributor (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.DENIED.4632",
+    "Description": "Rate Lock Denial - Lock Request Buydown Type (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4633",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 1 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4634",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 2 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4635",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 3 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4636",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 4 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4637",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 5 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.DENIED.4638",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 6 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4639",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 1 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4640",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 2 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4641",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 3 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4642",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 4 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4643",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 5 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.DENIED.4644",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 6 (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.DENIED.4645",
+    "Description": "Rate Lock Denial - Temporary Buydown (Previous 1)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE1.DENIED.60",
     "Description": "Rate Lock Denial - Co-Borr Experian FICO (Previous 1)"
@@ -43532,6 +47238,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -43700,6 +47410,134 @@
     ],
     "FieldId": "LOCKRATE1.DENIED.MORNET.X67",
     "Description": "Rate Lock Denial - Fannie Mae Loan Doc Type Code (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.DENIED.URLA.X73",
+    "Description": "Rate Lock Denial - Property Address Line Text (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.URLA.X74",
+    "Description": "Rate Lock Denial - Address Unit Type Identifier (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.DENIED.URLA.X75",
+    "Description": "Rate Lock Denial - Property Address Unit Identifier (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.URLA.X76",
+    "Description": "Rate Lock Denial - FHA Secondary Residence Indicator (Previous 1)"
   },
   {
     "Format": 201,
@@ -44114,6 +47952,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE1.REQUEST.1825",
@@ -50287,6 +54129,531 @@
     "Description": "Rate Lock Request - Rate Lock Request - Borrower/Lender Paid (Previous 1)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE1.REQUEST.4510",
+    "Description": "Rate Lock Request - Rate Lock Request - HELOC Initial Advance (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4511",
+    "Description": "Rate Lock Request - Rate Lock Request - Teaser Rate (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.4512",
+    "Description": "Rate Lock Request - Rate Lock Request - Loan Info ARM Disclosure Type (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4513",
+    "Description": "Rate Lock Request - Rate Lock Request - Loan Info ARM Index (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4514",
+    "Description": "Rate Lock Request - Rate Lock Request - Trans Details HCLTV/HTLTV (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.4515",
+    "Description": "Rate Lock Request - Rate Lock Request - FHA Secondary Residence (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.REQUEST.4516",
+    "Description": "Rate Lock Request - Lock Request Subject Property Street Address (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.4517",
+    "Description": "Rate Lock Request - Lock Request Subject Property Unit Type (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.REQUEST.4518",
+    "Description": "Rate Lock Request - Lock Request Subject Property Unit Number (Previous 1)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE1.REQUEST.4519",
+    "Description": "Rate Lock Request - Rate Lock Request - Freddie Mac HELOC Credit Limit (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4535",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 1 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4536",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 2 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4537",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 3 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4538",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 4 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4539",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 5 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4540",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 6 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4541",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 1 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4542",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 2 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4543",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 3 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4544",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 4 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4545",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 5 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4546",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 6 (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.4631",
+    "Description": "Rate Lock Request - Lock Request Buydown Contributor (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.REQUEST.4632",
+    "Description": "Rate Lock Request - Lock Request Buydown Type (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4633",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 1 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4634",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 2 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4635",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 3 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4636",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 4 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4637",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 5 (Previous 1)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE1.REQUEST.4638",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 6 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4639",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 1 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4640",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 2 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4641",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 3 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4642",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 4 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4643",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 5 (Previous 1)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE1.REQUEST.4644",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 6 (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.REQUEST.4645",
+    "Description": "Rate Lock Request - Temporary Buydown (Previous 1)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE1.REQUEST.60",
     "Description": "Rate Lock Request - Co-Borr Experian FICO (Previous 1)"
@@ -50379,6 +54746,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -50549,6 +54920,134 @@
     "Description": "Rate Lock Request - Fannie Mae Loan Doc Type Code (Previous 1)"
   },
   {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.REQUEST.URLA.X73",
+    "Description": "Rate Lock Request - Property Address Line Text (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.URLA.X74",
+    "Description": "Rate Lock Request - Address Unit Type Identifier (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.REQUEST.URLA.X75",
+    "Description": "Rate Lock Request - Property Address Unit Identifier (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.URLA.X76",
+    "Description": "Rate Lock Request - FHA Secondary Residence Indicator (Previous 1)"
+  },
+  {
     "Format": 201,
     "FieldId": "LOCKRATE1.REQUEST.VASUMM.X23",
     "Description": "Rate Lock Request - VA Loan Summ Credit Score (Previous 1)"
@@ -50557,6 +55056,134 @@
     "Format": 101,
     "FieldId": "LOCKRATE1.REQUESTEDBY",
     "Description": "Rate Lock - Rate Requested By (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.URLA.X73",
+    "Description": "Rate Lock - Property Address Line Text (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE1.URLA.X74",
+    "Description": "Rate Lock - Address Unit Type Identifier (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.URLA.X75",
+    "Description": "Rate Lock - Property Address Unit Identifier (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.URLA.X76",
+    "Description": "Rate Lock - FHA Secondary Residence Indicator (Previous 1)"
   },
   {
     "Format": 201,
@@ -50836,6 +55463,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE2.1825",
@@ -57009,6 +61640,531 @@
     "Description": "Rate Lock - Rate Lock Request - Borrower/Lender Paid (Previous 2)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE2.4510",
+    "Description": "Rate Lock - Rate Lock Request - HELOC Initial Advance (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4511",
+    "Description": "Rate Lock - Rate Lock Request - Teaser Rate (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE2.4512",
+    "Description": "Rate Lock - Rate Lock Request - Loan Info ARM Disclosure Type (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4513",
+    "Description": "Rate Lock - Rate Lock Request - Loan Info ARM Index (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4514",
+    "Description": "Rate Lock - Rate Lock Request - Trans Details HCLTV/HTLTV (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.4515",
+    "Description": "Rate Lock - Rate Lock Request - FHA Secondary Residence (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.4516",
+    "Description": "Rate Lock - Lock Request Subject Property Street Address (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE2.4517",
+    "Description": "Rate Lock - Lock Request Subject Property Unit Type (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.4518",
+    "Description": "Rate Lock - Lock Request Subject Property Unit Number (Previous 2)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE2.4519",
+    "Description": "Rate Lock - Rate Lock Request - Freddie Mac HELOC Credit Limit (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4535",
+    "Description": "Rate Lock - Loan Info Buydown Rate 1 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4536",
+    "Description": "Rate Lock - Loan Info Buydown Rate 2 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4537",
+    "Description": "Rate Lock - Loan Info Buydown Rate 3 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4538",
+    "Description": "Rate Lock - Loan Info Buydown Rate 4 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4539",
+    "Description": "Rate Lock - Loan Info Buydown Rate 5 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4540",
+    "Description": "Rate Lock - Loan Info Buydown Rate 6 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4541",
+    "Description": "Rate Lock - Loan Info Buydown Term 1 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4542",
+    "Description": "Rate Lock - Loan Info Buydown Term 2 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4543",
+    "Description": "Rate Lock - Loan Info Buydown Term 3 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4544",
+    "Description": "Rate Lock - Loan Info Buydown Term 4 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4545",
+    "Description": "Rate Lock - Loan Info Buydown Term 5 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4546",
+    "Description": "Rate Lock - Loan Info Buydown Term 6 (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE2.4631",
+    "Description": "Rate Lock - Lock Request Buydown Contributor (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.4632",
+    "Description": "Rate Lock - Lock Request Buydown Type (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4633",
+    "Description": "Rate Lock - Lock Request Buydown Rate 1 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4634",
+    "Description": "Rate Lock - Lock Request Buydown Rate 2 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4635",
+    "Description": "Rate Lock - Lock Request Buydown Rate 3 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4636",
+    "Description": "Rate Lock - Lock Request Buydown Rate 4 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4637",
+    "Description": "Rate Lock - Lock Request Buydown Rate 5 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.4638",
+    "Description": "Rate Lock - Lock Request Buydown Rate 6 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4639",
+    "Description": "Rate Lock - Lock Request Buydown Term 1 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4640",
+    "Description": "Rate Lock - Lock Request Buydown Term 2 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4641",
+    "Description": "Rate Lock - Lock Request Buydown Term 3 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4642",
+    "Description": "Rate Lock - Lock Request Buydown Term 4 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4643",
+    "Description": "Rate Lock - Lock Request Buydown Term 5 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.4644",
+    "Description": "Rate Lock - Lock Request Buydown Term 6 (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.4645",
+    "Description": "Rate Lock - Temporary Buydown (Previous 2)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE2.60",
     "Description": "Rate Lock - Co-Borr Experian FICO (Previous 2)"
@@ -57101,6 +62257,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -57423,6 +62583,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE2.DENIED.1825",
@@ -63596,6 +68760,531 @@
     "Description": "Rate Lock Denial - Rate Lock Request - Borrower/Lender Paid (Previous 2)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE2.DENIED.4510",
+    "Description": "Rate Lock Denial - Rate Lock Request - HELOC Initial Advance (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4511",
+    "Description": "Rate Lock Denial - Rate Lock Request - Teaser Rate (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.4512",
+    "Description": "Rate Lock Denial - Rate Lock Request - Loan Info ARM Disclosure Type (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4513",
+    "Description": "Rate Lock Denial - Rate Lock Request - Loan Info ARM Index (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4514",
+    "Description": "Rate Lock Denial - Rate Lock Request - Trans Details HCLTV/HTLTV (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.4515",
+    "Description": "Rate Lock Denial - Rate Lock Request - FHA Secondary Residence (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.DENIED.4516",
+    "Description": "Rate Lock Denial - Lock Request Subject Property Street Address (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.4517",
+    "Description": "Rate Lock Denial - Lock Request Subject Property Unit Type (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.DENIED.4518",
+    "Description": "Rate Lock Denial - Lock Request Subject Property Unit Number (Previous 2)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE2.DENIED.4519",
+    "Description": "Rate Lock Denial - Rate Lock Request - Freddie Mac HELOC Credit Limit (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4535",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 1 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4536",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 2 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4537",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 3 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4538",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 4 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4539",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 5 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4540",
+    "Description": "Rate Lock Denial - Loan Info Buydown Rate 6 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4541",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 1 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4542",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 2 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4543",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 3 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4544",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 4 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4545",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 5 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4546",
+    "Description": "Rate Lock Denial - Loan Info Buydown Term 6 (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.4631",
+    "Description": "Rate Lock Denial - Lock Request Buydown Contributor (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.DENIED.4632",
+    "Description": "Rate Lock Denial - Lock Request Buydown Type (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4633",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 1 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4634",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 2 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4635",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 3 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4636",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 4 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4637",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 5 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.DENIED.4638",
+    "Description": "Rate Lock Denial - Lock Request Buydown Rate 6 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4639",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 1 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4640",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 2 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4641",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 3 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4642",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 4 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4643",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 5 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.DENIED.4644",
+    "Description": "Rate Lock Denial - Lock Request Buydown Term 6 (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.DENIED.4645",
+    "Description": "Rate Lock Denial - Temporary Buydown (Previous 2)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE2.DENIED.60",
     "Description": "Rate Lock Denial - Co-Borr Experian FICO (Previous 2)"
@@ -63688,6 +69377,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -63856,6 +69549,134 @@
     ],
     "FieldId": "LOCKRATE2.DENIED.MORNET.X67",
     "Description": "Rate Lock Denial - Fannie Mae Loan Doc Type Code (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.DENIED.URLA.X73",
+    "Description": "Rate Lock Denial - Property Address Line Text (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.URLA.X74",
+    "Description": "Rate Lock Denial - Address Unit Type Identifier (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.DENIED.URLA.X75",
+    "Description": "Rate Lock Denial - Property Address Unit Identifier (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.URLA.X76",
+    "Description": "Rate Lock Denial - FHA Secondary Residence Indicator (Previous 2)"
   },
   {
     "Format": 201,
@@ -64270,6 +70091,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE2.REQUEST.1825",
@@ -70443,6 +76268,531 @@
     "Description": "Rate Lock Request - Rate Lock Request - Borrower/Lender Paid (Previous 2)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE2.REQUEST.4510",
+    "Description": "Rate Lock Request - Rate Lock Request - HELOC Initial Advance (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4511",
+    "Description": "Rate Lock Request - Rate Lock Request - Teaser Rate (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.4512",
+    "Description": "Rate Lock Request - Rate Lock Request - Loan Info ARM Disclosure Type (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4513",
+    "Description": "Rate Lock Request - Rate Lock Request - Loan Info ARM Index (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4514",
+    "Description": "Rate Lock Request - Rate Lock Request - Trans Details HCLTV/HTLTV (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.4515",
+    "Description": "Rate Lock Request - Rate Lock Request - FHA Secondary Residence (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.REQUEST.4516",
+    "Description": "Rate Lock Request - Lock Request Subject Property Street Address (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.4517",
+    "Description": "Rate Lock Request - Lock Request Subject Property Unit Type (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.REQUEST.4518",
+    "Description": "Rate Lock Request - Lock Request Subject Property Unit Number (Previous 2)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE2.REQUEST.4519",
+    "Description": "Rate Lock Request - Rate Lock Request - Freddie Mac HELOC Credit Limit (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4535",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 1 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4536",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 2 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4537",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 3 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4538",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 4 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4539",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 5 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4540",
+    "Description": "Rate Lock Request - Loan Info Buydown Rate 6 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4541",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 1 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4542",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 2 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4543",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 3 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4544",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 4 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4545",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 5 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4546",
+    "Description": "Rate Lock Request - Loan Info Buydown Term 6 (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.4631",
+    "Description": "Rate Lock Request - Lock Request Buydown Contributor (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.REQUEST.4632",
+    "Description": "Rate Lock Request - Lock Request Buydown Type (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4633",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 1 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4634",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 2 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4635",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 3 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4636",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 4 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4637",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 5 (Previous 2)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE2.REQUEST.4638",
+    "Description": "Rate Lock Request - Lock Request Buydown Rate 6 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4639",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 1 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4640",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 2 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4641",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 3 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4642",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 4 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4643",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 5 (Previous 2)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE2.REQUEST.4644",
+    "Description": "Rate Lock Request - Lock Request Buydown Term 6 (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.REQUEST.4645",
+    "Description": "Rate Lock Request - Temporary Buydown (Previous 2)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE2.REQUEST.60",
     "Description": "Rate Lock Request - Co-Borr Experian FICO (Previous 2)"
@@ -70535,6 +76885,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -70705,6 +77059,134 @@
     "Description": "Rate Lock Request - Fannie Mae Loan Doc Type Code (Previous 2)"
   },
   {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.REQUEST.URLA.X73",
+    "Description": "Rate Lock Request - Property Address Line Text (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.URLA.X74",
+    "Description": "Rate Lock Request - Address Unit Type Identifier (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.REQUEST.URLA.X75",
+    "Description": "Rate Lock Request - Property Address Unit Identifier (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.URLA.X76",
+    "Description": "Rate Lock Request - FHA Secondary Residence Indicator (Previous 2)"
+  },
+  {
     "Format": 201,
     "FieldId": "LOCKRATE2.REQUEST.VASUMM.X23",
     "Description": "Rate Lock Request - VA Loan Summ Credit Score (Previous 2)"
@@ -70713,6 +77195,134 @@
     "Format": 101,
     "FieldId": "LOCKRATE2.REQUESTEDBY",
     "Description": "Rate Lock - Rate Requested By (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.URLA.X73",
+    "Description": "Rate Lock - Property Address Line Text (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE2.URLA.X74",
+    "Description": "Rate Lock - Address Unit Type Identifier (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.URLA.X75",
+    "Description": "Rate Lock - Property Address Unit Identifier (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.URLA.X76",
+    "Description": "Rate Lock - FHA Secondary Residence Indicator (Previous 2)"
   },
   {
     "Format": 201,
@@ -70992,6 +77602,10 @@
       {
         "value": "2009",
         "text": "Print 2009 Application"
+      },
+      {
+        "value": "2020",
+        "text": "Print 2020 Application"
       }
     ],
     "FieldId": "LOCKRATE3.1825",
@@ -77165,6 +83779,531 @@
     "Description": "Rate Request - Rate Lock Request - Borrower/Lender Paid (Most Recent)"
   },
   {
+    "Format": 203,
+    "FieldId": "LOCKRATE3.4510",
+    "Description": "Rate Request - Rate Lock Request - HELOC Initial Advance (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4511",
+    "Description": "Rate Request - Rate Lock Request - Teaser Rate (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "UST1YW",
+        "text": "1 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST3YW",
+        "text": "3 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST5YW",
+        "text": "5 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST7YW",
+        "text": "7 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST10YW",
+        "text": "10 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST20YW",
+        "text": "20 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST30YW",
+        "text": "30 Year UST CM (weekly)"
+      },
+      {
+        "value": "UST1Y",
+        "text": "1 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST3Y",
+        "text": "3 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST5Y",
+        "text": "5 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST7Y",
+        "text": "7 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST10Y",
+        "text": "10 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST20Y",
+        "text": "20 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "UST30Y",
+        "text": "30 Year US Treasury CM (daily)"
+      },
+      {
+        "value": "3MoCD(12MoAvg)",
+        "text": "3-MonthCD (12-Month Avg)"
+      },
+      {
+        "value": "6MCDW",
+        "text": "6 Month CD (Secondary Market) weekly"
+      },
+      {
+        "value": "UST6M",
+        "text": "6 Month US Treasury CM (daily)"
+      },
+      {
+        "value": "FRBCommercial3M",
+        "text": "90 Day AA Commercial Paper Rates (Nonfinancial)"
+      },
+      {
+        "value": "FRBBankPrime",
+        "text": "Bank Prime Loan Rate"
+      },
+      {
+        "value": "FHLBSFCOFI",
+        "text": "COFI 11th District"
+      },
+      {
+        "value": "CMR",
+        "text": "Conventional Mortgage Rate"
+      },
+      {
+        "value": "FHFB_NACMR",
+        "text": "National Average Contract Mortgage Rate"
+      },
+      {
+        "value": "FRBDiscount",
+        "text": "Federal Reserve Discount Rate"
+      },
+      {
+        "value": "FHLMC30Y30D",
+        "text": "Freddie Mac 30Y/30D delivery"
+      },
+      {
+        "value": "FHLMC30Y60D",
+        "text": "Freddie Mac 30Y/60D delivery"
+      },
+      {
+        "value": "FHLMC30Y90D",
+        "text": "Freddie Mac 30Y/90D delivery"
+      },
+      {
+        "value": "FHLMCLIBOR1M",
+        "text": "Freddie Mac 1 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR3M",
+        "text": "Freddie Mac 3 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR6M",
+        "text": "Freddie Mac 6 Month LIBOR"
+      },
+      {
+        "value": "FHLMCLIBOR1Y",
+        "text": "Freddie Mac 1 Year LIBOR"
+      },
+      {
+        "value": "FNMA12MAVG",
+        "text": "Fannie Mae 12 Month Average"
+      },
+      {
+        "value": "FNMA15Y60D",
+        "text": "Fannie Mae 15Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y30D",
+        "text": "Fannie Mae 30Y/30D delivery"
+      },
+      {
+        "value": "FNMA30Y60D",
+        "text": "Fannie Mae 30Y/60D delivery"
+      },
+      {
+        "value": "FNMA30Y90D",
+        "text": "Fannie Mae 30Y/90D delivery"
+      },
+      {
+        "value": "FNMALIBOR1M",
+        "text": "Fannie Mae 1 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR3M",
+        "text": "Fannie Mae 3 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR6M",
+        "text": "Fannie Mae 6 Month LIBOR"
+      },
+      {
+        "value": "FNMALIBOR1Y",
+        "text": "Fannie Mae 1 Year LIBOR"
+      },
+      {
+        "value": "LIBOR1M",
+        "text": "LIBOR - 1 month"
+      },
+      {
+        "value": "LIBOR3M",
+        "text": "LIBOR - 3 month"
+      },
+      {
+        "value": "LIBOR6M",
+        "text": "LIBOR - 6 month"
+      },
+      {
+        "value": "LIBOR12M",
+        "text": "LIBOR - 12 month"
+      },
+      {
+        "value": "MTA",
+        "text": "Monthly Treasury Average"
+      },
+      {
+        "value": "TNMax",
+        "text": "TN Max Interest Rate"
+      },
+      {
+        "value": "WSJPrime",
+        "text": "WSJ Prime Rate (daily)"
+      },
+      {
+        "value": "WSJPrimeWkly",
+        "text": "WSJ Prime Rate (weekly)"
+      }
+    ],
+    "FieldId": "LOCKRATE3.4512",
+    "Description": "Rate Request - Rate Lock Request - Loan Info ARM Disclosure Type (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4513",
+    "Description": "Rate Request - Rate Lock Request - Loan Info ARM Index (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4514",
+    "Description": "Rate Request - Rate Lock Request - Trans Details HCLTV/HTLTV (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE3.4515",
+    "Description": "Rate Request - Rate Lock Request - FHA Secondary Residence (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE3.4516",
+    "Description": "Rate Request - Lock Request Subject Property Street Address (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE3.4517",
+    "Description": "Rate Request - Lock Request Subject Property Unit Type (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE3.4518",
+    "Description": "Rate Request - Lock Request Subject Property Unit Number (Most Recent)"
+  },
+  {
+    "Format": 203,
+    "FieldId": "LOCKRATE3.4519",
+    "Description": "Rate Request - Rate Lock Request - Freddie Mac HELOC Credit Limit (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4535",
+    "Description": "Rate Request - Loan Info Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4536",
+    "Description": "Rate Request - Loan Info Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4537",
+    "Description": "Rate Request - Loan Info Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4538",
+    "Description": "Rate Request - Loan Info Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4539",
+    "Description": "Rate Request - Loan Info Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4540",
+    "Description": "Rate Request - Loan Info Buydown Rate 6 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4541",
+    "Description": "Rate Request - Loan Info Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4542",
+    "Description": "Rate Request - Loan Info Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4543",
+    "Description": "Rate Request - Loan Info Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4544",
+    "Description": "Rate Request - Loan Info Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4545",
+    "Description": "Rate Request - Loan Info Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4546",
+    "Description": "Rate Request - Loan Info Buydown Term 6 (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "",
+        "text": ""
+      },
+      {
+        "value": "Seller",
+        "text": "Seller"
+      },
+      {
+        "value": "Builder",
+        "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
+      },
+      {
+        "value": "Borrower",
+        "text": "Borrower"
+      },
+      {
+        "value": "Unassigned",
+        "text": "Unassigned"
+      },
+      {
+        "value": "Parent",
+        "text": "Parent"
+      },
+      {
+        "value": "Non-Parent Relative",
+        "text": "Non-Parent Relative"
+      },
+      {
+        "value": "Unrelated Friend",
+        "text": "Unrelated Friend"
+      },
+      {
+        "value": "Employer",
+        "text": "Employer"
+      }
+    ],
+    "FieldId": "LOCKRATE3.4631",
+    "Description": "Rate Request - Lock Request Buydown Contributor (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE3.4632",
+    "Description": "Rate Request - Lock Request Buydown Type (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4633",
+    "Description": "Rate Request - Lock Request Buydown Rate 1 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4634",
+    "Description": "Rate Request - Lock Request Buydown Rate 2 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4635",
+    "Description": "Rate Request - Lock Request Buydown Rate 3 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4636",
+    "Description": "Rate Request - Lock Request Buydown Rate 4 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4637",
+    "Description": "Rate Request - Lock Request Buydown Rate 5 (Most Recent)"
+  },
+  {
+    "Format": 204,
+    "FieldId": "LOCKRATE3.4638",
+    "Description": "Rate Request - Lock Request Buydown Rate 6 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4639",
+    "Description": "Rate Request - Lock Request Buydown Term 1 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4640",
+    "Description": "Rate Request - Lock Request Buydown Term 2 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4641",
+    "Description": "Rate Request - Lock Request Buydown Term 3 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4642",
+    "Description": "Rate Request - Lock Request Buydown Term 4 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4643",
+    "Description": "Rate Request - Lock Request Buydown Term 5 (Most Recent)"
+  },
+  {
+    "Format": 201,
+    "FieldId": "LOCKRATE3.4644",
+    "Description": "Rate Request - Lock Request Buydown Term 6 (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE3.4645",
+    "Description": "Rate Request - Temporary Buydown (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE3.60",
     "Description": "Rate Request - Co-Borr Experian FICO (Most Recent)"
@@ -77257,6 +84396,10 @@
       {
         "value": "Builder",
         "text": "Builder"
+      },
+      {
+        "value": "Lender",
+        "text": "Lender"
       },
       {
         "value": "Borrower",
@@ -77425,6 +84568,134 @@
     ],
     "FieldId": "LOCKRATE3.MORNET.X67",
     "Description": "Rate Request - Fannie Mae Loan Doc Type Code (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE3.URLA.X73",
+    "Description": "Rate Request - Property Address Line Text (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "Options": [
+      {
+        "value": "Apartment",
+        "text": "Apartment"
+      },
+      {
+        "value": "Basement",
+        "text": "Basement"
+      },
+      {
+        "value": "Building",
+        "text": "Building"
+      },
+      {
+        "value": "Condo",
+        "text": "Condo"
+      },
+      {
+        "value": "Department",
+        "text": "Department"
+      },
+      {
+        "value": "Floor",
+        "text": "Floor"
+      },
+      {
+        "value": "Front",
+        "text": "Front"
+      },
+      {
+        "value": "Hangar",
+        "text": "Hangar"
+      },
+      {
+        "value": "Key",
+        "text": "Key"
+      },
+      {
+        "value": "Lobby",
+        "text": "Lobby"
+      },
+      {
+        "value": "Lot",
+        "text": "Lot"
+      },
+      {
+        "value": "Lower",
+        "text": "Lower"
+      },
+      {
+        "value": "Office",
+        "text": "Office"
+      },
+      {
+        "value": "Penthouse",
+        "text": "Penthouse"
+      },
+      {
+        "value": "Pier",
+        "text": "Pier"
+      },
+      {
+        "value": "Rear",
+        "text": "Rear"
+      },
+      {
+        "value": "Room",
+        "text": "Room"
+      },
+      {
+        "value": "Side",
+        "text": "Side"
+      },
+      {
+        "value": "Space",
+        "text": "Space"
+      },
+      {
+        "value": "Stop",
+        "text": "Stop"
+      },
+      {
+        "value": "Suite",
+        "text": "Suite"
+      },
+      {
+        "value": "Trailer",
+        "text": "Trailer"
+      },
+      {
+        "value": "Unit",
+        "text": "Unit"
+      },
+      {
+        "value": "Upper",
+        "text": "Upper"
+      }
+    ],
+    "FieldId": "LOCKRATE3.URLA.X74",
+    "Description": "Rate Request - Address Unit Type Identifier (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE3.URLA.X75",
+    "Description": "Rate Request - Property Address Unit Identifier (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "FHA Secondary Residence"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE3.URLA.X76",
+    "Description": "Rate Request - FHA Secondary Residence Indicator (Most Recent)"
   },
   {
     "Format": 201,

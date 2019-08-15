@@ -1931,5 +1931,63 @@ namespace EncompassRest.Tests
                 Assert.IsNotNull(new Loan(client).Fields["CX.123"]);
             }
         }
+
+        [ApiTest]
+        [TestMethod]
+        public async Task Loan_UpdateBaseIncome()
+        {
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
+            try
+            {
+                var loan = new Loan(client, loanId);
+                loan.Fields["101"].Value = 500;
+
+                await client.Loans.UpdateLoanAsync(loan);
+
+                loan = await client.Loans.GetLoanAsync(loanId);
+
+                Assert.AreEqual(500M, loan.Fields["101"].Value);
+            }
+            finally
+            {
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        [ApiTest]
+        [TestMethod]
+        public async Task Loan_UpdateOtherIncome()
+        {
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
+            try
+            {
+                var loan = new Loan(client, loanId);
+                loan.Fields["149"].Value = 500;
+
+                await client.Loans.UpdateLoanAsync(loan);
+
+                loan = await client.Loans.GetLoanAsync(loanId);
+
+                Assert.AreEqual(500M, loan.Fields["149"].Value);
+            }
+            finally
+            {
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
+        }
     }
 }
