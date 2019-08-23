@@ -59,7 +59,12 @@ namespace EncompassRest.Settings.Personas
         {
             Preconditions.NotNullOrEmpty(id, nameof(id));
 
-            return GetDirtyAsync<Persona>(id, categories != null ? string.Join(",", categories) : null, nameof(GetPersonaAsync), id, cancellationToken);
+            var queryParams = new QueryParameters();
+            if (categories != null)
+            {
+                queryParams.Add("categories", string.Join(",", categories));
+            }
+            return GetDirtyAsync<Persona>(id, queryParams.ToString(), nameof(GetPersonaAsync), id, cancellationToken);
         }
 
         /// <summary>

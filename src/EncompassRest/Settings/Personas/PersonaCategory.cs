@@ -74,188 +74,176 @@
         /// </summary>
         MilestoneWorkflowManagement = 16,
         /// <summary>
-        /// PipelineServices
-        /// </summary>
-        PipelineServices = 17,
-        /// <summary>
         /// AdditionalServices
         /// </summary>
-        AdditionalServices = 18,
+        AdditionalServices = 17,
         /// <summary>
         /// AusTracking
         /// </summary>
-        AusTracking = 19,
+        AusTracking = 18,
         /// <summary>
         /// BorrowerContacts
         /// </summary>
-        BorrowerContacts = 20,
+        BorrowerContacts = 19,
         /// <summary>
         /// BusinessContacts
         /// </summary>
-        BusinessContacts = 21,
+        BusinessContacts = 20,
         /// <summary>
         /// BusinessRules
         /// </summary>
-        BusinessRules = 22,
+        BusinessRules = 21,
         /// <summary>
         /// ClosingDocs
         /// </summary>
-        ClosingDocs = 23,
+        ClosingDocs = 22,
         /// <summary>
         /// CompanyUserSetup
         /// </summary>
-        CompanyUserSetup = 24,
-        /// <summary>
-        /// ConditionsHistory
-        /// </summary>
-        ConditionsHistory = 25,
+        CompanyUserSetup = 23,
         /// <summary>
         /// ConsumerConnect
         /// </summary>
-        ConsumerConnect = 26,
+        ConsumerConnect = 24,
         /// <summary>
         /// ContactSetup
         /// </summary>
-        ContactSetup = 27,
+        ContactSetup = 25,
         /// <summary>
         /// Dashboard
         /// </summary>
-        Dashboard = 28,
+        Dashboard = 26,
         /// <summary>
         /// DisclosureTracking
         /// </summary>
-        DisclosureTracking = 29,
+        DisclosureTracking = 27,
         /// <summary>
         /// DocsSetup
         /// </summary>
-        DocsSetup = 30,
+        DocsSetup = 28,
         /// <summary>
         /// Documents
         /// </summary>
-        Documents = 31,
+        Documents = 29,
         /// <summary>
         /// DynamicDataManagement
         /// </summary>
-        DynamicDataManagement = 32,
+        DynamicDataManagement = 30,
         /// <summary>
         /// EDisclosures
         /// </summary>
-        EDisclosures = 33,
+        EDisclosures = 31,
         /// <summary>
         /// EFolderSetup
         /// </summary>
-        EFolderSetup = 34,
+        EFolderSetup = 32,
         /// <summary>
         /// FileContacts
         /// </summary>
-        FileContacts = 35,
+        FileContacts = 33,
         /// <summary>
         /// GseServices
         /// </summary>
-        GseServices = 36,
+        GseServices = 34,
         /// <summary>
         /// ItemizationFee
         /// </summary>
-        ItemizationFee = 37,
+        ItemizationFee = 35,
         /// <summary>
         /// LoanSetup
         /// </summary>
-        LoanSetup = 38,
+        LoanSetup = 36,
         /// <summary>
         /// PersonalSettings
         /// </summary>
-        PersonalSettings = 39,
+        PersonalSettings = 37,
         /// <summary>
         /// PersonalTemplates
         /// </summary>
-        PersonalTemplates = 40,
+        PersonalTemplates = 38,
         /// <summary>
         /// PostClosingConditions
         /// </summary>
-        PostClosingConditions = 41,
+        PostClosingConditions = 39,
         /// <summary>
         /// PreliminaryConditions
         /// </summary>
-        PreliminaryConditions = 42,
+        PreliminaryConditions = 40,
         /// <summary>
         /// Print
         /// </summary>
-        Print = 43,
+        Print = 41,
         /// <summary>
         /// PurchaseConditions
         /// </summary>
-        PurchaseConditions = 44,
+        PurchaseConditions = 42,
         /// <summary>
         /// Reports
         /// </summary>
-        Reports = 45,
+        Reports = 43,
         /// <summary>
         /// SecondarySetup
         /// </summary>
-        SecondarySetup = 46,
+        SecondarySetup = 44,
         /// <summary>
         /// SmartClient
         /// </summary>
-        SmartClient = 47,
+        SmartClient = 45,
         /// <summary>
         /// SystemAdministration
         /// </summary>
-        SystemAdministration = 48,
+        SystemAdministration = 46,
         /// <summary>
         /// TablesAndFees
         /// </summary>
-        TablesAndFees = 49,
+        TablesAndFees = 47,
         /// <summary>
         /// TpoCompanyDetails
         /// </summary>
-        TpoCompanyDetails = 50,
-        /// <summary>
-        /// TpoConnectSiteManagement
-        /// </summary>
-        TpoConnectSiteManagement = 51,
+        TpoCompanyDetails = 48,
         /// <summary>
         /// TpoContacts
         /// </summary>
-        TpoContacts = 52,
+        TpoContacts = 49,
         /// <summary>
         /// TpoFees
         /// </summary>
-        TpoFees = 53,
+        TpoFees = 50,
         /// <summary>
         /// TpoInformation
         /// </summary>
-        TpoInformation = 54,
+        TpoInformation = 51,
         /// <summary>
         /// TpoOrganizationSettings
         /// </summary>
-        TpoOrganizationSettings = 55,
+        TpoOrganizationSettings = 52,
         /// <summary>
         /// TqlServices
         /// </summary>
-        TqlServices = 56,
+        TqlServices = 53,
         /// <summary>
         /// Trades
         /// </summary>
-        Trades = 57,
+        Trades = 54,
         /// <summary>
         /// UnderwritingConditions
         /// </summary>
-        UnderwritingConditions = 58,
+        UnderwritingConditions = 55,
         /// <summary>
         /// EFolderHistory
         /// </summary>
-        EFolderHistory = 59,
+        EFolderHistory = 56,
         /// <summary>
         /// ExportServices
         /// </summary>
-        ExportServices = 60,
+        ExportServices = 57,
         /// <summary>
         /// TpoConnectSiteSettings
         /// </summary>
-        TpoConnectSiteSettings = 61,
+        TpoConnectSiteSettings = 58,
         /// <summary>
         /// SellConditions
         /// </summary>
-        SellConditions = 62
+        SellConditions = 59
     }
 }
