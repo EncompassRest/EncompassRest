@@ -13,6 +13,7 @@ namespace EncompassRest.Settings
         private BorrowerContactsSettings _borrowerContacts;
         private BusinessContactsSettings _businessContacts;
         private LoanSettings _loan;
+        private Personas.Personas _personas;
 
         /// <summary>
         /// The Templates Apis.
@@ -59,6 +60,18 @@ namespace EncompassRest.Settings
             {
                 var loan = _loan;
                 return loan ?? Interlocked.CompareExchange(ref _loan, (loan = new LoanSettings(Client)), null) ?? loan;
+            }
+        }
+
+        /// <summary>
+        /// The Personas Apis.
+        /// </summary>
+        public Personas.Personas Personas
+        {
+            get
+            {
+                var personas = _personas;
+                return personas ?? Interlocked.CompareExchange(ref _personas, (_personas = new Personas.Personas(Client)), null) ?? personas;
             }
         }
 
