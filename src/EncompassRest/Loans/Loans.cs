@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
@@ -28,7 +31,7 @@ namespace EncompassRest.Loans
         }
 
         internal Loans(EncompassRestClient client)
-            : base(client, "encompass/v1/loans")
+            : base(client, "encompass/v1")
         {
         }
 
@@ -78,7 +81,7 @@ namespace EncompassRest.Loans
                 queryParameters.Add("entities", string.Join(",", entities));
             }
 
-            var loan = await GetDirtyAsync<Loan>(loanId, queryParameters.ToString(), nameof(GetLoanAsync), loanId, cancellationToken).ConfigureAwait(false);
+            var loan = await GetDirtyAsync<Loan>($"loans/{loanId}", queryParameters.ToString(), nameof(GetLoanAsync), loanId, cancellationToken).ConfigureAwait(false);
             loan.Initialize(Client, loan.EncompassId);
             return loan;
         }
@@ -94,7 +97,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            return GetRawAsync(loanId, queryString, nameof(GetLoanRawAsync), loanId, cancellationToken);
+            return GetRawAsync($"loans/{loanId}", queryString, nameof(GetLoanRawAsync), loanId, cancellationToken);
         }
 
         /// <summary>
@@ -102,7 +105,7 @@ namespace EncompassRest.Loans
         /// </summary>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<List<StringEnumValue<LoanEntity>>> GetSupportedEntitiesAsync(CancellationToken cancellationToken = default) => GetAsync<List<StringEnumValue<LoanEntity>>>("supportedEntities", null, nameof(GetSupportedEntitiesAsync), null, cancellationToken);
+        public Task<List<StringEnumValue<LoanEntity>>> GetSupportedEntitiesAsync(CancellationToken cancellationToken = default) => GetAsync<List<StringEnumValue<LoanEntity>>>("loans/supportedEntities", null, nameof(GetSupportedEntitiesAsync), null, cancellationToken);
 
         /// <summary>
         /// Returns the list of loan entities that can be retrieved from a loan as raw json.
@@ -110,7 +113,7 @@ namespace EncompassRest.Loans
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetSupportedEntitiesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("supportedEntities", queryString, nameof(GetSupportedEntitiesRawAsync), null, cancellationToken);
+        public Task<string> GetSupportedEntitiesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("loans/supportedEntities", queryString, nameof(GetSupportedEntitiesRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Creates a new loan in Encompass and returns the loan id of the loan created.
@@ -141,7 +144,7 @@ namespace EncompassRest.Loans
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
-            var loanId = await PostPopulateDirtyAsync(null, createLoanOptions?.ToQueryParameters().ToString(), nameof(CreateLoanAsync), loan, createLoanOptions?.Populate == true, cancellationToken).ConfigureAwait(false);
+            var loanId = await PostPopulateDirtyAsync("loans", createLoanOptions?.ToQueryParameters().ToString(), nameof(CreateLoanAsync), loan, createLoanOptions?.Populate == true, cancellationToken).ConfigureAwait(false);
             loan.Initialize(Client, loanId);
             return loanId;
         }
@@ -157,7 +160,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(loan, nameof(loan));
 
-            return PostAsync(null, queryString, new JsonStringContent(loan), nameof(CreateLoanRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
+            return PostAsync("loans", queryString, new JsonStringContent(loan), nameof(CreateLoanRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
         /// <summary>
@@ -190,7 +193,7 @@ namespace EncompassRest.Loans
             Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
             loan.Initialize(Client, loan.EncompassId);
-            return PatchPopulateDirtyAsync(loan.EncompassId, updateLoanOptions?.ToQueryParameters().ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, loan, updateLoanOptions?.Populate == true, cancellationToken);
+            return PatchPopulateDirtyAsync($"loans/{loan.EncompassId}", updateLoanOptions?.ToQueryParameters().ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, loan, updateLoanOptions?.Populate == true, cancellationToken);
         }
 
         /// <summary>
@@ -206,7 +209,7 @@ namespace EncompassRest.Loans
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
             Preconditions.NotNullOrEmpty(loan, nameof(loan));
 
-            return PatchRawAsync(loanId, queryString, new JsonStringContent(loan), nameof(UpdateLoanRawAsync), loanId, cancellationToken);
+            return PatchRawAsync($"loans/{loanId}", queryString, new JsonStringContent(loan), nameof(UpdateLoanRawAsync), loanId, cancellationToken);
         }
 
         /// <summary>
@@ -219,7 +222,80 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            return DeleteAsync(loanId, null, cancellationToken);
+            return DeleteAsync($"loans/{loanId}", null, cancellationToken);
         }
+
+        public Task<string> CreateLoanFromImportFileAsync(ImportFileType importFileType, string importFile, CreateLoanOptions createLoanOptions = null, CancellationToken cancellationToken = default)
+        {
+            if (createLoanOptions?.Populate == true)
+            {
+                throw new InvalidOperationException("Use other CreateLoanFromImportFileAsync overload to populate a loan object.");
+            }
+
+            return CreateLoanFromImportFileAsync(importFileType, importFile, createLoanOptions, out _, cancellationToken);
+        }
+
+        public Task<string> CreateLoanFromImportFileAsync(ImportFileType importFileType, string importFile, CreateLoanOptions createLoanOptions, out Loan loan, CancellationToken cancellationToken = default)
+        {
+            importFileType.Validate(nameof(importFileType));
+            Preconditions.NotNullOrEmpty(importFile, nameof(importFile));
+
+            var populate = createLoanOptions?.Populate == true;
+            loan = populate ? new Loan(Client) : null;
+            var content = new StringContent(importFile);
+            content.Headers.ContentType = new MediaTypeHeaderValue(importFileType.GetValue());
+            return CreateLoanFromImportFileInternalAsync(content, loan, populate, createLoanOptions, cancellationToken);
+        }
+
+        public Task<string> CreateLoanFromImportFileAsync(ImportFileType importFileType, Stream importFile, CreateLoanOptions createLoanOptions = null, CancellationToken cancellationToken = default)
+        {
+            if (createLoanOptions?.Populate == true)
+            {
+                throw new InvalidOperationException("Use other CreateLoanFromImportFileAsync overload to populate a loan object.");
+            }
+
+            return CreateLoanFromImportFileAsync(importFileType, importFile, createLoanOptions, out _, cancellationToken);
+        }
+
+        public Task<string> CreateLoanFromImportFileAsync(ImportFileType importFileType, Stream importFile, CreateLoanOptions createLoanOptions, out Loan loan, CancellationToken cancellationToken = default)
+        {
+            importFileType.Validate(nameof(importFileType));
+            Preconditions.NotNull(importFile, nameof(importFile));
+
+            var populate = createLoanOptions?.Populate == true;
+            loan = populate ? new Loan(Client) : null;
+            var content = new StreamContent(importFile);
+            content.Headers.ContentType = new MediaTypeHeaderValue(importFileType.GetValue());
+            return CreateLoanFromImportFileInternalAsync(content, loan, populate, createLoanOptions, cancellationToken);
+        }
+
+        private async Task<string> CreateLoanFromImportFileInternalAsync(HttpContent content, Loan loan, bool populate, CreateLoanOptions createLoanOptions, CancellationToken cancellationToken)
+        {
+            var loanId = await PostPopulateDirtyAsync("importers/loan", createLoanOptions?.ToQueryParameters().ToString(), content, nameof(CreateLoanFromImportFileAsync), loan, populate, cancellationToken).ConfigureAwait(false);
+            loan?.Initialize(Client, loanId);
+            return loanId;
+        }
+
+        public Task<string> CreateLoanFromImportFileRawAsync(string importFileType, string importFile, string queryString = null, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(importFileType, nameof(importFileType));
+            Preconditions.NotNullOrEmpty(importFile, nameof(importFile));
+
+            var content = new StringContent(importFile);
+            content.Headers.ContentType = new MediaTypeHeaderValue(importFileType);
+            return CreateLoanFromImportFileRawInternalAsync(queryString, content, cancellationToken);
+        }
+
+        public Task<string> CreateLoanFromImportFileRawAsync(string importFileType, Stream importFile, string queryString = null, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(importFileType, nameof(importFileType));
+            Preconditions.NotNull(importFile, nameof(importFile));
+
+            var content = new StreamContent(importFile);
+            content.Headers.ContentType = new MediaTypeHeaderValue(importFileType);
+            return CreateLoanFromImportFileRawInternalAsync(queryString, content, cancellationToken);
+        }
+
+        private Task<string> CreateLoanFromImportFileRawInternalAsync(string queryString, HttpContent content, CancellationToken cancellationToken) => PostAsync("importers/loan", queryString, content, nameof(CreateLoanFromImportFileRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
     }
 }
