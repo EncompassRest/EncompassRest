@@ -59,7 +59,10 @@ namespace EncompassRest.Loans
         /// </summary>
         public LoanMilestoneFreeRoles MilestoneFreeRoles => _milestoneFreeRoles ?? (_milestoneFreeRoles = new LoanMilestoneFreeRoles(Client, LoanId));
 
-        internal LoanFieldReader FieldReader => _fieldReader ?? (_fieldReader = new LoanFieldReader(Client, LoanId));
+        /// <summary>
+        /// The Loan Field Reader Apis.
+        /// </summary>
+        public LoanFieldReader FieldReader => _fieldReader ?? (_fieldReader = new LoanFieldReader(Client, LoanId));
 
         /// <summary>
         /// The Loan Conditions Apis.
