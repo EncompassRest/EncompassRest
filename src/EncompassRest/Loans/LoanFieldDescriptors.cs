@@ -17,7 +17,35 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LoanFieldDescriptors
     /// </summary>
-    public sealed class LoanFieldDescriptors : ApiObject
+    public interface ILoanFieldDescriptors : IApiObject
+    {
+        /// <summary>
+        /// Retrieves the field descriptor for the specified field id.
+        /// </summary>
+        /// <param name="fieldId">The field id of the field descriptor to get.</param>
+        /// <returns></returns>
+        FieldDescriptor this[string fieldId] { get; }
+
+        /// <summary>
+        /// The custom fields cache. To retrieve the Standard and Virtual fields use the static properties <see cref="LoanFieldDescriptors.StandardFields"/> and <see cref="LoanFieldDescriptors.VirtualFields"/> respectively.
+        /// </summary>
+        ReadOnlyDictionary<string, FieldDescriptor> CustomFields { get; }
+        /// <summary>
+        /// The utc date and time custom fields were last refreshed.
+        /// </summary>
+        DateTime? CustomFieldsLastRefreshedUtc { get; }
+        /// <summary>
+        /// Refreshes the custom fields cache.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task RefreshCustomFieldsAsync(CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// LoanFieldDescriptors
+    /// </summary>
+    public sealed class LoanFieldDescriptors : ApiObject, ILoanFieldDescriptors
     {
         private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new[]
         {
@@ -68,7 +96,7 @@ namespace EncompassRest.Loans
                             using (var jr = new JsonTextReader(sr))
                             {
                                 var loanFields = JsonHelper.DefaultPublicSerializer.Deserialize<List<StandardFieldInfo>>(jr);
-                                
+
                                 foreach (var loanField in loanFields)
                                 {
                                     var modelPathString = loanField.ModelPath;

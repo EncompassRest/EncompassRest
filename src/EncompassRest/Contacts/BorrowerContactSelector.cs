@@ -3,7 +3,14 @@
     /// <summary>
     /// The Borrower Contact Selector Apis.
     /// </summary>
-    public sealed class BorrowerContactSelector : ContactSelector
+    public interface IBorrowerContactSelector : IContactSelector
+    {
+    }
+
+    /// <summary>
+    /// The Borrower Contact Selector Apis.
+    /// </summary>
+    public sealed class BorrowerContactSelector : ContactSelector, IBorrowerContactSelector
     {
         internal BorrowerContactSelector(EncompassRestClient client)
             : base(client, "encompass/v1/borrowerContactSelector")

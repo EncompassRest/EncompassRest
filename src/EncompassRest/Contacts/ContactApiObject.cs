@@ -3,9 +3,20 @@
 namespace EncompassRest.Contacts
 {
     /// <summary>
+    /// Base Contact Api Interface.
+    /// </summary>
+    public interface IContactApiObject : IApiObject
+    {
+        /// <summary>
+        /// The contact id associated with the Api.
+        /// </summary>
+        string ContactId { get; }
+    }
+
+    /// <summary>
     /// Base Contact Api Class.
     /// </summary>
-    public abstract class ContactApiObject : ApiObject
+    public abstract class ContactApiObject : ApiObject, IContactApiObject
     {
         /// <summary>
         /// The contact id associated with the Api.

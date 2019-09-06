@@ -6,9 +6,20 @@ using EncompassRest.Utilities;
 namespace EncompassRest.Loans
 {
     /// <summary>
+    /// Base Loan Api Interface.
+    /// </summary>
+    public interface ILoanApiObject : IApiObject
+    {
+        /// <summary>
+        /// The loan id associated with the Api.
+        /// </summary>
+        string LoanId { get; }
+    }
+
+    /// <summary>
     /// Base Loan Api Class.
     /// </summary>
-    public abstract class LoanApiObject : ApiObject
+    public abstract class LoanApiObject : ApiObject, ILoanApiObject
     {
         /// <summary>
         /// The loan id associated with the Api.

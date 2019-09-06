@@ -8,7 +8,81 @@ namespace EncompassRest.Company.Users
     /// <summary>
     /// Users Apis
     /// </summary>
-    public sealed class Users : ApiObject
+    public interface IUsers : IApiObject
+    {
+        /// <summary>
+        /// Gets the Current User's Apis. Custom Data Objects are not currently supported through this property.
+        /// </summary>
+        IUserApis CurrentUserApis { get; }
+
+        /// <summary>
+        /// Gets the current user.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<User> GetCurrentUserAsync(CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the current user and optionally includes the email signature in the response object.
+        /// </summary>
+        /// <param name="viewEmailSignature">Indicates whether the email signature should be returned as part of the response.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<User> GetCurrentUserAsync(bool? viewEmailSignature, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the User Apis for the specified <paramref name="userId"/>.
+        /// </summary>
+        /// <param name="userId">The user's id.</param>
+        /// <returns></returns>
+        IUserApis GetUserApis(string userId);
+        /// <summary>
+        /// Gets the user with the specified <paramref name="userId"/>.
+        /// </summary>
+        /// <param name="userId">The user's id.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<User> GetUserAsync(string userId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the user with the specified <paramref name="userId"/> and optionally includes the email signature in the response object.
+        /// </summary>
+        /// <param name="userId">The user's id.</param>
+        /// <param name="viewEmailSignature">Indicates whether the email signature should be returned as part of the response.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<User> GetUserAsync(string userId, bool? viewEmailSignature, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets user as raw json.
+        /// </summary>
+        /// <param name="userId">The user's id.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetUserRawAsync(string userId, string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets all users.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<User>> GetUsersAsync(CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets users using the specified <paramref name="options"/>.
+        /// </summary>
+        /// <param name="options">The users retrieval options.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<User>> GetUsersAsync(UsersRetrievalOptions options, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets users as raw json.
+        /// </summary>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetUsersRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// Users Apis
+    /// </summary>
+    public sealed class Users : ApiObject, IUsers
     {
         private UserApis _currentUserApis;
 
@@ -23,6 +97,8 @@ namespace EncompassRest.Company.Users
                 return currentUserApis ?? Interlocked.CompareExchange(ref _currentUserApis, (currentUserApis = new UserApis(Client, "me")), null) ?? currentUserApis;
             }
         }
+
+        IUserApis IUsers.CurrentUserApis => CurrentUserApis;
 
         internal Users(EncompassRestClient client)
             : base(client, "encompass/v1/company/users")
@@ -40,6 +116,8 @@ namespace EncompassRest.Company.Users
 
             return new UserApis(Client, userId);
         }
+
+        IUserApis IUsers.GetUserApis(string userId) => GetUserApis(userId);
 
         /// <summary>
         /// Gets all users.

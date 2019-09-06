@@ -7,7 +7,34 @@ namespace EncompassRest.Settings
     /// <summary>
     /// The Settings Apis.
     /// </summary>
-    public sealed class Settings : ApiObject
+    public interface ISettings : IApiObject
+    {
+        /// <summary>
+        /// The Borrower Contacts Settings Apis.
+        /// </summary>
+        IBorrowerContactsSettings BorrowerContacts { get; }
+        /// <summary>
+        /// The Business Contacts Settings Apis.
+        /// </summary>
+        IBusinessContactsSettings BusinessContacts { get; }
+        /// <summary>
+        /// The Loan Settings Apis.
+        /// </summary>
+        ILoanSettings Loan { get; }
+        /// <summary>
+        /// The Personas Apis.
+        /// </summary>
+        Personas.IPersonas Personas { get; }
+        /// <summary>
+        /// The Templates Apis.
+        /// </summary>
+        Templates.ITemplates Templates { get; }
+    }
+
+    /// <summary>
+    /// The Settings Apis.
+    /// </summary>
+    public sealed class Settings : ApiObject, ISettings
     {
         private Templates.Templates _templates;
         private BorrowerContactsSettings _borrowerContacts;
@@ -27,6 +54,8 @@ namespace EncompassRest.Settings
             }
         }
 
+        Templates.ITemplates ISettings.Templates => Templates;
+
         /// <summary>
         /// The Borrower Contacts Settings Apis.
         /// </summary>
@@ -38,6 +67,8 @@ namespace EncompassRest.Settings
                 return borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new BorrowerContactsSettings(Client)), null) ?? borrowerContacts;
             }
         }
+
+        IBorrowerContactsSettings ISettings.BorrowerContacts => BorrowerContacts;
 
         /// <summary>
         /// The Business Contacts Settings Apis.
@@ -51,6 +82,8 @@ namespace EncompassRest.Settings
             }
         }
 
+        IBusinessContactsSettings ISettings.BusinessContacts => BusinessContacts;
+
         /// <summary>
         /// The Loan Settings Apis.
         /// </summary>
@@ -63,6 +96,8 @@ namespace EncompassRest.Settings
             }
         }
 
+        ILoanSettings ISettings.Loan => Loan;
+
         /// <summary>
         /// The Personas Apis.
         /// </summary>
@@ -74,6 +109,8 @@ namespace EncompassRest.Settings
                 return personas ?? Interlocked.CompareExchange(ref _personas, (_personas = new Personas.Personas(Client)), null) ?? personas;
             }
         }
+
+        Personas.IPersonas ISettings.Personas => Personas;
 
         internal Settings(EncompassRestClient client)
             : base(client, "encompass/v1/settings")

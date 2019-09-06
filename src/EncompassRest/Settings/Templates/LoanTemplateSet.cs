@@ -3,7 +3,14 @@
     /// <summary>
     /// The Loan Template Set Apis.
     /// </summary>
-    public sealed class LoanTemplateSet : TemplateApiObject
+    public interface ILoanTemplateSet : ITemplateApiObject
+    {
+    }
+
+    /// <summary>
+    /// The Loan Template Set Apis.
+    /// </summary>
+    public sealed class LoanTemplateSet : TemplateApiObject, ILoanTemplateSet
     {
         internal LoanTemplateSet(EncompassRestClient client)
             : base(client, "loanTemplateSet")
