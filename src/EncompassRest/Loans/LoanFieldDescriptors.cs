@@ -201,10 +201,11 @@ namespace EncompassRest.Loans
                 if (fields.TryGetValue(fieldId, out var fieldInfo))
                 {
                     fields.Remove(fieldId);
-                    if (!string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) || (!string.IsNullOrEmpty(fieldInfo.Description) && currentDescriptor.Description != fieldInfo.Description) || currentDescriptor.ReadOnly != (fieldInfo.ReadOnly == true))
+                    if ((!string.IsNullOrEmpty(fieldInfo.Description) && currentDescriptor.Description != fieldInfo.Description) || currentDescriptor.ReadOnly != (fieldInfo.ReadOnly == true) || (!string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) && !string.Equals(currentDescriptor.ModelPath, CreateModelPath(fieldInfo.ModelPath).ToString(), StringComparison.OrdinalIgnoreCase)))
                     {
-                        var modelPath = string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) ? currentDescriptor.ModelPath : fieldInfo.ModelPath;
-                        var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, CreateModelPath(modelPath), modelPath, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
+                        var modelPath = CreateModelPath(string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) ? currentDescriptor.ModelPath : fieldInfo.ModelPath);
+                        var modelPathString = modelPath.ToString();
+                        var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, modelPath, modelPathString, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
                         FieldMappings._standardFields[fieldId] = descriptor;
                     }
                 }
@@ -217,8 +218,9 @@ namespace EncompassRest.Loans
             foreach (var pair in fields)
             {
                 var fieldInfo = pair.Value;
-                var modelPath = fieldInfo.ModelPath;
-                var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, CreateModelPath(modelPath), modelPath, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
+                var modelPath = CreateModelPath(fieldInfo.ModelPath);
+                var modelPathString = modelPath.ToString();
+                var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, modelPath, modelPathString, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
                 FieldMappings.AddField(descriptor);
             }
 

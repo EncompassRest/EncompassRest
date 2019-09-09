@@ -19,7 +19,7 @@ namespace EncompassRest.Tests
             {
                 { "1109", "250000.00" },
                 { "4002", "Smith" },
-                { "748", "1/1/2019 12:00:00 AM" },
+                { "748", "1/1/2019" },
                 { "CUST01FV", "" }
             };
             foreach (var pair in fieldValues)
