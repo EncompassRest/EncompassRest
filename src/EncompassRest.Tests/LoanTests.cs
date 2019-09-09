@@ -1989,5 +1989,38 @@ namespace EncompassRest.Tests
                 }
             }
         }
+
+        [ApiTest]
+        [TestMethod]
+        public async Task Loan_CreateFromImportFile()
+        {
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanFromImportFileAsync(ImportFileType.FNMA32, @"		EH                                20190308   ENV1     
+TH T100099-002TRAN1    
+TPI1.00 01                              N
+0001  3.20 W
+00ANN
+01A                                                                                                                                          0.00  0.000                                                                                                                                                                     
+02A                                                                                                   F1                                                                                    
+02B                                                                                                                                                          
+02CTPO TPO TPO                                                 
+02CTPO TPO TPO                                                 
+03ABW991919991TPO                                                                   Firstimer                              5155555555 3316U 0N11111111119860307alice.f@fanniemae.com                                                           
+03AQZ111111111TPO                                TPO                                TPO                                                     0N991919991                                                                ", new CreateLoanOptions { Populate = true }, out var loan);
+            try
+            {
+                Assert.AreEqual("Firstimer", loan.Fields["4002"].ToString());
+            }
+            finally
+            {
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
+        }
     }
 }

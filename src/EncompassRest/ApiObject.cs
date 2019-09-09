@@ -75,15 +75,23 @@ namespace EncompassRest
 
         internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, string queryString, string methodName, T value, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendFullUriPopulateDirtyAsync(HttpMethod.Post, GetFullUri(requestUri), queryString, JsonStreamContent.Create(value), methodName, value, populate, cancellationToken);
 
+        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, T value, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendFullUriPopulateDirtyAsync(HttpMethod.Post, GetFullUri(requestUri), queryString, content, methodName, value, populate, cancellationToken);
+
         internal Task<string> SendFullUriPopulateDirtyAsync<T>(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, T value, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendFullUriAsync(method, requestUri, queryString, content, methodName, null, cancellationToken, async response =>
         {
             var id = GetLocation(response);
-            value.Id = id;
+            if (value != null)
+            {
+                value.Id = id;
+            }
             if (populate)
             {
                 await response.Content.PopulateAsync(value).ConfigureAwait(false);
             }
-            value.Dirty = false;
+            if (value != null)
+            {
+                value.Dirty = false;
+            }
             return id;
         });
 
