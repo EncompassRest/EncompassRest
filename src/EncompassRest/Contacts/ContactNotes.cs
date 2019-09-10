@@ -8,7 +8,80 @@ namespace EncompassRest.Contacts
     /// <summary>
     /// The Contact Notes Apis.
     /// </summary>
-    public sealed class ContactNotes : ContactApiObject
+    public interface IContactNotes : IContactApiObject
+    {
+        /// <summary>
+        /// Adds a note to the contact and returns the note ID.
+        /// </summary>
+        /// <param name="note">The note to create.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> CreateNoteAsync(ContactNote note, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Adds a note to the contact from raw json and returns the response body if not empty else the note ID.
+        /// </summary>
+        /// <param name="note">The note to create as raw json.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> CreateNoteRawAsync(string note, string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Permanently deletes the specified note from the contact.
+        /// </summary>
+        /// <param name="noteId">Unique identifier of the note assigned to the note when it was created.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<bool> DeleteNoteAsync(string noteId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieves the specified note from the contact.
+        /// </summary>
+        /// <param name="noteId">Unique identifier of the note assigned to the note when it was created.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<ContactNote> GetNoteAsync(string noteId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieves the specified note from the contact as raw json.
+        /// </summary>
+        /// <param name="noteId">Unique identifier of the note assigned to the note when it was created.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetNoteRawAsync(string noteId, string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieve all notes from the contact.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<ContactNote>> GetNotesAsync(CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieve all notes from the contact as raw json.
+        /// </summary>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetNotesRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Updates the specified note with the values provided.
+        /// </summary>
+        /// <param name="note">The note to update.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task UpdateNoteAsync(ContactNote note, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Updates the specified note with the values provided from raw json.
+        /// </summary>
+        /// <param name="noteId">Unique identifier of the note assigned to the note when it was created.</param>
+        /// <param name="note">The note to update as raw json.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> UpdateNoteRawAsync(string noteId, string note, string queryString = null, CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// The Contact Notes Apis.
+    /// </summary>
+    public sealed class ContactNotes : ContactApiObject, IContactNotes
     {
         internal ContactNotes(EncompassRestClient client, string contactId, string baseApiPath)
             : base(client, contactId, $"{baseApiPath}/{contactId}/notes")

@@ -17,7 +17,35 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LoanFieldDescriptors
     /// </summary>
-    public sealed class LoanFieldDescriptors : ApiObject
+    public interface ILoanFieldDescriptors : IApiObject
+    {
+        /// <summary>
+        /// Retrieves the field descriptor for the specified field id.
+        /// </summary>
+        /// <param name="fieldId">The field id of the field descriptor to get.</param>
+        /// <returns></returns>
+        FieldDescriptor this[string fieldId] { get; }
+
+        /// <summary>
+        /// The custom fields cache. To retrieve the Standard and Virtual fields use the static properties <see cref="LoanFieldDescriptors.StandardFields"/> and <see cref="LoanFieldDescriptors.VirtualFields"/> respectively.
+        /// </summary>
+        ReadOnlyDictionary<string, FieldDescriptor> CustomFields { get; }
+        /// <summary>
+        /// The utc date and time custom fields were last refreshed.
+        /// </summary>
+        DateTime? CustomFieldsLastRefreshedUtc { get; }
+        /// <summary>
+        /// Refreshes the custom fields cache.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task RefreshCustomFieldsAsync(CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// LoanFieldDescriptors
+    /// </summary>
+    public sealed class LoanFieldDescriptors : ApiObject, ILoanFieldDescriptors
     {
         private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new[]
         {
@@ -68,7 +96,7 @@ namespace EncompassRest.Loans
                             using (var jr = new JsonTextReader(sr))
                             {
                                 var loanFields = JsonHelper.DefaultPublicSerializer.Deserialize<List<StandardFieldInfo>>(jr);
-                                
+
                                 foreach (var loanField in loanFields)
                                 {
                                     var modelPathString = loanField.ModelPath;
@@ -173,10 +201,11 @@ namespace EncompassRest.Loans
                 if (fields.TryGetValue(fieldId, out var fieldInfo))
                 {
                     fields.Remove(fieldId);
-                    if (!string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) || (!string.IsNullOrEmpty(fieldInfo.Description) && currentDescriptor.Description != fieldInfo.Description) || currentDescriptor.ReadOnly != (fieldInfo.ReadOnly == true))
+                    if ((!string.IsNullOrEmpty(fieldInfo.Description) && currentDescriptor.Description != fieldInfo.Description) || currentDescriptor.ReadOnly != (fieldInfo.ReadOnly == true) || (!string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) && !string.Equals(currentDescriptor.ModelPath, CreateModelPath(fieldInfo.ModelPath).ToString(), StringComparison.OrdinalIgnoreCase)))
                     {
-                        var modelPath = string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) ? currentDescriptor.ModelPath : fieldInfo.ModelPath;
-                        var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, CreateModelPath(modelPath), modelPath, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
+                        var modelPath = CreateModelPath(string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) ? currentDescriptor.ModelPath : fieldInfo.ModelPath);
+                        var modelPathString = modelPath.ToString();
+                        var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, modelPath, modelPathString, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
                         FieldMappings._standardFields[fieldId] = descriptor;
                     }
                 }
@@ -189,8 +218,9 @@ namespace EncompassRest.Loans
             foreach (var pair in fields)
             {
                 var fieldInfo = pair.Value;
-                var modelPath = fieldInfo.ModelPath;
-                var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, CreateModelPath(modelPath), modelPath, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
+                var modelPath = CreateModelPath(fieldInfo.ModelPath);
+                var modelPathString = modelPath.ToString();
+                var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, modelPath, modelPathString, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
                 FieldMappings.AddField(descriptor);
             }
 

@@ -5,7 +5,14 @@ namespace EncompassRest.Company.Users
     /// <summary>
     /// User Custom Data Objects Apis
     /// </summary>
-    public sealed class UserCustomDataObjects : CustomDataObjects.CustomDataObjects
+    public interface IUserCustomDataObjects : CustomDataObjects.ICustomDataObjects, IUserApiObject
+    {
+    }
+
+    /// <summary>
+    /// User Custom Data Objects Apis
+    /// </summary>
+    public sealed class UserCustomDataObjects : CustomDataObjects.CustomDataObjects, IUserCustomDataObjects
     {
         /// <summary>
         /// User's Id

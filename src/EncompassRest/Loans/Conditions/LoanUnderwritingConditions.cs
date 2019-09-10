@@ -3,7 +3,14 @@
     /// <summary>
     /// The Loan Underwriting Conditions Apis.
     /// </summary>
-    public sealed class LoanUnderwritingConditions : LoanConditions<UnderwritingCondition>
+    public interface ILoanUnderwritingConditions : ILoanConditions<UnderwritingCondition>
+    {
+    }
+
+    /// <summary>
+    /// The Loan Underwriting Conditions Apis.
+    /// </summary>
+    public sealed class LoanUnderwritingConditions : LoanConditions<UnderwritingCondition>, ILoanUnderwritingConditions
     {
         internal LoanUnderwritingConditions(EncompassRestClient client, string loanId)
             : base(client, loanId, "underwriting")

@@ -10,7 +10,95 @@ namespace EncompassRest.Loans.Apis
     /// <summary>
     /// The Loan Borrower Pairs Apis.
     /// </summary>
-    public sealed class BorrowerPairs : LoanApiObject<Application>
+    public interface IBorrowerPairs : ILoanApiObject
+    {
+        /// <summary>
+        /// Creates a new borrower pair for the loan and returns the application id.
+        /// </summary>
+        /// <param name="application">The borrower pair to create.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> CreateBorrowerPairAsync(Application application, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Creates a new borrower pair for the loan from raw json and returns the response body if not empty or else the application id.
+        /// </summary>
+        /// <param name="application">The borrower pair to create as raw json.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> CreateBorrowerPairRawAsync(string application, string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Permanently deletes the borrower pair with the specified <paramref name="applicationId"/> from the loan.
+        /// </summary>
+        /// <param name="applicationId">The application id of the borrower pair to delete.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<bool> DeleteBorrowerPairAsync(string applicationId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieves the loan's borrower pair with the specified <paramref name="applicationId"/>.
+        /// </summary>
+        /// <param name="applicationId">The application id of the borrower pair to get.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Application> GetBorrowerPairAsync(string applicationId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieves the loan's borrower pair with the specified <paramref name="applicationId"/>.
+        /// </summary>
+        /// <param name="applicationId">The application id of the borrower pair to get.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetBorrowerPairRawAsync(string applicationId, string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieves all borrower pairs for the loan.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<IList<Application>> GetBorrowerPairsAsync(CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieves all borrower pairs for the loan as raw json.
+        /// </summary>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetBorrowerPairsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Swaps the position of borrower pairs in the loan. Note that the <see cref="Borrower.AltId"/> of the borrower and co-borrower do not change on the applications.
+        /// </summary>
+        /// <param name="applications">The applications to swap.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task MoveBorrowerPairsAsync(IList<Application> applications, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Swaps the position of borrower pairs in the loan from raw json. Note that the altIds of the borrower and co-borrower do not change on the applications.
+        /// </summary>
+        /// <param name="applications">The applications to swap as raw json.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task MoveBorrowerPairsRawAsync(string applications, string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Updates an existing borrower pair for the loan.
+        /// </summary>
+        /// <param name="application">The borrower pair to update.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task UpdateBorrowerPairAsync(Application application, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Updates an existing borrower pair for the loan from raw json.
+        /// </summary>
+        /// <param name="applicationId">The application id of the borrower pair to update.</param>
+        /// <param name="application">The borrower pair to update as raw json.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> UpdateBorrowerPairRawAsync(string applicationId, string application, string queryString = null, CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// The Loan Borrower Pairs Apis.
+    /// </summary>
+    public sealed class BorrowerPairs : LoanApiObject<Application>, IBorrowerPairs
     {
         internal BorrowerPairs(EncompassRestClient client, LoanObjectBoundApis loanObjectBoundApis, string loanId)
             : base(client, loanObjectBoundApis, loanId, "applications")

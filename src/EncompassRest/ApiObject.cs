@@ -9,9 +9,20 @@ using EncompassRest.Utilities;
 namespace EncompassRest
 {
     /// <summary>
+    /// Base Api Interface.
+    /// </summary>
+    public interface IApiObject
+    {
+        /// <summary>
+        /// The <see cref="IEncompassRestClient"/> associated with the Api object.
+        /// </summary>
+        IEncompassRestClient Client { get; }
+    }
+
+    /// <summary>
     /// Base Api Class.
     /// </summary>
-    public abstract class ApiObject
+    public abstract class ApiObject : IApiObject
     {
         internal static readonly HttpMethod PatchMethod = new HttpMethod("PATCH");
 
@@ -37,6 +48,8 @@ namespace EncompassRest
         /// The <see cref="EncompassRestClient"/> associated with the Api object.
         /// </summary>
         public EncompassRestClient Client { get; }
+
+        IEncompassRestClient IApiObject.Client => Client;
 
         internal ApiObject(EncompassRestClient client, string baseApiPath)
         {

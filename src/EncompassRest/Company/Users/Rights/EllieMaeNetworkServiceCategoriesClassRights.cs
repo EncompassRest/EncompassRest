@@ -24,6 +24,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _titleClosing;
         private DirtyValue<bool?> _underwriting;
         private DirtyValue<bool?> _verifications;
+        private DirtyValue<bool?> _warehouseLenders;
 
         /// <summary>
         /// EllieMaeNetworkServiceCategoriesClassRights AdditionalServices
@@ -119,5 +120,11 @@ namespace EncompassRest.Company.Users.Rights
         /// EllieMaeNetworkServiceCategoriesClassRights Verifications
         /// </summary>
         public bool? Verifications { get => _verifications; set => SetField(ref _verifications, value); }
+
+        /// <summary>
+        /// EllieMaeNetworkServiceCategoriesClassRights WarehouseLenders
+        /// </summary>
+        [JsonProperty("warehouse Lenders")]
+        public bool? WarehouseLenders { get => _warehouseLenders; set => SetField(ref _warehouseLenders, value); }
     }
 }

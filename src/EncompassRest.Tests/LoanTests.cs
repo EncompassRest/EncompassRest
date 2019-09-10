@@ -985,6 +985,72 @@ namespace EncompassRest.Tests
             }
         }
 
+        // [TestMethod]
+        // [ApiTest] Disabling test until Ellie Mae fixes Index out of bounds errors as its causing this test to run for about an hour.
+        public async Task Loan_BadLockingFields()
+        {
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
+            var fieldsWhereLockingCausesEncompassError = new List<string>();
+            var distinctFieldMappings = LoanFieldDescriptors.FieldMappings._standardFields.Distinct(new FieldMappingComparer()).ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase).Keys.ToList();
+
+            try
+            {
+                await TryFields(0, distinctFieldMappings.Count - 1);
+                if (fieldsWhereLockingCausesEncompassError.Count > 0)
+                {
+                    Assert.Fail($"The following {fieldsWhereLockingCausesEncompassError.Count} fields cause update errors: {string.Join(", ", fieldsWhereLockingCausesEncompassError)}");
+                }
+            }
+            finally
+            {
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
+
+            async Task SplitFields(int start, int end)
+            {
+                if (start == end)
+                {
+                    fieldsWhereLockingCausesEncompassError.Add(distinctFieldMappings[start]);
+                }
+                else
+                {
+                    var mid = (end + start) / 2;
+
+                    await TryFields(start, mid);
+                    await TryFields(mid + 1, end);
+                }
+            }
+
+            async Task TryFields(int start, int end)
+            {
+                var loan = new Loan(client, loanId);
+
+                for (var i = start; i <= end; ++i)
+                {
+                    var fieldId = distinctFieldMappings[i];
+                    var field = loan.Fields[fieldId];
+                    Assert.IsFalse(field.Locked);
+                    field.Locked = true;
+                    Assert.IsTrue(field.Locked);
+                }
+                try
+                {
+                    await client.Loans.UpdateLoanAsync(loan);
+                }
+                catch
+                {
+                    await SplitFields(start, end);
+                }
+            }
+        }
+
         [TestMethod]
         [ApiTest]
         public async Task Loan_FieldsLocking()
@@ -997,7 +1063,7 @@ namespace EncompassRest.Tests
             {
                 var distinctFieldMappings = LoanFieldDescriptors.FieldMappings._standardFields.Distinct(new FieldMappingComparer()).ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase);
 
-                var fieldsWhereLockingCausesEncompassError = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "NEWHUD.X769", "NEWHUD.X770" };
+                var fieldsWhereLockingCausesEncompassError = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
                 
                 foreach (var fieldId in fieldsWhereLockingCausesEncompassError)
                 {

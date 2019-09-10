@@ -13,7 +13,71 @@ namespace EncompassRest.Calculators
     /// <summary>
     /// The Calculators Apis.
     /// </summary>
-    public sealed class Calculators : ApiObject
+    public interface ICalculators : IApiObject
+    {
+        /// <summary>
+        /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
+        /// </summary>
+        /// <param name="loan">The loan to recalculate.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task CalculateLoanAsync(Loan loan, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
+        /// </summary>
+        /// <param name="loan">The loan to recalculate.</param>
+        /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task CalculateLoanAsync(Loan loan, bool? calcAllOnly, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
+        /// </summary>
+        /// <param name="loan">The loan to recalculate.</param>
+        /// <param name="entities">The list of loan entities to populate for the loan.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task CalculateLoanAsync(Loan loan, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
+        /// </summary>
+        /// <param name="loan">The loan to recalculate.</param>
+        /// <param name="entities">The list of loan entities to populate for the loan.</param>
+        /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task CalculateLoanAsync(Loan loan, IEnumerable<LoanEntity> entities, bool? calcAllOnly, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
+        /// </summary>
+        /// <param name="loan">The loan to recalculate.</param>
+        /// <param name="entities">The list of loan entities to populate for the loan.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task CalculateLoanAsync(Loan loan, IEnumerable<string> entities, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
+        /// </summary>
+        /// <param name="loan">The loan to recalculate.</param>
+        /// <param name="entities">The list of loan entities to populate for the loan.</param>
+        /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task CalculateLoanAsync(Loan loan, IEnumerable<string> entities, bool? calcAllOnly, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
+        /// </summary>
+        /// <param name="body">The request body as raw json.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns>The loan with calculations performed as raw json.</returns>
+        Task<string> CalculateLoanRawAsync(string body, string queryString = null, CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// The Calculators Apis.
+    /// </summary>
+    public sealed class Calculators : ApiObject, ICalculators
     {
         internal Calculators(EncompassRestClient client)
             : base(client, "encompass/v1/calculators")

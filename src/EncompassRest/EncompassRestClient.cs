@@ -17,7 +17,111 @@ namespace EncompassRest
     /// <summary>
     /// The client object to make calls to the Encompass Apis. Use the static factory Create* methods to create a client object.
     /// </summary>
-    public sealed class EncompassRestClient : IDisposable
+    public interface IEncompassRestClient : IDisposable
+    {
+        /// <summary>
+        /// The access token and related Apis.
+        /// </summary>
+        IAccessToken AccessToken { get; }
+        /// <summary>
+        /// A base Api client for use when Apis aren't supported directly.
+        /// </summary>
+        IBaseApiClient BaseApiClient { get; }
+        /// <summary>
+        /// The Loan Batch Update Apis.
+        /// </summary>
+        IBatchUpdate BatchUpdate { get; }
+        /// <summary>
+        /// The Borrower Contacts Apis.
+        /// </summary>
+        IBorrowerContacts BorrowerContacts { get; }
+        /// <summary>
+        /// The Borrower Contact Selector Apis.
+        /// </summary>
+        IBorrowerContactSelector BorrowerContactSelector { get; }
+        /// <summary>
+        /// The Business Contacts Apis.
+        /// </summary>
+        IBusinessContacts BusinessContacts { get; }
+        /// <summary>
+        /// The Business Contact Selector Apis.
+        /// </summary>
+        IBusinessContactSelector BusinessContactSelector { get; }
+        /// <summary>
+        /// The Calculators Apis.
+        /// </summary>
+        Calculators.ICalculators Calculators { get; }
+        /// <summary>
+        /// The Company Apis.
+        /// </summary>
+        Company.ICompany Company { get; }
+        /// <summary>
+        /// The Contact Groups Apis.
+        /// </summary>
+        IContactGroups ContactGroups { get; }
+        /// <summary>
+        /// The Loan Folders Apis.
+        /// </summary>
+        LoanFolders.ILoanFolders LoanFolders { get; }
+        /// <summary>
+        /// The Loans Apis.
+        /// </summary>
+        Loans.ILoans Loans { get; }
+        /// <summary>
+        /// The Organizations Apis.
+        /// </summary>
+        Organizations.IOrganizations Organizations { get; }
+        /// <summary>
+        /// The Loan Pipeline Apis.
+        /// </summary>
+        IPipeline Pipeline { get; }
+        /// <summary>
+        /// The Schema Apis.
+        /// </summary>
+        Schema.ISchema Schema { get; }
+        /// <summary>
+        /// The Services Apis.
+        /// </summary>
+        Services.IServices Services { get; }
+        /// <summary>
+        /// The Settings Apis.
+        /// </summary>
+        Settings.ISettings Settings { get; }
+        /// <summary>
+        /// The time span before Api requests are considered timed-out. Default is 100 seconds.
+        /// </summary>
+        TimeSpan Timeout { get; }
+        /// <summary>
+        /// The number of times to retry requests when there's a gateway timeout. Default is 0.
+        /// </summary>
+        int TimeoutRetryCount { get; set; }
+        /// <summary>
+        /// Indicates how an expired token is handled by the client.
+        /// </summary>
+        TokenExpirationHandling TokenExpirationHandling { get; }
+        /// <summary>
+        /// Specifies how the client should handle undefined custom fields.
+        /// </summary>
+        UndefinedCustomFieldHandling UndefinedCustomFieldHandling { get; set; }
+        /// <summary>
+        /// The Webhook Apis.
+        /// </summary>
+        Webhook.IWebhook Webhook { get; }
+
+        /// <summary>
+        /// An event that occurs when an Api response is received.
+        /// </summary>
+        event EventHandler<ApiResponseEventArgs> ApiResponse;
+        /// <summary>
+        /// An event that occurs before attempting to retry a request when there's a gateway timeout.
+        /// </summary>
+        event EventHandler<TimeoutRetryEventArgs> TimeoutRetry;
+    }
+
+    /// <summary>
+    /// The client object to make calls to the Encompass Apis. Use the static factory Create* methods to create a client object.
+    /// </summary>
+    public sealed class EncompassRestClient : IEncompassRestClient
     {
 #if NET45
         static EncompassRestClient()
@@ -171,6 +275,8 @@ namespace EncompassRest
         /// </summary>
         public AccessToken AccessToken { get; }
 
+        IAccessToken IEncompassRestClient.AccessToken => AccessToken;
+
         /// <summary>
         /// Indicates how an expired token is handled by the client.
         /// </summary>
@@ -218,6 +324,8 @@ namespace EncompassRest
             }
         }
 
+        Loans.ILoans IEncompassRestClient.Loans => Loans;
+
         /// <summary>
         /// The Schema Apis.
         /// </summary>
@@ -229,6 +337,8 @@ namespace EncompassRest
                 return schema ?? Interlocked.CompareExchange(ref _schema, (schema = new Schema.Schema(this)), null) ?? schema;
             }
         }
+
+        Schema.ISchema IEncompassRestClient.Schema => Schema;
 
         /// <summary>
         /// The Webhook Apis.
@@ -242,6 +352,8 @@ namespace EncompassRest
             }
         }
 
+        Webhook.IWebhook IEncompassRestClient.Webhook => Webhook;
+
         /// <summary>
         /// The Loan Pipeline Apis.
         /// </summary>
@@ -253,6 +365,8 @@ namespace EncompassRest
                 return pipeline ?? Interlocked.CompareExchange(ref _pipeline, (pipeline = new Pipeline(this)), null) ?? pipeline;
             }
         }
+
+        IPipeline IEncompassRestClient.Pipeline => Pipeline;
 
         /// <summary>
         /// The Loan Batch Update Apis.
@@ -266,6 +380,8 @@ namespace EncompassRest
             }
         }
 
+        IBatchUpdate IEncompassRestClient.BatchUpdate => BatchUpdate;
+
         /// <summary>
         /// The Borrower Contacts Apis.
         /// </summary>
@@ -277,6 +393,8 @@ namespace EncompassRest
                 return borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new BorrowerContacts(this)), null) ?? borrowerContacts;
             }
         }
+
+        IBorrowerContacts IEncompassRestClient.BorrowerContacts => BorrowerContacts;
 
         /// <summary>
         /// The Business Contacts Apis.
@@ -290,6 +408,8 @@ namespace EncompassRest
             }
         }
 
+        IBusinessContacts IEncompassRestClient.BusinessContacts => BusinessContacts;
+
         /// <summary>
         /// The Borrower Contact Selector Apis.
         /// </summary>
@@ -301,6 +421,8 @@ namespace EncompassRest
                 return borrowerContactSelector ?? Interlocked.CompareExchange(ref _borrowerContactSelector, (borrowerContactSelector = new BorrowerContactSelector(this)), null) ?? borrowerContactSelector;
             }
         }
+
+        IBorrowerContactSelector IEncompassRestClient.BorrowerContactSelector => BorrowerContactSelector;
 
         /// <summary>
         /// The Business Contact Selector Apis.
@@ -314,6 +436,8 @@ namespace EncompassRest
             }
         }
 
+        IBusinessContactSelector IEncompassRestClient.BusinessContactSelector => BusinessContactSelector;
+
         /// <summary>
         /// The Contact Groups Apis.
         /// </summary>
@@ -325,6 +449,8 @@ namespace EncompassRest
                 return contactGroups ?? Interlocked.CompareExchange(ref _contactGroups, (contactGroups = new ContactGroups(this)), null) ?? contactGroups;
             }
         }
+
+        IContactGroups IEncompassRestClient.ContactGroups => ContactGroups;
 
         internal ResourceLocks.ResourceLocks ResourceLocks
         {
@@ -371,6 +497,8 @@ namespace EncompassRest
             }
         }
 
+        LoanFolders.ILoanFolders IEncompassRestClient.LoanFolders => LoanFolders;
+
         /// <summary>
         /// The Settings Apis.
         /// </summary>
@@ -382,6 +510,8 @@ namespace EncompassRest
                 return settings ?? Interlocked.CompareExchange(ref _settings, (settings = new Settings.Settings(this)), null) ?? settings;
             }
         }
+
+        Settings.ISettings IEncompassRestClient.Settings => Settings;
 
         /// <summary>
         /// The Services Apis.
@@ -395,6 +525,8 @@ namespace EncompassRest
             }
         }
 
+        Services.IServices IEncompassRestClient.Services => Services;
+
         /// <summary>
         /// The Company Apis.
         /// </summary>
@@ -406,6 +538,8 @@ namespace EncompassRest
                 return company ?? Interlocked.CompareExchange(ref _company, (company = new Company.Company(this)), null) ?? company;
             }
         }
+
+        Company.ICompany IEncompassRestClient.Company => Company;
 
         /// <summary>
         /// The Organizations Apis.
@@ -419,6 +553,8 @@ namespace EncompassRest
             }
         }
 
+        Organizations.IOrganizations IEncompassRestClient.Organizations => Organizations;
+
         /// <summary>
         /// The Calculators Apis.
         /// </summary>
@@ -430,6 +566,8 @@ namespace EncompassRest
                 return calculators ?? Interlocked.CompareExchange(ref _calculators, (calculators = new Calculators.Calculators(this)), null) ?? calculators;
             }
         }
+
+        Calculators.ICalculators IEncompassRestClient.Calculators => Calculators;
 
         /// <summary>
         /// Property for sharing common cache between multiple clients such as custom field descriptors.
@@ -465,6 +603,8 @@ namespace EncompassRest
                 return baseApiClient ?? Interlocked.CompareExchange(ref _baseApiClient, (baseApiClient = new BaseApiClient(this)), null) ?? baseApiClient;
             }
         }
+
+        IBaseApiClient IEncompassRestClient.BaseApiClient => BaseApiClient;
         #endregion
 
         /// <summary>

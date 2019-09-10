@@ -858,9 +858,9 @@ namespace EncompassRest.Loans
         /// </summary>
         RateLockBuydown = 214,
         /// <summary>
-        /// TradeTargetLog
+        /// TargetTradeLog
         /// </summary>
-        TradeTargetLog = 215,
+        TargetTradeLog = 215,
         /// <summary>
         /// PriceAdjustmentLogRecord
         /// </summary>
