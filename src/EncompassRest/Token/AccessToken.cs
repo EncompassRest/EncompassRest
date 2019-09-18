@@ -135,6 +135,13 @@ namespace EncompassRest.Token
                 KeyValuePair.Create("code", authorizationCode)
             }, methodName, cancellationToken);
 
+        internal Task<string> GetTokenFromClientCredentialsAsync(string instanceId, string methodName, CancellationToken cancellationToken) => GetTokenAsync(new[]
+            {
+                KeyValuePair.Create("grant_type", "client_credentials"),
+                KeyValuePair.Create("scope", "lp"),
+                KeyValuePair.Create("instance_id", instanceId)
+            }, methodName, cancellationToken);
+
         private async Task<string> GetTokenAsync(IEnumerable<KeyValuePair<string, string>> nameValueCollection, string methodName, CancellationToken cancellationToken)
         {
             var tokenResponse = await PostAsync<TokenResponse>(null, null, new FormUrlEncodedContent(nameValueCollection), methodName, null, cancellationToken).ConfigureAwait(false);

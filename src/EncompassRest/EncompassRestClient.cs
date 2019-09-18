@@ -244,6 +244,26 @@ namespace EncompassRest
         public static EncompassRestClient CreateFromAccessToken(string apiClientId, string apiClientSecret, string accessToken) => CreateFromAccessToken(new ClientParameters(apiClientId, apiClientSecret), accessToken);
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
+        /// <summary>
+        /// This method is for partner API integration only. You probably want <see cref="CreateFromUserCredentialsAsync(ClientParameters, string, string, string, CancellationToken)"/> instead.
+        /// </summary>
+        /// <param name="parameters">The parameters to initialize the client object with.</param>
+        /// <param name="instanceId">The encompass instance id.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        [Obsolete("This method is for partner API integration only. You probably want CreateFromUserCredentialsAsync instead.")]
+        public static async Task<EncompassRestClient> CreateFromClientCredentialsAsync(ClientParameters parameters, string instanceId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNull(parameters, nameof(parameters));
+            Preconditions.NotNullOrEmpty(instanceId, nameof(instanceId));
+
+            var client = new EncompassRestClient(parameters);
+            var accessToken = await client.AccessToken.GetTokenFromClientCredentialsAsync(instanceId, nameof(CreateFromClientCredentialsAsync), cancellationToken).ConfigureAwait(false);
+            client.AccessToken.Token = accessToken;
+            await parameters.TryInitializeAsync(client, client.CommonCache, cancellationToken).ConfigureAwait(false);
+            return client;
+        }
+
         private readonly Func<TokenCreator, Task<string>> _tokenInitializer;
         private int _timeoutRetryCount;
 
