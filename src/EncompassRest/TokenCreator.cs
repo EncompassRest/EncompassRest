@@ -1,5 +1,7 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.Utilities;
 
 namespace EncompassRest
 {
@@ -29,7 +31,14 @@ namespace EncompassRest
         /// <param name="password">The encompass user password.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> FromUserCredentialsAsync(string instanceId, string userId, string password, CancellationToken cancellationToken = default) => _client.AccessToken.GetTokenFromUserCredentialsAsync(instanceId, userId, password, nameof(FromUserCredentialsAsync), CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, RequestCancellationToken).Token);
+        public Task<string> FromUserCredentialsAsync(string instanceId, string userId, string password, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(instanceId, nameof(instanceId));
+            Preconditions.NotNullOrEmpty(userId, nameof(userId));
+            Preconditions.NotNullOrEmpty(password, nameof(password));
+
+            return _client.AccessToken.GetTokenFromUserCredentialsAsync(instanceId, userId, password, nameof(FromUserCredentialsAsync), CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, RequestCancellationToken).Token);
+        }
 
         /// <summary>
         /// Retrieves an access token from an authorization code.
@@ -38,6 +47,26 @@ namespace EncompassRest
         /// <param name="authorizationCode">The authorization code to use.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> FromAuthorizationCodeAsync(string redirectUri, string authorizationCode, CancellationToken cancellationToken = default) => _client.AccessToken.GetTokenFromAuthorizationCodeAsync(redirectUri, authorizationCode, nameof(FromAuthorizationCodeAsync), CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, RequestCancellationToken).Token);
+        public Task<string> FromAuthorizationCodeAsync(string redirectUri, string authorizationCode, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(redirectUri, nameof(redirectUri));
+            Preconditions.NotNullOrEmpty(authorizationCode, nameof(authorizationCode));
+
+            return _client.AccessToken.GetTokenFromAuthorizationCodeAsync(redirectUri, authorizationCode, nameof(FromAuthorizationCodeAsync), CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, RequestCancellationToken).Token);
+        }
+
+        /// <summary>
+        /// This method is for partner API integration only. You probably want <see cref="FromUserCredentialsAsync(string, string, string, CancellationToken)"/> instead.
+        /// </summary>
+        /// <param name="instanceId">The encompass instance id.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        [Obsolete("This method is for partner API integration only. You probably want FromUserCredentialsAsync instead.")]
+        public Task<string> FromClientCredentialsAsync(string instanceId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(instanceId, nameof(instanceId));
+
+            return _client.AccessToken.GetTokenFromClientCredentialsAsync(instanceId, nameof(FromClientCredentialsAsync), CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, RequestCancellationToken).Token);
+        }
     }
 }

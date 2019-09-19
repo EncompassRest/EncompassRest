@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -77,7 +76,7 @@ namespace EncompassRest.Token
                     {
                         Timeout = Client.Timeout
                     };
-                    tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{WebUtility.UrlEncode(_apiClientId)}:{WebUtility.UrlEncode(_apiClientSecret)}")));
+                    tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_apiClientId}:{_apiClientSecret}")));
                     tokenClient = Interlocked.CompareExchange(ref _tokenClient, tokenClient, null) ?? tokenClient;
                 }
                 return tokenClient;
@@ -133,6 +132,13 @@ namespace EncompassRest.Token
                 KeyValuePair.Create("grant_type", "authorization_code"),
                 KeyValuePair.Create("redirect_uri", redirectUri),
                 KeyValuePair.Create("code", authorizationCode)
+            }, methodName, cancellationToken);
+
+        internal Task<string> GetTokenFromClientCredentialsAsync(string instanceId, string methodName, CancellationToken cancellationToken) => GetTokenAsync(new[]
+            {
+                KeyValuePair.Create("grant_type", "client_credentials"),
+                KeyValuePair.Create("scope", "lp"),
+                KeyValuePair.Create("instance_id", instanceId)
             }, methodName, cancellationToken);
 
         private async Task<string> GetTokenAsync(IEnumerable<KeyValuePair<string, string>> nameValueCollection, string methodName, CancellationToken cancellationToken)
