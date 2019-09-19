@@ -37,6 +37,7 @@ namespace EncompassRest.Loans.Conditions
         private DirtyValue<bool?> _isAddedToConditionSet;
         private DirtyList<Comment> _comments;
         private DirtyList<EntityReference> _documents;
+        private DirtyValue<string> _descriptionDetails;
 
         /// <summary>
         /// Unique identifier of a condition.
@@ -177,6 +178,11 @@ namespace EncompassRest.Loans.Conditions
         /// Any supporting documents.
         /// </summary>
         public IList<EntityReference> Documents { get => GetField(ref _documents); set => SetField(ref _documents, value); }
+
+        /// <summary>
+        /// LoanCondition DescriptionDetails
+        /// </summary>
+        public string DescriptionDetails { get => _descriptionDetails; set => SetField(ref _descriptionDetails, value); }
 
         internal LoanCondition()
         {

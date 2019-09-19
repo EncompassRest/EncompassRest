@@ -19,7 +19,6 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _administratorPostalCode;
         private DirtyValue<StringEnumValue<State>> _administratorState;
         private DirtyValue<int?> _ageOfProperty;
-        private DirtyValue<decimal?> _amountOfProposedLiens;
         private DirtyValue<decimal?> _amountSpentOnEnergyImprovements;
         private DirtyValue<StringEnumValue<AmountTypeWithheld>> _amountTypeWithheld;
         private DirtyValue<decimal?> _amountWithheld;
@@ -331,12 +330,6 @@ namespace EncompassRest.Loans
         /// VA Loan Summ Property Age [VASUMM.X8]
         /// </summary>
         public int? AgeOfProperty { get => _ageOfProperty; set => SetField(ref _ageOfProperty, value); }
-
-        /// <summary>
-        /// VA Loan Amount of Proposed Liens [VASUMM.X126]
-        /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
-        public decimal? AmountOfProposedLiens { get => _amountOfProposedLiens; set => SetField(ref _amountOfProposedLiens, value); }
 
         /// <summary>
         /// Subject Property Energy Improve Amt [961]
