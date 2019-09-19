@@ -49,5 +49,52 @@ namespace EncompassRest.Tests
                 }
             }
         }
+
+        [TestMethod]
+        [ApiTest]
+        public async Task FieldReader_GetValuesWithMetadata()
+        {
+            using (var client = await GetTestClientAsync(p => p.CustomFieldsCacheInitialization = CacheInitialization.IfNotAlready))
+            {
+                var loan = new Loan(client);
+                var fieldValues = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+                {
+                    { "1109", "250000.00" },
+                    { "4002", "Smith" },
+                    { "748", "1/1/2019" },
+                    { "CUST01FV", "" }
+                };
+                foreach (var pair in fieldValues)
+                {
+                    loan.Fields[pair.Key].Value = pair.Value;
+                }
+                var loanId = await client.Loans.CreateLoanAsync(loan);
+                try
+                {
+                    var loanFieldValues = await loan.LoanApis.FieldReader.GetLoanFieldValuesAsync(includeMetadata: true, fieldValues.Keys);
+                    Assert.AreEqual(fieldValues.Count, loanFieldValues.Count);
+                    foreach (var loanFieldValue in loanFieldValues)
+                    {
+                        Assert.IsTrue(fieldValues.TryGetValue(loanFieldValue.FieldId, out var value));
+                        Assert.AreEqual(value, loanFieldValue.Value);
+                        var descriptor = loan.Fields[loanFieldValue.FieldId].Descriptor;
+                        Assert.AreEqual(descriptor.Description, loanFieldValue.Description);
+                        Assert.AreEqual(descriptor.Format, loanFieldValue.Format.EnumValue);
+                        Assert.AreEqual(descriptor.ReadOnly, loanFieldValue.ReadOnly);
+                        AssertNoExtensionData(loanFieldValue, "LoanFieldValue", loanFieldValue.FieldId, true);
+                    }
+                }
+                finally
+                {
+                    try
+                    {
+                        await client.Loans.DeleteLoanAsync(loanId);
+                    }
+                    catch
+                    {
+                    }
+                }
+            }
+        }
     }
 }
