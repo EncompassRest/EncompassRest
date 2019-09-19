@@ -407,7 +407,6 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _systemIdGuid;
         private DirtyValue<decimal?> _targetCLTV;
         private DirtyValue<decimal?> _targetHCLTV;
-        private DirtyList<TargetTradeLog> _targetTradeLogs;
         private DirtyValue<string> _temporaryBuydown;
         private DirtyValue<bool?> _temporaryOrInitialInterestRateBuydown;
         private DirtyValue<DateTime?> _tilApplicationDate;
@@ -2600,11 +2599,6 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_6)]
         public decimal? TargetHCLTV { get => _targetHCLTV; set => SetField(ref _targetHCLTV, value); }
-
-        /// <summary>
-        /// Loan TargetTradeLogs
-        /// </summary>
-        public IList<TargetTradeLog> TargetTradeLogs { get => GetField(ref _targetTradeLogs); set => SetField(ref _targetTradeLogs, value); }
 
         /// <summary>
         /// Temporary Buydown [4645]
