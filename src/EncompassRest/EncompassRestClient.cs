@@ -159,13 +159,6 @@ namespace EncompassRest
             return client;
         }
 
-        [Obsolete("Use the ClientParameters overload instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public static Task<EncompassRestClient> CreateFromUserCredentialsAsync(string apiClientId, string apiClientSecret, string instanceId, string userId, string password, CancellationToken cancellationToken = default) =>
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-            CreateFromUserCredentialsAsync(new ClientParameters(apiClientId, apiClientSecret), instanceId, userId, password, cancellationToken);
-
         /// <summary>
         /// Creates a client object from an authorization code.
         /// </summary>
@@ -187,13 +180,6 @@ namespace EncompassRest
             return client;
         }
 
-        [Obsolete("Use the ClientParameters overload instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public static Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string apiClientId, string apiClientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken = default) =>
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-            CreateFromAuthorizationCodeAsync(new ClientParameters(apiClientId, apiClientSecret), redirectUri, authorizationCode, cancellationToken);
-
         /// <summary>
         /// Creates a client object from an existing access token.
         /// </summary>
@@ -211,26 +197,6 @@ namespace EncompassRest
             await parameters.TryInitializeAsync(client, client.CommonCache, cancellationToken).ConfigureAwait(false);
             return client;
         }
-
-        [Obsolete("Use CreateFromAccessTokenAsync instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public static EncompassRestClient CreateFromAccessToken(ClientParameters parameters, string accessToken)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-        {
-            Preconditions.NotNull(parameters, nameof(parameters));
-            Preconditions.NotNullOrEmpty(accessToken, nameof(accessToken));
-
-            var client = new EncompassRestClient(parameters);
-            client.AccessToken.Token = accessToken;
-            return client;
-        }
-
-        [Obsolete("Use the ClientParameters overload instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public static EncompassRestClient CreateFromAccessToken(string apiClientId, string apiClientSecret, string accessToken) => CreateFromAccessToken(new ClientParameters(apiClientId, apiClientSecret), accessToken);
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// This method is for partner API integration only. You probably want <see cref="CreateFromUserCredentialsAsync(ClientParameters, string, string, string, CancellationToken)"/> instead.
@@ -263,8 +229,6 @@ namespace EncompassRest
         private BatchUpdate _batchUpdate;
         private Contacts.Contacts _contacts;
         private ResourceLocks.ResourceLocks _resourceLocks;
-        private GlobalCustomDataObjects _globalCustomDataObjects;
-        private Users.Users _users;
         private LoanFolders.LoanFolders _loanFolders;
         private Settings.Settings _settings;
         private Services.Services _services;
@@ -436,30 +400,6 @@ namespace EncompassRest
             {
                 var resourceLocks = _resourceLocks;
                 return resourceLocks ?? Interlocked.CompareExchange(ref _resourceLocks, (resourceLocks = new ResourceLocks.ResourceLocks(this)), null) ?? resourceLocks;
-            }
-        }
-
-        [Obsolete("Use EncompassRestClient.Company.GlobalCustomDataObjects instead.")]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public GlobalCustomDataObjects GlobalCustomDataObjects
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-        {
-            get
-            {
-                var globalCustomDataObjects = _globalCustomDataObjects;
-                return globalCustomDataObjects ?? Interlocked.CompareExchange(ref _globalCustomDataObjects, (globalCustomDataObjects = new GlobalCustomDataObjects(this)), null) ?? globalCustomDataObjects;
-            }
-        }
-
-        [Obsolete("Use EncompassRestClient.Company.Users.GetUserApis(userId).CustomDataObjects instead.")]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public Users.Users Users
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-        {
-            get
-            {
-                var users = _users;
-                return users ?? Interlocked.CompareExchange(ref _users, (users = new Users.Users(this)), null) ?? users;
             }
         }
 

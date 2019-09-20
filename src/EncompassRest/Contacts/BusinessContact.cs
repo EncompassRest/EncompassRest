@@ -105,17 +105,5 @@ namespace EncompassRest.Contacts
         public BusinessContact()
         {
         }
-
-        /// <summary>
-        /// BusinessContact update constructor
-        /// </summary>
-        /// <param name="client">The <see cref="EncompassRestClient"/> to associate with this object.</param>
-        /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
-        [Obsolete("Use another constructor instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public BusinessContact(EncompassRestClient client, string contactId)
-        {
-            Initialize(client, contactId);
-        }
     }
 }

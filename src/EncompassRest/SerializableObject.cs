@@ -26,15 +26,6 @@ namespace EncompassRest
         public override string ToString() => ToString(SerializationOptions.None);
 
         /// <summary>
-        /// Serializes object to it's json representation with indenting if <paramref name="indent"/> is <c>true</c>.
-        /// </summary>
-        /// <param name="indent">Specifies if the json should be indented.</param>
-        /// <returns>Json representation of the object.</returns>
-        [Obsolete("Use SerializationOptions overload instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public string ToString(bool indent) => ToString(SerializationOptions.Indent);
-
-        /// <summary>
         /// Serializes object to it's json representation using the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The serialization options.</param>
