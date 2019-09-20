@@ -11,7 +11,7 @@ namespace EncompassRest.Contacts
     /// </summary>
     public abstract class Contact : DirtyExtensibleObject, IIdentifiable
     {
-        private ContactNotes _notes;
+        private IContactNotes _notes;
 
         private DirtyValue<string> _firstName;
         private DirtyValue<string> _lastName;
@@ -111,21 +111,25 @@ namespace EncompassRest.Contacts
         /// </summary>
         public IList<int?> GroupIDs { get => GetField(ref _groupIDs); set => SetField(ref _groupIDs, value); }
 
-        internal abstract string ApiPath { get; }
-
         /// <summary>
         /// The <see cref="EncompassRestClient"/> associated with this object.
         /// </summary>
         [JsonIgnore]
-        public EncompassRestClient Client { get; private set; }
+        public IEncompassRestClient Client { get; private set; }
 
         /// <summary>
         /// The Contact Notes Apis. Contact object must be initialized to use Notes.
         /// </summary>
         [JsonIgnore]
-        public ContactNotes Notes => _notes ?? throw new InvalidOperationException("Contact object must be initialized to use Notes");
+        public IContactNotes Notes => _notes ?? throw new InvalidOperationException("Contact object must be initialized to use Notes");
 
-        internal Contact(EncompassRestClient client, string contactId, string firstName, string personalEmail)
+        /// <summary>
+        /// The contact type.
+        /// </summary>
+        [JsonIgnore]
+        public abstract ContactType Type { get; }
+
+        internal Contact(IEncompassRestClient client, string contactId, string firstName, string personalEmail)
             : this(firstName, personalEmail)
         {
             Initialize(client, contactId);
@@ -138,6 +142,7 @@ namespace EncompassRest.Contacts
 
             FirstName = firstName;
             PersonalEmail = personalEmail;
+            
         }
 
         internal Contact()
@@ -149,7 +154,14 @@ namespace EncompassRest.Contacts
         /// </summary>
         /// <param name="client">The <see cref="EncompassRestClient"/> to associate with this object.</param>
         /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
-        public void Initialize(EncompassRestClient client, string contactId)
+        public void Initialize(EncompassRestClient client, string contactId) => Initialize((IEncompassRestClient)client, contactId);
+
+        /// <summary>
+        /// Initializes the contact object with the specified <paramref name="client"/> and <paramref name="contactId"/>. This allows the use of the <see cref="Notes"/> property.
+        /// </summary>
+        /// <param name="client">The <see cref="EncompassRestClient"/> to associate with this object.</param>
+        /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
+        public void Initialize(IEncompassRestClient client, string contactId)
         {
             Preconditions.NotNull(client, nameof(client));
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -158,7 +170,7 @@ namespace EncompassRest.Contacts
             {
                 Client = client;
                 Id = contactId;
-                _notes = new ContactNotes(client, Id, ApiPath);
+                _notes = client.Contacts.GetContactNotes(Type, Id);
             }
         }
     }

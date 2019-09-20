@@ -41,7 +41,7 @@ namespace EncompassRest.Tests
             if (client.AccessToken.Token != "Token")
             {
                 var borrowerContact = new BorrowerContact("Bob", "Bob@gmail.com");
-                var contactId = await client.BorrowerContacts.CreateContactAsync(borrowerContact);
+                var contactId = await client.Contacts.BorrowerContacts.CreateContactAsync(borrowerContact);
 
                 try
                 {
@@ -49,7 +49,7 @@ namespace EncompassRest.Tests
                     Assert.IsNotNull(contactId);
                     Assert.AreEqual(contactId, borrowerContact.Id);
 
-                    var retrievedContact = await client.BorrowerContacts.GetContactAsync(contactId);
+                    var retrievedContact = await client.Contacts.BorrowerContacts.GetContactAsync(contactId);
                     Assert.IsNotNull(retrievedContact);
                     Assert.AreEqual(contactId, retrievedContact.Id);
                     Assert.AreEqual(borrowerContact.FirstName, retrievedContact.FirstName);
@@ -57,8 +57,8 @@ namespace EncompassRest.Tests
                     Assert.IsTrue(string.IsNullOrEmpty(retrievedContact.LastName));
 
                     borrowerContact = new BorrowerContact(client, contactId, "Bob", "Bob@gmail.com") { LastName = "Smith" };
-                    await client.BorrowerContacts.UpdateContactAsync(borrowerContact);
-                    retrievedContact = await client.BorrowerContacts.GetContactAsync(contactId);
+                    await client.Contacts.BorrowerContacts.UpdateContactAsync(borrowerContact);
+                    retrievedContact = await client.Contacts.BorrowerContacts.GetContactAsync(contactId);
                     Assert.IsNotNull(retrievedContact);
                     Assert.AreEqual(contactId, retrievedContact.Id);
                     Assert.AreEqual("Bob", retrievedContact.FirstName);
@@ -69,7 +69,7 @@ namespace EncompassRest.Tests
                 {
                     try
                     {
-                        await client.BorrowerContacts.DeleteContactAsync(contactId);
+                        await client.Contacts.BorrowerContacts.DeleteContactAsync(contactId);
                     }
                     catch
                     {
@@ -84,7 +84,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var businessContact = new BusinessContact("Bob", "Bob@gmail.com");
-            var contactId = await client.BusinessContacts.CreateContactAsync(businessContact);
+            var contactId = await client.Contacts.BusinessContacts.CreateContactAsync(businessContact);
 
             try
             {
@@ -92,7 +92,7 @@ namespace EncompassRest.Tests
                 Assert.IsNotNull(contactId);
                 Assert.AreEqual(contactId, businessContact.Id);
 
-                var retrievedContact = await client.BusinessContacts.GetContactAsync(contactId);
+                var retrievedContact = await client.Contacts.BusinessContacts.GetContactAsync(contactId);
                 Assert.IsNotNull(retrievedContact);
                 Assert.AreEqual(contactId, retrievedContact.Id);
                 Assert.AreEqual(businessContact.FirstName, retrievedContact.FirstName);
@@ -100,8 +100,8 @@ namespace EncompassRest.Tests
                 Assert.IsTrue(string.IsNullOrEmpty(retrievedContact.LastName));
 
                 businessContact = new BusinessContact(client, contactId, "Bob", "Bob@gmail.com") { LastName = "Smith" };
-                await client.BusinessContacts.UpdateContactAsync(businessContact);
-                retrievedContact = await client.BusinessContacts.GetContactAsync(contactId);
+                await client.Contacts.BusinessContacts.UpdateContactAsync(businessContact);
+                retrievedContact = await client.Contacts.BusinessContacts.GetContactAsync(contactId);
                 Assert.IsNotNull(retrievedContact);
                 Assert.AreEqual(contactId, retrievedContact.Id);
                 Assert.AreEqual("Bob", retrievedContact.FirstName);
@@ -112,7 +112,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.BusinessContacts.DeleteContactAsync(contactId);
+                    await client.Contacts.BusinessContacts.DeleteContactAsync(contactId);
                 }
                 catch
                 {
@@ -140,8 +140,8 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var fields = new[] { CanonicalContactField.FirstName.GetCanonicalName(), CanonicalContactField.LastName.GetCanonicalName() };
-            var borrowerContacts = await client.BorrowerContactSelector.GetContactListAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
-            var businessContacts = await client.BusinessContactSelector.GetContactListAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
+            var borrowerContacts = await client.Contacts.BorrowerContactSelector.GetContactListAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
+            var businessContacts = await client.Contacts.BusinessContactSelector.GetContactListAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
             var allContacts = borrowerContacts.Concat(businessContacts).ToList();
 
             foreach (var contact in allContacts)
@@ -164,12 +164,12 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var fields = new[] { CanonicalContactField.FirstName.GetCanonicalName(), CanonicalContactField.LastName.GetCanonicalName() };
 
-            var borrowerContactCursor = await client.BorrowerContactSelector.CreateCursorAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
+            var borrowerContactCursor = await client.Contacts.BorrowerContactSelector.CreateCursorAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
             await UseCursorAsync(borrowerContactCursor);
-            var businessContactCursor = await client.BusinessContactSelector.CreateCursorAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
+            var businessContactCursor = await client.Contacts.BusinessContactSelector.CreateCursorAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
             await UseCursorAsync(businessContactCursor);
 
-            async Task UseCursorAsync(ContactCursor cursor)
+            async Task UseCursorAsync(IContactCursor cursor)
             {
                 Assert.IsNotNull(cursor);
                 CollectionAssert.AreEqual(fields, cursor.Fields.ToList());

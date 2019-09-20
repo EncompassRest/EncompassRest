@@ -32,22 +32,6 @@ namespace EncompassRest
         /// </summary>
         IBatchUpdate BatchUpdate { get; }
         /// <summary>
-        /// The Borrower Contacts Apis.
-        /// </summary>
-        IBorrowerContacts BorrowerContacts { get; }
-        /// <summary>
-        /// The Borrower Contact Selector Apis.
-        /// </summary>
-        IBorrowerContactSelector BorrowerContactSelector { get; }
-        /// <summary>
-        /// The Business Contacts Apis.
-        /// </summary>
-        IBusinessContacts BusinessContacts { get; }
-        /// <summary>
-        /// The Business Contact Selector Apis.
-        /// </summary>
-        IBusinessContactSelector BusinessContactSelector { get; }
-        /// <summary>
         /// The Calculators Apis.
         /// </summary>
         Calculators.ICalculators Calculators { get; }
@@ -56,9 +40,9 @@ namespace EncompassRest
         /// </summary>
         Company.ICompany Company { get; }
         /// <summary>
-        /// The Contact Groups Apis.
+        /// The Contacts Apis.
         /// </summary>
-        IContactGroups ContactGroups { get; }
+        IContacts Contacts { get; }
         /// <summary>
         /// The Loan Folders Apis.
         /// </summary>
@@ -107,6 +91,10 @@ namespace EncompassRest
         /// The Webhook Apis.
         /// </summary>
         Webhook.IWebhook Webhook { get; }
+        /// <summary>
+        /// Property for sharing common cache between multiple clients such as custom field descriptors.
+        /// </summary>
+        CommonCache CommonCache { get; }
 
         /// <summary>
         /// An event that occurs when an Api response is received.
@@ -273,11 +261,7 @@ namespace EncompassRest
         private Webhook.Webhook _webhook;
         private Pipeline _pipeline;
         private BatchUpdate _batchUpdate;
-        private BorrowerContacts _borrowerContacts;
-        private BusinessContacts _businessContacts;
-        private BorrowerContactSelector _borrowerContactSelector;
-        private BusinessContactSelector _businessContactSelector;
-        private ContactGroups _contactGroups;
+        private Contacts.Contacts _contacts;
         private ResourceLocks.ResourceLocks _resourceLocks;
         private GlobalCustomDataObjects _globalCustomDataObjects;
         private Users.Users _users;
@@ -405,72 +389,46 @@ namespace EncompassRest
         /// <summary>
         /// The Borrower Contacts Apis.
         /// </summary>
-        public BorrowerContacts BorrowerContacts
-        {
-            get
-            {
-                var borrowerContacts = _borrowerContacts;
-                return borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new BorrowerContacts(this)), null) ?? borrowerContacts;
-            }
-        }
-
-        IBorrowerContacts IEncompassRestClient.BorrowerContacts => BorrowerContacts;
+        [Obsolete("Use EncompassRestClient.Contacts.BorrowerContacts instead.")]
+        public BorrowerContacts BorrowerContacts => Contacts.BorrowerContacts;
 
         /// <summary>
         /// The Business Contacts Apis.
         /// </summary>
-        public BusinessContacts BusinessContacts
-        {
-            get
-            {
-                var businessContacts = _businessContacts;
-                return businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(this)), null) ?? businessContacts;
-            }
-        }
-
-        IBusinessContacts IEncompassRestClient.BusinessContacts => BusinessContacts;
+        [Obsolete("Use EncompassRestClient.Contacts.BusinessContacts instead.")]
+        public BusinessContacts BusinessContacts => Contacts.BusinessContacts;
 
         /// <summary>
         /// The Borrower Contact Selector Apis.
         /// </summary>
-        public BorrowerContactSelector BorrowerContactSelector
-        {
-            get
-            {
-                var borrowerContactSelector = _borrowerContactSelector;
-                return borrowerContactSelector ?? Interlocked.CompareExchange(ref _borrowerContactSelector, (borrowerContactSelector = new BorrowerContactSelector(this)), null) ?? borrowerContactSelector;
-            }
-        }
-
-        IBorrowerContactSelector IEncompassRestClient.BorrowerContactSelector => BorrowerContactSelector;
+        [Obsolete("Use EncompassRestClient.Contacts.BorrowerContactSelector instead.")]
+        public BorrowerContactSelector BorrowerContactSelector => Contacts.BorrowerContactSelector;
 
         /// <summary>
         /// The Business Contact Selector Apis.
         /// </summary>
-        public BusinessContactSelector BusinessContactSelector
-        {
-            get
-            {
-                var businessContactSelector = _businessContactSelector;
-                return businessContactSelector ?? Interlocked.CompareExchange(ref _businessContactSelector, (businessContactSelector = new BusinessContactSelector(this)), null) ?? businessContactSelector;
-            }
-        }
-
-        IBusinessContactSelector IEncompassRestClient.BusinessContactSelector => BusinessContactSelector;
+        [Obsolete("Use EncompassRestClient.Contacts.BusinessContactSelector instead.")]
+        public BusinessContactSelector BusinessContactSelector => Contacts.BusinessContactSelector;
 
         /// <summary>
         /// The Contact Groups Apis.
         /// </summary>
-        public ContactGroups ContactGroups
+        [Obsolete("Use EncompassRestClient.Contacts.Groups instead.")]
+        public ContactGroups ContactGroups => Contacts.Groups;
+
+        /// <summary>
+        /// The Contacts Apis.
+        /// </summary>
+        public Contacts.Contacts Contacts
         {
             get
             {
-                var contactGroups = _contactGroups;
-                return contactGroups ?? Interlocked.CompareExchange(ref _contactGroups, (contactGroups = new ContactGroups(this)), null) ?? contactGroups;
+                var contacts = _contacts;
+                return contacts ?? Interlocked.CompareExchange(ref _contacts, (contacts = new Contacts.Contacts(this)), null) ?? contacts;
             }
         }
 
-        IContactGroups IEncompassRestClient.ContactGroups => ContactGroups;
+        IContacts IEncompassRestClient.Contacts => Contacts;
 
         internal ResourceLocks.ResourceLocks ResourceLocks
         {

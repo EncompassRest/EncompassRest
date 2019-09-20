@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest.Contacts
 {
@@ -8,6 +9,143 @@ namespace EncompassRest.Contacts
     /// The Base Contacts Apis.
     /// </summary>
     public interface IContacts : IApiObject
+    {
+        /// <summary>
+        /// The Borrower Contacts Apis.
+        /// </summary>
+        IBorrowerContacts BorrowerContacts { get; }
+        /// <summary>
+        /// The Borrower Contact Selector Apis.
+        /// </summary>
+        IBorrowerContactSelector BorrowerContactSelector { get; }
+        /// <summary>
+        /// The Business Contacts Apis.
+        /// </summary>
+        IBusinessContacts BusinessContacts { get; }
+        /// <summary>
+        /// The Business Contact Selector Apis.
+        /// </summary>
+        IBusinessContactSelector BusinessContactSelector { get; }
+        /// <summary>
+        /// The Contact Groups Apis.
+        /// </summary>
+        IContactGroups Groups { get; }
+        /// <summary>
+        /// Gets the Contact Notes Apis associated with the given contact.
+        /// </summary>
+        /// <param name="type">The contact type.</param>
+        /// <param name="contactId">The contact id.</param>
+        /// <returns></returns>
+        IContactNotes GetContactNotes(ContactType type, string contactId);
+    }
+
+    /// <summary>
+    /// The Contacts Apis.
+    /// </summary>
+    public sealed class Contacts : ApiObject, IContacts
+    {
+        private BorrowerContacts _borrowerContacts;
+        private BusinessContacts _businessContacts;
+        private BorrowerContactSelector _borrowerContactSelector;
+        private BusinessContactSelector _businessContactSelector;
+        private ContactGroups _groups;
+
+        /// <summary>
+        /// The Borrower Contacts Apis.
+        /// </summary>
+        public BorrowerContacts BorrowerContacts
+        {
+            get
+            {
+                var borrowerContacts = _borrowerContacts;
+                return borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new BorrowerContacts(Client)), null) ?? borrowerContacts;
+            }
+        }
+
+        IBorrowerContacts IContacts.BorrowerContacts => BorrowerContacts;
+
+        /// <summary>
+        /// The Business Contacts Apis.
+        /// </summary>
+        public BusinessContacts BusinessContacts
+        {
+            get
+            {
+                var businessContacts = _businessContacts;
+                return businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(Client)), null) ?? businessContacts;
+            }
+        }
+
+        IBusinessContacts IContacts.BusinessContacts => BusinessContacts;
+
+        /// <summary>
+        /// The Borrower Contact Selector Apis.
+        /// </summary>
+        public BorrowerContactSelector BorrowerContactSelector
+        {
+            get
+            {
+                var borrowerContactSelector = _borrowerContactSelector;
+                return borrowerContactSelector ?? Interlocked.CompareExchange(ref _borrowerContactSelector, (borrowerContactSelector = new BorrowerContactSelector(Client)), null) ?? borrowerContactSelector;
+            }
+        }
+
+        IBorrowerContactSelector IContacts.BorrowerContactSelector => BorrowerContactSelector;
+
+        /// <summary>
+        /// The Business Contact Selector Apis.
+        /// </summary>
+        public BusinessContactSelector BusinessContactSelector
+        {
+            get
+            {
+                var businessContactSelector = _businessContactSelector;
+                return businessContactSelector ?? Interlocked.CompareExchange(ref _businessContactSelector, (businessContactSelector = new BusinessContactSelector(Client)), null) ?? businessContactSelector;
+            }
+        }
+
+        IBusinessContactSelector IContacts.BusinessContactSelector => BusinessContactSelector;
+
+        /// <summary>
+        /// The Contact Groups Apis.
+        /// </summary>
+        public ContactGroups Groups
+        {
+            get
+            {
+                var groups = _groups;
+                return groups ?? Interlocked.CompareExchange(ref _groups, (groups = new ContactGroups(Client)), null) ?? groups;
+            }
+        }
+
+        IContactGroups IContacts.Groups => Groups;
+
+        internal Contacts(EncompassRestClient client)
+            : base(client, null)
+        {
+        }
+
+        /// <summary>
+        /// Gets the Contact Notes Apis associated with the given contact.
+        /// </summary>
+        /// <param name="type">The contact type.</param>
+        /// <param name="contactId">The contact id.</param>
+        /// <returns></returns>
+        public IContactNotes GetContactNotes(ContactType type, string contactId)
+        {
+            type.Validate(nameof(type));
+            Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
+
+            return new ContactNotes(Client, contactId, type == ContactType.Borrower ? "encompass/v1/borrowerContacts" : "encompass/v1/businessContacts");
+        }
+    }
+
+    /// <summary>
+    /// The Base Contacts Apis.
+    /// </summary>
+    /// <typeparam name="TContact">The contact type.</typeparam>
+    public interface IContacts<TContact>
+        where TContact : Contact
     {
         /// <summary>
         /// Creates a new contact from raw json and returns the responses body if not empty else its contact id.
@@ -47,15 +185,6 @@ namespace EncompassRest.Contacts
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task<string> UpdateContactRawAsync(string contactId, string contact, string queryString = null, CancellationToken cancellationToken = default);
-    }
-
-    /// <summary>
-    /// The Base Contacts Apis.
-    /// </summary>
-    /// <typeparam name="TContact">The contact type.</typeparam>
-    public interface IContacts<TContact> : IContacts
-        where TContact : Contact
-    {
         /// <summary>
         /// Creates a new contact and returns its contact id.
         /// </summary>
@@ -106,7 +235,7 @@ namespace EncompassRest.Contacts
             return new ContactNotes(Client, contactId, _apiPath);
         }
 
-        IContactNotes IContacts.GetContactNotes(string contactId) => GetContactNotes(contactId);
+        IContactNotes IContacts<TContact>.GetContactNotes(string contactId) => GetContactNotes(contactId);
 
         /// <summary>
         /// Retrieves contact information for the specified contact ID.

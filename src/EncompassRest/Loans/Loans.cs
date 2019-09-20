@@ -160,6 +160,12 @@ namespace EncompassRest.Loans
         /// <returns></returns>
         ILoanApis GetLoanApis(string loanId);
         /// <summary>
+        /// Gets the Loan Apis for the loan.
+        /// </summary>
+        /// <param name="loan">The loan.</param>
+        /// <returns></returns>
+        ILoanObjectBoundApis GetLoanApis(Loan loan);
+        /// <summary>
         /// Returns the entire loan.
         /// </summary>
         /// <param name="loanId">The unique identifier assigned to the loan.</param>
@@ -276,6 +282,14 @@ namespace EncompassRest.Loans
         }
 
         ILoanApis ILoans.GetLoanApis(string loanId) => GetLoanApis(loanId);
+
+        ILoanObjectBoundApis ILoans.GetLoanApis(Loan loan)
+        {
+            Preconditions.NotNull(loan, nameof(loan));
+            Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
+
+            return new LoanObjectBoundApis(Client, loan);
+        }
 
         /// <summary>
         /// Returns the entire loan.

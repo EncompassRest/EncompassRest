@@ -22,7 +22,7 @@ namespace EncompassRest.Tests
         /// Do not dispose of this object as it is reused on tests
         /// </summary>
         /// <returns></returns>
-        public static async Task<EncompassRestClient> GetTestClientAsync(Action<ClientParameters> parametersInitializer = null)
+        public static async Task<IEncompassRestClient> GetTestClientAsync(Action<ClientParameters> parametersInitializer = null)
         {
             var client = s_testClient;
             if (client == null || parametersInitializer != null)

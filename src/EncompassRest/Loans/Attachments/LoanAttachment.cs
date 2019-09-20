@@ -106,7 +106,11 @@ namespace EncompassRest.Loans.Attachments
         [IdPropertyName(nameof(AttachmentId))]
         string IIdentifiable.Id { get => AttachmentId; set => AttachmentId = value; }
 
-        internal LoanAttachments Attachments;
+        /// <summary>
+        /// The <see cref="ILoanAttachments"/> associated with this object.
+        /// </summary>
+        [JsonIgnore]
+        public ILoanAttachments Attachments { get; private set; }
 
         /// <summary>
         /// Loan attachment creation constructor.
@@ -143,6 +147,20 @@ namespace EncompassRest.Loans.Attachments
         [JsonConstructor]
         public LoanAttachment()
         {
+        }
+
+        /// <summary>
+        /// Initializes the loan attachment object with the specified <paramref name="attachments"/> API object. This allows the use of the Download methods.
+        /// </summary>
+        /// <param name="attachments">The loan attachments API object.</param>
+        public void Initialize(ILoanAttachments attachments)
+        {
+            Preconditions.NotNull(attachments, nameof(attachments));
+
+            if (!ReferenceEquals(Attachments, attachments))
+            {
+                Attachments = attachments;
+            }
         }
 
         /// <summary>

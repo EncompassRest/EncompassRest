@@ -28,7 +28,11 @@ namespace EncompassRest.Contacts
         /// </summary>
         public string Referral { get => _referral; set => SetField(ref _referral, value); }
 
-        internal override string ApiPath => "encompass/v1/borrowerContacts";
+        /// <summary>
+        /// The contact type.
+        /// </summary>
+        [JsonIgnore]
+        public override ContactType Type => ContactType.Borrower;
 
         /// <summary>
         /// Borrower contact creation constructor
@@ -48,6 +52,18 @@ namespace EncompassRest.Contacts
         /// <param name="firstName">The contact's first name.</param>
         /// <param name="personalEmail">The contact's personal email address.</param>
         public BorrowerContact(EncompassRestClient client, string contactId, string firstName, string personalEmail)
+            : this((IEncompassRestClient)client, contactId, firstName, personalEmail)
+        {
+        }
+
+        /// <summary>
+        /// Borrower contact update constructor
+        /// </summary>
+        /// <param name="client">The client to initialize the contact object with.</param>
+        /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
+        /// <param name="firstName">The contact's first name.</param>
+        /// <param name="personalEmail">The contact's personal email address.</param>
+        public BorrowerContact(IEncompassRestClient client, string contactId, string firstName, string personalEmail)
             : base(client, contactId, firstName, personalEmail)
         {
         }
