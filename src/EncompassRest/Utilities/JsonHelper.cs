@@ -30,7 +30,7 @@ namespace EncompassRest.Utilities
         {
             var publicSerializer = new JsonSerializer
             {
-                Binder = existingSerializer.Binder,
+                SerializationBinder = existingSerializer.SerializationBinder,
                 CheckAdditionalContent = existingSerializer.CheckAdditionalContent,
                 ConstructorHandling = existingSerializer.ConstructorHandling,
                 Context = existingSerializer.Context,
@@ -55,7 +55,7 @@ namespace EncompassRest.Utilities
                 ReferenceResolver = existingSerializer.ReferenceResolver,
                 StringEscapeHandling = existingSerializer.StringEscapeHandling,
                 TraceWriter = existingSerializer.TraceWriter,
-                TypeNameAssemblyFormat = existingSerializer.TypeNameAssemblyFormat,
+                TypeNameAssemblyFormatHandling = existingSerializer.TypeNameAssemblyFormatHandling,
                 TypeNameHandling = existingSerializer.TypeNameHandling
             };
             foreach (var converter in existingSerializer.Converters)
