@@ -75,17 +75,6 @@ namespace EncompassRest.Webhook
         [IdPropertyName(nameof(SubscriptionId))]
         string IIdentifiable.Id { get => SubscriptionId; set => SubscriptionId = value; }
 
-        [Obsolete("Use another constructor instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public WebhookSubscription(string endpoint)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-        {
-            Preconditions.NotNullOrEmpty(endpoint, nameof(endpoint));
-
-            Endpoint = endpoint;
-        }
-
         /// <summary>
         /// WebhookSubscription constructor.
         /// </summary>

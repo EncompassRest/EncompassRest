@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
-using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
@@ -106,7 +105,7 @@ namespace EncompassRest.Tests
             await BorrowerPairsTest(client, loan, loanId, client.Loans.GetLoanApis(loanId));
         }
 
-        private static async Task BorrowerPairsTest(EncompassRestClient client, Loan loan, string loanId, LoanApis loanApis)
+        private static async Task BorrowerPairsTest(IEncompassRestClient client, Loan loan, string loanId, ILoanApis loanApis)
         {
             try
             {

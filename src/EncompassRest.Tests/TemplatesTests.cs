@@ -17,7 +17,7 @@ namespace EncompassRest.Tests
             await GetTemplateFoldersAndFiles(client.Settings.Templates.LoanTemplateSet, "Personal\\\\");
         }
 
-        private async Task GetTemplateFoldersAndFiles(TemplateApiObject templateApiObject, string path)
+        private async Task GetTemplateFoldersAndFiles(ITemplateApiObject templateApiObject, string path)
         {
             var files = await templateApiObject.GetTemplateFilesAsync(path);
             var folders = await templateApiObject.GetTemplateFoldersAsync(path);

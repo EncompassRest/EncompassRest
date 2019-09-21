@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using EncompassRest.Filters;
 using Newtonsoft.Json;
@@ -54,15 +52,6 @@ namespace EncompassRest.Contacts
         [JsonConstructor]
         public ContactListParameters()
         {
-        }
-
-        [Obsolete("Use another constructor and explicitly set the Fields property in the initializer instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public ContactListParameters(IEnumerable<string> fields)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-        {
-            Fields = fields;
         }
     }
 }

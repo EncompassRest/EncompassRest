@@ -32,22 +32,6 @@ namespace EncompassRest
         /// </summary>
         IBatchUpdate BatchUpdate { get; }
         /// <summary>
-        /// The Borrower Contacts Apis.
-        /// </summary>
-        IBorrowerContacts BorrowerContacts { get; }
-        /// <summary>
-        /// The Borrower Contact Selector Apis.
-        /// </summary>
-        IBorrowerContactSelector BorrowerContactSelector { get; }
-        /// <summary>
-        /// The Business Contacts Apis.
-        /// </summary>
-        IBusinessContacts BusinessContacts { get; }
-        /// <summary>
-        /// The Business Contact Selector Apis.
-        /// </summary>
-        IBusinessContactSelector BusinessContactSelector { get; }
-        /// <summary>
         /// The Calculators Apis.
         /// </summary>
         Calculators.ICalculators Calculators { get; }
@@ -56,9 +40,9 @@ namespace EncompassRest
         /// </summary>
         Company.ICompany Company { get; }
         /// <summary>
-        /// The Contact Groups Apis.
+        /// The Contacts Apis.
         /// </summary>
-        IContactGroups ContactGroups { get; }
+        IContacts Contacts { get; }
         /// <summary>
         /// The Loan Folders Apis.
         /// </summary>
@@ -107,6 +91,10 @@ namespace EncompassRest
         /// The Webhook Apis.
         /// </summary>
         Webhook.IWebhook Webhook { get; }
+        /// <summary>
+        /// Property for sharing common cache between multiple clients such as custom field descriptors.
+        /// </summary>
+        CommonCache CommonCache { get; }
 
         /// <summary>
         /// An event that occurs when an Api response is received.
@@ -171,13 +159,6 @@ namespace EncompassRest
             return client;
         }
 
-        [Obsolete("Use the ClientParameters overload instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public static Task<EncompassRestClient> CreateFromUserCredentialsAsync(string apiClientId, string apiClientSecret, string instanceId, string userId, string password, CancellationToken cancellationToken = default) =>
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-            CreateFromUserCredentialsAsync(new ClientParameters(apiClientId, apiClientSecret), instanceId, userId, password, cancellationToken);
-
         /// <summary>
         /// Creates a client object from an authorization code.
         /// </summary>
@@ -199,13 +180,6 @@ namespace EncompassRest
             return client;
         }
 
-        [Obsolete("Use the ClientParameters overload instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public static Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string apiClientId, string apiClientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken = default) =>
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-            CreateFromAuthorizationCodeAsync(new ClientParameters(apiClientId, apiClientSecret), redirectUri, authorizationCode, cancellationToken);
-
         /// <summary>
         /// Creates a client object from an existing access token.
         /// </summary>
@@ -223,26 +197,6 @@ namespace EncompassRest
             await parameters.TryInitializeAsync(client, client.CommonCache, cancellationToken).ConfigureAwait(false);
             return client;
         }
-
-        [Obsolete("Use CreateFromAccessTokenAsync instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public static EncompassRestClient CreateFromAccessToken(ClientParameters parameters, string accessToken)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-        {
-            Preconditions.NotNull(parameters, nameof(parameters));
-            Preconditions.NotNullOrEmpty(accessToken, nameof(accessToken));
-
-            var client = new EncompassRestClient(parameters);
-            client.AccessToken.Token = accessToken;
-            return client;
-        }
-
-        [Obsolete("Use the ClientParameters overload instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public static EncompassRestClient CreateFromAccessToken(string apiClientId, string apiClientSecret, string accessToken) => CreateFromAccessToken(new ClientParameters(apiClientId, apiClientSecret), accessToken);
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
         /// <summary>
         /// This method is for partner API integration only. You probably want <see cref="CreateFromUserCredentialsAsync(ClientParameters, string, string, string, CancellationToken)"/> instead.
@@ -273,14 +227,8 @@ namespace EncompassRest
         private Webhook.Webhook _webhook;
         private Pipeline _pipeline;
         private BatchUpdate _batchUpdate;
-        private BorrowerContacts _borrowerContacts;
-        private BusinessContacts _businessContacts;
-        private BorrowerContactSelector _borrowerContactSelector;
-        private BusinessContactSelector _businessContactSelector;
-        private ContactGroups _contactGroups;
+        private Contacts.Contacts _contacts;
         private ResourceLocks.ResourceLocks _resourceLocks;
-        private GlobalCustomDataObjects _globalCustomDataObjects;
-        private Users.Users _users;
         private LoanFolders.LoanFolders _loanFolders;
         private Settings.Settings _settings;
         private Services.Services _services;
@@ -405,72 +353,46 @@ namespace EncompassRest
         /// <summary>
         /// The Borrower Contacts Apis.
         /// </summary>
-        public BorrowerContacts BorrowerContacts
-        {
-            get
-            {
-                var borrowerContacts = _borrowerContacts;
-                return borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new BorrowerContacts(this)), null) ?? borrowerContacts;
-            }
-        }
-
-        IBorrowerContacts IEncompassRestClient.BorrowerContacts => BorrowerContacts;
+        [Obsolete("Use EncompassRestClient.Contacts.BorrowerContacts instead.")]
+        public BorrowerContacts BorrowerContacts => Contacts.BorrowerContacts;
 
         /// <summary>
         /// The Business Contacts Apis.
         /// </summary>
-        public BusinessContacts BusinessContacts
-        {
-            get
-            {
-                var businessContacts = _businessContacts;
-                return businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(this)), null) ?? businessContacts;
-            }
-        }
-
-        IBusinessContacts IEncompassRestClient.BusinessContacts => BusinessContacts;
+        [Obsolete("Use EncompassRestClient.Contacts.BusinessContacts instead.")]
+        public BusinessContacts BusinessContacts => Contacts.BusinessContacts;
 
         /// <summary>
         /// The Borrower Contact Selector Apis.
         /// </summary>
-        public BorrowerContactSelector BorrowerContactSelector
-        {
-            get
-            {
-                var borrowerContactSelector = _borrowerContactSelector;
-                return borrowerContactSelector ?? Interlocked.CompareExchange(ref _borrowerContactSelector, (borrowerContactSelector = new BorrowerContactSelector(this)), null) ?? borrowerContactSelector;
-            }
-        }
-
-        IBorrowerContactSelector IEncompassRestClient.BorrowerContactSelector => BorrowerContactSelector;
+        [Obsolete("Use EncompassRestClient.Contacts.BorrowerContactSelector instead.")]
+        public BorrowerContactSelector BorrowerContactSelector => Contacts.BorrowerContactSelector;
 
         /// <summary>
         /// The Business Contact Selector Apis.
         /// </summary>
-        public BusinessContactSelector BusinessContactSelector
-        {
-            get
-            {
-                var businessContactSelector = _businessContactSelector;
-                return businessContactSelector ?? Interlocked.CompareExchange(ref _businessContactSelector, (businessContactSelector = new BusinessContactSelector(this)), null) ?? businessContactSelector;
-            }
-        }
-
-        IBusinessContactSelector IEncompassRestClient.BusinessContactSelector => BusinessContactSelector;
+        [Obsolete("Use EncompassRestClient.Contacts.BusinessContactSelector instead.")]
+        public BusinessContactSelector BusinessContactSelector => Contacts.BusinessContactSelector;
 
         /// <summary>
         /// The Contact Groups Apis.
         /// </summary>
-        public ContactGroups ContactGroups
+        [Obsolete("Use EncompassRestClient.Contacts.Groups instead.")]
+        public ContactGroups ContactGroups => Contacts.Groups;
+
+        /// <summary>
+        /// The Contacts Apis.
+        /// </summary>
+        public Contacts.Contacts Contacts
         {
             get
             {
-                var contactGroups = _contactGroups;
-                return contactGroups ?? Interlocked.CompareExchange(ref _contactGroups, (contactGroups = new ContactGroups(this)), null) ?? contactGroups;
+                var contacts = _contacts;
+                return contacts ?? Interlocked.CompareExchange(ref _contacts, (contacts = new Contacts.Contacts(this)), null) ?? contacts;
             }
         }
 
-        IContactGroups IEncompassRestClient.ContactGroups => ContactGroups;
+        IContacts IEncompassRestClient.Contacts => Contacts;
 
         internal ResourceLocks.ResourceLocks ResourceLocks
         {
@@ -478,30 +400,6 @@ namespace EncompassRest
             {
                 var resourceLocks = _resourceLocks;
                 return resourceLocks ?? Interlocked.CompareExchange(ref _resourceLocks, (resourceLocks = new ResourceLocks.ResourceLocks(this)), null) ?? resourceLocks;
-            }
-        }
-
-        [Obsolete("Use EncompassRestClient.Company.GlobalCustomDataObjects instead.")]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public GlobalCustomDataObjects GlobalCustomDataObjects
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-        {
-            get
-            {
-                var globalCustomDataObjects = _globalCustomDataObjects;
-                return globalCustomDataObjects ?? Interlocked.CompareExchange(ref _globalCustomDataObjects, (globalCustomDataObjects = new GlobalCustomDataObjects(this)), null) ?? globalCustomDataObjects;
-            }
-        }
-
-        [Obsolete("Use EncompassRestClient.Company.Users.GetUserApis(userId).CustomDataObjects instead.")]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public Users.Users Users
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-        {
-            get
-            {
-                var users = _users;
-                return users ?? Interlocked.CompareExchange(ref _users, (users = new Users.Users(this)), null) ?? users;
             }
         }
 

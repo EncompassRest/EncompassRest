@@ -234,6 +234,10 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, string queryString = null, CancellationToken cancellationToken = default);
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+        Task<byte[]> DownloadAttachmentFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default);
+        Task<Stream> DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default);
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 
     /// <summary>
@@ -256,7 +260,7 @@ namespace EncompassRest.Loans.Attachments
             var list = await GetDirtyListAsync<LoanAttachment>(null, null, nameof(GetAttachmentsAsync), null, cancellationToken).ConfigureAwait(false);
             foreach (var attachment in list)
             {
-                attachment.Attachments = this;
+                attachment.Initialize(this);
             }
             return list;
         }
@@ -296,7 +300,7 @@ namespace EncompassRest.Loans.Attachments
             }
 
             var attachment = await GetDirtyAsync<LoanAttachment>(attachmentId, queryParameters.ToString(), nameof(GetAttachmentAsync), attachmentId, cancellationToken).ConfigureAwait(false);
-            attachment.Attachments = this;
+            attachment.Initialize(this);
             return attachment;
         }
 
@@ -366,7 +370,7 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
 
-            attachment.Attachments = this;
+            attachment.Initialize(this);
             var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(populate ? ViewEntityQueryString : null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
 
             return await SendFullUriPopulateDirtyAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new ByteArrayContent(attachmentData), nameof(UploadAttachmentAsync), attachment, populate, cancellationToken).ConfigureAwait(false);
@@ -392,7 +396,7 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
 
-            attachment.Attachments = this;
+            attachment.Initialize(this);
             var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(populate ? ViewEntityQueryString : null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
 
             return await SendFullUriPopulateDirtyAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new StreamContent(attachmentData), nameof(UploadAttachmentAsync), attachment, populate, cancellationToken).ConfigureAwait(false);
@@ -471,10 +475,10 @@ namespace EncompassRest.Loans.Attachments
         {
             var mediaUrlObject = await GetDownloadAttachmentUrlAsync(attachmentId, cancellationToken).ConfigureAwait(false);
 
-            return await DownloadAttachmentFromMediaUrlAsync(mediaUrlObject.MediaUrl, cancellationToken).ConfigureAwait(false);
+            return await ((ILoanAttachments)this).DownloadAttachmentFromMediaUrlAsync(mediaUrlObject.MediaUrl, cancellationToken).ConfigureAwait(false);
         }
 
-        internal Task<byte[]> DownloadAttachmentFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentAsync), null, cancellationToken, ReadAsByteArrayFunc);
+        Task<byte[]> ILoanAttachments.DownloadAttachmentFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentAsync), null, cancellationToken, ReadAsByteArrayFunc);
 
         /// <summary>
         /// Downloads the attachment's file contents as a stream by first getting the download url and then getting the file contents.
@@ -486,10 +490,10 @@ namespace EncompassRest.Loans.Attachments
         {
             var mediaUrlObject = await GetDownloadAttachmentUrlAsync(attachmentId, cancellationToken).ConfigureAwait(false);
 
-            return await DownloadAttachmentStreamFromMediaUrlAsync(mediaUrlObject.MediaUrl, cancellationToken).ConfigureAwait(false);
+            return await ((ILoanAttachments)this).DownloadAttachmentStreamFromMediaUrlAsync(mediaUrlObject.MediaUrl, cancellationToken).ConfigureAwait(false);
         }
 
-        internal Task<Stream> DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentStreamAsync), null, cancellationToken, ReadAsStreamFunc, true, false);
+        Task<Stream> ILoanAttachments.DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentStreamAsync), null, cancellationToken, ReadAsStreamFunc, true, false);
 
         /// <summary>
         /// Retrieves the URL of a thumbnail image for a specified page within an attachment.
@@ -629,7 +633,7 @@ namespace EncompassRest.Loans.Attachments
             Preconditions.NotNull(attachment, nameof(attachment));
             Preconditions.NotNullOrEmpty(attachment.AttachmentId, $"{nameof(attachment)}{nameof(attachment.AttachmentId)}");
 
-            attachment.Attachments = this;
+            attachment.Initialize(this);
             return PatchPopulateDirtyAsync(attachment.AttachmentId, JsonStreamContent.Create(attachment), nameof(UpdateAttachmentAsync), attachment.AttachmentId, attachment, populate, cancellationToken);
         }
 
