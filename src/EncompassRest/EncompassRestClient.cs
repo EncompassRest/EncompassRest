@@ -168,7 +168,7 @@ namespace EncompassRest
         private Calculators.Calculators _calculators;
         private BaseApiClient _baseApiClient;
 
-#region Properties
+        #region Properties
         /// <summary>
         /// The access token and related Apis.
         /// </summary>
@@ -468,7 +468,7 @@ namespace EncompassRest
                 return baseApiClient ?? Interlocked.CompareExchange(ref _baseApiClient, (baseApiClient = new BaseApiClient(this)), null) ?? baseApiClient;
             }
         }
-#endregion
+        #endregion
 
         /// <summary>
         /// An event that occurs when an Api response is received.
