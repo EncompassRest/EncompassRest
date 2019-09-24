@@ -15,9 +15,11 @@ variables:
   buildConfiguration: 'CI'
 
 steps:
-- task: DotNetCoreInstaller@0
+- task: UseDotNet@2
   inputs:
+    packageType: 'sdk'
     version: '3.0.100'
+    installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: NuGetToolInstaller@0
 
