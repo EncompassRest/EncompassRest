@@ -9,7 +9,115 @@ namespace EncompassRest.Organizations
     /// <summary>
     /// Organizations Apis
     /// </summary>
-    public sealed class Organizations : ApiObject
+    public interface IOrganizations : IApiObject
+    {
+        /// <summary>
+        /// Gets a summary view of the organization with the specified <paramref name="orgId"/>.
+        /// </summary>
+        /// <param name="orgId">The organization's id.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Organization> GetOrganizationAsync(string orgId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the organization with the specified <paramref name="orgId"/> using the specified <paramref name="view"/>.
+        /// </summary>
+        /// <param name="orgId">The organization's id.</param>
+        /// <param name="view">The view of the organization to get.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Organization> GetOrganizationAsync(string orgId, OrganizationView view, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the organization with the specified <paramref name="orgId"/> using the specified <paramref name="view"/>.
+        /// </summary>
+        /// <param name="orgId">The organization's id.</param>
+        /// <param name="view">The view of the organization to get.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Organization> GetOrganizationAsync(string orgId, string view, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the children of the organization with the specified <paramref name="orgId"/>.
+        /// </summary>
+        /// <param name="orgId">The organization's id.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<OrganizationReference>> GetOrganizationChildrenAsync(string orgId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the children of the organization with the specified <paramref name="orgId"/> using the specified <paramref name="options"/>.
+        /// </summary>
+        /// <param name="orgId">The organization's id.</param>
+        /// <param name="options">The organization children retrieval options.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<OrganizationReference>> GetOrganizationChildrenAsync(string orgId, OrganizationChildrenRetrievalOptions options, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the children of the organization with the specified <paramref name="orgId"/> as raw json.
+        /// </summary>
+        /// <param name="orgId">The organization's id.</param>
+        /// <param name="queryString">The query string to send in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetOrganizationChildrenRawAsync(string orgId, string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the organization with the specified <paramref name="orgId"/> as raw json.
+        /// </summary>
+        /// <param name="orgId">The organization's id.</param>
+        /// <param name="queryString">The query string to send in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetOrganizationRawAsync(string orgId, string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets a summary view of all organizations.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<Organization>> GetOrganizationsAsync(CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets organizations using the specified <paramref name="options"/>.
+        /// </summary>
+        /// <param name="options">The organizations retrieval options.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<Organization>> GetOrganizationsAsync(OrganizationsRetrievalOptions options, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets organizations as raw json.
+        /// </summary>
+        /// <param name="queryString">The query string to send in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetOrganizationsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets a summary view of the root organization.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Organization> GetRootOrganizationAsync(CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the root organization using the specified <paramref name="view"/>.
+        /// </summary>
+        /// <param name="view">The view of the organization to get.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Organization> GetRootOrganizationAsync(OrganizationView view, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the root organization using the specified <paramref name="view"/>.
+        /// </summary>
+        /// <param name="view">The view of the organization to get.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Organization> GetRootOrganizationAsync(string view, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the root organization as raw json.
+        /// </summary>
+        /// <param name="queryString">The query string to send in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetRootOrganizationRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// Organizations Apis
+    /// </summary>
+    public sealed class Organizations : ApiObject, IOrganizations
     {
         internal Organizations(EncompassRestClient client)
             : base(client, "encompass/v1/organizations")

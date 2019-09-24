@@ -9,7 +9,41 @@ namespace EncompassRest.Company.Users
     /// <summary>
     /// User Licenses Apis
     /// </summary>
-    public sealed class UserLicenseDetails : UserApiObject
+    public interface IUserLicenseDetails : IUserApiObject
+    {
+        /// <summary>
+        /// Gets the user's licenses.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<UserLicenseDetail>> GetLicenseDetailsAsync(CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the user's licenses for a particular state.
+        /// </summary>
+        /// <param name="state">The state code for which to return license information.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<UserLicenseDetail>> GetLicenseDetailsAsync(State state, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the user's licenses and for a particular state if specified.
+        /// </summary>
+        /// <param name="state">The state code for which to return license information.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<UserLicenseDetail>> GetLicenseDetailsAsync(string state, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Gets the user's licenses as raw json.
+        /// </summary>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetLicenseDetailsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// User Licenses Apis
+    /// </summary>
+    public sealed class UserLicenseDetails : UserApiObject, IUserLicenseDetails
     {
         internal UserLicenseDetails(EncompassRestClient client, string userId)
             : base(client, userId, "licenses")

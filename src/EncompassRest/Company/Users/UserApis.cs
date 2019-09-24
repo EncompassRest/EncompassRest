@@ -6,7 +6,34 @@ namespace EncompassRest.Company.Users
     /// <summary>
     /// User Apis
     /// </summary>
-    public sealed class UserApis : UserApiObject
+    public interface IUserApis : IUserApiObject
+    {
+        /// <summary>
+        /// User Compensation Apis
+        /// </summary>
+        IUserCompensationPlans Compensation { get; }
+        /// <summary>
+        /// User Custom Data Objects Apis
+        /// </summary>
+        IUserCustomDataObjects CustomDataObjects { get; }
+        /// <summary>
+        /// User Groups Apis
+        /// </summary>
+        IUserGroups Groups { get; }
+        /// <summary>
+        /// User Licenses Apis
+        /// </summary>
+        IUserLicenseDetails Licenses { get; }
+        /// <summary>
+        /// User Rights Apis
+        /// </summary>
+        IUsersRights Rights { get; }
+    }
+
+    /// <summary>
+    /// User Apis
+    /// </summary>
+    public sealed class UserApis : UserApiObject, IUserApis
     {
         private UserCustomDataObjects _customDataObjects;
         private UserGroups _groups;
@@ -26,6 +53,8 @@ namespace EncompassRest.Company.Users
             }
         }
 
+        IUserCustomDataObjects IUserApis.CustomDataObjects => CustomDataObjects;
+
         /// <summary>
         /// User Groups Apis
         /// </summary>
@@ -37,6 +66,8 @@ namespace EncompassRest.Company.Users
                 return groups ?? Interlocked.CompareExchange(ref _groups, (groups = new UserGroups(Client, UserId)), null) ?? groups;
             }
         }
+
+        IUserGroups IUserApis.Groups => Groups;
 
         /// <summary>
         /// User Compensation Apis
@@ -50,6 +81,8 @@ namespace EncompassRest.Company.Users
             }
         }
 
+        IUserCompensationPlans IUserApis.Compensation => Compensation;
+
         /// <summary>
         /// User Licenses Apis
         /// </summary>
@@ -62,6 +95,8 @@ namespace EncompassRest.Company.Users
             }
         }
 
+        IUserLicenseDetails IUserApis.Licenses => Licenses;
+
         /// <summary>
         /// User Rights Apis
         /// </summary>
@@ -73,6 +108,8 @@ namespace EncompassRest.Company.Users
                 return rights ?? Interlocked.CompareExchange(ref _rights, (rights = new UsersRights(Client, UserId)), null) ?? rights;
             }
         }
+
+        IUsersRights IUserApis.Rights => Rights;
 
         internal UserApis(EncompassRestClient client, string userId)
             : base(client, userId, null)

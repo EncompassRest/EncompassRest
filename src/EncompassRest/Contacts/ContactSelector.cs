@@ -9,7 +9,38 @@ namespace EncompassRest.Contacts
     /// <summary>
     /// The Base Contact Selector Apis.
     /// </summary>
-    public abstract class ContactSelector : ApiObject
+    public interface IContactSelector : IApiObject
+    {
+        /// <summary>
+        /// Creates a cursor to paginate large data sets.
+        /// </summary>
+        /// <param name="parameters">The contact list parameters used to specify the contacts and fields to include.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<IContactCursor> CreateCursorAsync(ContactListParameters parameters, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieves the contact IDs and specified fields for the contacts specified.
+        /// </summary>
+        /// <param name="parameters">The contact list parameters used to specify the contacts and fields to include.</param>
+        /// <param name="start">Starting index or record number from which to retrieve the contacts. The default is 1.</param>
+        /// <param name="limit">The maximum number of records to return in a page. Response size is limited to 6 MB and is recalculated if the response exceeds 6 MB. The default value is 1000. The maximum value is limited to 10000.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<ContactData>> GetContactListAsync(ContactListParameters parameters, int? start = null, int? limit = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieves the contact IDs and specified fields for the contacts specified as raw json.
+        /// </summary>
+        /// <param name="parameters">The contact list parameters used to specify the contacts and fields to include as raw json.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetContactListRawAsync(string parameters, string queryString = null, CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// The Base Contact Selector Apis.
+    /// </summary>
+    public abstract class ContactSelector : ApiObject, IContactSelector
     {
         internal ContactSelector(EncompassRestClient client, string baseApiPath)
             : base(client, baseApiPath)
@@ -56,6 +87,8 @@ namespace EncompassRest.Contacts
                 return new ContactCursor(this, Client, cursorId, count, parameters.Fields);
             });
         }
+
+        async Task<IContactCursor> IContactSelector.CreateCursorAsync(ContactListParameters parameters, CancellationToken cancellationToken) => await CreateCursorAsync(parameters, cancellationToken).ConfigureAwait(false);
 
         /// <summary>
         /// Retrieves the contact IDs and specified fields for the contacts specified.

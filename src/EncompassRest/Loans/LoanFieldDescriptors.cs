@@ -17,7 +17,35 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LoanFieldDescriptors
     /// </summary>
-    public sealed class LoanFieldDescriptors : ApiObject
+    public interface ILoanFieldDescriptors : IApiObject
+    {
+        /// <summary>
+        /// Retrieves the field descriptor for the specified field id.
+        /// </summary>
+        /// <param name="fieldId">The field id of the field descriptor to get.</param>
+        /// <returns></returns>
+        FieldDescriptor this[string fieldId] { get; }
+
+        /// <summary>
+        /// The custom fields cache. To retrieve the Standard and Virtual fields use the static properties <see cref="LoanFieldDescriptors.StandardFields"/> and <see cref="LoanFieldDescriptors.VirtualFields"/> respectively.
+        /// </summary>
+        ReadOnlyDictionary<string, FieldDescriptor> CustomFields { get; }
+        /// <summary>
+        /// The utc date and time custom fields were last refreshed.
+        /// </summary>
+        DateTime? CustomFieldsLastRefreshedUtc { get; }
+        /// <summary>
+        /// Refreshes the custom fields cache.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task RefreshCustomFieldsAsync(CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// LoanFieldDescriptors
+    /// </summary>
+    public sealed class LoanFieldDescriptors : ApiObject, ILoanFieldDescriptors
     {
         private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new[]
         {
@@ -68,18 +96,20 @@ namespace EncompassRest.Loans
                             using (var jr = new JsonTextReader(sr))
                             {
                                 var loanFields = JsonHelper.DefaultPublicSerializer.Deserialize<List<StandardFieldInfo>>(jr);
-                                
+
                                 foreach (var loanField in loanFields)
                                 {
-                                    var modelPath = loanField.ModelPath;
+                                    var modelPathString = loanField.ModelPath;
+                                    var modelPath = CreateModelPath(modelPathString);
+                                    modelPathString = modelPath.ToString();
                                     FieldDescriptor descriptor;
                                     if (loanField.Format.HasValue)
                                     {
-                                        descriptor = new NonStandardFieldDescriptor(loanField.FieldId, CreateModelPath(modelPath), modelPath, loanField.Description, loanField.Format, loanField.Options, loanField.ReadOnly ?? false);
+                                        descriptor = new NonStandardFieldDescriptor(loanField.FieldId, modelPath, modelPathString, loanField.Description, loanField.Format, loanField.Options, loanField.ReadOnly ?? false);
                                     }
                                     else
                                     {
-                                        descriptor = new FieldDescriptor(loanField.FieldId, CreateModelPath(modelPath), modelPath, loanField.Description);
+                                        descriptor = new FieldDescriptor(loanField.FieldId, modelPath, modelPathString, loanField.Description);
                                     }
                                     FieldMappings.AddField(descriptor);
                                 }
@@ -150,7 +180,7 @@ namespace EncompassRest.Loans
         /// <param name="client">The client to use to retrieve the standard fields.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static async Task RefreshStandardFieldsAsync(EncompassRestClient client, CancellationToken cancellationToken = default)
+        public static async Task RefreshStandardFieldsAsync(IEncompassRestClient client, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(client, nameof(client));
 
@@ -171,10 +201,11 @@ namespace EncompassRest.Loans
                 if (fields.TryGetValue(fieldId, out var fieldInfo))
                 {
                     fields.Remove(fieldId);
-                    if (!string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) || (!string.IsNullOrEmpty(fieldInfo.Description) && currentDescriptor.Description != fieldInfo.Description) || currentDescriptor.ReadOnly != (fieldInfo.ReadOnly == true))
+                    if ((!string.IsNullOrEmpty(fieldInfo.Description) && currentDescriptor.Description != fieldInfo.Description) || currentDescriptor.ReadOnly != (fieldInfo.ReadOnly == true) || (!string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) && !string.Equals(currentDescriptor.ModelPath, CreateModelPath(fieldInfo.ModelPath).ToString(), StringComparison.OrdinalIgnoreCase)))
                     {
-                        var modelPath = string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) ? currentDescriptor.ModelPath : fieldInfo.ModelPath;
-                        var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, CreateModelPath(modelPath), modelPath, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
+                        var modelPath = CreateModelPath(string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) ? currentDescriptor.ModelPath : fieldInfo.ModelPath);
+                        var modelPathString = modelPath.ToString();
+                        var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, modelPath, modelPathString, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
                         FieldMappings._standardFields[fieldId] = descriptor;
                     }
                 }
@@ -187,8 +218,9 @@ namespace EncompassRest.Loans
             foreach (var pair in fields)
             {
                 var fieldInfo = pair.Value;
-                var modelPath = fieldInfo.ModelPath;
-                var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, CreateModelPath(modelPath), modelPath, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
+                var modelPath = CreateModelPath(fieldInfo.ModelPath);
+                var modelPathString = modelPath.ToString();
+                var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, modelPath, modelPathString, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
                 FieldMappings.AddField(descriptor);
             }
 
@@ -362,7 +394,13 @@ namespace EncompassRest.Loans
                                                 ++index;
                                             }
 
-                                            modelPath = $"{currentPath}[({string.Join(" && ", stringListInstance.Select((s, i) => Tuple.Create(s, i)).Where(t => !string.IsNullOrEmpty(t.Item1)).OrderBy(t => listPropertySchema.KeyProperties[t.Item2]).Select(t => $"{listPropertySchema.KeyProperties[t.Item2]} == '{t.Item1}'"))})].{propertyName}";
+                                            var tuples = stringListInstance.Select((s, i) => Tuple.Create(s, i)).Where(t => !string.IsNullOrEmpty(t.Item1));
+                                            var pairs = tuples.OrderBy(t => listPropertySchema.KeyProperties[t.Item2]).Select(t => $"{listPropertySchema.KeyProperties[t.Item2]} == '{t.Item1}'");
+                                            if (currentPath == "Loan.CurrentApplication.Income")
+                                            {
+                                                pairs = pairs.Concat(new[] { $"Id == '{string.Join("_", tuples.Select(t => t.Item1 == "OtherIncome" ? "Other" : t.Item1))}'" });
+                                            }
+                                            modelPath = $"{currentPath}[({string.Join(" && ", pairs)})].{propertyName}";
                                             break;
                                         case StringDictionaryInstance stringDictionaryInstance:
                                             foreach (var p in stringDictionaryInstance)

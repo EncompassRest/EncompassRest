@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -15,13 +14,47 @@ namespace EncompassRest.Token
     /// <summary>
     /// The access token and related Apis.
     /// </summary>
-    public sealed class AccessToken : ApiObject
+    public interface IAccessToken : IApiObject
+    {
+        /// <summary>
+        /// The access token.
+        /// </summary>
+        string Token { get; }
+        /// <summary>
+        /// The access token type.
+        /// </summary>
+        string Type { get; }
+
+        /// <summary>
+        /// Checks the status of the access token and retrieves the associated metadata.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<TokenIntrospectionResponse> IntrospectAsync(CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Checks the status of the access token and retrieves the associated metadata as raw json.
+        /// </summary>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> IntrospectRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Revokes the access token.
+        /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<bool> RevokeAsync(CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// The access token and related Apis.
+    /// </summary>
+    public sealed class AccessToken : ApiObject, IAccessToken
     {
         private HttpClient _tokenClient;
         private readonly string _apiClientId;
         private readonly string _apiClientSecret;
 
-        #region Properties
         /// <summary>
         /// The access token.
         /// </summary>
@@ -43,13 +76,12 @@ namespace EncompassRest.Token
                     {
                         Timeout = Client.Timeout
                     };
-                    tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{WebUtility.UrlEncode(_apiClientId)}:{WebUtility.UrlEncode(_apiClientSecret)}")));
+                    tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_apiClientId}:{_apiClientSecret.Replace("%", "%25")}")));
                     tokenClient = Interlocked.CompareExchange(ref _tokenClient, tokenClient, null) ?? tokenClient;
                 }
                 return tokenClient;
             }
         }
-        #endregion
 
         internal AccessToken(string apiClientId, string apiClientSecret, EncompassRestClient client)
             : base(client, "oauth2/v1/token")
@@ -58,7 +90,6 @@ namespace EncompassRest.Token
             _apiClientSecret = apiClientSecret;
         }
 
-        #region Public Methods
         /// <summary>
         /// Checks the status of the access token and retrieves the associated metadata.
         /// </summary>
@@ -103,6 +134,13 @@ namespace EncompassRest.Token
                 KeyValuePair.Create("code", authorizationCode)
             }, methodName, cancellationToken);
 
+        internal Task<string> GetTokenFromClientCredentialsAsync(string instanceId, string methodName, CancellationToken cancellationToken) => GetTokenAsync(new[]
+            {
+                KeyValuePair.Create("grant_type", "client_credentials"),
+                KeyValuePair.Create("scope", "lp"),
+                KeyValuePair.Create("instance_id", instanceId)
+            }, methodName, cancellationToken);
+
         private async Task<string> GetTokenAsync(IEnumerable<KeyValuePair<string, string>> nameValueCollection, string methodName, CancellationToken cancellationToken)
         {
             var tokenResponse = await PostAsync<TokenResponse>(null, null, new FormUrlEncodedContent(nameValueCollection), methodName, null, cancellationToken).ConfigureAwait(false);
@@ -118,6 +156,5 @@ namespace EncompassRest.Token
         {
             public string AccessToken { get; set; }
         }
-        #endregion
     }
 }
