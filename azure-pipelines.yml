@@ -19,6 +19,7 @@ steps:
   inputs:
     packageType: 'sdk'
     version: '3.0.100'
+    installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: NuGetToolInstaller@0
 
