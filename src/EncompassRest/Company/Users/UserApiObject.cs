@@ -3,9 +3,20 @@
 namespace EncompassRest.Company.Users
 {
     /// <summary>
+    /// Base interface for User Apis
+    /// </summary>
+    public interface IUserApiObject : IApiObject
+    {
+        /// <summary>
+        /// User's Id
+        /// </summary>
+        string UserId { get; }
+    }
+
+    /// <summary>
     /// Base class for User Apis
     /// </summary>
-    public abstract class UserApiObject : ApiObject
+    public abstract class UserApiObject : ApiObject, IUserApiObject
     {
         /// <summary>
         /// User's Id

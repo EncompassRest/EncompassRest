@@ -56,7 +56,11 @@ namespace EncompassRest.Contacts
         /// </summary>
         public bool? NoSpam { get => _noSpam; set => SetField(ref _noSpam, value); }
 
-        internal override string ApiPath => "encompass/v1/businessContacts";
+        /// <summary>
+        /// The contact type.
+        /// </summary>
+        [JsonIgnore]
+        public override ContactType Type => ContactType.Business;
 
         /// <summary>
         /// Business contact creation constructor
@@ -76,6 +80,18 @@ namespace EncompassRest.Contacts
         /// <param name="firstName">The contact's first name.</param>
         /// <param name="personalEmail">The contact's personal email address.</param>
         public BusinessContact(EncompassRestClient client, string contactId, string firstName, string personalEmail)
+            : this((IEncompassRestClient)client, contactId, firstName, personalEmail)
+        {
+        }
+
+        /// <summary>
+        /// Business contact update constructor
+        /// </summary>
+        /// <param name="client">The client to initialize the contact object with.</param>
+        /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
+        /// <param name="firstName">The contact's first name.</param>
+        /// <param name="personalEmail">The contact's personal email address.</param>
+        public BusinessContact(IEncompassRestClient client, string contactId, string firstName, string personalEmail)
             : base(client, contactId, firstName, personalEmail)
         {
         }
@@ -88,18 +104,6 @@ namespace EncompassRest.Contacts
         [JsonConstructor]
         public BusinessContact()
         {
-        }
-
-        /// <summary>
-        /// BusinessContact update constructor
-        /// </summary>
-        /// <param name="client">The <see cref="EncompassRestClient"/> to associate with this object.</param>
-        /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
-        [Obsolete("Use another constructor instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public BusinessContact(EncompassRestClient client, string contactId)
-        {
-            Initialize(client, contactId);
         }
     }
 }

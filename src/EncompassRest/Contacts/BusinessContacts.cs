@@ -3,7 +3,14 @@
     /// <summary>
     /// The Business Contacts Apis.
     /// </summary>
-    public sealed class BusinessContacts : Contacts<BusinessContact>
+    public interface IBusinessContacts : IContacts<BusinessContact>
+    {
+    }
+
+    /// <summary>
+    /// The Business Contacts Apis.
+    /// </summary>
+    public sealed class BusinessContacts : Contacts<BusinessContact>, IBusinessContacts
     {
         internal BusinessContacts(EncompassRestClient client)
             : base(client, "encompass/v1/businessContacts")

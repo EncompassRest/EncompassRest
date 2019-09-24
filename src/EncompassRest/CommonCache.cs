@@ -42,7 +42,7 @@ namespace EncompassRest
         /// <param name="client">The client to use to retrieve the custom fields.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public async Task RefreshCustomFieldsAsync(EncompassRestClient client, CancellationToken cancellationToken = default)
+        public async Task RefreshCustomFieldsAsync(IEncompassRestClient client, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(client, nameof(client));
 

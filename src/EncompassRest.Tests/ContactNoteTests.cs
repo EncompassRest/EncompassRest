@@ -25,7 +25,7 @@ namespace EncompassRest.Tests
             //create borrower contact to test notes
             var client = await GetTestClientAsync();
             var businessContact = new BusinessContact("test", "me@me.com");
-            var contactId = await client.BusinessContacts.CreateContactAsync(businessContact);
+            var contactId = await client.Contacts.BusinessContacts.CreateContactAsync(businessContact);
 
             try
             {
@@ -55,7 +55,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.BusinessContacts.DeleteContactAsync(contactId);
+                    await client.Contacts.BusinessContacts.DeleteContactAsync(contactId);
                 }
                 catch
                 {

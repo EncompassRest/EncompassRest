@@ -14,7 +14,7 @@ namespace EncompassRest.Tests
         public async Task ContactGroups_CreateUpdateAndDelete()
         {
             var client = await GetTestClientAsync();
-            var contactGroups = client.ContactGroups;
+            var contactGroups = client.Contacts.Groups;
             foreach (var contactType in Enums.GetValues<ContactType>())
             {
                 var groupType = contactType == ContactType.Business ? ContactGroupType.Public : ContactGroupType.Private;

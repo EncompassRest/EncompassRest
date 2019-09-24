@@ -29,6 +29,7 @@ namespace EncompassRest.Tests
             Assert.AreEqual(fieldId, customField.Id);
         }
 
+#pragma warning disable CS0618 // Type or member is obsolete
         [TestMethod]
         [ApiTest]
         public async Task CustomFieldDefitions_CreateUpdateAndDelete()
@@ -100,6 +101,7 @@ namespace EncompassRest.Tests
             Assert.AreEqual(audit.Data.EnumValue, customField.Audit.Data.EnumValue);
             Assert.IsTrue(await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId));
         }
+#pragma warning restore CS0618 // Type or member is obsolete
 
         [TestMethod]
         [ApiTest]

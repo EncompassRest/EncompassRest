@@ -9,9 +9,20 @@ using EncompassRest.Utilities;
 namespace EncompassRest
 {
     /// <summary>
+    /// Base Api Interface.
+    /// </summary>
+    public interface IApiObject
+    {
+        /// <summary>
+        /// The <see cref="IEncompassRestClient"/> associated with the Api object.
+        /// </summary>
+        IEncompassRestClient Client { get; }
+    }
+
+    /// <summary>
     /// Base Api Class.
     /// </summary>
-    public abstract class ApiObject
+    public abstract class ApiObject : IApiObject
     {
         internal static readonly HttpMethod PatchMethod = new HttpMethod("PATCH");
 
@@ -38,6 +49,8 @@ namespace EncompassRest
         /// </summary>
         public EncompassRestClient Client { get; }
 
+        IEncompassRestClient IApiObject.Client => Client;
+
         internal ApiObject(EncompassRestClient client, string baseApiPath)
         {
             Client = client;
@@ -62,15 +75,23 @@ namespace EncompassRest
 
         internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, string queryString, string methodName, T value, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendFullUriPopulateDirtyAsync(HttpMethod.Post, GetFullUri(requestUri), queryString, JsonStreamContent.Create(value), methodName, value, populate, cancellationToken);
 
+        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, T value, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendFullUriPopulateDirtyAsync(HttpMethod.Post, GetFullUri(requestUri), queryString, content, methodName, value, populate, cancellationToken);
+
         internal Task<string> SendFullUriPopulateDirtyAsync<T>(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, T value, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendFullUriAsync(method, requestUri, queryString, content, methodName, null, cancellationToken, async response =>
         {
             var id = GetLocation(response);
-            value.Id = id;
+            if (value != null)
+            {
+                value.Id = id;
+            }
             if (populate)
             {
                 await response.Content.PopulateAsync(value).ConfigureAwait(false);
             }
-            value.Dirty = false;
+            if (value != null)
+            {
+                value.Dirty = false;
+            }
             return id;
         });
 

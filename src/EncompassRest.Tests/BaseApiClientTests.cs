@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.CustomDataObjects;
@@ -15,13 +16,8 @@ namespace EncompassRest.Tests
         public async Task BaseApiClient_GetLoanFolders()
         {
             var client = await GetTestClientAsync();
-            var loanFolders = await client.BaseApiClient.GetAsync<List<LoanFolder>>("https://api.elliemae.com/encompass/v1/loanFolders");
+            var loanFolders = await client.BaseApiClient.GetAnonymousTypeAsync("https://api.elliemae.com/encompass/v1/loanFolders", new[] { new { Name = string.Empty } }.ToList());
             Assert.IsTrue(loanFolders.Count > 0);
-        }
-
-        private class LoanFolder
-        {
-            public string Name { get; set; }
         }
 
         [TestMethod]
