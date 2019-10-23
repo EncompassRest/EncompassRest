@@ -27,6 +27,7 @@ namespace EncompassRest.Loans.Attachments
         private DirtyValue<int?> _rotation;
         private DirtyValue<string> _title;
         private DirtyValue<string> _fileWithExtension;
+        private DirtyValue<string> _documentRefId;
         private DirtyValue<EntityReference> _document;
         private NeverSerializeValue<string> _mediaUrl;
 
@@ -91,6 +92,11 @@ namespace EncompassRest.Loans.Attachments
         /// The attachment's file name and extension.
         /// </summary>
         public string FileWithExtension { get => _fileWithExtension; set => SetField(ref _fileWithExtension, value); }
+
+        /// <summary>
+        /// Reference to the document object upon upload.
+        /// </summary>
+        public string DocumentRefId { get => _documentRefId; set => SetField(ref _documentRefId, value); }
 
         /// <summary>
         /// LoanAttachment Document

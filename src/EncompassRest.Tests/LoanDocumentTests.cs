@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
-using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
@@ -59,7 +58,10 @@ namespace EncompassRest.Tests
                 Assert.AreEqual("All", document.ApplicationId);
                 Assert.AreEqual(0, document.Attachments.Count);
 
-                var attachment = new LoanAttachment("Testing Attachment", "Text.txt", AttachmentCreateReason.Upload);
+                var attachment = new LoanAttachment("Testing Attachment", "Text.txt", AttachmentCreateReason.Upload)
+                {
+                    DocumentRefId = documentId
+                };
                 var text = "TESTING, TESTING, 1, 2, 3";
                 var attachmentId = await loan.LoanApis.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text), true);
                 Assert.IsFalse(string.IsNullOrEmpty(attachmentId));
@@ -72,15 +74,12 @@ namespace EncompassRest.Tests
                     Assert.AreEqual(text, sr.ReadToEnd());
                 }
 
-                var entityReference = new EntityReference(attachmentId, EntityType.Attachment);
-                await loan.LoanApis.Documents.AssignDocumentAttachmentsAsync(documentId, AssignmentAction.Add, new[] { entityReference });
-
                 document = await loan.LoanApis.Documents.GetDocumentAsync(documentId);
                 Assert.AreEqual("Updated Title", document.Title);
                 Assert.AreEqual("All", document.ApplicationId);
                 Assert.AreEqual(1, document.Attachments.Count);
                 Assert.AreEqual(attachmentId, document.Attachments[0].EntityId);
-                Assert.AreEqual(entityReference.EntityType.EnumValue, document.Attachments[0].EntityType.EnumValue);
+                Assert.AreEqual(EntityType.Attachment, document.Attachments[0].EntityType.EnumValue);
             }
             finally
             {
