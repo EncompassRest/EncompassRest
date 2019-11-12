@@ -152,7 +152,14 @@ namespace EncompassRest.Loans
         /// <param name="loanId">The unique identifier assigned to the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<bool> DeleteLoanAsync(string loanId, CancellationToken cancellationToken = default);
+        Task<string> DeleteLoanAsync(string loanId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Deletes a specified loan by moving it to the Recycle Bin or Trash folder.
+        /// </summary>
+        /// <param name="loanId">The unique identifier assigned to the loan.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<bool> TryDeleteLoanAsync(string loanId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the Loan Apis for the loan with the specified <paramref name="loanId"/>.
         /// </summary>
@@ -467,6 +474,19 @@ namespace EncompassRest.Loans
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
             return DeleteAsync($"loans/{loanId}", null, cancellationToken);
+        }
+
+        /// <summary>
+        /// Deletes a specified loan by moving it to the Recycle Bin or Trash folder.
+        /// </summary>
+        /// <param name="loanId">The unique identifier assigned to the loan.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        public Task<bool> TryDeleteLoanAsync(string loanId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
+
+            return TryDeleteAsync($"loans/{loanId}", null, cancellationToken);
         }
 
         /// <summary>
