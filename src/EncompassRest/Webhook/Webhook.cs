@@ -393,7 +393,7 @@ namespace EncompassRest.Webhook
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
-            return DeleteAsync($"subscriptions/{subscriptionId}", null, cancellationToken);
+            return TryDeleteAsync($"subscriptions/{subscriptionId}", null, cancellationToken);
         }
     }
 }

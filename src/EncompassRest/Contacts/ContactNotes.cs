@@ -205,7 +205,7 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            return DeleteAsync(noteId, null, cancellationToken);
+            return TryDeleteAsync(noteId, null, cancellationToken);
         }
     }
 }

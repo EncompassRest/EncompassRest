@@ -147,7 +147,7 @@ namespace EncompassRest.Settings.Loan
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            return DeleteAsync(fieldId, null, cancellationToken);
+            return TryDeleteAsync(fieldId, null, cancellationToken);
         }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }

@@ -117,7 +117,9 @@ namespace EncompassRest
 
         internal Task<T> PutAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) => SendAsync(HttpMethod.Put, requestUri, queryString, content, methodName, resourceId, cancellationToken, func);
 
-        internal Task<bool> DeleteAsync(string requestUri, string queryString, CancellationToken cancellationToken) => SendAsync(HttpMethod.Delete, requestUri, queryString, null, null, null, cancellationToken, IsSuccessStatusCodeFunc, false);
+        internal Task<bool> TryDeleteAsync(string requestUri, string queryString, CancellationToken cancellationToken) => SendAsync(HttpMethod.Delete, requestUri, queryString, null, null, null, cancellationToken, IsSuccessStatusCodeFunc, false);
+
+        internal Task DeleteAsync(string requestUri, string queryString, CancellationToken cancellationToken) => SendAsync<string>(HttpMethod.Delete, requestUri, queryString, null, null, null, cancellationToken, null);
 
         private Task PopulateDirtyInternalAsync(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => SendAsync(method, requestUri, queryString, content, methodName, resourceId, cancellationToken, async response =>
         {

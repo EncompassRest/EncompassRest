@@ -342,7 +342,7 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
-            return DeleteAsync(contactId, null, cancellationToken);
+            return TryDeleteAsync(contactId, null, cancellationToken);
         }
     }
 }

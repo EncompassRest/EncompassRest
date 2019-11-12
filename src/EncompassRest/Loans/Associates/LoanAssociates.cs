@@ -191,7 +191,7 @@ namespace EncompassRest.Loans.Associates
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
 
-            return DeleteAsync(logId, null, cancellationToken);
+            return TryDeleteAsync(logId, null, cancellationToken);
         }
     }
 }

@@ -179,7 +179,7 @@ namespace EncompassRest.CustomDataObjects
         {
             Preconditions.NotNullOrEmpty(objectName, nameof(objectName));
 
-            return DeleteAsync(objectName, null, cancellationToken);
+            return TryDeleteAsync(objectName, null, cancellationToken);
         }
 
         /// <summary>
