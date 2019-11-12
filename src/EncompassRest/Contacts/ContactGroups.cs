@@ -400,7 +400,7 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
 
-            return DeleteAsync(groupId, null, cancellationToken);
+            return TryDeleteAsync(groupId, null, cancellationToken);
         }
     }
 }

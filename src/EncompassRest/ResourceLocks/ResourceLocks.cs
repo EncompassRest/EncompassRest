@@ -134,7 +134,7 @@ namespace EncompassRest.ResourceLocks
                 queryParameters.Add("force", "true");
             }
 
-            return DeleteAsync(lockId, queryParameters.ToString(), cancellationToken);
+            return TryDeleteAsync(lockId, queryParameters.ToString(), cancellationToken);
         }
 
         public Task<bool> UnlockResourceAsync(ResourceLock resourceLock, CancellationToken cancellationToken = default) => UnlockResourceAsync(resourceLock, false, cancellationToken);

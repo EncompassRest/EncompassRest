@@ -136,7 +136,7 @@ namespace EncompassRest.Loans
 
         internal async Task<bool> DeleteAsync(string id, CancellationToken cancellationToken)
         {
-            var success = await DeleteAsync(id, null, cancellationToken).ConfigureAwait(false);
+            var success = await TryDeleteAsync(id, null, cancellationToken).ConfigureAwait(false);
             if (success && LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 var list = GetInLoan(LoanObjectBoundApis.Loan);

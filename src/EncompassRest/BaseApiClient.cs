@@ -21,7 +21,14 @@ namespace EncompassRest
         /// <param name="uri">The request uri including any query parameters.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<bool> DeleteAsync(string uri, CancellationToken cancellationToken = default);
+        Task DeleteAsync(string uri, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Sends an HTTP DELETE request to the specified <paramref name="uri"/> and returns whether the response had a success status code.
+        /// </summary>
+        /// <param name="uri">The request uri including any query parameters.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<bool> TryDeleteAsync(string uri, CancellationToken cancellationToken = default);
         /// <summary>
         /// Sends an HTTP GET request to the specified <paramref name="uri"/> and returns the response body as a <typeparamref name="TResponse"/>.
         /// </summary>
@@ -329,6 +336,14 @@ namespace EncompassRest
         /// <param name="uri">The request uri including any query parameters.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<bool> DeleteAsync(string uri, CancellationToken cancellationToken = default) => DeleteAsync(uri, null, cancellationToken);
+        public Task<bool> TryDeleteAsync(string uri, CancellationToken cancellationToken = default) => TryDeleteAsync(uri, null, cancellationToken);
+
+        /// <summary>
+        /// Sends an HTTP DELETE request to the specified <paramref name="uri"/> and returns whether the response had a success status code.
+        /// </summary>
+        /// <param name="uri">The request uri including any query parameters.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        public Task DeleteAsync(string uri, CancellationToken cancellationToken = default) => DeleteAsync(uri, null, cancellationToken);
     }
 }

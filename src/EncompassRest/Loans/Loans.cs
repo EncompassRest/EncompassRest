@@ -152,7 +152,7 @@ namespace EncompassRest.Loans
         /// <param name="loanId">The unique identifier assigned to the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> DeleteLoanAsync(string loanId, CancellationToken cancellationToken = default);
+        Task DeleteLoanAsync(string loanId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Deletes a specified loan by moving it to the Recycle Bin or Trash folder.
         /// </summary>
@@ -469,7 +469,7 @@ namespace EncompassRest.Loans
         /// <param name="loanId">The unique identifier assigned to the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<bool> DeleteLoanAsync(string loanId, CancellationToken cancellationToken = default)
+        public Task DeleteLoanAsync(string loanId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
