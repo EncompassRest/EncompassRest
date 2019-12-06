@@ -12,7 +12,6 @@ using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 using EncompassRest.Tests;
 using EnumsNET;
-using EnumsNET.NonGeneric;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -149,7 +148,7 @@ namespace EncompassRest
             s_sharedEnums = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (var sharedEnumType in sharedEnumTypes)
             {
-                s_sharedEnums.Add(sharedEnumType.Name, new HashSet<string>(NonGenericEnums.GetMembers(sharedEnumType).Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))));
+                s_sharedEnums.Add(sharedEnumType.Name, new HashSet<string>(Enums.GetMembers(sharedEnumType).Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))));
             }
         }
 
@@ -772,7 +771,7 @@ namespace EncompassRest
                                     }
                                     enumName = enumPair.Key;
                                     var existingEnumType = typeof(EncompassRestClient).Assembly.GetType($"{@namespace}.Enums.{enumName}");
-                                    foreach (var member in NonGenericEnums.GetMembers(existingEnumType))
+                                    foreach (var member in Enums.GetMembers(existingEnumType))
                                     {
                                         var existingText = member.AsString(EnumFormat.Description, EnumFormat.EnumMemberValue, EnumFormat.Name);
                                         var value = member.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
@@ -898,7 +897,7 @@ namespace EncompassRest
             var first = true;
             if (existingEnumType != null)
             {
-                foreach (var member in NonGenericEnums.GetMembers(existingEnumType))
+                foreach (var member in Enums.GetMembers(existingEnumType))
                 {
                     if (!first)
                     {

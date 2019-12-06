@@ -7,7 +7,6 @@ using System.Reflection;
 using EncompassRest.Schema;
 using EncompassRest.Utilities;
 using EnumsNET;
-using EnumsNET.NonGeneric;
 
 namespace EncompassRest.Loans
 {
@@ -209,7 +208,7 @@ namespace EncompassRest.Loans
                             {
                                 declaredType = _modelPath.Segments[i].GetDeclaredType(declaredType);
                             }
-                            if (declaredType != null && EnumsNET.Enums.TryParse<LoanEntity>(declaredType.Name, out var newLoanEntity, EnumFormat.Name))
+                            if (declaredType != null && EnumsNET.Enums.TryParse<LoanEntity>(declaredType.Name, ignoreCase: false, out var newLoanEntity, EnumFormat.Name))
                             {
                                 loanEntity = newLoanEntity;
                             }
@@ -247,7 +246,7 @@ namespace EncompassRest.Loans
                             var enumType = EnumType;
                             if (enumType != null)
                             {
-                                foreach (var member in NonGenericEnums.GetMembers(enumType))
+                                foreach (var member in EnumsNET.Enums.GetMembers(enumType))
                                 {
                                     var value = member.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
                                     if (!dictionary.ContainsKey(value))

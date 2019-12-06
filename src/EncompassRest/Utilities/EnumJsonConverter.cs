@@ -1,6 +1,5 @@
 ﻿using System;
 using EnumsNET;
-using EnumsNET.NonGeneric;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Utilities
@@ -33,18 +32,19 @@ namespace EncompassRest.Utilities
         {
             try
             {
+                var typeData = TypeData.Get(objectType);
                 switch (reader.TokenType)
                 {
                     case JsonToken.Null:
-                        if (!TypeData.Get(objectType).IsNullable)
+                        if (!typeData.IsNullable)
                         {
                             throw new JsonSerializationException($"Cannot convert null value to {objectType}.");
                         }
                         return null;
                     case JsonToken.String:
-                        return NonGenericEnums.Parse(objectType, (string)reader.Value, EnumFormat);
+                        return Enums.Parse(typeData.NonNullableValueTypeData?.Type ?? objectType, (string)reader.Value, ignoreCase: false, EnumFormat);
                     case JsonToken.Integer:
-                        return NonGenericEnums.ToObject(objectType, reader.Value);
+                        return Enums.ToObject(typeData.NonNullableValueTypeData?.Type ?? objectType, reader.Value);
                     default:
                         throw new JsonSerializationException($"Unexpected token {reader.TokenType} when parsing enum.");
                 }
@@ -64,16 +64,17 @@ namespace EncompassRest.Utilities
             else
             {
                 var enumType = value.GetType();
+                enumType = Nullable.GetUnderlyingType(enumType) ?? enumType;
                 if (EnumFormat != EnumFormat.DecimalValue)
                 {
-                    var member = NonGenericEnums.GetMember(enumType, value);
+                    var member = Enums.GetMember(enumType, value);
                     if (member != null)
                     {
                         writer.WriteValue(member.AsString(EnumFormat));
                         return;
                     }
                 }
-                writer.WriteRawValue(NonGenericEnums.AsString(enumType, value, EnumFormat.DecimalValue));
+                writer.WriteRawValue(Enums.AsString(enumType, value, EnumFormat.DecimalValue));
             }
         }
     }

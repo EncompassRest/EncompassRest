@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 using EnumsNET;
-using EnumsNET.NonGeneric;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -189,7 +188,7 @@ namespace EncompassRest.Tests
                 if (!string.IsNullOrEmpty(stringValue))
                 {
                     var enumType = typeInfo.GenericTypeArguments[0];
-                    if (!NonGenericEnums.TryParse(enumType, stringValue, true, out _, EnumFormat.EnumMemberValue, EnumFormat.Name) && (enumOptionsToIgnore == null || !enumOptionsToIgnore.TryGetValue(enumType, out var optionsToIgnore) || !optionsToIgnore.Contains(stringValue)))
+                    if (!Enums.TryParse(enumType, stringValue, ignoreCase: true, out _, EnumFormat.EnumMemberValue, EnumFormat.Name) && (enumOptionsToIgnore == null || !enumOptionsToIgnore.TryGetValue(enumType, out var optionsToIgnore) || !optionsToIgnore.Contains(stringValue)))
                     {
                         fails.Add($"{string.Concat(path)} value of '{stringValue}' is not defined in {enumType.Name}");
                     }
