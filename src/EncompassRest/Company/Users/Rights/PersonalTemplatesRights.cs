@@ -11,7 +11,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _dataTemplates;
         private DirtyValue<bool?> _documentSets;
         private DirtyValue<bool?> _inputFormSets;
-        private DirtyValue<bool?> _loanPrograms;
+        private LoanProgramsRights _loanPrograms;
         private DirtyValue<bool?> _loanTemplateSets;
         private DirtyValue<bool?> _printFormGroups;
         private DirtyValue<bool?> _settlementServiceProviders;
@@ -50,7 +50,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// PersonalTemplatesRights LoanPrograms
         /// </summary>
-        public bool? LoanPrograms { get => _loanPrograms; set => SetField(ref _loanPrograms, value); }
+        public LoanProgramsRights LoanPrograms { get => GetField(ref _loanPrograms); set => SetField(ref _loanPrograms, value); }
 
         /// <summary>
         /// PersonalTemplatesRights LoanTemplateSets

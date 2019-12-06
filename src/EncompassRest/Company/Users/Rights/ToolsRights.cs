@@ -16,7 +16,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?> _brokerCheckCalculation;
         private DirtyValue<bool?> _businessContacts;
         private DirtyValue<bool?> _cashtoClose;
-        private DirtyValue<bool?> _collateralTracking;
+        private CollateralTrackingRights _collateralTracking;
         private DirtyValue<bool?> _conversationLog;
         private DirtyValue<bool?> _correspondentLoanStatus;
         private DirtyValue<bool?> _correspondentPurchaseAdviceForm;
@@ -27,6 +27,7 @@ namespace EncompassRest.Company.Users.Rights
         private FileContactsRights _fileContacts;
         private DirtyValue<bool?> _fundingBalancingWorksheet;
         private DirtyValue<bool?> _fundingWorksheet;
+        private DirtyValue<bool?> _importFundingWorksheet;
         private InterimServicingRights _interimServicing;
         private DirtyValue<bool?> _loanComparison;
         private DirtyValue<bool?> _lockRequestForm;
@@ -98,7 +99,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ToolsRights CollateralTracking
         /// </summary>
-        public bool? CollateralTracking { get => _collateralTracking; set => SetField(ref _collateralTracking, value); }
+        public CollateralTrackingRights CollateralTracking { get => GetField(ref _collateralTracking); set => SetField(ref _collateralTracking, value); }
 
         /// <summary>
         /// ToolsRights ConversationLog
@@ -149,6 +150,11 @@ namespace EncompassRest.Company.Users.Rights
         /// ToolsRights FundingWorksheet
         /// </summary>
         public bool? FundingWorksheet { get => _fundingWorksheet; set => SetField(ref _fundingWorksheet, value); }
+
+        /// <summary>
+        /// ToolsRights ImportFundingWorksheet
+        /// </summary>
+        public bool? ImportFundingWorksheet { get => _importFundingWorksheet; set => SetField(ref _importFundingWorksheet, value); }
 
         /// <summary>
         /// ToolsRights InterimServicing
