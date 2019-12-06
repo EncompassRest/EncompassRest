@@ -67,7 +67,7 @@ namespace EncompassRest.Contacts
         /// <param name="groupId">The unique identifier of the contact group to delete.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<bool> DeleteGroupAsync(string groupId, CancellationToken cancellationToken = default);
+        Task DeleteGroupAsync(string groupId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves information about the specified contact group.
         /// </summary>
@@ -123,6 +123,13 @@ namespace EncompassRest.Contacts
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task<string> GetGroupsRawAsync(string queryString, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Permanently removes the specified contact group from the Encompass contacts database.
+        /// </summary>
+        /// <param name="groupId">The unique identifier of the contact group to delete.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<bool> TryDeleteGroupAsync(string groupId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates the details of the specified contact group.
         /// </summary>
@@ -396,11 +403,24 @@ namespace EncompassRest.Contacts
         /// <param name="groupId">The unique identifier of the contact group to delete.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<bool> DeleteGroupAsync(string groupId, CancellationToken cancellationToken = default)
+        public Task<bool> TryDeleteGroupAsync(string groupId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
 
             return TryDeleteAsync(groupId, null, cancellationToken);
+        }
+
+        /// <summary>
+        /// Permanently removes the specified contact group from the Encompass contacts database.
+        /// </summary>
+        /// <param name="groupId">The unique identifier of the contact group to delete.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        public Task DeleteGroupAsync(string groupId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
+
+            return DeleteAsync(groupId, null, cancellationToken);
         }
     }
 }

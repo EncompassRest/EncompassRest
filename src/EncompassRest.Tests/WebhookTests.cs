@@ -89,7 +89,7 @@ namespace EncompassRest.Tests
             }
             var subscriptionId = await client.Webhook.CreateSubscriptionRawAsync($@"{{""endpoint"":""{endpoint}""}}");
             Assert.IsFalse(string.IsNullOrEmpty(subscriptionId));
-            Assert.IsTrue(await client.Webhook.DeleteSubscriptionAsync(subscriptionId));
+            await client.Webhook.DeleteSubscriptionAsync(subscriptionId);
         }
 
         [TestMethod]

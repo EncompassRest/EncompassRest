@@ -66,7 +66,7 @@ namespace EncompassRest.Tests
                 Assert.AreEqual("Jane Doe", borrowerPairs[1].Coborrower.FullName);
 
                 oldCount = loan.Applications.Count;
-                Assert.IsTrue(await loan.LoanApis.BorrowerPairs.DeleteBorrowerPairAsync(applicationId));
+                await loan.LoanApis.BorrowerPairs.DeleteBorrowerPairAsync(applicationId);
                 Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(oldCount - 1, loan.Applications.Count);
                 Assert.IsNull(loan.Applications.FirstOrDefault(a => a.Id == applicationId));
@@ -120,7 +120,7 @@ namespace EncompassRest.Tests
                 await loanApis.BorrowerPairs.UpdateBorrowerPairAsync(newApplication);
                 Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(0, loan.Applications.Count);
-                Assert.IsTrue(await loanApis.BorrowerPairs.DeleteBorrowerPairAsync(applicationId));
+                await loanApis.BorrowerPairs.DeleteBorrowerPairAsync(applicationId);
                 Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 Assert.AreEqual(0, loan.Applications.Count);
             }

@@ -33,7 +33,7 @@ namespace EncompassRest.Webhook
         /// <param name="subscriptionId">Unique identifier assigned to the subscription.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<bool> DeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken = default);
+        Task DeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Returns the specified webhook resource and events that are available.
         /// </summary>
@@ -135,6 +135,13 @@ namespace EncompassRest.Webhook
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task<string> GetSubscriptionsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Deletes the specified subscription.
+        /// </summary>
+        /// <param name="subscriptionId">Unique identifier assigned to the subscription.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<bool> TryDeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates the specified subscription.
         /// </summary>
@@ -389,11 +396,24 @@ namespace EncompassRest.Webhook
         /// <param name="subscriptionId">Unique identifier assigned to the subscription.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<bool> DeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken = default)
+        public Task<bool> TryDeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
             return TryDeleteAsync($"subscriptions/{subscriptionId}", null, cancellationToken);
+        }
+
+        /// <summary>
+        /// Deletes the specified subscription.
+        /// </summary>
+        /// <param name="subscriptionId">Unique identifier assigned to the subscription.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        public Task DeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
+
+            return DeleteAsync($"subscriptions/{subscriptionId}", null, cancellationToken);
         }
     }
 }

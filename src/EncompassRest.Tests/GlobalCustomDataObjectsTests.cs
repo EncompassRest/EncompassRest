@@ -26,7 +26,7 @@ namespace EncompassRest.Tests
             cdo2.DataObject = Encoding.UTF8.GetBytes(secondText);
             await client.Company.GlobalCustomDataObjects.AppendToCustomDataObjectAsync(cdo2, true);
             Assert.AreEqual($"{firstText}{secondText}", Encoding.UTF8.GetString(cdo2.DataObject));
-            Assert.IsTrue(await client.Company.GlobalCustomDataObjects.DeleteCustomDataObjectAsync(cdo.Name));
+            await client.Company.GlobalCustomDataObjects.DeleteCustomDataObjectAsync(cdo.Name);
         }
     }
 }

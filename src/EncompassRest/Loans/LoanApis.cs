@@ -118,7 +118,7 @@ namespace EncompassRest.Loans
         /// <param name="lockId">The lock id to unlock.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<bool> UnlockAsync(string lockId, CancellationToken cancellationToken = default);
+        Task<bool> TryUnlockAsync(string lockId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Unlocks the loan in Encompass with the specified <paramref name="lockId"/>.
         /// </summary>
@@ -126,7 +126,22 @@ namespace EncompassRest.Loans
         /// <param name="force">Forcefully unlocks a loan. This parameter allows an administrator to unlock a loan that holds an exclusive lock. When set to <c>true</c>, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is <c>false</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<bool> UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default);
+        Task<bool> TryUnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Unlocks the loan in Encompass with the specified <paramref name="lockId"/>.
+        /// </summary>
+        /// <param name="lockId">The lock id to unlock.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task UnlockAsync(string lockId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Unlocks the loan in Encompass with the specified <paramref name="lockId"/>.
+        /// </summary>
+        /// <param name="lockId">The lock id to unlock.</param>
+        /// <param name="force">Forcefully unlocks a loan. This parameter allows an administrator to unlock a loan that holds an exclusive lock. When set to <c>true</c>, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is <c>false</c>.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -282,7 +297,7 @@ namespace EncompassRest.Loans
         /// <param name="lockId">The lock id to unlock.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<bool> UnlockAsync(string lockId, CancellationToken cancellationToken = default) => UnlockAsync(lockId, false, cancellationToken);
+        public Task<bool> TryUnlockAsync(string lockId, CancellationToken cancellationToken = default) => TryUnlockAsync(lockId, false, cancellationToken);
 
         /// <summary>
         /// Unlocks the loan in Encompass with the specified <paramref name="lockId"/>.
@@ -291,6 +306,23 @@ namespace EncompassRest.Loans
         /// <param name="force">Forcefully unlocks a loan. This parameter allows an administrator to unlock a loan that holds an exclusive lock. When set to <c>true</c>, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is <c>false</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<bool> UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.UnlockResourceAsync(lockId, LoanId, EntityType.Loan.GetValue(), force, cancellationToken);
+        public Task<bool> TryUnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.TryUnlockResourceAsync(lockId, LoanId, EntityType.Loan.GetValue(), force, cancellationToken);
+
+        /// <summary>
+        /// Unlocks the loan in Encompass with the specified <paramref name="lockId"/>.
+        /// </summary>
+        /// <param name="lockId">The lock id to unlock.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        public Task UnlockAsync(string lockId, CancellationToken cancellationToken = default) => UnlockAsync(lockId, false, cancellationToken);
+
+        /// <summary>
+        /// Unlocks the loan in Encompass with the specified <paramref name="lockId"/>.
+        /// </summary>
+        /// <param name="lockId">The lock id to unlock.</param>
+        /// <param name="force">Forcefully unlocks a loan. This parameter allows an administrator to unlock a loan that holds an exclusive lock. When set to <c>true</c>, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is <c>false</c>.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        public Task UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.UnlockResourceAsync(lockId, LoanId, EntityType.Loan.GetValue(), force, cancellationToken);
     }
 }
