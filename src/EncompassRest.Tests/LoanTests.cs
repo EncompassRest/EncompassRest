@@ -298,7 +298,7 @@ namespace EncompassRest.Tests
             Assert.IsNotNull(loanId);
             Assert.AreEqual(loanId, loan.EncompassId);
             await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.TryDeleteLoanAsync(loanId));
+            await client.Loans.DeleteLoanAsync(loanId);
         }
 
         [TestMethod]
@@ -310,7 +310,7 @@ namespace EncompassRest.Tests
             Assert.IsNotNull(loanId);
             Assert.IsFalse(loanId.StartsWith("{"));
             await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.TryDeleteLoanAsync(loanId));
+            await client.Loans.DeleteLoanAsync(loanId);
 
             var json = await client.Loans.CreateLoanRawAsync("{}", "?view=entity");
             Assert.IsNotNull(json);
@@ -318,7 +318,7 @@ namespace EncompassRest.Tests
             var loan = JToken.Parse(json);
             loanId = loan["encompassId"].ToString();
             await Task.Delay(5000);
-            Assert.IsTrue(await client.Loans.TryDeleteLoanAsync(loanId));
+            await client.Loans.DeleteLoanAsync(loanId);
         }
 
         [TestMethod]
@@ -442,7 +442,7 @@ namespace EncompassRest.Tests
                 var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
                 var metaData = await loan.LoanApis.GetMetadataAsync();
                 await Task.Delay(5000);
-                Assert.IsTrue(await client.Loans.TryDeleteLoanAsync(loanId));
+                await client.Loans.DeleteLoanAsync(loanId);
             }
         }
 
@@ -458,7 +458,7 @@ namespace EncompassRest.Tests
                 await client.Loans.UpdateLoanAsync(loan, new UpdateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
                 var metaData = await loan.LoanApis.GetMetadataAsync();
                 await Task.Delay(5000);
-                Assert.IsTrue(await client.Loans.TryDeleteLoanAsync(loanId));
+                await client.Loans.DeleteLoanAsync(loanId);
             }
         }
 

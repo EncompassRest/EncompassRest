@@ -49,7 +49,9 @@ namespace EncompassRest.Settings.Loan
         [Obsolete("Undocumented API")]
         Task UpdateCustomFieldRawAsync(string fieldId, string customField, string queryString = null, CancellationToken cancellationToken = default);
         [Obsolete("Undocumented API")]
-        Task<bool> DeleteCustomFieldAsync(string fieldId, CancellationToken cancellationToken = default);
+        Task DeleteCustomFieldAsync(string fieldId, CancellationToken cancellationToken = default);
+        [Obsolete("Undocumented API")]
+        Task<bool> TryDeleteCustomFieldAsync(string fieldId, CancellationToken cancellationToken = default);
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 
@@ -143,11 +145,19 @@ namespace EncompassRest.Settings.Loan
         }
 
         [Obsolete("Undocumented API")]
-        public Task<bool> DeleteCustomFieldAsync(string fieldId, CancellationToken cancellationToken = default)
+        public Task<bool> TryDeleteCustomFieldAsync(string fieldId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
             return TryDeleteAsync(fieldId, null, cancellationToken);
+        }
+
+        [Obsolete("Undocumented API")]
+        public Task DeleteCustomFieldAsync(string fieldId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
+
+            return DeleteAsync(fieldId, null, cancellationToken);
         }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }

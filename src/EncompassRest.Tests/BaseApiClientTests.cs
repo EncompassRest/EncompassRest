@@ -38,7 +38,7 @@ namespace EncompassRest.Tests
             cdo2.DataObject = Encoding.UTF8.GetBytes(secondText);
             cdo2 = await baseApiClient.PatchAsync<CustomDataObject>($"https://api.elliemae.com/encompass/v1/company/customObjects/{cdo.Name}?view=entity", cdo2);
             Assert.AreEqual($"{firstText}{secondText}", Encoding.UTF8.GetString(cdo2.DataObject));
-            Assert.IsTrue(await baseApiClient.TryDeleteAsync($"https://api.elliemae.com/encompass/v1/company/customObjects/{cdo.Name}"));
+            await baseApiClient.DeleteAsync($"https://api.elliemae.com/encompass/v1/company/customObjects/{cdo.Name}");
         }
     }
 }

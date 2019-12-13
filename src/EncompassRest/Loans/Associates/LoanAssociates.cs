@@ -70,7 +70,14 @@ namespace EncompassRest.Loans.Associates
         /// <param name="logId">The milestone or milestone-free log ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<bool> UnassignAssociateAsync(string logId, CancellationToken cancellationToken = default);
+        Task<bool> TryUnassignAssociateAsync(string logId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Unassigns a loan associate from a milestone based on the specified milestone or milestone-free ID.
+        /// </summary>
+        /// <param name="logId">The milestone or milestone-free log ID.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task UnassignAssociateAsync(string logId, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -187,11 +194,25 @@ namespace EncompassRest.Loans.Associates
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         [Obsolete("Undocumented API")]
-        public Task<bool> UnassignAssociateAsync(string logId, CancellationToken cancellationToken = default)
+        public Task<bool> TryUnassignAssociateAsync(string logId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
 
             return TryDeleteAsync(logId, null, cancellationToken);
+        }
+
+        /// <summary>
+        /// Unassigns a loan associate from a milestone based on the specified milestone or milestone-free ID.
+        /// </summary>
+        /// <param name="logId">The milestone or milestone-free log ID.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        [Obsolete("Undocumented API")]
+        public Task UnassignAssociateAsync(string logId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(logId, nameof(logId));
+
+            return DeleteAsync(logId, null, cancellationToken);
         }
     }
 }

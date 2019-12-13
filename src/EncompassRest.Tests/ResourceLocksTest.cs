@@ -33,7 +33,7 @@ namespace EncompassRest.Tests
                 Assert.IsNotNull(testLock);
                 Assert.IsTrue(locks.Count == 1);
 
-                Assert.IsTrue(await loan.LoanApis.UnlockAsync(lockId));
+                await loan.LoanApis.UnlockAsync(lockId);
 
                 Assert.IsTrue((await loan.LoanApis.GetLocksAsync()).Count == 0);
             }

@@ -36,7 +36,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             const string fieldId = "CX.ABC";
-            await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId);
+            await client.Settings.Loan.CustomFields.TryDeleteCustomFieldAsync(fieldId);
             var description = "A, B, C";
             var format = LoanFieldFormat.DATE;
             var customField = new CustomFieldDefinition(fieldId, description, format);
@@ -52,7 +52,7 @@ namespace EncompassRest.Tests
             Assert.AreEqual(fieldId, customField.Id);
             Assert.AreEqual(description, customField.Description);
             Assert.AreEqual(format, customField.Format.EnumValue);
-            Assert.IsTrue(await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId));
+            await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId);
         }
 
         [TestMethod]
@@ -61,7 +61,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             const string fieldId = "CX.PETS";
-            await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId);
+            await client.Settings.Loan.CustomFields.TryDeleteCustomFieldAsync(fieldId);
             var description = "Borrower's own pets";
             var format = LoanFieldFormat.DROPDOWNLIST;
             var options = new[] { "Dog", "Cat", "Other", "Multiple" };
@@ -75,7 +75,7 @@ namespace EncompassRest.Tests
             Assert.AreEqual(description, customField.Description);
             Assert.AreEqual(format, customField.Format.EnumValue);
             CollectionAssert.AreEqual(options, customField.Options.ToList());
-            Assert.IsTrue(await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId));
+            await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId);
         }
 
         [TestMethod]
@@ -84,7 +84,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             const string fieldId = "CX.AUDIT364";
-            await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId);
+            await client.Settings.Loan.CustomFields.TryDeleteCustomFieldAsync(fieldId);
             var description = "AUDIT user id field for 364";
             var format = LoanFieldFormat.AUDIT;
             var audit = new FieldAudit("364", AuditData.UserID);
@@ -99,7 +99,7 @@ namespace EncompassRest.Tests
             Assert.AreEqual(format, customField.Format.EnumValue);
             Assert.AreEqual(audit.FieldId, customField.Audit.FieldId);
             Assert.AreEqual(audit.Data.EnumValue, customField.Audit.Data.EnumValue);
-            Assert.IsTrue(await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId));
+            await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId);
         }
 #pragma warning restore CS0618 // Type or member is obsolete
 

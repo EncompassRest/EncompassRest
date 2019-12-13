@@ -33,7 +33,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="applicationId">The application id of the borrower pair to delete.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<bool> DeleteBorrowerPairAsync(string applicationId, CancellationToken cancellationToken = default);
+        Task DeleteBorrowerPairAsync(string applicationId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves the loan's borrower pair with the specified <paramref name="applicationId"/>.
         /// </summary>
@@ -77,6 +77,13 @@ namespace EncompassRest.Loans.Apis
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task MoveBorrowerPairsRawAsync(string applications, string queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Permanently deletes the borrower pair with the specified <paramref name="applicationId"/> from the loan.
+        /// </summary>
+        /// <param name="applicationId">The application id of the borrower pair to delete.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<bool> TryDeleteBorrowerPairAsync(string applicationId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates an existing borrower pair for the loan.
         /// </summary>
@@ -217,7 +224,20 @@ namespace EncompassRest.Loans.Apis
         /// <param name="applicationId">The application id of the borrower pair to delete.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<bool> DeleteBorrowerPairAsync(string applicationId, CancellationToken cancellationToken = default)
+        public Task<bool> TryDeleteBorrowerPairAsync(string applicationId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(applicationId, nameof(applicationId));
+
+            return TryDeleteAsync(applicationId, cancellationToken);
+        }
+
+        /// <summary>
+        /// Permanently deletes the borrower pair with the specified <paramref name="applicationId"/> from the loan.
+        /// </summary>
+        /// <param name="applicationId">The application id of the borrower pair to delete.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        public Task DeleteBorrowerPairAsync(string applicationId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(applicationId, nameof(applicationId));
 

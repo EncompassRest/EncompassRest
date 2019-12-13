@@ -134,19 +134,33 @@ namespace EncompassRest.Loans
             }
         }
 
-        internal async Task<bool> DeleteAsync(string id, CancellationToken cancellationToken)
+        internal async Task<bool> TryDeleteAsync(string id, CancellationToken cancellationToken)
         {
             var success = await TryDeleteAsync(id, null, cancellationToken).ConfigureAwait(false);
             if (success && LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
-                var list = GetInLoan(LoanObjectBoundApis.Loan);
-                var index = list.IndexOf(id);
-                if (index >= 0)
-                {
-                    list.RemoveAt(index);
-                }
+                DeleteFromLoanObject(id);
             }
             return success;
+        }
+
+        internal async Task DeleteAsync(string id, CancellationToken cancellationToken)
+        {
+            await DeleteAsync(id, null, cancellationToken).ConfigureAwait(false);
+            if (LoanObjectBoundApis?.ReflectToLoanObject == true)
+            {
+                DeleteFromLoanObject(id);
+            }
+        }
+
+        private void DeleteFromLoanObject(string id)
+        {
+            var list = GetInLoan(LoanObjectBoundApis.Loan);
+            var index = list.IndexOf(id);
+            if (index >= 0)
+            {
+                list.RemoveAt(index);
+            }
         }
     }
 }
