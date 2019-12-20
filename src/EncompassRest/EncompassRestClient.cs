@@ -4,13 +4,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.Contacts;
 using EncompassRest.LoanBatch;
 using EncompassRest.LoanPipeline;
 using EncompassRest.Token;
 using EncompassRest.Utilities;
-using EncompassRest.Contacts;
-using EncompassRest.CustomDataObjects;
-using System.ComponentModel;
 
 namespace EncompassRest
 {
@@ -128,6 +126,7 @@ namespace EncompassRest
         public static async Task<EncompassRestClient> CreateAsync(ClientParameters parameters, Func<TokenCreator, Task<string>> tokenInitializer, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
+            Preconditions.NotNull(tokenInitializer, nameof(tokenInitializer));
 
             var client = new EncompassRestClient(parameters, tokenInitializer);
             var accessToken = await tokenInitializer(new TokenCreator(client, cancellationToken)).ConfigureAwait(false);
@@ -218,24 +217,24 @@ namespace EncompassRest
             return client;
         }
 
-        private readonly Func<TokenCreator, Task<string>> _tokenInitializer;
+        private readonly Func<TokenCreator, Task<string>>? _tokenInitializer;
         private int _timeoutRetryCount;
 
-        private HttpClient _httpClient;
-        private Loans.Loans _loans;
-        private Schema.Schema _schema;
-        private Webhook.Webhook _webhook;
-        private Pipeline _pipeline;
-        private BatchUpdate _batchUpdate;
-        private Contacts.Contacts _contacts;
-        private ResourceLocks.ResourceLocks _resourceLocks;
-        private LoanFolders.LoanFolders _loanFolders;
-        private Settings.Settings _settings;
-        private Services.Services _services;
-        private Company.Company _company;
-        private Organizations.Organizations _organizations;
-        private Calculators.Calculators _calculators;
-        private BaseApiClient _baseApiClient;
+        private HttpClient? _httpClient;
+        private Loans.Loans? _loans;
+        private Schema.Schema? _schema;
+        private Webhook.Webhook? _webhook;
+        private Pipeline? _pipeline;
+        private BatchUpdate? _batchUpdate;
+        private Contacts.Contacts? _contacts;
+        private ResourceLocks.ResourceLocks? _resourceLocks;
+        private LoanFolders.LoanFolders? _loanFolders;
+        private Settings.Settings? _settings;
+        private Services.Services? _services;
+        private Company.Company? _company;
+        private Organizations.Organizations? _organizations;
+        private Calculators.Calculators? _calculators;
+        private BaseApiClient? _baseApiClient;
 
         #region Properties
         /// <summary>
@@ -273,7 +272,7 @@ namespace EncompassRest
         /// <summary>
         /// An event that occurs before attempting to retry a request when there's a gateway timeout.
         /// </summary>
-        public event EventHandler<TimeoutRetryEventArgs> TimeoutRetry;
+        public event EventHandler<TimeoutRetryEventArgs>? TimeoutRetry;
 
         /// <summary>
         /// Specifies how the client should handle undefined custom fields.
@@ -528,9 +527,9 @@ namespace EncompassRest
         /// <summary>
         /// An event that occurs when an Api response is received.
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs> ApiResponse;
+        public event EventHandler<ApiResponseEventArgs>? ApiResponse;
 
-        internal EncompassRestClient(ClientParameters parameters, Func<TokenCreator, Task<string>> tokenInitializer = null)
+        internal EncompassRestClient(ClientParameters parameters, Func<TokenCreator, Task<string>>? tokenInitializer = null)
         {
             Timeout = parameters.Timeout > TimeSpan.Zero ? parameters.Timeout : TimeSpan.FromSeconds(100);
             _timeoutRetryCount = parameters.TimeoutRetryCount;
@@ -578,7 +577,7 @@ namespace EncompassRest
                                 {
                                     if (string.Equals(request.Headers.Authorization.Parameter, _client.AccessToken.Token, StringComparison.Ordinal))
                                     {
-                                        _client.AccessToken.Token = await _client._tokenInitializer(new TokenCreator(_client, cancellationToken)).ConfigureAwait(false);
+                                        _client.AccessToken.Token = await _client._tokenInitializer!(new TokenCreator(_client, cancellationToken)).ConfigureAwait(false);
                                         _client.HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_client.AccessToken.Type, _client.AccessToken.Token);
                                     }
                                 }

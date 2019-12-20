@@ -33,7 +33,7 @@ namespace EncompassRest
         /// Property for sharing common cache between multiple clients such as custom field descriptors.
         /// </summary>
         [JsonIgnore]
-        public CommonCache CommonCache { get; set; }
+        public CommonCache? CommonCache { get; set; }
 
         /// <summary>
         /// Specifies when the custom fields cache should be initialized or refreshed.
@@ -63,7 +63,7 @@ namespace EncompassRest
         /// <summary>
         /// The event handler to attach to the <see cref="EncompassRestClient.ApiResponse"/> event of the created client.
         /// </summary>
-        public EventHandler<ApiResponseEventArgs> ApiResponse { get; set; }
+        public EventHandler<ApiResponseEventArgs>? ApiResponse { get; set; }
 
         /// <summary>
         /// Specifies how the client should handle undefined custom fields.

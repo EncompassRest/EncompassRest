@@ -590,20 +590,20 @@ namespace EncompassRest
                         break;
                     case JTokenType.Guid:
                     case JTokenType.String:
-                        propertyType = "string";
-                        fieldType = "DirtyValue<string>";
+                        propertyType = "string?";
+                        fieldType = "DirtyValue<string?>";
                         break;
                     case JTokenType.Object:
-                        propertyType = $"{propertyName}{nameSuffix}";
+                        propertyType = $"{propertyName}{nameSuffix}?";
                         if (!names.Add(propertyType))
                         {
-                            propertyType = $"{entityName.Substring(0, entityName.Length - nameSuffix?.Length ?? 0)}{propertyName}{nameSuffix}";
+                            propertyType = $"{entityName.Substring(0, entityName.Length - nameSuffix?.Length ?? 0)}{propertyName}{nameSuffix}?";
                             if (!names.Add(propertyType))
                             {
-                                propertyType = $"{propertyName}Class{nameSuffix}";
+                                propertyType = $"{propertyName}Class{nameSuffix}?";
                                 if (!names.Add(propertyType))
                                 {
-                                    propertyType = $"{entityName.Substring(0, entityName.Length - nameSuffix?.Length ?? 0)}{propertyName}Class{nameSuffix}";
+                                    propertyType = $"{entityName.Substring(0, entityName.Length - nameSuffix?.Length ?? 0)}{propertyName}Class{nameSuffix}?";
                                     if (!names.Add(propertyType))
                                     {
                                         throw new InvalidOperationException();
@@ -749,7 +749,7 @@ namespace EncompassRest
                     }
                     else if (propertySchema.AllowedValues?.Count > 0)
                     {
-                        if (propertyType == "string")
+                        if (propertyType == "string?")
                         {
                             var optionValues = propertySchema.AllowedValues.Where(o => !string.IsNullOrEmpty(o.Value) || !string.IsNullOrEmpty(o.Text)).Distinct().ToDictionary(o => o.Value, o => o.Text);
                             if (s_enumOptionsToIgnore.TryGetValue(propertyName, out var ignoredOptions))
@@ -837,17 +837,17 @@ namespace EncompassRest
                     var isStringDictionary = s_stringDictionaryProperties.Contains(entityPropertyName);
                     if (isStringDictionary)
                     {
-                        propertyType = "DirtyDictionary<string, string>";
+                        propertyType = "DirtyDictionary<string, string?>?";
                         collectionsNamespace = true;
                     }
                     else if (isList)
                     {
-                        propertyType = $"DirtyList<{elementType}>";
+                        propertyType = $"DirtyList<{elementType}>?";
                         collectionsNamespace = true;
                     }
                     var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
                     var isNullable = propertySchema.Nullable == true;
-                    fields.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {((isEntity && !isNullable) || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
+                    fields.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {((isEntity && !isNullable) || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>?")} {fieldName};");
                     properties.AppendLine($@"        /// <summary>
         /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}{(isNullable ? " (Nullable)" : string.Empty)}
         /// </summary>");
@@ -855,7 +855,7 @@ namespace EncompassRest
                     {
                         properties.AppendLine($"        [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
                     }
-                    properties.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {((isEntity && !isNullable) || isList || isStringDictionary ? $"GetField(ref {fieldName})" : fieldName)}; set => SetField(ref {fieldName}, value); }}").AppendLine();
+                    properties.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string?>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {((isEntity && !isNullable) || isList || isStringDictionary ? $"GetField(ref {fieldName})" : fieldName)}; set => SetField(ref {fieldName}, value); }}").AppendLine();
                 }
             }
 
@@ -1033,7 +1033,7 @@ namespace EncompassRest
             {
                 case PropertySchemaType.String:
                 case PropertySchemaType.Uuid:
-                    return "string";
+                    return "string?";
                 case PropertySchemaType.NADecimal:
                     return "NA<decimal>";
                 case PropertySchemaType.Decimal:
