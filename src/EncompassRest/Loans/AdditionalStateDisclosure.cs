@@ -8,10 +8,10 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(DisclosureName) + "," + nameof(StateCode))]
     public sealed partial class AdditionalStateDisclosure : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<DisclosureName>> _disclosureName;
-        private DirtyValue<string> _disclosureValue;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<State>> _stateCode;
+        private DirtyValue<StringEnumValue<DisclosureName>>? _disclosureName;
+        private DirtyValue<string?>? _disclosureValue;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<State>>? _stateCode;
 
         /// <summary>
         /// AdditionalStateDisclosure DisclosureName
@@ -21,12 +21,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AdditionalStateDisclosure DisclosureValue
         /// </summary>
-        public string DisclosureValue { get => _disclosureValue; set => SetField(ref _disclosureValue, value); }
+        public string? DisclosureValue { get => _disclosureValue; set => SetField(ref _disclosureValue, value); }
 
         /// <summary>
         /// AdditionalStateDisclosure Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// AdditionalStateDisclosure StateCode

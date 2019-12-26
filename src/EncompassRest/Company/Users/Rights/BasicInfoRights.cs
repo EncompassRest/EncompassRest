@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class BasicInfoRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _editBasicInformation;
+        private DirtyValue<bool?>? _editBasicInformation;
 
         /// <summary>
         /// BasicInfoRights EditBasicInformation

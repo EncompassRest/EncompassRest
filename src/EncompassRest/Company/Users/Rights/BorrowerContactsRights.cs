@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,13 +8,14 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class BorrowerContactsRights : ContactsClassRights
     {
-        private OriginateLoanOrderCreditProductPricingRights _originateLoanOrderCreditProductPricing;
-        private DirtyValue<bool?> _reassignContacts;
+        private OriginateLoanOrderCreditProductPricingRights? _originateLoanOrderCreditProductPricing;
+        private DirtyValue<bool?>? _reassignContacts;
 
         /// <summary>
         /// BorrowerContactsRights OriginateLoanOrderCreditProductPricing
         /// </summary>
         [JsonProperty("originateLoan/OrderCredit/ProductPricing")]
+        [AllowNull]
         public OriginateLoanOrderCreditProductPricingRights OriginateLoanOrderCreditProductPricing { get => GetField(ref _originateLoanOrderCreditProductPricing); set => SetField(ref _originateLoanOrderCreditProductPricing, value); }
 
         /// <summary>

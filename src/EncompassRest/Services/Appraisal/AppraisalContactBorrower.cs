@@ -11,13 +11,13 @@ namespace EncompassRest.Services.Appraisal
         /// The borrower's physical address.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         /// <summary>
         /// The borrower's city.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         /// <summary>
         /// The borrower's state.
@@ -29,6 +29,6 @@ namespace EncompassRest.Services.Appraisal
         /// The borrower's zip code.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Zip { get; set; }
+        public string? Zip { get; set; }
     }
 }

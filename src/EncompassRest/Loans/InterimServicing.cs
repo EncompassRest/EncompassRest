@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,158 +11,158 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class InterimServicing : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _beginningBalance;
-        private DirtyValue<string> _borrCellPhoneNumber;
-        private DirtyValue<string> _borrHomeEmail;
-        private DirtyValue<string> _borrHomePhoneNumber;
-        private DirtyValue<string> _borrowerFirstName;
-        private DirtyValue<string> _borrowerLastName;
-        private DirtyValue<string> _borrWorkPhoneNumber;
-        private DirtyValue<string> _calcTriggered;
-        private DirtyValue<decimal?> _cityInsurance;
-        private DirtyValue<string> _comments;
-        private DirtyValue<decimal?> _currentPrincipalBalance;
-        private DirtyValue<decimal?> _escrowBalance;
-        private DirtyList<EscrowDisbursementTransaction> _escrowDisbursementTransactions;
-        private DirtyList<EscrowInterestTransaction> _escrowInterestTransactions;
-        private DirtyValue<decimal?> _floodInsurance;
-        private DirtyValue<string> _id;
-        private DirtyList<InterimServicingTransaction> _interimServicingTransactions;
-        private DirtyValue<decimal?> _lastPaymentAdditionalEscrow;
-        private DirtyValue<decimal?> _lastPaymentAdditionalPrincipal;
-        private DirtyValue<decimal?> _lastPaymentBuydownSubsidyAmount;
-        private DirtyValue<decimal?> _lastPaymentEscrowAmount;
-        private DirtyValue<decimal?> _lastPaymentEscrowCityPropertyTax;
-        private DirtyValue<decimal?> _lastPaymentEscrowFloodInsurance;
-        private DirtyValue<decimal?> _lastPaymentEscrowHazardInsurance;
-        private DirtyValue<decimal?> _lastPaymentEscrowMortgageInsurance;
-        private DirtyValue<decimal?> _lastPaymentEscrowOther1;
-        private DirtyValue<decimal?> _lastPaymentEscrowOther2;
-        private DirtyValue<decimal?> _lastPaymentEscrowOther3;
-        private DirtyValue<decimal?> _lastPaymentEscrowTax;
-        private DirtyValue<decimal?> _lastPaymentEscrowUSDAMonthlyPremium;
-        private DirtyValue<string> _lastPaymentGuid;
-        private DirtyValue<decimal?> _lastPaymentInterest;
-        private DirtyValue<decimal?> _lastPaymentLateFee;
-        private DirtyValue<decimal?> _lastPaymentMiscFee;
-        private DirtyValue<int?> _lastPaymentNumber;
-        private DirtyValue<decimal?> _lastPaymentPrincipal;
-        private DirtyValue<decimal?> _lastPaymentPrincipalAndInterest;
-        private DirtyValue<DateTime?> _lastPaymentReceivedDate;
-        private DirtyValue<DateTime?> _lastPaymentStatementDate;
-        private DirtyValue<decimal?> _lastPaymentTotalAmountReceived;
-        private DirtyValue<SchedulePaymentTransaction> _lastScheduledPayment;
-        private DirtyValue<DateTime?> _lastStatementPrintedDate;
-        private DirtyList<LoanPurchaseTransaction> _loanPurchaseTransactions;
-        private DirtyValue<string> _loanSnapshotXml;
-        private DirtyValue<string> _mailingCity;
-        private DirtyValue<string> _mailingPostalCode;
-        private DirtyValue<StringEnumValue<State>> _mailingState;
-        private DirtyValue<string> _mailingStreetAddress;
-        private DirtyValue<string> _mortgageAccount;
-        private DirtyValue<decimal?> _nextEscrowTotalFloodInsurance;
-        private DirtyValue<DateTime?> _nextEscrowTotalFloodInsuranceDueDate;
-        private DirtyValue<decimal?> _nextEscrowTotalHazardInsurance;
-        private DirtyValue<DateTime?> _nextEscrowTotalHazardInsuranceDueDate;
-        private DirtyValue<decimal?> _nextEscrowTotalMortgageInsurance;
-        private DirtyValue<DateTime?> _nextEscrowTotalMortgageInsuranceDueDate;
-        private DirtyValue<decimal?> _nextEscrowTotalOtherTax1;
-        private DirtyValue<DateTime?> _nextEscrowTotalOtherTax1DueDate;
-        private DirtyValue<decimal?> _nextEscrowTotalOtherTax2;
-        private DirtyValue<DateTime?> _nextEscrowTotalOtherTax2DueDate;
-        private DirtyValue<decimal?> _nextEscrowTotalOtherTax3;
-        private DirtyValue<DateTime?> _nextEscrowTotalOtherTax3DueDate;
-        private DirtyValue<decimal?> _nextEscrowTotalPropertyTax;
-        private DirtyValue<DateTime?> _nextEscrowTotalPropertyTaxDueDate;
-        private DirtyValue<decimal?> _nextEscrowTotalTax;
-        private DirtyValue<DateTime?> _nextEscrowTotalTaxDueDate;
-        private DirtyValue<decimal?> _nextEscrowTotalUsdaMonthlyPremium;
-        private DirtyValue<DateTime?> _nextEscrowTotalUsdaMonthlyPremiumDueDate;
-        private DirtyValue<decimal?> _nextPaymentBuydownSubsidyAmount;
-        private DirtyValue<decimal?> _nextPaymentEscrowAmount;
-        private DirtyValue<decimal?> _nextPaymentEscrowCityPropertyTax;
-        private DirtyValue<decimal?> _nextPaymentEscrowFloodInsurance;
-        private DirtyValue<decimal?> _nextPaymentEscrowHazardInsurance;
-        private DirtyValue<decimal?> _nextPaymentEscrowMortgageInsurance;
-        private DirtyValue<decimal?> _nextPaymentEscrowOther1;
-        private DirtyValue<decimal?> _nextPaymentEscrowOther2;
-        private DirtyValue<decimal?> _nextPaymentEscrowOther3;
-        private DirtyValue<decimal?> _nextPaymentEscrowTax;
-        private DirtyValue<decimal?> _nextPaymentEscrowUSDAMonthlyPremium;
-        private DirtyValue<decimal?> _nextPaymentIndexCurrentValuePercent;
-        private DirtyValue<decimal?> _nextPaymentInterest;
-        private DirtyValue<decimal?> _nextPaymentLateFee;
-        private DirtyValue<DateTime?> _nextPaymentLatePaymentDate;
-        private DirtyValue<decimal?> _nextPaymentMiscFee;
-        private DirtyValue<decimal?> _nextPaymentPastDueAmount;
-        private DirtyValue<DateTime?> _nextPaymentPaymentDueDate;
-        private DirtyValue<DateTime?> _nextPaymentPaymentIndexDate;
-        private DirtyValue<decimal?> _nextPaymentPrincipal;
-        private DirtyValue<decimal?> _nextPaymentPrincipalAndInterest;
-        private DirtyValue<decimal?> _nextPaymentRequestedInterestRatePercent;
-        private DirtyValue<DateTime?> _nextPaymentStatementDueDate;
-        private DirtyValue<decimal?> _nextPaymentTotalAmountDue;
-        private DirtyValue<decimal?> _nextPaymentTotalAmountWithLateFee;
-        private DirtyValue<decimal?> _nextPaymentUnpaidLateFee;
-        private DirtyValue<SchedulePaymentTransaction> _nextScheduledPayment;
-        private DirtyValue<int?> _numberOfDisbursement;
-        private DirtyList<OtherTransaction> _otherTransactions;
-        private DirtyValue<DateTime?> _paymentDueDatePrinted;
-        private DirtyList<PaymentReversalTransaction> _paymentReversalTransactions;
-        private DirtyList<PaymentTransaction> _paymentTransactions;
-        private DirtyValue<string> _printedByUserId;
-        private DirtyValue<string> _printedByUserName;
-        private DirtyValue<decimal?> _purchasedPrincipal;
-        private DirtyList<SchedulePaymentTransaction> _scheduledPayments;
-        private DirtyList<SchedulePaymentTransaction> _schedulePaymentTransactions;
-        private DirtyValue<string> _servicerLoanNumber;
-        private DirtyValue<StringEnumValue<ServicingStatus>> _servicingStatus;
-        private DirtyValue<DateTime?> _servicingTransferDate;
-        private DirtyValue<string> _subServicer;
-        private DirtyValue<string> _subServicerLoanNumber;
-        private DirtyValue<decimal?> _totalAdditionalEscrow;
-        private DirtyValue<decimal?> _totalAdditionalEscrowYearToDate;
-        private DirtyValue<decimal?> _totalAdditionalPrincipal;
-        private DirtyValue<decimal?> _totalAdditionalPrincipalYearToDate;
-        private DirtyValue<decimal?> _totalAmountDisbursed;
-        private DirtyValue<decimal?> _totalBuydownSubsidyAmount;
-        private DirtyValue<decimal?> _totalBuydownSubsidyAmountYearToDate;
-        private DirtyValue<decimal?> _totalEscrow;
-        private DirtyValue<decimal?> _totalEscrowYearToDate;
-        private DirtyValue<decimal?> _totalHazardInsurance;
-        private DirtyValue<decimal?> _totalInterest;
-        private DirtyValue<decimal?> _totalInterestYearToDate;
-        private DirtyValue<decimal?> _totalLateFee;
-        private DirtyValue<decimal?> _totalLateFeeYearToDate;
-        private DirtyValue<decimal?> _totalMiscFee;
-        private DirtyValue<decimal?> _totalMiscFeeYearToDate;
-        private DirtyValue<decimal?> _totalMortgageInsurance;
-        private DirtyValue<int?> _totalNumberOfLatePayment;
-        private DirtyValue<int?> _totalNumberOfPayment;
-        private DirtyValue<decimal?> _totalOtherTaxes;
-        private DirtyValue<decimal?> _totalPAndI;
-        private DirtyValue<decimal?> _totalPAndIYearToDate;
-        private DirtyValue<decimal?> _totalPaymentCollected;
-        private DirtyValue<decimal?> _totalPaymentCollectedYearToDate;
-        private DirtyValue<decimal?> _totalPrincipal;
-        private DirtyValue<decimal?> _totalPrincipalYearToDate;
-        private DirtyValue<decimal?> _totalTaxes;
-        private DirtyValue<decimal?> _totalUsdaMonthlyPremium;
-        private DirtyValue<decimal?> _unpaidBuydownSubsidyAmount;
-        private DirtyValue<decimal?> _unpaidEscrow;
-        private DirtyValue<decimal?> _unpaidEscrowCityPropertyTax;
-        private DirtyValue<decimal?> _unpaidEscrowFloodInsurance;
-        private DirtyValue<decimal?> _unpaidEscrowHazardInsurance;
-        private DirtyValue<decimal?> _unpaidEscrowMortgageInsurance;
-        private DirtyValue<decimal?> _unpaidEscrowOther1;
-        private DirtyValue<decimal?> _unpaidEscrowOther2;
-        private DirtyValue<decimal?> _unpaidEscrowOther3;
-        private DirtyValue<decimal?> _unpaidEscrowTax;
-        private DirtyValue<decimal?> _unpaidEscrowUSDAMonthlyPremium;
-        private DirtyValue<decimal?> _unpaidInterest;
-        private DirtyValue<decimal?> _unpaidLateFee;
-        private DirtyValue<decimal?> _unpaidMiscrFee;
-        private DirtyValue<decimal?> _unpaidPrincipal;
+        private DirtyValue<decimal?>? _beginningBalance;
+        private DirtyValue<string?>? _borrCellPhoneNumber;
+        private DirtyValue<string?>? _borrHomeEmail;
+        private DirtyValue<string?>? _borrHomePhoneNumber;
+        private DirtyValue<string?>? _borrowerFirstName;
+        private DirtyValue<string?>? _borrowerLastName;
+        private DirtyValue<string?>? _borrWorkPhoneNumber;
+        private DirtyValue<string?>? _calcTriggered;
+        private DirtyValue<decimal?>? _cityInsurance;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<decimal?>? _currentPrincipalBalance;
+        private DirtyValue<decimal?>? _escrowBalance;
+        private DirtyList<EscrowDisbursementTransaction>? _escrowDisbursementTransactions;
+        private DirtyList<EscrowInterestTransaction>? _escrowInterestTransactions;
+        private DirtyValue<decimal?>? _floodInsurance;
+        private DirtyValue<string?>? _id;
+        private DirtyList<InterimServicingTransaction>? _interimServicingTransactions;
+        private DirtyValue<decimal?>? _lastPaymentAdditionalEscrow;
+        private DirtyValue<decimal?>? _lastPaymentAdditionalPrincipal;
+        private DirtyValue<decimal?>? _lastPaymentBuydownSubsidyAmount;
+        private DirtyValue<decimal?>? _lastPaymentEscrowAmount;
+        private DirtyValue<decimal?>? _lastPaymentEscrowCityPropertyTax;
+        private DirtyValue<decimal?>? _lastPaymentEscrowFloodInsurance;
+        private DirtyValue<decimal?>? _lastPaymentEscrowHazardInsurance;
+        private DirtyValue<decimal?>? _lastPaymentEscrowMortgageInsurance;
+        private DirtyValue<decimal?>? _lastPaymentEscrowOther1;
+        private DirtyValue<decimal?>? _lastPaymentEscrowOther2;
+        private DirtyValue<decimal?>? _lastPaymentEscrowOther3;
+        private DirtyValue<decimal?>? _lastPaymentEscrowTax;
+        private DirtyValue<decimal?>? _lastPaymentEscrowUSDAMonthlyPremium;
+        private DirtyValue<string?>? _lastPaymentGuid;
+        private DirtyValue<decimal?>? _lastPaymentInterest;
+        private DirtyValue<decimal?>? _lastPaymentLateFee;
+        private DirtyValue<decimal?>? _lastPaymentMiscFee;
+        private DirtyValue<int?>? _lastPaymentNumber;
+        private DirtyValue<decimal?>? _lastPaymentPrincipal;
+        private DirtyValue<decimal?>? _lastPaymentPrincipalAndInterest;
+        private DirtyValue<DateTime?>? _lastPaymentReceivedDate;
+        private DirtyValue<DateTime?>? _lastPaymentStatementDate;
+        private DirtyValue<decimal?>? _lastPaymentTotalAmountReceived;
+        private DirtyValue<SchedulePaymentTransaction>? _lastScheduledPayment;
+        private DirtyValue<DateTime?>? _lastStatementPrintedDate;
+        private DirtyList<LoanPurchaseTransaction>? _loanPurchaseTransactions;
+        private DirtyValue<string?>? _loanSnapshotXml;
+        private DirtyValue<string?>? _mailingCity;
+        private DirtyValue<string?>? _mailingPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _mailingState;
+        private DirtyValue<string?>? _mailingStreetAddress;
+        private DirtyValue<string?>? _mortgageAccount;
+        private DirtyValue<decimal?>? _nextEscrowTotalFloodInsurance;
+        private DirtyValue<DateTime?>? _nextEscrowTotalFloodInsuranceDueDate;
+        private DirtyValue<decimal?>? _nextEscrowTotalHazardInsurance;
+        private DirtyValue<DateTime?>? _nextEscrowTotalHazardInsuranceDueDate;
+        private DirtyValue<decimal?>? _nextEscrowTotalMortgageInsurance;
+        private DirtyValue<DateTime?>? _nextEscrowTotalMortgageInsuranceDueDate;
+        private DirtyValue<decimal?>? _nextEscrowTotalOtherTax1;
+        private DirtyValue<DateTime?>? _nextEscrowTotalOtherTax1DueDate;
+        private DirtyValue<decimal?>? _nextEscrowTotalOtherTax2;
+        private DirtyValue<DateTime?>? _nextEscrowTotalOtherTax2DueDate;
+        private DirtyValue<decimal?>? _nextEscrowTotalOtherTax3;
+        private DirtyValue<DateTime?>? _nextEscrowTotalOtherTax3DueDate;
+        private DirtyValue<decimal?>? _nextEscrowTotalPropertyTax;
+        private DirtyValue<DateTime?>? _nextEscrowTotalPropertyTaxDueDate;
+        private DirtyValue<decimal?>? _nextEscrowTotalTax;
+        private DirtyValue<DateTime?>? _nextEscrowTotalTaxDueDate;
+        private DirtyValue<decimal?>? _nextEscrowTotalUsdaMonthlyPremium;
+        private DirtyValue<DateTime?>? _nextEscrowTotalUsdaMonthlyPremiumDueDate;
+        private DirtyValue<decimal?>? _nextPaymentBuydownSubsidyAmount;
+        private DirtyValue<decimal?>? _nextPaymentEscrowAmount;
+        private DirtyValue<decimal?>? _nextPaymentEscrowCityPropertyTax;
+        private DirtyValue<decimal?>? _nextPaymentEscrowFloodInsurance;
+        private DirtyValue<decimal?>? _nextPaymentEscrowHazardInsurance;
+        private DirtyValue<decimal?>? _nextPaymentEscrowMortgageInsurance;
+        private DirtyValue<decimal?>? _nextPaymentEscrowOther1;
+        private DirtyValue<decimal?>? _nextPaymentEscrowOther2;
+        private DirtyValue<decimal?>? _nextPaymentEscrowOther3;
+        private DirtyValue<decimal?>? _nextPaymentEscrowTax;
+        private DirtyValue<decimal?>? _nextPaymentEscrowUSDAMonthlyPremium;
+        private DirtyValue<decimal?>? _nextPaymentIndexCurrentValuePercent;
+        private DirtyValue<decimal?>? _nextPaymentInterest;
+        private DirtyValue<decimal?>? _nextPaymentLateFee;
+        private DirtyValue<DateTime?>? _nextPaymentLatePaymentDate;
+        private DirtyValue<decimal?>? _nextPaymentMiscFee;
+        private DirtyValue<decimal?>? _nextPaymentPastDueAmount;
+        private DirtyValue<DateTime?>? _nextPaymentPaymentDueDate;
+        private DirtyValue<DateTime?>? _nextPaymentPaymentIndexDate;
+        private DirtyValue<decimal?>? _nextPaymentPrincipal;
+        private DirtyValue<decimal?>? _nextPaymentPrincipalAndInterest;
+        private DirtyValue<decimal?>? _nextPaymentRequestedInterestRatePercent;
+        private DirtyValue<DateTime?>? _nextPaymentStatementDueDate;
+        private DirtyValue<decimal?>? _nextPaymentTotalAmountDue;
+        private DirtyValue<decimal?>? _nextPaymentTotalAmountWithLateFee;
+        private DirtyValue<decimal?>? _nextPaymentUnpaidLateFee;
+        private DirtyValue<SchedulePaymentTransaction>? _nextScheduledPayment;
+        private DirtyValue<int?>? _numberOfDisbursement;
+        private DirtyList<OtherTransaction>? _otherTransactions;
+        private DirtyValue<DateTime?>? _paymentDueDatePrinted;
+        private DirtyList<PaymentReversalTransaction>? _paymentReversalTransactions;
+        private DirtyList<PaymentTransaction>? _paymentTransactions;
+        private DirtyValue<string?>? _printedByUserId;
+        private DirtyValue<string?>? _printedByUserName;
+        private DirtyValue<decimal?>? _purchasedPrincipal;
+        private DirtyList<SchedulePaymentTransaction>? _scheduledPayments;
+        private DirtyList<SchedulePaymentTransaction>? _schedulePaymentTransactions;
+        private DirtyValue<string?>? _servicerLoanNumber;
+        private DirtyValue<StringEnumValue<ServicingStatus>>? _servicingStatus;
+        private DirtyValue<DateTime?>? _servicingTransferDate;
+        private DirtyValue<string?>? _subServicer;
+        private DirtyValue<string?>? _subServicerLoanNumber;
+        private DirtyValue<decimal?>? _totalAdditionalEscrow;
+        private DirtyValue<decimal?>? _totalAdditionalEscrowYearToDate;
+        private DirtyValue<decimal?>? _totalAdditionalPrincipal;
+        private DirtyValue<decimal?>? _totalAdditionalPrincipalYearToDate;
+        private DirtyValue<decimal?>? _totalAmountDisbursed;
+        private DirtyValue<decimal?>? _totalBuydownSubsidyAmount;
+        private DirtyValue<decimal?>? _totalBuydownSubsidyAmountYearToDate;
+        private DirtyValue<decimal?>? _totalEscrow;
+        private DirtyValue<decimal?>? _totalEscrowYearToDate;
+        private DirtyValue<decimal?>? _totalHazardInsurance;
+        private DirtyValue<decimal?>? _totalInterest;
+        private DirtyValue<decimal?>? _totalInterestYearToDate;
+        private DirtyValue<decimal?>? _totalLateFee;
+        private DirtyValue<decimal?>? _totalLateFeeYearToDate;
+        private DirtyValue<decimal?>? _totalMiscFee;
+        private DirtyValue<decimal?>? _totalMiscFeeYearToDate;
+        private DirtyValue<decimal?>? _totalMortgageInsurance;
+        private DirtyValue<int?>? _totalNumberOfLatePayment;
+        private DirtyValue<int?>? _totalNumberOfPayment;
+        private DirtyValue<decimal?>? _totalOtherTaxes;
+        private DirtyValue<decimal?>? _totalPAndI;
+        private DirtyValue<decimal?>? _totalPAndIYearToDate;
+        private DirtyValue<decimal?>? _totalPaymentCollected;
+        private DirtyValue<decimal?>? _totalPaymentCollectedYearToDate;
+        private DirtyValue<decimal?>? _totalPrincipal;
+        private DirtyValue<decimal?>? _totalPrincipalYearToDate;
+        private DirtyValue<decimal?>? _totalTaxes;
+        private DirtyValue<decimal?>? _totalUsdaMonthlyPremium;
+        private DirtyValue<decimal?>? _unpaidBuydownSubsidyAmount;
+        private DirtyValue<decimal?>? _unpaidEscrow;
+        private DirtyValue<decimal?>? _unpaidEscrowCityPropertyTax;
+        private DirtyValue<decimal?>? _unpaidEscrowFloodInsurance;
+        private DirtyValue<decimal?>? _unpaidEscrowHazardInsurance;
+        private DirtyValue<decimal?>? _unpaidEscrowMortgageInsurance;
+        private DirtyValue<decimal?>? _unpaidEscrowOther1;
+        private DirtyValue<decimal?>? _unpaidEscrowOther2;
+        private DirtyValue<decimal?>? _unpaidEscrowOther3;
+        private DirtyValue<decimal?>? _unpaidEscrowTax;
+        private DirtyValue<decimal?>? _unpaidEscrowUSDAMonthlyPremium;
+        private DirtyValue<decimal?>? _unpaidInterest;
+        private DirtyValue<decimal?>? _unpaidLateFee;
+        private DirtyValue<decimal?>? _unpaidMiscrFee;
+        private DirtyValue<decimal?>? _unpaidPrincipal;
 
         /// <summary>
         /// Intrm Serv Beginning Balance [SERVICE.X144]
@@ -173,40 +174,40 @@ namespace EncompassRest.Loans
         /// Intrm Serv Borr Cell [SERVICE.X142]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string BorrCellPhoneNumber { get => _borrCellPhoneNumber; set => SetField(ref _borrCellPhoneNumber, value); }
+        public string? BorrCellPhoneNumber { get => _borrCellPhoneNumber; set => SetField(ref _borrCellPhoneNumber, value); }
 
         /// <summary>
         /// Intrm Serv Borr Email [SERVICE.X143]
         /// </summary>
-        public string BorrHomeEmail { get => _borrHomeEmail; set => SetField(ref _borrHomeEmail, value); }
+        public string? BorrHomeEmail { get => _borrHomeEmail; set => SetField(ref _borrHomeEmail, value); }
 
         /// <summary>
         /// Intrm Serv Borr Home Phone [SERVICE.X140]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string BorrHomePhoneNumber { get => _borrHomePhoneNumber; set => SetField(ref _borrHomePhoneNumber, value); }
+        public string? BorrHomePhoneNumber { get => _borrHomePhoneNumber; set => SetField(ref _borrHomePhoneNumber, value); }
 
         /// <summary>
         /// Intrm Serv Borrower First Name [SERVICE.X2]
         /// </summary>
-        public string BorrowerFirstName { get => _borrowerFirstName; set => SetField(ref _borrowerFirstName, value); }
+        public string? BorrowerFirstName { get => _borrowerFirstName; set => SetField(ref _borrowerFirstName, value); }
 
         /// <summary>
         /// Intrm Serv Borrower Last Name [SERVICE.X3]
         /// </summary>
-        public string BorrowerLastName { get => _borrowerLastName; set => SetField(ref _borrowerLastName, value); }
+        public string? BorrowerLastName { get => _borrowerLastName; set => SetField(ref _borrowerLastName, value); }
 
         /// <summary>
         /// Intrm Serv Borr Business Phone [SERVICE.X141]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string BorrWorkPhoneNumber { get => _borrWorkPhoneNumber; set => SetField(ref _borrWorkPhoneNumber, value); }
+        public string? BorrWorkPhoneNumber { get => _borrWorkPhoneNumber; set => SetField(ref _borrWorkPhoneNumber, value); }
 
         /// <summary>
         /// Intrm Serv Calc Flag [SERVICE.X999]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CalcTriggered { get => _calcTriggered; set => SetField(ref _calcTriggered, value); }
+        public string? CalcTriggered { get => _calcTriggered; set => SetField(ref _calcTriggered, value); }
 
         /// <summary>
         /// Intrm Serv Escrow Summary City Insurance [SERVICE.X90]
@@ -218,7 +219,7 @@ namespace EncompassRest.Loans
         /// Intrm Serv Comments [SERVICE.Comments]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Prncpl Balance [SERVICE.X57]
@@ -235,11 +236,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// InterimServicing EscrowDisbursementTransactions
         /// </summary>
+        [AllowNull]
         public IList<EscrowDisbursementTransaction> EscrowDisbursementTransactions { get => GetField(ref _escrowDisbursementTransactions); set => SetField(ref _escrowDisbursementTransactions, value); }
 
         /// <summary>
         /// InterimServicing EscrowInterestTransactions
         /// </summary>
+        [AllowNull]
         public IList<EscrowInterestTransaction> EscrowInterestTransactions { get => GetField(ref _escrowInterestTransactions); set => SetField(ref _escrowInterestTransactions, value); }
 
         /// <summary>
@@ -251,11 +254,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// InterimServicing Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// InterimServicing InterimServicingTransactions
         /// </summary>
+        [AllowNull]
         public IList<InterimServicingTransaction> InterimServicingTransactions { get => GetField(ref _interimServicingTransactions); set => SetField(ref _interimServicingTransactions, value); }
 
         /// <summary>
@@ -340,7 +344,7 @@ namespace EncompassRest.Loans
         /// Intrm Serv Last Pymnt GUID [SERVICE.LASTGUID]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LastPaymentGuid { get => _lastPaymentGuid; set => SetField(ref _lastPaymentGuid, value); }
+        public string? LastPaymentGuid { get => _lastPaymentGuid; set => SetField(ref _lastPaymentGuid, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Interest [SERVICE.X35]
@@ -409,23 +413,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// InterimServicing LoanPurchaseTransactions
         /// </summary>
+        [AllowNull]
         public IList<LoanPurchaseTransaction> LoanPurchaseTransactions { get => GetField(ref _loanPurchaseTransactions); set => SetField(ref _loanPurchaseTransactions, value); }
 
         /// <summary>
         /// InterimServicing LoanSnapshotXml
         /// </summary>
-        public string LoanSnapshotXml { get => _loanSnapshotXml; set => SetField(ref _loanSnapshotXml, value); }
+        public string? LoanSnapshotXml { get => _loanSnapshotXml; set => SetField(ref _loanSnapshotXml, value); }
 
         /// <summary>
         /// Intrm Serv Mailing Address City [SERVICE.X5]
         /// </summary>
-        public string MailingCity { get => _mailingCity; set => SetField(ref _mailingCity, value); }
+        public string? MailingCity { get => _mailingCity; set => SetField(ref _mailingCity, value); }
 
         /// <summary>
         /// Intrm Serv Mailing Address ZIP Code [SERVICE.X7]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string MailingPostalCode { get => _mailingPostalCode; set => SetField(ref _mailingPostalCode, value); }
+        public string? MailingPostalCode { get => _mailingPostalCode; set => SetField(ref _mailingPostalCode, value); }
 
         /// <summary>
         /// Intrm Serv Mailing Address State [SERVICE.X6]
@@ -435,12 +440,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Mailing Address Street [SERVICE.X4]
         /// </summary>
-        public string MailingStreetAddress { get => _mailingStreetAddress; set => SetField(ref _mailingStreetAddress, value); }
+        public string? MailingStreetAddress { get => _mailingStreetAddress; set => SetField(ref _mailingStreetAddress, value); }
 
         /// <summary>
         /// Intrm Serv Mrtg Accnt No [SERVICE.X1]
         /// </summary>
-        public string MortgageAccount { get => _mortgageAccount; set => SetField(ref _mortgageAccount, value); }
+        public string? MortgageAccount { get => _mortgageAccount; set => SetField(ref _mortgageAccount, value); }
 
         /// <summary>
         /// Intrm Serv Next Escrow Total Flood Insurance [SERVICE.X64]
@@ -708,6 +713,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// InterimServicing OtherTransactions
         /// </summary>
+        [AllowNull]
         public IList<OtherTransaction> OtherTransactions { get => GetField(ref _otherTransactions); set => SetField(ref _otherTransactions, value); }
 
         /// <summary>
@@ -718,22 +724,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// InterimServicing PaymentReversalTransactions
         /// </summary>
+        [AllowNull]
         public IList<PaymentReversalTransaction> PaymentReversalTransactions { get => GetField(ref _paymentReversalTransactions); set => SetField(ref _paymentReversalTransactions, value); }
 
         /// <summary>
         /// InterimServicing PaymentTransactions
         /// </summary>
+        [AllowNull]
         public IList<PaymentTransaction> PaymentTransactions { get => GetField(ref _paymentTransactions); set => SetField(ref _paymentTransactions, value); }
 
         /// <summary>
         /// Intrm Serv Current Status Printed By User ID [SERVICE.X12]
         /// </summary>
-        public string PrintedByUserId { get => _printedByUserId; set => SetField(ref _printedByUserId, value); }
+        public string? PrintedByUserId { get => _printedByUserId; set => SetField(ref _printedByUserId, value); }
 
         /// <summary>
         /// Intrm Serv Current Status Printed By User Name [SERVICE.X11]
         /// </summary>
-        public string PrintedByUserName { get => _printedByUserName; set => SetField(ref _printedByUserName, value); }
+        public string? PrintedByUserName { get => _printedByUserName; set => SetField(ref _printedByUserName, value); }
 
         /// <summary>
         /// Intrm Serv Purchase Advice Summary Principal [SERVICE.X139]
@@ -744,17 +752,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// InterimServicing ScheduledPayments
         /// </summary>
+        [AllowNull]
         public IList<SchedulePaymentTransaction> ScheduledPayments { get => GetField(ref _scheduledPayments); set => SetField(ref _scheduledPayments, value); }
 
         /// <summary>
         /// InterimServicing SchedulePaymentTransactions
         /// </summary>
+        [AllowNull]
         public IList<SchedulePaymentTransaction> SchedulePaymentTransactions { get => GetField(ref _schedulePaymentTransactions); set => SetField(ref _schedulePaymentTransactions, value); }
 
         /// <summary>
         /// Intrm Serv Servicer Loan Number [SERVICE.X108]
         /// </summary>
-        public string ServicerLoanNumber { get => _servicerLoanNumber; set => SetField(ref _servicerLoanNumber, value); }
+        public string? ServicerLoanNumber { get => _servicerLoanNumber; set => SetField(ref _servicerLoanNumber, value); }
 
         /// <summary>
         /// Intrm Serv Current Status [SERVICE.X8]
@@ -769,12 +779,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Servicing Sub - Servicer [SERVICE.X110]
         /// </summary>
-        public string SubServicer { get => _subServicer; set => SetField(ref _subServicer, value); }
+        public string? SubServicer { get => _subServicer; set => SetField(ref _subServicer, value); }
 
         /// <summary>
         /// Intrm Serv Sub - Servicer Loan Number [SERVICE.X111]
         /// </summary>
-        public string SubServicerLoanNumber { get => _subServicerLoanNumber; set => SetField(ref _subServicerLoanNumber, value); }
+        public string? SubServicerLoanNumber { get => _subServicerLoanNumber; set => SetField(ref _subServicerLoanNumber, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Total Add'l Escrow [SERVICE.X53]

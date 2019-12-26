@@ -10,17 +10,17 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(RegulationZInterestRatePeriodType))]
     public sealed partial class RegulationZInterestRatePeriod : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<DateTime?> _adjustmentDate;
-        private DirtyValue<int?> _adjustmentMonths;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _interestPayment;
-        private DirtyValue<decimal?> _interestPrincipalPayment;
-        private DirtyValue<decimal?> _interestRatePercent;
-        private DirtyValue<decimal?> _monthlyPayment;
-        private DirtyValue<decimal?> _principalPayment;
-        private DirtyValue<StringEnumValue<RegulationZInterestRatePeriodType>> _regulationZInterestRatePeriodType;
-        private DirtyValue<decimal?> _taxInsuranceAmount;
-        private DirtyValue<decimal?> _totalPayment;
+        private DirtyValue<DateTime?>? _adjustmentDate;
+        private DirtyValue<int?>? _adjustmentMonths;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _interestPayment;
+        private DirtyValue<decimal?>? _interestPrincipalPayment;
+        private DirtyValue<decimal?>? _interestRatePercent;
+        private DirtyValue<decimal?>? _monthlyPayment;
+        private DirtyValue<decimal?>? _principalPayment;
+        private DirtyValue<StringEnumValue<RegulationZInterestRatePeriodType>>? _regulationZInterestRatePeriodType;
+        private DirtyValue<decimal?>? _taxInsuranceAmount;
+        private DirtyValue<decimal?>? _totalPayment;
 
         /// <summary>
         /// RegulationZInterestRatePeriod AdjustmentDate
@@ -37,7 +37,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegulationZInterestRatePeriod Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// RegulationZInterestRatePeriod InterestPayment

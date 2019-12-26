@@ -7,12 +7,12 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class MyProfileRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _cell;
-        private DirtyValue<bool?> _email;
-        private DirtyValue<bool?> _fax;
-        private DirtyValue<bool?> _name;
-        private DirtyValue<bool?> _phone;
-        private DirtyValue<bool?> _publicProfile;
+        private DirtyValue<bool?>? _cell;
+        private DirtyValue<bool?>? _email;
+        private DirtyValue<bool?>? _fax;
+        private DirtyValue<bool?>? _name;
+        private DirtyValue<bool?>? _phone;
+        private DirtyValue<bool?>? _publicProfile;
 
         /// <summary>
         /// MyProfileRights Cell

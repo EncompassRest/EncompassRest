@@ -14,7 +14,7 @@ namespace EncompassRest.Filters
         private readonly FilterOperator? _operator;
 
         [JsonProperty("terms", NullValueHandling = NullValueHandling.Ignore)]
-        private readonly ReadOnlyCollection<Filter> _terms;
+        private readonly ReadOnlyCollection<Filter>? _terms;
 
         internal Filter()
         {

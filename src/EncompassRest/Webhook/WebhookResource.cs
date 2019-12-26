@@ -10,12 +10,12 @@ namespace EncompassRest.Webhook
         /// <summary>
         /// Description of the resource.
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// List of supported subscription events.
         /// </summary>
-        public List<WebhookResourceEventObject> Events { get; set; }
+        public List<WebhookResourceEventObject>? Events { get; set; }
 
         /// <summary>
         /// Name of the resource.

@@ -5,8 +5,8 @@
     /// </summary>
     public sealed class BusinessCategoryField : DirtyExtensibleObject
     {
-        private DirtyValue<int?> _fieldId;
-        private DirtyValue<string> _fieldValue;
+        private DirtyValue<int?>? _fieldId;
+        private DirtyValue<string?>? _fieldValue;
 
         /// <summary>
         /// BusinessCategoryField FieldId
@@ -16,6 +16,6 @@
         /// <summary>
         /// BusinessCategoryField FieldValue
         /// </summary>
-        public string FieldValue { get => _fieldValue; set => SetField(ref _fieldValue, value); }
+        public string? FieldValue { get => _fieldValue; set => SetField(ref _fieldValue, value); }
     }
 }

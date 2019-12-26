@@ -5,7 +5,7 @@
     /// </summary>
     public abstract class ParentAccessRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _parentAccess;
+        private DirtyValue<bool?>? _parentAccess;
 
         /// <summary>
         /// ParentAccessRights ParentAccess

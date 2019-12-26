@@ -5893,6 +5893,11 @@
   },
   {
     "Format": 101,
+    "FieldId": "LOCKRATE.2861",
+    "Description": "Rate Lock - Trans Details Loan Program Template File Applied (Most Recent)"
+  },
+  {
+    "Format": 101,
     "FieldId": "LOCKRATE.2866",
     "Description": "Rate Lock - Lock Request Loan Program (Most Recent)"
   },
@@ -13015,6 +13020,11 @@
     "Format": 101,
     "FieldId": "LOCKRATE.CONFIRMED.2853",
     "Description": "Rate Request - Lock Request Credit Score for Decision Making (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.CONFIRMED.2861",
+    "Description": "Rate Request - Trans Details Loan Program Template File Applied (Mostly Recent Confirmed)"
   },
   {
     "Format": 101,
@@ -20476,6 +20486,11 @@
     "Format": 101,
     "FieldId": "LOCKRATE.DENIED.2853",
     "Description": "Rate Lock Denial - Lock Request Credit Score for Decision Making (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.DENIED.2861",
+    "Description": "Rate Lock Denial - Trans Details Loan Program Template File Applied (Most Recent)"
   },
   {
     "Format": 101,
@@ -28077,6 +28092,11 @@
   },
   {
     "Format": 101,
+    "FieldId": "LOCKRATE.REQUEST.2861",
+    "Description": "Rate Lock Request - Trans Details Loan Program Template File Applied (Most Recent)"
+  },
+  {
+    "Format": 101,
     "FieldId": "LOCKRATE.REQUEST.2866",
     "Description": "Rate Lock Request - Lock Request Loan Program (Most Recent)"
   },
@@ -35640,6 +35660,11 @@
   },
   {
     "Format": 101,
+    "FieldId": "LOCKRATE1.2861",
+    "Description": "Rate Lock - Trans Details Loan Program Template File Applied (Previous 1)"
+  },
+  {
+    "Format": 101,
     "FieldId": "LOCKRATE1.2866",
     "Description": "Rate Lock - Lock Request Loan Program (Previous 1)"
   },
@@ -42757,6 +42782,11 @@
     "Format": 101,
     "FieldId": "LOCKRATE1.DENIED.2853",
     "Description": "Rate Lock Denial - Lock Request Credit Score for Decision Making (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.DENIED.2861",
+    "Description": "Rate Lock Denial - Trans Details Loan Program Template File Applied (Previous 1)"
   },
   {
     "Format": 101,
@@ -50265,6 +50295,11 @@
     "Format": 101,
     "FieldId": "LOCKRATE1.REQUEST.2853",
     "Description": "Rate Lock Request - Lock Request Credit Score for Decision Making (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.REQUEST.2861",
+    "Description": "Rate Lock Request - Trans Details Loan Program Template File Applied (Previous 1)"
   },
   {
     "Format": 101,
@@ -57779,6 +57814,11 @@
   },
   {
     "Format": 101,
+    "FieldId": "LOCKRATE2.2861",
+    "Description": "Rate Lock - Trans Details Loan Program Template File Applied (Previous 2)"
+  },
+  {
+    "Format": 101,
     "FieldId": "LOCKRATE2.2866",
     "Description": "Rate Lock - Lock Request Loan Program (Previous 2)"
   },
@@ -64896,6 +64936,11 @@
     "Format": 101,
     "FieldId": "LOCKRATE2.DENIED.2853",
     "Description": "Rate Lock Denial - Lock Request Credit Score for Decision Making (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.DENIED.2861",
+    "Description": "Rate Lock Denial - Trans Details Loan Program Template File Applied (Previous 2)"
   },
   {
     "Format": 101,
@@ -72407,6 +72452,11 @@
   },
   {
     "Format": 101,
+    "FieldId": "LOCKRATE2.REQUEST.2861",
+    "Description": "Rate Lock Request - Trans Details Loan Program Template File Applied (Previous 2)"
+  },
+  {
+    "Format": 101,
     "FieldId": "LOCKRATE2.REQUEST.2866",
     "Description": "Rate Lock Request - Lock Request Loan Program (Previous 2)"
   },
@@ -79915,6 +79965,11 @@
     "Format": 101,
     "FieldId": "LOCKRATE3.2853",
     "Description": "Rate Request - Lock Request Credit Score for Decision Making (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE3.2861",
+    "Description": "Rate Request - Trans Details Loan Program Template File Applied (Most Recent)"
   },
   {
     "Format": 101,

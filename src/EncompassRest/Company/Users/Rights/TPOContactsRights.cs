@@ -7,12 +7,12 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TPOContactsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _createEditContacts;
-        private DirtyValue<bool?> _deleteContacts;
-        private DirtyValue<bool?> _exportContacts;
-        private DirtyValue<bool?> _resetPassword;
-        private DirtyValue<bool?> _salesRep;
-        private DirtyValue<bool?> _sendWelcomeEmail;
+        private DirtyValue<bool?>? _createEditContacts;
+        private DirtyValue<bool?>? _deleteContacts;
+        private DirtyValue<bool?>? _exportContacts;
+        private DirtyValue<bool?>? _resetPassword;
+        private DirtyValue<bool?>? _salesRep;
+        private DirtyValue<bool?>? _sendWelcomeEmail;
 
         /// <summary>
         /// TPOContactsRights CreateEditContacts

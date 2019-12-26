@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using EncompassRest.Utilities;
 
@@ -85,7 +86,7 @@ namespace EncompassRest.Loans
         /// <param name="fieldPattern">The field pattern to remove.</param>
         /// <param name="modelPathPattern">The model path pattern associated with the removed field pattern.</param>
         /// <returns></returns>
-        public bool TryRemove(string fieldPattern, out string modelPathPattern)
+        public bool TryRemove(string fieldPattern, [NotNullWhen(true)] out string? modelPathPattern)
         {
             Preconditions.NotNullOrEmpty(fieldPattern, nameof(fieldPattern));
 
@@ -104,7 +105,9 @@ namespace EncompassRest.Loans
         /// <param name="fieldPattern">The field pattern to search for.</param>
         /// <param name="modelPathPattern">The model path pattern associated with the field pattern.</param>
         /// <returns></returns>
-        public bool TryGetValue(string fieldPattern, out string modelPathPattern)
+#pragma warning disable CS8614 // Nullability of reference types in type of parameter doesn't match implicitly implemented member.
+        public bool TryGetValue(string fieldPattern, [NotNullWhen(true)] out string? modelPathPattern)
+#pragma warning restore CS8614 // Nullability of reference types in type of parameter doesn't match implicitly implemented member.
         {
             Preconditions.NotNullOrEmpty(fieldPattern, nameof(fieldPattern));
 
@@ -154,7 +157,7 @@ namespace EncompassRest.Loans
         /// <returns></returns>
         public bool ContainsKey(string fieldPattern) => TryGetValue(fieldPattern, out _);
 
-        internal bool TryGetDescriptorForFieldId(string fieldId, out FieldDescriptor descriptor) => _standardFieldPatterns.TryGetDescriptorForFieldId(fieldId, out descriptor) || _virtualFieldPatterns.TryGetDescriptorForFieldId(fieldId, out descriptor);
+        internal bool TryGetDescriptorForFieldId(string fieldId, [NotNullWhen(true)] out FieldDescriptor? descriptor) => _standardFieldPatterns.TryGetDescriptorForFieldId(fieldId, out descriptor) || _virtualFieldPatterns.TryGetDescriptorForFieldId(fieldId, out descriptor);
 
         private FieldDescriptor CreateFieldDescriptor(string fieldPattern, string modelPathPattern)
         {
@@ -166,7 +169,7 @@ namespace EncompassRest.Loans
                 throw new ArgumentException("modelPathPattern must contain a single instance of an instance specifier {0}");
             }
 
-            var descriptor = new FieldDescriptor(fieldPattern, LoanFieldDescriptors.CreateModelPath(string.Format(modelPathPattern, 1)), modelPathPattern, string.Empty);
+            var descriptor = new FieldDescriptor(fieldPattern, LoanFieldDescriptors.CreateModelPath(string.Format(modelPathPattern, 1))!, modelPathPattern, string.Empty);
             if (descriptor._modelPath == null)
             {
                 throw new ArgumentException("bad modelPathPattern");
@@ -321,7 +324,7 @@ namespace EncompassRest.Loans
                 return node.Values.TryAdd(postfix, new Node.InstanceSpecifierAndDescriptor(instanceSpecifier, descriptor));
             }
 
-            public bool TryRemove(string fieldPattern, out FieldDescriptor descriptor)
+            public bool TryRemove(string fieldPattern, [NotNullWhen(true)] out FieldDescriptor? descriptor)
             {
                 ValidateFieldPattern(fieldPattern, out var instanceSpecifierIndex);
                 var endBracketIndex = fieldPattern.IndexOf('}', instanceSpecifierIndex + 2);
@@ -353,7 +356,7 @@ namespace EncompassRest.Loans
                 return false;
             }
 
-            public bool TryGetValue(string fieldPattern, out FieldDescriptor descriptor)
+            public bool TryGetValue(string fieldPattern, [NotNullWhen(true)] out FieldDescriptor? descriptor)
             {
                 ValidateFieldPattern(fieldPattern, out var instanceSpecifierIndex);
                 var endBracketIndex = fieldPattern.IndexOf('}', instanceSpecifierIndex + 2);
@@ -409,7 +412,7 @@ namespace EncompassRest.Loans
                 return retrievedDescriptor;
             }
 
-            internal bool TryGetDescriptorForFieldId(string fieldId, out FieldDescriptor descriptor)
+            internal bool TryGetDescriptorForFieldId(string fieldId, [NotNullWhen(true)] out FieldDescriptor? descriptor)
             {
                 var originalFieldId = fieldId;
                 fieldId = fieldId.ToLower();

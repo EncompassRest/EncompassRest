@@ -15,7 +15,7 @@ namespace EncompassRest.Organizations
         /// <summary>
         /// Returns organizations for the specified parent ID.
         /// </summary>
-        public string ParentId { get; set; }
+        public string? ParentId { get; set; }
 
         /// <summary>
         /// Starting index or record number from which to retrieve the organization details. The default is 1.

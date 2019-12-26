@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,14 +8,14 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class LoanOtherRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _applyLoanTemplates;
-        private DirtyValue<bool?> _applyMilestoneTemplate;
-        private DirtyValue<bool?> _deleteBorrowers;
-        private ManageBorrowersRights _manageBorrowers;
-        private DirtyValue<bool?> _manageMilestoneDatesMode;
-        private DirtyValue<bool?> _manageMilestoneTemplatesMode;
-        private ManageServiceProvidersListRights _manageServiceProvidersList;
-        private DirtyValue<bool?> _manuallyBlockMultiUserEditing;
+        private DirtyValue<bool?>? _applyLoanTemplates;
+        private DirtyValue<bool?>? _applyMilestoneTemplate;
+        private DirtyValue<bool?>? _deleteBorrowers;
+        private ManageBorrowersRights? _manageBorrowers;
+        private DirtyValue<bool?>? _manageMilestoneDatesMode;
+        private DirtyValue<bool?>? _manageMilestoneTemplatesMode;
+        private ManageServiceProvidersListRights? _manageServiceProvidersList;
+        private DirtyValue<bool?>? _manuallyBlockMultiUserEditing;
 
         /// <summary>
         /// UserOtherRights ApplyLoanTemplates
@@ -35,6 +36,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// UserOtherRights ManageBorrowers
         /// </summary>
+        [AllowNull]
         public ManageBorrowersRights ManageBorrowers { get => GetField(ref _manageBorrowers); set => SetField(ref _manageBorrowers, value); }
 
         /// <summary>
@@ -50,6 +52,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// UserOtherRights ManageServiceProvidersList
         /// </summary>
+        [AllowNull]
         public ManageServiceProvidersListRights ManageServiceProvidersList { get => GetField(ref _manageServiceProvidersList); set => SetField(ref _manageServiceProvidersList, value); }
 
         /// <summary>

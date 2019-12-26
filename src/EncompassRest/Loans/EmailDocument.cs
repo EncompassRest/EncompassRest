@@ -5,17 +5,17 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class EmailDocument : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _docId;
-        private DirtyValue<string> _docTitle;
+        private DirtyValue<string?>? _docId;
+        private DirtyValue<string?>? _docTitle;
 
         /// <summary>
         /// EmailDocument DocId
         /// </summary>
-        public string DocId { get => _docId; set => SetField(ref _docId, value); }
+        public string? DocId { get => _docId; set => SetField(ref _docId, value); }
 
         /// <summary>
         /// EmailDocument DocTitle
         /// </summary>
-        public string DocTitle { get => _docTitle; set => SetField(ref _docTitle, value); }
+        public string? DocTitle { get => _docTitle; set => SetField(ref _docTitle, value); }
     }
 }

@@ -31,9 +31,9 @@ namespace EncompassRest.Loans.Conditions
     /// </summary>
     public sealed class LoanConditions : LoanApiObject, ILoanConditions
     {
-        private LoanUnderwritingConditions _underwriting;
-        private LoanPreliminaryConditions _preliminary;
-        private LoanPostClosingConditions _postClosing;
+        private LoanUnderwritingConditions? _underwriting;
+        private LoanPreliminaryConditions? _preliminary;
+        private LoanPostClosingConditions? _postClosing;
 
         /// <summary>
         /// The Loan Underwriting Conditions Apis.
@@ -126,7 +126,7 @@ namespace EncompassRest.Loans.Conditions
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> CreateConditionRawAsync(string condition, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> CreateConditionRawAsync(string condition, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates multiple conditions for the loan.
         /// </summary>
@@ -171,21 +171,21 @@ namespace EncompassRest.Loans.Conditions
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetConditionRawAsync(string conditionId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetConditionRawAsync(string conditionId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets conditions for the loan.
         /// </summary>
         /// <param name="queryParameters">The condition query parameters to sent in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<List<TCondition>> GetConditionsAsync(ConditionQueryParameters queryParameters = null, CancellationToken cancellationToken = default);
+        Task<List<TCondition>> GetConditionsAsync(ConditionQueryParameters? queryParameters = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets conditions for the loan as raw json.
         /// </summary>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetConditionsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetConditionsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Manages multiple condition comments from raw json.
         /// </summary>
@@ -247,7 +247,7 @@ namespace EncompassRest.Loans.Conditions
         /// <param name="queryParameters">The condition query parameters to sent in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<List<TCondition>> GetConditionsAsync(ConditionQueryParameters queryParameters = null, CancellationToken cancellationToken = default) => GetDirtyListAsync<TCondition>(null, queryParameters?.ToString(), nameof(GetConditionsAsync), null, cancellationToken);
+        public Task<List<TCondition>> GetConditionsAsync(ConditionQueryParameters? queryParameters = null, CancellationToken cancellationToken = default) => GetDirtyListAsync<TCondition>(null, queryParameters?.ToString(), nameof(GetConditionsAsync), null, cancellationToken);
 
         /// <summary>
         /// Gets conditions for the loan as raw json.
@@ -255,7 +255,7 @@ namespace EncompassRest.Loans.Conditions
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetConditionsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetConditionsRawAsync), null, cancellationToken);
+        public Task<string> GetConditionsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetConditionsRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Gets the condition with the specified <paramref name="conditionId"/> for the loan.
@@ -277,7 +277,7 @@ namespace EncompassRest.Loans.Conditions
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetConditionRawAsync(string conditionId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetConditionRawAsync(string conditionId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(conditionId, nameof(conditionId));
 
@@ -314,7 +314,7 @@ namespace EncompassRest.Loans.Conditions
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> CreateConditionRawAsync(string condition, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> CreateConditionRawAsync(string condition, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(condition, nameof(condition));
 
@@ -520,7 +520,7 @@ namespace EncompassRest.Loans.Conditions
         /// <param name="documents">The documents to assign or unassign.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task AssignConditionDocumentsAsync(string conditionId, AssignmentAction action, IEnumerable<EntityReference> documents, CancellationToken cancellationToken = default) => AssignConditionDocumentsAsync(conditionId, action.Validate(nameof(action)).GetValue(), documents, cancellationToken);
+        public Task AssignConditionDocumentsAsync(string conditionId, AssignmentAction action, IEnumerable<EntityReference> documents, CancellationToken cancellationToken = default) => AssignConditionDocumentsAsync(conditionId, action.Validate(nameof(action)).GetValue()!, documents, cancellationToken);
 
         /// <summary>
         /// Assigns or unassigns documents from the specified condition.

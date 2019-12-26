@@ -25,7 +25,7 @@ namespace EncompassRest.Settings.Loan
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetCustomFieldRawAsync(string fieldId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetCustomFieldRawAsync(string fieldId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets all custom field definitions.
         /// </summary>
@@ -38,16 +38,16 @@ namespace EncompassRest.Settings.Loan
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetCustomFieldsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetCustomFieldsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         [Obsolete("Undocumented API")]
         Task CreateCustomFieldAsync(CustomFieldDefinition customField, CancellationToken cancellationToken = default);
         [Obsolete("Undocumented API")]
-        Task CreateCustomFieldRawAsync(string fieldId, string customField, string queryString = null, CancellationToken cancellationToken = default);
+        Task CreateCustomFieldRawAsync(string fieldId, string customField, string? queryString = null, CancellationToken cancellationToken = default);
         [Obsolete("Undocumented API")]
         Task UpdateCustomFieldAsync(CustomFieldDefinition customField, CancellationToken cancellationToken = default);
         [Obsolete("Undocumented API")]
-        Task UpdateCustomFieldRawAsync(string fieldId, string customField, string queryString = null, CancellationToken cancellationToken = default);
+        Task UpdateCustomFieldRawAsync(string fieldId, string customField, string? queryString = null, CancellationToken cancellationToken = default);
         [Obsolete("Undocumented API")]
         Task DeleteCustomFieldAsync(string fieldId, CancellationToken cancellationToken = default);
         [Obsolete("Undocumented API")]
@@ -78,7 +78,7 @@ namespace EncompassRest.Settings.Loan
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetCustomFieldsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetCustomFieldsRawAsync), null, cancellationToken);
+        public Task<string> GetCustomFieldsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetCustomFieldsRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Gets the custom field definition with the specified <paramref name="fieldId"/>.
@@ -100,7 +100,7 @@ namespace EncompassRest.Settings.Loan
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetCustomFieldRawAsync(string fieldId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetCustomFieldRawAsync(string fieldId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
@@ -118,7 +118,7 @@ namespace EncompassRest.Settings.Loan
         }
 
         [Obsolete("Undocumented API")]
-        public Task CreateCustomFieldRawAsync(string fieldId, string customField, string queryString = null, CancellationToken cancellationToken = default)
+        public Task CreateCustomFieldRawAsync(string fieldId, string customField, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
             Preconditions.NotNull(customField, nameof(customField));
@@ -136,7 +136,7 @@ namespace EncompassRest.Settings.Loan
         }
 
         [Obsolete("Undocumented API")]
-        public Task UpdateCustomFieldRawAsync(string fieldId, string customField, string queryString = null, CancellationToken cancellationToken = default)
+        public Task UpdateCustomFieldRawAsync(string fieldId, string customField, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
             Preconditions.NotNull(customField, nameof(customField));

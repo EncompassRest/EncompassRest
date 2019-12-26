@@ -8,12 +8,12 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class EnergyEfficientMortgageItem : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _actualAmount;
-        private DirtyValue<decimal?> _allowedAmount;
-        private DirtyValue<int?> _energyEfficientMortgageItemIndex;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _item;
-        private DirtyValue<int?> _lineNumber;
+        private DirtyValue<decimal?>? _actualAmount;
+        private DirtyValue<decimal?>? _allowedAmount;
+        private DirtyValue<int?>? _energyEfficientMortgageItemIndex;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _item;
+        private DirtyValue<int?>? _lineNumber;
 
         /// <summary>
         /// EnergyEfficientMortgageItem ActualAmount
@@ -35,12 +35,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EnergyEfficientMortgageItem Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// EnergyEfficientMortgageItem Item
         /// </summary>
-        public string Item { get => _item; set => SetField(ref _item, value); }
+        public string? Item { get => _item; set => SetField(ref _item, value); }
 
         /// <summary>
         /// EnergyEfficientMortgageItem LineNumber

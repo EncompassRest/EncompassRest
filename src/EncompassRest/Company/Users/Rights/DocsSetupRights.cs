@@ -5,12 +5,12 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class DocsSetupRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _closingPlanCodes;
-        private DirtyValue<bool?> _closingStackingTemplates;
-        private DirtyValue<bool?> _complianceAuditSettings;
-        private DirtyValue<bool?> _eDisclosurePackages;
-        private DirtyValue<bool?> _eDisclosurePlanCodes;
-        private DirtyValue<bool?> _eDisclosureStackingTemplates;
+        private DirtyValue<bool?>? _closingPlanCodes;
+        private DirtyValue<bool?>? _closingStackingTemplates;
+        private DirtyValue<bool?>? _complianceAuditSettings;
+        private DirtyValue<bool?>? _eDisclosurePackages;
+        private DirtyValue<bool?>? _eDisclosurePlanCodes;
+        private DirtyValue<bool?>? _eDisclosureStackingTemplates;
 
         /// <summary>
         /// DocsSetupRights ClosingPlanCodes

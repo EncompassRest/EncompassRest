@@ -33,7 +33,7 @@ namespace EncompassRest.Organizations
         /// <param name="view">The view of the organization to get.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<Organization> GetOrganizationAsync(string orgId, string view, CancellationToken cancellationToken = default);
+        Task<Organization> GetOrganizationAsync(string orgId, string? view, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the children of the organization with the specified <paramref name="orgId"/>.
         /// </summary>
@@ -48,7 +48,7 @@ namespace EncompassRest.Organizations
         /// <param name="options">The organization children retrieval options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<List<OrganizationReference>> GetOrganizationChildrenAsync(string orgId, OrganizationChildrenRetrievalOptions options, CancellationToken cancellationToken = default);
+        Task<List<OrganizationReference>> GetOrganizationChildrenAsync(string orgId, OrganizationChildrenRetrievalOptions? options, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the children of the organization with the specified <paramref name="orgId"/> as raw json.
         /// </summary>
@@ -56,7 +56,7 @@ namespace EncompassRest.Organizations
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetOrganizationChildrenRawAsync(string orgId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetOrganizationChildrenRawAsync(string orgId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the organization with the specified <paramref name="orgId"/> as raw json.
         /// </summary>
@@ -64,7 +64,7 @@ namespace EncompassRest.Organizations
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetOrganizationRawAsync(string orgId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetOrganizationRawAsync(string orgId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets a summary view of all organizations.
         /// </summary>
@@ -77,14 +77,14 @@ namespace EncompassRest.Organizations
         /// <param name="options">The organizations retrieval options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<List<Organization>> GetOrganizationsAsync(OrganizationsRetrievalOptions options, CancellationToken cancellationToken = default);
+        Task<List<Organization>> GetOrganizationsAsync(OrganizationsRetrievalOptions? options, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets organizations as raw json.
         /// </summary>
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetOrganizationsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetOrganizationsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets a summary view of the root organization.
         /// </summary>
@@ -104,14 +104,14 @@ namespace EncompassRest.Organizations
         /// <param name="view">The view of the organization to get.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<Organization> GetRootOrganizationAsync(string view, CancellationToken cancellationToken = default);
+        Task<Organization> GetRootOrganizationAsync(string? view, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the root organization as raw json.
         /// </summary>
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetRootOrganizationRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetRootOrganizationRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -137,7 +137,7 @@ namespace EncompassRest.Organizations
         /// <param name="options">The organizations retrieval options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<List<Organization>> GetOrganizationsAsync(OrganizationsRetrievalOptions options, CancellationToken cancellationToken = default) => GetDirtyListAsync<Organization>(null, options?.GetQueryParameters().ToString(), nameof(GetOrganizationsAsync), null, cancellationToken);
+        public Task<List<Organization>> GetOrganizationsAsync(OrganizationsRetrievalOptions? options, CancellationToken cancellationToken = default) => GetDirtyListAsync<Organization>(null, options?.GetQueryParameters().ToString(), nameof(GetOrganizationsAsync), null, cancellationToken);
 
         /// <summary>
         /// Gets organizations as raw json.
@@ -145,7 +145,7 @@ namespace EncompassRest.Organizations
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetOrganizationsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetOrganizationsRawAsync), null, cancellationToken);
+        public Task<string> GetOrganizationsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetOrganizationsRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Gets a summary view of the root organization.
@@ -168,7 +168,7 @@ namespace EncompassRest.Organizations
         /// <param name="view">The view of the organization to get.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<Organization> GetRootOrganizationAsync(string view, CancellationToken cancellationToken = default) => GetOrganizationAsync("root", view, cancellationToken);
+        public Task<Organization> GetRootOrganizationAsync(string? view, CancellationToken cancellationToken = default) => GetOrganizationAsync("root", view, cancellationToken);
 
         /// <summary>
         /// Gets the root organization as raw json.
@@ -176,7 +176,7 @@ namespace EncompassRest.Organizations
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetRootOrganizationRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetOrganizationRawAsync("root", queryString, cancellationToken);
+        public Task<string> GetRootOrganizationRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetOrganizationRawAsync("root", queryString, cancellationToken);
 
         /// <summary>
         /// Gets a summary view of the organization with the specified <paramref name="orgId"/>.
@@ -202,7 +202,7 @@ namespace EncompassRest.Organizations
         /// <param name="view">The view of the organization to get.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<Organization> GetOrganizationAsync(string orgId, string view, CancellationToken cancellationToken = default)
+        public Task<Organization> GetOrganizationAsync(string orgId, string? view, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(orgId, nameof(orgId));
 
@@ -221,7 +221,7 @@ namespace EncompassRest.Organizations
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetOrganizationRawAsync(string orgId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetOrganizationRawAsync(string orgId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(orgId, nameof(orgId));
 
@@ -243,7 +243,7 @@ namespace EncompassRest.Organizations
         /// <param name="options">The organization children retrieval options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<List<OrganizationReference>> GetOrganizationChildrenAsync(string orgId, OrganizationChildrenRetrievalOptions options, CancellationToken cancellationToken = default)
+        public Task<List<OrganizationReference>> GetOrganizationChildrenAsync(string orgId, OrganizationChildrenRetrievalOptions? options, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(orgId, nameof(orgId));
 
@@ -257,7 +257,7 @@ namespace EncompassRest.Organizations
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetOrganizationChildrenRawAsync(string orgId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetOrganizationChildrenRawAsync(string orgId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(orgId, nameof(orgId));
 

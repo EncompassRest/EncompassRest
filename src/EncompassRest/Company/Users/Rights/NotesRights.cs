@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,11 +7,12 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class NotesRights : ParentAccessRights
     {
-        private EditNotesRights _editNotes;
+        private EditNotesRights? _editNotes;
 
         /// <summary>
         /// NotesRights EditNotes
         /// </summary>
+        [AllowNull]
         public EditNotesRights EditNotes { get => GetField(ref _editNotes); set => SetField(ref _editNotes, value); }
     }
 }

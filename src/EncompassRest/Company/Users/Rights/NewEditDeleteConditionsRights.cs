@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class NewEditDeleteConditionsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _changeSignoffDates;
-        private DirtyValue<bool?> _changeSignoffNames;
+        private DirtyValue<bool?>? _changeSignoffDates;
+        private DirtyValue<bool?>? _changeSignoffNames;
 
         /// <summary>
         /// NewEditDeleteConditionsRights ChangeSignoffDates

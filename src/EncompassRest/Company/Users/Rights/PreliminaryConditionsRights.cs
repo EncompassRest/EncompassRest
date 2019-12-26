@@ -5,7 +5,7 @@
     /// </summary>
     public sealed class PreliminaryConditionsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _importConditions;
+        private DirtyValue<bool?>? _importConditions;
 
         /// <summary>
         /// PreliminaryConditionsRights ImportConditions

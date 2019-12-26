@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans.Conditions
 {
@@ -9,45 +10,45 @@ namespace EncompassRest.Loans.Conditions
     [Entity(PropertiesToAlwaysSerialize = nameof(ForAllApplications) + "," + nameof(Application))]
     public abstract class LoanCondition : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _templateId;
-        private DirtyValue<StringEnumValue<ConditionType>> _conditionType;
-        private DirtyValue<bool?> _isRemoved;
-        private DirtyValue<string> _title;
-        private DirtyValue<string> _description;
-        private DirtyValue<EntityReference> _application;
-        private DirtyValue<bool?> _forAllApplications;
-        private DirtyValue<StringEnumValue<ConditionSource>> _source;
-        private DirtyValue<DateTime?> _expectedDate;
-        private DirtyValue<StringEnumValue<ConditionStatus>> _status;
-        private DirtyValue<DateTime?> _statusDate;
-        private DirtyValue<int?> _daysToReceive;
-        private DirtyValue<string> _requestedFrom;
-        private DirtyValue<DateTime?> _createdDate;
-        private DirtyValue<EntityReference> _createdBy;
-        private DirtyValue<bool?> _isRequested;
-        private DirtyValue<DateTime?> _requestedDate;
-        private DirtyValue<EntityReference> _requestedBy;
-        private DirtyValue<bool?> _isRerequested;
-        private DirtyValue<DateTime?> _rerequestedDate;
-        private DirtyValue<EntityReference> _rerequestedBy;
-        private DirtyValue<bool?> _isReceived;
-        private DirtyValue<DateTime?> _receivedDate;
-        private DirtyValue<EntityReference> _receivedBy;
-        private DirtyValue<bool?> _isAddedToConditionSet;
-        private DirtyList<Comment> _comments;
-        private DirtyList<EntityReference> _documents;
-        private DirtyValue<string> _descriptionDetails;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _templateId;
+        private DirtyValue<StringEnumValue<ConditionType>>? _conditionType;
+        private DirtyValue<bool?>? _isRemoved;
+        private DirtyValue<string?>? _title;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<EntityReference?>? _application;
+        private DirtyValue<bool?>? _forAllApplications;
+        private DirtyValue<StringEnumValue<ConditionSource>>? _source;
+        private DirtyValue<DateTime?>? _expectedDate;
+        private DirtyValue<StringEnumValue<ConditionStatus>>? _status;
+        private DirtyValue<DateTime?>? _statusDate;
+        private DirtyValue<int?>? _daysToReceive;
+        private DirtyValue<string?>? _requestedFrom;
+        private DirtyValue<DateTime?>? _createdDate;
+        private DirtyValue<EntityReference?>? _createdBy;
+        private DirtyValue<bool?>? _isRequested;
+        private DirtyValue<DateTime?>? _requestedDate;
+        private DirtyValue<EntityReference?>? _requestedBy;
+        private DirtyValue<bool?>? _isRerequested;
+        private DirtyValue<DateTime?>? _rerequestedDate;
+        private DirtyValue<EntityReference?>? _rerequestedBy;
+        private DirtyValue<bool?>? _isReceived;
+        private DirtyValue<DateTime?>? _receivedDate;
+        private DirtyValue<EntityReference?>? _receivedBy;
+        private DirtyValue<bool?>? _isAddedToConditionSet;
+        private DirtyList<Comment>? _comments;
+        private DirtyList<EntityReference>? _documents;
+        private DirtyValue<string?>? _descriptionDetails;
 
         /// <summary>
         /// Unique identifier of a condition.
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// The ID of the template used to create the condition.
         /// </summary>
-        public string TemplateId { get => _templateId; set => SetField(ref _templateId, value); }
+        public string? TemplateId { get => _templateId; set => SetField(ref _templateId, value); }
 
         /// <summary>
         /// Type of a condition.
@@ -62,17 +63,17 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Title of the document.
         /// </summary>
-        public string Title { get => _title; set => SetField(ref _title, value); }
+        public string? Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// Description of the document.
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// Loan application to which to apply the condition. Required if applying condition to a specific application. If you want to apply the condition to all applications of the loan, set <see cref="ForAllApplications"/> to <c>true</c>.
         /// </summary>
-        public EntityReference Application { get => _application; set => SetField(ref _application, value); }
+        public EntityReference? Application { get => _application; set => SetField(ref _application, value); }
 
         /// <summary>
         /// A value of <c>true</c> indicates the condition will be linked to all applications or only for a specified application. If linked to a specified application, the application ID must be provided.
@@ -107,7 +108,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// User who requested the condition.
         /// </summary>
-        public string RequestedFrom { get => _requestedFrom; set => SetField(ref _requestedFrom, value); }
+        public string? RequestedFrom { get => _requestedFrom; set => SetField(ref _requestedFrom, value); }
 
         /// <summary>
         /// Date and time the condition was created.
@@ -117,7 +118,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who created the condition.
         /// </summary>
-        public EntityReference CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
+        public EntityReference? CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Requested.
@@ -132,7 +133,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who requested the condition.
         /// </summary>
-        public EntityReference RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
+        public EntityReference? RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Re-requested.
@@ -147,7 +148,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who re-requested the condition.
         /// </summary>
-        public EntityReference RerequestedBy { get => _rerequestedBy; set => SetField(ref _rerequestedBy, value); }
+        public EntityReference? RerequestedBy { get => _rerequestedBy; set => SetField(ref _rerequestedBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Received.
@@ -162,7 +163,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who received the condition.
         /// </summary>
-        public EntityReference ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
+        public EntityReference? ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
 
         /// <summary>
         /// Whether the condition belongs to a condition set.
@@ -172,17 +173,19 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Any comments for the condition.
         /// </summary>
+        [AllowNull]
         public IList<Comment> Comments { get => GetField(ref _comments); set => SetField(ref _comments, value); }
 
         /// <summary>
         /// Any supporting documents.
         /// </summary>
+        [AllowNull]
         public IList<EntityReference> Documents { get => GetField(ref _documents); set => SetField(ref _documents, value); }
 
         /// <summary>
         /// LoanCondition DescriptionDetails
         /// </summary>
-        public string DescriptionDetails { get => _descriptionDetails; set => SetField(ref _descriptionDetails, value); }
+        public string? DescriptionDetails { get => _descriptionDetails; set => SetField(ref _descriptionDetails, value); }
 
         internal LoanCondition()
         {

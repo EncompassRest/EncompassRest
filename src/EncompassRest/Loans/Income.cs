@@ -9,13 +9,13 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(IncomeType) + "," + nameof(OtherIncomeIndex) + "," + nameof(Owner))]
     public sealed partial class Income : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amount;
-        private DirtyValue<bool?> _currentIndicator;
-        private DirtyValue<StringEnumValue<Description>> _description;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<IncomeType>> _incomeType;
-        private DirtyValue<int?> _otherIncomeIndex;
-        private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _owner;
+        private DirtyValue<decimal?>? _amount;
+        private DirtyValue<bool?>? _currentIndicator;
+        private DirtyValue<StringEnumValue<Description>>? _description;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<IncomeType>>? _incomeType;
+        private DirtyValue<int?>? _otherIncomeIndex;
+        private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>>? _owner;
 
         /// <summary>
         /// Income Amount
@@ -36,7 +36,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Income Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Income IncomeType

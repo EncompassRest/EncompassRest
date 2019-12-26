@@ -7,9 +7,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class FeeAmountsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _borrowerAmountOnly;
-        private DirtyValue<bool?> _brokerLenderOtherAmounts;
-        private DirtyValue<bool?> _sellerAmountSellerCreditSellerObligated;
+        private DirtyValue<bool?>? _borrowerAmountOnly;
+        private DirtyValue<bool?>? _brokerLenderOtherAmounts;
+        private DirtyValue<bool?>? _sellerAmountSellerCreditSellerObligated;
 
         /// <summary>
         /// FeeAmountsRights BorrowerAmountOnly

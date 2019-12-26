@@ -5,17 +5,17 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TablesAndFeesRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _cityTax;
-        private DirtyValue<bool?> _escrow;
-        private DirtyValue<bool?> _fHACountyLimits;
-        private DirtyValue<bool?> _hELOCTable;
-        private DirtyValue<bool?> _itemizationFeeManagement;
-        private DirtyValue<bool?> _lOCompensation;
-        private DirtyValue<bool?> _mITables;
-        private DirtyValue<bool?> _stateTax;
-        private DirtyValue<bool?> _temporaryBuydown;
-        private DirtyValue<bool?> _title;
-        private DirtyValue<bool?> _userDefinedFee;
+        private DirtyValue<bool?>? _cityTax;
+        private DirtyValue<bool?>? _escrow;
+        private DirtyValue<bool?>? _fHACountyLimits;
+        private DirtyValue<bool?>? _hELOCTable;
+        private DirtyValue<bool?>? _itemizationFeeManagement;
+        private DirtyValue<bool?>? _lOCompensation;
+        private DirtyValue<bool?>? _mITables;
+        private DirtyValue<bool?>? _stateTax;
+        private DirtyValue<bool?>? _temporaryBuydown;
+        private DirtyValue<bool?>? _title;
+        private DirtyValue<bool?>? _userDefinedFee;
 
         /// <summary>
         /// TablesAndFeesRights CityTax

@@ -7,57 +7,57 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class SchedulePaymentTransaction : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _additionalEscrow;
-        private DirtyValue<decimal?> _additionalPrincipal;
-        private DirtyValue<decimal?> _buydownSubsidyAmount;
-        private DirtyValue<decimal?> _buydownSubsidyAmountDue;
-        private DirtyValue<decimal?> _cityPropertyTax;
-        private DirtyValue<string> _comments;
-        private DirtyValue<string> _createdById;
-        private DirtyValue<string> _createdByName;
-        private DirtyValue<DateTime?> _createdDateTimeUtc;
-        private DirtyValue<decimal?> _escrow;
-        private DirtyValue<decimal?> _escrowCityPropertyTaxDue;
-        private DirtyValue<decimal?> _escrowDue;
-        private DirtyValue<decimal?> _escrowFloodInsuranceDue;
-        private DirtyValue<decimal?> _escrowHazardInsuranceDue;
-        private DirtyValue<decimal?> _escrowMortgageInsuranceDue;
-        private DirtyValue<decimal?> _escrowOther1Due;
-        private DirtyValue<decimal?> _escrowOther2Due;
-        private DirtyValue<decimal?> _escrowOther3Due;
-        private DirtyValue<decimal?> _escrowTaxDue;
-        private DirtyValue<decimal?> _escrowUSDAMonthlyPremiumDue;
-        private DirtyValue<decimal?> _floodInsurance;
-        private DirtyValue<string> _guid;
-        private DirtyValue<decimal?> _hazardInsurance;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _indexRate;
-        private DirtyValue<decimal?> _interest;
-        private DirtyValue<decimal?> _interestDue;
-        private DirtyValue<decimal?> _interestRate;
-        private DirtyValue<decimal?> _lateFee;
-        private DirtyValue<DateTime?> _latePaymentDate;
-        private DirtyValue<decimal?> _miscFee;
-        private DirtyValue<decimal?> _miscFeeDue;
-        private DirtyValue<string> _modifiedById;
-        private DirtyValue<string> _modifiedByName;
-        private DirtyValue<DateTime?> _modifiedDateTimeUtc;
-        private DirtyValue<decimal?> _mortgageInsurance;
-        private DirtyValue<decimal?> _other1Escrow;
-        private DirtyValue<decimal?> _other2Escrow;
-        private DirtyValue<decimal?> _other3Escrow;
-        private DirtyValue<int?> _paymentNumber;
-        private DirtyValue<DateTime?> _paymentReceiveDate;
-        private DirtyValue<decimal?> _principal;
-        private DirtyValue<decimal?> _principalDue;
-        private DirtyValue<string> _servicingPaymentMethod;
-        private DirtyValue<string> _servicingTransactionType;
-        private DirtyValue<decimal?> _taxes;
-        private DirtyValue<decimal?> _totalPastDue;
-        private DirtyValue<decimal?> _transactionAmount;
-        private DirtyValue<DateTime?> _transactionDate;
-        private DirtyValue<decimal?> _unpaidLateFeeDue;
-        private DirtyValue<decimal?> _uSDAMonthlyPremium;
+        private DirtyValue<decimal?>? _additionalEscrow;
+        private DirtyValue<decimal?>? _additionalPrincipal;
+        private DirtyValue<decimal?>? _buydownSubsidyAmount;
+        private DirtyValue<decimal?>? _buydownSubsidyAmountDue;
+        private DirtyValue<decimal?>? _cityPropertyTax;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<string?>? _createdById;
+        private DirtyValue<string?>? _createdByName;
+        private DirtyValue<DateTime?>? _createdDateTimeUtc;
+        private DirtyValue<decimal?>? _escrow;
+        private DirtyValue<decimal?>? _escrowCityPropertyTaxDue;
+        private DirtyValue<decimal?>? _escrowDue;
+        private DirtyValue<decimal?>? _escrowFloodInsuranceDue;
+        private DirtyValue<decimal?>? _escrowHazardInsuranceDue;
+        private DirtyValue<decimal?>? _escrowMortgageInsuranceDue;
+        private DirtyValue<decimal?>? _escrowOther1Due;
+        private DirtyValue<decimal?>? _escrowOther2Due;
+        private DirtyValue<decimal?>? _escrowOther3Due;
+        private DirtyValue<decimal?>? _escrowTaxDue;
+        private DirtyValue<decimal?>? _escrowUSDAMonthlyPremiumDue;
+        private DirtyValue<decimal?>? _floodInsurance;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<decimal?>? _hazardInsurance;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _indexRate;
+        private DirtyValue<decimal?>? _interest;
+        private DirtyValue<decimal?>? _interestDue;
+        private DirtyValue<decimal?>? _interestRate;
+        private DirtyValue<decimal?>? _lateFee;
+        private DirtyValue<DateTime?>? _latePaymentDate;
+        private DirtyValue<decimal?>? _miscFee;
+        private DirtyValue<decimal?>? _miscFeeDue;
+        private DirtyValue<string?>? _modifiedById;
+        private DirtyValue<string?>? _modifiedByName;
+        private DirtyValue<DateTime?>? _modifiedDateTimeUtc;
+        private DirtyValue<decimal?>? _mortgageInsurance;
+        private DirtyValue<decimal?>? _other1Escrow;
+        private DirtyValue<decimal?>? _other2Escrow;
+        private DirtyValue<decimal?>? _other3Escrow;
+        private DirtyValue<int?>? _paymentNumber;
+        private DirtyValue<DateTime?>? _paymentReceiveDate;
+        private DirtyValue<decimal?>? _principal;
+        private DirtyValue<decimal?>? _principalDue;
+        private DirtyValue<string?>? _servicingPaymentMethod;
+        private DirtyValue<string?>? _servicingTransactionType;
+        private DirtyValue<decimal?>? _taxes;
+        private DirtyValue<decimal?>? _totalPastDue;
+        private DirtyValue<decimal?>? _transactionAmount;
+        private DirtyValue<DateTime?>? _transactionDate;
+        private DirtyValue<decimal?>? _unpaidLateFeeDue;
+        private DirtyValue<decimal?>? _uSDAMonthlyPremium;
 
         /// <summary>
         /// SchedulePaymentTransaction AdditionalEscrow
@@ -87,17 +87,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SchedulePaymentTransaction Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// SchedulePaymentTransaction CreatedById
         /// </summary>
-        public string CreatedById { get => _createdById; set => SetField(ref _createdById, value); }
+        public string? CreatedById { get => _createdById; set => SetField(ref _createdById, value); }
 
         /// <summary>
         /// SchedulePaymentTransaction CreatedByName
         /// </summary>
-        public string CreatedByName { get => _createdByName; set => SetField(ref _createdByName, value); }
+        public string? CreatedByName { get => _createdByName; set => SetField(ref _createdByName, value); }
 
         /// <summary>
         /// SchedulePaymentTransaction CreatedDateTimeUtc
@@ -167,7 +167,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SchedulePaymentTransaction Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// SchedulePaymentTransaction HazardInsurance
@@ -177,7 +177,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SchedulePaymentTransaction Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// SchedulePaymentTransaction IndexRate
@@ -222,12 +222,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SchedulePaymentTransaction ModifiedById
         /// </summary>
-        public string ModifiedById { get => _modifiedById; set => SetField(ref _modifiedById, value); }
+        public string? ModifiedById { get => _modifiedById; set => SetField(ref _modifiedById, value); }
 
         /// <summary>
         /// SchedulePaymentTransaction ModifiedByName
         /// </summary>
-        public string ModifiedByName { get => _modifiedByName; set => SetField(ref _modifiedByName, value); }
+        public string? ModifiedByName { get => _modifiedByName; set => SetField(ref _modifiedByName, value); }
 
         /// <summary>
         /// SchedulePaymentTransaction ModifiedDateTimeUtc
@@ -277,12 +277,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SchedulePaymentTransaction ServicingPaymentMethod
         /// </summary>
-        public string ServicingPaymentMethod { get => _servicingPaymentMethod; set => SetField(ref _servicingPaymentMethod, value); }
+        public string? ServicingPaymentMethod { get => _servicingPaymentMethod; set => SetField(ref _servicingPaymentMethod, value); }
 
         /// <summary>
         /// SchedulePaymentTransaction ServicingTransactionType
         /// </summary>
-        public string ServicingTransactionType { get => _servicingTransactionType; set => SetField(ref _servicingTransactionType, value); }
+        public string? ServicingTransactionType { get => _servicingTransactionType; set => SetField(ref _servicingTransactionType, value); }
 
         /// <summary>
         /// SchedulePaymentTransaction Taxes

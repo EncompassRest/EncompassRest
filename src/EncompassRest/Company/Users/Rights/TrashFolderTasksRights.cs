@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TrashFolderTasksRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _deleteLoansPermanently;
-        private DirtyValue<bool?> _restoreLoanstoFolder;
+        private DirtyValue<bool?>? _deleteLoansPermanently;
+        private DirtyValue<bool?>? _restoreLoanstoFolder;
 
         /// <summary>
         /// TrashFolderTasksRights DeleteLoansPermanently

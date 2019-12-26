@@ -19,13 +19,13 @@ namespace EncompassRest
         /// The implicit conversion operator from a string to a <see cref="StringEnumValue{TEnum}"/>.
         /// </summary>
         /// <param name="value">The value to convert.</param>
-        public static implicit operator StringEnumValue<TEnum>(string value) => new StringEnumValue<TEnum>(value);
+        public static implicit operator StringEnumValue<TEnum>(string? value) => new StringEnumValue<TEnum>(value);
 
         /// <summary>
         /// The implicit conversion operator from a <see cref="StringEnumValue{TEnum}"/> to a string.
         /// </summary>
         /// <param name="value">The value to convert.</param>
-        public static implicit operator string(StringEnumValue<TEnum> value) => value.Value;
+        public static implicit operator string?(StringEnumValue<TEnum> value) => value.Value;
 
         /// <summary>
         /// The implicit conversion operator from an <typeparamref name="TEnum?"/> to a <see cref="StringEnumValue{TEnum}"/>.
@@ -42,7 +42,7 @@ namespace EncompassRest
         /// <summary>
         /// The string value.
         /// </summary>
-        public string Value { get; }
+        public string? Value { get; }
 
         /// <summary>
         /// The enum value if defined else <c>null</c>.
@@ -53,7 +53,7 @@ namespace EncompassRest
         /// The StringEnumValue constructor for a string value.
         /// </summary>
         /// <param name="value">The string value to initialize the object with.</param>
-        public StringEnumValue(string value)
+        public StringEnumValue(string? value)
         {
             Value = value;
         }
@@ -71,7 +71,7 @@ namespace EncompassRest
         /// Returns the string representation of the object.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => Value;
+        public override string? ToString() => Value;
 
         /// <summary>
         /// Gets the hash code for the object.
@@ -92,6 +92,22 @@ namespace EncompassRest
         /// <param name="other">The object to compare with.</param>
         /// <returns></returns>
         public bool Equals(StringEnumValue<TEnum> other) => other.Value == Value;
+
+        /// <summary>
+        /// Indicates if the <paramref name="left"/> object is equal to the <paramref name="right"/> object.
+        /// </summary>
+        /// <param name="left">The first object to compare.</param>
+        /// <param name="right">The second object to compare.</param>
+        /// <returns></returns>
+        public static bool operator ==(StringEnumValue<TEnum> left, StringEnumValue<TEnum> right) => left.Equals(right);
+
+        /// <summary>
+        /// Indicates if the <paramref name="left"/> object is not equal to the <paramref name="right"/> object.
+        /// </summary>
+        /// <param name="left">The first object to compare.</param>
+        /// <param name="right">The second object to compare.</param>
+        /// <returns></returns>
+        public static bool operator !=(StringEnumValue<TEnum> left, StringEnumValue<TEnum> right) => !(left == right);
     }
 
     internal sealed class StringEnumValueConverter<TEnum> : JsonConverter, IStringCreator
@@ -103,6 +119,6 @@ namespace EncompassRest
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value is StringEnumValue<TEnum> sev ? sev.Value : value?.ToString());
 
-        public object Create(string value) => new StringEnumValue<TEnum>(value);
+        public object Create(string? value) => new StringEnumValue<TEnum>(value);
     }
 }

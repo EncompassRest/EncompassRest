@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,26 +7,26 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PipelineTasksRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _automaticRefreshConfiguration;
-        private DirtyValue<bool?> _deleteLoans;
-        private DirtyValue<bool?> _dueDiligence;
-        private DuplicateLoansRights _duplicateLoans;
-        private DirtyValue<bool?> _duplicateLoansforSecond;
-        private DirtyValue<bool?> _exportDatatoExcel;
-        private DirtyValue<bool?> _generateNMLSReport;
-        private GSEServicesRights _gSEServices;
-        private DirtyValue<bool?> _hedgeAdvisory;
-        private HMDAServicesRights _hMDAServices;
-        private ImportLoansRights _importLoans;
-        private DirtyValue<bool?> _includeArchiveFolders;
-        private DirtyValue<bool?> _investorServices;
-        private DirtyValue<bool?> _manageAlerts;
-        private ManagePipelineServicesRights _managePipelineServices;
-        private MoveLoansRights _moveLoans;
-        private NewLoansRights _newLoans;
-        private DirtyValue<bool?> _transferLoans;
-        private TrashFolderTasksRights _trashFolderTasks;
-        private DirtyValue<bool?> _warehouseLenders;
+        private DirtyValue<bool?>? _automaticRefreshConfiguration;
+        private DirtyValue<bool?>? _deleteLoans;
+        private DirtyValue<bool?>? _dueDiligence;
+        private DuplicateLoansRights? _duplicateLoans;
+        private DirtyValue<bool?>? _duplicateLoansforSecond;
+        private DirtyValue<bool?>? _exportDatatoExcel;
+        private DirtyValue<bool?>? _generateNMLSReport;
+        private GSEServicesRights? _gSEServices;
+        private DirtyValue<bool?>? _hedgeAdvisory;
+        private HMDAServicesRights? _hMDAServices;
+        private ImportLoansRights? _importLoans;
+        private DirtyValue<bool?>? _includeArchiveFolders;
+        private DirtyValue<bool?>? _investorServices;
+        private DirtyValue<bool?>? _manageAlerts;
+        private ManagePipelineServicesRights? _managePipelineServices;
+        private MoveLoansRights? _moveLoans;
+        private NewLoansRights? _newLoans;
+        private DirtyValue<bool?>? _transferLoans;
+        private TrashFolderTasksRights? _trashFolderTasks;
+        private DirtyValue<bool?>? _warehouseLenders;
 
         /// <summary>
         /// PipelineTasksRights AutomaticRefreshConfiguration
@@ -44,6 +46,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// PipelineTasksRights DuplicateLoans
         /// </summary>
+        [AllowNull]
         public DuplicateLoansRights DuplicateLoans { get => GetField(ref _duplicateLoans); set => SetField(ref _duplicateLoans, value); }
 
         /// <summary>
@@ -64,6 +67,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// PipelineTasksRights GSEServices
         /// </summary>
+        [AllowNull]
         public GSEServicesRights GSEServices { get => GetField(ref _gSEServices); set => SetField(ref _gSEServices, value); }
 
         /// <summary>
@@ -74,11 +78,13 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// PipelineTasksRights HMDAServices
         /// </summary>
+        [AllowNull]
         public HMDAServicesRights HMDAServices { get => GetField(ref _hMDAServices); set => SetField(ref _hMDAServices, value); }
 
         /// <summary>
         /// PipelineTasksRights ImportLoans
         /// </summary>
+        [AllowNull]
         public ImportLoansRights ImportLoans { get => GetField(ref _importLoans); set => SetField(ref _importLoans, value); }
 
         /// <summary>
@@ -99,16 +105,19 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// PipelineTasksRights ManagePipelineServices
         /// </summary>
+        [AllowNull]
         public ManagePipelineServicesRights ManagePipelineServices { get => GetField(ref _managePipelineServices); set => SetField(ref _managePipelineServices, value); }
 
         /// <summary>
         /// PipelineTasksRights MoveLoans
         /// </summary>
+        [AllowNull]
         public MoveLoansRights MoveLoans { get => GetField(ref _moveLoans); set => SetField(ref _moveLoans, value); }
 
         /// <summary>
         /// PipelineTasksRights NewLoans
         /// </summary>
+        [AllowNull]
         public NewLoansRights NewLoans { get => GetField(ref _newLoans); set => SetField(ref _newLoans, value); }
 
         /// <summary>
@@ -119,6 +128,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// PipelineTasksRights TrashFolderTasks
         /// </summary>
+        [AllowNull]
         public TrashFolderTasksRights TrashFolderTasks { get => GetField(ref _trashFolderTasks); set => SetField(ref _trashFolderTasks, value); }
 
         /// <summary>

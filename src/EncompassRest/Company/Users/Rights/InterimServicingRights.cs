@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,9 +8,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class InterimServicingRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _editDeleteTransaction;
-        private DirtyValue<bool?> _enterTransaction;
-        private StartServicingRights _startServicing;
+        private DirtyValue<bool?>? _editDeleteTransaction;
+        private DirtyValue<bool?>? _enterTransaction;
+        private StartServicingRights? _startServicing;
 
         /// <summary>
         /// InterimServicingRights EditDeleteTransaction
@@ -25,6 +26,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// InterimServicingRights StartServicing
         /// </summary>
+        [AllowNull]
         public StartServicingRights StartServicing { get => GetField(ref _startServicing); set => SetField(ref _startServicing, value); }
     }
 }

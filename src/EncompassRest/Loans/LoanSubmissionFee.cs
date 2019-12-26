@@ -9,17 +9,17 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(LoanSubmissionFeeType))]
     public sealed partial class LoanSubmissionFee : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _description;
-        private DirtyValue<decimal?> _dueBroker;
-        private DirtyValue<decimal?> _dueLender;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<LoanSubmissionFeeType>> _loanSubmissionFeeType;
-        private DirtyValue<decimal?> _total;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<decimal?>? _dueBroker;
+        private DirtyValue<decimal?>? _dueLender;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<LoanSubmissionFeeType>>? _loanSubmissionFeeType;
+        private DirtyValue<decimal?>? _total;
 
         /// <summary>
         /// LoanSubmissionFee Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// LoanSubmissionFee DueBroker
@@ -36,7 +36,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanSubmissionFee Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// LoanSubmissionFee LoanSubmissionFeeType

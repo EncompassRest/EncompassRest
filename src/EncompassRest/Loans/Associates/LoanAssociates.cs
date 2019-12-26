@@ -27,7 +27,7 @@ namespace EncompassRest.Loans.Associates
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task AssignAssociateRawAsync(string logId, string associate, string queryString = null, CancellationToken cancellationToken = default);
+        Task AssignAssociateRawAsync(string logId, string associate, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves information about a loan associate based on the milestone or milestone-free role ID. The response includes the associate's role and contact information.
         /// </summary>
@@ -42,7 +42,7 @@ namespace EncompassRest.Loans.Associates
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetAssociateRawAsync(string logId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetAssociateRawAsync(string logId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a list of loan associates involved with the loan. The response includes role and contact information for each loan associate.
         /// </summary>
@@ -56,14 +56,14 @@ namespace EncompassRest.Loans.Associates
         /// <param name="roleId">When provided, returns information about all Encompass users associated with the specified role ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<List<LoanAssociate>> GetAssociatesAsync(string userId, string roleId, CancellationToken cancellationToken = default);
+        Task<List<LoanAssociate>> GetAssociatesAsync(string? userId, string? roleId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a list of loan associates involved with the loan as raw json.
         /// </summary>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetAssociatesRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetAssociatesRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Unassigns a loan associate from a milestone based on the specified milestone or milestone-free ID.
         /// </summary>
@@ -104,7 +104,7 @@ namespace EncompassRest.Loans.Associates
         /// <param name="roleId">When provided, returns information about all Encompass users associated with the specified role ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<List<LoanAssociate>> GetAssociatesAsync(string userId, string roleId, CancellationToken cancellationToken = default)
+        public Task<List<LoanAssociate>> GetAssociatesAsync(string? userId, string? roleId, CancellationToken cancellationToken = default)
         {
             var queryParameters = new QueryParameters();
             if (!string.IsNullOrEmpty(userId))
@@ -125,7 +125,7 @@ namespace EncompassRest.Loans.Associates
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetAssociatesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetAssociatesRawAsync), null, cancellationToken);
+        public Task<string> GetAssociatesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetAssociatesRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Retrieves information about a loan associate based on the milestone or milestone-free role ID. The response includes the associate's role and contact information.
@@ -147,7 +147,7 @@ namespace EncompassRest.Loans.Associates
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetAssociateRawAsync(string logId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetAssociateRawAsync(string logId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
 
@@ -179,7 +179,7 @@ namespace EncompassRest.Loans.Associates
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task AssignAssociateRawAsync(string logId, string associate, string queryString = null, CancellationToken cancellationToken = default)
+        public Task AssignAssociateRawAsync(string logId, string associate, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
             Preconditions.NotNullOrEmpty(associate, nameof(associate));

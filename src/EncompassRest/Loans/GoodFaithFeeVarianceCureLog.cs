@@ -7,16 +7,16 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class GoodFaithFeeVarianceCureLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<DateTime?> _alertDateUtc;
-        private DirtyValue<decimal?> _appliedCureAmount;
-        private DirtyValue<string> _cureComments;
-        private DirtyValue<DateTime?> _dateResolved;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _inLogIndicator;
-        private DirtyValue<string> _name;
-        private DirtyValue<string> _resolvedBy;
-        private DirtyValue<string> _resolvedById;
-        private DirtyValue<decimal?> _totalVariance;
+        private DirtyValue<DateTime?>? _alertDateUtc;
+        private DirtyValue<decimal?>? _appliedCureAmount;
+        private DirtyValue<string?>? _cureComments;
+        private DirtyValue<DateTime?>? _dateResolved;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _inLogIndicator;
+        private DirtyValue<string?>? _name;
+        private DirtyValue<string?>? _resolvedBy;
+        private DirtyValue<string?>? _resolvedById;
+        private DirtyValue<decimal?>? _totalVariance;
 
         /// <summary>
         /// GoodFaithFeeVarianceCureLog AlertDateUtc
@@ -31,7 +31,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GoodFaithFeeVarianceCureLog CureComments
         /// </summary>
-        public string CureComments { get => _cureComments; set => SetField(ref _cureComments, value); }
+        public string? CureComments { get => _cureComments; set => SetField(ref _cureComments, value); }
 
         /// <summary>
         /// GoodFaithFeeVarianceCureLog DateResolved
@@ -41,7 +41,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GoodFaithFeeVarianceCureLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// GoodFaithFeeVarianceCureLog InLogIndicator
@@ -51,17 +51,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GoodFaithFeeVarianceCureLog Name
         /// </summary>
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
         /// GoodFaithFeeVarianceCureLog ResolvedBy
         /// </summary>
-        public string ResolvedBy { get => _resolvedBy; set => SetField(ref _resolvedBy, value); }
+        public string? ResolvedBy { get => _resolvedBy; set => SetField(ref _resolvedBy, value); }
 
         /// <summary>
         /// GoodFaithFeeVarianceCureLog ResolvedById
         /// </summary>
-        public string ResolvedById { get => _resolvedById; set => SetField(ref _resolvedById, value); }
+        public string? ResolvedById { get => _resolvedById; set => SetField(ref _resolvedById, value); }
 
         /// <summary>
         /// GoodFaithFeeVarianceCureLog TotalVariance

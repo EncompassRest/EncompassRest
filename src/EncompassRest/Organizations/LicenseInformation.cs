@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Company;
 
 namespace EncompassRest.Organizations
@@ -11,14 +12,14 @@ namespace EncompassRest.Organizations
     /// </remarks>
     public sealed class LicenseInformation : ParentInformation
     {
-        private DirtyValue<StringEnumValue<AtrExemptCreditors>> _atrExemptCreditors;
-        private DirtyValue<StringEnumValue<AtrSmallCreditors>> _atrSmallCreditors;
-        private DirtyValue<StringEnumValue<State>> _homeState;
-        private DirtyValue<string> _lenderType;
-        private DirtyValue<StringEnumValue<StatutoryStatusKansasType>> _statutoryStatusKansasType;
-        private DirtyValue<StringEnumValue<StatutoryStatusMarylandType>> _statutoryStatusMarylandType;
-        private DirtyValue<bool?> _useCustomLenderProfileForECS;
-        private DirtyList<StateLicenseExtType> _stateLicenseExtTypes;
+        private DirtyValue<StringEnumValue<AtrExemptCreditors>>? _atrExemptCreditors;
+        private DirtyValue<StringEnumValue<AtrSmallCreditors>>? _atrSmallCreditors;
+        private DirtyValue<StringEnumValue<State>>? _homeState;
+        private DirtyValue<string?>? _lenderType;
+        private DirtyValue<StringEnumValue<StatutoryStatusKansasType>>? _statutoryStatusKansasType;
+        private DirtyValue<StringEnumValue<StatutoryStatusMarylandType>>? _statutoryStatusMarylandType;
+        private DirtyValue<bool?>? _useCustomLenderProfileForECS;
+        private DirtyList<StateLicenseExtType>? _stateLicenseExtTypes;
 
         /// <summary>
         /// Indicates the organization qualifies as an exempt creditor and displays a description.
@@ -38,7 +39,7 @@ namespace EncompassRest.Organizations
         /// <summary>
         /// The type of licenses used by the organization (or its branches) in one or more states.
         /// </summary>
-        public string LenderType { get => _lenderType; set => SetField(ref _lenderType, value); }
+        public string? LenderType { get => _lenderType; set => SetField(ref _lenderType, value); }
 
         /// <summary>
         /// If the organization does business in Kansas, this attribute is can be set to NoStatutoryElection or UCCCElectionForAllLoans.
@@ -58,6 +59,7 @@ namespace EncompassRest.Organizations
         /// <summary>
         /// Objects containing the licenses that apply to your organization.
         /// </summary>
+        [AllowNull]
         public IList<StateLicenseExtType> StateLicenseExtTypes { get => GetField(ref _stateLicenseExtTypes); set => SetField(ref _stateLicenseExtTypes, value); }
     }
 }

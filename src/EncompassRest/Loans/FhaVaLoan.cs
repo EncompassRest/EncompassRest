@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,167 +11,167 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class FhaVaLoan : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<AddendumType>> _addendumType;
-        private DirtyValue<bool?> _additionalCondition1;
-        private DirtyValue<bool?> _additionalCondition2;
-        private DirtyValue<bool?> _additionalCondition3;
-        private DirtyValue<bool?> _additionalCondition4;
-        private DirtyValue<bool?> _additionalCondition5;
-        private DirtyValue<bool?> _additionalCondition6;
-        private DirtyValue<bool?> _additionalCondition7;
-        private DirtyValue<bool?> _additionalCondition8;
-        private DirtyValue<bool?> _additionalCondition9;
-        private DirtyValue<string> _addressValidatedBy;
-        private DirtyValue<string> _addressValidationMessage;
-        private DirtyValue<bool?> _allConditionsSatisfied;
-        private DirtyValue<DateTime?> _appraisalLoggedDate;
-        private DirtyValue<string> _appraisalLookupBy;
-        private DirtyValue<StringEnumValue<BeenInformed>> _beenInformed;
-        private DirtyValue<string> _borrowerCertificationAddress;
-        private DirtyValue<string> _borrowerCertificationCity;
-        private DirtyValue<string> _borrowerCertificationPostalCode;
-        private DirtyValue<StringEnumValue<State>> _borrowerCertificationState;
-        private DirtyValue<string> _cAIVRSObtainedBy;
-        private DirtyValue<string> _caseBinderShippedBy;
-        private DirtyValue<DateTime?> _caseBinderShippedDate;
-        private DirtyValue<DateTime?> _closingDate;
-        private DirtyValue<string> _condoPudID;
-        private DirtyValue<string> _condoPudLookupBy;
-        private DirtyValue<DateTime?> _condoPudLookupDate;
-        private DirtyValue<decimal?> _conventionalClosingCost;
-        private DirtyValue<decimal?> _conventionalDownPayment;
-        private DirtyValue<decimal?> _conventionalInterestRate;
-        private DirtyValue<int?> _conventionalLoanTerm;
-        private DirtyValue<decimal?> _conventionalLTV;
-        private DirtyValue<int?> _conventionalMaxYearsMI;
-        private DirtyValue<decimal?> _conventionalMMI;
-        private DirtyValue<decimal?> _conventionalMonthlyPayment;
-        private DirtyValue<decimal?> _conventionalMortgageAmount;
-        private DirtyValue<decimal?> _conventionalSalesPrice;
-        private DirtyValue<decimal?> _conventionalUMIP;
-        private DirtyValue<DateTime?> _dateApprovalExpires;
-        private DirtyValue<DateTime?> _dateMortgageApproved;
-        private DirtyValue<string> _detailForOther;
-        private DirtyValue<decimal?> _discountPoints;
-        private DirtyValue<string> _dulyAgentAddress;
-        private DirtyValue<string> _dulyAgentCity;
-        private DirtyValue<string> _dulyAgentFunction1;
-        private DirtyValue<string> _dulyAgentFunction2;
-        private DirtyValue<string> _dulyAgentName;
-        private DirtyValue<string> _dulyAgentState;
-        private DirtyValue<bool?> _dwellingCoveredBy;
-        private EnergyEfficientMortgage _eem;
-        private DirtyValue<StringEnumValue<EligibilityAssessment>> _eligibilityAssessment;
-        private DirtyValue<decimal?> _energyEfficientMortgageAmount;
-        private DirtyList<EnergyEfficientMortgageItem> _energyEfficientMortgageItems;
-        private DirtyValue<bool?> _everHadVAHomeLoan;
-        private DirtyValue<decimal?> _excessContributionAmount;
-        private DirtyValue<decimal?> _existingDebtAmount;
-        private DirtyValue<string> _fHACaseOrderedBy;
-        private DirtyValue<decimal?> _fHAClosingCost;
-        private DirtyValue<decimal?> _fHADownPayment;
-        private DirtyValue<decimal?> _fHAInterestRate;
-        private DirtyValue<int?> _fHALoanTerm;
-        private DirtyValue<decimal?> _fHALTV;
-        private DirtyValue<StringEnumValue<FHAManagementCounselType>> _fHAManagementCounselType;
-        private DirtyValue<decimal?> _fHAMaxLoanAmount;
-        private DirtyValue<decimal?> _fHAMMI;
-        private DirtyValue<decimal?> _fHAMonthlyPayment;
-        private DirtyValue<decimal?> _fHAMortgageAmount;
-        private DirtyValue<decimal?> _fHAMortgageAmountUMIP;
-        private DirtyValue<decimal?> _fHASalesPrice;
-        private DirtyValue<decimal?> _fHAUMIP;
-        private DirtyValue<int?> _fHAYearsMonthlyInsurance;
-        private DirtyValue<bool?> _foreclosedProperty;
-        private DirtyValue<StringEnumValue<FreddieMacCounselType>> _freddieMacCounselType;
-        private DirtyValue<decimal?> _fundingFeePaidInCash;
-        private DirtyValue<decimal?> _giftFundsAmount;
-        private DirtyValue<bool?> _haveReceivedLeadPaintPoisoningInfo;
-        private DirtyValue<StringEnumValue<HUD1003AddendumApproved>> _hUD1003AddendumApproved;
-        private DirtyValue<string> _id;
-        private DirtyValue<DateTime?> _lastRefiDate;
-        private DirtyValue<DateTime?> _lDPGSASearchDate;
-        private DirtyValue<string> _lDPGSASearchedBy;
-        private DirtyValue<string> _lenderAddress;
-        private DirtyValue<string> _lenderCity;
-        private DirtyValue<string> _lenderName;
-        private DirtyValue<string> _lenderNMLS;
-        private DirtyValue<string> _lenderPostalCode;
-        private DirtyValue<string> _lenderRepresentativeName;
-        private DirtyValue<string> _lenderRepresentativePhone;
-        private DirtyValue<string> _lenderRepresentativeTitle;
-        private DirtyValue<StringEnumValue<State>> _lenderState;
-        private DirtyValue<string> _lenderTaxID;
-        private DirtyValue<string> _loanScoreID;
-        private DirtyValue<string> _mIAppliedBy;
-        private DirtyValue<DateTime?> _mIAppliedDate;
-        private DirtyValue<DateTime?> _mICRetrivedDate;
-        private DirtyValue<decimal?> _minimumDownPayment;
-        private DirtyValue<DateTime?> _mIP1stDueDate;
-        private DirtyValue<DateTime?> _mIP1stToInvestor;
-        private DirtyValue<DateTime?> _mIPRemittedDate;
-        private DirtyValue<DateTime?> _mIRejectedDate;
-        private DirtyValue<decimal?> _modifiedInterestRate;
-        private DirtyValue<decimal?> _modifiedLoanAmount;
-        private DirtyValue<decimal?> _modifiedMonthlyPayment;
-        private DirtyValue<decimal?> _modifiedMonthlyPremium;
-        private DirtyValue<int?> _modifiedProposedMaturityMonth;
-        private DirtyValue<int?> _modifiedProposedMaturityYear;
-        private DirtyValue<int?> _modifiedTermAnnualPremium;
-        private DirtyValue<decimal?> _modifiedUpfrontPremium;
-        private DirtyValue<string> _mortgageeRepresentative;
-        private DirtyValue<StringEnumValue<DoesOrDoesNot>> _mortgageFinancialInterest;
-        private DirtyValue<decimal?> _nonRealtyAndOtherItems;
-        private DirtyValue<DateTime?> _obtainCAIVRSDate;
-        private DirtyValue<StringEnumValue<Occupancy>> _occupancy;
-        private DirtyValue<string> _oldAgencyCaseIdentifier;
-        private DirtyValue<decimal?> _originalMortgageAmount;
-        private DirtyValue<decimal?> _otherLiabilitiesMonthlyPayment;
-        private DirtyValue<decimal?> _otherLiabilitiesUnpaidBalance;
-        private DirtyValue<decimal?> _otherMonthlyShelterExpense;
-        private DirtyValue<string> _otherTitleDescription;
-        private DirtyValue<bool?> _ownMoreThanFourDwellings;
-        private DirtyValue<bool?> _ownOrSoldOtherRealEstate;
-        private DirtyValue<decimal?> _paidAmount;
-        private DirtyValue<int?> _premiumMonths;
-        private DirtyValue<decimal?> _prepaidExpenses;
-        private DirtyValue<DateTime?> _previousPurchaseDate;
-        private DirtyValue<DateTime?> _priorEndorsementDate;
-        private DirtyValue<int?> _proposedMaturityMonths;
-        private DirtyValue<int?> _proposedMaturityYears;
-        private DirtyValue<StringEnumValue<FhaVaLoanPurposeOfLoan>> _purposeOfLoan;
-        private DirtyValue<string> _refiAuthorizationBy;
-        private DirtyValue<DateTime?> _refiAuthorizationDate;
-        private DirtyValue<decimal?> _salesPrice;
-        private DirtyValue<decimal?> _secondMortgageAmount;
-        private DirtyValue<decimal?> _sellerPaidClosingCost;
-        private DirtyValue<DateTime?> _servingTransferedDate;
-        private DirtyValue<decimal?> _specialAssessments;
-        private DirtyValue<string> _sponsorAgentAddress;
-        private DirtyValue<string> _sponsorAgentCity;
-        private DirtyValue<string> _sponsorAgentName;
-        private DirtyValue<string> _sponsorAgentNMLS;
-        private DirtyValue<string> _sponsorAgentPostalCode;
-        private DirtyValue<StringEnumValue<State>> _sponsorAgentState;
-        private DirtyValue<string> _sponsorAgentTaxID;
-        private DirtyValue<string> _sponsoredOriginationsName;
-        private DirtyValue<string> _sponsoredOriginationsNMLS;
-        private DirtyValue<string> _sponsoredOriginationsTaxID;
-        private DirtyValue<string> _sponsorID;
-        private DirtyValue<StringEnumValue<TitleVestedIn>> _titleVestedIn;
-        private DirtyValue<bool?> _toBeSold;
-        private DirtyValue<decimal?> _totalClosingCost;
-        private DirtyValue<string> _totalScorecardBy;
-        private DirtyValue<DateTime?> _totalScorecardDate;
-        private DirtyValue<DateTime?> _uFMIPRemittanceDueDate;
-        private DirtyValue<decimal?> _uFMIPRemittedAmount;
-        private DirtyValue<string> _uFMIPRemittedBy;
-        private DirtyValue<DateTime?> _uFMIPRemittedDate;
-        private DirtyValue<string> _uFMIPVerificationCode;
-        private DirtyValue<bool?> _useDefaultLenderInfo;
-        private DirtyValue<bool?> _utilityIncluded;
-        private DirtyValue<DateTime?> _validateAddressDate;
-        private DirtyValue<StringEnumValue<Valuation>> _valuation;
+        private DirtyValue<StringEnumValue<AddendumType>>? _addendumType;
+        private DirtyValue<bool?>? _additionalCondition1;
+        private DirtyValue<bool?>? _additionalCondition2;
+        private DirtyValue<bool?>? _additionalCondition3;
+        private DirtyValue<bool?>? _additionalCondition4;
+        private DirtyValue<bool?>? _additionalCondition5;
+        private DirtyValue<bool?>? _additionalCondition6;
+        private DirtyValue<bool?>? _additionalCondition7;
+        private DirtyValue<bool?>? _additionalCondition8;
+        private DirtyValue<bool?>? _additionalCondition9;
+        private DirtyValue<string?>? _addressValidatedBy;
+        private DirtyValue<string?>? _addressValidationMessage;
+        private DirtyValue<bool?>? _allConditionsSatisfied;
+        private DirtyValue<DateTime?>? _appraisalLoggedDate;
+        private DirtyValue<string?>? _appraisalLookupBy;
+        private DirtyValue<StringEnumValue<BeenInformed>>? _beenInformed;
+        private DirtyValue<string?>? _borrowerCertificationAddress;
+        private DirtyValue<string?>? _borrowerCertificationCity;
+        private DirtyValue<string?>? _borrowerCertificationPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _borrowerCertificationState;
+        private DirtyValue<string?>? _cAIVRSObtainedBy;
+        private DirtyValue<string?>? _caseBinderShippedBy;
+        private DirtyValue<DateTime?>? _caseBinderShippedDate;
+        private DirtyValue<DateTime?>? _closingDate;
+        private DirtyValue<string?>? _condoPudID;
+        private DirtyValue<string?>? _condoPudLookupBy;
+        private DirtyValue<DateTime?>? _condoPudLookupDate;
+        private DirtyValue<decimal?>? _conventionalClosingCost;
+        private DirtyValue<decimal?>? _conventionalDownPayment;
+        private DirtyValue<decimal?>? _conventionalInterestRate;
+        private DirtyValue<int?>? _conventionalLoanTerm;
+        private DirtyValue<decimal?>? _conventionalLTV;
+        private DirtyValue<int?>? _conventionalMaxYearsMI;
+        private DirtyValue<decimal?>? _conventionalMMI;
+        private DirtyValue<decimal?>? _conventionalMonthlyPayment;
+        private DirtyValue<decimal?>? _conventionalMortgageAmount;
+        private DirtyValue<decimal?>? _conventionalSalesPrice;
+        private DirtyValue<decimal?>? _conventionalUMIP;
+        private DirtyValue<DateTime?>? _dateApprovalExpires;
+        private DirtyValue<DateTime?>? _dateMortgageApproved;
+        private DirtyValue<string?>? _detailForOther;
+        private DirtyValue<decimal?>? _discountPoints;
+        private DirtyValue<string?>? _dulyAgentAddress;
+        private DirtyValue<string?>? _dulyAgentCity;
+        private DirtyValue<string?>? _dulyAgentFunction1;
+        private DirtyValue<string?>? _dulyAgentFunction2;
+        private DirtyValue<string?>? _dulyAgentName;
+        private DirtyValue<string?>? _dulyAgentState;
+        private DirtyValue<bool?>? _dwellingCoveredBy;
+        private EnergyEfficientMortgage? _eem;
+        private DirtyValue<StringEnumValue<EligibilityAssessment>>? _eligibilityAssessment;
+        private DirtyValue<decimal?>? _energyEfficientMortgageAmount;
+        private DirtyList<EnergyEfficientMortgageItem>? _energyEfficientMortgageItems;
+        private DirtyValue<bool?>? _everHadVAHomeLoan;
+        private DirtyValue<decimal?>? _excessContributionAmount;
+        private DirtyValue<decimal?>? _existingDebtAmount;
+        private DirtyValue<string?>? _fHACaseOrderedBy;
+        private DirtyValue<decimal?>? _fHAClosingCost;
+        private DirtyValue<decimal?>? _fHADownPayment;
+        private DirtyValue<decimal?>? _fHAInterestRate;
+        private DirtyValue<int?>? _fHALoanTerm;
+        private DirtyValue<decimal?>? _fHALTV;
+        private DirtyValue<StringEnumValue<FHAManagementCounselType>>? _fHAManagementCounselType;
+        private DirtyValue<decimal?>? _fHAMaxLoanAmount;
+        private DirtyValue<decimal?>? _fHAMMI;
+        private DirtyValue<decimal?>? _fHAMonthlyPayment;
+        private DirtyValue<decimal?>? _fHAMortgageAmount;
+        private DirtyValue<decimal?>? _fHAMortgageAmountUMIP;
+        private DirtyValue<decimal?>? _fHASalesPrice;
+        private DirtyValue<decimal?>? _fHAUMIP;
+        private DirtyValue<int?>? _fHAYearsMonthlyInsurance;
+        private DirtyValue<bool?>? _foreclosedProperty;
+        private DirtyValue<StringEnumValue<FreddieMacCounselType>>? _freddieMacCounselType;
+        private DirtyValue<decimal?>? _fundingFeePaidInCash;
+        private DirtyValue<decimal?>? _giftFundsAmount;
+        private DirtyValue<bool?>? _haveReceivedLeadPaintPoisoningInfo;
+        private DirtyValue<StringEnumValue<HUD1003AddendumApproved>>? _hUD1003AddendumApproved;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<DateTime?>? _lastRefiDate;
+        private DirtyValue<DateTime?>? _lDPGSASearchDate;
+        private DirtyValue<string?>? _lDPGSASearchedBy;
+        private DirtyValue<string?>? _lenderAddress;
+        private DirtyValue<string?>? _lenderCity;
+        private DirtyValue<string?>? _lenderName;
+        private DirtyValue<string?>? _lenderNMLS;
+        private DirtyValue<string?>? _lenderPostalCode;
+        private DirtyValue<string?>? _lenderRepresentativeName;
+        private DirtyValue<string?>? _lenderRepresentativePhone;
+        private DirtyValue<string?>? _lenderRepresentativeTitle;
+        private DirtyValue<StringEnumValue<State>>? _lenderState;
+        private DirtyValue<string?>? _lenderTaxID;
+        private DirtyValue<string?>? _loanScoreID;
+        private DirtyValue<string?>? _mIAppliedBy;
+        private DirtyValue<DateTime?>? _mIAppliedDate;
+        private DirtyValue<DateTime?>? _mICRetrivedDate;
+        private DirtyValue<decimal?>? _minimumDownPayment;
+        private DirtyValue<DateTime?>? _mIP1stDueDate;
+        private DirtyValue<DateTime?>? _mIP1stToInvestor;
+        private DirtyValue<DateTime?>? _mIPRemittedDate;
+        private DirtyValue<DateTime?>? _mIRejectedDate;
+        private DirtyValue<decimal?>? _modifiedInterestRate;
+        private DirtyValue<decimal?>? _modifiedLoanAmount;
+        private DirtyValue<decimal?>? _modifiedMonthlyPayment;
+        private DirtyValue<decimal?>? _modifiedMonthlyPremium;
+        private DirtyValue<int?>? _modifiedProposedMaturityMonth;
+        private DirtyValue<int?>? _modifiedProposedMaturityYear;
+        private DirtyValue<int?>? _modifiedTermAnnualPremium;
+        private DirtyValue<decimal?>? _modifiedUpfrontPremium;
+        private DirtyValue<string?>? _mortgageeRepresentative;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot>>? _mortgageFinancialInterest;
+        private DirtyValue<decimal?>? _nonRealtyAndOtherItems;
+        private DirtyValue<DateTime?>? _obtainCAIVRSDate;
+        private DirtyValue<StringEnumValue<Occupancy>>? _occupancy;
+        private DirtyValue<string?>? _oldAgencyCaseIdentifier;
+        private DirtyValue<decimal?>? _originalMortgageAmount;
+        private DirtyValue<decimal?>? _otherLiabilitiesMonthlyPayment;
+        private DirtyValue<decimal?>? _otherLiabilitiesUnpaidBalance;
+        private DirtyValue<decimal?>? _otherMonthlyShelterExpense;
+        private DirtyValue<string?>? _otherTitleDescription;
+        private DirtyValue<bool?>? _ownMoreThanFourDwellings;
+        private DirtyValue<bool?>? _ownOrSoldOtherRealEstate;
+        private DirtyValue<decimal?>? _paidAmount;
+        private DirtyValue<int?>? _premiumMonths;
+        private DirtyValue<decimal?>? _prepaidExpenses;
+        private DirtyValue<DateTime?>? _previousPurchaseDate;
+        private DirtyValue<DateTime?>? _priorEndorsementDate;
+        private DirtyValue<int?>? _proposedMaturityMonths;
+        private DirtyValue<int?>? _proposedMaturityYears;
+        private DirtyValue<StringEnumValue<FhaVaLoanPurposeOfLoan>>? _purposeOfLoan;
+        private DirtyValue<string?>? _refiAuthorizationBy;
+        private DirtyValue<DateTime?>? _refiAuthorizationDate;
+        private DirtyValue<decimal?>? _salesPrice;
+        private DirtyValue<decimal?>? _secondMortgageAmount;
+        private DirtyValue<decimal?>? _sellerPaidClosingCost;
+        private DirtyValue<DateTime?>? _servingTransferedDate;
+        private DirtyValue<decimal?>? _specialAssessments;
+        private DirtyValue<string?>? _sponsorAgentAddress;
+        private DirtyValue<string?>? _sponsorAgentCity;
+        private DirtyValue<string?>? _sponsorAgentName;
+        private DirtyValue<string?>? _sponsorAgentNMLS;
+        private DirtyValue<string?>? _sponsorAgentPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _sponsorAgentState;
+        private DirtyValue<string?>? _sponsorAgentTaxID;
+        private DirtyValue<string?>? _sponsoredOriginationsName;
+        private DirtyValue<string?>? _sponsoredOriginationsNMLS;
+        private DirtyValue<string?>? _sponsoredOriginationsTaxID;
+        private DirtyValue<string?>? _sponsorID;
+        private DirtyValue<StringEnumValue<TitleVestedIn>>? _titleVestedIn;
+        private DirtyValue<bool?>? _toBeSold;
+        private DirtyValue<decimal?>? _totalClosingCost;
+        private DirtyValue<string?>? _totalScorecardBy;
+        private DirtyValue<DateTime?>? _totalScorecardDate;
+        private DirtyValue<DateTime?>? _uFMIPRemittanceDueDate;
+        private DirtyValue<decimal?>? _uFMIPRemittedAmount;
+        private DirtyValue<string?>? _uFMIPRemittedBy;
+        private DirtyValue<DateTime?>? _uFMIPRemittedDate;
+        private DirtyValue<string?>? _uFMIPVerificationCode;
+        private DirtyValue<bool?>? _useDefaultLenderInfo;
+        private DirtyValue<bool?>? _utilityIncluded;
+        private DirtyValue<DateTime?>? _validateAddressDate;
+        private DirtyValue<StringEnumValue<Valuation>>? _valuation;
 
         /// <summary>
         /// HUD Addendum Type [1711]
@@ -225,12 +226,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management Address Validated By [3061]
         /// </summary>
-        public string AddressValidatedBy { get => _addressValidatedBy; set => SetField(ref _addressValidatedBy, value); }
+        public string? AddressValidatedBy { get => _addressValidatedBy; set => SetField(ref _addressValidatedBy, value); }
 
         /// <summary>
         /// FHA Management Address Validation Message [3063]
         /// </summary>
-        public string AddressValidationMessage { get => _addressValidationMessage; set => SetField(ref _addressValidationMessage, value); }
+        public string? AddressValidationMessage { get => _addressValidationMessage; set => SetField(ref _addressValidationMessage, value); }
 
         /// <summary>
         /// HUD 1003 Addendum - All Conditions of Approval Have Been Satisfied Indicator [4092]
@@ -245,7 +246,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management Appraisal Lookup By [3077]
         /// </summary>
-        public string AppraisalLookupBy { get => _appraisalLookupBy; set => SetField(ref _appraisalLookupBy, value); }
+        public string? AppraisalLookupBy { get => _appraisalLookupBy; set => SetField(ref _appraisalLookupBy, value); }
 
         /// <summary>
         /// Borr Cert Property Value [1639]
@@ -255,18 +256,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr Other Ownd RE Addr [461]
         /// </summary>
-        public string BorrowerCertificationAddress { get => _borrowerCertificationAddress; set => SetField(ref _borrowerCertificationAddress, value); }
+        public string? BorrowerCertificationAddress { get => _borrowerCertificationAddress; set => SetField(ref _borrowerCertificationAddress, value); }
 
         /// <summary>
         /// Borr Cert Other RE City [1738]
         /// </summary>
-        public string BorrowerCertificationCity { get => _borrowerCertificationCity; set => SetField(ref _borrowerCertificationCity, value); }
+        public string? BorrowerCertificationCity { get => _borrowerCertificationCity; set => SetField(ref _borrowerCertificationCity, value); }
 
         /// <summary>
         /// Borr Cert Other RE Zip [1740]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string BorrowerCertificationPostalCode { get => _borrowerCertificationPostalCode; set => SetField(ref _borrowerCertificationPostalCode, value); }
+        public string? BorrowerCertificationPostalCode { get => _borrowerCertificationPostalCode; set => SetField(ref _borrowerCertificationPostalCode, value); }
 
         /// <summary>
         /// Borr Cert Other RE State [1739]
@@ -276,12 +277,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management CAIVRS Obtained By [3068]
         /// </summary>
-        public string CAIVRSObtainedBy { get => _cAIVRSObtainedBy; set => SetField(ref _cAIVRSObtainedBy, value); }
+        public string? CAIVRSObtainedBy { get => _cAIVRSObtainedBy; set => SetField(ref _cAIVRSObtainedBy, value); }
 
         /// <summary>
         /// FHA Management Case Binder Shipped By [3091]
         /// </summary>
-        public string CaseBinderShippedBy { get => _caseBinderShippedBy; set => SetField(ref _caseBinderShippedBy, value); }
+        public string? CaseBinderShippedBy { get => _caseBinderShippedBy; set => SetField(ref _caseBinderShippedBy, value); }
 
         /// <summary>
         /// FHA Management Case Binder Shipped Date [3090]
@@ -296,12 +297,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management CondoPud ID [3075]
         /// </summary>
-        public string CondoPudID { get => _condoPudID; set => SetField(ref _condoPudID, value); }
+        public string? CondoPudID { get => _condoPudID; set => SetField(ref _condoPudID, value); }
 
         /// <summary>
         /// FHA Management Condo Pud Lookup By [3074]
         /// </summary>
-        public string CondoPudLookupBy { get => _condoPudLookupBy; set => SetField(ref _condoPudLookupBy, value); }
+        public string? CondoPudLookupBy { get => _condoPudLookupBy; set => SetField(ref _condoPudLookupBy, value); }
 
         /// <summary>
         /// FHA Management Condo Pud Lookup Date [3073]
@@ -385,7 +386,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD 1003 Addendum Addl Condition Check 7 Detail [3192]
         /// </summary>
-        public string DetailForOther { get => _detailForOther; set => SetField(ref _detailForOther, value); }
+        public string? DetailForOther { get => _detailForOther; set => SetField(ref _detailForOther, value); }
 
         /// <summary>
         /// FHA MCAW Discounts [1046]
@@ -396,32 +397,32 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Duly Auth Agent Addr 1 [1795]
         /// </summary>
-        public string DulyAgentAddress { get => _dulyAgentAddress; set => SetField(ref _dulyAgentAddress, value); }
+        public string? DulyAgentAddress { get => _dulyAgentAddress; set => SetField(ref _dulyAgentAddress, value); }
 
         /// <summary>
         /// HUD Lender Cert Author Agent Addr 2 [684]
         /// </summary>
-        public string DulyAgentCity { get => _dulyAgentCity; set => SetField(ref _dulyAgentCity, value); }
+        public string? DulyAgentCity { get => _dulyAgentCity; set => SetField(ref _dulyAgentCity, value); }
 
         /// <summary>
         /// HUD Duly Auth Agent Function 1 [1796]
         /// </summary>
-        public string DulyAgentFunction1 { get => _dulyAgentFunction1; set => SetField(ref _dulyAgentFunction1, value); }
+        public string? DulyAgentFunction1 { get => _dulyAgentFunction1; set => SetField(ref _dulyAgentFunction1, value); }
 
         /// <summary>
         /// HUD Duly Auth Agent Function 2 [1798]
         /// </summary>
-        public string DulyAgentFunction2 { get => _dulyAgentFunction2; set => SetField(ref _dulyAgentFunction2, value); }
+        public string? DulyAgentFunction2 { get => _dulyAgentFunction2; set => SetField(ref _dulyAgentFunction2, value); }
 
         /// <summary>
         /// HUD Duly Auth Agent Name [322]
         /// </summary>
-        public string DulyAgentName { get => _dulyAgentName; set => SetField(ref _dulyAgentName, value); }
+        public string? DulyAgentName { get => _dulyAgentName; set => SetField(ref _dulyAgentName, value); }
 
         /// <summary>
         /// HUD Duly Auth Agent Addr 3 [1797]
         /// </summary>
-        public string DulyAgentState { get => _dulyAgentState; set => SetField(ref _dulyAgentState, value); }
+        public string? DulyAgentState { get => _dulyAgentState; set => SetField(ref _dulyAgentState, value); }
 
         /// <summary>
         /// Borr Cert Dwelling To Be Covered By Yes/No [1016]
@@ -431,6 +432,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FhaVaLoan Eem
         /// </summary>
+        [AllowNull]
         public EnergyEfficientMortgage Eem { get => GetField(ref _eem); set => SetField(ref _eem, value); }
 
         /// <summary>
@@ -447,6 +449,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FhaVaLoan EnergyEfficientMortgageItems
         /// </summary>
+        [AllowNull]
         public IList<EnergyEfficientMortgageItem> EnergyEfficientMortgageItems { get => GetField(ref _energyEfficientMortgageItems); set => SetField(ref _energyEfficientMortgageItems, value); }
 
         /// <summary>
@@ -469,7 +472,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management FHA Case Ordered By [3059]
         /// </summary>
-        public string FHACaseOrderedBy { get => _fHACaseOrderedBy; set => SetField(ref _fHACaseOrderedBy, value); }
+        public string? FHACaseOrderedBy { get => _fHACaseOrderedBy; set => SetField(ref _fHACaseOrderedBy, value); }
 
         /// <summary>
         /// Informed Consumer Choice FHA Closing Cost [FICC.X4]
@@ -587,7 +590,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FhaVaLoan Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// FHA Management Last Refi Date [3057]
@@ -602,49 +605,49 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management LDP/GSA Searched By [3070]
         /// </summary>
-        public string LDPGSASearchedBy { get => _lDPGSASearchedBy; set => SetField(ref _lDPGSASearchedBy, value); }
+        public string? LDPGSASearchedBy { get => _lDPGSASearchedBy; set => SetField(ref _lDPGSASearchedBy, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Lender Addr [3633]
         /// </summary>
-        public string LenderAddress { get => _lenderAddress; set => SetField(ref _lenderAddress, value); }
+        public string? LenderAddress { get => _lenderAddress; set => SetField(ref _lenderAddress, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Lender City [3634]
         /// </summary>
-        public string LenderCity { get => _lenderCity; set => SetField(ref _lenderCity, value); }
+        public string? LenderCity { get => _lenderCity; set => SetField(ref _lenderCity, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Lender Co Name [3632]
         /// </summary>
-        public string LenderName { get => _lenderName; set => SetField(ref _lenderName, value); }
+        public string? LenderName { get => _lenderName; set => SetField(ref _lenderName, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Lender Info NMLS [3637]
         /// </summary>
-        public string LenderNMLS { get => _lenderNMLS; set => SetField(ref _lenderNMLS, value); }
+        public string? LenderNMLS { get => _lenderNMLS; set => SetField(ref _lenderNMLS, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Lender Zip [3636]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string LenderPostalCode { get => _lenderPostalCode; set => SetField(ref _lenderPostalCode, value); }
+        public string? LenderPostalCode { get => _lenderPostalCode; set => SetField(ref _lenderPostalCode, value); }
 
         /// <summary>
         /// HUD Lenders Rep Name [1754]
         /// </summary>
-        public string LenderRepresentativeName { get => _lenderRepresentativeName; set => SetField(ref _lenderRepresentativeName, value); }
+        public string? LenderRepresentativeName { get => _lenderRepresentativeName; set => SetField(ref _lenderRepresentativeName, value); }
 
         /// <summary>
         /// HUD Lenders Rep Phone [1756]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string LenderRepresentativePhone { get => _lenderRepresentativePhone; set => SetField(ref _lenderRepresentativePhone, value); }
+        public string? LenderRepresentativePhone { get => _lenderRepresentativePhone; set => SetField(ref _lenderRepresentativePhone, value); }
 
         /// <summary>
         /// HUD Lenders Rep Title [1755]
         /// </summary>
-        public string LenderRepresentativeTitle { get => _lenderRepresentativeTitle; set => SetField(ref _lenderRepresentativeTitle, value); }
+        public string? LenderRepresentativeTitle { get => _lenderRepresentativeTitle; set => SetField(ref _lenderRepresentativeTitle, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Lender State [3635]
@@ -654,17 +657,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD 1003 Addendum Sponsor Agent Info Tax ID [3638]
         /// </summary>
-        public string LenderTaxID { get => _lenderTaxID; set => SetField(ref _lenderTaxID, value); }
+        public string? LenderTaxID { get => _lenderTaxID; set => SetField(ref _lenderTaxID, value); }
 
         /// <summary>
         /// FHA Management Loan Score ID [3630]
         /// </summary>
-        public string LoanScoreID { get => _loanScoreID; set => SetField(ref _loanScoreID, value); }
+        public string? LoanScoreID { get => _loanScoreID; set => SetField(ref _loanScoreID, value); }
 
         /// <summary>
         /// FHA Management MI Applied By [3087]
         /// </summary>
-        public string MIAppliedBy { get => _mIAppliedBy; set => SetField(ref _mIAppliedBy, value); }
+        public string? MIAppliedBy { get => _mIAppliedBy; set => SetField(ref _mIAppliedBy, value); }
 
         /// <summary>
         /// FHA Management MI Applied Date [3086]
@@ -750,7 +753,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD 1003 Addendum Mortgagee Representative [3194]
         /// </summary>
-        public string MortgageeRepresentative { get => _mortgageeRepresentative; set => SetField(ref _mortgageeRepresentative, value); }
+        public string? MortgageeRepresentative { get => _mortgageeRepresentative; set => SetField(ref _mortgageeRepresentative, value); }
 
         /// <summary>
         /// HUD Mtg Financial Interest Does/Does Not [153]
@@ -776,7 +779,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management Old Agency Case Identifier [3066]
         /// </summary>
-        public string OldAgencyCaseIdentifier { get => _oldAgencyCaseIdentifier; set => SetField(ref _oldAgencyCaseIdentifier, value); }
+        public string? OldAgencyCaseIdentifier { get => _oldAgencyCaseIdentifier; set => SetField(ref _oldAgencyCaseIdentifier, value); }
 
         /// <summary>
         /// HUD Original Mtg Amt [744]
@@ -805,7 +808,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Title Other Descr [1064]
         /// </summary>
-        public string OtherTitleDescription { get => _otherTitleDescription; set => SetField(ref _otherTitleDescription, value); }
+        public string? OtherTitleDescription { get => _otherTitleDescription; set => SetField(ref _otherTitleDescription, value); }
 
         /// <summary>
         /// Borr Cert Own More than 4 [1017]
@@ -864,7 +867,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management Refi Authorization By [3065]
         /// </summary>
-        public string RefiAuthorizationBy { get => _refiAuthorizationBy; set => SetField(ref _refiAuthorizationBy, value); }
+        public string? RefiAuthorizationBy { get => _refiAuthorizationBy; set => SetField(ref _refiAuthorizationBy, value); }
 
         /// <summary>
         /// FHA Management Refi Authorization Date [3064]
@@ -903,28 +906,28 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts Sponsor/Agent Street [1113]
         /// </summary>
-        public string SponsorAgentAddress { get => _sponsorAgentAddress; set => SetField(ref _sponsorAgentAddress, value); }
+        public string? SponsorAgentAddress { get => _sponsorAgentAddress; set => SetField(ref _sponsorAgentAddress, value); }
 
         /// <summary>
         /// File Contacts Sponsor/Agent City [1114]
         /// </summary>
-        public string SponsorAgentCity { get => _sponsorAgentCity; set => SetField(ref _sponsorAgentCity, value); }
+        public string? SponsorAgentCity { get => _sponsorAgentCity; set => SetField(ref _sponsorAgentCity, value); }
 
         /// <summary>
         /// File Contacts Sponsor/Agent Name [1111]
         /// </summary>
-        public string SponsorAgentName { get => _sponsorAgentName; set => SetField(ref _sponsorAgentName, value); }
+        public string? SponsorAgentName { get => _sponsorAgentName; set => SetField(ref _sponsorAgentName, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Sponsor Agent Info NMLS [3640]
         /// </summary>
-        public string SponsorAgentNMLS { get => _sponsorAgentNMLS; set => SetField(ref _sponsorAgentNMLS, value); }
+        public string? SponsorAgentNMLS { get => _sponsorAgentNMLS; set => SetField(ref _sponsorAgentNMLS, value); }
 
         /// <summary>
         /// File Contacts Sponsor/Agent Zip [1744]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string SponsorAgentPostalCode { get => _sponsorAgentPostalCode; set => SetField(ref _sponsorAgentPostalCode, value); }
+        public string? SponsorAgentPostalCode { get => _sponsorAgentPostalCode; set => SetField(ref _sponsorAgentPostalCode, value); }
 
         /// <summary>
         /// File Contacts Sponsor/Agent State [1743]
@@ -934,27 +937,27 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD 1003 Addendum Sponsor Agent Info Tax ID [3641]
         /// </summary>
-        public string SponsorAgentTaxID { get => _sponsorAgentTaxID; set => SetField(ref _sponsorAgentTaxID, value); }
+        public string? SponsorAgentTaxID { get => _sponsorAgentTaxID; set => SetField(ref _sponsorAgentTaxID, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Sponsored Originations Name [3656]
         /// </summary>
-        public string SponsoredOriginationsName { get => _sponsoredOriginationsName; set => SetField(ref _sponsoredOriginationsName, value); }
+        public string? SponsoredOriginationsName { get => _sponsoredOriginationsName; set => SetField(ref _sponsoredOriginationsName, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Sponsored Originations NMLS ID [3657]
         /// </summary>
-        public string SponsoredOriginationsNMLS { get => _sponsoredOriginationsNMLS; set => SetField(ref _sponsoredOriginationsNMLS, value); }
+        public string? SponsoredOriginationsNMLS { get => _sponsoredOriginationsNMLS; set => SetField(ref _sponsoredOriginationsNMLS, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Sponsored Originations Tax ID [3658]
         /// </summary>
-        public string SponsoredOriginationsTaxID { get => _sponsoredOriginationsTaxID; set => SetField(ref _sponsoredOriginationsTaxID, value); }
+        public string? SponsoredOriginationsTaxID { get => _sponsoredOriginationsTaxID; set => SetField(ref _sponsoredOriginationsTaxID, value); }
 
         /// <summary>
         /// FHA Sponsor ID [1060]
         /// </summary>
-        public string SponsorID { get => _sponsorID; set => SetField(ref _sponsorID, value); }
+        public string? SponsorID { get => _sponsorID; set => SetField(ref _sponsorID, value); }
 
         /// <summary>
         /// VA Title Vested In [1497]
@@ -975,7 +978,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management Total Scorecard By [3072]
         /// </summary>
-        public string TotalScorecardBy { get => _totalScorecardBy; set => SetField(ref _totalScorecardBy, value); }
+        public string? TotalScorecardBy { get => _totalScorecardBy; set => SetField(ref _totalScorecardBy, value); }
 
         /// <summary>
         /// FHA Management Total Scorecard Date [3071]
@@ -996,7 +999,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management UFMIP Remitted By [3080]
         /// </summary>
-        public string UFMIPRemittedBy { get => _uFMIPRemittedBy; set => SetField(ref _uFMIPRemittedBy, value); }
+        public string? UFMIPRemittedBy { get => _uFMIPRemittedBy; set => SetField(ref _uFMIPRemittedBy, value); }
 
         /// <summary>
         /// FHA Management UFMIP Remitted Date [3079]
@@ -1006,7 +1009,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management UFMIP Verification Code [3082]
         /// </summary>
-        public string UFMIPVerificationCode { get => _uFMIPVerificationCode; set => SetField(ref _uFMIPVerificationCode, value); }
+        public string? UFMIPVerificationCode { get => _uFMIPVerificationCode; set => SetField(ref _uFMIPVerificationCode, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Use Default Lender [3639]

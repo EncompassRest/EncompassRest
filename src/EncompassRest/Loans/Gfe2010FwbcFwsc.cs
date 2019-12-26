@@ -8,22 +8,22 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(Gfe2010FwbcFwscIndex) + "," + nameof(LineLetter) + "," + nameof(LineNumber))]
     public sealed partial class Gfe2010FwbcFwsc : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _fwbc;
-        private DirtyValue<string> _fwsc;
-        private DirtyValue<int?> _gfe2010FwbcFwscIndex;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<LineLetter>> _lineLetter;
-        private DirtyValue<int?> _lineNumber;
+        private DirtyValue<string?>? _fwbc;
+        private DirtyValue<string?>? _fwsc;
+        private DirtyValue<int?>? _gfe2010FwbcFwscIndex;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<LineLetter>>? _lineLetter;
+        private DirtyValue<int?>? _lineNumber;
 
         /// <summary>
         /// Gfe2010FwbcFwsc Fwbc
         /// </summary>
-        public string Fwbc { get => _fwbc; set => SetField(ref _fwbc, value); }
+        public string? Fwbc { get => _fwbc; set => SetField(ref _fwbc, value); }
 
         /// <summary>
         /// Gfe2010FwbcFwsc Fwsc
         /// </summary>
-        public string Fwsc { get => _fwsc; set => SetField(ref _fwsc, value); }
+        public string? Fwsc { get => _fwsc; set => SetField(ref _fwsc, value); }
 
         /// <summary>
         /// Gfe2010FwbcFwsc Gfe2010FwbcFwscIndex
@@ -33,7 +33,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010FwbcFwsc Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Gfe2010FwbcFwsc LineLetter

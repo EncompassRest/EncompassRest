@@ -7,10 +7,10 @@ namespace EncompassRest.Company.Users
     /// </summary>
     public sealed class UserLicenseDetail : DirtyExtensibleObject
     {
-        private DirtyValue<StringEnumValue<State>> _state;
-        private DirtyValue<bool> _enabled;
-        private DirtyValue<string> _license;
-        private DirtyValue<DateTime?> _expirationDate;
+        private DirtyValue<StringEnumValue<State>>? _state;
+        private DirtyValue<bool>? _enabled;
+        private DirtyValue<string?>? _license;
+        private DirtyValue<DateTime?>? _expirationDate;
 
         /// <summary>
         /// UserLicenseDetail State
@@ -25,7 +25,7 @@ namespace EncompassRest.Company.Users
         /// <summary>
         /// UserLicenseDetail License
         /// </summary>
-        public string License { get => _license; set => SetField(ref _license, value); }
+        public string? License { get => _license; set => SetField(ref _license, value); }
 
         /// <summary>
         /// UserLicenseDetail ExpirationDate

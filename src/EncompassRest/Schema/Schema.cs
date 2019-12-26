@@ -35,7 +35,7 @@ namespace EncompassRest.Schema
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GenerateContractRawAsync(string fieldValues, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GenerateContractRawAsync(string fieldValues, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the paths to be used in webhook filter attributes for the specified <paramref name="fieldIds"/>.
         /// </summary>
@@ -65,7 +65,7 @@ namespace EncompassRest.Schema
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GeneratePathsRawAsync(string fieldIds, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GeneratePathsRawAsync(string fieldIds, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the loan schema for the specified <paramref name="fieldId"/>.
         /// </summary>
@@ -80,7 +80,7 @@ namespace EncompassRest.Schema
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetFieldSchemaRawAsync(string fieldId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetFieldSchemaRawAsync(string fieldId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets the loan schema for all entities.
         /// </summary>
@@ -130,7 +130,7 @@ namespace EncompassRest.Schema
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetLoanSchemaRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetLoanSchemaRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -148,7 +148,7 @@ namespace EncompassRest.Schema
         /// </summary>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<LoanSchema> GetLoanSchemaAsync(CancellationToken cancellationToken = default) => GetLoanSchemaAsync(false, (IEnumerable<string>)null, cancellationToken);
+        public Task<LoanSchema> GetLoanSchemaAsync(CancellationToken cancellationToken = default) => GetLoanSchemaAsync(false, (IEnumerable<string>?)null, cancellationToken);
 
         /// <summary>
         /// Gets the loan schema for all entities and optionally includes field extensions.
@@ -156,7 +156,7 @@ namespace EncompassRest.Schema
         /// <param name="includeFieldExtensions">Include field extensions.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(includeFieldExtensions, (IEnumerable<string>)null, cancellationToken);
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(includeFieldExtensions, (IEnumerable<string>?)null, cancellationToken);
 
         /// <summary>
         /// Gets the loan schema for the specified <paramref name="entities"/>.
@@ -164,7 +164,7 @@ namespace EncompassRest.Schema
         /// <param name="entities">Entities to include.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<LoanEntity> entities, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(false, entities, cancellationToken);
+        public Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<LoanEntity>? entities, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(false, entities, cancellationToken);
 
         /// <summary>
         /// Gets the loan schema for the specified <paramref name="entities"/>.
@@ -172,7 +172,7 @@ namespace EncompassRest.Schema
         /// <param name="entities">Entities to include.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<string> entities, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(false, entities, cancellationToken);
+        public Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<string>? entities, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(false, entities, cancellationToken);
 
         /// <summary>
         /// Gets the loan schema for the specified <paramref name="entities"/> and optionally includes field extensions.
@@ -181,7 +181,7 @@ namespace EncompassRest.Schema
         /// <param name="entities">Entities to include.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(includeFieldExtensions, entities?.Select(e => e.Validate(nameof(entities)).GetName()), cancellationToken);
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<LoanEntity>? entities, CancellationToken cancellationToken = default) => GetLoanSchemaAsync(includeFieldExtensions, entities?.Select(e => e.Validate(nameof(entities)).GetName()!), cancellationToken);
 
         /// <summary>
         /// Gets the loan schema for the specified <paramref name="entities"/> and optionally includes field extensions.
@@ -190,7 +190,7 @@ namespace EncompassRest.Schema
         /// <param name="entities">Entities to include.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<string> entities, CancellationToken cancellationToken = default)
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<string>? entities, CancellationToken cancellationToken = default)
         {
             var queryParameters = new QueryParameters();
             if (entities?.Any() == true)
@@ -208,7 +208,7 @@ namespace EncompassRest.Schema
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetLoanSchemaRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetLoanSchemaRawAsync), null, cancellationToken);
+        public Task<string> GetLoanSchemaRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetLoanSchemaRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Gets the loan schema for the specified <paramref name="fieldId"/>.
@@ -230,7 +230,7 @@ namespace EncompassRest.Schema
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetFieldSchemaRawAsync(string fieldId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetFieldSchemaRawAsync(string fieldId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
@@ -262,7 +262,7 @@ namespace EncompassRest.Schema
         /// <returns></returns>
         public Task<Dictionary<string, string>> GeneratePathsAsync(string fieldNamePattern, CancellationToken cancellationToken = default) => GeneratePathsAsync(null, fieldNamePattern, null, cancellationToken);
 
-        private Task<Dictionary<string, string>> GeneratePathsAsync(IEnumerable<string> fieldIds, string fieldNamePattern, bool? ignoreInvalidFields, CancellationToken cancellationToken)
+        private Task<Dictionary<string, string>> GeneratePathsAsync(IEnumerable<string>? fieldIds, string? fieldNamePattern, bool? ignoreInvalidFields, CancellationToken cancellationToken)
         {
             var queryParameters = new QueryParameters();
             if (ignoreInvalidFields.HasValue)
@@ -284,7 +284,7 @@ namespace EncompassRest.Schema
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GeneratePathsRawAsync(string fieldIds, string queryString = null, CancellationToken cancellationToken = default) => PostRawAsync("pathGenerator", queryString, string.IsNullOrEmpty(fieldIds) ? null : new JsonStringContent(fieldIds), nameof(GeneratePathsRawAsync), null, cancellationToken);
+        public Task<string> GeneratePathsRawAsync(string fieldIds, string? queryString = null, CancellationToken cancellationToken = default) => PostRawAsync("pathGenerator", queryString, string.IsNullOrEmpty(fieldIds) ? null : new JsonStringContent(fieldIds), nameof(GeneratePathsRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Generates the loan contract from the specified <paramref name="fieldValues"/>.
@@ -323,7 +323,7 @@ namespace EncompassRest.Schema
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GenerateContractRawAsync(string fieldValues, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GenerateContractRawAsync(string fieldValues, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldValues, nameof(fieldValues));
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,34 +9,36 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LogEntryLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyList<LogAlert> _alerts;
-        private DirtyList<LogComment> _commentList;
-        private DirtyValue<string> _comments;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<string> _description;
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
-        private DirtyValue<string> _guid;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private DirtyValue<int?> _logRecordIndex;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<DateTime?> _updatedDateUtc;
-        private DirtyValue<string> _userId;
+        private DirtyList<LogAlert>? _alerts;
+        private DirtyList<LogComment>? _commentList;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<bool?>? _fileAttachmentsMigrated;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<int?>? _logRecordIndex;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
+        private DirtyValue<string?>? _userId;
 
         /// <summary>
         /// LogEntryLog Alerts
         /// </summary>
+        [AllowNull]
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
 
         /// <summary>
         /// LogEntryLog CommentList
         /// </summary>
+        [AllowNull]
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
 
         /// <summary>
         /// LogEntryLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// LogEntryLog DateUtc
@@ -45,7 +48,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogEntryLog Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// LogEntryLog FileAttachmentsMigrated
@@ -55,12 +58,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogEntryLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// LogEntryLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// LogEntryLog IsSystemSpecificIndicator
@@ -75,7 +78,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogEntryLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// LogEntryLog UpdatedDateUtc
@@ -85,6 +88,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogEntryLog UserId
         /// </summary>
-        public string UserId { get => _userId; set => SetField(ref _userId, value); }
+        public string? UserId { get => _userId; set => SetField(ref _userId, value); }
     }
 }

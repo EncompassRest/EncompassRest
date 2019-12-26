@@ -11,17 +11,19 @@ namespace EncompassRest.Loans.FieldReader
         /// <summary>
         /// Loan field ID.
         /// </summary>
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         public string FieldId { get; set; }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 
         /// <summary>
         /// Value of the field in the loan.
         /// </summary>
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Description for loan field.
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Indicates the range and format of values the field can store.
@@ -41,6 +43,6 @@ namespace EncompassRest.Loans.FieldReader
         /// <summary>
         /// Represents the possible values for the field id.
         /// </summary>
-        public List<string> Options { get; set; }
+        public List<string>? Options { get; set; }
     }
 }

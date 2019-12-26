@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,17 +8,18 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class CompanyDetailsRights : ParentAccessRights
     {
-        private CreateEditBanksRights _createEditBanks;
-        private DirtyValue<bool?> _createOrganizations;
-        private DirtyValue<bool?> _deleteOrganizations;
-        private DirtyValue<bool?> _exportOrganizations;
-        private TPOContactsRights _tPOContacts;
-        private TPOOrganizationSettingsRights _tPOOrganizationSettings;
+        private CreateEditBanksRights? _createEditBanks;
+        private DirtyValue<bool?>? _createOrganizations;
+        private DirtyValue<bool?>? _deleteOrganizations;
+        private DirtyValue<bool?>? _exportOrganizations;
+        private TPOContactsRights? _tPOContacts;
+        private TPOOrganizationSettingsRights? _tPOOrganizationSettings;
 
         /// <summary>
         /// CompanyDetailsRights CreateEditBanks
         /// </summary>
         [JsonProperty("create/EditBanks")]
+        [AllowNull]
         public CreateEditBanksRights CreateEditBanks { get => GetField(ref _createEditBanks); set => SetField(ref _createEditBanks, value); }
 
         /// <summary>
@@ -38,11 +40,13 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// CompanyDetailsRights TPOContacts
         /// </summary>
+        [AllowNull]
         public TPOContactsRights TPOContacts { get => GetField(ref _tPOContacts); set => SetField(ref _tPOContacts, value); }
 
         /// <summary>
         /// CompanyDetailsRights TPOOrganizationSettings
         /// </summary>
+        [AllowNull]
         public TPOOrganizationSettingsRights TPOOrganizationSettings { get => GetField(ref _tPOOrganizationSettings); set => SetField(ref _tPOOrganizationSettings, value); }
     }
 }

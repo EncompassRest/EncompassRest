@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,36 +9,38 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class FannieServiceDuLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyList<LogAlert> _alerts;
-        private DirtyList<LogComment> _commentList;
-        private DirtyValue<string> _comments;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<string> _details;
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
-        private DirtyValue<string> _guid;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private DirtyValue<int?> _logRecordIndex;
-        private DirtyValue<string> _name;
-        private DirtyValue<string> _result;
-        private DirtyValue<bool?> _showAlert;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<DateTime?> _updatedDateUtc;
+        private DirtyList<LogAlert>? _alerts;
+        private DirtyList<LogComment>? _commentList;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<string?>? _details;
+        private DirtyValue<bool?>? _fileAttachmentsMigrated;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<int?>? _logRecordIndex;
+        private DirtyValue<string?>? _name;
+        private DirtyValue<string?>? _result;
+        private DirtyValue<bool?>? _showAlert;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
 
         /// <summary>
         /// FannieServiceDuLog Alerts
         /// </summary>
+        [AllowNull]
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
 
         /// <summary>
         /// FannieServiceDuLog CommentList
         /// </summary>
+        [AllowNull]
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
 
         /// <summary>
         /// FannieServiceDuLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// FannieServiceDuLog DateUtc
@@ -47,7 +50,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FannieServiceDuLog Details
         /// </summary>
-        public string Details { get => _details; set => SetField(ref _details, value); }
+        public string? Details { get => _details; set => SetField(ref _details, value); }
 
         /// <summary>
         /// FannieServiceDuLog FileAttachmentsMigrated
@@ -57,12 +60,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FannieServiceDuLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// FannieServiceDuLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// FannieServiceDuLog IsSystemSpecificIndicator
@@ -77,12 +80,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FannieServiceDuLog Name
         /// </summary>
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
         /// FannieServiceDuLog Result
         /// </summary>
-        public string Result { get => _result; set => SetField(ref _result, value); }
+        public string? Result { get => _result; set => SetField(ref _result, value); }
 
         /// <summary>
         /// FannieServiceDuLog ShowAlert
@@ -92,7 +95,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FannieServiceDuLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// FannieServiceDuLog UpdatedDateUtc

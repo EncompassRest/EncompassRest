@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
@@ -12,13 +13,13 @@ namespace EncompassRest.Contacts
     /// </summary>
     public sealed class BusinessContact : Contact
     {
-        private DirtyValue<BusinessContactCategory?> _categoryId;
-        private DirtyList<BusinessCategoryField> _categoryFields;
-        private DirtyValue<string> _companyName;
-        private DirtyValue<int?> _fees;
-        private BusinessContactLicense _personalContactLicense;
-        private BusinessContactLicense _businessContactLicense;
-        private DirtyValue<bool?> _noSpam;
+        private DirtyValue<BusinessContactCategory?>? _categoryId;
+        private DirtyList<BusinessCategoryField>? _categoryFields;
+        private DirtyValue<string?>? _companyName;
+        private DirtyValue<int?>? _fees;
+        private BusinessContactLicense? _personalContactLicense;
+        private BusinessContactLicense? _businessContactLicense;
+        private DirtyValue<bool?>? _noSpam;
 
         /// <summary>
         /// The business category ID for the business contact.
@@ -29,12 +30,13 @@ namespace EncompassRest.Contacts
         /// <summary>
         /// BusinessContact CategoryFields
         /// </summary>
+        [AllowNull]
         public IList<BusinessCategoryField> CategoryFields { get => GetField(ref _categoryFields); set => SetField(ref _categoryFields, value); }
 
         /// <summary>
         /// The contact's company name.
         /// </summary>
-        public string CompanyName { get => _companyName; set => SetField(ref _companyName, value); }
+        public string? CompanyName { get => _companyName; set => SetField(ref _companyName, value); }
 
         /// <summary>
         /// Rate or fee charged by the contact’s services.
@@ -44,11 +46,13 @@ namespace EncompassRest.Contacts
         /// <summary>
         /// Licensing information.
         /// </summary>
+        [AllowNull]
         public BusinessContactLicense PersonalContactLicense { get => GetField(ref _personalContactLicense); set => SetField(ref _personalContactLicense, value); }
 
         /// <summary>
         /// Business licensing information.
         /// </summary>
+        [AllowNull]
         public BusinessContactLicense BusinessContactLicense { get => GetField(ref _businessContactLicense); set => SetField(ref _businessContactLicense, value); }
 
         /// <summary>

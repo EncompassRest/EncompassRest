@@ -9,82 +9,82 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ConstructionManagement : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _additionalDisbursementsConditions;
-        private DirtyValue<DateTime?> _architectsCertificateDate;
-        private DirtyValue<bool?> _architectsCertificateIndicator;
-        private DirtyValue<decimal?> _asCompletedAppraisedValue;
-        private DirtyValue<decimal?> _asCompletedPurchasePrice;
-        private DirtyValue<DateTime?> _budgetDate;
-        private DirtyValue<bool?> _budgetIndicator;
-        private DirtyValue<DateTime?> _commitmentExpirationDate;
-        private DirtyValue<DateTime?> _commitmentLetterDate;
-        private DirtyValue<DateTime?> _constCompletionDate;
-        private DirtyValue<StringEnumValue<ConstOnlyAmortizationType>> _constOnlyAmortizationType;
-        private DirtyValue<bool?> _constructionContractIndicator;
-        private DirtyValue<DateTime?> _constructionContractIssuedDate;
-        private DirtyValue<DateTime?> _constructionContractReceivedDate;
-        private DirtyValue<bool?> _constructionPeriodIncludedInLoanTermFlag;
-        private DirtyValue<DateTime?> _contractorsAgreementDate;
-        private DirtyValue<bool?> _contractorsAgreementIndicator;
-        private DirtyValue<bool?> _costImprovementsIncluded;
-        private DirtyValue<DateTime?> _environmentalAssessmentDate;
-        private DirtyValue<bool?> _environmentalAssessmentIndicator;
-        private DirtyValue<DateTime?> _floodHazardDeterminationDate;
-        private DirtyValue<bool?> _floodHazardDeterminationIndicator;
-        private DirtyValue<int?> _futureAdvancePeriod;
-        private DirtyValue<decimal?> _holdbackAmount;
-        private DirtyValue<decimal?> _holdbackPercent;
-        private DirtyValue<DateTime?> _lienAgentNorthCarolinaDate;
-        private DirtyValue<bool?> _lienAgentNorthCarolinaIndicator;
-        private DirtyValue<DateTime?> _listOfConstructionAgreementsDate;
-        private DirtyValue<bool?> _listOfConstructionAgreementsIndicator;
-        private DirtyValue<decimal?> _maxLTVPercent;
-        private DirtyValue<int?> _minimumDaysBetweenDisbursements;
-        private DirtyValue<DateTime?> _otherDate;
-        private DirtyValue<string> _otherDescription;
-        private DirtyValue<bool?> _otherIndicator;
-        private DirtyValue<StringEnumValue<PartialPrepaymentsElection>> _partialPrepaymentsElection;
-        private DirtyValue<DateTime?> _paymentAndPerformanceBondsDate;
-        private DirtyValue<bool?> _paymentAndPerformanceBondsIndicator;
-        private DirtyValue<DateTime?> _percolationTestDate;
-        private DirtyValue<bool?> _percolationTestIndicator;
-        private DirtyValue<DateTime?> _permitsDate;
-        private DirtyValue<bool?> _permitsIndicator;
-        private DirtyValue<DateTime?> _plansAndSpecificationsDate;
-        private DirtyValue<bool?> _plansAndSpecificationsIndicator;
-        private DirtyValue<decimal?> _projectDelaySurchargePercent;
-        private DirtyValue<int?> _returnLendersCopyCommitmentDays;
-        private DirtyValue<bool?> _securedBySeparateProperty;
-        private DirtyValue<DateTime?> _soilReportDate;
-        private DirtyValue<bool?> _soilReportIndicator;
-        private DirtyValue<DateTime?> _surveyDate;
-        private DirtyValue<bool?> _surveyIndicator;
-        private DirtyValue<DateTime?> _takeOutCommitmentDate;
-        private DirtyValue<bool?> _takeOutCommitmentIndicator;
-        private DirtyValue<DateTime?> _takeOutCommitmentIssuedDate;
-        private DirtyValue<string> _takeOutLenderAddress;
-        private DirtyValue<string> _takeOutLenderCity;
-        private DirtyValue<string> _takeOutLenderContactName;
-        private DirtyValue<string> _takeOutLenderContactTitle;
-        private DirtyValue<string> _takeOutLenderEmail;
-        private DirtyValue<string> _takeOutLenderFax;
-        private DirtyValue<string> _takeOutLenderLicenseNumber;
-        private DirtyValue<string> _takeOutLenderName;
-        private DirtyValue<string> _takeOutLenderNMLSNumber;
-        private DirtyValue<string> _takeOutLenderPhone;
-        private DirtyValue<string> _takeOutLenderState;
-        private DirtyValue<string> _takeOutLenderZip;
-        private DirtyValue<DateTime?> _titleInsuranceDate;
-        private DirtyValue<bool?> _titleInsuranceIndicator;
-        private DirtyValue<DateTime?> _utilityLettersDate;
-        private DirtyValue<bool?> _utilityLettersIndicator;
-        private DirtyValue<DateTime?> _waterTestDate;
-        private DirtyValue<bool?> _waterTestIndicator;
+        private DirtyValue<string?>? _additionalDisbursementsConditions;
+        private DirtyValue<DateTime?>? _architectsCertificateDate;
+        private DirtyValue<bool?>? _architectsCertificateIndicator;
+        private DirtyValue<decimal?>? _asCompletedAppraisedValue;
+        private DirtyValue<decimal?>? _asCompletedPurchasePrice;
+        private DirtyValue<DateTime?>? _budgetDate;
+        private DirtyValue<bool?>? _budgetIndicator;
+        private DirtyValue<DateTime?>? _commitmentExpirationDate;
+        private DirtyValue<DateTime?>? _commitmentLetterDate;
+        private DirtyValue<DateTime?>? _constCompletionDate;
+        private DirtyValue<StringEnumValue<ConstOnlyAmortizationType>>? _constOnlyAmortizationType;
+        private DirtyValue<bool?>? _constructionContractIndicator;
+        private DirtyValue<DateTime?>? _constructionContractIssuedDate;
+        private DirtyValue<DateTime?>? _constructionContractReceivedDate;
+        private DirtyValue<bool?>? _constructionPeriodIncludedInLoanTermFlag;
+        private DirtyValue<DateTime?>? _contractorsAgreementDate;
+        private DirtyValue<bool?>? _contractorsAgreementIndicator;
+        private DirtyValue<bool?>? _costImprovementsIncluded;
+        private DirtyValue<DateTime?>? _environmentalAssessmentDate;
+        private DirtyValue<bool?>? _environmentalAssessmentIndicator;
+        private DirtyValue<DateTime?>? _floodHazardDeterminationDate;
+        private DirtyValue<bool?>? _floodHazardDeterminationIndicator;
+        private DirtyValue<int?>? _futureAdvancePeriod;
+        private DirtyValue<decimal?>? _holdbackAmount;
+        private DirtyValue<decimal?>? _holdbackPercent;
+        private DirtyValue<DateTime?>? _lienAgentNorthCarolinaDate;
+        private DirtyValue<bool?>? _lienAgentNorthCarolinaIndicator;
+        private DirtyValue<DateTime?>? _listOfConstructionAgreementsDate;
+        private DirtyValue<bool?>? _listOfConstructionAgreementsIndicator;
+        private DirtyValue<decimal?>? _maxLTVPercent;
+        private DirtyValue<int?>? _minimumDaysBetweenDisbursements;
+        private DirtyValue<DateTime?>? _otherDate;
+        private DirtyValue<string?>? _otherDescription;
+        private DirtyValue<bool?>? _otherIndicator;
+        private DirtyValue<StringEnumValue<PartialPrepaymentsElection>>? _partialPrepaymentsElection;
+        private DirtyValue<DateTime?>? _paymentAndPerformanceBondsDate;
+        private DirtyValue<bool?>? _paymentAndPerformanceBondsIndicator;
+        private DirtyValue<DateTime?>? _percolationTestDate;
+        private DirtyValue<bool?>? _percolationTestIndicator;
+        private DirtyValue<DateTime?>? _permitsDate;
+        private DirtyValue<bool?>? _permitsIndicator;
+        private DirtyValue<DateTime?>? _plansAndSpecificationsDate;
+        private DirtyValue<bool?>? _plansAndSpecificationsIndicator;
+        private DirtyValue<decimal?>? _projectDelaySurchargePercent;
+        private DirtyValue<int?>? _returnLendersCopyCommitmentDays;
+        private DirtyValue<bool?>? _securedBySeparateProperty;
+        private DirtyValue<DateTime?>? _soilReportDate;
+        private DirtyValue<bool?>? _soilReportIndicator;
+        private DirtyValue<DateTime?>? _surveyDate;
+        private DirtyValue<bool?>? _surveyIndicator;
+        private DirtyValue<DateTime?>? _takeOutCommitmentDate;
+        private DirtyValue<bool?>? _takeOutCommitmentIndicator;
+        private DirtyValue<DateTime?>? _takeOutCommitmentIssuedDate;
+        private DirtyValue<string?>? _takeOutLenderAddress;
+        private DirtyValue<string?>? _takeOutLenderCity;
+        private DirtyValue<string?>? _takeOutLenderContactName;
+        private DirtyValue<string?>? _takeOutLenderContactTitle;
+        private DirtyValue<string?>? _takeOutLenderEmail;
+        private DirtyValue<string?>? _takeOutLenderFax;
+        private DirtyValue<string?>? _takeOutLenderLicenseNumber;
+        private DirtyValue<string?>? _takeOutLenderName;
+        private DirtyValue<string?>? _takeOutLenderNMLSNumber;
+        private DirtyValue<string?>? _takeOutLenderPhone;
+        private DirtyValue<string?>? _takeOutLenderState;
+        private DirtyValue<string?>? _takeOutLenderZip;
+        private DirtyValue<DateTime?>? _titleInsuranceDate;
+        private DirtyValue<bool?>? _titleInsuranceIndicator;
+        private DirtyValue<DateTime?>? _utilityLettersDate;
+        private DirtyValue<bool?>? _utilityLettersIndicator;
+        private DirtyValue<DateTime?>? _waterTestDate;
+        private DirtyValue<bool?>? _waterTestIndicator;
 
         /// <summary>
         /// Construction Management Project Data - Additional Disbursements Conditions [CONST.X56]
         /// </summary>
-        public string AdditionalDisbursementsConditions { get => _additionalDisbursementsConditions; set => SetField(ref _additionalDisbursementsConditions, value); }
+        public string? AdditionalDisbursementsConditions { get => _additionalDisbursementsConditions; set => SetField(ref _additionalDisbursementsConditions, value); }
 
         /// <summary>
         /// Construction Management Project Data - Architect's Certificate Date [CONST.X34]
@@ -249,7 +249,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Construction Management Project Data - Other Description [CONST.X53]
         /// </summary>
-        public string OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
+        public string? OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
 
         /// <summary>
         /// Construction Management Project Data - Other Indicator [CONST.X51]
@@ -355,62 +355,62 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Take-Out Lender Address [CONST.X63]
         /// </summary>
-        public string TakeOutLenderAddress { get => _takeOutLenderAddress; set => SetField(ref _takeOutLenderAddress, value); }
+        public string? TakeOutLenderAddress { get => _takeOutLenderAddress; set => SetField(ref _takeOutLenderAddress, value); }
 
         /// <summary>
         /// Take-Out Lender City [CONST.X64]
         /// </summary>
-        public string TakeOutLenderCity { get => _takeOutLenderCity; set => SetField(ref _takeOutLenderCity, value); }
+        public string? TakeOutLenderCity { get => _takeOutLenderCity; set => SetField(ref _takeOutLenderCity, value); }
 
         /// <summary>
         /// Take-Out Lender Contact Name [CONST.X68]
         /// </summary>
-        public string TakeOutLenderContactName { get => _takeOutLenderContactName; set => SetField(ref _takeOutLenderContactName, value); }
+        public string? TakeOutLenderContactName { get => _takeOutLenderContactName; set => SetField(ref _takeOutLenderContactName, value); }
 
         /// <summary>
         /// Take-Out Lender Contact Title [CONST.X69]
         /// </summary>
-        public string TakeOutLenderContactTitle { get => _takeOutLenderContactTitle; set => SetField(ref _takeOutLenderContactTitle, value); }
+        public string? TakeOutLenderContactTitle { get => _takeOutLenderContactTitle; set => SetField(ref _takeOutLenderContactTitle, value); }
 
         /// <summary>
         /// Take-Out Lender Email [CONST.X71]
         /// </summary>
-        public string TakeOutLenderEmail { get => _takeOutLenderEmail; set => SetField(ref _takeOutLenderEmail, value); }
+        public string? TakeOutLenderEmail { get => _takeOutLenderEmail; set => SetField(ref _takeOutLenderEmail, value); }
 
         /// <summary>
         /// Take-Out Lender Fax [CONST.X72]
         /// </summary>
-        public string TakeOutLenderFax { get => _takeOutLenderFax; set => SetField(ref _takeOutLenderFax, value); }
+        public string? TakeOutLenderFax { get => _takeOutLenderFax; set => SetField(ref _takeOutLenderFax, value); }
 
         /// <summary>
         /// Take-Out Lender License # [CONST.X62]
         /// </summary>
-        public string TakeOutLenderLicenseNumber { get => _takeOutLenderLicenseNumber; set => SetField(ref _takeOutLenderLicenseNumber, value); }
+        public string? TakeOutLenderLicenseNumber { get => _takeOutLenderLicenseNumber; set => SetField(ref _takeOutLenderLicenseNumber, value); }
 
         /// <summary>
         /// Take-Out Lender Name [CONST.X60]
         /// </summary>
-        public string TakeOutLenderName { get => _takeOutLenderName; set => SetField(ref _takeOutLenderName, value); }
+        public string? TakeOutLenderName { get => _takeOutLenderName; set => SetField(ref _takeOutLenderName, value); }
 
         /// <summary>
         /// Take-Out Lender NMLS # [CONST.X61]
         /// </summary>
-        public string TakeOutLenderNMLSNumber { get => _takeOutLenderNMLSNumber; set => SetField(ref _takeOutLenderNMLSNumber, value); }
+        public string? TakeOutLenderNMLSNumber { get => _takeOutLenderNMLSNumber; set => SetField(ref _takeOutLenderNMLSNumber, value); }
 
         /// <summary>
         /// Take-Out Lender Phone [CONST.X70]
         /// </summary>
-        public string TakeOutLenderPhone { get => _takeOutLenderPhone; set => SetField(ref _takeOutLenderPhone, value); }
+        public string? TakeOutLenderPhone { get => _takeOutLenderPhone; set => SetField(ref _takeOutLenderPhone, value); }
 
         /// <summary>
         /// Take-Out Lender State [CONST.X65]
         /// </summary>
-        public string TakeOutLenderState { get => _takeOutLenderState; set => SetField(ref _takeOutLenderState, value); }
+        public string? TakeOutLenderState { get => _takeOutLenderState; set => SetField(ref _takeOutLenderState, value); }
 
         /// <summary>
         /// Take-Out Lender Zipcode [CONST.X66]
         /// </summary>
-        public string TakeOutLenderZip { get => _takeOutLenderZip; set => SetField(ref _takeOutLenderZip, value); }
+        public string? TakeOutLenderZip { get => _takeOutLenderZip; set => SetField(ref _takeOutLenderZip, value); }
 
         /// <summary>
         /// Construction Management Project Data - Title Insurance Date [CONST.X18]

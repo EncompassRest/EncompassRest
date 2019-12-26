@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,227 +11,227 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Gfe2010 : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _adjustedOriginationCharges;
-        private DirtyValue<decimal?> _allOtherServiceAmount;
-        private DirtyValue<decimal?> _applicationFees;
-        private DirtyValue<bool?> _borrowerSelectIndicator10;
-        private DirtyValue<bool?> _borrowerSelectIndicator11;
-        private DirtyValue<bool?> _borrowerSelectIndicator12;
-        private DirtyValue<bool?> _borrowerSelectIndicator13;
-        private DirtyValue<bool?> _borrowerSelectIndicator14;
-        private DirtyValue<bool?> _borrowerSelectIndicator15;
-        private DirtyValue<bool?> _borrowerSelectIndicator16;
-        private DirtyValue<bool?> _borrowerSelectIndicator17;
-        private DirtyValue<bool?> _borrowerSelectIndicator18;
-        private DirtyValue<bool?> _borrowerSelectIndicator19;
-        private DirtyValue<bool?> _borrowerSelectIndicator2;
-        private DirtyValue<bool?> _borrowerSelectIndicator20;
-        private DirtyValue<bool?> _borrowerSelectIndicator3;
-        private DirtyValue<bool?> _borrowerSelectIndicator4;
-        private DirtyValue<bool?> _borrowerSelectIndicator5;
-        private DirtyValue<bool?> _borrowerSelectIndicator6;
-        private DirtyValue<bool?> _borrowerSelectIndicator7;
-        private DirtyValue<bool?> _borrowerSelectIndicator8;
-        private DirtyValue<bool?> _borrowerSelectIndicator9;
-        private DirtyValue<decimal?> _brokerAdditionalFees;
-        private DirtyValue<decimal?> _brokerFees;
-        private DirtyValue<decimal?> _brokerFeesPercentage;
-        private DirtyValue<decimal?> _chargeAmount;
-        private DirtyValue<decimal?> _chargeAmountForPrint;
-        private DirtyValue<bool?> _copyFromGfeIndicator1;
-        private DirtyValue<bool?> _copyFromGfeIndicator10;
-        private DirtyValue<bool?> _copyFromGfeIndicator11;
-        private DirtyValue<bool?> _copyFromGfeIndicator12;
-        private DirtyValue<bool?> _copyFromGfeIndicator13;
-        private DirtyValue<bool?> _copyFromGfeIndicator14;
-        private DirtyValue<bool?> _copyFromGfeIndicator15;
-        private DirtyValue<bool?> _copyFromGfeIndicator16;
-        private DirtyValue<bool?> _copyFromGfeIndicator17;
-        private DirtyValue<bool?> _copyFromGfeIndicator18;
-        private DirtyValue<bool?> _copyFromGfeIndicator19;
-        private DirtyValue<bool?> _copyFromGfeIndicator2;
-        private DirtyValue<bool?> _copyFromGfeIndicator20;
-        private DirtyValue<bool?> _copyFromGfeIndicator21;
-        private DirtyValue<bool?> _copyFromGfeIndicator22;
-        private DirtyValue<bool?> _copyFromGfeIndicator23;
-        private DirtyValue<bool?> _copyFromGfeIndicator24;
-        private DirtyValue<bool?> _copyFromGfeIndicator25;
-        private DirtyValue<bool?> _copyFromGfeIndicator26;
-        private DirtyValue<bool?> _copyFromGfeIndicator27;
-        private DirtyValue<bool?> _copyFromGfeIndicator28;
-        private DirtyValue<bool?> _copyFromGfeIndicator29;
-        private DirtyValue<bool?> _copyFromGfeIndicator3;
-        private DirtyValue<bool?> _copyFromGfeIndicator30;
-        private DirtyValue<bool?> _copyFromGfeIndicator31;
-        private DirtyValue<bool?> _copyFromGfeIndicator32;
-        private DirtyValue<bool?> _copyFromGfeIndicator33;
-        private DirtyValue<bool?> _copyFromGfeIndicator34;
-        private DirtyValue<bool?> _copyFromGfeIndicator35;
-        private DirtyValue<bool?> _copyFromGfeIndicator4;
-        private DirtyValue<bool?> _copyFromGfeIndicator5;
-        private DirtyValue<bool?> _copyFromGfeIndicator6;
-        private DirtyValue<bool?> _copyFromGfeIndicator7;
-        private DirtyValue<bool?> _copyFromGfeIndicator8;
-        private DirtyValue<bool?> _copyFromGfeIndicator9;
-        private DirtyValue<decimal?> _creditAmount;
-        private DirtyValue<decimal?> _creditAmountForPrint;
-        private DirtyValue<StringEnumValue<CreditChargeType>> _creditChargeType;
-        private DirtyValue<decimal?> _creditOrChange;
-        private DirtyValue<decimal?> _curedAdjustedOriginationCharges;
-        private DirtyValue<decimal?> _curedCreditOrChange;
-        private DirtyValue<decimal?> _curedOriginationCharges;
-        private DirtyValue<decimal?> _curedTotalTransferTaxes;
-        private DirtyValue<decimal?> _dailyInterestCharges;
-        private DirtyValue<DateTime?> _dateForCharges;
-        private DirtyValue<string> _dateForRate;
-        private DirtyValue<string> _daysToSettlement;
-        private DirtyValue<int?> _durationMonths;
-        private DirtyValue<bool?> _escrowChargeAllInsuranceIndicator;
-        private DirtyValue<bool?> _escrowChargeAllPropertyTaxesIndicator;
-        private DirtyValue<bool?> _escrowChargeOtherIndicator;
-        private DirtyValue<string> _escrowOtherDescription;
-        private DirtyValue<decimal?> _financedFeesFromPrepaid;
-        private DirtyList<Gfe2010Fee> _gfe2010Fees;
-        private DirtyList<Gfe2010WholePoc> _gfe2010WholePocs;
-        private DirtyValue<decimal?> _gfeGovernmentRecordingCharges;
-        private DirtyValue<decimal?> _hazardInsurance;
-        private DirtyValue<decimal?> _homeownerInsurance;
-        private DirtyValue<decimal?> _hudGuaranteeFee;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<IncludeOriginationPointsCreditType>> _includeOriginationPointsCreditType;
-        private DirtyValue<decimal?> _initialLoanAmount;
-        private DirtyValue<decimal?> _initialMonthlyAmount;
-        private DirtyValue<bool?> _interestRateRiseIndicator;
-        private DirtyValue<bool?> _isCDValidForEarliestClosingDate;
-        private DirtyValue<decimal?> _line1001Fee;
-        private DirtyValue<decimal?> _line1002Fee;
-        private DirtyValue<decimal?> _line1003Fee;
-        private DirtyValue<decimal?> _line1004Fee;
-        private DirtyValue<decimal?> _line1005Fee;
-        private DirtyValue<decimal?> _line1006Fee;
-        private DirtyValue<decimal?> _line1007Fee;
-        private DirtyValue<decimal?> _line1008Fee;
-        private DirtyValue<decimal?> _line1009Fee;
-        private DirtyValue<decimal?> _line801BrokerCompensationAdditionalAmount;
-        private DirtyValue<decimal?> _line801BrokerCompensationFees;
-        private DirtyValue<decimal?> _line801BrokerCompensationRate;
-        private DirtyValue<decimal?> _line808Fee;
-        private DirtyValue<decimal?> _line809Fee;
-        private DirtyValue<decimal?> _line810Fee;
-        private DirtyValue<decimal?> _line811Fee;
-        private DirtyValue<decimal?> _line812Fee;
-        private DirtyValue<decimal?> _line813Fee;
-        private DirtyValue<decimal?> _line814Fee;
-        private DirtyValue<decimal?> _line815Fee;
-        private DirtyValue<decimal?> _line816Fee;
-        private DirtyValue<decimal?> _line817Fee;
-        private DirtyValue<decimal?> _line818Fee;
-        private DirtyValue<decimal?> _line819Fee;
-        private DirtyValue<decimal?> _line820Fee;
-        private DirtyValue<decimal?> _line821Fee;
-        private DirtyValue<decimal?> _line822Fee;
-        private DirtyValue<decimal?> _line823Fee;
-        private DirtyValue<decimal?> _line824Fee;
-        private DirtyValue<decimal?> _line825Fee;
-        private DirtyValue<decimal?> _line826Fee;
-        private DirtyValue<decimal?> _line827Fee;
-        private DirtyValue<decimal?> _line828Fee;
-        private DirtyValue<decimal?> _line829Fee;
-        private DirtyValue<decimal?> _line830Fee;
-        private DirtyValue<decimal?> _line831Fee;
-        private DirtyValue<decimal?> _line832Fee;
-        private DirtyValue<decimal?> _line833Fee;
-        private DirtyValue<bool?> _loanBalanceRiseIndicator;
-        private DirtyValue<decimal?> _loanOriginationFees;
-        private DirtyValue<decimal?> _loanOriginationPercentage;
-        private DirtyValue<string> _loanOriginatorName;
-        private DirtyValue<decimal?> _lowerInterestInitialInterestRate;
-        private DirtyValue<decimal?> _lowerInterestInitialMonthlyAmountOwed;
-        private DirtyValue<decimal?> _lowerInterestMonthlyPaymentReduced;
-        private DirtyValue<decimal?> _lowerInterestServiceChargeIncreasedAmount;
-        private DirtyValue<decimal?> _lowerInterestTotalSettlementCharges;
-        private DirtyValue<decimal?> _lowerSettlementInitialInterestRate;
-        private DirtyValue<decimal?> _lowerSettlementInitialMonthlyAmountOwed;
-        private DirtyValue<decimal?> _lowerSettlementMonthlyPaymentIncreased;
-        private DirtyValue<decimal?> _lowerSettlementServiceChargeReducedAmount;
-        private DirtyValue<decimal?> _lowerSettlementTotalSettlementCharges;
-        private DirtyValue<decimal?> _maximumLoanBalance;
-        private DirtyValue<decimal?> _maximumOwedMonthlyPayment;
-        private DirtyValue<decimal?> _maxLifeInterestCapPercent;
-        private DirtyValue<string> _maxLifeInterestCapPercentUI;
-        private DirtyValue<int?> _monthlyPaymentFirstIncreaseDate;
-        private DirtyValue<bool?> _monthlyPaymentRiseIndicator;
-        private DirtyValue<decimal?> _mortgageInsurancePremium;
-        private DirtyValue<string> _mustLockRateDays;
-        private DirtyValue<decimal?> _newHudSection1100Line1104BorPaidAmount;
-        private DirtyValue<decimal?> _newHudSection1100Line1104SelPaidAmount;
-        private DirtyValue<decimal?> _newHudSection1100Line1107BorPaidAmount;
-        private DirtyValue<decimal?> _newHudSection1100Line1108BorPaidAmount;
-        private DirtyValue<decimal?> _originationCharges;
-        private DirtyValue<decimal?> _originationCreditYsp;
-        private DirtyValue<decimal?> _originationCreditYspAdditional;
-        private DirtyValue<decimal?> _originationPoints;
-        private DirtyValue<decimal?> _originationPointsAdditional;
-        private DirtyValue<decimal?> _originationPointsPercentage;
-        private DirtyValue<NA<decimal>> _ownerTitleInsuranceAmount;
-        private DirtyValue<bool?> _printNAInLockRateDays;
-        private DirtyValue<bool?> _printShoppingChartIndicator;
-        private DirtyValue<decimal?> _processingFees;
-        private DirtyValue<decimal?> _requiredAppraisalFee;
-        private DirtyValue<decimal?> _requiredCreditReportFee;
-        private DirtyValue<decimal?> _requiredFloodCertificationFee;
-        private DirtyValue<decimal?> _requiredServicesAmount;
-        private DirtyValue<decimal?> _requiredTaxServiceFee;
-        private DirtyValue<decimal?> _section1000TotalBorrowerPaidAmount;
-        private DirtyValue<decimal?> _section1000TotalOtherPaidAmount;
-        private DirtyValue<decimal?> _section1000TotalPaidAmount;
-        private DirtyValue<decimal?> _section1000TotalSellerPaidAmount;
-        private DirtyValue<decimal?> _section1100TotalBorrowerPaidAmount;
-        private DirtyValue<decimal?> _section1100TotalOtherPaidAmount;
-        private DirtyValue<decimal?> _section1100TotalPaidAmount;
-        private DirtyValue<decimal?> _section1100TotalSellerPaidAmount;
-        private DirtyValue<decimal?> _section1200TotalBorrowerPaidAmount;
-        private DirtyValue<decimal?> _section1200TotalOtherPaidAmount;
-        private DirtyValue<decimal?> _section1200TotalPaidAmount;
-        private DirtyValue<decimal?> _section1200TotalSellerPaidAmount;
-        private DirtyValue<decimal?> _section1300TotalBorrowerPaidAmount;
-        private DirtyValue<decimal?> _section1300TotalOtherPaidAmount;
-        private DirtyValue<decimal?> _section1300TotalPaidAmount;
-        private DirtyValue<decimal?> _section1300TotalSellerPaidAmount;
-        private DirtyValue<decimal?> _section1400TotalBorrowerPaidAmount;
-        private DirtyValue<decimal?> _section1400TotalOtherPaidAmount;
-        private DirtyValue<decimal?> _section1400TotalPaidAmount;
-        private DirtyValue<decimal?> _section1400TotalSellerPaidAmount;
-        private DirtyValue<decimal?> _section700TotalBorrowerPaidAmount;
-        private DirtyValue<decimal?> _section700TotalOtherPaidAmount;
-        private DirtyValue<decimal?> _section700TotalPaidAmount;
-        private DirtyValue<decimal?> _section700TotalSellerPaidAmount;
-        private DirtyValue<decimal?> _section800TotalBorrowerPaidAmount;
-        private DirtyValue<decimal?> _section800TotalOtherPaidAmount;
-        private DirtyValue<decimal?> _section800TotalPaidAmount;
-        private DirtyValue<decimal?> _section800TotalSellerPaidAmount;
-        private DirtyValue<decimal?> _section900TotalBorrowerPaidAmount;
-        private DirtyValue<decimal?> _section900TotalOtherPaidAmount;
-        private DirtyValue<decimal?> _section900TotalPaidAmount;
-        private DirtyValue<decimal?> _section900TotalSellerPaidAmount;
-        private DirtyValue<decimal?> _sectionPCTotalBorrowerPaidAmount;
-        private DirtyValue<decimal?> _sectionPCTotalOtherPaidAmount;
-        private DirtyValue<decimal?> _sectionPCTotalPaidAmount;
-        private DirtyValue<decimal?> _sectionPCTotalSellerPaidAmount;
-        private DirtyValue<decimal?> _shopRequiredServicesAmount;
-        private DirtyValue<decimal?> _subsequentCapPercent;
-        private DirtyValue<decimal?> _subsequentlyPaidFinanceCharge;
-        private DirtyValue<int?> _subsequentRateAdjustmentMonths;
-        private DirtyValue<bool?> _tableFundedIndicator;
-        private DirtyValue<string> _timeForRate;
-        private DirtyValue<decimal?> _titleServiceAmount;
-        private DirtyValue<decimal?> _totalBelow10;
-        private DirtyValue<decimal?> _totalOfFinancedFees;
-        private DirtyValue<decimal?> _totalSettlementCharges;
-        private DirtyValue<decimal?> _totalTransferTaxes;
-        private DirtyValue<decimal?> _transferTaxes;
-        private DirtyValue<decimal?> _underwritingFees;
-        private DirtyValue<bool?> _useLOCompTool;
+        private DirtyValue<decimal?>? _adjustedOriginationCharges;
+        private DirtyValue<decimal?>? _allOtherServiceAmount;
+        private DirtyValue<decimal?>? _applicationFees;
+        private DirtyValue<bool?>? _borrowerSelectIndicator10;
+        private DirtyValue<bool?>? _borrowerSelectIndicator11;
+        private DirtyValue<bool?>? _borrowerSelectIndicator12;
+        private DirtyValue<bool?>? _borrowerSelectIndicator13;
+        private DirtyValue<bool?>? _borrowerSelectIndicator14;
+        private DirtyValue<bool?>? _borrowerSelectIndicator15;
+        private DirtyValue<bool?>? _borrowerSelectIndicator16;
+        private DirtyValue<bool?>? _borrowerSelectIndicator17;
+        private DirtyValue<bool?>? _borrowerSelectIndicator18;
+        private DirtyValue<bool?>? _borrowerSelectIndicator19;
+        private DirtyValue<bool?>? _borrowerSelectIndicator2;
+        private DirtyValue<bool?>? _borrowerSelectIndicator20;
+        private DirtyValue<bool?>? _borrowerSelectIndicator3;
+        private DirtyValue<bool?>? _borrowerSelectIndicator4;
+        private DirtyValue<bool?>? _borrowerSelectIndicator5;
+        private DirtyValue<bool?>? _borrowerSelectIndicator6;
+        private DirtyValue<bool?>? _borrowerSelectIndicator7;
+        private DirtyValue<bool?>? _borrowerSelectIndicator8;
+        private DirtyValue<bool?>? _borrowerSelectIndicator9;
+        private DirtyValue<decimal?>? _brokerAdditionalFees;
+        private DirtyValue<decimal?>? _brokerFees;
+        private DirtyValue<decimal?>? _brokerFeesPercentage;
+        private DirtyValue<decimal?>? _chargeAmount;
+        private DirtyValue<decimal?>? _chargeAmountForPrint;
+        private DirtyValue<bool?>? _copyFromGfeIndicator1;
+        private DirtyValue<bool?>? _copyFromGfeIndicator10;
+        private DirtyValue<bool?>? _copyFromGfeIndicator11;
+        private DirtyValue<bool?>? _copyFromGfeIndicator12;
+        private DirtyValue<bool?>? _copyFromGfeIndicator13;
+        private DirtyValue<bool?>? _copyFromGfeIndicator14;
+        private DirtyValue<bool?>? _copyFromGfeIndicator15;
+        private DirtyValue<bool?>? _copyFromGfeIndicator16;
+        private DirtyValue<bool?>? _copyFromGfeIndicator17;
+        private DirtyValue<bool?>? _copyFromGfeIndicator18;
+        private DirtyValue<bool?>? _copyFromGfeIndicator19;
+        private DirtyValue<bool?>? _copyFromGfeIndicator2;
+        private DirtyValue<bool?>? _copyFromGfeIndicator20;
+        private DirtyValue<bool?>? _copyFromGfeIndicator21;
+        private DirtyValue<bool?>? _copyFromGfeIndicator22;
+        private DirtyValue<bool?>? _copyFromGfeIndicator23;
+        private DirtyValue<bool?>? _copyFromGfeIndicator24;
+        private DirtyValue<bool?>? _copyFromGfeIndicator25;
+        private DirtyValue<bool?>? _copyFromGfeIndicator26;
+        private DirtyValue<bool?>? _copyFromGfeIndicator27;
+        private DirtyValue<bool?>? _copyFromGfeIndicator28;
+        private DirtyValue<bool?>? _copyFromGfeIndicator29;
+        private DirtyValue<bool?>? _copyFromGfeIndicator3;
+        private DirtyValue<bool?>? _copyFromGfeIndicator30;
+        private DirtyValue<bool?>? _copyFromGfeIndicator31;
+        private DirtyValue<bool?>? _copyFromGfeIndicator32;
+        private DirtyValue<bool?>? _copyFromGfeIndicator33;
+        private DirtyValue<bool?>? _copyFromGfeIndicator34;
+        private DirtyValue<bool?>? _copyFromGfeIndicator35;
+        private DirtyValue<bool?>? _copyFromGfeIndicator4;
+        private DirtyValue<bool?>? _copyFromGfeIndicator5;
+        private DirtyValue<bool?>? _copyFromGfeIndicator6;
+        private DirtyValue<bool?>? _copyFromGfeIndicator7;
+        private DirtyValue<bool?>? _copyFromGfeIndicator8;
+        private DirtyValue<bool?>? _copyFromGfeIndicator9;
+        private DirtyValue<decimal?>? _creditAmount;
+        private DirtyValue<decimal?>? _creditAmountForPrint;
+        private DirtyValue<StringEnumValue<CreditChargeType>>? _creditChargeType;
+        private DirtyValue<decimal?>? _creditOrChange;
+        private DirtyValue<decimal?>? _curedAdjustedOriginationCharges;
+        private DirtyValue<decimal?>? _curedCreditOrChange;
+        private DirtyValue<decimal?>? _curedOriginationCharges;
+        private DirtyValue<decimal?>? _curedTotalTransferTaxes;
+        private DirtyValue<decimal?>? _dailyInterestCharges;
+        private DirtyValue<DateTime?>? _dateForCharges;
+        private DirtyValue<string?>? _dateForRate;
+        private DirtyValue<string?>? _daysToSettlement;
+        private DirtyValue<int?>? _durationMonths;
+        private DirtyValue<bool?>? _escrowChargeAllInsuranceIndicator;
+        private DirtyValue<bool?>? _escrowChargeAllPropertyTaxesIndicator;
+        private DirtyValue<bool?>? _escrowChargeOtherIndicator;
+        private DirtyValue<string?>? _escrowOtherDescription;
+        private DirtyValue<decimal?>? _financedFeesFromPrepaid;
+        private DirtyList<Gfe2010Fee>? _gfe2010Fees;
+        private DirtyList<Gfe2010WholePoc>? _gfe2010WholePocs;
+        private DirtyValue<decimal?>? _gfeGovernmentRecordingCharges;
+        private DirtyValue<decimal?>? _hazardInsurance;
+        private DirtyValue<decimal?>? _homeownerInsurance;
+        private DirtyValue<decimal?>? _hudGuaranteeFee;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<IncludeOriginationPointsCreditType>>? _includeOriginationPointsCreditType;
+        private DirtyValue<decimal?>? _initialLoanAmount;
+        private DirtyValue<decimal?>? _initialMonthlyAmount;
+        private DirtyValue<bool?>? _interestRateRiseIndicator;
+        private DirtyValue<bool?>? _isCDValidForEarliestClosingDate;
+        private DirtyValue<decimal?>? _line1001Fee;
+        private DirtyValue<decimal?>? _line1002Fee;
+        private DirtyValue<decimal?>? _line1003Fee;
+        private DirtyValue<decimal?>? _line1004Fee;
+        private DirtyValue<decimal?>? _line1005Fee;
+        private DirtyValue<decimal?>? _line1006Fee;
+        private DirtyValue<decimal?>? _line1007Fee;
+        private DirtyValue<decimal?>? _line1008Fee;
+        private DirtyValue<decimal?>? _line1009Fee;
+        private DirtyValue<decimal?>? _line801BrokerCompensationAdditionalAmount;
+        private DirtyValue<decimal?>? _line801BrokerCompensationFees;
+        private DirtyValue<decimal?>? _line801BrokerCompensationRate;
+        private DirtyValue<decimal?>? _line808Fee;
+        private DirtyValue<decimal?>? _line809Fee;
+        private DirtyValue<decimal?>? _line810Fee;
+        private DirtyValue<decimal?>? _line811Fee;
+        private DirtyValue<decimal?>? _line812Fee;
+        private DirtyValue<decimal?>? _line813Fee;
+        private DirtyValue<decimal?>? _line814Fee;
+        private DirtyValue<decimal?>? _line815Fee;
+        private DirtyValue<decimal?>? _line816Fee;
+        private DirtyValue<decimal?>? _line817Fee;
+        private DirtyValue<decimal?>? _line818Fee;
+        private DirtyValue<decimal?>? _line819Fee;
+        private DirtyValue<decimal?>? _line820Fee;
+        private DirtyValue<decimal?>? _line821Fee;
+        private DirtyValue<decimal?>? _line822Fee;
+        private DirtyValue<decimal?>? _line823Fee;
+        private DirtyValue<decimal?>? _line824Fee;
+        private DirtyValue<decimal?>? _line825Fee;
+        private DirtyValue<decimal?>? _line826Fee;
+        private DirtyValue<decimal?>? _line827Fee;
+        private DirtyValue<decimal?>? _line828Fee;
+        private DirtyValue<decimal?>? _line829Fee;
+        private DirtyValue<decimal?>? _line830Fee;
+        private DirtyValue<decimal?>? _line831Fee;
+        private DirtyValue<decimal?>? _line832Fee;
+        private DirtyValue<decimal?>? _line833Fee;
+        private DirtyValue<bool?>? _loanBalanceRiseIndicator;
+        private DirtyValue<decimal?>? _loanOriginationFees;
+        private DirtyValue<decimal?>? _loanOriginationPercentage;
+        private DirtyValue<string?>? _loanOriginatorName;
+        private DirtyValue<decimal?>? _lowerInterestInitialInterestRate;
+        private DirtyValue<decimal?>? _lowerInterestInitialMonthlyAmountOwed;
+        private DirtyValue<decimal?>? _lowerInterestMonthlyPaymentReduced;
+        private DirtyValue<decimal?>? _lowerInterestServiceChargeIncreasedAmount;
+        private DirtyValue<decimal?>? _lowerInterestTotalSettlementCharges;
+        private DirtyValue<decimal?>? _lowerSettlementInitialInterestRate;
+        private DirtyValue<decimal?>? _lowerSettlementInitialMonthlyAmountOwed;
+        private DirtyValue<decimal?>? _lowerSettlementMonthlyPaymentIncreased;
+        private DirtyValue<decimal?>? _lowerSettlementServiceChargeReducedAmount;
+        private DirtyValue<decimal?>? _lowerSettlementTotalSettlementCharges;
+        private DirtyValue<decimal?>? _maximumLoanBalance;
+        private DirtyValue<decimal?>? _maximumOwedMonthlyPayment;
+        private DirtyValue<decimal?>? _maxLifeInterestCapPercent;
+        private DirtyValue<string?>? _maxLifeInterestCapPercentUI;
+        private DirtyValue<int?>? _monthlyPaymentFirstIncreaseDate;
+        private DirtyValue<bool?>? _monthlyPaymentRiseIndicator;
+        private DirtyValue<decimal?>? _mortgageInsurancePremium;
+        private DirtyValue<string?>? _mustLockRateDays;
+        private DirtyValue<decimal?>? _newHudSection1100Line1104BorPaidAmount;
+        private DirtyValue<decimal?>? _newHudSection1100Line1104SelPaidAmount;
+        private DirtyValue<decimal?>? _newHudSection1100Line1107BorPaidAmount;
+        private DirtyValue<decimal?>? _newHudSection1100Line1108BorPaidAmount;
+        private DirtyValue<decimal?>? _originationCharges;
+        private DirtyValue<decimal?>? _originationCreditYsp;
+        private DirtyValue<decimal?>? _originationCreditYspAdditional;
+        private DirtyValue<decimal?>? _originationPoints;
+        private DirtyValue<decimal?>? _originationPointsAdditional;
+        private DirtyValue<decimal?>? _originationPointsPercentage;
+        private DirtyValue<NA<decimal>>? _ownerTitleInsuranceAmount;
+        private DirtyValue<bool?>? _printNAInLockRateDays;
+        private DirtyValue<bool?>? _printShoppingChartIndicator;
+        private DirtyValue<decimal?>? _processingFees;
+        private DirtyValue<decimal?>? _requiredAppraisalFee;
+        private DirtyValue<decimal?>? _requiredCreditReportFee;
+        private DirtyValue<decimal?>? _requiredFloodCertificationFee;
+        private DirtyValue<decimal?>? _requiredServicesAmount;
+        private DirtyValue<decimal?>? _requiredTaxServiceFee;
+        private DirtyValue<decimal?>? _section1000TotalBorrowerPaidAmount;
+        private DirtyValue<decimal?>? _section1000TotalOtherPaidAmount;
+        private DirtyValue<decimal?>? _section1000TotalPaidAmount;
+        private DirtyValue<decimal?>? _section1000TotalSellerPaidAmount;
+        private DirtyValue<decimal?>? _section1100TotalBorrowerPaidAmount;
+        private DirtyValue<decimal?>? _section1100TotalOtherPaidAmount;
+        private DirtyValue<decimal?>? _section1100TotalPaidAmount;
+        private DirtyValue<decimal?>? _section1100TotalSellerPaidAmount;
+        private DirtyValue<decimal?>? _section1200TotalBorrowerPaidAmount;
+        private DirtyValue<decimal?>? _section1200TotalOtherPaidAmount;
+        private DirtyValue<decimal?>? _section1200TotalPaidAmount;
+        private DirtyValue<decimal?>? _section1200TotalSellerPaidAmount;
+        private DirtyValue<decimal?>? _section1300TotalBorrowerPaidAmount;
+        private DirtyValue<decimal?>? _section1300TotalOtherPaidAmount;
+        private DirtyValue<decimal?>? _section1300TotalPaidAmount;
+        private DirtyValue<decimal?>? _section1300TotalSellerPaidAmount;
+        private DirtyValue<decimal?>? _section1400TotalBorrowerPaidAmount;
+        private DirtyValue<decimal?>? _section1400TotalOtherPaidAmount;
+        private DirtyValue<decimal?>? _section1400TotalPaidAmount;
+        private DirtyValue<decimal?>? _section1400TotalSellerPaidAmount;
+        private DirtyValue<decimal?>? _section700TotalBorrowerPaidAmount;
+        private DirtyValue<decimal?>? _section700TotalOtherPaidAmount;
+        private DirtyValue<decimal?>? _section700TotalPaidAmount;
+        private DirtyValue<decimal?>? _section700TotalSellerPaidAmount;
+        private DirtyValue<decimal?>? _section800TotalBorrowerPaidAmount;
+        private DirtyValue<decimal?>? _section800TotalOtherPaidAmount;
+        private DirtyValue<decimal?>? _section800TotalPaidAmount;
+        private DirtyValue<decimal?>? _section800TotalSellerPaidAmount;
+        private DirtyValue<decimal?>? _section900TotalBorrowerPaidAmount;
+        private DirtyValue<decimal?>? _section900TotalOtherPaidAmount;
+        private DirtyValue<decimal?>? _section900TotalPaidAmount;
+        private DirtyValue<decimal?>? _section900TotalSellerPaidAmount;
+        private DirtyValue<decimal?>? _sectionPCTotalBorrowerPaidAmount;
+        private DirtyValue<decimal?>? _sectionPCTotalOtherPaidAmount;
+        private DirtyValue<decimal?>? _sectionPCTotalPaidAmount;
+        private DirtyValue<decimal?>? _sectionPCTotalSellerPaidAmount;
+        private DirtyValue<decimal?>? _shopRequiredServicesAmount;
+        private DirtyValue<decimal?>? _subsequentCapPercent;
+        private DirtyValue<decimal?>? _subsequentlyPaidFinanceCharge;
+        private DirtyValue<int?>? _subsequentRateAdjustmentMonths;
+        private DirtyValue<bool?>? _tableFundedIndicator;
+        private DirtyValue<string?>? _timeForRate;
+        private DirtyValue<decimal?>? _titleServiceAmount;
+        private DirtyValue<decimal?>? _totalBelow10;
+        private DirtyValue<decimal?>? _totalOfFinancedFees;
+        private DirtyValue<decimal?>? _totalSettlementCharges;
+        private DirtyValue<decimal?>? _totalTransferTaxes;
+        private DirtyValue<decimal?>? _transferTaxes;
+        private DirtyValue<decimal?>? _underwritingFees;
+        private DirtyValue<bool?>? _useLOCompTool;
 
         /// <summary>
         /// Fees Adj Orig Chrgs Applied to GFE [NEWHUD.X16]
@@ -611,12 +612,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Avail Date for GFE Interest Rate [NEWHUD.X1]
         /// </summary>
-        public string DateForRate { get => _dateForRate; set => SetField(ref _dateForRate, value); }
+        public string? DateForRate { get => _dateForRate; set => SetField(ref _dateForRate, value); }
 
         /// <summary>
         /// No. Days from Rate Lock to Settlement [NEWHUD.X719]
         /// </summary>
-        public string DaysToSettlement { get => _daysToSettlement; set => SetField(ref _daysToSettlement, value); }
+        public string? DaysToSettlement { get => _daysToSettlement; set => SetField(ref _daysToSettlement, value); }
 
         /// <summary>
         /// ARM Rate Adj Period [NEWHUD.X557]
@@ -641,7 +642,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Other Escrow Descr [NEWHUD.X78]
         /// </summary>
-        public string EscrowOtherDescription { get => _escrowOtherDescription; set => SetField(ref _escrowOtherDescription, value); }
+        public string? EscrowOtherDescription { get => _escrowOtherDescription; set => SetField(ref _escrowOtherDescription, value); }
 
         /// <summary>
         /// Borr Total of Prepaid Financed Fees [NEWHUD.X1704]
@@ -652,11 +653,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010 Gfe2010Fees
         /// </summary>
+        [AllowNull]
         public IList<Gfe2010Fee> Gfe2010Fees { get => GetField(ref _gfe2010Fees); set => SetField(ref _gfe2010Fees, value); }
 
         /// <summary>
         /// Gfe2010 Gfe2010WholePocs
         /// </summary>
+        [AllowNull]
         public IList<Gfe2010WholePoc> Gfe2010WholePocs { get => GetField(ref _gfe2010WholePocs); set => SetField(ref _gfe2010WholePocs, value); }
 
         /// <summary>
@@ -686,7 +689,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010 Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Include Points/Credit in Orig Chrg [NEWHUD.X714]
@@ -964,7 +967,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// 2010 GFE Loan Originator Name [NEWHUD.X806]
         /// </summary>
-        public string LoanOriginatorName { get => _loanOriginatorName; set => SetField(ref _loanOriginatorName, value); }
+        public string? LoanOriginatorName { get => _loanOriginatorName; set => SetField(ref _loanOriginatorName, value); }
 
         /// <summary>
         /// Lower Int Rate-Initial Interest Rate [NEWHUD.X101]
@@ -1047,7 +1050,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ARM Max Life Interest Cap - Display fields with KBYO rounding rules [KBYO.NEWHUDXD555]
         /// </summary>
-        public string MaxLifeInterestCapPercentUI { get => _maxLifeInterestCapPercentUI; set => SetField(ref _maxLifeInterestCapPercentUI, value); }
+        public string? MaxLifeInterestCapPercentUI { get => _maxLifeInterestCapPercentUI; set => SetField(ref _maxLifeInterestCapPercentUI, value); }
 
         /// <summary>
         /// Mnths Until 1st Mnthly Pymt Increase [NEWHUD.X9]
@@ -1068,7 +1071,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Days Before Sttlmtn to Lock Int Rate [NEWHUD.X3]
         /// </summary>
-        public string MustLockRateDays { get => _mustLockRateDays; set => SetField(ref _mustLockRateDays, value); }
+        public string? MustLockRateDays { get => _mustLockRateDays; set => SetField(ref _mustLockRateDays, value); }
 
         /// <summary>
         /// Gfe2010 NewHudSection1100Line1104BorPaidAmount
@@ -1424,7 +1427,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Avail Time for GFE Interest Rate [NEWHUD.X725]
         /// </summary>
-        public string TimeForRate { get => _timeForRate; set => SetField(ref _timeForRate, value); }
+        public string? TimeForRate { get => _timeForRate; set => SetField(ref _timeForRate, value); }
 
         /// <summary>
         /// Title Serv &amp; Lender's Title Ins Applied to GFE [NEWHUD.X38]

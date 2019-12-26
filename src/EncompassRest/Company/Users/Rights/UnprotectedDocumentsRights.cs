@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,8 +7,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class UnprotectedDocumentsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _deleteDocument;
-        private EditDocumentRights _editDocument;
+        private DirtyValue<bool?>? _deleteDocument;
+        private EditDocumentRights? _editDocument;
 
         /// <summary>
         /// UnprotectedDocumentsRights DeleteDocument
@@ -16,6 +18,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// UnprotectedDocumentsRights EditDocument
         /// </summary>
+        [AllowNull]
         public EditDocumentRights EditDocument { get => GetField(ref _editDocument); set => SetField(ref _editDocument, value); }
     }
 }

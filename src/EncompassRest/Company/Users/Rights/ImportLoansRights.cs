@@ -7,8 +7,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ImportLoansRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _calyxPoint;
-        private DirtyValue<bool?> _fannieMae3x;
+        private DirtyValue<bool?>? _calyxPoint;
+        private DirtyValue<bool?>? _fannieMae3x;
 
         /// <summary>
         /// ImportLoansRights CalyxPoint

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,22 +8,24 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PipelineAndLoansRights : ParentAccessRights
     {
-        private AccessToFeesRights _accessToFees;
-        private AccessToProductPricingRights _accessToProductPricing;
-        private DirtyValue<bool?> _generateDisclosures;
-        private DirtyValue<bool?> _submitForPurchase;
-        private DirtyValue<bool?> _viewPurchaseAdvice;
-        private DirtyValue<bool?> _viewMessages;
+        private AccessToFeesRights? _accessToFees;
+        private AccessToProductPricingRights? _accessToProductPricing;
+        private DirtyValue<bool?>? _generateDisclosures;
+        private DirtyValue<bool?>? _submitForPurchase;
+        private DirtyValue<bool?>? _viewPurchaseAdvice;
+        private DirtyValue<bool?>? _viewMessages;
 
         /// <summary>
         /// PipelineAndLoansRights AccessToFees
         /// </summary>
+        [AllowNull]
         public AccessToFeesRights AccessToFees { get => GetField(ref _accessToFees); set => SetField(ref _accessToFees, value); }
 
         /// <summary>
         /// PipelineAndLoansRights AccessToProductPricing
         /// </summary>
         [JsonProperty("accessToProduct&Pricing")]
+        [AllowNull]
         public AccessToProductPricingRights AccessToProductPricing { get => GetField(ref _accessToProductPricing); set => SetField(ref _accessToProductPricing, value); }
 
         /// <summary>

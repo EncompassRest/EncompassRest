@@ -56,7 +56,7 @@ namespace EncompassRest.Company.Users
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetUserRawAsync(string userId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetUserRawAsync(string userId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets all users.
         /// </summary>
@@ -69,14 +69,14 @@ namespace EncompassRest.Company.Users
         /// <param name="options">The users retrieval options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<List<User>> GetUsersAsync(UsersRetrievalOptions options, CancellationToken cancellationToken = default);
+        Task<List<User>> GetUsersAsync(UsersRetrievalOptions? options, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets users as raw json.
         /// </summary>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetUsersRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetUsersRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ namespace EncompassRest.Company.Users
     /// </summary>
     public sealed class Users : ApiObject, IUsers
     {
-        private UserApis _currentUserApis;
+        private UserApis? _currentUserApis;
 
         /// <summary>
         /// Gets the Current User's Apis. Custom Data Objects are not currently supported through this property.
@@ -132,12 +132,12 @@ namespace EncompassRest.Company.Users
         /// <param name="options">The users retrieval options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public async Task<List<User>> GetUsersAsync(UsersRetrievalOptions options, CancellationToken cancellationToken = default)
+        public async Task<List<User>> GetUsersAsync(UsersRetrievalOptions? options, CancellationToken cancellationToken = default)
         {
             var users = await GetDirtyListAsync<User>(null, options?.ToQueryParameters().ToString(), nameof(GetUsersAsync), null, cancellationToken).ConfigureAwait(false);
             foreach (var user in users)
             {
-                user.Initialize(Client, user.Id);
+                user.Initialize(Client, user.Id!);
             }
             return users;
         }
@@ -148,7 +148,7 @@ namespace EncompassRest.Company.Users
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetUsersRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetUsersRawAsync), null, cancellationToken);
+        public Task<string> GetUsersRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetUsersRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Gets the current user.
@@ -190,7 +190,7 @@ namespace EncompassRest.Company.Users
                 queryParameters.Add("viewEmailSignature", viewEmailSignature.ToString().ToLower());
             }
             var user = await GetDirtyAsync<User>(userId, queryParameters.ToString(), nameof(GetUserAsync), userId, cancellationToken).ConfigureAwait(false);
-            user.Initialize(Client, user.Id);
+            user.Initialize(Client, user.Id!);
             return user;
         }
 
@@ -201,7 +201,7 @@ namespace EncompassRest.Company.Users
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetUserRawAsync(string userId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetUserRawAsync(string userId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(userId, nameof(userId));
 

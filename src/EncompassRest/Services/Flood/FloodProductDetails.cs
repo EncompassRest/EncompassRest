@@ -28,6 +28,6 @@ namespace EncompassRest.Services.Flood
         /// ServiceLink product identifier for the specific Flood product being requested.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
     }
 }

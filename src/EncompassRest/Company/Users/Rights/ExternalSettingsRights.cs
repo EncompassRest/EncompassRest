@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,16 +7,16 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ExternalSettingsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _allTPOContactInformation;
-        private CompanyDetailsRights _companyDetails;
-        private DirtyValue<bool?> _tPOConnectSiteManagement;
-        private DirtyValue<bool?> _tPOCustomFields;
-        private DirtyValue<bool?> _tPODisclosureSettings;
-        private TPOFeesRights _tPOFees;
-        private DirtyValue<bool?> _tPOGlobalLenderContacts;
-        private DirtyValue<bool?> _tPOReassignment;
-        private DirtyValue<bool?> _tPOSettings;
-        private TPOWebCenterDocumentListSettingsRights _tPOWebCenterDocumentListSettings;
+        private DirtyValue<bool?>? _allTPOContactInformation;
+        private CompanyDetailsRights? _companyDetails;
+        private DirtyValue<bool?>? _tPOConnectSiteManagement;
+        private DirtyValue<bool?>? _tPOCustomFields;
+        private DirtyValue<bool?>? _tPODisclosureSettings;
+        private TPOFeesRights? _tPOFees;
+        private DirtyValue<bool?>? _tPOGlobalLenderContacts;
+        private DirtyValue<bool?>? _tPOReassignment;
+        private DirtyValue<bool?>? _tPOSettings;
+        private TPOWebCenterDocumentListSettingsRights? _tPOWebCenterDocumentListSettings;
 
         /// <summary>
         /// ExternalSettingsRights AllTPOContactInformation
@@ -24,6 +26,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ExternalSettingsRights CompanyDetails
         /// </summary>
+        [AllowNull]
         public CompanyDetailsRights CompanyDetails { get => GetField(ref _companyDetails); set => SetField(ref _companyDetails, value); }
 
         /// <summary>
@@ -44,6 +47,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ExternalSettingsRights TPOFees
         /// </summary>
+        [AllowNull]
         public TPOFeesRights TPOFees { get => GetField(ref _tPOFees); set => SetField(ref _tPOFees, value); }
 
         /// <summary>
@@ -64,6 +68,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ExternalSettingsRights TPOWebCenterDocumentListSettings
         /// </summary>
+        [AllowNull]
         public TPOWebCenterDocumentListSettingsRights TPOWebCenterDocumentListSettings { get => GetField(ref _tPOWebCenterDocumentListSettings); set => SetField(ref _tPOWebCenterDocumentListSettings, value); }
     }
 }

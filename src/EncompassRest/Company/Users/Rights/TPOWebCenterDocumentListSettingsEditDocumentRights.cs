@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TPOWebCenterDocumentListSettingsEditDocumentRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _deleteDocument;
+        private DirtyValue<bool?>? _deleteDocument;
 
         /// <summary>
         /// ExternalSettingsRightsEditDocumentRights DeleteDocument

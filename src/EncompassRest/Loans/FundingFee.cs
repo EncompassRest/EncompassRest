@@ -5,28 +5,28 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class FundingFee : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amount;
-        private DirtyValue<bool?> _balanceChecked;
-        private DirtyValue<string> _cdLineId;
-        private DirtyValue<string> _feeDescription;
-        private DirtyValue<string> _feeDescription2015;
-        private DirtyValue<string> _lineId;
-        private DirtyValue<int?> _lineNumber;
-        private DirtyValue<decimal?> _pacBroker2015;
-        private DirtyValue<decimal?> _pacLender2015;
-        private DirtyValue<decimal?> _pacOther2015;
-        private DirtyValue<string> _paidBy;
-        private DirtyValue<string> _paidTo;
-        private DirtyValue<string> _payee;
-        private DirtyValue<decimal?> _pocAmount;
-        private DirtyValue<decimal?> _pocBorrower2015;
-        private DirtyValue<decimal?> _pocBroker2015;
-        private DirtyValue<decimal?> _pocLender2015;
-        private DirtyValue<decimal?> _pocOther2015;
-        private DirtyValue<string> _pocPaidBy;
-        private DirtyValue<decimal?> _pocSeller2015;
-        private DirtyValue<decimal?> _ptcAmount;
-        private DirtyValue<string> _ptcPaidBy;
+        private DirtyValue<decimal?>? _amount;
+        private DirtyValue<bool?>? _balanceChecked;
+        private DirtyValue<string?>? _cdLineId;
+        private DirtyValue<string?>? _feeDescription;
+        private DirtyValue<string?>? _feeDescription2015;
+        private DirtyValue<string?>? _lineId;
+        private DirtyValue<int?>? _lineNumber;
+        private DirtyValue<decimal?>? _pacBroker2015;
+        private DirtyValue<decimal?>? _pacLender2015;
+        private DirtyValue<decimal?>? _pacOther2015;
+        private DirtyValue<string?>? _paidBy;
+        private DirtyValue<string?>? _paidTo;
+        private DirtyValue<string?>? _payee;
+        private DirtyValue<decimal?>? _pocAmount;
+        private DirtyValue<decimal?>? _pocBorrower2015;
+        private DirtyValue<decimal?>? _pocBroker2015;
+        private DirtyValue<decimal?>? _pocLender2015;
+        private DirtyValue<decimal?>? _pocOther2015;
+        private DirtyValue<string?>? _pocPaidBy;
+        private DirtyValue<decimal?>? _pocSeller2015;
+        private DirtyValue<decimal?>? _ptcAmount;
+        private DirtyValue<string?>? _ptcPaidBy;
 
         /// <summary>
         /// FundingFee Amount
@@ -41,22 +41,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FundingFee CdLineId
         /// </summary>
-        public string CdLineId { get => _cdLineId; set => SetField(ref _cdLineId, value); }
+        public string? CdLineId { get => _cdLineId; set => SetField(ref _cdLineId, value); }
 
         /// <summary>
         /// FundingFee FeeDescription
         /// </summary>
-        public string FeeDescription { get => _feeDescription; set => SetField(ref _feeDescription, value); }
+        public string? FeeDescription { get => _feeDescription; set => SetField(ref _feeDescription, value); }
 
         /// <summary>
         /// FundingFee FeeDescription2015
         /// </summary>
-        public string FeeDescription2015 { get => _feeDescription2015; set => SetField(ref _feeDescription2015, value); }
+        public string? FeeDescription2015 { get => _feeDescription2015; set => SetField(ref _feeDescription2015, value); }
 
         /// <summary>
         /// FundingFee LineId
         /// </summary>
-        public string LineId { get => _lineId; set => SetField(ref _lineId, value); }
+        public string? LineId { get => _lineId; set => SetField(ref _lineId, value); }
 
         /// <summary>
         /// FundingFee LineNumber
@@ -81,17 +81,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FundingFee PaidBy
         /// </summary>
-        public string PaidBy { get => _paidBy; set => SetField(ref _paidBy, value); }
+        public string? PaidBy { get => _paidBy; set => SetField(ref _paidBy, value); }
 
         /// <summary>
         /// FundingFee PaidTo
         /// </summary>
-        public string PaidTo { get => _paidTo; set => SetField(ref _paidTo, value); }
+        public string? PaidTo { get => _paidTo; set => SetField(ref _paidTo, value); }
 
         /// <summary>
         /// FundingFee Payee
         /// </summary>
-        public string Payee { get => _payee; set => SetField(ref _payee, value); }
+        public string? Payee { get => _payee; set => SetField(ref _payee, value); }
 
         /// <summary>
         /// FundingFee PocAmount
@@ -121,7 +121,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FundingFee PocPaidBy
         /// </summary>
-        public string PocPaidBy { get => _pocPaidBy; set => SetField(ref _pocPaidBy, value); }
+        public string? PocPaidBy { get => _pocPaidBy; set => SetField(ref _pocPaidBy, value); }
 
         /// <summary>
         /// FundingFee PocSeller2015
@@ -136,6 +136,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FundingFee PtcPaidBy
         /// </summary>
-        public string PtcPaidBy { get => _ptcPaidBy; set => SetField(ref _ptcPaidBy, value); }
+        public string? PtcPaidBy { get => _ptcPaidBy; set => SetField(ref _ptcPaidBy, value); }
     }
 }

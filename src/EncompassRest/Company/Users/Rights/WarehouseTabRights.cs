@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class WarehouseTabRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _editWarehouseBanks;
+        private DirtyValue<bool?>? _editWarehouseBanks;
 
         /// <summary>
         /// WarehouseTabRights EditWarehouseBanks

@@ -7,8 +7,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class CreateManualEntryRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _cD;
-        private DirtyValue<bool?> _lESSPLSafeHarbor;
+        private DirtyValue<bool?>? _cD;
+        private DirtyValue<bool?>? _lESSPLSafeHarbor;
 
         /// <summary>
         /// CreateManualEntryRights CD

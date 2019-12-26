@@ -11,6 +11,6 @@ namespace EncompassRest.Services.Appraisal
         /// The brokers branch identifier.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Branch { get; set; }
+        public string? Branch { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class LOCompRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _editLOComp;
+        private DirtyValue<bool?>? _editLOComp;
 
         /// <summary>
         /// LOCompRights EditLOComp

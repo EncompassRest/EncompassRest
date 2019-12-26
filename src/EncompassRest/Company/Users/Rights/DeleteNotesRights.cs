@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class DeleteNotesRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _deleteFilePermanently;
+        private DirtyValue<bool?>? _deleteFilePermanently;
 
         /// <summary>
         /// DeleteNotesRights DeleteFilePermanently

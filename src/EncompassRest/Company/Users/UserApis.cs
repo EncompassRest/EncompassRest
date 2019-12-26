@@ -35,11 +35,11 @@ namespace EncompassRest.Company.Users
     /// </summary>
     public sealed class UserApis : UserApiObject, IUserApis
     {
-        private UserCustomDataObjects _customDataObjects;
-        private UserGroups _groups;
-        private UserCompensationPlans _compensation;
-        private UserLicenseDetails _licenses;
-        private UsersRights _rights;
+        private UserCustomDataObjects? _customDataObjects;
+        private UserGroups? _groups;
+        private UserCompensationPlans? _compensation;
+        private UserLicenseDetails? _licenses;
+        private UsersRights? _rights;
 
         /// <summary>
         /// User Custom Data Objects Apis

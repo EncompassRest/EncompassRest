@@ -35,7 +35,7 @@ namespace EncompassRest.Schema
         /// PropertySchema AllowedValues
         /// </summary>
         [JsonProperty(ItemConverterType = typeof(FieldOptionConverter))]
-        public List<FieldOption> AllowedValues { get; set; }
+        public List<FieldOption>? AllowedValues { get; set; }
 
         /// <summary>
         /// PropertySchema EntityType
@@ -50,7 +50,7 @@ namespace EncompassRest.Schema
         /// <summary>
         /// PropertySchema Description
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// PropertySchema ElementType
@@ -60,7 +60,7 @@ namespace EncompassRest.Schema
         /// <summary>
         /// PropertySchema FieldId
         /// </summary>
-        public string FieldId { get; set; }
+        public string? FieldId { get; set; }
 
         /// <summary>
         /// PropertySchema FixedLength
@@ -70,26 +70,26 @@ namespace EncompassRest.Schema
         /// <summary>
         /// PropertySchema KeyProperties
         /// </summary>
-        public List<string> KeyProperties { get; set; }
+        public List<string>? KeyProperties { get; set; }
 
         /// <summary>
         /// PropertySchema Instances
         /// </summary>
-        public Dictionary<string, Instance> Instances { get; set; }
+        public Dictionary<string, Instance>? Instances { get; set; }
 
         /// <summary>
         /// PropertySchema InstancePatterns
         /// </summary>
-        public Dictionary<string, InstancePattern> InstancePatterns { get; set; }
+        public Dictionary<string, InstancePattern>? InstancePatterns { get; set; }
 
         /// <summary>
         /// PropertySchema FieldInstances
         /// </summary>
-        public Dictionary<string, List<string>> FieldInstances { get; set; }
+        public Dictionary<string, List<string>>? FieldInstances { get; set; }
 
         /// <summary>
         /// PropertySchema FieldPatterns
         /// </summary>
-        public Dictionary<string, List<string>> FieldPatterns { get; set; }
+        public Dictionary<string, List<string>>? FieldPatterns { get; set; }
     }
 }

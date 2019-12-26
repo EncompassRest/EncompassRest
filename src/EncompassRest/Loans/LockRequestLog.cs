@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,56 +9,57 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LockRequestLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyList<LogAlert> _alerts;
-        private DirtyValue<string> _alertsXml;
-        private DirtyValue<DateTime?> _buySideExpirationDate;
-        private DirtyValue<DateTime?> _buySideNewLockExtensionDate;
-        private DirtyValue<int?> _buySideNumDayExtended;
-        private DirtyValue<int?> _buySideNumDayLocked;
-        private DirtyList<LogComment> _commentList;
-        private DirtyValue<string> _commentListXml;
-        private DirtyValue<string> _comments;
-        private DirtyValue<int?> _cumulatedDaystoExtend;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
-        private DirtyValue<string> _guid;
-        private DirtyValue<bool?> _hideLogIndicator;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _investorCommitment;
-        private DirtyValue<string> _investorName;
-        private DirtyValue<bool?> _isFakeRequestIndicator;
-        private DirtyValue<bool?> _isLockCancellationIndicator;
-        private DirtyValue<bool?> _isLockExtensionIndicator;
-        private DirtyValue<bool?> _isReLockIndicator;
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private DirtyValue<int?> _logRecordIndex;
-        private DirtyValue<int?> _numDayLocked;
-        private DirtyValue<string> _parentLockGuid;
-        private DirtyValue<string> _rateLockAction;
-        private DirtyValue<int?> _reLockSequenceNumberForInactiveLock;
-        private DirtyValue<string> _requestedBy;
-        private DirtyValue<string> _requestedName;
-        private DirtyValue<string> _requestedStatus;
-        private DirtyValue<string> _reviseAction;
-        private DirtyValue<string> _sellSideDeliveredBy;
-        private DirtyValue<DateTime?> _sellSideDeliveryDate;
-        private DirtyValue<DateTime?> _sellSideExpirationDate;
-        private DirtyValue<DateTime?> _sellSideNewLockExtensionDate;
-        private DirtyValue<int?> _sellSideNumDayExtended;
-        private DirtyValue<string> _snapshotXml;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<string> _timeRequested;
-        private DirtyValue<DateTime?> _updatedDateUtc;
+        private DirtyList<LogAlert>? _alerts;
+        private DirtyValue<string?>? _alertsXml;
+        private DirtyValue<DateTime?>? _buySideExpirationDate;
+        private DirtyValue<DateTime?>? _buySideNewLockExtensionDate;
+        private DirtyValue<int?>? _buySideNumDayExtended;
+        private DirtyValue<int?>? _buySideNumDayLocked;
+        private DirtyList<LogComment>? _commentList;
+        private DirtyValue<string?>? _commentListXml;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<int?>? _cumulatedDaystoExtend;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<bool?>? _fileAttachmentsMigrated;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<bool?>? _hideLogIndicator;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _investorCommitment;
+        private DirtyValue<string?>? _investorName;
+        private DirtyValue<bool?>? _isFakeRequestIndicator;
+        private DirtyValue<bool?>? _isLockCancellationIndicator;
+        private DirtyValue<bool?>? _isLockExtensionIndicator;
+        private DirtyValue<bool?>? _isReLockIndicator;
+        private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<int?>? _logRecordIndex;
+        private DirtyValue<int?>? _numDayLocked;
+        private DirtyValue<string?>? _parentLockGuid;
+        private DirtyValue<string?>? _rateLockAction;
+        private DirtyValue<int?>? _reLockSequenceNumberForInactiveLock;
+        private DirtyValue<string?>? _requestedBy;
+        private DirtyValue<string?>? _requestedName;
+        private DirtyValue<string?>? _requestedStatus;
+        private DirtyValue<string?>? _reviseAction;
+        private DirtyValue<string?>? _sellSideDeliveredBy;
+        private DirtyValue<DateTime?>? _sellSideDeliveryDate;
+        private DirtyValue<DateTime?>? _sellSideExpirationDate;
+        private DirtyValue<DateTime?>? _sellSideNewLockExtensionDate;
+        private DirtyValue<int?>? _sellSideNumDayExtended;
+        private DirtyValue<string?>? _snapshotXml;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<string?>? _timeRequested;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
 
         /// <summary>
         /// LockRequestLog Alerts
         /// </summary>
+        [AllowNull]
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
 
         /// <summary>
         /// LockRequestLog AlertsXml
         /// </summary>
-        public string AlertsXml { get => _alertsXml; set => SetField(ref _alertsXml, value); }
+        public string? AlertsXml { get => _alertsXml; set => SetField(ref _alertsXml, value); }
 
         /// <summary>
         /// LockRequestLog BuySideExpirationDate
@@ -82,17 +84,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockRequestLog CommentList
         /// </summary>
+        [AllowNull]
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
 
         /// <summary>
         /// LockRequestLog CommentListXml
         /// </summary>
-        public string CommentListXml { get => _commentListXml; set => SetField(ref _commentListXml, value); }
+        public string? CommentListXml { get => _commentListXml; set => SetField(ref _commentListXml, value); }
 
         /// <summary>
         /// LockRequestLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// LockRequestLog CumulatedDaystoExtend
@@ -112,7 +115,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockRequestLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// LockRequestLog HideLogIndicator
@@ -122,17 +125,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockRequestLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// LockRequestLog InvestorCommitment
         /// </summary>
-        public string InvestorCommitment { get => _investorCommitment; set => SetField(ref _investorCommitment, value); }
+        public string? InvestorCommitment { get => _investorCommitment; set => SetField(ref _investorCommitment, value); }
 
         /// <summary>
         /// LockRequestLog InvestorName
         /// </summary>
-        public string InvestorName { get => _investorName; set => SetField(ref _investorName, value); }
+        public string? InvestorName { get => _investorName; set => SetField(ref _investorName, value); }
 
         /// <summary>
         /// LockRequestLog IsFakeRequestIndicator
@@ -172,12 +175,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockRequestLog ParentLockGuid
         /// </summary>
-        public string ParentLockGuid { get => _parentLockGuid; set => SetField(ref _parentLockGuid, value); }
+        public string? ParentLockGuid { get => _parentLockGuid; set => SetField(ref _parentLockGuid, value); }
 
         /// <summary>
         /// LockRequestLog RateLockAction
         /// </summary>
-        public string RateLockAction { get => _rateLockAction; set => SetField(ref _rateLockAction, value); }
+        public string? RateLockAction { get => _rateLockAction; set => SetField(ref _rateLockAction, value); }
 
         /// <summary>
         /// LockRequestLog ReLockSequenceNumberForInactiveLock
@@ -187,27 +190,27 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockRequestLog RequestedBy
         /// </summary>
-        public string RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
+        public string? RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
 
         /// <summary>
         /// LockRequestLog RequestedName
         /// </summary>
-        public string RequestedName { get => _requestedName; set => SetField(ref _requestedName, value); }
+        public string? RequestedName { get => _requestedName; set => SetField(ref _requestedName, value); }
 
         /// <summary>
         /// LockRequestLog RequestedStatus
         /// </summary>
-        public string RequestedStatus { get => _requestedStatus; set => SetField(ref _requestedStatus, value); }
+        public string? RequestedStatus { get => _requestedStatus; set => SetField(ref _requestedStatus, value); }
 
         /// <summary>
         /// LockRequestLog ReviseAction
         /// </summary>
-        public string ReviseAction { get => _reviseAction; set => SetField(ref _reviseAction, value); }
+        public string? ReviseAction { get => _reviseAction; set => SetField(ref _reviseAction, value); }
 
         /// <summary>
         /// LockRequestLog SellSideDeliveredBy
         /// </summary>
-        public string SellSideDeliveredBy { get => _sellSideDeliveredBy; set => SetField(ref _sellSideDeliveredBy, value); }
+        public string? SellSideDeliveredBy { get => _sellSideDeliveredBy; set => SetField(ref _sellSideDeliveredBy, value); }
 
         /// <summary>
         /// LockRequestLog SellSideDeliveryDate
@@ -232,17 +235,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockRequestLog SnapshotXml
         /// </summary>
-        public string SnapshotXml { get => _snapshotXml; set => SetField(ref _snapshotXml, value); }
+        public string? SnapshotXml { get => _snapshotXml; set => SetField(ref _snapshotXml, value); }
 
         /// <summary>
         /// LockRequestLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// LockRequestLog TimeRequested
         /// </summary>
-        public string TimeRequested { get => _timeRequested; set => SetField(ref _timeRequested, value); }
+        public string? TimeRequested { get => _timeRequested; set => SetField(ref _timeRequested, value); }
 
         /// <summary>
         /// LockRequestLog UpdatedDateUtc

@@ -18,7 +18,7 @@ namespace EncompassRest.Schema
         /// <summary>
         /// InstancePattern IndexToken
         /// </summary>
-        public string IndexToken { get; set; }
+        public string? IndexToken { get; set; }
 
         /// <summary>
         /// InstancePattern MaxIndex
@@ -28,6 +28,6 @@ namespace EncompassRest.Schema
         /// <summary>
         /// InstancePattern Match
         /// </summary>
-        public Dictionary<string, string> Match { get; set; }
+        public Dictionary<string, string>? Match { get; set; }
     }
 }

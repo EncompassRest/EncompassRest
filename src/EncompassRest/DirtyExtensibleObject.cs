@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -20,13 +21,13 @@ namespace EncompassRest
         /// <summary>
         /// The PropertyChanged Event
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        internal virtual void OnPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        internal virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         internal void ClearPropertyChangedEvent() => PropertyChanged = null;
 
-        internal void SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        internal void SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
         {
             var equals = EqualityComparer<T>.Default.Equals(field, value);
             field = value;
@@ -36,7 +37,7 @@ namespace EncompassRest
             }
         }
 
-        internal void SetField<T>(ref NeverSerializeValue<T> field, T value, [CallerMemberName] string propertyName = null)
+        internal void SetField<T>(ref NeverSerializeValue<T>? field, T value, [CallerMemberName] string? propertyName = null)
         {
             var equals = EqualityComparer<T>.Default.Equals(field, value);
             field = value;
@@ -46,9 +47,9 @@ namespace EncompassRest
             }
         }
 
-        internal void SetField<T>(ref DirtyValue<T> field, T value, [CallerMemberName] string propertyName = null)
+        internal void SetField<T>(ref DirtyValue<T>? field, T value, [CallerMemberName] string? propertyName = null)
         {
-            var equals = EqualityComparer<T>.Default.Equals(field, value);
+            var equals = EqualityComparer<T>.Default.Equals(field!, value);
             field = value;
             if (!equals)
             {
@@ -56,7 +57,7 @@ namespace EncompassRest
             }
         }
 
-        internal void SetField<T>(ref DirtyList<T> field, IList<T> value, [CallerMemberName] string propertyName = null)
+        internal void SetField<T>(ref DirtyList<T>? field, IList<T>? value, [CallerMemberName] string? propertyName = null)
         {
             if (!ReferenceEquals(field, value))
             {
@@ -65,7 +66,7 @@ namespace EncompassRest
             }
         }
 
-        internal void SetField<T>(ref DirtyDictionary<string, T> field, IDictionary<string, T> value, [CallerMemberName] string propertyName = null)
+        internal void SetField<T>(ref DirtyDictionary<string, T>? field, IDictionary<string, T>? value, [CallerMemberName] string? propertyName = null)
         {
             if (base.SetField(ref field, value))
             {
@@ -73,13 +74,13 @@ namespace EncompassRest
             }
         }
 
-        internal T GetField<T>(ref T field) where T : DirtyExtensibleObject, new() => field ?? (field = new T());
+        internal T GetField<T>(ref T? field) where T : DirtyExtensibleObject, new() => field ?? (field = new T());
 
-        internal IList<T> GetField<T>(ref DirtyList<T> field) => field ?? (field = new DirtyList<T>());
+        internal IList<T> GetField<T>(ref DirtyList<T>? field) => field ?? (field = new DirtyList<T>());
 
-        internal IList<T> GetField<T>(ref List<T> field) => field ?? (field = new List<T>());
+        internal IList<T> GetField<T>(ref List<T>? field) => field ?? (field = new List<T>());
 
-        internal new IDictionary<string, T> GetField<T>(ref DirtyDictionary<string, T> field) => base.GetField(ref field);
+        internal new IDictionary<string, T> GetField<T>(ref DirtyDictionary<string, T>? field) => base.GetField(ref field);
 
         private bool _gettingDirty;
         private bool _settingDirty;
@@ -142,9 +143,9 @@ namespace EncompassRest
         }
         bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
 
-        internal string LastId { get; set; }
+        internal string? LastId { get; set; }
 
-        string IIdentifiable.Id { get => string.Empty; set { } }
+        string? IIdentifiable.Id { get => string.Empty; set { } }
 
         internal DirtyExtensibleObject()
         {

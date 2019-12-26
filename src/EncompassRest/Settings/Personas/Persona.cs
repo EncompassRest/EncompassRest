@@ -1,27 +1,29 @@
-﻿namespace EncompassRest.Settings.Personas
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace EncompassRest.Settings.Personas
 {
     /// <summary>
     /// Persona
     /// </summary>
     public sealed class Persona : DirtyExtensibleObject
     {
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _name;
-        private DirtyValue<StringEnumValue<DefaultAccess>> _defaultAccess;
-        private DirtyValue<bool?> _isInternal;
-        private DirtyValue<bool?> _isExternal;
-        private DirtyValue<int?> _displayOrder;
-        private AclRights _aclRights;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _name;
+        private DirtyValue<StringEnumValue<DefaultAccess>>? _defaultAccess;
+        private DirtyValue<bool?>? _isInternal;
+        private DirtyValue<bool?>? _isExternal;
+        private DirtyValue<int?>? _displayOrder;
+        private AclRights? _aclRights;
 
         /// <summary>
         /// Persona ID
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Name of the persona.
         /// </summary>
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
         /// Whether the persona has access granted to all Encompass features or access to no features.
@@ -46,6 +48,7 @@
         /// <summary>
         /// Access Rights associated with the persona. All the rights that are enabled for the persona are returned as part of this object.
         /// </summary>
+        [AllowNull]
         public AclRights AclRights { get => GetField(ref _aclRights); set => SetField(ref _aclRights, value); }
 }
 }

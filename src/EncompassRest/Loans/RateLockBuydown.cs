@@ -8,10 +8,10 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class RateLockBuydown : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _changeFrequencyMonths;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _increaseRatePercent;
-        private DirtyValue<int?> _rateLockBuydownIndex;
+        private DirtyValue<int?>? _changeFrequencyMonths;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _increaseRatePercent;
+        private DirtyValue<int?>? _rateLockBuydownIndex;
 
         /// <summary>
         /// RateLockBuydown ChangeFrequencyMonths
@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLockBuydown Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// RateLockBuydown IncreaseRatePercent

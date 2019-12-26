@@ -8,10 +8,10 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class HelocHistoricalIndexYearSetting : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _helocHistoricalIndexYearSettingIndex;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _indexRate;
-        private DirtyValue<int?> _year;
+        private DirtyValue<int?>? _helocHistoricalIndexYearSettingIndex;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _indexRate;
+        private DirtyValue<int?>? _year;
 
         /// <summary>
         /// HelocHistoricalIndexYearSetting HelocHistoricalIndexYearSettingIndex
@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HelocHistoricalIndexYearSetting Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// HELOC Index Table Index [HHINN02]

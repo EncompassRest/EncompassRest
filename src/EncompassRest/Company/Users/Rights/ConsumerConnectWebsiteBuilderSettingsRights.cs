@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ConsumerConnectWebsiteBuilderSettingsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _webAdmin;
-        private DirtyValue<bool?> _webContent;
+        private DirtyValue<bool?>? _webAdmin;
+        private DirtyValue<bool?>? _webContent;
 
         /// <summary>
         /// ConsumerConnectWebsiteBuilderSettingsRights WebAdmin

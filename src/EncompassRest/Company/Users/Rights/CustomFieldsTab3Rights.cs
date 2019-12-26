@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class CustomFieldsTab3Rights : ParentAccessRights
     {
-        private DirtyValue<bool?> _editTab3CustomFields;
+        private DirtyValue<bool?>? _editTab3CustomFields;
 
         /// <summary>
         /// CustomFieldsTab3Rights EditTab3CustomFields

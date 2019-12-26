@@ -23,7 +23,7 @@ namespace EncompassRest.LoanBatch
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetStatusRawAsync(string requestId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetStatusRawAsync(string requestId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Submits a batch request to the server to update multiple loans and returns the batch update request id.
         /// </summary>
@@ -38,7 +38,7 @@ namespace EncompassRest.LoanBatch
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> UpdateLoansRawAsync(string parameters, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> UpdateLoansRawAsync(string parameters, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ namespace EncompassRest.LoanBatch
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetStatusRawAsync(string requestId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetStatusRawAsync(string requestId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
@@ -98,7 +98,7 @@ namespace EncompassRest.LoanBatch
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> UpdateLoansRawAsync(string parameters, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> UpdateLoansRawAsync(string parameters, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 

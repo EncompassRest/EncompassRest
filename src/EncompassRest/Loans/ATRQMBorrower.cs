@@ -10,237 +10,237 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class ATRQMBorrower : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _aTRQMBorrowerIndex;
-        private DirtyValue<string> _aUSRecommendation;
-        private DirtyValue<string> _aUSVersion;
-        private DirtyValue<decimal?> _borBonusAverageOvertime;
-        private DirtyValue<decimal?> _borBonusMostRecentAmount;
-        private DirtyValue<int?> _borBonusMostRecentMonths;
-        private DirtyValue<int?> _borBonusMostRecentYear;
-        private DirtyValue<decimal?> _borBonusPreviousAmount1;
-        private DirtyValue<decimal?> _borBonusPreviousAmount2;
-        private DirtyValue<int?> _borBonusPreviousMonths1;
-        private DirtyValue<int?> _borBonusPreviousMonths2;
-        private DirtyValue<int?> _borBonusPreviousYear1;
-        private DirtyValue<int?> _borBonusPreviousYear2;
-        private DirtyValue<decimal?> _borCommissionAverageOvertime;
-        private DirtyValue<decimal?> _borCommissionMostRecentAmount;
-        private DirtyValue<int?> _borCommissionMostRecentMonths;
-        private DirtyValue<int?> _borCommissionMostRecentYear;
-        private DirtyValue<decimal?> _borCommissionPreviousAmount1;
-        private DirtyValue<decimal?> _borCommissionPreviousAmount2;
-        private DirtyValue<int?> _borCommissionPreviousMonths1;
-        private DirtyValue<int?> _borCommissionPreviousMonths2;
-        private DirtyValue<int?> _borCommissionPreviousYear1;
-        private DirtyValue<int?> _borCommissionPreviousYear2;
-        private DirtyValue<decimal?> _borContingentLiabilitiesLiabilityAmount1;
-        private DirtyValue<decimal?> _borContingentLiabilitiesLiabilityAmount2;
-        private DirtyValue<decimal?> _borContingentLiabilitiesLiabilityAmount3;
-        private DirtyValue<StringEnumValue<BorContingentLiabilitiesLiabilityDescription>> _borContingentLiabilitiesLiabilityDescription1;
-        private DirtyValue<StringEnumValue<BorContingentLiabilitiesLiabilityDescription>> _borContingentLiabilitiesLiabilityDescription2;
-        private DirtyValue<StringEnumValue<BorContingentLiabilitiesLiabilityDescription>> _borContingentLiabilitiesLiabilityDescription3;
-        private DirtyValue<decimal?> _borContingentLiabilitiesTotalLiabilityAmount;
-        private DirtyValue<decimal?> _borCosignedObligationsCarLoanPayment;
-        private DirtyValue<decimal?> _borCosignedObligationsMortgagePayment;
-        private DirtyValue<decimal?> _borCosignedObligationsOtherPayment;
-        private DirtyValue<string> _borCosignedObligationsOtherPaymentDescription;
-        private DirtyValue<decimal?> _borCosignedObligationsStudentLoanPayment;
-        private DirtyValue<decimal?> _borCosignedObligationsTotalCoMortgagorLiabilities;
-        private DirtyValue<decimal?> _borDividendAverageDividend;
-        private DirtyValue<decimal?> _borDividendPreviousAmount1;
-        private DirtyValue<decimal?> _borDividendPreviousAmount2;
-        private DirtyValue<int?> _borDividendPreviousMonths1;
-        private DirtyValue<int?> _borDividendPreviousMonths2;
-        private DirtyValue<int?> _borDividendPreviousYear1;
-        private DirtyValue<int?> _borDividendPreviousYear2;
-        private DirtyValue<decimal?> _borDividendRequiredForCashAmount;
-        private DirtyValue<decimal?> _borInterestAverageDividend;
-        private DirtyValue<decimal?> _borInterestPreviousAmount1;
-        private DirtyValue<decimal?> _borInterestPreviousAmount2;
-        private DirtyValue<int?> _borInterestPreviousMonths1;
-        private DirtyValue<int?> _borInterestPreviousMonths2;
-        private DirtyValue<int?> _borInterestPreviousYear1;
-        private DirtyValue<int?> _borInterestPreviousYear2;
-        private DirtyValue<decimal?> _borInterestRequiredForCashAmount;
-        private DirtyValue<decimal?> _borMilitaryAllowanceClothingAllowance;
-        private DirtyValue<decimal?> _borMilitaryAllowanceOtherAllowance;
-        private DirtyValue<string> _borMilitaryAllowanceOtherAllowanceDescription;
-        private DirtyValue<decimal?> _borMilitaryAllowanceQuartersAllowance;
-        private DirtyValue<decimal?> _borMilitaryAllowanceRationsAllowance;
-        private DirtyValue<decimal?> _borMilitaryAllowanceTotalAllowance;
-        private DirtyValue<decimal?> _borMilitaryAllowanceVariableHousingAllowance;
-        private DirtyValue<decimal?> _borMilitaryBasePay;
-        private DirtyValue<decimal?> _borMilitaryCombatPay;
-        private DirtyValue<decimal?> _borMilitaryFlightPay;
-        private DirtyValue<decimal?> _borMilitaryHazardPay;
-        private DirtyValue<decimal?> _borMilitaryOverseasPay;
-        private DirtyValue<decimal?> _borMilitaryPropPay;
-        private DirtyValue<decimal?> _borMilitaryTotalPay;
-        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeBaseIncome;
-        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeBonuseIncome;
-        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeCommissionIncome;
-        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeDividendInterestIncome;
-        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeOtherIncome1;
-        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeOtherIncome2;
-        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeOvertimeIncome;
-        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeTotalEmploymentIncome;
-        private DirtyValue<decimal?> _borNonEmploymentIncomeGovtAssitProgramIncome;
-        private DirtyValue<decimal?> _borNonEmploymentIncomeHomeownSubsidyIncome;
-        private DirtyValue<bool?> _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome;
-        private DirtyValue<bool?> _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome;
-        private DirtyValue<decimal?> _borNonEmploymentIncomeMilitaryIncome;
-        private DirtyValue<decimal?> _borNonEmploymentIncomeMtgCreditCertificateIncome;
-        private DirtyValue<decimal?> _borNonEmploymentIncomeTotalNonEmploymentIncome;
-        private DirtyValue<decimal?> _borNonEmploymentIncomeVABenefitIncome;
-        private DirtyValue<decimal?> _borNonTaxableIncomeChildSupportIncome;
-        private DirtyValue<decimal?> _borNonTaxableIncomeDisabilityIncome;
-        private DirtyValue<decimal?> _borNonTaxableIncomeFedGovtEmplRetirementIncome;
-        private DirtyValue<decimal?> _borNonTaxableIncomeMilitaryAllowances;
-        private DirtyValue<decimal?> _borNonTaxableIncomeOtherIncome;
-        private DirtyValue<decimal?> _borNonTaxableIncomePublicAssistPayments;
-        private DirtyValue<decimal?> _borNonTaxableIncomeRailroadRetirementBenefits;
-        private DirtyValue<decimal?> _borNonTaxableIncomeSocialSecurityIncome;
-        private DirtyValue<decimal?> _borNonTaxableIncomeStateGovtEmplRetirementIncome;
-        private DirtyValue<decimal?> _borNonTaxableIncomeTotalNonTaxableIncome;
-        private DirtyValue<decimal?> _borOtherNotesReceivableIncome;
-        private DirtyValue<decimal?> _borOtherOtherIncome;
-        private DirtyValue<decimal?> _borOtherParttimeIncome;
-        private DirtyValue<decimal?> _borOtherRetirementIncome;
-        private DirtyValue<decimal?> _borOtherSeasonalIncome;
-        private DirtyValue<decimal?> _borOtherSocialSecurityIncome;
-        private DirtyValue<decimal?> _borOtherTipIncome;
-        private DirtyValue<decimal?> _borOtherTrustIncome;
-        private DirtyValue<decimal?> _borOtherUnemploymentIncome;
-        private DirtyValue<decimal?> _borOvertimeAverageOvertime;
-        private DirtyValue<decimal?> _borOvertimeMostRecentAmount;
-        private DirtyValue<int?> _borOvertimeMostRecentMonths;
-        private DirtyValue<int?> _borOvertimeMostRecentYear;
-        private DirtyValue<decimal?> _borOvertimePreviousAmount1;
-        private DirtyValue<decimal?> _borOvertimePreviousAmount2;
-        private DirtyValue<int?> _borOvertimePreviousMonths1;
-        private DirtyValue<int?> _borOvertimePreviousMonths2;
-        private DirtyValue<int?> _borOvertimePreviousYear1;
-        private DirtyValue<int?> _borOvertimePreviousYear2;
-        private DirtyValue<decimal?> _borProjectedIncomeProjectedBonuses;
-        private DirtyValue<decimal?> _borProjectedIncomeProjectedCostLivingAdjustment;
-        private DirtyValue<decimal?> _borProjectedIncomeProjectedNewJobIncome;
-        private DirtyValue<decimal?> _borProjectedIncomeProjectedPerformanceRaises;
-        private DirtyValue<decimal?> _borProjectedIncomeTotalProjectedIncome;
-        private DirtyValue<decimal?> _cobBonusAverageOvertime;
-        private DirtyValue<decimal?> _cobBonusMostRecentAmount;
-        private DirtyValue<int?> _cobBonusMostRecentMonths;
-        private DirtyValue<int?> _cobBonusMostRecentYear;
-        private DirtyValue<decimal?> _cobBonusPreviousAmount1;
-        private DirtyValue<decimal?> _cobBonusPreviousAmount2;
-        private DirtyValue<int?> _cobBonusPreviousMonths1;
-        private DirtyValue<int?> _cobBonusPreviousMonths2;
-        private DirtyValue<int?> _cobBonusPreviousYear1;
-        private DirtyValue<int?> _cobBonusPreviousYear2;
-        private DirtyValue<decimal?> _cobCommissionAverageOvertime;
-        private DirtyValue<decimal?> _cobCommissionMostRecentAmount;
-        private DirtyValue<int?> _cobCommissionMostRecentMonths;
-        private DirtyValue<int?> _cobCommissionMostRecentYear;
-        private DirtyValue<decimal?> _cobCommissionPreviousAmount1;
-        private DirtyValue<decimal?> _cobCommissionPreviousAmount2;
-        private DirtyValue<int?> _cobCommissionPreviousMonths1;
-        private DirtyValue<int?> _cobCommissionPreviousMonths2;
-        private DirtyValue<int?> _cobCommissionPreviousYear1;
-        private DirtyValue<int?> _cobCommissionPreviousYear2;
-        private DirtyValue<decimal?> _cobDividendAverageDividend;
-        private DirtyValue<decimal?> _cobDividendPreviousAmount1;
-        private DirtyValue<decimal?> _cobDividendPreviousAmount2;
-        private DirtyValue<int?> _cobDividendPreviousMonths1;
-        private DirtyValue<int?> _cobDividendPreviousMonths2;
-        private DirtyValue<int?> _cobDividendPreviousYear1;
-        private DirtyValue<int?> _cobDividendPreviousYear2;
-        private DirtyValue<decimal?> _cobDividendRequiredForCashAmount;
-        private DirtyValue<decimal?> _cobInterestAverageDividend;
-        private DirtyValue<decimal?> _cobInterestPreviousAmount1;
-        private DirtyValue<decimal?> _cobInterestPreviousAmount2;
-        private DirtyValue<int?> _cobInterestPreviousMonths1;
-        private DirtyValue<int?> _cobInterestPreviousMonths2;
-        private DirtyValue<int?> _cobInterestPreviousYear1;
-        private DirtyValue<int?> _cobInterestPreviousYear2;
-        private DirtyValue<decimal?> _cobInterestRequiredForCashAmount;
-        private DirtyValue<decimal?> _cobMilitaryAllowanceClothingAllowance;
-        private DirtyValue<decimal?> _cobMilitaryAllowanceOtherAllowance;
-        private DirtyValue<decimal?> _cobMilitaryAllowanceQuartersAllowance;
-        private DirtyValue<decimal?> _cobMilitaryAllowanceRationsAllowance;
-        private DirtyValue<decimal?> _cobMilitaryAllowanceTotalAllowance;
-        private DirtyValue<decimal?> _cobMilitaryAllowanceVariableHousingAllowance;
-        private DirtyValue<decimal?> _cobMilitaryBasePay;
-        private DirtyValue<decimal?> _cobMilitaryCombatPay;
-        private DirtyValue<decimal?> _cobMilitaryFlightPay;
-        private DirtyValue<decimal?> _cobMilitaryHazardPay;
-        private DirtyValue<decimal?> _cobMilitaryOverseasPay;
-        private DirtyValue<decimal?> _cobMilitaryPropPay;
-        private DirtyValue<decimal?> _cobMilitaryTotalPay;
-        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeBaseIncome;
-        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeBonuseIncome;
-        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeCommissionIncome;
-        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeDividendInterestIncome;
-        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeOtherIncome1;
-        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeOtherIncome2;
-        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeOvertimeIncome;
-        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeTotalEmploymentIncome;
-        private DirtyValue<decimal?> _cobNonEmploymentIncomeGovtAssitProgramIncome;
-        private DirtyValue<decimal?> _cobNonEmploymentIncomeHomeownSubsidyIncome;
-        private DirtyValue<decimal?> _cobNonEmploymentIncomeMilitaryIncome;
-        private DirtyValue<decimal?> _cobNonEmploymentIncomeMtgCreditCertificateIncome;
-        private DirtyValue<decimal?> _cobNonEmploymentIncomeTotalNonEmploymentIncome;
-        private DirtyValue<decimal?> _cobNonEmploymentIncomeVABenefitIncome;
-        private DirtyValue<decimal?> _cobNonTaxableIncomeChildSupportIncome;
-        private DirtyValue<decimal?> _cobNonTaxableIncomeDisabilityIncome;
-        private DirtyValue<decimal?> _cobNonTaxableIncomeFedGovtEmplRetirementIncome;
-        private DirtyValue<decimal?> _cobNonTaxableIncomeMilitaryAllowances;
-        private DirtyValue<decimal?> _cobNonTaxableIncomeOtherIncome;
-        private DirtyValue<decimal?> _cobNonTaxableIncomePublicAssistPayments;
-        private DirtyValue<decimal?> _cobNonTaxableIncomeRailroadRetirementBenefits;
-        private DirtyValue<decimal?> _cobNonTaxableIncomeSocialSecurityIncome;
-        private DirtyValue<decimal?> _cobNonTaxableIncomeStateGovtEmplRetirementIncome;
-        private DirtyValue<decimal?> _cobNonTaxableIncomeTotalNonTaxableIncome;
-        private DirtyValue<decimal?> _cobOtherNotesReceivableIncome;
-        private DirtyValue<decimal?> _cobOtherOtherIncome;
-        private DirtyValue<decimal?> _cobOtherParttimeIncome;
-        private DirtyValue<decimal?> _cobOtherRetirementIncome;
-        private DirtyValue<decimal?> _cobOtherSeasonalIncome;
-        private DirtyValue<decimal?> _cobOtherSocialSecurityIncome;
-        private DirtyValue<decimal?> _cobOtherTipIncome;
-        private DirtyValue<decimal?> _cobOtherTrustIncome;
-        private DirtyValue<decimal?> _cobOtherUnemploymentIncome;
-        private DirtyValue<decimal?> _cobOvertimeAverageOvertime;
-        private DirtyValue<decimal?> _cobOvertimeMostRecentAmount;
-        private DirtyValue<int?> _cobOvertimeMostRecentMonths;
-        private DirtyValue<int?> _cobOvertimeMostRecentYear;
-        private DirtyValue<decimal?> _cobOvertimePreviousAmount1;
-        private DirtyValue<decimal?> _cobOvertimePreviousAmount2;
-        private DirtyValue<int?> _cobOvertimePreviousMonths1;
-        private DirtyValue<int?> _cobOvertimePreviousMonths2;
-        private DirtyValue<int?> _cobOvertimePreviousYear1;
-        private DirtyValue<int?> _cobOvertimePreviousYear2;
-        private DirtyValue<decimal?> _cobProjectedIncomeProjectedBonuses;
-        private DirtyValue<decimal?> _cobProjectedIncomeProjectedCostLivingAdjustment;
-        private DirtyValue<decimal?> _cobProjectedIncomeProjectedNewJobIncome;
-        private DirtyValue<decimal?> _cobProjectedIncomeProjectedPerformanceRaises;
-        private DirtyValue<decimal?> _cobProjectedIncomeTotalProjectedIncome;
-        private DirtyValue<string> _dUCaseIDorLPAUSKey;
-        private DirtyValue<DateTime?> _firstSubmissionDate;
-        private DirtyValue<string> _firstSubmissionTime;
-        private DirtyValue<string> _freddieDocClass;
-        private DirtyValue<decimal?> _housingRatio;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _isEmpty;
-        private DirtyValue<DateTime?> _submissionDate;
-        private DirtyValue<string> _submissionNumber;
-        private DirtyValue<string> _submissionTime;
-        private DirtyValue<string> _submittedBy;
-        private DirtyValue<decimal?> _totalExpenseRatio;
-        private DirtyValue<decimal?> _totalHousingPayment;
-        private DirtyValue<decimal?> _totalMonthlyAssets;
-        private DirtyValue<decimal?> _totalMonthlyDebt;
-        private DirtyValue<decimal?> _totalMonthlyIncome;
-        private DirtyValue<string> _underwritingRiskAssessOther;
-        private DirtyValue<string> _underwritingRiskAssessType;
+        private DirtyValue<int?>? _aTRQMBorrowerIndex;
+        private DirtyValue<string?>? _aUSRecommendation;
+        private DirtyValue<string?>? _aUSVersion;
+        private DirtyValue<decimal?>? _borBonusAverageOvertime;
+        private DirtyValue<decimal?>? _borBonusMostRecentAmount;
+        private DirtyValue<int?>? _borBonusMostRecentMonths;
+        private DirtyValue<int?>? _borBonusMostRecentYear;
+        private DirtyValue<decimal?>? _borBonusPreviousAmount1;
+        private DirtyValue<decimal?>? _borBonusPreviousAmount2;
+        private DirtyValue<int?>? _borBonusPreviousMonths1;
+        private DirtyValue<int?>? _borBonusPreviousMonths2;
+        private DirtyValue<int?>? _borBonusPreviousYear1;
+        private DirtyValue<int?>? _borBonusPreviousYear2;
+        private DirtyValue<decimal?>? _borCommissionAverageOvertime;
+        private DirtyValue<decimal?>? _borCommissionMostRecentAmount;
+        private DirtyValue<int?>? _borCommissionMostRecentMonths;
+        private DirtyValue<int?>? _borCommissionMostRecentYear;
+        private DirtyValue<decimal?>? _borCommissionPreviousAmount1;
+        private DirtyValue<decimal?>? _borCommissionPreviousAmount2;
+        private DirtyValue<int?>? _borCommissionPreviousMonths1;
+        private DirtyValue<int?>? _borCommissionPreviousMonths2;
+        private DirtyValue<int?>? _borCommissionPreviousYear1;
+        private DirtyValue<int?>? _borCommissionPreviousYear2;
+        private DirtyValue<decimal?>? _borContingentLiabilitiesLiabilityAmount1;
+        private DirtyValue<decimal?>? _borContingentLiabilitiesLiabilityAmount2;
+        private DirtyValue<decimal?>? _borContingentLiabilitiesLiabilityAmount3;
+        private DirtyValue<StringEnumValue<BorContingentLiabilitiesLiabilityDescription>>? _borContingentLiabilitiesLiabilityDescription1;
+        private DirtyValue<StringEnumValue<BorContingentLiabilitiesLiabilityDescription>>? _borContingentLiabilitiesLiabilityDescription2;
+        private DirtyValue<StringEnumValue<BorContingentLiabilitiesLiabilityDescription>>? _borContingentLiabilitiesLiabilityDescription3;
+        private DirtyValue<decimal?>? _borContingentLiabilitiesTotalLiabilityAmount;
+        private DirtyValue<decimal?>? _borCosignedObligationsCarLoanPayment;
+        private DirtyValue<decimal?>? _borCosignedObligationsMortgagePayment;
+        private DirtyValue<decimal?>? _borCosignedObligationsOtherPayment;
+        private DirtyValue<string?>? _borCosignedObligationsOtherPaymentDescription;
+        private DirtyValue<decimal?>? _borCosignedObligationsStudentLoanPayment;
+        private DirtyValue<decimal?>? _borCosignedObligationsTotalCoMortgagorLiabilities;
+        private DirtyValue<decimal?>? _borDividendAverageDividend;
+        private DirtyValue<decimal?>? _borDividendPreviousAmount1;
+        private DirtyValue<decimal?>? _borDividendPreviousAmount2;
+        private DirtyValue<int?>? _borDividendPreviousMonths1;
+        private DirtyValue<int?>? _borDividendPreviousMonths2;
+        private DirtyValue<int?>? _borDividendPreviousYear1;
+        private DirtyValue<int?>? _borDividendPreviousYear2;
+        private DirtyValue<decimal?>? _borDividendRequiredForCashAmount;
+        private DirtyValue<decimal?>? _borInterestAverageDividend;
+        private DirtyValue<decimal?>? _borInterestPreviousAmount1;
+        private DirtyValue<decimal?>? _borInterestPreviousAmount2;
+        private DirtyValue<int?>? _borInterestPreviousMonths1;
+        private DirtyValue<int?>? _borInterestPreviousMonths2;
+        private DirtyValue<int?>? _borInterestPreviousYear1;
+        private DirtyValue<int?>? _borInterestPreviousYear2;
+        private DirtyValue<decimal?>? _borInterestRequiredForCashAmount;
+        private DirtyValue<decimal?>? _borMilitaryAllowanceClothingAllowance;
+        private DirtyValue<decimal?>? _borMilitaryAllowanceOtherAllowance;
+        private DirtyValue<string?>? _borMilitaryAllowanceOtherAllowanceDescription;
+        private DirtyValue<decimal?>? _borMilitaryAllowanceQuartersAllowance;
+        private DirtyValue<decimal?>? _borMilitaryAllowanceRationsAllowance;
+        private DirtyValue<decimal?>? _borMilitaryAllowanceTotalAllowance;
+        private DirtyValue<decimal?>? _borMilitaryAllowanceVariableHousingAllowance;
+        private DirtyValue<decimal?>? _borMilitaryBasePay;
+        private DirtyValue<decimal?>? _borMilitaryCombatPay;
+        private DirtyValue<decimal?>? _borMilitaryFlightPay;
+        private DirtyValue<decimal?>? _borMilitaryHazardPay;
+        private DirtyValue<decimal?>? _borMilitaryOverseasPay;
+        private DirtyValue<decimal?>? _borMilitaryPropPay;
+        private DirtyValue<decimal?>? _borMilitaryTotalPay;
+        private DirtyValue<decimal?>? _borMonthlyEmplymentIncomeBaseIncome;
+        private DirtyValue<decimal?>? _borMonthlyEmplymentIncomeBonuseIncome;
+        private DirtyValue<decimal?>? _borMonthlyEmplymentIncomeCommissionIncome;
+        private DirtyValue<decimal?>? _borMonthlyEmplymentIncomeDividendInterestIncome;
+        private DirtyValue<decimal?>? _borMonthlyEmplymentIncomeOtherIncome1;
+        private DirtyValue<decimal?>? _borMonthlyEmplymentIncomeOtherIncome2;
+        private DirtyValue<decimal?>? _borMonthlyEmplymentIncomeOvertimeIncome;
+        private DirtyValue<decimal?>? _borMonthlyEmplymentIncomeTotalEmploymentIncome;
+        private DirtyValue<decimal?>? _borNonEmploymentIncomeGovtAssitProgramIncome;
+        private DirtyValue<decimal?>? _borNonEmploymentIncomeHomeownSubsidyIncome;
+        private DirtyValue<bool?>? _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome;
+        private DirtyValue<bool?>? _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome;
+        private DirtyValue<decimal?>? _borNonEmploymentIncomeMilitaryIncome;
+        private DirtyValue<decimal?>? _borNonEmploymentIncomeMtgCreditCertificateIncome;
+        private DirtyValue<decimal?>? _borNonEmploymentIncomeTotalNonEmploymentIncome;
+        private DirtyValue<decimal?>? _borNonEmploymentIncomeVABenefitIncome;
+        private DirtyValue<decimal?>? _borNonTaxableIncomeChildSupportIncome;
+        private DirtyValue<decimal?>? _borNonTaxableIncomeDisabilityIncome;
+        private DirtyValue<decimal?>? _borNonTaxableIncomeFedGovtEmplRetirementIncome;
+        private DirtyValue<decimal?>? _borNonTaxableIncomeMilitaryAllowances;
+        private DirtyValue<decimal?>? _borNonTaxableIncomeOtherIncome;
+        private DirtyValue<decimal?>? _borNonTaxableIncomePublicAssistPayments;
+        private DirtyValue<decimal?>? _borNonTaxableIncomeRailroadRetirementBenefits;
+        private DirtyValue<decimal?>? _borNonTaxableIncomeSocialSecurityIncome;
+        private DirtyValue<decimal?>? _borNonTaxableIncomeStateGovtEmplRetirementIncome;
+        private DirtyValue<decimal?>? _borNonTaxableIncomeTotalNonTaxableIncome;
+        private DirtyValue<decimal?>? _borOtherNotesReceivableIncome;
+        private DirtyValue<decimal?>? _borOtherOtherIncome;
+        private DirtyValue<decimal?>? _borOtherParttimeIncome;
+        private DirtyValue<decimal?>? _borOtherRetirementIncome;
+        private DirtyValue<decimal?>? _borOtherSeasonalIncome;
+        private DirtyValue<decimal?>? _borOtherSocialSecurityIncome;
+        private DirtyValue<decimal?>? _borOtherTipIncome;
+        private DirtyValue<decimal?>? _borOtherTrustIncome;
+        private DirtyValue<decimal?>? _borOtherUnemploymentIncome;
+        private DirtyValue<decimal?>? _borOvertimeAverageOvertime;
+        private DirtyValue<decimal?>? _borOvertimeMostRecentAmount;
+        private DirtyValue<int?>? _borOvertimeMostRecentMonths;
+        private DirtyValue<int?>? _borOvertimeMostRecentYear;
+        private DirtyValue<decimal?>? _borOvertimePreviousAmount1;
+        private DirtyValue<decimal?>? _borOvertimePreviousAmount2;
+        private DirtyValue<int?>? _borOvertimePreviousMonths1;
+        private DirtyValue<int?>? _borOvertimePreviousMonths2;
+        private DirtyValue<int?>? _borOvertimePreviousYear1;
+        private DirtyValue<int?>? _borOvertimePreviousYear2;
+        private DirtyValue<decimal?>? _borProjectedIncomeProjectedBonuses;
+        private DirtyValue<decimal?>? _borProjectedIncomeProjectedCostLivingAdjustment;
+        private DirtyValue<decimal?>? _borProjectedIncomeProjectedNewJobIncome;
+        private DirtyValue<decimal?>? _borProjectedIncomeProjectedPerformanceRaises;
+        private DirtyValue<decimal?>? _borProjectedIncomeTotalProjectedIncome;
+        private DirtyValue<decimal?>? _cobBonusAverageOvertime;
+        private DirtyValue<decimal?>? _cobBonusMostRecentAmount;
+        private DirtyValue<int?>? _cobBonusMostRecentMonths;
+        private DirtyValue<int?>? _cobBonusMostRecentYear;
+        private DirtyValue<decimal?>? _cobBonusPreviousAmount1;
+        private DirtyValue<decimal?>? _cobBonusPreviousAmount2;
+        private DirtyValue<int?>? _cobBonusPreviousMonths1;
+        private DirtyValue<int?>? _cobBonusPreviousMonths2;
+        private DirtyValue<int?>? _cobBonusPreviousYear1;
+        private DirtyValue<int?>? _cobBonusPreviousYear2;
+        private DirtyValue<decimal?>? _cobCommissionAverageOvertime;
+        private DirtyValue<decimal?>? _cobCommissionMostRecentAmount;
+        private DirtyValue<int?>? _cobCommissionMostRecentMonths;
+        private DirtyValue<int?>? _cobCommissionMostRecentYear;
+        private DirtyValue<decimal?>? _cobCommissionPreviousAmount1;
+        private DirtyValue<decimal?>? _cobCommissionPreviousAmount2;
+        private DirtyValue<int?>? _cobCommissionPreviousMonths1;
+        private DirtyValue<int?>? _cobCommissionPreviousMonths2;
+        private DirtyValue<int?>? _cobCommissionPreviousYear1;
+        private DirtyValue<int?>? _cobCommissionPreviousYear2;
+        private DirtyValue<decimal?>? _cobDividendAverageDividend;
+        private DirtyValue<decimal?>? _cobDividendPreviousAmount1;
+        private DirtyValue<decimal?>? _cobDividendPreviousAmount2;
+        private DirtyValue<int?>? _cobDividendPreviousMonths1;
+        private DirtyValue<int?>? _cobDividendPreviousMonths2;
+        private DirtyValue<int?>? _cobDividendPreviousYear1;
+        private DirtyValue<int?>? _cobDividendPreviousYear2;
+        private DirtyValue<decimal?>? _cobDividendRequiredForCashAmount;
+        private DirtyValue<decimal?>? _cobInterestAverageDividend;
+        private DirtyValue<decimal?>? _cobInterestPreviousAmount1;
+        private DirtyValue<decimal?>? _cobInterestPreviousAmount2;
+        private DirtyValue<int?>? _cobInterestPreviousMonths1;
+        private DirtyValue<int?>? _cobInterestPreviousMonths2;
+        private DirtyValue<int?>? _cobInterestPreviousYear1;
+        private DirtyValue<int?>? _cobInterestPreviousYear2;
+        private DirtyValue<decimal?>? _cobInterestRequiredForCashAmount;
+        private DirtyValue<decimal?>? _cobMilitaryAllowanceClothingAllowance;
+        private DirtyValue<decimal?>? _cobMilitaryAllowanceOtherAllowance;
+        private DirtyValue<decimal?>? _cobMilitaryAllowanceQuartersAllowance;
+        private DirtyValue<decimal?>? _cobMilitaryAllowanceRationsAllowance;
+        private DirtyValue<decimal?>? _cobMilitaryAllowanceTotalAllowance;
+        private DirtyValue<decimal?>? _cobMilitaryAllowanceVariableHousingAllowance;
+        private DirtyValue<decimal?>? _cobMilitaryBasePay;
+        private DirtyValue<decimal?>? _cobMilitaryCombatPay;
+        private DirtyValue<decimal?>? _cobMilitaryFlightPay;
+        private DirtyValue<decimal?>? _cobMilitaryHazardPay;
+        private DirtyValue<decimal?>? _cobMilitaryOverseasPay;
+        private DirtyValue<decimal?>? _cobMilitaryPropPay;
+        private DirtyValue<decimal?>? _cobMilitaryTotalPay;
+        private DirtyValue<decimal?>? _cobMonthlyEmplymentIncomeBaseIncome;
+        private DirtyValue<decimal?>? _cobMonthlyEmplymentIncomeBonuseIncome;
+        private DirtyValue<decimal?>? _cobMonthlyEmplymentIncomeCommissionIncome;
+        private DirtyValue<decimal?>? _cobMonthlyEmplymentIncomeDividendInterestIncome;
+        private DirtyValue<decimal?>? _cobMonthlyEmplymentIncomeOtherIncome1;
+        private DirtyValue<decimal?>? _cobMonthlyEmplymentIncomeOtherIncome2;
+        private DirtyValue<decimal?>? _cobMonthlyEmplymentIncomeOvertimeIncome;
+        private DirtyValue<decimal?>? _cobMonthlyEmplymentIncomeTotalEmploymentIncome;
+        private DirtyValue<decimal?>? _cobNonEmploymentIncomeGovtAssitProgramIncome;
+        private DirtyValue<decimal?>? _cobNonEmploymentIncomeHomeownSubsidyIncome;
+        private DirtyValue<decimal?>? _cobNonEmploymentIncomeMilitaryIncome;
+        private DirtyValue<decimal?>? _cobNonEmploymentIncomeMtgCreditCertificateIncome;
+        private DirtyValue<decimal?>? _cobNonEmploymentIncomeTotalNonEmploymentIncome;
+        private DirtyValue<decimal?>? _cobNonEmploymentIncomeVABenefitIncome;
+        private DirtyValue<decimal?>? _cobNonTaxableIncomeChildSupportIncome;
+        private DirtyValue<decimal?>? _cobNonTaxableIncomeDisabilityIncome;
+        private DirtyValue<decimal?>? _cobNonTaxableIncomeFedGovtEmplRetirementIncome;
+        private DirtyValue<decimal?>? _cobNonTaxableIncomeMilitaryAllowances;
+        private DirtyValue<decimal?>? _cobNonTaxableIncomeOtherIncome;
+        private DirtyValue<decimal?>? _cobNonTaxableIncomePublicAssistPayments;
+        private DirtyValue<decimal?>? _cobNonTaxableIncomeRailroadRetirementBenefits;
+        private DirtyValue<decimal?>? _cobNonTaxableIncomeSocialSecurityIncome;
+        private DirtyValue<decimal?>? _cobNonTaxableIncomeStateGovtEmplRetirementIncome;
+        private DirtyValue<decimal?>? _cobNonTaxableIncomeTotalNonTaxableIncome;
+        private DirtyValue<decimal?>? _cobOtherNotesReceivableIncome;
+        private DirtyValue<decimal?>? _cobOtherOtherIncome;
+        private DirtyValue<decimal?>? _cobOtherParttimeIncome;
+        private DirtyValue<decimal?>? _cobOtherRetirementIncome;
+        private DirtyValue<decimal?>? _cobOtherSeasonalIncome;
+        private DirtyValue<decimal?>? _cobOtherSocialSecurityIncome;
+        private DirtyValue<decimal?>? _cobOtherTipIncome;
+        private DirtyValue<decimal?>? _cobOtherTrustIncome;
+        private DirtyValue<decimal?>? _cobOtherUnemploymentIncome;
+        private DirtyValue<decimal?>? _cobOvertimeAverageOvertime;
+        private DirtyValue<decimal?>? _cobOvertimeMostRecentAmount;
+        private DirtyValue<int?>? _cobOvertimeMostRecentMonths;
+        private DirtyValue<int?>? _cobOvertimeMostRecentYear;
+        private DirtyValue<decimal?>? _cobOvertimePreviousAmount1;
+        private DirtyValue<decimal?>? _cobOvertimePreviousAmount2;
+        private DirtyValue<int?>? _cobOvertimePreviousMonths1;
+        private DirtyValue<int?>? _cobOvertimePreviousMonths2;
+        private DirtyValue<int?>? _cobOvertimePreviousYear1;
+        private DirtyValue<int?>? _cobOvertimePreviousYear2;
+        private DirtyValue<decimal?>? _cobProjectedIncomeProjectedBonuses;
+        private DirtyValue<decimal?>? _cobProjectedIncomeProjectedCostLivingAdjustment;
+        private DirtyValue<decimal?>? _cobProjectedIncomeProjectedNewJobIncome;
+        private DirtyValue<decimal?>? _cobProjectedIncomeProjectedPerformanceRaises;
+        private DirtyValue<decimal?>? _cobProjectedIncomeTotalProjectedIncome;
+        private DirtyValue<string?>? _dUCaseIDorLPAUSKey;
+        private DirtyValue<DateTime?>? _firstSubmissionDate;
+        private DirtyValue<string?>? _firstSubmissionTime;
+        private DirtyValue<string?>? _freddieDocClass;
+        private DirtyValue<decimal?>? _housingRatio;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isEmpty;
+        private DirtyValue<DateTime?>? _submissionDate;
+        private DirtyValue<string?>? _submissionNumber;
+        private DirtyValue<string?>? _submissionTime;
+        private DirtyValue<string?>? _submittedBy;
+        private DirtyValue<decimal?>? _totalExpenseRatio;
+        private DirtyValue<decimal?>? _totalHousingPayment;
+        private DirtyValue<decimal?>? _totalMonthlyAssets;
+        private DirtyValue<decimal?>? _totalMonthlyDebt;
+        private DirtyValue<decimal?>? _totalMonthlyIncome;
+        private DirtyValue<string?>? _underwritingRiskAssessOther;
+        private DirtyValue<string?>? _underwritingRiskAssessType;
 
         /// <summary>
         /// ATRQMBorrower ATRQMBorrowerIndex
@@ -251,13 +251,13 @@ namespace EncompassRest.Loans
         /// AUS Tracking - Latest Submission - AUS Recommendation [AUSF.X3]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string AUSRecommendation { get => _aUSRecommendation; set => SetField(ref _aUSRecommendation, value); }
+        public string? AUSRecommendation { get => _aUSRecommendation; set => SetField(ref _aUSRecommendation, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - AUS Version # [AUSF.X12]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string AUSVersion { get => _aUSVersion; set => SetField(ref _aUSVersion, value); }
+        public string? AUSVersion { get => _aUSVersion; set => SetField(ref _aUSVersion, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Bonus - Average Overtime [QM.X228]
@@ -427,7 +427,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Cosigned Obligations - Other Payment Description [QM.X201]
         /// </summary>
-        public string BorCosignedObligationsOtherPaymentDescription { get => _borCosignedObligationsOtherPaymentDescription; set => SetField(ref _borCosignedObligationsOtherPaymentDescription, value); }
+        public string? BorCosignedObligationsOtherPaymentDescription { get => _borCosignedObligationsOtherPaymentDescription; set => SetField(ref _borCosignedObligationsOtherPaymentDescription, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Cosigned Obligations - Student Loan Payment [QM.X199]
@@ -544,7 +544,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Other Allowance Description [QM.X307]
         /// </summary>
-        public string BorMilitaryAllowanceOtherAllowanceDescription { get => _borMilitaryAllowanceOtherAllowanceDescription; set => SetField(ref _borMilitaryAllowanceOtherAllowanceDescription, value); }
+        public string? BorMilitaryAllowanceOtherAllowanceDescription { get => _borMilitaryAllowanceOtherAllowanceDescription; set => SetField(ref _borMilitaryAllowanceOtherAllowanceDescription, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Quarters Allowance [QM.X298]
@@ -1464,7 +1464,7 @@ namespace EncompassRest.Loans
         /// AUS Tracking - Latest Submission - DU Case ID/ LP AUS Key # [AUSF.X4]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DUCaseIDorLPAUSKey { get => _dUCaseIDorLPAUSKey; set => SetField(ref _dUCaseIDorLPAUSKey, value); }
+        public string? DUCaseIDorLPAUSKey { get => _dUCaseIDorLPAUSKey; set => SetField(ref _dUCaseIDorLPAUSKey, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - First Submission Date [AUSF.X9]
@@ -1476,13 +1476,13 @@ namespace EncompassRest.Loans
         /// AUS Tracking - Latest Submission - First Submission Time [AUSF.X10]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string FirstSubmissionTime { get => _firstSubmissionTime; set => SetField(ref _firstSubmissionTime, value); }
+        public string? FirstSubmissionTime { get => _firstSubmissionTime; set => SetField(ref _firstSubmissionTime, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - Doc Class (Freddie) [AUSF.X5]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string FreddieDocClass { get => _freddieDocClass; set => SetField(ref _freddieDocClass, value); }
+        public string? FreddieDocClass { get => _freddieDocClass; set => SetField(ref _freddieDocClass, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - Housing Ratio [AUSF.X17]
@@ -1493,7 +1493,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATRQMBorrower Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// ATRQMBorrower IsEmpty
@@ -1510,19 +1510,19 @@ namespace EncompassRest.Loans
         /// AUS Tracking - Latest Submission - Submission Number [AUSF.X11]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SubmissionNumber { get => _submissionNumber; set => SetField(ref _submissionNumber, value); }
+        public string? SubmissionNumber { get => _submissionNumber; set => SetField(ref _submissionNumber, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - Submission Time [AUSF.X8]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SubmissionTime { get => _submissionTime; set => SetField(ref _submissionTime, value); }
+        public string? SubmissionTime { get => _submissionTime; set => SetField(ref _submissionTime, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - Submitted By [AUSF.X6]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SubmittedBy { get => _submittedBy; set => SetField(ref _submittedBy, value); }
+        public string? SubmittedBy { get => _submittedBy; set => SetField(ref _submittedBy, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - Total Expense Ratio [AUSF.X18]
@@ -1558,12 +1558,12 @@ namespace EncompassRest.Loans
         /// AUS Tracking - Latest Submission - Underwriting Risk Assess Other Type [AUSF.X2]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string UnderwritingRiskAssessOther { get => _underwritingRiskAssessOther; set => SetField(ref _underwritingRiskAssessOther, value); }
+        public string? UnderwritingRiskAssessOther { get => _underwritingRiskAssessOther; set => SetField(ref _underwritingRiskAssessOther, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - Underwriting Risk Assess Type [AUSF.X1]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string UnderwritingRiskAssessType { get => _underwritingRiskAssessType; set => SetField(ref _underwritingRiskAssessType, value); }
+        public string? UnderwritingRiskAssessType { get => _underwritingRiskAssessType; set => SetField(ref _underwritingRiskAssessType, value); }
     }
 }

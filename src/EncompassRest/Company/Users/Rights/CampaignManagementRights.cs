@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class CampaignManagementRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _assignTasksToOthers;
-        private DirtyValue<bool?> _managePersonalCampaignTemplates;
+        private DirtyValue<bool?>? _assignTasksToOthers;
+        private DirtyValue<bool?>? _managePersonalCampaignTemplates;
 
         /// <summary>
         /// CampaignManagementRights AssignTasksToOthers

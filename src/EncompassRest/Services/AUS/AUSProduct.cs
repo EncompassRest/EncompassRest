@@ -17,14 +17,14 @@ namespace EncompassRest.Services.AUS
         /// Object that encapsulates user preferences for service specific functionality.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public AUSPreferences Preferences { get; set; }
+        public AUSPreferences? Preferences { get; set; }
 
         /// <summary>
         /// Object that encapsulates credentials and/or verification information with the AUS provider.
         /// </summary>
-        public new AUSCredentials Credentials { get; set; }
+        public new AUSCredentials? Credentials { get; set; }
 
-        internal override ServiceCredentials CredentialsInternal
+        internal override ServiceCredentials? CredentialsInternal
         {
             get => Credentials;
             set
@@ -50,7 +50,7 @@ namespace EncompassRest.Services.AUS
         /// <param name="entityRef">References the entity ID and entity type. Both must include the loan ID and borrower application ID associated with the loan.</param>
         /// <param name="options">AUSProduct options.</param>
         public AUSProduct(EntityReference entityRef, AUSOptions options)
-            : this(entityRef, options, ServiceType.AUS.GetValue())
+            : this(entityRef, options, ServiceType.AUS.GetValue()!)
         {
         }
 

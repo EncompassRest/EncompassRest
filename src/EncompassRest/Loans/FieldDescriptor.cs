@@ -21,12 +21,12 @@ namespace EncompassRest.Loans
         private bool _loanEntityIsSet;
         private LoanEntity? _loanEntity;
         private bool _propertyAttributeIsSet;
-        private LoanFieldPropertyAttribute _propertyAttribute;
-        private ReadOnlyCollection<FieldOption> _options;
+        private LoanFieldPropertyAttribute? _propertyAttribute;
+        private ReadOnlyCollection<FieldOption>? _options;
         private bool _declaredTypeIsSet;
-        private Type _declaredType;
+        private Type? _declaredType;
         private bool _enumTypeIsSet;
-        private Type _enumType;
+        private Type? _enumType;
 
         /// <summary>
         /// The field id.
@@ -62,7 +62,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// The instance specifier for an instance field descriptor.
         /// </summary>
-        public string InstanceSpecifier { get; }
+        public string? InstanceSpecifier { get; }
 
         /// <summary>
         /// Indicates if the field descriptor is an instance of a multi-instance descriptor.
@@ -203,7 +203,7 @@ namespace EncompassRest.Loans
                         {
                             var finalSegmentIndex = _modelPath.Segments.Count - 2;
 
-                            var declaredType = TypeData<Loan>.Type;
+                            Type? declaredType = TypeData<Loan>.Type;
                             for (var i = 0; i <= finalSegmentIndex && declaredType != null; ++i)
                             {
                                 declaredType = _modelPath.Segments[i].GetDeclaredType(declaredType);
@@ -248,10 +248,10 @@ namespace EncompassRest.Loans
                             {
                                 foreach (var member in EnumsNET.Enums.GetMembers(enumType))
                                 {
-                                    var value = member.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
+                                    var value = member.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)!;
                                     if (!dictionary.ContainsKey(value))
                                     {
-                                        dictionary.Add(value, member.AsString(EnumFormat.Description, EnumFormat.EnumMemberValue, EnumFormat.Name));
+                                        dictionary.Add(value, member.AsString(EnumFormat.Description, EnumFormat.EnumMemberValue, EnumFormat.Name)!);
                                     }
                                 }
                             }
@@ -284,9 +284,9 @@ namespace EncompassRest.Loans
         /// <summary>
         /// The parent descriptor for instance field descriptors.
         /// </summary>
-        public FieldDescriptor ParentDescriptor { get; }
+        public FieldDescriptor? ParentDescriptor { get; }
 
-        private LoanFieldPropertyAttribute PropertyAttribute
+        private LoanFieldPropertyAttribute? PropertyAttribute
         {
             get
             {
@@ -301,7 +301,7 @@ namespace EncompassRest.Loans
             }
         }
 
-        private Type DeclaredType
+        private Type? DeclaredType
         {
             get
             {
@@ -316,7 +316,7 @@ namespace EncompassRest.Loans
             }
         }
 
-        private Type EnumType
+        private Type? EnumType
         {
             get
             {
@@ -343,7 +343,7 @@ namespace EncompassRest.Loans
             }
         }
 
-        internal FieldDescriptor(string fieldId, ModelPath modelPath, string modelPathString, string description, bool multiInstance = false, string instanceSpecifier = null, FieldDescriptor parentDescriptor = null)
+        internal FieldDescriptor(string fieldId, ModelPath modelPath, string modelPathString, string? description, bool multiInstance = false, string? instanceSpecifier = null, FieldDescriptor? parentDescriptor = null)
         {
             FieldId = fieldId;
             _modelPath = modelPath;
@@ -388,7 +388,7 @@ namespace EncompassRest.Loans
 
             var formatArg = int.TryParse(instanceSpecifier, NumberStyles.None, null, out var i) ? (object)i : instanceSpecifier;
             var modelPathString = string.Format(ModelPath, formatArg);
-            return new FieldDescriptor(string.Format(FieldId, formatArg), LoanFieldDescriptors.CreateModelPath(modelPathString), modelPathString, string.Format(Description, formatArg), MultiInstance, instanceSpecifier, this);
+            return new FieldDescriptor(string.Format(FieldId, formatArg), LoanFieldDescriptors.CreateModelPath(modelPathString)!, modelPathString, string.Format(Description, formatArg), MultiInstance, instanceSpecifier, this);
         }
     }
 }

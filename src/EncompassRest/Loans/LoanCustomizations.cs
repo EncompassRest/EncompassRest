@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
@@ -8,14 +9,14 @@ namespace EncompassRest.Loans
 {
     partial class Loan
     {
-        private LoanFields _fields;
-        private ILoanObjectBoundApis _loanApis;
+        private LoanFields? _fields;
+        private ILoanObjectBoundApis? _loanApis;
 
         /// <summary>
         /// The <see cref="IEncompassRestClient"/> associated with this object.
         /// </summary>
         [JsonIgnore]
-        public IEncompassRestClient Client { get; internal set; }
+        public IEncompassRestClient? Client { get; internal set; }
 
         /// <summary>
         /// The Loan Apis for this loan. Loan object must be initialized to use this.
@@ -30,9 +31,9 @@ namespace EncompassRest.Loans
         public LoanFields Fields => _fields ?? (_fields = new LoanFields(this));
 
         [IdPropertyName(nameof(EncompassId))]
-        string IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }
+        string? IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }
 
-        private Application _currentApplication;
+        private Application? _currentApplication;
 
         /// <summary>
         /// The current application/borrower pair.
@@ -135,12 +136,12 @@ namespace EncompassRest.Loans
             {
                 Client = client;
                 EncompassId = loanId;
-                _encompassId.Dirty = false;
+                _encompassId!.Dirty = false;
                 _loanApis = client.Loans.GetLoanApis(this);
             }
         }
 
-        internal override void OnPropertyChanged(string propertyName)
+        internal override void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
             switch (propertyName)

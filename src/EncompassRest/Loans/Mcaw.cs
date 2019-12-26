@@ -8,53 +8,53 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Mcaw : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<AcceptOrReject>> _adequacyOfAvailableAssetsType;
-        private DirtyValue<StringEnumValue<AcceptOrReject>> _adequacyOfEffectiveIncomeType;
-        private DirtyValue<decimal?> _adjustedPurchasePrice;
-        private DirtyValue<decimal?> _appraisedValue1;
-        private DirtyValue<decimal?> _appraisedValue2;
-        private DirtyValue<decimal?> _borrowerPaidClosingCost;
-        private DirtyValue<decimal?> _calculatedMortgageAmount;
-        private DirtyValue<decimal?> _cashReserves;
-        private DirtyValue<StringEnumValue<ConstructionType>> _constructionType;
-        private DirtyValue<decimal?> _contractSalesPrice;
-        private DirtyValue<StringEnumValue<AcceptOrReject>> _creditCharacteristicsType;
-        private DirtyValue<decimal?> _equityToExSpouse;
-        private DirtyValue<decimal?> _fhaMaxLoanAmount;
-        private DirtyValue<string> _fhaUnderwriterChumsId;
-        private DirtyValue<StringEnumValue<GiftFundsSource>> _giftFundsSource;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _lesserSalesPrice;
-        private DirtyValue<decimal?> _ltv1;
-        private DirtyValue<decimal?> _ltv2;
-        private DirtyValue<decimal?> _maximumSellerContribution4Percent;
-        private DirtyValue<decimal?> _mortgageAmount;
-        private DirtyValue<decimal?> _mortgageAmountPercent;
-        private DirtyValue<decimal?> _mortgageBasisPurchase;
-        private DirtyValue<decimal?> _mortgageBasisRefinance;
-        private DirtyValue<StringEnumValue<PaidType>> _paidType1;
-        private DirtyValue<StringEnumValue<PaidType>> _paidType2;
-        private DirtyValue<decimal?> _principalBalance;
-        private DirtyValue<StringEnumValue<RefinanceType>> _refinanceType;
-        private DirtyValue<string> _remarks;
-        private DirtyValue<decimal?> _repairsAndImprovements;
-        private DirtyValue<string> _repairsAndImprovementsDescription;
-        private DirtyValue<decimal?> _repairsImprovementAmount;
-        private DirtyValue<decimal?> _repairsRequiredByAppraiser;
-        private DirtyValue<decimal?> _requiredInvestment;
-        private DirtyValue<decimal?> _requirementAdjustment;
-        private DirtyValue<bool?> _roundTo50Indicator;
-        private DirtyValue<decimal?> _seasonedSubordinateLiens;
-        private DirtyValue<string> _secondMortgageSource;
-        private DirtyValue<decimal?> _sixPercentOfLineA1;
-        private DirtyValue<StringEnumValue<AcceptOrReject>> _stabilityOfEffectiveIncomeType;
-        private DirtyValue<decimal?> _statutoryInvestment;
-        private DirtyValue<decimal?> _toBePaidAmount;
-        private DirtyValue<decimal?> _totalCashToClose;
-        private DirtyValue<decimal?> _totalRequirements;
-        private DirtyValue<decimal?> _totalSellerContribution;
-        private DirtyValue<decimal?> _unadjustedAcquisition;
-        private DirtyValue<bool?> _use85PercentRuleIndicator;
+        private DirtyValue<StringEnumValue<AcceptOrReject>>? _adequacyOfAvailableAssetsType;
+        private DirtyValue<StringEnumValue<AcceptOrReject>>? _adequacyOfEffectiveIncomeType;
+        private DirtyValue<decimal?>? _adjustedPurchasePrice;
+        private DirtyValue<decimal?>? _appraisedValue1;
+        private DirtyValue<decimal?>? _appraisedValue2;
+        private DirtyValue<decimal?>? _borrowerPaidClosingCost;
+        private DirtyValue<decimal?>? _calculatedMortgageAmount;
+        private DirtyValue<decimal?>? _cashReserves;
+        private DirtyValue<StringEnumValue<ConstructionType>>? _constructionType;
+        private DirtyValue<decimal?>? _contractSalesPrice;
+        private DirtyValue<StringEnumValue<AcceptOrReject>>? _creditCharacteristicsType;
+        private DirtyValue<decimal?>? _equityToExSpouse;
+        private DirtyValue<decimal?>? _fhaMaxLoanAmount;
+        private DirtyValue<string?>? _fhaUnderwriterChumsId;
+        private DirtyValue<StringEnumValue<GiftFundsSource>>? _giftFundsSource;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _lesserSalesPrice;
+        private DirtyValue<decimal?>? _ltv1;
+        private DirtyValue<decimal?>? _ltv2;
+        private DirtyValue<decimal?>? _maximumSellerContribution4Percent;
+        private DirtyValue<decimal?>? _mortgageAmount;
+        private DirtyValue<decimal?>? _mortgageAmountPercent;
+        private DirtyValue<decimal?>? _mortgageBasisPurchase;
+        private DirtyValue<decimal?>? _mortgageBasisRefinance;
+        private DirtyValue<StringEnumValue<PaidType>>? _paidType1;
+        private DirtyValue<StringEnumValue<PaidType>>? _paidType2;
+        private DirtyValue<decimal?>? _principalBalance;
+        private DirtyValue<StringEnumValue<RefinanceType>>? _refinanceType;
+        private DirtyValue<string?>? _remarks;
+        private DirtyValue<decimal?>? _repairsAndImprovements;
+        private DirtyValue<string?>? _repairsAndImprovementsDescription;
+        private DirtyValue<decimal?>? _repairsImprovementAmount;
+        private DirtyValue<decimal?>? _repairsRequiredByAppraiser;
+        private DirtyValue<decimal?>? _requiredInvestment;
+        private DirtyValue<decimal?>? _requirementAdjustment;
+        private DirtyValue<bool?>? _roundTo50Indicator;
+        private DirtyValue<decimal?>? _seasonedSubordinateLiens;
+        private DirtyValue<string?>? _secondMortgageSource;
+        private DirtyValue<decimal?>? _sixPercentOfLineA1;
+        private DirtyValue<StringEnumValue<AcceptOrReject>>? _stabilityOfEffectiveIncomeType;
+        private DirtyValue<decimal?>? _statutoryInvestment;
+        private DirtyValue<decimal?>? _toBePaidAmount;
+        private DirtyValue<decimal?>? _totalCashToClose;
+        private DirtyValue<decimal?>? _totalRequirements;
+        private DirtyValue<decimal?>? _totalSellerContribution;
+        private DirtyValue<decimal?>? _unadjustedAcquisition;
+        private DirtyValue<bool?>? _use85PercentRuleIndicator;
 
         /// <summary>
         /// FHA MCAW Borr Rating Avail Assets [1167]
@@ -133,7 +133,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Underwriter CHUMS ID [980]
         /// </summary>
-        public string FhaUnderwriterChumsId { get => _fhaUnderwriterChumsId; set => SetField(ref _fhaUnderwriterChumsId, value); }
+        public string? FhaUnderwriterChumsId { get => _fhaUnderwriterChumsId; set => SetField(ref _fhaUnderwriterChumsId, value); }
 
         /// <summary>
         /// FHA MCAW Gift Funds Source [MCAWPUR.X9]
@@ -143,7 +143,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mcaw Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// FHA MCAW Lesser of Sales Price or Value [MCAWPUR.X13]
@@ -217,7 +217,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Remarks [1228]
         /// </summary>
-        public string Remarks { get => _remarks; set => SetField(ref _remarks, value); }
+        public string? Remarks { get => _remarks; set => SetField(ref _remarks, value); }
 
         /// <summary>
         /// FHA MCAW Repairs/Improvements [MCAWPUR.X7]
@@ -228,7 +228,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Repairs/Improvements Descr [1670]
         /// </summary>
-        public string RepairsAndImprovementsDescription { get => _repairsAndImprovementsDescription; set => SetField(ref _repairsAndImprovementsDescription, value); }
+        public string? RepairsAndImprovementsDescription { get => _repairsAndImprovementsDescription; set => SetField(ref _repairsAndImprovementsDescription, value); }
 
         /// <summary>
         /// FHA MCAW Repairs or Improvement Amount [MCAWPUR.X29]
@@ -268,7 +268,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW 2nd Mtg Source [MCAWPUR.X10]
         /// </summary>
-        public string SecondMortgageSource { get => _secondMortgageSource; set => SetField(ref _secondMortgageSource, value); }
+        public string? SecondMortgageSource { get => _secondMortgageSource; set => SetField(ref _secondMortgageSource, value); }
 
         /// <summary>
         /// FHA MCAW Attach A Info A2:6% of Line A1 [1116]

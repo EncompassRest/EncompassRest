@@ -38,7 +38,7 @@ namespace EncompassRest.Settings.Templates
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetTemplateFoldersRawAsync(string path, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetTemplateFoldersRawAsync(string path, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ namespace EncompassRest.Settings.Templates
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetTemplateFoldersRawAsync(string path, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetTemplateFoldersRawAsync(string path, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(path, nameof(path));
 

@@ -42,7 +42,9 @@ namespace EncompassRest.Schema
         /// <param name="value">Field option value.</param>
         /// <param name="text">Field option text.</param>
         [JsonConstructor]
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         public FieldOption(string value, string text)
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         {
             Preconditions.NotNull(text, nameof(text));
             Preconditions.NotNull(value, nameof(value));
@@ -56,14 +58,14 @@ namespace EncompassRest.Schema
         /// </summary>
         /// <param name="other">The other object to compare with.</param>
         /// <returns></returns>
-        public bool Equals(FieldOption other) => other != null && string.Equals(Value, other.Value, StringComparison.OrdinalIgnoreCase);
+        public bool Equals(FieldOption? other) => other != null && string.Equals(Value, other.Value, StringComparison.OrdinalIgnoreCase);
 
         /// <summary>
         /// Indicates whether this object equals the other object.
         /// </summary>
         /// <param name="obj">The other object to compare with.</param>
         /// <returns></returns>
-        public override bool Equals(object obj) => Equals(obj as FieldOption);
+        public override bool Equals(object? obj) => Equals(obj as FieldOption);
 
         /// <summary>
         /// Gets a hash code for the object.

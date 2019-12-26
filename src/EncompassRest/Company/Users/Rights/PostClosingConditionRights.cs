@@ -7,7 +7,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PostClosingConditionRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _importConditions;
+        private DirtyValue<bool?>? _importConditions;
 
         /// <summary>
         /// PostClosingConditionRights ImportConditions

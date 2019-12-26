@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,30 +8,30 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class LoanSetupRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _n2009GFEPrint;
-        private DirtyValue<bool?> _alerts;
-        private DirtyValue<bool?> _autoLoanNumbering;
-        private DirtyValue<bool?> _autoMERSMINNumbering;
-        private DirtyValue<bool?> _changedCircumstancesSetup;
-        private DirtyValue<bool?> _channelOptions;
-        private DirtyValue<bool?> _complianceCalendar;
-        private DirtyValue<bool?> _conditionForms;
-        private DirtyValue<bool?> _defaultInputForms;
-        private DirtyValue<bool?> _disclosureTrackingSettings;
-        private HMDAProfilesRights _hMDAProfiles;
-        private DirtyValue<bool?> _loanCustomFields;
-        private DirtyValue<bool?> _loanDuplication;
-        private DirtyValue<bool?> _loanFolders;
-        private DirtyValue<bool?> _log;
-        private DirtyValue<bool?> _nMLSReportSetup;
-        private DirtyValue<bool?> _piggybackLoanSynchronization;
-        private DirtyValue<bool?> _privacyPolicy;
-        private DirtyValue<bool?> _rESPA;
-        private DirtyValue<bool?> _syncTemplates;
-        private DirtyValue<bool?> _tasks;
-        private DirtyValue<bool?> _trusteeList;
-        private DirtyValue<bool?> _verificationContactSetup;
-        private DirtyValue<bool?> _zipcodeSetup;
+        private DirtyValue<bool?>? _n2009GFEPrint;
+        private DirtyValue<bool?>? _alerts;
+        private DirtyValue<bool?>? _autoLoanNumbering;
+        private DirtyValue<bool?>? _autoMERSMINNumbering;
+        private DirtyValue<bool?>? _changedCircumstancesSetup;
+        private DirtyValue<bool?>? _channelOptions;
+        private DirtyValue<bool?>? _complianceCalendar;
+        private DirtyValue<bool?>? _conditionForms;
+        private DirtyValue<bool?>? _defaultInputForms;
+        private DirtyValue<bool?>? _disclosureTrackingSettings;
+        private HMDAProfilesRights? _hMDAProfiles;
+        private DirtyValue<bool?>? _loanCustomFields;
+        private DirtyValue<bool?>? _loanDuplication;
+        private DirtyValue<bool?>? _loanFolders;
+        private DirtyValue<bool?>? _log;
+        private DirtyValue<bool?>? _nMLSReportSetup;
+        private DirtyValue<bool?>? _piggybackLoanSynchronization;
+        private DirtyValue<bool?>? _privacyPolicy;
+        private DirtyValue<bool?>? _rESPA;
+        private DirtyValue<bool?>? _syncTemplates;
+        private DirtyValue<bool?>? _tasks;
+        private DirtyValue<bool?>? _trusteeList;
+        private DirtyValue<bool?>? _verificationContactSetup;
+        private DirtyValue<bool?>? _zipcodeSetup;
 
         /// <summary>
         /// LoanSetupRights 2009GFEPrint
@@ -86,6 +87,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// LoanSetupRights HMDAProfiles
         /// </summary>
+        [AllowNull]
         public HMDAProfilesRights HMDAProfiles { get => GetField(ref _hMDAProfiles); set => SetField(ref _hMDAProfiles, value); }
 
         /// <summary>

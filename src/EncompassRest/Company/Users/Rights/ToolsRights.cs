@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,50 +8,51 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ToolsRights : DirtyExtensibleObject
     {
-        private PurchaseAdviceFormRights _PurchaseAdviceForm;
-        private DirtyValue<bool?> _ShippingDetail;
-        private DirtyValue<bool?> _amortizationSchedule;
-        private DirtyValue<bool?> _antiSteeringSafeHarborDisclosure;
-        private DirtyValue<bool?> _auditTrail;
-        private AUSTrackingRights _aUSTracking;
-        private DirtyValue<bool?> _brokerCheckCalculation;
-        private DirtyValue<bool?> _businessContacts;
-        private DirtyValue<bool?> _cashtoClose;
-        private CollateralTrackingRights _collateralTracking;
-        private DirtyValue<bool?> _conversationLog;
-        private DirtyValue<bool?> _correspondentLoanStatus;
-        private DirtyValue<bool?> _correspondentPurchaseAdviceForm;
-        private DirtyValue<bool?> _debtConsolidation;
-        private DisclosureTrackingRights _disclosureTracking;
-        private DirtyValue<bool?> _eCSDataViewer;
-        private FeeVarianceWorksheetRights _feeVarianceWorksheet;
-        private FileContactsRights _fileContacts;
-        private DirtyValue<bool?> _fundingBalancingWorksheet;
-        private DirtyValue<bool?> _fundingWorksheet;
-        private DirtyValue<bool?> _importFundingWorksheet;
-        private InterimServicingRights _interimServicing;
-        private DirtyValue<bool?> _loanComparison;
-        private DirtyValue<bool?> _lockRequestForm;
-        private LOCompToolRights _lOCompTool;
-        private DirtyValue<bool?> _netTangibleBenefit;
-        private DirtyValue<bool?> _piggybackLoans;
-        private DirtyValue<bool?> _prequalification;
-        private DirtyValue<bool?> _profitManagement;
-        private DirtyValue<bool?> _rentVsOwn;
-        private RepAndWarrantTrackerRights _repAndWarrantTracker;
-        private DirtyValue<bool?> _secondaryRegistration;
-        private DirtyValue<bool?> _secureFormTransfer;
-        private TasksRights _tasks;
-        private TPOInformationRights _tPOInformation;
-        private TQLServicesRights _tQLServices;
-        private DirtyValue<bool?> _trustAccount;
-        private DirtyValue<bool?> _underwriterSummary;
-        private VerificationAndDocumentationTrackingRights _verificationAndDocumentationTracking;
+        private PurchaseAdviceFormRights? _PurchaseAdviceForm;
+        private DirtyValue<bool?>? _ShippingDetail;
+        private DirtyValue<bool?>? _amortizationSchedule;
+        private DirtyValue<bool?>? _antiSteeringSafeHarborDisclosure;
+        private DirtyValue<bool?>? _auditTrail;
+        private AUSTrackingRights? _aUSTracking;
+        private DirtyValue<bool?>? _brokerCheckCalculation;
+        private DirtyValue<bool?>? _businessContacts;
+        private DirtyValue<bool?>? _cashtoClose;
+        private CollateralTrackingRights? _collateralTracking;
+        private DirtyValue<bool?>? _conversationLog;
+        private DirtyValue<bool?>? _correspondentLoanStatus;
+        private DirtyValue<bool?>? _correspondentPurchaseAdviceForm;
+        private DirtyValue<bool?>? _debtConsolidation;
+        private DisclosureTrackingRights? _disclosureTracking;
+        private DirtyValue<bool?>? _eCSDataViewer;
+        private FeeVarianceWorksheetRights? _feeVarianceWorksheet;
+        private FileContactsRights? _fileContacts;
+        private DirtyValue<bool?>? _fundingBalancingWorksheet;
+        private DirtyValue<bool?>? _fundingWorksheet;
+        private DirtyValue<bool?>? _importFundingWorksheet;
+        private InterimServicingRights? _interimServicing;
+        private DirtyValue<bool?>? _loanComparison;
+        private DirtyValue<bool?>? _lockRequestForm;
+        private LOCompToolRights? _lOCompTool;
+        private DirtyValue<bool?>? _netTangibleBenefit;
+        private DirtyValue<bool?>? _piggybackLoans;
+        private DirtyValue<bool?>? _prequalification;
+        private DirtyValue<bool?>? _profitManagement;
+        private DirtyValue<bool?>? _rentVsOwn;
+        private RepAndWarrantTrackerRights? _repAndWarrantTracker;
+        private DirtyValue<bool?>? _secondaryRegistration;
+        private DirtyValue<bool?>? _secureFormTransfer;
+        private TasksRights? _tasks;
+        private TPOInformationRights? _tPOInformation;
+        private TQLServicesRights? _tQLServices;
+        private DirtyValue<bool?>? _trustAccount;
+        private DirtyValue<bool?>? _underwriterSummary;
+        private VerificationAndDocumentationTrackingRights? _verificationAndDocumentationTracking;
 
         /// <summary>
         /// ToolsRights PurchaseAdviceForm
         /// </summary>
         [JsonProperty(" PurchaseAdviceForm")]
+        [AllowNull]
         public PurchaseAdviceFormRights PurchaseAdviceForm { get => GetField(ref _PurchaseAdviceForm); set => SetField(ref _PurchaseAdviceForm, value); }
 
         /// <summary>
@@ -78,6 +80,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ToolsRights AUSTracking
         /// </summary>
+        [AllowNull]
         public AUSTrackingRights AUSTracking { get => GetField(ref _aUSTracking); set => SetField(ref _aUSTracking, value); }
 
         /// <summary>
@@ -99,6 +102,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ToolsRights CollateralTracking
         /// </summary>
+        [AllowNull]
         public CollateralTrackingRights CollateralTracking { get => GetField(ref _collateralTracking); set => SetField(ref _collateralTracking, value); }
 
         /// <summary>
@@ -124,6 +128,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ToolsRights DisclosureTracking
         /// </summary>
+        [AllowNull]
         public DisclosureTrackingRights DisclosureTracking { get => GetField(ref _disclosureTracking); set => SetField(ref _disclosureTracking, value); }
 
         /// <summary>
@@ -134,11 +139,13 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ToolsRights FeeVarianceWorksheet
         /// </summary>
+        [AllowNull]
         public FeeVarianceWorksheetRights FeeVarianceWorksheet { get => GetField(ref _feeVarianceWorksheet); set => SetField(ref _feeVarianceWorksheet, value); }
 
         /// <summary>
         /// ToolsRights FileContacts
         /// </summary>
+        [AllowNull]
         public FileContactsRights FileContacts { get => GetField(ref _fileContacts); set => SetField(ref _fileContacts, value); }
 
         /// <summary>
@@ -159,6 +166,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ToolsRights InterimServicing
         /// </summary>
+        [AllowNull]
         public InterimServicingRights InterimServicing { get => GetField(ref _interimServicing); set => SetField(ref _interimServicing, value); }
 
         /// <summary>
@@ -174,6 +182,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ToolsRights LOCompTool
         /// </summary>
+        [AllowNull]
         public LOCompToolRights LOCompTool { get => GetField(ref _lOCompTool); set => SetField(ref _lOCompTool, value); }
 
         /// <summary>
@@ -205,6 +214,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ToolsRights RepAndWarrantTracker
         /// </summary>
+        [AllowNull]
         public RepAndWarrantTrackerRights RepAndWarrantTracker { get => GetField(ref _repAndWarrantTracker); set => SetField(ref _repAndWarrantTracker, value); }
 
         /// <summary>
@@ -220,16 +230,19 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ToolsRights Tasks
         /// </summary>
+        [AllowNull]
         public TasksRights Tasks { get => GetField(ref _tasks); set => SetField(ref _tasks, value); }
 
         /// <summary>
         /// ToolsRights TPOInformation
         /// </summary>
+        [AllowNull]
         public TPOInformationRights TPOInformation { get => GetField(ref _tPOInformation); set => SetField(ref _tPOInformation, value); }
 
         /// <summary>
         /// ToolsRights TQLServices
         /// </summary>
+        [AllowNull]
         public TQLServicesRights TQLServices { get => GetField(ref _tQLServices); set => SetField(ref _tQLServices, value); }
 
         /// <summary>
@@ -245,6 +258,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ToolsRights VerificationAndDocumentationTracking
         /// </summary>
+        [AllowNull]
         public VerificationAndDocumentationTrackingRights VerificationAndDocumentationTracking { get => GetField(ref _verificationAndDocumentationTracking); set => SetField(ref _verificationAndDocumentationTracking, value); }
     }
 }

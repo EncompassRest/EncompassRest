@@ -30,14 +30,14 @@ namespace EncompassRest.Token
         /// </summary>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<TokenIntrospectionResponse> IntrospectAsync(CancellationToken cancellationToken = default);
+        Task<TokenIntrospectionResponse?> IntrospectAsync(CancellationToken cancellationToken = default);
         /// <summary>
         /// Checks the status of the access token and retrieves the associated metadata as raw json.
         /// </summary>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> IntrospectRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string?> IntrospectRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Revokes the access token.
         /// </summary>
@@ -51,7 +51,7 @@ namespace EncompassRest.Token
     /// </summary>
     public sealed class AccessToken : ApiObject, IAccessToken
     {
-        private HttpClient _tokenClient;
+        private HttpClient? _tokenClient;
         private readonly string _apiClientId;
         private readonly string _apiClientSecret;
 
@@ -88,6 +88,7 @@ namespace EncompassRest.Token
         {
             _apiClientId = apiClientId;
             _apiClientSecret = apiClientSecret;
+            Token = string.Empty;
         }
 
         /// <summary>
@@ -95,7 +96,7 @@ namespace EncompassRest.Token
         /// </summary>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<TokenIntrospectionResponse> IntrospectAsync(CancellationToken cancellationToken = default) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse>() : Task.FromResult<TokenIntrospectionResponse>(null), false);
+        public Task<TokenIntrospectionResponse?> IntrospectAsync(CancellationToken cancellationToken = default) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse?>() : Task.FromResult<TokenIntrospectionResponse?>(null), false);
 
         /// <summary>
         /// Checks the status of the access token and retrieves the associated metadata as raw json.
@@ -103,7 +104,7 @@ namespace EncompassRest.Token
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> IntrospectRawAsync(string queryString = null, CancellationToken cancellationToken = default) => PostAsync("introspection", queryString, CreateAccessTokenContent(), nameof(IntrospectRawAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string>(null), false);
+        public Task<string?> IntrospectRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => PostAsync("introspection", queryString, CreateAccessTokenContent(), nameof(IntrospectRawAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string?>(null), false);
 
         /// <summary>
         /// Revokes the access token.
@@ -154,7 +155,9 @@ namespace EncompassRest.Token
         [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), ItemRequired = Required.Always)]
         private sealed class TokenResponse
         {
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
             public string AccessToken { get; set; }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
@@ -8,67 +9,67 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Prequalification : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _afterTaxOwnMoSavings;
-        private DirtyValue<decimal?> _afterTaxRentMoSavings;
-        private DirtyValue<decimal?> _annualHomeMaintenance;
-        private DirtyValue<decimal?> _avgMoPmtSavings;
-        private DirtyValue<decimal?> _beforeTaxOwnMoPmt;
-        private DirtyValue<decimal?> _beforeTaxRentMoPmt;
-        private DirtyValue<int?> _cashOutBalance;
-        private DirtyValue<decimal?> _combinedGain;
-        private DirtyValue<decimal?> _costIncreasePerYear;
-        private DirtyValue<decimal?> _downPaymentAmount;
-        private DirtyValue<string> _favorableOption;
-        private DirtyValue<decimal?> _homeSellingPriceAfterYears;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _investmentGain;
-        private DirtyValue<decimal?> _maxLoanLimit;
-        private DirtyValue<decimal?> _maxPropValue;
-        private DirtyValue<decimal?> _minusDownPmtAndClosingCosts;
-        private DirtyValue<decimal?> _minusLoanBalance;
-        private DirtyValue<decimal?> _monthlyBenefit;
-        private DirtyValue<decimal?> _monthlyHomeAppreciation;
-        private DirtyValue<decimal?> _monthlyHomeEquity;
-        private DirtyValue<decimal?> _monthlyIncomeTax;
-        private DirtyValue<decimal?> _monthlyInvestmentInterest;
-        private DirtyValue<int?> _monthlySavings;
-        private DirtyValue<string> _numberOfMonths;
-        private DirtyValue<decimal?> _percentAnnualHomeMaint;
-        private DirtyValue<decimal?> _percentOfHomeAppreciation;
-        private DirtyValue<decimal?> _percentOfIncomeTax;
-        private DirtyValue<decimal?> _percentOfInvestmentInterest;
-        private DirtyList<PrequalificationScenario> _prequalificationScenarios;
-        private DirtyValue<string> _qualificationStatus;
-        private DirtyValue<decimal?> _rentalCost;
-        private DirtyValue<decimal?> _rentersInsurance;
-        private DirtyValue<decimal?> _totalBenefit;
-        private DirtyValue<decimal?> _totalCashFlow;
-        private DirtyValue<decimal?> _totalGain;
-        private DirtyValue<decimal?> _totalHomeAppreciation;
-        private DirtyValue<decimal?> _totalHomeEquity;
-        private DirtyValue<decimal?> _totalHousingExpense;
-        private DirtyValue<decimal?> _totalIncomeTax;
-        private DirtyValue<decimal?> _totalInvestmentInterest;
-        private DirtyValue<int?> _totalLiabilityPayment;
-        private DirtyValue<int?> _totalLiabilityUnpaid;
-        private DirtyValue<int?> _totalLoanSavings;
-        private DirtyValue<decimal?> _totalOtherExpenses;
-        private DirtyValue<decimal?> _totalOwnPmtOverYears;
-        private DirtyValue<decimal?> _totalOwnTaxSavings;
-        private DirtyValue<int?> _totalPaidOffBalance;
-        private DirtyValue<int?> _totalPaidOffMonthly;
-        private DirtyValue<decimal?> _totalPmtSavings;
-        private DirtyValue<decimal?> _totalRentPmtOverYears;
-        private DirtyValue<string> _withinLimits1;
-        private DirtyValue<string> _withinLimits2;
-        private DirtyValue<string> _withinLimits3;
-        private DirtyValue<string> _withinLimits4;
-        private DirtyValue<string> _withinLimits5;
-        private DirtyValue<string> _withinLimits6;
-        private DirtyValue<string> _withinLimits7;
-        private DirtyValue<string> _withinLimits8;
-        private DirtyValue<string> _withinLimits9;
-        private DirtyValue<int?> _yearsForComparison;
+        private DirtyValue<decimal?>? _afterTaxOwnMoSavings;
+        private DirtyValue<decimal?>? _afterTaxRentMoSavings;
+        private DirtyValue<decimal?>? _annualHomeMaintenance;
+        private DirtyValue<decimal?>? _avgMoPmtSavings;
+        private DirtyValue<decimal?>? _beforeTaxOwnMoPmt;
+        private DirtyValue<decimal?>? _beforeTaxRentMoPmt;
+        private DirtyValue<int?>? _cashOutBalance;
+        private DirtyValue<decimal?>? _combinedGain;
+        private DirtyValue<decimal?>? _costIncreasePerYear;
+        private DirtyValue<decimal?>? _downPaymentAmount;
+        private DirtyValue<string?>? _favorableOption;
+        private DirtyValue<decimal?>? _homeSellingPriceAfterYears;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _investmentGain;
+        private DirtyValue<decimal?>? _maxLoanLimit;
+        private DirtyValue<decimal?>? _maxPropValue;
+        private DirtyValue<decimal?>? _minusDownPmtAndClosingCosts;
+        private DirtyValue<decimal?>? _minusLoanBalance;
+        private DirtyValue<decimal?>? _monthlyBenefit;
+        private DirtyValue<decimal?>? _monthlyHomeAppreciation;
+        private DirtyValue<decimal?>? _monthlyHomeEquity;
+        private DirtyValue<decimal?>? _monthlyIncomeTax;
+        private DirtyValue<decimal?>? _monthlyInvestmentInterest;
+        private DirtyValue<int?>? _monthlySavings;
+        private DirtyValue<string?>? _numberOfMonths;
+        private DirtyValue<decimal?>? _percentAnnualHomeMaint;
+        private DirtyValue<decimal?>? _percentOfHomeAppreciation;
+        private DirtyValue<decimal?>? _percentOfIncomeTax;
+        private DirtyValue<decimal?>? _percentOfInvestmentInterest;
+        private DirtyList<PrequalificationScenario>? _prequalificationScenarios;
+        private DirtyValue<string?>? _qualificationStatus;
+        private DirtyValue<decimal?>? _rentalCost;
+        private DirtyValue<decimal?>? _rentersInsurance;
+        private DirtyValue<decimal?>? _totalBenefit;
+        private DirtyValue<decimal?>? _totalCashFlow;
+        private DirtyValue<decimal?>? _totalGain;
+        private DirtyValue<decimal?>? _totalHomeAppreciation;
+        private DirtyValue<decimal?>? _totalHomeEquity;
+        private DirtyValue<decimal?>? _totalHousingExpense;
+        private DirtyValue<decimal?>? _totalIncomeTax;
+        private DirtyValue<decimal?>? _totalInvestmentInterest;
+        private DirtyValue<int?>? _totalLiabilityPayment;
+        private DirtyValue<int?>? _totalLiabilityUnpaid;
+        private DirtyValue<int?>? _totalLoanSavings;
+        private DirtyValue<decimal?>? _totalOtherExpenses;
+        private DirtyValue<decimal?>? _totalOwnPmtOverYears;
+        private DirtyValue<decimal?>? _totalOwnTaxSavings;
+        private DirtyValue<int?>? _totalPaidOffBalance;
+        private DirtyValue<int?>? _totalPaidOffMonthly;
+        private DirtyValue<decimal?>? _totalPmtSavings;
+        private DirtyValue<decimal?>? _totalRentPmtOverYears;
+        private DirtyValue<string?>? _withinLimits1;
+        private DirtyValue<string?>? _withinLimits2;
+        private DirtyValue<string?>? _withinLimits3;
+        private DirtyValue<string?>? _withinLimits4;
+        private DirtyValue<string?>? _withinLimits5;
+        private DirtyValue<string?>? _withinLimits6;
+        private DirtyValue<string?>? _withinLimits7;
+        private DirtyValue<string?>? _withinLimits8;
+        private DirtyValue<string?>? _withinLimits9;
+        private DirtyValue<int?>? _yearsForComparison;
 
         /// <summary>
         /// Rent/Own Own Average After Tax Mo Pymt [PREQUAL.X327]
@@ -133,7 +134,7 @@ namespace EncompassRest.Loans
         /// Rent/Own Favorable Option [PREQUAL.X316]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string FavorableOption { get => _favorableOption; set => SetField(ref _favorableOption, value); }
+        public string? FavorableOption { get => _favorableOption; set => SetField(ref _favorableOption, value); }
 
         /// <summary>
         /// Rent/Own Home Sellings Price After Years [PREQUAL.X328]
@@ -144,7 +145,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Prequalification Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Rent/Own Investment Gain of Buying vs. Renting [PREQUAL.X331]
@@ -216,7 +217,7 @@ namespace EncompassRest.Loans
         /// Rent/Own Compare Over # Mos [PREQUAL.X105]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string NumberOfMonths { get => _numberOfMonths; set => SetField(ref _numberOfMonths, value); }
+        public string? NumberOfMonths { get => _numberOfMonths; set => SetField(ref _numberOfMonths, value); }
 
         /// <summary>
         /// Rent/Own Annual Home Maintenance % [PREQUAL.X334]
@@ -245,13 +246,14 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Prequalification PrequalificationScenarios
         /// </summary>
+        [AllowNull]
         public IList<PrequalificationScenario> PrequalificationScenarios { get => GetField(ref _prequalificationScenarios); set => SetField(ref _prequalificationScenarios, value); }
 
         /// <summary>
         /// Prequal Qualification Status [PREQUAL.X274]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string QualificationStatus { get => _qualificationStatus; set => SetField(ref _qualificationStatus, value); }
+        public string? QualificationStatus { get => _qualificationStatus; set => SetField(ref _qualificationStatus, value); }
 
         /// <summary>
         /// Rent/Own Mo Cost to Rent [PREQUAL.X99]
@@ -377,55 +379,55 @@ namespace EncompassRest.Loans
         /// Prequal Within Limits 1 [PREQUAL.X307]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string WithinLimits1 { get => _withinLimits1; set => SetField(ref _withinLimits1, value); }
+        public string? WithinLimits1 { get => _withinLimits1; set => SetField(ref _withinLimits1, value); }
 
         /// <summary>
         /// Prequal Within Limits 2 [PREQUAL.X308]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string WithinLimits2 { get => _withinLimits2; set => SetField(ref _withinLimits2, value); }
+        public string? WithinLimits2 { get => _withinLimits2; set => SetField(ref _withinLimits2, value); }
 
         /// <summary>
         /// Prequal Within Limits 3 [PREQUAL.X309]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string WithinLimits3 { get => _withinLimits3; set => SetField(ref _withinLimits3, value); }
+        public string? WithinLimits3 { get => _withinLimits3; set => SetField(ref _withinLimits3, value); }
 
         /// <summary>
         /// Prequal Within Limits 4 [PREQUAL.X310]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string WithinLimits4 { get => _withinLimits4; set => SetField(ref _withinLimits4, value); }
+        public string? WithinLimits4 { get => _withinLimits4; set => SetField(ref _withinLimits4, value); }
 
         /// <summary>
         /// Prequal Within Limits 5 [PREQUAL.X311]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string WithinLimits5 { get => _withinLimits5; set => SetField(ref _withinLimits5, value); }
+        public string? WithinLimits5 { get => _withinLimits5; set => SetField(ref _withinLimits5, value); }
 
         /// <summary>
         /// Prequal Within Limits 6 [PREQUAL.X312]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string WithinLimits6 { get => _withinLimits6; set => SetField(ref _withinLimits6, value); }
+        public string? WithinLimits6 { get => _withinLimits6; set => SetField(ref _withinLimits6, value); }
 
         /// <summary>
         /// Prequal Within Limits 7 [PREQUAL.X313]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string WithinLimits7 { get => _withinLimits7; set => SetField(ref _withinLimits7, value); }
+        public string? WithinLimits7 { get => _withinLimits7; set => SetField(ref _withinLimits7, value); }
 
         /// <summary>
         /// Prequal Within Limits 8 [PREQUAL.X314]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string WithinLimits8 { get => _withinLimits8; set => SetField(ref _withinLimits8, value); }
+        public string? WithinLimits8 { get => _withinLimits8; set => SetField(ref _withinLimits8, value); }
 
         /// <summary>
         /// Prequal Within Limits 9 [PREQUAL.X315]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string WithinLimits9 { get => _withinLimits9; set => SetField(ref _withinLimits9, value); }
+        public string? WithinLimits9 { get => _withinLimits9; set => SetField(ref _withinLimits9, value); }
 
         /// <summary>
         /// Rent/Own How Many Years for this Comparison? [PREQUAL.X335]

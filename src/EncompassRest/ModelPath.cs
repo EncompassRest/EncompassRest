@@ -15,7 +15,7 @@ namespace EncompassRest
     {
         public ModelPathContext Context { get; }
 
-        public string RootObjectName { get; }
+        public string? RootObjectName { get; }
 
         public IReadOnlyList<PathSegment> Segments { get; }
 
@@ -45,7 +45,7 @@ namespace EncompassRest
                                 Increment(ref i);
                                 EatWhiteSpace(ref i);
                                 c = modelPath[i];
-                                ObjectFilter filter = null;
+                                ObjectFilter? filter = null;
                                 while (c != ')')
                                 {
                                     switch (c)
@@ -269,13 +269,13 @@ namespace EncompassRest
             }
         }
 
-        public object GetValue(object root) => GetValue(root, out _);
+        public object? GetValue(object root) => GetValue(root, out _);
 
-        public object GetValue(object root, out Type declaredType)
+        public object? GetValue(object root, out Type? declaredType)
         {
             Preconditions.NotNull(root, nameof(root));
 
-            var value = root;
+            object? value = root;
             declaredType = null;
             foreach (var segment in Segments)
             {
@@ -288,25 +288,25 @@ namespace EncompassRest
             return value;
         }
 
-        public void SetValue(object root, object value) => SetValue(root, t => value);
+        public void SetValue(object root, object? value) => SetValue(root, t => value);
 
-        public void SetValue(object root, Func<Type, object> valueProvider)
+        public void SetValue(object root, Func<Type?, object?> valueProvider)
         {
             Preconditions.NotNull(root, nameof(root));
             Preconditions.NotNull(valueProvider, nameof(valueProvider));
 
-            var parent = root;
+            object? parent = root;
             for (var i = 1; i < Segments.Count; ++i)
             {
                 var segment = Segments[i - 1];
-                parent = segment.GetValue(parent, out var declaredType, true, Segments[i] is PropertySegment);
+                parent = segment.GetValue(parent!, out _, true, Segments[i] is PropertySegment);
             }
-            Segments[Segments.Count - 1].SetValue(parent, valueProvider);
+            Segments[Segments.Count - 1].SetValue(parent!, valueProvider);
         }
 
-        public Type GetDeclaredType(Type rootType)
+        public Type? GetDeclaredType(Type rootType)
         {
-            var declaredType = rootType;
+            Type? declaredType = rootType;
             foreach (var segment in Segments)
             {
                 declaredType = segment.GetDeclaredType(declaredType);
@@ -330,12 +330,12 @@ namespace EncompassRest
 
         public IList<Attribute> GetAttributes(Type rootType) => GetAttributes(rootType, null);
 
-        public IList<Attribute> GetAttributes(Type rootType, Type attributeType)
+        public IList<Attribute> GetAttributes(Type rootType, Type? attributeType)
         {
             var lastSegment = Segments[Segments.Count - 1];
             if (lastSegment is PropertySegment propertySegment)
             {
-                var declaredType = rootType;
+                Type? declaredType = rootType;
                 for (var i = 1; i < Segments.Count; ++i)
                 {
                     var segment = Segments[i - 1];
@@ -365,13 +365,13 @@ namespace EncompassRest
 
         public override string ToString() => ToString(null, false);
 
-        public string ToString(Func<string, string> propertyNameTransformer, bool attributePath) => $"{(attributePath ? null : propertyNameTransformer?.Invoke(RootObjectName) ?? RootObjectName)}{string.Concat(Segments.Select(segment => segment.ToString(propertyNameTransformer, attributePath)))}";
+        public string ToString(Func<string?, string>? propertyNameTransformer, bool attributePath) => $"{(attributePath ? null : propertyNameTransformer?.Invoke(RootObjectName) ?? RootObjectName)}{string.Concat(Segments.Select(segment => segment.ToString(propertyNameTransformer, attributePath)))}";
 
         public override int GetHashCode() => Segments.Aggregate(StringComparer.OrdinalIgnoreCase.GetHashCode(RootObjectName), (current, segment) => current ^ segment.GetHashCode());
 
-        public override bool Equals(object obj) => Equals(obj as ModelPath);
+        public override bool Equals(object? obj) => Equals(obj as ModelPath);
 
-        public bool Equals(ModelPath other)
+        public bool Equals(ModelPath? other)
         {
             if (other == null || !string.Equals(RootObjectName, other.RootObjectName, StringComparison.OrdinalIgnoreCase) || Segments.Count != other.Segments.Count)
             {
@@ -402,25 +402,25 @@ namespace EncompassRest
                 Path = path;
             }
 
-            public abstract Type GetDeclaredType(Type parentType);
+            public abstract Type? GetDeclaredType(Type parentType);
 
-            public object GetValue(object parent) => GetValue(parent, out _);
+            public object? GetValue(object parent) => GetValue(parent, out _);
 
-            public abstract object GetValue(object parent, out Type declaredType, bool createIfNotExists = false, bool nextIsProperty = true);
+            public abstract object? GetValue(object parent, out Type? declaredType, bool createIfNotExists = false, bool nextIsProperty = true);
 
             public void SetValue(object parent, object value) => SetValue(parent, t => value);
 
-            public abstract void SetValue(object parent, Func<Type, object> valueProvider);
+            public abstract void SetValue(object parent, Func<Type?, object?> valueProvider);
 
             public sealed override string ToString() => ToString(null, false);
 
-            public abstract string ToString(Func<string, string> propertyNameTransformer, bool attributePath);
+            public abstract string ToString(Func<string, string>? propertyNameTransformer, bool attributePath);
 
             public abstract override int GetHashCode();
 
-            public sealed override bool Equals(object obj) => Equals(obj as PathSegment);
+            public sealed override bool Equals(object? obj) => Equals(obj as PathSegment);
 
-            public abstract bool Equals(PathSegment other);
+            public abstract bool Equals(PathSegment? other);
         }
 
         public sealed class PropertySegment : PathSegment
@@ -437,7 +437,7 @@ namespace EncompassRest
 
             internal string GetPropertyName() => Path.Context.PropertyNameTransformer?.Invoke(PropertyName) ?? PropertyName;
 
-            public override Type GetDeclaredType(Type parentType)
+            public override Type? GetDeclaredType(Type parentType)
             {
                 Preconditions.NotNull(parentType, nameof(parentType));
 
@@ -452,7 +452,7 @@ namespace EncompassRest
                 }
             }
 
-            public override object GetValue(object parent, out Type declaredType, bool createIfNotExists = false, bool nextIsProperty = true)
+            public override object? GetValue(object parent, out Type? declaredType, bool createIfNotExists = false, bool nextIsProperty = true)
             {
                 Preconditions.NotNull(parent, nameof(parent));
                 
@@ -539,12 +539,12 @@ namespace EncompassRest
                 return null;
             }
 
-            public override void SetValue(object parent, Func<Type, object> valueProvider)
+            public override void SetValue(object parent, Func<Type?, object?> valueProvider)
             {
                 Preconditions.NotNull(parent, nameof(parent));
 
                 var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(parent.GetType());
-                object value;
+                object? value;
                 var propertyName = GetPropertyName();
                 switch (contract)
                 {
@@ -578,7 +578,7 @@ namespace EncompassRest
                 }
             }
 
-            public override string ToString(Func<string, string> propertyNameTransformer, bool attributePath)
+            public override string ToString(Func<string, string>? propertyNameTransformer, bool attributePath)
             {
                 var propertyName = propertyNameTransformer?.Invoke(PropertyName) ?? PropertyName;
                 if (attributePath)
@@ -591,21 +591,21 @@ namespace EncompassRest
 
             public override int GetHashCode() => StringComparer.OrdinalIgnoreCase.GetHashCode(PropertyName);
 
-            public override bool Equals(PathSegment other) => other is PropertySegment propertySegment && string.Equals(PropertyName, propertySegment.PropertyName, StringComparison.OrdinalIgnoreCase);
+            public override bool Equals(PathSegment? other) => other is PropertySegment propertySegment && string.Equals(PropertyName, propertySegment.PropertyName, StringComparison.OrdinalIgnoreCase);
         }
 
         public sealed class ArraySegment : PathSegment
         {
             public int? Index { get; }
 
-            public ObjectFilter Filter { get; }
+            public ObjectFilter? Filter { get; }
 
             public ArraySegment(ModelPath path, int index)
                 : this(path, null, index)
             {
             }
 
-            public ArraySegment(ModelPath path, ObjectFilter filter, int? index = null)
+            public ArraySegment(ModelPath path, ObjectFilter? filter, int? index = null)
                 : base(path)
             {
                 if (!index.HasValue && filter == null)
@@ -636,7 +636,7 @@ namespace EncompassRest
                 return declaredType;
             }
 
-            public override object GetValue(object parent, out Type declaredType, bool createIfNotExists = false, bool nextIsProperty = true)
+            public override object? GetValue(object parent, out Type declaredType, bool createIfNotExists = false, bool nextIsProperty = true)
             {
                 Preconditions.NotNull(parent, nameof(parent));
                 if (!(parent is IList list))
@@ -687,7 +687,7 @@ namespace EncompassRest
                         sb.Append('}');
                         json = sb.ToString();
                     }
-                    object result = null;
+                    object? result = null;
                     for (var i = filteredList.Count; i <= index; ++i)
                     {
                         result = JsonHelper.FromJson(json, declaredType);
@@ -717,9 +717,9 @@ namespace EncompassRest
                 return sb.ToString();
             }
 
-            public override void SetValue(object parent, Func<Type, object> valueProvider) => throw new NotSupportedException();
+            public override void SetValue(object parent, Func<Type?, object?> valueProvider) => throw new NotSupportedException();
 
-            public override string ToString(Func<string, string> propertyNameTransformer, bool attributePath)
+            public override string ToString(Func<string, string>? propertyNameTransformer, bool attributePath)
             {
                 var index = Index;
                 if (index.HasValue && attributePath)
@@ -739,7 +739,7 @@ namespace EncompassRest
                 return propertyFilters.Aggregate(Index ?? settings?.IndexOffset ?? Path.Context.DefaultIndexOffset, (current, f) => current ^ StringComparer.OrdinalIgnoreCase.GetHashCode(f.PropertyName) ^ StringComparer.OrdinalIgnoreCase.GetHashCode(f.Value));
             }
 
-            public override bool Equals(PathSegment other)
+            public override bool Equals(PathSegment? other)
             {
                 if (other is ArraySegment arraySegment)
                 {
@@ -761,7 +761,7 @@ namespace EncompassRest
                 return false;
             }
 
-            private List<PropertyFilter> CreatePropertyFilterListWithDefaults(IDictionary<string, string> defaultValues)
+            private List<PropertyFilter> CreatePropertyFilterListWithDefaults(IDictionary<string, string>? defaultValues)
             {
                 var filters = Filter != null ? new List<PropertyFilter>(Filter) : new List<PropertyFilter>();
                 if (defaultValues != null)
@@ -780,7 +780,7 @@ namespace EncompassRest
 
         public class ObjectFilter : IEnumerable<PropertyFilter>
         {
-            private readonly List<PropertyFilter> _terms;
+            private readonly List<PropertyFilter>? _terms;
 
             public int Count => _terms?.Count ?? 1;
 
@@ -802,15 +802,15 @@ namespace EncompassRest
                     return new ObjectFilter(firstPropertyFilter, filter);
                 }
 
-                _terms.Add(filter);
+                _terms!.Add(filter);
                 return this;
             }
 
-            public virtual bool Evaluate(object value, ModelPathSettings settings, Func<string, string> propertyNameTransformer) => _terms.All(term => term.Evaluate(value, settings, propertyNameTransformer));
+            public virtual bool Evaluate(object value, ModelPathSettings settings, Func<string, string>? propertyNameTransformer) => _terms.All(term => term.Evaluate(value, settings, propertyNameTransformer));
 
             public sealed override string ToString() => ToString(null, false);
 
-            public virtual string ToString(Func<string, string> propertyNameTransformer, bool attributePath) => string.Join(" && ", _terms.Where(term => term.PropertyName != "Id").Select(term => term.ToString(propertyNameTransformer, attributePath)));
+            public virtual string ToString(Func<string, string>? propertyNameTransformer, bool attributePath) => string.Join(" && ", _terms.Where(term => term.PropertyName != "Id").Select(term => term.ToString(propertyNameTransformer, attributePath)));
 
             public IEnumerator<PropertyFilter> GetEnumerator()
             {
@@ -820,7 +820,7 @@ namespace EncompassRest
                 }
                 else
                 {
-                    foreach (var term in _terms)
+                    foreach (var term in _terms!)
                     {
                         yield return term;
                     }
@@ -844,7 +844,7 @@ namespace EncompassRest
                 Value = value;
             }
 
-            public override bool Evaluate(object value, ModelPathSettings settings, Func<string, string> propertyNameTransformer)
+            public override bool Evaluate(object value, ModelPathSettings settings, Func<string, string>? propertyNameTransformer)
             {
                 Preconditions.NotNull(value, nameof(value));
 
@@ -862,14 +862,15 @@ namespace EncompassRest
                 }
 
                 var retrievedValue = property.ValueProvider.GetValue(value);
-                if (retrievedValue == null && settings != null && settings.DefaultValues.TryGetValue(propertyName, out var defaultValue))
+                string? defaultValue = null;
+                if (retrievedValue == null && settings != null && settings.DefaultValues?.TryGetValue(propertyName, out defaultValue) == true)
                 {
-                    retrievedValue = defaultValue;
+                    retrievedValue = defaultValue!;
                 }
                 return string.Equals(Value, retrievedValue?.ToString() ?? "false", StringComparison.OrdinalIgnoreCase);
             }
 
-            public override string ToString(Func<string, string> propertyNameTransformer, bool attributePath)
+            public override string ToString(Func<string, string>? propertyNameTransformer, bool attributePath)
             {
                 var propertyName = propertyNameTransformer?.Invoke(PropertyName) ?? PropertyName;
                 var propertyNameEscaped = EscapeWithTick(propertyName, out var escapeNeeded);

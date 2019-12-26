@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Settings.Personas
 {
@@ -7,9 +8,9 @@ namespace EncompassRest.Settings.Personas
     /// </summary>
     public sealed class ExportServicesRights : DirtyExtensibleObject
     {
-        private DirtyValue<StringEnumValue<AccessSetting>> _accessSetting;
-        private DirtyValue<StringEnumValue<RightsDefaultAccess>> _defaultAccess;
-        private DirtyList<string> _allowedServices;
+        private DirtyValue<StringEnumValue<AccessSetting>>? _accessSetting;
+        private DirtyValue<StringEnumValue<RightsDefaultAccess>>? _defaultAccess;
+        private DirtyList<string>? _allowedServices;
 
         /// <summary>
         /// ExportServicesRights AccessSetting
@@ -24,6 +25,7 @@ namespace EncompassRest.Settings.Personas
         /// <summary>
         /// ExportServicesRights AllowedServices
         /// </summary>
+        [AllowNull]
         public IList<string> AllowedServices { get => GetField(ref _allowedServices); set => SetField(ref _allowedServices, value); }
     }
 }

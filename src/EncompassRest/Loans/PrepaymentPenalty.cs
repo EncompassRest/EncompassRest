@@ -9,10 +9,10 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class PrepaymentPenalty : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>> _fullPrepaymentPenaltyOptionType;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _prepaymentPenaltyPercent;
-        private DirtyValue<int?> _termMonthsCount;
+        private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>>? _fullPrepaymentPenaltyOptionType;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _prepaymentPenaltyPercent;
+        private DirtyValue<int?>? _termMonthsCount;
 
         /// <summary>
         /// PrepaymentPenalty FullPrepaymentPenaltyOptionType
@@ -22,7 +22,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PrepaymentPenalty Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// PrepaymentPenalty PrepaymentPenaltyPercent

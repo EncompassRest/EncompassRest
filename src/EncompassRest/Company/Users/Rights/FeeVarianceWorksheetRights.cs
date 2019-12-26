@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class FeeVarianceWorksheetRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _cureVariance;
+        private DirtyValue<bool?>? _cureVariance;
 
         /// <summary>
         /// FeeVarianceWorksheetRights CureVariance

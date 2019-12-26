@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,81 +9,83 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class PreliminaryConditionLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _addedBy;
-        private DirtyList<LogAlert> _alerts;
-        private DirtyValue<string> _alertsXml;
-        private DirtyValue<string> _category;
-        private DirtyList<LogComment> _commentList;
-        private DirtyValue<string> _commentListXml;
-        private DirtyValue<string> _comments;
-        private DirtyValue<DateTime?> _dateAddedUtc;
-        private DirtyValue<DateTime?> _dateExpected;
-        private DirtyValue<DateTime?> _dateFulfilled;
-        private DirtyValue<DateTime?> _dateReceived;
-        private DirtyValue<DateTime?> _dateRequestedUtc;
-        private DirtyValue<DateTime?> _dateRerequestedUtc;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<string> _description;
-        private DirtyValue<string> _details;
-        private DirtyValue<bool?> _expected;
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
-        private DirtyValue<bool?> _fulfilled;
-        private DirtyValue<string> _fulfilledBy;
-        private DirtyValue<string> _guid;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _isPastDue;
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private DirtyValue<int?> _logRecordIndex;
-        private DirtyValue<string> _pairId;
-        private DirtyValue<string> _priorTo;
-        private DirtyValue<bool?> _received;
-        private DirtyValue<string> _receivedBy;
-        private DirtyValue<bool?> _requested;
-        private DirtyValue<string> _requestedBy;
-        private DirtyValue<bool?> _rerequested;
-        private DirtyValue<string> _rerequestedBy;
-        private DirtyValue<string> _source;
-        private DirtyValue<string> _status;
-        private DirtyValue<string> _statusDescription;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<string> _title;
-        private DirtyValue<bool?> _underwriterAccessIndicator;
-        private DirtyValue<DateTime?> _updatedDateUtc;
+        private DirtyValue<string?>? _addedBy;
+        private DirtyList<LogAlert>? _alerts;
+        private DirtyValue<string?>? _alertsXml;
+        private DirtyValue<string?>? _category;
+        private DirtyList<LogComment>? _commentList;
+        private DirtyValue<string?>? _commentListXml;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<DateTime?>? _dateAddedUtc;
+        private DirtyValue<DateTime?>? _dateExpected;
+        private DirtyValue<DateTime?>? _dateFulfilled;
+        private DirtyValue<DateTime?>? _dateReceived;
+        private DirtyValue<DateTime?>? _dateRequestedUtc;
+        private DirtyValue<DateTime?>? _dateRerequestedUtc;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<string?>? _details;
+        private DirtyValue<bool?>? _expected;
+        private DirtyValue<bool?>? _fileAttachmentsMigrated;
+        private DirtyValue<bool?>? _fulfilled;
+        private DirtyValue<string?>? _fulfilledBy;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isPastDue;
+        private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<int?>? _logRecordIndex;
+        private DirtyValue<string?>? _pairId;
+        private DirtyValue<string?>? _priorTo;
+        private DirtyValue<bool?>? _received;
+        private DirtyValue<string?>? _receivedBy;
+        private DirtyValue<bool?>? _requested;
+        private DirtyValue<string?>? _requestedBy;
+        private DirtyValue<bool?>? _rerequested;
+        private DirtyValue<string?>? _rerequestedBy;
+        private DirtyValue<string?>? _source;
+        private DirtyValue<string?>? _status;
+        private DirtyValue<string?>? _statusDescription;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<string?>? _title;
+        private DirtyValue<bool?>? _underwriterAccessIndicator;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
 
         /// <summary>
         /// PreliminaryConditionLog AddedBy
         /// </summary>
-        public string AddedBy { get => _addedBy; set => SetField(ref _addedBy, value); }
+        public string? AddedBy { get => _addedBy; set => SetField(ref _addedBy, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Alerts
         /// </summary>
+        [AllowNull]
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
 
         /// <summary>
         /// PreliminaryConditionLog AlertsXml
         /// </summary>
-        public string AlertsXml { get => _alertsXml; set => SetField(ref _alertsXml, value); }
+        public string? AlertsXml { get => _alertsXml; set => SetField(ref _alertsXml, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Category
         /// </summary>
-        public string Category { get => _category; set => SetField(ref _category, value); }
+        public string? Category { get => _category; set => SetField(ref _category, value); }
 
         /// <summary>
         /// PreliminaryConditionLog CommentList
         /// </summary>
+        [AllowNull]
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
 
         /// <summary>
         /// PreliminaryConditionLog CommentListXml
         /// </summary>
-        public string CommentListXml { get => _commentListXml; set => SetField(ref _commentListXml, value); }
+        public string? CommentListXml { get => _commentListXml; set => SetField(ref _commentListXml, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// PreliminaryConditionLog DateAddedUtc
@@ -122,12 +125,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreliminaryConditionLog Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Details
         /// </summary>
-        public string Details { get => _details; set => SetField(ref _details, value); }
+        public string? Details { get => _details; set => SetField(ref _details, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Expected
@@ -147,17 +150,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreliminaryConditionLog FulfilledBy
         /// </summary>
-        public string FulfilledBy { get => _fulfilledBy; set => SetField(ref _fulfilledBy, value); }
+        public string? FulfilledBy { get => _fulfilledBy; set => SetField(ref _fulfilledBy, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// PreliminaryConditionLog IsPastDue
@@ -177,12 +180,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreliminaryConditionLog PairId
         /// </summary>
-        public string PairId { get => _pairId; set => SetField(ref _pairId, value); }
+        public string? PairId { get => _pairId; set => SetField(ref _pairId, value); }
 
         /// <summary>
         /// PreliminaryConditionLog PriorTo
         /// </summary>
-        public string PriorTo { get => _priorTo; set => SetField(ref _priorTo, value); }
+        public string? PriorTo { get => _priorTo; set => SetField(ref _priorTo, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Received
@@ -192,7 +195,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreliminaryConditionLog ReceivedBy
         /// </summary>
-        public string ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
+        public string? ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Requested
@@ -202,7 +205,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreliminaryConditionLog RequestedBy
         /// </summary>
-        public string RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
+        public string? RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Rerequested
@@ -212,32 +215,32 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreliminaryConditionLog RerequestedBy
         /// </summary>
-        public string RerequestedBy { get => _rerequestedBy; set => SetField(ref _rerequestedBy, value); }
+        public string? RerequestedBy { get => _rerequestedBy; set => SetField(ref _rerequestedBy, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Source
         /// </summary>
-        public string Source { get => _source; set => SetField(ref _source, value); }
+        public string? Source { get => _source; set => SetField(ref _source, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Status
         /// </summary>
-        public string Status { get => _status; set => SetField(ref _status, value); }
+        public string? Status { get => _status; set => SetField(ref _status, value); }
 
         /// <summary>
         /// PreliminaryConditionLog StatusDescription
         /// </summary>
-        public string StatusDescription { get => _statusDescription; set => SetField(ref _statusDescription, value); }
+        public string? StatusDescription { get => _statusDescription; set => SetField(ref _statusDescription, value); }
 
         /// <summary>
         /// PreliminaryConditionLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// PreliminaryConditionLog Title
         /// </summary>
-        public string Title { get => _title; set => SetField(ref _title, value); }
+        public string? Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// PreliminaryConditionLog UnderwriterAccessIndicator

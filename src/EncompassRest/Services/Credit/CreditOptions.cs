@@ -35,13 +35,13 @@ namespace EncompassRest.Services.Credit
         /// Identifier assigned by CoreLogic Credco. It is returned in the response and is required to reissue or update a report.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string CreditReportIdentifier { get; set; }
+        public string? CreditReportIdentifier { get; set; }
 
         /// <summary>
         /// Comment or note to add to the request.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Note { get; set; }
+        public string? Note { get; set; }
 
         /// <summary>
         /// Whether to exclude zero liability balances from future credit report import files.
@@ -83,14 +83,14 @@ namespace EncompassRest.Services.Credit
         /// CreditOptions ProductCode
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string ProductCode { get; set; }
+        public string? ProductCode { get; set; }
 
         /// <summary>
         /// CreditOptions constructor.
         /// </summary>
         /// <param name="requestType">Indicates the request type being submitted.</param>
         public CreditOptions(CreditRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).GetValue())
+            : this(requestType.Validate(nameof(requestType)).GetValue()!)
         {
         }
 

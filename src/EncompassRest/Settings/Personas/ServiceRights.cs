@@ -5,9 +5,9 @@
     /// </summary>
     public sealed class ServiceRights : DirtyExtensibleObject
     {
-        private DirtyValue<StringEnumValue<ServiceCategory>> _category;
-        private DirtyValue<StringEnumValue<AccessSetting>> _accessSetting;
-        private DirtyValue<StringEnumValue<RightsDefaultAccess>> _defaultAccess;
+        private DirtyValue<StringEnumValue<ServiceCategory>>? _category;
+        private DirtyValue<StringEnumValue<AccessSetting>>? _accessSetting;
+        private DirtyValue<StringEnumValue<RightsDefaultAccess>>? _defaultAccess;
 
         /// <summary>
         /// ServiceRights Category

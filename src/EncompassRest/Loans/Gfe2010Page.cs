@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
@@ -9,95 +10,95 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Gfe2010Page : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _balloonPaymentDueInYears;
-        private DirtyValue<string> _brokerCompensationFwbc;
-        private DirtyValue<string> _brokerCompensationFwsc;
-        private DirtyValue<decimal?> _curedGfeTotalTolerance;
-        private DirtyValue<DateTime?> _firstArmChangeDate;
-        private DirtyList<Gfe2010FwbcFwsc> _gfe2010FwbcFwscs;
-        private DirtyList<Gfe2010GfeCharge> _gfe2010GfeCharges;
-        private DirtyValue<string> _gfeRecordingCharges;
-        private DirtyValue<decimal?> _gfeTotalTolerance;
-        private DirtyValue<bool?> _hasEscrowAccountIndicator;
-        private DirtyValue<bool?> _hasEscrowCityPropertyTaxesIndicator;
-        private DirtyValue<bool?> _hasEscrowFloodInsurancesIndicator;
-        private DirtyValue<bool?> _hasEscrowHomeownerInsurancesIndicator;
-        private DirtyValue<bool?> _hasEscrowPropertyTaxesIndicator;
-        private DirtyValue<bool?> _hasEscrowUserDefinedIndicator1;
-        private DirtyValue<bool?> _hasEscrowUserDefinedIndicator2;
-        private DirtyValue<bool?> _hasEscrowUserDefinedIndicator3;
-        private DirtyValue<bool?> _hasEscrowUserDefinedIndicator4;
-        private DirtyValue<decimal?> _highestArmRate;
-        private DirtyValue<decimal?> _hud1GovernmentRecordingCharge;
-        private DirtyValue<decimal?> _hud1Pg1SellerPaidClosingCostsAmount;
-        private DirtyValue<decimal?> _hud1Pg1TotalSettlementCharges;
-        private DirtyValue<decimal?> _hud1Pg2SellerPaidClosingCostsAmount;
-        private DirtyValue<decimal?> _hud1Pg2TotalSettlementCharges;
-        private DirtyValue<decimal?> _hudTotalTolerance;
-        private DirtyValue<decimal?> _hudTotalToleranceIncreasePercent;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _line1101SellerPaidTotal;
-        private DirtyValue<decimal?> _line1201SellerPaidTotal;
-        private DirtyValue<decimal?> _line1301SellerPaidTotal;
-        private DirtyValue<decimal?> _line801BorrowerPaidTotal;
-        private DirtyValue<decimal?> _line801SellerPaidTotal;
-        private DirtyValue<decimal?> _line802BorrowerPaidTotal;
-        private DirtyValue<decimal?> _line803BorrowerPaidTotal;
-        private DirtyValue<decimal?> _line803SellerPaidTotal;
-        private DirtyValue<bool?> _line818FwbcIndicator;
-        private DirtyValue<bool?> _line818FwscIndicator;
-        private DirtyValue<bool?> _line819FwbcIndicator;
-        private DirtyValue<bool?> _line819FwscIndicator;
-        private DirtyValue<bool?> _line820FwbcIndicator;
-        private DirtyValue<bool?> _line820FwscIndicator;
-        private DirtyValue<bool?> _line821FwbcIndicator;
-        private DirtyValue<bool?> _line821FwscIndicator;
-        private DirtyValue<bool?> _line822FwbcIndicator;
-        private DirtyValue<bool?> _line822FwscIndicator;
-        private DirtyValue<bool?> _line823FwbcIndicator;
-        private DirtyValue<bool?> _line823FwscIndicator;
-        private DirtyValue<bool?> _line824FwbcIndicator;
-        private DirtyValue<bool?> _line824FwscIndicator;
-        private DirtyValue<bool?> _line825FwbcIndicator;
-        private DirtyValue<bool?> _line825FwscIndicator;
-        private DirtyValue<bool?> _line826FwbcIndicator;
-        private DirtyValue<bool?> _line826FwscIndicator;
-        private DirtyValue<bool?> _line827FwbcIndicator;
-        private DirtyValue<bool?> _line827FwscIndicator;
-        private DirtyValue<bool?> _line828FwbcIndicator;
-        private DirtyValue<bool?> _line828FwscIndicator;
-        private DirtyValue<bool?> _line829FwbcIndicator;
-        private DirtyValue<bool?> _line829FwscIndicator;
-        private DirtyValue<bool?> _line830FwbcIndicator;
-        private DirtyValue<bool?> _line830FwscIndicator;
-        private DirtyValue<bool?> _line831FwbcIndicator;
-        private DirtyValue<bool?> _line831FwscIndicator;
-        private DirtyValue<bool?> _line832FwbcIndicator;
-        private DirtyValue<bool?> _line832FwscIndicator;
-        private DirtyValue<bool?> _line833FwbcIndicator;
-        private DirtyValue<bool?> _line833FwscIndicator;
-        private DirtyValue<bool?> _lineLFwbcIndicator;
-        private DirtyValue<bool?> _lineLFwscIndicator;
-        private DirtyValue<bool?> _lineMFwbcIndicator;
-        private DirtyValue<bool?> _lineMFwscIndicator;
-        private DirtyValue<bool?> _lineNFwbcIndicator;
-        private DirtyValue<bool?> _lineNFwscIndicator;
-        private DirtyValue<bool?> _lineOFwbcIndicator;
-        private DirtyValue<bool?> _lineOFwscIndicator;
-        private DirtyValue<bool?> _linePFwbcIndicator;
-        private DirtyValue<bool?> _linePFwscIndicator;
-        private DirtyValue<bool?> _lineQFwbcIndicator;
-        private DirtyValue<bool?> _lineQFwscIndicator;
-        private DirtyValue<bool?> _lineRFwbcIndicator;
-        private DirtyValue<bool?> _lineRFwscIndicator;
-        private DirtyValue<decimal?> _lowestArmRate;
-        private DirtyValue<bool?> _monthlyAmountIncludeInterestIndicator;
-        private DirtyValue<bool?> _monthlyAmountIncludeMiIndicator;
-        private DirtyValue<bool?> _monthlyAmountIncludePrincipalIndicator;
-        private DirtyValue<decimal?> _monthlyAmountWithEscrow;
-        private DirtyValue<decimal?> _monthlyEscrowPayment;
-        private DirtyValue<decimal?> _prepaidInterest;
-        private DirtyValue<decimal?> _totalToleranceIncreaseAmount;
+        private DirtyValue<int?>? _balloonPaymentDueInYears;
+        private DirtyValue<string?>? _brokerCompensationFwbc;
+        private DirtyValue<string?>? _brokerCompensationFwsc;
+        private DirtyValue<decimal?>? _curedGfeTotalTolerance;
+        private DirtyValue<DateTime?>? _firstArmChangeDate;
+        private DirtyList<Gfe2010FwbcFwsc>? _gfe2010FwbcFwscs;
+        private DirtyList<Gfe2010GfeCharge>? _gfe2010GfeCharges;
+        private DirtyValue<string?>? _gfeRecordingCharges;
+        private DirtyValue<decimal?>? _gfeTotalTolerance;
+        private DirtyValue<bool?>? _hasEscrowAccountIndicator;
+        private DirtyValue<bool?>? _hasEscrowCityPropertyTaxesIndicator;
+        private DirtyValue<bool?>? _hasEscrowFloodInsurancesIndicator;
+        private DirtyValue<bool?>? _hasEscrowHomeownerInsurancesIndicator;
+        private DirtyValue<bool?>? _hasEscrowPropertyTaxesIndicator;
+        private DirtyValue<bool?>? _hasEscrowUserDefinedIndicator1;
+        private DirtyValue<bool?>? _hasEscrowUserDefinedIndicator2;
+        private DirtyValue<bool?>? _hasEscrowUserDefinedIndicator3;
+        private DirtyValue<bool?>? _hasEscrowUserDefinedIndicator4;
+        private DirtyValue<decimal?>? _highestArmRate;
+        private DirtyValue<decimal?>? _hud1GovernmentRecordingCharge;
+        private DirtyValue<decimal?>? _hud1Pg1SellerPaidClosingCostsAmount;
+        private DirtyValue<decimal?>? _hud1Pg1TotalSettlementCharges;
+        private DirtyValue<decimal?>? _hud1Pg2SellerPaidClosingCostsAmount;
+        private DirtyValue<decimal?>? _hud1Pg2TotalSettlementCharges;
+        private DirtyValue<decimal?>? _hudTotalTolerance;
+        private DirtyValue<decimal?>? _hudTotalToleranceIncreasePercent;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _line1101SellerPaidTotal;
+        private DirtyValue<decimal?>? _line1201SellerPaidTotal;
+        private DirtyValue<decimal?>? _line1301SellerPaidTotal;
+        private DirtyValue<decimal?>? _line801BorrowerPaidTotal;
+        private DirtyValue<decimal?>? _line801SellerPaidTotal;
+        private DirtyValue<decimal?>? _line802BorrowerPaidTotal;
+        private DirtyValue<decimal?>? _line803BorrowerPaidTotal;
+        private DirtyValue<decimal?>? _line803SellerPaidTotal;
+        private DirtyValue<bool?>? _line818FwbcIndicator;
+        private DirtyValue<bool?>? _line818FwscIndicator;
+        private DirtyValue<bool?>? _line819FwbcIndicator;
+        private DirtyValue<bool?>? _line819FwscIndicator;
+        private DirtyValue<bool?>? _line820FwbcIndicator;
+        private DirtyValue<bool?>? _line820FwscIndicator;
+        private DirtyValue<bool?>? _line821FwbcIndicator;
+        private DirtyValue<bool?>? _line821FwscIndicator;
+        private DirtyValue<bool?>? _line822FwbcIndicator;
+        private DirtyValue<bool?>? _line822FwscIndicator;
+        private DirtyValue<bool?>? _line823FwbcIndicator;
+        private DirtyValue<bool?>? _line823FwscIndicator;
+        private DirtyValue<bool?>? _line824FwbcIndicator;
+        private DirtyValue<bool?>? _line824FwscIndicator;
+        private DirtyValue<bool?>? _line825FwbcIndicator;
+        private DirtyValue<bool?>? _line825FwscIndicator;
+        private DirtyValue<bool?>? _line826FwbcIndicator;
+        private DirtyValue<bool?>? _line826FwscIndicator;
+        private DirtyValue<bool?>? _line827FwbcIndicator;
+        private DirtyValue<bool?>? _line827FwscIndicator;
+        private DirtyValue<bool?>? _line828FwbcIndicator;
+        private DirtyValue<bool?>? _line828FwscIndicator;
+        private DirtyValue<bool?>? _line829FwbcIndicator;
+        private DirtyValue<bool?>? _line829FwscIndicator;
+        private DirtyValue<bool?>? _line830FwbcIndicator;
+        private DirtyValue<bool?>? _line830FwscIndicator;
+        private DirtyValue<bool?>? _line831FwbcIndicator;
+        private DirtyValue<bool?>? _line831FwscIndicator;
+        private DirtyValue<bool?>? _line832FwbcIndicator;
+        private DirtyValue<bool?>? _line832FwscIndicator;
+        private DirtyValue<bool?>? _line833FwbcIndicator;
+        private DirtyValue<bool?>? _line833FwscIndicator;
+        private DirtyValue<bool?>? _lineLFwbcIndicator;
+        private DirtyValue<bool?>? _lineLFwscIndicator;
+        private DirtyValue<bool?>? _lineMFwbcIndicator;
+        private DirtyValue<bool?>? _lineMFwscIndicator;
+        private DirtyValue<bool?>? _lineNFwbcIndicator;
+        private DirtyValue<bool?>? _lineNFwscIndicator;
+        private DirtyValue<bool?>? _lineOFwbcIndicator;
+        private DirtyValue<bool?>? _lineOFwscIndicator;
+        private DirtyValue<bool?>? _linePFwbcIndicator;
+        private DirtyValue<bool?>? _linePFwscIndicator;
+        private DirtyValue<bool?>? _lineQFwbcIndicator;
+        private DirtyValue<bool?>? _lineQFwscIndicator;
+        private DirtyValue<bool?>? _lineRFwbcIndicator;
+        private DirtyValue<bool?>? _lineRFwscIndicator;
+        private DirtyValue<decimal?>? _lowestArmRate;
+        private DirtyValue<bool?>? _monthlyAmountIncludeInterestIndicator;
+        private DirtyValue<bool?>? _monthlyAmountIncludeMiIndicator;
+        private DirtyValue<bool?>? _monthlyAmountIncludePrincipalIndicator;
+        private DirtyValue<decimal?>? _monthlyAmountWithEscrow;
+        private DirtyValue<decimal?>? _monthlyEscrowPayment;
+        private DirtyValue<decimal?>? _prepaidInterest;
+        private DirtyValue<decimal?>? _totalToleranceIncreaseAmount;
 
         /// <summary>
         /// Years Until Balloon Pymt Due [NEWHUD.X348]
@@ -107,12 +108,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Line Fees Line 801 Broker Compensation Borrower Checked [NEWHUD.X672]
         /// </summary>
-        public string BrokerCompensationFwbc { get => _brokerCompensationFwbc; set => SetField(ref _brokerCompensationFwbc, value); }
+        public string? BrokerCompensationFwbc { get => _brokerCompensationFwbc; set => SetField(ref _brokerCompensationFwbc, value); }
 
         /// <summary>
         /// Fees Line Fees Line 801 Broker Compensation Seller Checked [NEWHUD.X673]
         /// </summary>
-        public string BrokerCompensationFwsc { get => _brokerCompensationFwsc; set => SetField(ref _brokerCompensationFwsc, value); }
+        public string? BrokerCompensationFwsc { get => _brokerCompensationFwsc; set => SetField(ref _brokerCompensationFwsc, value); }
 
         /// <summary>
         /// Cured Total GFE Tolerance [NEWHUD.CuredX312]
@@ -128,17 +129,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Page Gfe2010FwbcFwscs
         /// </summary>
+        [AllowNull]
         public IList<Gfe2010FwbcFwsc> Gfe2010FwbcFwscs { get => GetField(ref _gfe2010FwbcFwscs); set => SetField(ref _gfe2010FwbcFwscs, value); }
 
         /// <summary>
         /// Gfe2010Page Gfe2010GfeCharges
         /// </summary>
+        [AllowNull]
         public IList<Gfe2010GfeCharge> Gfe2010GfeCharges { get => GetField(ref _gfe2010GfeCharges); set => SetField(ref _gfe2010GfeCharges, value); }
 
         /// <summary>
         /// GFE Gov Recording Chrgs [NEWHUD.X295]
         /// </summary>
-        public string GfeRecordingCharges { get => _gfeRecordingCharges; set => SetField(ref _gfeRecordingCharges, value); }
+        public string? GfeRecordingCharges { get => _gfeRecordingCharges; set => SetField(ref _gfeRecordingCharges, value); }
 
         /// <summary>
         /// Total GFE Tolerance [NEWHUD.X312]
@@ -242,7 +245,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Page Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Fees Line 1101 Seller Paid Total [NEWHUD.X798]

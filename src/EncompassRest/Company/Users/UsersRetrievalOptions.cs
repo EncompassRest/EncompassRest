@@ -15,27 +15,27 @@ namespace EncompassRest.Company.Users
         /// <summary>
         /// List users who belong to the specified User Group ID.
         /// </summary>
-        public string GroupId { get; set; }
+        public string? GroupId { get; set; }
 
         /// <summary>
         /// List users with the specified Role ID.
         /// </summary>
-        public string RoleId { get; set; }
+        public string? RoleId { get; set; }
 
         /// <summary>
         /// List users with the specified User Persona ID.
         /// </summary>
-        public string PersonaId { get; set; }
+        public string? PersonaId { get; set; }
 
         /// <summary>
         /// List users who belong to the specified organization ID.
         /// </summary>
-        public string OrganizationId { get; set; }
+        public string? OrganizationId { get; set; }
 
         /// <summary>
         /// List users with the specified string in their name.
         /// </summary>
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
 
         /// <summary>
         /// Starting index or record number from which to retrieve the contacts. The default is 1.

@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ChangeDisclosureInformationRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _changeReasons;
+        private DirtyValue<bool?>? _changeReasons;
 
         /// <summary>
         /// ChangeDisclosureInformationRights ChangeReasons

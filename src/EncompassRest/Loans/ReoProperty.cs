@@ -10,46 +10,46 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class ReoProperty : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<DateTime?> _acquiredDate;
-        private DirtyValue<string> _city;
-        private DirtyValue<string> _countryCode;
-        private DirtyValue<StringEnumValue<DispositionStatusType>> _dispositionStatusType;
-        private DirtyValue<bool?> _entityDeleted;
-        private DirtyValue<StringEnumValue<GsePropertyType>> _gsePropertyType;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _includeInAusExport;
-        private DirtyValue<bool?> _isEmpty;
-        private DirtyValue<bool?> _liabilityDoesNotApply;
-        private DirtyValue<decimal?> _lienInstallmentAmount;
-        private DirtyValue<decimal?> _lienUpbAmount;
-        private DirtyValue<string> _maintenanceExpenseAmount;
-        private DirtyValue<decimal?> _marketValueAmount;
-        private DirtyValue<bool?> _noLinkToDocTrackIndicator;
-        private DirtyValue<StringEnumValue<Owner>> _owner;
-        private DirtyValue<decimal?> _participationPercentage;
-        private DirtyValue<decimal?> _percentageofRental;
-        private DirtyValue<string> _postalCode;
-        private DirtyValue<bool?> _printAttachIndicator;
-        private DirtyValue<bool?> _printUserJobTitleIndicator;
-        private DirtyValue<bool?> _printUserNameIndicator;
-        private DirtyValue<StringEnumValue<ReoPropertyUsageType>> _propertyUsageType;
-        private DirtyValue<int?> _purchasePrice;
-        private DirtyValue<decimal?> _rentalIncomeGrossAmount;
-        private DirtyValue<decimal?> _rentalIncomeNetAmount;
-        private DirtyValue<string> _reoComments;
-        private DirtyValue<string> _reoId;
-        private DirtyValue<int?> _reoPropertyIndex;
-        private DirtyValue<DateTime?> _requestDate;
-        private DirtyValue<StringEnumValue<State>> _state;
-        private DirtyValue<string> _streetAddress;
-        private DirtyValue<bool?> _subjectIndicator;
-        private DirtyValue<string> _title;
-        private DirtyValue<string> _titleFax;
-        private DirtyValue<string> _titlePhone;
-        private DirtyValue<string> _unitNumber;
-        private DirtyValue<StringEnumValue<UnitType>> _unitType;
-        private DirtyValue<string> _uRLA2020StreetAddress;
-        private DirtyValue<string> _yearBuilt;
+        private DirtyValue<DateTime?>? _acquiredDate;
+        private DirtyValue<string?>? _city;
+        private DirtyValue<string?>? _countryCode;
+        private DirtyValue<StringEnumValue<DispositionStatusType>>? _dispositionStatusType;
+        private DirtyValue<bool?>? _entityDeleted;
+        private DirtyValue<StringEnumValue<GsePropertyType>>? _gsePropertyType;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _includeInAusExport;
+        private DirtyValue<bool?>? _isEmpty;
+        private DirtyValue<bool?>? _liabilityDoesNotApply;
+        private DirtyValue<decimal?>? _lienInstallmentAmount;
+        private DirtyValue<decimal?>? _lienUpbAmount;
+        private DirtyValue<string?>? _maintenanceExpenseAmount;
+        private DirtyValue<decimal?>? _marketValueAmount;
+        private DirtyValue<bool?>? _noLinkToDocTrackIndicator;
+        private DirtyValue<StringEnumValue<Owner>>? _owner;
+        private DirtyValue<decimal?>? _participationPercentage;
+        private DirtyValue<decimal?>? _percentageofRental;
+        private DirtyValue<string?>? _postalCode;
+        private DirtyValue<bool?>? _printAttachIndicator;
+        private DirtyValue<bool?>? _printUserJobTitleIndicator;
+        private DirtyValue<bool?>? _printUserNameIndicator;
+        private DirtyValue<StringEnumValue<ReoPropertyUsageType>>? _propertyUsageType;
+        private DirtyValue<int?>? _purchasePrice;
+        private DirtyValue<decimal?>? _rentalIncomeGrossAmount;
+        private DirtyValue<decimal?>? _rentalIncomeNetAmount;
+        private DirtyValue<string?>? _reoComments;
+        private DirtyValue<string?>? _reoId;
+        private DirtyValue<int?>? _reoPropertyIndex;
+        private DirtyValue<DateTime?>? _requestDate;
+        private DirtyValue<StringEnumValue<State>>? _state;
+        private DirtyValue<string?>? _streetAddress;
+        private DirtyValue<bool?>? _subjectIndicator;
+        private DirtyValue<string?>? _title;
+        private DirtyValue<string?>? _titleFax;
+        private DirtyValue<string?>? _titlePhone;
+        private DirtyValue<string?>? _unitNumber;
+        private DirtyValue<StringEnumValue<UnitType>>? _unitType;
+        private DirtyValue<string?>? _uRLA2020StreetAddress;
+        private DirtyValue<string?>? _yearBuilt;
 
         /// <summary>
         /// Mortgage Property Date Acquired [FMNN22]
@@ -59,12 +59,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property City [FMNN06]
         /// </summary>
-        public string City { get => _city; set => SetField(ref _city, value); }
+        public string? City { get => _city; set => SetField(ref _city, value); }
 
         /// <summary>
         /// Mortgage Property Country Code [FMNN51]
         /// </summary>
-        public string CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
+        public string? CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
 
         /// <summary>
         /// Mortgage Property Disposition Status [FMNN24]
@@ -84,7 +84,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ReoProperty Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Include In AUS/Export [FMNN52]
@@ -117,7 +117,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Monthly Expense [FMNN21]
         /// </summary>
-        public string MaintenanceExpenseAmount { get => _maintenanceExpenseAmount; set => SetField(ref _maintenanceExpenseAmount, value); }
+        public string? MaintenanceExpenseAmount { get => _maintenanceExpenseAmount; set => SetField(ref _maintenanceExpenseAmount, value); }
 
         /// <summary>
         /// Mortgage Property Market Value [FMNN19]
@@ -152,7 +152,7 @@ namespace EncompassRest.Loans
         /// Mortgage Property Zipcode [FMNN08]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+        public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
 
         /// <summary>
         /// Mortgage Property Print - See Attached Authorization [FMNN36]
@@ -196,13 +196,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Comments [FMNN25]
         /// </summary>
-        public string ReoComments { get => _reoComments; set => SetField(ref _reoComments, value); }
+        public string? ReoComments { get => _reoComments; set => SetField(ref _reoComments, value); }
 
         /// <summary>
         /// Mortgage Property REO ID [FMNN43]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ReoId { get => _reoId; set => SetField(ref _reoId, value); }
+        public string? ReoId { get => _reoId; set => SetField(ref _reoId, value); }
 
         /// <summary>
         /// ReoProperty ReoPropertyIndex
@@ -222,7 +222,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Address [FMNN04]
         /// </summary>
-        public string StreetAddress { get => _streetAddress; set => SetField(ref _streetAddress, value); }
+        public string? StreetAddress { get => _streetAddress; set => SetField(ref _streetAddress, value); }
 
         /// <summary>
         /// Mortgage Property Is the Subject Property [FMNN28]
@@ -233,24 +233,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property From Title [FMNN37]
         /// </summary>
-        public string Title { get => _title; set => SetField(ref _title, value); }
+        public string? Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// Mortgage Property From Fax [FMNN45]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
+        public string? TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
 
         /// <summary>
         /// Mortgage Property From Phone [FMNN44]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
+        public string? TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
 
         /// <summary>
         /// Mortgage Property Unit Number [FMNN48]
         /// </summary>
-        public string UnitNumber { get => _unitNumber; set => SetField(ref _unitNumber, value); }
+        public string? UnitNumber { get => _unitNumber; set => SetField(ref _unitNumber, value); }
 
         /// <summary>
         /// Mortgage Property Unit Type [FMNN47]
@@ -260,11 +260,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property URLA 2020 Street Address [FMNN50]
         /// </summary>
-        public string URLA2020StreetAddress { get => _uRLA2020StreetAddress; set => SetField(ref _uRLA2020StreetAddress, value); }
+        public string? URLA2020StreetAddress { get => _uRLA2020StreetAddress; set => SetField(ref _uRLA2020StreetAddress, value); }
 
         /// <summary>
         /// Mortgage Property Year in Which Built [FMNN53]
         /// </summary>
-        public string YearBuilt { get => _yearBuilt; set => SetField(ref _yearBuilt, value); }
+        public string? YearBuilt { get => _yearBuilt; set => SetField(ref _yearBuilt, value); }
     }
 }

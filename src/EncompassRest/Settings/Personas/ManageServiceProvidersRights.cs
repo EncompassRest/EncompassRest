@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Settings.Personas
 {
@@ -7,8 +8,8 @@ namespace EncompassRest.Settings.Personas
     /// </summary>
     public sealed class ManageServiceProvidersRights : DirtyExtensibleObject
     {
-        private DirtyValue<StringEnumValue<AccessSetting>> _accessSetting;
-        private DirtyList<string> _rights;
+        private DirtyValue<StringEnumValue<AccessSetting>>? _accessSetting;
+        private DirtyList<string>? _rights;
 
         /// <summary>
         /// ManageServiceProvidersRights AccessSetting
@@ -18,6 +19,7 @@ namespace EncompassRest.Settings.Personas
         /// <summary>
         /// ManageServiceProvidersRights Rights
         /// </summary>
+        [AllowNull]
         public IList<string> Rights { get => GetField(ref _rights); set => SetField(ref _rights, value); }
     }
 }

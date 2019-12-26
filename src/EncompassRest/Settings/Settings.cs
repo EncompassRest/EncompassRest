@@ -36,11 +36,11 @@ namespace EncompassRest.Settings
     /// </summary>
     public sealed class Settings : ApiObject, ISettings
     {
-        private Templates.Templates _templates;
-        private BorrowerContactsSettings _borrowerContacts;
-        private BusinessContactsSettings _businessContacts;
-        private LoanSettings _loan;
-        private Personas.Personas _personas;
+        private Templates.Templates? _templates;
+        private BorrowerContactsSettings? _borrowerContacts;
+        private BusinessContactsSettings? _businessContacts;
+        private LoanSettings? _loan;
+        private Personas.Personas? _personas;
 
         /// <summary>
         /// The Templates Apis.
@@ -106,7 +106,7 @@ namespace EncompassRest.Settings
             get
             {
                 var personas = _personas;
-                return personas ?? Interlocked.CompareExchange(ref _personas, (_personas = new Personas.Personas(Client)), null) ?? personas;
+                return personas ?? Interlocked.CompareExchange(ref _personas, (personas = new Personas.Personas(Client)), null) ?? personas;
             }
         }
 

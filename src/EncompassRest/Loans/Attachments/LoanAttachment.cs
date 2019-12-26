@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,26 +16,28 @@ namespace EncompassRest.Loans.Attachments
     /// </summary>
     public sealed class LoanAttachment : DirtyExtensibleObject, IIdentifiable
     {
-        private NeverSerializeValue<string> _attachmentId;
-        private DirtyValue<DateTime?> _dateCreated;
-        private DirtyValue<string> _createdBy;
-        private DirtyValue<string> _createdByName;
-        private DirtyValue<AttachmentCreateReason?> _createReason;
-        private DirtyValue<AttachmentType?> _attachmentType;
-        private DirtyValue<long?> _fileSize;
-        private DirtyValue<bool?> _isActive;
-        private DirtyList<PageImage> _pages;
-        private DirtyValue<int?> _rotation;
-        private DirtyValue<string> _title;
-        private DirtyValue<string> _fileWithExtension;
-        private DirtyValue<string> _documentRefId;
-        private DirtyValue<EntityReference> _document;
-        private NeverSerializeValue<string> _mediaUrl;
+        private ILoanAttachments? _attachments;
+
+        private NeverSerializeValue<string?>? _attachmentId;
+        private DirtyValue<DateTime?>? _dateCreated;
+        private DirtyValue<string?>? _createdBy;
+        private DirtyValue<string?>? _createdByName;
+        private DirtyValue<AttachmentCreateReason?>? _createReason;
+        private DirtyValue<AttachmentType?>? _attachmentType;
+        private DirtyValue<long?>? _fileSize;
+        private DirtyValue<bool?>? _isActive;
+        private DirtyList<PageImage>? _pages;
+        private DirtyValue<int?>? _rotation;
+        private DirtyValue<string?>? _title;
+        private DirtyValue<string?>? _fileWithExtension;
+        private DirtyValue<string?>? _documentRefId;
+        private DirtyValue<EntityReference?>? _document;
+        private NeverSerializeValue<string?>? _mediaUrl;
 
         /// <summary>
         /// The unique identifier assigned to the attachment.
         /// </summary>
-        public string AttachmentId { get => _attachmentId; set => SetField(ref _attachmentId, value); }
+        public string? AttachmentId { get => _attachmentId; set => SetField(ref _attachmentId, value); }
 
         /// <summary>
         /// Date the attachment or page annotation was created.
@@ -44,12 +47,12 @@ namespace EncompassRest.Loans.Attachments
         /// <summary>
         /// UserID of the user who created the attachment or annotation.
         /// </summary>
-        public string CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
+        public string? CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
 
         /// <summary>
         /// User Name of the user who created the attachment.
         /// </summary>
-        public string CreatedByName { get => _createdByName; set => SetField(ref _createdByName, value); }
+        public string? CreatedByName { get => _createdByName; set => SetField(ref _createdByName, value); }
 
         /// <summary>
         /// The attachment create reason.
@@ -76,6 +79,7 @@ namespace EncompassRest.Loans.Attachments
         /// <summary>
         /// LoanAttachment Pages
         /// </summary>
+        [AllowNull]
         public IList<PageImage> Pages { get => GetField(ref _pages); set => SetField(ref _pages, value); }
 
         /// <summary>
@@ -86,37 +90,37 @@ namespace EncompassRest.Loans.Attachments
         /// <summary>
         /// The title of the attachment.
         /// </summary>
-        public string Title { get => _title; set => SetField(ref _title, value); }
+        public string? Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// The attachment's file name and extension.
         /// </summary>
-        public string FileWithExtension { get => _fileWithExtension; set => SetField(ref _fileWithExtension, value); }
+        public string? FileWithExtension { get => _fileWithExtension; set => SetField(ref _fileWithExtension, value); }
 
         /// <summary>
         /// Reference to the document object upon upload.
         /// </summary>
-        public string DocumentRefId { get => _documentRefId; set => SetField(ref _documentRefId, value); }
+        public string? DocumentRefId { get => _documentRefId; set => SetField(ref _documentRefId, value); }
 
         /// <summary>
         /// LoanAttachment Document
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public EntityReference Document { get => _document; set => SetField(ref _document, value); }
+        public EntityReference? Document { get => _document; set => SetField(ref _document, value); }
 
         /// <summary>
         /// The location or path where the media attachment is located.
         /// </summary>
-        public string MediaUrl { get => _mediaUrl; set => SetField(ref _mediaUrl, value); }
+        public string? MediaUrl { get => _mediaUrl; set => SetField(ref _mediaUrl, value); }
 
         [IdPropertyName(nameof(AttachmentId))]
-        string IIdentifiable.Id { get => AttachmentId; set => AttachmentId = value; }
+        string? IIdentifiable.Id { get => AttachmentId; set => AttachmentId = value; }
 
         /// <summary>
         /// The <see cref="ILoanAttachments"/> associated with this object.
         /// </summary>
         [JsonIgnore]
-        public ILoanAttachments Attachments { get; private set; }
+        public ILoanAttachments Attachments => _attachments ?? throw new InvalidOperationException("LoanAttachment object must be initialized to use Attachments");
 
         /// <summary>
         /// Loan attachment creation constructor.
@@ -165,7 +169,7 @@ namespace EncompassRest.Loans.Attachments
 
             if (!ReferenceEquals(Attachments, attachments))
             {
-                Attachments = attachments;
+                _attachments = attachments;
             }
         }
 
@@ -184,7 +188,7 @@ namespace EncompassRest.Loans.Attachments
                 mediaUrl = (await Attachments.GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
                 MediaUrl = mediaUrl;
             }
-            return await Attachments.DownloadAttachmentFromMediaUrlAsync(mediaUrl, cancellationToken).ConfigureAwait(false);
+            return await Attachments.DownloadAttachmentFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -202,7 +206,7 @@ namespace EncompassRest.Loans.Attachments
                 mediaUrl = (await Attachments.GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
                 MediaUrl = mediaUrl;
             }
-            return await Attachments.DownloadAttachmentStreamFromMediaUrlAsync(mediaUrl, cancellationToken).ConfigureAwait(false);
+            return await Attachments.DownloadAttachmentStreamFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,41 +9,43 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class EdmLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyList<LogAlert> _alerts;
-        private DirtyList<LogComment> _commentList;
-        private DirtyValue<string> _comments;
-        private DirtyValue<string> _creator;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<string> _description;
-        private DirtyList<EdmDocument> _documents;
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
-        private DirtyValue<string> _guid;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private DirtyValue<int?> _logRecordIndex;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<DateTime?> _updatedDateUtc;
-        private DirtyValue<string> _url;
+        private DirtyList<LogAlert>? _alerts;
+        private DirtyList<LogComment>? _commentList;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<string?>? _creator;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<string?>? _description;
+        private DirtyList<EdmDocument>? _documents;
+        private DirtyValue<bool?>? _fileAttachmentsMigrated;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<int?>? _logRecordIndex;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
+        private DirtyValue<string?>? _url;
 
         /// <summary>
         /// EdmLog Alerts
         /// </summary>
+        [AllowNull]
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
 
         /// <summary>
         /// EdmLog CommentList
         /// </summary>
+        [AllowNull]
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
 
         /// <summary>
         /// EdmLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// EdmLog Creator
         /// </summary>
-        public string Creator { get => _creator; set => SetField(ref _creator, value); }
+        public string? Creator { get => _creator; set => SetField(ref _creator, value); }
 
         /// <summary>
         /// EdmLog DateUtc
@@ -52,11 +55,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EdmLog Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// EdmLog Documents
         /// </summary>
+        [AllowNull]
         public IList<EdmDocument> Documents { get => GetField(ref _documents); set => SetField(ref _documents, value); }
 
         /// <summary>
@@ -67,12 +71,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EdmLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// EdmLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// EdmLog IsSystemSpecificIndicator
@@ -87,7 +91,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EdmLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// EdmLog UpdatedDateUtc
@@ -97,6 +101,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EdmLog Url
         /// </summary>
-        public string Url { get => _url; set => SetField(ref _url, value); }
+        public string? Url { get => _url; set => SetField(ref _url, value); }
     }
 }

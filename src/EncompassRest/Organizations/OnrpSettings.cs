@@ -8,21 +8,21 @@ namespace EncompassRest.Organizations
     /// </summary>
     public sealed class OnrpSettings : ParentInformation
     {
-        private DirtyValue<bool?> _enableOnrp;
-        private DirtyValue<bool?> _useChannelDefault;
-        private DirtyValue<bool?> _continuousCoverage;
-        private DirtyValue<TimeSpan?> _weekdayStartTime;
-        private DirtyValue<TimeSpan?> _weekdayEndTime;
-        private DirtyValue<bool?> _weekendHolidayCoverage;
-        private DirtyValue<bool?> _enableSunday;
-        private DirtyValue<TimeSpan?> _sundayStartTime;
-        private DirtyValue<TimeSpan?> _sundayEndTime;
-        private DirtyValue<bool?> _enableSaturday;
-        private DirtyValue<TimeSpan?> _saturdayStartTime;
-        private DirtyValue<TimeSpan?> _saturdayEndTime;
-        private DirtyValue<bool?> _noMaximumLimit;
-        private DirtyValue<decimal?> _dollarLimit;
-        private DirtyValue<int?> _tolerance;
+        private DirtyValue<bool?>? _enableOnrp;
+        private DirtyValue<bool?>? _useChannelDefault;
+        private DirtyValue<bool?>? _continuousCoverage;
+        private DirtyValue<TimeSpan?>? _weekdayStartTime;
+        private DirtyValue<TimeSpan?>? _weekdayEndTime;
+        private DirtyValue<bool?>? _weekendHolidayCoverage;
+        private DirtyValue<bool?>? _enableSunday;
+        private DirtyValue<TimeSpan?>? _sundayStartTime;
+        private DirtyValue<TimeSpan?>? _sundayEndTime;
+        private DirtyValue<bool?>? _enableSaturday;
+        private DirtyValue<TimeSpan?>? _saturdayStartTime;
+        private DirtyValue<TimeSpan?>? _saturdayEndTime;
+        private DirtyValue<bool?>? _noMaximumLimit;
+        private DirtyValue<decimal?>? _dollarLimit;
+        private DirtyValue<int?>? _tolerance;
 
         /// <summary>
         /// Indicates whether ONRP is enabled for the organization.

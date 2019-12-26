@@ -74,7 +74,7 @@ namespace EncompassRest
         /// <param name="na">string value to initialize object as null or "NA".</param>
         public NA(string na)
         {
-            _value = default;
+            _value = default!;
             _isNotNull = na != null;
             IsNA = _isNotNull;
         }
@@ -107,13 +107,13 @@ namespace EncompassRest
         /// Gets the hash code for the object.
         /// </summary>
         /// <returns></returns>
-        public override int GetHashCode() => _isNotNull ? (IsNA ? "NA".GetHashCode() : _value.GetHashCode()) : 0;
+        public override int GetHashCode() => _isNotNull ? (IsNA ? "NA".GetHashCode() : _value!.GetHashCode()) : 0;
 
         /// <summary>
         /// Returns the string representation of the object.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => _isNotNull ? (IsNA ? "NA" : _value.ToString()) : null;
+        public override string? ToString() => _isNotNull ? (IsNA ? "NA" : _value!.ToString()) : null;
 
         /// <summary>
         /// Indicates if this object is equal to the specified object.
@@ -128,6 +128,22 @@ namespace EncompassRest
         /// <param name="other">The object to compare with.</param>
         /// <returns></returns>
         public bool Equals(NA<T> other) => IsNull ? other.IsNull : (IsNA ? other.IsNA : (other.HasValue && EqualityComparer<T>.Default.Equals(other._value, _value)));
+
+        /// <summary>
+        /// Indicates if the <paramref name="left"/> object is equal to the <paramref name="right"/> object.
+        /// </summary>
+        /// <param name="left">The first object to compare.</param>
+        /// <param name="right">The second object to compare.</param>
+        /// <returns></returns>
+        public static bool operator ==(NA<T> left, NA<T> right) => left.Equals(right);
+
+        /// <summary>
+        /// Indicates if the <paramref name="left"/> object is not equal to the <paramref name="right"/> object.
+        /// </summary>
+        /// <param name="left">The first object to compare.</param>
+        /// <param name="right">The second object to compare.</param>
+        /// <returns></returns>
+        public static bool operator !=(NA<T> left, NA<T> right) => !(left == right);
     }
     
     internal sealed class NAConverter<T> : JsonConverter, IStringCreator
@@ -149,7 +165,7 @@ namespace EncompassRest
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
 
-        public object Create(string value)
+        public object Create(string? value)
         {
             if (value == null)
             {

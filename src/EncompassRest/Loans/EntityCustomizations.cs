@@ -7,19 +7,19 @@ namespace EncompassRest.Loans
 {
     partial class Application
     {
-        string IIdentifiable.Id { get => Id ?? ApplicationId; set { Id = value; ApplicationId = value; } }
+        string? IIdentifiable.Id { get => Id ?? ApplicationId; set { Id = value; ApplicationId = value; } }
     }
 
     partial class CustomField
     {
         [IdPropertyName(nameof(FieldName))]
-        string IIdentifiable.Id { get => FieldName; set => FieldName = value; }
+        string? IIdentifiable.Id { get => FieldName; set => FieldName = value; }
     }
 
     partial class FieldLockData
     {
         [IdPropertyName(nameof(ModelPath))]
-        string IIdentifiable.Id { get => ModelPath; set => ModelPath = value; }
+        string? IIdentifiable.Id { get => ModelPath; set => ModelPath = value; }
     }
 
     [Entity(PropertiesToAlwaysSerialize = nameof(LoanAssociateType))]
@@ -31,7 +31,7 @@ namespace EncompassRest.Loans
         /// <param name="id">The loan associate id.</param>
         /// <param name="loanAssociateType">The loan associate type.</param>
         public LoanAssociate(string id, LoanAssociateType loanAssociateType)
-            : this(id, loanAssociateType.Validate(nameof(loanAssociateType)).GetValue())
+            : this(id, loanAssociateType.Validate(nameof(loanAssociateType)).GetValue()!)
         {
         }
 

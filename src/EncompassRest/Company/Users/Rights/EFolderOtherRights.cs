@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,18 +8,18 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class EFolderOtherRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _archiveDocuments;
-        private DirtyValue<bool?> _createDuplicateDocuments;
-        private EDisclosuresRights _eDisclosures;
-        private ManageAccessToDocumentsRights _manageAccessToDocuments;
-        private DirtyValue<bool?> _requestBorrowerDocuments;
-        private DirtyValue<bool?> _requestEllieMaeNetworkServices;
-        private DirtyValue<bool?> _retrieveBorrowerDocuments;
-        private DirtyValue<bool?> _retrieveEllieMaeNetworkServices;
-        private DirtyValue<bool?> _sendConsent;
-        private DirtyValue<bool?> _sendFiles;
-        private DirtyValue<bool?> _sendFilestoLender;
-        private DirtyValue<bool?> _viewAllAnnotations;
+        private DirtyValue<bool?>? _archiveDocuments;
+        private DirtyValue<bool?>? _createDuplicateDocuments;
+        private EDisclosuresRights? _eDisclosures;
+        private ManageAccessToDocumentsRights? _manageAccessToDocuments;
+        private DirtyValue<bool?>? _requestBorrowerDocuments;
+        private DirtyValue<bool?>? _requestEllieMaeNetworkServices;
+        private DirtyValue<bool?>? _retrieveBorrowerDocuments;
+        private DirtyValue<bool?>? _retrieveEllieMaeNetworkServices;
+        private DirtyValue<bool?>? _sendConsent;
+        private DirtyValue<bool?>? _sendFiles;
+        private DirtyValue<bool?>? _sendFilestoLender;
+        private DirtyValue<bool?>? _viewAllAnnotations;
 
         /// <summary>
         /// OtherRights ArchiveDocuments
@@ -34,11 +35,13 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// OtherRights EDisclosures
         /// </summary>
+        [AllowNull]
         public EDisclosuresRights EDisclosures { get => GetField(ref _eDisclosures); set => SetField(ref _eDisclosures, value); }
 
         /// <summary>
         /// OtherRights ManageAccessToDocuments
         /// </summary>
+        [AllowNull]
         public ManageAccessToDocumentsRights ManageAccessToDocuments { get => GetField(ref _manageAccessToDocuments); set => SetField(ref _manageAccessToDocuments, value); }
 
         /// <summary>

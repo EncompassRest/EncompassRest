@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TPOOrganizationSettingsContactsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _editTPOContacts;
+        private DirtyValue<bool?>? _editTPOContacts;
 
         /// <summary>
         /// TPOOrganizationSettingsContactsRights EditTPOContacts

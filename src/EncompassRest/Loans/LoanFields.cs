@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans
@@ -24,7 +23,7 @@ namespace EncompassRest.Loans
 
                 FieldDescriptor descriptor;
                 int? borrowerPairIndex = null;
-                ModelPath modelPath = null;
+                ModelPath? modelPath = null;
                 if (fieldId.Length > 2 && fieldId[fieldId.Length - 2] == '#')
                 {
                     borrowerPairIndex = fieldId[fieldId.Length - 1] - '1';

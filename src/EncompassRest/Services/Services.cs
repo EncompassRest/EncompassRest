@@ -34,7 +34,7 @@ namespace EncompassRest.Services
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetServiceOrderStatusRawAsync(string partnerId, string transactionId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetServiceOrderStatusRawAsync(string partnerId, string transactionId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Submits an order for a service and creates a transaction object and returns the transaction id.
         /// </summary>
@@ -51,7 +51,7 @@ namespace EncompassRest.Services
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> OrderServiceRawAsync(string partnerId, string parameters, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> OrderServiceRawAsync(string partnerId, string parameters, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -87,7 +87,7 @@ namespace EncompassRest.Services
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> OrderServiceRawAsync(string partnerId, string parameters, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> OrderServiceRawAsync(string partnerId, string parameters, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
             Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
@@ -134,7 +134,7 @@ namespace EncompassRest.Services
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetServiceOrderStatusRawAsync(string partnerId, string transactionId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetServiceOrderStatusRawAsync(string partnerId, string transactionId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
             Preconditions.NotNullOrEmpty(transactionId, nameof(transactionId));

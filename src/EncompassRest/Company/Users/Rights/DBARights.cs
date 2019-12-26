@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class DBARights : ParentAccessRights
     {
-        private DirtyValue<bool?> _editDBA;
+        private DirtyValue<bool?>? _editDBA;
 
         /// <summary>
         /// DBARights EditDBA

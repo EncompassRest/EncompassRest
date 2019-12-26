@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ManageAccessToDocumentsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _removeAccessFromProtectedRoles;
+        private DirtyValue<bool?>? _removeAccessFromProtectedRoles;
 
         /// <summary>
         /// ManageAccessToDocumentsRights RemoveAccessFromProtectedRoles

@@ -23,7 +23,7 @@ namespace EncompassRest.Services
         /// Login credentials for the service provider.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public ServiceCredentials Credentials { get => CredentialsInternal; set => CredentialsInternal = value; }
+        public ServiceCredentials? Credentials { get => CredentialsInternal; set => CredentialsInternal = value; }
 
         /// <summary>
         /// Indicates that the API user will use credentials stored in the Encompass Services Password Manager at a user-level.
@@ -40,9 +40,9 @@ namespace EncompassRest.Services
         /// This object contains the resources (documents and attachments) associated with the loan that are being shared with the service partner with respect to the service request.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public IList<EntityReference> Resources { get; set; }
+        public IList<EntityReference>? Resources { get; set; }
 
-        internal virtual ServiceCredentials CredentialsInternal { get; set; }
+        internal virtual ServiceCredentials? CredentialsInternal { get; set; }
 
         internal ServiceProduct(EntityReference entityRef, ServiceOptions options, string name)
         {

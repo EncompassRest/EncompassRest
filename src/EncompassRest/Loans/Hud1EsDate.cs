@@ -8,20 +8,20 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class Hud1EsDate : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _aggrMthDisb;
-        private DirtyValue<decimal?> _annualFee;
-        private DirtyValue<decimal?> _balance;
-        private DirtyValue<string> _date;
-        private DirtyValue<decimal?> _floodInsDisb;
-        private DirtyValue<decimal?> _hazInsDisb;
-        private DirtyValue<int?> _hud1EsDateIndex;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _mtgInsDisb;
-        private DirtyValue<decimal?> _schoolTaxes;
-        private DirtyValue<decimal?> _taxDisb;
-        private DirtyValue<decimal?> _userDefined1;
-        private DirtyValue<decimal?> _userDefined2;
-        private DirtyValue<decimal?> _userDefined3;
+        private DirtyValue<decimal?>? _aggrMthDisb;
+        private DirtyValue<decimal?>? _annualFee;
+        private DirtyValue<decimal?>? _balance;
+        private DirtyValue<string?>? _date;
+        private DirtyValue<decimal?>? _floodInsDisb;
+        private DirtyValue<decimal?>? _hazInsDisb;
+        private DirtyValue<int?>? _hud1EsDateIndex;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _mtgInsDisb;
+        private DirtyValue<decimal?>? _schoolTaxes;
+        private DirtyValue<decimal?>? _taxDisb;
+        private DirtyValue<decimal?>? _userDefined1;
+        private DirtyValue<decimal?>? _userDefined2;
+        private DirtyValue<decimal?>? _userDefined3;
 
         /// <summary>
         /// Escrow Aggr Mthd Disb [HUDNN10]
@@ -44,7 +44,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Escrow Payment Date [HUDNN01]
         /// </summary>
-        public string Date { get => _date; set => SetField(ref _date, value); }
+        public string? Date { get => _date; set => SetField(ref _date, value); }
 
         /// <summary>
         /// Escrow Flood Ins Disb [HUDNN05]
@@ -66,7 +66,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsDate Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Escrow Mtg Ins Disb [HUDNN04]

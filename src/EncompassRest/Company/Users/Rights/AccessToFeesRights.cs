@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AccessToFeesRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _acceptFees;
+        private DirtyValue<bool?>? _acceptFees;
 
         /// <summary>
         /// AccessToFeesRights AcceptFees

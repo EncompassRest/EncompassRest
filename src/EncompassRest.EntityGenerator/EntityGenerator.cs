@@ -370,8 +370,8 @@ namespace EncompassRest
                 var fields = new Dictionary<string, LoanFieldDescriptors.StandardFieldInfo>(StringComparer.OrdinalIgnoreCase);
                 var fieldPatterns = new Dictionary<string, LoanFieldDescriptors.StandardFieldInfo>(StringComparer.OrdinalIgnoreCase)
                 {
-                    { "CX.{0}", new LoanFieldDescriptors.StandardFieldInfo { FieldId = "CX.{0}", ModelPath = "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue" } },
-                    { "CUST{0:00}FV", new LoanFieldDescriptors.StandardFieldInfo { FieldId = "CUST{0:00}FV", ModelPath = "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue" } }
+                    { "CX.{0}", new LoanFieldDescriptors.StandardFieldInfo("CX.{0}", "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue") },
+                    { "CUST{0:00}FV", new LoanFieldDescriptors.StandardFieldInfo("CUST{0:00}FV", "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue") }
                 };
 
                 var otherEnums = new Dictionary<string, Dictionary<string, string>>();
@@ -433,18 +433,10 @@ namespace EncompassRest
                 var virtualFieldPatterns = new List<LoanFieldDescriptors.VirtualFieldInfo>();
                 foreach (var virtualField in EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.VirtualFields.Cast<EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptor>())
                 {
-                    var virtualFieldInfo = new LoanFieldDescriptors.VirtualFieldInfo { Format = (LoanFieldFormat)virtualField.Format };
-                    if (virtualField.Options.Count > 0)
-                    {
-                        virtualFieldInfo.Options = new List<FieldOption>();
-                        foreach (var option in virtualField.Options.Cast<EllieMae.Encompass.BusinessObjects.Loans.FieldOption>())
-                        {
-                            virtualFieldInfo.Options.Add(new FieldOption(option.Value, option.Text));
-                        }
-                    }
+                    LoanFieldDescriptors.VirtualFieldInfo virtualFieldInfo;
                     if (virtualField.MultiInstance)
                     {
-                        virtualFieldInfo.FieldId = $"{virtualField.FieldID}.{{0}}";
+                        virtualFieldInfo = new LoanFieldDescriptors.VirtualFieldInfo($"{virtualField.FieldID}.{{0}}");
                         var instanceField = virtualField.GetInstanceDescriptor(virtualField.InstanceSpecifierType == EllieMae.Encompass.BusinessObjects.Loans.MultiInstanceSpecifierType.Index ? (object)1 : "1");
                         var instanceFieldId = instanceField.FieldID;
                         var instanceFieldId2 = string.Format(virtualFieldInfo.FieldId, 1);
@@ -459,10 +451,19 @@ namespace EncompassRest
                     }
                     else
                     {
-                        virtualFieldInfo.FieldId = virtualField.FieldID;
+                        virtualFieldInfo = new LoanFieldDescriptors.VirtualFieldInfo(virtualField.FieldID);
                         virtualFieldInfo.Description = virtualField.Description;
                         virtualFields.Add(virtualFieldInfo);
                     }
+                    if (virtualField.Options.Count > 0)
+                    {
+                        virtualFieldInfo.Options = new List<FieldOption>();
+                        foreach (var option in virtualField.Options.Cast<EllieMae.Encompass.BusinessObjects.Loans.FieldOption>())
+                        {
+                            virtualFieldInfo.Options.Add(new FieldOption(option.Value, option.Text));
+                        }
+                    }
+                    virtualFieldInfo.Format = (LoanFieldFormat)virtualField.Format;
                 }
 
                 var orderedVirtualFields = virtualFields.OrderBy(v => v.FieldId).ToList();
@@ -679,6 +680,7 @@ namespace EncompassRest
             var collectionsNamespace = false;
             var enumsNamespace = false;
             var schemaNamespace = false;
+            var codeAnalysisNamespace = false;
 
             if (ellieType != null)
             {
@@ -847,10 +849,15 @@ namespace EncompassRest
                     }
                     var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
                     var isNullable = propertySchema.Nullable == true;
-                    fields.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {((isEntity && !isNullable) || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>?")} {fieldName};");
+                    fields.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {(isEntity && !isNullable ? $"{propertyType}?" : (isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>?"))} {fieldName};");
                     properties.AppendLine($@"        /// <summary>
         /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}{(isNullable ? " (Nullable)" : string.Empty)}
         /// </summary>");
+                    if ((isEntity && !isNullable) || isList || isStringDictionary)
+                    {
+                        properties.AppendLine($"        [AllowNull]");
+                        codeAnalysisNamespace = true;
+                    }
                     if (isField && attributeProperties.Count > 0)
                     {
                         properties.AppendLine($"        [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
@@ -866,6 +873,7 @@ namespace EncompassRest
             {
                 sw.Write($@"{(systemNamespace ? @"using System;
 " : string.Empty)}{(collectionsNamespace ? @"using System.Collections.Generic;
+" : string.Empty)}{(codeAnalysisNamespace ? @"using System.Diagnostics.CodeAnalysis;
 " : string.Empty)}{(enumsNamespace ? $@"using {@namespace}.Enums;
 " : string.Empty)}{(schemaNamespace ? @"using EncompassRest.Schema;
 " : string.Empty)}{(systemNamespace || collectionsNamespace || enumsNamespace || schemaNamespace ? Environment.NewLine : string.Empty)}namespace {@namespace}

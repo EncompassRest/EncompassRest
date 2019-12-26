@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class EditFileRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _deletePagePermanently;
+        private DirtyValue<bool?>? _deletePagePermanently;
 
         /// <summary>
         /// EditFileRights DeletePagePermanently

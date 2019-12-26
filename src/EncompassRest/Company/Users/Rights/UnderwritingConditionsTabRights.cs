@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,12 +8,12 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class UnderwritingConditionsTabRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _addEditDeleteComments;
-        private DirtyValue<bool?> _addSupportingDocuments;
-        private DirtyValue<bool?> _changePriorTo;
-        private MarkStatusCompletedRights _markStatusCompleted;
-        private NewEditDeleteConditionsRights _newEditDeleteConditions;
-        private DirtyValue<bool?> _removeSupportingDocuments;
+        private DirtyValue<bool?>? _addEditDeleteComments;
+        private DirtyValue<bool?>? _addSupportingDocuments;
+        private DirtyValue<bool?>? _changePriorTo;
+        private MarkStatusCompletedRights? _markStatusCompleted;
+        private NewEditDeleteConditionsRights? _newEditDeleteConditions;
+        private DirtyValue<bool?>? _removeSupportingDocuments;
 
         /// <summary>
         /// UnderwritingConditionsTabRights AddEditDeleteComments
@@ -33,12 +34,14 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// UnderwritingConditionsTabRights MarkStatusCompleted
         /// </summary>
+        [AllowNull]
         public MarkStatusCompletedRights MarkStatusCompleted { get => GetField(ref _markStatusCompleted); set => SetField(ref _markStatusCompleted, value); }
 
         /// <summary>
         /// UnderwritingConditionsTabRights NewEditDeleteConditions
         /// </summary>
         [JsonProperty("new/Edit/DeleteConditions")]
+        [AllowNull]
         public NewEditDeleteConditionsRights NewEditDeleteConditions { get => GetField(ref _newEditDeleteConditions); set => SetField(ref _newEditDeleteConditions, value); }
 
         /// <summary>

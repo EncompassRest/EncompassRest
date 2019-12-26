@@ -72,7 +72,7 @@ namespace EncompassRest.Filters
             Precision = precision;
         }
 
-        internal override string GetMatchType() => MatchType.AsString(EnumJsonConverter.CamelCaseNameFormat);
+        internal override string GetMatchType() => MatchType.AsString(EnumJsonConverter.CamelCaseNameFormat)!;
 
         internal override string GetQueryStringFormat() => $"{CanonicalName}:{MatchType.AsString(EnumFormat.Description)}:{Value}";
     }

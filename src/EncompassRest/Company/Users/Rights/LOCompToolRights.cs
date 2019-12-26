@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class LOCompToolRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _brokerComp;
-        private DirtyValue<bool?> _loanOfficerComp;
+        private DirtyValue<bool?>? _brokerComp;
+        private DirtyValue<bool?>? _loanOfficerComp;
 
         /// <summary>
         /// LOCompToolRights BrokerComp

@@ -9,9 +9,9 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class PurchaseCredit : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amount;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<PurchaseCreditType>> _purchaseCreditType;
+        private DirtyValue<decimal?>? _amount;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<PurchaseCreditType>>? _purchaseCreditType;
 
         /// <summary>
         /// PurchaseCredit Amount
@@ -22,7 +22,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PurchaseCredit Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// PurchaseCredit PurchaseCreditType

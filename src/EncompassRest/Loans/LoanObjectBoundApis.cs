@@ -31,7 +31,7 @@
         public bool ReflectToLoanObject { get; set; }
 
         internal LoanObjectBoundApis(EncompassRestClient client, Loan loan)
-            : base(client, loan.EncompassId)
+            : base(client, loan.EncompassId!)
         {
             Loan = loan;
         }

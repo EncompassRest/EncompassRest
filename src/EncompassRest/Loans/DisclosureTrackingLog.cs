@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,92 +9,93 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class DisclosureTrackingLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyList<LogAlert> _alerts;
-        private DirtyValue<string> _alertsXml;
-        private DirtyValue<DateTime?> _applicationDate;
-        private DirtyValue<string> _borrowerName;
-        private DirtyValue<string> _borrowerPairId;
-        private DirtyValue<string> _coBorrowerName;
-        private DirtyList<LogComment> _commentList;
-        private DirtyValue<string> _commentListXml;
-        private DirtyValue<string> _comments;
-        private DirtyValue<bool?> _containGfe;
-        private DirtyValue<bool?> _containSafeHarbor;
-        private DirtyValue<bool?> _containTil;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<string> _disclosedAPR;
-        private DirtyValue<string> _disclosedBy;
-        private DirtyValue<string> _disclosedByFullName;
-        private DirtyValue<string> _disclosedMethod;
-        private DirtyValue<DateTime?> _disclosureCreatedDttmUtc;
-        private DirtyValue<bool?> _eDisclosureApplicationPackageIndicator;
-        private DirtyValue<bool?> _eDisclosureApprovalPackageIndicator;
-        private DirtyValue<DateTime?> _eDisclosureBorrowerAcceptConsentDate;
-        private DirtyValue<DateTime?> _eDisclosureBorrowereSignedDate;
-        private DirtyValue<DateTime?> _eDisclosureBorrowerRejectConsentDate;
-        private DirtyValue<DateTime?> _eDisclosureBorrowerViewConsentDate;
-        private DirtyValue<DateTime?> _eDisclosureBorrowerViewMessageDate;
-        private DirtyValue<DateTime?> _eDisclosureBorrowerWetSignedDate;
-        private DirtyValue<DateTime?> _eDisclosureCoBorrowerAcceptConsentDate;
-        private DirtyValue<DateTime?> _eDisclosureCoBorrowereSignedDate;
-        private DirtyValue<DateTime?> _eDisclosureCoBorrowerRejectConsentDate;
-        private DirtyValue<DateTime?> _eDisclosureCoBorrowerViewConsentDate;
-        private DirtyValue<DateTime?> _eDisclosureCoBorrowerViewMessageDate;
-        private DirtyValue<DateTime?> _eDisclosureCoBorrowerWebSignedDate;
-        private DirtyValue<string> _eDisclosureConsentPdf;
-        private DirtyValue<string> _eDisclosureDisclosedMessage;
-        private DirtyValue<bool?> _eDisclosureLockPackageIndicator;
-        private DirtyValue<string> _eDisclosureManualFulfillmentComment;
-        private DirtyValue<DateTime?> _eDisclosureManualFulfillmentDate;
-        private DirtyValue<string> _eDisclosureManualFulfillmentMethod;
-        private DirtyValue<string> _eDisclosureManuallyFulfilledBy;
-        private DirtyValue<DateTime?> _eDisclosurePackageCreatedDate;
-        private DirtyValue<string> _eDisclosurePackageId;
-        private DirtyValue<string> _eDisclosurePackageViewableFile;
-        private DirtyValue<bool?> _eDisclosureThreeDayPackageIndicator;
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
-        private DirtyValue<string> _financeCharge;
-        private DirtyList<DisclosureForm> _forms;
-        private DirtyValue<string> _formsXml;
-        private DirtyValue<string> _fulfillmentOrderedBy;
-        private DirtyValue<string> _fullfillmentProcessedDate;
-        private DirtyValue<string> _guid;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _isDisclosed;
-        private DirtyValue<string> _isDisclosedAprLocked;
-        private DirtyValue<string> _isDisclosedByLocked;
-        private DirtyValue<string> _isDisclosedFinanceChargeLocked;
-        private DirtyValue<string> _isDisclosedReceivedDateLocked;
-        private DirtyValue<string> _isLocked;
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private DirtyValue<bool?> _isWetSignedIndicator;
-        private DirtyValue<string> _loanAmount;
-        private DirtyValue<string> _loanProgram;
-        private DirtyValue<string> _lockedDisclosedAprField;
-        private DirtyValue<string> _lockedDisclosedByField;
-        private DirtyValue<string> _lockedDisclosedFinanceChargeField;
-        private DirtyValue<DateTime?> _lockedDisclosedReceivedDate;
-        private DirtyValue<int?> _logRecordIndex;
-        private DirtyValue<string> _manuallyCreated;
-        private DirtyValue<string> _propertyAddress;
-        private DirtyValue<string> _propertyCity;
-        private DirtyValue<string> _propertyState;
-        private DirtyValue<string> _propertyZip;
-        private DirtyValue<DateTime?> _receivedDate;
-        private DirtyList<LogSnapshotField> _snapshotFields;
-        private DirtyValue<string> _snapshotXml;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<DateTime?> _updatedDateUtc;
+        private DirtyList<LogAlert>? _alerts;
+        private DirtyValue<string?>? _alertsXml;
+        private DirtyValue<DateTime?>? _applicationDate;
+        private DirtyValue<string?>? _borrowerName;
+        private DirtyValue<string?>? _borrowerPairId;
+        private DirtyValue<string?>? _coBorrowerName;
+        private DirtyList<LogComment>? _commentList;
+        private DirtyValue<string?>? _commentListXml;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<bool?>? _containGfe;
+        private DirtyValue<bool?>? _containSafeHarbor;
+        private DirtyValue<bool?>? _containTil;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<string?>? _disclosedAPR;
+        private DirtyValue<string?>? _disclosedBy;
+        private DirtyValue<string?>? _disclosedByFullName;
+        private DirtyValue<string?>? _disclosedMethod;
+        private DirtyValue<DateTime?>? _disclosureCreatedDttmUtc;
+        private DirtyValue<bool?>? _eDisclosureApplicationPackageIndicator;
+        private DirtyValue<bool?>? _eDisclosureApprovalPackageIndicator;
+        private DirtyValue<DateTime?>? _eDisclosureBorrowerAcceptConsentDate;
+        private DirtyValue<DateTime?>? _eDisclosureBorrowereSignedDate;
+        private DirtyValue<DateTime?>? _eDisclosureBorrowerRejectConsentDate;
+        private DirtyValue<DateTime?>? _eDisclosureBorrowerViewConsentDate;
+        private DirtyValue<DateTime?>? _eDisclosureBorrowerViewMessageDate;
+        private DirtyValue<DateTime?>? _eDisclosureBorrowerWetSignedDate;
+        private DirtyValue<DateTime?>? _eDisclosureCoBorrowerAcceptConsentDate;
+        private DirtyValue<DateTime?>? _eDisclosureCoBorrowereSignedDate;
+        private DirtyValue<DateTime?>? _eDisclosureCoBorrowerRejectConsentDate;
+        private DirtyValue<DateTime?>? _eDisclosureCoBorrowerViewConsentDate;
+        private DirtyValue<DateTime?>? _eDisclosureCoBorrowerViewMessageDate;
+        private DirtyValue<DateTime?>? _eDisclosureCoBorrowerWebSignedDate;
+        private DirtyValue<string?>? _eDisclosureConsentPdf;
+        private DirtyValue<string?>? _eDisclosureDisclosedMessage;
+        private DirtyValue<bool?>? _eDisclosureLockPackageIndicator;
+        private DirtyValue<string?>? _eDisclosureManualFulfillmentComment;
+        private DirtyValue<DateTime?>? _eDisclosureManualFulfillmentDate;
+        private DirtyValue<string?>? _eDisclosureManualFulfillmentMethod;
+        private DirtyValue<string?>? _eDisclosureManuallyFulfilledBy;
+        private DirtyValue<DateTime?>? _eDisclosurePackageCreatedDate;
+        private DirtyValue<string?>? _eDisclosurePackageId;
+        private DirtyValue<string?>? _eDisclosurePackageViewableFile;
+        private DirtyValue<bool?>? _eDisclosureThreeDayPackageIndicator;
+        private DirtyValue<bool?>? _fileAttachmentsMigrated;
+        private DirtyValue<string?>? _financeCharge;
+        private DirtyList<DisclosureForm>? _forms;
+        private DirtyValue<string?>? _formsXml;
+        private DirtyValue<string?>? _fulfillmentOrderedBy;
+        private DirtyValue<string?>? _fullfillmentProcessedDate;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _isDisclosed;
+        private DirtyValue<string?>? _isDisclosedAprLocked;
+        private DirtyValue<string?>? _isDisclosedByLocked;
+        private DirtyValue<string?>? _isDisclosedFinanceChargeLocked;
+        private DirtyValue<string?>? _isDisclosedReceivedDateLocked;
+        private DirtyValue<string?>? _isLocked;
+        private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<bool?>? _isWetSignedIndicator;
+        private DirtyValue<string?>? _loanAmount;
+        private DirtyValue<string?>? _loanProgram;
+        private DirtyValue<string?>? _lockedDisclosedAprField;
+        private DirtyValue<string?>? _lockedDisclosedByField;
+        private DirtyValue<string?>? _lockedDisclosedFinanceChargeField;
+        private DirtyValue<DateTime?>? _lockedDisclosedReceivedDate;
+        private DirtyValue<int?>? _logRecordIndex;
+        private DirtyValue<string?>? _manuallyCreated;
+        private DirtyValue<string?>? _propertyAddress;
+        private DirtyValue<string?>? _propertyCity;
+        private DirtyValue<string?>? _propertyState;
+        private DirtyValue<string?>? _propertyZip;
+        private DirtyValue<DateTime?>? _receivedDate;
+        private DirtyList<LogSnapshotField>? _snapshotFields;
+        private DirtyValue<string?>? _snapshotXml;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
 
         /// <summary>
         /// DisclosureTrackingLog Alerts
         /// </summary>
+        [AllowNull]
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
 
         /// <summary>
         /// DisclosureTrackingLog AlertsXml
         /// </summary>
-        public string AlertsXml { get => _alertsXml; set => SetField(ref _alertsXml, value); }
+        public string? AlertsXml { get => _alertsXml; set => SetField(ref _alertsXml, value); }
 
         /// <summary>
         /// DisclosureTrackingLog ApplicationDate
@@ -103,32 +105,33 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog BorrowerName
         /// </summary>
-        public string BorrowerName { get => _borrowerName; set => SetField(ref _borrowerName, value); }
+        public string? BorrowerName { get => _borrowerName; set => SetField(ref _borrowerName, value); }
 
         /// <summary>
         /// DisclosureTrackingLog BorrowerPairId
         /// </summary>
-        public string BorrowerPairId { get => _borrowerPairId; set => SetField(ref _borrowerPairId, value); }
+        public string? BorrowerPairId { get => _borrowerPairId; set => SetField(ref _borrowerPairId, value); }
 
         /// <summary>
         /// DisclosureTrackingLog CoBorrowerName
         /// </summary>
-        public string CoBorrowerName { get => _coBorrowerName; set => SetField(ref _coBorrowerName, value); }
+        public string? CoBorrowerName { get => _coBorrowerName; set => SetField(ref _coBorrowerName, value); }
 
         /// <summary>
         /// DisclosureTrackingLog CommentList
         /// </summary>
+        [AllowNull]
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
 
         /// <summary>
         /// DisclosureTrackingLog CommentListXml
         /// </summary>
-        public string CommentListXml { get => _commentListXml; set => SetField(ref _commentListXml, value); }
+        public string? CommentListXml { get => _commentListXml; set => SetField(ref _commentListXml, value); }
 
         /// <summary>
         /// DisclosureTrackingLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// DisclosureTrackingLog ContainGfe
@@ -153,22 +156,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog DisclosedAPR
         /// </summary>
-        public string DisclosedAPR { get => _disclosedAPR; set => SetField(ref _disclosedAPR, value); }
+        public string? DisclosedAPR { get => _disclosedAPR; set => SetField(ref _disclosedAPR, value); }
 
         /// <summary>
         /// DisclosureTrackingLog DisclosedBy
         /// </summary>
-        public string DisclosedBy { get => _disclosedBy; set => SetField(ref _disclosedBy, value); }
+        public string? DisclosedBy { get => _disclosedBy; set => SetField(ref _disclosedBy, value); }
 
         /// <summary>
         /// DisclosureTrackingLog DisclosedByFullName
         /// </summary>
-        public string DisclosedByFullName { get => _disclosedByFullName; set => SetField(ref _disclosedByFullName, value); }
+        public string? DisclosedByFullName { get => _disclosedByFullName; set => SetField(ref _disclosedByFullName, value); }
 
         /// <summary>
         /// DisclosureTrackingLog DisclosedMethod
         /// </summary>
-        public string DisclosedMethod { get => _disclosedMethod; set => SetField(ref _disclosedMethod, value); }
+        public string? DisclosedMethod { get => _disclosedMethod; set => SetField(ref _disclosedMethod, value); }
 
         /// <summary>
         /// DisclosureTrackingLog DisclosureCreatedDttmUtc
@@ -248,12 +251,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog EDisclosureConsentPdf
         /// </summary>
-        public string EDisclosureConsentPdf { get => _eDisclosureConsentPdf; set => SetField(ref _eDisclosureConsentPdf, value); }
+        public string? EDisclosureConsentPdf { get => _eDisclosureConsentPdf; set => SetField(ref _eDisclosureConsentPdf, value); }
 
         /// <summary>
         /// DisclosureTrackingLog EDisclosureDisclosedMessage
         /// </summary>
-        public string EDisclosureDisclosedMessage { get => _eDisclosureDisclosedMessage; set => SetField(ref _eDisclosureDisclosedMessage, value); }
+        public string? EDisclosureDisclosedMessage { get => _eDisclosureDisclosedMessage; set => SetField(ref _eDisclosureDisclosedMessage, value); }
 
         /// <summary>
         /// DisclosureTrackingLog EDisclosureLockPackageIndicator
@@ -263,7 +266,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog EDisclosureManualFulfillmentComment
         /// </summary>
-        public string EDisclosureManualFulfillmentComment { get => _eDisclosureManualFulfillmentComment; set => SetField(ref _eDisclosureManualFulfillmentComment, value); }
+        public string? EDisclosureManualFulfillmentComment { get => _eDisclosureManualFulfillmentComment; set => SetField(ref _eDisclosureManualFulfillmentComment, value); }
 
         /// <summary>
         /// DisclosureTrackingLog EDisclosureManualFulfillmentDate
@@ -273,12 +276,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog EDisclosureManualFulfillmentMethod
         /// </summary>
-        public string EDisclosureManualFulfillmentMethod { get => _eDisclosureManualFulfillmentMethod; set => SetField(ref _eDisclosureManualFulfillmentMethod, value); }
+        public string? EDisclosureManualFulfillmentMethod { get => _eDisclosureManualFulfillmentMethod; set => SetField(ref _eDisclosureManualFulfillmentMethod, value); }
 
         /// <summary>
         /// DisclosureTrackingLog EDisclosureManuallyFulfilledBy
         /// </summary>
-        public string EDisclosureManuallyFulfilledBy { get => _eDisclosureManuallyFulfilledBy; set => SetField(ref _eDisclosureManuallyFulfilledBy, value); }
+        public string? EDisclosureManuallyFulfilledBy { get => _eDisclosureManuallyFulfilledBy; set => SetField(ref _eDisclosureManuallyFulfilledBy, value); }
 
         /// <summary>
         /// DisclosureTrackingLog EDisclosurePackageCreatedDate
@@ -288,12 +291,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog EDisclosurePackageId
         /// </summary>
-        public string EDisclosurePackageId { get => _eDisclosurePackageId; set => SetField(ref _eDisclosurePackageId, value); }
+        public string? EDisclosurePackageId { get => _eDisclosurePackageId; set => SetField(ref _eDisclosurePackageId, value); }
 
         /// <summary>
         /// DisclosureTrackingLog EDisclosurePackageViewableFile
         /// </summary>
-        public string EDisclosurePackageViewableFile { get => _eDisclosurePackageViewableFile; set => SetField(ref _eDisclosurePackageViewableFile, value); }
+        public string? EDisclosurePackageViewableFile { get => _eDisclosurePackageViewableFile; set => SetField(ref _eDisclosurePackageViewableFile, value); }
 
         /// <summary>
         /// DisclosureTrackingLog EDisclosureThreeDayPackageIndicator
@@ -308,67 +311,68 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog FinanceCharge
         /// </summary>
-        public string FinanceCharge { get => _financeCharge; set => SetField(ref _financeCharge, value); }
+        public string? FinanceCharge { get => _financeCharge; set => SetField(ref _financeCharge, value); }
 
         /// <summary>
         /// DisclosureTrackingLog Forms
         /// </summary>
+        [AllowNull]
         public IList<DisclosureForm> Forms { get => GetField(ref _forms); set => SetField(ref _forms, value); }
 
         /// <summary>
         /// DisclosureTrackingLog FormsXml
         /// </summary>
-        public string FormsXml { get => _formsXml; set => SetField(ref _formsXml, value); }
+        public string? FormsXml { get => _formsXml; set => SetField(ref _formsXml, value); }
 
         /// <summary>
         /// DisclosureTrackingLog FulfillmentOrderedBy
         /// </summary>
-        public string FulfillmentOrderedBy { get => _fulfillmentOrderedBy; set => SetField(ref _fulfillmentOrderedBy, value); }
+        public string? FulfillmentOrderedBy { get => _fulfillmentOrderedBy; set => SetField(ref _fulfillmentOrderedBy, value); }
 
         /// <summary>
         /// DisclosureTrackingLog FullfillmentProcessedDate
         /// </summary>
-        public string FullfillmentProcessedDate { get => _fullfillmentProcessedDate; set => SetField(ref _fullfillmentProcessedDate, value); }
+        public string? FullfillmentProcessedDate { get => _fullfillmentProcessedDate; set => SetField(ref _fullfillmentProcessedDate, value); }
 
         /// <summary>
         /// DisclosureTrackingLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// DisclosureTrackingLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// DisclosureTrackingLog IsDisclosed
         /// </summary>
-        public string IsDisclosed { get => _isDisclosed; set => SetField(ref _isDisclosed, value); }
+        public string? IsDisclosed { get => _isDisclosed; set => SetField(ref _isDisclosed, value); }
 
         /// <summary>
         /// DisclosureTrackingLog IsDisclosedAprLocked
         /// </summary>
-        public string IsDisclosedAprLocked { get => _isDisclosedAprLocked; set => SetField(ref _isDisclosedAprLocked, value); }
+        public string? IsDisclosedAprLocked { get => _isDisclosedAprLocked; set => SetField(ref _isDisclosedAprLocked, value); }
 
         /// <summary>
         /// DisclosureTrackingLog IsDisclosedByLocked
         /// </summary>
-        public string IsDisclosedByLocked { get => _isDisclosedByLocked; set => SetField(ref _isDisclosedByLocked, value); }
+        public string? IsDisclosedByLocked { get => _isDisclosedByLocked; set => SetField(ref _isDisclosedByLocked, value); }
 
         /// <summary>
         /// DisclosureTrackingLog IsDisclosedFinanceChargeLocked
         /// </summary>
-        public string IsDisclosedFinanceChargeLocked { get => _isDisclosedFinanceChargeLocked; set => SetField(ref _isDisclosedFinanceChargeLocked, value); }
+        public string? IsDisclosedFinanceChargeLocked { get => _isDisclosedFinanceChargeLocked; set => SetField(ref _isDisclosedFinanceChargeLocked, value); }
 
         /// <summary>
         /// DisclosureTrackingLog IsDisclosedReceivedDateLocked
         /// </summary>
-        public string IsDisclosedReceivedDateLocked { get => _isDisclosedReceivedDateLocked; set => SetField(ref _isDisclosedReceivedDateLocked, value); }
+        public string? IsDisclosedReceivedDateLocked { get => _isDisclosedReceivedDateLocked; set => SetField(ref _isDisclosedReceivedDateLocked, value); }
 
         /// <summary>
         /// DisclosureTrackingLog IsLocked
         /// </summary>
-        public string IsLocked { get => _isLocked; set => SetField(ref _isLocked, value); }
+        public string? IsLocked { get => _isLocked; set => SetField(ref _isLocked, value); }
 
         /// <summary>
         /// DisclosureTrackingLog IsSystemSpecificIndicator
@@ -383,27 +387,27 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog LoanAmount
         /// </summary>
-        public string LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
+        public string? LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
 
         /// <summary>
         /// DisclosureTrackingLog LoanProgram
         /// </summary>
-        public string LoanProgram { get => _loanProgram; set => SetField(ref _loanProgram, value); }
+        public string? LoanProgram { get => _loanProgram; set => SetField(ref _loanProgram, value); }
 
         /// <summary>
         /// DisclosureTrackingLog LockedDisclosedAprField
         /// </summary>
-        public string LockedDisclosedAprField { get => _lockedDisclosedAprField; set => SetField(ref _lockedDisclosedAprField, value); }
+        public string? LockedDisclosedAprField { get => _lockedDisclosedAprField; set => SetField(ref _lockedDisclosedAprField, value); }
 
         /// <summary>
         /// DisclosureTrackingLog LockedDisclosedByField
         /// </summary>
-        public string LockedDisclosedByField { get => _lockedDisclosedByField; set => SetField(ref _lockedDisclosedByField, value); }
+        public string? LockedDisclosedByField { get => _lockedDisclosedByField; set => SetField(ref _lockedDisclosedByField, value); }
 
         /// <summary>
         /// DisclosureTrackingLog LockedDisclosedFinanceChargeField
         /// </summary>
-        public string LockedDisclosedFinanceChargeField { get => _lockedDisclosedFinanceChargeField; set => SetField(ref _lockedDisclosedFinanceChargeField, value); }
+        public string? LockedDisclosedFinanceChargeField { get => _lockedDisclosedFinanceChargeField; set => SetField(ref _lockedDisclosedFinanceChargeField, value); }
 
         /// <summary>
         /// DisclosureTrackingLog LockedDisclosedReceivedDate
@@ -418,27 +422,27 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog ManuallyCreated
         /// </summary>
-        public string ManuallyCreated { get => _manuallyCreated; set => SetField(ref _manuallyCreated, value); }
+        public string? ManuallyCreated { get => _manuallyCreated; set => SetField(ref _manuallyCreated, value); }
 
         /// <summary>
         /// DisclosureTrackingLog PropertyAddress
         /// </summary>
-        public string PropertyAddress { get => _propertyAddress; set => SetField(ref _propertyAddress, value); }
+        public string? PropertyAddress { get => _propertyAddress; set => SetField(ref _propertyAddress, value); }
 
         /// <summary>
         /// DisclosureTrackingLog PropertyCity
         /// </summary>
-        public string PropertyCity { get => _propertyCity; set => SetField(ref _propertyCity, value); }
+        public string? PropertyCity { get => _propertyCity; set => SetField(ref _propertyCity, value); }
 
         /// <summary>
         /// DisclosureTrackingLog PropertyState
         /// </summary>
-        public string PropertyState { get => _propertyState; set => SetField(ref _propertyState, value); }
+        public string? PropertyState { get => _propertyState; set => SetField(ref _propertyState, value); }
 
         /// <summary>
         /// DisclosureTrackingLog PropertyZip
         /// </summary>
-        public string PropertyZip { get => _propertyZip; set => SetField(ref _propertyZip, value); }
+        public string? PropertyZip { get => _propertyZip; set => SetField(ref _propertyZip, value); }
 
         /// <summary>
         /// DisclosureTrackingLog ReceivedDate
@@ -448,17 +452,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog SnapshotFields
         /// </summary>
+        [AllowNull]
         public IList<LogSnapshotField> SnapshotFields { get => GetField(ref _snapshotFields); set => SetField(ref _snapshotFields, value); }
 
         /// <summary>
         /// DisclosureTrackingLog SnapshotXml
         /// </summary>
-        public string SnapshotXml { get => _snapshotXml; set => SetField(ref _snapshotXml, value); }
+        public string? SnapshotXml { get => _snapshotXml; set => SetField(ref _snapshotXml, value); }
 
         /// <summary>
         /// DisclosureTrackingLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// DisclosureTrackingLog UpdatedDateUtc

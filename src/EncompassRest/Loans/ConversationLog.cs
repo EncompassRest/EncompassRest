@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,44 +9,46 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ConversationLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyList<LogAlert> _alerts;
-        private DirtyList<LogComment> _commentList;
-        private DirtyValue<string> _comments;
-        private DirtyValue<string> _company;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<string> _email;
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
-        private DirtyValue<string> _guid;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _inLogIndicator;
-        private DirtyValue<bool?> _isEmailIndicator;
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private DirtyValue<int?> _logRecordIndex;
-        private DirtyValue<string> _name;
-        private DirtyValue<string> _phone;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<DateTime?> _updatedDateUtc;
-        private DirtyValue<string> _userId;
+        private DirtyList<LogAlert>? _alerts;
+        private DirtyList<LogComment>? _commentList;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<string?>? _company;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<string?>? _email;
+        private DirtyValue<bool?>? _fileAttachmentsMigrated;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _inLogIndicator;
+        private DirtyValue<bool?>? _isEmailIndicator;
+        private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<int?>? _logRecordIndex;
+        private DirtyValue<string?>? _name;
+        private DirtyValue<string?>? _phone;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
+        private DirtyValue<string?>? _userId;
 
         /// <summary>
         /// ConversationLog Alerts
         /// </summary>
+        [AllowNull]
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
 
         /// <summary>
         /// ConversationLog CommentList
         /// </summary>
+        [AllowNull]
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
 
         /// <summary>
         /// ConversationLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// ConversationLog Company
         /// </summary>
-        public string Company { get => _company; set => SetField(ref _company, value); }
+        public string? Company { get => _company; set => SetField(ref _company, value); }
 
         /// <summary>
         /// ConversationLog DateUtc
@@ -55,7 +58,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ConversationLog Email
         /// </summary>
-        public string Email { get => _email; set => SetField(ref _email, value); }
+        public string? Email { get => _email; set => SetField(ref _email, value); }
 
         /// <summary>
         /// ConversationLog FileAttachmentsMigrated
@@ -65,12 +68,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ConversationLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// ConversationLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// ConversationLog InLogIndicator
@@ -95,17 +98,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ConversationLog Name
         /// </summary>
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
         /// ConversationLog Phone
         /// </summary>
-        public string Phone { get => _phone; set => SetField(ref _phone, value); }
+        public string? Phone { get => _phone; set => SetField(ref _phone, value); }
 
         /// <summary>
         /// ConversationLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// ConversationLog UpdatedDateUtc
@@ -115,6 +118,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ConversationLog UserId
         /// </summary>
-        public string UserId { get => _userId; set => SetField(ref _userId, value); }
+        public string? UserId { get => _userId; set => SetField(ref _userId, value); }
     }
 }

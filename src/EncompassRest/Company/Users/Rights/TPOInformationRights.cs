@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,22 +8,22 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TPOInformationRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _attachmentsTab;
-        private DirtyValue<bool?> _basicInfoTab;
-        private DirtyValue<bool?> _commitmentsTab;
-        private CustomFieldsTabRights _customFieldsTab;
-        private DirtyValue<bool?> _dBATab;
-        private DirtyValue<bool?> _feesTab;
-        private DirtyValue<bool?> _keyContactsTab;
-        private DirtyValue<bool?> _lenderContacts;
-        private DirtyValue<bool?> _licenseTab;
-        private DirtyValue<bool?> _loanCriteriaTab;
-        private DirtyValue<bool?> _lOCompTab;
-        private DirtyValue<bool?> _notesTab;
-        private DirtyValue<bool?> _salesRepsAETab;
-        private DirtyValue<bool?> _tPOWebCenterDocsTab;
-        private DirtyValue<bool?> _tPOWebCenterSetupTab;
-        private DirtyValue<bool?> _warehouseTab;
+        private DirtyValue<bool?>? _attachmentsTab;
+        private DirtyValue<bool?>? _basicInfoTab;
+        private DirtyValue<bool?>? _commitmentsTab;
+        private CustomFieldsTabRights? _customFieldsTab;
+        private DirtyValue<bool?>? _dBATab;
+        private DirtyValue<bool?>? _feesTab;
+        private DirtyValue<bool?>? _keyContactsTab;
+        private DirtyValue<bool?>? _lenderContacts;
+        private DirtyValue<bool?>? _licenseTab;
+        private DirtyValue<bool?>? _loanCriteriaTab;
+        private DirtyValue<bool?>? _lOCompTab;
+        private DirtyValue<bool?>? _notesTab;
+        private DirtyValue<bool?>? _salesRepsAETab;
+        private DirtyValue<bool?>? _tPOWebCenterDocsTab;
+        private DirtyValue<bool?>? _tPOWebCenterSetupTab;
+        private DirtyValue<bool?>? _warehouseTab;
 
         /// <summary>
         /// TPOInformationRights AttachmentsTab
@@ -42,6 +43,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// TPOInformationRights CustomFieldsTab
         /// </summary>
+        [AllowNull]
         public CustomFieldsTabRights CustomFieldsTab { get => GetField(ref _customFieldsTab); set => SetField(ref _customFieldsTab, value); }
 
         /// <summary>

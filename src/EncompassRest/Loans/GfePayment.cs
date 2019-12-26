@@ -9,26 +9,26 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(GfePaymentIndex))]
     public sealed partial class GfePayment : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _fixedRate;
-        private DirtyValue<int?> _gfePaymentIndex;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _indexRate;
-        private DirtyValue<StringEnumValue<YesOrNo>> _isBalanceReduced;
-        private DirtyValue<string> _loanTypeExplanation;
-        private DirtyValue<decimal?> _marginRate;
-        private DirtyValue<decimal?> _maximumDifference;
-        private DirtyValue<decimal?> _maximumRate;
-        private DirtyValue<decimal?> _minimumDifference;
-        private DirtyValue<decimal?> _minimumMonthlyPayment;
-        private DirtyValue<decimal?> _monthlyPaymentYear1;
-        private DirtyValue<decimal?> _monthlyPaymentYear6;
-        private DirtyValue<decimal?> _monthlyPaymentYear6Change;
-        private DirtyValue<decimal?> _monthlyPaymentYear6MaxChange;
-        private DirtyValue<bool?> _notOfferedIndicator;
-        private DirtyValue<decimal?> _owedAfter5Years;
-        private DirtyValue<decimal?> _rateInMonth2;
-        private DirtyValue<decimal?> _reducedLoanBalance;
-        private DirtyValue<StringEnumValue<ReducedStatus>> _reducedStatus;
+        private DirtyValue<decimal?>? _fixedRate;
+        private DirtyValue<int?>? _gfePaymentIndex;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _indexRate;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _isBalanceReduced;
+        private DirtyValue<string?>? _loanTypeExplanation;
+        private DirtyValue<decimal?>? _marginRate;
+        private DirtyValue<decimal?>? _maximumDifference;
+        private DirtyValue<decimal?>? _maximumRate;
+        private DirtyValue<decimal?>? _minimumDifference;
+        private DirtyValue<decimal?>? _minimumMonthlyPayment;
+        private DirtyValue<decimal?>? _monthlyPaymentYear1;
+        private DirtyValue<decimal?>? _monthlyPaymentYear6;
+        private DirtyValue<decimal?>? _monthlyPaymentYear6Change;
+        private DirtyValue<decimal?>? _monthlyPaymentYear6MaxChange;
+        private DirtyValue<bool?>? _notOfferedIndicator;
+        private DirtyValue<decimal?>? _owedAfter5Years;
+        private DirtyValue<decimal?>? _rateInMonth2;
+        private DirtyValue<decimal?>? _reducedLoanBalance;
+        private DirtyValue<StringEnumValue<ReducedStatus>>? _reducedStatus;
 
         /// <summary>
         /// GfePayment FixedRate
@@ -44,7 +44,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfePayment Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// MLDS Pymt S5 Index Rate [RE88395.X313]
@@ -60,7 +60,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MLDS Pymt S6 Loan Type Explanation [RE88395.X306]
         /// </summary>
-        public string LoanTypeExplanation { get => _loanTypeExplanation; set => SetField(ref _loanTypeExplanation, value); }
+        public string? LoanTypeExplanation { get => _loanTypeExplanation; set => SetField(ref _loanTypeExplanation, value); }
 
         /// <summary>
         /// MLDS Pymt S5 Margin Rate [RE88395.X314]

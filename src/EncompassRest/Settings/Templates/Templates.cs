@@ -18,7 +18,7 @@ namespace EncompassRest.Settings.Templates
     /// </summary>
     public sealed class Templates : ApiObject, ITemplates
     {
-        private LoanTemplateSet _loanTemplateSet;
+        private LoanTemplateSet? _loanTemplateSet;
 
         /// <summary>
         /// The Loan Template Set Apis.

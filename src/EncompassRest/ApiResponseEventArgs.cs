@@ -28,7 +28,7 @@ namespace EncompassRest
         /// <summary>
         /// The Api response correlation id as specified in the X-Correlation-ID header. Useful to Ellie Mae for inspecting issues.
         /// </summary>
-        public string CorrelationId => Response.Headers.TryGetValues("X-Correlation-ID", out var values) ? values.FirstOrDefault() : null;
+        public string? CorrelationId => Response.Headers.TryGetValues("X-Correlation-ID", out var values) ? values.FirstOrDefault() : null;
 
         /// <summary>
         /// The concurrency limit as specified in the X-Concurrency-Limit-Limit header.

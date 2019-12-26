@@ -11,7 +11,7 @@ namespace EncompassRest.Services.Verification
         /// EV4506TResource AttachmentId
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string AttachmentId { get; set; }
+        public string? AttachmentId { get; set; }
 
         /// <summary>
         /// EV4506TResource Type
@@ -23,6 +23,6 @@ namespace EncompassRest.Services.Verification
         /// EV4506TResource Description
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
     }
 }

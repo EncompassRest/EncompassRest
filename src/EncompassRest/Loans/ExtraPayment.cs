@@ -9,11 +9,11 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(LineNumber))]
     public sealed partial class ExtraPayment : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amount;
-        private DirtyValue<DateTime?> _date;
-        private DirtyValue<int?> _extraPaymentIndex;
-        private DirtyValue<string> _id;
-        private DirtyValue<int?> _lineNumber;
+        private DirtyValue<decimal?>? _amount;
+        private DirtyValue<DateTime?>? _date;
+        private DirtyValue<int?>? _extraPaymentIndex;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<int?>? _lineNumber;
 
         /// <summary>
         /// ExtraPayment Amount
@@ -34,7 +34,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ExtraPayment Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// ExtraPayment LineNumber

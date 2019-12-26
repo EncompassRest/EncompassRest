@@ -10,39 +10,39 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(FeeType))]
     public sealed partial class Fee : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amount;
-        private DirtyValue<decimal?> _amountPerDay;
-        private DirtyValue<decimal?> _borPaidAmount;
-        private DirtyValue<DateTime?> _dateFrom;
-        private DirtyValue<DateTime?> _dateTo;
-        private DirtyValue<int?> _days;
-        private DirtyValue<decimal?> _deedAmount;
-        private DirtyValue<string> _description;
-        private DirtyValue<StringEnumValue<FeeFeeType>> _feeType;
-        private DirtyValue<bool?> _fHA;
-        private DirtyValue<string> _fWBC;
-        private DirtyValue<string> _fWSC;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _includeAboveNumber;
-        private DirtyValue<decimal?> _lenderCoverage;
-        private DirtyValue<decimal?> _monthlyPayment;
-        private DirtyValue<decimal?> _mortgageAmount;
-        private DirtyValue<NA<decimal>> _newHUDBorPaidAmount;
-        private DirtyValue<int?> _numberOfMonths;
-        private DirtyValue<decimal?> _ownerCoverage;
-        private DirtyValue<StringEnumValue<PaidBy>> _paidBy;
-        private DirtyValue<decimal?> _paidInAdvance;
-        private DirtyValue<decimal?> _paidToBroker;
-        private DirtyValue<string> _paidToName;
-        private DirtyValue<decimal?> _paidToOthers;
-        private DirtyValue<decimal?> _percentage;
-        private DirtyValue<bool?> _pFC;
-        private DirtyValue<bool?> _pOC;
-        private DirtyValue<StringEnumValue<PTB>> _pTB;
-        private DirtyValue<decimal?> _releasesAmount;
-        private DirtyValue<decimal?> _sellerPaidAmount;
-        private DirtyValue<decimal?> _truncatedAmountPerDay;
-        private DirtyValue<bool?> _use4Decimals;
+        private DirtyValue<decimal?>? _amount;
+        private DirtyValue<decimal?>? _amountPerDay;
+        private DirtyValue<decimal?>? _borPaidAmount;
+        private DirtyValue<DateTime?>? _dateFrom;
+        private DirtyValue<DateTime?>? _dateTo;
+        private DirtyValue<int?>? _days;
+        private DirtyValue<decimal?>? _deedAmount;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<StringEnumValue<FeeFeeType>>? _feeType;
+        private DirtyValue<bool?>? _fHA;
+        private DirtyValue<string?>? _fWBC;
+        private DirtyValue<string?>? _fWSC;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _includeAboveNumber;
+        private DirtyValue<decimal?>? _lenderCoverage;
+        private DirtyValue<decimal?>? _monthlyPayment;
+        private DirtyValue<decimal?>? _mortgageAmount;
+        private DirtyValue<NA<decimal>>? _newHUDBorPaidAmount;
+        private DirtyValue<int?>? _numberOfMonths;
+        private DirtyValue<decimal?>? _ownerCoverage;
+        private DirtyValue<StringEnumValue<PaidBy>>? _paidBy;
+        private DirtyValue<decimal?>? _paidInAdvance;
+        private DirtyValue<decimal?>? _paidToBroker;
+        private DirtyValue<string?>? _paidToName;
+        private DirtyValue<decimal?>? _paidToOthers;
+        private DirtyValue<decimal?>? _percentage;
+        private DirtyValue<bool?>? _pFC;
+        private DirtyValue<bool?>? _pOC;
+        private DirtyValue<StringEnumValue<PTB>>? _pTB;
+        private DirtyValue<decimal?>? _releasesAmount;
+        private DirtyValue<decimal?>? _sellerPaidAmount;
+        private DirtyValue<decimal?>? _truncatedAmountPerDay;
+        private DirtyValue<bool?>? _use4Decimals;
 
         /// <summary>
         /// Fee Amount
@@ -86,7 +86,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fee Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// Fee FeeType
@@ -101,22 +101,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fee FWBC
         /// </summary>
-        public string FWBC { get => _fWBC; set => SetField(ref _fWBC, value); }
+        public string? FWBC { get => _fWBC; set => SetField(ref _fWBC, value); }
 
         /// <summary>
         /// Fee FWSC
         /// </summary>
-        public string FWSC { get => _fWSC; set => SetField(ref _fWSC, value); }
+        public string? FWSC { get => _fWSC; set => SetField(ref _fWSC, value); }
 
         /// <summary>
         /// Fee Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Fee IncludeAboveNumber
         /// </summary>
-        public string IncludeAboveNumber { get => _includeAboveNumber; set => SetField(ref _includeAboveNumber, value); }
+        public string? IncludeAboveNumber { get => _includeAboveNumber; set => SetField(ref _includeAboveNumber, value); }
 
         /// <summary>
         /// Fees Line 1109 Lender's Coverage Amount [2409]
@@ -172,7 +172,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fee PaidToName
         /// </summary>
-        public string PaidToName { get => _paidToName; set => SetField(ref _paidToName, value); }
+        public string? PaidToName { get => _paidToName; set => SetField(ref _paidToName, value); }
 
         /// <summary>
         /// Fee PaidToOthers

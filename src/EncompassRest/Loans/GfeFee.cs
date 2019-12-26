@@ -9,19 +9,19 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(GfeFeeIndex) + "," + nameof(GfeFeeType))]
     public sealed partial class GfeFee : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _amountDescription;
-        private DirtyValue<decimal?> _brokerAmount;
-        private DirtyValue<string> _description;
-        private DirtyValue<int?> _gfeFeeIndex;
-        private DirtyValue<StringEnumValue<GfeFeeType>> _gfeFeeType;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _otherAmount;
-        private DirtyValue<string> _rate;
+        private DirtyValue<string?>? _amountDescription;
+        private DirtyValue<decimal?>? _brokerAmount;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<int?>? _gfeFeeIndex;
+        private DirtyValue<StringEnumValue<GfeFeeType>>? _gfeFeeType;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _otherAmount;
+        private DirtyValue<string?>? _rate;
 
         /// <summary>
         /// GfeFee AmountDescription
         /// </summary>
-        public string AmountDescription { get => _amountDescription; set => SetField(ref _amountDescription, value); }
+        public string? AmountDescription { get => _amountDescription; set => SetField(ref _amountDescription, value); }
 
         /// <summary>
         /// GfeFee BrokerAmount
@@ -32,7 +32,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfeFee Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// GfeFee GfeFeeIndex
@@ -47,7 +47,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfeFee Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// GfeFee OtherAmount
@@ -58,6 +58,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfeFee Rate
         /// </summary>
-        public string Rate { get => _rate; set => SetField(ref _rate, value); }
+        public string? Rate { get => _rate; set => SetField(ref _rate, value); }
     }
 }

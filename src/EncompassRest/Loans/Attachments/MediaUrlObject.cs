@@ -8,6 +8,6 @@
         /// <summary>
         /// MediaUrl
         /// </summary>
-        public string MediaUrl { get; set; }
+        public string? MediaUrl { get; set; }
     }
 }

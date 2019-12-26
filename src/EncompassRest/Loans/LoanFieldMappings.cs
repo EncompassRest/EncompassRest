@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using EncompassRest.Utilities;
 
@@ -124,7 +125,7 @@ namespace EncompassRest.Loans
         /// <param name="fieldId">The field id to remove.</param>
         /// <param name="modelPath">The model path associated with the removed field.</param>
         /// <returns></returns>
-        public bool TryRemove(string fieldId, out string modelPath)
+        public bool TryRemove(string fieldId, [NotNullWhen(true)] out string? modelPath)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
@@ -143,7 +144,9 @@ namespace EncompassRest.Loans
         /// <param name="fieldId">The field id to search for.</param>
         /// <param name="modelPath">The model path associated with the field.</param>
         /// <returns></returns>
-        public bool TryGetValue(string fieldId, out string modelPath)
+#pragma warning disable CS8614 // Nullability of reference types in type of parameter doesn't match implicitly implemented member.
+        public bool TryGetValue(string fieldId, [NotNullWhen(true)] out string? modelPath)
+#pragma warning restore CS8614 // Nullability of reference types in type of parameter doesn't match implicitly implemented member.
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
@@ -156,7 +159,7 @@ namespace EncompassRest.Loans
             return false;
         }
 
-        internal bool TryGetDescriptor(string fieldId, out FieldDescriptor descriptor) => _standardFields.TryGetValue(fieldId, out descriptor) || _virtualFields.TryGetValue(fieldId, out descriptor);
+        internal bool TryGetDescriptor(string fieldId, [NotNullWhen(true)] out FieldDescriptor? descriptor) => _standardFields.TryGetValue(fieldId, out descriptor) || _virtualFields.TryGetValue(fieldId, out descriptor);
 
         /// <summary>
         /// Gets or adds the model path for the specified field id.

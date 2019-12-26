@@ -60,7 +60,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> CreateDocumentRawAsync(string document, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> CreateDocumentRawAsync(string document, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves properties for the specified eFolder document. The response includes roles that have access to the document, any comments applied to the document, and file attachment information.
         /// </summary>
@@ -82,7 +82,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetDocumentAttachmentsRawAsync(string documentId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetDocumentAttachmentsRawAsync(string documentId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves properties for the specified eFolder document as raw json.
         /// </summary>
@@ -90,7 +90,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetDocumentRawAsync(string documentId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetDocumentRawAsync(string documentId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Returns all eFolder documents for the loan. The response includes a list of eFolder documents for the loan, roles that have access to the documents, and any comments applied to the documents.
         /// </summary>
@@ -103,7 +103,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetDocumentsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetDocumentsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates properties of the specified <paramref name="document"/>.
         /// </summary>
@@ -127,7 +127,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> UpdateDocumentRawAsync(string documentId, string document, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> UpdateDocumentRawAsync(string documentId, string document, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetDocumentsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetDocumentsRawAsync), null, cancellationToken);
+        public Task<string> GetDocumentsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetDocumentsRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Retrieves properties for the specified eFolder document. The response includes roles that have access to the document, any comments applied to the document, and file attachment information.
@@ -175,7 +175,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetDocumentRawAsync(string documentId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetDocumentRawAsync(string documentId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
@@ -202,7 +202,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetDocumentAttachmentsRawAsync(string documentId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetDocumentAttachmentsRawAsync(string documentId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
@@ -239,7 +239,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> CreateDocumentRawAsync(string document, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> CreateDocumentRawAsync(string document, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
@@ -277,7 +277,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> UpdateDocumentRawAsync(string documentId, string document, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> UpdateDocumentRawAsync(string documentId, string document, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
             Preconditions.NotNullOrEmpty(document, nameof(document));
@@ -293,7 +293,7 @@ namespace EncompassRest.Loans.Documents
         /// <param name="attachmentEntities">The attachment entity references to assign or unassign.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken = default) => AssignDocumentAttachmentsAsync(documentId, action.Validate(nameof(action)).GetValue(), attachmentEntities, cancellationToken);
+        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken = default) => AssignDocumentAttachmentsAsync(documentId, action.Validate(nameof(action)).GetValue()!, attachmentEntities, cancellationToken);
 
         /// <summary>
         /// Assigns or unassigns attachments.

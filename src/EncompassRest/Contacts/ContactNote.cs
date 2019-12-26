@@ -10,10 +10,10 @@ namespace EncompassRest.Contacts
     /// </summary>
     public sealed class ContactNote : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _noteIdInt;
-        private DirtyValue<string> _subject;
-        private DirtyValue<DateTime?> _timestamp;
-        private DirtyValue<string> _details;
+        private DirtyValue<int?>? _noteIdInt;
+        private DirtyValue<string?>? _subject;
+        private DirtyValue<DateTime?>? _timestamp;
+        private DirtyValue<string?>? _details;
 
         /// <summary>
         /// Contact note id as an <see cref="int"/>.
@@ -25,7 +25,7 @@ namespace EncompassRest.Contacts
         /// Contact note id.
         /// </summary>
         [JsonIgnore]
-        public string NoteId
+        public string? NoteId
         {
             get => NoteIdInt?.ToString();
             set => NoteIdInt = value != null && int.TryParse(value, out var noteId) ? noteId : (int?)null;
@@ -34,7 +34,7 @@ namespace EncompassRest.Contacts
         /// <summary>
         /// Contact note subject.
         /// </summary>
-        public string Subject { get => _subject; set => SetField(ref _subject, value); }
+        public string? Subject { get => _subject; set => SetField(ref _subject, value); }
 
         /// <summary>
         /// Contact note timestamp.
@@ -44,10 +44,10 @@ namespace EncompassRest.Contacts
         /// <summary>
         /// Contact note details.
         /// </summary>
-        public string Details { get => _details; set => SetField(ref _details, value); }
+        public string? Details { get => _details; set => SetField(ref _details, value); }
 
         [IdPropertyName(nameof(NoteId))]
-        string IIdentifiable.Id { get => NoteId; set => NoteId = value; }
+        string? IIdentifiable.Id { get => NoteId; set => NoteId = value; }
 
         /// <summary>
         /// Contact note creation constructor

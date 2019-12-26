@@ -26,13 +26,13 @@ namespace EncompassRest.Loans
         /// </summary>
         public string LoanId { get; }
 
-        internal LoanApiObject(EncompassRestClient client, string loanId, string baseApiPath)
+        internal LoanApiObject(EncompassRestClient client, string loanId, string? baseApiPath)
             : base(client, $"encompass/v1/loans/{loanId}{baseApiPath?.PrecedeWith("/")}")
         {
             LoanId = loanId;
         }
 
-        internal override string CreateErrorMessage(string methodName, string resourceId = null) => base.CreateErrorMessage(methodName, $"{LoanId}{resourceId?.PrecedeWith("/")}");
+        internal override string CreateErrorMessage(string methodName, string? resourceId = null) => base.CreateErrorMessage(methodName, $"{LoanId}{resourceId?.PrecedeWith("/")}");
     }
 
     /// <summary>
@@ -42,9 +42,9 @@ namespace EncompassRest.Loans
     public abstract class LoanApiObject<T> : LoanApiObject
         where T : DirtyExtensibleObject
     {
-        internal readonly LoanObjectBoundApis LoanObjectBoundApis;
+        internal readonly LoanObjectBoundApis? LoanObjectBoundApis;
 
-        internal LoanApiObject(EncompassRestClient client, LoanObjectBoundApis loanObjectBoundApis, string loanId, string baseApiPath)
+        internal LoanApiObject(EncompassRestClient client, LoanObjectBoundApis? loanObjectBoundApis, string loanId, string baseApiPath)
             : base(client, loanId, baseApiPath)
         {
             LoanObjectBoundApis = loanObjectBoundApis;
@@ -109,7 +109,7 @@ namespace EncompassRest.Loans
             if (LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 var list = GetInLoan(LoanObjectBoundApis.Loan);
-                var index = list.IndexOf(id);
+                var index = list.IndexOf(id!);
                 if (index >= 0)
                 {
                     var existing = list[index];
@@ -155,7 +155,7 @@ namespace EncompassRest.Loans
 
         private void DeleteFromLoanObject(string id)
         {
-            var list = GetInLoan(LoanObjectBoundApis.Loan);
+            var list = GetInLoan(LoanObjectBoundApis!.Loan);
             var index = list.IndexOf(id);
             if (index >= 0)
             {

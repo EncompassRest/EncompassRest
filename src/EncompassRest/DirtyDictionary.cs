@@ -11,7 +11,7 @@ namespace EncompassRest
     internal sealed class DirtyDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IReadOnlyDictionary<TKey, TValue>, IDictionary, IDirty
     {
         internal readonly Dictionary<TKey, DirtyValue<TValue>> _dictionary;
-        private ValueCollection _values;
+        private ValueCollection? _values;
 
         public TValue this[TKey key] { get => _dictionary[key]; set => _dictionary[key] = value; }
 
@@ -25,7 +25,7 @@ namespace EncompassRest
 
         public bool Dirty
         {
-            get => _dictionary.Any(pair => pair.Value.Dirty);
+            get => _dictionary.Any(pair => pair.Value.Dirty == true);
             set
             {
                 foreach (var pair in _dictionary)
@@ -51,24 +51,24 @@ namespace EncompassRest
 
         object ICollection.SyncRoot => ((ICollection)_dictionary).SyncRoot;
 
-        object IDictionary.this[object key] { get => this[ValidateKey(key)]; set => this[ValidateKey(key)] = ValidateValue(value); }
+        object? IDictionary.this[object key] { get => this[ValidateKey(key)]; set => this[ValidateKey(key)] = ValidateValue(value); }
 
         public DirtyDictionary()
-            : this((IEqualityComparer<TKey>)null)
+            : this((IEqualityComparer<TKey>?)null)
         {
         }
 
-        public DirtyDictionary(IEqualityComparer<TKey> comparer)
+        public DirtyDictionary(IEqualityComparer<TKey>? comparer)
         {
             _dictionary = new Dictionary<TKey, DirtyValue<TValue>>(comparer);
         }
 
-        public DirtyDictionary(IDictionary<TKey, TValue> dictionary)
+        public DirtyDictionary(IDictionary<TKey, TValue>? dictionary)
             : this(dictionary, null)
         {
         }
 
-        public DirtyDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparer)
+        public DirtyDictionary(IDictionary<TKey, TValue>? dictionary, IEqualityComparer<TKey>? comparer)
             : this(comparer)
         {
             if (dictionary != null)
@@ -154,11 +154,11 @@ namespace EncompassRest
             return tKey;
         }
 
-        private TValue ValidateValue(object value)
+        private TValue ValidateValue(object? value)
         {
             if (value == null)
             {
-                return default;
+                return default!;
             }
             if (!(value is TValue tValue))
             {
@@ -251,9 +251,9 @@ namespace EncompassRest
 
             public DictionaryEntry Entry => new DictionaryEntry(Current.Key, Current.Value);
 
-            public object Key => Current.Key;
+            public object Key => Current.Key!;
 
-            public object Value => Current.Value;
+            public object? Value => Current.Value;
 
             object IEnumerator.Current => _dictionaryEnumerator ? Entry : (object)Current;
 

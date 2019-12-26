@@ -10,44 +10,44 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class AdditionalLoan : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<AccountType>> _accountType;
-        private DirtyValue<DateTime?> _additionalLoanRequestDate;
-        private DirtyValue<bool?> _affordableLoan;
-        private DirtyValue<string> _altId;
-        private DirtyValue<decimal?> _amountAppliedToDownpayment;
-        private DirtyValue<string> _attention;
-        private DirtyValue<StringEnumValue<Owner>> _borrowerType;
-        private DirtyValue<EntityReference> _contact;
-        private DirtyValue<bool?> _entityDeleted;
-        private DirtyValue<decimal?> _hELOCCreditLimitAmount;
-        private DirtyValue<decimal?> _hELOCInitialDraw;
-        private DirtyValue<string> _holderAddressCity;
-        private DirtyValue<string> _holderAddressPostalCode;
-        private DirtyValue<StringEnumValue<State>> _holderAddressState;
-        private DirtyValue<string> _holderAddressStreetLine1;
-        private DirtyValue<string> _holderEmail;
-        private DirtyValue<string> _holderFax;
-        private DirtyValue<string> _holderName;
-        private DirtyValue<string> _holderPhone;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _individualCreditorIndicator;
-        private DirtyValue<StringEnumValue<AdditionalLoanLienPosition>> _lienPosition;
-        private DirtyValue<bool?> _linkedPiggybackIndicator;
-        private DirtyValue<decimal?> _maximumPILoanAmount;
-        private DirtyValue<decimal?> _maximumPINoteRate;
-        private DirtyValue<int?> _maximumPITerm;
-        private DirtyValue<decimal?> _maximumPrincipalAndInterestIn5Years;
-        private DirtyValue<decimal?> _monthlyPILoanAmount;
-        private DirtyValue<decimal?> _monthlyPINoteRate;
-        private DirtyValue<int?> _monthlyPITerm;
-        private DirtyValue<decimal?> _monthlyPrincipalAndInterest;
-        private DirtyValue<bool?> _paymentDeferredFirstFiveYears;
-        private DirtyValue<bool?> _printAttachmentIndicator;
-        private DirtyValue<bool?> _printUserJobTitleIndicator;
-        private DirtyValue<bool?> _printUserNameIndicator;
-        private DirtyValue<string> _title;
-        private DirtyValue<string> _titleFax;
-        private DirtyValue<string> _titlePhone;
+        private DirtyValue<StringEnumValue<AccountType>>? _accountType;
+        private DirtyValue<DateTime?>? _additionalLoanRequestDate;
+        private DirtyValue<bool?>? _affordableLoan;
+        private DirtyValue<string?>? _altId;
+        private DirtyValue<decimal?>? _amountAppliedToDownpayment;
+        private DirtyValue<string?>? _attention;
+        private DirtyValue<StringEnumValue<Owner>>? _borrowerType;
+        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<bool?>? _entityDeleted;
+        private DirtyValue<decimal?>? _hELOCCreditLimitAmount;
+        private DirtyValue<decimal?>? _hELOCInitialDraw;
+        private DirtyValue<string?>? _holderAddressCity;
+        private DirtyValue<string?>? _holderAddressPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _holderAddressState;
+        private DirtyValue<string?>? _holderAddressStreetLine1;
+        private DirtyValue<string?>? _holderEmail;
+        private DirtyValue<string?>? _holderFax;
+        private DirtyValue<string?>? _holderName;
+        private DirtyValue<string?>? _holderPhone;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _individualCreditorIndicator;
+        private DirtyValue<StringEnumValue<AdditionalLoanLienPosition>>? _lienPosition;
+        private DirtyValue<bool?>? _linkedPiggybackIndicator;
+        private DirtyValue<decimal?>? _maximumPILoanAmount;
+        private DirtyValue<decimal?>? _maximumPINoteRate;
+        private DirtyValue<int?>? _maximumPITerm;
+        private DirtyValue<decimal?>? _maximumPrincipalAndInterestIn5Years;
+        private DirtyValue<decimal?>? _monthlyPILoanAmount;
+        private DirtyValue<decimal?>? _monthlyPINoteRate;
+        private DirtyValue<int?>? _monthlyPITerm;
+        private DirtyValue<decimal?>? _monthlyPrincipalAndInterest;
+        private DirtyValue<bool?>? _paymentDeferredFirstFiveYears;
+        private DirtyValue<bool?>? _printAttachmentIndicator;
+        private DirtyValue<bool?>? _printUserJobTitleIndicator;
+        private DirtyValue<bool?>? _printUserNameIndicator;
+        private DirtyValue<string?>? _title;
+        private DirtyValue<string?>? _titleFax;
+        private DirtyValue<string?>? _titlePhone;
 
         /// <summary>
         /// Additional Loans AccountType [URLARALNN16]
@@ -69,7 +69,7 @@ namespace EncompassRest.Loans
         /// Additional Loans ID [URLARALNN99]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string AltId { get => _altId; set => SetField(ref _altId, value); }
+        public string? AltId { get => _altId; set => SetField(ref _altId, value); }
 
         /// <summary>
         /// Additional Loans Amount Applied To Downpayment [URLARALNN22]
@@ -80,7 +80,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Attention Contact [URLARALNN03]
         /// </summary>
-        public string Attention { get => _attention; set => SetField(ref _attention, value); }
+        public string? Attention { get => _attention; set => SetField(ref _attention, value); }
 
         /// <summary>
         /// Additional Loans Borrower Type [URLARALNN01]
@@ -112,13 +112,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Attention City [URLARALNN05]
         /// </summary>
-        public string HolderAddressCity { get => _holderAddressCity; set => SetField(ref _holderAddressCity, value); }
+        public string? HolderAddressCity { get => _holderAddressCity; set => SetField(ref _holderAddressCity, value); }
 
         /// <summary>
         /// Depository Attention Zipcode [URLARALNN07]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string HolderAddressPostalCode { get => _holderAddressPostalCode; set => SetField(ref _holderAddressPostalCode, value); }
+        public string? HolderAddressPostalCode { get => _holderAddressPostalCode; set => SetField(ref _holderAddressPostalCode, value); }
 
         /// <summary>
         /// Depository Attention State [URLARALNN06]
@@ -128,34 +128,34 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Address [URLARALNN04]
         /// </summary>
-        public string HolderAddressStreetLine1 { get => _holderAddressStreetLine1; set => SetField(ref _holderAddressStreetLine1, value); }
+        public string? HolderAddressStreetLine1 { get => _holderAddressStreetLine1; set => SetField(ref _holderAddressStreetLine1, value); }
 
         /// <summary>
         /// Depository Email [URLARALNN10]
         /// </summary>
-        public string HolderEmail { get => _holderEmail; set => SetField(ref _holderEmail, value); }
+        public string? HolderEmail { get => _holderEmail; set => SetField(ref _holderEmail, value); }
 
         /// <summary>
         /// Depository Fax [URLARALNN09]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string HolderFax { get => _holderFax; set => SetField(ref _holderFax, value); }
+        public string? HolderFax { get => _holderFax; set => SetField(ref _holderFax, value); }
 
         /// <summary>
         /// Depository Name [URLARALNN02]
         /// </summary>
-        public string HolderName { get => _holderName; set => SetField(ref _holderName, value); }
+        public string? HolderName { get => _holderName; set => SetField(ref _holderName, value); }
 
         /// <summary>
         /// Depository Phone [URLARALNN08]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string HolderPhone { get => _holderPhone; set => SetField(ref _holderPhone, value); }
+        public string? HolderPhone { get => _holderPhone; set => SetField(ref _holderPhone, value); }
 
         /// <summary>
         /// AdditionalLoan Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Creditor is an individual Indicator [URLARALNN32]
@@ -247,18 +247,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository From Title [URLARALNN11]
         /// </summary>
-        public string Title { get => _title; set => SetField(ref _title, value); }
+        public string? Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// Depository From Fax [URLARALNN14]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
+        public string? TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
 
         /// <summary>
         /// Depository From Phone [URLARALNN13]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
+        public string? TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
     }
 }

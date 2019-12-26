@@ -9,66 +9,66 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(Gfe2010FeeIndex) + "," + nameof(Gfe2010FeeParentType) + "," + nameof(Gfe2010FeeType))]
     public sealed partial class Gfe2010Fee : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _additionalAmount;
-        private DirtyValue<decimal?> _amount;
-        private DirtyValue<bool?> _aprIndicator;
-        private DirtyValue<decimal?> _borPaidAmount;
-        private DirtyValue<decimal?> _borrowerAmountPaid2015;
-        private DirtyValue<bool?> _borrowerCanShopForIndicator2015;
-        private DirtyValue<bool?> _borrowerDidShopForIndicator2015;
-        private DirtyValue<decimal?> _borrowerFinanced2015;
-        private DirtyValue<decimal?> _borrowerPAC2015;
-        private DirtyValue<decimal?> _borrowerPOC2015;
-        private DirtyValue<decimal?> _borrowerPTC2015;
-        private DirtyValue<bool?> _borrowerSelectIndicator;
-        private DirtyValue<decimal?> _brokerAmountPaid2015;
-        private DirtyValue<decimal?> _brokerPAC2015;
-        private DirtyValue<decimal?> _brokerPOC2015;
-        private DirtyValue<bool?> _collectedPostConsummationIndicator2015;
-        private DirtyValue<string> _description;
-        private DirtyValue<bool?> _escrowedIndicator2015;
-        private DirtyValue<bool?> _financedIndicator;
-        private DirtyValue<int?> _gfe2010FeeIndex;
-        private DirtyValue<StringEnumValue<Gfe2010FeeParentType>> _gfe2010FeeParentType;
-        private DirtyValue<StringEnumValue<Gfe2010FeeType>> _gfe2010FeeType;
-        private DirtyValue<decimal?> _gfeAmount;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _insuranceIndicator2015;
-        private DirtyValue<decimal?> _lastDisclosedClosingDisclosure2015;
-        private DirtyValue<int?> _lastDisclosedLoanEstimate2015;
-        private DirtyValue<decimal?> _lenderAmountPaid2015;
-        private DirtyValue<decimal?> _lenderPAC2015;
-        private DirtyValue<decimal?> _lenderPOC2015;
-        private DirtyValue<decimal?> _monthlyPayment;
-        private DirtyValue<int?> _numberOfMonths;
-        private DirtyValue<bool?> _optionalIndicator2015;
-        private DirtyValue<decimal?> _otherAmountPaid2015;
-        private DirtyValue<decimal?> _otherPAC2015;
-        private DirtyValue<decimal?> _otherPOC2015;
-        private DirtyValue<StringEnumValue<PaidBy>> _paidByType;
-        private DirtyValue<string> _paidToName;
-        private DirtyValue<bool?> _pocPtcIndicator;
-        private DirtyValue<bool?> _propertyIndicator2015;
-        private DirtyValue<StringEnumValue<PTB>> _ptbType;
-        private DirtyValue<decimal?> _rate;
-        private DirtyValue<decimal?> _retainedAmount2015;
-        private DirtyValue<decimal?> _sec32PointsAndFees2015;
-        private DirtyValue<decimal?> _sellerAmountPaid2015;
-        private DirtyValue<bool?> _sellerCreditIndicator2015;
-        private DirtyValue<decimal?> _sellerObligatedAmount2015;
-        private DirtyValue<bool?> _sellerObligatedIndicator2015;
-        private DirtyValue<decimal?> _sellerPAC2015;
-        private DirtyValue<decimal?> _sellerPOC2015;
-        private DirtyValue<decimal?> _selPaidAmount;
-        private DirtyValue<bool?> _simultaneousIssuanceIndicator2015;
-        private DirtyValue<bool?> _taxesIndicator2015;
-        private DirtyValue<bool?> _titleServiceSelectIndicator;
-        private DirtyValue<decimal?> _totalFeeAmount2015;
-        private DirtyValue<decimal?> _totalFeePercentage2015;
-        private DirtyValue<decimal?> _totalPaidByBLO2015;
-        private DirtyValue<decimal?> _undiscountedInsurance2015;
-        private DirtyValue<decimal?> _wholePoc;
-        private DirtyValue<StringEnumValue<WholePocPaidByType>> _wholePocPaidByType;
+        private DirtyValue<decimal?>? _additionalAmount;
+        private DirtyValue<decimal?>? _amount;
+        private DirtyValue<bool?>? _aprIndicator;
+        private DirtyValue<decimal?>? _borPaidAmount;
+        private DirtyValue<decimal?>? _borrowerAmountPaid2015;
+        private DirtyValue<bool?>? _borrowerCanShopForIndicator2015;
+        private DirtyValue<bool?>? _borrowerDidShopForIndicator2015;
+        private DirtyValue<decimal?>? _borrowerFinanced2015;
+        private DirtyValue<decimal?>? _borrowerPAC2015;
+        private DirtyValue<decimal?>? _borrowerPOC2015;
+        private DirtyValue<decimal?>? _borrowerPTC2015;
+        private DirtyValue<bool?>? _borrowerSelectIndicator;
+        private DirtyValue<decimal?>? _brokerAmountPaid2015;
+        private DirtyValue<decimal?>? _brokerPAC2015;
+        private DirtyValue<decimal?>? _brokerPOC2015;
+        private DirtyValue<bool?>? _collectedPostConsummationIndicator2015;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<bool?>? _escrowedIndicator2015;
+        private DirtyValue<bool?>? _financedIndicator;
+        private DirtyValue<int?>? _gfe2010FeeIndex;
+        private DirtyValue<StringEnumValue<Gfe2010FeeParentType>>? _gfe2010FeeParentType;
+        private DirtyValue<StringEnumValue<Gfe2010FeeType>>? _gfe2010FeeType;
+        private DirtyValue<decimal?>? _gfeAmount;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _insuranceIndicator2015;
+        private DirtyValue<decimal?>? _lastDisclosedClosingDisclosure2015;
+        private DirtyValue<int?>? _lastDisclosedLoanEstimate2015;
+        private DirtyValue<decimal?>? _lenderAmountPaid2015;
+        private DirtyValue<decimal?>? _lenderPAC2015;
+        private DirtyValue<decimal?>? _lenderPOC2015;
+        private DirtyValue<decimal?>? _monthlyPayment;
+        private DirtyValue<int?>? _numberOfMonths;
+        private DirtyValue<bool?>? _optionalIndicator2015;
+        private DirtyValue<decimal?>? _otherAmountPaid2015;
+        private DirtyValue<decimal?>? _otherPAC2015;
+        private DirtyValue<decimal?>? _otherPOC2015;
+        private DirtyValue<StringEnumValue<PaidBy>>? _paidByType;
+        private DirtyValue<string?>? _paidToName;
+        private DirtyValue<bool?>? _pocPtcIndicator;
+        private DirtyValue<bool?>? _propertyIndicator2015;
+        private DirtyValue<StringEnumValue<PTB>>? _ptbType;
+        private DirtyValue<decimal?>? _rate;
+        private DirtyValue<decimal?>? _retainedAmount2015;
+        private DirtyValue<decimal?>? _sec32PointsAndFees2015;
+        private DirtyValue<decimal?>? _sellerAmountPaid2015;
+        private DirtyValue<bool?>? _sellerCreditIndicator2015;
+        private DirtyValue<decimal?>? _sellerObligatedAmount2015;
+        private DirtyValue<bool?>? _sellerObligatedIndicator2015;
+        private DirtyValue<decimal?>? _sellerPAC2015;
+        private DirtyValue<decimal?>? _sellerPOC2015;
+        private DirtyValue<decimal?>? _selPaidAmount;
+        private DirtyValue<bool?>? _simultaneousIssuanceIndicator2015;
+        private DirtyValue<bool?>? _taxesIndicator2015;
+        private DirtyValue<bool?>? _titleServiceSelectIndicator;
+        private DirtyValue<decimal?>? _totalFeeAmount2015;
+        private DirtyValue<decimal?>? _totalFeePercentage2015;
+        private DirtyValue<decimal?>? _totalPaidByBLO2015;
+        private DirtyValue<decimal?>? _undiscountedInsurance2015;
+        private DirtyValue<decimal?>? _wholePoc;
+        private DirtyValue<StringEnumValue<WholePocPaidByType>>? _wholePocPaidByType;
 
         /// <summary>
         /// Gfe2010Fee AdditionalAmount
@@ -164,7 +164,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// Gfe2010Fee EscrowedIndicator2015
@@ -200,7 +200,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Gfe2010Fee InsuranceIndicator2015
@@ -278,7 +278,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee PaidToName
         /// </summary>
-        public string PaidToName { get => _paidToName; set => SetField(ref _paidToName, value); }
+        public string? PaidToName { get => _paidToName; set => SetField(ref _paidToName, value); }
 
         /// <summary>
         /// Gfe2010Fee PocPtcIndicator

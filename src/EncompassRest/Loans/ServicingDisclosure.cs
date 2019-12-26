@@ -8,26 +8,26 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ServicingDisclosure : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _disclosurePercent1;
-        private DirtyValue<decimal?> _disclosurePercent2;
-        private DirtyValue<decimal?> _disclosurePercent3;
-        private DirtyValue<string> _disclosureYear1;
-        private DirtyValue<string> _disclosureYear2;
-        private DirtyValue<string> _disclosureYear3;
-        private DirtyValue<bool?> _fiftyOneTo75Indicator;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _seventySixTo100Indicator;
-        private DirtyValue<StringEnumValue<DoesOrDoesNot2>> _thisEstimateType;
-        private DirtyValue<StringEnumValue<DoesOrDoesNot2>> _thisInformationType;
-        private DirtyValue<bool?> _thisIsOurRecordOfTransferingIndicator;
-        private DirtyValue<bool?> _twentySixTo50Indicator;
-        private DirtyValue<StringEnumValue<WeAreAbleType>> _weAreAbleType;
-        private DirtyValue<bool?> _weDoNotSellMortgageLoansIndicator;
-        private DirtyValue<bool?> _weDoNotServiceMortgageLoansIndicator;
-        private DirtyValue<bool?> _weHaveNotServicedMortgLoansIn3YrsIndicator;
-        private DirtyValue<bool?> _weHavePreviouslyAssignedIndicator;
-        private DirtyValue<bool?> _weMayAssignIndicator;
-        private DirtyValue<bool?> _zeroTo25Indicator;
+        private DirtyValue<decimal?>? _disclosurePercent1;
+        private DirtyValue<decimal?>? _disclosurePercent2;
+        private DirtyValue<decimal?>? _disclosurePercent3;
+        private DirtyValue<string?>? _disclosureYear1;
+        private DirtyValue<string?>? _disclosureYear2;
+        private DirtyValue<string?>? _disclosureYear3;
+        private DirtyValue<bool?>? _fiftyOneTo75Indicator;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _seventySixTo100Indicator;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot2>>? _thisEstimateType;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot2>>? _thisInformationType;
+        private DirtyValue<bool?>? _thisIsOurRecordOfTransferingIndicator;
+        private DirtyValue<bool?>? _twentySixTo50Indicator;
+        private DirtyValue<StringEnumValue<WeAreAbleType>>? _weAreAbleType;
+        private DirtyValue<bool?>? _weDoNotSellMortgageLoansIndicator;
+        private DirtyValue<bool?>? _weDoNotServiceMortgageLoansIndicator;
+        private DirtyValue<bool?>? _weHaveNotServicedMortgLoansIn3YrsIndicator;
+        private DirtyValue<bool?>? _weHavePreviouslyAssignedIndicator;
+        private DirtyValue<bool?>? _weMayAssignIndicator;
+        private DirtyValue<bool?>? _zeroTo25Indicator;
 
         /// <summary>
         /// Disclosure 3B % 1 [RESPA.X23]
@@ -50,17 +50,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure 3B Yr 1 [RESPA.X22]
         /// </summary>
-        public string DisclosureYear1 { get => _disclosureYear1; set => SetField(ref _disclosureYear1, value); }
+        public string? DisclosureYear1 { get => _disclosureYear1; set => SetField(ref _disclosureYear1, value); }
 
         /// <summary>
         /// Disclosure 3B Yr 2 [RESPA.X24]
         /// </summary>
-        public string DisclosureYear2 { get => _disclosureYear2; set => SetField(ref _disclosureYear2, value); }
+        public string? DisclosureYear2 { get => _disclosureYear2; set => SetField(ref _disclosureYear2, value); }
 
         /// <summary>
         /// Disclosure 3B Yr 3 [RESPA.X26]
         /// </summary>
-        public string DisclosureYear3 { get => _disclosureYear3; set => SetField(ref _disclosureYear3, value); }
+        public string? DisclosureYear3 { get => _disclosureYear3; set => SetField(ref _disclosureYear3, value); }
 
         /// <summary>
         /// Disclosure 2 51-75% [RESPA.X16]
@@ -71,7 +71,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ServicingDisclosure Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Disclosure 2 76-100% [RESPA.X17]

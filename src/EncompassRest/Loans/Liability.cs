@@ -10,78 +10,78 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(AccountIndicator) + "," + nameof(LiabilityType), SerializeWholeListWhenDirty = true)]
     public sealed partial class Liability : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _accountIdentifier;
-        private DirtyValue<bool?> _accountIndicator;
-        private DirtyValue<string> _attention;
-        private DirtyValue<bool?> _bankLiabilityConsideredIndicator;
-        private DirtyValue<EntityReference> _contact;
-        private DirtyValue<decimal?> _creditLimit;
-        private DirtyValue<StringEnumValue<LienPosition>> _currentLienPosition;
-        private DirtyValue<DateTime?> _date;
-        private DirtyValue<string> _description;
-        private DirtyValue<string> _descriptionOfPurpose;
-        private DirtyValue<bool?> _entityDeleted;
-        private DirtyValue<bool?> _exclusionIndicator;
-        private DirtyValue<string> _holderAddressCity;
-        private DirtyValue<string> _holderAddressPostalCode;
-        private DirtyValue<StringEnumValue<State>> _holderAddressState;
-        private DirtyValue<string> _holderAddressStreetLine1;
-        private DirtyValue<string> _holderComments;
-        private DirtyValue<string> _holderEmail;
-        private DirtyValue<string> _holderFax;
-        private DirtyValue<string> _holderName;
-        private DirtyValue<string> _holderPhone;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _includeTaxesAndInsuranceIndicator;
-        private DirtyValue<bool?> _isDebtNotSecuredToSubjectPropertyIndicator;
-        private DirtyValue<int?> _lates12Month120Day;
-        private DirtyValue<int?> _lates12Month150Day;
-        private DirtyValue<int?> _lates12Month30Day;
-        private DirtyValue<int?> _lates12Month60Day;
-        private DirtyValue<int?> _lates12Month90Day;
-        private DirtyValue<int?> _lates24Month120Day;
-        private DirtyValue<int?> _lates24Month150Day;
-        private DirtyValue<int?> _lates24Month30Day;
-        private DirtyValue<int?> _lates24Month60Day;
-        private DirtyValue<int?> _lates24Month90Day;
-        private DirtyValue<int?> _lates25Month120Day;
-        private DirtyValue<int?> _lates25Month150Day;
-        private DirtyValue<int?> _lates25Month30Day;
-        private DirtyValue<int?> _lates25Month60Day;
-        private DirtyValue<int?> _lates25Month90Day;
-        private DirtyValue<int?> _liabilityIndex;
-        private DirtyValue<StringEnumValue<LiabilityType>> _liabilityType;
-        private DirtyValue<decimal?> _monthlyPaymentAmount;
-        private DirtyValue<int?> _monthsToExclude;
-        private DirtyValue<StringEnumValue<LiabilityMortgageType>> _mortgageType;
-        private DirtyValue<string> _nameInAccount;
-        private DirtyValue<bool?> _noLinkToDocTrackIndicator;
-        private DirtyValue<string> _otherDescription;
-        private DirtyValue<StringEnumValue<Owner>> _owner;
-        private DirtyValue<bool?> _payoffIncludedIndicator;
-        private DirtyValue<bool?> _payoffStatusIndicator;
-        private DirtyValue<decimal?> _prepaymentPenaltyAmount;
-        private DirtyValue<bool?> _printAttachmentIndicator;
-        private DirtyValue<bool?> _printUserJobTitleIndicator;
-        private DirtyValue<bool?> _printUserNameIndicator;
-        private DirtyValue<StringEnumValue<LienPosition>> _proposedLienPosition;
-        private DirtyValue<int?> _remainingTermMonths;
-        private DirtyValue<string> _reoId;
-        private DirtyValue<string> _requestId;
-        private DirtyValue<bool?> _subjectLoanResubordinationIndicator;
-        private DirtyValue<bool?> _subjectPropertyIndicator;
-        private DirtyValue<string> _title;
-        private DirtyValue<string> _titleFax;
-        private DirtyValue<string> _titlePhone;
-        private DirtyValue<decimal?> _toBePaidOffAmount;
-        private DirtyValue<StringEnumValue<UCDPayoffType>> _uCDPayoffType;
-        private DirtyValue<decimal?> _unpaidBalanceAmount;
-        private DirtyValue<int?> _volIndex;
+        private DirtyValue<string?>? _accountIdentifier;
+        private DirtyValue<bool?>? _accountIndicator;
+        private DirtyValue<string?>? _attention;
+        private DirtyValue<bool?>? _bankLiabilityConsideredIndicator;
+        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<decimal?>? _creditLimit;
+        private DirtyValue<StringEnumValue<LienPosition>>? _currentLienPosition;
+        private DirtyValue<DateTime?>? _date;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<string?>? _descriptionOfPurpose;
+        private DirtyValue<bool?>? _entityDeleted;
+        private DirtyValue<bool?>? _exclusionIndicator;
+        private DirtyValue<string?>? _holderAddressCity;
+        private DirtyValue<string?>? _holderAddressPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _holderAddressState;
+        private DirtyValue<string?>? _holderAddressStreetLine1;
+        private DirtyValue<string?>? _holderComments;
+        private DirtyValue<string?>? _holderEmail;
+        private DirtyValue<string?>? _holderFax;
+        private DirtyValue<string?>? _holderName;
+        private DirtyValue<string?>? _holderPhone;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _includeTaxesAndInsuranceIndicator;
+        private DirtyValue<bool?>? _isDebtNotSecuredToSubjectPropertyIndicator;
+        private DirtyValue<int?>? _lates12Month120Day;
+        private DirtyValue<int?>? _lates12Month150Day;
+        private DirtyValue<int?>? _lates12Month30Day;
+        private DirtyValue<int?>? _lates12Month60Day;
+        private DirtyValue<int?>? _lates12Month90Day;
+        private DirtyValue<int?>? _lates24Month120Day;
+        private DirtyValue<int?>? _lates24Month150Day;
+        private DirtyValue<int?>? _lates24Month30Day;
+        private DirtyValue<int?>? _lates24Month60Day;
+        private DirtyValue<int?>? _lates24Month90Day;
+        private DirtyValue<int?>? _lates25Month120Day;
+        private DirtyValue<int?>? _lates25Month150Day;
+        private DirtyValue<int?>? _lates25Month30Day;
+        private DirtyValue<int?>? _lates25Month60Day;
+        private DirtyValue<int?>? _lates25Month90Day;
+        private DirtyValue<int?>? _liabilityIndex;
+        private DirtyValue<StringEnumValue<LiabilityType>>? _liabilityType;
+        private DirtyValue<decimal?>? _monthlyPaymentAmount;
+        private DirtyValue<int?>? _monthsToExclude;
+        private DirtyValue<StringEnumValue<LiabilityMortgageType>>? _mortgageType;
+        private DirtyValue<string?>? _nameInAccount;
+        private DirtyValue<bool?>? _noLinkToDocTrackIndicator;
+        private DirtyValue<string?>? _otherDescription;
+        private DirtyValue<StringEnumValue<Owner>>? _owner;
+        private DirtyValue<bool?>? _payoffIncludedIndicator;
+        private DirtyValue<bool?>? _payoffStatusIndicator;
+        private DirtyValue<decimal?>? _prepaymentPenaltyAmount;
+        private DirtyValue<bool?>? _printAttachmentIndicator;
+        private DirtyValue<bool?>? _printUserJobTitleIndicator;
+        private DirtyValue<bool?>? _printUserNameIndicator;
+        private DirtyValue<StringEnumValue<LienPosition>>? _proposedLienPosition;
+        private DirtyValue<int?>? _remainingTermMonths;
+        private DirtyValue<string?>? _reoId;
+        private DirtyValue<string?>? _requestId;
+        private DirtyValue<bool?>? _subjectLoanResubordinationIndicator;
+        private DirtyValue<bool?>? _subjectPropertyIndicator;
+        private DirtyValue<string?>? _title;
+        private DirtyValue<string?>? _titleFax;
+        private DirtyValue<string?>? _titlePhone;
+        private DirtyValue<decimal?>? _toBePaidOffAmount;
+        private DirtyValue<StringEnumValue<UCDPayoffType>>? _uCDPayoffType;
+        private DirtyValue<decimal?>? _unpaidBalanceAmount;
+        private DirtyValue<int?>? _volIndex;
 
         /// <summary>
         /// Liability AccountIdentifier [FLNN10]
         /// </summary>
-        public string AccountIdentifier { get => _accountIdentifier; set => SetField(ref _accountIdentifier, value); }
+        public string? AccountIdentifier { get => _accountIdentifier; set => SetField(ref _accountIdentifier, value); }
 
         /// <summary>
         /// Liability AccountIndicator
@@ -91,7 +91,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Creditor Contact [FLNN03]
         /// </summary>
-        public string Attention { get => _attention; set => SetField(ref _attention, value); }
+        public string? Attention { get => _attention; set => SetField(ref _attention, value); }
 
         /// <summary>
         /// Bank Liability Considered in Exposure Indicator [FLNN30]
@@ -123,12 +123,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liabilities Alimony/Child Support Descr [271]
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// .Description Of Purpose [FLNN43]
         /// </summary>
-        public string DescriptionOfPurpose { get => _descriptionOfPurpose; set => SetField(ref _descriptionOfPurpose, value); }
+        public string? DescriptionOfPurpose { get => _descriptionOfPurpose; set => SetField(ref _descriptionOfPurpose, value); }
 
         /// <summary>
         /// Liability EntityDeleted
@@ -144,13 +144,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Creditor City [FLNN05]
         /// </summary>
-        public string HolderAddressCity { get => _holderAddressCity; set => SetField(ref _holderAddressCity, value); }
+        public string? HolderAddressCity { get => _holderAddressCity; set => SetField(ref _holderAddressCity, value); }
 
         /// <summary>
         /// Liability Creditor Zipcode [FLNN07]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string HolderAddressPostalCode { get => _holderAddressPostalCode; set => SetField(ref _holderAddressPostalCode, value); }
+        public string? HolderAddressPostalCode { get => _holderAddressPostalCode; set => SetField(ref _holderAddressPostalCode, value); }
 
         /// <summary>
         /// Liability Creditor State [FLNN06]
@@ -160,39 +160,39 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Creditor Address [FLNN04]
         /// </summary>
-        public string HolderAddressStreetLine1 { get => _holderAddressStreetLine1; set => SetField(ref _holderAddressStreetLine1, value); }
+        public string? HolderAddressStreetLine1 { get => _holderAddressStreetLine1; set => SetField(ref _holderAddressStreetLine1, value); }
 
         /// <summary>
         /// Liability Creditor Comments [FLNN23]
         /// </summary>
-        public string HolderComments { get => _holderComments; set => SetField(ref _holderComments, value); }
+        public string? HolderComments { get => _holderComments; set => SetField(ref _holderComments, value); }
 
         /// <summary>
         /// Liability Creditor Email [FLNN22]
         /// </summary>
-        public string HolderEmail { get => _holderEmail; set => SetField(ref _holderEmail, value); }
+        public string? HolderEmail { get => _holderEmail; set => SetField(ref _holderEmail, value); }
 
         /// <summary>
         /// Liability Creditor Fax [FLNN21]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string HolderFax { get => _holderFax; set => SetField(ref _holderFax, value); }
+        public string? HolderFax { get => _holderFax; set => SetField(ref _holderFax, value); }
 
         /// <summary>
         /// Liability Creditor Name [FLNN02]
         /// </summary>
-        public string HolderName { get => _holderName; set => SetField(ref _holderName, value); }
+        public string? HolderName { get => _holderName; set => SetField(ref _holderName, value); }
 
         /// <summary>
         /// Liability Creditor Phone [FLNN20]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string HolderPhone { get => _holderPhone; set => SetField(ref _holderPhone, value); }
+        public string? HolderPhone { get => _holderPhone; set => SetField(ref _holderPhone, value); }
 
         /// <summary>
         /// Liability Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Payment includes Taxes and Insurance [FLNN66]
@@ -310,7 +310,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Account Name [FLNN09]
         /// </summary>
-        public string NameInAccount { get => _nameInAccount; set => SetField(ref _nameInAccount, value); }
+        public string? NameInAccount { get => _nameInAccount; set => SetField(ref _nameInAccount, value); }
 
         /// <summary>
         /// Liability No Link to Doc Tracking [FLNN97]
@@ -321,7 +321,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Other Account Type Description [FLNN65]
         /// </summary>
-        public string OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
+        public string? OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
 
         /// <summary>
         /// Liability Verif is For [FLNN15]
@@ -378,13 +378,13 @@ namespace EncompassRest.Loans
         /// Liability REO ID [FLNN25]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ReoId { get => _reoId; set => SetField(ref _reoId, value); }
+        public string? ReoId { get => _reoId; set => SetField(ref _reoId, value); }
 
         /// <summary>
         /// Liability Request ID [FLNN99]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string RequestId { get => _requestId; set => SetField(ref _requestId, value); }
+        public string? RequestId { get => _requestId; set => SetField(ref _requestId, value); }
 
         /// <summary>
         /// Liability Resubordinated Indicator [FLNN26]
@@ -401,19 +401,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability From Title [FLNN37]
         /// </summary>
-        public string Title { get => _title; set => SetField(ref _title, value); }
+        public string? Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// Liability From Fax [FLNN45]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
+        public string? TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
 
         /// <summary>
         /// Liability From Phone [FLNN44]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
+        public string? TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
 
         /// <summary>
         /// Liability Payoff Amount [FLNN16]

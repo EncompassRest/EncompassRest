@@ -22,8 +22,8 @@ namespace EncompassRest.Company
     /// </summary>
     public sealed class Company : ApiObject, ICompany
     {
-        private Users.Users _users;
-        private GlobalCustomDataObjects _globalCustomDataObjects;
+        private Users.Users? _users;
+        private GlobalCustomDataObjects? _globalCustomDataObjects;
 
         /// <summary>
         /// Users Apis

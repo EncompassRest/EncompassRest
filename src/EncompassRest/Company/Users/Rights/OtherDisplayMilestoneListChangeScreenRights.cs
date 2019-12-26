@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class OtherDisplayMilestoneListChangeScreenRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _modifyWhoReceivesNotificationOfAccessLoss;
+        private DirtyValue<bool?>? _modifyWhoReceivesNotificationOfAccessLoss;
 
         /// <summary>
         /// OtherDisplayMilestoneListChangeScreenRights ModifyWhoReceivesNotificationOfAccessLoss

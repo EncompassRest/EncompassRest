@@ -17,9 +17,9 @@ namespace EncompassRest.Services.Appraisal
         /// Object that encapsulates credentials and/or verification information with the Appraisal service provider.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public new AppraisalCredentials Credentials { get; set; }
+        public new AppraisalCredentials? Credentials { get; set; }
 
-        internal override ServiceCredentials CredentialsInternal
+        internal override ServiceCredentials? CredentialsInternal
         {
             get => Credentials;
             set
@@ -45,7 +45,7 @@ namespace EncompassRest.Services.Appraisal
         /// <param name="entityRef">References the entity ID and entity type. Both must include the loan ID and borrower application ID associated with the loan.</param>
         /// <param name="options">AppraisalProduct options.</param>
         public AppraisalProduct(EntityReference entityRef, AppraisalOptions options)
-            : this(entityRef, options, ServiceType.Appraisal.GetValue())
+            : this(entityRef, options, ServiceType.Appraisal.GetValue()!)
         {
         }
 

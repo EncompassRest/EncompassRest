@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans.Milestones
 {
@@ -8,22 +9,22 @@ namespace EncompassRest.Loans.Milestones
     [Entity(PropertiesToAlwaysSerialize = nameof(StartDate))]
     public sealed class LoanMilestone : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _id;
-        private DirtyValue<DateTime?> _startDate;
-        private LoanAssociate _loanAssociate;
-        private DirtyValue<int?> _expectedDays;
-        private DirtyValue<bool?> _doneIndicator;
-        private DirtyValue<int?> _actualDays;
-        private DirtyValue<bool?> _reviewedIndicator;
-        private DirtyValue<bool?> _roleRequired;
-        private DirtyValue<string> _milestoneName;
-        private DirtyValue<string> _milestoneIdString;
-        private DirtyValue<string> _comments;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<DateTime?>? _startDate;
+        private LoanAssociate? _loanAssociate;
+        private DirtyValue<int?>? _expectedDays;
+        private DirtyValue<bool?>? _doneIndicator;
+        private DirtyValue<int?>? _actualDays;
+        private DirtyValue<bool?>? _reviewedIndicator;
+        private DirtyValue<bool?>? _roleRequired;
+        private DirtyValue<string?>? _milestoneName;
+        private DirtyValue<string?>? _milestoneIdString;
+        private DirtyValue<string?>? _comments;
 
         /// <summary>
         /// Unique identifier of the milestone.
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// The start date of the milestone.
@@ -33,6 +34,7 @@ namespace EncompassRest.Loans.Milestones
         /// <summary>
         /// Object containing loan associate details.
         /// </summary>
+        [AllowNull]
         public LoanAssociate LoanAssociate { get => GetField(ref _loanAssociate); set => SetField(ref _loanAssociate, value); }
 
         /// <summary>
@@ -63,16 +65,16 @@ namespace EncompassRest.Loans.Milestones
         /// <summary>
         /// Name of the milestone set by the Encompass administrator.
         /// </summary>
-        public string MilestoneName { get => _milestoneName; set => SetField(ref _milestoneName, value); }
+        public string? MilestoneName { get => _milestoneName; set => SetField(ref _milestoneName, value); }
 
         /// <summary>
         /// LoanMilestone MilestoneIdString
         /// </summary>
-        public string MilestoneIdString { get => _milestoneIdString; set => SetField(ref _milestoneIdString, value); }
+        public string? MilestoneIdString { get => _milestoneIdString; set => SetField(ref _milestoneIdString, value); }
 
         /// <summary>
         /// LoanMilestone Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
     }
 }

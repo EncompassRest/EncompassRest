@@ -7,19 +7,19 @@ namespace EncompassRest.Loans.Conditions
     /// </summary>
     public sealed class PostClosingCondition : LoanCondition
     {
-        private DirtyValue<string> _recipient;
-        private DirtyValue<bool?> _isSent;
-        private DirtyValue<DateTime?> _sentDate;
-        private DirtyValue<EntityReference> _sentBy;
-        private DirtyValue<bool?> _isCleared;
-        private DirtyValue<DateTime?> _clearedDate;
-        private DirtyValue<EntityReference> _clearedBy;
-        private DirtyValue<bool?> _printExternally;
+        private DirtyValue<string?>? _recipient;
+        private DirtyValue<bool?>? _isSent;
+        private DirtyValue<DateTime?>? _sentDate;
+        private DirtyValue<EntityReference?>? _sentBy;
+        private DirtyValue<bool?>? _isCleared;
+        private DirtyValue<DateTime?>? _clearedDate;
+        private DirtyValue<EntityReference?>? _clearedBy;
+        private DirtyValue<bool?>? _printExternally;
 
         /// <summary>
         /// Recipient of the condition.
         /// </summary>
-        public string Recipient { get => _recipient; set => SetField(ref _recipient, value); }
+        public string? Recipient { get => _recipient; set => SetField(ref _recipient, value); }
 
         /// <summary>
         /// A value of <c>true</c> indicates the condition has been sent.
@@ -34,12 +34,12 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// User that sent the condition.
         /// </summary>
-        public EntityReference SentBy { get => _sentBy; set => SetField(ref _sentBy, value); }
+        public EntityReference? SentBy { get => _sentBy; set => SetField(ref _sentBy, value); }
 
         /// <summary>
         /// Whether the condition's status is Cleared.
         /// </summary>
-        private bool? IsCleared { get => _isCleared; set => SetField(ref _isCleared, value); }
+        public bool? IsCleared { get => _isCleared; set => SetField(ref _isCleared, value); }
 
         /// <summary>
         /// Date and time the condition was cleared.
@@ -49,7 +49,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Information about the Encompass user who cleared the condition.
         /// </summary>
-        public EntityReference ClearedBy { get => _clearedBy; set => SetField(ref _clearedBy, value); }
+        public EntityReference? ClearedBy { get => _clearedBy; set => SetField(ref _clearedBy, value); }
 
         /// <summary>
         /// PostClosingCondition PrintExternally

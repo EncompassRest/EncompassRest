@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,279 +11,279 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _acres;
-        private DirtyValue<string> _additionalSecurityDescription;
-        private DirtyValue<string> _administratorAddress;
-        private DirtyValue<string> _administratorCity;
-        private DirtyValue<string> _administratorContact;
-        private DirtyValue<string> _administratorName;
-        private DirtyValue<string> _administratorPostalCode;
-        private DirtyValue<StringEnumValue<State>> _administratorState;
-        private DirtyValue<int?> _ageOfProperty;
-        private DirtyValue<decimal?> _amountSpentOnEnergyImprovements;
-        private DirtyValue<StringEnumValue<AmountTypeWithheld>> _amountTypeWithheld;
-        private DirtyValue<decimal?> _amountWithheld;
-        private DirtyValue<decimal?> _annualGroundRent;
-        private DirtyValue<decimal?> _annualMaintenanceAssessment;
-        private DirtyValue<decimal?> _annualRealEstateTaxes;
-        private DirtyValue<decimal?> _annualSpecialAssessment;
-        private DirtyValue<string> _applicantAddressCity;
-        private DirtyValue<string> _applicantAddressPostalCode;
-        private DirtyValue<StringEnumValue<State>> _applicantAddressState;
-        private DirtyValue<string> _applicantAddressStreetLine1;
-        private DirtyValue<DateTime?> _applicantBirthDate;
-        private DirtyValue<string> _applicantEmailAddressText;
-        private DirtyValue<string> _applicantFirstNameWithMiddleName;
-        private DirtyValue<string> _applicantHmdaGenderType;
-        private DirtyValue<string> _applicantHomePhoneNumber;
-        private DirtyValue<string> _applicantLastNameWithSuffix;
-        private DirtyValue<string> _applicantTaxIdentificationIdentifier;
-        private DirtyValue<StringEnumValue<VaLoanDataAppraisalType>> _appraisalType;
-        private DirtyValue<bool?> _automaticProcedure;
-        private DirtyValue<bool?> _availableForInspectionAMIndicator;
-        private DirtyValue<string> _availableForInspectionDateAndTime;
-        private DirtyValue<decimal?> _borrowerPaidDiscountPointsTotalAmount;
-        private DirtyValue<StringEnumValue<BuildingType>> _buildingType;
-        private DirtyValue<bool?> _buyerPurchasingLotSeparately;
-        private DirtyValue<decimal?> _cashDisbursedToBorrowerAmount;
-        private DirtyValue<decimal?> _cashPaymentFromVeteran;
-        private DirtyValue<StringEnumValue<ClaimDisabilityBenefits>> _claimDisabilityBenefits;
-        private DirtyValue<bool?> _clothesWasherIndicator;
-        private DirtyValue<DateTime?> _constructionCompletedDate;
-        private DirtyValue<StringEnumValue<ConstructionPlan>> _constructionPlan;
-        private DirtyValue<bool?> _constructionWarrantyIncluded;
-        private DirtyValue<string> _contractNoApprovedByVA;
-        private DirtyValue<int?> _creditScore;
-        private DirtyValue<bool?> _currentlyOnMilitaryDuty;
-        private DirtyValue<DateTime?> _dateAquiredLand;
-        private DirtyValue<DateTime?> _dateOfAssignment;
-        private DirtyValue<DateTime?> _dateSAR;
-        private DirtyValue<decimal?> _disabilityAmountCollected;
-        private DirtyValue<decimal?> _disbursementsLessPayoffAmount;
-        private DirtyValue<decimal?> _discountPercentage;
-        private DirtyValue<decimal?> _discountPoint;
-        private DirtyValue<bool?> _dishwasherIndicator;
-        private DirtyValue<bool?> _dryerIndicator;
-        private DirtyValue<string> _emailToBeNotifiedWhenUploaded;
-        private DirtyValue<bool?> _energyImprovementsAdditionOfFeature;
-        private DirtyValue<string> _entitlementCode;
-        private DirtyValue<string> _equipmentOtherDescription;
-        private DirtyValue<decimal?> _estimatedImpactofHomeEquityRemainingAmount;
-        private DirtyValue<decimal?> _estimatedImpactofInterestRate;
-        private DirtyValue<decimal?> _estimatedImpactofLoanBalanceAmount;
-        private DirtyValue<decimal?> _estimatedImpactofLTV;
-        private DirtyValue<int?> _estimatedImpactofRemainingTermMonths;
-        private DirtyValue<decimal?> _estimatedImpactofTotalRemainingPaymentAmount;
-        private DirtyValue<bool?> _excludeTaxesInsuranceIndicator;
-        private DirtyValue<decimal?> _existingHomeEquityRemainingAmount;
-        private DirtyValue<decimal?> _existingLoanBalance;
-        private DirtyValue<DateTime?> _existingLoanFirstPaymentDate;
-        private DirtyValue<int?> _existingReasonableAppraisedValue;
-        private DirtyValue<decimal?> _existingTotalRemainingPaymentAmount;
-        private DirtyValue<string> _existingVALoanNumber;
-        private DirtyValue<decimal?> _finalDiscountAmount;
-        private DirtyValue<decimal?> _finalFundingFeeAmount;
-        private DirtyValue<bool?> _firstChattelLoanType;
-        private DirtyValue<bool?> _firstTimeUse;
-        private DirtyValue<bool?> _fundingFeeExempt;
-        private DirtyValue<bool?> _garbageDisposalIndicator;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _initialTotal;
-        private DirtyValue<StringEnumValue<InspectionWillBeMadeBy>> _inspectionWillBeMadeBy;
-        private DirtyValue<bool?> _insulation;
-        private DirtyValue<StringEnumValue<InsuranceType>> _insuranceType;
-        private DirtyValue<int?> _irregularLotSizeInSquareFeet;
-        private DirtyValue<bool?> _isDelinquent30Days;
-        private DirtyValue<string> _keysAtAddress;
-        private DirtyValue<decimal?> _landPurchasePrice;
-        private DirtyValue<StringEnumValue<LeaseholdType>> _leaseholdType;
-        private DirtyValue<string> _lenderSAR;
-        private DirtyValue<string> _loanAnalysisRemarks1;
-        private DirtyValue<string> _loanAnalysisRemarks2;
-        private DirtyValue<string> _loanAnalysisRemarks3;
-        private DirtyValue<string> _loanAnalysisRemarks4;
-        private DirtyValue<string> _loanAnalysisRemarks5;
-        private DirtyValue<string> _loanAnalysisRemarks6;
-        private DirtyValue<string> _loanAnalysisRemarks7;
-        private DirtyValue<string> _loanAnalysisRemarks8;
-        private DirtyValue<string> _loanAnalysisRemarks9;
-        private DirtyValue<StringEnumValue<LoanCode>> _loanCode;
-        private DirtyValue<StringEnumValue<LoanProcedure>> _loanProcedure;
-        private DirtyValue<bool?> _loanProcessedUnderAU;
-        private DirtyValue<string> _loanSummaryRemarks1;
-        private DirtyValue<string> _loanSummaryRemarks2;
-        private DirtyValue<string> _loanSummaryRemarks3;
-        private DirtyValue<string> _loanSummaryRemarks4;
-        private DirtyValue<string> _loanSummaryRemarks5;
-        private DirtyValue<string> _loanSummaryRemarks6;
-        private DirtyValue<string> _loanSummaryRemarks7;
-        private DirtyValue<string> _loanSummaryRemarks8;
-        private DirtyValue<string> _lotDimensions;
-        private DirtyValue<string> _mailingAddress;
-        private DirtyValue<string> _mailingCity;
-        private DirtyValue<string> _mailingPostalCode;
-        private DirtyValue<StringEnumValue<State>> _mailingState;
-        private DirtyValue<StringEnumValue<ManufacturedHome>> _manufacturedHome;
-        private DirtyValue<string> _mCRVNumber;
-        private DirtyValue<StringEnumValue<MilitaryBranchOfService>> _militaryBranchOfService;
-        private DirtyList<MilitaryService> _militaryServices;
-        private DirtyValue<string> _mineralRightsReserved;
-        private DirtyValue<string> _nameOfOccupant;
-        private DirtyValue<string> _nameOfOwner;
-        private DirtyValue<string> _nameOfWarrantyProgram;
-        private DirtyValue<decimal?> _negativeRents;
-        private DirtyValue<bool?> _noEnergyImprovements;
-        private DirtyValue<string> _nonrealtyDescription;
-        private DirtyValue<string> _numberOfBuildings;
-        private DirtyValue<string> _occupantTelephone;
-        private DirtyValue<bool?> _onMilitaryDutyFollowingSeparation;
-        private DirtyValue<decimal?> _originalInterestRate;
-        private DirtyValue<decimal?> _originalLoanAmount;
-        private DirtyValue<int?> _originalTerm;
-        private DirtyValue<bool?> _originalValueEstimateChanged;
-        private DirtyValue<decimal?> _originationFeeAmount;
-        private DirtyValue<decimal?> _otherClosingCosts;
-        private DirtyValue<string> _otherDescriptionEstateProperty;
-        private DirtyValue<string> _otherDescriptionLoanType;
-        private DirtyValue<bool?> _otherEstateProperty;
-        private DirtyValue<bool?> _otherImprovements;
-        private DirtyValue<bool?> _otherLoanType;
-        private DirtyValue<string> _paidInFullVALoanNumber;
-        private DirtyValue<bool?> _payoffIndicator1;
-        private DirtyValue<bool?> _payoffIndicator2;
-        private DirtyValue<bool?> _payoffIndicator3;
-        private DirtyValue<bool?> _payoffIndicator4;
-        private DirtyValue<bool?> _payoffIndicator5;
-        private DirtyValue<bool?> _payoffIndicator6;
-        private DirtyValue<bool?> _payoffIndicator7;
-        private DirtyValue<bool?> _payoffIndicator8;
-        private DirtyValue<bool?> _payoffIndicator9;
-        private DirtyValue<decimal?> _pestReportFee;
-        private DirtyValue<string> _plansSubmitted;
-        private DirtyValue<string> _pOCAddress;
-        private DirtyValue<string> _pOCCity;
-        private DirtyValue<string> _pOCName;
-        private DirtyValue<string> _pOCPhone;
-        private DirtyValue<StringEnumValue<State>> _pOCState;
-        private DirtyValue<string> _pOCZipCode;
-        private DirtyValue<decimal?> _preliminaryDiscountAmount;
-        private DirtyValue<decimal?> _preliminaryFundingFeeAmount;
-        private DirtyValue<decimal?> _preliminaryTotal;
-        private DirtyValue<bool?> _previousVALoanIndicator;
-        private DirtyList<PreviousVaLoan> _previousVaLoans;
-        private DirtyValue<bool?> _priorApprovalProcedure;
-        private DirtyValue<StringEnumValue<PriorLoanType>> _priorLoanType;
-        private DirtyValue<StringEnumValue<PropertyDesignation>> _propertyDesignation;
-        private DirtyValue<int?> _propertyGrossLivingArea;
-        private DirtyValue<string> _propertyLegalDescription1;
-        private DirtyValue<string> _propertyLegalDescription2;
-        private DirtyValue<string> _propertyLegalDescription3;
-        private DirtyValue<string> _propertyLegalDescription4;
-        private DirtyValue<StringEnumValue<PropertyOccupancyType>> _propertyOccupancyType;
-        private DirtyValue<decimal?> _proposedHomeEquityRemainingAmount;
-        private DirtyValue<bool?> _proposedSaleContractAttached;
-        private DirtyValue<decimal?> _proposedTotalRemainingPaymentAmount;
-        private DirtyValue<StringEnumValue<VaLoanDataPurposeOfLoan>> _purposeOfLoan;
-        private DirtyValue<bool?> _rangeOvenIndicator;
-        private DirtyValue<bool?> _reasonableValueCompleted;
-        private DirtyValue<bool?> _refrigeratorIndicator;
-        private DirtyValue<string> _rent;
-        private DirtyValue<bool?> _replacementOfSystem;
-        private DirtyValue<StringEnumValue<RiskClassification>> _riskClasification;
-        private DirtyValue<string> _serviceNumber;
-        private DirtyValue<bool?> _solarHeatingOrCooling;
-        private DirtyValue<string> _specialAssessmentComments1;
-        private DirtyValue<string> _specialAssessmentComments2;
-        private DirtyValue<string> _specialAssessmentComments3;
-        private DirtyValue<StringEnumValue<StreetAccess>> _streetAccess;
-        private DirtyValue<StringEnumValue<StreetMaintenance>> _streetMaintenance;
-        private DirtyValue<StringEnumValue<SystemUsed>> _systemUsed;
-        private DirtyValue<string> _title;
-        private DirtyValue<string> _titleLimitations1;
-        private DirtyValue<string> _titleLimitations2;
-        private DirtyValue<string> _titleLimitations3;
-        private DirtyValue<decimal?> _totalBaths;
-        private DirtyValue<int?> _totalBedrooms;
-        private DirtyValue<decimal?> _totalClosingCostLessGuaranteeFee;
-        private DirtyValue<decimal?> _totalDebtMonthlyPayment;
-        private DirtyValue<decimal?> _totalDiscountPointCharged;
-        private DirtyValue<decimal?> _totalDiscountPointsCharged;
-        private DirtyValue<decimal?> _totalForMaxLoanAmount;
-        private DirtyValue<decimal?> _totalMonthlyPayment;
-        private DirtyValue<decimal?> _totalPaidOverLifeIncreasedAmount;
-        private DirtyValue<decimal?> _totalProposedMonthlyPayment;
-        private DirtyValue<int?> _totalRooms;
-        private DirtyValue<decimal?> _totalUnpaidSpecialAssessments;
-        private DirtyValue<StringEnumValue<TypeOfHybridARM>> _typeOfHybridARM;
-        private DirtyValue<StringEnumValue<TypeOfMortgage>> _typeOfMortgage;
-        private DirtyValue<StringEnumValue<TypeOfOwnsership>> _typeOfOwnsership;
-        private DirtyValue<StringEnumValue<TypeOfStructure>> _typeOfStructure;
-        private DirtyValue<StringEnumValue<TypeOfVeteran>> _typeOfVeteran;
-        private DirtyValue<bool?> _unsecuredLoanType;
-        private DirtyValue<StringEnumValue<UtilitiesDescription>> _utilitiesElectricDescription;
-        private DirtyValue<StringEnumValue<UtilitiesDescription>> _utilitiesGasDescription;
-        private DirtyValue<StringEnumValue<UtilitiesDescription>> _utilitiesSewerDescription;
-        private DirtyValue<StringEnumValue<UtilitiesDescription>> _utilitiesWaterDescription;
-        private DirtyValue<DateTime?> _vAAppraisalSentDate;
-        private DirtyValue<StringEnumValue<VABenefitRelatedIndebtedness>> _vABenefitRelatedIndebtedness;
-        private DirtyValue<string> _vABuilderDescription;
-        private DirtyValue<string> _vABuilderIDNo;
-        private DirtyValue<StringEnumValue<VACashOutRefinanceType>> _vACashOutRefinanceType;
-        private DirtyValue<string> _vAClaimFolderNumber;
-        private DirtyValue<string> _vAClaimNumber;
-        private DirtyValue<DateTime?> _vADateNOVAppraisalMailedToBorrower;
-        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactInterestRateIndicator;
-        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactLoanBalanceIndicator;
-        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactLTVIndicator;
-        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactRemainingEquityIndicator;
-        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactRemainingTermIndicator;
-        private DirtyValue<StringEnumValue<IncreaseOrDecrease>> _vAImpactScheduledPaymentsIndicator;
-        private DirtyValue<bool?> _vAIsDelinquent30Days;
-        private DirtyValue<bool?> _vALatePaymentIn6Months;
-        private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _vaLoanSummaryApplicantType;
-        private DirtyValue<DateTime?> _vANOVDateReceived;
-        private DirtyValue<DateTime?> _vANOVDateReviewed;
-        private DirtyValue<DateTime?> _vANOVIssuedDate;
-        private DirtyValue<StringEnumValue<AmortizationType>> _vAOriginalAmortizationType;
-        private DirtyValue<decimal?> _vAOriginalMonthlyPayment;
-        private DirtyValue<string> _vAQualification2ndTierEntitlement;
-        private DirtyValue<StringEnumValue<VAQualificationCountryRegion>> _vAQualificationCountryRegion;
-        private DirtyValue<decimal?> _vAQualificationCountyLimits;
-        private DirtyValue<int?> _vARecoupmentClosingCosts;
-        private DirtyValue<bool?> _vARecoupmentExcludePrepaids;
-        private DirtyValue<decimal?> _vARecoupmentMonthlyDecreaseInPayment;
-        private DirtyValue<int?> _vARecoupmentMonths;
-        private DirtyValue<decimal?> _vARecoupmentTotalClosingCosts;
-        private DirtyValue<int?> _vARecoupmentYears;
-        private DirtyValue<DateTime?> _vATrackingCertOfCommitmentIssued;
-        private DirtyValue<DateTime?> _vATrackingCOEIssueDate;
-        private DirtyValue<string> _vATrackingCOEIssueHistory;
-        private DirtyValue<DateTime?> _vATrackingFinalApprovalCommitmentDate;
-        private DirtyValue<bool?> _vATrackingGSAExclusionaryListChecked;
-        private DirtyValue<bool?> _vATrackingInuranceFloodPolicy;
-        private DirtyValue<bool?> _vATrackingInuranceHazardPolicy;
-        private DirtyValue<bool?> _vATrackingInuranceWindOrHailPolicy;
-        private DirtyValue<bool?> _vATrackingInuranceWoodDestroyingPolicy;
-        private DirtyValue<bool?> _vATrackingIsSARLAPPCertified;
-        private DirtyValue<DateTime?> _vATrackingLoanGuaranteeCertReceipt;
-        private DirtyValue<DateTime?> _vATrackingMasterCommitmentLockExpired;
-        private DirtyValue<DateTime?> _vATrackingOrderedDate;
-        private DirtyValue<DateTime?> _vATrackingPaidDate;
-        private DirtyValue<DateTime?> _vATrackingPurchaseContractDate;
-        private DirtyValue<bool?> _vATrackingReceiptReceived;
-        private DirtyValue<string> _vATrackingSARID;
-        private DirtyValue<string> _vATrackingSARName;
-        private DirtyValue<bool?> _ventFanIndicator;
-        private DirtyValue<bool?> _veteranDischargedIndicator;
-        private DirtyValue<StringEnumValue<VeteranServiceType>> _veteranServiceType;
-        private DirtyValue<string> _warrantorAddress;
-        private DirtyValue<string> _warrantorCity;
-        private DirtyValue<string> _warrantorName;
-        private DirtyValue<string> _warrantorPhone;
-        private DirtyValue<string> _warrantorPostalCode;
-        private DirtyValue<StringEnumValue<State>> _warrantorState;
-        private DirtyValue<DateTime?> _warrantyProgramExpirationDate;
-        private DirtyValue<bool?> _wWCarpetIndicator;
+        private DirtyValue<decimal?>? _acres;
+        private DirtyValue<string?>? _additionalSecurityDescription;
+        private DirtyValue<string?>? _administratorAddress;
+        private DirtyValue<string?>? _administratorCity;
+        private DirtyValue<string?>? _administratorContact;
+        private DirtyValue<string?>? _administratorName;
+        private DirtyValue<string?>? _administratorPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _administratorState;
+        private DirtyValue<int?>? _ageOfProperty;
+        private DirtyValue<decimal?>? _amountSpentOnEnergyImprovements;
+        private DirtyValue<StringEnumValue<AmountTypeWithheld>>? _amountTypeWithheld;
+        private DirtyValue<decimal?>? _amountWithheld;
+        private DirtyValue<decimal?>? _annualGroundRent;
+        private DirtyValue<decimal?>? _annualMaintenanceAssessment;
+        private DirtyValue<decimal?>? _annualRealEstateTaxes;
+        private DirtyValue<decimal?>? _annualSpecialAssessment;
+        private DirtyValue<string?>? _applicantAddressCity;
+        private DirtyValue<string?>? _applicantAddressPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _applicantAddressState;
+        private DirtyValue<string?>? _applicantAddressStreetLine1;
+        private DirtyValue<DateTime?>? _applicantBirthDate;
+        private DirtyValue<string?>? _applicantEmailAddressText;
+        private DirtyValue<string?>? _applicantFirstNameWithMiddleName;
+        private DirtyValue<string?>? _applicantHmdaGenderType;
+        private DirtyValue<string?>? _applicantHomePhoneNumber;
+        private DirtyValue<string?>? _applicantLastNameWithSuffix;
+        private DirtyValue<string?>? _applicantTaxIdentificationIdentifier;
+        private DirtyValue<StringEnumValue<VaLoanDataAppraisalType>>? _appraisalType;
+        private DirtyValue<bool?>? _automaticProcedure;
+        private DirtyValue<bool?>? _availableForInspectionAMIndicator;
+        private DirtyValue<string?>? _availableForInspectionDateAndTime;
+        private DirtyValue<decimal?>? _borrowerPaidDiscountPointsTotalAmount;
+        private DirtyValue<StringEnumValue<BuildingType>>? _buildingType;
+        private DirtyValue<bool?>? _buyerPurchasingLotSeparately;
+        private DirtyValue<decimal?>? _cashDisbursedToBorrowerAmount;
+        private DirtyValue<decimal?>? _cashPaymentFromVeteran;
+        private DirtyValue<StringEnumValue<ClaimDisabilityBenefits>>? _claimDisabilityBenefits;
+        private DirtyValue<bool?>? _clothesWasherIndicator;
+        private DirtyValue<DateTime?>? _constructionCompletedDate;
+        private DirtyValue<StringEnumValue<ConstructionPlan>>? _constructionPlan;
+        private DirtyValue<bool?>? _constructionWarrantyIncluded;
+        private DirtyValue<string?>? _contractNoApprovedByVA;
+        private DirtyValue<int?>? _creditScore;
+        private DirtyValue<bool?>? _currentlyOnMilitaryDuty;
+        private DirtyValue<DateTime?>? _dateAquiredLand;
+        private DirtyValue<DateTime?>? _dateOfAssignment;
+        private DirtyValue<DateTime?>? _dateSAR;
+        private DirtyValue<decimal?>? _disabilityAmountCollected;
+        private DirtyValue<decimal?>? _disbursementsLessPayoffAmount;
+        private DirtyValue<decimal?>? _discountPercentage;
+        private DirtyValue<decimal?>? _discountPoint;
+        private DirtyValue<bool?>? _dishwasherIndicator;
+        private DirtyValue<bool?>? _dryerIndicator;
+        private DirtyValue<string?>? _emailToBeNotifiedWhenUploaded;
+        private DirtyValue<bool?>? _energyImprovementsAdditionOfFeature;
+        private DirtyValue<string?>? _entitlementCode;
+        private DirtyValue<string?>? _equipmentOtherDescription;
+        private DirtyValue<decimal?>? _estimatedImpactofHomeEquityRemainingAmount;
+        private DirtyValue<decimal?>? _estimatedImpactofInterestRate;
+        private DirtyValue<decimal?>? _estimatedImpactofLoanBalanceAmount;
+        private DirtyValue<decimal?>? _estimatedImpactofLTV;
+        private DirtyValue<int?>? _estimatedImpactofRemainingTermMonths;
+        private DirtyValue<decimal?>? _estimatedImpactofTotalRemainingPaymentAmount;
+        private DirtyValue<bool?>? _excludeTaxesInsuranceIndicator;
+        private DirtyValue<decimal?>? _existingHomeEquityRemainingAmount;
+        private DirtyValue<decimal?>? _existingLoanBalance;
+        private DirtyValue<DateTime?>? _existingLoanFirstPaymentDate;
+        private DirtyValue<int?>? _existingReasonableAppraisedValue;
+        private DirtyValue<decimal?>? _existingTotalRemainingPaymentAmount;
+        private DirtyValue<string?>? _existingVALoanNumber;
+        private DirtyValue<decimal?>? _finalDiscountAmount;
+        private DirtyValue<decimal?>? _finalFundingFeeAmount;
+        private DirtyValue<bool?>? _firstChattelLoanType;
+        private DirtyValue<bool?>? _firstTimeUse;
+        private DirtyValue<bool?>? _fundingFeeExempt;
+        private DirtyValue<bool?>? _garbageDisposalIndicator;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _initialTotal;
+        private DirtyValue<StringEnumValue<InspectionWillBeMadeBy>>? _inspectionWillBeMadeBy;
+        private DirtyValue<bool?>? _insulation;
+        private DirtyValue<StringEnumValue<InsuranceType>>? _insuranceType;
+        private DirtyValue<int?>? _irregularLotSizeInSquareFeet;
+        private DirtyValue<bool?>? _isDelinquent30Days;
+        private DirtyValue<string?>? _keysAtAddress;
+        private DirtyValue<decimal?>? _landPurchasePrice;
+        private DirtyValue<StringEnumValue<LeaseholdType>>? _leaseholdType;
+        private DirtyValue<string?>? _lenderSAR;
+        private DirtyValue<string?>? _loanAnalysisRemarks1;
+        private DirtyValue<string?>? _loanAnalysisRemarks2;
+        private DirtyValue<string?>? _loanAnalysisRemarks3;
+        private DirtyValue<string?>? _loanAnalysisRemarks4;
+        private DirtyValue<string?>? _loanAnalysisRemarks5;
+        private DirtyValue<string?>? _loanAnalysisRemarks6;
+        private DirtyValue<string?>? _loanAnalysisRemarks7;
+        private DirtyValue<string?>? _loanAnalysisRemarks8;
+        private DirtyValue<string?>? _loanAnalysisRemarks9;
+        private DirtyValue<StringEnumValue<LoanCode>>? _loanCode;
+        private DirtyValue<StringEnumValue<LoanProcedure>>? _loanProcedure;
+        private DirtyValue<bool?>? _loanProcessedUnderAU;
+        private DirtyValue<string?>? _loanSummaryRemarks1;
+        private DirtyValue<string?>? _loanSummaryRemarks2;
+        private DirtyValue<string?>? _loanSummaryRemarks3;
+        private DirtyValue<string?>? _loanSummaryRemarks4;
+        private DirtyValue<string?>? _loanSummaryRemarks5;
+        private DirtyValue<string?>? _loanSummaryRemarks6;
+        private DirtyValue<string?>? _loanSummaryRemarks7;
+        private DirtyValue<string?>? _loanSummaryRemarks8;
+        private DirtyValue<string?>? _lotDimensions;
+        private DirtyValue<string?>? _mailingAddress;
+        private DirtyValue<string?>? _mailingCity;
+        private DirtyValue<string?>? _mailingPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _mailingState;
+        private DirtyValue<StringEnumValue<ManufacturedHome>>? _manufacturedHome;
+        private DirtyValue<string?>? _mCRVNumber;
+        private DirtyValue<StringEnumValue<MilitaryBranchOfService>>? _militaryBranchOfService;
+        private DirtyList<MilitaryService>? _militaryServices;
+        private DirtyValue<string?>? _mineralRightsReserved;
+        private DirtyValue<string?>? _nameOfOccupant;
+        private DirtyValue<string?>? _nameOfOwner;
+        private DirtyValue<string?>? _nameOfWarrantyProgram;
+        private DirtyValue<decimal?>? _negativeRents;
+        private DirtyValue<bool?>? _noEnergyImprovements;
+        private DirtyValue<string?>? _nonrealtyDescription;
+        private DirtyValue<string?>? _numberOfBuildings;
+        private DirtyValue<string?>? _occupantTelephone;
+        private DirtyValue<bool?>? _onMilitaryDutyFollowingSeparation;
+        private DirtyValue<decimal?>? _originalInterestRate;
+        private DirtyValue<decimal?>? _originalLoanAmount;
+        private DirtyValue<int?>? _originalTerm;
+        private DirtyValue<bool?>? _originalValueEstimateChanged;
+        private DirtyValue<decimal?>? _originationFeeAmount;
+        private DirtyValue<decimal?>? _otherClosingCosts;
+        private DirtyValue<string?>? _otherDescriptionEstateProperty;
+        private DirtyValue<string?>? _otherDescriptionLoanType;
+        private DirtyValue<bool?>? _otherEstateProperty;
+        private DirtyValue<bool?>? _otherImprovements;
+        private DirtyValue<bool?>? _otherLoanType;
+        private DirtyValue<string?>? _paidInFullVALoanNumber;
+        private DirtyValue<bool?>? _payoffIndicator1;
+        private DirtyValue<bool?>? _payoffIndicator2;
+        private DirtyValue<bool?>? _payoffIndicator3;
+        private DirtyValue<bool?>? _payoffIndicator4;
+        private DirtyValue<bool?>? _payoffIndicator5;
+        private DirtyValue<bool?>? _payoffIndicator6;
+        private DirtyValue<bool?>? _payoffIndicator7;
+        private DirtyValue<bool?>? _payoffIndicator8;
+        private DirtyValue<bool?>? _payoffIndicator9;
+        private DirtyValue<decimal?>? _pestReportFee;
+        private DirtyValue<string?>? _plansSubmitted;
+        private DirtyValue<string?>? _pOCAddress;
+        private DirtyValue<string?>? _pOCCity;
+        private DirtyValue<string?>? _pOCName;
+        private DirtyValue<string?>? _pOCPhone;
+        private DirtyValue<StringEnumValue<State>>? _pOCState;
+        private DirtyValue<string?>? _pOCZipCode;
+        private DirtyValue<decimal?>? _preliminaryDiscountAmount;
+        private DirtyValue<decimal?>? _preliminaryFundingFeeAmount;
+        private DirtyValue<decimal?>? _preliminaryTotal;
+        private DirtyValue<bool?>? _previousVALoanIndicator;
+        private DirtyList<PreviousVaLoan>? _previousVaLoans;
+        private DirtyValue<bool?>? _priorApprovalProcedure;
+        private DirtyValue<StringEnumValue<PriorLoanType>>? _priorLoanType;
+        private DirtyValue<StringEnumValue<PropertyDesignation>>? _propertyDesignation;
+        private DirtyValue<int?>? _propertyGrossLivingArea;
+        private DirtyValue<string?>? _propertyLegalDescription1;
+        private DirtyValue<string?>? _propertyLegalDescription2;
+        private DirtyValue<string?>? _propertyLegalDescription3;
+        private DirtyValue<string?>? _propertyLegalDescription4;
+        private DirtyValue<StringEnumValue<PropertyOccupancyType>>? _propertyOccupancyType;
+        private DirtyValue<decimal?>? _proposedHomeEquityRemainingAmount;
+        private DirtyValue<bool?>? _proposedSaleContractAttached;
+        private DirtyValue<decimal?>? _proposedTotalRemainingPaymentAmount;
+        private DirtyValue<StringEnumValue<VaLoanDataPurposeOfLoan>>? _purposeOfLoan;
+        private DirtyValue<bool?>? _rangeOvenIndicator;
+        private DirtyValue<bool?>? _reasonableValueCompleted;
+        private DirtyValue<bool?>? _refrigeratorIndicator;
+        private DirtyValue<string?>? _rent;
+        private DirtyValue<bool?>? _replacementOfSystem;
+        private DirtyValue<StringEnumValue<RiskClassification>>? _riskClasification;
+        private DirtyValue<string?>? _serviceNumber;
+        private DirtyValue<bool?>? _solarHeatingOrCooling;
+        private DirtyValue<string?>? _specialAssessmentComments1;
+        private DirtyValue<string?>? _specialAssessmentComments2;
+        private DirtyValue<string?>? _specialAssessmentComments3;
+        private DirtyValue<StringEnumValue<StreetAccess>>? _streetAccess;
+        private DirtyValue<StringEnumValue<StreetMaintenance>>? _streetMaintenance;
+        private DirtyValue<StringEnumValue<SystemUsed>>? _systemUsed;
+        private DirtyValue<string?>? _title;
+        private DirtyValue<string?>? _titleLimitations1;
+        private DirtyValue<string?>? _titleLimitations2;
+        private DirtyValue<string?>? _titleLimitations3;
+        private DirtyValue<decimal?>? _totalBaths;
+        private DirtyValue<int?>? _totalBedrooms;
+        private DirtyValue<decimal?>? _totalClosingCostLessGuaranteeFee;
+        private DirtyValue<decimal?>? _totalDebtMonthlyPayment;
+        private DirtyValue<decimal?>? _totalDiscountPointCharged;
+        private DirtyValue<decimal?>? _totalDiscountPointsCharged;
+        private DirtyValue<decimal?>? _totalForMaxLoanAmount;
+        private DirtyValue<decimal?>? _totalMonthlyPayment;
+        private DirtyValue<decimal?>? _totalPaidOverLifeIncreasedAmount;
+        private DirtyValue<decimal?>? _totalProposedMonthlyPayment;
+        private DirtyValue<int?>? _totalRooms;
+        private DirtyValue<decimal?>? _totalUnpaidSpecialAssessments;
+        private DirtyValue<StringEnumValue<TypeOfHybridARM>>? _typeOfHybridARM;
+        private DirtyValue<StringEnumValue<TypeOfMortgage>>? _typeOfMortgage;
+        private DirtyValue<StringEnumValue<TypeOfOwnsership>>? _typeOfOwnsership;
+        private DirtyValue<StringEnumValue<TypeOfStructure>>? _typeOfStructure;
+        private DirtyValue<StringEnumValue<TypeOfVeteran>>? _typeOfVeteran;
+        private DirtyValue<bool?>? _unsecuredLoanType;
+        private DirtyValue<StringEnumValue<UtilitiesDescription>>? _utilitiesElectricDescription;
+        private DirtyValue<StringEnumValue<UtilitiesDescription>>? _utilitiesGasDescription;
+        private DirtyValue<StringEnumValue<UtilitiesDescription>>? _utilitiesSewerDescription;
+        private DirtyValue<StringEnumValue<UtilitiesDescription>>? _utilitiesWaterDescription;
+        private DirtyValue<DateTime?>? _vAAppraisalSentDate;
+        private DirtyValue<StringEnumValue<VABenefitRelatedIndebtedness>>? _vABenefitRelatedIndebtedness;
+        private DirtyValue<string?>? _vABuilderDescription;
+        private DirtyValue<string?>? _vABuilderIDNo;
+        private DirtyValue<StringEnumValue<VACashOutRefinanceType>>? _vACashOutRefinanceType;
+        private DirtyValue<string?>? _vAClaimFolderNumber;
+        private DirtyValue<string?>? _vAClaimNumber;
+        private DirtyValue<DateTime?>? _vADateNOVAppraisalMailedToBorrower;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>>? _vAImpactInterestRateIndicator;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>>? _vAImpactLoanBalanceIndicator;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>>? _vAImpactLTVIndicator;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>>? _vAImpactRemainingEquityIndicator;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>>? _vAImpactRemainingTermIndicator;
+        private DirtyValue<StringEnumValue<IncreaseOrDecrease>>? _vAImpactScheduledPaymentsIndicator;
+        private DirtyValue<bool?>? _vAIsDelinquent30Days;
+        private DirtyValue<bool?>? _vALatePaymentIn6Months;
+        private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>>? _vaLoanSummaryApplicantType;
+        private DirtyValue<DateTime?>? _vANOVDateReceived;
+        private DirtyValue<DateTime?>? _vANOVDateReviewed;
+        private DirtyValue<DateTime?>? _vANOVIssuedDate;
+        private DirtyValue<StringEnumValue<AmortizationType>>? _vAOriginalAmortizationType;
+        private DirtyValue<decimal?>? _vAOriginalMonthlyPayment;
+        private DirtyValue<string?>? _vAQualification2ndTierEntitlement;
+        private DirtyValue<StringEnumValue<VAQualificationCountryRegion>>? _vAQualificationCountryRegion;
+        private DirtyValue<decimal?>? _vAQualificationCountyLimits;
+        private DirtyValue<int?>? _vARecoupmentClosingCosts;
+        private DirtyValue<bool?>? _vARecoupmentExcludePrepaids;
+        private DirtyValue<decimal?>? _vARecoupmentMonthlyDecreaseInPayment;
+        private DirtyValue<int?>? _vARecoupmentMonths;
+        private DirtyValue<decimal?>? _vARecoupmentTotalClosingCosts;
+        private DirtyValue<int?>? _vARecoupmentYears;
+        private DirtyValue<DateTime?>? _vATrackingCertOfCommitmentIssued;
+        private DirtyValue<DateTime?>? _vATrackingCOEIssueDate;
+        private DirtyValue<string?>? _vATrackingCOEIssueHistory;
+        private DirtyValue<DateTime?>? _vATrackingFinalApprovalCommitmentDate;
+        private DirtyValue<bool?>? _vATrackingGSAExclusionaryListChecked;
+        private DirtyValue<bool?>? _vATrackingInuranceFloodPolicy;
+        private DirtyValue<bool?>? _vATrackingInuranceHazardPolicy;
+        private DirtyValue<bool?>? _vATrackingInuranceWindOrHailPolicy;
+        private DirtyValue<bool?>? _vATrackingInuranceWoodDestroyingPolicy;
+        private DirtyValue<bool?>? _vATrackingIsSARLAPPCertified;
+        private DirtyValue<DateTime?>? _vATrackingLoanGuaranteeCertReceipt;
+        private DirtyValue<DateTime?>? _vATrackingMasterCommitmentLockExpired;
+        private DirtyValue<DateTime?>? _vATrackingOrderedDate;
+        private DirtyValue<DateTime?>? _vATrackingPaidDate;
+        private DirtyValue<DateTime?>? _vATrackingPurchaseContractDate;
+        private DirtyValue<bool?>? _vATrackingReceiptReceived;
+        private DirtyValue<string?>? _vATrackingSARID;
+        private DirtyValue<string?>? _vATrackingSARName;
+        private DirtyValue<bool?>? _ventFanIndicator;
+        private DirtyValue<bool?>? _veteranDischargedIndicator;
+        private DirtyValue<StringEnumValue<VeteranServiceType>>? _veteranServiceType;
+        private DirtyValue<string?>? _warrantorAddress;
+        private DirtyValue<string?>? _warrantorCity;
+        private DirtyValue<string?>? _warrantorName;
+        private DirtyValue<string?>? _warrantorPhone;
+        private DirtyValue<string?>? _warrantorPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _warrantorState;
+        private DirtyValue<DateTime?>? _warrantyProgramExpirationDate;
+        private DirtyValue<bool?>? _wWCarpetIndicator;
 
         /// <summary>
         /// Subject Property Legal DescAcres [600]
@@ -293,33 +294,33 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Disbursement - Describe additional security taken and list of others (including spouse) [VASUMM.X62]
         /// </summary>
-        public string AdditionalSecurityDescription { get => _additionalSecurityDescription; set => SetField(ref _additionalSecurityDescription, value); }
+        public string? AdditionalSecurityDescription { get => _additionalSecurityDescription; set => SetField(ref _additionalSecurityDescription, value); }
 
         /// <summary>
         /// VA To Admin of Benefits Street [VAVOB.X3]
         /// </summary>
-        public string AdministratorAddress { get => _administratorAddress; set => SetField(ref _administratorAddress, value); }
+        public string? AdministratorAddress { get => _administratorAddress; set => SetField(ref _administratorAddress, value); }
 
         /// <summary>
         /// VA To Admin of Benefits City [VAVOB.X4]
         /// </summary>
-        public string AdministratorCity { get => _administratorCity; set => SetField(ref _administratorCity, value); }
+        public string? AdministratorCity { get => _administratorCity; set => SetField(ref _administratorCity, value); }
 
         /// <summary>
         /// VA To Admin of Benefits Attn [VAVOB.X2]
         /// </summary>
-        public string AdministratorContact { get => _administratorContact; set => SetField(ref _administratorContact, value); }
+        public string? AdministratorContact { get => _administratorContact; set => SetField(ref _administratorContact, value); }
 
         /// <summary>
         /// VA To Admin of Benefits Name [VAVOB.X1]
         /// </summary>
-        public string AdministratorName { get => _administratorName; set => SetField(ref _administratorName, value); }
+        public string? AdministratorName { get => _administratorName; set => SetField(ref _administratorName, value); }
 
         /// <summary>
         /// VA To Admin of Benefits Zip [VAVOB.X6]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string AdministratorPostalCode { get => _administratorPostalCode; set => SetField(ref _administratorPostalCode, value); }
+        public string? AdministratorPostalCode { get => _administratorPostalCode; set => SetField(ref _administratorPostalCode, value); }
 
         /// <summary>
         /// VA To Admin of Benefits State [VAVOB.X5]
@@ -376,13 +377,13 @@ namespace EncompassRest.Loans
         /// VaLoanData ApplicantAddressCity [VAELIG.X76]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ApplicantAddressCity { get => _applicantAddressCity; set => SetField(ref _applicantAddressCity, value); }
+        public string? ApplicantAddressCity { get => _applicantAddressCity; set => SetField(ref _applicantAddressCity, value); }
 
         /// <summary>
         /// VaLoanData ApplicantAddressPostalCode [VAELIG.X78]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, ReadOnly = true)]
-        public string ApplicantAddressPostalCode { get => _applicantAddressPostalCode; set => SetField(ref _applicantAddressPostalCode, value); }
+        public string? ApplicantAddressPostalCode { get => _applicantAddressPostalCode; set => SetField(ref _applicantAddressPostalCode, value); }
 
         /// <summary>
         /// VaLoanData ApplicantAddressState [VAELIG.X77]
@@ -394,7 +395,7 @@ namespace EncompassRest.Loans
         /// VaLoanData ApplicantAddressStreetLine1 [VAELIG.X75]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ApplicantAddressStreetLine1 { get => _applicantAddressStreetLine1; set => SetField(ref _applicantAddressStreetLine1, value); }
+        public string? ApplicantAddressStreetLine1 { get => _applicantAddressStreetLine1; set => SetField(ref _applicantAddressStreetLine1, value); }
 
         /// <summary>
         /// VaLoanData ApplicantBirthDate [VAELIG.X1]
@@ -406,36 +407,36 @@ namespace EncompassRest.Loans
         /// VA Veteran Email Address [VAELIG.X97]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ApplicantEmailAddressText { get => _applicantEmailAddressText; set => SetField(ref _applicantEmailAddressText, value); }
+        public string? ApplicantEmailAddressText { get => _applicantEmailAddressText; set => SetField(ref _applicantEmailAddressText, value); }
 
         /// <summary>
         /// VaLoanData ApplicantFirstNameWithMiddleName [VAELIG.X71]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ApplicantFirstNameWithMiddleName { get => _applicantFirstNameWithMiddleName; set => SetField(ref _applicantFirstNameWithMiddleName, value); }
+        public string? ApplicantFirstNameWithMiddleName { get => _applicantFirstNameWithMiddleName; set => SetField(ref _applicantFirstNameWithMiddleName, value); }
 
         /// <summary>
         /// VA Loan Summ Veteran Sex [VASUMM.X35]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ApplicantHmdaGenderType { get => _applicantHmdaGenderType; set => SetField(ref _applicantHmdaGenderType, value); }
+        public string? ApplicantHmdaGenderType { get => _applicantHmdaGenderType; set => SetField(ref _applicantHmdaGenderType, value); }
 
         /// <summary>
         /// VaLoanData ApplicantHomePhoneNumber
         /// </summary>
-        public string ApplicantHomePhoneNumber { get => _applicantHomePhoneNumber; set => SetField(ref _applicantHomePhoneNumber, value); }
+        public string? ApplicantHomePhoneNumber { get => _applicantHomePhoneNumber; set => SetField(ref _applicantHomePhoneNumber, value); }
 
         /// <summary>
         /// VaLoanData ApplicantLastNameWithSuffix [VAELIG.X72]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ApplicantLastNameWithSuffix { get => _applicantLastNameWithSuffix; set => SetField(ref _applicantLastNameWithSuffix, value); }
+        public string? ApplicantLastNameWithSuffix { get => _applicantLastNameWithSuffix; set => SetField(ref _applicantLastNameWithSuffix, value); }
 
         /// <summary>
         /// VaLoanData ApplicantTaxIdentificationIdentifier [VAELIG.X73]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.SSN, ReadOnly = true)]
-        public string ApplicantTaxIdentificationIdentifier { get => _applicantTaxIdentificationIdentifier; set => SetField(ref _applicantTaxIdentificationIdentifier, value); }
+        public string? ApplicantTaxIdentificationIdentifier { get => _applicantTaxIdentificationIdentifier; set => SetField(ref _applicantTaxIdentificationIdentifier, value); }
 
         /// <summary>
         /// Subject Property Appraisal Type [962]
@@ -457,7 +458,7 @@ namespace EncompassRest.Loans
         /// Subject Property Date/Time Avail for Inspec [681]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string AvailableForInspectionDateAndTime { get => _availableForInspectionDateAndTime; set => SetField(ref _availableForInspectionDateAndTime, value); }
+        public string? AvailableForInspectionDateAndTime { get => _availableForInspectionDateAndTime; set => SetField(ref _availableForInspectionDateAndTime, value); }
 
         /// <summary>
         /// VA Loan Summ Disc Points Paid by Veteran Amt [VASUMM.X46]
@@ -520,7 +521,7 @@ namespace EncompassRest.Loans
         /// VA Contract # Approved By VA [1037]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ContractNoApprovedByVA { get => _contractNoApprovedByVA; set => SetField(ref _contractNoApprovedByVA, value); }
+        public string? ContractNoApprovedByVA { get => _contractNoApprovedByVA; set => SetField(ref _contractNoApprovedByVA, value); }
 
         /// <summary>
         /// VA Loan Summ Credit Score [VASUMM.X23]
@@ -587,7 +588,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA 261805 E-Mail Address (to be Notified When Appraisal Uploaded) [3347]
         /// </summary>
-        public string EmailToBeNotifiedWhenUploaded { get => _emailToBeNotifiedWhenUploaded; set => SetField(ref _emailToBeNotifiedWhenUploaded, value); }
+        public string? EmailToBeNotifiedWhenUploaded { get => _emailToBeNotifiedWhenUploaded; set => SetField(ref _emailToBeNotifiedWhenUploaded, value); }
 
         /// <summary>
         /// VA Energy Improvements Addition of Feature [379]
@@ -598,12 +599,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Summ Entitlement Code [VASUMM.X2]
         /// </summary>
-        public string EntitlementCode { get => _entitlementCode; set => SetField(ref _entitlementCode, value); }
+        public string? EntitlementCode { get => _entitlementCode; set => SetField(ref _entitlementCode, value); }
 
         /// <summary>
         /// VA Equipment Other [320]
         /// </summary>
-        public string EquipmentOtherDescription { get => _equipmentOtherDescription; set => SetField(ref _equipmentOtherDescription, value); }
+        public string? EquipmentOtherDescription { get => _equipmentOtherDescription; set => SetField(ref _equipmentOtherDescription, value); }
 
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Estimated Impact of Home Equity Remaining Amount [VASUMM.X113]
@@ -676,7 +677,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Existing VA Loan Number [VASUMM.X101]
         /// </summary>
-        public string ExistingVALoanNumber { get => _existingVALoanNumber; set => SetField(ref _existingVALoanNumber, value); }
+        public string? ExistingVALoanNumber { get => _existingVALoanNumber; set => SetField(ref _existingVALoanNumber, value); }
 
         /// <summary>
         /// VA Discount (Based from line 9) [VARRRWS.X8]
@@ -715,7 +716,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VaLoanData Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// VA Initial Computation Total [VARRRWS.X2]
@@ -753,7 +754,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Keys At [683]
         /// </summary>
-        public string KeysAtAddress { get => _keysAtAddress; set => SetField(ref _keysAtAddress, value); }
+        public string? KeysAtAddress { get => _keysAtAddress; set => SetField(ref _keysAtAddress, value); }
 
         /// <summary>
         /// VA Loan Disbursement - Land Purchase Price [VASUMM.X64]
@@ -769,52 +770,52 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Summ Lender SAR ID [VASUMM.X6]
         /// </summary>
-        public string LenderSAR { get => _lenderSAR; set => SetField(ref _lenderSAR, value); }
+        public string? LenderSAR { get => _lenderSAR; set => SetField(ref _lenderSAR, value); }
 
         /// <summary>
         /// VA Loan Analysis Remarks 1 [VALA.X10]
         /// </summary>
-        public string LoanAnalysisRemarks1 { get => _loanAnalysisRemarks1; set => SetField(ref _loanAnalysisRemarks1, value); }
+        public string? LoanAnalysisRemarks1 { get => _loanAnalysisRemarks1; set => SetField(ref _loanAnalysisRemarks1, value); }
 
         /// <summary>
         /// VA Loan Analysis Remarks 2 [VALA.X11]
         /// </summary>
-        public string LoanAnalysisRemarks2 { get => _loanAnalysisRemarks2; set => SetField(ref _loanAnalysisRemarks2, value); }
+        public string? LoanAnalysisRemarks2 { get => _loanAnalysisRemarks2; set => SetField(ref _loanAnalysisRemarks2, value); }
 
         /// <summary>
         /// VA Loan Analysis Remarks 3 [VALA.X12]
         /// </summary>
-        public string LoanAnalysisRemarks3 { get => _loanAnalysisRemarks3; set => SetField(ref _loanAnalysisRemarks3, value); }
+        public string? LoanAnalysisRemarks3 { get => _loanAnalysisRemarks3; set => SetField(ref _loanAnalysisRemarks3, value); }
 
         /// <summary>
         /// VA Loan Analysis Remarks 4 [VALA.X13]
         /// </summary>
-        public string LoanAnalysisRemarks4 { get => _loanAnalysisRemarks4; set => SetField(ref _loanAnalysisRemarks4, value); }
+        public string? LoanAnalysisRemarks4 { get => _loanAnalysisRemarks4; set => SetField(ref _loanAnalysisRemarks4, value); }
 
         /// <summary>
         /// VA Loan Analysis Remarks 5 [VALA.X14]
         /// </summary>
-        public string LoanAnalysisRemarks5 { get => _loanAnalysisRemarks5; set => SetField(ref _loanAnalysisRemarks5, value); }
+        public string? LoanAnalysisRemarks5 { get => _loanAnalysisRemarks5; set => SetField(ref _loanAnalysisRemarks5, value); }
 
         /// <summary>
         /// VA Loan Analysis Remarks 6 [VALA.X15]
         /// </summary>
-        public string LoanAnalysisRemarks6 { get => _loanAnalysisRemarks6; set => SetField(ref _loanAnalysisRemarks6, value); }
+        public string? LoanAnalysisRemarks6 { get => _loanAnalysisRemarks6; set => SetField(ref _loanAnalysisRemarks6, value); }
 
         /// <summary>
         /// VA Loan Analysis Remarks 7 [VALA.X16]
         /// </summary>
-        public string LoanAnalysisRemarks7 { get => _loanAnalysisRemarks7; set => SetField(ref _loanAnalysisRemarks7, value); }
+        public string? LoanAnalysisRemarks7 { get => _loanAnalysisRemarks7; set => SetField(ref _loanAnalysisRemarks7, value); }
 
         /// <summary>
         /// VA Loan Analysis Remarks 8 [VALA.X17]
         /// </summary>
-        public string LoanAnalysisRemarks8 { get => _loanAnalysisRemarks8; set => SetField(ref _loanAnalysisRemarks8, value); }
+        public string? LoanAnalysisRemarks8 { get => _loanAnalysisRemarks8; set => SetField(ref _loanAnalysisRemarks8, value); }
 
         /// <summary>
         /// VA Loan Analysis Remarks 9 [VALA.X18]
         /// </summary>
-        public string LoanAnalysisRemarks9 { get => _loanAnalysisRemarks9; set => SetField(ref _loanAnalysisRemarks9, value); }
+        public string? LoanAnalysisRemarks9 { get => _loanAnalysisRemarks9; set => SetField(ref _loanAnalysisRemarks9, value); }
 
         /// <summary>
         /// VA Veteran Loan Code [958]
@@ -834,64 +835,64 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Summ Remarks 1 [VASUMM.X37]
         /// </summary>
-        public string LoanSummaryRemarks1 { get => _loanSummaryRemarks1; set => SetField(ref _loanSummaryRemarks1, value); }
+        public string? LoanSummaryRemarks1 { get => _loanSummaryRemarks1; set => SetField(ref _loanSummaryRemarks1, value); }
 
         /// <summary>
         /// VA Loan Summ Remarks 2 [VASUMM.X38]
         /// </summary>
-        public string LoanSummaryRemarks2 { get => _loanSummaryRemarks2; set => SetField(ref _loanSummaryRemarks2, value); }
+        public string? LoanSummaryRemarks2 { get => _loanSummaryRemarks2; set => SetField(ref _loanSummaryRemarks2, value); }
 
         /// <summary>
         /// VA Loan Summ Remarks 3 [VASUMM.X39]
         /// </summary>
-        public string LoanSummaryRemarks3 { get => _loanSummaryRemarks3; set => SetField(ref _loanSummaryRemarks3, value); }
+        public string? LoanSummaryRemarks3 { get => _loanSummaryRemarks3; set => SetField(ref _loanSummaryRemarks3, value); }
 
         /// <summary>
         /// VA Loan Summ Remarks 4 [VASUMM.X40]
         /// </summary>
-        public string LoanSummaryRemarks4 { get => _loanSummaryRemarks4; set => SetField(ref _loanSummaryRemarks4, value); }
+        public string? LoanSummaryRemarks4 { get => _loanSummaryRemarks4; set => SetField(ref _loanSummaryRemarks4, value); }
 
         /// <summary>
         /// VA Loan Summ Remarks 5 [VASUMM.X41]
         /// </summary>
-        public string LoanSummaryRemarks5 { get => _loanSummaryRemarks5; set => SetField(ref _loanSummaryRemarks5, value); }
+        public string? LoanSummaryRemarks5 { get => _loanSummaryRemarks5; set => SetField(ref _loanSummaryRemarks5, value); }
 
         /// <summary>
         /// VA Loan Summ Remarks 6 [VASUMM.X42]
         /// </summary>
-        public string LoanSummaryRemarks6 { get => _loanSummaryRemarks6; set => SetField(ref _loanSummaryRemarks6, value); }
+        public string? LoanSummaryRemarks6 { get => _loanSummaryRemarks6; set => SetField(ref _loanSummaryRemarks6, value); }
 
         /// <summary>
         /// VA Loan Summ Remarks 7 [VASUMM.X43]
         /// </summary>
-        public string LoanSummaryRemarks7 { get => _loanSummaryRemarks7; set => SetField(ref _loanSummaryRemarks7, value); }
+        public string? LoanSummaryRemarks7 { get => _loanSummaryRemarks7; set => SetField(ref _loanSummaryRemarks7, value); }
 
         /// <summary>
         /// VA Loan Summ Remarks 8 [VASUMM.X44]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LoanSummaryRemarks8 { get => _loanSummaryRemarks8; set => SetField(ref _loanSummaryRemarks8, value); }
+        public string? LoanSummaryRemarks8 { get => _loanSummaryRemarks8; set => SetField(ref _loanSummaryRemarks8, value); }
 
         /// <summary>
         /// Subject Property Lot Dimensions [1042]
         /// </summary>
-        public string LotDimensions { get => _lotDimensions; set => SetField(ref _lotDimensions, value); }
+        public string? LotDimensions { get => _lotDimensions; set => SetField(ref _lotDimensions, value); }
 
         /// <summary>
         /// VA Veteran Mailing Addr Street [VAELIG.X51]
         /// </summary>
-        public string MailingAddress { get => _mailingAddress; set => SetField(ref _mailingAddress, value); }
+        public string? MailingAddress { get => _mailingAddress; set => SetField(ref _mailingAddress, value); }
 
         /// <summary>
         /// VA Veteran Mailing Addr City [VAELIG.X54]
         /// </summary>
-        public string MailingCity { get => _mailingCity; set => SetField(ref _mailingCity, value); }
+        public string? MailingCity { get => _mailingCity; set => SetField(ref _mailingCity, value); }
 
         /// <summary>
         /// VA Veteran Mailing Addr Zip [VAELIG.X56]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string MailingPostalCode { get => _mailingPostalCode; set => SetField(ref _mailingPostalCode, value); }
+        public string? MailingPostalCode { get => _mailingPostalCode; set => SetField(ref _mailingPostalCode, value); }
 
         /// <summary>
         /// VA Veteran Mailing Addr State [VAELIG.X55]
@@ -906,7 +907,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Energy Improve MCRV # [989]
         /// </summary>
-        public string MCRVNumber { get => _mCRVNumber; set => SetField(ref _mCRVNumber, value); }
+        public string? MCRVNumber { get => _mCRVNumber; set => SetField(ref _mCRVNumber, value); }
 
         /// <summary>
         /// VA Veteran Branch of Service [954]
@@ -916,27 +917,28 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VaLoanData MilitaryServices
         /// </summary>
+        [AllowNull]
         public IList<MilitaryService> MilitaryServices { get => GetField(ref _militaryServices); set => SetField(ref _militaryServices, value); }
 
         /// <summary>
         /// VA Mineral Rights Reserved [1032]
         /// </summary>
-        public string MineralRightsReserved { get => _mineralRightsReserved; set => SetField(ref _mineralRightsReserved, value); }
+        public string? MineralRightsReserved { get => _mineralRightsReserved; set => SetField(ref _mineralRightsReserved, value); }
 
         /// <summary>
         /// Subject Property Occupant Name [730]
         /// </summary>
-        public string NameOfOccupant { get => _nameOfOccupant; set => SetField(ref _nameOfOccupant, value); }
+        public string? NameOfOccupant { get => _nameOfOccupant; set => SetField(ref _nameOfOccupant, value); }
 
         /// <summary>
         /// Subject Property Owner Name [727]
         /// </summary>
-        public string NameOfOwner { get => _nameOfOwner; set => SetField(ref _nameOfOwner, value); }
+        public string? NameOfOwner { get => _nameOfOwner; set => SetField(ref _nameOfOwner, value); }
 
         /// <summary>
         /// Subject Property Warranty Program Name [724]
         /// </summary>
-        public string NameOfWarrantyProgram { get => _nameOfWarrantyProgram; set => SetField(ref _nameOfWarrantyProgram, value); }
+        public string? NameOfWarrantyProgram { get => _nameOfWarrantyProgram; set => SetField(ref _nameOfWarrantyProgram, value); }
 
         /// <summary>
         /// VA Loan Analysis Negative Rents [VALA.X30]
@@ -953,18 +955,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Disbursement - Describe nonrealty, if any, acquired with proceeds of loan [VASUMM.X61]
         /// </summary>
-        public string NonrealtyDescription { get => _nonrealtyDescription; set => SetField(ref _nonrealtyDescription, value); }
+        public string? NonrealtyDescription { get => _nonrealtyDescription; set => SetField(ref _nonrealtyDescription, value); }
 
         /// <summary>
         /// Subject Property # Buildings [604]
         /// </summary>
-        public string NumberOfBuildings { get => _numberOfBuildings; set => SetField(ref _numberOfBuildings, value); }
+        public string? NumberOfBuildings { get => _numberOfBuildings; set => SetField(ref _numberOfBuildings, value); }
 
         /// <summary>
         /// Subject Property Occupant Phone [731]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string OccupantTelephone { get => _occupantTelephone; set => SetField(ref _occupantTelephone, value); }
+        public string? OccupantTelephone { get => _occupantTelephone; set => SetField(ref _occupantTelephone, value); }
 
         /// <summary>
         /// VA On Military Duty Day Following Separation [VAVOB.X69]
@@ -1009,12 +1011,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Disbursement - Estate in Property - Other Description [VASUMM.X58]
         /// </summary>
-        public string OtherDescriptionEstateProperty { get => _otherDescriptionEstateProperty; set => SetField(ref _otherDescriptionEstateProperty, value); }
+        public string? OtherDescriptionEstateProperty { get => _otherDescriptionEstateProperty; set => SetField(ref _otherDescriptionEstateProperty, value); }
 
         /// <summary>
         /// VA Loan Disbursement - Type of Loan - Other Description [VASUMM.X56]
         /// </summary>
-        public string OtherDescriptionLoanType { get => _otherDescriptionLoanType; set => SetField(ref _otherDescriptionLoanType, value); }
+        public string? OtherDescriptionLoanType { get => _otherDescriptionLoanType; set => SetField(ref _otherDescriptionLoanType, value); }
 
         /// <summary>
         /// VA Loan Disbursement - Estate in Property - Other [VASUMM.X57]
@@ -1035,7 +1037,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Summ Paid In Full Loan # [VASUMM.X14]
         /// </summary>
-        public string PaidInFullVALoanNumber { get => _paidInFullVALoanNumber; set => SetField(ref _paidInFullVALoanNumber, value); }
+        public string? PaidInFullVALoanNumber { get => _paidInFullVALoanNumber; set => SetField(ref _paidInFullVALoanNumber, value); }
 
         /// <summary>
         /// VA Loan Analysis Liability 1 Incl on Line 41 [VALA.X20]
@@ -1092,28 +1094,28 @@ namespace EncompassRest.Loans
         /// VA New/Prop Constr Plan Prev Case # [1022]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PlansSubmitted { get => _plansSubmitted; set => SetField(ref _plansSubmitted, value); }
+        public string? PlansSubmitted { get => _plansSubmitted; set => SetField(ref _plansSubmitted, value); }
 
         /// <summary>
         /// VA 261805 Applicable Point of Contact (POC) Information Address [3350]
         /// </summary>
-        public string POCAddress { get => _pOCAddress; set => SetField(ref _pOCAddress, value); }
+        public string? POCAddress { get => _pOCAddress; set => SetField(ref _pOCAddress, value); }
 
         /// <summary>
         /// VA 261805 Applicable Point of Contact (POC) Information City [3351]
         /// </summary>
-        public string POCCity { get => _pOCCity; set => SetField(ref _pOCCity, value); }
+        public string? POCCity { get => _pOCCity; set => SetField(ref _pOCCity, value); }
 
         /// <summary>
         /// VA 261805 Applicable Point of Contact (POC) Information Name [3349]
         /// </summary>
-        public string POCName { get => _pOCName; set => SetField(ref _pOCName, value); }
+        public string? POCName { get => _pOCName; set => SetField(ref _pOCName, value); }
 
         /// <summary>
         /// VA 261805 Applicable Point of Contact (POC) Information Phone [3354]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string POCPhone { get => _pOCPhone; set => SetField(ref _pOCPhone, value); }
+        public string? POCPhone { get => _pOCPhone; set => SetField(ref _pOCPhone, value); }
 
         /// <summary>
         /// VA 261805 Applicable Point of Contact (POC) Information State [3352]
@@ -1124,7 +1126,7 @@ namespace EncompassRest.Loans
         /// VA 261805 Applicable Point of Contact (POC) Information Zipcode [3353]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string POCZipCode { get => _pOCZipCode; set => SetField(ref _pOCZipCode, value); }
+        public string? POCZipCode { get => _pOCZipCode; set => SetField(ref _pOCZipCode, value); }
 
         /// <summary>
         /// VA Discount Amt [VARRRWS.X3]
@@ -1152,6 +1154,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VaLoanData PreviousVaLoans
         /// </summary>
+        [AllowNull]
         public IList<PreviousVaLoan> PreviousVaLoans { get => GetField(ref _previousVaLoans); set => SetField(ref _previousVaLoans, value); }
 
         /// <summary>
@@ -1177,22 +1180,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Legal Descr 1 [765]
         /// </summary>
-        public string PropertyLegalDescription1 { get => _propertyLegalDescription1; set => SetField(ref _propertyLegalDescription1, value); }
+        public string? PropertyLegalDescription1 { get => _propertyLegalDescription1; set => SetField(ref _propertyLegalDescription1, value); }
 
         /// <summary>
         /// Subject Property Legal Descr 2 [766]
         /// </summary>
-        public string PropertyLegalDescription2 { get => _propertyLegalDescription2; set => SetField(ref _propertyLegalDescription2, value); }
+        public string? PropertyLegalDescription2 { get => _propertyLegalDescription2; set => SetField(ref _propertyLegalDescription2, value); }
 
         /// <summary>
         /// Subject Property Legal Descr 3 [797]
         /// </summary>
-        public string PropertyLegalDescription3 { get => _propertyLegalDescription3; set => SetField(ref _propertyLegalDescription3, value); }
+        public string? PropertyLegalDescription3 { get => _propertyLegalDescription3; set => SetField(ref _propertyLegalDescription3, value); }
 
         /// <summary>
         /// Subject Property Legal Descr 4 [798]
         /// </summary>
-        public string PropertyLegalDescription4 { get => _propertyLegalDescription4; set => SetField(ref _propertyLegalDescription4, value); }
+        public string? PropertyLegalDescription4 { get => _propertyLegalDescription4; set => SetField(ref _propertyLegalDescription4, value); }
 
         /// <summary>
         /// Subject Property Type [728]
@@ -1242,7 +1245,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Rent [729]
         /// </summary>
-        public string Rent { get => _rent; set => SetField(ref _rent, value); }
+        public string? Rent { get => _rent; set => SetField(ref _rent, value); }
 
         /// <summary>
         /// VA Energy Improvements Replacement of System [378]
@@ -1258,7 +1261,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Svc # [VAVOB.X67]
         /// </summary>
-        public string ServiceNumber { get => _serviceNumber; set => SetField(ref _serviceNumber, value); }
+        public string? ServiceNumber { get => _serviceNumber; set => SetField(ref _serviceNumber, value); }
 
         /// <summary>
         /// Fees Survey to Seller [377]
@@ -1270,19 +1273,19 @@ namespace EncompassRest.Loans
         /// VA Special Assess/HOA Charges Comments 1 [1028]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SpecialAssessmentComments1 { get => _specialAssessmentComments1; set => SetField(ref _specialAssessmentComments1, value); }
+        public string? SpecialAssessmentComments1 { get => _specialAssessmentComments1; set => SetField(ref _specialAssessmentComments1, value); }
 
         /// <summary>
         /// VA Special Assess/HOA Charges Comments 2 [1029]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SpecialAssessmentComments2 { get => _specialAssessmentComments2; set => SetField(ref _specialAssessmentComments2, value); }
+        public string? SpecialAssessmentComments2 { get => _specialAssessmentComments2; set => SetField(ref _specialAssessmentComments2, value); }
 
         /// <summary>
         /// VA Special Assess/HOA Charges Comments 3 [1030]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SpecialAssessmentComments3 { get => _specialAssessmentComments3; set => SetField(ref _specialAssessmentComments3, value); }
+        public string? SpecialAssessmentComments3 { get => _specialAssessmentComments3; set => SetField(ref _specialAssessmentComments3, value); }
 
         /// <summary>
         /// Subject Property Street Access [720]
@@ -1302,22 +1305,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA New/Prop Constr Title [GAPPR.X5]
         /// </summary>
-        public string Title { get => _title; set => SetField(ref _title, value); }
+        public string? Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// Subject Property Title Limitations 1 [926]
         /// </summary>
-        public string TitleLimitations1 { get => _titleLimitations1; set => SetField(ref _titleLimitations1, value); }
+        public string? TitleLimitations1 { get => _titleLimitations1; set => SetField(ref _titleLimitations1, value); }
 
         /// <summary>
         /// Subject Property Title Limitations 2 [927]
         /// </summary>
-        public string TitleLimitations2 { get => _titleLimitations2; set => SetField(ref _titleLimitations2, value); }
+        public string? TitleLimitations2 { get => _titleLimitations2; set => SetField(ref _titleLimitations2, value); }
 
         /// <summary>
         /// Subject Property Title Limitations 3 [928]
         /// </summary>
-        public string TitleLimitations3 { get => _titleLimitations3; set => SetField(ref _titleLimitations3, value); }
+        public string? TitleLimitations3 { get => _titleLimitations3; set => SetField(ref _titleLimitations3, value); }
 
         /// <summary>
         /// VA Loan Summ Baths [VASUMM.X11]
@@ -1452,12 +1455,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Builder Description [3851]
         /// </summary>
-        public string VABuilderDescription { get => _vABuilderDescription; set => SetField(ref _vABuilderDescription, value); }
+        public string? VABuilderDescription { get => _vABuilderDescription; set => SetField(ref _vABuilderDescription, value); }
 
         /// <summary>
         /// VA 261805 Builder ID Number [3348]
         /// </summary>
-        public string VABuilderIDNo { get => _vABuilderIDNo; set => SetField(ref _vABuilderIDNo, value); }
+        public string? VABuilderIDNo { get => _vABuilderIDNo; set => SetField(ref _vABuilderIDNo, value); }
 
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Cash-Out Refinance Type [VASUMM.X125]
@@ -1467,12 +1470,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Claim Folder # [VAVOB.X66]
         /// </summary>
-        public string VAClaimFolderNumber { get => _vAClaimFolderNumber; set => SetField(ref _vAClaimFolderNumber, value); }
+        public string? VAClaimFolderNumber { get => _vAClaimFolderNumber; set => SetField(ref _vAClaimFolderNumber, value); }
 
         /// <summary>
         /// VA Claim # [VAELIG.X23]
         /// </summary>
-        public string VAClaimNumber { get => _vAClaimNumber; set => SetField(ref _vAClaimNumber, value); }
+        public string? VAClaimNumber { get => _vAClaimNumber; set => SetField(ref _vAClaimNumber, value); }
 
         /// <summary>
         /// VA Management Tool - Date NOV and Appraisal Mailed to Borrower [VASUMM.X77]
@@ -1554,7 +1557,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - 2nd Tier Entitlement [VASUMM.X96]
         /// </summary>
-        public string VAQualification2ndTierEntitlement { get => _vAQualification2ndTierEntitlement; set => SetField(ref _vAQualification2ndTierEntitlement, value); }
+        public string? VAQualification2ndTierEntitlement { get => _vAQualification2ndTierEntitlement; set => SetField(ref _vAQualification2ndTierEntitlement, value); }
 
         /// <summary>
         /// VA Management Tool - Country Region [VASUMM.X95]
@@ -1615,7 +1618,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - COE Issue History [VASUMM.X81]
         /// </summary>
-        public string VATrackingCOEIssueHistory { get => _vATrackingCOEIssueHistory; set => SetField(ref _vATrackingCOEIssueHistory, value); }
+        public string? VATrackingCOEIssueHistory { get => _vATrackingCOEIssueHistory; set => SetField(ref _vATrackingCOEIssueHistory, value); }
 
         /// <summary>
         /// VA Management Tool - Final Approval Commitment Date [VASUMM.X88]
@@ -1685,12 +1688,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - SAR ID [VASUMM.X71]
         /// </summary>
-        public string VATrackingSARID { get => _vATrackingSARID; set => SetField(ref _vATrackingSARID, value); }
+        public string? VATrackingSARID { get => _vATrackingSARID; set => SetField(ref _vATrackingSARID, value); }
 
         /// <summary>
         /// VA Management Tool - SAR Name [VASUMM.X70]
         /// </summary>
-        public string VATrackingSARName { get => _vATrackingSARName; set => SetField(ref _vATrackingSARName, value); }
+        public string? VATrackingSARName { get => _vATrackingSARName; set => SetField(ref _vATrackingSARName, value); }
 
         /// <summary>
         /// VA Equipment Vent Fan [316]
@@ -1712,29 +1715,29 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA New/Prop Constr Warrantor Addr [1026]
         /// </summary>
-        public string WarrantorAddress { get => _warrantorAddress; set => SetField(ref _warrantorAddress, value); }
+        public string? WarrantorAddress { get => _warrantorAddress; set => SetField(ref _warrantorAddress, value); }
 
         /// <summary>
         /// VA New/Prop Constr Warrantor City [GAPPR.X11]
         /// </summary>
-        public string WarrantorCity { get => _warrantorCity; set => SetField(ref _warrantorCity, value); }
+        public string? WarrantorCity { get => _warrantorCity; set => SetField(ref _warrantorCity, value); }
 
         /// <summary>
         /// VA New/Prop Constr Warrantor Name [1025]
         /// </summary>
-        public string WarrantorName { get => _warrantorName; set => SetField(ref _warrantorName, value); }
+        public string? WarrantorName { get => _warrantorName; set => SetField(ref _warrantorName, value); }
 
         /// <summary>
         /// VA New/Prop Constr Warrantor Phone [1027]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string WarrantorPhone { get => _warrantorPhone; set => SetField(ref _warrantorPhone, value); }
+        public string? WarrantorPhone { get => _warrantorPhone; set => SetField(ref _warrantorPhone, value); }
 
         /// <summary>
         /// VA New/Prop Constr Warrantor Zip [GAPPR.X13]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string WarrantorPostalCode { get => _warrantorPostalCode; set => SetField(ref _warrantorPostalCode, value); }
+        public string? WarrantorPostalCode { get => _warrantorPostalCode; set => SetField(ref _warrantorPostalCode, value); }
 
         /// <summary>
         /// VA New/Prop Constr Warrantor State [GAPPR.X12]

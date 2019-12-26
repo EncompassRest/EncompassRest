@@ -10,35 +10,35 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(Hud1EsPayToIndex))]
     public sealed partial class Hud1EsPayTo : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _address;
-        private DirtyValue<decimal?> _amountLastPay;
-        private DirtyValue<decimal?> _amountNextDue;
-        private DirtyValue<string> _city;
-        private DirtyValue<string> _contactName;
-        private DirtyValue<decimal?> _coverageAmount;
-        private DirtyValue<DateTime?> _datePaid;
-        private DirtyValue<DateTime?> _delinquentDate;
-        private DirtyValue<string> _email;
-        private DirtyValue<string> _fax;
-        private DirtyValue<StringEnumValue<Hud1EsPayToFeeType>> _feeType;
-        private DirtyValue<int?> _hud1EsPayToIndex;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _maxDeductibleAmount;
-        private DirtyValue<decimal?> _maxDeductiblePercentage;
-        private DirtyValue<string> _name;
-        private DirtyValue<DateTime?> _nextDueDate;
-        private DirtyValue<string> _paymentSchedule;
-        private DirtyValue<string> _phone;
-        private DirtyValue<string> _policyNumber;
-        private DirtyValue<string> _postalCode;
-        private DirtyValue<decimal?> _premium;
-        private DirtyValue<DateTime?> _renewalDate;
-        private DirtyValue<StringEnumValue<State>> _state;
+        private DirtyValue<string?>? _address;
+        private DirtyValue<decimal?>? _amountLastPay;
+        private DirtyValue<decimal?>? _amountNextDue;
+        private DirtyValue<string?>? _city;
+        private DirtyValue<string?>? _contactName;
+        private DirtyValue<decimal?>? _coverageAmount;
+        private DirtyValue<DateTime?>? _datePaid;
+        private DirtyValue<DateTime?>? _delinquentDate;
+        private DirtyValue<string?>? _email;
+        private DirtyValue<string?>? _fax;
+        private DirtyValue<StringEnumValue<Hud1EsPayToFeeType>>? _feeType;
+        private DirtyValue<int?>? _hud1EsPayToIndex;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _maxDeductibleAmount;
+        private DirtyValue<decimal?>? _maxDeductiblePercentage;
+        private DirtyValue<string?>? _name;
+        private DirtyValue<DateTime?>? _nextDueDate;
+        private DirtyValue<string?>? _paymentSchedule;
+        private DirtyValue<string?>? _phone;
+        private DirtyValue<string?>? _policyNumber;
+        private DirtyValue<string?>? _postalCode;
+        private DirtyValue<decimal?>? _premium;
+        private DirtyValue<DateTime?>? _renewalDate;
+        private DirtyValue<StringEnumValue<State>>? _state;
 
         /// <summary>
         /// Hud1EsPayTo Address
         /// </summary>
-        public string Address { get => _address; set => SetField(ref _address, value); }
+        public string? Address { get => _address; set => SetField(ref _address, value); }
 
         /// <summary>
         /// Hud1EsPayTo AmountLastPay
@@ -55,12 +55,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo City
         /// </summary>
-        public string City { get => _city; set => SetField(ref _city, value); }
+        public string? City { get => _city; set => SetField(ref _city, value); }
 
         /// <summary>
         /// Hud1EsPayTo ContactName
         /// </summary>
-        public string ContactName { get => _contactName; set => SetField(ref _contactName, value); }
+        public string? ContactName { get => _contactName; set => SetField(ref _contactName, value); }
 
         /// <summary>
         /// Hud1EsPayTo CoverageAmount
@@ -81,13 +81,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo Email
         /// </summary>
-        public string Email { get => _email; set => SetField(ref _email, value); }
+        public string? Email { get => _email; set => SetField(ref _email, value); }
 
         /// <summary>
         /// Hud1EsPayTo Fax
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string Fax { get => _fax; set => SetField(ref _fax, value); }
+        public string? Fax { get => _fax; set => SetField(ref _fax, value); }
 
         /// <summary>
         /// Hud1EsPayTo FeeType
@@ -102,7 +102,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Hud1EsPayTo MaxDeductibleAmount
@@ -119,7 +119,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo Name
         /// </summary>
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
         /// Hud1EsPayTo NextDueDate
@@ -129,24 +129,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo PaymentSchedule
         /// </summary>
-        public string PaymentSchedule { get => _paymentSchedule; set => SetField(ref _paymentSchedule, value); }
+        public string? PaymentSchedule { get => _paymentSchedule; set => SetField(ref _paymentSchedule, value); }
 
         /// <summary>
         /// Hud1EsPayTo Phone
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string Phone { get => _phone; set => SetField(ref _phone, value); }
+        public string? Phone { get => _phone; set => SetField(ref _phone, value); }
 
         /// <summary>
         /// Hud1EsPayTo PolicyNumber
         /// </summary>
-        public string PolicyNumber { get => _policyNumber; set => SetField(ref _policyNumber, value); }
+        public string? PolicyNumber { get => _policyNumber; set => SetField(ref _policyNumber, value); }
 
         /// <summary>
         /// Hud1EsPayTo PostalCode
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+        public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
 
         /// <summary>
         /// Hud1EsPayTo Premium

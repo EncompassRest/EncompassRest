@@ -60,7 +60,7 @@ namespace EncompassRest.Contacts
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> CreateGroupRawAsync(string group, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> CreateGroupRawAsync(string group, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Permanently removes the specified contact group from the Encompass contacts database.
         /// </summary>
@@ -91,7 +91,7 @@ namespace EncompassRest.Contacts
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetGroupContactsRawAsync(string groupId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetGroupContactsRawAsync(string groupId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves information about the specified contact group.
         /// </summary>
@@ -99,7 +99,7 @@ namespace EncompassRest.Contacts
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetGroupRawAsync(string groupId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetGroupRawAsync(string groupId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves all contact groups for a given contact type and group type.
         /// </summary>
@@ -115,7 +115,7 @@ namespace EncompassRest.Contacts
         /// <param name="groupType">The contact group type.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<List<ContactGroup>> GetGroupsAsync(string contactType, string groupType = null, CancellationToken cancellationToken = default);
+        Task<List<ContactGroup>> GetGroupsAsync(string contactType, string? groupType = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves all contact groups for a given contact type and group type as raw json.
         /// </summary>
@@ -153,7 +153,7 @@ namespace EncompassRest.Contacts
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> UpdateGroupRawAsync(string groupId, string group, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> UpdateGroupRawAsync(string groupId, string group, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -173,7 +173,7 @@ namespace EncompassRest.Contacts
         /// <param name="groupType">The contact group type.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<List<ContactGroup>> GetGroupsAsync(ContactType contactType, ContactGroupType? groupType = null, CancellationToken cancellationToken = default) => GetGroupsAsync(contactType.Validate(nameof(contactType)).GetValue(), groupType?.Validate(nameof(groupType)).GetValue(), cancellationToken);
+        public Task<List<ContactGroup>> GetGroupsAsync(ContactType contactType, ContactGroupType? groupType = null, CancellationToken cancellationToken = default) => GetGroupsAsync(contactType.Validate(nameof(contactType)).GetValue()!, groupType?.Validate(nameof(groupType)).GetValue(), cancellationToken);
 
         /// <summary>
         /// Retrieves all contact groups for a given contact type and group type.
@@ -182,7 +182,7 @@ namespace EncompassRest.Contacts
         /// <param name="groupType">The contact group type.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<List<ContactGroup>> GetGroupsAsync(string contactType, string groupType = null, CancellationToken cancellationToken = default)
+        public Task<List<ContactGroup>> GetGroupsAsync(string contactType, string? groupType = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactType, nameof(contactType));
 
@@ -229,7 +229,7 @@ namespace EncompassRest.Contacts
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetGroupRawAsync(string groupId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetGroupRawAsync(string groupId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
 
@@ -269,7 +269,7 @@ namespace EncompassRest.Contacts
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetGroupContactsRawAsync(string groupId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetGroupContactsRawAsync(string groupId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
 
@@ -306,7 +306,7 @@ namespace EncompassRest.Contacts
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> CreateGroupRawAsync(string group, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> CreateGroupRawAsync(string group, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(group, nameof(group));
 
@@ -321,7 +321,7 @@ namespace EncompassRest.Contacts
         /// <param name="contacts">The contacts to add or remove.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task AssignGroupContactsAsync(string groupId, AssignmentAction action, IEnumerable<EntityReference> contacts, CancellationToken cancellationToken = default) => AssignGroupContactsAsync(groupId, action.Validate(nameof(action)).GetValue(), contacts, cancellationToken);
+        public Task AssignGroupContactsAsync(string groupId, AssignmentAction action, IEnumerable<EntityReference> contacts, CancellationToken cancellationToken = default) => AssignGroupContactsAsync(groupId, action.Validate(nameof(action)).GetValue()!, contacts, cancellationToken);
 
         /// <summary>
         /// Adds or removes contacts in a contact group.
@@ -389,7 +389,7 @@ namespace EncompassRest.Contacts
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> UpdateGroupRawAsync(string groupId, string group, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> UpdateGroupRawAsync(string groupId, string group, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
             Preconditions.NotNullOrEmpty(group, nameof(group));

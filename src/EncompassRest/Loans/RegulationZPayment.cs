@@ -9,13 +9,13 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(RegulationZPaymentIndex))]
     public sealed partial class RegulationZPayment : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _balance;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _interestRatePercent;
-        private DirtyValue<decimal?> _monthlyPayment;
-        private DirtyValue<int?> _numberOfPayments;
-        private DirtyValue<DateTime?> _paymentDate;
-        private DirtyValue<int?> _regulationZPaymentIndex;
+        private DirtyValue<decimal?>? _balance;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _interestRatePercent;
+        private DirtyValue<decimal?>? _monthlyPayment;
+        private DirtyValue<int?>? _numberOfPayments;
+        private DirtyValue<DateTime?>? _paymentDate;
+        private DirtyValue<int?>? _regulationZPaymentIndex;
 
         /// <summary>
         /// RegulationZPayment Balance
@@ -26,7 +26,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegulationZPayment Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// RegulationZPayment InterestRatePercent

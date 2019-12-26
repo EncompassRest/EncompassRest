@@ -21,7 +21,7 @@ namespace EncompassRest.Company.Users
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetGroupsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetGroupsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -47,6 +47,6 @@ namespace EncompassRest.Company.Users
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetGroupsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetGroupsRawAsync), null, cancellationToken);
+        public Task<string> GetGroupsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetGroupsRawAsync), null, cancellationToken);
     }
 }

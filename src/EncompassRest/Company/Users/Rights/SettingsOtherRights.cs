@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class SettingsOtherRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _accessToInputFormBuilder;
-        private DirtyValue<bool?> _diagnosticMode;
+        private DirtyValue<bool?>? _accessToInputFormBuilder;
+        private DirtyValue<bool?>? _diagnosticMode;
 
         /// <summary>
         /// OtherClassRights AccessToInputFormBuilder

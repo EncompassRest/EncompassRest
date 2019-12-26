@@ -4,6 +4,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Token
 {
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     /// <summary>
     /// TokenIntrospectionResponse
     /// </summary>
@@ -93,4 +94,5 @@ namespace EncompassRest.Token
         /// </summary>
         public string RealmName { get; set; }
     }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

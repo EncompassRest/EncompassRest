@@ -18,25 +18,25 @@ namespace EncompassRest.Services.Appraisal
         /// Tracking ID of an existing appraisal service order with Mercury Network.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string TrackingId { get; set; }
+        public string? TrackingId { get; set; }
 
         /// <summary>
         /// The ID of the product to use from the Appraisal Management Company (AMC) via Mercury.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string ProductId { get; set; }
+        public string? ProductId { get; set; }
 
         /// <summary>
         /// An Appraisal Management Company that is exposing its services via Mercury Network has the option to group its clients so that it can differentiate its product offerings/services.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string ClientGroup { get; set; }
+        public string? ClientGroup { get; set; }
 
         /// <summary>
         /// Identifier that Mercury Network assigns to the various Appraisal Management Companies that are exposing their appraisal services via Mercury.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string AMC { get; set; }
+        public string? AMC { get; set; }
 
         /// <summary>
         /// The date on which the lending organization received intent from the borrower/consumer to proceed with the loan.
@@ -60,13 +60,13 @@ namespace EncompassRest.Services.Appraisal
         /// The loan officer who has initiated the appraisal service request.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string OrderedBy { get; set; }
+        public string? OrderedBy { get; set; }
 
         /// <summary>
         /// The lending organization's email that Mercury Network will send notifications to.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string NotificationEmail { get; set; }
+        public string? NotificationEmail { get; set; }
 
         /// <summary>
         /// The date by which the lending organization would like to receive a completed appraisal report.
@@ -114,26 +114,26 @@ namespace EncompassRest.Services.Appraisal
         /// The legal apparatus by which the occupant of the property rightfully resides within it
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string PropertyRights { get; set; }
+        public string? PropertyRights { get; set; }
 
         /// <summary>
         /// Contact information to be made available to the Appraisal Management Company executing the service request.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public AppraisalContacts Contacts { get; set; }
+        public AppraisalContacts? Contacts { get; set; }
 
         /// <summary>
         /// Object that encapsulates payment information for the appraisal service request.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public AppraisalPayment Payment { get; set; }
+        public AppraisalPayment? Payment { get; set; }
 
         /// <summary>
         /// AppraisalOptions constructor.
         /// </summary>
         /// <param name="requestType">Type of appraisal service request.</param>
         public AppraisalOptions(AppraisalRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).GetValue())
+            : this(requestType.Validate(nameof(requestType)).GetValue()!)
         {
         }
 

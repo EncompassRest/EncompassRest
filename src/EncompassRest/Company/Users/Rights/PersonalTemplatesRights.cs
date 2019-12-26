@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,17 +7,17 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PersonalTemplatesRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _affiliatedBusinessArrangementTemplates;
-        private DirtyValue<bool?> _closingCosts;
-        private DirtyValue<bool?> _customPrintForms;
-        private DirtyValue<bool?> _dataTemplates;
-        private DirtyValue<bool?> _documentSets;
-        private DirtyValue<bool?> _inputFormSets;
-        private LoanProgramsRights _loanPrograms;
-        private DirtyValue<bool?> _loanTemplateSets;
-        private DirtyValue<bool?> _printFormGroups;
-        private DirtyValue<bool?> _settlementServiceProviders;
-        private DirtyValue<bool?> _taskSets;
+        private DirtyValue<bool?>? _affiliatedBusinessArrangementTemplates;
+        private DirtyValue<bool?>? _closingCosts;
+        private DirtyValue<bool?>? _customPrintForms;
+        private DirtyValue<bool?>? _dataTemplates;
+        private DirtyValue<bool?>? _documentSets;
+        private DirtyValue<bool?>? _inputFormSets;
+        private LoanProgramsRights? _loanPrograms;
+        private DirtyValue<bool?>? _loanTemplateSets;
+        private DirtyValue<bool?>? _printFormGroups;
+        private DirtyValue<bool?>? _settlementServiceProviders;
+        private DirtyValue<bool?>? _taskSets;
 
         /// <summary>
         /// PersonalTemplatesRights AffiliatedBusinessArrangementTemplates
@@ -50,6 +52,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// PersonalTemplatesRights LoanPrograms
         /// </summary>
+        [AllowNull]
         public LoanProgramsRights LoanPrograms { get => GetField(ref _loanPrograms); set => SetField(ref _loanPrograms, value); }
 
         /// <summary>

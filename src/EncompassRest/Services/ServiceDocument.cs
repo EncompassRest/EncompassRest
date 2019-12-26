@@ -10,16 +10,16 @@ namespace EncompassRest.Services
         /// <summary>
         /// Unique identifier for the eFolder document.
         /// </summary>
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// Name of the eFolder document.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Collection of eFolder attachments associated with the response document.
         /// </summary>
-        public List<ServiceAttachment> Attachments { get; set; }
+        public List<ServiceAttachment>? Attachments { get; set; }
     }
 }

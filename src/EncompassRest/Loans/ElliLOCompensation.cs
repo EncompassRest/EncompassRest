@@ -9,45 +9,45 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ElliLOCompensation : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _adjustedPlanAdditonalAmountForBroker;
-        private DirtyValue<decimal?> _adjustedPlanAdditonalAmountForOfficer;
-        private DirtyValue<decimal?> _adjustedPlanAmountForBroker;
-        private DirtyValue<decimal?> _adjustedPlanAmountForOfficer;
-        private DirtyValue<decimal?> _adjustedPlanRateForBroker;
-        private DirtyValue<decimal?> _adjustedPlanRateForOfficer;
-        private DirtyValue<string> _adjustmentDescription;
-        private DirtyValue<string> _adjustmentDescriptionForOfficer;
-        private DirtyValue<decimal?> _basePlanAdditonalAmountForBroker;
-        private DirtyValue<decimal?> _basePlanAdditonalAmountForOfficer;
-        private DirtyValue<decimal?> _basePlanAmountForBroker;
-        private DirtyValue<decimal?> _basePlanAmountForOfficer;
-        private DirtyValue<decimal?> _basePlanMaximumAmountForBroker;
-        private DirtyValue<decimal?> _basePlanMaximumAmountForOfficer;
-        private DirtyValue<decimal?> _basePlanMinimumAmountForBroker;
-        private DirtyValue<decimal?> _basePlanMinimumAmountForOfficer;
-        private DirtyValue<decimal?> _basePlanRateForBroker;
-        private DirtyValue<decimal?> _basePlanRateForOfficer;
-        private DirtyValue<decimal?> _bonusCompAdditonalAmount;
-        private DirtyValue<decimal?> _bonusCompAmount;
-        private DirtyValue<decimal?> _bonusCompRate;
-        private DirtyValue<string> _id;
-        private DirtyValue<DateTime?> _lastAppliedDate;
-        private DirtyValue<string> _lastAppliedDateTime;
-        private DirtyValue<StringEnumValue<LoanAmountType>> _loanAmountType;
-        private DirtyValue<StringEnumValue<LoanAmountType>> _loanAmountTypeForOfficer;
-        private DirtyValue<string> _loanOriginatorID;
-        private DirtyValue<string> _loanOriginatorIDForOfficer;
-        private DirtyValue<string> _loanOriginatorName;
-        private DirtyValue<string> _loanOriginatorNameForOfficer;
-        private DirtyValue<decimal?> _netAdjustedAmountForBroker;
-        private DirtyValue<decimal?> _netAdjustedAmountForOfficer;
-        private DirtyValue<DateTime?> _planDate;
-        private DirtyValue<string> _planName;
-        private DirtyValue<string> _planNameForOfficer;
-        private DirtyValue<StringEnumValue<RoundingMethod>> _roundingMethod;
-        private DirtyValue<StringEnumValue<RoundingMethod>> _roundingMethodForOfficer;
-        private DirtyValue<string> _triggerField;
-        private DirtyValue<StringEnumValue<WhoPaidCompensation>> _whoPaidCompensation;
+        private DirtyValue<decimal?>? _adjustedPlanAdditonalAmountForBroker;
+        private DirtyValue<decimal?>? _adjustedPlanAdditonalAmountForOfficer;
+        private DirtyValue<decimal?>? _adjustedPlanAmountForBroker;
+        private DirtyValue<decimal?>? _adjustedPlanAmountForOfficer;
+        private DirtyValue<decimal?>? _adjustedPlanRateForBroker;
+        private DirtyValue<decimal?>? _adjustedPlanRateForOfficer;
+        private DirtyValue<string?>? _adjustmentDescription;
+        private DirtyValue<string?>? _adjustmentDescriptionForOfficer;
+        private DirtyValue<decimal?>? _basePlanAdditonalAmountForBroker;
+        private DirtyValue<decimal?>? _basePlanAdditonalAmountForOfficer;
+        private DirtyValue<decimal?>? _basePlanAmountForBroker;
+        private DirtyValue<decimal?>? _basePlanAmountForOfficer;
+        private DirtyValue<decimal?>? _basePlanMaximumAmountForBroker;
+        private DirtyValue<decimal?>? _basePlanMaximumAmountForOfficer;
+        private DirtyValue<decimal?>? _basePlanMinimumAmountForBroker;
+        private DirtyValue<decimal?>? _basePlanMinimumAmountForOfficer;
+        private DirtyValue<decimal?>? _basePlanRateForBroker;
+        private DirtyValue<decimal?>? _basePlanRateForOfficer;
+        private DirtyValue<decimal?>? _bonusCompAdditonalAmount;
+        private DirtyValue<decimal?>? _bonusCompAmount;
+        private DirtyValue<decimal?>? _bonusCompRate;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<DateTime?>? _lastAppliedDate;
+        private DirtyValue<string?>? _lastAppliedDateTime;
+        private DirtyValue<StringEnumValue<LoanAmountType>>? _loanAmountType;
+        private DirtyValue<StringEnumValue<LoanAmountType>>? _loanAmountTypeForOfficer;
+        private DirtyValue<string?>? _loanOriginatorID;
+        private DirtyValue<string?>? _loanOriginatorIDForOfficer;
+        private DirtyValue<string?>? _loanOriginatorName;
+        private DirtyValue<string?>? _loanOriginatorNameForOfficer;
+        private DirtyValue<decimal?>? _netAdjustedAmountForBroker;
+        private DirtyValue<decimal?>? _netAdjustedAmountForOfficer;
+        private DirtyValue<DateTime?>? _planDate;
+        private DirtyValue<string?>? _planName;
+        private DirtyValue<string?>? _planNameForOfficer;
+        private DirtyValue<StringEnumValue<RoundingMethod>>? _roundingMethod;
+        private DirtyValue<StringEnumValue<RoundingMethod>>? _roundingMethodForOfficer;
+        private DirtyValue<string?>? _triggerField;
+        private DirtyValue<StringEnumValue<WhoPaidCompensation>>? _whoPaidCompensation;
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Adjusted Plan Additional Amount [LCP.X12]
@@ -88,12 +88,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Compensation Plan - Adjustment Description [LCP.X15]
         /// </summary>
-        public string AdjustmentDescription { get => _adjustmentDescription; set => SetField(ref _adjustmentDescription, value); }
+        public string? AdjustmentDescription { get => _adjustmentDescription; set => SetField(ref _adjustmentDescription, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Adjustment Description [LCP.X37]
         /// </summary>
-        public string AdjustmentDescriptionForOfficer { get => _adjustmentDescriptionForOfficer; set => SetField(ref _adjustmentDescriptionForOfficer, value); }
+        public string? AdjustmentDescriptionForOfficer { get => _adjustmentDescriptionForOfficer; set => SetField(ref _adjustmentDescriptionForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Additional Amount [LCP.X7]
@@ -176,7 +176,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ElliLOCompensation Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Last Applied Date [LCP.X20]
@@ -188,7 +188,7 @@ namespace EncompassRest.Loans
         /// Loan Compensation Plan - Last Applied Date and Time [LCP.X19]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LastAppliedDateTime { get => _lastAppliedDateTime; set => SetField(ref _lastAppliedDateTime, value); }
+        public string? LastAppliedDateTime { get => _lastAppliedDateTime; set => SetField(ref _lastAppliedDateTime, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Loan Amount Type [LCP.X17]
@@ -203,22 +203,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Loan Originator ID [LCP.X18]
         /// </summary>
-        public string LoanOriginatorID { get => _loanOriginatorID; set => SetField(ref _loanOriginatorID, value); }
+        public string? LoanOriginatorID { get => _loanOriginatorID; set => SetField(ref _loanOriginatorID, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Loan Officer ID [LCP.X38]
         /// </summary>
-        public string LoanOriginatorIDForOfficer { get => _loanOriginatorIDForOfficer; set => SetField(ref _loanOriginatorIDForOfficer, value); }
+        public string? LoanOriginatorIDForOfficer { get => _loanOriginatorIDForOfficer; set => SetField(ref _loanOriginatorIDForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Loan Originator Name [LCP.X2]
         /// </summary>
-        public string LoanOriginatorName { get => _loanOriginatorName; set => SetField(ref _loanOriginatorName, value); }
+        public string? LoanOriginatorName { get => _loanOriginatorName; set => SetField(ref _loanOriginatorName, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Loan Officer Name [LCP.X21]
         /// </summary>
-        public string LoanOriginatorNameForOfficer { get => _loanOriginatorNameForOfficer; set => SetField(ref _loanOriginatorNameForOfficer, value); }
+        public string? LoanOriginatorNameForOfficer { get => _loanOriginatorNameForOfficer; set => SetField(ref _loanOriginatorNameForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Net Adjusted Amount [LCP.X14]
@@ -240,12 +240,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Plan Name [LCP.X3]
         /// </summary>
-        public string PlanName { get => _planName; set => SetField(ref _planName, value); }
+        public string? PlanName { get => _planName; set => SetField(ref _planName, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Plan Name [LCP.X22]
         /// </summary>
-        public string PlanNameForOfficer { get => _planNameForOfficer; set => SetField(ref _planNameForOfficer, value); }
+        public string? PlanNameForOfficer { get => _planNameForOfficer; set => SetField(ref _planNameForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Rounding Method [LCP.X16]
@@ -260,7 +260,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Compensation Plan - Trigger Field [LCP.X4]
         /// </summary>
-        public string TriggerField { get => _triggerField; set => SetField(ref _triggerField, value); }
+        public string? TriggerField { get => _triggerField; set => SetField(ref _triggerField, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Brrower/Lender Paid [LCP.X1]

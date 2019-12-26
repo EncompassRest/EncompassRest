@@ -5,11 +5,11 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class CustomFieldsTabRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _customFieldsTab1;
-        private DirtyValue<bool?> _customFieldsTab2;
-        private DirtyValue<bool?> _customFieldsTab3;
-        private DirtyValue<bool?> _customFieldsTab4;
-        private DirtyValue<bool?> _customFieldsTab5;
+        private DirtyValue<bool?>? _customFieldsTab1;
+        private DirtyValue<bool?>? _customFieldsTab2;
+        private DirtyValue<bool?>? _customFieldsTab3;
+        private DirtyValue<bool?>? _customFieldsTab4;
+        private DirtyValue<bool?>? _customFieldsTab5;
 
         /// <summary>
         /// CustomFieldsTabRights CustomFieldsTab1

@@ -7,10 +7,10 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AccessToDashboardTabRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _filterDatabyOrganization;
-        private DirtyValue<bool?> _filterDatabyUserGroup;
-        private DirtyValue<bool?> _managePersonalSnapshotTemplate;
-        private DirtyValue<bool?> _managePersonalView;
+        private DirtyValue<bool?>? _filterDatabyOrganization;
+        private DirtyValue<bool?>? _filterDatabyUserGroup;
+        private DirtyValue<bool?>? _managePersonalSnapshotTemplate;
+        private DirtyValue<bool?>? _managePersonalView;
 
         /// <summary>
         /// AccessToDashboardTabRights FilterDatabyOrganization

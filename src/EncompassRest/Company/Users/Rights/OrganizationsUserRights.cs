@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class OrganizationsUserRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _addLEI;
-        private DirtyValue<bool?> _editLEI;
+        private DirtyValue<bool?>? _addLEI;
+        private DirtyValue<bool?>? _editLEI;
 
         /// <summary>
         /// OrganizationsUserRights AddLEI

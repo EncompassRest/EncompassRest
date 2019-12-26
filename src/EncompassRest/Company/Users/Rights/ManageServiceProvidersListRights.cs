@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,11 +7,12 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ManageServiceProvidersListRights : ParentAccessRights
     {
-        private EllieMaeNetworkServiceCategoriesRights _ellieMaeNetworkServiceCategories;
+        private EllieMaeNetworkServiceCategoriesRights? _ellieMaeNetworkServiceCategories;
 
         /// <summary>
         /// ManageServiceProvidersListRights EllieMaeNetworkServiceCategories
         /// </summary>
+        [AllowNull]
         public EllieMaeNetworkServiceCategoriesRights EllieMaeNetworkServiceCategories { get => GetField(ref _ellieMaeNetworkServiceCategories); set => SetField(ref _ellieMaeNetworkServiceCategories, value); }
     }
 }
