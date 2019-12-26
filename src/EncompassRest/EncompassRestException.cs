@@ -20,7 +20,7 @@ namespace EncompassRest
             return new EncompassRestException(message, response, responseContent, requestContent);
         }
 
-        private static string GetRequestContent(HttpContent content)
+        private static string? GetRequestContent(HttpContent content)
         {
             switch (content)
             {
@@ -33,7 +33,7 @@ namespace EncompassRest
             }
         }
 
-        private static string BuildBaseMessage(string message, HttpResponseMessage response, string responseContent)
+        private static string BuildBaseMessage(string? message, HttpResponseMessage response, string? responseContent)
         {
             var sb = new StringBuilder();
 
@@ -59,7 +59,7 @@ namespace EncompassRest
         /// <summary>
         /// The Api request body.
         /// </summary>
-        public string RequestContent { get; }
+        public string? RequestContent { get; }
 
         /// <summary>
         /// The Api response status code.
@@ -74,12 +74,12 @@ namespace EncompassRest
         /// <summary>
         /// The Api response body.
         /// </summary>
-        public string ResponseContent { get; }
+        public string? ResponseContent { get; }
 
         /// <summary>
         /// The Api response correlation id as specified in the X-Correlation-ID header. Useful to Ellie Mae for inspecting issues.
         /// </summary>
-        public string CorrelationId => Response.Headers.TryGetValues("X-Correlation-ID", out var values) ? values.FirstOrDefault() : null;
+        public string? CorrelationId => Response.Headers.TryGetValues("X-Correlation-ID", out var values) ? values.FirstOrDefault() : null;
 
         /// <summary>
         /// The concurrency limit as specified in the X-Concurrency-Limit-Limit header.
@@ -106,7 +106,7 @@ namespace EncompassRest
         /// </summary>
         public DateTime? RateLimitReset => Response.Headers.TryGetValues("X-Rate-Limit-Reset", out var values) && int.TryParse(values.FirstOrDefault() ?? string.Empty, out var value) ? new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(value) : default;
 
-        private EncompassRestException(string message, HttpResponseMessage response, string responseContent, string requestContent)
+        private EncompassRestException(string message, HttpResponseMessage response, string? responseContent, string? requestContent)
             : base(BuildBaseMessage(message, response, responseContent))
         {
             Response = response;

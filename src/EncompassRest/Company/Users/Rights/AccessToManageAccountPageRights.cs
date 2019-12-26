@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AccessToManageAccountPageRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _accessBranchesTab;
-        private DirtyValue<bool?> _accessCompanyInfoTab;
+        private DirtyValue<bool?>? _accessBranchesTab;
+        private DirtyValue<bool?>? _accessCompanyInfoTab;
 
         /// <summary>
         /// AccessToManageAccountPageRights AccessBranchesTab

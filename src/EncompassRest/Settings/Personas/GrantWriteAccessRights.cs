@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Settings.Personas
 {
@@ -7,11 +8,12 @@ namespace EncompassRest.Settings.Personas
     /// </summary>
     public sealed class GrantWriteAccessRights : PersonaAccess
     {
-        private DirtyList<LoanTeamMemberRights> _loanTeam;
+        private DirtyList<LoanTeamMemberRights>? _loanTeam;
 
         /// <summary>
         /// GrantWriteAccessRights LoanTeam
         /// </summary>
+        [AllowNull]
         public IList<LoanTeamMemberRights> LoanTeam { get => GetField(ref _loanTeam); set => SetField(ref _loanTeam, value); }
     }
 }

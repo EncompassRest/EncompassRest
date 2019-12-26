@@ -22,12 +22,12 @@ namespace EncompassRest.Settings.Contacts
         /// <summary>
         /// A detailed explanation of what each field represents.
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// The canonical name of the field.
         /// </summary>
-        public string CanonicalName { get; set; }
+        public string? CanonicalName { get; set; }
 
         /// <summary>
         /// Type of a field.
@@ -42,7 +42,7 @@ namespace EncompassRest.Settings.Contacts
         /// <summary>
         /// Array of strings representing possible options for field values.
         /// </summary>
-        public List<string> Options { get; set; }
+        public List<string>? Options { get; set; }
 
         /// <summary>
         /// ContactFieldDefinition MaxLength

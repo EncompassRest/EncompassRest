@@ -9,15 +9,15 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(FeeVarianceChargeIndex) + "," + nameof(FeeVarianceFeeType))]
     public sealed partial class FeeVariance : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _cD;
-        private DirtyValue<string> _description;
-        private DirtyValue<int?> _feeVarianceChargeIndex;
-        private DirtyValue<StringEnumValue<FeeVarianceFeeType>> _feeVarianceFeeType;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _initialLE;
-        private DirtyValue<decimal?> _itemization;
-        private DirtyValue<decimal?> _lE;
-        private DirtyValue<string> _line;
+        private DirtyValue<decimal?>? _cD;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<int?>? _feeVarianceChargeIndex;
+        private DirtyValue<StringEnumValue<FeeVarianceFeeType>>? _feeVarianceFeeType;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _initialLE;
+        private DirtyValue<decimal?>? _itemization;
+        private DirtyValue<decimal?>? _lE;
+        private DirtyValue<string?>? _line;
 
         /// <summary>
         /// FeeVariance CD
@@ -28,7 +28,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FeeVariance Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// FeeVariance FeeVarianceChargeIndex
@@ -43,7 +43,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FeeVariance Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// FeeVariance InitialLE
@@ -66,6 +66,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FeeVariance Line
         /// </summary>
-        public string Line { get => _line; set => SetField(ref _line, value); }
+        public string? Line { get => _line; set => SetField(ref _line, value); }
     }
 }

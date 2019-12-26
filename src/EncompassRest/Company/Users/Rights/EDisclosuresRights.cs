@@ -7,9 +7,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class EDisclosuresRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _addAdditionalDocs;
-        private DirtyValue<bool?> _deselectDocs;
-        private DirtyValue<bool?> _moveDocsUpDown;
+        private DirtyValue<bool?>? _addAdditionalDocs;
+        private DirtyValue<bool?>? _deselectDocs;
+        private DirtyValue<bool?>? _moveDocsUpDown;
 
         /// <summary>
         /// EDisclosuresRights AddAdditionalDocs

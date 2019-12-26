@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using EncompassRest.Schema;
 using EncompassRest.Utilities;
@@ -56,7 +54,7 @@ namespace EncompassRest.Loans
         /// </summary>
         public string UnformattedValue => GetUnformattedValue() ?? string.Empty;
 
-        private string GetUnformattedValue()
+        private string? GetUnformattedValue()
         {
             switch (Format)
             {
@@ -93,9 +91,9 @@ namespace EncompassRest.Loans
         /// </summary>
         public string FormattedValue => GetFormattedValue() ?? string.Empty;
 
-        private string GetFormattedValue()
+        private string? GetFormattedValue()
         {
-            string value;
+            string? value;
             switch (Format)
             {
                 case LoanFieldFormat.DECIMAL_1:
@@ -139,7 +137,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// The field's value.
         /// </summary>
-        public virtual object Value
+        public virtual object? Value
         {
             get
             {
@@ -242,7 +240,7 @@ namespace EncompassRest.Loans
             }
         }
 
-        internal LoanField(FieldDescriptor descriptor, Loan loan, ModelPath modelPath = null, int? borrowerPairIndex = null)
+        internal LoanField(FieldDescriptor descriptor, Loan loan, ModelPath? modelPath = null, int? borrowerPairIndex = null)
         {
             Descriptor = descriptor;
             Loan = loan;
@@ -254,7 +252,7 @@ namespace EncompassRest.Loans
         /// Returns the field's value as a <see cref="string"/>.
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        public override string? ToString()
         {
             if (Descriptor.ValueType == LoanFieldValueType.Boolean && Descriptor.Options.Count > 0)
             {

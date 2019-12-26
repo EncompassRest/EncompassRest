@@ -10,55 +10,55 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(AssetType) + "," + nameof(VodIndex), SerializeWholeListWhenDirty = true)]
     public sealed partial class Asset : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _accountIdentifier;
-        private DirtyValue<string> _altId;
-        private DirtyValue<int?> _assetIndex;
-        private DirtyValue<StringEnumValue<AssetType>> _assetType;
-        private DirtyValue<string> _attention;
-        private DirtyValue<string> _borrowerId;
-        private DirtyValue<decimal?> _cashOrMarketValueAmount;
-        private DirtyValue<EntityReference> _contact;
-        private DirtyValue<string> _depositoryAccountName;
-        private DirtyValue<DateTime?> _depositoryRequestDate;
-        private DirtyValue<string> _description;
-        private DirtyValue<bool?> _entityDeleted;
-        private DirtyValue<string> _holderAddressCity;
-        private DirtyValue<string> _holderAddressPostalCode;
-        private DirtyValue<StringEnumValue<State>> _holderAddressState;
-        private DirtyValue<string> _holderAddressStreetLine1;
-        private DirtyValue<string> _holderComments;
-        private DirtyValue<string> _holderEmail;
-        private DirtyValue<string> _holderFax;
-        private DirtyValue<string> _holderName;
-        private DirtyValue<string> _holderPhone;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _includeInAusExport;
-        private DirtyValue<bool?> _isEmpty;
-        private DirtyValue<bool?> _isVod;
-        private DirtyValue<decimal?> _lifeInsuranceFaceValueAmount;
-        private DirtyValue<string> _nameInAccount;
-        private DirtyValue<bool?> _noLinkToDocTrackIndicator;
-        private DirtyValue<StringEnumValue<Owner>> _owner;
-        private DirtyValue<bool?> _printAttachmentIndicator;
-        private DirtyValue<bool?> _printUserJobTitleIndicator;
-        private DirtyValue<bool?> _printUserNameIndicator;
-        private DirtyValue<string> _title;
-        private DirtyValue<string> _titleFax;
-        private DirtyValue<string> _titlePhone;
-        private DirtyValue<decimal?> _total;
-        private DirtyValue<decimal?> _urla2020CashOrMarketValueAmount;
-        private DirtyValue<int?> _vodIndex;
+        private DirtyValue<string?>? _accountIdentifier;
+        private DirtyValue<string?>? _altId;
+        private DirtyValue<int?>? _assetIndex;
+        private DirtyValue<StringEnumValue<AssetType>>? _assetType;
+        private DirtyValue<string?>? _attention;
+        private DirtyValue<string?>? _borrowerId;
+        private DirtyValue<decimal?>? _cashOrMarketValueAmount;
+        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<string?>? _depositoryAccountName;
+        private DirtyValue<DateTime?>? _depositoryRequestDate;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<bool?>? _entityDeleted;
+        private DirtyValue<string?>? _holderAddressCity;
+        private DirtyValue<string?>? _holderAddressPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _holderAddressState;
+        private DirtyValue<string?>? _holderAddressStreetLine1;
+        private DirtyValue<string?>? _holderComments;
+        private DirtyValue<string?>? _holderEmail;
+        private DirtyValue<string?>? _holderFax;
+        private DirtyValue<string?>? _holderName;
+        private DirtyValue<string?>? _holderPhone;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _includeInAusExport;
+        private DirtyValue<bool?>? _isEmpty;
+        private DirtyValue<bool?>? _isVod;
+        private DirtyValue<decimal?>? _lifeInsuranceFaceValueAmount;
+        private DirtyValue<string?>? _nameInAccount;
+        private DirtyValue<bool?>? _noLinkToDocTrackIndicator;
+        private DirtyValue<StringEnumValue<Owner>>? _owner;
+        private DirtyValue<bool?>? _printAttachmentIndicator;
+        private DirtyValue<bool?>? _printUserJobTitleIndicator;
+        private DirtyValue<bool?>? _printUserNameIndicator;
+        private DirtyValue<string?>? _title;
+        private DirtyValue<string?>? _titleFax;
+        private DirtyValue<string?>? _titlePhone;
+        private DirtyValue<decimal?>? _total;
+        private DirtyValue<decimal?>? _urla2020CashOrMarketValueAmount;
+        private DirtyValue<int?>? _vodIndex;
 
         /// <summary>
         /// Asset AccountIdentifier
         /// </summary>
-        public string AccountIdentifier { get => _accountIdentifier; set => SetField(ref _accountIdentifier, value); }
+        public string? AccountIdentifier { get => _accountIdentifier; set => SetField(ref _accountIdentifier, value); }
 
         /// <summary>
         /// Depository Request ID [DDNN35]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string AltId { get => _altId; set => SetField(ref _altId, value); }
+        public string? AltId { get => _altId; set => SetField(ref _altId, value); }
 
         /// <summary>
         /// Asset AssetIndex
@@ -73,12 +73,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Attention Contact [DDNN03]
         /// </summary>
-        public string Attention { get => _attention; set => SetField(ref _attention, value); }
+        public string? Attention { get => _attention; set => SetField(ref _attention, value); }
 
         /// <summary>
         /// Asset BorrowerId
         /// </summary>
-        public string BorrowerId { get => _borrowerId; set => SetField(ref _borrowerId, value); }
+        public string? BorrowerId { get => _borrowerId; set => SetField(ref _borrowerId, value); }
 
         /// <summary>
         /// Asset CashOrMarketValueAmount
@@ -94,7 +94,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Asset DepositoryAccountName
         /// </summary>
-        public string DepositoryAccountName { get => _depositoryAccountName; set => SetField(ref _depositoryAccountName, value); }
+        public string? DepositoryAccountName { get => _depositoryAccountName; set => SetField(ref _depositoryAccountName, value); }
 
         /// <summary>
         /// Depository Request Date [DDNN98]
@@ -104,7 +104,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Asset Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// Asset EntityDeleted
@@ -114,13 +114,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Attention City [DDNN05]
         /// </summary>
-        public string HolderAddressCity { get => _holderAddressCity; set => SetField(ref _holderAddressCity, value); }
+        public string? HolderAddressCity { get => _holderAddressCity; set => SetField(ref _holderAddressCity, value); }
 
         /// <summary>
         /// Depository Attention Zipcode [DDNN07]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string HolderAddressPostalCode { get => _holderAddressPostalCode; set => SetField(ref _holderAddressPostalCode, value); }
+        public string? HolderAddressPostalCode { get => _holderAddressPostalCode; set => SetField(ref _holderAddressPostalCode, value); }
 
         /// <summary>
         /// Depository Attention State [DDNN06]
@@ -130,39 +130,39 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Address [DDNN04]
         /// </summary>
-        public string HolderAddressStreetLine1 { get => _holderAddressStreetLine1; set => SetField(ref _holderAddressStreetLine1, value); }
+        public string? HolderAddressStreetLine1 { get => _holderAddressStreetLine1; set => SetField(ref _holderAddressStreetLine1, value); }
 
         /// <summary>
         /// Depository Comments [DDNN29]
         /// </summary>
-        public string HolderComments { get => _holderComments; set => SetField(ref _holderComments, value); }
+        public string? HolderComments { get => _holderComments; set => SetField(ref _holderComments, value); }
 
         /// <summary>
         /// Depository Email [DDNN28]
         /// </summary>
-        public string HolderEmail { get => _holderEmail; set => SetField(ref _holderEmail, value); }
+        public string? HolderEmail { get => _holderEmail; set => SetField(ref _holderEmail, value); }
 
         /// <summary>
         /// Depository Fax [DDNN27]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string HolderFax { get => _holderFax; set => SetField(ref _holderFax, value); }
+        public string? HolderFax { get => _holderFax; set => SetField(ref _holderFax, value); }
 
         /// <summary>
         /// Asset HolderName [DDNN02]
         /// </summary>
-        public string HolderName { get => _holderName; set => SetField(ref _holderName, value); }
+        public string? HolderName { get => _holderName; set => SetField(ref _holderName, value); }
 
         /// <summary>
         /// Depository Phone [DDNN26]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string HolderPhone { get => _holderPhone; set => SetField(ref _holderPhone, value); }
+        public string? HolderPhone { get => _holderPhone; set => SetField(ref _holderPhone, value); }
 
         /// <summary>
         /// Asset Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Include In AUS/Export [DDNN52]
@@ -189,7 +189,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Asset NameInAccount
         /// </summary>
-        public string NameInAccount { get => _nameInAccount; set => SetField(ref _nameInAccount, value); }
+        public string? NameInAccount { get => _nameInAccount; set => SetField(ref _nameInAccount, value); }
 
         /// <summary>
         /// Depository No Link to Doc Tracking [DDNN97]
@@ -223,19 +223,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository From Title [DDNN37]
         /// </summary>
-        public string Title { get => _title; set => SetField(ref _title, value); }
+        public string? Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
         /// Depository From Fax [DDNN45]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
+        public string? TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
 
         /// <summary>
         /// Depository From Phone [DDNN44]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
+        public string? TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
 
         /// <summary>
         /// Depository Total Balance [DDNN34]

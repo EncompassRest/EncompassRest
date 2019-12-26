@@ -2,6 +2,6 @@
 {
     internal interface IStringCreator
     {
-        object Create(string value);
+        object Create(string? value);
     }
 }

@@ -9,11 +9,11 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(Gfe2010WholePocIndex) + "," + nameof(LineNumber))]
     public sealed partial class Gfe2010WholePoc : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _gfe2010WholePocIndex;
-        private DirtyValue<string> _id;
-        private DirtyValue<int?> _lineNumber;
-        private DirtyValue<decimal?> _wholePoc;
-        private DirtyValue<StringEnumValue<WholePocPaidByType>> _wholePocPaidByType;
+        private DirtyValue<int?>? _gfe2010WholePocIndex;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<int?>? _lineNumber;
+        private DirtyValue<decimal?>? _wholePoc;
+        private DirtyValue<StringEnumValue<WholePocPaidByType>>? _wholePocPaidByType;
 
         /// <summary>
         /// Gfe2010WholePoc Gfe2010WholePocIndex
@@ -23,7 +23,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010WholePoc Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Gfe2010WholePoc LineNumber

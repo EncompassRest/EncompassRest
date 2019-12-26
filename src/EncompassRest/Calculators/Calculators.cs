@@ -37,7 +37,7 @@ namespace EncompassRest.Calculators
         /// <param name="entities">The list of loan entities to populate for the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task CalculateLoanAsync(Loan loan, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken = default);
+        Task CalculateLoanAsync(Loan loan, IEnumerable<LoanEntity>? entities, CancellationToken cancellationToken = default);
         /// <summary>
         /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
         /// </summary>
@@ -46,7 +46,7 @@ namespace EncompassRest.Calculators
         /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task CalculateLoanAsync(Loan loan, IEnumerable<LoanEntity> entities, bool? calcAllOnly, CancellationToken cancellationToken = default);
+        Task CalculateLoanAsync(Loan loan, IEnumerable<LoanEntity>? entities, bool? calcAllOnly, CancellationToken cancellationToken = default);
         /// <summary>
         /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
         /// </summary>
@@ -54,7 +54,7 @@ namespace EncompassRest.Calculators
         /// <param name="entities">The list of loan entities to populate for the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task CalculateLoanAsync(Loan loan, IEnumerable<string> entities, CancellationToken cancellationToken = default);
+        Task CalculateLoanAsync(Loan loan, IEnumerable<string>? entities, CancellationToken cancellationToken = default);
         /// <summary>
         /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
         /// </summary>
@@ -63,7 +63,7 @@ namespace EncompassRest.Calculators
         /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task CalculateLoanAsync(Loan loan, IEnumerable<string> entities, bool? calcAllOnly, CancellationToken cancellationToken = default);
+        Task CalculateLoanAsync(Loan loan, IEnumerable<string>? entities, bool? calcAllOnly, CancellationToken cancellationToken = default);
         /// <summary>
         /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
         /// </summary>
@@ -71,7 +71,7 @@ namespace EncompassRest.Calculators
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns>The loan with calculations performed as raw json.</returns>
-        Task<string> CalculateLoanRawAsync(string body, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> CalculateLoanRawAsync(string body, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -90,7 +90,7 @@ namespace EncompassRest.Calculators
         /// <param name="loan">The loan to recalculate.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task CalculateLoanAsync(Loan loan, CancellationToken cancellationToken = default) => CalculateLoanAsync(loan, (IEnumerable<string>)null, null, cancellationToken);
+        public Task CalculateLoanAsync(Loan loan, CancellationToken cancellationToken = default) => CalculateLoanAsync(loan, (IEnumerable<string>?)null, null, cancellationToken);
 
         /// <summary>
         /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
@@ -99,7 +99,7 @@ namespace EncompassRest.Calculators
         /// <param name="entities">The list of loan entities to populate for the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task CalculateLoanAsync(Loan loan, IEnumerable<string> entities, CancellationToken cancellationToken = default) => CalculateLoanAsync(loan, entities, null, cancellationToken);
+        public Task CalculateLoanAsync(Loan loan, IEnumerable<string>? entities, CancellationToken cancellationToken = default) => CalculateLoanAsync(loan, entities, null, cancellationToken);
 
         /// <summary>
         /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
@@ -108,7 +108,7 @@ namespace EncompassRest.Calculators
         /// <param name="entities">The list of loan entities to populate for the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task CalculateLoanAsync(Loan loan, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken = default) => CalculateLoanAsync(loan, entities, null, cancellationToken);
+        public Task CalculateLoanAsync(Loan loan, IEnumerable<LoanEntity>? entities, CancellationToken cancellationToken = default) => CalculateLoanAsync(loan, entities, null, cancellationToken);
 
         /// <summary>
         /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
@@ -117,17 +117,7 @@ namespace EncompassRest.Calculators
         /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task CalculateLoanAsync(Loan loan, bool? calcAllOnly, CancellationToken cancellationToken = default) => CalculateLoanAsync(loan, (IEnumerable<string>)null, calcAllOnly, cancellationToken);
-
-        /// <summary>
-        /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
-        /// </summary>
-        /// <param name="loan">The loan to recalculate.</param>
-        /// <param name="entities">The list of loan entities to populate for the loan.</param>
-        /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        public Task CalculateLoanAsync(Loan loan, IEnumerable<LoanEntity> entities, bool? calcAllOnly, CancellationToken cancellationToken = default) => CalculateLoanAsync(loan, entities?.Select(e => e.Validate(nameof(entities)).GetValue()), calcAllOnly, cancellationToken);
+        public Task CalculateLoanAsync(Loan loan, bool? calcAllOnly, CancellationToken cancellationToken = default) => CalculateLoanAsync(loan, (IEnumerable<string>?)null, calcAllOnly, cancellationToken);
 
         /// <summary>
         /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
@@ -137,7 +127,17 @@ namespace EncompassRest.Calculators
         /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task CalculateLoanAsync(Loan loan, IEnumerable<string> entities, bool? calcAllOnly, CancellationToken cancellationToken = default)
+        public Task CalculateLoanAsync(Loan loan, IEnumerable<LoanEntity>? entities, bool? calcAllOnly, CancellationToken cancellationToken = default) => CalculateLoanAsync(loan, entities?.Select(e => e.Validate(nameof(entities)).GetValue()!), calcAllOnly, cancellationToken);
+
+        /// <summary>
+        /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.
+        /// </summary>
+        /// <param name="loan">The loan to recalculate.</param>
+        /// <param name="entities">The list of loan entities to populate for the loan.</param>
+        /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        public Task CalculateLoanAsync(Loan loan, IEnumerable<string>? entities, bool? calcAllOnly, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
@@ -147,7 +147,7 @@ namespace EncompassRest.Calculators
             {
                 queryParameters.Add(nameof(calcAllOnly), calcAllOnly.ToString().ToLower());
             }
-            var body = new CalculateLoanBody { LoanData = loan, Entities = entities };
+            var body = new CalculateLoanBody(loan) { Entities = entities };
             loan.Initialize(Client, loan.EncompassId);
             return PostAsync("loan", queryParameters.ToString(), JsonStreamContent.Create(body), nameof(CalculateLoanAsync), loan.EncompassId, cancellationToken, async (HttpResponseMessage response) =>
             {
@@ -168,16 +168,21 @@ namespace EncompassRest.Calculators
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns>The loan with calculations performed as raw json.</returns>
-        public Task<string> CalculateLoanRawAsync(string body, string queryString = null, CancellationToken cancellationToken = default) => PostRawAsync("loan", queryString, new JsonStringContent(body), nameof(CalculateLoanRawAsync), null, cancellationToken);
+        public Task<string> CalculateLoanRawAsync(string body, string? queryString = null, CancellationToken cancellationToken = default) => PostRawAsync("loan", queryString, new JsonStringContent(body), nameof(CalculateLoanRawAsync), null, cancellationToken);
 
         private sealed class CalculateLoanBody
         {
-            public string LoanId => LoanData.EncompassId;
+            public string LoanId => LoanData.EncompassId!;
 
-            public Loan LoanData { get; set; }
+            public Loan LoanData { get; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public IEnumerable<string> Entities { get; set; }
+            public IEnumerable<string>? Entities { get; set; }
+
+            public CalculateLoanBody(Loan loanData)
+            {
+                LoanData = loanData;
+            }
         }
     }
 }

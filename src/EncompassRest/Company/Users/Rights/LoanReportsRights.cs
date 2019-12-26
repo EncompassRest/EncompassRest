@@ -7,7 +7,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class LoanReportsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _allowLoanFilesToBeOpenForData;
+        private DirtyValue<bool?>? _allowLoanFilesToBeOpenForData;
 
         /// <summary>
         /// LoanReportsRights AllowLoanFilesToBeOpenForData

@@ -17,9 +17,9 @@ namespace EncompassRest.Services.Flood
         /// Object that encapsulates credentials and/or verification information with the Flood service provider.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public new FloodCredentials Credentials { get; set; }
+        public new FloodCredentials? Credentials { get; set; }
 
-        internal override ServiceCredentials CredentialsInternal
+        internal override ServiceCredentials? CredentialsInternal
         {
             get => Credentials;
             set
@@ -45,7 +45,7 @@ namespace EncompassRest.Services.Flood
         /// <param name="entityRef">References the entity ID and entity type.</param>
         /// <param name="options">FloodProduct options.</param>
         public FloodProduct(EntityReference entityRef, FloodOptions options)
-            : base(entityRef, options, ServiceType.Flood.GetValue())
+            : base(entityRef, options, ServiceType.Flood.GetValue()!)
         {
         }
 

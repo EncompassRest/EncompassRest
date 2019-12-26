@@ -8,13 +8,13 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(DrawIndicator), SerializeWholeListWhenDirty = true)]
     public sealed partial class HelocRepaymentDrawPeriod : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _apr;
-        private DirtyValue<bool?> _drawIndicator;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _indexRatePercent;
-        private DirtyValue<decimal?> _marginRatePercent;
-        private DirtyValue<decimal?> _minimumMonthlyPaymentAmount;
-        private DirtyValue<int?> _year;
+        private DirtyValue<decimal?>? _apr;
+        private DirtyValue<bool?>? _drawIndicator;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _indexRatePercent;
+        private DirtyValue<decimal?>? _marginRatePercent;
+        private DirtyValue<decimal?>? _minimumMonthlyPaymentAmount;
+        private DirtyValue<int?>? _year;
 
         /// <summary>
         /// HelocRepaymentDrawPeriod Apr
@@ -30,7 +30,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HelocRepaymentDrawPeriod Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// HelocRepaymentDrawPeriod IndexRatePercent

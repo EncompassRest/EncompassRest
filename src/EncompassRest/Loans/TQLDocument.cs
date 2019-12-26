@@ -8,13 +8,13 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class TQLDocument : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _id;
-        private DirtyValue<DateTime?> _tQLDocumentDeliveredDate;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<DateTime?>? _tQLDocumentDeliveredDate;
 
         /// <summary>
         /// TQLDocument Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// TQL Documents Delivered to Investor [TQLDOCDATENN01]

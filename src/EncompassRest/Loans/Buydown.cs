@@ -8,18 +8,18 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class Buydown : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _buydownIndex;
-        private DirtyValue<decimal?> _buydownRatePercent;
-        private DirtyValue<int?> _changeFrequencyMonthsCount;
-        private DirtyValue<int?> _durationMonthsCount;
-        private DirtyValue<decimal?> _fundBalanceAmount;
-        private DirtyValue<decimal?> _fundTotalAmount;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _increaseRatePercent;
-        private DirtyValue<int?> _nonBorrowerChangeFrequencyMonthsCount;
-        private DirtyValue<decimal?> _nonBorrowerIncreaseRatePercent;
-        private DirtyValue<int?> _remainingMonthsCount;
-        private DirtyValue<decimal?> _subsidyAmount;
+        private DirtyValue<int?>? _buydownIndex;
+        private DirtyValue<decimal?>? _buydownRatePercent;
+        private DirtyValue<int?>? _changeFrequencyMonthsCount;
+        private DirtyValue<int?>? _durationMonthsCount;
+        private DirtyValue<decimal?>? _fundBalanceAmount;
+        private DirtyValue<decimal?>? _fundTotalAmount;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _increaseRatePercent;
+        private DirtyValue<int?>? _nonBorrowerChangeFrequencyMonthsCount;
+        private DirtyValue<decimal?>? _nonBorrowerIncreaseRatePercent;
+        private DirtyValue<int?>? _remainingMonthsCount;
+        private DirtyValue<decimal?>? _subsidyAmount;
 
         /// <summary>
         /// Buydown BuydownIndex
@@ -57,7 +57,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Buydown Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Buydown IncreaseRatePercent

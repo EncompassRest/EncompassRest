@@ -8,17 +8,17 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class Hud1EsDueDate : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<DateTime?> _annualFee;
-        private DirtyValue<DateTime?> _floodInsDisb;
-        private DirtyValue<DateTime?> _hazInsDisb;
-        private DirtyValue<int?> _hud1EsDueDateIndex;
-        private DirtyValue<string> _id;
-        private DirtyValue<DateTime?> _mtgInsDisb;
-        private DirtyValue<DateTime?> _schoolTaxes;
-        private DirtyValue<DateTime?> _taxDisb;
-        private DirtyValue<DateTime?> _userDefined1;
-        private DirtyValue<DateTime?> _userDefined2;
-        private DirtyValue<DateTime?> _userDefined3;
+        private DirtyValue<DateTime?>? _annualFee;
+        private DirtyValue<DateTime?>? _floodInsDisb;
+        private DirtyValue<DateTime?>? _hazInsDisb;
+        private DirtyValue<int?>? _hud1EsDueDateIndex;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<DateTime?>? _mtgInsDisb;
+        private DirtyValue<DateTime?>? _schoolTaxes;
+        private DirtyValue<DateTime?>? _taxDisb;
+        private DirtyValue<DateTime?>? _userDefined1;
+        private DirtyValue<DateTime?>? _userDefined2;
+        private DirtyValue<DateTime?>? _userDefined3;
 
         /// <summary>
         /// Escrow Annual Fee Date [HUDNN49]
@@ -43,7 +43,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsDueDate Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Escrow Mtg Ins Disb Date [HUDNN43]

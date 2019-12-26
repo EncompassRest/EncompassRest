@@ -3,6 +3,7 @@ using EncompassRest.Schema;
 
 namespace EncompassRest.LoanPipeline
 {
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     /// <summary>
     /// PipelineFieldDefinition
     /// </summary>
@@ -31,7 +32,7 @@ namespace EncompassRest.LoanPipeline
         /// <summary>
         /// PipelineFieldDefinition FieldDefinition
         /// </summary>
-        public FieldDefinition FieldDefinition { get; set; }
+        public FieldDefinition? FieldDefinition { get; set; }
 
         /// <summary>
         /// PipelineFieldDefinition DataSource
@@ -61,12 +62,12 @@ namespace EncompassRest.LoanPipeline
         /// <summary>
         /// PipelineFieldDefinition CriterionFieldName
         /// </summary>
-        public string CriterionFieldName { get; set; }
+        public string? CriterionFieldName { get; set; }
 
         /// <summary>
         /// PipelineFieldDefinition SortTerm
         /// </summary>
-        public SortTerm SortTerm { get; set; }
+        public SortTerm? SortTerm { get; set; }
 
         /// <summary>
         /// PipelineFieldDefinition IsDatabaseField
@@ -86,11 +87,12 @@ namespace EncompassRest.LoanPipeline
         /// <summary>
         /// PipelineFieldDefinition RelatedFields
         /// </summary>
-        public List<string> RelatedFields { get; set; }
+        public List<string>? RelatedFields { get; set; }
 
         /// <summary>
         /// PipelineFieldDefinition IsVolatile
         /// </summary>
         public bool? IsVolatile { get; set; }
     }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

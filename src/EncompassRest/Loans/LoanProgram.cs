@@ -9,129 +9,129 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class LoanProgram : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<YOrN>> _acquisition;
-        private DirtyValue<string> _additionalArmInformation;
-        private DirtyValue<string> _allDateAndNumericalDisclosures;
-        private DirtyValue<decimal?> _annualFeeNeeded;
-        private DirtyValue<string> _armTypeDescription;
-        private DirtyValue<string> _assumptionOnYourProperty;
-        private DirtyValue<int?> _balloonLoanMaturityTermMonths;
-        private DirtyValue<int?> _buydownChangeFrequencyMonths1;
-        private DirtyValue<int?> _buydownChangeFrequencyMonths2;
-        private DirtyValue<int?> _buydownChangeFrequencyMonths3;
-        private DirtyValue<int?> _buydownChangeFrequencyMonths4;
-        private DirtyValue<int?> _buydownChangeFrequencyMonths5;
-        private DirtyValue<int?> _buydownChangeFrequencyMonths6;
-        private DirtyValue<decimal?> _buydownIncreaseRatePercent1;
-        private DirtyValue<decimal?> _buydownIncreaseRatePercent2;
-        private DirtyValue<decimal?> _buydownIncreaseRatePercent3;
-        private DirtyValue<decimal?> _buydownIncreaseRatePercent4;
-        private DirtyValue<decimal?> _buydownIncreaseRatePercent5;
-        private DirtyValue<decimal?> _buydownIncreaseRatePercent6;
-        private DirtyValue<string> _calculateBasedOnRemainingBalance;
-        private DirtyValue<string> _closingCostProgram;
-        private DirtyValue<string> _constructionDescription;
-        private DirtyValue<decimal?> _constructionInterestReserveAmount;
-        private DirtyValue<string> _constructionLoanMethod;
-        private DirtyValue<int?> _constructionPeriodMonths;
-        private DirtyValue<decimal?> _constructionRate;
-        private DirtyValue<string> _convertible;
-        private DirtyValue<string> _creditDisability;
-        private DirtyValue<string> _creditLifeInsurance;
-        private DirtyValue<string> _demandFeature;
-        private DirtyValue<string> _description;
-        private DirtyValue<string> _disclosureType;
-        private DirtyValue<string> _discounted;
-        private DirtyValue<decimal?> _discountedRate;
-        private DirtyValue<string> _drawRepayPeriodTableName;
-        private DirtyValue<decimal?> _fhaUpfrontMiPremiumPercent;
-        private DirtyValue<string> _floodInsurance;
-        private DirtyValue<decimal?> _floorPercent;
-        private DirtyValue<decimal?> _fundingFeePaidInCash;
-        private DirtyValue<decimal?> _gpmExtraPaymentForEarlyPayOff;
-        private DirtyValue<decimal?> _gpmRate;
-        private DirtyValue<int?> _gpmYears;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _ifYouPurchase;
-        private DirtyValue<string> _ifYouPurchaseType;
-        private DirtyValue<decimal?> _indexCurrentValuePercent;
-        private DirtyValue<decimal?> _indexMarginPercent;
-        private DirtyValue<decimal?> _initialAdvanceAmount;
-        private DirtyValue<int?> _interestOnlyMonths;
-        private DirtyValue<int?> _lateChargeDays;
-        private DirtyValue<decimal?> _lateChargePercent;
-        private DirtyValue<string> _lateChargeType;
-        private DirtyValue<string> _lenderInvestorCode;
-        private DirtyValue<string> _lienPriorityType;
-        private DirtyValue<int?> _loanAmortizationTermMonths;
-        private DirtyValue<string> _loanAmortizationType;
-        private DirtyValue<string> _loanDocumentationType;
-        private DirtyValue<string> _loanFeaturesPaymentFrequencyType;
-        private DirtyValue<string> _loanProgramName;
-        private DirtyValue<StringEnumValue<YOrN>> _lockField;
-        private DirtyValue<decimal?> _maxBackRatio;
-        private DirtyValue<decimal?> _maxCltv;
-        private DirtyValue<decimal?> _maxFrontRatio;
-        private DirtyValue<decimal?> _maximumBalance;
-        private DirtyValue<decimal?> _maxLoanAmount;
-        private DirtyValue<decimal?> _maxLtv;
-        private DirtyValue<string> _meansAnEstimate;
-        private DirtyValue<string> _miCalculationType;
-        private DirtyValue<string> _midpointCancellation;
-        private DirtyValue<string> _minCreditScore;
-        private DirtyValue<decimal?> _minimumAdvanceAmount;
-        private DirtyValue<decimal?> _minimumAllowableApr;
-        private DirtyValue<decimal?> _minimumPaymentAmount;
-        private DirtyValue<decimal?> _minimumPaymentPercent;
-        private DirtyValue<decimal?> _mipPaidInCash;
-        private DirtyValue<StringEnumValue<YOrN>> _mmi;
-        private DirtyValue<decimal?> _mortgageInsuranceAdjustmentFactor1;
-        private DirtyValue<decimal?> _mortgageInsuranceAdjustmentFactor2;
-        private DirtyValue<decimal?> _mortgageInsuranceCancelPercent;
-        private DirtyValue<decimal?> _mortgageInsuranceMonthlyPayment1;
-        private DirtyValue<decimal?> _mortgageInsuranceMonthlyPayment2;
-        private DirtyValue<int?> _mortgageInsuranceMonthsOfAdjustment1;
-        private DirtyValue<int?> _mortgageInsuranceMonthsOfAdjustment2;
-        private DirtyValue<string> _mortgageType;
-        private DirtyValue<string> _otherAmortizationTypeDescription;
-        private DirtyValue<string> _otherLoanPurposeDescription;
-        private DirtyValue<string> _otherMortgageTypeDescription;
-        private DirtyValue<int?> _paymentAdjustmentDurationMonths;
-        private DirtyValue<decimal?> _paymentAdjustmentPeriodicCapPercent;
-        private DirtyValue<decimal?> _paymentFactor;
-        private DirtyValue<decimal?> _percentageOfRental;
-        private DirtyValue<string> _perDiemCalculationMethodType;
-        private DirtyValue<StringEnumValue<YOrN>> _pmi;
-        private DirtyValue<string> _prepaymentPenaltyIndicator;
-        private DirtyValue<string> _programCode;
-        private DirtyValue<string> _propertyInsurance;
-        private DirtyValue<string> _propertyUsageType;
-        private DirtyValue<decimal?> _qualifyingRatePercent;
-        private DirtyValue<int?> _rateAdjustmentDurationMonths;
-        private DirtyValue<decimal?> _rateAdjustmentLifetimeCapPercent;
-        private DirtyValue<decimal?> _rateAdjustmentPercent;
-        private DirtyValue<decimal?> _rateAdjustmentSubsequentCapPercent;
-        private DirtyValue<int?> _rateAdjustmentSubsequentRateAdjustmentMonths;
-        private DirtyValue<int?> _recastPaidMonths;
-        private DirtyValue<int?> _recastStopMonths;
-        private DirtyValue<string> _refundPaymentIndicator;
-        private DirtyValue<decimal?> _requestedInterestRatePercent;
-        private DirtyValue<string> _requiredDeposit;
-        private DirtyValue<decimal?> _roundPercent;
-        private DirtyValue<string> _roundType;
-        private DirtyValue<string> _securityInterestInNameOf;
-        private DirtyValue<string> _securityType;
-        private DirtyValue<decimal?> _subjectPropertyGrossRentalIncome;
-        private DirtyValue<decimal?> _teaserRate;
-        private DirtyValue<decimal?> _terminationFeeAmount;
-        private DirtyValue<int?> _terminationPeriodMonthsCount;
-        private DirtyValue<decimal?> _thirdPartyFeeFrom;
-        private DirtyValue<decimal?> _thirdPartyFeeTo;
-        private DirtyValue<string> _type;
-        private DirtyValue<string> _useDaysInYears;
-        private DirtyValue<StringEnumValue<YOrN>> _usePitiForRatio;
-        private DirtyValue<string> _variableRateFeature;
-        private DirtyValue<decimal?> _yearlyTerm;
+        private DirtyValue<StringEnumValue<YOrN>>? _acquisition;
+        private DirtyValue<string?>? _additionalArmInformation;
+        private DirtyValue<string?>? _allDateAndNumericalDisclosures;
+        private DirtyValue<decimal?>? _annualFeeNeeded;
+        private DirtyValue<string?>? _armTypeDescription;
+        private DirtyValue<string?>? _assumptionOnYourProperty;
+        private DirtyValue<int?>? _balloonLoanMaturityTermMonths;
+        private DirtyValue<int?>? _buydownChangeFrequencyMonths1;
+        private DirtyValue<int?>? _buydownChangeFrequencyMonths2;
+        private DirtyValue<int?>? _buydownChangeFrequencyMonths3;
+        private DirtyValue<int?>? _buydownChangeFrequencyMonths4;
+        private DirtyValue<int?>? _buydownChangeFrequencyMonths5;
+        private DirtyValue<int?>? _buydownChangeFrequencyMonths6;
+        private DirtyValue<decimal?>? _buydownIncreaseRatePercent1;
+        private DirtyValue<decimal?>? _buydownIncreaseRatePercent2;
+        private DirtyValue<decimal?>? _buydownIncreaseRatePercent3;
+        private DirtyValue<decimal?>? _buydownIncreaseRatePercent4;
+        private DirtyValue<decimal?>? _buydownIncreaseRatePercent5;
+        private DirtyValue<decimal?>? _buydownIncreaseRatePercent6;
+        private DirtyValue<string?>? _calculateBasedOnRemainingBalance;
+        private DirtyValue<string?>? _closingCostProgram;
+        private DirtyValue<string?>? _constructionDescription;
+        private DirtyValue<decimal?>? _constructionInterestReserveAmount;
+        private DirtyValue<string?>? _constructionLoanMethod;
+        private DirtyValue<int?>? _constructionPeriodMonths;
+        private DirtyValue<decimal?>? _constructionRate;
+        private DirtyValue<string?>? _convertible;
+        private DirtyValue<string?>? _creditDisability;
+        private DirtyValue<string?>? _creditLifeInsurance;
+        private DirtyValue<string?>? _demandFeature;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<string?>? _disclosureType;
+        private DirtyValue<string?>? _discounted;
+        private DirtyValue<decimal?>? _discountedRate;
+        private DirtyValue<string?>? _drawRepayPeriodTableName;
+        private DirtyValue<decimal?>? _fhaUpfrontMiPremiumPercent;
+        private DirtyValue<string?>? _floodInsurance;
+        private DirtyValue<decimal?>? _floorPercent;
+        private DirtyValue<decimal?>? _fundingFeePaidInCash;
+        private DirtyValue<decimal?>? _gpmExtraPaymentForEarlyPayOff;
+        private DirtyValue<decimal?>? _gpmRate;
+        private DirtyValue<int?>? _gpmYears;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _ifYouPurchase;
+        private DirtyValue<string?>? _ifYouPurchaseType;
+        private DirtyValue<decimal?>? _indexCurrentValuePercent;
+        private DirtyValue<decimal?>? _indexMarginPercent;
+        private DirtyValue<decimal?>? _initialAdvanceAmount;
+        private DirtyValue<int?>? _interestOnlyMonths;
+        private DirtyValue<int?>? _lateChargeDays;
+        private DirtyValue<decimal?>? _lateChargePercent;
+        private DirtyValue<string?>? _lateChargeType;
+        private DirtyValue<string?>? _lenderInvestorCode;
+        private DirtyValue<string?>? _lienPriorityType;
+        private DirtyValue<int?>? _loanAmortizationTermMonths;
+        private DirtyValue<string?>? _loanAmortizationType;
+        private DirtyValue<string?>? _loanDocumentationType;
+        private DirtyValue<string?>? _loanFeaturesPaymentFrequencyType;
+        private DirtyValue<string?>? _loanProgramName;
+        private DirtyValue<StringEnumValue<YOrN>>? _lockField;
+        private DirtyValue<decimal?>? _maxBackRatio;
+        private DirtyValue<decimal?>? _maxCltv;
+        private DirtyValue<decimal?>? _maxFrontRatio;
+        private DirtyValue<decimal?>? _maximumBalance;
+        private DirtyValue<decimal?>? _maxLoanAmount;
+        private DirtyValue<decimal?>? _maxLtv;
+        private DirtyValue<string?>? _meansAnEstimate;
+        private DirtyValue<string?>? _miCalculationType;
+        private DirtyValue<string?>? _midpointCancellation;
+        private DirtyValue<string?>? _minCreditScore;
+        private DirtyValue<decimal?>? _minimumAdvanceAmount;
+        private DirtyValue<decimal?>? _minimumAllowableApr;
+        private DirtyValue<decimal?>? _minimumPaymentAmount;
+        private DirtyValue<decimal?>? _minimumPaymentPercent;
+        private DirtyValue<decimal?>? _mipPaidInCash;
+        private DirtyValue<StringEnumValue<YOrN>>? _mmi;
+        private DirtyValue<decimal?>? _mortgageInsuranceAdjustmentFactor1;
+        private DirtyValue<decimal?>? _mortgageInsuranceAdjustmentFactor2;
+        private DirtyValue<decimal?>? _mortgageInsuranceCancelPercent;
+        private DirtyValue<decimal?>? _mortgageInsuranceMonthlyPayment1;
+        private DirtyValue<decimal?>? _mortgageInsuranceMonthlyPayment2;
+        private DirtyValue<int?>? _mortgageInsuranceMonthsOfAdjustment1;
+        private DirtyValue<int?>? _mortgageInsuranceMonthsOfAdjustment2;
+        private DirtyValue<string?>? _mortgageType;
+        private DirtyValue<string?>? _otherAmortizationTypeDescription;
+        private DirtyValue<string?>? _otherLoanPurposeDescription;
+        private DirtyValue<string?>? _otherMortgageTypeDescription;
+        private DirtyValue<int?>? _paymentAdjustmentDurationMonths;
+        private DirtyValue<decimal?>? _paymentAdjustmentPeriodicCapPercent;
+        private DirtyValue<decimal?>? _paymentFactor;
+        private DirtyValue<decimal?>? _percentageOfRental;
+        private DirtyValue<string?>? _perDiemCalculationMethodType;
+        private DirtyValue<StringEnumValue<YOrN>>? _pmi;
+        private DirtyValue<string?>? _prepaymentPenaltyIndicator;
+        private DirtyValue<string?>? _programCode;
+        private DirtyValue<string?>? _propertyInsurance;
+        private DirtyValue<string?>? _propertyUsageType;
+        private DirtyValue<decimal?>? _qualifyingRatePercent;
+        private DirtyValue<int?>? _rateAdjustmentDurationMonths;
+        private DirtyValue<decimal?>? _rateAdjustmentLifetimeCapPercent;
+        private DirtyValue<decimal?>? _rateAdjustmentPercent;
+        private DirtyValue<decimal?>? _rateAdjustmentSubsequentCapPercent;
+        private DirtyValue<int?>? _rateAdjustmentSubsequentRateAdjustmentMonths;
+        private DirtyValue<int?>? _recastPaidMonths;
+        private DirtyValue<int?>? _recastStopMonths;
+        private DirtyValue<string?>? _refundPaymentIndicator;
+        private DirtyValue<decimal?>? _requestedInterestRatePercent;
+        private DirtyValue<string?>? _requiredDeposit;
+        private DirtyValue<decimal?>? _roundPercent;
+        private DirtyValue<string?>? _roundType;
+        private DirtyValue<string?>? _securityInterestInNameOf;
+        private DirtyValue<string?>? _securityType;
+        private DirtyValue<decimal?>? _subjectPropertyGrossRentalIncome;
+        private DirtyValue<decimal?>? _teaserRate;
+        private DirtyValue<decimal?>? _terminationFeeAmount;
+        private DirtyValue<int?>? _terminationPeriodMonthsCount;
+        private DirtyValue<decimal?>? _thirdPartyFeeFrom;
+        private DirtyValue<decimal?>? _thirdPartyFeeTo;
+        private DirtyValue<string?>? _type;
+        private DirtyValue<string?>? _useDaysInYears;
+        private DirtyValue<StringEnumValue<YOrN>>? _usePitiForRatio;
+        private DirtyValue<string?>? _variableRateFeature;
+        private DirtyValue<decimal?>? _yearlyTerm;
 
         /// <summary>
         /// LoanProgram Acquisition [LPNN113]
@@ -143,13 +143,13 @@ namespace EncompassRest.Loans
         /// LoanProgram AdditionalArmInformation [LPNN67]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string AdditionalArmInformation { get => _additionalArmInformation; set => SetField(ref _additionalArmInformation, value); }
+        public string? AdditionalArmInformation { get => _additionalArmInformation; set => SetField(ref _additionalArmInformation, value); }
 
         /// <summary>
         /// LoanProgram AllDateAndNumericalDisclosures [LPNN82]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string AllDateAndNumericalDisclosures { get => _allDateAndNumericalDisclosures; set => SetField(ref _allDateAndNumericalDisclosures, value); }
+        public string? AllDateAndNumericalDisclosures { get => _allDateAndNumericalDisclosures; set => SetField(ref _allDateAndNumericalDisclosures, value); }
 
         /// <summary>
         /// LoanProgram AnnualFeeNeeded [LPNN115]
@@ -161,13 +161,13 @@ namespace EncompassRest.Loans
         /// LoanProgram ArmTypeDescription [LPNN86]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ArmTypeDescription { get => _armTypeDescription; set => SetField(ref _armTypeDescription, value); }
+        public string? ArmTypeDescription { get => _armTypeDescription; set => SetField(ref _armTypeDescription, value); }
 
         /// <summary>
         /// LoanProgram AssumptionOnYourProperty [LPNN75]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string AssumptionOnYourProperty { get => _assumptionOnYourProperty; set => SetField(ref _assumptionOnYourProperty, value); }
+        public string? AssumptionOnYourProperty { get => _assumptionOnYourProperty; set => SetField(ref _assumptionOnYourProperty, value); }
 
         /// <summary>
         /// LoanProgram BalloonLoanMaturityTermMonths [LPNN11]
@@ -251,19 +251,19 @@ namespace EncompassRest.Loans
         /// LoanProgram CalculateBasedOnRemainingBalance [LPNN99]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CalculateBasedOnRemainingBalance { get => _calculateBasedOnRemainingBalance; set => SetField(ref _calculateBasedOnRemainingBalance, value); }
+        public string? CalculateBasedOnRemainingBalance { get => _calculateBasedOnRemainingBalance; set => SetField(ref _calculateBasedOnRemainingBalance, value); }
 
         /// <summary>
         /// LoanProgram ClosingCostProgram [LPNN97]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ClosingCostProgram { get => _closingCostProgram; set => SetField(ref _closingCostProgram, value); }
+        public string? ClosingCostProgram { get => _closingCostProgram; set => SetField(ref _closingCostProgram, value); }
 
         /// <summary>
         /// LoanProgram ConstructionDescription [LPNN56]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ConstructionDescription { get => _constructionDescription; set => SetField(ref _constructionDescription, value); }
+        public string? ConstructionDescription { get => _constructionDescription; set => SetField(ref _constructionDescription, value); }
 
         /// <summary>
         /// LoanProgram ConstructionInterestReserveAmount [LPNN55]
@@ -275,7 +275,7 @@ namespace EncompassRest.Loans
         /// LoanProgram ConstructionLoanMethod [LPNN112]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ConstructionLoanMethod { get => _constructionLoanMethod; set => SetField(ref _constructionLoanMethod, value); }
+        public string? ConstructionLoanMethod { get => _constructionLoanMethod; set => SetField(ref _constructionLoanMethod, value); }
 
         /// <summary>
         /// LoanProgram ConstructionPeriodMonths [LPNN53]
@@ -293,43 +293,43 @@ namespace EncompassRest.Loans
         /// LoanProgram Convertible [LPNN79]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Convertible { get => _convertible; set => SetField(ref _convertible, value); }
+        public string? Convertible { get => _convertible; set => SetField(ref _convertible, value); }
 
         /// <summary>
         /// LoanProgram CreditDisability [LPNN90]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CreditDisability { get => _creditDisability; set => SetField(ref _creditDisability, value); }
+        public string? CreditDisability { get => _creditDisability; set => SetField(ref _creditDisability, value); }
 
         /// <summary>
         /// LoanProgram CreditLifeInsurance [LPNN89]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CreditLifeInsurance { get => _creditLifeInsurance; set => SetField(ref _creditLifeInsurance, value); }
+        public string? CreditLifeInsurance { get => _creditLifeInsurance; set => SetField(ref _creditLifeInsurance, value); }
 
         /// <summary>
         /// LoanProgram DemandFeature [LPNN65]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DemandFeature { get => _demandFeature; set => SetField(ref _demandFeature, value); }
+        public string? DemandFeature { get => _demandFeature; set => SetField(ref _demandFeature, value); }
 
         /// <summary>
         /// LoanProgram Description [LPNN88]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// LoanProgram DisclosureType [LPNN110]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DisclosureType { get => _disclosureType; set => SetField(ref _disclosureType, value); }
+        public string? DisclosureType { get => _disclosureType; set => SetField(ref _disclosureType, value); }
 
         /// <summary>
         /// LoanProgram Discounted [LPNN123]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Discounted { get => _discounted; set => SetField(ref _discounted, value); }
+        public string? Discounted { get => _discounted; set => SetField(ref _discounted, value); }
 
         /// <summary>
         /// LoanProgram DiscountedRate [LPNN124]
@@ -341,7 +341,7 @@ namespace EncompassRest.Loans
         /// LoanProgram DrawRepayPeriodTableName [LPNN125]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DrawRepayPeriodTableName { get => _drawRepayPeriodTableName; set => SetField(ref _drawRepayPeriodTableName, value); }
+        public string? DrawRepayPeriodTableName { get => _drawRepayPeriodTableName; set => SetField(ref _drawRepayPeriodTableName, value); }
 
         /// <summary>
         /// LoanProgram FhaUpfrontMiPremiumPercent [LPNN101]
@@ -353,7 +353,7 @@ namespace EncompassRest.Loans
         /// LoanProgram FloodInsurance [LPNN92]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string FloodInsurance { get => _floodInsurance; set => SetField(ref _floodInsurance, value); }
+        public string? FloodInsurance { get => _floodInsurance; set => SetField(ref _floodInsurance, value); }
 
         /// <summary>
         /// LoanProgram FloorPercent [LPNN33]
@@ -388,19 +388,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// LoanProgram IfYouPurchase [LPNN93]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string IfYouPurchase { get => _ifYouPurchase; set => SetField(ref _ifYouPurchase, value); }
+        public string? IfYouPurchase { get => _ifYouPurchase; set => SetField(ref _ifYouPurchase, value); }
 
         /// <summary>
         /// LoanProgram IfYouPurchaseType [LPNN94]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string IfYouPurchaseType { get => _ifYouPurchaseType; set => SetField(ref _ifYouPurchaseType, value); }
+        public string? IfYouPurchaseType { get => _ifYouPurchaseType; set => SetField(ref _ifYouPurchaseType, value); }
 
         /// <summary>
         /// LoanProgram IndexCurrentValuePercent [LPNN32]
@@ -442,19 +442,19 @@ namespace EncompassRest.Loans
         /// LoanProgram LateChargeType [LPNN74]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LateChargeType { get => _lateChargeType; set => SetField(ref _lateChargeType, value); }
+        public string? LateChargeType { get => _lateChargeType; set => SetField(ref _lateChargeType, value); }
 
         /// <summary>
         /// LoanProgram LenderInvestorCode [LPNN51]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LenderInvestorCode { get => _lenderInvestorCode; set => SetField(ref _lenderInvestorCode, value); }
+        public string? LenderInvestorCode { get => _lenderInvestorCode; set => SetField(ref _lenderInvestorCode, value); }
 
         /// <summary>
         /// LoanProgram LienPriorityType [LPNN03]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LienPriorityType { get => _lienPriorityType; set => SetField(ref _lienPriorityType, value); }
+        public string? LienPriorityType { get => _lienPriorityType; set => SetField(ref _lienPriorityType, value); }
 
         /// <summary>
         /// LoanProgram LoanAmortizationTermMonths [LPNN10]
@@ -466,25 +466,25 @@ namespace EncompassRest.Loans
         /// LoanProgram LoanAmortizationType [LPNN07]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LoanAmortizationType { get => _loanAmortizationType; set => SetField(ref _loanAmortizationType, value); }
+        public string? LoanAmortizationType { get => _loanAmortizationType; set => SetField(ref _loanAmortizationType, value); }
 
         /// <summary>
         /// LoanProgram LoanDocumentationType [LPNN107]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LoanDocumentationType { get => _loanDocumentationType; set => SetField(ref _loanDocumentationType, value); }
+        public string? LoanDocumentationType { get => _loanDocumentationType; set => SetField(ref _loanDocumentationType, value); }
 
         /// <summary>
         /// LoanProgram LoanFeaturesPaymentFrequencyType [LPNN24]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LoanFeaturesPaymentFrequencyType { get => _loanFeaturesPaymentFrequencyType; set => SetField(ref _loanFeaturesPaymentFrequencyType, value); }
+        public string? LoanFeaturesPaymentFrequencyType { get => _loanFeaturesPaymentFrequencyType; set => SetField(ref _loanFeaturesPaymentFrequencyType, value); }
 
         /// <summary>
         /// LoanProgram LoanProgramName [LPNN44]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LoanProgramName { get => _loanProgramName; set => SetField(ref _loanProgramName, value); }
+        public string? LoanProgramName { get => _loanProgramName; set => SetField(ref _loanProgramName, value); }
 
         /// <summary>
         /// LoanProgram LockField [LPNN102]
@@ -532,25 +532,25 @@ namespace EncompassRest.Loans
         /// LoanProgram MeansAnEstimate [LPNN81]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string MeansAnEstimate { get => _meansAnEstimate; set => SetField(ref _meansAnEstimate, value); }
+        public string? MeansAnEstimate { get => _meansAnEstimate; set => SetField(ref _meansAnEstimate, value); }
 
         /// <summary>
         /// LoanProgram MiCalculationType [LPNN100]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string MiCalculationType { get => _miCalculationType; set => SetField(ref _miCalculationType, value); }
+        public string? MiCalculationType { get => _miCalculationType; set => SetField(ref _miCalculationType, value); }
 
         /// <summary>
         /// LoanProgram MidpointCancellation [LPNN98]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string MidpointCancellation { get => _midpointCancellation; set => SetField(ref _midpointCancellation, value); }
+        public string? MidpointCancellation { get => _midpointCancellation; set => SetField(ref _midpointCancellation, value); }
 
         /// <summary>
         /// LoanProgram MinCreditScore [LPNN48]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string MinCreditScore { get => _minCreditScore; set => SetField(ref _minCreditScore, value); }
+        public string? MinCreditScore { get => _minCreditScore; set => SetField(ref _minCreditScore, value); }
 
         /// <summary>
         /// LoanProgram MinimumAdvanceAmount [LPNN119]
@@ -634,25 +634,25 @@ namespace EncompassRest.Loans
         /// LoanProgram MortgageType [LPNN01]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string MortgageType { get => _mortgageType; set => SetField(ref _mortgageType, value); }
+        public string? MortgageType { get => _mortgageType; set => SetField(ref _mortgageType, value); }
 
         /// <summary>
         /// LoanProgram OtherAmortizationTypeDescription [LPNN87]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string OtherAmortizationTypeDescription { get => _otherAmortizationTypeDescription; set => SetField(ref _otherAmortizationTypeDescription, value); }
+        public string? OtherAmortizationTypeDescription { get => _otherAmortizationTypeDescription; set => SetField(ref _otherAmortizationTypeDescription, value); }
 
         /// <summary>
         /// LoanProgram OtherLoanPurposeDescription [LPNN96]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string OtherLoanPurposeDescription { get => _otherLoanPurposeDescription; set => SetField(ref _otherLoanPurposeDescription, value); }
+        public string? OtherLoanPurposeDescription { get => _otherLoanPurposeDescription; set => SetField(ref _otherLoanPurposeDescription, value); }
 
         /// <summary>
         /// LoanProgram OtherMortgageTypeDescription [LPNN85]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string OtherMortgageTypeDescription { get => _otherMortgageTypeDescription; set => SetField(ref _otherMortgageTypeDescription, value); }
+        public string? OtherMortgageTypeDescription { get => _otherMortgageTypeDescription; set => SetField(ref _otherMortgageTypeDescription, value); }
 
         /// <summary>
         /// LoanProgram PaymentAdjustmentDurationMonths [LPNN37]
@@ -682,7 +682,7 @@ namespace EncompassRest.Loans
         /// LoanProgram PerDiemCalculationMethodType [LPNN111]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PerDiemCalculationMethodType { get => _perDiemCalculationMethodType; set => SetField(ref _perDiemCalculationMethodType, value); }
+        public string? PerDiemCalculationMethodType { get => _perDiemCalculationMethodType; set => SetField(ref _perDiemCalculationMethodType, value); }
 
         /// <summary>
         /// LoanProgram Pmi [LPNN109]
@@ -694,25 +694,25 @@ namespace EncompassRest.Loans
         /// LoanProgram PrepaymentPenaltyIndicator [LPNN70]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PrepaymentPenaltyIndicator { get => _prepaymentPenaltyIndicator; set => SetField(ref _prepaymentPenaltyIndicator, value); }
+        public string? PrepaymentPenaltyIndicator { get => _prepaymentPenaltyIndicator; set => SetField(ref _prepaymentPenaltyIndicator, value); }
 
         /// <summary>
         /// LoanProgram ProgramCode [LPNN80]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ProgramCode { get => _programCode; set => SetField(ref _programCode, value); }
+        public string? ProgramCode { get => _programCode; set => SetField(ref _programCode, value); }
 
         /// <summary>
         /// LoanProgram PropertyInsurance [LPNN91]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PropertyInsurance { get => _propertyInsurance; set => SetField(ref _propertyInsurance, value); }
+        public string? PropertyInsurance { get => _propertyInsurance; set => SetField(ref _propertyInsurance, value); }
 
         /// <summary>
         /// LoanProgram PropertyUsageType [LPNN02]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PropertyUsageType { get => _propertyUsageType; set => SetField(ref _propertyUsageType, value); }
+        public string? PropertyUsageType { get => _propertyUsageType; set => SetField(ref _propertyUsageType, value); }
 
         /// <summary>
         /// LoanProgram QualifyingRatePercent [LPNN09]
@@ -766,7 +766,7 @@ namespace EncompassRest.Loans
         /// LoanProgram RefundPaymentIndicator [LPNN71]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string RefundPaymentIndicator { get => _refundPaymentIndicator; set => SetField(ref _refundPaymentIndicator, value); }
+        public string? RefundPaymentIndicator { get => _refundPaymentIndicator; set => SetField(ref _refundPaymentIndicator, value); }
 
         /// <summary>
         /// LoanProgram RequestedInterestRatePercent [LPNN08]
@@ -778,7 +778,7 @@ namespace EncompassRest.Loans
         /// LoanProgram RequiredDeposit [LPNN64]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string RequiredDeposit { get => _requiredDeposit; set => SetField(ref _requiredDeposit, value); }
+        public string? RequiredDeposit { get => _requiredDeposit; set => SetField(ref _requiredDeposit, value); }
 
         /// <summary>
         /// LoanProgram RoundPercent [LPNN34]
@@ -790,19 +790,19 @@ namespace EncompassRest.Loans
         /// LoanProgram RoundType [LPNN35]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string RoundType { get => _roundType; set => SetField(ref _roundType, value); }
+        public string? RoundType { get => _roundType; set => SetField(ref _roundType, value); }
 
         /// <summary>
         /// LoanProgram SecurityInterestInNameOf [LPNN68]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SecurityInterestInNameOf { get => _securityInterestInNameOf; set => SetField(ref _securityInterestInNameOf, value); }
+        public string? SecurityInterestInNameOf { get => _securityInterestInNameOf; set => SetField(ref _securityInterestInNameOf, value); }
 
         /// <summary>
         /// LoanProgram SecurityType [LPNN69]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SecurityType { get => _securityType; set => SetField(ref _securityType, value); }
+        public string? SecurityType { get => _securityType; set => SetField(ref _securityType, value); }
 
         /// <summary>
         /// LoanProgram SubjectPropertyGrossRentalIncome [LPNN83]
@@ -844,13 +844,13 @@ namespace EncompassRest.Loans
         /// LoanProgram Type [LPNN05]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Type { get => _type; set => SetField(ref _type, value); }
+        public string? Type { get => _type; set => SetField(ref _type, value); }
 
         /// <summary>
         /// LoanProgram UseDaysInYears [LPNN105]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string UseDaysInYears { get => _useDaysInYears; set => SetField(ref _useDaysInYears, value); }
+        public string? UseDaysInYears { get => _useDaysInYears; set => SetField(ref _useDaysInYears, value); }
 
         /// <summary>
         /// LoanProgram UsePitiForRatio [LPNN106]
@@ -862,7 +862,7 @@ namespace EncompassRest.Loans
         /// LoanProgram VariableRateFeature [LPNN66]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string VariableRateFeature { get => _variableRateFeature; set => SetField(ref _variableRateFeature, value); }
+        public string? VariableRateFeature { get => _variableRateFeature; set => SetField(ref _variableRateFeature, value); }
 
         /// <summary>
         /// LoanProgram YearlyTerm [LPNN95]

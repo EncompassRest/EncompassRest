@@ -7,28 +7,28 @@ namespace EncompassRest.Loans.Conditions
     /// </summary>
     public sealed class UnderwritingCondition : LoanCondition
     {
-        private DirtyValue<StringEnumValue<PriorToMilestone>> _priorTo;
-        private DirtyValue<StringEnumValue<ConditionCategory>> _category;
-        private DirtyValue<EntityReference> _ownerRole;
-        private DirtyValue<bool?> _allowToClear;
-        private DirtyValue<bool?> _printExternally;
-        private DirtyValue<bool?> _printInternally;
-        private DirtyValue<DateTime?> _expirationDate;
-        private DirtyValue<bool?> _isFulfilled;
-        private DirtyValue<DateTime?> _fulfilledDate;
-        private DirtyValue<EntityReference> _fulfilledBy;
-        private DirtyValue<bool?> _isReviewed;
-        private DirtyValue<DateTime?> _reviewedDate;
-        private DirtyValue<EntityReference> _reviewedBy;
-        private DirtyValue<bool?> _isRejected;
-        private DirtyValue<DateTime?> _rejectedDate;
-        private DirtyValue<EntityReference> _rejectedBy;
-        private DirtyValue<bool?> _isCleared;
-        private DirtyValue<DateTime?> _clearedDate;
-        private DirtyValue<EntityReference> _clearedBy;
-        private DirtyValue<bool?> _isWaived;
-        private DirtyValue<DateTime?> _waivedDate;
-        private DirtyValue<EntityReference> _waivedBy;
+        private DirtyValue<StringEnumValue<PriorToMilestone>>? _priorTo;
+        private DirtyValue<StringEnumValue<ConditionCategory>>? _category;
+        private DirtyValue<EntityReference>? _ownerRole;
+        private DirtyValue<bool?>? _allowToClear;
+        private DirtyValue<bool?>? _printExternally;
+        private DirtyValue<bool?>? _printInternally;
+        private DirtyValue<DateTime?>? _expirationDate;
+        private DirtyValue<bool?>? _isFulfilled;
+        private DirtyValue<DateTime?>? _fulfilledDate;
+        private DirtyValue<EntityReference>? _fulfilledBy;
+        private DirtyValue<bool?>? _isReviewed;
+        private DirtyValue<DateTime?>? _reviewedDate;
+        private DirtyValue<EntityReference>? _reviewedBy;
+        private DirtyValue<bool?>? _isRejected;
+        private DirtyValue<DateTime?>? _rejectedDate;
+        private DirtyValue<EntityReference>? _rejectedBy;
+        private DirtyValue<bool?>? _isCleared;
+        private DirtyValue<DateTime?>? _clearedDate;
+        private DirtyValue<EntityReference>? _clearedBy;
+        private DirtyValue<bool?>? _isWaived;
+        private DirtyValue<DateTime?>? _waivedDate;
+        private DirtyValue<EntityReference>? _waivedBy;
 
         /// <summary>
         /// The milestones to describe when the condition must be satisfied.

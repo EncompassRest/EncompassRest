@@ -8,49 +8,49 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class FeeVarianceOther : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _appliedCureAmount;
-        private DirtyValue<string> _cannotDecreaseCDBaselineGuid;
-        private DirtyValue<string> _cannotDecreaseLEBaselineGuid;
-        private DirtyValue<string> _cannotIncrease10CDBaselineGuid;
-        private DirtyValue<string> _cannotIncrease10LEBaselineGuid;
-        private DirtyValue<string> _cannotIncreaseCDBaselineGuid;
-        private DirtyValue<string> _cannotIncreaseLEBaselineGuid;
-        private DirtyValue<string> _cDInitialGuid;
-        private DirtyValue<string> _cDInitialReceivedDateGuid;
-        private DirtyValue<string> _cDLatestGuid;
-        private DirtyValue<string> _cDPostConGuid;
-        private DirtyValue<string> _cDRecentAppliedCure;
-        private DirtyValue<string> _cDRevisedReceivedDateGuid;
-        private DirtyValue<DateTime?> _chargesCannotIncrease10CD1;
-        private DirtyValue<DateTime?> _chargesCannotIncrease10InitialLE1;
-        private DirtyValue<DateTime?> _chargesCannotIncrease10LE1;
-        private DirtyValue<DateTime?> _chargesThatCanChangeCD1;
-        private DirtyValue<DateTime?> _chargesThatCanChangeInitialLE1;
-        private DirtyValue<DateTime?> _chargesThatCanChangeLE1;
-        private DirtyValue<DateTime?> _chargesThatCannotDecreaseCD1;
-        private DirtyValue<DateTime?> _chargesThatCannotDecreaseInitialLE1;
-        private DirtyValue<DateTime?> _chargesThatCannotDecreaseLE1;
-        private DirtyValue<DateTime?> _chargesThatCannotIncreaseCD1;
-        private DirtyValue<DateTime?> _chargesThatCannotIncreaseInitialLE1;
-        private DirtyValue<DateTime?> _chargesThatCannotIncreaseLE1;
-        private DirtyValue<decimal?> _cureAppliedToLenderCredit;
-        private DirtyValue<decimal?> _cureAppliedToPrincipalReduction;
-        private DirtyValue<string> _disclosureLogGUIDForECD;
-        private DirtyValue<string> _disclosureLogGUIDReceivedForECD;
-        private DirtyValue<DateTime?> _goodFaithAmountInitialLE1;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _lEBaselineUsedCannotDecrease;
-        private DirtyValue<bool?> _lEBaselineUsedCannotIncrease;
-        private DirtyValue<bool?> _lEBaselineUsedCannotIncrease10;
-        private DirtyValue<string> _lEInitialDTGuid;
-        private DirtyValue<string> _lEInitialGuid;
-        private DirtyValue<string> _lEInitialReceivedDateGuid;
-        private DirtyValue<string> _lELatestGuid;
-        private DirtyValue<string> _lERevisedReceivedDateGuid;
-        private DirtyValue<string> _lERevisedSentDateGuid;
-        private DirtyValue<decimal?> _requiredCureAmount;
-        private DirtyValue<string> _safeHarborGuid;
-        private DirtyValue<string> _sSPLGuid;
+        private DirtyValue<decimal?>? _appliedCureAmount;
+        private DirtyValue<string?>? _cannotDecreaseCDBaselineGuid;
+        private DirtyValue<string?>? _cannotDecreaseLEBaselineGuid;
+        private DirtyValue<string?>? _cannotIncrease10CDBaselineGuid;
+        private DirtyValue<string?>? _cannotIncrease10LEBaselineGuid;
+        private DirtyValue<string?>? _cannotIncreaseCDBaselineGuid;
+        private DirtyValue<string?>? _cannotIncreaseLEBaselineGuid;
+        private DirtyValue<string?>? _cDInitialGuid;
+        private DirtyValue<string?>? _cDInitialReceivedDateGuid;
+        private DirtyValue<string?>? _cDLatestGuid;
+        private DirtyValue<string?>? _cDPostConGuid;
+        private DirtyValue<string?>? _cDRecentAppliedCure;
+        private DirtyValue<string?>? _cDRevisedReceivedDateGuid;
+        private DirtyValue<DateTime?>? _chargesCannotIncrease10CD1;
+        private DirtyValue<DateTime?>? _chargesCannotIncrease10InitialLE1;
+        private DirtyValue<DateTime?>? _chargesCannotIncrease10LE1;
+        private DirtyValue<DateTime?>? _chargesThatCanChangeCD1;
+        private DirtyValue<DateTime?>? _chargesThatCanChangeInitialLE1;
+        private DirtyValue<DateTime?>? _chargesThatCanChangeLE1;
+        private DirtyValue<DateTime?>? _chargesThatCannotDecreaseCD1;
+        private DirtyValue<DateTime?>? _chargesThatCannotDecreaseInitialLE1;
+        private DirtyValue<DateTime?>? _chargesThatCannotDecreaseLE1;
+        private DirtyValue<DateTime?>? _chargesThatCannotIncreaseCD1;
+        private DirtyValue<DateTime?>? _chargesThatCannotIncreaseInitialLE1;
+        private DirtyValue<DateTime?>? _chargesThatCannotIncreaseLE1;
+        private DirtyValue<decimal?>? _cureAppliedToLenderCredit;
+        private DirtyValue<decimal?>? _cureAppliedToPrincipalReduction;
+        private DirtyValue<string?>? _disclosureLogGUIDForECD;
+        private DirtyValue<string?>? _disclosureLogGUIDReceivedForECD;
+        private DirtyValue<DateTime?>? _goodFaithAmountInitialLE1;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _lEBaselineUsedCannotDecrease;
+        private DirtyValue<bool?>? _lEBaselineUsedCannotIncrease;
+        private DirtyValue<bool?>? _lEBaselineUsedCannotIncrease10;
+        private DirtyValue<string?>? _lEInitialDTGuid;
+        private DirtyValue<string?>? _lEInitialGuid;
+        private DirtyValue<string?>? _lEInitialReceivedDateGuid;
+        private DirtyValue<string?>? _lELatestGuid;
+        private DirtyValue<string?>? _lERevisedReceivedDateGuid;
+        private DirtyValue<string?>? _lERevisedSentDateGuid;
+        private DirtyValue<decimal?>? _requiredCureAmount;
+        private DirtyValue<string?>? _safeHarborGuid;
+        private DirtyValue<string?>? _sSPLGuid;
 
         /// <summary>
         /// Tolerance Cure Applied Cure Amount [FV.X366]
@@ -62,73 +62,73 @@ namespace EncompassRest.Loans
         /// Cannot Decrease - CD Baseline Guid [FV.X361]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CannotDecreaseCDBaselineGuid { get => _cannotDecreaseCDBaselineGuid; set => SetField(ref _cannotDecreaseCDBaselineGuid, value); }
+        public string? CannotDecreaseCDBaselineGuid { get => _cannotDecreaseCDBaselineGuid; set => SetField(ref _cannotDecreaseCDBaselineGuid, value); }
 
         /// <summary>
         /// Cannot Decrease - LE Baseline Guid [FV.X360]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CannotDecreaseLEBaselineGuid { get => _cannotDecreaseLEBaselineGuid; set => SetField(ref _cannotDecreaseLEBaselineGuid, value); }
+        public string? CannotDecreaseLEBaselineGuid { get => _cannotDecreaseLEBaselineGuid; set => SetField(ref _cannotDecreaseLEBaselineGuid, value); }
 
         /// <summary>
         /// Cannot Increase 10 - CD Baseline Guid [FV.X365]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CannotIncrease10CDBaselineGuid { get => _cannotIncrease10CDBaselineGuid; set => SetField(ref _cannotIncrease10CDBaselineGuid, value); }
+        public string? CannotIncrease10CDBaselineGuid { get => _cannotIncrease10CDBaselineGuid; set => SetField(ref _cannotIncrease10CDBaselineGuid, value); }
 
         /// <summary>
         /// Cannot Increase 10 - LE Baseline Guid [FV.X364]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CannotIncrease10LEBaselineGuid { get => _cannotIncrease10LEBaselineGuid; set => SetField(ref _cannotIncrease10LEBaselineGuid, value); }
+        public string? CannotIncrease10LEBaselineGuid { get => _cannotIncrease10LEBaselineGuid; set => SetField(ref _cannotIncrease10LEBaselineGuid, value); }
 
         /// <summary>
         /// Cannot Increase - CD Baseline Guid [FV.X363]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CannotIncreaseCDBaselineGuid { get => _cannotIncreaseCDBaselineGuid; set => SetField(ref _cannotIncreaseCDBaselineGuid, value); }
+        public string? CannotIncreaseCDBaselineGuid { get => _cannotIncreaseCDBaselineGuid; set => SetField(ref _cannotIncreaseCDBaselineGuid, value); }
 
         /// <summary>
         /// Cannot Increase - LE Baseline Guid [FV.X362]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CannotIncreaseLEBaselineGuid { get => _cannotIncreaseLEBaselineGuid; set => SetField(ref _cannotIncreaseLEBaselineGuid, value); }
+        public string? CannotIncreaseLEBaselineGuid { get => _cannotIncreaseLEBaselineGuid; set => SetField(ref _cannotIncreaseLEBaselineGuid, value); }
 
         /// <summary>
         /// CD Initial Guid [FV.X358]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CDInitialGuid { get => _cDInitialGuid; set => SetField(ref _cDInitialGuid, value); }
+        public string? CDInitialGuid { get => _cDInitialGuid; set => SetField(ref _cDInitialGuid, value); }
 
         /// <summary>
         /// CD Initial Received Date Disclosure Tracking Guid [FV.X394]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CDInitialReceivedDateGuid { get => _cDInitialReceivedDateGuid; set => SetField(ref _cDInitialReceivedDateGuid, value); }
+        public string? CDInitialReceivedDateGuid { get => _cDInitialReceivedDateGuid; set => SetField(ref _cDInitialReceivedDateGuid, value); }
 
         /// <summary>
         /// CD Latest Guid [FV.X359]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CDLatestGuid { get => _cDLatestGuid; set => SetField(ref _cDLatestGuid, value); }
+        public string? CDLatestGuid { get => _cDLatestGuid; set => SetField(ref _cDLatestGuid, value); }
 
         /// <summary>
         /// CD Post Consummation GUID [FV.X367]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CDPostConGuid { get => _cDPostConGuid; set => SetField(ref _cDPostConGuid, value); }
+        public string? CDPostConGuid { get => _cDPostConGuid; set => SetField(ref _cDPostConGuid, value); }
 
         /// <summary>
         /// CD Recent Applied Cure Reason [FV.X386]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CDRecentAppliedCure { get => _cDRecentAppliedCure; set => SetField(ref _cDRecentAppliedCure, value); }
+        public string? CDRecentAppliedCure { get => _cDRecentAppliedCure; set => SetField(ref _cDRecentAppliedCure, value); }
 
         /// <summary>
         /// CD Revised Received Date Disclosure Tracking Guid [FV.X395]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CDRevisedReceivedDateGuid { get => _cDRevisedReceivedDateGuid; set => SetField(ref _cDRevisedReceivedDateGuid, value); }
+        public string? CDRevisedReceivedDateGuid { get => _cDRevisedReceivedDateGuid; set => SetField(ref _cDRevisedReceivedDateGuid, value); }
 
         /// <summary>
         /// Charges Cannot Increase 10 CD 1 [FV.X55]
@@ -206,13 +206,13 @@ namespace EncompassRest.Loans
         /// Disclosure Log GUID used For ECD calculation [FV.X387]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DisclosureLogGUIDForECD { get => _disclosureLogGUIDForECD; set => SetField(ref _disclosureLogGUIDForECD, value); }
+        public string? DisclosureLogGUIDForECD { get => _disclosureLogGUIDForECD; set => SetField(ref _disclosureLogGUIDForECD, value); }
 
         /// <summary>
         /// Disclosure Log GUID CD Revised Received used For ECD calculation [FV.X389]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DisclosureLogGUIDReceivedForECD { get => _disclosureLogGUIDReceivedForECD; set => SetField(ref _disclosureLogGUIDReceivedForECD, value); }
+        public string? DisclosureLogGUIDReceivedForECD { get => _disclosureLogGUIDReceivedForECD; set => SetField(ref _disclosureLogGUIDReceivedForECD, value); }
 
         /// <summary>
         /// Good Faith Amount Initial LE 1 [FV.X324]
@@ -222,7 +222,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FeeVarianceOther Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Cannot Decrease - LE Baseline Used [FV.X374]
@@ -246,37 +246,37 @@ namespace EncompassRest.Loans
         /// LE Initial Disclosure Tracking Guid [FV.X385]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LEInitialDTGuid { get => _lEInitialDTGuid; set => SetField(ref _lEInitialDTGuid, value); }
+        public string? LEInitialDTGuid { get => _lEInitialDTGuid; set => SetField(ref _lEInitialDTGuid, value); }
 
         /// <summary>
         /// LE Initial Guid [FV.X356]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LEInitialGuid { get => _lEInitialGuid; set => SetField(ref _lEInitialGuid, value); }
+        public string? LEInitialGuid { get => _lEInitialGuid; set => SetField(ref _lEInitialGuid, value); }
 
         /// <summary>
         /// LE Initial Received Date Disclosure Tracking Guid [FV.X392]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LEInitialReceivedDateGuid { get => _lEInitialReceivedDateGuid; set => SetField(ref _lEInitialReceivedDateGuid, value); }
+        public string? LEInitialReceivedDateGuid { get => _lEInitialReceivedDateGuid; set => SetField(ref _lEInitialReceivedDateGuid, value); }
 
         /// <summary>
         /// LE Latest Guid [FV.X357]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LELatestGuid { get => _lELatestGuid; set => SetField(ref _lELatestGuid, value); }
+        public string? LELatestGuid { get => _lELatestGuid; set => SetField(ref _lELatestGuid, value); }
 
         /// <summary>
         /// LE Revised Received Date Disclosure Tracking Guid [FV.X393]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LERevisedReceivedDateGuid { get => _lERevisedReceivedDateGuid; set => SetField(ref _lERevisedReceivedDateGuid, value); }
+        public string? LERevisedReceivedDateGuid { get => _lERevisedReceivedDateGuid; set => SetField(ref _lERevisedReceivedDateGuid, value); }
 
         /// <summary>
         /// LE Revised Sent Date Disclosure Tracking Guid [FV.X391]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LERevisedSentDateGuid { get => _lERevisedSentDateGuid; set => SetField(ref _lERevisedSentDateGuid, value); }
+        public string? LERevisedSentDateGuid { get => _lERevisedSentDateGuid; set => SetField(ref _lERevisedSentDateGuid, value); }
 
         /// <summary>
         /// Tolerance Cure Required Cure Amount [FV.X348]
@@ -288,12 +288,12 @@ namespace EncompassRest.Loans
         /// Safe Harbor GUID [FV.X368]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SafeHarborGuid { get => _safeHarborGuid; set => SetField(ref _safeHarborGuid, value); }
+        public string? SafeHarborGuid { get => _safeHarborGuid; set => SetField(ref _safeHarborGuid, value); }
 
         /// <summary>
         /// Settlement Services Provider List GUID [FV.X369]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SSPLGuid { get => _sSPLGuid; set => SetField(ref _sSPLGuid, value); }
+        public string? SSPLGuid { get => _sSPLGuid; set => SetField(ref _sSPLGuid, value); }
     }
 }

@@ -28,7 +28,7 @@ namespace EncompassRest.Utilities
             return data.IsEnum || data.NonNullableValueTypeData?.IsEnum == true;
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             try
             {

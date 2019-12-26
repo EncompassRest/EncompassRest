@@ -66,25 +66,25 @@ namespace EncompassRest.Services.Verification
         /// Additional contact email, used as an endpoint for receiving documents.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string AdditionalEmailId { get; set; }
+        public string? AdditionalEmailId { get; set; }
 
         /// <summary>
         /// Employer Identification Number. Required if ordering a business product (Form 1065 or Form 1120).
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string EinNumber { get; set; }
+        public string? EinNumber { get; set; }
 
         /// <summary>
         /// Field used to identify which corporation the borrower works for, if they work for one.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string CorporationName { get; set; }
+        public string? CorporationName { get; set; }
 
         /// <summary>
         /// Street address of the borrower's company. Required if ordering a business product (Form 1065 or Form 1120).
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         /// <summary>
         /// State of the borrower's company. Required if ordering a business product (Form 1065 or Form 1120).
@@ -96,13 +96,13 @@ namespace EncompassRest.Services.Verification
         /// City of the borrower's company. Required if ordering a business product (Form 1065 or Form 1120).
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         /// <summary>
         /// ZIP code of the borrower's company. Required if ordering a business product (Form 1065 or Form 1120).
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Zip { get; set; }
+        public string? Zip { get; set; }
 
         /// <summary>
         /// EV4506TOptions Product_1040
@@ -156,20 +156,20 @@ namespace EncompassRest.Services.Verification
         /// Comma-separated string indicating which years of transcript are being ordered.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string TranscriptYear { get; set; }
+        public string? TranscriptYear { get; set; }
 
         /// <summary>
         /// EV4506TOptions Resources
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public IList<EV4506TResource> Resources { get; set; }
+        public IList<EV4506TResource>? Resources { get; set; }
 
         /// <summary>
         /// EV4506TOptions constructor.
         /// </summary>
         /// <param name="requestType">Indicates the type of order.</param>
         public EV4506TOptions(EV4506TRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).GetValue())
+            : this(requestType.Validate(nameof(requestType)).GetValue()!)
         {
         }
 

@@ -10,8 +10,8 @@ namespace EncompassRest.Organizations
     /// </remarks>
     public sealed class ConsumerConnectLOSearchInformation : ParentInformation
     {
-        private DirtyValue<bool?> _showInSearch;
-        private DirtyValue<string> _name;
+        private DirtyValue<bool?>? _showInSearch;
+        private DirtyValue<string?>? _name;
 
         /// <summary>
         /// Indicates whether the organization is displayed in Encompass Consumer Connect search.
@@ -21,6 +21,6 @@ namespace EncompassRest.Organizations
         /// <summary>
         /// The name that will appear in the Encompass Consumer Connect search for this organization.
         /// </summary>
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
     }
 }

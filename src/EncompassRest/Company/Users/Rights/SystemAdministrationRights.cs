@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,14 +7,14 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class SystemAdministrationRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _allUserInformation;
-        private DirtyValue<bool?> _analysisTools;
-        private CurrentLoginsRights _currentLogins;
-        private DirtyValue<bool?> _loanReassignment;
-        private SettingsReportRights _settingsReport;
-        private DirtyValue<bool?> _systemAuditTrail;
-        private DirtyValue<bool?> _unlockLoanFile;
-        private DirtyValue<bool?> _unlockTrade;
+        private DirtyValue<bool?>? _allUserInformation;
+        private DirtyValue<bool?>? _analysisTools;
+        private CurrentLoginsRights? _currentLogins;
+        private DirtyValue<bool?>? _loanReassignment;
+        private SettingsReportRights? _settingsReport;
+        private DirtyValue<bool?>? _systemAuditTrail;
+        private DirtyValue<bool?>? _unlockLoanFile;
+        private DirtyValue<bool?>? _unlockTrade;
 
         /// <summary>
         /// SystemAdministrationRights AllUserInformation
@@ -27,6 +29,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// SystemAdministrationRights CurrentLogins
         /// </summary>
+        [AllowNull]
         public CurrentLoginsRights CurrentLogins { get => GetField(ref _currentLogins); set => SetField(ref _currentLogins, value); }
 
         /// <summary>
@@ -37,6 +40,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// SystemAdministrationRights SettingsReport
         /// </summary>
+        [AllowNull]
         public SettingsReportRights SettingsReport { get => GetField(ref _settingsReport); set => SetField(ref _settingsReport, value); }
 
         /// <summary>

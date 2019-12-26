@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,225 +11,225 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<bool?> _acceptedByBorrowerIndicator;
-        private DirtyValue<DateTime?> _acceptedDate;
-        private DirtyValue<string> _actingOtherDescription1;
-        private DirtyValue<string> _actingOtherDescription2;
-        private DirtyValue<bool?> _actingOthersIndicator;
-        private DirtyValue<int?> _advFeeAgmtInEfctNumDay;
-        private DirtyValue<string> _advisoryCondition1;
-        private DirtyValue<string> _advisoryCondition2;
-        private DirtyValue<string> _advisoryCondition3;
-        private DirtyValue<string> _advisoryCondition4;
-        private DirtyValue<decimal?> _amendedAcquisitionCost;
-        private DirtyValue<DateTime?> _applicationDate;
-        private DirtyValue<string> _appraisalContact;
-        private DirtyValue<decimal?> _appraisalDeposit;
-        private DirtyValue<StringEnumValue<Areas>> _areas;
-        private DirtyValue<bool?> _asAttorneyIndicator;
-        private DirtyValue<bool?> _asRealBrokerIndicator;
-        private DirtyValue<bool?> _attorneyForTheBuyerIndicator;
-        private DirtyValue<bool?> _attorneyForTheLenderIndicator;
-        private DirtyValue<bool?> _attorneyForTheSellerIndicator;
-        private DirtyValue<string> _aZCmplBlankSpcsDoc1BlankFldDesc1;
-        private DirtyValue<string> _aZCmplBlankSpcsDoc1BlankFldDesc2;
-        private DirtyValue<string> _aZCmplBlankSpcsDoc1BlankFldDesc3;
-        private DirtyValue<string> _aZCmplBlankSpcsDoc1Nm;
-        private DirtyValue<string> _aZCmplBlankSpcsDoc2Nm;
-        private DirtyValue<string> _aZCmplBlankSpcsDoc3Nm;
-        private DirtyValue<string> _basedOnOthersDescription;
-        private DirtyValue<bool?> _basedOnOthersIndicator;
-        private DirtyValue<bool?> _basedOnWholesaleOptionsIndicator;
-        private DirtyValue<decimal?> _borrowerElectsEstablishEscrowAmount;
-        private DirtyValue<bool?> _borrowerElectsEstablishEscrowIndicator;
-        private DirtyValue<decimal?> _brokerageFeeAddition1;
-        private DirtyValue<decimal?> _brokerageFeeAddition2;
-        private DirtyValue<decimal?> _brokerageFeeAddition3;
-        private DirtyValue<decimal?> _brokerageFeeAmount1;
-        private DirtyValue<decimal?> _brokerageFeeAmount2;
-        private DirtyValue<decimal?> _brokerageFeeAmount3;
-        private DirtyValue<int?> _brokerageFeeDays;
-        private DirtyValue<decimal?> _brokerageFeePercent1;
-        private DirtyValue<decimal?> _brokerageFeePercent2;
-        private DirtyValue<decimal?> _brokerageFeePercent3;
-        private DirtyValue<string> _brokerAuthorizedSigningRepName;
-        private DirtyValue<string> _brokerAuthorizedSigningRepTitle;
-        private DirtyValue<StringEnumValue<BrokerForTheSeller>> _brokerForTheSeller;
-        private DirtyValue<string> _brokerLicense;
-        private DirtyValue<string> _brokerName;
-        private DirtyValue<decimal?> _brokerPayAddition;
-        private DirtyValue<decimal?> _brokerPayAmount;
-        private DirtyValue<bool?> _brokerPayIndicator;
-        private DirtyValue<decimal?> _brokerPayPercent;
-        private DirtyValue<bool?> _cHARMBookletIndicator;
-        private DirtyValue<string> _checkPayableTo;
-        private DirtyValue<decimal?> _commitmentAmount;
-        private DirtyValue<string> _commitmentCondition1;
-        private DirtyValue<string> _commitmentCondition2;
-        private DirtyValue<decimal?> _commitmentFee;
-        private DirtyValue<decimal?> _commitmentPercent;
-        private DirtyValue<decimal?> _compensationAddition;
-        private DirtyValue<decimal?> _compensationPercent;
-        private DirtyValue<decimal?> _creditDeposit;
-        private DirtyValue<string> _creditIsUsedForReason;
-        private DirtyValue<string> _creditReportContact;
-        private DirtyValue<int?> _daysBeforeClosing;
-        private DirtyValue<decimal?> _depositReceipt;
-        private DirtyValue<bool?> _depositRefundableIndicator;
-        private DirtyValue<string> _directContact;
-        private DirtyValue<decimal?> _directPayAmount;
-        private DirtyValue<decimal?> _directPayClosing;
-        private DirtyValue<decimal?> _directPayCommitment;
-        private DirtyValue<bool?> _directPayIndicator;
-        private DirtyValue<decimal?> _directPayPercent;
-        private DirtyValue<StringEnumValue<DisclosureDeliveredBy>> _disclosureDeliveredBy;
-        private DirtyValue<string> _disclosureDeliveredByOtherMethod;
-        private DirtyValue<DateTime?> _disclosureDeliveredDate;
-        private DirtyValue<bool?> _estimatedChargeShownOnGFEIndicator;
-        private DirtyValue<DateTime?> _expirationDate;
-        private DirtyValue<decimal?> _federallySubsidizedAmount;
-        private DirtyValue<decimal?> _federallySubsidizedAmountPercentage;
-        private DirtyValue<decimal?> _feeReceived1;
-        private DirtyValue<decimal?> _feeReceived2;
-        private DirtyValue<StringEnumValue<RefundableType>> _feeReceivedByLender;
-        private DirtyValue<decimal?> _feesReceiving;
-        private DirtyValue<decimal?> _floridaApplicationFee;
-        private DirtyValue<decimal?> _floridaOtherFee1;
-        private DirtyValue<decimal?> _floridaOtherFee2;
-        private DirtyValue<string> _floridaOtherFeeTo1;
-        private DirtyValue<string> _floridaOtherFeeTo2;
-        private DirtyValue<string> _floridaOtherFeeTo3;
-        private DirtyValue<string> _floridaOtherFeeTo4;
-        private DirtyValue<string> _furtherFeesEarnedByMortgageBroker;
-        private DirtyValue<decimal?> _gFEFeeReceived1;
-        private DirtyValue<decimal?> _gFEFeeReceived2;
-        private DirtyValue<bool?> _hUDBookletIndicator;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _independentContractorIndicator;
-        private DirtyValue<string> _indexUsed;
-        private DirtyValue<string> _informationAboutTheIndexCanBeFound;
-        private DirtyValue<string> _inLicensedNo;
-        private DirtyValue<StringEnumValue<InLicensedType>> _inLicensedType;
-        private DirtyValue<bool?> _isEstimateIndicator;
-        private DirtyValue<bool?> _ksUcccElectionIndicator;
-        private DirtyValue<bool?> _kyHomeSolicationLoanIndicator;
-        private DirtyValue<DateTime?> _leaseAgreementDate;
-        private DirtyValue<DateTime?> _lenderDate;
-        private DirtyValue<string> _lenderName;
-        private DirtyValue<decimal?> _lenderPaid;
-        private DirtyValue<decimal?> _lenderPayAmount;
-        private DirtyValue<bool?> _lenderPayIndicator;
-        private DirtyValue<decimal?> _lenderPayMaxPoint;
-        private DirtyValue<decimal?> _lenderPayPercent;
-        private DirtyValue<decimal?> _lenderPayPoint;
-        private DirtyValue<bool?> _lenderPayUnknownIndicator;
-        private DirtyValue<string> _lenderStatus;
-        private DirtyValue<string> _lessorName;
-        private DirtyValue<bool?> _loanTermsFixedThroughDateofLoanClosingIndicator;
-        private DirtyValue<decimal?> _lockInFee;
-        private DirtyValue<string> _methodDescription;
-        private DirtyValue<StringEnumValue<MethodDetermine>> _methodDetermine;
-        private DirtyValue<bool?> _mortgageAgreementIndicator;
-        private DirtyValue<string> _mtgBrokerLicense;
-        private DirtyValue<string> _nameOfLicensee;
-        private DirtyValue<decimal?> _newMoneyAmount;
-        private DirtyValue<decimal?> _newYorkApplicationFee;
-        private DirtyValue<decimal?> _newYorkAppraisalFee;
-        private DirtyValue<decimal?> _newYorkCreditReportFee;
-        private DirtyList<NewYorkFee> _newYorkFees;
-        private DirtyList<NewYorkPrimaryLender> _newYorkPrimaryLenders;
-        private DirtyValue<decimal?> _newYorkProcessingFee;
-        private DirtyValue<decimal?> _notRefundableAmount;
-        private DirtyValue<bool?> _offerRetailPriceIndicator;
-        private DirtyValue<decimal?> _originalAcquisitionCost;
-        private DirtyValue<decimal?> _originationFeeChargedAmount;
-        private DirtyValue<bool?> _originationFeeChargedIndicator;
-        private DirtyValue<decimal?> _originationFeeDecreasesRate;
-        private DirtyValue<decimal?> _originationFeeIncreasesRate;
-        private DirtyValue<StringEnumValue<InterestRateImpactedStatus>> _originationFeeInterestRateImpactedStatus;
-        private DirtyValue<StringEnumValue<StateDisclosureFeePaidBy>> _originationFeePaidBy;
-        private DirtyValue<decimal?> _paidByBorrower;
-        private DirtyValue<decimal?> _paidByLender;
-        private DirtyValue<decimal?> _paidByOther1;
-        private DirtyValue<decimal?> _paidByOther2;
-        private DirtyValue<string> _paidByOtherDescription1;
-        private DirtyValue<string> _paidByOtherDescription2;
-        private DirtyValue<decimal?> _previousMortgageAmountOne;
-        private DirtyValue<decimal?> _previousMortgageAmountTwo;
-        private DirtyValue<bool?> _printCertificationOfCosts;
-        private DirtyValue<bool?> _printInterestRateReductionRider;
-        private DirtyValue<bool?> _printMDDeliveryIndicator;
-        private DirtyValue<StringEnumValue<ProvidedBy>> _providedBy;
-        private DirtyValue<string> _questionContact;
-        private DirtyValue<string> _questionContactPhone;
-        private DirtyValue<string> _questionContactTollFree;
-        private DirtyValue<bool?> _rateLockHonoredIndicator;
-        private DirtyValue<string> _receivedBy;
-        private DirtyValue<decimal?> _refinancingFee;
-        private DirtyValue<string> _refundableBy;
-        private DirtyValue<bool?> _refundableIndicator;
-        private DirtyValue<StringEnumValue<RefundableType>> _refundableType;
-        private DirtyValue<string> _refundCondition1;
-        private DirtyValue<string> _refundCondition2;
-        private DirtyValue<string> _refundCondition3;
-        private DirtyValue<string> _refundCondition4;
-        private DirtyValue<string> _refundCondition5;
-        private DirtyValue<string> _refundCondition6;
-        private DirtyValue<string> _regulatorAddress;
-        private DirtyValue<string> _regulatorCity;
-        private DirtyValue<string> _regulatorMailingAddress;
-        private DirtyValue<string> _regulatorMailingCity;
-        private DirtyValue<StringEnumValue<State>> _regulatorMailingState;
-        private DirtyValue<string> _regulatorMailingZipCode;
-        private DirtyValue<string> _regulatorPhone;
-        private DirtyValue<StringEnumValue<State>> _regulatorState;
-        private DirtyValue<string> _regulatorTollFreePhone;
-        private DirtyValue<string> _regulatorWebAddress;
-        private DirtyValue<string> _regulatorZipCode;
-        private DirtyValue<StringEnumValue<ScheduleOfChargesEstimatedFinalIndicator>> _scheduleOfChargesEstimatedFinalIndicator;
-        private DirtyValue<StringEnumValue<ScRegulatoryAgencyType>> _scRegulatoryAgencyType;
-        private DirtyValue<bool?> _selectDivisionFeesIndicator;
-        private DirtyValue<bool?> _selectPrimaryLenderIndicator;
-        private DirtyValue<bool?> _selectPrivateLenderIndicator;
-        private DirtyValue<decimal?> _servicingFeeChargedAmount;
-        private DirtyValue<bool?> _servicingFeeChargedIndicator;
-        private DirtyValue<StringEnumValue<StateDisclosureFeePaidBy>> _servicingFeePaidBy;
-        private DirtyValue<StringEnumValue<ServicingFeePaidFrequence>> _servicingFeePaidFrequence;
-        private DirtyValue<bool?> _signedByBorrowerIndicator;
-        private DirtyValue<bool?> _specificARMIndicator;
-        private DirtyValue<bool?> _submitToLenderIndicator;
-        private DirtyValue<decimal?> _taxExemptAcquisitionCostCertificationAssessments;
-        private DirtyValue<string> _taxExemptAcquisitionCostCertificationOther;
-        private DirtyValue<decimal?> _taxExemptAcquisitionCostCertificationOtherAmount;
-        private DirtyValue<decimal?> _taxExemptAcquisitionCostCertificationOwnersTitleInsurance;
-        private DirtyValue<decimal?> _taxExemptAcquisitionCostCertificationRealEstateCommission;
-        private DirtyValue<decimal?> _taxExemptAcquisitionCostCertificationRepairsImprovements;
-        private DirtyValue<decimal?> _taxExemptAcquisitionCostCertificationSurvey;
-        private DirtyValue<decimal?> _taxExemptAcquisitionCostCertificationTotalAdjustments;
-        private DirtyValue<StringEnumValue<TermsChange>> _termsChange;
-        private DirtyValue<decimal?> _texasApplicationFee;
-        private DirtyValue<decimal?> _texasAppraisalFee;
-        private DirtyValue<decimal?> _texasCreditReportFee;
-        private DirtyValue<decimal?> _texasOtherFee1;
-        private DirtyValue<decimal?> _texasOtherFee2;
-        private DirtyValue<string> _texasOtherFeeContact1;
-        private DirtyValue<string> _texasOtherFeeContact2;
-        private DirtyValue<decimal?> _texasProcessingFee;
-        private DirtyValue<decimal?> _thirdPartyFee;
-        private DirtyValue<decimal?> _totalFee;
-        private DirtyValue<decimal?> _transferFeeChargedAmount;
-        private DirtyValue<bool?> _transferFeeChargedIndicator;
-        private DirtyValue<StringEnumValue<StateDisclosureFeePaidBy>> _transferFeePaidBy;
-        private DirtyValue<bool?> _txVeteransLandBoardIndicator;
-        private DirtyValue<StringEnumValue<TypeOfProperty>> _typeOfProperty;
-        private DirtyValue<string> _underwritingContact;
-        private DirtyValue<decimal?> _underwritingFee;
-        private DirtyValue<decimal?> _ySPChargedAmount;
-        private DirtyValue<bool?> _ySPChargedIndicator;
-        private DirtyValue<decimal?> _ySPDecreasesRate;
-        private DirtyValue<decimal?> _ySPIncreasesRate;
-        private DirtyValue<StringEnumValue<InterestRateImpactedStatus>> _ySPInterestRateImpactedStatus;
-        private DirtyValue<StringEnumValue<StateDisclosureFeePaidBy>> _ySPPaidBy;
+        private DirtyValue<bool?>? _acceptedByBorrowerIndicator;
+        private DirtyValue<DateTime?>? _acceptedDate;
+        private DirtyValue<string?>? _actingOtherDescription1;
+        private DirtyValue<string?>? _actingOtherDescription2;
+        private DirtyValue<bool?>? _actingOthersIndicator;
+        private DirtyValue<int?>? _advFeeAgmtInEfctNumDay;
+        private DirtyValue<string?>? _advisoryCondition1;
+        private DirtyValue<string?>? _advisoryCondition2;
+        private DirtyValue<string?>? _advisoryCondition3;
+        private DirtyValue<string?>? _advisoryCondition4;
+        private DirtyValue<decimal?>? _amendedAcquisitionCost;
+        private DirtyValue<DateTime?>? _applicationDate;
+        private DirtyValue<string?>? _appraisalContact;
+        private DirtyValue<decimal?>? _appraisalDeposit;
+        private DirtyValue<StringEnumValue<Areas>>? _areas;
+        private DirtyValue<bool?>? _asAttorneyIndicator;
+        private DirtyValue<bool?>? _asRealBrokerIndicator;
+        private DirtyValue<bool?>? _attorneyForTheBuyerIndicator;
+        private DirtyValue<bool?>? _attorneyForTheLenderIndicator;
+        private DirtyValue<bool?>? _attorneyForTheSellerIndicator;
+        private DirtyValue<string?>? _aZCmplBlankSpcsDoc1BlankFldDesc1;
+        private DirtyValue<string?>? _aZCmplBlankSpcsDoc1BlankFldDesc2;
+        private DirtyValue<string?>? _aZCmplBlankSpcsDoc1BlankFldDesc3;
+        private DirtyValue<string?>? _aZCmplBlankSpcsDoc1Nm;
+        private DirtyValue<string?>? _aZCmplBlankSpcsDoc2Nm;
+        private DirtyValue<string?>? _aZCmplBlankSpcsDoc3Nm;
+        private DirtyValue<string?>? _basedOnOthersDescription;
+        private DirtyValue<bool?>? _basedOnOthersIndicator;
+        private DirtyValue<bool?>? _basedOnWholesaleOptionsIndicator;
+        private DirtyValue<decimal?>? _borrowerElectsEstablishEscrowAmount;
+        private DirtyValue<bool?>? _borrowerElectsEstablishEscrowIndicator;
+        private DirtyValue<decimal?>? _brokerageFeeAddition1;
+        private DirtyValue<decimal?>? _brokerageFeeAddition2;
+        private DirtyValue<decimal?>? _brokerageFeeAddition3;
+        private DirtyValue<decimal?>? _brokerageFeeAmount1;
+        private DirtyValue<decimal?>? _brokerageFeeAmount2;
+        private DirtyValue<decimal?>? _brokerageFeeAmount3;
+        private DirtyValue<int?>? _brokerageFeeDays;
+        private DirtyValue<decimal?>? _brokerageFeePercent1;
+        private DirtyValue<decimal?>? _brokerageFeePercent2;
+        private DirtyValue<decimal?>? _brokerageFeePercent3;
+        private DirtyValue<string?>? _brokerAuthorizedSigningRepName;
+        private DirtyValue<string?>? _brokerAuthorizedSigningRepTitle;
+        private DirtyValue<StringEnumValue<BrokerForTheSeller>>? _brokerForTheSeller;
+        private DirtyValue<string?>? _brokerLicense;
+        private DirtyValue<string?>? _brokerName;
+        private DirtyValue<decimal?>? _brokerPayAddition;
+        private DirtyValue<decimal?>? _brokerPayAmount;
+        private DirtyValue<bool?>? _brokerPayIndicator;
+        private DirtyValue<decimal?>? _brokerPayPercent;
+        private DirtyValue<bool?>? _cHARMBookletIndicator;
+        private DirtyValue<string?>? _checkPayableTo;
+        private DirtyValue<decimal?>? _commitmentAmount;
+        private DirtyValue<string?>? _commitmentCondition1;
+        private DirtyValue<string?>? _commitmentCondition2;
+        private DirtyValue<decimal?>? _commitmentFee;
+        private DirtyValue<decimal?>? _commitmentPercent;
+        private DirtyValue<decimal?>? _compensationAddition;
+        private DirtyValue<decimal?>? _compensationPercent;
+        private DirtyValue<decimal?>? _creditDeposit;
+        private DirtyValue<string?>? _creditIsUsedForReason;
+        private DirtyValue<string?>? _creditReportContact;
+        private DirtyValue<int?>? _daysBeforeClosing;
+        private DirtyValue<decimal?>? _depositReceipt;
+        private DirtyValue<bool?>? _depositRefundableIndicator;
+        private DirtyValue<string?>? _directContact;
+        private DirtyValue<decimal?>? _directPayAmount;
+        private DirtyValue<decimal?>? _directPayClosing;
+        private DirtyValue<decimal?>? _directPayCommitment;
+        private DirtyValue<bool?>? _directPayIndicator;
+        private DirtyValue<decimal?>? _directPayPercent;
+        private DirtyValue<StringEnumValue<DisclosureDeliveredBy>>? _disclosureDeliveredBy;
+        private DirtyValue<string?>? _disclosureDeliveredByOtherMethod;
+        private DirtyValue<DateTime?>? _disclosureDeliveredDate;
+        private DirtyValue<bool?>? _estimatedChargeShownOnGFEIndicator;
+        private DirtyValue<DateTime?>? _expirationDate;
+        private DirtyValue<decimal?>? _federallySubsidizedAmount;
+        private DirtyValue<decimal?>? _federallySubsidizedAmountPercentage;
+        private DirtyValue<decimal?>? _feeReceived1;
+        private DirtyValue<decimal?>? _feeReceived2;
+        private DirtyValue<StringEnumValue<RefundableType>>? _feeReceivedByLender;
+        private DirtyValue<decimal?>? _feesReceiving;
+        private DirtyValue<decimal?>? _floridaApplicationFee;
+        private DirtyValue<decimal?>? _floridaOtherFee1;
+        private DirtyValue<decimal?>? _floridaOtherFee2;
+        private DirtyValue<string?>? _floridaOtherFeeTo1;
+        private DirtyValue<string?>? _floridaOtherFeeTo2;
+        private DirtyValue<string?>? _floridaOtherFeeTo3;
+        private DirtyValue<string?>? _floridaOtherFeeTo4;
+        private DirtyValue<string?>? _furtherFeesEarnedByMortgageBroker;
+        private DirtyValue<decimal?>? _gFEFeeReceived1;
+        private DirtyValue<decimal?>? _gFEFeeReceived2;
+        private DirtyValue<bool?>? _hUDBookletIndicator;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _independentContractorIndicator;
+        private DirtyValue<string?>? _indexUsed;
+        private DirtyValue<string?>? _informationAboutTheIndexCanBeFound;
+        private DirtyValue<string?>? _inLicensedNo;
+        private DirtyValue<StringEnumValue<InLicensedType>>? _inLicensedType;
+        private DirtyValue<bool?>? _isEstimateIndicator;
+        private DirtyValue<bool?>? _ksUcccElectionIndicator;
+        private DirtyValue<bool?>? _kyHomeSolicationLoanIndicator;
+        private DirtyValue<DateTime?>? _leaseAgreementDate;
+        private DirtyValue<DateTime?>? _lenderDate;
+        private DirtyValue<string?>? _lenderName;
+        private DirtyValue<decimal?>? _lenderPaid;
+        private DirtyValue<decimal?>? _lenderPayAmount;
+        private DirtyValue<bool?>? _lenderPayIndicator;
+        private DirtyValue<decimal?>? _lenderPayMaxPoint;
+        private DirtyValue<decimal?>? _lenderPayPercent;
+        private DirtyValue<decimal?>? _lenderPayPoint;
+        private DirtyValue<bool?>? _lenderPayUnknownIndicator;
+        private DirtyValue<string?>? _lenderStatus;
+        private DirtyValue<string?>? _lessorName;
+        private DirtyValue<bool?>? _loanTermsFixedThroughDateofLoanClosingIndicator;
+        private DirtyValue<decimal?>? _lockInFee;
+        private DirtyValue<string?>? _methodDescription;
+        private DirtyValue<StringEnumValue<MethodDetermine>>? _methodDetermine;
+        private DirtyValue<bool?>? _mortgageAgreementIndicator;
+        private DirtyValue<string?>? _mtgBrokerLicense;
+        private DirtyValue<string?>? _nameOfLicensee;
+        private DirtyValue<decimal?>? _newMoneyAmount;
+        private DirtyValue<decimal?>? _newYorkApplicationFee;
+        private DirtyValue<decimal?>? _newYorkAppraisalFee;
+        private DirtyValue<decimal?>? _newYorkCreditReportFee;
+        private DirtyList<NewYorkFee>? _newYorkFees;
+        private DirtyList<NewYorkPrimaryLender>? _newYorkPrimaryLenders;
+        private DirtyValue<decimal?>? _newYorkProcessingFee;
+        private DirtyValue<decimal?>? _notRefundableAmount;
+        private DirtyValue<bool?>? _offerRetailPriceIndicator;
+        private DirtyValue<decimal?>? _originalAcquisitionCost;
+        private DirtyValue<decimal?>? _originationFeeChargedAmount;
+        private DirtyValue<bool?>? _originationFeeChargedIndicator;
+        private DirtyValue<decimal?>? _originationFeeDecreasesRate;
+        private DirtyValue<decimal?>? _originationFeeIncreasesRate;
+        private DirtyValue<StringEnumValue<InterestRateImpactedStatus>>? _originationFeeInterestRateImpactedStatus;
+        private DirtyValue<StringEnumValue<StateDisclosureFeePaidBy>>? _originationFeePaidBy;
+        private DirtyValue<decimal?>? _paidByBorrower;
+        private DirtyValue<decimal?>? _paidByLender;
+        private DirtyValue<decimal?>? _paidByOther1;
+        private DirtyValue<decimal?>? _paidByOther2;
+        private DirtyValue<string?>? _paidByOtherDescription1;
+        private DirtyValue<string?>? _paidByOtherDescription2;
+        private DirtyValue<decimal?>? _previousMortgageAmountOne;
+        private DirtyValue<decimal?>? _previousMortgageAmountTwo;
+        private DirtyValue<bool?>? _printCertificationOfCosts;
+        private DirtyValue<bool?>? _printInterestRateReductionRider;
+        private DirtyValue<bool?>? _printMDDeliveryIndicator;
+        private DirtyValue<StringEnumValue<ProvidedBy>>? _providedBy;
+        private DirtyValue<string?>? _questionContact;
+        private DirtyValue<string?>? _questionContactPhone;
+        private DirtyValue<string?>? _questionContactTollFree;
+        private DirtyValue<bool?>? _rateLockHonoredIndicator;
+        private DirtyValue<string?>? _receivedBy;
+        private DirtyValue<decimal?>? _refinancingFee;
+        private DirtyValue<string?>? _refundableBy;
+        private DirtyValue<bool?>? _refundableIndicator;
+        private DirtyValue<StringEnumValue<RefundableType>>? _refundableType;
+        private DirtyValue<string?>? _refundCondition1;
+        private DirtyValue<string?>? _refundCondition2;
+        private DirtyValue<string?>? _refundCondition3;
+        private DirtyValue<string?>? _refundCondition4;
+        private DirtyValue<string?>? _refundCondition5;
+        private DirtyValue<string?>? _refundCondition6;
+        private DirtyValue<string?>? _regulatorAddress;
+        private DirtyValue<string?>? _regulatorCity;
+        private DirtyValue<string?>? _regulatorMailingAddress;
+        private DirtyValue<string?>? _regulatorMailingCity;
+        private DirtyValue<StringEnumValue<State>>? _regulatorMailingState;
+        private DirtyValue<string?>? _regulatorMailingZipCode;
+        private DirtyValue<string?>? _regulatorPhone;
+        private DirtyValue<StringEnumValue<State>>? _regulatorState;
+        private DirtyValue<string?>? _regulatorTollFreePhone;
+        private DirtyValue<string?>? _regulatorWebAddress;
+        private DirtyValue<string?>? _regulatorZipCode;
+        private DirtyValue<StringEnumValue<ScheduleOfChargesEstimatedFinalIndicator>>? _scheduleOfChargesEstimatedFinalIndicator;
+        private DirtyValue<StringEnumValue<ScRegulatoryAgencyType>>? _scRegulatoryAgencyType;
+        private DirtyValue<bool?>? _selectDivisionFeesIndicator;
+        private DirtyValue<bool?>? _selectPrimaryLenderIndicator;
+        private DirtyValue<bool?>? _selectPrivateLenderIndicator;
+        private DirtyValue<decimal?>? _servicingFeeChargedAmount;
+        private DirtyValue<bool?>? _servicingFeeChargedIndicator;
+        private DirtyValue<StringEnumValue<StateDisclosureFeePaidBy>>? _servicingFeePaidBy;
+        private DirtyValue<StringEnumValue<ServicingFeePaidFrequence>>? _servicingFeePaidFrequence;
+        private DirtyValue<bool?>? _signedByBorrowerIndicator;
+        private DirtyValue<bool?>? _specificARMIndicator;
+        private DirtyValue<bool?>? _submitToLenderIndicator;
+        private DirtyValue<decimal?>? _taxExemptAcquisitionCostCertificationAssessments;
+        private DirtyValue<string?>? _taxExemptAcquisitionCostCertificationOther;
+        private DirtyValue<decimal?>? _taxExemptAcquisitionCostCertificationOtherAmount;
+        private DirtyValue<decimal?>? _taxExemptAcquisitionCostCertificationOwnersTitleInsurance;
+        private DirtyValue<decimal?>? _taxExemptAcquisitionCostCertificationRealEstateCommission;
+        private DirtyValue<decimal?>? _taxExemptAcquisitionCostCertificationRepairsImprovements;
+        private DirtyValue<decimal?>? _taxExemptAcquisitionCostCertificationSurvey;
+        private DirtyValue<decimal?>? _taxExemptAcquisitionCostCertificationTotalAdjustments;
+        private DirtyValue<StringEnumValue<TermsChange>>? _termsChange;
+        private DirtyValue<decimal?>? _texasApplicationFee;
+        private DirtyValue<decimal?>? _texasAppraisalFee;
+        private DirtyValue<decimal?>? _texasCreditReportFee;
+        private DirtyValue<decimal?>? _texasOtherFee1;
+        private DirtyValue<decimal?>? _texasOtherFee2;
+        private DirtyValue<string?>? _texasOtherFeeContact1;
+        private DirtyValue<string?>? _texasOtherFeeContact2;
+        private DirtyValue<decimal?>? _texasProcessingFee;
+        private DirtyValue<decimal?>? _thirdPartyFee;
+        private DirtyValue<decimal?>? _totalFee;
+        private DirtyValue<decimal?>? _transferFeeChargedAmount;
+        private DirtyValue<bool?>? _transferFeeChargedIndicator;
+        private DirtyValue<StringEnumValue<StateDisclosureFeePaidBy>>? _transferFeePaidBy;
+        private DirtyValue<bool?>? _txVeteransLandBoardIndicator;
+        private DirtyValue<StringEnumValue<TypeOfProperty>>? _typeOfProperty;
+        private DirtyValue<string?>? _underwritingContact;
+        private DirtyValue<decimal?>? _underwritingFee;
+        private DirtyValue<decimal?>? _ySPChargedAmount;
+        private DirtyValue<bool?>? _ySPChargedIndicator;
+        private DirtyValue<decimal?>? _ySPDecreasesRate;
+        private DirtyValue<decimal?>? _ySPIncreasesRate;
+        private DirtyValue<StringEnumValue<InterestRateImpactedStatus>>? _ySPInterestRateImpactedStatus;
+        private DirtyValue<StringEnumValue<StateDisclosureFeePaidBy>>? _ySPPaidBy;
 
         /// <summary>
         /// Disclosure-FL Borr Accept [FLMTGCM.X10]
@@ -244,12 +245,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Act Descr 1 [DISCLOSURE.X77]
         /// </summary>
-        public string ActingOtherDescription1 { get => _actingOtherDescription1; set => SetField(ref _actingOtherDescription1, value); }
+        public string? ActingOtherDescription1 { get => _actingOtherDescription1; set => SetField(ref _actingOtherDescription1, value); }
 
         /// <summary>
         /// Disclosure-TX Act Descr 2 [DISCLOSURE.X78]
         /// </summary>
-        public string ActingOtherDescription2 { get => _actingOtherDescription2; set => SetField(ref _actingOtherDescription2, value); }
+        public string? ActingOtherDescription2 { get => _actingOtherDescription2; set => SetField(ref _actingOtherDescription2, value); }
 
         /// <summary>
         /// Disclosure-TX Act as Follows [DISCLOSURE.X76]
@@ -265,22 +266,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Acknowledge 1 [DISCLOSURE.X105]
         /// </summary>
-        public string AdvisoryCondition1 { get => _advisoryCondition1; set => SetField(ref _advisoryCondition1, value); }
+        public string? AdvisoryCondition1 { get => _advisoryCondition1; set => SetField(ref _advisoryCondition1, value); }
 
         /// <summary>
         /// Disclosure-NY Acknowledge 2 [DISCLOSURE.X106]
         /// </summary>
-        public string AdvisoryCondition2 { get => _advisoryCondition2; set => SetField(ref _advisoryCondition2, value); }
+        public string? AdvisoryCondition2 { get => _advisoryCondition2; set => SetField(ref _advisoryCondition2, value); }
 
         /// <summary>
         /// Disclosure-NY Acknowledge 3 [DISCLOSURE.X107]
         /// </summary>
-        public string AdvisoryCondition3 { get => _advisoryCondition3; set => SetField(ref _advisoryCondition3, value); }
+        public string? AdvisoryCondition3 { get => _advisoryCondition3; set => SetField(ref _advisoryCondition3, value); }
 
         /// <summary>
         /// Disclosure-NY Acknowledge 4 [DISCLOSURE.X108]
         /// </summary>
-        public string AdvisoryCondition4 { get => _advisoryCondition4; set => SetField(ref _advisoryCondition4, value); }
+        public string? AdvisoryCondition4 { get => _advisoryCondition4; set => SetField(ref _advisoryCondition4, value); }
 
         /// <summary>
         /// Disclosure - AK - Amended Acquisition Cost [DISCLOSURE.X974]
@@ -296,7 +297,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Appraisal Fee Descr [DISCLOSURE.X84]
         /// </summary>
-        public string AppraisalContact { get => _appraisalContact; set => SetField(ref _appraisalContact, value); }
+        public string? AppraisalContact { get => _appraisalContact; set => SetField(ref _appraisalContact, value); }
 
         /// <summary>
         /// Disclosure-FL Appraisal Fee [DISCLOSURE.X69]
@@ -342,37 +343,37 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document Description 1 [DISCLOSURE.X917]
         /// </summary>
-        public string AZCmplBlankSpcsDoc1BlankFldDesc1 { get => _aZCmplBlankSpcsDoc1BlankFldDesc1; set => SetField(ref _aZCmplBlankSpcsDoc1BlankFldDesc1, value); }
+        public string? AZCmplBlankSpcsDoc1BlankFldDesc1 { get => _aZCmplBlankSpcsDoc1BlankFldDesc1; set => SetField(ref _aZCmplBlankSpcsDoc1BlankFldDesc1, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document Description 2 [DISCLOSURE.X919]
         /// </summary>
-        public string AZCmplBlankSpcsDoc1BlankFldDesc2 { get => _aZCmplBlankSpcsDoc1BlankFldDesc2; set => SetField(ref _aZCmplBlankSpcsDoc1BlankFldDesc2, value); }
+        public string? AZCmplBlankSpcsDoc1BlankFldDesc2 { get => _aZCmplBlankSpcsDoc1BlankFldDesc2; set => SetField(ref _aZCmplBlankSpcsDoc1BlankFldDesc2, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document Description 3 [DISCLOSURE.X921]
         /// </summary>
-        public string AZCmplBlankSpcsDoc1BlankFldDesc3 { get => _aZCmplBlankSpcsDoc1BlankFldDesc3; set => SetField(ref _aZCmplBlankSpcsDoc1BlankFldDesc3, value); }
+        public string? AZCmplBlankSpcsDoc1BlankFldDesc3 { get => _aZCmplBlankSpcsDoc1BlankFldDesc3; set => SetField(ref _aZCmplBlankSpcsDoc1BlankFldDesc3, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document 1 [DISCLOSURE.X916]
         /// </summary>
-        public string AZCmplBlankSpcsDoc1Nm { get => _aZCmplBlankSpcsDoc1Nm; set => SetField(ref _aZCmplBlankSpcsDoc1Nm, value); }
+        public string? AZCmplBlankSpcsDoc1Nm { get => _aZCmplBlankSpcsDoc1Nm; set => SetField(ref _aZCmplBlankSpcsDoc1Nm, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document 2 [DISCLOSURE.X918]
         /// </summary>
-        public string AZCmplBlankSpcsDoc2Nm { get => _aZCmplBlankSpcsDoc2Nm; set => SetField(ref _aZCmplBlankSpcsDoc2Nm, value); }
+        public string? AZCmplBlankSpcsDoc2Nm { get => _aZCmplBlankSpcsDoc2Nm; set => SetField(ref _aZCmplBlankSpcsDoc2Nm, value); }
 
         /// <summary>
         /// Disclosure-AZ AZ Complete Blank Spaces Document 3 [DISCLOSURE.X920]
         /// </summary>
-        public string AZCmplBlankSpcsDoc3Nm { get => _aZCmplBlankSpcsDoc3Nm; set => SetField(ref _aZCmplBlankSpcsDoc3Nm, value); }
+        public string? AZCmplBlankSpcsDoc3Nm { get => _aZCmplBlankSpcsDoc3Nm; set => SetField(ref _aZCmplBlankSpcsDoc3Nm, value); }
 
         /// <summary>
         /// Disclosure-TX Compensated Based on Others Description [DISCLOSURE.X909]
         /// </summary>
-        public string BasedOnOthersDescription { get => _basedOnOthersDescription; set => SetField(ref _basedOnOthersDescription, value); }
+        public string? BasedOnOthersDescription { get => _basedOnOthersDescription; set => SetField(ref _basedOnOthersDescription, value); }
 
         /// <summary>
         /// Disclosure-TX Compensated Based on Others [DISCLOSURE.X908]
@@ -458,12 +459,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NV Broker Authorized Signing Representative Name [DISCLOSURE.X922]
         /// </summary>
-        public string BrokerAuthorizedSigningRepName { get => _brokerAuthorizedSigningRepName; set => SetField(ref _brokerAuthorizedSigningRepName, value); }
+        public string? BrokerAuthorizedSigningRepName { get => _brokerAuthorizedSigningRepName; set => SetField(ref _brokerAuthorizedSigningRepName, value); }
 
         /// <summary>
         /// Disclosure-NV Broker Authorized Signing Representative Title [DISCLOSURE.X923]
         /// </summary>
-        public string BrokerAuthorizedSigningRepTitle { get => _brokerAuthorizedSigningRepTitle; set => SetField(ref _brokerAuthorizedSigningRepTitle, value); }
+        public string? BrokerAuthorizedSigningRepTitle { get => _brokerAuthorizedSigningRepTitle; set => SetField(ref _brokerAuthorizedSigningRepTitle, value); }
 
         /// <summary>
         /// Disclosure-TX Broker for Seller/Buyer/Buyer and Seller [DISCLOSURE.X96]
@@ -473,12 +474,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX License # [DISCLOSURE.X73]
         /// </summary>
-        public string BrokerLicense { get => _brokerLicense; set => SetField(ref _brokerLicense, value); }
+        public string? BrokerLicense { get => _brokerLicense; set => SetField(ref _brokerLicense, value); }
 
         /// <summary>
         /// Disclosure-TX Broker/Loan Officer [DISCLOSURE.X72]
         /// </summary>
-        public string BrokerName { get => _brokerName; set => SetField(ref _brokerName, value); }
+        public string? BrokerName { get => _brokerName; set => SetField(ref _brokerName, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Fee + [DISCLOSURE.X98]
@@ -512,7 +513,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Check Payable To [DISCLOSURE.X170]
         /// </summary>
-        public string CheckPayableTo { get => _checkPayableTo; set => SetField(ref _checkPayableTo, value); }
+        public string? CheckPayableTo { get => _checkPayableTo; set => SetField(ref _checkPayableTo, value); }
 
         /// <summary>
         /// Disclosure-FL Interest Rate Fee Amt [FLMTGCM.X15]
@@ -523,12 +524,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Loan Commit Conditions 1 [DISCLOSURE.X103]
         /// </summary>
-        public string CommitmentCondition1 { get => _commitmentCondition1; set => SetField(ref _commitmentCondition1, value); }
+        public string? CommitmentCondition1 { get => _commitmentCondition1; set => SetField(ref _commitmentCondition1, value); }
 
         /// <summary>
         /// Disclosure-NY Loan Commit Conditions 2 [DISCLOSURE.X104]
         /// </summary>
-        public string CommitmentCondition2 { get => _commitmentCondition2; set => SetField(ref _commitmentCondition2, value); }
+        public string? CommitmentCondition2 { get => _commitmentCondition2; set => SetField(ref _commitmentCondition2, value); }
 
         /// <summary>
         /// Disclosure-FL Commitment Fee [FLMTGCM.X7]
@@ -563,12 +564,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure Credit Score Used From The Credit Report to Set the Terms of Credit [DISCLOSURE.X637]
         /// </summary>
-        public string CreditIsUsedForReason { get => _creditIsUsedForReason; set => SetField(ref _creditIsUsedForReason, value); }
+        public string? CreditIsUsedForReason { get => _creditIsUsedForReason; set => SetField(ref _creditIsUsedForReason, value); }
 
         /// <summary>
         /// Disclosure-TX Credit Rpt Fee Descr [DISCLOSURE.X86]
         /// </summary>
-        public string CreditReportContact { get => _creditReportContact; set => SetField(ref _creditReportContact, value); }
+        public string? CreditReportContact { get => _creditReportContact; set => SetField(ref _creditReportContact, value); }
 
         /// <summary>
         /// Disclosure-FL Rate Est # Days Before Close [FLMTGCM.X6]
@@ -591,7 +592,7 @@ namespace EncompassRest.Loans
         /// Disclosure-FL Direct inquiries To [FLGFE.X70]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DirectContact { get => _directContact; set => SetField(ref _directContact, value); }
+        public string? DirectContact { get => _directContact; set => SetField(ref _directContact, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Direct Amt [DISCLOSURE.X121]
@@ -631,7 +632,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure - TX - Disclosure Delivered By Other Method [DISCLOSURE.X958]
         /// </summary>
-        public string DisclosureDeliveredByOtherMethod { get => _disclosureDeliveredByOtherMethod; set => SetField(ref _disclosureDeliveredByOtherMethod, value); }
+        public string? DisclosureDeliveredByOtherMethod { get => _disclosureDeliveredByOtherMethod; set => SetField(ref _disclosureDeliveredByOtherMethod, value); }
 
         /// <summary>
         /// Disclosure - TX - Disclosure Delivered Date [DISCLOSURE.X959]
@@ -704,27 +705,27 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Other Fee 1 Descr [FLMTGCM.X17]
         /// </summary>
-        public string FloridaOtherFeeTo1 { get => _floridaOtherFeeTo1; set => SetField(ref _floridaOtherFeeTo1, value); }
+        public string? FloridaOtherFeeTo1 { get => _floridaOtherFeeTo1; set => SetField(ref _floridaOtherFeeTo1, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 2 Descr [FLMTGCM.X19]
         /// </summary>
-        public string FloridaOtherFeeTo2 { get => _floridaOtherFeeTo2; set => SetField(ref _floridaOtherFeeTo2, value); }
+        public string? FloridaOtherFeeTo2 { get => _floridaOtherFeeTo2; set => SetField(ref _floridaOtherFeeTo2, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 3 Descr [FLMTGCM.X20]
         /// </summary>
-        public string FloridaOtherFeeTo3 { get => _floridaOtherFeeTo3; set => SetField(ref _floridaOtherFeeTo3, value); }
+        public string? FloridaOtherFeeTo3 { get => _floridaOtherFeeTo3; set => SetField(ref _floridaOtherFeeTo3, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 4 Descr [FLMTGCM.X22]
         /// </summary>
-        public string FloridaOtherFeeTo4 { get => _floridaOtherFeeTo4; set => SetField(ref _floridaOtherFeeTo4, value); }
+        public string? FloridaOtherFeeTo4 { get => _floridaOtherFeeTo4; set => SetField(ref _floridaOtherFeeTo4, value); }
 
         /// <summary>
         /// Disclosure-NV Further Explanation of Any Fee Earned by Mortgage Broker [DISCLOSURE.X949]
         /// </summary>
-        public string FurtherFeesEarnedByMortgageBroker { get => _furtherFeesEarnedByMortgageBroker; set => SetField(ref _furtherFeesEarnedByMortgageBroker, value); }
+        public string? FurtherFeesEarnedByMortgageBroker { get => _furtherFeesEarnedByMortgageBroker; set => SetField(ref _furtherFeesEarnedByMortgageBroker, value); }
 
         /// <summary>
         /// Disclosure-NY GFE Amt [DISCLOSURE.X151]
@@ -746,7 +747,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// StateDisclosure Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Disclosure-TX Act as Independent Contractor [DISCLOSURE.X75]
@@ -757,17 +758,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Int Rate Index Used [DISCLOSURE.X168]
         /// </summary>
-        public string IndexUsed { get => _indexUsed; set => SetField(ref _indexUsed, value); }
+        public string? IndexUsed { get => _indexUsed; set => SetField(ref _indexUsed, value); }
 
         /// <summary>
         /// Disclosure-FL Int Rate Index Info [DISCLOSURE.X169]
         /// </summary>
-        public string InformationAboutTheIndexCanBeFound { get => _informationAboutTheIndexCanBeFound; set => SetField(ref _informationAboutTheIndexCanBeFound, value); }
+        public string? InformationAboutTheIndexCanBeFound { get => _informationAboutTheIndexCanBeFound; set => SetField(ref _informationAboutTheIndexCanBeFound, value); }
 
         /// <summary>
         /// Disclosure Licensed No [DISCLOSURE.X1027]
         /// </summary>
-        public string InLicensedNo { get => _inLicensedNo; set => SetField(ref _inLicensedNo, value); }
+        public string? InLicensedNo { get => _inLicensedNo; set => SetField(ref _inLicensedNo, value); }
 
         /// <summary>
         /// Disclosure Licensed Type [DISCLOSURE.X1028]
@@ -805,7 +806,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Lender [DISCLOSURE.X154]
         /// </summary>
-        public string LenderName { get => _lenderName; set => SetField(ref _lenderName, value); }
+        public string? LenderName { get => _lenderName; set => SetField(ref _lenderName, value); }
 
         /// <summary>
         /// Disclosure-FL Lender fee paid to licensee [FLGFE.X77]
@@ -852,12 +853,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Status/Disposition [DISCLOSURE.X155]
         /// </summary>
-        public string LenderStatus { get => _lenderStatus; set => SetField(ref _lenderStatus, value); }
+        public string? LenderStatus { get => _lenderStatus; set => SetField(ref _lenderStatus, value); }
 
         /// <summary>
         /// Disclosure - AK - Lessor Name [DISCLOSURE.X976]
         /// </summary>
-        public string LessorName { get => _lessorName; set => SetField(ref _lessorName, value); }
+        public string? LessorName { get => _lessorName; set => SetField(ref _lessorName, value); }
 
         /// <summary>
         /// Disclosure-Loan Terms Fixed Through Date of Loan Closing [DISCLOSURE.X951]
@@ -873,7 +874,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Rate Index at Closing [FLMTGCM.X4]
         /// </summary>
-        public string MethodDescription { get => _methodDescription; set => SetField(ref _methodDescription, value); }
+        public string? MethodDescription { get => _methodDescription; set => SetField(ref _methodDescription, value); }
 
         /// <summary>
         /// Disclosure-FL Rate Index Subject to Change [FLMTGCM.X3]
@@ -889,12 +890,12 @@ namespace EncompassRest.Loans
         /// Disclosure-FL Broker License # [FLGFE.X57]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string MtgBrokerLicense { get => _mtgBrokerLicense; set => SetField(ref _mtgBrokerLicense, value); }
+        public string? MtgBrokerLicense { get => _mtgBrokerLicense; set => SetField(ref _mtgBrokerLicense, value); }
 
         /// <summary>
         /// Disclosure-FL Licensee Name [DISCLOSURE.X171]
         /// </summary>
-        public string NameOfLicensee { get => _nameOfLicensee; set => SetField(ref _nameOfLicensee, value); }
+        public string? NameOfLicensee { get => _nameOfLicensee; set => SetField(ref _nameOfLicensee, value); }
 
         /// <summary>
         /// Disclosure-NY New Money Amount [DISCLOSURE.X993]
@@ -923,11 +924,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// StateDisclosure NewYorkFees
         /// </summary>
+        [AllowNull]
         public IList<NewYorkFee> NewYorkFees { get => GetField(ref _newYorkFees); set => SetField(ref _newYorkFees, value); }
 
         /// <summary>
         /// StateDisclosure NewYorkPrimaryLenders
         /// </summary>
+        [AllowNull]
         public IList<NewYorkPrimaryLender> NewYorkPrimaryLenders { get => GetField(ref _newYorkPrimaryLenders); set => SetField(ref _newYorkPrimaryLenders, value); }
 
         /// <summary>
@@ -1014,12 +1017,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Other Fee 1 Descr [DISCLOSURE.X159]
         /// </summary>
-        public string PaidByOtherDescription1 { get => _paidByOtherDescription1; set => SetField(ref _paidByOtherDescription1, value); }
+        public string? PaidByOtherDescription1 { get => _paidByOtherDescription1; set => SetField(ref _paidByOtherDescription1, value); }
 
         /// <summary>
         /// Disclosure-NY Other Fee 2 Descr [DISCLOSURE.X161]
         /// </summary>
-        public string PaidByOtherDescription2 { get => _paidByOtherDescription2; set => SetField(ref _paidByOtherDescription2, value); }
+        public string? PaidByOtherDescription2 { get => _paidByOtherDescription2; set => SetField(ref _paidByOtherDescription2, value); }
 
         /// <summary>
         /// Disclosure-NY Previous Mortgage Amount 1 [DISCLOSURE.X994]
@@ -1058,19 +1061,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Ques/Comments To [DISCLOSURE.X128]
         /// </summary>
-        public string QuestionContact { get => _questionContact; set => SetField(ref _questionContact, value); }
+        public string? QuestionContact { get => _questionContact; set => SetField(ref _questionContact, value); }
 
         /// <summary>
         /// Disclosure-NY Ques/Comments Phone [DISCLOSURE.X129]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string QuestionContactPhone { get => _questionContactPhone; set => SetField(ref _questionContactPhone, value); }
+        public string? QuestionContactPhone { get => _questionContactPhone; set => SetField(ref _questionContactPhone, value); }
 
         /// <summary>
         /// Disclosure-NY Ques/Comments Toll Free [DISCLOSURE.X130]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string QuestionContactTollFree { get => _questionContactTollFree; set => SetField(ref _questionContactTollFree, value); }
+        public string? QuestionContactTollFree { get => _questionContactTollFree; set => SetField(ref _questionContactTollFree, value); }
 
         /// <summary>
         /// Disclosure-NY-Rate Lock honored only if loan closes at least 3 business days prior to the Lock Expiration Date [DISCLOSURE.X950]
@@ -1080,7 +1083,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Fee Recipient [DISCLOSURE.X149]
         /// </summary>
-        public string ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
+        public string? ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
 
         /// <summary>
         /// Disclosure-FL Refi Fee [FLMTGCM.X16]
@@ -1092,7 +1095,7 @@ namespace EncompassRest.Loans
         /// Disclosure-FL Deposit Refundable By [FLGFE.X56]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string RefundableBy { get => _refundableBy; set => SetField(ref _refundableBy, value); }
+        public string? RefundableBy { get => _refundableBy; set => SetField(ref _refundableBy, value); }
 
         /// <summary>
         /// Disclosure-FL Commitment Fee Refundable If [FLMTGCM.X8]
@@ -1108,52 +1111,52 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 1 [DISCLOSURE.X125]
         /// </summary>
-        public string RefundCondition1 { get => _refundCondition1; set => SetField(ref _refundCondition1, value); }
+        public string? RefundCondition1 { get => _refundCondition1; set => SetField(ref _refundCondition1, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 2 [DISCLOSURE.X126]
         /// </summary>
-        public string RefundCondition2 { get => _refundCondition2; set => SetField(ref _refundCondition2, value); }
+        public string? RefundCondition2 { get => _refundCondition2; set => SetField(ref _refundCondition2, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 3 [DISCLOSURE.X164]
         /// </summary>
-        public string RefundCondition3 { get => _refundCondition3; set => SetField(ref _refundCondition3, value); }
+        public string? RefundCondition3 { get => _refundCondition3; set => SetField(ref _refundCondition3, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 4 [DISCLOSURE.X165]
         /// </summary>
-        public string RefundCondition4 { get => _refundCondition4; set => SetField(ref _refundCondition4, value); }
+        public string? RefundCondition4 { get => _refundCondition4; set => SetField(ref _refundCondition4, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 5 [DISCLOSURE.X166]
         /// </summary>
-        public string RefundCondition5 { get => _refundCondition5; set => SetField(ref _refundCondition5, value); }
+        public string? RefundCondition5 { get => _refundCondition5; set => SetField(ref _refundCondition5, value); }
 
         /// <summary>
         /// Disclosure-NY Appl Fee Refund If 6 [DISCLOSURE.X167]
         /// </summary>
-        public string RefundCondition6 { get => _refundCondition6; set => SetField(ref _refundCondition6, value); }
+        public string? RefundCondition6 { get => _refundCondition6; set => SetField(ref _refundCondition6, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Address [DISCLOSURE.X1064]
         /// </summary>
-        public string RegulatorAddress { get => _regulatorAddress; set => SetField(ref _regulatorAddress, value); }
+        public string? RegulatorAddress { get => _regulatorAddress; set => SetField(ref _regulatorAddress, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator City [DISCLOSURE.X1065]
         /// </summary>
-        public string RegulatorCity { get => _regulatorCity; set => SetField(ref _regulatorCity, value); }
+        public string? RegulatorCity { get => _regulatorCity; set => SetField(ref _regulatorCity, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Mailing Address [DISCLOSURE.X1070]
         /// </summary>
-        public string RegulatorMailingAddress { get => _regulatorMailingAddress; set => SetField(ref _regulatorMailingAddress, value); }
+        public string? RegulatorMailingAddress { get => _regulatorMailingAddress; set => SetField(ref _regulatorMailingAddress, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Mailing City [DISCLOSURE.X1071]
         /// </summary>
-        public string RegulatorMailingCity { get => _regulatorMailingCity; set => SetField(ref _regulatorMailingCity, value); }
+        public string? RegulatorMailingCity { get => _regulatorMailingCity; set => SetField(ref _regulatorMailingCity, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Mailing State [DISCLOSURE.X1072]
@@ -1164,13 +1167,13 @@ namespace EncompassRest.Loans
         /// South Carolina State Specific Disclosure -  Regulator Mailing Zip Code [DISCLOSURE.X1073]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string RegulatorMailingZipCode { get => _regulatorMailingZipCode; set => SetField(ref _regulatorMailingZipCode, value); }
+        public string? RegulatorMailingZipCode { get => _regulatorMailingZipCode; set => SetField(ref _regulatorMailingZipCode, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Phone [DISCLOSURE.X1068]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string RegulatorPhone { get => _regulatorPhone; set => SetField(ref _regulatorPhone, value); }
+        public string? RegulatorPhone { get => _regulatorPhone; set => SetField(ref _regulatorPhone, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator State [DISCLOSURE.X1066]
@@ -1181,18 +1184,18 @@ namespace EncompassRest.Loans
         /// South Carolina State Specific Disclosure -  Regulator Toll-free Phone [DISCLOSURE.X1069]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string RegulatorTollFreePhone { get => _regulatorTollFreePhone; set => SetField(ref _regulatorTollFreePhone, value); }
+        public string? RegulatorTollFreePhone { get => _regulatorTollFreePhone; set => SetField(ref _regulatorTollFreePhone, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure - Regulatory Agency - Web Address [DISCLOSURE.X1156]
         /// </summary>
-        public string RegulatorWebAddress { get => _regulatorWebAddress; set => SetField(ref _regulatorWebAddress, value); }
+        public string? RegulatorWebAddress { get => _regulatorWebAddress; set => SetField(ref _regulatorWebAddress, value); }
 
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Zip Code [DISCLOSURE.X1067]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string RegulatorZipCode { get => _regulatorZipCode; set => SetField(ref _regulatorZipCode, value); }
+        public string? RegulatorZipCode { get => _regulatorZipCode; set => SetField(ref _regulatorZipCode, value); }
 
         /// <summary>
         /// Disclosure-MD The schedule of charges is Estimated, subject to change or Final, not subject to change [DISCLOSURE.X912]
@@ -1265,7 +1268,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure - AK - Other [DISCLOSURE.X970]
         /// </summary>
-        public string TaxExemptAcquisitionCostCertificationOther { get => _taxExemptAcquisitionCostCertificationOther; set => SetField(ref _taxExemptAcquisitionCostCertificationOther, value); }
+        public string? TaxExemptAcquisitionCostCertificationOther { get => _taxExemptAcquisitionCostCertificationOther; set => SetField(ref _taxExemptAcquisitionCostCertificationOther, value); }
 
         /// <summary>
         /// Disclosure - AK - Other Amount [DISCLOSURE.X971]
@@ -1341,12 +1344,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Other Fee 1 Descr [DISCLOSURE.X90]
         /// </summary>
-        public string TexasOtherFeeContact1 { get => _texasOtherFeeContact1; set => SetField(ref _texasOtherFeeContact1, value); }
+        public string? TexasOtherFeeContact1 { get => _texasOtherFeeContact1; set => SetField(ref _texasOtherFeeContact1, value); }
 
         /// <summary>
         /// Disclosure-TX Other Fee 2 Descr [DISCLOSURE.X92]
         /// </summary>
-        public string TexasOtherFeeContact2 { get => _texasOtherFeeContact2; set => SetField(ref _texasOtherFeeContact2, value); }
+        public string? TexasOtherFeeContact2 { get => _texasOtherFeeContact2; set => SetField(ref _texasOtherFeeContact2, value); }
 
         /// <summary>
         /// Disclosure-TX Processing Fee [DISCLOSURE.X83]
@@ -1396,7 +1399,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Underwriting Fee Descr [DISCLOSURE.X88]
         /// </summary>
-        public string UnderwritingContact { get => _underwritingContact; set => SetField(ref _underwritingContact, value); }
+        public string? UnderwritingContact { get => _underwritingContact; set => SetField(ref _underwritingContact, value); }
 
         /// <summary>
         /// Disclosure-TX Underwriting Fee [DISCLOSURE.X89]

@@ -9,13 +9,13 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed class FileAttachmentReference : EntityReference
     {
-        private DirtyValue<string> _refId;
-        private DirtyValue<bool?> _isActive;
+        private DirtyValue<string?>? _refId;
+        private DirtyValue<bool?>? _isActive;
 
         /// <summary>
         /// FileAttachmentReference RefId
         /// </summary>
-        public string RefId { get => _refId; set => SetField(ref _refId, value); }
+        public string? RefId { get => _refId; set => SetField(ref _refId, value); }
 
         /// <summary>
         /// FileAttachmentReference IsActive

@@ -10,20 +10,20 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(MilitaryServiceIndex))]
     public sealed partial class MilitaryService : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _branch;
-        private DirtyValue<DateTime?> _endDate;
-        private DirtyValue<string> _id;
-        private DirtyValue<int?> _militaryServiceIndex;
-        private DirtyValue<string> _name;
-        private DirtyValue<StringEnumValue<OfficerOrEnlisted>> _officerOrEnlisted;
-        private DirtyValue<string> _serviceNumber;
-        private DirtyValue<string> _sSN;
-        private DirtyValue<DateTime?> _startDate;
+        private DirtyValue<string?>? _branch;
+        private DirtyValue<DateTime?>? _endDate;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<int?>? _militaryServiceIndex;
+        private DirtyValue<string?>? _name;
+        private DirtyValue<StringEnumValue<OfficerOrEnlisted>>? _officerOrEnlisted;
+        private DirtyValue<string?>? _serviceNumber;
+        private DirtyValue<string?>? _sSN;
+        private DirtyValue<DateTime?>? _startDate;
 
         /// <summary>
         /// MilitaryService Branch
         /// </summary>
-        public string Branch { get => _branch; set => SetField(ref _branch, value); }
+        public string? Branch { get => _branch; set => SetField(ref _branch, value); }
 
         /// <summary>
         /// MilitaryService EndDate
@@ -33,7 +33,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilitaryService Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// MilitaryService MilitaryServiceIndex
@@ -44,7 +44,7 @@ namespace EncompassRest.Loans
         /// MilitaryService Name
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
         /// MilitaryService OfficerOrEnlisted
@@ -54,13 +54,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilitaryService ServiceNumber
         /// </summary>
-        public string ServiceNumber { get => _serviceNumber; set => SetField(ref _serviceNumber, value); }
+        public string? ServiceNumber { get => _serviceNumber; set => SetField(ref _serviceNumber, value); }
 
         /// <summary>
         /// MilitaryService SSN
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.SSN, ReadOnly = true)]
-        public string SSN { get => _sSN; set => SetField(ref _sSN, value); }
+        public string? SSN { get => _sSN; set => SetField(ref _sSN, value); }
 
         /// <summary>
         /// MilitaryService StartDate

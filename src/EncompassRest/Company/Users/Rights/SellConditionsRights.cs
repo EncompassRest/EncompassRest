@@ -7,8 +7,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class SellConditionsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _addEditDeleteConditions;
-        private DirtyValue<bool?> _importInvestorConditions;
+        private DirtyValue<bool?>? _addEditDeleteConditions;
+        private DirtyValue<bool?>? _importInvestorConditions;
 
         /// <summary>
         /// SellConditionsRights AddEditDeleteConditions

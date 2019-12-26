@@ -7,26 +7,26 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ComplianceTestLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _details;
-        private DirtyValue<string> _name;
-        private DirtyValue<string> _result;
-        private DirtyValue<bool?> _showAlert;
-        private DirtyValue<DateTime?> _updatedDateUtc;
+        private DirtyValue<string?>? _details;
+        private DirtyValue<string?>? _name;
+        private DirtyValue<string?>? _result;
+        private DirtyValue<bool?>? _showAlert;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
 
         /// <summary>
         /// ComplianceTestLog Details
         /// </summary>
-        public string Details { get => _details; set => SetField(ref _details, value); }
+        public string? Details { get => _details; set => SetField(ref _details, value); }
 
         /// <summary>
         /// ComplianceTestLog Name
         /// </summary>
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
         /// ComplianceTestLog Result
         /// </summary>
-        public string Result { get => _result; set => SetField(ref _result, value); }
+        public string? Result { get => _result; set => SetField(ref _result, value); }
 
         /// <summary>
         /// ComplianceTestLog ShowAlert

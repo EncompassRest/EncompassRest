@@ -15,7 +15,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Path to the loan template that will be applied to the loan.
         /// </summary>
-        public string LoanTemplate { get; set; }
+        public string? LoanTemplate { get; set; }
 
         internal LoanOptions()
         {

@@ -5,23 +5,23 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class BusinessRulesRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _appraisalOrderManagement;
-        private DirtyValue<bool?> _automatedConditions;
-        private DirtyValue<bool?> _automatedPurchaseConditions;
-        private DirtyValue<bool?> _collateralTracking;
-        private DirtyValue<bool?> _fieldDataEntry;
-        private DirtyValue<bool?> _fieldTriggers;
-        private DirtyValue<bool?> _inputFormList;
-        private DirtyValue<bool?> _loanActionCompletion;
-        private DirtyValue<bool?> _loanFolderBusinessRule;
-        private DirtyValue<bool?> _loanFormPrinting;
-        private DirtyValue<bool?> _lOCompensationRule;
-        private DirtyValue<bool?> _milestoneCompletion;
-        private DirtyValue<bool?> _personaAccesstoFields;
-        private DirtyValue<bool?> _personaAccesstoLoanActions;
-        private DirtyValue<bool?> _personaAccesstoLoans;
-        private DirtyValue<bool?> _printAutoSelection;
-        private DirtyValue<bool?> _roleAccesstoDocuments;
+        private DirtyValue<bool?>? _appraisalOrderManagement;
+        private DirtyValue<bool?>? _automatedConditions;
+        private DirtyValue<bool?>? _automatedPurchaseConditions;
+        private DirtyValue<bool?>? _collateralTracking;
+        private DirtyValue<bool?>? _fieldDataEntry;
+        private DirtyValue<bool?>? _fieldTriggers;
+        private DirtyValue<bool?>? _inputFormList;
+        private DirtyValue<bool?>? _loanActionCompletion;
+        private DirtyValue<bool?>? _loanFolderBusinessRule;
+        private DirtyValue<bool?>? _loanFormPrinting;
+        private DirtyValue<bool?>? _lOCompensationRule;
+        private DirtyValue<bool?>? _milestoneCompletion;
+        private DirtyValue<bool?>? _personaAccesstoFields;
+        private DirtyValue<bool?>? _personaAccesstoLoanActions;
+        private DirtyValue<bool?>? _personaAccesstoLoans;
+        private DirtyValue<bool?>? _printAutoSelection;
+        private DirtyValue<bool?>? _roleAccesstoDocuments;
 
         /// <summary>
         /// BusinessRulesRights AppraisalOrderManagement

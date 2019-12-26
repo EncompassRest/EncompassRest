@@ -17,25 +17,25 @@ namespace EncompassRest.LoanBatch
         /// Batch update filter.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public Filter Filter { get; }
+        public Filter? Filter { get; }
 
         /// <summary>
         /// Guids of loans to batch update.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public IEnumerable<string> LoanGuids { get; }
+        public IEnumerable<string>? LoanGuids { get; }
 
         /// <summary>
         /// Field values to update.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public IEnumerable<FieldValuePair> LoanFields { get; }
+        public IEnumerable<FieldValuePair>? LoanFields { get; }
 
         /// <summary>
         /// Loan data to update.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public Loan LoanData { get; }
+        public Loan? LoanData { get; }
 
         /// <summary>
         /// BatchUpdateParameters constructor.

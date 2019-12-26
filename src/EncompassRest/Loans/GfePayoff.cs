@@ -8,10 +8,10 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(GfePayoffIndex))]
     public sealed partial class GfePayoff : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amount;
-        private DirtyValue<string> _description;
-        private DirtyValue<int?> _gfePayoffIndex;
-        private DirtyValue<string> _id;
+        private DirtyValue<decimal?>? _amount;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<int?>? _gfePayoffIndex;
+        private DirtyValue<string?>? _id;
 
         /// <summary>
         /// GfePayoff Amount
@@ -22,7 +22,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfePayoff Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// GfePayoff GfePayoffIndex
@@ -32,6 +32,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfePayoff Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
     }
 }

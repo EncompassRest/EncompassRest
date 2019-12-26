@@ -8,34 +8,34 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class CommitmentTerms : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<DateTime?> _actionDate;
-        private DirtyValue<string> _additionalConditions;
-        private DirtyValue<string> _additionalItems1;
-        private DirtyValue<string> _additionalItems2;
-        private DirtyValue<string> _additionalItems3;
-        private DirtyValue<bool?> _appraisalDone;
-        private DirtyValue<decimal?> _assuranceOfCompletion;
-        private DirtyValue<DateTime?> _commitmentDate;
-        private DirtyValue<DateTime?> _commitmentExpired;
-        private DirtyValue<DateTime?> _commitmentIssued;
-        private DirtyValue<bool?> _conditionalCommitmentUnderActg;
-        private DirtyValue<bool?> _eligibleForHighLtv;
-        private DirtyValue<int?> _estimatedRemainingYears;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _improvedLivingAreas;
-        private DirtyValue<bool?> _manufacturedHousing;
-        private DirtyValue<decimal?> _maxInsurableMortgage;
-        private DirtyValue<string> _mortgageeAddress;
-        private DirtyValue<string> _mortgageeCity;
-        private DirtyValue<string> _mortgageeName;
-        private DirtyValue<string> _mortgageePostalCode;
-        private DirtyValue<StringEnumValue<State>> _mortgageeState;
-        private DirtyValue<string> _otherMonthlyExpenseDescription;
-        private DirtyValue<DateTime?> _reportDate;
-        private DirtyValue<string> _requirementsNumber;
-        private DirtyValue<string> _subdivisionDescription;
-        private DirtyValue<string> _subdivisionRequirements;
-        private DirtyValue<decimal?> _totalMonthlyExpense;
+        private DirtyValue<DateTime?>? _actionDate;
+        private DirtyValue<string?>? _additionalConditions;
+        private DirtyValue<string?>? _additionalItems1;
+        private DirtyValue<string?>? _additionalItems2;
+        private DirtyValue<string?>? _additionalItems3;
+        private DirtyValue<bool?>? _appraisalDone;
+        private DirtyValue<decimal?>? _assuranceOfCompletion;
+        private DirtyValue<DateTime?>? _commitmentDate;
+        private DirtyValue<DateTime?>? _commitmentExpired;
+        private DirtyValue<DateTime?>? _commitmentIssued;
+        private DirtyValue<bool?>? _conditionalCommitmentUnderActg;
+        private DirtyValue<bool?>? _eligibleForHighLtv;
+        private DirtyValue<int?>? _estimatedRemainingYears;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _improvedLivingAreas;
+        private DirtyValue<bool?>? _manufacturedHousing;
+        private DirtyValue<decimal?>? _maxInsurableMortgage;
+        private DirtyValue<string?>? _mortgageeAddress;
+        private DirtyValue<string?>? _mortgageeCity;
+        private DirtyValue<string?>? _mortgageeName;
+        private DirtyValue<string?>? _mortgageePostalCode;
+        private DirtyValue<StringEnumValue<State>>? _mortgageeState;
+        private DirtyValue<string?>? _otherMonthlyExpenseDescription;
+        private DirtyValue<DateTime?>? _reportDate;
+        private DirtyValue<string?>? _requirementsNumber;
+        private DirtyValue<string?>? _subdivisionDescription;
+        private DirtyValue<string?>? _subdivisionRequirements;
+        private DirtyValue<decimal?>? _totalMonthlyExpense;
 
         /// <summary>
         /// HUD Action Date [1038]
@@ -45,22 +45,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD See Conditions on Reverse [1190]
         /// </summary>
-        public string AdditionalConditions { get => _additionalConditions; set => SetField(ref _additionalConditions, value); }
+        public string? AdditionalConditions { get => _additionalConditions; set => SetField(ref _additionalConditions, value); }
 
         /// <summary>
         /// HUD Conditions See Attached 1 [966]
         /// </summary>
-        public string AdditionalItems1 { get => _additionalItems1; set => SetField(ref _additionalItems1, value); }
+        public string? AdditionalItems1 { get => _additionalItems1; set => SetField(ref _additionalItems1, value); }
 
         /// <summary>
         /// HUD Conditions See Attached 2 [1081]
         /// </summary>
-        public string AdditionalItems2 { get => _additionalItems2; set => SetField(ref _additionalItems2, value); }
+        public string? AdditionalItems2 { get => _additionalItems2; set => SetField(ref _additionalItems2, value); }
 
         /// <summary>
         /// HUD Conditions See Attached 3 [1189]
         /// </summary>
-        public string AdditionalItems3 { get => _additionalItems3; set => SetField(ref _additionalItems3, value); }
+        public string? AdditionalItems3 { get => _additionalItems3; set => SetField(ref _additionalItems3, value); }
 
         /// <summary>
         /// HUD Commit Terms See Below [1365]
@@ -109,12 +109,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CommitmentTerms Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// HUD Improved Living Area [1082]
         /// </summary>
-        public string ImprovedLivingAreas { get => _improvedLivingAreas; set => SetField(ref _improvedLivingAreas, value); }
+        public string? ImprovedLivingAreas { get => _improvedLivingAreas; set => SetField(ref _improvedLivingAreas, value); }
 
         /// <summary>
         /// Subject Property Manufactured Housing [603]
@@ -131,23 +131,23 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Commitment Mortgagee Addr [3343]
         /// </summary>
-        public string MortgageeAddress { get => _mortgageeAddress; set => SetField(ref _mortgageeAddress, value); }
+        public string? MortgageeAddress { get => _mortgageeAddress; set => SetField(ref _mortgageeAddress, value); }
 
         /// <summary>
         /// Commitment Mortgagee City [3344]
         /// </summary>
-        public string MortgageeCity { get => _mortgageeCity; set => SetField(ref _mortgageeCity, value); }
+        public string? MortgageeCity { get => _mortgageeCity; set => SetField(ref _mortgageeCity, value); }
 
         /// <summary>
         /// Commitment Mortgagee Name [3342]
         /// </summary>
-        public string MortgageeName { get => _mortgageeName; set => SetField(ref _mortgageeName, value); }
+        public string? MortgageeName { get => _mortgageeName; set => SetField(ref _mortgageeName, value); }
 
         /// <summary>
         /// Commitment Mortgagee Zip [3346]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string MortgageePostalCode { get => _mortgageePostalCode; set => SetField(ref _mortgageePostalCode, value); }
+        public string? MortgageePostalCode { get => _mortgageePostalCode; set => SetField(ref _mortgageePostalCode, value); }
 
         /// <summary>
         /// Commitment Mortgagee State [3345]
@@ -157,7 +157,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Expenses Oth Mo Expense Descr [1071]
         /// </summary>
-        public string OtherMonthlyExpenseDescription { get => _otherMonthlyExpenseDescription; set => SetField(ref _otherMonthlyExpenseDescription, value); }
+        public string? OtherMonthlyExpenseDescription { get => _otherMonthlyExpenseDescription; set => SetField(ref _otherMonthlyExpenseDescription, value); }
 
         /// <summary>
         /// HUD Report Date [1078]
@@ -167,17 +167,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Comply w/ Requirements # [1077]
         /// </summary>
-        public string RequirementsNumber { get => _requirementsNumber; set => SetField(ref _requirementsNumber, value); }
+        public string? RequirementsNumber { get => _requirementsNumber; set => SetField(ref _requirementsNumber, value); }
 
         /// <summary>
         /// HUD Subdivision Descr [1079]
         /// </summary>
-        public string SubdivisionDescription { get => _subdivisionDescription; set => SetField(ref _subdivisionDescription, value); }
+        public string? SubdivisionDescription { get => _subdivisionDescription; set => SetField(ref _subdivisionDescription, value); }
 
         /// <summary>
         /// HUD Subdivision Requirements [1076]
         /// </summary>
-        public string SubdivisionRequirements { get => _subdivisionRequirements; set => SetField(ref _subdivisionRequirements, value); }
+        public string? SubdivisionRequirements { get => _subdivisionRequirements; set => SetField(ref _subdivisionRequirements, value); }
 
         /// <summary>
         /// HUD Expenses Total Mo Expenses Est [1075]

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,33 +9,35 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class MilestoneFreeRoleLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyList<LogAlert> _alerts;
-        private DirtyList<LogComment> _commentList;
-        private DirtyValue<string> _comments;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
-        private DirtyValue<string> _guid;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private DirtyValue<LoanAssociate> _loanAssociate;
-        private DirtyValue<int?> _logRecordIndex;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<DateTime?> _updatedDateUtc;
+        private DirtyList<LogAlert>? _alerts;
+        private DirtyList<LogComment>? _commentList;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<bool?>? _fileAttachmentsMigrated;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<LoanAssociate>? _loanAssociate;
+        private DirtyValue<int?>? _logRecordIndex;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
 
         /// <summary>
         /// MilestoneFreeRoleLog Alerts
         /// </summary>
+        [AllowNull]
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
 
         /// <summary>
         /// MilestoneFreeRoleLog CommentList
         /// </summary>
+        [AllowNull]
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
 
         /// <summary>
         /// MilestoneFreeRoleLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// MilestoneFreeRoleLog DateUtc
@@ -49,12 +52,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneFreeRoleLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// MilestoneFreeRoleLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// MilestoneFreeRoleLog IsSystemSpecificIndicator
@@ -74,7 +77,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneFreeRoleLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// MilestoneFreeRoleLog UpdatedDateUtc

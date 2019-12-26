@@ -25,7 +25,7 @@ namespace EncompassRest.Loans.Milestones
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetMilestoneRawAsync(string logId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetMilestoneRawAsync(string logId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves all milestones for the loan.
         /// </summary>
@@ -38,7 +38,7 @@ namespace EncompassRest.Loans.Milestones
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetMilestonesRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetMilestonesRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates the specified <paramref name="milestone"/> for the loan.
         /// </summary>
@@ -61,7 +61,7 @@ namespace EncompassRest.Loans.Milestones
         /// <param name="action">Specify the action to perform on the milestone such as finish or unfinish.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task UpdateMilestoneAsync(LoanMilestone milestone, string action, CancellationToken cancellationToken = default);
+        Task UpdateMilestoneAsync(LoanMilestone milestone, string? action, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates the milestone with the specified <paramref name="logId"/> for the loan from raw json.
         /// </summary>
@@ -70,7 +70,7 @@ namespace EncompassRest.Loans.Milestones
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task UpdateMilestoneRawAsync(string logId, string milestone, string queryString = null, CancellationToken cancellationToken = default);
+        Task UpdateMilestoneRawAsync(string logId, string milestone, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ namespace EncompassRest.Loans.Milestones
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetMilestonesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetMilestonesRawAsync), null, cancellationToken);
+        public Task<string> GetMilestonesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetMilestonesRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Retrieves the milestone with the specified <paramref name="logId"/> for the loan.
@@ -118,7 +118,7 @@ namespace EncompassRest.Loans.Milestones
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetMilestoneRawAsync(string logId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetMilestoneRawAsync(string logId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
 
@@ -149,7 +149,7 @@ namespace EncompassRest.Loans.Milestones
         /// <param name="action">Specify the action to perform on the milestone such as finish or unfinish.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task UpdateMilestoneAsync(LoanMilestone milestone, string action, CancellationToken cancellationToken = default)
+        public Task UpdateMilestoneAsync(LoanMilestone milestone, string? action, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(milestone, nameof(milestone));
             Preconditions.NotNullOrEmpty(milestone.Id, $"{nameof(milestone)}.{nameof(milestone.Id)}");
@@ -170,7 +170,7 @@ namespace EncompassRest.Loans.Milestones
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task UpdateMilestoneRawAsync(string logId, string milestone, string queryString = null, CancellationToken cancellationToken = default)
+        public Task UpdateMilestoneRawAsync(string logId, string milestone, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
             Preconditions.NotNullOrEmpty(milestone, nameof(milestone));

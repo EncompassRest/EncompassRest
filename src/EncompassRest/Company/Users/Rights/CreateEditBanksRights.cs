@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class CreateEditBanksRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _deleteBanks;
+        private DirtyValue<bool?>? _deleteBanks;
 
         /// <summary>
         /// CreateEditBanksRights DeleteBanks

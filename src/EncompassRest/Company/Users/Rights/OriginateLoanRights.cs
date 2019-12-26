@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class OriginateLoanRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _newBlankLoan;
-        private DirtyValue<bool?> _newFromTemplate;
+        private DirtyValue<bool?>? _newBlankLoan;
+        private DirtyValue<bool?>? _newFromTemplate;
 
         /// <summary>
         /// OriginateLoanRights NewBlankLoan

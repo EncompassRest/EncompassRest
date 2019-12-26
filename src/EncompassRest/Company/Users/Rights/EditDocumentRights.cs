@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,21 +8,21 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class EditDocumentRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _addComment;
-        private AddNotesToFileRights _addNotesToFile;
-        private DirtyValue<bool?> _attachEncompassForms;
-        private DirtyValue<bool?> _attachUnassignedFiles;
-        private DirtyValue<bool?> _browseAndAttach;
-        private DirtyValue<bool?> _deleteComment;
-        private EditDocumentDetailsRights _editDocumentDetails;
-        private EditFileRights _editFile;
-        private DirtyValue<bool?> _markFileAsCurrentVersion;
-        private DirtyValue<bool?> _markStatusAsReviewed;
-        private DirtyValue<bool?> _mergeFiles;
-        private DirtyValue<bool?> _moveFileUpDown;
-        private DirtyValue<bool?> _removeFilefromDocument;
-        private DirtyValue<bool?> _scanAndAttach;
-        private DirtyValue<bool?> _splitFile;
+        private DirtyValue<bool?>? _addComment;
+        private AddNotesToFileRights? _addNotesToFile;
+        private DirtyValue<bool?>? _attachEncompassForms;
+        private DirtyValue<bool?>? _attachUnassignedFiles;
+        private DirtyValue<bool?>? _browseAndAttach;
+        private DirtyValue<bool?>? _deleteComment;
+        private EditDocumentDetailsRights? _editDocumentDetails;
+        private EditFileRights? _editFile;
+        private DirtyValue<bool?>? _markFileAsCurrentVersion;
+        private DirtyValue<bool?>? _markStatusAsReviewed;
+        private DirtyValue<bool?>? _mergeFiles;
+        private DirtyValue<bool?>? _moveFileUpDown;
+        private DirtyValue<bool?>? _removeFilefromDocument;
+        private DirtyValue<bool?>? _scanAndAttach;
+        private DirtyValue<bool?>? _splitFile;
 
         /// <summary>
         /// EditDocumentRights AddComment
@@ -31,6 +32,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// EditDocumentRights AddNotesToFile
         /// </summary>
+        [AllowNull]
         public AddNotesToFileRights AddNotesToFile { get => GetField(ref _addNotesToFile); set => SetField(ref _addNotesToFile, value); }
 
         /// <summary>
@@ -56,11 +58,13 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// EditDocumentRights EditDocumentDetails
         /// </summary>
+        [AllowNull]
         public EditDocumentDetailsRights EditDocumentDetails { get => GetField(ref _editDocumentDetails); set => SetField(ref _editDocumentDetails, value); }
 
         /// <summary>
         /// EditDocumentRights EditFile
         /// </summary>
+        [AllowNull]
         public EditFileRights EditFile { get => GetField(ref _editFile); set => SetField(ref _editFile, value); }
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace EncompassRest.Utilities
             _parameters = new List<QueryParameter>(parameters);
         }
 
-        public void Add(string name, string value) => Add(new QueryParameter(name, value));
+        public void Add(string name, string? value) => Add(new QueryParameter(name, value));
 
         public void Add(QueryParameter parameter) => _parameters.Add(parameter);
 

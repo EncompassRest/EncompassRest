@@ -5,15 +5,15 @@
     /// </summary>
     public abstract class ContactsClassRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _accessToLoanstab;
-        private DirtyValue<bool?> _createNewContacts;
-        private DirtyValue<bool?> _deleteContacts;
-        private DirtyValue<bool?> _duplicateContacts;
-        private DirtyValue<bool?> _exportContacts;
-        private DirtyValue<bool?> _importContacts;
-        private DirtyValue<bool?> _mailMerge;
-        private DirtyValue<bool?> _managePersonalCustomLetter;
-        private DirtyValue<bool?> _print;
+        private DirtyValue<bool?>? _accessToLoanstab;
+        private DirtyValue<bool?>? _createNewContacts;
+        private DirtyValue<bool?>? _deleteContacts;
+        private DirtyValue<bool?>? _duplicateContacts;
+        private DirtyValue<bool?>? _exportContacts;
+        private DirtyValue<bool?>? _importContacts;
+        private DirtyValue<bool?>? _mailMerge;
+        private DirtyValue<bool?>? _managePersonalCustomLetter;
+        private DirtyValue<bool?>? _print;
 
         /// <summary>
         /// ContactsClassRights AccessToLoanstab

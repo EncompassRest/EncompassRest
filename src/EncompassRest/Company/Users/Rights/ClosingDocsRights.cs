@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,9 +7,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ClosingDocsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _manageAltLenders;
-        private OrderClosingDocsRights _orderClosingDocs;
-        private ViewClosingDocumentDataRights _viewClosingDocumentData;
+        private DirtyValue<bool?>? _manageAltLenders;
+        private OrderClosingDocsRights? _orderClosingDocs;
+        private ViewClosingDocumentDataRights? _viewClosingDocumentData;
 
         /// <summary>
         /// ClosingDocsRights ManageAltLenders
@@ -17,11 +19,13 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ClosingDocsRights OrderClosingDocs
         /// </summary>
+        [AllowNull]
         public OrderClosingDocsRights OrderClosingDocs { get => GetField(ref _orderClosingDocs); set => SetField(ref _orderClosingDocs, value); }
 
         /// <summary>
         /// ClosingDocsRights ViewClosingDocumentData
         /// </summary>
+        [AllowNull]
         public ViewClosingDocumentDataRights ViewClosingDocumentData { get => GetField(ref _viewClosingDocumentData); set => SetField(ref _viewClosingDocumentData, value); }
     }
 }

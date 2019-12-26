@@ -30,7 +30,7 @@ namespace EncompassRest.Loans.FieldReader
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetLoanFieldValuesRawAsync(string fieldIds, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetLoanFieldValuesRawAsync(string fieldIds, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve values for specific fields in a loan.
         /// </summary>
@@ -92,7 +92,7 @@ namespace EncompassRest.Loans.FieldReader
         {
             Preconditions.NotNullOrEmpty(fieldIds, nameof(fieldIds));
 
-            QueryParameters queryParameters = null;
+            QueryParameters? queryParameters = null;
             if (includeMetadata.HasValue)
             {
                 queryParameters = new QueryParameters();
@@ -109,7 +109,7 @@ namespace EncompassRest.Loans.FieldReader
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetLoanFieldValuesRawAsync(string fieldIds, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetLoanFieldValuesRawAsync(string fieldIds, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldIds, nameof(fieldIds));
 

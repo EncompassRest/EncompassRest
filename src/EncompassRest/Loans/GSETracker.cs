@@ -8,28 +8,28 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class GSETracker : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _altId;
-        private DirtyValue<string> _dUFindingsMessageID;
-        private DirtyValue<string> _dUFindingsMessageText;
-        private DirtyValue<DateTime?> _gSECloseByDate;
-        private DirtyValue<DateTime?> _gSECloseByDate2;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _recordTypeID;
+        private DirtyValue<string?>? _altId;
+        private DirtyValue<string?>? _dUFindingsMessageID;
+        private DirtyValue<string?>? _dUFindingsMessageText;
+        private DirtyValue<DateTime?>? _gSECloseByDate;
+        private DirtyValue<DateTime?>? _gSECloseByDate2;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _recordTypeID;
 
         /// <summary>
         /// GSE Rep and Warrant Tracker - Identifier [TQLGSENN99]
         /// </summary>
-        public string AltId { get => _altId; set => SetField(ref _altId, value); }
+        public string? AltId { get => _altId; set => SetField(ref _altId, value); }
 
         /// <summary>
         /// GSE Rep and Warrant Tracker - Fannie Mae DU Findings Message ID [TQLGSENN01]
         /// </summary>
-        public string DUFindingsMessageID { get => _dUFindingsMessageID; set => SetField(ref _dUFindingsMessageID, value); }
+        public string? DUFindingsMessageID { get => _dUFindingsMessageID; set => SetField(ref _dUFindingsMessageID, value); }
 
         /// <summary>
         /// GSE Rep and Warrant Tracker - Fannie Mae DU Findings Message Text [TQLGSENN02]
         /// </summary>
-        public string DUFindingsMessageText { get => _dUFindingsMessageText; set => SetField(ref _dUFindingsMessageText, value); }
+        public string? DUFindingsMessageText { get => _dUFindingsMessageText; set => SetField(ref _dUFindingsMessageText, value); }
 
         /// <summary>
         /// GSE Rep and Warrant Tracker - GSE Close By Date [TQLGSENN03]
@@ -44,11 +44,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GSETracker Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// GSE Rep and Warrant Tracker - Record Type ID [TQLGSENN98]
         /// </summary>
-        public string RecordTypeID { get => _recordTypeID; set => SetField(ref _recordTypeID, value); }
+        public string? RecordTypeID { get => _recordTypeID; set => SetField(ref _recordTypeID, value); }
     }
 }

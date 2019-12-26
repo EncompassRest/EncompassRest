@@ -17,37 +17,37 @@ namespace EncompassRest.Services.Appraisal
         /// Account holder first name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string AccountHolderFirstName { get; set; }
+        public string? AccountHolderFirstName { get; set; }
 
         /// <summary>
         /// Account holder middle name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string AccountHolderMiddleName { get; set; }
+        public string? AccountHolderMiddleName { get; set; }
 
         /// <summary>
         /// Account holder last name.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string AccountHolderLastName { get; set; }
+        public string? AccountHolderLastName { get; set; }
 
         /// <summary>
         /// Email where receipt of payment is to be sent.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string EmailToSendReceipt { get; set; }
+        public string? EmailToSendReceipt { get; set; }
 
         /// <summary>
         /// Billing address for payment.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string BillingAddress { get; set; }
+        public string? BillingAddress { get; set; }
 
         /// <summary>
         /// City under billing address.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         /// <summary>
         /// State under billing address.
@@ -59,6 +59,6 @@ namespace EncompassRest.Services.Appraisal
         /// Zip code under billing address.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Zip { get; set; }
+        public string? Zip { get; set; }
     }
 }

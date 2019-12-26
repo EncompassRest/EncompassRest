@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class VerificationAndDocumentationTrackingRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _createNewEntry;
-        private DirtyValue<bool?> _editEntry;
+        private DirtyValue<bool?>? _createNewEntry;
+        private DirtyValue<bool?>? _editEntry;
 
         /// <summary>
         /// VerificationAndDocumentationTrackingRights CreateNewEntry

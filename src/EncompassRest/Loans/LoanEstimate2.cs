@@ -8,61 +8,61 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LoanEstimate2 : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _actualLenderCredits;
-        private DirtyValue<decimal?> _actualSTDLESellerCredits;
-        private DirtyValue<decimal?> _actualSTDLETotalClosingCostJ;
-        private DirtyValue<decimal?> _adjustmentsOtherCredits;
-        private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt1;
-        private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt10;
-        private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt2;
-        private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt3;
-        private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt4;
-        private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt5;
-        private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt6;
-        private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt7;
-        private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt8;
-        private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt9;
-        private DirtyValue<string> _adjustmentsOtherCreditsDesc1;
-        private DirtyValue<string> _adjustmentsOtherCreditsDesc10;
-        private DirtyValue<string> _adjustmentsOtherCreditsDesc2;
-        private DirtyValue<string> _adjustmentsOtherCreditsDesc3;
-        private DirtyValue<string> _adjustmentsOtherCreditsDesc4;
-        private DirtyValue<string> _adjustmentsOtherCreditsDesc5;
-        private DirtyValue<string> _adjustmentsOtherCreditsDesc6;
-        private DirtyValue<string> _adjustmentsOtherCreditsDesc7;
-        private DirtyValue<string> _adjustmentsOtherCreditsDesc8;
-        private DirtyValue<string> _adjustmentsOtherCreditsDesc9;
-        private DirtyValue<decimal?> _closingCostsFinanced;
-        private DirtyValue<decimal?> _downPayment;
-        private DirtyValue<decimal?> _estimatedCashToCloseAV;
-        private DirtyValue<decimal?> _estimatedCashToCloseSV;
-        private DirtyValue<int?> _estimatedTotalPayoffsAndPaymentsAmount;
-        private DirtyValue<int?> _firstChangeFrequencyMonth;
-        private DirtyValue<string> _firstChangeMonthSuffix;
-        private DirtyValue<string> _fromOrToBorrower;
-        private DirtyValue<decimal?> _fundsForBorrower;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<IndexMargin>> _indexMargin;
-        private DirtyValue<int?> _initialEscrowPaymentClosingSubTotal;
-        private DirtyValue<bool?> _itemizeServiceSectionCType;
-        private DirtyValue<int?> _lenderCredits;
-        private DirtyValue<int?> _originationChargesSubTotal;
-        private DirtyValue<int?> _otherSubTotal;
-        private DirtyValue<int?> _prepaidsSubTotal;
-        private DirtyValue<int?> _sellerCreditAmount;
-        private DirtyValue<int?> _servicesYouNotShopSubTotal;
-        private DirtyValue<int?> _servicesYouShopSubTotal;
-        private DirtyValue<string> _subseqChangeMonthSuffix;
-        private DirtyValue<int?> _taxesGovFeesSubTotal;
-        private DirtyValue<decimal?> _thirdPartyPaymentsNotOtherwiseDisclosed;
-        private DirtyValue<int?> _totalClosingCosts;
-        private DirtyValue<int?> _totalLoanAndOtherCosts;
-        private DirtyValue<int?> _totalLoanCosts;
-        private DirtyValue<int?> _totalOtherCosts;
-        private DirtyValue<decimal?> _unroundedTotalLoanCosts;
-        private DirtyValue<decimal?> _unroundedTotalOtherCosts;
-        private DirtyValue<bool?> _useActualDownPaymentAndClosingCostsFinancedIndicator;
-        private DirtyValue<bool?> _useAlternate;
+        private DirtyValue<decimal?>? _actualLenderCredits;
+        private DirtyValue<decimal?>? _actualSTDLESellerCredits;
+        private DirtyValue<decimal?>? _actualSTDLETotalClosingCostJ;
+        private DirtyValue<decimal?>? _adjustmentsOtherCredits;
+        private DirtyValue<decimal?>? _adjustmentsOtherCreditsAmt1;
+        private DirtyValue<decimal?>? _adjustmentsOtherCreditsAmt10;
+        private DirtyValue<decimal?>? _adjustmentsOtherCreditsAmt2;
+        private DirtyValue<decimal?>? _adjustmentsOtherCreditsAmt3;
+        private DirtyValue<decimal?>? _adjustmentsOtherCreditsAmt4;
+        private DirtyValue<decimal?>? _adjustmentsOtherCreditsAmt5;
+        private DirtyValue<decimal?>? _adjustmentsOtherCreditsAmt6;
+        private DirtyValue<decimal?>? _adjustmentsOtherCreditsAmt7;
+        private DirtyValue<decimal?>? _adjustmentsOtherCreditsAmt8;
+        private DirtyValue<decimal?>? _adjustmentsOtherCreditsAmt9;
+        private DirtyValue<string?>? _adjustmentsOtherCreditsDesc1;
+        private DirtyValue<string?>? _adjustmentsOtherCreditsDesc10;
+        private DirtyValue<string?>? _adjustmentsOtherCreditsDesc2;
+        private DirtyValue<string?>? _adjustmentsOtherCreditsDesc3;
+        private DirtyValue<string?>? _adjustmentsOtherCreditsDesc4;
+        private DirtyValue<string?>? _adjustmentsOtherCreditsDesc5;
+        private DirtyValue<string?>? _adjustmentsOtherCreditsDesc6;
+        private DirtyValue<string?>? _adjustmentsOtherCreditsDesc7;
+        private DirtyValue<string?>? _adjustmentsOtherCreditsDesc8;
+        private DirtyValue<string?>? _adjustmentsOtherCreditsDesc9;
+        private DirtyValue<decimal?>? _closingCostsFinanced;
+        private DirtyValue<decimal?>? _downPayment;
+        private DirtyValue<decimal?>? _estimatedCashToCloseAV;
+        private DirtyValue<decimal?>? _estimatedCashToCloseSV;
+        private DirtyValue<int?>? _estimatedTotalPayoffsAndPaymentsAmount;
+        private DirtyValue<int?>? _firstChangeFrequencyMonth;
+        private DirtyValue<string?>? _firstChangeMonthSuffix;
+        private DirtyValue<string?>? _fromOrToBorrower;
+        private DirtyValue<decimal?>? _fundsForBorrower;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<IndexMargin>>? _indexMargin;
+        private DirtyValue<int?>? _initialEscrowPaymentClosingSubTotal;
+        private DirtyValue<bool?>? _itemizeServiceSectionCType;
+        private DirtyValue<int?>? _lenderCredits;
+        private DirtyValue<int?>? _originationChargesSubTotal;
+        private DirtyValue<int?>? _otherSubTotal;
+        private DirtyValue<int?>? _prepaidsSubTotal;
+        private DirtyValue<int?>? _sellerCreditAmount;
+        private DirtyValue<int?>? _servicesYouNotShopSubTotal;
+        private DirtyValue<int?>? _servicesYouShopSubTotal;
+        private DirtyValue<string?>? _subseqChangeMonthSuffix;
+        private DirtyValue<int?>? _taxesGovFeesSubTotal;
+        private DirtyValue<decimal?>? _thirdPartyPaymentsNotOtherwiseDisclosed;
+        private DirtyValue<int?>? _totalClosingCosts;
+        private DirtyValue<int?>? _totalLoanAndOtherCosts;
+        private DirtyValue<int?>? _totalLoanCosts;
+        private DirtyValue<int?>? _totalOtherCosts;
+        private DirtyValue<decimal?>? _unroundedTotalLoanCosts;
+        private DirtyValue<decimal?>? _unroundedTotalOtherCosts;
+        private DirtyValue<bool?>? _useActualDownPaymentAndClosingCostsFinancedIndicator;
+        private DirtyValue<bool?>? _useAlternate;
 
         /// <summary>
         /// Decimal Value of Lender Credit Amount [LE2.XLCDV]
@@ -151,52 +151,52 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Description 1 [LE2.X5]
         /// </summary>
-        public string AdjustmentsOtherCreditsDesc1 { get => _adjustmentsOtherCreditsDesc1; set => SetField(ref _adjustmentsOtherCreditsDesc1, value); }
+        public string? AdjustmentsOtherCreditsDesc1 { get => _adjustmentsOtherCreditsDesc1; set => SetField(ref _adjustmentsOtherCreditsDesc1, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Description 10 [LE2.X23]
         /// </summary>
-        public string AdjustmentsOtherCreditsDesc10 { get => _adjustmentsOtherCreditsDesc10; set => SetField(ref _adjustmentsOtherCreditsDesc10, value); }
+        public string? AdjustmentsOtherCreditsDesc10 { get => _adjustmentsOtherCreditsDesc10; set => SetField(ref _adjustmentsOtherCreditsDesc10, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Description 2 [LE2.X7]
         /// </summary>
-        public string AdjustmentsOtherCreditsDesc2 { get => _adjustmentsOtherCreditsDesc2; set => SetField(ref _adjustmentsOtherCreditsDesc2, value); }
+        public string? AdjustmentsOtherCreditsDesc2 { get => _adjustmentsOtherCreditsDesc2; set => SetField(ref _adjustmentsOtherCreditsDesc2, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Description 3 [LE2.X9]
         /// </summary>
-        public string AdjustmentsOtherCreditsDesc3 { get => _adjustmentsOtherCreditsDesc3; set => SetField(ref _adjustmentsOtherCreditsDesc3, value); }
+        public string? AdjustmentsOtherCreditsDesc3 { get => _adjustmentsOtherCreditsDesc3; set => SetField(ref _adjustmentsOtherCreditsDesc3, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Description 4 [LE2.X11]
         /// </summary>
-        public string AdjustmentsOtherCreditsDesc4 { get => _adjustmentsOtherCreditsDesc4; set => SetField(ref _adjustmentsOtherCreditsDesc4, value); }
+        public string? AdjustmentsOtherCreditsDesc4 { get => _adjustmentsOtherCreditsDesc4; set => SetField(ref _adjustmentsOtherCreditsDesc4, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Description 5 [LE2.X13]
         /// </summary>
-        public string AdjustmentsOtherCreditsDesc5 { get => _adjustmentsOtherCreditsDesc5; set => SetField(ref _adjustmentsOtherCreditsDesc5, value); }
+        public string? AdjustmentsOtherCreditsDesc5 { get => _adjustmentsOtherCreditsDesc5; set => SetField(ref _adjustmentsOtherCreditsDesc5, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Description 6 [LE2.X15]
         /// </summary>
-        public string AdjustmentsOtherCreditsDesc6 { get => _adjustmentsOtherCreditsDesc6; set => SetField(ref _adjustmentsOtherCreditsDesc6, value); }
+        public string? AdjustmentsOtherCreditsDesc6 { get => _adjustmentsOtherCreditsDesc6; set => SetField(ref _adjustmentsOtherCreditsDesc6, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Description 7 [LE2.X17]
         /// </summary>
-        public string AdjustmentsOtherCreditsDesc7 { get => _adjustmentsOtherCreditsDesc7; set => SetField(ref _adjustmentsOtherCreditsDesc7, value); }
+        public string? AdjustmentsOtherCreditsDesc7 { get => _adjustmentsOtherCreditsDesc7; set => SetField(ref _adjustmentsOtherCreditsDesc7, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Description 8 [LE2.X19]
         /// </summary>
-        public string AdjustmentsOtherCreditsDesc8 { get => _adjustmentsOtherCreditsDesc8; set => SetField(ref _adjustmentsOtherCreditsDesc8, value); }
+        public string? AdjustmentsOtherCreditsDesc8 { get => _adjustmentsOtherCreditsDesc8; set => SetField(ref _adjustmentsOtherCreditsDesc8, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Description 9 [LE2.X21]
         /// </summary>
-        public string AdjustmentsOtherCreditsDesc9 { get => _adjustmentsOtherCreditsDesc9; set => SetField(ref _adjustmentsOtherCreditsDesc9, value); }
+        public string? AdjustmentsOtherCreditsDesc9 { get => _adjustmentsOtherCreditsDesc9; set => SetField(ref _adjustmentsOtherCreditsDesc9, value); }
 
         /// <summary>
         /// Loan Estimate - Closing Costs Financed [LE2.X1]
@@ -235,12 +235,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - First Change Frequency Month Suffix [LE2.X97]
         /// </summary>
-        public string firstChangeMonthSuffix { get => _firstChangeMonthSuffix; set => SetField(ref _firstChangeMonthSuffix, value); }
+        public string? firstChangeMonthSuffix { get => _firstChangeMonthSuffix; set => SetField(ref _firstChangeMonthSuffix, value); }
 
         /// <summary>
         /// Loan Estimate - From Or To Borrower [LE2.X27]
         /// </summary>
-        public string FromOrToBorrower { get => _fromOrToBorrower; set => SetField(ref _fromOrToBorrower, value); }
+        public string? FromOrToBorrower { get => _fromOrToBorrower; set => SetField(ref _fromOrToBorrower, value); }
 
         /// <summary>
         /// Loan Estimate - Funds for Borrower [LE2.X3]
@@ -251,7 +251,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanEstimate2 Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Loan Estimate - Index [LE2.X96]
@@ -312,7 +312,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - Subsequent Change Frequency Month Suffix [LE2.X98]
         /// </summary>
-        public string subseqChangeMonthSuffix { get => _subseqChangeMonthSuffix; set => SetField(ref _subseqChangeMonthSuffix, value); }
+        public string? subseqChangeMonthSuffix { get => _subseqChangeMonthSuffix; set => SetField(ref _subseqChangeMonthSuffix, value); }
 
         /// <summary>
         /// Loan Estimate - E.Taxes and Government Fees Sub Total [LE2.XSTE]

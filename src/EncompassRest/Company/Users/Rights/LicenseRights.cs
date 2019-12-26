@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class LicenseRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _editLicenseInformation;
+        private DirtyValue<bool?>? _editLicenseInformation;
 
         /// <summary>
         /// LicenseRights EditLicenseInformation

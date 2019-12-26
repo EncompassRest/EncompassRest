@@ -9,22 +9,22 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class NewYorkFee : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _address;
-        private DirtyValue<decimal?> _amount;
-        private DirtyValue<string> _city;
-        private DirtyValue<string> _comments;
-        private DirtyValue<DateTime?> _date;
-        private DirtyValue<string> _feeType;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _name;
-        private DirtyValue<int?> _newYorkFeeIndex;
-        private DirtyValue<string> _postalCode;
-        private DirtyValue<StringEnumValue<State>> _state;
+        private DirtyValue<string?>? _address;
+        private DirtyValue<decimal?>? _amount;
+        private DirtyValue<string?>? _city;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<DateTime?>? _date;
+        private DirtyValue<string?>? _feeType;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _name;
+        private DirtyValue<int?>? _newYorkFeeIndex;
+        private DirtyValue<string?>? _postalCode;
+        private DirtyValue<StringEnumValue<State>>? _state;
 
         /// <summary>
         /// NY Fees Company Address [NYFEESNN02]
         /// </summary>
-        public string Address { get => _address; set => SetField(ref _address, value); }
+        public string? Address { get => _address; set => SetField(ref _address, value); }
 
         /// <summary>
         /// NY Fees Amount [NYFEESNN08]
@@ -35,12 +35,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NY Fees Company City [NYFEESNN03]
         /// </summary>
-        public string City { get => _city; set => SetField(ref _city, value); }
+        public string? City { get => _city; set => SetField(ref _city, value); }
 
         /// <summary>
         /// NY Fees Comments [NYFEESNN06]
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// NY Fees Date [NYFEESNN07]
@@ -50,17 +50,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NY Fees Descr [NYFEESNN09]
         /// </summary>
-        public string FeeType { get => _feeType; set => SetField(ref _feeType, value); }
+        public string? FeeType { get => _feeType; set => SetField(ref _feeType, value); }
 
         /// <summary>
         /// NewYorkFee Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// NY Fees Company Name [NYFEESNN01]
         /// </summary>
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
         /// NewYorkFee NewYorkFeeIndex
@@ -71,7 +71,7 @@ namespace EncompassRest.Loans
         /// NY Fees Company Zip [NYFEESNN05]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+        public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
 
         /// <summary>
         /// NY Fees Company State [NYFEESNN04]

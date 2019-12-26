@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class CancelSettingReportsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _cancelSettingsReportsSubmittedByOthers;
+        private DirtyValue<bool?>? _cancelSettingsReportsSubmittedByOthers;
 
         /// <summary>
         /// CancelSettingReportsRights CancelSettingsReportsSubmittedByOthers

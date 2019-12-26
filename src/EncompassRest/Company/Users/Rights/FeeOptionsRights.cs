@@ -7,13 +7,13 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class FeeOptionsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _borrowerCanShopFor;
-        private DirtyValue<bool?> _borrwerDidShopFor;
-        private DirtyValue<bool?> _escrowed;
-        private DirtyValue<bool?> _impactAPR;
-        private DirtyValue<bool?> _optional13101315;
-        private DirtyValue<bool?> _propertyTaxesHomeownersInsuranceOther10071009;
-        private DirtyValue<bool?> _propertyTaxesHomeownersInsuranceOther907912;
+        private DirtyValue<bool?>? _borrowerCanShopFor;
+        private DirtyValue<bool?>? _borrwerDidShopFor;
+        private DirtyValue<bool?>? _escrowed;
+        private DirtyValue<bool?>? _impactAPR;
+        private DirtyValue<bool?>? _optional13101315;
+        private DirtyValue<bool?>? _propertyTaxesHomeownersInsuranceOther10071009;
+        private DirtyValue<bool?>? _propertyTaxesHomeownersInsuranceOther907912;
 
         /// <summary>
         /// FeeOptionsRights BorrowerCanShopFor

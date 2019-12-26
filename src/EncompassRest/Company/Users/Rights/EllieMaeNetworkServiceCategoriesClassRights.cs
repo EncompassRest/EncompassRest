@@ -7,24 +7,24 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class EllieMaeNetworkServiceCategoriesClassRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _additionalServices;
-        private DirtyValue<bool?> _appraisal;
-        private DirtyValue<bool?> _aVM;
-        private DirtyValue<bool?> _creditReport;
-        private DirtyValue<bool?> _customLinks;
-        private DirtyValue<bool?> _docPreparation;
-        private DirtyValue<bool?> _floodCertification;
-        private DirtyValue<bool?> _fraudAuditServices;
-        private DirtyValue<bool?> _hMDAManagement;
-        private DirtyValue<bool?> _investors;
-        private DirtyValue<bool?> _lenders;
-        private DirtyValue<bool?> _mERS;
-        private DirtyValue<bool?> _mortgageInsurance;
-        private DirtyValue<bool?> _productandPricing;
-        private DirtyValue<bool?> _titleClosing;
-        private DirtyValue<bool?> _underwriting;
-        private DirtyValue<bool?> _verifications;
-        private DirtyValue<bool?> _warehouseLenders;
+        private DirtyValue<bool?>? _additionalServices;
+        private DirtyValue<bool?>? _appraisal;
+        private DirtyValue<bool?>? _aVM;
+        private DirtyValue<bool?>? _creditReport;
+        private DirtyValue<bool?>? _customLinks;
+        private DirtyValue<bool?>? _docPreparation;
+        private DirtyValue<bool?>? _floodCertification;
+        private DirtyValue<bool?>? _fraudAuditServices;
+        private DirtyValue<bool?>? _hMDAManagement;
+        private DirtyValue<bool?>? _investors;
+        private DirtyValue<bool?>? _lenders;
+        private DirtyValue<bool?>? _mERS;
+        private DirtyValue<bool?>? _mortgageInsurance;
+        private DirtyValue<bool?>? _productandPricing;
+        private DirtyValue<bool?>? _titleClosing;
+        private DirtyValue<bool?>? _underwriting;
+        private DirtyValue<bool?>? _verifications;
+        private DirtyValue<bool?>? _warehouseLenders;
 
         /// <summary>
         /// EllieMaeNetworkServiceCategoriesClassRights AdditionalServices

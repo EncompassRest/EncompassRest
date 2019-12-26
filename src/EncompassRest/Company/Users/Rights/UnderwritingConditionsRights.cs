@@ -5,7 +5,7 @@
     /// </summary>
     public sealed class UnderwritingConditionsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _importConditions;
+        private DirtyValue<bool?>? _importConditions;
 
         /// <summary>
         /// UnderwritingConditionsRights ImportConditions

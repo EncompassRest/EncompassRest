@@ -7,31 +7,31 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LogComment : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _addedBy;
-        private DirtyValue<string> _addedByName;
-        private DirtyValue<string> _comments;
-        private DirtyValue<DateTime?> _date;
-        private DirtyValue<int?> _forRoleId;
-        private DirtyValue<string> _guid;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _isInternal;
-        private DirtyValue<string> _reviewedBy;
-        private DirtyValue<DateTime?> _reviewedDate;
+        private DirtyValue<string?>? _addedBy;
+        private DirtyValue<string?>? _addedByName;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<DateTime?>? _date;
+        private DirtyValue<int?>? _forRoleId;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isInternal;
+        private DirtyValue<string?>? _reviewedBy;
+        private DirtyValue<DateTime?>? _reviewedDate;
 
         /// <summary>
         /// LogComment AddedBy
         /// </summary>
-        public string AddedBy { get => _addedBy; set => SetField(ref _addedBy, value); }
+        public string? AddedBy { get => _addedBy; set => SetField(ref _addedBy, value); }
 
         /// <summary>
         /// LogComment AddedByName
         /// </summary>
-        public string AddedByName { get => _addedByName; set => SetField(ref _addedByName, value); }
+        public string? AddedByName { get => _addedByName; set => SetField(ref _addedByName, value); }
 
         /// <summary>
         /// LogComment Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// LogComment Date
@@ -46,12 +46,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogComment Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// LogComment Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// LogComment IsInternal
@@ -61,7 +61,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogComment ReviewedBy
         /// </summary>
-        public string ReviewedBy { get => _reviewedBy; set => SetField(ref _reviewedBy, value); }
+        public string? ReviewedBy { get => _reviewedBy; set => SetField(ref _reviewedBy, value); }
 
         /// <summary>
         /// LogComment ReviewedDate

@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PersonasRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _edit;
+        private DirtyValue<bool?>? _edit;
 
         /// <summary>
         /// PersonasRights Edit

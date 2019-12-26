@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ViewClosingDocumentDataRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _overrideClosingDocumentDataFields;
+        private DirtyValue<bool?>? _overrideClosingDocumentDataFields;
 
         /// <summary>
         /// ViewClosingDocumentDataRights OverrideClosingDocumentDataFields

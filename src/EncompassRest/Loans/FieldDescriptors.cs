@@ -20,7 +20,7 @@ namespace EncompassRest.Loans
             {
                 Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-                if (!_fieldMappingsCollection.TryGetValue(fieldId, out var descriptor) && !_fieldPatternMappingsCollection.TryGetDescriptorForFieldId(fieldId, out descriptor))
+                if (!_fieldMappingsCollection.TryGetValue(fieldId, out var descriptor) && !_fieldPatternMappingsCollection.TryGetDescriptorForFieldId(fieldId, out descriptor!))
                 {
                     throw new ArgumentException($"Could not find field '{fieldId}'");
                 }
@@ -52,7 +52,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            return _fieldMappingsCollection.TryGetValue(fieldId, out descriptor) || _fieldPatternMappingsCollection.TryGetDescriptorForFieldId(fieldId, out descriptor);
+            return _fieldMappingsCollection.TryGetValue(fieldId, out descriptor) || _fieldPatternMappingsCollection.TryGetDescriptorForFieldId(fieldId, out descriptor!);
         }
 
         public IEnumerator<KeyValuePair<string, FieldDescriptor>> GetEnumerator()

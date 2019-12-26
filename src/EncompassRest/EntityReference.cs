@@ -12,15 +12,15 @@ namespace EncompassRest
     [Entity(SerializeWholeListWhenDirty = true, PropertiesToAlwaysSerialize = nameof(EntityType))]
     public class EntityReference : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _entityId;
-        private DirtyValue<StringEnumValue<EntityType>> _entityType;
-        private DirtyValue<string> _entityName;
-        private DirtyValue<string> _entityUri;
+        private DirtyValue<string?>? _entityId;
+        private DirtyValue<StringEnumValue<EntityType>>? _entityType;
+        private DirtyValue<string?>? _entityName;
+        private DirtyValue<string?>? _entityUri;
 
         /// <summary>
         /// The ID of the entity.
         /// </summary>
-        public string EntityId { get => _entityId; set => SetField(ref _entityId, value); }
+        public string? EntityId { get => _entityId; set => SetField(ref _entityId, value); }
 
         /// <summary>
         /// The entity type.
@@ -30,15 +30,15 @@ namespace EncompassRest
         /// <summary>
         /// The name of the entity.
         /// </summary>
-        public string EntityName { get => _entityName; set => SetField(ref _entityName, value); }
+        public string? EntityName { get => _entityName; set => SetField(ref _entityName, value); }
 
         /// <summary>
         /// Entity reference URI.
         /// </summary>
-        public string EntityUri { get => _entityUri; set => SetField(ref _entityUri, value); }
+        public string? EntityUri { get => _entityUri; set => SetField(ref _entityUri, value); }
 
         [IdPropertyName(nameof(EntityId))]
-        string IIdentifiable.Id { get => EntityId; set => EntityId = value; }
+        string? IIdentifiable.Id { get => EntityId; set => EntityId = value; }
 
         /// <summary>
         /// EntityReference constructor.
@@ -46,7 +46,7 @@ namespace EncompassRest
         /// <param name="entityId">The entity id.</param>
         /// <param name="entityType">The entity type.</param>
         public EntityReference(string entityId, EntityType entityType)
-            : this(entityId, entityType.Validate(nameof(entityType)).GetValue())
+            : this(entityId, entityType.Validate(nameof(entityType)).GetValue()!)
         {
         }
 

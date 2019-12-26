@@ -11,12 +11,14 @@ namespace EncompassRest.Schema
         /// <summary>
         /// FieldDefinition Description
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// FieldDefinition FieldID
         /// </summary>
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         public string FieldID { get; set; }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 
         /// <summary>
         /// FieldDefinition Format
@@ -27,12 +29,12 @@ namespace EncompassRest.Schema
         /// <summary>
         /// FieldDefinition ParentField
         /// </summary>
-        public ParentFieldDefinition ParentField { get; set; }
+        public ParentFieldDefinition? ParentField { get; set; }
 
         /// <summary>
         /// FieldDefinition InstanceSpecifier
         /// </summary>
-        public string InstanceSpecifier { get; set; }
+        public string? InstanceSpecifier { get; set; }
 
         /// <summary>
         /// FieldDefinition IsInstance
@@ -72,7 +74,7 @@ namespace EncompassRest.Schema
         /// <summary>
         /// FieldDefinition FieldOptions
         /// </summary>
-        public FieldOptions FieldOptions { get; set; }
+        public FieldOptions? FieldOptions { get; set; }
 
         /// <summary>
         /// FieldDefinition AllowEdit

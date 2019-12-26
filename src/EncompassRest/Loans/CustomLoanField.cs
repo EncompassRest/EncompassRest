@@ -4,7 +4,7 @@ namespace EncompassRest.Loans
 {
     internal sealed class CustomLoanField : LoanField
     {
-        public override object Value
+        public override object? Value
         {
             get
             {
@@ -40,13 +40,13 @@ namespace EncompassRest.Loans
                 {
                     customField.DateValue = value != null ? Convert.ToDateTime(value) : (DateTime?)null;
                     customField.StringValue = value?.ToString();
-                    customField._stringValue.Dirty = false;
+                    customField._stringValue!.Dirty = false;
                 }
                 else if (customField.NumericValue.HasValue || customField._numericValue?.Dirty == true)
                 {
                     customField.NumericValue = value != null ? Convert.ToDecimal(value) : (decimal?)null;
                     customField.StringValue = value != null ? FormattedValue : null;
-                    customField._stringValue.Dirty = false;
+                    customField._stringValue!.Dirty = false;
                 }
                 else if (customField.StringValue != null || customField._stringValue?.Dirty == true)
                 {
@@ -78,7 +78,7 @@ namespace EncompassRest.Loans
         {
         }
 
-        public override string ToString()
+        public override string? ToString()
         {
             var customField = Loan.CustomFields.GetById(FieldId);
             if (customField != null)

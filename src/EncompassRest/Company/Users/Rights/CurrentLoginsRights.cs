@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class CurrentLoginsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _disableLogins;
-        private DirtyValue<bool?> _logUsersOut;
+        private DirtyValue<bool?>? _disableLogins;
+        private DirtyValue<bool?>? _logUsersOut;
 
         /// <summary>
         /// CurrentLoginsRights DisableLogins

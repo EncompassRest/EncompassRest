@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,92 +11,92 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Hud1Es : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _annualCityTax;
-        private DirtyValue<int?> _annualFeeCushion;
-        private DirtyValue<decimal?> _annualFloodInsurance;
-        private DirtyValue<decimal?> _annualHazardInsurance;
-        private DirtyValue<decimal?> _annualMortgageInsurance;
-        private DirtyValue<decimal?> _annualTax;
-        private DirtyValue<decimal?> _annualUserEscrow1;
-        private DirtyValue<decimal?> _annualUserEscrow2;
-        private DirtyValue<decimal?> _annualUserEscrow3;
-        private DirtyValue<decimal?> _biweeklyCityPropertyTaxes;
-        private DirtyValue<decimal?> _biweeklyCountyTaxes;
-        private DirtyValue<decimal?> _biweeklyFloodInsurance;
-        private DirtyValue<decimal?> _biweeklyHazardInsurance;
-        private DirtyValue<decimal?> _biweeklyMortgageInsurance;
-        private DirtyValue<decimal?> _biweeklyPITI;
-        private DirtyValue<decimal?> _biweeklyTotalBiweeklyPayment;
-        private DirtyValue<decimal?> _biweeklyTotalBiweeklyPaymentToEscrow;
-        private DirtyValue<decimal?> _biweeklyUSDAFee;
-        private DirtyValue<decimal?> _biweeklyUserDefinedEscrowFee1;
-        private DirtyValue<decimal?> _biweeklyUserDefinedEscrowFee2;
-        private DirtyValue<decimal?> _biweeklyUserDefinedEscrowFee3;
-        private DirtyValue<string> _cityPropertyTaxAddress;
-        private DirtyValue<decimal?> _cityPropertyTaxAmountLastPay;
-        private DirtyValue<decimal?> _cityPropertyTaxAmountNextDue;
-        private DirtyValue<string> _cityPropertyTaxCity;
-        private DirtyValue<string> _cityPropertyTaxContactName;
-        private DirtyValue<DateTime?> _cityPropertyTaxDatePaid;
-        private DirtyValue<DateTime?> _cityPropertyTaxDelinquentDate;
-        private DirtyValue<string> _cityPropertyTaxEmail;
-        private DirtyValue<string> _cityPropertyTaxFax;
-        private DirtyValue<string> _cityPropertyTaxName;
-        private DirtyValue<DateTime?> _cityPropertyTaxNextDueDate;
-        private DirtyValue<string> _cityPropertyTaxPaymentSchedule;
-        private DirtyValue<string> _cityPropertyTaxPhone;
-        private DirtyValue<string> _cityPropertyTaxPostalCode;
-        private DirtyValue<StringEnumValue<State>> _cityPropertyTaxState;
-        private DirtyValue<decimal?> _endingBalance;
-        private DirtyValue<DateTime?> _escrowFirstPaymentDate;
-        private DirtyValue<StringEnumValue<EscrowFirstPaymentDateType>> _escrowFirstPaymentDateType;
-        private DirtyValue<decimal?> _escrowPayment;
-        private DirtyValue<decimal?> _escrowPaymentYearly;
-        private DirtyValue<int?> _floodInsDisbCushion;
-        private DirtyValue<int?> _hazInsDisbCushion;
-        private DirtyList<Hud1EsDate> _hud1EsDates;
-        private DirtyList<Hud1EsDueDate> _hud1EsDueDates;
-        private DirtyList<Hud1EsItemize> _hud1EsItemizes;
-        private DirtyValue<int?> _hud1EsItemizesTotalLines;
-        private DirtyValue<bool?> _hud1EsItemizesUseItemizeEscrowIndicator;
-        private DirtyList<Hud1EsPayTo> _hud1EsPayTos;
-        private DirtyList<Hud1EsSetup> _hud1EsSetups;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _mtgInsCushionTerminationIndicator;
-        private DirtyValue<int?> _mtgInsDisbCushion;
-        private DirtyValue<decimal?> _nonEscrowCostsYearly;
-        private DirtyValue<string> _realEstateTaxAddress;
-        private DirtyValue<decimal?> _realEstateTaxAmountLastPay;
-        private DirtyValue<decimal?> _realEstateTaxAmountNextDue;
-        private DirtyValue<string> _realEstateTaxCity;
-        private DirtyValue<string> _realEstateTaxContactName;
-        private DirtyValue<DateTime?> _realEstateTaxDatePaid;
-        private DirtyValue<DateTime?> _realEstateTaxDelinquentDate;
-        private DirtyValue<string> _realEstateTaxEmail;
-        private DirtyValue<string> _realEstateTaxFax;
-        private DirtyValue<string> _realEstateTaxName;
-        private DirtyValue<DateTime?> _realEstateTaxNextDueDate;
-        private DirtyValue<string> _realEstateTaxPaymentSchedule;
-        private DirtyValue<string> _realEstateTaxPhone;
-        private DirtyValue<string> _realEstateTaxPostalCode;
-        private DirtyValue<StringEnumValue<State>> _realEstateTaxState;
-        private DirtyValue<int?> _schoolTaxesCushion;
-        private DirtyValue<string> _servicerAddress;
-        private DirtyValue<string> _servicerCity;
-        private DirtyValue<string> _servicerContactName;
-        private DirtyValue<string> _servicerPhone;
-        private DirtyValue<string> _servicerPostalCode;
-        private DirtyValue<StringEnumValue<State>> _servicerState;
-        private DirtyValue<decimal?> _singleLineAnalysis;
-        private DirtyValue<decimal?> _startingBalance;
-        private DirtyValue<int?> _taxDisbCushion;
-        private DirtyValue<decimal?> _totalEscrowReserves;
-        private DirtyValue<decimal?> _usdaAnnualFee;
-        private DirtyValue<int?> _userDefinedCushion1;
-        private DirtyValue<int?> _userDefinedCushion2;
-        private DirtyValue<int?> _userDefinedCushion3;
-        private DirtyValue<decimal?> _yearlyMortgageInsurance;
-        private DirtyValue<decimal?> _yearlyUsdaFee;
+        private DirtyValue<decimal?>? _annualCityTax;
+        private DirtyValue<int?>? _annualFeeCushion;
+        private DirtyValue<decimal?>? _annualFloodInsurance;
+        private DirtyValue<decimal?>? _annualHazardInsurance;
+        private DirtyValue<decimal?>? _annualMortgageInsurance;
+        private DirtyValue<decimal?>? _annualTax;
+        private DirtyValue<decimal?>? _annualUserEscrow1;
+        private DirtyValue<decimal?>? _annualUserEscrow2;
+        private DirtyValue<decimal?>? _annualUserEscrow3;
+        private DirtyValue<decimal?>? _biweeklyCityPropertyTaxes;
+        private DirtyValue<decimal?>? _biweeklyCountyTaxes;
+        private DirtyValue<decimal?>? _biweeklyFloodInsurance;
+        private DirtyValue<decimal?>? _biweeklyHazardInsurance;
+        private DirtyValue<decimal?>? _biweeklyMortgageInsurance;
+        private DirtyValue<decimal?>? _biweeklyPITI;
+        private DirtyValue<decimal?>? _biweeklyTotalBiweeklyPayment;
+        private DirtyValue<decimal?>? _biweeklyTotalBiweeklyPaymentToEscrow;
+        private DirtyValue<decimal?>? _biweeklyUSDAFee;
+        private DirtyValue<decimal?>? _biweeklyUserDefinedEscrowFee1;
+        private DirtyValue<decimal?>? _biweeklyUserDefinedEscrowFee2;
+        private DirtyValue<decimal?>? _biweeklyUserDefinedEscrowFee3;
+        private DirtyValue<string?>? _cityPropertyTaxAddress;
+        private DirtyValue<decimal?>? _cityPropertyTaxAmountLastPay;
+        private DirtyValue<decimal?>? _cityPropertyTaxAmountNextDue;
+        private DirtyValue<string?>? _cityPropertyTaxCity;
+        private DirtyValue<string?>? _cityPropertyTaxContactName;
+        private DirtyValue<DateTime?>? _cityPropertyTaxDatePaid;
+        private DirtyValue<DateTime?>? _cityPropertyTaxDelinquentDate;
+        private DirtyValue<string?>? _cityPropertyTaxEmail;
+        private DirtyValue<string?>? _cityPropertyTaxFax;
+        private DirtyValue<string?>? _cityPropertyTaxName;
+        private DirtyValue<DateTime?>? _cityPropertyTaxNextDueDate;
+        private DirtyValue<string?>? _cityPropertyTaxPaymentSchedule;
+        private DirtyValue<string?>? _cityPropertyTaxPhone;
+        private DirtyValue<string?>? _cityPropertyTaxPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _cityPropertyTaxState;
+        private DirtyValue<decimal?>? _endingBalance;
+        private DirtyValue<DateTime?>? _escrowFirstPaymentDate;
+        private DirtyValue<StringEnumValue<EscrowFirstPaymentDateType>>? _escrowFirstPaymentDateType;
+        private DirtyValue<decimal?>? _escrowPayment;
+        private DirtyValue<decimal?>? _escrowPaymentYearly;
+        private DirtyValue<int?>? _floodInsDisbCushion;
+        private DirtyValue<int?>? _hazInsDisbCushion;
+        private DirtyList<Hud1EsDate>? _hud1EsDates;
+        private DirtyList<Hud1EsDueDate>? _hud1EsDueDates;
+        private DirtyList<Hud1EsItemize>? _hud1EsItemizes;
+        private DirtyValue<int?>? _hud1EsItemizesTotalLines;
+        private DirtyValue<bool?>? _hud1EsItemizesUseItemizeEscrowIndicator;
+        private DirtyList<Hud1EsPayTo>? _hud1EsPayTos;
+        private DirtyList<Hud1EsSetup>? _hud1EsSetups;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _mtgInsCushionTerminationIndicator;
+        private DirtyValue<int?>? _mtgInsDisbCushion;
+        private DirtyValue<decimal?>? _nonEscrowCostsYearly;
+        private DirtyValue<string?>? _realEstateTaxAddress;
+        private DirtyValue<decimal?>? _realEstateTaxAmountLastPay;
+        private DirtyValue<decimal?>? _realEstateTaxAmountNextDue;
+        private DirtyValue<string?>? _realEstateTaxCity;
+        private DirtyValue<string?>? _realEstateTaxContactName;
+        private DirtyValue<DateTime?>? _realEstateTaxDatePaid;
+        private DirtyValue<DateTime?>? _realEstateTaxDelinquentDate;
+        private DirtyValue<string?>? _realEstateTaxEmail;
+        private DirtyValue<string?>? _realEstateTaxFax;
+        private DirtyValue<string?>? _realEstateTaxName;
+        private DirtyValue<DateTime?>? _realEstateTaxNextDueDate;
+        private DirtyValue<string?>? _realEstateTaxPaymentSchedule;
+        private DirtyValue<string?>? _realEstateTaxPhone;
+        private DirtyValue<string?>? _realEstateTaxPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _realEstateTaxState;
+        private DirtyValue<int?>? _schoolTaxesCushion;
+        private DirtyValue<string?>? _servicerAddress;
+        private DirtyValue<string?>? _servicerCity;
+        private DirtyValue<string?>? _servicerContactName;
+        private DirtyValue<string?>? _servicerPhone;
+        private DirtyValue<string?>? _servicerPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _servicerState;
+        private DirtyValue<decimal?>? _singleLineAnalysis;
+        private DirtyValue<decimal?>? _startingBalance;
+        private DirtyValue<int?>? _taxDisbCushion;
+        private DirtyValue<decimal?>? _totalEscrowReserves;
+        private DirtyValue<decimal?>? _usdaAnnualFee;
+        private DirtyValue<int?>? _userDefinedCushion1;
+        private DirtyValue<int?>? _userDefinedCushion2;
+        private DirtyValue<int?>? _userDefinedCushion3;
+        private DirtyValue<decimal?>? _yearlyMortgageInsurance;
+        private DirtyValue<decimal?>? _yearlyUsdaFee;
 
         /// <summary>
         /// HUD Annual City Tax Payment [HUD45]
@@ -225,7 +226,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1ES City Property Tax Pay To Address [VEND.X333]
         /// </summary>
-        public string CityPropertyTaxAddress { get => _cityPropertyTaxAddress; set => SetField(ref _cityPropertyTaxAddress, value); }
+        public string? CityPropertyTaxAddress { get => _cityPropertyTaxAddress; set => SetField(ref _cityPropertyTaxAddress, value); }
 
         /// <summary>
         /// HUD1ES City Property Tax Pay To Amount Last Paid [VEND.X450]
@@ -242,12 +243,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1ES City Property Tax Pay To City [VEND.X334]
         /// </summary>
-        public string CityPropertyTaxCity { get => _cityPropertyTaxCity; set => SetField(ref _cityPropertyTaxCity, value); }
+        public string? CityPropertyTaxCity { get => _cityPropertyTaxCity; set => SetField(ref _cityPropertyTaxCity, value); }
 
         /// <summary>
         /// HUD1ES City Property Tax Pay To Contact [VEND.X337]
         /// </summary>
-        public string CityPropertyTaxContactName { get => _cityPropertyTaxContactName; set => SetField(ref _cityPropertyTaxContactName, value); }
+        public string? CityPropertyTaxContactName { get => _cityPropertyTaxContactName; set => SetField(ref _cityPropertyTaxContactName, value); }
 
         /// <summary>
         /// HUD1ES City Property Tax Pay To Date Paid [VEND.X451]
@@ -262,18 +263,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1ES City Property Tax Pay To Email [VEND.X339]
         /// </summary>
-        public string CityPropertyTaxEmail { get => _cityPropertyTaxEmail; set => SetField(ref _cityPropertyTaxEmail, value); }
+        public string? CityPropertyTaxEmail { get => _cityPropertyTaxEmail; set => SetField(ref _cityPropertyTaxEmail, value); }
 
         /// <summary>
         /// Fees City Property Tax Pay To Fax [VEND.X340]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string CityPropertyTaxFax { get => _cityPropertyTaxFax; set => SetField(ref _cityPropertyTaxFax, value); }
+        public string? CityPropertyTaxFax { get => _cityPropertyTaxFax; set => SetField(ref _cityPropertyTaxFax, value); }
 
         /// <summary>
         /// HUD1ES City Property Tax Pay To Name [VEND.X332]
         /// </summary>
-        public string CityPropertyTaxName { get => _cityPropertyTaxName; set => SetField(ref _cityPropertyTaxName, value); }
+        public string? CityPropertyTaxName { get => _cityPropertyTaxName; set => SetField(ref _cityPropertyTaxName, value); }
 
         /// <summary>
         /// HUD1ES City Property Tax Pay To Next Due Date [VEND.X453]
@@ -283,19 +284,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1ES City Property Tax Pay To Payment Schedule [VEND.X449]
         /// </summary>
-        public string CityPropertyTaxPaymentSchedule { get => _cityPropertyTaxPaymentSchedule; set => SetField(ref _cityPropertyTaxPaymentSchedule, value); }
+        public string? CityPropertyTaxPaymentSchedule { get => _cityPropertyTaxPaymentSchedule; set => SetField(ref _cityPropertyTaxPaymentSchedule, value); }
 
         /// <summary>
         /// HUD1ES City Property Tax Pay To Phone [VEND.X338]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string CityPropertyTaxPhone { get => _cityPropertyTaxPhone; set => SetField(ref _cityPropertyTaxPhone, value); }
+        public string? CityPropertyTaxPhone { get => _cityPropertyTaxPhone; set => SetField(ref _cityPropertyTaxPhone, value); }
 
         /// <summary>
         /// HUD1ES City Property Tax Pay To Zip [VEND.X336]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string CityPropertyTaxPostalCode { get => _cityPropertyTaxPostalCode; set => SetField(ref _cityPropertyTaxPostalCode, value); }
+        public string? CityPropertyTaxPostalCode { get => _cityPropertyTaxPostalCode; set => SetField(ref _cityPropertyTaxPostalCode, value); }
 
         /// <summary>
         /// HUD1ES City Property Tax Pay To State [VEND.X335]
@@ -343,16 +344,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1Es Hud1EsDates
         /// </summary>
+        [AllowNull]
         public IList<Hud1EsDate> Hud1EsDates { get => GetField(ref _hud1EsDates); set => SetField(ref _hud1EsDates, value); }
 
         /// <summary>
         /// Hud1Es Hud1EsDueDates
         /// </summary>
+        [AllowNull]
         public IList<Hud1EsDueDate> Hud1EsDueDates { get => GetField(ref _hud1EsDueDates); set => SetField(ref _hud1EsDueDates, value); }
 
         /// <summary>
         /// Hud1Es Hud1EsItemizes
         /// </summary>
+        [AllowNull]
         public IList<Hud1EsItemize> Hud1EsItemizes { get => GetField(ref _hud1EsItemizes); set => SetField(ref _hud1EsItemizes, value); }
 
         /// <summary>
@@ -368,17 +372,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1Es Hud1EsPayTos
         /// </summary>
+        [AllowNull]
         public IList<Hud1EsPayTo> Hud1EsPayTos { get => GetField(ref _hud1EsPayTos); set => SetField(ref _hud1EsPayTos, value); }
 
         /// <summary>
         /// Hud1Es Hud1EsSetups
         /// </summary>
+        [AllowNull]
         public IList<Hud1EsSetup> Hud1EsSetups { get => GetField(ref _hud1EsSetups); set => SetField(ref _hud1EsSetups, value); }
 
         /// <summary>
         /// Hud1Es Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Servicer to refund Mtg Ins Cushion upon termination [HUD49]
@@ -399,7 +405,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1ES Tax Pay To Address [VEND.X324]
         /// </summary>
-        public string RealEstateTaxAddress { get => _realEstateTaxAddress; set => SetField(ref _realEstateTaxAddress, value); }
+        public string? RealEstateTaxAddress { get => _realEstateTaxAddress; set => SetField(ref _realEstateTaxAddress, value); }
 
         /// <summary>
         /// HUD1ES Tax Pay To Amount Last Paid [VEND.X438]
@@ -416,12 +422,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1ES Tax Pay To City [VEND.X325]
         /// </summary>
-        public string RealEstateTaxCity { get => _realEstateTaxCity; set => SetField(ref _realEstateTaxCity, value); }
+        public string? RealEstateTaxCity { get => _realEstateTaxCity; set => SetField(ref _realEstateTaxCity, value); }
 
         /// <summary>
         /// HUD1ES Tax Pay To Contact Name [VEND.X328]
         /// </summary>
-        public string RealEstateTaxContactName { get => _realEstateTaxContactName; set => SetField(ref _realEstateTaxContactName, value); }
+        public string? RealEstateTaxContactName { get => _realEstateTaxContactName; set => SetField(ref _realEstateTaxContactName, value); }
 
         /// <summary>
         /// HUD1ES Tax Pay To Date Paid [VEND.X439]
@@ -436,18 +442,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1ES Tax Pay To Email [VEND.X330]
         /// </summary>
-        public string RealEstateTaxEmail { get => _realEstateTaxEmail; set => SetField(ref _realEstateTaxEmail, value); }
+        public string? RealEstateTaxEmail { get => _realEstateTaxEmail; set => SetField(ref _realEstateTaxEmail, value); }
 
         /// <summary>
         /// HUD1ES Tax Pay To Fax [VEND.X331]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string RealEstateTaxFax { get => _realEstateTaxFax; set => SetField(ref _realEstateTaxFax, value); }
+        public string? RealEstateTaxFax { get => _realEstateTaxFax; set => SetField(ref _realEstateTaxFax, value); }
 
         /// <summary>
         /// HUD1ES Tax Pay To Name [VEND.X323]
         /// </summary>
-        public string RealEstateTaxName { get => _realEstateTaxName; set => SetField(ref _realEstateTaxName, value); }
+        public string? RealEstateTaxName { get => _realEstateTaxName; set => SetField(ref _realEstateTaxName, value); }
 
         /// <summary>
         /// HUD1ES Tax Pay To Next Due Date [VEND.X441]
@@ -458,19 +464,19 @@ namespace EncompassRest.Loans
         /// HUD1ES Tax Pay To Payment Schedule [VEND.X437]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string RealEstateTaxPaymentSchedule { get => _realEstateTaxPaymentSchedule; set => SetField(ref _realEstateTaxPaymentSchedule, value); }
+        public string? RealEstateTaxPaymentSchedule { get => _realEstateTaxPaymentSchedule; set => SetField(ref _realEstateTaxPaymentSchedule, value); }
 
         /// <summary>
         /// HUD1ES Tax Pay To Phone [VEND.X329]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string RealEstateTaxPhone { get => _realEstateTaxPhone; set => SetField(ref _realEstateTaxPhone, value); }
+        public string? RealEstateTaxPhone { get => _realEstateTaxPhone; set => SetField(ref _realEstateTaxPhone, value); }
 
         /// <summary>
         /// HUD1ES Tax Pay To Zip [VEND.X327]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string RealEstateTaxPostalCode { get => _realEstateTaxPostalCode; set => SetField(ref _realEstateTaxPostalCode, value); }
+        public string? RealEstateTaxPostalCode { get => _realEstateTaxPostalCode; set => SetField(ref _realEstateTaxPostalCode, value); }
 
         /// <summary>
         /// HUD1ES Tax Pay To State [VEND.X326]
@@ -486,31 +492,31 @@ namespace EncompassRest.Loans
         /// Escrow Servicer Address [L631]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ServicerAddress { get => _servicerAddress; set => SetField(ref _servicerAddress, value); }
+        public string? ServicerAddress { get => _servicerAddress; set => SetField(ref _servicerAddress, value); }
 
         /// <summary>
         /// Escrow Servicer City [L632]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ServicerCity { get => _servicerCity; set => SetField(ref _servicerCity, value); }
+        public string? ServicerCity { get => _servicerCity; set => SetField(ref _servicerCity, value); }
 
         /// <summary>
         /// Escrow Servicer Name [L611]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ServicerContactName { get => _servicerContactName; set => SetField(ref _servicerContactName, value); }
+        public string? ServicerContactName { get => _servicerContactName; set => SetField(ref _servicerContactName, value); }
 
         /// <summary>
         /// Escrow Servicer Phone [L635]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true)]
-        public string ServicerPhone { get => _servicerPhone; set => SetField(ref _servicerPhone, value); }
+        public string? ServicerPhone { get => _servicerPhone; set => SetField(ref _servicerPhone, value); }
 
         /// <summary>
         /// Escrow Servicer Zipcode [L634]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, ReadOnly = true)]
-        public string ServicerPostalCode { get => _servicerPostalCode; set => SetField(ref _servicerPostalCode, value); }
+        public string? ServicerPostalCode { get => _servicerPostalCode; set => SetField(ref _servicerPostalCode, value); }
 
         /// <summary>
         /// Escrow Servicer State [L633]

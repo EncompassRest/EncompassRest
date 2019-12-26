@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class MobileAccessRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _encompassWindowsClient;
-        private DirtyValue<bool?> _encompassWindowsClientAndMobile;
+        private DirtyValue<bool?>? _encompassWindowsClient;
+        private DirtyValue<bool?>? _encompassWindowsClientAndMobile;
 
         /// <summary>
         /// MobileAccessRights EncompassWindowsClient

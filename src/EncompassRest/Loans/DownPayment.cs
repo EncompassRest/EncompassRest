@@ -8,10 +8,10 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class DownPayment : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amount;
-        private DirtyValue<StringEnumValue<DownPaymentType>> _downPaymentType;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _sourceDescription;
+        private DirtyValue<decimal?>? _amount;
+        private DirtyValue<StringEnumValue<DownPaymentType>>? _downPaymentType;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _sourceDescription;
 
         /// <summary>
         /// Trans Details Down Pymt Amt [1335]
@@ -27,11 +27,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DownPayment Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Borr Funds to Close - Down Pymt Source Descr [191]
         /// </summary>
-        public string SourceDescription { get => _sourceDescription; set => SetField(ref _sourceDescription, value); }
+        public string? SourceDescription { get => _sourceDescription; set => SetField(ref _sourceDescription, value); }
     }
 }

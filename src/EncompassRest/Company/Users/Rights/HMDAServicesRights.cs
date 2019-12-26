@@ -5,8 +5,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class HMDAServicesRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _generateHMDALAR;
-        private DirtyValue<bool?> _orderHMDAServices;
+        private DirtyValue<bool?>? _generateHMDALAR;
+        private DirtyValue<bool?>? _orderHMDAServices;
 
         /// <summary>
         /// HMDAServicesRights GenerateHMDALAR

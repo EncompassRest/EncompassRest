@@ -9,14 +9,14 @@ namespace EncompassRest.Loans.Attachments
     /// </summary>
     public sealed class PageAnnotation : DirtyExtensibleObject
     {
-        private DirtyValue<DateTime?> _dateCreated;
-        private DirtyValue<string> _createdBy;
-        private DirtyValue<string> _text;
-        private DirtyValue<int?> _left;
-        private DirtyValue<int?> _top;
-        private DirtyValue<int?> _width;
-        private DirtyValue<int?> _height;
-        private DirtyValue<AnnotationVisibilityType?> _visibilityType;
+        private DirtyValue<DateTime?>? _dateCreated;
+        private DirtyValue<string?>? _createdBy;
+        private DirtyValue<string?>? _text;
+        private DirtyValue<int?>? _left;
+        private DirtyValue<int?>? _top;
+        private DirtyValue<int?>? _width;
+        private DirtyValue<int?>? _height;
+        private DirtyValue<AnnotationVisibilityType?>? _visibilityType;
 
         /// <summary>
         /// Date the attachment or page annotation was created.
@@ -26,12 +26,12 @@ namespace EncompassRest.Loans.Attachments
         /// <summary>
         /// UserID of the user who created the attachment or annotation.
         /// </summary>
-        public string CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
+        public string? CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
 
         /// <summary>
         /// The text of the annotation.
         /// </summary>
-        public string Text { get => _text; set => SetField(ref _text, value); }
+        public string? Text { get => _text; set => SetField(ref _text, value); }
 
         /// <summary>
         /// The horizontal location of the annotation.

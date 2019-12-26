@@ -10,124 +10,124 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(ContactType), SerializeWholeListWhenDirty = true)]
     public sealed partial class Contact : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _aBA;
-        private DirtyValue<string> _accountName;
-        private DirtyValue<string> _address;
-        private DirtyValue<string> _address2;
-        private DirtyValue<bool?> _addToCdContactInfo;
-        private DirtyValue<StringEnumValue<AppraisalMade>> _appraisalMade;
-        private DirtyValue<DateTime?> _bizLicenseAuthDate;
-        private DirtyValue<string> _bizLicenseAuthName;
-        private DirtyValue<StringEnumValue<State>> _bizLicenseAuthStateCode;
-        private DirtyValue<StringEnumValue<LicenseAuthType>> _bizLicenseAuthType;
-        private DirtyValue<string> _bizLicenseNumber;
-        private DirtyValue<bool?> _borrowerActingAsContractorIndicator;
-        private DirtyValue<string> _brokerLenderType;
-        private DirtyValue<bool?> _brokerLicenseExempt;
-        private DirtyValue<string> _brokerLicenseType;
-        private DirtyValue<string> _businessPhone;
-        private DirtyValue<string> _categoryName;
-        private DirtyValue<string> _cell;
-        private DirtyValue<DateTime?> _checkConfirmedDate;
-        private DirtyValue<string> _city;
-        private DirtyValue<string> _clause;
-        private DirtyValue<string> _closingAgentWebURL;
-        private DirtyValue<string> _closingCompanyWebURL;
-        private DirtyValue<string> _comments;
-        private DirtyValue<string> _companyId;
-        private DirtyValue<decimal?> _completionAffidavitPunchListTotal;
-        private DirtyValue<int?> _contactIndex;
-        private DirtyValue<string> _contactName;
-        private DirtyValue<string> _contactNMLSNo;
-        private DirtyValue<string> _contactTitle;
-        private DirtyValue<StringEnumValue<ContactType>> _contactType;
-        private DirtyValue<DateTime?> _designeeAcceptedDate;
-        private DirtyValue<string> _email;
-        private DirtyValue<decimal?> _employerLiabilityInsuranceMin;
-        private DirtyValue<string> _fax;
-        private DirtyValue<string> _fax2;
-        private DirtyValue<string> _fhaLenderId;
-        private DirtyValue<decimal?> _generalLiabilityInsuranceMin;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _insuranceCertNumber;
-        private DirtyValue<decimal?> _insuranceCoverageAmount;
-        private DirtyValue<DateTime?> _insuranceDeterminationDate;
-        private DirtyValue<string> _insuranceDeterminationNumber;
-        private DirtyValue<bool?> _insuranceFloodZone;
-        private DirtyValue<string> _insuranceMap;
-        private DirtyValue<int?> _insuranceNoOfBedrooms;
-        private DirtyValue<decimal?> _insurancePremium;
-        private DirtyValue<StringEnumValue<ProjectType>> _insuranceProjectType;
-        private DirtyValue<DateTime?> _insuranceRenewalDate;
-        private DirtyValue<string> _investorGrade1;
-        private DirtyValue<string> _investorGrade2;
-        private DirtyValue<string> _investorGrade3;
-        private DirtyValue<string> _investorLicense;
-        private DirtyValue<string> _investorLicenseType;
-        private DirtyValue<string> _investorName1;
-        private DirtyValue<string> _investorName2;
-        private DirtyValue<string> _investorName3;
-        private DirtyValue<string> _investorScore1;
-        private DirtyValue<string> _investorScore2;
-        private DirtyValue<string> _investorScore3;
-        private DirtyValue<string> _lenderType;
-        private DirtyValue<string> _license;
-        private DirtyValue<bool?> _licenseExempt;
-        private DirtyValue<StringEnumValue<State>> _licenseHomeState;
-        private DirtyValue<string> _licenseType;
-        private DirtyValue<string> _lineItemNumber;
-        private DirtyValue<string> _loginId;
-        private DirtyValue<string> _mortgageBrokerCompanyWebURL;
-        private DirtyValue<string> _mortgageBrokerLoanOfficerWebURL;
-        private DirtyValue<string> _mortgageLenderCompanyWebURL;
-        private DirtyValue<string> _mortgageLenderLoanOfficerWebURL;
-        private DirtyValue<string> _name;
-        private DirtyValue<string> _nmlsLicense;
-        private DirtyValue<bool?> _notNaturalPersonFlag;
-        private DirtyValue<string> _organizationState;
-        private DirtyValue<string> _organizationType;
-        private DirtyValue<DateTime?> _personalLicenseAuthDate;
-        private DirtyValue<string> _personalLicenseAuthName;
-        private DirtyValue<StringEnumValue<State>> _personalLicenseAuthStateCode;
-        private DirtyValue<StringEnumValue<LicenseAuthType>> _personalLicenseAuthType;
-        private DirtyValue<string> _personalLicenseNumber;
-        private DirtyValue<string> _phone;
-        private DirtyValue<string> _phone2;
-        private DirtyValue<string> _postalCode;
-        private DirtyValue<string> _realEstateAgencyWebURL;
-        private DirtyValue<string> _realEstateAgentWebURL;
-        private DirtyValue<string> _recCity;
-        private DirtyValue<string> _referenceNumber;
-        private DirtyValue<string> _relationship;
-        private DirtyValue<bool?> _settlementAgent;
-        private DirtyValue<StringEnumValue<State>> _state;
-        private DirtyValue<string> _taxID;
-        private DirtyValue<string> _tqlCommentHistory;
-        private DirtyValue<string> _tQLConsentSelection;
-        private DirtyValue<int?> _tqlId;
-        private DirtyValue<bool?> _tqlIsPublishingIndicator;
-        private DirtyValue<string> _tqlName;
+        private DirtyValue<string?>? _aBA;
+        private DirtyValue<string?>? _accountName;
+        private DirtyValue<string?>? _address;
+        private DirtyValue<string?>? _address2;
+        private DirtyValue<bool?>? _addToCdContactInfo;
+        private DirtyValue<StringEnumValue<AppraisalMade>>? _appraisalMade;
+        private DirtyValue<DateTime?>? _bizLicenseAuthDate;
+        private DirtyValue<string?>? _bizLicenseAuthName;
+        private DirtyValue<StringEnumValue<State>>? _bizLicenseAuthStateCode;
+        private DirtyValue<StringEnumValue<LicenseAuthType>>? _bizLicenseAuthType;
+        private DirtyValue<string?>? _bizLicenseNumber;
+        private DirtyValue<bool?>? _borrowerActingAsContractorIndicator;
+        private DirtyValue<string?>? _brokerLenderType;
+        private DirtyValue<bool?>? _brokerLicenseExempt;
+        private DirtyValue<string?>? _brokerLicenseType;
+        private DirtyValue<string?>? _businessPhone;
+        private DirtyValue<string?>? _categoryName;
+        private DirtyValue<string?>? _cell;
+        private DirtyValue<DateTime?>? _checkConfirmedDate;
+        private DirtyValue<string?>? _city;
+        private DirtyValue<string?>? _clause;
+        private DirtyValue<string?>? _closingAgentWebURL;
+        private DirtyValue<string?>? _closingCompanyWebURL;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<string?>? _companyId;
+        private DirtyValue<decimal?>? _completionAffidavitPunchListTotal;
+        private DirtyValue<int?>? _contactIndex;
+        private DirtyValue<string?>? _contactName;
+        private DirtyValue<string?>? _contactNMLSNo;
+        private DirtyValue<string?>? _contactTitle;
+        private DirtyValue<StringEnumValue<ContactType>>? _contactType;
+        private DirtyValue<DateTime?>? _designeeAcceptedDate;
+        private DirtyValue<string?>? _email;
+        private DirtyValue<decimal?>? _employerLiabilityInsuranceMin;
+        private DirtyValue<string?>? _fax;
+        private DirtyValue<string?>? _fax2;
+        private DirtyValue<string?>? _fhaLenderId;
+        private DirtyValue<decimal?>? _generalLiabilityInsuranceMin;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _insuranceCertNumber;
+        private DirtyValue<decimal?>? _insuranceCoverageAmount;
+        private DirtyValue<DateTime?>? _insuranceDeterminationDate;
+        private DirtyValue<string?>? _insuranceDeterminationNumber;
+        private DirtyValue<bool?>? _insuranceFloodZone;
+        private DirtyValue<string?>? _insuranceMap;
+        private DirtyValue<int?>? _insuranceNoOfBedrooms;
+        private DirtyValue<decimal?>? _insurancePremium;
+        private DirtyValue<StringEnumValue<ProjectType>>? _insuranceProjectType;
+        private DirtyValue<DateTime?>? _insuranceRenewalDate;
+        private DirtyValue<string?>? _investorGrade1;
+        private DirtyValue<string?>? _investorGrade2;
+        private DirtyValue<string?>? _investorGrade3;
+        private DirtyValue<string?>? _investorLicense;
+        private DirtyValue<string?>? _investorLicenseType;
+        private DirtyValue<string?>? _investorName1;
+        private DirtyValue<string?>? _investorName2;
+        private DirtyValue<string?>? _investorName3;
+        private DirtyValue<string?>? _investorScore1;
+        private DirtyValue<string?>? _investorScore2;
+        private DirtyValue<string?>? _investorScore3;
+        private DirtyValue<string?>? _lenderType;
+        private DirtyValue<string?>? _license;
+        private DirtyValue<bool?>? _licenseExempt;
+        private DirtyValue<StringEnumValue<State>>? _licenseHomeState;
+        private DirtyValue<string?>? _licenseType;
+        private DirtyValue<string?>? _lineItemNumber;
+        private DirtyValue<string?>? _loginId;
+        private DirtyValue<string?>? _mortgageBrokerCompanyWebURL;
+        private DirtyValue<string?>? _mortgageBrokerLoanOfficerWebURL;
+        private DirtyValue<string?>? _mortgageLenderCompanyWebURL;
+        private DirtyValue<string?>? _mortgageLenderLoanOfficerWebURL;
+        private DirtyValue<string?>? _name;
+        private DirtyValue<string?>? _nmlsLicense;
+        private DirtyValue<bool?>? _notNaturalPersonFlag;
+        private DirtyValue<string?>? _organizationState;
+        private DirtyValue<string?>? _organizationType;
+        private DirtyValue<DateTime?>? _personalLicenseAuthDate;
+        private DirtyValue<string?>? _personalLicenseAuthName;
+        private DirtyValue<StringEnumValue<State>>? _personalLicenseAuthStateCode;
+        private DirtyValue<StringEnumValue<LicenseAuthType>>? _personalLicenseAuthType;
+        private DirtyValue<string?>? _personalLicenseNumber;
+        private DirtyValue<string?>? _phone;
+        private DirtyValue<string?>? _phone2;
+        private DirtyValue<string?>? _postalCode;
+        private DirtyValue<string?>? _realEstateAgencyWebURL;
+        private DirtyValue<string?>? _realEstateAgentWebURL;
+        private DirtyValue<string?>? _recCity;
+        private DirtyValue<string?>? _referenceNumber;
+        private DirtyValue<string?>? _relationship;
+        private DirtyValue<bool?>? _settlementAgent;
+        private DirtyValue<StringEnumValue<State>>? _state;
+        private DirtyValue<string?>? _taxID;
+        private DirtyValue<string?>? _tqlCommentHistory;
+        private DirtyValue<string?>? _tQLConsentSelection;
+        private DirtyValue<int?>? _tqlId;
+        private DirtyValue<bool?>? _tqlIsPublishingIndicator;
+        private DirtyValue<string?>? _tqlName;
 
         /// <summary>
         /// Contact ABA
         /// </summary>
-        public string ABA { get => _aBA; set => SetField(ref _aBA, value); }
+        public string? ABA { get => _aBA; set => SetField(ref _aBA, value); }
 
         /// <summary>
         /// Contact AccountName
         /// </summary>
-        public string AccountName { get => _accountName; set => SetField(ref _accountName, value); }
+        public string? AccountName { get => _accountName; set => SetField(ref _accountName, value); }
 
         /// <summary>
         /// Contact Address
         /// </summary>
-        public string Address { get => _address; set => SetField(ref _address, value); }
+        public string? Address { get => _address; set => SetField(ref _address, value); }
 
         /// <summary>
         /// File Contacts Broker Lender Address 2 [1954]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Address2 { get => _address2; set => SetField(ref _address2, value); }
+        public string? Address2 { get => _address2; set => SetField(ref _address2, value); }
 
         /// <summary>
         /// Contact AddToCdContactInfo
@@ -147,7 +147,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact BizLicenseAuthName
         /// </summary>
-        public string BizLicenseAuthName { get => _bizLicenseAuthName; set => SetField(ref _bizLicenseAuthName, value); }
+        public string? BizLicenseAuthName { get => _bizLicenseAuthName; set => SetField(ref _bizLicenseAuthName, value); }
 
         /// <summary>
         /// Contact BizLicenseAuthStateCode
@@ -162,7 +162,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact BizLicenseNumber
         /// </summary>
-        public string BizLicenseNumber { get => _bizLicenseNumber; set => SetField(ref _bizLicenseNumber, value); }
+        public string? BizLicenseNumber { get => _bizLicenseNumber; set => SetField(ref _bizLicenseNumber, value); }
 
         /// <summary>
         /// File Contacts General Contractor BorrowerActingAsContractorIndicator [VEND.X1009]
@@ -172,7 +172,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact BrokerLenderType
         /// </summary>
-        public string BrokerLenderType { get => _brokerLenderType; set => SetField(ref _brokerLenderType, value); }
+        public string? BrokerLenderType { get => _brokerLenderType; set => SetField(ref _brokerLenderType, value); }
 
         /// <summary>
         /// Contact BrokerLicenseExempt
@@ -182,24 +182,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact BrokerLicenseType
         /// </summary>
-        public string BrokerLicenseType { get => _brokerLicenseType; set => SetField(ref _brokerLicenseType, value); }
+        public string? BrokerLicenseType { get => _brokerLicenseType; set => SetField(ref _brokerLicenseType, value); }
 
         /// <summary>
         /// Contact BusinessPhone
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string BusinessPhone { get => _businessPhone; set => SetField(ref _businessPhone, value); }
+        public string? BusinessPhone { get => _businessPhone; set => SetField(ref _businessPhone, value); }
 
         /// <summary>
         /// Contact CategoryName
         /// </summary>
-        public string CategoryName { get => _categoryName; set => SetField(ref _categoryName, value); }
+        public string? CategoryName { get => _categoryName; set => SetField(ref _categoryName, value); }
 
         /// <summary>
         /// Contact Cell
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string Cell { get => _cell; set => SetField(ref _cell, value); }
+        public string? Cell { get => _cell; set => SetField(ref _cell, value); }
 
         /// <summary>
         /// File Contacts Broker Check Confirmed Date [VEND.X368]
@@ -210,32 +210,32 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact City
         /// </summary>
-        public string City { get => _city; set => SetField(ref _city, value); }
+        public string? City { get => _city; set => SetField(ref _city, value); }
 
         /// <summary>
         /// File Contacts Mortgagee Clause [VEND.X496]
         /// </summary>
-        public string Clause { get => _clause; set => SetField(ref _clause, value); }
+        public string? Clause { get => _clause; set => SetField(ref _clause, value); }
 
         /// <summary>
         /// File Contacts Settlement Agent - Closing Agent Web URL [VEND.X1041]
         /// </summary>
-        public string ClosingAgentWebURL { get => _closingAgentWebURL; set => SetField(ref _closingAgentWebURL, value); }
+        public string? ClosingAgentWebURL { get => _closingAgentWebURL; set => SetField(ref _closingAgentWebURL, value); }
 
         /// <summary>
         /// File Contacts Settlement Agent - Closing Company Web URL [VEND.X1040]
         /// </summary>
-        public string ClosingCompanyWebURL { get => _closingCompanyWebURL; set => SetField(ref _closingCompanyWebURL, value); }
+        public string? ClosingCompanyWebURL { get => _closingCompanyWebURL; set => SetField(ref _closingCompanyWebURL, value); }
 
         /// <summary>
         /// Contact Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// File Contacts Broker Lender Company ID [3237]
         /// </summary>
-        public string CompanyId { get => _companyId; set => SetField(ref _companyId, value); }
+        public string? CompanyId { get => _companyId; set => SetField(ref _companyId, value); }
 
         /// <summary>
         /// File Contacts General Contractor Completion Affidavit Punch List Total [VEND.X1024]
@@ -251,17 +251,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact ContactName
         /// </summary>
-        public string ContactName { get => _contactName; set => SetField(ref _contactName, value); }
+        public string? ContactName { get => _contactName; set => SetField(ref _contactName, value); }
 
         /// <summary>
         /// File Contacts Settlement Agent Contact NMLS Number [VEND.X675]
         /// </summary>
-        public string ContactNMLSNo { get => _contactNMLSNo; set => SetField(ref _contactNMLSNo, value); }
+        public string? ContactNMLSNo { get => _contactNMLSNo; set => SetField(ref _contactNMLSNo, value); }
 
         /// <summary>
         /// Contact ContactTitle
         /// </summary>
-        public string ContactTitle { get => _contactTitle; set => SetField(ref _contactTitle, value); }
+        public string? ContactTitle { get => _contactTitle; set => SetField(ref _contactTitle, value); }
 
         /// <summary>
         /// Contact ContactType
@@ -276,7 +276,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact Email
         /// </summary>
-        public string Email { get => _email; set => SetField(ref _email, value); }
+        public string? Email { get => _email; set => SetField(ref _email, value); }
 
         /// <summary>
         /// File Contacts General Contractor Employer Liability Insurance Min [VEND.X1018]
@@ -288,18 +288,18 @@ namespace EncompassRest.Loans
         /// Contact Fax
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string Fax { get => _fax; set => SetField(ref _fax, value); }
+        public string? Fax { get => _fax; set => SetField(ref _fax, value); }
 
         /// <summary>
         /// File Contacts Submitting Broker - Lender Fax [2844]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string Fax2 { get => _fax2; set => SetField(ref _fax2, value); }
+        public string? Fax2 { get => _fax2; set => SetField(ref _fax2, value); }
 
         /// <summary>
         /// FHA Lender ID [1059]
         /// </summary>
-        public string FhaLenderId { get => _fhaLenderId; set => SetField(ref _fhaLenderId, value); }
+        public string? FhaLenderId { get => _fhaLenderId; set => SetField(ref _fhaLenderId, value); }
 
         /// <summary>
         /// File Contacts General Contractor General Liability Insurance Min [VEND.X1017]
@@ -310,12 +310,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Underwriting Flood Info Cert Number [2363]
         /// </summary>
-        public string InsuranceCertNumber { get => _insuranceCertNumber; set => SetField(ref _insuranceCertNumber, value); }
+        public string? InsuranceCertNumber { get => _insuranceCertNumber; set => SetField(ref _insuranceCertNumber, value); }
 
         /// <summary>
         /// Contact InsuranceCoverageAmount
@@ -331,7 +331,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Flood Info Determination Number [2364]
         /// </summary>
-        public string InsuranceDeterminationNumber { get => _insuranceDeterminationNumber; set => SetField(ref _insuranceDeterminationNumber, value); }
+        public string? InsuranceDeterminationNumber { get => _insuranceDeterminationNumber; set => SetField(ref _insuranceDeterminationNumber, value); }
 
         /// <summary>
         /// Underwriting Flood Info Flood Zone [2366]
@@ -341,7 +341,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Property Info Map ID [2368]
         /// </summary>
-        public string InsuranceMap { get => _insuranceMap; set => SetField(ref _insuranceMap, value); }
+        public string? InsuranceMap { get => _insuranceMap; set => SetField(ref _insuranceMap, value); }
 
         /// <summary>
         /// Underwriting Property Info Number of Bedrooms [2369]
@@ -368,67 +368,67 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Investor Info Grade 1 [2343]
         /// </summary>
-        public string InvestorGrade1 { get => _investorGrade1; set => SetField(ref _investorGrade1, value); }
+        public string? InvestorGrade1 { get => _investorGrade1; set => SetField(ref _investorGrade1, value); }
 
         /// <summary>
         /// Underwriting Investor Info Grade 2 [2346]
         /// </summary>
-        public string InvestorGrade2 { get => _investorGrade2; set => SetField(ref _investorGrade2, value); }
+        public string? InvestorGrade2 { get => _investorGrade2; set => SetField(ref _investorGrade2, value); }
 
         /// <summary>
         /// Underwriting Investor Info Grade 3 [2349]
         /// </summary>
-        public string InvestorGrade3 { get => _investorGrade3; set => SetField(ref _investorGrade3, value); }
+        public string? InvestorGrade3 { get => _investorGrade3; set => SetField(ref _investorGrade3, value); }
 
         /// <summary>
         /// File Contacts Investor License # [VEND.X650]
         /// </summary>
-        public string InvestorLicense { get => _investorLicense; set => SetField(ref _investorLicense, value); }
+        public string? InvestorLicense { get => _investorLicense; set => SetField(ref _investorLicense, value); }
 
         /// <summary>
         /// Contact InvestorLicenseType
         /// </summary>
-        public string InvestorLicenseType { get => _investorLicenseType; set => SetField(ref _investorLicenseType, value); }
+        public string? InvestorLicenseType { get => _investorLicenseType; set => SetField(ref _investorLicenseType, value); }
 
         /// <summary>
         /// Underwriting Investor Info Name 1 [2342]
         /// </summary>
-        public string InvestorName1 { get => _investorName1; set => SetField(ref _investorName1, value); }
+        public string? InvestorName1 { get => _investorName1; set => SetField(ref _investorName1, value); }
 
         /// <summary>
         /// Underwriting Investor Info Name 2 [2345]
         /// </summary>
-        public string InvestorName2 { get => _investorName2; set => SetField(ref _investorName2, value); }
+        public string? InvestorName2 { get => _investorName2; set => SetField(ref _investorName2, value); }
 
         /// <summary>
         /// Underwriting Investor Info Name 3 [2348]
         /// </summary>
-        public string InvestorName3 { get => _investorName3; set => SetField(ref _investorName3, value); }
+        public string? InvestorName3 { get => _investorName3; set => SetField(ref _investorName3, value); }
 
         /// <summary>
         /// Underwriting Investor Info Score 1 [2344]
         /// </summary>
-        public string InvestorScore1 { get => _investorScore1; set => SetField(ref _investorScore1, value); }
+        public string? InvestorScore1 { get => _investorScore1; set => SetField(ref _investorScore1, value); }
 
         /// <summary>
         /// Underwriting Investor Info Score 2 [2347]
         /// </summary>
-        public string InvestorScore2 { get => _investorScore2; set => SetField(ref _investorScore2, value); }
+        public string? InvestorScore2 { get => _investorScore2; set => SetField(ref _investorScore2, value); }
 
         /// <summary>
         /// Underwriting Investor Info Score 3 [2350]
         /// </summary>
-        public string InvestorScore3 { get => _investorScore3; set => SetField(ref _investorScore3, value); }
+        public string? InvestorScore3 { get => _investorScore3; set => SetField(ref _investorScore3, value); }
 
         /// <summary>
         /// Contact LenderType
         /// </summary>
-        public string LenderType { get => _lenderType; set => SetField(ref _lenderType, value); }
+        public string? LenderType { get => _lenderType; set => SetField(ref _lenderType, value); }
 
         /// <summary>
         /// Contact License
         /// </summary>
-        public string License { get => _license; set => SetField(ref _license, value); }
+        public string? License { get => _license; set => SetField(ref _license, value); }
 
         /// <summary>
         /// Contact LicenseExempt
@@ -443,47 +443,47 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact LicenseType
         /// </summary>
-        public string LicenseType { get => _licenseType; set => SetField(ref _licenseType, value); }
+        public string? LicenseType { get => _licenseType; set => SetField(ref _licenseType, value); }
 
         /// <summary>
         /// Contact LineItemNumber
         /// </summary>
-        public string LineItemNumber { get => _lineItemNumber; set => SetField(ref _lineItemNumber, value); }
+        public string? LineItemNumber { get => _lineItemNumber; set => SetField(ref _lineItemNumber, value); }
 
         /// <summary>
         /// Contact LoginId
         /// </summary>
-        public string LoginId { get => _loginId; set => SetField(ref _loginId, value); }
+        public string? LoginId { get => _loginId; set => SetField(ref _loginId, value); }
 
         /// <summary>
         /// File Contacts Broker - Mortgage Broker Company Web URL [VEND.X1036]
         /// </summary>
-        public string MortgageBrokerCompanyWebURL { get => _mortgageBrokerCompanyWebURL; set => SetField(ref _mortgageBrokerCompanyWebURL, value); }
+        public string? MortgageBrokerCompanyWebURL { get => _mortgageBrokerCompanyWebURL; set => SetField(ref _mortgageBrokerCompanyWebURL, value); }
 
         /// <summary>
         /// File Contacts Broker - Mortgage Broker Loan Officer Web URL [VEND.X1037]
         /// </summary>
-        public string MortgageBrokerLoanOfficerWebURL { get => _mortgageBrokerLoanOfficerWebURL; set => SetField(ref _mortgageBrokerLoanOfficerWebURL, value); }
+        public string? MortgageBrokerLoanOfficerWebURL { get => _mortgageBrokerLoanOfficerWebURL; set => SetField(ref _mortgageBrokerLoanOfficerWebURL, value); }
 
         /// <summary>
         /// File Contacts Lender - Mortgage Lender Company Web URL [VEND.X1034]
         /// </summary>
-        public string MortgageLenderCompanyWebURL { get => _mortgageLenderCompanyWebURL; set => SetField(ref _mortgageLenderCompanyWebURL, value); }
+        public string? MortgageLenderCompanyWebURL { get => _mortgageLenderCompanyWebURL; set => SetField(ref _mortgageLenderCompanyWebURL, value); }
 
         /// <summary>
         /// File Contacts Lender - Mortgage Lender Loan Officer Web URL [VEND.X1035]
         /// </summary>
-        public string MortgageLenderLoanOfficerWebURL { get => _mortgageLenderLoanOfficerWebURL; set => SetField(ref _mortgageLenderLoanOfficerWebURL, value); }
+        public string? MortgageLenderLoanOfficerWebURL { get => _mortgageLenderLoanOfficerWebURL; set => SetField(ref _mortgageLenderLoanOfficerWebURL, value); }
 
         /// <summary>
         /// Contact Name
         /// </summary>
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
         /// Contact NmlsLicense
         /// </summary>
-        public string NmlsLicense { get => _nmlsLicense; set => SetField(ref _nmlsLicense, value); }
+        public string? NmlsLicense { get => _nmlsLicense; set => SetField(ref _nmlsLicense, value); }
 
         /// <summary>
         /// Contact NotNaturalPersonFlag
@@ -493,12 +493,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact OrganizationState
         /// </summary>
-        public string OrganizationState { get => _organizationState; set => SetField(ref _organizationState, value); }
+        public string? OrganizationState { get => _organizationState; set => SetField(ref _organizationState, value); }
 
         /// <summary>
         /// Contact OrganizationType
         /// </summary>
-        public string OrganizationType { get => _organizationType; set => SetField(ref _organizationType, value); }
+        public string? OrganizationType { get => _organizationType; set => SetField(ref _organizationType, value); }
 
         /// <summary>
         /// Contact PersonalLicenseAuthDate
@@ -508,7 +508,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact PersonalLicenseAuthName
         /// </summary>
-        public string PersonalLicenseAuthName { get => _personalLicenseAuthName; set => SetField(ref _personalLicenseAuthName, value); }
+        public string? PersonalLicenseAuthName { get => _personalLicenseAuthName; set => SetField(ref _personalLicenseAuthName, value); }
 
         /// <summary>
         /// Contact PersonalLicenseAuthStateCode
@@ -523,50 +523,50 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact PersonalLicenseNumber
         /// </summary>
-        public string PersonalLicenseNumber { get => _personalLicenseNumber; set => SetField(ref _personalLicenseNumber, value); }
+        public string? PersonalLicenseNumber { get => _personalLicenseNumber; set => SetField(ref _personalLicenseNumber, value); }
 
         /// <summary>
         /// Contact Phone
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string Phone { get => _phone; set => SetField(ref _phone, value); }
+        public string? Phone { get => _phone; set => SetField(ref _phone, value); }
 
         /// <summary>
         /// Contact Phone2
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string Phone2 { get => _phone2; set => SetField(ref _phone2, value); }
+        public string? Phone2 { get => _phone2; set => SetField(ref _phone2, value); }
 
         /// <summary>
         /// Contact PostalCode
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+        public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
 
         /// <summary>
         /// File Contacts Broker - Real Estate Agency Web URL [VEND.X1038]
         /// </summary>
-        public string RealEstateAgencyWebURL { get => _realEstateAgencyWebURL; set => SetField(ref _realEstateAgencyWebURL, value); }
+        public string? RealEstateAgencyWebURL { get => _realEstateAgencyWebURL; set => SetField(ref _realEstateAgencyWebURL, value); }
 
         /// <summary>
         /// File Contacts Broker - Real Estate Agent Web URL [VEND.X1039]
         /// </summary>
-        public string RealEstateAgentWebURL { get => _realEstateAgentWebURL; set => SetField(ref _realEstateAgentWebURL, value); }
+        public string? RealEstateAgentWebURL { get => _realEstateAgentWebURL; set => SetField(ref _realEstateAgentWebURL, value); }
 
         /// <summary>
         /// File Contacts Broker Rec City [VEND.X308]
         /// </summary>
-        public string RecCity { get => _recCity; set => SetField(ref _recCity, value); }
+        public string? RecCity { get => _recCity; set => SetField(ref _recCity, value); }
 
         /// <summary>
         /// Contact ReferenceNumber
         /// </summary>
-        public string ReferenceNumber { get => _referenceNumber; set => SetField(ref _referenceNumber, value); }
+        public string? ReferenceNumber { get => _referenceNumber; set => SetField(ref _referenceNumber, value); }
 
         /// <summary>
         /// Contact Relationship
         /// </summary>
-        public string Relationship { get => _relationship; set => SetField(ref _relationship, value); }
+        public string? Relationship { get => _relationship; set => SetField(ref _relationship, value); }
 
         /// <summary>
         /// Contact SettlementAgent
@@ -581,19 +581,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Contact TaxID
         /// </summary>
-        public string TaxID { get => _taxID; set => SetField(ref _taxID, value); }
+        public string? TaxID { get => _taxID; set => SetField(ref _taxID, value); }
 
         /// <summary>
         /// TQL Comment History [3355]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string TqlCommentHistory { get => _tqlCommentHistory; set => SetField(ref _tqlCommentHistory, value); }
+        public string? TqlCommentHistory { get => _tqlCommentHistory; set => SetField(ref _tqlCommentHistory, value); }
 
         /// <summary>
         /// Consent Selection in TQL Portal [CCVP.X1]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string TQLConsentSelection { get => _tQLConsentSelection; set => SetField(ref _tQLConsentSelection, value); }
+        public string? TQLConsentSelection { get => _tQLConsentSelection; set => SetField(ref _tQLConsentSelection, value); }
 
         /// <summary>
         /// TQL InvestorID [3318]
@@ -611,6 +611,6 @@ namespace EncompassRest.Loans
         /// TQL Investor Name [3317]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string TqlName { get => _tqlName; set => SetField(ref _tqlName, value); }
+        public string? TqlName { get => _tqlName; set => SetField(ref _tqlName, value); }
     }
 }

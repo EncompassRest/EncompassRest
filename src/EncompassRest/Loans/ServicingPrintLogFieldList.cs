@@ -5,11 +5,11 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ServicingPrintLogFieldList : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _id;
+        private DirtyValue<string?>? _id;
 
         /// <summary>
         /// ServicingPrintLogFieldList Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
     }
 }

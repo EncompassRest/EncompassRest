@@ -7,8 +7,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PostClosingConditionsTabRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _addEditDeleteConditions;
-        private DirtyValue<bool?> _addAutomatedConditions;
+        private DirtyValue<bool?>? _addEditDeleteConditions;
+        private DirtyValue<bool?>? _addAutomatedConditions;
 
         /// <summary>
         /// PostClosingConditionsTabRights AddEditDeleteConditions

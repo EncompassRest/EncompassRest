@@ -11,15 +11,15 @@ namespace EncompassRest.Loans.Conditions
     /// </summary>
     public sealed class ConditionQueryParameters
     {
-        private ReadOnlyCollection<FieldSort> _sort;
-        private ReadOnlyCollection<FieldFilter> _filter;
+        private ReadOnlyCollection<FieldSort>? _sort;
+        private ReadOnlyCollection<FieldFilter>? _filter;
         private int? _start;
         private int? _limit;
 
         /// <summary>
         /// Sort parameters.
         /// </summary>
-        public IEnumerable<FieldSort> Sort
+        public IEnumerable<FieldSort>? Sort
         {
             get => _sort;
             set
@@ -41,7 +41,7 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// Filter parameters.
         /// </summary>
-        public IEnumerable<FieldFilter> Filter
+        public IEnumerable<FieldFilter>? Filter
         {
             get => _filter;
             set

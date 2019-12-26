@@ -6,9 +6,9 @@ namespace EncompassRest.Utilities
     {
         public string Name { get; }
 
-        public string Value { get; }
+        public string? Value { get; }
 
-        public QueryParameter(string name, string value)
+        public QueryParameter(string name, string? value)
         {
             Name = name;
             Value = value;

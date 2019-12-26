@@ -9,13 +9,13 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(ProfitManagementItemIndex))]
     public sealed partial class ProfitManagementItem : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _atPercent;
-        private DirtyValue<string> _description;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _plusAmount;
-        private DirtyValue<int?> _profitManagementItemIndex;
-        private DirtyValue<decimal?> _total;
-        private DirtyValue<StringEnumValue<ProfitManagementItemType>> _type;
+        private DirtyValue<decimal?>? _atPercent;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _plusAmount;
+        private DirtyValue<int?>? _profitManagementItemIndex;
+        private DirtyValue<decimal?>? _total;
+        private DirtyValue<StringEnumValue<ProfitManagementItemType>>? _type;
 
         /// <summary>
         /// ProfitManagementItem AtPercent
@@ -26,12 +26,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Profit Mgt Other Descr [PM27]
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// ProfitManagementItem Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// ProfitManagementItem PlusAmount

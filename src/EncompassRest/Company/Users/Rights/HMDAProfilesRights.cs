@@ -5,9 +5,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class HMDAProfilesRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _addHMDAProfile;
-        private DirtyValue<bool?> _deleteHMDAProfile;
-        private DirtyValue<bool?> _editHMDAProfile;
+        private DirtyValue<bool?>? _addHMDAProfile;
+        private DirtyValue<bool?>? _deleteHMDAProfile;
+        private DirtyValue<bool?>? _editHMDAProfile;
 
         /// <summary>
         /// HMDAProfilesRights AddHMDAProfile

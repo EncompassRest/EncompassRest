@@ -8,58 +8,58 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class PrivacyPolicy : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _additionalRightsDescription;
-        private DirtyValue<StringEnumValue<AffiliateType>> _affiliateType;
-        private DirtyValue<string> _affiliateTypeExample1;
-        private DirtyValue<string> _affiliateTypeExample2;
-        private DirtyValue<string> _affiliateTypeExample3;
-        private DirtyValue<StringEnumValue<AlsoCollectFrom>> _alsoCollectFrom;
-        private DirtyValue<int?> _daysToUse;
-        private DirtyValue<StringEnumValue<HowToShare>> _howToShare;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare1;
-        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare2;
-        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare3;
-        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare4;
-        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare5;
-        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare6;
-        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare7;
-        private DirtyValue<StringEnumValue<InformationTypesWeCollect>> _informationTypesWeCollect1;
-        private DirtyValue<StringEnumValue<InformationTypesWeCollect>> _informationTypesWeCollect2;
-        private DirtyValue<StringEnumValue<InformationTypesWeCollect>> _informationTypesWeCollect3;
-        private DirtyValue<StringEnumValue<InformationTypesWeCollect>> _informationTypesWeCollect4;
-        private DirtyValue<StringEnumValue<InformationTypesWeCollect>> _informationTypesWeCollect5;
-        private DirtyValue<StringEnumValue<JointMarketType>> _jointMarketType;
-        private DirtyValue<string> _jointMarketTypeExample1;
-        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing1;
-        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing2;
-        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing3;
-        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing4;
-        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing5;
-        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing6;
-        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing7;
-        private DirtyValue<StringEnumValue<Month>> _month;
-        private DirtyValue<StringEnumValue<NonaffiliateType>> _nonaffiliateType;
-        private DirtyValue<string> _nonaffiliateTypeExample1;
-        private DirtyValue<string> _notesForProtectPrivacy;
-        private DirtyValue<string> _otherInformation;
-        private DirtyValue<string> _phoneForQuestion;
-        private DirtyValue<string> _phoneToLimit;
-        private DirtyValue<StringEnumValue<PrintSelection>> _printSelection;
-        private DirtyValue<StringEnumValue<ShareInfoWithJointMarketing>> _shareInfoWithJointMarketing;
-        private DirtyValue<StringEnumValue<TimesToCollect>> _timesToCollect1;
-        private DirtyValue<StringEnumValue<TimesToCollect>> _timesToCollect2;
-        private DirtyValue<StringEnumValue<TimesToCollect>> _timesToCollect3;
-        private DirtyValue<StringEnumValue<TimesToCollect>> _timesToCollect4;
-        private DirtyValue<StringEnumValue<TimesToCollect>> _timesToCollect5;
-        private DirtyValue<string> _websiteForQuestion;
-        private DirtyValue<string> _websiteToLimit;
-        private DirtyValue<int?> _year;
+        private DirtyValue<string?>? _additionalRightsDescription;
+        private DirtyValue<StringEnumValue<AffiliateType>>? _affiliateType;
+        private DirtyValue<string?>? _affiliateTypeExample1;
+        private DirtyValue<string?>? _affiliateTypeExample2;
+        private DirtyValue<string?>? _affiliateTypeExample3;
+        private DirtyValue<StringEnumValue<AlsoCollectFrom>>? _alsoCollectFrom;
+        private DirtyValue<int?>? _daysToUse;
+        private DirtyValue<StringEnumValue<HowToShare>>? _howToShare;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _informationShare1;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _informationShare2;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _informationShare3;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _informationShare4;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _informationShare5;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _informationShare6;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _informationShare7;
+        private DirtyValue<StringEnumValue<InformationTypesWeCollect>>? _informationTypesWeCollect1;
+        private DirtyValue<StringEnumValue<InformationTypesWeCollect>>? _informationTypesWeCollect2;
+        private DirtyValue<StringEnumValue<InformationTypesWeCollect>>? _informationTypesWeCollect3;
+        private DirtyValue<StringEnumValue<InformationTypesWeCollect>>? _informationTypesWeCollect4;
+        private DirtyValue<StringEnumValue<InformationTypesWeCollect>>? _informationTypesWeCollect5;
+        private DirtyValue<StringEnumValue<JointMarketType>>? _jointMarketType;
+        private DirtyValue<string?>? _jointMarketTypeExample1;
+        private DirtyValue<StringEnumValue<LimitSharing>>? _limitSharing1;
+        private DirtyValue<StringEnumValue<LimitSharing>>? _limitSharing2;
+        private DirtyValue<StringEnumValue<LimitSharing>>? _limitSharing3;
+        private DirtyValue<StringEnumValue<LimitSharing>>? _limitSharing4;
+        private DirtyValue<StringEnumValue<LimitSharing>>? _limitSharing5;
+        private DirtyValue<StringEnumValue<LimitSharing>>? _limitSharing6;
+        private DirtyValue<StringEnumValue<LimitSharing>>? _limitSharing7;
+        private DirtyValue<StringEnumValue<Month>>? _month;
+        private DirtyValue<StringEnumValue<NonaffiliateType>>? _nonaffiliateType;
+        private DirtyValue<string?>? _nonaffiliateTypeExample1;
+        private DirtyValue<string?>? _notesForProtectPrivacy;
+        private DirtyValue<string?>? _otherInformation;
+        private DirtyValue<string?>? _phoneForQuestion;
+        private DirtyValue<string?>? _phoneToLimit;
+        private DirtyValue<StringEnumValue<PrintSelection>>? _printSelection;
+        private DirtyValue<StringEnumValue<ShareInfoWithJointMarketing>>? _shareInfoWithJointMarketing;
+        private DirtyValue<StringEnumValue<TimesToCollect>>? _timesToCollect1;
+        private DirtyValue<StringEnumValue<TimesToCollect>>? _timesToCollect2;
+        private DirtyValue<StringEnumValue<TimesToCollect>>? _timesToCollect3;
+        private DirtyValue<StringEnumValue<TimesToCollect>>? _timesToCollect4;
+        private DirtyValue<StringEnumValue<TimesToCollect>>? _timesToCollect5;
+        private DirtyValue<string?>? _websiteForQuestion;
+        private DirtyValue<string?>? _websiteToLimit;
+        private DirtyValue<int?>? _year;
 
         /// <summary>
         /// Privacy Policy Information Describe Additional Rights to Limit Sharing [NOTICES.X78]
         /// </summary>
-        public string AdditionalRightsDescription { get => _additionalRightsDescription; set => SetField(ref _additionalRightsDescription, value); }
+        public string? AdditionalRightsDescription { get => _additionalRightsDescription; set => SetField(ref _additionalRightsDescription, value); }
 
         /// <summary>
         /// Privacy Policy Information Do You Have Affiliates? [NOTICES.X79]
@@ -69,17 +69,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Privacy Policy Information Do You Have Affiliates Example 1 [NOTICES.X80]
         /// </summary>
-        public string AffiliateTypeExample1 { get => _affiliateTypeExample1; set => SetField(ref _affiliateTypeExample1, value); }
+        public string? AffiliateTypeExample1 { get => _affiliateTypeExample1; set => SetField(ref _affiliateTypeExample1, value); }
 
         /// <summary>
         /// Privacy Policy Information Do You Have Affiliates Example 2 [NOTICES.X81]
         /// </summary>
-        public string AffiliateTypeExample2 { get => _affiliateTypeExample2; set => SetField(ref _affiliateTypeExample2, value); }
+        public string? AffiliateTypeExample2 { get => _affiliateTypeExample2; set => SetField(ref _affiliateTypeExample2, value); }
 
         /// <summary>
         /// Privacy Policy Information Do You Have Affiliates Example 3 [NOTICES.X82]
         /// </summary>
-        public string AffiliateTypeExample3 { get => _affiliateTypeExample3; set => SetField(ref _affiliateTypeExample3, value); }
+        public string? AffiliateTypeExample3 { get => _affiliateTypeExample3; set => SetField(ref _affiliateTypeExample3, value); }
 
         /// <summary>
         /// Privacy Policy Information Institutions that collect personal information from their affiliates and credit bureaus [NOTICES.X94]
@@ -99,7 +99,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PrivacyPolicy Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Privacy Policy Reasons We Can Share Your Personal Information 1 [NOTICES.X58]
@@ -169,7 +169,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Privacy Policy Information Do You Have Joint Marketing Example 1 [NOTICES.X86]
         /// </summary>
-        public string JointMarketTypeExample1 { get => _jointMarketTypeExample1; set => SetField(ref _jointMarketTypeExample1, value); }
+        public string? JointMarketTypeExample1 { get => _jointMarketTypeExample1; set => SetField(ref _jointMarketTypeExample1, value); }
 
         /// <summary>
         /// Privacy Policy Reasons We Can Share Your Personal Information Limit Sharing 1 [NOTICES.X65]
@@ -219,29 +219,29 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Privacy Policy Information Do You Have Nonaffiliates Example 1 [NOTICES.X84]
         /// </summary>
-        public string NonaffiliateTypeExample1 { get => _nonaffiliateTypeExample1; set => SetField(ref _nonaffiliateTypeExample1, value); }
+        public string? NonaffiliateTypeExample1 { get => _nonaffiliateTypeExample1; set => SetField(ref _nonaffiliateTypeExample1, value); }
 
         /// <summary>
         /// Privacy Policy How Does Company Protect My Personal Information [NOTICES.X72]
         /// </summary>
-        public string NotesForProtectPrivacy { get => _notesForProtectPrivacy; set => SetField(ref _notesForProtectPrivacy, value); }
+        public string? NotesForProtectPrivacy { get => _notesForProtectPrivacy; set => SetField(ref _notesForProtectPrivacy, value); }
 
         /// <summary>
         /// Privacy Policy Information Other Information [NOTICES.X87]
         /// </summary>
-        public string OtherInformation { get => _otherInformation; set => SetField(ref _otherInformation, value); }
+        public string? OtherInformation { get => _otherInformation; set => SetField(ref _otherInformation, value); }
 
         /// <summary>
         /// Privacy Policy Information Phone Number for Question [NOTICES.X92]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string PhoneForQuestion { get => _phoneForQuestion; set => SetField(ref _phoneForQuestion, value); }
+        public string? PhoneForQuestion { get => _phoneForQuestion; set => SetField(ref _phoneForQuestion, value); }
 
         /// <summary>
         /// Privacy Policy Information Phone Number for Limit Our Sharing [NOTICES.X89]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string PhoneToLimit { get => _phoneToLimit; set => SetField(ref _phoneToLimit, value); }
+        public string? PhoneToLimit { get => _phoneToLimit; set => SetField(ref _phoneToLimit, value); }
 
         /// <summary>
         /// Privacy Policy Information Selection [NOTICES.X51]
@@ -281,12 +281,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Privacy Policy Information Website for Question [NOTICES.X93]
         /// </summary>
-        public string WebsiteForQuestion { get => _websiteForQuestion; set => SetField(ref _websiteForQuestion, value); }
+        public string? WebsiteForQuestion { get => _websiteForQuestion; set => SetField(ref _websiteForQuestion, value); }
 
         /// <summary>
         /// Privacy Policy Information Website for Limit Our Sharing [NOTICES.X90]
         /// </summary>
-        public string WebsiteToLimit { get => _websiteToLimit; set => SetField(ref _websiteToLimit, value); }
+        public string? WebsiteToLimit { get => _websiteToLimit; set => SetField(ref _websiteToLimit, value); }
 
         /// <summary>
         /// Privacy Policy Year [NOTICES.X99]

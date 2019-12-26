@@ -19,19 +19,19 @@ namespace EncompassRest.Services.Flood
         /// The product details object contains information about the Flood product to order.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public FloodProductDetails ProductDetails { get; set; }
+        public FloodProductDetails? ProductDetails { get; set; }
 
         /// <summary>
         /// The ServiceLink Account identifier for the servicer to whom the Flood certification is being transfered to.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string NewServicerAccountId { get; set; }
+        public string? NewServicerAccountId { get; set; }
 
         /// <summary>
         /// Reference to a previously placed service request.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string ReferenceTransactionId { get; set; }
+        public string? ReferenceTransactionId { get; set; }
 
         /// <summary>
         /// Name of the Flood product being requested.
@@ -51,14 +51,14 @@ namespace EncompassRest.Services.Flood
         /// Product code corresponding to the Flood product being requested.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string ProductIdentifier { get; set; }
+        public string? ProductIdentifier { get; set; }
 
         /// <summary>
         /// FloodOptions constructor.
         /// </summary>
         /// <param name="requestType">The type of Flood service request being placed.</param>
         public FloodOptions(FloodRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).GetValue())
+            : this(requestType.Validate(nameof(requestType)).GetValue()!)
         {
         }
 

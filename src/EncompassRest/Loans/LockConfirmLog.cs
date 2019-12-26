@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,27 +9,27 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LockConfirmLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<bool?> _alertIndicator;
-        private DirtyList<LogAlert> _alerts;
-        private DirtyValue<DateTime?> _buySideExpirationDate;
-        private DirtyList<LogComment> _commentList;
-        private DirtyValue<string> _comments;
-        private DirtyValue<string> _confirmedBy;
-        private DirtyValue<string> _confirmedById;
-        private DirtyValue<bool?> _confirmedByIdIndicator;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
-        private DirtyValue<string> _guid;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private DirtyValue<int?> _logRecordIndex;
-        private DirtyValue<string> _requestGuid;
-        private DirtyValue<string> _sellSideDeliveredBy;
-        private DirtyValue<DateTime?> _sellSideDeliveryDate;
-        private DirtyValue<DateTime?> _sellSideExpirationDate;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<string> _timeConfirmed;
-        private DirtyValue<DateTime?> _updatedDateUtc;
+        private DirtyValue<bool?>? _alertIndicator;
+        private DirtyList<LogAlert>? _alerts;
+        private DirtyValue<DateTime?>? _buySideExpirationDate;
+        private DirtyList<LogComment>? _commentList;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<string?>? _confirmedBy;
+        private DirtyValue<string?>? _confirmedById;
+        private DirtyValue<bool?>? _confirmedByIdIndicator;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<bool?>? _fileAttachmentsMigrated;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<int?>? _logRecordIndex;
+        private DirtyValue<string?>? _requestGuid;
+        private DirtyValue<string?>? _sellSideDeliveredBy;
+        private DirtyValue<DateTime?>? _sellSideDeliveryDate;
+        private DirtyValue<DateTime?>? _sellSideExpirationDate;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<string?>? _timeConfirmed;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
 
         /// <summary>
         /// LockConfirmLog AlertIndicator
@@ -38,6 +39,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog Alerts
         /// </summary>
+        [AllowNull]
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
 
         /// <summary>
@@ -48,22 +50,23 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog CommentList
         /// </summary>
+        [AllowNull]
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
 
         /// <summary>
         /// LockConfirmLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// LockConfirmLog ConfirmedBy
         /// </summary>
-        public string ConfirmedBy { get => _confirmedBy; set => SetField(ref _confirmedBy, value); }
+        public string? ConfirmedBy { get => _confirmedBy; set => SetField(ref _confirmedBy, value); }
 
         /// <summary>
         /// LockConfirmLog ConfirmedById
         /// </summary>
-        public string ConfirmedById { get => _confirmedById; set => SetField(ref _confirmedById, value); }
+        public string? ConfirmedById { get => _confirmedById; set => SetField(ref _confirmedById, value); }
 
         /// <summary>
         /// LockConfirmLog ConfirmedByIdIndicator
@@ -83,12 +86,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// LockConfirmLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// LockConfirmLog IsSystemSpecificIndicator
@@ -103,12 +106,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog RequestGuid
         /// </summary>
-        public string RequestGuid { get => _requestGuid; set => SetField(ref _requestGuid, value); }
+        public string? RequestGuid { get => _requestGuid; set => SetField(ref _requestGuid, value); }
 
         /// <summary>
         /// LockConfirmLog SellSideDeliveredBy
         /// </summary>
-        public string SellSideDeliveredBy { get => _sellSideDeliveredBy; set => SetField(ref _sellSideDeliveredBy, value); }
+        public string? SellSideDeliveredBy { get => _sellSideDeliveredBy; set => SetField(ref _sellSideDeliveredBy, value); }
 
         /// <summary>
         /// LockConfirmLog SellSideDeliveryDate
@@ -123,12 +126,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// LockConfirmLog TimeConfirmed
         /// </summary>
-        public string TimeConfirmed { get => _timeConfirmed; set => SetField(ref _timeConfirmed, value); }
+        public string? TimeConfirmed { get => _timeConfirmed; set => SetField(ref _timeConfirmed, value); }
 
         /// <summary>
         /// LockConfirmLog UpdatedDateUtc

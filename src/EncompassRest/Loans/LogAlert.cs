@@ -7,13 +7,13 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LogAlert : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<DateTime?> _dueDate;
-        private DirtyValue<DateTime?> _followedUpDate;
-        private DirtyValue<string> _id;
-        private DirtyValue<LogRecord> _logRecord;
-        private DirtyValue<int?> _roleId;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<string> _userId;
+        private DirtyValue<DateTime?>? _dueDate;
+        private DirtyValue<DateTime?>? _followedUpDate;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<LogRecord>? _logRecord;
+        private DirtyValue<int?>? _roleId;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<string?>? _userId;
 
         /// <summary>
         /// LogAlert DueDate
@@ -28,7 +28,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogAlert Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// LogAlert LogRecord (Nullable)
@@ -43,11 +43,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogAlert SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// LogAlert UserId
         /// </summary>
-        public string UserId { get => _userId; set => SetField(ref _userId, value); }
+        public string? UserId { get => _userId; set => SetField(ref _userId, value); }
     }
 }

@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class EditAttachmentsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _deleteAttachments;
+        private DirtyValue<bool?>? _deleteAttachments;
 
         /// <summary>
         /// EditAttachmentsRights DeleteAttachments

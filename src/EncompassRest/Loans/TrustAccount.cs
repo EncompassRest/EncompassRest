@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
@@ -8,11 +9,11 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class TrustAccount : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _balance;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _total1;
-        private DirtyValue<decimal?> _total2;
-        private DirtyList<TrustAccountItem> _trustAccountItems;
+        private DirtyValue<decimal?>? _balance;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _total1;
+        private DirtyValue<decimal?>? _total2;
+        private DirtyList<TrustAccountItem>? _trustAccountItems;
 
         /// <summary>
         /// Trust Acct Balance [TABALANCE]
@@ -23,7 +24,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// TrustAccount Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Trust Acct Pymts Total [TATOTAL1]
@@ -40,6 +41,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// TrustAccount TrustAccountItems
         /// </summary>
+        [AllowNull]
         public IList<TrustAccountItem> TrustAccountItems { get => GetField(ref _trustAccountItems); set => SetField(ref _trustAccountItems, value); }
     }
 }

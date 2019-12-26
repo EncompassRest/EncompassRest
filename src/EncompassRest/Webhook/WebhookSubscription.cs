@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using EncompassRest.Utilities;
 using EnumsNET;
@@ -13,58 +12,60 @@ namespace EncompassRest.Webhook
     /// </summary>
     public sealed class WebhookSubscription : DirtyExtensibleObject, IIdentifiable
     {
-        private string _subscriptionId;
-        private WebhookFilters _filters;
-        private NeverSerializeValue<string> _clientId;
-        private NeverSerializeValue<string> _objectUrn;
-        private List<StringEnumValue<WebhookResourceEvent>> _events;
-        private NeverSerializeValue<string> _instanceId;
-        private string _endpoint;
+        private string? _subscriptionId;
+        private WebhookFilters? _filters;
+        private NeverSerializeValue<string?>? _clientId;
+        private NeverSerializeValue<string?>? _objectUrn;
+        private List<StringEnumValue<WebhookResourceEvent>>? _events;
+        private NeverSerializeValue<string?>? _instanceId;
+        private string? _endpoint;
         private StringEnumValue<WebhookResourceType> _resource;
-        private string _signingKey;
+        private string? _signingKey;
 
         /// <summary>
         /// Unique identifier of the subscription.
         /// </summary>
-        public string SubscriptionId { get => _subscriptionId; set => SetField(ref _subscriptionId, value); }
+        public string? SubscriptionId { get => _subscriptionId; set => SetField(ref _subscriptionId, value); }
 
         /// <summary>
         /// List of attribute paths to which to subscribe.
         /// </summary>
+        [AllowNull]
         public WebhookFilters Filters { get => GetField(ref _filters); set => SetField(ref _filters, value); }
 
         /// <summary>
         /// Unique identifier per client assigned by Ellie Mae.
         /// </summary>
-        public string ClientId { get => _clientId; set => SetField(ref _clientId, value); }
+        public string? ClientId { get => _clientId; set => SetField(ref _clientId, value); }
 
         /// <summary>
         /// URN format of the subscribed resource.
         /// </summary>
-        public string ObjectUrn { get => _objectUrn; set => SetField(ref _objectUrn, value); }
+        public string? ObjectUrn { get => _objectUrn; set => SetField(ref _objectUrn, value); }
 
         /// <summary>
         /// Defines the events that make up the subscription.
         /// </summary>
         [JsonRequired]
+        [AllowNull]
         public IList<StringEnumValue<WebhookResourceEvent>> Events { get => GetField(ref _events); set => SetField(ref _events, value?.ToList()); }
 
         /// <summary>
         /// Subscriber's Encompass instance ID.
         /// </summary>
-        public string InstanceId { get => _instanceId; set => SetField(ref _instanceId, value); }
+        public string? InstanceId { get => _instanceId; set => SetField(ref _instanceId, value); }
 
         /// <summary>
         /// The callback URL where the event notification will be delivered. The URL is expected to be a functioning and reliable HTTPS URL that is known only to the subscriber (a client's application). The callback URLs need to be under one base domain.
         /// </summary>
         [JsonRequired]
-        public string Endpoint { get => _endpoint; set => SetField(ref _endpoint, value); }
+        public string? Endpoint { get => _endpoint; set => SetField(ref _endpoint, value); }
 
         /// <summary>
         /// The password to assign to the subscription.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string SigningKey { get => _signingKey; set => SetField(ref _signingKey, value); }
+        public string? SigningKey { get => _signingKey; set => SetField(ref _signingKey, value); }
 
         /// <summary>
         /// Refers to the resource that is part of subscription.
@@ -73,7 +74,7 @@ namespace EncompassRest.Webhook
         public StringEnumValue<WebhookResourceType> Resource { get => _resource; set => SetField(ref _resource, value); }
 
         [IdPropertyName(nameof(SubscriptionId))]
-        string IIdentifiable.Id { get => SubscriptionId; set => SubscriptionId = value; }
+        string? IIdentifiable.Id { get => SubscriptionId; set => SubscriptionId = value; }
 
         /// <summary>
         /// WebhookSubscription constructor.
@@ -82,7 +83,7 @@ namespace EncompassRest.Webhook
         /// <param name="resource">Refers to the resource that is part of subscription.</param>
         /// <param name="events">Defines the events that make up the subscription.</param>
         public WebhookSubscription(string endpoint, WebhookResourceType resource, IEnumerable<WebhookResourceEvent> events)
-            : this(endpoint, resource.Validate(nameof(resource)).GetValue(), events?.Select(e => e.Validate(nameof(events)).GetValue()))
+            : this(endpoint, resource.Validate(nameof(resource)).GetValue()!, events.Select(e => e.Validate(nameof(events)).GetValue()!))
         {
         }
 

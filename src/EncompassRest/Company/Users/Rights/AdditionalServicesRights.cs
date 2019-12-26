@@ -7,24 +7,24 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AdditionalServicesRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _n4506TService;
-        private DirtyValue<bool?> _appraisalService;
-        private DirtyValue<bool?> _companyStatusOnline;
-        private DirtyValue<bool?> _complianceReviewSetup;
-        private DirtyValue<bool?> _dataTracConnection;
-        private DirtyValue<bool?> _eDocumentManagement;
-        private DirtyValue<bool?> _eDisclosureFulfillment;
-        private DirtyValue<bool?> _fannieMaeUCDTransfer;
-        private DirtyValue<bool?> _fannieMaeWorkflow;
-        private DirtyValue<bool?> _floodService;
-        private DirtyValue<bool?> _fraudService;
-        private DirtyValue<bool?> _freddieMacCAC;
-        private DirtyValue<bool?> _freddieMacLPA;
-        private DirtyValue<bool?> _freddieMacOrderAlert;
-        private DirtyValue<bool?> _mortgageInsuranceService;
-        private DirtyValue<bool?> _titleService;
-        private DirtyValue<bool?> _tQLServices;
-        private DirtyValue<bool?> _valuationService;
+        private DirtyValue<bool?>? _n4506TService;
+        private DirtyValue<bool?>? _appraisalService;
+        private DirtyValue<bool?>? _companyStatusOnline;
+        private DirtyValue<bool?>? _complianceReviewSetup;
+        private DirtyValue<bool?>? _dataTracConnection;
+        private DirtyValue<bool?>? _eDocumentManagement;
+        private DirtyValue<bool?>? _eDisclosureFulfillment;
+        private DirtyValue<bool?>? _fannieMaeUCDTransfer;
+        private DirtyValue<bool?>? _fannieMaeWorkflow;
+        private DirtyValue<bool?>? _floodService;
+        private DirtyValue<bool?>? _fraudService;
+        private DirtyValue<bool?>? _freddieMacCAC;
+        private DirtyValue<bool?>? _freddieMacLPA;
+        private DirtyValue<bool?>? _freddieMacOrderAlert;
+        private DirtyValue<bool?>? _mortgageInsuranceService;
+        private DirtyValue<bool?>? _titleService;
+        private DirtyValue<bool?>? _tQLServices;
+        private DirtyValue<bool?>? _valuationService;
 
         /// <summary>
         /// AdditionalServicesRights 4506TService

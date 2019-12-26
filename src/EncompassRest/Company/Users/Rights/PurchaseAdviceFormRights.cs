@@ -7,7 +7,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PurchaseAdviceFormRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _createEditTemplate;
+        private DirtyValue<bool?>? _createEditTemplate;
 
         /// <summary>
         /// PurchaseAdviceFormRights CreateEditTemplate

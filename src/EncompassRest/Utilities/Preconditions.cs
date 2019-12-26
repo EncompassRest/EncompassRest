@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace EncompassRest.Utilities
 {
     internal static class Preconditions
     {
-        public static void NotNull(object value, string paramName)
+        public static void NotNull([NotNull] object? value, string paramName)
         {
             if (value == null)
             {
@@ -14,7 +15,7 @@ namespace EncompassRest.Utilities
             }
         }
 
-        public static void NotNullOrEmpty<T>(IEnumerable<T> value, string paramName)
+        public static void NotNullOrEmpty<T>([NotNull] IEnumerable<T>? value, string paramName)
         {
             NotNull(value, paramName);
             if (!value.Any())
@@ -23,7 +24,7 @@ namespace EncompassRest.Utilities
             }
         }
 
-        public static void NotAnyNull<T>(IEnumerable<T> value, string paramName)
+        public static void NotAnyNull<T>([NotNull] IEnumerable<T>? value, string paramName)
             where T : class
         {
             NotNull(value, paramName);
@@ -33,7 +34,7 @@ namespace EncompassRest.Utilities
             }
         }
 
-        public static void NotNullOrEmpty(string value, string paramName)
+        public static void NotNullOrEmpty([NotNull] string? value, string paramName)
         {
             if (string.IsNullOrEmpty(value))
             {
@@ -41,7 +42,7 @@ namespace EncompassRest.Utilities
             }
         }
 
-        public static void NullOrEmpty(string value, string paramName)
+        public static void NullOrEmpty(string? value, string paramName)
         {
             if (!string.IsNullOrEmpty(value))
             {
@@ -51,7 +52,7 @@ namespace EncompassRest.Utilities
 
         public static void LessThan(int value, string paramName, int comparisonValue) => LessThan(value, paramName, comparisonValue, null);
 
-        public static void LessThan(int value, string paramName, int comparisonValue, string comparisonValueParamName)
+        public static void LessThan(int value, string paramName, int comparisonValue, string? comparisonValueParamName)
         {
             if (value >= comparisonValue)
             {
@@ -61,7 +62,7 @@ namespace EncompassRest.Utilities
 
         public static void LessThanOrEquals(int value, string paramName, int comparisonValue) => LessThanOrEquals(value, paramName, comparisonValue, null);
 
-        public static void LessThanOrEquals(int value, string paramName, int comparisonValue, string comparisonValueParamName)
+        public static void LessThanOrEquals(int value, string paramName, int comparisonValue, string? comparisonValueParamName)
         {
             if (value > comparisonValue)
             {
@@ -71,7 +72,7 @@ namespace EncompassRest.Utilities
 
         public static void GreaterThan(int value, string paramName, int comparisonValue) => GreaterThan(value, paramName, comparisonValue, null);
         
-        public static void GreaterThan(int value, string paramName, int comparisonValue, string comparisonValueParamName)
+        public static void GreaterThan(int value, string paramName, int comparisonValue, string? comparisonValueParamName)
         {
             if (value <= comparisonValue)
             {
@@ -81,7 +82,7 @@ namespace EncompassRest.Utilities
 
         public static void GreaterThanOrEquals(int value, string paramName, int comparisonValue) => GreaterThanOrEquals(value, paramName, comparisonValue, null);
 
-        public static void GreaterThanOrEquals(int value, string paramName, int comparisonValue, string comparisonValueParamName)
+        public static void GreaterThanOrEquals(int value, string paramName, int comparisonValue, string? comparisonValueParamName)
         {
             if (value < comparisonValue)
             {

@@ -12,7 +12,9 @@ namespace EncompassRest.Schema
         /// FieldOptions Options
         /// </summary>
         [JsonProperty(ItemConverterType = typeof(FieldOptionConverter))]
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         public List<FieldOption> Options { get; set; }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 
         /// <summary>
         /// FieldOptions RequireValueFromList

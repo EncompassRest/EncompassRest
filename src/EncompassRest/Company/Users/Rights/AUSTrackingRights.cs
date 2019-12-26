@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AUSTrackingRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _createManualEntry;
+        private DirtyValue<bool?>? _createManualEntry;
 
         /// <summary>
         /// AUSTrackingRights CreateManualEntry

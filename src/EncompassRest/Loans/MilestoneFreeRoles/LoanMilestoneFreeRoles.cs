@@ -24,7 +24,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetMilestoneFreeRoleRawAsync(string logId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetMilestoneFreeRoleRawAsync(string logId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves all milestone-free logs for the loan.
         /// </summary>
@@ -37,7 +37,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetMilestoneFreeRolesRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetMilestoneFreeRolesRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates the specified milestone-free role for the loan.
         /// </summary>
@@ -53,7 +53,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task UpdateMilestoneFreeRoleRawAsync(string logId, string milestoneFreeRole, string queryString = null, CancellationToken cancellationToken = default);
+        Task UpdateMilestoneFreeRoleRawAsync(string logId, string milestoneFreeRole, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetMilestoneFreeRolesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetMilestoneFreeRolesRawAsync), null, cancellationToken);
+        public Task<string> GetMilestoneFreeRolesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetMilestoneFreeRolesRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Retrieves the milestone-free log with the specified <paramref name="logId"/>.
@@ -101,7 +101,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetMilestoneFreeRoleRawAsync(string logId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetMilestoneFreeRoleRawAsync(string logId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
 
@@ -130,7 +130,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task UpdateMilestoneFreeRoleRawAsync(string logId, string milestoneFreeRole, string queryString = null, CancellationToken cancellationToken = default)
+        public Task UpdateMilestoneFreeRoleRawAsync(string logId, string milestoneFreeRole, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
             Preconditions.NotNullOrEmpty(milestoneFreeRole, nameof(milestoneFreeRole));

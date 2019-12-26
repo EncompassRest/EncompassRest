@@ -81,7 +81,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetAttachmentRawAsync(string attachmentId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetAttachmentRawAsync(string attachmentId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a list of files attached to the loan. The response includes all properties for all assigned and unassigned file attachments.
         /// </summary>
@@ -94,7 +94,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetAttachmentsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetAttachmentsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves the URL of a thumbnail image for a specified page within an attachment.
         /// </summary>
@@ -111,7 +111,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetDownloadAttachmentPageThumbnailUrlRawAsync(string attachmentId, string pageId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetDownloadAttachmentPageThumbnailUrlRawAsync(string attachmentId, string pageId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves the URL of a page within an attachment. This can be used for attachments with ids that are in GUID format.
         /// </summary>
@@ -128,7 +128,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetDownloadAttachmentPageUrlRawAsync(string attachmentId, string pageId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetDownloadAttachmentPageUrlRawAsync(string attachmentId, string pageId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves the URL for native attachment for a file in the eFolder. The attachment URL is the full URL where the attachment is located in the eFolder. Getting the attachment URL is the first step in retrieving an attachment from the eFolder. This API supports attachment ids that are in the native format. E.g. Attachment-97f0f34d-7194-4e45-941f-e680dcea91c1.txt.
         /// </summary>
@@ -143,7 +143,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetDownloadAttachmentUrlRawAsync(string attachmentId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetDownloadAttachmentUrlRawAsync(string attachmentId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves the URL for uploading an attachment. This URL is time sensitive. It must be invoked as a PUT with the attachment converted to a byteStream within the request body.
         /// </summary>
@@ -158,7 +158,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetUploadAttachmentUrlRawAsync(string attachment, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetUploadAttachmentUrlRawAsync(string attachment, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates properties for a specified file attachment.
         /// </summary>
@@ -182,7 +182,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> UpdateAttachmentRawAsync(string attachmentId, string attachment, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> UpdateAttachmentRawAsync(string attachmentId, string attachment, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Uploads the attachment and it's data to the loan and returns the uploaded attachment's id.
         /// </summary>
@@ -224,7 +224,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> UploadAttachmentRawAsync(string attachment, byte[] attachmentData, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> UploadAttachmentRawAsync(string attachment, byte[] attachmentData, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Uploads the attachment and it's data to the loan from raw json and returns the response body if not empty else the uploaded attachment's id.
         /// </summary>
@@ -233,7 +233,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, string? queryString = null, CancellationToken cancellationToken = default);
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         Task<byte[]> DownloadAttachmentFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default);
         Task<Stream> DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default);
@@ -271,7 +271,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetAttachmentsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetAttachmentsRawAsync), null, cancellationToken);
+        public Task<string> GetAttachmentsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetAttachmentsRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Retrieves properties for the file attachment with the specified <paramref name="attachmentId"/>.
@@ -311,7 +311,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetAttachmentRawAsync(string attachmentId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetAttachmentRawAsync(string attachmentId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
 
@@ -339,14 +339,14 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetUploadAttachmentUrlRawAsync(string attachment, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetUploadAttachmentUrlRawAsync(string attachment, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
 
             return GetUploadAttachmentUrlInternalAsync(queryString, new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, ReadAsStringFunc);
         }
 
-        private Task<T> GetUploadAttachmentUrlInternalAsync<T>(string queryString, HttpContent content, string methodName, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) =>
+        private Task<T> GetUploadAttachmentUrlInternalAsync<T>(string? queryString, HttpContent content, string methodName, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) =>
             PostAsync("url", queryString, content, methodName, null, cancellationToken, func);
 
         /// <summary>
@@ -410,7 +410,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public async Task<string> UploadAttachmentRawAsync(string attachment, byte[] attachmentData, string queryString = null, CancellationToken cancellationToken = default)
+        public async Task<string> UploadAttachmentRawAsync(string attachment, byte[] attachmentData, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
@@ -428,7 +428,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public async Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, string queryString = null, CancellationToken cancellationToken = default)
+        public async Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
@@ -458,7 +458,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetDownloadAttachmentUrlRawAsync(string attachmentId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetDownloadAttachmentUrlRawAsync(string attachmentId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
 
@@ -475,7 +475,7 @@ namespace EncompassRest.Loans.Attachments
         {
             var mediaUrlObject = await GetDownloadAttachmentUrlAsync(attachmentId, cancellationToken).ConfigureAwait(false);
 
-            return await ((ILoanAttachments)this).DownloadAttachmentFromMediaUrlAsync(mediaUrlObject.MediaUrl, cancellationToken).ConfigureAwait(false);
+            return await ((ILoanAttachments)this).DownloadAttachmentFromMediaUrlAsync(mediaUrlObject.MediaUrl!, cancellationToken).ConfigureAwait(false);
         }
 
         Task<byte[]> ILoanAttachments.DownloadAttachmentFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentAsync), null, cancellationToken, ReadAsByteArrayFunc);
@@ -490,7 +490,7 @@ namespace EncompassRest.Loans.Attachments
         {
             var mediaUrlObject = await GetDownloadAttachmentUrlAsync(attachmentId, cancellationToken).ConfigureAwait(false);
 
-            return await ((ILoanAttachments)this).DownloadAttachmentStreamFromMediaUrlAsync(mediaUrlObject.MediaUrl, cancellationToken).ConfigureAwait(false);
+            return await ((ILoanAttachments)this).DownloadAttachmentStreamFromMediaUrlAsync(mediaUrlObject.MediaUrl!, cancellationToken).ConfigureAwait(false);
         }
 
         Task<Stream> ILoanAttachments.DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentStreamAsync), null, cancellationToken, ReadAsStreamFunc, true, false);
@@ -518,7 +518,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetDownloadAttachmentPageThumbnailUrlRawAsync(string attachmentId, string pageId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetDownloadAttachmentPageThumbnailUrlRawAsync(string attachmentId, string pageId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
             Preconditions.NotNullOrEmpty(pageId, nameof(pageId));
@@ -577,7 +577,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetDownloadAttachmentPageUrlRawAsync(string attachmentId, string pageId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetDownloadAttachmentPageUrlRawAsync(string attachmentId, string pageId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
             Preconditions.NotNullOrEmpty(pageId, nameof(pageId));
@@ -645,7 +645,7 @@ namespace EncompassRest.Loans.Attachments
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> UpdateAttachmentRawAsync(string attachmentId, string attachment, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> UpdateAttachmentRawAsync(string attachmentId, string attachment, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));

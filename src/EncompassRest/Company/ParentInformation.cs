@@ -5,7 +5,7 @@
     /// </summary>
     public abstract class ParentInformation : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _useParentInformation;
+        private DirtyValue<bool?>? _useParentInformation;
 
         /// <summary>
         /// Indicates whether to use the parent information above it. Changes made to the parent's information are reflected in this entity.

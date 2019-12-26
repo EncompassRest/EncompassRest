@@ -7,32 +7,32 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ClosingDisclosure2 : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _borrowerClosingCostAtClosing;
-        private DirtyValue<decimal?> _borrowerClosingCostBeforeClosing;
-        private DirtyValue<decimal?> _closingCostLenderCredits;
-        private DirtyValue<decimal?> _closingCostPaidByOthers;
-        private DirtyValue<decimal?> _discloseLenderCredits;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _initialEscrowSubTotal;
-        private DirtyValue<decimal?> _lastDisclosedLenderCredits;
-        private DirtyValue<decimal?> _lastDisclosedLoanCosts;
-        private DirtyValue<decimal?> _lastDisclosedOtherCosts;
-        private DirtyValue<decimal?> _lCAtClosing;
-        private DirtyValue<decimal?> _originationChargesSubTotal;
-        private DirtyValue<decimal?> _otherSubTotal;
-        private DirtyValue<decimal?> _prepaidsSubTotal;
-        private DirtyValue<decimal?> _sellerClosingCostAtClosing;
-        private DirtyValue<decimal?> _sellerClosingCostBeforeClosing;
-        private DirtyValue<decimal?> _servicesDidNotShopSubTotal;
-        private DirtyValue<decimal?> _servicesDidShopSubTotal;
-        private DirtyValue<decimal?> _taxesGovermentFeesSubTotal;
-        private DirtyValue<decimal?> _totalBorrowerPaidAtClosing;
-        private DirtyValue<decimal?> _totalBorrowerPaidBeforeClosing;
-        private DirtyValue<decimal?> _totalClosingCost;
-        private DirtyValue<decimal?> _totalLoanCost;
-        private DirtyValue<decimal?> _totalOtherCost;
-        private DirtyValue<decimal?> _totalOtherCostAtClosing;
-        private DirtyValue<decimal?> _totalOtherCostBeforeClosing;
+        private DirtyValue<decimal?>? _borrowerClosingCostAtClosing;
+        private DirtyValue<decimal?>? _borrowerClosingCostBeforeClosing;
+        private DirtyValue<decimal?>? _closingCostLenderCredits;
+        private DirtyValue<decimal?>? _closingCostPaidByOthers;
+        private DirtyValue<decimal?>? _discloseLenderCredits;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _initialEscrowSubTotal;
+        private DirtyValue<decimal?>? _lastDisclosedLenderCredits;
+        private DirtyValue<decimal?>? _lastDisclosedLoanCosts;
+        private DirtyValue<decimal?>? _lastDisclosedOtherCosts;
+        private DirtyValue<decimal?>? _lCAtClosing;
+        private DirtyValue<decimal?>? _originationChargesSubTotal;
+        private DirtyValue<decimal?>? _otherSubTotal;
+        private DirtyValue<decimal?>? _prepaidsSubTotal;
+        private DirtyValue<decimal?>? _sellerClosingCostAtClosing;
+        private DirtyValue<decimal?>? _sellerClosingCostBeforeClosing;
+        private DirtyValue<decimal?>? _servicesDidNotShopSubTotal;
+        private DirtyValue<decimal?>? _servicesDidShopSubTotal;
+        private DirtyValue<decimal?>? _taxesGovermentFeesSubTotal;
+        private DirtyValue<decimal?>? _totalBorrowerPaidAtClosing;
+        private DirtyValue<decimal?>? _totalBorrowerPaidBeforeClosing;
+        private DirtyValue<decimal?>? _totalClosingCost;
+        private DirtyValue<decimal?>? _totalLoanCost;
+        private DirtyValue<decimal?>? _totalOtherCost;
+        private DirtyValue<decimal?>? _totalOtherCostAtClosing;
+        private DirtyValue<decimal?>? _totalOtherCostBeforeClosing;
 
         /// <summary>
         /// Closing disclosure - Borrower Paid Closing Cost At Closing [CD2.XBCCAC]
@@ -67,7 +67,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ClosingDisclosure2 Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Closing disclosure - G. Initial Escrow Payment at Closing [CD2.XSTG]

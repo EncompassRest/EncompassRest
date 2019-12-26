@@ -8,116 +8,116 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Hmda : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<ActionTaken>> _actionTaken;
-        private DirtyValue<string> _applicationDate;
-        private DirtyValue<StringEnumValue<AUS>> _aUS1;
-        private DirtyValue<StringEnumValue<AUS>> _aUS2;
-        private DirtyValue<StringEnumValue<AUS>> _aUS3;
-        private DirtyValue<StringEnumValue<AUS>> _aUS4;
-        private DirtyValue<StringEnumValue<AUS>> _aUS5;
-        private DirtyValue<StringEnumValue<AUSRecommendation>> _aUSRecommendation1;
-        private DirtyValue<StringEnumValue<AUSRecommendation>> _aUSRecommendation2;
-        private DirtyValue<StringEnumValue<AUSRecommendation>> _aUSRecommendation3;
-        private DirtyValue<StringEnumValue<AUSRecommendation>> _aUSRecommendation4;
-        private DirtyValue<StringEnumValue<AUSRecommendation>> _aUSRecommendation5;
-        private DirtyValue<StringEnumValue<YNOrExempt>> _balloonIndicator;
-        private DirtyValue<StringEnumValue<BusinessOrCommercialPurpose>> _businessOrCommercialPurpose;
-        private DirtyValue<bool?> _cDRequired;
-        private DirtyValue<string> _censusTrack;
-        private DirtyValue<NA<decimal>> _cLTV;
-        private DirtyValue<string> _contactEmailAddress;
-        private DirtyValue<string> _contactFaxNumber;
-        private DirtyValue<string> _contactName;
-        private DirtyValue<string> _contactOfficeCity;
-        private DirtyValue<StringEnumValue<State>> _contactOfficeState;
-        private DirtyValue<string> _contactOfficeStreetAddress;
-        private DirtyValue<string> _contactOfficeZIPCode;
-        private DirtyValue<string> _contactPhoneNumber;
-        private DirtyValue<string> _countyCode;
-        private DirtyValue<NA<decimal>> _debtToIncomeRatio;
-        private DirtyValue<StringEnumValue<DenialReason>> _denialReason1;
-        private DirtyValue<StringEnumValue<DenialReason>> _denialReason2;
-        private DirtyValue<StringEnumValue<DenialReason>> _denialReason3;
-        private DirtyValue<StringEnumValue<DenialReason>> _denialReason4;
-        private DirtyValue<NA<decimal>> _discountPoints;
-        private DirtyValue<bool?> _excludeLoanFromHMDAReportIndicator;
-        private DirtyValue<StringEnumValue<FederalAgency>> _federalAgency;
-        private DirtyValue<string> _federalTaxpayerIdNumber;
-        private DirtyValue<string> _financialInstitutionName;
-        private DirtyValue<StringEnumValue<YNOrExempt>> _hmda2InterestOnlyIndicator;
-        private DirtyValue<string> _hMDACensusTrack;
-        private DirtyValue<bool?> _hmdaCltvIndicator;
-        private DirtyValue<string> _hMDACountyCode;
-        private DirtyValue<bool?> _hmdaDtiIndicator;
-        private DirtyValue<bool?> _hmdaIncomeIndicator;
-        private DirtyValue<bool?> _hmdaInterestOnlyIndicator;
-        private DirtyValue<StringEnumValue<HmdaLoanPurpose>> _hMDALoanPurpose;
-        private DirtyValue<string> _hMDAProfileApplicationDateValue;
-        private DirtyValue<string> _hMDAProfileCLTVValue;
-        private DirtyValue<string> _hMDAProfileDTIValue;
-        private DirtyValue<string> _hMDAProfileID;
-        private DirtyValue<string> _hMDAProfileIncomeValue;
-        private DirtyValue<string> _hmdaPropertyAddress;
-        private DirtyValue<string> _hmdaPropertyCity;
-        private DirtyValue<StringEnumValue<State>> _hmdaPropertyState;
-        private DirtyValue<bool?> _hmdaPropertyValueNotReliedUponIndicator;
-        private DirtyValue<string> _hmdaPropertyZipCode;
-        private DirtyValue<bool?> _hmdaSyncAddressIndicator;
-        private DirtyValue<StringEnumValue<HOEPAStatus>> _hOEPAStatus;
-        private DirtyValue<string> _id;
-        private DirtyValue<NA<decimal>> _income;
-        private DirtyValue<decimal?> _incomeExcludedFromHmda;
-        private DirtyValue<StringEnumValue<InitiallyPayableToYourInstitution>> _initiallyPayableToYourInstitution;
-        private DirtyValue<NA<decimal>> _interestRate;
-        private DirtyValue<string> _introRatePeriod;
-        private DirtyValue<string> _legalEntityIdentifier;
-        private DirtyValue<string> _legalEntityIdentifierReporting;
-        private DirtyValue<StringEnumValue<LegalEntityIdentifierUsed>> _legalEntityIdentifierUsed;
-        private DirtyValue<NA<decimal>> _lenderCredits;
-        private DirtyValue<StringEnumValue<LienStatus>> _lienStatus;
-        private DirtyValue<decimal?> _loanAmount;
-        private DirtyValue<StringEnumValue<YNOrExempt>> _loanBalanceRiseIndicator;
-        private DirtyValue<StringEnumValue<HmdaLoanPurpose>> _loanPurpose;
-        private DirtyValue<string> _loanTerm;
-        private DirtyValue<StringEnumValue<HmdaLoanType>> _loanType;
-        private DirtyValue<StringEnumValue<ManufacturedHomeLandPropertyInterest>> _manufacturedHomeLandPropertyInterest;
-        private DirtyValue<StringEnumValue<ManufacturedSecuredProperyType>> _manufacturedSecuredProperyType;
-        private DirtyValue<string> _mSANumber;
-        private DirtyValue<string> _multifamilyNoUnits;
-        private DirtyValue<string> _nMLSLoanOriginatorID;
-        private DirtyValue<StringEnumValue<OpenEndLineOfCredit>> _openEndLineOfCredit;
-        private DirtyValue<string> _originationCharges;
-        private DirtyValue<string> _otherAUS;
-        private DirtyValue<string> _otherAUSRecommendations;
-        private DirtyValue<string> _otherDenialReason;
-        private DirtyValue<StringEnumValue<OtherNonAmortization>> _otherNonAmortization;
-        private DirtyValue<string> _parentAddress;
-        private DirtyValue<string> _parentCity;
-        private DirtyValue<string> _parentName;
-        private DirtyValue<StringEnumValue<State>> _parentState;
-        private DirtyValue<string> _parentZip;
-        private DirtyValue<bool?> _partiallyExemptLoanIndicator;
-        private DirtyValue<StringEnumValue<Preapprovals>> _preapprovals;
-        private DirtyValue<string> _prepaymentPenaltyPeriod;
-        private DirtyValue<StringEnumValue<HmdaPropertyType>> _propertyType;
-        private DirtyValue<NA<decimal>> _propertyValue;
-        private DirtyValue<StringEnumValue<QMStatus>> _qMStatus;
-        private DirtyValue<NA<decimal>> _rateSpread;
-        private DirtyValue<int?> _reportingYear;
-        private DirtyValue<bool?> _reportPurposeOfLoanIndicator;
-        private DirtyValue<string> _repurchasedActionDate;
-        private DirtyValue<StringEnumValue<ActionTaken>> _repurchasedActionTaken;
-        private DirtyValue<decimal?> _repurchasedLoanAmount;
-        private DirtyValue<int?> _repurchasedReportingYear;
-        private DirtyValue<StringEnumValue<TypeOfPurchaser>> _repurchasedTypeOfPurchaser;
-        private DirtyValue<string> _respondentID;
-        private DirtyValue<StringEnumValue<ReverseMortgage>> _reverseMortgage;
-        private DirtyValue<string> _stateCode;
-        private DirtyValue<StringEnumValue<SubmissionOfApplication>> _submissionOfApplication;
-        private DirtyValue<string> _totalLoanCosts;
-        private DirtyValue<string> _totalPointsAndFees;
-        private DirtyValue<StringEnumValue<TypeOfPurchaser>> _typeOfPurchaser;
-        private DirtyValue<string> _universalLoanId;
+        private DirtyValue<StringEnumValue<ActionTaken>>? _actionTaken;
+        private DirtyValue<string?>? _applicationDate;
+        private DirtyValue<StringEnumValue<AUS>>? _aUS1;
+        private DirtyValue<StringEnumValue<AUS>>? _aUS2;
+        private DirtyValue<StringEnumValue<AUS>>? _aUS3;
+        private DirtyValue<StringEnumValue<AUS>>? _aUS4;
+        private DirtyValue<StringEnumValue<AUS>>? _aUS5;
+        private DirtyValue<StringEnumValue<AUSRecommendation>>? _aUSRecommendation1;
+        private DirtyValue<StringEnumValue<AUSRecommendation>>? _aUSRecommendation2;
+        private DirtyValue<StringEnumValue<AUSRecommendation>>? _aUSRecommendation3;
+        private DirtyValue<StringEnumValue<AUSRecommendation>>? _aUSRecommendation4;
+        private DirtyValue<StringEnumValue<AUSRecommendation>>? _aUSRecommendation5;
+        private DirtyValue<StringEnumValue<YNOrExempt>>? _balloonIndicator;
+        private DirtyValue<StringEnumValue<BusinessOrCommercialPurpose>>? _businessOrCommercialPurpose;
+        private DirtyValue<bool?>? _cDRequired;
+        private DirtyValue<string?>? _censusTrack;
+        private DirtyValue<NA<decimal>>? _cLTV;
+        private DirtyValue<string?>? _contactEmailAddress;
+        private DirtyValue<string?>? _contactFaxNumber;
+        private DirtyValue<string?>? _contactName;
+        private DirtyValue<string?>? _contactOfficeCity;
+        private DirtyValue<StringEnumValue<State>>? _contactOfficeState;
+        private DirtyValue<string?>? _contactOfficeStreetAddress;
+        private DirtyValue<string?>? _contactOfficeZIPCode;
+        private DirtyValue<string?>? _contactPhoneNumber;
+        private DirtyValue<string?>? _countyCode;
+        private DirtyValue<NA<decimal>>? _debtToIncomeRatio;
+        private DirtyValue<StringEnumValue<DenialReason>>? _denialReason1;
+        private DirtyValue<StringEnumValue<DenialReason>>? _denialReason2;
+        private DirtyValue<StringEnumValue<DenialReason>>? _denialReason3;
+        private DirtyValue<StringEnumValue<DenialReason>>? _denialReason4;
+        private DirtyValue<NA<decimal>>? _discountPoints;
+        private DirtyValue<bool?>? _excludeLoanFromHMDAReportIndicator;
+        private DirtyValue<StringEnumValue<FederalAgency>>? _federalAgency;
+        private DirtyValue<string?>? _federalTaxpayerIdNumber;
+        private DirtyValue<string?>? _financialInstitutionName;
+        private DirtyValue<StringEnumValue<YNOrExempt>>? _hmda2InterestOnlyIndicator;
+        private DirtyValue<string?>? _hMDACensusTrack;
+        private DirtyValue<bool?>? _hmdaCltvIndicator;
+        private DirtyValue<string?>? _hMDACountyCode;
+        private DirtyValue<bool?>? _hmdaDtiIndicator;
+        private DirtyValue<bool?>? _hmdaIncomeIndicator;
+        private DirtyValue<bool?>? _hmdaInterestOnlyIndicator;
+        private DirtyValue<StringEnumValue<HmdaLoanPurpose>>? _hMDALoanPurpose;
+        private DirtyValue<string?>? _hMDAProfileApplicationDateValue;
+        private DirtyValue<string?>? _hMDAProfileCLTVValue;
+        private DirtyValue<string?>? _hMDAProfileDTIValue;
+        private DirtyValue<string?>? _hMDAProfileID;
+        private DirtyValue<string?>? _hMDAProfileIncomeValue;
+        private DirtyValue<string?>? _hmdaPropertyAddress;
+        private DirtyValue<string?>? _hmdaPropertyCity;
+        private DirtyValue<StringEnumValue<State>>? _hmdaPropertyState;
+        private DirtyValue<bool?>? _hmdaPropertyValueNotReliedUponIndicator;
+        private DirtyValue<string?>? _hmdaPropertyZipCode;
+        private DirtyValue<bool?>? _hmdaSyncAddressIndicator;
+        private DirtyValue<StringEnumValue<HOEPAStatus>>? _hOEPAStatus;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<NA<decimal>>? _income;
+        private DirtyValue<decimal?>? _incomeExcludedFromHmda;
+        private DirtyValue<StringEnumValue<InitiallyPayableToYourInstitution>>? _initiallyPayableToYourInstitution;
+        private DirtyValue<NA<decimal>>? _interestRate;
+        private DirtyValue<string?>? _introRatePeriod;
+        private DirtyValue<string?>? _legalEntityIdentifier;
+        private DirtyValue<string?>? _legalEntityIdentifierReporting;
+        private DirtyValue<StringEnumValue<LegalEntityIdentifierUsed>>? _legalEntityIdentifierUsed;
+        private DirtyValue<NA<decimal>>? _lenderCredits;
+        private DirtyValue<StringEnumValue<LienStatus>>? _lienStatus;
+        private DirtyValue<decimal?>? _loanAmount;
+        private DirtyValue<StringEnumValue<YNOrExempt>>? _loanBalanceRiseIndicator;
+        private DirtyValue<StringEnumValue<HmdaLoanPurpose>>? _loanPurpose;
+        private DirtyValue<string?>? _loanTerm;
+        private DirtyValue<StringEnumValue<HmdaLoanType>>? _loanType;
+        private DirtyValue<StringEnumValue<ManufacturedHomeLandPropertyInterest>>? _manufacturedHomeLandPropertyInterest;
+        private DirtyValue<StringEnumValue<ManufacturedSecuredProperyType>>? _manufacturedSecuredProperyType;
+        private DirtyValue<string?>? _mSANumber;
+        private DirtyValue<string?>? _multifamilyNoUnits;
+        private DirtyValue<string?>? _nMLSLoanOriginatorID;
+        private DirtyValue<StringEnumValue<OpenEndLineOfCredit>>? _openEndLineOfCredit;
+        private DirtyValue<string?>? _originationCharges;
+        private DirtyValue<string?>? _otherAUS;
+        private DirtyValue<string?>? _otherAUSRecommendations;
+        private DirtyValue<string?>? _otherDenialReason;
+        private DirtyValue<StringEnumValue<OtherNonAmortization>>? _otherNonAmortization;
+        private DirtyValue<string?>? _parentAddress;
+        private DirtyValue<string?>? _parentCity;
+        private DirtyValue<string?>? _parentName;
+        private DirtyValue<StringEnumValue<State>>? _parentState;
+        private DirtyValue<string?>? _parentZip;
+        private DirtyValue<bool?>? _partiallyExemptLoanIndicator;
+        private DirtyValue<StringEnumValue<Preapprovals>>? _preapprovals;
+        private DirtyValue<string?>? _prepaymentPenaltyPeriod;
+        private DirtyValue<StringEnumValue<HmdaPropertyType>>? _propertyType;
+        private DirtyValue<NA<decimal>>? _propertyValue;
+        private DirtyValue<StringEnumValue<QMStatus>>? _qMStatus;
+        private DirtyValue<NA<decimal>>? _rateSpread;
+        private DirtyValue<int?>? _reportingYear;
+        private DirtyValue<bool?>? _reportPurposeOfLoanIndicator;
+        private DirtyValue<string?>? _repurchasedActionDate;
+        private DirtyValue<StringEnumValue<ActionTaken>>? _repurchasedActionTaken;
+        private DirtyValue<decimal?>? _repurchasedLoanAmount;
+        private DirtyValue<int?>? _repurchasedReportingYear;
+        private DirtyValue<StringEnumValue<TypeOfPurchaser>>? _repurchasedTypeOfPurchaser;
+        private DirtyValue<string?>? _respondentID;
+        private DirtyValue<StringEnumValue<ReverseMortgage>>? _reverseMortgage;
+        private DirtyValue<string?>? _stateCode;
+        private DirtyValue<StringEnumValue<SubmissionOfApplication>>? _submissionOfApplication;
+        private DirtyValue<string?>? _totalLoanCosts;
+        private DirtyValue<string?>? _totalPointsAndFees;
+        private DirtyValue<StringEnumValue<TypeOfPurchaser>>? _typeOfPurchaser;
+        private DirtyValue<string?>? _universalLoanId;
 
         /// <summary>
         /// Trans Details Current Loan Status [1393]
@@ -127,7 +127,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application Date [HMDA.X29]
         /// </summary>
-        public string ApplicationDate { get => _applicationDate; set => SetField(ref _applicationDate, value); }
+        public string? ApplicationDate { get => _applicationDate; set => SetField(ref _applicationDate, value); }
 
         /// <summary>
         /// AUS #1 [HMDA.X44]
@@ -205,7 +205,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Census Tract [700]
         /// </summary>
-        public string CensusTrack { get => _censusTrack; set => SetField(ref _censusTrack, value); }
+        public string? CensusTrack { get => _censusTrack; set => SetField(ref _censusTrack, value); }
 
         /// <summary>
         /// CLTV [HMDA.X37]
@@ -215,22 +215,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HMDA Contact Person Email [HMDA.X62]
         /// </summary>
-        public string ContactEmailAddress { get => _contactEmailAddress; set => SetField(ref _contactEmailAddress, value); }
+        public string? ContactEmailAddress { get => _contactEmailAddress; set => SetField(ref _contactEmailAddress, value); }
 
         /// <summary>
         /// HMDA Contact Person Fax # [HMDA.X67]
         /// </summary>
-        public string ContactFaxNumber { get => _contactFaxNumber; set => SetField(ref _contactFaxNumber, value); }
+        public string? ContactFaxNumber { get => _contactFaxNumber; set => SetField(ref _contactFaxNumber, value); }
 
         /// <summary>
         /// HMDA Contact Person Name [HMDA.X60]
         /// </summary>
-        public string ContactName { get => _contactName; set => SetField(ref _contactName, value); }
+        public string? ContactName { get => _contactName; set => SetField(ref _contactName, value); }
 
         /// <summary>
         /// HMDA Contact Person City [HMDA.X64]
         /// </summary>
-        public string ContactOfficeCity { get => _contactOfficeCity; set => SetField(ref _contactOfficeCity, value); }
+        public string? ContactOfficeCity { get => _contactOfficeCity; set => SetField(ref _contactOfficeCity, value); }
 
         /// <summary>
         /// HMDA Contact Person State [HMDA.X65]
@@ -240,24 +240,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HMDA Contact Person Street Address [HMDA.X63]
         /// </summary>
-        public string ContactOfficeStreetAddress { get => _contactOfficeStreetAddress; set => SetField(ref _contactOfficeStreetAddress, value); }
+        public string? ContactOfficeStreetAddress { get => _contactOfficeStreetAddress; set => SetField(ref _contactOfficeStreetAddress, value); }
 
         /// <summary>
         /// HMDA Contact Person ZIP [HMDA.X66]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string ContactOfficeZIPCode { get => _contactOfficeZIPCode; set => SetField(ref _contactOfficeZIPCode, value); }
+        public string? ContactOfficeZIPCode { get => _contactOfficeZIPCode; set => SetField(ref _contactOfficeZIPCode, value); }
 
         /// <summary>
         /// HMDA Contact Person Phone # [HMDA.X61]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string ContactPhoneNumber { get => _contactPhoneNumber; set => SetField(ref _contactPhoneNumber, value); }
+        public string? ContactPhoneNumber { get => _contactPhoneNumber; set => SetField(ref _contactPhoneNumber, value); }
 
         /// <summary>
         /// Subject Property County Code [1396]
         /// </summary>
-        public string CountyCode { get => _countyCode; set => SetField(ref _countyCode, value); }
+        public string? CountyCode { get => _countyCode; set => SetField(ref _countyCode, value); }
 
         /// <summary>
         /// Debt to Income Ratio [HMDA.X36]
@@ -306,12 +306,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HMDA Fedral Tax ID [HMDA.X69]
         /// </summary>
-        public string FederalTaxpayerIdNumber { get => _federalTaxpayerIdNumber; set => SetField(ref _federalTaxpayerIdNumber, value); }
+        public string? FederalTaxpayerIdNumber { get => _federalTaxpayerIdNumber; set => SetField(ref _federalTaxpayerIdNumber, value); }
 
         /// <summary>
         /// HMDA Company Name [HMDA.X59]
         /// </summary>
-        public string FinancialInstitutionName { get => _financialInstitutionName; set => SetField(ref _financialInstitutionName, value); }
+        public string? FinancialInstitutionName { get => _financialInstitutionName; set => SetField(ref _financialInstitutionName, value); }
 
         /// <summary>
         /// Trans Details Interest Only Indicator [HMDA.X120]
@@ -321,7 +321,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CFPB HMDA Census Tract [HMDA.X112]
         /// </summary>
-        public string HMDACensusTrack { get => _hMDACensusTrack; set => SetField(ref _hMDACensusTrack, value); }
+        public string? HMDACensusTrack { get => _hMDACensusTrack; set => SetField(ref _hMDACensusTrack, value); }
 
         /// <summary>
         /// HMDA CLTV [HMDA.X98]
@@ -332,7 +332,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CFPB HMDA County Code [HMDA.X111]
         /// </summary>
-        public string HMDACountyCode { get => _hMDACountyCode; set => SetField(ref _hMDACountyCode, value); }
+        public string? HMDACountyCode { get => _hMDACountyCode; set => SetField(ref _hMDACountyCode, value); }
 
         /// <summary>
         /// HMDA DTI [HMDA.X97]
@@ -361,40 +361,40 @@ namespace EncompassRest.Loans
         /// HMDA Profile - Application Date value from Setting [HMDA.X104]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string HMDAProfileApplicationDateValue { get => _hMDAProfileApplicationDateValue; set => SetField(ref _hMDAProfileApplicationDateValue, value); }
+        public string? HMDAProfileApplicationDateValue { get => _hMDAProfileApplicationDateValue; set => SetField(ref _hMDAProfileApplicationDateValue, value); }
 
         /// <summary>
         /// HMDA Profile - CLTV value from Setting [HMDA.X102]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string HMDAProfileCLTVValue { get => _hMDAProfileCLTVValue; set => SetField(ref _hMDAProfileCLTVValue, value); }
+        public string? HMDAProfileCLTVValue { get => _hMDAProfileCLTVValue; set => SetField(ref _hMDAProfileCLTVValue, value); }
 
         /// <summary>
         /// HMDA Profile - DTI value from Setting [HMDA.X101]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string HMDAProfileDTIValue { get => _hMDAProfileDTIValue; set => SetField(ref _hMDAProfileDTIValue, value); }
+        public string? HMDAProfileDTIValue { get => _hMDAProfileDTIValue; set => SetField(ref _hMDAProfileDTIValue, value); }
 
         /// <summary>
         /// HMDA Profile ID [HMDA.X100]
         /// </summary>
-        public string HMDAProfileID { get => _hMDAProfileID; set => SetField(ref _hMDAProfileID, value); }
+        public string? HMDAProfileID { get => _hMDAProfileID; set => SetField(ref _hMDAProfileID, value); }
 
         /// <summary>
         /// HMDA Profile - Income value from Setting [HMDA.X103]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string HMDAProfileIncomeValue { get => _hMDAProfileIncomeValue; set => SetField(ref _hMDAProfileIncomeValue, value); }
+        public string? HMDAProfileIncomeValue { get => _hMDAProfileIncomeValue; set => SetField(ref _hMDAProfileIncomeValue, value); }
 
         /// <summary>
         /// HMDA Property Address [HMDA.X88]
         /// </summary>
-        public string HmdaPropertyAddress { get => _hmdaPropertyAddress; set => SetField(ref _hmdaPropertyAddress, value); }
+        public string? HmdaPropertyAddress { get => _hmdaPropertyAddress; set => SetField(ref _hmdaPropertyAddress, value); }
 
         /// <summary>
         /// HMDA Property City [HMDA.X89]
         /// </summary>
-        public string HmdaPropertyCity { get => _hmdaPropertyCity; set => SetField(ref _hmdaPropertyCity, value); }
+        public string? HmdaPropertyCity { get => _hmdaPropertyCity; set => SetField(ref _hmdaPropertyCity, value); }
 
         /// <summary>
         /// HMDA Property State [HMDA.X90]
@@ -410,7 +410,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HMDA Property Zip Code [HMDA.X87]
         /// </summary>
-        public string HmdaPropertyZipCode { get => _hmdaPropertyZipCode; set => SetField(ref _hmdaPropertyZipCode, value); }
+        public string? HmdaPropertyZipCode { get => _hmdaPropertyZipCode; set => SetField(ref _hmdaPropertyZipCode, value); }
 
         /// <summary>
         /// HMDA Sync address fields with subject property address [HMDA.X91]
@@ -426,7 +426,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hmda Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// HMDA Income [HMDA.X32]
@@ -452,17 +452,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intro Rate Period [HMDA.X84]
         /// </summary>
-        public string IntroRatePeriod { get => _introRatePeriod; set => SetField(ref _introRatePeriod, value); }
+        public string? IntroRatePeriod { get => _introRatePeriod; set => SetField(ref _introRatePeriod, value); }
 
         /// <summary>
         /// HMDA LEI [HMDA.X70]
         /// </summary>
-        public string LegalEntityIdentifier { get => _legalEntityIdentifier; set => SetField(ref _legalEntityIdentifier, value); }
+        public string? LegalEntityIdentifier { get => _legalEntityIdentifier; set => SetField(ref _legalEntityIdentifier, value); }
 
         /// <summary>
         /// HMDA LEI Reporting [HMDA.X106]
         /// </summary>
-        public string LegalEntityIdentifierReporting { get => _legalEntityIdentifierReporting; set => SetField(ref _legalEntityIdentifierReporting, value); }
+        public string? LegalEntityIdentifierReporting { get => _legalEntityIdentifierReporting; set => SetField(ref _legalEntityIdentifierReporting, value); }
 
         /// <summary>
         /// HMDA LEI Used [HMDA.X105]
@@ -498,7 +498,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Term [HMDA.X83]
         /// </summary>
-        public string LoanTerm { get => _loanTerm; set => SetField(ref _loanTerm, value); }
+        public string? LoanTerm { get => _loanTerm; set => SetField(ref _loanTerm, value); }
 
         /// <summary>
         /// HMDA Loan Type [HMDA.X30]
@@ -518,17 +518,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property MSA # [699]
         /// </summary>
-        public string MSANumber { get => _mSANumber; set => SetField(ref _mSANumber, value); }
+        public string? MSANumber { get => _mSANumber; set => SetField(ref _mSANumber, value); }
 
         /// <summary>
         /// Multifamily No Units [HMDA.X41]
         /// </summary>
-        public string MultifamilyNoUnits { get => _multifamilyNoUnits; set => SetField(ref _multifamilyNoUnits, value); }
+        public string? MultifamilyNoUnits { get => _multifamilyNoUnits; set => SetField(ref _multifamilyNoUnits, value); }
 
         /// <summary>
         /// NMLS Loan Originator ID [HMDA.X86]
         /// </summary>
-        public string NMLSLoanOriginatorID { get => _nMLSLoanOriginatorID; set => SetField(ref _nMLSLoanOriginatorID, value); }
+        public string? NMLSLoanOriginatorID { get => _nMLSLoanOriginatorID; set => SetField(ref _nMLSLoanOriginatorID, value); }
 
         /// <summary>
         /// Open-End Line of Credit [HMDA.X57]
@@ -538,22 +538,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Origination Charges [HMDA.X79]
         /// </summary>
-        public string OriginationCharges { get => _originationCharges; set => SetField(ref _originationCharges, value); }
+        public string? OriginationCharges { get => _originationCharges; set => SetField(ref _originationCharges, value); }
 
         /// <summary>
         /// Other AUX(s) [HMDA.X49]
         /// </summary>
-        public string OtherAUS { get => _otherAUS; set => SetField(ref _otherAUS, value); }
+        public string? OtherAUS { get => _otherAUS; set => SetField(ref _otherAUS, value); }
 
         /// <summary>
         /// Other AUS Recommendation(s) [HMDA.X55]
         /// </summary>
-        public string OtherAUSRecommendations { get => _otherAUSRecommendations; set => SetField(ref _otherAUSRecommendations, value); }
+        public string? OtherAUSRecommendations { get => _otherAUSRecommendations; set => SetField(ref _otherAUSRecommendations, value); }
 
         /// <summary>
         /// Other Denial Reason [HMDA.X34]
         /// </summary>
-        public string OtherDenialReason { get => _otherDenialReason; set => SetField(ref _otherDenialReason, value); }
+        public string? OtherDenialReason { get => _otherDenialReason; set => SetField(ref _otherDenialReason, value); }
 
         /// <summary>
         /// Other Non-Amortization [HMDA.X38]
@@ -563,17 +563,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HMDA Parent Address [HMDA.X73]
         /// </summary>
-        public string ParentAddress { get => _parentAddress; set => SetField(ref _parentAddress, value); }
+        public string? ParentAddress { get => _parentAddress; set => SetField(ref _parentAddress, value); }
 
         /// <summary>
         /// HMDA Parent City [HMDA.X74]
         /// </summary>
-        public string ParentCity { get => _parentCity; set => SetField(ref _parentCity, value); }
+        public string? ParentCity { get => _parentCity; set => SetField(ref _parentCity, value); }
 
         /// <summary>
         /// HMDA Parent Contact Name [HMDA.X72]
         /// </summary>
-        public string ParentName { get => _parentName; set => SetField(ref _parentName, value); }
+        public string? ParentName { get => _parentName; set => SetField(ref _parentName, value); }
 
         /// <summary>
         /// HMDA Parent State [HMDA.X75]
@@ -584,7 +584,7 @@ namespace EncompassRest.Loans
         /// HMDA Parent Zipcode [HMDA.X76]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string ParentZip { get => _parentZip; set => SetField(ref _parentZip, value); }
+        public string? ParentZip { get => _parentZip; set => SetField(ref _parentZip, value); }
 
         /// <summary>
         /// Report loan as Partially Exempt [HMDA.X113]
@@ -600,7 +600,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Prepayment Penalty Period [HMDA.X82]
         /// </summary>
-        public string PrepaymentPenaltyPeriod { get => _prepaymentPenaltyPeriod; set => SetField(ref _prepaymentPenaltyPeriod, value); }
+        public string? PrepaymentPenaltyPeriod { get => _prepaymentPenaltyPeriod; set => SetField(ref _prepaymentPenaltyPeriod, value); }
 
         /// <summary>
         /// Subject Property Type [HMDA.X11]
@@ -636,7 +636,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Repurchased Action Date [HMDA.X96]
         /// </summary>
-        public string RepurchasedActionDate { get => _repurchasedActionDate; set => SetField(ref _repurchasedActionDate, value); }
+        public string? RepurchasedActionDate { get => _repurchasedActionDate; set => SetField(ref _repurchasedActionDate, value); }
 
         /// <summary>
         /// HMDA Repurchased Trans Details Current Loan Status [HMDA.X95]
@@ -662,7 +662,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HMDA Respondent ID [HMDA.X71]
         /// </summary>
-        public string RespondentID { get => _respondentID; set => SetField(ref _respondentID, value); }
+        public string? RespondentID { get => _respondentID; set => SetField(ref _respondentID, value); }
 
         /// <summary>
         /// Reverse Mortgage [HMDA.X56]
@@ -672,7 +672,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property State Code [1395]
         /// </summary>
-        public string StateCode { get => _stateCode; set => SetField(ref _stateCode, value); }
+        public string? StateCode { get => _stateCode; set => SetField(ref _stateCode, value); }
 
         /// <summary>
         /// Submission of Application [HMDA.X42]
@@ -682,12 +682,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Total Loan Costs [HMDA.X77]
         /// </summary>
-        public string TotalLoanCosts { get => _totalLoanCosts; set => SetField(ref _totalLoanCosts, value); }
+        public string? TotalLoanCosts { get => _totalLoanCosts; set => SetField(ref _totalLoanCosts, value); }
 
         /// <summary>
         /// Total Points and Fees [HMDA.X78]
         /// </summary>
-        public string TotalPointsAndFees { get => _totalPointsAndFees; set => SetField(ref _totalPointsAndFees, value); }
+        public string? TotalPointsAndFees { get => _totalPointsAndFees; set => SetField(ref _totalPointsAndFees, value); }
 
         /// <summary>
         /// Trans Details Purchaser Type [1397]
@@ -697,6 +697,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Universal Loan Id [HMDA.X28]
         /// </summary>
-        public string UniversalLoanId { get => _universalLoanId; set => SetField(ref _universalLoanId, value); }
+        public string? UniversalLoanId { get => _universalLoanId; set => SetField(ref _universalLoanId, value); }
     }
 }

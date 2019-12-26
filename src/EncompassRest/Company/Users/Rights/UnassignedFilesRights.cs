@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,20 +7,21 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class UnassignedFilesRights : DirtyExtensibleObject
     {
-        private AddNotesToFileRights _addNotesToFile;
-        private DirtyValue<bool?> _attachEncompassForms;
-        private DirtyValue<bool?> _autoAssign;
-        private DirtyValue<bool?> _browseAndAttach;
-        private DeleteNotesRights _deleteNotes;
-        private EditFileRights _editFile;
-        private DirtyValue<bool?> _mergeFiles;
-        private DirtyValue<bool?> _scanAndAttach;
-        private DirtyValue<bool?> _splitFile;
-        private DirtyValue<bool?> _suggestor;
+        private AddNotesToFileRights? _addNotesToFile;
+        private DirtyValue<bool?>? _attachEncompassForms;
+        private DirtyValue<bool?>? _autoAssign;
+        private DirtyValue<bool?>? _browseAndAttach;
+        private DeleteNotesRights? _deleteNotes;
+        private EditFileRights? _editFile;
+        private DirtyValue<bool?>? _mergeFiles;
+        private DirtyValue<bool?>? _scanAndAttach;
+        private DirtyValue<bool?>? _splitFile;
+        private DirtyValue<bool?>? _suggestor;
 
         /// <summary>
         /// UnassignedFilesRights AddNotesToFile
         /// </summary>
+        [AllowNull]
         public AddNotesToFileRights AddNotesToFile { get => GetField(ref _addNotesToFile); set => SetField(ref _addNotesToFile, value); }
 
         /// <summary>
@@ -39,11 +42,13 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// UnassignedFilesRights DeleteNotes
         /// </summary>
+        [AllowNull]
         public DeleteNotesRights DeleteNotes { get => GetField(ref _deleteNotes); set => SetField(ref _deleteNotes, value); }
 
         /// <summary>
         /// UnassignedFilesRights EditFile
         /// </summary>
+        [AllowNull]
         public EditFileRights EditFile { get => GetField(ref _editFile); set => SetField(ref _editFile, value); }
 
         /// <summary>

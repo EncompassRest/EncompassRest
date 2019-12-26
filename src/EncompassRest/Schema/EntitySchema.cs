@@ -10,6 +10,8 @@ namespace EncompassRest.Schema
         /// <summary>
         /// EntitySchema Properties
         /// </summary>
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         public Dictionary<string, PropertySchema> Properties { get; set; }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     }
 }

@@ -31,7 +31,7 @@ namespace EncompassRest.Settings.Loan
         /// <param name="fieldId">Provide the field ID for which to display the audit information or data.</param>
         /// <param name="data">The type of last-change information to display.</param>
         public FieldAudit(string fieldId, AuditData data)
-            : this(fieldId, data.Validate(nameof(data)).GetValue())
+            : this(fieldId, data.Validate(nameof(data)).GetValue()!)
         {
         }
 
@@ -46,8 +46,8 @@ namespace EncompassRest.Settings.Loan
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
             Preconditions.NotNullOrEmpty(data, nameof(data));
 
-            FieldId = fieldId;
-            Data = data;
+            _fieldId = fieldId;
+            _data = data;
         }
     }
 }

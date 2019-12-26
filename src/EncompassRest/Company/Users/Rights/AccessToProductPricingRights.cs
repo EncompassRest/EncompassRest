@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AccessToProductPricingRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _viewLockHistory;
+        private DirtyValue<bool?>? _viewLockHistory;
 
         /// <summary>
         /// AccessToProductPricingRights ViewLockHistory

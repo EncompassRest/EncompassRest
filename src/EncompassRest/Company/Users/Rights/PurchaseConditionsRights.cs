@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,13 +8,13 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PurchaseConditionsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _addEditDeleteComments;
-        private DirtyValue<bool?> _addAutomatedConditions;
-        private DirtyValue<bool?> _addSupportingDocuments;
-        private DirtyValue<bool?> _changePriorTo;
-        private DirtyValue<bool?> _markStatusCompleted;
-        private NewEditDeleteConditionsRights _newEditDeleteConditions;
-        private DirtyValue<bool?> _removeSupportingDocuments;
+        private DirtyValue<bool?>? _addEditDeleteComments;
+        private DirtyValue<bool?>? _addAutomatedConditions;
+        private DirtyValue<bool?>? _addSupportingDocuments;
+        private DirtyValue<bool?>? _changePriorTo;
+        private DirtyValue<bool?>? _markStatusCompleted;
+        private NewEditDeleteConditionsRights? _newEditDeleteConditions;
+        private DirtyValue<bool?>? _removeSupportingDocuments;
 
         /// <summary>
         /// PurchaseConditionsRights AddEditDeleteComments
@@ -45,6 +46,7 @@ namespace EncompassRest.Company.Users.Rights
         /// PurchaseConditionsRights NewEditDeleteConditions
         /// </summary>
         [JsonProperty("new/Edit/DeleteConditions")]
+        [AllowNull]
         public NewEditDeleteConditionsRights NewEditDeleteConditions { get => GetField(ref _newEditDeleteConditions); set => SetField(ref _newEditDeleteConditions, value); }
 
         /// <summary>

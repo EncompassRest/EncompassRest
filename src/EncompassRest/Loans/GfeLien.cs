@@ -9,12 +9,12 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(GfeLienIndex) + "," + nameof(GfeLienType))]
     public sealed partial class GfeLien : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amountOwing;
-        private DirtyValue<int?> _gfeLienIndex;
-        private DirtyValue<StringEnumValue<GfeLienType>> _gfeLienType;
-        private DirtyValue<string> _holderName;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _priority;
+        private DirtyValue<decimal?>? _amountOwing;
+        private DirtyValue<int?>? _gfeLienIndex;
+        private DirtyValue<StringEnumValue<GfeLienType>>? _gfeLienType;
+        private DirtyValue<string?>? _holderName;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _priority;
 
         /// <summary>
         /// GfeLien AmountOwing
@@ -35,16 +35,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfeLien HolderName
         /// </summary>
-        public string HolderName { get => _holderName; set => SetField(ref _holderName, value); }
+        public string? HolderName { get => _holderName; set => SetField(ref _holderName, value); }
 
         /// <summary>
         /// GfeLien Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// GfeLien Priority
         /// </summary>
-        public string Priority { get => _priority; set => SetField(ref _priority, value); }
+        public string? Priority { get => _priority; set => SetField(ref _priority, value); }
     }
 }

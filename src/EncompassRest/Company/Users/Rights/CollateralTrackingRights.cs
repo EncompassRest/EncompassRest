@@ -5,7 +5,7 @@
     /// </summary>
     public sealed class CollateralTrackingRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _importShippingDetails;
+        private DirtyValue<bool?>? _importShippingDetails;
 
         /// <summary>
         /// CollateralTrackingRights ImportShippingDetails

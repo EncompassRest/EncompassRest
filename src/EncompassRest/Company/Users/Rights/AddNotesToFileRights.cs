@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AddNotesToFileRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _deleteNotes;
+        private DirtyValue<bool?>? _deleteNotes;
 
         /// <summary>
         /// AddNotesToFileRights DeleteNotes

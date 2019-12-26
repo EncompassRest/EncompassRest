@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TradesRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _accessToTradesTab;
+        private DirtyValue<bool?>? _accessToTradesTab;
 
         /// <summary>
         /// TradesRights AccessToTradesTab

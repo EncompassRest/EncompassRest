@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,529 +11,529 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _actualSellAmount;
-        private DirtyValue<decimal?> _actualSellPrice;
-        private DirtyValue<decimal?> _actualSellSideSRP;
-        private DirtyValue<decimal?> _actualSRPAmount;
-        private DirtyValue<decimal?> _amountDue;
-        private DirtyValue<StringEnumValue<PartyType>> _amountDueTo;
-        private DirtyValue<decimal?> _amountPaid;
-        private DirtyValue<StringEnumValue<PartyType>> _amountPaidTo;
-        private DirtyValue<decimal?> _amountReceived;
-        private DirtyValue<int?> _balloonLoanMaturityTermMonths;
-        private DirtyValue<decimal?> _baseLoanAmount;
-        private DirtyValue<StringEnumValue<BorrLenderPaid>> _borrLenderPaid;
-        private DirtyValue<decimal?> _borrowerRequestedLoanAmount;
-        private DirtyValue<DateTime?> _branchApprovalDate;
-        private DirtyValue<string> _branchApprovedby;
-        private DirtyValue<decimal?> _branchPrice;
-        private DirtyValue<StringEnumValue<BuydownContributor>> _buydownContributor;
-        private DirtyValue<string> _buydownType;
-        private DirtyList<PriceAdjustment> _buySideAdjustments;
-        private DirtyValue<string> _buySideComments;
-        private DirtyValue<DateTime?> _buySideCommitmentDate;
-        private DirtyValue<string> _buySideCommitmentNumber;
-        private DirtyValue<string> _buySideCommitmentType;
-        private DirtyValue<DateTime?> _buySideCurrentRateSetDate;
-        private DirtyValue<int?> _buySideDaystoExtend;
-        private DirtyValue<DateTime?> _buySideDeliveryExpirationDate;
-        private DirtyValue<string> _buySideDeliveryType;
-        private DirtyValue<DateTime?> _buySideExpirationDate;
-        private DirtyValue<DateTime?> _buySideExtendedLockExpires;
-        private DirtyValue<DateTime?> _buySideLockDate;
-        private DirtyValue<DateTime?> _buySideLockExpires;
-        private DirtyValue<decimal?> _buySideLockExtendPriceAdjustment;
-        private DirtyValue<decimal?> _buySideMarginNetBuyRate;
-        private DirtyValue<decimal?> _buySideMarginRate;
-        private DirtyValue<decimal?> _buySideMarginTotalAdjustment;
-        private DirtyValue<string> _buySideMasterCommitmentNumber;
-        private DirtyValue<int?> _buySideNumberOfDays;
-        private DirtyValue<bool?> _buySideOnrpEligible;
-        private DirtyValue<DateTime?> _buySideOnrpLockDate;
-        private DirtyValue<string> _buySideOnrpLockTime;
-        private DirtyValue<string> _buySideOrgID;
-        private DirtyValue<DateTime?> _buySideOriginalLockExpires;
-        private DirtyValue<decimal?> _buySidePriceNetBuyPrice;
-        private DirtyValue<decimal?> _buySidePriceRate;
-        private DirtyValue<decimal?> _buySidePriceTotalAdjustment;
-        private DirtyValue<decimal?> _buySideRate;
-        private DirtyValue<decimal?> _buySideRateNetBuyRate;
-        private DirtyValue<string> _buySideRateSheetID;
-        private DirtyValue<decimal?> _buySideRateTotalAdjustment;
-        private DirtyValue<string> _buySideRequestedBy;
-        private DirtyValue<decimal?> _buySideSRPPaidOut;
-        private DirtyValue<decimal?> _buySideStartingAdjPoint;
-        private DirtyValue<decimal?> _buySideStartingAdjPrice;
-        private DirtyValue<decimal?> _buySideStartingAdjRate;
-        private DirtyValue<string> _buySideTPOID;
-        private DirtyValue<string> _buySideTPOName;
-        private DirtyValue<string> _buySideTradeGuid;
-        private DirtyValue<string> _buySideTradeNumber;
-        private DirtyValue<decimal?> _buySideUnDiscountedRate;
-        private DirtyValue<string> _cancellationRequestPending;
-        private DirtyValue<decimal?> _combinedLTV;
-        private DirtyValue<string> _comments;
-        private DirtyValue<string> _commitment;
-        private DirtyValue<string> _commitmentType;
-        private DirtyValue<decimal?> _compGainLossPercentage;
-        private DirtyValue<decimal?> _compGainLossPrice;
-        private DirtyValue<decimal?> _compGainLossTotalBuyPrice;
-        private DirtyValue<decimal?> _compGainLossTotalCompPrice;
-        private DirtyValue<string> _compInvestorAddress;
-        private DirtyValue<string> _compInvestorCity;
-        private DirtyValue<string> _compInvestorCommitment;
-        private DirtyValue<string> _compInvestorContact;
-        private DirtyValue<string> _compInvestorEmail;
-        private DirtyValue<string> _compInvestorLockType;
-        private DirtyValue<string> _compInvestorName;
-        private DirtyValue<string> _compInvestorPhone;
-        private DirtyValue<string> _compInvestorPostalCode;
-        private DirtyValue<string> _compInvestorProgramCode;
-        private DirtyValue<StringEnumValue<State>> _compInvestorState;
-        private DirtyValue<string> _compInvestorTemplateName;
-        private DirtyValue<string> _compInvestorWebsite;
-        private DirtyList<PriceAdjustment> _compSideAdjustments;
-        private DirtyValue<string> _compSideComments;
-        private DirtyValue<string> _compSideComparisonedBy;
-        private DirtyValue<DateTime?> _compSideCurrentRateSetDate;
-        private DirtyValue<int?> _compSideDaystoExtend;
-        private DirtyValue<decimal?> _compSideDiscountYSP;
-        private DirtyValue<DateTime?> _compSideExtendedLockExpires;
-        private DirtyValue<string> _compSideInvestorStatus;
-        private DirtyValue<DateTime?> _compSideInvestorStatusDate;
-        private DirtyValue<string> _compSideInvestorTradeNumber;
-        private DirtyValue<string> _compSideLoanProgram;
-        private DirtyValue<DateTime?> _compSideLockDate;
-        private DirtyValue<DateTime?> _compSideLockExpires;
-        private DirtyValue<decimal?> _compSideLockExtendPriceAdjustment;
-        private DirtyValue<decimal?> _compSideMarginNetCompRate;
-        private DirtyValue<decimal?> _compSideMarginRate;
-        private DirtyValue<decimal?> _compSideMarginTotalAdjustment;
-        private DirtyValue<string> _compSideMasterContractNumber;
-        private DirtyValue<decimal?> _compSideNetCompPrice;
-        private DirtyValue<decimal?> _compSideNetCompRate;
-        private DirtyValue<int?> _compSideNumberOfDays;
-        private DirtyValue<DateTime?> _compSideOriginalLockExpires;
-        private DirtyValue<decimal?> _compSidePriceRate;
-        private DirtyValue<decimal?> _compSidePriceTotalAdjustment;
-        private DirtyValue<decimal?> _compSideRate;
-        private DirtyValue<string> _compSideRateSheetID;
-        private DirtyValue<decimal?> _compSideRateTotalAdjustment;
-        private DirtyValue<string> _compSideRequestedBy;
-        private DirtyValue<StringEnumValue<ServicingType>> _compSideServicingType;
-        private DirtyValue<decimal?> _compSideSRPPaidOut;
-        private DirtyValue<string> _compSideTradeGuid;
-        private DirtyValue<string> _compSideTradeNumber;
-        private DirtyValue<string> _confirmedBy;
-        private DirtyValue<DateTime?> _confirmedDate;
-        private DirtyValue<DateTime?> _corporateApprovalDate;
-        private DirtyValue<string> _corporateApprovedby;
-        private DirtyValue<decimal?> _corporatePrice;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowAdditionalEscrow;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowAmount1007;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowAmount1008;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowAmount1009;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowCityPropertyTax;
-        private DirtyValue<string> _correspondentAdditionalEscrowDescription1007;
-        private DirtyValue<string> _correspondentAdditionalEscrowDescription1008;
-        private DirtyValue<string> _correspondentAdditionalEscrowDescription1009;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowFloodInsurance;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowHomeInsurance;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowMIMIP;
-        private DirtyValue<int?> _correspondentAdditionalEscrowNumOfPayments;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowOption1Amount;
-        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>> _correspondentAdditionalEscrowOption1Desc;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowOption2Amount;
-        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>> _correspondentAdditionalEscrowOption2Desc;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowPropertyTax;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowSumOfPayments;
-        private DirtyValue<decimal?> _correspondentAdditionalEscrowUSDAAnnualFee;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount1;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount10;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount11;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount12;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount13;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount2;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount3;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount4;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount5;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount6;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount7;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount8;
-        private DirtyValue<decimal?> _correspondentAdditionalLineAmount9;
-        private DirtyValue<string> _correspondentAdditionalLineDescription1;
-        private DirtyValue<string> _correspondentAdditionalLineDescription10;
-        private DirtyValue<string> _correspondentAdditionalLineDescription11;
-        private DirtyValue<string> _correspondentAdditionalLineDescription12;
-        private DirtyValue<string> _correspondentAdditionalLineDescription2;
-        private DirtyValue<string> _correspondentAdditionalLineDescription3;
-        private DirtyValue<string> _correspondentAdditionalLineDescription4;
-        private DirtyValue<string> _correspondentAdditionalLineDescription5;
-        private DirtyValue<string> _correspondentAdditionalLineDescription6;
-        private DirtyValue<string> _correspondentAdditionalLineDescription7;
-        private DirtyValue<string> _correspondentAdditionalLineDescription8;
-        private DirtyValue<string> _correspondentAdditionalLineDescription9;
-        private DirtyValue<decimal?> _correspondentAdditionalLineTotalAmount;
-        private DirtyValue<decimal?> _correspondentAdjusterAmount1;
-        private DirtyValue<decimal?> _correspondentAdjusterAmount2;
-        private DirtyValue<decimal?> _correspondentAdjusterAmount3;
-        private DirtyValue<string> _correspondentAdjusterDescription1;
-        private DirtyValue<string> _correspondentAdjusterDescription2;
-        private DirtyValue<string> _correspondentAdjusterDescription3;
-        private DirtyValue<string> _correspondentConfirmedBy;
-        private DirtyValue<DateTime?> _correspondentConfirmedDate;
-        private DirtyValue<decimal?> _correspondentCurrentImpounds;
-        private DirtyValue<decimal?> _correspondentCurrentPrincipal;
-        private DirtyValue<DateTime?> _correspondentDate;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsAmount1007;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsAmount1008;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsAmount1009;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsCityPropertyTax;
-        private DirtyValue<string> _correspondentEscrowDisbursementsDescription1007;
-        private DirtyValue<string> _correspondentEscrowDisbursementsDescription1008;
-        private DirtyValue<string> _correspondentEscrowDisbursementsDescription1009;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsEscrowsToBePaidBySeller;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsEsrowFundedByInvestor;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsFloodInsurance;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsHomeInsurance;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsMortgageInsurance;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsOption1Amount;
-        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>> _correspondentEscrowDisbursementsOption1Desc;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsOption2Amount;
-        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>> _correspondentEscrowDisbursementsOption2Desc;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsPropertyTax;
-        private DirtyValue<decimal?> _correspondentEscrowDisbursementsUSDAAnnualFee;
-        private DirtyValue<decimal?> _correspondentFinalBuyAmount;
-        private DirtyValue<decimal?> _correspondentFinalBuyPrice;
-        private DirtyValue<decimal?> _correspondentFinalCDAggAdjAmount;
-        private DirtyValue<decimal?> _correspondentFinalCDAmount1007;
-        private DirtyValue<decimal?> _correspondentFinalCDAmount1008;
-        private DirtyValue<decimal?> _correspondentFinalCDAmount1009;
-        private DirtyValue<decimal?> _correspondentFinalCDCityPropertyTax;
-        private DirtyValue<string> _correspondentFinalCDDescription1007;
-        private DirtyValue<string> _correspondentFinalCDDescription1008;
-        private DirtyValue<string> _correspondentFinalCDDescription1009;
-        private DirtyValue<decimal?> _correspondentFinalCDFloodInsurance;
-        private DirtyValue<decimal?> _correspondentFinalCDHomeInsurance;
-        private DirtyValue<decimal?> _correspondentFinalCDMortgageInsurance;
-        private DirtyValue<decimal?> _correspondentFinalCDOption1Amount;
-        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>> _correspondentFinalCDOption1Desc;
-        private DirtyValue<decimal?> _correspondentFinalCDOption2Amount;
-        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>> _correspondentFinalCDOption2Desc;
-        private DirtyValue<decimal?> _correspondentFinalCDPropertyTax;
-        private DirtyValue<decimal?> _correspondentFinalCDReservesCollectedAtClosing;
-        private DirtyValue<decimal?> _correspondentFinalCDUSDAAnnualFee;
-        private DirtyValue<DateTime?> _correspondentFirstPaymentDate;
-        private DirtyValue<decimal?> _correspondentImpounds;
-        private DirtyValue<decimal?> _correspondentInterest;
-        private DirtyValue<int?> _correspondentInterestDays;
-        private DirtyValue<decimal?> _correspondentLateFeeAmount;
-        private DirtyValue<decimal?> _correspondentLateFeePriceAdjustment;
-        private DirtyValue<DateTime?> _correspondentPaidToDate;
-        private DirtyValue<DateTime?> _correspondentPaymentHistoryAnticipatedPurchaseDate;
-        private DirtyValue<decimal?> _correspondentPaymentHistoryCalculatedPurchasedPrincipal;
-        private DirtyValue<DateTime?> _correspondentPaymentHistoryFirstBorrowerPaymentDueDate;
-        private DirtyValue<DateTime?> _correspondentPaymentHistoryFirstInvestorPaymentDate;
-        private DirtyValue<DateTime?> _correspondentPaymentHistoryNoteDate;
-        private DirtyValue<decimal?> _correspondentPaymentHistoryPricipalReduction;
-        private DirtyValue<decimal?> _correspondentPurchasedPrincipal;
-        private DirtyValue<string> _correspondentReconcilationComments;
-        private DirtyValue<decimal?> _correspondentRemainingBuydownAmount;
-        private DirtyValue<decimal?> _correspondentSRPAmount;
-        private DirtyValue<decimal?> _correspondentTotalBuyAmount;
-        private DirtyValue<decimal?> _correspondentTotalFees;
-        private DirtyValue<string> _correspondentWarehouseBankABANum;
-        private DirtyValue<string> _correspondentWarehouseBankAcctName;
-        private DirtyValue<string> _correspondentWarehouseBankAcctNum;
-        private DirtyValue<string> _correspondentWarehouseBankAddress;
-        private DirtyValue<string> _correspondentWarehouseBankAddress1;
-        private DirtyValue<DateTime?> _correspondentWarehouseBankBaileeExpirationDate;
-        private DirtyValue<bool?> _correspondentWarehouseBankBaileeLetterReceivedIndicator;
-        private DirtyValue<bool?> _correspondentWarehouseBankBaileeLetterReqIndicator;
-        private DirtyValue<string> _correspondentWarehouseBankCity;
-        private DirtyValue<string> _correspondentWarehouseBankContactEmail;
-        private DirtyValue<string> _correspondentWarehouseBankContactFax;
-        private DirtyValue<string> _correspondentWarehouseBankContactName;
-        private DirtyValue<string> _correspondentWarehouseBankContactPhone;
-        private DirtyValue<string> _correspondentWarehouseBankDescription;
-        private DirtyValue<string> _correspondentWarehouseBankFurtherCreditAcctName;
-        private DirtyValue<string> _correspondentWarehouseBankFurtherCreditAcctNum;
-        private DirtyValue<int?> _correspondentWarehouseBankId;
-        private DirtyValue<string> _correspondentWarehouseBankName;
-        private DirtyValue<string> _correspondentWarehouseBankNotes;
-        private DirtyValue<bool?> _correspondentWarehouseBankSelfFunderIndicator;
-        private DirtyValue<StringEnumValue<State>> _correspondentWarehouseBankState;
-        private DirtyValue<bool?> _correspondentWarehouseBankTriPartyContractIndicator;
-        private DirtyValue<bool?> _correspondentWarehouseBankUseDefaultContactIndicator;
-        private DirtyValue<string> _correspondentWarehouseBankWireConfirmationNumber;
-        private DirtyValue<bool?> _correspondentWarehouseBankWireInstructionsReceivedIndicator;
-        private DirtyValue<string> _correspondentWarehouseBankZip;
-        private DirtyValue<string> _creditScoreToUse;
-        private DirtyValue<int?> _cumulatedDaystoExtend;
-        private DirtyValue<bool?> _currentAcquisition;
-        private DirtyList<PriceAdjustment> _currentAdjustments;
-        private DirtyValue<string> _currentComments;
-        private DirtyValue<bool?> _currentConstructionRefi;
-        private DirtyValue<DateTime?> _currentLockDate;
-        private DirtyValue<DateTime?> _currentLockExpires;
-        private DirtyValue<decimal?> _currentMarginRate;
-        private DirtyValue<decimal?> _currentMarginRateRequested;
-        private DirtyValue<decimal?> _currentMarginTotalAdjustment;
-        private DirtyValue<int?> _currentNumberOfDays;
-        private DirtyValue<decimal?> _currentPriceRate;
-        private DirtyValue<decimal?> _currentPriceRateRequested;
-        private DirtyValue<decimal?> _currentPriceTotalAdjustment;
-        private DirtyValue<decimal?> _currentRate;
-        private DirtyValue<decimal?> _currentRateRequested;
-        private DirtyValue<DateTime?> _currentRateSetDate;
-        private DirtyValue<string> _currentRateSheetID;
-        private DirtyValue<decimal?> _currentRateTotalAdjustment;
-        private DirtyValue<DateTime?> _date;
-        private DirtyValue<DateTime?> _dateFirstPaymentToInvestor;
-        private DirtyValue<DateTime?> _dateLockedWithInvestor;
-        private DirtyValue<DateTime?> _dateSold;
-        private DirtyValue<DateTime?> _dateWarehoused;
-        private DirtyValue<int?> _daysToExtend;
-        private DirtyValue<string> _deliveryType;
-        private DirtyValue<decimal?> _diffAmountReceived;
-        private DirtyValue<decimal?> _diffImpounds;
-        private DirtyValue<decimal?> _diffInterest;
-        private DirtyValue<decimal?> _diffPremium;
-        private DirtyValue<decimal?> _diffPrinciple;
-        private DirtyValue<decimal?> _diffRemainingBuydownFunds;
-        private DirtyValue<decimal?> _diffSellAmount;
-        private DirtyValue<decimal?> _diffSellPrice;
-        private DirtyValue<decimal?> _diffSellSideSRP;
-        private DirtyValue<decimal?> _diffSRP;
-        private DirtyValue<decimal?> _diffSRPAmount;
-        private DirtyValue<StringEnumValue<IndexMargin>> _disclosureType;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator1;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator10;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator11;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator12;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator2;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator3;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator4;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator5;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator6;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator7;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator8;
-        private DirtyValue<bool?> _employmentBorrowerSelfEmployedIndicator9;
-        private DirtyValue<decimal?> _expectedAmountReceived;
-        private DirtyValue<decimal?> _expectedImpounds;
-        private DirtyValue<decimal?> _expectedInterest;
-        private DirtyValue<decimal?> _expectedPremium;
-        private DirtyValue<decimal?> _expectedPrinciple;
-        private DirtyValue<decimal?> _expectedRemainingBuydownFunds;
-        private DirtyValue<decimal?> _expectedSRP;
-        private DirtyValue<string> _extensionRequestPending;
-        private DirtyValue<int?> _extensionSequenceNumber;
-        private DirtyList<ExtraPayment> _extraPayments;
-        private DirtyValue<bool?> _fHASecondaryResidence;
-        private DirtyValue<decimal?> _fHAUpfrontMIPremiumPercent;
-        private DirtyValue<int?> _financedNumberOfUnits;
-        private DirtyValue<StringEnumValue<PartyType>> _firstPaymenTo;
-        private DirtyValue<decimal?> _firstSubordinateAmount;
-        private DirtyValue<bool?> _firstTimeHomebuyersIndicator;
-        private DirtyValue<string> _fNMProductPlanIdentifier;
-        private DirtyValue<decimal?> _fundingAmount;
-        private DirtyValue<decimal?> _gainLossPercentage;
-        private DirtyValue<decimal?> _gainLossPrice;
-        private DirtyValue<decimal?> _gainLossTotalBuyPrice;
-        private DirtyValue<decimal?> _gPMRate;
-        private DirtyValue<int?> _gPMYears;
-        private DirtyValue<StringEnumValue<PropertyType>> _gSEPropertyType;
-        private DirtyValue<decimal?> _hCLTVHTLTV;
-        private DirtyValue<StringEnumValue<YOrN>> _hedging;
-        private DirtyValue<string> _hELOCActualBalance;
-        private DirtyValue<decimal?> _hELOCCreditLimit;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _impounds;
-        private DirtyValue<StringEnumValue<ImpoundType>> _impoundType;
-        private DirtyValue<string> _impoundWaived;
-        private DirtyValue<StringEnumValue<ImpoundWaived>> _impoundWavied;
-        private DirtyValue<decimal?> _indexCurrentValuePercent;
-        private DirtyValue<decimal?> _initialAdvanceAmount;
-        private DirtyValue<decimal?> _interest;
-        private DirtyValue<string> _investorAddress;
-        private DirtyValue<string> _investorCity;
-        private DirtyValue<string> _investorCommitment;
-        private DirtyValue<string> _investorContact;
-        private DirtyValue<DateTime?> _investorDeliveryDate;
-        private DirtyValue<string> _investorEmail;
-        private DirtyValue<string> _investorLoanNumber;
-        private DirtyValue<string> _investorLockType;
-        private DirtyValue<string> _investorMERSNumber;
-        private DirtyValue<string> _investorName;
-        private DirtyValue<string> _investorPhone;
-        private DirtyValue<string> _investorPostalCode;
-        private DirtyValue<string> _investorProgramCode;
-        private DirtyValue<StringEnumValue<State>> _investorState;
-        private DirtyValue<DateTime?> _investorTargetDeliveryDate;
-        private DirtyValue<string> _investorTemplateName;
-        private DirtyValue<string> _investorWebsite;
-        private DirtyValue<string> _isCancelled;
-        private DirtyValue<bool?> _isDeliveryType;
-        private DirtyValue<bool?> _lenderFeeWaiverOption;
-        private DirtyValue<bool?> _lenderPaidMortgageInsuranceIndicator;
-        private DirtyValue<StringEnumValue<LienType>> _lienPriorityType;
-        private DirtyValue<int?> _loanAmortizationTermMonths;
-        private DirtyValue<StringEnumValue<AmortizationType>> _loanAmortizationType;
-        private DirtyValue<StringEnumValue<LoanDocumentationType>> _loanDocumentationType;
-        private DirtyValue<bool?> _loanFor203K;
-        private DirtyValue<string> _loanProgram;
-        private DirtyValue<string> _loanProgramFile;
-        private DirtyValue<DateTime?> _loanScheduledClosingDate;
-        private DirtyValue<bool?> _lockField;
-        private DirtyList<PriceAdjustment> _lockRequestAdjustments;
-        private DirtyList<LockRequestBorrower> _lockRequestBorrowers;
-        private DirtyValue<StringEnumValue<LockRequestLoanPurposeType>> _lockRequestLoanPurposeType;
-        private DirtyValue<decimal?> _lTV;
-        private DirtyValue<string> _minFICO;
-        private DirtyValue<string> _minFICO2;
-        private DirtyValue<decimal?> _mIPPaidInCash;
-        private DirtyValue<StringEnumValue<LoanType>> _mortgageType;
-        private DirtyValue<decimal?> _netSellAmount;
-        private DirtyValue<decimal?> _netSellPrice;
-        private DirtyValue<DateTime?> _nextPaymentDate;
-        private DirtyValue<bool?> _noClosingCostOption;
-        private DirtyValue<StringEnumValue<YOrN>> _oNRPLock;
-        private DirtyValue<string> _otherAmortizationTypeDescription;
-        private DirtyValue<decimal?> _otherSubordinateAmount;
-        private DirtyValue<StringEnumValue<PenaltyTerm>> _penaltyTerm;
-        private DirtyValue<StringEnumValue<PerDiemInterestRoundingType>> _perDiemInterestRoundingType;
-        private DirtyValue<string> _planCode;
-        private DirtyValue<decimal?> _premium;
-        private DirtyValue<StringEnumValue<YOrN>> _prepayPenalty;
-        private DirtyValue<decimal?> _priceAdjustment;
-        private DirtyList<PriceAdjustment> _priceAdjustments;
-        private DirtyValue<string> _pricingHistoryData;
-        private DirtyValue<string> _pricingUpdated;
-        private DirtyValue<decimal?> _principle;
-        private DirtyValue<decimal?> _profitMarginAdjustedBuyPrice;
-        private DirtyValue<int?> _propertyAppraisedValueAmount;
-        private DirtyValue<int?> _propertyEstimatedValueAmount;
-        private DirtyValue<StringEnumValue<PropertyUsageType>> _propertyUsageType;
-        private DirtyValue<int?> _purchaseAdviceNumberOfDays;
-        private DirtyList<PurchaseAdvicePayout> _purchaseAdvicePayouts;
-        private DirtyValue<decimal?> _purchasePriceAmount;
-        private DirtyList<RateLockBuydown> _rateLockBuydowns;
-        private DirtyValue<string> _rateRequestStatus;
-        private DirtyValue<string> _rateStatus;
-        private DirtyValue<string> _reasonforBranchApproval;
-        private DirtyValue<string> _reasonforCorporateApproval;
-        private DirtyValue<decimal?> _reconciledDiff;
-        private DirtyValue<string> _reLockRequestPending;
-        private DirtyValue<decimal?> _remainingBuydownFunds;
-        private DirtyValue<string> _requestComments;
-        private DirtyValue<DateTime?> _requestCurrentRateSetDate;
-        private DirtyValue<int?> _requestDaystoExtend;
-        private DirtyValue<DateTime?> _requestExtendedLockExpires;
-        private DirtyValue<string> _requestFullfilledDateTime;
-        private DirtyValue<StringEnumValue<ImpoundType>> _requestImpoundType;
-        private DirtyValue<string> _requestImpoundWaived;
-        private DirtyValue<StringEnumValue<ImpoundWaived>> _requestImpoundWavied;
-        private DirtyValue<string> _requestLockCancellationComment;
-        private DirtyValue<DateTime?> _requestLockCancellationDate;
-        private DirtyValue<DateTime?> _requestLockDate;
-        private DirtyValue<DateTime?> _requestLockExpires;
-        private DirtyValue<string> _requestLockExtendComment;
-        private DirtyValue<decimal?> _requestLockExtendPriceAdjustment;
-        private DirtyValue<string> _requestLockStatus;
-        private DirtyValue<string> _requestLockType;
-        private DirtyValue<decimal?> _requestMarginRate;
-        private DirtyValue<decimal?> _requestMarginRateRequested;
-        private DirtyValue<decimal?> _requestMarginSRPPaidOut;
-        private DirtyValue<decimal?> _requestMarginTotalAdjustment;
-        private DirtyValue<int?> _requestNumberOfDays;
-        private DirtyValue<bool?> _requestOnrpEligible;
-        private DirtyValue<DateTime?> _requestOnrpLockDate;
-        private DirtyValue<string> _requestOnrpLockTime;
-        private DirtyValue<DateTime?> _requestOriginalLockExpires;
-        private DirtyValue<StringEnumValue<PenaltyTerm>> _requestPenaltyTerm;
-        private DirtyValue<string> _requestPending;
-        private DirtyValue<StringEnumValue<YOrN>> _requestPrepayPenalty;
-        private DirtyValue<decimal?> _requestPriceRate;
-        private DirtyValue<decimal?> _requestPriceRateRequested;
-        private DirtyValue<decimal?> _requestPriceTotalAdjustment;
-        private DirtyValue<string> _requestProgramNotes;
-        private DirtyValue<decimal?> _requestRate;
-        private DirtyValue<decimal?> _requestRateRequested;
-        private DirtyValue<string> _requestRateSheetID;
-        private DirtyValue<decimal?> _requestRateTotalAdjustment;
-        private DirtyValue<decimal?> _requestStartingAdjPoint;
-        private DirtyValue<decimal?> _requestStartingAdjRate;
-        private DirtyValue<string> _requestType;
-        private DirtyValue<decimal?> _requestUnDiscountedRate;
-        private DirtyValue<bool?> _roundToNearest50;
-        private DirtyValue<decimal?> _secondSubordinateAmount;
-        private DirtyValue<decimal?> _sellerPaidMIPremium;
-        private DirtyList<PriceAdjustment> _sellSideAdjustments;
-        private DirtyValue<string> _sellSideComments;
-        private DirtyValue<string> _sellSideCommitmentContractNumber;
-        private DirtyValue<DateTime?> _sellSideCommitmentDate;
-        private DirtyValue<DateTime?> _sellSideCurrentRateSetDate;
-        private DirtyValue<int?> _sellSideDaystoExtend;
-        private DirtyValue<decimal?> _sellSideDiscountYSP;
-        private DirtyValue<DateTime?> _sellSideExtendedLockExpires;
-        private DirtyValue<decimal?> _sellSideGuaranteeFee;
-        private DirtyValue<decimal?> _sellSideGuarantyBaseFee;
-        private DirtyValue<StringEnumValue<SellSideInvestorStatus>> _sellSideInvestorStatus;
-        private DirtyValue<DateTime?> _sellSideInvestorStatusDate;
-        private DirtyValue<string> _sellSideInvestorTradeNumber;
-        private DirtyValue<string> _sellSideLoanProgram;
-        private DirtyValue<DateTime?> _sellSideLockDate;
-        private DirtyValue<DateTime?> _sellSideLockExpires;
-        private DirtyValue<decimal?> _sellSideLockExtendPriceAdjustment;
-        private DirtyValue<decimal?> _sellSideMarginNetSellRate;
-        private DirtyValue<decimal?> _sellSideMarginRate;
-        private DirtyValue<decimal?> _sellSideMarginTotalAdjustment;
-        private DirtyValue<string> _sellSideMasterContractNumber;
-        private DirtyValue<decimal?> _sellSideMSRValue;
-        private DirtyValue<decimal?> _sellSideNetSellPrice;
-        private DirtyValue<decimal?> _sellSideNetSellRate;
-        private DirtyValue<int?> _sellSideNumberOfDays;
-        private DirtyValue<DateTime?> _sellSideOriginalLockExpires;
-        private DirtyValue<string> _sellSidePoolID;
-        private DirtyValue<string> _sellSidePoolNumber;
-        private DirtyValue<decimal?> _sellSidePriceRate;
-        private DirtyValue<decimal?> _sellSidePriceTotalAdjustment;
-        private DirtyValue<string> _sellSideProductName;
-        private DirtyValue<decimal?> _sellSideRate;
-        private DirtyValue<string> _sellSideRateSheetID;
-        private DirtyValue<decimal?> _sellSideRateTotalAdjustment;
-        private DirtyValue<string> _sellSideRequestedBy;
-        private DirtyValue<string> _sellSideServicer;
-        private DirtyValue<decimal?> _sellSideServicingFee;
-        private DirtyValue<StringEnumValue<ServicingType>> _sellSideServicingType;
-        private DirtyValue<decimal?> _sellSideSRP;
-        private DirtyValue<decimal?> _sellSideSRPPaidOut;
-        private DirtyValue<string> _sellSideTradeGuid;
-        private DirtyValue<string> _sellSideTradeMgmtPrevConfirmedLockGuid;
-        private DirtyValue<string> _sellSideTradeNumber;
-        private DirtyValue<bool?> _servicingReleaseIndicator;
-        private DirtyValue<decimal?> _sRP;
-        private DirtyValue<decimal?> _sRPAmount;
-        private DirtyValue<decimal?> _sRPPaidOut;
-        private DirtyValue<string> _subjectPropertyCity;
-        private DirtyValue<bool?> _subjectPropertyCondotelIndicator;
-        private DirtyValue<string> _subjectPropertyCounty;
-        private DirtyValue<bool?> _subjectPropertyNonWarrantableProjectIndicator;
-        private DirtyValue<string> _subjectPropertyPostalCode;
-        private DirtyValue<string> _subjectPropertyPropertyStreetAddress;
-        private DirtyValue<StringEnumValue<State>> _subjectPropertyState;
-        private DirtyValue<string> _subjectPropertyStreetAddress;
-        private DirtyValue<string> _subjectPropertyUnitNumber;
-        private DirtyValue<StringEnumValue<UnitType>> _subjectPropertyUnitType;
-        private DirtyValue<decimal?> _teaserRate;
-        private DirtyValue<string> _timeLockedWithInvestor;
-        private DirtyValue<decimal?> _totalBuyPrice;
-        private DirtyValue<decimal?> _totalForLesserOfSumAsIs;
-        private DirtyValue<decimal?> _totalPrice;
-        private DirtyValue<decimal?> _totalSubordinateFinancing;
-        private DirtyValue<bool?> _twelveMonthMortgageRentalHistoryIndicator;
-        private DirtyValue<string> _type;
-        private DirtyValue<bool?> _usePoint;
+        private DirtyValue<decimal?>? _actualSellAmount;
+        private DirtyValue<decimal?>? _actualSellPrice;
+        private DirtyValue<decimal?>? _actualSellSideSRP;
+        private DirtyValue<decimal?>? _actualSRPAmount;
+        private DirtyValue<decimal?>? _amountDue;
+        private DirtyValue<StringEnumValue<PartyType>>? _amountDueTo;
+        private DirtyValue<decimal?>? _amountPaid;
+        private DirtyValue<StringEnumValue<PartyType>>? _amountPaidTo;
+        private DirtyValue<decimal?>? _amountReceived;
+        private DirtyValue<int?>? _balloonLoanMaturityTermMonths;
+        private DirtyValue<decimal?>? _baseLoanAmount;
+        private DirtyValue<StringEnumValue<BorrLenderPaid>>? _borrLenderPaid;
+        private DirtyValue<decimal?>? _borrowerRequestedLoanAmount;
+        private DirtyValue<DateTime?>? _branchApprovalDate;
+        private DirtyValue<string?>? _branchApprovedby;
+        private DirtyValue<decimal?>? _branchPrice;
+        private DirtyValue<StringEnumValue<BuydownContributor>>? _buydownContributor;
+        private DirtyValue<string?>? _buydownType;
+        private DirtyList<PriceAdjustment>? _buySideAdjustments;
+        private DirtyValue<string?>? _buySideComments;
+        private DirtyValue<DateTime?>? _buySideCommitmentDate;
+        private DirtyValue<string?>? _buySideCommitmentNumber;
+        private DirtyValue<string?>? _buySideCommitmentType;
+        private DirtyValue<DateTime?>? _buySideCurrentRateSetDate;
+        private DirtyValue<int?>? _buySideDaystoExtend;
+        private DirtyValue<DateTime?>? _buySideDeliveryExpirationDate;
+        private DirtyValue<string?>? _buySideDeliveryType;
+        private DirtyValue<DateTime?>? _buySideExpirationDate;
+        private DirtyValue<DateTime?>? _buySideExtendedLockExpires;
+        private DirtyValue<DateTime?>? _buySideLockDate;
+        private DirtyValue<DateTime?>? _buySideLockExpires;
+        private DirtyValue<decimal?>? _buySideLockExtendPriceAdjustment;
+        private DirtyValue<decimal?>? _buySideMarginNetBuyRate;
+        private DirtyValue<decimal?>? _buySideMarginRate;
+        private DirtyValue<decimal?>? _buySideMarginTotalAdjustment;
+        private DirtyValue<string?>? _buySideMasterCommitmentNumber;
+        private DirtyValue<int?>? _buySideNumberOfDays;
+        private DirtyValue<bool?>? _buySideOnrpEligible;
+        private DirtyValue<DateTime?>? _buySideOnrpLockDate;
+        private DirtyValue<string?>? _buySideOnrpLockTime;
+        private DirtyValue<string?>? _buySideOrgID;
+        private DirtyValue<DateTime?>? _buySideOriginalLockExpires;
+        private DirtyValue<decimal?>? _buySidePriceNetBuyPrice;
+        private DirtyValue<decimal?>? _buySidePriceRate;
+        private DirtyValue<decimal?>? _buySidePriceTotalAdjustment;
+        private DirtyValue<decimal?>? _buySideRate;
+        private DirtyValue<decimal?>? _buySideRateNetBuyRate;
+        private DirtyValue<string?>? _buySideRateSheetID;
+        private DirtyValue<decimal?>? _buySideRateTotalAdjustment;
+        private DirtyValue<string?>? _buySideRequestedBy;
+        private DirtyValue<decimal?>? _buySideSRPPaidOut;
+        private DirtyValue<decimal?>? _buySideStartingAdjPoint;
+        private DirtyValue<decimal?>? _buySideStartingAdjPrice;
+        private DirtyValue<decimal?>? _buySideStartingAdjRate;
+        private DirtyValue<string?>? _buySideTPOID;
+        private DirtyValue<string?>? _buySideTPOName;
+        private DirtyValue<string?>? _buySideTradeGuid;
+        private DirtyValue<string?>? _buySideTradeNumber;
+        private DirtyValue<decimal?>? _buySideUnDiscountedRate;
+        private DirtyValue<string?>? _cancellationRequestPending;
+        private DirtyValue<decimal?>? _combinedLTV;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<string?>? _commitment;
+        private DirtyValue<string?>? _commitmentType;
+        private DirtyValue<decimal?>? _compGainLossPercentage;
+        private DirtyValue<decimal?>? _compGainLossPrice;
+        private DirtyValue<decimal?>? _compGainLossTotalBuyPrice;
+        private DirtyValue<decimal?>? _compGainLossTotalCompPrice;
+        private DirtyValue<string?>? _compInvestorAddress;
+        private DirtyValue<string?>? _compInvestorCity;
+        private DirtyValue<string?>? _compInvestorCommitment;
+        private DirtyValue<string?>? _compInvestorContact;
+        private DirtyValue<string?>? _compInvestorEmail;
+        private DirtyValue<string?>? _compInvestorLockType;
+        private DirtyValue<string?>? _compInvestorName;
+        private DirtyValue<string?>? _compInvestorPhone;
+        private DirtyValue<string?>? _compInvestorPostalCode;
+        private DirtyValue<string?>? _compInvestorProgramCode;
+        private DirtyValue<StringEnumValue<State>>? _compInvestorState;
+        private DirtyValue<string?>? _compInvestorTemplateName;
+        private DirtyValue<string?>? _compInvestorWebsite;
+        private DirtyList<PriceAdjustment>? _compSideAdjustments;
+        private DirtyValue<string?>? _compSideComments;
+        private DirtyValue<string?>? _compSideComparisonedBy;
+        private DirtyValue<DateTime?>? _compSideCurrentRateSetDate;
+        private DirtyValue<int?>? _compSideDaystoExtend;
+        private DirtyValue<decimal?>? _compSideDiscountYSP;
+        private DirtyValue<DateTime?>? _compSideExtendedLockExpires;
+        private DirtyValue<string?>? _compSideInvestorStatus;
+        private DirtyValue<DateTime?>? _compSideInvestorStatusDate;
+        private DirtyValue<string?>? _compSideInvestorTradeNumber;
+        private DirtyValue<string?>? _compSideLoanProgram;
+        private DirtyValue<DateTime?>? _compSideLockDate;
+        private DirtyValue<DateTime?>? _compSideLockExpires;
+        private DirtyValue<decimal?>? _compSideLockExtendPriceAdjustment;
+        private DirtyValue<decimal?>? _compSideMarginNetCompRate;
+        private DirtyValue<decimal?>? _compSideMarginRate;
+        private DirtyValue<decimal?>? _compSideMarginTotalAdjustment;
+        private DirtyValue<string?>? _compSideMasterContractNumber;
+        private DirtyValue<decimal?>? _compSideNetCompPrice;
+        private DirtyValue<decimal?>? _compSideNetCompRate;
+        private DirtyValue<int?>? _compSideNumberOfDays;
+        private DirtyValue<DateTime?>? _compSideOriginalLockExpires;
+        private DirtyValue<decimal?>? _compSidePriceRate;
+        private DirtyValue<decimal?>? _compSidePriceTotalAdjustment;
+        private DirtyValue<decimal?>? _compSideRate;
+        private DirtyValue<string?>? _compSideRateSheetID;
+        private DirtyValue<decimal?>? _compSideRateTotalAdjustment;
+        private DirtyValue<string?>? _compSideRequestedBy;
+        private DirtyValue<StringEnumValue<ServicingType>>? _compSideServicingType;
+        private DirtyValue<decimal?>? _compSideSRPPaidOut;
+        private DirtyValue<string?>? _compSideTradeGuid;
+        private DirtyValue<string?>? _compSideTradeNumber;
+        private DirtyValue<string?>? _confirmedBy;
+        private DirtyValue<DateTime?>? _confirmedDate;
+        private DirtyValue<DateTime?>? _corporateApprovalDate;
+        private DirtyValue<string?>? _corporateApprovedby;
+        private DirtyValue<decimal?>? _corporatePrice;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowAdditionalEscrow;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowAmount1007;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowAmount1008;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowAmount1009;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowCityPropertyTax;
+        private DirtyValue<string?>? _correspondentAdditionalEscrowDescription1007;
+        private DirtyValue<string?>? _correspondentAdditionalEscrowDescription1008;
+        private DirtyValue<string?>? _correspondentAdditionalEscrowDescription1009;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowFloodInsurance;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowHomeInsurance;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowMIMIP;
+        private DirtyValue<int?>? _correspondentAdditionalEscrowNumOfPayments;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowOption1Amount;
+        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>>? _correspondentAdditionalEscrowOption1Desc;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowOption2Amount;
+        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>>? _correspondentAdditionalEscrowOption2Desc;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowPropertyTax;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowSumOfPayments;
+        private DirtyValue<decimal?>? _correspondentAdditionalEscrowUSDAAnnualFee;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount1;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount10;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount11;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount12;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount13;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount2;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount3;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount4;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount5;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount6;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount7;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount8;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount9;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription1;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription10;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription11;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription12;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription2;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription3;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription4;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription5;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription6;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription7;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription8;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription9;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineTotalAmount;
+        private DirtyValue<decimal?>? _correspondentAdjusterAmount1;
+        private DirtyValue<decimal?>? _correspondentAdjusterAmount2;
+        private DirtyValue<decimal?>? _correspondentAdjusterAmount3;
+        private DirtyValue<string?>? _correspondentAdjusterDescription1;
+        private DirtyValue<string?>? _correspondentAdjusterDescription2;
+        private DirtyValue<string?>? _correspondentAdjusterDescription3;
+        private DirtyValue<string?>? _correspondentConfirmedBy;
+        private DirtyValue<DateTime?>? _correspondentConfirmedDate;
+        private DirtyValue<decimal?>? _correspondentCurrentImpounds;
+        private DirtyValue<decimal?>? _correspondentCurrentPrincipal;
+        private DirtyValue<DateTime?>? _correspondentDate;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsAmount1007;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsAmount1008;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsAmount1009;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsCityPropertyTax;
+        private DirtyValue<string?>? _correspondentEscrowDisbursementsDescription1007;
+        private DirtyValue<string?>? _correspondentEscrowDisbursementsDescription1008;
+        private DirtyValue<string?>? _correspondentEscrowDisbursementsDescription1009;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsEscrowsToBePaidBySeller;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsEsrowFundedByInvestor;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsFloodInsurance;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsHomeInsurance;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsMortgageInsurance;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsOption1Amount;
+        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>>? _correspondentEscrowDisbursementsOption1Desc;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsOption2Amount;
+        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>>? _correspondentEscrowDisbursementsOption2Desc;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsPropertyTax;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsUSDAAnnualFee;
+        private DirtyValue<decimal?>? _correspondentFinalBuyAmount;
+        private DirtyValue<decimal?>? _correspondentFinalBuyPrice;
+        private DirtyValue<decimal?>? _correspondentFinalCDAggAdjAmount;
+        private DirtyValue<decimal?>? _correspondentFinalCDAmount1007;
+        private DirtyValue<decimal?>? _correspondentFinalCDAmount1008;
+        private DirtyValue<decimal?>? _correspondentFinalCDAmount1009;
+        private DirtyValue<decimal?>? _correspondentFinalCDCityPropertyTax;
+        private DirtyValue<string?>? _correspondentFinalCDDescription1007;
+        private DirtyValue<string?>? _correspondentFinalCDDescription1008;
+        private DirtyValue<string?>? _correspondentFinalCDDescription1009;
+        private DirtyValue<decimal?>? _correspondentFinalCDFloodInsurance;
+        private DirtyValue<decimal?>? _correspondentFinalCDHomeInsurance;
+        private DirtyValue<decimal?>? _correspondentFinalCDMortgageInsurance;
+        private DirtyValue<decimal?>? _correspondentFinalCDOption1Amount;
+        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>>? _correspondentFinalCDOption1Desc;
+        private DirtyValue<decimal?>? _correspondentFinalCDOption2Amount;
+        private DirtyValue<StringEnumValue<CorrespondentOptionDesc>>? _correspondentFinalCDOption2Desc;
+        private DirtyValue<decimal?>? _correspondentFinalCDPropertyTax;
+        private DirtyValue<decimal?>? _correspondentFinalCDReservesCollectedAtClosing;
+        private DirtyValue<decimal?>? _correspondentFinalCDUSDAAnnualFee;
+        private DirtyValue<DateTime?>? _correspondentFirstPaymentDate;
+        private DirtyValue<decimal?>? _correspondentImpounds;
+        private DirtyValue<decimal?>? _correspondentInterest;
+        private DirtyValue<int?>? _correspondentInterestDays;
+        private DirtyValue<decimal?>? _correspondentLateFeeAmount;
+        private DirtyValue<decimal?>? _correspondentLateFeePriceAdjustment;
+        private DirtyValue<DateTime?>? _correspondentPaidToDate;
+        private DirtyValue<DateTime?>? _correspondentPaymentHistoryAnticipatedPurchaseDate;
+        private DirtyValue<decimal?>? _correspondentPaymentHistoryCalculatedPurchasedPrincipal;
+        private DirtyValue<DateTime?>? _correspondentPaymentHistoryFirstBorrowerPaymentDueDate;
+        private DirtyValue<DateTime?>? _correspondentPaymentHistoryFirstInvestorPaymentDate;
+        private DirtyValue<DateTime?>? _correspondentPaymentHistoryNoteDate;
+        private DirtyValue<decimal?>? _correspondentPaymentHistoryPricipalReduction;
+        private DirtyValue<decimal?>? _correspondentPurchasedPrincipal;
+        private DirtyValue<string?>? _correspondentReconcilationComments;
+        private DirtyValue<decimal?>? _correspondentRemainingBuydownAmount;
+        private DirtyValue<decimal?>? _correspondentSRPAmount;
+        private DirtyValue<decimal?>? _correspondentTotalBuyAmount;
+        private DirtyValue<decimal?>? _correspondentTotalFees;
+        private DirtyValue<string?>? _correspondentWarehouseBankABANum;
+        private DirtyValue<string?>? _correspondentWarehouseBankAcctName;
+        private DirtyValue<string?>? _correspondentWarehouseBankAcctNum;
+        private DirtyValue<string?>? _correspondentWarehouseBankAddress;
+        private DirtyValue<string?>? _correspondentWarehouseBankAddress1;
+        private DirtyValue<DateTime?>? _correspondentWarehouseBankBaileeExpirationDate;
+        private DirtyValue<bool?>? _correspondentWarehouseBankBaileeLetterReceivedIndicator;
+        private DirtyValue<bool?>? _correspondentWarehouseBankBaileeLetterReqIndicator;
+        private DirtyValue<string?>? _correspondentWarehouseBankCity;
+        private DirtyValue<string?>? _correspondentWarehouseBankContactEmail;
+        private DirtyValue<string?>? _correspondentWarehouseBankContactFax;
+        private DirtyValue<string?>? _correspondentWarehouseBankContactName;
+        private DirtyValue<string?>? _correspondentWarehouseBankContactPhone;
+        private DirtyValue<string?>? _correspondentWarehouseBankDescription;
+        private DirtyValue<string?>? _correspondentWarehouseBankFurtherCreditAcctName;
+        private DirtyValue<string?>? _correspondentWarehouseBankFurtherCreditAcctNum;
+        private DirtyValue<int?>? _correspondentWarehouseBankId;
+        private DirtyValue<string?>? _correspondentWarehouseBankName;
+        private DirtyValue<string?>? _correspondentWarehouseBankNotes;
+        private DirtyValue<bool?>? _correspondentWarehouseBankSelfFunderIndicator;
+        private DirtyValue<StringEnumValue<State>>? _correspondentWarehouseBankState;
+        private DirtyValue<bool?>? _correspondentWarehouseBankTriPartyContractIndicator;
+        private DirtyValue<bool?>? _correspondentWarehouseBankUseDefaultContactIndicator;
+        private DirtyValue<string?>? _correspondentWarehouseBankWireConfirmationNumber;
+        private DirtyValue<bool?>? _correspondentWarehouseBankWireInstructionsReceivedIndicator;
+        private DirtyValue<string?>? _correspondentWarehouseBankZip;
+        private DirtyValue<string?>? _creditScoreToUse;
+        private DirtyValue<int?>? _cumulatedDaystoExtend;
+        private DirtyValue<bool?>? _currentAcquisition;
+        private DirtyList<PriceAdjustment>? _currentAdjustments;
+        private DirtyValue<string?>? _currentComments;
+        private DirtyValue<bool?>? _currentConstructionRefi;
+        private DirtyValue<DateTime?>? _currentLockDate;
+        private DirtyValue<DateTime?>? _currentLockExpires;
+        private DirtyValue<decimal?>? _currentMarginRate;
+        private DirtyValue<decimal?>? _currentMarginRateRequested;
+        private DirtyValue<decimal?>? _currentMarginTotalAdjustment;
+        private DirtyValue<int?>? _currentNumberOfDays;
+        private DirtyValue<decimal?>? _currentPriceRate;
+        private DirtyValue<decimal?>? _currentPriceRateRequested;
+        private DirtyValue<decimal?>? _currentPriceTotalAdjustment;
+        private DirtyValue<decimal?>? _currentRate;
+        private DirtyValue<decimal?>? _currentRateRequested;
+        private DirtyValue<DateTime?>? _currentRateSetDate;
+        private DirtyValue<string?>? _currentRateSheetID;
+        private DirtyValue<decimal?>? _currentRateTotalAdjustment;
+        private DirtyValue<DateTime?>? _date;
+        private DirtyValue<DateTime?>? _dateFirstPaymentToInvestor;
+        private DirtyValue<DateTime?>? _dateLockedWithInvestor;
+        private DirtyValue<DateTime?>? _dateSold;
+        private DirtyValue<DateTime?>? _dateWarehoused;
+        private DirtyValue<int?>? _daysToExtend;
+        private DirtyValue<string?>? _deliveryType;
+        private DirtyValue<decimal?>? _diffAmountReceived;
+        private DirtyValue<decimal?>? _diffImpounds;
+        private DirtyValue<decimal?>? _diffInterest;
+        private DirtyValue<decimal?>? _diffPremium;
+        private DirtyValue<decimal?>? _diffPrinciple;
+        private DirtyValue<decimal?>? _diffRemainingBuydownFunds;
+        private DirtyValue<decimal?>? _diffSellAmount;
+        private DirtyValue<decimal?>? _diffSellPrice;
+        private DirtyValue<decimal?>? _diffSellSideSRP;
+        private DirtyValue<decimal?>? _diffSRP;
+        private DirtyValue<decimal?>? _diffSRPAmount;
+        private DirtyValue<StringEnumValue<IndexMargin>>? _disclosureType;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator1;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator10;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator11;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator12;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator2;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator3;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator4;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator5;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator6;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator7;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator8;
+        private DirtyValue<bool?>? _employmentBorrowerSelfEmployedIndicator9;
+        private DirtyValue<decimal?>? _expectedAmountReceived;
+        private DirtyValue<decimal?>? _expectedImpounds;
+        private DirtyValue<decimal?>? _expectedInterest;
+        private DirtyValue<decimal?>? _expectedPremium;
+        private DirtyValue<decimal?>? _expectedPrinciple;
+        private DirtyValue<decimal?>? _expectedRemainingBuydownFunds;
+        private DirtyValue<decimal?>? _expectedSRP;
+        private DirtyValue<string?>? _extensionRequestPending;
+        private DirtyValue<int?>? _extensionSequenceNumber;
+        private DirtyList<ExtraPayment>? _extraPayments;
+        private DirtyValue<bool?>? _fHASecondaryResidence;
+        private DirtyValue<decimal?>? _fHAUpfrontMIPremiumPercent;
+        private DirtyValue<int?>? _financedNumberOfUnits;
+        private DirtyValue<StringEnumValue<PartyType>>? _firstPaymenTo;
+        private DirtyValue<decimal?>? _firstSubordinateAmount;
+        private DirtyValue<bool?>? _firstTimeHomebuyersIndicator;
+        private DirtyValue<string?>? _fNMProductPlanIdentifier;
+        private DirtyValue<decimal?>? _fundingAmount;
+        private DirtyValue<decimal?>? _gainLossPercentage;
+        private DirtyValue<decimal?>? _gainLossPrice;
+        private DirtyValue<decimal?>? _gainLossTotalBuyPrice;
+        private DirtyValue<decimal?>? _gPMRate;
+        private DirtyValue<int?>? _gPMYears;
+        private DirtyValue<StringEnumValue<PropertyType>>? _gSEPropertyType;
+        private DirtyValue<decimal?>? _hCLTVHTLTV;
+        private DirtyValue<StringEnumValue<YOrN>>? _hedging;
+        private DirtyValue<string?>? _hELOCActualBalance;
+        private DirtyValue<decimal?>? _hELOCCreditLimit;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _impounds;
+        private DirtyValue<StringEnumValue<ImpoundType>>? _impoundType;
+        private DirtyValue<string?>? _impoundWaived;
+        private DirtyValue<StringEnumValue<ImpoundWaived>>? _impoundWavied;
+        private DirtyValue<decimal?>? _indexCurrentValuePercent;
+        private DirtyValue<decimal?>? _initialAdvanceAmount;
+        private DirtyValue<decimal?>? _interest;
+        private DirtyValue<string?>? _investorAddress;
+        private DirtyValue<string?>? _investorCity;
+        private DirtyValue<string?>? _investorCommitment;
+        private DirtyValue<string?>? _investorContact;
+        private DirtyValue<DateTime?>? _investorDeliveryDate;
+        private DirtyValue<string?>? _investorEmail;
+        private DirtyValue<string?>? _investorLoanNumber;
+        private DirtyValue<string?>? _investorLockType;
+        private DirtyValue<string?>? _investorMERSNumber;
+        private DirtyValue<string?>? _investorName;
+        private DirtyValue<string?>? _investorPhone;
+        private DirtyValue<string?>? _investorPostalCode;
+        private DirtyValue<string?>? _investorProgramCode;
+        private DirtyValue<StringEnumValue<State>>? _investorState;
+        private DirtyValue<DateTime?>? _investorTargetDeliveryDate;
+        private DirtyValue<string?>? _investorTemplateName;
+        private DirtyValue<string?>? _investorWebsite;
+        private DirtyValue<string?>? _isCancelled;
+        private DirtyValue<bool?>? _isDeliveryType;
+        private DirtyValue<bool?>? _lenderFeeWaiverOption;
+        private DirtyValue<bool?>? _lenderPaidMortgageInsuranceIndicator;
+        private DirtyValue<StringEnumValue<LienType>>? _lienPriorityType;
+        private DirtyValue<int?>? _loanAmortizationTermMonths;
+        private DirtyValue<StringEnumValue<AmortizationType>>? _loanAmortizationType;
+        private DirtyValue<StringEnumValue<LoanDocumentationType>>? _loanDocumentationType;
+        private DirtyValue<bool?>? _loanFor203K;
+        private DirtyValue<string?>? _loanProgram;
+        private DirtyValue<string?>? _loanProgramFile;
+        private DirtyValue<DateTime?>? _loanScheduledClosingDate;
+        private DirtyValue<bool?>? _lockField;
+        private DirtyList<PriceAdjustment>? _lockRequestAdjustments;
+        private DirtyList<LockRequestBorrower>? _lockRequestBorrowers;
+        private DirtyValue<StringEnumValue<LockRequestLoanPurposeType>>? _lockRequestLoanPurposeType;
+        private DirtyValue<decimal?>? _lTV;
+        private DirtyValue<string?>? _minFICO;
+        private DirtyValue<string?>? _minFICO2;
+        private DirtyValue<decimal?>? _mIPPaidInCash;
+        private DirtyValue<StringEnumValue<LoanType>>? _mortgageType;
+        private DirtyValue<decimal?>? _netSellAmount;
+        private DirtyValue<decimal?>? _netSellPrice;
+        private DirtyValue<DateTime?>? _nextPaymentDate;
+        private DirtyValue<bool?>? _noClosingCostOption;
+        private DirtyValue<StringEnumValue<YOrN>>? _oNRPLock;
+        private DirtyValue<string?>? _otherAmortizationTypeDescription;
+        private DirtyValue<decimal?>? _otherSubordinateAmount;
+        private DirtyValue<StringEnumValue<PenaltyTerm>>? _penaltyTerm;
+        private DirtyValue<StringEnumValue<PerDiemInterestRoundingType>>? _perDiemInterestRoundingType;
+        private DirtyValue<string?>? _planCode;
+        private DirtyValue<decimal?>? _premium;
+        private DirtyValue<StringEnumValue<YOrN>>? _prepayPenalty;
+        private DirtyValue<decimal?>? _priceAdjustment;
+        private DirtyList<PriceAdjustment>? _priceAdjustments;
+        private DirtyValue<string?>? _pricingHistoryData;
+        private DirtyValue<string?>? _pricingUpdated;
+        private DirtyValue<decimal?>? _principle;
+        private DirtyValue<decimal?>? _profitMarginAdjustedBuyPrice;
+        private DirtyValue<int?>? _propertyAppraisedValueAmount;
+        private DirtyValue<int?>? _propertyEstimatedValueAmount;
+        private DirtyValue<StringEnumValue<PropertyUsageType>>? _propertyUsageType;
+        private DirtyValue<int?>? _purchaseAdviceNumberOfDays;
+        private DirtyList<PurchaseAdvicePayout>? _purchaseAdvicePayouts;
+        private DirtyValue<decimal?>? _purchasePriceAmount;
+        private DirtyList<RateLockBuydown>? _rateLockBuydowns;
+        private DirtyValue<string?>? _rateRequestStatus;
+        private DirtyValue<string?>? _rateStatus;
+        private DirtyValue<string?>? _reasonforBranchApproval;
+        private DirtyValue<string?>? _reasonforCorporateApproval;
+        private DirtyValue<decimal?>? _reconciledDiff;
+        private DirtyValue<string?>? _reLockRequestPending;
+        private DirtyValue<decimal?>? _remainingBuydownFunds;
+        private DirtyValue<string?>? _requestComments;
+        private DirtyValue<DateTime?>? _requestCurrentRateSetDate;
+        private DirtyValue<int?>? _requestDaystoExtend;
+        private DirtyValue<DateTime?>? _requestExtendedLockExpires;
+        private DirtyValue<string?>? _requestFullfilledDateTime;
+        private DirtyValue<StringEnumValue<ImpoundType>>? _requestImpoundType;
+        private DirtyValue<string?>? _requestImpoundWaived;
+        private DirtyValue<StringEnumValue<ImpoundWaived>>? _requestImpoundWavied;
+        private DirtyValue<string?>? _requestLockCancellationComment;
+        private DirtyValue<DateTime?>? _requestLockCancellationDate;
+        private DirtyValue<DateTime?>? _requestLockDate;
+        private DirtyValue<DateTime?>? _requestLockExpires;
+        private DirtyValue<string?>? _requestLockExtendComment;
+        private DirtyValue<decimal?>? _requestLockExtendPriceAdjustment;
+        private DirtyValue<string?>? _requestLockStatus;
+        private DirtyValue<string?>? _requestLockType;
+        private DirtyValue<decimal?>? _requestMarginRate;
+        private DirtyValue<decimal?>? _requestMarginRateRequested;
+        private DirtyValue<decimal?>? _requestMarginSRPPaidOut;
+        private DirtyValue<decimal?>? _requestMarginTotalAdjustment;
+        private DirtyValue<int?>? _requestNumberOfDays;
+        private DirtyValue<bool?>? _requestOnrpEligible;
+        private DirtyValue<DateTime?>? _requestOnrpLockDate;
+        private DirtyValue<string?>? _requestOnrpLockTime;
+        private DirtyValue<DateTime?>? _requestOriginalLockExpires;
+        private DirtyValue<StringEnumValue<PenaltyTerm>>? _requestPenaltyTerm;
+        private DirtyValue<string?>? _requestPending;
+        private DirtyValue<StringEnumValue<YOrN>>? _requestPrepayPenalty;
+        private DirtyValue<decimal?>? _requestPriceRate;
+        private DirtyValue<decimal?>? _requestPriceRateRequested;
+        private DirtyValue<decimal?>? _requestPriceTotalAdjustment;
+        private DirtyValue<string?>? _requestProgramNotes;
+        private DirtyValue<decimal?>? _requestRate;
+        private DirtyValue<decimal?>? _requestRateRequested;
+        private DirtyValue<string?>? _requestRateSheetID;
+        private DirtyValue<decimal?>? _requestRateTotalAdjustment;
+        private DirtyValue<decimal?>? _requestStartingAdjPoint;
+        private DirtyValue<decimal?>? _requestStartingAdjRate;
+        private DirtyValue<string?>? _requestType;
+        private DirtyValue<decimal?>? _requestUnDiscountedRate;
+        private DirtyValue<bool?>? _roundToNearest50;
+        private DirtyValue<decimal?>? _secondSubordinateAmount;
+        private DirtyValue<decimal?>? _sellerPaidMIPremium;
+        private DirtyList<PriceAdjustment>? _sellSideAdjustments;
+        private DirtyValue<string?>? _sellSideComments;
+        private DirtyValue<string?>? _sellSideCommitmentContractNumber;
+        private DirtyValue<DateTime?>? _sellSideCommitmentDate;
+        private DirtyValue<DateTime?>? _sellSideCurrentRateSetDate;
+        private DirtyValue<int?>? _sellSideDaystoExtend;
+        private DirtyValue<decimal?>? _sellSideDiscountYSP;
+        private DirtyValue<DateTime?>? _sellSideExtendedLockExpires;
+        private DirtyValue<decimal?>? _sellSideGuaranteeFee;
+        private DirtyValue<decimal?>? _sellSideGuarantyBaseFee;
+        private DirtyValue<StringEnumValue<SellSideInvestorStatus>>? _sellSideInvestorStatus;
+        private DirtyValue<DateTime?>? _sellSideInvestorStatusDate;
+        private DirtyValue<string?>? _sellSideInvestorTradeNumber;
+        private DirtyValue<string?>? _sellSideLoanProgram;
+        private DirtyValue<DateTime?>? _sellSideLockDate;
+        private DirtyValue<DateTime?>? _sellSideLockExpires;
+        private DirtyValue<decimal?>? _sellSideLockExtendPriceAdjustment;
+        private DirtyValue<decimal?>? _sellSideMarginNetSellRate;
+        private DirtyValue<decimal?>? _sellSideMarginRate;
+        private DirtyValue<decimal?>? _sellSideMarginTotalAdjustment;
+        private DirtyValue<string?>? _sellSideMasterContractNumber;
+        private DirtyValue<decimal?>? _sellSideMSRValue;
+        private DirtyValue<decimal?>? _sellSideNetSellPrice;
+        private DirtyValue<decimal?>? _sellSideNetSellRate;
+        private DirtyValue<int?>? _sellSideNumberOfDays;
+        private DirtyValue<DateTime?>? _sellSideOriginalLockExpires;
+        private DirtyValue<string?>? _sellSidePoolID;
+        private DirtyValue<string?>? _sellSidePoolNumber;
+        private DirtyValue<decimal?>? _sellSidePriceRate;
+        private DirtyValue<decimal?>? _sellSidePriceTotalAdjustment;
+        private DirtyValue<string?>? _sellSideProductName;
+        private DirtyValue<decimal?>? _sellSideRate;
+        private DirtyValue<string?>? _sellSideRateSheetID;
+        private DirtyValue<decimal?>? _sellSideRateTotalAdjustment;
+        private DirtyValue<string?>? _sellSideRequestedBy;
+        private DirtyValue<string?>? _sellSideServicer;
+        private DirtyValue<decimal?>? _sellSideServicingFee;
+        private DirtyValue<StringEnumValue<ServicingType>>? _sellSideServicingType;
+        private DirtyValue<decimal?>? _sellSideSRP;
+        private DirtyValue<decimal?>? _sellSideSRPPaidOut;
+        private DirtyValue<string?>? _sellSideTradeGuid;
+        private DirtyValue<string?>? _sellSideTradeMgmtPrevConfirmedLockGuid;
+        private DirtyValue<string?>? _sellSideTradeNumber;
+        private DirtyValue<bool?>? _servicingReleaseIndicator;
+        private DirtyValue<decimal?>? _sRP;
+        private DirtyValue<decimal?>? _sRPAmount;
+        private DirtyValue<decimal?>? _sRPPaidOut;
+        private DirtyValue<string?>? _subjectPropertyCity;
+        private DirtyValue<bool?>? _subjectPropertyCondotelIndicator;
+        private DirtyValue<string?>? _subjectPropertyCounty;
+        private DirtyValue<bool?>? _subjectPropertyNonWarrantableProjectIndicator;
+        private DirtyValue<string?>? _subjectPropertyPostalCode;
+        private DirtyValue<string?>? _subjectPropertyPropertyStreetAddress;
+        private DirtyValue<StringEnumValue<State>>? _subjectPropertyState;
+        private DirtyValue<string?>? _subjectPropertyStreetAddress;
+        private DirtyValue<string?>? _subjectPropertyUnitNumber;
+        private DirtyValue<StringEnumValue<UnitType>>? _subjectPropertyUnitType;
+        private DirtyValue<decimal?>? _teaserRate;
+        private DirtyValue<string?>? _timeLockedWithInvestor;
+        private DirtyValue<decimal?>? _totalBuyPrice;
+        private DirtyValue<decimal?>? _totalForLesserOfSumAsIs;
+        private DirtyValue<decimal?>? _totalPrice;
+        private DirtyValue<decimal?>? _totalSubordinateFinancing;
+        private DirtyValue<bool?>? _twelveMonthMortgageRentalHistoryIndicator;
+        private DirtyValue<string?>? _type;
+        private DirtyValue<bool?>? _usePoint;
 
         /// <summary>
         /// Purchase Advice Actual Sell Amount [3424]
@@ -618,7 +619,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Buy Side Branch Concession Approved by [3377]
         /// </summary>
-        public string BranchApprovedby { get => _branchApprovedby; set => SetField(ref _branchApprovedby, value); }
+        public string? BranchApprovedby { get => _branchApprovedby; set => SetField(ref _branchApprovedby, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Branch Price Concession [3375]
@@ -634,17 +635,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Buydown Type [4632]
         /// </summary>
-        public string BuydownType { get => _buydownType; set => SetField(ref _buydownType, value); }
+        public string? BuydownType { get => _buydownType; set => SetField(ref _buydownType, value); }
 
         /// <summary>
         /// RateLock BuySideAdjustments
         /// </summary>
+        [AllowNull]
         public IList<PriceAdjustment> BuySideAdjustments { get => GetField(ref _buySideAdjustments); set => SetField(ref _buySideAdjustments, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Comments [2204]
         /// </summary>
-        public string BuySideComments { get => _buySideComments; set => SetField(ref _buySideComments, value); }
+        public string? BuySideComments { get => _buySideComments; set => SetField(ref _buySideComments, value); }
 
         /// <summary>
         /// Rate Lock BuySide Commitment Date [3909]
@@ -654,12 +656,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock BuySide Commitment Number [3902]
         /// </summary>
-        public string BuySideCommitmentNumber { get => _buySideCommitmentNumber; set => SetField(ref _buySideCommitmentNumber, value); }
+        public string? BuySideCommitmentNumber { get => _buySideCommitmentNumber; set => SetField(ref _buySideCommitmentNumber, value); }
 
         /// <summary>
         /// Rate Lock BuySide Commitment Type [3910]
         /// </summary>
-        public string BuySideCommitmentType { get => _buySideCommitmentType; set => SetField(ref _buySideCommitmentType, value); }
+        public string? BuySideCommitmentType { get => _buySideCommitmentType; set => SetField(ref _buySideCommitmentType, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Last Rate Set Date [3256]
@@ -679,7 +681,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock BuySide Delivery Type [3911]
         /// </summary>
-        public string BuySideDeliveryType { get => _buySideDeliveryType; set => SetField(ref _buySideDeliveryType, value); }
+        public string? BuySideDeliveryType { get => _buySideDeliveryType; set => SetField(ref _buySideDeliveryType, value); }
 
         /// <summary>
         /// Rate Lock BuySide Expiration Date [3912]
@@ -728,7 +730,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock BuySide Master Commitment Number [3903]
         /// </summary>
-        public string BuySideMasterCommitmentNumber { get => _buySideMasterCommitmentNumber; set => SetField(ref _buySideMasterCommitmentNumber, value); }
+        public string? BuySideMasterCommitmentNumber { get => _buySideMasterCommitmentNumber; set => SetField(ref _buySideMasterCommitmentNumber, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Number of Days [2150]
@@ -751,12 +753,12 @@ namespace EncompassRest.Loans
         /// Rate Lock Buy Side ONRP Lock Time [4058]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string BuySideOnrpLockTime { get => _buySideOnrpLockTime; set => SetField(ref _buySideOnrpLockTime, value); }
+        public string? BuySideOnrpLockTime { get => _buySideOnrpLockTime; set => SetField(ref _buySideOnrpLockTime, value); }
 
         /// <summary>
         /// Rate Lock BuySide Org ID [3906]
         /// </summary>
-        public string BuySideOrgID { get => _buySideOrgID; set => SetField(ref _buySideOrgID, value); }
+        public string? BuySideOrgID { get => _buySideOrgID; set => SetField(ref _buySideOrgID, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Lock Expires Date [3358]
@@ -796,7 +798,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Buy Side Rate Sheet ID [2148]
         /// </summary>
-        public string BuySideRateSheetID { get => _buySideRateSheetID; set => SetField(ref _buySideRateSheetID, value); }
+        public string? BuySideRateSheetID { get => _buySideRateSheetID; set => SetField(ref _buySideRateSheetID, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Base Rate Tot Adjustment [2159]
@@ -807,7 +809,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Buy Side Requested By [2029]
         /// </summary>
-        public string BuySideRequestedBy { get => _buySideRequestedBy; set => SetField(ref _buySideRequestedBy, value); }
+        public string? BuySideRequestedBy { get => _buySideRequestedBy; set => SetField(ref _buySideRequestedBy, value); }
 
         /// <summary>
         /// Rate Lock Buy Side SRP Paid Out [2205]
@@ -835,22 +837,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock BuySide TPOID [3905]
         /// </summary>
-        public string BuySideTPOID { get => _buySideTPOID; set => SetField(ref _buySideTPOID, value); }
+        public string? BuySideTPOID { get => _buySideTPOID; set => SetField(ref _buySideTPOID, value); }
 
         /// <summary>
         /// Rate Lock BuySide TPO Name [3904]
         /// </summary>
-        public string BuySideTPOName { get => _buySideTPOName; set => SetField(ref _buySideTPOName, value); }
+        public string? BuySideTPOName { get => _buySideTPOName; set => SetField(ref _buySideTPOName, value); }
 
         /// <summary>
         /// Assigned Trade Unique Identifier [3914]
         /// </summary>
-        public string BuySideTradeGuid { get => _buySideTradeGuid; set => SetField(ref _buySideTradeGuid, value); }
+        public string? BuySideTradeGuid { get => _buySideTradeGuid; set => SetField(ref _buySideTradeGuid, value); }
 
         /// <summary>
         /// Rate Lock Assigned Trade Number [3915]
         /// </summary>
-        public string BuySideTradeNumber { get => _buySideTradeNumber; set => SetField(ref _buySideTradeNumber, value); }
+        public string? BuySideTradeNumber { get => _buySideTradeNumber; set => SetField(ref _buySideTradeNumber, value); }
 
         /// <summary>
         /// Rate Lock BuySide UnDiscounted Rate [3848]
@@ -861,7 +863,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CancellationRequestPending
         /// </summary>
-        public string CancellationRequestPending { get => _cancellationRequestPending; set => SetField(ref _cancellationRequestPending, value); }
+        public string? CancellationRequestPending { get => _cancellationRequestPending; set => SetField(ref _cancellationRequestPending, value); }
 
         /// <summary>
         /// Lock RequestCOmbined Loan to Value (CLTV) [3242]
@@ -872,17 +874,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Purchase Adv Reconciliation Comments [2840]
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Investor Commitment [2215]
         /// </summary>
-        public string Commitment { get => _commitment; set => SetField(ref _commitment, value); }
+        public string? Commitment { get => _commitment; set => SetField(ref _commitment, value); }
 
         /// <summary>
         /// Rate Lock Request Commitment Type [4187]
         /// </summary>
-        public string CommitmentType { get => _commitmentType; set => SetField(ref _commitmentType, value); }
+        public string? CommitmentType { get => _commitmentType; set => SetField(ref _commitmentType, value); }
 
         /// <summary>
         /// Rate Lock Comparison Gain Loss Percent [3836]
@@ -910,54 +912,54 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Comparison Side Investor Address [3826]
         /// </summary>
-        public string CompInvestorAddress { get => _compInvestorAddress; set => SetField(ref _compInvestorAddress, value); }
+        public string? CompInvestorAddress { get => _compInvestorAddress; set => SetField(ref _compInvestorAddress, value); }
 
         /// <summary>
         /// Rate Lock Comparison Side Investor City [3827]
         /// </summary>
-        public string CompInvestorCity { get => _compInvestorCity; set => SetField(ref _compInvestorCity, value); }
+        public string? CompInvestorCity { get => _compInvestorCity; set => SetField(ref _compInvestorCity, value); }
 
         /// <summary>
         /// RateLock CompInvestorCommitment
         /// </summary>
-        public string CompInvestorCommitment { get => _compInvestorCommitment; set => SetField(ref _compInvestorCommitment, value); }
+        public string? CompInvestorCommitment { get => _compInvestorCommitment; set => SetField(ref _compInvestorCommitment, value); }
 
         /// <summary>
         /// Rate Lock Comparison Side Investor Contact [3823]
         /// </summary>
-        public string CompInvestorContact { get => _compInvestorContact; set => SetField(ref _compInvestorContact, value); }
+        public string? CompInvestorContact { get => _compInvestorContact; set => SetField(ref _compInvestorContact, value); }
 
         /// <summary>
         /// Rate Lock Comparison Side Investor Email [3825]
         /// </summary>
-        public string CompInvestorEmail { get => _compInvestorEmail; set => SetField(ref _compInvestorEmail, value); }
+        public string? CompInvestorEmail { get => _compInvestorEmail; set => SetField(ref _compInvestorEmail, value); }
 
         /// <summary>
         /// Rate Lock Comparison Investor Lock Type [3832]
         /// </summary>
-        public string CompInvestorLockType { get => _compInvestorLockType; set => SetField(ref _compInvestorLockType, value); }
+        public string? CompInvestorLockType { get => _compInvestorLockType; set => SetField(ref _compInvestorLockType, value); }
 
         /// <summary>
         /// Rate Lock Comparison Investor Name [3822]
         /// </summary>
-        public string CompInvestorName { get => _compInvestorName; set => SetField(ref _compInvestorName, value); }
+        public string? CompInvestorName { get => _compInvestorName; set => SetField(ref _compInvestorName, value); }
 
         /// <summary>
         /// Rate Lock Comparison Side Investor Phone [3824]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string CompInvestorPhone { get => _compInvestorPhone; set => SetField(ref _compInvestorPhone, value); }
+        public string? CompInvestorPhone { get => _compInvestorPhone; set => SetField(ref _compInvestorPhone, value); }
 
         /// <summary>
         /// Rate Lock Comparison Side Investor Zipcode [3829]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string CompInvestorPostalCode { get => _compInvestorPostalCode; set => SetField(ref _compInvestorPostalCode, value); }
+        public string? CompInvestorPostalCode { get => _compInvestorPostalCode; set => SetField(ref _compInvestorPostalCode, value); }
 
         /// <summary>
         /// Rate Lock Comparison Investor Program Code [3833]
         /// </summary>
-        public string CompInvestorProgramCode { get => _compInvestorProgramCode; set => SetField(ref _compInvestorProgramCode, value); }
+        public string? CompInvestorProgramCode { get => _compInvestorProgramCode; set => SetField(ref _compInvestorProgramCode, value); }
 
         /// <summary>
         /// Rate Lock Comparison Side Investor State [3828]
@@ -967,27 +969,28 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Comparison Investor Template Name [3838]
         /// </summary>
-        public string CompInvestorTemplateName { get => _compInvestorTemplateName; set => SetField(ref _compInvestorTemplateName, value); }
+        public string? CompInvestorTemplateName { get => _compInvestorTemplateName; set => SetField(ref _compInvestorTemplateName, value); }
 
         /// <summary>
         /// Rate Lock Comparison Side Investor Website [3830]
         /// </summary>
-        public string CompInvestorWebsite { get => _compInvestorWebsite; set => SetField(ref _compInvestorWebsite, value); }
+        public string? CompInvestorWebsite { get => _compInvestorWebsite; set => SetField(ref _compInvestorWebsite, value); }
 
         /// <summary>
         /// RateLock CompSideAdjustments
         /// </summary>
+        [AllowNull]
         public IList<PriceAdjustment> CompSideAdjustments { get => GetField(ref _compSideAdjustments); set => SetField(ref _compSideAdjustments, value); }
 
         /// <summary>
         /// Rate Lock Comparison Comments [3834]
         /// </summary>
-        public string CompSideComments { get => _compSideComments; set => SetField(ref _compSideComments, value); }
+        public string? CompSideComments { get => _compSideComments; set => SetField(ref _compSideComments, value); }
 
         /// <summary>
         /// Rate Lock Comparison Comparisoned By [3661]
         /// </summary>
-        public string CompSideComparisonedBy { get => _compSideComparisonedBy; set => SetField(ref _compSideComparisonedBy, value); }
+        public string? CompSideComparisonedBy { get => _compSideComparisonedBy; set => SetField(ref _compSideComparisonedBy, value); }
 
         /// <summary>
         /// Rate Lock Comparison Last Rate Set Date [3663]
@@ -1013,7 +1016,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideInvestorStatus
         /// </summary>
-        public string CompSideInvestorStatus { get => _compSideInvestorStatus; set => SetField(ref _compSideInvestorStatus, value); }
+        public string? CompSideInvestorStatus { get => _compSideInvestorStatus; set => SetField(ref _compSideInvestorStatus, value); }
 
         /// <summary>
         /// RateLock CompSideInvestorStatusDate
@@ -1023,12 +1026,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideInvestorTradeNumber
         /// </summary>
-        public string CompSideInvestorTradeNumber { get => _compSideInvestorTradeNumber; set => SetField(ref _compSideInvestorTradeNumber, value); }
+        public string? CompSideInvestorTradeNumber { get => _compSideInvestorTradeNumber; set => SetField(ref _compSideInvestorTradeNumber, value); }
 
         /// <summary>
         /// Rate Lock Comparison Loan Program [3660]
         /// </summary>
-        public string CompSideLoanProgram { get => _compSideLoanProgram; set => SetField(ref _compSideLoanProgram, value); }
+        public string? CompSideLoanProgram { get => _compSideLoanProgram; set => SetField(ref _compSideLoanProgram, value); }
 
         /// <summary>
         /// Rate Lock Comparison Lock Date [3664]
@@ -1066,7 +1069,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideMasterContractNumber
         /// </summary>
-        public string CompSideMasterContractNumber { get => _compSideMasterContractNumber; set => SetField(ref _compSideMasterContractNumber, value); }
+        public string? CompSideMasterContractNumber { get => _compSideMasterContractNumber; set => SetField(ref _compSideMasterContractNumber, value); }
 
         /// <summary>
         /// Rate Lock Comparison Base Price Rate Net Comparison Price [3776]
@@ -1111,7 +1114,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Comparison Rate Sheet ID [3662]
         /// </summary>
-        public string CompSideRateSheetID { get => _compSideRateSheetID; set => SetField(ref _compSideRateSheetID, value); }
+        public string? CompSideRateSheetID { get => _compSideRateSheetID; set => SetField(ref _compSideRateSheetID, value); }
 
         /// <summary>
         /// Rate Lock Comparison Base Rate Tot Adjustment [3712]
@@ -1122,7 +1125,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideRequestedBy
         /// </summary>
-        public string CompSideRequestedBy { get => _compSideRequestedBy; set => SetField(ref _compSideRequestedBy, value); }
+        public string? CompSideRequestedBy { get => _compSideRequestedBy; set => SetField(ref _compSideRequestedBy, value); }
 
         /// <summary>
         /// Rate Lock Comparison Servicing Type [3831]
@@ -1138,17 +1141,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideTradeGuid
         /// </summary>
-        public string CompSideTradeGuid { get => _compSideTradeGuid; set => SetField(ref _compSideTradeGuid, value); }
+        public string? CompSideTradeGuid { get => _compSideTradeGuid; set => SetField(ref _compSideTradeGuid, value); }
 
         /// <summary>
         /// RateLock CompSideTradeNumber
         /// </summary>
-        public string CompSideTradeNumber { get => _compSideTradeNumber; set => SetField(ref _compSideTradeNumber, value); }
+        public string? CompSideTradeNumber { get => _compSideTradeNumber; set => SetField(ref _compSideTradeNumber, value); }
 
         /// <summary>
         /// Purchase Advice Confirmed By [2396]
         /// </summary>
-        public string ConfirmedBy { get => _confirmedBy; set => SetField(ref _confirmedBy, value); }
+        public string? ConfirmedBy { get => _confirmedBy; set => SetField(ref _confirmedBy, value); }
 
         /// <summary>
         /// Purchase Advice Confirmed Date [2630]
@@ -1163,7 +1166,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Buy Side Corporate Concession Approved by [3373]
         /// </summary>
-        public string CorporateApprovedby { get => _corporateApprovedby; set => SetField(ref _corporateApprovedby, value); }
+        public string? CorporateApprovedby { get => _corporateApprovedby; set => SetField(ref _corporateApprovedby, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Corporate Price Concession [3371]
@@ -1204,17 +1207,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Additional Escrow Payment Collection - Line 1007 Description [CPA.ADDLESCROW.1007Description]
         /// </summary>
-        public string CorrespondentAdditionalEscrowDescription1007 { get => _correspondentAdditionalEscrowDescription1007; set => SetField(ref _correspondentAdditionalEscrowDescription1007, value); }
+        public string? CorrespondentAdditionalEscrowDescription1007 { get => _correspondentAdditionalEscrowDescription1007; set => SetField(ref _correspondentAdditionalEscrowDescription1007, value); }
 
         /// <summary>
         /// Additional Escrow Payment Collection - Line 1008 Description [CPA.ADDLESCROW.1008Description]
         /// </summary>
-        public string CorrespondentAdditionalEscrowDescription1008 { get => _correspondentAdditionalEscrowDescription1008; set => SetField(ref _correspondentAdditionalEscrowDescription1008, value); }
+        public string? CorrespondentAdditionalEscrowDescription1008 { get => _correspondentAdditionalEscrowDescription1008; set => SetField(ref _correspondentAdditionalEscrowDescription1008, value); }
 
         /// <summary>
         /// Additional Escrow Payment Collection - Line 1009 Description [CPA.ADDLESCROW.1009Description]
         /// </summary>
-        public string CorrespondentAdditionalEscrowDescription1009 { get => _correspondentAdditionalEscrowDescription1009; set => SetField(ref _correspondentAdditionalEscrowDescription1009, value); }
+        public string? CorrespondentAdditionalEscrowDescription1009 { get => _correspondentAdditionalEscrowDescription1009; set => SetField(ref _correspondentAdditionalEscrowDescription1009, value); }
 
         /// <summary>
         /// Additional Escrow Payment Collection - Flood Insurance [CPA.ADDLESCROW.FloodInsurance]
@@ -1360,62 +1363,62 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 1 [3587]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription1 { get => _correspondentAdditionalLineDescription1; set => SetField(ref _correspondentAdditionalLineDescription1, value); }
+        public string? CorrespondentAdditionalLineDescription1 { get => _correspondentAdditionalLineDescription1; set => SetField(ref _correspondentAdditionalLineDescription1, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 10 [3605]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription10 { get => _correspondentAdditionalLineDescription10; set => SetField(ref _correspondentAdditionalLineDescription10, value); }
+        public string? CorrespondentAdditionalLineDescription10 { get => _correspondentAdditionalLineDescription10; set => SetField(ref _correspondentAdditionalLineDescription10, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 11 [3607]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription11 { get => _correspondentAdditionalLineDescription11; set => SetField(ref _correspondentAdditionalLineDescription11, value); }
+        public string? CorrespondentAdditionalLineDescription11 { get => _correspondentAdditionalLineDescription11; set => SetField(ref _correspondentAdditionalLineDescription11, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 12 [3609]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription12 { get => _correspondentAdditionalLineDescription12; set => SetField(ref _correspondentAdditionalLineDescription12, value); }
+        public string? CorrespondentAdditionalLineDescription12 { get => _correspondentAdditionalLineDescription12; set => SetField(ref _correspondentAdditionalLineDescription12, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 2 [3589]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription2 { get => _correspondentAdditionalLineDescription2; set => SetField(ref _correspondentAdditionalLineDescription2, value); }
+        public string? CorrespondentAdditionalLineDescription2 { get => _correspondentAdditionalLineDescription2; set => SetField(ref _correspondentAdditionalLineDescription2, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 3 [3591]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription3 { get => _correspondentAdditionalLineDescription3; set => SetField(ref _correspondentAdditionalLineDescription3, value); }
+        public string? CorrespondentAdditionalLineDescription3 { get => _correspondentAdditionalLineDescription3; set => SetField(ref _correspondentAdditionalLineDescription3, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 4 [3593]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription4 { get => _correspondentAdditionalLineDescription4; set => SetField(ref _correspondentAdditionalLineDescription4, value); }
+        public string? CorrespondentAdditionalLineDescription4 { get => _correspondentAdditionalLineDescription4; set => SetField(ref _correspondentAdditionalLineDescription4, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 5 [3595]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription5 { get => _correspondentAdditionalLineDescription5; set => SetField(ref _correspondentAdditionalLineDescription5, value); }
+        public string? CorrespondentAdditionalLineDescription5 { get => _correspondentAdditionalLineDescription5; set => SetField(ref _correspondentAdditionalLineDescription5, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 6 [3597]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription6 { get => _correspondentAdditionalLineDescription6; set => SetField(ref _correspondentAdditionalLineDescription6, value); }
+        public string? CorrespondentAdditionalLineDescription6 { get => _correspondentAdditionalLineDescription6; set => SetField(ref _correspondentAdditionalLineDescription6, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 7 [3599]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription7 { get => _correspondentAdditionalLineDescription7; set => SetField(ref _correspondentAdditionalLineDescription7, value); }
+        public string? CorrespondentAdditionalLineDescription7 { get => _correspondentAdditionalLineDescription7; set => SetField(ref _correspondentAdditionalLineDescription7, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 8 [3601]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription8 { get => _correspondentAdditionalLineDescription8; set => SetField(ref _correspondentAdditionalLineDescription8, value); }
+        public string? CorrespondentAdditionalLineDescription8 { get => _correspondentAdditionalLineDescription8; set => SetField(ref _correspondentAdditionalLineDescription8, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 9 [3603]
         /// </summary>
-        public string CorrespondentAdditionalLineDescription9 { get => _correspondentAdditionalLineDescription9; set => SetField(ref _correspondentAdditionalLineDescription9, value); }
+        public string? CorrespondentAdditionalLineDescription9 { get => _correspondentAdditionalLineDescription9; set => SetField(ref _correspondentAdditionalLineDescription9, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Total Amount [3611]
@@ -1444,22 +1447,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Purchase Advice Additional Adjusters 1 Description [3572]
         /// </summary>
-        public string CorrespondentAdjusterDescription1 { get => _correspondentAdjusterDescription1; set => SetField(ref _correspondentAdjusterDescription1, value); }
+        public string? CorrespondentAdjusterDescription1 { get => _correspondentAdjusterDescription1; set => SetField(ref _correspondentAdjusterDescription1, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Adjusters 2 Description [3574]
         /// </summary>
-        public string CorrespondentAdjusterDescription2 { get => _correspondentAdjusterDescription2; set => SetField(ref _correspondentAdjusterDescription2, value); }
+        public string? CorrespondentAdjusterDescription2 { get => _correspondentAdjusterDescription2; set => SetField(ref _correspondentAdjusterDescription2, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Adjusters 3 Description [3576]
         /// </summary>
-        public string CorrespondentAdjusterDescription3 { get => _correspondentAdjusterDescription3; set => SetField(ref _correspondentAdjusterDescription3, value); }
+        public string? CorrespondentAdjusterDescription3 { get => _correspondentAdjusterDescription3; set => SetField(ref _correspondentAdjusterDescription3, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Confirmed By [3612]
         /// </summary>
-        public string CorrespondentConfirmedBy { get => _correspondentConfirmedBy; set => SetField(ref _correspondentConfirmedBy, value); }
+        public string? CorrespondentConfirmedBy { get => _correspondentConfirmedBy; set => SetField(ref _correspondentConfirmedBy, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Confirmed Date [3613]
@@ -1510,17 +1513,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Escrow Disbursements - Line 1007 Description [CPA.ESCROWDISBURSE.1007Description]
         /// </summary>
-        public string CorrespondentEscrowDisbursementsDescription1007 { get => _correspondentEscrowDisbursementsDescription1007; set => SetField(ref _correspondentEscrowDisbursementsDescription1007, value); }
+        public string? CorrespondentEscrowDisbursementsDescription1007 { get => _correspondentEscrowDisbursementsDescription1007; set => SetField(ref _correspondentEscrowDisbursementsDescription1007, value); }
 
         /// <summary>
         /// Escrow Disbursements - Line 1008 Description [CPA.ESCROWDISBURSE.1008Description]
         /// </summary>
-        public string CorrespondentEscrowDisbursementsDescription1008 { get => _correspondentEscrowDisbursementsDescription1008; set => SetField(ref _correspondentEscrowDisbursementsDescription1008, value); }
+        public string? CorrespondentEscrowDisbursementsDescription1008 { get => _correspondentEscrowDisbursementsDescription1008; set => SetField(ref _correspondentEscrowDisbursementsDescription1008, value); }
 
         /// <summary>
         /// Escrow Disbursements - Line 1009 Description [CPA.ESCROWDISBURSE.1009Description]
         /// </summary>
-        public string CorrespondentEscrowDisbursementsDescription1009 { get => _correspondentEscrowDisbursementsDescription1009; set => SetField(ref _correspondentEscrowDisbursementsDescription1009, value); }
+        public string? CorrespondentEscrowDisbursementsDescription1009 { get => _correspondentEscrowDisbursementsDescription1009; set => SetField(ref _correspondentEscrowDisbursementsDescription1009, value); }
 
         /// <summary>
         /// Escrow Disbursements - Escrows to be paid by Seller [CPA.ESCROWDISBURSE.EscrowsToBePaidBySeller]
@@ -1631,17 +1634,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Final CD - Line 1007 Description [CPA.FCD.1007Description]
         /// </summary>
-        public string CorrespondentFinalCDDescription1007 { get => _correspondentFinalCDDescription1007; set => SetField(ref _correspondentFinalCDDescription1007, value); }
+        public string? CorrespondentFinalCDDescription1007 { get => _correspondentFinalCDDescription1007; set => SetField(ref _correspondentFinalCDDescription1007, value); }
 
         /// <summary>
         /// Final CD - Line 1008 Description [CPA.FCD.1008Description]
         /// </summary>
-        public string CorrespondentFinalCDDescription1008 { get => _correspondentFinalCDDescription1008; set => SetField(ref _correspondentFinalCDDescription1008, value); }
+        public string? CorrespondentFinalCDDescription1008 { get => _correspondentFinalCDDescription1008; set => SetField(ref _correspondentFinalCDDescription1008, value); }
 
         /// <summary>
         /// Final CD - Line 1009 Description [CPA.FCD.1009Description]
         /// </summary>
-        public string CorrespondentFinalCDDescription1009 { get => _correspondentFinalCDDescription1009; set => SetField(ref _correspondentFinalCDDescription1009, value); }
+        public string? CorrespondentFinalCDDescription1009 { get => _correspondentFinalCDDescription1009; set => SetField(ref _correspondentFinalCDDescription1009, value); }
 
         /// <summary>
         /// Final CD - Flood Insurance [CPA.FCD.FloodInsurance]
@@ -1781,7 +1784,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Purchase Advice Reconcilation Comments [3586]
         /// </summary>
-        public string CorrespondentReconcilationComments { get => _correspondentReconcilationComments; set => SetField(ref _correspondentReconcilationComments, value); }
+        public string? CorrespondentReconcilationComments { get => _correspondentReconcilationComments; set => SetField(ref _correspondentReconcilationComments, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Remaining Buydown Amount [3585]
@@ -1810,27 +1813,27 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank ABA Number [3945]
         /// </summary>
-        public string CorrespondentWarehouseBankABANum { get => _correspondentWarehouseBankABANum; set => SetField(ref _correspondentWarehouseBankABANum, value); }
+        public string? CorrespondentWarehouseBankABANum { get => _correspondentWarehouseBankABANum; set => SetField(ref _correspondentWarehouseBankABANum, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Account Name [4202]
         /// </summary>
-        public string CorrespondentWarehouseBankAcctName { get => _correspondentWarehouseBankAcctName; set => SetField(ref _correspondentWarehouseBankAcctName, value); }
+        public string? CorrespondentWarehouseBankAcctName { get => _correspondentWarehouseBankAcctName; set => SetField(ref _correspondentWarehouseBankAcctName, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Account Number [3944]
         /// </summary>
-        public string CorrespondentWarehouseBankAcctNum { get => _correspondentWarehouseBankAcctNum; set => SetField(ref _correspondentWarehouseBankAcctNum, value); }
+        public string? CorrespondentWarehouseBankAcctNum { get => _correspondentWarehouseBankAcctNum; set => SetField(ref _correspondentWarehouseBankAcctNum, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Address [3948]
         /// </summary>
-        public string CorrespondentWarehouseBankAddress { get => _correspondentWarehouseBankAddress; set => SetField(ref _correspondentWarehouseBankAddress, value); }
+        public string? CorrespondentWarehouseBankAddress { get => _correspondentWarehouseBankAddress; set => SetField(ref _correspondentWarehouseBankAddress, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Address1 [3949]
         /// </summary>
-        public string CorrespondentWarehouseBankAddress1 { get => _correspondentWarehouseBankAddress1; set => SetField(ref _correspondentWarehouseBankAddress1, value); }
+        public string? CorrespondentWarehouseBankAddress1 { get => _correspondentWarehouseBankAddress1; set => SetField(ref _correspondentWarehouseBankAddress1, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Bailee Expiration Date [3956]
@@ -1850,44 +1853,44 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank City [3950]
         /// </summary>
-        public string CorrespondentWarehouseBankCity { get => _correspondentWarehouseBankCity; set => SetField(ref _correspondentWarehouseBankCity, value); }
+        public string? CorrespondentWarehouseBankCity { get => _correspondentWarehouseBankCity; set => SetField(ref _correspondentWarehouseBankCity, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Contact Email [3959]
         /// </summary>
-        public string CorrespondentWarehouseBankContactEmail { get => _correspondentWarehouseBankContactEmail; set => SetField(ref _correspondentWarehouseBankContactEmail, value); }
+        public string? CorrespondentWarehouseBankContactEmail { get => _correspondentWarehouseBankContactEmail; set => SetField(ref _correspondentWarehouseBankContactEmail, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Contact Fax Number [3961]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string CorrespondentWarehouseBankContactFax { get => _correspondentWarehouseBankContactFax; set => SetField(ref _correspondentWarehouseBankContactFax, value); }
+        public string? CorrespondentWarehouseBankContactFax { get => _correspondentWarehouseBankContactFax; set => SetField(ref _correspondentWarehouseBankContactFax, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Contact Name [3958]
         /// </summary>
-        public string CorrespondentWarehouseBankContactName { get => _correspondentWarehouseBankContactName; set => SetField(ref _correspondentWarehouseBankContactName, value); }
+        public string? CorrespondentWarehouseBankContactName { get => _correspondentWarehouseBankContactName; set => SetField(ref _correspondentWarehouseBankContactName, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Contact Phone Number [3960]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string CorrespondentWarehouseBankContactPhone { get => _correspondentWarehouseBankContactPhone; set => SetField(ref _correspondentWarehouseBankContactPhone, value); }
+        public string? CorrespondentWarehouseBankContactPhone { get => _correspondentWarehouseBankContactPhone; set => SetField(ref _correspondentWarehouseBankContactPhone, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Description [3953]
         /// </summary>
-        public string CorrespondentWarehouseBankDescription { get => _correspondentWarehouseBankDescription; set => SetField(ref _correspondentWarehouseBankDescription, value); }
+        public string? CorrespondentWarehouseBankDescription { get => _correspondentWarehouseBankDescription; set => SetField(ref _correspondentWarehouseBankDescription, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Further Credit Account Name [4204]
         /// </summary>
-        public string CorrespondentWarehouseBankFurtherCreditAcctName { get => _correspondentWarehouseBankFurtherCreditAcctName; set => SetField(ref _correspondentWarehouseBankFurtherCreditAcctName, value); }
+        public string? CorrespondentWarehouseBankFurtherCreditAcctName { get => _correspondentWarehouseBankFurtherCreditAcctName; set => SetField(ref _correspondentWarehouseBankFurtherCreditAcctName, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Further Credit Account Number [4203]
         /// </summary>
-        public string CorrespondentWarehouseBankFurtherCreditAcctNum { get => _correspondentWarehouseBankFurtherCreditAcctNum; set => SetField(ref _correspondentWarehouseBankFurtherCreditAcctNum, value); }
+        public string? CorrespondentWarehouseBankFurtherCreditAcctNum { get => _correspondentWarehouseBankFurtherCreditAcctNum; set => SetField(ref _correspondentWarehouseBankFurtherCreditAcctNum, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank ID  [3964]
@@ -1897,12 +1900,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Name  [3943]
         /// </summary>
-        public string CorrespondentWarehouseBankName { get => _correspondentWarehouseBankName; set => SetField(ref _correspondentWarehouseBankName, value); }
+        public string? CorrespondentWarehouseBankName { get => _correspondentWarehouseBankName; set => SetField(ref _correspondentWarehouseBankName, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Note [3962]
         /// </summary>
-        public string CorrespondentWarehouseBankNotes { get => _correspondentWarehouseBankNotes; set => SetField(ref _correspondentWarehouseBankNotes, value); }
+        public string? CorrespondentWarehouseBankNotes { get => _correspondentWarehouseBankNotes; set => SetField(ref _correspondentWarehouseBankNotes, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Self - Funder Indicator [3954]
@@ -1927,7 +1930,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Wire Confirmation # [4190]
         /// </summary>
-        public string CorrespondentWarehouseBankWireConfirmationNumber { get => _correspondentWarehouseBankWireConfirmationNumber; set => SetField(ref _correspondentWarehouseBankWireConfirmationNumber, value); }
+        public string? CorrespondentWarehouseBankWireConfirmationNumber { get => _correspondentWarehouseBankWireConfirmationNumber; set => SetField(ref _correspondentWarehouseBankWireConfirmationNumber, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Wire Instructions Received Indicator [3946]
@@ -1938,12 +1941,12 @@ namespace EncompassRest.Loans
         /// Correspondent Purchase Advice Warehouse Bank Zip Code [3952]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string CorrespondentWarehouseBankZip { get => _correspondentWarehouseBankZip; set => SetField(ref _correspondentWarehouseBankZip, value); }
+        public string? CorrespondentWarehouseBankZip { get => _correspondentWarehouseBankZip; set => SetField(ref _correspondentWarehouseBankZip, value); }
 
         /// <summary>
         /// RateLock CreditScoreToUse
         /// </summary>
-        public string CreditScoreToUse { get => _creditScoreToUse; set => SetField(ref _creditScoreToUse, value); }
+        public string? CreditScoreToUse { get => _creditScoreToUse; set => SetField(ref _creditScoreToUse, value); }
 
         /// <summary>
         /// Rate Lock Cumulated Days to Extend [3431]
@@ -1959,13 +1962,14 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CurrentAdjustments
         /// </summary>
+        [AllowNull]
         public IList<PriceAdjustment> CurrentAdjustments { get => GetField(ref _currentAdjustments); set => SetField(ref _currentAdjustments, value); }
 
         /// <summary>
         /// Rate Lock Current Comments [2035]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CurrentComments { get => _currentComments; set => SetField(ref _currentComments, value); }
+        public string? CurrentComments { get => _currentComments; set => SetField(ref _currentComments, value); }
 
         /// <summary>
         /// Construction Refinance Indicator [4255]
@@ -2044,7 +2048,7 @@ namespace EncompassRest.Loans
         /// Rate Lock Current Rate Sheet ID [2034]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CurrentRateSheetID { get => _currentRateSheetID; set => SetField(ref _currentRateSheetID, value); }
+        public string? CurrentRateSheetID { get => _currentRateSheetID; set => SetField(ref _currentRateSheetID, value); }
 
         /// <summary>
         /// Rate Lock Current Base Rate Tot Adjustment [2043]
@@ -2085,7 +2089,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request Delivery Type [3965]
         /// </summary>
-        public string DeliveryType { get => _deliveryType; set => SetField(ref _deliveryType, value); }
+        public string? DeliveryType { get => _deliveryType; set => SetField(ref _deliveryType, value); }
 
         /// <summary>
         /// Purchase Advice Amt Rcvd Dif [2624]
@@ -2264,7 +2268,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock ExtensionRequestPending
         /// </summary>
-        public string ExtensionRequestPending { get => _extensionRequestPending; set => SetField(ref _extensionRequestPending, value); }
+        public string? ExtensionRequestPending { get => _extensionRequestPending; set => SetField(ref _extensionRequestPending, value); }
 
         /// <summary>
         /// Rate Lock Extension Sequence Number [3433]
@@ -2275,6 +2279,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock ExtraPayments
         /// </summary>
+        [AllowNull]
         public IList<ExtraPayment> ExtraPayments { get => GetField(ref _extraPayments); set => SetField(ref _extraPayments, value); }
 
         /// <summary>
@@ -2312,7 +2317,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Amort Type ARM Descr [2956]
         /// </summary>
-        public string FNMProductPlanIdentifier { get => _fNMProductPlanIdentifier; set => SetField(ref _fNMProductPlanIdentifier, value); }
+        public string? FNMProductPlanIdentifier { get => _fNMProductPlanIdentifier; set => SetField(ref _fNMProductPlanIdentifier, value); }
 
         /// <summary>
         /// Lock Request MI Premium/Funding Amnt [3045]
@@ -2369,7 +2374,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Freddie Mac HELOC Actual Bal [3846]
         /// </summary>
-        public string HELOCActualBalance { get => _hELOCActualBalance; set => SetField(ref _hELOCActualBalance, value); }
+        public string? HELOCActualBalance { get => _hELOCActualBalance; set => SetField(ref _hELOCActualBalance, value); }
 
         /// <summary>
         /// Rate Lock Request - Freddie Mac HELOC Credit Limit [4519]
@@ -2380,7 +2385,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Purchase Adv Actual Impounds Transfer [2835]
@@ -2396,7 +2401,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock ImpoundWaived
         /// </summary>
-        public string ImpoundWaived { get => _impoundWaived; set => SetField(ref _impoundWaived, value); }
+        public string? ImpoundWaived { get => _impoundWaived; set => SetField(ref _impoundWaived, value); }
 
         /// <summary>
         /// Trans Details Impounds Waived [2293]
@@ -2424,22 +2429,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Sell Side Investor Address [2281]
         /// </summary>
-        public string InvestorAddress { get => _investorAddress; set => SetField(ref _investorAddress, value); }
+        public string? InvestorAddress { get => _investorAddress; set => SetField(ref _investorAddress, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor City [2282]
         /// </summary>
-        public string InvestorCity { get => _investorCity; set => SetField(ref _investorCity, value); }
+        public string? InvestorCity { get => _investorCity; set => SetField(ref _investorCity, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor Commitment [2286]
         /// </summary>
-        public string InvestorCommitment { get => _investorCommitment; set => SetField(ref _investorCommitment, value); }
+        public string? InvestorCommitment { get => _investorCommitment; set => SetField(ref _investorCommitment, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor Contact [2279]
         /// </summary>
-        public string InvestorContact { get => _investorContact; set => SetField(ref _investorContact, value); }
+        public string? InvestorContact { get => _investorContact; set => SetField(ref _investorContact, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor Delivery Date [2297]
@@ -2449,44 +2454,44 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Sell Side Investor Email [3055]
         /// </summary>
-        public string InvestorEmail { get => _investorEmail; set => SetField(ref _investorEmail, value); }
+        public string? InvestorEmail { get => _investorEmail; set => SetField(ref _investorEmail, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor Loan Number [2288]
         /// </summary>
-        public string InvestorLoanNumber { get => _investorLoanNumber; set => SetField(ref _investorLoanNumber, value); }
+        public string? InvestorLoanNumber { get => _investorLoanNumber; set => SetField(ref _investorLoanNumber, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor Lock Type [2287]
         /// </summary>
-        public string InvestorLockType { get => _investorLockType; set => SetField(ref _investorLockType, value); }
+        public string? InvestorLockType { get => _investorLockType; set => SetField(ref _investorLockType, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor MERS Number [2290]
         /// </summary>
-        public string InvestorMERSNumber { get => _investorMERSNumber; set => SetField(ref _investorMERSNumber, value); }
+        public string? InvestorMERSNumber { get => _investorMERSNumber; set => SetField(ref _investorMERSNumber, value); }
 
         /// <summary>
         /// Rate Lock Sell Investor Name [2278]
         /// </summary>
-        public string InvestorName { get => _investorName; set => SetField(ref _investorName, value); }
+        public string? InvestorName { get => _investorName; set => SetField(ref _investorName, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor Phone [2280]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string InvestorPhone { get => _investorPhone; set => SetField(ref _investorPhone, value); }
+        public string? InvestorPhone { get => _investorPhone; set => SetField(ref _investorPhone, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor Zipcode [2284]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string InvestorPostalCode { get => _investorPostalCode; set => SetField(ref _investorPostalCode, value); }
+        public string? InvestorPostalCode { get => _investorPostalCode; set => SetField(ref _investorPostalCode, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor Program Code [2289]
         /// </summary>
-        public string InvestorProgramCode { get => _investorProgramCode; set => SetField(ref _investorProgramCode, value); }
+        public string? InvestorProgramCode { get => _investorProgramCode; set => SetField(ref _investorProgramCode, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor State [2283]
@@ -2501,17 +2506,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Sell Investor Template Name [3263]
         /// </summary>
-        public string InvestorTemplateName { get => _investorTemplateName; set => SetField(ref _investorTemplateName, value); }
+        public string? InvestorTemplateName { get => _investorTemplateName; set => SetField(ref _investorTemplateName, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Investor Website [2285]
         /// </summary>
-        public string InvestorWebsite { get => _investorWebsite; set => SetField(ref _investorWebsite, value); }
+        public string? InvestorWebsite { get => _investorWebsite; set => SetField(ref _investorWebsite, value); }
 
         /// <summary>
         /// RateLock IsCancelled
         /// </summary>
-        public string IsCancelled { get => _isCancelled; set => SetField(ref _isCancelled, value); }
+        public string? IsCancelled { get => _isCancelled; set => SetField(ref _isCancelled, value); }
 
         /// <summary>
         /// Rate Lock Request Delivery Type is Visible [3966]
@@ -2556,13 +2561,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Loan Program [2866]
         /// </summary>
-        public string LoanProgram { get => _loanProgram; set => SetField(ref _loanProgram, value); }
+        public string? LoanProgram { get => _loanProgram; set => SetField(ref _loanProgram, value); }
 
         /// <summary>
         /// Lock Request Loan Program File [2967]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LoanProgramFile { get => _loanProgramFile; set => SetField(ref _loanProgramFile, value); }
+        public string? LoanProgramFile { get => _loanProgramFile; set => SetField(ref _loanProgramFile, value); }
 
         /// <summary>
         /// Lock Request Est Closing Date [2966]
@@ -2577,11 +2582,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock LockRequestAdjustments
         /// </summary>
+        [AllowNull]
         public IList<PriceAdjustment> LockRequestAdjustments { get => GetField(ref _lockRequestAdjustments); set => SetField(ref _lockRequestAdjustments, value); }
 
         /// <summary>
         /// RateLock LockRequestBorrowers
         /// </summary>
+        [AllowNull]
         public IList<LockRequestBorrower> LockRequestBorrowers { get => GetField(ref _lockRequestBorrowers); set => SetField(ref _lockRequestBorrowers, value); }
 
         /// <summary>
@@ -2598,12 +2605,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Borr Minimum FICO Score [2940]
         /// </summary>
-        public string MinFICO { get => _minFICO; set => SetField(ref _minFICO, value); }
+        public string? MinFICO { get => _minFICO; set => SetField(ref _minFICO, value); }
 
         /// <summary>
         /// Lock Request Co-Borr Minimum FICO Score [2941]
         /// </summary>
-        public string MinFICO2 { get => _minFICO2; set => SetField(ref _minFICO2, value); }
+        public string? MinFICO2 { get => _minFICO2; set => SetField(ref _minFICO2, value); }
 
         /// <summary>
         /// Lock Request Upfont MI Premium/Funding Amt Paid in Cash [3047]
@@ -2647,7 +2654,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Amort Type Other Descr [2957]
         /// </summary>
-        public string OtherAmortizationTypeDescription { get => _otherAmortizationTypeDescription; set => SetField(ref _otherAmortizationTypeDescription, value); }
+        public string? OtherAmortizationTypeDescription { get => _otherAmortizationTypeDescription; set => SetField(ref _otherAmortizationTypeDescription, value); }
 
         /// <summary>
         /// Lock Request Other Subordinate Amount [3037]
@@ -2668,7 +2675,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Plan Code [3041]
         /// </summary>
-        public string PlanCode { get => _planCode; set => SetField(ref _planCode, value); }
+        public string? PlanCode { get => _planCode; set => SetField(ref _planCode, value); }
 
         /// <summary>
         /// Purchase Advice Premium [2212]
@@ -2689,17 +2696,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock PriceAdjustments
         /// </summary>
+        [AllowNull]
         public IList<PriceAdjustment> PriceAdjustments { get => GetField(ref _priceAdjustments); set => SetField(ref _priceAdjustments, value); }
 
         /// <summary>
         /// RateLock PricingHistoryData
         /// </summary>
-        public string PricingHistoryData { get => _pricingHistoryData; set => SetField(ref _pricingHistoryData, value); }
+        public string? PricingHistoryData { get => _pricingHistoryData; set => SetField(ref _pricingHistoryData, value); }
 
         /// <summary>
         /// Lock Request Field For Pricing Updated [3039]
         /// </summary>
-        public string PricingUpdated { get => _pricingUpdated; set => SetField(ref _pricingUpdated, value); }
+        public string? PricingUpdated { get => _pricingUpdated; set => SetField(ref _pricingUpdated, value); }
 
         /// <summary>
         /// Purchase Advice Principal [2211]
@@ -2737,6 +2745,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock PurchaseAdvicePayouts
         /// </summary>
+        [AllowNull]
         public IList<PurchaseAdvicePayout> PurchaseAdvicePayouts { get => GetField(ref _purchaseAdvicePayouts); set => SetField(ref _purchaseAdvicePayouts, value); }
 
         /// <summary>
@@ -2748,27 +2757,28 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock RateLockBuydowns
         /// </summary>
+        [AllowNull]
         public IList<RateLockBuydown> RateLockBuydowns { get => GetField(ref _rateLockBuydowns); set => SetField(ref _rateLockBuydowns, value); }
 
         /// <summary>
         /// RateLock RateRequestStatus
         /// </summary>
-        public string RateRequestStatus { get => _rateRequestStatus; set => SetField(ref _rateRequestStatus, value); }
+        public string? RateRequestStatus { get => _rateRequestStatus; set => SetField(ref _rateRequestStatus, value); }
 
         /// <summary>
         /// RateLock RateStatus
         /// </summary>
-        public string RateStatus { get => _rateStatus; set => SetField(ref _rateStatus, value); }
+        public string? RateStatus { get => _rateStatus; set => SetField(ref _rateStatus, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Reason for Branch Concession Approval [3378]
         /// </summary>
-        public string ReasonforBranchApproval { get => _reasonforBranchApproval; set => SetField(ref _reasonforBranchApproval, value); }
+        public string? ReasonforBranchApproval { get => _reasonforBranchApproval; set => SetField(ref _reasonforBranchApproval, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Reason for Corporate  Concession Approval [3374]
         /// </summary>
-        public string ReasonforCorporateApproval { get => _reasonforCorporateApproval; set => SetField(ref _reasonforCorporateApproval, value); }
+        public string? ReasonforCorporateApproval { get => _reasonforCorporateApproval; set => SetField(ref _reasonforCorporateApproval, value); }
 
         /// <summary>
         /// Purchase Advice Reconciled Differences [2629]
@@ -2779,7 +2789,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock ReLockRequestPending
         /// </summary>
-        public string ReLockRequestPending { get => _reLockRequestPending; set => SetField(ref _reLockRequestPending, value); }
+        public string? ReLockRequestPending { get => _reLockRequestPending; set => SetField(ref _reLockRequestPending, value); }
 
         /// <summary>
         /// Purch Adv Remaining Buydown Funds [3131]
@@ -2790,7 +2800,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request Comments [2144]
         /// </summary>
-        public string RequestComments { get => _requestComments; set => SetField(ref _requestComments, value); }
+        public string? RequestComments { get => _requestComments; set => SetField(ref _requestComments, value); }
 
         /// <summary>
         /// Rate Lock Request Last Rate Set Date [3254]
@@ -2810,7 +2820,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request Fulfilled Date Time [2592]
         /// </summary>
-        public string RequestFullfilledDateTime { get => _requestFullfilledDateTime; set => SetField(ref _requestFullfilledDateTime, value); }
+        public string? RequestFullfilledDateTime { get => _requestFullfilledDateTime; set => SetField(ref _requestFullfilledDateTime, value); }
 
         /// <summary>
         /// Lock Request Impound Types [2962]
@@ -2820,7 +2830,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock RequestImpoundWaived
         /// </summary>
-        public string RequestImpoundWaived { get => _requestImpoundWaived; set => SetField(ref _requestImpoundWaived, value); }
+        public string? RequestImpoundWaived { get => _requestImpoundWaived; set => SetField(ref _requestImpoundWaived, value); }
 
         /// <summary>
         /// Lock Request Impounds Waived [2961]
@@ -2830,7 +2840,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request Lock Cancellation Comment [3623]
         /// </summary>
-        public string RequestLockCancellationComment { get => _requestLockCancellationComment; set => SetField(ref _requestLockCancellationComment, value); }
+        public string? RequestLockCancellationComment { get => _requestLockCancellationComment; set => SetField(ref _requestLockCancellationComment, value); }
 
         /// <summary>
         /// Rate Lock Request Lock Cancellation Date [3622]
@@ -2850,7 +2860,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request Lock Extension Comment [3370]
         /// </summary>
-        public string RequestLockExtendComment { get => _requestLockExtendComment; set => SetField(ref _requestLockExtendComment, value); }
+        public string? RequestLockExtendComment { get => _requestLockExtendComment; set => SetField(ref _requestLockExtendComment, value); }
 
         /// <summary>
         /// Rate Lock Request Lock Extension Price Adjustment [3362]
@@ -2861,12 +2871,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request Lock Status [4209]
         /// </summary>
-        public string RequestLockStatus { get => _requestLockStatus; set => SetField(ref _requestLockStatus, value); }
+        public string? RequestLockStatus { get => _requestLockStatus; set => SetField(ref _requestLockStatus, value); }
 
         /// <summary>
         /// Rate Lock Request Type [3841]
         /// </summary>
-        public string RequestLockType { get => _requestLockType; set => SetField(ref _requestLockType, value); }
+        public string? RequestLockType { get => _requestLockType; set => SetField(ref _requestLockType, value); }
 
         /// <summary>
         /// Rate Lock Request Base Margin Rate [2647]
@@ -2913,7 +2923,7 @@ namespace EncompassRest.Loans
         /// Rate Lock Request ONRP Lock Time [4060]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string RequestOnrpLockTime { get => _requestOnrpLockTime; set => SetField(ref _requestOnrpLockTime, value); }
+        public string? RequestOnrpLockTime { get => _requestOnrpLockTime; set => SetField(ref _requestOnrpLockTime, value); }
 
         /// <summary>
         /// Rate Lock Request Original Lock Expires Date [3369]
@@ -2928,7 +2938,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock RequestPending
         /// </summary>
-        public string RequestPending { get => _requestPending; set => SetField(ref _requestPending, value); }
+        public string? RequestPending { get => _requestPending; set => SetField(ref _requestPending, value); }
 
         /// <summary>
         /// Lock Request Prepay Penalty [2963]
@@ -2956,7 +2966,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request Program Notes [4456]
         /// </summary>
-        public string RequestProgramNotes { get => _requestProgramNotes; set => SetField(ref _requestProgramNotes, value); }
+        public string? RequestProgramNotes { get => _requestProgramNotes; set => SetField(ref _requestProgramNotes, value); }
 
         /// <summary>
         /// Rate Lock Request Base Rate [2092]
@@ -2973,7 +2983,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request Rate Sheet ID [2088]
         /// </summary>
-        public string RequestRateSheetID { get => _requestRateSheetID; set => SetField(ref _requestRateSheetID, value); }
+        public string? RequestRateSheetID { get => _requestRateSheetID; set => SetField(ref _requestRateSheetID, value); }
 
         /// <summary>
         /// Rate Lock Request Base Rate Tot Adjustment [2099]
@@ -2996,7 +3006,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock RequestType
         /// </summary>
-        public string RequestType { get => _requestType; set => SetField(ref _requestType, value); }
+        public string? RequestType { get => _requestType; set => SetField(ref _requestType, value); }
 
         /// <summary>
         /// Lock Request UnDiscounted Rate [3847]
@@ -3024,17 +3034,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock SellSideAdjustments
         /// </summary>
+        [AllowNull]
         public IList<PriceAdjustment> SellSideAdjustments { get => GetField(ref _sellSideAdjustments); set => SetField(ref _sellSideAdjustments, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Comments [2275]
         /// </summary>
-        public string SellSideComments { get => _sellSideComments; set => SetField(ref _sellSideComments, value); }
+        public string? SellSideComments { get => _sellSideComments; set => SetField(ref _sellSideComments, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Commitment Contract Number [4093]
         /// </summary>
-        public string SellSideCommitmentContractNumber { get => _sellSideCommitmentContractNumber; set => SetField(ref _sellSideCommitmentContractNumber, value); }
+        public string? SellSideCommitmentContractNumber { get => _sellSideCommitmentContractNumber; set => SetField(ref _sellSideCommitmentContractNumber, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Commitment Date [4016]
@@ -3090,12 +3101,12 @@ namespace EncompassRest.Loans
         /// Investor Trade Number [2842]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SellSideInvestorTradeNumber { get => _sellSideInvestorTradeNumber; set => SetField(ref _sellSideInvestorTradeNumber, value); }
+        public string? SellSideInvestorTradeNumber { get => _sellSideInvestorTradeNumber; set => SetField(ref _sellSideInvestorTradeNumber, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Loan Program [3123]
         /// </summary>
-        public string SellSideLoanProgram { get => _sellSideLoanProgram; set => SetField(ref _sellSideLoanProgram, value); }
+        public string? SellSideLoanProgram { get => _sellSideLoanProgram; set => SetField(ref _sellSideLoanProgram, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Lock Date [2220]
@@ -3135,7 +3146,7 @@ namespace EncompassRest.Loans
         /// Master Contract Number [2841]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SellSideMasterContractNumber { get => _sellSideMasterContractNumber; set => SetField(ref _sellSideMasterContractNumber, value); }
+        public string? SellSideMasterContractNumber { get => _sellSideMasterContractNumber; set => SetField(ref _sellSideMasterContractNumber, value); }
 
         /// <summary>
         /// Rate Lock Sell Side MSR Value [4118]
@@ -3168,12 +3179,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Sell Side Pool ID [4019]
         /// </summary>
-        public string SellSidePoolID { get => _sellSidePoolID; set => SetField(ref _sellSidePoolID, value); }
+        public string? SellSidePoolID { get => _sellSidePoolID; set => SetField(ref _sellSidePoolID, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Pool Number [3890]
         /// </summary>
-        public string SellSidePoolNumber { get => _sellSidePoolNumber; set => SetField(ref _sellSidePoolNumber, value); }
+        public string? SellSidePoolNumber { get => _sellSidePoolNumber; set => SetField(ref _sellSidePoolNumber, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Base Price Rate [2232]
@@ -3190,7 +3201,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Sell Side Product Name [4094]
         /// </summary>
-        public string SellSideProductName { get => _sellSideProductName; set => SetField(ref _sellSideProductName, value); }
+        public string? SellSideProductName { get => _sellSideProductName; set => SetField(ref _sellSideProductName, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Base Rate [2223]
@@ -3201,7 +3212,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Sell Side Rate Sheet ID [2219]
         /// </summary>
-        public string SellSideRateSheetID { get => _sellSideRateSheetID; set => SetField(ref _sellSideRateSheetID, value); }
+        public string? SellSideRateSheetID { get => _sellSideRateSheetID; set => SetField(ref _sellSideRateSheetID, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Base Rate Tot Adjustment [2230]
@@ -3212,12 +3223,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Sell Side Requested By [2030]
         /// </summary>
-        public string SellSideRequestedBy { get => _sellSideRequestedBy; set => SetField(ref _sellSideRequestedBy, value); }
+        public string? SellSideRequestedBy { get => _sellSideRequestedBy; set => SetField(ref _sellSideRequestedBy, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Servicer [3535]
         /// </summary>
-        public string SellSideServicer { get => _sellSideServicer; set => SetField(ref _sellSideServicer, value); }
+        public string? SellSideServicer { get => _sellSideServicer; set => SetField(ref _sellSideServicer, value); }
 
         /// <summary>
         /// Rate Lock Sell Side Servicing Fee [3888]
@@ -3246,19 +3257,19 @@ namespace EncompassRest.Loans
         /// Assigned Trade Unique Identifier [2819]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SellSideTradeGuid { get => _sellSideTradeGuid; set => SetField(ref _sellSideTradeGuid, value); }
+        public string? SellSideTradeGuid { get => _sellSideTradeGuid; set => SetField(ref _sellSideTradeGuid, value); }
 
         /// <summary>
         /// Rate Lock Identifier Trade Mgmt Prev Confirmed Lock [3839]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SellSideTradeMgmtPrevConfirmedLockGuid { get => _sellSideTradeMgmtPrevConfirmedLockGuid; set => SetField(ref _sellSideTradeMgmtPrevConfirmedLockGuid, value); }
+        public string? SellSideTradeMgmtPrevConfirmedLockGuid { get => _sellSideTradeMgmtPrevConfirmedLockGuid; set => SetField(ref _sellSideTradeMgmtPrevConfirmedLockGuid, value); }
 
         /// <summary>
         /// Rate Lock Assigned Trade Number [2032]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string SellSideTradeNumber { get => _sellSideTradeNumber; set => SetField(ref _sellSideTradeNumber, value); }
+        public string? SellSideTradeNumber { get => _sellSideTradeNumber; set => SetField(ref _sellSideTradeNumber, value); }
 
         /// <summary>
         /// Servicing Release Indicator [3338]
@@ -3286,7 +3297,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Subject Property City [2943]
         /// </summary>
-        public string SubjectPropertyCity { get => _subjectPropertyCity; set => SetField(ref _subjectPropertyCity, value); }
+        public string? SubjectPropertyCity { get => _subjectPropertyCity; set => SetField(ref _subjectPropertyCity, value); }
 
         /// <summary>
         /// Lock Request Subject Property is a Condotel [4115]
@@ -3296,7 +3307,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Subject Property County [2944]
         /// </summary>
-        public string SubjectPropertyCounty { get => _subjectPropertyCounty; set => SetField(ref _subjectPropertyCounty, value); }
+        public string? SubjectPropertyCounty { get => _subjectPropertyCounty; set => SetField(ref _subjectPropertyCounty, value); }
 
         /// <summary>
         /// Lock Request Subject Property is a Non-Warrantable Project [4116]
@@ -3307,12 +3318,12 @@ namespace EncompassRest.Loans
         /// Lock Request Subject Property Zip [2946]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string SubjectPropertyPostalCode { get => _subjectPropertyPostalCode; set => SetField(ref _subjectPropertyPostalCode, value); }
+        public string? SubjectPropertyPostalCode { get => _subjectPropertyPostalCode; set => SetField(ref _subjectPropertyPostalCode, value); }
 
         /// <summary>
         /// Lock Request Subject Property Street Address [4516]
         /// </summary>
-        public string SubjectPropertyPropertyStreetAddress { get => _subjectPropertyPropertyStreetAddress; set => SetField(ref _subjectPropertyPropertyStreetAddress, value); }
+        public string? SubjectPropertyPropertyStreetAddress { get => _subjectPropertyPropertyStreetAddress; set => SetField(ref _subjectPropertyPropertyStreetAddress, value); }
 
         /// <summary>
         /// Lock Request Subject Property State [2945]
@@ -3322,12 +3333,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Subject Property Address [2942]
         /// </summary>
-        public string SubjectPropertyStreetAddress { get => _subjectPropertyStreetAddress; set => SetField(ref _subjectPropertyStreetAddress, value); }
+        public string? SubjectPropertyStreetAddress { get => _subjectPropertyStreetAddress; set => SetField(ref _subjectPropertyStreetAddress, value); }
 
         /// <summary>
         /// Lock Request Subject Property Unit Number [4518]
         /// </summary>
-        public string SubjectPropertyUnitNumber { get => _subjectPropertyUnitNumber; set => SetField(ref _subjectPropertyUnitNumber, value); }
+        public string? SubjectPropertyUnitNumber { get => _subjectPropertyUnitNumber; set => SetField(ref _subjectPropertyUnitNumber, value); }
 
         /// <summary>
         /// Lock Request Subject Property Unit Type [4517]
@@ -3343,7 +3354,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Sell Side Time Locked with Investor [2292]
         /// </summary>
-        public string TimeLockedWithInvestor { get => _timeLockedWithInvestor; set => SetField(ref _timeLockedWithInvestor, value); }
+        public string? TimeLockedWithInvestor { get => _timeLockedWithInvestor; set => SetField(ref _timeLockedWithInvestor, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Total Buy Price [2218]
@@ -3377,7 +3388,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock Type
         /// </summary>
-        public string Type { get => _type; set => SetField(ref _type, value); }
+        public string? Type { get => _type; set => SetField(ref _type, value); }
 
         /// <summary>
         /// Use Point for Calculation SRP and Price Balancing [3430]

@@ -26,7 +26,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> CreateBorrowerPairRawAsync(string application, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> CreateBorrowerPairRawAsync(string application, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Permanently deletes the borrower pair with the specified <paramref name="applicationId"/> from the loan.
         /// </summary>
@@ -48,7 +48,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetBorrowerPairRawAsync(string applicationId, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetBorrowerPairRawAsync(string applicationId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves all borrower pairs for the loan.
         /// </summary>
@@ -61,7 +61,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetBorrowerPairsRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetBorrowerPairsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Swaps the position of borrower pairs in the loan. Note that the <see cref="Borrower.AltId"/> of the borrower and co-borrower do not change on the applications.
         /// </summary>
@@ -76,7 +76,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task MoveBorrowerPairsRawAsync(string applications, string queryString = null, CancellationToken cancellationToken = default);
+        Task MoveBorrowerPairsRawAsync(string applications, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Permanently deletes the borrower pair with the specified <paramref name="applicationId"/> from the loan.
         /// </summary>
@@ -99,7 +99,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> UpdateBorrowerPairRawAsync(string applicationId, string application, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> UpdateBorrowerPairRawAsync(string applicationId, string application, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ namespace EncompassRest.Loans.Apis
     /// </summary>
     public sealed class BorrowerPairs : LoanApiObject<Application>, IBorrowerPairs
     {
-        internal BorrowerPairs(EncompassRestClient client, LoanObjectBoundApis loanObjectBoundApis, string loanId)
+        internal BorrowerPairs(EncompassRestClient client, LoanObjectBoundApis? loanObjectBoundApis, string loanId)
             : base(client, loanObjectBoundApis, loanId, "applications")
         {
         }
@@ -127,7 +127,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetBorrowerPairsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetBorrowerPairsRawAsync), null, cancellationToken);
+        public Task<string> GetBorrowerPairsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetBorrowerPairsRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Retrieves the loan's borrower pair with the specified <paramref name="applicationId"/>.
@@ -149,7 +149,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetBorrowerPairRawAsync(string applicationId, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetBorrowerPairRawAsync(string applicationId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(applicationId, nameof(applicationId));
 
@@ -179,7 +179,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> CreateBorrowerPairRawAsync(string application, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> CreateBorrowerPairRawAsync(string application, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(application, nameof(application));
 
@@ -210,7 +210,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> UpdateBorrowerPairRawAsync(string applicationId, string application, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> UpdateBorrowerPairRawAsync(string applicationId, string application, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(applicationId, nameof(applicationId));
             Preconditions.NotNullOrEmpty(application, nameof(application));
@@ -266,13 +266,13 @@ namespace EncompassRest.Loans.Apis
                     var altId = borrower.AltId;
                     if (!string.IsNullOrEmpty(altId))
                     {
-                        borrowers.Add(altId, Tuple.Create(0, borrower));
+                        borrowers.Add(altId!, Tuple.Create(0, borrower));
                     }
                     borrower = bp.Coborrower;
                     altId = borrower.AltId;
                     if (!string.IsNullOrEmpty(altId))
                     {
-                        borrowers.Add(altId, Tuple.Create(1, borrower));
+                        borrowers.Add(altId!, Tuple.Create(1, borrower));
                     }
                 }
                 var altIds = bps.Select(bp => new[] { bp.Borrower.AltId, bp.Coborrower.AltId }).ToList();
@@ -297,7 +297,7 @@ namespace EncompassRest.Loans.Apis
                             }
                             else
                             {
-                                if (borrowers.TryGetValue(altId, out var tuple))
+                                if (borrowers.TryGetValue(altId!, out var tuple))
                                 {
                                     bp.Borrower = tuple.Item2;
                                     bp.Borrower.AltId = altIds[i][tuple.Item1];
@@ -314,7 +314,7 @@ namespace EncompassRest.Loans.Apis
                             }
                             else
                             {
-                                if (borrowers.TryGetValue(altId, out var tuple))
+                                if (borrowers.TryGetValue(altId!, out var tuple))
                                 {
                                     bp.Coborrower = tuple.Item2;
                                     bp.Coborrower.AltId = altIds[i][tuple.Item1];
@@ -343,7 +343,7 @@ namespace EncompassRest.Loans.Apis
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task MoveBorrowerPairsRawAsync(string applications, string queryString = null, CancellationToken cancellationToken = default)
+        public Task MoveBorrowerPairsRawAsync(string applications, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(applications, nameof(applications));
 

@@ -7,37 +7,37 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class EnergyEfficientMortgage : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _appraisedValue;
-        private DirtyValue<decimal?> _auditCost;
-        private DirtyValue<decimal?> _backRatio;
-        private DirtyValue<decimal?> _baseLoanAmtFromTsum;
-        private DirtyValue<decimal?> _costEffectiveEnergyPackage;
-        private DirtyValue<decimal?> _eeCostMaximumAmount;
-        private DirtyValue<decimal?> _eeImprovementsInstalledCost;
-        private DirtyValue<decimal?> _energyCost;
-        private DirtyValue<decimal?> _energySavings;
-        private DirtyValue<decimal?> _hoa;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _improvementCostExceed2000;
-        private DirtyValue<decimal?> _inspectionCost;
-        private DirtyValue<decimal?> _lesserC1ORC2;
-        private DirtyValue<decimal?> _monthlyHousingPayment;
-        private DirtyValue<decimal?> _monthlyMI;
-        private DirtyValue<decimal?> _mortgageAmountUsedForQualifyingRate;
-        private DirtyValue<decimal?> _mortgageAmountUsedForQualifyingRateD1;
-        private DirtyValue<bool?> _newOrExisting;
-        private DirtyValue<decimal?> _originalSalesPriceIfLess12Months;
-        private DirtyValue<decimal?> _otherHousingPayment;
-        private DirtyValue<decimal?> _solarNotIncluded;
-        private DirtyValue<decimal?> _solarSystemCostAllowance;
-        private DirtyValue<decimal?> _totalActualAmount;
-        private DirtyValue<decimal?> _totalAllowedAmount;
-        private DirtyValue<decimal?> _totalBaseEemLoanAmount;
-        private DirtyValue<decimal?> _totalCombinedLoanAmount;
-        private DirtyValue<decimal?> _totalMonthlyHousingPayment;
-        private DirtyValue<decimal?> _totalMonthlyObligations;
-        private DirtyValue<decimal?> _ufmipBasedOn;
-        private DirtyValue<decimal?> _ufmipFactor;
+        private DirtyValue<decimal?>? _appraisedValue;
+        private DirtyValue<decimal?>? _auditCost;
+        private DirtyValue<decimal?>? _backRatio;
+        private DirtyValue<decimal?>? _baseLoanAmtFromTsum;
+        private DirtyValue<decimal?>? _costEffectiveEnergyPackage;
+        private DirtyValue<decimal?>? _eeCostMaximumAmount;
+        private DirtyValue<decimal?>? _eeImprovementsInstalledCost;
+        private DirtyValue<decimal?>? _energyCost;
+        private DirtyValue<decimal?>? _energySavings;
+        private DirtyValue<decimal?>? _hoa;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _improvementCostExceed2000;
+        private DirtyValue<decimal?>? _inspectionCost;
+        private DirtyValue<decimal?>? _lesserC1ORC2;
+        private DirtyValue<decimal?>? _monthlyHousingPayment;
+        private DirtyValue<decimal?>? _monthlyMI;
+        private DirtyValue<decimal?>? _mortgageAmountUsedForQualifyingRate;
+        private DirtyValue<decimal?>? _mortgageAmountUsedForQualifyingRateD1;
+        private DirtyValue<bool?>? _newOrExisting;
+        private DirtyValue<decimal?>? _originalSalesPriceIfLess12Months;
+        private DirtyValue<decimal?>? _otherHousingPayment;
+        private DirtyValue<decimal?>? _solarNotIncluded;
+        private DirtyValue<decimal?>? _solarSystemCostAllowance;
+        private DirtyValue<decimal?>? _totalActualAmount;
+        private DirtyValue<decimal?>? _totalAllowedAmount;
+        private DirtyValue<decimal?>? _totalBaseEemLoanAmount;
+        private DirtyValue<decimal?>? _totalCombinedLoanAmount;
+        private DirtyValue<decimal?>? _totalMonthlyHousingPayment;
+        private DirtyValue<decimal?>? _totalMonthlyObligations;
+        private DirtyValue<decimal?>? _ufmipBasedOn;
+        private DirtyValue<decimal?>? _ufmipFactor;
 
         /// <summary>
         /// EEM Appraised Value [EEM.X64]
@@ -102,7 +102,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EnergyEfficientMortgage Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// EEM Cost of Improvements That Exceed 2000 IECC (New Construction Only) [EEM.X66]

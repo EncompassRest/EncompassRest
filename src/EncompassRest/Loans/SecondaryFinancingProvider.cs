@@ -9,16 +9,16 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(SecondaryFinancingProviderType))]
     public sealed partial class SecondaryFinancingProvider : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _financingAmount;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<SecondaryFinancingProviderType>> _secondaryFinancingProviderType;
-        private DirtyValue<bool?> _sellerFundedDapIndicator;
-        private DirtyValue<string> _source;
-        private DirtyValue<bool?> _sourceFromFamilyIndicator;
-        private DirtyValue<bool?> _sourceFromGovernmentIndicator;
-        private DirtyValue<bool?> _sourceFromNPIndicator;
-        private DirtyValue<bool?> _sourceFromOtherIndicator;
-        private DirtyValue<string> _sourceOtherDetail;
+        private DirtyValue<decimal?>? _financingAmount;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<SecondaryFinancingProviderType>>? _secondaryFinancingProviderType;
+        private DirtyValue<bool?>? _sellerFundedDapIndicator;
+        private DirtyValue<string?>? _source;
+        private DirtyValue<bool?>? _sourceFromFamilyIndicator;
+        private DirtyValue<bool?>? _sourceFromGovernmentIndicator;
+        private DirtyValue<bool?>? _sourceFromNPIndicator;
+        private DirtyValue<bool?>? _sourceFromOtherIndicator;
+        private DirtyValue<string?>? _sourceOtherDetail;
 
         /// <summary>
         /// SecondaryFinancingProvider FinancingAmount
@@ -29,7 +29,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SecondaryFinancingProvider Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// SecondaryFinancingProvider SecondaryFinancingProviderType
@@ -44,7 +44,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SecondaryFinancingProvider Source
         /// </summary>
-        public string Source { get => _source; set => SetField(ref _source, value); }
+        public string? Source { get => _source; set => SetField(ref _source, value); }
 
         /// <summary>
         /// SecondaryFinancingProvider SourceFromFamilyIndicator
@@ -69,6 +69,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SecondaryFinancingProvider SourceOtherDetail
         /// </summary>
-        public string SourceOtherDetail { get => _sourceOtherDetail; set => SetField(ref _sourceOtherDetail, value); }
+        public string? SourceOtherDetail { get => _sourceOtherDetail; set => SetField(ref _sourceOtherDetail, value); }
     }
 }

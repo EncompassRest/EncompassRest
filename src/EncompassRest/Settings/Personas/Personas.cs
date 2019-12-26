@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest.Settings.Personas
 {
@@ -25,7 +26,7 @@ namespace EncompassRest.Settings.Personas
         /// <param name="categories">The Persona Categories.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<Persona> GetPersonaAsync(string id, IEnumerable<PersonaCategory> categories, CancellationToken cancellationToken = default);
+        Task<Persona> GetPersonaAsync(string id, IEnumerable<PersonaCategory>? categories, CancellationToken cancellationToken = default);
         /// <summary>
         /// Returns details for a specified persona.
         /// </summary>
@@ -33,7 +34,7 @@ namespace EncompassRest.Settings.Personas
         /// <param name="categories">The Persona Categories.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<Persona> GetPersonaAsync(string id, IEnumerable<string> categories, CancellationToken cancellationToken = default);
+        Task<Persona> GetPersonaAsync(string id, IEnumerable<string>? categories, CancellationToken cancellationToken = default);
         /// <summary>
         /// Returns details for a specified persona as raw json.
         /// </summary>
@@ -41,7 +42,7 @@ namespace EncompassRest.Settings.Personas
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetPersonaRawAsync(string id, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetPersonaRawAsync(string id, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Returns the list of all personas on the Encompass instance.
         /// </summary>
@@ -54,7 +55,7 @@ namespace EncompassRest.Settings.Personas
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetPersonasRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetPersonasRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -80,7 +81,7 @@ namespace EncompassRest.Settings.Personas
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetPersonasRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetPersonasRawAsync), null, cancellationToken);
+        public Task<string> GetPersonasRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetPersonasRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Returns details for a specified persona.
@@ -88,16 +89,7 @@ namespace EncompassRest.Settings.Personas
         /// <param name="id">Unique Identifier of the persona.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<Persona> GetPersonaAsync(string id, CancellationToken cancellationToken = default) => GetPersonaAsync(id, (IEnumerable<string>)null, cancellationToken);
-
-        /// <summary>
-        /// Returns details for a specified persona.
-        /// </summary>
-        /// <param name="id">Unique Identifier of the persona.</param>
-        /// <param name="categories">The Persona Categories.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        public Task<Persona> GetPersonaAsync(string id, IEnumerable<PersonaCategory> categories, CancellationToken cancellationToken = default) => GetPersonaAsync(id, categories?.Select(c => c.GetValue()), cancellationToken);
+        public Task<Persona> GetPersonaAsync(string id, CancellationToken cancellationToken = default) => GetPersonaAsync(id, (IEnumerable<string>?)null, cancellationToken);
 
         /// <summary>
         /// Returns details for a specified persona.
@@ -106,7 +98,16 @@ namespace EncompassRest.Settings.Personas
         /// <param name="categories">The Persona Categories.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<Persona> GetPersonaAsync(string id, IEnumerable<string> categories, CancellationToken cancellationToken = default)
+        public Task<Persona> GetPersonaAsync(string id, IEnumerable<PersonaCategory>? categories, CancellationToken cancellationToken = default) => GetPersonaAsync(id, categories?.Select(c => c.Validate(nameof(categories)).GetValue()!), cancellationToken);
+
+        /// <summary>
+        /// Returns details for a specified persona.
+        /// </summary>
+        /// <param name="id">Unique Identifier of the persona.</param>
+        /// <param name="categories">The Persona Categories.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        public Task<Persona> GetPersonaAsync(string id, IEnumerable<string>? categories, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(id, nameof(id));
 
@@ -125,6 +126,6 @@ namespace EncompassRest.Settings.Personas
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetPersonaRawAsync(string id, string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(id, queryString, nameof(GetPersonaRawAsync), id, cancellationToken);
+        public Task<string> GetPersonaRawAsync(string id, string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(id, queryString, nameof(GetPersonaRawAsync), id, cancellationToken);
     }
 }

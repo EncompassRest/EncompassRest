@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,168 +11,168 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _actualCashInvRequired;
-        private DirtyValue<decimal?> _adjustedMaxMtgAmount;
-        private DirtyValue<decimal?> _afterImprovedValue;
-        private DirtyValue<decimal?> _afterImprovedValueAfter20Percent;
-        private DirtyValue<decimal?> _allowableEnergyImprovements;
-        private DirtyValue<decimal?> _appropriateLTVFactor;
-        private DirtyValue<decimal?> _architecturalEngineeringFee;
-        private DirtyValue<decimal?> _asIsValue;
-        private DirtyValue<decimal?> _baseMortgageAmountFrom3COr3D;
-        private DirtyValue<StringEnumValue<BorrowerAcknowledgement>> _borrowerAcknowledgement;
-        private DirtyValue<decimal?> _borrowerEstimatedProfit1;
-        private DirtyValue<decimal?> _borrowerEstimatedProfit2;
-        private DirtyValue<decimal?> _borrowerPaidClosingCosts;
-        private DirtyValue<decimal?> _borrowerRequiredInvestment;
-        private DirtyValue<decimal?> _borrowersOwnFundsforContingencyReserves;
-        private DirtyValue<bool?> _buildingOnOwnLand;
-        private DirtyValue<DateTime?> _caseAssignedDate;
-        private DirtyValue<decimal?> _caseLTV;
-        private DirtyValue<decimal?> _childSupportBalance;
-        private DirtyValue<string> _cHUMSForAppraisal;
-        private DirtyValue<decimal?> _commitmentMaximumMortgageAmount;
-        private DirtyValue<string> _commitmentStage;
-        private DirtyValue<decimal?> _constructionRepairsRehabilitationCosts;
-        private DirtyValue<decimal?> _contingencyReserveCostsAmount;
-        private DirtyValue<decimal?> _contingencyReserveCostsPercent;
-        private DirtyValue<decimal?> _contractSalesPrice;
-        private DirtyValue<StringEnumValue<CriteriaForAppropriateLTVFactor>> _criteriaForAppropriateLTVFactor;
-        private DirtyValue<string> _dealerContractorAddress;
-        private DirtyValue<string> _dealerContractorCity;
-        private DirtyValue<string> _dealerContractorName;
-        private DirtyValue<string> _dealerContractorPostalCode;
-        private DirtyValue<StringEnumValue<State>> _dealerContractorState;
-        private DirtyValue<decimal?> _discountPointsAmount;
-        private DirtyValue<decimal?> _discountPointsPercent;
-        private DirtyValue<bool?> _eEMIndicator;
-        private DirtyValue<decimal?> _energyEfficientMortgageAmount;
-        private DirtyValue<string> _escrowCommitment;
-        private DirtyValue<decimal?> _escrowShortages;
-        private DirtyValue<decimal?> _existing203KDebtTotal;
-        private DirtyValue<bool?> _existingDebt;
-        private DirtyValue<decimal?> _existingDebtPlusRehabCosts;
-        private DirtyValue<decimal?> _existingDebtPlusRehabCostsPlusNewLoanFees;
-        private DirtyValue<decimal?> _feasibilityStudyWhenNecessary;
-        private DirtyValue<decimal?> _feesAssociatedWithNewLoan;
-        private DirtyValue<decimal?> _fHA203kB10SubTotal;
-        private DirtyValue<string> _fHA203kRemarks;
-        private DirtyValue<StringEnumValue<FHAStreamlineType>> _fHAStreamlineType;
-        private DirtyValue<decimal?> _finalBaseMortgageAmount;
-        private DirtyValue<decimal?> _financeableMortgageFeesIfCharged;
-        private DirtyValue<bool?> _haveOtherPendingApplicationForFHA;
-        private DirtyValue<bool?> _hUDOwned;
-        private DirtyValue<bool?> _hUDREOIndicator;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _independentConsultantFee;
-        private DirtyValue<decimal?> _initialBaseMortgageAmountPlusEEMImprovementAmount;
-        private DirtyValue<decimal?> _initialDrawAtClosingArchitecturalorEngineeringFees;
-        private DirtyValue<decimal?> _initialDrawAtClosingConsultantFees;
-        private DirtyValue<decimal?> _initialDrawAtClosingPermitFees;
-        private DirtyValue<decimal?> _initialDrawAtClosingTotal;
-        private DirtyValue<decimal?> _inspectionFeeAmount;
-        private DirtyValue<decimal?> _inspectionFeesDuringRehabilitation;
-        private DirtyValue<int?> _inspectionFeeTimes;
-        private DirtyValue<decimal?> _interestDueonExistingMortgage;
-        private DirtyValue<decimal?> _lateCharges;
-        private DirtyValue<bool?> _lDPGSAForBorrower;
-        private DirtyValue<bool?> _lDPGSAForCoBorrower;
-        private DirtyValue<bool?> _leasedFromSomeoneElse;
-        private DirtyValue<DateTime?> _leaseExpiradionDate;
-        private DirtyValue<decimal?> _leaseMonthlyPayment;
-        private DirtyValue<decimal?> _lessAllowableDownpayment;
-        private DirtyValue<decimal?> _lesserOf3AOr3B;
-        private DirtyValue<decimal?> _lesserOf3AOr3BMultiply3F;
-        private DirtyValue<decimal?> _lesserOfMaximumFinanceableSolarOrWindEnergyAmount;
-        private DirtyValue<decimal?> _lesserOfSalesPrice;
-        private DirtyValue<decimal?> _lesserOfSumAmount;
-        private DirtyValue<decimal?> _lesserOfSumAsIs;
-        private DirtyValue<decimal?> _lesserOfSumPercent;
-        private DirtyValue<decimal?> _lessLeadBasedPaintCredit;
-        private DirtyValue<bool?> _limitedProgram;
-        private DirtyValue<bool?> _loanFor203KIndicator;
-        private DirtyValue<string> _loanPurpose;
-        private DirtyValue<decimal?> _materialCostsOrderedPrepaidByBorrowerContractor;
-        private DirtyValue<decimal?> _materialCostsOrderedPrepaidByBorrowerContractorAfter50Percent;
-        private DirtyValue<decimal?> _maximumMortgageWithUFMIP;
-        private DirtyValue<decimal?> _mIPDueOnExistingMortgage;
-        private DirtyValue<decimal?> _mIPLTV;
-        private DirtyValue<bool?> _mtgOrDeedOfTrusOnProperty;
-        private DirtyValue<decimal?> _mtgPaymentEscrowedAmount;
-        private DirtyValue<int?> _mtgPaymentEscrowedTimes;
-        private DirtyValue<decimal?> _nationwideMortgageLimit;
-        private DirtyValue<decimal?> _nationwideMortgageLimitAfter120Percent;
-        private DirtyValue<bool?> _newResidential;
-        private DirtyValue<string> _nonresidentialTypeOfUse;
-        private DirtyValue<int?> _numberOfHistoricUnits;
-        private DirtyValue<int?> _numberOfMultifamilyUnits;
-        private DirtyValue<string> _otherDescription;
-        private DirtyValue<bool?> _ownedByBorrower;
-        private DirtyValue<decimal?> _percentAfterImprovedValue;
-        private DirtyValue<decimal?> _permitsAndOtherFee;
-        private DirtyValue<decimal?> _planReviewerFeeAddition;
-        private DirtyValue<decimal?> _planReviewerFeeAmount;
-        private DirtyValue<int?> _planReviewerFeeMiles;
-        private DirtyValue<decimal?> _prepaymentPenalties;
-        private DirtyValue<string> _propertyOwnerAddress;
-        private DirtyValue<string> _propertyOwnerCity;
-        private DirtyValue<string> _propertyOwnerName;
-        private DirtyValue<string> _propertyOwnerPostalCode;
-        private DirtyValue<StringEnumValue<State>> _propertyOwnerState;
-        private DirtyValue<StringEnumValue<PropertyToBeImproved>> _propertyToBeImproved;
-        private DirtyValue<StringEnumValue<HudLoanDataPropertyType>> _propertyType;
-        private DirtyValue<DateTime?> _purchaseDate;
-        private DirtyValue<bool?> _purchasedOnContract;
-        private DirtyValue<decimal?> _purchaseMaximumMortgageAmount;
-        private DirtyValue<decimal?> _purchaseMaximumMortgagePercent;
-        private DirtyValue<decimal?> _purchasePriceLessInducementToPurchase;
-        private DirtyValue<decimal?> _refinanceMaximumMortgageAmount;
-        private DirtyValue<bool?> _refinancingATitleILoan;
-        private DirtyValue<StringEnumValue<RehabConstructionPeriodMonths>> _rehabConstructionPeriodMonths;
-        private DirtyValue<decimal?> _rehabilitationEscrowAccount;
-        private DirtyValue<decimal?> _rehabilitationEscrowAmountBalanceForFutureDraws;
-        private DirtyValue<decimal?> _rentalCashFlowBalance;
-        private DirtyValue<StringEnumValue<HudLoanDataResidencyType>> _residencyType;
-        private DirtyValue<StringEnumValue<HudLoanDataRiskClass>> _riskClass;
-        private DirtyValue<bool?> _scoredByTotal;
-        private DirtyList<SecondaryFinancingProvider> _secondaryFinancingProviders;
-        private DirtyValue<decimal?> _sellerContributionRate;
-        private DirtyValue<bool?> _simpleRefinance;
-        private DirtyValue<decimal?> _statutoryInvestment;
-        private DirtyValue<decimal?> _step2EPlusStep1E;
-        private DirtyValue<bool?> _streamlined;
-        private DirtyValue<decimal?> _subTotalForEscrowAccount;
-        private DirtyValue<decimal?> _subTotalForReleaseAtClosing;
-        private DirtyValue<decimal?> _sumForInvestor;
-        private DirtyValue<decimal?> _sumForOwnerOccupied;
-        private DirtyValue<decimal?> _sumOfExistingDebt;
-        private DirtyValue<decimal?> _suplementalOriginationFee;
-        private DirtyValue<decimal?> _title1LoanBalance;
-        private DirtyValue<string> _title1LoanNumber;
-        private DirtyValue<string> _title1LoanWithWhom;
-        private DirtyValue<decimal?> _titleUpdateFeeAmount;
-        private DirtyValue<decimal?> _titleUpdateFees;
-        private DirtyValue<int?> _titleUpdateFeeTimes;
-        private DirtyValue<decimal?> _totalCostsOfRepairsInA6;
-        private DirtyValue<decimal?> _totalEscrowCommitment;
-        private DirtyValue<decimal?> _totalEscrowedFunds;
-        private DirtyValue<decimal?> _totalFixedUnpaidBalance;
-        private DirtyValue<decimal?> _totalForBorrowerEstimatedProfit;
-        private DirtyValue<decimal?> _totalForInspectionAndTitleFee;
-        private DirtyValue<decimal?> _totalForLesserOfSumAsIs;
-        private DirtyValue<decimal?> _totalForMtgPaymentEscrowed;
-        private DirtyValue<decimal?> _totalForPlanReviewerFee;
-        private DirtyValue<decimal?> _totalForRehabilitationCost;
-        private DirtyValue<decimal?> _totalRehabilitationCosts;
-        private DirtyValue<decimal?> _totalRehabilitationCostsFeesReserves;
-        private DirtyValue<decimal?> _unpaidPrincipalBalanceFirstLien;
-        private DirtyValue<decimal?> _unpaidPrincipalBalanceOfAnyJuniorLiens;
-        private DirtyValue<decimal?> _unpaidPrincipalBalanceOfPurchaseJuniorLiens;
-        private DirtyValue<decimal?> _valueEstablished;
-        private DirtyValue<string> _waterPurificationAgent;
-        private DirtyValue<string> _waterPurificationOrganization;
-        private DirtyValue<string> _waterPurificationPayees;
-        private DirtyValue<decimal?> _windEnergySystemActualCost;
+        private DirtyValue<decimal?>? _actualCashInvRequired;
+        private DirtyValue<decimal?>? _adjustedMaxMtgAmount;
+        private DirtyValue<decimal?>? _afterImprovedValue;
+        private DirtyValue<decimal?>? _afterImprovedValueAfter20Percent;
+        private DirtyValue<decimal?>? _allowableEnergyImprovements;
+        private DirtyValue<decimal?>? _appropriateLTVFactor;
+        private DirtyValue<decimal?>? _architecturalEngineeringFee;
+        private DirtyValue<decimal?>? _asIsValue;
+        private DirtyValue<decimal?>? _baseMortgageAmountFrom3COr3D;
+        private DirtyValue<StringEnumValue<BorrowerAcknowledgement>>? _borrowerAcknowledgement;
+        private DirtyValue<decimal?>? _borrowerEstimatedProfit1;
+        private DirtyValue<decimal?>? _borrowerEstimatedProfit2;
+        private DirtyValue<decimal?>? _borrowerPaidClosingCosts;
+        private DirtyValue<decimal?>? _borrowerRequiredInvestment;
+        private DirtyValue<decimal?>? _borrowersOwnFundsforContingencyReserves;
+        private DirtyValue<bool?>? _buildingOnOwnLand;
+        private DirtyValue<DateTime?>? _caseAssignedDate;
+        private DirtyValue<decimal?>? _caseLTV;
+        private DirtyValue<decimal?>? _childSupportBalance;
+        private DirtyValue<string?>? _cHUMSForAppraisal;
+        private DirtyValue<decimal?>? _commitmentMaximumMortgageAmount;
+        private DirtyValue<string?>? _commitmentStage;
+        private DirtyValue<decimal?>? _constructionRepairsRehabilitationCosts;
+        private DirtyValue<decimal?>? _contingencyReserveCostsAmount;
+        private DirtyValue<decimal?>? _contingencyReserveCostsPercent;
+        private DirtyValue<decimal?>? _contractSalesPrice;
+        private DirtyValue<StringEnumValue<CriteriaForAppropriateLTVFactor>>? _criteriaForAppropriateLTVFactor;
+        private DirtyValue<string?>? _dealerContractorAddress;
+        private DirtyValue<string?>? _dealerContractorCity;
+        private DirtyValue<string?>? _dealerContractorName;
+        private DirtyValue<string?>? _dealerContractorPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _dealerContractorState;
+        private DirtyValue<decimal?>? _discountPointsAmount;
+        private DirtyValue<decimal?>? _discountPointsPercent;
+        private DirtyValue<bool?>? _eEMIndicator;
+        private DirtyValue<decimal?>? _energyEfficientMortgageAmount;
+        private DirtyValue<string?>? _escrowCommitment;
+        private DirtyValue<decimal?>? _escrowShortages;
+        private DirtyValue<decimal?>? _existing203KDebtTotal;
+        private DirtyValue<bool?>? _existingDebt;
+        private DirtyValue<decimal?>? _existingDebtPlusRehabCosts;
+        private DirtyValue<decimal?>? _existingDebtPlusRehabCostsPlusNewLoanFees;
+        private DirtyValue<decimal?>? _feasibilityStudyWhenNecessary;
+        private DirtyValue<decimal?>? _feesAssociatedWithNewLoan;
+        private DirtyValue<decimal?>? _fHA203kB10SubTotal;
+        private DirtyValue<string?>? _fHA203kRemarks;
+        private DirtyValue<StringEnumValue<FHAStreamlineType>>? _fHAStreamlineType;
+        private DirtyValue<decimal?>? _finalBaseMortgageAmount;
+        private DirtyValue<decimal?>? _financeableMortgageFeesIfCharged;
+        private DirtyValue<bool?>? _haveOtherPendingApplicationForFHA;
+        private DirtyValue<bool?>? _hUDOwned;
+        private DirtyValue<bool?>? _hUDREOIndicator;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _independentConsultantFee;
+        private DirtyValue<decimal?>? _initialBaseMortgageAmountPlusEEMImprovementAmount;
+        private DirtyValue<decimal?>? _initialDrawAtClosingArchitecturalorEngineeringFees;
+        private DirtyValue<decimal?>? _initialDrawAtClosingConsultantFees;
+        private DirtyValue<decimal?>? _initialDrawAtClosingPermitFees;
+        private DirtyValue<decimal?>? _initialDrawAtClosingTotal;
+        private DirtyValue<decimal?>? _inspectionFeeAmount;
+        private DirtyValue<decimal?>? _inspectionFeesDuringRehabilitation;
+        private DirtyValue<int?>? _inspectionFeeTimes;
+        private DirtyValue<decimal?>? _interestDueonExistingMortgage;
+        private DirtyValue<decimal?>? _lateCharges;
+        private DirtyValue<bool?>? _lDPGSAForBorrower;
+        private DirtyValue<bool?>? _lDPGSAForCoBorrower;
+        private DirtyValue<bool?>? _leasedFromSomeoneElse;
+        private DirtyValue<DateTime?>? _leaseExpiradionDate;
+        private DirtyValue<decimal?>? _leaseMonthlyPayment;
+        private DirtyValue<decimal?>? _lessAllowableDownpayment;
+        private DirtyValue<decimal?>? _lesserOf3AOr3B;
+        private DirtyValue<decimal?>? _lesserOf3AOr3BMultiply3F;
+        private DirtyValue<decimal?>? _lesserOfMaximumFinanceableSolarOrWindEnergyAmount;
+        private DirtyValue<decimal?>? _lesserOfSalesPrice;
+        private DirtyValue<decimal?>? _lesserOfSumAmount;
+        private DirtyValue<decimal?>? _lesserOfSumAsIs;
+        private DirtyValue<decimal?>? _lesserOfSumPercent;
+        private DirtyValue<decimal?>? _lessLeadBasedPaintCredit;
+        private DirtyValue<bool?>? _limitedProgram;
+        private DirtyValue<bool?>? _loanFor203KIndicator;
+        private DirtyValue<string?>? _loanPurpose;
+        private DirtyValue<decimal?>? _materialCostsOrderedPrepaidByBorrowerContractor;
+        private DirtyValue<decimal?>? _materialCostsOrderedPrepaidByBorrowerContractorAfter50Percent;
+        private DirtyValue<decimal?>? _maximumMortgageWithUFMIP;
+        private DirtyValue<decimal?>? _mIPDueOnExistingMortgage;
+        private DirtyValue<decimal?>? _mIPLTV;
+        private DirtyValue<bool?>? _mtgOrDeedOfTrusOnProperty;
+        private DirtyValue<decimal?>? _mtgPaymentEscrowedAmount;
+        private DirtyValue<int?>? _mtgPaymentEscrowedTimes;
+        private DirtyValue<decimal?>? _nationwideMortgageLimit;
+        private DirtyValue<decimal?>? _nationwideMortgageLimitAfter120Percent;
+        private DirtyValue<bool?>? _newResidential;
+        private DirtyValue<string?>? _nonresidentialTypeOfUse;
+        private DirtyValue<int?>? _numberOfHistoricUnits;
+        private DirtyValue<int?>? _numberOfMultifamilyUnits;
+        private DirtyValue<string?>? _otherDescription;
+        private DirtyValue<bool?>? _ownedByBorrower;
+        private DirtyValue<decimal?>? _percentAfterImprovedValue;
+        private DirtyValue<decimal?>? _permitsAndOtherFee;
+        private DirtyValue<decimal?>? _planReviewerFeeAddition;
+        private DirtyValue<decimal?>? _planReviewerFeeAmount;
+        private DirtyValue<int?>? _planReviewerFeeMiles;
+        private DirtyValue<decimal?>? _prepaymentPenalties;
+        private DirtyValue<string?>? _propertyOwnerAddress;
+        private DirtyValue<string?>? _propertyOwnerCity;
+        private DirtyValue<string?>? _propertyOwnerName;
+        private DirtyValue<string?>? _propertyOwnerPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _propertyOwnerState;
+        private DirtyValue<StringEnumValue<PropertyToBeImproved>>? _propertyToBeImproved;
+        private DirtyValue<StringEnumValue<HudLoanDataPropertyType>>? _propertyType;
+        private DirtyValue<DateTime?>? _purchaseDate;
+        private DirtyValue<bool?>? _purchasedOnContract;
+        private DirtyValue<decimal?>? _purchaseMaximumMortgageAmount;
+        private DirtyValue<decimal?>? _purchaseMaximumMortgagePercent;
+        private DirtyValue<decimal?>? _purchasePriceLessInducementToPurchase;
+        private DirtyValue<decimal?>? _refinanceMaximumMortgageAmount;
+        private DirtyValue<bool?>? _refinancingATitleILoan;
+        private DirtyValue<StringEnumValue<RehabConstructionPeriodMonths>>? _rehabConstructionPeriodMonths;
+        private DirtyValue<decimal?>? _rehabilitationEscrowAccount;
+        private DirtyValue<decimal?>? _rehabilitationEscrowAmountBalanceForFutureDraws;
+        private DirtyValue<decimal?>? _rentalCashFlowBalance;
+        private DirtyValue<StringEnumValue<HudLoanDataResidencyType>>? _residencyType;
+        private DirtyValue<StringEnumValue<HudLoanDataRiskClass>>? _riskClass;
+        private DirtyValue<bool?>? _scoredByTotal;
+        private DirtyList<SecondaryFinancingProvider>? _secondaryFinancingProviders;
+        private DirtyValue<decimal?>? _sellerContributionRate;
+        private DirtyValue<bool?>? _simpleRefinance;
+        private DirtyValue<decimal?>? _statutoryInvestment;
+        private DirtyValue<decimal?>? _step2EPlusStep1E;
+        private DirtyValue<bool?>? _streamlined;
+        private DirtyValue<decimal?>? _subTotalForEscrowAccount;
+        private DirtyValue<decimal?>? _subTotalForReleaseAtClosing;
+        private DirtyValue<decimal?>? _sumForInvestor;
+        private DirtyValue<decimal?>? _sumForOwnerOccupied;
+        private DirtyValue<decimal?>? _sumOfExistingDebt;
+        private DirtyValue<decimal?>? _suplementalOriginationFee;
+        private DirtyValue<decimal?>? _title1LoanBalance;
+        private DirtyValue<string?>? _title1LoanNumber;
+        private DirtyValue<string?>? _title1LoanWithWhom;
+        private DirtyValue<decimal?>? _titleUpdateFeeAmount;
+        private DirtyValue<decimal?>? _titleUpdateFees;
+        private DirtyValue<int?>? _titleUpdateFeeTimes;
+        private DirtyValue<decimal?>? _totalCostsOfRepairsInA6;
+        private DirtyValue<decimal?>? _totalEscrowCommitment;
+        private DirtyValue<decimal?>? _totalEscrowedFunds;
+        private DirtyValue<decimal?>? _totalFixedUnpaidBalance;
+        private DirtyValue<decimal?>? _totalForBorrowerEstimatedProfit;
+        private DirtyValue<decimal?>? _totalForInspectionAndTitleFee;
+        private DirtyValue<decimal?>? _totalForLesserOfSumAsIs;
+        private DirtyValue<decimal?>? _totalForMtgPaymentEscrowed;
+        private DirtyValue<decimal?>? _totalForPlanReviewerFee;
+        private DirtyValue<decimal?>? _totalForRehabilitationCost;
+        private DirtyValue<decimal?>? _totalRehabilitationCosts;
+        private DirtyValue<decimal?>? _totalRehabilitationCostsFeesReserves;
+        private DirtyValue<decimal?>? _unpaidPrincipalBalanceFirstLien;
+        private DirtyValue<decimal?>? _unpaidPrincipalBalanceOfAnyJuniorLiens;
+        private DirtyValue<decimal?>? _unpaidPrincipalBalanceOfPurchaseJuniorLiens;
+        private DirtyValue<decimal?>? _valueEstablished;
+        private DirtyValue<string?>? _waterPurificationAgent;
+        private DirtyValue<string?>? _waterPurificationOrganization;
+        private DirtyValue<string?>? _waterPurificationPayees;
+        private DirtyValue<decimal?>? _windEnergySystemActualCost;
 
         /// <summary>
         /// FHA 203k C6 Actual Cash Invest Required [MAX23K.X38]
@@ -287,7 +288,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD 92900 LT CHUMS ID# For Reviewer of Appraisal [3030]
         /// </summary>
-        public string CHUMSForAppraisal { get => _cHUMSForAppraisal; set => SetField(ref _cHUMSForAppraisal, value); }
+        public string? CHUMSForAppraisal { get => _cHUMSForAppraisal; set => SetField(ref _cHUMSForAppraisal, value); }
 
         /// <summary>
         /// FHA 203k E1 Max Mortgage Amount [MAX23K.X49]
@@ -299,7 +300,7 @@ namespace EncompassRest.Loans
         /// FHA 203k Commitment Stage [MAX23K.X2]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CommitmentStage { get => _commitmentStage; set => SetField(ref _commitmentStage, value); }
+        public string? CommitmentStage { get => _commitmentStage; set => SetField(ref _commitmentStage, value); }
 
         /// <summary>
         /// FHA 203k - Costs of construction, repairs and rehabilitation [MAX23K.X80]
@@ -333,23 +334,23 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Dealer/Contractor Addr [CAPIAP.X144]
         /// </summary>
-        public string DealerContractorAddress { get => _dealerContractorAddress; set => SetField(ref _dealerContractorAddress, value); }
+        public string? DealerContractorAddress { get => _dealerContractorAddress; set => SetField(ref _dealerContractorAddress, value); }
 
         /// <summary>
         /// HUD Property Improve Dealer/Contractor City [CAPIAP.X145]
         /// </summary>
-        public string DealerContractorCity { get => _dealerContractorCity; set => SetField(ref _dealerContractorCity, value); }
+        public string? DealerContractorCity { get => _dealerContractorCity; set => SetField(ref _dealerContractorCity, value); }
 
         /// <summary>
         /// HUD Leased Info Dealer/Contractor Name [982]
         /// </summary>
-        public string DealerContractorName { get => _dealerContractorName; set => SetField(ref _dealerContractorName, value); }
+        public string? DealerContractorName { get => _dealerContractorName; set => SetField(ref _dealerContractorName, value); }
 
         /// <summary>
         /// HUD Property Improve Dealer/Contractor Zip [CAPIAP.X147]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string DealerContractorPostalCode { get => _dealerContractorPostalCode; set => SetField(ref _dealerContractorPostalCode, value); }
+        public string? DealerContractorPostalCode { get => _dealerContractorPostalCode; set => SetField(ref _dealerContractorPostalCode, value); }
 
         /// <summary>
         /// HUD Property Improve Dealer/Contractor State [CAPIAP.X146]
@@ -383,7 +384,7 @@ namespace EncompassRest.Loans
         /// FHA 203k Escrow Commitment [MAX23K.X3]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string EscrowCommitment { get => _escrowCommitment; set => SetField(ref _escrowCommitment, value); }
+        public string? EscrowCommitment { get => _escrowCommitment; set => SetField(ref _escrowCommitment, value); }
 
         /// <summary>
         /// FHA 203k - Escrow shortages [MAX23K.X131]
@@ -436,7 +437,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k Remarks [MAX23K.X53]
         /// </summary>
-        public string FHA203kRemarks { get => _fHA203kRemarks; set => SetField(ref _fHA203kRemarks, value); }
+        public string? FHA203kRemarks { get => _fHA203kRemarks; set => SetField(ref _fHA203kRemarks, value); }
 
         /// <summary>
         /// HUD 92900 LT FHA Streamline Type [3659]
@@ -475,7 +476,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HudLoanData Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// FHA 203k B7 Independent Consultant Fees [MAX23K.X20]
@@ -637,7 +638,7 @@ namespace EncompassRest.Loans
         /// HUD 92900 LT CHUMS ID# For Loan Purpose [3031]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LoanPurpose { get => _loanPurpose; set => SetField(ref _loanPurpose, value); }
+        public string? LoanPurpose { get => _loanPurpose; set => SetField(ref _loanPurpose, value); }
 
         /// <summary>
         /// FHA 203k - Material costs for items ordered and prepaid by Borrower/or contractor (under contract for delivery) [MAX23K.X91]
@@ -707,7 +708,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Nonresidential Type of Use [CAPIAP.X43]
         /// </summary>
-        public string NonresidentialTypeOfUse { get => _nonresidentialTypeOfUse; set => SetField(ref _nonresidentialTypeOfUse, value); }
+        public string? NonresidentialTypeOfUse { get => _nonresidentialTypeOfUse; set => SetField(ref _nonresidentialTypeOfUse, value); }
 
         /// <summary>
         /// HUD Property Improve Hist Residential # Units [CAPIAP.X44]
@@ -722,7 +723,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k Other Descr [MAX23K.X74]
         /// </summary>
-        public string OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
+        public string? OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
 
         /// <summary>
         /// HUD Property Improve Owned by Borr [CAPIAP.X45]
@@ -768,23 +769,23 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Owner Addr [CAPIAP.X50]
         /// </summary>
-        public string PropertyOwnerAddress { get => _propertyOwnerAddress; set => SetField(ref _propertyOwnerAddress, value); }
+        public string? PropertyOwnerAddress { get => _propertyOwnerAddress; set => SetField(ref _propertyOwnerAddress, value); }
 
         /// <summary>
         /// HUD Property Improve Owner City [CAPIAP.X51]
         /// </summary>
-        public string PropertyOwnerCity { get => _propertyOwnerCity; set => SetField(ref _propertyOwnerCity, value); }
+        public string? PropertyOwnerCity { get => _propertyOwnerCity; set => SetField(ref _propertyOwnerCity, value); }
 
         /// <summary>
         /// HUD Property Improve Owner Name [CAPIAP.X49]
         /// </summary>
-        public string PropertyOwnerName { get => _propertyOwnerName; set => SetField(ref _propertyOwnerName, value); }
+        public string? PropertyOwnerName { get => _propertyOwnerName; set => SetField(ref _propertyOwnerName, value); }
 
         /// <summary>
         /// HUD Property Improve Owner Zip [CAPIAP.X53]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string PropertyOwnerPostalCode { get => _propertyOwnerPostalCode; set => SetField(ref _propertyOwnerPostalCode, value); }
+        public string? PropertyOwnerPostalCode { get => _propertyOwnerPostalCode; set => SetField(ref _propertyOwnerPostalCode, value); }
 
         /// <summary>
         /// HUD Property Improve Owner State [CAPIAP.X52]
@@ -883,6 +884,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HudLoanData SecondaryFinancingProviders
         /// </summary>
+        [AllowNull]
         public IList<SecondaryFinancingProvider> SecondaryFinancingProviders { get => GetField(ref _secondaryFinancingProviders); set => SetField(ref _secondaryFinancingProviders, value); }
 
         /// <summary>
@@ -959,12 +961,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Title 1 Loan # [CAPIAP.X3]
         /// </summary>
-        public string Title1LoanNumber { get => _title1LoanNumber; set => SetField(ref _title1LoanNumber, value); }
+        public string? Title1LoanNumber { get => _title1LoanNumber; set => SetField(ref _title1LoanNumber, value); }
 
         /// <summary>
         /// HUD Property Improve Title 1 Loan with Whom [CAPIAP.X59]
         /// </summary>
-        public string Title1LoanWithWhom { get => _title1LoanWithWhom; set => SetField(ref _title1LoanWithWhom, value); }
+        public string? Title1LoanWithWhom { get => _title1LoanWithWhom; set => SetField(ref _title1LoanWithWhom, value); }
 
         /// <summary>
         /// FHA 203k B3 Cost Per Update [MAX23K.X14]
@@ -1082,17 +1084,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Basic Info - Water Purification Local Health Agent [4250]
         /// </summary>
-        public string WaterPurificationAgent { get => _waterPurificationAgent; set => SetField(ref _waterPurificationAgent, value); }
+        public string? WaterPurificationAgent { get => _waterPurificationAgent; set => SetField(ref _waterPurificationAgent, value); }
 
         /// <summary>
         /// FHA Basic Info - Water Purification Maintenance Organization [4249]
         /// </summary>
-        public string WaterPurificationOrganization { get => _waterPurificationOrganization; set => SetField(ref _waterPurificationOrganization, value); }
+        public string? WaterPurificationOrganization { get => _waterPurificationOrganization; set => SetField(ref _waterPurificationOrganization, value); }
 
         /// <summary>
         /// FHA Basic Info - Water Purification Other Payees [4251]
         /// </summary>
-        public string WaterPurificationPayees { get => _waterPurificationPayees; set => SetField(ref _waterPurificationPayees, value); }
+        public string? WaterPurificationPayees { get => _waterPurificationPayees; set => SetField(ref _waterPurificationPayees, value); }
 
         /// <summary>
         /// FHA 203k - Solar/Wind Energy System Actual Cost [MAX23K.X97]

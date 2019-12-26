@@ -6,27 +6,27 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class Hud1EsSetup : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<bool?> _annualFeePrepaid;
-        private DirtyValue<int?> _annualFees;
-        private DirtyValue<string> _date;
-        private DirtyValue<int?> _floodInsDisb;
-        private DirtyValue<bool?> _floodInsPrepaid;
-        private DirtyValue<int?> _hazInsDisb;
-        private DirtyValue<bool?> _hazInsPrepaid;
-        private DirtyValue<int?> _hud1EsSetupIndex;
-        private DirtyValue<string> _id;
-        private DirtyValue<int?> _mtgInsDisb;
-        private DirtyValue<bool?> _mtgInsPrepaid;
-        private DirtyValue<int?> _schoolTaxes;
-        private DirtyValue<bool?> _schoolTaxesPrepaid;
-        private DirtyValue<int?> _taxDisb;
-        private DirtyValue<bool?> _taxPrepaid;
-        private DirtyValue<int?> _userDefined1;
-        private DirtyValue<int?> _userDefined2;
-        private DirtyValue<int?> _userDefined3;
-        private DirtyValue<bool?> _userDefinedPrepaid1;
-        private DirtyValue<bool?> _userDefinedPrepaid2;
-        private DirtyValue<bool?> _userDefinedPrepaid3;
+        private DirtyValue<bool?>? _annualFeePrepaid;
+        private DirtyValue<int?>? _annualFees;
+        private DirtyValue<string?>? _date;
+        private DirtyValue<int?>? _floodInsDisb;
+        private DirtyValue<bool?>? _floodInsPrepaid;
+        private DirtyValue<int?>? _hazInsDisb;
+        private DirtyValue<bool?>? _hazInsPrepaid;
+        private DirtyValue<int?>? _hud1EsSetupIndex;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<int?>? _mtgInsDisb;
+        private DirtyValue<bool?>? _mtgInsPrepaid;
+        private DirtyValue<int?>? _schoolTaxes;
+        private DirtyValue<bool?>? _schoolTaxesPrepaid;
+        private DirtyValue<int?>? _taxDisb;
+        private DirtyValue<bool?>? _taxPrepaid;
+        private DirtyValue<int?>? _userDefined1;
+        private DirtyValue<int?>? _userDefined2;
+        private DirtyValue<int?>? _userDefined3;
+        private DirtyValue<bool?>? _userDefinedPrepaid1;
+        private DirtyValue<bool?>? _userDefinedPrepaid2;
+        private DirtyValue<bool?>? _userDefinedPrepaid3;
 
         /// <summary>
         /// Escrow Setup Annual Fee Prepaid [HUDNN58]
@@ -41,7 +41,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Escrow Setup Date [HUDNN12]
         /// </summary>
-        public string Date { get => _date; set => SetField(ref _date, value); }
+        public string? Date { get => _date; set => SetField(ref _date, value); }
 
         /// <summary>
         /// Escrow Setup Flood Ins Disb [HUDNN16]
@@ -71,7 +71,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsSetup Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Escrow Setup Mtg Ins Disb [HUDNN15]

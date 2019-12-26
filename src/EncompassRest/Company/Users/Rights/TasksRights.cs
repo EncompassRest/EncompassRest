@@ -5,9 +5,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TasksRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _addTasks;
-        private DirtyValue<bool?> _deleteTasks;
-        private DirtyValue<bool?> _editTasks;
+        private DirtyValue<bool?>? _addTasks;
+        private DirtyValue<bool?>? _deleteTasks;
+        private DirtyValue<bool?>? _editTasks;
 
         /// <summary>
         /// TasksRights AddTasks

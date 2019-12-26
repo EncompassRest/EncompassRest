@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,9 +7,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PersonalSettingsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _defaultFileContacts;
-        private DirtyValue<bool?> _grantFileAccess;
-        private MyProfileRights _myProfile;
+        private DirtyValue<bool?>? _defaultFileContacts;
+        private DirtyValue<bool?>? _grantFileAccess;
+        private MyProfileRights? _myProfile;
 
         /// <summary>
         /// PersonalSettingsRights DefaultFileContacts
@@ -22,6 +24,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// PersonalSettingsRights MyProfile
         /// </summary>
+        [AllowNull]
         public MyProfileRights MyProfile { get => GetField(ref _myProfile); set => SetField(ref _myProfile, value); }
     }
 }

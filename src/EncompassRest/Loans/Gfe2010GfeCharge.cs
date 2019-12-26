@@ -8,13 +8,13 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(ChargeBelow10Indicator) + "," + nameof(Gfe2010GfeChargeIndex))]
     public sealed partial class Gfe2010GfeCharge : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<bool?> _chargeBelow10Indicator;
-        private DirtyValue<string> _description;
-        private DirtyValue<int?> _gfe2010GfeChargeIndex;
-        private DirtyValue<decimal?> _gfeCharge;
-        private DirtyValue<decimal?> _hudCharge;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _line;
+        private DirtyValue<bool?>? _chargeBelow10Indicator;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<int?>? _gfe2010GfeChargeIndex;
+        private DirtyValue<decimal?>? _gfeCharge;
+        private DirtyValue<decimal?>? _hudCharge;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _line;
 
         /// <summary>
         /// Gfe2010GfeCharge ChargeBelow10Indicator
@@ -24,7 +24,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010GfeCharge Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// Gfe2010GfeCharge Gfe2010GfeChargeIndex
@@ -46,11 +46,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010GfeCharge Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Gfe2010GfeCharge Line
         /// </summary>
-        public string Line { get => _line; set => SetField(ref _line, value); }
+        public string? Line { get => _line; set => SetField(ref _line, value); }
     }
 }

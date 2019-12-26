@@ -5,10 +5,10 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class DynamicDataManagementRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _dataTables;
-        private DirtyValue<bool?> _feeRules;
-        private DirtyValue<bool?> _fieldRules;
-        private DirtyValue<bool?> _globalDDMSettings;
+        private DirtyValue<bool?>? _dataTables;
+        private DirtyValue<bool?>? _feeRules;
+        private DirtyValue<bool?>? _fieldRules;
+        private DirtyValue<bool?>? _globalDDMSettings;
 
         /// <summary>
         /// DynamicDataManagementRights DataTables

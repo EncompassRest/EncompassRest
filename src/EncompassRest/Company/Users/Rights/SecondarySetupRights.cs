@@ -7,22 +7,22 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class SecondarySetupRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _adjustmentTemplates;
-        private DirtyValue<bool?> _autoLock;
-        private DirtyValue<bool?> _correspondentPurchaseAdviceManagementSetup;
-        private DirtyValue<bool?> _ePPSLoanProgramTable;
-        private DirtyValue<bool?> _fundingTemplates;
-        private DirtyValue<bool?> _investorTemplates;
-        private DirtyValue<bool?> _loanPricingDecimalPlaces;
-        private DirtyValue<bool?> _lockDeskSetup;
-        private DirtyValue<bool?> _lockRequestAdditionalFields;
-        private DirtyValue<bool?> _normalizedBidTapeTemplate;
-        private DirtyValue<bool?> _productandPricing;
-        private DirtyValue<bool?> _purchaseAdviceForm;
-        private DirtyValue<bool?> _secondaryLockFields;
-        private DirtyValue<bool?> _servicing;
-        private DirtyValue<bool?> _sRPTemplates;
-        private DirtyValue<bool?> _tradeManagementSetup;
+        private DirtyValue<bool?>? _adjustmentTemplates;
+        private DirtyValue<bool?>? _autoLock;
+        private DirtyValue<bool?>? _correspondentPurchaseAdviceManagementSetup;
+        private DirtyValue<bool?>? _ePPSLoanProgramTable;
+        private DirtyValue<bool?>? _fundingTemplates;
+        private DirtyValue<bool?>? _investorTemplates;
+        private DirtyValue<bool?>? _loanPricingDecimalPlaces;
+        private DirtyValue<bool?>? _lockDeskSetup;
+        private DirtyValue<bool?>? _lockRequestAdditionalFields;
+        private DirtyValue<bool?>? _normalizedBidTapeTemplate;
+        private DirtyValue<bool?>? _productandPricing;
+        private DirtyValue<bool?>? _purchaseAdviceForm;
+        private DirtyValue<bool?>? _secondaryLockFields;
+        private DirtyValue<bool?>? _servicing;
+        private DirtyValue<bool?>? _sRPTemplates;
+        private DirtyValue<bool?>? _tradeManagementSetup;
 
         /// <summary>
         /// SecondarySetupRights AdjustmentTemplates

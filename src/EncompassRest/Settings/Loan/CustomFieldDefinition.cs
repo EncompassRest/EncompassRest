@@ -12,26 +12,26 @@ namespace EncompassRest.Settings.Loan
     /// </summary>
     public sealed class CustomFieldDefinition : DirtyExtensibleObject, IIdentifiable
     {
-        private string _id;
-        private string _description;
+        private string? _id;
+        private string? _description;
         private StringEnumValue<LoanFieldFormat> _format;
         private int _maxLength;
-        private string _calculation;
-        private FieldAudit _audit;
-        private List<string> _options;
-        private NeverSerializeValue<string> _modelPath;
-        private NeverSerializeValue<bool> _isCalculatedField;
+        private string? _calculation;
+        private FieldAudit? _audit;
+        private List<string>? _options;
+        private NeverSerializeValue<string?>? _modelPath;
+        private NeverSerializeValue<bool>? _isCalculatedField;
 
         /// <summary>
         /// Loan custom field name.
         /// </summary>
         [JsonRequired]
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Description for loan custom field.
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// Indicates the range and format of values the custom field can store.
@@ -48,29 +48,29 @@ namespace EncompassRest.Settings.Loan
         /// A custom calculation is an expression that returns a number or text value, which is then saved into the associated custom field.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Calculation { get => _calculation; set => SetField(ref _calculation, value); }
+        public string? Calculation { get => _calculation; set => SetField(ref _calculation, value); }
 
         /// <summary>
         /// Defines the audit data to return.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public FieldAudit Audit { get => _audit; set => SetField(ref _audit, value); }
+        public FieldAudit? Audit { get => _audit; set => SetField(ref _audit, value); }
 
         /// <summary>
         /// If the format is DROPDOWNLIST or DROPDOWN, provide the values that will appear in the drop-down list.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public IList<string> Options { get => _options; set => SetField(ref _options, value?.ToList()); }
+        public IList<string>? Options { get => _options; set => SetField(ref _options, value?.ToList()); }
 
         /// <summary>
         /// Model path for loan custom field.
         /// </summary>
-        public string ModelPath { get => _modelPath; internal set => SetField(ref _modelPath, value); }
+        public string? ModelPath { get => _modelPath; internal set => SetField(ref _modelPath!, value); }
 
         /// <summary>
         /// A value of <c>true</c> indicates the field has a calculation associated.
         /// </summary>
-        public bool IsCalculatedField { get => _isCalculatedField; internal set => SetField(ref _isCalculatedField, value); }
+        public bool IsCalculatedField { get => _isCalculatedField; internal set => SetField(ref _isCalculatedField!, value); }
 
         /// <summary>
         /// Custom field definition constructor.
@@ -79,7 +79,7 @@ namespace EncompassRest.Settings.Loan
         /// <param name="description">Description for loan custom field.</param>
         /// <param name="format">Indicates the range and format of values the custom field can store.</param>
         public CustomFieldDefinition(string id, string description, LoanFieldFormat format)
-            : this(id, description, format.Validate(nameof(format)).GetValue())
+            : this(id, description, format.Validate(nameof(format)).GetValue()!)
         {
         }
 

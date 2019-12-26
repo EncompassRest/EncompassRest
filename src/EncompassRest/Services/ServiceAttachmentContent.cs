@@ -15,6 +15,6 @@ namespace EncompassRest.Services
         /// <summary>
         /// The unique identifier for the eFolder attachment that is needed to retrieve the attachment using the eFolder API's.
         /// </summary>
-        public string AttachmentFile { get; set; }
+        public string? AttachmentFile { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AddEditTPOFeesRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _deleteTPOFees;
+        private DirtyValue<bool?>? _deleteTPOFees;
 
         /// <summary>
         /// AddEditTPOFeesRights DeleteTPOFees

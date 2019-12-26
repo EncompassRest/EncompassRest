@@ -1,15 +1,18 @@
-﻿namespace EncompassRest.Settings.Personas
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace EncompassRest.Settings.Personas
 {
     /// <summary>
     /// FileContactsRights
     /// </summary>
     public sealed class FileContactsRights : PersonaAccessRights
     {
-        private GrantWriteAccessRights _grantWriteAccess;
+        private GrantWriteAccessRights? _grantWriteAccess;
 
         /// <summary>
         /// FileContactsRights GrantWriteAccess
         /// </summary>
+        [AllowNull]
         public GrantWriteAccessRights GrantWriteAccess { get => GetField(ref _grantWriteAccess); set => SetField(ref _grantWriteAccess, value); }
     }
 }

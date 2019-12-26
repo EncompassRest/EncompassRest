@@ -34,7 +34,7 @@ namespace EncompassRest.Contacts
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetContactListRawAsync(string parameters, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetContactListRawAsync(string parameters, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ namespace EncompassRest.Contacts
                 {
                     throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} invalid {countHeaderName} header value", response).ConfigureAwait(false);
                 }
-                string cursorId = null;
+                string? cursorId = null;
                 if (count > 0)
                 {
                     const string cursorIdHeaderName = "x-cursor";
@@ -122,7 +122,7 @@ namespace EncompassRest.Contacts
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetContactListRawAsync(string parameters, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> GetContactListRawAsync(string parameters, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
 

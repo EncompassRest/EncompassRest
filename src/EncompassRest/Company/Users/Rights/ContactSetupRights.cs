@@ -5,13 +5,13 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ContactSetupRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _borrowerContactStatus;
-        private DirtyValue<bool?> _borrowerCustomFields;
-        private DirtyValue<bool?> _borrwerContactUpdate;
-        private DirtyValue<bool?> _businessCategories;
-        private DirtyValue<bool?> _businessCustomFields;
-        private DirtyValue<bool?> _emailServerSettings;
-        private DirtyValue<bool?> _publicBusinessContactGroups;
+        private DirtyValue<bool?>? _borrowerContactStatus;
+        private DirtyValue<bool?>? _borrowerCustomFields;
+        private DirtyValue<bool?>? _borrwerContactUpdate;
+        private DirtyValue<bool?>? _businessCategories;
+        private DirtyValue<bool?>? _businessCustomFields;
+        private DirtyValue<bool?>? _emailServerSettings;
+        private DirtyValue<bool?>? _publicBusinessContactGroups;
 
         /// <summary>
         /// ContactSetupRights BorrowerContactStatus

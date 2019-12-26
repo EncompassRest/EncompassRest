@@ -7,11 +7,11 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PrintRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _customFormsTab;
-        private DirtyValue<bool?> _preview;
-        private DirtyValue<bool?> _printButton;
-        private DirtyValue<bool?> _printToFile;
-        private DirtyValue<bool?> _standardFormsTab;
+        private DirtyValue<bool?>? _customFormsTab;
+        private DirtyValue<bool?>? _preview;
+        private DirtyValue<bool?>? _printButton;
+        private DirtyValue<bool?>? _printToFile;
+        private DirtyValue<bool?>? _standardFormsTab;
 
         /// <summary>
         /// PrintRights CustomFormsTab

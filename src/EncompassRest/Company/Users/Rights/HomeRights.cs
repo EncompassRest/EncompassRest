@@ -7,7 +7,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class HomeRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _allowAccessToTheCompanysMyAccountModuleAndPages;
+        private DirtyValue<bool?>? _allowAccessToTheCompanysMyAccountModuleAndPages;
 
         /// <summary>
         /// HomeRights AllowAccessToTheCompanysMyAccountModuleAndPages

@@ -9,18 +9,18 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(UsdaHouseholdIncomeIndex))]
     public sealed partial class UsdaHouseholdIncome : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _age;
-        private DirtyValue<string> _analysisDocumenting;
-        private DirtyValue<decimal?> _annualNonWageIncome;
-        private DirtyValue<decimal?> _annualWageIncome;
-        private DirtyValue<bool?> _disabledIndicator;
-        private DirtyValue<bool?> _fullTimeStudentIndicator;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _name;
-        private DirtyValue<StringEnumValue<RecordOwnerType>> _recordOwnerType;
-        private DirtyValue<string> _sourceofNonWageIncomeDescription;
-        private DirtyValue<string> _sourceofWageIncomeEmployerName;
-        private DirtyValue<int?> _usdaHouseholdIncomeIndex;
+        private DirtyValue<int?>? _age;
+        private DirtyValue<string?>? _analysisDocumenting;
+        private DirtyValue<decimal?>? _annualNonWageIncome;
+        private DirtyValue<decimal?>? _annualWageIncome;
+        private DirtyValue<bool?>? _disabledIndicator;
+        private DirtyValue<bool?>? _fullTimeStudentIndicator;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _name;
+        private DirtyValue<StringEnumValue<RecordOwnerType>>? _recordOwnerType;
+        private DirtyValue<string?>? _sourceofNonWageIncomeDescription;
+        private DirtyValue<string?>? _sourceofWageIncomeEmployerName;
+        private DirtyValue<int?>? _usdaHouseholdIncomeIndex;
 
         /// <summary>
         /// UsdaHouseholdIncome Age
@@ -30,7 +30,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - House Income - Written Analysis Documenting Annual and Repayment Income [USDA.X193]
         /// </summary>
-        public string AnalysisDocumenting { get => _analysisDocumenting; set => SetField(ref _analysisDocumenting, value); }
+        public string? AnalysisDocumenting { get => _analysisDocumenting; set => SetField(ref _analysisDocumenting, value); }
 
         /// <summary>
         /// UsdaHouseholdIncome AnnualNonWageIncome
@@ -57,12 +57,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UsdaHouseholdIncome Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// UsdaHouseholdIncome Name
         /// </summary>
-        public string Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => _name; set => SetField(ref _name, value); }
 
         /// <summary>
         /// UsdaHouseholdIncome RecordOwnerType
@@ -72,12 +72,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UsdaHouseholdIncome SourceofNonWageIncomeDescription
         /// </summary>
-        public string SourceofNonWageIncomeDescription { get => _sourceofNonWageIncomeDescription; set => SetField(ref _sourceofNonWageIncomeDescription, value); }
+        public string? SourceofNonWageIncomeDescription { get => _sourceofNonWageIncomeDescription; set => SetField(ref _sourceofNonWageIncomeDescription, value); }
 
         /// <summary>
         /// UsdaHouseholdIncome SourceofWageIncomeEmployerName
         /// </summary>
-        public string SourceofWageIncomeEmployerName { get => _sourceofWageIncomeEmployerName; set => SetField(ref _sourceofWageIncomeEmployerName, value); }
+        public string? SourceofWageIncomeEmployerName { get => _sourceofWageIncomeEmployerName; set => SetField(ref _sourceofWageIncomeEmployerName, value); }
 
         /// <summary>
         /// UsdaHouseholdIncome UsdaHouseholdIncomeIndex

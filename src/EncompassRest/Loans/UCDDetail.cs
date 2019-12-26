@@ -10,18 +10,18 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(FeeIndex) + "," + nameof(LineNumber) + "," + nameof(Section))]
     public sealed partial class UCDDetail : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<UCDPayoffType>> _feeAccountType;
-        private DirtyValue<decimal?> _feeAmount;
-        private DirtyValue<DateTime?> _feeDateFrom;
-        private DirtyValue<DateTime?> _feeDateTo;
-        private DirtyValue<string> _feeDesc;
-        private DirtyValue<int?> _feeIndex;
-        private DirtyValue<StringEnumValue<PaidToOrBy>> _feePaidBy;
-        private DirtyValue<string> _feePaidTo;
-        private DirtyValue<bool?> _feePOC;
-        private DirtyValue<string> _id;
-        private DirtyValue<int?> _lineNumber;
-        private DirtyValue<StringEnumValue<Section>> _section;
+        private DirtyValue<StringEnumValue<UCDPayoffType>>? _feeAccountType;
+        private DirtyValue<decimal?>? _feeAmount;
+        private DirtyValue<DateTime?>? _feeDateFrom;
+        private DirtyValue<DateTime?>? _feeDateTo;
+        private DirtyValue<string?>? _feeDesc;
+        private DirtyValue<int?>? _feeIndex;
+        private DirtyValue<StringEnumValue<PaidToOrBy>>? _feePaidBy;
+        private DirtyValue<string?>? _feePaidTo;
+        private DirtyValue<bool?>? _feePOC;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<int?>? _lineNumber;
+        private DirtyValue<StringEnumValue<Section>>? _section;
 
         /// <summary>
         /// UCDDetail FeeAccountType
@@ -48,7 +48,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UCDDetail FeeDesc
         /// </summary>
-        public string FeeDesc { get => _feeDesc; set => SetField(ref _feeDesc, value); }
+        public string? FeeDesc { get => _feeDesc; set => SetField(ref _feeDesc, value); }
 
         /// <summary>
         /// UCDDetail FeeIndex
@@ -63,7 +63,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UCDDetail FeePaidTo
         /// </summary>
-        public string FeePaidTo { get => _feePaidTo; set => SetField(ref _feePaidTo, value); }
+        public string? FeePaidTo { get => _feePaidTo; set => SetField(ref _feePaidTo, value); }
 
         /// <summary>
         /// UCDDetail FeePOC
@@ -73,7 +73,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UCDDetail Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// UCDDetail LineNumber

@@ -9,112 +9,112 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ClosingDisclosure1 : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<DateTime?> _cDDateIssued;
-        private DirtyValue<string> _changedCircumstance;
-        private DirtyValue<bool?> _changedCircumstanceFlag;
-        private DirtyValue<DateTime?> _changesReceivedDate;
-        private DirtyValue<string> _comments;
-        private DirtyValue<string> _disclosureBy;
-        private DirtyValue<string> _disclosureComments;
-        private DirtyValue<DateTime?> _disclosureLastSentDate;
-        private DirtyValue<DateTime?> _disclosureReceivedDate;
-        private DirtyValue<string> _disclosureSentMethod;
-        private DirtyValue<string> _documentGUIDFinalExecutedCopyofAlternateCD;
-        private DirtyValue<string> _documentGUIDFinalExecutedCopyofSellerCD;
-        private DirtyValue<string> _documentGUIDFinalExecutedCopyofStandardCD;
-        private DirtyValue<decimal?> _estimatedTaxesInsuranceAssessments;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _inEscrowHomeownerInsurance;
-        private DirtyValue<string> _inEscrowOther;
-        private DirtyValue<string> _inEscrowPropertyTaxes;
-        private DirtyValue<DateTime?> _initialCDReceivedDate;
-        private DirtyValue<string> _mICReference;
-        private DirtyValue<bool?> _notNaturalPersonFlag;
-        private DirtyValue<decimal?> _pPC1EstimatedEscrowAmount;
-        private DirtyValue<string> _pPC1EstimatedEscrowAmountUI;
-        private DirtyValue<bool?> _pPC1InterestOnly;
-        private DirtyValue<decimal?> _pPC1MaximumMonthlyPayment;
-        private DirtyValue<string> _pPC1MaximumMonthlyPaymentUI;
-        private DirtyValue<decimal?> _pPC1MaximumPIPayment;
-        private DirtyValue<string> _pPC1MaximumPIPaymentUI;
-        private DirtyValue<decimal?> _pPC1MIAmount;
-        private DirtyValue<string> _pPC1MIAmountUI;
-        private DirtyValue<decimal?> _pPC1MinimumMonthlyPayment;
-        private DirtyValue<string> _pPC1MinimumMonthlyPaymentUI;
-        private DirtyValue<decimal?> _pPC1MinimumPIPayment;
-        private DirtyValue<string> _pPC1MinimumPIPaymentUI;
-        private DirtyValue<int?> _pPC1Year;
-        private DirtyValue<decimal?> _pPC2EstimatedEscrowAmount;
-        private DirtyValue<string> _pPC2EstimatedEscrowAmountUI;
-        private DirtyValue<bool?> _pPC2InterestOnly;
-        private DirtyValue<decimal?> _pPC2MaximumMonthlyPayment;
-        private DirtyValue<string> _pPC2MaximumMonthlyPaymentUI;
-        private DirtyValue<decimal?> _pPC2MaximumPIPayment;
-        private DirtyValue<string> _pPC2MaximumPIPaymentUI;
-        private DirtyValue<decimal?> _pPC2MIAmount;
-        private DirtyValue<string> _pPC2MIAmountUI;
-        private DirtyValue<decimal?> _pPC2MinimumMonthlyPayment;
-        private DirtyValue<string> _pPC2MinimumMonthlyPaymentUI;
-        private DirtyValue<decimal?> _pPC2MinimumPIPayment;
-        private DirtyValue<string> _pPC2MinimumPIPaymentUI;
-        private DirtyValue<int?> _pPC2YearFrom;
-        private DirtyValue<int?> _pPC2YearTo;
-        private DirtyValue<decimal?> _pPC3EstimatedEscrowAmount;
-        private DirtyValue<string> _pPC3EstimatedEscrowAmountUI;
-        private DirtyValue<bool?> _pPC3InterestOnly;
-        private DirtyValue<decimal?> _pPC3MaximumMonthlyPayment;
-        private DirtyValue<string> _pPC3MaximumMonthlyPaymentUI;
-        private DirtyValue<decimal?> _pPC3MaximumPIPayment;
-        private DirtyValue<string> _pPC3MaximumPIPaymentUI;
-        private DirtyValue<decimal?> _pPC3MIAmount;
-        private DirtyValue<string> _pPC3MIAmountUI;
-        private DirtyValue<decimal?> _pPC3MinimumMonthlyPayment;
-        private DirtyValue<string> _pPC3MinimumMonthlyPaymentUI;
-        private DirtyValue<decimal?> _pPC3MinimumPIPayment;
-        private DirtyValue<string> _pPC3MinimumPIPaymentUI;
-        private DirtyValue<int?> _pPC3YearFrom;
-        private DirtyValue<int?> _pPC3YearTo;
-        private DirtyValue<decimal?> _pPC4EstimatedEscrowAmount;
-        private DirtyValue<string> _pPC4EstimatedEscrowAmountUI;
-        private DirtyValue<bool?> _pPC4InterestOnly;
-        private DirtyValue<decimal?> _pPC4MaximumMonthlyPayment;
-        private DirtyValue<string> _pPC4MaximumMonthlyPaymentUI;
-        private DirtyValue<decimal?> _pPC4MaximumPIPayment;
-        private DirtyValue<string> _pPC4MaximumPIPaymentUI;
-        private DirtyValue<decimal?> _pPC4MIAmount;
-        private DirtyValue<string> _pPC4MIAmountUI;
-        private DirtyValue<decimal?> _pPC4MinimumMonthlyPayment;
-        private DirtyValue<string> _pPC4MinimumMonthlyPaymentUI;
-        private DirtyValue<decimal?> _pPC4MinimumPIPayment;
-        private DirtyValue<string> _pPC4MinimumPIPaymentUI;
-        private DirtyValue<int?> _pPC4YearFrom;
-        private DirtyValue<int?> _pPC4YearTo;
-        private DirtyValue<bool?> _pPCEstimatedEscrowIndicator;
-        private DirtyValue<bool?> _pPCMortgageInsuranceIndicator;
-        private DirtyValue<bool?> _rangePaymentIndicatorC1;
-        private DirtyValue<bool?> _rangePaymentIndicatorC2;
-        private DirtyValue<bool?> _rangePaymentIndicatorC3;
-        private DirtyValue<bool?> _rangePaymentIndicatorC4;
-        private DirtyValue<bool?> _reasonAdvancedReview;
-        private DirtyValue<bool?> _reasonChangedCircumstanceElg;
-        private DirtyValue<string> _reasonChangedCircumstanceFlags;
-        private DirtyValue<bool?> _reasonChangeInAPR;
-        private DirtyValue<bool?> _reasonChangeInLoanProduct;
-        private DirtyValue<bool?> _reasonChangeSettlementCharges;
-        private DirtyValue<bool?> _reasonClericalErrorCorrection;
-        private DirtyValue<bool?> _reasonInterestRatecharges;
-        private DirtyValue<bool?> _reasonOther;
-        private DirtyValue<string> _reasonOtherDescription;
-        private DirtyValue<bool?> _reasonPrepaymentPenalty;
-        private DirtyValue<bool?> _reasonRevisionsReqConsumer;
-        private DirtyValue<bool?> _reasonToleranceCure;
-        private DirtyValue<DateTime?> _revisedCDDueDate;
-        private DirtyValue<DateTime?> _revisedCDReceivedDate;
-        private DirtyValue<string> _sellerNames;
-        private DirtyValue<StringEnumValue<FinalSignatureType>> _signatureTypeFinalExecutedCopyofAlternateCD;
-        private DirtyValue<StringEnumValue<FinalSignatureType>> _signatureTypeFinalExecutedCopyofSellerCD;
-        private DirtyValue<StringEnumValue<FinalSignatureType>> _signatureTypeFinalExecutedCopyofStandardCD;
-        private DirtyValue<decimal?> _totalCashToClose;
+        private DirtyValue<DateTime?>? _cDDateIssued;
+        private DirtyValue<string?>? _changedCircumstance;
+        private DirtyValue<bool?>? _changedCircumstanceFlag;
+        private DirtyValue<DateTime?>? _changesReceivedDate;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<string?>? _disclosureBy;
+        private DirtyValue<string?>? _disclosureComments;
+        private DirtyValue<DateTime?>? _disclosureLastSentDate;
+        private DirtyValue<DateTime?>? _disclosureReceivedDate;
+        private DirtyValue<string?>? _disclosureSentMethod;
+        private DirtyValue<string?>? _documentGUIDFinalExecutedCopyofAlternateCD;
+        private DirtyValue<string?>? _documentGUIDFinalExecutedCopyofSellerCD;
+        private DirtyValue<string?>? _documentGUIDFinalExecutedCopyofStandardCD;
+        private DirtyValue<decimal?>? _estimatedTaxesInsuranceAssessments;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _inEscrowHomeownerInsurance;
+        private DirtyValue<string?>? _inEscrowOther;
+        private DirtyValue<string?>? _inEscrowPropertyTaxes;
+        private DirtyValue<DateTime?>? _initialCDReceivedDate;
+        private DirtyValue<string?>? _mICReference;
+        private DirtyValue<bool?>? _notNaturalPersonFlag;
+        private DirtyValue<decimal?>? _pPC1EstimatedEscrowAmount;
+        private DirtyValue<string?>? _pPC1EstimatedEscrowAmountUI;
+        private DirtyValue<bool?>? _pPC1InterestOnly;
+        private DirtyValue<decimal?>? _pPC1MaximumMonthlyPayment;
+        private DirtyValue<string?>? _pPC1MaximumMonthlyPaymentUI;
+        private DirtyValue<decimal?>? _pPC1MaximumPIPayment;
+        private DirtyValue<string?>? _pPC1MaximumPIPaymentUI;
+        private DirtyValue<decimal?>? _pPC1MIAmount;
+        private DirtyValue<string?>? _pPC1MIAmountUI;
+        private DirtyValue<decimal?>? _pPC1MinimumMonthlyPayment;
+        private DirtyValue<string?>? _pPC1MinimumMonthlyPaymentUI;
+        private DirtyValue<decimal?>? _pPC1MinimumPIPayment;
+        private DirtyValue<string?>? _pPC1MinimumPIPaymentUI;
+        private DirtyValue<int?>? _pPC1Year;
+        private DirtyValue<decimal?>? _pPC2EstimatedEscrowAmount;
+        private DirtyValue<string?>? _pPC2EstimatedEscrowAmountUI;
+        private DirtyValue<bool?>? _pPC2InterestOnly;
+        private DirtyValue<decimal?>? _pPC2MaximumMonthlyPayment;
+        private DirtyValue<string?>? _pPC2MaximumMonthlyPaymentUI;
+        private DirtyValue<decimal?>? _pPC2MaximumPIPayment;
+        private DirtyValue<string?>? _pPC2MaximumPIPaymentUI;
+        private DirtyValue<decimal?>? _pPC2MIAmount;
+        private DirtyValue<string?>? _pPC2MIAmountUI;
+        private DirtyValue<decimal?>? _pPC2MinimumMonthlyPayment;
+        private DirtyValue<string?>? _pPC2MinimumMonthlyPaymentUI;
+        private DirtyValue<decimal?>? _pPC2MinimumPIPayment;
+        private DirtyValue<string?>? _pPC2MinimumPIPaymentUI;
+        private DirtyValue<int?>? _pPC2YearFrom;
+        private DirtyValue<int?>? _pPC2YearTo;
+        private DirtyValue<decimal?>? _pPC3EstimatedEscrowAmount;
+        private DirtyValue<string?>? _pPC3EstimatedEscrowAmountUI;
+        private DirtyValue<bool?>? _pPC3InterestOnly;
+        private DirtyValue<decimal?>? _pPC3MaximumMonthlyPayment;
+        private DirtyValue<string?>? _pPC3MaximumMonthlyPaymentUI;
+        private DirtyValue<decimal?>? _pPC3MaximumPIPayment;
+        private DirtyValue<string?>? _pPC3MaximumPIPaymentUI;
+        private DirtyValue<decimal?>? _pPC3MIAmount;
+        private DirtyValue<string?>? _pPC3MIAmountUI;
+        private DirtyValue<decimal?>? _pPC3MinimumMonthlyPayment;
+        private DirtyValue<string?>? _pPC3MinimumMonthlyPaymentUI;
+        private DirtyValue<decimal?>? _pPC3MinimumPIPayment;
+        private DirtyValue<string?>? _pPC3MinimumPIPaymentUI;
+        private DirtyValue<int?>? _pPC3YearFrom;
+        private DirtyValue<int?>? _pPC3YearTo;
+        private DirtyValue<decimal?>? _pPC4EstimatedEscrowAmount;
+        private DirtyValue<string?>? _pPC4EstimatedEscrowAmountUI;
+        private DirtyValue<bool?>? _pPC4InterestOnly;
+        private DirtyValue<decimal?>? _pPC4MaximumMonthlyPayment;
+        private DirtyValue<string?>? _pPC4MaximumMonthlyPaymentUI;
+        private DirtyValue<decimal?>? _pPC4MaximumPIPayment;
+        private DirtyValue<string?>? _pPC4MaximumPIPaymentUI;
+        private DirtyValue<decimal?>? _pPC4MIAmount;
+        private DirtyValue<string?>? _pPC4MIAmountUI;
+        private DirtyValue<decimal?>? _pPC4MinimumMonthlyPayment;
+        private DirtyValue<string?>? _pPC4MinimumMonthlyPaymentUI;
+        private DirtyValue<decimal?>? _pPC4MinimumPIPayment;
+        private DirtyValue<string?>? _pPC4MinimumPIPaymentUI;
+        private DirtyValue<int?>? _pPC4YearFrom;
+        private DirtyValue<int?>? _pPC4YearTo;
+        private DirtyValue<bool?>? _pPCEstimatedEscrowIndicator;
+        private DirtyValue<bool?>? _pPCMortgageInsuranceIndicator;
+        private DirtyValue<bool?>? _rangePaymentIndicatorC1;
+        private DirtyValue<bool?>? _rangePaymentIndicatorC2;
+        private DirtyValue<bool?>? _rangePaymentIndicatorC3;
+        private DirtyValue<bool?>? _rangePaymentIndicatorC4;
+        private DirtyValue<bool?>? _reasonAdvancedReview;
+        private DirtyValue<bool?>? _reasonChangedCircumstanceElg;
+        private DirtyValue<string?>? _reasonChangedCircumstanceFlags;
+        private DirtyValue<bool?>? _reasonChangeInAPR;
+        private DirtyValue<bool?>? _reasonChangeInLoanProduct;
+        private DirtyValue<bool?>? _reasonChangeSettlementCharges;
+        private DirtyValue<bool?>? _reasonClericalErrorCorrection;
+        private DirtyValue<bool?>? _reasonInterestRatecharges;
+        private DirtyValue<bool?>? _reasonOther;
+        private DirtyValue<string?>? _reasonOtherDescription;
+        private DirtyValue<bool?>? _reasonPrepaymentPenalty;
+        private DirtyValue<bool?>? _reasonRevisionsReqConsumer;
+        private DirtyValue<bool?>? _reasonToleranceCure;
+        private DirtyValue<DateTime?>? _revisedCDDueDate;
+        private DirtyValue<DateTime?>? _revisedCDReceivedDate;
+        private DirtyValue<string?>? _sellerNames;
+        private DirtyValue<StringEnumValue<FinalSignatureType>>? _signatureTypeFinalExecutedCopyofAlternateCD;
+        private DirtyValue<StringEnumValue<FinalSignatureType>>? _signatureTypeFinalExecutedCopyofSellerCD;
+        private DirtyValue<StringEnumValue<FinalSignatureType>>? _signatureTypeFinalExecutedCopyofStandardCD;
+        private DirtyValue<decimal?>? _totalCashToClose;
 
         /// <summary>
         /// Closing Disclosure - CD Date Issued [CD1.X1]
@@ -124,7 +124,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Changed Circumstance [CD1.X64]
         /// </summary>
-        public string ChangedCircumstance { get => _changedCircumstance; set => SetField(ref _changedCircumstance, value); }
+        public string? ChangedCircumstance { get => _changedCircumstance; set => SetField(ref _changedCircumstance, value); }
 
         /// <summary>
         /// CD Changed Circumstance Chkbx [CD1.X61]
@@ -139,17 +139,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Comments [CD1.X65]
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// Closing Disclosure - Disclosure By [CD1.X48]
         /// </summary>
-        public string DisclosureBy { get => _disclosureBy; set => SetField(ref _disclosureBy, value); }
+        public string? DisclosureBy { get => _disclosureBy; set => SetField(ref _disclosureBy, value); }
 
         /// <summary>
         /// Closing Disclosure - Disclosure Comments [CD1.X50]
         /// </summary>
-        public string DisclosureComments { get => _disclosureComments; set => SetField(ref _disclosureComments, value); }
+        public string? DisclosureComments { get => _disclosureComments; set => SetField(ref _disclosureComments, value); }
 
         /// <summary>
         /// Last CD Sent Date [CD1.X47]
@@ -164,25 +164,25 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Disclosure Sent Method [CD1.X49]
         /// </summary>
-        public string DisclosureSentMethod { get => _disclosureSentMethod; set => SetField(ref _disclosureSentMethod, value); }
+        public string? DisclosureSentMethod { get => _disclosureSentMethod; set => SetField(ref _disclosureSentMethod, value); }
 
         /// <summary>
         /// Document GUID of the final executed copy of the alternate CD [UCD.X3]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DocumentGUIDFinalExecutedCopyofAlternateCD { get => _documentGUIDFinalExecutedCopyofAlternateCD; set => SetField(ref _documentGUIDFinalExecutedCopyofAlternateCD, value); }
+        public string? DocumentGUIDFinalExecutedCopyofAlternateCD { get => _documentGUIDFinalExecutedCopyofAlternateCD; set => SetField(ref _documentGUIDFinalExecutedCopyofAlternateCD, value); }
 
         /// <summary>
         /// Document GUID of the final executed copy of the seller CD [UCD.X5]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DocumentGUIDFinalExecutedCopyofSellerCD { get => _documentGUIDFinalExecutedCopyofSellerCD; set => SetField(ref _documentGUIDFinalExecutedCopyofSellerCD, value); }
+        public string? DocumentGUIDFinalExecutedCopyofSellerCD { get => _documentGUIDFinalExecutedCopyofSellerCD; set => SetField(ref _documentGUIDFinalExecutedCopyofSellerCD, value); }
 
         /// <summary>
         /// Document GUID of the final executed copy of the standard CD [UCD.X1]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DocumentGUIDFinalExecutedCopyofStandardCD { get => _documentGUIDFinalExecutedCopyofStandardCD; set => SetField(ref _documentGUIDFinalExecutedCopyofStandardCD, value); }
+        public string? DocumentGUIDFinalExecutedCopyofStandardCD { get => _documentGUIDFinalExecutedCopyofStandardCD; set => SetField(ref _documentGUIDFinalExecutedCopyofStandardCD, value); }
 
         /// <summary>
         /// Closing Disclosure - Estimated Taxes, Insurance and Assessments [CD1.X3]
@@ -193,22 +193,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ClosingDisclosure1 Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Closing Disclosure - In Escrow Homeowner Insurance [CD1.X5]
         /// </summary>
-        public string InEscrowHomeownerInsurance { get => _inEscrowHomeownerInsurance; set => SetField(ref _inEscrowHomeownerInsurance, value); }
+        public string? InEscrowHomeownerInsurance { get => _inEscrowHomeownerInsurance; set => SetField(ref _inEscrowHomeownerInsurance, value); }
 
         /// <summary>
         /// Closing Disclosure - In Escrow Other [CD1.X6]
         /// </summary>
-        public string InEscrowOther { get => _inEscrowOther; set => SetField(ref _inEscrowOther, value); }
+        public string? InEscrowOther { get => _inEscrowOther; set => SetField(ref _inEscrowOther, value); }
 
         /// <summary>
         /// Closing Disclosure - In Escrow Property Taxes [CD1.X4]
         /// </summary>
-        public string InEscrowPropertyTaxes { get => _inEscrowPropertyTaxes; set => SetField(ref _inEscrowPropertyTaxes, value); }
+        public string? InEscrowPropertyTaxes { get => _inEscrowPropertyTaxes; set => SetField(ref _inEscrowPropertyTaxes, value); }
 
         /// <summary>
         /// Closing Disclosure - Initial CD Received Date [CD1.X73]
@@ -219,7 +219,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - MIC Reference [CD1.X71]
         /// </summary>
-        public string MICReference { get => _mICReference; set => SetField(ref _mICReference, value); }
+        public string? MICReference { get => _mICReference; set => SetField(ref _mICReference, value); }
 
         /// <summary>
         /// Closing Disclosure - Not a Natural Person (legal entity) Flag [CD1.X72]
@@ -236,7 +236,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure - Projected Calculation - Column 1 - Estimated Escrow Amount UI Value [CD1.XD12]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC1EstimatedEscrowAmountUI { get => _pPC1EstimatedEscrowAmountUI; set => SetField(ref _pPC1EstimatedEscrowAmountUI, value); }
+        public string? PPC1EstimatedEscrowAmountUI { get => _pPC1EstimatedEscrowAmountUI; set => SetField(ref _pPC1EstimatedEscrowAmountUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Interest Only [CD1.X10]
@@ -253,7 +253,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 1-Maximum Monthly Payment UI Value [CD1.XD14]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC1MaximumMonthlyPaymentUI { get => _pPC1MaximumMonthlyPaymentUI; set => SetField(ref _pPC1MaximumMonthlyPaymentUI, value); }
+        public string? PPC1MaximumMonthlyPaymentUI { get => _pPC1MaximumMonthlyPaymentUI; set => SetField(ref _pPC1MaximumMonthlyPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Maximum Principal and Interest Payment [CD1.X9]
@@ -265,7 +265,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 1-Maximum Principal and Interest Payment UI Value [CD1.XD9]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC1MaximumPIPaymentUI { get => _pPC1MaximumPIPaymentUI; set => SetField(ref _pPC1MaximumPIPaymentUI, value); }
+        public string? PPC1MaximumPIPaymentUI { get => _pPC1MaximumPIPaymentUI; set => SetField(ref _pPC1MaximumPIPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Mortgage Insurance Amount [CD1.X11]
@@ -277,7 +277,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure - Projected Calculation - Column 1 - Mortgage Insurance Amount UI Value [CD1.XD11]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC1MIAmountUI { get => _pPC1MIAmountUI; set => SetField(ref _pPC1MIAmountUI, value); }
+        public string? PPC1MIAmountUI { get => _pPC1MIAmountUI; set => SetField(ref _pPC1MIAmountUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Minimum Monthly Payment [CD1.X13]
@@ -289,7 +289,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 1-Minimum Monthly Payment UI Value [CD1.XD13]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC1MinimumMonthlyPaymentUI { get => _pPC1MinimumMonthlyPaymentUI; set => SetField(ref _pPC1MinimumMonthlyPaymentUI, value); }
+        public string? PPC1MinimumMonthlyPaymentUI { get => _pPC1MinimumMonthlyPaymentUI; set => SetField(ref _pPC1MinimumMonthlyPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Minimum Principal and Interest Payment [CD1.X8]
@@ -301,7 +301,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 1-Minimum Principal and Interest Payment UI Value [CD1.XD8]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC1MinimumPIPaymentUI { get => _pPC1MinimumPIPaymentUI; set => SetField(ref _pPC1MinimumPIPaymentUI, value); }
+        public string? PPC1MinimumPIPaymentUI { get => _pPC1MinimumPIPaymentUI; set => SetField(ref _pPC1MinimumPIPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Year [CD1.X7]
@@ -318,7 +318,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure - Projected Calculation - Column 2 - Estimated Escrow Amount UI Value [CD1.XD21]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC2EstimatedEscrowAmountUI { get => _pPC2EstimatedEscrowAmountUI; set => SetField(ref _pPC2EstimatedEscrowAmountUI, value); }
+        public string? PPC2EstimatedEscrowAmountUI { get => _pPC2EstimatedEscrowAmountUI; set => SetField(ref _pPC2EstimatedEscrowAmountUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Interest Only [CD1.X19]
@@ -335,7 +335,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 2-Maximum Monthly Payment UI Value [CD1.XD23]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC2MaximumMonthlyPaymentUI { get => _pPC2MaximumMonthlyPaymentUI; set => SetField(ref _pPC2MaximumMonthlyPaymentUI, value); }
+        public string? PPC2MaximumMonthlyPaymentUI { get => _pPC2MaximumMonthlyPaymentUI; set => SetField(ref _pPC2MaximumMonthlyPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Maximum Principal and Interest Payment [CD1.X18]
@@ -347,7 +347,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 2-Maximum Principal and Interest Payment UI Value [CD1.XD18]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC2MaximumPIPaymentUI { get => _pPC2MaximumPIPaymentUI; set => SetField(ref _pPC2MaximumPIPaymentUI, value); }
+        public string? PPC2MaximumPIPaymentUI { get => _pPC2MaximumPIPaymentUI; set => SetField(ref _pPC2MaximumPIPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Mortgage Insurance Amount [CD1.X20]
@@ -359,7 +359,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure - Projected Calculation - Column 2 - Mortgage Insurance Amount UI Value [CD1.XD20]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC2MIAmountUI { get => _pPC2MIAmountUI; set => SetField(ref _pPC2MIAmountUI, value); }
+        public string? PPC2MIAmountUI { get => _pPC2MIAmountUI; set => SetField(ref _pPC2MIAmountUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Minimum Monthly Payment [CD1.X22]
@@ -371,7 +371,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 2-Minimum Monthly Payment UI Value [CD1.XD22]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC2MinimumMonthlyPaymentUI { get => _pPC2MinimumMonthlyPaymentUI; set => SetField(ref _pPC2MinimumMonthlyPaymentUI, value); }
+        public string? PPC2MinimumMonthlyPaymentUI { get => _pPC2MinimumMonthlyPaymentUI; set => SetField(ref _pPC2MinimumMonthlyPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Minimum Principal and Interest Payment [CD1.X17]
@@ -383,7 +383,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 2-Minimum Principal and Interest Payment UI Value [CD1.XD17]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC2MinimumPIPaymentUI { get => _pPC2MinimumPIPaymentUI; set => SetField(ref _pPC2MinimumPIPaymentUI, value); }
+        public string? PPC2MinimumPIPaymentUI { get => _pPC2MinimumPIPaymentUI; set => SetField(ref _pPC2MinimumPIPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Year From [CD1.X15]
@@ -405,7 +405,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure - Projected Calculation - Column 3 - Estimated Escrow Amount UI Value [CD1.XD30]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC3EstimatedEscrowAmountUI { get => _pPC3EstimatedEscrowAmountUI; set => SetField(ref _pPC3EstimatedEscrowAmountUI, value); }
+        public string? PPC3EstimatedEscrowAmountUI { get => _pPC3EstimatedEscrowAmountUI; set => SetField(ref _pPC3EstimatedEscrowAmountUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Interest Only [CD1.X28]
@@ -422,7 +422,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 3-Maximum Monthly Payment UI Value [CD1.XD32]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC3MaximumMonthlyPaymentUI { get => _pPC3MaximumMonthlyPaymentUI; set => SetField(ref _pPC3MaximumMonthlyPaymentUI, value); }
+        public string? PPC3MaximumMonthlyPaymentUI { get => _pPC3MaximumMonthlyPaymentUI; set => SetField(ref _pPC3MaximumMonthlyPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Maximum Principal and Interest Payment [CD1.X27]
@@ -434,7 +434,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 3-Maximum Principal and Interest Payment UI Value [CD1.XD27]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC3MaximumPIPaymentUI { get => _pPC3MaximumPIPaymentUI; set => SetField(ref _pPC3MaximumPIPaymentUI, value); }
+        public string? PPC3MaximumPIPaymentUI { get => _pPC3MaximumPIPaymentUI; set => SetField(ref _pPC3MaximumPIPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Mortgage Insurance Amount [CD1.X29]
@@ -446,7 +446,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure - Projected Calculation - Column 3 - Mortgage Insurance Amount UI Value [CD1.XD29]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC3MIAmountUI { get => _pPC3MIAmountUI; set => SetField(ref _pPC3MIAmountUI, value); }
+        public string? PPC3MIAmountUI { get => _pPC3MIAmountUI; set => SetField(ref _pPC3MIAmountUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Minimum Monthly Payment [CD1.X31]
@@ -458,7 +458,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 3-Minimum Monthly Payment UI Value [CD1.XD31]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC3MinimumMonthlyPaymentUI { get => _pPC3MinimumMonthlyPaymentUI; set => SetField(ref _pPC3MinimumMonthlyPaymentUI, value); }
+        public string? PPC3MinimumMonthlyPaymentUI { get => _pPC3MinimumMonthlyPaymentUI; set => SetField(ref _pPC3MinimumMonthlyPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Minimum Principal and Interest Payment [CD1.X26]
@@ -470,7 +470,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 3-Minimum Principal and Interest Payment UI Value [CD1.XD26]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC3MinimumPIPaymentUI { get => _pPC3MinimumPIPaymentUI; set => SetField(ref _pPC3MinimumPIPaymentUI, value); }
+        public string? PPC3MinimumPIPaymentUI { get => _pPC3MinimumPIPaymentUI; set => SetField(ref _pPC3MinimumPIPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Year From [CD1.X24]
@@ -492,7 +492,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure - Projected Calculation - Column 4 - Estimated Escrow Amount UI Value [CD1.XD39]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC4EstimatedEscrowAmountUI { get => _pPC4EstimatedEscrowAmountUI; set => SetField(ref _pPC4EstimatedEscrowAmountUI, value); }
+        public string? PPC4EstimatedEscrowAmountUI { get => _pPC4EstimatedEscrowAmountUI; set => SetField(ref _pPC4EstimatedEscrowAmountUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Interest Only [CD1.X37]
@@ -509,7 +509,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 4-Maximum Monthly Payment UI Vavlue [CD1.XD41]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC4MaximumMonthlyPaymentUI { get => _pPC4MaximumMonthlyPaymentUI; set => SetField(ref _pPC4MaximumMonthlyPaymentUI, value); }
+        public string? PPC4MaximumMonthlyPaymentUI { get => _pPC4MaximumMonthlyPaymentUI; set => SetField(ref _pPC4MaximumMonthlyPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Maximum Principal and Interest Payment [CD1.X36]
@@ -521,7 +521,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 4-Maximum Principal and Interest Payment UI Value [CD1.XD36]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC4MaximumPIPaymentUI { get => _pPC4MaximumPIPaymentUI; set => SetField(ref _pPC4MaximumPIPaymentUI, value); }
+        public string? PPC4MaximumPIPaymentUI { get => _pPC4MaximumPIPaymentUI; set => SetField(ref _pPC4MaximumPIPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Mortgage Insurance Amount [CD1.X38]
@@ -533,7 +533,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure - Projected Calculation - Column 4 - Mortgage Insurance Amount UI Value [CD1.XD38]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC4MIAmountUI { get => _pPC4MIAmountUI; set => SetField(ref _pPC4MIAmountUI, value); }
+        public string? PPC4MIAmountUI { get => _pPC4MIAmountUI; set => SetField(ref _pPC4MIAmountUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Minimum Monthly Payment [CD1.X40]
@@ -545,7 +545,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 4-Minimum Monthly Payment UI Value [CD1.XD40]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC4MinimumMonthlyPaymentUI { get => _pPC4MinimumMonthlyPaymentUI; set => SetField(ref _pPC4MinimumMonthlyPaymentUI, value); }
+        public string? PPC4MinimumMonthlyPaymentUI { get => _pPC4MinimumMonthlyPaymentUI; set => SetField(ref _pPC4MinimumMonthlyPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Minimum Principal and Interest Payment [CD1.X35]
@@ -557,7 +557,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure-Projected Calculation-Column 4-Minimum Principal and Interest Payment UI Value [CD1.XD35]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PPC4MinimumPIPaymentUI { get => _pPC4MinimumPIPaymentUI; set => SetField(ref _pPC4MinimumPIPaymentUI, value); }
+        public string? PPC4MinimumPIPaymentUI { get => _pPC4MinimumPIPaymentUI; set => SetField(ref _pPC4MinimumPIPaymentUI, value); }
 
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Year From [CD1.X33]
@@ -617,7 +617,7 @@ namespace EncompassRest.Loans
         /// Closing Disclosure - Reason Changed Circumstance Flags [CD1.X70]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ReasonChangedCircumstanceFlags { get => _reasonChangedCircumstanceFlags; set => SetField(ref _reasonChangedCircumstanceFlags, value); }
+        public string? ReasonChangedCircumstanceFlags { get => _reasonChangedCircumstanceFlags; set => SetField(ref _reasonChangedCircumstanceFlags, value); }
 
         /// <summary>
         /// Closing Disclosure - Change in APR [CD1.X52]
@@ -652,7 +652,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Other Description [CD1.X60]
         /// </summary>
-        public string ReasonOtherDescription { get => _reasonOtherDescription; set => SetField(ref _reasonOtherDescription, value); }
+        public string? ReasonOtherDescription { get => _reasonOtherDescription; set => SetField(ref _reasonOtherDescription, value); }
 
         /// <summary>
         /// Closing Disclosure - Prepayment Penalty Added [CD1.X54]
@@ -683,7 +683,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Seller Names [CD1.X2]
         /// </summary>
-        public string SellerNames { get => _sellerNames; set => SetField(ref _sellerNames, value); }
+        public string? SellerNames { get => _sellerNames; set => SetField(ref _sellerNames, value); }
 
         /// <summary>
         /// Signature Type of final executed copy of the alternate CD [UCD.X4]

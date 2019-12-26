@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TPOWebCenterSetupRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _editTPOWebCenterSetup;
+        private DirtyValue<bool?>? _editTPOWebCenterSetup;
 
         /// <summary>
         /// TPOWebCenterSetupRights EditTPOWebCenterSetup

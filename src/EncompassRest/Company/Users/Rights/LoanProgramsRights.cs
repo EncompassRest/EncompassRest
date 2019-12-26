@@ -5,7 +5,7 @@
     /// </summary>
     public sealed class LoanProgramsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _allowImport;
+        private DirtyValue<bool?>? _allowImport;
 
         /// <summary>
         /// LoanProgramsRights AllowImport

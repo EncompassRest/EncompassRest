@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,11 +7,12 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TPOWebCenterDocumentListSettingsRights : ParentAccessRights
     {
-        private TPOWebCenterDocumentListSettingsEditDocumentRights _editDocument;
+        private TPOWebCenterDocumentListSettingsEditDocumentRights? _editDocument;
 
         /// <summary>
         /// TPOWebCenterDocumentListSettingsRights EditDocument
         /// </summary>
+        [AllowNull]
         public TPOWebCenterDocumentListSettingsEditDocumentRights EditDocument { get => GetField(ref _editDocument); set => SetField(ref _editDocument, value); }
     }
 }

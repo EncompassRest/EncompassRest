@@ -9,12 +9,12 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(AdjustmentType) + "," + nameof(PriceAdjustmentType), SerializeWholeListWhenDirty = true)]
     public sealed partial class PriceAdjustment : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<AdjustmentType>> _adjustmentType;
-        private DirtyValue<string> _description;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<PriceAdjustmentType>> _priceAdjustmentType;
-        private DirtyValue<decimal?> _rate;
-        private DirtyValue<string> _rateLockAdjustmentType;
+        private DirtyValue<StringEnumValue<AdjustmentType>>? _adjustmentType;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<PriceAdjustmentType>>? _priceAdjustmentType;
+        private DirtyValue<decimal?>? _rate;
+        private DirtyValue<string?>? _rateLockAdjustmentType;
 
         /// <summary>
         /// PriceAdjustment AdjustmentType
@@ -25,12 +25,12 @@ namespace EncompassRest.Loans
         /// PriceAdjustment Description
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// PriceAdjustment Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// PriceAdjustment PriceAdjustmentType
@@ -46,6 +46,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PriceAdjustment RateLockAdjustmentType
         /// </summary>
-        public string RateLockAdjustmentType { get => _rateLockAdjustmentType; set => SetField(ref _rateLockAdjustmentType, value); }
+        public string? RateLockAdjustmentType { get => _rateLockAdjustmentType; set => SetField(ref _rateLockAdjustmentType, value); }
     }
 }

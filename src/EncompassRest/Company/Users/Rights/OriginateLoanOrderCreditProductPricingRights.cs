@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,9 +7,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class OriginateLoanOrderCreditProductPricingRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _orderCredit;
-        private OriginateLoanRights _originateLoan;
-        private DirtyValue<bool?> _productAndPricing;
+        private DirtyValue<bool?>? _orderCredit;
+        private OriginateLoanRights? _originateLoan;
+        private DirtyValue<bool?>? _productAndPricing;
 
         /// <summary>
         /// OriginateLoanOrderCreditProductPricingRights OrderCredit
@@ -17,6 +19,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// OriginateLoanOrderCreditProductPricingRights OriginateLoan
         /// </summary>
+        [AllowNull]
         public OriginateLoanRights OriginateLoan { get => GetField(ref _originateLoan); set => SetField(ref _originateLoan, value); }
 
         /// <summary>

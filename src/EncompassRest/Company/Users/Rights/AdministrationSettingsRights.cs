@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AdministrationSettingsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _accessTPOConnectAdminSite;
+        private DirtyValue<bool?>? _accessTPOConnectAdminSite;
 
         /// <summary>
         /// AdministrationSettingsRights AccessTPOConnectAdminSite

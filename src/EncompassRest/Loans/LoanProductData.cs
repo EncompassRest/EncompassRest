@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,222 +11,222 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amountApplyToDownPayment;
-        private DirtyValue<decimal?> _annualFeeNeededAmount;
-        private DirtyValue<bool?> _applyLifeCapLowIndicator;
-        private DirtyValue<StringEnumValue<IndexMargin>> _armDisclosureType;
-        private DirtyValue<StringEnumValue<ArmIndexType>> _armIndexType;
-        private DirtyValue<bool?> _balloonIndicator;
-        private DirtyValue<int?> _balloonLoanMaturityTermMonthsCount;
-        private DirtyValue<DateTime?> _borrowerEstimatedClosingDate;
-        private DirtyValue<string> _branchLocationNmlsId;
-        private DirtyValue<string> _branchManagerNmlsId;
-        private DirtyList<Buydown> _buydowns;
-        private DirtyValue<bool?> _convertibleIndicator;
-        private DirtyValue<StringEnumValue<IsOrIsNot>> _discounted;
-        private DirtyValue<decimal?> _discountedRate;
-        private DirtyValue<int?> _drawPeriodMonthsCount;
-        private DirtyValue<bool?> _escrowWaiverIndicator;
-        private DirtyValue<bool?> _excludeLoanFromNMLSReportIndicator;
-        private DirtyValue<StringEnumValue<FloorBasis>> _floorBasis;
-        private DirtyValue<decimal?> _floorPercent;
-        private DirtyValue<string> _floorPercentUI;
-        private DirtyValue<StringEnumValue<FloorVerbiage>> _floorVerbiage;
-        private DirtyValue<string> _fnmProductPlanIdentifier;
-        private DirtyValue<StringEnumValue<FreddieMacArmIndexType>> _freddieMacArmIndexType;
-        private DirtyValue<StringEnumValue<FreOfferingIdentifier>> _freOfferingIdentifier;
-        private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>> _fullPrepaymentPenaltyOptionType;
-        private DirtyValue<StringEnumValue<ProjectType>> _gseProjectClassificationType;
-        private DirtyValue<StringEnumValue<PropertyType>> _gsePropertyType;
-        private DirtyValue<int?> _hardPrepaymentPenaltyMonths;
-        private DirtyValue<decimal?> _helocAutoDebitDiscount;
-        private DirtyValue<bool?> _helocAutoDebitFeature;
-        private DirtyValue<StringEnumValue<HelocCalcSign>> _helocCalcSign;
-        private DirtyValue<decimal?> _helocDailyPeriodicRate;
-        private DirtyValue<int?> _helocDrawExtensionMonths;
-        private DirtyValue<int?> _helocDrawFractionBalancedividend;
-        private DirtyValue<int?> _helocDrawFractionBalancedivisor;
-        private DirtyValue<bool?> _helocDrawPaymentBasis;
-        private DirtyValue<StringEnumValue<PaymentBasisType>> _helocDrawPaymentBasisType;
-        private DirtyValue<bool?> _helocEscrowAccountIndicator;
-        private DirtyValue<bool?> _helocForceMinimumPayment;
-        private DirtyValue<int?> _helocFractionBalancedividend;
-        private DirtyValue<int?> _helocFractionBalancedivisor;
-        private DirtyList<HelocHistoricalIndexYearSetting> _helocHistoricalIndexYearSettings;
-        private DirtyValue<int?> _helocHistoricalTableDayIndex;
-        private DirtyValue<decimal?> _helocHistoricalTableDefaultMargin;
-        private DirtyValue<int?> _helocHistoricalTableMonthIndex;
-        private DirtyValue<string> _helocHistoricalTableName;
-        private DirtyValue<StringEnumValue<HelocBalance>> _helocInitialBalanceUsed;
-        private DirtyValue<StringEnumValue<HelocCalcSign>> _helocInitialCalcSign;
-        private DirtyValue<bool?> _helocInitialForceMinimumPayment;
-        private DirtyValue<int?> _helocInitialFractionBalancedividend;
-        private DirtyValue<int?> _helocInitialFractionBalancedivisor;
-        private DirtyValue<StringEnumValue<HelocPaymentBasis>> _helocInitialPaymentBasis;
-        private DirtyValue<StringEnumValue<PaymentBasisType>> _helocInitialPaymentBasisType;
-        private DirtyValue<decimal?> _helocInitialPercent;
-        private DirtyValue<decimal?> _helocInitialPercentageofBalance;
-        private DirtyValue<bool?> _helocInitialPI;
-        private DirtyValue<StringEnumValue<HelocInitialRate>> _helocInitialRate;
-        private DirtyValue<int?> _helocInitialTerm;
-        private DirtyValue<StringEnumValue<PerDiemCalculationMethodType>> _helocInitPerDiemCalculationMethodType;
-        private DirtyValue<decimal?> _helocInstallmentLoanAPR;
-        private DirtyValue<decimal?> _helocInstallmentLoanFinanceCharge;
-        private DirtyValue<decimal?> _helocInstallmentLoanMargin;
-        private DirtyValue<decimal?> _helocInstallmentLoanMaxAPR;
-        private DirtyValue<decimal?> _helocInstallmentLoanMinAPR;
-        private DirtyValue<bool?> _helocInstallmentLoanOptionIndicator;
-        private DirtyValue<int?> _helocInstallmentLoanTermYearFrom;
-        private DirtyValue<int?> _helocInstallmentLoanTermYearTo;
-        private DirtyValue<bool?> _helocInterestOnly;
-        private DirtyValue<StringEnumValue<LienPosition>> _hELOCLienPosition;
-        private DirtyValue<int?> _helocMaxOpenInstallmentLoans;
-        private DirtyValue<decimal?> _helocMinimumInitialAdvancePercent;
-        private DirtyValue<bool?> _helocMinimumInitialAdvanceRequiredIndicator;
-        private DirtyValue<decimal?> _helocMinimumSubsequentAdvanceAmount;
-        private DirtyValue<decimal?> _helocMinimumSubsequentAdvancePercent;
-        private DirtyValue<decimal?> _helocMinInstallmentLoanAmount;
-        private DirtyValue<decimal?> _helocMonthlyPeriodicRate;
-        private DirtyValue<decimal?> _helocNewFinancingNotLinkedCreditLimit;
-        private DirtyValue<decimal?> _helocNewFinancingNotLinkedDrawAmount;
-        private DirtyValue<decimal?> _helocPaperBillingFee;
-        private DirtyValue<StringEnumValue<HelocPaymentBasis>> _helocPaymentBasis;
-        private DirtyValue<StringEnumValue<PaymentBasisType>> _helocPaymentBasisType;
-        private DirtyValue<decimal?> _helocPercent;
-        private DirtyValue<decimal?> _helocPercentageofBalance;
-        private DirtyValue<StringEnumValue<HelocPeriodicRateIndicator>> _helocPeriodicRateIndicator;
-        private DirtyValue<string> _helocPeriodTemplateName;
-        private DirtyValue<decimal?> _helocPhotocopyFee;
-        private DirtyValue<StringEnumValue<HelocBalance>> _helocQualifyingBalance;
-        private DirtyValue<int?> _helocQualifyingTerm;
-        private DirtyValue<StringEnumValue<HelocRate>> _helocRate;
-        private DirtyValue<string> _helocRefundableFee;
-        private DirtyValue<bool?> _helocRepaymentBasis;
-        private DirtyValue<StringEnumValue<PaymentBasisType>> _helocRepaymentBasisType;
-        private DirtyList<HelocRepaymentDrawPeriod> _helocRepaymentDrawPeriods;
-        private DirtyValue<int?> _helocRepaymentFractionBalancedividend;
-        private DirtyValue<int?> _helocRepaymentFractionBalancedivisor;
-        private DirtyValue<bool?> _helocRepaymentInterestOnlyIndicator;
-        private DirtyValue<decimal?> _helocRepaymentMinPayment;
-        private DirtyValue<decimal?> _helocResearchFee;
-        private DirtyValue<bool?> _helocStandardHistoricalTableIndicator;
-        private DirtyValue<bool?> _helocTAALNonDepositoryIndicator;
-        private DirtyValue<StringEnumValue<HelocTAAPPChangeOption>> _helocTAAPPChangeOption;
-        private DirtyValue<StringEnumValue<HelocTAAPPRoundingOption>> _helocTAAPPRoundingOption;
-        private DirtyValue<decimal?> _helocTAAPRCharged;
-        private DirtyValue<bool?> _helocTACreditCardIndicator;
-        private DirtyValue<string> _helocTACreditCardMisuseNotificationAddr;
-        private DirtyValue<string> _helocTACreditCardMisuseNotificationEmailAddr;
-        private DirtyValue<string> _helocTACreditCardMisuseNotificationPhoneNumber;
-        private DirtyValue<string> _helocTACreditCardMisuseNotificationWebAddr;
-        private DirtyValue<StringEnumValue<HelocTADailyBalanceType>> _helocTADailyBalanceType;
-        private DirtyValue<StringEnumValue<HelocTADailyRateRoundingOption>> _helocTADailyRateRoundingOption;
-        private DirtyValue<StringEnumValue<HelocTADrawCheckIndicator>> _helocTADrawCheckIndicator;
-        private DirtyValue<string> _helocTAFeesCharged;
-        private DirtyValue<StringEnumValue<HelocTAIndexRefDateOption>> _helocTAIndexRefDateOption;
-        private DirtyValue<StringEnumValue<HelocTAInstallmentIndexRefDateOption>> _helocTAInstallmentIndexRefDateOption;
-        private DirtyValue<bool?> _helocTAInstallmentLoanDiscountedAPRIndicator;
-        private DirtyValue<string> _helocTAInstallmentLoanDiscountWord;
-        private DirtyValue<string> _helocTAInstallmentLoanPaymentAppliedMethod;
-        private DirtyValue<decimal?> _helocTAInstallmentLoanPeriodicRateRoundingPercent;
-        private DirtyValue<string> _helocTAInstallmentLoanTerminationMethod;
-        private DirtyValue<StringEnumValue<HelocTAIntroRateAppliedOn>> _helocTAIntroRateAppliedOn;
-        private DirtyValue<string> _helocTALenderToPay3rdPartyCost;
-        private DirtyValue<bool?> _helocTAOverdraftProtectionIndicator;
-        private DirtyValue<StringEnumValue<HelocTAOverLimitChargeOption>> _helocTAOverLimitChargeOption;
-        private DirtyValue<bool?> _helocTAPeriodicCapAppliedToAdvancePeriod;
-        private DirtyValue<bool?> _helocTAPeriodicCapAppliedToRepaymentPeriod;
-        private DirtyValue<StringEnumValue<HelocTAPeriodicRateAdjDayOption>> _helocTAPeriodicRateAdjDayOption;
-        private DirtyValue<StringEnumValue<HelocTARepaymentTermEndBy>> _helocTARepaymentTermEndBy;
-        private DirtyValue<bool?> _helocTARequestAdvanceInPersonIndicator;
-        private DirtyValue<string> _helocTARequestAdvanceInPersonLocation;
-        private DirtyValue<bool?> _helocTARequestAdvanceViaInternetIndicator;
-        private DirtyValue<string> _helocTARequestAdvanceViaInternetURL;
-        private DirtyValue<bool?> _helocTARequestByPhoneIndicator;
-        private DirtyValue<bool?> _helocTARequireRepayIndicator;
-        private DirtyValue<bool?> _helocTARightToSetoffIndicator;
-        private DirtyValue<bool?> _helocTAWrittenAuthorizationIndicator;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _indexCurrentValuePercent;
-        private DirtyValue<StringEnumValue<IndexLookbackPeriod>> _indexLookbackPeriod;
-        private DirtyValue<decimal?> _indexMarginPercent;
-        private DirtyValue<string> _indexMarginPercentUI;
-        private DirtyValue<decimal?> _initialAdvanceAmount;
-        private DirtyValue<decimal?> _initialApplicationAmount;
-        private DirtyValue<bool?> _inquiryOrPreQualificationIndicator;
-        private DirtyValue<StringEnumValue<LienType>> _lienPriorityType;
-        private DirtyValue<StringEnumValue<LoanDocumentationType>> _loanDocumentationType;
-        private DirtyValue<StringEnumValue<LoanRepaymentType>> _loanRepaymentType;
-        private DirtyValue<DateTime?> _loanScheduledClosingDate;
-        private DirtyValue<decimal?> _maximumMonthlyPayment;
-        private DirtyValue<decimal?> _maxLifeInterestCapPercent;
-        private DirtyValue<string> _maxLifeInterestCapPercentUI;
-        private DirtyValue<decimal?> _miCoveragePercent;
-        private DirtyValue<decimal?> _minimumAdvanceAmount;
-        private DirtyValue<decimal?> _minimumAllowableApr;
-        private DirtyValue<decimal?> _minimumDrawPeroidPaymentPercent;
-        private DirtyValue<decimal?> _minimumPaymentAmount;
-        private DirtyValue<decimal?> _minimumPaymentLessThanAmount;
-        private DirtyValue<decimal?> _minimumPaymentPercent;
-        private DirtyValue<decimal?> _minimumPaymentUpbAmount;
-        private DirtyValue<decimal?> _minimumPaymentUpbPercent;
-        private DirtyValue<decimal?> _minimumRepayPeriodPaymentPercent;
-        private DirtyValue<int?> _monthsAppliedToPrepaymentPenaltyFeeCount;
-        private DirtyValue<decimal?> _negativeAmortizationLimitPercent;
-        private DirtyValue<decimal?> _netInitialAndFinal;
-        private DirtyValue<StringEnumValue<NmlsDocumentationType>> _nmlsDocumentationType;
-        private DirtyValue<StringEnumValue<NmlsFirstMortgageType>> _nmlsFirstMortgageType;
-        private DirtyValue<StringEnumValue<NmlsLienStatus>> _nmlsLienStatus;
-        private DirtyValue<StringEnumValue<NmlsLoanType>> _nmlsLoanType;
-        private DirtyValue<bool?> _nmlsOptionARMIndicator;
-        private DirtyValue<bool?> _nmlsPiggyBackOrFundedHELOCIndicator;
-        private DirtyValue<StringEnumValue<NmlsProductionSoldToType>> _nmlsProductionSoldToType;
-        private DirtyValue<StringEnumValue<NmlsPropertyType>> _nmlsPropertyType;
-        private DirtyValue<StringEnumValue<NmlsRefinancePurposeType>> _nmlsRefinancePurposeType;
-        private DirtyValue<StringEnumValue<NmlsReverseMortgageType>> _nmlsReverseMortgageType;
-        private DirtyValue<bool?> _oralRequestForExtensionOfCreditIndicator;
-        private DirtyValue<decimal?> _overLimitCharge;
-        private DirtyValue<decimal?> _overLimitReturnCharge;
-        private DirtyValue<decimal?> _participationFees;
-        private DirtyValue<int?> _paymentAdjustmentDurationMonthsCount;
-        private DirtyValue<decimal?> _paymentAdjustmentPeriodicCapPercent;
-        private DirtyValue<StringEnumValue<PaymentFrequencyType>> _paymentFrequencyType;
-        private DirtyList<PrepaymentPenalty> _prepaymentPenalties;
-        private DirtyValue<StringEnumValue<PrepaymentPenaltyBasedOn>> _prepaymentPenaltyBasedOn;
-        private DirtyValue<bool?> _prepaymentPenaltyIndicator;
-        private DirtyValue<decimal?> _prepaymentPenaltyPercent;
-        private DirtyValue<int?> _prepaymentPenaltyTermMonthsCount;
-        private DirtyValue<StringEnumValue<PrepaymentPenaltyVerbiage>> _prepaymentPenaltyVerbiage;
-        private DirtyValue<string> _productName;
-        private DirtyValue<decimal?> _qualifyingRatePercent;
-        private DirtyValue<int?> _rateAdjustmentDurationMonthsCount;
-        private DirtyValue<decimal?> _rateAdjustmentLifetimeCapPercent;
-        private DirtyValue<decimal?> _rateAdjustmentPercent;
-        private DirtyValue<string> _rateAdjustmentPercentUI;
-        private DirtyValue<decimal?> _rateAdjustmentSubsequentCapPercent;
-        private DirtyValue<string> _rateAdjustmentSubsequentCapPercentUI;
-        private DirtyValue<decimal?> _releaseRecoringCharge;
-        private DirtyValue<decimal?> _remainingBuydownAmount;
-        private DirtyValue<int?> _repayPeriodMonthsCount;
-        private DirtyValue<decimal?> _returnedCheckCharge;
-        private DirtyValue<decimal?> _returnedCheckChargeRatePercent;
-        private DirtyValue<decimal?> _returnedCheckMaxCharge;
-        private DirtyValue<decimal?> _returnedCheckMinCharge;
-        private DirtyValue<decimal?> _roundPercent;
-        private DirtyValue<StringEnumValue<RoundType>> _roundType;
-        private DirtyValue<DateTime?> _scheduledFirstPaymentAdjustmentDate;
-        private DirtyValue<DateTime?> _scheduledFirstPaymentDate;
-        private DirtyValue<decimal?> _stopPaymentCharge;
-        private DirtyValue<int?> _subsequentRateAdjustmentMonthsCount;
-        private DirtyValue<decimal?> _terminationFeeAmount;
-        private DirtyValue<int?> _terminationPeriodMonthsCount;
-        private DirtyValue<decimal?> _thirdPartyFeeFromAmount;
-        private DirtyValue<decimal?> _thirdPartyFeeToAmount;
-        private DirtyValue<decimal?> _timelyPaymentRateReductionPercent;
-        private DirtyValue<StringEnumValue<TimelyPaymentRewards>> _timelyPaymentRewards;
-        private DirtyValue<decimal?> _totalSubsidyAmount;
-        private DirtyValue<decimal?> _transactionFees;
-        private DirtyValue<decimal?> _wireFee;
+        private DirtyValue<decimal?>? _amountApplyToDownPayment;
+        private DirtyValue<decimal?>? _annualFeeNeededAmount;
+        private DirtyValue<bool?>? _applyLifeCapLowIndicator;
+        private DirtyValue<StringEnumValue<IndexMargin>>? _armDisclosureType;
+        private DirtyValue<StringEnumValue<ArmIndexType>>? _armIndexType;
+        private DirtyValue<bool?>? _balloonIndicator;
+        private DirtyValue<int?>? _balloonLoanMaturityTermMonthsCount;
+        private DirtyValue<DateTime?>? _borrowerEstimatedClosingDate;
+        private DirtyValue<string?>? _branchLocationNmlsId;
+        private DirtyValue<string?>? _branchManagerNmlsId;
+        private DirtyList<Buydown>? _buydowns;
+        private DirtyValue<bool?>? _convertibleIndicator;
+        private DirtyValue<StringEnumValue<IsOrIsNot>>? _discounted;
+        private DirtyValue<decimal?>? _discountedRate;
+        private DirtyValue<int?>? _drawPeriodMonthsCount;
+        private DirtyValue<bool?>? _escrowWaiverIndicator;
+        private DirtyValue<bool?>? _excludeLoanFromNMLSReportIndicator;
+        private DirtyValue<StringEnumValue<FloorBasis>>? _floorBasis;
+        private DirtyValue<decimal?>? _floorPercent;
+        private DirtyValue<string?>? _floorPercentUI;
+        private DirtyValue<StringEnumValue<FloorVerbiage>>? _floorVerbiage;
+        private DirtyValue<string?>? _fnmProductPlanIdentifier;
+        private DirtyValue<StringEnumValue<FreddieMacArmIndexType>>? _freddieMacArmIndexType;
+        private DirtyValue<StringEnumValue<FreOfferingIdentifier>>? _freOfferingIdentifier;
+        private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>>? _fullPrepaymentPenaltyOptionType;
+        private DirtyValue<StringEnumValue<ProjectType>>? _gseProjectClassificationType;
+        private DirtyValue<StringEnumValue<PropertyType>>? _gsePropertyType;
+        private DirtyValue<int?>? _hardPrepaymentPenaltyMonths;
+        private DirtyValue<decimal?>? _helocAutoDebitDiscount;
+        private DirtyValue<bool?>? _helocAutoDebitFeature;
+        private DirtyValue<StringEnumValue<HelocCalcSign>>? _helocCalcSign;
+        private DirtyValue<decimal?>? _helocDailyPeriodicRate;
+        private DirtyValue<int?>? _helocDrawExtensionMonths;
+        private DirtyValue<int?>? _helocDrawFractionBalancedividend;
+        private DirtyValue<int?>? _helocDrawFractionBalancedivisor;
+        private DirtyValue<bool?>? _helocDrawPaymentBasis;
+        private DirtyValue<StringEnumValue<PaymentBasisType>>? _helocDrawPaymentBasisType;
+        private DirtyValue<bool?>? _helocEscrowAccountIndicator;
+        private DirtyValue<bool?>? _helocForceMinimumPayment;
+        private DirtyValue<int?>? _helocFractionBalancedividend;
+        private DirtyValue<int?>? _helocFractionBalancedivisor;
+        private DirtyList<HelocHistoricalIndexYearSetting>? _helocHistoricalIndexYearSettings;
+        private DirtyValue<int?>? _helocHistoricalTableDayIndex;
+        private DirtyValue<decimal?>? _helocHistoricalTableDefaultMargin;
+        private DirtyValue<int?>? _helocHistoricalTableMonthIndex;
+        private DirtyValue<string?>? _helocHistoricalTableName;
+        private DirtyValue<StringEnumValue<HelocBalance>>? _helocInitialBalanceUsed;
+        private DirtyValue<StringEnumValue<HelocCalcSign>>? _helocInitialCalcSign;
+        private DirtyValue<bool?>? _helocInitialForceMinimumPayment;
+        private DirtyValue<int?>? _helocInitialFractionBalancedividend;
+        private DirtyValue<int?>? _helocInitialFractionBalancedivisor;
+        private DirtyValue<StringEnumValue<HelocPaymentBasis>>? _helocInitialPaymentBasis;
+        private DirtyValue<StringEnumValue<PaymentBasisType>>? _helocInitialPaymentBasisType;
+        private DirtyValue<decimal?>? _helocInitialPercent;
+        private DirtyValue<decimal?>? _helocInitialPercentageofBalance;
+        private DirtyValue<bool?>? _helocInitialPI;
+        private DirtyValue<StringEnumValue<HelocInitialRate>>? _helocInitialRate;
+        private DirtyValue<int?>? _helocInitialTerm;
+        private DirtyValue<StringEnumValue<PerDiemCalculationMethodType>>? _helocInitPerDiemCalculationMethodType;
+        private DirtyValue<decimal?>? _helocInstallmentLoanAPR;
+        private DirtyValue<decimal?>? _helocInstallmentLoanFinanceCharge;
+        private DirtyValue<decimal?>? _helocInstallmentLoanMargin;
+        private DirtyValue<decimal?>? _helocInstallmentLoanMaxAPR;
+        private DirtyValue<decimal?>? _helocInstallmentLoanMinAPR;
+        private DirtyValue<bool?>? _helocInstallmentLoanOptionIndicator;
+        private DirtyValue<int?>? _helocInstallmentLoanTermYearFrom;
+        private DirtyValue<int?>? _helocInstallmentLoanTermYearTo;
+        private DirtyValue<bool?>? _helocInterestOnly;
+        private DirtyValue<StringEnumValue<LienPosition>>? _hELOCLienPosition;
+        private DirtyValue<int?>? _helocMaxOpenInstallmentLoans;
+        private DirtyValue<decimal?>? _helocMinimumInitialAdvancePercent;
+        private DirtyValue<bool?>? _helocMinimumInitialAdvanceRequiredIndicator;
+        private DirtyValue<decimal?>? _helocMinimumSubsequentAdvanceAmount;
+        private DirtyValue<decimal?>? _helocMinimumSubsequentAdvancePercent;
+        private DirtyValue<decimal?>? _helocMinInstallmentLoanAmount;
+        private DirtyValue<decimal?>? _helocMonthlyPeriodicRate;
+        private DirtyValue<decimal?>? _helocNewFinancingNotLinkedCreditLimit;
+        private DirtyValue<decimal?>? _helocNewFinancingNotLinkedDrawAmount;
+        private DirtyValue<decimal?>? _helocPaperBillingFee;
+        private DirtyValue<StringEnumValue<HelocPaymentBasis>>? _helocPaymentBasis;
+        private DirtyValue<StringEnumValue<PaymentBasisType>>? _helocPaymentBasisType;
+        private DirtyValue<decimal?>? _helocPercent;
+        private DirtyValue<decimal?>? _helocPercentageofBalance;
+        private DirtyValue<StringEnumValue<HelocPeriodicRateIndicator>>? _helocPeriodicRateIndicator;
+        private DirtyValue<string?>? _helocPeriodTemplateName;
+        private DirtyValue<decimal?>? _helocPhotocopyFee;
+        private DirtyValue<StringEnumValue<HelocBalance>>? _helocQualifyingBalance;
+        private DirtyValue<int?>? _helocQualifyingTerm;
+        private DirtyValue<StringEnumValue<HelocRate>>? _helocRate;
+        private DirtyValue<string?>? _helocRefundableFee;
+        private DirtyValue<bool?>? _helocRepaymentBasis;
+        private DirtyValue<StringEnumValue<PaymentBasisType>>? _helocRepaymentBasisType;
+        private DirtyList<HelocRepaymentDrawPeriod>? _helocRepaymentDrawPeriods;
+        private DirtyValue<int?>? _helocRepaymentFractionBalancedividend;
+        private DirtyValue<int?>? _helocRepaymentFractionBalancedivisor;
+        private DirtyValue<bool?>? _helocRepaymentInterestOnlyIndicator;
+        private DirtyValue<decimal?>? _helocRepaymentMinPayment;
+        private DirtyValue<decimal?>? _helocResearchFee;
+        private DirtyValue<bool?>? _helocStandardHistoricalTableIndicator;
+        private DirtyValue<bool?>? _helocTAALNonDepositoryIndicator;
+        private DirtyValue<StringEnumValue<HelocTAAPPChangeOption>>? _helocTAAPPChangeOption;
+        private DirtyValue<StringEnumValue<HelocTAAPPRoundingOption>>? _helocTAAPPRoundingOption;
+        private DirtyValue<decimal?>? _helocTAAPRCharged;
+        private DirtyValue<bool?>? _helocTACreditCardIndicator;
+        private DirtyValue<string?>? _helocTACreditCardMisuseNotificationAddr;
+        private DirtyValue<string?>? _helocTACreditCardMisuseNotificationEmailAddr;
+        private DirtyValue<string?>? _helocTACreditCardMisuseNotificationPhoneNumber;
+        private DirtyValue<string?>? _helocTACreditCardMisuseNotificationWebAddr;
+        private DirtyValue<StringEnumValue<HelocTADailyBalanceType>>? _helocTADailyBalanceType;
+        private DirtyValue<StringEnumValue<HelocTADailyRateRoundingOption>>? _helocTADailyRateRoundingOption;
+        private DirtyValue<StringEnumValue<HelocTADrawCheckIndicator>>? _helocTADrawCheckIndicator;
+        private DirtyValue<string?>? _helocTAFeesCharged;
+        private DirtyValue<StringEnumValue<HelocTAIndexRefDateOption>>? _helocTAIndexRefDateOption;
+        private DirtyValue<StringEnumValue<HelocTAInstallmentIndexRefDateOption>>? _helocTAInstallmentIndexRefDateOption;
+        private DirtyValue<bool?>? _helocTAInstallmentLoanDiscountedAPRIndicator;
+        private DirtyValue<string?>? _helocTAInstallmentLoanDiscountWord;
+        private DirtyValue<string?>? _helocTAInstallmentLoanPaymentAppliedMethod;
+        private DirtyValue<decimal?>? _helocTAInstallmentLoanPeriodicRateRoundingPercent;
+        private DirtyValue<string?>? _helocTAInstallmentLoanTerminationMethod;
+        private DirtyValue<StringEnumValue<HelocTAIntroRateAppliedOn>>? _helocTAIntroRateAppliedOn;
+        private DirtyValue<string?>? _helocTALenderToPay3rdPartyCost;
+        private DirtyValue<bool?>? _helocTAOverdraftProtectionIndicator;
+        private DirtyValue<StringEnumValue<HelocTAOverLimitChargeOption>>? _helocTAOverLimitChargeOption;
+        private DirtyValue<bool?>? _helocTAPeriodicCapAppliedToAdvancePeriod;
+        private DirtyValue<bool?>? _helocTAPeriodicCapAppliedToRepaymentPeriod;
+        private DirtyValue<StringEnumValue<HelocTAPeriodicRateAdjDayOption>>? _helocTAPeriodicRateAdjDayOption;
+        private DirtyValue<StringEnumValue<HelocTARepaymentTermEndBy>>? _helocTARepaymentTermEndBy;
+        private DirtyValue<bool?>? _helocTARequestAdvanceInPersonIndicator;
+        private DirtyValue<string?>? _helocTARequestAdvanceInPersonLocation;
+        private DirtyValue<bool?>? _helocTARequestAdvanceViaInternetIndicator;
+        private DirtyValue<string?>? _helocTARequestAdvanceViaInternetURL;
+        private DirtyValue<bool?>? _helocTARequestByPhoneIndicator;
+        private DirtyValue<bool?>? _helocTARequireRepayIndicator;
+        private DirtyValue<bool?>? _helocTARightToSetoffIndicator;
+        private DirtyValue<bool?>? _helocTAWrittenAuthorizationIndicator;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _indexCurrentValuePercent;
+        private DirtyValue<StringEnumValue<IndexLookbackPeriod>>? _indexLookbackPeriod;
+        private DirtyValue<decimal?>? _indexMarginPercent;
+        private DirtyValue<string?>? _indexMarginPercentUI;
+        private DirtyValue<decimal?>? _initialAdvanceAmount;
+        private DirtyValue<decimal?>? _initialApplicationAmount;
+        private DirtyValue<bool?>? _inquiryOrPreQualificationIndicator;
+        private DirtyValue<StringEnumValue<LienType>>? _lienPriorityType;
+        private DirtyValue<StringEnumValue<LoanDocumentationType>>? _loanDocumentationType;
+        private DirtyValue<StringEnumValue<LoanRepaymentType>>? _loanRepaymentType;
+        private DirtyValue<DateTime?>? _loanScheduledClosingDate;
+        private DirtyValue<decimal?>? _maximumMonthlyPayment;
+        private DirtyValue<decimal?>? _maxLifeInterestCapPercent;
+        private DirtyValue<string?>? _maxLifeInterestCapPercentUI;
+        private DirtyValue<decimal?>? _miCoveragePercent;
+        private DirtyValue<decimal?>? _minimumAdvanceAmount;
+        private DirtyValue<decimal?>? _minimumAllowableApr;
+        private DirtyValue<decimal?>? _minimumDrawPeroidPaymentPercent;
+        private DirtyValue<decimal?>? _minimumPaymentAmount;
+        private DirtyValue<decimal?>? _minimumPaymentLessThanAmount;
+        private DirtyValue<decimal?>? _minimumPaymentPercent;
+        private DirtyValue<decimal?>? _minimumPaymentUpbAmount;
+        private DirtyValue<decimal?>? _minimumPaymentUpbPercent;
+        private DirtyValue<decimal?>? _minimumRepayPeriodPaymentPercent;
+        private DirtyValue<int?>? _monthsAppliedToPrepaymentPenaltyFeeCount;
+        private DirtyValue<decimal?>? _negativeAmortizationLimitPercent;
+        private DirtyValue<decimal?>? _netInitialAndFinal;
+        private DirtyValue<StringEnumValue<NmlsDocumentationType>>? _nmlsDocumentationType;
+        private DirtyValue<StringEnumValue<NmlsFirstMortgageType>>? _nmlsFirstMortgageType;
+        private DirtyValue<StringEnumValue<NmlsLienStatus>>? _nmlsLienStatus;
+        private DirtyValue<StringEnumValue<NmlsLoanType>>? _nmlsLoanType;
+        private DirtyValue<bool?>? _nmlsOptionARMIndicator;
+        private DirtyValue<bool?>? _nmlsPiggyBackOrFundedHELOCIndicator;
+        private DirtyValue<StringEnumValue<NmlsProductionSoldToType>>? _nmlsProductionSoldToType;
+        private DirtyValue<StringEnumValue<NmlsPropertyType>>? _nmlsPropertyType;
+        private DirtyValue<StringEnumValue<NmlsRefinancePurposeType>>? _nmlsRefinancePurposeType;
+        private DirtyValue<StringEnumValue<NmlsReverseMortgageType>>? _nmlsReverseMortgageType;
+        private DirtyValue<bool?>? _oralRequestForExtensionOfCreditIndicator;
+        private DirtyValue<decimal?>? _overLimitCharge;
+        private DirtyValue<decimal?>? _overLimitReturnCharge;
+        private DirtyValue<decimal?>? _participationFees;
+        private DirtyValue<int?>? _paymentAdjustmentDurationMonthsCount;
+        private DirtyValue<decimal?>? _paymentAdjustmentPeriodicCapPercent;
+        private DirtyValue<StringEnumValue<PaymentFrequencyType>>? _paymentFrequencyType;
+        private DirtyList<PrepaymentPenalty>? _prepaymentPenalties;
+        private DirtyValue<StringEnumValue<PrepaymentPenaltyBasedOn>>? _prepaymentPenaltyBasedOn;
+        private DirtyValue<bool?>? _prepaymentPenaltyIndicator;
+        private DirtyValue<decimal?>? _prepaymentPenaltyPercent;
+        private DirtyValue<int?>? _prepaymentPenaltyTermMonthsCount;
+        private DirtyValue<StringEnumValue<PrepaymentPenaltyVerbiage>>? _prepaymentPenaltyVerbiage;
+        private DirtyValue<string?>? _productName;
+        private DirtyValue<decimal?>? _qualifyingRatePercent;
+        private DirtyValue<int?>? _rateAdjustmentDurationMonthsCount;
+        private DirtyValue<decimal?>? _rateAdjustmentLifetimeCapPercent;
+        private DirtyValue<decimal?>? _rateAdjustmentPercent;
+        private DirtyValue<string?>? _rateAdjustmentPercentUI;
+        private DirtyValue<decimal?>? _rateAdjustmentSubsequentCapPercent;
+        private DirtyValue<string?>? _rateAdjustmentSubsequentCapPercentUI;
+        private DirtyValue<decimal?>? _releaseRecoringCharge;
+        private DirtyValue<decimal?>? _remainingBuydownAmount;
+        private DirtyValue<int?>? _repayPeriodMonthsCount;
+        private DirtyValue<decimal?>? _returnedCheckCharge;
+        private DirtyValue<decimal?>? _returnedCheckChargeRatePercent;
+        private DirtyValue<decimal?>? _returnedCheckMaxCharge;
+        private DirtyValue<decimal?>? _returnedCheckMinCharge;
+        private DirtyValue<decimal?>? _roundPercent;
+        private DirtyValue<StringEnumValue<RoundType>>? _roundType;
+        private DirtyValue<DateTime?>? _scheduledFirstPaymentAdjustmentDate;
+        private DirtyValue<DateTime?>? _scheduledFirstPaymentDate;
+        private DirtyValue<decimal?>? _stopPaymentCharge;
+        private DirtyValue<int?>? _subsequentRateAdjustmentMonthsCount;
+        private DirtyValue<decimal?>? _terminationFeeAmount;
+        private DirtyValue<int?>? _terminationPeriodMonthsCount;
+        private DirtyValue<decimal?>? _thirdPartyFeeFromAmount;
+        private DirtyValue<decimal?>? _thirdPartyFeeToAmount;
+        private DirtyValue<decimal?>? _timelyPaymentRateReductionPercent;
+        private DirtyValue<StringEnumValue<TimelyPaymentRewards>>? _timelyPaymentRewards;
+        private DirtyValue<decimal?>? _totalSubsidyAmount;
+        private DirtyValue<decimal?>? _transactionFees;
+        private DirtyValue<decimal?>? _wireFee;
 
         /// <summary>
         /// HELOC Amount Apply To Down Payment [4493]
@@ -273,16 +274,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NMLS Branch Location NMLS ID [NMLS.X9]
         /// </summary>
-        public string BranchLocationNmlsId { get => _branchLocationNmlsId; set => SetField(ref _branchLocationNmlsId, value); }
+        public string? BranchLocationNmlsId { get => _branchLocationNmlsId; set => SetField(ref _branchLocationNmlsId, value); }
 
         /// <summary>
         /// NMLS Branch Manager NMLS ID [NMLS.X8]
         /// </summary>
-        public string BranchManagerNmlsId { get => _branchManagerNmlsId; set => SetField(ref _branchManagerNmlsId, value); }
+        public string? BranchManagerNmlsId { get => _branchManagerNmlsId; set => SetField(ref _branchManagerNmlsId, value); }
 
         /// <summary>
         /// LoanProductData Buydowns
         /// </summary>
+        [AllowNull]
         public IList<Buydown> Buydowns { get => GetField(ref _buydowns); set => SetField(ref _buydowns, value); }
 
         /// <summary>
@@ -332,7 +334,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info ARM Floor Rate - Display field with KBYO rounding rules [KBYO.XD1699]
         /// </summary>
-        public string FloorPercentUI { get => _floorPercentUI; set => SetField(ref _floorPercentUI, value); }
+        public string? FloorPercentUI { get => _floorPercentUI; set => SetField(ref _floorPercentUI, value); }
 
         /// <summary>
         /// ARM Floor Verbiage Type [ARM.FlrVerbgTyp]
@@ -342,7 +344,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Amort Type ARM Descr [995]
         /// </summary>
-        public string FnmProductPlanIdentifier { get => _fnmProductPlanIdentifier; set => SetField(ref _fnmProductPlanIdentifier, value); }
+        public string? FnmProductPlanIdentifier { get => _fnmProductPlanIdentifier; set => SetField(ref _fnmProductPlanIdentifier, value); }
 
         /// <summary>
         /// Freddie Mac Lender ARM Index [CASASRN.X135]
@@ -449,6 +451,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProductData HelocHistoricalIndexYearSettings
         /// </summary>
+        [AllowNull]
         public IList<HelocHistoricalIndexYearSetting> HelocHistoricalIndexYearSettings { get => GetField(ref _helocHistoricalIndexYearSettings); set => SetField(ref _helocHistoricalIndexYearSettings, value); }
 
         /// <summary>
@@ -470,7 +473,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Historical Table Name [4629]
         /// </summary>
-        public string HelocHistoricalTableName { get => _helocHistoricalTableName; set => SetField(ref _helocHistoricalTableName, value); }
+        public string? HelocHistoricalTableName { get => _helocHistoricalTableName; set => SetField(ref _helocHistoricalTableName, value); }
 
         /// <summary>
         /// Heloc Initial Balance Used [4484]
@@ -688,7 +691,7 @@ namespace EncompassRest.Loans
         /// HELOC Period Template Name [1985]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string HelocPeriodTemplateName { get => _helocPeriodTemplateName; set => SetField(ref _helocPeriodTemplateName, value); }
+        public string? HelocPeriodTemplateName { get => _helocPeriodTemplateName; set => SetField(ref _helocPeriodTemplateName, value); }
 
         /// <summary>
         /// HELOC Photocopy Fee [4589]
@@ -714,7 +717,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Refundable Fee [4591]
         /// </summary>
-        public string HelocRefundableFee { get => _helocRefundableFee; set => SetField(ref _helocRefundableFee, value); }
+        public string? HelocRefundableFee { get => _helocRefundableFee; set => SetField(ref _helocRefundableFee, value); }
 
         /// <summary>
         /// HELOC Repayment Basis [4568]
@@ -730,6 +733,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProductData HelocRepaymentDrawPeriods
         /// </summary>
+        [AllowNull]
         public IList<HelocRepaymentDrawPeriod> HelocRepaymentDrawPeriods { get => GetField(ref _helocRepaymentDrawPeriods); set => SetField(ref _helocRepaymentDrawPeriods, value); }
 
         /// <summary>
@@ -795,22 +799,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Unauthorized Use of Credit Card notification address [4625]
         /// </summary>
-        public string HelocTACreditCardMisuseNotificationAddr { get => _helocTACreditCardMisuseNotificationAddr; set => SetField(ref _helocTACreditCardMisuseNotificationAddr, value); }
+        public string? HelocTACreditCardMisuseNotificationAddr { get => _helocTACreditCardMisuseNotificationAddr; set => SetField(ref _helocTACreditCardMisuseNotificationAddr, value); }
 
         /// <summary>
         /// Unauthorized Use of Credit Card email address [4628]
         /// </summary>
-        public string HelocTACreditCardMisuseNotificationEmailAddr { get => _helocTACreditCardMisuseNotificationEmailAddr; set => SetField(ref _helocTACreditCardMisuseNotificationEmailAddr, value); }
+        public string? HelocTACreditCardMisuseNotificationEmailAddr { get => _helocTACreditCardMisuseNotificationEmailAddr; set => SetField(ref _helocTACreditCardMisuseNotificationEmailAddr, value); }
 
         /// <summary>
         /// Unauthorized Use of Credit Card notification toll free phone number [4626]
         /// </summary>
-        public string HelocTACreditCardMisuseNotificationPhoneNumber { get => _helocTACreditCardMisuseNotificationPhoneNumber; set => SetField(ref _helocTACreditCardMisuseNotificationPhoneNumber, value); }
+        public string? HelocTACreditCardMisuseNotificationPhoneNumber { get => _helocTACreditCardMisuseNotificationPhoneNumber; set => SetField(ref _helocTACreditCardMisuseNotificationPhoneNumber, value); }
 
         /// <summary>
         /// Unauthorized Use of Credit Card web address [4627]
         /// </summary>
-        public string HelocTACreditCardMisuseNotificationWebAddr { get => _helocTACreditCardMisuseNotificationWebAddr; set => SetField(ref _helocTACreditCardMisuseNotificationWebAddr, value); }
+        public string? HelocTACreditCardMisuseNotificationWebAddr { get => _helocTACreditCardMisuseNotificationWebAddr; set => SetField(ref _helocTACreditCardMisuseNotificationWebAddr, value); }
 
         /// <summary>
         /// Finance charges on your Credit Account determined by applying [4608]
@@ -830,7 +834,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees charged to borrower to use the HELOC account (what and when) [4594]
         /// </summary>
-        public string HelocTAFeesCharged { get => _helocTAFeesCharged; set => SetField(ref _helocTAFeesCharged, value); }
+        public string? HelocTAFeesCharged { get => _helocTAFeesCharged; set => SetField(ref _helocTAFeesCharged, value); }
 
         /// <summary>
         /// Index Reference date options [4609]
@@ -850,12 +854,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Installment Loan - word to use to replace "discount" [4617]
         /// </summary>
-        public string HelocTAInstallmentLoanDiscountWord { get => _helocTAInstallmentLoanDiscountWord; set => SetField(ref _helocTAInstallmentLoanDiscountWord, value); }
+        public string? HelocTAInstallmentLoanDiscountWord { get => _helocTAInstallmentLoanDiscountWord; set => SetField(ref _helocTAInstallmentLoanDiscountWord, value); }
 
         /// <summary>
         /// Installment loan payments applied method  [4620]
         /// </summary>
-        public string HelocTAInstallmentLoanPaymentAppliedMethod { get => _helocTAInstallmentLoanPaymentAppliedMethod; set => SetField(ref _helocTAInstallmentLoanPaymentAppliedMethod, value); }
+        public string? HelocTAInstallmentLoanPaymentAppliedMethod { get => _helocTAInstallmentLoanPaymentAppliedMethod; set => SetField(ref _helocTAInstallmentLoanPaymentAppliedMethod, value); }
 
         /// <summary>
         /// Installment Loan Periodic Rate Rounding Percentage [4615]
@@ -866,7 +870,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Installment Loan Termination Method [4619]
         /// </summary>
-        public string HelocTAInstallmentLoanTerminationMethod { get => _helocTAInstallmentLoanTerminationMethod; set => SetField(ref _helocTAInstallmentLoanTerminationMethod, value); }
+        public string? HelocTAInstallmentLoanTerminationMethod { get => _helocTAInstallmentLoanTerminationMethod; set => SetField(ref _helocTAInstallmentLoanTerminationMethod, value); }
 
         /// <summary>
         /// Intro Rate applied if monthly periodic rate is used [4595]
@@ -876,7 +880,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lender will pay the following third-party closing costs at closing [4622]
         /// </summary>
-        public string HelocTALenderToPay3rdPartyCost { get => _helocTALenderToPay3rdPartyCost; set => SetField(ref _helocTALenderToPay3rdPartyCost, value); }
+        public string? HelocTALenderToPay3rdPartyCost { get => _helocTALenderToPay3rdPartyCost; set => SetField(ref _helocTALenderToPay3rdPartyCost, value); }
 
         /// <summary>
         /// HELOC Draw Option: Overdraft Protection [4602]
@@ -916,7 +920,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Request an Advance by Written Authorization: In Person location [4605]
         /// </summary>
-        public string HelocTARequestAdvanceInPersonLocation { get => _helocTARequestAdvanceInPersonLocation; set => SetField(ref _helocTARequestAdvanceInPersonLocation, value); }
+        public string? HelocTARequestAdvanceInPersonLocation { get => _helocTARequestAdvanceInPersonLocation; set => SetField(ref _helocTARequestAdvanceInPersonLocation, value); }
 
         /// <summary>
         /// Request an Advance by Written Authorization: Via the Internet [4604]
@@ -926,7 +930,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Request an Advance by Written Authorization: Written Authoirzation web address [4606]
         /// </summary>
-        public string HelocTARequestAdvanceViaInternetURL { get => _helocTARequestAdvanceViaInternetURL; set => SetField(ref _helocTARequestAdvanceViaInternetURL, value); }
+        public string? HelocTARequestAdvanceViaInternetURL { get => _helocTARequestAdvanceViaInternetURL; set => SetField(ref _helocTARequestAdvanceViaInternetURL, value); }
 
         /// <summary>
         /// HELOC Draw Option: Request by Phone [4599]
@@ -951,7 +955,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProductData Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Loan Info ARM Index [688]
@@ -973,7 +977,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info ARM Margin - Display field with KBYO rounding rules [KBYO.XD689]
         /// </summary>
-        public string IndexMarginPercentUI { get => _indexMarginPercentUI; set => SetField(ref _indexMarginPercentUI, value); }
+        public string? IndexMarginPercentUI { get => _indexMarginPercentUI; set => SetField(ref _indexMarginPercentUI, value); }
 
         /// <summary>
         /// HELOC Initial Advance [1888]
@@ -1029,7 +1033,7 @@ namespace EncompassRest.Loans
         /// Loan Info ARM Max Life Interest Cap - Display field with KBYO rounding rules [KBYO.XD2625]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string MaxLifeInterestCapPercentUI { get => _maxLifeInterestCapPercentUI; set => SetField(ref _maxLifeInterestCapPercentUI, value); }
+        public string? MaxLifeInterestCapPercentUI { get => _maxLifeInterestCapPercentUI; set => SetField(ref _maxLifeInterestCapPercentUI, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Coverage Factor [430]
@@ -1202,6 +1206,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProductData PrepaymentPenalties
         /// </summary>
+        [AllowNull]
         public IList<PrepaymentPenalty> PrepaymentPenalties { get => GetField(ref _prepaymentPenalties); set => SetField(ref _prepaymentPenalties, value); }
 
         /// <summary>
@@ -1234,7 +1239,7 @@ namespace EncompassRest.Loans
         /// Fannie Mae Product Name [MORNET.X66]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ProductName { get => _productName; set => SetField(ref _productName, value); }
+        public string? ProductName { get => _productName; set => SetField(ref _productName, value); }
 
         /// <summary>
         /// Trans Details Qual Rate [1014]
@@ -1262,7 +1267,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info ARM First Rate Adj Cap - Display fields with KBYO rounding rules [KBYO.XD697]
         /// </summary>
-        public string RateAdjustmentPercentUI { get => _rateAdjustmentPercentUI; set => SetField(ref _rateAdjustmentPercentUI, value); }
+        public string? RateAdjustmentPercentUI { get => _rateAdjustmentPercentUI; set => SetField(ref _rateAdjustmentPercentUI, value); }
 
         /// <summary>
         /// Loan Info ARM Rate Cap [695]
@@ -1273,7 +1278,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info ARM Rate Cap - Display fields with KBYO rounding rules [KBYO.XD695]
         /// </summary>
-        public string RateAdjustmentSubsequentCapPercentUI { get => _rateAdjustmentSubsequentCapPercentUI; set => SetField(ref _rateAdjustmentSubsequentCapPercentUI, value); }
+        public string? RateAdjustmentSubsequentCapPercentUI { get => _rateAdjustmentSubsequentCapPercentUI; set => SetField(ref _rateAdjustmentSubsequentCapPercentUI, value); }
 
         /// <summary>
         /// HELOC Release Recording Charge [HELOC.RlsRecgChg]

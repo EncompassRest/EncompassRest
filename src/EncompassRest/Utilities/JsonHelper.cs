@@ -69,7 +69,7 @@ namespace EncompassRest.Utilities
 
         public static object FromJson(string json) => FromJson(json, null);
 
-        public static object FromJson(string json, Type type)
+        public static object FromJson(string json, Type? type)
         {
             using (var reader = new StringReader(json))
             {
@@ -81,7 +81,7 @@ namespace EncompassRest.Utilities
 
         public static object FromJson(TextReader reader) => FromJson(reader, null);
 
-        public static object FromJson(TextReader reader, Type type) => DefaultDirtySerializer.Deserialize(reader, type);
+        public static object FromJson(TextReader reader, Type? type) => DefaultDirtySerializer.Deserialize(reader, type);
 
         public static void PopulateFromJson(string json, object target)
         {
@@ -119,7 +119,7 @@ namespace EncompassRest.Utilities
             }
         }
 
-        private static void PopulateObject(JObject jObject, JsonObjectContract objectContract, ExtensibleObject source, ExtensibleObject target)
+        private static void PopulateObject(JObject jObject, JsonObjectContract objectContract, ExtensibleObject? source, ExtensibleObject target)
         {
             var targetExtensionData = target.ExtensionData;
             foreach (var jProperty in jObject.Properties())
@@ -133,9 +133,9 @@ namespace EncompassRest.Utilities
                 {
                     var propertyValueProvider = property.ValueProvider;
                     var valueProvider = InternalPrivateContractResolver.GetBackingFieldInfo(objectContract.UnderlyingType, property.UnderlyingName)?.ValueProvider ?? propertyValueProvider;
-                    var targetValue = valueProvider.GetValue(target);
+                    object? targetValue = valueProvider.GetValue(target);
                     targetValue = targetValue is IValue tv ? tv.Value : targetValue;
-                    var sourceValue = valueProvider.GetValue(source);
+                    object? sourceValue = valueProvider.GetValue(source);
                     sourceValue = sourceValue is IValue sv ? sv.Value : sourceValue;
                     var value = jProperty.Value;
                     var setValue = true;
@@ -228,27 +228,27 @@ namespace EncompassRest.Utilities
                 var sourceEnumerable = (IEnumerable<DirtyExtensibleObject>)source;
                 for (var i = target.Count - 1; i >= 0; --i)
                 {
-                    var targetItem = (DirtyExtensibleObject)target[i];
-                    var id = ((IIdentifiable)targetItem)?.Id;
-                    if (!string.IsNullOrEmpty(id) && Extensions.IndexOf(sourceEnumerable, id) < 0)
+                    var targetItem = (DirtyExtensibleObject?)target[i];
+                    var id = ((IIdentifiable?)targetItem)?.Id;
+                    if (!string.IsNullOrEmpty(id) && Extensions.IndexOf(sourceEnumerable, id!) < 0)
                     {
                         target.RemoveAt(i);
-                        targetItem.ClearPropertyChangedEvent();
+                        targetItem!.ClearPropertyChangedEvent();
                     }
                 }
                 for (var i = 0; i < source.Count; ++i)
                 {
-                    var sourceItem = (DirtyExtensibleObject)source[i];
+                    var sourceItem = (DirtyExtensibleObject?)source[i];
                     if (i == target.Count)
                     {
                         target.Add(sourceItem);
                     }
                     else
                     {
-                        DirtyExtensibleObject existing = null;
-                        var id = ((IIdentifiable)sourceItem)?.Id;
+                        DirtyExtensibleObject? existing;
+                        var id = ((IIdentifiable?)sourceItem)?.Id;
                         int index;
-                        if (!string.IsNullOrEmpty(id) && (index = Extensions.IndexOf(targetEnumerable, id)) >= i)
+                        if (!string.IsNullOrEmpty(id) && (index = Extensions.IndexOf(targetEnumerable, id!)) >= i)
                         {
                             existing = (DirtyExtensibleObject)target[index];
                             for (var j = i; j < index; ++j)
@@ -291,9 +291,9 @@ namespace EncompassRest.Utilities
 
         public static string ToJson<T>(this T value) => ToJson(value, TypeData<T>.Type);
 
-        public static string ToJson(object value) => ToJson(value, (Type)null);
+        public static string ToJson(object? value) => ToJson(value, (Type?)null);
 
-        public static string ToJson(object value, Type type)
+        public static string ToJson(object? value, Type? type)
         {
             using (var writer = new StringWriter(new StringBuilder(256), CultureInfo.InvariantCulture))
             {
@@ -304,9 +304,9 @@ namespace EncompassRest.Utilities
 
         public static void ToJson<T>(T value, TextWriter writer) => ToJson(value, TypeData<T>.Type, writer);
 
-        public static void ToJson(object value, TextWriter writer) => ToJson(value, null, writer);
+        public static void ToJson(object? value, TextWriter writer) => ToJson(value, null, writer);
 
-        public static void ToJson(object value, Type type, TextWriter writer) => DefaultDirtySerializer.Serialize(writer, value, type);
+        public static void ToJson(object? value, Type? type, TextWriter writer) => DefaultDirtySerializer.Serialize(writer, value, type);
 
         public static T Clone<T>(this JsonSerializer jsonSerializer, T value)
         {
@@ -351,7 +351,7 @@ namespace EncompassRest.Utilities
         {
             protected static readonly JsonConverter DefaultEnumConverter = new EnumJsonConverter(EnumJsonConverter.CamelCaseNameFormat);
 
-            private static readonly ConcurrentDictionary<Type, ConcurrentDictionary<string, BackingFieldInfo>> s_backingFieldProviders = new ConcurrentDictionary<Type, ConcurrentDictionary<string, BackingFieldInfo>>();
+            private static readonly ConcurrentDictionary<Type, ConcurrentDictionary<string, BackingFieldInfo?>> s_backingFieldProviders = new ConcurrentDictionary<Type, ConcurrentDictionary<string, BackingFieldInfo?>>();
 
             public CustomContractResolver()
             {
@@ -375,7 +375,7 @@ namespace EncompassRest.Utilities
 
             protected abstract void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo);
 
-            protected override JsonConverter ResolveContractConverter(Type objectType)
+            protected override JsonConverter? ResolveContractConverter(Type objectType)
             {
                 var typeData = TypeData.Get(objectType);
                 var typeInfo = typeData.TypeInfo;
@@ -427,9 +427,9 @@ namespace EncompassRest.Utilities
                 return valueProvider;
             }
 
-            internal BackingFieldInfo GetBackingFieldInfo(Type type, string propertyName)
+            internal BackingFieldInfo? GetBackingFieldInfo(Type type, string propertyName)
             {
-                var propertyBackingFields = s_backingFieldProviders.GetOrAdd(type, t => new ConcurrentDictionary<string, BackingFieldInfo>());
+                var propertyBackingFields = s_backingFieldProviders.GetOrAdd(type, t => new ConcurrentDictionary<string, BackingFieldInfo?>());
                 return propertyBackingFields.GetOrAdd(propertyName, n =>
                 {
                     var backingFieldName = $"_{char.ToLower(n[0])}{n.Substring(1)}";
@@ -480,7 +480,7 @@ namespace EncompassRest.Utilities
                 }
             }
 
-            protected override JsonConverter ResolveContractConverter(Type objectType)
+            protected override JsonConverter? ResolveContractConverter(Type objectType)
             {
                 var typeData = TypeData.Get(objectType);
                 var typeInfo = typeData.TypeInfo;
@@ -504,7 +504,7 @@ namespace EncompassRest.Utilities
                 var objectTypeInfo = objectType.GetTypeInfo();
                 if (TypeData<ExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                 {
-                    contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object>)((ExtensibleObject)o).ExtensionData).GetDirtyItems().Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
+                    contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object?>)((ExtensibleObject)o).ExtensionData).GetDirtyItems().Select(p => KeyValuePair.Create((object)p.Key, p.Value));
                     contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
                     if (TypeData<DirtyExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                     {
@@ -533,7 +533,7 @@ namespace EncompassRest.Utilities
                 var entityAttribute = objectTypeInfo.GetCustomAttribute<EntityAttribute>(false);
                 if (entityAttribute != null && !string.IsNullOrEmpty(entityAttribute.PropertiesToAlwaysSerialize))
                 {
-                    var propertiesToAlwaysSerialize = entityAttribute.PropertiesToAlwaysSerialize.Split(',');
+                    var propertiesToAlwaysSerialize = entityAttribute.PropertiesToAlwaysSerialize!.Split(',');
                     foreach (var propertyToAlwaysSerialize in propertiesToAlwaysSerialize)
                     {
                         var property = contract.Properties.GetClosestMatchProperty(propertyToAlwaysSerialize);
@@ -546,7 +546,7 @@ namespace EncompassRest.Utilities
             protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
             {
                 var backingFieldInfo = GetBackingFieldInfo(propertyInfo.DeclaringType, propertyInfo.Name);
-                IValueProvider valueProvider = null;
+                IValueProvider? valueProvider = null;
                 if (backingFieldInfo != null && backingFieldInfo.FieldInfo.FieldType.GetTypeInfo().ImplementedInterfaces.Any(t => t == TypeData<IDirty>.Type))
                 {
                     valueProvider = backingFieldInfo.ValueProvider;

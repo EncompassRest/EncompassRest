@@ -7,7 +7,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class SalesRepsAERights : ParentAccessRights
     {
-        private DirtyValue<bool?> _editSalesRepsAE;
+        private DirtyValue<bool?>? _editSalesRepsAE;
 
         /// <summary>
         /// SalesRepsAERights EditSalesRepsAE

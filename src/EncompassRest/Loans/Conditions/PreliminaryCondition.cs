@@ -7,12 +7,12 @@ namespace EncompassRest.Loans.Conditions
     /// </summary>
     public sealed class PreliminaryCondition : LoanCondition
     {
-        private DirtyValue<bool?> _uwAccess;
-        private DirtyValue<StringEnumValue<PriorToMilestone>> _priorTo;
-        private DirtyValue<StringEnumValue<ConditionCategory>> _category;
-        private DirtyValue<bool?> _isFulfilled;
-        private DirtyValue<DateTime?> _fulfilledDate;
-        private DirtyValue<EntityReference> _fulfilledBy;
+        private DirtyValue<bool?>? _uwAccess;
+        private DirtyValue<StringEnumValue<PriorToMilestone>>? _priorTo;
+        private DirtyValue<StringEnumValue<ConditionCategory>>? _category;
+        private DirtyValue<bool?>? _isFulfilled;
+        private DirtyValue<DateTime?>? _fulfilledDate;
+        private DirtyValue<EntityReference>? _fulfilledBy;
 
         /// <summary>
         /// A value of <c>true</c> indicates that underwriting has access to this condition.

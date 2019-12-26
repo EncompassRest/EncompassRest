@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
@@ -9,35 +10,35 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LoanSubmission : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amountAvailable;
-        private DirtyValue<decimal?> _amountRequiredToClose;
-        private DirtyValue<string> _buydownDescription;
-        private DirtyValue<string> _buydownMonthsPerAdjustment;
-        private DirtyValue<string> _comments;
-        private DirtyValue<DateTime?> _currentRateSetDate;
-        private DirtyValue<DateTime?> _dateLastPaymentReceived;
-        private DirtyValue<bool?> _floodIndicator;
-        private DirtyValue<bool?> _hazardIndicator;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _isSecondaryRegistration;
-        private DirtyList<LoanSubmissionFee> _loanSubmissionFees;
-        private DirtyValue<DateTime?> _lockDate;
-        private DirtyValue<DateTime?> _lockDateTimestampUtc;
-        private DirtyValue<DateTime?> _lockExpiresDate;
-        private DirtyValue<bool?> _mmmPmiIndicator;
-        private DirtyValue<int?> _numberOfDays;
-        private DirtyValue<string> _otherDescription;
-        private DirtyValue<bool?> _otherIndicator;
-        private DirtyValue<string> _programCode;
-        private DirtyValue<string> _rateLock;
-        private DirtyValue<DateTime?> _rateLockDisclosureDate;
-        private DirtyValue<bool?> _reducedDocsIndicator;
-        private DirtyValue<bool?> _taxesIndicator;
-        private DirtyValue<decimal?> _total;
-        private DirtyValue<decimal?> _totalDiscountPointCharged;
-        private DirtyValue<decimal?> _totalForDueBroker;
-        private DirtyValue<decimal?> _totalForDueLender;
-        private DirtyValue<decimal?> _totalForPrimaryResidence;
+        private DirtyValue<decimal?>? _amountAvailable;
+        private DirtyValue<decimal?>? _amountRequiredToClose;
+        private DirtyValue<string?>? _buydownDescription;
+        private DirtyValue<string?>? _buydownMonthsPerAdjustment;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<DateTime?>? _currentRateSetDate;
+        private DirtyValue<DateTime?>? _dateLastPaymentReceived;
+        private DirtyValue<bool?>? _floodIndicator;
+        private DirtyValue<bool?>? _hazardIndicator;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isSecondaryRegistration;
+        private DirtyList<LoanSubmissionFee>? _loanSubmissionFees;
+        private DirtyValue<DateTime?>? _lockDate;
+        private DirtyValue<DateTime?>? _lockDateTimestampUtc;
+        private DirtyValue<DateTime?>? _lockExpiresDate;
+        private DirtyValue<bool?>? _mmmPmiIndicator;
+        private DirtyValue<int?>? _numberOfDays;
+        private DirtyValue<string?>? _otherDescription;
+        private DirtyValue<bool?>? _otherIndicator;
+        private DirtyValue<string?>? _programCode;
+        private DirtyValue<string?>? _rateLock;
+        private DirtyValue<DateTime?>? _rateLockDisclosureDate;
+        private DirtyValue<bool?>? _reducedDocsIndicator;
+        private DirtyValue<bool?>? _taxesIndicator;
+        private DirtyValue<decimal?>? _total;
+        private DirtyValue<decimal?>? _totalDiscountPointCharged;
+        private DirtyValue<decimal?>? _totalForDueBroker;
+        private DirtyValue<decimal?>? _totalForDueLender;
+        private DirtyValue<decimal?>? _totalForPrimaryResidence;
 
         /// <summary>
         /// Trans Details Amt Available [199]
@@ -54,17 +55,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info Buydown Descr [1297]
         /// </summary>
-        public string BuydownDescription { get => _buydownDescription; set => SetField(ref _buydownDescription, value); }
+        public string? BuydownDescription { get => _buydownDescription; set => SetField(ref _buydownDescription, value); }
 
         /// <summary>
         /// Loan Info Buydown Mos [1275]
         /// </summary>
-        public string BuydownMonthsPerAdjustment { get => _buydownMonthsPerAdjustment; set => SetField(ref _buydownMonthsPerAdjustment, value); }
+        public string? BuydownMonthsPerAdjustment { get => _buydownMonthsPerAdjustment; set => SetField(ref _buydownMonthsPerAdjustment, value); }
 
         /// <summary>
         /// Trans Details Comments/Special Instr [472]
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// Last Rate Set Date [3253]
@@ -91,7 +92,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanSubmission Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Secondary Registration [3941]
@@ -101,6 +102,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanSubmission LoanSubmissionFees
         /// </summary>
+        [AllowNull]
         public IList<LoanSubmissionFee> LoanSubmissionFees { get => GetField(ref _loanSubmissionFees); set => SetField(ref _loanSubmissionFees, value); }
 
         /// <summary>
@@ -133,7 +135,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info ARM Impounds Other Descr [LOANSUB.X15]
         /// </summary>
-        public string OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
+        public string? OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
 
         /// <summary>
         /// Loan Info ARM Impounds Other [LOANSUB.X14]
@@ -143,12 +145,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Loan Product Code [1130]
         /// </summary>
-        public string ProgramCode { get => _programCode; set => SetField(ref _programCode, value); }
+        public string? ProgramCode { get => _programCode; set => SetField(ref _programCode, value); }
 
         /// <summary>
         /// Trans Details Rate Lock Type [431]
         /// </summary>
-        public string RateLock { get => _rateLock; set => SetField(ref _rateLock, value); }
+        public string? RateLock { get => _rateLock; set => SetField(ref _rateLock, value); }
 
         /// <summary>
         /// Rate Lock Disclosure Date [3259]

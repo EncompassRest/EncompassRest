@@ -7,9 +7,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ImportBorrowersRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _fromaFNMA32File;
-        private DirtyValue<bool?> _fromAnotherLoan;
-        private DirtyValue<bool?> _fromContacts;
+        private DirtyValue<bool?>? _fromaFNMA32File;
+        private DirtyValue<bool?>? _fromAnotherLoan;
+        private DirtyValue<bool?>? _fromContacts;
 
         /// <summary>
         /// ImportBorrowersRights FromaFNMA32File

@@ -10,15 +10,15 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(LineNumber))]
     public sealed partial class RespaHudDetail : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<CreditDebt>> _creditDebt;
-        private DirtyValue<string> _fWBC;
-        private DirtyValue<DateTime?> _hUD1LineItemFromDate;
-        private DirtyValue<DateTime?> _hUD1LineItemToDate;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _lineItemAmount;
-        private DirtyValue<string> _lineItemDescription;
-        private DirtyValue<int?> _lineNumber;
-        private DirtyValue<decimal?> _realValue;
+        private DirtyValue<StringEnumValue<CreditDebt>>? _creditDebt;
+        private DirtyValue<string?>? _fWBC;
+        private DirtyValue<DateTime?>? _hUD1LineItemFromDate;
+        private DirtyValue<DateTime?>? _hUD1LineItemToDate;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _lineItemAmount;
+        private DirtyValue<string?>? _lineItemDescription;
+        private DirtyValue<int?>? _lineNumber;
+        private DirtyValue<decimal?>? _realValue;
 
         /// <summary>
         /// RespaHudDetail CreditDebt
@@ -28,7 +28,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RespaHudDetail FWBC
         /// </summary>
-        public string FWBC { get => _fWBC; set => SetField(ref _fWBC, value); }
+        public string? FWBC { get => _fWBC; set => SetField(ref _fWBC, value); }
 
         /// <summary>
         /// RespaHudDetail HUD1LineItemFromDate
@@ -43,7 +43,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RespaHudDetail Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// RespaHudDetail LineItemAmount
@@ -54,7 +54,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RespaHudDetail LineItemDescription
         /// </summary>
-        public string LineItemDescription { get => _lineItemDescription; set => SetField(ref _lineItemDescription, value); }
+        public string? LineItemDescription { get => _lineItemDescription; set => SetField(ref _lineItemDescription, value); }
 
         /// <summary>
         /// RespaHudDetail LineNumber

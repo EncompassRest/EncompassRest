@@ -12,7 +12,9 @@ namespace EncompassRest.LoanBatch
         /// BatchUpdateStatus Status
         /// </summary>
         [JsonRequired]
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         public string Status { get; set; }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 
         /// <summary>
         /// BatchUpdateStatus LastModified

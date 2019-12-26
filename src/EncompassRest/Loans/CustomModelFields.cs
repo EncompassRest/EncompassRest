@@ -5,23 +5,23 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class CustomModelFields : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _helocExampleScheduleData;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _provideAmortizationScenario;
-        private DirtyValue<bool?> _provideBestCaseScenario;
-        private DirtyValue<bool?> _provideFHAScenario;
-        private DirtyValue<bool?> _provideHelocExampleSchedules;
-        private DirtyValue<bool?> _provideWorstCaseScenario;
+        private DirtyValue<string?>? _helocExampleScheduleData;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _provideAmortizationScenario;
+        private DirtyValue<bool?>? _provideBestCaseScenario;
+        private DirtyValue<bool?>? _provideFHAScenario;
+        private DirtyValue<bool?>? _provideHelocExampleSchedules;
+        private DirtyValue<bool?>? _provideWorstCaseScenario;
 
         /// <summary>
         /// CustomModelFields HelocExampleScheduleData
         /// </summary>
-        public string HelocExampleScheduleData { get => _helocExampleScheduleData; set => SetField(ref _helocExampleScheduleData, value); }
+        public string? HelocExampleScheduleData { get => _helocExampleScheduleData; set => SetField(ref _helocExampleScheduleData, value); }
 
         /// <summary>
         /// CustomModelFields Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// CustomModelFields ProvideAmortizationScenario

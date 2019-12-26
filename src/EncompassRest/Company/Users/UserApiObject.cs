@@ -23,12 +23,12 @@ namespace EncompassRest.Company.Users
         /// </summary>
         public string UserId { get; }
 
-        internal UserApiObject(EncompassRestClient client, string userId, string baseApiPath)
+        internal UserApiObject(EncompassRestClient client, string userId, string? baseApiPath)
             : base(client, $"encompass/v1/company/users/{userId}{baseApiPath?.PrecedeWith("/")}")
         {
             UserId = userId;
         }
 
-        internal override string CreateErrorMessage(string methodName, string resourceId = null) => base.CreateErrorMessage(methodName, $"{UserId}{resourceId?.PrecedeWith("/")}");
+        internal override string CreateErrorMessage(string methodName, string? resourceId = null) => base.CreateErrorMessage(methodName, $"{UserId}{resourceId?.PrecedeWith("/")}");
     }
 }

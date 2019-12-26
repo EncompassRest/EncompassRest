@@ -9,222 +9,222 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ATRQMCommon : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _affiliatesFees;
-        private DirtyValue<decimal?> _aPORMaxBonaFideDiscountPoint;
-        private DirtyValue<DateTime?> _aRMRecastDate;
-        private DirtyValue<decimal?> _aRMRecastMonthlyPayment;
-        private DirtyValue<string> _assetRepresentationAndWarrantyReliefEligibilityType;
-        private DirtyValue<StringEnumValue<ATRLoanType>> _aTRLoanType;
-        private DirtyValue<string> _aUSDataDiscrepencyResolutionComments;
-        private DirtyValue<DateTime?> _aUSDataDiscrepencyResolutionDate;
-        private DirtyValue<string> _aUSDataDiscrepencyResolvedBy;
-        private DirtyValue<decimal?> _bonaFideDiscountPoint;
-        private DirtyValue<decimal?> _bonaFideDiscountPointAmount;
-        private DirtyValue<bool?> _brokerCompensationWhenRateSet;
-        private DirtyValue<decimal?> _buydownSellerPaidSec32PointsFees;
-        private DirtyValue<StringEnumValue<CollateralRepandWarrReliefEligibilityType>> _collateralRepandWarrReliefEligibilityType;
-        private DirtyValue<decimal?> _compensationPTBFees;
-        private DirtyValue<decimal?> _creditInsPremiumFees;
-        private DirtyValue<bool?> _creditorType;
-        private DirtyValue<StringEnumValue<CreditorTypeDescription>> _creditorTypeDescription;
-        private DirtyValue<bool?> _creditType;
-        private DirtyValue<decimal?> _currentQMFeeThresholdAmt;
-        private DirtyValue<decimal?> _currentQMFeeThresholdPercent;
-        private DirtyValue<DateTime?> _dateOfLastMonthlyPayment;
-        private DirtyValue<decimal?> _discountPointAmount;
-        private DirtyValue<decimal?> _discountPointFees;
-        private DirtyValue<decimal?> _discountPointPercentage;
-        private DirtyValue<string> _documentationGuidelineMessages4V;
-        private DirtyValue<string> _documentationGuidelineMessages5C;
-        private DirtyValue<string> _documentationGuidelineMessages8Y;
-        private DirtyValue<string> _documentationGuidelineMessagesCN;
-        private DirtyValue<string> _documentationGuidelineMessagesCP;
-        private DirtyValue<string> _documentationGuidelineMessagesCV;
-        private DirtyValue<string> _documentationGuidelineMessagesCY;
-        private DirtyValue<string> _documentationGuidelineMessagesCZ;
-        private DirtyValue<string> _documentationGuidelineMessagesDP;
-        private DirtyValue<string> _documentationGuidelineMessagesDZ;
-        private DirtyValue<string> _documentationGuidelineMessagesE5;
-        private DirtyValue<string> _documentationGuidelineMessagesIM;
-        private DirtyValue<string> _documentationGuidelineMessagesIQ;
-        private DirtyValue<string> _documentationGuidelineMessagesJF;
-        private DirtyValue<string> _documentationGuidelineMessagesQJ;
-        private DirtyValue<string> _documentationGuidelineMessagesQN;
-        private DirtyValue<string> _documentationGuidelineMessagesQQ;
-        private DirtyValue<string> _documentationGuidelineMessagesQS;
-        private DirtyValue<string> _documentationGuidelineMessagesU7;
-        private DirtyValue<string> _documentationGuidelineMessagesX1;
-        private DirtyValue<string> _documentationGuidelineMessagesX3;
-        private DirtyValue<string> _documentationGuidelineMessagesX5;
-        private DirtyValue<string> _documentationGuidelineMessagesX7;
-        private DirtyValue<string> _documentationGuidelineMessagesXA;
-        private DirtyValue<string> _documentationGuidelineMessagesXM;
-        private DirtyValue<string> _documentationGuidelineMessagesXP;
-        private DirtyValue<string> _documentationGuidelineMessagesXR;
-        private DirtyValue<string> _documentationGuidelineMessagesXT;
-        private DirtyValue<string> _documentationGuidelineMessagesY8;
-        private DirtyValue<string> _documentationGuidelineMessagesYG;
-        private DirtyValue<string> _documentationGuidelineMessagesYJ;
-        private DirtyValue<string> _documentationGuidelineMessagesYY;
-        private DirtyValue<string> _documentationGuidelineMessagesYZ;
-        private DirtyValue<StringEnumValue<EligibleNonStandardToStandard>> _eligibleNonStandardToStandard;
-        private DirtyValue<decimal?> _financeChargeFees;
-        private DirtyValue<int?> _firstChangeRecase;
-        private DirtyValue<DateTime?> _firstPmtDateAfterRecast;
-        private DirtyValue<decimal?> _fullPaymentAfterInterestOnly;
-        private DirtyValue<decimal?> _fullyARMPaymentAfterNegAm;
-        private DirtyValue<decimal?> _fullyIndexRateHousingRatio;
-        private DirtyValue<decimal?> _fullyIndexRateMaxTotalPayment;
-        private DirtyValue<decimal?> _fullyIndexRateMonthlyPayment;
-        private DirtyValue<decimal?> _fullyIndexRateTotalDebtRatio;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusAlimony;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusAssets;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusChildSupport;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusCoveredLoan;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusCreditHistory;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusDebtObligations;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusDTI;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusEmployment;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusIncome;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusMtgRelatedObligations;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusOverall;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusResidualIncome;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATRStatusSimultaneousLoan;
-        private DirtyValue<decimal?> _gSEAgencyQMCalculatedThreshold;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusAlimony;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusAssets;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusBalloonPayment;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusChildSupport;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusCoveredLoan;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusCreditHistory;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusDebtObligations;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusDTI;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusEmployment;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusIncome;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusInterestOnly;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusLoanTerm;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusMtgRelatedObligations;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusNegativeAmortization;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusOverall;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusPointsFeesLimit;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusPrepaymentPenalty;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusResidualIncome;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusSafeHarborEligibility;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQMStatusSimultaneousLoan;
-        private DirtyValue<bool?> _has30DayLatePayment;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _initialMaxTotalPayment;
-        private DirtyValue<decimal?> _initialRateHousingRatio;
-        private DirtyValue<decimal?> _initialRateMonthlyPayment;
-        private DirtyValue<decimal?> _initialRateTotalDebtRatio;
-        private DirtyValue<int?> _interestOnlyMonths;
-        private DirtyValue<DateTime?> _interestOnlyRecastDate;
-        private DirtyValue<bool?> _isConsumerLiklyDefault;
-        private DirtyValue<StringEnumValue<YesNoOrNA>> _isEligibleForSafeHarbor;
-        private DirtyValue<bool?> _isEvaluatedAlimonyObligations;
-        private DirtyValue<bool?> _isEvaluatedChildSupportObligations;
-        private DirtyValue<bool?> _isEvaluatedCreditHistory;
-        private DirtyValue<bool?> _isEvaluatedCurrentEmploymentStatus;
-        private DirtyValue<bool?> _isEvaluatedCurrentExpectedAssets;
-        private DirtyValue<bool?> _isEvaluatedCurrentExpectedIncome;
-        private DirtyValue<bool?> _isEvaluatedDebtObligations;
-        private DirtyValue<bool?> _isEvaluatedDebtToIncomeRatio;
-        private DirtyValue<bool?> _isEvaluatedMonthlyCoveredLoanPayment;
-        private DirtyValue<bool?> _isEvaluatedMonthlyMortgageRelatedObligations;
-        private DirtyValue<bool?> _isEvaluatedMonthlySimultaneousLoanPayment;
-        private DirtyValue<bool?> _isEvaluatedResidualIncome;
-        private DirtyValue<StringEnumValue<IsOrIsNot>> _isHigherPricedLoan;
-        private DirtyValue<string> _loanProcessingInformationCode24;
-        private DirtyValue<string> _loanProcessingInformationCode31;
-        private DirtyValue<string> _loanProcessingInformationCode32;
-        private DirtyValue<string> _loanProcessingInformationCode33;
-        private DirtyValue<string> _loanProcessingInformationCode97;
-        private DirtyValue<string> _loanProcessingInformationCodeJr;
-        private DirtyValue<string> _loanProcessingInformationCodeJt;
-        private DirtyValue<string> _loanProcessingInformationD4;
-        private DirtyValue<string> _loanProcessingInformationGO;
-        private DirtyValue<string> _loanProcessingInformationHA;
-        private DirtyValue<string> _loanProcessingInformationLE;
-        private DirtyValue<string> _loanProcessingInformationLF;
-        private DirtyValue<string> _loanProcessingInformationMA;
-        private DirtyValue<bool?> _loanProgram;
-        private DirtyValue<StringEnumValue<LoanProgramDescription>> _loanProgramDescription;
-        private DirtyValue<bool?> _loanRateFixedin5Years;
-        private DirtyValue<decimal?> _lOBrokerCompensationAmount;
-        private DirtyValue<decimal?> _max5YrsHousingRatio;
-        private DirtyValue<decimal?> _max5YrsPrincipleAndInterest;
-        private DirtyValue<decimal?> _max5YrsTotalDebtRatio;
-        private DirtyValue<decimal?> _max5YrsTotalPayment;
-        private DirtyValue<decimal?> _maxPrepaymentPenaltyFees;
-        private DirtyValue<DateTime?> _negAmRecastDate;
-        private DirtyValue<bool?> _paymentDecreasedBy10Percent;
-        private DirtyValue<bool?> _pointsFeesThresholdMet;
-        private DirtyValue<decimal?> _prepaymentPenaltyPayoffFees;
-        private DirtyValue<decimal?> _prepayPenaltyPercentage;
-        private DirtyValue<bool?> _preventConsumersDefault;
-        private DirtyValue<bool?> _principalBalanceIncreased;
-        private DirtyValue<bool?> _principalHasDeferred;
-        private DirtyValue<StringEnumValue<QMLoanType>> _qMLoanType;
-        private DirtyValue<decimal?> _rateReductionBasisPoints;
-        private DirtyValue<decimal?> _rateReductionDiscountPoints;
-        private DirtyValue<decimal?> _rateReductionMaxBonaFideDiscountPoint;
-        private DirtyValue<decimal?> _realEstateFees;
-        private DirtyValue<decimal?> _recastDifferencePayment;
-        private DirtyValue<decimal?> _regZTotalLoanAmount;
-        private DirtyValue<decimal?> _requiredServicesLenderSelectedAmt;
-        private DirtyValue<decimal?> _smallCreditorQMCalculatedThreshold;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusAlimony;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusAssets;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusBalloonPayment;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusChildSupport;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusCoveredLoan;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusDebtObligations;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusDTI;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusIncome;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusInterestOnly;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusLoanTerm;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusMtgRelatedObligations;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusNegativeAmortization;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusOverall;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusPointsFeesLimit;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusPrepaymentPenalty;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusResidualIncome;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQMStatusSafeHarborEligibility;
-        private DirtyValue<decimal?> _standardQMCalculatedThreshold;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusAlimony;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusAssets;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusBalloonPayment;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusChildSupport;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusCoveredLoan;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusCreditHistory;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusDebtObligations;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusDTI;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusEmployment;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusIncome;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusInterestOnly;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusLoanTerm;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusMtgRelatedObligations;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusNegativeAmortization;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusOverall;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusPointsFeesLimit;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusPrepaymentPenalty;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusResidualIncome;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusSafeHarborEligibility;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQMStatusSimultaneousLoan;
-        private DirtyValue<decimal?> _startingAdjustedRateMaxBonaFideDiscountPoint;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _statusCreditHistory;
-        private DirtyValue<StringEnumValue<ATRQMStatus>> _statusSimultaneousLoan;
-        private DirtyValue<StringEnumValue<DoesOrDoesNot2>> _thresholdExceedsQM;
-        private DirtyValue<decimal?> _titleServicesLenderTitleinsuranceFee;
-        private DirtyValue<decimal?> _totalCoMortgagorIncome;
-        private DirtyValue<decimal?> _totalIncome;
-        private DirtyValue<decimal?> _totalPointsFeesSec32Percent;
-        private DirtyValue<bool?> _transactionExemptFromRegZ;
-        private DirtyValue<string> _ucdRequirement;
-        private DirtyValue<bool?> _unitCount;
-        private DirtyValue<decimal?> _upfrontPMIFees;
-        private DirtyValue<bool?> _withOriginalCreditor;
-        private DirtyValue<DateTime?> _writtenApplicationDate;
+        private DirtyValue<decimal?>? _affiliatesFees;
+        private DirtyValue<decimal?>? _aPORMaxBonaFideDiscountPoint;
+        private DirtyValue<DateTime?>? _aRMRecastDate;
+        private DirtyValue<decimal?>? _aRMRecastMonthlyPayment;
+        private DirtyValue<string?>? _assetRepresentationAndWarrantyReliefEligibilityType;
+        private DirtyValue<StringEnumValue<ATRLoanType>>? _aTRLoanType;
+        private DirtyValue<string?>? _aUSDataDiscrepencyResolutionComments;
+        private DirtyValue<DateTime?>? _aUSDataDiscrepencyResolutionDate;
+        private DirtyValue<string?>? _aUSDataDiscrepencyResolvedBy;
+        private DirtyValue<decimal?>? _bonaFideDiscountPoint;
+        private DirtyValue<decimal?>? _bonaFideDiscountPointAmount;
+        private DirtyValue<bool?>? _brokerCompensationWhenRateSet;
+        private DirtyValue<decimal?>? _buydownSellerPaidSec32PointsFees;
+        private DirtyValue<StringEnumValue<CollateralRepandWarrReliefEligibilityType>>? _collateralRepandWarrReliefEligibilityType;
+        private DirtyValue<decimal?>? _compensationPTBFees;
+        private DirtyValue<decimal?>? _creditInsPremiumFees;
+        private DirtyValue<bool?>? _creditorType;
+        private DirtyValue<StringEnumValue<CreditorTypeDescription>>? _creditorTypeDescription;
+        private DirtyValue<bool?>? _creditType;
+        private DirtyValue<decimal?>? _currentQMFeeThresholdAmt;
+        private DirtyValue<decimal?>? _currentQMFeeThresholdPercent;
+        private DirtyValue<DateTime?>? _dateOfLastMonthlyPayment;
+        private DirtyValue<decimal?>? _discountPointAmount;
+        private DirtyValue<decimal?>? _discountPointFees;
+        private DirtyValue<decimal?>? _discountPointPercentage;
+        private DirtyValue<string?>? _documentationGuidelineMessages4V;
+        private DirtyValue<string?>? _documentationGuidelineMessages5C;
+        private DirtyValue<string?>? _documentationGuidelineMessages8Y;
+        private DirtyValue<string?>? _documentationGuidelineMessagesCN;
+        private DirtyValue<string?>? _documentationGuidelineMessagesCP;
+        private DirtyValue<string?>? _documentationGuidelineMessagesCV;
+        private DirtyValue<string?>? _documentationGuidelineMessagesCY;
+        private DirtyValue<string?>? _documentationGuidelineMessagesCZ;
+        private DirtyValue<string?>? _documentationGuidelineMessagesDP;
+        private DirtyValue<string?>? _documentationGuidelineMessagesDZ;
+        private DirtyValue<string?>? _documentationGuidelineMessagesE5;
+        private DirtyValue<string?>? _documentationGuidelineMessagesIM;
+        private DirtyValue<string?>? _documentationGuidelineMessagesIQ;
+        private DirtyValue<string?>? _documentationGuidelineMessagesJF;
+        private DirtyValue<string?>? _documentationGuidelineMessagesQJ;
+        private DirtyValue<string?>? _documentationGuidelineMessagesQN;
+        private DirtyValue<string?>? _documentationGuidelineMessagesQQ;
+        private DirtyValue<string?>? _documentationGuidelineMessagesQS;
+        private DirtyValue<string?>? _documentationGuidelineMessagesU7;
+        private DirtyValue<string?>? _documentationGuidelineMessagesX1;
+        private DirtyValue<string?>? _documentationGuidelineMessagesX3;
+        private DirtyValue<string?>? _documentationGuidelineMessagesX5;
+        private DirtyValue<string?>? _documentationGuidelineMessagesX7;
+        private DirtyValue<string?>? _documentationGuidelineMessagesXA;
+        private DirtyValue<string?>? _documentationGuidelineMessagesXM;
+        private DirtyValue<string?>? _documentationGuidelineMessagesXP;
+        private DirtyValue<string?>? _documentationGuidelineMessagesXR;
+        private DirtyValue<string?>? _documentationGuidelineMessagesXT;
+        private DirtyValue<string?>? _documentationGuidelineMessagesY8;
+        private DirtyValue<string?>? _documentationGuidelineMessagesYG;
+        private DirtyValue<string?>? _documentationGuidelineMessagesYJ;
+        private DirtyValue<string?>? _documentationGuidelineMessagesYY;
+        private DirtyValue<string?>? _documentationGuidelineMessagesYZ;
+        private DirtyValue<StringEnumValue<EligibleNonStandardToStandard>>? _eligibleNonStandardToStandard;
+        private DirtyValue<decimal?>? _financeChargeFees;
+        private DirtyValue<int?>? _firstChangeRecase;
+        private DirtyValue<DateTime?>? _firstPmtDateAfterRecast;
+        private DirtyValue<decimal?>? _fullPaymentAfterInterestOnly;
+        private DirtyValue<decimal?>? _fullyARMPaymentAfterNegAm;
+        private DirtyValue<decimal?>? _fullyIndexRateHousingRatio;
+        private DirtyValue<decimal?>? _fullyIndexRateMaxTotalPayment;
+        private DirtyValue<decimal?>? _fullyIndexRateMonthlyPayment;
+        private DirtyValue<decimal?>? _fullyIndexRateTotalDebtRatio;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusAlimony;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusAssets;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusChildSupport;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusCoveredLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusCreditHistory;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusDebtObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusDTI;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusEmployment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusMtgRelatedObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusOverall;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusResidualIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _generalATRStatusSimultaneousLoan;
+        private DirtyValue<decimal?>? _gSEAgencyQMCalculatedThreshold;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusAlimony;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusAssets;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusBalloonPayment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusChildSupport;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusCoveredLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusCreditHistory;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusDebtObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusDTI;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusEmployment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusInterestOnly;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusLoanTerm;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusMtgRelatedObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusNegativeAmortization;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusOverall;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusPointsFeesLimit;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusPrepaymentPenalty;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusResidualIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusSafeHarborEligibility;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusSimultaneousLoan;
+        private DirtyValue<bool?>? _has30DayLatePayment;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _initialMaxTotalPayment;
+        private DirtyValue<decimal?>? _initialRateHousingRatio;
+        private DirtyValue<decimal?>? _initialRateMonthlyPayment;
+        private DirtyValue<decimal?>? _initialRateTotalDebtRatio;
+        private DirtyValue<int?>? _interestOnlyMonths;
+        private DirtyValue<DateTime?>? _interestOnlyRecastDate;
+        private DirtyValue<bool?>? _isConsumerLiklyDefault;
+        private DirtyValue<StringEnumValue<YesNoOrNA>>? _isEligibleForSafeHarbor;
+        private DirtyValue<bool?>? _isEvaluatedAlimonyObligations;
+        private DirtyValue<bool?>? _isEvaluatedChildSupportObligations;
+        private DirtyValue<bool?>? _isEvaluatedCreditHistory;
+        private DirtyValue<bool?>? _isEvaluatedCurrentEmploymentStatus;
+        private DirtyValue<bool?>? _isEvaluatedCurrentExpectedAssets;
+        private DirtyValue<bool?>? _isEvaluatedCurrentExpectedIncome;
+        private DirtyValue<bool?>? _isEvaluatedDebtObligations;
+        private DirtyValue<bool?>? _isEvaluatedDebtToIncomeRatio;
+        private DirtyValue<bool?>? _isEvaluatedMonthlyCoveredLoanPayment;
+        private DirtyValue<bool?>? _isEvaluatedMonthlyMortgageRelatedObligations;
+        private DirtyValue<bool?>? _isEvaluatedMonthlySimultaneousLoanPayment;
+        private DirtyValue<bool?>? _isEvaluatedResidualIncome;
+        private DirtyValue<StringEnumValue<IsOrIsNot>>? _isHigherPricedLoan;
+        private DirtyValue<string?>? _loanProcessingInformationCode24;
+        private DirtyValue<string?>? _loanProcessingInformationCode31;
+        private DirtyValue<string?>? _loanProcessingInformationCode32;
+        private DirtyValue<string?>? _loanProcessingInformationCode33;
+        private DirtyValue<string?>? _loanProcessingInformationCode97;
+        private DirtyValue<string?>? _loanProcessingInformationCodeJr;
+        private DirtyValue<string?>? _loanProcessingInformationCodeJt;
+        private DirtyValue<string?>? _loanProcessingInformationD4;
+        private DirtyValue<string?>? _loanProcessingInformationGO;
+        private DirtyValue<string?>? _loanProcessingInformationHA;
+        private DirtyValue<string?>? _loanProcessingInformationLE;
+        private DirtyValue<string?>? _loanProcessingInformationLF;
+        private DirtyValue<string?>? _loanProcessingInformationMA;
+        private DirtyValue<bool?>? _loanProgram;
+        private DirtyValue<StringEnumValue<LoanProgramDescription>>? _loanProgramDescription;
+        private DirtyValue<bool?>? _loanRateFixedin5Years;
+        private DirtyValue<decimal?>? _lOBrokerCompensationAmount;
+        private DirtyValue<decimal?>? _max5YrsHousingRatio;
+        private DirtyValue<decimal?>? _max5YrsPrincipleAndInterest;
+        private DirtyValue<decimal?>? _max5YrsTotalDebtRatio;
+        private DirtyValue<decimal?>? _max5YrsTotalPayment;
+        private DirtyValue<decimal?>? _maxPrepaymentPenaltyFees;
+        private DirtyValue<DateTime?>? _negAmRecastDate;
+        private DirtyValue<bool?>? _paymentDecreasedBy10Percent;
+        private DirtyValue<bool?>? _pointsFeesThresholdMet;
+        private DirtyValue<decimal?>? _prepaymentPenaltyPayoffFees;
+        private DirtyValue<decimal?>? _prepayPenaltyPercentage;
+        private DirtyValue<bool?>? _preventConsumersDefault;
+        private DirtyValue<bool?>? _principalBalanceIncreased;
+        private DirtyValue<bool?>? _principalHasDeferred;
+        private DirtyValue<StringEnumValue<QMLoanType>>? _qMLoanType;
+        private DirtyValue<decimal?>? _rateReductionBasisPoints;
+        private DirtyValue<decimal?>? _rateReductionDiscountPoints;
+        private DirtyValue<decimal?>? _rateReductionMaxBonaFideDiscountPoint;
+        private DirtyValue<decimal?>? _realEstateFees;
+        private DirtyValue<decimal?>? _recastDifferencePayment;
+        private DirtyValue<decimal?>? _regZTotalLoanAmount;
+        private DirtyValue<decimal?>? _requiredServicesLenderSelectedAmt;
+        private DirtyValue<decimal?>? _smallCreditorQMCalculatedThreshold;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusAlimony;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusAssets;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusBalloonPayment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusChildSupport;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusCoveredLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusDebtObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusDTI;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusInterestOnly;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusLoanTerm;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusMtgRelatedObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusNegativeAmortization;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusOverall;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusPointsFeesLimit;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusPrepaymentPenalty;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusResidualIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _smallCreditorQMStatusSafeHarborEligibility;
+        private DirtyValue<decimal?>? _standardQMCalculatedThreshold;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusAlimony;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusAssets;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusBalloonPayment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusChildSupport;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusCoveredLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusCreditHistory;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusDebtObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusDTI;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusEmployment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusInterestOnly;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusLoanTerm;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusMtgRelatedObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusNegativeAmortization;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusOverall;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusPointsFeesLimit;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusPrepaymentPenalty;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusResidualIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusSafeHarborEligibility;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusSimultaneousLoan;
+        private DirtyValue<decimal?>? _startingAdjustedRateMaxBonaFideDiscountPoint;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _statusCreditHistory;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _statusSimultaneousLoan;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot2>>? _thresholdExceedsQM;
+        private DirtyValue<decimal?>? _titleServicesLenderTitleinsuranceFee;
+        private DirtyValue<decimal?>? _totalCoMortgagorIncome;
+        private DirtyValue<decimal?>? _totalIncome;
+        private DirtyValue<decimal?>? _totalPointsFeesSec32Percent;
+        private DirtyValue<bool?>? _transactionExemptFromRegZ;
+        private DirtyValue<string?>? _ucdRequirement;
+        private DirtyValue<bool?>? _unitCount;
+        private DirtyValue<decimal?>? _upfrontPMIFees;
+        private DirtyValue<bool?>? _withOriginalCreditor;
+        private DirtyValue<DateTime?>? _writtenApplicationDate;
 
         /// <summary>
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Fees Paid to Affiliates [QM.X134]
@@ -252,7 +252,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Freddie Mac LPA - Asset Representation And Warranty Relief Eligibility Type [AUSF.X62]
         /// </summary>
-        public string AssetRepresentationAndWarrantyReliefEligibilityType { get => _assetRepresentationAndWarrantyReliefEligibilityType; set => SetField(ref _assetRepresentationAndWarrantyReliefEligibilityType, value); }
+        public string? AssetRepresentationAndWarrantyReliefEligibilityType { get => _assetRepresentationAndWarrantyReliefEligibilityType; set => SetField(ref _assetRepresentationAndWarrantyReliefEligibilityType, value); }
 
         /// <summary>
         /// ATR QM - Eligibility - Ability-to-Repay Loan Type [QM.X23]
@@ -262,7 +262,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Data Discrepency Resolution Comments [AUSF.X20]
         /// </summary>
-        public string AUSDataDiscrepencyResolutionComments { get => _aUSDataDiscrepencyResolutionComments; set => SetField(ref _aUSDataDiscrepencyResolutionComments, value); }
+        public string? AUSDataDiscrepencyResolutionComments { get => _aUSDataDiscrepencyResolutionComments; set => SetField(ref _aUSDataDiscrepencyResolutionComments, value); }
 
         /// <summary>
         /// AUS Data Discrepency Resolution Date [AUSF.X19]
@@ -272,7 +272,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Data Discrepency Resolution User [AUSF.X21]
         /// </summary>
-        public string AUSDataDiscrepencyResolvedBy { get => _aUSDataDiscrepencyResolvedBy; set => SetField(ref _aUSDataDiscrepencyResolvedBy, value); }
+        public string? AUSDataDiscrepencyResolvedBy { get => _aUSDataDiscrepencyResolvedBy; set => SetField(ref _aUSDataDiscrepencyResolvedBy, value); }
 
         /// <summary>
         /// ATR QM - Qualification - Bona Fide Discount Point % [QM.X369]
@@ -367,167 +367,167 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (4V) [AUSF.X55]
         /// </summary>
-        public string DocumentationGuidelineMessages4V { get => _documentationGuidelineMessages4V; set => SetField(ref _documentationGuidelineMessages4V, value); }
+        public string? DocumentationGuidelineMessages4V { get => _documentationGuidelineMessages4V; set => SetField(ref _documentationGuidelineMessages4V, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (5C) [AUSF.X56]
         /// </summary>
-        public string DocumentationGuidelineMessages5C { get => _documentationGuidelineMessages5C; set => SetField(ref _documentationGuidelineMessages5C, value); }
+        public string? DocumentationGuidelineMessages5C { get => _documentationGuidelineMessages5C; set => SetField(ref _documentationGuidelineMessages5C, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (8Y) [AUSF.X25]
         /// </summary>
-        public string DocumentationGuidelineMessages8Y { get => _documentationGuidelineMessages8Y; set => SetField(ref _documentationGuidelineMessages8Y, value); }
+        public string? DocumentationGuidelineMessages8Y { get => _documentationGuidelineMessages8Y; set => SetField(ref _documentationGuidelineMessages8Y, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (CN) [AUSF.X26]
         /// </summary>
-        public string DocumentationGuidelineMessagesCN { get => _documentationGuidelineMessagesCN; set => SetField(ref _documentationGuidelineMessagesCN, value); }
+        public string? DocumentationGuidelineMessagesCN { get => _documentationGuidelineMessagesCN; set => SetField(ref _documentationGuidelineMessagesCN, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (CP) [AUSF.X27]
         /// </summary>
-        public string DocumentationGuidelineMessagesCP { get => _documentationGuidelineMessagesCP; set => SetField(ref _documentationGuidelineMessagesCP, value); }
+        public string? DocumentationGuidelineMessagesCP { get => _documentationGuidelineMessagesCP; set => SetField(ref _documentationGuidelineMessagesCP, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (CV) [AUSF.X28]
         /// </summary>
-        public string DocumentationGuidelineMessagesCV { get => _documentationGuidelineMessagesCV; set => SetField(ref _documentationGuidelineMessagesCV, value); }
+        public string? DocumentationGuidelineMessagesCV { get => _documentationGuidelineMessagesCV; set => SetField(ref _documentationGuidelineMessagesCV, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (CY) [AUSF.X57]
         /// </summary>
-        public string DocumentationGuidelineMessagesCY { get => _documentationGuidelineMessagesCY; set => SetField(ref _documentationGuidelineMessagesCY, value); }
+        public string? DocumentationGuidelineMessagesCY { get => _documentationGuidelineMessagesCY; set => SetField(ref _documentationGuidelineMessagesCY, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (CZ) [AUSF.X29]
         /// </summary>
-        public string DocumentationGuidelineMessagesCZ { get => _documentationGuidelineMessagesCZ; set => SetField(ref _documentationGuidelineMessagesCZ, value); }
+        public string? DocumentationGuidelineMessagesCZ { get => _documentationGuidelineMessagesCZ; set => SetField(ref _documentationGuidelineMessagesCZ, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (DP) [AUSF.X58]
         /// </summary>
-        public string DocumentationGuidelineMessagesDP { get => _documentationGuidelineMessagesDP; set => SetField(ref _documentationGuidelineMessagesDP, value); }
+        public string? DocumentationGuidelineMessagesDP { get => _documentationGuidelineMessagesDP; set => SetField(ref _documentationGuidelineMessagesDP, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (DZ) [AUSF.X45]
         /// </summary>
-        public string DocumentationGuidelineMessagesDZ { get => _documentationGuidelineMessagesDZ; set => SetField(ref _documentationGuidelineMessagesDZ, value); }
+        public string? DocumentationGuidelineMessagesDZ { get => _documentationGuidelineMessagesDZ; set => SetField(ref _documentationGuidelineMessagesDZ, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (E5) [AUSF.X51]
         /// </summary>
-        public string DocumentationGuidelineMessagesE5 { get => _documentationGuidelineMessagesE5; set => SetField(ref _documentationGuidelineMessagesE5, value); }
+        public string? DocumentationGuidelineMessagesE5 { get => _documentationGuidelineMessagesE5; set => SetField(ref _documentationGuidelineMessagesE5, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (IM) [AUSF.X53]
         /// </summary>
-        public string DocumentationGuidelineMessagesIM { get => _documentationGuidelineMessagesIM; set => SetField(ref _documentationGuidelineMessagesIM, value); }
+        public string? DocumentationGuidelineMessagesIM { get => _documentationGuidelineMessagesIM; set => SetField(ref _documentationGuidelineMessagesIM, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (IQ) [AUSF.X54]
         /// </summary>
-        public string DocumentationGuidelineMessagesIQ { get => _documentationGuidelineMessagesIQ; set => SetField(ref _documentationGuidelineMessagesIQ, value); }
+        public string? DocumentationGuidelineMessagesIQ { get => _documentationGuidelineMessagesIQ; set => SetField(ref _documentationGuidelineMessagesIQ, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (JF) [AUSF.X47]
         /// </summary>
-        public string DocumentationGuidelineMessagesJF { get => _documentationGuidelineMessagesJF; set => SetField(ref _documentationGuidelineMessagesJF, value); }
+        public string? DocumentationGuidelineMessagesJF { get => _documentationGuidelineMessagesJF; set => SetField(ref _documentationGuidelineMessagesJF, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (QJ) [AUSF.X46]
         /// </summary>
-        public string DocumentationGuidelineMessagesQJ { get => _documentationGuidelineMessagesQJ; set => SetField(ref _documentationGuidelineMessagesQJ, value); }
+        public string? DocumentationGuidelineMessagesQJ { get => _documentationGuidelineMessagesQJ; set => SetField(ref _documentationGuidelineMessagesQJ, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (QN) [AUSF.X48]
         /// </summary>
-        public string DocumentationGuidelineMessagesQN { get => _documentationGuidelineMessagesQN; set => SetField(ref _documentationGuidelineMessagesQN, value); }
+        public string? DocumentationGuidelineMessagesQN { get => _documentationGuidelineMessagesQN; set => SetField(ref _documentationGuidelineMessagesQN, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (QQ) [AUSF.X50]
         /// </summary>
-        public string DocumentationGuidelineMessagesQQ { get => _documentationGuidelineMessagesQQ; set => SetField(ref _documentationGuidelineMessagesQQ, value); }
+        public string? DocumentationGuidelineMessagesQQ { get => _documentationGuidelineMessagesQQ; set => SetField(ref _documentationGuidelineMessagesQQ, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (QS) [AUSF.X52]
         /// </summary>
-        public string DocumentationGuidelineMessagesQS { get => _documentationGuidelineMessagesQS; set => SetField(ref _documentationGuidelineMessagesQS, value); }
+        public string? DocumentationGuidelineMessagesQS { get => _documentationGuidelineMessagesQS; set => SetField(ref _documentationGuidelineMessagesQS, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (U7) [AUSF.X49]
         /// </summary>
-        public string DocumentationGuidelineMessagesU7 { get => _documentationGuidelineMessagesU7; set => SetField(ref _documentationGuidelineMessagesU7, value); }
+        public string? DocumentationGuidelineMessagesU7 { get => _documentationGuidelineMessagesU7; set => SetField(ref _documentationGuidelineMessagesU7, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (X1) [AUSF.X30]
         /// </summary>
-        public string DocumentationGuidelineMessagesX1 { get => _documentationGuidelineMessagesX1; set => SetField(ref _documentationGuidelineMessagesX1, value); }
+        public string? DocumentationGuidelineMessagesX1 { get => _documentationGuidelineMessagesX1; set => SetField(ref _documentationGuidelineMessagesX1, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (X3) [AUSF.X31]
         /// </summary>
-        public string DocumentationGuidelineMessagesX3 { get => _documentationGuidelineMessagesX3; set => SetField(ref _documentationGuidelineMessagesX3, value); }
+        public string? DocumentationGuidelineMessagesX3 { get => _documentationGuidelineMessagesX3; set => SetField(ref _documentationGuidelineMessagesX3, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (X5) [AUSF.X32]
         /// </summary>
-        public string DocumentationGuidelineMessagesX5 { get => _documentationGuidelineMessagesX5; set => SetField(ref _documentationGuidelineMessagesX5, value); }
+        public string? DocumentationGuidelineMessagesX5 { get => _documentationGuidelineMessagesX5; set => SetField(ref _documentationGuidelineMessagesX5, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (X7) [AUSF.X33]
         /// </summary>
-        public string DocumentationGuidelineMessagesX7 { get => _documentationGuidelineMessagesX7; set => SetField(ref _documentationGuidelineMessagesX7, value); }
+        public string? DocumentationGuidelineMessagesX7 { get => _documentationGuidelineMessagesX7; set => SetField(ref _documentationGuidelineMessagesX7, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (XA) [AUSF.X34]
         /// </summary>
-        public string DocumentationGuidelineMessagesXA { get => _documentationGuidelineMessagesXA; set => SetField(ref _documentationGuidelineMessagesXA, value); }
+        public string? DocumentationGuidelineMessagesXA { get => _documentationGuidelineMessagesXA; set => SetField(ref _documentationGuidelineMessagesXA, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (XM) [AUSF.X35]
         /// </summary>
-        public string DocumentationGuidelineMessagesXM { get => _documentationGuidelineMessagesXM; set => SetField(ref _documentationGuidelineMessagesXM, value); }
+        public string? DocumentationGuidelineMessagesXM { get => _documentationGuidelineMessagesXM; set => SetField(ref _documentationGuidelineMessagesXM, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (XP) [AUSF.X36]
         /// </summary>
-        public string DocumentationGuidelineMessagesXP { get => _documentationGuidelineMessagesXP; set => SetField(ref _documentationGuidelineMessagesXP, value); }
+        public string? DocumentationGuidelineMessagesXP { get => _documentationGuidelineMessagesXP; set => SetField(ref _documentationGuidelineMessagesXP, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (XR) [AUSF.X37]
         /// </summary>
-        public string DocumentationGuidelineMessagesXR { get => _documentationGuidelineMessagesXR; set => SetField(ref _documentationGuidelineMessagesXR, value); }
+        public string? DocumentationGuidelineMessagesXR { get => _documentationGuidelineMessagesXR; set => SetField(ref _documentationGuidelineMessagesXR, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (XT) [AUSF.X38]
         /// </summary>
-        public string DocumentationGuidelineMessagesXT { get => _documentationGuidelineMessagesXT; set => SetField(ref _documentationGuidelineMessagesXT, value); }
+        public string? DocumentationGuidelineMessagesXT { get => _documentationGuidelineMessagesXT; set => SetField(ref _documentationGuidelineMessagesXT, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (Y8) [AUSF.X39]
         /// </summary>
-        public string DocumentationGuidelineMessagesY8 { get => _documentationGuidelineMessagesY8; set => SetField(ref _documentationGuidelineMessagesY8, value); }
+        public string? DocumentationGuidelineMessagesY8 { get => _documentationGuidelineMessagesY8; set => SetField(ref _documentationGuidelineMessagesY8, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (YG) [AUSF.X40]
         /// </summary>
-        public string DocumentationGuidelineMessagesYG { get => _documentationGuidelineMessagesYG; set => SetField(ref _documentationGuidelineMessagesYG, value); }
+        public string? DocumentationGuidelineMessagesYG { get => _documentationGuidelineMessagesYG; set => SetField(ref _documentationGuidelineMessagesYG, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (YJ) [AUSF.X41]
         /// </summary>
-        public string DocumentationGuidelineMessagesYJ { get => _documentationGuidelineMessagesYJ; set => SetField(ref _documentationGuidelineMessagesYJ, value); }
+        public string? DocumentationGuidelineMessagesYJ { get => _documentationGuidelineMessagesYJ; set => SetField(ref _documentationGuidelineMessagesYJ, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (YY) [AUSF.X59]
         /// </summary>
-        public string DocumentationGuidelineMessagesYY { get => _documentationGuidelineMessagesYY; set => SetField(ref _documentationGuidelineMessagesYY, value); }
+        public string? DocumentationGuidelineMessagesYY { get => _documentationGuidelineMessagesYY; set => SetField(ref _documentationGuidelineMessagesYY, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - DocumentationGuidelineMessages (YZ) [AUSF.X60]
         /// </summary>
-        public string DocumentationGuidelineMessagesYZ { get => _documentationGuidelineMessagesYZ; set => SetField(ref _documentationGuidelineMessagesYZ, value); }
+        public string? DocumentationGuidelineMessagesYZ { get => _documentationGuidelineMessagesYZ; set => SetField(ref _documentationGuidelineMessagesYZ, value); }
 
         /// <summary>
         /// ATR/QM - Non-Stardard to Standard Refinance Eligibility - This Loan may or may not be eligible for the Non-Standard to Standard Refinance exception to ATR QM [QM.X1]
@@ -765,7 +765,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATRQMCommon Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// ATR QM - Qualification - Initial Max Total Payment [QM.X113]
@@ -879,67 +879,67 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Freddie Mac LPA - Loan Processing Information - Message Code 24 [AUSF.X63]
         /// </summary>
-        public string LoanProcessingInformationCode24 { get => _loanProcessingInformationCode24; set => SetField(ref _loanProcessingInformationCode24, value); }
+        public string? LoanProcessingInformationCode24 { get => _loanProcessingInformationCode24; set => SetField(ref _loanProcessingInformationCode24, value); }
 
         /// <summary>
         /// AUS Tracking - Freddie Mac LPA - Loan Processing Information - Message Code 31 [AUSF.X64]
         /// </summary>
-        public string LoanProcessingInformationCode31 { get => _loanProcessingInformationCode31; set => SetField(ref _loanProcessingInformationCode31, value); }
+        public string? LoanProcessingInformationCode31 { get => _loanProcessingInformationCode31; set => SetField(ref _loanProcessingInformationCode31, value); }
 
         /// <summary>
         /// AUS Tracking - Freddie Mac LPA - Loan Processing Information - Message Code 32 [AUSF.X65]
         /// </summary>
-        public string LoanProcessingInformationCode32 { get => _loanProcessingInformationCode32; set => SetField(ref _loanProcessingInformationCode32, value); }
+        public string? LoanProcessingInformationCode32 { get => _loanProcessingInformationCode32; set => SetField(ref _loanProcessingInformationCode32, value); }
 
         /// <summary>
         /// AUS Tracking - Freddie Mac LPA - Loan Processing Information - Message Code 33 [AUSF.X66]
         /// </summary>
-        public string LoanProcessingInformationCode33 { get => _loanProcessingInformationCode33; set => SetField(ref _loanProcessingInformationCode33, value); }
+        public string? LoanProcessingInformationCode33 { get => _loanProcessingInformationCode33; set => SetField(ref _loanProcessingInformationCode33, value); }
 
         /// <summary>
         /// AUS Tracking - Freddie Mac LPA - Loan Processing Information - Message Code 97 [AUSF.X67]
         /// </summary>
-        public string LoanProcessingInformationCode97 { get => _loanProcessingInformationCode97; set => SetField(ref _loanProcessingInformationCode97, value); }
+        public string? LoanProcessingInformationCode97 { get => _loanProcessingInformationCode97; set => SetField(ref _loanProcessingInformationCode97, value); }
 
         /// <summary>
         /// AUS Tracking - Freddie Mac LPA - Loan Processing Information - Message Code JR [AUSF.X68]
         /// </summary>
-        public string LoanProcessingInformationCodeJr { get => _loanProcessingInformationCodeJr; set => SetField(ref _loanProcessingInformationCodeJr, value); }
+        public string? LoanProcessingInformationCodeJr { get => _loanProcessingInformationCodeJr; set => SetField(ref _loanProcessingInformationCodeJr, value); }
 
         /// <summary>
         /// AUS Tracking - Freddie Mac LPA - Loan Processing Information - Message Code JT [AUSF.X69]
         /// </summary>
-        public string LoanProcessingInformationCodeJt { get => _loanProcessingInformationCodeJt; set => SetField(ref _loanProcessingInformationCodeJt, value); }
+        public string? LoanProcessingInformationCodeJt { get => _loanProcessingInformationCodeJt; set => SetField(ref _loanProcessingInformationCodeJt, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - LoanProcessingInformation (D4) [AUSF.X24]
         /// </summary>
-        public string LoanProcessingInformationD4 { get => _loanProcessingInformationD4; set => SetField(ref _loanProcessingInformationD4, value); }
+        public string? LoanProcessingInformationD4 { get => _loanProcessingInformationD4; set => SetField(ref _loanProcessingInformationD4, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - LoanProcessingInformation (GO) [AUSF.X23]
         /// </summary>
-        public string LoanProcessingInformationGO { get => _loanProcessingInformationGO; set => SetField(ref _loanProcessingInformationGO, value); }
+        public string? LoanProcessingInformationGO { get => _loanProcessingInformationGO; set => SetField(ref _loanProcessingInformationGO, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - LoanProcessingInformation (HA) [AUSF.X22]
         /// </summary>
-        public string LoanProcessingInformationHA { get => _loanProcessingInformationHA; set => SetField(ref _loanProcessingInformationHA, value); }
+        public string? LoanProcessingInformationHA { get => _loanProcessingInformationHA; set => SetField(ref _loanProcessingInformationHA, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - LoanProcessingInformation (LE) [AUSF.X43]
         /// </summary>
-        public string LoanProcessingInformationLE { get => _loanProcessingInformationLE; set => SetField(ref _loanProcessingInformationLE, value); }
+        public string? LoanProcessingInformationLE { get => _loanProcessingInformationLE; set => SetField(ref _loanProcessingInformationLE, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - LoanProcessingInformation (LF) [AUSF.X44]
         /// </summary>
-        public string LoanProcessingInformationLF { get => _loanProcessingInformationLF; set => SetField(ref _loanProcessingInformationLF, value); }
+        public string? LoanProcessingInformationLF { get => _loanProcessingInformationLF; set => SetField(ref _loanProcessingInformationLF, value); }
 
         /// <summary>
         /// Last Snapshot - AUS Tracking - Freddie Mac LPA - LoanProcessingInformation (MA) [AUSF.X42]
         /// </summary>
-        public string LoanProcessingInformationMA { get => _loanProcessingInformationMA; set => SetField(ref _loanProcessingInformationMA, value); }
+        public string? LoanProcessingInformationMA { get => _loanProcessingInformationMA; set => SetField(ref _loanProcessingInformationMA, value); }
 
         /// <summary>
         /// ATR QM - Eligibility - Loan Program [QM.X106]
@@ -1331,7 +1331,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Freddie Mac LCLA - UCD Requirement [AUSF.X70]
         /// </summary>
-        public string UcdRequirement { get => _ucdRequirement; set => SetField(ref _ucdRequirement, value); }
+        public string? UcdRequirement { get => _ucdRequirement; set => SetField(ref _ucdRequirement, value); }
 
         /// <summary>
         /// ATR QM - Eligibility - Unit Count [QM.X108]

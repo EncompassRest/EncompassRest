@@ -9,65 +9,65 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Correspondent : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _additionalLateFeeCharge;
-        private DirtyValue<string> _alternateLoanNumber;
-        private DirtyValue<DateTime?> _approvedToFundDate;
-        private DirtyValue<decimal?> _basePrice;
-        private DirtyValue<DateTime?> _cancelledDate;
-        private DirtyValue<string> _collateralTrackingNumber;
-        private DirtyValue<StringEnumValue<CommitmentType>> _commitmentType;
-        private DirtyValue<DateTime?> _conditionsReceivedDate;
-        private DirtyValue<DateTime?> _correspondentCommitmentDate;
-        private DirtyValue<DateTime?> _correspondentCommitmentExpirationDate;
-        private DirtyValue<int?> _correspondentCommitmentPeriod;
-        private DirtyValue<StringEnumValue<CorrespondentStatus>> _correspondentStatus;
-        private DirtyValue<DateTime?> _deliveryExpirationDate;
-        private DirtyValue<string> _deliveryType;
-        private DirtyValue<DateTime?> _fundedDate;
-        private DirtyValue<int?> _gracePeriodDays;
-        private DirtyValue<DateTime?> _gracePeriodStartDate;
-        private DirtyValue<string> _gracePeriodStartTrigger;
-        private DirtyValue<string> _id;
-        private DirtyValue<DateTime?> _initialSuspenseDate;
-        private DirtyValue<DateTime?> _lateDaysBegin;
-        private DirtyValue<DateTime?> _lateDaysEnd;
-        private DirtyValue<string> _lateDaysEndTrigger;
-        private DirtyValue<StringEnumValue<LateFeeChargeType>> _lateFeeChargeType;
-        private DirtyValue<string> _lateFeeFrequency;
-        private DirtyValue<string> _lateFeeNotes;
-        private DirtyValue<decimal?> _lateFeePercentage;
-        private DirtyValue<decimal?> _lateFeeTotalPriceAdjustment;
-        private DirtyValue<DateTime?> _latestConditionsDate;
-        private DirtyValue<decimal?> _lFSAmount;
-        private DirtyValue<int?> _lFSCalculateAs;
-        private DirtyValue<int?> _lFSDayCleared;
-        private DirtyValue<string> _lFSDayClearedOtherDate;
-        private DirtyValue<string> _lFSDayClearedOtherDateValue;
-        private DirtyValue<int?> _lFSFeeHandledAs;
-        private DirtyValue<int?> _lFSGracePeriodCalendar;
-        private DirtyValue<int?> _lFSGracePeriodDays;
-        private DirtyValue<int?> _lFSGracePeriodLaterOf;
-        private DirtyValue<int?> _lFSGracePeriodStarts;
-        private DirtyValue<int?> _lFSIncludeDay;
-        private DirtyValue<decimal?> _lFSLateFee;
-        private DirtyValue<int?> _lFSLateFeeBasedOn;
-        private DirtyValue<int?> _lFSMaxLateDays;
-        private DirtyValue<string> _lFSOtherDate;
-        private DirtyValue<string> _lFSOtherDateValue;
-        private DirtyValue<int?> _lFSStartOnWeekend;
-        private DirtyValue<bool?> _loanIsCommitted;
-        private DirtyValue<DateTime?> _noteDate;
-        private DirtyValue<decimal?> _originalPrincipalBalance;
-        private DirtyValue<string> _ratesheet;
-        private DirtyValue<DateTime?> _receivedDate;
-        private DirtyValue<DateTime?> _rejectedDate;
-        private DirtyValue<DateTime?> _submittedforPurchaseDate;
-        private DirtyValue<int?> _totalLateDays;
-        private DirtyValue<decimal?> _totalLateFee;
-        private DirtyValue<decimal?> _unpaidPrincipalBalance;
-        private DirtyValue<DateTime?> _voidedDate;
-        private DirtyValue<DateTime?> _withdrawalRequestedDate;
-        private DirtyValue<DateTime?> _withdrawnDate;
+        private DirtyValue<decimal?>? _additionalLateFeeCharge;
+        private DirtyValue<string?>? _alternateLoanNumber;
+        private DirtyValue<DateTime?>? _approvedToFundDate;
+        private DirtyValue<decimal?>? _basePrice;
+        private DirtyValue<DateTime?>? _cancelledDate;
+        private DirtyValue<string?>? _collateralTrackingNumber;
+        private DirtyValue<StringEnumValue<CommitmentType>>? _commitmentType;
+        private DirtyValue<DateTime?>? _conditionsReceivedDate;
+        private DirtyValue<DateTime?>? _correspondentCommitmentDate;
+        private DirtyValue<DateTime?>? _correspondentCommitmentExpirationDate;
+        private DirtyValue<int?>? _correspondentCommitmentPeriod;
+        private DirtyValue<StringEnumValue<CorrespondentStatus>>? _correspondentStatus;
+        private DirtyValue<DateTime?>? _deliveryExpirationDate;
+        private DirtyValue<string?>? _deliveryType;
+        private DirtyValue<DateTime?>? _fundedDate;
+        private DirtyValue<int?>? _gracePeriodDays;
+        private DirtyValue<DateTime?>? _gracePeriodStartDate;
+        private DirtyValue<string?>? _gracePeriodStartTrigger;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<DateTime?>? _initialSuspenseDate;
+        private DirtyValue<DateTime?>? _lateDaysBegin;
+        private DirtyValue<DateTime?>? _lateDaysEnd;
+        private DirtyValue<string?>? _lateDaysEndTrigger;
+        private DirtyValue<StringEnumValue<LateFeeChargeType>>? _lateFeeChargeType;
+        private DirtyValue<string?>? _lateFeeFrequency;
+        private DirtyValue<string?>? _lateFeeNotes;
+        private DirtyValue<decimal?>? _lateFeePercentage;
+        private DirtyValue<decimal?>? _lateFeeTotalPriceAdjustment;
+        private DirtyValue<DateTime?>? _latestConditionsDate;
+        private DirtyValue<decimal?>? _lFSAmount;
+        private DirtyValue<int?>? _lFSCalculateAs;
+        private DirtyValue<int?>? _lFSDayCleared;
+        private DirtyValue<string?>? _lFSDayClearedOtherDate;
+        private DirtyValue<string?>? _lFSDayClearedOtherDateValue;
+        private DirtyValue<int?>? _lFSFeeHandledAs;
+        private DirtyValue<int?>? _lFSGracePeriodCalendar;
+        private DirtyValue<int?>? _lFSGracePeriodDays;
+        private DirtyValue<int?>? _lFSGracePeriodLaterOf;
+        private DirtyValue<int?>? _lFSGracePeriodStarts;
+        private DirtyValue<int?>? _lFSIncludeDay;
+        private DirtyValue<decimal?>? _lFSLateFee;
+        private DirtyValue<int?>? _lFSLateFeeBasedOn;
+        private DirtyValue<int?>? _lFSMaxLateDays;
+        private DirtyValue<string?>? _lFSOtherDate;
+        private DirtyValue<string?>? _lFSOtherDateValue;
+        private DirtyValue<int?>? _lFSStartOnWeekend;
+        private DirtyValue<bool?>? _loanIsCommitted;
+        private DirtyValue<DateTime?>? _noteDate;
+        private DirtyValue<decimal?>? _originalPrincipalBalance;
+        private DirtyValue<string?>? _ratesheet;
+        private DirtyValue<DateTime?>? _receivedDate;
+        private DirtyValue<DateTime?>? _rejectedDate;
+        private DirtyValue<DateTime?>? _submittedforPurchaseDate;
+        private DirtyValue<int?>? _totalLateDays;
+        private DirtyValue<decimal?>? _totalLateFee;
+        private DirtyValue<decimal?>? _unpaidPrincipalBalance;
+        private DirtyValue<DateTime?>? _voidedDate;
+        private DirtyValue<DateTime?>? _withdrawalRequestedDate;
+        private DirtyValue<DateTime?>? _withdrawnDate;
 
         /// <summary>
         /// Correspondent Loan Status - Late Fee - Additional Charge [3932]
@@ -78,7 +78,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Loan Status - Alternate Loan Number [4548]
         /// </summary>
-        public string AlternateLoanNumber { get => _alternateLoanNumber; set => SetField(ref _alternateLoanNumber, value); }
+        public string? AlternateLoanNumber { get => _alternateLoanNumber; set => SetField(ref _alternateLoanNumber, value); }
 
         /// <summary>
         /// Correspondent Loan Status - Cleared for Purchase Date [3921]
@@ -99,7 +99,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Loan Status - Collateral Tracking Number [4547]
         /// </summary>
-        public string CollateralTrackingNumber { get => _collateralTrackingNumber; set => SetField(ref _collateralTrackingNumber, value); }
+        public string? CollateralTrackingNumber { get => _collateralTrackingNumber; set => SetField(ref _collateralTrackingNumber, value); }
 
         /// <summary>
         /// Correspondent Loan Status - Commitment Type [4105]
@@ -140,7 +140,7 @@ namespace EncompassRest.Loans
         /// Correspondent Loan Status - Delivery Type [3967]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DeliveryType { get => _deliveryType; set => SetField(ref _deliveryType, value); }
+        public string? DeliveryType { get => _deliveryType; set => SetField(ref _deliveryType, value); }
 
         /// <summary>
         /// Correspondent Loan Status - Purchase Date [3922]
@@ -160,12 +160,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Loan Status - Grace Period Start Trigger Date [4111]
         /// </summary>
-        public string GracePeriodStartTrigger { get => _gracePeriodStartTrigger; set => SetField(ref _gracePeriodStartTrigger, value); }
+        public string? GracePeriodStartTrigger { get => _gracePeriodStartTrigger; set => SetField(ref _gracePeriodStartTrigger, value); }
 
         /// <summary>
         /// Correspondent Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Correspondent Loan Status - Purchase Suspense Date [3918]
@@ -185,7 +185,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Loan Status - Late Days End Trigger  Date [4112]
         /// </summary>
-        public string LateDaysEndTrigger { get => _lateDaysEndTrigger; set => SetField(ref _lateDaysEndTrigger, value); }
+        public string? LateDaysEndTrigger { get => _lateDaysEndTrigger; set => SetField(ref _lateDaysEndTrigger, value); }
 
         /// <summary>
         /// Correspondent Loan Status - Late Fee Charge Type [3936]
@@ -195,12 +195,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Loan Status - Late Fee - Frequency [3933]
         /// </summary>
-        public string LateFeeFrequency { get => _lateFeeFrequency; set => SetField(ref _lateFeeFrequency, value); }
+        public string? LateFeeFrequency { get => _lateFeeFrequency; set => SetField(ref _lateFeeFrequency, value); }
 
         /// <summary>
         /// Correspondent Loan Status - Late Fee - Notes [3935]
         /// </summary>
-        public string LateFeeNotes { get => _lateFeeNotes; set => SetField(ref _lateFeeNotes, value); }
+        public string? LateFeeNotes { get => _lateFeeNotes; set => SetField(ref _lateFeeNotes, value); }
 
         /// <summary>
         /// Correspondent Loan Status - Late Fee - Late Fee Percentage [3931]
@@ -238,12 +238,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Loan Status - External Late Fee Settings - DayClearedOtherDate [LATEFEESETTING.X13]
         /// </summary>
-        public string LFSDayClearedOtherDate { get => _lFSDayClearedOtherDate; set => SetField(ref _lFSDayClearedOtherDate, value); }
+        public string? LFSDayClearedOtherDate { get => _lFSDayClearedOtherDate; set => SetField(ref _lFSDayClearedOtherDate, value); }
 
         /// <summary>
         /// Correspondent Loan Status - External Late Fee Settings - DayClearedOtherDate Value [LATEFEESETTING.X15]
         /// </summary>
-        public string LFSDayClearedOtherDateValue { get => _lFSDayClearedOtherDateValue; set => SetField(ref _lFSDayClearedOtherDateValue, value); }
+        public string? LFSDayClearedOtherDateValue { get => _lFSDayClearedOtherDateValue; set => SetField(ref _lFSDayClearedOtherDateValue, value); }
 
         /// <summary>
         /// Correspondent Loan Status - External Late Fee Settings - FeeHandledAs [LATEFEESETTING.X2]
@@ -294,12 +294,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Loan Status - External Late Fee Settings - OtherDate [LATEFEESETTING.X9]
         /// </summary>
-        public string LFSOtherDate { get => _lFSOtherDate; set => SetField(ref _lFSOtherDate, value); }
+        public string? LFSOtherDate { get => _lFSOtherDate; set => SetField(ref _lFSOtherDate, value); }
 
         /// <summary>
         /// Correspondent Loan Status - External Late Fee Settings - OtherDate Value [LATEFEESETTING.X14]
         /// </summary>
-        public string LFSOtherDateValue { get => _lFSOtherDateValue; set => SetField(ref _lFSOtherDateValue, value); }
+        public string? LFSOtherDateValue { get => _lFSOtherDateValue; set => SetField(ref _lFSOtherDateValue, value); }
 
         /// <summary>
         /// Correspondent Loan Status - External Late Fee Settings - StartOnWeekend [LATEFEESETTING.X10]
@@ -325,7 +325,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Loan Status - Rate Sheet ID [3923]
         /// </summary>
-        public string Ratesheet { get => _ratesheet; set => SetField(ref _ratesheet, value); }
+        public string? Ratesheet { get => _ratesheet; set => SetField(ref _ratesheet, value); }
 
         /// <summary>
         /// Correspondent Loan Status - Received Date [3917]

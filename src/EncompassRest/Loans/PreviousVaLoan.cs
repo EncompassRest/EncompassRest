@@ -10,17 +10,17 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(PreviousVaLoanIndex))]
     public sealed partial class PreviousVaLoan : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<DateTime?> _dateOfLoan;
-        private DirtyValue<DateTime?> _dateSold;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<PreviousVaLoanLoanType>> _loanType;
-        private DirtyValue<int?> _previousVaLoanIndex;
-        private DirtyValue<string> _propertyAddress;
-        private DirtyValue<string> _propertyCity;
-        private DirtyValue<bool?> _propertyOwned;
-        private DirtyValue<string> _propertyPostalCode;
-        private DirtyValue<StringEnumValue<State>> _propertyState;
-        private DirtyValue<string> _vALoanNumber;
+        private DirtyValue<DateTime?>? _dateOfLoan;
+        private DirtyValue<DateTime?>? _dateSold;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<PreviousVaLoanLoanType>>? _loanType;
+        private DirtyValue<int?>? _previousVaLoanIndex;
+        private DirtyValue<string?>? _propertyAddress;
+        private DirtyValue<string?>? _propertyCity;
+        private DirtyValue<bool?>? _propertyOwned;
+        private DirtyValue<string?>? _propertyPostalCode;
+        private DirtyValue<StringEnumValue<State>>? _propertyState;
+        private DirtyValue<string?>? _vALoanNumber;
 
         /// <summary>
         /// PreviousVaLoan DateOfLoan
@@ -36,7 +36,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreviousVaLoan Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// PreviousVaLoan LoanType
@@ -51,12 +51,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreviousVaLoan PropertyAddress
         /// </summary>
-        public string PropertyAddress { get => _propertyAddress; set => SetField(ref _propertyAddress, value); }
+        public string? PropertyAddress { get => _propertyAddress; set => SetField(ref _propertyAddress, value); }
 
         /// <summary>
         /// PreviousVaLoan PropertyCity
         /// </summary>
-        public string PropertyCity { get => _propertyCity; set => SetField(ref _propertyCity, value); }
+        public string? PropertyCity { get => _propertyCity; set => SetField(ref _propertyCity, value); }
 
         /// <summary>
         /// PreviousVaLoan PropertyOwned
@@ -68,7 +68,7 @@ namespace EncompassRest.Loans
         /// PreviousVaLoan PropertyPostalCode
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string PropertyPostalCode { get => _propertyPostalCode; set => SetField(ref _propertyPostalCode, value); }
+        public string? PropertyPostalCode { get => _propertyPostalCode; set => SetField(ref _propertyPostalCode, value); }
 
         /// <summary>
         /// PreviousVaLoan PropertyState
@@ -79,6 +79,6 @@ namespace EncompassRest.Loans
         /// PreviousVaLoan VALoanNumber
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string VALoanNumber { get => _vALoanNumber; set => SetField(ref _vALoanNumber, value); }
+        public string? VALoanNumber { get => _vALoanNumber; set => SetField(ref _vALoanNumber, value); }
     }
 }

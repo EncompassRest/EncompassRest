@@ -5,9 +5,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AccessToTPOTradeManagementRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _updateCorrespondentTrades;
-        private DirtyValue<bool?> _viewCorrespondentMasterCommitments;
-        private DirtyValue<bool?> _viewCorrespondentTrades;
+        private DirtyValue<bool?>? _updateCorrespondentTrades;
+        private DirtyValue<bool?>? _viewCorrespondentMasterCommitments;
+        private DirtyValue<bool?>? _viewCorrespondentTrades;
 
         /// <summary>
         /// AccessToTPOTradeManagementRights UpdateCorrespondentTrades

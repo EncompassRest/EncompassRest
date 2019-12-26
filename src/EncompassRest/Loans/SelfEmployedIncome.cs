@@ -9,14 +9,14 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(FieldName) + "," + nameof(FormType))]
     public sealed partial class SelfEmployedIncome : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<bool?> _boolFieldValue;
-        private DirtyValue<string> _businessName;
-        private DirtyValue<StringEnumValue<FieldName>> _fieldName;
-        private DirtyValue<string> _fieldValue;
-        private DirtyValue<decimal?> _firstYearAmount;
-        private DirtyValue<StringEnumValue<FormType>> _formType;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _secondYearAmount;
+        private DirtyValue<bool?>? _boolFieldValue;
+        private DirtyValue<string?>? _businessName;
+        private DirtyValue<StringEnumValue<FieldName>>? _fieldName;
+        private DirtyValue<string?>? _fieldValue;
+        private DirtyValue<decimal?>? _firstYearAmount;
+        private DirtyValue<StringEnumValue<FormType>>? _formType;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _secondYearAmount;
 
         /// <summary>
         /// SelfEmployedIncome BoolFieldValue
@@ -27,7 +27,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// 1084A/1040 Business Information - Business Name [FM1084.X177]
         /// </summary>
-        public string BusinessName { get => _businessName; set => SetField(ref _businessName, value); }
+        public string? BusinessName { get => _businessName; set => SetField(ref _businessName, value); }
 
         /// <summary>
         /// SelfEmployedIncome FieldName [FM1084.X18]
@@ -37,7 +37,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SelfEmployedIncome FieldValue
         /// </summary>
-        public string FieldValue { get => _fieldValue; set => SetField(ref _fieldValue, value); }
+        public string? FieldValue { get => _fieldValue; set => SetField(ref _fieldValue, value); }
 
         /// <summary>
         /// SelfEmployedIncome FirstYearAmount
@@ -53,7 +53,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SelfEmployedIncome Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// SelfEmployedIncome SecondYearAmount

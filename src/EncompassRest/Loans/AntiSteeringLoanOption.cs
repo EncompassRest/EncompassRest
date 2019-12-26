@@ -9,58 +9,58 @@ namespace EncompassRest.Loans
     [Entity(PropertiesToAlwaysSerialize = nameof(AntiSteeringLoanOptionIndex))]
     public sealed partial class AntiSteeringLoanOption : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _antiSteeringLoanOptionIndex;
-        private DirtyValue<decimal?> _brokerCompensationFeeAmount;
-        private DirtyValue<decimal?> _brokerCompensationFeeBorPaidAmount;
-        private DirtyValue<decimal?> _brokerCompensationFeePercentage;
-        private DirtyValue<decimal?> _brokerFeeAmount;
-        private DirtyValue<decimal?> _brokerFeeBorPaidAmount;
-        private DirtyValue<decimal?> _brokerFeePercentage;
-        private DirtyValue<decimal?> _brokerFeeSellerPaidAmount;
-        private DirtyValue<string> _creditorName;
-        private DirtyValue<decimal?> _discountAdditionalAmount;
-        private DirtyValue<decimal?> _discountAmount;
-        private DirtyValue<decimal?> _discountFeeBorPaidAmount;
-        private DirtyValue<decimal?> _discountFeeSellerPaidAmount;
-        private DirtyValue<decimal?> _discountPercentage;
-        private DirtyValue<decimal?> _discountPoints;
-        private DirtyValue<int?> _fixedRatePeriod;
-        private DirtyValue<StringEnumValue<YesOrNo>> _haveDemandFeature;
-        private DirtyValue<bool?> _havePrepaymentPenalty;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _inspectionFeeBorPaidAmount;
-        private DirtyValue<decimal?> _inspectionFeeSellerPaidAmount;
-        private DirtyValue<decimal?> _interestRate;
-        private DirtyValue<StringEnumValue<YesOrNo>> _isBalloonPaymentIn7Years;
-        private DirtyValue<StringEnumValue<YesOrNo>> _isInterestOnlyLoan;
-        private DirtyValue<bool?> _isNegativeAmortization;
-        private DirtyValue<int?> _loanTerm;
-        private DirtyValue<StringEnumValue<AmortizationType>> _loanType;
-        private DirtyValue<decimal?> _originationFeeBorPaidAmount;
-        private DirtyValue<decimal?> _originationFeePercentage;
-        private DirtyValue<decimal?> _originationFeeSellerPaidAmount;
-        private DirtyValue<decimal?> _originationPointsFees;
-        private DirtyValue<decimal?> _originationPointsPercetange;
-        private DirtyValue<decimal?> _processingFeeBorPaidAmount;
-        private DirtyValue<decimal?> _processingFeeSellerPaidAmount;
-        private DirtyValue<decimal?> _totalOriginationDiscountAmount;
-        private DirtyValue<decimal?> _underwritingFeeBorPaidAmount;
-        private DirtyValue<decimal?> _underwritingFeeSellerPaidAmount;
-        private DirtyValue<decimal?> _userDefinedFee1BorPaidAmount;
-        private DirtyValue<string> _userDefinedFee1Description;
-        private DirtyValue<decimal?> _userDefinedFee1SellerPaidAmount;
-        private DirtyValue<decimal?> _userDefinedFee2BorPaidAmount;
-        private DirtyValue<string> _userDefinedFee2Description;
-        private DirtyValue<decimal?> _userDefinedFee2SellerPaidAmount;
-        private DirtyValue<decimal?> _userDefinedFee3BorPaidAmount;
-        private DirtyValue<string> _userDefinedFee3Description;
-        private DirtyValue<decimal?> _userDefinedFee3SellerPaidAmount;
-        private DirtyValue<decimal?> _userDefinedFee4BorPaidAmount;
-        private DirtyValue<string> _userDefinedFee4Description;
-        private DirtyValue<decimal?> _userDefinedFee4SellerPaidAmount;
-        private DirtyValue<decimal?> _userDefinedFee5BorPaidAmount;
-        private DirtyValue<string> _userDefinedFee5Description;
-        private DirtyValue<decimal?> _userDefinedFee5SellerPaidAmount;
+        private DirtyValue<int?>? _antiSteeringLoanOptionIndex;
+        private DirtyValue<decimal?>? _brokerCompensationFeeAmount;
+        private DirtyValue<decimal?>? _brokerCompensationFeeBorPaidAmount;
+        private DirtyValue<decimal?>? _brokerCompensationFeePercentage;
+        private DirtyValue<decimal?>? _brokerFeeAmount;
+        private DirtyValue<decimal?>? _brokerFeeBorPaidAmount;
+        private DirtyValue<decimal?>? _brokerFeePercentage;
+        private DirtyValue<decimal?>? _brokerFeeSellerPaidAmount;
+        private DirtyValue<string?>? _creditorName;
+        private DirtyValue<decimal?>? _discountAdditionalAmount;
+        private DirtyValue<decimal?>? _discountAmount;
+        private DirtyValue<decimal?>? _discountFeeBorPaidAmount;
+        private DirtyValue<decimal?>? _discountFeeSellerPaidAmount;
+        private DirtyValue<decimal?>? _discountPercentage;
+        private DirtyValue<decimal?>? _discountPoints;
+        private DirtyValue<int?>? _fixedRatePeriod;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _haveDemandFeature;
+        private DirtyValue<bool?>? _havePrepaymentPenalty;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _inspectionFeeBorPaidAmount;
+        private DirtyValue<decimal?>? _inspectionFeeSellerPaidAmount;
+        private DirtyValue<decimal?>? _interestRate;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _isBalloonPaymentIn7Years;
+        private DirtyValue<StringEnumValue<YesOrNo>>? _isInterestOnlyLoan;
+        private DirtyValue<bool?>? _isNegativeAmortization;
+        private DirtyValue<int?>? _loanTerm;
+        private DirtyValue<StringEnumValue<AmortizationType>>? _loanType;
+        private DirtyValue<decimal?>? _originationFeeBorPaidAmount;
+        private DirtyValue<decimal?>? _originationFeePercentage;
+        private DirtyValue<decimal?>? _originationFeeSellerPaidAmount;
+        private DirtyValue<decimal?>? _originationPointsFees;
+        private DirtyValue<decimal?>? _originationPointsPercetange;
+        private DirtyValue<decimal?>? _processingFeeBorPaidAmount;
+        private DirtyValue<decimal?>? _processingFeeSellerPaidAmount;
+        private DirtyValue<decimal?>? _totalOriginationDiscountAmount;
+        private DirtyValue<decimal?>? _underwritingFeeBorPaidAmount;
+        private DirtyValue<decimal?>? _underwritingFeeSellerPaidAmount;
+        private DirtyValue<decimal?>? _userDefinedFee1BorPaidAmount;
+        private DirtyValue<string?>? _userDefinedFee1Description;
+        private DirtyValue<decimal?>? _userDefinedFee1SellerPaidAmount;
+        private DirtyValue<decimal?>? _userDefinedFee2BorPaidAmount;
+        private DirtyValue<string?>? _userDefinedFee2Description;
+        private DirtyValue<decimal?>? _userDefinedFee2SellerPaidAmount;
+        private DirtyValue<decimal?>? _userDefinedFee3BorPaidAmount;
+        private DirtyValue<string?>? _userDefinedFee3Description;
+        private DirtyValue<decimal?>? _userDefinedFee3SellerPaidAmount;
+        private DirtyValue<decimal?>? _userDefinedFee4BorPaidAmount;
+        private DirtyValue<string?>? _userDefinedFee4Description;
+        private DirtyValue<decimal?>? _userDefinedFee4SellerPaidAmount;
+        private DirtyValue<decimal?>? _userDefinedFee5BorPaidAmount;
+        private DirtyValue<string?>? _userDefinedFee5Description;
+        private DirtyValue<decimal?>? _userDefinedFee5SellerPaidAmount;
 
         /// <summary>
         /// AntiSteeringLoanOption AntiSteeringLoanOptionIndex
@@ -112,7 +112,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AntiSteeringLoanOption CreditorName
         /// </summary>
-        public string CreditorName { get => _creditorName; set => SetField(ref _creditorName, value); }
+        public string? CreditorName { get => _creditorName; set => SetField(ref _creditorName, value); }
 
         /// <summary>
         /// AntiSteeringLoanOption DiscountAdditionalAmount
@@ -168,7 +168,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AntiSteeringLoanOption Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// AntiSteeringLoanOption InspectionFeeBorPaidAmount
@@ -282,7 +282,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AntiSteeringLoanOption UserDefinedFee1Description
         /// </summary>
-        public string UserDefinedFee1Description { get => _userDefinedFee1Description; set => SetField(ref _userDefinedFee1Description, value); }
+        public string? UserDefinedFee1Description { get => _userDefinedFee1Description; set => SetField(ref _userDefinedFee1Description, value); }
 
         /// <summary>
         /// AntiSteeringLoanOption UserDefinedFee1SellerPaidAmount
@@ -299,7 +299,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AntiSteeringLoanOption UserDefinedFee2Description
         /// </summary>
-        public string UserDefinedFee2Description { get => _userDefinedFee2Description; set => SetField(ref _userDefinedFee2Description, value); }
+        public string? UserDefinedFee2Description { get => _userDefinedFee2Description; set => SetField(ref _userDefinedFee2Description, value); }
 
         /// <summary>
         /// AntiSteeringLoanOption UserDefinedFee2SellerPaidAmount
@@ -316,7 +316,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AntiSteeringLoanOption UserDefinedFee3Description
         /// </summary>
-        public string UserDefinedFee3Description { get => _userDefinedFee3Description; set => SetField(ref _userDefinedFee3Description, value); }
+        public string? UserDefinedFee3Description { get => _userDefinedFee3Description; set => SetField(ref _userDefinedFee3Description, value); }
 
         /// <summary>
         /// AntiSteeringLoanOption UserDefinedFee3SellerPaidAmount
@@ -333,7 +333,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AntiSteeringLoanOption UserDefinedFee4Description
         /// </summary>
-        public string UserDefinedFee4Description { get => _userDefinedFee4Description; set => SetField(ref _userDefinedFee4Description, value); }
+        public string? UserDefinedFee4Description { get => _userDefinedFee4Description; set => SetField(ref _userDefinedFee4Description, value); }
 
         /// <summary>
         /// AntiSteeringLoanOption UserDefinedFee4SellerPaidAmount
@@ -350,7 +350,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AntiSteeringLoanOption UserDefinedFee5Description
         /// </summary>
-        public string UserDefinedFee5Description { get => _userDefinedFee5Description; set => SetField(ref _userDefinedFee5Description, value); }
+        public string? UserDefinedFee5Description { get => _userDefinedFee5Description; set => SetField(ref _userDefinedFee5Description, value); }
 
         /// <summary>
         /// AntiSteeringLoanOption UserDefinedFee5SellerPaidAmount

@@ -8,18 +8,18 @@ namespace EncompassRest.Organizations
     /// </summary>
     public sealed class StateLicenseExtType : DirtyExtensibleObject
     {
-        private DirtyValue<StringEnumValue<State>> _stateAbbreviation;
-        private DirtyValue<string> _licenseType;
-        private DirtyValue<bool?> _isExempted;
-        private DirtyValue<string> _licenseNo;
-        private DirtyValue<DateTime?> _issueDate;
-        private DirtyValue<DateTime?> _startDate;
-        private DirtyValue<DateTime?> _endDate;
-        private DirtyValue<StringEnumValue<LicenseStatus>> _licenseStatus;
-        private DirtyValue<DateTime?> _statusDate;
-        private DirtyValue<bool?> _isApproved;
-        private DirtyValue<DateTime?> _lastChecked;
-        private DirtyValue<bool?> _isSelected;
+        private DirtyValue<StringEnumValue<State>>? _stateAbbreviation;
+        private DirtyValue<string?>? _licenseType;
+        private DirtyValue<bool?>? _isExempted;
+        private DirtyValue<string?>? _licenseNo;
+        private DirtyValue<DateTime?>? _issueDate;
+        private DirtyValue<DateTime?>? _startDate;
+        private DirtyValue<DateTime?>? _endDate;
+        private DirtyValue<StringEnumValue<LicenseStatus>>? _licenseStatus;
+        private DirtyValue<DateTime?>? _statusDate;
+        private DirtyValue<bool?>? _isApproved;
+        private DirtyValue<DateTime?>? _lastChecked;
+        private DirtyValue<bool?>? _isSelected;
 
         /// <summary>
         /// The State code for which the license applies.
@@ -30,7 +30,7 @@ namespace EncompassRest.Organizations
         /// <summary>
         /// The type of license.
         /// </summary>
-        public string LicenseType { get => _licenseType; set => SetField(ref _licenseType, value); }
+        public string? LicenseType { get => _licenseType; set => SetField(ref _licenseType, value); }
 
         /// <summary>
         /// Indicates whether the state license is exempt.
@@ -43,7 +43,7 @@ namespace EncompassRest.Organizations
         /// <summary>
         /// The license number.
         /// </summary>
-        public string LicenseNo { get => _licenseNo; set => SetField(ref _licenseNo, value); }
+        public string? LicenseNo { get => _licenseNo; set => SetField(ref _licenseNo, value); }
 
         /// <summary>
         /// The date the license is issued to the loan officer.

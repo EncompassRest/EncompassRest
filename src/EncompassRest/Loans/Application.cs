@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,237 +11,238 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Application : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _accountNumber1;
-        private DirtyValue<string> _accountNumber2;
-        private DirtyList<AdditionalLoan> _additionalLoans;
-        private DirtyValue<decimal?> _allOtherPaymentsAmount;
-        private DirtyValue<string> _applicationId;
-        private DirtyValue<int?> _applicationIndex;
-        private DirtyValue<DateTime?> _applicationSignedDate;
-        private DirtyList<Asset> _assets;
-        private DirtyValue<decimal?> _assetsAvailableAmount;
-        private DirtyValue<ATRQMBorrower> _aTRQMBorrower;
-        private DirtyList<ATRQMBorrower> _aTRQMBorrowers;
-        private DirtyList<AUSTrackingLog> _aUSTrackingLogs;
-        private DirtyValue<decimal?> _balanceAvailableFamilySupportGuideline;
-        private Borrower _borrower;
-        private DirtyValue<decimal?> _bottomRatioPercent;
-        private DirtyValue<decimal?> _brwCoBrwTotalTaxDeductions;
-        private Borrower _coborrower;
-        private DirtyValue<string> _creditAliasName1;
-        private DirtyValue<string> _creditAliasName2;
-        private DirtyValue<string> _creditorName1;
-        private DirtyValue<string> _creditorName2;
-        private DirtyValue<string> _creditReportReferenceIdentifier;
-        private DirtyList<Employment> _employment;
-        private DirtyValue<bool?> _entityDeleted;
-        private DirtyValue<string> _equifaxAddress;
-        private DirtyValue<string> _equifaxCity;
-        private DirtyValue<string> _equifaxFax;
-        private DirtyValue<string> _equifaxModel;
-        private DirtyValue<string> _equifaxName;
-        private DirtyValue<string> _equifaxPhone;
-        private DirtyValue<string> _equifaxPostalCode;
-        private DirtyValue<string> _equifaxScoreRangeFrom;
-        private DirtyValue<string> _equifaxScoreRangeTo;
-        private DirtyValue<StringEnumValue<State>> _equifaxState;
-        private DirtyValue<string> _equifaxWebsite;
-        private DirtyValue<string> _experianAddress;
-        private DirtyValue<string> _experianCity;
-        private DirtyValue<string> _experianFax;
-        private DirtyValue<string> _experianModel;
-        private DirtyValue<string> _experianName;
-        private DirtyValue<string> _experianPhone;
-        private DirtyValue<string> _experianPostalCode;
-        private DirtyValue<string> _experianScoreRangeFrom;
-        private DirtyValue<string> _experianScoreRangeTo;
-        private DirtyValue<StringEnumValue<State>> _experianState;
-        private DirtyValue<string> _experianWebsite;
-        private DirtyValue<decimal?> _fhaVaDebtIncomeRatio;
-        private DirtyValue<decimal?> _fhaVaFamilySupportAmount;
-        private DirtyValue<decimal?> _fhaVaTotalEstimatedMonthlyShelterExpenseAmount;
-        private DirtyValue<decimal?> _fhaVaTotalNetEffectiveIncomeAmount;
-        private DirtyValue<decimal?> _fhaVaTotalNetIncomeAmount;
-        private DirtyValue<decimal?> _fhaVaTotalNetTakeHomePayAmount;
-        private DirtyValue<decimal?> _fhaVaTotalOtherNetIncome;
-        private DirtyValue<decimal?> _firstMortgagePrincipalAndInterestAmount;
-        private DirtyValue<string> _freddieMacCreditReportReferenceIdentifier;
-        private DirtyValue<decimal?> _freddieMacOccupantDebtRatio;
-        private DirtyValue<decimal?> _freddieMacOccupantHousingRatio;
-        private DirtyValue<decimal?> _freDebtToHousingGapRatio;
-        private DirtyList<GiftGrant> _giftsGrants;
-        private DirtyValue<decimal?> _grossBaseIncomeAmount;
-        private DirtyValue<decimal?> _grossIncomeForComortSet;
-        private DirtyValue<decimal?> _grossNegativeCashFlow;
-        private DirtyValue<decimal?> _grossOtherIncomeAmount;
-        private DirtyValue<decimal?> _grossPositiveCashFlow;
-        private DirtyValue<string> _hazardInsuranceAmount;
-        private DirtyValue<string> _homeownersAssociationDuesAndCondoFeesAmount;
-        private DirtyValue<string> _hudAutoLienHolderName1;
-        private DirtyValue<string> _hudAutoLienHolderName2;
-        private DirtyValue<decimal?> _hudAutoLoanAmount1;
-        private DirtyValue<decimal?> _hudAutoLoanAmount2;
-        private DirtyValue<decimal?> _hudAutoMonthlyPayment1;
-        private DirtyValue<decimal?> _hudAutoMonthlyPayment2;
-        private DirtyValue<decimal?> _hudAutoPresentBalance1;
-        private DirtyValue<decimal?> _hudAutoPresentBalance2;
-        private DirtyValue<string> _hudAutoYearAndMake1;
-        private DirtyValue<string> _hudAutoYearAndMake2;
-        private DirtyValue<decimal?> _hudLoanAmount1;
-        private DirtyValue<decimal?> _hudLoanAmount10;
-        private DirtyValue<decimal?> _hudLoanAmount11;
-        private DirtyValue<decimal?> _hudLoanAmount2;
-        private DirtyValue<decimal?> _hudLoanAmount3;
-        private DirtyValue<decimal?> _hudLoanAmount4;
-        private DirtyValue<decimal?> _hudLoanAmount5;
-        private DirtyValue<decimal?> _hudLoanAmount6;
-        private DirtyValue<decimal?> _hudLoanAmount7;
-        private DirtyValue<decimal?> _hudLoanAmount8;
-        private DirtyValue<decimal?> _hudLoanAmount9;
-        private DirtyValue<bool?> _hudRealEstateFhaInsured1;
-        private DirtyValue<bool?> _hudRealEstateFhaInsured2;
-        private DirtyValue<string> _hudRealEstateLienHolder1;
-        private DirtyValue<string> _hudRealEstateLienHolder2;
-        private DirtyValue<decimal?> _hudRealEstateLoanAmount1;
-        private DirtyValue<decimal?> _hudRealEstateLoanAmount2;
-        private DirtyValue<decimal?> _hudRealEstateMonthlyPayment1;
-        private DirtyValue<decimal?> _hudRealEstateMonthlyPayment2;
-        private DirtyValue<decimal?> _hudRealEstatePresentBalance1;
-        private DirtyValue<decimal?> _hudRealEstatePresentBalance2;
-        private DirtyValue<string> _id;
-        private DirtyList<Income> _income;
-        private DirtyValue<bool?> _incomeOfBorrowersSpouseUsedIndicator;
-        private DirtyValue<bool?> _incomeOtherThanBorrowerUsedIndicator;
-        private DirtyValue<bool?> _jointAssetLiabilityReportingIndicator;
-        private DirtyValue<string> _lastModified;
-        private DirtyList<Liability> _liabilities;
-        private DirtyValue<decimal?> _liquidAssetsComortSet;
-        private DirtyValue<string> _loanAmount;
-        private DirtyValue<string> _loanOfficerId;
-        private DirtyValue<string> _loanOfficerName;
-        private DirtyValue<decimal?> _mcawBorrowerOtherMonthlyIncomeAmount;
-        private DirtyValue<decimal?> _mcawCoborrowerOtherMonthlyIncomeAmount;
-        private DirtyValue<decimal?> _mcawGrossMonthlyIncomeAmount;
-        private DirtyValue<decimal?> _mcawMortgagePaymentToIncome1Amount;
-        private DirtyValue<decimal?> _mcawMortgagePaymentToIncome2Amount;
-        private DirtyValue<decimal?> _mcawOtherAmount;
-        private DirtyValue<decimal?> _mcawOtherDebtsAndObligationsAmount;
-        private DirtyValue<decimal?> _mcawTotalFixedPaymentForPurchaseAmount;
-        private DirtyValue<decimal?> _mcawTotalFixedPaymentForRefinanceAmount;
-        private DirtyValue<decimal?> _mcawTotalFixedPaymentToIncome1Amount;
-        private DirtyValue<decimal?> _mcawTotalFixedPaymentToIncome2Amount;
-        private DirtyValue<decimal?> _mcawTotalMonthlyPaymentsAmount;
-        private DirtyValue<decimal?> _mcawTotalMortgagePaymentAmount;
-        private DirtyValue<decimal?> _monthlyExpenseComortSet;
-        private DirtyValue<decimal?> _monthlyHousingExpenseAmount;
-        private DirtyValue<decimal?> _monthlyInstallmentExpenseAmount;
-        private DirtyValue<decimal?> _monthlyNegativeRealEstateAmount;
-        private DirtyValue<decimal?> _monthlySecondHomeAmount;
-        private DirtyValue<string> _mortgageInsuranceAmount;
-        private DirtyValue<decimal?> _netWorthAmount;
-        private DirtyList<OtherAsset> _otherAssets;
-        private DirtyValue<decimal?> _otherHousingExpenseAmount;
-        private DirtyList<OtherIncomeSource> _otherIncomeSources;
-        private DirtyValue<decimal?> _otherItemsDeducted;
-        private DirtyList<OtherLiability> _otherLiabilities;
-        private DirtyValue<decimal?> _otherMortgagePrincipalAndInterestAmount;
-        private DirtyValue<decimal?> _otherTotalIncome;
-        private DirtyValue<StringEnumValue<PastCreditRecord>> _pastCreditRecord;
-        private DirtyValue<decimal?> _presentHousingExpComortSet;
-        private DirtyValue<decimal?> _primaryResidenceComortSet;
-        private DirtyValue<StringEnumValue<PropertyUsageType>> _propertyUsageType;
-        private DirtyValue<string> _proposedDuesAmount;
-        private DirtyValue<decimal?> _proposedFirstMortgageAmount;
-        private DirtyValue<decimal?> _proposedGroundRentAmount;
-        private DirtyValue<string> _proposedHazardInsuranceAmount;
-        private DirtyValue<string> _proposedMortgageInsuranceAmount;
-        private DirtyValue<decimal?> _proposedOtherAmount;
-        private DirtyValue<decimal?> _proposedOtherMortgagesAmount;
-        private DirtyValue<string> _proposedRealEstateTaxesAmount;
-        private DirtyValue<string> _realEstateTaxAmount;
-        private DirtyValue<decimal?> _rentAmount;
-        private DirtyList<ReoProperty> _reoProperties;
-        private DirtyValue<decimal?> _reoTotalGrossRentalIncomeAmount;
-        private DirtyValue<decimal?> _reoTotalMaintenanceAmount;
-        private DirtyValue<decimal?> _reoTotalMarketValueAmount;
-        private DirtyValue<decimal?> _reoTotalMortgagePaymentsAmount;
-        private DirtyValue<decimal?> _reoTotalMortgagesAndLiensAmount;
-        private DirtyValue<int?> _reoTotalNetRentalIncomeAmount;
-        private DirtyList<Residence> _residences;
-        private DirtyValue<string> _respa6;
-        private DirtyList<SelfEmployedIncome> _selfEmployedIncomes;
-        private DirtyValue<string> _sofDBorrowerAddress;
-        private DirtyValue<string> _sofDBorrowerAddressCity;
-        private DirtyValue<StringEnumValue<State>> _sofDBorrowerAddressState;
-        private DirtyValue<StringEnumValue<SofDBorrowerAddressType>> _sofDBorrowerAddressType;
-        private DirtyValue<string> _sofDBorrowerAddressZipcode;
-        private DirtyValue<string> _sofDCoBorrowerAddress;
-        private DirtyValue<string> _sofDCoBorrowerAddressCity;
-        private DirtyValue<StringEnumValue<State>> _sofDCoBorrowerAddressState;
-        private DirtyValue<StringEnumValue<SofDBorrowerAddressType>> _sofDCoBorrowerAddressType;
-        private DirtyValue<string> _sofDCoBorrowerAddressZipcode;
-        private DirtyValue<bool?> _spouseIncomeConsider;
-        private DirtyList<Tax4506> _tax4506s;
-        private DirtyValue<decimal?> _topRatioPercent;
-        private DirtyValue<decimal?> _totalAdditionalAssetsAmount;
-        private DirtyValue<decimal?> _totalAdditionalLoansAmount;
-        private DirtyValue<decimal?> _totalAdditionalOtherAssetsAmount;
-        private DirtyValue<decimal?> _totalAppliedToDownpayment;
-        private DirtyValue<decimal?> _totalAssetsAmount;
-        private DirtyValue<decimal?> _totalBaseIncomeAmount;
-        private DirtyValue<decimal?> _totalBonusAmount;
-        private DirtyValue<decimal?> _totalCommissionsAmount;
-        private DirtyValue<decimal?> _totalDeposit;
-        private DirtyValue<decimal?> _totalDividendsInterestAmount;
-        private DirtyValue<decimal?> _totalEmploymentAmount;
-        private DirtyValue<decimal?> _totalFixedPaymentAmount;
-        private DirtyValue<decimal?> _totalGrossMonthlyIncomeAmount;
-        private DirtyValue<decimal?> _totalIncomeAmount;
-        private DirtyValue<decimal?> _totalMonthlyPaymentAmount;
-        private DirtyValue<decimal?> _totalMortgagesBalanceAmount;
-        private DirtyValue<decimal?> _totalMortgagesMonthlyPaymentAmount;
-        private DirtyValue<decimal?> _totalNetRentalIncomeAmount;
-        private DirtyValue<decimal?> _totalOther1Amount;
-        private DirtyValue<decimal?> _totalOther2Amount;
-        private DirtyValue<decimal?> _totalOtherAssetsAmount;
-        private DirtyValue<decimal?> _totalOvertimeAmount;
-        private DirtyValue<decimal?> _totalPaymentsAmount;
-        private DirtyValue<decimal?> _totalPrimaryHousingExpenseAmount;
-        private DirtyValue<decimal?> _totalReoMarketValueAmount;
-        private DirtyValue<decimal?> _totalURLA2020AssetsAmount;
-        private DirtyValue<decimal?> _totalUserDefinedIncome;
-        private DirtyList<TQLReportInformation> _tQLReports;
-        private DirtyValue<string> _transUnionAddress;
-        private DirtyValue<string> _transUnionCity;
-        private DirtyValue<string> _transUnionFax;
-        private DirtyValue<string> _transUnionModel;
-        private DirtyValue<string> _transUnionName;
-        private DirtyValue<string> _transUnionPhone;
-        private DirtyValue<string> _transUnionPostalCode;
-        private DirtyValue<string> _transUnionScoreRangeFrom;
-        private DirtyValue<string> _transUnionScoreRangeTo;
-        private DirtyValue<StringEnumValue<State>> _transUnionState;
-        private DirtyValue<string> _transUnionWebsite;
-        private DirtyList<URLAAlternateName> _uRLAAlternateNames;
-        private DirtyValue<decimal?> _userDefinedIncome;
-        private DirtyValue<string> _userDefinedIncomeDescription;
-        private DirtyValue<StringEnumValue<YOrN>> _vACreditStandards;
-        private DirtyValue<decimal?> _vaSummarySpouseIncomeAmount;
-        private DirtyValue<decimal?> _vaSummaryTotalMonthlyGrossIncomeAmount;
+        private DirtyValue<string?>? _accountNumber1;
+        private DirtyValue<string?>? _accountNumber2;
+        private DirtyList<AdditionalLoan>? _additionalLoans;
+        private DirtyValue<decimal?>? _allOtherPaymentsAmount;
+        private DirtyValue<string?>? _applicationId;
+        private DirtyValue<int?>? _applicationIndex;
+        private DirtyValue<DateTime?>? _applicationSignedDate;
+        private DirtyList<Asset>? _assets;
+        private DirtyValue<decimal?>? _assetsAvailableAmount;
+        private DirtyValue<ATRQMBorrower>? _aTRQMBorrower;
+        private DirtyList<ATRQMBorrower>? _aTRQMBorrowers;
+        private DirtyList<AUSTrackingLog>? _aUSTrackingLogs;
+        private DirtyValue<decimal?>? _balanceAvailableFamilySupportGuideline;
+        private Borrower? _borrower;
+        private DirtyValue<decimal?>? _bottomRatioPercent;
+        private DirtyValue<decimal?>? _brwCoBrwTotalTaxDeductions;
+        private Borrower? _coborrower;
+        private DirtyValue<string?>? _creditAliasName1;
+        private DirtyValue<string?>? _creditAliasName2;
+        private DirtyValue<string?>? _creditorName1;
+        private DirtyValue<string?>? _creditorName2;
+        private DirtyValue<string?>? _creditReportReferenceIdentifier;
+        private DirtyList<Employment>? _employment;
+        private DirtyValue<bool?>? _entityDeleted;
+        private DirtyValue<string?>? _equifaxAddress;
+        private DirtyValue<string?>? _equifaxCity;
+        private DirtyValue<string?>? _equifaxFax;
+        private DirtyValue<string?>? _equifaxModel;
+        private DirtyValue<string?>? _equifaxName;
+        private DirtyValue<string?>? _equifaxPhone;
+        private DirtyValue<string?>? _equifaxPostalCode;
+        private DirtyValue<string?>? _equifaxScoreRangeFrom;
+        private DirtyValue<string?>? _equifaxScoreRangeTo;
+        private DirtyValue<StringEnumValue<State>>? _equifaxState;
+        private DirtyValue<string?>? _equifaxWebsite;
+        private DirtyValue<string?>? _experianAddress;
+        private DirtyValue<string?>? _experianCity;
+        private DirtyValue<string?>? _experianFax;
+        private DirtyValue<string?>? _experianModel;
+        private DirtyValue<string?>? _experianName;
+        private DirtyValue<string?>? _experianPhone;
+        private DirtyValue<string?>? _experianPostalCode;
+        private DirtyValue<string?>? _experianScoreRangeFrom;
+        private DirtyValue<string?>? _experianScoreRangeTo;
+        private DirtyValue<StringEnumValue<State>>? _experianState;
+        private DirtyValue<string?>? _experianWebsite;
+        private DirtyValue<decimal?>? _fhaVaDebtIncomeRatio;
+        private DirtyValue<decimal?>? _fhaVaFamilySupportAmount;
+        private DirtyValue<decimal?>? _fhaVaTotalEstimatedMonthlyShelterExpenseAmount;
+        private DirtyValue<decimal?>? _fhaVaTotalNetEffectiveIncomeAmount;
+        private DirtyValue<decimal?>? _fhaVaTotalNetIncomeAmount;
+        private DirtyValue<decimal?>? _fhaVaTotalNetTakeHomePayAmount;
+        private DirtyValue<decimal?>? _fhaVaTotalOtherNetIncome;
+        private DirtyValue<decimal?>? _firstMortgagePrincipalAndInterestAmount;
+        private DirtyValue<string?>? _freddieMacCreditReportReferenceIdentifier;
+        private DirtyValue<decimal?>? _freddieMacOccupantDebtRatio;
+        private DirtyValue<decimal?>? _freddieMacOccupantHousingRatio;
+        private DirtyValue<decimal?>? _freDebtToHousingGapRatio;
+        private DirtyList<GiftGrant>? _giftsGrants;
+        private DirtyValue<decimal?>? _grossBaseIncomeAmount;
+        private DirtyValue<decimal?>? _grossIncomeForComortSet;
+        private DirtyValue<decimal?>? _grossNegativeCashFlow;
+        private DirtyValue<decimal?>? _grossOtherIncomeAmount;
+        private DirtyValue<decimal?>? _grossPositiveCashFlow;
+        private DirtyValue<string?>? _hazardInsuranceAmount;
+        private DirtyValue<string?>? _homeownersAssociationDuesAndCondoFeesAmount;
+        private DirtyValue<string?>? _hudAutoLienHolderName1;
+        private DirtyValue<string?>? _hudAutoLienHolderName2;
+        private DirtyValue<decimal?>? _hudAutoLoanAmount1;
+        private DirtyValue<decimal?>? _hudAutoLoanAmount2;
+        private DirtyValue<decimal?>? _hudAutoMonthlyPayment1;
+        private DirtyValue<decimal?>? _hudAutoMonthlyPayment2;
+        private DirtyValue<decimal?>? _hudAutoPresentBalance1;
+        private DirtyValue<decimal?>? _hudAutoPresentBalance2;
+        private DirtyValue<string?>? _hudAutoYearAndMake1;
+        private DirtyValue<string?>? _hudAutoYearAndMake2;
+        private DirtyValue<decimal?>? _hudLoanAmount1;
+        private DirtyValue<decimal?>? _hudLoanAmount10;
+        private DirtyValue<decimal?>? _hudLoanAmount11;
+        private DirtyValue<decimal?>? _hudLoanAmount2;
+        private DirtyValue<decimal?>? _hudLoanAmount3;
+        private DirtyValue<decimal?>? _hudLoanAmount4;
+        private DirtyValue<decimal?>? _hudLoanAmount5;
+        private DirtyValue<decimal?>? _hudLoanAmount6;
+        private DirtyValue<decimal?>? _hudLoanAmount7;
+        private DirtyValue<decimal?>? _hudLoanAmount8;
+        private DirtyValue<decimal?>? _hudLoanAmount9;
+        private DirtyValue<bool?>? _hudRealEstateFhaInsured1;
+        private DirtyValue<bool?>? _hudRealEstateFhaInsured2;
+        private DirtyValue<string?>? _hudRealEstateLienHolder1;
+        private DirtyValue<string?>? _hudRealEstateLienHolder2;
+        private DirtyValue<decimal?>? _hudRealEstateLoanAmount1;
+        private DirtyValue<decimal?>? _hudRealEstateLoanAmount2;
+        private DirtyValue<decimal?>? _hudRealEstateMonthlyPayment1;
+        private DirtyValue<decimal?>? _hudRealEstateMonthlyPayment2;
+        private DirtyValue<decimal?>? _hudRealEstatePresentBalance1;
+        private DirtyValue<decimal?>? _hudRealEstatePresentBalance2;
+        private DirtyValue<string?>? _id;
+        private DirtyList<Income>? _income;
+        private DirtyValue<bool?>? _incomeOfBorrowersSpouseUsedIndicator;
+        private DirtyValue<bool?>? _incomeOtherThanBorrowerUsedIndicator;
+        private DirtyValue<bool?>? _jointAssetLiabilityReportingIndicator;
+        private DirtyValue<string?>? _lastModified;
+        private DirtyList<Liability>? _liabilities;
+        private DirtyValue<decimal?>? _liquidAssetsComortSet;
+        private DirtyValue<string?>? _loanAmount;
+        private DirtyValue<string?>? _loanOfficerId;
+        private DirtyValue<string?>? _loanOfficerName;
+        private DirtyValue<decimal?>? _mcawBorrowerOtherMonthlyIncomeAmount;
+        private DirtyValue<decimal?>? _mcawCoborrowerOtherMonthlyIncomeAmount;
+        private DirtyValue<decimal?>? _mcawGrossMonthlyIncomeAmount;
+        private DirtyValue<decimal?>? _mcawMortgagePaymentToIncome1Amount;
+        private DirtyValue<decimal?>? _mcawMortgagePaymentToIncome2Amount;
+        private DirtyValue<decimal?>? _mcawOtherAmount;
+        private DirtyValue<decimal?>? _mcawOtherDebtsAndObligationsAmount;
+        private DirtyValue<decimal?>? _mcawTotalFixedPaymentForPurchaseAmount;
+        private DirtyValue<decimal?>? _mcawTotalFixedPaymentForRefinanceAmount;
+        private DirtyValue<decimal?>? _mcawTotalFixedPaymentToIncome1Amount;
+        private DirtyValue<decimal?>? _mcawTotalFixedPaymentToIncome2Amount;
+        private DirtyValue<decimal?>? _mcawTotalMonthlyPaymentsAmount;
+        private DirtyValue<decimal?>? _mcawTotalMortgagePaymentAmount;
+        private DirtyValue<decimal?>? _monthlyExpenseComortSet;
+        private DirtyValue<decimal?>? _monthlyHousingExpenseAmount;
+        private DirtyValue<decimal?>? _monthlyInstallmentExpenseAmount;
+        private DirtyValue<decimal?>? _monthlyNegativeRealEstateAmount;
+        private DirtyValue<decimal?>? _monthlySecondHomeAmount;
+        private DirtyValue<string?>? _mortgageInsuranceAmount;
+        private DirtyValue<decimal?>? _netWorthAmount;
+        private DirtyList<OtherAsset>? _otherAssets;
+        private DirtyValue<decimal?>? _otherHousingExpenseAmount;
+        private DirtyList<OtherIncomeSource>? _otherIncomeSources;
+        private DirtyValue<decimal?>? _otherItemsDeducted;
+        private DirtyList<OtherLiability>? _otherLiabilities;
+        private DirtyValue<decimal?>? _otherMortgagePrincipalAndInterestAmount;
+        private DirtyValue<decimal?>? _otherTotalIncome;
+        private DirtyValue<StringEnumValue<PastCreditRecord>>? _pastCreditRecord;
+        private DirtyValue<decimal?>? _presentHousingExpComortSet;
+        private DirtyValue<decimal?>? _primaryResidenceComortSet;
+        private DirtyValue<StringEnumValue<PropertyUsageType>>? _propertyUsageType;
+        private DirtyValue<string?>? _proposedDuesAmount;
+        private DirtyValue<decimal?>? _proposedFirstMortgageAmount;
+        private DirtyValue<decimal?>? _proposedGroundRentAmount;
+        private DirtyValue<string?>? _proposedHazardInsuranceAmount;
+        private DirtyValue<string?>? _proposedMortgageInsuranceAmount;
+        private DirtyValue<decimal?>? _proposedOtherAmount;
+        private DirtyValue<decimal?>? _proposedOtherMortgagesAmount;
+        private DirtyValue<string?>? _proposedRealEstateTaxesAmount;
+        private DirtyValue<string?>? _realEstateTaxAmount;
+        private DirtyValue<decimal?>? _rentAmount;
+        private DirtyList<ReoProperty>? _reoProperties;
+        private DirtyValue<decimal?>? _reoTotalGrossRentalIncomeAmount;
+        private DirtyValue<decimal?>? _reoTotalMaintenanceAmount;
+        private DirtyValue<decimal?>? _reoTotalMarketValueAmount;
+        private DirtyValue<decimal?>? _reoTotalMortgagePaymentsAmount;
+        private DirtyValue<decimal?>? _reoTotalMortgagesAndLiensAmount;
+        private DirtyValue<int?>? _reoTotalNetRentalIncomeAmount;
+        private DirtyList<Residence>? _residences;
+        private DirtyValue<string?>? _respa6;
+        private DirtyList<SelfEmployedIncome>? _selfEmployedIncomes;
+        private DirtyValue<string?>? _sofDBorrowerAddress;
+        private DirtyValue<string?>? _sofDBorrowerAddressCity;
+        private DirtyValue<StringEnumValue<State>>? _sofDBorrowerAddressState;
+        private DirtyValue<StringEnumValue<SofDBorrowerAddressType>>? _sofDBorrowerAddressType;
+        private DirtyValue<string?>? _sofDBorrowerAddressZipcode;
+        private DirtyValue<string?>? _sofDCoBorrowerAddress;
+        private DirtyValue<string?>? _sofDCoBorrowerAddressCity;
+        private DirtyValue<StringEnumValue<State>>? _sofDCoBorrowerAddressState;
+        private DirtyValue<StringEnumValue<SofDBorrowerAddressType>>? _sofDCoBorrowerAddressType;
+        private DirtyValue<string?>? _sofDCoBorrowerAddressZipcode;
+        private DirtyValue<bool?>? _spouseIncomeConsider;
+        private DirtyList<Tax4506>? _tax4506s;
+        private DirtyValue<decimal?>? _topRatioPercent;
+        private DirtyValue<decimal?>? _totalAdditionalAssetsAmount;
+        private DirtyValue<decimal?>? _totalAdditionalLoansAmount;
+        private DirtyValue<decimal?>? _totalAdditionalOtherAssetsAmount;
+        private DirtyValue<decimal?>? _totalAppliedToDownpayment;
+        private DirtyValue<decimal?>? _totalAssetsAmount;
+        private DirtyValue<decimal?>? _totalBaseIncomeAmount;
+        private DirtyValue<decimal?>? _totalBonusAmount;
+        private DirtyValue<decimal?>? _totalCommissionsAmount;
+        private DirtyValue<decimal?>? _totalDeposit;
+        private DirtyValue<decimal?>? _totalDividendsInterestAmount;
+        private DirtyValue<decimal?>? _totalEmploymentAmount;
+        private DirtyValue<decimal?>? _totalFixedPaymentAmount;
+        private DirtyValue<decimal?>? _totalGrossMonthlyIncomeAmount;
+        private DirtyValue<decimal?>? _totalIncomeAmount;
+        private DirtyValue<decimal?>? _totalMonthlyPaymentAmount;
+        private DirtyValue<decimal?>? _totalMortgagesBalanceAmount;
+        private DirtyValue<decimal?>? _totalMortgagesMonthlyPaymentAmount;
+        private DirtyValue<decimal?>? _totalNetRentalIncomeAmount;
+        private DirtyValue<decimal?>? _totalOther1Amount;
+        private DirtyValue<decimal?>? _totalOther2Amount;
+        private DirtyValue<decimal?>? _totalOtherAssetsAmount;
+        private DirtyValue<decimal?>? _totalOvertimeAmount;
+        private DirtyValue<decimal?>? _totalPaymentsAmount;
+        private DirtyValue<decimal?>? _totalPrimaryHousingExpenseAmount;
+        private DirtyValue<decimal?>? _totalReoMarketValueAmount;
+        private DirtyValue<decimal?>? _totalURLA2020AssetsAmount;
+        private DirtyValue<decimal?>? _totalUserDefinedIncome;
+        private DirtyList<TQLReportInformation>? _tQLReports;
+        private DirtyValue<string?>? _transUnionAddress;
+        private DirtyValue<string?>? _transUnionCity;
+        private DirtyValue<string?>? _transUnionFax;
+        private DirtyValue<string?>? _transUnionModel;
+        private DirtyValue<string?>? _transUnionName;
+        private DirtyValue<string?>? _transUnionPhone;
+        private DirtyValue<string?>? _transUnionPostalCode;
+        private DirtyValue<string?>? _transUnionScoreRangeFrom;
+        private DirtyValue<string?>? _transUnionScoreRangeTo;
+        private DirtyValue<StringEnumValue<State>>? _transUnionState;
+        private DirtyValue<string?>? _transUnionWebsite;
+        private DirtyList<URLAAlternateName>? _uRLAAlternateNames;
+        private DirtyValue<decimal?>? _userDefinedIncome;
+        private DirtyValue<string?>? _userDefinedIncomeDescription;
+        private DirtyValue<StringEnumValue<YOrN>>? _vACreditStandards;
+        private DirtyValue<decimal?>? _vaSummarySpouseIncomeAmount;
+        private DirtyValue<decimal?>? _vaSummaryTotalMonthlyGrossIncomeAmount;
 
         /// <summary>
         /// Liabilities Alternate Acct # 1 [1735]
         /// </summary>
-        public string AccountNumber1 { get => _accountNumber1; set => SetField(ref _accountNumber1, value); }
+        public string? AccountNumber1 { get => _accountNumber1; set => SetField(ref _accountNumber1, value); }
 
         /// <summary>
         /// Liabilities Alternate Acct # 2 [1737]
         /// </summary>
-        public string AccountNumber2 { get => _accountNumber2; set => SetField(ref _accountNumber2, value); }
+        public string? AccountNumber2 { get => _accountNumber2; set => SetField(ref _accountNumber2, value); }
 
         /// <summary>
         /// Application AdditionalLoans
         /// </summary>
+        [AllowNull]
         public IList<AdditionalLoan> AdditionalLoans { get => GetField(ref _additionalLoans); set => SetField(ref _additionalLoans, value); }
 
         /// <summary>
@@ -252,7 +254,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application ApplicationId
         /// </summary>
-        public string ApplicationId { get => _applicationId; set => SetField(ref _applicationId, value); }
+        public string? ApplicationId { get => _applicationId; set => SetField(ref _applicationId, value); }
 
         /// <summary>
         /// Application ApplicationIndex
@@ -267,6 +269,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application Assets
         /// </summary>
+        [AllowNull]
         public IList<Asset> Assets { get => GetField(ref _assets); set => SetField(ref _assets, value); }
 
         /// <summary>
@@ -283,11 +286,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application ATRQMBorrowers
         /// </summary>
+        [AllowNull]
         public IList<ATRQMBorrower> ATRQMBorrowers { get => GetField(ref _aTRQMBorrowers); set => SetField(ref _aTRQMBorrowers, value); }
 
         /// <summary>
         /// Application AUSTrackingLogs
         /// </summary>
+        [AllowNull]
         public IList<AUSTrackingLog> AUSTrackingLogs { get => GetField(ref _aUSTrackingLogs); set => SetField(ref _aUSTrackingLogs, value); }
 
         /// <summary>
@@ -299,6 +304,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application Borrower
         /// </summary>
+        [AllowNull]
         public Borrower Borrower { get => GetField(ref _borrower); set => SetField(ref _borrower, value); }
 
         /// <summary>
@@ -316,36 +322,38 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application Coborrower
         /// </summary>
+        [AllowNull]
         public Borrower Coborrower { get => GetField(ref _coborrower); set => SetField(ref _coborrower, value); }
 
         /// <summary>
         /// Liabilities Alternate Name 1 [206]
         /// </summary>
-        public string CreditAliasName1 { get => _creditAliasName1; set => SetField(ref _creditAliasName1, value); }
+        public string? CreditAliasName1 { get => _creditAliasName1; set => SetField(ref _creditAliasName1, value); }
 
         /// <summary>
         /// Liabilities Alternate Name 2 [203]
         /// </summary>
-        public string CreditAliasName2 { get => _creditAliasName2; set => SetField(ref _creditAliasName2, value); }
+        public string? CreditAliasName2 { get => _creditAliasName2; set => SetField(ref _creditAliasName2, value); }
 
         /// <summary>
         /// Liabilities Creditor Name 1 [1734]
         /// </summary>
-        public string CreditorName1 { get => _creditorName1; set => SetField(ref _creditorName1, value); }
+        public string? CreditorName1 { get => _creditorName1; set => SetField(ref _creditorName1, value); }
 
         /// <summary>
         /// Liabilities Creditor Name 2 [1736]
         /// </summary>
-        public string CreditorName2 { get => _creditorName2; set => SetField(ref _creditorName2, value); }
+        public string? CreditorName2 { get => _creditorName2; set => SetField(ref _creditorName2, value); }
 
         /// <summary>
         /// Trans Details Credit Rpt Ref # [300]
         /// </summary>
-        public string CreditReportReferenceIdentifier { get => _creditReportReferenceIdentifier; set => SetField(ref _creditReportReferenceIdentifier, value); }
+        public string? CreditReportReferenceIdentifier { get => _creditReportReferenceIdentifier; set => SetField(ref _creditReportReferenceIdentifier, value); }
 
         /// <summary>
         /// Application Employment
         /// </summary>
+        [AllowNull]
         public IList<Employment> Employment { get => GetField(ref _employment); set => SetField(ref _employment, value); }
 
         /// <summary>
@@ -356,50 +364,50 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure Cred Bureau 3 Co Addr [DISCLOSURE.X42]
         /// </summary>
-        public string EquifaxAddress { get => _equifaxAddress; set => SetField(ref _equifaxAddress, value); }
+        public string? EquifaxAddress { get => _equifaxAddress; set => SetField(ref _equifaxAddress, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 3 Co City [DISCLOSURE.X43]
         /// </summary>
-        public string EquifaxCity { get => _equifaxCity; set => SetField(ref _equifaxCity, value); }
+        public string? EquifaxCity { get => _equifaxCity; set => SetField(ref _equifaxCity, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 3 Co Fax [DISCLOSURE.X47]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string EquifaxFax { get => _equifaxFax; set => SetField(ref _equifaxFax, value); }
+        public string? EquifaxFax { get => _equifaxFax; set => SetField(ref _equifaxFax, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 3 Co Model [DISCLOSURE.X48]
         /// </summary>
-        public string EquifaxModel { get => _equifaxModel; set => SetField(ref _equifaxModel, value); }
+        public string? EquifaxModel { get => _equifaxModel; set => SetField(ref _equifaxModel, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 3 Co Name [DISCLOSURE.X41]
         /// </summary>
-        public string EquifaxName { get => _equifaxName; set => SetField(ref _equifaxName, value); }
+        public string? EquifaxName { get => _equifaxName; set => SetField(ref _equifaxName, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 3 Co Phone [DISCLOSURE.X46]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string EquifaxPhone { get => _equifaxPhone; set => SetField(ref _equifaxPhone, value); }
+        public string? EquifaxPhone { get => _equifaxPhone; set => SetField(ref _equifaxPhone, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 3 Co Zip [DISCLOSURE.X45]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string EquifaxPostalCode { get => _equifaxPostalCode; set => SetField(ref _equifaxPostalCode, value); }
+        public string? EquifaxPostalCode { get => _equifaxPostalCode; set => SetField(ref _equifaxPostalCode, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 3 Co Range Scores From [DISCLOSURE.X49]
         /// </summary>
-        public string EquifaxScoreRangeFrom { get => _equifaxScoreRangeFrom; set => SetField(ref _equifaxScoreRangeFrom, value); }
+        public string? EquifaxScoreRangeFrom { get => _equifaxScoreRangeFrom; set => SetField(ref _equifaxScoreRangeFrom, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 3 Co Range Scores To [DISCLOSURE.X50]
         /// </summary>
-        public string EquifaxScoreRangeTo { get => _equifaxScoreRangeTo; set => SetField(ref _equifaxScoreRangeTo, value); }
+        public string? EquifaxScoreRangeTo { get => _equifaxScoreRangeTo; set => SetField(ref _equifaxScoreRangeTo, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 3 Co State [DISCLOSURE.X44]
@@ -409,55 +417,55 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure Cred Bureau 3 Co Website [DISCLOSURE.X640]
         /// </summary>
-        public string EquifaxWebsite { get => _equifaxWebsite; set => SetField(ref _equifaxWebsite, value); }
+        public string? EquifaxWebsite { get => _equifaxWebsite; set => SetField(ref _equifaxWebsite, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 1 Co Addr [DISCLOSURE.X2]
         /// </summary>
-        public string ExperianAddress { get => _experianAddress; set => SetField(ref _experianAddress, value); }
+        public string? ExperianAddress { get => _experianAddress; set => SetField(ref _experianAddress, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 1 Co City [DISCLOSURE.X3]
         /// </summary>
-        public string ExperianCity { get => _experianCity; set => SetField(ref _experianCity, value); }
+        public string? ExperianCity { get => _experianCity; set => SetField(ref _experianCity, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 1 Co Fax [DISCLOSURE.X7]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string ExperianFax { get => _experianFax; set => SetField(ref _experianFax, value); }
+        public string? ExperianFax { get => _experianFax; set => SetField(ref _experianFax, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 1 Co Model Used [DISCLOSURE.X8]
         /// </summary>
-        public string ExperianModel { get => _experianModel; set => SetField(ref _experianModel, value); }
+        public string? ExperianModel { get => _experianModel; set => SetField(ref _experianModel, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 1 Co Name [DISCLOSURE.X1]
         /// </summary>
-        public string ExperianName { get => _experianName; set => SetField(ref _experianName, value); }
+        public string? ExperianName { get => _experianName; set => SetField(ref _experianName, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 1 Co Phone [DISCLOSURE.X6]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string ExperianPhone { get => _experianPhone; set => SetField(ref _experianPhone, value); }
+        public string? ExperianPhone { get => _experianPhone; set => SetField(ref _experianPhone, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 1 Co Zip [DISCLOSURE.X5]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string ExperianPostalCode { get => _experianPostalCode; set => SetField(ref _experianPostalCode, value); }
+        public string? ExperianPostalCode { get => _experianPostalCode; set => SetField(ref _experianPostalCode, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 1 Co Range Scores From [DISCLOSURE.X9]
         /// </summary>
-        public string ExperianScoreRangeFrom { get => _experianScoreRangeFrom; set => SetField(ref _experianScoreRangeFrom, value); }
+        public string? ExperianScoreRangeFrom { get => _experianScoreRangeFrom; set => SetField(ref _experianScoreRangeFrom, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 1 Co Range Scores To [DISCLOSURE.X10]
         /// </summary>
-        public string ExperianScoreRangeTo { get => _experianScoreRangeTo; set => SetField(ref _experianScoreRangeTo, value); }
+        public string? ExperianScoreRangeTo { get => _experianScoreRangeTo; set => SetField(ref _experianScoreRangeTo, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 1 Co State [DISCLOSURE.X4]
@@ -467,7 +475,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure Cred Bureau 1 Co Website [DISCLOSURE.X638]
         /// </summary>
-        public string ExperianWebsite { get => _experianWebsite; set => SetField(ref _experianWebsite, value); }
+        public string? ExperianWebsite { get => _experianWebsite; set => SetField(ref _experianWebsite, value); }
 
         /// <summary>
         /// VA Debt-to-Income Ratio [1341]
@@ -521,7 +529,7 @@ namespace EncompassRest.Loans
         /// Freddie Mac Credit Ref # [CASASRN.X198]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string FreddieMacCreditReportReferenceIdentifier { get => _freddieMacCreditReportReferenceIdentifier; set => SetField(ref _freddieMacCreditReportReferenceIdentifier, value); }
+        public string? FreddieMacCreditReportReferenceIdentifier { get => _freddieMacCreditReportReferenceIdentifier; set => SetField(ref _freddieMacCreditReportReferenceIdentifier, value); }
 
         /// <summary>
         /// Freddie Mac Additional Data - Occupancy Debt Ratio [CASASRN.X202]
@@ -544,6 +552,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application GiftsGrants
         /// </summary>
+        [AllowNull]
         public IList<GiftGrant> GiftsGrants { get => GetField(ref _giftsGrants); set => SetField(ref _giftsGrants, value); }
 
         /// <summary>
@@ -579,22 +588,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Expenses Present Haz Ins [122]
         /// </summary>
-        public string HazardInsuranceAmount { get => _hazardInsuranceAmount; set => SetField(ref _hazardInsuranceAmount, value); }
+        public string? HazardInsuranceAmount { get => _hazardInsuranceAmount; set => SetField(ref _hazardInsuranceAmount, value); }
 
         /// <summary>
         /// Expenses Present HOA [125]
         /// </summary>
-        public string HomeownersAssociationDuesAndCondoFeesAmount { get => _homeownersAssociationDuesAndCondoFeesAmount; set => SetField(ref _homeownersAssociationDuesAndCondoFeesAmount, value); }
+        public string? HomeownersAssociationDuesAndCondoFeesAmount { get => _homeownersAssociationDuesAndCondoFeesAmount; set => SetField(ref _homeownersAssociationDuesAndCondoFeesAmount, value); }
 
         /// <summary>
         /// HUD Property Improve Auto 1 Lienholder [CAPIAP.X134]
         /// </summary>
-        public string HudAutoLienHolderName1 { get => _hudAutoLienHolderName1; set => SetField(ref _hudAutoLienHolderName1, value); }
+        public string? HudAutoLienHolderName1 { get => _hudAutoLienHolderName1; set => SetField(ref _hudAutoLienHolderName1, value); }
 
         /// <summary>
         /// HUD Property Improve Auto 2 Lienholder [CAPIAP.X139]
         /// </summary>
-        public string HudAutoLienHolderName2 { get => _hudAutoLienHolderName2; set => SetField(ref _hudAutoLienHolderName2, value); }
+        public string? HudAutoLienHolderName2 { get => _hudAutoLienHolderName2; set => SetField(ref _hudAutoLienHolderName2, value); }
 
         /// <summary>
         /// HUD Property Improve Auto 1 Loan Amt [CAPIAP.X136]
@@ -635,12 +644,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Auto 1 Yr/Make [CAPIAP.X135]
         /// </summary>
-        public string HudAutoYearAndMake1 { get => _hudAutoYearAndMake1; set => SetField(ref _hudAutoYearAndMake1, value); }
+        public string? HudAutoYearAndMake1 { get => _hudAutoYearAndMake1; set => SetField(ref _hudAutoYearAndMake1, value); }
 
         /// <summary>
         /// HUD Property Improve Auto 2 Yr/Make [CAPIAP.X140]
         /// </summary>
-        public string HudAutoYearAndMake2 { get => _hudAutoYearAndMake2; set => SetField(ref _hudAutoYearAndMake2, value); }
+        public string? HudAutoYearAndMake2 { get => _hudAutoYearAndMake2; set => SetField(ref _hudAutoYearAndMake2, value); }
 
         /// <summary>
         /// HUD Property Improve Liability 1 Loan Amt [CAPIAP.X25]
@@ -723,12 +732,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve RE 1 Lienholder [CAPIAP.X148]
         /// </summary>
-        public string HudRealEstateLienHolder1 { get => _hudRealEstateLienHolder1; set => SetField(ref _hudRealEstateLienHolder1, value); }
+        public string? HudRealEstateLienHolder1 { get => _hudRealEstateLienHolder1; set => SetField(ref _hudRealEstateLienHolder1, value); }
 
         /// <summary>
         /// HUD Property Improve RE 2 Lienholder [CAPIAP.X149]
         /// </summary>
-        public string HudRealEstateLienHolder2 { get => _hudRealEstateLienHolder2; set => SetField(ref _hudRealEstateLienHolder2, value); }
+        public string? HudRealEstateLienHolder2 { get => _hudRealEstateLienHolder2; set => SetField(ref _hudRealEstateLienHolder2, value); }
 
         /// <summary>
         /// HUD Property Improve RE 1 Loan Amt [CAPIAP.X27]
@@ -769,11 +778,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Application Income
         /// </summary>
+        [AllowNull]
         public IList<Income> Income { get => GetField(ref _income); set => SetField(ref _income, value); }
 
         /// <summary>
@@ -796,11 +806,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application LastModified
         /// </summary>
-        public string LastModified { get => _lastModified; set => SetField(ref _lastModified, value); }
+        public string? LastModified { get => _lastModified; set => SetField(ref _lastModified, value); }
 
         /// <summary>
         /// Application Liabilities
         /// </summary>
+        [AllowNull]
         public IList<Liability> Liabilities { get => GetField(ref _liabilities); set => SetField(ref _liabilities, value); }
 
         /// <summary>
@@ -812,17 +823,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application LoanAmount
         /// </summary>
-        public string LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
+        public string? LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
 
         /// <summary>
         /// Application LoanOfficerId
         /// </summary>
-        public string LoanOfficerId { get => _loanOfficerId; set => SetField(ref _loanOfficerId, value); }
+        public string? LoanOfficerId { get => _loanOfficerId; set => SetField(ref _loanOfficerId, value); }
 
         /// <summary>
         /// Application LoanOfficerName
         /// </summary>
-        public string LoanOfficerName { get => _loanOfficerName; set => SetField(ref _loanOfficerName, value); }
+        public string? LoanOfficerName { get => _loanOfficerName; set => SetField(ref _loanOfficerName, value); }
 
         /// <summary>
         /// FHA MCAW Borr Other Mo Income [936]
@@ -935,7 +946,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Expenses Present MTG Ins [124]
         /// </summary>
-        public string MortgageInsuranceAmount { get => _mortgageInsuranceAmount; set => SetField(ref _mortgageInsuranceAmount, value); }
+        public string? MortgageInsuranceAmount { get => _mortgageInsuranceAmount; set => SetField(ref _mortgageInsuranceAmount, value); }
 
         /// <summary>
         /// Liabilities Net Worth [734]
@@ -946,6 +957,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application OtherAssets
         /// </summary>
+        [AllowNull]
         public IList<OtherAsset> OtherAssets { get => GetField(ref _otherAssets); set => SetField(ref _otherAssets, value); }
 
         /// <summary>
@@ -957,6 +969,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application OtherIncomeSources
         /// </summary>
+        [AllowNull]
         public IList<OtherIncomeSource> OtherIncomeSources { get => GetField(ref _otherIncomeSources); set => SetField(ref _otherIncomeSources, value); }
 
         /// <summary>
@@ -968,6 +981,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application OtherLiabilities
         /// </summary>
+        [AllowNull]
         public IList<OtherLiability> OtherLiabilities { get => GetField(ref _otherLiabilities); set => SetField(ref _otherLiabilities, value); }
 
         /// <summary>
@@ -1008,7 +1022,7 @@ namespace EncompassRest.Loans
         /// Underwriting HOA Fees [1729]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ProposedDuesAmount { get => _proposedDuesAmount; set => SetField(ref _proposedDuesAmount, value); }
+        public string? ProposedDuesAmount { get => _proposedDuesAmount; set => SetField(ref _proposedDuesAmount, value); }
 
         /// <summary>
         /// Underwriting First Mtg P&amp;I [1724]
@@ -1026,13 +1040,13 @@ namespace EncompassRest.Loans
         /// Underwriting Hazard Ins [1726]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ProposedHazardInsuranceAmount { get => _proposedHazardInsuranceAmount; set => SetField(ref _proposedHazardInsuranceAmount, value); }
+        public string? ProposedHazardInsuranceAmount { get => _proposedHazardInsuranceAmount; set => SetField(ref _proposedHazardInsuranceAmount, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Mo Pymt [1728]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ProposedMortgageInsuranceAmount { get => _proposedMortgageInsuranceAmount; set => SetField(ref _proposedMortgageInsuranceAmount, value); }
+        public string? ProposedMortgageInsuranceAmount { get => _proposedMortgageInsuranceAmount; set => SetField(ref _proposedMortgageInsuranceAmount, value); }
 
         /// <summary>
         /// Underwriting Other Fees [1730]
@@ -1050,12 +1064,12 @@ namespace EncompassRest.Loans
         /// Underwriting Taxes [1727]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ProposedRealEstateTaxesAmount { get => _proposedRealEstateTaxesAmount; set => SetField(ref _proposedRealEstateTaxesAmount, value); }
+        public string? ProposedRealEstateTaxesAmount { get => _proposedRealEstateTaxesAmount; set => SetField(ref _proposedRealEstateTaxesAmount, value); }
 
         /// <summary>
         /// Expenses Present Taxes [123]
         /// </summary>
-        public string RealEstateTaxAmount { get => _realEstateTaxAmount; set => SetField(ref _realEstateTaxAmount, value); }
+        public string? RealEstateTaxAmount { get => _realEstateTaxAmount; set => SetField(ref _realEstateTaxAmount, value); }
 
         /// <summary>
         /// Expenses Present Rent [119]
@@ -1066,6 +1080,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application ReoProperties
         /// </summary>
+        [AllowNull]
         public IList<ReoProperty> ReoProperties { get => GetField(ref _reoProperties); set => SetField(ref _reoProperties, value); }
 
         /// <summary>
@@ -1107,27 +1122,29 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application Residences
         /// </summary>
+        [AllowNull]
         public IList<Residence> Residences { get => GetField(ref _residences); set => SetField(ref _residences, value); }
 
         /// <summary>
         /// Application Respa6
         /// </summary>
-        public string Respa6 { get => _respa6; set => SetField(ref _respa6, value); }
+        public string? Respa6 { get => _respa6; set => SetField(ref _respa6, value); }
 
         /// <summary>
         /// Application SelfEmployedIncomes
         /// </summary>
+        [AllowNull]
         public IList<SelfEmployedIncome> SelfEmployedIncomes { get => GetField(ref _selfEmployedIncomes); set => SetField(ref _selfEmployedIncomes, value); }
 
         /// <summary>
         /// Denial Discl Info - Borrower Address [DENIAL.X82]
         /// </summary>
-        public string SofDBorrowerAddress { get => _sofDBorrowerAddress; set => SetField(ref _sofDBorrowerAddress, value); }
+        public string? SofDBorrowerAddress { get => _sofDBorrowerAddress; set => SetField(ref _sofDBorrowerAddress, value); }
 
         /// <summary>
         /// Denial Discl Info - Borrower Address - City [DENIAL.X83]
         /// </summary>
-        public string SofDBorrowerAddressCity { get => _sofDBorrowerAddressCity; set => SetField(ref _sofDBorrowerAddressCity, value); }
+        public string? SofDBorrowerAddressCity { get => _sofDBorrowerAddressCity; set => SetField(ref _sofDBorrowerAddressCity, value); }
 
         /// <summary>
         /// Denial Discl Info - Borrower Address - State [DENIAL.X84]
@@ -1143,17 +1160,17 @@ namespace EncompassRest.Loans
         /// Denial Discl Info - Borrower Address - Zipcode [DENIAL.X85]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string SofDBorrowerAddressZipcode { get => _sofDBorrowerAddressZipcode; set => SetField(ref _sofDBorrowerAddressZipcode, value); }
+        public string? SofDBorrowerAddressZipcode { get => _sofDBorrowerAddressZipcode; set => SetField(ref _sofDBorrowerAddressZipcode, value); }
 
         /// <summary>
         /// Denial Discl Info - Coborrower Address [DENIAL.X87]
         /// </summary>
-        public string SofDCoBorrowerAddress { get => _sofDCoBorrowerAddress; set => SetField(ref _sofDCoBorrowerAddress, value); }
+        public string? SofDCoBorrowerAddress { get => _sofDCoBorrowerAddress; set => SetField(ref _sofDCoBorrowerAddress, value); }
 
         /// <summary>
         /// Denial Discl Info - Coborrower Address - City [DENIAL.X88]
         /// </summary>
-        public string SofDCoBorrowerAddressCity { get => _sofDCoBorrowerAddressCity; set => SetField(ref _sofDCoBorrowerAddressCity, value); }
+        public string? SofDCoBorrowerAddressCity { get => _sofDCoBorrowerAddressCity; set => SetField(ref _sofDCoBorrowerAddressCity, value); }
 
         /// <summary>
         /// Denial Discl Info - Coborrower Address - State [DENIAL.X89]
@@ -1169,7 +1186,7 @@ namespace EncompassRest.Loans
         /// Denial Discl Info - Coborrower Address - Zipcode [DENIAL.X90]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string SofDCoBorrowerAddressZipcode { get => _sofDCoBorrowerAddressZipcode; set => SetField(ref _sofDCoBorrowerAddressZipcode, value); }
+        public string? SofDCoBorrowerAddressZipcode { get => _sofDCoBorrowerAddressZipcode; set => SetField(ref _sofDCoBorrowerAddressZipcode, value); }
 
         /// <summary>
         /// VA Veteran Income Consider Spouse Income [1006]
@@ -1179,6 +1196,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application Tax4506s
         /// </summary>
+        [AllowNull]
         public IList<Tax4506> Tax4506s { get => GetField(ref _tax4506s); set => SetField(ref _tax4506s, value); }
 
         /// <summary>
@@ -1351,55 +1369,56 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Application TQLReports
         /// </summary>
+        [AllowNull]
         public IList<TQLReportInformation> TQLReports { get => GetField(ref _tQLReports); set => SetField(ref _tQLReports, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 2 Co Addr [DISCLOSURE.X22]
         /// </summary>
-        public string TransUnionAddress { get => _transUnionAddress; set => SetField(ref _transUnionAddress, value); }
+        public string? TransUnionAddress { get => _transUnionAddress; set => SetField(ref _transUnionAddress, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 2 Co City [DISCLOSURE.X23]
         /// </summary>
-        public string TransUnionCity { get => _transUnionCity; set => SetField(ref _transUnionCity, value); }
+        public string? TransUnionCity { get => _transUnionCity; set => SetField(ref _transUnionCity, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 2 Co Fax [DISCLOSURE.X27]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string TransUnionFax { get => _transUnionFax; set => SetField(ref _transUnionFax, value); }
+        public string? TransUnionFax { get => _transUnionFax; set => SetField(ref _transUnionFax, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 2 Co Model [DISCLOSURE.X28]
         /// </summary>
-        public string TransUnionModel { get => _transUnionModel; set => SetField(ref _transUnionModel, value); }
+        public string? TransUnionModel { get => _transUnionModel; set => SetField(ref _transUnionModel, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 2 Co Name [DISCLOSURE.X21]
         /// </summary>
-        public string TransUnionName { get => _transUnionName; set => SetField(ref _transUnionName, value); }
+        public string? TransUnionName { get => _transUnionName; set => SetField(ref _transUnionName, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 2 Co Phone [DISCLOSURE.X26]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string TransUnionPhone { get => _transUnionPhone; set => SetField(ref _transUnionPhone, value); }
+        public string? TransUnionPhone { get => _transUnionPhone; set => SetField(ref _transUnionPhone, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 2 Co Zip [DISCLOSURE.X25]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string TransUnionPostalCode { get => _transUnionPostalCode; set => SetField(ref _transUnionPostalCode, value); }
+        public string? TransUnionPostalCode { get => _transUnionPostalCode; set => SetField(ref _transUnionPostalCode, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 2 Co Range Scores From [DISCLOSURE.X29]
         /// </summary>
-        public string TransUnionScoreRangeFrom { get => _transUnionScoreRangeFrom; set => SetField(ref _transUnionScoreRangeFrom, value); }
+        public string? TransUnionScoreRangeFrom { get => _transUnionScoreRangeFrom; set => SetField(ref _transUnionScoreRangeFrom, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 2 Co Range Scores To [DISCLOSURE.X30]
         /// </summary>
-        public string TransUnionScoreRangeTo { get => _transUnionScoreRangeTo; set => SetField(ref _transUnionScoreRangeTo, value); }
+        public string? TransUnionScoreRangeTo { get => _transUnionScoreRangeTo; set => SetField(ref _transUnionScoreRangeTo, value); }
 
         /// <summary>
         /// Disclosure Cred Bureau 2 Co State [DISCLOSURE.X24]
@@ -1409,11 +1428,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure Cred Bureau 2 Co Website [DISCLOSURE.X639]
         /// </summary>
-        public string TransUnionWebsite { get => _transUnionWebsite; set => SetField(ref _transUnionWebsite, value); }
+        public string? TransUnionWebsite { get => _transUnionWebsite; set => SetField(ref _transUnionWebsite, value); }
 
         /// <summary>
         /// Application URLAAlternateNames
         /// </summary>
+        [AllowNull]
         public IList<URLAAlternateName> URLAAlternateNames { get => GetField(ref _uRLAAlternateNames); set => SetField(ref _uRLAAlternateNames, value); }
 
         /// <summary>
@@ -1424,7 +1444,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Income Borr/Co-Borr Other Income 2 Descr [1818]
         /// </summary>
-        public string UserDefinedIncomeDescription { get => _userDefinedIncomeDescription; set => SetField(ref _userDefinedIncomeDescription, value); }
+        public string? UserDefinedIncomeDescription { get => _userDefinedIncomeDescription; set => SetField(ref _userDefinedIncomeDescription, value); }
 
         /// <summary>
         /// VA Meets VA Credit Standards [1327]

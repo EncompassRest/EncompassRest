@@ -8,11 +8,11 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class PurchaseAdvicePayout : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _amount;
-        private DirtyValue<string> _description;
-        private DirtyValue<decimal?> _diffAmount;
-        private DirtyValue<decimal?> _expectedAmount;
-        private DirtyValue<string> _id;
+        private DirtyValue<decimal?>? _amount;
+        private DirtyValue<string?>? _description;
+        private DirtyValue<decimal?>? _diffAmount;
+        private DirtyValue<decimal?>? _expectedAmount;
+        private DirtyValue<string?>? _id;
 
         /// <summary>
         /// PurchaseAdvicePayout Amount
@@ -23,7 +23,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PurchaseAdvicePayout Description
         /// </summary>
-        public string Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => _description; set => SetField(ref _description, value); }
 
         /// <summary>
         /// PurchaseAdvicePayout DiffAmount
@@ -40,6 +40,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PurchaseAdvicePayout Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
     }
 }

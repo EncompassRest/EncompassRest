@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,15 +9,15 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class DocumentOrderLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<DateTime?> _dateFilesPurged;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<DocumentAudit> _documentAudit;
-        private DirtyDictionary<string, string> _documentFields;
-        private DirtyList<OrderedDocument> _orderedDocuments;
-        private DirtyValue<string> _orderId;
-        private DirtyValue<string> _orderType;
-        private DirtyValue<DateTime?> _updatedDateUtc;
-        private DirtyValue<string> _userId;
+        private DirtyValue<DateTime?>? _dateFilesPurged;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<DocumentAudit>? _documentAudit;
+        private DirtyDictionary<string, string?>? _documentFields;
+        private DirtyList<OrderedDocument>? _orderedDocuments;
+        private DirtyValue<string?>? _orderId;
+        private DirtyValue<string?>? _orderType;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
+        private DirtyValue<string?>? _userId;
 
         /// <summary>
         /// DocumentOrderLog DateFilesPurged
@@ -36,22 +37,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentOrderLog DocumentFields
         /// </summary>
-        public IDictionary<string, string> DocumentFields { get => GetField(ref _documentFields); set => SetField(ref _documentFields, value); }
+        [AllowNull]
+        public IDictionary<string, string?> DocumentFields { get => GetField(ref _documentFields); set => SetField(ref _documentFields, value); }
 
         /// <summary>
         /// DocumentOrderLog OrderedDocuments
         /// </summary>
+        [AllowNull]
         public IList<OrderedDocument> OrderedDocuments { get => GetField(ref _orderedDocuments); set => SetField(ref _orderedDocuments, value); }
 
         /// <summary>
         /// DocumentOrderLog OrderId
         /// </summary>
-        public string OrderId { get => _orderId; set => SetField(ref _orderId, value); }
+        public string? OrderId { get => _orderId; set => SetField(ref _orderId, value); }
 
         /// <summary>
         /// DocumentOrderLog OrderType
         /// </summary>
-        public string OrderType { get => _orderType; set => SetField(ref _orderType, value); }
+        public string? OrderType { get => _orderType; set => SetField(ref _orderType, value); }
 
         /// <summary>
         /// DocumentOrderLog UpdatedDateUtc
@@ -61,6 +64,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentOrderLog UserId
         /// </summary>
-        public string UserId { get => _userId; set => SetField(ref _userId, value); }
+        public string? UserId { get => _userId; set => SetField(ref _userId, value); }
     }
 }

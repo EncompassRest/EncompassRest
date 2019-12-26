@@ -31,7 +31,7 @@ namespace EncompassRest
         /// <param name="list">The list to search.</param>
         /// <param name="id">The id to search for.</param>
         /// <returns></returns>
-        public static T GetById<T>(this IList<T> list, string id)
+        public static T? GetById<T>(this IList<T> list, string id)
             where T : DirtyExtensibleObject
         {
             var index = list.IndexOf(id);
@@ -69,6 +69,6 @@ namespace EncompassRest
             return -1;
         }
 
-        internal static string GetValue<TEnum>(this TEnum value) where TEnum : struct, Enum => value.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
+        internal static string? GetValue<TEnum>(this TEnum value) where TEnum : struct, Enum => value.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
     }
 }

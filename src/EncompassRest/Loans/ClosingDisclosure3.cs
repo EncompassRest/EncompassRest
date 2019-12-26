@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -9,162 +10,162 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ClosingDisclosure3 : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<decimal?> _actualLECD3TotalClosingCostJFromLatestRec;
-        private DirtyValue<decimal?> _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec;
-        private DirtyValue<decimal?> _actualLELoanAmountFromLatestRec;
-        private DirtyValue<decimal?> _actualLenderCredits;
-        private DirtyValue<decimal?> _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec;
-        private DirtyValue<decimal?> _actualSTDLEClosingCostFinancedFromLatestRec;
-        private DirtyValue<decimal?> _actualSTDLEDepositFromLatestRec;
-        private DirtyValue<decimal?> _actualSTDLEDownPaymentFromLatestRec;
-        private DirtyValue<decimal?> _actualSTDLEFundForBorrowerFromLatestRec;
-        private DirtyValue<decimal?> _actualSTDLESellerCredits;
-        private DirtyValue<decimal?> _actualSTDLESellerCreditsFromLatestRec;
-        private DirtyValue<decimal?> _actualSTDLETotalClosingCostJ;
-        private DirtyValue<decimal?> _actualSTDLETotalClosingCostJFromLatestRec;
-        private DirtyValue<string> _adjustments061;
-        private DirtyValue<decimal?> _adjustments062;
-        private DirtyValue<string> _adjustments071;
-        private DirtyValue<decimal?> _adjustments072;
-        private DirtyValue<string> _adjustments101;
-        private DirtyValue<decimal?> _adjustments102;
-        private DirtyValue<string> _adjustments111;
-        private DirtyValue<decimal?> _adjustments112;
-        private DirtyValue<string> _adjustments151;
-        private DirtyValue<decimal?> _adjustments152;
-        private DirtyValue<string> _adjustments81;
-        private DirtyValue<decimal?> _adjustments82;
-        private DirtyValue<string> _adjustments91;
-        private DirtyValue<decimal?> _adjustments92;
-        private DirtyValue<string> _adjustmentsforItemsPaidbySellerinAdvance161;
-        private DirtyValue<decimal?> _adjustmentsforItemsPaidbySellerinAdvance162;
-        private DirtyValue<string> _aLTCashToCloseDidChangeCol;
-        private DirtyValue<decimal?> _aLTCashToCloseRemark;
-        private DirtyValue<string> _aLTClosingCostBeforeClosingDidChangeCol;
-        private DirtyValue<decimal?> _aLTLegalLimit;
-        private DirtyValue<string> _aLTLoanAmountDidChangeCol;
-        private DirtyValue<StringEnumValue<IncreasedOrDecreased>> _aLTLoanAmountIncDecRemark;
-        private DirtyValue<string> _aLTTotalClosingCostDidChangeCol;
-        private DirtyValue<StringEnumValue<TotalClosingCostRemark>> _aLTTotalClosingCostRemark;
-        private DirtyValue<string> _aLTTotalPayoffsDidChangeCol;
-        private DirtyValue<decimal?> _cash;
-        private DirtyValue<decimal?> _cashToClose;
-        private DirtyValue<decimal?> _cD3CashToClose;
-        private DirtyValue<string> _cD3CashToCloseFromToBorrower;
-        private DirtyValue<decimal?> _cD3ClosingCostsPaidBeforeClosing;
-        private DirtyValue<decimal?> _cD3TotalClosingCostJ;
-        private DirtyValue<decimal?> _cD3TotalPayoffsAndPaymentsK;
-        private DirtyValue<decimal?> _closingCostsPaidAtClosing;
-        private DirtyValue<decimal?> _closingCostsPaidatClosingJ;
-        private DirtyValue<string> _duefromSelleratClosing111;
-        private DirtyValue<decimal?> _duefromSelleratClosing112;
-        private DirtyValue<string> _duefromSelleratClosing121;
-        private DirtyValue<decimal?> _duefromSelleratClosing122;
-        private DirtyValue<string> _duefromSelleratClosing131;
-        private DirtyValue<decimal?> _duefromSelleratClosing132;
-        private DirtyValue<string> _dueToSellerAtClosing61;
-        private DirtyValue<decimal?> _dueToSellerAtClosing62;
-        private DirtyValue<string> _dueToSellerAtClosing71;
-        private DirtyValue<decimal?> _dueToSellerAtClosing72;
-        private DirtyValue<string> _dueToSellerAtClosing81;
-        private DirtyValue<decimal?> _dueToSellerAtClosing82;
-        private DirtyValue<bool?> _excludeBorrowerClosingCosts;
-        private DirtyValue<decimal?> _finalCashToClose;
-        private DirtyValue<string> _fromToBorrower;
-        private DirtyValue<string> _fromToSeller;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _lECD3CashToClose;
-        private DirtyValue<string> _lECD3CashToCloseFromToBorrower;
-        private DirtyValue<decimal?> _lECD3ClosingCostsPaidBeforeClosing;
-        private DirtyValue<decimal?> _lECD3TotalClosingCostJ;
-        private DirtyValue<decimal?> _lECD3TotalPayoffsAndPaymentsK;
-        private DirtyValue<decimal?> _lELoanAmount;
-        private DirtyValue<decimal?> _liabilityAmount1;
-        private DirtyValue<decimal?> _liabilityAmount10;
-        private DirtyValue<decimal?> _liabilityAmount11;
-        private DirtyValue<decimal?> _liabilityAmount12;
-        private DirtyValue<decimal?> _liabilityAmount13;
-        private DirtyValue<decimal?> _liabilityAmount14;
-        private DirtyValue<decimal?> _liabilityAmount15;
-        private DirtyValue<decimal?> _liabilityAmount2;
-        private DirtyValue<decimal?> _liabilityAmount3;
-        private DirtyValue<decimal?> _liabilityAmount4;
-        private DirtyValue<decimal?> _liabilityAmount5;
-        private DirtyValue<decimal?> _liabilityAmount6;
-        private DirtyValue<decimal?> _liabilityAmount7;
-        private DirtyValue<decimal?> _liabilityAmount8;
-        private DirtyValue<decimal?> _liabilityAmount9;
-        private DirtyValue<string> _liabilityTo1;
-        private DirtyValue<string> _liabilityTo10;
-        private DirtyValue<string> _liabilityTo11;
-        private DirtyValue<string> _liabilityTo12;
-        private DirtyValue<string> _liabilityTo13;
-        private DirtyValue<string> _liabilityTo14;
-        private DirtyValue<string> _liabilityTo15;
-        private DirtyValue<string> _liabilityTo2;
-        private DirtyValue<string> _liabilityTo3;
-        private DirtyValue<string> _liabilityTo4;
-        private DirtyValue<string> _liabilityTo5;
-        private DirtyValue<string> _liabilityTo6;
-        private DirtyValue<string> _liabilityTo7;
-        private DirtyValue<string> _liabilityTo8;
-        private DirtyValue<string> _liabilityTo9;
-        private DirtyValue<decimal?> _liabilityTotal;
-        private DirtyValue<decimal?> _loanAmount;
-        private DirtyValue<decimal?> _nonUCDTotalAdjustmentsAndOtherCredits;
-        private DirtyValue<bool?> _omitFromPrintSellersTransaction;
-        private DirtyValue<string> _otherCredits61;
-        private DirtyValue<decimal?> _otherCredits62;
-        private DirtyValue<string> _otherCredits71;
-        private DirtyValue<decimal?> _otherCredits72;
-        private DirtyValue<decimal?> _priorToleranceCureAmount;
-        private DirtyValue<StringEnumValue<STDAdjustmentAndOtherCreditsRemark>> _sTDAdjustmentAndOtherCreditsRemark;
-        private DirtyValue<string> _sTDAdjustmentsDidChangeCol;
-        private DirtyValue<string> _sTDClosingCostFinancedDidChangeCol;
-        private DirtyValue<string> _sTDDepositDidChangeCol;
-        private DirtyValue<StringEnumValue<IncreasedOrDecreased>> _sTDDepositIncDecRemark;
-        private DirtyValue<string> _sTDDownPaymentDidChangeCol;
-        private DirtyValue<StringEnumValue<IncreasedOrDecreased>> _sTDDownPaymentIncDecRemark;
-        private DirtyValue<StringEnumValue<STDDownPaymentSectionRemark>> _sTDDownPaymentSectionRemark;
-        private DirtyValue<decimal?> _sTDFinalAdjustmentAndOtherCredits;
-        private DirtyValue<decimal?> _sTDFinalCashToClose;
-        private DirtyValue<decimal?> _sTDFinalCD3ClosingCostsPaidBeforeClosing;
-        private DirtyValue<decimal?> _sTDFinalClosingCostFinanced;
-        private DirtyValue<decimal?> _sTDFinalDeposit;
-        private DirtyValue<decimal?> _sTDFinalDownPayment;
-        private DirtyValue<decimal?> _sTDFinalFundForBorrower;
-        private DirtyValue<decimal?> _sTDFinalSellerCredits;
-        private DirtyValue<decimal?> _sTDFinalTotalClosingCostJ;
-        private DirtyValue<string> _sTDFundsForBorrowerDidChangeCol;
-        private DirtyValue<StringEnumValue<IncreasedOrDecreased>> _sTDFundsForBorrowerIncDecRemark;
-        private DirtyValue<decimal?> _sTDLEAdjustmentAndOtherCredits;
-        private DirtyValue<decimal?> _sTDLECashToClose;
-        private DirtyValue<decimal?> _sTDLECD3ClosingCostsPaidBeforeClosing;
-        private DirtyValue<decimal?> _sTDLEClosingCostFinanced;
-        private DirtyValue<decimal?> _sTDLEDeposit;
-        private DirtyValue<decimal?> _sTDLEDownPayment;
-        private DirtyValue<decimal?> _sTDLEFundForBorrower;
-        private DirtyValue<decimal?> _sTDLegalLimit;
-        private DirtyValue<decimal?> _sTDLESellerCredits;
-        private DirtyValue<decimal?> _sTDLETotalClosingCostJ;
-        private DirtyValue<string> _sTDSellerCreditsDidChangeCol;
-        private DirtyValue<StringEnumValue<IncreasedOrDecreased>> _sTDSellerCreditsIncDecRemark;
-        private DirtyValue<string> _sTDTotalClosingCostBeforeClosingDidChangeCol;
-        private DirtyValue<string> _sTDTotalClosingCostDidChangeCol;
-        private DirtyValue<StringEnumValue<TotalClosingCostRemark>> _sTDTotalClosingCostRemark;
-        private DirtyValue<decimal?> _totalAdjustmentsAndOtherCredits;
-        private DirtyValue<decimal?> _totalDuefromBorrowerAtClosing;
-        private DirtyValue<decimal?> _totalDuefromSelleratClosingN;
-        private DirtyValue<decimal?> _totalDuetoSelleratClosingM;
-        private DirtyValue<decimal?> _totalFromK;
-        private DirtyValue<decimal?> _totalFromL;
-        private DirtyValue<decimal?> _totalFromM;
-        private DirtyValue<decimal?> _totalFromN;
-        private DirtyValue<decimal?> _totalPaidAlreadybyoronBehalfofBoroweratClosing;
-        private DirtyList<UCDDetail> _uCDDetails;
-        private DirtyValue<decimal?> _uCDKSubTotal;
-        private DirtyValue<decimal?> _uCDLSubTotal;
-        private DirtyValue<decimal?> _uCDTotalAdjustmentsAndOtherCredits;
+        private DirtyValue<decimal?>? _actualLECD3TotalClosingCostJFromLatestRec;
+        private DirtyValue<decimal?>? _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec;
+        private DirtyValue<decimal?>? _actualLELoanAmountFromLatestRec;
+        private DirtyValue<decimal?>? _actualLenderCredits;
+        private DirtyValue<decimal?>? _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec;
+        private DirtyValue<decimal?>? _actualSTDLEClosingCostFinancedFromLatestRec;
+        private DirtyValue<decimal?>? _actualSTDLEDepositFromLatestRec;
+        private DirtyValue<decimal?>? _actualSTDLEDownPaymentFromLatestRec;
+        private DirtyValue<decimal?>? _actualSTDLEFundForBorrowerFromLatestRec;
+        private DirtyValue<decimal?>? _actualSTDLESellerCredits;
+        private DirtyValue<decimal?>? _actualSTDLESellerCreditsFromLatestRec;
+        private DirtyValue<decimal?>? _actualSTDLETotalClosingCostJ;
+        private DirtyValue<decimal?>? _actualSTDLETotalClosingCostJFromLatestRec;
+        private DirtyValue<string?>? _adjustments061;
+        private DirtyValue<decimal?>? _adjustments062;
+        private DirtyValue<string?>? _adjustments071;
+        private DirtyValue<decimal?>? _adjustments072;
+        private DirtyValue<string?>? _adjustments101;
+        private DirtyValue<decimal?>? _adjustments102;
+        private DirtyValue<string?>? _adjustments111;
+        private DirtyValue<decimal?>? _adjustments112;
+        private DirtyValue<string?>? _adjustments151;
+        private DirtyValue<decimal?>? _adjustments152;
+        private DirtyValue<string?>? _adjustments81;
+        private DirtyValue<decimal?>? _adjustments82;
+        private DirtyValue<string?>? _adjustments91;
+        private DirtyValue<decimal?>? _adjustments92;
+        private DirtyValue<string?>? _adjustmentsforItemsPaidbySellerinAdvance161;
+        private DirtyValue<decimal?>? _adjustmentsforItemsPaidbySellerinAdvance162;
+        private DirtyValue<string?>? _aLTCashToCloseDidChangeCol;
+        private DirtyValue<decimal?>? _aLTCashToCloseRemark;
+        private DirtyValue<string?>? _aLTClosingCostBeforeClosingDidChangeCol;
+        private DirtyValue<decimal?>? _aLTLegalLimit;
+        private DirtyValue<string?>? _aLTLoanAmountDidChangeCol;
+        private DirtyValue<StringEnumValue<IncreasedOrDecreased>>? _aLTLoanAmountIncDecRemark;
+        private DirtyValue<string?>? _aLTTotalClosingCostDidChangeCol;
+        private DirtyValue<StringEnumValue<TotalClosingCostRemark>>? _aLTTotalClosingCostRemark;
+        private DirtyValue<string?>? _aLTTotalPayoffsDidChangeCol;
+        private DirtyValue<decimal?>? _cash;
+        private DirtyValue<decimal?>? _cashToClose;
+        private DirtyValue<decimal?>? _cD3CashToClose;
+        private DirtyValue<string?>? _cD3CashToCloseFromToBorrower;
+        private DirtyValue<decimal?>? _cD3ClosingCostsPaidBeforeClosing;
+        private DirtyValue<decimal?>? _cD3TotalClosingCostJ;
+        private DirtyValue<decimal?>? _cD3TotalPayoffsAndPaymentsK;
+        private DirtyValue<decimal?>? _closingCostsPaidAtClosing;
+        private DirtyValue<decimal?>? _closingCostsPaidatClosingJ;
+        private DirtyValue<string?>? _duefromSelleratClosing111;
+        private DirtyValue<decimal?>? _duefromSelleratClosing112;
+        private DirtyValue<string?>? _duefromSelleratClosing121;
+        private DirtyValue<decimal?>? _duefromSelleratClosing122;
+        private DirtyValue<string?>? _duefromSelleratClosing131;
+        private DirtyValue<decimal?>? _duefromSelleratClosing132;
+        private DirtyValue<string?>? _dueToSellerAtClosing61;
+        private DirtyValue<decimal?>? _dueToSellerAtClosing62;
+        private DirtyValue<string?>? _dueToSellerAtClosing71;
+        private DirtyValue<decimal?>? _dueToSellerAtClosing72;
+        private DirtyValue<string?>? _dueToSellerAtClosing81;
+        private DirtyValue<decimal?>? _dueToSellerAtClosing82;
+        private DirtyValue<bool?>? _excludeBorrowerClosingCosts;
+        private DirtyValue<decimal?>? _finalCashToClose;
+        private DirtyValue<string?>? _fromToBorrower;
+        private DirtyValue<string?>? _fromToSeller;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _lECD3CashToClose;
+        private DirtyValue<string?>? _lECD3CashToCloseFromToBorrower;
+        private DirtyValue<decimal?>? _lECD3ClosingCostsPaidBeforeClosing;
+        private DirtyValue<decimal?>? _lECD3TotalClosingCostJ;
+        private DirtyValue<decimal?>? _lECD3TotalPayoffsAndPaymentsK;
+        private DirtyValue<decimal?>? _lELoanAmount;
+        private DirtyValue<decimal?>? _liabilityAmount1;
+        private DirtyValue<decimal?>? _liabilityAmount10;
+        private DirtyValue<decimal?>? _liabilityAmount11;
+        private DirtyValue<decimal?>? _liabilityAmount12;
+        private DirtyValue<decimal?>? _liabilityAmount13;
+        private DirtyValue<decimal?>? _liabilityAmount14;
+        private DirtyValue<decimal?>? _liabilityAmount15;
+        private DirtyValue<decimal?>? _liabilityAmount2;
+        private DirtyValue<decimal?>? _liabilityAmount3;
+        private DirtyValue<decimal?>? _liabilityAmount4;
+        private DirtyValue<decimal?>? _liabilityAmount5;
+        private DirtyValue<decimal?>? _liabilityAmount6;
+        private DirtyValue<decimal?>? _liabilityAmount7;
+        private DirtyValue<decimal?>? _liabilityAmount8;
+        private DirtyValue<decimal?>? _liabilityAmount9;
+        private DirtyValue<string?>? _liabilityTo1;
+        private DirtyValue<string?>? _liabilityTo10;
+        private DirtyValue<string?>? _liabilityTo11;
+        private DirtyValue<string?>? _liabilityTo12;
+        private DirtyValue<string?>? _liabilityTo13;
+        private DirtyValue<string?>? _liabilityTo14;
+        private DirtyValue<string?>? _liabilityTo15;
+        private DirtyValue<string?>? _liabilityTo2;
+        private DirtyValue<string?>? _liabilityTo3;
+        private DirtyValue<string?>? _liabilityTo4;
+        private DirtyValue<string?>? _liabilityTo5;
+        private DirtyValue<string?>? _liabilityTo6;
+        private DirtyValue<string?>? _liabilityTo7;
+        private DirtyValue<string?>? _liabilityTo8;
+        private DirtyValue<string?>? _liabilityTo9;
+        private DirtyValue<decimal?>? _liabilityTotal;
+        private DirtyValue<decimal?>? _loanAmount;
+        private DirtyValue<decimal?>? _nonUCDTotalAdjustmentsAndOtherCredits;
+        private DirtyValue<bool?>? _omitFromPrintSellersTransaction;
+        private DirtyValue<string?>? _otherCredits61;
+        private DirtyValue<decimal?>? _otherCredits62;
+        private DirtyValue<string?>? _otherCredits71;
+        private DirtyValue<decimal?>? _otherCredits72;
+        private DirtyValue<decimal?>? _priorToleranceCureAmount;
+        private DirtyValue<StringEnumValue<STDAdjustmentAndOtherCreditsRemark>>? _sTDAdjustmentAndOtherCreditsRemark;
+        private DirtyValue<string?>? _sTDAdjustmentsDidChangeCol;
+        private DirtyValue<string?>? _sTDClosingCostFinancedDidChangeCol;
+        private DirtyValue<string?>? _sTDDepositDidChangeCol;
+        private DirtyValue<StringEnumValue<IncreasedOrDecreased>>? _sTDDepositIncDecRemark;
+        private DirtyValue<string?>? _sTDDownPaymentDidChangeCol;
+        private DirtyValue<StringEnumValue<IncreasedOrDecreased>>? _sTDDownPaymentIncDecRemark;
+        private DirtyValue<StringEnumValue<STDDownPaymentSectionRemark>>? _sTDDownPaymentSectionRemark;
+        private DirtyValue<decimal?>? _sTDFinalAdjustmentAndOtherCredits;
+        private DirtyValue<decimal?>? _sTDFinalCashToClose;
+        private DirtyValue<decimal?>? _sTDFinalCD3ClosingCostsPaidBeforeClosing;
+        private DirtyValue<decimal?>? _sTDFinalClosingCostFinanced;
+        private DirtyValue<decimal?>? _sTDFinalDeposit;
+        private DirtyValue<decimal?>? _sTDFinalDownPayment;
+        private DirtyValue<decimal?>? _sTDFinalFundForBorrower;
+        private DirtyValue<decimal?>? _sTDFinalSellerCredits;
+        private DirtyValue<decimal?>? _sTDFinalTotalClosingCostJ;
+        private DirtyValue<string?>? _sTDFundsForBorrowerDidChangeCol;
+        private DirtyValue<StringEnumValue<IncreasedOrDecreased>>? _sTDFundsForBorrowerIncDecRemark;
+        private DirtyValue<decimal?>? _sTDLEAdjustmentAndOtherCredits;
+        private DirtyValue<decimal?>? _sTDLECashToClose;
+        private DirtyValue<decimal?>? _sTDLECD3ClosingCostsPaidBeforeClosing;
+        private DirtyValue<decimal?>? _sTDLEClosingCostFinanced;
+        private DirtyValue<decimal?>? _sTDLEDeposit;
+        private DirtyValue<decimal?>? _sTDLEDownPayment;
+        private DirtyValue<decimal?>? _sTDLEFundForBorrower;
+        private DirtyValue<decimal?>? _sTDLegalLimit;
+        private DirtyValue<decimal?>? _sTDLESellerCredits;
+        private DirtyValue<decimal?>? _sTDLETotalClosingCostJ;
+        private DirtyValue<string?>? _sTDSellerCreditsDidChangeCol;
+        private DirtyValue<StringEnumValue<IncreasedOrDecreased>>? _sTDSellerCreditsIncDecRemark;
+        private DirtyValue<string?>? _sTDTotalClosingCostBeforeClosingDidChangeCol;
+        private DirtyValue<string?>? _sTDTotalClosingCostDidChangeCol;
+        private DirtyValue<StringEnumValue<TotalClosingCostRemark>>? _sTDTotalClosingCostRemark;
+        private DirtyValue<decimal?>? _totalAdjustmentsAndOtherCredits;
+        private DirtyValue<decimal?>? _totalDuefromBorrowerAtClosing;
+        private DirtyValue<decimal?>? _totalDuefromSelleratClosingN;
+        private DirtyValue<decimal?>? _totalDuetoSelleratClosingM;
+        private DirtyValue<decimal?>? _totalFromK;
+        private DirtyValue<decimal?>? _totalFromL;
+        private DirtyValue<decimal?>? _totalFromM;
+        private DirtyValue<decimal?>? _totalFromN;
+        private DirtyValue<decimal?>? _totalPaidAlreadybyoronBehalfofBoroweratClosing;
+        private DirtyList<UCDDetail>? _uCDDetails;
+        private DirtyValue<decimal?>? _uCDKSubTotal;
+        private DirtyValue<decimal?>? _uCDLSubTotal;
+        private DirtyValue<decimal?>? _uCDTotalAdjustmentsAndOtherCredits;
 
         /// <summary>
         /// Decimal Value of Alternate LE CD3 Total Closing Costs J From Latest Disclosure Tracking Log [CD3.XH88]
@@ -244,7 +245,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Adjustments06_1 [CD3.X2]
         /// </summary>
-        public string Adjustments061 { get => _adjustments061; set => SetField(ref _adjustments061, value); }
+        public string? Adjustments061 { get => _adjustments061; set => SetField(ref _adjustments061, value); }
 
         /// <summary>
         /// Adjustments06_2 [CD3.X3]
@@ -255,7 +256,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Adjustments07_1 [CD3.X4]
         /// </summary>
-        public string Adjustments071 { get => _adjustments071; set => SetField(ref _adjustments071, value); }
+        public string? Adjustments071 { get => _adjustments071; set => SetField(ref _adjustments071, value); }
 
         /// <summary>
         /// Adjustments07_2 [CD3.X5]
@@ -266,7 +267,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Adjustments10_1 [CD3.X17]
         /// </summary>
-        public string Adjustments101 { get => _adjustments101; set => SetField(ref _adjustments101, value); }
+        public string? Adjustments101 { get => _adjustments101; set => SetField(ref _adjustments101, value); }
 
         /// <summary>
         /// Adjustments10_2 [CD3.X18]
@@ -277,7 +278,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Adjustments11_1 [CD3.X19]
         /// </summary>
-        public string Adjustments111 { get => _adjustments111; set => SetField(ref _adjustments111, value); }
+        public string? Adjustments111 { get => _adjustments111; set => SetField(ref _adjustments111, value); }
 
         /// <summary>
         /// Adjustments11_2 [CD3.X20]
@@ -288,7 +289,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Adjustments15_1 [CD3.X6]
         /// </summary>
-        public string Adjustments151 { get => _adjustments151; set => SetField(ref _adjustments151, value); }
+        public string? Adjustments151 { get => _adjustments151; set => SetField(ref _adjustments151, value); }
 
         /// <summary>
         /// Adjustments15_2 [CD3.X7]
@@ -299,7 +300,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Adjustments8_1 [CD3.X13]
         /// </summary>
-        public string Adjustments81 { get => _adjustments81; set => SetField(ref _adjustments81, value); }
+        public string? Adjustments81 { get => _adjustments81; set => SetField(ref _adjustments81, value); }
 
         /// <summary>
         /// Adjustments8_2 [CD3.X14]
@@ -310,7 +311,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Adjustments9_1 [CD3.X15]
         /// </summary>
-        public string Adjustments91 { get => _adjustments91; set => SetField(ref _adjustments91, value); }
+        public string? Adjustments91 { get => _adjustments91; set => SetField(ref _adjustments91, value); }
 
         /// <summary>
         /// Adjustments9_2 [CD3.X16]
@@ -321,7 +322,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AdjustmentsforItemsPaidbySellerinAdvance16_1 [CD3.X30]
         /// </summary>
-        public string AdjustmentsforItemsPaidbySellerinAdvance161 { get => _adjustmentsforItemsPaidbySellerinAdvance161; set => SetField(ref _adjustmentsforItemsPaidbySellerinAdvance161, value); }
+        public string? AdjustmentsforItemsPaidbySellerinAdvance161 { get => _adjustmentsforItemsPaidbySellerinAdvance161; set => SetField(ref _adjustmentsforItemsPaidbySellerinAdvance161, value); }
 
         /// <summary>
         /// AdjustmentsforItemsPaidbySellerinAdvance16_2 [CD3.X31]
@@ -332,7 +333,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ALT Cash To Close Did Change Col [CD3.X122]
         /// </summary>
-        public string ALTCashToCloseDidChangeCol { get => _aLTCashToCloseDidChangeCol; set => SetField(ref _aLTCashToCloseDidChangeCol, value); }
+        public string? ALTCashToCloseDidChangeCol { get => _aLTCashToCloseDidChangeCol; set => SetField(ref _aLTCashToCloseDidChangeCol, value); }
 
         /// <summary>
         /// ALT Cash To Close Remark [CD3.X133]
@@ -343,7 +344,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ALT CLosing Cost Before Did Change Col [CD3.X120]
         /// </summary>
-        public string ALTClosingCostBeforeClosingDidChangeCol { get => _aLTClosingCostBeforeClosingDidChangeCol; set => SetField(ref _aLTClosingCostBeforeClosingDidChangeCol, value); }
+        public string? ALTClosingCostBeforeClosingDidChangeCol { get => _aLTClosingCostBeforeClosingDidChangeCol; set => SetField(ref _aLTClosingCostBeforeClosingDidChangeCol, value); }
 
         /// <summary>
         /// ALT Legal Limit [CD3.X132]
@@ -354,7 +355,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ALT Loan Amount Did Change Col [CD3.X118]
         /// </summary>
-        public string ALTLoanAmountDidChangeCol { get => _aLTLoanAmountDidChangeCol; set => SetField(ref _aLTLoanAmountDidChangeCol, value); }
+        public string? ALTLoanAmountDidChangeCol { get => _aLTLoanAmountDidChangeCol; set => SetField(ref _aLTLoanAmountDidChangeCol, value); }
 
         /// <summary>
         /// ALT Loan Amount IncDec Remark [CD3.X130]
@@ -364,7 +365,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ALT Total Closing Cost Did Change Col [CD3.X119]
         /// </summary>
-        public string ALTTotalClosingCostDidChangeCol { get => _aLTTotalClosingCostDidChangeCol; set => SetField(ref _aLTTotalClosingCostDidChangeCol, value); }
+        public string? ALTTotalClosingCostDidChangeCol { get => _aLTTotalClosingCostDidChangeCol; set => SetField(ref _aLTTotalClosingCostDidChangeCol, value); }
 
         /// <summary>
         /// ALT Total Closing Cost Remark [CD3.X131]
@@ -374,7 +375,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ALT Total Payoffs Did Change Col [CD3.X121]
         /// </summary>
-        public string ALTTotalPayoffsDidChangeCol { get => _aLTTotalPayoffsDidChangeCol; set => SetField(ref _aLTTotalPayoffsDidChangeCol, value); }
+        public string? ALTTotalPayoffsDidChangeCol { get => _aLTTotalPayoffsDidChangeCol; set => SetField(ref _aLTTotalPayoffsDidChangeCol, value); }
 
         /// <summary>
         /// Cash [CD3.X40]
@@ -397,7 +398,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CD3 Cash To Close From To Borrower [CD3.X86]
         /// </summary>
-        public string CD3CashToCloseFromToBorrower { get => _cD3CashToCloseFromToBorrower; set => SetField(ref _cD3CashToCloseFromToBorrower, value); }
+        public string? CD3CashToCloseFromToBorrower { get => _cD3CashToCloseFromToBorrower; set => SetField(ref _cD3CashToCloseFromToBorrower, value); }
 
         /// <summary>
         /// CD3 Closing Costs Paid Before Closing [CD3.X83]
@@ -432,7 +433,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DuefromSelleratClosing11_1 [CD3.X32]
         /// </summary>
-        public string DuefromSelleratClosing111 { get => _duefromSelleratClosing111; set => SetField(ref _duefromSelleratClosing111, value); }
+        public string? DuefromSelleratClosing111 { get => _duefromSelleratClosing111; set => SetField(ref _duefromSelleratClosing111, value); }
 
         /// <summary>
         /// DuefromSelleratClosing11_2 [CD3.X33]
@@ -443,7 +444,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DuefromSelleratClosing12_1 [CD3.X34]
         /// </summary>
-        public string DuefromSelleratClosing121 { get => _duefromSelleratClosing121; set => SetField(ref _duefromSelleratClosing121, value); }
+        public string? DuefromSelleratClosing121 { get => _duefromSelleratClosing121; set => SetField(ref _duefromSelleratClosing121, value); }
 
         /// <summary>
         /// DuefromSelleratClosing12_2 [CD3.X35]
@@ -454,7 +455,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DuefromSelleratClosing13_1 [CD3.X36]
         /// </summary>
-        public string DuefromSelleratClosing131 { get => _duefromSelleratClosing131; set => SetField(ref _duefromSelleratClosing131, value); }
+        public string? DuefromSelleratClosing131 { get => _duefromSelleratClosing131; set => SetField(ref _duefromSelleratClosing131, value); }
 
         /// <summary>
         /// DuefromSelleratClosing13_2 [CD3.X37]
@@ -465,7 +466,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DueToSellerAtClosing6_1 [CD3.X24]
         /// </summary>
-        public string DueToSellerAtClosing61 { get => _dueToSellerAtClosing61; set => SetField(ref _dueToSellerAtClosing61, value); }
+        public string? DueToSellerAtClosing61 { get => _dueToSellerAtClosing61; set => SetField(ref _dueToSellerAtClosing61, value); }
 
         /// <summary>
         /// DueToSellerAtClosing6_2 [CD3.X25]
@@ -476,7 +477,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DueToSellerAtClosing7_1 [CD3.X26]
         /// </summary>
-        public string DueToSellerAtClosing71 { get => _dueToSellerAtClosing71; set => SetField(ref _dueToSellerAtClosing71, value); }
+        public string? DueToSellerAtClosing71 { get => _dueToSellerAtClosing71; set => SetField(ref _dueToSellerAtClosing71, value); }
 
         /// <summary>
         /// DueToSellerAtClosing7_2 [CD3.X27]
@@ -487,7 +488,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DueToSellerAtClosing8_1 [CD3.X28]
         /// </summary>
-        public string DueToSellerAtClosing81 { get => _dueToSellerAtClosing81; set => SetField(ref _dueToSellerAtClosing81, value); }
+        public string? DueToSellerAtClosing81 { get => _dueToSellerAtClosing81; set => SetField(ref _dueToSellerAtClosing81, value); }
 
         /// <summary>
         /// DueToSellerAtClosing8_2 [CD3.X29]
@@ -509,17 +510,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// From To Borrower [CD3.X48]
         /// </summary>
-        public string FromToBorrower { get => _fromToBorrower; set => SetField(ref _fromToBorrower, value); }
+        public string? FromToBorrower { get => _fromToBorrower; set => SetField(ref _fromToBorrower, value); }
 
         /// <summary>
         /// From To Seller [CD3.X49]
         /// </summary>
-        public string FromToSeller { get => _fromToSeller; set => SetField(ref _fromToSeller, value); }
+        public string? FromToSeller { get => _fromToSeller; set => SetField(ref _fromToSeller, value); }
 
         /// <summary>
         /// ClosingDisclosure3 Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// LE CD3 Cash To Close [CD3.X91]
@@ -530,7 +531,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LE CD3 Cash To Close From To Borrower [CD3.X92]
         /// </summary>
-        public string LECD3CashToCloseFromToBorrower { get => _lECD3CashToCloseFromToBorrower; set => SetField(ref _lECD3CashToCloseFromToBorrower, value); }
+        public string? LECD3CashToCloseFromToBorrower { get => _lECD3CashToCloseFromToBorrower; set => SetField(ref _lECD3CashToCloseFromToBorrower, value); }
 
         /// <summary>
         /// LE CD3 Closing Costs Paid Before Closing [CD3.X89]
@@ -649,77 +650,77 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability To 1 [CD3.X50]
         /// </summary>
-        public string LiabilityTo1 { get => _liabilityTo1; set => SetField(ref _liabilityTo1, value); }
+        public string? LiabilityTo1 { get => _liabilityTo1; set => SetField(ref _liabilityTo1, value); }
 
         /// <summary>
         /// Liability To 10 [CD3.X59]
         /// </summary>
-        public string LiabilityTo10 { get => _liabilityTo10; set => SetField(ref _liabilityTo10, value); }
+        public string? LiabilityTo10 { get => _liabilityTo10; set => SetField(ref _liabilityTo10, value); }
 
         /// <summary>
         /// Liability To 11 [CD3.X60]
         /// </summary>
-        public string LiabilityTo11 { get => _liabilityTo11; set => SetField(ref _liabilityTo11, value); }
+        public string? LiabilityTo11 { get => _liabilityTo11; set => SetField(ref _liabilityTo11, value); }
 
         /// <summary>
         /// Liability To 12 [CD3.X61]
         /// </summary>
-        public string LiabilityTo12 { get => _liabilityTo12; set => SetField(ref _liabilityTo12, value); }
+        public string? LiabilityTo12 { get => _liabilityTo12; set => SetField(ref _liabilityTo12, value); }
 
         /// <summary>
         /// Liability To 13 [CD3.X62]
         /// </summary>
-        public string LiabilityTo13 { get => _liabilityTo13; set => SetField(ref _liabilityTo13, value); }
+        public string? LiabilityTo13 { get => _liabilityTo13; set => SetField(ref _liabilityTo13, value); }
 
         /// <summary>
         /// Liability To 14 [CD3.X63]
         /// </summary>
-        public string LiabilityTo14 { get => _liabilityTo14; set => SetField(ref _liabilityTo14, value); }
+        public string? LiabilityTo14 { get => _liabilityTo14; set => SetField(ref _liabilityTo14, value); }
 
         /// <summary>
         /// Liability To 15 [CD3.X64]
         /// </summary>
-        public string LiabilityTo15 { get => _liabilityTo15; set => SetField(ref _liabilityTo15, value); }
+        public string? LiabilityTo15 { get => _liabilityTo15; set => SetField(ref _liabilityTo15, value); }
 
         /// <summary>
         /// Liability To 3 [CD3.X51]
         /// </summary>
-        public string LiabilityTo2 { get => _liabilityTo2; set => SetField(ref _liabilityTo2, value); }
+        public string? LiabilityTo2 { get => _liabilityTo2; set => SetField(ref _liabilityTo2, value); }
 
         /// <summary>
         /// Liability To 3 [CD3.X52]
         /// </summary>
-        public string LiabilityTo3 { get => _liabilityTo3; set => SetField(ref _liabilityTo3, value); }
+        public string? LiabilityTo3 { get => _liabilityTo3; set => SetField(ref _liabilityTo3, value); }
 
         /// <summary>
         /// Liability To 4 [CD3.X53]
         /// </summary>
-        public string LiabilityTo4 { get => _liabilityTo4; set => SetField(ref _liabilityTo4, value); }
+        public string? LiabilityTo4 { get => _liabilityTo4; set => SetField(ref _liabilityTo4, value); }
 
         /// <summary>
         /// Liability To  5 [CD3.X54]
         /// </summary>
-        public string LiabilityTo5 { get => _liabilityTo5; set => SetField(ref _liabilityTo5, value); }
+        public string? LiabilityTo5 { get => _liabilityTo5; set => SetField(ref _liabilityTo5, value); }
 
         /// <summary>
         ///  Liability To 6 [CD3.X55]
         /// </summary>
-        public string LiabilityTo6 { get => _liabilityTo6; set => SetField(ref _liabilityTo6, value); }
+        public string? LiabilityTo6 { get => _liabilityTo6; set => SetField(ref _liabilityTo6, value); }
 
         /// <summary>
         /// Liability To 7 [CD3.X56]
         /// </summary>
-        public string LiabilityTo7 { get => _liabilityTo7; set => SetField(ref _liabilityTo7, value); }
+        public string? LiabilityTo7 { get => _liabilityTo7; set => SetField(ref _liabilityTo7, value); }
 
         /// <summary>
         /// Liability To 8 [CD3.X57]
         /// </summary>
-        public string LiabilityTo8 { get => _liabilityTo8; set => SetField(ref _liabilityTo8, value); }
+        public string? LiabilityTo8 { get => _liabilityTo8; set => SetField(ref _liabilityTo8, value); }
 
         /// <summary>
         /// Liability To 9 [CD3.X58]
         /// </summary>
-        public string LiabilityTo9 { get => _liabilityTo9; set => SetField(ref _liabilityTo9, value); }
+        public string? LiabilityTo9 { get => _liabilityTo9; set => SetField(ref _liabilityTo9, value); }
 
         /// <summary>
         /// Liability Total [CD3.X80]
@@ -747,7 +748,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// OtherCredits6_1 [CD3.X9]
         /// </summary>
-        public string OtherCredits61 { get => _otherCredits61; set => SetField(ref _otherCredits61, value); }
+        public string? OtherCredits61 { get => _otherCredits61; set => SetField(ref _otherCredits61, value); }
 
         /// <summary>
         /// OtherCredits6_2 [CD3.X10]
@@ -758,7 +759,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// OtherCredits7_1 [CD3.X11]
         /// </summary>
-        public string OtherCredits71 { get => _otherCredits71; set => SetField(ref _otherCredits71, value); }
+        public string? OtherCredits71 { get => _otherCredits71; set => SetField(ref _otherCredits71, value); }
 
         /// <summary>
         /// OtherCredits7_2 [CD3.X12]
@@ -780,17 +781,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// STD Adjustments Did Change Col [CD3.X117]
         /// </summary>
-        public string STDAdjustmentsDidChangeCol { get => _sTDAdjustmentsDidChangeCol; set => SetField(ref _sTDAdjustmentsDidChangeCol, value); }
+        public string? STDAdjustmentsDidChangeCol { get => _sTDAdjustmentsDidChangeCol; set => SetField(ref _sTDAdjustmentsDidChangeCol, value); }
 
         /// <summary>
         /// STD Closing Cost Financed Did Change Col [CD3.X134]
         /// </summary>
-        public string STDClosingCostFinancedDidChangeCol { get => _sTDClosingCostFinancedDidChangeCol; set => SetField(ref _sTDClosingCostFinancedDidChangeCol, value); }
+        public string? STDClosingCostFinancedDidChangeCol { get => _sTDClosingCostFinancedDidChangeCol; set => SetField(ref _sTDClosingCostFinancedDidChangeCol, value); }
 
         /// <summary>
         /// STD Deposit Did Change Col [CD3.X114]
         /// </summary>
-        public string STDDepositDidChangeCol { get => _sTDDepositDidChangeCol; set => SetField(ref _sTDDepositDidChangeCol, value); }
+        public string? STDDepositDidChangeCol { get => _sTDDepositDidChangeCol; set => SetField(ref _sTDDepositDidChangeCol, value); }
 
         /// <summary>
         /// STD Deposit IncDec Remark [CD3.X126]
@@ -800,7 +801,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// STD Down Payment Did Change Col [CD3.X113]
         /// </summary>
-        public string STDDownPaymentDidChangeCol { get => _sTDDownPaymentDidChangeCol; set => SetField(ref _sTDDownPaymentDidChangeCol, value); }
+        public string? STDDownPaymentDidChangeCol { get => _sTDDownPaymentDidChangeCol; set => SetField(ref _sTDDownPaymentDidChangeCol, value); }
 
         /// <summary>
         /// STD Down Payment IncDec Remark [CD3.X124]
@@ -869,7 +870,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// STD Funds for Borrower Did Change Col [CD3.X115]
         /// </summary>
-        public string STDFundsForBorrowerDidChangeCol { get => _sTDFundsForBorrowerDidChangeCol; set => SetField(ref _sTDFundsForBorrowerDidChangeCol, value); }
+        public string? STDFundsForBorrowerDidChangeCol { get => _sTDFundsForBorrowerDidChangeCol; set => SetField(ref _sTDFundsForBorrowerDidChangeCol, value); }
 
         /// <summary>
         /// STD Funds For Borrower IncDec Remark [CD3.X127]
@@ -939,7 +940,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// STD Seller Credits Did Change Col [CD3.X116]
         /// </summary>
-        public string STDSellerCreditsDidChangeCol { get => _sTDSellerCreditsDidChangeCol; set => SetField(ref _sTDSellerCreditsDidChangeCol, value); }
+        public string? STDSellerCreditsDidChangeCol { get => _sTDSellerCreditsDidChangeCol; set => SetField(ref _sTDSellerCreditsDidChangeCol, value); }
 
         /// <summary>
         /// STD Seller Credits IncDec Remark [CD3.X128]
@@ -949,12 +950,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// STD Total Closing Cost Before CLosing Did Change Col [CD3.X112]
         /// </summary>
-        public string STDTotalClosingCostBeforeClosingDidChangeCol { get => _sTDTotalClosingCostBeforeClosingDidChangeCol; set => SetField(ref _sTDTotalClosingCostBeforeClosingDidChangeCol, value); }
+        public string? STDTotalClosingCostBeforeClosingDidChangeCol { get => _sTDTotalClosingCostBeforeClosingDidChangeCol; set => SetField(ref _sTDTotalClosingCostBeforeClosingDidChangeCol, value); }
 
         /// <summary>
         /// STD Total Closing Cost Did Change Col [CD3.X111]
         /// </summary>
-        public string STDTotalClosingCostDidChangeCol { get => _sTDTotalClosingCostDidChangeCol; set => SetField(ref _sTDTotalClosingCostDidChangeCol, value); }
+        public string? STDTotalClosingCostDidChangeCol { get => _sTDTotalClosingCostDidChangeCol; set => SetField(ref _sTDTotalClosingCostDidChangeCol, value); }
 
         /// <summary>
         /// STD Total Closing Cost Remark [CD3.X123]
@@ -1018,6 +1019,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ClosingDisclosure3 UCDDetails
         /// </summary>
+        [AllowNull]
         public IList<UCDDetail> UCDDetails { get => GetField(ref _uCDDetails); set => SetField(ref _uCDDetails, value); }
 
         /// <summary>

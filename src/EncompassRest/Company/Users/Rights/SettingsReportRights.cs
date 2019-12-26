@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,14 +8,15 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class SettingsReportRights : DirtyExtensibleObject
     {
-        private CancelSettingReportsRights _cancelSettingReports;
-        private DirtyValue<bool?> _deleteSettingsReports;
-        private DirtyValue<bool?> _generateViewSettingsReports;
-        private DirtyValue<bool?> _viewSettingsReportsSubmittedByOthers;
+        private CancelSettingReportsRights? _cancelSettingReports;
+        private DirtyValue<bool?>? _deleteSettingsReports;
+        private DirtyValue<bool?>? _generateViewSettingsReports;
+        private DirtyValue<bool?>? _viewSettingsReportsSubmittedByOthers;
 
         /// <summary>
         /// SettingsReportRights CancelSettingReports
         /// </summary>
+        [AllowNull]
         public CancelSettingReportsRights CancelSettingReports { get => GetField(ref _cancelSettingReports); set => SetField(ref _cancelSettingReports, value); }
 
         /// <summary>

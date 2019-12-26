@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,13 +7,13 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ReportsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _borrowerContactReports;
-        private DirtyValue<bool?> _businessContactReports;
-        private DirtyValue<bool?> _dynamicReporting;
-        private LoanReportsRights _loanReports;
-        private DirtyValue<bool?> _managePersonalReports;
-        private DirtyValue<bool?> _tPOSettingsReports;
-        private DirtyValue<bool?> _tradeReports;
+        private DirtyValue<bool?>? _borrowerContactReports;
+        private DirtyValue<bool?>? _businessContactReports;
+        private DirtyValue<bool?>? _dynamicReporting;
+        private LoanReportsRights? _loanReports;
+        private DirtyValue<bool?>? _managePersonalReports;
+        private DirtyValue<bool?>? _tPOSettingsReports;
+        private DirtyValue<bool?>? _tradeReports;
 
         /// <summary>
         /// ReportsRights BorrowerContactReports
@@ -31,6 +33,7 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// ReportsRights LoanReports
         /// </summary>
+        [AllowNull]
         public LoanReportsRights LoanReports { get => GetField(ref _loanReports); set => SetField(ref _loanReports, value); }
 
         /// <summary>

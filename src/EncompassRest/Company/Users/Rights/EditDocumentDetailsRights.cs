@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class EditDocumentDetailsRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _createNewDocumentName;
+        private DirtyValue<bool?>? _createNewDocumentName;
 
         /// <summary>
         /// EditDocumentDetailsRights CreateNewDocumentName

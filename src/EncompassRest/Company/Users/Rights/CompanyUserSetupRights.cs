@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -7,14 +8,14 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class CompanyUserSetupRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _companyInformation;
-        private DirtyValue<bool?> _ellieMaeNetworkCompany;
-        private DirtyValue<bool?> _milestones;
-        private OrganizationsUserRights _organizationsUser;
-        private PersonasRights _personas;
-        private DirtyValue<bool?> _roles;
-        private DirtyValue<bool?> _servicesPasswordManager;
-        private DirtyValue<bool?> _userGroups;
+        private DirtyValue<bool?>? _companyInformation;
+        private DirtyValue<bool?>? _ellieMaeNetworkCompany;
+        private DirtyValue<bool?>? _milestones;
+        private OrganizationsUserRights? _organizationsUser;
+        private PersonasRights? _personas;
+        private DirtyValue<bool?>? _roles;
+        private DirtyValue<bool?>? _servicesPasswordManager;
+        private DirtyValue<bool?>? _userGroups;
 
         /// <summary>
         /// CompanyUserSetupRights CompanyInformation
@@ -36,11 +37,13 @@ namespace EncompassRest.Company.Users.Rights
         /// CompanyUserSetupRights OrganizationsUser
         /// </summary>
         [JsonProperty("organizations/User")]
+        [AllowNull]
         public OrganizationsUserRights OrganizationsUser { get => GetField(ref _organizationsUser); set => SetField(ref _organizationsUser, value); }
 
         /// <summary>
         /// CompanyUserSetupRights Personas
         /// </summary>
+        [AllowNull]
         public PersonasRights Personas { get => GetField(ref _personas); set => SetField(ref _personas, value); }
 
         /// <summary>

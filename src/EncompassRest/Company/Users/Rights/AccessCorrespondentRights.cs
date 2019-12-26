@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class AccessCorrespondentRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _registerCorrespondentLoan;
+        private DirtyValue<bool?>? _registerCorrespondentLoan;
 
         /// <summary>
         /// AccessCorrespondentRights RegisterCorrespondentLoan

@@ -8,43 +8,43 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ClosingDisclosure4 : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<StringEnumValue<DemandFeature>> _demandFeature;
-        private DirtyValue<StringEnumValue<EscrowedPropertyCostsBasis>> _escrowedPropertyCostsBasis;
-        private DirtyValue<bool?> _escrowIndicator;
-        private DirtyValue<decimal?> _estimatedPropertyCosts;
-        private DirtyValue<string> _firstChangeAmt;
-        private DirtyValue<decimal?> _firstChangeMaxAmt;
-        private DirtyValue<decimal?> _firstChangeMinAmt;
-        private DirtyValue<string> _firstChangePayment;
-        private DirtyValue<bool?> _hOADuesIsEscrow;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _ignoreARMAdj;
-        private DirtyValue<decimal?> _initialEscrowPayment;
-        private DirtyValue<int?> _interestOnlyPaymentMonths;
-        private DirtyValue<bool?> _interestOnlyPayments;
-        private DirtyValue<int?> _interestRateAdjustments;
-        private DirtyValue<bool?> _lender;
-        private DirtyValue<int?> _maximumARMPaymentAmount;
-        private DirtyValue<int?> _maximumARMPaymentMonthReached;
-        private DirtyValue<string> _maximumPaymentAmt;
-        private DirtyValue<string> _maxPayment;
-        private DirtyValue<decimal?> _maxPaymentAmt;
-        private DirtyValue<decimal?> _monthlyEscrowPayment;
-        private DirtyValue<StringEnumValue<NegativeAmortization>> _negativeAmortization;
-        private DirtyValue<decimal?> _nonEscrowedPropertyCosts1YearConsummation;
-        private DirtyValue<bool?> _other1;
-        private DirtyValue<bool?> _other2;
-        private DirtyValue<bool?> _other3;
-        private DirtyValue<string> _partialPayment;
-        private DirtyValue<string> _partialPaymentHoldUntilComplete;
-        private DirtyValue<string> _partialPaymentNone;
-        private DirtyValue<string> _seasonalPaymentFromYr;
-        private DirtyValue<bool?> _seasonalPayments;
-        private DirtyValue<int?> _stepPayment;
-        private DirtyValue<bool?> _stepPayments;
-        private DirtyValue<decimal?> _stepRateFirstChange;
-        private DirtyValue<string> _subsequentChanges;
-        private DirtyValue<decimal?> _totalDisbursed1YearConsummation;
+        private DirtyValue<StringEnumValue<DemandFeature>>? _demandFeature;
+        private DirtyValue<StringEnumValue<EscrowedPropertyCostsBasis>>? _escrowedPropertyCostsBasis;
+        private DirtyValue<bool?>? _escrowIndicator;
+        private DirtyValue<decimal?>? _estimatedPropertyCosts;
+        private DirtyValue<string?>? _firstChangeAmt;
+        private DirtyValue<decimal?>? _firstChangeMaxAmt;
+        private DirtyValue<decimal?>? _firstChangeMinAmt;
+        private DirtyValue<string?>? _firstChangePayment;
+        private DirtyValue<bool?>? _hOADuesIsEscrow;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _ignoreARMAdj;
+        private DirtyValue<decimal?>? _initialEscrowPayment;
+        private DirtyValue<int?>? _interestOnlyPaymentMonths;
+        private DirtyValue<bool?>? _interestOnlyPayments;
+        private DirtyValue<int?>? _interestRateAdjustments;
+        private DirtyValue<bool?>? _lender;
+        private DirtyValue<int?>? _maximumARMPaymentAmount;
+        private DirtyValue<int?>? _maximumARMPaymentMonthReached;
+        private DirtyValue<string?>? _maximumPaymentAmt;
+        private DirtyValue<string?>? _maxPayment;
+        private DirtyValue<decimal?>? _maxPaymentAmt;
+        private DirtyValue<decimal?>? _monthlyEscrowPayment;
+        private DirtyValue<StringEnumValue<NegativeAmortization>>? _negativeAmortization;
+        private DirtyValue<decimal?>? _nonEscrowedPropertyCosts1YearConsummation;
+        private DirtyValue<bool?>? _other1;
+        private DirtyValue<bool?>? _other2;
+        private DirtyValue<bool?>? _other3;
+        private DirtyValue<string?>? _partialPayment;
+        private DirtyValue<string?>? _partialPaymentHoldUntilComplete;
+        private DirtyValue<string?>? _partialPaymentNone;
+        private DirtyValue<string?>? _seasonalPaymentFromYr;
+        private DirtyValue<bool?>? _seasonalPayments;
+        private DirtyValue<int?>? _stepPayment;
+        private DirtyValue<bool?>? _stepPayments;
+        private DirtyValue<decimal?>? _stepRateFirstChange;
+        private DirtyValue<string?>? _subsequentChanges;
+        private DirtyValue<decimal?>? _totalDisbursed1YearConsummation;
 
         /// <summary>
         /// Demand Feature [CD4.X1]
@@ -71,7 +71,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// First Change Min Amount [CD4.X30]
         /// </summary>
-        public string FirstChangeAmt { get => _firstChangeAmt; set => SetField(ref _firstChangeAmt, value); }
+        public string? FirstChangeAmt { get => _firstChangeAmt; set => SetField(ref _firstChangeAmt, value); }
 
         /// <summary>
         /// First Change Max Amt [CD4.X36]
@@ -88,7 +88,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FirstChange Payment [CD4.X37]
         /// </summary>
-        public string FirstChangePayment { get => _firstChangePayment; set => SetField(ref _firstChangePayment, value); }
+        public string? FirstChangePayment { get => _firstChangePayment; set => SetField(ref _firstChangePayment, value); }
 
         /// <summary>
         /// Closing Disclosure Page 4 - Is HOA Dues Escrow [CD4.X45]
@@ -98,7 +98,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ClosingDisclosure4 Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Ignore 1st ARM Adjustment [CD4.X31]
@@ -147,12 +147,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Maximum Payment Amount [CD4.X34]
         /// </summary>
-        public string MaximumPaymentAmt { get => _maximumPaymentAmt; set => SetField(ref _maximumPaymentAmt, value); }
+        public string? MaximumPaymentAmt { get => _maximumPaymentAmt; set => SetField(ref _maximumPaymentAmt, value); }
 
         /// <summary>
         /// Max Payment [CD4.X39]
         /// </summary>
-        public string MaxPayment { get => _maxPayment; set => SetField(ref _maxPayment, value); }
+        public string? MaxPayment { get => _maxPayment; set => SetField(ref _maxPayment, value); }
 
         /// <summary>
         /// Max payment Amt [CD4.X38]
@@ -195,22 +195,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Partial Payments - Apply Partial Payment [CD4.X3]
         /// </summary>
-        public string PartialPayment { get => _partialPayment; set => SetField(ref _partialPayment, value); }
+        public string? PartialPayment { get => _partialPayment; set => SetField(ref _partialPayment, value); }
 
         /// <summary>
         /// Partial Payments - Hold Until Complete [CD4.X42]
         /// </summary>
-        public string PartialPaymentHoldUntilComplete { get => _partialPaymentHoldUntilComplete; set => SetField(ref _partialPaymentHoldUntilComplete, value); }
+        public string? PartialPaymentHoldUntilComplete { get => _partialPaymentHoldUntilComplete; set => SetField(ref _partialPaymentHoldUntilComplete, value); }
 
         /// <summary>
         /// Partial Payments - None [CD4.X43]
         /// </summary>
-        public string PartialPaymentNone { get => _partialPaymentNone; set => SetField(ref _partialPaymentNone, value); }
+        public string? PartialPaymentNone { get => _partialPaymentNone; set => SetField(ref _partialPaymentNone, value); }
 
         /// <summary>
         /// Seasonal Payment From Year [CD4.X28]
         /// </summary>
-        public string SeasonalPaymentFromYr { get => _seasonalPaymentFromYr; set => SetField(ref _seasonalPaymentFromYr, value); }
+        public string? SeasonalPaymentFromYr { get => _seasonalPaymentFromYr; set => SetField(ref _seasonalPaymentFromYr, value); }
 
         /// <summary>
         /// Seasonal Payments [CD4.X27]
@@ -236,7 +236,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subsequent Changes [CD4.X33]
         /// </summary>
-        public string SubsequentChanges { get => _subsequentChanges; set => SetField(ref _subsequentChanges, value); }
+        public string? SubsequentChanges { get => _subsequentChanges; set => SetField(ref _subsequentChanges, value); }
 
         /// <summary>
         /// Closing Disclosure Page 4 Escrowed Property Costs Within 1 Year of Consummation [CD4.X40]

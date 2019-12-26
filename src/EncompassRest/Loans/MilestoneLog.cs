@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans
 {
@@ -8,41 +9,43 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class MilestoneLog : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyList<LogAlert> _alerts;
-        private DirtyList<LogComment> _commentList;
-        private DirtyValue<string> _comments;
-        private DirtyValue<DateTime?> _dateUtc;
-        private DirtyValue<int?> _days;
-        private DirtyValue<bool?> _doneIndicator;
-        private DirtyValue<int?> _duration;
-        private DirtyValue<bool?> _fileAttachmentsMigrated;
-        private DirtyValue<string> _guid;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _isSystemSpecificIndicator;
-        private DirtyValue<LoanAssociate> _loanAssociate;
-        private DirtyValue<int?> _logRecordIndex;
-        private DirtyValue<string> _milestoneIdString;
-        private DirtyValue<bool?> _reviewedIndicator;
-        private DirtyValue<string> _roleRequired;
-        private DirtyValue<string> _stage;
-        private DirtyValue<string> _systemId;
-        private DirtyValue<string> _tPOConnectStatus;
-        private DirtyValue<DateTime?> _updatedDateUtc;
+        private DirtyList<LogAlert>? _alerts;
+        private DirtyList<LogComment>? _commentList;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<DateTime?>? _dateUtc;
+        private DirtyValue<int?>? _days;
+        private DirtyValue<bool?>? _doneIndicator;
+        private DirtyValue<int?>? _duration;
+        private DirtyValue<bool?>? _fileAttachmentsMigrated;
+        private DirtyValue<string?>? _guid;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<LoanAssociate>? _loanAssociate;
+        private DirtyValue<int?>? _logRecordIndex;
+        private DirtyValue<string?>? _milestoneIdString;
+        private DirtyValue<bool?>? _reviewedIndicator;
+        private DirtyValue<string?>? _roleRequired;
+        private DirtyValue<string?>? _stage;
+        private DirtyValue<string?>? _systemId;
+        private DirtyValue<string?>? _tPOConnectStatus;
+        private DirtyValue<DateTime?>? _updatedDateUtc;
 
         /// <summary>
         /// MilestoneLog Alerts
         /// </summary>
+        [AllowNull]
         public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
 
         /// <summary>
         /// MilestoneLog CommentList
         /// </summary>
+        [AllowNull]
         public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
 
         /// <summary>
         /// MilestoneLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// MilestoneLog DateUtc
@@ -72,12 +75,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => SetField(ref _guid, value); }
+        public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
         /// MilestoneLog Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// MilestoneLog IsSystemSpecificIndicator
@@ -97,7 +100,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneLog MilestoneIdString
         /// </summary>
-        public string MilestoneIdString { get => _milestoneIdString; set => SetField(ref _milestoneIdString, value); }
+        public string? MilestoneIdString { get => _milestoneIdString; set => SetField(ref _milestoneIdString, value); }
 
         /// <summary>
         /// MilestoneLog ReviewedIndicator
@@ -107,22 +110,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneLog RoleRequired
         /// </summary>
-        public string RoleRequired { get => _roleRequired; set => SetField(ref _roleRequired, value); }
+        public string? RoleRequired { get => _roleRequired; set => SetField(ref _roleRequired, value); }
 
         /// <summary>
         /// MilestoneLog Stage
         /// </summary>
-        public string Stage { get => _stage; set => SetField(ref _stage, value); }
+        public string? Stage { get => _stage; set => SetField(ref _stage, value); }
 
         /// <summary>
         /// MilestoneLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+        public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
 
         /// <summary>
         /// MilestoneLog TPOConnectStatus
         /// </summary>
-        public string TPOConnectStatus { get => _tPOConnectStatus; set => SetField(ref _tPOConnectStatus, value); }
+        public string? TPOConnectStatus { get => _tPOConnectStatus; set => SetField(ref _tPOConnectStatus, value); }
 
         /// <summary>
         /// MilestoneLog UpdatedDateUtc

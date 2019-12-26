@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,12 +7,13 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ManageBorrowersRights : ParentAccessRights
     {
-        private ImportBorrowersRights _importBorrowers;
-        private DirtyValue<bool?> _moveBorrowers;
+        private ImportBorrowersRights? _importBorrowers;
+        private DirtyValue<bool?>? _moveBorrowers;
 
         /// <summary>
         /// ManageBorrowersRights ImportBorrowers
         /// </summary>
+        [AllowNull]
         public ImportBorrowersRights ImportBorrowers { get => GetField(ref _importBorrowers); set => SetField(ref _importBorrowers, value); }
 
         /// <summary>

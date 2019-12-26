@@ -9,78 +9,78 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class NetTangibleBenefit : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<bool?> _aprNotExceedIndicator;
-        private DirtyValue<bool?> _avoidingForeclosureIndicator;
-        private DirtyValue<bool?> _beneficialChangedForBorrowerIndicator;
-        private DirtyValue<string> _bonaFideFinancialEmergency;
-        private DirtyValue<bool?> _borrowerCanRecoupCostofRefinancingIndicator;
-        private DirtyValue<bool?> _borrowerCanRecoupIndicator;
-        private DirtyValue<bool?> _borrowerMonthlyPaymentLowerThan20Indicator;
-        private DirtyValue<string> _borrowerReceivedReasonable;
-        private DirtyValue<bool?> _borrowerReceivesAmountExcessCostAndFeesIndicator;
-        private DirtyValue<bool?> _changeLoanFromArmtoFixedIndicator;
-        private DirtyValue<bool?> _changingLoanToFixedRateIndicator;
-        private DirtyValue<bool?> _consolidatingOtherExistingLoansIntoNewLoanIndicator;
-        private DirtyValue<bool?> _eliminatingBalloonPaymentIndicator;
-        private DirtyValue<bool?> _eliminatingNegArmIndicator;
-        private DirtyValue<bool?> _eliminatingPrivateMortgageInsuranceIndicator;
-        private DirtyValue<decimal?> _existingLoanAprPercent;
-        private DirtyValue<bool?> _existingLoanBalloonIndicator;
-        private DirtyValue<decimal?> _existingLoanBorrowerReceivesCashOutAmount;
-        private DirtyValue<bool?> _existingLoanBorrowerReceivesCashOutIndicator;
-        private DirtyValue<decimal?> _existingLoanBottomRatioPercent;
-        private DirtyValue<DateTime?> _existingLoanDateLoanClosed;
-        private DirtyValue<decimal?> _existingLoanFullyIndexRatePercent;
-        private DirtyValue<decimal?> _existingLoanInterestRatePercent;
-        private DirtyValue<bool?> _existingLoanIsGuaranteedIndicator;
-        private DirtyValue<bool?> _existingLoanIsLoanRefinancedAsSpecial;
-        private DirtyValue<bool?> _existingLoanIsNegativeAmortizationFeatureIndicator;
-        private DirtyValue<bool?> _existingLoanIsPrepaymentPenalty;
-        private DirtyValue<StringEnumValue<AmortizationType>> _existingLoanLoanAmortizationType;
-        private DirtyValue<decimal?> _existingLoanLoanAmount;
-        private DirtyValue<int?> _existingLoanLoanTerm;
-        private DirtyValue<decimal?> _existingLoanLtvPercent;
-        private DirtyValue<decimal?> _existingLoanMaximumRatePercent;
-        private DirtyValue<int?> _existingLoanMonthsRemaining;
-        private DirtyValue<decimal?> _existingLoanPaymentAmount;
-        private DirtyValue<decimal?> _existingLoanPaymentDifference;
-        private DirtyValue<decimal?> _existingLoanPaymentIncludeMiObligation;
-        private DirtyValue<decimal?> _existingLoanPaymentIncludeMortgageInsurance;
-        private DirtyValue<decimal?> _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan;
-        private DirtyValue<StringEnumValue<PrepaymentPenaltyBasedOn>> _existingLoanPrepaymentPenaltyBasedOn;
-        private DirtyValue<decimal?> _existingLoanPrepaymentPenaltyPercentage;
-        private DirtyValue<int?> _existingLoanPrepaymentPenaltyTerm;
-        private DirtyValue<StringEnumValue<ExistingLoanProvidedByLicenseeType>> _existingLoanProvidedByLicenseeType;
-        private DirtyValue<StringEnumValue<LoanPurposeType>> _existingLoanPurposeType;
-        private DirtyValue<int?> _existingLoanRecoupCostsYears;
-        private DirtyValue<decimal?> _existingLoanSavingsAmount;
-        private DirtyValue<decimal?> _existingLoanTotalDebtPayoff;
-        private DirtyValue<decimal?> _existingLoanWeightedAverageInterestRatePercent;
-        private DirtyValue<bool?> _homeLoanComplianceWith209;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _lenderDeterminedBorrowersInterest;
-        private DirtyValue<bool?> _newLoanIsGuaranteedIndicator;
-        private DirtyValue<bool?> _newLoanIsNegativeAmortizationFeatureIndicator;
-        private DirtyValue<bool?> _newLoanIsSafeHarborQM;
-        private DirtyValue<bool?> _newLoanIsSpecialMortgageOriginatedIndicator;
-        private DirtyValue<decimal?> _newLoanPaymentWithMiDifference;
-        private DirtyValue<decimal?> _newLoanPaymentWithObligationDifference;
-        private DirtyValue<bool?> _newLoanPayOffConsolidateDebtIndicator;
-        private DirtyValue<decimal?> _newLoanWeightedAverageInterestRatePercent;
-        private DirtyValue<bool?> _obtainingLowerIntMonthlyPaymentIndicator;
-        private DirtyValue<bool?> _obtainingLowerIntRateIndicator;
-        private DirtyValue<bool?> _obtainingShortAmortScheduleIndicator;
-        private DirtyValue<bool?> _otherReason;
-        private DirtyValue<string> _otherReasonDescription;
-        private DirtyValue<bool?> _printBorrowerInitialLinesIndicator;
-        private DirtyValue<bool?> _proceedsOfNewLoanWillBeUsedIndicator;
-        private DirtyValue<bool?> _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator;
-        private DirtyValue<bool?> _refinancingLoanIsHomeEquityIndicator;
-        private DirtyValue<bool?> _refinancingRespondBonaFide;
-        private DirtyValue<bool?> _vABorrowerIncomeIncreasedIndicator;
-        private DirtyValue<bool?> _vANewLoanAlterPrimaryHomeIndicator;
-        private DirtyValue<bool?> _vANewLoanEqualorLess90Indicator;
-        private DirtyValue<bool?> _vATermShorterThanRefinancedLoanIndicator;
+        private DirtyValue<bool?>? _aprNotExceedIndicator;
+        private DirtyValue<bool?>? _avoidingForeclosureIndicator;
+        private DirtyValue<bool?>? _beneficialChangedForBorrowerIndicator;
+        private DirtyValue<string?>? _bonaFideFinancialEmergency;
+        private DirtyValue<bool?>? _borrowerCanRecoupCostofRefinancingIndicator;
+        private DirtyValue<bool?>? _borrowerCanRecoupIndicator;
+        private DirtyValue<bool?>? _borrowerMonthlyPaymentLowerThan20Indicator;
+        private DirtyValue<string?>? _borrowerReceivedReasonable;
+        private DirtyValue<bool?>? _borrowerReceivesAmountExcessCostAndFeesIndicator;
+        private DirtyValue<bool?>? _changeLoanFromArmtoFixedIndicator;
+        private DirtyValue<bool?>? _changingLoanToFixedRateIndicator;
+        private DirtyValue<bool?>? _consolidatingOtherExistingLoansIntoNewLoanIndicator;
+        private DirtyValue<bool?>? _eliminatingBalloonPaymentIndicator;
+        private DirtyValue<bool?>? _eliminatingNegArmIndicator;
+        private DirtyValue<bool?>? _eliminatingPrivateMortgageInsuranceIndicator;
+        private DirtyValue<decimal?>? _existingLoanAprPercent;
+        private DirtyValue<bool?>? _existingLoanBalloonIndicator;
+        private DirtyValue<decimal?>? _existingLoanBorrowerReceivesCashOutAmount;
+        private DirtyValue<bool?>? _existingLoanBorrowerReceivesCashOutIndicator;
+        private DirtyValue<decimal?>? _existingLoanBottomRatioPercent;
+        private DirtyValue<DateTime?>? _existingLoanDateLoanClosed;
+        private DirtyValue<decimal?>? _existingLoanFullyIndexRatePercent;
+        private DirtyValue<decimal?>? _existingLoanInterestRatePercent;
+        private DirtyValue<bool?>? _existingLoanIsGuaranteedIndicator;
+        private DirtyValue<bool?>? _existingLoanIsLoanRefinancedAsSpecial;
+        private DirtyValue<bool?>? _existingLoanIsNegativeAmortizationFeatureIndicator;
+        private DirtyValue<bool?>? _existingLoanIsPrepaymentPenalty;
+        private DirtyValue<StringEnumValue<AmortizationType>>? _existingLoanLoanAmortizationType;
+        private DirtyValue<decimal?>? _existingLoanLoanAmount;
+        private DirtyValue<int?>? _existingLoanLoanTerm;
+        private DirtyValue<decimal?>? _existingLoanLtvPercent;
+        private DirtyValue<decimal?>? _existingLoanMaximumRatePercent;
+        private DirtyValue<int?>? _existingLoanMonthsRemaining;
+        private DirtyValue<decimal?>? _existingLoanPaymentAmount;
+        private DirtyValue<decimal?>? _existingLoanPaymentDifference;
+        private DirtyValue<decimal?>? _existingLoanPaymentIncludeMiObligation;
+        private DirtyValue<decimal?>? _existingLoanPaymentIncludeMortgageInsurance;
+        private DirtyValue<decimal?>? _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan;
+        private DirtyValue<StringEnumValue<PrepaymentPenaltyBasedOn>>? _existingLoanPrepaymentPenaltyBasedOn;
+        private DirtyValue<decimal?>? _existingLoanPrepaymentPenaltyPercentage;
+        private DirtyValue<int?>? _existingLoanPrepaymentPenaltyTerm;
+        private DirtyValue<StringEnumValue<ExistingLoanProvidedByLicenseeType>>? _existingLoanProvidedByLicenseeType;
+        private DirtyValue<StringEnumValue<LoanPurposeType>>? _existingLoanPurposeType;
+        private DirtyValue<int?>? _existingLoanRecoupCostsYears;
+        private DirtyValue<decimal?>? _existingLoanSavingsAmount;
+        private DirtyValue<decimal?>? _existingLoanTotalDebtPayoff;
+        private DirtyValue<decimal?>? _existingLoanWeightedAverageInterestRatePercent;
+        private DirtyValue<bool?>? _homeLoanComplianceWith209;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _lenderDeterminedBorrowersInterest;
+        private DirtyValue<bool?>? _newLoanIsGuaranteedIndicator;
+        private DirtyValue<bool?>? _newLoanIsNegativeAmortizationFeatureIndicator;
+        private DirtyValue<bool?>? _newLoanIsSafeHarborQM;
+        private DirtyValue<bool?>? _newLoanIsSpecialMortgageOriginatedIndicator;
+        private DirtyValue<decimal?>? _newLoanPaymentWithMiDifference;
+        private DirtyValue<decimal?>? _newLoanPaymentWithObligationDifference;
+        private DirtyValue<bool?>? _newLoanPayOffConsolidateDebtIndicator;
+        private DirtyValue<decimal?>? _newLoanWeightedAverageInterestRatePercent;
+        private DirtyValue<bool?>? _obtainingLowerIntMonthlyPaymentIndicator;
+        private DirtyValue<bool?>? _obtainingLowerIntRateIndicator;
+        private DirtyValue<bool?>? _obtainingShortAmortScheduleIndicator;
+        private DirtyValue<bool?>? _otherReason;
+        private DirtyValue<string?>? _otherReasonDescription;
+        private DirtyValue<bool?>? _printBorrowerInitialLinesIndicator;
+        private DirtyValue<bool?>? _proceedsOfNewLoanWillBeUsedIndicator;
+        private DirtyValue<bool?>? _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator;
+        private DirtyValue<bool?>? _refinancingLoanIsHomeEquityIndicator;
+        private DirtyValue<bool?>? _refinancingRespondBonaFide;
+        private DirtyValue<bool?>? _vABorrowerIncomeIncreasedIndicator;
+        private DirtyValue<bool?>? _vANewLoanAlterPrimaryHomeIndicator;
+        private DirtyValue<bool?>? _vANewLoanEqualorLess90Indicator;
+        private DirtyValue<bool?>? _vATermShorterThanRefinancedLoanIndicator;
 
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - The APR of the new refinancing loan at consummation does not exceed by more than 2.5% for closed-end first lien loans...? [NTB.X52]
@@ -100,7 +100,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Net Tangible Benefit Old/Current Loan Info - Bona Fide Financial Emergency [NTB.X58]
         /// </summary>
-        public string BonaFideFinancialEmergency { get => _bonaFideFinancialEmergency; set => SetField(ref _bonaFideFinancialEmergency, value); }
+        public string? BonaFideFinancialEmergency { get => _bonaFideFinancialEmergency; set => SetField(ref _bonaFideFinancialEmergency, value); }
 
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - The borrower(s) is/are able to recoup the costs of refinancing the loan within two years and reduce the interest rate by 2...? [NTB.X57]
@@ -120,7 +120,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Net Tangible Benefit Old/Current Loan Info - Borrower Received Reasonable, Tangible Net Benefit [NTB.X59]
         /// </summary>
-        public string BorrowerReceivedReasonable { get => _borrowerReceivedReasonable; set => SetField(ref _borrowerReceivedReasonable, value); }
+        public string? BorrowerReceivedReasonable { get => _borrowerReceivedReasonable; set => SetField(ref _borrowerReceivedReasonable, value); }
 
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - The borrower(s) receive(s) a reasonable amount of cash in excess of and in relation to the cost and fees as part of the refinancing? [NTB.X51]
@@ -342,7 +342,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NetTangibleBenefit Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Lender Has Determined That This New Home Loan is in The Borrowers Interest. [NTB.X66]
@@ -415,7 +415,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Other Description [NTB.X65]
         /// </summary>
-        public string OtherReasonDescription { get => _otherReasonDescription; set => SetField(ref _otherReasonDescription, value); }
+        public string? OtherReasonDescription { get => _otherReasonDescription; set => SetField(ref _otherReasonDescription, value); }
 
         /// <summary>
         /// Net Tangible Benefit Loan Info - Print Borrower Initial Lines for Each Benefit? [NTB.X60]

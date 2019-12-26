@@ -5,12 +5,12 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class MarkStatusCompletedRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _cleared;
-        private DirtyValue<bool?> _fulfilled;
-        private DirtyValue<bool?> _received;
-        private DirtyValue<bool?> _rejected;
-        private DirtyValue<bool?> _reviewed;
-        private DirtyValue<bool?> _waived;
+        private DirtyValue<bool?>? _cleared;
+        private DirtyValue<bool?>? _fulfilled;
+        private DirtyValue<bool?>? _received;
+        private DirtyValue<bool?>? _rejected;
+        private DirtyValue<bool?>? _reviewed;
+        private DirtyValue<bool?>? _waived;
 
         /// <summary>
         /// MarkStatusCompletedRights Cleared

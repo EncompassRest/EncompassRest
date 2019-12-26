@@ -7,11 +7,11 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TQLServicesRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _addComments;
-        private DirtyValue<bool?> _addComplianceReportComments;
-        private DirtyValue<bool?> _addFraudReportComments;
-        private DirtyValue<bool?> _selectInvestor;
-        private DirtyValue<bool?> _startStopPublishing;
+        private DirtyValue<bool?>? _addComments;
+        private DirtyValue<bool?>? _addComplianceReportComments;
+        private DirtyValue<bool?>? _addFraudReportComments;
+        private DirtyValue<bool?>? _selectInvestor;
+        private DirtyValue<bool?>? _startStopPublishing;
 
         /// <summary>
         /// TQLServicesRights AddComments

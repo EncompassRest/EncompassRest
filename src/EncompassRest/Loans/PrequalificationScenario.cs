@@ -8,44 +8,44 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class PrequalificationScenario : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _appraisedValue;
-        private DirtyValue<decimal?> _apr;
-        private DirtyValue<decimal?> _cashToClose;
-        private DirtyValue<decimal?> _closingCost;
-        private DirtyValue<decimal?> _cltv;
-        private DirtyValue<string> _comments;
-        private DirtyValue<string> _creditScore;
-        private DirtyValue<string> _currentStatus;
-        private DirtyValue<decimal?> _downPaymentAmount;
-        private DirtyValue<decimal?> _downPaymentPercent;
-        private DirtyValue<decimal?> _fhaUpfrontMIPremiumPercent;
-        private DirtyValue<decimal?> _grossNegativeCashFlow;
-        private DirtyValue<string> _id;
-        private DirtyValue<decimal?> _loanAmount;
-        private DirtyValue<decimal?> _ltv;
-        private DirtyValue<decimal?> _maximumDebt;
-        private DirtyValue<decimal?> _maximumLoanAmount;
-        private DirtyValue<decimal?> _miAndFundingFeeFinancedAmount;
-        private DirtyValue<decimal?> _minimumIncome;
-        private DirtyValue<decimal?> _monthlyPayment;
-        private DirtyValue<decimal?> _prepaidItemsEstimatedAmount;
-        private DirtyValue<int?> _prequalificationScenarioIndex;
-        private DirtyValue<decimal?> _qualBottomRatioPercent;
-        private DirtyValue<decimal?> _qualTopRatioPercent;
-        private DirtyValue<decimal?> _salesPrice;
-        private DirtyValue<decimal?> _subordinateFin;
-        private DirtyValue<decimal?> _totalBaseCost;
-        private DirtyValue<decimal?> _totalCashAvailable;
-        private DirtyValue<decimal?> _totalCashLeft;
-        private DirtyValue<decimal?> _totalCosts;
-        private DirtyValue<decimal?> _totalFinancing;
-        private DirtyValue<decimal?> _totalHe;
-        private DirtyValue<decimal?> _totalIncome;
-        private DirtyValue<decimal?> _totalLoanAmount;
-        private DirtyValue<decimal?> _totalOtherExpense;
-        private DirtyValue<decimal?> _totalPaidOffMortgage;
-        private DirtyValue<decimal?> _totalPaidOffOthers;
-        private DirtyValue<decimal?> _totalPayments;
+        private DirtyValue<int?>? _appraisedValue;
+        private DirtyValue<decimal?>? _apr;
+        private DirtyValue<decimal?>? _cashToClose;
+        private DirtyValue<decimal?>? _closingCost;
+        private DirtyValue<decimal?>? _cltv;
+        private DirtyValue<string?>? _comments;
+        private DirtyValue<string?>? _creditScore;
+        private DirtyValue<string?>? _currentStatus;
+        private DirtyValue<decimal?>? _downPaymentAmount;
+        private DirtyValue<decimal?>? _downPaymentPercent;
+        private DirtyValue<decimal?>? _fhaUpfrontMIPremiumPercent;
+        private DirtyValue<decimal?>? _grossNegativeCashFlow;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<decimal?>? _loanAmount;
+        private DirtyValue<decimal?>? _ltv;
+        private DirtyValue<decimal?>? _maximumDebt;
+        private DirtyValue<decimal?>? _maximumLoanAmount;
+        private DirtyValue<decimal?>? _miAndFundingFeeFinancedAmount;
+        private DirtyValue<decimal?>? _minimumIncome;
+        private DirtyValue<decimal?>? _monthlyPayment;
+        private DirtyValue<decimal?>? _prepaidItemsEstimatedAmount;
+        private DirtyValue<int?>? _prequalificationScenarioIndex;
+        private DirtyValue<decimal?>? _qualBottomRatioPercent;
+        private DirtyValue<decimal?>? _qualTopRatioPercent;
+        private DirtyValue<decimal?>? _salesPrice;
+        private DirtyValue<decimal?>? _subordinateFin;
+        private DirtyValue<decimal?>? _totalBaseCost;
+        private DirtyValue<decimal?>? _totalCashAvailable;
+        private DirtyValue<decimal?>? _totalCashLeft;
+        private DirtyValue<decimal?>? _totalCosts;
+        private DirtyValue<decimal?>? _totalFinancing;
+        private DirtyValue<decimal?>? _totalHe;
+        private DirtyValue<decimal?>? _totalIncome;
+        private DirtyValue<decimal?>? _totalLoanAmount;
+        private DirtyValue<decimal?>? _totalOtherExpense;
+        private DirtyValue<decimal?>? _totalPaidOffMortgage;
+        private DirtyValue<decimal?>? _totalPaidOffOthers;
+        private DirtyValue<decimal?>? _totalPayments;
 
         /// <summary>
         /// PrequalificationScenario AppraisedValue
@@ -81,19 +81,19 @@ namespace EncompassRest.Loans
         /// PrequalificationScenario Comments
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
         /// PrequalificationScenario CreditScore
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CreditScore { get => _creditScore; set => SetField(ref _creditScore, value); }
+        public string? CreditScore { get => _creditScore; set => SetField(ref _creditScore, value); }
 
         /// <summary>
         /// PrequalificationScenario CurrentStatus
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string CurrentStatus { get => _currentStatus; set => SetField(ref _currentStatus, value); }
+        public string? CurrentStatus { get => _currentStatus; set => SetField(ref _currentStatus, value); }
 
         /// <summary>
         /// PrequalificationScenario DownPaymentAmount
@@ -122,7 +122,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PrequalificationScenario Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// PrequalificationScenario LoanAmount

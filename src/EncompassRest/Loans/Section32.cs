@@ -9,142 +9,142 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Section32 : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<bool?> _appraisalFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _appraisalPortionOfFeeIndicator;
-        private DirtyValue<decimal?> _aprExceedsTsyForFirstMortgage;
-        private DirtyValue<decimal?> _aprExceedsTsyForSubordinateMortgage;
-        private DirtyValue<bool?> _assumptionFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _assumptionPortionOfFeeIndicator;
-        private DirtyValue<bool?> _attorneyFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _attorneyPortionOfFeeIndicator;
-        private DirtyValue<bool?> _cityCountyTaxStampsFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _cityCountyTaxStampsPortionOfFeeIndicator;
-        private DirtyValue<bool?> _closingFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _closingPortionOfFeeIndicator;
-        private DirtyValue<bool?> _creditReportFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _creditReportPortionOfFeeIndicator;
-        private DirtyValue<bool?> _docPrepFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _docPrepPortionOfFeeIndicator;
-        private DirtyValue<StringEnumValue<DoesOrDoesNot2>> _exceed2PercentPrepayPenalty;
-        private DirtyValue<decimal?> _hoepaAPR;
-        private DirtyValue<decimal?> _hoepaFee;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _jurisdications;
-        private DirtyValue<bool?> _lendersInspectionFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _lendersInspectionPortionOfFeeIndicator;
-        private DirtyValue<bool?> _loanDiscountFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _loanDiscountPortionOfFeeIndicator;
-        private DirtyValue<bool?> _loanOriginationFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _loanOriginationPortionOfFeeIndicator;
-        private DirtyValue<string> _loanQualifyAsHighCostMortgage;
-        private DirtyValue<decimal?> _maximumPercentageOfLoan;
-        private DirtyValue<decimal?> _maximumPointsAndFees;
-        private DirtyValue<bool?> _mortgageBrokerFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _mortgageBrokerPortionOfFeeIndicator;
-        private DirtyValue<bool?> _mortgageInspectionFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _mortgageInspectionPortionOfFeeIndicator;
-        private DirtyValue<bool?> _mortgageInsuranceFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _mortgageInsurancePortionOfFeeIndicator;
-        private DirtyValue<bool?> _mortgageInsurancePremiumFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _mortgageInsurancePremiumPortionOfFeeIndicator;
-        private DirtyValue<bool?> _notaryFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _notaryPortionOfFeeIndicator;
-        private DirtyValue<bool?> _otherHighCostIndicator;
-        private DirtyValue<StringEnumValue<PenaltyChargeMoreThan36Months>> _penaltyChargeMoreThan36Months;
-        private DirtyValue<bool?> _pestInspectionFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _pestInspectionPortionOfFeeIndicator;
-        private DirtyValue<decimal?> _prepayPenaltyPercentofAmtPrepaid;
-        private DirtyValue<bool?> _processingFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _processingPortionOfFeeIndicator;
-        private DirtyValue<decimal?> _rateSetIndex;
-        private DirtyValue<bool?> _recordingFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _recordingPortionOfFeeIndicator;
-        private DirtyValue<string> _resultOfPointAndFees;
-        private DirtyValue<string> _resultOfSecurityYieldTest;
-        private DirtyValue<bool?> _section32Indicator;
-        private DirtyValue<decimal?> _section35AveragePrimeRate;
-        private DirtyValue<StringEnumValue<DoesOrDoesNot>> _section35IsSecondAppraisalRequired;
-        private DirtyValue<DateTime?> _section35PriorAcquisitionDate;
-        private DirtyValue<decimal?> _section35PriorAcquisitionPrice;
-        private DirtyValue<string> _section35PriorAcquisitionSource;
-        private DirtyValue<string> _section35ResultOfSecurityYieldTest;
-        private DirtyValue<DateTime?> _section35SalesContractDate;
-        private DirtyValue<bool?> _stateTaxStampsFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _stateTaxStampsPortionOfFeeIndicator;
-        private DirtyValue<bool?> _surveyFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _surveyPortionOfFeeIndicator;
-        private DirtyValue<bool?> _taxServiceFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _taxServicePortionOfFeeIndicator;
-        private DirtyValue<bool?> _titleBinderFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _titleBinderPortionOfFeeIndicator;
-        private DirtyValue<bool?> _titleExaminationFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _titleExaminationPortionOfFeeIndicator;
-        private DirtyValue<bool?> _titleInsuranceFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _titleInsurancePortionOfFeeIndicator;
-        private DirtyValue<bool?> _titleSearchFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _titleSearchPortionOfFeeIndicator;
-        private DirtyValue<decimal?> _totalPointsAndFees;
-        private DirtyValue<decimal?> _treasurySecurityYield;
-        private DirtyValue<bool?> _underwritingFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _underwritingPortionOfFeeIndicator;
-        private DirtyValue<decimal?> _userDefined1109BorPaidAmount;
-        private DirtyValue<bool?> _userDefined1109FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1109PortionOfFeeIndicator;
-        private DirtyValue<decimal?> _userDefined1110BorPaidAmount;
-        private DirtyValue<bool?> _userDefined1110FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1110PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1111FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1111PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1112FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1112PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1113FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1113PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1114FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1114PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1204FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1204PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1205FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1205PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1206FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1206PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1303FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1303PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1304FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1304PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1305FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1305PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1306FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1306PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1307FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1307PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1308FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1308PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined1309FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined1309PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined813FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined813PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined814FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined814PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined815FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined815PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined816FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined816PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined817FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined817PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined818FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined818PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined819FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined819PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined820FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined820PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined821FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined821PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined822FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined822PortionOfFeeIndicator;
-        private DirtyValue<bool?> _userDefined823FeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _userDefined823PortionOfFeeIndicator;
-        private DirtyValue<bool?> _wireTransferFeeToBeFinancedIndicator;
-        private DirtyValue<bool?> _wireTransferPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _appraisalFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _appraisalPortionOfFeeIndicator;
+        private DirtyValue<decimal?>? _aprExceedsTsyForFirstMortgage;
+        private DirtyValue<decimal?>? _aprExceedsTsyForSubordinateMortgage;
+        private DirtyValue<bool?>? _assumptionFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _assumptionPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _attorneyFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _attorneyPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _cityCountyTaxStampsFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _cityCountyTaxStampsPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _closingFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _closingPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _creditReportFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _creditReportPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _docPrepFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _docPrepPortionOfFeeIndicator;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot2>>? _exceed2PercentPrepayPenalty;
+        private DirtyValue<decimal?>? _hoepaAPR;
+        private DirtyValue<decimal?>? _hoepaFee;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _jurisdications;
+        private DirtyValue<bool?>? _lendersInspectionFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _lendersInspectionPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _loanDiscountFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _loanDiscountPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _loanOriginationFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _loanOriginationPortionOfFeeIndicator;
+        private DirtyValue<string?>? _loanQualifyAsHighCostMortgage;
+        private DirtyValue<decimal?>? _maximumPercentageOfLoan;
+        private DirtyValue<decimal?>? _maximumPointsAndFees;
+        private DirtyValue<bool?>? _mortgageBrokerFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _mortgageBrokerPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _mortgageInspectionFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _mortgageInspectionPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _mortgageInsuranceFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _mortgageInsurancePortionOfFeeIndicator;
+        private DirtyValue<bool?>? _mortgageInsurancePremiumFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _mortgageInsurancePremiumPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _notaryFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _notaryPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _otherHighCostIndicator;
+        private DirtyValue<StringEnumValue<PenaltyChargeMoreThan36Months>>? _penaltyChargeMoreThan36Months;
+        private DirtyValue<bool?>? _pestInspectionFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _pestInspectionPortionOfFeeIndicator;
+        private DirtyValue<decimal?>? _prepayPenaltyPercentofAmtPrepaid;
+        private DirtyValue<bool?>? _processingFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _processingPortionOfFeeIndicator;
+        private DirtyValue<decimal?>? _rateSetIndex;
+        private DirtyValue<bool?>? _recordingFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _recordingPortionOfFeeIndicator;
+        private DirtyValue<string?>? _resultOfPointAndFees;
+        private DirtyValue<string?>? _resultOfSecurityYieldTest;
+        private DirtyValue<bool?>? _section32Indicator;
+        private DirtyValue<decimal?>? _section35AveragePrimeRate;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot>>? _section35IsSecondAppraisalRequired;
+        private DirtyValue<DateTime?>? _section35PriorAcquisitionDate;
+        private DirtyValue<decimal?>? _section35PriorAcquisitionPrice;
+        private DirtyValue<string?>? _section35PriorAcquisitionSource;
+        private DirtyValue<string?>? _section35ResultOfSecurityYieldTest;
+        private DirtyValue<DateTime?>? _section35SalesContractDate;
+        private DirtyValue<bool?>? _stateTaxStampsFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _stateTaxStampsPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _surveyFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _surveyPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _taxServiceFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _taxServicePortionOfFeeIndicator;
+        private DirtyValue<bool?>? _titleBinderFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _titleBinderPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _titleExaminationFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _titleExaminationPortionOfFeeIndicator;
+        private DirtyValue<bool?>? _titleInsuranceFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _titleInsurancePortionOfFeeIndicator;
+        private DirtyValue<bool?>? _titleSearchFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _titleSearchPortionOfFeeIndicator;
+        private DirtyValue<decimal?>? _totalPointsAndFees;
+        private DirtyValue<decimal?>? _treasurySecurityYield;
+        private DirtyValue<bool?>? _underwritingFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _underwritingPortionOfFeeIndicator;
+        private DirtyValue<decimal?>? _userDefined1109BorPaidAmount;
+        private DirtyValue<bool?>? _userDefined1109FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1109PortionOfFeeIndicator;
+        private DirtyValue<decimal?>? _userDefined1110BorPaidAmount;
+        private DirtyValue<bool?>? _userDefined1110FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1110PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1111FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1111PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1112FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1112PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1113FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1113PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1114FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1114PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1204FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1204PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1205FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1205PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1206FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1206PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1303FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1303PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1304FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1304PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1305FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1305PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1306FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1306PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1307FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1307PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1308FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1308PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined1309FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined1309PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined813FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined813PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined814FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined814PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined815FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined815PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined816FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined816PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined817FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined817PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined818FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined818PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined819FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined819PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined820FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined820PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined821FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined821PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined822FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined822PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _userDefined823FeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _userDefined823PortionOfFeeIndicator;
+        private DirtyValue<bool?>? _wireTransferFeeToBeFinancedIndicator;
+        private DirtyValue<bool?>? _wireTransferPortionOfFeeIndicator;
 
         /// <summary>
         /// Sec 32 Appraisal Fee To Be Financed [S32DISC.X76]
@@ -248,13 +248,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Section32 Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Jurisdictions under which loan qualifies as high cost [HighCost.Jurisdications]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Jurisdications { get => _jurisdications; set => SetField(ref _jurisdications, value); }
+        public string? Jurisdications { get => _jurisdications; set => SetField(ref _jurisdications, value); }
 
         /// <summary>
         /// Sec 32 Lenders Inspect Fee To Be Financed [S32DISC.X58]
@@ -290,7 +290,7 @@ namespace EncompassRest.Loans
         /// Sec 32 Qualifies as High Cost Mtg Under Section 32 [S32DISC.X51]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LoanQualifyAsHighCostMortgage { get => _loanQualifyAsHighCostMortgage; set => SetField(ref _loanQualifyAsHighCostMortgage, value); }
+        public string? LoanQualifyAsHighCostMortgage { get => _loanQualifyAsHighCostMortgage; set => SetField(ref _loanQualifyAsHighCostMortgage, value); }
 
         /// <summary>
         /// Sec 32 Max % of Loan Amt for Allowed Fees [S32DISC.X100]
@@ -411,13 +411,13 @@ namespace EncompassRest.Loans
         /// Sec 32 Points/Fees Test Results [S32DISC.X49]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ResultOfPointAndFees { get => _resultOfPointAndFees; set => SetField(ref _resultOfPointAndFees, value); }
+        public string? ResultOfPointAndFees { get => _resultOfPointAndFees; set => SetField(ref _resultOfPointAndFees, value); }
 
         /// <summary>
         /// Sec 32 Security Yield Test Result [S32DISC.X2]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ResultOfSecurityYieldTest { get => _resultOfSecurityYieldTest; set => SetField(ref _resultOfSecurityYieldTest, value); }
+        public string? ResultOfSecurityYieldTest { get => _resultOfSecurityYieldTest; set => SetField(ref _resultOfSecurityYieldTest, value); }
 
         /// <summary>
         /// Loan qualifies as high cost under Section 32 [HighCost.Federal]
@@ -451,12 +451,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Sec 35 HPML Prior Acquisition Source [3852]
         /// </summary>
-        public string Section35PriorAcquisitionSource { get => _section35PriorAcquisitionSource; set => SetField(ref _section35PriorAcquisitionSource, value); }
+        public string? Section35PriorAcquisitionSource { get => _section35PriorAcquisitionSource; set => SetField(ref _section35PriorAcquisitionSource, value); }
 
         /// <summary>
         /// Sec 35 Security Yield Test Result [3135]
         /// </summary>
-        public string Section35ResultOfSecurityYieldTest { get => _section35ResultOfSecurityYieldTest; set => SetField(ref _section35ResultOfSecurityYieldTest, value); }
+        public string? Section35ResultOfSecurityYieldTest { get => _section35ResultOfSecurityYieldTest; set => SetField(ref _section35ResultOfSecurityYieldTest, value); }
 
         /// <summary>
         /// Sec 35 HPML Sales Contract Date [3855]

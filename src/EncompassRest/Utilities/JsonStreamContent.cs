@@ -11,18 +11,18 @@ namespace EncompassRest.Utilities
     {
         private static readonly Task s_completedTask = Task.FromResult(0);
 
-        public static JsonStreamContent Create<T>(T value) => new JsonStreamContent(value, TypeData<T>.Type);
+        public static JsonStreamContent Create<T>(T value) => new JsonStreamContent(value!, TypeData<T>.Type);
 
         public object Value { get; }
 
-        public Type Type { get; }
+        public Type? Type { get; }
 
         public JsonStreamContent(object value)
             : this(value, null)
         {
         }
 
-        public JsonStreamContent(object value, Type type)
+        public JsonStreamContent(object value, Type? type)
         {
             Headers.ContentType = new MediaTypeHeaderValue("application/json");
 

@@ -8,142 +8,142 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Gfe2010Section : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<bool?> _borrowerSelectIndicator903;
-        private DirtyValue<bool?> _borrowerSelectIndicator904;
-        private DirtyValue<bool?> _borrowerSelectIndicator906;
-        private DirtyValue<bool?> _borrowerSelectIndicator907;
-        private DirtyValue<bool?> _borrowerSelectIndicator908;
-        private DirtyValue<bool?> _borrowerSelectIndicator909;
-        private DirtyValue<bool?> _borrowerSelectIndicator910;
-        private DirtyValue<decimal?> _hudGfeLine1109;
-        private DirtyValue<decimal?> _hudGfeLine1110;
-        private DirtyValue<decimal?> _hudGfeLine1111;
-        private DirtyValue<decimal?> _hudGfeLine1112;
-        private DirtyValue<decimal?> _hudGfeLine1113;
-        private DirtyValue<decimal?> _hudGfeLine1114;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _line1001;
-        private DirtyValue<decimal?> _line1001BorPaidTotal;
-        private DirtyValue<string> _line1002;
-        private DirtyValue<string> _line1003;
-        private DirtyValue<string> _line1004;
-        private DirtyValue<string> _line1005;
-        private DirtyValue<string> _line1006;
-        private DirtyValue<string> _line1007;
-        private DirtyValue<string> _line1008;
-        private DirtyValue<string> _line1009;
-        private DirtyValue<string> _line1010;
-        private DirtyValue<string> _line1011;
-        private DirtyValue<string> _line1101;
-        private DirtyValue<decimal?> _line1101BorPaidTotal;
-        private DirtyValue<decimal?> _line1101SellerPaidAtoF;
-        private DirtyValue<string> _line1102;
-        private DirtyValue<string> _line1103;
-        private DirtyValue<decimal?> _line1103PTAAmount;
-        private DirtyValue<string> _line1104;
-        private DirtyValue<decimal?> _line1104PTAAmount;
-        private DirtyValue<string> _line1107;
-        private DirtyValue<string> _line1108;
-        private DirtyValue<string> _line1109;
-        private DirtyValue<string> _line1110;
-        private DirtyValue<string> _line1115;
-        private DirtyValue<string> _line1116;
-        private DirtyValue<decimal?> _line1201BorPaidTotal;
-        private DirtyValue<string> _line1209;
-        private DirtyValue<string> _line1210;
-        private DirtyValue<decimal?> _line1301BorPaidTotal;
-        private DirtyValue<string> _line1302;
-        private DirtyValue<string> _line1310;
-        private DirtyValue<string> _line1311;
-        private DirtyValue<string> _line1312;
-        private DirtyValue<string> _line1313;
-        private DirtyValue<string> _line1314;
-        private DirtyValue<string> _line1315;
-        private DirtyValue<string> _line1316;
-        private DirtyValue<string> _line1317;
-        private DirtyValue<string> _line1318;
-        private DirtyValue<string> _line1319;
-        private DirtyValue<string> _line1320;
-        private DirtyValue<string> _line701;
-        private DirtyValue<string> _line702;
-        private DirtyValue<string> _line703;
-        private DirtyValue<string> _line704;
-        private DirtyValue<string> _line803x;
-        private DirtyValue<string> _line807Company;
-        private DirtyValue<string> _line808;
-        private DirtyValue<string> _line809;
-        private DirtyValue<string> _line810;
-        private DirtyValue<string> _line811;
-        private DirtyValue<string> _line812;
-        private DirtyValue<string> _line819;
-        private DirtyValue<string> _line820;
-        private DirtyValue<string> _line821;
-        private DirtyValue<string> _line822;
-        private DirtyValue<string> _line823;
-        private DirtyValue<string> _line824;
-        private DirtyValue<string> _line825;
-        private DirtyValue<string> _line826;
-        private DirtyValue<string> _line827;
-        private DirtyValue<string> _line828;
-        private DirtyValue<string> _line829;
-        private DirtyValue<string> _line830;
-        private DirtyValue<string> _line831;
-        private DirtyValue<string> _line832;
-        private DirtyValue<string> _line833;
-        private DirtyValue<string> _line834;
-        private DirtyValue<string> _line835;
-        private DirtyValue<string> _line904;
-        private DirtyValue<string> _line909;
-        private DirtyValue<string> _line910;
-        private DirtyValue<string> _line911;
-        private DirtyValue<string> _line912;
-        private DirtyValue<string> _linePC1;
-        private DirtyValue<string> _linePC2;
-        private DirtyValue<string> _linePC3;
-        private DirtyValue<string> _linePC4;
-        private DirtyValue<bool?> _loanTermTableCustomized;
-        private DirtyValue<bool?> _loCompensationItemizeFeesIndicator;
-        private DirtyValue<decimal?> _loCompensationLenderTotalPaidOriginatorAmount;
-        private DirtyValue<decimal?> _loCompensationLenderTotalPaidOriginatorAmountForGFE;
-        private DirtyValue<decimal?> _loCompensationLenderTotalPaidOriginatorAmountForLOTool;
-        private DirtyValue<decimal?> _loCompensationNewHudLenderTotalPaidOriginatorAmount;
-        private DirtyValue<decimal?> _loCompensationNewHudTotalBorrowerPaidDiscountPointAmount;
-        private DirtyValue<decimal?> _loCompensationNewHudTotalLoCompensationAmount;
-        private DirtyValue<decimal?> _loCompensationTotalBorrowerPaidDiscountPointAmount4;
-        private DirtyValue<decimal?> _loCompensationTotalLoCompensationAmount;
-        private DirtyValue<decimal?> _loCompensationTotalSellerPaidDiscountPointAmount4;
-        private DirtyValue<bool?> _loCompensationUseLoCompensationToolIndicator;
-        private DirtyValue<string> _projectedPaymentTableColumns;
-        private DirtyValue<bool?> _projectedPaymentTableCustomized;
-        private DirtyValue<string> _projectedPaymentTableType;
-        private DirtyValue<decimal?> _section1000AggregateAdjust;
-        private DirtyValue<bool?> _section1000HudGuaranteeFeeAprIndicator;
-        private DirtyValue<bool?> _section1100BorrowerSelectIndicator1;
-        private DirtyValue<bool?> _section1100BorrowerSelectIndicator10;
-        private DirtyValue<bool?> _section1100BorrowerSelectIndicator2;
-        private DirtyValue<bool?> _section1100BorrowerSelectIndicator3;
-        private DirtyValue<bool?> _section1100BorrowerSelectIndicator4;
-        private DirtyValue<bool?> _section1100BorrowerSelectIndicator5;
-        private DirtyValue<bool?> _section1100BorrowerSelectIndicator6;
-        private DirtyValue<bool?> _section1100BorrowerSelectIndicator7;
-        private DirtyValue<bool?> _section1100BorrowerSelectIndicator8;
-        private DirtyValue<bool?> _section1100BorrowerSelectIndicator9;
-        private DirtyValue<bool?> _section1100ItemizeFeesIndicator;
-        private DirtyValue<decimal?> _section1200TotalTransferTaxes;
-        private DirtyValue<bool?> _section800BonaFideIndicator;
-        private DirtyValue<decimal?> _section800BorrowerPaidInitialDiscountPointAmount;
-        private DirtyValue<decimal?> _section800ChargeAmount;
-        private DirtyValue<StringEnumValue<CreditChargeType>> _section800CreditChargeType;
-        private DirtyValue<StringEnumValue<IncludeOriginationPointsCreditType>> _section800IncludeOriginationPointsCreditType;
-        private DirtyValue<decimal?> _section800InitialDiscountPoint;
-        private DirtyValue<decimal?> _section800InitialDiscountPointAdditionalAmount;
-        private DirtyValue<decimal?> _section800InitialDiscountRate;
-        private DirtyValue<bool?> _section800ItemizeFeesIndicator;
-        private DirtyValue<decimal?> _section800SelChargeAmount;
-        private DirtyValue<decimal?> _section800TotalTransferTaxes;
-        private DirtyValue<decimal?> _section900HomeownerInsurance;
-        private DirtyValue<decimal?> _section900HudGfeVaFundingFee;
-        private DirtyValue<bool?> _useActualPaymentChange;
+        private DirtyValue<bool?>? _borrowerSelectIndicator903;
+        private DirtyValue<bool?>? _borrowerSelectIndicator904;
+        private DirtyValue<bool?>? _borrowerSelectIndicator906;
+        private DirtyValue<bool?>? _borrowerSelectIndicator907;
+        private DirtyValue<bool?>? _borrowerSelectIndicator908;
+        private DirtyValue<bool?>? _borrowerSelectIndicator909;
+        private DirtyValue<bool?>? _borrowerSelectIndicator910;
+        private DirtyValue<decimal?>? _hudGfeLine1109;
+        private DirtyValue<decimal?>? _hudGfeLine1110;
+        private DirtyValue<decimal?>? _hudGfeLine1111;
+        private DirtyValue<decimal?>? _hudGfeLine1112;
+        private DirtyValue<decimal?>? _hudGfeLine1113;
+        private DirtyValue<decimal?>? _hudGfeLine1114;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _line1001;
+        private DirtyValue<decimal?>? _line1001BorPaidTotal;
+        private DirtyValue<string?>? _line1002;
+        private DirtyValue<string?>? _line1003;
+        private DirtyValue<string?>? _line1004;
+        private DirtyValue<string?>? _line1005;
+        private DirtyValue<string?>? _line1006;
+        private DirtyValue<string?>? _line1007;
+        private DirtyValue<string?>? _line1008;
+        private DirtyValue<string?>? _line1009;
+        private DirtyValue<string?>? _line1010;
+        private DirtyValue<string?>? _line1011;
+        private DirtyValue<string?>? _line1101;
+        private DirtyValue<decimal?>? _line1101BorPaidTotal;
+        private DirtyValue<decimal?>? _line1101SellerPaidAtoF;
+        private DirtyValue<string?>? _line1102;
+        private DirtyValue<string?>? _line1103;
+        private DirtyValue<decimal?>? _line1103PTAAmount;
+        private DirtyValue<string?>? _line1104;
+        private DirtyValue<decimal?>? _line1104PTAAmount;
+        private DirtyValue<string?>? _line1107;
+        private DirtyValue<string?>? _line1108;
+        private DirtyValue<string?>? _line1109;
+        private DirtyValue<string?>? _line1110;
+        private DirtyValue<string?>? _line1115;
+        private DirtyValue<string?>? _line1116;
+        private DirtyValue<decimal?>? _line1201BorPaidTotal;
+        private DirtyValue<string?>? _line1209;
+        private DirtyValue<string?>? _line1210;
+        private DirtyValue<decimal?>? _line1301BorPaidTotal;
+        private DirtyValue<string?>? _line1302;
+        private DirtyValue<string?>? _line1310;
+        private DirtyValue<string?>? _line1311;
+        private DirtyValue<string?>? _line1312;
+        private DirtyValue<string?>? _line1313;
+        private DirtyValue<string?>? _line1314;
+        private DirtyValue<string?>? _line1315;
+        private DirtyValue<string?>? _line1316;
+        private DirtyValue<string?>? _line1317;
+        private DirtyValue<string?>? _line1318;
+        private DirtyValue<string?>? _line1319;
+        private DirtyValue<string?>? _line1320;
+        private DirtyValue<string?>? _line701;
+        private DirtyValue<string?>? _line702;
+        private DirtyValue<string?>? _line703;
+        private DirtyValue<string?>? _line704;
+        private DirtyValue<string?>? _line803x;
+        private DirtyValue<string?>? _line807Company;
+        private DirtyValue<string?>? _line808;
+        private DirtyValue<string?>? _line809;
+        private DirtyValue<string?>? _line810;
+        private DirtyValue<string?>? _line811;
+        private DirtyValue<string?>? _line812;
+        private DirtyValue<string?>? _line819;
+        private DirtyValue<string?>? _line820;
+        private DirtyValue<string?>? _line821;
+        private DirtyValue<string?>? _line822;
+        private DirtyValue<string?>? _line823;
+        private DirtyValue<string?>? _line824;
+        private DirtyValue<string?>? _line825;
+        private DirtyValue<string?>? _line826;
+        private DirtyValue<string?>? _line827;
+        private DirtyValue<string?>? _line828;
+        private DirtyValue<string?>? _line829;
+        private DirtyValue<string?>? _line830;
+        private DirtyValue<string?>? _line831;
+        private DirtyValue<string?>? _line832;
+        private DirtyValue<string?>? _line833;
+        private DirtyValue<string?>? _line834;
+        private DirtyValue<string?>? _line835;
+        private DirtyValue<string?>? _line904;
+        private DirtyValue<string?>? _line909;
+        private DirtyValue<string?>? _line910;
+        private DirtyValue<string?>? _line911;
+        private DirtyValue<string?>? _line912;
+        private DirtyValue<string?>? _linePC1;
+        private DirtyValue<string?>? _linePC2;
+        private DirtyValue<string?>? _linePC3;
+        private DirtyValue<string?>? _linePC4;
+        private DirtyValue<bool?>? _loanTermTableCustomized;
+        private DirtyValue<bool?>? _loCompensationItemizeFeesIndicator;
+        private DirtyValue<decimal?>? _loCompensationLenderTotalPaidOriginatorAmount;
+        private DirtyValue<decimal?>? _loCompensationLenderTotalPaidOriginatorAmountForGFE;
+        private DirtyValue<decimal?>? _loCompensationLenderTotalPaidOriginatorAmountForLOTool;
+        private DirtyValue<decimal?>? _loCompensationNewHudLenderTotalPaidOriginatorAmount;
+        private DirtyValue<decimal?>? _loCompensationNewHudTotalBorrowerPaidDiscountPointAmount;
+        private DirtyValue<decimal?>? _loCompensationNewHudTotalLoCompensationAmount;
+        private DirtyValue<decimal?>? _loCompensationTotalBorrowerPaidDiscountPointAmount4;
+        private DirtyValue<decimal?>? _loCompensationTotalLoCompensationAmount;
+        private DirtyValue<decimal?>? _loCompensationTotalSellerPaidDiscountPointAmount4;
+        private DirtyValue<bool?>? _loCompensationUseLoCompensationToolIndicator;
+        private DirtyValue<string?>? _projectedPaymentTableColumns;
+        private DirtyValue<bool?>? _projectedPaymentTableCustomized;
+        private DirtyValue<string?>? _projectedPaymentTableType;
+        private DirtyValue<decimal?>? _section1000AggregateAdjust;
+        private DirtyValue<bool?>? _section1000HudGuaranteeFeeAprIndicator;
+        private DirtyValue<bool?>? _section1100BorrowerSelectIndicator1;
+        private DirtyValue<bool?>? _section1100BorrowerSelectIndicator10;
+        private DirtyValue<bool?>? _section1100BorrowerSelectIndicator2;
+        private DirtyValue<bool?>? _section1100BorrowerSelectIndicator3;
+        private DirtyValue<bool?>? _section1100BorrowerSelectIndicator4;
+        private DirtyValue<bool?>? _section1100BorrowerSelectIndicator5;
+        private DirtyValue<bool?>? _section1100BorrowerSelectIndicator6;
+        private DirtyValue<bool?>? _section1100BorrowerSelectIndicator7;
+        private DirtyValue<bool?>? _section1100BorrowerSelectIndicator8;
+        private DirtyValue<bool?>? _section1100BorrowerSelectIndicator9;
+        private DirtyValue<bool?>? _section1100ItemizeFeesIndicator;
+        private DirtyValue<decimal?>? _section1200TotalTransferTaxes;
+        private DirtyValue<bool?>? _section800BonaFideIndicator;
+        private DirtyValue<decimal?>? _section800BorrowerPaidInitialDiscountPointAmount;
+        private DirtyValue<decimal?>? _section800ChargeAmount;
+        private DirtyValue<StringEnumValue<CreditChargeType>>? _section800CreditChargeType;
+        private DirtyValue<StringEnumValue<IncludeOriginationPointsCreditType>>? _section800IncludeOriginationPointsCreditType;
+        private DirtyValue<decimal?>? _section800InitialDiscountPoint;
+        private DirtyValue<decimal?>? _section800InitialDiscountPointAdditionalAmount;
+        private DirtyValue<decimal?>? _section800InitialDiscountRate;
+        private DirtyValue<bool?>? _section800ItemizeFeesIndicator;
+        private DirtyValue<decimal?>? _section800SelChargeAmount;
+        private DirtyValue<decimal?>? _section800TotalTransferTaxes;
+        private DirtyValue<decimal?>? _section900HomeownerInsurance;
+        private DirtyValue<decimal?>? _section900HudGfeVaFundingFee;
+        private DirtyValue<bool?>? _useActualPaymentChange;
 
         /// <summary>
         /// Fees Line 903 Borr Select [NEWHUD.X651]
@@ -219,12 +219,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Section Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Gfe2010Section Line1001
         /// </summary>
-        public string Line1001 { get => _line1001; set => SetField(ref _line1001, value); }
+        public string? Line1001 { get => _line1001; set => SetField(ref _line1001, value); }
 
         /// <summary>
         /// Borr Fees Line 1001 for HUD-1 Page 2 [NEWHUD.X1716]
@@ -235,57 +235,57 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Section Line1002
         /// </summary>
-        public string Line1002 { get => _line1002; set => SetField(ref _line1002, value); }
+        public string? Line1002 { get => _line1002; set => SetField(ref _line1002, value); }
 
         /// <summary>
         /// Gfe2010Section Line1003
         /// </summary>
-        public string Line1003 { get => _line1003; set => SetField(ref _line1003, value); }
+        public string? Line1003 { get => _line1003; set => SetField(ref _line1003, value); }
 
         /// <summary>
         /// Gfe2010Section Line1004
         /// </summary>
-        public string Line1004 { get => _line1004; set => SetField(ref _line1004, value); }
+        public string? Line1004 { get => _line1004; set => SetField(ref _line1004, value); }
 
         /// <summary>
         /// Gfe2010Section Line1005
         /// </summary>
-        public string Line1005 { get => _line1005; set => SetField(ref _line1005, value); }
+        public string? Line1005 { get => _line1005; set => SetField(ref _line1005, value); }
 
         /// <summary>
         /// Gfe2010Section Line1006
         /// </summary>
-        public string Line1006 { get => _line1006; set => SetField(ref _line1006, value); }
+        public string? Line1006 { get => _line1006; set => SetField(ref _line1006, value); }
 
         /// <summary>
         /// Gfe2010Section Line1007
         /// </summary>
-        public string Line1007 { get => _line1007; set => SetField(ref _line1007, value); }
+        public string? Line1007 { get => _line1007; set => SetField(ref _line1007, value); }
 
         /// <summary>
         /// Gfe2010Section Line1008
         /// </summary>
-        public string Line1008 { get => _line1008; set => SetField(ref _line1008, value); }
+        public string? Line1008 { get => _line1008; set => SetField(ref _line1008, value); }
 
         /// <summary>
         /// Gfe2010Section Line1009
         /// </summary>
-        public string Line1009 { get => _line1009; set => SetField(ref _line1009, value); }
+        public string? Line1009 { get => _line1009; set => SetField(ref _line1009, value); }
 
         /// <summary>
         /// Gfe2010Section Line1010
         /// </summary>
-        public string Line1010 { get => _line1010; set => SetField(ref _line1010, value); }
+        public string? Line1010 { get => _line1010; set => SetField(ref _line1010, value); }
 
         /// <summary>
         /// Gfe2010Section Line1011
         /// </summary>
-        public string Line1011 { get => _line1011; set => SetField(ref _line1011, value); }
+        public string? Line1011 { get => _line1011; set => SetField(ref _line1011, value); }
 
         /// <summary>
         /// Title Serv &amp; Lender Title Ins Provider [NEWHUD.X202]
         /// </summary>
-        public string Line1101 { get => _line1101; set => SetField(ref _line1101, value); }
+        public string? Line1101 { get => _line1101; set => SetField(ref _line1101, value); }
 
         /// <summary>
         /// Borr Fees Line 1101 for HUD-1 Page 2 [NEWHUD.X775]
@@ -302,12 +302,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Sttlmnt or Closing Fee Provider [NEWHUD.X203]
         /// </summary>
-        public string Line1102 { get => _line1102; set => SetField(ref _line1102, value); }
+        public string? Line1102 { get => _line1102; set => SetField(ref _line1102, value); }
 
         /// <summary>
         /// Owner Title Ins Provider [NEWHUD.X204]
         /// </summary>
-        public string Line1103 { get => _line1103; set => SetField(ref _line1103, value); }
+        public string? Line1103 { get => _line1103; set => SetField(ref _line1103, value); }
 
         /// <summary>
         /// Owner's Title Insurance Paid To Affiliate Amount [NEWHUD.X1724]
@@ -318,7 +318,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lender Title Ins Provider [NEWHUD.X205]
         /// </summary>
-        public string Line1104 { get => _line1104; set => SetField(ref _line1104, value); }
+        public string? Line1104 { get => _line1104; set => SetField(ref _line1104, value); }
 
         /// <summary>
         /// Lender's Title Insurance Paid To Affiliate Amount [NEWHUD.X1725]
@@ -329,32 +329,32 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Total Title Ins Prem - Recipient Agent Portion [NEWHUD.X206]
         /// </summary>
-        public string Line1107 { get => _line1107; set => SetField(ref _line1107, value); }
+        public string? Line1107 { get => _line1107; set => SetField(ref _line1107, value); }
 
         /// <summary>
         /// Total Title Ins Prem - Recipient Underwiter Portion [NEWHUD.X207]
         /// </summary>
-        public string Line1108 { get => _line1108; set => SetField(ref _line1108, value); }
+        public string? Line1108 { get => _line1108; set => SetField(ref _line1108, value); }
 
         /// <summary>
         /// Fees Line 1109 Descr [NEWHUD.X208]
         /// </summary>
-        public string Line1109 { get => _line1109; set => SetField(ref _line1109, value); }
+        public string? Line1109 { get => _line1109; set => SetField(ref _line1109, value); }
 
         /// <summary>
         /// Fees Line 1110 Descr [NEWHUD.X209]
         /// </summary>
-        public string Line1110 { get => _line1110; set => SetField(ref _line1110, value); }
+        public string? Line1110 { get => _line1110; set => SetField(ref _line1110, value); }
 
         /// <summary>
         /// Fees Line 1115 Descr [NEWHUD.X1602]
         /// </summary>
-        public string Line1115 { get => _line1115; set => SetField(ref _line1115, value); }
+        public string? Line1115 { get => _line1115; set => SetField(ref _line1115, value); }
 
         /// <summary>
         /// Fees Line 1116 Descr [NEWHUD.X1610]
         /// </summary>
-        public string Line1116 { get => _line1116; set => SetField(ref _line1116, value); }
+        public string? Line1116 { get => _line1116; set => SetField(ref _line1116, value); }
 
         /// <summary>
         /// Borr Fees Line 1201 for HUD-1 Page 2 [NEWHUD.X776]
@@ -365,12 +365,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Line 1209 Descr [NEWHUD.X1618]
         /// </summary>
-        public string Line1209 { get => _line1209; set => SetField(ref _line1209, value); }
+        public string? Line1209 { get => _line1209; set => SetField(ref _line1209, value); }
 
         /// <summary>
         /// Fees Line 1210 Descr [NEWHUD.X1625]
         /// </summary>
-        public string Line1210 { get => _line1210; set => SetField(ref _line1210, value); }
+        public string? Line1210 { get => _line1210; set => SetField(ref _line1210, value); }
 
         /// <summary>
         /// Borr Fees Line 1301 for HUD-1 Page 2 [NEWHUD.X777]
@@ -381,247 +381,247 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Line 1302 Descr [NEWHUD.X251]
         /// </summary>
-        public string Line1302 { get => _line1302; set => SetField(ref _line1302, value); }
+        public string? Line1302 { get => _line1302; set => SetField(ref _line1302, value); }
 
         /// <summary>
         /// Fees Line 1310 Descr [NEWHUD.X252]
         /// </summary>
-        public string Line1310 { get => _line1310; set => SetField(ref _line1310, value); }
+        public string? Line1310 { get => _line1310; set => SetField(ref _line1310, value); }
 
         /// <summary>
         /// Fees Line 1311 Descr [NEWHUD.X253]
         /// </summary>
-        public string Line1311 { get => _line1311; set => SetField(ref _line1311, value); }
+        public string? Line1311 { get => _line1311; set => SetField(ref _line1311, value); }
 
         /// <summary>
         /// Fees Line 1312 Descr [NEWHUD.X1632]
         /// </summary>
-        public string Line1312 { get => _line1312; set => SetField(ref _line1312, value); }
+        public string? Line1312 { get => _line1312; set => SetField(ref _line1312, value); }
 
         /// <summary>
         /// Fees Line 1313 Descr [NEWHUD.X1640]
         /// </summary>
-        public string Line1313 { get => _line1313; set => SetField(ref _line1313, value); }
+        public string? Line1313 { get => _line1313; set => SetField(ref _line1313, value); }
 
         /// <summary>
         /// Fees Line 1314 Descr [NEWHUD.X1648]
         /// </summary>
-        public string Line1314 { get => _line1314; set => SetField(ref _line1314, value); }
+        public string? Line1314 { get => _line1314; set => SetField(ref _line1314, value); }
 
         /// <summary>
         /// Fees Line 1315 Descr [NEWHUD.X1656]
         /// </summary>
-        public string Line1315 { get => _line1315; set => SetField(ref _line1315, value); }
+        public string? Line1315 { get => _line1315; set => SetField(ref _line1315, value); }
 
         /// <summary>
         /// Fees Line 1316 Descr [NEWHUD2.X4610]
         /// </summary>
-        public string Line1316 { get => _line1316; set => SetField(ref _line1316, value); }
+        public string? Line1316 { get => _line1316; set => SetField(ref _line1316, value); }
 
         /// <summary>
         /// Fees Line 1317 Descr [NEWHUD2.X4617]
         /// </summary>
-        public string Line1317 { get => _line1317; set => SetField(ref _line1317, value); }
+        public string? Line1317 { get => _line1317; set => SetField(ref _line1317, value); }
 
         /// <summary>
         /// Fees Line 1318 Descr [NEWHUD2.X4624]
         /// </summary>
-        public string Line1318 { get => _line1318; set => SetField(ref _line1318, value); }
+        public string? Line1318 { get => _line1318; set => SetField(ref _line1318, value); }
 
         /// <summary>
         /// Fees Line 1319 Descr [NEWHUD2.X4631]
         /// </summary>
-        public string Line1319 { get => _line1319; set => SetField(ref _line1319, value); }
+        public string? Line1319 { get => _line1319; set => SetField(ref _line1319, value); }
 
         /// <summary>
         /// Fees Line 1320 Descr [NEWHUD2.X4638]
         /// </summary>
-        public string Line1320 { get => _line1320; set => SetField(ref _line1320, value); }
+        public string? Line1320 { get => _line1320; set => SetField(ref _line1320, value); }
 
         /// <summary>
         /// Gfe2010Section Line701
         /// </summary>
-        public string Line701 { get => _line701; set => SetField(ref _line701, value); }
+        public string? Line701 { get => _line701; set => SetField(ref _line701, value); }
 
         /// <summary>
         /// Gfe2010Section Line702
         /// </summary>
-        public string Line702 { get => _line702; set => SetField(ref _line702, value); }
+        public string? Line702 { get => _line702; set => SetField(ref _line702, value); }
 
         /// <summary>
         /// Gfe2010Section Line703
         /// </summary>
-        public string Line703 { get => _line703; set => SetField(ref _line703, value); }
+        public string? Line703 { get => _line703; set => SetField(ref _line703, value); }
 
         /// <summary>
         /// Gfe2010Section Line704
         /// </summary>
-        public string Line704 { get => _line704; set => SetField(ref _line704, value); }
+        public string? Line704 { get => _line704; set => SetField(ref _line704, value); }
 
         /// <summary>
         /// Fees Line 803 Description [NEWHUD2.X7]
         /// </summary>
-        public string Line803x { get => _line803x; set => SetField(ref _line803x, value); }
+        public string? Line803x { get => _line803x; set => SetField(ref _line803x, value); }
 
         /// <summary>
         /// Flood Certification To [NEWHUD.X399]
         /// </summary>
-        public string Line807Company { get => _line807Company; set => SetField(ref _line807Company, value); }
+        public string? Line807Company { get => _line807Company; set => SetField(ref _line807Company, value); }
 
         /// <summary>
         /// Fees Line 808 Descr [NEWHUD.X126]
         /// </summary>
-        public string Line808 { get => _line808; set => SetField(ref _line808, value); }
+        public string? Line808 { get => _line808; set => SetField(ref _line808, value); }
 
         /// <summary>
         /// Fees Line 809 Descr [NEWHUD.X127]
         /// </summary>
-        public string Line809 { get => _line809; set => SetField(ref _line809, value); }
+        public string? Line809 { get => _line809; set => SetField(ref _line809, value); }
 
         /// <summary>
         /// Fees Line 810 Descr [NEWHUD.X128]
         /// </summary>
-        public string Line810 { get => _line810; set => SetField(ref _line810, value); }
+        public string? Line810 { get => _line810; set => SetField(ref _line810, value); }
 
         /// <summary>
         /// Fees Line 811 Descr [NEWHUD.X129]
         /// </summary>
-        public string Line811 { get => _line811; set => SetField(ref _line811, value); }
+        public string? Line811 { get => _line811; set => SetField(ref _line811, value); }
 
         /// <summary>
         /// Fees Line 812 Descr [NEWHUD.X130]
         /// </summary>
-        public string Line812 { get => _line812; set => SetField(ref _line812, value); }
+        public string? Line812 { get => _line812; set => SetField(ref _line812, value); }
 
         /// <summary>
         /// Fees Line 835 Descr [NEWHUD.X656]
         /// </summary>
-        public string Line819 { get => _line819; set => SetField(ref _line819, value); }
+        public string? Line819 { get => _line819; set => SetField(ref _line819, value); }
 
         /// <summary>
         /// Fees Line 818 Descr [NEWHUD.X1291]
         /// </summary>
-        public string Line820 { get => _line820; set => SetField(ref _line820, value); }
+        public string? Line820 { get => _line820; set => SetField(ref _line820, value); }
 
         /// <summary>
         /// Fees Line 819 Descr [NEWHUD.X1299]
         /// </summary>
-        public string Line821 { get => _line821; set => SetField(ref _line821, value); }
+        public string? Line821 { get => _line821; set => SetField(ref _line821, value); }
 
         /// <summary>
         /// Fees Line 820 Descr [NEWHUD.X1307]
         /// </summary>
-        public string Line822 { get => _line822; set => SetField(ref _line822, value); }
+        public string? Line822 { get => _line822; set => SetField(ref _line822, value); }
 
         /// <summary>
         /// Fees Line 821 Descr [NEWHUD.X1315]
         /// </summary>
-        public string Line823 { get => _line823; set => SetField(ref _line823, value); }
+        public string? Line823 { get => _line823; set => SetField(ref _line823, value); }
 
         /// <summary>
         /// Fees Line 822 Descr [NEWHUD.X1323]
         /// </summary>
-        public string Line824 { get => _line824; set => SetField(ref _line824, value); }
+        public string? Line824 { get => _line824; set => SetField(ref _line824, value); }
 
         /// <summary>
         /// Fees Line 823 Descr [NEWHUD.X1331]
         /// </summary>
-        public string Line825 { get => _line825; set => SetField(ref _line825, value); }
+        public string? Line825 { get => _line825; set => SetField(ref _line825, value); }
 
         /// <summary>
         /// Fees Line 824 Descr [NEWHUD.X1339]
         /// </summary>
-        public string Line826 { get => _line826; set => SetField(ref _line826, value); }
+        public string? Line826 { get => _line826; set => SetField(ref _line826, value); }
 
         /// <summary>
         /// Fees Line 825 Descr [NEWHUD.X1347]
         /// </summary>
-        public string Line827 { get => _line827; set => SetField(ref _line827, value); }
+        public string? Line827 { get => _line827; set => SetField(ref _line827, value); }
 
         /// <summary>
         /// Fees Line 826 Descr [NEWHUD.X1355]
         /// </summary>
-        public string Line828 { get => _line828; set => SetField(ref _line828, value); }
+        public string? Line828 { get => _line828; set => SetField(ref _line828, value); }
 
         /// <summary>
         /// Fees Line 827 Descr [NEWHUD.X1363]
         /// </summary>
-        public string Line829 { get => _line829; set => SetField(ref _line829, value); }
+        public string? Line829 { get => _line829; set => SetField(ref _line829, value); }
 
         /// <summary>
         /// Fees Line 828 Descr [NEWHUD.X1371]
         /// </summary>
-        public string Line830 { get => _line830; set => SetField(ref _line830, value); }
+        public string? Line830 { get => _line830; set => SetField(ref _line830, value); }
 
         /// <summary>
         /// Fees Line 829 Descr [NEWHUD.X1379]
         /// </summary>
-        public string Line831 { get => _line831; set => SetField(ref _line831, value); }
+        public string? Line831 { get => _line831; set => SetField(ref _line831, value); }
 
         /// <summary>
         /// Fees Line 830 Descr [NEWHUD.X1387]
         /// </summary>
-        public string Line832 { get => _line832; set => SetField(ref _line832, value); }
+        public string? Line832 { get => _line832; set => SetField(ref _line832, value); }
 
         /// <summary>
         /// Fees Line 831 Descr [NEWHUD.X1395]
         /// </summary>
-        public string Line833 { get => _line833; set => SetField(ref _line833, value); }
+        public string? Line833 { get => _line833; set => SetField(ref _line833, value); }
 
         /// <summary>
         /// Fees Line 832 Descr [NEWHUD.X1403]
         /// </summary>
-        public string Line834 { get => _line834; set => SetField(ref _line834, value); }
+        public string? Line834 { get => _line834; set => SetField(ref _line834, value); }
 
         /// <summary>
         /// Fees Line 833 Descr [NEWHUD.X1411]
         /// </summary>
-        public string Line835 { get => _line835; set => SetField(ref _line835, value); }
+        public string? Line835 { get => _line835; set => SetField(ref _line835, value); }
 
         /// <summary>
         /// Fees Line 904 User Def Fee Descr [NEWHUD.X582]
         /// </summary>
-        public string Line904 { get => _line904; set => SetField(ref _line904, value); }
+        public string? Line904 { get => _line904; set => SetField(ref _line904, value); }
 
         /// <summary>
         /// Fees Line 909 User Def Fee Descr [NEWHUD.X583]
         /// </summary>
-        public string Line909 { get => _line909; set => SetField(ref _line909, value); }
+        public string? Line909 { get => _line909; set => SetField(ref _line909, value); }
 
         /// <summary>
         /// Fees Line 910 User Def Fee Descr [NEWHUD.X584]
         /// </summary>
-        public string Line910 { get => _line910; set => SetField(ref _line910, value); }
+        public string? Line910 { get => _line910; set => SetField(ref _line910, value); }
 
         /// <summary>
         /// Fees Line 911 Descr [NEWHUD.X1586]
         /// </summary>
-        public string Line911 { get => _line911; set => SetField(ref _line911, value); }
+        public string? Line911 { get => _line911; set => SetField(ref _line911, value); }
 
         /// <summary>
         /// Fees Line 912 Descr [NEWHUD.X1594]
         /// </summary>
-        public string Line912 { get => _line912; set => SetField(ref _line912, value); }
+        public string? Line912 { get => _line912; set => SetField(ref _line912, value); }
 
         /// <summary>
         /// Fees Line PC1 Descr [NEWHUD2.X4660]
         /// </summary>
-        public string LinePC1 { get => _linePC1; set => SetField(ref _linePC1, value); }
+        public string? LinePC1 { get => _linePC1; set => SetField(ref _linePC1, value); }
 
         /// <summary>
         /// Fees Line PC2 Descr [NEWHUD2.X4683]
         /// </summary>
-        public string LinePC2 { get => _linePC2; set => SetField(ref _linePC2, value); }
+        public string? LinePC2 { get => _linePC2; set => SetField(ref _linePC2, value); }
 
         /// <summary>
         /// Fees Line PC3 Descr [NEWHUD2.X4706]
         /// </summary>
-        public string LinePC3 { get => _linePC3; set => SetField(ref _linePC3, value); }
+        public string? LinePC3 { get => _linePC3; set => SetField(ref _linePC3, value); }
 
         /// <summary>
         /// Fees Line PC4 Descr [NEWHUD2.X4729]
         /// </summary>
-        public string LinePC4 { get => _linePC4; set => SetField(ref _linePC4, value); }
+        public string? LinePC4 { get => _linePC4; set => SetField(ref _linePC4, value); }
 
         /// <summary>
         /// Loan Term Table Is Customized [LOANTERMTABLE.CUSTOMIZE]
@@ -693,7 +693,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Projected Payment Table number of columns [NEWHUD2.XPJTCOLUMNS]
         /// </summary>
-        public string ProjectedPaymentTableColumns { get => _projectedPaymentTableColumns; set => SetField(ref _projectedPaymentTableColumns, value); }
+        public string? ProjectedPaymentTableColumns { get => _projectedPaymentTableColumns; set => SetField(ref _projectedPaymentTableColumns, value); }
 
         /// <summary>
         /// Projected Payment Table Is Customized [PAYMENTTABLE.CUSTOMIZE]
@@ -703,7 +703,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Projected Payment Table [NEWHUD2.XPJT]
         /// </summary>
-        public string ProjectedPaymentTableType { get => _projectedPaymentTableType; set => SetField(ref _projectedPaymentTableType, value); }
+        public string? ProjectedPaymentTableType { get => _projectedPaymentTableType; set => SetField(ref _projectedPaymentTableType, value); }
 
         /// <summary>
         /// Fees Line 1010 Aggregate Adjust Applied to GFE [NEWHUD.X948]

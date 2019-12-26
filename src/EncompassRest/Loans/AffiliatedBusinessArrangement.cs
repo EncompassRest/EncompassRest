@@ -8,36 +8,36 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class AffiliatedBusinessArrangement : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<int?> _affiliatedBusinessArrangementIndex;
-        private DirtyValue<string> _affiliateName;
-        private DirtyValue<string> _chargeRangeChargesDescription1;
-        private DirtyValue<string> _chargeRangeChargesDescription2;
-        private DirtyValue<string> _chargeRangeChargesDescription3;
-        private DirtyValue<string> _chargeRangeChargesDescription4;
-        private DirtyValue<string> _chargeRangeChargesDescription5;
-        private DirtyValue<string> _chargeRangeChargesDescription6;
-        private DirtyValue<string> _id;
-        private DirtyValue<string> _lenderAddress;
-        private DirtyValue<string> _lenderAddressCity;
-        private DirtyValue<StringEnumValue<State>> _lenderAddressState;
-        private DirtyValue<string> _lenderAddressZipcode;
-        private DirtyValue<string> _lenderName;
-        private DirtyValue<string> _natureOfRelationship;
-        private DirtyValue<decimal?> _percentOwnershipInterest;
-        private DirtyValue<bool?> _purchaseSaleRefinanceIndicator;
-        private DirtyValue<bool?> _requiredUseIndicator1;
-        private DirtyValue<bool?> _requiredUseIndicator2;
-        private DirtyValue<bool?> _requiredUseIndicator3;
-        private DirtyValue<bool?> _requiredUseIndicator4;
-        private DirtyValue<bool?> _requiredUseIndicator5;
-        private DirtyValue<bool?> _requiredUseIndicator6;
-        private DirtyValue<string> _serviceDescription1;
-        private DirtyValue<string> _serviceDescription2;
-        private DirtyValue<string> _serviceDescription3;
-        private DirtyValue<string> _serviceDescription4;
-        private DirtyValue<string> _serviceDescription5;
-        private DirtyValue<string> _serviceDescription6;
-        private DirtyValue<bool?> _settlementIndicator;
+        private DirtyValue<int?>? _affiliatedBusinessArrangementIndex;
+        private DirtyValue<string?>? _affiliateName;
+        private DirtyValue<string?>? _chargeRangeChargesDescription1;
+        private DirtyValue<string?>? _chargeRangeChargesDescription2;
+        private DirtyValue<string?>? _chargeRangeChargesDescription3;
+        private DirtyValue<string?>? _chargeRangeChargesDescription4;
+        private DirtyValue<string?>? _chargeRangeChargesDescription5;
+        private DirtyValue<string?>? _chargeRangeChargesDescription6;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _lenderAddress;
+        private DirtyValue<string?>? _lenderAddressCity;
+        private DirtyValue<StringEnumValue<State>>? _lenderAddressState;
+        private DirtyValue<string?>? _lenderAddressZipcode;
+        private DirtyValue<string?>? _lenderName;
+        private DirtyValue<string?>? _natureOfRelationship;
+        private DirtyValue<decimal?>? _percentOwnershipInterest;
+        private DirtyValue<bool?>? _purchaseSaleRefinanceIndicator;
+        private DirtyValue<bool?>? _requiredUseIndicator1;
+        private DirtyValue<bool?>? _requiredUseIndicator2;
+        private DirtyValue<bool?>? _requiredUseIndicator3;
+        private DirtyValue<bool?>? _requiredUseIndicator4;
+        private DirtyValue<bool?>? _requiredUseIndicator5;
+        private DirtyValue<bool?>? _requiredUseIndicator6;
+        private DirtyValue<string?>? _serviceDescription1;
+        private DirtyValue<string?>? _serviceDescription2;
+        private DirtyValue<string?>? _serviceDescription3;
+        private DirtyValue<string?>? _serviceDescription4;
+        private DirtyValue<string?>? _serviceDescription5;
+        private DirtyValue<string?>? _serviceDescription6;
+        private DirtyValue<bool?>? _settlementIndicator;
 
         /// <summary>
         /// AffiliatedBusinessArrangement AffiliatedBusinessArrangementIndex
@@ -47,52 +47,52 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Affiliated Business Arrangements - Affiliate Name [ABNN06]
         /// </summary>
-        public string AffiliateName { get => _affiliateName; set => SetField(ref _affiliateName, value); }
+        public string? AffiliateName { get => _affiliateName; set => SetField(ref _affiliateName, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 1 [ABNN16]
         /// </summary>
-        public string ChargeRangeChargesDescription1 { get => _chargeRangeChargesDescription1; set => SetField(ref _chargeRangeChargesDescription1, value); }
+        public string? ChargeRangeChargesDescription1 { get => _chargeRangeChargesDescription1; set => SetField(ref _chargeRangeChargesDescription1, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 2 [ABNN17]
         /// </summary>
-        public string ChargeRangeChargesDescription2 { get => _chargeRangeChargesDescription2; set => SetField(ref _chargeRangeChargesDescription2, value); }
+        public string? ChargeRangeChargesDescription2 { get => _chargeRangeChargesDescription2; set => SetField(ref _chargeRangeChargesDescription2, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 3 [ABNN18]
         /// </summary>
-        public string ChargeRangeChargesDescription3 { get => _chargeRangeChargesDescription3; set => SetField(ref _chargeRangeChargesDescription3, value); }
+        public string? ChargeRangeChargesDescription3 { get => _chargeRangeChargesDescription3; set => SetField(ref _chargeRangeChargesDescription3, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 4 [ABNN19]
         /// </summary>
-        public string ChargeRangeChargesDescription4 { get => _chargeRangeChargesDescription4; set => SetField(ref _chargeRangeChargesDescription4, value); }
+        public string? ChargeRangeChargesDescription4 { get => _chargeRangeChargesDescription4; set => SetField(ref _chargeRangeChargesDescription4, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 5 [ABNN20]
         /// </summary>
-        public string ChargeRangeChargesDescription5 { get => _chargeRangeChargesDescription5; set => SetField(ref _chargeRangeChargesDescription5, value); }
+        public string? ChargeRangeChargesDescription5 { get => _chargeRangeChargesDescription5; set => SetField(ref _chargeRangeChargesDescription5, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Charge or Range of Charges Line 6 [ABNN21]
         /// </summary>
-        public string ChargeRangeChargesDescription6 { get => _chargeRangeChargesDescription6; set => SetField(ref _chargeRangeChargesDescription6, value); }
+        public string? ChargeRangeChargesDescription6 { get => _chargeRangeChargesDescription6; set => SetField(ref _chargeRangeChargesDescription6, value); }
 
         /// <summary>
         /// AffiliatedBusinessArrangement Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Lender's Address [ABNN02]
         /// </summary>
-        public string LenderAddress { get => _lenderAddress; set => SetField(ref _lenderAddress, value); }
+        public string? LenderAddress { get => _lenderAddress; set => SetField(ref _lenderAddress, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Lender's Address City [ABNN03]
         /// </summary>
-        public string LenderAddressCity { get => _lenderAddressCity; set => SetField(ref _lenderAddressCity, value); }
+        public string? LenderAddressCity { get => _lenderAddressCity; set => SetField(ref _lenderAddressCity, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Lender's Address State [ABNN04]
@@ -103,17 +103,17 @@ namespace EncompassRest.Loans
         /// Affiliated Business Arrangements - Lender's Address Zipcode [ABNN05]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-        public string LenderAddressZipcode { get => _lenderAddressZipcode; set => SetField(ref _lenderAddressZipcode, value); }
+        public string? LenderAddressZipcode { get => _lenderAddressZipcode; set => SetField(ref _lenderAddressZipcode, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Lender Name [ABNN01]
         /// </summary>
-        public string LenderName { get => _lenderName; set => SetField(ref _lenderName, value); }
+        public string? LenderName { get => _lenderName; set => SetField(ref _lenderName, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Nature of Relationship [ABNN07]
         /// </summary>
-        public string NatureOfRelationship { get => _natureOfRelationship; set => SetField(ref _natureOfRelationship, value); }
+        public string? NatureOfRelationship { get => _natureOfRelationship; set => SetField(ref _natureOfRelationship, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Percentage of Ownership Interest [ABNN28]
@@ -159,32 +159,32 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 1 [ABNN10]
         /// </summary>
-        public string ServiceDescription1 { get => _serviceDescription1; set => SetField(ref _serviceDescription1, value); }
+        public string? ServiceDescription1 { get => _serviceDescription1; set => SetField(ref _serviceDescription1, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 2 [ABNN11]
         /// </summary>
-        public string ServiceDescription2 { get => _serviceDescription2; set => SetField(ref _serviceDescription2, value); }
+        public string? ServiceDescription2 { get => _serviceDescription2; set => SetField(ref _serviceDescription2, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 3 [ABNN12]
         /// </summary>
-        public string ServiceDescription3 { get => _serviceDescription3; set => SetField(ref _serviceDescription3, value); }
+        public string? ServiceDescription3 { get => _serviceDescription3; set => SetField(ref _serviceDescription3, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 4 [ABNN13]
         /// </summary>
-        public string ServiceDescription4 { get => _serviceDescription4; set => SetField(ref _serviceDescription4, value); }
+        public string? ServiceDescription4 { get => _serviceDescription4; set => SetField(ref _serviceDescription4, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 5 [ABNN14]
         /// </summary>
-        public string ServiceDescription5 { get => _serviceDescription5; set => SetField(ref _serviceDescription5, value); }
+        public string? ServiceDescription5 { get => _serviceDescription5; set => SetField(ref _serviceDescription5, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Service Description Line 6 [ABNN15]
         /// </summary>
-        public string ServiceDescription6 { get => _serviceDescription6; set => SetField(ref _serviceDescription6, value); }
+        public string? ServiceDescription6 { get => _serviceDescription6; set => SetField(ref _serviceDescription6, value); }
 
         /// <summary>
         /// Affiliated Business Arrangements - Settlement Indicator [ABNN08]

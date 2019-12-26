@@ -38,7 +38,7 @@ namespace EncompassRest.LoanPipeline
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> GetCanonicalNamesRawAsync(string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> GetCanonicalNamesRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves loan IDs (GUIDs) and specified fields from loans on the Pipeline.
         /// </summary>
@@ -78,7 +78,7 @@ namespace EncompassRest.LoanPipeline
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> ViewPipelineRawAsync(string parameters, string queryString = null, CancellationToken cancellationToken = default);
+        Task<string> ViewPipelineRawAsync(string parameters, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ namespace EncompassRest.LoanPipeline
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> GetCanonicalNamesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", queryString, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
+        public Task<string> GetCanonicalNamesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", queryString, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
 
         /// <summary>
         /// Creates a cursor to paginate large data sets.
@@ -147,7 +147,7 @@ namespace EncompassRest.LoanPipeline
                 {
                     throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} invalid {countHeaderName} header value", response).ConfigureAwait(false);
                 }
-                string cursorId = null;
+                string? cursorId = null;
                 if (count > 0)
                 {
                     const string cursorIdHeaderName = "x-cursor";
@@ -227,7 +227,7 @@ namespace EncompassRest.LoanPipeline
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<string> ViewPipelineRawAsync(string parameters, string queryString = null, CancellationToken cancellationToken = default)
+        public Task<string> ViewPipelineRawAsync(string parameters, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
 

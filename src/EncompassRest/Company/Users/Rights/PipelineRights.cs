@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
@@ -8,9 +9,9 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class PipelineRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?> _accessToPipelineLoanTab;
-        private DirtyDictionary<string, bool> _notAccessibleColumns;
-        private PipelineTasksRights _pipelineTasks;
+        private DirtyValue<bool?>? _accessToPipelineLoanTab;
+        private DirtyDictionary<string, bool>? _notAccessibleColumns;
+        private PipelineTasksRights? _pipelineTasks;
 
         /// <summary>
         /// PipelineRights AccessToPipelineLoanTab
@@ -21,11 +22,13 @@ namespace EncompassRest.Company.Users.Rights
         /// <summary>
         /// PipelineRights NotAccessibleColumns
         /// </summary>
+        [AllowNull]
         public IDictionary<string, bool> NotAccessibleColumns { get => GetField(ref _notAccessibleColumns); set => SetField(ref _notAccessibleColumns, value); }
 
         /// <summary>
         /// PipelineRights PipelineTasks
         /// </summary>
+        [AllowNull]
         public PipelineTasksRights PipelineTasks { get => GetField(ref _pipelineTasks); set => SetField(ref _pipelineTasks, value); }
     }
 }

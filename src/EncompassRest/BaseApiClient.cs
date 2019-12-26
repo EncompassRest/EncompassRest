@@ -165,7 +165,7 @@ namespace EncompassRest
     /// </summary>
     public sealed class BaseApiClient : ApiObject, IBaseApiClient
     {
-        internal override string BaseAddress => null;
+        internal override string? BaseAddress => null;
 
         /// <summary>
         /// The internal <see cref="System.Net.Http.HttpClient"/> used by the client.

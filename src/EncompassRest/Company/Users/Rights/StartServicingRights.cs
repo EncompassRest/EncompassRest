@@ -7,7 +7,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class StartServicingRights : ParentAccessRights
     {
-        private DirtyValue<bool?> _reStartServicing;
+        private DirtyValue<bool?>? _reStartServicing;
 
         /// <summary>
         /// StartServicingRights ReStartServicing

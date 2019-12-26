@@ -9,336 +9,336 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class Uldd : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _aCHABARoutingAndTransitIdentifier;
-        private DirtyValue<string> _aCHABARoutingAndTransitNumber;
-        private DirtyValue<string> _aCHBankAccountDescription;
-        private DirtyValue<string> _aCHBankAccountIdentifier;
-        private DirtyValue<string> _aCHBankAccountPurposeTransitIdentifier;
-        private DirtyValue<StringEnumValue<ACHBankAccountPurposeType>> _aCHBankAccountPurposeType;
-        private DirtyValue<string> _aCHInstitutionTelegraphicAbbreviationName;
-        private DirtyValue<string> _aCHReceiverSubaccountName;
-        private DirtyValue<bool?> _additionalPrincipalAmountIndicator;
-        private DirtyValue<decimal?> _aggregateLoanCurtailmentAmount;
-        private DirtyValue<string> _appraisalIdentifier;
-        private DirtyValue<StringEnumValue<AttachmentType>> _attachmentType;
-        private DirtyValue<StringEnumValue<AVMModelNameType>> _aVMModelNameType;
-        private DirtyValue<bool?> _balloonResetIndicator;
-        private DirtyValue<decimal?> _baseGuarantyFeePercent;
-        private DirtyValue<StringEnumValue<TrueOrFalse>> _bondFinancePool;
-        private DirtyValue<string> _bondFinanceProgramName;
-        private DirtyValue<StringEnumValue<BondFinanceProgramType>> _bondFinanceProgramType;
-        private DirtyValue<bool?> _borrowerMailToAddressSameasPropertyIndicator;
-        private DirtyValue<StringEnumValue<UlddBorrowerType>> _borrowerType;
-        private DirtyValue<bool?> _capitalizedLoanIndicator;
-        private DirtyValue<string> _certificateIdentifier;
-        private DirtyValue<DateTime?> _certificateMaturityDate;
-        private DirtyValue<decimal?> _certificatePrincipalBalanceAmount;
-        private DirtyValue<StringEnumValue<TrueOrFalse>> _certificateType;
-        private DirtyValue<decimal?> _closingCost2ContributionAmount;
-        private DirtyValue<StringEnumValue<ClosingCostFundsType>> _closingCost2FundsType;
-        private DirtyValue<StringEnumValue<FundsTypeDescription>> _closingCost2FundsTypeOtherDescription;
-        private DirtyValue<StringEnumValue<ClosingCostSourceType>> _closingCost2SourceType;
-        private DirtyValue<StringEnumValue<SourceTypeDescription>> _closingCost2SourceTypeOtherDescription;
-        private DirtyValue<decimal?> _closingCost3ContributionAmount;
-        private DirtyValue<StringEnumValue<ClosingCostFundsType>> _closingCost3FundsType;
-        private DirtyValue<StringEnumValue<FundsTypeDescription>> _closingCost3FundsTypeOtherDescription;
-        private DirtyValue<StringEnumValue<ClosingCostSourceType>> _closingCost3SourceType;
-        private DirtyValue<StringEnumValue<SourceTypeDescription>> _closingCost3SourceTypeOtherDescription;
-        private DirtyValue<decimal?> _closingCost4ContributionAmount;
-        private DirtyValue<StringEnumValue<ClosingCostFundsType>> _closingCost4FundsType;
-        private DirtyValue<StringEnumValue<FundsTypeDescription>> _closingCost4FundsTypeOtherDescription;
-        private DirtyValue<StringEnumValue<ClosingCostSourceType>> _closingCost4SourceType;
-        private DirtyValue<StringEnumValue<SourceTypeDescription>> _closingCost4SourceTypeOtherDescription;
-        private DirtyValue<decimal?> _closingCostContributionAmount;
-        private DirtyValue<StringEnumValue<ClosingCostFundsType>> _closingCostFundsType;
-        private DirtyValue<StringEnumValue<FundsTypeDescription>> _closingCostFundsTypeOtherDescription;
-        private DirtyValue<StringEnumValue<ClosingCostSourceType>> _closingCostSourceType;
-        private DirtyValue<StringEnumValue<SourceTypeDescription>> _closingCostSourceTypeOtherDescription;
-        private DirtyValue<string> _coBorrowerCountryCode;
-        private DirtyValue<bool?> _coBorrowerMailToAddressSameasPropertyIndicator;
-        private DirtyValue<StringEnumValue<UlddBorrowerType>> _coBorrowerType;
-        private DirtyValue<StringEnumValue<CondominiumProjectStatusType>> _condominiumProjectStatusType;
-        private DirtyValue<StringEnumValue<ConstructionMethodType>> _constructionMethodType;
-        private DirtyValue<string> _constructionMethodTypeOtherDescription;
-        private DirtyValue<StringEnumValue<ConstructionToPermanentClosingFeatureType>> _constructionToPermanentClosingFeatureType;
-        private DirtyValue<StringEnumValue<ConstructionToPermanentClosingType>> _constructionToPermanentClosingType;
-        private DirtyValue<StringEnumValue<ConvertibleStatusType>> _convertibleStatusType;
-        private DirtyValue<StringEnumValue<CounselingFormatType>> _counselingFormatType;
-        private DirtyValue<StringEnumValue<CounselingFormatTypeOtherDescription>> _counselingFormatTypeOtherDescription;
-        private DirtyValue<StringEnumValue<CounselTypeOther>> _counselTypeOther;
-        private DirtyValue<string> _countryCode;
-        private DirtyValue<StringEnumValue<CreditScoreImpairmentType>> _creditScoreImpairmentType;
-        private DirtyValue<decimal?> _currentAccruedInterestAmount;
-        private DirtyValue<int?> _delinquentPaymentsOverPastTwelveMonthsCount;
-        private DirtyValue<string> _documentCustodianID;
-        private DirtyValue<StringEnumValue<TrueOrFalse>> _documentRequiredIndicator;
-        private DirtyValue<StringEnumValue<TrueOrFalse>> _documentSubmissionIndicator;
-        private DirtyValue<StringEnumValue<DownPaymentFundsType>> _downPaymentFundsType;
-        private DirtyValue<StringEnumValue<FundsTypeDescription>> _downPaymentOtherTypeDescription;
-        private DirtyValue<StringEnumValue<DownPaymentSourceType>> _downPaymentSourceType;
-        private DirtyValue<StringEnumValue<SourceTypeDescription>> _downPaymentSourceTypeOtherDescription;
-        private DirtyValue<bool?> _eNoteIndicator;
-        private DirtyValue<StringEnumValue<FannieARMIndexType>> _fannieARMIndexType;
-        private DirtyValue<StringEnumValue<FannieAutoUWDec>> _fannieAutoUWDec;
-        private DirtyValue<int?> _fannieBLTV;
-        private DirtyValue<string> _fannieBorrowerFirstName;
-        private DirtyValue<string> _fannieBorrowerMiddleName;
-        private DirtyValue<StringEnumValue<FannieBuydownContributer>> _fannieBuydownContributer;
-        private DirtyValue<int?> _fannieCLTV;
-        private DirtyValue<string> _fannieCoBorrowerFirstName;
-        private DirtyValue<string> _fannieCoBorrowerMiddleName;
-        private DirtyValue<string> _fannieCreditScoreProviderName;
-        private DirtyValue<StringEnumValue<FannieFloodSpecialFeatureCode>> _fannieFloodSpecialFeatureCode;
-        private DirtyValue<int?> _fannieHCLTV;
-        private DirtyValue<int?> _fannieInvestorOwnershipPercent;
-        private DirtyValue<StringEnumValue<FannieLegalEntityType>> _fannieLegalEntityType;
-        private DirtyValue<StringEnumValue<FannieLegalEntityTypeOther>> _fannieLegalEntityTypeOther;
-        private DirtyValue<decimal?> _fannieLenderPaidMIInterestRateAdjustmentPercent;
-        private DirtyValue<StringEnumValue<FannieLoanProgramIdentifier>> _fannieLoanProgramIdentifier;
-        private DirtyValue<int?> _fannieLTV;
-        private DirtyValue<StringEnumValue<FannieMICompanyNameTypeOther>> _fannieMICompanyNameTypeOther;
-        private DirtyValue<int?> _fannieMICoveragePercent;
-        private DirtyValue<int?> _fanniePoolOwnershipPercent;
-        private DirtyValue<StringEnumValue<FannieProjectClassificationType>> _fannieProjectClassificationType;
-        private DirtyValue<StringEnumValue<FanniePropertyFormType>> _fanniePropertyFormType;
-        private DirtyValue<decimal?> _fannieRateSpread;
-        private DirtyValue<StringEnumValue<FannieRefinanceType>> _fannieRefinanceType;
-        private DirtyValue<string> _fannieRelatedInvestorLoanID;
-        private DirtyValue<StringEnumValue<FannieRelatedLoanAmortizationType>> _fannieRelatedLoanAmortizationType;
-        private DirtyValue<StringEnumValue<FannieRelatedLoanLienPosition>> _fannieRelatedLoanLienPosition;
-        private DirtyValue<StringEnumValue<FannieRelatedLoanType>> _fannieRelatedLoanType;
-        private DirtyValue<StringEnumValue<FannieSectionOfAct>> _fannieSectionOfAct;
-        private DirtyValue<int?> _fannieTLTV;
-        private DirtyValue<string> _fannieTrustName;
-        private DirtyValue<StringEnumValue<FannnieMortgageType>> _fannnieMortgageType;
-        private DirtyValue<int?> _financedUnitCount;
-        private DirtyValue<DateTime?> _firstRateChangePaymentEffectiveDate;
-        private DirtyValue<StringEnumValue<FNMHomeImprovementProductType>> _fNMHomeImprovementProductType;
-        private DirtyValue<StringEnumValue<FreddieARMIndexType>> _freddieARMIndexType;
-        private DirtyValue<StringEnumValue<FreddieAutoUWDec>> _freddieAutoUWDec;
-        private DirtyValue<StringEnumValue<FreddieAVMModelNameTypeExpl>> _freddieAVMModelNameTypeExpl;
-        private DirtyValue<StringEnumValue<FeddieBorrowerAlienStatus>> _freddieBorrowerAlienStatus;
-        private DirtyValue<StringEnumValue<FeddieBorrowerAlienStatus>> _freddieCoBorrowerAlienStatus;
-        private DirtyValue<string> _freddieCreditScoreProviderName;
-        private DirtyValue<StringEnumValue<FreddieDownPaymentType>> _freddieDownPaymentType;
-        private DirtyValue<StringEnumValue<DownPaymentSourceType>> _freddieDownPmt2SourceType;
-        private DirtyValue<StringEnumValue<SourceTypeDescription>> _freddieDownPmt2SourceTypeExpl;
-        private DirtyValue<StringEnumValue<FreddieDownPaymentType>> _freddieDownPmt2Type;
-        private DirtyValue<StringEnumValue<FundsTypeDescription>> _freddieDownPmt2TypeExpl;
-        private DirtyValue<decimal?> _freddieDownPmt3Amt;
-        private DirtyValue<StringEnumValue<DownPaymentSourceType>> _freddieDownPmt3SourceType;
-        private DirtyValue<StringEnumValue<SourceTypeDescription>> _freddieDownPmt3SourceTypeExpl;
-        private DirtyValue<StringEnumValue<FreddieDownPaymentType>> _freddieDownPmt3Type;
-        private DirtyValue<StringEnumValue<FundsTypeDescription>> _freddieDownPmt3TypeExpl;
-        private DirtyValue<decimal?> _freddieDownPmt4Amt;
-        private DirtyValue<StringEnumValue<DownPaymentSourceType>> _freddieDownPmt4SourceType;
-        private DirtyValue<StringEnumValue<SourceTypeDescription>> _freddieDownPmt4SourceTypeExpl;
-        private DirtyValue<StringEnumValue<FreddieDownPaymentType>> _freddieDownPmt4Type;
-        private DirtyValue<StringEnumValue<FundsTypeDescription>> _freddieDownPmt4TypeExpl;
-        private DirtyValue<StringEnumValue<FundsTypeDescription>> _freddieExplanationOfDownPayment;
-        private DirtyValue<StringEnumValue<FreddieInvestorCollateralProgramIdentifier>> _freddieInvestorCollateralProgramIdentifier;
-        private DirtyValue<string> _freddieInvestorFeatureIdentifier;
-        private DirtyValue<StringEnumValue<FreddieLegalEntityType>> _freddieLegalEntityType;
-        private DirtyValue<StringEnumValue<FreddieLegalEntityTypeOther>> _freddieLegalEntityTypeOther;
-        private DirtyValue<StringEnumValue<FreddieLoanProgramIdentifier>> _freddieLoanProgramIdentifier;
-        private DirtyValue<StringEnumValue<FreddieLoanTypePublicAndIndianHousingIndicator>> _freddieLoanTypePublicAndIndianHousingIndicator;
-        private DirtyValue<StringEnumValue<FreddieMICompanyNameTypeOther>> _freddieMICompanyNameTypeOther;
-        private DirtyValue<StringEnumValue<FreddieMortgageType>> _freddieMortgageType;
-        private DirtyValue<StringEnumValue<FreddieProjectClassificationType>> _freddieProjectClassificationType;
-        private DirtyValue<StringEnumValue<PropertyFormType>> _freddiePropertyFormType;
-        private DirtyValue<StringEnumValue<FreddieRefinanceCashOutDeterminationType>> _freddieRefinanceCashOutDeterminationType;
-        private DirtyValue<StringEnumValue<FreddieRefinanceType>> _freddieRefinanceType;
-        private DirtyValue<bool?> _freddieRelatedClosedEndSecondIndicator;
-        private DirtyValue<string> _freddieRelatedInvestorLoanID;
-        private DirtyValue<StringEnumValue<FreddieRelatedLoanInvestorType>> _freddieRelatedLoanInvestorType;
-        private DirtyValue<StringEnumValue<FreddieRelatedLoanLienPosition>> _freddieRelatedLoanLienPosition;
-        private DirtyValue<StringEnumValue<FreddieRelatedLoanType>> _freddieRelatedLoanType;
-        private DirtyValue<StringEnumValue<FreddieSectionOfAct>> _freddieSectionOfAct;
-        private DirtyValue<StringEnumValue<FreddieUnderwritingTypeOther>> _freddieUnderwritingTypeOther;
-        private DirtyValue<StringEnumValue<GinnieConstructionMethodType>> _ginnieConstructionMethodType;
-        private DirtyValue<decimal?> _ginnieGovernmentAnnualPremiumAmount;
-        private DirtyValue<StringEnumValue<GinnieMortgageType>> _ginnieMortgageType;
-        private DirtyValue<string> _ginnieOtherConstructionMethodType;
-        private DirtyValue<decimal?> _governmentAnnualPremiumPercent;
-        private DirtyValue<StringEnumValue<GovernmentRefinanceType>> _governmentRefinanceType;
-        private DirtyValue<decimal?> _governmentUpfrontPremiumAmount;
-        private DirtyValue<decimal?> _governmentUpfrontPremiumPercent;
-        private DirtyValue<StringEnumValue<GSEProjectType>> _gSEProjectType;
-        private DirtyValue<bool?> _guaranteeFeeAddOnIndicator;
-        private DirtyValue<decimal?> _guarantyFeeAfterAlternatePaymentMethodPercent;
-        private DirtyValue<decimal?> _guarantyFeePercent;
-        private DirtyValue<decimal?> _guarantyPercent;
-        private DirtyValue<string> _homeOwnerAssociationEin;
-        private DirtyValue<string> _id;
-        private DirtyValue<StringEnumValue<IndexType>> _indexType;
-        private DirtyValue<int?> _initialFixedPeriodEffectiveMonthsCount;
-        private DirtyValue<StringEnumValue<InterestAccrualType>> _interestAccrualType;
-        private DirtyValue<int?> _interestAndPaymentAdjustmentIndexLeadDaysCount;
-        private DirtyValue<StringEnumValue<InterestCalculationBasisType>> _interestCalculationBasisType;
-        private DirtyValue<int?> _interestCalculationEffectiveMonthsCount;
-        private DirtyValue<StringEnumValue<InterestCalculationType>> _interestCalculationType;
-        private DirtyValue<StringEnumValue<InvestorCollateralProgramIdentifier>> _investorCollateralProgramIdentifier;
-        private DirtyValue<string> _investorCommitmentIdentifier;
-        private DirtyValue<string> _investorFeatureIdentifier;
-        private DirtyValue<string> _investorFeatureIdPool;
-        private DirtyValue<decimal?> _investorOwnershipPercent;
-        private DirtyValue<string> _investorProductPlanIdentifier;
-        private DirtyValue<int?> _investorRemittanceDay;
-        private DirtyValue<StringEnumValue<InvestorRemittanceType>> _investorRemittanceType;
-        private DirtyValue<string> _issuerIdentifier;
-        private DirtyValue<DateTime?> _lastPaidInstallmentDueDate;
-        private DirtyValue<DateTime?> _lastPaymentReceivedDate;
-        private DirtyValue<DateTime?> _latestConversionEffectiveDate;
-        private DirtyValue<decimal?> _lenderPaidMIInterestRateAdjustmentPercent;
-        private DirtyValue<DateTime?> _lendersDeliveryDate;
-        private DirtyValue<decimal?> _loanAcquisitionScheduledUPBAmount;
-        private DirtyValue<int?> _loanAmortizationMaximumTermMonthsCount;
-        private DirtyValue<int?> _loanBuyupBuydownBasisPointNumber;
-        private DirtyValue<StringEnumValue<LoanBuyupBuydownType>> _loanBuyupBuydownType;
-        private DirtyValue<StringEnumValue<LoanDefaultLossPartyType>> _loanDefaultLossPartyType;
-        private DirtyValue<bool?> _loanDeliveredThroughServicingReleasedProcessIndicator;
-        private DirtyValue<StringEnumValue<LoanIdentifierValueType>> _loanIdentifierValueType;
-        private DirtyValue<DateTime?> _loanInterestAccrualStartDate;
-        private DirtyValue<bool?> _loanLevelCreditScoreSelectionMethodSellerSpecificIndicator;
-        private DirtyValue<StringEnumValue<LoanLevelCreditScoreSelectionMethodType>> _loanLevelCreditScoreSelectionMethodType;
-        private DirtyValue<int?> _loanLevelCreditScoreValue;
-        private DirtyValue<DateTime?> _loanModificationEffectiveDate;
-        private DirtyValue<DateTime?> _loanStateDate;
-        private DirtyValue<StringEnumValue<ManufacturedHomeWidthType>> _manufacturedHomeWidthType;
-        private DirtyValue<bool?> _mBSWeightedMarginIndicator;
-        private DirtyValue<StringEnumValue<TrueOrFalse>> _mERSOriginalMortgageeOfRecordIndicator;
-        private DirtyValue<StringEnumValue<MICompanyNameType>> _mICompanyNameType;
-        private DirtyValue<StringEnumValue<MIPremiumSourceType>> _mIPremiumSourceType;
-        private DirtyValue<DateTime?> _monetaryEventAppliedDate;
-        private DirtyValue<decimal?> _monetaryEventGrossPrincipalAmount;
-        private DirtyValue<StringEnumValue<MonetaryEventType>> _monetaryEventType;
-        private DirtyValue<bool?> _mortgageBackedSecurityIndicator;
-        private DirtyValue<bool?> _mortgageModificationIndicator;
-        private DirtyValue<StringEnumValue<UlddMortgageOriginator>> _mortgageOriginator;
-        private DirtyValue<StringEnumValue<MortgageProgramType>> _mortgageProgramType;
-        private DirtyValue<bool?> _multipleConcurrentlyClosingLienOnSubjectPropertyIndicator;
-        private DirtyValue<DateTime?> _nextRateAdjustmentEffectiveDate;
-        private DirtyValue<string> _notePayToName;
-        private DirtyValue<int?> _numberOfUnitsSold;
-        private DirtyValue<string> _otherDownPaymentFundsType;
-        private DirtyValue<decimal?> _otherFundsCollectedAtClosingAmount;
-        private DirtyValue<StringEnumValue<OtherFundsCollectedAtClosingType>> _otherFundsCollectedAtClosingType;
-        private DirtyValue<string> _payeeID;
-        private DirtyValue<int?> _paymentBillingStatementLeadDaysCount;
-        private DirtyValue<decimal?> _perChangeMaximumDecreaseRatePercent;
-        private DirtyValue<decimal?> _perChangeMaximumIncreaseRatePercent;
-        private DirtyValue<decimal?> _perChangePrincipalAndInterestPaymentAdjustmentPercent;
-        private DirtyValue<DateTime?> _perChangeRateAdjustmentEffectiveDate;
-        private DirtyValue<int?> _perChangeRateAdjustmentFrequencyMonthsCount;
-        private DirtyValue<StringEnumValue<PoolAccrualRateStructureType>> _poolAccrualRateStructureType;
-        private DirtyValue<StringEnumValue<PoolAmortizationType>> _poolAmortizationType;
-        private DirtyValue<bool?> _poolAssumabilityIndicator;
-        private DirtyValue<bool?> _poolBalloonIndicator;
-        private DirtyValue<DateTime?> _poolCertificatePaymentDate;
-        private DirtyValue<StringEnumValue<PoolClassType>> _poolClassType;
-        private DirtyValue<StringEnumValue<TrueOrFalse>> _poolConcurrentTransferIndicator;
-        private DirtyValue<int?> _poolCurrentLoanCount;
-        private DirtyValue<decimal?> _poolCurrentPrincipalBalanceAmount;
-        private DirtyValue<string> _poolDocumentCustodianID;
-        private DirtyValue<decimal?> _poolFixedServicingFeePercent;
-        private DirtyValue<string> _poolIdentifier;
-        private DirtyValue<StringEnumValue<PoolingMethodType>> _poolingMethodType;
-        private DirtyValue<DateTime?> _poolInterestAdjustmentEffectiveDate;
-        private DirtyValue<int?> _poolInterestAdjustmentIndexLeadDaysCount;
-        private DirtyValue<int?> _poolInterestAndPaymentAdjustmentIndexLeadDaysCount;
-        private DirtyValue<bool?> _poolInterestOnlyIndicator;
-        private DirtyValue<decimal?> _poolInterestRateRoundingPercent;
-        private DirtyValue<StringEnumValue<PoolInterestRateRoundingType>> _poolInterestRateRoundingType;
-        private DirtyValue<string> _poolInvestorProductPlanIdentifier;
-        private DirtyValue<DateTime?> _poolIssueDate;
-        private DirtyValue<string> _poolIssuerTransferee;
-        private DirtyValue<decimal?> _poolMarginRatePercent;
-        private DirtyValue<DateTime?> _poolMaturityDate;
-        private DirtyValue<int?> _poolMaturityPeriodCount;
-        private DirtyValue<decimal?> _poolMaximumAccrualRatePercent;
-        private DirtyValue<decimal?> _poolMinimumAccrualRatePercent;
-        private DirtyValue<StringEnumValue<PoolMortgageType>> _poolMortgageType;
-        private DirtyValue<int?> _poolScheduledRemittancePaymentDay;
-        private DirtyValue<decimal?> _poolSecurityIssueDateInterestRatePercent;
-        private DirtyValue<string> _poolSellerID;
-        private DirtyValue<string> _poolServicerID;
-        private DirtyValue<StringEnumValue<PoolStructureType>> _poolStructureType;
-        private DirtyValue<string> _poolSuffixIdentifier;
-        private DirtyValue<DateTime?> _priceLockDatetime;
-        private DirtyValue<StringEnumValue<PrimaryMIAbsenceReasonType>> _primaryMIAbsenceReasonType;
-        private DirtyValue<StringEnumValue<PrimaryMIAbsenceReasonTypeOtherDescription>> _primaryMIAbsenceReasonTypeOtherDescription;
-        private DirtyValue<StringEnumValue<ProjectAttachmentType>> _projectAttachmentType;
-        private DirtyValue<StringEnumValue<ProjectDesignType>> _projectDesignType;
-        private DirtyValue<int?> _projectUnitCount;
-        private DirtyValue<DateTime?> _propertyValuationEffectiveDate;
-        private DirtyValue<StringEnumValue<PropertyValuationMethodType>> _propertyValuationMethodType;
-        private DirtyValue<StringEnumValue<PropertyValuationOther>> _propertyValuationOther;
-        private DirtyValue<decimal?> _refinanceCashOutAmount;
-        private DirtyValue<StringEnumValue<RefinanceCashOutDeterminationType>> _refinanceCashOutDeterminationType;
-        private DirtyValue<bool?> _relatedLoanAffordableIndicator;
-        private DirtyValue<bool?> _relatedLoanBalloonIndicator;
-        private DirtyValue<bool?> _relatedLoanHELOCIndicator;
-        private DirtyValue<bool?> _relatedLoanIndicator;
-        private DirtyValue<StringEnumValue<RelatedLoanInvestorType>> _relatedLoanInvestorType;
-        private DirtyValue<int?> _relatedLoanMaturityPeriodCount;
-        private DirtyValue<DateTime?> _relatedLoanNoteDate;
-        private DirtyValue<DateTime?> _relatedLoanScheduledFirstPaymentDate;
-        private DirtyValue<DateTime?> _relatedLoanStateDateAtClosing;
-        private DirtyValue<decimal?> _relatedLoanUnpaidPrincipalBalanceAmount;
-        private DirtyValue<bool?> _relocationLoanIndicator;
-        private DirtyValue<StringEnumValue<PartyType>> _rEOMarketingPartyType;
-        private DirtyValue<bool?> _secondLienIsDeliveredIndicator;
-        private DirtyValue<decimal?> _securityOriginalSubscriptionAmount;
-        private DirtyValue<DateTime?> _securityTradeBookEntryDate;
-        private DirtyValue<string> _sellerID;
-        private DirtyValue<string> _sellerLoanIdentifier;
-        private DirtyValue<string> _servicerID;
-        private DirtyValue<string> _servicerLoanIdentifier;
-        private DirtyValue<bool?> _sharedEquityIndicator;
-        private DirtyValue<bool?> _siteBuiltIndicator;
-        private DirtyValue<bool?> _specialFloodHazardAreaIndicator;
-        private DirtyValue<decimal?> _subsequentPerChangeMaximumDecreaseRatePercent;
-        private DirtyValue<decimal?> _subsequentPerChangeMaximumIncreaseRatePercent;
-        private DirtyValue<DateTime?> _subsequentPerChangeRateAdjustmentEffectiveDate;
-        private DirtyValue<int?> _subsequentPerChangeRateAdjustmentFrequencyMonthsCount;
-        private DirtyValue<bool?> _temporaryBuydownIndicator;
-        private DirtyValue<int?> _totalMortgagedPropertiesCount;
-        private DirtyValue<decimal?> _unit1SubjectPropertyGrossRentalIncome;
-        private DirtyValue<int?> _unit1TotalBedrooms;
-        private DirtyValue<decimal?> _unit2SubjectPropertyGrossRentalIncome;
-        private DirtyValue<int?> _unit2TotalBedrooms;
-        private DirtyValue<decimal?> _unit3SubjectPropertyGrossRentalIncome;
-        private DirtyValue<int?> _unit3TotalBedrooms;
-        private DirtyValue<decimal?> _unit4SubjectPropertyGrossRentalIncome;
-        private DirtyValue<int?> _unit4TotalBedrooms;
-        private DirtyValue<decimal?> _uPBAmount;
-        private DirtyValue<string> _wareHouseLenderId;
-        private DirtyValue<bool?> _wareHouseLenderIndicator;
+        private DirtyValue<string?>? _aCHABARoutingAndTransitIdentifier;
+        private DirtyValue<string?>? _aCHABARoutingAndTransitNumber;
+        private DirtyValue<string?>? _aCHBankAccountDescription;
+        private DirtyValue<string?>? _aCHBankAccountIdentifier;
+        private DirtyValue<string?>? _aCHBankAccountPurposeTransitIdentifier;
+        private DirtyValue<StringEnumValue<ACHBankAccountPurposeType>>? _aCHBankAccountPurposeType;
+        private DirtyValue<string?>? _aCHInstitutionTelegraphicAbbreviationName;
+        private DirtyValue<string?>? _aCHReceiverSubaccountName;
+        private DirtyValue<bool?>? _additionalPrincipalAmountIndicator;
+        private DirtyValue<decimal?>? _aggregateLoanCurtailmentAmount;
+        private DirtyValue<string?>? _appraisalIdentifier;
+        private DirtyValue<StringEnumValue<AttachmentType>>? _attachmentType;
+        private DirtyValue<StringEnumValue<AVMModelNameType>>? _aVMModelNameType;
+        private DirtyValue<bool?>? _balloonResetIndicator;
+        private DirtyValue<decimal?>? _baseGuarantyFeePercent;
+        private DirtyValue<StringEnumValue<TrueOrFalse>>? _bondFinancePool;
+        private DirtyValue<string?>? _bondFinanceProgramName;
+        private DirtyValue<StringEnumValue<BondFinanceProgramType>>? _bondFinanceProgramType;
+        private DirtyValue<bool?>? _borrowerMailToAddressSameasPropertyIndicator;
+        private DirtyValue<StringEnumValue<UlddBorrowerType>>? _borrowerType;
+        private DirtyValue<bool?>? _capitalizedLoanIndicator;
+        private DirtyValue<string?>? _certificateIdentifier;
+        private DirtyValue<DateTime?>? _certificateMaturityDate;
+        private DirtyValue<decimal?>? _certificatePrincipalBalanceAmount;
+        private DirtyValue<StringEnumValue<TrueOrFalse>>? _certificateType;
+        private DirtyValue<decimal?>? _closingCost2ContributionAmount;
+        private DirtyValue<StringEnumValue<ClosingCostFundsType>>? _closingCost2FundsType;
+        private DirtyValue<StringEnumValue<FundsTypeDescription>>? _closingCost2FundsTypeOtherDescription;
+        private DirtyValue<StringEnumValue<ClosingCostSourceType>>? _closingCost2SourceType;
+        private DirtyValue<StringEnumValue<SourceTypeDescription>>? _closingCost2SourceTypeOtherDescription;
+        private DirtyValue<decimal?>? _closingCost3ContributionAmount;
+        private DirtyValue<StringEnumValue<ClosingCostFundsType>>? _closingCost3FundsType;
+        private DirtyValue<StringEnumValue<FundsTypeDescription>>? _closingCost3FundsTypeOtherDescription;
+        private DirtyValue<StringEnumValue<ClosingCostSourceType>>? _closingCost3SourceType;
+        private DirtyValue<StringEnumValue<SourceTypeDescription>>? _closingCost3SourceTypeOtherDescription;
+        private DirtyValue<decimal?>? _closingCost4ContributionAmount;
+        private DirtyValue<StringEnumValue<ClosingCostFundsType>>? _closingCost4FundsType;
+        private DirtyValue<StringEnumValue<FundsTypeDescription>>? _closingCost4FundsTypeOtherDescription;
+        private DirtyValue<StringEnumValue<ClosingCostSourceType>>? _closingCost4SourceType;
+        private DirtyValue<StringEnumValue<SourceTypeDescription>>? _closingCost4SourceTypeOtherDescription;
+        private DirtyValue<decimal?>? _closingCostContributionAmount;
+        private DirtyValue<StringEnumValue<ClosingCostFundsType>>? _closingCostFundsType;
+        private DirtyValue<StringEnumValue<FundsTypeDescription>>? _closingCostFundsTypeOtherDescription;
+        private DirtyValue<StringEnumValue<ClosingCostSourceType>>? _closingCostSourceType;
+        private DirtyValue<StringEnumValue<SourceTypeDescription>>? _closingCostSourceTypeOtherDescription;
+        private DirtyValue<string?>? _coBorrowerCountryCode;
+        private DirtyValue<bool?>? _coBorrowerMailToAddressSameasPropertyIndicator;
+        private DirtyValue<StringEnumValue<UlddBorrowerType>>? _coBorrowerType;
+        private DirtyValue<StringEnumValue<CondominiumProjectStatusType>>? _condominiumProjectStatusType;
+        private DirtyValue<StringEnumValue<ConstructionMethodType>>? _constructionMethodType;
+        private DirtyValue<string?>? _constructionMethodTypeOtherDescription;
+        private DirtyValue<StringEnumValue<ConstructionToPermanentClosingFeatureType>>? _constructionToPermanentClosingFeatureType;
+        private DirtyValue<StringEnumValue<ConstructionToPermanentClosingType>>? _constructionToPermanentClosingType;
+        private DirtyValue<StringEnumValue<ConvertibleStatusType>>? _convertibleStatusType;
+        private DirtyValue<StringEnumValue<CounselingFormatType>>? _counselingFormatType;
+        private DirtyValue<StringEnumValue<CounselingFormatTypeOtherDescription>>? _counselingFormatTypeOtherDescription;
+        private DirtyValue<StringEnumValue<CounselTypeOther>>? _counselTypeOther;
+        private DirtyValue<string?>? _countryCode;
+        private DirtyValue<StringEnumValue<CreditScoreImpairmentType>>? _creditScoreImpairmentType;
+        private DirtyValue<decimal?>? _currentAccruedInterestAmount;
+        private DirtyValue<int?>? _delinquentPaymentsOverPastTwelveMonthsCount;
+        private DirtyValue<string?>? _documentCustodianID;
+        private DirtyValue<StringEnumValue<TrueOrFalse>>? _documentRequiredIndicator;
+        private DirtyValue<StringEnumValue<TrueOrFalse>>? _documentSubmissionIndicator;
+        private DirtyValue<StringEnumValue<DownPaymentFundsType>>? _downPaymentFundsType;
+        private DirtyValue<StringEnumValue<FundsTypeDescription>>? _downPaymentOtherTypeDescription;
+        private DirtyValue<StringEnumValue<DownPaymentSourceType>>? _downPaymentSourceType;
+        private DirtyValue<StringEnumValue<SourceTypeDescription>>? _downPaymentSourceTypeOtherDescription;
+        private DirtyValue<bool?>? _eNoteIndicator;
+        private DirtyValue<StringEnumValue<FannieARMIndexType>>? _fannieARMIndexType;
+        private DirtyValue<StringEnumValue<FannieAutoUWDec>>? _fannieAutoUWDec;
+        private DirtyValue<int?>? _fannieBLTV;
+        private DirtyValue<string?>? _fannieBorrowerFirstName;
+        private DirtyValue<string?>? _fannieBorrowerMiddleName;
+        private DirtyValue<StringEnumValue<FannieBuydownContributer>>? _fannieBuydownContributer;
+        private DirtyValue<int?>? _fannieCLTV;
+        private DirtyValue<string?>? _fannieCoBorrowerFirstName;
+        private DirtyValue<string?>? _fannieCoBorrowerMiddleName;
+        private DirtyValue<string?>? _fannieCreditScoreProviderName;
+        private DirtyValue<StringEnumValue<FannieFloodSpecialFeatureCode>>? _fannieFloodSpecialFeatureCode;
+        private DirtyValue<int?>? _fannieHCLTV;
+        private DirtyValue<int?>? _fannieInvestorOwnershipPercent;
+        private DirtyValue<StringEnumValue<FannieLegalEntityType>>? _fannieLegalEntityType;
+        private DirtyValue<StringEnumValue<FannieLegalEntityTypeOther>>? _fannieLegalEntityTypeOther;
+        private DirtyValue<decimal?>? _fannieLenderPaidMIInterestRateAdjustmentPercent;
+        private DirtyValue<StringEnumValue<FannieLoanProgramIdentifier>>? _fannieLoanProgramIdentifier;
+        private DirtyValue<int?>? _fannieLTV;
+        private DirtyValue<StringEnumValue<FannieMICompanyNameTypeOther>>? _fannieMICompanyNameTypeOther;
+        private DirtyValue<int?>? _fannieMICoveragePercent;
+        private DirtyValue<int?>? _fanniePoolOwnershipPercent;
+        private DirtyValue<StringEnumValue<FannieProjectClassificationType>>? _fannieProjectClassificationType;
+        private DirtyValue<StringEnumValue<FanniePropertyFormType>>? _fanniePropertyFormType;
+        private DirtyValue<decimal?>? _fannieRateSpread;
+        private DirtyValue<StringEnumValue<FannieRefinanceType>>? _fannieRefinanceType;
+        private DirtyValue<string?>? _fannieRelatedInvestorLoanID;
+        private DirtyValue<StringEnumValue<FannieRelatedLoanAmortizationType>>? _fannieRelatedLoanAmortizationType;
+        private DirtyValue<StringEnumValue<FannieRelatedLoanLienPosition>>? _fannieRelatedLoanLienPosition;
+        private DirtyValue<StringEnumValue<FannieRelatedLoanType>>? _fannieRelatedLoanType;
+        private DirtyValue<StringEnumValue<FannieSectionOfAct>>? _fannieSectionOfAct;
+        private DirtyValue<int?>? _fannieTLTV;
+        private DirtyValue<string?>? _fannieTrustName;
+        private DirtyValue<StringEnumValue<FannnieMortgageType>>? _fannnieMortgageType;
+        private DirtyValue<int?>? _financedUnitCount;
+        private DirtyValue<DateTime?>? _firstRateChangePaymentEffectiveDate;
+        private DirtyValue<StringEnumValue<FNMHomeImprovementProductType>>? _fNMHomeImprovementProductType;
+        private DirtyValue<StringEnumValue<FreddieARMIndexType>>? _freddieARMIndexType;
+        private DirtyValue<StringEnumValue<FreddieAutoUWDec>>? _freddieAutoUWDec;
+        private DirtyValue<StringEnumValue<FreddieAVMModelNameTypeExpl>>? _freddieAVMModelNameTypeExpl;
+        private DirtyValue<StringEnumValue<FeddieBorrowerAlienStatus>>? _freddieBorrowerAlienStatus;
+        private DirtyValue<StringEnumValue<FeddieBorrowerAlienStatus>>? _freddieCoBorrowerAlienStatus;
+        private DirtyValue<string?>? _freddieCreditScoreProviderName;
+        private DirtyValue<StringEnumValue<FreddieDownPaymentType>>? _freddieDownPaymentType;
+        private DirtyValue<StringEnumValue<DownPaymentSourceType>>? _freddieDownPmt2SourceType;
+        private DirtyValue<StringEnumValue<SourceTypeDescription>>? _freddieDownPmt2SourceTypeExpl;
+        private DirtyValue<StringEnumValue<FreddieDownPaymentType>>? _freddieDownPmt2Type;
+        private DirtyValue<StringEnumValue<FundsTypeDescription>>? _freddieDownPmt2TypeExpl;
+        private DirtyValue<decimal?>? _freddieDownPmt3Amt;
+        private DirtyValue<StringEnumValue<DownPaymentSourceType>>? _freddieDownPmt3SourceType;
+        private DirtyValue<StringEnumValue<SourceTypeDescription>>? _freddieDownPmt3SourceTypeExpl;
+        private DirtyValue<StringEnumValue<FreddieDownPaymentType>>? _freddieDownPmt3Type;
+        private DirtyValue<StringEnumValue<FundsTypeDescription>>? _freddieDownPmt3TypeExpl;
+        private DirtyValue<decimal?>? _freddieDownPmt4Amt;
+        private DirtyValue<StringEnumValue<DownPaymentSourceType>>? _freddieDownPmt4SourceType;
+        private DirtyValue<StringEnumValue<SourceTypeDescription>>? _freddieDownPmt4SourceTypeExpl;
+        private DirtyValue<StringEnumValue<FreddieDownPaymentType>>? _freddieDownPmt4Type;
+        private DirtyValue<StringEnumValue<FundsTypeDescription>>? _freddieDownPmt4TypeExpl;
+        private DirtyValue<StringEnumValue<FundsTypeDescription>>? _freddieExplanationOfDownPayment;
+        private DirtyValue<StringEnumValue<FreddieInvestorCollateralProgramIdentifier>>? _freddieInvestorCollateralProgramIdentifier;
+        private DirtyValue<string?>? _freddieInvestorFeatureIdentifier;
+        private DirtyValue<StringEnumValue<FreddieLegalEntityType>>? _freddieLegalEntityType;
+        private DirtyValue<StringEnumValue<FreddieLegalEntityTypeOther>>? _freddieLegalEntityTypeOther;
+        private DirtyValue<StringEnumValue<FreddieLoanProgramIdentifier>>? _freddieLoanProgramIdentifier;
+        private DirtyValue<StringEnumValue<FreddieLoanTypePublicAndIndianHousingIndicator>>? _freddieLoanTypePublicAndIndianHousingIndicator;
+        private DirtyValue<StringEnumValue<FreddieMICompanyNameTypeOther>>? _freddieMICompanyNameTypeOther;
+        private DirtyValue<StringEnumValue<FreddieMortgageType>>? _freddieMortgageType;
+        private DirtyValue<StringEnumValue<FreddieProjectClassificationType>>? _freddieProjectClassificationType;
+        private DirtyValue<StringEnumValue<PropertyFormType>>? _freddiePropertyFormType;
+        private DirtyValue<StringEnumValue<FreddieRefinanceCashOutDeterminationType>>? _freddieRefinanceCashOutDeterminationType;
+        private DirtyValue<StringEnumValue<FreddieRefinanceType>>? _freddieRefinanceType;
+        private DirtyValue<bool?>? _freddieRelatedClosedEndSecondIndicator;
+        private DirtyValue<string?>? _freddieRelatedInvestorLoanID;
+        private DirtyValue<StringEnumValue<FreddieRelatedLoanInvestorType>>? _freddieRelatedLoanInvestorType;
+        private DirtyValue<StringEnumValue<FreddieRelatedLoanLienPosition>>? _freddieRelatedLoanLienPosition;
+        private DirtyValue<StringEnumValue<FreddieRelatedLoanType>>? _freddieRelatedLoanType;
+        private DirtyValue<StringEnumValue<FreddieSectionOfAct>>? _freddieSectionOfAct;
+        private DirtyValue<StringEnumValue<FreddieUnderwritingTypeOther>>? _freddieUnderwritingTypeOther;
+        private DirtyValue<StringEnumValue<GinnieConstructionMethodType>>? _ginnieConstructionMethodType;
+        private DirtyValue<decimal?>? _ginnieGovernmentAnnualPremiumAmount;
+        private DirtyValue<StringEnumValue<GinnieMortgageType>>? _ginnieMortgageType;
+        private DirtyValue<string?>? _ginnieOtherConstructionMethodType;
+        private DirtyValue<decimal?>? _governmentAnnualPremiumPercent;
+        private DirtyValue<StringEnumValue<GovernmentRefinanceType>>? _governmentRefinanceType;
+        private DirtyValue<decimal?>? _governmentUpfrontPremiumAmount;
+        private DirtyValue<decimal?>? _governmentUpfrontPremiumPercent;
+        private DirtyValue<StringEnumValue<GSEProjectType>>? _gSEProjectType;
+        private DirtyValue<bool?>? _guaranteeFeeAddOnIndicator;
+        private DirtyValue<decimal?>? _guarantyFeeAfterAlternatePaymentMethodPercent;
+        private DirtyValue<decimal?>? _guarantyFeePercent;
+        private DirtyValue<decimal?>? _guarantyPercent;
+        private DirtyValue<string?>? _homeOwnerAssociationEin;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<IndexType>>? _indexType;
+        private DirtyValue<int?>? _initialFixedPeriodEffectiveMonthsCount;
+        private DirtyValue<StringEnumValue<InterestAccrualType>>? _interestAccrualType;
+        private DirtyValue<int?>? _interestAndPaymentAdjustmentIndexLeadDaysCount;
+        private DirtyValue<StringEnumValue<InterestCalculationBasisType>>? _interestCalculationBasisType;
+        private DirtyValue<int?>? _interestCalculationEffectiveMonthsCount;
+        private DirtyValue<StringEnumValue<InterestCalculationType>>? _interestCalculationType;
+        private DirtyValue<StringEnumValue<InvestorCollateralProgramIdentifier>>? _investorCollateralProgramIdentifier;
+        private DirtyValue<string?>? _investorCommitmentIdentifier;
+        private DirtyValue<string?>? _investorFeatureIdentifier;
+        private DirtyValue<string?>? _investorFeatureIdPool;
+        private DirtyValue<decimal?>? _investorOwnershipPercent;
+        private DirtyValue<string?>? _investorProductPlanIdentifier;
+        private DirtyValue<int?>? _investorRemittanceDay;
+        private DirtyValue<StringEnumValue<InvestorRemittanceType>>? _investorRemittanceType;
+        private DirtyValue<string?>? _issuerIdentifier;
+        private DirtyValue<DateTime?>? _lastPaidInstallmentDueDate;
+        private DirtyValue<DateTime?>? _lastPaymentReceivedDate;
+        private DirtyValue<DateTime?>? _latestConversionEffectiveDate;
+        private DirtyValue<decimal?>? _lenderPaidMIInterestRateAdjustmentPercent;
+        private DirtyValue<DateTime?>? _lendersDeliveryDate;
+        private DirtyValue<decimal?>? _loanAcquisitionScheduledUPBAmount;
+        private DirtyValue<int?>? _loanAmortizationMaximumTermMonthsCount;
+        private DirtyValue<int?>? _loanBuyupBuydownBasisPointNumber;
+        private DirtyValue<StringEnumValue<LoanBuyupBuydownType>>? _loanBuyupBuydownType;
+        private DirtyValue<StringEnumValue<LoanDefaultLossPartyType>>? _loanDefaultLossPartyType;
+        private DirtyValue<bool?>? _loanDeliveredThroughServicingReleasedProcessIndicator;
+        private DirtyValue<StringEnumValue<LoanIdentifierValueType>>? _loanIdentifierValueType;
+        private DirtyValue<DateTime?>? _loanInterestAccrualStartDate;
+        private DirtyValue<bool?>? _loanLevelCreditScoreSelectionMethodSellerSpecificIndicator;
+        private DirtyValue<StringEnumValue<LoanLevelCreditScoreSelectionMethodType>>? _loanLevelCreditScoreSelectionMethodType;
+        private DirtyValue<int?>? _loanLevelCreditScoreValue;
+        private DirtyValue<DateTime?>? _loanModificationEffectiveDate;
+        private DirtyValue<DateTime?>? _loanStateDate;
+        private DirtyValue<StringEnumValue<ManufacturedHomeWidthType>>? _manufacturedHomeWidthType;
+        private DirtyValue<bool?>? _mBSWeightedMarginIndicator;
+        private DirtyValue<StringEnumValue<TrueOrFalse>>? _mERSOriginalMortgageeOfRecordIndicator;
+        private DirtyValue<StringEnumValue<MICompanyNameType>>? _mICompanyNameType;
+        private DirtyValue<StringEnumValue<MIPremiumSourceType>>? _mIPremiumSourceType;
+        private DirtyValue<DateTime?>? _monetaryEventAppliedDate;
+        private DirtyValue<decimal?>? _monetaryEventGrossPrincipalAmount;
+        private DirtyValue<StringEnumValue<MonetaryEventType>>? _monetaryEventType;
+        private DirtyValue<bool?>? _mortgageBackedSecurityIndicator;
+        private DirtyValue<bool?>? _mortgageModificationIndicator;
+        private DirtyValue<StringEnumValue<UlddMortgageOriginator>>? _mortgageOriginator;
+        private DirtyValue<StringEnumValue<MortgageProgramType>>? _mortgageProgramType;
+        private DirtyValue<bool?>? _multipleConcurrentlyClosingLienOnSubjectPropertyIndicator;
+        private DirtyValue<DateTime?>? _nextRateAdjustmentEffectiveDate;
+        private DirtyValue<string?>? _notePayToName;
+        private DirtyValue<int?>? _numberOfUnitsSold;
+        private DirtyValue<string?>? _otherDownPaymentFundsType;
+        private DirtyValue<decimal?>? _otherFundsCollectedAtClosingAmount;
+        private DirtyValue<StringEnumValue<OtherFundsCollectedAtClosingType>>? _otherFundsCollectedAtClosingType;
+        private DirtyValue<string?>? _payeeID;
+        private DirtyValue<int?>? _paymentBillingStatementLeadDaysCount;
+        private DirtyValue<decimal?>? _perChangeMaximumDecreaseRatePercent;
+        private DirtyValue<decimal?>? _perChangeMaximumIncreaseRatePercent;
+        private DirtyValue<decimal?>? _perChangePrincipalAndInterestPaymentAdjustmentPercent;
+        private DirtyValue<DateTime?>? _perChangeRateAdjustmentEffectiveDate;
+        private DirtyValue<int?>? _perChangeRateAdjustmentFrequencyMonthsCount;
+        private DirtyValue<StringEnumValue<PoolAccrualRateStructureType>>? _poolAccrualRateStructureType;
+        private DirtyValue<StringEnumValue<PoolAmortizationType>>? _poolAmortizationType;
+        private DirtyValue<bool?>? _poolAssumabilityIndicator;
+        private DirtyValue<bool?>? _poolBalloonIndicator;
+        private DirtyValue<DateTime?>? _poolCertificatePaymentDate;
+        private DirtyValue<StringEnumValue<PoolClassType>>? _poolClassType;
+        private DirtyValue<StringEnumValue<TrueOrFalse>>? _poolConcurrentTransferIndicator;
+        private DirtyValue<int?>? _poolCurrentLoanCount;
+        private DirtyValue<decimal?>? _poolCurrentPrincipalBalanceAmount;
+        private DirtyValue<string?>? _poolDocumentCustodianID;
+        private DirtyValue<decimal?>? _poolFixedServicingFeePercent;
+        private DirtyValue<string?>? _poolIdentifier;
+        private DirtyValue<StringEnumValue<PoolingMethodType>>? _poolingMethodType;
+        private DirtyValue<DateTime?>? _poolInterestAdjustmentEffectiveDate;
+        private DirtyValue<int?>? _poolInterestAdjustmentIndexLeadDaysCount;
+        private DirtyValue<int?>? _poolInterestAndPaymentAdjustmentIndexLeadDaysCount;
+        private DirtyValue<bool?>? _poolInterestOnlyIndicator;
+        private DirtyValue<decimal?>? _poolInterestRateRoundingPercent;
+        private DirtyValue<StringEnumValue<PoolInterestRateRoundingType>>? _poolInterestRateRoundingType;
+        private DirtyValue<string?>? _poolInvestorProductPlanIdentifier;
+        private DirtyValue<DateTime?>? _poolIssueDate;
+        private DirtyValue<string?>? _poolIssuerTransferee;
+        private DirtyValue<decimal?>? _poolMarginRatePercent;
+        private DirtyValue<DateTime?>? _poolMaturityDate;
+        private DirtyValue<int?>? _poolMaturityPeriodCount;
+        private DirtyValue<decimal?>? _poolMaximumAccrualRatePercent;
+        private DirtyValue<decimal?>? _poolMinimumAccrualRatePercent;
+        private DirtyValue<StringEnumValue<PoolMortgageType>>? _poolMortgageType;
+        private DirtyValue<int?>? _poolScheduledRemittancePaymentDay;
+        private DirtyValue<decimal?>? _poolSecurityIssueDateInterestRatePercent;
+        private DirtyValue<string?>? _poolSellerID;
+        private DirtyValue<string?>? _poolServicerID;
+        private DirtyValue<StringEnumValue<PoolStructureType>>? _poolStructureType;
+        private DirtyValue<string?>? _poolSuffixIdentifier;
+        private DirtyValue<DateTime?>? _priceLockDatetime;
+        private DirtyValue<StringEnumValue<PrimaryMIAbsenceReasonType>>? _primaryMIAbsenceReasonType;
+        private DirtyValue<StringEnumValue<PrimaryMIAbsenceReasonTypeOtherDescription>>? _primaryMIAbsenceReasonTypeOtherDescription;
+        private DirtyValue<StringEnumValue<ProjectAttachmentType>>? _projectAttachmentType;
+        private DirtyValue<StringEnumValue<ProjectDesignType>>? _projectDesignType;
+        private DirtyValue<int?>? _projectUnitCount;
+        private DirtyValue<DateTime?>? _propertyValuationEffectiveDate;
+        private DirtyValue<StringEnumValue<PropertyValuationMethodType>>? _propertyValuationMethodType;
+        private DirtyValue<StringEnumValue<PropertyValuationOther>>? _propertyValuationOther;
+        private DirtyValue<decimal?>? _refinanceCashOutAmount;
+        private DirtyValue<StringEnumValue<RefinanceCashOutDeterminationType>>? _refinanceCashOutDeterminationType;
+        private DirtyValue<bool?>? _relatedLoanAffordableIndicator;
+        private DirtyValue<bool?>? _relatedLoanBalloonIndicator;
+        private DirtyValue<bool?>? _relatedLoanHELOCIndicator;
+        private DirtyValue<bool?>? _relatedLoanIndicator;
+        private DirtyValue<StringEnumValue<RelatedLoanInvestorType>>? _relatedLoanInvestorType;
+        private DirtyValue<int?>? _relatedLoanMaturityPeriodCount;
+        private DirtyValue<DateTime?>? _relatedLoanNoteDate;
+        private DirtyValue<DateTime?>? _relatedLoanScheduledFirstPaymentDate;
+        private DirtyValue<DateTime?>? _relatedLoanStateDateAtClosing;
+        private DirtyValue<decimal?>? _relatedLoanUnpaidPrincipalBalanceAmount;
+        private DirtyValue<bool?>? _relocationLoanIndicator;
+        private DirtyValue<StringEnumValue<PartyType>>? _rEOMarketingPartyType;
+        private DirtyValue<bool?>? _secondLienIsDeliveredIndicator;
+        private DirtyValue<decimal?>? _securityOriginalSubscriptionAmount;
+        private DirtyValue<DateTime?>? _securityTradeBookEntryDate;
+        private DirtyValue<string?>? _sellerID;
+        private DirtyValue<string?>? _sellerLoanIdentifier;
+        private DirtyValue<string?>? _servicerID;
+        private DirtyValue<string?>? _servicerLoanIdentifier;
+        private DirtyValue<bool?>? _sharedEquityIndicator;
+        private DirtyValue<bool?>? _siteBuiltIndicator;
+        private DirtyValue<bool?>? _specialFloodHazardAreaIndicator;
+        private DirtyValue<decimal?>? _subsequentPerChangeMaximumDecreaseRatePercent;
+        private DirtyValue<decimal?>? _subsequentPerChangeMaximumIncreaseRatePercent;
+        private DirtyValue<DateTime?>? _subsequentPerChangeRateAdjustmentEffectiveDate;
+        private DirtyValue<int?>? _subsequentPerChangeRateAdjustmentFrequencyMonthsCount;
+        private DirtyValue<bool?>? _temporaryBuydownIndicator;
+        private DirtyValue<int?>? _totalMortgagedPropertiesCount;
+        private DirtyValue<decimal?>? _unit1SubjectPropertyGrossRentalIncome;
+        private DirtyValue<int?>? _unit1TotalBedrooms;
+        private DirtyValue<decimal?>? _unit2SubjectPropertyGrossRentalIncome;
+        private DirtyValue<int?>? _unit2TotalBedrooms;
+        private DirtyValue<decimal?>? _unit3SubjectPropertyGrossRentalIncome;
+        private DirtyValue<int?>? _unit3TotalBedrooms;
+        private DirtyValue<decimal?>? _unit4SubjectPropertyGrossRentalIncome;
+        private DirtyValue<int?>? _unit4TotalBedrooms;
+        private DirtyValue<decimal?>? _uPBAmount;
+        private DirtyValue<string?>? _wareHouseLenderId;
+        private DirtyValue<bool?>? _wareHouseLenderIndicator;
 
         /// <summary>
         /// ACH ABA Routing And Transit Identifier [ULDD.GNM.ACHABARoutingAndTransitIdentifier]
         /// </summary>
-        public string ACHABARoutingAndTransitIdentifier { get => _aCHABARoutingAndTransitIdentifier; set => SetField(ref _aCHABARoutingAndTransitIdentifier, value); }
+        public string? ACHABARoutingAndTransitIdentifier { get => _aCHABARoutingAndTransitIdentifier; set => SetField(ref _aCHABARoutingAndTransitIdentifier, value); }
 
         /// <summary>
         /// ACH ABARouting And Transit # [ULDD.GNM.ACHABARtngAndTrnstNmbr]
         /// </summary>
-        public string ACHABARoutingAndTransitNumber { get => _aCHABARoutingAndTransitNumber; set => SetField(ref _aCHABARoutingAndTransitNumber, value); }
+        public string? ACHABARoutingAndTransitNumber { get => _aCHABARoutingAndTransitNumber; set => SetField(ref _aCHABARoutingAndTransitNumber, value); }
 
         /// <summary>
         /// ACH Bank Account Description [ULDD.GNM.ACHBnkAccntDscr]
         /// </summary>
-        public string ACHBankAccountDescription { get => _aCHBankAccountDescription; set => SetField(ref _aCHBankAccountDescription, value); }
+        public string? ACHBankAccountDescription { get => _aCHBankAccountDescription; set => SetField(ref _aCHBankAccountDescription, value); }
 
         /// <summary>
         /// ACH Bank Account Identifier [ULDD.GNM.ACHBnkAccntIdentfr]
         /// </summary>
-        public string ACHBankAccountIdentifier { get => _aCHBankAccountIdentifier; set => SetField(ref _aCHBankAccountIdentifier, value); }
+        public string? ACHBankAccountIdentifier { get => _aCHBankAccountIdentifier; set => SetField(ref _aCHBankAccountIdentifier, value); }
 
         /// <summary>
         /// ACH Bank Account Purpose Transit Identifier [ULDD.GNM.ACHBnkAccntPrpsTrnstIdntfr]
         /// </summary>
-        public string ACHBankAccountPurposeTransitIdentifier { get => _aCHBankAccountPurposeTransitIdentifier; set => SetField(ref _aCHBankAccountPurposeTransitIdentifier, value); }
+        public string? ACHBankAccountPurposeTransitIdentifier { get => _aCHBankAccountPurposeTransitIdentifier; set => SetField(ref _aCHBankAccountPurposeTransitIdentifier, value); }
 
         /// <summary>
         /// ACH Bank Account Purpose Type [ULDD.GNM.ACHBnkAccntPrpsTyp]
@@ -348,12 +348,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ACH Institution Telegraphic Name [ULDD.GNM.ACHInstttnTlgrphcAbbrName]
         /// </summary>
-        public string ACHInstitutionTelegraphicAbbreviationName { get => _aCHInstitutionTelegraphicAbbreviationName; set => SetField(ref _aCHInstitutionTelegraphicAbbreviationName, value); }
+        public string? ACHInstitutionTelegraphicAbbreviationName { get => _aCHInstitutionTelegraphicAbbreviationName; set => SetField(ref _aCHInstitutionTelegraphicAbbreviationName, value); }
 
         /// <summary>
         /// ACH Receiver Subaccount Name [ULDD.GNM.ACHRcvrSbccntName]
         /// </summary>
-        public string ACHReceiverSubaccountName { get => _aCHReceiverSubaccountName; set => SetField(ref _aCHReceiverSubaccountName, value); }
+        public string? ACHReceiverSubaccountName { get => _aCHReceiverSubaccountName; set => SetField(ref _aCHReceiverSubaccountName, value); }
 
         /// <summary>
         /// ULDD - Additional Principal Amount has been Paid from Origination to Date [ULDD.X2]
@@ -369,7 +369,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Appraisal ID [ULDD.X31]
         /// </summary>
-        public string AppraisalIdentifier { get => _appraisalIdentifier; set => SetField(ref _appraisalIdentifier, value); }
+        public string? AppraisalIdentifier { get => _appraisalIdentifier; set => SetField(ref _appraisalIdentifier, value); }
 
         /// <summary>
         /// ULDD Attachment Type [ULDD.X177]
@@ -400,7 +400,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Ginnie Bond Finance Program Name [ULDD.GNM.BondFinProgName]
         /// </summary>
-        public string BondFinanceProgramName { get => _bondFinanceProgramName; set => SetField(ref _bondFinanceProgramName, value); }
+        public string? BondFinanceProgramName { get => _bondFinanceProgramName; set => SetField(ref _bondFinanceProgramName, value); }
 
         /// <summary>
         /// ULDD Ginnie Bond Finance Program Type [ULDD.GNM.BondFinProgType]
@@ -425,7 +425,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Ginnie Certificate Identifier [ULDD.GNM.CertId]
         /// </summary>
-        public string CertificateIdentifier { get => _certificateIdentifier; set => SetField(ref _certificateIdentifier, value); }
+        public string? CertificateIdentifier { get => _certificateIdentifier; set => SetField(ref _certificateIdentifier, value); }
 
         /// <summary>
         /// ULDD Ginnie Certificate Maturity Date [ULDD.GNM.CertMaturityDate]
@@ -554,7 +554,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Co-Borrower Country Code [ULDD.X155]
         /// </summary>
-        public string CoBorrowerCountryCode { get => _coBorrowerCountryCode; set => SetField(ref _coBorrowerCountryCode, value); }
+        public string? CoBorrowerCountryCode { get => _coBorrowerCountryCode; set => SetField(ref _coBorrowerCountryCode, value); }
 
         /// <summary>
         /// ULDD - Co-Borrower Mailing Address is same as the Property Address [ULDD.X154]
@@ -579,7 +579,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Construction Method Type [ULDD.GNM.CnstrctnMthdTypOthrDscr]
         /// </summary>
-        public string ConstructionMethodTypeOtherDescription { get => _constructionMethodTypeOtherDescription; set => SetField(ref _constructionMethodTypeOtherDescription, value); }
+        public string? ConstructionMethodTypeOtherDescription { get => _constructionMethodTypeOtherDescription; set => SetField(ref _constructionMethodTypeOtherDescription, value); }
 
         /// <summary>
         /// ULDD - Construction - Perm Closing Feature [ULDD.X63]
@@ -614,7 +614,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Country Code [ULDD.X27]
         /// </summary>
-        public string CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
+        public string? CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
 
         /// <summary>
         /// ULDD - Freddie Mac - Credit Score Impairment Type [ULDD.X104]
@@ -635,7 +635,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Fannie Mae - Document Custodian ID [ULDD.X114]
         /// </summary>
-        public string DocumentCustodianID { get => _documentCustodianID; set => SetField(ref _documentCustodianID, value); }
+        public string? DocumentCustodianID { get => _documentCustodianID; set => SetField(ref _documentCustodianID, value); }
 
         /// <summary>
         /// ULDD Ginnie Document Required Indicator [ULDD.GNM.DocReqIndic]
@@ -691,12 +691,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Uldd FannieBorrowerFirstName
         /// </summary>
-        public string FannieBorrowerFirstName { get => _fannieBorrowerFirstName; set => SetField(ref _fannieBorrowerFirstName, value); }
+        public string? FannieBorrowerFirstName { get => _fannieBorrowerFirstName; set => SetField(ref _fannieBorrowerFirstName, value); }
 
         /// <summary>
         /// Uldd FannieBorrowerMiddleName
         /// </summary>
-        public string FannieBorrowerMiddleName { get => _fannieBorrowerMiddleName; set => SetField(ref _fannieBorrowerMiddleName, value); }
+        public string? FannieBorrowerMiddleName { get => _fannieBorrowerMiddleName; set => SetField(ref _fannieBorrowerMiddleName, value); }
 
         /// <summary>
         /// Fannie Buy down Contributer [ULDD.X137]
@@ -711,17 +711,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Uldd FannieCoBorrowerFirstName
         /// </summary>
-        public string FannieCoBorrowerFirstName { get => _fannieCoBorrowerFirstName; set => SetField(ref _fannieCoBorrowerFirstName, value); }
+        public string? FannieCoBorrowerFirstName { get => _fannieCoBorrowerFirstName; set => SetField(ref _fannieCoBorrowerFirstName, value); }
 
         /// <summary>
         /// Uldd FannieCoBorrowerMiddleName
         /// </summary>
-        public string FannieCoBorrowerMiddleName { get => _fannieCoBorrowerMiddleName; set => SetField(ref _fannieCoBorrowerMiddleName, value); }
+        public string? FannieCoBorrowerMiddleName { get => _fannieCoBorrowerMiddleName; set => SetField(ref _fannieCoBorrowerMiddleName, value); }
 
         /// <summary>
         /// Credit Score Provider Name [ULDD.FNM.CreditScoreProviderName]
         /// </summary>
-        public string FannieCreditScoreProviderName { get => _fannieCreditScoreProviderName; set => SetField(ref _fannieCreditScoreProviderName, value); }
+        public string? FannieCreditScoreProviderName { get => _fannieCreditScoreProviderName; set => SetField(ref _fannieCreditScoreProviderName, value); }
 
         /// <summary>
         /// ULDD Fannie Flood Special Feature Code [ULDD.FNM.FloodSpecialFeatureCode]
@@ -803,7 +803,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Fannie Related Investor Loan ID [ULDD.FNM.RelatedInvestorLoanID]
         /// </summary>
-        public string FannieRelatedInvestorLoanID { get => _fannieRelatedInvestorLoanID; set => SetField(ref _fannieRelatedInvestorLoanID, value); }
+        public string? FannieRelatedInvestorLoanID { get => _fannieRelatedInvestorLoanID; set => SetField(ref _fannieRelatedInvestorLoanID, value); }
 
         /// <summary>
         /// Fannie Related Loan Amortization Type [ULDD.X131]
@@ -834,7 +834,7 @@ namespace EncompassRest.Loans
         /// Fannie Borrower Vesting Borr 1 Corp/Trust Name [ULDD.FNM.1859]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string FannieTrustName { get => _fannieTrustName; set => SetField(ref _fannieTrustName, value); }
+        public string? FannieTrustName { get => _fannieTrustName; set => SetField(ref _fannieTrustName, value); }
 
         /// <summary>
         /// Trans Details Loan Type [ULDD.FNM.X1172]
@@ -884,7 +884,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Credit Score Provider Name [ULDD.FRE.CreditScoreProviderName]
         /// </summary>
-        public string FreddieCreditScoreProviderName { get => _freddieCreditScoreProviderName; set => SetField(ref _freddieCreditScoreProviderName, value); }
+        public string? FreddieCreditScoreProviderName { get => _freddieCreditScoreProviderName; set => SetField(ref _freddieCreditScoreProviderName, value); }
 
         /// <summary>
         /// ULDD Freddie Down Payment Type [ULDD.FRE.DownPaymentType]
@@ -976,7 +976,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Investor Feature ID [ULDD.X179]
         /// </summary>
-        public string FreddieInvestorFeatureIdentifier { get => _freddieInvestorFeatureIdentifier; set => SetField(ref _freddieInvestorFeatureIdentifier, value); }
+        public string? FreddieInvestorFeatureIdentifier { get => _freddieInvestorFeatureIdentifier; set => SetField(ref _freddieInvestorFeatureIdentifier, value); }
 
         /// <summary>
         /// Borr Freddie Legal Entity Type [ULDD.X119]
@@ -1036,7 +1036,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Freddie Related Investor Loan ID [ULDD.FRE.RelatedInvestorLoanID]
         /// </summary>
-        public string FreddieRelatedInvestorLoanID { get => _freddieRelatedInvestorLoanID; set => SetField(ref _freddieRelatedInvestorLoanID, value); }
+        public string? FreddieRelatedInvestorLoanID { get => _freddieRelatedInvestorLoanID; set => SetField(ref _freddieRelatedInvestorLoanID, value); }
 
         /// <summary>
         /// ULDD - Freddie Mac - Related Loan Investor Type [ULDD.X99]
@@ -1082,7 +1082,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Other Construction Method Type [ULDD.X188]
         /// </summary>
-        public string GinnieOtherConstructionMethodType { get => _ginnieOtherConstructionMethodType; set => SetField(ref _ginnieOtherConstructionMethodType, value); }
+        public string? GinnieOtherConstructionMethodType { get => _ginnieOtherConstructionMethodType; set => SetField(ref _ginnieOtherConstructionMethodType, value); }
 
         /// <summary>
         /// Government Annual Premium Percent [ULDD.GNM.GovAnnlPrmPrcnt]
@@ -1139,12 +1139,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Home Owner Association EIN [ULDD.X192]
         /// </summary>
-        public string HomeOwnerAssociationEin { get => _homeOwnerAssociationEin; set => SetField(ref _homeOwnerAssociationEin, value); }
+        public string? HomeOwnerAssociationEin { get => _homeOwnerAssociationEin; set => SetField(ref _homeOwnerAssociationEin, value); }
 
         /// <summary>
         /// Uldd Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Index Type [ULDD.GNM.IndxType]
@@ -1189,17 +1189,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Investor Commitment ID [ULDD.X37]
         /// </summary>
-        public string InvestorCommitmentIdentifier { get => _investorCommitmentIdentifier; set => SetField(ref _investorCommitmentIdentifier, value); }
+        public string? InvestorCommitmentIdentifier { get => _investorCommitmentIdentifier; set => SetField(ref _investorCommitmentIdentifier, value); }
 
         /// <summary>
         /// ULDD - Investor Feature ID [ULDD.X36]
         /// </summary>
-        public string InvestorFeatureIdentifier { get => _investorFeatureIdentifier; set => SetField(ref _investorFeatureIdentifier, value); }
+        public string? InvestorFeatureIdentifier { get => _investorFeatureIdentifier; set => SetField(ref _investorFeatureIdentifier, value); }
 
         /// <summary>
         /// ULDD - Fannie Mae - Investor Feature ID Pool [ULDD.X115]
         /// </summary>
-        public string InvestorFeatureIdPool { get => _investorFeatureIdPool; set => SetField(ref _investorFeatureIdPool, value); }
+        public string? InvestorFeatureIdPool { get => _investorFeatureIdPool; set => SetField(ref _investorFeatureIdPool, value); }
 
         /// <summary>
         /// ULDD - Investor Ownership of the Loan [ULDD.X43]
@@ -1210,7 +1210,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Investor Product Plan ID [ULDD.X35]
         /// </summary>
-        public string InvestorProductPlanIdentifier { get => _investorProductPlanIdentifier; set => SetField(ref _investorProductPlanIdentifier, value); }
+        public string? InvestorProductPlanIdentifier { get => _investorProductPlanIdentifier; set => SetField(ref _investorProductPlanIdentifier, value); }
 
         /// <summary>
         /// ULDD - Investor Remittance Day [ULDD.X45]
@@ -1225,7 +1225,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Ginnie Issuer Identifier [ULDD.GNM.IssuerId]
         /// </summary>
-        public string IssuerIdentifier { get => _issuerIdentifier; set => SetField(ref _issuerIdentifier, value); }
+        public string? IssuerIdentifier { get => _issuerIdentifier; set => SetField(ref _issuerIdentifier, value); }
 
         /// <summary>
         /// ULDD - Last Paid Installment Due Date [ULDD.X54]
@@ -1393,7 +1393,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Note Pay To Name [ULDD.X184]
         /// </summary>
-        public string NotePayToName { get => _notePayToName; set => SetField(ref _notePayToName, value); }
+        public string? NotePayToName { get => _notePayToName; set => SetField(ref _notePayToName, value); }
 
         /// <summary>
         /// Number of Units Sold [ULDD.X138]
@@ -1403,7 +1403,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Other Down Payment Funds Type [ULDD.GNM.OtherDwnPymntFndsType]
         /// </summary>
-        public string OtherDownPaymentFundsType { get => _otherDownPaymentFundsType; set => SetField(ref _otherDownPaymentFundsType, value); }
+        public string? OtherDownPaymentFundsType { get => _otherDownPaymentFundsType; set => SetField(ref _otherDownPaymentFundsType, value); }
 
         /// <summary>
         /// ULDD - Freddie Mac - Other Funds Collected at Closing [ULDD.X110]
@@ -1419,7 +1419,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Fannie Mae - Payee ID [ULDD.X117]
         /// </summary>
-        public string PayeeID { get => _payeeID; set => SetField(ref _payeeID, value); }
+        public string? PayeeID { get => _payeeID; set => SetField(ref _payeeID, value); }
 
         /// <summary>
         /// ULDD - Billing Statement and Payment Lead Days [ULDD.X55]
@@ -1503,7 +1503,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Fannie Mae - Pool Document Custodian ID [ULDD.X156]
         /// </summary>
-        public string PoolDocumentCustodianID { get => _poolDocumentCustodianID; set => SetField(ref _poolDocumentCustodianID, value); }
+        public string? PoolDocumentCustodianID { get => _poolDocumentCustodianID; set => SetField(ref _poolDocumentCustodianID, value); }
 
         /// <summary>
         /// ULDD - Pool Fixed Servicing Fee Percent [ULDD.X85]
@@ -1514,7 +1514,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Pool ID [ULDD.X65]
         /// </summary>
-        public string PoolIdentifier { get => _poolIdentifier; set => SetField(ref _poolIdentifier, value); }
+        public string? PoolIdentifier { get => _poolIdentifier; set => SetField(ref _poolIdentifier, value); }
 
         /// <summary>
         /// ULDD Ginnie Pooling Method Type [ULDD.GNM.PoolingMethodType]
@@ -1555,7 +1555,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Pool Investor Product Plan ID [ULDD.X67]
         /// </summary>
-        public string PoolInvestorProductPlanIdentifier { get => _poolInvestorProductPlanIdentifier; set => SetField(ref _poolInvestorProductPlanIdentifier, value); }
+        public string? PoolInvestorProductPlanIdentifier { get => _poolInvestorProductPlanIdentifier; set => SetField(ref _poolInvestorProductPlanIdentifier, value); }
 
         /// <summary>
         /// ULDD - Pool Issue Date [ULDD.X68]
@@ -1565,7 +1565,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Ginnie Pool Issuer Transferee [ULDD.GNM.PoolIssuerTransferee]
         /// </summary>
-        public string PoolIssuerTransferee { get => _poolIssuerTransferee; set => SetField(ref _poolIssuerTransferee, value); }
+        public string? PoolIssuerTransferee { get => _poolIssuerTransferee; set => SetField(ref _poolIssuerTransferee, value); }
 
         /// <summary>
         /// ULDD - Pool Margin Rate [ULDD.X77]
@@ -1614,12 +1614,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Fannie Mae - Pool Seller ID [ULDD.X157]
         /// </summary>
-        public string PoolSellerID { get => _poolSellerID; set => SetField(ref _poolSellerID, value); }
+        public string? PoolSellerID { get => _poolSellerID; set => SetField(ref _poolSellerID, value); }
 
         /// <summary>
         /// ULDD - Fannie Mae - Pool Servicer ID [ULDD.X158]
         /// </summary>
-        public string PoolServicerID { get => _poolServicerID; set => SetField(ref _poolServicerID, value); }
+        public string? PoolServicerID { get => _poolServicerID; set => SetField(ref _poolServicerID, value); }
 
         /// <summary>
         /// ULDD - Pool Structure Type [ULDD.X71]
@@ -1629,7 +1629,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Pool Suffix ID [ULDD.X72]
         /// </summary>
-        public string PoolSuffixIdentifier { get => _poolSuffixIdentifier; set => SetField(ref _poolSuffixIdentifier, value); }
+        public string? PoolSuffixIdentifier { get => _poolSuffixIdentifier; set => SetField(ref _poolSuffixIdentifier, value); }
 
         /// <summary>
         /// ULDD - Price Lock Date Time [ULDD.X17]
@@ -1767,22 +1767,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Uldd SellerID
         /// </summary>
-        public string SellerID { get => _sellerID; set => SetField(ref _sellerID, value); }
+        public string? SellerID { get => _sellerID; set => SetField(ref _sellerID, value); }
 
         /// <summary>
         /// ULDD - Seller Loan ID [ULDD.X21]
         /// </summary>
-        public string SellerLoanIdentifier { get => _sellerLoanIdentifier; set => SetField(ref _sellerLoanIdentifier, value); }
+        public string? SellerLoanIdentifier { get => _sellerLoanIdentifier; set => SetField(ref _sellerLoanIdentifier, value); }
 
         /// <summary>
         /// ULDD - Fannie Mae - Servicer ID [ULDD.X116]
         /// </summary>
-        public string ServicerID { get => _servicerID; set => SetField(ref _servicerID, value); }
+        public string? ServicerID { get => _servicerID; set => SetField(ref _servicerID, value); }
 
         /// <summary>
         /// ULDD - Servicer Loan ID [ULDD.X94]
         /// </summary>
-        public string ServicerLoanIdentifier { get => _servicerLoanIdentifier; set => SetField(ref _servicerLoanIdentifier, value); }
+        public string? ServicerLoanIdentifier { get => _servicerLoanIdentifier; set => SetField(ref _servicerLoanIdentifier, value); }
 
         /// <summary>
         /// ULDD - Shared Equity [ULDD.X9]
@@ -1884,7 +1884,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD WareHouse Lender ID [ULDD.X191]
         /// </summary>
-        public string WareHouseLenderId { get => _wareHouseLenderId; set => SetField(ref _wareHouseLenderId, value); }
+        public string? WareHouseLenderId { get => _wareHouseLenderId; set => SetField(ref _wareHouseLenderId, value); }
 
         /// <summary>
         /// WareHouse Lender Indicator [ULDD.X193]

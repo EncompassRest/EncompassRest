@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -10,268 +11,268 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class RegulationZ : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _acknowledgedDay;
-        private DirtyValue<string> _acknowledgedMonth;
-        private DirtyValue<string> _acknowledgedYear;
-        private DirtyValue<bool?> _acquisition;
-        private DirtyValue<string> _additionalArmInformation;
-        private DirtyValue<bool?> _allDateAndNumericalDisclosuresIndicator;
-        private DirtyValue<decimal?> _amountFinanced;
-        private DirtyValue<decimal?> _aprPercent;
-        private DirtyValue<string> _aprPercentUI;
-        private DirtyValue<string> _armDisclosureDescription;
-        private DirtyValue<StringEnumValue<AssumptionOnYourProperty>> _assumptionOnYourProperty;
-        private DirtyValue<DateTime?> _borrowerIntendToContinueDate;
-        private DirtyValue<bool?> _borrowerIntendToContinueIndicator;
-        private DirtyValue<string> _borrowerMiTerminationDate;
-        private DirtyValue<string> _calculateBasedOnRemainingBalance;
-        private DirtyValue<bool?> _chargesAddedToPaymentsIndicator;
-        private DirtyValue<bool?> _chargesAtLoanClosingIndicator;
-        private DirtyValue<string> _circumstanceChangeReason;
-        private DirtyValue<DateTime?> _circumstanceChangeReceivedDate;
-        private DirtyValue<DateTime?> _closingDisclosureReceivedDate;
-        private DirtyValue<DateTime?> _closingDisclosureSentDate;
-        private DirtyValue<StringEnumValue<ConstructionFirstIntChangeAdjType>> _constructionFirstIntChangeAdjType;
-        private DirtyValue<string> _constructionLoanDescription;
-        private DirtyValue<StringEnumValue<ConstructionLoanMethod>> _constructionLoanMethod;
-        private DirtyValue<int?> _constructionPeriodMonths;
-        private DirtyValue<decimal?> _constructionRatePercent;
-        private DirtyValue<bool?> _constructionRefinanceIndicator;
-        private DirtyValue<decimal?> _creditDisability;
-        private DirtyValue<bool?> _creditDisabilityIndicator;
-        private DirtyValue<decimal?> _creditLife;
-        private DirtyValue<decimal?> _creditLifeAndCreditDisability;
-        private DirtyValue<bool?> _creditLifeInsuranceIndicator;
-        private DirtyValue<bool?> _customizePaymentScheduleIndicator;
-        private DirtyValue<bool?> _demandFeatureIndicator;
-        private DirtyValue<decimal?> _disclosedAprPercent;
-        private DirtyValue<bool?> _disclosedByBrokerIndicator;
-        private DirtyValue<string> _disclosedComments;
-        private DirtyValue<decimal?> _disclosedDailyInterestCharge;
-        private DirtyValue<decimal?> _disclosedFinanceCharge;
-        private DirtyValue<bool?> _disclosedPrepayment;
-        private DirtyValue<string> _disclosedProduct;
-        private DirtyValue<StringEnumValue<DisclosureMethod>> _disclosureMethod;
-        private DirtyValue<StringEnumValue<DisclosureType>> _disclosureType;
-        private DirtyValue<int?> _discountPeriod;
-        private DirtyValue<decimal?> _discountRatePercent;
-        private DirtyValue<StringEnumValue<DiscountType>> _discountType;
-        private DirtyValue<DateTime?> _dueDate;
-        private DirtyValue<DateTime?> _earliestClosingDate;
-        private DirtyValue<DateTime?> _earliestFeeCollectionDate;
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted1;
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted2;
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted3;
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted4;
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted5;
-        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted6;
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress1;
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress2;
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress3;
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress4;
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress5;
-        private DirtyValue<string> _eSignConsentBorrowerIPAddress6;
-        private DirtyValue<string> _eSignConsentBorrowerSource1;
-        private DirtyValue<string> _eSignConsentBorrowerSource2;
-        private DirtyValue<string> _eSignConsentBorrowerSource3;
-        private DirtyValue<string> _eSignConsentBorrowerSource4;
-        private DirtyValue<string> _eSignConsentBorrowerSource5;
-        private DirtyValue<string> _eSignConsentBorrowerSource6;
-        private DirtyValue<string> _eSignConsentBorrowerStatus1;
-        private DirtyValue<string> _eSignConsentBorrowerStatus2;
-        private DirtyValue<string> _eSignConsentBorrowerStatus3;
-        private DirtyValue<string> _eSignConsentBorrowerStatus4;
-        private DirtyValue<string> _eSignConsentBorrowerStatus5;
-        private DirtyValue<string> _eSignConsentBorrowerStatus6;
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted1;
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted2;
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted3;
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted4;
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted5;
-        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted6;
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress1;
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress2;
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress3;
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress4;
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress5;
-        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress6;
-        private DirtyValue<string> _eSignConsentCoBorrowerSource1;
-        private DirtyValue<string> _eSignConsentCoBorrowerSource2;
-        private DirtyValue<string> _eSignConsentCoBorrowerSource3;
-        private DirtyValue<string> _eSignConsentCoBorrowerSource4;
-        private DirtyValue<string> _eSignConsentCoBorrowerSource5;
-        private DirtyValue<string> _eSignConsentCoBorrowerSource6;
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus1;
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus2;
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus3;
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus4;
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus5;
-        private DirtyValue<string> _eSignConsentCoBorrowerStatus6;
-        private DirtyValue<DateTime?> _eSignConsentDate;
-        private DirtyValue<string> _externaleConsent;
-        private DirtyValue<decimal?> _extraPaymentForEarlyPayOff;
-        private DirtyValue<DateTime?> _feeCollectedDate;
-        private DirtyValue<bool?> _feeLevelDisclosuresIndicator;
-        private DirtyValue<decimal?> _filingFees;
-        private DirtyValue<DateTime?> _finalPaymentDate;
-        private DirtyValue<decimal?> _financeCharge;
-        private DirtyValue<decimal?> _financedAllGuaranteeFeeAmount;
-        private DirtyValue<decimal?> _financedAllGuaranteeFeePercent;
-        private DirtyValue<decimal?> _financedAllTotalLoanAmount;
-        private DirtyValue<decimal?> _financedPortionGuaranteeFeeAmount;
-        private DirtyValue<decimal?> _financedPortionGuaranteeFeePercent;
-        private DirtyValue<decimal?> _financedPortionTotalLoanAmount;
-        private DirtyValue<StringEnumValue<FinancingType>> _financingType;
-        private DirtyValue<DateTime?> _firstAmortizationPaymentDate;
-        private DirtyValue<bool?> _floodInsuranceIndicator;
-        private DirtyValue<DateTime?> _gfeApplicationDate;
-        private DirtyValue<bool?> _gfeChangedCircumstanceIndicator;
-        private DirtyValue<string> _gfeChangedCircumstanceItem;
-        private DirtyValue<string> _gFEChangedCirsumstanceItemCode;
-        private DirtyValue<DateTime?> _gfeDate;
-        private DirtyValue<DateTime?> _gfeExpirationDate;
-        private DirtyValue<string> _gfeExpirationPeriod;
-        private DirtyValue<bool?> _gfeRateLockRedisclosureRequiredIndicator;
-        private DirtyValue<DateTime?> _gfeRedisclosureProvidedDate;
-        private DirtyValue<DateTime?> _gfeRedisclosureReceivedDate;
-        private DirtyValue<int?> _helocTeaserRatePeriod;
-        private DirtyValue<DateTime?> _highCostDisclosure;
-        private DirtyValue<DateTime?> _homeCounselingProvidedDate;
-        private DirtyValue<bool?> _hud1ToleranceViolatedIndicator;
-        private DirtyValue<string> _hudToleranceResolutionComments;
-        private DirtyValue<DateTime?> _hudToleranceResolutionDate;
-        private DirtyValue<string> _hudToleranceResolvedBy;
-        private DirtyValue<string> _id;
-        private DirtyValue<bool?> _ifYouPurchaseIndicator;
-        private DirtyValue<StringEnumValue<IfYouPurchaseType>> _ifYouPurchaseType;
-        private DirtyValue<bool?> _includeMiIndicator;
-        private DirtyValue<bool?> _includePmiIndicator;
-        private DirtyValue<bool?> _includeTaxesInsuranceIndicator;
-        private DirtyValue<DateTime?> _initialAVMProvidedDate;
-        private DirtyValue<DateTime?> _initialDisclosureDueDate;
-        private DirtyValue<DateTime?> _initialDisclosureProvidedDate;
-        private DirtyValue<DateTime?> _initialGfeAffiliatedBusinessProvidedDate;
-        private DirtyValue<DateTime?> _initialGFEAppraisalProvidedDate;
-        private DirtyValue<DateTime?> _initialGfeCharmBookletProvidedDate;
-        private DirtyValue<DateTime?> _initialGfeDisclosureProvidedDate;
-        private DirtyValue<DateTime?> _initialGfeDisclosureReceivedDate;
-        private DirtyValue<DateTime?> _initialGfeHelocBrochureProvidedDate;
-        private DirtyValue<DateTime?> _initialGfeHudSpecialBookletProvidedDate;
-        private DirtyValue<DateTime?> _initialSubsequentAppraisalProvidedDate;
-        private DirtyValue<DateTime?> _initialTilDisclosureProvidedDate;
-        private DirtyValue<DateTime?> _initialTilDisclosureReceivedDate;
-        private DirtyValue<string> _insuranceRequiredDescription;
-        private DirtyValue<string> _interestInNameOf;
-        private DirtyValue<bool?> _interestOnly;
-        private DirtyValue<bool?> _interestOnlyIndicator;
-        private DirtyValue<int?> _interestOnlyMonths;
-        private DirtyValue<StringEnumValue<InterestRateType>> _interestRateType;
-        private DirtyValue<decimal?> _interestReserveAmount;
-        private DirtyValue<string> _lastDisclosedBy;
-        private DirtyValue<DateTime?> _lastDisclosedDate;
-        private DirtyValue<DateTime?> _lastDisclosedGfeReceivedDate;
-        private DirtyValue<decimal?> _lateChargeBasis;
-        private DirtyValue<string> _lateChargeComments;
-        private DirtyValue<int?> _lateChargeDays;
-        private DirtyValue<decimal?> _lateChargePercent;
-        private DirtyValue<StringEnumValue<LateChargeType>> _lateChargeType;
-        private DirtyValue<decimal?> _lateFee;
-        private DirtyValue<string> _lEIntentToProceedComment;
-        private DirtyValue<bool?> _lenderPaidMortgageInsuranceIndicator;
-        private DirtyValue<decimal?> _lendersInspectionFee;
-        private DirtyValue<string> _lEReceivedBy;
-        private DirtyValue<StringEnumValue<LEReceivedMethod>> _lEReceivedMethod;
-        private DirtyValue<string> _lEReceivedMethodOther;
-        private DirtyValue<DateTime?> _lESentOnDate;
-        private DirtyValue<decimal?> _marginPlusIndexPercent;
-        private DirtyValue<decimal?> _maximumLateCharge;
-        private DirtyValue<decimal?> _maximumPayment;
-        private DirtyValue<bool?> _meansAnEstimateIndicator;
-        private DirtyValue<decimal?> _miAdjustmentFactorLevel2;
-        private DirtyValue<bool?> _miDecliningRenewalsIndicator;
-        private DirtyValue<string> _midpointCancellation;
-        private DirtyValue<decimal?> _miMonthlyPaymentLevel1;
-        private DirtyValue<decimal?> _miMonthlyPaymentLevel2;
-        private DirtyValue<int?> _miMonthsOfAdjustmentLevel1;
-        private DirtyValue<int?> _miMonthsOfAdjustmentLevel2;
-        private DirtyValue<decimal?> _minimumLateCharge;
-        private DirtyValue<decimal?> _minimumPayment;
-        private DirtyValue<bool?> _mIPFactorLocked;
-        private DirtyValue<decimal?> _mIPrepaidAmount;
-        private DirtyValue<bool?> _miPrepaidIndicator;
-        private DirtyValue<string> _miScheduledTerminationDate;
-        private DirtyValue<bool?> _mmiIndicator;
-        private DirtyValue<decimal?> _monthlyTerm;
-        private DirtyValue<int?> _monthsOfMiPrepaid;
-        private DirtyValue<decimal?> _mortgageInsuranceCancelPercent;
-        private DirtyValue<string> _namePreparedBy;
-        private DirtyValue<string> _newConstructionIndicator;
-        private DirtyValue<int?> _numberOfPayments;
-        private DirtyValue<DateTime?> _occupancyCertDate;
-        private DirtyValue<DateTime?> _originalContractDate;
-        private DirtyValue<decimal?> _outstandingBalance;
-        private DirtyValue<string> _paymentFrequencyType;
-        private DirtyValue<decimal?> _paymentIncreasePercent;
-        private DirtyValue<string> _phonePreparedBy;
-        private DirtyValue<bool?> _pmiIndicator;
-        private DirtyValue<DateTime?> _pmiMidpointCancelationDate;
-        private DirtyValue<DateTime?> _postConsummationDisclosureReceivedDate;
-        private DirtyValue<DateTime?> _postConsummationDisclosureSentDate;
-        private DirtyValue<decimal?> _prepaidFinanceCharge;
-        private DirtyValue<bool?> _propertyInsuranceIndicator;
-        private DirtyValue<DateTime?> _rateLockGfeDueDate;
-        private DirtyValue<decimal?> _ratePercent;
-        private DirtyValue<int?> _recastPaidMonths;
-        private DirtyValue<int?> _recastStopMonths;
-        private DirtyValue<bool?> _refundPaymentIndicator;
-        private DirtyValue<bool?> _refundUnearnedMipIndicator;
-        private DirtyList<RegulationZInterestRatePeriod> _regulationZInterestRatePeriods;
-        private DirtyList<RegulationZPayment> _regulationZPayments;
-        private DirtyValue<string> _regzTableType;
-        private DirtyValue<bool?> _requiredDepositIndicator;
-        private DirtyValue<DateTime?> _revisedClosingDisclosureReceivedDate;
-        private DirtyValue<DateTime?> _revisedClosingDisclosureSentDate;
-        private DirtyValue<DateTime?> _revisedGfeDueDate;
-        private DirtyValue<decimal?> _roundedMarginPlusIndexPercent;
-        private DirtyValue<DateTime?> _safeHarborSentDate;
-        private DirtyValue<decimal?> _samplePayments;
-        private DirtyValue<StringEnumValue<SecurityType>> _securityType;
-        private DirtyValue<DateTime?> _sSPLSentDate;
-        private DirtyValue<DateTime?> _tilDate;
-        private DirtyValue<string> _tilDisclosedComments;
-        private DirtyValue<StringEnumValue<DisclosureMethod>> _tilDisclosureMethod;
-        private DirtyValue<DateTime?> _tilLastDisclosedBorrowerReceivedDate;
-        private DirtyValue<string> _tilLastDisclosedBy;
-        private DirtyValue<DateTime?> _tilLastDisclosedDate;
-        private DirtyValue<DateTime?> _tilRedisclosureProvidedDate;
-        private DirtyValue<DateTime?> _tilRedisclosureReceivedDate;
-        private DirtyValue<decimal?> _totalBrokerFees;
-        private DirtyValue<decimal?> _totalLatePayment;
-        private DirtyValue<decimal?> _totalLenderFees;
-        private DirtyValue<decimal?> _totalOfPayments;
-        private DirtyValue<decimal?> _totalOfPrincipalAndInterest;
-        private DirtyValue<bool?> _useCustomLenderProfile;
-        private DirtyValue<StringEnumValue<DaysInYear>> _useDaysInYears;
-        private DirtyValue<bool?> _usePitiForRatioIndicator;
-        private DirtyValue<bool?> _variableRateFeatureIndicator;
-        private DirtyValue<decimal?> _yearlyTerm;
-        private DirtyValue<string> _yearOfMaximumPayment;
-        private DirtyValue<int?> _years;
+        private DirtyValue<string?>? _acknowledgedDay;
+        private DirtyValue<string?>? _acknowledgedMonth;
+        private DirtyValue<string?>? _acknowledgedYear;
+        private DirtyValue<bool?>? _acquisition;
+        private DirtyValue<string?>? _additionalArmInformation;
+        private DirtyValue<bool?>? _allDateAndNumericalDisclosuresIndicator;
+        private DirtyValue<decimal?>? _amountFinanced;
+        private DirtyValue<decimal?>? _aprPercent;
+        private DirtyValue<string?>? _aprPercentUI;
+        private DirtyValue<string?>? _armDisclosureDescription;
+        private DirtyValue<StringEnumValue<AssumptionOnYourProperty>>? _assumptionOnYourProperty;
+        private DirtyValue<DateTime?>? _borrowerIntendToContinueDate;
+        private DirtyValue<bool?>? _borrowerIntendToContinueIndicator;
+        private DirtyValue<string?>? _borrowerMiTerminationDate;
+        private DirtyValue<string?>? _calculateBasedOnRemainingBalance;
+        private DirtyValue<bool?>? _chargesAddedToPaymentsIndicator;
+        private DirtyValue<bool?>? _chargesAtLoanClosingIndicator;
+        private DirtyValue<string?>? _circumstanceChangeReason;
+        private DirtyValue<DateTime?>? _circumstanceChangeReceivedDate;
+        private DirtyValue<DateTime?>? _closingDisclosureReceivedDate;
+        private DirtyValue<DateTime?>? _closingDisclosureSentDate;
+        private DirtyValue<StringEnumValue<ConstructionFirstIntChangeAdjType>>? _constructionFirstIntChangeAdjType;
+        private DirtyValue<string?>? _constructionLoanDescription;
+        private DirtyValue<StringEnumValue<ConstructionLoanMethod>>? _constructionLoanMethod;
+        private DirtyValue<int?>? _constructionPeriodMonths;
+        private DirtyValue<decimal?>? _constructionRatePercent;
+        private DirtyValue<bool?>? _constructionRefinanceIndicator;
+        private DirtyValue<decimal?>? _creditDisability;
+        private DirtyValue<bool?>? _creditDisabilityIndicator;
+        private DirtyValue<decimal?>? _creditLife;
+        private DirtyValue<decimal?>? _creditLifeAndCreditDisability;
+        private DirtyValue<bool?>? _creditLifeInsuranceIndicator;
+        private DirtyValue<bool?>? _customizePaymentScheduleIndicator;
+        private DirtyValue<bool?>? _demandFeatureIndicator;
+        private DirtyValue<decimal?>? _disclosedAprPercent;
+        private DirtyValue<bool?>? _disclosedByBrokerIndicator;
+        private DirtyValue<string?>? _disclosedComments;
+        private DirtyValue<decimal?>? _disclosedDailyInterestCharge;
+        private DirtyValue<decimal?>? _disclosedFinanceCharge;
+        private DirtyValue<bool?>? _disclosedPrepayment;
+        private DirtyValue<string?>? _disclosedProduct;
+        private DirtyValue<StringEnumValue<DisclosureMethod>>? _disclosureMethod;
+        private DirtyValue<StringEnumValue<DisclosureType>>? _disclosureType;
+        private DirtyValue<int?>? _discountPeriod;
+        private DirtyValue<decimal?>? _discountRatePercent;
+        private DirtyValue<StringEnumValue<DiscountType>>? _discountType;
+        private DirtyValue<DateTime?>? _dueDate;
+        private DirtyValue<DateTime?>? _earliestClosingDate;
+        private DirtyValue<DateTime?>? _earliestFeeCollectionDate;
+        private DirtyValue<DateTime?>? _eSignConsentBorrowerDateAccepted1;
+        private DirtyValue<DateTime?>? _eSignConsentBorrowerDateAccepted2;
+        private DirtyValue<DateTime?>? _eSignConsentBorrowerDateAccepted3;
+        private DirtyValue<DateTime?>? _eSignConsentBorrowerDateAccepted4;
+        private DirtyValue<DateTime?>? _eSignConsentBorrowerDateAccepted5;
+        private DirtyValue<DateTime?>? _eSignConsentBorrowerDateAccepted6;
+        private DirtyValue<string?>? _eSignConsentBorrowerIPAddress1;
+        private DirtyValue<string?>? _eSignConsentBorrowerIPAddress2;
+        private DirtyValue<string?>? _eSignConsentBorrowerIPAddress3;
+        private DirtyValue<string?>? _eSignConsentBorrowerIPAddress4;
+        private DirtyValue<string?>? _eSignConsentBorrowerIPAddress5;
+        private DirtyValue<string?>? _eSignConsentBorrowerIPAddress6;
+        private DirtyValue<string?>? _eSignConsentBorrowerSource1;
+        private DirtyValue<string?>? _eSignConsentBorrowerSource2;
+        private DirtyValue<string?>? _eSignConsentBorrowerSource3;
+        private DirtyValue<string?>? _eSignConsentBorrowerSource4;
+        private DirtyValue<string?>? _eSignConsentBorrowerSource5;
+        private DirtyValue<string?>? _eSignConsentBorrowerSource6;
+        private DirtyValue<string?>? _eSignConsentBorrowerStatus1;
+        private DirtyValue<string?>? _eSignConsentBorrowerStatus2;
+        private DirtyValue<string?>? _eSignConsentBorrowerStatus3;
+        private DirtyValue<string?>? _eSignConsentBorrowerStatus4;
+        private DirtyValue<string?>? _eSignConsentBorrowerStatus5;
+        private DirtyValue<string?>? _eSignConsentBorrowerStatus6;
+        private DirtyValue<DateTime?>? _eSignConsentCoBorrowerDateAccepted1;
+        private DirtyValue<DateTime?>? _eSignConsentCoBorrowerDateAccepted2;
+        private DirtyValue<DateTime?>? _eSignConsentCoBorrowerDateAccepted3;
+        private DirtyValue<DateTime?>? _eSignConsentCoBorrowerDateAccepted4;
+        private DirtyValue<DateTime?>? _eSignConsentCoBorrowerDateAccepted5;
+        private DirtyValue<DateTime?>? _eSignConsentCoBorrowerDateAccepted6;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerIPAddress1;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerIPAddress2;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerIPAddress3;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerIPAddress4;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerIPAddress5;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerIPAddress6;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerSource1;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerSource2;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerSource3;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerSource4;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerSource5;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerSource6;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerStatus1;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerStatus2;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerStatus3;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerStatus4;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerStatus5;
+        private DirtyValue<string?>? _eSignConsentCoBorrowerStatus6;
+        private DirtyValue<DateTime?>? _eSignConsentDate;
+        private DirtyValue<string?>? _externaleConsent;
+        private DirtyValue<decimal?>? _extraPaymentForEarlyPayOff;
+        private DirtyValue<DateTime?>? _feeCollectedDate;
+        private DirtyValue<bool?>? _feeLevelDisclosuresIndicator;
+        private DirtyValue<decimal?>? _filingFees;
+        private DirtyValue<DateTime?>? _finalPaymentDate;
+        private DirtyValue<decimal?>? _financeCharge;
+        private DirtyValue<decimal?>? _financedAllGuaranteeFeeAmount;
+        private DirtyValue<decimal?>? _financedAllGuaranteeFeePercent;
+        private DirtyValue<decimal?>? _financedAllTotalLoanAmount;
+        private DirtyValue<decimal?>? _financedPortionGuaranteeFeeAmount;
+        private DirtyValue<decimal?>? _financedPortionGuaranteeFeePercent;
+        private DirtyValue<decimal?>? _financedPortionTotalLoanAmount;
+        private DirtyValue<StringEnumValue<FinancingType>>? _financingType;
+        private DirtyValue<DateTime?>? _firstAmortizationPaymentDate;
+        private DirtyValue<bool?>? _floodInsuranceIndicator;
+        private DirtyValue<DateTime?>? _gfeApplicationDate;
+        private DirtyValue<bool?>? _gfeChangedCircumstanceIndicator;
+        private DirtyValue<string?>? _gfeChangedCircumstanceItem;
+        private DirtyValue<string?>? _gFEChangedCirsumstanceItemCode;
+        private DirtyValue<DateTime?>? _gfeDate;
+        private DirtyValue<DateTime?>? _gfeExpirationDate;
+        private DirtyValue<string?>? _gfeExpirationPeriod;
+        private DirtyValue<bool?>? _gfeRateLockRedisclosureRequiredIndicator;
+        private DirtyValue<DateTime?>? _gfeRedisclosureProvidedDate;
+        private DirtyValue<DateTime?>? _gfeRedisclosureReceivedDate;
+        private DirtyValue<int?>? _helocTeaserRatePeriod;
+        private DirtyValue<DateTime?>? _highCostDisclosure;
+        private DirtyValue<DateTime?>? _homeCounselingProvidedDate;
+        private DirtyValue<bool?>? _hud1ToleranceViolatedIndicator;
+        private DirtyValue<string?>? _hudToleranceResolutionComments;
+        private DirtyValue<DateTime?>? _hudToleranceResolutionDate;
+        private DirtyValue<string?>? _hudToleranceResolvedBy;
+        private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _ifYouPurchaseIndicator;
+        private DirtyValue<StringEnumValue<IfYouPurchaseType>>? _ifYouPurchaseType;
+        private DirtyValue<bool?>? _includeMiIndicator;
+        private DirtyValue<bool?>? _includePmiIndicator;
+        private DirtyValue<bool?>? _includeTaxesInsuranceIndicator;
+        private DirtyValue<DateTime?>? _initialAVMProvidedDate;
+        private DirtyValue<DateTime?>? _initialDisclosureDueDate;
+        private DirtyValue<DateTime?>? _initialDisclosureProvidedDate;
+        private DirtyValue<DateTime?>? _initialGfeAffiliatedBusinessProvidedDate;
+        private DirtyValue<DateTime?>? _initialGFEAppraisalProvidedDate;
+        private DirtyValue<DateTime?>? _initialGfeCharmBookletProvidedDate;
+        private DirtyValue<DateTime?>? _initialGfeDisclosureProvidedDate;
+        private DirtyValue<DateTime?>? _initialGfeDisclosureReceivedDate;
+        private DirtyValue<DateTime?>? _initialGfeHelocBrochureProvidedDate;
+        private DirtyValue<DateTime?>? _initialGfeHudSpecialBookletProvidedDate;
+        private DirtyValue<DateTime?>? _initialSubsequentAppraisalProvidedDate;
+        private DirtyValue<DateTime?>? _initialTilDisclosureProvidedDate;
+        private DirtyValue<DateTime?>? _initialTilDisclosureReceivedDate;
+        private DirtyValue<string?>? _insuranceRequiredDescription;
+        private DirtyValue<string?>? _interestInNameOf;
+        private DirtyValue<bool?>? _interestOnly;
+        private DirtyValue<bool?>? _interestOnlyIndicator;
+        private DirtyValue<int?>? _interestOnlyMonths;
+        private DirtyValue<StringEnumValue<InterestRateType>>? _interestRateType;
+        private DirtyValue<decimal?>? _interestReserveAmount;
+        private DirtyValue<string?>? _lastDisclosedBy;
+        private DirtyValue<DateTime?>? _lastDisclosedDate;
+        private DirtyValue<DateTime?>? _lastDisclosedGfeReceivedDate;
+        private DirtyValue<decimal?>? _lateChargeBasis;
+        private DirtyValue<string?>? _lateChargeComments;
+        private DirtyValue<int?>? _lateChargeDays;
+        private DirtyValue<decimal?>? _lateChargePercent;
+        private DirtyValue<StringEnumValue<LateChargeType>>? _lateChargeType;
+        private DirtyValue<decimal?>? _lateFee;
+        private DirtyValue<string?>? _lEIntentToProceedComment;
+        private DirtyValue<bool?>? _lenderPaidMortgageInsuranceIndicator;
+        private DirtyValue<decimal?>? _lendersInspectionFee;
+        private DirtyValue<string?>? _lEReceivedBy;
+        private DirtyValue<StringEnumValue<LEReceivedMethod>>? _lEReceivedMethod;
+        private DirtyValue<string?>? _lEReceivedMethodOther;
+        private DirtyValue<DateTime?>? _lESentOnDate;
+        private DirtyValue<decimal?>? _marginPlusIndexPercent;
+        private DirtyValue<decimal?>? _maximumLateCharge;
+        private DirtyValue<decimal?>? _maximumPayment;
+        private DirtyValue<bool?>? _meansAnEstimateIndicator;
+        private DirtyValue<decimal?>? _miAdjustmentFactorLevel2;
+        private DirtyValue<bool?>? _miDecliningRenewalsIndicator;
+        private DirtyValue<string?>? _midpointCancellation;
+        private DirtyValue<decimal?>? _miMonthlyPaymentLevel1;
+        private DirtyValue<decimal?>? _miMonthlyPaymentLevel2;
+        private DirtyValue<int?>? _miMonthsOfAdjustmentLevel1;
+        private DirtyValue<int?>? _miMonthsOfAdjustmentLevel2;
+        private DirtyValue<decimal?>? _minimumLateCharge;
+        private DirtyValue<decimal?>? _minimumPayment;
+        private DirtyValue<bool?>? _mIPFactorLocked;
+        private DirtyValue<decimal?>? _mIPrepaidAmount;
+        private DirtyValue<bool?>? _miPrepaidIndicator;
+        private DirtyValue<string?>? _miScheduledTerminationDate;
+        private DirtyValue<bool?>? _mmiIndicator;
+        private DirtyValue<decimal?>? _monthlyTerm;
+        private DirtyValue<int?>? _monthsOfMiPrepaid;
+        private DirtyValue<decimal?>? _mortgageInsuranceCancelPercent;
+        private DirtyValue<string?>? _namePreparedBy;
+        private DirtyValue<string?>? _newConstructionIndicator;
+        private DirtyValue<int?>? _numberOfPayments;
+        private DirtyValue<DateTime?>? _occupancyCertDate;
+        private DirtyValue<DateTime?>? _originalContractDate;
+        private DirtyValue<decimal?>? _outstandingBalance;
+        private DirtyValue<string?>? _paymentFrequencyType;
+        private DirtyValue<decimal?>? _paymentIncreasePercent;
+        private DirtyValue<string?>? _phonePreparedBy;
+        private DirtyValue<bool?>? _pmiIndicator;
+        private DirtyValue<DateTime?>? _pmiMidpointCancelationDate;
+        private DirtyValue<DateTime?>? _postConsummationDisclosureReceivedDate;
+        private DirtyValue<DateTime?>? _postConsummationDisclosureSentDate;
+        private DirtyValue<decimal?>? _prepaidFinanceCharge;
+        private DirtyValue<bool?>? _propertyInsuranceIndicator;
+        private DirtyValue<DateTime?>? _rateLockGfeDueDate;
+        private DirtyValue<decimal?>? _ratePercent;
+        private DirtyValue<int?>? _recastPaidMonths;
+        private DirtyValue<int?>? _recastStopMonths;
+        private DirtyValue<bool?>? _refundPaymentIndicator;
+        private DirtyValue<bool?>? _refundUnearnedMipIndicator;
+        private DirtyList<RegulationZInterestRatePeriod>? _regulationZInterestRatePeriods;
+        private DirtyList<RegulationZPayment>? _regulationZPayments;
+        private DirtyValue<string?>? _regzTableType;
+        private DirtyValue<bool?>? _requiredDepositIndicator;
+        private DirtyValue<DateTime?>? _revisedClosingDisclosureReceivedDate;
+        private DirtyValue<DateTime?>? _revisedClosingDisclosureSentDate;
+        private DirtyValue<DateTime?>? _revisedGfeDueDate;
+        private DirtyValue<decimal?>? _roundedMarginPlusIndexPercent;
+        private DirtyValue<DateTime?>? _safeHarborSentDate;
+        private DirtyValue<decimal?>? _samplePayments;
+        private DirtyValue<StringEnumValue<SecurityType>>? _securityType;
+        private DirtyValue<DateTime?>? _sSPLSentDate;
+        private DirtyValue<DateTime?>? _tilDate;
+        private DirtyValue<string?>? _tilDisclosedComments;
+        private DirtyValue<StringEnumValue<DisclosureMethod>>? _tilDisclosureMethod;
+        private DirtyValue<DateTime?>? _tilLastDisclosedBorrowerReceivedDate;
+        private DirtyValue<string?>? _tilLastDisclosedBy;
+        private DirtyValue<DateTime?>? _tilLastDisclosedDate;
+        private DirtyValue<DateTime?>? _tilRedisclosureProvidedDate;
+        private DirtyValue<DateTime?>? _tilRedisclosureReceivedDate;
+        private DirtyValue<decimal?>? _totalBrokerFees;
+        private DirtyValue<decimal?>? _totalLatePayment;
+        private DirtyValue<decimal?>? _totalLenderFees;
+        private DirtyValue<decimal?>? _totalOfPayments;
+        private DirtyValue<decimal?>? _totalOfPrincipalAndInterest;
+        private DirtyValue<bool?>? _useCustomLenderProfile;
+        private DirtyValue<StringEnumValue<DaysInYear>>? _useDaysInYears;
+        private DirtyValue<bool?>? _usePitiForRatioIndicator;
+        private DirtyValue<bool?>? _variableRateFeatureIndicator;
+        private DirtyValue<decimal?>? _yearlyTerm;
+        private DirtyValue<string?>? _yearOfMaximumPayment;
+        private DirtyValue<int?>? _years;
 
         /// <summary>
         /// REGZ Acknowledgement Day [REGZ_DAY]
         /// </summary>
-        public string AcknowledgedDay { get => _acknowledgedDay; set => SetField(ref _acknowledgedDay, value); }
+        public string? AcknowledgedDay { get => _acknowledgedDay; set => SetField(ref _acknowledgedDay, value); }
 
         /// <summary>
         /// REGZ Acknowledgement Mo [REGZ_MONTH]
         /// </summary>
-        public string AcknowledgedMonth { get => _acknowledgedMonth; set => SetField(ref _acknowledgedMonth, value); }
+        public string? AcknowledgedMonth { get => _acknowledgedMonth; set => SetField(ref _acknowledgedMonth, value); }
 
         /// <summary>
         /// REGZ Acknowledgement Yr [REGZ_YR]
         /// </summary>
-        public string AcknowledgedYear { get => _acknowledgedYear; set => SetField(ref _acknowledgedYear, value); }
+        public string? AcknowledgedYear { get => _acknowledgedYear; set => SetField(ref _acknowledgedYear, value); }
 
         /// <summary>
         /// Initial Acquisition of Land [1964]
@@ -281,7 +282,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// REGZ Pymt Sched Additional Info [666]
         /// </summary>
-        public string AdditionalArmInformation { get => _additionalArmInformation; set => SetField(ref _additionalArmInformation, value); }
+        public string? AdditionalArmInformation { get => _additionalArmInformation; set => SetField(ref _additionalArmInformation, value); }
 
         /// <summary>
         /// Trans Details Dates/Num Discl Are Estimates [679]
@@ -304,13 +305,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details APR - Display field with KBYO rounding rules [KBYO.XD799]
         /// </summary>
-        public string AprPercentUI { get => _aprPercentUI; set => SetField(ref _aprPercentUI, value); }
+        public string? AprPercentUI { get => _aprPercentUI; set => SetField(ref _aprPercentUI, value); }
 
         /// <summary>
         /// Prequal ARM Index [1960]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ArmDisclosureDescription { get => _armDisclosureDescription; set => SetField(ref _armDisclosureDescription, value); }
+        public string? ArmDisclosureDescription { get => _armDisclosureDescription; set => SetField(ref _armDisclosureDescription, value); }
 
         /// <summary>
         /// Trans Details Assumption May/May Not [677]
@@ -331,12 +332,12 @@ namespace EncompassRest.Loans
         /// Insurance Borr MI Termination Date [109]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string BorrowerMiTerminationDate { get => _borrowerMiTerminationDate; set => SetField(ref _borrowerMiTerminationDate, value); }
+        public string? BorrowerMiTerminationDate { get => _borrowerMiTerminationDate; set => SetField(ref _borrowerMiTerminationDate, value); }
 
         /// <summary>
         /// Expenses Calc MIP/PMI Based On Remain Bal [1775]
         /// </summary>
-        public string CalculateBasedOnRemainingBalance { get => _calculateBasedOnRemainingBalance; set => SetField(ref _calculateBasedOnRemainingBalance, value); }
+        public string? CalculateBasedOnRemainingBalance { get => _calculateBasedOnRemainingBalance; set => SetField(ref _calculateBasedOnRemainingBalance, value); }
 
         /// <summary>
         /// Charges for the insurance are added to your loan payments [3531]
@@ -351,7 +352,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GFE Changed Circumstance Comments [3166]
         /// </summary>
-        public string CircumstanceChangeReason { get => _circumstanceChangeReason; set => SetField(ref _circumstanceChangeReason, value); }
+        public string? CircumstanceChangeReason { get => _circumstanceChangeReason; set => SetField(ref _circumstanceChangeReason, value); }
 
         /// <summary>
         /// Changed Circumstance Rcvd Date [3165]
@@ -378,7 +379,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info Constr Loan Descr [1404]
         /// </summary>
-        public string ConstructionLoanDescription { get => _constructionLoanDescription; set => SetField(ref _constructionLoanDescription, value); }
+        public string? ConstructionLoanDescription { get => _constructionLoanDescription; set => SetField(ref _constructionLoanDescription, value); }
 
         /// <summary>
         /// REGZ Construction Mortgage Est Interest On [SYS.X6]
@@ -458,7 +459,7 @@ namespace EncompassRest.Loans
         /// GFE Disclosed Comments [3141]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string DisclosedComments { get => _disclosedComments; set => SetField(ref _disclosedComments, value); }
+        public string? DisclosedComments { get => _disclosedComments; set => SetField(ref _disclosedComments, value); }
 
         /// <summary>
         /// Disclosed Daily Interest Charges [3887]
@@ -480,7 +481,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosed Product [4017]
         /// </summary>
-        public string DisclosedProduct { get => _disclosedProduct; set => SetField(ref _disclosedProduct, value); }
+        public string? DisclosedProduct { get => _disclosedProduct; set => SetField(ref _disclosedProduct, value); }
 
         /// <summary>
         /// GFE Disclosure Method [3138]
@@ -559,92 +560,92 @@ namespace EncompassRest.Loans
         /// <summary>
         /// eConsent Borrower IP Address Pair 1 [3986]
         /// </summary>
-        public string eSignConsentBorrowerIPAddress1 { get => _eSignConsentBorrowerIPAddress1; set => SetField(ref _eSignConsentBorrowerIPAddress1, value); }
+        public string? eSignConsentBorrowerIPAddress1 { get => _eSignConsentBorrowerIPAddress1; set => SetField(ref _eSignConsentBorrowerIPAddress1, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 2 [3994]
         /// </summary>
-        public string eSignConsentBorrowerIPAddress2 { get => _eSignConsentBorrowerIPAddress2; set => SetField(ref _eSignConsentBorrowerIPAddress2, value); }
+        public string? eSignConsentBorrowerIPAddress2 { get => _eSignConsentBorrowerIPAddress2; set => SetField(ref _eSignConsentBorrowerIPAddress2, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 3 [4025]
         /// </summary>
-        public string eSignConsentBorrowerIPAddress3 { get => _eSignConsentBorrowerIPAddress3; set => SetField(ref _eSignConsentBorrowerIPAddress3, value); }
+        public string? eSignConsentBorrowerIPAddress3 { get => _eSignConsentBorrowerIPAddress3; set => SetField(ref _eSignConsentBorrowerIPAddress3, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 4 [4033]
         /// </summary>
-        public string eSignConsentBorrowerIPAddress4 { get => _eSignConsentBorrowerIPAddress4; set => SetField(ref _eSignConsentBorrowerIPAddress4, value); }
+        public string? eSignConsentBorrowerIPAddress4 { get => _eSignConsentBorrowerIPAddress4; set => SetField(ref _eSignConsentBorrowerIPAddress4, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 5 [4041]
         /// </summary>
-        public string eSignConsentBorrowerIPAddress5 { get => _eSignConsentBorrowerIPAddress5; set => SetField(ref _eSignConsentBorrowerIPAddress5, value); }
+        public string? eSignConsentBorrowerIPAddress5 { get => _eSignConsentBorrowerIPAddress5; set => SetField(ref _eSignConsentBorrowerIPAddress5, value); }
 
         /// <summary>
         /// eConsent Borrower IP Address Pair 6 [4049]
         /// </summary>
-        public string eSignConsentBorrowerIPAddress6 { get => _eSignConsentBorrowerIPAddress6; set => SetField(ref _eSignConsentBorrowerIPAddress6, value); }
+        public string? eSignConsentBorrowerIPAddress6 { get => _eSignConsentBorrowerIPAddress6; set => SetField(ref _eSignConsentBorrowerIPAddress6, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 1 [3987]
         /// </summary>
-        public string eSignConsentBorrowerSource1 { get => _eSignConsentBorrowerSource1; set => SetField(ref _eSignConsentBorrowerSource1, value); }
+        public string? eSignConsentBorrowerSource1 { get => _eSignConsentBorrowerSource1; set => SetField(ref _eSignConsentBorrowerSource1, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 2 [3995]
         /// </summary>
-        public string eSignConsentBorrowerSource2 { get => _eSignConsentBorrowerSource2; set => SetField(ref _eSignConsentBorrowerSource2, value); }
+        public string? eSignConsentBorrowerSource2 { get => _eSignConsentBorrowerSource2; set => SetField(ref _eSignConsentBorrowerSource2, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 3 [4026]
         /// </summary>
-        public string eSignConsentBorrowerSource3 { get => _eSignConsentBorrowerSource3; set => SetField(ref _eSignConsentBorrowerSource3, value); }
+        public string? eSignConsentBorrowerSource3 { get => _eSignConsentBorrowerSource3; set => SetField(ref _eSignConsentBorrowerSource3, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 4 [4034]
         /// </summary>
-        public string eSignConsentBorrowerSource4 { get => _eSignConsentBorrowerSource4; set => SetField(ref _eSignConsentBorrowerSource4, value); }
+        public string? eSignConsentBorrowerSource4 { get => _eSignConsentBorrowerSource4; set => SetField(ref _eSignConsentBorrowerSource4, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 5 [4042]
         /// </summary>
-        public string eSignConsentBorrowerSource5 { get => _eSignConsentBorrowerSource5; set => SetField(ref _eSignConsentBorrowerSource5, value); }
+        public string? eSignConsentBorrowerSource5 { get => _eSignConsentBorrowerSource5; set => SetField(ref _eSignConsentBorrowerSource5, value); }
 
         /// <summary>
         /// eConsent Borrower Source Pair 6 [4050]
         /// </summary>
-        public string eSignConsentBorrowerSource6 { get => _eSignConsentBorrowerSource6; set => SetField(ref _eSignConsentBorrowerSource6, value); }
+        public string? eSignConsentBorrowerSource6 { get => _eSignConsentBorrowerSource6; set => SetField(ref _eSignConsentBorrowerSource6, value); }
 
         /// <summary>
         /// Borrower 1 eConsent Status [3984]
         /// </summary>
-        public string eSignConsentBorrowerStatus1 { get => _eSignConsentBorrowerStatus1; set => SetField(ref _eSignConsentBorrowerStatus1, value); }
+        public string? eSignConsentBorrowerStatus1 { get => _eSignConsentBorrowerStatus1; set => SetField(ref _eSignConsentBorrowerStatus1, value); }
 
         /// <summary>
         /// Borrower 2 eConsent Status [3992]
         /// </summary>
-        public string eSignConsentBorrowerStatus2 { get => _eSignConsentBorrowerStatus2; set => SetField(ref _eSignConsentBorrowerStatus2, value); }
+        public string? eSignConsentBorrowerStatus2 { get => _eSignConsentBorrowerStatus2; set => SetField(ref _eSignConsentBorrowerStatus2, value); }
 
         /// <summary>
         /// Borrower 3 eConsent Status [4023]
         /// </summary>
-        public string eSignConsentBorrowerStatus3 { get => _eSignConsentBorrowerStatus3; set => SetField(ref _eSignConsentBorrowerStatus3, value); }
+        public string? eSignConsentBorrowerStatus3 { get => _eSignConsentBorrowerStatus3; set => SetField(ref _eSignConsentBorrowerStatus3, value); }
 
         /// <summary>
         /// Borrower 4 eConsent Status [4031]
         /// </summary>
-        public string eSignConsentBorrowerStatus4 { get => _eSignConsentBorrowerStatus4; set => SetField(ref _eSignConsentBorrowerStatus4, value); }
+        public string? eSignConsentBorrowerStatus4 { get => _eSignConsentBorrowerStatus4; set => SetField(ref _eSignConsentBorrowerStatus4, value); }
 
         /// <summary>
         /// Borrower 5 eConsent Status [4039]
         /// </summary>
-        public string eSignConsentBorrowerStatus5 { get => _eSignConsentBorrowerStatus5; set => SetField(ref _eSignConsentBorrowerStatus5, value); }
+        public string? eSignConsentBorrowerStatus5 { get => _eSignConsentBorrowerStatus5; set => SetField(ref _eSignConsentBorrowerStatus5, value); }
 
         /// <summary>
         /// Borrower 6 eConsent Status [4047]
         /// </summary>
-        public string eSignConsentBorrowerStatus6 { get => _eSignConsentBorrowerStatus6; set => SetField(ref _eSignConsentBorrowerStatus6, value); }
+        public string? eSignConsentBorrowerStatus6 { get => _eSignConsentBorrowerStatus6; set => SetField(ref _eSignConsentBorrowerStatus6, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Date Accepted Pair 1 [3989]
@@ -679,92 +680,92 @@ namespace EncompassRest.Loans
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 1 [3990]
         /// </summary>
-        public string eSignConsentCoBorrowerIPAddress1 { get => _eSignConsentCoBorrowerIPAddress1; set => SetField(ref _eSignConsentCoBorrowerIPAddress1, value); }
+        public string? eSignConsentCoBorrowerIPAddress1 { get => _eSignConsentCoBorrowerIPAddress1; set => SetField(ref _eSignConsentCoBorrowerIPAddress1, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 2 [3998]
         /// </summary>
-        public string eSignConsentCoBorrowerIPAddress2 { get => _eSignConsentCoBorrowerIPAddress2; set => SetField(ref _eSignConsentCoBorrowerIPAddress2, value); }
+        public string? eSignConsentCoBorrowerIPAddress2 { get => _eSignConsentCoBorrowerIPAddress2; set => SetField(ref _eSignConsentCoBorrowerIPAddress2, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 3 [4029]
         /// </summary>
-        public string eSignConsentCoBorrowerIPAddress3 { get => _eSignConsentCoBorrowerIPAddress3; set => SetField(ref _eSignConsentCoBorrowerIPAddress3, value); }
+        public string? eSignConsentCoBorrowerIPAddress3 { get => _eSignConsentCoBorrowerIPAddress3; set => SetField(ref _eSignConsentCoBorrowerIPAddress3, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 4 [4037]
         /// </summary>
-        public string eSignConsentCoBorrowerIPAddress4 { get => _eSignConsentCoBorrowerIPAddress4; set => SetField(ref _eSignConsentCoBorrowerIPAddress4, value); }
+        public string? eSignConsentCoBorrowerIPAddress4 { get => _eSignConsentCoBorrowerIPAddress4; set => SetField(ref _eSignConsentCoBorrowerIPAddress4, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 5 [4045]
         /// </summary>
-        public string eSignConsentCoBorrowerIPAddress5 { get => _eSignConsentCoBorrowerIPAddress5; set => SetField(ref _eSignConsentCoBorrowerIPAddress5, value); }
+        public string? eSignConsentCoBorrowerIPAddress5 { get => _eSignConsentCoBorrowerIPAddress5; set => SetField(ref _eSignConsentCoBorrowerIPAddress5, value); }
 
         /// <summary>
         /// eConsent Co-Borrower IP Address Pair 6 [4053]
         /// </summary>
-        public string eSignConsentCoBorrowerIPAddress6 { get => _eSignConsentCoBorrowerIPAddress6; set => SetField(ref _eSignConsentCoBorrowerIPAddress6, value); }
+        public string? eSignConsentCoBorrowerIPAddress6 { get => _eSignConsentCoBorrowerIPAddress6; set => SetField(ref _eSignConsentCoBorrowerIPAddress6, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 1 [3991]
         /// </summary>
-        public string eSignConsentCoBorrowerSource1 { get => _eSignConsentCoBorrowerSource1; set => SetField(ref _eSignConsentCoBorrowerSource1, value); }
+        public string? eSignConsentCoBorrowerSource1 { get => _eSignConsentCoBorrowerSource1; set => SetField(ref _eSignConsentCoBorrowerSource1, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 2 [3999]
         /// </summary>
-        public string eSignConsentCoBorrowerSource2 { get => _eSignConsentCoBorrowerSource2; set => SetField(ref _eSignConsentCoBorrowerSource2, value); }
+        public string? eSignConsentCoBorrowerSource2 { get => _eSignConsentCoBorrowerSource2; set => SetField(ref _eSignConsentCoBorrowerSource2, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 3 [4030]
         /// </summary>
-        public string eSignConsentCoBorrowerSource3 { get => _eSignConsentCoBorrowerSource3; set => SetField(ref _eSignConsentCoBorrowerSource3, value); }
+        public string? eSignConsentCoBorrowerSource3 { get => _eSignConsentCoBorrowerSource3; set => SetField(ref _eSignConsentCoBorrowerSource3, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 4 [4038]
         /// </summary>
-        public string eSignConsentCoBorrowerSource4 { get => _eSignConsentCoBorrowerSource4; set => SetField(ref _eSignConsentCoBorrowerSource4, value); }
+        public string? eSignConsentCoBorrowerSource4 { get => _eSignConsentCoBorrowerSource4; set => SetField(ref _eSignConsentCoBorrowerSource4, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 5 [4046]
         /// </summary>
-        public string eSignConsentCoBorrowerSource5 { get => _eSignConsentCoBorrowerSource5; set => SetField(ref _eSignConsentCoBorrowerSource5, value); }
+        public string? eSignConsentCoBorrowerSource5 { get => _eSignConsentCoBorrowerSource5; set => SetField(ref _eSignConsentCoBorrowerSource5, value); }
 
         /// <summary>
         /// eConsent Co-Borrower Source Pair 6 [4054]
         /// </summary>
-        public string eSignConsentCoBorrowerSource6 { get => _eSignConsentCoBorrowerSource6; set => SetField(ref _eSignConsentCoBorrowerSource6, value); }
+        public string? eSignConsentCoBorrowerSource6 { get => _eSignConsentCoBorrowerSource6; set => SetField(ref _eSignConsentCoBorrowerSource6, value); }
 
         /// <summary>
         /// Co-Borrower 1 eConsent Status [3988]
         /// </summary>
-        public string eSignConsentCoBorrowerStatus1 { get => _eSignConsentCoBorrowerStatus1; set => SetField(ref _eSignConsentCoBorrowerStatus1, value); }
+        public string? eSignConsentCoBorrowerStatus1 { get => _eSignConsentCoBorrowerStatus1; set => SetField(ref _eSignConsentCoBorrowerStatus1, value); }
 
         /// <summary>
         /// Co-Borrower 2 eConsent Status [3996]
         /// </summary>
-        public string eSignConsentCoBorrowerStatus2 { get => _eSignConsentCoBorrowerStatus2; set => SetField(ref _eSignConsentCoBorrowerStatus2, value); }
+        public string? eSignConsentCoBorrowerStatus2 { get => _eSignConsentCoBorrowerStatus2; set => SetField(ref _eSignConsentCoBorrowerStatus2, value); }
 
         /// <summary>
         /// Co-Borrower 3 eConsent Status [4027]
         /// </summary>
-        public string eSignConsentCoBorrowerStatus3 { get => _eSignConsentCoBorrowerStatus3; set => SetField(ref _eSignConsentCoBorrowerStatus3, value); }
+        public string? eSignConsentCoBorrowerStatus3 { get => _eSignConsentCoBorrowerStatus3; set => SetField(ref _eSignConsentCoBorrowerStatus3, value); }
 
         /// <summary>
         /// Co-Borrower 4 eConsent Status [4035]
         /// </summary>
-        public string eSignConsentCoBorrowerStatus4 { get => _eSignConsentCoBorrowerStatus4; set => SetField(ref _eSignConsentCoBorrowerStatus4, value); }
+        public string? eSignConsentCoBorrowerStatus4 { get => _eSignConsentCoBorrowerStatus4; set => SetField(ref _eSignConsentCoBorrowerStatus4, value); }
 
         /// <summary>
         /// Co-Borrower 5 eConsent Status [4043]
         /// </summary>
-        public string eSignConsentCoBorrowerStatus5 { get => _eSignConsentCoBorrowerStatus5; set => SetField(ref _eSignConsentCoBorrowerStatus5, value); }
+        public string? eSignConsentCoBorrowerStatus5 { get => _eSignConsentCoBorrowerStatus5; set => SetField(ref _eSignConsentCoBorrowerStatus5, value); }
 
         /// <summary>
         /// Co-Borrower 6 eConsent Status [4051]
         /// </summary>
-        public string eSignConsentCoBorrowerStatus6 { get => _eSignConsentCoBorrowerStatus6; set => SetField(ref _eSignConsentCoBorrowerStatus6, value); }
+        public string? eSignConsentCoBorrowerStatus6 { get => _eSignConsentCoBorrowerStatus6; set => SetField(ref _eSignConsentCoBorrowerStatus6, value); }
 
         /// <summary>
         /// eConsent Date [3983]
@@ -776,7 +777,7 @@ namespace EncompassRest.Loans
         /// Flag to know whether loan is external eConsent [4499]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string ExternaleConsent { get => _externaleConsent; set => SetField(ref _externaleConsent, value); }
+        public string? ExternaleConsent { get => _externaleConsent; set => SetField(ref _externaleConsent, value); }
 
         /// <summary>
         /// Trans Details Amort Type GPM Extra Pymt [312]
@@ -876,13 +877,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GFE Changed Circumstance [3169]
         /// </summary>
-        public string GfeChangedCircumstanceItem { get => _gfeChangedCircumstanceItem; set => SetField(ref _gfeChangedCircumstanceItem, value); }
+        public string? GfeChangedCircumstanceItem { get => _gfeChangedCircumstanceItem; set => SetField(ref _gfeChangedCircumstanceItem, value); }
 
         /// <summary>
         /// GFE Changed Circumstance Code [3627]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string GFEChangedCirsumstanceItemCode { get => _gFEChangedCirsumstanceItemCode; set => SetField(ref _gFEChangedCirsumstanceItemCode, value); }
+        public string? GFEChangedCirsumstanceItemCode { get => _gFEChangedCirsumstanceItemCode; set => SetField(ref _gFEChangedCirsumstanceItemCode, value); }
 
         /// <summary>
         /// GFE Date for Printed Form [3170]
@@ -898,7 +899,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// No. of Days GFE Valid After Received [3162]
         /// </summary>
-        public string GfeExpirationPeriod { get => _gfeExpirationPeriod; set => SetField(ref _gfeExpirationPeriod, value); }
+        public string? GfeExpirationPeriod { get => _gfeExpirationPeriod; set => SetField(ref _gfeExpirationPeriod, value); }
 
         /// <summary>
         /// GFE Redisclosure Required Due to Rate Lock [3201]
@@ -941,7 +942,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD-1 Tolerance Resolution Comments [3172]
         /// </summary>
-        public string HudToleranceResolutionComments { get => _hudToleranceResolutionComments; set => SetField(ref _hudToleranceResolutionComments, value); }
+        public string? HudToleranceResolutionComments { get => _hudToleranceResolutionComments; set => SetField(ref _hudToleranceResolutionComments, value); }
 
         /// <summary>
         /// HUD-1 Tolerance Resolution Date [3171]
@@ -951,12 +952,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD-1 Tolerance Resolution User [3173]
         /// </summary>
-        public string HudToleranceResolvedBy { get => _hudToleranceResolvedBy; set => SetField(ref _hudToleranceResolvedBy, value); }
+        public string? HudToleranceResolvedBy { get => _hudToleranceResolvedBy; set => SetField(ref _hudToleranceResolvedBy, value); }
 
         /// <summary>
         /// RegulationZ Id
         /// </summary>
-        public string Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
         /// Insurance Premium If you purchase [1708]
@@ -1060,12 +1061,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Required [1702]
         /// </summary>
-        public string InsuranceRequiredDescription { get => _insuranceRequiredDescription; set => SetField(ref _insuranceRequiredDescription, value); }
+        public string? InsuranceRequiredDescription { get => _insuranceRequiredDescription; set => SetField(ref _insuranceRequiredDescription, value); }
 
         /// <summary>
         /// Trans Details Security Interest [1603]
         /// </summary>
-        public string InterestInNameOf { get => _interestInNameOf; set => SetField(ref _interestInNameOf, value); }
+        public string? InterestInNameOf { get => _interestInNameOf; set => SetField(ref _interestInNameOf, value); }
 
         /// <summary>
         /// Interest Only Indicator [Terms.IntrOnly]
@@ -1098,7 +1099,7 @@ namespace EncompassRest.Loans
         /// GFE Last Disclosed By [3139]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string LastDisclosedBy { get => _lastDisclosedBy; set => SetField(ref _lastDisclosedBy, value); }
+        public string? LastDisclosedBy { get => _lastDisclosedBy; set => SetField(ref _lastDisclosedBy, value); }
 
         /// <summary>
         /// GFE Last Disclosed Date [3137]
@@ -1121,7 +1122,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Late Charge Additional Detail [1854]
         /// </summary>
-        public string LateChargeComments { get => _lateChargeComments; set => SetField(ref _lateChargeComments, value); }
+        public string? LateChargeComments { get => _lateChargeComments; set => SetField(ref _lateChargeComments, value); }
 
         /// <summary>
         /// Trans Details Late Charge Days [672]
@@ -1148,7 +1149,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LE Intent To Proceed Comment [3976]
         /// </summary>
-        public string LEIntentToProceedComment { get => _lEIntentToProceedComment; set => SetField(ref _lEIntentToProceedComment, value); }
+        public string? LEIntentToProceedComment { get => _lEIntentToProceedComment; set => SetField(ref _lEIntentToProceedComment, value); }
 
         /// <summary>
         /// Lender Paid Mortgage Insurance [3533]
@@ -1164,7 +1165,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LE Intent To Proceed Received By [3973]
         /// </summary>
-        public string LEReceivedBy { get => _lEReceivedBy; set => SetField(ref _lEReceivedBy, value); }
+        public string? LEReceivedBy { get => _lEReceivedBy; set => SetField(ref _lEReceivedBy, value); }
 
         /// <summary>
         /// LE Intent To Proceed Received Method [3974]
@@ -1174,7 +1175,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LE Intent To Proceed Received Method Other [3975]
         /// </summary>
-        public string LEReceivedMethodOther { get => _lEReceivedMethodOther; set => SetField(ref _lEReceivedMethodOther, value); }
+        public string? LEReceivedMethodOther { get => _lEReceivedMethodOther; set => SetField(ref _lEReceivedMethodOther, value); }
 
         /// <summary>
         /// LE Intent To Proceed Sent On Date [3972]
@@ -1219,7 +1220,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Expenses Calc MIP/PMI Midpoint Pymt Cancel [1753]
         /// </summary>
-        public string MidpointCancellation { get => _midpointCancellation; set => SetField(ref _midpointCancellation, value); }
+        public string? MidpointCancellation { get => _midpointCancellation; set => SetField(ref _midpointCancellation, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Pymt 1 [1766]
@@ -1275,7 +1276,7 @@ namespace EncompassRest.Loans
         /// Insurance Calculation Borr MI Termination Date [118]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string MiScheduledTerminationDate { get => _miScheduledTerminationDate; set => SetField(ref _miScheduledTerminationDate, value); }
+        public string? MiScheduledTerminationDate { get => _miScheduledTerminationDate; set => SetField(ref _miScheduledTerminationDate, value); }
 
         /// <summary>
         /// Insurance MMI [723]
@@ -1303,12 +1304,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info Prepared By Name [2026]
         /// </summary>
-        public string NamePreparedBy { get => _namePreparedBy; set => SetField(ref _namePreparedBy, value); }
+        public string? NamePreparedBy { get => _namePreparedBy; set => SetField(ref _namePreparedBy, value); }
 
         /// <summary>
         /// Construction Loan New Construction Indicator [2645]
         /// </summary>
-        public string NewConstructionIndicator { get => _newConstructionIndicator; set => SetField(ref _newConstructionIndicator, value); }
+        public string? NewConstructionIndicator { get => _newConstructionIndicator; set => SetField(ref _newConstructionIndicator, value); }
 
         /// <summary>
         /// REGZ Total # Pymts [1701]
@@ -1336,7 +1337,7 @@ namespace EncompassRest.Loans
         /// REGZ Payment Frequency Type Description [3291]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string PaymentFrequencyType { get => _paymentFrequencyType; set => SetField(ref _paymentFrequencyType, value); }
+        public string? PaymentFrequencyType { get => _paymentFrequencyType; set => SetField(ref _paymentFrequencyType, value); }
 
         /// <summary>
         /// GPM Payment Increase [Terms.GPMPmtIncr]
@@ -1348,7 +1349,7 @@ namespace EncompassRest.Loans
         /// Loan Info Prepared By Phone [2027]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-        public string PhonePreparedBy { get => _phonePreparedBy; set => SetField(ref _phonePreparedBy, value); }
+        public string? PhonePreparedBy { get => _phonePreparedBy; set => SetField(ref _phonePreparedBy, value); }
 
         /// <summary>
         /// Insurance PMI [8]
@@ -1422,18 +1423,20 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegulationZ RegulationZInterestRatePeriods
         /// </summary>
+        [AllowNull]
         public IList<RegulationZInterestRatePeriod> RegulationZInterestRatePeriods { get => GetField(ref _regulationZInterestRatePeriods); set => SetField(ref _regulationZInterestRatePeriods, value); }
 
         /// <summary>
         /// RegulationZ RegulationZPayments
         /// </summary>
+        [AllowNull]
         public IList<RegulationZPayment> RegulationZPayments { get => GetField(ref _regulationZPayments); set => SetField(ref _regulationZPayments, value); }
 
         /// <summary>
         /// REGZ Summary Table Type Used in REGZ-TIL Output [REGZ_TABLETYPE]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string RegzTableType { get => _regzTableType; set => SetField(ref _regzTableType, value); }
+        public string? RegzTableType { get => _regzTableType; set => SetField(ref _regzTableType, value); }
 
         /// <summary>
         /// REGZ Pymt Sched Required Deposit [664]
@@ -1497,7 +1500,7 @@ namespace EncompassRest.Loans
         /// TIL Disclosed Comments [3159]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string TilDisclosedComments { get => _tilDisclosedComments; set => SetField(ref _tilDisclosedComments, value); }
+        public string? TilDisclosedComments { get => _tilDisclosedComments; set => SetField(ref _tilDisclosedComments, value); }
 
         /// <summary>
         /// TIL Disclosure Method Drpdwn [3157]
@@ -1514,7 +1517,7 @@ namespace EncompassRest.Loans
         /// TIL Last Disclosed By [3158]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string TilLastDisclosedBy { get => _tilLastDisclosedBy; set => SetField(ref _tilLastDisclosedBy, value); }
+        public string? TilLastDisclosedBy { get => _tilLastDisclosedBy; set => SetField(ref _tilLastDisclosedBy, value); }
 
         /// <summary>
         ///  Last CD Sent Date [3156]
@@ -1595,7 +1598,7 @@ namespace EncompassRest.Loans
         /// Prequal Max Pymt Yr [1957]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string YearOfMaximumPayment { get => _yearOfMaximumPayment; set => SetField(ref _yearOfMaximumPayment, value); }
+        public string? YearOfMaximumPayment { get => _yearOfMaximumPayment; set => SetField(ref _yearOfMaximumPayment, value); }
 
         /// <summary>
         /// Trans Details Amort Type GPM Yrs [1266]
