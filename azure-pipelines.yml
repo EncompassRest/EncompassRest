@@ -12,7 +12,7 @@ pool:
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  buildConfiguration: 'CI'
 
 steps:
 - task: DotNetCoreInstaller@0
@@ -43,4 +43,5 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    testFilterCriteria: 'TestCategory != SkipWhenLiveUnitTesting'
     vsTestVersion: '16.0'
