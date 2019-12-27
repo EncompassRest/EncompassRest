@@ -16,6 +16,9 @@ namespace EncompassRest
     /// The client object to make calls to the Encompass Apis. Use the static factory Create* methods to create a client object.
     /// </summary>
     public interface IEncompassRestClient : IDisposable
+#if IASYNC_DISPOSABLE
+        , IAsyncDisposable
+#endif
     {
         /// <summary>
         /// The access token and related Apis.
@@ -539,6 +542,18 @@ namespace EncompassRest
             CommonCache = parameters.CommonCache ?? (parameters.CommonCache = new CommonCache());
             UndefinedCustomFieldHandling = parameters.UndefinedCustomFieldHandling;
         }
+
+#if IASYNC_DISPOSABLE
+        /// <summary>
+        /// Revokes the current access token and disposes of the client object asynchronously.
+        /// </summary>
+        /// <returns></returns>
+        public async ValueTask DisposeAsync()
+        {
+            await AccessToken.RevokeAsync().ConfigureAwait(false);
+            Dispose();
+        }
+#endif
 
         /// <summary>
         /// Disposes of the client object.
