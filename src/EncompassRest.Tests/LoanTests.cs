@@ -357,6 +357,34 @@ namespace EncompassRest.Tests
 
         [TestMethod]
         [ApiTest]
+        public async Task Loan_GetMetadata()
+        {
+            var client = await GetTestClientAsync();
+            if (client.AccessToken.Token == "Token")
+            {
+                var loan = new Loan(client);
+                var loanId = await client.Loans.CreateLoanAsync(loan);
+                try
+                {
+                    var metaData = await loan.LoanApis.GetMetadataAsync();
+                    AssertNoExtensionData(metaData, "LoanMetaData", loanId, true);
+                }
+                finally
+                {
+                    try
+                    {
+                        await Task.Delay(5000);
+                        await client.Loans.DeleteLoanAsync(loanId);
+                    }
+                    catch
+                    {
+                    }
+                }
+            }
+        }
+
+        [TestMethod]
+        [ApiTest]
         public async Task Loan_CreateInLoanFolder()
         {
             var client = await GetTestClientAsync();
