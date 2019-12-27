@@ -57,7 +57,7 @@ namespace EncompassRest.Tests
             {
                 await client.Webhook.DeleteSubscriptionAsync(existingSubscription.SubscriptionId);
             }
-            var subscription = new WebhookSubscription(endpoint, WebhookResourceType.Loan, new[] { WebhookResourceEvent.Change });
+            var subscription = new WebhookSubscription(endpoint, WebhookResourceType.Loan, new[] { WebhookResourceEvent.Change, WebhookResourceEvent.Move });
             subscription.Filters.Attributes.Add("/milestoneLogs/*/doneIndicator");
             var subscriptionId = await client.Webhook.CreateSubscriptionAsync(subscription);
             Assert.IsFalse(string.IsNullOrEmpty(subscriptionId));

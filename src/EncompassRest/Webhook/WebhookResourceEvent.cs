@@ -26,6 +26,11 @@ namespace EncompassRest.Webhook
         /// change
         /// </summary>
         [EnumMember(Value = "change")]
-        Change = 3
+        Change = 3,
+        /// <summary>
+        /// move
+        /// </summary>
+        [EnumMember(Value = "move")]
+        Move = 4
     }
 }
