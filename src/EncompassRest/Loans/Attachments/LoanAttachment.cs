@@ -177,13 +177,14 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNullOrEmpty(AttachmentId, nameof(AttachmentId));
 
+            var attachments = GetAttachments();
             var mediaUrl = MediaUrl;
             if (string.IsNullOrEmpty(mediaUrl))
             {
-                mediaUrl = (await GetAttachments().GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
+                mediaUrl = (await attachments.GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
                 MediaUrl = mediaUrl;
             }
-            return await GetAttachments().DownloadAttachmentFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
+            return await attachments.DownloadAttachmentFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -195,13 +196,14 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNullOrEmpty(AttachmentId, nameof(AttachmentId));
 
+            var attachments = GetAttachments();
             var mediaUrl = MediaUrl;
             if (string.IsNullOrEmpty(mediaUrl))
             {
-                mediaUrl = (await GetAttachments().GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
+                mediaUrl = (await attachments.GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
                 MediaUrl = mediaUrl;
             }
-            return await GetAttachments().DownloadAttachmentStreamFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
+            return await attachments.DownloadAttachmentStreamFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
         }
 
         private ILoanAttachments GetAttachments() => Attachments ?? throw new InvalidOperationException("LoanAttachment object must be initialized to use Attachments");
