@@ -3,7 +3,6 @@ using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Loans.Attachments;
-using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests

@@ -16,8 +16,6 @@ namespace EncompassRest.Loans.Attachments
     /// </summary>
     public sealed class LoanAttachment : DirtyExtensibleObject, IIdentifiable
     {
-        private ILoanAttachments? _attachments;
-
         private NeverSerializeValue<string?>? _attachmentId;
         private DirtyValue<DateTime?>? _dateCreated;
         private DirtyValue<string?>? _createdBy;
@@ -120,7 +118,7 @@ namespace EncompassRest.Loans.Attachments
         /// The <see cref="ILoanAttachments"/> associated with this object.
         /// </summary>
         [JsonIgnore]
-        public ILoanAttachments Attachments => _attachments ?? throw new InvalidOperationException("LoanAttachment object must be initialized to use Attachments");
+        public ILoanAttachments? Attachments { get; private set; }
 
         /// <summary>
         /// Loan attachment creation constructor.
@@ -167,10 +165,7 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNull(attachments, nameof(attachments));
 
-            if (!ReferenceEquals(Attachments, attachments))
-            {
-                _attachments = attachments;
-            }
+            Attachments = attachments;
         }
 
         /// <summary>
@@ -182,13 +177,14 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNullOrEmpty(AttachmentId, nameof(AttachmentId));
 
+            var attachments = GetAttachments();
             var mediaUrl = MediaUrl;
             if (string.IsNullOrEmpty(mediaUrl))
             {
-                mediaUrl = (await Attachments.GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
+                mediaUrl = (await attachments.GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
                 MediaUrl = mediaUrl;
             }
-            return await Attachments.DownloadAttachmentFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
+            return await attachments.DownloadAttachmentFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -200,13 +196,16 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNullOrEmpty(AttachmentId, nameof(AttachmentId));
 
+            var attachments = GetAttachments();
             var mediaUrl = MediaUrl;
             if (string.IsNullOrEmpty(mediaUrl))
             {
-                mediaUrl = (await Attachments.GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
+                mediaUrl = (await attachments.GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
                 MediaUrl = mediaUrl;
             }
-            return await Attachments.DownloadAttachmentStreamFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
+            return await attachments.DownloadAttachmentStreamFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
         }
+
+        private ILoanAttachments GetAttachments() => Attachments ?? throw new InvalidOperationException("LoanAttachment object must be initialized to download the attachment contents");
     }
 }
