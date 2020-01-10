@@ -206,6 +206,6 @@ namespace EncompassRest.Loans.Attachments
             return await attachments.DownloadAttachmentStreamFromMediaUrlAsync(mediaUrl!, cancellationToken).ConfigureAwait(false);
         }
 
-        private ILoanAttachments GetAttachments() => Attachments ?? throw new InvalidOperationException("LoanAttachment object must be initialized to use Attachments");
+        private ILoanAttachments GetAttachments() => Attachments ?? throw new InvalidOperationException("LoanAttachment object must be initialized to download the attachment contents");
     }
 }
