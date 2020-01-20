@@ -146,7 +146,7 @@ namespace EncompassRest.Loans
             }
             set
             {
-                if (ReadOnly)
+                if (!Loan.Fields.AllowWritesToReadOnlyFieldsLocally && ReadOnly)
                 {
                     throw new InvalidOperationException($"cannot set value of field '{FieldId}' as it's read-only");
                 }

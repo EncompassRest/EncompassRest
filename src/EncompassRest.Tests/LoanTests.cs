@@ -2116,5 +2116,28 @@ TPI1.00 01                              N
                 }
             }
         }
+
+        [TestMethod]
+        public void Loan_SetReadOnlyFields()
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            var loan = new Loan();
+#pragma warning restore CS0618 // Type or member is obsolete
+            Assert.IsFalse(loan.Fields.AllowWritesToReadOnlyFieldsLocally);
+            var standardField = loan.Fields["2"];
+            Assert.IsNull(standardField.ToDecimal());
+            var virtualField = loan.Fields["Log.MS.Date.Approval"];
+            Assert.IsNull(virtualField.ToDateTime());
+            Assert.ThrowsException<InvalidOperationException>(() => standardField.Value = 250000M);
+            Assert.IsNull(standardField.ToDecimal());
+            Assert.ThrowsException<InvalidOperationException>(() => virtualField.Value = DateTime.Today);
+            Assert.IsNull(virtualField.ToDateTime());
+            loan.Fields.AllowWritesToReadOnlyFieldsLocally = true;
+            Assert.IsTrue(loan.Fields.AllowWritesToReadOnlyFieldsLocally);
+            standardField.Value = 250000M;
+            Assert.AreEqual(250000M, standardField.ToDecimal());
+            virtualField.Value = DateTime.Today;
+            Assert.AreEqual(DateTime.Today, virtualField.ToDateTime());
+        }
     }
 }

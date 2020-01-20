@@ -7,7 +7,14 @@ namespace EncompassRest.Loans
         public override object? Value
         {
             get => Loan.VirtualFields.TryGetValue(FieldId, out var value) ? value : null;
-            set => throw new InvalidOperationException($"cannot set value of field '{FieldId}' as it's virtual");
+            set
+            {
+                if (!Loan.Fields.AllowWritesToReadOnlyFieldsLocally)
+                {
+                    throw new InvalidOperationException($"cannot set value of field '{FieldId}' as it's virtual");
+                }
+                Loan.VirtualFields[FieldId] = value?.ToString();
+            }
         }
 
         public override bool Locked
