@@ -12,6 +12,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _contact;
         private DirtyValue<bool?>? _dOT;
         private DirtyValue<bool?>? _email;
+        private DirtyValue<bool?>? _executedNote;
         private DirtyValue<bool?>? _fTP;
         private DirtyValue<string?>? _id;
         private DirtyValue<string?>? _logBy;
@@ -44,6 +45,11 @@ namespace EncompassRest.Loans
         /// DocumentTrackingLog Email
         /// </summary>
         public bool? Email { get => _email; set => SetField(ref _email, value); }
+
+        /// <summary>
+        /// DocumentTrackingLog ExecutedNote
+        /// </summary>
+        public bool? ExecutedNote { get => _executedNote; set => SetField(ref _executedNote, value); }
 
         /// <summary>
         /// DocumentTrackingLog FTP

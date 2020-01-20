@@ -97,6 +97,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<HelocPeriodicRateIndicator>>? _helocPeriodicRateIndicator;
         private DirtyValue<string?>? _helocPeriodTemplateName;
         private DirtyValue<decimal?>? _helocPhotocopyFee;
+        private DirtyValue<bool?>? _helocPropertyInsuranceIndicator;
         private DirtyValue<StringEnumValue<HelocBalance>>? _helocQualifyingBalance;
         private DirtyValue<int?>? _helocQualifyingTerm;
         private DirtyValue<StringEnumValue<HelocRate>>? _helocRate;
@@ -364,7 +365,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Project Classification [1012]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"A_IIICondominium\":\"Streamlined Review\",\"B_IICondominium\":\"Established Project\",\"C_ICondominium\":\"New Project\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"A_IIICondominium\":\"Freddie Mac: Streamlined Review\",\"B_IICondominium\":\"Freddie Mac: Established Project\",\"C_ICondominium\":\"Freddie Mac: New Project\",\"DetachedProject\":\"Freddie Mac: Detached Project\",\"2To4UnitProject\":\"Freddie Mac: 2-To-4-Unit Project\",\"ReciprocalReview\":\"Freddie Mac: Reciprocal Review\",\"E_PUD\":\"Fannie Mae: E Established PUD Project\",\"F_PUD\":\"Fannie Mae: F New PUD Project\",\"P_LimitedReviewNew\":\"Fannie Mae: P Limited Review - New Condo Project\",\"Q_LimitedReviewEst\":\"Fannie Mae: Q Limited Review - Established Condo Project\",\"R_ExpeditedNew\":\"Fannie Mae: R Full Review - New Condo Project\",\"S_ExpeditedEst\":\"Fannie Mae: S Full Review - Established Condo Project\",\"T_FannieMaeReview\":\"Fannie Mae: T Fannie Mae Review through PERS - Condo Project\",\"U_FHAapproved\":\"Fannie Mae: U FHA-approved Condo Project\",\"V_NoReviewSiteCondo\":\"Fannie Mae: V Condo Project Review Waived\",\"OneCooperative\":\"Other: One Cooperative\",\"TwoCooperative\":\"Other: Two Cooperative\",\"TCooperative\":\"Other: T Cooperative\",\"T_PUD\":\"Other: T/PUD\",\"III PUD\":\"Other: PUD\",\"V_RefiPlus\":\"Other: V/Refi Plus\",\"Approved FHA/VA Condominium Project Or Spot Loan\":\"Other: Approved FHA/VA Condominium Project Or Spot Loan\",\"G_NotInAProjectOrDevelopment\":\"Other: G/Not in a Project or Development\"}")]
         public StringEnumValue<ProjectType> GseProjectClassificationType { get => _gseProjectClassificationType; set => SetField(ref _gseProjectClassificationType, value); }
 
         /// <summary>
@@ -698,6 +699,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HelocPhotocopyFee { get => _helocPhotocopyFee; set => SetField(ref _helocPhotocopyFee, value); }
+
+        /// <summary>
+        /// HELOC Heloc Property Insurance Indicator [4661]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Borrower can obtain property insurance from or through Lender\"}")]
+        public bool? HelocPropertyInsuranceIndicator { get => _helocPropertyInsuranceIndicator; set => SetField(ref _helocPropertyInsuranceIndicator, value); }
 
         /// <summary>
         /// HELOC Qualifying Balance [4473]

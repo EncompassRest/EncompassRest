@@ -43,6 +43,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _id;
         private DirtyValue<bool?>? _isExternalIndicator;
         private DirtyValue<bool?>? _isInternalIndicator;
+        private DirtyValue<bool?>? _isMarkedRemoved;
         private DirtyValue<bool?>? _isPastDue;
         private DirtyValue<bool?>? _isSystemSpecificIndicator;
         private DirtyValue<int?>? _logRecordIndex;
@@ -238,6 +239,11 @@ namespace EncompassRest.Loans
         /// UnderwritingConditionLog IsInternalIndicator
         /// </summary>
         public bool? IsInternalIndicator { get => _isInternalIndicator; set => SetField(ref _isInternalIndicator, value); }
+
+        /// <summary>
+        /// UnderwritingConditionLog IsMarkedRemoved
+        /// </summary>
+        public bool? IsMarkedRemoved { get => _isMarkedRemoved; set => SetField(ref _isMarkedRemoved, value); }
 
         /// <summary>
         /// UnderwritingConditionLog IsPastDue

@@ -450,6 +450,11 @@
     "Description": "Depository Print User Name as Title #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].SourceOfFunds",
+    "FieldId": "URLARAL{0:00}33",
+    "Description": "Source of Funds #{0}"
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].Title",
     "FieldId": "URLARAL{0:00}11",
     "Description": "Depository From Title #{0}"
@@ -2255,6 +2260,11 @@
     "Description": "Mortgage Property No Link to Doc Tracking #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].NumberOfUnits",
+    "FieldId": "FM{0:00}54",
+    "Description": "Number of Units #{0}"
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].Owner",
     "FieldId": "FM{0:00}46",
     "Description": "Mortgage Property Owner #{0}"
@@ -2730,6 +2740,16 @@
     "Description": "IRS4506 Record - Current Addr #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].AuthorizedSignor",
+    "FieldId": "AR{0:00}65",
+    "Description": "IRS4506 Record - Tax Form for Borr/Co-Borr/Both #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].AuthorizedSignorSpouse",
+    "FieldId": "AR{0:00}66",
+    "Description": "IRS4506 Record - Tax Form for Borr/Co-Borr/Both #{0}"
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'false')][{0}].City",
     "FieldId": "AR{0:00}36",
     "Description": "IRS4506 Record - Current City #{0}"
@@ -2963,6 +2983,16 @@
     "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].Address",
     "FieldId": "IR{0:00}35",
     "Description": "IRS4506 T Record - Current Addr #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].AuthorizedSignor",
+    "FieldId": "IR{0:00}65",
+    "Description": "IRS4506 T Record - Tax Form for Borr/Co-Borr/Both #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].AuthorizedSignorSpouse",
+    "FieldId": "IR{0:00}66",
+    "Description": "IRS4506 T Record - Tax Form for Borr/Co-Borr/Both #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Tax4506s[(HistoryIndicator == 'true' && Tax4506TIndicator == 'true')][{0}].City",

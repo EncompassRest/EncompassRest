@@ -45,6 +45,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _printAttachmentIndicator;
         private DirtyValue<bool?>? _printUserJobTitleIndicator;
         private DirtyValue<bool?>? _printUserNameIndicator;
+        private DirtyValue<StringEnumValue<SourceOfFunds>>? _sourceOfFunds;
         private DirtyValue<string?>? _title;
         private DirtyValue<string?>? _titleFax;
         private DirtyValue<string?>? _titlePhone;
@@ -243,6 +244,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name as title\"}")]
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
+
+        /// <summary>
+        /// Source of Funds [URLARALNN33]
+        /// </summary>
+        public StringEnumValue<SourceOfFunds> SourceOfFunds { get => _sourceOfFunds; set => SetField(ref _sourceOfFunds, value); }
 
         /// <summary>
         /// Depository From Title [URLARALNN11]

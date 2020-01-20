@@ -25,6 +25,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _maintenanceExpenseAmount;
         private DirtyValue<decimal?>? _marketValueAmount;
         private DirtyValue<bool?>? _noLinkToDocTrackIndicator;
+        private DirtyValue<int?>? _numberOfUnits;
         private DirtyValue<StringEnumValue<Owner>>? _owner;
         private DirtyValue<decimal?>? _participationPercentage;
         private DirtyValue<decimal?>? _percentageofRental;
@@ -130,6 +131,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => SetField(ref _noLinkToDocTrackIndicator, value); }
+
+        /// <summary>
+        /// Number of Units [FMNN54]
+        /// </summary>
+        public int? NumberOfUnits { get => _numberOfUnits; set => SetField(ref _numberOfUnits, value); }
 
         /// <summary>
         /// Mortgage Property Owner [FMNN46]

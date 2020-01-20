@@ -31,6 +31,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _fulfilledBy;
         private DirtyValue<string?>? _guid;
         private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isMarkedRemoved;
         private DirtyValue<bool?>? _isPastDue;
         private DirtyValue<bool?>? _isSystemSpecificIndicator;
         private DirtyValue<int?>? _logRecordIndex;
@@ -161,6 +162,11 @@ namespace EncompassRest.Loans
         /// PreliminaryConditionLog Id
         /// </summary>
         public string? Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// PreliminaryConditionLog IsMarkedRemoved
+        /// </summary>
+        public bool? IsMarkedRemoved { get => _isMarkedRemoved; set => SetField(ref _isMarkedRemoved, value); }
 
         /// <summary>
         /// PreliminaryConditionLog IsPastDue

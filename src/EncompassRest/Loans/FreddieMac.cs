@@ -211,7 +211,7 @@ namespace EncompassRest.Loans
         public string? FreddieFiel13 { get => _freddieFiel13; set => SetField(ref _freddieFiel13, value); }
 
         /// <summary>
-        /// Freddie Mac Freddie Field 14 [CASASRN.X34]
+        /// Freddie Mac Risk Class [CASASRN.X34]
         /// </summary>
         public string? FreddieFiel14 { get => _freddieFiel14; set => SetField(ref _freddieFiel14, value); }
 

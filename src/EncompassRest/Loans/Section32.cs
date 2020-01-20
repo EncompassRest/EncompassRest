@@ -69,6 +69,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _section35PriorAcquisitionSource;
         private DirtyValue<string?>? _section35ResultOfSecurityYieldTest;
         private DirtyValue<DateTime?>? _section35SalesContractDate;
+        private DirtyValue<bool?>? _sellerPaidFeesImpacts;
         private DirtyValue<bool?>? _stateTaxStampsFeeToBeFinancedIndicator;
         private DirtyValue<bool?>? _stateTaxStampsPortionOfFeeIndicator;
         private DirtyValue<bool?>? _surveyFeeToBeFinancedIndicator;
@@ -462,6 +463,11 @@ namespace EncompassRest.Loans
         /// Sec 35 HPML Sales Contract Date [3855]
         /// </summary>
         public DateTime? Section35SalesContractDate { get => _section35SalesContractDate; set => SetField(ref _section35SalesContractDate, value); }
+
+        /// <summary>
+        /// Sec 32 - Seller Paid Buydown included in 2015 Itemization Section 32 Points &amp; Fees. [S32DISC.X181]
+        /// </summary>
+        public bool? SellerPaidFeesImpacts { get => _sellerPaidFeesImpacts; set => SetField(ref _sellerPaidFeesImpacts, value); }
 
         /// <summary>
         /// Sec 32 State Tax/Stamps To Be Financed [S32DISC.X87]

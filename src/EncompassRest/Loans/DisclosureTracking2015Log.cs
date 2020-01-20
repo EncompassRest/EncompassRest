@@ -256,6 +256,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _propertyCity;
         private DirtyValue<string?>? _propertyState;
         private DirtyValue<string?>? _propertyZip;
+        private DirtyValue<bool?>? _providerListNoFeeSent;
         private DirtyValue<bool?>? _providerListSent;
         private DirtyValue<string?>? _purchasePriceAmount;
         private DirtyValue<DateTime?>? _receivedDate;
@@ -1504,6 +1505,11 @@ namespace EncompassRest.Loans
         /// DisclosureTracking2015Log PropertyZip
         /// </summary>
         public string? PropertyZip { get => _propertyZip; set => SetField(ref _propertyZip, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log ProviderListNoFeeSent
+        /// </summary>
+        public bool? ProviderListNoFeeSent { get => _providerListNoFeeSent; set => SetField(ref _providerListNoFeeSent, value); }
 
         /// <summary>
         /// DisclosureTracking2015Log ProviderListSent

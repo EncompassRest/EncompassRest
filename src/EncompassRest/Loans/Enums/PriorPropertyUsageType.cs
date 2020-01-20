@@ -13,9 +13,9 @@ namespace EncompassRest.Loans.Enums
         [Description("Primary Residence")]
         PrimaryResidence = 0,
         /// <summary>
-        /// Secondary Residence
+        /// Second Home
         /// </summary>
-        [Description("Secondary Residence")]
+        [Description("Second Home")]
         SecondaryResidence = 1,
         /// <summary>
         /// Investment Property

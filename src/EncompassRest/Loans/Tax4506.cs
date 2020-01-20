@@ -12,6 +12,8 @@ namespace EncompassRest.Loans
     {
         private DirtyValue<bool?>? _accountTranscript;
         private DirtyValue<string?>? _address;
+        private DirtyValue<StringEnumValue<Owner>>? _authorizedSignor;
+        private DirtyValue<StringEnumValue<Owner>>? _authorizedSignorSpouse;
         private DirtyValue<string?>? _city;
         private DirtyValue<decimal?>? _costForEachPeriod;
         private DirtyValue<string?>? _currentFirst;
@@ -81,6 +83,18 @@ namespace EncompassRest.Loans
         /// Tax4506 Address [IRS4506.X35]
         /// </summary>
         public string? Address { get => _address; set => SetField(ref _address, value); }
+
+        /// <summary>
+        /// Tax4506 AuthorizedSignor [IRS4506.X63]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"CoBorrower\":\"Co-Borrower\"}")]
+        public StringEnumValue<Owner> AuthorizedSignor { get => _authorizedSignor; set => SetField(ref _authorizedSignor, value); }
+
+        /// <summary>
+        /// Tax4506 AuthorizedSignorSpouse [IRS4506.X64]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"CoBorrower\":\"Co-Borrower\"}")]
+        public StringEnumValue<Owner> AuthorizedSignorSpouse { get => _authorizedSignorSpouse; set => SetField(ref _authorizedSignorSpouse, value); }
 
         /// <summary>
         /// Tax4506 City [IRS4506.X36]
