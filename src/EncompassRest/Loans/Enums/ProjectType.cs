@@ -138,6 +138,21 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         [Description("V/No Review-Site Condo")]
         [EnumMember(Value = "V_NoReviewSiteCondo")]
-        VNoReviewSiteCondo = 22
+        VNoReviewSiteCondo = 22,
+        /// <summary>
+        /// Freddie Mac: Exempt From Review
+        /// </summary>
+        [Description("Freddie Mac: Exempt From Review")]
+        ExemptFromReview = 23,
+        /// <summary>
+        /// Fannie Mae: 1 Full Review - Co-op Project
+        /// </summary>
+        [Description("Fannie Mae: 1 Full Review - Co-op Project")]
+        FullReviewCoopProject = 24,
+        /// <summary>
+        /// Fannie Mae: 2 Fannie Mae Review through PERS - Co-op Project
+        /// </summary>
+        [Description("Fannie Mae: 2 Fannie Mae Review through PERS - Co-op Project")]
+        FannieMaeReviewPERSCoopProject = 25
     }
 }

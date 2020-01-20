@@ -13,7 +13,9 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _carrierName;
         private DirtyValue<decimal?>? _downPaymentAmount;
         private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _investorCode;
         private DirtyValue<DateTime?>? _investorDeliveryDate;
+        private DirtyValue<string?>? _locationCode;
         private DirtyValue<string?>? _packageTrackingNumber;
         private DirtyValue<string?>? _physicalFileStorageComments;
         private DirtyValue<string?>? _physicalFileStorageId;
@@ -47,9 +49,19 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
+        /// Investor Code [4664]
+        /// </summary>
+        public string? InvestorCode { get => _investorCode; set => SetField(ref _investorCode, value); }
+
+        /// <summary>
         /// Shipping Investor Delivery Date [2012]
         /// </summary>
         public DateTime? InvestorDeliveryDate { get => _investorDeliveryDate; set => SetField(ref _investorDeliveryDate, value); }
+
+        /// <summary>
+        /// Location Code [4663]
+        /// </summary>
+        public string? LocationCode { get => _locationCode; set => SetField(ref _locationCode, value); }
 
         /// <summary>
         /// Shipping Pkg Tracking Number [2018]

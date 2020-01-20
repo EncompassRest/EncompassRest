@@ -40,6 +40,15 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _ctDotShipShippedBy;
         private DirtyValue<DateTime?>? _ctDotShipShippingDate;
         private DirtyValue<string?>? _ctDotShipTrackingNumber;
+        private DirtyValue<string?>? _ctEnShipAddress;
+        private DirtyValue<string?>? _ctEnShipCarrier;
+        private DirtyValue<string?>? _ctEnShipContact;
+        private DirtyValue<string?>? _ctEnShipEmail;
+        private DirtyValue<string?>? _ctEnShipOrganization;
+        private DirtyValue<string?>? _ctEnShipPhone;
+        private DirtyValue<string?>? _ctEnShipShippedBy;
+        private DirtyValue<DateTime?>? _ctEnShipShippingDate;
+        private DirtyValue<string?>? _ctEnShipTrackingNumber;
         private DirtyValue<string?>? _ctFtpInitContact;
         private DirtyValue<string?>? _ctFtpInitDaysOutstanding;
         private DirtyValue<string?>? _ctFtpInitEmail;
@@ -232,6 +241,51 @@ namespace EncompassRest.Loans
         /// DOT Mort Ship Track# [CT.DOT.ShippingStatus.TrackingNumber]
         /// </summary>
         public string? CtDotShipTrackingNumber { get => _ctDotShipTrackingNumber; set => SetField(ref _ctDotShipTrackingNumber, value); }
+
+        /// <summary>
+        /// Recipient Address(Investor Address) [CT.EN.ShippingStatus.Address]
+        /// </summary>
+        public string? CtEnShipAddress { get => _ctEnShipAddress; set => SetField(ref _ctEnShipAddress, value); }
+
+        /// <summary>
+        /// WHL or Doc Custodian Carrier(Fedex,UPS,USPS,etc) [CT.EN.ShippingStatus.Carrier]
+        /// </summary>
+        public string? CtEnShipCarrier { get => _ctEnShipCarrier; set => SetField(ref _ctEnShipCarrier, value); }
+
+        /// <summary>
+        /// Recipient Contact(Investor Contact Name) [CT.EN.ShippingStatus.Contact]
+        /// </summary>
+        public string? CtEnShipContact { get => _ctEnShipContact; set => SetField(ref _ctEnShipContact, value); }
+
+        /// <summary>
+        /// Recipient Email(Investor Email Address) [CT.EN.ShippingStatus.Email]
+        /// </summary>
+        public string? CtEnShipEmail { get => _ctEnShipEmail; set => SetField(ref _ctEnShipEmail, value); }
+
+        /// <summary>
+        /// Recipient Type(Investor Purchasing Loan) [CT.EN.ShippingStatus.Organization]
+        /// </summary>
+        public string? CtEnShipOrganization { get => _ctEnShipOrganization; set => SetField(ref _ctEnShipOrganization, value); }
+
+        /// <summary>
+        /// Recipient Phone(Investor Phone Number) [CT.EN.ShippingStatus.Phone]
+        /// </summary>
+        public string? CtEnShipPhone { get => _ctEnShipPhone; set => SetField(ref _ctEnShipPhone, value); }
+
+        /// <summary>
+        /// Name of WHL or Doc Custodian [CT.EN.ShippingStatus.ShippedBy]
+        /// </summary>
+        public string? CtEnShipShippedBy { get => _ctEnShipShippedBy; set => SetField(ref _ctEnShipShippedBy, value); }
+
+        /// <summary>
+        /// WHL or Doc Custodian Ship Date [CT.EN.ShippingStatus.ShippingDate]
+        /// </summary>
+        public DateTime? CtEnShipShippingDate { get => _ctEnShipShippingDate; set => SetField(ref _ctEnShipShippingDate, value); }
+
+        /// <summary>
+        /// Carrier Tracking # [CT.EN.ShippingStatus.TrackingNumber]
+        /// </summary>
+        public string? CtEnShipTrackingNumber { get => _ctEnShipTrackingNumber; set => SetField(ref _ctEnShipTrackingNumber, value); }
 
         /// <summary>
         /// FTP Contact [CT.FTP.InitialRequest.Contact]

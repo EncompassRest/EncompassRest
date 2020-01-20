@@ -20,6 +20,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _administratorPostalCode;
         private DirtyValue<StringEnumValue<State>>? _administratorState;
         private DirtyValue<int?>? _ageOfProperty;
+        private DirtyValue<decimal?>? _amountOfProposedLiens;
         private DirtyValue<decimal?>? _amountSpentOnEnergyImprovements;
         private DirtyValue<StringEnumValue<AmountTypeWithheld>>? _amountTypeWithheld;
         private DirtyValue<decimal?>? _amountWithheld;
@@ -183,6 +184,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _proposedHomeEquityRemainingAmount;
         private DirtyValue<bool?>? _proposedSaleContractAttached;
         private DirtyValue<decimal?>? _proposedTotalRemainingPaymentAmount;
+        private DirtyValue<bool?>? _purpleHeartRecipientIndicator;
         private DirtyValue<StringEnumValue<VaLoanDataPurposeOfLoan>>? _purposeOfLoan;
         private DirtyValue<bool?>? _rangeOvenIndicator;
         private DirtyValue<bool?>? _reasonableValueCompleted;
@@ -232,6 +234,9 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _vAClaimFolderNumber;
         private DirtyValue<string?>? _vAClaimNumber;
         private DirtyValue<DateTime?>? _vADateNOVAppraisalMailedToBorrower;
+        private DirtyValue<bool?>? _vAEEMIncludedinBaseLoanAmountIndicator;
+        private DirtyValue<decimal?>? _vAEnergyEfficientImprovementsFinancedAmount;
+        private DirtyValue<decimal?>? _vAFinancedClosingCostsToExcludeAmount;
         private DirtyValue<StringEnumValue<IncreaseOrDecrease>>? _vAImpactInterestRateIndicator;
         private DirtyValue<StringEnumValue<IncreaseOrDecrease>>? _vAImpactLoanBalanceIndicator;
         private DirtyValue<StringEnumValue<IncreaseOrDecrease>>? _vAImpactLTVIndicator;
@@ -249,12 +254,17 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _vAQualification2ndTierEntitlement;
         private DirtyValue<StringEnumValue<VAQualificationCountryRegion>>? _vAQualificationCountryRegion;
         private DirtyValue<decimal?>? _vAQualificationCountyLimits;
+        private DirtyValue<bool?>? _vARateReducedSolelybyDiscountPointsIndicator;
         private DirtyValue<int?>? _vARecoupmentClosingCosts;
         private DirtyValue<bool?>? _vARecoupmentExcludePrepaids;
         private DirtyValue<decimal?>? _vARecoupmentMonthlyDecreaseInPayment;
         private DirtyValue<int?>? _vARecoupmentMonths;
         private DirtyValue<decimal?>? _vARecoupmentTotalClosingCosts;
         private DirtyValue<int?>? _vARecoupmentYears;
+        private DirtyValue<decimal?>? _vAStatutoryClosingCosts;
+        private DirtyValue<decimal?>? _vAStatutoryMonthlyPayment;
+        private DirtyValue<decimal?>? _vAStatutoryMonthlyReduction;
+        private DirtyValue<int?>? _vAStatutoryRecoupmentMonths;
         private DirtyValue<DateTime?>? _vATrackingCertOfCommitmentIssued;
         private DirtyValue<DateTime?>? _vATrackingCOEIssueDate;
         private DirtyValue<string?>? _vATrackingCOEIssueHistory;
@@ -331,6 +341,12 @@ namespace EncompassRest.Loans
         /// VA Loan Summ Property Age [VASUMM.X8]
         /// </summary>
         public int? AgeOfProperty { get => _ageOfProperty; set => SetField(ref _ageOfProperty, value); }
+
+        /// <summary>
+        /// VA Loan Amount of Proposed Liens [VASUMM.X126]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? AmountOfProposedLiens { get => _amountOfProposedLiens; set => SetField(ref _amountOfProposedLiens, value); }
 
         /// <summary>
         /// Subject Property Energy Improve Amt [961]
@@ -1221,6 +1237,11 @@ namespace EncompassRest.Loans
         public decimal? ProposedTotalRemainingPaymentAmount { get => _proposedTotalRemainingPaymentAmount; set => SetField(ref _proposedTotalRemainingPaymentAmount, value); }
 
         /// <summary>
+        /// VA Military Purple Heart Recipient Indicator [VAELIG.X114]
+        /// </summary>
+        public bool? PurpleHeartRecipientIndicator { get => _purpleHeartRecipientIndicator; set => SetField(ref _purpleHeartRecipientIndicator, value); }
+
+        /// <summary>
         /// VA Veteran Loan Purpose [956]
         /// </summary>
         public StringEnumValue<VaLoanDataPurposeOfLoan> PurposeOfLoan { get => _purposeOfLoan; set => SetField(ref _purposeOfLoan, value); }
@@ -1483,6 +1504,23 @@ namespace EncompassRest.Loans
         public DateTime? VADateNOVAppraisalMailedToBorrower { get => _vADateNOVAppraisalMailedToBorrower; set => SetField(ref _vADateNOVAppraisalMailedToBorrower, value); }
 
         /// <summary>
+        /// VA EEM Included in Base Loan Amount Indicator [VASUMM.X133]
+        /// </summary>
+        public bool? VAEEMIncludedinBaseLoanAmountIndicator { get => _vAEEMIncludedinBaseLoanAmountIndicator; set => SetField(ref _vAEEMIncludedinBaseLoanAmountIndicator, value); }
+
+        /// <summary>
+        /// VA Energy Efficient Improvements Financed Amount [VASUMM.X132]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? VAEnergyEfficientImprovementsFinancedAmount { get => _vAEnergyEfficientImprovementsFinancedAmount; set => SetField(ref _vAEnergyEfficientImprovementsFinancedAmount, value); }
+
+        /// <summary>
+        /// VA Financed Closing Costs to Exclude [VASUMM.X134]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? VAFinancedClosingCostsToExcludeAmount { get => _vAFinancedClosingCostsToExcludeAmount; set => SetField(ref _vAFinancedClosingCostsToExcludeAmount, value); }
+
+        /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Impact Interest Rate Indicator [VASUMM.X118]
         /// </summary>
         public StringEnumValue<IncreaseOrDecrease> VAImpactInterestRateIndicator { get => _vAImpactInterestRateIndicator; set => SetField(ref _vAImpactInterestRateIndicator, value); }
@@ -1571,6 +1609,11 @@ namespace EncompassRest.Loans
         public decimal? VAQualificationCountyLimits { get => _vAQualificationCountyLimits; set => SetField(ref _vAQualificationCountyLimits, value); }
 
         /// <summary>
+        /// VA Rate Reduced Solely by Discount Points Indicator [VASUMM.X131]
+        /// </summary>
+        public bool? VARateReducedSolelybyDiscountPointsIndicator { get => _vARateReducedSolelybyDiscountPointsIndicator; set => SetField(ref _vARateReducedSolelybyDiscountPointsIndicator, value); }
+
+        /// <summary>
         /// VA Management - Qualification - Recoup Closing Costs [VASUMM.X27]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
@@ -1604,6 +1647,30 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public int? VARecoupmentYears { get => _vARecoupmentYears; set => SetField(ref _vARecoupmentYears, value); }
+
+        /// <summary>
+        /// VA Statutory Closing Costs [VASUMM.X127]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        public decimal? VAStatutoryClosingCosts { get => _vAStatutoryClosingCosts; set => SetField(ref _vAStatutoryClosingCosts, value); }
+
+        /// <summary>
+        /// VA Statutory P&amp;I Payment [VASUMM.X128]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        public decimal? VAStatutoryMonthlyPayment { get => _vAStatutoryMonthlyPayment; set => SetField(ref _vAStatutoryMonthlyPayment, value); }
+
+        /// <summary>
+        /// VA Statutory P&amp;I Reduction [VASUMM.X129]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        public decimal? VAStatutoryMonthlyReduction { get => _vAStatutoryMonthlyReduction; set => SetField(ref _vAStatutoryMonthlyReduction, value); }
+
+        /// <summary>
+        /// VA Statutory Recoupment Months [VASUMM.X130]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public int? VAStatutoryRecoupmentMonths { get => _vAStatutoryRecoupmentMonths; set => SetField(ref _vAStatutoryRecoupmentMonths, value); }
 
         /// <summary>
         /// VA Management Tool - Cert. of Commitment Issued by VA [VASUMM.X86]

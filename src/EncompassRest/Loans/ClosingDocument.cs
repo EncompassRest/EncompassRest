@@ -171,6 +171,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _prepaymentPenaltyDescriptions1;
         private DirtyValue<string?>? _prepaymentPenaltyDescriptions2;
         private DirtyValue<string?>? _prepaymentPenaltyDescriptions3;
+        private DirtyValue<bool?>? _printTrustNameIndicator;
         private DirtyValue<int?>? _processingNumberDays;
         private DirtyValue<string?>? _programCode;
         private DirtyValue<string?>? _programSponsor;
@@ -1061,6 +1062,11 @@ namespace EncompassRest.Loans
         /// State Disc - Prepay Penalty Descr 3 [DISCLOSURE.X194]
         /// </summary>
         public string? PrepaymentPenaltyDescriptions3 { get => _prepaymentPenaltyDescriptions3; set => SetField(ref _prepaymentPenaltyDescriptions3, value); }
+
+        /// <summary>
+        /// Print Trust Name(s) on LE/CD Addendum [4662]
+        /// </summary>
+        public bool? PrintTrustNameIndicator { get => _printTrustNameIndicator; set => SetField(ref _printTrustNameIndicator, value); }
 
         /// <summary>
         /// State Disc - Days to Process [DISCLOSURE.X184]

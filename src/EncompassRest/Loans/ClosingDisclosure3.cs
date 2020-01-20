@@ -112,6 +112,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _liabilityTo9;
         private DirtyValue<decimal?>? _liabilityTotal;
         private DirtyValue<decimal?>? _loanAmount;
+        private DirtyValue<bool?>? _newVerbiageDisclosed;
         private DirtyValue<decimal?>? _nonUCDTotalAdjustmentsAndOtherCredits;
         private DirtyValue<bool?>? _omitFromPrintSellersTransaction;
         private DirtyValue<string?>? _otherCredits61;
@@ -733,6 +734,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
+
+        /// <summary>
+        /// New Verbiage Disclosed [CD3.X1542]
+        /// </summary>
+        public bool? NewVerbiageDisclosed { get => _newVerbiageDisclosed; set => SetField(ref _newVerbiageDisclosed, value); }
 
         /// <summary>
         /// Non UCD Total Adjustments And Other Credits [CD3.X1505]

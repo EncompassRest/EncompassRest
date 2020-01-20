@@ -21,6 +21,11 @@ namespace EncompassRest.Loans.Enums
         /// R
         /// </summary>
         [Description("R")]
-        RetainForRental = 2
+        RetainForRental = 2,
+        /// <summary>
+        /// H
+        /// </summary>
+        [Description("H")]
+        RetainForPrimaryOrSecondaryResidence = 3
     }
 }

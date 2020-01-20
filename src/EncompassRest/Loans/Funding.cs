@@ -1,4 +1,5 @@
 using System;
+using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -21,6 +22,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _fundsWireTo;
         private DirtyValue<string?>? _id;
         private DirtyValue<DateTime?>? _sentToFunderDate;
+        private DirtyValue<decimal?>? _wireAmount;
         private DirtyValue<string?>? _wiredToAbaNumber;
         private DirtyValue<string?>? _wiredToAccountNumber;
         private DirtyValue<string?>? _wiredToForCreditTo;
@@ -98,6 +100,12 @@ namespace EncompassRest.Loans
         /// Funding Sent to Funder Date [1992]
         /// </summary>
         public DateTime? SentToFunderDate { get => _sentToFunderDate; set => SetField(ref _sentToFunderDate, value); }
+
+        /// <summary>
+        /// WareHouse Lender Wire Amount(From Warehouse Lender to Lender/Closing Agent) [4660]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        public decimal? WireAmount { get => _wireAmount; set => SetField(ref _wireAmount, value); }
 
         /// <summary>
         /// Funding Wired To ABA Number [2008]

@@ -1728,7 +1728,7 @@ namespace EncompassRest.Loans
         public bool? No3rdPartyEmailIndicator { get => _no3rdPartyEmailIndicator; set => SetField(ref _no3rdPartyEmailIndicator, value); }
 
         /// <summary>
-        /// Co-Borr Race No Co Applicant [4188]
+        /// Co-Borr Ethnicity No Co Applicant [4188]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"No co-applicant\"}")]
         public bool? NoCoApplicantEthnicityIndicator { get => _noCoApplicantEthnicityIndicator; set => SetField(ref _noCoApplicantEthnicityIndicator, value); }
@@ -1740,7 +1740,7 @@ namespace EncompassRest.Loans
         public bool? NoCoApplicantIndicator { get => _noCoApplicantIndicator; set => SetField(ref _noCoApplicantIndicator, value); }
 
         /// <summary>
-        /// Co-Borr Race No Co Applicant [4189]
+        /// Co-Borr Sex No Co Applicant [4189]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"No co-applicant\"}")]
         public bool? NoCoApplicantSexIndicator { get => _noCoApplicantSexIndicator; set => SetField(ref _noCoApplicantSexIndicator, value); }
@@ -1873,13 +1873,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower PersonIncomeAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PersonIncomeAmount { get => _personIncomeAmount; set => SetField(ref _personIncomeAmount, value); }
 
         /// <summary>
         /// Borrower PersonIncomeFrequencyType
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public string? PersonIncomeFrequencyType { get => _personIncomeFrequencyType; set => SetField(ref _personIncomeFrequencyType, value); }
 
         /// <summary>

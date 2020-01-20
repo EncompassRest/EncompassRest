@@ -18,9 +18,9 @@ namespace EncompassRest.Loans.Enums
         [Description("Child Support")]
         ChildSupport = 1,
         /// <summary>
-        /// Collections Judgments And Liens
+        /// Collections Judgements And Liens
         /// </summary>
-        [Description("Collections Judgments And Liens")]
+        [Description("Collections Judgements And Liens")]
         CollectionsJudgementsAndLiens = 2,
         /// <summary>
         /// HELOC

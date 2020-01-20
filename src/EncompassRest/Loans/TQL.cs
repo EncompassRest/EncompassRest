@@ -156,12 +156,12 @@ namespace EncompassRest.Loans
         public DateTime? DUFindingsMessageDateTime { get => _dUFindingsMessageDateTime; set => SetField(ref _dUFindingsMessageDateTime, value); }
 
         /// <summary>
-        /// GSE Rep and Warrant Tracker - Fannie Mae Property Data ID [TQL.X95]
+        /// Inspection Property ID [TQL.X95]
         /// </summary>
         public string? DUPropertyDataID { get => _dUPropertyDataID; set => SetField(ref _dUPropertyDataID, value); }
 
         /// <summary>
-        /// GSE Rep and Warrant Tracker - Fannie Mae Property Data Message [TQL.X96]
+        /// Inspection Status Eligibility [TQL.X96]
         /// </summary>
         public string? DUPropertyDataMessage { get => _dUPropertyDataMessage; set => SetField(ref _dUPropertyDataMessage, value); }
 
