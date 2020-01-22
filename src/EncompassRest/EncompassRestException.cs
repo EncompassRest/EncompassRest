@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest
 {
@@ -17,23 +18,18 @@ namespace EncompassRest
         {
             var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var requestContent = GetRequestContent(response.RequestMessage.Content);
-            return new EncompassRestException(message, response, responseContent, requestContent);
+            var correlationId = GetCorrelationId(response);
+            return new EncompassRestException(message, response, responseContent, requestContent, correlationId);
         }
 
-        private static string? GetRequestContent(HttpContent content)
+        private static string? GetRequestContent(HttpContent content) => content switch
         {
-            switch (content)
-            {
-                case JsonStreamContent jsonStreamContent:
-                    return JsonHelper.ToJson(jsonStreamContent.Value, jsonStreamContent.Type);
-                case JsonStringContent jsonStringContent:
-                    return jsonStringContent.Json;
-                default:
-                    return null;
-            }
-        }
+            JsonStreamContent jsonStreamContent => JsonHelper.ToJson(jsonStreamContent.Value, jsonStreamContent.Type),
+            JsonStringContent jsonStringContent => jsonStringContent.Json,
+            _ => null,
+        };
 
-        private static string BuildBaseMessage(string? message, HttpResponseMessage response, string? responseContent)
+        private static string BuildBaseMessage(string? message, HttpResponseMessage response, string? responseContent, string? correlationId)
         {
             var sb = new StringBuilder();
 
@@ -43,13 +39,20 @@ namespace EncompassRest
             {
                 if (!string.IsNullOrEmpty(message))
                 {
-                    sb.AppendLine();
+                    sb.Append(" - ");
                 }
-                sb.Append(responseContent);
+                sb.Append($"{response.StatusCode.AsString(EnumFormat.DecimalValue)}: {response.StatusCode.AsString()} - CorrelationId: {correlationId}");
+                if (!string.IsNullOrEmpty(responseContent))
+                {
+                    sb.AppendLine();
+                    sb.Append(responseContent);
+                }
             }
             
             return sb.ToString();
         }
+
+        private static string? GetCorrelationId(HttpResponseMessage response) => response.Headers.TryGetValues("X-Correlation-ID", out var values) ? values.FirstOrDefault() : null;
 
         /// <summary>
         /// The Api request.
@@ -79,7 +82,7 @@ namespace EncompassRest
         /// <summary>
         /// The Api response correlation id as specified in the X-Correlation-ID header. Useful to Ellie Mae for inspecting issues.
         /// </summary>
-        public string? CorrelationId => Response.Headers.TryGetValues("X-Correlation-ID", out var values) ? values.FirstOrDefault() : null;
+        public string? CorrelationId { get; }
 
         /// <summary>
         /// The concurrency limit as specified in the X-Concurrency-Limit-Limit header.
@@ -106,12 +109,13 @@ namespace EncompassRest
         /// </summary>
         public DateTime? RateLimitReset => Response.Headers.TryGetValues("X-Rate-Limit-Reset", out var values) && int.TryParse(values.FirstOrDefault() ?? string.Empty, out var value) ? new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(value) : default;
 
-        private EncompassRestException(string message, HttpResponseMessage response, string? responseContent, string? requestContent)
-            : base(BuildBaseMessage(message, response, responseContent))
+        private EncompassRestException(string message, HttpResponseMessage response, string? responseContent, string? requestContent, string? correlationId)
+            : base(BuildBaseMessage(message, response, responseContent, correlationId))
         {
             Response = response;
             ResponseContent = responseContent;
             RequestContent = requestContent;
+            CorrelationId = correlationId;
         }
     }
 }
