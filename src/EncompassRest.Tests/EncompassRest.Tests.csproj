@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFrameworks>net46;net45;netcoreapp3.0;netcoreapp2.0;netcoreapp1.1</TargetFrameworks>
-    <RuntimeFrameworkVersion>2.0.3</RuntimeFrameworkVersion>
     <IsPackable>false</IsPackable>
     <RepositoryType>git</RepositoryType>
     <Configurations>Debug;Release;CI</Configurations>
