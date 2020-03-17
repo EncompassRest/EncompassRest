@@ -116,13 +116,11 @@ namespace EncompassRest.Contacts
         /// <param name="noteId">Unique identifier of the note assigned to the note when it was created.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public async Task<ContactNote> GetNoteAsync(string noteId, CancellationToken cancellationToken = default)
+        public Task<ContactNote> GetNoteAsync(string noteId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            var note = await GetDirtyAsync<ContactNote>(noteId, null, nameof(GetNoteAsync), noteId, cancellationToken).ConfigureAwait(false);
-            note.NoteId = noteId; //TODO: Remove this when EM corrects bug
-            return note;
+            return GetDirtyAsync<ContactNote>(noteId, null, nameof(GetNoteAsync), noteId, cancellationToken);
         }
 
         /// <summary>
