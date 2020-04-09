@@ -26,7 +26,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var supportedEntities = await client.Loans.GetSupportedEntitiesAsync();
-            AssertNoUndefinedEnumOptions(supportedEntities, "SupportedEntities", new Dictionary<Type, HashSet<string>> { { typeof(LoanEntity), new HashSet<string>(new[] { "CoBorrower", "LOCompensation" }, StringComparer.OrdinalIgnoreCase) } });
+            AssertNoUndefinedEnumOptions(supportedEntities, "SupportedEntities", new Dictionary<Type, HashSet<string>> { { typeof(LoanEntity), new HashSet<string>(new[] { "CoBorrower", "LOCompensation", "GffVAlertTriggerFieldLog", "ConditionLog" }, StringComparer.OrdinalIgnoreCase) } });
         }
 
         [TestMethod]

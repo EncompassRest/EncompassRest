@@ -177,6 +177,8 @@ namespace EncompassRest.Tests
                 path.RemoveAt(path.Count - 1);
                 ++i;
             }
+            Assert.AreEqual(0, fails.Count, $@" has the following issues.
+{string.Join(Environment.NewLine, fails)}");
         }
 
         private static void TestForUndefinedEnumOptions(List<string> path, List<string> fails, Dictionary<Type, HashSet<string>> enumOptionsToIgnore, object itemValue, Type type = null)
