@@ -153,7 +153,7 @@ namespace EncompassRest.Tests
                             default:
                                 if (testForUndefinedEnumOptions)
                                 {
-                                    TestForUndefinedEnumOptions(path, fails, enumOptionsToIgnore, propertyValue);
+                                    TestForUndefinedEnumOptions(path, fails, enumOptionsToIgnore, propertyValue, property.PropertyType);
                                 }
                                 break;
                         }
@@ -179,9 +179,9 @@ namespace EncompassRest.Tests
             }
         }
 
-        private static void TestForUndefinedEnumOptions(List<string> path, List<string> fails, Dictionary<Type, HashSet<string>> enumOptionsToIgnore, object itemValue)
+        private static void TestForUndefinedEnumOptions(List<string> path, List<string> fails, Dictionary<Type, HashSet<string>> enumOptionsToIgnore, object itemValue, Type type = null)
         {
-            var typeInfo = itemValue.GetType().GetTypeInfo();
+            var typeInfo = (type ?? itemValue.GetType()).GetTypeInfo();
             if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition && typeInfo.GetGenericTypeDefinition() == TypeData.OpenStringEnumValueType)
             {
                 var stringValue = itemValue.ToString();

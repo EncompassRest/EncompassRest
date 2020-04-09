@@ -51,7 +51,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanMetadata Storage
         /// </summary>
-        public string Storage { get; set; }
+        public StringEnumValue<LoanStorage> Storage { get; set; }
     }
 #pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+
+    /// <summary>
+    /// LoanStorage
+    /// </summary>
+    public enum LoanStorage
+    {
+        /// <summary>
+        /// MediaServer
+        /// </summary>
+        MediaServer = 0
+    }
 }
