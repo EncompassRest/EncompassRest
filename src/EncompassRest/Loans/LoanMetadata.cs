@@ -47,6 +47,11 @@ namespace EncompassRest.Loans
         /// LoanMetadata LoanFileSequenceNumber
         /// </summary>
         public int LoanFileSequenceNumber { get; set; }
+
+        /// <summary>
+        /// LoanMetadata Storage
+        /// </summary>
+        public string Storage { get; set; }
     }
 #pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

@@ -75,7 +75,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<PropertyRightsType>>? _propertyRightsType;
         private DirtyValue<string?>? _propertyUsageType;
         private DirtyValue<decimal?>? _refinanceImprovementCostsAmount;
-        private DirtyValue<StringEnumValue<RefinanceImprovementsType>>? _refinanceImprovementsType;
+        private DirtyValue<StringEnumValue<PropertyImprovementsType>>? _refinanceImprovementsType;
         private DirtyValue<string?>? _refinancePropertyAcquiredYear;
         private DirtyValue<decimal?>? _refinancePropertyExistingLienAmount;
         private DirtyValue<decimal?>? _refinancePropertyOriginalCostAmount;
@@ -450,7 +450,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info Refi Improve made/to be made [30]
         /// </summary>
-        public StringEnumValue<RefinanceImprovementsType> RefinanceImprovementsType { get => _refinanceImprovementsType; set => SetField(ref _refinanceImprovementsType, value); }
+        public StringEnumValue<PropertyImprovementsType> RefinanceImprovementsType { get => _refinanceImprovementsType; set => SetField(ref _refinanceImprovementsType, value); }
 
         /// <summary>
         /// Loan Info Refi Yr Acquired [24]

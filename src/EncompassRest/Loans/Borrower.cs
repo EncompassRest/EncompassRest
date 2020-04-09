@@ -52,6 +52,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<BorrowerType>>? _borrowerType;
         private DirtyValue<StringEnumValue<BorrowerType>>? _borrowerTypeInSummary;
         private DirtyValue<string?>? _caivrsIdentifier;
+        private DirtyValue<string?>? _cdDeliveryMethod;
         private DirtyValue<string?>? _citizenshipResidencyType;
         private DirtyValue<bool?>? _coBorrAttendedSameCounselingIndicator;
         private DirtyValue<bool?>? _coMakerEndorserOfNoteIndicator;
@@ -228,6 +229,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<LanguagePreference>>? _languagePreference;
         private DirtyValue<string?>? _lastName;
         private DirtyValue<string?>? _lastNameWithSuffix;
+        private DirtyValue<string?>? _leDeliveryMethod;
         private DirtyValue<bool?>? _legalOtherThanSpouse;
         private DirtyValue<bool?>? _liabilitiesDoesNotApply;
         private DirtyValue<bool?>? _loanForeclosureOrJudgementIndicator;
@@ -249,6 +251,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _nearestRelativePostalCode;
         private DirtyValue<string?>? _nearestRelativeRelationship;
         private DirtyValue<StringEnumValue<State>>? _nearestRelativeState;
+        private DirtyValue<decimal?>? _netRentalIncome;
         private DirtyValue<bool?>? _no3rdPartyEmailIndicator;
         private DirtyValue<bool?>? _noCoApplicantEthnicityIndicator;
         private DirtyValue<bool?>? _noCoApplicantIndicator;
@@ -379,14 +382,18 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _taxReturnValidationMessage;
         private DirtyValue<decimal?>? _totalAdditionalLiabilitiesAmount;
         private DirtyValue<decimal?>? _totalAdditionalOtherLiabilitiesAmount;
+        private DirtyValue<decimal?>? _totalAnnualIncome;
         private DirtyValue<decimal?>? _totalAssets;
+        private DirtyValue<decimal?>? _totalGrossMonthlySalary;
         private DirtyValue<decimal?>? _totalLiabilitiesAmount;
         private DirtyValue<decimal?>? _totalLiabilitiesBalanceAmount;
         private DirtyValue<decimal?>? _totalMonthlyIncomeAmount;
         private DirtyValue<decimal?>? _totalMonthlyIncomeMinusNetRentalAmount;
         private DirtyValue<decimal?>? _totalOtherAssets;
+        private DirtyValue<decimal?>? _totalOtherIncome;
         private DirtyValue<decimal?>? _totalOtherLiabilities;
         private DirtyValue<decimal?>? _totalOtherLiabilitiesAmount;
+        private DirtyValue<decimal?>? _totalOtherMonthlyLiability;
         private DirtyValue<decimal?>? _totalPresentHousingExpenseAmount;
         private DirtyValue<string?>? _transactionPurposeDescription;
         private DirtyValue<int?>? _transUnion120Days;
@@ -415,6 +422,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _undisclosedCreditApplicationIndicator;
         private DirtyValue<bool?>? _undisclosedMortgageApplicationIndicator;
         private DirtyValue<StringEnumValue<Urla2020CitizenshipResidencyType>>? _urla2020CitizenshipResidencyType;
+        private DirtyValue<string?>? _urla2020CountryOfCitizenship;
         private DirtyValue<string?>? _uRLAAliasName;
         private DirtyValue<decimal?>? _userDefinedIncome;
         private DirtyValue<decimal?>? _vaFederalTaxAmount;
@@ -701,6 +709,11 @@ namespace EncompassRest.Loans
         /// Borrower CaivrsIdentifier
         /// </summary>
         public string? CaivrsIdentifier { get => _caivrsIdentifier; set => SetField(ref _caivrsIdentifier, value); }
+
+        /// <summary>
+        /// Borrower CdDeliveryMethod
+        /// </summary>
+        public string? CdDeliveryMethod { get => _cdDeliveryMethod; set => SetField(ref _cdDeliveryMethod, value); }
 
         /// <summary>
         /// Borrower CitizenshipResidencyType
@@ -1613,6 +1626,11 @@ namespace EncompassRest.Loans
         public string? LastNameWithSuffix { get => _lastNameWithSuffix; set => SetField(ref _lastNameWithSuffix, value); }
 
         /// <summary>
+        /// Borrower LeDeliveryMethod
+        /// </summary>
+        public string? LeDeliveryMethod { get => _leDeliveryMethod; set => SetField(ref _leDeliveryMethod, value); }
+
+        /// <summary>
         /// Borrower LegalOtherThanSpouse
         /// </summary>
         public bool? LegalOtherThanSpouse { get => _legalOtherThanSpouse; set => SetField(ref _legalOtherThanSpouse, value); }
@@ -1720,6 +1738,12 @@ namespace EncompassRest.Loans
         /// Borrower NearestRelativeState
         /// </summary>
         public StringEnumValue<State> NearestRelativeState { get => _nearestRelativeState; set => SetField(ref _nearestRelativeState, value); }
+
+        /// <summary>
+        /// Borrower NetRentalIncome
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? NetRentalIncome { get => _netRentalIncome; set => SetField(ref _netRentalIncome, value); }
 
         /// <summary>
         /// Borrower No3rdPartyEmailIndicator
@@ -2410,10 +2434,22 @@ namespace EncompassRest.Loans
         public decimal? TotalAdditionalOtherLiabilitiesAmount { get => _totalAdditionalOtherLiabilitiesAmount; set => SetField(ref _totalAdditionalOtherLiabilitiesAmount, value); }
 
         /// <summary>
+        /// Borrower TotalAnnualIncome
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalAnnualIncome { get => _totalAnnualIncome; set => SetField(ref _totalAnnualIncome, value); }
+
+        /// <summary>
         /// Borrower TotalAssets
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalAssets { get => _totalAssets; set => SetField(ref _totalAssets, value); }
+
+        /// <summary>
+        /// Borrower TotalGrossMonthlySalary
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalGrossMonthlySalary { get => _totalGrossMonthlySalary; set => SetField(ref _totalGrossMonthlySalary, value); }
 
         /// <summary>
         /// Total Liabilities Amount [URLA.X62]
@@ -2446,6 +2482,12 @@ namespace EncompassRest.Loans
         public decimal? TotalOtherAssets { get => _totalOtherAssets; set => SetField(ref _totalOtherAssets, value); }
 
         /// <summary>
+        /// Borrower TotalOtherIncome
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalOtherIncome { get => _totalOtherIncome; set => SetField(ref _totalOtherIncome, value); }
+
+        /// <summary>
         /// Borrower TotalOtherLiabilities
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -2456,6 +2498,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalOtherLiabilitiesAmount { get => _totalOtherLiabilitiesAmount; set => SetField(ref _totalOtherLiabilitiesAmount, value); }
+
+        /// <summary>
+        /// Borrower TotalOtherMonthlyLiability
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalOtherMonthlyLiability { get => _totalOtherMonthlyLiability; set => SetField(ref _totalOtherMonthlyLiability, value); }
 
         /// <summary>
         /// Expenses Present Total Housing [737]
@@ -2598,6 +2646,11 @@ namespace EncompassRest.Loans
         /// Borrower Urla2020CitizenshipResidencyType
         /// </summary>
         public StringEnumValue<Urla2020CitizenshipResidencyType> Urla2020CitizenshipResidencyType { get => _urla2020CitizenshipResidencyType; set => SetField(ref _urla2020CitizenshipResidencyType, value); }
+
+        /// <summary>
+        /// Borrower Urla2020CountryOfCitizenship
+        /// </summary>
+        public string? Urla2020CountryOfCitizenship { get => _urla2020CountryOfCitizenship; set => SetField(ref _urla2020CountryOfCitizenship, value); }
 
         /// <summary>
         /// Borrower URLAAliasName
@@ -2749,7 +2802,7 @@ namespace EncompassRest.Loans
         public string? Vendor22 { get => _vendor22; set => SetField(ref _vendor22, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - Advanced Data Income Tax Verification (Bor,CoBor) [GSEVENDOR.X30]
+        /// GSE Vendor Provider Data - Advanced Data (4506-T, VOE, VOI) (Bor,CoBor) [GSEVENDOR.X30]
         /// </summary>
         public string? Vendor23 { get => _vendor23; set => SetField(ref _vendor23, value); }
 

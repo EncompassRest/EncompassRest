@@ -8,8 +8,8 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class ToolsRights : DirtyExtensibleObject
     {
-        private PurchaseAdviceFormRights? _PurchaseAdviceForm;
-        private DirtyValue<bool?>? _ShippingDetail;
+        private PurchaseAdviceFormRights? _purchaseAdviceForm;
+        private DirtyValue<bool?>? _shippingDetail;
         private DirtyValue<bool?>? _amortizationSchedule;
         private DirtyValue<bool?>? _antiSteeringSafeHarborDisclosure;
         private DirtyValue<bool?>? _auditTrail;
@@ -19,6 +19,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?>? _cashtoClose;
         private CollateralTrackingRights? _collateralTracking;
         private DirtyValue<bool?>? _conversationLog;
+        private DirtyValue<bool?>? _correspondentComplianceReviewData;
         private DirtyValue<bool?>? _correspondentLoanStatus;
         private DirtyValue<bool?>? _correspondentPurchaseAdviceForm;
         private DirtyValue<bool?>? _debtConsolidation;
@@ -53,13 +54,13 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [JsonProperty(" PurchaseAdviceForm")]
         [AllowNull]
-        public PurchaseAdviceFormRights PurchaseAdviceForm { get => GetField(ref _PurchaseAdviceForm); set => SetField(ref _PurchaseAdviceForm, value); }
+        public PurchaseAdviceFormRights PurchaseAdviceForm { get => GetField(ref _purchaseAdviceForm); set => SetField(ref _purchaseAdviceForm, value); }
 
         /// <summary>
         /// ToolsRights ShippingDetail
         /// </summary>
         [JsonProperty(" ShippingDetail")]
-        public bool? ShippingDetail { get => _ShippingDetail; set => SetField(ref _ShippingDetail, value); }
+        public bool? ShippingDetail { get => _shippingDetail; set => SetField(ref _shippingDetail, value); }
 
         /// <summary>
         /// ToolsRights AmortizationSchedule
@@ -109,6 +110,11 @@ namespace EncompassRest.Company.Users.Rights
         /// ToolsRights ConversationLog
         /// </summary>
         public bool? ConversationLog { get => _conversationLog; set => SetField(ref _conversationLog, value); }
+
+        /// <summary>
+        /// ToolsRights CorrespondentComplianceReviewData
+        /// </summary>
+        public bool? CorrespondentComplianceReviewData { get => _correspondentComplianceReviewData; set => SetField(ref _correspondentComplianceReviewData, value); }
 
         /// <summary>
         /// ToolsRights CorrespondentLoanStatus

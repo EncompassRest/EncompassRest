@@ -171,7 +171,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _useDefaultLenderInfo;
         private DirtyValue<bool?>? _utilityIncluded;
         private DirtyValue<DateTime?>? _validateAddressDate;
-        private DirtyValue<StringEnumValue<Valuation>>? _valuation;
+        private DirtyValue<StringEnumValue<Enums.Valuation>>? _valuation;
 
         /// <summary>
         /// HUD Addendum Type [1711]
@@ -1029,6 +1029,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr Cert Aware/Unaware of Valuation [1399]
         /// </summary>
-        public StringEnumValue<Valuation> Valuation { get => _valuation; set => SetField(ref _valuation, value); }
+        public StringEnumValue<Enums.Valuation> Valuation { get => _valuation; set => SetField(ref _valuation, value); }
     }
 }

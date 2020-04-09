@@ -90,6 +90,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _numberofPeopleInHousehold;
         private DirtyValue<bool?>? _obligationMatchesCommitmentLenderRequestIndicator;
         private DirtyValue<string?>? _officialWhoConfirmedGlsUpdated;
+        private DirtyValue<bool?>? _oneTimeClose;
         private DirtyValue<decimal?>? _otherIncome;
         private DirtyValue<decimal?>? _otherStableDependableMonthlyIncome;
         private DirtyValue<bool?>? _overcrowdedIndicator;
@@ -567,6 +568,11 @@ namespace EncompassRest.Loans
         /// USDA - Tracking - Official Who Confirmed GLS Updated [USDA.X155]
         /// </summary>
         public string? OfficialWhoConfirmedGlsUpdated { get => _officialWhoConfirmedGlsUpdated; set => SetField(ref _officialWhoConfirmedGlsUpdated, value); }
+
+        /// <summary>
+        /// USDA One Time Close [USDA.X219]
+        /// </summary>
+        public bool? OneTimeClose { get => _oneTimeClose; set => SetField(ref _oneTimeClose, value); }
 
         /// <summary>
         /// USDA - Other Income (Alimony, Child Support, y, Pension/Retirement, Social Security, Disability, Trust Income, Notes Receivable, etc.) [USDA.X169]

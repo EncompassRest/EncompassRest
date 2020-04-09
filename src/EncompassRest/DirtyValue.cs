@@ -9,7 +9,7 @@ namespace EncompassRest
     /// <typeparam name="T"></typeparam>
     internal sealed class DirtyValue<T> : IDirty, IValue
     {
-        public static implicit operator T(DirtyValue<T>? value) => value != null ? value._value : default;
+        public static implicit operator T(DirtyValue<T>? value) => value != null ? value._value! : default!;
 
         public static implicit operator DirtyValue<T>(T value) => new DirtyValue<T>(value);
 

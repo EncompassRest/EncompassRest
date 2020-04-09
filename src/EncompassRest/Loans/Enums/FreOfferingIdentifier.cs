@@ -33,9 +33,9 @@ namespace EncompassRest.Loans.Enums
         [EnumMember(Value = "251")]
         n251 = 251,
         /// <summary>
-        /// 310:Relief Refinance - Open Access
+        /// 310:Relief Refinance - Open Access (Retired 12/31/2018)
         /// </summary>
-        [Description("310:Relief Refinance - Open Access")]
+        [Description("310:Relief Refinance - Open Access (Retired 12/31/2018)")]
         [EnumMember(Value = "310")]
         n310 = 310,
         /// <summary>

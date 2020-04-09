@@ -24,6 +24,11 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _dUFindingsMessageDateTime;
         private DirtyValue<string?>? _dUPropertyDataID;
         private DirtyValue<string?>? _dUPropertyDataMessage;
+        private DirtyValue<DateTime?>? _floodOrderDate;
+        private DirtyValue<string?>? _floodProductType;
+        private DirtyValue<DateTime?>? _floodReceivedDate;
+        private DirtyValue<string?>? _floodStatus;
+        private DirtyValue<string?>? _floodTransactionType;
         private DirtyList<GSETracker>? _gSETrackers;
         private DirtyValue<string?>? _homeward4506TBaselineReportRequired;
         private DirtyValue<string?>? _homewardComplianceBaselineReportRequired;
@@ -164,6 +169,31 @@ namespace EncompassRest.Loans
         /// Inspection Status Eligibility [TQL.X96]
         /// </summary>
         public string? DUPropertyDataMessage { get => _dUPropertyDataMessage; set => SetField(ref _dUPropertyDataMessage, value); }
+
+        /// <summary>
+        /// TQL - Flood billing - Flood Order Date [TQL.X105]
+        /// </summary>
+        public DateTime? FloodOrderDate { get => _floodOrderDate; set => SetField(ref _floodOrderDate, value); }
+
+        /// <summary>
+        /// TQL - Flood billing - Flood Product Type [TQL.X103]
+        /// </summary>
+        public string? FloodProductType { get => _floodProductType; set => SetField(ref _floodProductType, value); }
+
+        /// <summary>
+        /// TQL - Flood billing - Flood Received Date [TQL.X106]
+        /// </summary>
+        public DateTime? FloodReceivedDate { get => _floodReceivedDate; set => SetField(ref _floodReceivedDate, value); }
+
+        /// <summary>
+        /// TQL - Flood billing - Flood Status [TQL.X104]
+        /// </summary>
+        public string? FloodStatus { get => _floodStatus; set => SetField(ref _floodStatus, value); }
+
+        /// <summary>
+        /// TQL - Flood billing - Flood Transaction Type [TQL.X102]
+        /// </summary>
+        public string? FloodTransactionType { get => _floodTransactionType; set => SetField(ref _floodTransactionType, value); }
 
         /// <summary>
         /// TQL GSETrackers

@@ -32,7 +32,14 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _docSetFile;
         private DirtyValue<int?>? _factorForRevolvingDebt;
         private DirtyValue<bool?>? _fannieDuAutoOrderIndicator;
+        private DirtyValue<string?>? _fannieEcAppraisalValue;
         private DirtyValue<bool?>? _fannieEcAutoOrderIndicator;
+        private DirtyValue<string?>? _fannieEcDocumentFileId;
+        private DirtyValue<string?>? _fannieEcDuCaseFileId;
+        private DirtyValue<DateTime?>? _fannieEcDuLatestSubmissionDateTime;
+        private DirtyValue<string?>? _fannieEcDuLatestSubmissionNumber;
+        private DirtyValue<string?>? _fannieEcDuUnderwritingRecommendationCode;
+        private DirtyValue<DateTime?>? _fannieEcUcdpLastSubmissionDateTime;
         private DirtyValue<string?>? _floodInsuranceExcluded;
         private DirtyValue<string?>? _formListFile;
         private DirtyValue<bool?>? _freddieLPAAutoOrderIndicator;
@@ -247,10 +254,47 @@ namespace EncompassRest.Loans
         public bool? FannieDuAutoOrderIndicator { get => _fannieDuAutoOrderIndicator; set => SetField(ref _fannieDuAutoOrderIndicator, value); }
 
         /// <summary>
+        /// Fannie EarlyCheck Report Appraisal Value [FANNIESERVICE.X9]
+        /// </summary>
+        public string? FannieEcAppraisalValue { get => _fannieEcAppraisalValue; set => SetField(ref _fannieEcAppraisalValue, value); }
+
+        /// <summary>
         /// Fannie EarlyCheck Report Auto Order Indicator [FANNIESERVICE.X2]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public bool? FannieEcAutoOrderIndicator { get => _fannieEcAutoOrderIndicator; set => SetField(ref _fannieEcAutoOrderIndicator, value); }
+
+        /// <summary>
+        /// Fannie EarlyCheck Report Document FileId [FANNIESERVICE.X8]
+        /// </summary>
+        public string? FannieEcDocumentFileId { get => _fannieEcDocumentFileId; set => SetField(ref _fannieEcDocumentFileId, value); }
+
+        /// <summary>
+        /// Fannie EarlyCheck Report DU Case file ID [FANNIESERVICE.X13]
+        /// </summary>
+        public string? FannieEcDuCaseFileId { get => _fannieEcDuCaseFileId; set => SetField(ref _fannieEcDuCaseFileId, value); }
+
+        /// <summary>
+        /// Fannie EarlyCheck Report DU Latest Submission Date Time [FANNIESERVICE.X11]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FannieEcDuLatestSubmissionDateTime { get => _fannieEcDuLatestSubmissionDateTime; set => SetField(ref _fannieEcDuLatestSubmissionDateTime, value); }
+
+        /// <summary>
+        /// Fannie EarlyCheck Report DU Latest Submission Number [FANNIESERVICE.X12]
+        /// </summary>
+        public string? FannieEcDuLatestSubmissionNumber { get => _fannieEcDuLatestSubmissionNumber; set => SetField(ref _fannieEcDuLatestSubmissionNumber, value); }
+
+        /// <summary>
+        /// Fannie EarlyCheck Report DU Underwriting Recommendation Code [FANNIESERVICE.X10]
+        /// </summary>
+        public string? FannieEcDuUnderwritingRecommendationCode { get => _fannieEcDuUnderwritingRecommendationCode; set => SetField(ref _fannieEcDuUnderwritingRecommendationCode, value); }
+
+        /// <summary>
+        /// Fannie EarlyCheck Report UCDP Last Submission Date Time [FANNIESERVICE.X7]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FannieEcUcdpLastSubmissionDateTime { get => _fannieEcUcdpLastSubmissionDateTime; set => SetField(ref _fannieEcUcdpLastSubmissionDateTime, value); }
 
         /// <summary>
         /// Expenses Calc Other Hous Exp Flood Ins Excl [1801]

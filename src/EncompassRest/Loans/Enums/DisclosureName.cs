@@ -2568,6 +2568,18 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// MICancelOtherCondDescr
         /// </summary>
-        MICancelOtherCondDescr = 629
+        MICancelOtherCondDescr = 629,
+        /// <summary>
+        /// PreQualExpirationDate
+        /// </summary>
+        PreQualExpirationDate = 630,
+        /// <summary>
+        /// ClosingDeadline
+        /// </summary>
+        ClosingDeadline = 631,
+        /// <summary>
+        /// FirstTimeHomebuyer
+        /// </summary>
+        FirstTimeHomebuyer = 632
     }
 }

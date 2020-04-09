@@ -394,7 +394,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac MI Premium Source [CASASRN.X158]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public StringEnumValue<PremiumSource> PremiumSource { get => _premiumSource; set => SetField(ref _premiumSource, value); }
 
         /// <summary>

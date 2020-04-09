@@ -168,6 +168,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _interestOnlyMonths;
         private DirtyValue<StringEnumValue<InterestRateType>>? _interestRateType;
         private DirtyValue<decimal?>? _interestReserveAmount;
+        private DirtyValue<StringEnumValue<LandValueType>>? _landValueType;
         private DirtyValue<string?>? _lastDisclosedBy;
         private DirtyValue<DateTime?>? _lastDisclosedDate;
         private DirtyValue<DateTime?>? _lastDisclosedGfeReceivedDate;
@@ -1094,6 +1095,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InterestReserveAmount { get => _interestReserveAmount; set => SetField(ref _interestReserveAmount, value); }
+
+        /// <summary>
+        /// Construction Loan Info - Land Value Type [URLA.X262]
+        /// </summary>
+        public StringEnumValue<LandValueType> LandValueType { get => _landValueType; set => SetField(ref _landValueType, value); }
 
         /// <summary>
         /// GFE Last Disclosed By [3139]

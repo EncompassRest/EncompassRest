@@ -7,8 +7,12 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class EFolderSetupRights : ParentAccessRights
     {
+        private DirtyValue<bool?>? _activateDeactivateConditions;
+        private DirtyValue<bool?>? _addEditCopyConditions;
         private DirtyValue<bool?>? _conditions;
         private DirtyValue<bool?>? _conditionSets;
+        private DirtyValue<bool?>? _conditionTypeSettings;
+        private DirtyValue<bool?>? _deleteConditions;
         private DirtyValue<bool?>? _documentConversion;
         private DirtyValue<bool?>? _documentExportTemplates;
         private DirtyValue<bool?>? _documentGroups;
@@ -16,6 +20,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?>? _documents;
         private DirtyValue<bool?>? _documentStackingTemplates;
         private DirtyValue<bool?>? _documentTraining;
+        private DirtyValue<bool?>? _enhancedConditions;
         private DirtyValue<bool?>? _hTMLEmailTemplates;
         private DirtyValue<bool?>? _postClosingConditionSets;
         private DirtyValue<bool?>? _postClosingConditions;
@@ -23,6 +28,16 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?>? _purchaseConditions;
         private DirtyValue<bool?>? _purchaseConditionSets;
         private DirtyValue<bool?>? _webCenterConfiguration;
+
+        /// <summary>
+        /// EFolderSetupRights ActivateDeactivateConditions
+        /// </summary>
+        public bool? ActivateDeactivateConditions { get => _activateDeactivateConditions; set => SetField(ref _activateDeactivateConditions, value); }
+
+        /// <summary>
+        /// EFolderSetupRights AddEditCopyConditions
+        /// </summary>
+        public bool? AddEditCopyConditions { get => _addEditCopyConditions; set => SetField(ref _addEditCopyConditions, value); }
 
         /// <summary>
         /// EFolderSetupRights Conditions
@@ -33,6 +48,16 @@ namespace EncompassRest.Company.Users.Rights
         /// EFolderSetupRights ConditionSets
         /// </summary>
         public bool? ConditionSets { get => _conditionSets; set => SetField(ref _conditionSets, value); }
+
+        /// <summary>
+        /// EFolderSetupRights ConditionTypeSettings
+        /// </summary>
+        public bool? ConditionTypeSettings { get => _conditionTypeSettings; set => SetField(ref _conditionTypeSettings, value); }
+
+        /// <summary>
+        /// EFolderSetupRights DeleteConditions
+        /// </summary>
+        public bool? DeleteConditions { get => _deleteConditions; set => SetField(ref _deleteConditions, value); }
 
         /// <summary>
         /// EFolderSetupRights DocumentConversion
@@ -68,6 +93,11 @@ namespace EncompassRest.Company.Users.Rights
         /// EFolderSetupRights DocumentTraining
         /// </summary>
         public bool? DocumentTraining { get => _documentTraining; set => SetField(ref _documentTraining, value); }
+
+        /// <summary>
+        /// EFolderSetupRights EnhancedConditions
+        /// </summary>
+        public bool? EnhancedConditions { get => _enhancedConditions; set => SetField(ref _enhancedConditions, value); }
 
         /// <summary>
         /// EFolderSetupRights HTMLEmailTemplates

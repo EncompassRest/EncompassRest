@@ -11,6 +11,7 @@ namespace EncompassRest.Loans
     {
         private DirtyValue<decimal?>? _amount;
         private DirtyValue<string?>? _id;
+        private DirtyValue<StringEnumValue<PurchaseCreditSource>>? _purchaseCreditSource;
         private DirtyValue<StringEnumValue<PurchaseCreditType>>? _purchaseCreditType;
 
         /// <summary>
@@ -23,6 +24,11 @@ namespace EncompassRest.Loans
         /// PurchaseCredit Id
         /// </summary>
         public string? Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// PurchaseCredit PurchaseCreditSource
+        /// </summary>
+        public StringEnumValue<PurchaseCreditSource> PurchaseCreditSource { get => _purchaseCreditSource; set => SetField(ref _purchaseCreditSource, value); }
 
         /// <summary>
         /// PurchaseCredit PurchaseCreditType

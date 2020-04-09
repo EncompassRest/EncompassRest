@@ -25,8 +25,11 @@ namespace EncompassRest.Loans
         private DirtyList<AUSTrackingLog>? _aUSTrackingLogs;
         private DirtyValue<decimal?>? _balanceAvailableFamilySupportGuideline;
         private Borrower? _borrower;
+        private DirtyValue<string?>? _borrowerPairId;
         private DirtyValue<decimal?>? _bottomRatioPercent;
         private DirtyValue<decimal?>? _brwCoBrwTotalTaxDeductions;
+        private DirtyValue<DateTime?>? _closingDisclosureBorDeliveryDate;
+        private DirtyValue<DateTime?>? _closingDisclosureBorReceivedDate;
         private Borrower? _coborrower;
         private DirtyValue<string?>? _creditAliasName1;
         private DirtyValue<string?>? _creditAliasName2;
@@ -117,6 +120,7 @@ namespace EncompassRest.Loans
         private DirtyList<Liability>? _liabilities;
         private DirtyValue<decimal?>? _liquidAssetsComortSet;
         private DirtyValue<string?>? _loanAmount;
+        private DirtyValue<DateTime?>? _loanEstimateDeliveryDate;
         private DirtyValue<string?>? _loanOfficerId;
         private DirtyValue<string?>? _loanOfficerName;
         private DirtyValue<decimal?>? _mcawBorrowerOtherMonthlyIncomeAmount;
@@ -167,6 +171,8 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _reoTotalMortgagePaymentsAmount;
         private DirtyValue<decimal?>? _reoTotalMortgagesAndLiensAmount;
         private DirtyValue<int?>? _reoTotalNetRentalIncomeAmount;
+        private DirtyValue<DateTime?>? _rescissionDate;
+        private DirtyValue<DateTime?>? _rescissionNoteSignedDate;
         private DirtyList<Residence>? _residences;
         private DirtyValue<string?>? _respa6;
         private DirtyList<SelfEmployedIncome>? _selfEmployedIncomes;
@@ -308,6 +314,12 @@ namespace EncompassRest.Loans
         public Borrower Borrower { get => GetField(ref _borrower); set => SetField(ref _borrower, value); }
 
         /// <summary>
+        /// Borrower Pair ID [BORPAIRID]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? BorrowerPairId { get => _borrowerPairId; set => SetField(ref _borrowerPairId, value); }
+
+        /// <summary>
         /// Trans Details Qual Ratio Bottom [742]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
@@ -318,6 +330,16 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? BrwCoBrwTotalTaxDeductions { get => _brwCoBrwTotalTaxDeductions; set => SetField(ref _brwCoBrwTotalTaxDeductions, value); }
+
+        /// <summary>
+        /// Correspondent Closing Disclosure Borrower Delivery Date [CORRESPONDENT.X145]
+        /// </summary>
+        public DateTime? ClosingDisclosureBorDeliveryDate { get => _closingDisclosureBorDeliveryDate; set => SetField(ref _closingDisclosureBorDeliveryDate, value); }
+
+        /// <summary>
+        /// Correspondent Closing Disclosure Received Date [CORRESPONDENT.X146]
+        /// </summary>
+        public DateTime? ClosingDisclosureBorReceivedDate { get => _closingDisclosureBorReceivedDate; set => SetField(ref _closingDisclosureBorReceivedDate, value); }
 
         /// <summary>
         /// Application Coborrower
@@ -826,6 +848,11 @@ namespace EncompassRest.Loans
         public string? LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
 
         /// <summary>
+        /// Correspondent Loan Estimate Delivery Date [CORRESPONDENT.X243]
+        /// </summary>
+        public DateTime? LoanEstimateDeliveryDate { get => _loanEstimateDeliveryDate; set => SetField(ref _loanEstimateDeliveryDate, value); }
+
+        /// <summary>
         /// Application LoanOfficerId
         /// </summary>
         public string? LoanOfficerId { get => _loanOfficerId; set => SetField(ref _loanOfficerId, value); }
@@ -1118,6 +1145,16 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public int? ReoTotalNetRentalIncomeAmount { get => _reoTotalNetRentalIncomeAmount; set => SetField(ref _reoTotalNetRentalIncomeAmount, value); }
+
+        /// <summary>
+        /// Correspondent Rescission Date [CORRESPONDENT.X316]
+        /// </summary>
+        public DateTime? RescissionDate { get => _rescissionDate; set => SetField(ref _rescissionDate, value); }
+
+        /// <summary>
+        /// Correspondent Rescission Note Signed Date [CORRESPONDENT.X317]
+        /// </summary>
+        public DateTime? RescissionNoteSignedDate { get => _rescissionNoteSignedDate; set => SetField(ref _rescissionNoteSignedDate, value); }
 
         /// <summary>
         /// Application Residences

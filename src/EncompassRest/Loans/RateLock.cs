@@ -124,6 +124,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _compSideSRPPaidOut;
         private DirtyValue<string?>? _compSideTradeGuid;
         private DirtyValue<string?>? _compSideTradeNumber;
+        private DirtyValue<bool?>? _confirmAdviceIndicator;
         private DirtyValue<string?>? _confirmedBy;
         private DirtyValue<DateTime?>? _confirmedDate;
         private DirtyValue<DateTime?>? _corporateApprovalDate;
@@ -153,6 +154,8 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _correspondentAdditionalLineAmount11;
         private DirtyValue<decimal?>? _correspondentAdditionalLineAmount12;
         private DirtyValue<decimal?>? _correspondentAdditionalLineAmount13;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount14;
+        private DirtyValue<decimal?>? _correspondentAdditionalLineAmount15;
         private DirtyValue<decimal?>? _correspondentAdditionalLineAmount2;
         private DirtyValue<decimal?>? _correspondentAdditionalLineAmount3;
         private DirtyValue<decimal?>? _correspondentAdditionalLineAmount4;
@@ -165,6 +168,8 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _correspondentAdditionalLineDescription10;
         private DirtyValue<string?>? _correspondentAdditionalLineDescription11;
         private DirtyValue<string?>? _correspondentAdditionalLineDescription12;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription14;
+        private DirtyValue<string?>? _correspondentAdditionalLineDescription15;
         private DirtyValue<string?>? _correspondentAdditionalLineDescription2;
         private DirtyValue<string?>? _correspondentAdditionalLineDescription3;
         private DirtyValue<string?>? _correspondentAdditionalLineDescription4;
@@ -1149,6 +1154,11 @@ namespace EncompassRest.Loans
         public string? CompSideTradeNumber { get => _compSideTradeNumber; set => SetField(ref _compSideTradeNumber, value); }
 
         /// <summary>
+        /// Correspondent Purchase Advice Confirm Advice Indicator [4666]
+        /// </summary>
+        public bool? ConfirmAdviceIndicator { get => _confirmAdviceIndicator; set => SetField(ref _confirmAdviceIndicator, value); }
+
+        /// <summary>
         /// Purchase Advice Confirmed By [2396]
         /// </summary>
         public string? ConfirmedBy { get => _confirmedBy; set => SetField(ref _confirmedBy, value); }
@@ -1313,6 +1323,18 @@ namespace EncompassRest.Loans
         public decimal? CorrespondentAdditionalLineAmount13 { get => _correspondentAdditionalLineAmount13; set => SetField(ref _correspondentAdditionalLineAmount13, value); }
 
         /// <summary>
+        /// Correspondent Purchase Advice Additional Purchase Details Additional Amount 14 [CORRESPONDENT.X64]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? CorrespondentAdditionalLineAmount14 { get => _correspondentAdditionalLineAmount14; set => SetField(ref _correspondentAdditionalLineAmount14, value); }
+
+        /// <summary>
+        /// Correspondent Purchase Advice Additional Purchase Details Additional Amount 15 [CORRESPONDENT.X66]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? CorrespondentAdditionalLineAmount15 { get => _correspondentAdditionalLineAmount15; set => SetField(ref _correspondentAdditionalLineAmount15, value); }
+
+        /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Amount 2 [3590]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -1379,6 +1401,16 @@ namespace EncompassRest.Loans
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 12 [3609]
         /// </summary>
         public string? CorrespondentAdditionalLineDescription12 { get => _correspondentAdditionalLineDescription12; set => SetField(ref _correspondentAdditionalLineDescription12, value); }
+
+        /// <summary>
+        /// Correspondent Purchase Advice Additional Purchase Details Additional Description 14 [CORRESPONDENT.X63]
+        /// </summary>
+        public string? CorrespondentAdditionalLineDescription14 { get => _correspondentAdditionalLineDescription14; set => SetField(ref _correspondentAdditionalLineDescription14, value); }
+
+        /// <summary>
+        /// Correspondent Purchase Advice Additional Purchase Details Additional Description 15 [CORRESPONDENT.X65]
+        /// </summary>
+        public string? CorrespondentAdditionalLineDescription15 { get => _correspondentAdditionalLineDescription15; set => SetField(ref _correspondentAdditionalLineDescription15, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Additional Description 2 [3589]
@@ -2160,7 +2192,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request - Loan Info ARM Disclosure Type [4512]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"UST1YW\":\"1 Year UST CM (weekly)\",\"UST3YW\":\"3 Year UST CM (weekly)\",\"UST5YW\":\"5 Year UST CM (weekly)\",\"UST7YW\":\"7 Year UST CM (weekly)\",\"UST10YW\":\"10 Year UST CM (weekly)\",\"UST20YW\":\"20 Year UST CM (weekly)\",\"UST30YW\":\"30 Year UST CM (weekly)\",\"UST1Y\":\"1 Year US Treasury CM (daily)\",\"UST3Y\":\"3 Year US Treasury CM (daily)\",\"UST5Y\":\"5 Year US Treasury CM (daily)\",\"UST7Y\":\"7 Year US Treasury CM (daily)\",\"UST10Y\":\"10 Year US Treasury CM (daily)\",\"UST20Y\":\"20 Year US Treasury CM (daily)\",\"UST30Y\":\"30 Year US Treasury CM (daily)\",\"3MoCD(12MoAvg)\":\"3-MonthCD (12-Month Avg)\",\"6MCDW\":\"6 Month CD (Secondary Market) weekly\",\"UST6M\":\"6 Month US Treasury CM (daily)\",\"FRBCommercial3M\":\"90 Day AA Commercial Paper Rates (Nonfinancial)\",\"WSJPrime\":\"WSJ Prime Rate (daily)\",\"WSJPrimeWkly\":\"WSJ Prime Rate (weekly)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"UST1YW\":\"1 Year UST CM (weekly)\",\"UST3YW\":\"3 Year UST CM (weekly)\",\"UST5YW\":\"5 Year UST CM (weekly)\",\"UST7YW\":\"7 Year UST CM (weekly)\",\"UST10YW\":\"10 Year UST CM (weekly)\",\"UST20YW\":\"20 Year UST CM (weekly)\",\"UST30YW\":\"30 Year UST CM (weekly)\",\"UST1Y\":\"1 Year US Treasury CM (daily)\",\"UST3Y\":\"3 Year US Treasury CM (daily)\",\"UST5Y\":\"5 Year US Treasury CM (daily)\",\"UST7Y\":\"7 Year US Treasury CM (daily)\",\"UST10Y\":\"10 Year US Treasury CM (daily)\",\"UST20Y\":\"20 Year US Treasury CM (daily)\",\"UST30Y\":\"30 Year US Treasury CM (daily)\",\"3MoCD(12MoAvg)\":\"3-MonthCD (12-Month Avg)\",\"6MCDW\":\"6 Month CD (Secondary Market) weekly\",\"UST6M\":\"6 Month US Treasury CM (daily)\",\"FRBCommercial3M\":\"90 Day AA Commercial Paper Rates (Nonfinancial)\",\"WSJPrime\":\"WSJ Prime Rate (daily)\",\"WSJPrimeWkly\":\"WSJ Prime Rate (weekly)\",\"Fannie_36_30SOFR\":\"Fannie Mae 3 Year (3yr/6m - 30 day Avg SOFR))\",\"Fannie_56_30SOFR\":\"Fannie Mae 5 Year (5yr/6m - 30 day Avg SOFR)\",\"Fannie_76_30SOFR\":\"Fannie Mae 7 Year (7yr/6m - 30 day Avg SOFR)\",\"Fannie_106_30SOFR\":\"Fannie Mae 10 Year (10yr/6m - 30 day Avg SOFR)\",\"Freddie_36_30SOFR\":\"Freddie Mac 3 Year Hybrid (3yr/6m - 30 day Avg SOFR)\",\"Freddie_56_30SOFR\":\"Freddie Mac 5 Year Hybrid (5yr/6m - 30 day Avg SOFR)\",\"Freddie_76_30SOFR\":\"Freddie Mac 7 Year Hybrid (7yr/6m - 30 day Avg SOFR)\",\"Freddie_106_30SOFR\":\"Freddie Mac 10 Year Hybrid (10yr/6m - 30 day Avg SOFR)\"}")]
         public StringEnumValue<IndexMargin> DisclosureType { get => _disclosureType; set => SetField(ref _disclosureType, value); }
 
         /// <summary>

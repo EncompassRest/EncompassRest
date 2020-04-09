@@ -60,6 +60,11 @@ namespace EncompassRest.Loans.Enums
         /// MI Premium Refund
         /// </summary>
         [Description("MI Premium Refund")]
-        MIPremiumRefund = 10
+        MIPremiumRefund = 10,
+        /// <summary>
+        /// Lot Equity
+        /// </summary>
+        [Description("Lot Equity")]
+        LotEquity = 11
     }
 }

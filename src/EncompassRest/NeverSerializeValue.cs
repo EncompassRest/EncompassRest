@@ -2,7 +2,7 @@
 {
     internal sealed class NeverSerializeValue<T> : IDirty, IValue
     {
-        public static implicit operator T(NeverSerializeValue<T>? value) => value != null ? value._value : default;
+        public static implicit operator T(NeverSerializeValue<T>? value) => value != null ? value._value! : default!;
 
         public static implicit operator NeverSerializeValue<T>?(T value) => value != null ? new NeverSerializeValue<T>(value) : default;
 

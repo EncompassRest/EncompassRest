@@ -53,7 +53,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Interest Per Day [333]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_4, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_4)]
         public decimal? AmountPerDay { get => _amountPerDay; set => SetField(ref _amountPerDay, value); }
 
         /// <summary>

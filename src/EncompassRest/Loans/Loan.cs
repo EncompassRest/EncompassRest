@@ -344,6 +344,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _propertyEnergyEfficientHomeIndicator;
         private DirtyValue<int?>? _propertyEstimatedValueAmount;
         private DirtyValue<bool?>? _propertyExistingCleanEnergyLienIndicator;
+        private DirtyList<PropertyValuation>? _propertyValuations;
         private DirtyValue<string?>? _proposedDuesAmount;
         private DirtyValue<decimal?>? _proposedFirstMortgageAmount;
         private DirtyValue<decimal?>? _proposedGroundRentAmount;
@@ -384,6 +385,7 @@ namespace EncompassRest.Loans
         private Section32? _section32;
         private DirtyValue<StringEnumValue<SectionOfActType>>? _sectionOfActType;
         private SelectedHomeCounselingProvider? _selectedHomeCounselingProvider;
+        private DirtyList<SellConditionLog>? _sellConditionLogs;
         private DirtyValue<decimal?>? _sellerPaidClosingCostsAmount;
         private DirtyValue<DateTime?>? _serverDateTimeDDMApplied;
         private DirtyValue<string?>? _serviceProviderAdditionalInfo;
@@ -458,6 +460,7 @@ namespace EncompassRest.Loans
         private Usda? _usda;
         private DirtyValue<StringEnumValue<UsdaGovernmentLoanType>>? _usdaGovernmentLoanType;
         private DirtyValue<bool?>? _use2018DiIndicator;
+        private DirtyValue<bool?>? _useEnhancedConditionIndicator;
         private DirtyValue<StringEnumValue<UseNew2015FormsIndicator>>? _useNew2015FormsIndicator;
         private DirtyValue<bool?>? _useNewHudIndicator;
         private DirtyValue<decimal?>? _vAEntitlementAmount;
@@ -2240,7 +2243,7 @@ namespace EncompassRest.Loans
         public IList<PreliminaryConditionLog> PreliminaryConditionLogs { get => GetField(ref _preliminaryConditionLogs); set => SetField(ref _preliminaryConditionLogs, value); }
 
         /// <summary>
-        /// Prepayment Penalty / Prepayment Penalty Term Indicator [URLA.X240]
+        /// Undefined [URLA.X240]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Prepayment Penalty / Prepayment Penalty Term\"}")]
         public bool? PrepaymentPenaltyTerm { get => _prepaymentPenaltyTerm; set => SetField(ref _prepaymentPenaltyTerm, value); }
@@ -2339,6 +2342,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Property is currently subject to a lien that could take priority over the first mortgage lien, such as a clean energy lien paid through property taxes (e.g., the Property Assessed  Clean Energy program).\"}")]
         public bool? PropertyExistingCleanEnergyLienIndicator { get => _propertyExistingCleanEnergyLienIndicator; set => SetField(ref _propertyExistingCleanEnergyLienIndicator, value); }
+
+        /// <summary>
+        /// Loan PropertyValuations
+        /// </summary>
+        [AllowNull]
+        public IList<PropertyValuation> PropertyValuations { get => GetField(ref _propertyValuations); set => SetField(ref _propertyValuations, value); }
 
         /// <summary>
         /// Expenses Proposed HOA [233]
@@ -2562,6 +2571,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [AllowNull]
         public SelectedHomeCounselingProvider SelectedHomeCounselingProvider { get => GetField(ref _selectedHomeCounselingProvider); set => SetField(ref _selectedHomeCounselingProvider, value); }
+
+        /// <summary>
+        /// Loan SellConditionLogs
+        /// </summary>
+        [AllowNull]
+        public IList<SellConditionLog> SellConditionLogs { get => GetField(ref _sellConditionLogs); set => SetField(ref _sellConditionLogs, value); }
 
         /// <summary>
         /// Fees Total Closing Costs Seller [143]
@@ -2979,6 +2994,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Use 2018 DI\"}")]
         public bool? Use2018DiIndicator { get => _use2018DiIndicator; set => SetField(ref _use2018DiIndicator, value); }
+
+        /// <summary>
+        /// Apply Enhanced Conditions to Loan [ENHANCEDCOND.X1]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public bool? UseEnhancedConditionIndicator { get => _useEnhancedConditionIndicator; set => SetField(ref _useEnhancedConditionIndicator, value); }
 
         /// <summary>
         /// Use New LE, CD, GFE And HUD [3969]

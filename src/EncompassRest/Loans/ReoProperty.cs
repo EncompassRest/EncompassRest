@@ -15,6 +15,8 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _countryCode;
         private DirtyValue<StringEnumValue<DispositionStatusType>>? _dispositionStatusType;
         private DirtyValue<bool?>? _entityDeleted;
+        private DirtyValue<StringEnumValue<FuturePropertyUsageType>>? _futurePropertyUsageType;
+        private DirtyValue<string?>? _futureUsageTypeOtherDesc;
         private DirtyValue<StringEnumValue<GsePropertyType>>? _gsePropertyType;
         private DirtyValue<string?>? _id;
         private DirtyValue<bool?>? _includeInAusExport;
@@ -76,6 +78,16 @@ namespace EncompassRest.Loans
         /// ReoProperty EntityDeleted
         /// </summary>
         public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
+
+        /// <summary>
+        /// Mortgage Property Future Use of Property [FMNN55]
+        /// </summary>
+        public StringEnumValue<FuturePropertyUsageType> FuturePropertyUsageType { get => _futurePropertyUsageType; set => SetField(ref _futurePropertyUsageType, value); }
+
+        /// <summary>
+        /// Description If Future Use of Property Is Other [FMNN56]
+        /// </summary>
+        public string? FutureUsageTypeOtherDesc { get => _futureUsageTypeOtherDesc; set => SetField(ref _futureUsageTypeOtherDesc, value); }
 
         /// <summary>
         /// Mortgage Property Type [FMNN18]
