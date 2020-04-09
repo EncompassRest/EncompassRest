@@ -3,7 +3,7 @@
     /// <summary>
     /// TradesRights
     /// </summary>
-    public sealed class TradesRights : PersonaAccess
+    public sealed class TradesRights : PersonaAccessRights
     {
     }
 }
