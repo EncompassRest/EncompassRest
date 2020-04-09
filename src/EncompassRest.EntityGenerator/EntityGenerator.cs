@@ -144,7 +144,7 @@ namespace EncompassRest
                 typeof(ReoPropertyUsageType),
                 typeof(AdditionalLoanLienPosition),
                 typeof(BuydownContributor),
-                typeof(SpecialFloodHazardAreaIndictor),
+                typeof(FloodZone),
                 typeof(AppraisalPropertyType),
                 typeof(BuildingStatusType),
                 typeof(AttachmentType),

@@ -44,7 +44,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _appraisalFee;
         private DirtyValue<DateTime?>? _appraisalFinalInspectionDate;
         private DirtyValue<bool?>? _appraisalFinalInspectionFlag;
-        private DirtyValue<StringEnumValue<SpecialFloodHazardAreaIndictor>>? _appraisalFloodZone;
+        private DirtyValue<StringEnumValue<FloodZone>>? _appraisalFloodZone;
         private DirtyValue<string?>? _appraisalLegalDescription1;
         private DirtyValue<string?>? _appraisalLegalDescription2;
         private DirtyValue<StringEnumValue<AppraisalPropertyType>>? _appraisalPropertyType;
@@ -609,7 +609,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Flood Zone [CORRESPONDENT.X92]
         /// </summary>
-        public StringEnumValue<SpecialFloodHazardAreaIndictor> AppraisalFloodZone { get => _appraisalFloodZone; set => SetField(ref _appraisalFloodZone, value); }
+        public StringEnumValue<FloodZone> AppraisalFloodZone { get => _appraisalFloodZone; set => SetField(ref _appraisalFloodZone, value); }
 
         /// <summary>
         /// Correspondent Appraisal Legal Description 1 [CORRESPONDENT.X234]

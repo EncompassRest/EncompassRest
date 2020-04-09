@@ -3,9 +3,9 @@ using System.Runtime.Serialization;
 namespace EncompassRest.Loans.Enums
 {
     /// <summary>
-    /// SpecialFloodHazardAreaIndictor
+    /// FloodZone
     /// </summary>
-    public enum SpecialFloodHazardAreaIndictor
+    public enum FloodZone
     {
         /// <summary>
         /// A

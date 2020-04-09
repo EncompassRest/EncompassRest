@@ -191,7 +191,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _secondTransferYear;
         private DirtyValue<decimal?>? _secondTransferYearValue;
         private DirtyValue<DateTime?>? _signatureDateFor1003;
-        private DirtyValue<StringEnumValue<SpecialFloodHazardAreaIndictor>>? _specialFloodHazardAreaIndictor;
+        private DirtyValue<StringEnumValue<FloodZone>>? _specialFloodHazardAreaIndictor;
         private DirtyList<StateLicense>? _stateLicenses;
         private DirtyValue<string?>? _suretyCompanyName;
         private DirtyValue<bool?>? _syncInterestDateDisbursementDate;
@@ -1170,7 +1170,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Property Info Flood Zone [541]
         /// </summary>
-        public StringEnumValue<SpecialFloodHazardAreaIndictor> SpecialFloodHazardAreaIndictor { get => _specialFloodHazardAreaIndictor; set => SetField(ref _specialFloodHazardAreaIndictor, value); }
+        public StringEnumValue<FloodZone> SpecialFloodHazardAreaIndictor { get => _specialFloodHazardAreaIndictor; set => SetField(ref _specialFloodHazardAreaIndictor, value); }
 
         /// <summary>
         /// ClosingDocument StateLicenses
