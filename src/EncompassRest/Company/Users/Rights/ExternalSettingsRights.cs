@@ -9,6 +9,8 @@ namespace EncompassRest.Company.Users.Rights
     {
         private DirtyValue<bool?>? _allTPOContactInformation;
         private CompanyDetailsRights? _companyDetails;
+        private DirtyValue<bool?>? _globalAccess;
+        private DirtyValue<bool?>? _investorConnectSettings;
         private DirtyValue<bool?>? _tPOConnectSiteManagement;
         private DirtyValue<bool?>? _tPOCustomFields;
         private DirtyValue<bool?>? _tPODisclosureSettings;
@@ -28,6 +30,16 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [AllowNull]
         public CompanyDetailsRights CompanyDetails { get => GetField(ref _companyDetails); set => SetField(ref _companyDetails, value); }
+
+        /// <summary>
+        /// ExternalSettingsRights GlobalAccess
+        /// </summary>
+        public bool? GlobalAccess { get => _globalAccess; set => SetField(ref _globalAccess, value); }
+
+        /// <summary>
+        /// ExternalSettingsRights InvestorConnectSettings
+        /// </summary>
+        public bool? InvestorConnectSettings { get => _investorConnectSettings; set => SetField(ref _investorConnectSettings, value); }
 
         /// <summary>
         /// ExternalSettingsRights TPOConnectSiteManagement

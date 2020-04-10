@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -14,6 +15,10 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _downPaymentAmount;
         private DirtyValue<string?>? _id;
         private DirtyValue<string?>? _investorCode;
+        private DirtyValue<string?>? _investorConnectDeliveredToCategory;
+        private DirtyValue<string?>? _investorConnectDeliveredToCompany;
+        private DirtyValue<string?>? _investorConnectDeliveryStatus;
+        private DirtyValue<DateTime?>? _investorConnectDeliveryStatusDateTime;
         private DirtyValue<DateTime?>? _investorDeliveryDate;
         private DirtyValue<string?>? _locationCode;
         private DirtyValue<string?>? _packageTrackingNumber;
@@ -52,6 +57,27 @@ namespace EncompassRest.Loans
         /// Investor Code [4664]
         /// </summary>
         public string? InvestorCode { get => _investorCode; set => SetField(ref _investorCode, value); }
+
+        /// <summary>
+        /// Investor Connect Delivered To Category [INVESTORCONN.X4]
+        /// </summary>
+        public string? InvestorConnectDeliveredToCategory { get => _investorConnectDeliveredToCategory; set => SetField(ref _investorConnectDeliveredToCategory, value); }
+
+        /// <summary>
+        /// Investor Connect Delivered To Company [INVESTORCONN.X3]
+        /// </summary>
+        public string? InvestorConnectDeliveredToCompany { get => _investorConnectDeliveredToCompany; set => SetField(ref _investorConnectDeliveredToCompany, value); }
+
+        /// <summary>
+        /// Investor Connect Delivery Status [INVESTORCONN.X1]
+        /// </summary>
+        public string? InvestorConnectDeliveryStatus { get => _investorConnectDeliveryStatus; set => SetField(ref _investorConnectDeliveryStatus, value); }
+
+        /// <summary>
+        /// Investor Connect Delivery Status Date Time [INVESTORCONN.X2]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? InvestorConnectDeliveryStatusDateTime { get => _investorConnectDeliveryStatusDateTime; set => SetField(ref _investorConnectDeliveryStatusDateTime, value); }
 
         /// <summary>
         /// Shipping Investor Delivery Date [2012]

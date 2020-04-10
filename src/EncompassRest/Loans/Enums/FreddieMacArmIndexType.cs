@@ -9,6 +9,12 @@ namespace EncompassRest.Loans.Enums
     public enum FreddieMacArmIndexType
     {
         /// <summary>
+        /// 30-Day Average SOFR
+        /// </summary>
+        [Description("30-Day Average SOFR")]
+        [EnumMember(Value = "30DayAverageSOFR")]
+        n30DayAverageSOFR = 0,
+        /// <summary>
         /// 1-Year Treasury
         /// </summary>
         [Description("1-Year Treasury")]

@@ -245,6 +245,54 @@ namespace EncompassRest.Loans.Enums
         /// WSJ Prime Rate
         /// </summary>
         [Description("WSJ Prime Rate")]
-        WSJPrimeWkly = 46
+        WSJPrimeWkly = 46,
+        /// <summary>
+        /// Fannie Mae 3 Year - SOFR 30 Day Avg
+        /// </summary>
+        [Description("Fannie Mae 3 Year - SOFR 30 Day Avg")]
+        [EnumMember(Value = "Fannie_36_30SOFR")]
+        Fannie3630SOFR = 47,
+        /// <summary>
+        /// Fannie Mae 5 Year - SOFR 30 Day Avg
+        /// </summary>
+        [Description("Fannie Mae 5 Year - SOFR 30 Day Avg")]
+        [EnumMember(Value = "Fannie_56_30SOFR")]
+        Fannie5630SOFR = 48,
+        /// <summary>
+        /// Fannie Mae 7 Year - SOFR 30 Day Avg
+        /// </summary>
+        [Description("Fannie Mae 7 Year - SOFR 30 Day Avg")]
+        [EnumMember(Value = "Fannie_76_30SOFR")]
+        Fannie7630SOFR = 49,
+        /// <summary>
+        /// Fannie Mae 10 Year - SOFR 30 Day Avg
+        /// </summary>
+        [Description("Fannie Mae 10 Year - SOFR 30 Day Avg")]
+        [EnumMember(Value = "Fannie_106_30SOFR")]
+        Fannie10630SOFR = 50,
+        /// <summary>
+        /// Freddie Mac 3 Year - SOFR 30 Day Avg
+        /// </summary>
+        [Description("Freddie Mac 3 Year - SOFR 30 Day Avg")]
+        [EnumMember(Value = "Freddie_36_30SOFR")]
+        Freddie3630SOFR = 51,
+        /// <summary>
+        /// Freddie Mac 5 Year - SOFR 30 Day Avg
+        /// </summary>
+        [Description("Freddie Mac 5 Year - SOFR 30 Day Avg")]
+        [EnumMember(Value = "Freddie_56_30SOFR")]
+        Freddie5630SOFR = 52,
+        /// <summary>
+        /// Freddie Mac 7 Year - SOFR 30 Day Avg
+        /// </summary>
+        [Description("Freddie Mac 7 Year - SOFR 30 Day Avg")]
+        [EnumMember(Value = "Freddie_76_30SOFR")]
+        Freddie7630SOFR = 53,
+        /// <summary>
+        /// Freddie Mac 10 Year - SOFR 30 Day Avg 
+        /// </summary>
+        [Description("Freddie Mac 10 Year - SOFR 30 Day Avg ")]
+        [EnumMember(Value = "Freddie_106_30SOFR")]
+        Freddie10630SOFR = 54
     }
 }

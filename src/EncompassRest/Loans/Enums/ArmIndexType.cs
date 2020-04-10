@@ -72,6 +72,12 @@ namespace EncompassRest.Loans.Enums
         /// FNM_LIBOR
         /// </summary>
         [EnumMember(Value = "FNM_LIBOR")]
-        FNMLIBOR = 12
+        FNMLIBOR = 12,
+        /// <summary>
+        /// 30-Day Average SOFR
+        /// </summary>
+        [Description("30-Day Average SOFR")]
+        [EnumMember(Value = "30DayAverageSOFR")]
+        n30DayAverageSOFR = 13
     }
 }

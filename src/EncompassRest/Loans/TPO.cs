@@ -56,7 +56,9 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _companyRating;
         private DirtyValue<StringEnumValue<State>>? _companyState;
         private DirtyValue<string?>? _companyZip;
+        private DirtyValue<DateTime?>? _completeLoanPackageSubmissionDate;
         private DirtyValue<DateTime?>? _documentsReadyDate;
+        private DirtyValue<DateTime?>? _eligibilityPackageSubmissionDate;
         private DirtyValue<string?>? _feeReviewComments;
         private DirtyValue<string?>? _feeReviewStatus;
         private DirtyValue<DateTime?>? _feeReviewStatusDate;
@@ -346,9 +348,19 @@ namespace EncompassRest.Loans
         public string? CompanyZip { get => _companyZip; set => SetField(ref _companyZip, value); }
 
         /// <summary>
+        /// Complete Loan Package Submission Date [TPO.X114]
+        /// </summary>
+        public DateTime? CompleteLoanPackageSubmissionDate { get => _completeLoanPackageSubmissionDate; set => SetField(ref _completeLoanPackageSubmissionDate, value); }
+
+        /// <summary>
         /// TPO Documents and Conditions are Ready for Underwriter Review Date [TPO.X10]
         /// </summary>
         public DateTime? DocumentsReadyDate { get => _documentsReadyDate; set => SetField(ref _documentsReadyDate, value); }
+
+        /// <summary>
+        /// Eligibility Package Submission Date [TPO.X113]
+        /// </summary>
+        public DateTime? EligibilityPackageSubmissionDate { get => _eligibilityPackageSubmissionDate; set => SetField(ref _eligibilityPackageSubmissionDate, value); }
 
         /// <summary>
         /// TPO Fee Review Comments [TPO.X12]

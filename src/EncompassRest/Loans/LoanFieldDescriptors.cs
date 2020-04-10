@@ -332,11 +332,11 @@ namespace EncompassRest.Loans
                         foreach (var fieldInstancePair in propertySchema.FieldInstances)
                         {
                             fieldId = fieldInstancePair.Key;
-                            if (descriptionRetriever != null)
+                            if ((propertySchema.FieldInstances.Count > 1 || string.IsNullOrEmpty(description)) && descriptionRetriever != null)
                             {
                                 try
                                 {
-                                    description = descriptionRetriever(fieldId);
+                                    description = descriptionRetriever(fieldId) ?? description;
                                 }
                                 catch
                                 {
@@ -524,8 +524,8 @@ namespace EncompassRest.Loans
                                 {
                                     try
                                     {
-                                        description = descriptionRetriever(string.Format(fieldId, 1));
-                                        description = description.Replace(" #11", " #{0}").Replace(" #1", " #{0}");
+                                        description = descriptionRetriever(string.Format(fieldId, 1)) ?? description;
+                                        description = description?.Replace(" #11", " #{0}")?.Replace(" #1", " #{0}");
                                     }
                                     catch
                                     {

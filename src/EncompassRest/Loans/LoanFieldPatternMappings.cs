@@ -452,7 +452,9 @@ namespace EncompassRest.Loans
                     }
                     if (found)
                     {
+#pragma warning disable CS8762 // Parameter may not have a null value when exiting in some condition.
                         return true;
+#pragma warning restore CS8762 // Parameter may not have a null value when exiting in some condition.
                     }
                     var newStart = start;
                     foreach (var pair in node.Nodes)

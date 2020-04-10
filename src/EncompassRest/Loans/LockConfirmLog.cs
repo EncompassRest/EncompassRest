@@ -14,6 +14,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _buySideExpirationDate;
         private DirtyList<LogComment>? _commentList;
         private DirtyValue<string?>? _comments;
+        private DirtyValue<bool?>? _commitmentTermEnabled;
         private DirtyValue<string?>? _confirmedBy;
         private DirtyValue<string?>? _confirmedById;
         private DirtyValue<bool?>? _confirmedByIdIndicator;
@@ -57,6 +58,11 @@ namespace EncompassRest.Loans
         /// LockConfirmLog Comments
         /// </summary>
         public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+
+        /// <summary>
+        /// LockConfirmLog CommitmentTermEnabled
+        /// </summary>
+        public bool? CommitmentTermEnabled { get => _commitmentTermEnabled; set => SetField(ref _commitmentTermEnabled, value); }
 
         /// <summary>
         /// LockConfirmLog ConfirmedBy

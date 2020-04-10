@@ -20,6 +20,7 @@ namespace EncompassRest.Settings.Personas
         private ContactSetupRights? _contactSetup;
         private DirtyList<string>? _consumerConnect;
         private DashboardRights? _dashboard;
+        private DeliveryConditionsRights? _deliveryConditions;
         private DisclosureTrackingRights? _disclosureTracking;
         private DocsSetupRights? _docsSetup;
         private DocumentsRights? _documents;
@@ -37,6 +38,7 @@ namespace EncompassRest.Settings.Personas
         private DirtyList<string>? _itemizationFee;
         private DirtyList<string>? _loan;
         private LoanSetupRights? _loanSetup;
+        private LoConnectTasksRights? _loConnectTasks;
         private ManageServiceProvidersRights? _manageServiceProviders;
         private MilestoneWorkflowManagementRights? _milestoneWorkflowManagement;
         private MoveLoansRights? _moveLoans;
@@ -139,6 +141,12 @@ namespace EncompassRest.Settings.Personas
         public DashboardRights Dashboard { get => GetField(ref _dashboard); set => SetField(ref _dashboard, value); }
 
         /// <summary>
+        /// AclRights DeliveryConditions
+        /// </summary>
+        [AllowNull]
+        public DeliveryConditionsRights DeliveryConditions { get => GetField(ref _deliveryConditions); set => SetField(ref _deliveryConditions, value); }
+
+        /// <summary>
         /// AclRights DisclosureTracking
         /// </summary>
         [AllowNull]
@@ -239,6 +247,12 @@ namespace EncompassRest.Settings.Personas
         /// </summary>
         [AllowNull]
         public LoanSetupRights LoanSetup { get => GetField(ref _loanSetup); set => SetField(ref _loanSetup, value); }
+
+        /// <summary>
+        /// AclRights LoConnectTasks
+        /// </summary>
+        [AllowNull]
+        public LoConnectTasksRights LoConnectTasks { get => GetField(ref _loConnectTasks); set => SetField(ref _loConnectTasks, value); }
 
         /// <summary>
         /// AclRights ManageServiceProviders

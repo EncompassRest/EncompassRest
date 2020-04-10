@@ -120,6 +120,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _interestOnlyMonths;
         private DirtyValue<DateTime?>? _interestOnlyRecastDate;
         private DirtyValue<bool?>? _isConsumerLiklyDefault;
+        private DirtyValue<bool?>? _isCurrentHolderOrServicer;
         private DirtyValue<StringEnumValue<YesNoOrNA>>? _isEligibleForSafeHarbor;
         private DirtyValue<bool?>? _isEvaluatedAlimonyObligations;
         private DirtyValue<bool?>? _isEvaluatedChildSupportObligations;
@@ -805,6 +806,11 @@ namespace EncompassRest.Loans
         /// ATR QM - Non-Stardard to Standard Refinance Eligibility - Existing Loan - Is the Consumer likely to Default at the Recast Payment Amount? [QM.X16]
         /// </summary>
         public bool? IsConsumerLiklyDefault { get => _isConsumerLiklyDefault; set => SetField(ref _isConsumerLiklyDefault, value); }
+
+        /// <summary>
+        /// ATR QM - Non-Standard to Standard Refinance Eligibility - Creditor is current holder or servicer  [QM.X379]
+        /// </summary>
+        public bool? IsCurrentHolderOrServicer { get => _isCurrentHolderOrServicer; set => SetField(ref _isCurrentHolderOrServicer, value); }
 
         /// <summary>
         /// ATR QM - Eligibility - Is Loan Eligible for Safe Harbor? [QM.X25]

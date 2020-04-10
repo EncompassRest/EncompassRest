@@ -864,6 +864,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PriceAdjustmentLogRecord
         /// </summary>
-        PriceAdjustmentLogRecord = 216
+        PriceAdjustmentLogRecord = 216,
+        /// <summary>
+        /// Valuation
+        /// </summary>
+        Valuation = 217,
+        /// <summary>
+        /// EarlyCheck
+        /// </summary>
+        EarlyCheck = 218,
+        /// <summary>
+        /// Rider
+        /// </summary>
+        Rider = 219,
+        /// <summary>
+        /// PropertyValuation
+        /// </summary>
+        PropertyValuation = 220,
+        /// <summary>
+        /// SellConditionLog
+        /// </summary>
+        SellConditionLog = 221
     }
 }

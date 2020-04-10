@@ -143,7 +143,12 @@ namespace EncompassRest
                 typeof(PaymentBasisType),
                 typeof(ReoPropertyUsageType),
                 typeof(AdditionalLoanLienPosition),
-                typeof(BuydownContributor)
+                typeof(BuydownContributor),
+                typeof(FloodZone),
+                typeof(AppraisalPropertyType),
+                typeof(BuildingStatusType),
+                typeof(AttachmentType),
+                typeof(PropertyImprovementsType)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (var sharedEnumType in sharedEnumTypes)
@@ -214,7 +219,7 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
 
-        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Borrower.Application", "Uldd.ENoteIndicator", "GoodFaithFeeVarianceCureLog.GffVAlertTriggerFieldLog", "VaLoanData.VaEemIncludedinBaseLoanAmountIndicator", "VaLoanData.VaEnergyEfficientImprovementsFinancedAmount", "VaLoanData.VaFinancedClosingCostsToExcludeAmount", "VaLoanData.VaRateReducedSolelybyDiscountPointsIndicator", "VaLoanData.VaStatutoryClosingCosts", "VaLoanData.VaStatutoryMonthlyPayment", "VaLoanData.VaStatutoryMonthlyReduction", "VaLoanData.VaStatutoryRecoupmentMonths" };
+        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Loan.ConditionLogs", "Borrower.Application", "Uldd.ENoteIndicator", "GoodFaithFeeVarianceCureLog.GffVAlertTriggerFieldLog", "VaLoanData.VaEemIncludedinBaseLoanAmountIndicator", "VaLoanData.VaEnergyEfficientImprovementsFinancedAmount", "VaLoanData.VaFinancedClosingCostsToExcludeAmount", "VaLoanData.VaRateReducedSolelybyDiscountPointsIndicator", "VaLoanData.VaStatutoryClosingCosts", "VaLoanData.VaStatutoryMonthlyPayment", "VaLoanData.VaStatutoryMonthlyReduction", "VaLoanData.VaStatutoryRecoupmentMonths" };
 
         private static readonly HashSet<string> s_propertiesWithInternalFields = new HashSet<string> { "CustomField.DateValue", "CustomField.NumericValue", "CustomField.StringValue", "FieldLockData.ModelPath" };
 
@@ -376,7 +381,7 @@ namespace EncompassRest
 
                 var otherEnums = new Dictionary<string, Dictionary<string, string>>();
 
-                LoanFieldDescriptors.PopulateFieldMappings("Loan", "Loan", typeof(LoanContract), loanEntitySchema, null, entityTypes, fields, fieldPatterns, extendedFieldInfo: false, (string entityName, Type ellieType, EntitySchema entitySchema, HashSet<string> requiredProperties, bool serializeWholeList) => GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums, requiredProperties, serializeWholeList), fieldId => EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId].Description, Console.Out);
+                LoanFieldDescriptors.PopulateFieldMappings("Loan", "Loan", typeof(LoanContract), loanEntitySchema, null, entityTypes, fields, fieldPatterns, extendedFieldInfo: false, (string entityName, Type ellieType, EntitySchema entitySchema, HashSet<string> requiredProperties, bool serializeWholeList) => GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums, requiredProperties, serializeWholeList), fieldId => EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId]?.Description, Console.Out);
 
                 entityTypes.Remove("Loan");
 
@@ -804,6 +809,10 @@ namespace EncompassRest
                                 {
                                     otherEnums.Add(enumName, optionValues);
                                 }
+                            }
+                            if (Enums.TryParse<LoanEntity>(enumName, out _))
+                            {
+                                enumName = $"Enums.{enumName}";
                             }
                             propertyType = $"StringEnumValue<{enumName}>";
                         }

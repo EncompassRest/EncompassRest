@@ -39,7 +39,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _applicantHomePhoneNumber;
         private DirtyValue<string?>? _applicantLastNameWithSuffix;
         private DirtyValue<string?>? _applicantTaxIdentificationIdentifier;
-        private DirtyValue<StringEnumValue<VaLoanDataAppraisalType>>? _appraisalType;
+        private DirtyValue<StringEnumValue<AppraisalPropertyType>>? _appraisalType;
         private DirtyValue<bool?>? _automaticProcedure;
         private DirtyValue<bool?>? _availableForInspectionAMIndicator;
         private DirtyValue<string?>? _availableForInspectionDateAndTime;
@@ -84,11 +84,13 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _existingVALoanNumber;
         private DirtyValue<decimal?>? _finalDiscountAmount;
         private DirtyValue<decimal?>? _finalFundingFeeAmount;
+        private DirtyValue<DateTime?>? _finalRecoupmentFormProvidedDate;
         private DirtyValue<bool?>? _firstChattelLoanType;
         private DirtyValue<bool?>? _firstTimeUse;
         private DirtyValue<bool?>? _fundingFeeExempt;
         private DirtyValue<bool?>? _garbageDisposalIndicator;
         private DirtyValue<string?>? _id;
+        private DirtyValue<DateTime?>? _initialRecoupmentFormProvidedDate;
         private DirtyValue<decimal?>? _initialTotal;
         private DirtyValue<StringEnumValue<InspectionWillBeMadeBy>>? _inspectionWillBeMadeBy;
         private DirtyValue<bool?>? _insulation;
@@ -457,7 +459,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Appraisal Type [962]
         /// </summary>
-        public StringEnumValue<VaLoanDataAppraisalType> AppraisalType { get => _appraisalType; set => SetField(ref _appraisalType, value); }
+        public StringEnumValue<AppraisalPropertyType> AppraisalType { get => _appraisalType; set => SetField(ref _appraisalType, value); }
 
         /// <summary>
         /// VA Loan Disbursement - Automatic Procedure [VASUMM.X51]
@@ -708,6 +710,11 @@ namespace EncompassRest.Loans
         public decimal? FinalFundingFeeAmount { get => _finalFundingFeeAmount; set => SetField(ref _finalFundingFeeAmount, value); }
 
         /// <summary>
+        /// Final Recoupment Form Provided Date [VASUMM.X136]
+        /// </summary>
+        public DateTime? FinalRecoupmentFormProvidedDate { get => _finalRecoupmentFormProvidedDate; set => SetField(ref _finalRecoupmentFormProvidedDate, value); }
+
+        /// <summary>
         /// VA Loan Disbursement - Type of Loan - First Chattel  [VASUMM.X53]
         /// </summary>
         public bool? FirstChattelLoanType { get => _firstChattelLoanType; set => SetField(ref _firstChattelLoanType, value); }
@@ -733,6 +740,11 @@ namespace EncompassRest.Loans
         /// VaLoanData Id
         /// </summary>
         public string? Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// Initial Recoupment Form Provided Date [VASUMM.X135]
+        /// </summary>
+        public DateTime? InitialRecoupmentFormProvidedDate { get => _initialRecoupmentFormProvidedDate; set => SetField(ref _initialRecoupmentFormProvidedDate, value); }
 
         /// <summary>
         /// VA Initial Computation Total [VARRRWS.X2]

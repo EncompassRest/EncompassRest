@@ -92,6 +92,10 @@ namespace EncompassRest.Schema
         /// Audit Trail
         /// </summary>
         [EnumMember(Value = "Audit Trail")]
-        AuditTrail = 19
+        AuditTrail = 19,
+        /// <summary>
+        /// LoanProperties
+        /// </summary>
+        LoanProperties = 20
     }
 }
