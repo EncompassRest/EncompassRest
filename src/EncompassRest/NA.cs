@@ -156,7 +156,7 @@ namespace EncompassRest
             {
                 case JsonToken.Null:
                     return new NA<T>();
-                case JsonToken.String when string.Equals(reader.Value.ToString(), "NA", StringComparison.OrdinalIgnoreCase):
+                case JsonToken.String when string.Equals(reader.Value.ToString(), "NA", StringComparison.OrdinalIgnoreCase) || string.Equals(reader.Value.ToString(), "N/A", StringComparison.OrdinalIgnoreCase):
                     return new NA<T>("NA");
                 default:
                     return new NA<T>(serializer.Deserialize<T>(reader));
@@ -171,7 +171,7 @@ namespace EncompassRest
             {
                 return new NA<T>();
             }
-            if (string.Equals(value, "NA", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(value, "NA", StringComparison.OrdinalIgnoreCase) || string.Equals(value, "N/A", StringComparison.OrdinalIgnoreCase))
             {
                 return new NA<T>("NA");
             }
