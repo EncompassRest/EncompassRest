@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using EncompassRest.Utilities;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EncompassRest
 {
@@ -145,7 +146,7 @@ namespace EncompassRest
         /// <returns></returns>
         public static bool operator !=(NA<T> left, NA<T> right) => !(left == right);
     }
-    
+
     internal sealed class NAConverter<T> : JsonConverter, IStringCreator
     {
         public override bool CanConvert(Type objectType) => objectType == TypeData<NA<T>>.Type || objectType == TypeData<NA<T>?>.Type;
@@ -156,7 +157,7 @@ namespace EncompassRest
             {
                 case JsonToken.Null:
                     return new NA<T>();
-                case JsonToken.String when string.Equals(reader.Value.ToString(), "NA", StringComparison.OrdinalIgnoreCase) || string.Equals(reader.Value.ToString(), "N/A", StringComparison.OrdinalIgnoreCase):
+                case JsonToken.String when IsNA(reader.Value.ToString()):
                     return new NA<T>("NA");
                 default:
                     return new NA<T>(serializer.Deserialize<T>(reader));
@@ -165,17 +166,16 @@ namespace EncompassRest
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
 
-        public object Create(string? value)
-        {
-            if (value == null)
-            {
-                return new NA<T>();
-            }
-            if (string.Equals(value, "NA", StringComparison.OrdinalIgnoreCase) || string.Equals(value, "N/A", StringComparison.OrdinalIgnoreCase))
-            {
-                return new NA<T>("NA");
-            }
-            return new NA<T>(JsonHelper.FromJson<T>(value));
-        }
+        public object Create(string? value) => value == null
+            ? new NA<T>()
+            : (IsNA(value)
+                ? new NA<T>("NA")
+                : (object)new NA<T>(JsonHelper.FromJson<T>(value)));
+
+        private static bool IsNA(string value) => string.Equals(new string(value
+#if !STRING_GENERIC_IENUMERABLE
+            .Cast<char>()
+#endif
+            .Where(c => !char.IsPunctuation(c) && !char.IsWhiteSpace(c)).ToArray()), "NA", StringComparison.OrdinalIgnoreCase);
     }
 }
