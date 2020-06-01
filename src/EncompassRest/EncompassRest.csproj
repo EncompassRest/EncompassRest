@@ -20,7 +20,7 @@
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>encompassrest.snk</AssemblyOriginatorKeyFile>
     <Nullable>enable</Nullable>
-    <RepositoryBranch>1.2.x</RepositoryBranch>
+    <RepositoryBranch>v1.2.x</RepositoryBranch>
   </PropertyGroup>
 
   <ItemGroup>
