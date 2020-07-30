@@ -51,7 +51,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _lastPaymentReceivedDate;
         private DirtyValue<DateTime?>? _lastPaymentStatementDate;
         private DirtyValue<decimal?>? _lastPaymentTotalAmountReceived;
-        private DirtyValue<SchedulePaymentTransaction>? _lastScheduledPayment;
+        private DirtyValue<SchedulePaymentTransaction?>? _lastScheduledPayment;
         private DirtyValue<DateTime?>? _lastStatementPrintedDate;
         private DirtyList<LoanPurchaseTransaction>? _loanPurchaseTransactions;
         private DirtyValue<string?>? _loanSnapshotXml;
@@ -104,7 +104,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _nextPaymentTotalAmountDue;
         private DirtyValue<decimal?>? _nextPaymentTotalAmountWithLateFee;
         private DirtyValue<decimal?>? _nextPaymentUnpaidLateFee;
-        private DirtyValue<SchedulePaymentTransaction>? _nextScheduledPayment;
+        private DirtyValue<SchedulePaymentTransaction?>? _nextScheduledPayment;
         private DirtyValue<int?>? _numberOfDisbursement;
         private DirtyList<OtherTransaction>? _otherTransactions;
         private DirtyValue<DateTime?>? _paymentDueDatePrinted;
@@ -401,9 +401,9 @@ namespace EncompassRest.Loans
         public decimal? LastPaymentTotalAmountReceived { get => _lastPaymentTotalAmountReceived; set => SetField(ref _lastPaymentTotalAmountReceived, value); }
 
         /// <summary>
-        /// InterimServicing LastScheduledPayment (Nullable)
+        /// InterimServicing LastScheduledPayment
         /// </summary>
-        public SchedulePaymentTransaction LastScheduledPayment { get => _lastScheduledPayment; set => SetField(ref _lastScheduledPayment, value); }
+        public SchedulePaymentTransaction? LastScheduledPayment { get => _lastScheduledPayment; set => SetField(ref _lastScheduledPayment, value); }
 
         /// <summary>
         /// Intrm Serv Current Status Last Statement Printed [SERVICE.X9]
@@ -700,9 +700,9 @@ namespace EncompassRest.Loans
         public decimal? NextPaymentUnpaidLateFee { get => _nextPaymentUnpaidLateFee; set => SetField(ref _nextPaymentUnpaidLateFee, value); }
 
         /// <summary>
-        /// InterimServicing NextScheduledPayment (Nullable)
+        /// InterimServicing NextScheduledPayment
         /// </summary>
-        public SchedulePaymentTransaction NextScheduledPayment { get => _nextScheduledPayment; set => SetField(ref _nextScheduledPayment, value); }
+        public SchedulePaymentTransaction? NextScheduledPayment { get => _nextScheduledPayment; set => SetField(ref _nextScheduledPayment, value); }
 
         /// <summary>
         /// Intrm Serv Escrow Summary Number of Disbursement [SERVICE.X74]

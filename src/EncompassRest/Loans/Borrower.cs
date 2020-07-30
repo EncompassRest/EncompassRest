@@ -69,7 +69,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _confirmedMtgDelIncorrect;
         private DirtyValue<bool?>? _confirmedOther;
         private DirtyValue<string?>? _confirmedOtherDescription;
-        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<EntityReference?>? _contact;
         private DirtyValue<string?>? _counselingConfirmationType;
         private DirtyValue<string?>? _counselingConfirmationTypeDescription;
         private DirtyValue<string?>? _counselingFormatTypeDescription;
@@ -797,9 +797,9 @@ namespace EncompassRest.Loans
         public string? ConfirmedOtherDescription { get => _confirmedOtherDescription; set => SetField(ref _confirmedOtherDescription, value); }
 
         /// <summary>
-        /// Borrower Contact (Nullable)
+        /// Borrower Contact
         /// </summary>
-        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+        public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Borrower CounselingConfirmationType

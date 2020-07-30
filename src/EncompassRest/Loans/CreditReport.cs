@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class CreditReport : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<EntityReference?>? _contact;
         private DirtyValue<string?>? _creditReportCompany;
         private DirtyValue<DateTime?>? _creditReportDate;
         private DirtyValue<string?>? _creditReportId;
@@ -20,9 +20,9 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _verifySsn;
 
         /// <summary>
-        /// CreditReport Contact (Nullable)
+        /// CreditReport Contact
         /// </summary>
-        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+        public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// CreditReport CreditReportCompany

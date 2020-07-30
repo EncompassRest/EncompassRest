@@ -12,16 +12,16 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _age;
         private DirtyValue<DateTime?>? _ageClosedDate;
         private DirtyValue<DateTime?>? _ageStartDate;
-        private DirtyValue<EntityReference>? _application;
+        private DirtyValue<EntityReference?>? _application;
         private DirtyList<EntityReference>? _assignedTo;
         private DirtyValue<string?>? _category;
         private DirtyList<LogComment>? _commentList;
         private DirtyValue<int?>? _commentsCount;
         private DirtyValue<string?>? _conditionType;
-        private DirtyValue<EntityReference>? _createdBy;
+        private DirtyValue<EntityReference?>? _createdBy;
         private DirtyValue<DateTime?>? _createdDate;
         private DirtyValue<int?>? _daysToReceive;
-        private DirtyValue<EnhancedConditionDefinition>? _definitions;
+        private DirtyValue<EnhancedConditionDefinition?>? _definitions;
         private DirtyValue<DateTime?>? _endDate;
         private DirtyValue<string?>? _externalDescription;
         private DirtyValue<string?>? _externalId;
@@ -32,7 +32,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _internalId;
         private DirtyValue<bool?>? _internalPrint;
         private DirtyValue<bool?>? _isRemoved;
-        private DirtyValue<EntityReference>? _lastModifiedBy;
+        private DirtyValue<EntityReference?>? _lastModifiedBy;
         private DirtyValue<DateTime?>? _lastModifiedDate;
         private DirtyValue<string?>? _priorTo;
         private DirtyValue<DateTime?>? _publishedDate;
@@ -62,9 +62,9 @@ namespace EncompassRest.Loans
         public DateTime? AgeStartDate { get => _ageStartDate; set => SetField(ref _ageStartDate, value); }
 
         /// <summary>
-        /// EnhancedConditionLog Application (Nullable)
+        /// EnhancedConditionLog Application
         /// </summary>
-        public EntityReference Application { get => _application; set => SetField(ref _application, value); }
+        public EntityReference? Application { get => _application; set => SetField(ref _application, value); }
 
         /// <summary>
         /// EnhancedConditionLog AssignedTo
@@ -94,9 +94,9 @@ namespace EncompassRest.Loans
         public string? ConditionType { get => _conditionType; set => SetField(ref _conditionType, value); }
 
         /// <summary>
-        /// EnhancedConditionLog CreatedBy (Nullable)
+        /// EnhancedConditionLog CreatedBy
         /// </summary>
-        public EntityReference CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
+        public EntityReference? CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
 
         /// <summary>
         /// EnhancedConditionLog CreatedDate
@@ -109,9 +109,9 @@ namespace EncompassRest.Loans
         public int? DaysToReceive { get => _daysToReceive; set => SetField(ref _daysToReceive, value); }
 
         /// <summary>
-        /// EnhancedConditionLog Definitions (Nullable)
+        /// EnhancedConditionLog Definitions
         /// </summary>
-        public EnhancedConditionDefinition Definitions { get => _definitions; set => SetField(ref _definitions, value); }
+        public EnhancedConditionDefinition? Definitions { get => _definitions; set => SetField(ref _definitions, value); }
 
         /// <summary>
         /// EnhancedConditionLog EndDate
@@ -164,9 +164,9 @@ namespace EncompassRest.Loans
         public bool? IsRemoved { get => _isRemoved; set => SetField(ref _isRemoved, value); }
 
         /// <summary>
-        /// EnhancedConditionLog LastModifiedBy (Nullable)
+        /// EnhancedConditionLog LastModifiedBy
         /// </summary>
-        public EntityReference LastModifiedBy { get => _lastModifiedBy; set => SetField(ref _lastModifiedBy, value); }
+        public EntityReference? LastModifiedBy { get => _lastModifiedBy; set => SetField(ref _lastModifiedBy, value); }
 
         /// <summary>
         /// EnhancedConditionLog LastModifiedDate

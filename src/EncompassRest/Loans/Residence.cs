@@ -20,7 +20,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _addressUnitIdentifier;
         private DirtyValue<string?>? _altId;
         private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>>? _applicantType;
-        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<EntityReference?>? _contact;
         private DirtyValue<string?>? _countryCode;
         private DirtyValue<string?>? _county;
         private DirtyValue<bool?>? _doesNotApplyIndicator;
@@ -105,9 +105,9 @@ namespace EncompassRest.Loans
         public StringEnumValue<BorrowerOrCoBorrower> ApplicantType { get => _applicantType; set => SetField(ref _applicantType, value); }
 
         /// <summary>
-        /// Residence Contact (Nullable)
+        /// Residence Contact
         /// </summary>
-        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+        public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Residence CountryCode

@@ -10,7 +10,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _date;
         private DirtyValue<bool?>? _isChecked;
         private DirtyValue<string?>? _status;
-        private DirtyValue<EntityReference>? _user;
+        private DirtyValue<EntityReference?>? _user;
 
         /// <summary>
         /// TrackingEntryLog Date
@@ -28,8 +28,8 @@ namespace EncompassRest.Loans
         public string? Status { get => _status; set => SetField(ref _status, value); }
 
         /// <summary>
-        /// TrackingEntryLog User (Nullable)
+        /// TrackingEntryLog User
         /// </summary>
-        public EntityReference User { get => _user; set => SetField(ref _user, value); }
+        public EntityReference? User { get => _user; set => SetField(ref _user, value); }
     }
 }

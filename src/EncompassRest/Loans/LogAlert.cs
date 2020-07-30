@@ -10,7 +10,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _dueDate;
         private DirtyValue<DateTime?>? _followedUpDate;
         private DirtyValue<string?>? _id;
-        private DirtyValue<LogRecord>? _logRecord;
+        private DirtyValue<LogRecord?>? _logRecord;
         private DirtyValue<int?>? _roleId;
         private DirtyValue<string?>? _systemId;
         private DirtyValue<string?>? _userId;
@@ -31,9 +31,9 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// LogAlert LogRecord (Nullable)
+        /// LogAlert LogRecord
         /// </summary>
-        public LogRecord LogRecord { get => _logRecord; set => SetField(ref _logRecord, value); }
+        public LogRecord? LogRecord { get => _logRecord; set => SetField(ref _logRecord, value); }
 
         /// <summary>
         /// LogAlert RoleId

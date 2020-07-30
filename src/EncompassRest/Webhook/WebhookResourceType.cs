@@ -8,7 +8,7 @@ namespace EncompassRest.Webhook
     public enum WebhookResourceType
     {
         /// <summary>
-        /// Loan
+        /// loan
         /// </summary>
         [EnumMember(Value = "loan")]
         Loan = 0,
