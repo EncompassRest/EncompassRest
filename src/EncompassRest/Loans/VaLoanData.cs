@@ -48,6 +48,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _buyerPurchasingLotSeparately;
         private DirtyValue<decimal?>? _cashDisbursedToBorrowerAmount;
         private DirtyValue<decimal?>? _cashPaymentFromVeteran;
+        private DirtyValue<decimal?>? _cdNonShoppableLessFundingFee;
         private DirtyValue<StringEnumValue<ClaimDisabilityBenefits>>? _claimDisabilityBenefits;
         private DirtyValue<bool?>? _clothesWasherIndicator;
         private DirtyValue<DateTime?>? _constructionCompletedDate;
@@ -90,6 +91,15 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _fundingFeeExempt;
         private DirtyValue<bool?>? _garbageDisposalIndicator;
         private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _includeLenderCreditIndicator;
+        private DirtyValue<bool?>? _includeSectionAIndicator;
+        private DirtyValue<bool?>? _includeSectionBOtherIndicator;
+        private DirtyValue<bool?>? _includeSectionBVaFundingFeeIndicator;
+        private DirtyValue<bool?>? _includeSectionCIndicator;
+        private DirtyValue<bool?>? _includeSectionEIndicator;
+        private DirtyValue<bool?>? _includeSectionFIndicator;
+        private DirtyValue<bool?>? _includeSectionGIndicator;
+        private DirtyValue<bool?>? _includeSectionHIndicator;
         private DirtyValue<DateTime?>? _initialRecoupmentFormProvidedDate;
         private DirtyValue<decimal?>? _initialTotal;
         private DirtyValue<StringEnumValue<InspectionWillBeMadeBy>>? _inspectionWillBeMadeBy;
@@ -101,6 +111,8 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _landPurchasePrice;
         private DirtyValue<StringEnumValue<LeaseholdType>>? _leaseholdType;
         private DirtyValue<string?>? _lenderSAR;
+        private DirtyValue<int?>? _leRecoupmentMonths;
+        private DirtyValue<decimal?>? _leTotalClosingCosts;
         private DirtyValue<string?>? _loanAnalysisRemarks1;
         private DirtyValue<string?>? _loanAnalysisRemarks2;
         private DirtyValue<string?>? _loanAnalysisRemarks3;
@@ -508,6 +520,12 @@ namespace EncompassRest.Loans
         public decimal? CashPaymentFromVeteran { get => _cashPaymentFromVeteran; set => SetField(ref _cashPaymentFromVeteran, value); }
 
         /// <summary>
+        /// VA Management - Qualification - Closing Cost Recoupment - CD Non Shoppable Less Funding Fee [VASUMM.X137]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? CdNonShoppableLessFundingFee { get => _cdNonShoppableLessFundingFee; set => SetField(ref _cdNonShoppableLessFundingFee, value); }
+
+        /// <summary>
         /// VA Certifcation Filed Claim Prior to Discharge [VAVOB.X71]
         /// </summary>
         public StringEnumValue<ClaimDisabilityBenefits> ClaimDisabilityBenefits { get => _claimDisabilityBenefits; set => SetField(ref _claimDisabilityBenefits, value); }
@@ -742,6 +760,51 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
+        /// VA Management Tool - Include Lender Credit In Recoupment Test [VASUMM.X148]
+        /// </summary>
+        public bool? IncludeLenderCreditIndicator { get => _includeLenderCreditIndicator; set => SetField(ref _includeLenderCreditIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Include Section A In Recoupment Test [VASUMM.X140]
+        /// </summary>
+        public bool? IncludeSectionAIndicator { get => _includeSectionAIndicator; set => SetField(ref _includeSectionAIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Include Section B Other In Recoupment Test [VASUMM.X142]
+        /// </summary>
+        public bool? IncludeSectionBOtherIndicator { get => _includeSectionBOtherIndicator; set => SetField(ref _includeSectionBOtherIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Include Section B VA Funding Fee In Recoupment Test [VASUMM.X141]
+        /// </summary>
+        public bool? IncludeSectionBVaFundingFeeIndicator { get => _includeSectionBVaFundingFeeIndicator; set => SetField(ref _includeSectionBVaFundingFeeIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Include Section C In Recoupment Test [VASUMM.X143]
+        /// </summary>
+        public bool? IncludeSectionCIndicator { get => _includeSectionCIndicator; set => SetField(ref _includeSectionCIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Include Section E In Recoupment Test [VASUMM.X144]
+        /// </summary>
+        public bool? IncludeSectionEIndicator { get => _includeSectionEIndicator; set => SetField(ref _includeSectionEIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Include Section F In Recoupment Test [VASUMM.X145]
+        /// </summary>
+        public bool? IncludeSectionFIndicator { get => _includeSectionFIndicator; set => SetField(ref _includeSectionFIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Include Section G In Recoupment Test [VASUMM.X146]
+        /// </summary>
+        public bool? IncludeSectionGIndicator { get => _includeSectionGIndicator; set => SetField(ref _includeSectionGIndicator, value); }
+
+        /// <summary>
+        /// VA Management Tool - Include Section H In Recoupment Test [VASUMM.X147]
+        /// </summary>
+        public bool? IncludeSectionHIndicator { get => _includeSectionHIndicator; set => SetField(ref _includeSectionHIndicator, value); }
+
+        /// <summary>
         /// Initial Recoupment Form Provided Date [VASUMM.X135]
         /// </summary>
         public DateTime? InitialRecoupmentFormProvidedDate { get => _initialRecoupmentFormProvidedDate; set => SetField(ref _initialRecoupmentFormProvidedDate, value); }
@@ -799,6 +862,17 @@ namespace EncompassRest.Loans
         /// VA Loan Summ Lender SAR ID [VASUMM.X6]
         /// </summary>
         public string? LenderSAR { get => _lenderSAR; set => SetField(ref _lenderSAR, value); }
+
+        /// <summary>
+        /// VA Management - Qualification - Closing Cost Recoupment - Opening Recoupment Months [VASUMM.X139]
+        /// </summary>
+        public int? LeRecoupmentMonths { get => _leRecoupmentMonths; set => SetField(ref _leRecoupmentMonths, value); }
+
+        /// <summary>
+        /// VA Management - Qualification - Closing Cost Recoupment - Total Opening Closing Costs [VASUMM.X138]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? LeTotalClosingCosts { get => _leTotalClosingCosts; set => SetField(ref _leTotalClosingCosts, value); }
 
         /// <summary>
         /// VA Loan Analysis Remarks 1 [VALA.X10]
@@ -1628,7 +1702,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management - Qualification - Recoup Closing Costs [VASUMM.X27]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public int? VARecoupmentClosingCosts { get => _vARecoupmentClosingCosts; set => SetField(ref _vARecoupmentClosingCosts, value); }
 
         /// <summary>
@@ -1639,7 +1712,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management - Qualification - Closing Cost Recoupment - Monthly Decrease in Payment [VASUMM.X22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VARecoupmentMonthlyDecreaseInPayment { get => _vARecoupmentMonthlyDecreaseInPayment; set => SetField(ref _vARecoupmentMonthlyDecreaseInPayment, value); }
 
         /// <summary>
@@ -1681,7 +1754,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Statutory Recoupment Months [VASUMM.X130]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public int? VAStatutoryRecoupmentMonths { get => _vAStatutoryRecoupmentMonths; set => SetField(ref _vAStatutoryRecoupmentMonths, value); }
 
         /// <summary>

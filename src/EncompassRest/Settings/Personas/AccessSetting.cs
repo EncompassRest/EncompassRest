@@ -12,6 +12,10 @@
         /// <summary>
         /// Custom
         /// </summary>
-        Custom = 1
+        Custom = 1,
+        /// <summary>
+        /// None
+        /// </summary>
+        None = 2
     }
 }

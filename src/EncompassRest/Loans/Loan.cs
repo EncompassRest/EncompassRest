@@ -119,6 +119,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _encompassId;
         private DirtyValue<string?>? _encompassVersion;
         private DirtyValue<bool?>? _enforceCountyLoanLimit;
+        private DirtyList<EnhancedConditionLog>? _enhancedConditionLogs;
         private DirtyValue<decimal?>? _estimatedClosingCostsAmount;
         private DirtyValue<decimal?>? _estimatedConstructionInterest;
         private DirtyValue<decimal?>? _estimatedPrepaidItemsAmount;
@@ -398,6 +399,7 @@ namespace EncompassRest.Loans
         private DirtyList<SettlementServiceCharge>? _settlementServiceCharges;
         private Shipping? _shipping;
         private DirtyValue<bool?>? _simpleRefinanceType;
+        private DirtyList<SpecialFeatureCode>? _specialFeatureCodes;
         private DirtyValue<decimal?>? _startingAdjPrice;
         private DirtyValue<decimal?>? _startingAdjRate;
         private StateDisclosure? _stateDisclosure;
@@ -1084,6 +1086,12 @@ namespace EncompassRest.Loans
         /// Enforce County Loan Limit [3894]
         /// </summary>
         public bool? EnforceCountyLoanLimit { get => _enforceCountyLoanLimit; set => SetField(ref _enforceCountyLoanLimit, value); }
+
+        /// <summary>
+        /// Loan EnhancedConditionLogs
+        /// </summary>
+        [AllowNull]
+        public IList<EnhancedConditionLog> EnhancedConditionLogs { get => GetField(ref _enhancedConditionLogs); set => SetField(ref _enhancedConditionLogs, value); }
 
         /// <summary>
         /// Trans Details Est Closing Costs [137]
@@ -2644,6 +2652,12 @@ namespace EncompassRest.Loans
         /// Simple Refinance (FHA to FHA) [MORNET.X41]
         /// </summary>
         public bool? SimpleRefinanceType { get => _simpleRefinanceType; set => SetField(ref _simpleRefinanceType, value); }
+
+        /// <summary>
+        /// Loan SpecialFeatureCodes
+        /// </summary>
+        [AllowNull]
+        public IList<SpecialFeatureCode> SpecialFeatureCodes { get => GetField(ref _specialFeatureCodes); set => SetField(ref _specialFeatureCodes, value); }
 
         /// <summary>
         /// Loan StartingAdjPrice

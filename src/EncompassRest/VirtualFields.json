@@ -1985,6 +1985,66 @@
     "Description": "eDisclosure Count"
   },
   {
+    "Format": 101,
+    "FieldId": "ENHCOND.ALL",
+    "Description": "All Enhanced Conditions of all condition types"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.COUNT.ALL",
+    "Description": "Number of External and Internal Conditions of all condition types"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.EXT.OPEN.TYPE.ALL",
+    "Description": "All Open External Enhanced Conditions of all condition types"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.EXT.OPEN.TYPE.COUNT.ALL",
+    "Description": "Number of Open External Enhanced Conditions"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.EXT.TYPE.ALL",
+    "Description": "All External Enhanced Conditions of all condition types"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.EXT.TYPE.COUNT.ALL",
+    "Description": "Number of External Enhanced Conditions"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.INT.OPEN.TYPE.ALL",
+    "Description": "All Open Internal Enhanced Conditions of all condition types"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.INT.OPEN.TYPE.COUNT.ALL",
+    "Description": "Number of Open Internal Enhanced Conditions of all condition types"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.INT.TYPE.ALL",
+    "Description": "All Internal Enhanced Conditions of all condition types"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.INT.TYPE.COUNT.ALL",
+    "Description": "Number of Internal Enhanced Conditions of all condition types"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.OPEN.ALL",
+    "Description": "All Open Enhanced Conditions of all condition types"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.OPEN.COUNT.ALL",
+    "Description": "Number of Open External and Internal Conditions of all condition types"
+  },
+  {
     "Format": 201,
     "FieldId": "FICO",
     "Description": "FICO"

@@ -366,6 +366,12 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// WellsFargoCostofSavingsMonthly
         /// </summary>
-        WellsFargoCostofSavingsMonthly = 75
+        WellsFargoCostofSavingsMonthly = 75,
+        /// <summary>
+        /// 30-Day Average SOFR
+        /// </summary>
+        [Description("30-Day Average SOFR")]
+        [EnumMember(Value = "SOFR_30DayAvg")]
+        SOFR30DayAvg = 76
     }
 }

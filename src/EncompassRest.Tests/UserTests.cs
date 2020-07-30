@@ -19,8 +19,8 @@ namespace EncompassRest.Tests
             {
                 Assert.IsNotNull(user.Client);
                 Assert.IsNotNull(user.UserApis);
-                AssertNoExtensionData(user, "User", user.Id, true);
             }
+            AssertNoExtensionData(users, "Users", null, true);
         }
 
         [TestMethod]

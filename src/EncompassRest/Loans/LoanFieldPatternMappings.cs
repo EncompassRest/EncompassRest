@@ -157,7 +157,24 @@ namespace EncompassRest.Loans
         /// <returns></returns>
         public bool ContainsKey(string fieldPattern) => TryGetValue(fieldPattern, out _);
 
-        internal bool TryGetDescriptorForFieldId(string fieldId, [NotNullWhen(true)] out FieldDescriptor? descriptor) => _standardFieldPatterns.TryGetDescriptorForFieldId(fieldId, out descriptor) || _virtualFieldPatterns.TryGetDescriptorForFieldId(fieldId, out descriptor);
+        internal bool TryGetDescriptorForFieldId(string fieldId, [NotNullWhen(true)] out FieldDescriptor? descriptor)
+        {
+            _standardFieldPatterns.TryGetDescriptorForFieldId(fieldId, out var descriptor1);
+            _virtualFieldPatterns.TryGetDescriptorForFieldId(fieldId, out var descriptor2);
+            if (descriptor1 != null)
+            {
+                descriptor = descriptor1;
+                if (descriptor2 != null && descriptor2.InstanceSpecifier!.Length < descriptor1.InstanceSpecifier!.Length)
+                {
+                    descriptor = descriptor2;
+                }
+            }
+            else
+            {
+                descriptor = descriptor2;
+            }
+            return descriptor != null;
+        }
 
         private FieldDescriptor CreateFieldDescriptor(string fieldPattern, string modelPathPattern)
         {

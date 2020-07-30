@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.Enums
@@ -27,6 +28,12 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// WeeklyThreeYearTreasurySecuritiesConstantMaturityFRBH15
         /// </summary>
-        WeeklyThreeYearTreasurySecuritiesConstantMaturityFRBH15 = 4
+        WeeklyThreeYearTreasurySecuritiesConstantMaturityFRBH15 = 4,
+        /// <summary>
+        /// 30-Day Average SOFR
+        /// </summary>
+        [Description("30-Day Average SOFR")]
+        [EnumMember(Value = "SOFR_30DayAvg")]
+        SOFR30DayAvg = 5
     }
 }

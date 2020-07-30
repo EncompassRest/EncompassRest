@@ -96,6 +96,11 @@ namespace EncompassRest.Loans.Enums
         /// Forgivable Secured Loan
         /// </summary>
         [Description("Forgivable Secured Loan")]
-        ForgivableSecuredLoan = 17
+        ForgivableSecuredLoan = 17,
+        /// <summary>
+        /// Equity On Sold Property
+        /// </summary>
+        [Description("Equity On Sold Property")]
+        EquityOnSoldProperty = 18
     }
 }

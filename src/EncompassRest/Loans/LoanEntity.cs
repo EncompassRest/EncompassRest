@@ -884,6 +884,42 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SellConditionLog
         /// </summary>
-        SellConditionLog = 221
+        SellConditionLog = 221,
+        /// <summary>
+        /// Scenario
+        /// </summary>
+        Scenario = 222,
+        /// <summary>
+        /// SpecialFeatureCode
+        /// </summary>
+        SpecialFeatureCode = 223,
+        /// <summary>
+        /// EnhancedConditionLog
+        /// </summary>
+        EnhancedConditionLog = 224,
+        /// <summary>
+        /// EnhancedConditionDefinition
+        /// </summary>
+        EnhancedConditionDefinition = 225,
+        /// <summary>
+        /// OptionDefinition
+        /// </summary>
+        OptionDefinition = 226,
+        /// <summary>
+        /// TrackingDefinition
+        /// </summary>
+        TrackingDefinition = 227,
+        /// <summary>
+        /// TrackingEntryLog
+        /// </summary>
+        TrackingEntryLog = 228,
+        /// <summary>
+        /// Disclosure
+        /// </summary>
+        Disclosure = 229,
+        /// <summary>
+        /// CreditReport
+        /// </summary>
+        CreditReport = 230
     }
 }

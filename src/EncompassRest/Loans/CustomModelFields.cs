@@ -9,6 +9,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _id;
         private DirtyValue<bool?>? _provideAmortizationScenario;
         private DirtyValue<bool?>? _provideBestCaseScenario;
+        private DirtyValue<bool?>? _provideCpaPaymentSchedule;
         private DirtyValue<bool?>? _provideFHAScenario;
         private DirtyValue<bool?>? _provideHelocExampleSchedules;
         private DirtyValue<bool?>? _provideWorstCaseScenario;
@@ -32,6 +33,11 @@ namespace EncompassRest.Loans
         /// CustomModelFields ProvideBestCaseScenario
         /// </summary>
         public bool? ProvideBestCaseScenario { get => _provideBestCaseScenario; set => SetField(ref _provideBestCaseScenario, value); }
+
+        /// <summary>
+        /// CustomModelFields ProvideCpaPaymentSchedule
+        /// </summary>
+        public bool? ProvideCpaPaymentSchedule { get => _provideCpaPaymentSchedule; set => SetField(ref _provideCpaPaymentSchedule, value); }
 
         /// <summary>
         /// CustomModelFields ProvideFHAScenario

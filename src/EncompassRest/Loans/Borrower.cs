@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
@@ -68,9 +70,13 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _confirmedOther;
         private DirtyValue<string?>? _confirmedOtherDescription;
         private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<string?>? _counselingConfirmationType;
+        private DirtyValue<string?>? _counselingConfirmationTypeDescription;
+        private DirtyValue<string?>? _counselingFormatTypeDescription;
         private DirtyValue<bool?>? _creditCounseling;
         private DirtyValue<DateTime?>? _creditReceivedDate;
         private DirtyValue<StringEnumValue<CreditReportAuthorizationMethod>>? _creditReportAuthorizationMethod;
+        private DirtyList<CreditReport>? _creditReports;
         private DirtyValue<bool?>? _creditScoreIndicator;
         private DirtyValue<bool?>? _currentEmploymentDoesNotApply;
         private DirtyValue<string?>? _dataVerify;
@@ -130,6 +136,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _experianMaterialTermsCreditByScore;
         private DirtyValue<string?>? _fannieFirstName;
         private DirtyValue<string?>? _fannieMiddleName;
+        private DirtyValue<bool?>? _final1003Provided;
         private DirtyValue<string?>? _firstName;
         private DirtyValue<string?>? _firstNameWithMiddleName;
         private DirtyValue<bool?>? _firstTimeHomeBuyer;
@@ -210,6 +217,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _id;
         private DirtyValue<string?>? _incomeRepAndWarrantyMessage;
         private DirtyValue<bool?>? _incomeRepAndWarrantyReliefAvailable;
+        private DirtyValue<bool?>? _initial1003Provided;
         private DirtyValue<bool?>? _intentToOccupyIndicator;
         private DirtyValue<string?>? _intuitReportId;
         private DirtyValue<bool?>? _isBaseIncomeAvailable;
@@ -229,6 +237,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<LanguagePreference>>? _languagePreference;
         private DirtyValue<string?>? _lastName;
         private DirtyValue<string?>? _lastNameWithSuffix;
+        private DirtyValue<bool?>? _leaveAndEarningsStatement;
         private DirtyValue<string?>? _leDeliveryMethod;
         private DirtyValue<bool?>? _legalOtherThanSpouse;
         private DirtyValue<bool?>? _liabilitiesDoesNotApply;
@@ -479,6 +488,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<VestingTrusteeOfType>>? _vestingTrusteeOfType;
         private DirtyValue<bool?>? _veteran;
         private DirtyValue<bool?>? _veteranIndicator;
+        private DirtyValue<DateTime?>? _vvoeWorkNumberDate;
         private DirtyValue<string?>? _workEmailAddress;
         private DirtyValue<string?>? _workPhoneNumber;
         private DirtyValue<int?>? _yearsofCreditOnFile;
@@ -792,6 +802,21 @@ namespace EncompassRest.Loans
         public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
+        /// Borrower CounselingConfirmationType
+        /// </summary>
+        public string? CounselingConfirmationType { get => _counselingConfirmationType; set => SetField(ref _counselingConfirmationType, value); }
+
+        /// <summary>
+        /// Borrower CounselingConfirmationTypeDescription
+        /// </summary>
+        public string? CounselingConfirmationTypeDescription { get => _counselingConfirmationTypeDescription; set => SetField(ref _counselingConfirmationTypeDescription, value); }
+
+        /// <summary>
+        /// Borrower CounselingFormatTypeDescription
+        /// </summary>
+        public string? CounselingFormatTypeDescription { get => _counselingFormatTypeDescription; set => SetField(ref _counselingFormatTypeDescription, value); }
+
+        /// <summary>
         /// Underwriting Credit Counseling [2566]
         /// </summary>
         public bool? CreditCounseling { get => _creditCounseling; set => SetField(ref _creditCounseling, value); }
@@ -805,6 +830,12 @@ namespace EncompassRest.Loans
         /// Borrower CreditReportAuthorizationMethod
         /// </summary>
         public StringEnumValue<CreditReportAuthorizationMethod> CreditReportAuthorizationMethod { get => _creditReportAuthorizationMethod; set => SetField(ref _creditReportAuthorizationMethod, value); }
+
+        /// <summary>
+        /// Borrower CreditReports
+        /// </summary>
+        [AllowNull]
+        public IList<CreditReport> CreditReports { get => GetField(ref _creditReports); set => SetField(ref _creditReports, value); }
 
         /// <summary>
         /// Borrower CreditScoreIndicator
@@ -1101,6 +1132,11 @@ namespace EncompassRest.Loans
         /// Borrower FannieMiddleName
         /// </summary>
         public string? FannieMiddleName { get => _fannieMiddleName; set => SetField(ref _fannieMiddleName, value); }
+
+        /// <summary>
+        /// Borrower Final1003Provided
+        /// </summary>
+        public bool? Final1003Provided { get => _final1003Provided; set => SetField(ref _final1003Provided, value); }
 
         /// <summary>
         /// Borrower FirstName
@@ -1531,6 +1567,11 @@ namespace EncompassRest.Loans
         public bool? IncomeRepAndWarrantyReliefAvailable { get => _incomeRepAndWarrantyReliefAvailable; set => SetField(ref _incomeRepAndWarrantyReliefAvailable, value); }
 
         /// <summary>
+        /// Borrower Initial1003Provided
+        /// </summary>
+        public bool? Initial1003Provided { get => _initial1003Provided; set => SetField(ref _initial1003Provided, value); }
+
+        /// <summary>
         /// Borrower IntentToOccupyIndicator
         /// </summary>
         public bool? IntentToOccupyIndicator { get => _intentToOccupyIndicator; set => SetField(ref _intentToOccupyIndicator, value); }
@@ -1624,6 +1665,11 @@ namespace EncompassRest.Loans
         /// Borrower LastNameWithSuffix
         /// </summary>
         public string? LastNameWithSuffix { get => _lastNameWithSuffix; set => SetField(ref _lastNameWithSuffix, value); }
+
+        /// <summary>
+        /// Borrower LeaveAndEarningsStatement
+        /// </summary>
+        public bool? LeaveAndEarningsStatement { get => _leaveAndEarningsStatement; set => SetField(ref _leaveAndEarningsStatement, value); }
 
         /// <summary>
         /// Borrower LeDeliveryMethod
@@ -2941,6 +2987,12 @@ namespace EncompassRest.Loans
         /// Borrower VeteranIndicator
         /// </summary>
         public bool? VeteranIndicator { get => _veteranIndicator; set => SetField(ref _veteranIndicator, value); }
+
+        /// <summary>
+        /// Borrower VvoeWorkNumberDate
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? VvoeWorkNumberDate { get => _vvoeWorkNumberDate; set => SetField(ref _vvoeWorkNumberDate, value); }
 
         /// <summary>
         /// Borrower WorkEmailAddress

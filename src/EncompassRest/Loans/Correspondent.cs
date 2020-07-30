@@ -25,6 +25,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _additionalInsuranceExcludePitiPayment;
         private DirtyValue<bool?>? _additionalInsuranceGuaranteedReplacementCost;
         private DirtyValue<decimal?>? _additionalInsuranceMonthlyAmount;
+        private DirtyValue<string?>? _additionalInsurancePaymentType;
         private DirtyValue<DateTime?>? _additionalInsurancePolicyEffectiveDate;
         private DirtyValue<DateTime?>? _additionalInsurancePolicyExpirationDate;
         private DirtyValue<string?>? _additionalInsurancePolicyNumber;
@@ -34,12 +35,14 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _additionalInsuranceType;
         private DirtyValue<decimal?>? _additionalLateFeeCharge;
         private DirtyValue<decimal?>? _additionalWindCoverage;
+        private DirtyValue<decimal?>? _afterImprovedLtv;
         private DirtyValue<decimal?>? _aggregateAdjustment;
         private DirtyValue<string?>? _alternateLoanNumber;
         private DirtyValue<decimal?>? _amountFinanced;
         private DirtyValue<decimal?>? _annualMipRate;
         private DirtyValue<string?>? _appraisalAddressCounty;
         private DirtyValue<DateTime?>? _appraisalApptDate;
+        private DirtyValue<bool?>? _appraisalCheckbox;
         private DirtyValue<string?>? _appraisalCountyName;
         private DirtyValue<decimal?>? _appraisalFee;
         private DirtyValue<DateTime?>? _appraisalFinalInspectionDate;
@@ -61,17 +64,22 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _approvedToFundDate;
         private DirtyValue<decimal?>? _aprPercent;
         private DirtyValue<decimal?>? _armIndex;
+        private DirtyValue<bool?>? _armIndicator;
         private DirtyValue<decimal?>? _armMargin;
         private DirtyValue<decimal?>? _armMargin2;
         private DirtyValue<decimal?>? _armRateFloor;
         private DirtyValue<decimal?>? _armRateFloor2;
         private DirtyValue<int?>? _ausAppraisedValue;
         private DirtyValue<decimal?>? _ausAssetsToBeVerified;
+        private DirtyValue<decimal?>? _ausCltv;
         private DirtyValue<string?>? _ausCreditReportCertNumber;
         private DirtyValue<DateTime?>? _ausCreditReportDate;
         private DirtyValue<string?>? _ausFreeFormComments;
+        private DirtyValue<decimal?>? _ausHcltv;
         private DirtyValue<decimal?>? _ausInterestRate;
         private DirtyValue<decimal?>? _ausLoanAmount;
+        private DirtyValue<string?>? _ausLoanNumber;
+        private DirtyValue<decimal?>? _ausLtv;
         private DirtyValue<decimal?>? _ausPrimaryHousingExpense;
         private DirtyValue<string?>? _ausPropertyAddress1;
         private DirtyValue<string?>? _ausPropertyAddress2;
@@ -80,6 +88,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _ausPropertyZip;
         private DirtyValue<decimal?>? _ausPurchasePrice;
         private DirtyValue<string?>? _ausReferenceNumber;
+        private DirtyValue<string?>? _ausSubmissionNumber;
         private DirtyValue<decimal?>? _ausTotalAvailableAssets;
         private DirtyValue<decimal?>? _ausTotalDti;
         private DirtyValue<decimal?>? _ausTotalMonthlyDebt;
@@ -87,6 +96,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _autoPublishConditions;
         private DirtyValue<decimal?>? _averagePrimeOfferRate;
         private DirtyValue<decimal?>? _avmAppraisedValue;
+        private DirtyValue<bool?>? _avmCheckbox;
         private DirtyValue<string?>? _avmConfidenceScore;
         private DirtyValue<DateTime?>? _avmOrderDate;
         private DirtyValue<string?>? _avmOrderNumber;
@@ -99,11 +109,13 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _bankZip;
         private DirtyValue<decimal?>? _baseLoanAmount;
         private DirtyValue<decimal?>? _basePrice;
+        private DirtyValue<decimal?>? _borPaidDiscountPoints;
         private DirtyValue<decimal?>? _borrowerRequestedLoanAmount;
         private DirtyValue<bool?>? _borrowerSignedIndicator;
         private DirtyValue<decimal?>? _bottomRatioPercent;
         private DirtyValue<StringEnumValue<BuildingStatusType>>? _buildingStatus;
         private DirtyValue<DateTime?>? _cancelledDate;
+        private DirtyValue<bool?>? _cashOutNtbComparisonFormIndicator;
         private DirtyValue<decimal?>? _cdSectionjLenderCreditTotal;
         private DirtyValue<decimal?>? _cdSellerCreditAmount;
         private DirtyValue<decimal?>? _cdShoppableServices;
@@ -127,6 +139,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _conditionsReceivedDate;
         private DirtyValue<string?>? _condoProjectClass;
         private DirtyValue<string?>? _condoProjectStatusType;
+        private DirtyValue<DateTime?>? _conversionModificationDate;
         private DirtyValue<DateTime?>? _correspondentCommitmentDate;
         private DirtyValue<DateTime?>? _correspondentCommitmentExpirationDate;
         private DirtyValue<int?>? _correspondentCommitmentPeriod;
@@ -136,6 +149,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _countyTaxesMonthlyAmount;
         private DirtyValue<DateTime?>? _countyTaxesNextPaymentDueDate;
         private DirtyValue<decimal?>? _creditReport;
+        private DirtyValue<decimal?>? _currentFinanceCharge;
         private DirtyValue<string?>? _customMinimumMi;
         private DirtyValue<DateTime?>? _dateOfSale;
         private DirtyValue<DateTime?>? _deliveryExpirationDate;
@@ -143,9 +157,12 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _disclosedAprPercent;
         private DirtyValue<decimal?>? _disclosedDailyInterestCharge;
         private DirtyValue<decimal?>? _disclosedFinanceCharge;
+        private DirtyValue<decimal?>? _disclosedTemporaryBuydownFund;
         private DirtyValue<decimal?>? _disclosedTotalPayments;
+        private DirtyValue<decimal?>? _disclosedUpfrontMipFinanced;
         private DirtyValue<DateTime?>? _disclosureLastSentDate;
         private DirtyValue<DateTime?>? _disclosureReceivedDate;
+        private DirtyList<Disclosure>? _disclosures;
         private DirtyValue<decimal?>? _discountPointsApplied;
         private DirtyList<EarlyCheck>? _earlyChecks;
         private DirtyValue<decimal?>? _ecAppraisalValue;
@@ -154,8 +171,11 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _energyEfficientIndicator;
         private DirtyValue<bool?>? _eNoteIndicator;
         private DirtyValue<decimal?>? _escrowHoldback;
+        private DirtyValue<decimal?>? _escrowReservesCollectedAtClosing;
+        private DirtyValue<decimal?>? _estimatedEscrow;
         private DirtyValue<decimal?>? _estValueOfRepairs;
         private DirtyValue<decimal?>? _feeRate;
+        private DirtyValue<string?>? _fhaVaCaseNumber;
         private DirtyValue<bool?>? _fhlmcEnergyEfficientIndicator;
         private DirtyValue<string?>? _fhlmcPurchaseEligibility;
         private DirtyValue<string?>? _fhlmcUcdCaseFileId;
@@ -174,12 +194,14 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _firstPaymentLetterSchoolTaxes;
         private DirtyValue<decimal?>? _firstPaymentLetterWindHailAmount;
         private DirtyValue<decimal?>? _firstPaymentPi;
+        private DirtyValue<DateTime?>? _firstRateChangeDate;
         private DirtyValue<int?>? _floodCoverageTerm;
         private DirtyValue<decimal?>? _floodDeductible;
         private DirtyValue<bool?>? _floodExcludePitiPayment;
         private DirtyValue<string?>? _floodInsuranceEstimator;
         private DirtyValue<bool?>? _floodInsuranceGuaranteedReplacementCost;
         private DirtyValue<bool?>? _floodInsuranceRequired;
+        private DirtyValue<string?>? _floodPaymentType;
         private DirtyValue<DateTime?>? _floodPolicyEffectiveDate;
         private DirtyValue<string?>? _floodPolicyType;
         private DirtyValue<DateTime?>? _floodPremiumDueDate;
@@ -198,9 +220,11 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _hazardExcludePitiPayment;
         private DirtyValue<string?>? _hazardInsuranceEstimator;
         private DirtyValue<bool?>? _hazardInsuranceGuaranteedReplacementCost;
+        private DirtyValue<string?>? _hazardPaymentType;
         private DirtyValue<DateTime?>? _hazardPolicyEffectiveDate;
         private DirtyValue<string?>? _hazardPolicyType;
         private DirtyValue<DateTime?>? _hazardPremiumDueDate;
+        private DirtyValue<bool?>? _highPricedLoanIndicator;
         private DirtyValue<string?>? _highPricedMortageLoanIndicator;
         private DirtyValue<decimal?>? _hoaBudgetedAssessmentIncome;
         private DirtyValue<decimal?>? _hoaBudgetedReplacementReserves;
@@ -210,6 +234,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _homePossibleIndicator;
         private DirtyValue<bool?>? _homeReadyIndicator;
         private DirtyValue<bool?>? _homeStyleIndicator;
+        private DirtyValue<decimal?>? _housingRatio;
         private DirtyValue<string?>? _id;
         private DirtyValue<decimal?>? _ieadInitialDeposit;
         private DirtyValue<string?>? _incomeType;
@@ -222,11 +247,14 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _isAdditionalInsurance;
         private DirtyValue<bool?>? _isFloodInsurance;
         private DirtyValue<bool?>? _isSubjectPropertyImproved;
+        private DirtyValue<string?>? _isTheHighestAndTheBestUseOfSubjectPropertyAsImproved;
         private DirtyValue<bool?>? _isWindHailInsurance;
         private DirtyValue<bool?>? _jumbo;
         private DirtyValue<string?>? _lastAusResult;
         private DirtyValue<DateTime?>? _lastAusRunDate;
         private DirtyValue<string?>? _lastAusType;
+        private DirtyValue<DateTime?>? _lastDisclosureDate;
+        private DirtyValue<DateTime?>? _lastDisclosureReceivedDate;
         private DirtyValue<DateTime?>? _lastPublishedConditionsNotificationDateTime;
         private DirtyValue<int?>? _lateChargeDays;
         private DirtyValue<decimal?>? _lateChargePercent;
@@ -277,21 +305,49 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _masterCoverageAmount;
         private DirtyValue<int?>? _masterCoverageTerm;
         private DirtyValue<string?>? _masterInsuranceCompanyName;
+        private DirtyValue<string?>? _masterPaymentType;
         private DirtyValue<DateTime?>? _masterPolicyEffectiveDate;
         private DirtyValue<DateTime?>? _masterPolicyExpirationDate;
+        private DirtyValue<string?>? _masterPolicyFloodCompanyName;
+        private DirtyValue<decimal?>? _masterPolicyFloodCoverageAmount;
+        private DirtyValue<string?>? _masterPolicyFloodPaymentType;
+        private DirtyValue<DateTime?>? _masterPolicyFloodPolicyEffectiveDate;
+        private DirtyValue<DateTime?>? _masterPolicyFloodPolicyExpirationDate;
+        private DirtyValue<string?>? _masterPolicyFloodPolicyNumber;
+        private DirtyValue<string?>? _masterPolicyHazardCompanyName;
+        private DirtyValue<decimal?>? _masterPolicyHazardCoverageAmount;
+        private DirtyValue<string?>? _masterPolicyHazardPaymentType;
+        private DirtyValue<DateTime?>? _masterPolicyHazardPolicyEffectiveDate;
+        private DirtyValue<DateTime?>? _masterPolicyHazardPolicyExpirationDate;
+        private DirtyValue<string?>? _masterPolicyHazardPolicyNumber;
         private DirtyValue<string?>? _masterPolicyNumber;
+        private DirtyValue<string?>? _masterPolicyOtherCompanyName;
+        private DirtyValue<decimal?>? _masterPolicyOtherCoverageAmount;
+        private DirtyValue<string?>? _masterPolicyOtherInsuranceTypeDescription;
+        private DirtyValue<string?>? _masterPolicyOtherPaymentType;
+        private DirtyValue<DateTime?>? _masterPolicyOtherPolicyEffectiveDate;
+        private DirtyValue<DateTime?>? _masterPolicyOtherPolicyExpirationDate;
+        private DirtyValue<string?>? _masterPolicyOtherPolicyNumber;
+        private DirtyValue<string?>? _masterPolicyWindOrHailCompanyName;
+        private DirtyValue<decimal?>? _masterPolicyWindOrHailCoverageAmount;
+        private DirtyValue<string?>? _masterPolicyWindOrHailPaymentType;
+        private DirtyValue<DateTime?>? _masterPolicyWindOrHailPolicyEffectiveDate;
+        private DirtyValue<DateTime?>? _masterPolicyWindOrHailPolicyExpirationDate;
+        private DirtyValue<string?>? _masterPolicyWindOrHailPolicyNumber;
         private DirtyValue<decimal?>? _maxFirstChangeRate1;
         private DirtyValue<decimal?>? _maxFirstChangeRate2;
         private DirtyValue<decimal?>? _minFirstChangeRate1;
         private DirtyValue<decimal?>? _minFirstChangeRate2;
         private DirtyValue<string?>? _miPremiumPaymentType;
         private DirtyValue<bool?>? _momIndicator;
+        private DirtyValue<decimal?>? _monthlyAmount;
         private DirtyValue<decimal?>? _monthlyHousingExpense;
         private DirtyValue<string?>? _monthlyPremiumAmount;
         private DirtyValue<decimal?>? _monthlyRentAmountUnit3;
         private DirtyValue<decimal?>? _monthlyRentAmountUnit4;
         private DirtyValue<int?>? _monthsOfMiPrepaid;
         private DirtyValue<decimal?>? _mortgageInsurancePremiumUpfrontFactorPercent;
+        private DirtyValue<decimal?>? _negativeCashFlow;
         private DirtyValue<DateTime?>? _nfipPaneldate;
         private DirtyValue<string?>? _nfipPanelNumber;
         private DirtyValue<decimal?>? _nonMortgagePayoffAmount;
@@ -301,6 +357,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _noteDate;
         private DirtyValue<decimal?>? _notePAndI2;
         private DirtyValue<decimal?>? _notePi;
+        private DirtyValue<decimal?>? _novAmount;
         private DirtyValue<int?>? _numberofBedrooms;
         private DirtyValue<int?>? _numberofBedroomsUnit1;
         private DirtyValue<int?>? _numberofBedroomsUnit2;
@@ -310,6 +367,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _numberOfUnits;
         private DirtyValue<decimal?>? _originalPrincipalBalance;
         private DirtyValue<decimal?>? _originationChargedA;
+        private DirtyValue<string?>? _otherInsuranceType;
         private DirtyValue<bool?>? _otherTaxesExcludePitiPayment;
         private DirtyValue<string?>? _otherTaxesFrequency;
         private DirtyValue<decimal?>? _otherTaxesMonthlyAmount;
@@ -358,6 +416,8 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _rentAmountUnit1;
         private DirtyValue<decimal?>? _rentAmountUnit2;
         private DirtyList<Rider>? _riders;
+        private DirtyValue<DateTime?>? _sarExpirationDate;
+        private DirtyList<Scenario>? _scenarios;
         private DirtyValue<DateTime?>? _scheduledFirstPaymentDate;
         private DirtyValue<decimal?>? _schoolTaxesMonthlyAmount;
         private DirtyValue<decimal?>? _section32Apr;
@@ -402,6 +462,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _unpaidPrincipalBalance;
         private DirtyValue<decimal?>? _upfrontMipRate;
         private DirtyValue<decimal?>? _upfrontPremiumAmount;
+        private DirtyValue<bool?>? _usdaOneTimeClose;
         private DirtyValue<DateTime?>? _vaCashOutNtbComparisonFormDate;
         private DirtyValue<decimal?>? _vaIrrrlStatutoryPAndIAmount;
         private DirtyList<Valuation>? _valuations;
@@ -417,6 +478,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _windHailInsuranceCompanyName;
         private DirtyValue<string?>? _windHailInsuranceEstimator;
         private DirtyValue<bool?>? _windHailInsuranceGuaranteedReplacementCost;
+        private DirtyValue<string?>? _windHailPaymentType;
         private DirtyValue<DateTime?>? _windHailPolicyEffectiveDate;
         private DirtyValue<DateTime?>? _windHailPolicyExpirationDate;
         private DirtyValue<string?>? _windHailPolicyNumber;
@@ -473,7 +535,7 @@ namespace EncompassRest.Loans
         public decimal? AdditionalInsuranceCoverageAmount { get => _additionalInsuranceCoverageAmount; set => SetField(ref _additionalInsuranceCoverageAmount, value); }
 
         /// <summary>
-        /// Correspondent Additional Insurance Coverage Term [CORRESPONDENT.X152]
+        /// Undefined [CORRESPONDENT.X152]
         /// </summary>
         public int? AdditionalInsuranceCoverageTerm { get => _additionalInsuranceCoverageTerm; set => SetField(ref _additionalInsuranceCoverageTerm, value); }
 
@@ -503,6 +565,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdditionalInsuranceMonthlyAmount { get => _additionalInsuranceMonthlyAmount; set => SetField(ref _additionalInsuranceMonthlyAmount, value); }
+
+        /// <summary>
+        /// Correspondent Additional Insurance Payment Type [CORRESPONDENT.X461]
+        /// </summary>
+        public string? AdditionalInsurancePaymentType { get => _additionalInsurancePaymentType; set => SetField(ref _additionalInsurancePaymentType, value); }
 
         /// <summary>
         /// Correspondent Additional Insurance Policy Effective Date [CORRESPONDENT.X277]
@@ -553,6 +620,12 @@ namespace EncompassRest.Loans
         public decimal? AdditionalWindCoverage { get => _additionalWindCoverage; set => SetField(ref _additionalWindCoverage, value); }
 
         /// <summary>
+        /// Correspondent After-Improved LTV Value [CORRESPONDENT.X400]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? AfterImprovedLtv { get => _afterImprovedLtv; set => SetField(ref _afterImprovedLtv, value); }
+
+        /// <summary>
         /// Correspondent Aggregate Adjustment [CORRESPONDENT.X82]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -584,6 +657,11 @@ namespace EncompassRest.Loans
         /// Correspondent Appraisal Appt Date [CORRESPONDENT.X87]
         /// </summary>
         public DateTime? AppraisalApptDate { get => _appraisalApptDate; set => SetField(ref _appraisalApptDate, value); }
+
+        /// <summary>
+        /// Correspondent Appraisal Checkbox [CORRESPONDENT.X438]
+        /// </summary>
+        public bool? AppraisalCheckbox { get => _appraisalCheckbox; set => SetField(ref _appraisalCheckbox, value); }
 
         /// <summary>
         /// Correspondent Appraisal County Name [CORRESPONDENT.X88]
@@ -694,6 +772,11 @@ namespace EncompassRest.Loans
         public decimal? ArmIndex { get => _armIndex; set => SetField(ref _armIndex, value); }
 
         /// <summary>
+        /// Correspondent ARM Indicator [CORRESPONDENT.X449]
+        /// </summary>
+        public bool? ArmIndicator { get => _armIndicator; set => SetField(ref _armIndicator, value); }
+
+        /// <summary>
         /// Correspondent ARM Margin [CORRESPONDENT.X105]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
@@ -729,6 +812,12 @@ namespace EncompassRest.Loans
         public decimal? AusAssetsToBeVerified { get => _ausAssetsToBeVerified; set => SetField(ref _ausAssetsToBeVerified, value); }
 
         /// <summary>
+        /// Correspondent - AUS Results from Lender for CLTV [CORRESPONDENT.X469]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? AusCltv { get => _ausCltv; set => SetField(ref _ausCltv, value); }
+
+        /// <summary>
         /// Correspondent AUS Credit Report Cert Number [CORRESPONDENT.X111]
         /// </summary>
         public string? AusCreditReportCertNumber { get => _ausCreditReportCertNumber; set => SetField(ref _ausCreditReportCertNumber, value); }
@@ -744,6 +833,12 @@ namespace EncompassRest.Loans
         public string? AusFreeFormComments { get => _ausFreeFormComments; set => SetField(ref _ausFreeFormComments, value); }
 
         /// <summary>
+        /// Correspondent - AUS Results from Lender for HCLTV [CORRESPONDENT.X470]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? AusHcltv { get => _ausHcltv; set => SetField(ref _ausHcltv, value); }
+
+        /// <summary>
         /// Correspondent AUS Interest Rate [CORRESPONDENT.X115]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
@@ -756,9 +851,20 @@ namespace EncompassRest.Loans
         public decimal? AusLoanAmount { get => _ausLoanAmount; set => SetField(ref _ausLoanAmount, value); }
 
         /// <summary>
-        /// Correspondent AUS Tracking - Housing Expense Ratio [CORRESPONDENT.X117]
+        /// Correspondent - AUS Results from Lender for Loan Number [CORRESPONDENT.X471]
+        /// </summary>
+        public string? AusLoanNumber { get => _ausLoanNumber; set => SetField(ref _ausLoanNumber, value); }
+
+        /// <summary>
+        /// Correspondent - AUS Results from Lender for LTV [CORRESPONDENT.X468]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? AusLtv { get => _ausLtv; set => SetField(ref _ausLtv, value); }
+
+        /// <summary>
+        /// Correspondent AUS Tracking - Housing Expense Ratio [CORRESPONDENT.X117]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AusPrimaryHousingExpense { get => _ausPrimaryHousingExpense; set => SetField(ref _ausPrimaryHousingExpense, value); }
 
         /// <summary>
@@ -797,6 +903,11 @@ namespace EncompassRest.Loans
         /// Correspondent AUS Reference Number [CORRESPONDENT.X124]
         /// </summary>
         public string? AusReferenceNumber { get => _ausReferenceNumber; set => SetField(ref _ausReferenceNumber, value); }
+
+        /// <summary>
+        /// Correspondent - AUS Results from Lender for Submission Number [CORRESPONDENT.X467]
+        /// </summary>
+        public string? AusSubmissionNumber { get => _ausSubmissionNumber; set => SetField(ref _ausSubmissionNumber, value); }
 
         /// <summary>
         /// Correspondent AUS Total Assets [CORRESPONDENT.X125]
@@ -838,6 +949,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AvmAppraisedValue { get => _avmAppraisedValue; set => SetField(ref _avmAppraisedValue, value); }
+
+        /// <summary>
+        /// Correspondent AVM Checkbox [CORRESPONDENT.X437]
+        /// </summary>
+        public bool? AvmCheckbox { get => _avmCheckbox; set => SetField(ref _avmCheckbox, value); }
 
         /// <summary>
         /// Correspondent AVM Confidence Score [CORRESPONDENT.X130]
@@ -903,6 +1019,12 @@ namespace EncompassRest.Loans
         public decimal? BasePrice { get => _basePrice; set => SetField(ref _basePrice, value); }
 
         /// <summary>
+        /// Correspondent Borrower Paid Discount Points [CORRESPONDENT.X447]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? BorPaidDiscountPoints { get => _borPaidDiscountPoints; set => SetField(ref _borPaidDiscountPoints, value); }
+
+        /// <summary>
         /// Correspondent Loan Amount [CORRESPONDENT.X1]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -928,6 +1050,11 @@ namespace EncompassRest.Loans
         /// Correspondent Loan Status - Cancelled Date [4207]
         /// </summary>
         public DateTime? CancelledDate { get => _cancelledDate; set => SetField(ref _cancelledDate, value); }
+
+        /// <summary>
+        /// Correspondent Cash Out NTB Comparison Form Indicator [CORRESPONDENT.X431]
+        /// </summary>
+        public bool? CashOutNtbComparisonFormIndicator { get => _cashOutNtbComparisonFormIndicator; set => SetField(ref _cashOutNtbComparisonFormIndicator, value); }
 
         /// <summary>
         /// Correspondent Compliance Review - CD Section J Lender Credit Total [CORRESPONDENT.X60]
@@ -1056,6 +1183,12 @@ namespace EncompassRest.Loans
         public string? CondoProjectStatusType { get => _condoProjectStatusType; set => SetField(ref _condoProjectStatusType, value); }
 
         /// <summary>
+        /// Correspondent Conversion/Modification Date [CORRESPONDENT.X436]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? ConversionModificationDate { get => _conversionModificationDate; set => SetField(ref _conversionModificationDate, value); }
+
+        /// <summary>
         /// Correspondent Loan Status - Commitment Date [4527]
         /// </summary>
         public DateTime? CorrespondentCommitmentDate { get => _correspondentCommitmentDate; set => SetField(ref _correspondentCommitmentDate, value); }
@@ -1103,6 +1236,12 @@ namespace EncompassRest.Loans
         public decimal? CreditReport { get => _creditReport; set => SetField(ref _creditReport, value); }
 
         /// <summary>
+        /// Correspondent Current Finance Charge [CORRESPONDENT.X404]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? CurrentFinanceCharge { get => _currentFinanceCharge; set => SetField(ref _currentFinanceCharge, value); }
+
+        /// <summary>
         /// Correspondent Custom Minimum Mi [CORRESPONDENT.X158]
         /// </summary>
         public string? CustomMinimumMi { get => _customMinimumMi; set => SetField(ref _customMinimumMi, value); }
@@ -1142,10 +1281,22 @@ namespace EncompassRest.Loans
         public decimal? DisclosedFinanceCharge { get => _disclosedFinanceCharge; set => SetField(ref _disclosedFinanceCharge, value); }
 
         /// <summary>
+        /// Correspondent - Disclosed Temporary Buydown Fund [CORRESPONDENT.X472]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? DisclosedTemporaryBuydownFund { get => _disclosedTemporaryBuydownFund; set => SetField(ref _disclosedTemporaryBuydownFund, value); }
+
+        /// <summary>
         /// Correspondent Closing disclosure Total Payments [CORRESPONDENT.X164]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DisclosedTotalPayments { get => _disclosedTotalPayments; set => SetField(ref _disclosedTotalPayments, value); }
+
+        /// <summary>
+        /// Correspondent - Disclosed Upfront MIP Financed [CORRESPONDENT.X473]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? DisclosedUpfrontMipFinanced { get => _disclosedUpfrontMipFinanced; set => SetField(ref _disclosedUpfrontMipFinanced, value); }
 
         /// <summary>
         /// Correspondent Loan Estimate - Disclosure Last Sent Date [CORRESPONDENT.X19]
@@ -1156,6 +1307,12 @@ namespace EncompassRest.Loans
         /// Correspondent Loan Estimate - Disclosure Received Date [CORRESPONDENT.X20]
         /// </summary>
         public DateTime? DisclosureReceivedDate { get => _disclosureReceivedDate; set => SetField(ref _disclosureReceivedDate, value); }
+
+        /// <summary>
+        /// Correspondent Disclosures
+        /// </summary>
+        [AllowNull]
+        public IList<Disclosure> Disclosures { get => GetField(ref _disclosures); set => SetField(ref _disclosures, value); }
 
         /// <summary>
         /// Correspondent Discount Points Applied [CORRESPONDENT.X39]
@@ -1196,10 +1353,22 @@ namespace EncompassRest.Loans
         public bool? ENoteIndicator { get => _eNoteIndicator; set => SetField(ref _eNoteIndicator, value); }
 
         /// <summary>
-        /// Correspondent Escrow Holdback [CORRESPONDENT.X174]
+        /// Undefined [CORRESPONDENT.X174]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EscrowHoldback { get => _escrowHoldback; set => SetField(ref _escrowHoldback, value); }
+
+        /// <summary>
+        /// Correspondent Escrow Reserves Collected at Closing [CORRESPONDENT.X466]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? EscrowReservesCollectedAtClosing { get => _escrowReservesCollectedAtClosing; set => SetField(ref _escrowReservesCollectedAtClosing, value); }
+
+        /// <summary>
+        /// Correspondent Estimated Escrow [CORRESPONDENT.X403]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? EstimatedEscrow { get => _estimatedEscrow; set => SetField(ref _estimatedEscrow, value); }
 
         /// <summary>
         /// Correspondent Estimated Value Of Repairs [CORRESPONDENT.X175]
@@ -1212,6 +1381,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? FeeRate { get => _feeRate; set => SetField(ref _feeRate, value); }
+
+        /// <summary>
+        /// Correspondent FHA VA Case Number [CORRESPONDENT.X433]
+        /// </summary>
+        public string? FhaVaCaseNumber { get => _fhaVaCaseNumber; set => SetField(ref _fhaVaCaseNumber, value); }
 
         /// <summary>
         /// Correspondent FHLMC Energy Efficient Indicator [CORRESPONDENT.X184]
@@ -1317,7 +1491,12 @@ namespace EncompassRest.Loans
         public decimal? FirstPaymentPi { get => _firstPaymentPi; set => SetField(ref _firstPaymentPi, value); }
 
         /// <summary>
-        /// Correspondent Flood Coverage Term [CORRESPONDENT.X153]
+        /// Correspondent First Rate Change Date [CORRESPONDENT.X448]
+        /// </summary>
+        public DateTime? FirstRateChangeDate { get => _firstRateChangeDate; set => SetField(ref _firstRateChangeDate, value); }
+
+        /// <summary>
+        /// Undefined [CORRESPONDENT.X153]
         /// </summary>
         public int? FloodCoverageTerm { get => _floodCoverageTerm; set => SetField(ref _floodCoverageTerm, value); }
 
@@ -1346,6 +1525,11 @@ namespace EncompassRest.Loans
         /// Correspondent Flood Insurance Required [CORRESPONDENT.X193]
         /// </summary>
         public bool? FloodInsuranceRequired { get => _floodInsuranceRequired; set => SetField(ref _floodInsuranceRequired, value); }
+
+        /// <summary>
+        /// Correspondent Flood Payment Type [CORRESPONDENT.X462]
+        /// </summary>
+        public string? FloodPaymentType { get => _floodPaymentType; set => SetField(ref _floodPaymentType, value); }
 
         /// <summary>
         /// Correspondent Flood Policy Effective Date [CORRESPONDENT.X278]
@@ -1414,7 +1598,7 @@ namespace EncompassRest.Loans
         public decimal? GuaranteeFeeCollected { get => _guaranteeFeeCollected; set => SetField(ref _guaranteeFeeCollected, value); }
 
         /// <summary>
-        /// Correspondent Hazard Coverage Term [CORRESPONDENT.X154]
+        /// Undefined [CORRESPONDENT.X154]
         /// </summary>
         public int? HazardCoverageTerm { get => _hazardCoverageTerm; set => SetField(ref _hazardCoverageTerm, value); }
 
@@ -1440,6 +1624,11 @@ namespace EncompassRest.Loans
         public bool? HazardInsuranceGuaranteedReplacementCost { get => _hazardInsuranceGuaranteedReplacementCost; set => SetField(ref _hazardInsuranceGuaranteedReplacementCost, value); }
 
         /// <summary>
+        /// Correspondent Hazard Payment Type [CORRESPONDENT.X463]
+        /// </summary>
+        public string? HazardPaymentType { get => _hazardPaymentType; set => SetField(ref _hazardPaymentType, value); }
+
+        /// <summary>
         /// Correspondent Hazard Policy Effective Date [CORRESPONDENT.X279]
         /// </summary>
         public DateTime? HazardPolicyEffectiveDate { get => _hazardPolicyEffectiveDate; set => SetField(ref _hazardPolicyEffectiveDate, value); }
@@ -1455,7 +1644,12 @@ namespace EncompassRest.Loans
         public DateTime? HazardPremiumDueDate { get => _hazardPremiumDueDate; set => SetField(ref _hazardPremiumDueDate, value); }
 
         /// <summary>
-        /// Correspondent High Priced Mortage Loan Indicator [CORRESPONDENT.X207]
+        /// Correspondent - High Priced Mortgage Loan Indicator [CORRESPONDENT.X474]
+        /// </summary>
+        public bool? HighPricedLoanIndicator { get => _highPricedLoanIndicator; set => SetField(ref _highPricedLoanIndicator, value); }
+
+        /// <summary>
+        /// Obsolete - Correspondent High Priced Mortgage Loan Indicator [CORRESPONDENT.X207]
         /// </summary>
         public string? HighPricedMortageLoanIndicator { get => _highPricedMortageLoanIndicator; set => SetField(ref _highPricedMortageLoanIndicator, value); }
 
@@ -1500,6 +1694,12 @@ namespace EncompassRest.Loans
         /// Correspondent Home Style Indicator [CORRESPONDENT.X215]
         /// </summary>
         public bool? HomeStyleIndicator { get => _homeStyleIndicator; set => SetField(ref _homeStyleIndicator, value); }
+
+        /// <summary>
+        /// Correspondent Housing Ratio [CORRESPONDENT.X450]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? HousingRatio { get => _housingRatio; set => SetField(ref _housingRatio, value); }
 
         /// <summary>
         /// Correspondent Id
@@ -1565,6 +1765,11 @@ namespace EncompassRest.Loans
         public bool? IsSubjectPropertyImproved { get => _isSubjectPropertyImproved; set => SetField(ref _isSubjectPropertyImproved, value); }
 
         /// <summary>
+        /// Correspondent Is the highest and the best use of subject property as improved [CORRESPONDENT.X432]
+        /// </summary>
+        public string? IsTheHighestAndTheBestUseOfSubjectPropertyAsImproved { get => _isTheHighestAndTheBestUseOfSubjectPropertyAsImproved; set => SetField(ref _isTheHighestAndTheBestUseOfSubjectPropertyAsImproved, value); }
+
+        /// <summary>
         /// Correspondent Wind/Hail Insurance included [CORRESPONDENT.X219]
         /// </summary>
         public bool? IsWindHailInsurance { get => _isWindHailInsurance; set => SetField(ref _isWindHailInsurance, value); }
@@ -1588,6 +1793,16 @@ namespace EncompassRest.Loans
         /// Correspondent Last AUS Type [CORRESPONDENT.X233]
         /// </summary>
         public string? LastAusType { get => _lastAusType; set => SetField(ref _lastAusType, value); }
+
+        /// <summary>
+        /// Correspondent Last Disclosure Date [CORRESPONDENT.X401]
+        /// </summary>
+        public DateTime? LastDisclosureDate { get => _lastDisclosureDate; set => SetField(ref _lastDisclosureDate, value); }
+
+        /// <summary>
+        /// Correspondent Last Disclosure Received Date [CORRESPONDENT.X402]
+        /// </summary>
+        public DateTime? LastDisclosureReceivedDate { get => _lastDisclosureReceivedDate; set => SetField(ref _lastDisclosureReceivedDate, value); }
 
         /// <summary>
         /// Correspondent Last Published Conditions Notification Date Time [CORRESPONDENT.X56]
@@ -1845,7 +2060,7 @@ namespace EncompassRest.Loans
         public decimal? MasterCoverageAmount { get => _masterCoverageAmount; set => SetField(ref _masterCoverageAmount, value); }
 
         /// <summary>
-        /// Correspondent Master Coverage Term [CORRESPONDENT.X155]
+        /// Undefined [CORRESPONDENT.X155]
         /// </summary>
         public int? MasterCoverageTerm { get => _masterCoverageTerm; set => SetField(ref _masterCoverageTerm, value); }
 
@@ -1853,6 +2068,11 @@ namespace EncompassRest.Loans
         /// Correspondent Master Insurance Company Name [CORRESPONDENT.X223]
         /// </summary>
         public string? MasterInsuranceCompanyName { get => _masterInsuranceCompanyName; set => SetField(ref _masterInsuranceCompanyName, value); }
+
+        /// <summary>
+        /// Correspondent Master Payment Type [CORRESPONDENT.X464]
+        /// </summary>
+        public string? MasterPaymentType { get => _masterPaymentType; set => SetField(ref _masterPaymentType, value); }
 
         /// <summary>
         /// Correspondent Master Policy Effective Date [CORRESPONDENT.X280]
@@ -1865,9 +2085,146 @@ namespace EncompassRest.Loans
         public DateTime? MasterPolicyExpirationDate { get => _masterPolicyExpirationDate; set => SetField(ref _masterPolicyExpirationDate, value); }
 
         /// <summary>
+        /// Correspondent Master Policy Flood: Company Name [CORRESPONDENT.X412]
+        /// </summary>
+        public string? MasterPolicyFloodCompanyName { get => _masterPolicyFloodCompanyName; set => SetField(ref _masterPolicyFloodCompanyName, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Flood: Coverage Amount [CORRESPONDENT.X417]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MasterPolicyFloodCoverageAmount { get => _masterPolicyFloodCoverageAmount; set => SetField(ref _masterPolicyFloodCoverageAmount, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Flood: Payment Type [CORRESPONDENT.X416]
+        /// </summary>
+        public string? MasterPolicyFloodPaymentType { get => _masterPolicyFloodPaymentType; set => SetField(ref _masterPolicyFloodPaymentType, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Flood: Policy Effective Date [CORRESPONDENT.X414]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? MasterPolicyFloodPolicyEffectiveDate { get => _masterPolicyFloodPolicyEffectiveDate; set => SetField(ref _masterPolicyFloodPolicyEffectiveDate, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Flood: Policy Expiration Date [CORRESPONDENT.X415]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? MasterPolicyFloodPolicyExpirationDate { get => _masterPolicyFloodPolicyExpirationDate; set => SetField(ref _masterPolicyFloodPolicyExpirationDate, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Flood: Policy Number [CORRESPONDENT.X413]
+        /// </summary>
+        public string? MasterPolicyFloodPolicyNumber { get => _masterPolicyFloodPolicyNumber; set => SetField(ref _masterPolicyFloodPolicyNumber, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Hazard: Company Name [CORRESPONDENT.X406]
+        /// </summary>
+        public string? MasterPolicyHazardCompanyName { get => _masterPolicyHazardCompanyName; set => SetField(ref _masterPolicyHazardCompanyName, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Hazard: Coverage Amount [CORRESPONDENT.X411]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MasterPolicyHazardCoverageAmount { get => _masterPolicyHazardCoverageAmount; set => SetField(ref _masterPolicyHazardCoverageAmount, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Hazard: Payment Type [CORRESPONDENT.X410]
+        /// </summary>
+        public string? MasterPolicyHazardPaymentType { get => _masterPolicyHazardPaymentType; set => SetField(ref _masterPolicyHazardPaymentType, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Hazard: Policy Effective Date [CORRESPONDENT.X408]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? MasterPolicyHazardPolicyEffectiveDate { get => _masterPolicyHazardPolicyEffectiveDate; set => SetField(ref _masterPolicyHazardPolicyEffectiveDate, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Hazard: Policy Expiration Date [CORRESPONDENT.X409]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? MasterPolicyHazardPolicyExpirationDate { get => _masterPolicyHazardPolicyExpirationDate; set => SetField(ref _masterPolicyHazardPolicyExpirationDate, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Hazard: Policy Number [CORRESPONDENT.X407]
+        /// </summary>
+        public string? MasterPolicyHazardPolicyNumber { get => _masterPolicyHazardPolicyNumber; set => SetField(ref _masterPolicyHazardPolicyNumber, value); }
+
+        /// <summary>
         /// Correspondent Master Panel Number [CORRESPONDENT.X286]
         /// </summary>
         public string? MasterPolicyNumber { get => _masterPolicyNumber; set => SetField(ref _masterPolicyNumber, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Other: Company Name [CORRESPONDENT.X425]
+        /// </summary>
+        public string? MasterPolicyOtherCompanyName { get => _masterPolicyOtherCompanyName; set => SetField(ref _masterPolicyOtherCompanyName, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Other: Coverage Amount [CORRESPONDENT.X430]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MasterPolicyOtherCoverageAmount { get => _masterPolicyOtherCoverageAmount; set => SetField(ref _masterPolicyOtherCoverageAmount, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Other: Insurance Type Description [CORRESPONDENT.X424]
+        /// </summary>
+        public string? MasterPolicyOtherInsuranceTypeDescription { get => _masterPolicyOtherInsuranceTypeDescription; set => SetField(ref _masterPolicyOtherInsuranceTypeDescription, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Other: Payment Type [CORRESPONDENT.X429]
+        /// </summary>
+        public string? MasterPolicyOtherPaymentType { get => _masterPolicyOtherPaymentType; set => SetField(ref _masterPolicyOtherPaymentType, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Other: Policy Effective Date [CORRESPONDENT.X427]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? MasterPolicyOtherPolicyEffectiveDate { get => _masterPolicyOtherPolicyEffectiveDate; set => SetField(ref _masterPolicyOtherPolicyEffectiveDate, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Other: Policy Expiration Date [CORRESPONDENT.X428]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? MasterPolicyOtherPolicyExpirationDate { get => _masterPolicyOtherPolicyExpirationDate; set => SetField(ref _masterPolicyOtherPolicyExpirationDate, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Other: Policy Number [CORRESPONDENT.X426]
+        /// </summary>
+        public string? MasterPolicyOtherPolicyNumber { get => _masterPolicyOtherPolicyNumber; set => SetField(ref _masterPolicyOtherPolicyNumber, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Wind/Hail: Company Name [CORRESPONDENT.X418]
+        /// </summary>
+        public string? MasterPolicyWindOrHailCompanyName { get => _masterPolicyWindOrHailCompanyName; set => SetField(ref _masterPolicyWindOrHailCompanyName, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Wind/Hail: Coverage Amount [CORRESPONDENT.X423]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MasterPolicyWindOrHailCoverageAmount { get => _masterPolicyWindOrHailCoverageAmount; set => SetField(ref _masterPolicyWindOrHailCoverageAmount, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Wind/Hail: Payment Type [CORRESPONDENT.X422]
+        /// </summary>
+        public string? MasterPolicyWindOrHailPaymentType { get => _masterPolicyWindOrHailPaymentType; set => SetField(ref _masterPolicyWindOrHailPaymentType, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Wind/Hail: Policy Effective Date [CORRESPONDENT.X420]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? MasterPolicyWindOrHailPolicyEffectiveDate { get => _masterPolicyWindOrHailPolicyEffectiveDate; set => SetField(ref _masterPolicyWindOrHailPolicyEffectiveDate, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Wind/Hail: Policy Expiration Date [CORRESPONDENT.X421]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? MasterPolicyWindOrHailPolicyExpirationDate { get => _masterPolicyWindOrHailPolicyExpirationDate; set => SetField(ref _masterPolicyWindOrHailPolicyExpirationDate, value); }
+
+        /// <summary>
+        /// Correspondent Master Policy Wind/Hail: Policy Number [CORRESPONDENT.X419]
+        /// </summary>
+        public string? MasterPolicyWindOrHailPolicyNumber { get => _masterPolicyWindOrHailPolicyNumber; set => SetField(ref _masterPolicyWindOrHailPolicyNumber, value); }
 
         /// <summary>
         /// Correspondent Max First Change Rate 1 [CORRESPONDENT.X250]
@@ -1904,6 +2261,12 @@ namespace EncompassRest.Loans
         public bool? MomIndicator { get => _momIndicator; set => SetField(ref _momIndicator, value); }
 
         /// <summary>
+        /// Correspondent Monthly Amount [CORRESPONDENT.X446]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? MonthlyAmount { get => _monthlyAmount; set => SetField(ref _monthlyAmount, value); }
+
+        /// <summary>
         /// Correspondent VA Monthly Housing Expense [CORRESPONDENT.X37]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -1936,6 +2299,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_6)]
         public decimal? MortgageInsurancePremiumUpfrontFactorPercent { get => _mortgageInsurancePremiumUpfrontFactorPercent; set => SetField(ref _mortgageInsurancePremiumUpfrontFactorPercent, value); }
+
+        /// <summary>
+        /// Correspondent Negative Cash Flow [CORRESPONDENT.X439]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? NegativeCashFlow { get => _negativeCashFlow; set => SetField(ref _negativeCashFlow, value); }
 
         /// <summary>
         /// Correspondent NFIP Panel date [CORRESPONDENT.X262]
@@ -1987,6 +2356,12 @@ namespace EncompassRest.Loans
         public decimal? NotePi { get => _notePi; set => SetField(ref _notePi, value); }
 
         /// <summary>
+        /// Correspondent NOV Amount [CORRESPONDENT.X434]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? NovAmount { get => _novAmount; set => SetField(ref _novAmount, value); }
+
+        /// <summary>
         /// Correspondent Number of Bedrooms [CORRESPONDENT.X269]
         /// </summary>
         public int? NumberofBedrooms { get => _numberofBedrooms; set => SetField(ref _numberofBedrooms, value); }
@@ -2032,6 +2407,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginationChargedA { get => _originationChargedA; set => SetField(ref _originationChargedA, value); }
+
+        /// <summary>
+        /// Correspondent Other Insurance Type [CORRESPONDENT.X451]
+        /// </summary>
+        public string? OtherInsuranceType { get => _otherInsuranceType; set => SetField(ref _otherInsuranceType, value); }
 
         /// <summary>
         /// Correspondent Other Taxes Exclude PITI Payment [CORRESPONDENT.X181]
@@ -2144,7 +2524,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Project Class [CORRESPONDENT.X301]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"A_IIICondominium\":\"Freddie Mac: Streamlined Review\",\"B_IICondominium\":\"Freddie Mac: Established Project\",\"C_ICondominium\":\"Freddie Mac: New Project\",\"DetachedProject\":\"Freddie Mac: Detached Project\",\"2To4UnitProject\":\"Freddie Mac: 2-To-4-Unit Project\",\"ReciprocalReview\":\"Freddie Mac: Reciprocal Review\",\"E_PUD\":\"Fannie Mae: E Established PUD Project\",\"F_PUD\":\"Fannie Mae: F New PUD Project\",\"P_LimitedReviewNew\":\"Fannie Mae: P Limited Review - New Condo Project\",\"Q_LimitedReviewEst\":\"Fannie Mae: Q Limited Review - Established Condo Project\",\"R_ExpeditedNew\":\"Fannie Mae: R Full Review - New Condo Project\",\"S_ExpeditedEst\":\"Fannie Mae: S Full Review - Established Condo Project\",\"T_FannieMaeReview\":\"Fannie Mae: T Fannie Mae Review through PERS - Condo Project\",\"U_FHAapproved\":\"Fannie Mae: U FHA-approved Condo Project\",\"V_NoReviewSiteCondo\":\"Fannie Mae: V Condo Project Review Waived\",\"OneCooperative\":\"Other: One Cooperative\",\"TwoCooperative\":\"Other: Two Cooperative\",\"TCooperative\":\"Other: T Cooperative\",\"T_PUD\":\"Other: T/PUD\",\"III PUD\":\"Other: PUD\",\"V_RefiPlus\":\"Other: V/Refi Plus\",\"Approved FHA/VA Condominium Project Or Spot Loan\":\"Other: Approved FHA/VA Condominium Project Or Spot Loan\",\"G_NotInAProjectOrDevelopment\":\"Other: G/Not in a Project or Development\"}")]
         public StringEnumValue<ProjectType> ProjectClass { get => _projectClass; set => SetField(ref _projectClass, value); }
 
         /// <summary>
@@ -2290,6 +2669,18 @@ namespace EncompassRest.Loans
         /// </summary>
         [AllowNull]
         public IList<Rider> Riders { get => GetField(ref _riders); set => SetField(ref _riders, value); }
+
+        /// <summary>
+        /// Correspondent SAR Expiration Date [CORRESPONDENT.X435]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? SarExpirationDate { get => _sarExpirationDate; set => SetField(ref _sarExpirationDate, value); }
+
+        /// <summary>
+        /// Correspondent Scenarios
+        /// </summary>
+        [AllowNull]
+        public IList<Scenario> Scenarios { get => GetField(ref _scenarios); set => SetField(ref _scenarios, value); }
 
         /// <summary>
         /// Correspondent Trans Details First Pymt Date [CORRESPONDENT.X40]
@@ -2526,6 +2917,11 @@ namespace EncompassRest.Loans
         public decimal? UpfrontPremiumAmount { get => _upfrontPremiumAmount; set => SetField(ref _upfrontPremiumAmount, value); }
 
         /// <summary>
+        /// Correspondent USDA One Time Close [CORRESPONDENT.X445]
+        /// </summary>
+        public bool? UsdaOneTimeClose { get => _usdaOneTimeClose; set => SetField(ref _usdaOneTimeClose, value); }
+
+        /// <summary>
         /// Correspondent VA Cash Out NTB Comparison Form Date [CORRESPONDENT.X352]
         /// </summary>
         public DateTime? VaCashOutNtbComparisonFormDate { get => _vaCashOutNtbComparisonFormDate; set => SetField(ref _vaCashOutNtbComparisonFormDate, value); }
@@ -2578,7 +2974,7 @@ namespace EncompassRest.Loans
         public decimal? WindHailCoverageAmount { get => _windHailCoverageAmount; set => SetField(ref _windHailCoverageAmount, value); }
 
         /// <summary>
-        /// Correspondent Wind/Hail Coverage Term [CORRESPONDENT.X156]
+        /// Undefined [CORRESPONDENT.X156]
         /// </summary>
         public int? WindHailCoverageTerm { get => _windHailCoverageTerm; set => SetField(ref _windHailCoverageTerm, value); }
 
@@ -2607,6 +3003,11 @@ namespace EncompassRest.Loans
         /// Correspondent Wind/Hail Insurance Guaranteed Replacement Cost [CORRESPONDENT.X206]
         /// </summary>
         public bool? WindHailInsuranceGuaranteedReplacementCost { get => _windHailInsuranceGuaranteedReplacementCost; set => SetField(ref _windHailInsuranceGuaranteedReplacementCost, value); }
+
+        /// <summary>
+        /// Correspondent Wind/Hail Payment Type [CORRESPONDENT.X465]
+        /// </summary>
+        public string? WindHailPaymentType { get => _windHailPaymentType; set => SetField(ref _windHailPaymentType, value); }
 
         /// <summary>
         /// Correspondent Wind/Hail Policy Effective Date [CORRESPONDENT.X281]

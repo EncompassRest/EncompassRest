@@ -35,13 +35,15 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _avmType;
         private DirtyValue<StringEnumValue<BuildingStatusType>>? _buildingStatus;
         private DirtyValue<string?>? _censusTrack;
+        private DirtyValue<string?>? _condoProjectStatusType;
         private DirtyValue<DateTime?>? _dateOfSale;
         private DirtyValue<bool?>? _energyEfficientIndicator;
+        private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<decimal?>? _estValueOfRepairs;
         private DirtyValue<bool?>? _finalInspectionReqIndicator;
         private DirtyValue<decimal?>? _hoaBudgetedAssessmentIncome;
         private DirtyValue<decimal?>? _hoaBudgetedReplacementReserves;
-        private DirtyValue<bool?>? _hoaLitigationStatus;
+        private DirtyValue<string?>? _hoaLitigationStatus;
         private DirtyValue<string?>? _id;
         private DirtyValue<bool?>? _isSubjectPropertyImproved;
         private DirtyValue<decimal?>? _livingArea;
@@ -57,6 +59,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _numberOfUnits;
         private DirtyValue<string?>? _panelNumber;
         private DirtyValue<string?>? _postalCode;
+        private DirtyValue<string?>? _projectAttachmentType;
         private DirtyValue<string?>? _propertyAppraisalType;
         private DirtyValue<string?>? _propertyAppraisalUnitNumber;
         private DirtyValue<StringEnumValue<AttachmentType>>? _propertyAttachmentType;
@@ -205,6 +208,11 @@ namespace EncompassRest.Loans
         public string? CensusTrack { get => _censusTrack; set => SetField(ref _censusTrack, value); }
 
         /// <summary>
+        /// Correspondent Condo Project Status Type [VALNN68]
+        /// </summary>
+        public string? CondoProjectStatusType { get => _condoProjectStatusType; set => SetField(ref _condoProjectStatusType, value); }
+
+        /// <summary>
         /// Correspondent Date Of Sale [VALNN26]
         /// </summary>
         public DateTime? DateOfSale { get => _dateOfSale; set => SetField(ref _dateOfSale, value); }
@@ -213,6 +221,11 @@ namespace EncompassRest.Loans
         /// Correspondent Energy Efficient Indicator [VALNN27]
         /// </summary>
         public bool? EnergyEfficientIndicator { get => _energyEfficientIndicator; set => SetField(ref _energyEfficientIndicator, value); }
+
+        /// <summary>
+        /// Valuation EntityDeleted
+        /// </summary>
+        public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
 
         /// <summary>
         /// Correspondent Estimated Value Of Repairs [VALNN28]
@@ -240,7 +253,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent HOA Litigation Status [VALNN32]
         /// </summary>
-        public bool? HoaLitigationStatus { get => _hoaLitigationStatus; set => SetField(ref _hoaLitigationStatus, value); }
+        public string? HoaLitigationStatus { get => _hoaLitigationStatus; set => SetField(ref _hoaLitigationStatus, value); }
 
         /// <summary>
         /// Valuation Id
@@ -320,6 +333,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+
+        /// <summary>
+        /// Correspondent Project Attachment Type [VALNN67]
+        /// </summary>
+        public string? ProjectAttachmentType { get => _projectAttachmentType; set => SetField(ref _projectAttachmentType, value); }
 
         /// <summary>
         /// Correspondent Property Appraisal Type [VALNN46]

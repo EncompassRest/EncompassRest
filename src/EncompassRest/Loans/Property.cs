@@ -40,6 +40,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _linkedHelocNewFinancingNotLinkedDrawAmount;
         private DirtyValue<decimal?>? _linkedInitialAdvanceAmount;
         private DirtyValue<bool?>? _linkedIsConstructionPhaseDisclosedSeparately;
+        private DirtyValue<string?>? _linkedLenderName;
         private DirtyValue<StringEnumValue<LienType>>? _linkedLienPriorityType;
         private DirtyValue<string?>? _linkedLoanNumber;
         private DirtyValue<string?>? _linkedLoanPurposeType;
@@ -257,6 +258,11 @@ namespace EncompassRest.Loans
         /// Trans Details Construction Phase Disclosed Separately - Copied from Linked Loan [LINK_4084]
         /// </summary>
         public bool? LinkedIsConstructionPhaseDisclosedSeparately { get => _linkedIsConstructionPhaseDisclosedSeparately; set => SetField(ref _linkedIsConstructionPhaseDisclosedSeparately, value); }
+
+        /// <summary>
+        /// Linked File Contacts Lender Co Name [LINK_1264]
+        /// </summary>
+        public string? LinkedLenderName { get => _linkedLenderName; set => SetField(ref _linkedLenderName, value); }
 
         /// <summary>
         /// Trans Details Lien Position - Copied from Linked Loan [LINK_420]

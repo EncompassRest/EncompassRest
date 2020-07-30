@@ -285,7 +285,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac MI Refundable Option [CASASRN.X146]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public StringEnumValue<MIRefundOption> MIRefundOption { get => _mIRefundOption; set => SetField(ref _mIRefundOption, value); }
 
         /// <summary>
@@ -360,13 +359,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac MI Pymt Frequency [CASASRN.X154]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public StringEnumValue<PaymentFrequency> PaymentFrequency { get => _paymentFrequency; set => SetField(ref _paymentFrequency, value); }
 
         /// <summary>
         /// Freddie Mac MI Pymt Option [CASASRN.X152]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public StringEnumValue<PaymentOption> PaymentOption { get => _paymentOption; set => SetField(ref _paymentOption, value); }
 
         /// <summary>
@@ -420,13 +417,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac MI Renewal Option [CASASRN.X150]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public StringEnumValue<RenewalOption> RenewalOption { get => _renewalOption; set => SetField(ref _renewalOption, value); }
 
         /// <summary>
         /// Freddie Mac MI Renewal Type [CASASRN.X148]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public StringEnumValue<RenewalType> RenewalType { get => _renewalType; set => SetField(ref _renewalType, value); }
 
         /// <summary>
@@ -525,7 +520,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac MI Yrs Coverage [CASASRN.X156]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public StringEnumValue<YearsOfCoverage> YearsOfCoverage { get => _yearsOfCoverage; set => SetField(ref _yearsOfCoverage, value); }
     }
 }

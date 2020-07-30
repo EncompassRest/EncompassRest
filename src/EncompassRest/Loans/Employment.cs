@@ -76,6 +76,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<UnitType>>? _unitType;
         private DirtyValue<string?>? _uRLA2020StreetAddress;
         private DirtyValue<decimal?>? _variableHousingAllowance;
+        private DirtyValue<DateTime?>? _verificationDate;
         private DirtyValue<DateTime?>? _verificationRequestDate;
 
         /// <summary>
@@ -440,6 +441,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VariableHousingAllowance { get => _variableHousingAllowance; set => SetField(ref _variableHousingAllowance, value); }
+
+        /// <summary>
+        /// Employment VerificationDate
+        /// </summary>
+        public DateTime? VerificationDate { get => _verificationDate; set => SetField(ref _verificationDate, value); }
 
         /// <summary>
         /// Employment VerificationRequestDate

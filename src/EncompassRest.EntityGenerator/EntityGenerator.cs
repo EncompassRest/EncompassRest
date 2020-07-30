@@ -214,7 +214,9 @@ namespace EncompassRest
             { "LoanAssociate.EnableWriteAccess", nameof(YOrN) },
             { "FreddieMac.CondoClass", nameof(CondoClass) },
             { "MilestoneTaskContact.State", nameof(State) },
-            { "Miscellaneous.State", nameof(State) }
+            { "Miscellaneous.State", nameof(State) },
+            { "Correspondent.ProjectClass", nameof(ProjectType) },
+            { "Valuation.StatedPropertyType", nameof(PropertyType) }
         };
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
@@ -1063,7 +1065,8 @@ namespace EncompassRest
                 case PropertySchemaType.Set:
                 case PropertySchemaType.List:
                     isList = true;
-                    return propertySchema.ElementType;
+                    var elementType = propertySchema.ElementType.Value;
+                    return elementType == "EntityRefContract" ? "EntityReference" : elementType;
                 case PropertySchemaType.Entity:
                     isEntity = true;
                     var propertyEntityType = propertySchema.EntityType.Value;

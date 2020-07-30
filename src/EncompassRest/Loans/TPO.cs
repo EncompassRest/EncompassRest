@@ -350,6 +350,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Complete Loan Package Submission Date [TPO.X114]
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CompleteLoanPackageSubmissionDate { get => _completeLoanPackageSubmissionDate; set => SetField(ref _completeLoanPackageSubmissionDate, value); }
 
         /// <summary>
@@ -360,6 +361,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Eligibility Package Submission Date [TPO.X113]
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EligibilityPackageSubmissionDate { get => _eligibilityPackageSubmissionDate; set => SetField(ref _eligibilityPackageSubmissionDate, value); }
 
         /// <summary>

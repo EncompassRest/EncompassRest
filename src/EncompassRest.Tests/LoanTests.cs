@@ -1205,7 +1205,7 @@ namespace EncompassRest.Tests
                         Assert.AreEqual(string.Format(pair.Value, i), field.ModelPath);
                         if (field.Descriptor.Type != LoanFieldType.Virtual)
                         {
-                            Assert.IsFalse(field.Locked);
+                            Assert.IsFalse(field.Locked, field.ModelPath.ToString());
                             field.Locked = true;
                             Assert.IsTrue(field.Locked);
                         }

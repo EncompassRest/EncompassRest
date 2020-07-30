@@ -540,7 +540,12 @@ namespace EncompassRest.Loans
                                 }
                                 else
                                 {
-                                    modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.OrderBy(p => p.Key).Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}";
+                                    var path = currentPath;
+                                    if (fieldPatternPath == "Borrower_CreditReports_NN" && fieldPattern.StartsWith("C"))
+                                    {
+                                        path = path.Replace(".Borrower.", ".CoBorrower.");
+                                    }
+                                    modelPath = $"{path.Substring(0, path.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.OrderBy(p => p.Key).Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}";
                                 }
 
                                 var fieldInfo = new StandardFieldInfo(fieldId, modelPath) { Description = description! };
