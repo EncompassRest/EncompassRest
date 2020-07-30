@@ -208,6 +208,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<CorrespondentOptionDesc>>? _correspondentEscrowDisbursementsOption2Desc;
         private DirtyValue<decimal?>? _correspondentEscrowDisbursementsPropertyTax;
         private DirtyValue<decimal?>? _correspondentEscrowDisbursementsUSDAAnnualFee;
+        private DirtyValue<decimal?>? _correspondentEscrowHoldback;
         private DirtyValue<decimal?>? _correspondentFinalBuyAmount;
         private DirtyValue<decimal?>? _correspondentFinalBuyPrice;
         private DirtyValue<decimal?>? _correspondentFinalCDAggAdjAmount;
@@ -244,6 +245,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _correspondentPurchasedPrincipal;
         private DirtyValue<string?>? _correspondentReconcilationComments;
         private DirtyValue<decimal?>? _correspondentRemainingBuydownAmount;
+        private DirtyValue<bool?>? _correspondentRetainUserInputs;
         private DirtyValue<decimal?>? _correspondentSRPAmount;
         private DirtyValue<decimal?>? _correspondentTotalBuyAmount;
         private DirtyValue<decimal?>? _correspondentTotalFees;
@@ -1622,6 +1624,12 @@ namespace EncompassRest.Loans
         public decimal? CorrespondentEscrowDisbursementsUSDAAnnualFee { get => _correspondentEscrowDisbursementsUSDAAnnualFee; set => SetField(ref _correspondentEscrowDisbursementsUSDAAnnualFee, value); }
 
         /// <summary>
+        /// Correspondent Purchase Advice Escrow Holdback [CORRESPONDENT.X405]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? CorrespondentEscrowHoldback { get => _correspondentEscrowHoldback; set => SetField(ref _correspondentEscrowHoldback, value); }
+
+        /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details Final Buy Amount [3583]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -1823,6 +1831,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CorrespondentRemainingBuydownAmount { get => _correspondentRemainingBuydownAmount; set => SetField(ref _correspondentRemainingBuydownAmount, value); }
+
+        /// <summary>
+        /// CPA Escrow Details - Retain User Inputs [CPA.RetainUserInputs]
+        /// </summary>
+        public bool? CorrespondentRetainUserInputs { get => _correspondentRetainUserInputs; set => SetField(ref _correspondentRetainUserInputs, value); }
 
         /// <summary>
         /// Correspondent Purchase Advice Additional Purchase Details SRP Amount [3584]
@@ -2192,7 +2205,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Request - Loan Info ARM Disclosure Type [4512]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"UST1YW\":\"1 Year UST CM (weekly)\",\"UST3YW\":\"3 Year UST CM (weekly)\",\"UST5YW\":\"5 Year UST CM (weekly)\",\"UST7YW\":\"7 Year UST CM (weekly)\",\"UST10YW\":\"10 Year UST CM (weekly)\",\"UST20YW\":\"20 Year UST CM (weekly)\",\"UST30YW\":\"30 Year UST CM (weekly)\",\"UST1Y\":\"1 Year US Treasury CM (daily)\",\"UST3Y\":\"3 Year US Treasury CM (daily)\",\"UST5Y\":\"5 Year US Treasury CM (daily)\",\"UST7Y\":\"7 Year US Treasury CM (daily)\",\"UST10Y\":\"10 Year US Treasury CM (daily)\",\"UST20Y\":\"20 Year US Treasury CM (daily)\",\"UST30Y\":\"30 Year US Treasury CM (daily)\",\"3MoCD(12MoAvg)\":\"3-MonthCD (12-Month Avg)\",\"6MCDW\":\"6 Month CD (Secondary Market) weekly\",\"UST6M\":\"6 Month US Treasury CM (daily)\",\"FRBCommercial3M\":\"90 Day AA Commercial Paper Rates (Nonfinancial)\",\"WSJPrime\":\"WSJ Prime Rate (daily)\",\"WSJPrimeWkly\":\"WSJ Prime Rate (weekly)\",\"Fannie_36_30SOFR\":\"Fannie Mae 3 Year (3yr/6m - 30 day Avg SOFR))\",\"Fannie_56_30SOFR\":\"Fannie Mae 5 Year (5yr/6m - 30 day Avg SOFR)\",\"Fannie_76_30SOFR\":\"Fannie Mae 7 Year (7yr/6m - 30 day Avg SOFR)\",\"Fannie_106_30SOFR\":\"Fannie Mae 10 Year (10yr/6m - 30 day Avg SOFR)\",\"Freddie_36_30SOFR\":\"Freddie Mac 3 Year Hybrid (3yr/6m - 30 day Avg SOFR)\",\"Freddie_56_30SOFR\":\"Freddie Mac 5 Year Hybrid (5yr/6m - 30 day Avg SOFR)\",\"Freddie_76_30SOFR\":\"Freddie Mac 7 Year Hybrid (7yr/6m - 30 day Avg SOFR)\",\"Freddie_106_30SOFR\":\"Freddie Mac 10 Year Hybrid (10yr/6m - 30 day Avg SOFR)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"UST1YW\":\"1 Year UST CM (weekly)\",\"UST3YW\":\"3 Year UST CM (weekly)\",\"UST5YW\":\"5 Year UST CM (weekly)\",\"UST7YW\":\"7 Year UST CM (weekly)\",\"UST10YW\":\"10 Year UST CM (weekly)\",\"UST20YW\":\"20 Year UST CM (weekly)\",\"UST30YW\":\"30 Year UST CM (weekly)\",\"UST1Y\":\"1 Year US Treasury CM (daily)\",\"UST3Y\":\"3 Year US Treasury CM (daily)\",\"UST5Y\":\"5 Year US Treasury CM (daily)\",\"UST7Y\":\"7 Year US Treasury CM (daily)\",\"UST10Y\":\"10 Year US Treasury CM (daily)\",\"UST20Y\":\"20 Year US Treasury CM (daily)\",\"UST30Y\":\"30 Year US Treasury CM (daily)\",\"3MoCD(12MoAvg)\":\"3-MonthCD (12-Month Avg)\",\"6MCDW\":\"6 Month CD (Secondary Market) weekly\",\"UST6M\":\"6 Month US Treasury CM (daily)\",\"FRBCommercial3M\":\"90 Day AA Commercial Paper Rates (Nonfinancial)\",\"WSJPrime\":\"WSJ Prime Rate (daily)\",\"WSJPrimeWkly\":\"WSJ Prime Rate (weekly)\"}")]
         public StringEnumValue<IndexMargin> DisclosureType { get => _disclosureType; set => SetField(ref _disclosureType, value); }
 
         /// <summary>

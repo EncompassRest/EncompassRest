@@ -24,7 +24,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _businessPhone;
         private DirtyValue<decimal?>? _clothingAllowance;
         private DirtyValue<decimal?>? _commissionsAmount;
-        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<EntityReference?>? _contact;
         private DirtyValue<string?>? _countryCode;
         private DirtyValue<bool?>? _currentEmploymentIndicator;
         private DirtyValue<bool?>? _doesNotApply;
@@ -76,6 +76,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<UnitType>>? _unitType;
         private DirtyValue<string?>? _uRLA2020StreetAddress;
         private DirtyValue<decimal?>? _variableHousingAllowance;
+        private DirtyValue<DateTime?>? _verificationDate;
         private DirtyValue<DateTime?>? _verificationRequestDate;
 
         /// <summary>
@@ -157,9 +158,9 @@ namespace EncompassRest.Loans
         public decimal? CommissionsAmount { get => _commissionsAmount; set => SetField(ref _commissionsAmount, value); }
 
         /// <summary>
-        /// Employment Contact (Nullable)
+        /// Employment Contact
         /// </summary>
-        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+        public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Employment CountryCode
@@ -440,6 +441,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VariableHousingAllowance { get => _variableHousingAllowance; set => SetField(ref _variableHousingAllowance, value); }
+
+        /// <summary>
+        /// Employment VerificationDate
+        /// </summary>
+        public DateTime? VerificationDate { get => _verificationDate; set => SetField(ref _verificationDate, value); }
 
         /// <summary>
         /// Employment VerificationRequestDate

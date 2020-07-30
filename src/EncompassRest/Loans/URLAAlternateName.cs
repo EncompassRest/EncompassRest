@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     public sealed partial class URLAAlternateName : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string?>? _altId;
-        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<EntityReference?>? _contact;
         private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<string?>? _firstName;
         private DirtyValue<string?>? _fullName;
@@ -26,9 +26,9 @@ namespace EncompassRest.Loans
         public string? AltId { get => _altId; set => SetField(ref _altId, value); }
 
         /// <summary>
-        /// URLAAlternateName Contact (Nullable)
+        /// URLAAlternateName Contact
         /// </summary>
-        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+        public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// URLAAlternateName EntityDeleted

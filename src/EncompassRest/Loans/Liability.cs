@@ -14,7 +14,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _accountIndicator;
         private DirtyValue<string?>? _attention;
         private DirtyValue<bool?>? _bankLiabilityConsideredIndicator;
-        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<EntityReference?>? _contact;
         private DirtyValue<decimal?>? _creditLimit;
         private DirtyValue<StringEnumValue<LienPosition>>? _currentLienPosition;
         private DirtyValue<DateTime?>? _date;
@@ -100,9 +100,9 @@ namespace EncompassRest.Loans
         public bool? BankLiabilityConsideredIndicator { get => _bankLiabilityConsideredIndicator; set => SetField(ref _bankLiabilityConsideredIndicator, value); }
 
         /// <summary>
-        /// Liability Contact (Nullable)
+        /// Liability Contact
         /// </summary>
-        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+        public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Credit Limit [FLNN31]

@@ -11,7 +11,7 @@ namespace EncompassRest.Loans
     {
         private DirtyValue<DateTime?>? _dateFilesPurged;
         private DirtyValue<DateTime?>? _dateUtc;
-        private DirtyValue<DocumentAudit>? _documentAudit;
+        private DirtyValue<DocumentAudit?>? _documentAudit;
         private DirtyDictionary<string, string?>? _documentFields;
         private DirtyList<OrderedDocument>? _orderedDocuments;
         private DirtyValue<string?>? _orderId;
@@ -30,9 +30,9 @@ namespace EncompassRest.Loans
         public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
 
         /// <summary>
-        /// DocumentOrderLog DocumentAudit (Nullable)
+        /// DocumentOrderLog DocumentAudit
         /// </summary>
-        public DocumentAudit DocumentAudit { get => _documentAudit; set => SetField(ref _documentAudit, value); }
+        public DocumentAudit? DocumentAudit { get => _documentAudit; set => SetField(ref _documentAudit, value); }
 
         /// <summary>
         /// DocumentOrderLog DocumentFields

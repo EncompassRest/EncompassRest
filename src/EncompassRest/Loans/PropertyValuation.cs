@@ -24,6 +24,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _avmReportOrderedDate;
         private DirtyValue<DateTime?>? _avmRetroDate;
         private DirtyValue<string?>? _correspondentStatus;
+        private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<string?>? _id;
         private DirtyValue<string?>? _propertyValuationType;
 
@@ -103,6 +104,11 @@ namespace EncompassRest.Loans
         /// PropertyValuation CorrespondentStatus
         /// </summary>
         public string? CorrespondentStatus { get => _correspondentStatus; set => SetField(ref _correspondentStatus, value); }
+
+        /// <summary>
+        /// PropertyValuation EntityDeleted
+        /// </summary>
+        public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
 
         /// <summary>
         /// PropertyValuation Id

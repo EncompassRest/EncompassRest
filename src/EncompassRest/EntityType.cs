@@ -68,6 +68,26 @@
         /// <summary>
         /// HmdaProfile
         /// </summary>
-        HmdaProfile = 15
+        HmdaProfile = 15,
+        /// <summary>
+        /// Form
+        /// </summary>
+        Form = 16,
+        /// <summary>
+        /// LoanFolder
+        /// </summary>
+        LoanFolder = 17,
+        /// <summary>
+        /// MilestoneSetting
+        /// </summary>
+        MilestoneSetting = 18,
+        /// <summary>
+        /// PipelineView
+        /// </summary>
+        PipelineView = 19,
+        /// <summary>
+        /// LoanDuplicationTemplate
+        /// </summary>
+        LoanDuplicationTemplate = 20
     }
 }

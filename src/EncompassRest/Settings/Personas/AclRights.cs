@@ -24,6 +24,7 @@ namespace EncompassRest.Settings.Personas
         private DisclosureTrackingRights? _disclosureTracking;
         private DocsSetupRights? _docsSetup;
         private DocumentsRights? _documents;
+        private DirtyList<EntityReference>? _duplicateLoans;
         private DynamicDataManagementRights? _dynamicDataManagement;
         private EDisclosuresRights? _eDisclosures;
         private EFolderHistoryRights? _eFolderHistory;
@@ -163,6 +164,12 @@ namespace EncompassRest.Settings.Personas
         /// </summary>
         [AllowNull]
         public DocumentsRights Documents { get => GetField(ref _documents); set => SetField(ref _documents, value); }
+
+        /// <summary>
+        /// AclRights DuplicateLoans
+        /// </summary>
+        [AllowNull]
+        public IList<EntityReference> DuplicateLoans { get => GetField(ref _duplicateLoans); set => SetField(ref _duplicateLoans, value); }
 
         /// <summary>
         /// AclRights DynamicDataManagement

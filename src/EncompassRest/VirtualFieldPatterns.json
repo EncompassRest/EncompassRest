@@ -2911,6 +2911,46 @@
   },
   {
     "Format": 101,
+    "FieldId": "ENHCOND.EXT.OPEN.TYPE.{0}",
+    "Description": "All Open External Enhanced Conditions - {0}"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.EXT.OPEN.TYPE.COUNT.{0}",
+    "Description": "Number of Open External Conditions of specific condition type - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.EXT.TYPE.{0}",
+    "Description": "All External Enhanced Conditions - {0}"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.EXT.TYPE.COUNT.{0}",
+    "Description": "Number of External Conditions of specific condition type - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.INT.OPEN.TYPE.{0}",
+    "Description": "All Internal Open Enhanced Conditions - {0}"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.INT.OPEN.TYPE.COUNT.{0}",
+    "Description": "Number of Open Internal Conditions of specific condition type - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.INT.TYPE.{0}",
+    "Description": "All Internal Enhanced Conditions - {0}"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.INT.TYPE.COUNT.{0}",
+    "Description": "Number of Internal Conditions of specific condition type - {0}"
+  },
+  {
+    "Format": 101,
     "FieldId": "LoanTeamMember.APIClientID.{0}",
     "Description": "Loan Team Member API Client ID - {0}"
   },

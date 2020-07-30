@@ -11,6 +11,7 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiable
     {
+        private DirtyValue<bool?>? _agreementAmmendsRestatesIndicator;
         private DirtyValue<decimal?>? _amountApplyToDownPayment;
         private DirtyValue<decimal?>? _annualFeeNeededAmount;
         private DirtyValue<bool?>? _applyLifeCapLowIndicator;
@@ -231,6 +232,11 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _wireFee;
 
         /// <summary>
+        /// HELOC Agreement Ammends Restates Indicator [4671]
+        /// </summary>
+        public bool? AgreementAmmendsRestatesIndicator { get => _agreementAmmendsRestatesIndicator; set => SetField(ref _agreementAmmendsRestatesIndicator, value); }
+
+        /// <summary>
         /// HELOC Amount Apply To Down Payment [4493]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -250,7 +256,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info ARM Disclosure Type [1959]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"UST1YW\":\"1 Year UST CM (weekly)\",\"UST3YW\":\"3 Year UST CM (weekly)\",\"UST5YW\":\"5 Year UST CM (weekly)\",\"UST7YW\":\"7 Year UST CM (weekly)\",\"UST10YW\":\"10 Year UST CM (weekly)\",\"UST20YW\":\"20 Year UST CM (weekly)\",\"UST30YW\":\"30 Year UST CM (weekly)\",\"UST1Y\":\"1 Year US Treasury CM (daily)\",\"UST3Y\":\"3 Year US Treasury CM (daily)\",\"UST5Y\":\"5 Year US Treasury CM (daily)\",\"UST7Y\":\"7 Year US Treasury CM (daily)\",\"UST10Y\":\"10 Year US Treasury CM (daily)\",\"UST20Y\":\"20 Year US Treasury CM (daily)\",\"UST30Y\":\"30 Year US Treasury CM (daily)\",\"3MoCD(12MoAvg)\":\"3-MonthCD (12-Month Avg)\",\"6MCDW\":\"6 Month CD (Secondary Market) weekly\",\"UST6M\":\"6 Month US Treasury CM (daily)\",\"FRBCommercial3M\":\"90 Day AA Commercial Paper Rates (Nonfinancial)\",\"WSJPrime\":\"WSJ Prime Rate (daily)\",\"WSJPrimeWkly\":\"WSJ Prime Rate (weekly)\",\"Fannie_36_30SOFR\":\"Fannie Mae 3 Year (3yr/6m - 30 day Avg SOFR))\",\"Fannie_56_30SOFR\":\"Fannie Mae 5 Year (5yr/6m - 30 day Avg SOFR)\",\"Fannie_76_30SOFR\":\"Fannie Mae 7 Year (7yr/6m - 30 day Avg SOFR)\",\"Fannie_106_30SOFR\":\"Fannie Mae 10 Year (10yr/6m - 30 day Avg SOFR)\",\"Freddie_36_30SOFR\":\"Freddie Mac 3 Year Hybrid (3yr/6m - 30 day Avg SOFR)\",\"Freddie_56_30SOFR\":\"Freddie Mac 5 Year Hybrid (5yr/6m - 30 day Avg SOFR)\",\"Freddie_76_30SOFR\":\"Freddie Mac 7 Year Hybrid (7yr/6m - 30 day Avg SOFR)\",\"Freddie_106_30SOFR\":\"Freddie Mac 10 Year Hybrid (10yr/6m - 30 day Avg SOFR)\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"UST1YW\":\"1 Year UST CM (weekly)\",\"UST3YW\":\"3 Year UST CM (weekly)\",\"UST5YW\":\"5 Year UST CM (weekly)\",\"UST7YW\":\"7 Year UST CM (weekly)\",\"UST10YW\":\"10 Year UST CM (weekly)\",\"UST20YW\":\"20 Year UST CM (weekly)\",\"UST30YW\":\"30 Year UST CM (weekly)\",\"UST1Y\":\"1 Year US Treasury CM (daily)\",\"UST3Y\":\"3 Year US Treasury CM (daily)\",\"UST5Y\":\"5 Year US Treasury CM (daily)\",\"UST7Y\":\"7 Year US Treasury CM (daily)\",\"UST10Y\":\"10 Year US Treasury CM (daily)\",\"UST20Y\":\"20 Year US Treasury CM (daily)\",\"UST30Y\":\"30 Year US Treasury CM (daily)\",\"3MoCD(12MoAvg)\":\"3-MonthCD (12-Month Avg)\",\"6MCDW\":\"6 Month CD (Secondary Market) weekly\",\"UST6M\":\"6 Month US Treasury CM (daily)\",\"FRBCommercial3M\":\"90 Day AA Commercial Paper Rates (Nonfinancial)\",\"WSJPrime\":\"WSJ Prime Rate (daily)\",\"WSJPrimeWkly\":\"WSJ Prime Rate (weekly)\"}")]
         public StringEnumValue<IndexMargin> ArmDisclosureType { get => _armDisclosureType; set => SetField(ref _armDisclosureType, value); }
 
         /// <summary>

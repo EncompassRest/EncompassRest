@@ -13,7 +13,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _altId;
         private DirtyValue<string?>? _attention;
         private DirtyValue<string?>? _borrowerId;
-        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<EntityReference?>? _contact;
         private DirtyValue<StringEnumValue<OtherIncomeSourceDescription>>? _description;
         private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<bool?>? _foreignIncomeIndicator;
@@ -56,9 +56,9 @@ namespace EncompassRest.Loans
         public string? BorrowerId { get => _borrowerId; set => SetField(ref _borrowerId, value); }
 
         /// <summary>
-        /// OtherIncomeSource Contact (Nullable)
+        /// OtherIncomeSource Contact
         /// </summary>
-        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+        public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Other Income Source Description [URLAROISNN18]

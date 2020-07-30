@@ -17,7 +17,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _guid;
         private DirtyValue<string?>? _id;
         private DirtyValue<bool?>? _isSystemSpecificIndicator;
-        private DirtyValue<LoanAssociate>? _loanAssociate;
+        private DirtyValue<LoanAssociate?>? _loanAssociate;
         private DirtyValue<int?>? _logRecordIndex;
         private DirtyValue<string?>? _systemId;
         private DirtyValue<DateTime?>? _updatedDateUtc;
@@ -65,9 +65,9 @@ namespace EncompassRest.Loans
         public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
 
         /// <summary>
-        /// MilestoneFreeRoleLog LoanAssociate (Nullable)
+        /// MilestoneFreeRoleLog LoanAssociate
         /// </summary>
-        public LoanAssociate LoanAssociate { get => _loanAssociate; set => SetField(ref _loanAssociate, value); }
+        public LoanAssociate? LoanAssociate { get => _loanAssociate; set => SetField(ref _loanAssociate, value); }
 
         /// <summary>
         /// MilestoneFreeRoleLog LogRecordIndex

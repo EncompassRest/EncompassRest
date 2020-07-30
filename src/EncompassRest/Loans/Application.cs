@@ -20,7 +20,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _applicationSignedDate;
         private DirtyList<Asset>? _assets;
         private DirtyValue<decimal?>? _assetsAvailableAmount;
-        private DirtyValue<ATRQMBorrower>? _aTRQMBorrower;
+        private DirtyValue<ATRQMBorrower?>? _aTRQMBorrower;
         private DirtyList<ATRQMBorrower>? _aTRQMBorrowers;
         private DirtyList<AUSTrackingLog>? _aUSTrackingLogs;
         private DirtyValue<decimal?>? _balanceAvailableFamilySupportGuideline;
@@ -285,9 +285,9 @@ namespace EncompassRest.Loans
         public decimal? AssetsAvailableAmount { get => _assetsAvailableAmount; set => SetField(ref _assetsAvailableAmount, value); }
 
         /// <summary>
-        /// Application ATRQMBorrower (Nullable)
+        /// Application ATRQMBorrower
         /// </summary>
-        public ATRQMBorrower ATRQMBorrower { get => _aTRQMBorrower; set => SetField(ref _aTRQMBorrower, value); }
+        public ATRQMBorrower? ATRQMBorrower { get => _aTRQMBorrower; set => SetField(ref _aTRQMBorrower, value); }
 
         /// <summary>
         /// Application ATRQMBorrowers

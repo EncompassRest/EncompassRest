@@ -17,7 +17,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _amountAppliedToDownpayment;
         private DirtyValue<string?>? _attention;
         private DirtyValue<StringEnumValue<Owner>>? _borrowerType;
-        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<EntityReference?>? _contact;
         private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<decimal?>? _hELOCCreditLimitAmount;
         private DirtyValue<decimal?>? _hELOCInitialDraw;
@@ -89,9 +89,9 @@ namespace EncompassRest.Loans
         public StringEnumValue<Owner> BorrowerType { get => _borrowerType; set => SetField(ref _borrowerType, value); }
 
         /// <summary>
-        /// AdditionalLoan Contact (Nullable)
+        /// AdditionalLoan Contact
         /// </summary>
-        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+        public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// AdditionalLoan EntityDeleted

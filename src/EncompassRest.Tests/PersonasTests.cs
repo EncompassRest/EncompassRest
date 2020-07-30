@@ -18,11 +18,13 @@ namespace EncompassRest.Tests
             var personasApis = client.Settings.Personas;
             var personas = await personasApis.GetPersonasAsync();
             AssertNoExtensionData(personas, "Personas", null, true);
+            var personaList = new List<Persona>();
             foreach (var persona in personas)
             {
                 var p = await personasApis.GetPersonaAsync(persona.Id);
-                AssertNoExtensionData(p, "Persona", persona.Id, true);
+                personaList.Add(p);
             }
+            AssertNoExtensionData(personaList, "PersonaList", null, true);
         }
 
         [TestMethod]

@@ -25,7 +25,7 @@ namespace EncompassRest.Tests
             var newLoanEntities = loanEntities.Except(existingLoanEntities).ToList();
             Assert.AreEqual(0, newLoanEntities.Count, $"{nameof(LoanEntity)}: {string.Join(", ", newLoanEntities)}");
 
-            AssertNoExtensionData(loanSchema, "LoanSchema", "LoanSchema", true, new Dictionary<Type, HashSet<string>> { { typeof(LoanEntity), new HashSet<string>(new[] { "EntityReference", "FileAttachmentReference", "EntityRefContract", "EnhancedConditionLog", "GffVAlertTriggerFieldLog" }, StringComparer.OrdinalIgnoreCase) } });
+            AssertNoExtensionData(loanSchema, "LoanSchema", "LoanSchema", true, new Dictionary<Type, HashSet<string>> { { typeof(LoanEntity), new HashSet<string>(new[] { "EntityReference", "FileAttachmentReference", "EntityRefContract", "EnhancedConditionLog", "GffVAlertTriggerFieldLog", "string" }, StringComparer.OrdinalIgnoreCase) } });
         }
 
         [TestMethod]

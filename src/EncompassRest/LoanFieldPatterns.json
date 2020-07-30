@@ -290,369 +290,624 @@
     "Description": "Vesting Party - Vesting Type #{0}"
   },
   {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].CdAppraisalFee",
+    "FieldId": "DISC{0:00}20",
+    "Description": "CD Appraisal Fee #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].CdCreditReportFee",
+    "FieldId": "DISC{0:00}17",
+    "Description": "CD Credit Report Fee #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].CdLoanDiscountFee",
+    "FieldId": "DISC{0:00}14",
+    "Description": "CD Loan Discount Fee #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].CdNonShoppableServices",
+    "FieldId": "DISC{0:00}05",
+    "Description": "CD Non Shoppable Services #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].CdOriginationCharges",
+    "FieldId": "DISC{0:00}02",
+    "Description": "CD Origination Charges #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].CdShoppableServices",
+    "FieldId": "DISC{0:00}08",
+    "Description": "CD Shoppable Services #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].CdTaxesGovtFees",
+    "FieldId": "DISC{0:00}11",
+    "Description": "CD Taxes and Goveernment Fees #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].LeAppraisalFee",
+    "FieldId": "DISC{0:00}19",
+    "Description": "LE Appraisal Fee #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].LeCreditReportFee",
+    "FieldId": "DISC{0:00}16",
+    "Description": "LE Credit Report Fee #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].LeLoanDiscountFee",
+    "FieldId": "DISC{0:00}13",
+    "Description": "LE Loan Discount Fee #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].LeNonShoppableServices",
+    "FieldId": "DISC{0:00}04",
+    "Description": "LE Non Shoppable Services #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].LeOriginationCharges",
+    "FieldId": "DISC{0:00}01",
+    "Description": "LE Origination Charges #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].LeShoppableServices",
+    "FieldId": "DISC{0:00}07",
+    "Description": "LE Shoppable Services #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].LeTaxesGovtFees",
+    "FieldId": "DISC{0:00}10",
+    "Description": "LE Taxes and Goveernment Fees #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].PcAppraisalFee",
+    "FieldId": "DISC{0:00}21",
+    "Description": "PC Appraisal Fee #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].PcCreditReportFee",
+    "FieldId": "DISC{0:00}18",
+    "Description": "PC Credit Report Fee #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].PcLoanDiscountFee",
+    "FieldId": "DISC{0:00}15",
+    "Description": "PC Loan Discount Fee #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].PcNonShoppableServices",
+    "FieldId": "DISC{0:00}06",
+    "Description": "PC Non Shoppable Services #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].PcOriginationCharges",
+    "FieldId": "DISC{0:00}03",
+    "Description": "PC Origination Charges #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].PcShoppableServices",
+    "FieldId": "DISC{0:00}09",
+    "Description": "PC Shoppable Services #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Disclosures[{0}].PcTaxesGovtFees",
+    "FieldId": "DISC{0:00}12",
+    "Description": "PC Taxes and Goveernment Fees #{0}"
+  },
+  {
     "ModelPath": "Loan.Correspondent.EarlyChecks[{0}].EcAppraisalValue",
     "FieldId": "EC{0:00}02",
-    "Description": "Early Check Appraisal Value"
+    "Description": "Early Check Appraisal Value #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.EarlyChecks[{0}].EcDocumentFileId",
     "FieldId": "EC{0:00}03",
-    "Description": "Early Check Document File Id"
+    "Description": "Early Check Document File Id #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.EarlyChecks[{0}].EcUcdpLastSubmissionDateTimeEarly",
     "FieldId": "EC{0:00}01",
-    "Description": "Early Check UCDP Last Submission Date Time Early"
+    "Description": "Early Check UCDP Last Submission Date Time Early #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Riders[{0}].Received",
     "FieldId": "RIDER{0:00}03",
-    "Description": "Rider Received"
+    "Description": "Rider Received #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Riders[{0}].Required",
     "FieldId": "RIDER{0:00}02",
-    "Description": "Rider Required"
+    "Description": "Rider Required #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Riders[{0}].RiderDate",
     "FieldId": "RIDER{0:00}04",
-    "Description": "Rider Date"
+    "Description": "Rider Date #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Riders[{0}].RiderName",
     "FieldId": "RIDER{0:00}01",
-    "Description": "Rider Name"
+    "Description": "Rider Name #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].AllOtherMonthlyPayments",
+    "FieldId": "SCE{0:00}N20",
+    "Description": "Scenario All Other Monthly Payments"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].BaseIncome",
+    "FieldId": "SCE{0:00}N08",
+    "Description": "Scenario Base Income"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].BaseLoanAmount",
+    "FieldId": "SCE{0:00}N04",
+    "Description": "Scenario Base Loan Amount"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].Comments",
+    "FieldId": "SCE{0:00}N28",
+    "Description": "Scenario Comments"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].CreatedBy",
+    "FieldId": "SCE{0:00}N27",
+    "Description": "Scenario Created By"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].EffectivePropValue",
+    "FieldId": "SCE{0:00}N01",
+    "Description": "Scenario Effective Prop Value"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].HoaFees",
+    "FieldId": "SCE{0:00}N16",
+    "Description": "Scenario HOA Fees"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].InterestedPartyContribution",
+    "FieldId": "SCE{0:00}N25",
+    "Description": "Scenario Interested Party Contribution percent"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].LeaseOrGroundRent",
+    "FieldId": "SCE{0:00}N17",
+    "Description": "Scenario Lease or Ground Rent"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].MonthlyPaymentTotal",
+    "FieldId": "SCE{0:00}N21",
+    "Description": "Scenario Total of All Monthly Payments"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].MortgageInsurance",
+    "FieldId": "SCE{0:00}N15",
+    "Description": "Scenario Mortgage Insurance"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].NegativeCashFlow",
+    "FieldId": "SCE{0:00}N19",
+    "Description": "Scenario Negative Cash Flow"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].OtherHousingExpenses",
+    "FieldId": "SCE{0:00}N18",
+    "Description": "Scenario Other Housing Expenses"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].OtherIncome",
+    "FieldId": "SCE{0:00}N09",
+    "Description": "Scenario Other Income"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].PositiveCashFlow",
+    "FieldId": "SCE{0:00}N10",
+    "Description": "Scenario Positive Cash Flow"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].QualFico",
+    "FieldId": "SCE{0:00}N03",
+    "Description": "Scenario Qual FICO "
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].QualifyingRate",
+    "FieldId": "SCE{0:00}N07",
+    "Description": "Scenario Qualifying Rate"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].Required",
+    "FieldId": "SCE{0:00}N22",
+    "Description": "Scenario Required Amount"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].ScenarioName",
+    "FieldId": "SCE{0:00}N26",
+    "Description": "Scenario Name"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].SecondMortgagePandI",
+    "FieldId": "SCE{0:00}N06",
+    "Description": "Scenario Second Mortgage P and I "
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].SubordinateFinancingAmount",
+    "FieldId": "SCE{0:00}N02",
+    "Description": "Scenario Subordinate Financing Amount"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].TotalInsurance",
+    "FieldId": "SCE{0:00}N11",
+    "Description": "Scenario Total Insurance"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].TotalInsuranceScenarioData",
+    "FieldId": "SCE{0:00}N13",
+    "Description": "Scenario Total Insurance Scenario Data"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].TotalLoanAmount",
+    "FieldId": "SCE{0:00}N05",
+    "Description": "Scenario Total Loan Amount"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].TotalTaxes",
+    "FieldId": "SCE{0:00}N12",
+    "Description": "Scenario Total Taxes"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].TotalTaxesScenarioData",
+    "FieldId": "SCE{0:00}N14",
+    "Description": "Scenario Total Taxes Scenario Data"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].VerifiedAssets",
+    "FieldId": "SCE{0:00}N23",
+    "Description": "Scenario Verified Assets"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Scenarios[{0}].VerifiedAssetsScenarioData",
+    "FieldId": "SCE{0:00}N24",
+    "Description": "Scenario Verified Assets Scenario Data"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisalAddressCounty",
     "FieldId": "VAL{0:00}03",
-    "Description": "Correspondent Appraisal Address County"
+    "Description": "Correspondent Appraisal Address County #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisalApptDate",
     "FieldId": "VAL{0:00}04",
-    "Description": "Correspondent Appraisal Appt Date"
+    "Description": "Correspondent Appraisal Appt Date #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisalCountyName",
     "FieldId": "VAL{0:00}05",
-    "Description": "Correspondent Appraisal County Name"
+    "Description": "Correspondent Appraisal County Name #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisalFinalInspectionDate",
     "FieldId": "VAL{0:00}06",
-    "Description": "Correspondent Appraisal Final Inspection Date"
+    "Description": "Correspondent Appraisal Final Inspection Date #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisalFinalInspectionFlag",
     "FieldId": "VAL{0:00}07",
-    "Description": "Correspondent Appraisal Final Inspection Flag"
+    "Description": "Correspondent Appraisal Final Inspection Flag #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisalFloodZone",
     "FieldId": "VAL{0:00}08",
-    "Description": "Correspondent Flood Zone"
+    "Description": "Correspondent Flood Zone #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisalLegalDescription1",
     "FieldId": "VAL{0:00}34",
-    "Description": "Correspondent Appraisal Legal Description 1"
+    "Description": "Correspondent Appraisal Legal Description 1 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisalLegalDescription2",
     "FieldId": "VAL{0:00}35",
-    "Description": "Correspondent Appraisal Legal Description 2"
+    "Description": "Correspondent Appraisal Legal Description 2 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisalPropertyType",
     "FieldId": "VAL{0:00}09",
-    "Description": "Correspondent Property Appraisal Type"
+    "Description": "Correspondent Property Appraisal Type #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisalUsage",
     "FieldId": "VAL{0:00}63",
-    "Description": "Correspondent Property Appraisal Usage"
+    "Description": "Correspondent Property Appraisal Usage #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisedCondition",
     "FieldId": "VAL{0:00}10",
-    "Description": "Correspondent Appraised Condition"
+    "Description": "Correspondent Appraised Condition #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisedValue",
     "FieldId": "VAL{0:00}11",
-    "Description": "Correspondent Appraised Value"
+    "Description": "Correspondent Appraised Value #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraiserName",
     "FieldId": "VAL{0:00}12",
-    "Description": "Correspondent Appraiser Name"
+    "Description": "Correspondent Appraiser Name #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisersLicenseNumber",
     "FieldId": "VAL{0:00}14",
-    "Description": "Correspondent Appraisers License Number"
+    "Description": "Correspondent Appraisers License Number #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisersPropertyAddress1",
     "FieldId": "VAL{0:00}16",
-    "Description": "Correspondent Appraisers Property Address 1"
+    "Description": "Correspondent Appraisers Property Address 1 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisersPropertyAddress2",
     "FieldId": "VAL{0:00}17",
-    "Description": "Correspondent Appraisers Property Address 2"
+    "Description": "Correspondent Appraisers Property Address 2 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraisersStateLicenseNumber",
     "FieldId": "VAL{0:00}15",
-    "Description": "Correspondent Appraisers State License Number"
+    "Description": "Correspondent Appraisers State License Number #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AppraiserSupervisorsName",
     "FieldId": "VAL{0:00}13",
-    "Description": "Correspondent Appraiser Supervisors Name"
+    "Description": "Correspondent Appraiser Supervisors Name #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AvmAppraisedValue",
     "FieldId": "VAL{0:00}19",
-    "Description": "Correspondent AVM Appraised Value"
+    "Description": "Correspondent AVM Appraised Value #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AvmConfidenceScore",
     "FieldId": "VAL{0:00}20",
-    "Description": "Correspondent AVM Confidence Score"
+    "Description": "Correspondent AVM Confidence Score #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AvmOrderDate",
     "FieldId": "VAL{0:00}22",
-    "Description": "Correspondent AVM Order Date"
+    "Description": "Correspondent AVM Order Date #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AvmOrderNumber",
     "FieldId": "VAL{0:00}21",
-    "Description": "Correspondent AVM Order Number"
+    "Description": "Correspondent AVM Order Number #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].AvmType",
     "FieldId": "VAL{0:00}23",
-    "Description": "Correspondent AVM Type"
+    "Description": "Correspondent AVM Type #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].BuildingStatus",
     "FieldId": "VAL{0:00}24",
-    "Description": "Correspondent Building Status"
+    "Description": "Correspondent Building Status #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].CensusTrack",
     "FieldId": "VAL{0:00}25",
-    "Description": "Correspondent Census Tract"
+    "Description": "Correspondent Census Tract #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Valuations[{0}].CondoProjectStatusType",
+    "FieldId": "VAL{0:00}68",
+    "Description": "Correspondent Condo Project Status Type #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].DateOfSale",
     "FieldId": "VAL{0:00}26",
-    "Description": "Correspondent Date Of Sale"
+    "Description": "Correspondent Date Of Sale #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].EnergyEfficientIndicator",
     "FieldId": "VAL{0:00}27",
-    "Description": "Correspondent Energy Efficient Indicator"
+    "Description": "Correspondent Energy Efficient Indicator #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].EstValueOfRepairs",
     "FieldId": "VAL{0:00}28",
-    "Description": "Correspondent Estimated Value Of Repairs"
+    "Description": "Correspondent Estimated Value Of Repairs #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].FinalInspectionReqIndicator",
     "FieldId": "VAL{0:00}29",
-    "Description": "Correspondent Final Inspection Req Indicator"
+    "Description": "Correspondent Final Inspection Req Indicator #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].HoaBudgetedAssessmentIncome",
     "FieldId": "VAL{0:00}30",
-    "Description": "Correspondent HOA Budgeted Assessment Income"
+    "Description": "Correspondent HOA Budgeted Assessment Income #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].HoaBudgetedReplacementReserves",
     "FieldId": "VAL{0:00}31",
-    "Description": "Correspondent HOA Budgeted Replacement Reserves"
+    "Description": "Correspondent HOA Budgeted Replacement Reserves #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].HoaLitigationStatus",
     "FieldId": "VAL{0:00}32",
-    "Description": "Correspondent HOA Litigation Status"
+    "Description": "Correspondent HOA Litigation Status #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].IsSubjectPropertyImproved",
     "FieldId": "VAL{0:00}33",
-    "Description": "Correspondent Subject Property Improve Indicator"
+    "Description": "Correspondent Subject Property Improve Indicator #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].LivingArea",
     "FieldId": "VAL{0:00}36",
-    "Description": "Correspondent Living Area"
+    "Description": "Correspondent Living Area #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].MonthlyRentAmountUnit3",
     "FieldId": "VAL{0:00}37",
-    "Description": "Correspondent Monthly Rent Amount Unit3"
+    "Description": "Correspondent Monthly Rent Amount Unit3 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].MonthlyRentAmountUnit4",
     "FieldId": "VAL{0:00}38",
-    "Description": "Correspondent Monthly Rent Amount Unit4"
+    "Description": "Correspondent Monthly Rent Amount Unit4 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].NfipPaneldate",
     "FieldId": "VAL{0:00}39",
-    "Description": "Correspondent NFIP Panel date"
+    "Description": "Correspondent NFIP Panel date #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].NfipPanelNumber",
     "FieldId": "VAL{0:00}40",
-    "Description": "Correspondent NFIP Panel Number"
+    "Description": "Correspondent NFIP Panel Number #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].NumberofBedrooms",
     "FieldId": "VAL{0:00}41",
-    "Description": "Correspondent Number of Bedrooms"
+    "Description": "Correspondent Number of Bedrooms #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].NumberofBedroomsUnit1",
     "FieldId": "VAL{0:00}42",
-    "Description": "Correspondent Number of Bedrooms Unit 1"
+    "Description": "Correspondent Number of Bedrooms Unit 1 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].NumberofBedroomsUnit2",
     "FieldId": "VAL{0:00}43",
-    "Description": "Correspondent Number of Bedrooms Unit 2"
+    "Description": "Correspondent Number of Bedrooms Unit 2 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].NumberOfBedroomUnit3",
     "FieldId": "VAL{0:00}01",
-    "Description": "Correspondent Number Of Bedroom Unit 3"
+    "Description": "Correspondent Number Of Bedroom Unit 3 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].NumberOfBedroomUnit4",
     "FieldId": "VAL{0:00}02",
-    "Description": "Correspondent Number Of Bedroom Unit 4"
+    "Description": "Correspondent Number Of Bedroom Unit 4 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].NumberOfUnits",
     "FieldId": "VAL{0:00}44",
-    "Description": "Correspondent Number of Units"
+    "Description": "Correspondent Number of Units #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].PanelNumber",
     "FieldId": "VAL{0:00}45",
-    "Description": "Correspondent Panel Number"
+    "Description": "Correspondent Panel Number #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].PostalCode",
     "FieldId": "VAL{0:00}65",
-    "Description": "Correspondent Zip Code 4 digits"
+    "Description": "Correspondent Zip Code 4 digits #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.Valuations[{0}].ProjectAttachmentType",
+    "FieldId": "VAL{0:00}67",
+    "Description": "Correspondent Project Attachment Type #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].PropertyAppraisalType",
     "FieldId": "VAL{0:00}46",
-    "Description": "Correspondent Property Appraisal Type"
+    "Description": "Correspondent Property Appraisal Type #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].PropertyAppraisalUnitNumber",
     "FieldId": "VAL{0:00}62",
-    "Description": "Correspondent Property Appraisal Unit Number"
+    "Description": "Correspondent Property Appraisal Unit Number #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].PropertyAttachmentType",
     "FieldId": "VAL{0:00}47",
-    "Description": "Correspondent Property Attachment Type"
+    "Description": "Correspondent Property Attachment Type #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].PropertyUsageCode",
     "FieldId": "VAL{0:00}48",
-    "Description": "Correspondent Property Usage Code"
+    "Description": "Correspondent Property Usage Code #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].PropertyValue",
     "FieldId": "VAL{0:00}49",
-    "Description": "Correspondent Property Value"
+    "Description": "Correspondent Property Value #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].PurchaseContractSalesPrice",
     "FieldId": "VAL{0:00}50",
-    "Description": "Correspondent Purchase Contract Sales Price"
+    "Description": "Correspondent Purchase Contract Sales Price #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].RentAmountUnit1",
     "FieldId": "VAL{0:00}51",
-    "Description": "Correspondent Rent Amount Unit 1"
+    "Description": "Correspondent Rent Amount Unit 1 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].RentAmountUnit2",
     "FieldId": "VAL{0:00}52",
-    "Description": "Correspondent Rent Amount Unit 2"
+    "Description": "Correspondent Rent Amount Unit 2 #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].SiteValue",
     "FieldId": "VAL{0:00}53",
-    "Description": "Correspondent Site Value"
+    "Description": "Correspondent Site Value #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].StandardDeviation",
     "FieldId": "VAL{0:00}54",
-    "Description": "Correspondent Standard Deviation"
+    "Description": "Correspondent Standard Deviation #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].StatedGrossRent",
     "FieldId": "VAL{0:00}56",
-    "Description": "Correspondent Stated Gross Rent"
+    "Description": "Correspondent Stated Gross Rent #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].StatedPropertyCondition",
     "FieldId": "VAL{0:00}57",
-    "Description": "Correspondent Stated Property Condition"
+    "Description": "Correspondent Stated Property Condition #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].StatedPropertyType",
     "FieldId": "VAL{0:00}58",
-    "Description": "Correspondent Stated Property Type"
+    "Description": "Correspondent Stated Property Type #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].SubjectAddressCity",
     "FieldId": "VAL{0:00}59",
-    "Description": "Correspondent Subject Address City"
+    "Description": "Correspondent Subject Address City #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].SubjectPropertyState",
     "FieldId": "VAL{0:00}55",
-    "Description": "Correspondent State"
+    "Description": "Correspondent State #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].SubjectPropertyUnitNumber",
     "FieldId": "VAL{0:00}60",
-    "Description": "Correspondent Subject Property Unit Number"
+    "Description": "Correspondent Subject Property Unit Number #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].SupervisoryAppraisalLicenseNumber",
     "FieldId": "VAL{0:00}61",
-    "Description": "Correspondent Supervisory Appraisal License #"
+    "Description": "Correspondent Supervisory Appraisal License # #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].ValuationMethod",
     "FieldId": "VAL{0:00}18",
-    "Description": "Correspondent Appraisers Valuation Method"
+    "Description": "Correspondent Appraisers Valuation Method #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].YearBuilt",
     "FieldId": "VAL{0:00}64",
-    "Description": "Correspondent Year Built"
+    "Description": "Correspondent Year Built #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].ZoningCompliance",
     "FieldId": "VAL{0:00}66",
-    "Description": "Correspondent Zoning Compliance"
+    "Description": "Correspondent Zoning Compliance #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.AdditionalLoans[{0}].AccountType",
@@ -1043,6 +1298,66 @@
     "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')][4].Urla2020CashOrMarketValueAmount",
     "FieldId": "DD{0:00}51",
     "Description": "Depository Account 4 Balance - URLA 2020 #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Borrower.CreditReports[{0}].CreditReportCompany",
+    "FieldId": "BCRED{0:00}03",
+    "Description": "Credit Report Borrower Company #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Borrower.CreditReports[{0}].CreditReportDate",
+    "FieldId": "BCRED{0:00}04",
+    "Description": "Credit Report Borrower Date #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Borrower.CreditReports[{0}].CreditReportId",
+    "FieldId": "BCRED{0:00}05",
+    "Description": "Credit Report Borrower Id #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Borrower.CreditReports[{0}].DateOfBirth",
+    "FieldId": "BCRED{0:00}02",
+    "Description": "Credit Report Borrower Date of Birth #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Borrower.CreditReports[{0}].NonTraditionalCredit",
+    "FieldId": "BCRED{0:00}06",
+    "Description": "Credit Report Borrower Non-Traditional Credit #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Borrower.CreditReports[{0}].VerifySsn",
+    "FieldId": "BCRED{0:00}01",
+    "Description": "Credit Report Borrower - Verify SSN #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.CoBorrower.CreditReports[{0}].CreditReportCompany",
+    "FieldId": "CCRED{0:00}03",
+    "Description": "Credit Report Co-Borrower Company #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.CoBorrower.CreditReports[{0}].CreditReportDate",
+    "FieldId": "CCRED{0:00}04",
+    "Description": "Credit Report Co-Borrower Date #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.CoBorrower.CreditReports[{0}].CreditReportId",
+    "FieldId": "CCRED{0:00}05",
+    "Description": "Credit Report Co-Borrower Id #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.CoBorrower.CreditReports[{0}].DateOfBirth",
+    "FieldId": "CCRED{0:00}02",
+    "Description": "Credit Report Co-Borrower Date of Birth #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.CoBorrower.CreditReports[{0}].NonTraditionalCredit",
+    "FieldId": "CCRED{0:00}06",
+    "Description": "Credit Report Co-Borrower Non-Traditional Credit #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.CoBorrower.CreditReports[{0}].VerifySsn",
+    "FieldId": "CCRED{0:00}01",
+    "Description": "Credit Report Co-Borrower - Verify SSN #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(CurrentEmploymentIndicator == 'false' && Owner == 'Borrower')][{0}].AddressCity",
@@ -1500,6 +1815,11 @@
     "Description": "Borr Employment Variable Housing Allowance #{0}"
   },
   {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].VerificationDate",
+    "FieldId": "BE{0:00}78",
+    "Description": null
+  },
+  {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].VerificationRequestDate",
     "FieldId": "BE{0:00}98",
     "Description": "Borr Employer Request Date #{0}"
@@ -1808,6 +2128,11 @@
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].VariableHousingAllowance",
     "FieldId": "CE{0:00}71",
     "Description": "Borr Employment Variable Housing Allowance #{0}"
+  },
+  {
+    "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].VerificationDate",
+    "FieldId": "CE{0:00}78",
+    "Description": null
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].VerificationRequestDate",
@@ -2587,12 +2912,12 @@
   {
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].FuturePropertyUsageType",
     "FieldId": "FM{0:00}55",
-    "Description": "Mortgage Property Future Use of Property"
+    "Description": "Mortgage Property Future Use of Property #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].FutureUsageTypeOtherDesc",
     "FieldId": "FM{0:00}56",
-    "Description": "Description If Future Use of Property Is Other"
+    "Description": "Description If Future Use of Property Is Other #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].GsePropertyType",
@@ -4917,77 +5242,77 @@
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmComplexityScore",
     "FieldId": "PVAL{0:00}09",
-    "Description": "AVM Complexity Score"
+    "Description": "AVM Complexity Score #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmConfidenceScore",
     "FieldId": "PVAL{0:00}04",
-    "Description": "AVM Confidence Score"
+    "Description": "AVM Confidence Score #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmConfidenceScoreAlt",
     "FieldId": "PVAL{0:00}05",
-    "Description": "AVM Confidence Score Alt"
+    "Description": "AVM Confidence Score Alt #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmFsd",
     "FieldId": "PVAL{0:00}10",
-    "Description": "AVM FSD"
+    "Description": "AVM FSD #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmProduct",
     "FieldId": "PVAL{0:00}03",
-    "Description": "AVM Product"
+    "Description": "AVM Product #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmPropertyId",
     "FieldId": "PVAL{0:00}02",
-    "Description": "AVM Property ID"
+    "Description": "AVM Property ID #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmPropertyValue",
     "FieldId": "PVAL{0:00}01",
-    "Description": "AVM Property Value"
+    "Description": "AVM Property Value #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmProvider",
     "FieldId": "PVAL{0:00}14",
-    "Description": "AVM Provider"
+    "Description": "AVM Provider #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmRangeHigh",
     "FieldId": "PVAL{0:00}07",
-    "Description": "AVM Range High"
+    "Description": "AVM Range High #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmRangeLow",
     "FieldId": "PVAL{0:00}06",
-    "Description": "AVM Range Low"
+    "Description": "AVM Range Low #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmReportCompleteDate",
     "FieldId": "PVAL{0:00}12",
-    "Description": "AVM Report Complete Date/Time"
+    "Description": "AVM Report Complete Date/Time #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmReportId",
     "FieldId": "PVAL{0:00}11",
-    "Description": "AVM Report ID"
+    "Description": "AVM Report ID #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmReportOrderedDate",
     "FieldId": "PVAL{0:00}13",
-    "Description": "AVM Report Ordered Date/Time"
+    "Description": "AVM Report Ordered Date/Time #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].AvmRetroDate",
     "FieldId": "PVAL{0:00}08",
-    "Description": "AVM Retro Date"
+    "Description": "AVM Retro Date #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].PropertyValuationType",
     "FieldId": "PVAL{0:00}15",
-    "Description": "Property Valuation Type"
+    "Description": "Property Valuation Type #{0}"
   },
   {
     "ModelPath": "Loan.ServiceProviderContacts[{0}].Address",
@@ -5168,6 +5493,31 @@
     "ModelPath": "Loan.ServiceProviderContacts[{0}].WebUrl",
     "FieldId": "SP{0:00}12",
     "Description": "Settlement Service Provider Web Url #{0}"
+  },
+  {
+    "ModelPath": "Loan.SpecialFeatureCodes[{0}].Code",
+    "FieldId": "SFC{0:00}01",
+    "Description": "Special Feature Code - Code #{0}"
+  },
+  {
+    "ModelPath": "Loan.SpecialFeatureCodes[{0}].Comments",
+    "FieldId": "SFC{0:00}03",
+    "Description": "Special Feature Code - Comments #{0}"
+  },
+  {
+    "ModelPath": "Loan.SpecialFeatureCodes[{0}].Description",
+    "FieldId": "SFC{0:00}02",
+    "Description": "Special Feature Code - Description #{0}"
+  },
+  {
+    "ModelPath": "Loan.SpecialFeatureCodes[{0}].Source",
+    "FieldId": "SFC{0:00}04",
+    "Description": "Special Feature Code - Source #{0}"
+  },
+  {
+    "ModelPath": "Loan.SpecialFeatureCodes[{0}].SourceOther",
+    "FieldId": "SFC{0:00}05",
+    "Description": "Special Feature Code - Source Other #{0}"
   },
   {
     "ModelPath": "Loan.StateDisclosure.NewYorkFees[{0}].Address",

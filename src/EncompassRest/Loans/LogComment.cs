@@ -14,7 +14,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _forRoleId;
         private DirtyValue<string?>? _guid;
         private DirtyValue<string?>? _id;
-        private DirtyValue<bool?>? _isInternal;
+        private DirtyValue<bool?>? _isExternal;
         private DirtyValue<string?>? _reviewedBy;
         private DirtyValue<DateTime?>? _reviewedDate;
 
@@ -54,9 +54,9 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// LogComment IsInternal
+        /// LogComment IsExternal
         /// </summary>
-        public bool? IsInternal { get => _isInternal; set => SetField(ref _isInternal, value); }
+        public bool? IsExternal { get => _isExternal; set => SetField(ref _isExternal, value); }
 
         /// <summary>
         /// LogComment ReviewedBy

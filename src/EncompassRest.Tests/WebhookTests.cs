@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
-using EncompassRest.Utilities;
 using EncompassRest.Webhook;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,10 +17,7 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var resources = await client.Webhook.GetResourcesAsync();
 
-            foreach (var resource in resources)
-            {
-                AssertNoExtensionData(resource, "Resource", resource.Name, true);
-            }
+            AssertNoExtensionData(resources, "Resources", null, true);
         }
 
         [TestMethod]
@@ -42,7 +38,7 @@ namespace EncompassRest.Tests
         public void WebhookSubscription_Serialization()
         {
             var subscription = new WebhookSubscription("https://google.com", WebhookResourceType.Loan, new[] { WebhookResourceEvent.Create, WebhookResourceEvent.Update }) { ClientId = "1234567890" };
-            Assert.AreEqual(@"{""events"":[""create"",""update""],""endpoint"":""https://google.com"",""resource"":""Loan""}", subscription.ToString(SerializationOptions.Dirty));
+            Assert.AreEqual(@"{""events"":[""create"",""update""],""endpoint"":""https://google.com"",""resource"":""loan""}", subscription.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]

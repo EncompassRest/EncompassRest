@@ -12,6 +12,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?>? _itemizationFeeManagement;
         private DirtyValue<bool?>? _lOCompensation;
         private DirtyValue<bool?>? _mITables;
+        private DirtyValue<bool?>? _specialFeatureCodes;
         private DirtyValue<bool?>? _stateTax;
         private DirtyValue<bool?>? _temporaryBuydown;
         private DirtyValue<bool?>? _title;
@@ -51,6 +52,11 @@ namespace EncompassRest.Company.Users.Rights
         /// TablesAndFeesRights MITables
         /// </summary>
         public bool? MITables { get => _mITables; set => SetField(ref _mITables, value); }
+
+        /// <summary>
+        /// TablesAndFeesRights SpecialFeatureCodes
+        /// </summary>
+        public bool? SpecialFeatureCodes { get => _specialFeatureCodes; set => SetField(ref _specialFeatureCodes, value); }
 
         /// <summary>
         /// TablesAndFeesRights StateTax

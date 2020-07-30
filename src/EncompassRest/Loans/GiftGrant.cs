@@ -15,7 +15,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<GiftGrantAssetType>>? _assetType;
         private DirtyValue<string?>? _attention;
         private DirtyValue<string?>? _borrowerId;
-        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<EntityReference?>? _contact;
         private DirtyValue<bool?>? _depositedIndicator;
         private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<int?>? _giftGrantIndex;
@@ -67,9 +67,9 @@ namespace EncompassRest.Loans
         public string? BorrowerId { get => _borrowerId; set => SetField(ref _borrowerId, value); }
 
         /// <summary>
-        /// GiftGrant Contact (Nullable)
+        /// GiftGrant Contact
         /// </summary>
-        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+        public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// Deposited [URLARGGNN20]

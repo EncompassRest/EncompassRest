@@ -15,7 +15,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _attention;
         private DirtyValue<StringEnumValue<Owner>>? _borrowerType;
         private DirtyValue<decimal?>? _cashOrMarketValue;
-        private DirtyValue<EntityReference>? _contact;
+        private DirtyValue<EntityReference?>? _contact;
         private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<string?>? _holderAddressCity;
         private DirtyValue<string?>? _holderAddressPostalCode;
@@ -63,9 +63,9 @@ namespace EncompassRest.Loans
         public decimal? CashOrMarketValue { get => _cashOrMarketValue; set => SetField(ref _cashOrMarketValue, value); }
 
         /// <summary>
-        /// OtherAsset Contact (Nullable)
+        /// OtherAsset Contact
         /// </summary>
-        public EntityReference Contact { get => _contact; set => SetField(ref _contact, value); }
+        public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
         /// OtherAsset EntityDeleted
