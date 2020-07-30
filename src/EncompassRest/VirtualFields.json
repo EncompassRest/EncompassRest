@@ -10018,6 +10018,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE.4512",
@@ -17148,6 +17152,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE.CONFIRMED.4512",
@@ -24614,6 +24622,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE.DENIED.4512",
@@ -32217,6 +32229,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE.REQUEST.4512",
@@ -39785,6 +39801,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE1.4512",
@@ -46910,6 +46930,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE1.DENIED.4512",
@@ -54423,6 +54447,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE1.REQUEST.4512",
@@ -61939,6 +61967,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE2.4512",
@@ -69064,6 +69096,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE2.DENIED.4512",
@@ -76577,6 +76613,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE2.REQUEST.4512",
@@ -84093,6 +84133,10 @@
       {
         "value": "WSJPrimeWkly",
         "text": "WSJ Prime Rate (weekly)"
+      },
+      {
+        "value": "SOFR_30DayAvg",
+        "text": "30-Day Average SOFR"
       }
     ],
     "FieldId": "LOCKRATE3.4512",
