@@ -5310,6 +5310,11 @@
     "Description": "AVM Retro Date #{0}"
   },
   {
+    "ModelPath": "Loan.PropertyValuations[{0}].OrderType",
+    "FieldId": "PVAL{0:00}16",
+    "Description": "Property Valuation Order Type"
+  },
+  {
     "ModelPath": "Loan.PropertyValuations[{0}].PropertyValuationType",
     "FieldId": "PVAL{0:00}15",
     "Description": "Property Valuation Type #{0}"

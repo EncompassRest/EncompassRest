@@ -270,6 +270,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<ProjectAttachmentType>>? _projectAttachmentType;
         private DirtyValue<StringEnumValue<ProjectDesignType>>? _projectDesignType;
         private DirtyValue<int?>? _projectUnitCount;
+        private DirtyValue<StringEnumValue<PropertyRightsType>>? _propertyEstateType;
         private DirtyValue<DateTime?>? _propertyValuationEffectiveDate;
         private DirtyValue<StringEnumValue<PropertyValuationMethodType>>? _propertyValuationMethodType;
         private DirtyValue<StringEnumValue<PropertyValuationOther>>? _propertyValuationOther;
@@ -1660,6 +1661,11 @@ namespace EncompassRest.Loans
         /// ULDD Project Unit Count [ULDD.X176]
         /// </summary>
         public int? ProjectUnitCount { get => _projectUnitCount; set => SetField(ref _projectUnitCount, value); }
+
+        /// <summary>
+        /// ULDD - Property Estate Type [ULDD.X197]
+        /// </summary>
+        public StringEnumValue<PropertyRightsType> PropertyEstateType { get => _propertyEstateType; set => SetField(ref _propertyEstateType, value); }
 
         /// <summary>
         /// ULDD - Property Valuation Effective Date [ULDD.X30]

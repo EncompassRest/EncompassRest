@@ -26,6 +26,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _correspondentStatus;
         private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<string?>? _id;
+        private DirtyValue<string?>? _orderType;
         private DirtyValue<string?>? _propertyValuationType;
 
         /// <summary>
@@ -114,6 +115,11 @@ namespace EncompassRest.Loans
         /// PropertyValuation Id
         /// </summary>
         public string? Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// Property Valuation Order Type [PVALNN16]
+        /// </summary>
+        public string? OrderType { get => _orderType; set => SetField(ref _orderType, value); }
 
         /// <summary>
         /// Property Valuation Type [PVALNN15]

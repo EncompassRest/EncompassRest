@@ -311,6 +311,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _priorPropertyShortSaleCompletedIndicator;
         private DirtyValue<StringEnumValue<PriorPropertyTitleType>>? _priorPropertyTitleType;
         private DirtyValue<StringEnumValue<PriorPropertyUsageType>>? _priorPropertyUsageType;
+        private DirtyValue<bool?>? _priorResidenceDoesNotApply;
         private DirtyValue<bool?>? _propertyForeclosedPastSevenYearsIndicator;
         private DirtyValue<bool?>? _propertyProposedCleanEnergyLienIndicator;
         private DirtyValue<bool?>? _realEstateDoesNotApply;
@@ -2056,6 +2057,11 @@ namespace EncompassRest.Loans
         /// Borrower PriorPropertyUsageType
         /// </summary>
         public StringEnumValue<PriorPropertyUsageType> PriorPropertyUsageType { get => _priorPropertyUsageType; set => SetField(ref _priorPropertyUsageType, value); }
+
+        /// <summary>
+        /// Borrower PriorResidenceDoesNotApply
+        /// </summary>
+        public bool? PriorResidenceDoesNotApply { get => _priorResidenceDoesNotApply; set => SetField(ref _priorResidenceDoesNotApply, value); }
 
         /// <summary>
         /// Borrower PropertyForeclosedPastSevenYearsIndicator

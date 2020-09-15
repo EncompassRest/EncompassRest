@@ -148,7 +148,8 @@ namespace EncompassRest
                 typeof(AppraisalPropertyType),
                 typeof(BuildingStatusType),
                 typeof(AttachmentType),
-                typeof(PropertyImprovementsType)
+                typeof(PropertyImprovementsType),
+                typeof(PropertyRightsType)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (var sharedEnumType in sharedEnumTypes)
@@ -185,7 +186,8 @@ namespace EncompassRest
             "GovernmentRefinanceType",
             "PropertyFormType",
             "InsuranceProjectType",
-            "LogLPPropertyType"
+            "LogLPPropertyType",
+            "PropertyRightsType"
         };
 
         private static readonly HashSet<string> s_enumPropertyNamesToUseEntityTypeInName = new HashSet<string>(StringComparer.OrdinalIgnoreCase)

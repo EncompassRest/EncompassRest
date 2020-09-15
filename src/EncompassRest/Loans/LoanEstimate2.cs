@@ -42,6 +42,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _fromOrToBorrower;
         private DirtyValue<decimal?>? _fundsForBorrower;
         private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _includePayoffs;
         private DirtyValue<StringEnumValue<IndexMargin>>? _indexMargin;
         private DirtyValue<int?>? _initialEscrowPaymentClosingSubTotal;
         private DirtyValue<bool?>? _itemizeServiceSectionCType;
@@ -252,6 +253,11 @@ namespace EncompassRest.Loans
         /// LoanEstimate2 Id
         /// </summary>
         public string? Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// Loan Estimate - Include Payoffs in Adjustments and Credits (Purchase Only) [LE2.X101]
+        /// </summary>
+        public bool? IncludePayoffs { get => _includePayoffs; set => SetField(ref _includePayoffs, value); }
 
         /// <summary>
         /// Loan Estimate - Index [LE2.X96]

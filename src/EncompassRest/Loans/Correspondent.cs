@@ -339,6 +339,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _minFirstChangeRate1;
         private DirtyValue<decimal?>? _minFirstChangeRate2;
         private DirtyValue<string?>? _miPremiumPaymentType;
+        private DirtyValue<DateTime?>? _miTerminationDate;
         private DirtyValue<bool?>? _momIndicator;
         private DirtyValue<decimal?>? _monthlyAmount;
         private DirtyValue<decimal?>? _monthlyHousingExpense;
@@ -2254,6 +2255,11 @@ namespace EncompassRest.Loans
         /// Correspondent MI Premium Payment Type [CORRESPONDENT.X252]
         /// </summary>
         public string? MiPremiumPaymentType { get => _miPremiumPaymentType; set => SetField(ref _miPremiumPaymentType, value); }
+
+        /// <summary>
+        /// Correspondent Date of First Payment Without Monthly MI [CORRESPONDENT.X475]
+        /// </summary>
+        public DateTime? MiTerminationDate { get => _miTerminationDate; set => SetField(ref _miTerminationDate, value); }
 
         /// <summary>
         /// Correspondent MOM Indicator [CORRESPONDENT.X255]

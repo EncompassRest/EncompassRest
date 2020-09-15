@@ -439,6 +439,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Estate Held [1066]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"Other\"]")]
         public StringEnumValue<PropertyRightsType> PropertyRightsType { get => _propertyRightsType; set => SetField(ref _propertyRightsType, value); }
 
         /// <summary>
