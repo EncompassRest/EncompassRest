@@ -46,7 +46,9 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _employerLiabilityInsuranceMin;
         private DirtyValue<string?>? _fax;
         private DirtyValue<string?>? _fax2;
+        private DirtyValue<string?>? _fedReferenceNumber;
         private DirtyValue<string?>? _fhaLenderId;
+        private DirtyValue<DateTime?>? _fundsToTitleDate;
         private DirtyValue<decimal?>? _generalLiabilityInsuranceMin;
         private DirtyValue<string?>? _id;
         private DirtyValue<string?>? _insuranceCertNumber;
@@ -107,6 +109,9 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _tqlId;
         private DirtyValue<bool?>? _tqlIsPublishingIndicator;
         private DirtyValue<string?>? _tqlName;
+        private DirtyValue<string?>? _warehouseId;
+        private DirtyValue<string?>? _warehouseLender;
+        private DirtyValue<string?>? _warehouseUrl;
 
         /// <summary>
         /// Contact ABA
@@ -297,9 +302,21 @@ namespace EncompassRest.Loans
         public string? Fax2 { get => _fax2; set => SetField(ref _fax2, value); }
 
         /// <summary>
+        /// File Contacts Warehouse Fed Reference # [VEND.X1046]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? FedReferenceNumber { get => _fedReferenceNumber; set => SetField(ref _fedReferenceNumber, value); }
+
+        /// <summary>
         /// FHA Lender ID [1059]
         /// </summary>
         public string? FhaLenderId { get => _fhaLenderId; set => SetField(ref _fhaLenderId, value); }
+
+        /// <summary>
+        /// File Contacts Warehouse Funds to Title Date [VEND.X1045]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public DateTime? FundsToTitleDate { get => _fundsToTitleDate; set => SetField(ref _fundsToTitleDate, value); }
 
         /// <summary>
         /// File Contacts General Contractor General Liability Insurance Min [VEND.X1017]
@@ -612,5 +629,23 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? TqlName { get => _tqlName; set => SetField(ref _tqlName, value); }
+
+        /// <summary>
+        /// File Contacts Warehouse ID [VEND.X1043]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? WarehouseId { get => _warehouseId; set => SetField(ref _warehouseId, value); }
+
+        /// <summary>
+        /// File Contacts Warehouse Lender [VEND.X1042]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? WarehouseLender { get => _warehouseLender; set => SetField(ref _warehouseLender, value); }
+
+        /// <summary>
+        /// File Contacts Warehouse URL [VEND.X1044]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? WarehouseUrl { get => _warehouseUrl; set => SetField(ref _warehouseUrl, value); }
     }
 }

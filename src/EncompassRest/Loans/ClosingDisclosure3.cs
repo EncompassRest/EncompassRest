@@ -163,6 +163,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _totalFromM;
         private DirtyValue<decimal?>? _totalFromN;
         private DirtyValue<decimal?>? _totalPaidAlreadybyoronBehalfofBoroweratClosing;
+        private DirtyValue<decimal?>? _totalPurchasePayoffsIncluded;
         private DirtyList<UCDDetail>? _uCDDetails;
         private DirtyValue<decimal?>? _uCDKSubTotal;
         private DirtyValue<decimal?>? _uCDLSubTotal;
@@ -1021,6 +1022,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalPaidAlreadybyoronBehalfofBoroweratClosing { get => _totalPaidAlreadybyoronBehalfofBoroweratClosing; set => SetField(ref _totalPaidAlreadybyoronBehalfofBoroweratClosing, value); }
+
+        /// <summary>
+        /// Total Purchase Payoffs Included [CD3.X1543]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? TotalPurchasePayoffsIncluded { get => _totalPurchasePayoffsIncluded; set => SetField(ref _totalPurchasePayoffsIncluded, value); }
 
         /// <summary>
         /// ClosingDisclosure3 UCDDetails

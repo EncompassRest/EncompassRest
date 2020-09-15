@@ -8,6 +8,7 @@ namespace EncompassRest.Company.Users.Rights
     public sealed class PipelineTasksRights : DirtyExtensibleObject
     {
         private DirtyValue<bool?>? _automaticRefreshConfiguration;
+        private DirtyValue<bool?>? _bidTape;
         private DirtyValue<bool?>? _deleteLoans;
         private DirtyValue<bool?>? _dueDiligence;
         private DuplicateLoansRights? _duplicateLoans;
@@ -24,6 +25,7 @@ namespace EncompassRest.Company.Users.Rights
         private ManagePipelineServicesRights? _managePipelineServices;
         private MoveLoansRights? _moveLoans;
         private NewLoansRights? _newLoans;
+        private DirtyValue<bool?>? _subservicing;
         private DirtyValue<bool?>? _transferLoans;
         private TrashFolderTasksRights? _trashFolderTasks;
         private DirtyValue<bool?>? _warehouseLenders;
@@ -32,6 +34,11 @@ namespace EncompassRest.Company.Users.Rights
         /// PipelineTasksRights AutomaticRefreshConfiguration
         /// </summary>
         public bool? AutomaticRefreshConfiguration { get => _automaticRefreshConfiguration; set => SetField(ref _automaticRefreshConfiguration, value); }
+
+        /// <summary>
+        /// PipelineTasksRights BidTape
+        /// </summary>
+        public bool? BidTape { get => _bidTape; set => SetField(ref _bidTape, value); }
 
         /// <summary>
         /// PipelineTasksRights DeleteLoans
@@ -119,6 +126,11 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [AllowNull]
         public NewLoansRights NewLoans { get => GetField(ref _newLoans); set => SetField(ref _newLoans, value); }
+
+        /// <summary>
+        /// PipelineTasksRights Subservicing
+        /// </summary>
+        public bool? Subservicing { get => _subservicing; set => SetField(ref _subservicing, value); }
 
         /// <summary>
         /// PipelineTasksRights TransferLoans

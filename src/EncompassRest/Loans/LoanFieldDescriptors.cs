@@ -277,13 +277,13 @@ namespace EncompassRest.Loans
                     {
                         try
                         {
-                            description = descriptionRetriever(fieldId!);
+                            description = descriptionRetriever(fieldId);
                         }
                         catch
                         {
                         }
                     }
-                    var fieldInfo = new StandardFieldInfo(fieldId!, $"{currentPath}.{propertyName}") { Description = description! };
+                    var fieldInfo = new StandardFieldInfo(fieldId, $"{currentPath}.{propertyName}") { Description = description };
                     fieldInfo.NonSerializedFormat = GetFormat(propertySchema);
                     if (extendedFieldInfo)
                     {
@@ -291,7 +291,7 @@ namespace EncompassRest.Loans
                         fieldInfo.Options = GetOptions(propertySchema);
                         fieldInfo.ReadOnly = propertySchema.ReadOnly == true;
                     }
-                    fields.Add(fieldId!, fieldInfo);
+                    fields.Add(fieldId, fieldInfo);
                 }
                 else if (propertySchema.Type == PropertySchemaType.Entity && entityTypes.TryGetValue(propertySchema.EntityType!, out var nestedEntitySchema))
                 {
@@ -463,7 +463,7 @@ namespace EncompassRest.Loans
                                     modelPath = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.OrderBy(p => p.Key).Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{index}].{propertyName}";
                                 }
                             }
-                            var fieldInfo = new StandardFieldInfo(fieldId, modelPath!) { Description = description! };
+                            var fieldInfo = new StandardFieldInfo(fieldId, modelPath!) { Description = description };
                             fieldInfo.NonSerializedFormat = GetFormat(propertySchema);
                             if (extendedFieldInfo)
                             {

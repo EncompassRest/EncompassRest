@@ -1817,7 +1817,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].VerificationDate",
     "FieldId": "BE{0:00}78",
-    "Description": null
+    "Description": "Borrower VOE Verification Date #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].VerificationRequestDate",
@@ -2132,7 +2132,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].VerificationDate",
     "FieldId": "CE{0:00}78",
-    "Description": null
+    "Description": "Co-Borrower VOE Verification Date #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].VerificationRequestDate",
@@ -5308,6 +5308,11 @@
     "ModelPath": "Loan.PropertyValuations[{0}].AvmRetroDate",
     "FieldId": "PVAL{0:00}08",
     "Description": "AVM Retro Date #{0}"
+  },
+  {
+    "ModelPath": "Loan.PropertyValuations[{0}].OrderType",
+    "FieldId": "PVAL{0:00}16",
+    "Description": "Property Valuation Order Type"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].PropertyValuationType",

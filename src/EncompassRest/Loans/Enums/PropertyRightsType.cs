@@ -15,6 +15,10 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// Leasehold
         /// </summary>
-        Leasehold = 1
+        Leasehold = 1,
+        /// <summary>
+        /// Other
+        /// </summary>
+        Other = 2
     }
 }

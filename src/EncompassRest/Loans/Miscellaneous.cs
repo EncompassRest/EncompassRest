@@ -30,6 +30,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _copyFromSubjectProperty;
         private DirtyValue<string?>? _dataTracLoanId;
         private DirtyValue<string?>? _docSetFile;
+        private DirtyValue<string?>? _earlyCheckUcdPassFail;
         private DirtyValue<int?>? _factorForRevolvingDebt;
         private DirtyValue<bool?>? _fannieDuAutoOrderIndicator;
         private DirtyValue<string?>? _fannieEcAppraisalValue;
@@ -241,6 +242,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? DocSetFile { get => _docSetFile; set => SetField(ref _docSetFile, value); }
+
+        /// <summary>
+        /// Fannie EarlyCheck UCD Status [FANNIESERVICE.X14]
+        /// </summary>
+        public string? EarlyCheckUcdPassFail { get => _earlyCheckUcdPassFail; set => SetField(ref _earlyCheckUcdPassFail, value); }
 
         /// <summary>
         /// Liabilities Factor for Revolving Debt [SYS.X13]

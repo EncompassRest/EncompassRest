@@ -16,6 +16,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _correspondentAssignmentID;
         private DirtyValue<string?>? _duVersion;
         private DirtyValue<string?>? _eCStatus1003;
+        private DirtyValue<string?>? _fannieMaeOwnedMessage;
         private DirtyValue<decimal?>? _hcltv;
         private DirtyValue<string?>? _id;
         private DirtyValue<decimal?>? _interestedPartyContribution;
@@ -68,6 +69,11 @@ namespace EncompassRest.Loans
         /// Fannie Mae 1003 EC Status [MORNET.X94]
         /// </summary>
         public string? ECStatus1003 { get => _eCStatus1003; set => SetField(ref _eCStatus1003, value); }
+
+        /// <summary>
+        /// Fannie Mae Owned Message [MORNET.X157]
+        /// </summary>
+        public string? FannieMaeOwnedMessage { get => _fannieMaeOwnedMessage; set => SetField(ref _fannieMaeOwnedMessage, value); }
 
         /// <summary>
         /// Fannie Mae MORNETPlus HCLTV and HTLTV [MORNET.X77]

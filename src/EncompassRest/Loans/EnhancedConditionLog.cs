@@ -22,6 +22,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _createdDate;
         private DirtyValue<int?>? _daysToReceive;
         private DirtyValue<EnhancedConditionDefinition?>? _definitions;
+        private DirtyValue<DateTime?>? _documentReceiptDate;
         private DirtyValue<DateTime?>? _endDate;
         private DirtyValue<string?>? _externalDescription;
         private DirtyValue<string?>? _externalId;
@@ -112,6 +113,11 @@ namespace EncompassRest.Loans
         /// EnhancedConditionLog Definitions
         /// </summary>
         public EnhancedConditionDefinition? Definitions { get => _definitions; set => SetField(ref _definitions, value); }
+
+        /// <summary>
+        /// EnhancedConditionLog DocumentReceiptDate
+        /// </summary>
+        public DateTime? DocumentReceiptDate { get => _documentReceiptDate; set => SetField(ref _documentReceiptDate, value); }
 
         /// <summary>
         /// EnhancedConditionLog EndDate

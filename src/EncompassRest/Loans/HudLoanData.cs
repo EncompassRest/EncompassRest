@@ -544,12 +544,12 @@ namespace EncompassRest.Loans
         public decimal? LateCharges { get => _lateCharges; set => SetField(ref _lateCharges, value); }
 
         /// <summary>
-        /// HUD 92900 LT LDP / GSA For Borrower [3026]
+        /// HUD 92900 LT LDP / SAM For Borrower [3026]
         /// </summary>
         public bool? LDPGSAForBorrower { get => _lDPGSAForBorrower; set => SetField(ref _lDPGSAForBorrower, value); }
 
         /// <summary>
-        /// HUD 92900 LT LDP / GSA For CoBorrower [3027]
+        /// HUD 92900 LT LDP / SAM For CoBorrower [3027]
         /// </summary>
         public bool? LDPGSAForCoBorrower { get => _lDPGSAForCoBorrower; set => SetField(ref _lDPGSAForCoBorrower, value); }
 
