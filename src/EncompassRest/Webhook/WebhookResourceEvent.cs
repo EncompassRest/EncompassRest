@@ -71,6 +71,16 @@ namespace EncompassRest.Webhook
         /// loanassignmentcomplete
         /// </summary>
         [EnumMember(Value = "loanassignmentcomplete")]
-        LoanAssignmentComplete = 12
+        LoanAssignmentComplete = 12,
+        /// <summary>
+        /// lock
+        /// </summary>
+        [EnumMember(Value = "lock")]
+        Lock = 13,
+        /// <summary>
+        /// unlock
+        /// </summary>
+        [EnumMember(Value = "unlock")]
+        Unlock = 14
     }
 }

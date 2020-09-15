@@ -20,6 +20,14 @@
         /// <summary>
         /// WarehouseLender
         /// </summary>
-        WarehouseLender = 3
+        WarehouseLender = 3,
+        /// <summary>
+        /// BidTape
+        /// </summary>
+        BidTape = 4,
+        /// <summary>
+        /// Subservicing
+        /// </summary>
+        Subservicing = 5
     }
 }
