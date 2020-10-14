@@ -60,15 +60,6 @@ namespace EncompassRest.Loans
             }
         }
 
-        /// <summary>
-        /// The Loan update constructor.
-        /// </summary>
-        /// <param name="client">The client to initialize the loan object with.</param>
-        /// <param name="loanId">The loan id of the Encompass loan to update.</param>
-        public Loan(EncompassRestClient client, string loanId)
-            : this((IEncompassRestClient)client, loanId)
-        {
-        }
 
         /// <summary>
         /// The Loan update constructor.
@@ -80,14 +71,6 @@ namespace EncompassRest.Loans
             Initialize(client, loanId);
         }
 
-        /// <summary>
-        /// The Loan creation constructor.
-        /// </summary>
-        /// <param name="client">The client to associate the object with.</param>
-        public Loan(EncompassRestClient client)
-            : this((IEncompassRestClient)client)
-        {
-        }
 
         /// <summary>
         /// The Loan creation constructor.
@@ -110,12 +93,6 @@ namespace EncompassRest.Loans
         {
         }
 
-        /// <summary>
-        /// Initializes the loan object with the specified <paramref name="client"/> and <paramref name="loanId"/>. This allows the use of the <see cref="LoanApis"/> property.
-        /// </summary>
-        /// <param name="client">The client to initialize the loan object with.</param>
-        /// <param name="loanId">The loan id of the Encompass loan.</param>
-        public void Initialize(EncompassRestClient client, string loanId) => Initialize((IEncompassRestClient)client, loanId);
 
         /// <summary>
         /// Initializes the loan object with the specified <paramref name="client"/> and <paramref name="loanId"/>. This allows the use of the <see cref="LoanApis"/> property.

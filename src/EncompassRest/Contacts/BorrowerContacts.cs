@@ -12,7 +12,7 @@
     /// </summary>
     public sealed class BorrowerContacts : Contacts<BorrowerContact>, IBorrowerContacts
     {
-        internal BorrowerContacts(EncompassRestClient client)
+        internal BorrowerContacts(IEncompassRestClient client)
             : base(client, "encompass/v1/borrowerContacts")
         {
         }

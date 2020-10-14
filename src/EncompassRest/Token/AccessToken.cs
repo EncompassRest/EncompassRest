@@ -83,7 +83,7 @@ namespace EncompassRest.Token
             }
         }
 
-        internal AccessToken(string apiClientId, string apiClientSecret, EncompassRestClient client)
+        internal AccessToken(string apiClientId, string apiClientSecret, IEncompassRestClient client)
             : base(client, "oauth2/v1/token")
         {
             _apiClientId = apiClientId;

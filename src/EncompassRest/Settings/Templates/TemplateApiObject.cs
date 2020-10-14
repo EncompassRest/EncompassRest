@@ -46,7 +46,7 @@ namespace EncompassRest.Settings.Templates
     /// </summary>
     public abstract class TemplateApiObject : ApiObject, ITemplateApiObject
     {
-        internal TemplateApiObject(EncompassRestClient client, string baseApiPath)
+        internal TemplateApiObject(IEncompassRestClient client, string baseApiPath)
             : base(client, $"encompass/v1/settings/templates{baseApiPath?.PrecedeWith("/")}")
         {
         }

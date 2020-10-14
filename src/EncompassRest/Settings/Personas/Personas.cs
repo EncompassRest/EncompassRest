@@ -63,7 +63,7 @@ namespace EncompassRest.Settings.Personas
     /// </summary>
     public sealed class Personas : ApiObject, IPersonas
     {
-        internal Personas(EncompassRestClient client)
+        internal Personas(IEncompassRestClient client)
             : base(client, "encompass/v1/settings/personas")
         {
         }

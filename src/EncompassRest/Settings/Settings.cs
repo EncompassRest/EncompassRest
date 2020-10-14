@@ -112,7 +112,7 @@ namespace EncompassRest.Settings
 
         Personas.IPersonas ISettings.Personas => Personas;
 
-        internal Settings(EncompassRestClient client)
+        internal Settings(IEncompassRestClient client)
             : base(client, "encompass/v1/settings")
         {
         }

@@ -61,7 +61,7 @@ namespace EncompassRest
         }
 
         /// <summary>
-        /// The event handler to attach to the <see cref="EncompassRestClient.ApiResponse"/> event of the created client.
+        /// The event handler to attach to the <see cref="IEncompassRestClient.ApiResponse"/> event of the created client.
         /// </summary>
         public EventHandler<ApiResponseEventArgs>? ApiResponse { get; set; }
 
@@ -84,7 +84,7 @@ namespace EncompassRest
             ApiClientSecret = apiClientSecret;
         }
 
-        internal async Task TryInitializeAsync(EncompassRestClient client, CommonCache commonCache, CancellationToken cancellationToken)
+        internal async Task TryInitializeAsync(IEncompassRestClient client, CommonCache commonCache, CancellationToken cancellationToken)
         {
             if (CustomFieldsCacheInitialization != CacheInitialization.Never && !((DateTime.UtcNow - commonCache.CustomFieldsLastRefreshedUtc)?.TotalMinutes < (int)CustomFieldsCacheInitialization))
             {

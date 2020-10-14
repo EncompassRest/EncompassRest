@@ -53,7 +53,7 @@ namespace EncompassRest.Company
 
         IGlobalCustomDataObjects ICompany.GlobalCustomDataObjects => GlobalCustomDataObjects;
 
-        internal Company(EncompassRestClient client)
+        internal Company(IEncompassRestClient client)
             : base(client, "encompass/v1/company")
         {
         }

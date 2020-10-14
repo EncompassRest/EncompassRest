@@ -172,7 +172,7 @@ namespace EncompassRest
         /// </summary>
         public HttpClient HttpClient => Client.HttpClient;
 
-        internal BaseApiClient(EncompassRestClient client)
+        internal BaseApiClient(IEncompassRestClient client)
             : base(client, null)
         {
         }

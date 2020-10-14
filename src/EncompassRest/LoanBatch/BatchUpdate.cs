@@ -46,7 +46,7 @@ namespace EncompassRest.LoanBatch
     /// </summary>
     public sealed class BatchUpdate : ApiObject, IBatchUpdate
     {
-        internal BatchUpdate(EncompassRestClient client)
+        internal BatchUpdate(IEncompassRestClient client)
             : base(client, "encompass/v1/loanBatch/updateRequests")
         {
         }

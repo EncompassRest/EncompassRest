@@ -59,7 +59,7 @@ namespace EncompassRest.Services
     /// </summary>
     public sealed class Services : ApiObject, IServices
     {
-        internal Services(EncompassRestClient client)
+        internal Services(IEncompassRestClient client)
             : base(client, "services/v1/partners")
         {
         }

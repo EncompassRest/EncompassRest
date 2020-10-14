@@ -34,7 +34,7 @@ namespace EncompassRest.Settings.Templates
 
         ILoanTemplateSet ITemplates.LoanTemplateSet => LoanTemplateSet;
 
-        internal Templates(EncompassRestClient client)
+        internal Templates(IEncompassRestClient client)
             : base(client, "encompass/v1/settings/templates")
         {
         }

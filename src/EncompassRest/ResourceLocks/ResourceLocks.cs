@@ -8,7 +8,7 @@ namespace EncompassRest.ResourceLocks
 {
     internal sealed class ResourceLocks : ApiObject
     {
-        internal ResourceLocks(EncompassRestClient client)
+        internal ResourceLocks(IEncompassRestClient client)
             : base(client, "encompass/v1/resourceLocks")
         {
         }

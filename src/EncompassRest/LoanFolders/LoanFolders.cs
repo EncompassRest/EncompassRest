@@ -25,7 +25,7 @@ namespace EncompassRest.LoanFolders
     /// </summary>
     public sealed class LoanFolders : ApiObject, ILoanFolders
     {
-        internal LoanFolders(EncompassRestClient client)
+        internal LoanFolders(IEncompassRestClient client)
             : base(client, "encompass/v1/loanfolders")
         {
         }

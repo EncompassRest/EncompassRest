@@ -245,7 +245,7 @@ namespace EncompassRest.Loans.Attachments
     /// </summary>
     public sealed class LoanAttachments : LoanApiObject, ILoanAttachments
     {
-        internal LoanAttachments(EncompassRestClient client, string loanId)
+        internal LoanAttachments(IEncompassRestClient client, string loanId)
             : base(client, loanId, "attachments")
         {
         }

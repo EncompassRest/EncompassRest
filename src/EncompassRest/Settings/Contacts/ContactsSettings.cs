@@ -29,7 +29,7 @@ namespace EncompassRest.Settings.Contacts
     /// </summary>
     public abstract class ContactsSettings : ApiObject, IContactsSettings
     {
-        internal ContactsSettings(EncompassRestClient client, string baseApiPath)
+        internal ContactsSettings(IEncompassRestClient client, string baseApiPath)
             : base(client, baseApiPath)
         {
         }

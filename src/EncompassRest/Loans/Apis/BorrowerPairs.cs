@@ -107,7 +107,7 @@ namespace EncompassRest.Loans.Apis
     /// </summary>
     public sealed class BorrowerPairs : LoanApiObject<Application>, IBorrowerPairs
     {
-        internal BorrowerPairs(EncompassRestClient client, LoanObjectBoundApis? loanObjectBoundApis, string loanId)
+        internal BorrowerPairs(IEncompassRestClient client, LoanObjectBoundApis? loanObjectBoundApis, string loanId)
             : base(client, loanObjectBoundApis, loanId, "applications")
         {
         }

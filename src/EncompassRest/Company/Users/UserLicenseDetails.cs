@@ -45,7 +45,7 @@ namespace EncompassRest.Company.Users
     /// </summary>
     public sealed class UserLicenseDetails : UserApiObject, IUserLicenseDetails
     {
-        internal UserLicenseDetails(EncompassRestClient client, string userId)
+        internal UserLicenseDetails(IEncompassRestClient client, string userId)
             : base(client, userId, "licenses")
         {
         }

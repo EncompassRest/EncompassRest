@@ -190,14 +190,14 @@ namespace EncompassRest.Company.Users
         /// User Client
         /// </summary>
         [JsonIgnore]
-        public EncompassRestClient? Client { get; internal set; }
+        public IEncompassRestClient? Client { get; internal set; }
 
         /// <summary>
         /// User update constructor.
         /// </summary>
         /// <param name="client">The client to initialize the object.</param>
         /// <param name="userId">The user's id.</param>
-        public User(EncompassRestClient client, string userId)
+        public User(IEncompassRestClient client, string userId)
         {
             Initialize(client, userId);
         }
@@ -215,7 +215,7 @@ namespace EncompassRest.Company.Users
         /// </summary>
         /// <param name="client">The client to initialize the object.</param>
         /// <param name="userId">The user's id.</param>
-        public void Initialize(EncompassRestClient client, string userId)
+        public void Initialize(IEncompassRestClient client, string userId)
         {
             Preconditions.NotNull(client, nameof(client));
             Preconditions.NotNullOrEmpty(userId, nameof(userId));

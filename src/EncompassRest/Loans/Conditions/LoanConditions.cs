@@ -56,7 +56,7 @@ namespace EncompassRest.Loans.Conditions
 
         ILoanPostClosingConditions ILoanConditions.PostClosing => PostClosing;
 
-        internal LoanConditions(EncompassRestClient client, string loanId)
+        internal LoanConditions(IEncompassRestClient client, string loanId)
             : base(client, loanId, "conditions")
         {
         }
@@ -236,7 +236,7 @@ namespace EncompassRest.Loans.Conditions
     public abstract class LoanConditions<TCondition> : LoanApiObject, ILoanConditions<TCondition>
         where TCondition : LoanCondition
     {
-        internal LoanConditions(EncompassRestClient client, string loanId, string baseApiPath)
+        internal LoanConditions(IEncompassRestClient client, string loanId, string baseApiPath)
             : base(client, loanId, $"conditions{baseApiPath?.PrecedeWith("/")}")
         {
         }

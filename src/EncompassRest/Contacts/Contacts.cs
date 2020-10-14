@@ -120,7 +120,7 @@ namespace EncompassRest.Contacts
 
         IContactGroups IContacts.Groups => Groups;
 
-        internal Contacts(EncompassRestClient client)
+        internal Contacts(IEncompassRestClient client)
             : base(client, null)
         {
         }
@@ -224,7 +224,7 @@ namespace EncompassRest.Contacts
     {
         private readonly string _apiPath;
 
-        internal Contacts(EncompassRestClient client, string baseApiPath)
+        internal Contacts(IEncompassRestClient client, string baseApiPath)
             : base(client, baseApiPath)
         {
             _apiPath = baseApiPath;

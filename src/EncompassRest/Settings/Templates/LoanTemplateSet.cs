@@ -12,7 +12,7 @@
     /// </summary>
     public sealed class LoanTemplateSet : TemplateApiObject, ILoanTemplateSet
     {
-        internal LoanTemplateSet(EncompassRestClient client)
+        internal LoanTemplateSet(IEncompassRestClient client)
             : base(client, "loanTemplateSet")
         {
         }

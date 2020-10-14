@@ -138,7 +138,7 @@ namespace EncompassRest.Schema
     /// </summary>
     public sealed class Schema : ApiObject, ISchema
     {
-        internal Schema(EncompassRestClient client)
+        internal Schema(IEncompassRestClient client)
             : base(client, "encompass/v1/schema/loan")
         {
         }

@@ -10,14 +10,14 @@ namespace EncompassRest
     /// </summary>
     public sealed class TokenCreator
     {
-        private readonly EncompassRestClient _client;
+        private readonly IEncompassRestClient _client;
 
         /// <summary>
         /// The request <see cref="CancellationToken"/> is automatically applied to uses of this class.
         /// </summary>
         public CancellationToken RequestCancellationToken { get; }
 
-        internal TokenCreator(EncompassRestClient client, CancellationToken requestCancellationToken)
+        internal TokenCreator(IEncompassRestClient client, CancellationToken requestCancellationToken)
         {
             _client = client;
             RequestCancellationToken = requestCancellationToken;
