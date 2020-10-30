@@ -166,7 +166,7 @@ namespace EncompassRest
 
         internal virtual HttpClient GetHttpClient() => Client.HttpClient;
 
-        internal virtual string? BaseAddress => "https://api.elliemae.com/";
+        internal virtual string? BaseAddress => Client.BaseAddress;
 
         private string GetFullUri(string? requestUri) => $"{BaseAddress}{_baseApiPath}{((BaseAddress?.Length ?? _baseApiPath?.Length ?? 0) == 0 ? requestUri : requestUri?.PrecedeWith("/"))}";
 
