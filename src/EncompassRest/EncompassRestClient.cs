@@ -98,6 +98,11 @@ namespace EncompassRest
         CommonCache CommonCache { get; }
 
         /// <summary>
+        /// Set by ClientParameters.BaseAddress.  The URL to call for API calls.  Defaults to "https://api.elliemae.com/".
+        /// </summary>
+        string BaseAddress { get; }
+
+        /// <summary>
         /// An event that occurs when an Api response is received.
         /// </summary>
         event EventHandler<ApiResponseEventArgs> ApiResponse;
@@ -525,6 +530,8 @@ namespace EncompassRest
         }
 
         IBaseApiClient IEncompassRestClient.BaseApiClient => BaseApiClient;
+
+        public string BaseAddress { get; }
         #endregion
 
         /// <summary>
@@ -541,6 +548,7 @@ namespace EncompassRest
             ApiResponse = parameters.ApiResponse;
             CommonCache = parameters.CommonCache ?? (parameters.CommonCache = new CommonCache());
             UndefinedCustomFieldHandling = parameters.UndefinedCustomFieldHandling;
+            BaseAddress = parameters.BaseAddress;
         }
 
 #if IASYNC_DISPOSABLE
