@@ -71,9 +71,9 @@ namespace EncompassRest
         public UndefinedCustomFieldHandling UndefinedCustomFieldHandling { get; set; }
 
         /// <summary>
-        /// The URL to call for API calls.Defaults to "https://api.elliemae.com/".
+        /// The URL to call for API calls. Defaults to "https://api.elliemae.com/".
         /// </summary>
-        public string BaseAddress { get; set; } = "https://api.elliemae.com/";
+        public string? BaseAddress { get; set; }
 
         /// <summary>
         /// The client parameters constructor.
