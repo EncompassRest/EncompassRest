@@ -18,6 +18,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _borrowerVestingRecordID;
         private DirtyValue<string?>? _businessPhoneNumber;
         private DirtyValue<string?>? _cellPhoneNumber;
+        private DirtyValue<string?>? _country;
         private DirtyValue<DateTime?>? _dateOfBirth;
         private DirtyValue<string?>? _email;
         private DirtyValue<bool?>? _entityDeleted;
@@ -28,6 +29,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _eSignConsentNBOCStatus;
         private DirtyValue<string?>? _faxNumber;
         private DirtyValue<string?>? _firstName;
+        private DirtyValue<bool?>? _foreignAddressIndicator;
         private DirtyValue<string?>? _homePhoneNumber;
         private DirtyValue<string?>? _id;
         private DirtyValue<string?>? _lastName;
@@ -81,6 +83,11 @@ namespace EncompassRest.Loans
         public string? CellPhoneNumber { get => _cellPhoneNumber; set => SetField(ref _cellPhoneNumber, value); }
 
         /// <summary>
+        /// Non-Borrowing Owner File Contact - Address Country [NBOCNB23]
+        /// </summary>
+        public string? Country { get => _country; set => SetField(ref _country, value); }
+
+        /// <summary>
         /// Non-Borrowing Owner File Contact - Date of Birth [NBOCNB16]
         /// </summary>
         public DateTime? DateOfBirth { get => _dateOfBirth; set => SetField(ref _dateOfBirth, value); }
@@ -130,6 +137,11 @@ namespace EncompassRest.Loans
         /// Non-Borrowing Owner File Contact - First Name [NBOCNB01]
         /// </summary>
         public string? FirstName { get => _firstName; set => SetField(ref _firstName, value); }
+
+        /// <summary>
+        /// Non-Borrowing Owner File Contact - Foreign Address Indicator [NBOCNB22]
+        /// </summary>
+        public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
 
         /// <summary>
         /// Non-Borrowing Owner File Contact - Home Phone Number [NBOCNB10]

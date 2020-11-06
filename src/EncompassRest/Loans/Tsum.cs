@@ -51,6 +51,8 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _sellerAddress;
         private DirtyValue<string?>? _sellerCity;
         private DirtyValue<string?>? _sellerContactName;
+        private DirtyValue<string?>? _sellerCountry;
+        private DirtyValue<bool?>? _sellerForeignAddressIndicator;
         private DirtyValue<string?>? _sellerName;
         private DirtyValue<string?>? _sellerNumber;
         private DirtyValue<string?>? _sellerPhone;
@@ -306,6 +308,16 @@ namespace EncompassRest.Loans
         /// File Contacts Seller Contact [1303]
         /// </summary>
         public string? SellerContactName { get => _sellerContactName; set => SetField(ref _sellerContactName, value); }
+
+        /// <summary>
+        /// File Contacts Seller Country [4679]
+        /// </summary>
+        public string? SellerCountry { get => _sellerCountry; set => SetField(ref _sellerCountry, value); }
+
+        /// <summary>
+        /// File Contacts Seller Foreign Address Indicator [4678]
+        /// </summary>
+        public bool? SellerForeignAddressIndicator { get => _sellerForeignAddressIndicator; set => SetField(ref _sellerForeignAddressIndicator, value); }
 
         /// <summary>
         /// File Contacts Seller Co Name [1301]

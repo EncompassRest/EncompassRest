@@ -223,7 +223,7 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
 
-        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Loan.ConditionLogs", "Borrower.Application", "Uldd.ENoteIndicator", "GoodFaithFeeVarianceCureLog.GffVAlertTriggerFieldLog", "VaLoanData.VaEemIncludedinBaseLoanAmountIndicator", "VaLoanData.VaEnergyEfficientImprovementsFinancedAmount", "VaLoanData.VaFinancedClosingCostsToExcludeAmount", "VaLoanData.VaRateReducedSolelybyDiscountPointsIndicator", "VaLoanData.VaStatutoryClosingCosts", "VaLoanData.VaStatutoryMonthlyPayment", "VaLoanData.VaStatutoryMonthlyReduction", "VaLoanData.VaStatutoryRecoupmentMonths" };
+        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Borrower.Application", "Uldd.ENoteIndicator", "GoodFaithFeeVarianceCureLog.GffVAlertTriggerFieldLog", "VaLoanData.VaEemIncludedinBaseLoanAmountIndicator", "VaLoanData.VaEnergyEfficientImprovementsFinancedAmount", "VaLoanData.VaFinancedClosingCostsToExcludeAmount", "VaLoanData.VaRateReducedSolelybyDiscountPointsIndicator", "VaLoanData.VaStatutoryClosingCosts", "VaLoanData.VaStatutoryMonthlyPayment", "VaLoanData.VaStatutoryMonthlyReduction", "VaLoanData.VaStatutoryRecoupmentMonths" };
 
         private static readonly HashSet<string> s_propertiesWithInternalFields = new HashSet<string> { "CustomField.DateValue", "CustomField.NumericValue", "CustomField.StringValue", "FieldLockData.ModelPath" };
 
@@ -280,7 +280,7 @@ namespace EncompassRest
             { "LoanDocumentationType", new HashSet<string> { "NoIncomeon1003" } }
         };
 
-        private static readonly HashSet<string> s_ignoredEntities = new HashSet<string> { };
+        private static readonly HashSet<string> s_ignoredEntities = new HashSet<string> { "EntityRefContract" };
 
         private static readonly Dictionary<string, List<string>> s_mergeEntities = new Dictionary<string, List<string>> { { "NonBorrowingOwner", new List<string> { "NonBorrowingOwnerContract" } }, { "AlertChangeCircumstance", new List<string> { "AlertChangeCircumstanceContract" } }, { "OtherIncomeSource", new List<string> { "OtherIncomeSourceContract" } } };
 
@@ -303,6 +303,11 @@ namespace EncompassRest
                 using (var client = await TestBaseClass.GetTestClientAsync().ConfigureAwait(false))
                 {
                     entityTypes = (await client.Schema.GetLoanSchemaAsync(true).ConfigureAwait(false)).EntityTypes;
+                }
+
+                foreach (var ignoredEntity in s_ignoredEntities)
+                {
+                    entityTypes.Remove(ignoredEntity);
                 }
 
                 foreach (var pair in s_mergeEntities)

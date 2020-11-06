@@ -19,13 +19,13 @@ namespace EncompassRest.Tests
             var loanSchema = await client.Schema.GetLoanSchemaAsync(true);
 
             var loanEntities = new HashSet<string>(loanSchema.EntityTypes.Keys);
-            var ignoredLoanEntities = new HashSet<string>(new[] { "NonBorrowingOwnerContract", "AlertChangeCircumstanceContract", "OtherIncomeSourceContract" });
+            var ignoredLoanEntities = new HashSet<string>(new[] { "NonBorrowingOwnerContract", "AlertChangeCircumstanceContract", "OtherIncomeSourceContract", "EntityRefContract" });
             loanEntities.ExceptWith(ignoredLoanEntities);
             var existingLoanEntities = new HashSet<string>(Enums.GetMembers<LoanEntity>().Select(m => m.AsString(EnumFormat.Name)));
             var newLoanEntities = loanEntities.Except(existingLoanEntities).ToList();
             Assert.AreEqual(0, newLoanEntities.Count, $"{nameof(LoanEntity)}: {string.Join(", ", newLoanEntities)}");
 
-            AssertNoExtensionData(loanSchema, "LoanSchema", "LoanSchema", true, new Dictionary<Type, HashSet<string>> { { typeof(LoanEntity), new HashSet<string>(new[] { "EntityReference", "FileAttachmentReference", "EntityRefContract", "EnhancedConditionLog", "GffVAlertTriggerFieldLog", "string" }, StringComparer.OrdinalIgnoreCase) } });
+            AssertNoExtensionData(loanSchema, "LoanSchema", "LoanSchema", true, new Dictionary<Type, HashSet<string>> { { typeof(LoanEntity), new HashSet<string>(new[] { "EntityReference", "FileAttachmentReference", "EntityRefContract", "GffVAlertTriggerFieldLog", "string" }, StringComparer.OrdinalIgnoreCase) } });
         }
 
         [TestMethod]

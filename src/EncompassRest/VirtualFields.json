@@ -1995,6 +1995,11 @@
     "Description": "Number of External and Internal Conditions of all condition types"
   },
   {
+    "Format": 201,
+    "FieldId": "ENHCOND.EXT.OPEN.PUB.TYPE.COUNT.ALL",
+    "Description": "Number of External Enhanced Conditions with an open Publish Date"
+  },
+  {
     "Format": 101,
     "FieldId": "ENHCOND.EXT.OPEN.TYPE.ALL",
     "Description": "All Open External Enhanced Conditions of all condition types"
@@ -2003,6 +2008,16 @@
     "Format": 201,
     "FieldId": "ENHCOND.EXT.OPEN.TYPE.COUNT.ALL",
     "Description": "Number of Open External Enhanced Conditions"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.EXT.SATISFIED.TYPE.ALL",
+    "Description": "All External Enhanced Conditions which are not open of all condition types"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.EXT.SATISFIED.TYPE.COUNT.ALL",
+    "Description": "Number of External Enhanced Conditions which are not open of all condition types"
   },
   {
     "Format": 101,
@@ -2026,6 +2041,16 @@
   },
   {
     "Format": 101,
+    "FieldId": "ENHCOND.INT.SATISFIED.TYPE.ALL",
+    "Description": "All Internal Enhanced Conditions which are not open of all condition types"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.INT.SATISFIED.TYPE.COUNT.ALL",
+    "Description": "Number of Internal Enhanced Conditions which are not open of all condition types"
+  },
+  {
+    "Format": 101,
     "FieldId": "ENHCOND.INT.TYPE.ALL",
     "Description": "All Internal Enhanced Conditions of all condition types"
   },
@@ -2043,6 +2068,16 @@
     "Format": 201,
     "FieldId": "ENHCOND.OPEN.COUNT.ALL",
     "Description": "Number of Open External and Internal Conditions of all condition types"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.SATISFIED.ALL",
+    "Description": "All Internal & External Enhanced Conditions which are not open of all condition types"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.SATISFIED.COUNT.ALL",
+    "Description": "Number of Internal & External Enhanced Conditions which are not open of all condition types"
   },
   {
     "Format": 201,

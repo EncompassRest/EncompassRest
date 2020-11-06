@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
@@ -26,6 +27,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _dUPropertyDataMessage;
         private DirtyValue<DateTime?>? _floodOrderDate;
         private DirtyValue<string?>? _floodProductType;
+        private DirtyValue<StringEnumValue<FloodProgramCode>>? _floodProgramCode;
         private DirtyValue<DateTime?>? _floodReceivedDate;
         private DirtyValue<string?>? _floodStatus;
         private DirtyValue<string?>? _floodTransactionType;
@@ -63,6 +65,9 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _lastUserIDWhoOrderedCCVP;
         private DirtyValue<string?>? _lastUserIDWhoOrderedCompliance;
         private DirtyValue<string?>? _lastUserIDWhoOrderedFraudOrder;
+        private DirtyValue<string?>? _lomaOrLomrCaseNumber;
+        private DirtyValue<DateTime?>? _lomaOrLomrDate;
+        private DirtyValue<bool?>? _lomaOrLomrIndicator;
         private DirtyValue<string?>? _lPAppraisalWaiverMessage;
         private DirtyValue<bool?>? _lPAppraisalWaiverOffered;
         private DirtyValue<string?>? _lPAPurchaseEligibility;
@@ -179,6 +184,11 @@ namespace EncompassRest.Loans
         /// TQL - Flood billing - Flood Product Type [TQL.X103]
         /// </summary>
         public string? FloodProductType { get => _floodProductType; set => SetField(ref _floodProductType, value); }
+
+        /// <summary>
+        /// TQL - Flood Program Code [TQL.X110]
+        /// </summary>
+        public StringEnumValue<FloodProgramCode> FloodProgramCode { get => _floodProgramCode; set => SetField(ref _floodProgramCode, value); }
 
         /// <summary>
         /// TQL - Flood billing - Flood Received Date [TQL.X106]
@@ -366,6 +376,22 @@ namespace EncompassRest.Loans
         /// TQL - Fraud Orders - Last Userid of Person Who Ordered Report [TQL.X30]
         /// </summary>
         public string? LastUserIDWhoOrderedFraudOrder { get => _lastUserIDWhoOrderedFraudOrder; set => SetField(ref _lastUserIDWhoOrderedFraudOrder, value); }
+
+        /// <summary>
+        /// TQL - LOMA/LOMR Case Number [TQL.X109]
+        /// </summary>
+        public string? LomaOrLomrCaseNumber { get => _lomaOrLomrCaseNumber; set => SetField(ref _lomaOrLomrCaseNumber, value); }
+
+        /// <summary>
+        /// TQL - LOMA/LOMR Date [TQL.X108]
+        /// </summary>
+        public DateTime? LomaOrLomrDate { get => _lomaOrLomrDate; set => SetField(ref _lomaOrLomrDate, value); }
+
+        /// <summary>
+        /// TQL - LOMA/LOMR Indicator [TQL.X107]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public bool? LomaOrLomrIndicator { get => _lomaOrLomrIndicator; set => SetField(ref _lomaOrLomrIndicator, value); }
 
         /// <summary>
         /// GSE Rep and Warrant Tracker - Freddie Mac Appraisal Waiver Message [TQL.X86]

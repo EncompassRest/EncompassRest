@@ -57,6 +57,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _numberOfBedroomUnit3;
         private DirtyValue<int?>? _numberOfBedroomUnit4;
         private DirtyValue<int?>? _numberOfUnits;
+        private DirtyValue<string?>? _orderType;
         private DirtyValue<string?>? _panelNumber;
         private DirtyValue<string?>? _postalCode;
         private DirtyValue<string?>? _projectAttachmentType;
@@ -322,6 +323,11 @@ namespace EncompassRest.Loans
         /// Correspondent Number of Units [VALNN44]
         /// </summary>
         public int? NumberOfUnits { get => _numberOfUnits; set => SetField(ref _numberOfUnits, value); }
+
+        /// <summary>
+        /// Correspondent Order Type [VALNN69]
+        /// </summary>
+        public string? OrderType { get => _orderType; set => SetField(ref _orderType, value); }
 
         /// <summary>
         /// Correspondent Panel Number [VALNN45]

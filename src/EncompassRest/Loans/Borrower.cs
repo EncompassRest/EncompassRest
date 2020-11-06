@@ -255,6 +255,8 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _nameToObtainLoanFromRHS;
         private DirtyValue<string?>? _nearestRelativeAddress;
         private DirtyValue<string?>? _nearestRelativeCity;
+        private DirtyValue<string?>? _nearestRelativeCountry;
+        private DirtyValue<bool?>? _nearestRelativeForeignAddressIndicator;
         private DirtyValue<string?>? _nearestRelativeName;
         private DirtyValue<string?>? _nearestRelativePhone;
         private DirtyValue<string?>? _nearestRelativePostalCode;
@@ -1758,6 +1760,16 @@ namespace EncompassRest.Loans
         /// Borrower NearestRelativeCity
         /// </summary>
         public string? NearestRelativeCity { get => _nearestRelativeCity; set => SetField(ref _nearestRelativeCity, value); }
+
+        /// <summary>
+        /// Borrower NearestRelativeCountry
+        /// </summary>
+        public string? NearestRelativeCountry { get => _nearestRelativeCountry; set => SetField(ref _nearestRelativeCountry, value); }
+
+        /// <summary>
+        /// Borrower NearestRelativeForeignAddressIndicator
+        /// </summary>
+        public bool? NearestRelativeForeignAddressIndicator { get => _nearestRelativeForeignAddressIndicator; set => SetField(ref _nearestRelativeForeignAddressIndicator, value); }
 
         /// <summary>
         /// Borrower NearestRelativeName

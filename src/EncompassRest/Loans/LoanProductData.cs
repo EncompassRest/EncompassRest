@@ -157,6 +157,13 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _initialAdvanceAmount;
         private DirtyValue<decimal?>? _initialApplicationAmount;
         private DirtyValue<bool?>? _inquiryOrPreQualificationIndicator;
+        private DirtyValue<string?>? _lenderRepresentative;
+        private DirtyValue<string?>? _lenderRepresentativeCellPhone;
+        private DirtyValue<string?>? _lenderRepresentativeEmailAddress;
+        private DirtyValue<string?>? _lenderRepresentativeFirstLastName;
+        private DirtyValue<string?>? _lenderRepresentativeRoleId;
+        private DirtyValue<string?>? _lenderRepresentativeUserId;
+        private DirtyValue<string?>? _lenderRepresentativeWorkPhone;
         private DirtyValue<StringEnumValue<LienType>>? _lienPriorityType;
         private DirtyValue<StringEnumValue<LoanDocumentationType>>? _loanDocumentationType;
         private DirtyValue<StringEnumValue<LoanRepaymentType>>? _loanRepaymentType;
@@ -1015,6 +1022,44 @@ namespace EncompassRest.Loans
         /// NMLS Inquiry Or Pre-Qualification [NMLS.X13]
         /// </summary>
         public bool? InquiryOrPreQualificationIndicator { get => _inquiryOrPreQualificationIndicator; set => SetField(ref _inquiryOrPreQualificationIndicator, value); }
+
+        /// <summary>
+        /// Lender Representative [4672]
+        /// </summary>
+        public string? LenderRepresentative { get => _lenderRepresentative; set => SetField(ref _lenderRepresentative, value); }
+
+        /// <summary>
+        /// Lender Representative Cell Phone [4677]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+        public string? LenderRepresentativeCellPhone { get => _lenderRepresentativeCellPhone; set => SetField(ref _lenderRepresentativeCellPhone, value); }
+
+        /// <summary>
+        /// Lender Representative Email address [4674]
+        /// </summary>
+        public string? LenderRepresentativeEmailAddress { get => _lenderRepresentativeEmailAddress; set => SetField(ref _lenderRepresentativeEmailAddress, value); }
+
+        /// <summary>
+        /// Lender Representative First/ Last Name [4673]
+        /// </summary>
+        public string? LenderRepresentativeFirstLastName { get => _lenderRepresentativeFirstLastName; set => SetField(ref _lenderRepresentativeFirstLastName, value); }
+
+        /// <summary>
+        /// Lender Representative Role ID [4675]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? LenderRepresentativeRoleId { get => _lenderRepresentativeRoleId; set => SetField(ref _lenderRepresentativeRoleId, value); }
+
+        /// <summary>
+        /// Lender Representative User ID [4682]
+        /// </summary>
+        public string? LenderRepresentativeUserId { get => _lenderRepresentativeUserId; set => SetField(ref _lenderRepresentativeUserId, value); }
+
+        /// <summary>
+        /// Lender Representative Work Phone [4676]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+        public string? LenderRepresentativeWorkPhone { get => _lenderRepresentativeWorkPhone; set => SetField(ref _lenderRepresentativeWorkPhone, value); }
 
         /// <summary>
         /// Trans Details Lien Position [420]

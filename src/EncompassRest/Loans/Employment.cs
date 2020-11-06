@@ -25,6 +25,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _clothingAllowance;
         private DirtyValue<decimal?>? _commissionsAmount;
         private DirtyValue<EntityReference?>? _contact;
+        private DirtyValue<string?>? _country;
         private DirtyValue<string?>? _countryCode;
         private DirtyValue<bool?>? _currentEmploymentIndicator;
         private DirtyValue<bool?>? _doesNotApply;
@@ -36,6 +37,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _endDate;
         private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<string?>? _fax;
+        private DirtyValue<bool?>? _foreignAddressIndicator;
         private DirtyValue<bool?>? _foreignIncome;
         private DirtyValue<string?>? _id;
         private DirtyValue<bool?>? _individualEmployer;
@@ -163,6 +165,11 @@ namespace EncompassRest.Loans
         public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
+        /// Employment Country
+        /// </summary>
+        public string? Country { get => _country; set => SetField(ref _country, value); }
+
+        /// <summary>
         /// Employment CountryCode
         /// </summary>
         public string? CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
@@ -220,6 +227,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? Fax { get => _fax; set => SetField(ref _fax, value); }
+
+        /// <summary>
+        /// Employment ForeignAddressIndicator
+        /// </summary>
+        public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
 
         /// <summary>
         /// Employment ForeignIncome

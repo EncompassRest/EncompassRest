@@ -779,7 +779,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Community Property State Resident Indicator [URLA.X130]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"Y\":\"The property is in a comunity property state.\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"The property is in a community property state.\"}")]
         public bool? CommunityPropertyStateResidentIndicator { get => _communityPropertyStateResidentIndicator; set => SetField(ref _communityPropertyStateResidentIndicator, value); }
 
         /// <summary>
@@ -1066,8 +1066,9 @@ namespace EncompassRest.Loans
         public EmDocumentLender EmDocumentLender { get => GetField(ref _emDocumentLender); set => SetField(ref _emDocumentLender, value); }
 
         /// <summary>
-        /// Loan EmXmlVersionId
+        /// Loan EmXmlVersionId [1000]
         /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
         public string? EmXmlVersionId { get => _emXmlVersionId; set => SetField(ref _emXmlVersionId, value); }
 
         /// <summary>

@@ -21,18 +21,22 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _altId;
         private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>>? _applicantType;
         private DirtyValue<EntityReference?>? _contact;
+        private DirtyValue<string?>? _country;
         private DirtyValue<string?>? _countryCode;
         private DirtyValue<string?>? _county;
         private DirtyValue<bool?>? _doesNotApplyIndicator;
         private DirtyValue<int?>? _durationTermMonths;
         private DirtyValue<int?>? _durationTermYears;
         private DirtyValue<bool?>? _entityDeleted;
+        private DirtyValue<bool?>? _foreignAddressIndicator;
         private DirtyValue<string?>? _id;
         private DirtyValue<string?>? _landlordAttention;
         private DirtyValue<string?>? _landlordCity;
         private DirtyValue<string?>? _landlordComments;
+        private DirtyValue<string?>? _landlordCountry;
         private DirtyValue<string?>? _landlordEmail;
         private DirtyValue<string?>? _landlordFax;
+        private DirtyValue<bool?>? _landlordForeignAddressIndicator;
         private DirtyValue<string?>? _landlordName;
         private DirtyValue<string?>? _landlordPhone;
         private DirtyValue<string?>? _landlordPostalCode;
@@ -110,6 +114,11 @@ namespace EncompassRest.Loans
         public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
+        /// Residence Country
+        /// </summary>
+        public string? Country { get => _country; set => SetField(ref _country, value); }
+
+        /// <summary>
         /// Residence CountryCode
         /// </summary>
         public string? CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
@@ -140,6 +149,11 @@ namespace EncompassRest.Loans
         public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
 
         /// <summary>
+        /// Residence ForeignAddressIndicator
+        /// </summary>
+        public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
+
+        /// <summary>
         /// Residence Id
         /// </summary>
         public string? Id { get => _id; set => SetField(ref _id, value); }
@@ -160,6 +174,11 @@ namespace EncompassRest.Loans
         public string? LandlordComments { get => _landlordComments; set => SetField(ref _landlordComments, value); }
 
         /// <summary>
+        /// Residence LandlordCountry
+        /// </summary>
+        public string? LandlordCountry { get => _landlordCountry; set => SetField(ref _landlordCountry, value); }
+
+        /// <summary>
         /// Residence LandlordEmail
         /// </summary>
         public string? LandlordEmail { get => _landlordEmail; set => SetField(ref _landlordEmail, value); }
@@ -169,6 +188,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? LandlordFax { get => _landlordFax; set => SetField(ref _landlordFax, value); }
+
+        /// <summary>
+        /// Residence LandlordForeignAddressIndicator
+        /// </summary>
+        public bool? LandlordForeignAddressIndicator { get => _landlordForeignAddressIndicator; set => SetField(ref _landlordForeignAddressIndicator, value); }
 
         /// <summary>
         /// Residence LandlordName

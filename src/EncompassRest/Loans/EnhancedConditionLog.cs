@@ -40,6 +40,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _recipient;
         private DirtyValue<string?>? _requestedFrom;
         private DirtyValue<string?>? _source;
+        private DirtyValue<string?>? _sourceOfCondition;
         private DirtyValue<DateTime?>? _startDate;
         private DirtyValue<string?>? _status;
         private DirtyValue<DateTime?>? _statusDate;
@@ -203,6 +204,11 @@ namespace EncompassRest.Loans
         /// EnhancedConditionLog Source
         /// </summary>
         public string? Source { get => _source; set => SetField(ref _source, value); }
+
+        /// <summary>
+        /// EnhancedConditionLog SourceOfCondition
+        /// </summary>
+        public string? SourceOfCondition { get => _sourceOfCondition; set => SetField(ref _sourceOfCondition, value); }
 
         /// <summary>
         /// EnhancedConditionLog StartDate

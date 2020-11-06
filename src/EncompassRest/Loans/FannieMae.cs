@@ -71,7 +71,7 @@ namespace EncompassRest.Loans
         public string? ECStatus1003 { get => _eCStatus1003; set => SetField(ref _eCStatus1003, value); }
 
         /// <summary>
-        /// Fannie Mae Owned Message [MORNET.X157]
+        /// FannieMae FannieMaeOwnedMessage
         /// </summary>
         public string? FannieMaeOwnedMessage { get => _fannieMaeOwnedMessage; set => SetField(ref _fannieMaeOwnedMessage, value); }
 

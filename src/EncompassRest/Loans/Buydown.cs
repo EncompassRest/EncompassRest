@@ -11,7 +11,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _buydownIndex;
         private DirtyValue<decimal?>? _buydownRatePercent;
         private DirtyValue<int?>? _changeFrequencyMonthsCount;
-        private DirtyValue<int?>? _durationMonthsCount;
+        private DirtyValue<string?>? _durationMonthsCount;
         private DirtyValue<decimal?>? _fundBalanceAmount;
         private DirtyValue<decimal?>? _fundTotalAmount;
         private DirtyValue<string?>? _id;
@@ -40,7 +40,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info Buydown Terms [1557]
         /// </summary>
-        public int? DurationMonthsCount { get => _durationMonthsCount; set => SetField(ref _durationMonthsCount, value); }
+        public string? DurationMonthsCount { get => _durationMonthsCount; set => SetField(ref _durationMonthsCount, value); }
 
         /// <summary>
         /// Buydown FundBalanceAmount

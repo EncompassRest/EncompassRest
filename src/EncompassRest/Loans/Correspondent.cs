@@ -69,6 +69,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _armMargin2;
         private DirtyValue<decimal?>? _armRateFloor;
         private DirtyValue<decimal?>? _armRateFloor2;
+        private DirtyValue<StringEnumValue<AssignmentType>>? _assignmentType;
         private DirtyValue<int?>? _ausAppraisedValue;
         private DirtyValue<decimal?>? _ausAssetsToBeVerified;
         private DirtyValue<decimal?>? _ausCltv;
@@ -116,6 +117,8 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<BuildingStatusType>>? _buildingStatus;
         private DirtyValue<DateTime?>? _cancelledDate;
         private DirtyValue<bool?>? _cashOutNtbComparisonFormIndicator;
+        private DirtyValue<decimal?>? _cashToOrFromBorrowerAmount;
+        private DirtyValue<bool?>? _cashToOrFromBorrowerIndicator;
         private DirtyValue<decimal?>? _cdSectionjLenderCreditTotal;
         private DirtyValue<decimal?>? _cdSellerCreditAmount;
         private DirtyValue<decimal?>? _cdShoppableServices;
@@ -164,6 +167,8 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _disclosureReceivedDate;
         private DirtyList<Disclosure>? _disclosures;
         private DirtyValue<decimal?>? _discountPointsApplied;
+        private DirtyValue<decimal?>? _discountPointsPaidbyOther;
+        private DirtyValue<DateTime?>? _documentReceiptDate;
         private DirtyList<EarlyCheck>? _earlyChecks;
         private DirtyValue<decimal?>? _ecAppraisalValue;
         private DirtyValue<string?>? _ecDoumentFileId;
@@ -237,6 +242,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _housingRatio;
         private DirtyValue<string?>? _id;
         private DirtyValue<decimal?>? _ieadInitialDeposit;
+        private DirtyValue<bool?>? _includesWindOrHail;
         private DirtyValue<string?>? _incomeType;
         private DirtyValue<string?>? _indexType;
         private DirtyValue<decimal?>? _initialAdjustedRate;
@@ -340,6 +346,8 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _minFirstChangeRate2;
         private DirtyValue<string?>? _miPremiumPaymentType;
         private DirtyValue<DateTime?>? _miTerminationDate;
+        private DirtyValue<bool?>? _modification;
+        private DirtyValue<DateTime?>? _modificationDate;
         private DirtyValue<bool?>? _momIndicator;
         private DirtyValue<decimal?>? _monthlyAmount;
         private DirtyValue<decimal?>? _monthlyHousingExpense;
@@ -413,6 +421,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _reducedMiIndicator;
         private DirtyValue<bool?>? _refundUnearnedMipIndicator;
         private DirtyValue<DateTime?>? _rejectedDate;
+        private DirtyValue<bool?>? _renovation;
         private DirtyValue<bool?>? _renovationCompleteIndicator;
         private DirtyValue<decimal?>? _rentAmountUnit1;
         private DirtyValue<decimal?>? _rentAmountUnit2;
@@ -424,6 +433,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _section32Apr;
         private DirtyValue<DateTime?>? _section32DisclosureDate;
         private DirtyValue<bool?>? _section32Indicator;
+        private DirtyValue<decimal?>? _sellerPaidDiscountFees;
         private DirtyValue<decimal?>? _siteValue;
         private DirtyValue<string?>? _specialtyProduct;
         private DirtyValue<string?>? _standardDeviation;
@@ -802,6 +812,11 @@ namespace EncompassRest.Loans
         public decimal? ArmRateFloor2 { get => _armRateFloor2; set => SetField(ref _armRateFloor2, value); }
 
         /// <summary>
+        /// Correspondent - Assignment Type [CORRESPONDENT.X476]
+        /// </summary>
+        public StringEnumValue<AssignmentType> AssignmentType { get => _assignmentType; set => SetField(ref _assignmentType, value); }
+
+        /// <summary>
         /// Correspondent AUS Appraised Value [CORRESPONDENT.X109]
         /// </summary>
         public int? AusAppraisedValue { get => _ausAppraisedValue; set => SetField(ref _ausAppraisedValue, value); }
@@ -1056,6 +1071,17 @@ namespace EncompassRest.Loans
         /// Correspondent Cash Out NTB Comparison Form Indicator [CORRESPONDENT.X431]
         /// </summary>
         public bool? CashOutNtbComparisonFormIndicator { get => _cashOutNtbComparisonFormIndicator; set => SetField(ref _cashOutNtbComparisonFormIndicator, value); }
+
+        /// <summary>
+        /// Correspondent - Cash to/from Borrower Amount [CORRESPONDENT.X477]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? CashToOrFromBorrowerAmount { get => _cashToOrFromBorrowerAmount; set => SetField(ref _cashToOrFromBorrowerAmount, value); }
+
+        /// <summary>
+        /// Correspondent - Cash to/from Borrower Indicator [CORRESPONDENT.X482]
+        /// </summary>
+        public bool? CashToOrFromBorrowerIndicator { get => _cashToOrFromBorrowerIndicator; set => SetField(ref _cashToOrFromBorrowerIndicator, value); }
 
         /// <summary>
         /// Correspondent Compliance Review - CD Section J Lender Credit Total [CORRESPONDENT.X60]
@@ -1320,6 +1346,17 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DiscountPointsApplied { get => _discountPointsApplied; set => SetField(ref _discountPointsApplied, value); }
+
+        /// <summary>
+        /// Correspondent - Discount Points Paid by Other [CORRESPONDENT.X485]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? DiscountPointsPaidbyOther { get => _discountPointsPaidbyOther; set => SetField(ref _discountPointsPaidbyOther, value); }
+
+        /// <summary>
+        /// Correspondent - Document Receipt Date [CORRESPONDENT.X483]
+        /// </summary>
+        public DateTime? DocumentReceiptDate { get => _documentReceiptDate; set => SetField(ref _documentReceiptDate, value); }
 
         /// <summary>
         /// Correspondent EarlyChecks
@@ -1712,6 +1749,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? IeadInitialDeposit { get => _ieadInitialDeposit; set => SetField(ref _ieadInitialDeposit, value); }
+
+        /// <summary>
+        /// Correspondent - Includes Wind/Hail [CORRESPONDENT.X478]
+        /// </summary>
+        public bool? IncludesWindOrHail { get => _includesWindOrHail; set => SetField(ref _includesWindOrHail, value); }
 
         /// <summary>
         /// Correspondent Income Type [CORRESPONDENT.X220]
@@ -2262,6 +2304,16 @@ namespace EncompassRest.Loans
         public DateTime? MiTerminationDate { get => _miTerminationDate; set => SetField(ref _miTerminationDate, value); }
 
         /// <summary>
+        /// Correspondent - Modification [CORRESPONDENT.X480]
+        /// </summary>
+        public bool? Modification { get => _modification; set => SetField(ref _modification, value); }
+
+        /// <summary>
+        /// Correspondent - Modification Date [CORRESPONDENT.X481]
+        /// </summary>
+        public DateTime? ModificationDate { get => _modificationDate; set => SetField(ref _modificationDate, value); }
+
+        /// <summary>
         /// Correspondent MOM Indicator [CORRESPONDENT.X255]
         /// </summary>
         public bool? MomIndicator { get => _momIndicator; set => SetField(ref _momIndicator, value); }
@@ -2654,6 +2706,11 @@ namespace EncompassRest.Loans
         public DateTime? RejectedDate { get => _rejectedDate; set => SetField(ref _rejectedDate, value); }
 
         /// <summary>
+        /// Correspondent - Renovation [CORRESPONDENT.X479]
+        /// </summary>
+        public bool? Renovation { get => _renovation; set => SetField(ref _renovation, value); }
+
+        /// <summary>
         /// Correspondent Renovation Complete Indicator [CORRESPONDENT.X313]
         /// </summary>
         public bool? RenovationCompleteIndicator { get => _renovationCompleteIndicator; set => SetField(ref _renovationCompleteIndicator, value); }
@@ -2714,6 +2771,12 @@ namespace EncompassRest.Loans
         /// Correspondent Loan qualifies as high cost under Section 32 [CORRESPONDENT.X320]
         /// </summary>
         public bool? Section32Indicator { get => _section32Indicator; set => SetField(ref _section32Indicator, value); }
+
+        /// <summary>
+        /// Correspondent - Seller Paid Discount Fees [CORRESPONDENT.X484]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? SellerPaidDiscountFees { get => _sellerPaidDiscountFees; set => SetField(ref _sellerPaidDiscountFees, value); }
 
         /// <summary>
         /// Correspondent Site Value [CORRESPONDENT.X323]

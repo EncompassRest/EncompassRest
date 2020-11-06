@@ -737,7 +737,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower Vesting Borr Final Vesting to Read [1867]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public string? FinalVestingDescription { get => _finalVestingDescription; set => SetField(ref _finalVestingDescription, value); }
 
         /// <summary>

@@ -15,6 +15,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _attention;
         private DirtyValue<bool?>? _bankLiabilityConsideredIndicator;
         private DirtyValue<EntityReference?>? _contact;
+        private DirtyValue<string?>? _country;
         private DirtyValue<decimal?>? _creditLimit;
         private DirtyValue<StringEnumValue<LienPosition>>? _currentLienPosition;
         private DirtyValue<DateTime?>? _date;
@@ -22,6 +23,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _descriptionOfPurpose;
         private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<bool?>? _exclusionIndicator;
+        private DirtyValue<bool?>? _foreignAddressIndicator;
         private DirtyValue<string?>? _holderAddressCity;
         private DirtyValue<string?>? _holderAddressPostalCode;
         private DirtyValue<StringEnumValue<State>>? _holderAddressState;
@@ -105,6 +107,11 @@ namespace EncompassRest.Loans
         public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
+        /// Liability Creditor Country [FLNN68]
+        /// </summary>
+        public string? Country { get => _country; set => SetField(ref _country, value); }
+
+        /// <summary>
         /// Credit Limit [FLNN31]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -140,6 +147,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Exclude from URLA page 2 Liabilities Total\"}")]
         public bool? ExclusionIndicator { get => _exclusionIndicator; set => SetField(ref _exclusionIndicator, value); }
+
+        /// <summary>
+        /// Liability Creditor Foreign Address Indicator [FLNN67]
+        /// </summary>
+        public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
 
         /// <summary>
         /// Liability Creditor City [FLNN05]

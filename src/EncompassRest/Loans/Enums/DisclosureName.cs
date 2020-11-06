@@ -2580,6 +2580,10 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// FirstTimeHomebuyer
         /// </summary>
-        FirstTimeHomebuyer = 632
+        FirstTimeHomebuyer = 632,
+        /// <summary>
+        /// AdditionalTermsConditions
+        /// </summary>
+        AdditionalTermsConditions = 633
     }
 }

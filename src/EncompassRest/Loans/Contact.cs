@@ -41,6 +41,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _contactNMLSNo;
         private DirtyValue<string?>? _contactTitle;
         private DirtyValue<StringEnumValue<ContactType>>? _contactType;
+        private DirtyValue<string?>? _country;
         private DirtyValue<DateTime?>? _designeeAcceptedDate;
         private DirtyValue<string?>? _email;
         private DirtyValue<decimal?>? _employerLiabilityInsuranceMin;
@@ -48,6 +49,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _fax2;
         private DirtyValue<string?>? _fedReferenceNumber;
         private DirtyValue<string?>? _fhaLenderId;
+        private DirtyValue<bool?>? _foreignAddressIndicator;
         private DirtyValue<DateTime?>? _fundsToTitleDate;
         private DirtyValue<decimal?>? _generalLiabilityInsuranceMin;
         private DirtyValue<string?>? _id;
@@ -274,6 +276,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<ContactType> ContactType { get => _contactType; set => SetField(ref _contactType, value); }
 
         /// <summary>
+        /// Contact Country
+        /// </summary>
+        public string? Country { get => _country; set => SetField(ref _country, value); }
+
+        /// <summary>
         /// Appointment Of Designee DesigneeAcceptedDate [VEND.X1026]
         /// </summary>
         public DateTime? DesigneeAcceptedDate { get => _designeeAcceptedDate; set => SetField(ref _designeeAcceptedDate, value); }
@@ -311,6 +318,11 @@ namespace EncompassRest.Loans
         /// FHA Lender ID [1059]
         /// </summary>
         public string? FhaLenderId { get => _fhaLenderId; set => SetField(ref _fhaLenderId, value); }
+
+        /// <summary>
+        /// Contact ForeignAddressIndicator
+        /// </summary>
+        public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
 
         /// <summary>
         /// File Contacts Warehouse Funds to Title Date [VEND.X1045]
