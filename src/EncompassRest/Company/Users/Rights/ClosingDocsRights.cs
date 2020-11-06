@@ -16,7 +16,7 @@ namespace EncompassRest.Company.Users.Rights
         /// ClosingDocsRights DigitalClosing
         /// </summary>
         [AllowNull]
-        public DigitalClosingRights? DigitalClosing { get => GetField(ref _digitalClosing); set => SetField(ref _digitalClosing, value); }
+        public DigitalClosingRights DigitalClosing { get => GetField(ref _digitalClosing); set => SetField(ref _digitalClosing, value); }
 
         /// <summary>
         /// ClosingDocsRights ManageAltLenders
