@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Company.Users.Rights
 {
@@ -9,6 +10,7 @@ namespace EncompassRest.Company.Users.Rights
     {
         private DirtyValue<bool?>? _allTPOContactInformation;
         private CompanyDetailsRights? _companyDetails;
+        private DirtyValue<bool?>? _companyUserAccountManagement;
         private DirtyValue<bool?>? _globalAccess;
         private DirtyValue<bool?>? _investorConnectSettings;
         private DirtyValue<bool?>? _tPOConnectSiteManagement;
@@ -30,6 +32,12 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [AllowNull]
         public CompanyDetailsRights CompanyDetails { get => GetField(ref _companyDetails); set => SetField(ref _companyDetails, value); }
+
+        /// <summary>
+        /// ExternalSettingsRights CompanyUserAccountManagement
+        /// </summary>
+        [JsonProperty("company/UserAccountManagement")]
+        public bool? CompanyUserAccountManagement { get => _companyUserAccountManagement; set => SetField(ref _companyUserAccountManagement, value); }
 
         /// <summary>
         /// ExternalSettingsRights GlobalAccess

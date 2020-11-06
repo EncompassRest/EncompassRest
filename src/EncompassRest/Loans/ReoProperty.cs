@@ -12,9 +12,11 @@ namespace EncompassRest.Loans
     {
         private DirtyValue<DateTime?>? _acquiredDate;
         private DirtyValue<string?>? _city;
+        private DirtyValue<string?>? _country;
         private DirtyValue<string?>? _countryCode;
         private DirtyValue<StringEnumValue<DispositionStatusType>>? _dispositionStatusType;
         private DirtyValue<bool?>? _entityDeleted;
+        private DirtyValue<bool?>? _foreignAddressIndicator;
         private DirtyValue<StringEnumValue<FuturePropertyUsageType>>? _futurePropertyUsageType;
         private DirtyValue<string?>? _futureUsageTypeOtherDesc;
         private DirtyValue<StringEnumValue<GsePropertyType>>? _gsePropertyType;
@@ -65,6 +67,11 @@ namespace EncompassRest.Loans
         public string? City { get => _city; set => SetField(ref _city, value); }
 
         /// <summary>
+        /// Mortgage Property Country [FMNN57]
+        /// </summary>
+        public string? Country { get => _country; set => SetField(ref _country, value); }
+
+        /// <summary>
         /// Mortgage Property Country Code [FMNN51]
         /// </summary>
         public string? CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
@@ -78,6 +85,11 @@ namespace EncompassRest.Loans
         /// ReoProperty EntityDeleted
         /// </summary>
         public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
+
+        /// <summary>
+        /// Mortgage Property Foreign Address Indicator [FMNN58]
+        /// </summary>
+        public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
 
         /// <summary>
         /// Mortgage Property Future Use of Property [FMNN55]

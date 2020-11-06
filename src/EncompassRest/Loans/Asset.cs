@@ -18,10 +18,12 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _borrowerId;
         private DirtyValue<decimal?>? _cashOrMarketValueAmount;
         private DirtyValue<EntityReference?>? _contact;
+        private DirtyValue<string?>? _country;
         private DirtyValue<string?>? _depositoryAccountName;
         private DirtyValue<DateTime?>? _depositoryRequestDate;
         private DirtyValue<string?>? _description;
         private DirtyValue<bool?>? _entityDeleted;
+        private DirtyValue<bool?>? _foreignAddressIndicator;
         private DirtyValue<string?>? _holderAddressCity;
         private DirtyValue<string?>? _holderAddressPostalCode;
         private DirtyValue<StringEnumValue<State>>? _holderAddressState;
@@ -92,6 +94,11 @@ namespace EncompassRest.Loans
         public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
+        /// Depository Country [DDNN40]
+        /// </summary>
+        public string? Country { get => _country; set => SetField(ref _country, value); }
+
+        /// <summary>
         /// Asset DepositoryAccountName
         /// </summary>
         public string? DepositoryAccountName { get => _depositoryAccountName; set => SetField(ref _depositoryAccountName, value); }
@@ -110,6 +117,11 @@ namespace EncompassRest.Loans
         /// Asset EntityDeleted
         /// </summary>
         public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
+
+        /// <summary>
+        /// Depository Foreign Address Indicator [DDNN39]
+        /// </summary>
+        public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
 
         /// <summary>
         /// Depository Attention City [DDNN05]

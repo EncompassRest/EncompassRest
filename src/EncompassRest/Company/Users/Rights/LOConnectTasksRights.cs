@@ -18,6 +18,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?>? _deleteTasks;
         private DirtyValue<bool?>? _manageTasks;
         private DirtyValue<bool?>? _modifyAllTasks;
+        private DirtyValue<bool?>? _updatePriority;
         private DirtyValue<bool?>? _viewAllTasks;
         private WorkflowTasksToolRights? _workflowTasksTool;
 
@@ -75,6 +76,11 @@ namespace EncompassRest.Company.Users.Rights
         /// LOConnectTasksRights ModifyAllTasks
         /// </summary>
         public bool? ModifyAllTasks { get => _modifyAllTasks; set => SetField(ref _modifyAllTasks, value); }
+
+        /// <summary>
+        /// LOConnectTasksRights UpdatePriority
+        /// </summary>
+        public bool? UpdatePriority { get => _updatePriority; set => SetField(ref _updatePriority, value); }
 
         /// <summary>
         /// LOConnectTasksRights ViewAllTasks

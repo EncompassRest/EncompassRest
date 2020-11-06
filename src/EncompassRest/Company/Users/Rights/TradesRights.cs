@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
@@ -5,13 +7,14 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class TradesRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _accessToTradesTab;
+        private AccessToTradesTabRights? _accessToTradesTab;
         private DirtyValue<bool?>? _editTrades;
 
-        /// <summary>
-        /// TradesRights AccessToTradesTab
-        /// </summary>
-        public bool? AccessToTradesTab { get => _accessToTradesTab; set => SetField(ref _accessToTradesTab, value); }
+        ///// <summary>
+        ///// TradesRights AccessToTradesTab
+        ///// </summary>
+        [AllowNull]
+        public AccessToTradesTabRights AccessToTradesTab { get => GetField(ref _accessToTradesTab); set => SetField(ref _accessToTradesTab, value); }
 
         /// <summary>
         /// TradesRights EditTrades

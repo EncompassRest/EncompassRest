@@ -21,6 +21,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?>? _documentStackingTemplates;
         private DirtyValue<bool?>? _documentTraining;
         private DirtyValue<bool?>? _enhancedConditions;
+        private DirtyValue<bool?>? _enhancedConditionSets;
         private DirtyValue<bool?>? _hTMLEmailTemplates;
         private DirtyValue<bool?>? _postClosingConditionSets;
         private DirtyValue<bool?>? _postClosingConditions;
@@ -98,6 +99,11 @@ namespace EncompassRest.Company.Users.Rights
         /// EFolderSetupRights EnhancedConditions
         /// </summary>
         public bool? EnhancedConditions { get => _enhancedConditions; set => SetField(ref _enhancedConditions, value); }
+
+        /// <summary>
+        /// EFolderSetupRights EnhancedConditionSets
+        /// </summary>
+        public bool? EnhancedConditionSets { get => _enhancedConditionSets; set => SetField(ref _enhancedConditionSets, value); }
 
         /// <summary>
         /// EFolderSetupRights HTMLEmailTemplates

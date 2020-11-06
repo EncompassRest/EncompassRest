@@ -162,6 +162,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _proposedOtherAmount;
         private DirtyValue<decimal?>? _proposedOtherMortgagesAmount;
         private DirtyValue<string?>? _proposedRealEstateTaxesAmount;
+        private DirtyList<ProvidedDocument>? _providedDocuments;
         private DirtyValue<string?>? _realEstateTaxAmount;
         private DirtyValue<decimal?>? _rentAmount;
         private DirtyList<ReoProperty>? _reoProperties;
@@ -176,11 +177,15 @@ namespace EncompassRest.Loans
         private DirtyList<Residence>? _residences;
         private DirtyValue<string?>? _respa6;
         private DirtyList<SelfEmployedIncome>? _selfEmployedIncomes;
+        private DirtyValue<string?>? _sofDBorrCountry;
+        private DirtyValue<bool?>? _sofDBorrForeignAddressIndicator;
         private DirtyValue<string?>? _sofDBorrowerAddress;
         private DirtyValue<string?>? _sofDBorrowerAddressCity;
         private DirtyValue<StringEnumValue<State>>? _sofDBorrowerAddressState;
         private DirtyValue<StringEnumValue<SofDBorrowerAddressType>>? _sofDBorrowerAddressType;
         private DirtyValue<string?>? _sofDBorrowerAddressZipcode;
+        private DirtyValue<string?>? _sofDCoBorrCountry;
+        private DirtyValue<bool?>? _sofDCoBorrForeignAddressIndicator;
         private DirtyValue<string?>? _sofDCoBorrowerAddress;
         private DirtyValue<string?>? _sofDCoBorrowerAddressCity;
         private DirtyValue<StringEnumValue<State>>? _sofDCoBorrowerAddressState;
@@ -1094,6 +1099,12 @@ namespace EncompassRest.Loans
         public string? ProposedRealEstateTaxesAmount { get => _proposedRealEstateTaxesAmount; set => SetField(ref _proposedRealEstateTaxesAmount, value); }
 
         /// <summary>
+        /// Application ProvidedDocuments
+        /// </summary>
+        [AllowNull]
+        public IList<ProvidedDocument> ProvidedDocuments { get => GetField(ref _providedDocuments); set => SetField(ref _providedDocuments, value); }
+
+        /// <summary>
         /// Expenses Present Taxes [123]
         /// </summary>
         public string? RealEstateTaxAmount { get => _realEstateTaxAmount; set => SetField(ref _realEstateTaxAmount, value); }
@@ -1174,6 +1185,16 @@ namespace EncompassRest.Loans
         public IList<SelfEmployedIncome> SelfEmployedIncomes { get => GetField(ref _selfEmployedIncomes); set => SetField(ref _selfEmployedIncomes, value); }
 
         /// <summary>
+        /// Denial Info - Borrower Country [DENIAL.X98]
+        /// </summary>
+        public string? SofDBorrCountry { get => _sofDBorrCountry; set => SetField(ref _sofDBorrCountry, value); }
+
+        /// <summary>
+        /// Denial Info - Borrower Foreign Address Indicator [DENIAL.X97]
+        /// </summary>
+        public bool? SofDBorrForeignAddressIndicator { get => _sofDBorrForeignAddressIndicator; set => SetField(ref _sofDBorrForeignAddressIndicator, value); }
+
+        /// <summary>
         /// Denial Discl Info - Borrower Address [DENIAL.X82]
         /// </summary>
         public string? SofDBorrowerAddress { get => _sofDBorrowerAddress; set => SetField(ref _sofDBorrowerAddress, value); }
@@ -1198,6 +1219,16 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string? SofDBorrowerAddressZipcode { get => _sofDBorrowerAddressZipcode; set => SetField(ref _sofDBorrowerAddressZipcode, value); }
+
+        /// <summary>
+        /// Denial Info - Coborrower Country [DENIAL.X100]
+        /// </summary>
+        public string? SofDCoBorrCountry { get => _sofDCoBorrCountry; set => SetField(ref _sofDCoBorrCountry, value); }
+
+        /// <summary>
+        /// Denial Info - Coborrower Foreign Address Indicator [DENIAL.X99]
+        /// </summary>
+        public bool? SofDCoBorrForeignAddressIndicator { get => _sofDCoBorrForeignAddressIndicator; set => SetField(ref _sofDCoBorrForeignAddressIndicator, value); }
 
         /// <summary>
         /// Denial Discl Info - Coborrower Address [DENIAL.X87]

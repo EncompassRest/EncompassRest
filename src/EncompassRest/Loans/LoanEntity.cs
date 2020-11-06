@@ -920,6 +920,10 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CreditReport
         /// </summary>
-        CreditReport = 230
+        CreditReport = 230,
+        /// <summary>
+        /// ProvidedDocument
+        /// </summary>
+        ProvidedDocument = 231
     }
 }

@@ -80,6 +80,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?>? _tPOAdministrationTabShowAsMgrAdminInBranchesTab;
         private DirtyValue<bool?>? _tPOAdministrationTabShowAsMgrAdminInCompanyInfoTab;
         private DirtyValue<bool?>? _tPOAdministrationTabViewCmtConfirmations;
+        private DirtyValue<bool?>? _tradeTabEditTrades;
 
         /// <summary>
         /// MiscellaneousRights EFolderAccess
@@ -517,5 +518,11 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [JsonProperty("tPOAdministrationTab_ViewCmtConfirmations")]
         public bool? TPOAdministrationTabViewCmtConfirmations { get => _tPOAdministrationTabViewCmtConfirmations; set => SetField(ref _tPOAdministrationTabViewCmtConfirmations, value); }
+
+        /// <summary>
+        /// MiscellaneousRights TradeTabEditTrades
+        /// </summary>
+        [JsonProperty("tradeTab_EditTrades")]
+        public bool? TradeTabEditTrades { get => _tradeTabEditTrades; set => SetField(ref _tradeTabEditTrades, value); }
     }
 }

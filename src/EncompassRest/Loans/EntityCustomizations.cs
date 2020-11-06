@@ -57,4 +57,15 @@ namespace EncompassRest.Loans
         {
         }
     }
+
+    partial class Contact
+    {
+        private DirtyValue<EntityReference?>? _contactValue;
+
+        /// <summary>
+        /// Contact ContactValue
+        /// </summary>
+        [JsonProperty("contact")]
+        public EntityReference? ContactValue { get => _contactValue; set => SetField(ref _contactValue, value); }
+    }
 }

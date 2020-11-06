@@ -108,6 +108,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusOverall;
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusPointsFeesLimit;
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusPrepaymentPenalty;
+        private DirtyValue<StringEnumValue<GSEAgencyQMStatusQMAvailable>>? _gSEAgencyQMStatusQMAvailable;
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusResidualIncome;
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusSafeHarborEligibility;
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _gSEAgencyQMStatusSimultaneousLoan;
@@ -742,6 +743,12 @@ namespace EncompassRest.Loans
         /// ATR QM - Eligibility - GSE/Agency Qualified Mortgage - Prepayment Penalty [QM.X67]
         /// </summary>
         public StringEnumValue<ATRQMStatus> GSEAgencyQMStatusPrepaymentPenalty { get => _gSEAgencyQMStatusPrepaymentPenalty; set => SetField(ref _gSEAgencyQMStatusPrepaymentPenalty, value); }
+
+        /// <summary>
+        /// ATR QM - Eligibility - GSE/Agency Qualified Mortgage - QM Available [QM.X380]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public StringEnumValue<GSEAgencyQMStatusQMAvailable> GSEAgencyQMStatusQMAvailable { get => _gSEAgencyQMStatusQMAvailable; set => SetField(ref _gSEAgencyQMStatusQMAvailable, value); }
 
         /// <summary>
         /// ATR QM - Eligibility - GSE/Agency Qualified Mortgage - Residual Income [QM.X70]

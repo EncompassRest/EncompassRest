@@ -16,6 +16,7 @@ namespace EncompassRest.Company.Users.Rights
         private FormsRights? _forms;
         private HomeRights? _home;
         private LoanRights? _loan;
+        private LOConnectTabRights? _lOConnectTab;
         private LOConnectTasksRights? _lOConnectTasks;
         private MiscellaneousRights? _miscellaneous;
         private PipelineRights? _pipeline;
@@ -78,6 +79,12 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [AllowNull]
         public LoanRights Loan { get => GetField(ref _loan); set => SetField(ref _loan, value); }
+
+        /// <summary>
+        /// UserRights LOConnectTab
+        /// </summary>
+        [AllowNull]
+        public LOConnectTabRights LOConnectTab { get => GetField(ref _lOConnectTab); set => SetField(ref _lOConnectTab, value); }
 
         /// <summary>
         /// UserRights LOConnectTasks

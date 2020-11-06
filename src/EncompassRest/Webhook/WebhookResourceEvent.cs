@@ -81,6 +81,31 @@ namespace EncompassRest.Webhook
         /// unlock
         /// </summary>
         [EnumMember(Value = "unlock")]
-        Unlock = 14
+        Unlock = 14,
+        /// <summary>
+        /// placed
+        /// </summary>
+        [EnumMember(Value = "placed")]
+        Placed = 15,
+        /// <summary>
+        /// acknowledged
+        /// </summary>
+        [EnumMember(Value = "acknowledged")]
+        Acknowledged = 16,
+        /// <summary>
+        /// fulfilled
+        /// </summary>
+        [EnumMember(Value = "fulfilled")]
+        Fulfilled = 17,
+        /// <summary>
+        /// systemfailure
+        /// </summary>
+        [EnumMember(Value = "systemfailure")]
+        Systemfailure = 18,
+        /// <summary>
+        /// processfailure
+        /// </summary>
+        [EnumMember(Value = "processfailure")]
+        Processfailure = 19
     }
 }

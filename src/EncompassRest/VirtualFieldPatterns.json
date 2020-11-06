@@ -2921,6 +2921,16 @@
   },
   {
     "Format": 101,
+    "FieldId": "ENHCOND.EXT.SATISFIED.TYPE.{0}",
+    "Description": "All External Enhanced Conditions which are not open of a specific condition type - {0}"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.EXT.SATISFIED.TYPE.COUNT.{0}",
+    "Description": "Number of External Enhanced Conditions which are not open of specific condition type - {0}"
+  },
+  {
+    "Format": 101,
     "FieldId": "ENHCOND.EXT.TYPE.{0}",
     "Description": "All External Enhanced Conditions - {0}"
   },
@@ -2938,6 +2948,16 @@
     "Format": 201,
     "FieldId": "ENHCOND.INT.OPEN.TYPE.COUNT.{0}",
     "Description": "Number of Open Internal Conditions of specific condition type - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHCOND.INT.SATISFIED.TYPE.{0}",
+    "Description": "All Internal Enhanced Conditions which are not open of specific condition type - {0}"
+  },
+  {
+    "Format": 201,
+    "FieldId": "ENHCOND.INT.SATISFIED.TYPE.COUNT.{0}",
+    "Description": "Number of Internal Enhanced Conditions which are not open of specific condition type - {0}"
   },
   {
     "Format": 101,

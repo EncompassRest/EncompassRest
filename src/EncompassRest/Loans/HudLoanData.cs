@@ -269,7 +269,7 @@ namespace EncompassRest.Loans
         public bool? BuildingOnOwnLand { get => _buildingOnOwnLand; set => SetField(ref _buildingOnOwnLand, value); }
 
         /// <summary>
-        /// Lock Request Date Case Number Assigned [3042]
+        /// FHA Case Number Assigned Date [3042]
         /// </summary>
         public DateTime? CaseAssignedDate { get => _caseAssignedDate; set => SetField(ref _caseAssignedDate, value); }
 
@@ -1030,7 +1030,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k B4 Mtg Pymt Escrowed [MAX23K.X17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalForMtgPaymentEscrowed { get => _totalForMtgPaymentEscrowed; set => SetField(ref _totalForMtgPaymentEscrowed, value); }
 
         /// <summary>

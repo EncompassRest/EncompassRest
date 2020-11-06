@@ -7,6 +7,7 @@ namespace EncompassRest.Company.Users.Rights
     {
         private DirtyValue<bool?>? _appraisalOrderManagement;
         private DirtyValue<bool?>? _automatedConditions;
+        private DirtyValue<bool?>? _automatedEnhancedConditions;
         private DirtyValue<bool?>? _automatedPurchaseConditions;
         private DirtyValue<bool?>? _collateralTracking;
         private DirtyValue<bool?>? _fieldDataEntry;
@@ -32,6 +33,11 @@ namespace EncompassRest.Company.Users.Rights
         /// BusinessRulesRights AutomatedConditions
         /// </summary>
         public bool? AutomatedConditions { get => _automatedConditions; set => SetField(ref _automatedConditions, value); }
+
+        /// <summary>
+        /// BusinessRulesRights AutomatedEnhancedConditions
+        /// </summary>
+        public bool? AutomatedEnhancedConditions { get => _automatedEnhancedConditions; set => SetField(ref _automatedEnhancedConditions, value); }
 
         /// <summary>
         /// BusinessRulesRights AutomatedPurchaseConditions

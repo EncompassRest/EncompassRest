@@ -43,6 +43,10 @@ namespace EncompassRest.Webhook
         /// <summary>
         /// Trade
         /// </summary>
-        Trade = 8
+        Trade = 8,
+        /// <summary>
+        /// ServiceOrder
+        /// </summary>
+        ServiceOrder = 9
     }
 }

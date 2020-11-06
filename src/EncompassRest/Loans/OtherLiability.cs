@@ -15,9 +15,11 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _balance;
         private DirtyValue<StringEnumValue<Owner>>? _borrowerType;
         private DirtyValue<EntityReference?>? _contact;
+        private DirtyValue<string?>? _country;
         private DirtyValue<decimal?>? _creditLimit;
         private DirtyValue<DateTime?>? _depositoryRequestDate;
         private DirtyValue<bool?>? _entityDeleted;
+        private DirtyValue<bool?>? _foreignAddressIndicator;
         private DirtyValue<string?>? _holderAddressCity;
         private DirtyValue<string?>? _holderAddressPostalCode;
         private DirtyValue<StringEnumValue<State>>? _holderAddressState;
@@ -66,6 +68,11 @@ namespace EncompassRest.Loans
         public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
+        /// Other Liabilities Country [URLAROLNN22]
+        /// </summary>
+        public string? Country { get => _country; set => SetField(ref _country, value); }
+
+        /// <summary>
         /// Other Liabilities Credit Limit [URLAROLNN21]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
@@ -80,6 +87,11 @@ namespace EncompassRest.Loans
         /// OtherLiability EntityDeleted
         /// </summary>
         public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
+
+        /// <summary>
+        /// Depository Foreign Address Indicator [URLAROLNN23]
+        /// </summary>
+        public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
 
         /// <summary>
         /// Depository Attention City [URLAROLNN08]
