@@ -1,3 +1,4 @@
+using EncompassRest.Loans.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -36,7 +37,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<int?>? _daysToExtend;
         private DirtyValue<DateTime?>? _extendedLockExpirationDate;
         private DirtyValue<decimal?>? _lockExtendPriceAdjustment;
-        private DirtyValue<string?>? _servicingType;
+        private DirtyValue<StringEnumValue<ServicingType>>? _servicingType;
         private DirtyValue<decimal?>? _discountYsp;
         private DirtyValue<string?>? _masterContractNumber;
         private DirtyValue<decimal?>? _gainLossPercentage;
@@ -204,7 +205,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Rate lock sell side servicing type.
         /// </summary>
-        public string? ServicingType { get => _servicingType; set => SetField(ref _servicingType, value); }
+        public StringEnumValue<ServicingType>? ServicingType { get => _servicingType; set => SetField(ref _servicingType, value); }
 
         /// <summary>
         /// The discount yield spread premium
@@ -214,7 +215,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// The master contract number.
         /// </summary>
-        public string? masterContractNumber { get => _masterContractNumber; set => SetField(ref _masterContractNumber, value); }
+        public string? MasterContractNumber { get => _masterContractNumber; set => SetField(ref _masterContractNumber, value); }
 
         /// <summary>
         /// Rate lock sell side gain loss percentage.
