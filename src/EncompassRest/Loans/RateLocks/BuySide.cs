@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans.RateLocks
 {
@@ -17,7 +18,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<string?>? _tpoId;
         private DirtyValue<string?>? _orgId;
         private DirtyValue<DateTime?>? _commitmentDate;
-        private DirtyValue<string?>? _commitmentType;
+        private DirtyValue<StringEnumValue<CommitmentTypes>>? _commitmentType;
         private DirtyValue<string?>? _deliveryType;
         private DirtyValue<DateTime?>? _expirationDate;
         private DirtyValue<DateTime?>? _deliveryExpirationDate;
@@ -42,12 +43,12 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<decimal?>? _lockExtendPriceAdjustment;
         private DirtyValue<string?>? _commitment;
         private DirtyValue<string?>? _rateSheetId;
-        private DirtyValue<string?>? _lastRateSetDate;
+        private DirtyValue<DateTime?>? _lastRateSetDate;
         private DirtyValue<int?>? _lockNumberOfDays;
-        private DirtyValue<string?>? _lockExpirationDate;
-        private DirtyValue<string?>? _lockDate;
+        private DirtyValue<DateTime?>? _lockExpirationDate;
+        private DirtyValue<DateTime?>? _lockDate;
         private DirtyValue<decimal?>? _baseRate;
-        private DirtyValue<List<LockAdjustment>?>? _adjustments;
+        private DirtyList<LockAdjustment>? _adjustments;
         private DirtyValue<decimal?>? _netRate;
         private DirtyValue<decimal?>? _totalRateAdjustments;
         private DirtyValue<decimal?>? _basePrice;
@@ -99,7 +100,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// The organization ID of the TPO Company.
         /// </summary>
-        public string? orgId { get => _orgId; set => SetField(ref _orgId, value); }
+        public string? OrgId { get => _orgId; set => SetField(ref _orgId, value); }
 
         /// <summary>
         /// The commitment date for the loan.
@@ -109,7 +110,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// The type of Lock applied to the loan. Possible values are: best efforts, mandatory
         /// </summary>
-        public string? CommitmentType { get => _commitmentType; set => SetField(ref _commitmentType, value); }
+        public StringEnumValue<CommitmentTypes>? CommitmentType { get => _commitmentType; set => SetField(ref _commitmentType, value); }
 
         /// <summary>
         /// Delivery type for the loan request. If the Commitment Type is defined, this field will be automatically populated (“Individual Best Efforts for “Best Efforts Commitment Type and “Individual Mandatory” for “Mandatory” Commitment Type).
@@ -234,7 +235,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Date when the interest rate for the loan was last locked.
         /// </summary>
-        public string? LastRateSetDate { get => _lastRateSetDate; set => SetField(ref _lastRateSetDate, value); }
+        public DateTime? LastRateSetDate { get => _lastRateSetDate; set => SetField(ref _lastRateSetDate, value); }
 
         /// <summary>
         /// The number of days in the current lock.
@@ -244,12 +245,12 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// The expiration date of the current lock.
         /// </summary>
-        public string? LockExpirationDate { get => _lockExpirationDate; set => SetField(ref _lockExpirationDate, value); }
+        public DateTime? LockExpirationDate { get => _lockExpirationDate; set => SetField(ref _lockExpirationDate, value); }
 
         /// <summary>
         /// The buy side lock day.
         /// </summary>
-        public string? LockDate { get => _lockDate; set => SetField(ref _lockDate, value); }
+        public DateTime? LockDate { get => _lockDate; set => SetField(ref _lockDate, value); }
 
         /// <summary>
         /// The base buy side base rate (as a percentage) for the lock.
@@ -259,7 +260,8 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Object containing attributes that describe buy side rate lock adjustments.
         /// </summary>
-        public List<LockAdjustment>? Adjustments { get => _adjustments; set => SetField(ref _adjustments, value); }
+        [AllowNull]
+        public IList<LockAdjustment> Adjustments { get => GetField(ref _adjustments); set => SetField(ref _adjustments, value); }
 
         /// <summary>
         /// The total value of the buy side rate adjustments.

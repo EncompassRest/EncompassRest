@@ -10,7 +10,7 @@ namespace EncompassRest.Loans.RateLocks
     {
         private DirtyValue<string?>? _adjustmentType;
         private DirtyValue<string?>? _description;
-        private DirtyValue<string?>? _priceAdjustmentType;
+        private DirtyValue<StringEnumValue<PriceAdjustmentTypes>>? _priceAdjustmentType;
         private DirtyValue<decimal?>? _adjustment;
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Price adjustment type
         /// </summary>
-        public string? PriceAdjustmentType { get => _priceAdjustmentType; set => SetField(ref _priceAdjustmentType, value); }
+        public StringEnumValue<PriceAdjustmentTypes>? PriceAdjustmentType { get => _priceAdjustmentType; set => SetField(ref _priceAdjustmentType, value); }
 
         /// <summary>
         /// The value of the price adjustment.

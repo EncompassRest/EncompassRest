@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace EncompassRest.Loans.RateLocks
 {
     /// <summary>
-    /// Rate Lock Investor
+    /// SubjectProperty
     /// </summary>
     public sealed partial class SubjectProperty : DirtyExtensibleObject
     {

@@ -3,6 +3,7 @@ using EncompassRest.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans.RateLocks
 {
@@ -19,8 +20,8 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<bool?>? _onrpEligible;
         private DirtyValue<DateTime?>? _onrpDate;
         private DirtyValue<bool?>? _onrpLock;
-        private DirtyValue<string?>? _correspondentCommitmentType;
-        private DirtyValue<string?>? _correspondentDeliveryType;
+        private DirtyValue<StringEnumValue<CommitmentTypes>>? _correspondentCommitmentType;
+        private DirtyValue<StringEnumValue<CorrespondentDeliveryType>>? _correspondentDeliveryType;
         private DirtyValue<int?>? _cumulatedDaystoExtend;
         private DirtyValue<int?>? _extensionSequenceNumber;
         private DirtyValue<bool?>? _hedging;
@@ -36,7 +37,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<decimal?>? _marginSrpPaidOut;
         private DirtyValue<bool?>? _isDeliveryType;
         private DirtyValue<bool?>? _isCancelled;
-        private DirtyValue<string?>? _rateStatus;
+        private DirtyValue<StringEnumValue<RateStatus>>? _rateStatus;
         private DirtyValue<bool?>? _requestPending;
         private DirtyValue<bool?>? _extensionRequestPending;
         private DirtyValue<bool?>? _cancellationRequestPending;
@@ -47,7 +48,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<string?>? _lockExpirationDate;
         private DirtyValue<DateTime?>? _lockDate;
         private DirtyValue<decimal?>? _baseRate;
-        private DirtyValue<List<LockAdjustment>?>? _adjustments;
+        private DirtyList<LockAdjustment>? _adjustments;
         private DirtyValue<decimal?>? _totalRateAdjustments;
         private DirtyValue<decimal?>? _netRate;
         private DirtyValue<decimal?>? _basePrice;
@@ -104,12 +105,12 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Correspondent commitment type of the request. Possible values are Mandatory or Best Efforts
         /// </summary>
-        public string? CorrespondentCommitmentType { get => _correspondentCommitmentType; set => SetField(ref _correspondentCommitmentType, value); }
+        public StringEnumValue<CommitmentTypes>? CorrespondentCommitmentType { get => _correspondentCommitmentType; set => SetField(ref _correspondentCommitmentType, value); }
 
         /// <summary>
         /// Correspondent delivery type of the request. Possible values are: individual mandatory, individual best efforts
         /// </summary>
-        public string? CorrespondentDeliveryType { get => _correspondentDeliveryType; set => SetField(ref _correspondentDeliveryType, value); }
+        public StringEnumValue<CorrespondentDeliveryType>? CorrespondentDeliveryType { get => _correspondentDeliveryType; set => SetField(ref _correspondentDeliveryType, value); }
 
         /// <summary>
         /// Cumulated days to extend.
@@ -189,7 +190,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// The status of the rate. Possible values are 'notLocked', 'locked', 'expired', 'cancelled'.
         /// </summary>
-        public string? RateStatus { get => _rateStatus; set => SetField(ref _rateStatus, value); }
+        public StringEnumValue<RateStatus>? RateStatus { get => _rateStatus; set => SetField(ref _rateStatus, value); }
 
         /// <summary>
         /// Indicates if the rate lock request is still pending.
@@ -245,7 +246,8 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// List of the rate adjustments.
         /// </summary>
-        public List<LockAdjustment>? Adjustments { get => _adjustments; set => SetField(ref _adjustments, value); }
+        [AllowNull]
+        public IList<LockAdjustment> Adjustments { get => GetField(ref _adjustments); set => SetField(ref _adjustments, value); }
 
         /// <summary>
         /// Total amount of rate adjustments.

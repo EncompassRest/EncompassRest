@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans.RateLocks
 {
@@ -17,18 +18,19 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<decimal?>? _gainLossPrice;
         private DirtyValue<decimal?>? _gainLossTotalPrice;
         private DirtyValue<string?>? _rateSheetId;
-        private DirtyValue<string?>? _lastRateSetDate;
+        private DirtyValue<DateTime?>? _lastRateSetDate;
         private DirtyValue<int?>? _lockNumberOfDays;
-        private DirtyValue<string?>? _lockExpirationDate;
-        private DirtyValue<string?>? _lockDate;
+        private DirtyValue<DateTime?>? _lockExpirationDate;
+        private DirtyValue<DateTime?>? _lockDate;
         private DirtyValue<decimal?>? _baseRate;
-        private DirtyValue<List<LockAdjustment>?>? _adjustments;
+        private DirtyList<LockAdjustment>? _adjustments;
         private DirtyValue<decimal?>? _netRate;
         private DirtyValue<decimal?>? _totalRateAdjustments;
         private DirtyValue<decimal?>? _basePrice;
         private DirtyValue<decimal?>? _totalPriceAdjustments;
         private DirtyValue<decimal?>? _netPrice;
         private DirtyValue<decimal?>? _baseMarginRate;
+        private DirtyValue<decimal?>? _totalMarginAdjustments;
         private DirtyValue<decimal?>? _netMarginRate;
         private DirtyValue<string?>? _comments;
         private DirtyValue<DateTime?>? _originalLockExpirationDate;
@@ -36,42 +38,42 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<string?>? _loanProgram;
 
         /// <summary>
-        /// 
+        /// Comparison Requested By
         /// </summary>
         public string? RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
 
         /// <summary>
-        /// 
+        /// Object containing information about the investor.
         /// </summary>
         public Investor? Investor { get => _investor; set => SetField(ref _investor, value); }
 
         /// <summary>
-        /// 
+        /// Rate lock comparison servicing type.
         /// </summary>
         public string? ServicingType { get => _servicingType; set => SetField(ref _servicingType, value); }
 
         /// <summary>
-        /// 
+        /// The rate lock comparison for the yield spread premium (YSP).
         /// </summary>
         public decimal? DiscountYsp { get => _discountYsp; set => SetField(ref _discountYsp, value); }
 
         /// <summary>
-        /// 
+        /// The rate lock comparison master contract number.
         /// </summary>
         public string? MasterContractNumber { get => _masterContractNumber; set => SetField(ref _masterContractNumber, value); }
 
         /// <summary>
-        /// 
+        /// Rate lock comparison gain loss percentage.
         /// </summary>
         public decimal? GainLossPercentage { get => _gainLossPercentage; set => SetField(ref _gainLossPercentage, value); }
 
         /// <summary>
-        /// 
+        /// Rate lock comparison gain loss price.
         /// </summary>
         public decimal? GainLossPrice { get => _gainLossPrice; set => SetField(ref _gainLossPrice, value); }
 
         /// <summary>
-        /// Rate lock sell side gain loss total price.
+        /// Rate lock comparison gain loss total price.
         /// </summary>
         public decimal? GainLossTotalPrice { get => _gainLossTotalPrice; set => SetField(ref _gainLossTotalPrice, value); }
 
@@ -83,32 +85,33 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Date when the interest rate for the loan was last locked.
         /// </summary>
-        public string? LastRateSetDate { get => _lastRateSetDate; set => SetField(ref _lastRateSetDate, value); }
+        public DateTime? LastRateSetDate { get => _lastRateSetDate; set => SetField(ref _lastRateSetDate, value); }
 
         /// <summary>
-        /// The number of days for the sell side lock.
+        /// The number of days for the rate comparison lock.
         /// </summary>
         public int? LockNumberOfDays { get => _lockNumberOfDays; set => SetField(ref _lockNumberOfDays, value); }
 
         /// <summary>
-        /// The date the sell side rate lock expires, calculated by adding the value in the # of Days field to the date in the Lock Date field on the Secondary Lock Tool.
+        /// The date the rate comparison lock expires, calculated by adding the value in the # of Days field to the date in the Lock Date field on the Secondary Lock Tool.
         /// </summary>
-        public string? LockExpirationDate { get => _lockExpirationDate; set => SetField(ref _lockExpirationDate, value); }
+        public DateTime? LockExpirationDate { get => _lockExpirationDate; set => SetField(ref _lockExpirationDate, value); }
 
         /// <summary>
-        /// The sell side lock date.
+        /// The rate comparison lock date.
         /// </summary>
-        public string? LockDate { get => _lockDate; set => SetField(ref _lockDate, value); }
+        public DateTime? LockDate { get => _lockDate; set => SetField(ref _lockDate, value); }
 
         /// <summary>
-        /// The base sell side rate (as a percentage) for the lock. The rate is populated from the Sell Side Lock and Pricing column on the Secondary Lock Tool.
+        /// The base comparison rate (as a percentage) for the lock.
         /// </summary>
         public decimal? BaseRate { get => _baseRate; set => SetField(ref _baseRate, value); }
 
         /// <summary>
         /// Object containing attributes that describe sell side rate lock adjustments.
         /// </summary>
-        public List<LockAdjustment>? Adjustments { get => _adjustments; set => SetField(ref _adjustments, value); }
+        [AllowNull]
+        public IList<LockAdjustment> Adjustments { get => GetField(ref _adjustments); set => SetField(ref _adjustments, value); }
 
         /// <summary>
         /// The total value of the sell side rate adjustments.
@@ -136,12 +139,17 @@ namespace EncompassRest.Loans.RateLocks
         public decimal? NetPrice { get => _netPrice; set => SetField(ref _netPrice, value); }
 
         /// <summary>
-        /// The sell side base margin rate.
+        /// The base margin rate.
         /// </summary>
         public decimal? BaseMarginRate { get => _baseMarginRate; set => SetField(ref _baseMarginRate, value); }
 
         /// <summary>
-        /// The base sell side net margin rate.
+        /// The total margin adjustment.
+        /// </summary>
+        public decimal? TotalMarginAdjustments { get => _totalMarginAdjustments; set => SetField(ref _totalMarginAdjustments, value); }
+
+        /// <summary>
+        /// The base net margin rate.
         /// </summary>
         public decimal? NetMarginRate { get => _netMarginRate; set => SetField(ref _netMarginRate, value); }
 
@@ -161,7 +169,7 @@ namespace EncompassRest.Loans.RateLocks
         public decimal? SrpPaidOut { get => _srpPaidOut; set => SetField(ref _srpPaidOut, value); }
 
         /// <summary>
-        /// Sell side loan program.
+        /// Loan program.
         /// </summary>
         public string? LoanProgram { get => _loanProgram; set => SetField(ref _loanProgram, value); }
     }

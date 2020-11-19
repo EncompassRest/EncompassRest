@@ -21,7 +21,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<EntityReference?>? _fulfilledBy;
         private DirtyValue<string?>? _investor;
         private DirtyValue<DateTime?>? _investorDeliveryDate;
-        private DirtyValue<List<string>?>? _requestIndicators;
+        private DirtyList<StringEnumValue<RequestIndicators>?>? _requestIndicators;
         private DirtyValue<ParentRateLockRequest?>? _parentLockRequest;
         private DirtyList<CustomField>? _customFields;
         private DirtyValue<string?>? _investorCommitment;
@@ -39,17 +39,17 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Lock request type. Possible values are: lock, re-lock, extension, trade, extension, cancellation
         /// </summary>
-        public StringEnumValue<RequestType> RequestType { get => _requestType; set => SetField(ref _requestType, value); }
+        public StringEnumValue<RequestType>? RequestType { get => _requestType; set => SetField(ref _requestType, value); }
 
         /// <summary>
         /// Status of the rate lock before there is an action performed on the request. Possible values are not locked, active lock, cancelled lock, expired lock
         /// </summary>
-        public StringEnumValue<RequestStatus> RequestStatus { get => _requestStatus; set => SetField(ref _requestStatus, value); }
+        public StringEnumValue<RequestStatus>? RequestStatus { get => _requestStatus; set => SetField(ref _requestStatus, value); }
 
         /// <summary>
         /// Status of the lock request. Possible values are: requested, locked, old lock, old request, expired, cancelled, extension requested, denied, registered, old registration
         /// </summary>
-        public StringEnumValue<LockStatus> LockStatus { get => _lockStatus; set => SetField(ref _lockStatus, value); }
+        public StringEnumValue<LockStatus>? LockStatus { get => _lockStatus; set => SetField(ref _lockStatus, value); }
 
         /// <summary>
         /// Indicates the total number of lock days for the request.
@@ -99,7 +99,8 @@ namespace EncompassRest.Loans.RateLocks
         /// lockCancellation - Indicates the lock is cancelled.
         /// reLock - Indicates that the rate lock is re-locked.
         /// </summary>
-        public List<string>? RequestIndicators { get => _requestIndicators; set => SetField(ref _requestIndicators, value); }
+        [AllowNull]
+        public IList<StringEnumValue<RequestIndicators>?> RequestIndicators { get => GetField(ref _requestIndicators); set => SetField(ref _requestIndicators, value); }
 
         /// <summary>
         /// Object containing attributes that describe the parent lock request.

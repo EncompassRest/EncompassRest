@@ -6,14 +6,10 @@ namespace EncompassRest.Loans.RateLocks
     /// <summary>
     /// ParentRateLockRequest
     /// </summary>
-    public sealed partial class ParentRateLockRequest : DirtyExtensibleObject
+    public sealed partial class ParentRateLockRequest : EntityReference
     {
         private DirtyValue<string?>? _requestType;
         private DirtyValue<string?>? _lockStatus;
-        private DirtyValue<string?>? _entityId;
-        private DirtyValue<string?>? _entityType;
-        private DirtyValue<string?>? _entityName;
-        private DirtyValue<string?>? _entityUri;
 
         /// <summary>
         /// Lock request type of the parent lock request.
@@ -26,23 +22,24 @@ namespace EncompassRest.Loans.RateLocks
         public string? LockStatus { get => _lockStatus; set => SetField(ref _lockStatus, value); }
 
         /// <summary>
-        /// Unique identifier of the parent lock request.
+        /// ParentRateLockRequest constructor.
         /// </summary>
-        public string? EntityId { get => _entityId; set => SetField(ref _entityId, value); }
+        /// <param name="entityId">The entity id.</param>
+        /// <param name="entityType">The entity type.</param>
+        public ParentRateLockRequest(string entityId, EntityType entityType)
+            : base(entityId, entityType)
+        {
+        }
 
         /// <summary>
-        /// Type of the entity (lock request).
+        /// ParentRateLockRequest constructor.
         /// </summary>
-        public string? EntityType { get => _entityType; set => SetField(ref _entityType, value); }
+        /// <param name="entityId">The entity id.</param>
+        /// <param name="entityType">The entity type.</param>
+        public ParentRateLockRequest(string entityId, string entityType)
+            : base(entityId, entityType)
+        {
+        }
 
-        /// <summary>
-        /// Name of the parent lock request.
-        /// </summary>
-        public string? EntityName { get => _entityName; set => SetField(ref _entityName, value); }
-
-        /// <summary>
-        /// Location of the parent lock request.
-        /// </summary>
-        public string? EntityUri { get => _entityUri; set => SetField(ref _entityUri, value); }
     }
 }

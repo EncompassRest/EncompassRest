@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace EncompassRest.Loans.RateLocks
 {
     /// <summary>
-    /// RateLockCancellationOptions
+    /// RateLockCancelDenyOptions
     /// </summary>
     public sealed partial class RateLockCancelDenyOptions
     {
@@ -12,7 +12,7 @@ namespace EncompassRest.Loans.RateLocks
         
 
         /// <summary>
-        /// Rate Lock cancellation comments
+        /// Rate Lock cancellation or denial comments
         /// </summary>
         public string? Comments { get => _comments; set => _comments = value; }
 

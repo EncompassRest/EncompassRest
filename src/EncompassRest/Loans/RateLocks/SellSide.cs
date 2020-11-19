@@ -1,6 +1,7 @@
 using EncompassRest.Loans.Enums;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Loans.RateLocks
 {
@@ -30,7 +31,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<decimal?>? _diffSrp;
         private DirtyValue<decimal?>? _netAmount;
         private DirtyValue<decimal?>? _paidMiPremium;
-        private DirtyValue<decimal?>? _correspondentEscrow;
+        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsToBePaid;
         private DirtyValue<string?>? _tradeMgmtPrevConfirmedLockGuid;
         private DirtyValue<string?>? _tradeId;
         private DirtyValue<string?>? _tradeNumber;
@@ -46,16 +47,17 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<string?>? _rateSheetId;
         private DirtyValue<string?>? _lastRateSetDate;
         private DirtyValue<int?>? _lockNumberOfDays;
-        private DirtyValue<string?>? _lockExpirationDate;
-        private DirtyValue<string?>? _lockDate;
+        private DirtyValue<DateTime?>? _lockExpirationDate;
+        private DirtyValue<DateTime?>? _lockDate;
         private DirtyValue<decimal?>? _baseRate;
-        private DirtyValue<List<LockAdjustment>?>? _adjustments;
+        private DirtyList<LockAdjustment>? _adjustments;
         private DirtyValue<decimal?>? _netRate;
         private DirtyValue<decimal?>? _totalRateAdjustments;
         private DirtyValue<decimal?>? _basePrice;
         private DirtyValue<decimal?>? _totalPriceAdjustments;
         private DirtyValue<decimal?>? _netPrice;
         private DirtyValue<decimal?>? _baseMarginRate;
+        private DirtyValue<decimal?>? _totalMarginAdjustments;
         private DirtyValue<decimal?>? _netMarginRate;
         private DirtyValue<string?>? _comments;
         private DirtyValue<DateTime?>? _originalLockExpirationDate;
@@ -170,7 +172,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Correspondent escrow disbursements to be paid by the seller.
         /// </summary>
-        public decimal? CorrespondentEscrow { get => _correspondentEscrow; set => SetField(ref _correspondentEscrow, value); }
+        public decimal? CorrespondentEscrowDisbursementsToBePaid { get => _correspondentEscrowDisbursementsToBePaid; set => SetField(ref _correspondentEscrowDisbursementsToBePaid, value); }
 
         /// <summary>
         /// TradeMgmtPrevConfirmedLockGuid
@@ -250,12 +252,12 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// The date the sell side rate lock expires, calculated by adding the value in the # of Days field to the date in the Lock Date field on the Secondary Lock Tool.
         /// </summary>
-        public string? LockExpirationDate { get => _lockExpirationDate; set => SetField(ref _lockExpirationDate, value); }
+        public DateTime? LockExpirationDate { get => _lockExpirationDate; set => SetField(ref _lockExpirationDate, value); }
 
         /// <summary>
         /// The sell side lock date.
         /// </summary>
-        public string? LockDate { get => _lockDate; set => SetField(ref _lockDate, value); }
+        public DateTime? LockDate { get => _lockDate; set => SetField(ref _lockDate, value); }
 
         /// <summary>
         /// The base sell side rate (as a percentage) for the lock. The rate is populated from the Sell Side Lock and Pricing column on the Secondary Lock Tool.
@@ -265,7 +267,8 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Object containing attributes that describe sell side rate lock adjustments.
         /// </summary>
-        public List<LockAdjustment>? Adjustments { get => _adjustments; set => SetField(ref _adjustments, value); }
+        [AllowNull]
+        public IList<LockAdjustment> Adjustments { get => GetField(ref _adjustments); set => SetField(ref _adjustments, value); }
 
         /// <summary>
         /// The total value of the sell side rate adjustments.
@@ -296,6 +299,11 @@ namespace EncompassRest.Loans.RateLocks
         /// The sell side base margin rate.
         /// </summary>
         public decimal? BaseMarginRate { get => _baseMarginRate; set => SetField(ref _baseMarginRate, value); }
+
+        /// <summary>
+        /// The sell side total margin adjustment.
+        /// </summary>
+        public decimal? TotalMarginAdjustments { get => _totalMarginAdjustments; set => SetField(ref _totalMarginAdjustments, value); }
 
         /// <summary>
         /// The base sell side net margin rate.

@@ -16,7 +16,7 @@ namespace EncompassRest.Loans.RateLocks
         /// Re-Lock
         /// </summary>
         [EnumMember(Value = "Re-lock")]
-        ReLock = 1,
+        Relock = 1,
         /// <summary>
         /// Trade Extension
         /// </summary>

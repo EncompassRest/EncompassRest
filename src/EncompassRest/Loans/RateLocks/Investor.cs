@@ -9,8 +9,8 @@ namespace EncompassRest.Loans.RateLocks
     public sealed partial class Investor : DirtyExtensibleObject
     {
         private DirtyValue<DateTime?>? _lockedDate;
-        private DirtyValue<string?>? _deliveryDate;
-        private DirtyValue<string?>? _targetDeliveryDate;
+        private DirtyValue<DateTime?>? _deliveryDate;
+        private DirtyValue<DateTime?>? _targetDeliveryDate;
         private DirtyValue<string?>? _name;
         private DirtyValue<string?>? _contact;
         private DirtyValue<string?>? _phone;
@@ -19,7 +19,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<string?>? _state;
         private DirtyValue<string?>? _postalCode;
         private DirtyValue<string?>? _website;
-        private DirtyValue<string?>? _lockType;
+        private DirtyValue<StringEnumValue<CommitmentTypes>?>? _lockType;
         private DirtyValue<string?>? _status;
         private DirtyValue<DateTime?>? _statusDate;
         private DirtyValue<string?>? _commitment;
@@ -33,12 +33,12 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Investor Delivery Date
         /// </summary>
-        public string? DeliveryDate { get => _deliveryDate; set => SetField(ref _deliveryDate, value); }
+        public DateTime? DeliveryDate { get => _deliveryDate; set => SetField(ref _deliveryDate, value); }
 
         /// <summary>
         /// Investor Target Delivery Date
         /// </summary>
-        public string? TargetDeliveryDate { get => _targetDeliveryDate; set => SetField(ref _targetDeliveryDate, value); }
+        public DateTime? TargetDeliveryDate { get => _targetDeliveryDate; set => SetField(ref _targetDeliveryDate, value); }
 
         /// <summary>
         /// Investor Name
@@ -83,7 +83,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Investor Lock type. Possible values are Mandatory or Best Efforts
         /// </summary>
-        public string? LockType { get => _lockType; set => SetField(ref _lockType, value); }
+        public StringEnumValue<CommitmentTypes>? LockType { get => _lockType; set => SetField(ref _lockType, value); }
 
         /// <summary>
         /// Investor status

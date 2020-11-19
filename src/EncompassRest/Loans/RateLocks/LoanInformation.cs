@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace EncompassRest.Loans.RateLocks
 {
     /// <summary>
-    /// BuySide
+    /// LoanInformation
     /// </summary>
     public sealed partial class LoanInformation : DirtyExtensibleObject
     {
@@ -26,14 +26,14 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<string?>? _lienPriorityType;
         private DirtyValue<StringEnumValue<LoanType>>? _mortgageType;
         private DirtyValue<StringEnumValue<AmortizationType>>? _loanAmortizationType;
-        private DirtyValue<string?>? _gpmRate;
-        private DirtyValue<string?>? _gpmYears;
+        private DirtyValue<decimal?>? _gpmRate;
+        private DirtyValue<int?>? _gpmYears;
         private DirtyValue<string?>? _fnmProductPlanIdentifier;
         private DirtyValue<string?>? _otherAmortizationTypeDescription;
         private DirtyValue<string?>? _requestImpoundWaived;
         private DirtyValue<StringEnumValue<ImpoundType>>? _requestImpoundType;
         private DirtyValue<bool?>? _prepayPenalty;
-        private DirtyValue<int?>? _penaltyTerm;
+        private DirtyValue<string?>? _penaltyTerm;
         private DirtyValue<bool?>? _noClosingCost;
         private DirtyValue<bool?>? _lenderFeeWaiver;
         private DirtyValue<DateTime?>? _estimatedClosingDate;
@@ -48,7 +48,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<int?>? _loanAmortizationTerms;
         private DirtyValue<decimal?>? _baseLoanAmount;
         private DirtyValue<decimal?>? _borrowerRequestedLoanAmount;
-        private DirtyValue<decimal?>? _helocActualBalance;
+        private DirtyValue<string?>? _helocActualBalance;
         private DirtyValue<decimal?>? _firstSubordinateAmount;
         private DirtyValue<decimal?>? _secondSubordinateAmount;
         private DirtyValue<decimal?>? _otherSubordinateAmount;
@@ -57,7 +57,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<DateTime?>? _pricingUpdated;
         private DirtyValue<StringEnumValue<ImpoundType>>? _impoundType;
         private DirtyValue<StringEnumValue<ImpoundWaived>>? _impoundWaived;
-        private DirtyValue<bool?>? _isLenderPaid;
+        private DirtyValue<bool?>? _isLenderPaidMortgageInsurance;
         private DirtyValue<string?>? _pricingHistoryData;
 
         /// <summary>
@@ -148,12 +148,12 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// GPM rate. A mortgage in which the payments are lower in the first years, and then increase annually until a level that fully amortizes the loan within its term.
         /// </summary>
-        public string? GpmRate { get => _gpmRate; set => SetField(ref _gpmRate, value); }
+        public decimal? GpmRate { get => _gpmRate; set => SetField(ref _gpmRate, value); }
 
         /// <summary>
         /// GPM years. The number of years the rate (as defined by the GPM attribute) is in effect before the loan is reamortized.
         /// </summary>
-        public string? GpmYears { get => _gpmYears; set => SetField(ref _gpmYears, value); }
+        public int? GpmYears { get => _gpmYears; set => SetField(ref _gpmYears, value); }
 
         /// <summary>
         /// FNM Product Plan Identifier.
@@ -183,7 +183,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Term of the penalty in months.
         /// </summary>
-        public int? PenaltyTerm { get => _penaltyTerm; set => SetField(ref _penaltyTerm, value); }
+        public string? PenaltyTerm { get => _penaltyTerm; set => SetField(ref _penaltyTerm, value); }
 
         /// <summary>
         /// Indicates whether there is a closing cost.
@@ -258,7 +258,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// HELOC actual balance.
         /// </summary>
-        public decimal? HelocActualBalance { get => _helocActualBalance; set => SetField(ref _helocActualBalance, value); }
+        public string? HelocActualBalance { get => _helocActualBalance; set => SetField(ref _helocActualBalance, value); }
 
         /// <summary>
         /// First subordinate amount.
@@ -303,7 +303,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Indicates whether the lender has paid MI.
         /// </summary>
-        public bool? IsLenderPaid { get => _isLenderPaid; set => SetField(ref _isLenderPaid, value); }
+        public bool? IsLenderPaidMortgageInsurance { get => _isLenderPaidMortgageInsurance; set => SetField(ref _isLenderPaidMortgageInsurance, value); }
 
         /// <summary>
         /// Pricing history data.
