@@ -18,7 +18,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<string?>? _tpoId;
         private DirtyValue<string?>? _orgId;
         private DirtyValue<DateTime?>? _commitmentDate;
-        private DirtyValue<StringEnumValue<CommitmentTypes>>? _commitmentType;
+        private DirtyValue<StringEnumValue<CommitmentType>>? _commitmentType;
         private DirtyValue<string?>? _deliveryType;
         private DirtyValue<DateTime?>? _expirationDate;
         private DirtyValue<DateTime?>? _deliveryExpirationDate;
@@ -110,7 +110,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// The type of Lock applied to the loan. Possible values are: best efforts, mandatory
         /// </summary>
-        public StringEnumValue<CommitmentTypes> CommitmentType { get => _commitmentType; set => SetField(ref _commitmentType, value); }
+        public StringEnumValue<CommitmentType> CommitmentType { get => _commitmentType; set => SetField(ref _commitmentType, value); }
 
         /// <summary>
         /// Delivery type for the loan request. If the Commitment Type is defined, this field will be automatically populated (“Individual Best Efforts for “Best Efforts Commitment Type and “Individual Mandatory” for “Mandatory” Commitment Type).

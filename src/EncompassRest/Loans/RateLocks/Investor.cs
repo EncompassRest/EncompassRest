@@ -19,7 +19,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<string?>? _state;
         private DirtyValue<string?>? _postalCode;
         private DirtyValue<string?>? _website;
-        private DirtyValue<StringEnumValue<CommitmentTypes>>? _lockType;
+        private DirtyValue<StringEnumValue<CommitmentType>>? _lockType;
         private DirtyValue<string?>? _status;
         private DirtyValue<DateTime?>? _statusDate;
         private DirtyValue<string?>? _commitment;
@@ -83,7 +83,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Investor Lock type. Possible values are Mandatory or Best Efforts
         /// </summary>
-        public StringEnumValue<CommitmentTypes> LockType { get => _lockType; set => SetField(ref _lockType, value); }
+        public StringEnumValue<CommitmentType> LockType { get => _lockType; set => SetField(ref _lockType, value); }
 
         /// <summary>
         /// Investor status

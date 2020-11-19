@@ -20,7 +20,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<bool?>? _onrpEligible;
         private DirtyValue<DateTime?>? _onrpDate;
         private DirtyValue<bool?>? _onrpLock;
-        private DirtyValue<StringEnumValue<CommitmentTypes>>? _correspondentCommitmentType;
+        private DirtyValue<StringEnumValue<CommitmentType>>? _correspondentCommitmentType;
         private DirtyValue<StringEnumValue<CorrespondentDeliveryType>>? _correspondentDeliveryType;
         private DirtyValue<int?>? _cumulatedDaystoExtend;
         private DirtyValue<int?>? _extensionSequenceNumber;
@@ -105,7 +105,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Correspondent commitment type of the request. Possible values are Mandatory or Best Efforts
         /// </summary>
-        public StringEnumValue<CommitmentTypes> CorrespondentCommitmentType { get => _correspondentCommitmentType; set => SetField(ref _correspondentCommitmentType, value); }
+        public StringEnumValue<CommitmentType> CorrespondentCommitmentType { get => _correspondentCommitmentType; set => SetField(ref _correspondentCommitmentType, value); }
 
         /// <summary>
         /// Correspondent delivery type of the request. Possible values are: individual mandatory, individual best efforts

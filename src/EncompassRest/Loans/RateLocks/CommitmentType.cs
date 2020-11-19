@@ -5,7 +5,7 @@ namespace EncompassRest.Loans.RateLocks
     /// <summary>
     /// CommitmentTypes
     /// </summary>
-    public enum CommitmentTypes
+    public enum CommitmentType
     {
         /// <summary>
         /// Mandatory
