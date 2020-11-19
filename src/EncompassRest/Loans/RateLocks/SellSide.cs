@@ -207,7 +207,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Rate lock sell side servicing type.
         /// </summary>
-        public StringEnumValue<ServicingType>? ServicingType { get => _servicingType; set => SetField(ref _servicingType, value); }
+        public StringEnumValue<ServicingType> ServicingType { get => _servicingType; set => SetField(ref _servicingType, value); }
 
         /// <summary>
         /// The discount yield spread premium

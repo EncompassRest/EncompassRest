@@ -260,6 +260,8 @@ namespace EncompassRest.Loans.RateLocks
                 queryParameters.Add("requestId", lockRequest.Id.ToLower());
             }
 
+            queryParameters.Add("view", populate ? "entity" : "id");
+
             return PostPopulateDirtyAsync(null, queryParameters.ToString(), nameof(SubmitRateLockRequestAsync), lockRequest, populate, cancellationToken);
         }
 

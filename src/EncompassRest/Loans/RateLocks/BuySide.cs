@@ -110,7 +110,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// The type of Lock applied to the loan. Possible values are: best efforts, mandatory
         /// </summary>
-        public StringEnumValue<CommitmentTypes>? CommitmentType { get => _commitmentType; set => SetField(ref _commitmentType, value); }
+        public StringEnumValue<CommitmentTypes> CommitmentType { get => _commitmentType; set => SetField(ref _commitmentType, value); }
 
         /// <summary>
         /// Delivery type for the loan request. If the Commitment Type is defined, this field will be automatically populated (“Individual Best Efforts for “Best Efforts Commitment Type and “Individual Mandatory” for “Mandatory” Commitment Type).

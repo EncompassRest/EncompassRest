@@ -105,12 +105,12 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Correspondent commitment type of the request. Possible values are Mandatory or Best Efforts
         /// </summary>
-        public StringEnumValue<CommitmentTypes>? CorrespondentCommitmentType { get => _correspondentCommitmentType; set => SetField(ref _correspondentCommitmentType, value); }
+        public StringEnumValue<CommitmentTypes> CorrespondentCommitmentType { get => _correspondentCommitmentType; set => SetField(ref _correspondentCommitmentType, value); }
 
         /// <summary>
         /// Correspondent delivery type of the request. Possible values are: individual mandatory, individual best efforts
         /// </summary>
-        public StringEnumValue<CorrespondentDeliveryType>? CorrespondentDeliveryType { get => _correspondentDeliveryType; set => SetField(ref _correspondentDeliveryType, value); }
+        public StringEnumValue<CorrespondentDeliveryType> CorrespondentDeliveryType { get => _correspondentDeliveryType; set => SetField(ref _correspondentDeliveryType, value); }
 
         /// <summary>
         /// Cumulated days to extend.
@@ -190,7 +190,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// The status of the rate. Possible values are 'notLocked', 'locked', 'expired', 'cancelled'.
         /// </summary>
-        public StringEnumValue<RateStatus>? RateStatus { get => _rateStatus; set => SetField(ref _rateStatus, value); }
+        public StringEnumValue<RateStatus> RateStatus { get => _rateStatus; set => SetField(ref _rateStatus, value); }
 
         /// <summary>
         /// Indicates if the rate lock request is still pending.

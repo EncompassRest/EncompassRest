@@ -26,7 +26,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Price adjustment type
         /// </summary>
-        public StringEnumValue<PriceAdjustmentTypes>? PriceAdjustmentType { get => _priceAdjustmentType; set => SetField(ref _priceAdjustmentType, value); }
+        public StringEnumValue<PriceAdjustmentTypes> PriceAdjustmentType { get => _priceAdjustmentType; set => SetField(ref _priceAdjustmentType, value); }
 
         /// <summary>
         /// The value of the price adjustment.

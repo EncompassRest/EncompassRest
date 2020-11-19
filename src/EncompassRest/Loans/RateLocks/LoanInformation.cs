@@ -108,7 +108,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Loan Purpose Type. Possible values are: construction-perm, no cash-out refi, purchase, construction, cash-out refi, other
         /// </summary>
-        public StringEnumValue<LoanPurposeType>? LoanPurposeType { get => _loanPurposeType; set => SetField(ref _loanPurposeType, value); }
+        public StringEnumValue<LoanPurposeType> LoanPurposeType { get => _loanPurposeType; set => SetField(ref _loanPurposeType, value); }
 
         /// <summary>
         /// Indicates whether the loan is a current Acquisition.
@@ -143,7 +143,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Loan Amortization Type. Possible values are fixed rate, gpm-rate, arm, other
         /// </summary>
-        public StringEnumValue<AmortizationType>? LoanAmortizationType { get => _loanAmortizationType; set => SetField(ref _loanAmortizationType, value); }
+        public StringEnumValue<AmortizationType> LoanAmortizationType { get => _loanAmortizationType; set => SetField(ref _loanAmortizationType, value); }
 
         /// <summary>
         /// GPM rate. A mortgage in which the payments are lower in the first years, and then increase annually until a level that fully amortizes the loan within its term.
@@ -173,7 +173,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Request Impound Type. Possible values are: Taxes & Insurance, taxes only, insurance only, no impounds
         /// </summary>
-        public StringEnumValue<ImpoundType>? RequestImpoundType { get => _requestImpoundType; set => SetField(ref _requestImpoundType, value); }
+        public StringEnumValue<ImpoundType> RequestImpoundType { get => _requestImpoundType; set => SetField(ref _requestImpoundType, value); }
 
         /// <summary>
         /// Indicates whether the Penalty is prepaid.
@@ -293,12 +293,12 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Impound type. Possible options are: Taxes and Insurance(T&I), Taxes only(T), Insurance only(I), No impounds\
         /// </summary>
-        public StringEnumValue<ImpoundType>? ImpoundType { get => _impoundType; set => SetField(ref _impoundType, value); }
+        public StringEnumValue<ImpoundType> ImpoundType { get => _impoundType; set => SetField(ref _impoundType, value); }
 
         /// <summary>
         /// Whether the impound is waived or not waived.
         /// </summary>
-        public StringEnumValue<ImpoundWaived>? ImpoundWaived { get => _impoundWaived; set => SetField(ref _impoundWaived, value); }
+        public StringEnumValue<ImpoundWaived> ImpoundWaived { get => _impoundWaived; set => SetField(ref _impoundWaived, value); }
 
         /// <summary>
         /// Indicates whether the lender has paid MI.
