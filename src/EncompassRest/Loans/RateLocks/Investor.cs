@@ -1,3 +1,4 @@
+using EncompassRest.Loans.Enums;
 using System;
 using System.Collections.Generic;
 

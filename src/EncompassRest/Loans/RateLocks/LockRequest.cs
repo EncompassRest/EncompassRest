@@ -1,3 +1,4 @@
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
