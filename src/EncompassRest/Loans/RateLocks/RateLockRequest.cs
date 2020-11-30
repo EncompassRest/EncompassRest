@@ -21,7 +21,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<EntityReference?>? _fulfilledBy;
         private DirtyValue<string?>? _investor;
         private DirtyValue<DateTime?>? _investorDeliveryDate;
-        private DirtyList<StringEnumValue<RequestIndicators>>? _requestIndicators;
+        private DirtyList<StringEnumValue<RequestIndicator>>? _requestIndicators;
         private DirtyValue<ParentRateLockRequest?>? _parentLockRequest;
         private DirtyList<CustomField>? _customFields;
         private DirtyValue<string?>? _investorCommitment;
@@ -100,7 +100,7 @@ namespace EncompassRest.Loans.RateLocks
         /// reLock - Indicates that the rate lock is re-locked.
         /// </summary>
         [AllowNull]
-        public IList<StringEnumValue<RequestIndicators>> RequestIndicators { get => GetField(ref _requestIndicators); set => SetField(ref _requestIndicators, value); }
+        public IList<StringEnumValue<RequestIndicator>> RequestIndicators { get => GetField(ref _requestIndicators); set => SetField(ref _requestIndicators, value); }
 
         /// <summary>
         /// Object containing attributes that describe the parent lock request.

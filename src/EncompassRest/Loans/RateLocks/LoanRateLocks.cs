@@ -116,7 +116,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <param name="cancellationOptions">Lock cancellation comments</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<RateLockRequest> CancelRateLockRequestAsync(string requestId, bool populate, RateLockCancelDenyOptions? cancellationOptions = null, CancellationToken cancellationToken = default);
+        Task<RateLockRequest> CancelRateLockRequestAsync(string requestId, RateLockCancelDenyOptions? cancellationOptions = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Cancels an existing lock. Only locks that are recently requested or confirmed can be canceled.
         /// </summary>
@@ -134,7 +134,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <param name="denialOptions">Lock denial comments</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<RateLockRequest> DenyRateLockRequestAsync(string requestId, bool populate, RateLockCancelDenyOptions? denialOptions = null, CancellationToken cancellationToken = default);
+        Task<RateLockRequest> DenyRateLockRequestAsync(string requestId, RateLockCancelDenyOptions? denialOptions = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Denies a rate lock request for the specified request ID using raw json.
         /// </summary>
@@ -348,14 +348,14 @@ namespace EncompassRest.Loans.RateLocks
         /// <param name="cancellationOptions">Lock cancellation options</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<RateLockRequest> CancelRateLockRequestAsync(string requestId, bool populate, RateLockCancelDenyOptions? cancellationOptions = null, CancellationToken cancellationToken = default)
+        public Task<RateLockRequest> CancelRateLockRequestAsync(string requestId, RateLockCancelDenyOptions? cancellationOptions = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
             cancellationOptions = cancellationOptions ?? new RateLockCancelDenyOptions();
 
             var queryParameters = new QueryParameters();
-            queryParameters.Add("view", populate ? "entity" : "id");
+            queryParameters.Add("view", "entity");
 
             return PutAsync($"{requestId}/cancellation", queryParameters.ToString(), JsonStreamContent.Create(cancellationOptions), nameof(CancelRateLockRequestAsync), requestId, cancellationToken, FuncCache<RateLockRequest>.ReadAsFunc);
         }
@@ -383,14 +383,14 @@ namespace EncompassRest.Loans.RateLocks
         /// <param name="denialOptions">Lock denial options</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public Task<RateLockRequest> DenyRateLockRequestAsync(string requestId, bool populate, RateLockCancelDenyOptions? denialOptions = null, CancellationToken cancellationToken = default)
+        public Task<RateLockRequest> DenyRateLockRequestAsync(string requestId, RateLockCancelDenyOptions? denialOptions = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
             denialOptions = denialOptions ?? new RateLockCancelDenyOptions();
 
             var queryParameters = new QueryParameters();
-            queryParameters.Add("view", populate ? "entity" : "id");
+            queryParameters.Add("view", "entity");
 
             return PutAsync($"{requestId}/denial", queryParameters.ToString(), JsonStreamContent.Create(denialOptions), nameof(DenyRateLockRequestAsync), requestId, cancellationToken, FuncCache<RateLockRequest>.ReadAsFunc);
         }

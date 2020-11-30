@@ -33,7 +33,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<string?>? _requestImpoundWaived;
         private DirtyValue<StringEnumValue<ImpoundType>>? _requestImpoundType;
         private DirtyValue<bool?>? _prepayPenalty;
-        private DirtyValue<string?>? _penaltyTerm;
+        private DirtyValue<int?>? _penaltyTerm;
         private DirtyValue<bool?>? _noClosingCost;
         private DirtyValue<bool?>? _lenderFeeWaiver;
         private DirtyValue<DateTime?>? _estimatedClosingDate;
@@ -48,7 +48,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<int?>? _loanAmortizationTerms;
         private DirtyValue<decimal?>? _baseLoanAmount;
         private DirtyValue<decimal?>? _borrowerRequestedLoanAmount;
-        private DirtyValue<string?>? _helocActualBalance;
+        private DirtyValue<decimal?>? _helocActualBalance;
         private DirtyValue<decimal?>? _firstSubordinateAmount;
         private DirtyValue<decimal?>? _secondSubordinateAmount;
         private DirtyValue<decimal?>? _otherSubordinateAmount;
@@ -183,7 +183,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Term of the penalty in months.
         /// </summary>
-        public string? PenaltyTerm { get => _penaltyTerm; set => SetField(ref _penaltyTerm, value); }
+        public int? PenaltyTerm { get => _penaltyTerm; set => SetField(ref _penaltyTerm, value); }
 
         /// <summary>
         /// Indicates whether there is a closing cost.
@@ -258,7 +258,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// HELOC actual balance.
         /// </summary>
-        public string? HelocActualBalance { get => _helocActualBalance; set => SetField(ref _helocActualBalance, value); }
+        public decimal? HelocActualBalance { get => _helocActualBalance; set => SetField(ref _helocActualBalance, value); }
 
         /// <summary>
         /// First subordinate amount.

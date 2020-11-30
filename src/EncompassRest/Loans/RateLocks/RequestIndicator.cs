@@ -5,7 +5,7 @@ namespace EncompassRest.Loans.RateLocks
     /// <summary>
     /// RequestIndicators
     /// </summary>
-    public enum RequestIndicators
+    public enum RequestIndicator
     {
         /// <summary>
         /// HideLog
@@ -15,17 +15,17 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// FakeRequest
         /// </summary>
-        [EnumMember(Value = "fakeRequest ")]
+        [EnumMember(Value = "fakeRequest")]
         FakeRequest = 1,
         /// <summary>
         /// LockExtension
         /// </summary>
-        [EnumMember(Value = "lockExtension ")]
+        [EnumMember(Value = "lockExtension")]
         LockExtension = 2,
         /// <summary>
         /// LockCancellation
         /// </summary>
-        [EnumMember(Value = "lockCancellation ")]
+        [EnumMember(Value = "lockCancellation")]
         LockCancellation = 3,
         /// <summary>
         /// Relock

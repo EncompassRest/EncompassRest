@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -36,6 +37,7 @@ namespace EncompassRest.Loans.RateLocks
         /// </summary>
         /// <param name="entityId">The entity id.</param>
         /// <param name="entityType">The entity type.</param>
+        [JsonConstructor]
         public ParentRateLockRequest(string entityId, string entityType)
             : base(entityId, entityType)
         {

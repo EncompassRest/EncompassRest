@@ -26,10 +26,17 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(0, rateLocks.Count);
                 var rateLockRequest = new RateLockRequest()
                 {
+                    LoanInformation = new LoanInformation()
+                    {
+                        PenaltyTerm = 36,
+                        HelocActualBalance = 130000m
+                    },
                     LockRequest = new LockRequest()
                     {
                         LockDate = DateTime.Today,
-                        LockNumberOfDays = 15
+                        LockNumberOfDays = 15,
+                        BaseRate = 3.875m,
+                        BasePrice = 100
                     }
                 };
                 await rateLockApi.SubmitRateLockRequestAsync(rateLockRequest, true);
@@ -55,7 +62,7 @@ namespace EncompassRest.Tests
 
                 //rateLockRequest.LockRequest.BaseRate = 4;
                 //rateLockRequest.LockRequest.BasePrice = 101.85m;
-                //await rateLockApi.UpdateRateLockRequestAsync(rateLockRequest);
+                //await rateLockApi.UpdateRateLockRequestAsync(rateLockRequest, true);
                 //await Task.Delay(1000);
 
                 //retrievedRateLock = await rateLockApi.GetRateLockAsync(requestId, LockView.Detailed);
@@ -82,7 +89,7 @@ namespace EncompassRest.Tests
                 Assert.IsNotNull(retrievedRateLock);
                 Assert.AreEqual(LockStatus.Locked, retrievedRateLock.LockStatus);
 
-                var deniedRateLock = await rateLockApi.DenyRateLockRequestAsync(requestId, true);
+                var deniedRateLock = await rateLockApi.DenyRateLockRequestAsync(requestId);
                 Assert.IsNotNull(deniedRateLock);
                 AssertNoExtensionData(deniedRateLock, "RetrievedRateLock", requestId, true);
                 Assert.AreEqual(LockStatus.Denied, deniedRateLock.LockStatus);
@@ -90,6 +97,7 @@ namespace EncompassRest.Tests
                 retrievedRateLock = await rateLockApi.GetRateLockAsync(requestId, LockView.Detailed);
                 Assert.IsNotNull(retrievedRateLock);
                 Assert.AreEqual(LockStatus.Denied, retrievedRateLock.LockStatus);
+
 
             }
             finally
@@ -133,7 +141,7 @@ namespace EncompassRest.Tests
                 var lockSnapshot = await rateLockApi.GetRateLockSnapshotAsync(requestId);
                 Assert.IsNotNull(lockSnapshot);
                 Assert.IsTrue(lockSnapshot.ContainsKey("4209"));
-                Assert.AreEqual(RequestStatus.NotLocked, lockSnapshot["4209"]);
+                Assert.AreEqual("Not Locked", lockSnapshot["4209"]);
             }
             finally
             {

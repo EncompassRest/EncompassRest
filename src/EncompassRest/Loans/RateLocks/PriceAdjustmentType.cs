@@ -3,9 +3,9 @@
 namespace EncompassRest.Loans.RateLocks
 {
     /// <summary>
-    /// PriceAdjustmentTypes
+    /// PriceAdjustmentType
     /// </summary>
-    public enum PriceAdjustmentTypes
+    public enum PriceAdjustmentType
     {
         /// <summary>
         /// Undefined

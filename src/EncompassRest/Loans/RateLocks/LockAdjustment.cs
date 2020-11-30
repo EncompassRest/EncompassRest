@@ -8,15 +8,15 @@ namespace EncompassRest.Loans.RateLocks
     /// </summary>
     public sealed partial class LockAdjustment : DirtyExtensibleObject
     {
-        private DirtyValue<string?>? _adjustmentType;
+        private DirtyValue<StringEnumValue<LockAdjustmentType>>? _adjustmentType;
         private DirtyValue<string?>? _description;
-        private DirtyValue<StringEnumValue<PriceAdjustmentTypes>>? _priceAdjustmentType;
+        private DirtyValue<StringEnumValue<PriceAdjustmentType>>? _priceAdjustmentType;
         private DirtyValue<decimal?>? _adjustment;
 
         /// <summary>
         /// Type of rate lock adjustment.
         /// </summary>
-        public string? AdjustmentType { get => _adjustmentType; set => SetField(ref _adjustmentType, value); }
+        public StringEnumValue<LockAdjustmentType> AdjustmentType { get => _adjustmentType; set => SetField(ref _adjustmentType, value); }
 
         /// <summary>
         /// Description of the rate lock profit margin adjustment.
@@ -26,7 +26,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Price adjustment type
         /// </summary>
-        public StringEnumValue<PriceAdjustmentTypes> PriceAdjustmentType { get => _priceAdjustmentType; set => SetField(ref _priceAdjustmentType, value); }
+        public StringEnumValue<PriceAdjustmentType> PriceAdjustmentType { get => _priceAdjustmentType; set => SetField(ref _priceAdjustmentType, value); }
 
         /// <summary>
         /// The value of the price adjustment.

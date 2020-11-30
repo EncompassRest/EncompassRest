@@ -45,7 +45,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<decimal?>? _gainLossPrice;
         private DirtyValue<decimal?>? _gainLossTotalPrice;
         private DirtyValue<string?>? _rateSheetId;
-        private DirtyValue<string?>? _lastRateSetDate;
+        private DirtyValue<DateTime?>? _lastRateSetDate;
         private DirtyValue<int?>? _lockNumberOfDays;
         private DirtyValue<DateTime?>? _lockExpirationDate;
         private DirtyValue<DateTime?>? _lockDate;
@@ -242,7 +242,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Date when the interest rate for the loan was last locked.
         /// </summary>
-        public string? LastRateSetDate { get => _lastRateSetDate; set => SetField(ref _lastRateSetDate, value); }
+        public DateTime? LastRateSetDate { get => _lastRateSetDate; set => SetField(ref _lastRateSetDate, value); }
 
         /// <summary>
         /// The number of days for the sell side lock.
