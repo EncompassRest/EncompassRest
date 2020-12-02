@@ -46,7 +46,7 @@ namespace EncompassRest.Loans.RateLocks
         private DirtyValue<string?>? _rateSheetId;
         private DirtyValue<DateTime?>? _lastRateSetDate;
         private DirtyValue<int?>? _lockNumberOfDays;
-        private DirtyValue<string?>? _lockExpirationDate;
+        private DirtyValue<DateTime?>? _lockExpirationDate;
         private DirtyValue<DateTime?>? _lockDate;
         private DirtyValue<decimal?>? _baseRate;
         private DirtyList<LockAdjustment>? _adjustments;
@@ -91,6 +91,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// The time and date of overnight rate protection applied.
         /// </summary>
+        [JsonConverter(typeof(DateFormatJsonConverter), "yyyy-MM-dd")]
         public DateTime? OnrpDate { get => _onrpDate; set => SetField(ref _onrpDate, value); }
 
         /// <summary>
@@ -146,6 +147,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Expiration date of the extended rate lock.
         /// </summary>
+        [JsonConverter(typeof(DateFormatJsonConverter), "yyyy-MM-dd")]
         public DateTime? ExtendedLockExpirationDate { get => _extendedLockExpirationDate; set => SetField(ref _extendedLockExpirationDate, value); }
 
         /// <summary>
@@ -161,6 +163,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Date on which the lock was cancelled.
         /// </summary>
+        [JsonConverter(typeof(DateFormatJsonConverter), "yyyy-MM-dd")]
         public DateTime? LockCancellationDate { get => _lockCancellationDate; set => SetField(ref _lockCancellationDate, value); }
 
         /// <summary>
@@ -221,6 +224,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Date when the interest rate for the loan was last locked.
         /// </summary>
+        [JsonConverter(typeof(DateFormatJsonConverter), "yyyy-MM-dd")]
         public DateTime? LastRateSetDate { get => _lastRateSetDate; set => SetField(ref _lastRateSetDate, value); }
 
         /// <summary>
@@ -231,7 +235,8 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Expiration date of the rate lock.
         /// </summary>
-        public string? LockExpirationDate { get => _lockExpirationDate; set => SetField(ref _lockExpirationDate, value); }
+        [JsonConverter(typeof(DateFormatJsonConverter), "yyyy-MM-dd")]
+        public DateTime? LockExpirationDate { get => _lockExpirationDate; set => SetField(ref _lockExpirationDate, value); }
 
         /// <summary>
         /// The lock date of the current lock.
@@ -298,6 +303,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Original lock expiration date for the requested rate lock extension.
         /// </summary>
+        [JsonConverter(typeof(DateFormatJsonConverter), "yyyy-MM-dd")]
         public DateTime? OriginalLockExpirationDate { get => _originalLockExpirationDate; set => SetField(ref _originalLockExpirationDate, value); }
 
         /// <summary>

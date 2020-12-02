@@ -1,3 +1,5 @@
+using EncompassRest.Utilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -59,6 +61,7 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Date on which the rate lock expires.
         /// </summary>
+        [JsonConverter(typeof(DateFormatJsonConverter), "yyyy-MM-dd")]
         public DateTime? LockExpirationDate { get => _lockExpirationDate; set => SetField(ref _lockExpirationDate, value); }
 
         /// <summary>
