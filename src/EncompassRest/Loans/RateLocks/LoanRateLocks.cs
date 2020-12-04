@@ -112,7 +112,6 @@ namespace EncompassRest.Loans.RateLocks
         /// Cancels an existing lock. Only locks that are recently requested or confirmed can be canceled.
         /// </summary>
         /// <param name="requestId">The unique identifier of the existing rate lock request. Required for extend, relock and cancel actions.</param>
-        /// <param name="populate">Indicates if the lock request object should be populated with the response's body through the use of the entity view query parameter.</param>
         /// <param name="cancellationOptions">Lock cancellation comments</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -130,7 +129,6 @@ namespace EncompassRest.Loans.RateLocks
         /// Denies a rate lock request for the specified request ID.
         /// </summary>
         /// <param name="requestId">The unique identifier of the existing rate lock request. Required for extend, relock and cancel actions.</param>
-        /// <param name="populate">Indicates if the lock request object should be populated with the response's body through the use of the entity view query parameter.</param>
         /// <param name="denialOptions">Lock denial comments</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -344,7 +342,6 @@ namespace EncompassRest.Loans.RateLocks
         /// Cancels an existing lock. Only locks that are recently requested or confirmed can be canceled.
         /// </summary>
         /// <param name="requestId">The unique identifier of the existing rate lock request. Required for extend, relock and cancel actions.</param>
-        /// <param name="populate">Indicates if the lock request object should be populated with the response's body through the use of the entity view query parameter.</param>
         /// <param name="cancellationOptions">Lock cancellation options</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -379,7 +376,6 @@ namespace EncompassRest.Loans.RateLocks
         /// Denies a rate lock request for the specified request ID.
         /// </summary>
         /// <param name="requestId">The unique identifier of the existing rate lock request. Required for extend, relock and cancel actions.</param>
-        /// <param name="populate">Indicates if the lock request object should be populated with the response's body through the use of the entity view query parameter.</param>
         /// <param name="denialOptions">Lock denial options</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
