@@ -65,6 +65,8 @@ namespace EncompassRest
 
         internal Task GetPopulateDirtyAsync(string? requestUri, string? queryString, string methodName, string? resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, target, populate, cancellationToken);
 
+        internal Task GetPopulateAsync(string? requestUri, string? queryString, string methodName, string? resourceId, object target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, target, populate, cancellationToken);
+
         internal Task<string> GetRawAsync(string? requestUri, string? queryString, string methodName, string? resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
         internal Task<T> PostAsync<T>(string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, FuncCache<T>.ReadAsFunc);
@@ -121,24 +123,30 @@ namespace EncompassRest
 
         internal Task DeleteAsync(string? requestUri, string? queryString, CancellationToken cancellationToken) => SendAsync<string>(HttpMethod.Delete, requestUri, queryString, null, null, null, cancellationToken, null);
 
-        private Task PopulateDirtyInternalAsync(HttpMethod method, string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => SendAsync(method, requestUri, queryString, content, methodName, resourceId, cancellationToken, async response =>
+        private Task PopulateDirtyInternalAsync(HttpMethod method, string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, object target, bool populate, CancellationToken cancellationToken) => SendAsync(method, requestUri, queryString, content, methodName, resourceId, cancellationToken, async response =>
         {
             if (populate)
             {
                 await response.Content.PopulateAsync(target).ConfigureAwait(false);
             }
-            target.Dirty = false;
+            if (target is IDirty d)
+            {
+                d.Dirty = false;
+            }
             return string.Empty;
         });
 
         internal Task<T> SendAsync<T>(HttpMethod method, string? requestUri, string? queryString, HttpContent? content, string? methodName, string? resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>>? func, bool throwOnNonSuccessStatusCode = true) =>
             SendFullUriAsync(method, GetFullUri(requestUri), queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode);
 
-        internal async Task<T> SendFullUriAsync<T>(HttpMethod method, string? requestUri, string? queryString, HttpContent? content, string? methodName, string? resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>>? func, bool throwOnNonSuccessStatusCode = true, bool disposeResponse = true)
+        internal Task<T> SendFullUriAsync<T>(HttpMethod method, string? requestUri, string? queryString, HttpContent? content, string? methodName, string? resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>>? func, bool throwOnNonSuccessStatusCode = true, bool disposeResponse = true) => SendFullUriAsync(new HttpRequestMessage(method, $"{requestUri}{queryString?.PrecedeWith("?")}") { Content = content }, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode, disposeResponse);
+
+        internal async Task<T> SendFullUriAsync<T>(HttpRequestMessage request, string? methodName, string? resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>>? func, bool throwOnNonSuccessStatusCode = true, bool disposeResponse = true)
         {
-            using (var request = new HttpRequestMessage(method, $"{requestUri}{queryString?.PrecedeWith("?")}") { Content = content })
+            using (request)
             {
                 var response = await GetHttpClient().SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                ApiResponse(response);
                 try
                 {
                     if (throwOnNonSuccessStatusCode && !response.IsSuccessStatusCode)
@@ -167,6 +175,10 @@ namespace EncompassRest
         internal virtual HttpClient GetHttpClient() => Client.HttpClient;
 
         internal virtual string? BaseAddress => Client.BaseAddress;
+
+        internal virtual void ApiResponse(HttpResponseMessage response)
+        {
+        }
 
         private string GetFullUri(string? requestUri) => $"{BaseAddress}{_baseApiPath}{((BaseAddress?.Length ?? _baseApiPath?.Length ?? 0) == 0 ? requestUri : requestUri?.PrecedeWith("/"))}";
 

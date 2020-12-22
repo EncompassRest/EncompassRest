@@ -16,6 +16,12 @@ namespace EncompassRest.Loans.Attachments
     /// </summary>
     public sealed class LoanAttachment : DirtyExtensibleObject, IIdentifiable
     {
+        /// <summary>
+        /// Implicity converts the specified attachment to an <see cref="EntityReference"/>.
+        /// </summary>
+        /// <param name="attachment">The attachment to convert to an <see cref="EntityReference"/>.</param>
+        public static implicit operator EntityReference?(LoanAttachment? attachment) => attachment != null && attachment.AttachmentId != null ? new EntityReference(attachment.AttachmentId, EntityType.Attachment) : null;
+
         private NeverSerializeValue<string?>? _attachmentId;
         private DirtyValue<DateTime?>? _dateCreated;
         private DirtyValue<string?>? _createdBy;

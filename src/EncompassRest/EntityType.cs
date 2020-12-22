@@ -88,6 +88,10 @@
         /// <summary>
         /// LoanDuplicationTemplate
         /// </summary>
-        LoanDuplicationTemplate = 20
+        LoanDuplicationTemplate = 20,
+        /// <summary>
+        /// SkyDrive
+        /// </summary>
+        SkyDrive = 21
     }
 }

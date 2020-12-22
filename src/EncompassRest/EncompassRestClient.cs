@@ -4,11 +4,21 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.Calculators;
+using EncompassRest.Company;
 using EncompassRest.Contacts;
+using EncompassRest.EFolder;
 using EncompassRest.LoanBatch;
+using EncompassRest.LoanFolders;
 using EncompassRest.LoanPipeline;
+using EncompassRest.Loans;
+using EncompassRest.Organizations;
+using EncompassRest.Schema;
+using EncompassRest.Services;
+using EncompassRest.Settings;
 using EncompassRest.Token;
 using EncompassRest.Utilities;
+using EncompassRest.Webhook;
 
 namespace EncompassRest
 {
@@ -35,27 +45,31 @@ namespace EncompassRest
         /// <summary>
         /// The Calculators Apis.
         /// </summary>
-        Calculators.ICalculators Calculators { get; }
+        ICalculators Calculators { get; }
         /// <summary>
         /// The Company Apis.
         /// </summary>
-        Company.ICompany Company { get; }
+        ICompany Company { get; }
         /// <summary>
         /// The Contacts Apis.
         /// </summary>
         IContacts Contacts { get; }
         /// <summary>
+        /// The EFolder Apis.
+        /// </summary>
+        IEFolder EFolder { get; }
+        /// <summary>
         /// The Loan Folders Apis.
         /// </summary>
-        LoanFolders.ILoanFolders LoanFolders { get; }
+        ILoanFolders LoanFolders { get; }
         /// <summary>
         /// The Loans Apis.
         /// </summary>
-        Loans.ILoans Loans { get; }
+        ILoans Loans { get; }
         /// <summary>
         /// The Organizations Apis.
         /// </summary>
-        Organizations.IOrganizations Organizations { get; }
+        IOrganizations Organizations { get; }
         /// <summary>
         /// The Loan Pipeline Apis.
         /// </summary>
@@ -63,15 +77,15 @@ namespace EncompassRest
         /// <summary>
         /// The Schema Apis.
         /// </summary>
-        Schema.ISchema Schema { get; }
+        ISchema Schema { get; }
         /// <summary>
         /// The Services Apis.
         /// </summary>
-        Services.IServices Services { get; }
+        IServices Services { get; }
         /// <summary>
         /// The Settings Apis.
         /// </summary>
-        Settings.ISettings Settings { get; }
+        ISettings Settings { get; }
         /// <summary>
         /// The time span before Api requests are considered timed-out. Default is 100 seconds.
         /// </summary>
@@ -91,7 +105,7 @@ namespace EncompassRest
         /// <summary>
         /// The Webhook Apis.
         /// </summary>
-        Webhook.IWebhook Webhook { get; }
+        IWebhook Webhook { get; }
         /// <summary>
         /// Property for sharing common cache between multiple clients such as custom field descriptors.
         /// </summary>
@@ -243,6 +257,7 @@ namespace EncompassRest
         private Organizations.Organizations? _organizations;
         private Calculators.Calculators? _calculators;
         private BaseApiClient? _baseApiClient;
+        private EFolder.EFolder? _eFolder;
 
         #region Properties
         /// <summary>
@@ -299,7 +314,7 @@ namespace EncompassRest
             }
         }
 
-        Loans.ILoans IEncompassRestClient.Loans => Loans;
+        ILoans IEncompassRestClient.Loans => Loans;
 
         /// <summary>
         /// The Schema Apis.
@@ -313,7 +328,7 @@ namespace EncompassRest
             }
         }
 
-        Schema.ISchema IEncompassRestClient.Schema => Schema;
+        ISchema IEncompassRestClient.Schema => Schema;
 
         /// <summary>
         /// The Webhook Apis.
@@ -327,7 +342,7 @@ namespace EncompassRest
             }
         }
 
-        Webhook.IWebhook IEncompassRestClient.Webhook => Webhook;
+        IWebhook IEncompassRestClient.Webhook => Webhook;
 
         /// <summary>
         /// The Loan Pipeline Apis.
@@ -422,7 +437,7 @@ namespace EncompassRest
             }
         }
 
-        LoanFolders.ILoanFolders IEncompassRestClient.LoanFolders => LoanFolders;
+        ILoanFolders IEncompassRestClient.LoanFolders => LoanFolders;
 
         /// <summary>
         /// The Settings Apis.
@@ -436,7 +451,7 @@ namespace EncompassRest
             }
         }
 
-        Settings.ISettings IEncompassRestClient.Settings => Settings;
+        ISettings IEncompassRestClient.Settings => Settings;
 
         /// <summary>
         /// The Services Apis.
@@ -450,7 +465,7 @@ namespace EncompassRest
             }
         }
 
-        Services.IServices IEncompassRestClient.Services => Services;
+        IServices IEncompassRestClient.Services => Services;
 
         /// <summary>
         /// The Company Apis.
@@ -464,7 +479,7 @@ namespace EncompassRest
             }
         }
 
-        Company.ICompany IEncompassRestClient.Company => Company;
+        ICompany IEncompassRestClient.Company => Company;
 
         /// <summary>
         /// The Organizations Apis.
@@ -478,7 +493,7 @@ namespace EncompassRest
             }
         }
 
-        Organizations.IOrganizations IEncompassRestClient.Organizations => Organizations;
+        IOrganizations IEncompassRestClient.Organizations => Organizations;
 
         /// <summary>
         /// The Calculators Apis.
@@ -492,7 +507,21 @@ namespace EncompassRest
             }
         }
 
-        Calculators.ICalculators IEncompassRestClient.Calculators => Calculators;
+        ICalculators IEncompassRestClient.Calculators => Calculators;
+
+        /// <summary>
+        /// The EFolder Apis.
+        /// </summary>
+        public EFolder.EFolder EFolder
+        {
+            get
+            {
+                var eFolder = _eFolder;
+                return eFolder ?? Interlocked.CompareExchange(ref _eFolder, (eFolder = new EFolder.EFolder(this)), null) ?? eFolder;
+            }
+        }
+
+        IEFolder IEncompassRestClient.EFolder => EFolder;
 
         /// <summary>
         /// Property for sharing common cache between multiple clients such as custom field descriptors.
@@ -542,6 +571,11 @@ namespace EncompassRest
         /// </summary>
         public event EventHandler<ApiResponseEventArgs>? ApiResponse;
 
+        internal void InvokeApiResponse(HttpResponseMessage response)
+        {
+            ApiResponse?.Invoke(this, new ApiResponseEventArgs(response));
+        }
+
         internal EncompassRestClient(ClientParameters parameters, Func<TokenCreator, Task<string>>? tokenInitializer = null)
         {
             Timeout = parameters.Timeout > TimeSpan.Zero ? parameters.Timeout : TimeSpan.FromSeconds(100);
@@ -573,6 +607,7 @@ namespace EncompassRest
         {
             AccessToken.Dispose();
             _httpClient?.Dispose();
+            _eFolder?.Dispose();
         }
 
         internal sealed class RetryHandler : DelegatingHandler
@@ -632,7 +667,7 @@ namespace EncompassRest
             private async Task<HttpResponseMessage> SendRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
                 var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
-                _client.ApiResponse?.Invoke(_client, new ApiResponseEventArgs(response));
+                _client.InvokeApiResponse(response);
                 return response;
             }
         }
