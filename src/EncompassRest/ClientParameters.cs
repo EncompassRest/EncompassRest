@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
@@ -74,6 +75,11 @@ namespace EncompassRest
         /// The URL to call for API calls. Defaults to "https://api.elliemae.com/".
         /// </summary>
         public string? BaseAddress { get; set; }
+
+        /// <summary>
+        /// Custom headers to be added to HttpClient DefaultHeaders.
+        /// </summary>
+        public IDictionary<string, IEnumerable<string>>? CustomHeaders { get; set; }
 
         /// <summary>
         /// The client parameters constructor.

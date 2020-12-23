@@ -9,6 +9,7 @@ using EncompassRest.LoanBatch;
 using EncompassRest.LoanPipeline;
 using EncompassRest.Token;
 using EncompassRest.Utilities;
+using System.Collections.Generic;
 
 namespace EncompassRest
 {
@@ -101,6 +102,11 @@ namespace EncompassRest
         /// Set by ClientParameters.BaseAddress. The URL to call for API calls. Defaults to "https://api.elliemae.com/".
         /// </summary>
         string BaseAddress { get; set; }
+
+        /// <summary>
+        /// Custom headers to be added to HttpClient DefaultHeaders.
+        /// </summary>
+        IDictionary<string, IEnumerable<string>>? CustomHeaders { get; set; }
 
         /// <summary>
         /// An event that occurs when an Api response is received.
@@ -511,6 +517,15 @@ namespace EncompassRest
                         Timeout = Timeout
                     };
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(AccessToken.Type, AccessToken.Token);
+
+                    if (CustomHeaders != null)
+                    {
+                        foreach (var customHeader in CustomHeaders)
+                        {
+                            httpClient.DefaultRequestHeaders.Add(customHeader.Key, customHeader.Value);
+                        }
+                    }
+
                     httpClient = Interlocked.CompareExchange(ref _httpClient, httpClient, null) ?? httpClient;
                 }
                 return httpClient;
@@ -535,6 +550,11 @@ namespace EncompassRest
         /// Set by ClientParameters.BaseAddress. The URL to call for API calls. Defaults to "https://api.elliemae.com/".
         /// </summary>
         public string BaseAddress { get; set; }
+
+        /// <summary>
+        /// Custom headers to be added to HttpClient DefaultHeaders.
+        /// </summary>
+        public IDictionary<string, IEnumerable<string>>? CustomHeaders { get; set; }
         #endregion
 
         /// <summary>
@@ -552,6 +572,7 @@ namespace EncompassRest
             CommonCache = parameters.CommonCache ?? (parameters.CommonCache = new CommonCache());
             UndefinedCustomFieldHandling = parameters.UndefinedCustomFieldHandling;
             BaseAddress = (parameters.BaseAddress?.Length ?? 0) == 0 ? "https://api.elliemae.com/" : parameters.BaseAddress!;
+            CustomHeaders = parameters.CustomHeaders;
         }
 
 #if IASYNC_DISPOSABLE
