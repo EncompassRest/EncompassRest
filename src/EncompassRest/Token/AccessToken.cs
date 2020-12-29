@@ -76,7 +76,7 @@ namespace EncompassRest.Token
                     {
                         Timeout = Client.Timeout
                     };
-                    tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_apiClientId}:{_apiClientSecret.Replace("%", "%25")}")));
+                    tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_apiClientId}:{_apiClientSecret}")));
                     tokenClient = Interlocked.CompareExchange(ref _tokenClient, tokenClient, null) ?? tokenClient;
                 }
                 return tokenClient;
