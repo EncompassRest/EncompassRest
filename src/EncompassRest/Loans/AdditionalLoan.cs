@@ -75,7 +75,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Additional Loans Amount Applied To Downpayment [URLARALNN22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountAppliedToDownpayment { get => _amountAppliedToDownpayment; set => SetField(ref _amountAppliedToDownpayment, value); }
 
         /// <summary>
@@ -101,13 +100,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Additional Loans : Loan Amount/HELOC Credit Limit [URLARALNN20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HELOCCreditLimitAmount { get => _hELOCCreditLimitAmount; set => SetField(ref _hELOCCreditLimitAmount, value); }
 
         /// <summary>
         /// Additional Loans HELOC Initial Draw [URLARALNN21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HELOCInitialDraw { get => _hELOCInitialDraw; set => SetField(ref _hELOCInitialDraw, value); }
 
         /// <summary>
@@ -178,13 +175,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Additional Loans MaximumPILoanAmount [URLARALNN31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumPILoanAmount { get => _maximumPILoanAmount; set => SetField(ref _maximumPILoanAmount, value); }
 
         /// <summary>
         /// Additional Loans : MaximumPINoteRate [URLARALNN29]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumPINoteRate { get => _maximumPINoteRate; set => SetField(ref _maximumPINoteRate, value); }
 
         /// <summary>
@@ -195,19 +190,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Additional Loans Maximum Principal and Interest within 5 Years [URLARALNN19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumPrincipalAndInterestIn5Years { get => _maximumPrincipalAndInterestIn5Years; set => SetField(ref _maximumPrincipalAndInterestIn5Years, value); }
 
         /// <summary>
         /// Additional Loans MonthlyPILoanAmount [URLARALNN28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPILoanAmount { get => _monthlyPILoanAmount; set => SetField(ref _monthlyPILoanAmount, value); }
 
         /// <summary>
         /// Additional Loans calculator : MonthlyPINoteRate [URLARALNN26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPINoteRate { get => _monthlyPINoteRate; set => SetField(ref _monthlyPINoteRate, value); }
 
         /// <summary>
@@ -218,7 +210,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Additional Loans Monthly Principal and Interest [URLARALNN18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPrincipalAndInterest { get => _monthlyPrincipalAndInterest; set => SetField(ref _monthlyPrincipalAndInterest, value); }
 
         /// <summary>

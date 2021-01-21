@@ -1,6 +1,5 @@
 using System;
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -48,7 +47,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RespaHudDetail LineItemAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LineItemAmount { get => _lineItemAmount; set => SetField(ref _lineItemAmount, value); }
 
         /// <summary>
@@ -62,9 +60,9 @@ namespace EncompassRest.Loans
         public int? LineNumber { get => _lineNumber; set => SetField(ref _lineNumber, value); }
 
         /// <summary>
-        /// RespaHudDetail RealValue
+        /// RespaHudDetail RealValue [L206R], [L207R]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? RealValue { get => _realValue; set => SetField(ref _realValue, value); }
     }
 }

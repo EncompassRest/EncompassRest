@@ -1,5 +1,4 @@
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -36,7 +35,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fannie Mae MORNETPlus CLTV [MORNET.X76]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Cltv { get => _cltv; set => SetField(ref _cltv, value); }
 
         /// <summary>
@@ -78,7 +76,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fannie Mae MORNETPlus HCLTV and HTLTV [MORNET.X77]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Hcltv { get => _hcltv; set => SetField(ref _hcltv, value); }
 
         /// <summary>
@@ -89,13 +86,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Interested Party Contribution [MORNET.X78]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InterestedPartyContribution { get => _interestedPartyContribution; set => SetField(ref _interestedPartyContribution, value); }
 
         /// <summary>
         /// Fannie Mae MORNETPlus LTV [MORNET.X75]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Ltv { get => _ltv; set => SetField(ref _ltv, value); }
 
         /// <summary>

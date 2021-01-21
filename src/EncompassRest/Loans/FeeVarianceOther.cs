@@ -1,5 +1,4 @@
 using System;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -58,7 +57,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tolerance Cure Applied Cure Amount [FV.X366]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AppliedCureAmount { get => _appliedCureAmount; set => SetField(ref _appliedCureAmount, value); }
 
         /// <summary>
@@ -214,13 +212,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Cure Applied to Lender Credit [FV.X396]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CureAppliedToLenderCredit { get => _cureAppliedToLenderCredit; set => SetField(ref _cureAppliedToLenderCredit, value); }
 
         /// <summary>
         /// Cure Applied to Principal Reduction (POC) [FV.X397]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CureAppliedToPrincipalReduction { get => _cureAppliedToPrincipalReduction; set => SetField(ref _cureAppliedToPrincipalReduction, value); }
 
         /// <summary>
@@ -302,7 +298,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tolerance Cure Required Cure Amount [FV.X348]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RequiredCureAmount { get => _requiredCureAmount; set => SetField(ref _requiredCureAmount, value); }
 
         /// <summary>

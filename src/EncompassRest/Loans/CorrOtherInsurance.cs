@@ -42,7 +42,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent - Other Insurance - Additional Coverage Amount [CORROINN16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AddlCoverageAmount { get => _addlCoverageAmount; set => SetField(ref _addlCoverageAmount, value); }
 
         /// <summary>
@@ -68,7 +67,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent - Other Insurance - Coverage Amount [CORROINN25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CoverageAmount { get => _coverageAmount; set => SetField(ref _coverageAmount, value); }
 
         /// <summary>
@@ -120,7 +118,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent - Other Insurance - Maximum Deductible Amount [CORROINN21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaxDeductibleAmount { get => _maxDeductibleAmount; set => SetField(ref _maxDeductibleAmount, value); }
 
         /// <summary>
@@ -153,7 +150,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent - Other Insurance - Premium Amount [CORROINN12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PremiumAmount { get => _premiumAmount; set => SetField(ref _premiumAmount, value); }
 
         /// <summary>
@@ -164,13 +160,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent - Other Insurance - Property Value Used for Insurance [CORROINN17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PropertyValueUsed { get => _propertyValueUsed; set => SetField(ref _propertyValueUsed, value); }
 
         /// <summary>
         /// Correspondent - Other Insurance - Replacement Value [CORROINN14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReplacementValue { get => _replacementValue; set => SetField(ref _replacementValue, value); }
 
         /// <summary>

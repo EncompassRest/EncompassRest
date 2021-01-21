@@ -1,5 +1,3 @@
-using EncompassRest.Schema;
-
 namespace EncompassRest.Loans
 {
     /// <summary>
@@ -24,7 +22,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Itemize Escrow Payment Balance [AEANN05]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EscrowPaymentBalance { get => _escrowPaymentBalance; set => SetField(ref _escrowPaymentBalance, value); }
 
         /// <summary>
@@ -35,13 +32,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Itemize Escrow Payment From [AEANN03]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EscrowPaymentFrom { get => _escrowPaymentFrom; set => SetField(ref _escrowPaymentFrom, value); }
 
         /// <summary>
         /// Itemize Escrow Payment To [AEANN02]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EscrowPaymentTo { get => _escrowPaymentTo; set => SetField(ref _escrowPaymentTo, value); }
 
         /// <summary>

@@ -101,7 +101,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Annual City Tax Payment [HUD45]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualCityTax { get => _annualCityTax; set => SetField(ref _annualCityTax, value); }
 
         /// <summary>
@@ -112,115 +111,97 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Annual Flood Insurance Payment [HUD44]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualFloodInsurance { get => _annualFloodInsurance; set => SetField(ref _annualFloodInsurance, value); }
 
         /// <summary>
         /// HUD Annual Hazard Insurance Payment [HUD42]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualHazardInsurance { get => _annualHazardInsurance; set => SetField(ref _annualHazardInsurance, value); }
 
         /// <summary>
         /// HUD Annual Mortgage Insurance Payment [HUD43]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualMortgageInsurance { get => _annualMortgageInsurance; set => SetField(ref _annualMortgageInsurance, value); }
 
         /// <summary>
         /// HUD Annual Tax Payment [HUD41]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualTax { get => _annualTax; set => SetField(ref _annualTax, value); }
 
         /// <summary>
         /// HUD Annual User Escrow Payment 1 [HUD46]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualUserEscrow1 { get => _annualUserEscrow1; set => SetField(ref _annualUserEscrow1, value); }
 
         /// <summary>
         /// HUD Annual User Escrow Payment 2 [HUD47]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualUserEscrow2 { get => _annualUserEscrow2; set => SetField(ref _annualUserEscrow2, value); }
 
         /// <summary>
         /// HUD Annual User Escrow Payment 3 [HUD48]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualUserEscrow3 { get => _annualUserEscrow3; set => SetField(ref _annualUserEscrow3, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - City Property Taxes [HUD56]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyCityPropertyTaxes { get => _biweeklyCityPropertyTaxes; set => SetField(ref _biweeklyCityPropertyTaxes, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - County Taxes [HUD52]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyCountyTaxes { get => _biweeklyCountyTaxes; set => SetField(ref _biweeklyCountyTaxes, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - Flood Insurance [HUD55]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyFloodInsurance { get => _biweeklyFloodInsurance; set => SetField(ref _biweeklyFloodInsurance, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - Hazard Insurance [HUD53]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyHazardInsurance { get => _biweeklyHazardInsurance; set => SetField(ref _biweeklyHazardInsurance, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - Mortgage Insurance [HUD54]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyMortgageInsurance { get => _biweeklyMortgageInsurance; set => SetField(ref _biweeklyMortgageInsurance, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - PITI [HUD51]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyPITI { get => _biweeklyPITI; set => SetField(ref _biweeklyPITI, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - Total Biweekly Payment Amount [HUD64]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BiweeklyTotalBiweeklyPayment { get => _biweeklyTotalBiweeklyPayment; set => SetField(ref _biweeklyTotalBiweeklyPayment, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - Total Biweekly Payment to Escrow [HUD65]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyTotalBiweeklyPaymentToEscrow { get => _biweeklyTotalBiweeklyPaymentToEscrow; set => SetField(ref _biweeklyTotalBiweeklyPaymentToEscrow, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - USDA Annual Fee [HUD63]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyUSDAFee { get => _biweeklyUSDAFee; set => SetField(ref _biweeklyUSDAFee, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - User Defined Escrow Fee 1 [HUD58]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyUserDefinedEscrowFee1 { get => _biweeklyUserDefinedEscrowFee1; set => SetField(ref _biweeklyUserDefinedEscrowFee1, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - User Defined Escrow Fee 2 [HUD60]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyUserDefinedEscrowFee2 { get => _biweeklyUserDefinedEscrowFee2; set => SetField(ref _biweeklyUserDefinedEscrowFee2, value); }
 
         /// <summary>
         /// HUD Biweekly Escrow Payment - User Defined Escrow Fee 3 [HUD62]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BiweeklyUserDefinedEscrowFee3 { get => _biweeklyUserDefinedEscrowFee3; set => SetField(ref _biweeklyUserDefinedEscrowFee3, value); }
 
         /// <summary>
@@ -231,13 +212,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1ES City Property Tax Pay To Amount Last Paid [VEND.X450]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CityPropertyTaxAmountLastPay { get => _cityPropertyTaxAmountLastPay; set => SetField(ref _cityPropertyTaxAmountLastPay, value); }
 
         /// <summary>
         /// HUD1ES City Property Tax Pay To Amount Next Due [VEND.X452]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CityPropertyTaxAmountNextDue { get => _cityPropertyTaxAmountNextDue; set => SetField(ref _cityPropertyTaxAmountNextDue, value); }
 
         /// <summary>
@@ -306,7 +285,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Ending Balance [HUD25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? EndingBalance { get => _endingBalance; set => SetField(ref _endingBalance, value); }
 
         /// <summary>
@@ -322,13 +301,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Escrow Monthly Payment [HUD24]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? EscrowPayment { get => _escrowPayment; set => SetField(ref _escrowPayment, value); }
 
         /// <summary>
         /// HUD Escrow Yearly Payment [HUD66]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? EscrowPaymentYearly { get => _escrowPaymentYearly; set => SetField(ref _escrowPaymentYearly, value); }
 
         /// <summary>
@@ -399,7 +378,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Non Escrow Yearly Costs [HUD67]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? NonEscrowCostsYearly { get => _nonEscrowCostsYearly; set => SetField(ref _nonEscrowCostsYearly, value); }
 
         /// <summary>
@@ -410,13 +389,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1ES Tax Pay To Amount Last Paid [VEND.X438]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RealEstateTaxAmountLastPay { get => _realEstateTaxAmountLastPay; set => SetField(ref _realEstateTaxAmountLastPay, value); }
 
         /// <summary>
         /// HUD1ES Tax Pay To Amount Next Due [VEND.X440]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RealEstateTaxAmountNextDue { get => _realEstateTaxAmountNextDue; set => SetField(ref _realEstateTaxAmountNextDue, value); }
 
         /// <summary>
@@ -527,13 +504,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Single Line Analysis [HUD40]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SingleLineAnalysis { get => _singleLineAnalysis; set => SetField(ref _singleLineAnalysis, value); }
 
         /// <summary>
         /// HUD Starting Balance [HUD23]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? StartingBalance { get => _startingBalance; set => SetField(ref _startingBalance, value); }
 
         /// <summary>
@@ -544,13 +520,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Total Escrow Reserves [HUD26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalEscrowReserves { get => _totalEscrowReserves; set => SetField(ref _totalEscrowReserves, value); }
 
         /// <summary>
         /// HUD USDA Annual Fee [HUD50]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UsdaAnnualFee { get => _usdaAnnualFee; set => SetField(ref _usdaAnnualFee, value); }
 
         /// <summary>
@@ -571,13 +546,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Yearly Mortgage Insurance Before Rounding [HUD.YearlyMIFee]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? YearlyMortgageInsurance { get => _yearlyMortgageInsurance; set => SetField(ref _yearlyMortgageInsurance, value); }
 
         /// <summary>
         /// HUD Yearly USDA Fee Before Monthly Payment Rounding [HUD.YearlyUSDAFee]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? YearlyUsdaFee { get => _yearlyUsdaFee; set => SetField(ref _yearlyUsdaFee, value); }
     }
 }

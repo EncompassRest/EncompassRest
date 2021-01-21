@@ -231,7 +231,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Fees Paid to Affiliates [QM.X134]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AffiliatesFees { get => _affiliatesFees; set => SetField(ref _affiliatesFees, value); }
 
         /// <summary>
@@ -248,7 +247,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Non-Stardard to Standard Refinance Eligibility - Existing Loan - ARM Recast Monthly Payment [QM.X9]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ARMRecastMonthlyPayment { get => _aRMRecastMonthlyPayment; set => SetField(ref _aRMRecastMonthlyPayment, value); }
 
         /// <summary>
@@ -285,7 +283,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Bona Fide Discount Point Amount [QM.X370]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BonaFideDiscountPointAmount { get => _bonaFideDiscountPointAmount; set => SetField(ref _bonaFideDiscountPointAmount, value); }
 
         /// <summary>
@@ -296,7 +294,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Buydown Seller Paid Sec 32 Points and Fees [QM.X378]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BuydownSellerPaidSec32PointsFees { get => _buydownSellerPaidSec32PointsFees; set => SetField(ref _buydownSellerPaidSec32PointsFees, value); }
 
         /// <summary>
@@ -307,13 +304,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Compensation Paid to Brokers [QM.X133]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CompensationPTBFees { get => _compensationPTBFees; set => SetField(ref _compensationPTBFees, value); }
 
         /// <summary>
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Credit Related Insurance Premium [QM.X132]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditInsPremiumFees { get => _creditInsPremiumFees; set => SetField(ref _creditInsPremiumFees, value); }
 
         /// <summary>
@@ -334,7 +329,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Current Qualified Mortgage Fee Threshold Amount [QM.X121]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CurrentQMFeeThresholdAmt { get => _currentQMFeeThresholdAmt; set => SetField(ref _currentQMFeeThresholdAmt, value); }
 
         /// <summary>
@@ -351,13 +345,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Fees from 2010 Itemization - Discount Points Amount [QM.X111]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DiscountPointAmount { get => _discountPointAmount; set => SetField(ref _discountPointAmount, value); }
 
         /// <summary>
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Discount Point Fees [QM.X128]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DiscountPointFees { get => _discountPointFees; set => SetField(ref _discountPointFees, value); }
 
         /// <summary>
@@ -539,7 +531,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Finance Charge Fees [QM.X126]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinanceChargeFees { get => _financeChargeFees; set => SetField(ref _financeChargeFees, value); }
 
         /// <summary>
@@ -555,13 +546,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Non-Stardard to Standard Refinance Eligibility - Existing Loan - Fully Amortized Monthly payment after Interest Only Recast [QM.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FullPaymentAfterInterestOnly { get => _fullPaymentAfterInterestOnly; set => SetField(ref _fullPaymentAfterInterestOnly, value); }
 
         /// <summary>
         /// ATR QM - Non-Stardard to Standard Refinance Eligibility - Existing Loan - Fully Amortized Monthly payment after Neg. Am Recast [QM.X14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FullyARMPaymentAfterNegAm { get => _fullyARMPaymentAfterNegAm; set => SetField(ref _fullyARMPaymentAfterNegAm, value); }
 
         /// <summary>
@@ -573,13 +562,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Fully Index Rate Max Total Payment [QM.X114]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FullyIndexRateMaxTotalPayment { get => _fullyIndexRateMaxTotalPayment; set => SetField(ref _fullyIndexRateMaxTotalPayment, value); }
 
         /// <summary>
         /// ATR QM - Qualification - Fully Index Rate Monthly Payment [QM.X373]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FullyIndexRateMonthlyPayment { get => _fullyIndexRateMonthlyPayment; set => SetField(ref _fullyIndexRateMonthlyPayment, value); }
 
         /// <summary>
@@ -778,7 +765,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Initial Max Total Payment [QM.X113]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialMaxTotalPayment { get => _initialMaxTotalPayment; set => SetField(ref _initialMaxTotalPayment, value); }
 
         /// <summary>
@@ -790,7 +776,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Initial Rate Monthly Payment [QM.X374]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialRateMonthlyPayment { get => _initialRateMonthlyPayment; set => SetField(ref _initialRateMonthlyPayment, value); }
 
         /// <summary>
@@ -972,7 +957,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Fees from 2010 Itemization - LO (Broker) Compensation [QM.X371]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LOBrokerCompensationAmount { get => _lOBrokerCompensationAmount; set => SetField(ref _lOBrokerCompensationAmount, value); }
 
         /// <summary>
@@ -984,7 +968,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Max Rate During First 5 Years - Max P &amp; I [QM.X337]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Max5YrsPrincipleAndInterest { get => _max5YrsPrincipleAndInterest; set => SetField(ref _max5YrsPrincipleAndInterest, value); }
 
         /// <summary>
@@ -996,13 +979,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Max Rate During First 5 Years - Max Total Payment [QM.X117]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Max5YrsTotalPayment { get => _max5YrsTotalPayment; set => SetField(ref _max5YrsTotalPayment, value); }
 
         /// <summary>
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Max Prepayment Penalty [QM.X130]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaxPrepaymentPenaltyFees { get => _maxPrepaymentPenaltyFees; set => SetField(ref _maxPrepaymentPenaltyFees, value); }
 
         /// <summary>
@@ -1023,7 +1004,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Prepayment Penalty Payoff [QM.X131]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PrepaymentPenaltyPayoffFees { get => _prepaymentPenaltyPayoffFees; set => SetField(ref _prepaymentPenaltyPayoffFees, value); }
 
         /// <summary>
@@ -1073,25 +1053,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Real Estate Related Fees [QM.X127]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RealEstateFees { get => _realEstateFees; set => SetField(ref _realEstateFees, value); }
 
         /// <summary>
         /// ATR QM - Non-Stardard to Standard Refinance Eligibility - New Loan - Difference between recast monthly payment and new payment [QM.X19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RecastDifferencePayment { get => _recastDifferencePayment; set => SetField(ref _recastDifferencePayment, value); }
 
         /// <summary>
         /// ATR QM - Qualification - Reg-Z Total Loan Amount [QM.X120]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RegZTotalLoanAmount { get => _regZTotalLoanAmount; set => SetField(ref _regZTotalLoanAmount, value); }
 
         /// <summary>
         /// ATR QM - Qualification - Required Services - Lender Selected Amount [QM.X125]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RequiredServicesLenderSelectedAmt { get => _requiredServicesLenderSelectedAmt; set => SetField(ref _requiredServicesLenderSelectedAmt, value); }
 
         /// <summary>
@@ -1315,19 +1291,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Title Services and Lender's Title Ins [QM.X377]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TitleServicesLenderTitleinsuranceFee { get => _titleServicesLenderTitleinsuranceFee; set => SetField(ref _titleServicesLenderTitleinsuranceFee, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Total Co-Mortgagor Income [QM.X153]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalCoMortgagorIncome { get => _totalCoMortgagorIncome; set => SetField(ref _totalCoMortgagorIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Total Income [QM.X154]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalIncome { get => _totalIncome; set => SetField(ref _totalIncome, value); }
 
         /// <summary>
@@ -1354,7 +1327,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Upfront PMI [QM.X129]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UpfrontPMIFees { get => _upfrontPMIFees; set => SetField(ref _upfrontPMIFees, value); }
 
         /// <summary>

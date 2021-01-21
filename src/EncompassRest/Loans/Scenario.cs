@@ -42,19 +42,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Scenario All Other Monthly Payments [SCENNN20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AllOtherMonthlyPayments { get => _allOtherMonthlyPayments; set => SetField(ref _allOtherMonthlyPayments, value); }
 
         /// <summary>
         /// Scenario Base Income [SCENNN08]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BaseIncome { get => _baseIncome; set => SetField(ref _baseIncome, value); }
 
         /// <summary>
         /// Scenario Base Loan Amount [SCENNN04]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BaseLoanAmount { get => _baseLoanAmount; set => SetField(ref _baseLoanAmount, value); }
 
         /// <summary>
@@ -70,7 +67,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Scenario Effective Prop Value [SCENNN01]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EffectivePropValue { get => _effectivePropValue; set => SetField(ref _effectivePropValue, value); }
 
         /// <summary>
@@ -81,7 +77,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Scenario HOA Fees [SCENNN16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HoaFees { get => _hoaFees; set => SetField(ref _hoaFees, value); }
 
         /// <summary>
@@ -92,49 +87,41 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Scenario Interested Party Contribution percent [SCENNN25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InterestedPartyContribution { get => _interestedPartyContribution; set => SetField(ref _interestedPartyContribution, value); }
 
         /// <summary>
         /// Scenario Lease or Ground Rent [SCENNN17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LeaseOrGroundRent { get => _leaseOrGroundRent; set => SetField(ref _leaseOrGroundRent, value); }
 
         /// <summary>
         /// Scenario Total of All Monthly Payments [SCENNN21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPaymentTotal { get => _monthlyPaymentTotal; set => SetField(ref _monthlyPaymentTotal, value); }
 
         /// <summary>
         /// Scenario Mortgage Insurance [SCENNN15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MortgageInsurance { get => _mortgageInsurance; set => SetField(ref _mortgageInsurance, value); }
 
         /// <summary>
         /// Scenario Negative Cash Flow [SCENNN19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NegativeCashFlow { get => _negativeCashFlow; set => SetField(ref _negativeCashFlow, value); }
 
         /// <summary>
         /// Scenario Other Housing Expenses [SCENNN18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherHousingExpenses { get => _otherHousingExpenses; set => SetField(ref _otherHousingExpenses, value); }
 
         /// <summary>
         /// Scenario Other Income [SCENNN09]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherIncome { get => _otherIncome; set => SetField(ref _otherIncome, value); }
 
         /// <summary>
         /// Scenario Positive Cash Flow [SCENNN10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PositiveCashFlow { get => _positiveCashFlow; set => SetField(ref _positiveCashFlow, value); }
 
         /// <summary>
@@ -151,7 +138,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Scenario Required Amount [SCENNN22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Required { get => _required; set => SetField(ref _required, value); }
 
         /// <summary>
@@ -162,55 +148,46 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Scenario Second Mortgage P and I  [SCENNN06]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SecondMortgagePandI { get => _secondMortgagePandI; set => SetField(ref _secondMortgagePandI, value); }
 
         /// <summary>
         /// Scenario Subordinate Financing Amount [SCENNN02]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SubordinateFinancingAmount { get => _subordinateFinancingAmount; set => SetField(ref _subordinateFinancingAmount, value); }
 
         /// <summary>
         /// Scenario Total Insurance [SCENNN11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalInsurance { get => _totalInsurance; set => SetField(ref _totalInsurance, value); }
 
         /// <summary>
         /// Scenario Total Insurance Scenario Data [SCENNN13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalInsuranceScenarioData { get => _totalInsuranceScenarioData; set => SetField(ref _totalInsuranceScenarioData, value); }
 
         /// <summary>
         /// Scenario Total Loan Amount [SCENNN05]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalLoanAmount { get => _totalLoanAmount; set => SetField(ref _totalLoanAmount, value); }
 
         /// <summary>
         /// Scenario Total Taxes [SCENNN12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalTaxes { get => _totalTaxes; set => SetField(ref _totalTaxes, value); }
 
         /// <summary>
         /// Scenario Total Taxes Scenario Data [SCENNN14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalTaxesScenarioData { get => _totalTaxesScenarioData; set => SetField(ref _totalTaxesScenarioData, value); }
 
         /// <summary>
         /// Scenario Verified Assets [SCENNN23]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VerifiedAssets { get => _verifiedAssets; set => SetField(ref _verifiedAssets, value); }
 
         /// <summary>
         /// Scenario Verified Assets Scenario Data [SCENNN24]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VerifiedAssetsScenarioData { get => _verifiedAssetsScenarioData; set => SetField(ref _verifiedAssetsScenarioData, value); }
     }
 }

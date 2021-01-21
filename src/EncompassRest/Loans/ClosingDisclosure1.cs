@@ -1,6 +1,5 @@
 using System;
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -187,7 +186,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Estimated Taxes, Insurance and Assessments [CD1.X3]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EstimatedTaxesInsuranceAssessments { get => _estimatedTaxesInsuranceAssessments; set => SetField(ref _estimatedTaxesInsuranceAssessments, value); }
 
         /// <summary>
@@ -229,7 +227,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Estimated Escrow Amount [CD1.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC1EstimatedEscrowAmount { get => _pPC1EstimatedEscrowAmount; set => SetField(ref _pPC1EstimatedEscrowAmount, value); }
 
         /// <summary>
@@ -246,7 +243,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Maximum Monthly Payment [CD1.X14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC1MaximumMonthlyPayment { get => _pPC1MaximumMonthlyPayment; set => SetField(ref _pPC1MaximumMonthlyPayment, value); }
 
         /// <summary>
@@ -258,7 +254,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Maximum Principal and Interest Payment [CD1.X9]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC1MaximumPIPayment { get => _pPC1MaximumPIPayment; set => SetField(ref _pPC1MaximumPIPayment, value); }
 
         /// <summary>
@@ -270,7 +265,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Mortgage Insurance Amount [CD1.X11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC1MIAmount { get => _pPC1MIAmount; set => SetField(ref _pPC1MIAmount, value); }
 
         /// <summary>
@@ -282,7 +276,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Minimum Monthly Payment [CD1.X13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC1MinimumMonthlyPayment { get => _pPC1MinimumMonthlyPayment; set => SetField(ref _pPC1MinimumMonthlyPayment, value); }
 
         /// <summary>
@@ -294,7 +287,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 1 - Minimum Principal and Interest Payment [CD1.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC1MinimumPIPayment { get => _pPC1MinimumPIPayment; set => SetField(ref _pPC1MinimumPIPayment, value); }
 
         /// <summary>
@@ -311,7 +303,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Estimated Escrow Amount [CD1.X21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC2EstimatedEscrowAmount { get => _pPC2EstimatedEscrowAmount; set => SetField(ref _pPC2EstimatedEscrowAmount, value); }
 
         /// <summary>
@@ -328,7 +319,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Maximum Monthly Payment [CD1.X23]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC2MaximumMonthlyPayment { get => _pPC2MaximumMonthlyPayment; set => SetField(ref _pPC2MaximumMonthlyPayment, value); }
 
         /// <summary>
@@ -340,7 +330,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Maximum Principal and Interest Payment [CD1.X18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC2MaximumPIPayment { get => _pPC2MaximumPIPayment; set => SetField(ref _pPC2MaximumPIPayment, value); }
 
         /// <summary>
@@ -352,7 +341,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Mortgage Insurance Amount [CD1.X20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC2MIAmount { get => _pPC2MIAmount; set => SetField(ref _pPC2MIAmount, value); }
 
         /// <summary>
@@ -364,7 +352,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Minimum Monthly Payment [CD1.X22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC2MinimumMonthlyPayment { get => _pPC2MinimumMonthlyPayment; set => SetField(ref _pPC2MinimumMonthlyPayment, value); }
 
         /// <summary>
@@ -376,7 +363,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 2 - Minimum Principal and Interest Payment [CD1.X17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC2MinimumPIPayment { get => _pPC2MinimumPIPayment; set => SetField(ref _pPC2MinimumPIPayment, value); }
 
         /// <summary>
@@ -398,7 +384,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Estimated Escrow Amount [CD1.X30]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC3EstimatedEscrowAmount { get => _pPC3EstimatedEscrowAmount; set => SetField(ref _pPC3EstimatedEscrowAmount, value); }
 
         /// <summary>
@@ -415,7 +400,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Maximum Monthly Payment [CD1.X32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC3MaximumMonthlyPayment { get => _pPC3MaximumMonthlyPayment; set => SetField(ref _pPC3MaximumMonthlyPayment, value); }
 
         /// <summary>
@@ -427,7 +411,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Maximum Principal and Interest Payment [CD1.X27]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC3MaximumPIPayment { get => _pPC3MaximumPIPayment; set => SetField(ref _pPC3MaximumPIPayment, value); }
 
         /// <summary>
@@ -439,7 +422,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Mortgage Insurance Amount [CD1.X29]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC3MIAmount { get => _pPC3MIAmount; set => SetField(ref _pPC3MIAmount, value); }
 
         /// <summary>
@@ -451,7 +433,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Minimum Monthly Payment [CD1.X31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC3MinimumMonthlyPayment { get => _pPC3MinimumMonthlyPayment; set => SetField(ref _pPC3MinimumMonthlyPayment, value); }
 
         /// <summary>
@@ -463,7 +444,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 3 - Minimum Principal and Interest Payment [CD1.X26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC3MinimumPIPayment { get => _pPC3MinimumPIPayment; set => SetField(ref _pPC3MinimumPIPayment, value); }
 
         /// <summary>
@@ -485,7 +465,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Estimated Escrow Amount [CD1.X39]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC4EstimatedEscrowAmount { get => _pPC4EstimatedEscrowAmount; set => SetField(ref _pPC4EstimatedEscrowAmount, value); }
 
         /// <summary>
@@ -502,7 +481,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Maximum Monthly Payment [CD1.X41]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC4MaximumMonthlyPayment { get => _pPC4MaximumMonthlyPayment; set => SetField(ref _pPC4MaximumMonthlyPayment, value); }
 
         /// <summary>
@@ -514,7 +492,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Maximum Principal and Interest Payment [CD1.X36]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC4MaximumPIPayment { get => _pPC4MaximumPIPayment; set => SetField(ref _pPC4MaximumPIPayment, value); }
 
         /// <summary>
@@ -526,7 +503,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Mortgage Insurance Amount [CD1.X38]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC4MIAmount { get => _pPC4MIAmount; set => SetField(ref _pPC4MIAmount, value); }
 
         /// <summary>
@@ -538,7 +514,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Minimum Monthly Payment [CD1.X40]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC4MinimumMonthlyPayment { get => _pPC4MinimumMonthlyPayment; set => SetField(ref _pPC4MinimumMonthlyPayment, value); }
 
         /// <summary>
@@ -550,7 +525,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Projected Calculation - Column 4 - Minimum Principal and Interest Payment [CD1.X35]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PPC4MinimumPIPayment { get => _pPC4MinimumPIPayment; set => SetField(ref _pPC4MinimumPIPayment, value); }
 
         /// <summary>
@@ -706,7 +680,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure - Total Cash To Close [CD1.X69]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalCashToClose { get => _totalCashToClose; set => SetField(ref _totalCashToClose, value); }
     }
 }

@@ -99,13 +99,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// As Completed Appraised Value [CONST.X59]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AsCompletedAppraisedValue { get => _asCompletedAppraisedValue; set => SetField(ref _asCompletedAppraisedValue, value); }
 
         /// <summary>
         /// As Completed Purchase Price [CONST.X58]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AsCompletedPurchasePrice { get => _asCompletedPurchasePrice; set => SetField(ref _asCompletedPurchasePrice, value); }
 
         /// <summary>
@@ -201,7 +199,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Construction Management Loan Info - Holdback $ [CONST.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HoldbackAmount { get => _holdbackAmount; set => SetField(ref _holdbackAmount, value); }
 
         /// <summary>

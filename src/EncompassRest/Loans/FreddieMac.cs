@@ -98,13 +98,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac FHA/VA Alimony as Inc Reduc [CASASRN.X159]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AlimonyAsIncomeReduction { get => _alimonyAsIncomeReduction; set => SetField(ref _alimonyAsIncomeReduction, value); }
 
         /// <summary>
         /// Freddie Mac Total All Mo Pymts [CASASRN.X99]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? AllMonthlyPayments { get => _allMonthlyPayments; set => SetField(ref _allMonthlyPayments, value); }
 
         /// <summary>
@@ -153,7 +152,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Conversion Option Fee Amount [CnvrOpt.FeeAmt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConvertibleFeeAmount { get => _convertibleFeeAmount; set => SetField(ref _convertibleFeeAmount, value); }
 
         /// <summary>
@@ -193,7 +191,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Financing Concessions [CASASRN.X20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancingConcessions { get => _financingConcessions; set => SetField(ref _financingConcessions, value); }
 
         /// <summary>
@@ -302,7 +299,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Lender Net Purch Price [CASASRN.X109]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NetPurchasePrice { get => _netPurchasePrice; set => SetField(ref _netPurchasePrice, value); }
 
         /// <summary>
@@ -318,13 +314,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Total Debt [CASASRN.X174]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? NonOccupantNonHousingDebt { get => _nonOccupantNonHousingDebt; set => SetField(ref _nonOccupantNonHousingDebt, value); }
 
         /// <summary>
         /// Freddie Mac Total Non-Occ Pres Housing Exp [CASASRN.X131]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? NonOccupantPresentHE { get => _nonOccupantPresentHE; set => SetField(ref _nonOccupantPresentHE, value); }
 
         /// <summary>
@@ -375,13 +371,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Borr Income from Self Emp [CASASRN.X178]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PersonIncomeForSelfEmployment1 { get => _personIncomeForSelfEmployment1; set => SetField(ref _personIncomeForSelfEmployment1, value); }
 
         /// <summary>
         /// Freddie Mac Co-Borr Income from Self Emp [CASASRN.X179]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PersonIncomeForSelfEmployment2 { get => _personIncomeForSelfEmployment2; set => SetField(ref _personIncomeForSelfEmployment2, value); }
 
         /// <summary>
@@ -402,7 +396,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Total Present Housing Expense [CASASRN.X16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PresentHousingExpense { get => _presentHousingExpense; set => SetField(ref _presentHousingExpense, value); }
 
         /// <summary>
@@ -438,7 +432,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Total Reserves [CASASRN.X78]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Reserves { get => _reserves; set => SetField(ref _reserves, value); }
 
         /// <summary>
@@ -462,7 +456,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Lender Sales Concessions [CASASRN.X19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SalesConcessions { get => _salesConcessions; set => SetField(ref _salesConcessions, value); }
 
         /// <summary>
@@ -479,7 +472,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Lender Simulated PITI [CASASRN.X15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SimulatedPITI { get => _simulatedPITI; set => SetField(ref _simulatedPITI, value); }
 
         /// <summary>

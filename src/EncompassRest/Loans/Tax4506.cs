@@ -105,7 +105,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 CostForEachPeriod [IRS4506.X52]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CostForEachPeriod { get => _costForEachPeriod; set => SetField(ref _costForEachPeriod, value); }
 
         /// <summary>
@@ -129,7 +128,7 @@ namespace EncompassRest.Loans
         public bool? FormsSeriesTranscript { get => _formsSeriesTranscript; set => SetField(ref _formsSeriesTranscript, value); }
 
         /// <summary>
-        /// Tax4506 HistoryId
+        /// Tax4506 HistoryId [IRNN63], [ARNN63]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? HistoryId { get => _historyId; set => SetField(ref _historyId, value); }
@@ -161,17 +160,17 @@ namespace EncompassRest.Loans
         public string? Last { get => _last; set => SetField(ref _last, value); }
 
         /// <summary>
-        /// Tax4506 LastUpdatedDate
+        /// Tax4506 LastUpdatedDate [IRNN61], [ARNN61]
         /// </summary>
         public DateTime? LastUpdatedDate { get => _lastUpdatedDate; set => SetField(ref _lastUpdatedDate, value); }
 
         /// <summary>
-        /// Tax4506 LastUpdatedHistory
+        /// Tax4506 LastUpdatedHistory [IR0099], [AR0099]
         /// </summary>
         public int? LastUpdatedHistory { get => _lastUpdatedHistory; set => SetField(ref _lastUpdatedHistory, value); }
 
         /// <summary>
-        /// Tax4506 LastUpdatedTime
+        /// Tax4506 LastUpdatedTime [IRNN62], [ARNN62]
         /// </summary>
         public string? LastUpdatedTime { get => _lastUpdatedTime; set => SetField(ref _lastUpdatedTime, value); }
 
@@ -319,7 +318,7 @@ namespace EncompassRest.Loans
         public string? SendZip { get => _sendZip; set => SetField(ref _sendZip, value); }
 
         /// <summary>
-        /// Tax4506 SignatoryAttestation
+        /// Tax4506 SignatoryAttestation [IRS4506.X61], [IR0064]
         /// </summary>
         public bool? SignatoryAttestation { get => _signatoryAttestation; set => SetField(ref _signatoryAttestation, value); }
 
@@ -382,7 +381,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 TotalCost [IRS4506.X32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalCost { get => _totalCost; set => SetField(ref _totalCost, value); }
 
         /// <summary>

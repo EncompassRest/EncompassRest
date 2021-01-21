@@ -1,5 +1,4 @@
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -42,7 +41,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SelfEmployedIncome FirstYearAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FirstYearAmount { get => _firstYearAmount; set => SetField(ref _firstYearAmount, value); }
 
         /// <summary>
@@ -58,7 +56,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SelfEmployedIncome SecondYearAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SecondYearAmount { get => _secondYearAmount; set => SetField(ref _secondYearAmount, value); }
     }
 }

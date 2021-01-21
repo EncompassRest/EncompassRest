@@ -286,7 +286,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure - AK - Amended Acquisition Cost [DISCLOSURE.X974]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmendedAcquisitionCost { get => _amendedAcquisitionCost; set => SetField(ref _amendedAcquisitionCost, value); }
 
         /// <summary>
@@ -302,7 +301,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Appraisal Fee [DISCLOSURE.X69]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AppraisalDeposit { get => _appraisalDeposit; set => SetField(ref _appraisalDeposit, value); }
 
         /// <summary>
@@ -389,7 +387,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure- CA Borrower Elects To Establish Escrow Account Amount [DISCLOSURE.X914]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorrowerElectsEstablishEscrowAmount { get => _borrowerElectsEstablishEscrowAmount; set => SetField(ref _borrowerElectsEstablishEscrowAmount, value); }
 
         /// <summary>
@@ -400,37 +397,34 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Borr Paid Broker Fee Amt [DISCLOSURE.X62]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerageFeeAddition1 { get => _brokerageFeeAddition1; set => SetField(ref _brokerageFeeAddition1, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Comp From Amt [DISCLOSURE.X64]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerageFeeAddition2 { get => _brokerageFeeAddition2; set => SetField(ref _brokerageFeeAddition2, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Comp To Amt [DISCLOSURE.X66]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerageFeeAddition3 { get => _brokerageFeeAddition3; set => SetField(ref _brokerageFeeAddition3, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Broker Fee Total [FLGFE.X38]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BrokerageFeeAmount1 { get => _brokerageFeeAmount1; set => SetField(ref _brokerageFeeAmount1, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Comp From Total [FLGFE.X39]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BrokerageFeeAmount2 { get => _brokerageFeeAmount2; set => SetField(ref _brokerageFeeAmount2, value); }
 
         /// <summary>
         /// Disclosure-FL Borr Paid Comp To Total [FLGFE.X40]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BrokerageFeeAmount3 { get => _brokerageFeeAmount3; set => SetField(ref _brokerageFeeAmount3, value); }
 
         /// <summary>
@@ -484,13 +478,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Broker Paid Fee + [DISCLOSURE.X98]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerPayAddition { get => _brokerPayAddition; set => SetField(ref _brokerPayAddition, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Fee Amt [DISCLOSURE.X116]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerPayAmount { get => _brokerPayAmount; set => SetField(ref _brokerPayAmount, value); }
 
         /// <summary>
@@ -518,7 +510,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Interest Rate Fee Amt [FLMTGCM.X15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CommitmentAmount { get => _commitmentAmount; set => SetField(ref _commitmentAmount, value); }
 
         /// <summary>
@@ -534,7 +525,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Commitment Fee [FLMTGCM.X7]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CommitmentFee { get => _commitmentFee; set => SetField(ref _commitmentFee, value); }
 
         /// <summary>
@@ -558,7 +548,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Credit Deposit [DISCLOSURE.X70]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditDeposit { get => _creditDeposit; set => SetField(ref _creditDeposit, value); }
 
         /// <summary>
@@ -579,7 +568,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Receipt of Deposit Amt [FLGFE.X53]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DepositReceipt { get => _depositReceipt; set => SetField(ref _depositReceipt, value); }
 
         /// <summary>
@@ -597,19 +585,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Broker Paid Direct Amt [DISCLOSURE.X121]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DirectPayAmount { get => _directPayAmount; set => SetField(ref _directPayAmount, value); }
 
         /// <summary>
         /// Disclosure-NY  Broker Paid Direct at Close [DISCLOSURE.X119]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DirectPayClosing { get => _directPayClosing; set => SetField(ref _directPayClosing, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Paid Direct at Commit [DISCLOSURE.X118]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DirectPayCommitment { get => _directPayCommitment; set => SetField(ref _directPayCommitment, value); }
 
         /// <summary>
@@ -652,7 +637,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure - AK - Federally-Subsidized Amount [DISCLOSURE.X964]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FederallySubsidizedAmount { get => _federallySubsidizedAmount; set => SetField(ref _federallySubsidizedAmount, value); }
 
         /// <summary>
@@ -664,13 +648,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Fee Amt [DISCLOSURE.X150]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeReceived1 { get => _feeReceived1; set => SetField(ref _feeReceived1, value); }
 
         /// <summary>
         /// Disclosure-NY Recipient Fee Amt [DISCLOSURE.X152]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeReceived2 { get => _feeReceived2; set => SetField(ref _feeReceived2, value); }
 
         /// <summary>
@@ -681,25 +663,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Rec $ Fees [DISCLOSURE.X81]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeesReceiving { get => _feesReceiving; set => SetField(ref _feesReceiving, value); }
 
         /// <summary>
         /// Disclosure-FL Application Fee [DISCLOSURE.X67]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FloridaApplicationFee { get => _floridaApplicationFee; set => SetField(ref _floridaApplicationFee, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 1 Amt [FLMTGCM.X18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FloridaOtherFee1 { get => _floridaOtherFee1; set => SetField(ref _floridaOtherFee1, value); }
 
         /// <summary>
         /// Disclosure-FL Other Fee 3 Amt [FLMTGCM.X21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FloridaOtherFee2 { get => _floridaOtherFee2; set => SetField(ref _floridaOtherFee2, value); }
 
         /// <summary>
@@ -730,13 +708,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY GFE Amt [DISCLOSURE.X151]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GFEFeeReceived1 { get => _gFEFeeReceived1; set => SetField(ref _gFEFeeReceived1, value); }
 
         /// <summary>
         /// Disclosure-NY Recipient GFE Amt [DISCLOSURE.X153]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GFEFeeReceived2 { get => _gFEFeeReceived2; set => SetField(ref _gFEFeeReceived2, value); }
 
         /// <summary>
@@ -811,13 +787,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Lender fee paid to licensee [FLGFE.X77]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderPaid { get => _lenderPaid; set => SetField(ref _lenderPaid, value); }
 
         /// <summary>
         /// Disclosure-NY Lender Paid Fee Amt [DISCLOSURE.X111]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderPayAmount { get => _lenderPayAmount; set => SetField(ref _lenderPayAmount, value); }
 
         /// <summary>
@@ -829,7 +803,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Lender Paid Points Max [DISCLOSURE.X113]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderPayMaxPoint { get => _lenderPayMaxPoint; set => SetField(ref _lenderPayMaxPoint, value); }
 
         /// <summary>
@@ -841,7 +814,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Lender Paid Points [DISCLOSURE.X112]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderPayPoint { get => _lenderPayPoint; set => SetField(ref _lenderPayPoint, value); }
 
         /// <summary>
@@ -868,7 +840,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Lock-in Fee [FLMTGCM.X13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LockInFee { get => _lockInFee; set => SetField(ref _lockInFee, value); }
 
         /// <summary>
@@ -900,25 +871,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY New Money Amount [DISCLOSURE.X993]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewMoneyAmount { get => _newMoneyAmount; set => SetField(ref _newMoneyAmount, value); }
 
         /// <summary>
         /// Disclosure-NY Application Fee [DISCLOSURE.X122]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewYorkApplicationFee { get => _newYorkApplicationFee; set => SetField(ref _newYorkApplicationFee, value); }
 
         /// <summary>
         /// Disclosure-NY Appraisal Fee [DISCLOSURE.X123]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewYorkAppraisalFee { get => _newYorkAppraisalFee; set => SetField(ref _newYorkAppraisalFee, value); }
 
         /// <summary>
         /// Disclosure-NY Credit Fee [DISCLOSURE.X124]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewYorkCreditReportFee { get => _newYorkCreditReportFee; set => SetField(ref _newYorkCreditReportFee, value); }
 
         /// <summary>
@@ -936,13 +903,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Processing Fee [DISCLOSURE.X127]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewYorkProcessingFee { get => _newYorkProcessingFee; set => SetField(ref _newYorkProcessingFee, value); }
 
         /// <summary>
         /// Disclosure-TX Non-Refundable Amt [DISCLOSURE.X94]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NotRefundableAmount { get => _notRefundableAmount; set => SetField(ref _notRefundableAmount, value); }
 
         /// <summary>
@@ -954,13 +919,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure - AK - Original Acquisition Cost [DISCLOSURE.X973]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginalAcquisitionCost { get => _originalAcquisitionCost; set => SetField(ref _originalAcquisitionCost, value); }
 
         /// <summary>
         /// Disclosure-NV Origination Fee Charged Amount [DISCLOSURE.X925]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginationFeeChargedAmount { get => _originationFeeChargedAmount; set => SetField(ref _originationFeeChargedAmount, value); }
 
         /// <summary>
@@ -993,25 +956,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Broker Fee Borr [DISCLOSURE.X158]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidByBorrower { get => _paidByBorrower; set => SetField(ref _paidByBorrower, value); }
 
         /// <summary>
         /// Disclosure-NY Broker Fee Lender Paid [DISCLOSURE.X157]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidByLender { get => _paidByLender; set => SetField(ref _paidByLender, value); }
 
         /// <summary>
         /// Disclosure-NY Other Fee 1 Amt [DISCLOSURE.X160]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidByOther1 { get => _paidByOther1; set => SetField(ref _paidByOther1, value); }
 
         /// <summary>
         /// Disclosure-NY Other Fee 2 Amt [DISCLOSURE.X162]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidByOther2 { get => _paidByOther2; set => SetField(ref _paidByOther2, value); }
 
         /// <summary>
@@ -1027,13 +986,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NY Previous Mortgage Amount 1 [DISCLOSURE.X994]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PreviousMortgageAmountOne { get => _previousMortgageAmountOne; set => SetField(ref _previousMortgageAmountOne, value); }
 
         /// <summary>
         /// Disclosure-NY Previous Mortgage Amount 2 [DISCLOSURE.X995]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PreviousMortgageAmountTwo { get => _previousMortgageAmountTwo; set => SetField(ref _previousMortgageAmountTwo, value); }
 
         /// <summary>
@@ -1088,7 +1045,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-FL Refi Fee [FLMTGCM.X16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RefinancingFee { get => _refinancingFee; set => SetField(ref _refinancingFee, value); }
 
         /// <summary>
@@ -1225,7 +1181,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-NV Servicing Fee Charged Amount [DISCLOSURE.X940]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ServicingFeeChargedAmount { get => _servicingFeeChargedAmount; set => SetField(ref _servicingFeeChargedAmount, value); }
 
         /// <summary>
@@ -1262,7 +1217,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure - AK - Assessments [DISCLOSURE.X968]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationAssessments { get => _taxExemptAcquisitionCostCertificationAssessments; set => SetField(ref _taxExemptAcquisitionCostCertificationAssessments, value); }
 
         /// <summary>
@@ -1273,37 +1227,31 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure - AK - Other Amount [DISCLOSURE.X971]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationOtherAmount { get => _taxExemptAcquisitionCostCertificationOtherAmount; set => SetField(ref _taxExemptAcquisitionCostCertificationOtherAmount, value); }
 
         /// <summary>
         /// Disclosure - AK - Owners Title Insurance [DISCLOSURE.X965]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationOwnersTitleInsurance { get => _taxExemptAcquisitionCostCertificationOwnersTitleInsurance; set => SetField(ref _taxExemptAcquisitionCostCertificationOwnersTitleInsurance, value); }
 
         /// <summary>
         /// Disclosure - AK - Real Estate Commission [DISCLOSURE.X967]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationRealEstateCommission { get => _taxExemptAcquisitionCostCertificationRealEstateCommission; set => SetField(ref _taxExemptAcquisitionCostCertificationRealEstateCommission, value); }
 
         /// <summary>
         /// Disclosure - AK - Repairs/Improvements [DISCLOSURE.X969]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationRepairsImprovements { get => _taxExemptAcquisitionCostCertificationRepairsImprovements; set => SetField(ref _taxExemptAcquisitionCostCertificationRepairsImprovements, value); }
 
         /// <summary>
         /// Disclosure - AK - Survey [DISCLOSURE.X966]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationSurvey { get => _taxExemptAcquisitionCostCertificationSurvey; set => SetField(ref _taxExemptAcquisitionCostCertificationSurvey, value); }
 
         /// <summary>
         /// Disclosure - AK - Total Adjustments [DISCLOSURE.X972]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TaxExemptAcquisitionCostCertificationTotalAdjustments { get => _taxExemptAcquisitionCostCertificationTotalAdjustments; set => SetField(ref _taxExemptAcquisitionCostCertificationTotalAdjustments, value); }
 
         /// <summary>
@@ -1314,31 +1262,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Application Fee [DISCLOSURE.X82]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasApplicationFee { get => _texasApplicationFee; set => SetField(ref _texasApplicationFee, value); }
 
         /// <summary>
         /// Disclosure-TX Appraisal Fee [DISCLOSURE.X85]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasAppraisalFee { get => _texasAppraisalFee; set => SetField(ref _texasAppraisalFee, value); }
 
         /// <summary>
         /// Disclosure-TX Credit Rpt Fee [DISCLOSURE.X87]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasCreditReportFee { get => _texasCreditReportFee; set => SetField(ref _texasCreditReportFee, value); }
 
         /// <summary>
         /// Disclosure-TX Other Fee 1 [DISCLOSURE.X91]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasOtherFee1 { get => _texasOtherFee1; set => SetField(ref _texasOtherFee1, value); }
 
         /// <summary>
         /// Disclosure-TX Other Fee 2 [DISCLOSURE.X93]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasOtherFee2 { get => _texasOtherFee2; set => SetField(ref _texasOtherFee2, value); }
 
         /// <summary>
@@ -1354,25 +1297,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Processing Fee [DISCLOSURE.X83]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TexasProcessingFee { get => _texasProcessingFee; set => SetField(ref _texasProcessingFee, value); }
 
         /// <summary>
         /// Disclosure-FL Third Party Fee Amt [FLGFE.X54]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ThirdPartyFee { get => _thirdPartyFee; set => SetField(ref _thirdPartyFee, value); }
 
         /// <summary>
         /// Disclosure-NY Total Broker Fee [DISCLOSURE.X163]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalFee { get => _totalFee; set => SetField(ref _totalFee, value); }
 
         /// <summary>
         /// Disclosure-NV Service Rights Transfer Fee Charged Amount [DISCLOSURE.X937]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TransferFeeChargedAmount { get => _transferFeeChargedAmount; set => SetField(ref _transferFeeChargedAmount, value); }
 
         /// <summary>
@@ -1404,13 +1343,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosure-TX Underwriting Fee [DISCLOSURE.X89]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UnderwritingFee { get => _underwritingFee; set => SetField(ref _underwritingFee, value); }
 
         /// <summary>
         /// Disclosure-NV Yield Spread Premium (YSP) Charged Amount [DISCLOSURE.X931]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? YSPChargedAmount { get => _ySPChargedAmount; set => SetField(ref _ySPChargedAmount, value); }
 
         /// <summary>

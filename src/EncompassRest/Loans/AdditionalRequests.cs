@@ -177,7 +177,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Maximum Deductible Flood Amount [REQUEST.X37]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumDeductibleFloodAmount { get => _maximumDeductibleFloodAmount; set => SetField(ref _maximumDeductibleFloodAmount, value); }
 
         /// <summary>
@@ -189,7 +188,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Maximum Deductible Hazard Amount [REQUEST.X35]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumDeductibleHazardAmount { get => _maximumDeductibleHazardAmount; set => SetField(ref _maximumDeductibleHazardAmount, value); }
 
         /// <summary>

@@ -262,13 +262,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Bonus - Average Overtime [QM.X228]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorBonusAverageOvertime { get => _borBonusAverageOvertime; set => SetField(ref _borBonusAverageOvertime, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Bonus - Most Recent Amount [QM.X218]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorBonusMostRecentAmount { get => _borBonusMostRecentAmount; set => SetField(ref _borBonusMostRecentAmount, value); }
 
         /// <summary>
@@ -284,13 +282,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Bonus - Previous Amount 1 [QM.X222]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorBonusPreviousAmount1 { get => _borBonusPreviousAmount1; set => SetField(ref _borBonusPreviousAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Bonus - Previous Amount 2 [QM.X226]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorBonusPreviousAmount2 { get => _borBonusPreviousAmount2; set => SetField(ref _borBonusPreviousAmount2, value); }
 
         /// <summary>
@@ -316,13 +312,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Commission - Average Overtime [QM.X237]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorCommissionAverageOvertime { get => _borCommissionAverageOvertime; set => SetField(ref _borCommissionAverageOvertime, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Commission - Most Recent Amount [QM.X231]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorCommissionMostRecentAmount { get => _borCommissionMostRecentAmount; set => SetField(ref _borCommissionMostRecentAmount, value); }
 
         /// <summary>
@@ -338,13 +332,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Commission - Previous Amount 1 [QM.X235]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorCommissionPreviousAmount1 { get => _borCommissionPreviousAmount1; set => SetField(ref _borCommissionPreviousAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Commission - Previous Amount 2 [QM.X360]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorCommissionPreviousAmount2 { get => _borCommissionPreviousAmount2; set => SetField(ref _borCommissionPreviousAmount2, value); }
 
         /// <summary>
@@ -370,19 +362,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Assumed Mortgages - Liability Amount [QM.X192]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorContingentLiabilitiesLiabilityAmount1 { get => _borContingentLiabilitiesLiabilityAmount1; set => SetField(ref _borContingentLiabilitiesLiabilityAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Assumed Mortgages - Liability Amount [QM.X194]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorContingentLiabilitiesLiabilityAmount2 { get => _borContingentLiabilitiesLiabilityAmount2; set => SetField(ref _borContingentLiabilitiesLiabilityAmount2, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Assumed Mortgages - Liability Amount [QM.X196]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorContingentLiabilitiesLiabilityAmount3 { get => _borContingentLiabilitiesLiabilityAmount3; set => SetField(ref _borContingentLiabilitiesLiabilityAmount3, value); }
 
         /// <summary>
@@ -403,25 +392,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Assumed Mortgages - Total Liability Amount [QM.X197]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorContingentLiabilitiesTotalLiabilityAmount { get => _borContingentLiabilitiesTotalLiabilityAmount; set => SetField(ref _borContingentLiabilitiesTotalLiabilityAmount, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Cosigned Obligations - Car Loan Payment [QM.X198]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorCosignedObligationsCarLoanPayment { get => _borCosignedObligationsCarLoanPayment; set => SetField(ref _borCosignedObligationsCarLoanPayment, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Cosigned Obligations - Mortgage Payment [QM.X200]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorCosignedObligationsMortgagePayment { get => _borCosignedObligationsMortgagePayment; set => SetField(ref _borCosignedObligationsMortgagePayment, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Cosigned Obligations - Other Payment [QM.X202]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorCosignedObligationsOtherPayment { get => _borCosignedObligationsOtherPayment; set => SetField(ref _borCosignedObligationsOtherPayment, value); }
 
         /// <summary>
@@ -432,31 +417,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Cosigned Obligations - Student Loan Payment [QM.X199]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorCosignedObligationsStudentLoanPayment { get => _borCosignedObligationsStudentLoanPayment; set => SetField(ref _borCosignedObligationsStudentLoanPayment, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Contingent Liabilities on Cosigned Obligations - Total CoMortgagor Liabilities [QM.X203]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorCosignedObligationsTotalCoMortgagorLiabilities { get => _borCosignedObligationsTotalCoMortgagorLiabilities; set => SetField(ref _borCosignedObligationsTotalCoMortgagorLiabilities, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Dividend - Average Dividend [QM.X249]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorDividendAverageDividend { get => _borDividendAverageDividend; set => SetField(ref _borDividendAverageDividend, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Dividend - Previous Amount 1 [QM.X241]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorDividendPreviousAmount1 { get => _borDividendPreviousAmount1; set => SetField(ref _borDividendPreviousAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Dividend - Previous Amount 2 [QM.X245]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorDividendPreviousAmount2 { get => _borDividendPreviousAmount2; set => SetField(ref _borDividendPreviousAmount2, value); }
 
         /// <summary>
@@ -482,25 +462,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Dividend - Required For Cash Inv [QM.X247]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorDividendRequiredForCashAmount { get => _borDividendRequiredForCashAmount; set => SetField(ref _borDividendRequiredForCashAmount, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Interest - Average Dividend [QM.X261]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorInterestAverageDividend { get => _borInterestAverageDividend; set => SetField(ref _borInterestAverageDividend, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Interest - Previous Amount 1 [QM.X253]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorInterestPreviousAmount1 { get => _borInterestPreviousAmount1; set => SetField(ref _borInterestPreviousAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Interest - Previous Amount 2 [QM.X257]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorInterestPreviousAmount2 { get => _borInterestPreviousAmount2; set => SetField(ref _borInterestPreviousAmount2, value); }
 
         /// <summary>
@@ -526,19 +502,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Interest - Required For Cash Inv [QM.X259]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorInterestRequiredForCashAmount { get => _borInterestRequiredForCashAmount; set => SetField(ref _borInterestRequiredForCashAmount, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Clothing Allowance [QM.X295]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryAllowanceClothingAllowance { get => _borMilitaryAllowanceClothingAllowance; set => SetField(ref _borMilitaryAllowanceClothingAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Other Allowance [QM.X299]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryAllowanceOtherAllowance { get => _borMilitaryAllowanceOtherAllowance; set => SetField(ref _borMilitaryAllowanceOtherAllowance, value); }
 
         /// <summary>
@@ -549,127 +522,106 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Quarters Allowance [QM.X298]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryAllowanceQuartersAllowance { get => _borMilitaryAllowanceQuartersAllowance; set => SetField(ref _borMilitaryAllowanceQuartersAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Rations Allowance [QM.X296]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryAllowanceRationsAllowance { get => _borMilitaryAllowanceRationsAllowance; set => SetField(ref _borMilitaryAllowanceRationsAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Total Allowances [QM.X300]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryAllowanceTotalAllowance { get => _borMilitaryAllowanceTotalAllowance; set => SetField(ref _borMilitaryAllowanceTotalAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Variable Housing Allowance [QM.X297]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryAllowanceVariableHousingAllowance { get => _borMilitaryAllowanceVariableHousingAllowance; set => SetField(ref _borMilitaryAllowanceVariableHousingAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Base Pay [QM.X281]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryBasePay { get => _borMilitaryBasePay; set => SetField(ref _borMilitaryBasePay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Combat Pay [QM.X282]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryCombatPay { get => _borMilitaryCombatPay; set => SetField(ref _borMilitaryCombatPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Flight Pay [QM.X283]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryFlightPay { get => _borMilitaryFlightPay; set => SetField(ref _borMilitaryFlightPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Hazard Pay [QM.X284]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryHazardPay { get => _borMilitaryHazardPay; set => SetField(ref _borMilitaryHazardPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Overseas Pay [QM.X285]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryOverseasPay { get => _borMilitaryOverseasPay; set => SetField(ref _borMilitaryOverseasPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Prop Pay [QM.X286]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryPropPay { get => _borMilitaryPropPay; set => SetField(ref _borMilitaryPropPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Total Military Income [QM.X287]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMilitaryTotalPay { get => _borMilitaryTotalPay; set => SetField(ref _borMilitaryTotalPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Base [QM.X137]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMonthlyEmplymentIncomeBaseIncome { get => _borMonthlyEmplymentIncomeBaseIncome; set => SetField(ref _borMonthlyEmplymentIncomeBaseIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Bonuses [QM.X139]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMonthlyEmplymentIncomeBonuseIncome { get => _borMonthlyEmplymentIncomeBonuseIncome; set => SetField(ref _borMonthlyEmplymentIncomeBonuseIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Commissions [QM.X140]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMonthlyEmplymentIncomeCommissionIncome { get => _borMonthlyEmplymentIncomeCommissionIncome; set => SetField(ref _borMonthlyEmplymentIncomeCommissionIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Dividend and Interest [QM.X141]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMonthlyEmplymentIncomeDividendInterestIncome { get => _borMonthlyEmplymentIncomeDividendInterestIncome; set => SetField(ref _borMonthlyEmplymentIncomeDividendInterestIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Other Income 1 [QM.X142]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMonthlyEmplymentIncomeOtherIncome1 { get => _borMonthlyEmplymentIncomeOtherIncome1; set => SetField(ref _borMonthlyEmplymentIncomeOtherIncome1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Other Income 2 [QM.X143]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMonthlyEmplymentIncomeOtherIncome2 { get => _borMonthlyEmplymentIncomeOtherIncome2; set => SetField(ref _borMonthlyEmplymentIncomeOtherIncome2, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Overtime [QM.X138]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMonthlyEmplymentIncomeOvertimeIncome { get => _borMonthlyEmplymentIncomeOvertimeIncome; set => SetField(ref _borMonthlyEmplymentIncomeOvertimeIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Total Monthly Employment Income [QM.X144]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorMonthlyEmplymentIncomeTotalEmploymentIncome { get => _borMonthlyEmplymentIncomeTotalEmploymentIncome; set => SetField(ref _borMonthlyEmplymentIncomeTotalEmploymentIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - Government Assitant Program [QM.X165]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonEmploymentIncomeGovtAssitProgramIncome { get => _borNonEmploymentIncomeGovtAssitProgramIncome; set => SetField(ref _borNonEmploymentIncomeGovtAssitProgramIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - Homeown. Subsidy [QM.X167]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonEmploymentIncomeHomeownSubsidyIncome { get => _borNonEmploymentIncomeHomeownSubsidyIncome; set => SetField(ref _borNonEmploymentIncomeHomeownSubsidyIncome, value); }
 
         /// <summary>
@@ -685,151 +637,126 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - Military [QM.X163]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonEmploymentIncomeMilitaryIncome { get => _borNonEmploymentIncomeMilitaryIncome; set => SetField(ref _borNonEmploymentIncomeMilitaryIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - Mtg. Credit Certificate Income [QM.X166]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonEmploymentIncomeMtgCreditCertificateIncome { get => _borNonEmploymentIncomeMtgCreditCertificateIncome; set => SetField(ref _borNonEmploymentIncomeMtgCreditCertificateIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - Total [QM.X310]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonEmploymentIncomeTotalNonEmploymentIncome { get => _borNonEmploymentIncomeTotalNonEmploymentIncome; set => SetField(ref _borNonEmploymentIncomeTotalNonEmploymentIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - VA Benefit [QM.X164]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonEmploymentIncomeVABenefitIncome { get => _borNonEmploymentIncomeVABenefitIncome; set => SetField(ref _borNonEmploymentIncomeVABenefitIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Child Support [QM.X179]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonTaxableIncomeChildSupportIncome { get => _borNonTaxableIncomeChildSupportIncome; set => SetField(ref _borNonTaxableIncomeChildSupportIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Disability [QM.X177]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonTaxableIncomeDisabilityIncome { get => _borNonTaxableIncomeDisabilityIncome; set => SetField(ref _borNonTaxableIncomeDisabilityIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Fed Govt. Empl. Retirement [QM.X174]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonTaxableIncomeFedGovtEmplRetirementIncome { get => _borNonTaxableIncomeFedGovtEmplRetirementIncome; set => SetField(ref _borNonTaxableIncomeFedGovtEmplRetirementIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Military Allowances [QM.X180]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonTaxableIncomeMilitaryAllowances { get => _borNonTaxableIncomeMilitaryAllowances; set => SetField(ref _borNonTaxableIncomeMilitaryAllowances, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Other Income [QM.X181]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonTaxableIncomeOtherIncome { get => _borNonTaxableIncomeOtherIncome; set => SetField(ref _borNonTaxableIncomeOtherIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Public Assistant Payments [QM.X178]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonTaxableIncomePublicAssistPayments { get => _borNonTaxableIncomePublicAssistPayments; set => SetField(ref _borNonTaxableIncomePublicAssistPayments, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Railroad Retirement Benefits [QM.X175]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonTaxableIncomeRailroadRetirementBenefits { get => _borNonTaxableIncomeRailroadRetirementBenefits; set => SetField(ref _borNonTaxableIncomeRailroadRetirementBenefits, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Social Security [QM.X173]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonTaxableIncomeSocialSecurityIncome { get => _borNonTaxableIncomeSocialSecurityIncome; set => SetField(ref _borNonTaxableIncomeSocialSecurityIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - State Gov't. Empl. Retirement [QM.X176]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonTaxableIncomeStateGovtEmplRetirementIncome { get => _borNonTaxableIncomeStateGovtEmplRetirementIncome; set => SetField(ref _borNonTaxableIncomeStateGovtEmplRetirementIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Taxable Income - Total [QM.X312]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorNonTaxableIncomeTotalNonTaxableIncome { get => _borNonTaxableIncomeTotalNonTaxableIncome; set => SetField(ref _borNonTaxableIncomeTotalNonTaxableIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Notes Receivable [QM.X271]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOtherNotesReceivableIncome { get => _borOtherNotesReceivableIncome; set => SetField(ref _borOtherNotesReceivableIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other Income - Other [QM.X263]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOtherOtherIncome { get => _borOtherOtherIncome; set => SetField(ref _borOtherOtherIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Part-time [QM.X269]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOtherParttimeIncome { get => _borOtherParttimeIncome; set => SetField(ref _borOtherParttimeIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Retirement [QM.X264]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOtherRetirementIncome { get => _borOtherRetirementIncome; set => SetField(ref _borOtherRetirementIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Seasonal [QM.X270]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOtherSeasonalIncome { get => _borOtherSeasonalIncome; set => SetField(ref _borOtherSeasonalIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Social Security [QM.X265]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOtherSocialSecurityIncome { get => _borOtherSocialSecurityIncome; set => SetField(ref _borOtherSocialSecurityIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Tip [QM.X268]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOtherTipIncome { get => _borOtherTipIncome; set => SetField(ref _borOtherTipIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Trust [QM.X266]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOtherTrustIncome { get => _borOtherTrustIncome; set => SetField(ref _borOtherTrustIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Unemployment [QM.X267]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOtherUnemploymentIncome { get => _borOtherUnemploymentIncome; set => SetField(ref _borOtherUnemploymentIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Overtime - Average Overtime [QM.X215]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOvertimeAverageOvertime { get => _borOvertimeAverageOvertime; set => SetField(ref _borOvertimeAverageOvertime, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Overtime - Most Recent Amount [QM.X205]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOvertimeMostRecentAmount { get => _borOvertimeMostRecentAmount; set => SetField(ref _borOvertimeMostRecentAmount, value); }
 
         /// <summary>
@@ -845,13 +772,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Overtime - Previous Amount 1 [QM.X209]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOvertimePreviousAmount1 { get => _borOvertimePreviousAmount1; set => SetField(ref _borOvertimePreviousAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Overtime - Previous Amount 2 [QM.X213]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorOvertimePreviousAmount2 { get => _borOvertimePreviousAmount2; set => SetField(ref _borOvertimePreviousAmount2, value); }
 
         /// <summary>
@@ -877,43 +802,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Projected Income - Bonuses [QM.X157]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorProjectedIncomeProjectedBonuses { get => _borProjectedIncomeProjectedBonuses; set => SetField(ref _borProjectedIncomeProjectedBonuses, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Projected Income - Cost of Living Adj. [QM.X155]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorProjectedIncomeProjectedCostLivingAdjustment { get => _borProjectedIncomeProjectedCostLivingAdjustment; set => SetField(ref _borProjectedIncomeProjectedCostLivingAdjustment, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Projected Income - New Job [QM.X158]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorProjectedIncomeProjectedNewJobIncome { get => _borProjectedIncomeProjectedNewJobIncome; set => SetField(ref _borProjectedIncomeProjectedNewJobIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Projected Income - Performance Raises [QM.X156]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorProjectedIncomeProjectedPerformanceRaises { get => _borProjectedIncomeProjectedPerformanceRaises; set => SetField(ref _borProjectedIncomeProjectedPerformanceRaises, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Projected Income - Total Projected Income [QM.X308]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorProjectedIncomeTotalProjectedIncome { get => _borProjectedIncomeTotalProjectedIncome; set => SetField(ref _borProjectedIncomeTotalProjectedIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Bonus - Average Overtime [QM.X229]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobBonusAverageOvertime { get => _cobBonusAverageOvertime; set => SetField(ref _cobBonusAverageOvertime, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Bonus - Most Recent Amount [QM.X219]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobBonusMostRecentAmount { get => _cobBonusMostRecentAmount; set => SetField(ref _cobBonusMostRecentAmount, value); }
 
         /// <summary>
@@ -929,13 +847,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Bonus - Previous Amount 1 [QM.X223]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobBonusPreviousAmount1 { get => _cobBonusPreviousAmount1; set => SetField(ref _cobBonusPreviousAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Bonus - Previous Amount 2 [QM.X227]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobBonusPreviousAmount2 { get => _cobBonusPreviousAmount2; set => SetField(ref _cobBonusPreviousAmount2, value); }
 
         /// <summary>
@@ -961,13 +877,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Commission - Average Overtime [QM.X238]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobCommissionAverageOvertime { get => _cobCommissionAverageOvertime; set => SetField(ref _cobCommissionAverageOvertime, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Commission - Most Recent Amount [QM.X232]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobCommissionMostRecentAmount { get => _cobCommissionMostRecentAmount; set => SetField(ref _cobCommissionMostRecentAmount, value); }
 
         /// <summary>
@@ -983,13 +897,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Commission - Previous Amount 1 [QM.X236]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobCommissionPreviousAmount1 { get => _cobCommissionPreviousAmount1; set => SetField(ref _cobCommissionPreviousAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Commission - Previous Amount 2 [QM.X363]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobCommissionPreviousAmount2 { get => _cobCommissionPreviousAmount2; set => SetField(ref _cobCommissionPreviousAmount2, value); }
 
         /// <summary>
@@ -1015,19 +927,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Dividend - Average Dividend [QM.X250]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobDividendAverageDividend { get => _cobDividendAverageDividend; set => SetField(ref _cobDividendAverageDividend, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Dividend - Previous Amount 1 [QM.X242]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobDividendPreviousAmount1 { get => _cobDividendPreviousAmount1; set => SetField(ref _cobDividendPreviousAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Dividend - Previous Amount 2 [QM.X246]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobDividendPreviousAmount2 { get => _cobDividendPreviousAmount2; set => SetField(ref _cobDividendPreviousAmount2, value); }
 
         /// <summary>
@@ -1053,25 +962,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Dividend - Required For Cash Inv [QM.X248]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobDividendRequiredForCashAmount { get => _cobDividendRequiredForCashAmount; set => SetField(ref _cobDividendRequiredForCashAmount, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Interest - Average Dividend [QM.X262]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobInterestAverageDividend { get => _cobInterestAverageDividend; set => SetField(ref _cobInterestAverageDividend, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Interest - Previous Amount 1 [QM.X254]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobInterestPreviousAmount1 { get => _cobInterestPreviousAmount1; set => SetField(ref _cobInterestPreviousAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Interest - Previous Amount 2 [QM.X258]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobInterestPreviousAmount2 { get => _cobInterestPreviousAmount2; set => SetField(ref _cobInterestPreviousAmount2, value); }
 
         /// <summary>
@@ -1097,295 +1002,246 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Interest - Required For Cash Inv [QM.X260]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobInterestRequiredForCashAmount { get => _cobInterestRequiredForCashAmount; set => SetField(ref _cobInterestRequiredForCashAmount, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Clothing Allowance [QM.X301]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryAllowanceClothingAllowance { get => _cobMilitaryAllowanceClothingAllowance; set => SetField(ref _cobMilitaryAllowanceClothingAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Other Allowance [QM.X305]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryAllowanceOtherAllowance { get => _cobMilitaryAllowanceOtherAllowance; set => SetField(ref _cobMilitaryAllowanceOtherAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Quarters Allowance [QM.X304]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryAllowanceQuartersAllowance { get => _cobMilitaryAllowanceQuartersAllowance; set => SetField(ref _cobMilitaryAllowanceQuartersAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Rations Allowance [QM.X302]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryAllowanceRationsAllowance { get => _cobMilitaryAllowanceRationsAllowance; set => SetField(ref _cobMilitaryAllowanceRationsAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Total Allowances [QM.X306]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryAllowanceTotalAllowance { get => _cobMilitaryAllowanceTotalAllowance; set => SetField(ref _cobMilitaryAllowanceTotalAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military Allowances - Variable Housing Allowance [QM.X303]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryAllowanceVariableHousingAllowance { get => _cobMilitaryAllowanceVariableHousingAllowance; set => SetField(ref _cobMilitaryAllowanceVariableHousingAllowance, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Base Pay [QM.X288]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryBasePay { get => _cobMilitaryBasePay; set => SetField(ref _cobMilitaryBasePay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Combat Pay [QM.X289]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryCombatPay { get => _cobMilitaryCombatPay; set => SetField(ref _cobMilitaryCombatPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Flight Pay [QM.X290]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryFlightPay { get => _cobMilitaryFlightPay; set => SetField(ref _cobMilitaryFlightPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Hazard Pay [QM.X291]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryHazardPay { get => _cobMilitaryHazardPay; set => SetField(ref _cobMilitaryHazardPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Overseas Pay [QM.X292]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryOverseasPay { get => _cobMilitaryOverseasPay; set => SetField(ref _cobMilitaryOverseasPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Prop Pay [QM.X293]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryPropPay { get => _cobMilitaryPropPay; set => SetField(ref _cobMilitaryPropPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Military - Total Military Income [QM.X294]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMilitaryTotalPay { get => _cobMilitaryTotalPay; set => SetField(ref _cobMilitaryTotalPay, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Base [QM.X145]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMonthlyEmplymentIncomeBaseIncome { get => _cobMonthlyEmplymentIncomeBaseIncome; set => SetField(ref _cobMonthlyEmplymentIncomeBaseIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Bonuses [QM.X147]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMonthlyEmplymentIncomeBonuseIncome { get => _cobMonthlyEmplymentIncomeBonuseIncome; set => SetField(ref _cobMonthlyEmplymentIncomeBonuseIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Commissions [QM.X148]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMonthlyEmplymentIncomeCommissionIncome { get => _cobMonthlyEmplymentIncomeCommissionIncome; set => SetField(ref _cobMonthlyEmplymentIncomeCommissionIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Dividend and Interest [QM.X149]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMonthlyEmplymentIncomeDividendInterestIncome { get => _cobMonthlyEmplymentIncomeDividendInterestIncome; set => SetField(ref _cobMonthlyEmplymentIncomeDividendInterestIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Other Income 1 [QM.X150]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMonthlyEmplymentIncomeOtherIncome1 { get => _cobMonthlyEmplymentIncomeOtherIncome1; set => SetField(ref _cobMonthlyEmplymentIncomeOtherIncome1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Other Income 2 [QM.X151]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMonthlyEmplymentIncomeOtherIncome2 { get => _cobMonthlyEmplymentIncomeOtherIncome2; set => SetField(ref _cobMonthlyEmplymentIncomeOtherIncome2, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Overtime [QM.X146]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMonthlyEmplymentIncomeOvertimeIncome { get => _cobMonthlyEmplymentIncomeOvertimeIncome; set => SetField(ref _cobMonthlyEmplymentIncomeOvertimeIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income - Total Monthly Employment Income [QM.X152]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobMonthlyEmplymentIncomeTotalEmploymentIncome { get => _cobMonthlyEmplymentIncomeTotalEmploymentIncome; set => SetField(ref _cobMonthlyEmplymentIncomeTotalEmploymentIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - Government Assitant Program [QM.X170]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonEmploymentIncomeGovtAssitProgramIncome { get => _cobNonEmploymentIncomeGovtAssitProgramIncome; set => SetField(ref _cobNonEmploymentIncomeGovtAssitProgramIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - Homeown. Subsidy [QM.X172]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonEmploymentIncomeHomeownSubsidyIncome { get => _cobNonEmploymentIncomeHomeownSubsidyIncome; set => SetField(ref _cobNonEmploymentIncomeHomeownSubsidyIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - Military [QM.X168]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonEmploymentIncomeMilitaryIncome { get => _cobNonEmploymentIncomeMilitaryIncome; set => SetField(ref _cobNonEmploymentIncomeMilitaryIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - Mtg. Credit Certificate Income [QM.X171]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonEmploymentIncomeMtgCreditCertificateIncome { get => _cobNonEmploymentIncomeMtgCreditCertificateIncome; set => SetField(ref _cobNonEmploymentIncomeMtgCreditCertificateIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - Total [QM.X311]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonEmploymentIncomeTotalNonEmploymentIncome { get => _cobNonEmploymentIncomeTotalNonEmploymentIncome; set => SetField(ref _cobNonEmploymentIncomeTotalNonEmploymentIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Employment Income - VA Benefit [QM.X169]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonEmploymentIncomeVABenefitIncome { get => _cobNonEmploymentIncomeVABenefitIncome; set => SetField(ref _cobNonEmploymentIncomeVABenefitIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Child Support [QM.X188]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonTaxableIncomeChildSupportIncome { get => _cobNonTaxableIncomeChildSupportIncome; set => SetField(ref _cobNonTaxableIncomeChildSupportIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Disability [QM.X186]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonTaxableIncomeDisabilityIncome { get => _cobNonTaxableIncomeDisabilityIncome; set => SetField(ref _cobNonTaxableIncomeDisabilityIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Fed Govt. Empl. Retirement [QM.X183]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonTaxableIncomeFedGovtEmplRetirementIncome { get => _cobNonTaxableIncomeFedGovtEmplRetirementIncome; set => SetField(ref _cobNonTaxableIncomeFedGovtEmplRetirementIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Military Allowances [QM.X189]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonTaxableIncomeMilitaryAllowances { get => _cobNonTaxableIncomeMilitaryAllowances; set => SetField(ref _cobNonTaxableIncomeMilitaryAllowances, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Other Income [QM.X190]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonTaxableIncomeOtherIncome { get => _cobNonTaxableIncomeOtherIncome; set => SetField(ref _cobNonTaxableIncomeOtherIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Public Assistant Payments [QM.X187]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonTaxableIncomePublicAssistPayments { get => _cobNonTaxableIncomePublicAssistPayments; set => SetField(ref _cobNonTaxableIncomePublicAssistPayments, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Railroad Retirement Benefits [QM.X184]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonTaxableIncomeRailroadRetirementBenefits { get => _cobNonTaxableIncomeRailroadRetirementBenefits; set => SetField(ref _cobNonTaxableIncomeRailroadRetirementBenefits, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - Social Security [QM.X182]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonTaxableIncomeSocialSecurityIncome { get => _cobNonTaxableIncomeSocialSecurityIncome; set => SetField(ref _cobNonTaxableIncomeSocialSecurityIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non Taxable Income - State Gov't. Empl. Retirement [QM.X185]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonTaxableIncomeStateGovtEmplRetirementIncome { get => _cobNonTaxableIncomeStateGovtEmplRetirementIncome; set => SetField(ref _cobNonTaxableIncomeStateGovtEmplRetirementIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Non-Taxable Income - Total [QM.X313]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobNonTaxableIncomeTotalNonTaxableIncome { get => _cobNonTaxableIncomeTotalNonTaxableIncome; set => SetField(ref _cobNonTaxableIncomeTotalNonTaxableIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Notes Receivable [QM.X280]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOtherNotesReceivableIncome { get => _cobOtherNotesReceivableIncome; set => SetField(ref _cobOtherNotesReceivableIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other Income - Other [QM.X272]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOtherOtherIncome { get => _cobOtherOtherIncome; set => SetField(ref _cobOtherOtherIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Part-time [QM.X278]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOtherParttimeIncome { get => _cobOtherParttimeIncome; set => SetField(ref _cobOtherParttimeIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Retirement [QM.X273]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOtherRetirementIncome { get => _cobOtherRetirementIncome; set => SetField(ref _cobOtherRetirementIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Seasonal [QM.X279]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOtherSeasonalIncome { get => _cobOtherSeasonalIncome; set => SetField(ref _cobOtherSeasonalIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Social Security [QM.X274]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOtherSocialSecurityIncome { get => _cobOtherSocialSecurityIncome; set => SetField(ref _cobOtherSocialSecurityIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Tip [QM.X277]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOtherTipIncome { get => _cobOtherTipIncome; set => SetField(ref _cobOtherTipIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Trust [QM.X275]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOtherTrustIncome { get => _cobOtherTrustIncome; set => SetField(ref _cobOtherTrustIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Other - Unemployment [QM.X276]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOtherUnemploymentIncome { get => _cobOtherUnemploymentIncome; set => SetField(ref _cobOtherUnemploymentIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Overtime - Average Overtime [QM.X216]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOvertimeAverageOvertime { get => _cobOvertimeAverageOvertime; set => SetField(ref _cobOvertimeAverageOvertime, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Overtime - Most Recent Amount [QM.X206]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOvertimeMostRecentAmount { get => _cobOvertimeMostRecentAmount; set => SetField(ref _cobOvertimeMostRecentAmount, value); }
 
         /// <summary>
@@ -1401,13 +1257,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Overtime - Previous Amount 1 [QM.X210]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOvertimePreviousAmount1 { get => _cobOvertimePreviousAmount1; set => SetField(ref _cobOvertimePreviousAmount1, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Income Details - Overtime - Previous Amount 2 [QM.X214]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobOvertimePreviousAmount2 { get => _cobOvertimePreviousAmount2; set => SetField(ref _cobOvertimePreviousAmount2, value); }
 
         /// <summary>
@@ -1433,31 +1287,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ATR/QM Management - Appendix Q - Projected Income - Bonuses [QM.X161]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobProjectedIncomeProjectedBonuses { get => _cobProjectedIncomeProjectedBonuses; set => SetField(ref _cobProjectedIncomeProjectedBonuses, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Projected Income - Cost of Living Adj. [QM.X159]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobProjectedIncomeProjectedCostLivingAdjustment { get => _cobProjectedIncomeProjectedCostLivingAdjustment; set => SetField(ref _cobProjectedIncomeProjectedCostLivingAdjustment, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Projected Income - New Job [QM.X162]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobProjectedIncomeProjectedNewJobIncome { get => _cobProjectedIncomeProjectedNewJobIncome; set => SetField(ref _cobProjectedIncomeProjectedNewJobIncome, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Projected Income - Performance Raises [QM.X160]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobProjectedIncomeProjectedPerformanceRaises { get => _cobProjectedIncomeProjectedPerformanceRaises; set => SetField(ref _cobProjectedIncomeProjectedPerformanceRaises, value); }
 
         /// <summary>
         /// ATR/QM Management - Appendix Q - Projected Income - Total Projected Income [QM.X309]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CobProjectedIncomeTotalProjectedIncome { get => _cobProjectedIncomeTotalProjectedIncome; set => SetField(ref _cobProjectedIncomeTotalProjectedIncome, value); }
 
         /// <summary>
@@ -1533,25 +1382,25 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Latest Submission - Total Housing Payment [AUSF.X13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalHousingPayment { get => _totalHousingPayment; set => SetField(ref _totalHousingPayment, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - Total Monthly Assets [AUSF.X15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalMonthlyAssets { get => _totalMonthlyAssets; set => SetField(ref _totalMonthlyAssets, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - Total Monthly Debt [AUSF.X16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalMonthlyDebt { get => _totalMonthlyDebt; set => SetField(ref _totalMonthlyDebt, value); }
 
         /// <summary>
         /// AUS Tracking - Latest Submission - Total Monthly Income [AUSF.X14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalMonthlyIncome { get => _totalMonthlyIncome; set => SetField(ref _totalMonthlyIncome, value); }
 
         /// <summary>

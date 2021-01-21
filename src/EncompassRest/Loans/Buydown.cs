@@ -45,13 +45,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Buydown FundBalanceAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? FundBalanceAmount { get => _fundBalanceAmount; set => SetField(ref _fundBalanceAmount, value); }
 
         /// <summary>
         /// Buydown FundTotalAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? FundTotalAmount { get => _fundTotalAmount; set => SetField(ref _fundTotalAmount, value); }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Buydown SubsidyAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SubsidyAmount { get => _subsidyAmount; set => SetField(ref _subsidyAmount, value); }
     }
 }

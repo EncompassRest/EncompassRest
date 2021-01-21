@@ -252,7 +252,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Original Loan Amt [1085]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginalAmountOfFirstMortgage { get => _originalAmountOfFirstMortgage; set => SetField(ref _originalAmountOfFirstMortgage, value); }
 
         /// <summary>
@@ -285,7 +284,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr Funds to Close - Required [1546]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Required { get => _required; set => SetField(ref _required, value); }
 
         /// <summary>
@@ -442,13 +440,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Sub Fin Additional Mtgs [1732]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UnpaidBalance { get => _unpaidBalance; set => SetField(ref _unpaidBalance, value); }
 
         /// <summary>
         /// Borr Funds to Close - Verif [1547]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Verified { get => _verified; set => SetField(ref _verified, value); }
     }
 }

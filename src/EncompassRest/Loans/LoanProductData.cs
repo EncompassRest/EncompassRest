@@ -248,13 +248,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Amount Apply To Down Payment [4493]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountApplyToDownPayment { get => _amountApplyToDownPayment; set => SetField(ref _amountApplyToDownPayment, value); }
 
         /// <summary>
         /// HELOC Annual Fee [1891]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualFeeNeededAmount { get => _annualFeeNeededAmount; set => SetField(ref _annualFeeNeededAmount, value); }
 
         /// <summary>
@@ -576,7 +574,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Installment Loan Fincance Charge [4581]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HelocInstallmentLoanFinanceCharge { get => _helocInstallmentLoanFinanceCharge; set => SetField(ref _helocInstallmentLoanFinanceCharge, value); }
 
         /// <summary>
@@ -644,7 +641,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Minimum Subsequent Advance Amount [4554]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HelocMinimumSubsequentAdvanceAmount { get => _helocMinimumSubsequentAdvanceAmount; set => SetField(ref _helocMinimumSubsequentAdvanceAmount, value); }
 
         /// <summary>
@@ -656,7 +652,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Minimum Installment Loan Amount [4577]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HelocMinInstallmentLoanAmount { get => _helocMinInstallmentLoanAmount; set => SetField(ref _helocMinInstallmentLoanAmount, value); }
 
         /// <summary>
@@ -668,19 +663,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Heloc New Financing Not Linked Credit Limit  [4490]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HelocNewFinancingNotLinkedCreditLimit { get => _helocNewFinancingNotLinkedCreditLimit; set => SetField(ref _helocNewFinancingNotLinkedCreditLimit, value); }
 
         /// <summary>
         /// Heloc New Financing Not Linked Draw Amount [4489]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HelocNewFinancingNotLinkedDrawAmount { get => _helocNewFinancingNotLinkedDrawAmount; set => SetField(ref _helocNewFinancingNotLinkedDrawAmount, value); }
 
         /// <summary>
         /// HELOC Paper Billing Fee [4588]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HelocPaperBillingFee { get => _helocPaperBillingFee; set => SetField(ref _helocPaperBillingFee, value); }
 
         /// <summary>
@@ -719,7 +711,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Photocopy Fee [4589]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HelocPhotocopyFee { get => _helocPhotocopyFee; set => SetField(ref _helocPhotocopyFee, value); }
 
         /// <summary>
@@ -784,13 +775,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Repayment Minimum Payment Amount [4576]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HelocRepaymentMinPayment { get => _helocRepaymentMinPayment; set => SetField(ref _helocRepaymentMinPayment, value); }
 
         /// <summary>
         /// HELOC Research Fee [4590]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HelocResearchFee { get => _helocResearchFee; set => SetField(ref _helocResearchFee, value); }
 
         /// <summary>
@@ -1011,13 +1000,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Initial Advance [1888]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialAdvanceAmount { get => _initialAdvanceAmount; set => SetField(ref _initialAdvanceAmount, value); }
 
         /// <summary>
         /// NMLS Initial Application Amount [NMLS.X11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialApplicationAmount { get => _initialApplicationAmount; set => SetField(ref _initialApplicationAmount, value); }
 
         /// <summary>
@@ -1098,7 +1085,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Maximum Monthly Payment [NEWHUD.X11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumMonthlyPayment { get => _maximumMonthlyPayment; set => SetField(ref _maximumMonthlyPayment, value); }
 
         /// <summary>
@@ -1122,7 +1108,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Min Advance Amt [1892]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MinimumAdvanceAmount { get => _minimumAdvanceAmount; set => SetField(ref _minimumAdvanceAmount, value); }
 
         /// <summary>
@@ -1140,13 +1125,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Minimum Payment [1483]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MinimumPaymentAmount { get => _minimumPaymentAmount; set => SetField(ref _minimumPaymentAmount, value); }
 
         /// <summary>
         /// HELOC Minimum Payment Less Than Amt [HELOC.MinPmtLessThanAmt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MinimumPaymentLessThanAmount { get => _minimumPaymentLessThanAmount; set => SetField(ref _minimumPaymentLessThanAmount, value); }
 
         /// <summary>
@@ -1158,7 +1141,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Minimum Payment UPB Amt [HELOC.MinPmtUnpdBalAmt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MinimumPaymentUpbAmount { get => _minimumPaymentUpbAmount; set => SetField(ref _minimumPaymentUpbAmount, value); }
 
         /// <summary>
@@ -1187,7 +1169,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NMLS Net (Initial and Final) [NMLS.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NetInitialAndFinal { get => _netInitialAndFinal; set => SetField(ref _netInitialAndFinal, value); }
 
         /// <summary>
@@ -1250,19 +1231,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Over Limit Charge [HELOC.OvrLmtChg]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OverLimitCharge { get => _overLimitCharge; set => SetField(ref _overLimitCharge, value); }
 
         /// <summary>
         /// HELOC Over Limit Return Charge [HELOC.OvrLmtRtnChg]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OverLimitReturnCharge { get => _overLimitReturnCharge; set => SetField(ref _overLimitReturnCharge, value); }
 
         /// <summary>
         /// HELOC Participation Fees: The total amount(s) payable at or before account opening for participation in an open-end credit plan. [HELOC.ParticipationFees]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ParticipationFees { get => _participationFees; set => SetField(ref _participationFees, value); }
 
         /// <summary>
@@ -1361,13 +1339,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Release Recording Charge [HELOC.RlsRecgChg]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReleaseRecoringCharge { get => _releaseRecoringCharge; set => SetField(ref _releaseRecoringCharge, value); }
 
         /// <summary>
         /// Buydown Dsbmt Sum Total Subsidy Bal [3120]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? RemainingBuydownAmount { get => _remainingBuydownAmount; set => SetField(ref _remainingBuydownAmount, value); }
 
         /// <summary>
@@ -1378,7 +1355,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Returned Check Charge Amt. [HELOC.RtdChkChgAmt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReturnedCheckCharge { get => _returnedCheckCharge; set => SetField(ref _returnedCheckCharge, value); }
 
         /// <summary>
@@ -1390,13 +1366,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Returned Check Charge Max. [HELOC.RtdChkChgMax]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReturnedCheckMaxCharge { get => _returnedCheckMaxCharge; set => SetField(ref _returnedCheckMaxCharge, value); }
 
         /// <summary>
         /// HELOC Returned Check Charge Min. [HELOC.RtdChkChgMin]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReturnedCheckMinCharge { get => _returnedCheckMinCharge; set => SetField(ref _returnedCheckMinCharge, value); }
 
         /// <summary>
@@ -1423,7 +1397,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Stop Payment Charge [HELOC.StopPmtChrg]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? StopPaymentCharge { get => _stopPaymentCharge; set => SetField(ref _stopPaymentCharge, value); }
 
         /// <summary>
@@ -1434,7 +1407,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Termination Fee [1986]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TerminationFeeAmount { get => _terminationFeeAmount; set => SetField(ref _terminationFeeAmount, value); }
 
         /// <summary>
@@ -1445,13 +1417,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HELOC Third Party Fees Range - From [1965]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ThirdPartyFeeFromAmount { get => _thirdPartyFeeFromAmount; set => SetField(ref _thirdPartyFeeFromAmount, value); }
 
         /// <summary>
         /// HELOC Third Party Fees Range - To [1966]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ThirdPartyFeeToAmount { get => _thirdPartyFeeToAmount; set => SetField(ref _thirdPartyFeeToAmount, value); }
 
         /// <summary>
@@ -1468,19 +1438,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Buydown Dsbmt Sum Tot. Subsidy Amt [3119]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalSubsidyAmount { get => _totalSubsidyAmount; set => SetField(ref _totalSubsidyAmount, value); }
 
         /// <summary>
         /// HELOC Transaction Fees: The total amount of fees charged each time a withdrawal or other specified transaction is made on a line of credit, such as a balance transfer fee or a cash advance fee. [HELOC.TransactionFees]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TransactionFees { get => _transactionFees; set => SetField(ref _transactionFees, value); }
 
         /// <summary>
         /// HELOC Wire Fee [HELOC.WireFee]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? WireFee { get => _wireFee; set => SetField(ref _wireFee, value); }
     }
 }

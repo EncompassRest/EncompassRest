@@ -312,19 +312,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Informed Consumer Choice Conventional Closing Cost [FICC.X15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConventionalClosingCost { get => _conventionalClosingCost; set => SetField(ref _conventionalClosingCost, value); }
 
         /// <summary>
         /// Informed Consumer Choice Conventional Down Payment [FICC.X16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConventionalDownPayment { get => _conventionalDownPayment; set => SetField(ref _conventionalDownPayment, value); }
 
         /// <summary>
         /// Informed Consumer Choice Conventional Interest Rate [FICC.X17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConventionalInterestRate { get => _conventionalInterestRate; set => SetField(ref _conventionalInterestRate, value); }
 
         /// <summary>
@@ -335,7 +332,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Informed Consumer Choice Conventional LTV [FICC.X20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConventionalLTV { get => _conventionalLTV; set => SetField(ref _conventionalLTV, value); }
 
         /// <summary>
@@ -346,31 +342,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Informed Consumer Choice Conventional Monthly Mortgage Income [FICC.X21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConventionalMMI { get => _conventionalMMI; set => SetField(ref _conventionalMMI, value); }
 
         /// <summary>
         /// Informed Consumer Choice Conventional Monthly Payment [FICC.X19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConventionalMonthlyPayment { get => _conventionalMonthlyPayment; set => SetField(ref _conventionalMonthlyPayment, value); }
 
         /// <summary>
         /// Informed Consumer Choice Conventional Mortgage Amount [FICC.X14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConventionalMortgageAmount { get => _conventionalMortgageAmount; set => SetField(ref _conventionalMortgageAmount, value); }
 
         /// <summary>
         /// Informed Consumer Choice Conventional Sales Price [FICC.X13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConventionalSalesPrice { get => _conventionalSalesPrice; set => SetField(ref _conventionalSalesPrice, value); }
 
         /// <summary>
         /// Informed Consumer Choice Conventional UMIP [FICC.X23]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConventionalUMIP { get => _conventionalUMIP; set => SetField(ref _conventionalUMIP, value); }
 
         /// <summary>
@@ -391,7 +382,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Discounts [1046]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DiscountPoints { get => _discountPoints; set => SetField(ref _discountPoints, value); }
 
         /// <summary>
@@ -443,7 +433,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Energy Eff Improvements Amt [1721]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EnergyEfficientMortgageAmount { get => _energyEfficientMortgageAmount; set => SetField(ref _energyEfficientMortgageAmount, value); }
 
         /// <summary>
@@ -460,13 +449,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Excess Seller Contribution [3053]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExcessContributionAmount { get => _excessContributionAmount; set => SetField(ref _excessContributionAmount, value); }
 
         /// <summary>
         /// Existing Debt for Refi Loan [3052]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingDebtAmount { get => _existingDebtAmount; set => SetField(ref _existingDebtAmount, value); }
 
         /// <summary>
@@ -477,19 +464,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Informed Consumer Choice FHA Closing Cost [FICC.X4]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHAClosingCost { get => _fHAClosingCost; set => SetField(ref _fHAClosingCost, value); }
 
         /// <summary>
         /// Informed Consumer Choice FHA Down Payment [FICC.X5]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHADownPayment { get => _fHADownPayment; set => SetField(ref _fHADownPayment, value); }
 
         /// <summary>
         /// Informed Consumer Choice FHA Interest Rate [FICC.X6]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHAInterestRate { get => _fHAInterestRate; set => SetField(ref _fHAInterestRate, value); }
 
         /// <summary>
@@ -500,7 +484,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Informed Consumer Choice FHA LTV [FICC.X9]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHALTV { get => _fHALTV; set => SetField(ref _fHALTV, value); }
 
         /// <summary>
@@ -511,43 +494,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Max Loan Amt [1720]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHAMaxLoanAmount { get => _fHAMaxLoanAmount; set => SetField(ref _fHAMaxLoanAmount, value); }
 
         /// <summary>
         /// Informed Consumer Choice FHA Monthly Mortgage Income [FICC.X10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHAMMI { get => _fHAMMI; set => SetField(ref _fHAMMI, value); }
 
         /// <summary>
         /// Informed Consumer Choice FHA Monthly Payment [FICC.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHAMonthlyPayment { get => _fHAMonthlyPayment; set => SetField(ref _fHAMonthlyPayment, value); }
 
         /// <summary>
         /// Informed Consumer Choice FHA Mortgage Amount [FICC.X2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHAMortgageAmount { get => _fHAMortgageAmount; set => SetField(ref _fHAMortgageAmount, value); }
 
         /// <summary>
         /// Informed Consumer Choice FHA Mortgage Amount with UMIP [FICC.X3]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHAMortgageAmountUMIP { get => _fHAMortgageAmountUMIP; set => SetField(ref _fHAMortgageAmountUMIP, value); }
 
         /// <summary>
         /// Informed Consumer Choice FHA Sales Price [FICC.X1]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHASalesPrice { get => _fHASalesPrice; set => SetField(ref _fHASalesPrice, value); }
 
         /// <summary>
         /// Informed Consumer Choice FHA UMIP [FICC.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FHAUMIP { get => _fHAUMIP; set => SetField(ref _fHAUMIP, value); }
 
         /// <summary>
@@ -568,13 +544,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Funding Fee Paid in Cash [1160]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? FundingFeePaidInCash { get => _fundingFeePaidInCash; set => SetField(ref _fundingFeePaidInCash, value); }
 
         /// <summary>
         /// Trans Details Total Gift Funds Amt [220]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GiftFundsAmount { get => _giftFundsAmount; set => SetField(ref _giftFundsAmount, value); }
 
         /// <summary>
@@ -682,7 +657,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Min Down Pymt [1117]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MinimumDownPayment { get => _minimumDownPayment; set => SetField(ref _minimumDownPayment, value); }
 
         /// <summary>
@@ -714,19 +689,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD 1003 Addendum Mod Loan Amount [3178]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ModifiedLoanAmount { get => _modifiedLoanAmount; set => SetField(ref _modifiedLoanAmount, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Mod Mthly Pymt [3182]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ModifiedMonthlyPayment { get => _modifiedMonthlyPayment; set => SetField(ref _modifiedMonthlyPayment, value); }
 
         /// <summary>
         /// HUD 1003 Addendum Mod Amt Mthly Premium [3184]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ModifiedMonthlyPremium { get => _modifiedMonthlyPremium; set => SetField(ref _modifiedMonthlyPremium, value); }
 
         /// <summary>
@@ -747,7 +719,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD 1003 Addendum Mod Amt Up Front Premium [3183]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ModifiedUpfrontPremium { get => _modifiedUpfrontPremium; set => SetField(ref _modifiedUpfrontPremium, value); }
 
         /// <summary>
@@ -763,7 +734,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Non-Realty/Other Items [1137]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NonRealtyAndOtherItems { get => _nonRealtyAndOtherItems; set => SetField(ref _nonRealtyAndOtherItems, value); }
 
         /// <summary>
@@ -784,25 +754,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Original Mtg Amt [744]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginalMortgageAmount { get => _originalMortgageAmount; set => SetField(ref _originalMortgageAmount, value); }
 
         /// <summary>
         /// Liabilities Other Mo Pymt [1648]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? OtherLiabilitiesMonthlyPayment { get => _otherLiabilitiesMonthlyPayment; set => SetField(ref _otherLiabilitiesMonthlyPayment, value); }
 
         /// <summary>
         /// Liabilities Other Unpaid Bal [1649]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? OtherLiabilitiesUnpaidBalance { get => _otherLiabilitiesUnpaidBalance; set => SetField(ref _otherLiabilitiesUnpaidBalance, value); }
 
         /// <summary>
         /// VA Mo Shelter Exp Est Other [1348]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? OtherMonthlyShelterExpense { get => _otherMonthlyShelterExpense; set => SetField(ref _otherMonthlyShelterExpense, value); }
 
         /// <summary>
@@ -823,7 +792,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Paid Amt [201]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidAmount { get => _paidAmount; set => SetField(ref _paidAmount, value); }
 
         /// <summary>
@@ -834,7 +802,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Prepaid Expenses [61]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PrepaidExpenses { get => _prepaidExpenses; set => SetField(ref _prepaidExpenses, value); }
 
         /// <summary>
@@ -877,19 +844,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr Cert Other RE Sales Price [687]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SalesPrice { get => _salesPrice; set => SetField(ref _salesPrice, value); }
 
         /// <summary>
         /// FHA MCAW 2nd Mtg Amt [1140]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SecondMortgageAmount { get => _secondMortgageAmount; set => SetField(ref _secondMortgageAmount, value); }
 
         /// <summary>
         /// Fees Total FHA Closing Costs Seller [1131]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SellerPaidClosingCost { get => _sellerPaidClosingCost; set => SetField(ref _sellerPaidClosingCost, value); }
 
         /// <summary>
@@ -900,7 +864,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Mo Shelter Exp Est Special Asmts [1346]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SpecialAssessments { get => _specialAssessments; set => SetField(ref _specialAssessments, value); }
 
         /// <summary>
@@ -972,7 +935,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Total Closing Cost [386]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalClosingCost { get => _totalClosingCost; set => SetField(ref _totalClosingCost, value); }
 
         /// <summary>
@@ -993,7 +955,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA Management UFMIP Remitted Amount [3081]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UFMIPRemittedAmount { get => _uFMIPRemittedAmount; set => SetField(ref _uFMIPRemittedAmount, value); }
 
         /// <summary>

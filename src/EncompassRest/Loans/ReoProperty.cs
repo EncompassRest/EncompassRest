@@ -130,13 +130,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Monthly Payment [FMNN16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LienInstallmentAmount { get => _lienInstallmentAmount; set => SetField(ref _lienInstallmentAmount, value); }
 
         /// <summary>
         /// Mortgage Property Unpaid Balance [FMNN17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LienUpbAmount { get => _lienUpbAmount; set => SetField(ref _lienUpbAmount, value); }
 
         /// <summary>
@@ -147,7 +145,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Market Value [FMNN19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MarketValueAmount { get => _marketValueAmount; set => SetField(ref _marketValueAmount, value); }
 
         /// <summary>
@@ -169,13 +166,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Participation Percent [FMNN14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ParticipationPercentage { get => _participationPercentage; set => SetField(ref _participationPercentage, value); }
 
         /// <summary>
         /// Mortgage Property Percent of Units Rented [FMNN26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PercentageofRental { get => _percentageofRental; set => SetField(ref _percentageofRental, value); }
 
         /// <summary>
@@ -215,7 +210,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Monthly Gross Rental Income [FMNN20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RentalIncomeGrossAmount { get => _rentalIncomeGrossAmount; set => SetField(ref _rentalIncomeGrossAmount, value); }
 
         /// <summary>

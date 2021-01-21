@@ -497,18 +497,18 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _yearsofCreditOnFile;
 
         /// <summary>
-        /// Borrower AcountChekAssetId
+        /// Borrower AcountChekAssetId [FANNIESERVICE.X3], [FANNIESERVICE.X4]
         /// </summary>
         public string? AcountChekAssetId { get => _acountChekAssetId; set => SetField(ref _acountChekAssetId, value); }
 
         /// <summary>
-        /// Borrower ActiveDuty
+        /// Borrower ActiveDuty [URLA.X123], [URLA.X126]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Currently serving on active duty\"}")]
         public bool? ActiveDuty { get => _activeDuty; set => SetField(ref _activeDuty, value); }
 
         /// <summary>
-        /// Borrower AdditionalEmploymentDoesNotApply
+        /// Borrower AdditionalEmploymentDoesNotApply [URLA.X201], [URLA.X202]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
         public bool? AdditionalEmploymentDoesNotApply { get => _additionalEmploymentDoesNotApply; set => SetField(ref _additionalEmploymentDoesNotApply, value); }
@@ -516,38 +516,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Additional Income to Primary Employment (Commission, Bonus, Overtime, Automobile Allowance, Mortgage Differential, Tips, Military, Secondary Employment, Seasonal Employment, Unemployment) [USDA.X168]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdditionalIncomeFromPrimaryEmployment { get => _additionalIncomeFromPrimaryEmployment; set => SetField(ref _additionalIncomeFromPrimaryEmployment, value); }
 
         /// <summary>
-        /// Borrower AdditionalInformation
+        /// Borrower AdditionalInformation [URLA.X213], [URLA.X214]
         /// </summary>
         public string? AdditionalInformation { get => _additionalInformation; set => SetField(ref _additionalInformation, value); }
 
         /// <summary>
-        /// Borrower AdditionalOtherIncome
+        /// Borrower AdditionalOtherIncome [URLA.X42], [URLA.X43]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdditionalOtherIncome { get => _additionalOtherIncome; set => SetField(ref _additionalOtherIncome, value); }
 
         /// <summary>
         /// USDA - Adjusted Annual income for the household [USDA.X17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? AdjustedAnnualIncome { get => _adjustedAnnualIncome; set => SetField(ref _adjustedAnnualIncome, value); }
 
         /// <summary>
-        /// Borrower AgeAtApplicationYearsCount
+        /// Borrower AgeAtApplicationYearsCount [38], [70]
         /// </summary>
         public int? AgeAtApplicationYearsCount { get => _ageAtApplicationYearsCount; set => SetField(ref _ageAtApplicationYearsCount, value); }
 
         /// <summary>
-        /// Borrower AliasName
+        /// Borrower AliasName [1869], [1874]
         /// </summary>
         public string? AliasName { get => _aliasName; set => SetField(ref _aliasName, value); }
 
         /// <summary>
-        /// Borrower AlimonyChildSupportObligationIndicator
+        /// Borrower AlimonyChildSupportObligationIndicator [173], [179]
         /// </summary>
         public bool? AlimonyChildSupportObligationIndicator { get => _alimonyChildSupportObligationIndicator; set => SetField(ref _alimonyChildSupportObligationIndicator, value); }
 
@@ -559,7 +557,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Annual income for the household [USDA.X16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? AnnualIncome { get => _annualIncome; set => SetField(ref _annualIncome, value); }
 
         /// <summary>
@@ -568,7 +566,7 @@ namespace EncompassRest.Loans
         public string? ApplicantType { get => _applicantType; set => SetField(ref _applicantType, value); }
 
         /// <summary>
-        /// Borrower ApplicationTakenMethodType
+        /// Borrower ApplicationTakenMethodType [4143], [4131]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"FaceToFace\":\"Face-to-Face Interview\"}")]
         public StringEnumValue<ApplicationTakenMethodType> ApplicationTakenMethodType { get => _applicationTakenMethodType; set => SetField(ref _applicationTakenMethodType, value); }
@@ -576,88 +574,87 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Asset Income (Income from household assets as described in 1980.347(d) of RD Instruction 1980-D) [USDA.X170]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AssetIncome { get => _assetIncome; set => SetField(ref _assetIncome, value); }
 
         /// <summary>
-        /// Borrower AssetRepAndWarrantyMessage
+        /// Borrower AssetRepAndWarrantyMessage [MORNET.X100], [MORNET.X114]
         /// </summary>
         public string? AssetRepAndWarrantyMessage { get => _assetRepAndWarrantyMessage; set => SetField(ref _assetRepAndWarrantyMessage, value); }
 
         /// <summary>
-        /// Borrower AssetRepAndWarrantyReliefAvailable
+        /// Borrower AssetRepAndWarrantyReliefAvailable [MORNET.X103], [MORNET.X117]
         /// </summary>
         public bool? AssetRepAndWarrantyReliefAvailable { get => _assetRepAndWarrantyReliefAvailable; set => SetField(ref _assetRepAndWarrantyReliefAvailable, value); }
 
         /// <summary>
-        /// Borrower AuthorizedCreditReportIndicator
+        /// Borrower AuthorizedCreditReportIndicator [4073], [4076]
         /// </summary>
         public bool? AuthorizedCreditReportIndicator { get => _authorizedCreditReportIndicator; set => SetField(ref _authorizedCreditReportIndicator, value); }
 
         /// <summary>
-        /// Borrower AuthorizedToSignIndicator
+        /// Borrower AuthorizedToSignIndicator [2968], [2969]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Authorized to Sign\"}")]
         public bool? AuthorizedToSignIndicator { get => _authorizedToSignIndicator; set => SetField(ref _authorizedToSignIndicator, value); }
 
         /// <summary>
-        /// Borrower BankAccountNumber
+        /// Borrower BankAccountNumber [CAPIAP.X122], [CAPIAP.X129]
         /// </summary>
         public string? BankAccountNumber { get => _bankAccountNumber; set => SetField(ref _bankAccountNumber, value); }
 
         /// <summary>
-        /// Borrower BankAccountType
+        /// Borrower BankAccountType [CAPIAP.X120], [CAPIAP.X127]
         /// </summary>
         public StringEnumValue<BankAccountType> BankAccountType { get => _bankAccountType; set => SetField(ref _bankAccountType, value); }
 
         /// <summary>
-        /// Borrower BankContactAddress
+        /// Borrower BankContactAddress [CAPIAP.X123], [CAPIAP.X130]
         /// </summary>
         public string? BankContactAddress { get => _bankContactAddress; set => SetField(ref _bankContactAddress, value); }
 
         /// <summary>
-        /// Borrower BankContactCity
+        /// Borrower BankContactCity [CAPIAP.X124], [CAPIAP.X131]
         /// </summary>
         public string? BankContactCity { get => _bankContactCity; set => SetField(ref _bankContactCity, value); }
 
         /// <summary>
-        /// Borrower BankContactName
+        /// Borrower BankContactName [CAPIAP.X121], [CAPIAP.X128]
         /// </summary>
         public string? BankContactName { get => _bankContactName; set => SetField(ref _bankContactName, value); }
 
         /// <summary>
-        /// Borrower BankContactPostalCode
+        /// Borrower BankContactPostalCode [CAPIAP.X126], [CAPIAP.X133]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string? BankContactPostalCode { get => _bankContactPostalCode; set => SetField(ref _bankContactPostalCode, value); }
 
         /// <summary>
-        /// Borrower BankContactState
+        /// Borrower BankContactState [CAPIAP.X125], [CAPIAP.X132]
         /// </summary>
         public StringEnumValue<State> BankContactState { get => _bankContactState; set => SetField(ref _bankContactState, value); }
 
         /// <summary>
-        /// Borrower BankruptcyIndicator
+        /// Borrower BankruptcyIndicator [265], [266]
         /// </summary>
         public bool? BankruptcyIndicator { get => _bankruptcyIndicator; set => SetField(ref _bankruptcyIndicator, value); }
 
         /// <summary>
-        /// Borrower BankruptcyIndicatorChapterEleven
+        /// Borrower BankruptcyIndicatorChapterEleven [URLA.X175], [URLA.X179]
         /// </summary>
         public bool? BankruptcyIndicatorChapterEleven { get => _bankruptcyIndicatorChapterEleven; set => SetField(ref _bankruptcyIndicatorChapterEleven, value); }
 
         /// <summary>
-        /// Borrower BankruptcyIndicatorChapterSeven
+        /// Borrower BankruptcyIndicatorChapterSeven [URLA.X174], [URLA.X178]
         /// </summary>
         public bool? BankruptcyIndicatorChapterSeven { get => _bankruptcyIndicatorChapterSeven; set => SetField(ref _bankruptcyIndicatorChapterSeven, value); }
 
         /// <summary>
-        /// Borrower BankruptcyIndicatorChapterThirteen
+        /// Borrower BankruptcyIndicatorChapterThirteen [URLA.X177], [URLA.X181]
         /// </summary>
         public bool? BankruptcyIndicatorChapterThirteen { get => _bankruptcyIndicatorChapterThirteen; set => SetField(ref _bankruptcyIndicatorChapterThirteen, value); }
 
         /// <summary>
-        /// Borrower BankruptcyIndicatorChapterTwelve
+        /// Borrower BankruptcyIndicatorChapterTwelve [URLA.X176], [URLA.X180]
         /// </summary>
         public bool? BankruptcyIndicatorChapterTwelve { get => _bankruptcyIndicatorChapterTwelve; set => SetField(ref _bankruptcyIndicatorChapterTwelve, value); }
 
@@ -667,39 +664,37 @@ namespace EncompassRest.Loans
         public StringEnumValue<BankruptcyForeclosureStatus> BankruptcyStatus { get => _bankruptcyStatus; set => SetField(ref _bankruptcyStatus, value); }
 
         /// <summary>
-        /// Borrower BaseIncome
+        /// Borrower BaseIncome [USDA.X164], [USDA.X165]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BaseIncome { get => _baseIncome; set => SetField(ref _baseIncome, value); }
 
         /// <summary>
-        /// Borrower BaseIncomeValidationMessage
+        /// Borrower BaseIncomeValidationMessage [MORNET.X132], [MORNET.X144]
         /// </summary>
         public string? BaseIncomeValidationMessage { get => _baseIncomeValidationMessage; set => SetField(ref _baseIncomeValidationMessage, value); }
 
         /// <summary>
-        /// Borrower BaseMonthlyIncomeAmount
+        /// Borrower BaseMonthlyIncomeAmount [1088], [1089]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BaseMonthlyIncomeAmount { get => _baseMonthlyIncomeAmount; set => SetField(ref _baseMonthlyIncomeAmount, value); }
 
         /// <summary>
-        /// Borrower BirthDate
+        /// Borrower BirthDate [1402], [1403]
         /// </summary>
         public DateTime? BirthDate { get => _birthDate; set => SetField(ref _birthDate, value); }
 
         /// <summary>
-        /// Borrower BonusValidationMessage
+        /// Borrower BonusValidationMessage [MORNET.X133], [MORNET.X145]
         /// </summary>
         public string? BonusValidationMessage { get => _bonusValidationMessage; set => SetField(ref _bonusValidationMessage, value); }
 
         /// <summary>
-        /// Borrower BorrowedDownPaymentIndicator
+        /// Borrower BorrowedDownPaymentIndicator [174], [180]
         /// </summary>
         public bool? BorrowedDownPaymentIndicator { get => _borrowedDownPaymentIndicator; set => SetField(ref _borrowedDownPaymentIndicator, value); }
 
         /// <summary>
-        /// Borrower BorrowerConsentRequestDate
+        /// Borrower BorrowerConsentRequestDate [4108], [4109]
         /// </summary>
         public DateTime? BorrowerConsentRequestDate { get => _borrowerConsentRequestDate; set => SetField(ref _borrowerConsentRequestDate, value); }
 
@@ -709,27 +704,27 @@ namespace EncompassRest.Loans
         public int? BorrowerIndex { get => _borrowerIndex; set => SetField(ref _borrowerIndex, value); }
 
         /// <summary>
-        /// Borrower BorrowerType
+        /// Borrower BorrowerType [1871], [1876]
         /// </summary>
         public StringEnumValue<BorrowerType> BorrowerType { get => _borrowerType; set => SetField(ref _borrowerType, value); }
 
         /// <summary>
-        /// Borrower BorrowerTypeInSummary
+        /// Borrower BorrowerTypeInSummary [4008], [4009]
         /// </summary>
         public StringEnumValue<BorrowerType> BorrowerTypeInSummary { get => _borrowerTypeInSummary; set => SetField(ref _borrowerTypeInSummary, value); }
 
         /// <summary>
-        /// Borrower CaivrsIdentifier
+        /// Borrower CaivrsIdentifier [1018], [1144]
         /// </summary>
         public string? CaivrsIdentifier { get => _caivrsIdentifier; set => SetField(ref _caivrsIdentifier, value); }
 
         /// <summary>
-        /// Borrower CdDeliveryMethod
+        /// Borrower CdDeliveryMethod [CORRESPONDENT.X388], [CORRESPONDENT.X389]
         /// </summary>
         public string? CdDeliveryMethod { get => _cdDeliveryMethod; set => SetField(ref _cdDeliveryMethod, value); }
 
         /// <summary>
-        /// Borrower CitizenshipResidencyType
+        /// Borrower CitizenshipResidencyType [BORCIT], [COBORCIT]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? CitizenshipResidencyType { get => _citizenshipResidencyType; set => SetField(ref _citizenshipResidencyType, value); }
@@ -740,7 +735,7 @@ namespace EncompassRest.Loans
         public bool? CoBorrAttendedSameCounselingIndicator { get => _coBorrAttendedSameCounselingIndicator; set => SetField(ref _coBorrAttendedSameCounselingIndicator, value); }
 
         /// <summary>
-        /// Borrower CoMakerEndorserOfNoteIndicator
+        /// Borrower CoMakerEndorserOfNoteIndicator [171], [177]
         /// </summary>
         public bool? CoMakerEndorserOfNoteIndicator { get => _coMakerEndorserOfNoteIndicator; set => SetField(ref _coMakerEndorserOfNoteIndicator, value); }
 
@@ -750,52 +745,52 @@ namespace EncompassRest.Loans
         public string? CommentOfCreditReport { get => _commentOfCreditReport; set => SetField(ref _commentOfCreditReport, value); }
 
         /// <summary>
-        /// Borrower CommissionValidationMessage
+        /// Borrower CommissionValidationMessage [MORNET.X135], [MORNET.X147]
         /// </summary>
         public string? CommissionValidationMessage { get => _commissionValidationMessage; set => SetField(ref _commissionValidationMessage, value); }
 
         /// <summary>
-        /// Borrower ConfirmedCRBKEC
+        /// Borrower ConfirmedCRBKEC [MORNET.X152], [MORNET.X156]
         /// </summary>
         public bool? ConfirmedCRBKEC { get => _confirmedCRBKEC; set => SetField(ref _confirmedCRBKEC, value); }
 
         /// <summary>
-        /// Borrower ConfirmedCRBKIncorrect
+        /// Borrower ConfirmedCRBKIncorrect [MORNET.X151], [MORNET.X155]
         /// </summary>
         public bool? ConfirmedCRBKIncorrect { get => _confirmedCRBKIncorrect; set => SetField(ref _confirmedCRBKIncorrect, value); }
 
         /// <summary>
-        /// Borrower ConfirmedCRDIL
+        /// Borrower ConfirmedCRDIL [MORNET.X81], [MORNET.X87]
         /// </summary>
         public bool? ConfirmedCRDIL { get => _confirmedCRDIL; set => SetField(ref _confirmedCRDIL, value); }
 
         /// <summary>
-        /// Borrower ConfirmedCRFCEC
+        /// Borrower ConfirmedCRFCEC [MORNET.X80], [MORNET.X86]
         /// </summary>
         public bool? ConfirmedCRFCEC { get => _confirmedCRFCEC; set => SetField(ref _confirmedCRFCEC, value); }
 
         /// <summary>
-        /// Borrower ConfirmedCRFCIncorrect
+        /// Borrower ConfirmedCRFCIncorrect [MORNET.X79], [MORNET.X85]
         /// </summary>
         public bool? ConfirmedCRFCIncorrect { get => _confirmedCRFCIncorrect; set => SetField(ref _confirmedCRFCIncorrect, value); }
 
         /// <summary>
-        /// Borrower ConfirmedCRPFS
+        /// Borrower ConfirmedCRPFS [MORNET.X82], [MORNET.X88]
         /// </summary>
         public bool? ConfirmedCRPFS { get => _confirmedCRPFS; set => SetField(ref _confirmedCRPFS, value); }
 
         /// <summary>
-        /// Borrower ConfirmedMtgDelIncorrect
+        /// Borrower ConfirmedMtgDelIncorrect [MORNET.X153], [MORNET.X154]
         /// </summary>
         public bool? ConfirmedMtgDelIncorrect { get => _confirmedMtgDelIncorrect; set => SetField(ref _confirmedMtgDelIncorrect, value); }
 
         /// <summary>
-        /// Borrower ConfirmedOther
+        /// Borrower ConfirmedOther [MORNET.X83], [MORNET.X89]
         /// </summary>
         public bool? ConfirmedOther { get => _confirmedOther; set => SetField(ref _confirmedOther, value); }
 
         /// <summary>
-        /// Borrower ConfirmedOtherDescription
+        /// Borrower ConfirmedOtherDescription [MORNET.X84], [MORNET.X90]
         /// </summary>
         public string? ConfirmedOtherDescription { get => _confirmedOtherDescription; set => SetField(ref _confirmedOtherDescription, value); }
 
@@ -805,17 +800,17 @@ namespace EncompassRest.Loans
         public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
-        /// Borrower CounselingConfirmationType
+        /// Borrower CounselingConfirmationType [CORRESPONDENT.X440], [CORRESPONDENT.X441]
         /// </summary>
         public string? CounselingConfirmationType { get => _counselingConfirmationType; set => SetField(ref _counselingConfirmationType, value); }
 
         /// <summary>
-        /// Borrower CounselingConfirmationTypeDescription
+        /// Borrower CounselingConfirmationTypeDescription [CORRESPONDENT.X442], [CORRESPONDENT.X443]
         /// </summary>
         public string? CounselingConfirmationTypeDescription { get => _counselingConfirmationTypeDescription; set => SetField(ref _counselingConfirmationTypeDescription, value); }
 
         /// <summary>
-        /// Borrower CounselingFormatTypeDescription
+        /// Borrower CounselingFormatTypeDescription [CORRESPONDENT.X444], [CORRESPONDENT.X452]
         /// </summary>
         public string? CounselingFormatTypeDescription { get => _counselingFormatTypeDescription; set => SetField(ref _counselingFormatTypeDescription, value); }
 
@@ -830,7 +825,7 @@ namespace EncompassRest.Loans
         public DateTime? CreditReceivedDate { get => _creditReceivedDate; set => SetField(ref _creditReceivedDate, value); }
 
         /// <summary>
-        /// Borrower CreditReportAuthorizationMethod
+        /// Borrower CreditReportAuthorizationMethod [4075], [4078]
         /// </summary>
         public StringEnumValue<CreditReportAuthorizationMethod> CreditReportAuthorizationMethod { get => _creditReportAuthorizationMethod; set => SetField(ref _creditReportAuthorizationMethod, value); }
 
@@ -841,12 +836,12 @@ namespace EncompassRest.Loans
         public IList<CreditReport> CreditReports { get => GetField(ref _creditReports); set => SetField(ref _creditReports, value); }
 
         /// <summary>
-        /// Borrower CreditScoreIndicator
+        /// Borrower CreditScoreIndicator [USDA.X12], [USDA.X15]
         /// </summary>
         public bool? CreditScoreIndicator { get => _creditScoreIndicator; set => SetField(ref _creditScoreIndicator, value); }
 
         /// <summary>
-        /// Borrower CurrentEmploymentDoesNotApply
+        /// Borrower CurrentEmploymentDoesNotApply [URLA.X199], [URLA.X200]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
         public bool? CurrentEmploymentDoesNotApply { get => _currentEmploymentDoesNotApply; set => SetField(ref _currentEmploymentDoesNotApply, value); }
@@ -857,7 +852,7 @@ namespace EncompassRest.Loans
         public string? DataVerify { get => _dataVerify; set => SetField(ref _dataVerify, value); }
 
         /// <summary>
-        /// Borrower DateAuthorizedCreditReport
+        /// Borrower DateAuthorizedCreditReport [4074], [4077]
         /// </summary>
         public DateTime? DateAuthorizedCreditReport { get => _dateAuthorizedCreditReport; set => SetField(ref _dateAuthorizedCreditReport, value); }
 
@@ -872,57 +867,57 @@ namespace EncompassRest.Loans
         public DateTime? DateOfForeclosure { get => _dateOfForeclosure; set => SetField(ref _dateOfForeclosure, value); }
 
         /// <summary>
-        /// Borrower DeclarationsJIndicator
+        /// Borrower DeclarationsJIndicator [965], [985]
         /// </summary>
         public bool? DeclarationsJIndicator { get => _declarationsJIndicator; set => SetField(ref _declarationsJIndicator, value); }
 
         /// <summary>
-        /// Borrower DeclarationsKIndicator
+        /// Borrower DeclarationsKIndicator [466], [467]
         /// </summary>
         public bool? DeclarationsKIndicator { get => _declarationsKIndicator; set => SetField(ref _declarationsKIndicator, value); }
 
         /// <summary>
-        /// Borrower DependentCount
+        /// Borrower DependentCount [53], [85]
         /// </summary>
         public int? DependentCount { get => _dependentCount; set => SetField(ref _dependentCount, value); }
 
         /// <summary>
-        /// Borrower DependentsAgesDescription
+        /// Borrower DependentsAgesDescription [54], [86]
         /// </summary>
         public string? DependentsAgesDescription { get => _dependentsAgesDescription; set => SetField(ref _dependentsAgesDescription, value); }
 
         /// <summary>
-        /// Borrower DisabledIndicator
+        /// Borrower DisabledIndicator [USDA.X2], [USDA.X5]
         /// </summary>
         public bool? DisabledIndicator { get => _disabledIndicator; set => SetField(ref _disabledIndicator, value); }
 
         /// <summary>
-        /// Borrower DomesticRelationshipType
+        /// Borrower DomesticRelationshipType [URLA.X113], [URLA.X114]
         /// </summary>
         public StringEnumValue<DomesticRelationshipType> DomesticRelationshipType { get => _domesticRelationshipType; set => SetField(ref _domesticRelationshipType, value); }
 
         /// <summary>
-        /// Borrower DUVerificationEmploymentIncomeIndicator
+        /// Borrower DUVerificationEmploymentIncomeIndicator [TQL.X98], [TQL.X100]
         /// </summary>
         public bool? DUVerificationEmploymentIncomeIndicator { get => _dUVerificationEmploymentIncomeIndicator; set => SetField(ref _dUVerificationEmploymentIncomeIndicator, value); }
 
         /// <summary>
-        /// Borrower DUVerificationEmploymentIncomeMessage
+        /// Borrower DUVerificationEmploymentIncomeMessage [TQL.X99], [TQL.X101]
         /// </summary>
         public string? DUVerificationEmploymentIncomeMessage { get => _dUVerificationEmploymentIncomeMessage; set => SetField(ref _dUVerificationEmploymentIncomeMessage, value); }
 
         /// <summary>
-        /// Borrower EmailAddressText
+        /// Borrower EmailAddressText [1240], [1268]
         /// </summary>
         public string? EmailAddressText { get => _emailAddressText; set => SetField(ref _emailAddressText, value); }
 
         /// <summary>
-        /// Borrower EmploymentVerificationAvailable
+        /// Borrower EmploymentVerificationAvailable [MORNET.X129], [MORNET.X141]
         /// </summary>
         public bool? EmploymentVerificationAvailable { get => _employmentVerificationAvailable; set => SetField(ref _employmentVerificationAvailable, value); }
 
         /// <summary>
-        /// Borrower EmploymentVerificationMessage
+        /// Borrower EmploymentVerificationMessage [MORNET.X131], [MORNET.X143]
         /// </summary>
         public string? EmploymentVerificationMessage { get => _employmentVerificationMessage; set => SetField(ref _employmentVerificationMessage, value); }
 
@@ -952,77 +947,77 @@ namespace EncompassRest.Loans
         public int? Equifax90Days { get => _equifax90Days; set => SetField(ref _equifax90Days, value); }
 
         /// <summary>
-        /// Borrower EquifaxCreditScoreForDisclosure
+        /// Borrower EquifaxCreditScoreForDisclosure [DISCLOSURE.X629], [DISCLOSURE.X630]
         /// </summary>
         public bool? EquifaxCreditScoreForDisclosure { get => _equifaxCreditScoreForDisclosure; set => SetField(ref _equifaxCreditScoreForDisclosure, value); }
 
         /// <summary>
-        /// Borrower EquifaxCreditScoreRanksPercent
+        /// Borrower EquifaxCreditScoreRanksPercent [DISCLOSURE.X635], [DISCLOSURE.X636]
         /// </summary>
         public int? EquifaxCreditScoreRanksPercent { get => _equifaxCreditScoreRanksPercent; set => SetField(ref _equifaxCreditScoreRanksPercent, value); }
 
         /// <summary>
-        /// Borrower EquifaxDatePulled
+        /// Borrower EquifaxDatePulled [DISCLOSURE.X51], [DISCLOSURE.X52]
         /// </summary>
         public DateTime? EquifaxDatePulled { get => _equifaxDatePulled; set => SetField(ref _equifaxDatePulled, value); }
 
         /// <summary>
-        /// Borrower EquifaxFactorCode1
+        /// Borrower EquifaxFactorCode1 [DISCLOSURE.X1017], [DISCLOSURE.X1022]
         /// </summary>
         public string? EquifaxFactorCode1 { get => _equifaxFactorCode1; set => SetField(ref _equifaxFactorCode1, value); }
 
         /// <summary>
-        /// Borrower EquifaxFactorCode2
+        /// Borrower EquifaxFactorCode2 [DISCLOSURE.X1018], [DISCLOSURE.X1023]
         /// </summary>
         public string? EquifaxFactorCode2 { get => _equifaxFactorCode2; set => SetField(ref _equifaxFactorCode2, value); }
 
         /// <summary>
-        /// Borrower EquifaxFactorCode3
+        /// Borrower EquifaxFactorCode3 [DISCLOSURE.X1019], [DISCLOSURE.X1024]
         /// </summary>
         public string? EquifaxFactorCode3 { get => _equifaxFactorCode3; set => SetField(ref _equifaxFactorCode3, value); }
 
         /// <summary>
-        /// Borrower EquifaxFactorCode4
+        /// Borrower EquifaxFactorCode4 [DISCLOSURE.X1020], [DISCLOSURE.X1025]
         /// </summary>
         public string? EquifaxFactorCode4 { get => _equifaxFactorCode4; set => SetField(ref _equifaxFactorCode4, value); }
 
         /// <summary>
-        /// Borrower EquifaxFactorCode5
+        /// Borrower EquifaxFactorCode5 [DISCLOSURE.X1021], [DISCLOSURE.X1026]
         /// </summary>
         public string? EquifaxFactorCode5 { get => _equifaxFactorCode5; set => SetField(ref _equifaxFactorCode5, value); }
 
         /// <summary>
-        /// Borrower EquifaxKeyFactor1
+        /// Borrower EquifaxKeyFactor1 [DISCLOSURE.X53], [DISCLOSURE.X57]
         /// </summary>
         public string? EquifaxKeyFactor1 { get => _equifaxKeyFactor1; set => SetField(ref _equifaxKeyFactor1, value); }
 
         /// <summary>
-        /// Borrower EquifaxKeyFactor2
+        /// Borrower EquifaxKeyFactor2 [DISCLOSURE.X54], [DISCLOSURE.X58]
         /// </summary>
         public string? EquifaxKeyFactor2 { get => _equifaxKeyFactor2; set => SetField(ref _equifaxKeyFactor2, value); }
 
         /// <summary>
-        /// Borrower EquifaxKeyFactor3
+        /// Borrower EquifaxKeyFactor3 [DISCLOSURE.X55], [DISCLOSURE.X59]
         /// </summary>
         public string? EquifaxKeyFactor3 { get => _equifaxKeyFactor3; set => SetField(ref _equifaxKeyFactor3, value); }
 
         /// <summary>
-        /// Borrower EquifaxKeyFactor4
+        /// Borrower EquifaxKeyFactor4 [DISCLOSURE.X56], [DISCLOSURE.X60]
         /// </summary>
         public string? EquifaxKeyFactor4 { get => _equifaxKeyFactor4; set => SetField(ref _equifaxKeyFactor4, value); }
 
         /// <summary>
-        /// Borrower EquifaxKeyFactor5
+        /// Borrower EquifaxKeyFactor5 [DISCLOSURE.X175], [DISCLOSURE.X178]
         /// </summary>
         public string? EquifaxKeyFactor5 { get => _equifaxKeyFactor5; set => SetField(ref _equifaxKeyFactor5, value); }
 
         /// <summary>
-        /// Borrower EquifaxMaterialTermsCreditByScore
+        /// Borrower EquifaxMaterialTermsCreditByScore [DISCLOSURE.X947], [DISCLOSURE.X948]
         /// </summary>
         public bool? EquifaxMaterialTermsCreditByScore { get => _equifaxMaterialTermsCreditByScore; set => SetField(ref _equifaxMaterialTermsCreditByScore, value); }
 
         /// <summary>
-        /// Borrower EquifaxScore
+        /// Borrower EquifaxScore [1414], [1415]
         /// </summary>
         public string? EquifaxScore { get => _equifaxScore; set => SetField(ref _equifaxScore, value); }
 
@@ -1052,107 +1047,107 @@ namespace EncompassRest.Loans
         public int? Experian90Days { get => _experian90Days; set => SetField(ref _experian90Days, value); }
 
         /// <summary>
-        /// Borrower ExperianCreditScore
+        /// Borrower ExperianCreditScore [60], [67]
         /// </summary>
         public string? ExperianCreditScore { get => _experianCreditScore; set => SetField(ref _experianCreditScore, value); }
 
         /// <summary>
-        /// Borrower ExperianCreditScoreForDisclosure
+        /// Borrower ExperianCreditScoreForDisclosure [DISCLOSURE.X625], [DISCLOSURE.X626]
         /// </summary>
         public bool? ExperianCreditScoreForDisclosure { get => _experianCreditScoreForDisclosure; set => SetField(ref _experianCreditScoreForDisclosure, value); }
 
         /// <summary>
-        /// Borrower ExperianCreditScoreRanksPercent
+        /// Borrower ExperianCreditScoreRanksPercent [DISCLOSURE.X631], [DISCLOSURE.X632]
         /// </summary>
         public int? ExperianCreditScoreRanksPercent { get => _experianCreditScoreRanksPercent; set => SetField(ref _experianCreditScoreRanksPercent, value); }
 
         /// <summary>
-        /// Borrower ExperianDatePulled
+        /// Borrower ExperianDatePulled [DISCLOSURE.X11], [DISCLOSURE.X12]
         /// </summary>
         public DateTime? ExperianDatePulled { get => _experianDatePulled; set => SetField(ref _experianDatePulled, value); }
 
         /// <summary>
-        /// Borrower ExperianFactorCode1
+        /// Borrower ExperianFactorCode1 [DISCLOSURE.X997], [DISCLOSURE.X1002]
         /// </summary>
         public string? ExperianFactorCode1 { get => _experianFactorCode1; set => SetField(ref _experianFactorCode1, value); }
 
         /// <summary>
-        /// Borrower ExperianFactorCode2
+        /// Borrower ExperianFactorCode2 [DISCLOSURE.X998], [DISCLOSURE.X1003]
         /// </summary>
         public string? ExperianFactorCode2 { get => _experianFactorCode2; set => SetField(ref _experianFactorCode2, value); }
 
         /// <summary>
-        /// Borrower ExperianFactorCode3
+        /// Borrower ExperianFactorCode3 [DISCLOSURE.X999], [DISCLOSURE.X1004]
         /// </summary>
         public string? ExperianFactorCode3 { get => _experianFactorCode3; set => SetField(ref _experianFactorCode3, value); }
 
         /// <summary>
-        /// Borrower ExperianFactorCode4
+        /// Borrower ExperianFactorCode4 [DISCLOSURE.X1000], [DISCLOSURE.X1005]
         /// </summary>
         public string? ExperianFactorCode4 { get => _experianFactorCode4; set => SetField(ref _experianFactorCode4, value); }
 
         /// <summary>
-        /// Borrower ExperianFactorCode5
+        /// Borrower ExperianFactorCode5 [DISCLOSURE.X1001], [DISCLOSURE.X1006]
         /// </summary>
         public string? ExperianFactorCode5 { get => _experianFactorCode5; set => SetField(ref _experianFactorCode5, value); }
 
         /// <summary>
-        /// Borrower ExperianKeyFactor1
+        /// Borrower ExperianKeyFactor1 [DISCLOSURE.X13], [DISCLOSURE.X17]
         /// </summary>
         public string? ExperianKeyFactor1 { get => _experianKeyFactor1; set => SetField(ref _experianKeyFactor1, value); }
 
         /// <summary>
-        /// Borrower ExperianKeyFactor2
+        /// Borrower ExperianKeyFactor2 [DISCLOSURE.X14], [DISCLOSURE.X18]
         /// </summary>
         public string? ExperianKeyFactor2 { get => _experianKeyFactor2; set => SetField(ref _experianKeyFactor2, value); }
 
         /// <summary>
-        /// Borrower ExperianKeyFactor3
+        /// Borrower ExperianKeyFactor3 [DISCLOSURE.X15], [DISCLOSURE.X19]
         /// </summary>
         public string? ExperianKeyFactor3 { get => _experianKeyFactor3; set => SetField(ref _experianKeyFactor3, value); }
 
         /// <summary>
-        /// Borrower ExperianKeyFactor4
+        /// Borrower ExperianKeyFactor4 [DISCLOSURE.X16], [DISCLOSURE.X20]
         /// </summary>
         public string? ExperianKeyFactor4 { get => _experianKeyFactor4; set => SetField(ref _experianKeyFactor4, value); }
 
         /// <summary>
-        /// Borrower ExperianKeyFactor5
+        /// Borrower ExperianKeyFactor5 [DISCLOSURE.X173], [DISCLOSURE.X176]
         /// </summary>
         public string? ExperianKeyFactor5 { get => _experianKeyFactor5; set => SetField(ref _experianKeyFactor5, value); }
 
         /// <summary>
-        /// Borrower ExperianMaterialTermsCreditByScore
+        /// Borrower ExperianMaterialTermsCreditByScore [DISCLOSURE.X943], [DISCLOSURE.X944]
         /// </summary>
         public bool? ExperianMaterialTermsCreditByScore { get => _experianMaterialTermsCreditByScore; set => SetField(ref _experianMaterialTermsCreditByScore, value); }
 
         /// <summary>
-        /// Borrower FannieFirstName
+        /// Borrower FannieFirstName [ULDD.FNM.4000], [ULDD.FNM.4004]
         /// </summary>
         public string? FannieFirstName { get => _fannieFirstName; set => SetField(ref _fannieFirstName, value); }
 
         /// <summary>
-        /// Borrower FannieMiddleName
+        /// Borrower FannieMiddleName [ULDD.FNM.4001], [ULDD.FNM.4005]
         /// </summary>
         public string? FannieMiddleName { get => _fannieMiddleName; set => SetField(ref _fannieMiddleName, value); }
 
         /// <summary>
-        /// Borrower Final1003Provided
+        /// Borrower Final1003Provided [CORRESPONDENT.X455], [CORRESPONDENT.X456]
         /// </summary>
         public bool? Final1003Provided { get => _final1003Provided; set => SetField(ref _final1003Provided, value); }
 
         /// <summary>
-        /// Borrower FirstName
+        /// Borrower FirstName [4000], [4004]
         /// </summary>
         public string? FirstName { get => _firstName; set => SetField(ref _firstName, value); }
 
         /// <summary>
-        /// Borrower FirstNameWithMiddleName
+        /// Borrower FirstNameWithMiddleName [36], [68]
         /// </summary>
         public string? FirstNameWithMiddleName { get => _firstNameWithMiddleName; set => SetField(ref _firstNameWithMiddleName, value); }
 
         /// <summary>
-        /// Borrower FirstTimeHomeBuyer
+        /// Borrower FirstTimeHomeBuyer [USDA.X3], [USDA.X6]
         /// </summary>
         public bool? FirstTimeHomeBuyer { get => _firstTimeHomeBuyer; set => SetField(ref _firstTimeHomeBuyer, value); }
 
@@ -1167,12 +1162,12 @@ namespace EncompassRest.Loans
         public StringEnumValue<BankruptcyForeclosureStatus> ForeclosureStatus { get => _foreclosureStatus; set => SetField(ref _foreclosureStatus, value); }
 
         /// <summary>
-        /// Borrower FreddieMacPerson1
+        /// Borrower FreddieMacPerson1 [CASASRN.X170], [CASASRN.X180]
         /// </summary>
         public string? FreddieMacPerson1 { get => _freddieMacPerson1; set => SetField(ref _freddieMacPerson1, value); }
 
         /// <summary>
-        /// Borrower FreddieMacPerson2
+        /// Borrower FreddieMacPerson2 [CASASRN.X171], [CASASRN.X181]
         /// </summary>
         public string? FreddieMacPerson2 { get => _freddieMacPerson2; set => SetField(ref _freddieMacPerson2, value); }
 
@@ -1182,12 +1177,12 @@ namespace EncompassRest.Loans
         public string? FullName { get => _fullName; set => SetField(ref _fullName, value); }
 
         /// <summary>
-        /// Borrower FullNameWithSuffix
+        /// Borrower FullNameWithSuffix [1868], [1873]
         /// </summary>
         public string? FullNameWithSuffix { get => _fullNameWithSuffix; set => SetField(ref _fullNameWithSuffix, value); }
 
         /// <summary>
-        /// Borrower GiftsAndGrantsIndicatorBor
+        /// Borrower GiftsAndGrantsIndicatorBor [URLA.X82], [URLA.X83]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does not apply\"}")]
         public bool? GiftsAndGrantsIndicatorBor { get => _giftsAndGrantsIndicatorBor; set => SetField(ref _giftsAndGrantsIndicatorBor, value); }
@@ -1195,216 +1190,215 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Highest Credit Limit [2567]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HighestCreditLimit { get => _highestCreditLimit; set => SetField(ref _highestCreditLimit, value); }
 
         /// <summary>
-        /// Borrower Hmda2003OtherRaceNationalOriginDescription
+        /// Borrower Hmda2003OtherRaceNationalOriginDescription [1136], [1300]
         /// </summary>
         public string? Hmda2003OtherRaceNationalOriginDescription { get => _hmda2003OtherRaceNationalOriginDescription; set => SetField(ref _hmda2003OtherRaceNationalOriginDescription, value); }
 
         /// <summary>
-        /// Borrower Hmda2003RaceNationalOriginType
+        /// Borrower Hmda2003RaceNationalOriginType [470], [477]
         /// </summary>
         public StringEnumValue<Hmda2003RaceNationalOriginType> Hmda2003RaceNationalOriginType { get => _hmda2003RaceNationalOriginType; set => SetField(ref _hmda2003RaceNationalOriginType, value); }
 
         /// <summary>
-        /// Borrower Hmda2CreditScoreForDecisionMaking
+        /// Borrower Hmda2CreditScoreForDecisionMaking [HMDA.X116], [HMDA.X118]
         /// </summary>
         public StringEnumValue<HmdaCreditScoreForDecisionMaking> Hmda2CreditScoreForDecisionMaking { get => _hmda2CreditScoreForDecisionMaking; set => SetField(ref _hmda2CreditScoreForDecisionMaking, value); }
 
         /// <summary>
-        /// Borrower Hmda2CreditScoringModel
+        /// Borrower Hmda2CreditScoringModel [HMDA.X117], [HMDA.X119]
         /// </summary>
         public StringEnumValue<HmdaCreditScoringModel> Hmda2CreditScoringModel { get => _hmda2CreditScoringModel; set => SetField(ref _hmda2CreditScoringModel, value); }
 
         /// <summary>
-        /// Borrower HmdaAfricanAmericanIndicator
+        /// Borrower HmdaAfricanAmericanIndicator [1526], [1534]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Black or African American\"}")]
         public bool? HmdaAfricanAmericanIndicator { get => _hmdaAfricanAmericanIndicator; set => SetField(ref _hmdaAfricanAmericanIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaAge
+        /// Borrower HmdaAge [4183], [4184]
         /// </summary>
         public StringEnumValue<HmdaAge> HmdaAge { get => _hmdaAge; set => SetField(ref _hmdaAge, value); }
 
         /// <summary>
-        /// Borrower HmdaAmericanIndianIndicator
+        /// Borrower HmdaAmericanIndianIndicator [1524], [1532]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"American Indian or Alaska Native\"}")]
         public bool? HmdaAmericanIndianIndicator { get => _hmdaAmericanIndianIndicator; set => SetField(ref _hmdaAmericanIndianIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaAmericanIndianTribe
+        /// Borrower HmdaAmericanIndianTribe [4126], [4137]
         /// </summary>
         public string? HmdaAmericanIndianTribe { get => _hmdaAmericanIndianTribe; set => SetField(ref _hmdaAmericanIndianTribe, value); }
 
         /// <summary>
-        /// Borrower HmdaAsianIndianIndicator
+        /// Borrower HmdaAsianIndianIndicator [4148], [4163]
         /// </summary>
         public bool? HmdaAsianIndianIndicator { get => _hmdaAsianIndianIndicator; set => SetField(ref _hmdaAsianIndianIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaAsianIndicator
+        /// Borrower HmdaAsianIndicator [1525], [1533]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Asian\"}")]
         public bool? HmdaAsianIndicator { get => _hmdaAsianIndicator; set => SetField(ref _hmdaAsianIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaAsianOtherRaceIndicator
+        /// Borrower HmdaAsianOtherRaceIndicator [4154], [4169]
         /// </summary>
         public bool? HmdaAsianOtherRaceIndicator { get => _hmdaAsianOtherRaceIndicator; set => SetField(ref _hmdaAsianOtherRaceIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaChineseIndicator
+        /// Borrower HmdaChineseIndicator [4149], [4164]
         /// </summary>
         public bool? HmdaChineseIndicator { get => _hmdaChineseIndicator; set => SetField(ref _hmdaChineseIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaCreditScoreForDecisionMaking
+        /// Borrower HmdaCreditScoreForDecisionMaking [4174], [4177]
         /// </summary>
         [LoanFieldProperty(MissingOptionsJson = "[\"Exempt\"]")]
         public StringEnumValue<HmdaCreditScoreForDecisionMaking> HmdaCreditScoreForDecisionMaking { get => _hmdaCreditScoreForDecisionMaking; set => SetField(ref _hmdaCreditScoreForDecisionMaking, value); }
 
         /// <summary>
-        /// Borrower HmdaCreditScoringModel
+        /// Borrower HmdaCreditScoringModel [4175], [4178]
         /// </summary>
         [LoanFieldProperty(MissingOptionsJson = "[\"Exempt\"]")]
         public StringEnumValue<HmdaCreditScoringModel> HmdaCreditScoringModel { get => _hmdaCreditScoringModel; set => SetField(ref _hmdaCreditScoringModel, value); }
 
         /// <summary>
-        /// Borrower HmdaCubanIndicator
+        /// Borrower HmdaCubanIndicator [4146], [4161]
         /// </summary>
         public bool? HmdaCubanIndicator { get => _hmdaCubanIndicator; set => SetField(ref _hmdaCubanIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityDoNotWishIndicator
+        /// Borrower HmdaEthnicityDoNotWishIndicator [4205], [4206]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
         public bool? HmdaEthnicityDoNotWishIndicator { get => _hmdaEthnicityDoNotWishIndicator; set => SetField(ref _hmdaEthnicityDoNotWishIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityHispanicLatinoIndicator
+        /// Borrower HmdaEthnicityHispanicLatinoIndicator [4210], [4213]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Hispanic or Latino\"}")]
         public bool? HmdaEthnicityHispanicLatinoIndicator { get => _hmdaEthnicityHispanicLatinoIndicator; set => SetField(ref _hmdaEthnicityHispanicLatinoIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityInfoNotProvided
+        /// Borrower HmdaEthnicityInfoNotProvided [4243], [4246]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Not Provided\"}")]
         public bool? HmdaEthnicityInfoNotProvided { get => _hmdaEthnicityInfoNotProvided; set => SetField(ref _hmdaEthnicityInfoNotProvided, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityNotApplicableIndicator
+        /// Borrower HmdaEthnicityNotApplicableIndicator [4212], [4215]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not Applicable\"}")]
         public bool? HmdaEthnicityNotApplicableIndicator { get => _hmdaEthnicityNotApplicableIndicator; set => SetField(ref _hmdaEthnicityNotApplicableIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityNotHispanicLatinoIndicator
+        /// Borrower HmdaEthnicityNotHispanicLatinoIndicator [4211], [4214]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not Hispanic or Latino\"}")]
         public bool? HmdaEthnicityNotHispanicLatinoIndicator { get => _hmdaEthnicityNotHispanicLatinoIndicator; set => SetField(ref _hmdaEthnicityNotHispanicLatinoIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityReportedField1
+        /// Borrower HmdaEthnicityReportedField1 [4221], [4231]
         /// </summary>
         public string? HmdaEthnicityReportedField1 { get => _hmdaEthnicityReportedField1; set => SetField(ref _hmdaEthnicityReportedField1, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityReportedField2
+        /// Borrower HmdaEthnicityReportedField2 [4222], [4232]
         /// </summary>
         public string? HmdaEthnicityReportedField2 { get => _hmdaEthnicityReportedField2; set => SetField(ref _hmdaEthnicityReportedField2, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityReportedField3
+        /// Borrower HmdaEthnicityReportedField3 [4223], [4233]
         /// </summary>
         public string? HmdaEthnicityReportedField3 { get => _hmdaEthnicityReportedField3; set => SetField(ref _hmdaEthnicityReportedField3, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityReportedField4
+        /// Borrower HmdaEthnicityReportedField4 [4224], [4234]
         /// </summary>
         public string? HmdaEthnicityReportedField4 { get => _hmdaEthnicityReportedField4; set => SetField(ref _hmdaEthnicityReportedField4, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityReportedField5
+        /// Borrower HmdaEthnicityReportedField5 [4225], [4235]
         /// </summary>
         public string? HmdaEthnicityReportedField5 { get => _hmdaEthnicityReportedField5; set => SetField(ref _hmdaEthnicityReportedField5, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityReportedFields
+        /// Borrower HmdaEthnicityReportedFields [4236], [4238]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? HmdaEthnicityReportedFields { get => _hmdaEthnicityReportedFields; set => SetField(ref _hmdaEthnicityReportedFields, value); }
 
         /// <summary>
-        /// Borrower HmdaEthnicityType
+        /// Borrower HmdaEthnicityType [1523], [1531]
         /// </summary>
         public StringEnumValue<HmdaEthnicityType> HmdaEthnicityType { get => _hmdaEthnicityType; set => SetField(ref _hmdaEthnicityType, value); }
 
         /// <summary>
-        /// Borrower HmdaFilipinoIndicator
+        /// Borrower HmdaFilipinoIndicator [4150], [4165]
         /// </summary>
         public bool? HmdaFilipinoIndicator { get => _hmdaFilipinoIndicator; set => SetField(ref _hmdaFilipinoIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaGenderType
+        /// Borrower HmdaGenderType [471], [478]
         /// </summary>
         public StringEnumValue<HmdaGenderType> HmdaGenderType { get => _hmdaGenderType; set => SetField(ref _hmdaGenderType, value); }
 
         /// <summary>
-        /// Borrower HmdaGendertypeDoNotWishIndicator
+        /// Borrower HmdaGendertypeDoNotWishIndicator [4195], [4199]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
         public bool? HmdaGendertypeDoNotWishIndicator { get => _hmdaGendertypeDoNotWishIndicator; set => SetField(ref _hmdaGendertypeDoNotWishIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaGendertypeFemaleIndicator
+        /// Borrower HmdaGendertypeFemaleIndicator [4193], [4197]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Female\"}")]
         public bool? HmdaGendertypeFemaleIndicator { get => _hmdaGendertypeFemaleIndicator; set => SetField(ref _hmdaGendertypeFemaleIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaGendertypeMaleIndicator
+        /// Borrower HmdaGendertypeMaleIndicator [4194], [4198]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Male\"}")]
         public bool? HmdaGendertypeMaleIndicator { get => _hmdaGendertypeMaleIndicator; set => SetField(ref _hmdaGendertypeMaleIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaGendertypeNotApplicableIndicator
+        /// Borrower HmdaGendertypeNotApplicableIndicator [4196], [4200]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not Applicable\"}")]
         public bool? HmdaGendertypeNotApplicableIndicator { get => _hmdaGendertypeNotApplicableIndicator; set => SetField(ref _hmdaGendertypeNotApplicableIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaGuamanianOrChamorroIndicator
+        /// Borrower HmdaGuamanianOrChamorroIndicator [4156], [4171]
         /// </summary>
         public bool? HmdaGuamanianOrChamorroIndicator { get => _hmdaGuamanianOrChamorroIndicator; set => SetField(ref _hmdaGuamanianOrChamorroIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaHispanicLatinoOtherOriginIndicator
+        /// Borrower HmdaHispanicLatinoOtherOriginIndicator [4147], [4162]
         /// </summary>
         public bool? HmdaHispanicLatinoOtherOriginIndicator { get => _hmdaHispanicLatinoOtherOriginIndicator; set => SetField(ref _hmdaHispanicLatinoOtherOriginIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaJapaneseIndicator
+        /// Borrower HmdaJapaneseIndicator [4151], [4166]
         /// </summary>
         public bool? HmdaJapaneseIndicator { get => _hmdaJapaneseIndicator; set => SetField(ref _hmdaJapaneseIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaKoreanIndicator
+        /// Borrower HmdaKoreanIndicator [4152], [4167]
         /// </summary>
         public bool? HmdaKoreanIndicator { get => _hmdaKoreanIndicator; set => SetField(ref _hmdaKoreanIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaMexicanIndicator
+        /// Borrower HmdaMexicanIndicator [4144], [4159]
         /// </summary>
         public bool? HmdaMexicanIndicator { get => _hmdaMexicanIndicator; set => SetField(ref _hmdaMexicanIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaNativeHawaiianIndicator
+        /// Borrower HmdaNativeHawaiianIndicator [4155], [4170]
         /// </summary>
         public bool? HmdaNativeHawaiianIndicator { get => _hmdaNativeHawaiianIndicator; set => SetField(ref _hmdaNativeHawaiianIndicator, value); }
 
@@ -1415,136 +1409,136 @@ namespace EncompassRest.Loans
         public bool? HmdaNoCoApplicantIndicator { get => _hmdaNoCoApplicantIndicator; set => SetField(ref _hmdaNoCoApplicantIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaNotApplicableIndicator
+        /// Borrower HmdaNotApplicableIndicator [1530], [1538]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not applicable\"}")]
         public bool? HmdaNotApplicableIndicator { get => _hmdaNotApplicableIndicator; set => SetField(ref _hmdaNotApplicableIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaNotProvidedIndicator
+        /// Borrower HmdaNotProvidedIndicator [1529], [1537]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
         public bool? HmdaNotProvidedIndicator { get => _hmdaNotProvidedIndicator; set => SetField(ref _hmdaNotProvidedIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaOtherAsianRace
+        /// Borrower HmdaOtherAsianRace [4128], [4139]
         /// </summary>
         public string? HmdaOtherAsianRace { get => _hmdaOtherAsianRace; set => SetField(ref _hmdaOtherAsianRace, value); }
 
         /// <summary>
-        /// Borrower HmdaOtherHispanicLatinoOrigin
+        /// Borrower HmdaOtherHispanicLatinoOrigin [4125], [4136]
         /// </summary>
         public string? HmdaOtherHispanicLatinoOrigin { get => _hmdaOtherHispanicLatinoOrigin; set => SetField(ref _hmdaOtherHispanicLatinoOrigin, value); }
 
         /// <summary>
-        /// Borrower HmdaOtherPacificIslanderRace
+        /// Borrower HmdaOtherPacificIslanderRace [4130], [4141]
         /// </summary>
         public string? HmdaOtherPacificIslanderRace { get => _hmdaOtherPacificIslanderRace; set => SetField(ref _hmdaOtherPacificIslanderRace, value); }
 
         /// <summary>
-        /// Borrower HmdaOtherScoringModel
+        /// Borrower HmdaOtherScoringModel [4176], [4179]
         /// </summary>
         public string? HmdaOtherScoringModel { get => _hmdaOtherScoringModel; set => SetField(ref _hmdaOtherScoringModel, value); }
 
         /// <summary>
-        /// Borrower HmdaPacificIslanderIndicator
+        /// Borrower HmdaPacificIslanderIndicator [1527], [1535]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Native Hawaiian or Other Pacific Islander\"}")]
         public bool? HmdaPacificIslanderIndicator { get => _hmdaPacificIslanderIndicator; set => SetField(ref _hmdaPacificIslanderIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaPacificIslanderOtherIndicator
+        /// Borrower HmdaPacificIslanderOtherIndicator [4158], [4173]
         /// </summary>
         public bool? HmdaPacificIslanderOtherIndicator { get => _hmdaPacificIslanderOtherIndicator; set => SetField(ref _hmdaPacificIslanderOtherIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaPuertoRicanIndicator
+        /// Borrower HmdaPuertoRicanIndicator [4145], [4160]
         /// </summary>
         public bool? HmdaPuertoRicanIndicator { get => _hmdaPuertoRicanIndicator; set => SetField(ref _hmdaPuertoRicanIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaRaceDoNotWishProvideIndicator
+        /// Borrower HmdaRaceDoNotWishProvideIndicator [4252], [4253]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
         public bool? HmdaRaceDoNotWishProvideIndicator { get => _hmdaRaceDoNotWishProvideIndicator; set => SetField(ref _hmdaRaceDoNotWishProvideIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaRaceInfoNotProvided
+        /// Borrower HmdaRaceInfoNotProvided [4244], [4247]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Not Provided\"}")]
         public bool? HmdaRaceInfoNotProvided { get => _hmdaRaceInfoNotProvided; set => SetField(ref _hmdaRaceInfoNotProvided, value); }
 
         /// <summary>
-        /// Borrower HmdaRaceReportedField1
+        /// Borrower HmdaRaceReportedField1 [4216], [4226]
         /// </summary>
         public string? HmdaRaceReportedField1 { get => _hmdaRaceReportedField1; set => SetField(ref _hmdaRaceReportedField1, value); }
 
         /// <summary>
-        /// Borrower HmdaRaceReportedField2
+        /// Borrower HmdaRaceReportedField2 [4217], [4227]
         /// </summary>
         public string? HmdaRaceReportedField2 { get => _hmdaRaceReportedField2; set => SetField(ref _hmdaRaceReportedField2, value); }
 
         /// <summary>
-        /// Borrower HmdaRaceReportedField3
+        /// Borrower HmdaRaceReportedField3 [4218], [4228]
         /// </summary>
         public string? HmdaRaceReportedField3 { get => _hmdaRaceReportedField3; set => SetField(ref _hmdaRaceReportedField3, value); }
 
         /// <summary>
-        /// Borrower HmdaRaceReportedField4
+        /// Borrower HmdaRaceReportedField4 [4219], [4229]
         /// </summary>
         public string? HmdaRaceReportedField4 { get => _hmdaRaceReportedField4; set => SetField(ref _hmdaRaceReportedField4, value); }
 
         /// <summary>
-        /// Borrower HmdaRaceReportedField5
+        /// Borrower HmdaRaceReportedField5 [4220], [4230]
         /// </summary>
         public string? HmdaRaceReportedField5 { get => _hmdaRaceReportedField5; set => SetField(ref _hmdaRaceReportedField5, value); }
 
         /// <summary>
-        /// Borrower HmdaRaceReportedFields
+        /// Borrower HmdaRaceReportedFields [4237], [4239]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? HmdaRaceReportedFields { get => _hmdaRaceReportedFields; set => SetField(ref _hmdaRaceReportedFields, value); }
 
         /// <summary>
-        /// Borrower HmdaRefusalIndicator
+        /// Borrower HmdaRefusalIndicator [188], [189]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to furnish this info\"}")]
         public bool? HmdaRefusalIndicator { get => _hmdaRefusalIndicator; set => SetField(ref _hmdaRefusalIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaSamoanIndicator
+        /// Borrower HmdaSamoanIndicator [4157], [4172]
         /// </summary>
         public bool? HmdaSamoanIndicator { get => _hmdaSamoanIndicator; set => SetField(ref _hmdaSamoanIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaSexInfoNotProvided
+        /// Borrower HmdaSexInfoNotProvided [4245], [4248]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Not Provided\"}")]
         public bool? HmdaSexInfoNotProvided { get => _hmdaSexInfoNotProvided; set => SetField(ref _hmdaSexInfoNotProvided, value); }
 
         /// <summary>
-        /// Borrower HmdaVietnameseIndicator
+        /// Borrower HmdaVietnameseIndicator [4153], [4168]
         /// </summary>
         public bool? HmdaVietnameseIndicator { get => _hmdaVietnameseIndicator; set => SetField(ref _hmdaVietnameseIndicator, value); }
 
         /// <summary>
-        /// Borrower HmdaWhiteIndicator
+        /// Borrower HmdaWhiteIndicator [1528], [1536]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"White\"}")]
         public bool? HmdaWhiteIndicator { get => _hmdaWhiteIndicator; set => SetField(ref _hmdaWhiteIndicator, value); }
 
         /// <summary>
-        /// Borrower HomeCounselingAgencyName
+        /// Borrower HomeCounselingAgencyName [URLA.X232], [URLA.X244]
         /// </summary>
         public string? HomeCounselingAgencyName { get => _homeCounselingAgencyName; set => SetField(ref _homeCounselingAgencyName, value); }
 
         /// <summary>
-        /// Borrower HomeCounselingCompletionDate
+        /// Borrower HomeCounselingCompletionDate [URLA.X233], [URLA.X243]
         /// </summary>
         public DateTime? HomeCounselingCompletionDate { get => _homeCounselingCompletionDate; set => SetField(ref _homeCounselingCompletionDate, value); }
 
         /// <summary>
-        /// Borrower HomeownerPastThreeYearsIndicator
+        /// Borrower HomeownerPastThreeYearsIndicator [403], [1108]
         /// </summary>
         public bool? HomeownerPastThreeYearsIndicator { get => _homeownerPastThreeYearsIndicator; set => SetField(ref _homeownerPastThreeYearsIndicator, value); }
 
@@ -1560,37 +1554,37 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// Borrower IncomeRepAndWarrantyMessage
+        /// Borrower IncomeRepAndWarrantyMessage [MORNET.X99], [MORNET.X113]
         /// </summary>
         public string? IncomeRepAndWarrantyMessage { get => _incomeRepAndWarrantyMessage; set => SetField(ref _incomeRepAndWarrantyMessage, value); }
 
         /// <summary>
-        /// Borrower IncomeRepAndWarrantyReliefAvailable
+        /// Borrower IncomeRepAndWarrantyReliefAvailable [MORNET.X104], [MORNET.X118]
         /// </summary>
         public bool? IncomeRepAndWarrantyReliefAvailable { get => _incomeRepAndWarrantyReliefAvailable; set => SetField(ref _incomeRepAndWarrantyReliefAvailable, value); }
 
         /// <summary>
-        /// Borrower Initial1003Provided
+        /// Borrower Initial1003Provided [CORRESPONDENT.X453], [CORRESPONDENT.X454]
         /// </summary>
         public bool? Initial1003Provided { get => _initial1003Provided; set => SetField(ref _initial1003Provided, value); }
 
         /// <summary>
-        /// Borrower IntentToOccupyIndicator
+        /// Borrower IntentToOccupyIndicator [418], [1343]
         /// </summary>
         public bool? IntentToOccupyIndicator { get => _intentToOccupyIndicator; set => SetField(ref _intentToOccupyIndicator, value); }
 
         /// <summary>
-        /// Borrower IntuitReportId
+        /// Borrower IntuitReportId [FANNIESERVICE.X5], [FANNIESERVICE.X6]
         /// </summary>
         public string? IntuitReportId { get => _intuitReportId; set => SetField(ref _intuitReportId, value); }
 
         /// <summary>
-        /// Borrower IsBaseIncomeAvailable
+        /// Borrower IsBaseIncomeAvailable [MORNET.X105], [MORNET.X119]
         /// </summary>
         public bool? IsBaseIncomeAvailable { get => _isBaseIncomeAvailable; set => SetField(ref _isBaseIncomeAvailable, value); }
 
         /// <summary>
-        /// Borrower IsBonusAvailable
+        /// Borrower IsBonusAvailable [MORNET.X106], [MORNET.X120]
         /// </summary>
         public bool? IsBonusAvailable { get => _isBonusAvailable; set => SetField(ref _isBonusAvailable, value); }
 
@@ -1600,47 +1594,47 @@ namespace EncompassRest.Loans
         public bool? IsBorrower { get => _isBorrower; set => SetField(ref _isBorrower, value); }
 
         /// <summary>
-        /// Borrower IsCommissionAvailable
+        /// Borrower IsCommissionAvailable [MORNET.X108], [MORNET.X122]
         /// </summary>
         public bool? IsCommissionAvailable { get => _isCommissionAvailable; set => SetField(ref _isCommissionAvailable, value); }
 
         /// <summary>
-        /// Borrower IsEthnicityBasedOnVisual
+        /// Borrower IsEthnicityBasedOnVisual [4121], [4132]
         /// </summary>
         public StringEnumValue<YNOrNA> IsEthnicityBasedOnVisual { get => _isEthnicityBasedOnVisual; set => SetField(ref _isEthnicityBasedOnVisual, value); }
 
         /// <summary>
-        /// Borrower IsOvertimeAvailable
+        /// Borrower IsOvertimeAvailable [MORNET.X107], [MORNET.X121]
         /// </summary>
         public bool? IsOvertimeAvailable { get => _isOvertimeAvailable; set => SetField(ref _isOvertimeAvailable, value); }
 
         /// <summary>
-        /// Borrower IsRaceBasedOnVisual
+        /// Borrower IsRaceBasedOnVisual [4122], [4133]
         /// </summary>
         public StringEnumValue<YNOrNA> IsRaceBasedOnVisual { get => _isRaceBasedOnVisual; set => SetField(ref _isRaceBasedOnVisual, value); }
 
         /// <summary>
-        /// Borrower IsSelfEmployed
+        /// Borrower IsSelfEmployed [MORNET.X110], [MORNET.X124]
         /// </summary>
         public bool? IsSelfEmployed { get => _isSelfEmployed; set => SetField(ref _isSelfEmployed, value); }
 
         /// <summary>
-        /// Borrower IsSexBasedOnVisual
+        /// Borrower IsSexBasedOnVisual [4123], [4134]
         /// </summary>
         public StringEnumValue<YNOrNA> IsSexBasedOnVisual { get => _isSexBasedOnVisual; set => SetField(ref _isSexBasedOnVisual, value); }
 
         /// <summary>
-        /// Borrower IsSocialSecurityAvailable
+        /// Borrower IsSocialSecurityAvailable [MORNET.X109], [MORNET.X123]
         /// </summary>
         public bool? IsSocialSecurityAvailable { get => _isSocialSecurityAvailable; set => SetField(ref _isSocialSecurityAvailable, value); }
 
         /// <summary>
-        /// Borrower IsTaxReturnAvailable
+        /// Borrower IsTaxReturnAvailable [MORNET.X128], [MORNET.X140]
         /// </summary>
         public bool? IsTaxReturnAvailable { get => _isTaxReturnAvailable; set => SetField(ref _isTaxReturnAvailable, value); }
 
         /// <summary>
-        /// Borrower JointAssetLiabilityReportingIndicator
+        /// Borrower JointAssetLiabilityReportingIndicator [URLA.X3], [URLA.X4]
         /// </summary>
         public StringEnumValue<JointAssetLiabilityReportingIndicator> JointAssetLiabilityReportingIndicator { get => _jointAssetLiabilityReportingIndicator; set => SetField(ref _jointAssetLiabilityReportingIndicator, value); }
 
@@ -1650,93 +1644,93 @@ namespace EncompassRest.Loans
         public StringEnumValue<JointAssetLiabilityReportingIndicator> JointAssetLiabilityReportingIndicator1 { get => _jointAssetLiabilityReportingIndicator1; set => SetField(ref _jointAssetLiabilityReportingIndicator1, value); }
 
         /// <summary>
-        /// Borrower LanguageCodeOtherDescription
+        /// Borrower LanguageCodeOtherDescription [URLA.X35], [URLA.X36]
         /// </summary>
         public string? LanguageCodeOtherDescription { get => _languageCodeOtherDescription; set => SetField(ref _languageCodeOtherDescription, value); }
 
         /// <summary>
-        /// Borrower LanguagePreference
+        /// Borrower LanguagePreference [URLA.X21], [URLA.X22]
         /// </summary>
         public StringEnumValue<LanguagePreference> LanguagePreference { get => _languagePreference; set => SetField(ref _languagePreference, value); }
 
         /// <summary>
-        /// Borrower LastName
+        /// Borrower LastName [4002], [4006]
         /// </summary>
         public string? LastName { get => _lastName; set => SetField(ref _lastName, value); }
 
         /// <summary>
-        /// Borrower LastNameWithSuffix
+        /// Borrower LastNameWithSuffix [37], [69]
         /// </summary>
         public string? LastNameWithSuffix { get => _lastNameWithSuffix; set => SetField(ref _lastNameWithSuffix, value); }
 
         /// <summary>
-        /// Borrower LeaveAndEarningsStatement
+        /// Borrower LeaveAndEarningsStatement [CORRESPONDENT.X457], [CORRESPONDENT.X458]
         /// </summary>
         public bool? LeaveAndEarningsStatement { get => _leaveAndEarningsStatement; set => SetField(ref _leaveAndEarningsStatement, value); }
 
         /// <summary>
-        /// Borrower LeDeliveryMethod
+        /// Borrower LeDeliveryMethod [CORRESPONDENT.X386], [CORRESPONDENT.X387]
         /// </summary>
         public string? LeDeliveryMethod { get => _leDeliveryMethod; set => SetField(ref _leDeliveryMethod, value); }
 
         /// <summary>
-        /// Borrower LegalOtherThanSpouse
+        /// Borrower LegalOtherThanSpouse [URLA.X111], [URLA.X112]
         /// </summary>
         public bool? LegalOtherThanSpouse { get => _legalOtherThanSpouse; set => SetField(ref _legalOtherThanSpouse, value); }
 
         /// <summary>
-        /// Borrower LiabilitiesDoesNotApply
+        /// Borrower LiabilitiesDoesNotApply [URLA.X59], [URLA.X60]
         /// </summary>
         public bool? LiabilitiesDoesNotApply { get => _liabilitiesDoesNotApply; set => SetField(ref _liabilitiesDoesNotApply, value); }
 
         /// <summary>
-        /// Borrower LoanForeclosureOrJudgementIndicator
+        /// Borrower LoanForeclosureOrJudgementIndicator [1057], [1197]
         /// </summary>
         public bool? LoanForeclosureOrJudgementIndicator { get => _loanForeclosureOrJudgementIndicator; set => SetField(ref _loanForeclosureOrJudgementIndicator, value); }
 
         /// <summary>
-        /// Borrower LpdGsa
+        /// Borrower LpdGsa [940], [942]
         /// </summary>
         public string? LpdGsa { get => _lpdGsa; set => SetField(ref _lpdGsa, value); }
 
         /// <summary>
-        /// Borrower MailingAddressSameAsPresentIndicator
+        /// Borrower MailingAddressSameAsPresentIndicator [1819], [1820]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Same as present address\"}")]
         public bool? MailingAddressSameAsPresentIndicator { get => _mailingAddressSameAsPresentIndicator; set => SetField(ref _mailingAddressSameAsPresentIndicator, value); }
 
         /// <summary>
-        /// Borrower MaritalStatusType
+        /// Borrower MaritalStatusType [52], [84]
         /// </summary>
         public StringEnumValue<MaritalStatusType> MaritalStatusType { get => _maritalStatusType; set => SetField(ref _maritalStatusType, value); }
 
         /// <summary>
-        /// Borrower MiddleCreditScore
+        /// Borrower MiddleCreditScore [USDA.X194], [USDA.X195]
         /// </summary>
         public int? MiddleCreditScore { get => _middleCreditScore; set => SetField(ref _middleCreditScore, value); }
 
         /// <summary>
-        /// Borrower MiddleFicoScore
+        /// Borrower MiddleFicoScore [2849], [2850]
         /// </summary>
         public string? MiddleFicoScore { get => _middleFicoScore; set => SetField(ref _middleFicoScore, value); }
 
         /// <summary>
-        /// Borrower MiddleName
+        /// Borrower MiddleName [4001], [4005]
         /// </summary>
         public string? MiddleName { get => _middleName; set => SetField(ref _middleName, value); }
 
         /// <summary>
-        /// Borrower MilitaryServiceExpectedCompletionDate
+        /// Borrower MilitaryServiceExpectedCompletionDate [URLA.X17], [URLA.X18]
         /// </summary>
         public DateTime? MilitaryServiceExpectedCompletionDate { get => _militaryServiceExpectedCompletionDate; set => SetField(ref _militaryServiceExpectedCompletionDate, value); }
 
         /// <summary>
-        /// Borrower MinFicoScore
+        /// Borrower MinFicoScore [1484], [1502]
         /// </summary>
         public string? MinFicoScore { get => _minFicoScore; set => SetField(ref _minFicoScore, value); }
 
         /// <summary>
-        /// Borrower MobilePhone
+        /// Borrower MobilePhone [1480], [1490]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? MobilePhone { get => _mobilePhone; set => SetField(ref _mobilePhone, value); }
@@ -1747,65 +1741,64 @@ namespace EncompassRest.Loans
         public bool? MortgageOnCredit { get => _mortgageOnCredit; set => SetField(ref _mortgageOnCredit, value); }
 
         /// <summary>
-        /// Borrower NameToObtainLoanFromRHS
+        /// Borrower NameToObtainLoanFromRHS [USDA.X45], [USDA.X47]
         /// </summary>
         public string? NameToObtainLoanFromRHS { get => _nameToObtainLoanFromRHS; set => SetField(ref _nameToObtainLoanFromRHS, value); }
 
         /// <summary>
-        /// Borrower NearestRelativeAddress
+        /// Borrower NearestRelativeAddress [CAPIAP.X10], [CAPIAP.X17]
         /// </summary>
         public string? NearestRelativeAddress { get => _nearestRelativeAddress; set => SetField(ref _nearestRelativeAddress, value); }
 
         /// <summary>
-        /// Borrower NearestRelativeCity
+        /// Borrower NearestRelativeCity [CAPIAP.X11], [CAPIAP.X18]
         /// </summary>
         public string? NearestRelativeCity { get => _nearestRelativeCity; set => SetField(ref _nearestRelativeCity, value); }
 
         /// <summary>
-        /// Borrower NearestRelativeCountry
+        /// Borrower NearestRelativeCountry [CAPIAP.X64], [CAPIAP.X65]
         /// </summary>
         public string? NearestRelativeCountry { get => _nearestRelativeCountry; set => SetField(ref _nearestRelativeCountry, value); }
 
         /// <summary>
-        /// Borrower NearestRelativeForeignAddressIndicator
+        /// Borrower NearestRelativeForeignAddressIndicator [CAPIAP.X62], [CAPIAP.X63]
         /// </summary>
         public bool? NearestRelativeForeignAddressIndicator { get => _nearestRelativeForeignAddressIndicator; set => SetField(ref _nearestRelativeForeignAddressIndicator, value); }
 
         /// <summary>
-        /// Borrower NearestRelativeName
+        /// Borrower NearestRelativeName [CAPIAP.X16], [CAPIAP.X9]
         /// </summary>
         public string? NearestRelativeName { get => _nearestRelativeName; set => SetField(ref _nearestRelativeName, value); }
 
         /// <summary>
-        /// Borrower NearestRelativePhone
+        /// Borrower NearestRelativePhone [CAPIAP.X15], [CAPIAP.X22]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? NearestRelativePhone { get => _nearestRelativePhone; set => SetField(ref _nearestRelativePhone, value); }
 
         /// <summary>
-        /// Borrower NearestRelativePostalCode
+        /// Borrower NearestRelativePostalCode [CAPIAP.X13], [CAPIAP.X20]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string? NearestRelativePostalCode { get => _nearestRelativePostalCode; set => SetField(ref _nearestRelativePostalCode, value); }
 
         /// <summary>
-        /// Borrower NearestRelativeRelationship
+        /// Borrower NearestRelativeRelationship [CAPIAP.X14], [CAPIAP.X21]
         /// </summary>
         public string? NearestRelativeRelationship { get => _nearestRelativeRelationship; set => SetField(ref _nearestRelativeRelationship, value); }
 
         /// <summary>
-        /// Borrower NearestRelativeState
+        /// Borrower NearestRelativeState [CAPIAP.X12], [CAPIAP.X19]
         /// </summary>
         public StringEnumValue<State> NearestRelativeState { get => _nearestRelativeState; set => SetField(ref _nearestRelativeState, value); }
 
         /// <summary>
-        /// Borrower NetRentalIncome
+        /// Borrower NetRentalIncome [CORRESPONDENT.X43], [CORRESPONDENT.X44]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NetRentalIncome { get => _netRentalIncome; set => SetField(ref _netRentalIncome, value); }
 
         /// <summary>
-        /// Borrower No3rdPartyEmailIndicator
+        /// Borrower No3rdPartyEmailIndicator [2857], [2858]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Borrower No Third-Party Email for HomePoints\"}")]
         public bool? No3rdPartyEmailIndicator { get => _no3rdPartyEmailIndicator; set => SetField(ref _no3rdPartyEmailIndicator, value); }
@@ -1834,7 +1827,7 @@ namespace EncompassRest.Loans
         public int? NumberofTradelines { get => _numberofTradelines; set => SetField(ref _numberofTradelines, value); }
 
         /// <summary>
-        /// Borrower ObtainLoanFromRHSIndicator
+        /// Borrower ObtainLoanFromRHSIndicator [USDA.X44], [USDA.X46]
         /// </summary>
         public bool? ObtainLoanFromRHSIndicator { get => _obtainLoanFromRHSIndicator; set => SetField(ref _obtainLoanFromRHSIndicator, value); }
 
@@ -1844,70 +1837,70 @@ namespace EncompassRest.Loans
         public StringEnumValue<OpenBankruptcy> OpenBankruptcy2 { get => _openBankruptcy2; set => SetField(ref _openBankruptcy2, value); }
 
         /// <summary>
-        /// Borrower OtherAssetsDoesNotApply
+        /// Borrower OtherAssetsDoesNotApply [URLA.X51], [URLA.X52]
         /// </summary>
         public bool? OtherAssetsDoesNotApply { get => _otherAssetsDoesNotApply; set => SetField(ref _otherAssetsDoesNotApply, value); }
 
         /// <summary>
-        /// Borrower OtherLiabilitiesDoesNotApply
+        /// Borrower OtherLiabilitiesDoesNotApply [URLA.X63], [URLA.X64]
         /// </summary>
         public bool? OtherLiabilitiesDoesNotApply { get => _otherLiabilitiesDoesNotApply; set => SetField(ref _otherLiabilitiesDoesNotApply, value); }
 
         /// <summary>
-        /// Borrower OtherMonthlyIncomeAmount
+        /// Borrower OtherMonthlyIncomeAmount [1145], [1146]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? OtherMonthlyIncomeAmount { get => _otherMonthlyIncomeAmount; set => SetField(ref _otherMonthlyIncomeAmount, value); }
 
         /// <summary>
-        /// Borrower OtherRelationshipTypeDescription
+        /// Borrower OtherRelationshipTypeDescription [URLA.X115], [URLA.X116]
         /// </summary>
         public string? OtherRelationshipTypeDescription { get => _otherRelationshipTypeDescription; set => SetField(ref _otherRelationshipTypeDescription, value); }
 
         /// <summary>
-        /// Borrower OtherSrcIncomeDoesNotApply
+        /// Borrower OtherSrcIncomeDoesNotApply [URLA.X40], [URLA.X41]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
         public bool? OtherSrcIncomeDoesNotApply { get => _otherSrcIncomeDoesNotApply; set => SetField(ref _otherSrcIncomeDoesNotApply, value); }
 
         /// <summary>
-        /// Borrower OtherSumAmount
+        /// Borrower OtherSumAmount [108], [117]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? OtherSumAmount { get => _otherSumAmount; set => SetField(ref _otherSumAmount, value); }
 
         /// <summary>
-        /// Borrower OutstandingJudgementsIndicator
+        /// Borrower OutstandingJudgementsIndicator [169], [175]
         /// </summary>
         public bool? OutstandingJudgementsIndicator { get => _outstandingJudgementsIndicator; set => SetField(ref _outstandingJudgementsIndicator, value); }
 
         /// <summary>
-        /// Borrower OvertimeValidationMessage
+        /// Borrower OvertimeValidationMessage [MORNET.X134], [MORNET.X146]
         /// </summary>
         public string? OvertimeValidationMessage { get => _overtimeValidationMessage; set => SetField(ref _overtimeValidationMessage, value); }
 
         /// <summary>
-        /// Borrower OwnershipConfirmationIndicator
+        /// Borrower OwnershipConfirmationIndicator [URLA.X153], [URLA.X159]
         /// </summary>
         public bool? OwnershipConfirmationIndicator { get => _ownershipConfirmationIndicator; set => SetField(ref _ownershipConfirmationIndicator, value); }
 
         /// <summary>
-        /// Borrower OwnershipFormatType
+        /// Borrower OwnershipFormatType [URLA.X154], [URLA.X160]
         /// </summary>
         public StringEnumValue<OwnershipFormatType> OwnershipFormatType { get => _ownershipFormatType; set => SetField(ref _ownershipFormatType, value); }
 
         /// <summary>
-        /// Borrower OwnershipPartyRoleIdentifier
+        /// Borrower OwnershipPartyRoleIdentifier [URLA.X155], [URLA.X161]
         /// </summary>
         public string? OwnershipPartyRoleIdentifier { get => _ownershipPartyRoleIdentifier; set => SetField(ref _ownershipPartyRoleIdentifier, value); }
 
         /// <summary>
-        /// Borrower PartyToLawsuitIndicator
+        /// Borrower PartyToLawsuitIndicator [172], [178]
         /// </summary>
         public bool? PartyToLawsuitIndicator { get => _partyToLawsuitIndicator; set => SetField(ref _partyToLawsuitIndicator, value); }
 
         /// <summary>
-        /// Borrower PartyToLawsuitIndicatorURLA
+        /// Borrower PartyToLawsuitIndicatorURLA [URLA.X100], [URLA.X101]
         /// </summary>
         public bool? PartyToLawsuitIndicatorURLA { get => _partyToLawsuitIndicatorURLA; set => SetField(ref _partyToLawsuitIndicatorURLA, value); }
 
@@ -1937,101 +1930,98 @@ namespace EncompassRest.Loans
         public int? Pass90Days { get => _pass90Days; set => SetField(ref _pass90Days, value); }
 
         /// <summary>
-        /// Borrower PensionRetireIncomeMessage
+        /// Borrower PensionRetireIncomeMessage [MORNET.X130], [MORNET.X142]
         /// </summary>
         public string? PensionRetireIncomeMessage { get => _pensionRetireIncomeMessage; set => SetField(ref _pensionRetireIncomeMessage, value); }
 
         /// <summary>
-        /// Borrower PersonFaxNumber
+        /// Borrower PersonFaxNumber [1188], [1241]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? PersonFaxNumber { get => _personFaxNumber; set => SetField(ref _personFaxNumber, value); }
 
         /// <summary>
-        /// Borrower PersonHoursPerWeek
+        /// Borrower PersonHoursPerWeek [HRSPERWEEK1], [HRSPERWEEK2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PersonHoursPerWeek { get => _personHoursPerWeek; set => SetField(ref _personHoursPerWeek, value); }
 
         /// <summary>
-        /// Borrower PersonIncomeAmount
+        /// Borrower PersonIncomeAmount [INCOMEAMT1], [INCOMEAMT2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PersonIncomeAmount { get => _personIncomeAmount; set => SetField(ref _personIncomeAmount, value); }
 
         /// <summary>
-        /// Borrower PersonIncomeFrequencyType
+        /// Borrower PersonIncomeFrequencyType [INCOMEFREQ1], [INCOMEFREQ2]
         /// </summary>
         public string? PersonIncomeFrequencyType { get => _personIncomeFrequencyType; set => SetField(ref _personIncomeFrequencyType, value); }
 
         /// <summary>
-        /// Borrower PersonMonthlyIncome
+        /// Borrower PersonMonthlyIncome [MONTHLYINCOME1], [MONTHLYINCOME2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PersonMonthlyIncome { get => _personMonthlyIncome; set => SetField(ref _personMonthlyIncome, value); }
 
         /// <summary>
-        /// Borrower PIWAccepted
+        /// Borrower PIWAccepted [MORNET.X101], [MORNET.X115]
         /// </summary>
         public bool? PIWAccepted { get => _pIWAccepted; set => SetField(ref _pIWAccepted, value); }
 
         /// <summary>
-        /// Borrower PIWMessage
+        /// Borrower PIWMessage [MORNET.X97], [MORNET.X111]
         /// </summary>
         public string? PIWMessage { get => _pIWMessage; set => SetField(ref _pIWMessage, value); }
 
         /// <summary>
-        /// Borrower PoaOccupancyIntent
+        /// Borrower PoaOccupancyIntent [Borr.OccupancyIntent], [CoBorr.OccupancyIntent]
         /// </summary>
         public StringEnumValue<OccupancyIntent> PoaOccupancyIntent { get => _poaOccupancyIntent; set => SetField(ref _poaOccupancyIntent, value); }
 
         /// <summary>
-        /// Borrower PoaSignatureText
+        /// Borrower PoaSignatureText [Borr.POASigTxt], [CoBorr.POASigTxt]
         /// </summary>
         public string? PoaSignatureText { get => _poaSignatureText; set => SetField(ref _poaSignatureText, value); }
 
         /// <summary>
-        /// Borrower PositiveCashFlow
+        /// Borrower PositiveCashFlow [1169], [1170]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PositiveCashFlow { get => _positiveCashFlow; set => SetField(ref _positiveCashFlow, value); }
 
         /// <summary>
-        /// Borrower PowerOfAttorneyName
+        /// Borrower PowerOfAttorneyName [1870], [1875]
         /// </summary>
         public string? PowerOfAttorneyName { get => _powerOfAttorneyName; set => SetField(ref _powerOfAttorneyName, value); }
 
         /// <summary>
-        /// Borrower PowerOfAttorneyTitleDescription
+        /// Borrower PowerOfAttorneyTitleDescription [1872], [1877]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? PowerOfAttorneyTitleDescription { get => _powerOfAttorneyTitleDescription; set => SetField(ref _powerOfAttorneyTitleDescription, value); }
 
         /// <summary>
-        /// Borrower PresentlyDelinquentIndicator
+        /// Borrower PresentlyDelinquentIndicator [463], [464]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Have any past due obligations owed to/insured by any agency of the Federal Government\"}")]
         public bool? PresentlyDelinquentIndicator { get => _presentlyDelinquentIndicator; set => SetField(ref _presentlyDelinquentIndicator, value); }
 
         /// <summary>
-        /// Borrower PresentlyDelinquentIndicatorURLA
+        /// Borrower PresentlyDelinquentIndicatorURLA [URLA.X98], [URLA.X99]
         /// </summary>
         public bool? PresentlyDelinquentIndicatorURLA { get => _presentlyDelinquentIndicatorURLA; set => SetField(ref _presentlyDelinquentIndicatorURLA, value); }
 
         /// <summary>
-        /// Borrower PreviousEmploymentDoesNotApply
+        /// Borrower PreviousEmploymentDoesNotApply [URLA.X203], [URLA.X204]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
         public bool? PreviousEmploymentDoesNotApply { get => _previousEmploymentDoesNotApply; set => SetField(ref _previousEmploymentDoesNotApply, value); }
 
         /// <summary>
-        /// Borrower PreviousGrossMonthlyIncome
+        /// Borrower PreviousGrossMonthlyIncome [URLA.X245], [URLA.X246]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PreviousGrossMonthlyIncome { get => _previousGrossMonthlyIncome; set => SetField(ref _previousGrossMonthlyIncome, value); }
 
         /// <summary>
-        /// Borrower PrintOnAdditionalBorrowerPage
+        /// Borrower PrintOnAdditionalBorrowerPage [URLA.X121], [URLA.X122]
         /// </summary>
         public bool? PrintOnAdditionalBorrowerPage { get => _printOnAdditionalBorrowerPage; set => SetField(ref _printOnAdditionalBorrowerPage, value); }
 
@@ -2046,73 +2036,73 @@ namespace EncompassRest.Loans
         public bool? PriorForeclosure { get => _priorForeclosure; set => SetField(ref _priorForeclosure, value); }
 
         /// <summary>
-        /// Borrower PriorPropertyDeedInLieuConveyedIndicator
+        /// Borrower PriorPropertyDeedInLieuConveyedIndicator [URLA.X102], [URLA.X103]
         /// </summary>
         public bool? PriorPropertyDeedInLieuConveyedIndicator { get => _priorPropertyDeedInLieuConveyedIndicator; set => SetField(ref _priorPropertyDeedInLieuConveyedIndicator, value); }
 
         /// <summary>
-        /// Borrower PriorPropertyForeclosureCompletedIndicator
+        /// Borrower PriorPropertyForeclosureCompletedIndicator [URLA.X106], [URLA.X107]
         /// </summary>
         public bool? PriorPropertyForeclosureCompletedIndicator { get => _priorPropertyForeclosureCompletedIndicator; set => SetField(ref _priorPropertyForeclosureCompletedIndicator, value); }
 
         /// <summary>
-        /// Borrower PriorPropertyShortSaleCompletedIndicator
+        /// Borrower PriorPropertyShortSaleCompletedIndicator [URLA.X104], [URLA.X105]
         /// </summary>
         public bool? PriorPropertyShortSaleCompletedIndicator { get => _priorPropertyShortSaleCompletedIndicator; set => SetField(ref _priorPropertyShortSaleCompletedIndicator, value); }
 
         /// <summary>
-        /// Borrower PriorPropertyTitleType
+        /// Borrower PriorPropertyTitleType [1069], [1070]
         /// </summary>
         public StringEnumValue<PriorPropertyTitleType> PriorPropertyTitleType { get => _priorPropertyTitleType; set => SetField(ref _priorPropertyTitleType, value); }
 
         /// <summary>
-        /// Borrower PriorPropertyUsageType
+        /// Borrower PriorPropertyUsageType [981], [1015]
         /// </summary>
         public StringEnumValue<PriorPropertyUsageType> PriorPropertyUsageType { get => _priorPropertyUsageType; set => SetField(ref _priorPropertyUsageType, value); }
 
         /// <summary>
-        /// Borrower PriorResidenceDoesNotApply
+        /// Borrower PriorResidenceDoesNotApply [URLA.X265], [URLA.X266]
         /// </summary>
         public bool? PriorResidenceDoesNotApply { get => _priorResidenceDoesNotApply; set => SetField(ref _priorResidenceDoesNotApply, value); }
 
         /// <summary>
-        /// Borrower PropertyForeclosedPastSevenYearsIndicator
+        /// Borrower PropertyForeclosedPastSevenYearsIndicator [170], [176]
         /// </summary>
         public bool? PropertyForeclosedPastSevenYearsIndicator { get => _propertyForeclosedPastSevenYearsIndicator; set => SetField(ref _propertyForeclosedPastSevenYearsIndicator, value); }
 
         /// <summary>
-        /// Borrower PropertyProposedCleanEnergyLienIndicator
+        /// Borrower PropertyProposedCleanEnergyLienIndicator [URLA.X94], [URLA.X95]
         /// </summary>
         public bool? PropertyProposedCleanEnergyLienIndicator { get => _propertyProposedCleanEnergyLienIndicator; set => SetField(ref _propertyProposedCleanEnergyLienIndicator, value); }
 
         /// <summary>
-        /// Borrower RealEstateDoesNotApply
+        /// Borrower RealEstateDoesNotApply [URLA.X69], [URLA.X110]
         /// </summary>
         public bool? RealEstateDoesNotApply { get => _realEstateDoesNotApply; set => SetField(ref _realEstateDoesNotApply, value); }
 
         /// <summary>
-        /// Borrower RelationshipDescription
+        /// Borrower RelationshipDescription [USDA.X11], [USDA.X14]
         /// </summary>
         public string? RelationshipDescription { get => _relationshipDescription; set => SetField(ref _relationshipDescription, value); }
 
         /// <summary>
-        /// Borrower RelationshipWithRDEmployeeIndicator
+        /// Borrower RelationshipWithRDEmployeeIndicator [USDA.X10], [USDA.X13]
         /// </summary>
         public bool? RelationshipWithRDEmployeeIndicator { get => _relationshipWithRDEmployeeIndicator; set => SetField(ref _relationshipWithRDEmployeeIndicator, value); }
 
         /// <summary>
-        /// Borrower ReserveNationalGuardReserveActivated
+        /// Borrower ReserveNationalGuardReserveActivated [URLA.X125], [URLA.X128]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Only period of service was as a non-activated member of the Reserve or National Guard\"}")]
         public bool? ReserveNationalGuardReserveActivated { get => _reserveNationalGuardReserveActivated; set => SetField(ref _reserveNationalGuardReserveActivated, value); }
 
         /// <summary>
-        /// Borrower RetirementPensionIncomeAvailable
+        /// Borrower RetirementPensionIncomeAvailable [MORNET.X127], [MORNET.X139]
         /// </summary>
         public bool? RetirementPensionIncomeAvailable { get => _retirementPensionIncomeAvailable; set => SetField(ref _retirementPensionIncomeAvailable, value); }
 
         /// <summary>
-        /// Borrower SchoolingTermYears
+        /// Borrower SchoolingTermYears [39], [71]
         /// </summary>
         public int? SchoolingTermYears { get => _schoolingTermYears; set => SetField(ref _schoolingTermYears, value); }
 
@@ -2257,74 +2247,74 @@ namespace EncompassRest.Loans
         public bool? SectionMPrintExplanation { get => _sectionMPrintExplanation; set => SetField(ref _sectionMPrintExplanation, value); }
 
         /// <summary>
-        /// Borrower SelfDeclaredMilitaryServiceIndicator
+        /// Borrower SelfDeclaredMilitaryServiceIndicator [URLA.X13], [URLA.X14]
         /// </summary>
         public bool? SelfDeclaredMilitaryServiceIndicator { get => _selfDeclaredMilitaryServiceIndicator; set => SetField(ref _selfDeclaredMilitaryServiceIndicator, value); }
 
         /// <summary>
-        /// Borrower SelfEmployedValidationMessage
+        /// Borrower SelfEmployedValidationMessage [MORNET.X137], [MORNET.X149]
         /// </summary>
         public string? SelfEmployedValidationMessage { get => _selfEmployedValidationMessage; set => SetField(ref _selfEmployedValidationMessage, value); }
 
         /// <summary>
-        /// Borrower SpecialBorrowerSellerRelationshipIndicator
+        /// Borrower SpecialBorrowerSellerRelationshipIndicator [URLA.X84], [URLA.X85]
         /// </summary>
         public bool? SpecialBorrowerSellerRelationshipIndicator { get => _specialBorrowerSellerRelationshipIndicator; set => SetField(ref _specialBorrowerSellerRelationshipIndicator, value); }
 
         /// <summary>
-        /// Borrower SpousalVABenefitsEligibilityIndicator
+        /// Borrower SpousalVABenefitsEligibilityIndicator [URLA.X19], [URLA.X20]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Surviving Spouse\"}")]
         public bool? SpousalVABenefitsEligibilityIndicator { get => _spousalVABenefitsEligibilityIndicator; set => SetField(ref _spousalVABenefitsEligibilityIndicator, value); }
 
         /// <summary>
-        /// Borrower SSA89BackgroundCheckIndicator
+        /// Borrower SSA89BackgroundCheckIndicator [3862], [3868]
         /// </summary>
         public bool? SSA89BackgroundCheckIndicator { get => _sSA89BackgroundCheckIndicator; set => SetField(ref _sSA89BackgroundCheckIndicator, value); }
 
         /// <summary>
-        /// Borrower SSA89BankingServiceIndicator
+        /// Borrower SSA89BankingServiceIndicator [3861], [3867]
         /// </summary>
         public bool? SSA89BankingServiceIndicator { get => _sSA89BankingServiceIndicator; set => SetField(ref _sSA89BankingServiceIndicator, value); }
 
         /// <summary>
-        /// Borrower SSA89CreditCheckIndicator
+        /// Borrower SSA89CreditCheckIndicator [3864], [3870]
         /// </summary>
         public bool? SSA89CreditCheckIndicator { get => _sSA89CreditCheckIndicator; set => SetField(ref _sSA89CreditCheckIndicator, value); }
 
         /// <summary>
-        /// Borrower SSA89LicenseRequirementIndicator
+        /// Borrower SSA89LicenseRequirementIndicator [3863], [3869]
         /// </summary>
         public bool? SSA89LicenseRequirementIndicator { get => _sSA89LicenseRequirementIndicator; set => SetField(ref _sSA89LicenseRequirementIndicator, value); }
 
         /// <summary>
-        /// Borrower SSA89MortgageServiceIndicator
+        /// Borrower SSA89MortgageServiceIndicator [3860], [3866]
         /// </summary>
         public bool? SSA89MortgageServiceIndicator { get => _sSA89MortgageServiceIndicator; set => SetField(ref _sSA89MortgageServiceIndicator, value); }
 
         /// <summary>
-        /// Borrower SSA89OtherIndicator
+        /// Borrower SSA89OtherIndicator [3865], [3871]
         /// </summary>
         public bool? SSA89OtherIndicator { get => _sSA89OtherIndicator; set => SetField(ref _sSA89OtherIndicator, value); }
 
         /// <summary>
-        /// Borrower SSNValidationMessage
+        /// Borrower SSNValidationMessage [MORNET.X136], [MORNET.X148]
         /// </summary>
         public string? SSNValidationMessage { get => _sSNValidationMessage; set => SetField(ref _sSNValidationMessage, value); }
 
         /// <summary>
-        /// Borrower State
+        /// Borrower State [URLA.X117], [URLA.X118]
         /// </summary>
         public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
 
         /// <summary>
         /// Assets Subtotal Liquid Assets [915]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SubtotalLiquidAssetsMinusGiftAmount { get => _subtotalLiquidAssetsMinusGiftAmount; set => SetField(ref _subtotalLiquidAssetsMinusGiftAmount, value); }
 
         /// <summary>
-        /// Borrower SuffixToName
+        /// Borrower SuffixToName [4003], [4007]
         /// </summary>
         public string? SuffixToName { get => _suffixToName; set => SetField(ref _suffixToName, value); }
 
@@ -2379,204 +2369,176 @@ namespace EncompassRest.Loans
         public string? Tax4506LastUserIDWhoOrdered { get => _tax4506LastUserIDWhoOrdered; set => SetField(ref _tax4506LastUserIDWhoOrdered, value); }
 
         /// <summary>
-        /// Borrower Tax4506TotalYearlyIncome1
+        /// Borrower Tax4506TotalYearlyIncome1 [3319], [3323]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyIncome1 { get => _tax4506TotalYearlyIncome1; set => SetField(ref _tax4506TotalYearlyIncome1, value); }
 
         /// <summary>
-        /// Borrower Tax4506TotalYearlyIncome2
+        /// Borrower Tax4506TotalYearlyIncome2 [3320], [3324]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyIncome2 { get => _tax4506TotalYearlyIncome2; set => SetField(ref _tax4506TotalYearlyIncome2, value); }
 
         /// <summary>
-        /// Borrower Tax4506TotalYearlyIncome3
+        /// Borrower Tax4506TotalYearlyIncome3 [TQL.X14], [TQL.X16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyIncome3 { get => _tax4506TotalYearlyIncome3; set => SetField(ref _tax4506TotalYearlyIncome3, value); }
 
         /// <summary>
-        /// Borrower Tax4506TotalYearlyIncome4
+        /// Borrower Tax4506TotalYearlyIncome4 [TQL.X15], [TQL.X17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyIncome4 { get => _tax4506TotalYearlyIncome4; set => SetField(ref _tax4506TotalYearlyIncome4, value); }
 
         /// <summary>
         /// Income Year 1 Total Joint Income Borr and Co-Borrower [3327]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyJointIncome1 { get => _tax4506TotalYearlyJointIncome1; set => SetField(ref _tax4506TotalYearlyJointIncome1, value); }
 
         /// <summary>
         /// Income Year 2 Total Joint Income Borr and Co-Borrower [3328]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyJointIncome2 { get => _tax4506TotalYearlyJointIncome2; set => SetField(ref _tax4506TotalYearlyJointIncome2, value); }
 
         /// <summary>
         /// TQL - Coborrower 4506T Orders - Income Year 3 Total Joint Income Borr and Co-Borrower [TQL.X18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyJointIncome3 { get => _tax4506TotalYearlyJointIncome3; set => SetField(ref _tax4506TotalYearlyJointIncome3, value); }
 
         /// <summary>
         /// TQL - Coborrower 4506T Orders - Income Year 4 Total Joint Income Borr and Co-Borrower [TQL.X19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyJointIncome4 { get => _tax4506TotalYearlyJointIncome4; set => SetField(ref _tax4506TotalYearlyJointIncome4, value); }
 
         /// <summary>
-        /// Borrower Tax4506TotalYearlyVarianceIncome1
+        /// Borrower Tax4506TotalYearlyVarianceIncome1 [3321], [3325]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceIncome1 { get => _tax4506TotalYearlyVarianceIncome1; set => SetField(ref _tax4506TotalYearlyVarianceIncome1, value); }
 
         /// <summary>
-        /// Borrower Tax4506TotalYearlyVarianceIncome2
+        /// Borrower Tax4506TotalYearlyVarianceIncome2 [3322], [3326]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceIncome2 { get => _tax4506TotalYearlyVarianceIncome2; set => SetField(ref _tax4506TotalYearlyVarianceIncome2, value); }
 
         /// <summary>
-        /// Borrower Tax4506TotalYearlyVarianceIncome3
+        /// Borrower Tax4506TotalYearlyVarianceIncome3 [TQL.X20], [TQL.X22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceIncome3 { get => _tax4506TotalYearlyVarianceIncome3; set => SetField(ref _tax4506TotalYearlyVarianceIncome3, value); }
 
         /// <summary>
-        /// Borrower Tax4506TotalYearlyVarianceIncome4
+        /// Borrower Tax4506TotalYearlyVarianceIncome4 [TQL.X21], [TQL.X23]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceIncome4 { get => _tax4506TotalYearlyVarianceIncome4; set => SetField(ref _tax4506TotalYearlyVarianceIncome4, value); }
 
         /// <summary>
         /// Income Year 1 Total Variance Joint Income Borr and Co-Borrower [3329]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceJointIncome1 { get => _tax4506TotalYearlyVarianceJointIncome1; set => SetField(ref _tax4506TotalYearlyVarianceJointIncome1, value); }
 
         /// <summary>
         /// Income Year 2 Total Variance Joint Income Borr and Co-Borrower [3330]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceJointIncome2 { get => _tax4506TotalYearlyVarianceJointIncome2; set => SetField(ref _tax4506TotalYearlyVarianceJointIncome2, value); }
 
         /// <summary>
         /// TQL - Coborrower 4506T Orders - Income Year 3 Total Variance Joint Income Borr and Co-Borrower [TQL.X24]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceJointIncome3 { get => _tax4506TotalYearlyVarianceJointIncome3; set => SetField(ref _tax4506TotalYearlyVarianceJointIncome3, value); }
 
         /// <summary>
         /// TQL - Coborrower 4506T Orders - Income Year 4 Total Variance Joint Income Borr and Co-Borrower [TQL.X25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Tax4506TotalYearlyVarianceJointIncome4 { get => _tax4506TotalYearlyVarianceJointIncome4; set => SetField(ref _tax4506TotalYearlyVarianceJointIncome4, value); }
 
         /// <summary>
-        /// Borrower TaxIdentificationIdentifier
+        /// Borrower TaxIdentificationIdentifier [65], [97]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.SSN)]
         public string? TaxIdentificationIdentifier { get => _taxIdentificationIdentifier; set => SetField(ref _taxIdentificationIdentifier, value); }
 
         /// <summary>
-        /// Borrower TaxReturnValidationMessage
+        /// Borrower TaxReturnValidationMessage [MORNET.X138], [MORNET.X150]
         /// </summary>
         public string? TaxReturnValidationMessage { get => _taxReturnValidationMessage; set => SetField(ref _taxReturnValidationMessage, value); }
 
         /// <summary>
         /// Total Additional Liabilities Amount [URLA.X61]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalAdditionalLiabilitiesAmount { get => _totalAdditionalLiabilitiesAmount; set => SetField(ref _totalAdditionalLiabilitiesAmount, value); }
 
         /// <summary>
         /// Total Additional Other Liabilities Amount [URLA.X67]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalAdditionalOtherLiabilitiesAmount { get => _totalAdditionalOtherLiabilitiesAmount; set => SetField(ref _totalAdditionalOtherLiabilitiesAmount, value); }
 
         /// <summary>
-        /// Borrower TotalAnnualIncome
+        /// Borrower TotalAnnualIncome [CORRESPONDENT.X45], [CORRESPONDENT.X46]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalAnnualIncome { get => _totalAnnualIncome; set => SetField(ref _totalAnnualIncome, value); }
 
         /// <summary>
-        /// Borrower TotalAssets
+        /// Borrower TotalAssets [URLA.X55], [URLA.X56]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalAssets { get => _totalAssets; set => SetField(ref _totalAssets, value); }
 
         /// <summary>
-        /// Borrower TotalGrossMonthlySalary
+        /// Borrower TotalGrossMonthlySalary [CORRESPONDENT.X47], [CORRESPONDENT.X48]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalGrossMonthlySalary { get => _totalGrossMonthlySalary; set => SetField(ref _totalGrossMonthlySalary, value); }
 
         /// <summary>
         /// Total Liabilities Amount [URLA.X62]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalLiabilitiesAmount { get => _totalLiabilitiesAmount; set => SetField(ref _totalLiabilitiesAmount, value); }
 
         /// <summary>
         /// Liabilities Total Liability Balance [733]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalLiabilitiesBalanceAmount { get => _totalLiabilitiesBalanceAmount; set => SetField(ref _totalLiabilitiesBalanceAmount, value); }
 
         /// <summary>
-        /// Borrower TotalMonthlyIncomeAmount
+        /// Borrower TotalMonthlyIncomeAmount [1758], [1759]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalMonthlyIncomeAmount { get => _totalMonthlyIncomeAmount; set => SetField(ref _totalMonthlyIncomeAmount, value); }
 
         /// <summary>
-        /// Borrower TotalMonthlyIncomeMinusNetRentalAmount
+        /// Borrower TotalMonthlyIncomeMinusNetRentalAmount [910], [911]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalMonthlyIncomeMinusNetRentalAmount { get => _totalMonthlyIncomeMinusNetRentalAmount; set => SetField(ref _totalMonthlyIncomeMinusNetRentalAmount, value); }
 
         /// <summary>
-        /// Borrower TotalOtherAssets
+        /// Borrower TotalOtherAssets [URLA.X57], [URLA.X58]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalOtherAssets { get => _totalOtherAssets; set => SetField(ref _totalOtherAssets, value); }
 
         /// <summary>
-        /// Borrower TotalOtherIncome
+        /// Borrower TotalOtherIncome [CORRESPONDENT.X49], [CORRESPONDENT.X50]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalOtherIncome { get => _totalOtherIncome; set => SetField(ref _totalOtherIncome, value); }
 
         /// <summary>
-        /// Borrower TotalOtherLiabilities
+        /// Borrower TotalOtherLiabilities [URLA.X65], [URLA.X66]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalOtherLiabilities { get => _totalOtherLiabilities; set => SetField(ref _totalOtherLiabilities, value); }
 
         /// <summary>
         /// Total Other Liabilities Amount [URLA.X68]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalOtherLiabilitiesAmount { get => _totalOtherLiabilitiesAmount; set => SetField(ref _totalOtherLiabilitiesAmount, value); }
 
         /// <summary>
-        /// Borrower TotalOtherMonthlyLiability
+        /// Borrower TotalOtherMonthlyLiability [CORRESPONDENT.X51], [CORRESPONDENT.X52]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalOtherMonthlyLiability { get => _totalOtherMonthlyLiability; set => SetField(ref _totalOtherMonthlyLiability, value); }
 
         /// <summary>
         /// Expenses Present Total Housing [737]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalPresentHousingExpenseAmount { get => _totalPresentHousingExpenseAmount; set => SetField(ref _totalPresentHousingExpenseAmount, value); }
 
         /// <summary>
-        /// Borrower TransactionPurposeDescription
+        /// Borrower TransactionPurposeDescription [3249], [3251]
         /// </summary>
         public string? TransactionPurposeDescription { get => _transactionPurposeDescription; set => SetField(ref _transactionPurposeDescription, value); }
 
@@ -2606,192 +2568,185 @@ namespace EncompassRest.Loans
         public int? TransUnion90Days { get => _transUnion90Days; set => SetField(ref _transUnion90Days, value); }
 
         /// <summary>
-        /// Borrower TransUnionCreditScoreForDisclosure
+        /// Borrower TransUnionCreditScoreForDisclosure [DISCLOSURE.X627], [DISCLOSURE.X628]
         /// </summary>
         public bool? TransUnionCreditScoreForDisclosure { get => _transUnionCreditScoreForDisclosure; set => SetField(ref _transUnionCreditScoreForDisclosure, value); }
 
         /// <summary>
-        /// Borrower TransUnionCreditScoreRanksPercent
+        /// Borrower TransUnionCreditScoreRanksPercent [DISCLOSURE.X633], [DISCLOSURE.X634]
         /// </summary>
         public int? TransUnionCreditScoreRanksPercent { get => _transUnionCreditScoreRanksPercent; set => SetField(ref _transUnionCreditScoreRanksPercent, value); }
 
         /// <summary>
-        /// Borrower TransUnionDatePulled
+        /// Borrower TransUnionDatePulled [DISCLOSURE.X31], [DISCLOSURE.X32]
         /// </summary>
         public DateTime? TransUnionDatePulled { get => _transUnionDatePulled; set => SetField(ref _transUnionDatePulled, value); }
 
         /// <summary>
-        /// Borrower TransUnionFactorCode1
+        /// Borrower TransUnionFactorCode1 [DISCLOSURE.X1007], [DISCLOSURE.X1012]
         /// </summary>
         public string? TransUnionFactorCode1 { get => _transUnionFactorCode1; set => SetField(ref _transUnionFactorCode1, value); }
 
         /// <summary>
-        /// Borrower TransUnionFactorCode2
+        /// Borrower TransUnionFactorCode2 [DISCLOSURE.X1008], [DISCLOSURE.X1013]
         /// </summary>
         public string? TransUnionFactorCode2 { get => _transUnionFactorCode2; set => SetField(ref _transUnionFactorCode2, value); }
 
         /// <summary>
-        /// Borrower TransUnionFactorCode3
+        /// Borrower TransUnionFactorCode3 [DISCLOSURE.X1009], [DISCLOSURE.X1014]
         /// </summary>
         public string? TransUnionFactorCode3 { get => _transUnionFactorCode3; set => SetField(ref _transUnionFactorCode3, value); }
 
         /// <summary>
-        /// Borrower TransUnionFactorCode4
+        /// Borrower TransUnionFactorCode4 [DISCLOSURE.X1010], [DISCLOSURE.X1015]
         /// </summary>
         public string? TransUnionFactorCode4 { get => _transUnionFactorCode4; set => SetField(ref _transUnionFactorCode4, value); }
 
         /// <summary>
-        /// Borrower TransUnionFactorCode5
+        /// Borrower TransUnionFactorCode5 [DISCLOSURE.X1011], [DISCLOSURE.X1016]
         /// </summary>
         public string? TransUnionFactorCode5 { get => _transUnionFactorCode5; set => SetField(ref _transUnionFactorCode5, value); }
 
         /// <summary>
-        /// Borrower TransUnionKeyFactor1
+        /// Borrower TransUnionKeyFactor1 [DISCLOSURE.X33], [DISCLOSURE.X37]
         /// </summary>
         public string? TransUnionKeyFactor1 { get => _transUnionKeyFactor1; set => SetField(ref _transUnionKeyFactor1, value); }
 
         /// <summary>
-        /// Borrower TransUnionKeyFactor2
+        /// Borrower TransUnionKeyFactor2 [DISCLOSURE.X34], [DISCLOSURE.X38]
         /// </summary>
         public string? TransUnionKeyFactor2 { get => _transUnionKeyFactor2; set => SetField(ref _transUnionKeyFactor2, value); }
 
         /// <summary>
-        /// Borrower TransUnionKeyFactor3
+        /// Borrower TransUnionKeyFactor3 [DISCLOSURE.X35], [DISCLOSURE.X39]
         /// </summary>
         public string? TransUnionKeyFactor3 { get => _transUnionKeyFactor3; set => SetField(ref _transUnionKeyFactor3, value); }
 
         /// <summary>
-        /// Borrower TransUnionKeyFactor4
+        /// Borrower TransUnionKeyFactor4 [DISCLOSURE.X36], [DISCLOSURE.X40]
         /// </summary>
         public string? TransUnionKeyFactor4 { get => _transUnionKeyFactor4; set => SetField(ref _transUnionKeyFactor4, value); }
 
         /// <summary>
-        /// Borrower TransUnionKeyFactor5
+        /// Borrower TransUnionKeyFactor5 [DISCLOSURE.X174], [DISCLOSURE.X177]
         /// </summary>
         public string? TransUnionKeyFactor5 { get => _transUnionKeyFactor5; set => SetField(ref _transUnionKeyFactor5, value); }
 
         /// <summary>
-        /// Borrower TransUnionMaterialTermsCreditByScore
+        /// Borrower TransUnionMaterialTermsCreditByScore [DISCLOSURE.X945], [DISCLOSURE.X946]
         /// </summary>
         public bool? TransUnionMaterialTermsCreditByScore { get => _transUnionMaterialTermsCreditByScore; set => SetField(ref _transUnionMaterialTermsCreditByScore, value); }
 
         /// <summary>
-        /// Borrower TransUnionScore
+        /// Borrower TransUnionScore [1450], [1452]
         /// </summary>
         public string? TransUnionScore { get => _transUnionScore; set => SetField(ref _transUnionScore, value); }
 
         /// <summary>
-        /// Borrower UndisclosedBorrowedFundsAmount
+        /// Borrower UndisclosedBorrowedFundsAmount [URLA.X88], [URLA.X89]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UndisclosedBorrowedFundsAmount { get => _undisclosedBorrowedFundsAmount; set => SetField(ref _undisclosedBorrowedFundsAmount, value); }
 
         /// <summary>
-        /// Borrower UndisclosedBorrowedFundsIndicator
+        /// Borrower UndisclosedBorrowedFundsIndicator [URLA.X86], [URLA.X87]
         /// </summary>
         public bool? UndisclosedBorrowedFundsIndicator { get => _undisclosedBorrowedFundsIndicator; set => SetField(ref _undisclosedBorrowedFundsIndicator, value); }
 
         /// <summary>
-        /// Borrower UndisclosedComakerOfNoteIndicator
+        /// Borrower UndisclosedComakerOfNoteIndicator [URLA.X96], [URLA.X97]
         /// </summary>
         public bool? UndisclosedComakerOfNoteIndicator { get => _undisclosedComakerOfNoteIndicator; set => SetField(ref _undisclosedComakerOfNoteIndicator, value); }
 
         /// <summary>
-        /// Borrower UndisclosedCreditApplicationIndicator
+        /// Borrower UndisclosedCreditApplicationIndicator [URLA.X92], [URLA.X93]
         /// </summary>
         public bool? UndisclosedCreditApplicationIndicator { get => _undisclosedCreditApplicationIndicator; set => SetField(ref _undisclosedCreditApplicationIndicator, value); }
 
         /// <summary>
-        /// Borrower UndisclosedMortgageApplicationIndicator
+        /// Borrower UndisclosedMortgageApplicationIndicator [URLA.X90], [URLA.X91]
         /// </summary>
         public bool? UndisclosedMortgageApplicationIndicator { get => _undisclosedMortgageApplicationIndicator; set => SetField(ref _undisclosedMortgageApplicationIndicator, value); }
 
         /// <summary>
-        /// Borrower Urla2020CitizenshipResidencyType
+        /// Borrower Urla2020CitizenshipResidencyType [URLA.X1], [URLA.X2]
         /// </summary>
         public StringEnumValue<Urla2020CitizenshipResidencyType> Urla2020CitizenshipResidencyType { get => _urla2020CitizenshipResidencyType; set => SetField(ref _urla2020CitizenshipResidencyType, value); }
 
         /// <summary>
-        /// Borrower Urla2020CountryOfCitizenship
+        /// Borrower Urla2020CountryOfCitizenship [URLA.X263], [URLA.X264]
         /// </summary>
         public string? Urla2020CountryOfCitizenship { get => _urla2020CountryOfCitizenship; set => SetField(ref _urla2020CountryOfCitizenship, value); }
 
         /// <summary>
-        /// Borrower URLAAliasName
+        /// Borrower URLAAliasName [URLA.X195], [URLA.X196]
         /// </summary>
         public string? URLAAliasName { get => _uRLAAliasName; set => SetField(ref _uRLAAliasName, value); }
 
         /// <summary>
-        /// Borrower UserDefinedIncome
+        /// Borrower UserDefinedIncome [1815], [1816]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UserDefinedIncome { get => _userDefinedIncome; set => SetField(ref _userDefinedIncome, value); }
 
         /// <summary>
-        /// Borrower VaFederalTaxAmount
+        /// Borrower VaFederalTaxAmount [1156], [1306]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VaFederalTaxAmount { get => _vaFederalTaxAmount; set => SetField(ref _vaFederalTaxAmount, value); }
 
         /// <summary>
-        /// Borrower ValidDaysForConsentCount
+        /// Borrower ValidDaysForConsentCount [3250], [3252]
         /// </summary>
         public int? ValidDaysForConsentCount { get => _validDaysForConsentCount; set => SetField(ref _validDaysForConsentCount, value); }
 
         /// <summary>
-        /// Borrower ValueRepAndWarrantyAvailable
+        /// Borrower ValueRepAndWarrantyAvailable [MORNET.X102], [MORNET.X116]
         /// </summary>
         public bool? ValueRepAndWarrantyAvailable { get => _valueRepAndWarrantyAvailable; set => SetField(ref _valueRepAndWarrantyAvailable, value); }
 
         /// <summary>
-        /// Borrower ValueRepAndWarrantyMessage
+        /// Borrower ValueRepAndWarrantyMessage [MORNET.X98], [MORNET.X112]
         /// </summary>
         public string? ValueRepAndWarrantyMessage { get => _valueRepAndWarrantyMessage; set => SetField(ref _valueRepAndWarrantyMessage, value); }
 
         /// <summary>
-        /// Borrower VaNetTakeHomePayAmount
+        /// Borrower VaNetTakeHomePayAmount [1313], [1314]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? VaNetTakeHomePayAmount { get => _vaNetTakeHomePayAmount; set => SetField(ref _vaNetTakeHomePayAmount, value); }
 
         /// <summary>
-        /// Borrower VaOtherAmount
+        /// Borrower VaOtherAmount [1309], [VALA.X19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VaOtherAmount { get => _vaOtherAmount; set => SetField(ref _vaOtherAmount, value); }
 
         /// <summary>
-        /// Borrower VaOtherNetIncomeAmount
+        /// Borrower VaOtherNetIncomeAmount [1316], [1317]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VaOtherNetIncomeAmount { get => _vaOtherNetIncomeAmount; set => SetField(ref _vaOtherNetIncomeAmount, value); }
 
         /// <summary>
-        /// Borrower VaRetirementAmount
+        /// Borrower VaRetirementAmount [1159], [1308]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VaRetirementAmount { get => _vaRetirementAmount; set => SetField(ref _vaRetirementAmount, value); }
 
         /// <summary>
-        /// Borrower VaStateTaxAmount
+        /// Borrower VaStateTaxAmount [1158], [1307]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VaStateTaxAmount { get => _vaStateTaxAmount; set => SetField(ref _vaStateTaxAmount, value); }
 
         /// <summary>
-        /// Borrower VaTotalIncomeDeductionsAmount
+        /// Borrower VaTotalIncomeDeductionsAmount [1310], [1311]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? VaTotalIncomeDeductionsAmount { get => _vaTotalIncomeDeductionsAmount; set => SetField(ref _vaTotalIncomeDeductionsAmount, value); }
 
         /// <summary>
-        /// Borrower VaTotalNetIncomeAmount
+        /// Borrower VaTotalNetIncomeAmount [1319], [1320]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? VaTotalNetIncomeAmount { get => _vaTotalNetIncomeAmount; set => SetField(ref _vaTotalNetIncomeAmount, value); }
 
         /// <summary>
-        /// Borrower Vendor1
+        /// Borrower Vendor1 [GSEVENDOR.X1], [GSEVENDOR.X2]
         /// </summary>
         public string? Vendor1 { get => _vendor1; set => SetField(ref _vendor1, value); }
 
@@ -2846,7 +2801,7 @@ namespace EncompassRest.Loans
         public string? Vendor19 { get => _vendor19; set => SetField(ref _vendor19, value); }
 
         /// <summary>
-        /// Borrower Vendor2
+        /// Borrower Vendor2 [GSEVENDOR.X4], [GSEVENDOR.X5]
         /// </summary>
         public string? Vendor2 { get => _vendor2; set => SetField(ref _vendor2, value); }
 
@@ -2901,77 +2856,77 @@ namespace EncompassRest.Loans
         public string? Vendor29 { get => _vendor29; set => SetField(ref _vendor29, value); }
 
         /// <summary>
-        /// Borrower Vendor3
+        /// Borrower Vendor3 [GSEVENDOR.X6], [GSEVENDOR.X7]
         /// </summary>
         public string? Vendor3 { get => _vendor3; set => SetField(ref _vendor3, value); }
 
         /// <summary>
-        /// Borrower Vendor30
+        /// Borrower Vendor30 [GSEVENDOR.X37], [GSEVENDOR.X38]
         /// </summary>
         public string? Vendor30 { get => _vendor30; set => SetField(ref _vendor30, value); }
 
         /// <summary>
-        /// Borrower Vendor31
+        /// Borrower Vendor31 [GSEVENDOR.X47], [GSEVENDOR.X48]
         /// </summary>
         public string? Vendor31 { get => _vendor31; set => SetField(ref _vendor31, value); }
 
         /// <summary>
-        /// Borrower Vendor32
+        /// Borrower Vendor32 [GSEVENDOR.X49], [GSEVENDOR.X50]
         /// </summary>
         public string? Vendor32 { get => _vendor32; set => SetField(ref _vendor32, value); }
 
         /// <summary>
-        /// Borrower Vendor33
+        /// Borrower Vendor33 [GSEVENDOR.X51], [GSEVENDOR.X52]
         /// </summary>
         public string? Vendor33 { get => _vendor33; set => SetField(ref _vendor33, value); }
 
         /// <summary>
-        /// Borrower Vendor34
+        /// Borrower Vendor34 [GSEVENDOR.X53], [GSEVENDOR.X54]
         /// </summary>
         public string? Vendor34 { get => _vendor34; set => SetField(ref _vendor34, value); }
 
         /// <summary>
-        /// Borrower Vendor35
+        /// Borrower Vendor35 [GSEVENDOR.X55], [GSEVENDOR.X56]
         /// </summary>
         public string? Vendor35 { get => _vendor35; set => SetField(ref _vendor35, value); }
 
         /// <summary>
-        /// Borrower Vendor36
+        /// Borrower Vendor36 [GSEVENDOR.X57], [GSEVENDOR.X58]
         /// </summary>
         public string? Vendor36 { get => _vendor36; set => SetField(ref _vendor36, value); }
 
         /// <summary>
-        /// Borrower Vendor37
+        /// Borrower Vendor37 [GSEVENDOR.X39], [GSEVENDOR.X40]
         /// </summary>
         public string? Vendor37 { get => _vendor37; set => SetField(ref _vendor37, value); }
 
         /// <summary>
-        /// Borrower Vendor38
+        /// Borrower Vendor38 [GSEVENDOR.X41], [GSEVENDOR.X42]
         /// </summary>
         public string? Vendor38 { get => _vendor38; set => SetField(ref _vendor38, value); }
 
         /// <summary>
-        /// Borrower Vendor39
+        /// Borrower Vendor39 [GSEVENDOR.X43], [GSEVENDOR.X44]
         /// </summary>
         public string? Vendor39 { get => _vendor39; set => SetField(ref _vendor39, value); }
 
         /// <summary>
-        /// Borrower Vendor4
+        /// Borrower Vendor4 [GSEVENDOR.X8], [GSEVENDOR.X9]
         /// </summary>
         public string? Vendor4 { get => _vendor4; set => SetField(ref _vendor4, value); }
 
         /// <summary>
-        /// Borrower Vendor40
+        /// Borrower Vendor40 [GSEVENDOR.X45], [GSEVENDOR.X46]
         /// </summary>
         public string? Vendor40 { get => _vendor40; set => SetField(ref _vendor40, value); }
 
         /// <summary>
-        /// Borrower Vendor5
+        /// Borrower Vendor5 [GSEVENDOR.X10], [GSEVENDOR.X11]
         /// </summary>
         public string? Vendor5 { get => _vendor5; set => SetField(ref _vendor5, value); }
 
         /// <summary>
-        /// Borrower Vendor6
+        /// Borrower Vendor6 [GSEVENDOR.X12], [GSEVENDOR.X13]
         /// </summary>
         public string? Vendor6 { get => _vendor6; set => SetField(ref _vendor6, value); }
 
@@ -2991,33 +2946,33 @@ namespace EncompassRest.Loans
         public string? Vendor9 { get => _vendor9; set => SetField(ref _vendor9, value); }
 
         /// <summary>
-        /// Borrower VestingTrusteeOfType
+        /// Borrower VestingTrusteeOfType [Borr.TrusteeOf], [CoBorr.TrusteeOf]
         /// </summary>
         public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get => _vestingTrusteeOfType; set => SetField(ref _vestingTrusteeOfType, value); }
 
         /// <summary>
-        /// Borrower Veteran
+        /// Borrower Veteran [URLA.X124], [URLA.X127]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Currently retired, discharged, or separated from service\"}")]
         public bool? Veteran { get => _veteran; set => SetField(ref _veteran, value); }
 
         /// <summary>
-        /// Borrower VeteranIndicator
+        /// Borrower VeteranIndicator [USDA.X1], [USDA.X4]
         /// </summary>
         public bool? VeteranIndicator { get => _veteranIndicator; set => SetField(ref _veteranIndicator, value); }
 
         /// <summary>
-        /// Borrower VvoeWorkNumberDate
+        /// Borrower VvoeWorkNumberDate [CORRESPONDENT.X459], [CORRESPONDENT.X460]
         /// </summary>
         public DateTime? VvoeWorkNumberDate { get => _vvoeWorkNumberDate; set => SetField(ref _vvoeWorkNumberDate, value); }
 
         /// <summary>
-        /// Borrower WorkEmailAddress
+        /// Borrower WorkEmailAddress [1178], [1179]
         /// </summary>
         public string? WorkEmailAddress { get => _workEmailAddress; set => SetField(ref _workEmailAddress, value); }
 
         /// <summary>
-        /// Borrower WorkPhoneNumber
+        /// Borrower WorkPhoneNumber [4533], [4534]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? WorkPhoneNumber { get => _workPhoneNumber; set => SetField(ref _workPhoneNumber, value); }

@@ -59,7 +59,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Other Assets Cash Or Market Value [URLAROANN03]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CashOrMarketValue { get => _cashOrMarketValue; set => SetField(ref _cashOrMarketValue, value); }
 
         /// <summary>

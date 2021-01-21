@@ -54,7 +54,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Other Liabilities Balance [URLAROLNN20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Balance { get => _balance; set => SetField(ref _balance, value); }
 
         /// <summary>
@@ -75,7 +74,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Other Liabilities Credit Limit [URLAROLNN21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditLimit { get => _creditLimit; set => SetField(ref _creditLimit, value); }
 
         /// <summary>
@@ -149,7 +147,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Other Liabilities Monthly Payment [URLAROLNN03]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }
 
         /// <summary>

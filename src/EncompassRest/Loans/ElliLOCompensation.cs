@@ -52,25 +52,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Adjusted Plan Additional Amount [LCP.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustedPlanAdditonalAmountForBroker { get => _adjustedPlanAdditonalAmountForBroker; set => SetField(ref _adjustedPlanAdditonalAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Adjusted Plan Additional Amount [LCP.X34]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustedPlanAdditonalAmountForOfficer { get => _adjustedPlanAdditonalAmountForOfficer; set => SetField(ref _adjustedPlanAdditonalAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Adjusted Plan Amount [LCP.X13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustedPlanAmountForBroker { get => _adjustedPlanAmountForBroker; set => SetField(ref _adjustedPlanAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Adjusted Plan Amount [LCP.X35]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustedPlanAmountForOfficer { get => _adjustedPlanAmountForOfficer; set => SetField(ref _adjustedPlanAmountForOfficer, value); }
 
         /// <summary>
@@ -98,49 +94,41 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Additional Amount [LCP.X7]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanAdditonalAmountForBroker { get => _basePlanAdditonalAmountForBroker; set => SetField(ref _basePlanAdditonalAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Base Plan Additional Amount [LCP.X26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanAdditonalAmountForOfficer { get => _basePlanAdditonalAmountForOfficer; set => SetField(ref _basePlanAdditonalAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Amount [LCP.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanAmountForBroker { get => _basePlanAmountForBroker; set => SetField(ref _basePlanAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Base Plan Amount [LCP.X27]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanAmountForOfficer { get => _basePlanAmountForOfficer; set => SetField(ref _basePlanAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Maximum Amount [LCP.X10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanMaximumAmountForBroker { get => _basePlanMaximumAmountForBroker; set => SetField(ref _basePlanMaximumAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Base Plan Maximum Amount [LCP.X29]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanMaximumAmountForOfficer { get => _basePlanMaximumAmountForOfficer; set => SetField(ref _basePlanMaximumAmountForOfficer, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Base Plan Minimum Amount [LCP.X9]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanMinimumAmountForBroker { get => _basePlanMinimumAmountForBroker; set => SetField(ref _basePlanMinimumAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Base Plan Minimum Amount [LCP.X28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePlanMinimumAmountForOfficer { get => _basePlanMinimumAmountForOfficer; set => SetField(ref _basePlanMinimumAmountForOfficer, value); }
 
         /// <summary>
@@ -158,13 +146,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Bonus Comp Additional Amount [LCP.X31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BonusCompAdditonalAmount { get => _bonusCompAdditonalAmount; set => SetField(ref _bonusCompAdditonalAmount, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Bonus Comp Amount [LCP.X32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BonusCompAmount { get => _bonusCompAmount; set => SetField(ref _bonusCompAmount, value); }
 
         /// <summary>
@@ -223,13 +209,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Net Adjusted Amount [LCP.X14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NetAdjustedAmountForBroker { get => _netAdjustedAmountForBroker; set => SetField(ref _netAdjustedAmountForBroker, value); }
 
         /// <summary>
         /// Loan Compensation Plan - Loan Officer Plan Details - Net Adjusted Amount [LCP.X36]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NetAdjustedAmountForOfficer { get => _netAdjustedAmountForOfficer; set => SetField(ref _netAdjustedAmountForOfficer, value); }
 
         /// <summary>

@@ -195,7 +195,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Interest Received [3615]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ClosingTaxYearInterestReceived { get => _closingTaxYearInterestReceived; set => SetField(ref _closingTaxYearInterestReceived, value); }
 
         /// <summary>
@@ -338,25 +337,25 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Expenses Housing Expense Pymt Calc 1 Loan Amt [LOANAMT1]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? HousingExpenseLoanAmt1 { get => _housingExpenseLoanAmt1; set => SetField(ref _housingExpenseLoanAmt1, value); }
 
         /// <summary>
         /// Expenses Housing Expense Pymt Calc 2 Loan Amt [LOANAMT2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? HousingExpenseLoanAmt2 { get => _housingExpenseLoanAmt2; set => SetField(ref _housingExpenseLoanAmt2, value); }
 
         /// <summary>
         /// Expenses Calc First Mtg Pymt Mo Pymt [PAYMENT1]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? HousingExpensePayment1 { get => _housingExpensePayment1; set => SetField(ref _housingExpensePayment1, value); }
 
         /// <summary>
         /// Expenses Calc Other Fin Pymt Mo Pymt [PAYMENT2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? HousingExpensePayment2 { get => _housingExpensePayment2; set => SetField(ref _housingExpensePayment2, value); }
 
         /// <summary>
@@ -541,7 +540,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr Info MI Premiums [3842]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MIPremiums { get => _mIPremiums; set => SetField(ref _mIPremiums, value); }
 
         /// <summary>
@@ -579,13 +577,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Expenses Calc Other Hous Exp Other Amt [1799]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherPresentHousingExpense { get => _otherPresentHousingExpense; set => SetField(ref _otherPresentHousingExpense, value); }
 
         /// <summary>
         /// Borr Info Outstanding Mtg Principal [4095]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OutstandingMtgPrincipal { get => _outstandingMtgPrincipal; set => SetField(ref _outstandingMtgPrincipal, value); }
 
         /// <summary>
@@ -625,7 +621,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr Info Points Paid [1191]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PointsPaid { get => _pointsPaid; set => SetField(ref _pointsPaid, value); }
 
         /// <summary>
@@ -677,7 +672,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borr Info Refund of Overpaid Interest [1192]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RefundOrOverpaidInterest { get => _refundOrOverpaidInterest; set => SetField(ref _refundOrOverpaidInterest, value); }
 
         /// <summary>
@@ -716,25 +710,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Interest Received [3617]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SubTaxYearInterestReceived { get => _subTaxYearInterestReceived; set => SetField(ref _subTaxYearInterestReceived, value); }
 
         /// <summary>
         /// Borr Info MI Premiums [3843]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SubTaxYearMIPremiums { get => _subTaxYearMIPremiums; set => SetField(ref _subTaxYearMIPremiums, value); }
 
         /// <summary>
         /// Borr Info Points Paid [3618]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SubTaxYearPointsPaid { get => _subTaxYearPointsPaid; set => SetField(ref _subTaxYearPointsPaid, value); }
 
         /// <summary>
         /// Borr Info Refund of Overpaid Interest [3619]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SubTaxYearRefundOrOverpaidInterest { get => _subTaxYearRefundOrOverpaidInterest; set => SetField(ref _subTaxYearRefundOrOverpaidInterest, value); }
 
         /// <summary>
@@ -745,13 +735,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// IRS Total of MI for Tax Year and Upfront MIP [2846]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalBox4 { get => _totalBox4; set => SetField(ref _totalBox4, value); }
 
         /// <summary>
         /// IRS Total of MI for Tax Year [2845]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalYearlyMi { get => _totalYearlyMi; set => SetField(ref _totalYearlyMi, value); }
 
         /// <summary>

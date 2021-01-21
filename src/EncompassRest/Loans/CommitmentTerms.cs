@@ -71,7 +71,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Assurance of Completion $ [649]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AssuranceOfCompletion { get => _assuranceOfCompletion; set => SetField(ref _assuranceOfCompletion, value); }
 
         /// <summary>
@@ -125,7 +124,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Mtg Ins Maximum [1080]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaxInsurableMortgage { get => _maxInsurableMortgage; set => SetField(ref _maxInsurableMortgage, value); }
 
         /// <summary>
@@ -182,7 +180,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Expenses Total Mo Expenses Est [1075]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalMonthlyExpense { get => _totalMonthlyExpense; set => SetField(ref _totalMonthlyExpense, value); }
     }
 }

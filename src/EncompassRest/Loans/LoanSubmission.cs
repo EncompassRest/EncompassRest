@@ -43,13 +43,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Amt Available [199]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountAvailable { get => _amountAvailable; set => SetField(ref _amountAvailable, value); }
 
         /// <summary>
         /// Trans Details Amt Required To Close [743]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountRequiredToClose { get => _amountRequiredToClose; set => SetField(ref _amountRequiredToClose, value); }
 
         /// <summary>
@@ -171,31 +169,31 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Total Payable Items (Broker/Lender) [435]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Total { get => _total; set => SetField(ref _total, value); }
 
         /// <summary>
         /// Fees Total Payable Items Discount Fee [331]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalDiscountPointCharged { get => _totalDiscountPointCharged; set => SetField(ref _totalDiscountPointCharged, value); }
 
         /// <summary>
         /// Fees Total Payable Items Broker [434]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalForDueBroker { get => _totalForDueBroker; set => SetField(ref _totalForDueBroker, value); }
 
         /// <summary>
         /// Fees Total Payable Items Lender [433]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalForDueLender { get => _totalForDueLender; set => SetField(ref _totalForDueLender, value); }
 
         /// <summary>
         /// Expenses Total Primary Housing Exp Plus Co-mort [1299]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalForPrimaryResidence { get => _totalForPrimaryResidence; set => SetField(ref _totalForPrimaryResidence, value); }
     }
 }
