@@ -1,0 +1,16 @@
+name: Publish to NuGet
+on:
+  push:
+    branches: 
+      - master
+jobs:
+  publish:
+    name: BuildPackPublish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: PublishOnVersionChange
+        id: publish_nuget
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/EncompassRest/EncompassRest.csproj
