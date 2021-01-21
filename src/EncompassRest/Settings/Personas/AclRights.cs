@@ -29,6 +29,7 @@ namespace EncompassRest.Settings.Personas
         private EDisclosuresRights? _eDisclosures;
         private EFolderHistoryRights? _eFolderHistory;
         private EFolderSetupRights? _eFolderSetup;
+        private EnhancedConditionsRights? _enhancedConditions;
         private DirtyList<string>? _externalSettings;
         private FileContactsRights? _fileContacts;
         private DirtyList<EntityReference>? _forms;
@@ -194,6 +195,12 @@ namespace EncompassRest.Settings.Personas
         /// </summary>
         [AllowNull]
         public EFolderSetupRights EFolderSetup { get => GetField(ref _eFolderSetup); set => SetField(ref _eFolderSetup, value); }
+
+        /// <summary>
+        /// AclRights EnhancedConditions
+        /// </summary>
+        [AllowNull]
+        public EnhancedConditionsRights EnhancedConditions { get => GetField(ref _enhancedConditions); set => SetField(ref _enhancedConditions, value); }
 
         /// <summary>
         /// AclRights ExternalSettings

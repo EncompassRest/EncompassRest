@@ -232,7 +232,7 @@ namespace EncompassRest.Loans
         public string? FreddieField7 { get => _freddieField7; set => SetField(ref _freddieField7, value); }
 
         /// <summary>
-        /// FreddieMac FreddieMacOwnedMessage
+        /// Freddie Mac Owned Message [CASASRN.X204]
         /// </summary>
         public string? FreddieMacOwnedMessage { get => _freddieMacOwnedMessage; set => SetField(ref _freddieMacOwnedMessage, value); }
 

@@ -74,6 +74,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _investorScore1;
         private DirtyValue<string?>? _investorScore2;
         private DirtyValue<string?>? _investorScore3;
+        private DirtyValue<string?>? _jobTitle;
         private DirtyValue<string?>? _lenderType;
         private DirtyValue<string?>? _license;
         private DirtyValue<bool?>? _licenseExempt;
@@ -448,6 +449,11 @@ namespace EncompassRest.Loans
         /// Underwriting Investor Info Score 3 [2350]
         /// </summary>
         public string? InvestorScore3 { get => _investorScore3; set => SetField(ref _investorScore3, value); }
+
+        /// <summary>
+        /// Contact JobTitle
+        /// </summary>
+        public string? JobTitle { get => _jobTitle; set => SetField(ref _jobTitle, value); }
 
         /// <summary>
         /// Contact LenderType

@@ -202,6 +202,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<VaLoanDataPurposeOfLoan>>? _purposeOfLoan;
         private DirtyValue<bool?>? _rangeOvenIndicator;
         private DirtyValue<bool?>? _reasonableValueCompleted;
+        private DirtyValue<decimal?>? _refinancePropertyExistingLienAmount;
         private DirtyValue<bool?>? _refrigeratorIndicator;
         private DirtyValue<string?>? _rent;
         private DirtyValue<bool?>? _replacementOfSystem;
@@ -1344,6 +1345,12 @@ namespace EncompassRest.Loans
         public bool? ReasonableValueCompleted { get => _reasonableValueCompleted; set => SetField(ref _reasonableValueCompleted, value); }
 
         /// <summary>
+        /// VA Management Tool - Loan Info Refi Existing Lien [VASUMM.X149]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
+        public decimal? RefinancePropertyExistingLienAmount { get => _refinancePropertyExistingLienAmount; set => SetField(ref _refinancePropertyExistingLienAmount, value); }
+
+        /// <summary>
         /// VA Equipment Refrigerator [209]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Refrigerator\"}")]
@@ -1736,19 +1743,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Statutory Closing Costs [VASUMM.X127]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VAStatutoryClosingCosts { get => _vAStatutoryClosingCosts; set => SetField(ref _vAStatutoryClosingCosts, value); }
 
         /// <summary>
         /// VA Statutory P&amp;I Payment [VASUMM.X128]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VAStatutoryMonthlyPayment { get => _vAStatutoryMonthlyPayment; set => SetField(ref _vAStatutoryMonthlyPayment, value); }
 
         /// <summary>
         /// VA Statutory P&amp;I Reduction [VASUMM.X129]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VAStatutoryMonthlyReduction { get => _vAStatutoryMonthlyReduction; set => SetField(ref _vAStatutoryMonthlyReduction, value); }
 
         /// <summary>

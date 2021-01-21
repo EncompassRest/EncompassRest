@@ -2976,7 +2976,7 @@ namespace EncompassRest.Loans
         public string? Vendor6 { get => _vendor6; set => SetField(ref _vendor6, value); }
 
         /// <summary>
-        /// GSE Vendor Provider Data - Chronos (Bor,CoBor) [GSEVENDOR.X14]
+        /// GSE Vendor Provider Data - Corvius (Bor,CoBor) [GSEVENDOR.X14]
         /// </summary>
         public string? Vendor7 { get => _vendor7; set => SetField(ref _vendor7, value); }
 
@@ -3009,7 +3009,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower VvoeWorkNumberDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? VvoeWorkNumberDate { get => _vvoeWorkNumberDate; set => SetField(ref _vvoeWorkNumberDate, value); }
 
         /// <summary>

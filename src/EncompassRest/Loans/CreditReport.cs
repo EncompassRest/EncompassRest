@@ -32,7 +32,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CreditReport CreditReportDate
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CreditReportDate { get => _creditReportDate; set => SetField(ref _creditReportDate, value); }
 
         /// <summary>

@@ -399,6 +399,7 @@ namespace EncompassRest.Loans
         private DirtyList<SettlementServiceCharge>? _settlementServiceCharges;
         private Shipping? _shipping;
         private DirtyValue<bool?>? _simpleRefinanceType;
+        private DirtyValue<string?>? _sourceEntityUrn;
         private DirtyList<SpecialFeatureCode>? _specialFeatureCodes;
         private DirtyValue<decimal?>? _startingAdjPrice;
         private DirtyValue<decimal?>? _startingAdjRate;
@@ -2653,6 +2654,11 @@ namespace EncompassRest.Loans
         /// Simple Refinance (FHA to FHA) [MORNET.X41]
         /// </summary>
         public bool? SimpleRefinanceType { get => _simpleRefinanceType; set => SetField(ref _simpleRefinanceType, value); }
+
+        /// <summary>
+        /// Loan SourceEntityUrn
+        /// </summary>
+        public string? SourceEntityUrn { get => _sourceEntityUrn; set => SetField(ref _sourceEntityUrn, value); }
 
         /// <summary>
         /// Loan SpecialFeatureCodes

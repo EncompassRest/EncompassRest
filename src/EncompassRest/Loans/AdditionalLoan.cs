@@ -172,7 +172,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Additional Loans Linked Piggyback Indicator [URLARALNN25]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Linked Piggyback Indicator \"}")]
+        [LoanFieldProperty(ReadOnly = true, OptionsJson = "{\"Y\":\"Linked Piggyback Indicator \"}")]
         public bool? LinkedPiggybackIndicator { get => _linkedPiggybackIndicator; set => SetField(ref _linkedPiggybackIndicator, value); }
 
         /// <summary>

@@ -290,6 +290,136 @@
     "Description": "Vesting Party - Vesting Type #{0}"
   },
   {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].AddlCoverageAmount",
+    "FieldId": "CORROI{0:00}16",
+    "Description": "Correspondent - Other Insurance - Additional Coverage Amount"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].City",
+    "FieldId": "CORROI{0:00}04",
+    "Description": "Correspondent - Other Insurance - Company City"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].Comments",
+    "FieldId": "CORROI{0:00}26",
+    "Description": "Correspondent - Other Insurance - Comments"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].CompanyName",
+    "FieldId": "CORROI{0:00}02",
+    "Description": "Correspondent - Other Insurance - Company Name"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].ContactName",
+    "FieldId": "CORROI{0:00}07",
+    "Description": "Correspondent - Other Insurance - Company Contact Name"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].CoverageAmount",
+    "FieldId": "CORROI{0:00}25",
+    "Description": "Correspondent - Other Insurance - Coverage Amount"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].EffectiveDate",
+    "FieldId": "CORROI{0:00}23",
+    "Description": "Correspondent - Other Insurance - Insurance Effective Date"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].EscrowedFlag",
+    "FieldId": "CORROI{0:00}15",
+    "Description": "Correspondent - Other Insurance - Insurance Escrowed?"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].ExpirationDate",
+    "FieldId": "CORROI{0:00}24",
+    "Description": "Correspondent - Other Insurance - Insurance Expiration Date"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].Fax",
+    "FieldId": "CORROI{0:00}09",
+    "Description": "Correspondent - Other Insurance - Company Fax Number"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].GuaranteedReplacementCostFlag",
+    "FieldId": "CORROI{0:00}18",
+    "Description": "Correspondent - Other Insurance - Guaranteed Replacement Cost?"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].IncludedInMasterPolicyFlag",
+    "FieldId": "CORROI{0:00}01",
+    "Description": "Correspondent - Other Insurance - Included in Master Policy?"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].InsuranceEstimatorFlag",
+    "FieldId": "CORROI{0:00}19",
+    "Description": "Correspondent - Other Insurance - Insurance Estimator?"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].MaxDeductibleAmount",
+    "FieldId": "CORROI{0:00}21",
+    "Description": "Correspondent - Other Insurance - Maximum Deductible Amount"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].MaxDeductiblePerc",
+    "FieldId": "CORROI{0:00}20",
+    "Description": "Correspondent - Other Insurance - Maximum Deductible Percentage"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].Phone",
+    "FieldId": "CORROI{0:00}08",
+    "Description": "Correspondent - Other Insurance - Company Phone Number"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PolicyNumber",
+    "FieldId": "CORROI{0:00}22",
+    "Description": "Correspondent - Other Insurance - Policy #"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PolicyType",
+    "FieldId": "CORROI{0:00}10",
+    "Description": "Correspondent - Other Insurance - Policy Type"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PolicyTypeOtherDesc",
+    "FieldId": "CORROI{0:00}11",
+    "Description": "Correspondent - Other Insurance - Policy Type Other Description"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PremiumAmount",
+    "FieldId": "CORROI{0:00}12",
+    "Description": "Correspondent - Other Insurance - Premium Amount"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PremiumDueDate",
+    "FieldId": "CORROI{0:00}13",
+    "Description": "Correspondent - Other Insurance - Premium Due Date"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PropertyValueUsed",
+    "FieldId": "CORROI{0:00}17",
+    "Description": "Correspondent - Other Insurance - Property Value Used for Insurance"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].ReplacementValue",
+    "FieldId": "CORROI{0:00}14",
+    "Description": "Correspondent - Other Insurance - Replacement Value"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].State",
+    "FieldId": "CORROI{0:00}05",
+    "Description": "Correspondent - Other Insurance - Company State"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].StreetAddress",
+    "FieldId": "CORROI{0:00}03",
+    "Description": "Correspondent - Other Insurance - Company Street Address"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].ZipCode",
+    "FieldId": "CORROI{0:00}06",
+    "Description": "Correspondent - Other Insurance - Company Zip Code"
+  },
+  {
     "ModelPath": "Loan.Correspondent.Disclosures[{0}].CdAppraisalFee",
     "FieldId": "DISC{0:00}20",
     "Description": "CD Appraisal Fee #{0}"

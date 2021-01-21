@@ -101,11 +101,101 @@ namespace EncompassRest.Webhook
         /// systemfailure
         /// </summary>
         [EnumMember(Value = "systemfailure")]
-        Systemfailure = 18,
+        SystemFailure = 18,
         /// <summary>
         /// processfailure
         /// </summary>
         [EnumMember(Value = "processfailure")]
-        Processfailure = 19
+        ProcessFailure = 19,
+        /// <summary>
+        /// openingauditcompleted
+        /// </summary>
+        [EnumMember(Value = "openingauditcompleted")]
+        OpeningAuditCompleted = 20,
+        /// <summary>
+        /// openingauditfailed
+        /// </summary>
+        [EnumMember(Value = "openingauditfailed")]
+        OpeningAuditFailed = 21,
+        /// <summary>
+        /// openingordercompleted
+        /// </summary>
+        [EnumMember(Value = "openingordercompleted")]
+        OpeningOrderCompleted = 22,
+        /// <summary>
+        /// openingorderfailed
+        /// </summary>
+        [EnumMember(Value = "openingorderfailed")]
+        OpeningOrderFailed = 23,
+        /// <summary>
+        /// openingdeliverycompleted
+        /// </summary>
+        [EnumMember(Value = "openingdeliverycompleted")]
+        OpeningDeliveryCompleted = 24,
+        /// <summary>
+        /// openingdeliveryfailed
+        /// </summary>
+        [EnumMember(Value = "openingdeliveryfailed")]
+        OpeningDeliveryFailed = 25,
+        /// <summary>
+        /// closingauditcompleted
+        /// </summary>
+        [EnumMember(Value = "closingauditcompleted")]
+        ClosingAuditCompleted = 26,
+        /// <summary>
+        /// closingauditfailed
+        /// </summary>
+        [EnumMember(Value = "closingauditfailed")]
+        ClosingAuditFailed = 27,
+        /// <summary>
+        /// closingordercompleted
+        /// </summary>
+        [EnumMember(Value = "closingordercompleted")]
+        ClosingOrderCompleted = 28,
+        /// <summary>
+        /// closingorderfailed
+        /// </summary>
+        [EnumMember(Value = "closingorderfailed")]
+        ClosingOrderFailed = 29,
+        /// <summary>
+        /// closingdeliverycompleted
+        /// </summary>
+        [EnumMember(Value = "closingdeliverycompleted")]
+        ClosingDeliveryCompleted = 30,
+        /// <summary>
+        /// closingdeliveryfailed
+        /// </summary>
+        [EnumMember(Value = "closingdeliveryfailed")]
+        ClosingDeliveryFailed = 31,
+        /// <summary>
+        /// closingpackagecompleted
+        /// </summary>
+        [EnumMember(Value = "closingpackagecompleted")]
+        ClosingPackageCompleted = 32,
+        /// <summary>
+        /// closingpackagefailed
+        /// </summary>
+        [EnumMember(Value = "closingpackagefailed")]
+        ClosingPackageFailed = 33,
+        /// <summary>
+        /// formscompleted
+        /// </summary>
+        [EnumMember(Value = "formscompleted")]
+        FormsCompleted = 34,
+        /// <summary>
+        /// formsfailed
+        /// </summary>
+        [EnumMember(Value = "formsfailed")]
+        FormsFailed = 35,
+        /// <summary>
+        /// formsdeliverycompleted
+        /// </summary>
+        [EnumMember(Value = "formsdeliverycompleted")]
+        FormsDeliveryCompleted = 36,
+        /// <summary>
+        /// formsdeliveryfailed
+        /// </summary>
+        [EnumMember(Value = "formsdeliveryfailed")]
+        FormsDeliveryFailed = 37
     }
 }

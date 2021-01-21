@@ -161,8 +161,10 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _lenderRepresentativeCellPhone;
         private DirtyValue<string?>? _lenderRepresentativeEmailAddress;
         private DirtyValue<string?>? _lenderRepresentativeFirstLastName;
+        private DirtyValue<string?>? _lenderRepresentativeJobTitle;
         private DirtyValue<string?>? _lenderRepresentativeRoleId;
         private DirtyValue<string?>? _lenderRepresentativeUserId;
+        private DirtyValue<string?>? _lenderRepresentativeUserType;
         private DirtyValue<string?>? _lenderRepresentativeWorkPhone;
         private DirtyValue<StringEnumValue<LienType>>? _lienPriorityType;
         private DirtyValue<StringEnumValue<LoanDocumentationType>>? _loanDocumentationType;
@@ -1045,6 +1047,11 @@ namespace EncompassRest.Loans
         public string? LenderRepresentativeFirstLastName { get => _lenderRepresentativeFirstLastName; set => SetField(ref _lenderRepresentativeFirstLastName, value); }
 
         /// <summary>
+        /// Lender Representative Job Title [4683]
+        /// </summary>
+        public string? LenderRepresentativeJobTitle { get => _lenderRepresentativeJobTitle; set => SetField(ref _lenderRepresentativeJobTitle, value); }
+
+        /// <summary>
         /// Lender Representative Role ID [4675]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
@@ -1054,6 +1061,12 @@ namespace EncompassRest.Loans
         /// Lender Representative User ID [4682]
         /// </summary>
         public string? LenderRepresentativeUserId { get => _lenderRepresentativeUserId; set => SetField(ref _lenderRepresentativeUserId, value); }
+
+        /// <summary>
+        /// Lender Representative User Type [4684]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? LenderRepresentativeUserType { get => _lenderRepresentativeUserType; set => SetField(ref _lenderRepresentativeUserType, value); }
 
         /// <summary>
         /// Lender Representative Work Phone [4676]

@@ -24,6 +24,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _historyIndicator;
         private DirtyValue<string?>? _id;
         private DirtyValue<bool?>? _ifTaxRecordNotFound;
+        private DirtyValue<bool?>? _irs4506C;
         private DirtyValue<string?>? _last;
         private DirtyValue<DateTime?>? _lastUpdatedDate;
         private DirtyValue<int?>? _lastUpdatedHistory;
@@ -148,6 +149,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"If we cannot find the tax return, we will refund the fee. If the refund should go to the third party listed on line 5, check here.\"}")]
         public bool? IfTaxRecordNotFound { get => _ifTaxRecordNotFound; set => SetField(ref _ifTaxRecordNotFound, value); }
+
+        /// <summary>
+        /// Use IRS 4506-C [IRS4506.X67]
+        /// </summary>
+        public bool? Irs4506C { get => _irs4506C; set => SetField(ref _irs4506C, value); }
 
         /// <summary>
         /// Tax4506 Last [IRS4506.X3]
