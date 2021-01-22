@@ -390,7 +390,7 @@ namespace EncompassRest
 
                 var otherEnums = new Dictionary<string, Dictionary<string, string>>();
 
-                LoanFieldDescriptors.PopulateFieldMappings("Loan", "Loan", typeof(LoanContract), loanEntitySchema, null, entityTypes, fields, fieldPatterns, extendedFieldInfo: false, (string entityName, Type ellieType, EntitySchema entitySchema, HashSet<string> requiredProperties, bool serializeWholeList) => GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums, requiredProperties, serializeWholeList), fieldId => EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId]?.Description, Console.Out);
+                LoanFieldDescriptors.PopulateFieldMappings("Loan", "Loan", null/*typeof(LoanContract)*/, loanEntitySchema, null, entityTypes, fields, fieldPatterns, extendedFieldInfo: false, (string entityName, Type ellieType, EntitySchema entitySchema, HashSet<string> requiredProperties, bool serializeWholeList) => GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums, requiredProperties, serializeWholeList), fieldId => EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId]?.Description, Console.Out);
 
                 entityTypes.Remove("Loan");
 
