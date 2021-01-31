@@ -52,7 +52,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _vodIndex;
 
         /// <summary>
-        /// Asset AccountIdentifier
+        /// Asset AccountIdentifier [182], [1715]
         /// </summary>
         public string? AccountIdentifier { get => _accountIdentifier; set => SetField(ref _accountIdentifier, value); }
 
@@ -85,7 +85,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Asset CashOrMarketValueAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CashOrMarketValueAmount { get => _cashOrMarketValueAmount; set => SetField(ref _cashOrMarketValueAmount, value); }
 
         /// <summary>
@@ -195,7 +194,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Assets Life Ins Face Amt [303]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LifeInsuranceFaceValueAmount { get => _lifeInsuranceFaceValueAmount; set => SetField(ref _lifeInsuranceFaceValueAmount, value); }
 
         /// <summary>
@@ -252,13 +250,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Depository Total Balance [DDNN34]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Total { get => _total; set => SetField(ref _total, value); }
 
         /// <summary>
         /// Asset Urla2020CashOrMarketValueAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Urla2020CashOrMarketValueAmount { get => _urla2020CashOrMarketValueAmount; set => SetField(ref _urla2020CashOrMarketValueAmount, value); }
 
         /// <summary>

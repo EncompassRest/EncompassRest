@@ -118,7 +118,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Cured Total GFE Tolerance [NEWHUD.CuredX312]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? CuredGfeTotalTolerance { get => _curedGfeTotalTolerance; set => SetField(ref _curedGfeTotalTolerance, value); }
 
         /// <summary>
@@ -146,7 +146,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Total GFE Tolerance [NEWHUD.X312]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GfeTotalTolerance { get => _gfeTotalTolerance; set => SetField(ref _gfeTotalTolerance, value); }
 
         /// <summary>
@@ -203,43 +202,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// 10% Tolerance Comp Chart - HUD1 Government Recording Charge [NEWHUD.X336]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Hud1GovernmentRecordingCharge { get => _hud1GovernmentRecordingCharge; set => SetField(ref _hud1GovernmentRecordingCharge, value); }
 
         /// <summary>
         /// Seller Total Closing Cost for HUD-1 Pg1 [NEWHUD.X774]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Hud1Pg1SellerPaidClosingCostsAmount { get => _hud1Pg1SellerPaidClosingCostsAmount; set => SetField(ref _hud1Pg1SellerPaidClosingCostsAmount, value); }
 
         /// <summary>
         /// Borr Total Closing Cost for HUD-1 Pg1 [NEWHUD.X773]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Hud1Pg1TotalSettlementCharges { get => _hud1Pg1TotalSettlementCharges; set => SetField(ref _hud1Pg1TotalSettlementCharges, value); }
 
         /// <summary>
         /// Seller Total Closing Costs [NEWHUD.X278]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Hud1Pg2SellerPaidClosingCostsAmount { get => _hud1Pg2SellerPaidClosingCostsAmount; set => SetField(ref _hud1Pg2SellerPaidClosingCostsAmount, value); }
 
         /// <summary>
         /// Borr Total Closing Costs [NEWHUD.X277]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Hud1Pg2TotalSettlementCharges { get => _hud1Pg2TotalSettlementCharges; set => SetField(ref _hud1Pg2TotalSettlementCharges, value); }
 
         /// <summary>
         /// Total HUD Tolerance [NEWHUD.X313]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HudTotalTolerance { get => _hudTotalTolerance; set => SetField(ref _hudTotalTolerance, value); }
 
         /// <summary>
         /// Total GFE Tolerance Increase % [NEWHUD.X315]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HudTotalToleranceIncreasePercent { get => _hudTotalToleranceIncreasePercent; set => SetField(ref _hudTotalToleranceIncreasePercent, value); }
 
         /// <summary>
@@ -250,49 +242,49 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Line 1101 Seller Paid Total [NEWHUD.X798]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Line1101SellerPaidTotal { get => _line1101SellerPaidTotal; set => SetField(ref _line1101SellerPaidTotal, value); }
 
         /// <summary>
         /// Fees Line 1201 Seller Paid Total [NEWHUD.X799]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Line1201SellerPaidTotal { get => _line1201SellerPaidTotal; set => SetField(ref _line1201SellerPaidTotal, value); }
 
         /// <summary>
         /// Fees Line 1301 Seller Paid Total [NEWHUD.X800]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Line1301SellerPaidTotal { get => _line1301SellerPaidTotal; set => SetField(ref _line1301SellerPaidTotal, value); }
 
         /// <summary>
         /// Fees Line 801 Borrower Paid Total [NEWHUD.X795]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Line801BorrowerPaidTotal { get => _line801BorrowerPaidTotal; set => SetField(ref _line801BorrowerPaidTotal, value); }
 
         /// <summary>
         /// Fees Line 801 Seller Paid Total [NEWHUD.X794]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Line801SellerPaidTotal { get => _line801SellerPaidTotal; set => SetField(ref _line801SellerPaidTotal, value); }
 
         /// <summary>
         /// Fees Line 802 Borrower Paid Total [NEWHUD.X797]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Line802BorrowerPaidTotal { get => _line802BorrowerPaidTotal; set => SetField(ref _line802BorrowerPaidTotal, value); }
 
         /// <summary>
         /// Fees Line 803 Borrower Paid Total [NEWHUD.X796]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Line803BorrowerPaidTotal { get => _line803BorrowerPaidTotal; set => SetField(ref _line803BorrowerPaidTotal, value); }
 
         /// <summary>
         /// Fees Line 803 Seller Paid Total [NEWHUD.X801]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Line803SellerPaidTotal { get => _line803SellerPaidTotal; set => SetField(ref _line803SellerPaidTotal, value); }
 
         /// <summary>
@@ -549,25 +541,23 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD-1 Pg 3 Initial Mthly Amt w/Escrow [NEWHUD.X802]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyAmountWithEscrow { get => _monthlyAmountWithEscrow; set => SetField(ref _monthlyAmountWithEscrow, value); }
 
         /// <summary>
         /// HUD-1 Pg 3 Mthly Escrow Pymt w/o Mrtg Ins [NEWHUD.X950]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyEscrowPayment { get => _monthlyEscrowPayment; set => SetField(ref _monthlyEscrowPayment, value); }
 
         /// <summary>
         /// New HUD HUD-1 Page 3 Prepaid Interest [NEWHUD.X949]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PrepaidInterest { get => _prepaidInterest; set => SetField(ref _prepaidInterest, value); }
 
         /// <summary>
         /// Total GFE Tolerance Increase Amt [NEWHUD.X314]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalToleranceIncreaseAmount { get => _totalToleranceIncreaseAmount; set => SetField(ref _totalToleranceIncreaseAmount, value); }
     }
 }

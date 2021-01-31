@@ -436,7 +436,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Income Excluded From HMDA [HMDA.X110]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? IncomeExcludedFromHmda { get => _incomeExcludedFromHmda; set => SetField(ref _incomeExcludedFromHmda, value); }
 
         /// <summary>
@@ -482,7 +481,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HMDA Loan Amount [HMDA.X31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
 
         /// <summary>
@@ -646,7 +644,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HMDA Repurchased Loan Amount [HMDA.X93]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RepurchasedLoanAmount { get => _repurchasedLoanAmount; set => SetField(ref _repurchasedLoanAmount, value); }
 
         /// <summary>

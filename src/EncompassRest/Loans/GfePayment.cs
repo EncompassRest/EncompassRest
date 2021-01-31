@@ -71,7 +71,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfePayment MaximumDifference
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MaximumDifference { get => _maximumDifference; set => SetField(ref _maximumDifference, value); }
 
         /// <summary>
@@ -83,37 +83,37 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfePayment MinimumDifference
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MinimumDifference { get => _minimumDifference; set => SetField(ref _minimumDifference, value); }
 
         /// <summary>
         /// GfePayment MinimumMonthlyPayment
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MinimumMonthlyPayment { get => _minimumMonthlyPayment; set => SetField(ref _minimumMonthlyPayment, value); }
 
         /// <summary>
         /// GfePayment MonthlyPaymentYear1
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyPaymentYear1 { get => _monthlyPaymentYear1; set => SetField(ref _monthlyPaymentYear1, value); }
 
         /// <summary>
         /// GfePayment MonthlyPaymentYear6
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyPaymentYear6 { get => _monthlyPaymentYear6; set => SetField(ref _monthlyPaymentYear6, value); }
 
         /// <summary>
         /// GfePayment MonthlyPaymentYear6Change
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyPaymentYear6Change { get => _monthlyPaymentYear6Change; set => SetField(ref _monthlyPaymentYear6Change, value); }
 
         /// <summary>
         /// GfePayment MonthlyPaymentYear6MaxChange
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyPaymentYear6MaxChange { get => _monthlyPaymentYear6MaxChange; set => SetField(ref _monthlyPaymentYear6MaxChange, value); }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfePayment OwedAfter5Years
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? OwedAfter5Years { get => _owedAfter5Years; set => SetField(ref _owedAfter5Years, value); }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfePayment ReducedLoanBalance
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ReducedLoanBalance { get => _reducedLoanBalance; set => SetField(ref _reducedLoanBalance, value); }
 
         /// <summary>

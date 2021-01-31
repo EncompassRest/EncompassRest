@@ -243,7 +243,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Sec 32 Current HOEPA Fee Trigger [S32DISC.X50]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HoepaFee { get => _hoepaFee; set => SetField(ref _hoepaFee, value); }
 
         /// <summary>
@@ -302,7 +301,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Sec 32 Max Allowed Points/Fees [S32DISC.X101]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MaximumPointsAndFees { get => _maximumPointsAndFees; set => SetField(ref _maximumPointsAndFees, value); }
 
         /// <summary>
@@ -446,7 +445,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Sec 35 HPML Prior Acquisition Price [3854]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Section35PriorAcquisitionPrice { get => _section35PriorAcquisitionPrice; set => SetField(ref _section35PriorAcquisitionPrice, value); }
 
         /// <summary>
@@ -542,7 +540,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Sec 32 Total Points/Fees Appl Under Section 32 [S32DISC.X48]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalPointsAndFees { get => _totalPointsAndFees; set => SetField(ref _totalPointsAndFees, value); }
 
         /// <summary>
@@ -564,7 +561,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Sec 32 Mtg User Defined 1109 Borrower Paid Amount [S32DISC.X148]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UserDefined1109BorPaidAmount { get => _userDefined1109BorPaidAmount; set => SetField(ref _userDefined1109BorPaidAmount, value); }
 
         /// <summary>
@@ -580,7 +576,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Sec 32 Mtg User Defined 1110 Borrower Paid Amount [S32DISC.X149]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UserDefined1110BorPaidAmount { get => _userDefined1110BorPaidAmount; set => SetField(ref _userDefined1110BorPaidAmount, value); }
 
         /// <summary>

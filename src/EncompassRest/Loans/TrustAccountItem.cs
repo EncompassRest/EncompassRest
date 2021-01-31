@@ -1,5 +1,4 @@
 using System;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -42,7 +41,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trust Acct Trans Descr Pymt Amt [TANNPA]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaymentAmount { get => _paymentAmount; set => SetField(ref _paymentAmount, value); }
 
         /// <summary>
@@ -53,7 +51,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trust Acct Trans Descr Receipt Amt [TANNRA]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReceiptAmount { get => _receiptAmount; set => SetField(ref _receiptAmount, value); }
 
         /// <summary>

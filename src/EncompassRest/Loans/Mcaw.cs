@@ -69,37 +69,35 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Adjusted Purchase Price [MCAWPUR.X28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? AdjustedPurchasePrice { get => _adjustedPurchasePrice; set => SetField(ref _adjustedPurchasePrice, value); }
 
         /// <summary>
         /// FHA MCAW Mtg Basis Calc 1 [1154]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AppraisedValue1 { get => _appraisedValue1; set => SetField(ref _appraisedValue1, value); }
 
         /// <summary>
         /// FHA MCAW Mtg Basis Calc 2 [1157]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AppraisedValue2 { get => _appraisedValue2; set => SetField(ref _appraisedValue2, value); }
 
         /// <summary>
         /// Mcaw BorrowerPaidClosingCost [SLREFI.X34]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BorrowerPaidClosingCost { get => _borrowerPaidClosingCost; set => SetField(ref _borrowerPaidClosingCost, value); }
 
         /// <summary>
         /// FHA MCAW Max Mtg Amt [MCAWPUR.X25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? CalculatedMortgageAmount { get => _calculatedMortgageAmount; set => SetField(ref _calculatedMortgageAmount, value); }
 
         /// <summary>
         /// FHA MCAW Cash Reserves [MCAWPUR.X11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? CashReserves { get => _cashReserves; set => SetField(ref _cashReserves, value); }
 
         /// <summary>
@@ -110,7 +108,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Contract Sales Price [MCAWPUR.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ContractSalesPrice { get => _contractSalesPrice; set => SetField(ref _contractSalesPrice, value); }
 
         /// <summary>
@@ -121,13 +119,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mcaw EquityToExSpouse [SLREFI.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? EquityToExSpouse { get => _equityToExSpouse; set => SetField(ref _equityToExSpouse, value); }
 
         /// <summary>
         /// FHA MCAW Max County Loan Amount [MCAWPUR.X27]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? FhaMaxLoanAmount { get => _fhaMaxLoanAmount; set => SetField(ref _fhaMaxLoanAmount, value); }
 
         /// <summary>
@@ -148,7 +146,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Lesser of Sales Price or Value [MCAWPUR.X13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LesserSalesPrice { get => _lesserSalesPrice; set => SetField(ref _lesserSalesPrice, value); }
 
         /// <summary>
@@ -166,13 +164,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Maximum Seller Contribution (4%) [4180]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumSellerContribution4Percent { get => _maximumSellerContribution4Percent; set => SetField(ref _maximumSellerContribution4Percent, value); }
 
         /// <summary>
         /// FHA MCAW Mtg Amt [MCAWPUR.X14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MortgageAmount { get => _mortgageAmount; set => SetField(ref _mortgageAmount, value); }
 
         /// <summary>
@@ -184,13 +180,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Mtg Basis [1090]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MortgageBasisPurchase { get => _mortgageBasisPurchase; set => SetField(ref _mortgageBasisPurchase, value); }
 
         /// <summary>
         /// FHA MCAW Mortgage Basis [GMCAW.X1]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MortgageBasisRefinance { get => _mortgageBasisRefinance; set => SetField(ref _mortgageBasisRefinance, value); }
 
         /// <summary>
@@ -206,7 +202,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mcaw PrincipalBalance [SLREFI.X6]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PrincipalBalance { get => _principalBalance; set => SetField(ref _principalBalance, value); }
 
         /// <summary>
@@ -222,7 +218,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Repairs/Improvements [MCAWPUR.X7]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RepairsAndImprovements { get => _repairsAndImprovements; set => SetField(ref _repairsAndImprovements, value); }
 
         /// <summary>
@@ -233,25 +228,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Repairs or Improvement Amount [MCAWPUR.X29]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RepairsImprovementAmount { get => _repairsImprovementAmount; set => SetField(ref _repairsImprovementAmount, value); }
 
         /// <summary>
         /// Mcaw RepairsRequiredByAppraiser [SLREFI.X33]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? RepairsRequiredByAppraiser { get => _repairsRequiredByAppraiser; set => SetField(ref _repairsRequiredByAppraiser, value); }
 
         /// <summary>
         /// FHA MCAW Required Investment [1135]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RequiredInvestment { get => _requiredInvestment; set => SetField(ref _requiredInvestment, value); }
 
         /// <summary>
         /// FHA MCAW Required Adj [MCAWPUR.X3]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RequirementAdjustment { get => _requirementAdjustment; set => SetField(ref _requirementAdjustment, value); }
 
         /// <summary>
@@ -262,7 +254,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mcaw SeasonedSubordinateLiens [SLREFI.X9]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SeasonedSubordinateLiens { get => _seasonedSubordinateLiens; set => SetField(ref _seasonedSubordinateLiens, value); }
 
         /// <summary>
@@ -273,7 +265,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Attach A Info A2:6% of Line A1 [1116]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SixPercentOfLineA1 { get => _sixPercentOfLineA1; set => SetField(ref _sixPercentOfLineA1, value); }
 
         /// <summary>
@@ -284,37 +276,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA MCAW Statutory Investment Requir [MCAWPUR.X2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? StatutoryInvestment { get => _statutoryInvestment; set => SetField(ref _statutoryInvestment, value); }
 
         /// <summary>
         /// FHA MCAW Amt to be paid in Cash /Other [1139]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ToBePaidAmount { get => _toBePaidAmount; set => SetField(ref _toBePaidAmount, value); }
 
         /// <summary>
         /// FHA MCAW Total Cash to Close [MCAWPUR.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalCashToClose { get => _totalCashToClose; set => SetField(ref _totalCashToClose, value); }
 
         /// <summary>
         /// FHA MCAW Total Requirements [1138]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalRequirements { get => _totalRequirements; set => SetField(ref _totalRequirements, value); }
 
         /// <summary>
         /// FHA MCAW Total Seller Contribution [135]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalSellerContribution { get => _totalSellerContribution; set => SetField(ref _totalSellerContribution, value); }
 
         /// <summary>
         /// FHA MCAW Unadj Acquisition [MCAWPUR.X1]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnadjustedAcquisition { get => _unadjustedAcquisition; set => SetField(ref _unadjustedAcquisition, value); }
 
         /// <summary>

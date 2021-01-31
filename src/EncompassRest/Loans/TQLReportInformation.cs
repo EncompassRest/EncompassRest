@@ -144,25 +144,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// TQL - Borrower 4506T Orders - Total Income 1 [TQL4506TNN22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalIncome1 { get => _totalIncome1; set => SetField(ref _totalIncome1, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Total Income 2 [TQL4506TNN32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalIncome2 { get => _totalIncome2; set => SetField(ref _totalIncome2, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Total Income 3 [TQL4506TNN42]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalIncome3 { get => _totalIncome3; set => SetField(ref _totalIncome3, value); }
 
         /// <summary>
         /// TQL - Borrower 4506T Orders - Total Income 4 [TQL4506TNN52]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalIncome4 { get => _totalIncome4; set => SetField(ref _totalIncome4, value); }
 
         /// <summary>

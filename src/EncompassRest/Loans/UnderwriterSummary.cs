@@ -240,7 +240,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Modified Terms Loan Amount [2991]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ModifiedLoanAmount { get => _modifiedLoanAmount; set => SetField(ref _modifiedLoanAmount, value); }
 
         /// <summary>
@@ -263,7 +262,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Modified Terms Principal and Interest [2994]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ModifiedMonthlyPayment { get => _modifiedMonthlyPayment; set => SetField(ref _modifiedMonthlyPayment, value); }
 
         /// <summary>
@@ -274,7 +273,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Original Appraisers Value [2355]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginalAppraisersValue { get => _originalAppraisersValue; set => SetField(ref _originalAppraisersValue, value); }
 
         /// <summary>
@@ -305,7 +303,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Appraisal Review Value [2361]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReviewValue { get => _reviewValue; set => SetField(ref _reviewValue, value); }
 
         /// <summary>

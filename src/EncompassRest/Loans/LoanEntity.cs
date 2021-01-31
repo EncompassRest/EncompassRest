@@ -924,6 +924,10 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ProvidedDocument
         /// </summary>
-        ProvidedDocument = 231
+        ProvidedDocument = 231,
+        /// <summary>
+        /// CorrOtherInsurance
+        /// </summary>
+        CorrOtherInsurance = 232
     }
 }

@@ -14,6 +14,7 @@ namespace EncompassRest.Organizations
     {
         private DirtyValue<StringEnumValue<AtrExemptCreditors>>? _atrExemptCreditors;
         private DirtyValue<StringEnumValue<AtrSmallCreditors>>? _atrSmallCreditors;
+        private DirtyValue<bool?>? _dontApplyIntRateExportation;
         private DirtyValue<StringEnumValue<State>>? _homeState;
         private DirtyValue<string?>? _lenderType;
         private DirtyValue<StringEnumValue<StatutoryStatusKansasType>>? _statutoryStatusKansasType;
@@ -30,6 +31,11 @@ namespace EncompassRest.Organizations
         /// Indicates whether the organization qualifies as a Small Creditor or Rural Small Creditor.
         /// </summary>
         public StringEnumValue<AtrSmallCreditors> AtrSmallCreditors { get => _atrSmallCreditors; set => SetField(ref _atrSmallCreditors, value); }
+
+        /// <summary>
+        /// LicenseInformation DontApplyIntRateExportation
+        /// </summary>
+        public bool? DontApplyIntRateExportation { get => _dontApplyIntRateExportation; set => SetField(ref _dontApplyIntRateExportation, value); }
 
         /// <summary>
         /// The home state code where the organization's main (or home) office is located.

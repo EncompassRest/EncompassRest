@@ -1078,7 +1078,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Ellie Mae Closing Document Override - LA Minimum Attorney Fee Amount [Closing.SctyIstrmtLAMinAttyFeeAmt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SctyIstrmtLAMinAttyFeeAmt { get => _sctyIstrmtLAMinAttyFeeAmt; set => SetField(ref _sctyIstrmtLAMinAttyFeeAmt, value); }
 
         /// <summary>

@@ -65,7 +65,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Estimated Property Costs [CD4.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EstimatedPropertyCosts { get => _estimatedPropertyCosts; set => SetField(ref _estimatedPropertyCosts, value); }
 
         /// <summary>
@@ -76,13 +75,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// First Change Max Amt [CD4.X36]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FirstChangeMaxAmt { get => _firstChangeMaxAmt; set => SetField(ref _firstChangeMaxAmt, value); }
 
         /// <summary>
         /// First Change Min Amt [CD4.X35]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FirstChangeMinAmt { get => _firstChangeMinAmt; set => SetField(ref _firstChangeMinAmt, value); }
 
         /// <summary>
@@ -108,7 +105,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure Page 4 - Initial Escrow Payment [CD4.X44]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialEscrowPayment { get => _initialEscrowPayment; set => SetField(ref _initialEscrowPayment, value); }
 
         /// <summary>
@@ -157,13 +153,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Max payment Amt [CD4.X38]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaxPaymentAmt { get => _maxPaymentAmt; set => SetField(ref _maxPaymentAmt, value); }
 
         /// <summary>
         /// Closing Disclosure Page 4 Monthly Escrow Payment [CD4.X10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyEscrowPayment { get => _monthlyEscrowPayment; set => SetField(ref _monthlyEscrowPayment, value); }
 
         /// <summary>
@@ -174,7 +168,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure Page 4 Non-Escrowed Property Costs Within 1 Year of Consummation [CD4.X41]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NonEscrowedPropertyCosts1YearConsummation { get => _nonEscrowedPropertyCosts1YearConsummation; set => SetField(ref _nonEscrowedPropertyCosts1YearConsummation, value); }
 
         /// <summary>
@@ -241,7 +234,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Disclosure Page 4 Escrowed Property Costs Within 1 Year of Consummation [CD4.X40]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalDisbursed1YearConsummation { get => _totalDisbursed1YearConsummation; set => SetField(ref _totalDisbursed1YearConsummation, value); }
     }
 }

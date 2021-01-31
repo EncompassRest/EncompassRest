@@ -1,6 +1,5 @@
 using System;
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -32,7 +31,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UCDDetail FeeAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmount { get => _feeAmount; set => SetField(ref _feeAmount, value); }
 
         /// <summary>

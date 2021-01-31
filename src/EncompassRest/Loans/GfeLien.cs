@@ -1,5 +1,4 @@
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -19,7 +18,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfeLien AmountOwing
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountOwing { get => _amountOwing; set => SetField(ref _amountOwing, value); }
 
         /// <summary>

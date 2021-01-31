@@ -264,7 +264,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - All Other Payments [AUS.X71]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogAllOtherPayments { get => _logAllOtherPayments; set => SetField(ref _logAllOtherPayments, value); }
 
         /// <summary>
@@ -280,7 +279,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Amt. Subordinate Fin. [AUS.X57]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogAmtSubordinateFin { get => _logAmtSubordinateFin; set => SetField(ref _logAmtSubordinateFin, value); }
 
         /// <summary>
@@ -342,7 +340,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Borrower Asset Amount [AUS.X109]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogBorrowerAssetAmount { get => _logBorrowerAssetAmount; set => SetField(ref _logBorrowerAssetAmount, value); }
 
         /// <summary>
@@ -383,7 +380,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Borrower Income Amount [AUS.X102]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogBorrowerIncomeAmount { get => _logBorrowerIncomeAmount; set => SetField(ref _logBorrowerIncomeAmount, value); }
 
         /// <summary>
@@ -440,13 +436,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Cash Back [AUS.X77]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogCashBack { get => _logCashBack; set => SetField(ref _logCashBack, value); }
 
         /// <summary>
         /// AUS Tracking - Freddie Mac - Cash Out Amount [AUS.X158]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogCashOutAmount { get => _logCashOutAmount; set => SetField(ref _logCashOutAmount, value); }
 
         /// <summary>
@@ -458,7 +452,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - CoBorrower Asset Amount [AUS.X113]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogCoBorrowerAssetAmount { get => _logCoBorrowerAssetAmount; set => SetField(ref _logCoBorrowerAssetAmount, value); }
 
         /// <summary>
@@ -499,7 +492,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - CoBorrower Income Amount [AUS.X105]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogCoBorrowerIncomeAmount { get => _logCoBorrowerIncomeAmount; set => SetField(ref _logCoBorrowerIncomeAmount, value); }
 
         /// <summary>
@@ -649,7 +641,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Cured AUS Tracking - Proposed Monthly Payment / Debt - Total Housing Payment [AUS.CuredX32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LogCuredProposedTotalHousingPayment { get => _logCuredProposedTotalHousingPayment; set => SetField(ref _logCuredProposedTotalHousingPayment, value); }
 
         /// <summary>
@@ -667,13 +659,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Cured AUS Tracking - Total Loan Amount [AUS.CuredX16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LogCuredTotalLoanAmount { get => _logCuredTotalLoanAmount; set => SetField(ref _logCuredTotalLoanAmount, value); }
 
         /// <summary>
         /// Cured AUS Tracking - Income / Assets - Total Monthly Income [AUS.CuredX41]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LogCuredTotalMonthlyIncome { get => _logCuredTotalMonthlyIncome; set => SetField(ref _logCuredTotalMonthlyIncome, value); }
 
         /// <summary>
@@ -717,19 +709,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Excess Available Assets, not required to be Verified [AUS.X79]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogExcessAvailableAssetsNoVerified { get => _logExcessAvailableAssetsNoVerified; set => SetField(ref _logExcessAvailableAssetsNoVerified, value); }
 
         /// <summary>
         /// AUS Tracking - Fannie Mae - Financed MI Amount [AUS.X61]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogFinancedMIAmount { get => _logFinancedMIAmount; set => SetField(ref _logFinancedMIAmount, value); }
 
         /// <summary>
         /// AUS Tracking - Proposed Monthly Payment / Debt - First P&amp;I [AUS.X25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogFirstPandI { get => _logFirstPandI; set => SetField(ref _logFirstPandI, value); }
 
         /// <summary>
@@ -750,7 +739,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Funds Required to Close [AUS.X74]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogFundsRequiredClose { get => _logFundsRequiredClose; set => SetField(ref _logFundsRequiredClose, value); }
 
         /// <summary>
@@ -767,7 +755,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Housing Expense [AUS.X65]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogHousingExpense { get => _logHousingExpense; set => SetField(ref _logHousingExpense, value); }
 
         /// <summary>
@@ -796,43 +783,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Income / Assets - Base [AUS.X34]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogIncomeAssetBase { get => _logIncomeAssetBase; set => SetField(ref _logIncomeAssetBase, value); }
 
         /// <summary>
         /// AUS Tracking - Income / Assets - Bonus [AUS.X36]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogIncomeAssetBonus { get => _logIncomeAssetBonus; set => SetField(ref _logIncomeAssetBonus, value); }
 
         /// <summary>
         /// AUS Tracking - Income / Assets - Commission [AUS.X35]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogIncomeAssetCommission { get => _logIncomeAssetCommission; set => SetField(ref _logIncomeAssetCommission, value); }
 
         /// <summary>
         /// AUS Tracking - Income / Assets - Other [AUS.X38]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogIncomeAssetOther { get => _logIncomeAssetOther; set => SetField(ref _logIncomeAssetOther, value); }
 
         /// <summary>
         /// AUS Tracking - Income / Assets - Overtime [AUS.X37]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogIncomeAssetOvertime { get => _logIncomeAssetOvertime; set => SetField(ref _logIncomeAssetOvertime, value); }
 
         /// <summary>
         /// AUS Tracking - Income / Assets - Subj. Pos. Cash Flow [AUS.X40]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogIncomeAssetPosCashFlow { get => _logIncomeAssetPosCashFlow; set => SetField(ref _logIncomeAssetPosCashFlow, value); }
 
         /// <summary>
         /// AUS Tracking - Income / Assets - Positive Net Rental [AUS.X39]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogIncomeAssetPositiveNetRental { get => _logIncomeAssetPositiveNetRental; set => SetField(ref _logIncomeAssetPositiveNetRental, value); }
 
         /// <summary>
@@ -898,7 +878,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Loan Amount [AUS.X60]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogLoanAmount { get => _logLoanAmount; set => SetField(ref _logLoanAmount, value); }
 
         /// <summary>
@@ -1002,7 +981,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Freddie Mac - Max Mortgage Limit [AUS.X162]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogMaxMortgageLimit { get => _logMaxMortgageLimit; set => SetField(ref _logMaxMortgageLimit, value); }
 
         /// <summary>
@@ -1023,13 +1001,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Negative Net Rental [AUS.X69]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogNegativeNetRental { get => _logNegativeNetRental; set => SetField(ref _logNegativeNetRental, value); }
 
         /// <summary>
         /// AUS Tracking - Fannie Mae - Net Cash Back [AUS.X78]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogNetCashBack { get => _logNetCashBack; set => SetField(ref _logNetCashBack, value); }
 
         /// <summary>
@@ -1088,13 +1064,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Owner Existing Mtg. [AUS.X58]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogOwnerExistingMtg { get => _logOwnerExistingMtg; set => SetField(ref _logOwnerExistingMtg, value); }
 
         /// <summary>
         /// AUS Tracking - Fannie Mae - P &amp; I [AUS.X62]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogPandI { get => _logPandI; set => SetField(ref _logPandI, value); }
 
         /// <summary>
@@ -1126,13 +1100,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Freddie Mac - Present Housing Expense [AUS.X161]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogPresentHousingExpense { get => _logPresentHousingExpense; set => SetField(ref _logPresentHousingExpense, value); }
 
         /// <summary>
         /// AUS Tracking - Fannie Mae - Present/Principal Housing Payment [AUS.X73]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogPresentPrincipalHousingPayment { get => _logPresentPrincipalHousingPayment; set => SetField(ref _logPresentPrincipalHousingPayment, value); }
 
         /// <summary>
@@ -1159,49 +1131,41 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Proposed Monthly Payment / Debt - Hazard Insurance [AUS.X27]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogProposedHazardInsurance { get => _logProposedHazardInsurance; set => SetField(ref _logProposedHazardInsurance, value); }
 
         /// <summary>
         /// AUS Tracking - Proposed Monthly Payment / Debt - HOA Fees [AUS.X30]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogProposedHOAFees { get => _logProposedHOAFees; set => SetField(ref _logProposedHOAFees, value); }
 
         /// <summary>
         /// AUS Tracking - Freddie Mac - Proposed Housing (PITI) [AUS.X160]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogProposedHousingPITI { get => _logProposedHousingPITI; set => SetField(ref _logProposedHousingPITI, value); }
 
         /// <summary>
         /// AUS Tracking - Proposed Monthly Payment / Debt - Mortgage Insurance [AUS.X29]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogProposedMortgageInsurance { get => _logProposedMortgageInsurance; set => SetField(ref _logProposedMortgageInsurance, value); }
 
         /// <summary>
         /// AUS Tracking - Proposed Monthly Payment / Debt - Other [AUS.X31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogProposedOtherPayment { get => _logProposedOtherPayment; set => SetField(ref _logProposedOtherPayment, value); }
 
         /// <summary>
         /// AUS Tracking - Proposed Monthly Payment / Debt - Taxes [AUS.X28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogProposedTaxes { get => _logProposedTaxes; set => SetField(ref _logProposedTaxes, value); }
 
         /// <summary>
         /// AUS Tracking - Proposed Monthly Payment / Debt - Total Housing Payment [AUS.X32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogProposedTotalHousingPayment { get => _logProposedTotalHousingPayment; set => SetField(ref _logProposedTotalHousingPayment, value); }
 
         /// <summary>
         /// AUS Tracking - Proposed Monthly Payment / Debt - Total Monthly Debt [AUS.X33]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogProposedTotalMonthlyDebt { get => _logProposedTotalMonthlyDebt; set => SetField(ref _logProposedTotalMonthlyDebt, value); }
 
         /// <summary>
@@ -1228,13 +1192,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Freddie Mac - Reserves [AUS.X159]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogReserves { get => _logReserves; set => SetField(ref _logReserves, value); }
 
         /// <summary>
         /// AUS Tracking - Fannie Mae - Reserves Req'ed to be Verified [AUS.X75]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogReservesRequiredVerified { get => _logReservesRequiredVerified; set => SetField(ref _logReservesRequiredVerified, value); }
 
         /// <summary>
@@ -1250,13 +1212,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Sales Price [AUS.X17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogSalesPrice { get => _logSalesPrice; set => SetField(ref _logSalesPrice, value); }
 
         /// <summary>
         /// AUS Tracking - Proposed Monthly Payment / Debt - Second P&amp;I [AUS.X26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogSecondPandI { get => _logSecondPandI; set => SetField(ref _logSecondPandI, value); }
 
         /// <summary>
@@ -1277,7 +1237,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Subj. Neg. Cash Flow [AUS.X70]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogSubjNegCashFlow { get => _logSubjNegCashFlow; set => SetField(ref _logSubjNegCashFlow, value); }
 
         /// <summary>
@@ -1319,19 +1278,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Income / Assets - Total Assets [AUS.X42]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogTotalAsset { get => _logTotalAsset; set => SetField(ref _logTotalAsset, value); }
 
         /// <summary>
         /// AUS Tracking - Fannie Mae - Total Expense [AUS.X66]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogTotalExpense { get => _logTotalExpense; set => SetField(ref _logTotalExpense, value); }
 
         /// <summary>
         /// AUS Tracking - Fannie Mae - Total Expense Pmt [AUS.X72]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogTotalExpensePmt { get => _logTotalExpensePmt; set => SetField(ref _logTotalExpensePmt, value); }
 
         /// <summary>
@@ -1343,19 +1299,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Fannie Mae - Total Funds to be Verified [AUS.X76]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogTotalFundsVerified { get => _logTotalFundsVerified; set => SetField(ref _logTotalFundsVerified, value); }
 
         /// <summary>
         /// AUS Tracking - Total Loan Amount [AUS.X16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogTotalLoanAmount { get => _logTotalLoanAmount; set => SetField(ref _logTotalLoanAmount, value); }
 
         /// <summary>
         /// AUS Tracking - Income / Assets - Total Monthly Income [AUS.X41]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LogTotalMonthlyIncome { get => _logTotalMonthlyIncome; set => SetField(ref _logTotalMonthlyIncome, value); }
 
         /// <summary>

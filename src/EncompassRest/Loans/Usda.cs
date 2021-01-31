@@ -151,7 +151,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Additional Adult Household Member(s) (Base Income: Primary Employment from Wages, Salary, self-Employed, Additional income to Primary Employment, Other Income) [USDA.X167]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdditionalMemberBaseIncome { get => _additionalMemberBaseIncome; set => SetField(ref _additionalMemberBaseIncome, value); }
 
         /// <summary>
@@ -172,19 +171,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Loan Closing - Advance Amount to Date [USDA.X134]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdvanceAmountToDate { get => _advanceAmountToDate; set => SetField(ref _advanceAmountToDate, value); }
 
         /// <summary>
         /// USDA - Loan Closing - Amount of Loanline of Credit [USDA.X133]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountLoanlineCredit { get => _amountLoanlineCredit; set => SetField(ref _amountLoanlineCredit, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Annual Child Care Expenses [USDA.X173]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualChildCareExpenses { get => _annualChildCareExpenses; set => SetField(ref _annualChildCareExpenses, value); }
 
         /// <summary>
@@ -230,13 +226,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Loan Closing - Balance Owed On Loan [USDA.X144]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BalanceOwedOnLoan { get => _balanceOwedOnLoan; set => SetField(ref _balanceOwedOnLoan, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Borrower Total Stable Income [USDA.X201]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BorrowerTotalStableIncome { get => _borrowerTotalStableIncome; set => SetField(ref _borrowerTotalStableIncome, value); }
 
         /// <summary>
@@ -315,19 +310,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Child Care Cost Per Month [USDA.X97]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ChildCostPerMonth { get => _childCostPerMonth; set => SetField(ref _childCostPerMonth, value); }
 
         /// <summary>
         /// USDA - Child Care Cost Per Week [USDA.X96]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ChildCostPerWeek { get => _childCostPerWeek; set => SetField(ref _childCostPerWeek, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Co-Borrower Stable Dependable Monthly Income (parties to note only) [USDA.X202]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CoborrowerStableBaseIncome { get => _coborrowerStableBaseIncome; set => SetField(ref _coborrowerStableBaseIncome, value); }
 
         /// <summary>
@@ -338,7 +330,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Annual Adjusted Income - Co-Borrower Other Stable Dependable Monthly Income (parties to note only) [USDA.X204]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CoborrowerStableOtherIncome { get => _coborrowerStableOtherIncome; set => SetField(ref _coborrowerStableOtherIncome, value); }
 
         /// <summary>
@@ -349,7 +340,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Annual Adjusted Income - CoBorrower Total Stable Income [USDA.X206]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? CoBorrowerTotalStableIncome { get => _coBorrowerTotalStableIncome; set => SetField(ref _coBorrowerTotalStableIncome, value); }
 
         /// <summary>
@@ -380,19 +371,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Annual Adjusted Income - Dependent Deduction [USDA.X172]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DependentDeduction { get => _dependentDeduction; set => SetField(ref _dependentDeduction, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Disability Deduction [USDA.X175]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DisabilityDeduction { get => _disabilityDeduction; set => SetField(ref _disabilityDeduction, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Elderly Household Deduction [USDA.X174]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ElderlyHouseholdDeduction { get => _elderlyHouseholdDeduction; set => SetField(ref _elderlyHouseholdDeduction, value); }
 
         /// <summary>
@@ -409,19 +397,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Financed Loan Closing Costs [USDA.X217]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedLoanClosingCosts { get => _financedLoanClosingCosts; set => SetField(ref _financedLoanClosingCosts, value); }
 
         /// <summary>
         /// USDA - Tracking - Guarantee Fee Collected [USDA.X160]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GuaranteeFeeCollected { get => _guaranteeFeeCollected; set => SetField(ref _guaranteeFeeCollected, value); }
 
         /// <summary>
         /// USDA - Tracking - Guarantee Fee On Commitment [USDA.X161]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GuaranteeFeeOnCommitment { get => _guaranteeFeeOnCommitment; set => SetField(ref _guaranteeFeeOnCommitment, value); }
 
         /// <summary>
@@ -534,19 +519,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Annual Adjusted Income - Medical Expenses [USDA.X176]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MedicalExpenses { get => _medicalExpenses; set => SetField(ref _medicalExpenses, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Moderate Income Limit [USDA.X180]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ModerateIncomeLimit { get => _moderateIncomeLimit; set => SetField(ref _moderateIncomeLimit, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Monthly Repayment Income [USDA.X184]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyRepaymentIncome { get => _monthlyRepaymentIncome; set => SetField(ref _monthlyRepaymentIncome, value); }
 
         /// <summary>
@@ -577,13 +560,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Other Income (Alimony, Child Support, y, Pension/Retirement, Social Security, Disability, Trust Income, Notes Receivable, etc.) [USDA.X169]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherIncome { get => _otherIncome; set => SetField(ref _otherIncome, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Other Stable Dependable Monthly Income (parties to note only) [USDA.X183]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherStableDependableMonthlyIncome { get => _otherStableDependableMonthlyIncome; set => SetField(ref _otherStableDependableMonthlyIncome, value); }
 
         /// <summary>
@@ -684,7 +665,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Purchase or Refinanced Amount [USDA.X198]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PurchaseOrRefinancedAmount { get => _purchaseOrRefinancedAmount; set => SetField(ref _purchaseOrRefinancedAmount, value); }
 
         /// <summary>
@@ -711,7 +691,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Repair / Other Amount [USDA.X24]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RepairOtherAmount { get => _repairOtherAmount; set => SetField(ref _repairOtherAmount, value); }
 
         /// <summary>
@@ -722,7 +701,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Reservation Amount Requested [USDA.X33]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReservationAmountRequested { get => _reservationAmountRequested; set => SetField(ref _reservationAmountRequested, value); }
 
         /// <summary>
@@ -748,7 +726,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Annual Adjusted Income - Stable Dependable Monthly Income (parties to note only) [USDA.X182]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? StableDependableMonthlyIncome { get => _stableDependableMonthlyIncome; set => SetField(ref _stableDependableMonthlyIncome, value); }
 
         /// <summary>
@@ -823,25 +800,24 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Annual Adjusted Income - Total of Borrower and Coborrower Stable Base Income [USDA.X207]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalBorrowerStableBaseIncome { get => _totalBorrowerStableBaseIncome; set => SetField(ref _totalBorrowerStableBaseIncome, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Total of Borrower and Coborrower Stable Other Income [USDA.X208]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalBorrowerStableOtherIncome { get => _totalBorrowerStableOtherIncome; set => SetField(ref _totalBorrowerStableOtherIncome, value); }
 
         /// <summary>
         /// USDA - Annual Adjusted Income - Total Household Deduction [USDA.X177]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalHouseholdDeduction { get => _totalHouseholdDeduction; set => SetField(ref _totalHouseholdDeduction, value); }
 
         /// <summary>
         /// USDA - Total Request Amount [USDA.X26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalRequestAmount { get => _totalRequestAmount; set => SetField(ref _totalRequestAmount, value); }
 
         /// <summary>

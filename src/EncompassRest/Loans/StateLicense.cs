@@ -66,85 +66,85 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _wY;
 
         /// <summary>
-        /// StateLicense AK
+        /// StateLicense AK [LIC.AK], [LO.ALLOWED.AK]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? AK { get => _aK; set => SetField(ref _aK, value); }
 
         /// <summary>
-        /// StateLicense AL
+        /// StateLicense AL [LIC.AL], [LO.ALLOWED.AL]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? AL { get => _aL; set => SetField(ref _aL, value); }
 
         /// <summary>
-        /// StateLicense AR
+        /// StateLicense AR [LIC.AR], [LO.ALLOWED.AR]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? AR { get => _aR; set => SetField(ref _aR, value); }
 
         /// <summary>
-        /// StateLicense AZ
+        /// StateLicense AZ [LIC.AZ], [LO.ALLOWED.AZ]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? AZ { get => _aZ; set => SetField(ref _aZ, value); }
 
         /// <summary>
-        /// StateLicense CA
+        /// StateLicense CA [LIC.CA], [LO.ALLOWED.CA]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? CA { get => _cA; set => SetField(ref _cA, value); }
 
         /// <summary>
-        /// StateLicense CO
+        /// StateLicense CO [LIC.CO], [LO.ALLOWED.CO]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? CO { get => _cO; set => SetField(ref _cO, value); }
 
         /// <summary>
-        /// StateLicense CT
+        /// StateLicense CT [LIC.CT], [LO.ALLOWED.CT]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? CT { get => _cT; set => SetField(ref _cT, value); }
 
         /// <summary>
-        /// StateLicense DC
+        /// StateLicense DC [LIC.DC], [LO.ALLOWED.DC]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? DC { get => _dC; set => SetField(ref _dC, value); }
 
         /// <summary>
-        /// StateLicense DE
+        /// StateLicense DE [LIC.DE], [LO.ALLOWED.DE]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? DE { get => _dE; set => SetField(ref _dE, value); }
 
         /// <summary>
-        /// StateLicense FL
+        /// StateLicense FL [LIC.FL], [LO.ALLOWED.FL]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? FL { get => _fL; set => SetField(ref _fL, value); }
 
         /// <summary>
-        /// StateLicense GA
+        /// StateLicense GA [LIC.GA], [LO.ALLOWED.GA]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? GA { get => _gA; set => SetField(ref _gA, value); }
 
         /// <summary>
-        /// StateLicense GU
+        /// StateLicense GU [LIC.GU], [LO.ALLOWED.GU]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? GU { get => _gU; set => SetField(ref _gU, value); }
 
         /// <summary>
-        /// StateLicense HI
+        /// StateLicense HI [LIC.HI], [LO.ALLOWED.HI]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? HI { get => _hI; set => SetField(ref _hI, value); }
 
         /// <summary>
-        /// StateLicense IA
+        /// StateLicense IA [LIC.IA], [LO.ALLOWED.IA]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? IA { get => _iA; set => SetField(ref _iA, value); }
@@ -155,181 +155,181 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// StateLicense Idaho
+        /// StateLicense Idaho [LIC.ID], [LO.ALLOWED.ID]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? Idaho { get => _idaho; set => SetField(ref _idaho, value); }
 
         /// <summary>
-        /// StateLicense IL
+        /// StateLicense IL [LIC.IL], [LO.ALLOWED.IL]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? IL { get => _iL; set => SetField(ref _iL, value); }
 
         /// <summary>
-        /// StateLicense IN
+        /// StateLicense IN [LIC.IN], [LO.ALLOWED.IN]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? IN { get => _iN; set => SetField(ref _iN, value); }
 
         /// <summary>
-        /// StateLicense KS
+        /// StateLicense KS [LIC.KS], [LO.ALLOWED.KS]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? KS { get => _kS; set => SetField(ref _kS, value); }
 
         /// <summary>
-        /// StateLicense KY
+        /// StateLicense KY [LIC.KY], [LO.ALLOWED.KY]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? KY { get => _kY; set => SetField(ref _kY, value); }
 
         /// <summary>
-        /// StateLicense LA
+        /// StateLicense LA [LIC.LA], [LO.ALLOWED.LA]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? LA { get => _lA; set => SetField(ref _lA, value); }
 
         /// <summary>
-        /// StateLicense MA
+        /// StateLicense MA [LIC.MA], [LO.ALLOWED.MA]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? MA { get => _mA; set => SetField(ref _mA, value); }
 
         /// <summary>
-        /// StateLicense MD
+        /// StateLicense MD [LIC.MD], [LO.ALLOWED.MD]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? MD { get => _mD; set => SetField(ref _mD, value); }
 
         /// <summary>
-        /// StateLicense ME
+        /// StateLicense ME [LIC.ME], [LO.ALLOWED.ME]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? ME { get => _mE; set => SetField(ref _mE, value); }
 
         /// <summary>
-        /// StateLicense MI
+        /// StateLicense MI [LIC.MI], [LO.ALLOWED.MI]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? MI { get => _mI; set => SetField(ref _mI, value); }
 
         /// <summary>
-        /// StateLicense MN
+        /// StateLicense MN [LIC.MN], [LO.ALLOWED.MN]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? MN { get => _mN; set => SetField(ref _mN, value); }
 
         /// <summary>
-        /// StateLicense MO
+        /// StateLicense MO [LIC.MO], [LO.ALLOWED.MO]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? MO { get => _mO; set => SetField(ref _mO, value); }
 
         /// <summary>
-        /// StateLicense MS
+        /// StateLicense MS [LIC.MS], [LO.ALLOWED.MS]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? MS { get => _mS; set => SetField(ref _mS, value); }
 
         /// <summary>
-        /// StateLicense MT
+        /// StateLicense MT [LIC.MT], [LO.ALLOWED.MT]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? MT { get => _mT; set => SetField(ref _mT, value); }
 
         /// <summary>
-        /// StateLicense NC
+        /// StateLicense NC [LIC.NC], [LO.ALLOWED.NC]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? NC { get => _nC; set => SetField(ref _nC, value); }
 
         /// <summary>
-        /// StateLicense ND
+        /// StateLicense ND [LIC.ND], [LO.ALLOWED.ND]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? ND { get => _nD; set => SetField(ref _nD, value); }
 
         /// <summary>
-        /// StateLicense NE
+        /// StateLicense NE [LIC.NE], [LO.ALLOWED.NE]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? NE { get => _nE; set => SetField(ref _nE, value); }
 
         /// <summary>
-        /// StateLicense NH
+        /// StateLicense NH [LIC.NH], [LO.ALLOWED.NH]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? NH { get => _nH; set => SetField(ref _nH, value); }
 
         /// <summary>
-        /// StateLicense NJ
+        /// StateLicense NJ [LIC.NJ], [LO.ALLOWED.NJ]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? NJ { get => _nJ; set => SetField(ref _nJ, value); }
 
         /// <summary>
-        /// StateLicense NM
+        /// StateLicense NM [LIC.NM], [LO.ALLOWED.NM]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? NM { get => _nM; set => SetField(ref _nM, value); }
 
         /// <summary>
-        /// StateLicense NV
+        /// StateLicense NV [LIC.NV], [LO.ALLOWED.NV]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? NV { get => _nV; set => SetField(ref _nV, value); }
 
         /// <summary>
-        /// StateLicense NY
+        /// StateLicense NY [LIC.NY], [LO.ALLOWED.NY]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? NY { get => _nY; set => SetField(ref _nY, value); }
 
         /// <summary>
-        /// StateLicense OH
+        /// StateLicense OH [LIC.OH], [LO.ALLOWED.OH]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? OH { get => _oH; set => SetField(ref _oH, value); }
 
         /// <summary>
-        /// StateLicense OK
+        /// StateLicense OK [LIC.OK], [LO.ALLOWED.OK]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? OK { get => _oK; set => SetField(ref _oK, value); }
 
         /// <summary>
-        /// StateLicense OR
+        /// StateLicense OR [LIC.OR], [LO.ALLOWED.OR]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? OR { get => _oR; set => SetField(ref _oR, value); }
 
         /// <summary>
-        /// StateLicense PA
+        /// StateLicense PA [LIC.PA], [LO.ALLOWED.PA]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? PA { get => _pA; set => SetField(ref _pA, value); }
 
         /// <summary>
-        /// StateLicense PR
+        /// StateLicense PR [LIC.PR], [LO.ALLOWED.PR]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? PR { get => _pR; set => SetField(ref _pR, value); }
 
         /// <summary>
-        /// StateLicense RI
+        /// StateLicense RI [LIC.RI], [LO.ALLOWED.RI]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? RI { get => _rI; set => SetField(ref _rI, value); }
 
         /// <summary>
-        /// StateLicense SC
+        /// StateLicense SC [LIC.SC], [LO.ALLOWED.SC]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? SC { get => _sC; set => SetField(ref _sC, value); }
 
         /// <summary>
-        /// StateLicense SD
+        /// StateLicense SD [LIC.SD], [LO.ALLOWED.SD]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? SD { get => _sD; set => SetField(ref _sD, value); }
@@ -340,61 +340,61 @@ namespace EncompassRest.Loans
         public StringEnumValue<StateLicenseType> StateLicenseType { get => _stateLicenseType; set => SetField(ref _stateLicenseType, value); }
 
         /// <summary>
-        /// StateLicense TN
+        /// StateLicense TN [LIC.TN], [LO.ALLOWED.TN]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? TN { get => _tN; set => SetField(ref _tN, value); }
 
         /// <summary>
-        /// StateLicense TX
+        /// StateLicense TX [LIC.TX], [LO.ALLOWED.TX]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? TX { get => _tX; set => SetField(ref _tX, value); }
 
         /// <summary>
-        /// StateLicense UT
+        /// StateLicense UT [LIC.UT], [LO.ALLOWED.UT]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? UT { get => _uT; set => SetField(ref _uT, value); }
 
         /// <summary>
-        /// StateLicense VA
+        /// StateLicense VA [LIC.VA], [LO.ALLOWED.VA]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? VA { get => _vA; set => SetField(ref _vA, value); }
 
         /// <summary>
-        /// StateLicense VI
+        /// StateLicense VI [LIC.VI], [LO.ALLOWED.VI]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? VI { get => _vI; set => SetField(ref _vI, value); }
 
         /// <summary>
-        /// StateLicense VT
+        /// StateLicense VT [LIC.VT], [LO.ALLOWED.VT]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? VT { get => _vT; set => SetField(ref _vT, value); }
 
         /// <summary>
-        /// StateLicense WA
+        /// StateLicense WA [LIC.WA], [LO.ALLOWED.WA]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? WA { get => _wA; set => SetField(ref _wA, value); }
 
         /// <summary>
-        /// StateLicense WI
+        /// StateLicense WI [LIC.WI], [LO.ALLOWED.WI]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? WI { get => _wI; set => SetField(ref _wI, value); }
 
         /// <summary>
-        /// StateLicense WV
+        /// StateLicense WV [LIC.WV], [LO.ALLOWED.WV]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? WV { get => _wV; set => SetField(ref _wV, value); }
 
         /// <summary>
-        /// StateLicense WY
+        /// StateLicense WY [LIC.WY], [LO.ALLOWED.WY]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? WY { get => _wY; set => SetField(ref _wY, value); }

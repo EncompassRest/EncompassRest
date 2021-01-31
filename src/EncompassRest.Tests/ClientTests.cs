@@ -22,7 +22,7 @@ namespace EncompassRest.Tests
             Assert.IsNull(correlationId);
             Assert.IsTrue(supportedEntities.Count > 0);
 
-            void Client_ApiResponse(object sender, ApiResponseEventArgs e)
+            void Client_ApiResponse(object sender, IApiResponseEventArgs e)
             {
                 correlationId = e.CorrelationId;
             }

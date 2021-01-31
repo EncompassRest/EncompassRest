@@ -20,7 +20,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegulationZPayment Balance
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Balance { get => _balance; set => SetField(ref _balance, value); }
 
         /// <summary>
@@ -37,7 +37,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegulationZPayment MonthlyPayment
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }
 
         /// <summary>

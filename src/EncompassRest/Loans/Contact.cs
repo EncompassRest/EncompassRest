@@ -74,6 +74,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _investorScore1;
         private DirtyValue<string?>? _investorScore2;
         private DirtyValue<string?>? _investorScore3;
+        private DirtyValue<string?>? _jobTitle;
         private DirtyValue<string?>? _lenderType;
         private DirtyValue<string?>? _license;
         private DirtyValue<bool?>? _licenseExempt;
@@ -247,7 +248,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts General Contractor Completion Affidavit Punch List Total [VEND.X1024]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CompletionAffidavitPunchListTotal { get => _completionAffidavitPunchListTotal; set => SetField(ref _completionAffidavitPunchListTotal, value); }
 
         /// <summary>
@@ -293,7 +293,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts General Contractor Employer Liability Insurance Min [VEND.X1018]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EmployerLiabilityInsuranceMin { get => _employerLiabilityInsuranceMin; set => SetField(ref _employerLiabilityInsuranceMin, value); }
 
         /// <summary>
@@ -333,7 +332,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// File Contacts General Contractor General Liability Insurance Min [VEND.X1017]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GeneralLiabilityInsuranceMin { get => _generalLiabilityInsuranceMin; set => SetField(ref _generalLiabilityInsuranceMin, value); }
 
         /// <summary>
@@ -347,9 +345,8 @@ namespace EncompassRest.Loans
         public string? InsuranceCertNumber { get => _insuranceCertNumber; set => SetField(ref _insuranceCertNumber, value); }
 
         /// <summary>
-        /// Contact InsuranceCoverageAmount
+        /// Contact InsuranceCoverageAmount [VEND.X445], [VEND.X446]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InsuranceCoverageAmount { get => _insuranceCoverageAmount; set => SetField(ref _insuranceCoverageAmount, value); }
 
         /// <summary>
@@ -378,9 +375,8 @@ namespace EncompassRest.Loans
         public int? InsuranceNoOfBedrooms { get => _insuranceNoOfBedrooms; set => SetField(ref _insuranceNoOfBedrooms, value); }
 
         /// <summary>
-        /// Contact InsurancePremium
+        /// Contact InsurancePremium [VEND.X443], [VEND.X447]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InsurancePremium { get => _insurancePremium; set => SetField(ref _insurancePremium, value); }
 
         /// <summary>
@@ -390,7 +386,7 @@ namespace EncompassRest.Loans
         public StringEnumValue<ProjectType> InsuranceProjectType { get => _insuranceProjectType; set => SetField(ref _insuranceProjectType, value); }
 
         /// <summary>
-        /// Contact InsuranceRenewalDate
+        /// Contact InsuranceRenewalDate [VEND.X444], [VEND.X448]
         /// </summary>
         public DateTime? InsuranceRenewalDate { get => _insuranceRenewalDate; set => SetField(ref _insuranceRenewalDate, value); }
 
@@ -450,7 +446,12 @@ namespace EncompassRest.Loans
         public string? InvestorScore3 { get => _investorScore3; set => SetField(ref _investorScore3, value); }
 
         /// <summary>
-        /// Contact LenderType
+        /// Contact JobTitle
+        /// </summary>
+        public string? JobTitle { get => _jobTitle; set => SetField(ref _jobTitle, value); }
+
+        /// <summary>
+        /// Contact LenderType [VEND.X651], [3895]
         /// </summary>
         public string? LenderType { get => _lenderType; set => SetField(ref _lenderType, value); }
 
@@ -460,7 +461,7 @@ namespace EncompassRest.Loans
         public string? License { get => _license; set => SetField(ref _license, value); }
 
         /// <summary>
-        /// Contact LicenseExempt
+        /// Contact LicenseExempt [VEND.X653], [3898]
         /// </summary>
         public bool? LicenseExempt { get => _licenseExempt; set => SetField(ref _licenseExempt, value); }
 
@@ -561,7 +562,7 @@ namespace EncompassRest.Loans
         public string? Phone { get => _phone; set => SetField(ref _phone, value); }
 
         /// <summary>
-        /// Contact Phone2
+        /// Contact Phone2 [2843], [VEND.X304]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? Phone2 { get => _phone2; set => SetField(ref _phone2, value); }

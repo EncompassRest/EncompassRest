@@ -103,60 +103,56 @@ namespace EncompassRest.Loans
         public string? AddressStreetLine1 { get => _addressStreetLine1; set => SetField(ref _addressStreetLine1, value); }
 
         /// <summary>
-        /// Employment AltId
+        /// Employment AltId [BENN99], [CENN99]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? AltId { get => _altId; set => SetField(ref _altId, value); }
 
         /// <summary>
-        /// Employment Attention
+        /// Employment Attention [FE0103], [FE0203]
         /// </summary>
         public string? Attention { get => _attention; set => SetField(ref _attention, value); }
 
         /// <summary>
-        /// Employment BadgeOrEmployeeID
+        /// Employment BadgeOrEmployeeID [BENN39], [CENN39]
         /// </summary>
         public string? BadgeOrEmployeeID { get => _badgeOrEmployeeID; set => SetField(ref _badgeOrEmployeeID, value); }
 
         /// <summary>
         /// Employment BasePayAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BasePayAmount { get => _basePayAmount; set => SetField(ref _basePayAmount, value); }
 
         /// <summary>
-        /// Employment BonusAmount
+        /// Employment BonusAmount [BENN21], [CENN21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BonusAmount { get => _bonusAmount; set => SetField(ref _bonusAmount, value); }
 
         /// <summary>
-        /// Employment BusinessName
+        /// Employment BusinessName [BENN32], [CENN32]
         /// </summary>
         public string? BusinessName { get => _businessName; set => SetField(ref _businessName, value); }
 
         /// <summary>
-        /// Employment BusinessOwnedPercent
+        /// Employment BusinessOwnedPercent [BENN27], [CENN27]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? BusinessOwnedPercent { get => _businessOwnedPercent; set => SetField(ref _businessOwnedPercent, value); }
 
         /// <summary>
-        /// Employment BusinessPhone
+        /// Employment BusinessPhone [BENN28], [CENN28]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? BusinessPhone { get => _businessPhone; set => SetField(ref _businessPhone, value); }
 
         /// <summary>
-        /// Employment ClothingAllowance
+        /// Employment ClothingAllowance [BENN69], [CENN69]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ClothingAllowance { get => _clothingAllowance; set => SetField(ref _clothingAllowance, value); }
 
         /// <summary>
-        /// Employment CommissionsAmount
+        /// Employment CommissionsAmount [BENN22], [CENN22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CommissionsAmount { get => _commissionsAmount; set => SetField(ref _commissionsAmount, value); }
 
         /// <summary>
@@ -165,12 +161,12 @@ namespace EncompassRest.Loans
         public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
-        /// Employment Country
+        /// Employment Country [BENN79], [CENN79]
         /// </summary>
         public string? Country { get => _country; set => SetField(ref _country, value); }
 
         /// <summary>
-        /// Employment CountryCode
+        /// Employment CountryCode [BENN61], [CENN61]
         /// </summary>
         public string? CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
 
@@ -187,12 +183,12 @@ namespace EncompassRest.Loans
         public bool? DoesNotApply { get => _doesNotApply; set => SetField(ref _doesNotApply, value); }
 
         /// <summary>
-        /// Employment Email
+        /// Employment Email [BENN30], [CENN30]
         /// </summary>
         public string? Email { get => _email; set => SetField(ref _email, value); }
 
         /// <summary>
-        /// Employment EmployerComments
+        /// Employment EmployerComments [BENN31], [CENN31]
         /// </summary>
         public string? EmployerComments { get => _employerComments; set => SetField(ref _employerComments, value); }
 
@@ -202,18 +198,17 @@ namespace EncompassRest.Loans
         public string? EmployerName { get => _employerName; set => SetField(ref _employerName, value); }
 
         /// <summary>
-        /// Employment EmploymentMonthlyIncomeAmount
+        /// Employment EmploymentMonthlyIncomeAmount [BENN56], [CENN56]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EmploymentMonthlyIncomeAmount { get => _employmentMonthlyIncomeAmount; set => SetField(ref _employmentMonthlyIncomeAmount, value); }
 
         /// <summary>
-        /// Employment EmploymentStartDate
+        /// Employment EmploymentStartDate [BENN51], [CENN51]
         /// </summary>
         public DateTime? EmploymentStartDate { get => _employmentStartDate; set => SetField(ref _employmentStartDate, value); }
 
         /// <summary>
-        /// Employment EndDate
+        /// Employment EndDate [FE0514], [FE0614]
         /// </summary>
         public DateTime? EndDate { get => _endDate; set => SetField(ref _endDate, value); }
 
@@ -223,18 +218,18 @@ namespace EncompassRest.Loans
         public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
 
         /// <summary>
-        /// Employment Fax
+        /// Employment Fax [BENN29], [CENN29]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? Fax { get => _fax; set => SetField(ref _fax, value); }
 
         /// <summary>
-        /// Employment ForeignAddressIndicator
+        /// Employment ForeignAddressIndicator [BENN80], [CENN80]
         /// </summary>
         public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
 
         /// <summary>
-        /// Employment ForeignIncome
+        /// Employment ForeignIncome [BENN75], [CENN75]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Foreign Income\"}")]
         public bool? ForeignIncome { get => _foreignIncome; set => SetField(ref _foreignIncome, value); }
@@ -245,56 +240,50 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// Employment IndividualEmployer
+        /// Employment IndividualEmployer [BENN62], [CENN62]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Employer is an Individual\"}")]
         public bool? IndividualEmployer { get => _individualEmployer; set => SetField(ref _individualEmployer, value); }
 
         /// <summary>
-        /// Employment JobTermMonths
+        /// Employment JobTermMonths [BENN52], [CENN52]
         /// </summary>
         public int? JobTermMonths { get => _jobTermMonths; set => SetField(ref _jobTermMonths, value); }
 
         /// <summary>
-        /// Employment MilitaryCombatPay
+        /// Employment MilitaryCombatPay [BENN77], [CENN77]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MilitaryCombatPay { get => _militaryCombatPay; set => SetField(ref _militaryCombatPay, value); }
 
         /// <summary>
-        /// Employment MilitaryEmployer
+        /// Employment MilitaryEmployer [BENN63], [CENN63]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Employer is Military\"}")]
         public bool? MilitaryEmployer { get => _militaryEmployer; set => SetField(ref _militaryEmployer, value); }
 
         /// <summary>
-        /// Employment MilitaryEntitlement
+        /// Employment MilitaryEntitlement [BENN53], [CENN53]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MilitaryEntitlement { get => _militaryEntitlement; set => SetField(ref _militaryEntitlement, value); }
 
         /// <summary>
-        /// Employment MilitaryFlightPay
+        /// Employment MilitaryFlightPay [BENN65], [CENN65]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MilitaryFlightPay { get => _militaryFlightPay; set => SetField(ref _militaryFlightPay, value); }
 
         /// <summary>
-        /// Employment MilitaryHazardPay
+        /// Employment MilitaryHazardPay [BENN66], [CENN66]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MilitaryHazardPay { get => _militaryHazardPay; set => SetField(ref _militaryHazardPay, value); }
 
         /// <summary>
-        /// Employment MilitaryOverseasPay
+        /// Employment MilitaryOverseasPay [BENN67], [CENN67]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MilitaryOverseasPay { get => _militaryOverseasPay; set => SetField(ref _militaryOverseasPay, value); }
 
         /// <summary>
-        /// Employment MilitaryPropPay
+        /// Employment MilitaryPropPay [BENN68], [CENN68]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MilitaryPropPay { get => _militaryPropPay; set => SetField(ref _militaryPropPay, value); }
 
         /// <summary>
@@ -303,36 +292,34 @@ namespace EncompassRest.Loans
         public int? MonthlyIncomeAmount { get => _monthlyIncomeAmount; set => SetField(ref _monthlyIncomeAmount, value); }
 
         /// <summary>
-        /// Employment NoLinkToDocTrackIndicator
+        /// Employment NoLinkToDocTrackIndicator [BENN97], [CENN97]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => SetField(ref _noLinkToDocTrackIndicator, value); }
 
         /// <summary>
-        /// Employment OtherAllowanceDescription
+        /// Employment OtherAllowanceDescription [BENN74], [CENN74]
         /// </summary>
         public string? OtherAllowanceDescription { get => _otherAllowanceDescription; set => SetField(ref _otherAllowanceDescription, value); }
 
         /// <summary>
-        /// Employment OtherAmount
+        /// Employment OtherAmount [BENN23], [CENN23]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherAmount { get => _otherAmount; set => SetField(ref _otherAmount, value); }
 
         /// <summary>
-        /// Employment OvertimeAmount
+        /// Employment OvertimeAmount [BENN20], [CENN20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OvertimeAmount { get => _overtimeAmount; set => SetField(ref _overtimeAmount, value); }
 
         /// <summary>
-        /// Employment Owner
+        /// Employment Owner [BENN08], [CENN08]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public StringEnumValue<BorrowerOrCoBorrower> Owner { get => _owner; set => SetField(ref _owner, value); }
 
         /// <summary>
-        /// Employment OwnershipInterestType
+        /// Employment OwnershipInterestType [BENN55], [CENN55]
         /// </summary>
         public StringEnumValue<OwnershipInterestType> OwnershipInterestType { get => _ownershipInterestType; set => SetField(ref _ownershipInterestType, value); }
 
@@ -348,34 +335,32 @@ namespace EncompassRest.Loans
         public string? PositionDescription { get => _positionDescription; set => SetField(ref _positionDescription, value); }
 
         /// <summary>
-        /// Employment PrintAttachmentIndicator
+        /// Employment PrintAttachmentIndicator [BENN36], [CENN36]
         /// </summary>
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
 
         /// <summary>
-        /// Employment PrintUserJobTitleIndicator
+        /// Employment PrintUserJobTitleIndicator [BENN64], [CENN64]
         /// </summary>
         public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
 
         /// <summary>
-        /// Employment PrintUserNameIndicator
+        /// Employment PrintUserNameIndicator [BENN38], [CENN38]
         /// </summary>
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
 
         /// <summary>
-        /// Employment QuartersAllowance
+        /// Employment QuartersAllowance [BENN72], [CENN72]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? QuartersAllowance { get => _quartersAllowance; set => SetField(ref _quartersAllowance, value); }
 
         /// <summary>
-        /// Employment RationsAllowance
+        /// Employment RationsAllowance [BENN70], [CENN70]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RationsAllowance { get => _rationsAllowance; set => SetField(ref _rationsAllowance, value); }
 
         /// <summary>
-        /// Employment SeasonalIncome
+        /// Employment SeasonalIncome [BENN76], [CENN76]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Seasonal Income\"}")]
         public bool? SeasonalIncome { get => _seasonalIncome; set => SetField(ref _seasonalIncome, value); }
@@ -386,7 +371,7 @@ namespace EncompassRest.Loans
         public bool? SelfEmployedIndicator { get => _selfEmployedIndicator; set => SetField(ref _selfEmployedIndicator, value); }
 
         /// <summary>
-        /// Employment SpecialEmployerRelationshipIndicator
+        /// Employment SpecialEmployerRelationshipIndicator [BENN54], [CENN54]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"I am employed by a family member, property seller, real estate agent, or other party to the transaction\"}")]
         public bool? SpecialEmployerRelationshipIndicator { get => _specialEmployerRelationshipIndicator; set => SetField(ref _specialEmployerRelationshipIndicator, value); }
@@ -402,60 +387,59 @@ namespace EncompassRest.Loans
         public int? TimeInLineOfWorkMonths { get => _timeInLineOfWorkMonths; set => SetField(ref _timeInLineOfWorkMonths, value); }
 
         /// <summary>
-        /// Employment TimeInLineOfWorkYears
+        /// Employment TimeInLineOfWorkYears [BENN16], [CENN16]
         /// </summary>
         public int? TimeInLineOfWorkYears { get => _timeInLineOfWorkYears; set => SetField(ref _timeInLineOfWorkYears, value); }
 
         /// <summary>
-        /// Employment TimeOnJobTermMonths
+        /// Employment TimeOnJobTermMonths [FE0133], [FE0233]
         /// </summary>
         public int? TimeOnJobTermMonths { get => _timeOnJobTermMonths; set => SetField(ref _timeOnJobTermMonths, value); }
 
         /// <summary>
-        /// Employment TimeOnJobTermYears
+        /// Employment TimeOnJobTermYears [FE0113], [FE0213]
         /// </summary>
         public int? TimeOnJobTermYears { get => _timeOnJobTermYears; set => SetField(ref _timeOnJobTermYears, value); }
 
         /// <summary>
-        /// Employment Title
+        /// Employment Title [BENN37], [CENN37]
         /// </summary>
         public string? Title { get => _title; set => SetField(ref _title, value); }
 
         /// <summary>
-        /// Employment TitleFax
+        /// Employment TitleFax [BENN45], [CENN45]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
 
         /// <summary>
-        /// Employment TitlePhone
+        /// Employment TitlePhone [BENN44], [CENN44]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
 
         /// <summary>
-        /// Employment UnitNumber
+        /// Employment UnitNumber [BENN59], [CENN59]
         /// </summary>
         public string? UnitNumber { get => _unitNumber; set => SetField(ref _unitNumber, value); }
 
         /// <summary>
-        /// Employment UnitType
+        /// Employment UnitType [BENN58], [CENN58]
         /// </summary>
         public StringEnumValue<UnitType> UnitType { get => _unitType; set => SetField(ref _unitType, value); }
 
         /// <summary>
-        /// Employment URLA2020StreetAddress
+        /// Employment URLA2020StreetAddress [BENN60], [CENN60]
         /// </summary>
         public string? URLA2020StreetAddress { get => _uRLA2020StreetAddress; set => SetField(ref _uRLA2020StreetAddress, value); }
 
         /// <summary>
-        /// Employment VariableHousingAllowance
+        /// Employment VariableHousingAllowance [BENN71], [CENN71]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VariableHousingAllowance { get => _variableHousingAllowance; set => SetField(ref _variableHousingAllowance, value); }
 
         /// <summary>
-        /// Employment VerificationDate
+        /// Employment VerificationDate [BENN78], [CENN78]
         /// </summary>
         public DateTime? VerificationDate { get => _verificationDate; set => SetField(ref _verificationDate, value); }
 

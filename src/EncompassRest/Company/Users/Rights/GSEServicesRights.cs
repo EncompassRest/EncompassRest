@@ -6,6 +6,7 @@ namespace EncompassRest.Company.Users.Rights
     public sealed class GSEServicesRights : ParentAccessRights
     {
         private DirtyValue<bool?>? _exportFannieMaeformattedfile;
+        private DirtyValue<bool?>? _exportIlad;
         private DirtyValue<bool?>? _exportPDDtoGinnieMae;
         private DirtyValue<bool?>? _exportUCDfile;
         private DirtyValue<bool?>? _exportUladForDu;
@@ -16,6 +17,11 @@ namespace EncompassRest.Company.Users.Rights
         /// GSEServicesRights ExportFannieMaeformattedfile
         /// </summary>
         public bool? ExportFannieMaeformattedfile { get => _exportFannieMaeformattedfile; set => SetField(ref _exportFannieMaeformattedfile, value); }
+
+        /// <summary>
+        /// GSEServicesRights ExportIlad
+        /// </summary>
+        public bool? ExportIlad { get => _exportIlad; set => SetField(ref _exportIlad, value); }
 
         /// <summary>
         /// GSEServicesRights ExportPDDtoGinnieMae

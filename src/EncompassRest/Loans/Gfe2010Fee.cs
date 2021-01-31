@@ -73,13 +73,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee AdditionalAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdditionalAmount { get => _additionalAmount; set => SetField(ref _additionalAmount, value); }
 
         /// <summary>
         /// Gfe2010Fee Amount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
 
         /// <summary>
@@ -90,13 +88,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee BorPaidAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorPaidAmount { get => _borPaidAmount; set => SetField(ref _borPaidAmount, value); }
 
         /// <summary>
         /// Gfe2010Fee BorrowerAmountPaid2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorrowerAmountPaid2015 { get => _borrowerAmountPaid2015; set => SetField(ref _borrowerAmountPaid2015, value); }
 
         /// <summary>
@@ -112,25 +108,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee BorrowerFinanced2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorrowerFinanced2015 { get => _borrowerFinanced2015; set => SetField(ref _borrowerFinanced2015, value); }
 
         /// <summary>
         /// Gfe2010Fee BorrowerPAC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorrowerPAC2015 { get => _borrowerPAC2015; set => SetField(ref _borrowerPAC2015, value); }
 
         /// <summary>
         /// Gfe2010Fee BorrowerPOC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorrowerPOC2015 { get => _borrowerPOC2015; set => SetField(ref _borrowerPOC2015, value); }
 
         /// <summary>
         /// Gfe2010Fee BorrowerPTC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorrowerPTC2015 { get => _borrowerPTC2015; set => SetField(ref _borrowerPTC2015, value); }
 
         /// <summary>
@@ -141,19 +133,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee BrokerAmountPaid2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerAmountPaid2015 { get => _brokerAmountPaid2015; set => SetField(ref _brokerAmountPaid2015, value); }
 
         /// <summary>
         /// Gfe2010Fee BrokerPAC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerPAC2015 { get => _brokerPAC2015; set => SetField(ref _brokerPAC2015, value); }
 
         /// <summary>
         /// Gfe2010Fee BrokerPOC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerPOC2015 { get => _brokerPOC2015; set => SetField(ref _brokerPOC2015, value); }
 
         /// <summary>
@@ -194,7 +183,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee GfeAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GfeAmount { get => _gfeAmount; set => SetField(ref _gfeAmount, value); }
 
         /// <summary>
@@ -210,7 +198,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee LastDisclosedClosingDisclosure2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LastDisclosedClosingDisclosure2015 { get => _lastDisclosedClosingDisclosure2015; set => SetField(ref _lastDisclosedClosingDisclosure2015, value); }
 
         /// <summary>
@@ -221,25 +208,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee LenderAmountPaid2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderAmountPaid2015 { get => _lenderAmountPaid2015; set => SetField(ref _lenderAmountPaid2015, value); }
 
         /// <summary>
         /// Gfe2010Fee LenderPAC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderPAC2015 { get => _lenderPAC2015; set => SetField(ref _lenderPAC2015, value); }
 
         /// <summary>
         /// Gfe2010Fee LenderPOC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderPOC2015 { get => _lenderPOC2015; set => SetField(ref _lenderPOC2015, value); }
 
         /// <summary>
         /// Gfe2010Fee MonthlyPayment
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }
 
         /// <summary>
@@ -255,19 +238,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee OtherAmountPaid2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherAmountPaid2015 { get => _otherAmountPaid2015; set => SetField(ref _otherAmountPaid2015, value); }
 
         /// <summary>
         /// Gfe2010Fee OtherPAC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherPAC2015 { get => _otherPAC2015; set => SetField(ref _otherPAC2015, value); }
 
         /// <summary>
         /// Gfe2010Fee OtherPOC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherPOC2015 { get => _otherPOC2015; set => SetField(ref _otherPOC2015, value); }
 
         /// <summary>
@@ -302,21 +282,18 @@ namespace EncompassRest.Loans
         public decimal? Rate { get => _rate; set => SetField(ref _rate, value); }
 
         /// <summary>
-        /// Gfe2010Fee RetainedAmount2015
+        /// Gfe2010Fee RetainedAmount2015 [NEWHUD2.X2219], [NEWHUD2.X2318]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RetainedAmount2015 { get => _retainedAmount2015; set => SetField(ref _retainedAmount2015, value); }
 
         /// <summary>
         /// Gfe2010Fee Sec32PointsAndFees2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Sec32PointsAndFees2015 { get => _sec32PointsAndFees2015; set => SetField(ref _sec32PointsAndFees2015, value); }
 
         /// <summary>
         /// Gfe2010Fee SellerAmountPaid2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SellerAmountPaid2015 { get => _sellerAmountPaid2015; set => SetField(ref _sellerAmountPaid2015, value); }
 
         /// <summary>
@@ -327,7 +304,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee SellerObligatedAmount2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SellerObligatedAmount2015 { get => _sellerObligatedAmount2015; set => SetField(ref _sellerObligatedAmount2015, value); }
 
         /// <summary>
@@ -338,23 +314,20 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee SellerPAC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SellerPAC2015 { get => _sellerPAC2015; set => SetField(ref _sellerPAC2015, value); }
 
         /// <summary>
         /// Gfe2010Fee SellerPOC2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SellerPOC2015 { get => _sellerPOC2015; set => SetField(ref _sellerPOC2015, value); }
 
         /// <summary>
         /// Gfe2010Fee SelPaidAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SelPaidAmount { get => _selPaidAmount; set => SetField(ref _selPaidAmount, value); }
 
         /// <summary>
-        /// Gfe2010Fee SimultaneousIssuanceIndicator2015
+        /// Gfe2010Fee SimultaneousIssuanceIndicator2015 [NEWHUD2.X4441], [NEWHUD2.X4443]
         /// </summary>
         public bool? SimultaneousIssuanceIndicator2015 { get => _simultaneousIssuanceIndicator2015; set => SetField(ref _simultaneousIssuanceIndicator2015, value); }
 
@@ -371,7 +344,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee TotalFeeAmount2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalFeeAmount2015 { get => _totalFeeAmount2015; set => SetField(ref _totalFeeAmount2015, value); }
 
         /// <summary>
@@ -383,19 +355,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010Fee TotalPaidByBLO2015
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalPaidByBLO2015 { get => _totalPaidByBLO2015; set => SetField(ref _totalPaidByBLO2015, value); }
 
         /// <summary>
-        /// Gfe2010Fee UndiscountedInsurance2015
+        /// Gfe2010Fee UndiscountedInsurance2015 [NEWHUD2.X4442], [NEWHUD2.X4444]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UndiscountedInsurance2015 { get => _undiscountedInsurance2015; set => SetField(ref _undiscountedInsurance2015, value); }
 
         /// <summary>
         /// Gfe2010Fee WholePoc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? WholePoc { get => _wholePoc; set => SetField(ref _wholePoc, value); }
 
         /// <summary>

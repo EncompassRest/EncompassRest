@@ -390,7 +390,7 @@ namespace EncompassRest
 
                 var otherEnums = new Dictionary<string, Dictionary<string, string>>();
 
-                LoanFieldDescriptors.PopulateFieldMappings("Loan", "Loan", typeof(LoanContract), loanEntitySchema, null, entityTypes, fields, fieldPatterns, extendedFieldInfo: false, (string entityName, Type ellieType, EntitySchema entitySchema, HashSet<string> requiredProperties, bool serializeWholeList) => GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums, requiredProperties, serializeWholeList), fieldId => EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId]?.Description, Console.Out);
+                LoanFieldDescriptors.PopulateFieldMappings("Loan", "Loan", null/*typeof(LoanContract)*/, loanEntitySchema, null, entityTypes, fields, fieldPatterns, extendedFieldInfo: false, (string entityName, Type ellieType, EntitySchema entitySchema, HashSet<string> requiredProperties, bool serializeWholeList) => GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums, requiredProperties, serializeWholeList), fieldId => EllieMae.Encompass.BusinessObjects.Loans.FieldDescriptors.StandardFields[fieldId]?.Description, Console.Out);
 
                 entityTypes.Remove("Loan");
 
@@ -730,7 +730,7 @@ namespace EncompassRest
                     var isField = !string.IsNullOrEmpty(propertySchema.FieldId) || propertySchema.FieldInstances?.Count > 0 || propertySchema.FieldPatterns?.Count > 0;
                     if (!string.IsNullOrEmpty(propertySchema.Format))
                     {
-                        if (propertySchema.Format.EnumValue != LoanFieldFormat.STATE)
+                        if (propertySchema.Format.EnumValue != LoanFieldFormat.STATE && propertySchema.Format.EnumValue != LoanFieldFormat.DECIMAL_2)
                         {
                             attributeProperties.Add($"Format = LoanFieldFormat.{propertySchema.Format.EnumValue?.GetName()}");
                             schemaNamespace = isField;
@@ -873,7 +873,7 @@ namespace EncompassRest
                     }
                     fields.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {(isEntity && !isNullable ? $"{propertyType}?" : (isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>?"))} {fieldName};");
                     properties.AppendLine($@"        /// <summary>
-        /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
+        /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count >= 1 && propertySchema.FieldInstances.Count <= 2 ? $" [{string.Join("], [", propertySchema.FieldInstances.Keys)}]" : (propertySchema.FieldPatterns?.Count >= 1 && propertySchema.FieldPatterns.Count <= 2 ? $" [{string.Join("], [", propertySchema.FieldPatterns.Keys)}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
         /// </summary>");
                     if ((isEntity && !isNullable) || isList || isStringDictionary)
                     {

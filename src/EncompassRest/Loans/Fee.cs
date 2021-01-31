@@ -47,7 +47,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fee Amount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
 
         /// <summary>
@@ -59,7 +58,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fee BorPaidAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorPaidAmount { get => _borPaidAmount; set => SetField(ref _borPaidAmount, value); }
 
         /// <summary>
@@ -80,7 +78,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fee DeedAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DeedAmount { get => _deedAmount; set => SetField(ref _deedAmount, value); }
 
         /// <summary>
@@ -114,30 +111,27 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// Fee IncludeAboveNumber
+        /// Fee IncludeAboveNumber [1879], [1880]
         /// </summary>
         public string? IncludeAboveNumber { get => _includeAboveNumber; set => SetField(ref _includeAboveNumber, value); }
 
         /// <summary>
         /// Fees Line 1109 Lender's Coverage Amount [2409]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LenderCoverage { get => _lenderCoverage; set => SetField(ref _lenderCoverage, value); }
 
         /// <summary>
         /// Fee MonthlyPayment
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }
 
         /// <summary>
         /// Fee MortgageAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MortgageAmount { get => _mortgageAmount; set => SetField(ref _mortgageAmount, value); }
 
         /// <summary>
-        /// Fee NewHUDBorPaidAmount
+        /// Fee NewHUDBorPaidAmount [NEWHUD.X571], [NEWHUD.X572]
         /// </summary>
         public NA<decimal> NewHUDBorPaidAmount { get => _newHUDBorPaidAmount; set => SetField(ref _newHUDBorPaidAmount, value); }
 
@@ -149,7 +143,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Line 1110 Owner's Coverage Amount [2410]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OwnerCoverage { get => _ownerCoverage; set => SetField(ref _ownerCoverage, value); }
 
         /// <summary>
@@ -160,13 +153,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fee PaidInAdvance
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidInAdvance { get => _paidInAdvance; set => SetField(ref _paidInAdvance, value); }
 
         /// <summary>
         /// Fee PaidToBroker
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidToBroker { get => _paidToBroker; set => SetField(ref _paidToBroker, value); }
 
         /// <summary>
@@ -177,7 +168,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fee PaidToOthers
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PaidToOthers { get => _paidToOthers; set => SetField(ref _paidToOthers, value); }
 
         /// <summary>
@@ -204,19 +194,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Recording Fee Releases Amount [2404]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ReleasesAmount { get => _releasesAmount; set => SetField(ref _releasesAmount, value); }
 
         /// <summary>
         /// Fee SellerPaidAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SellerPaidAmount { get => _sellerPaidAmount; set => SetField(ref _sellerPaidAmount, value); }
 
         /// <summary>
         /// Unrounded and Truncated Fees Interest Per Day [335]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TruncatedAmountPerDay { get => _truncatedAmountPerDay; set => SetField(ref _truncatedAmountPerDay, value); }
 
         /// <summary>

@@ -1,5 +1,4 @@
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -19,14 +18,14 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _rate;
 
         /// <summary>
-        /// GfeFee AmountDescription
+        /// GfeFee AmountDescription [1663], [1665]
         /// </summary>
         public string? AmountDescription { get => _amountDescription; set => SetField(ref _amountDescription, value); }
 
         /// <summary>
         /// GfeFee BrokerAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BrokerAmount { get => _brokerAmount; set => SetField(ref _brokerAmount, value); }
 
         /// <summary>
@@ -52,11 +51,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfeFee OtherAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? OtherAmount { get => _otherAmount; set => SetField(ref _otherAmount, value); }
 
         /// <summary>
-        /// GfeFee Rate
+        /// GfeFee Rate [1847], [1848]
         /// </summary>
         public string? Rate { get => _rate; set => SetField(ref _rate, value); }
     }

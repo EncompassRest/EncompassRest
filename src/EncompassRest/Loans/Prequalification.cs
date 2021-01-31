@@ -74,37 +74,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rent/Own Own Average After Tax Mo Pymt [PREQUAL.X327]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? AfterTaxOwnMoSavings { get => _afterTaxOwnMoSavings; set => SetField(ref _afterTaxOwnMoSavings, value); }
 
         /// <summary>
         /// Rent/Own Rent Average After Tax Mo Pymt [PREQUAL.X326]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? AfterTaxRentMoSavings { get => _afterTaxRentMoSavings; set => SetField(ref _afterTaxRentMoSavings, value); }
 
         /// <summary>
         /// Rent/Own Annual Home Maintenance [PREQUAL.X322]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualHomeMaintenance { get => _annualHomeMaintenance; set => SetField(ref _annualHomeMaintenance, value); }
 
         /// <summary>
         /// Rent/Own Average Mo Pymt Savings [PREQUAL.X317]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? AvgMoPmtSavings { get => _avgMoPmtSavings; set => SetField(ref _avgMoPmtSavings, value); }
 
         /// <summary>
         /// Rent/Own Own Before Tax Mo Pymt [PREQUAL.X321]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BeforeTaxOwnMoPmt { get => _beforeTaxOwnMoPmt; set => SetField(ref _beforeTaxOwnMoPmt, value); }
 
         /// <summary>
         /// Rent/Own Rent Before Tax Mo Pymt [PREQUAL.X320]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BeforeTaxRentMoPmt { get => _beforeTaxRentMoPmt; set => SetField(ref _beforeTaxRentMoPmt, value); }
 
         /// <summary>
@@ -115,19 +114,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rent/Own Combined Gain of Buying vs. Renting [PREQUAL.X333]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? CombinedGain { get => _combinedGain; set => SetField(ref _combinedGain, value); }
 
         /// <summary>
         /// Rent/Own Cost Increase per Year [PREQUAL.X216]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CostIncreasePerYear { get => _costIncreasePerYear; set => SetField(ref _costIncreasePerYear, value); }
 
         /// <summary>
         /// Rent/Own Limits Down Pymt [PREQUAL.X203]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? DownPaymentAmount { get => _downPaymentAmount; set => SetField(ref _downPaymentAmount, value); }
 
         /// <summary>
@@ -139,7 +137,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rent/Own Home Sellings Price After Years [PREQUAL.X328]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? HomeSellingPriceAfterYears { get => _homeSellingPriceAfterYears; set => SetField(ref _homeSellingPriceAfterYears, value); }
 
         /// <summary>
@@ -150,61 +148,60 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rent/Own Investment Gain of Buying vs. Renting [PREQUAL.X331]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? InvestmentGain { get => _investmentGain; set => SetField(ref _investmentGain, value); }
 
         /// <summary>
         /// Rent/Own Limits Max Loan [PREQUAL.X205]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaxLoanLimit { get => _maxLoanLimit; set => SetField(ref _maxLoanLimit, value); }
 
         /// <summary>
         /// Rent/Own Limits Max Property Value [PREQUAL.X204]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MaxPropValue { get => _maxPropValue; set => SetField(ref _maxPropValue, value); }
 
         /// <summary>
         /// Rent/Own Minus Down Pymt/Initial Closing Costs [PREQUAL.X330]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MinusDownPmtAndClosingCosts { get => _minusDownPmtAndClosingCosts; set => SetField(ref _minusDownPmtAndClosingCosts, value); }
 
         /// <summary>
         /// Rent/Own Minus Loan Balance [PREQUAL.X329]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MinusLoanBalance { get => _minusLoanBalance; set => SetField(ref _minusLoanBalance, value); }
 
         /// <summary>
         /// Rent/Own Total Benefits Purch vs. Rent Monthly [PREQUAL.X231]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyBenefit { get => _monthlyBenefit; set => SetField(ref _monthlyBenefit, value); }
 
         /// <summary>
         /// Rent/Own Home Appreciation Monthly [PREQUAL.X221]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyHomeAppreciation { get => _monthlyHomeAppreciation; set => SetField(ref _monthlyHomeAppreciation, value); }
 
         /// <summary>
         /// Rent/Own Home Equity Monthly [PREQUAL.X219]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyHomeEquity { get => _monthlyHomeEquity; set => SetField(ref _monthlyHomeEquity, value); }
 
         /// <summary>
         /// Rent/Own Income Tax Bracket Monthly [PREQUAL.X229]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyIncomeTax { get => _monthlyIncomeTax; set => SetField(ref _monthlyIncomeTax, value); }
 
         /// <summary>
         /// Rent/Own Interest on Savings Monthly [PREQUAL.X224]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyInvestmentInterest { get => _monthlyInvestmentInterest; set => SetField(ref _monthlyInvestmentInterest, value); }
 
         /// <summary>
@@ -258,61 +255,60 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rent/Own Mo Cost to Rent [PREQUAL.X99]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? RentalCost { get => _rentalCost; set => SetField(ref _rentalCost, value); }
 
         /// <summary>
         /// Rent/Own Mo Renters Insurance [PREQUAL.X319]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RentersInsurance { get => _rentersInsurance; set => SetField(ref _rentersInsurance, value); }
 
         /// <summary>
         /// Rent/Own Total Benefits Purch vs. Rent Total [PREQUAL.X232]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalBenefit { get => _totalBenefit; set => SetField(ref _totalBenefit, value); }
 
         /// <summary>
         /// Rent/Own Total Rent [PREQUAL.X217]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalCashFlow { get => _totalCashFlow; set => SetField(ref _totalCashFlow, value); }
 
         /// <summary>
         /// Rent/Own Total Gain Over Years [PREQUAL.X318]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalGain { get => _totalGain; set => SetField(ref _totalGain, value); }
 
         /// <summary>
         /// Rent/Own Home Appreciation Total [PREQUAL.X222]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalHomeAppreciation { get => _totalHomeAppreciation; set => SetField(ref _totalHomeAppreciation, value); }
 
         /// <summary>
         /// Rent/Own Home Equity Total [PREQUAL.X220]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalHomeEquity { get => _totalHomeEquity; set => SetField(ref _totalHomeEquity, value); }
 
         /// <summary>
         /// Rent/Own No Housing/Other Expenses Monthly [PREQUAL.X227]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalHousingExpense { get => _totalHousingExpense; set => SetField(ref _totalHousingExpense, value); }
 
         /// <summary>
         /// Rent/Own Income Tax Bracket Total [PREQUAL.X230]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalIncomeTax { get => _totalIncomeTax; set => SetField(ref _totalIncomeTax, value); }
 
         /// <summary>
         /// Rent/Own Interest on Savings Total [PREQUAL.X225]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalInvestmentInterest { get => _totalInvestmentInterest; set => SetField(ref _totalInvestmentInterest, value); }
 
         /// <summary>
@@ -336,19 +332,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Prequal Total Other Expenses [PREQUAL.X294]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalOtherExpenses { get => _totalOtherExpenses; set => SetField(ref _totalOtherExpenses, value); }
 
         /// <summary>
         /// Rent/Own Own Total Pymt Over Years [PREQUAL.X324]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalOwnPmtOverYears { get => _totalOwnPmtOverYears; set => SetField(ref _totalOwnPmtOverYears, value); }
 
         /// <summary>
         /// Rent/Own Own Total Tax Savings Over Years [PREQUAL.X325]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalOwnTaxSavings { get => _totalOwnTaxSavings; set => SetField(ref _totalOwnTaxSavings, value); }
 
         /// <summary>
@@ -366,13 +362,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rent/Own Total Pymt Savings [PREQUAL.X332]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalPmtSavings { get => _totalPmtSavings; set => SetField(ref _totalPmtSavings, value); }
 
         /// <summary>
         /// Rent/Own Rent Total Pymt Over Years [PREQUAL.X323]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalRentPmtOverYears { get => _totalRentPmtOverYears; set => SetField(ref _totalRentPmtOverYears, value); }
 
         /// <summary>

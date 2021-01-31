@@ -18,9 +18,7 @@ namespace EncompassRest.Contacts
     /// </summary>
     public abstract class ContactApiObject : ApiObject, IContactApiObject
     {
-        /// <summary>
-        /// The contact id associated with the Api.
-        /// </summary>
+        /// <inheritdoc/>
         public string ContactId { get; }
 
         internal ContactApiObject(EncompassRestClient client, string contactId, string baseApiPath)

@@ -1,5 +1,4 @@
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -68,85 +67,74 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Decimal Value of Lender Credit Amount [LE2.XLCDV]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ActualLenderCredits { get => _actualLenderCredits; set => SetField(ref _actualLenderCredits, value); }
 
         /// <summary>
         /// Decimal Value of STD LE Seller Credits [LE2.X100DV]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ActualSTDLESellerCredits { get => _actualSTDLESellerCredits; set => SetField(ref _actualSTDLESellerCredits, value); }
 
         /// <summary>
         /// Decimal Value of STD LE Total Closing Cost J [LE2.XSTJDV]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ActualSTDLETotalClosingCostJ { get => _actualSTDLETotalClosingCostJ; set => SetField(ref _actualSTDLETotalClosingCostJ, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits [LE2.X4]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCredits { get => _adjustmentsOtherCredits; set => SetField(ref _adjustmentsOtherCredits, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Amount 1 [LE2.X6]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCreditsAmt1 { get => _adjustmentsOtherCreditsAmt1; set => SetField(ref _adjustmentsOtherCreditsAmt1, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Amount 10 [LE2.X24]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCreditsAmt10 { get => _adjustmentsOtherCreditsAmt10; set => SetField(ref _adjustmentsOtherCreditsAmt10, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Amount 2 [LE2.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCreditsAmt2 { get => _adjustmentsOtherCreditsAmt2; set => SetField(ref _adjustmentsOtherCreditsAmt2, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Amount 3 [LE2.X10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCreditsAmt3 { get => _adjustmentsOtherCreditsAmt3; set => SetField(ref _adjustmentsOtherCreditsAmt3, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Amount 4 [LE2.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCreditsAmt4 { get => _adjustmentsOtherCreditsAmt4; set => SetField(ref _adjustmentsOtherCreditsAmt4, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Amount 5 [LE2.X14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCreditsAmt5 { get => _adjustmentsOtherCreditsAmt5; set => SetField(ref _adjustmentsOtherCreditsAmt5, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Amount 6 [LE2.X16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCreditsAmt6 { get => _adjustmentsOtherCreditsAmt6; set => SetField(ref _adjustmentsOtherCreditsAmt6, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Amount 7 [LE2.X18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCreditsAmt7 { get => _adjustmentsOtherCreditsAmt7; set => SetField(ref _adjustmentsOtherCreditsAmt7, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Amount 8 [LE2.X20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCreditsAmt8 { get => _adjustmentsOtherCreditsAmt8; set => SetField(ref _adjustmentsOtherCreditsAmt8, value); }
 
         /// <summary>
         /// Loan Estimate - Adjustments and Other Credits Amount 9 [LE2.X22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentsOtherCreditsAmt9 { get => _adjustmentsOtherCreditsAmt9; set => SetField(ref _adjustmentsOtherCreditsAmt9, value); }
 
         /// <summary>
@@ -202,25 +190,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - Closing Costs Financed [LE2.X1]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ClosingCostsFinanced { get => _closingCostsFinanced; set => SetField(ref _closingCostsFinanced, value); }
 
         /// <summary>
         /// Loan Estimate - Down Payment/Funds from Borrower [LE2.X2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DownPayment { get => _downPayment; set => SetField(ref _downPayment, value); }
 
         /// <summary>
         /// Loan Estimate - Estimated Cash To Close Alternate Version [LE2.X26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EstimatedCashToCloseAV { get => _estimatedCashToCloseAV; set => SetField(ref _estimatedCashToCloseAV, value); }
 
         /// <summary>
         /// Loan Estimate - Estimated Cash To Close Standard Version [LE2.X25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EstimatedCashToCloseSV { get => _estimatedCashToCloseSV; set => SetField(ref _estimatedCashToCloseSV, value); }
 
         /// <summary>
@@ -246,7 +230,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - Funds for Borrower [LE2.X3]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FundsForBorrower { get => _fundsForBorrower; set => SetField(ref _fundsForBorrower, value); }
 
         /// <summary>
@@ -329,7 +312,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - Third Party Payments Not Otherwise Disclosed [LE2.X29]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ThirdPartyPaymentsNotOtherwiseDisclosed { get => _thirdPartyPaymentsNotOtherwiseDisclosed; set => SetField(ref _thirdPartyPaymentsNotOtherwiseDisclosed, value); }
 
         /// <summary>
@@ -359,13 +341,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Estimate - D.Total Loan Costs (Unrounded) [LE2.XSTD_DV]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnroundedTotalLoanCosts { get => _unroundedTotalLoanCosts; set => SetField(ref _unroundedTotalLoanCosts, value); }
 
         /// <summary>
         /// Loan Estimate -I.Total Other Costs (Unrounded) [LE2.XSTI_DV]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnroundedTotalOtherCosts { get => _unroundedTotalOtherCosts; set => SetField(ref _unroundedTotalOtherCosts, value); }
 
         /// <summary>

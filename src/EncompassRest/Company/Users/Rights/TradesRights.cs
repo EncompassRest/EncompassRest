@@ -10,9 +10,9 @@ namespace EncompassRest.Company.Users.Rights
         private AccessToTradesTabRights? _accessToTradesTab;
         private DirtyValue<bool?>? _editTrades;
 
-        ///// <summary>
-        ///// TradesRights AccessToTradesTab
-        ///// </summary>
+        /// <summary>
+        /// TradesRights AccessToTradesTab
+        /// </summary>
         [AllowNull]
         public AccessToTradesTabRights AccessToTradesTab { get => GetField(ref _accessToTradesTab); set => SetField(ref _accessToTradesTab, value); }
 

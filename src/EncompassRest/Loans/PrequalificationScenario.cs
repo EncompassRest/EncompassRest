@@ -48,27 +48,27 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _totalPayments;
 
         /// <summary>
-        /// PrequalificationScenario AppraisedValue
+        /// PrequalificationScenario AppraisedValue [PREQUAL.X254], [PREQUAL.X255]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public int? AppraisedValue { get => _appraisedValue; set => SetField(ref _appraisedValue, value); }
 
         /// <summary>
-        /// PrequalificationScenario Apr
+        /// PrequalificationScenario Apr [PREQUAL.X48], [PREQUAL.X88]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? Apr { get => _apr; set => SetField(ref _apr, value); }
 
         /// <summary>
-        /// PrequalificationScenario CashToClose
+        /// PrequalificationScenario CashToClose [PREQUAL.X44], [PREQUAL.X84]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? CashToClose { get => _cashToClose; set => SetField(ref _cashToClose, value); }
 
         /// <summary>
-        /// PrequalificationScenario ClosingCost
+        /// PrequalificationScenario ClosingCost [PREQUAL.X43], [PREQUAL.X83]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ClosingCost { get => _closingCost; set => SetField(ref _closingCost, value); }
 
         /// <summary>
@@ -84,39 +84,39 @@ namespace EncompassRest.Loans
         public string? Comments { get => _comments; set => SetField(ref _comments, value); }
 
         /// <summary>
-        /// PrequalificationScenario CreditScore
+        /// PrequalificationScenario CreditScore [PREQUAL.X305], [PREQUAL.X306]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? CreditScore { get => _creditScore; set => SetField(ref _creditScore, value); }
 
         /// <summary>
-        /// PrequalificationScenario CurrentStatus
+        /// PrequalificationScenario CurrentStatus [PREQUAL.X303], [PREQUAL.X304]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? CurrentStatus { get => _currentStatus; set => SetField(ref _currentStatus, value); }
 
         /// <summary>
-        /// PrequalificationScenario DownPaymentAmount
+        /// PrequalificationScenario DownPaymentAmount [PREQUAL.X234], [PREQUAL.X240]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? DownPaymentAmount { get => _downPaymentAmount; set => SetField(ref _downPaymentAmount, value); }
 
         /// <summary>
-        /// PrequalificationScenario DownPaymentPercent
+        /// PrequalificationScenario DownPaymentPercent [PREQUAL.X233], [PREQUAL.X239]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? DownPaymentPercent { get => _downPaymentPercent; set => SetField(ref _downPaymentPercent, value); }
 
         /// <summary>
-        /// PrequalificationScenario FhaUpfrontMIPremiumPercent
+        /// PrequalificationScenario FhaUpfrontMIPremiumPercent [PREQUAL.X295], [PREQUAL.X296]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? FhaUpfrontMIPremiumPercent { get => _fhaUpfrontMIPremiumPercent; set => SetField(ref _fhaUpfrontMIPremiumPercent, value); }
 
         /// <summary>
-        /// PrequalificationScenario GrossNegativeCashFlow
+        /// PrequalificationScenario GrossNegativeCashFlow [PREQUAL.X301], [PREQUAL.X302]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? GrossNegativeCashFlow { get => _grossNegativeCashFlow; set => SetField(ref _grossNegativeCashFlow, value); }
 
         /// <summary>
@@ -125,9 +125,9 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// PrequalificationScenario LoanAmount
+        /// PrequalificationScenario LoanAmount [PREQUAL.X34], [PREQUAL.X74]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
 
         /// <summary>
@@ -139,37 +139,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PrequalificationScenario MaximumDebt
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MaximumDebt { get => _maximumDebt; set => SetField(ref _maximumDebt, value); }
 
         /// <summary>
         /// PrequalificationScenario MaximumLoanAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumLoanAmount { get => _maximumLoanAmount; set => SetField(ref _maximumLoanAmount, value); }
 
         /// <summary>
-        /// PrequalificationScenario MiAndFundingFeeFinancedAmount
+        /// PrequalificationScenario MiAndFundingFeeFinancedAmount [PREQUAL.X297], [PREQUAL.X298]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MiAndFundingFeeFinancedAmount { get => _miAndFundingFeeFinancedAmount; set => SetField(ref _miAndFundingFeeFinancedAmount, value); }
 
         /// <summary>
         /// PrequalificationScenario MinimumIncome
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MinimumIncome { get => _minimumIncome; set => SetField(ref _minimumIncome, value); }
 
         /// <summary>
-        /// PrequalificationScenario MonthlyPayment
+        /// PrequalificationScenario MonthlyPayment [PREQUAL.X256], [PREQUAL.X257]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }
 
         /// <summary>
-        /// PrequalificationScenario PrepaidItemsEstimatedAmount
+        /// PrequalificationScenario PrepaidItemsEstimatedAmount [PREQUAL.X282], [PREQUAL.X283]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PrepaidItemsEstimatedAmount { get => _prepaidItemsEstimatedAmount; set => SetField(ref _prepaidItemsEstimatedAmount, value); }
 
         /// <summary>
@@ -178,99 +177,96 @@ namespace EncompassRest.Loans
         public int? PrequalificationScenarioIndex { get => _prequalificationScenarioIndex; set => SetField(ref _prequalificationScenarioIndex, value); }
 
         /// <summary>
-        /// PrequalificationScenario QualBottomRatioPercent
+        /// PrequalificationScenario QualBottomRatioPercent [PREQUAL.X238], [PREQUAL.X244]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? QualBottomRatioPercent { get => _qualBottomRatioPercent; set => SetField(ref _qualBottomRatioPercent, value); }
 
         /// <summary>
-        /// PrequalificationScenario QualTopRatioPercent
+        /// PrequalificationScenario QualTopRatioPercent [PREQUAL.X237], [PREQUAL.X243]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? QualTopRatioPercent { get => _qualTopRatioPercent; set => SetField(ref _qualTopRatioPercent, value); }
 
         /// <summary>
-        /// PrequalificationScenario SalesPrice
+        /// PrequalificationScenario SalesPrice [PREQUAL.X33], [PREQUAL.X73]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SalesPrice { get => _salesPrice; set => SetField(ref _salesPrice, value); }
 
         /// <summary>
-        /// PrequalificationScenario SubordinateFin
+        /// PrequalificationScenario SubordinateFin [PREQUAL.X236], [PREQUAL.X242]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SubordinateFin { get => _subordinateFin; set => SetField(ref _subordinateFin, value); }
 
         /// <summary>
         /// PrequalificationScenario TotalBaseCost
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalBaseCost { get => _totalBaseCost; set => SetField(ref _totalBaseCost, value); }
 
         /// <summary>
-        /// PrequalificationScenario TotalCashAvailable
+        /// PrequalificationScenario TotalCashAvailable [PREQUAL.X290], [PREQUAL.X291]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalCashAvailable { get => _totalCashAvailable; set => SetField(ref _totalCashAvailable, value); }
 
         /// <summary>
         /// PrequalificationScenario TotalCashLeft
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalCashLeft { get => _totalCashLeft; set => SetField(ref _totalCashLeft, value); }
 
         /// <summary>
-        /// PrequalificationScenario TotalCosts
+        /// PrequalificationScenario TotalCosts [PREQUAL.X284], [PREQUAL.X285]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalCosts { get => _totalCosts; set => SetField(ref _totalCosts, value); }
 
         /// <summary>
-        /// PrequalificationScenario TotalFinancing
+        /// PrequalificationScenario TotalFinancing [PREQUAL.X288], [PREQUAL.X289]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalFinancing { get => _totalFinancing; set => SetField(ref _totalFinancing, value); }
 
         /// <summary>
-        /// PrequalificationScenario TotalHe
+        /// PrequalificationScenario TotalHe [PREQUAL.X235], [PREQUAL.X241]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalHe { get => _totalHe; set => SetField(ref _totalHe, value); }
 
         /// <summary>
-        /// PrequalificationScenario TotalIncome
+        /// PrequalificationScenario TotalIncome [PREQUAL.X266], [PREQUAL.X267]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalIncome { get => _totalIncome; set => SetField(ref _totalIncome, value); }
 
         /// <summary>
-        /// PrequalificationScenario TotalLoanAmount
+        /// PrequalificationScenario TotalLoanAmount [PREQUAL.X299], [PREQUAL.X300]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalLoanAmount { get => _totalLoanAmount; set => SetField(ref _totalLoanAmount, value); }
 
         /// <summary>
-        /// PrequalificationScenario TotalOtherExpense
+        /// PrequalificationScenario TotalOtherExpense [PREQUAL.X268], [PREQUAL.X269]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalOtherExpense { get => _totalOtherExpense; set => SetField(ref _totalOtherExpense, value); }
 
         /// <summary>
         /// PrequalificationScenario TotalPaidOffMortgage
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalPaidOffMortgage { get => _totalPaidOffMortgage; set => SetField(ref _totalPaidOffMortgage, value); }
 
         /// <summary>
         /// PrequalificationScenario TotalPaidOffOthers
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalPaidOffOthers { get => _totalPaidOffOthers; set => SetField(ref _totalPaidOffOthers, value); }
 
         /// <summary>
-        /// PrequalificationScenario TotalPayments
+        /// PrequalificationScenario TotalPayments [PREQUAL.X258], [PREQUAL.X259]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalPayments { get => _totalPayments; set => SetField(ref _totalPayments, value); }
     }
 }

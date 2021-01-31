@@ -236,7 +236,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Docs Mfg Home Additional Original Pincipal Amount Secured [3655]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdditionalOriginalPincipalAmountSecured { get => _additionalOriginalPincipalAmountSecured; set => SetField(ref _additionalOriginalPincipalAmountSecured, value); }
 
         /// <summary>
@@ -453,7 +452,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1 HUD1A - Plus Cash/Ck from Borr [HUD1A.X33]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? CashCheckFromBorrower { get => _cashCheckFromBorrower; set => SetField(ref _cashCheckFromBorrower, value); }
 
         /// <summary>
@@ -649,7 +648,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Docs Coop Loan Vacancy Percent Notification [2637]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CoopVacancyPercentNotification { get => _coopVacancyPercentNotification; set => SetField(ref _coopVacancyPercentNotification, value); }
 
         /// <summary>
@@ -665,7 +663,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1 HUD1A - Equals Disburs to Borr [HUD1A.X32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? DisbursementsToBorrower { get => _disbursementsToBorrower; set => SetField(ref _disbursementsToBorrower, value); }
 
         /// <summary>
@@ -794,7 +792,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Anti-Steering Disclosure - Include Safe Habor Disclosure [DISCLOSURE.X867]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? IncludeSafeHaborDisclosure { get => _includeSafeHaborDisclosure; set => SetField(ref _includeSafeHaborDisclosure, value); }
 
         /// <summary>
@@ -1002,7 +1000,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing Docs Mfg Home Original Pincipal Amount Secured [3649]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginalPincipalAmountSecured { get => _originalPincipalAmountSecured; set => SetField(ref _originalPincipalAmountSecured, value); }
 
         /// <summary>
@@ -1235,7 +1232,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD1 HUD1A - 1520 Total Disbursed [HUD1A.X31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalDisbursed { get => _totalDisbursed; set => SetField(ref _totalDisbursed, value); }
 
         /// <summary>

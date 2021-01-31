@@ -48,7 +48,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Amount [URLARGGNN21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
 
         /// <summary>

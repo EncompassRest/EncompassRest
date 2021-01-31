@@ -171,7 +171,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Borrower Receives Cash Out Amount [NTB.X31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingLoanBorrowerReceivesCashOutAmount { get => _existingLoanBorrowerReceivesCashOutAmount; set => SetField(ref _existingLoanBorrowerReceivesCashOutAmount, value); }
 
         /// <summary>
@@ -230,7 +229,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Loan Amount [NTB.X2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingLoanLoanAmount { get => _existingLoanLoanAmount; set => SetField(ref _existingLoanLoanAmount, value); }
 
         /// <summary>
@@ -258,31 +256,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Payment Amount [NTB.X20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingLoanPaymentAmount { get => _existingLoanPaymentAmount; set => SetField(ref _existingLoanPaymentAmount, value); }
 
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Difference between current payment and new payment [NTB.X29]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingLoanPaymentDifference { get => _existingLoanPaymentDifference; set => SetField(ref _existingLoanPaymentDifference, value); }
 
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Total Monthly Mortgage Obligation [NTB.X21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingLoanPaymentIncludeMiObligation { get => _existingLoanPaymentIncludeMiObligation; set => SetField(ref _existingLoanPaymentIncludeMiObligation, value); }
 
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Payment with Mortgage Insurance [NTB.X22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingLoanPaymentIncludeMortgageInsurance { get => _existingLoanPaymentIncludeMortgageInsurance; set => SetField(ref _existingLoanPaymentIncludeMortgageInsurance, value); }
 
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Amount of the Prepayment Penalty to be included in the new loan amount [NTB.X16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan { get => _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan; set => SetField(ref _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan, value); }
 
         /// <summary>
@@ -319,13 +312,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Savings Amount [NTB.X32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingLoanSavingsAmount { get => _existingLoanSavingsAmount; set => SetField(ref _existingLoanSavingsAmount, value); }
 
         /// <summary>
         /// Net Tangible Benefit Existing Loan Info - Total Debt Paid Off [NTB.X36]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingLoanTotalDebtPayoff { get => _existingLoanTotalDebtPayoff; set => SetField(ref _existingLoanTotalDebtPayoff, value); }
 
         /// <summary>
@@ -372,13 +363,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Net Tangible Benefit New Loan Info - Difference between current payment with MI and new payment with MI [NTB.X27]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewLoanPaymentWithMiDifference { get => _newLoanPaymentWithMiDifference; set => SetField(ref _newLoanPaymentWithMiDifference, value); }
 
         /// <summary>
         /// Net Tangible Benefit New Loan Info - Difference between current payment total obligation and new payment total obligation [NTB.X28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NewLoanPaymentWithObligationDifference { get => _newLoanPaymentWithObligationDifference; set => SetField(ref _newLoanPaymentWithObligationDifference, value); }
 
         /// <summary>

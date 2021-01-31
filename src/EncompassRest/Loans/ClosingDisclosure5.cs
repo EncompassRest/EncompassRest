@@ -401,7 +401,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Closing disclosure 5 - Total Payments [CD5.X1]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalPayments { get => _totalPayments; set => SetField(ref _totalPayments, value); }
     }
 }

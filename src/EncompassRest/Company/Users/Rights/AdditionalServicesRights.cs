@@ -12,8 +12,10 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?>? _companyStatusOnline;
         private DirtyValue<bool?>? _complianceReviewSetup;
         private DirtyValue<bool?>? _dataTracConnection;
+        private DirtyValue<bool?>? _eClose;
         private DirtyValue<bool?>? _eDocumentManagement;
         private DirtyValue<bool?>? _eDisclosureFulfillment;
+        private DirtyValue<bool?>? _elliemaeAIQ;
         private DirtyValue<bool?>? _fannieMaeUCDTransfer;
         private DirtyValue<bool?>? _fannieMaeWorkflow;
         private DirtyValue<bool?>? _floodService;
@@ -53,6 +55,11 @@ namespace EncompassRest.Company.Users.Rights
         public bool? DataTracConnection { get => _dataTracConnection; set => SetField(ref _dataTracConnection, value); }
 
         /// <summary>
+        /// AdditionalServicesRights EClose
+        /// </summary>
+        public bool? EClose { get => _eClose; set => SetField(ref _eClose, value); }
+
+        /// <summary>
         /// AdditionalServicesRights EDocumentManagement
         /// </summary>
         [JsonProperty("e-DocumentManagement")]
@@ -62,6 +69,11 @@ namespace EncompassRest.Company.Users.Rights
         /// AdditionalServicesRights EDisclosureFulfillment
         /// </summary>
         public bool? EDisclosureFulfillment { get => _eDisclosureFulfillment; set => SetField(ref _eDisclosureFulfillment, value); }
+
+        /// <summary>
+        /// AdditionalServicesRights ElliemaeAIQ
+        /// </summary>
+        public bool? ElliemaeAIQ { get => _elliemaeAIQ; set => SetField(ref _elliemaeAIQ, value); }
 
         /// <summary>
         /// AdditionalServicesRights FannieMaeUCDTransfer
