@@ -63,7 +63,7 @@ namespace EncompassRest
         /// <summary>
         /// The event handler to attach to the <see cref="EncompassRestClient.ApiResponse"/> event of the created client.
         /// </summary>
-        public EventHandler<IApiResponseEventArgs>? ApiResponse { get; set; }
+        public EventHandler<ApiResponseEventArgs>? ApiResponse { get; set; }
 
         /// <summary>
         /// Specifies how the client should handle undefined custom fields.

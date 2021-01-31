@@ -13,7 +13,7 @@ namespace EncompassRest.Loans.Documents
     public sealed class LoanDocument : DirtyExtensibleObject, IIdentifiable
     {
         /// <summary>
-        /// Implicity converts the specified document to an <see cref="EntityReference"/>.
+        /// Implicitly converts the specified document to an <see cref="EntityReference"/>.
         /// </summary>
         /// <param name="document">The document to convert to an <see cref="EntityReference"/>.</param>
         public static implicit operator EntityReference?(LoanDocument? document) => document != null && document.DocumentId != null ? new EntityReference(document.DocumentId, EntityType.Document) : null;

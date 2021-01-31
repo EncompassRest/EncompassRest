@@ -10,7 +10,7 @@ namespace EncompassRest.Loans
     partial class Loan
     {
         /// <summary>
-        /// Implicity converts the specified loan to an <see cref="EntityReference"/>.
+        /// Implicitly converts the specified loan to an <see cref="EntityReference"/>.
         /// </summary>
         /// <param name="loan">The loan to convert to an <see cref="EntityReference"/>.</param>
         public static implicit operator EntityReference?(Loan? loan) => loan != null && loan.EncompassId != null ? new EntityReference(loan.EncompassId, EntityType.Loan) : null;

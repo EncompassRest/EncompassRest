@@ -291,27 +291,31 @@ namespace EncompassRest
         /// </summary>
         public event EventHandler<TimeoutRetryEventArgs>? TimeoutRetry;
 
+        private EventHandler<ITimeoutRetryEventArgs>? _interfaceTimeoutRetry;
+
         event EventHandler<ITimeoutRetryEventArgs>? IEncompassRestClient.TimeoutRetry
         {
-            add => AddOrRemoveTimeoutRetry(value, true);
-            remove => AddOrRemoveTimeoutRetry(value, false);
-        }
-
-        private void AddOrRemoveTimeoutRetry(EventHandler<ITimeoutRetryEventArgs>? value, bool toAdd)
-        {
-            if (value != null)
+            add
             {
-                if (toAdd)
+                var result = _interfaceTimeoutRetry += value;
+                if (result != null)
                 {
-                    TimeoutRetry += handler;
-                }
-                else
-                {
-                    TimeoutRetry -= handler;
+                    TimeoutRetry += InterfaceTimeoutRetry;
                 }
             }
+            remove
+            {
+                var result = _interfaceTimeoutRetry -= value;
+                if (result == null)
+                {
+                    TimeoutRetry -= InterfaceTimeoutRetry;
+                }
+            }
+        }
 
-            void handler(object sender, TimeoutRetryEventArgs e) => value(sender, e);
+        private void InterfaceTimeoutRetry(object sender, TimeoutRetryEventArgs e)
+        {
+            _interfaceTimeoutRetry?.Invoke(sender, e);
         }
 
         /// <inheritdoc/>
@@ -552,27 +556,31 @@ namespace EncompassRest
         /// </summary>
         public event EventHandler<ApiResponseEventArgs>? ApiResponse;
 
+        private EventHandler<IApiResponseEventArgs>? _interfaceApiResponse;
+
         event EventHandler<IApiResponseEventArgs>? IEncompassRestClient.ApiResponse
         {
-            add => AddOrRemoveApiResponse(value, true);
-            remove => AddOrRemoveApiResponse(value, false);
-        }
-
-        private void AddOrRemoveApiResponse(EventHandler<IApiResponseEventArgs>? value, bool toAdd)
-        {
-            if (value != null)
+            add
             {
-                if (toAdd)
+                var result = _interfaceApiResponse += value;
+                if (result != null)
                 {
-                    ApiResponse += handler;
-                }
-                else
-                {
-                    ApiResponse -= handler;
+                    ApiResponse += InterfaceApiResponse;
                 }
             }
+            remove
+            {
+                var result = _interfaceApiResponse -= value;
+                if (result == null)
+                {
+                    ApiResponse -= InterfaceApiResponse;
+                }
+            }
+        }
 
-            void handler(object sender, ApiResponseEventArgs e) => value(sender, e);
+        private void InterfaceApiResponse(object sender, ApiResponseEventArgs e)
+        {
+            _interfaceApiResponse?.Invoke(sender, e);
         }
         
         internal void InvokeApiResponse(HttpResponseMessage response)
@@ -586,7 +594,7 @@ namespace EncompassRest
             _timeoutRetryCount = parameters.TimeoutRetryCount;
             AccessToken = new AccessToken(parameters.ApiClientId, parameters.ApiClientSecret, this);
             _tokenInitializer = tokenInitializer;
-            ((IEncompassRestClient)this).ApiResponse += parameters.ApiResponse;
+            ApiResponse = parameters.ApiResponse;
             CommonCache = (parameters.CommonCache ??= new CommonCache());
             UndefinedCustomFieldHandling = parameters.UndefinedCustomFieldHandling;
             BaseAddress = (parameters.BaseAddress?.Length ?? 0) == 0 ? "https://api.elliemae.com/" : parameters.BaseAddress!;
