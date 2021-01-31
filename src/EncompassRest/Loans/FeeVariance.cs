@@ -1,5 +1,4 @@
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -22,7 +21,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FeeVariance CD
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CD { get => _cD; set => SetField(ref _cD, value); }
 
         /// <summary>
@@ -48,19 +46,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FeeVariance InitialLE
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialLE { get => _initialLE; set => SetField(ref _initialLE, value); }
 
         /// <summary>
         /// FeeVariance Itemization
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Itemization { get => _itemization; set => SetField(ref _itemization, value); }
 
         /// <summary>
         /// FeeVariance LE
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LE { get => _lE; set => SetField(ref _lE, value); }
 
         /// <summary>

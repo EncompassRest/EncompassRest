@@ -20,7 +20,7 @@ namespace EncompassRest.Webhook
         private NeverSerializeValue<string?>? _instanceId;
         private string? _endpoint;
         private StringEnumValue<WebhookResourceType> _resource;
-        private string? _signingKey;
+        private string? _signingkey;
 
         /// <summary>
         /// Unique identifier of the subscription.
@@ -65,7 +65,7 @@ namespace EncompassRest.Webhook
         /// The password to assign to the subscription.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string? SigningKey { get => _signingKey; set => SetField(ref _signingKey, value); }
+        public string? Signingkey { get => _signingkey; set => SetField(ref _signingkey, value); }
 
         /// <summary>
         /// Refers to the resource that is part of subscription.

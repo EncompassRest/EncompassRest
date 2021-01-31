@@ -42,13 +42,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegulationZInterestRatePeriod InterestPayment
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? InterestPayment { get => _interestPayment; set => SetField(ref _interestPayment, value); }
 
         /// <summary>
-        /// RegulationZInterestRatePeriod InterestPrincipalPayment
+        /// RegulationZInterestRatePeriod InterestPrincipalPayment [3285], [3286]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? InterestPrincipalPayment { get => _interestPrincipalPayment; set => SetField(ref _interestPrincipalPayment, value); }
 
         /// <summary>
@@ -60,13 +60,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Worst Case Scenario Monthly Payment [3290]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }
 
         /// <summary>
         /// RegulationZInterestRatePeriod PrincipalPayment
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PrincipalPayment { get => _principalPayment; set => SetField(ref _principalPayment, value); }
 
         /// <summary>
@@ -77,13 +77,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegulationZInterestRatePeriod TaxInsuranceAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TaxInsuranceAmount { get => _taxInsuranceAmount; set => SetField(ref _taxInsuranceAmount, value); }
 
         /// <summary>
         /// RegulationZInterestRatePeriod TotalPayment
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalPayment { get => _totalPayment; set => SetField(ref _totalPayment, value); }
     }
 }

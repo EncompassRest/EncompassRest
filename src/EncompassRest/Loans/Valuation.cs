@@ -175,7 +175,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent AVM Appraised Value [VALNN19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AvmAppraisedValue { get => _avmAppraisedValue; set => SetField(ref _avmAppraisedValue, value); }
 
         /// <summary>
@@ -231,7 +230,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Estimated Value Of Repairs [VALNN28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EstValueOfRepairs { get => _estValueOfRepairs; set => SetField(ref _estValueOfRepairs, value); }
 
         /// <summary>
@@ -242,13 +240,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent HOA Budgeted Assessment Income [VALNN30]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HoaBudgetedAssessmentIncome { get => _hoaBudgetedAssessmentIncome; set => SetField(ref _hoaBudgetedAssessmentIncome, value); }
 
         /// <summary>
         /// Correspondent HOA Budgeted Replacement Reserves [VALNN31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HoaBudgetedReplacementReserves { get => _hoaBudgetedReplacementReserves; set => SetField(ref _hoaBudgetedReplacementReserves, value); }
 
         /// <summary>
@@ -269,19 +265,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Living Area [VALNN36]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LivingArea { get => _livingArea; set => SetField(ref _livingArea, value); }
 
         /// <summary>
         /// Correspondent Monthly Rent Amount Unit3 [VALNN37]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyRentAmountUnit3 { get => _monthlyRentAmountUnit3; set => SetField(ref _monthlyRentAmountUnit3, value); }
 
         /// <summary>
         /// Correspondent Monthly Rent Amount Unit4 [VALNN38]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyRentAmountUnit4 { get => _monthlyRentAmountUnit4; set => SetField(ref _monthlyRentAmountUnit4, value); }
 
         /// <summary>
@@ -368,31 +361,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Property Value [VALNN49]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PropertyValue { get => _propertyValue; set => SetField(ref _propertyValue, value); }
 
         /// <summary>
         /// Correspondent Purchase Contract Sales Price [VALNN50]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PurchaseContractSalesPrice { get => _purchaseContractSalesPrice; set => SetField(ref _purchaseContractSalesPrice, value); }
 
         /// <summary>
         /// Correspondent Rent Amount Unit 1 [VALNN51]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RentAmountUnit1 { get => _rentAmountUnit1; set => SetField(ref _rentAmountUnit1, value); }
 
         /// <summary>
         /// Correspondent Rent Amount Unit 2 [VALNN52]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RentAmountUnit2 { get => _rentAmountUnit2; set => SetField(ref _rentAmountUnit2, value); }
 
         /// <summary>
         /// Correspondent Site Value [VALNN53]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SiteValue { get => _siteValue; set => SetField(ref _siteValue, value); }
 
         /// <summary>
@@ -403,7 +391,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Stated Gross Rent [VALNN56]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? StatedGrossRent { get => _statedGrossRent; set => SetField(ref _statedGrossRent, value); }
 
         /// <summary>

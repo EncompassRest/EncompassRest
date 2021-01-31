@@ -47,6 +47,10 @@ namespace EncompassRest.Webhook
         /// <summary>
         /// ServiceOrder
         /// </summary>
-        ServiceOrder = 9
+        ServiceOrder = 9,
+        /// <summary>
+        /// DocumentOrder
+        /// </summary>
+        DocumentOrder = 10
     }
 }

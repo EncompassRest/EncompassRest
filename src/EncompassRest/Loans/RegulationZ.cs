@@ -294,7 +294,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// REGZ Total Amt Financed [948]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountFinanced { get => _amountFinanced; set => SetField(ref _amountFinanced, value); }
 
         /// <summary>
@@ -406,7 +405,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Premium Credit Disability [1704]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditDisability { get => _creditDisability; set => SetField(ref _creditDisability, value); }
 
         /// <summary>
@@ -418,13 +416,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Premium Credit Life [1703]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditLife { get => _creditLife; set => SetField(ref _creditLife, value); }
 
         /// <summary>
         /// Insurance Premium Credit Life/Disability [1705]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditLifeAndCreditDisability { get => _creditLifeAndCreditDisability; set => SetField(ref _creditLifeAndCreditDisability, value); }
 
         /// <summary>
@@ -465,13 +461,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Disclosed Daily Interest Charges [3887]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DisclosedDailyInterestCharge { get => _disclosedDailyInterestCharge; set => SetField(ref _disclosedDailyInterestCharge, value); }
 
         /// <summary>
         /// Disclosed Fees Total Finance Charges [3246]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DisclosedFinanceCharge { get => _disclosedFinanceCharge; set => SetField(ref _disclosedFinanceCharge, value); }
 
         /// <summary>
@@ -783,7 +777,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Amort Type GPM Extra Pymt [312]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExtraPaymentForEarlyPayOff { get => _extraPaymentForEarlyPayOff; set => SetField(ref _extraPaymentForEarlyPayOff, value); }
 
         /// <summary>
@@ -799,7 +792,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Filing Fees [1707]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FilingFees { get => _filingFees; set => SetField(ref _filingFees, value); }
 
         /// <summary>
@@ -810,43 +802,37 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Total Finance Charges [1206]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinanceCharge { get => _financeCharge; set => SetField(ref _financeCharge, value); }
 
         /// <summary>
         /// Financed Guarantee Fee - Guarantee Amount [3561]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedAllGuaranteeFeeAmount { get => _financedAllGuaranteeFeeAmount; set => SetField(ref _financedAllGuaranteeFeeAmount, value); }
 
         /// <summary>
         /// Financed Guarantee Fee - Guarantee Percentage [3560]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, OptionsJson = "{\"0.50\":\"0.50\",\"1.00\":\"1.00\",\"1.25\":\"1.25\",\"1.50\":\"1.50\",\"1.75\":\"1.75\",\"2.00\":\"2.00\",\"2.25\":\"2.25\",\"2.50\":\"2.50\",\"2.75\":\"2.75\",\"3.00\":\"3.00\",\"3.25\":\"3.25\",\"3.50\":\"3.50\",\"3.75\":\"3.75\",\"4.00\":\"4.00\"}")]
+        [LoanFieldProperty(OptionsJson = "{\"0.50\":\"0.50\",\"1.00\":\"1.00\",\"1.25\":\"1.25\",\"1.50\":\"1.50\",\"1.75\":\"1.75\",\"2.00\":\"2.00\",\"2.25\":\"2.25\",\"2.50\":\"2.50\",\"2.75\":\"2.75\",\"3.00\":\"3.00\",\"3.25\":\"3.25\",\"3.50\":\"3.50\",\"3.75\":\"3.75\",\"4.00\":\"4.00\"}")]
         public decimal? FinancedAllGuaranteeFeePercent { get => _financedAllGuaranteeFeePercent; set => SetField(ref _financedAllGuaranteeFeePercent, value); }
 
         /// <summary>
         /// Financed Guarantee Fee - Total Loan Amount [3562]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedAllTotalLoanAmount { get => _financedAllTotalLoanAmount; set => SetField(ref _financedAllTotalLoanAmount, value); }
 
         /// <summary>
         /// Portion of Financed Guarantee Fee - Guarantee Amount [3564]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedPortionGuaranteeFeeAmount { get => _financedPortionGuaranteeFeeAmount; set => SetField(ref _financedPortionGuaranteeFeeAmount, value); }
 
         /// <summary>
         /// Portion of Financed Guarantee Fee - Guarantee Percentage [3563]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedPortionGuaranteeFeePercent { get => _financedPortionGuaranteeFeePercent; set => SetField(ref _financedPortionGuaranteeFeePercent, value); }
 
         /// <summary>
         /// Portion of Financed Guarantee Fee - Total Loan Amount [3565]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinancedPortionTotalLoanAmount { get => _financedPortionTotalLoanAmount; set => SetField(ref _financedPortionTotalLoanAmount, value); }
 
         /// <summary>
@@ -1093,7 +1079,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info Constr Loan Required Resrv [1265]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InterestReserveAmount { get => _interestReserveAmount; set => SetField(ref _interestReserveAmount, value); }
 
         /// <summary>
@@ -1122,7 +1107,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Late Charge Basis [4186]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LateChargeBasis { get => _lateChargeBasis; set => SetField(ref _lateChargeBasis, value); }
 
         /// <summary>
@@ -1149,7 +1133,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Late Fee [3876]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LateFee { get => _lateFee; set => SetField(ref _lateFee, value); }
 
         /// <summary>
@@ -1165,7 +1149,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// REGZ Construction Mortgage Lenders Inspection Rate [3899]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LendersInspectionFee { get => _lendersInspectionFee; set => SetField(ref _lendersInspectionFee, value); }
 
         /// <summary>
@@ -1197,13 +1180,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Maximum Late Charge [2832]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumLateCharge { get => _maximumLateCharge; set => SetField(ref _maximumLateCharge, value); }
 
         /// <summary>
         /// Prequal Maximum Payment [1896]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MaximumPayment { get => _maximumPayment; set => SetField(ref _maximumPayment, value); }
 
         /// <summary>
@@ -1231,13 +1213,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Mtg Ins Pymt 1 [1766]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MiMonthlyPaymentLevel1 { get => _miMonthlyPaymentLevel1; set => SetField(ref _miMonthlyPaymentLevel1, value); }
 
         /// <summary>
         /// Insurance Mtg Ins Pymt 2 [1770]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MiMonthlyPaymentLevel2 { get => _miMonthlyPaymentLevel2; set => SetField(ref _miMonthlyPaymentLevel2, value); }
 
         /// <summary>
@@ -1253,13 +1233,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Minimum Late Charge [2831]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MinimumLateCharge { get => _minimumLateCharge; set => SetField(ref _minimumLateCharge, value); }
 
         /// <summary>
         /// Prequal Minimum Payment [1895]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MinimumPayment { get => _minimumPayment; set => SetField(ref _minimumPayment, value); }
 
         /// <summary>
@@ -1270,7 +1249,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MI Prepaid Amount [3971]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MIPrepaidAmount { get => _mIPrepaidAmount; set => SetField(ref _mIPrepaidAmount, value); }
 
         /// <summary>
@@ -1293,7 +1272,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Premium 1 Monthly Term Pymt [4081]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyTerm { get => _monthlyTerm; set => SetField(ref _monthlyTerm, value); }
 
         /// <summary>
@@ -1336,7 +1314,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// REGZ-TIL Interest Rate and Payment Summary Table - Construction - Outstanding Balance [3288]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? OutstandingBalance { get => _outstandingBalance; set => SetField(ref _outstandingBalance, value); }
 
         /// <summary>
@@ -1384,7 +1362,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Fees Total Prepaid Finance Charges [949]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PrepaidFinanceCharge { get => _prepaidFinanceCharge; set => SetField(ref _prepaidFinanceCharge, value); }
 
         /// <summary>
@@ -1483,7 +1461,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Prequal Sample Pymt Amt [1958]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SamplePayments { get => _samplePayments; set => SetField(ref _samplePayments, value); }
 
         /// <summary>
@@ -1545,31 +1523,28 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Total Broker Fees Collected [3310]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalBrokerFees { get => _totalBrokerFees; set => SetField(ref _totalBrokerFees, value); }
 
         /// <summary>
         /// Trans Details Total Late Payment [3877]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalLatePayment { get => _totalLatePayment; set => SetField(ref _totalLatePayment, value); }
 
         /// <summary>
         /// Total Lender Fees Collected [3311]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalLenderFees { get => _totalLenderFees; set => SetField(ref _totalLenderFees, value); }
 
         /// <summary>
         /// REGZ Total Amt All Pymts [1207]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalOfPayments { get => _totalOfPayments; set => SetField(ref _totalOfPayments, value); }
 
         /// <summary>
         /// REGZ Total Amt All Principal and Interest [4071]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalOfPrincipalAndInterest { get => _totalOfPrincipalAndInterest; set => SetField(ref _totalOfPrincipalAndInterest, value); }
 
         /// <summary>
@@ -1597,7 +1572,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Insurance Premium 1 Yr Term Pymt [1710]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? YearlyTerm { get => _yearlyTerm; set => SetField(ref _yearlyTerm, value); }
 
         /// <summary>

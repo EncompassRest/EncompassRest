@@ -1,5 +1,3 @@
-using EncompassRest.Schema;
-
 namespace EncompassRest.Loans
 {
     /// <summary>
@@ -17,7 +15,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PurchaseAdvicePayout Amount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
 
         /// <summary>
@@ -28,13 +25,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PurchaseAdvicePayout DiffAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? DiffAmount { get => _diffAmount; set => SetField(ref _diffAmount, value); }
 
         /// <summary>
         /// PurchaseAdvicePayout ExpectedAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExpectedAmount { get => _expectedAmount; set => SetField(ref _expectedAmount, value); }
 
         /// <summary>

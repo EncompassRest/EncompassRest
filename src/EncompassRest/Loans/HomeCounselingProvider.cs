@@ -114,7 +114,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Home Counseling Provider - Distance Number of Miles [HCNN17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DistanceMiles { get => _distanceMiles; set => SetField(ref _distanceMiles, value); }
 
         /// <summary>

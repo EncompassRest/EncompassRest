@@ -1,5 +1,4 @@
 using System;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -104,7 +103,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// WareHouse Lender Wire Amount(From Warehouse Lender to Lender/Closing Agent) [4660]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? WireAmount { get => _wireAmount; set => SetField(ref _wireAmount, value); }
 
         /// <summary>

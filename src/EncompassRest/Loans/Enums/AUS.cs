@@ -43,6 +43,12 @@ namespace EncompassRest.Loans.Enums
         /// 1111. Exempt
         /// </summary>
         [Description("1111. Exempt")]
-        Exempt = 6
+        Exempt = 6,
+        /// <summary>
+        /// 7. Internal Proprietary System
+        /// </summary>
+        [Description("7. Internal Proprietary System")]
+        [EnumMember(Value = "Internal Proprietary System")]
+        InternalProprietarySystem = 7
     }
 }

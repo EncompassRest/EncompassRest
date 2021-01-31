@@ -1,6 +1,5 @@
 using System;
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -47,7 +46,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Good Faith Change of Circumstance - Alert - Disclosed Amount [XCOCNN13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ChangedCircumstanceAlertDisclosedAmount { get => _changedCircumstanceAlertDisclosedAmount; set => SetField(ref _changedCircumstanceAlertDisclosedAmount, value); }
 
         /// <summary>
@@ -59,19 +58,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Good Faith Change of Circumstance - Alert - Initial Amount [XCOCNN11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ChangedCircumstanceAlertInitialAmount { get => _changedCircumstanceAlertInitialAmount; set => SetField(ref _changedCircumstanceAlertInitialAmount, value); }
 
         /// <summary>
         /// Good Faith Change of Circumstance - Alert - Itemization Amount [XCOCNN14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ChangedCircumstanceAlertItemizationAmount { get => _changedCircumstanceAlertItemizationAmount; set => SetField(ref _changedCircumstanceAlertItemizationAmount, value); }
 
         /// <summary>
         /// Good Faith Change of Circumstance - Alert - Variance Amount [XCOCNN15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ChangedCircumstanceAlertVarianceAmount { get => _changedCircumstanceAlertVarianceAmount; set => SetField(ref _changedCircumstanceAlertVarianceAmount, value); }
 
         /// <summary>

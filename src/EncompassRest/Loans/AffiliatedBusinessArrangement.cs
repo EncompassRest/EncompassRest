@@ -118,7 +118,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Affiliated Business Arrangements - Percentage of Ownership Interest [ABNN28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PercentOwnershipInterest { get => _percentOwnershipInterest; set => SetField(ref _percentOwnershipInterest, value); }
 
         /// <summary>

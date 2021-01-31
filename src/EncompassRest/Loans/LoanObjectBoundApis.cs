@@ -20,14 +20,10 @@
     /// </summary>
     public sealed class LoanObjectBoundApis : LoanApis, ILoanObjectBoundApis
     {
-        /// <summary>
-        /// The associated loan object.
-        /// </summary>
+        /// <inheritdoc/>
         public Loan Loan { get; }
 
-        /// <summary>
-        /// Indicates if Api calls should reflect in the associated loan object.
-        /// </summary>
+        /// <inheritdoc/>
         public bool ReflectToLoanObject { get; set; }
 
         internal LoanObjectBoundApis(EncompassRestClient client, Loan loan)

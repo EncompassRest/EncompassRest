@@ -1,5 +1,3 @@
-using EncompassRest.Schema;
-
 namespace EncompassRest.Loans
 {
     /// <summary>
@@ -36,43 +34,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CD Appraisal Fee [DISCNN20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CdAppraisalFee { get => _cdAppraisalFee; set => SetField(ref _cdAppraisalFee, value); }
 
         /// <summary>
         /// CD Credit Report Fee [DISCNN17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CdCreditReportFee { get => _cdCreditReportFee; set => SetField(ref _cdCreditReportFee, value); }
 
         /// <summary>
         /// CD Loan Discount Fee [DISCNN14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CdLoanDiscountFee { get => _cdLoanDiscountFee; set => SetField(ref _cdLoanDiscountFee, value); }
 
         /// <summary>
         /// CD Non Shoppable Services [DISCNN05]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CdNonShoppableServices { get => _cdNonShoppableServices; set => SetField(ref _cdNonShoppableServices, value); }
 
         /// <summary>
         /// CD Origination Charges [DISCNN02]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CdOriginationCharges { get => _cdOriginationCharges; set => SetField(ref _cdOriginationCharges, value); }
 
         /// <summary>
         /// CD Shoppable Services [DISCNN08]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CdShoppableServices { get => _cdShoppableServices; set => SetField(ref _cdShoppableServices, value); }
 
         /// <summary>
         /// CD Taxes and Goveernment Fees [DISCNN11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CdTaxesGovtFees { get => _cdTaxesGovtFees; set => SetField(ref _cdTaxesGovtFees, value); }
 
         /// <summary>
@@ -93,85 +84,71 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LE Appraisal Fee [DISCNN19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LeAppraisalFee { get => _leAppraisalFee; set => SetField(ref _leAppraisalFee, value); }
 
         /// <summary>
         /// LE Credit Report Fee [DISCNN16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LeCreditReportFee { get => _leCreditReportFee; set => SetField(ref _leCreditReportFee, value); }
 
         /// <summary>
         /// LE Loan Discount Fee [DISCNN13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LeLoanDiscountFee { get => _leLoanDiscountFee; set => SetField(ref _leLoanDiscountFee, value); }
 
         /// <summary>
         /// LE Non Shoppable Services [DISCNN04]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LeNonShoppableServices { get => _leNonShoppableServices; set => SetField(ref _leNonShoppableServices, value); }
 
         /// <summary>
         /// LE Origination Charges [DISCNN01]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LeOriginationCharges { get => _leOriginationCharges; set => SetField(ref _leOriginationCharges, value); }
 
         /// <summary>
         /// LE Shoppable Services [DISCNN07]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LeShoppableServices { get => _leShoppableServices; set => SetField(ref _leShoppableServices, value); }
 
         /// <summary>
         /// LE Taxes and Goveernment Fees [DISCNN10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LeTaxesGovtFees { get => _leTaxesGovtFees; set => SetField(ref _leTaxesGovtFees, value); }
 
         /// <summary>
         /// PC Appraisal Fee [DISCNN21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PcAppraisalFee { get => _pcAppraisalFee; set => SetField(ref _pcAppraisalFee, value); }
 
         /// <summary>
         /// PC Credit Report Fee [DISCNN18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PcCreditReportFee { get => _pcCreditReportFee; set => SetField(ref _pcCreditReportFee, value); }
 
         /// <summary>
         /// PC Loan Discount Fee [DISCNN15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PcLoanDiscountFee { get => _pcLoanDiscountFee; set => SetField(ref _pcLoanDiscountFee, value); }
 
         /// <summary>
         /// PC Non Shoppable Services [DISCNN06]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PcNonShoppableServices { get => _pcNonShoppableServices; set => SetField(ref _pcNonShoppableServices, value); }
 
         /// <summary>
         /// PC Origination Charges [DISCNN03]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PcOriginationCharges { get => _pcOriginationCharges; set => SetField(ref _pcOriginationCharges, value); }
 
         /// <summary>
         /// PC Shoppable Services [DISCNN09]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PcShoppableServices { get => _pcShoppableServices; set => SetField(ref _pcShoppableServices, value); }
 
         /// <summary>
         /// PC Taxes and Goveernment Fees [DISCNN12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PcTaxesGovtFees { get => _pcTaxesGovtFees; set => SetField(ref _pcTaxesGovtFees, value); }
     }
 }

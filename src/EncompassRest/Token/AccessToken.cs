@@ -55,14 +55,10 @@ namespace EncompassRest.Token
         private readonly string _apiClientId;
         private readonly string _apiClientSecret;
 
-        /// <summary>
-        /// The access token.
-        /// </summary>
+        /// <inheritdoc/>
         public string Token { get; internal set; }
 
-        /// <summary>
-        /// The access token type.
-        /// </summary>
+        /// <inheritdoc/>
         public string Type => "Bearer";
 
         internal HttpClient TokenClient
@@ -91,26 +87,13 @@ namespace EncompassRest.Token
             Token = string.Empty;
         }
 
-        /// <summary>
-        /// Checks the status of the access token and retrieves the associated metadata.
-        /// </summary>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<TokenIntrospectionResponse?> IntrospectAsync(CancellationToken cancellationToken = default) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse?>() : Task.FromResult<TokenIntrospectionResponse?>(null), false);
 
-        /// <summary>
-        /// Checks the status of the access token and retrieves the associated metadata as raw json.
-        /// </summary>
-        /// <param name="queryString">The query string to include in the request.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string?> IntrospectRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => PostAsync("introspection", queryString, CreateAccessTokenContent(), nameof(IntrospectRawAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string?>(null), false);
 
-        /// <summary>
-        /// Revokes the access token.
-        /// </summary>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<bool> RevokeAsync(CancellationToken cancellationToken = default) => PostAsync("revocation", null, CreateAccessTokenContent(), nameof(RevokeAsync), Token, cancellationToken, IsSuccessStatusCodeFunc, false);
 
         /// <summary>

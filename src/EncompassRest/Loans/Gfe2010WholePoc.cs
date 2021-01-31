@@ -1,5 +1,4 @@
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -33,7 +32,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010WholePoc WholePoc
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? WholePoc { get => _wholePoc; set => SetField(ref _wholePoc, value); }
 
         /// <summary>

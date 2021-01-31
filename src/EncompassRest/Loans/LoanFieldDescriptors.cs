@@ -625,21 +625,13 @@ namespace EncompassRest.Loans
             return descriptor!;
         }
 
-        /// <summary>
-        /// Retrieves the field descriptor for the specified field id.
-        /// </summary>
-        /// <param name="fieldId">The field id of the field descriptor to get.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public FieldDescriptor this[string fieldId] => GetFieldDescriptor(fieldId, CustomFields, Client.UndefinedCustomFieldHandling);
 
-        /// <summary>
-        /// The custom fields cache. To retrieve the Standard and Virtual fields use the static properties <see cref="StandardFields"/> and <see cref="VirtualFields"/> respectively.
-        /// </summary>
+        /// <inheritdoc/>
         public ReadOnlyDictionary<string, FieldDescriptor> CustomFields => Client.CommonCache.CustomFields;
 
-        /// <summary>
-        /// The utc date and time custom fields were last refreshed.
-        /// </summary>
+        /// <inheritdoc/>
         public DateTime? CustomFieldsLastRefreshedUtc => Client.CommonCache.CustomFieldsLastRefreshedUtc;
 
         internal LoanFieldDescriptors(EncompassRestClient client)
@@ -647,11 +639,7 @@ namespace EncompassRest.Loans
         {
         }
 
-        /// <summary>
-        /// Refreshes the custom fields cache.
-        /// </summary>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task RefreshCustomFieldsAsync(CancellationToken cancellationToken = default) => Client.CommonCache.RefreshCustomFieldsAsync(Client, cancellationToken);
 
         internal abstract class FieldInfo

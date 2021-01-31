@@ -154,7 +154,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram AnnualFeeNeeded [LPNN115]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? AnnualFeeNeeded { get => _annualFeeNeeded; set => SetField(ref _annualFeeNeeded, value); }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram ConstructionInterestReserveAmount [LPNN55]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ConstructionInterestReserveAmount { get => _constructionInterestReserveAmount; set => SetField(ref _constructionInterestReserveAmount, value); }
 
         /// <summary>
@@ -346,7 +346,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram FhaUpfrontMiPremiumPercent [LPNN101]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? FhaUpfrontMiPremiumPercent { get => _fhaUpfrontMiPremiumPercent; set => SetField(ref _fhaUpfrontMiPremiumPercent, value); }
 
         /// <summary>
@@ -364,13 +364,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram FundingFeePaidInCash [LPNN104]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? FundingFeePaidInCash { get => _fundingFeePaidInCash; set => SetField(ref _fundingFeePaidInCash, value); }
 
         /// <summary>
         /// LoanProgram GpmExtraPaymentForEarlyPayOff [LPNN43]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? GpmExtraPaymentForEarlyPayOff { get => _gpmExtraPaymentForEarlyPayOff; set => SetField(ref _gpmExtraPaymentForEarlyPayOff, value); }
 
         /// <summary>
@@ -417,7 +417,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram InitialAdvanceAmount [LPNN114]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? InitialAdvanceAmount { get => _initialAdvanceAmount; set => SetField(ref _initialAdvanceAmount, value); }
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram MaxLoanAmount [LPNN45]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MaxLoanAmount { get => _maxLoanAmount; set => SetField(ref _maxLoanAmount, value); }
 
         /// <summary>
@@ -555,7 +555,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram MinimumAdvanceAmount [LPNN119]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MinimumAdvanceAmount { get => _minimumAdvanceAmount; set => SetField(ref _minimumAdvanceAmount, value); }
 
         /// <summary>
@@ -567,7 +567,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram MinimumPaymentAmount [LPNN122]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MinimumPaymentAmount { get => _minimumPaymentAmount; set => SetField(ref _minimumPaymentAmount, value); }
 
         /// <summary>
@@ -579,7 +579,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram MipPaidInCash [LPNN103]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MipPaidInCash { get => _mipPaidInCash; set => SetField(ref _mipPaidInCash, value); }
 
         /// <summary>
@@ -609,13 +609,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram MortgageInsuranceMonthlyPayment1 [LPNN59]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MortgageInsuranceMonthlyPayment1 { get => _mortgageInsuranceMonthlyPayment1; set => SetField(ref _mortgageInsuranceMonthlyPayment1, value); }
 
         /// <summary>
         /// LoanProgram MortgageInsuranceMonthlyPayment2 [LPNN62]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MortgageInsuranceMonthlyPayment2 { get => _mortgageInsuranceMonthlyPayment2; set => SetField(ref _mortgageInsuranceMonthlyPayment2, value); }
 
         /// <summary>
@@ -669,13 +669,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram PaymentFactor [LPNN52]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PaymentFactor { get => _paymentFactor; set => SetField(ref _paymentFactor, value); }
 
         /// <summary>
         /// LoanProgram PercentageOfRental [LPNN84]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PercentageOfRental { get => _percentageOfRental; set => SetField(ref _percentageOfRental, value); }
 
         /// <summary>
@@ -807,7 +807,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram SubjectPropertyGrossRentalIncome [LPNN83]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SubjectPropertyGrossRentalIncome { get => _subjectPropertyGrossRentalIncome; set => SetField(ref _subjectPropertyGrossRentalIncome, value); }
 
         /// <summary>
@@ -819,7 +819,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram TerminationFeeAmount [LPNN126]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TerminationFeeAmount { get => _terminationFeeAmount; set => SetField(ref _terminationFeeAmount, value); }
 
         /// <summary>
@@ -831,13 +831,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram ThirdPartyFeeFrom [LPNN117]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ThirdPartyFeeFrom { get => _thirdPartyFeeFrom; set => SetField(ref _thirdPartyFeeFrom, value); }
 
         /// <summary>
         /// LoanProgram ThirdPartyFeeTo [LPNN118]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ThirdPartyFeeTo { get => _thirdPartyFeeTo; set => SetField(ref _thirdPartyFeeTo, value); }
 
         /// <summary>
@@ -867,7 +867,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanProgram YearlyTerm [LPNN95]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? YearlyTerm { get => _yearlyTerm; set => SetField(ref _yearlyTerm, value); }
     }
 }

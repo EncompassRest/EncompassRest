@@ -1,5 +1,4 @@
 using System;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -15,11 +14,14 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _cannotIncrease10LEBaselineGuid;
         private DirtyValue<string?>? _cannotIncreaseCDBaselineGuid;
         private DirtyValue<string?>? _cannotIncreaseLEBaselineGuid;
+        private DirtyValue<string?>? _cdInitialDtGuid;
         private DirtyValue<string?>? _cDInitialGuid;
         private DirtyValue<string?>? _cDInitialReceivedDateGuid;
         private DirtyValue<string?>? _cDLatestGuid;
         private DirtyValue<string?>? _cDPostConGuid;
+        private DirtyValue<string?>? _cdPostConsummationDtGuid;
         private DirtyValue<string?>? _cDRecentAppliedCure;
+        private DirtyValue<string?>? _cdRevisedDtGuid;
         private DirtyValue<string?>? _cDRevisedReceivedDateGuid;
         private DirtyValue<DateTime?>? _chargesCannotIncrease10CD1;
         private DirtyValue<DateTime?>? _chargesCannotIncrease10InitialLE1;
@@ -55,7 +57,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tolerance Cure Applied Cure Amount [FV.X366]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AppliedCureAmount { get => _appliedCureAmount; set => SetField(ref _appliedCureAmount, value); }
 
         /// <summary>
@@ -95,6 +96,12 @@ namespace EncompassRest.Loans
         public string? CannotIncreaseLEBaselineGuid { get => _cannotIncreaseLEBaselineGuid; set => SetField(ref _cannotIncreaseLEBaselineGuid, value); }
 
         /// <summary>
+        /// CD Initial Disclosure Tracking Guid [FV.X398]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? CdInitialDtGuid { get => _cdInitialDtGuid; set => SetField(ref _cdInitialDtGuid, value); }
+
+        /// <summary>
         /// CD Initial Guid [FV.X358]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
@@ -119,10 +126,22 @@ namespace EncompassRest.Loans
         public string? CDPostConGuid { get => _cDPostConGuid; set => SetField(ref _cDPostConGuid, value); }
 
         /// <summary>
+        /// Post Consummation Disclosure Tracking Guid [FV.X400]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? CdPostConsummationDtGuid { get => _cdPostConsummationDtGuid; set => SetField(ref _cdPostConsummationDtGuid, value); }
+
+        /// <summary>
         /// CD Recent Applied Cure Reason [FV.X386]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? CDRecentAppliedCure { get => _cDRecentAppliedCure; set => SetField(ref _cDRecentAppliedCure, value); }
+
+        /// <summary>
+        /// CD Revised Disclosure Tracking Guid [FV.X399]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? CdRevisedDtGuid { get => _cdRevisedDtGuid; set => SetField(ref _cdRevisedDtGuid, value); }
 
         /// <summary>
         /// CD Revised Received Date Disclosure Tracking Guid [FV.X395]
@@ -193,13 +212,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Cure Applied to Lender Credit [FV.X396]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CureAppliedToLenderCredit { get => _cureAppliedToLenderCredit; set => SetField(ref _cureAppliedToLenderCredit, value); }
 
         /// <summary>
         /// Cure Applied to Principal Reduction (POC) [FV.X397]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CureAppliedToPrincipalReduction { get => _cureAppliedToPrincipalReduction; set => SetField(ref _cureAppliedToPrincipalReduction, value); }
 
         /// <summary>
@@ -281,7 +298,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tolerance Cure Required Cure Amount [FV.X348]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RequiredCureAmount { get => _requiredCureAmount; set => SetField(ref _requiredCureAmount, value); }
 
         /// <summary>

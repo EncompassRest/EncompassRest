@@ -364,7 +364,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Aggregate Loan Curtailment Amount [ULDD.X3]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AggregateLoanCurtailmentAmount { get => _aggregateLoanCurtailmentAmount; set => SetField(ref _aggregateLoanCurtailmentAmount, value); }
 
         /// <summary>
@@ -436,7 +435,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Ginnie Certificate Principal Balance Amount [ULDD.GNM.CertPrinBalAmt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CertificatePrincipalBalanceAmount { get => _certificatePrincipalBalanceAmount; set => SetField(ref _certificatePrincipalBalanceAmount, value); }
 
         /// <summary>
@@ -447,7 +445,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Mac - Closing Cost Contribution Amount [ULDD.FRE.CLOSINGCOST2CONTRIBUTIONAMOUNT]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ClosingCost2ContributionAmount { get => _closingCost2ContributionAmount; set => SetField(ref _closingCost2ContributionAmount, value); }
 
         /// <summary>
@@ -474,7 +471,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Mac - Closing Cost Contribution Amount [ULDD.FRE.CLOSINGCOST3CONTRIBUTIONAMOUNT]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ClosingCost3ContributionAmount { get => _closingCost3ContributionAmount; set => SetField(ref _closingCost3ContributionAmount, value); }
 
         /// <summary>
@@ -501,7 +497,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Mac - Closing Cost Contribution Amount [ULDD.FRE.CLOSINGCOST4CONTRIBUTIONAMOUNT]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ClosingCost4ContributionAmount { get => _closingCost4ContributionAmount; set => SetField(ref _closingCost4ContributionAmount, value); }
 
         /// <summary>
@@ -528,7 +523,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Mac - Closing Cost Contribution Amount [ULDD.X105]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ClosingCostContributionAmount { get => _closingCostContributionAmount; set => SetField(ref _closingCostContributionAmount, value); }
 
         /// <summary>
@@ -625,7 +619,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Current Accrued Interest [ULDD.X15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CurrentAccruedInterestAmount { get => _currentAccruedInterestAmount; set => SetField(ref _currentAccruedInterestAmount, value); }
 
         /// <summary>
@@ -752,7 +745,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Fannie - Lender Paid Mortgage Insurance Interest Rate Adjustment [ULDD.FNM.X50]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FannieLenderPaidMIInterestRateAdjustmentPercent { get => _fannieLenderPaidMIInterestRateAdjustmentPercent; set => SetField(ref _fannieLenderPaidMIInterestRateAdjustmentPercent, value); }
 
         /// <summary>
@@ -793,7 +785,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Trans Details Rate Spread [ULDD.FNM.HMDA.X15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FannieRateSpread { get => _fannieRateSpread; set => SetField(ref _fannieRateSpread, value); }
 
         /// <summary>
@@ -915,7 +906,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Down Payment 3 Amount [ULDD.FRE.DownPmt3Amt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FreddieDownPmt3Amt { get => _freddieDownPmt3Amt; set => SetField(ref _freddieDownPmt3Amt, value); }
 
         /// <summary>
@@ -941,7 +931,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Down Payment 4 Amount [ULDD.FRE.DownPmt4Amt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FreddieDownPmt4Amt { get => _freddieDownPmt4Amt; set => SetField(ref _freddieDownPmt4Amt, value); }
 
         /// <summary>
@@ -1072,7 +1061,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Ginnie Government Annual Premium Amount [ULDD.GNM.GovAnnlPrmAmt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GinnieGovernmentAnnualPremiumAmount { get => _ginnieGovernmentAnnualPremiumAmount; set => SetField(ref _ginnieGovernmentAnnualPremiumAmount, value); }
 
         /// <summary>
@@ -1100,7 +1088,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Government Upfront Premium Amount [ULDD.GNM.GovUpFrontPrmAmt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GovernmentUpfrontPremiumAmount { get => _governmentUpfrontPremiumAmount; set => SetField(ref _governmentUpfrontPremiumAmount, value); }
 
         /// <summary>
@@ -1257,7 +1244,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Loan Acquisition UPB [ULDD.X42]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LoanAcquisitionScheduledUPBAmount { get => _loanAcquisitionScheduledUPBAmount; set => SetField(ref _loanAcquisitionScheduledUPBAmount, value); }
 
         /// <summary>
@@ -1353,7 +1339,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Monetary Event Gross Principal Amount [ULDD.GNM.MntryEvntGrssPrncpalAmnt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonetaryEventGrossPrincipalAmount { get => _monetaryEventGrossPrincipalAmount; set => SetField(ref _monetaryEventGrossPrincipalAmount, value); }
 
         /// <summary>
@@ -1409,7 +1394,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Freddie Mac - Other Funds Collected at Closing [ULDD.X110]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherFundsCollectedAtClosingAmount { get => _otherFundsCollectedAtClosingAmount; set => SetField(ref _otherFundsCollectedAtClosingAmount, value); }
 
         /// <summary>
@@ -1498,7 +1482,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Ginnie Pool Current Princial Balance Amount [ULDD.GNM.PoolCurPrinBalAmt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PoolCurrentPrincipalBalanceAmount { get => _poolCurrentPrincipalBalanceAmount; set => SetField(ref _poolCurrentPrincipalBalanceAmount, value); }
 
         /// <summary>
@@ -1685,7 +1668,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Refinance Cash Out Amount [ULDD.RefinanceCashOutAmount]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RefinanceCashOutAmount { get => _refinanceCashOutAmount; set => SetField(ref _refinanceCashOutAmount, value); }
 
         /// <summary>
@@ -1741,7 +1723,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Related Loan Unpaid Principal Balance Amount [ULDD.X118]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RelatedLoanUnpaidPrincipalBalanceAmount { get => _relatedLoanUnpaidPrincipalBalanceAmount; set => SetField(ref _relatedLoanUnpaidPrincipalBalanceAmount, value); }
 
         /// <summary>
@@ -1762,7 +1743,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD Ginnie Security Original Subscription Amount [ULDD.GNM.SecurityOrigSubscrAmt]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SecurityOriginalSubscriptionAmount { get => _securityOriginalSubscriptionAmount; set => SetField(ref _securityOriginalSubscriptionAmount, value); }
 
         /// <summary>
@@ -1840,7 +1820,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - First Unit Subject Property Gross Rent [ULDD.X171]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Unit1SubjectPropertyGrossRentalIncome { get => _unit1SubjectPropertyGrossRentalIncome; set => SetField(ref _unit1SubjectPropertyGrossRentalIncome, value); }
 
         /// <summary>
@@ -1851,7 +1830,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Second Unit Subject Property Gross Rent [ULDD.X161]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Unit2SubjectPropertyGrossRentalIncome { get => _unit2SubjectPropertyGrossRentalIncome; set => SetField(ref _unit2SubjectPropertyGrossRentalIncome, value); }
 
         /// <summary>
@@ -1862,7 +1840,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Third Unit Subject Property Gross Rent [ULDD.X163]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Unit3SubjectPropertyGrossRentalIncome { get => _unit3SubjectPropertyGrossRentalIncome; set => SetField(ref _unit3SubjectPropertyGrossRentalIncome, value); }
 
         /// <summary>
@@ -1873,7 +1850,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Fourth Unit Subject Property Gross Rent [ULDD.X165]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Unit4SubjectPropertyGrossRentalIncome { get => _unit4SubjectPropertyGrossRentalIncome; set => SetField(ref _unit4SubjectPropertyGrossRentalIncome, value); }
 
         /// <summary>
@@ -1884,7 +1860,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ULDD - Unpaid Principal Balance Amount [ULDD.X1]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UPBAmount { get => _uPBAmount; set => SetField(ref _uPBAmount, value); }
 
         /// <summary>

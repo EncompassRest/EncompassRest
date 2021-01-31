@@ -25,23 +25,22 @@ namespace EncompassRest.Loans
         public EntityReference? Contact { get => _contact; set => SetField(ref _contact, value); }
 
         /// <summary>
-        /// CreditReport CreditReportCompany
+        /// CreditReport CreditReportCompany [BCREDNN03], [CCREDNN03]
         /// </summary>
         public string? CreditReportCompany { get => _creditReportCompany; set => SetField(ref _creditReportCompany, value); }
 
         /// <summary>
-        /// CreditReport CreditReportDate
+        /// CreditReport CreditReportDate [BCREDNN04], [CCREDNN04]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CreditReportDate { get => _creditReportDate; set => SetField(ref _creditReportDate, value); }
 
         /// <summary>
-        /// CreditReport CreditReportId
+        /// CreditReport CreditReportId [BCREDNN05], [CCREDNN05]
         /// </summary>
         public string? CreditReportId { get => _creditReportId; set => SetField(ref _creditReportId, value); }
 
         /// <summary>
-        /// CreditReport DateOfBirth
+        /// CreditReport DateOfBirth [BCREDNN02], [CCREDNN02]
         /// </summary>
         public DateTime? DateOfBirth { get => _dateOfBirth; set => SetField(ref _dateOfBirth, value); }
 
@@ -56,12 +55,12 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// CreditReport NonTraditionalCredit
+        /// CreditReport NonTraditionalCredit [BCREDNN06], [CCREDNN06]
         /// </summary>
         public bool? NonTraditionalCredit { get => _nonTraditionalCredit; set => SetField(ref _nonTraditionalCredit, value); }
 
         /// <summary>
-        /// CreditReport VerifySsn
+        /// CreditReport VerifySsn [BCREDNN01], [CCREDNN01]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.SSN)]
         public string? VerifySsn { get => _verifySsn; set => SetField(ref _verifySsn, value); }

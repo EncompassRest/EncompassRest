@@ -1,5 +1,4 @@
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -35,13 +34,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UsdaHouseholdIncome AnnualNonWageIncome
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualNonWageIncome { get => _annualNonWageIncome; set => SetField(ref _annualNonWageIncome, value); }
 
         /// <summary>
         /// UsdaHouseholdIncome AnnualWageIncome
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualWageIncome { get => _annualWageIncome; set => SetField(ref _annualWageIncome, value); }
 
         /// <summary>

@@ -43,13 +43,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo AmountLastPay
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountLastPay { get => _amountLastPay; set => SetField(ref _amountLastPay, value); }
 
         /// <summary>
         /// Hud1EsPayTo AmountNextDue
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountNextDue { get => _amountNextDue; set => SetField(ref _amountNextDue, value); }
 
         /// <summary>
@@ -65,7 +63,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo CoverageAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CoverageAmount { get => _coverageAmount; set => SetField(ref _coverageAmount, value); }
 
         /// <summary>
@@ -107,7 +104,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo MaxDeductibleAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaxDeductibleAmount { get => _maxDeductibleAmount; set => SetField(ref _maxDeductibleAmount, value); }
 
         /// <summary>
@@ -151,7 +147,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo Premium
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Premium { get => _premium; set => SetField(ref _premium, value); }
 
         /// <summary>

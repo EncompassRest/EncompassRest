@@ -116,4 +116,6 @@ Use the various properties on `EncompassRestClient` such as `Loans`, `Schema`, `
 ## Resources
 * [Developer Connect](https://docs.developer.elliemae.com/reference) - Encompass API's reference location.
 
+* If you'd like to join our Slack channel please reach out to one of the repo's maintainers.
+
 If you're interested in contributing please look over the [Guidelines Doc](Guidelines.md).

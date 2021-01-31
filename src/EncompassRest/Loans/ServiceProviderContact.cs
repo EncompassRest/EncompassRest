@@ -68,7 +68,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Settlement Service Provider Cost [SPNN11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Cost { get => _cost; set => SetField(ref _cost, value); }
 
         /// <summary>
@@ -90,61 +89,51 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Settlement Service Provider Fee Amount 1 [SPNN18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmt1 { get => _feeAmt1; set => SetField(ref _feeAmt1, value); }
 
         /// <summary>
         /// Settlement Service Provider Fee Amount 10 [SPNN36]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmt10 { get => _feeAmt10; set => SetField(ref _feeAmt10, value); }
 
         /// <summary>
         /// Settlement Service Provider Fee Amount 2 [SPNN20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmt2 { get => _feeAmt2; set => SetField(ref _feeAmt2, value); }
 
         /// <summary>
         /// Settlement Service Provider Fee Amount 3 [SPNN22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmt3 { get => _feeAmt3; set => SetField(ref _feeAmt3, value); }
 
         /// <summary>
         /// Settlement Service Provider Fee Amount 4 [SPNN24]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmt4 { get => _feeAmt4; set => SetField(ref _feeAmt4, value); }
 
         /// <summary>
         /// Settlement Service Provider Fee Amount 5 [SPNN26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmt5 { get => _feeAmt5; set => SetField(ref _feeAmt5, value); }
 
         /// <summary>
         /// Settlement Service Provider Fee Amount 6 [SPNN28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmt6 { get => _feeAmt6; set => SetField(ref _feeAmt6, value); }
 
         /// <summary>
         /// Settlement Service Provider Fee Amount 7 [SPNN30]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmt7 { get => _feeAmt7; set => SetField(ref _feeAmt7, value); }
 
         /// <summary>
         /// Settlement Service Provider Fee Amount 8 [SPNN32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmt8 { get => _feeAmt8; set => SetField(ref _feeAmt8, value); }
 
         /// <summary>
         /// Settlement Service Provider Fee Amount 9 [SPNN34]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeeAmt9 { get => _feeAmt9; set => SetField(ref _feeAmt9, value); }
 
         /// <summary>

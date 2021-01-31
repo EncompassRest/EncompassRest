@@ -17,7 +17,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Early Check Appraisal Value [ECNN02]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EcAppraisalValue { get => _ecAppraisalValue; set => SetField(ref _ecAppraisalValue, value); }
 
         /// <summary>

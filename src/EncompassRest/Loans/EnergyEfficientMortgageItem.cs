@@ -1,5 +1,3 @@
-using EncompassRest.Schema;
-
 namespace EncompassRest.Loans
 {
     /// <summary>
@@ -18,13 +16,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EnergyEfficientMortgageItem ActualAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ActualAmount { get => _actualAmount; set => SetField(ref _actualAmount, value); }
 
         /// <summary>
         /// EnergyEfficientMortgageItem AllowedAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AllowedAmount { get => _allowedAmount; set => SetField(ref _allowedAmount, value); }
 
         /// <summary>

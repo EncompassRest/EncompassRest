@@ -162,6 +162,8 @@ namespace EncompassRest.Loans
                         return LoanFieldFormat.INTEGER;
                     case LoanFieldValueType.String:
                         return LoanFieldFormat.STRING;
+                    case LoanFieldValueType.Decimal:
+                        return LoanFieldFormat.DECIMAL_2;
                     default:
                         return null;
                 }

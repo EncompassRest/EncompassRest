@@ -126,7 +126,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Monthly Amount [URLAROISNN22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyAmount { get => _monthlyAmount; set => SetField(ref _monthlyAmount, value); }
 
         /// <summary>

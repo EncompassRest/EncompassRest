@@ -290,6 +290,136 @@
     "Description": "Vesting Party - Vesting Type #{0}"
   },
   {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].AddlCoverageAmount",
+    "FieldId": "CORROI{0:00}16",
+    "Description": "Correspondent - Other Insurance - Additional Coverage Amount #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].City",
+    "FieldId": "CORROI{0:00}04",
+    "Description": "Correspondent - Other Insurance - Company City #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].Comments",
+    "FieldId": "CORROI{0:00}26",
+    "Description": "Correspondent - Other Insurance - Comments #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].CompanyName",
+    "FieldId": "CORROI{0:00}02",
+    "Description": "Correspondent - Other Insurance - Company Name #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].ContactName",
+    "FieldId": "CORROI{0:00}07",
+    "Description": "Correspondent - Other Insurance - Company Contact Name #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].CoverageAmount",
+    "FieldId": "CORROI{0:00}25",
+    "Description": "Correspondent - Other Insurance - Coverage Amount #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].EffectiveDate",
+    "FieldId": "CORROI{0:00}23",
+    "Description": "Correspondent - Other Insurance - Insurance Effective Date #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].EscrowedFlag",
+    "FieldId": "CORROI{0:00}15",
+    "Description": "Correspondent - Other Insurance - Insurance Escrowed? #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].ExpirationDate",
+    "FieldId": "CORROI{0:00}24",
+    "Description": "Correspondent - Other Insurance - Insurance Expiration Date #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].Fax",
+    "FieldId": "CORROI{0:00}09",
+    "Description": "Correspondent - Other Insurance - Company Fax Number #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].GuaranteedReplacementCostFlag",
+    "FieldId": "CORROI{0:00}18",
+    "Description": "Correspondent - Other Insurance - Guaranteed Replacement Cost? #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].IncludedInMasterPolicyFlag",
+    "FieldId": "CORROI{0:00}01",
+    "Description": "Correspondent - Other Insurance - Included in Master Policy? #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].InsuranceEstimatorFlag",
+    "FieldId": "CORROI{0:00}19",
+    "Description": "Correspondent - Other Insurance - Insurance Estimator? #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].MaxDeductibleAmount",
+    "FieldId": "CORROI{0:00}21",
+    "Description": "Correspondent - Other Insurance - Maximum Deductible Amount #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].MaxDeductiblePerc",
+    "FieldId": "CORROI{0:00}20",
+    "Description": "Correspondent - Other Insurance - Maximum Deductible Percentage #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].Phone",
+    "FieldId": "CORROI{0:00}08",
+    "Description": "Correspondent - Other Insurance - Company Phone Number #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PolicyNumber",
+    "FieldId": "CORROI{0:00}22",
+    "Description": "Correspondent - Other Insurance - Policy # #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PolicyType",
+    "FieldId": "CORROI{0:00}10",
+    "Description": "Correspondent - Other Insurance - Policy Type #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PolicyTypeOtherDesc",
+    "FieldId": "CORROI{0:00}11",
+    "Description": "Correspondent - Other Insurance - Policy Type Other Description #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PremiumAmount",
+    "FieldId": "CORROI{0:00}12",
+    "Description": "Correspondent - Other Insurance - Premium Amount #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PremiumDueDate",
+    "FieldId": "CORROI{0:00}13",
+    "Description": "Correspondent - Other Insurance - Premium Due Date #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].PropertyValueUsed",
+    "FieldId": "CORROI{0:00}17",
+    "Description": "Correspondent - Other Insurance - Property Value Used for Insurance #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].ReplacementValue",
+    "FieldId": "CORROI{0:00}14",
+    "Description": "Correspondent - Other Insurance - Replacement Value #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].State",
+    "FieldId": "CORROI{0:00}05",
+    "Description": "Correspondent - Other Insurance - Company State #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].StreetAddress",
+    "FieldId": "CORROI{0:00}03",
+    "Description": "Correspondent - Other Insurance - Company Street Address #{0}"
+  },
+  {
+    "ModelPath": "Loan.Correspondent.CorrOtherInsurances[{0}].ZipCode",
+    "FieldId": "CORROI{0:00}06",
+    "Description": "Correspondent - Other Insurance - Company Zip Code #{0}"
+  },
+  {
     "ModelPath": "Loan.Correspondent.Disclosures[{0}].CdAppraisalFee",
     "FieldId": "DISC{0:00}20",
     "Description": "CD Appraisal Fee #{0}"
@@ -797,7 +927,7 @@
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].OrderType",
     "FieldId": "VAL{0:00}69",
-    "Description": "Correspondent Order Type"
+    "Description": "Correspondent Order Type #{0}"
   },
   {
     "ModelPath": "Loan.Correspondent.Valuations[{0}].PanelNumber",
@@ -1107,7 +1237,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].Country",
     "FieldId": "DD{0:00}40",
-    "Description": "Depository Country"
+    "Description": "Depository Country #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].DepositoryRequestDate",
@@ -1117,7 +1247,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].ForeignAddressIndicator",
     "FieldId": "DD{0:00}39",
-    "Description": "Depository Foreign Address Indicator"
+    "Description": "Depository Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Assets[(VodIndex == '{0}')].HolderAddressCity",
@@ -1597,7 +1727,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].Country",
     "FieldId": "BE{0:00}79",
-    "Description": null
+    "Description": "Borr Employer Country #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].CountryCode",
@@ -1647,7 +1777,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].ForeignAddressIndicator",
     "FieldId": "BE{0:00}80",
-    "Description": null
+    "Description": "Borr Employer Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'Borrower')][{0}].ForeignIncome",
@@ -1922,7 +2052,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].Country",
     "FieldId": "CE{0:00}79",
-    "Description": null
+    "Description": "Co-Borr Employer Country #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].CountryCode",
@@ -1972,7 +2102,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].ForeignAddressIndicator",
     "FieldId": "CE{0:00}80",
-    "Description": null
+    "Description": "Co-Borr Employer Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Employment[(Owner == 'CoBorrower')][{0}].ForeignIncome",
@@ -2307,7 +2437,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].Country",
     "FieldId": "FL{0:00}68",
-    "Description": "Liability Creditor Country"
+    "Description": "Liability Creditor Country #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].CreditLimit",
@@ -2337,7 +2467,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].ForeignAddressIndicator",
     "FieldId": "FL{0:00}67",
-    "Description": "Liability Creditor Foreign Address Indicator"
+    "Description": "Liability Creditor Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Liabilities[(AccountIndicator == 'true')][{0}].HolderAddressCity",
@@ -2837,7 +2967,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].Country",
     "FieldId": "URLAROL{0:00}22",
-    "Description": "Other Liabilities Country"
+    "Description": "Other Liabilities Country #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].CreditLimit",
@@ -2852,7 +2982,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].ForeignAddressIndicator",
     "FieldId": "URLAROL{0:00}23",
-    "Description": "Depository Foreign Address Indicator"
+    "Description": "Depository Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.OtherLiabilities[{0}].HolderAddressCity",
@@ -2947,27 +3077,27 @@
   {
     "ModelPath": "Loan.CurrentApplication.ProvidedDocuments[{0}].AltId",
     "FieldId": "DOCPROV{0:00}99",
-    "Description": "Documents Provided - ID"
+    "Description": "Documents Provided - ID #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.ProvidedDocuments[{0}].BorrowerType",
     "FieldId": "DOCPROV{0:00}01",
-    "Description": "Documents Provided - Borrower Type"
+    "Description": "Documents Provided - Borrower Type #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.ProvidedDocuments[{0}].DateProvided",
     "FieldId": "DOCPROV{0:00}04",
-    "Description": "Documents Provided - Date Provided"
+    "Description": "Documents Provided - Date Provided #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.ProvidedDocuments[{0}].DocumentName",
     "FieldId": "DOCPROV{0:00}02",
-    "Description": "Documents Provided - Document Name"
+    "Description": "Documents Provided - Document Name #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.ProvidedDocuments[{0}].RequiredIndicator",
     "FieldId": "DOCPROV{0:00}03",
-    "Description": "Documents Provided - Required Indicator"
+    "Description": "Documents Provided - Required Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].AcquiredDate",
@@ -2982,7 +3112,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].Country",
     "FieldId": "FM{0:00}57",
-    "Description": "Mortgage Property Country"
+    "Description": "Mortgage Property Country #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].CountryCode",
@@ -2997,7 +3127,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].ForeignAddressIndicator",
     "FieldId": "FM{0:00}58",
-    "Description": "Mortgage Property Foreign Address Indicator"
+    "Description": "Mortgage Property Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.ReoProperties[{0}].FuturePropertyUsageType",
@@ -3222,7 +3352,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'Borrower' && MailingAddressIndicator == 'false')][{0}].Country",
     "FieldId": "BR{0:00}30",
-    "Description": null
+    "Description": "Borr Residence Country #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'Borrower' && MailingAddressIndicator == 'false')][{0}].CountryCode",
@@ -3247,7 +3377,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'Borrower' && MailingAddressIndicator == 'false')][{0}].ForeignAddressIndicator",
     "FieldId": "BR{0:00}29",
-    "Description": null
+    "Description": "Borr Residence Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'Borrower' && MailingAddressIndicator == 'false')][{0}].LandlordAttention",
@@ -3267,7 +3397,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'Borrower' && MailingAddressIndicator == 'false')][{0}].LandlordCountry",
     "FieldId": "BR{0:00}40",
-    "Description": null
+    "Description": "Borr Residence Landlord Country #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'Borrower' && MailingAddressIndicator == 'false')][{0}].LandlordEmail",
@@ -3282,7 +3412,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'Borrower' && MailingAddressIndicator == 'false')][{0}].LandlordForeignAddressIndicator",
     "FieldId": "BR{0:00}39",
-    "Description": null
+    "Description": "Borr Landlord Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'Borrower' && MailingAddressIndicator == 'false')][{0}].LandlordName",
@@ -3417,7 +3547,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'CoBorrower' && MailingAddressIndicator == 'false')][{0}].Country",
     "FieldId": "CR{0:00}30",
-    "Description": null
+    "Description": "Co-Borr Residence Country #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'CoBorrower' && MailingAddressIndicator == 'false')][{0}].CountryCode",
@@ -3442,7 +3572,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'CoBorrower' && MailingAddressIndicator == 'false')][{0}].ForeignAddressIndicator",
     "FieldId": "CR{0:00}29",
-    "Description": null
+    "Description": "Co-Borr Residence Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'CoBorrower' && MailingAddressIndicator == 'false')][{0}].LandlordAttention",
@@ -3462,7 +3592,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'CoBorrower' && MailingAddressIndicator == 'false')][{0}].LandlordCountry",
     "FieldId": "CR{0:00}40",
-    "Description": null
+    "Description": "Co-Borr Residence Landlord Country #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'CoBorrower' && MailingAddressIndicator == 'false')][{0}].LandlordEmail",
@@ -3477,7 +3607,7 @@
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'CoBorrower' && MailingAddressIndicator == 'false')][{0}].LandlordForeignAddressIndicator",
     "FieldId": "CR{0:00}39",
-    "Description": null
+    "Description": "Co-Borr Landlord Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.CurrentApplication.Residences[(ApplicantType == 'CoBorrower' && MailingAddressIndicator == 'false')][{0}].LandlordName",
@@ -5252,7 +5382,7 @@
   {
     "ModelPath": "Loan.NonBorrowingOwners[{0}].Country",
     "FieldId": "NBOC{0:00}23",
-    "Description": "Non-Borrowing Owner File Contact - Address Country"
+    "Description": "Non-Borrowing Owner File Contact - Address Country #{0}"
   },
   {
     "ModelPath": "Loan.NonBorrowingOwners[{0}].DateOfBirth",
@@ -5302,7 +5432,7 @@
   {
     "ModelPath": "Loan.NonBorrowingOwners[{0}].ForeignAddressIndicator",
     "FieldId": "NBOC{0:00}22",
-    "Description": "Non-Borrowing Owner File Contact - Foreign Address Indicator"
+    "Description": "Non-Borrowing Owner File Contact - Foreign Address Indicator #{0}"
   },
   {
     "ModelPath": "Loan.NonBorrowingOwners[{0}].HomePhoneNumber",
@@ -5452,7 +5582,7 @@
   {
     "ModelPath": "Loan.PropertyValuations[{0}].OrderType",
     "FieldId": "PVAL{0:00}16",
-    "Description": "Property Valuation Order Type"
+    "Description": "Property Valuation Order Type #{0}"
   },
   {
     "ModelPath": "Loan.PropertyValuations[{0}].PropertyValuationType",

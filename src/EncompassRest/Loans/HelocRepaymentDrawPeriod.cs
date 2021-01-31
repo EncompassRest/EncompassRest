@@ -17,7 +17,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _year;
 
         /// <summary>
-        /// HelocRepaymentDrawPeriod Apr
+        /// HelocRepaymentDrawPeriod Apr [HTDNN04], [HTRNN04]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? Apr { get => _apr; set => SetField(ref _apr, value); }
@@ -33,25 +33,25 @@ namespace EncompassRest.Loans
         public string? Id { get => _id; set => SetField(ref _id, value); }
 
         /// <summary>
-        /// HelocRepaymentDrawPeriod IndexRatePercent
+        /// HelocRepaymentDrawPeriod IndexRatePercent [HTDNN02], [HTRNN02]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? IndexRatePercent { get => _indexRatePercent; set => SetField(ref _indexRatePercent, value); }
 
         /// <summary>
-        /// HelocRepaymentDrawPeriod MarginRatePercent
+        /// HelocRepaymentDrawPeriod MarginRatePercent [HTDNN03], [HTRNN03]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
         public decimal? MarginRatePercent { get => _marginRatePercent; set => SetField(ref _marginRatePercent, value); }
 
         /// <summary>
-        /// HelocRepaymentDrawPeriod MinimumMonthlyPaymentAmount
+        /// HelocRepaymentDrawPeriod MinimumMonthlyPaymentAmount [HTDNN05], [HTRNN05]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MinimumMonthlyPaymentAmount { get => _minimumMonthlyPaymentAmount; set => SetField(ref _minimumMonthlyPaymentAmount, value); }
 
         /// <summary>
-        /// HelocRepaymentDrawPeriod Year
+        /// HelocRepaymentDrawPeriod Year [HTDNN01], [HTRNN01]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public int? Year { get => _year; set => SetField(ref _year, value); }

@@ -229,7 +229,7 @@ namespace EncompassRest.Loans
 
         bool IDictionary<string, string>.Remove(string key) => TryRemove(key, out _);
 
-        bool ICollection<KeyValuePair<string, string>>.Remove(KeyValuePair<string, string> item) => TryGetValue(item.Key, out var modelPathPattern) && string.Equals(item.Value, modelPathPattern, StringComparison.OrdinalIgnoreCase) && TryRemove(item.Value, out modelPathPattern);
+        bool ICollection<KeyValuePair<string, string>>.Remove(KeyValuePair<string, string> item) => TryGetValue(item.Key, out var modelPathPattern) && string.Equals(item.Value, modelPathPattern, StringComparison.OrdinalIgnoreCase) && TryRemove(item.Value, out _);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 

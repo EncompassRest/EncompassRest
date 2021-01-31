@@ -167,7 +167,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Beginning Balance [SERVICE.X144]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BeginningBalance { get => _beginningBalance; set => SetField(ref _beginningBalance, value); }
 
         /// <summary>
@@ -212,7 +211,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Escrow Summary City Insurance [SERVICE.X90]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? CityInsurance { get => _cityInsurance; set => SetField(ref _cityInsurance, value); }
 
         /// <summary>
@@ -224,13 +223,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Pymnt Summary Prncpl Balance [SERVICE.X57]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? CurrentPrincipalBalance { get => _currentPrincipalBalance; set => SetField(ref _currentPrincipalBalance, value); }
 
         /// <summary>
         /// Intrm Serv Escrow Summary Balance [SERVICE.X81]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? EscrowBalance { get => _escrowBalance; set => SetField(ref _escrowBalance, value); }
 
         /// <summary>
@@ -248,7 +247,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Escrow Summary Flood Insurance [SERVICE.X89]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? FloodInsurance { get => _floodInsurance; set => SetField(ref _floodInsurance, value); }
 
         /// <summary>
@@ -265,79 +264,79 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Last Pymnt Add'l Escrow [SERVICE.X86]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentAdditionalEscrow { get => _lastPaymentAdditionalEscrow; set => SetField(ref _lastPaymentAdditionalEscrow, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Add'l Pnicpl [SERVICE.X38]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentAdditionalPrincipal { get => _lastPaymentAdditionalPrincipal; set => SetField(ref _lastPaymentAdditionalPrincipal, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymt Buydown Subsidy Amt [SERVICE.X101]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentBuydownSubsidyAmount { get => _lastPaymentBuydownSubsidyAmount; set => SetField(ref _lastPaymentBuydownSubsidyAmount, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Escrow [SERVICE.X36]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentEscrowAmount { get => _lastPaymentEscrowAmount; set => SetField(ref _lastPaymentEscrowAmount, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt City Property Tax [SERVICE.X125]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentEscrowCityPropertyTax { get => _lastPaymentEscrowCityPropertyTax; set => SetField(ref _lastPaymentEscrowCityPropertyTax, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Escrow Tax [SERVICE.X124]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentEscrowFloodInsurance { get => _lastPaymentEscrowFloodInsurance; set => SetField(ref _lastPaymentEscrowFloodInsurance, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Hazard Insurance [SERVICE.X122]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentEscrowHazardInsurance { get => _lastPaymentEscrowHazardInsurance; set => SetField(ref _lastPaymentEscrowHazardInsurance, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Mortgage Insurance [SERVICE.X123]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentEscrowMortgageInsurance { get => _lastPaymentEscrowMortgageInsurance; set => SetField(ref _lastPaymentEscrowMortgageInsurance, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Other1 Escrow [SERVICE.X126]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentEscrowOther1 { get => _lastPaymentEscrowOther1; set => SetField(ref _lastPaymentEscrowOther1, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Other2 Escrow [SERVICE.X127]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentEscrowOther2 { get => _lastPaymentEscrowOther2; set => SetField(ref _lastPaymentEscrowOther2, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Other3 Escrow [SERVICE.X128]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentEscrowOther3 { get => _lastPaymentEscrowOther3; set => SetField(ref _lastPaymentEscrowOther3, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Escrow Tax [SERVICE.X121]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentEscrowTax { get => _lastPaymentEscrowTax; set => SetField(ref _lastPaymentEscrowTax, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt USDA Monthly Premuim [SERVICE.X129]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentEscrowUSDAMonthlyPremium { get => _lastPaymentEscrowUSDAMonthlyPremium; set => SetField(ref _lastPaymentEscrowUSDAMonthlyPremium, value); }
 
         /// <summary>
@@ -349,19 +348,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Last Pymnt Interest [SERVICE.X35]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentInterest { get => _lastPaymentInterest; set => SetField(ref _lastPaymentInterest, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Late Fee [SERVICE.X37]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentLateFee { get => _lastPaymentLateFee; set => SetField(ref _lastPaymentLateFee, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Misc Fee [SERVICE.X85]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentMiscFee { get => _lastPaymentMiscFee; set => SetField(ref _lastPaymentMiscFee, value); }
 
         /// <summary>
@@ -373,13 +372,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Last Pymnt Principal [SERVICE.X34]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentPrincipal { get => _lastPaymentPrincipal; set => SetField(ref _lastPaymentPrincipal, value); }
 
         /// <summary>
         /// Intrm Serv Last Pymnt Prncpl and Int. [SERVICE.X83]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentPrincipalAndInterest { get => _lastPaymentPrincipalAndInterest; set => SetField(ref _lastPaymentPrincipalAndInterest, value); }
 
         /// <summary>
@@ -397,7 +396,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Last Pymnt Amount Rcvd [SERVICE.X33]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LastPaymentTotalAmountReceived { get => _lastPaymentTotalAmountReceived; set => SetField(ref _lastPaymentTotalAmountReceived, value); }
 
         /// <summary>
@@ -450,7 +449,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Escrow Total Flood Insurance [SERVICE.X64]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextEscrowTotalFloodInsurance { get => _nextEscrowTotalFloodInsurance; set => SetField(ref _nextEscrowTotalFloodInsurance, value); }
 
         /// <summary>
@@ -461,7 +459,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Escrow Total Hzrd Insurance [SERVICE.X60]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextEscrowTotalHazardInsurance { get => _nextEscrowTotalHazardInsurance; set => SetField(ref _nextEscrowTotalHazardInsurance, value); }
 
         /// <summary>
@@ -472,7 +469,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Escrow Total Mortgage Insurance [SERVICE.X62]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextEscrowTotalMortgageInsurance { get => _nextEscrowTotalMortgageInsurance; set => SetField(ref _nextEscrowTotalMortgageInsurance, value); }
 
         /// <summary>
@@ -483,7 +479,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Escrow Other Tax 1 [SERVICE.X68]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextEscrowTotalOtherTax1 { get => _nextEscrowTotalOtherTax1; set => SetField(ref _nextEscrowTotalOtherTax1, value); }
 
         /// <summary>
@@ -494,7 +489,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Escrow Other Tax 2 [SERVICE.X70]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextEscrowTotalOtherTax2 { get => _nextEscrowTotalOtherTax2; set => SetField(ref _nextEscrowTotalOtherTax2, value); }
 
         /// <summary>
@@ -505,7 +499,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Escrow Other Tax 3 [SERVICE.X72]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextEscrowTotalOtherTax3 { get => _nextEscrowTotalOtherTax3; set => SetField(ref _nextEscrowTotalOtherTax3, value); }
 
         /// <summary>
@@ -516,7 +509,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Escrow Total PropertyTax [SERVICE.X66]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextEscrowTotalPropertyTax { get => _nextEscrowTotalPropertyTax; set => SetField(ref _nextEscrowTotalPropertyTax, value); }
 
         /// <summary>
@@ -527,7 +519,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Escrow Total Taxes [SERVICE.X58]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextEscrowTotalTax { get => _nextEscrowTotalTax; set => SetField(ref _nextEscrowTotalTax, value); }
 
         /// <summary>
@@ -538,7 +529,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Escrow USDA Monthly Premium [SERVICE.X105]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextEscrowTotalUsdaMonthlyPremium { get => _nextEscrowTotalUsdaMonthlyPremium; set => SetField(ref _nextEscrowTotalUsdaMonthlyPremium, value); }
 
         /// <summary>
@@ -549,67 +539,56 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Pymt Buydown Subsidy Amt [SERVICE.X100]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentBuydownSubsidyAmount { get => _nextPaymentBuydownSubsidyAmount; set => SetField(ref _nextPaymentBuydownSubsidyAmount, value); }
 
         /// <summary>
         /// Intrm Serv Next Pymnt Escrow [SERVICE.X20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentEscrowAmount { get => _nextPaymentEscrowAmount; set => SetField(ref _nextPaymentEscrowAmount, value); }
 
         /// <summary>
         /// Intrm Serv Next Payment City Property Tax [SERVICE.X116]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentEscrowCityPropertyTax { get => _nextPaymentEscrowCityPropertyTax; set => SetField(ref _nextPaymentEscrowCityPropertyTax, value); }
 
         /// <summary>
         /// Intrm Serv Next Payment Flood Insurance [SERVICE.X115]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentEscrowFloodInsurance { get => _nextPaymentEscrowFloodInsurance; set => SetField(ref _nextPaymentEscrowFloodInsurance, value); }
 
         /// <summary>
         /// Intrm Serv Next Payment Hazard Insurance [SERVICE.X113]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentEscrowHazardInsurance { get => _nextPaymentEscrowHazardInsurance; set => SetField(ref _nextPaymentEscrowHazardInsurance, value); }
 
         /// <summary>
         /// Intrm Serv Next Payment Mortgage Insurance [SERVICE.X114]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentEscrowMortgageInsurance { get => _nextPaymentEscrowMortgageInsurance; set => SetField(ref _nextPaymentEscrowMortgageInsurance, value); }
 
         /// <summary>
         /// Intrm Serv Next Payment Other1 Escrow [SERVICE.X117]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentEscrowOther1 { get => _nextPaymentEscrowOther1; set => SetField(ref _nextPaymentEscrowOther1, value); }
 
         /// <summary>
         /// Intrm Serv Next Payment Other2 Escrow [SERVICE.X119]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentEscrowOther2 { get => _nextPaymentEscrowOther2; set => SetField(ref _nextPaymentEscrowOther2, value); }
 
         /// <summary>
         /// Intrm Serv Next Payment Other3 Escrow [SERVICE.X120]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentEscrowOther3 { get => _nextPaymentEscrowOther3; set => SetField(ref _nextPaymentEscrowOther3, value); }
 
         /// <summary>
         /// Intrm Serv Next Payment Escrow Taxes [SERVICE.X112]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentEscrowTax { get => _nextPaymentEscrowTax; set => SetField(ref _nextPaymentEscrowTax, value); }
 
         /// <summary>
         /// Intrm Serv Next Payment USDA Monthly Premuim [SERVICE.X118]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentEscrowUSDAMonthlyPremium { get => _nextPaymentEscrowUSDAMonthlyPremium; set => SetField(ref _nextPaymentEscrowUSDAMonthlyPremium, value); }
 
         /// <summary>
@@ -621,13 +600,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Pymnt Interest [SERVICE.X19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentInterest { get => _nextPaymentInterest; set => SetField(ref _nextPaymentInterest, value); }
 
         /// <summary>
         /// Intrm Serv Next Pymnt Late Fee [SERVICE.X25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentLateFee { get => _nextPaymentLateFee; set => SetField(ref _nextPaymentLateFee, value); }
 
         /// <summary>
@@ -638,13 +615,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Pymnt Misc Fee [SERVICE.X23]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentMiscFee { get => _nextPaymentMiscFee; set => SetField(ref _nextPaymentMiscFee, value); }
 
         /// <summary>
         /// Intrm Serv Next Pymnt Past Due Amnt [SERVICE.X21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentPastDueAmount { get => _nextPaymentPastDueAmount; set => SetField(ref _nextPaymentPastDueAmount, value); }
 
         /// <summary>
@@ -661,13 +636,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Pymnt Principal [SERVICE.X18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentPrincipal { get => _nextPaymentPrincipal; set => SetField(ref _nextPaymentPrincipal, value); }
 
         /// <summary>
         /// Intrm Serv Next Pymnt Prncpl and Int. [SERVICE.X82]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? NextPaymentPrincipalAndInterest { get => _nextPaymentPrincipalAndInterest; set => SetField(ref _nextPaymentPrincipalAndInterest, value); }
 
         /// <summary>
@@ -684,19 +658,18 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Next Pymnt Total Amnt Due [SERVICE.X24]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? NextPaymentTotalAmountDue { get => _nextPaymentTotalAmountDue; set => SetField(ref _nextPaymentTotalAmountDue, value); }
 
         /// <summary>
         /// Intrm Serv Next Pymnt Total Amnt and Late Fee [SERVICE.X26]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? NextPaymentTotalAmountWithLateFee { get => _nextPaymentTotalAmountWithLateFee; set => SetField(ref _nextPaymentTotalAmountWithLateFee, value); }
 
         /// <summary>
         /// Intrm Serv Next Pymnt Unpaid Late Fee [SERVICE.X22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NextPaymentUnpaidLateFee { get => _nextPaymentUnpaidLateFee; set => SetField(ref _nextPaymentUnpaidLateFee, value); }
 
         /// <summary>
@@ -746,7 +719,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Purchase Advice Summary Principal [SERVICE.X139]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PurchasedPrincipal { get => _purchasedPrincipal; set => SetField(ref _purchasedPrincipal, value); }
 
         /// <summary>
@@ -789,103 +761,103 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Pymnt Summary Total Add'l Escrow [SERVICE.X53]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalAdditionalEscrow { get => _totalAdditionalEscrow; set => SetField(ref _totalAdditionalEscrow, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Year to Date Add'l Escrow [SERVICE.X54]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalAdditionalEscrowYearToDate { get => _totalAdditionalEscrowYearToDate; set => SetField(ref _totalAdditionalEscrowYearToDate, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Total Add'l Prncpl [SERVICE.X51]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalAdditionalPrincipal { get => _totalAdditionalPrincipal; set => SetField(ref _totalAdditionalPrincipal, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Year to Date Add'l Prncpl [SERVICE.X52]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalAdditionalPrincipalYearToDate { get => _totalAdditionalPrincipalYearToDate; set => SetField(ref _totalAdditionalPrincipalYearToDate, value); }
 
         /// <summary>
         /// Intrm Serv Escrow Summary Total Amnt Disbursed [SERVICE.X80]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalAmountDisbursed { get => _totalAmountDisbursed; set => SetField(ref _totalAmountDisbursed, value); }
 
         /// <summary>
         /// Intrm Serv Pymt Summary Total Bdown Subsidy Amt [SERVICE.X102]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalBuydownSubsidyAmount { get => _totalBuydownSubsidyAmount; set => SetField(ref _totalBuydownSubsidyAmount, value); }
 
         /// <summary>
         /// Intrm Serv Pymt Summary Yr to Date Bdown Subsidy [SERVICE.X103]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalBuydownSubsidyAmountYearToDate { get => _totalBuydownSubsidyAmountYearToDate; set => SetField(ref _totalBuydownSubsidyAmountYearToDate, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Total Escrow [SERVICE.X47]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalEscrow { get => _totalEscrow; set => SetField(ref _totalEscrow, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Year to Date Escrow [SERVICE.X48]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalEscrowYearToDate { get => _totalEscrowYearToDate; set => SetField(ref _totalEscrowYearToDate, value); }
 
         /// <summary>
         /// Intrm Serv Escrow Summary Total Hzrd Insurance [SERVICE.X76]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalHazardInsurance { get => _totalHazardInsurance; set => SetField(ref _totalHazardInsurance, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Total Interest [SERVICE.X43]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalInterest { get => _totalInterest; set => SetField(ref _totalInterest, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Year to Date Total Int [SERVICE.X44]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalInterestYearToDate { get => _totalInterestYearToDate; set => SetField(ref _totalInterestYearToDate, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Total Late Fee [SERVICE.X49]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalLateFee { get => _totalLateFee; set => SetField(ref _totalLateFee, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Year to Date Total Late Fee [SERVICE.X50]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalLateFeeYearToDate { get => _totalLateFeeYearToDate; set => SetField(ref _totalLateFeeYearToDate, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Total Misc Fee [SERVICE.X87]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalMiscFee { get => _totalMiscFee; set => SetField(ref _totalMiscFee, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Year to Date Total Misc Fee [SERVICE.X88]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalMiscFeeYearToDate { get => _totalMiscFeeYearToDate; set => SetField(ref _totalMiscFeeYearToDate, value); }
 
         /// <summary>
         /// Intrm Serv Escrow Summary Total Mrtg Insurance [SERVICE.X77]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalMortgageInsurance { get => _totalMortgageInsurance; set => SetField(ref _totalMortgageInsurance, value); }
 
         /// <summary>
@@ -903,145 +875,145 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Intrm Serv Escrow Summary Total Other Taxes [SERVICE.X79]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalOtherTaxes { get => _totalOtherTaxes; set => SetField(ref _totalOtherTaxes, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Total Prncpl and Int [SERVICE.X45]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalPAndI { get => _totalPAndI; set => SetField(ref _totalPAndI, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Year to Date Prncpl and Int [SERVICE.X46]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalPAndIYearToDate { get => _totalPAndIYearToDate; set => SetField(ref _totalPAndIYearToDate, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Total Pymnt Collected [SERVICE.X55]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalPaymentCollected { get => _totalPaymentCollected; set => SetField(ref _totalPaymentCollected, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Year to Date Pymnt Collected [SERVICE.X56]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalPaymentCollectedYearToDate { get => _totalPaymentCollectedYearToDate; set => SetField(ref _totalPaymentCollectedYearToDate, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Total Prncpl [SERVICE.X41]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalPrincipal { get => _totalPrincipal; set => SetField(ref _totalPrincipal, value); }
 
         /// <summary>
         /// Intrm Serv Pymnt Summary Year to Date Total Prncpl [SERVICE.X42]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalPrincipalYearToDate { get => _totalPrincipalYearToDate; set => SetField(ref _totalPrincipalYearToDate, value); }
 
         /// <summary>
         /// Intrm Serv Escrow Summary Total Property City Taxes [SERVICE.X75]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalTaxes { get => _totalTaxes; set => SetField(ref _totalTaxes, value); }
 
         /// <summary>
         /// Intrm Serv Escrow Summary Total USDA Monthly Premium [SERVICE.X107]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalUsdaMonthlyPremium { get => _totalUsdaMonthlyPremium; set => SetField(ref _totalUsdaMonthlyPremium, value); }
 
         /// <summary>
         /// Intrm Serv Escrow Sumry Unpaid Bdown Subsidy Amt [SERVICE.X104]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidBuydownSubsidyAmount { get => _unpaidBuydownSubsidyAmount; set => SetField(ref _unpaidBuydownSubsidyAmount, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Escrow [SERVICE.X93]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidEscrow { get => _unpaidEscrow; set => SetField(ref _unpaidEscrow, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Escrow City Property Tax [SERVICE.X134]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidEscrowCityPropertyTax { get => _unpaidEscrowCityPropertyTax; set => SetField(ref _unpaidEscrowCityPropertyTax, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Escrow Flood Insurance [SERVICE.X133]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidEscrowFloodInsurance { get => _unpaidEscrowFloodInsurance; set => SetField(ref _unpaidEscrowFloodInsurance, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Escrow Hazard Insurance [SERVICE.X132]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidEscrowHazardInsurance { get => _unpaidEscrowHazardInsurance; set => SetField(ref _unpaidEscrowHazardInsurance, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Escrow Mortgage Insurance [SERVICE.X131]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidEscrowMortgageInsurance { get => _unpaidEscrowMortgageInsurance; set => SetField(ref _unpaidEscrowMortgageInsurance, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Escrow Other1 [SERVICE.X135]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidEscrowOther1 { get => _unpaidEscrowOther1; set => SetField(ref _unpaidEscrowOther1, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Escrow Other2 [SERVICE.X136]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidEscrowOther2 { get => _unpaidEscrowOther2; set => SetField(ref _unpaidEscrowOther2, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Escrow Other3 [SERVICE.X137]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidEscrowOther3 { get => _unpaidEscrowOther3; set => SetField(ref _unpaidEscrowOther3, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Escrow Tax [SERVICE.X130]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidEscrowTax { get => _unpaidEscrowTax; set => SetField(ref _unpaidEscrowTax, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid USDA Monthly Premium [SERVICE.X138]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidEscrowUSDAMonthlyPremium { get => _unpaidEscrowUSDAMonthlyPremium; set => SetField(ref _unpaidEscrowUSDAMonthlyPremium, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Interest [SERVICE.X92]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidInterest { get => _unpaidInterest; set => SetField(ref _unpaidInterest, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Late Fee [SERVICE.X95]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidLateFee { get => _unpaidLateFee; set => SetField(ref _unpaidLateFee, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Misc Fee [SERVICE.X94]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidMiscrFee { get => _unpaidMiscrFee; set => SetField(ref _unpaidMiscrFee, value); }
 
         /// <summary>
         /// Intrm Serv Payment Summary Unpaid Principal [SERVICE.X91]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? UnpaidPrincipal { get => _unpaidPrincipal; set => SetField(ref _unpaidPrincipal, value); }
     }
 }

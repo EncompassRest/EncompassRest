@@ -1,5 +1,3 @@
-using EncompassRest.Schema;
-
 namespace EncompassRest.Loans
 {
     /// <summary>
@@ -34,13 +32,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Gfe2010GfeCharge GfeCharge
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? GfeCharge { get => _gfeCharge; set => SetField(ref _gfeCharge, value); }
 
         /// <summary>
         /// Gfe2010GfeCharge HudCharge
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? HudCharge { get => _hudCharge; set => SetField(ref _hudCharge, value); }
 
         /// <summary>

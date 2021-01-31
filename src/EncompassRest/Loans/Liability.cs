@@ -81,7 +81,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _volIndex;
 
         /// <summary>
-        /// Liability AccountIdentifier [FLNN10]
+        /// Liability AccountIdentifier [255], [1058]
         /// </summary>
         public string? AccountIdentifier { get => _accountIdentifier; set => SetField(ref _accountIdentifier, value); }
 
@@ -114,7 +114,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Credit Limit [FLNN31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CreditLimit { get => _creditLimit; set => SetField(ref _creditLimit, value); }
 
         /// <summary>
@@ -306,7 +305,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability MonthlyPaymentAmount [FLNN11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MonthlyPaymentAmount { get => _monthlyPaymentAmount; set => SetField(ref _monthlyPaymentAmount, value); }
 
         /// <summary>
@@ -355,7 +353,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Prepayment Penalty [FLNN39]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PrepaymentPenaltyAmount { get => _prepaymentPenaltyAmount; set => SetField(ref _prepaymentPenaltyAmount, value); }
 
         /// <summary>
@@ -430,7 +427,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Payoff Amount [FLNN16]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ToBePaidOffAmount { get => _toBePaidOffAmount; set => SetField(ref _toBePaidOffAmount, value); }
 
         /// <summary>
@@ -441,7 +437,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability Balance [FLNN13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UnpaidBalanceAmount { get => _unpaidBalanceAmount; set => SetField(ref _unpaidBalanceAmount, value); }
 
         /// <summary>

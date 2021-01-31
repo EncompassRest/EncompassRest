@@ -64,13 +64,7 @@ namespace EncompassRest.Services
         {
         }
 
-        /// <summary>
-        /// Submits an order for a service and creates a transaction object and returns the transaction id.
-        /// </summary>
-        /// <param name="partnerId">Ellie Mae's unique identifier for the Partner service provider.</param>
-        /// <param name="parameters">The parameters for ordering a service.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string> OrderServiceAsync(string partnerId, OrderServiceParameters parameters, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
@@ -79,14 +73,7 @@ namespace EncompassRest.Services
             return PostAsync($"{partnerId}/transactions", null, JsonStreamContent.Create(parameters), nameof(OrderServiceAsync), partnerId, cancellationToken, ReadLocationFunc);
         }
 
-        /// <summary>
-        /// Submits an order for a service from raw json and creates a transaction object and returns the response body if not empty else the transaction id.
-        /// </summary>
-        /// <param name="partnerId">Ellie Mae's unique identifier for the Partner service provider.</param>
-        /// <param name="parameters">The parameters for ordering a service as raw json.</param>
-        /// <param name="queryString">The query string to include in the request.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string> OrderServiceRawAsync(string partnerId, string parameters, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
@@ -95,23 +82,10 @@ namespace EncompassRest.Services
             return PostAsync($"{partnerId}/transactions", queryString, new JsonStringContent(parameters), nameof(OrderServiceRawAsync), partnerId, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
-        /// <summary>
-        /// Retrieves details on a service order transaction.
-        /// </summary>
-        /// <param name="partnerId">Ellie Mae's unique identifier for the Partner service provider.</param>
-        /// <param name="transactionId">The unique identifier of the transaction provided in the response header when the order was submitted.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<ServiceTransaction> GetServiceOrderStatusAsync(string partnerId, string transactionId, CancellationToken cancellationToken = default) => GetServiceOrderStatusAsync(partnerId, transactionId, null, cancellationToken);
 
-        /// <summary>
-        /// Retrieves details on a service order transaction.
-        /// </summary>
-        /// <param name="partnerId">Ellie Mae's unique identifier for the Partner service provider.</param>
-        /// <param name="transactionId">The unique identifier of the transaction provided in the response header when the order was submitted.</param>
-        /// <param name="generateFileUrls">Generates temporary URL's for the resources returned by the service provider as part of their response.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<ServiceTransaction> GetServiceOrderStatusAsync(string partnerId, string transactionId, bool? generateFileUrls, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
@@ -126,14 +100,7 @@ namespace EncompassRest.Services
             return GetAsync<ServiceTransaction>($"{partnerId}/transactions/{transactionId}", queryParameters.ToString(), nameof(GetServiceOrderStatusAsync), $"{partnerId}/{transactionId}", cancellationToken);
         }
 
-        /// <summary>
-        /// Retrieves details on a service order transaction as raw json.
-        /// </summary>
-        /// <param name="partnerId">Ellie Mae's unique identifier for the Partner service provider.</param>
-        /// <param name="transactionId">The unique identifier of the transaction provided in the response header when the order was submitted.</param>
-        /// <param name="queryString">The query string to include in the request.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string> GetServiceOrderStatusRawAsync(string partnerId, string transactionId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));

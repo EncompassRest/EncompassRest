@@ -29,7 +29,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NY Fees Amount [NYFEESNN08]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
 
         /// <summary>

@@ -36,7 +36,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ProfitManagementItem PlusAmount
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PlusAmount { get => _plusAmount; set => SetField(ref _plusAmount, value); }
 
         /// <summary>
@@ -47,7 +46,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ProfitManagementItem Total
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Total { get => _total; set => SetField(ref _total, value); }
 
         /// <summary>

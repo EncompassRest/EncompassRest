@@ -10416,7 +10416,7 @@
     "Description": "Rate Lock - Borr Experian FICO (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -17550,7 +17550,7 @@
     "Description": "Rate Request - Borr Experian FICO (Mostly Recent Confirmed)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -17658,7 +17658,7 @@
     "Description": "Rate Request - Construction Refinance Indicator (Most Recently Confirmed)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -17666,14 +17666,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE.CONFIRMED.FE0115",
     "Description": "Rate Request - Borr Self Employed (Mostly Recent Confirmed)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -17681,7 +17681,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE.CONFIRMED.FE0215",
@@ -25020,7 +25020,7 @@
     "Description": "Rate Lock Denial - Borr Experian FICO (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -25128,7 +25128,7 @@
     "Description": "Rate Lock Denial - Construction Refinance Indicator (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -25136,14 +25136,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE.DENIED.FE0115",
     "Description": "Rate Lock Denial - Borr Self Employed (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -25151,7 +25151,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE.DENIED.FE0215",
@@ -25396,7 +25396,7 @@
     "Description": "Pending Rate Lock Extension Request"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -25404,14 +25404,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE.FE0115",
     "Description": "Rate Lock - Borr Self Employed (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -25419,7 +25419,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE.FE0215",
@@ -32627,7 +32627,7 @@
     "Description": "Rate Lock Request - Borr Experian FICO (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -32735,7 +32735,7 @@
     "Description": "Rate Lock Request - Construction Refinance Indicator (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -32743,14 +32743,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE.REQUEST.FE0115",
     "Description": "Rate Lock Request - Borr Self Employed (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -32758,7 +32758,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE.REQUEST.FE0215",
@@ -40199,7 +40199,7 @@
     "Description": "Rate Lock - Borr Experian FICO (Previous 1)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -47328,7 +47328,7 @@
     "Description": "Rate Lock Denial - Borr Experian FICO (Previous 1)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -47436,7 +47436,7 @@
     "Description": "Rate Lock Denial - Construction Refinance Indicator (Previous 1)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -47444,14 +47444,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE1.DENIED.FE0115",
     "Description": "Rate Lock Denial - Borr Self Employed (Previous 1)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -47459,7 +47459,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE1.DENIED.FE0215",
@@ -47699,7 +47699,7 @@
     "Description": "Rate Lock - Fulfillment Duration (Previous 1)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -47707,14 +47707,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE1.FE0115",
     "Description": "Rate Lock - Borr Self Employed (Previous 1)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -47722,7 +47722,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE1.FE0215",
@@ -54845,7 +54845,7 @@
     "Description": "Rate Lock Request - Borr Experian FICO (Previous 1)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -54953,7 +54953,7 @@
     "Description": "Rate Lock Request - Construction Refinance Indicator (Previous 1)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -54961,14 +54961,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE1.REQUEST.FE0115",
     "Description": "Rate Lock Request - Borr Self Employed (Previous 1)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -54976,7 +54976,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE1.REQUEST.FE0215",
@@ -62365,7 +62365,7 @@
     "Description": "Rate Lock - Borr Experian FICO (Previous 2)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -69494,7 +69494,7 @@
     "Description": "Rate Lock Denial - Borr Experian FICO (Previous 2)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -69602,7 +69602,7 @@
     "Description": "Rate Lock Denial - Construction Refinance Indicator (Previous 2)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -69610,14 +69610,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE2.DENIED.FE0115",
     "Description": "Rate Lock Denial - Borr Self Employed (Previous 2)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -69625,7 +69625,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE2.DENIED.FE0215",
@@ -69865,7 +69865,7 @@
     "Description": "Rate Lock - Fulfillment Duration (Previous 2)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -69873,14 +69873,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE2.FE0115",
     "Description": "Rate Lock - Borr Self Employed (Previous 2)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -69888,7 +69888,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE2.FE0215",
@@ -77011,7 +77011,7 @@
     "Description": "Rate Lock Request - Borr Experian FICO (Previous 2)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -77119,7 +77119,7 @@
     "Description": "Rate Lock Request - Construction Refinance Indicator (Previous 2)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -77127,14 +77127,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE2.REQUEST.FE0115",
     "Description": "Rate Lock Request - Borr Self Employed (Previous 2)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -77142,7 +77142,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE2.REQUEST.FE0215",
@@ -84531,7 +84531,7 @@
     "Description": "Rate Request - Borr Experian FICO (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -84639,7 +84639,7 @@
     "Description": "Rate Request - Construction Refinance Indicator (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -84647,14 +84647,14 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE3.FE0115",
     "Description": "Rate Request - Borr Self Employed (Most Recent)"
   },
   {
-    "Format": 101,
+    "Format": 102,
     "Options": [
       {
         "value": "Y",
@@ -84662,7 +84662,7 @@
       },
       {
         "value": "N",
-        "text": ""
+        "text": "No"
       }
     ],
     "FieldId": "LOCKRATE3.FE0215",

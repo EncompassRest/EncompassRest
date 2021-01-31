@@ -1,5 +1,4 @@
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -25,7 +24,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Adjustment Amount [UNFLNN04]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustmentAmount { get => _adjustmentAmount; set => SetField(ref _adjustmentAmount, value); }
 
         /// <summary>

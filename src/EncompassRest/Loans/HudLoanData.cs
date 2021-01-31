@@ -177,55 +177,46 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k C6 Actual Cash Invest Required [MAX23K.X38]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ActualCashInvRequired { get => _actualCashInvRequired; set => SetField(ref _actualCashInvRequired, value); }
 
         /// <summary>
         /// FHA 203k C7 Adj Max Mtg Amt [MAX23K.X39]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AdjustedMaxMtgAmount { get => _adjustedMaxMtgAmount; set => SetField(ref _adjustedMaxMtgAmount, value); }
 
         /// <summary>
         /// FHA 203k A3 After Improved Value [MAX23K.X6]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AfterImprovedValue { get => _afterImprovedValue; set => SetField(ref _afterImprovedValue, value); }
 
         /// <summary>
         /// FHA 203k - Step 2F × 20% (After-Improved Value × 20%) [MAX23K.X98]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AfterImprovedValueAfter20Percent { get => _afterImprovedValueAfter20Percent; set => SetField(ref _afterImprovedValueAfter20Percent, value); }
 
         /// <summary>
         /// FHA 203k A6 Allowable Energy Improvements [MAX23K.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AllowableEnergyImprovements { get => _allowableEnergyImprovements; set => SetField(ref _allowableEnergyImprovements, value); }
 
         /// <summary>
         /// FHA 203k - Appropriate LTV Factor [MAX23K.X87]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AppropriateLTVFactor { get => _appropriateLTVFactor; set => SetField(ref _appropriateLTVFactor, value); }
 
         /// <summary>
         /// FHA 203k B6 Architect/Engineering Fees [MAX23K.X19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ArchitecturalEngineeringFee { get => _architecturalEngineeringFee; set => SetField(ref _architecturalEngineeringFee, value); }
 
         /// <summary>
         /// FHA 203k A2 As Is Value [MAX23K.X5]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AsIsValue { get => _asIsValue; set => SetField(ref _asIsValue, value); }
 
         /// <summary>
         /// FHA 203k - Base Mortgage Amount (Lesser of 3C or 3D) [MAX23K.X90]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BaseMortgageAmountFrom3COr3D { get => _baseMortgageAmountFrom3COr3D; set => SetField(ref _baseMortgageAmountFrom3COr3D, value); }
 
         /// <summary>
@@ -236,31 +227,30 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k E4 Borrower Estimated Profits [MAX23K.X76]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BorrowerEstimatedProfit1 { get => _borrowerEstimatedProfit1; set => SetField(ref _borrowerEstimatedProfit1, value); }
 
         /// <summary>
         /// FHA 203k Borrower Estimated Profit [MAX23K.X31]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BorrowerEstimatedProfit2 { get => _borrowerEstimatedProfit2; set => SetField(ref _borrowerEstimatedProfit2, value); }
 
         /// <summary>
         /// FHA 203k D3 Borrower Paid Closing Costs [MAX23K.X59]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BorrowerPaidClosingCosts { get => _borrowerPaidClosingCosts; set => SetField(ref _borrowerPaidClosingCosts, value); }
 
         /// <summary>
         /// FHA 203k D6 Borr Required Investment [MAX23K.X48]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? BorrowerRequiredInvestment { get => _borrowerRequiredInvestment; set => SetField(ref _borrowerRequiredInvestment, value); }
 
         /// <summary>
         /// FHA 203k - Borrowers Own Funds for Contingency Reserves (if not financed in 6:A1) [MAX23K.X95]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorrowersOwnFundsforContingencyReserves { get => _borrowersOwnFundsforContingencyReserves; set => SetField(ref _borrowersOwnFundsforContingencyReserves, value); }
 
         /// <summary>
@@ -276,13 +266,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Initial Draw at Closing Total 203K Case LTV [MAX23K.X120]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CaseLTV { get => _caseLTV; set => SetField(ref _caseLTV, value); }
 
         /// <summary>
         /// HUD 92900 LT Child Support Unpaid Balance [3023]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ChildSupportBalance { get => _childSupportBalance; set => SetField(ref _childSupportBalance, value); }
 
         /// <summary>
@@ -293,7 +281,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k E1 Max Mortgage Amount [MAX23K.X49]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? CommitmentMaximumMortgageAmount { get => _commitmentMaximumMortgageAmount; set => SetField(ref _commitmentMaximumMortgageAmount, value); }
 
         /// <summary>
@@ -305,13 +293,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Costs of construction, repairs and rehabilitation [MAX23K.X80]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ConstructionRepairsRehabilitationCosts { get => _constructionRepairsRehabilitationCosts; set => SetField(ref _constructionRepairsRehabilitationCosts, value); }
 
         /// <summary>
         /// FHA 203k B2 Contingency Reserve on Repair Costs [MAX23K.X10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ContingencyReserveCostsAmount { get => _contingencyReserveCostsAmount; set => SetField(ref _contingencyReserveCostsAmount, value); }
 
         /// <summary>
@@ -323,7 +309,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k A1 Contract Sales Price [MAX23K.X40]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ContractSalesPrice { get => _contractSalesPrice; set => SetField(ref _contractSalesPrice, value); }
 
         /// <summary>
@@ -360,7 +345,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k B12 Discount Points Amt [MAX23K.X27]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? DiscountPointsAmount { get => _discountPointsAmount; set => SetField(ref _discountPointsAmount, value); }
 
         /// <summary>
@@ -377,7 +362,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k F1 Energy Efficient  Mtg Amt [MAX23K.X67]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? EnergyEfficientMortgageAmount { get => _energyEfficientMortgageAmount; set => SetField(ref _energyEfficientMortgageAmount, value); }
 
         /// <summary>
@@ -389,13 +374,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Escrow shortages [MAX23K.X131]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EscrowShortages { get => _escrowShortages; set => SetField(ref _escrowShortages, value); }
 
         /// <summary>
         /// FHA 203k - Existing Debt Total [MAX23K.X132]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Existing203KDebtTotal { get => _existing203KDebtTotal; set => SetField(ref _existing203KDebtTotal, value); }
 
         /// <summary>
@@ -407,31 +390,27 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Existing Debt plus Rehab Costs [MAX23K.X109]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingDebtPlusRehabCosts { get => _existingDebtPlusRehabCosts; set => SetField(ref _existingDebtPlusRehabCosts, value); }
 
         /// <summary>
         /// FHA 203k - Existing Debt Plus Rehab Costs Plus New Loan Fees [MAX23K.X112]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingDebtPlusRehabCostsPlusNewLoanFees { get => _existingDebtPlusRehabCostsPlusNewLoanFees; set => SetField(ref _existingDebtPlusRehabCostsPlusNewLoanFees, value); }
 
         /// <summary>
         /// FHA 203k - Feasibility Study when necessary [MAX23K.X81]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeasibilityStudyWhenNecessary { get => _feasibilityStudyWhenNecessary; set => SetField(ref _feasibilityStudyWhenNecessary, value); }
 
         /// <summary>
         /// FHA 203k - Fees Associated with the New Loan [MAX23K.X108]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FeesAssociatedWithNewLoan { get => _feesAssociatedWithNewLoan; set => SetField(ref _feesAssociatedWithNewLoan, value); }
 
         /// <summary>
         /// FHA 203k B10 Subtotal (B5-B9) [MAX23K.X25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? FHA203kB10SubTotal { get => _fHA203kB10SubTotal; set => SetField(ref _fHA203kB10SubTotal, value); }
 
         /// <summary>
@@ -447,13 +426,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Final Base Mortgage Amount = Lesser of (Sum of Step 4B + Step 4E) or Step 4F [MAX23K.X101]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinalBaseMortgageAmount { get => _finalBaseMortgageAmount; set => SetField(ref _finalBaseMortgageAmount, value); }
 
         /// <summary>
         /// FHA 203k - Financeable Mortgage Fees, if charged (Sum of C1 and C2) [MAX23K.X82]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? FinanceableMortgageFeesIfCharged { get => _financeableMortgageFeesIfCharged; set => SetField(ref _financeableMortgageFeesIfCharged, value); }
 
         /// <summary>
@@ -481,49 +458,41 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k B7 Independent Consultant Fees [MAX23K.X20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? IndependentConsultantFee { get => _independentConsultantFee; set => SetField(ref _independentConsultantFee, value); }
 
         /// <summary>
         /// FHA 203k - Initial Base Mortgage Amount + EEM Improvement Amount [MAX23K.X96]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialBaseMortgageAmountPlusEEMImprovementAmount { get => _initialBaseMortgageAmountPlusEEMImprovementAmount; set => SetField(ref _initialBaseMortgageAmountPlusEEMImprovementAmount, value); }
 
         /// <summary>
         /// Initial Draw at Closing Total 203K Architectural or Engineering Fees [MAX23K.X122]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialDrawAtClosingArchitecturalorEngineeringFees { get => _initialDrawAtClosingArchitecturalorEngineeringFees; set => SetField(ref _initialDrawAtClosingArchitecturalorEngineeringFees, value); }
 
         /// <summary>
         /// Initial Draw at Closing Total 203K Consultant Fees [MAX23K.X121]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialDrawAtClosingConsultantFees { get => _initialDrawAtClosingConsultantFees; set => SetField(ref _initialDrawAtClosingConsultantFees, value); }
 
         /// <summary>
         /// Initial Draw at Closing Total 203K Permit Fees [MAX23K.X123]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialDrawAtClosingPermitFees { get => _initialDrawAtClosingPermitFees; set => SetField(ref _initialDrawAtClosingPermitFees, value); }
 
         /// <summary>
         /// FHA 203k - Initial Draw at Closing Total (sum of B1 thru B7) [MAX23K.X93]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialDrawAtClosingTotal { get => _initialDrawAtClosingTotal; set => SetField(ref _initialDrawAtClosingTotal, value); }
 
         /// <summary>
         /// FHA 203k B3 Cost Per Inspection [MAX23K.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InspectionFeeAmount { get => _inspectionFeeAmount; set => SetField(ref _inspectionFeeAmount, value); }
 
         /// <summary>
         /// FHA 203k - Inspection Fees (work Performed during Rehabilitation) [MAX23K.X113]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InspectionFeesDuringRehabilitation { get => _inspectionFeesDuringRehabilitation; set => SetField(ref _inspectionFeesDuringRehabilitation, value); }
 
         /// <summary>
@@ -534,13 +503,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Interest due on the existing mortgage(s) [MAX23K.X127]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InterestDueonExistingMortgage { get => _interestDueonExistingMortgage; set => SetField(ref _interestDueonExistingMortgage, value); }
 
         /// <summary>
         /// FHA 203k - Late Charges [MAX23K.X130]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LateCharges { get => _lateCharges; set => SetField(ref _lateCharges, value); }
 
         /// <summary>
@@ -567,61 +534,55 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HUD Property Improve Lease Mo Pymt [CAPIAP.X54]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LeaseMonthlyPayment { get => _leaseMonthlyPayment; set => SetField(ref _leaseMonthlyPayment, value); }
 
         /// <summary>
         /// FHA 203k C5 Allowable Down/HUD-Owned Property [MAX23K.X36]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LessAllowableDownpayment { get => _lessAllowableDownpayment; set => SetField(ref _lessAllowableDownpayment, value); }
 
         /// <summary>
         /// FHA 203k - Lesser of 3A or 3B [MAX23K.X86]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LesserOf3AOr3B { get => _lesserOf3AOr3B; set => SetField(ref _lesserOf3AOr3B, value); }
 
         /// <summary>
         /// FHA 203k - Lesser of 3A or 3B * 3F [MAX23K.X88]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LesserOf3AOr3BMultiply3F { get => _lesserOf3AOr3BMultiply3F; set => SetField(ref _lesserOf3AOr3BMultiply3F, value); }
 
         /// <summary>
         /// FHA 203k - Lesser of (Step 4C or Step 4D) = Maximum Financeable Solar/Wind Energy Amount [MAX23K.X99]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LesserOfMaximumFinanceableSolarOrWindEnergyAmount { get => _lesserOfMaximumFinanceableSolarOrWindEnergyAmount; set => SetField(ref _lesserOfMaximumFinanceableSolarOrWindEnergyAmount, value); }
 
         /// <summary>
         /// FHA 203k C1 Lesser of Sales Price/As Is Value [MAX23K.X30]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LesserOfSalesPrice { get => _lesserOfSalesPrice; set => SetField(ref _lesserOfSalesPrice, value); }
 
         /// <summary>
         /// FHA 203k C3 Lesser (C1+C2)/110% After Imprvd Val [MAX23K.X33]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LesserOfSumAmount { get => _lesserOfSumAmount; set => SetField(ref _lesserOfSumAmount, value); }
 
         /// <summary>
         /// FHA 203k D2 Sum(A2+B14) [MAX23K.X42]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LesserOfSumAsIs { get => _lesserOfSumAsIs; set => SetField(ref _lesserOfSumAsIs, value); }
 
         /// <summary>
         /// FHA 203k C3 Sum (C1+C2) [MAX23K.X32]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? LesserOfSumPercent { get => _lesserOfSumPercent; set => SetField(ref _lesserOfSumPercent, value); }
 
         /// <summary>
         /// Less Lead-Based Paint Credit [MAX23K.X119]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LessLeadBasedPaintCredit { get => _lessLeadBasedPaintCredit; set => SetField(ref _lessLeadBasedPaintCredit, value); }
 
         /// <summary>
@@ -643,31 +604,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Material costs for items ordered and prepaid by Borrower/or contractor (under contract for delivery) [MAX23K.X91]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaterialCostsOrderedPrepaidByBorrowerContractor { get => _materialCostsOrderedPrepaidByBorrowerContractor; set => SetField(ref _materialCostsOrderedPrepaidByBorrowerContractor, value); }
 
         /// <summary>
         /// FHA 203k - Up to 50% of materials costs for items ordered but not yet paid for by the Borrower/or contractor [MAX23K.X92]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaterialCostsOrderedPrepaidByBorrowerContractorAfter50Percent { get => _materialCostsOrderedPrepaidByBorrowerContractorAfter50Percent; set => SetField(ref _materialCostsOrderedPrepaidByBorrowerContractorAfter50Percent, value); }
 
         /// <summary>
         /// FHA 203k Max Mortgage with UFMIP [MAX23K.X79]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MaximumMortgageWithUFMIP { get => _maximumMortgageWithUFMIP; set => SetField(ref _maximumMortgageWithUFMIP, value); }
 
         /// <summary>
         /// FHA 203k - Mortgage Insurance Premium (MIP) due on existing mortgage(s) [MAX23K.X128]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MIPDueOnExistingMortgage { get => _mIPDueOnExistingMortgage; set => SetField(ref _mIPDueOnExistingMortgage, value); }
 
         /// <summary>
         /// FHA 203k - MIP LTV = 3E divided by 2F (ie Base Mortgage Amount divided by After Improved Value) [MAX23K.X104]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MIPLTV { get => _mIPLTV; set => SetField(ref _mIPLTV, value); }
 
         /// <summary>
@@ -679,7 +635,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k B4 Cost Per Mo [MAX23K.X63]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? MtgPaymentEscrowedAmount { get => _mtgPaymentEscrowedAmount; set => SetField(ref _mtgPaymentEscrowedAmount, value); }
 
         /// <summary>
@@ -690,13 +645,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Nationwide Mortgage Limit [MAX23K.X89]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NationwideMortgageLimit { get => _nationwideMortgageLimit; set => SetField(ref _nationwideMortgageLimit, value); }
 
         /// <summary>
         /// FHA 203k - Step 3D × 120% (Nationwide Mortgage Limit × 120%) [MAX23K.X100]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NationwideMortgageLimitAfter120Percent { get => _nationwideMortgageLimitAfter120Percent; set => SetField(ref _nationwideMortgageLimitAfter120Percent, value); }
 
         /// <summary>
@@ -734,25 +687,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k A4 110% After Improved Value [MAX23K.X7]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PercentAfterImprovedValue { get => _percentAfterImprovedValue; set => SetField(ref _percentAfterImprovedValue, value); }
 
         /// <summary>
         /// FHA 203k B8 Permits/Other Fees [MAX23K.X21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PermitsAndOtherFee { get => _permitsAndOtherFee; set => SetField(ref _permitsAndOtherFee, value); }
 
         /// <summary>
         /// FHA Consultant Fees [MAX23K.X77]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PlanReviewerFeeAddition { get => _planReviewerFeeAddition; set => SetField(ref _planReviewerFeeAddition, value); }
 
         /// <summary>
         /// FHA 203k B9 Plan Reviewer Amt Per Mile [MAX23K.X23]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PlanReviewerFeeAmount { get => _planReviewerFeeAmount; set => SetField(ref _planReviewerFeeAmount, value); }
 
         /// <summary>
@@ -763,7 +712,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Prepayment penalties assessed [MAX23K.X129]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PrepaymentPenalties { get => _prepaymentPenalties; set => SetField(ref _prepaymentPenalties, value); }
 
         /// <summary>
@@ -816,7 +764,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k C5 Max Mtg Amt [MAX23K.X37]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PurchaseMaximumMortgageAmount { get => _purchaseMaximumMortgageAmount; set => SetField(ref _purchaseMaximumMortgageAmount, value); }
 
         /// <summary>
@@ -828,13 +775,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Purchase Price Less Inducement to Purchase [MAX23K.X84]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PurchasePriceLessInducementToPurchase { get => _purchasePriceLessInducementToPurchase; set => SetField(ref _purchasePriceLessInducementToPurchase, value); }
 
         /// <summary>
         /// FHA 203k D5 Max Mtg Amt [MAX23K.X47]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RefinanceMaximumMortgageAmount { get => _refinanceMaximumMortgageAmount; set => SetField(ref _refinanceMaximumMortgageAmount, value); }
 
         /// <summary>
@@ -851,19 +796,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Rehabilitation Escrow Account (Sum of A1 thru A3) [MAX23K.X103]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RehabilitationEscrowAccount { get => _rehabilitationEscrowAccount; set => SetField(ref _rehabilitationEscrowAccount, value); }
 
         /// <summary>
         /// FHA 203k - Rehabilitation Escrow Amount Balance (for Future Draws) = 6A minus 6B [MAX23K.X115]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RehabilitationEscrowAmountBalanceForFutureDraws { get => _rehabilitationEscrowAmountBalanceForFutureDraws; set => SetField(ref _rehabilitationEscrowAmountBalanceForFutureDraws, value); }
 
         /// <summary>
         /// HUD 92900 LT Rental Cash Flow Balance [3024]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? RentalCashFlowBalance { get => _rentalCashFlowBalance; set => SetField(ref _rentalCashFlowBalance, value); }
 
         /// <summary>
@@ -901,13 +843,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k C4 Statutory Investment Required [MAX23K.X34]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? StatutoryInvestment { get => _statutoryInvestment; set => SetField(ref _statutoryInvestment, value); }
 
         /// <summary>
         /// FHA 203k - Step 2E + Step 1E (i.e. Adjusted As-Is Value + Step 1 Total) [MAX23K.X85]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Step2EPlusStep1E { get => _step2EPlusStep1E; set => SetField(ref _step2EPlusStep1E, value); }
 
         /// <summary>
@@ -919,43 +860,40 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k B5 Subtotal Rehab Escrow Acct (B1-B4) [MAX23K.X18]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SubTotalForEscrowAccount { get => _subTotalForEscrowAccount; set => SetField(ref _subTotalForEscrowAccount, value); }
 
         /// <summary>
         /// FHA 203k B13 Subtotal Release at Closing [MAX23K.X28]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SubTotalForReleaseAtClosing { get => _subTotalForReleaseAtClosing; set => SetField(ref _subTotalForReleaseAtClosing, value); }
 
         /// <summary>
         /// FHA 203k D4 Sum(D2+D3) [MAX23K.X45]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SumForInvestor { get => _sumForInvestor; set => SetField(ref _sumForInvestor, value); }
 
         /// <summary>
         /// FHA 203k D4 Sum(D2+D3)x85% or 97/95/90% [MAX23K.X46]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SumForOwnerOccupied { get => _sumForOwnerOccupied; set => SetField(ref _sumForOwnerOccupied, value); }
 
         /// <summary>
         /// FHA 203k D1 (A1+B14+A5+Prepaids+Disc-B12) [MAX23K.X41]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SumOfExistingDebt { get => _sumOfExistingDebt; set => SetField(ref _sumOfExistingDebt, value); }
 
         /// <summary>
         /// FHA 203k B11 Supplemental Origination Fee [MAX23K.X44]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SuplementalOriginationFee { get => _suplementalOriginationFee; set => SetField(ref _suplementalOriginationFee, value); }
 
         /// <summary>
         /// HUD Property Improve Title 1 Loan Bal [CAPIAP.X4]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Title1LoanBalance { get => _title1LoanBalance; set => SetField(ref _title1LoanBalance, value); }
 
         /// <summary>
@@ -971,13 +909,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k B3 Cost Per Update [MAX23K.X14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TitleUpdateFeeAmount { get => _titleUpdateFeeAmount; set => SetField(ref _titleUpdateFeeAmount, value); }
 
         /// <summary>
         /// FHA 203k - Title Update Fees [MAX23K.X114]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TitleUpdateFees { get => _titleUpdateFees; set => SetField(ref _titleUpdateFees, value); }
 
         /// <summary>
@@ -988,97 +924,89 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k B1 Total Cost Repairs Incl A6 [MAX23K.X70]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalCostsOfRepairsInA6 { get => _totalCostsOfRepairsInA6; set => SetField(ref _totalCostsOfRepairsInA6, value); }
 
         /// <summary>
         /// FHA 203k E3 Total Escrow Commitment [MAX23K.X51]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalEscrowCommitment { get => _totalEscrowCommitment; set => SetField(ref _totalEscrowCommitment, value); }
 
         /// <summary>
         /// FHA 203k Total Escrowed Funds [MAX23K.X68]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalEscrowedFunds { get => _totalEscrowedFunds; set => SetField(ref _totalEscrowedFunds, value); }
 
         /// <summary>
         /// HUD 92900 LT Total Fixed Unpaid Balance [3025]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalFixedUnpaidBalance { get => _totalFixedUnpaidBalance; set => SetField(ref _totalFixedUnpaidBalance, value); }
 
         /// <summary>
         /// FHA 203k E4 Borrower Estimated Profits [MAX23K.X52]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalForBorrowerEstimatedProfit { get => _totalForBorrowerEstimatedProfit; set => SetField(ref _totalForBorrowerEstimatedProfit, value); }
 
         /// <summary>
         /// FHA 203k B3 Title Update Fee [MAX23K.X15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalForInspectionAndTitleFee { get => _totalForInspectionAndTitleFee; set => SetField(ref _totalForInspectionAndTitleFee, value); }
 
         /// <summary>
         /// FHA 203k D2 Lesser of Sum(A2+B14)/A4 [MAX23K.X43]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalForLesserOfSumAsIs { get => _totalForLesserOfSumAsIs; set => SetField(ref _totalForLesserOfSumAsIs, value); }
 
         /// <summary>
         /// FHA 203k B4 Mtg Pymt Escrowed [MAX23K.X17]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalForMtgPaymentEscrowed { get => _totalForMtgPaymentEscrowed; set => SetField(ref _totalForMtgPaymentEscrowed, value); }
 
         /// <summary>
         /// FHA 203k B9 Plan Reviewer Fees [MAX23K.X24]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalForPlanReviewerFee { get => _totalForPlanReviewerFee; set => SetField(ref _totalForPlanReviewerFee, value); }
 
         /// <summary>
         /// FHA 203k B14 Total Rehabilitation Cost [MAX23K.X29]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalForRehabilitationCost { get => _totalForRehabilitationCost; set => SetField(ref _totalForRehabilitationCost, value); }
 
         /// <summary>
         /// FHA 203k C2 Total Rehabilitation Cost [MAX23K.X61]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalRehabilitationCosts { get => _totalRehabilitationCosts; set => SetField(ref _totalRehabilitationCosts, value); }
 
         /// <summary>
         /// FHA 203k - Total Rehabilitation Costs, Fees and Reserves (Sum of 1A, 1B, 1C) Not to exceed $35,000 [MAX23K.X83]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalRehabilitationCostsFeesReserves { get => _totalRehabilitationCostsFeesReserves; set => SetField(ref _totalRehabilitationCostsFeesReserves, value); }
 
         /// <summary>
         /// FHA 203k - Unpaid Principal Balance (First Lien) [MAX23K.X124]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UnpaidPrincipalBalanceFirstLien { get => _unpaidPrincipalBalanceFirstLien; set => SetField(ref _unpaidPrincipalBalanceFirstLien, value); }
 
         /// <summary>
         /// FHA 203k - Unpaid Principal Balance of any junior liens [MAX23K.X126]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UnpaidPrincipalBalanceOfAnyJuniorLiens { get => _unpaidPrincipalBalanceOfAnyJuniorLiens; set => SetField(ref _unpaidPrincipalBalanceOfAnyJuniorLiens, value); }
 
         /// <summary>
         /// FHA 203k - 2.Unpaid Principal Balance Purchase Junior Lien [MAX23K.X125]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? UnpaidPrincipalBalanceOfPurchaseJuniorLiens { get => _unpaidPrincipalBalanceOfPurchaseJuniorLiens; set => SetField(ref _unpaidPrincipalBalanceOfPurchaseJuniorLiens, value); }
 
         /// <summary>
         /// FHA 203k E2 Value Established C5 or D5 [MAX23K.X50]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? ValueEstablished { get => _valueEstablished; set => SetField(ref _valueEstablished, value); }
 
         /// <summary>
@@ -1099,7 +1027,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FHA 203k - Solar/Wind Energy System Actual Cost [MAX23K.X97]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? WindEnergySystemActualCost { get => _windEnergySystemActualCost; set => SetField(ref _windEnergySystemActualCost, value); }
     }
 }

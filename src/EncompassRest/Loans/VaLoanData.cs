@@ -202,6 +202,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<VaLoanDataPurposeOfLoan>>? _purposeOfLoan;
         private DirtyValue<bool?>? _rangeOvenIndicator;
         private DirtyValue<bool?>? _reasonableValueCompleted;
+        private DirtyValue<decimal?>? _refinancePropertyExistingLienAmount;
         private DirtyValue<bool?>? _refrigeratorIndicator;
         private DirtyValue<string?>? _rent;
         private DirtyValue<bool?>? _replacementOfSystem;
@@ -312,7 +313,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Legal DescAcres [600]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Acres { get => _acres; set => SetField(ref _acres, value); }
 
         /// <summary>
@@ -359,13 +359,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Amount of Proposed Liens [VASUMM.X126]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountOfProposedLiens { get => _amountOfProposedLiens; set => SetField(ref _amountOfProposedLiens, value); }
 
         /// <summary>
         /// Subject Property Energy Improve Amt [961]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountSpentOnEnergyImprovements { get => _amountSpentOnEnergyImprovements; set => SetField(ref _amountSpentOnEnergyImprovements, value); }
 
         /// <summary>
@@ -376,31 +374,26 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Disbursement - Amount Withheld from Loan Proceeds and Deposited in [VASUMM.X66]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AmountWithheld { get => _amountWithheld; set => SetField(ref _amountWithheld, value); }
 
         /// <summary>
         /// VA Annual Ground Rent Amt [1035]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualGroundRent { get => _annualGroundRent; set => SetField(ref _annualGroundRent, value); }
 
         /// <summary>
         /// Annual Maintenance Assessment [3643]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualMaintenanceAssessment { get => _annualMaintenanceAssessment; set => SetField(ref _annualMaintenanceAssessment, value); }
 
         /// <summary>
         /// VA Annual RE Taxes [1031]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualRealEstateTaxes { get => _annualRealEstateTaxes; set => SetField(ref _annualRealEstateTaxes, value); }
 
         /// <summary>
         /// VA Loan Disbursement - Annual Special Assessment [VASUMM.X59]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? AnnualSpecialAssessment { get => _annualSpecialAssessment; set => SetField(ref _annualSpecialAssessment, value); }
 
         /// <summary>
@@ -493,7 +486,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Summ Disc Points Paid by Veteran Amt [VASUMM.X46]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BorrowerPaidDiscountPointsTotalAmount { get => _borrowerPaidDiscountPointsTotalAmount; set => SetField(ref _borrowerPaidDiscountPointsTotalAmount, value); }
 
         /// <summary>
@@ -510,19 +502,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Amount of Cash Directly Disbursed to Borrower(s) [VASUMM.X114]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CashDisbursedToBorrowerAmount { get => _cashDisbursedToBorrowerAmount; set => SetField(ref _cashDisbursedToBorrowerAmount, value); }
 
         /// <summary>
         /// VA Subtract Any Cash Payment from Veteran [VARRRWS.X1]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CashPaymentFromVeteran { get => _cashPaymentFromVeteran; set => SetField(ref _cashPaymentFromVeteran, value); }
 
         /// <summary>
         /// VA Management - Qualification - Closing Cost Recoupment - CD Non Shoppable Less Funding Fee [VASUMM.X137]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CdNonShoppableLessFundingFee { get => _cdNonShoppableLessFundingFee; set => SetField(ref _cdNonShoppableLessFundingFee, value); }
 
         /// <summary>
@@ -588,13 +577,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Disability Amount Collected [VASUMM.X68]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DisabilityAmountCollected { get => _disabilityAmountCollected; set => SetField(ref _disabilityAmountCollected, value); }
 
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Amount of Disbursements less Mortgage Payoffs [VASUMM.X115]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DisbursementsLessPayoffAmount { get => _disbursementsLessPayoffAmount; set => SetField(ref _disbursementsLessPayoffAmount, value); }
 
         /// <summary>
@@ -645,7 +632,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Estimated Impact of Home Equity Remaining Amount [VASUMM.X113]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EstimatedImpactofHomeEquityRemainingAmount { get => _estimatedImpactofHomeEquityRemainingAmount; set => SetField(ref _estimatedImpactofHomeEquityRemainingAmount, value); }
 
         /// <summary>
@@ -657,7 +643,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Estimated Impact of Loan Balance Amount [VASUMM.X103]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EstimatedImpactofLoanBalanceAmount { get => _estimatedImpactofLoanBalanceAmount; set => SetField(ref _estimatedImpactofLoanBalanceAmount, value); }
 
         /// <summary>
@@ -674,7 +659,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Estimated Impact of Total Remaining Scheduled Payments [VASUMM.X108]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? EstimatedImpactofTotalRemainingPaymentAmount { get => _estimatedImpactofTotalRemainingPaymentAmount; set => SetField(ref _estimatedImpactofTotalRemainingPaymentAmount, value); }
 
         /// <summary>
@@ -685,13 +669,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Existing Home Equity Remaining Amount [VASUMM.X111]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingHomeEquityRemainingAmount { get => _existingHomeEquityRemainingAmount; set => SetField(ref _existingHomeEquityRemainingAmount, value); }
 
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Existing Loan Balance [VASUMM.X102]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingLoanBalance { get => _existingLoanBalance; set => SetField(ref _existingLoanBalance, value); }
 
         /// <summary>
@@ -707,7 +689,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Existing Total of the Remaining Scheduled Payments [VASUMM.X106]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ExistingTotalRemainingPaymentAmount { get => _existingTotalRemainingPaymentAmount; set => SetField(ref _existingTotalRemainingPaymentAmount, value); }
 
         /// <summary>
@@ -718,13 +699,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Discount (Based from line 9) [VARRRWS.X8]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? FinalDiscountAmount { get => _finalDiscountAmount; set => SetField(ref _finalDiscountAmount, value); }
 
         /// <summary>
         /// VA Funding Fee (Round to Nearest Dollar) [VARRRWS.X11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? FinalFundingFeeAmount { get => _finalFundingFeeAmount; set => SetField(ref _finalFundingFeeAmount, value); }
 
         /// <summary>
@@ -812,7 +793,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Initial Computation Total [VARRRWS.X2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialTotal { get => _initialTotal; set => SetField(ref _initialTotal, value); }
 
         /// <summary>
@@ -850,7 +830,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Disbursement - Land Purchase Price [VASUMM.X64]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LandPurchasePrice { get => _landPurchasePrice; set => SetField(ref _landPurchasePrice, value); }
 
         /// <summary>
@@ -871,7 +850,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management - Qualification - Closing Cost Recoupment - Total Opening Closing Costs [VASUMM.X138]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LeTotalClosingCosts { get => _leTotalClosingCosts; set => SetField(ref _leTotalClosingCosts, value); }
 
         /// <summary>
@@ -1045,7 +1023,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Analysis Negative Rents [VALA.X30]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? NegativeRents { get => _negativeRents; set => SetField(ref _negativeRents, value); }
 
         /// <summary>
@@ -1085,7 +1062,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Summ Orig Loan Amt [VASUMM.X15]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OriginalLoanAmount { get => _originalLoanAmount; set => SetField(ref _originalLoanAmount, value); }
 
         /// <summary>
@@ -1101,13 +1077,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Origination Fee [VARRRWS.X4]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? OriginationFeeAmount { get => _originationFeeAmount; set => SetField(ref _originationFeeAmount, value); }
 
         /// <summary>
         /// VA Add Other Allowable Closing Costs/Prepaids [VARRRWS.X6]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OtherClosingCosts { get => _otherClosingCosts; set => SetField(ref _otherClosingCosts, value); }
 
         /// <summary>
@@ -1189,7 +1164,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Pest Report Fee [VASUMM.X69]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? PestReportFee { get => _pestReportFee; set => SetField(ref _pestReportFee, value); }
 
         /// <summary>
@@ -1233,19 +1207,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Discount Amt [VARRRWS.X3]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PreliminaryDiscountAmount { get => _preliminaryDiscountAmount; set => SetField(ref _preliminaryDiscountAmount, value); }
 
         /// <summary>
         /// VA Funding Fee [VARRRWS.X5]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PreliminaryFundingFeeAmount { get => _preliminaryFundingFeeAmount; set => SetField(ref _preliminaryFundingFeeAmount, value); }
 
         /// <summary>
         /// VA Preliminary Loan Amt Total [VARRRWS.X7]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? PreliminaryTotal { get => _preliminaryTotal; set => SetField(ref _preliminaryTotal, value); }
 
         /// <summary>
@@ -1307,7 +1281,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Proposed Home Equity Remaining Amount [VASUMM.X112]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ProposedHomeEquityRemainingAmount { get => _proposedHomeEquityRemainingAmount; set => SetField(ref _proposedHomeEquityRemainingAmount, value); }
 
         /// <summary>
@@ -1319,7 +1292,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Proposed Total of the Remaining Scheduled Payments [VASUMM.X107]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? ProposedTotalRemainingPaymentAmount { get => _proposedTotalRemainingPaymentAmount; set => SetField(ref _proposedTotalRemainingPaymentAmount, value); }
 
         /// <summary>
@@ -1342,6 +1314,11 @@ namespace EncompassRest.Loans
         /// VA Loan Disbursement - Complete Where Authorized by Certificate of Reasonable Value [VASUMM.X67]
         /// </summary>
         public bool? ReasonableValueCompleted { get => _reasonableValueCompleted; set => SetField(ref _reasonableValueCompleted, value); }
+
+        /// <summary>
+        /// VA Management Tool - Loan Info Refi Existing Lien [VASUMM.X149]
+        /// </summary>
+        public decimal? RefinancePropertyExistingLienAmount { get => _refinancePropertyExistingLienAmount; set => SetField(ref _refinancePropertyExistingLienAmount, value); }
 
         /// <summary>
         /// VA Equipment Refrigerator [209]
@@ -1432,7 +1409,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Summ Baths [VASUMM.X11]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalBaths { get => _totalBaths; set => SetField(ref _totalBaths, value); }
 
         /// <summary>
@@ -1443,19 +1419,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Total CLosing Cost Less Guarantee Fee [VASUMM.X124]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalClosingCostLessGuaranteeFee { get => _totalClosingCostLessGuaranteeFee; set => SetField(ref _totalClosingCostLessGuaranteeFee, value); }
 
         /// <summary>
         /// VA Loan Analysis Total Debt Mo Pymt [VALA.X29]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalDebtMonthlyPayment { get => _totalDebtMonthlyPayment; set => SetField(ref _totalDebtMonthlyPayment, value); }
 
         /// <summary>
         /// VA Loan Summ Total Disc Points Chrgd Amt [VASUMM.X45]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalDiscountPointCharged { get => _totalDiscountPointCharged; set => SetField(ref _totalDiscountPointCharged, value); }
 
         /// <summary>
@@ -1467,25 +1441,22 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Total - Max Loan Amt [VARRRWS.X13]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? TotalForMaxLoanAmount { get => _totalForMaxLoanAmount; set => SetField(ref _totalForMaxLoanAmount, value); }
 
         /// <summary>
         /// VA Management Tool - Total Monthly Payment [VASUMM.X98]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalMonthlyPayment { get => _totalMonthlyPayment; set => SetField(ref _totalMonthlyPayment, value); }
 
         /// <summary>
         /// VA Management Tool - Cash-Out Refinance - Increase in Total Paid Over Life of Loan [VASUMM.X122]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalPaidOverLifeIncreasedAmount { get => _totalPaidOverLifeIncreasedAmount; set => SetField(ref _totalPaidOverLifeIncreasedAmount, value); }
 
         /// <summary>
         /// VA Management Tool - Total Proposed Monthly Payment [VASUMM.X99]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalProposedMonthlyPayment { get => _totalProposedMonthlyPayment; set => SetField(ref _totalProposedMonthlyPayment, value); }
 
         /// <summary>
@@ -1496,7 +1467,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Loan Disbursement - Total Unpaid Special Assessments [VASUMM.X60]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? TotalUnpaidSpecialAssessments { get => _totalUnpaidSpecialAssessments; set => SetField(ref _totalUnpaidSpecialAssessments, value); }
 
         /// <summary>
@@ -1597,13 +1567,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Energy Efficient Improvements Financed Amount [VASUMM.X132]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VAEnergyEfficientImprovementsFinancedAmount { get => _vAEnergyEfficientImprovementsFinancedAmount; set => SetField(ref _vAEnergyEfficientImprovementsFinancedAmount, value); }
 
         /// <summary>
         /// VA Financed Closing Costs to Exclude [VASUMM.X134]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VAFinancedClosingCostsToExcludeAmount { get => _vAFinancedClosingCostsToExcludeAmount; set => SetField(ref _vAFinancedClosingCostsToExcludeAmount, value); }
 
         /// <summary>
@@ -1675,7 +1643,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management - Qualification - Original Monthly Payment [VASUMM.X19]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VAOriginalMonthlyPayment { get => _vAOriginalMonthlyPayment; set => SetField(ref _vAOriginalMonthlyPayment, value); }
 
         /// <summary>
@@ -1691,7 +1658,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management Tool - VA County Limits [VASUMM.X97]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VAQualificationCountyLimits { get => _vAQualificationCountyLimits; set => SetField(ref _vAQualificationCountyLimits, value); }
 
         /// <summary>
@@ -1712,7 +1678,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management - Qualification - Closing Cost Recoupment - Monthly Decrease in Payment [VASUMM.X22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VARecoupmentMonthlyDecreaseInPayment { get => _vARecoupmentMonthlyDecreaseInPayment; set => SetField(ref _vARecoupmentMonthlyDecreaseInPayment, value); }
 
         /// <summary>
@@ -1724,7 +1689,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Management - Qualification - Closing Cost Recoupment - Total Closing Costs [VASUMM.X25]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? VARecoupmentTotalClosingCosts { get => _vARecoupmentTotalClosingCosts; set => SetField(ref _vARecoupmentTotalClosingCosts, value); }
 
         /// <summary>
@@ -1736,19 +1700,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// VA Statutory Closing Costs [VASUMM.X127]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? VAStatutoryClosingCosts { get => _vAStatutoryClosingCosts; set => SetField(ref _vAStatutoryClosingCosts, value); }
 
         /// <summary>
         /// VA Statutory P&amp;I Payment [VASUMM.X128]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? VAStatutoryMonthlyPayment { get => _vAStatutoryMonthlyPayment; set => SetField(ref _vAStatutoryMonthlyPayment, value); }
 
         /// <summary>
         /// VA Statutory P&amp;I Reduction [VASUMM.X129]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? VAStatutoryMonthlyReduction { get => _vAStatutoryMonthlyReduction; set => SetField(ref _vAStatutoryMonthlyReduction, value); }
 
         /// <summary>

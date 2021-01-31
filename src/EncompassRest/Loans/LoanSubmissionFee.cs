@@ -1,5 +1,4 @@
 using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -24,13 +23,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanSubmissionFee DueBroker
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DueBroker { get => _dueBroker; set => SetField(ref _dueBroker, value); }
 
         /// <summary>
         /// LoanSubmissionFee DueLender
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? DueLender { get => _dueLender; set => SetField(ref _dueLender, value); }
 
         /// <summary>
@@ -46,7 +43,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanSubmissionFee Total
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
+        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Total { get => _total; set => SetField(ref _total, value); }
     }
 }

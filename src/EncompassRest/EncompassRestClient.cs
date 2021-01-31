@@ -119,11 +119,11 @@ namespace EncompassRest
         /// <summary>
         /// An event that occurs when an Api response is received.
         /// </summary>
-        event EventHandler<ApiResponseEventArgs> ApiResponse;
+        event EventHandler<IApiResponseEventArgs> ApiResponse;
         /// <summary>
         /// An event that occurs before attempting to retry a request when there's a gateway timeout.
         /// </summary>
-        event EventHandler<TimeoutRetryEventArgs> TimeoutRetry;
+        event EventHandler<ITimeoutRetryEventArgs> TimeoutRetry;
     }
 
     /// <summary>
@@ -267,19 +267,13 @@ namespace EncompassRest
 
         IAccessToken IEncompassRestClient.AccessToken => AccessToken;
 
-        /// <summary>
-        /// Indicates how an expired token is handled by the client.
-        /// </summary>
+        /// <inheritdoc/>
         public TokenExpirationHandling TokenExpirationHandling => _tokenInitializer != null ? TokenExpirationHandling.RetrieveNewToken : TokenExpirationHandling.Default;
 
-        /// <summary>
-        /// The time span before Api requests are considered timed-out. Default is 100 seconds.
-        /// </summary>
+        /// <inheritdoc/>
         public TimeSpan Timeout { get; }
 
-        /// <summary>
-        /// The number of times to retry requests when there's a gateway timeout. Default is 0.
-        /// </summary>
+        /// <inheritdoc/>
         public int TimeoutRetryCount
         {
             get => _timeoutRetryCount;
@@ -297,9 +291,30 @@ namespace EncompassRest
         /// </summary>
         public event EventHandler<TimeoutRetryEventArgs>? TimeoutRetry;
 
-        /// <summary>
-        /// Specifies how the client should handle undefined custom fields.
-        /// </summary>
+        event EventHandler<ITimeoutRetryEventArgs>? IEncompassRestClient.TimeoutRetry
+        {
+            add => AddOrRemoveTimeoutRetry(value, true);
+            remove => AddOrRemoveTimeoutRetry(value, false);
+        }
+
+        private void AddOrRemoveTimeoutRetry(EventHandler<ITimeoutRetryEventArgs>? value, bool toAdd)
+        {
+            if (value != null)
+            {
+                if (toAdd)
+                {
+                    TimeoutRetry += handler;
+                }
+                else
+                {
+                    TimeoutRetry -= handler;
+                }
+            }
+
+            void handler(object sender, TimeoutRetryEventArgs e) => value(sender, e);
+        }
+
+        /// <inheritdoc/>
         public UndefinedCustomFieldHandling UndefinedCustomFieldHandling { get; set; }
 
         /// <summary>
@@ -371,36 +386,6 @@ namespace EncompassRest
         }
 
         IBatchUpdate IEncompassRestClient.BatchUpdate => BatchUpdate;
-
-        /// <summary>
-        /// The Borrower Contacts Apis.
-        /// </summary>
-        [Obsolete("Use EncompassRestClient.Contacts.BorrowerContacts instead.")]
-        public BorrowerContacts BorrowerContacts => Contacts.BorrowerContacts;
-
-        /// <summary>
-        /// The Business Contacts Apis.
-        /// </summary>
-        [Obsolete("Use EncompassRestClient.Contacts.BusinessContacts instead.")]
-        public BusinessContacts BusinessContacts => Contacts.BusinessContacts;
-
-        /// <summary>
-        /// The Borrower Contact Selector Apis.
-        /// </summary>
-        [Obsolete("Use EncompassRestClient.Contacts.BorrowerContactSelector instead.")]
-        public BorrowerContactSelector BorrowerContactSelector => Contacts.BorrowerContactSelector;
-
-        /// <summary>
-        /// The Business Contact Selector Apis.
-        /// </summary>
-        [Obsolete("Use EncompassRestClient.Contacts.BusinessContactSelector instead.")]
-        public BusinessContactSelector BusinessContactSelector => Contacts.BusinessContactSelector;
-
-        /// <summary>
-        /// The Contact Groups Apis.
-        /// </summary>
-        [Obsolete("Use EncompassRestClient.Contacts.Groups instead.")]
-        public ContactGroups ContactGroups => Contacts.Groups;
 
         /// <summary>
         /// The Contacts Apis.
@@ -523,9 +508,7 @@ namespace EncompassRest
 
         IEFolder IEncompassRestClient.EFolder => EFolder;
 
-        /// <summary>
-        /// Property for sharing common cache between multiple clients such as custom field descriptors.
-        /// </summary>
+        /// <inheritdoc/>
         public CommonCache CommonCache { get; }
 
         internal HttpClient HttpClient
@@ -560,9 +543,7 @@ namespace EncompassRest
 
         IBaseApiClient IEncompassRestClient.BaseApiClient => BaseApiClient;
 
-        /// <summary>
-        /// Set by ClientParameters.BaseAddress. The URL to call for API calls. Defaults to "https://api.elliemae.com/".
-        /// </summary>
+        /// <inheritdoc/>
         public string BaseAddress { get; set; }
         #endregion
 
@@ -571,6 +552,29 @@ namespace EncompassRest
         /// </summary>
         public event EventHandler<ApiResponseEventArgs>? ApiResponse;
 
+        event EventHandler<IApiResponseEventArgs>? IEncompassRestClient.ApiResponse
+        {
+            add => AddOrRemoveApiResponse(value, true);
+            remove => AddOrRemoveApiResponse(value, false);
+        }
+
+        private void AddOrRemoveApiResponse(EventHandler<IApiResponseEventArgs>? value, bool toAdd)
+        {
+            if (value != null)
+            {
+                if (toAdd)
+                {
+                    ApiResponse += handler;
+                }
+                else
+                {
+                    ApiResponse -= handler;
+                }
+            }
+
+            void handler(object sender, ApiResponseEventArgs e) => value(sender, e);
+        }
+        
         internal void InvokeApiResponse(HttpResponseMessage response)
         {
             ApiResponse?.Invoke(this, new ApiResponseEventArgs(response));
@@ -582,8 +586,8 @@ namespace EncompassRest
             _timeoutRetryCount = parameters.TimeoutRetryCount;
             AccessToken = new AccessToken(parameters.ApiClientId, parameters.ApiClientSecret, this);
             _tokenInitializer = tokenInitializer;
-            ApiResponse = parameters.ApiResponse;
-            CommonCache = parameters.CommonCache ?? (parameters.CommonCache = new CommonCache());
+            ((IEncompassRestClient)this).ApiResponse += parameters.ApiResponse;
+            CommonCache = (parameters.CommonCache ??= new CommonCache());
             UndefinedCustomFieldHandling = parameters.UndefinedCustomFieldHandling;
             BaseAddress = (parameters.BaseAddress?.Length ?? 0) == 0 ? "https://api.elliemae.com/" : parameters.BaseAddress!;
         }
