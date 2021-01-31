@@ -227,102 +227,40 @@ namespace EncompassRest.Loans
         {
         }
 
-        /// <summary>
-        /// Retrieves metadata from the loan.
-        /// </summary>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<LoanMetadata> GetMetadataAsync(CancellationToken cancellationToken = default) => GetAsync<LoanMetadata>("metadata", null, nameof(GetMetadataAsync), null, cancellationToken);
 
-        /// <summary>
-        /// Retrieves metadata from the loan as raw json.
-        /// </summary>
-        /// <param name="queryString">The query string to include in the request.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string> GetMetadataRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("metadata", queryString, nameof(GetMetadataAsync), null, cancellationToken);
 
-        /// <summary>
-        /// Retrieves a list of loan lock information from Encompass.
-        /// </summary>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<List<ResourceLock>> GetLocksAsync(CancellationToken cancellationToken = default) => Client.ResourceLocks.GetResourceLocksAsync(LoanId, EntityType.Loan, cancellationToken);
 
-        /// <summary>
-        /// Retrieves the loan lock information with the specified <paramref name="lockId"/>.
-        /// </summary>
-        /// <param name="lockId">The lock id of the lock to get.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<ResourceLock> GetLockAsync(string lockId, CancellationToken cancellationToken = default) => Client.ResourceLocks.GetResourceLockAsync(lockId, LoanId, EntityType.Loan, cancellationToken);
 
-        /// <summary>
-        /// Locks the loan in Encompass and returns the lock id.
-        /// </summary>
-        /// <param name="lockType">Type of Lock.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string> LockAsync(ResourceLockType lockType, CancellationToken cancellationToken = default) => LockAsync(lockType, false, cancellationToken);
 
-        /// <summary>
-        /// Locks the loan in Encompass and returns the lock id.
-        /// </summary>
-        /// <param name="lockType">Type of Lock.</param>
-        /// <param name="force">Forcefully locks a loan. This parameter allows an administrator to lock a loan that holds an exclusive lock. When set to <c>true</c>, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is <c>false</c>.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string> LockAsync(ResourceLockType lockType, bool force, CancellationToken cancellationToken = default) => LockAsync(lockType.Validate(nameof(lockType)).GetValue()!, force, cancellationToken);
 
-        /// <summary>
-        /// Locks the loan in Encompass and returns the lock id.
-        /// </summary>
-        /// <param name="lockType">Type of Lock.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string> LockAsync(string lockType, CancellationToken cancellationToken = default) => LockAsync(lockType, false, cancellationToken);
 
-        /// <summary>
-        /// Locks the loan in Encompass and returns the lock id.
-        /// </summary>
-        /// <param name="lockType">Type of Lock.</param>
-        /// <param name="force">Forcefully locks a loan. This parameter allows an administrator to lock a loan that holds an exclusive lock. When set to <c>true</c>, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is <c>false</c>.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string> LockAsync(string lockType, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.LockResourceAsync(lockType, LoanId, EntityType.Loan.GetValue()!, force, cancellationToken);
 
-        /// <summary>
-        /// Unlocks the loan in Encompass with the specified <paramref name="lockId"/>.
-        /// </summary>
-        /// <param name="lockId">The lock id to unlock.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<bool> TryUnlockAsync(string lockId, CancellationToken cancellationToken = default) => TryUnlockAsync(lockId, false, cancellationToken);
 
-        /// <summary>
-        /// Unlocks the loan in Encompass with the specified <paramref name="lockId"/>.
-        /// </summary>
-        /// <param name="lockId">The lock id to unlock.</param>
-        /// <param name="force">Forcefully unlocks a loan. This parameter allows an administrator to unlock a loan that holds an exclusive lock. When set to <c>true</c>, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is <c>false</c>.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<bool> TryUnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.TryUnlockResourceAsync(lockId, LoanId, EntityType.Loan.GetValue()!, force, cancellationToken);
 
-        /// <summary>
-        /// Unlocks the loan in Encompass with the specified <paramref name="lockId"/>.
-        /// </summary>
-        /// <param name="lockId">The lock id to unlock.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task UnlockAsync(string lockId, CancellationToken cancellationToken = default) => UnlockAsync(lockId, false, cancellationToken);
 
-        /// <summary>
-        /// Unlocks the loan in Encompass with the specified <paramref name="lockId"/>.
-        /// </summary>
-        /// <param name="lockId">The lock id to unlock.</param>
-        /// <param name="force">Forcefully unlocks a loan. This parameter allows an administrator to unlock a loan that holds an exclusive lock. When set to <c>true</c>, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is <c>false</c>.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.UnlockResourceAsync(lockId, LoanId, EntityType.Loan.GetValue()!, force, cancellationToken);
     }
 }

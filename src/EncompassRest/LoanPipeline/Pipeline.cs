@@ -91,19 +91,10 @@ namespace EncompassRest.LoanPipeline
         {
         }
 
-        /// <summary>
-        /// Returns a list of descriptive field definitions for all canonical field names represented in the Encompass Pipeline. Canonical field names are used to view the Pipeline and perform batch loan updates.
-        /// </summary>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<PipelineCanonicalNames> GetCanonicalNamesAsync(CancellationToken cancellationToken = default) => GetAsync<PipelineCanonicalNames>("fieldDefinitions", null, nameof(GetCanonicalNamesAsync), null, cancellationToken);
 
-        /// <summary>
-        /// Returns a list of descriptive field definitions for all canonical field names represented in the Encompass Pipeline as raw json. Canonical field names are used to view the Pipeline and perform batch loan updates.
-        /// </summary>
-        /// <param name="queryString">The query string to include in the request.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string> GetCanonicalNamesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", queryString, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
 
         /// <summary>
@@ -165,40 +156,16 @@ namespace EncompassRest.LoanPipeline
 
         async Task<ILoanPipelineCursor> IPipeline.CreateCursorAsync(PipelineParameters parameters, bool? ignoreInvalidFields, CancellationToken cancellationToken) => await CreateCursorAsync(parameters, ignoreInvalidFields, cancellationToken).ConfigureAwait(false);
 
-        /// <summary>
-        /// Retrieves loan IDs (GUIDs) and specified fields from loans on the Pipeline.
-        /// </summary>
-        /// <param name="parameters">The pipeline parameters used to specify the loans and fields to include.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, CancellationToken cancellationToken = default) => ViewPipelineAsync(parameters, null, null, cancellationToken);
 
-        /// <summary>
-        /// Retrieves loan IDs (GUIDs) and specified fields from loans on the Pipeline.
-        /// </summary>
-        /// <param name="parameters">The pipeline parameters used to specify the loans and fields to include.</param>
-        /// <param name="limit">The maximum number of items to return. If not specified, the default limit is set to 1000. The maximum limit is 25k.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, int? limit, CancellationToken cancellationToken = default) => ViewPipelineAsync(parameters, limit, null, cancellationToken);
 
-        /// <summary>
-        /// Retrieves loan IDs (GUIDs) and specified fields from loans on the Pipeline.
-        /// </summary>
-        /// <param name="parameters">The pipeline parameters used to specify the loans and fields to include.</param>
-        /// <param name="ignoreInvalidFields">Ignores the invalid fields specified in the request body if set to <c>true</c>, else will return an error with list of invalid fields.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, bool? ignoreInvalidFields, CancellationToken cancellationToken = default) => ViewPipelineAsync(parameters, null, ignoreInvalidFields, cancellationToken);
 
-        /// <summary>
-        /// Retrieves loan IDs (GUIDs) and specified fields from loans on the Pipeline.
-        /// </summary>
-        /// <param name="parameters">The pipeline parameters used to specify the loans and fields to include.</param>
-        /// <param name="limit">The maximum number of items to return. If not specified, the default limit is set to 1000. The maximum limit is 25k.</param>
-        /// <param name="ignoreInvalidFields">Ignores the invalid fields specified in the request body if set to <c>true</c>, else will return an error with list of invalid fields.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, int? limit, bool? ignoreInvalidFields, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
@@ -220,13 +187,7 @@ namespace EncompassRest.LoanPipeline
             return PostAsync<List<LoanPipelineData>>(null, queryParameters.ToString(), JsonStreamContent.Create(parameters), nameof(ViewPipelineAsync), null, cancellationToken);
         }
 
-        /// <summary>
-        /// Retrieves loan IDs (GUIDs) and specified fields from loans on the Pipeline as raw json.
-        /// </summary>
-        /// <param name="parameters">The pipeline parameters used to specify the loans and fields to include as raw json.</param>
-        /// <param name="queryString">The query string to include in the request.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task<string> ViewPipelineRawAsync(string parameters, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(parameters, nameof(parameters));

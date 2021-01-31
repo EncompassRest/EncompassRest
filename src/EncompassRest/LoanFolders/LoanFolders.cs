@@ -30,13 +30,7 @@ namespace EncompassRest.LoanFolders
         {
         }
 
-        /// <summary>
-        /// Move a loan from one folder to another folder.
-        /// </summary>
-        /// <param name="loanId">The id of the loan to move.</param>
-        /// <param name="loanFolder">The name of the target folder in which to move the loan.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
+        /// <inheritdoc/>
         public Task MoveLoanToFolderAsync(string loanId, string loanFolder, CancellationToken cancellationToken = default) => PatchAsync($"{Uri.EscapeDataString(loanFolder)}/loans", "?action=add", new JsonStringContent($@"{{""loanGuid"":""{loanId}""}}"), nameof(MoveLoanToFolderAsync), loanId, cancellationToken);
     }
 }

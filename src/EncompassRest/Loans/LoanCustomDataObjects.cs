@@ -14,9 +14,7 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed class LoanCustomDataObjects : CustomDataObjects.CustomDataObjects, ILoanCustomDataObjects
     {
-        /// <summary>
-        /// The loan id associated with the Api.
-        /// </summary>
+        /// <inheritdoc/>
         public string LoanId { get; }
 
         internal LoanCustomDataObjects(EncompassRestClient client, string loanId)

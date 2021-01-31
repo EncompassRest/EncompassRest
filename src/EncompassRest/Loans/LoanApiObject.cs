@@ -21,9 +21,7 @@ namespace EncompassRest.Loans
     /// </summary>
     public abstract class LoanApiObject : ApiObject, ILoanApiObject
     {
-        /// <summary>
-        /// The loan id associated with the Api.
-        /// </summary>
+        /// <inheritdoc/>
         public string LoanId { get; }
 
         internal LoanApiObject(EncompassRestClient client, string loanId, string? baseApiPath)
