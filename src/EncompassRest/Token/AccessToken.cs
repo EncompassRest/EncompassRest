@@ -135,6 +135,8 @@ namespace EncompassRest.Token
 
         internal override HttpClient GetHttpClient() => TokenClient;
 
+        internal override void ApiResponse(HttpResponseMessage response) => Client.InvokeApiResponse(response);
+
         [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), ItemRequired = Required.Always)]
         private sealed class TokenResponse
         {

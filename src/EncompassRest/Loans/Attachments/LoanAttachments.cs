@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.EFolder;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.Attachments
@@ -238,6 +239,15 @@ namespace EncompassRest.Loans.Attachments
         Task<byte[]> DownloadAttachmentFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default);
         Task<Stream> DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default);
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+        /// <summary>
+        /// This API starts the export job. When attachments are exported, they are merged for download. Files of native and cloud types are supported with this API.
+        /// </summary>
+        /// <param name="entities">The attachment entities to export.</param>
+        /// <param name="annotationSettings">The export annotation settings.</param>
+        /// <param name="options">The export attachments options.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<ExportAttachmentsJob> ExportAttachmentsAsync(IEnumerable<EntityReference> entities, AnnotationSettings? annotationSettings = null, ExportAttachmentsOptions? options = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -486,6 +496,12 @@ namespace EncompassRest.Loans.Attachments
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
 
             return PatchRawAsync(attachmentId, queryString, new JsonStringContent(attachment), nameof(UpdateAttachmentRawAsync), attachmentId, cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<ExportAttachmentsJob> ExportAttachmentsAsync(IEnumerable<EntityReference> entities, AnnotationSettings? annotationSettings = null, ExportAttachmentsOptions? options = null, CancellationToken cancellationToken = default)
+        {
+            return Client.EFolder.ExportAttachmentsAsync(new ExportAttachmentsParameters(new EntityReference(LoanId, EntityType.Loan), entities) { AnnotationSettings = annotationSettings }, options, cancellationToken);
         }
     }
 }

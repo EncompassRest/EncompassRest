@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using EncompassRest.EFolder;
 using EncompassRest.Loans;
 using EncompassRest.Loans.Attachments;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -100,6 +101,25 @@ namespace EncompassRest.Tests
                 using (var sr = new StreamReader(newStream, Encoding.UTF8))
                 {
                     Assert.AreEqual(newText, sr.ReadToEnd());
+                }
+
+                var job = await loan.LoanApis.Attachments.ExportAttachmentsAsync(new EntityReference[] { attachment, newAttachment });
+                AssertNoExtensionData(job, "job", null, true);
+                await Task.Delay(10000);
+                await job.RefreshAsync();
+                AssertNoExtensionData(job, "job", null, true);
+                Assert.IsFalse(string.IsNullOrEmpty(job.File.EntityUri));
+                var pdfBytes = await job.DownloadAsync();
+                using (var pdfStream = await job.DownloadStreamAsync())
+                {
+                    var bytes = new byte[pdfBytes.Length];
+                    var offset = 0;
+                    do
+                    {
+                        offset += await pdfStream.ReadAsync(bytes, offset, pdfBytes.Length - offset);
+                    } while (offset != pdfBytes.Length);
+                    Assert.AreEqual(-1, pdfStream.ReadByte());
+                    CollectionAssert.AreEqual(pdfBytes, bytes);
                 }
             }
             finally
