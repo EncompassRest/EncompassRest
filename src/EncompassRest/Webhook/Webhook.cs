@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -158,6 +159,35 @@ namespace EncompassRest.Webhook
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task<string> UpdateSubscriptionRawAsync(string subscriptionId, string subscription, string? queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Returns all webhook events that occurred on the Lender Platform.
+        /// </summary>
+        /// <param name="options"></param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<WebhookEvent>> GetEventsAsync(WebhookEventOptions? options = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Returns all webhook events that occurred on the Lender Platform as raw json.
+        /// </summary>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetEventsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Returns the specified webhook event.
+        /// </summary>
+        /// <param name="eventId">Unique identifier of the event to return.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<List<WebhookEvent>> GetEventAsync(string eventId, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Returns the specified webhook event as raw json.
+        /// </summary>
+        /// <param name="eventId">Unique identifier of the event to return.</param>
+        /// <param name="queryString">The query string to include in the request.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<string> GetEventRawAsync(string eventId, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -312,6 +342,28 @@ namespace EncompassRest.Webhook
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
             return DeleteAsync($"subscriptions/{subscriptionId}", null, cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<List<WebhookEvent>> GetEventsAsync(WebhookEventOptions? options = null, CancellationToken cancellationToken = default) => GetAsync<List<WebhookEvent>>("events", options?.ToQueryParameters().ToString(), nameof(GetEventsAsync), null, cancellationToken);
+
+        /// <inheritdoc/>
+        public Task<string> GetEventsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("events", queryString, nameof(GetEventsRawAsync), null, cancellationToken);
+
+        /// <inheritdoc/>
+        public Task<List<WebhookEvent>> GetEventAsync(string eventId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(eventId, nameof(eventId));
+
+            return GetAsync<List<WebhookEvent>>($"events/{eventId}", null, nameof(GetEventAsync), eventId, cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<string> GetEventRawAsync(string eventId, string? queryString = null, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(eventId, nameof(eventId));
+
+            return GetRawAsync($"events/{eventId}", queryString, nameof(GetEventRawAsync), eventId, cancellationToken);
         }
     }
 }
