@@ -136,8 +136,8 @@ namespace EncompassRest
             return string.Empty;
         });
 
-        internal Task<T> SendAsync<T>(HttpMethod method, string? requestUri, string? queryString, HttpContent? content, string? methodName, string? resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>>? func, bool throwOnNonSuccessStatusCode = true) =>
-            SendFullUriAsync(method, GetFullUri(requestUri), queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode);
+        internal Task<T> SendAsync<T>(HttpMethod method, string? requestUri, string? queryString, HttpContent? content, string? methodName, string? resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>>? func, bool throwOnNonSuccessStatusCode = true, bool disposeResponse = true) =>
+            SendFullUriAsync(method, GetFullUri(requestUri), queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode, disposeResponse);
 
         internal Task<T> SendFullUriAsync<T>(HttpMethod method, string? requestUri, string? queryString, HttpContent? content, string? methodName, string? resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>>? func, bool throwOnNonSuccessStatusCode = true, bool disposeResponse = true) => SendFullUriAsync(new HttpRequestMessage(method, $"{requestUri}{queryString?.PrecedeWith("?")}") { Content = content }, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode, disposeResponse);
 

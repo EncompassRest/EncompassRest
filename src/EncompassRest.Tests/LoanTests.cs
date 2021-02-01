@@ -9,7 +9,6 @@ using EncompassRest.Filters;
 using EncompassRest.LoanPipeline;
 using EncompassRest.Loans;
 using EncompassRest.Loans.Enums;
-using EncompassRest.Services;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -84,26 +83,6 @@ namespace EncompassRest.Tests
                 var deserializedLoan = JsonConvert.DeserializeObject<Loan>(json, serializerSettings);
                 var newJson = JsonConvert.SerializeObject(loan, serializerSettings);
                 Assert.AreEqual(json, newJson);
-
-                if (client.AccessToken.Token != "Token")
-                {
-                    foreach (var format in Enums.GetValues<MismoFormat>())
-                    {
-                        var bytes = await loan.LoanApis.ExportToMismoAsync(format);
-                        Assert.IsTrue(bytes.Length > 0);
-                        using (var stream = await loan.LoanApis.ExportToMismoStreamAsync(format))
-                        {
-                            var streamBytes = new byte[bytes.Length];
-                            var offset = 0;
-                            do
-                            {
-                                offset += await stream.ReadAsync(streamBytes, offset, bytes.Length - offset);
-                            } while (offset != stream.Length);
-                            Assert.AreEqual(-1, stream.ReadByte());
-                            CollectionAssert.AreEqual(bytes, streamBytes);
-                        }
-                    }
-                }
             }
             finally
             {

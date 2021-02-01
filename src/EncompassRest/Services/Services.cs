@@ -157,7 +157,7 @@ namespace EncompassRest.Services
             queryParamerters.Add("loanId", loanId);
             queryParamerters.Add("format", format);
 
-            return SendAsync(HttpMethod.Get, "services/v1/transformer", queryParamerters.ToString(), null, nameof(ExportLoanToMismoAsync), loanId, cancellationToken, ReadAsByteArrayFunc);
+            return SendAsync(HttpMethod.Get, "v1/transformer", queryParamerters.ToString(), null, nameof(ExportLoanToMismoAsync), loanId, cancellationToken, ReadAsByteArrayFunc);
         }
 
         /// <inheritdoc/>
@@ -173,7 +173,7 @@ namespace EncompassRest.Services
             queryParamerters.Add("loanId", loanId);
             queryParamerters.Add("format", format);
 
-            return SendAsync(HttpMethod.Get, "services/v1/transformer", queryParamerters.ToString(), null, nameof(ExportLoanToMismoAsync), loanId, cancellationToken, ReadAsStreamFunc);
+            return SendAsync(HttpMethod.Get, "v1/transformer", queryParamerters.ToString(), null, nameof(ExportLoanToMismoAsync), loanId, cancellationToken, ReadAsStreamFunc, true, false);
         }
     }
 }
