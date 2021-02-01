@@ -1,6 +1,9 @@
-﻿using System.Threading;
+﻿using System.IO;
+using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest.Services
 {
@@ -52,6 +55,38 @@ namespace EncompassRest.Services
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task<string> OrderServiceRawAsync(string partnerId, string parameters, string? queryString = null, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
+        /// </summary>
+        /// <param name="loanId">Unique identifier of the Encompass Loan</param>
+        /// <param name="format">Format that you want to export the loan to.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<byte[]> ExportLoanToMismoAsync(string loanId, MismoFormat format, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
+        /// </summary>
+        /// <param name="loanId">Unique identifier of the Encompass Loan</param>
+        /// <param name="format">Format that you want to export the loan to.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<byte[]> ExportLoanToMismoAsync(string loanId, string format, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
+        /// </summary>
+        /// <param name="loanId">Unique identifier of the Encompass Loan</param>
+        /// <param name="format">Format that you want to export the loan to.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Stream> ExportLoanToMismoStreamAsync(string loanId, MismoFormat format, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
+        /// </summary>
+        /// <param name="loanId">Unique identifier of the Encompass Loan</param>
+        /// <param name="format">Format that you want to export the loan to.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Stream> ExportLoanToMismoStreamAsync(string loanId, string format, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -60,7 +95,7 @@ namespace EncompassRest.Services
     public sealed class Services : ApiObject, IServices
     {
         internal Services(EncompassRestClient client)
-            : base(client, "services/v1/partners")
+            : base(client, "services")
         {
         }
 
@@ -70,7 +105,7 @@ namespace EncompassRest.Services
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            return PostAsync($"{partnerId}/transactions", null, JsonStreamContent.Create(parameters), nameof(OrderServiceAsync), partnerId, cancellationToken, ReadLocationFunc);
+            return PostAsync($"v1/partners/{partnerId}/transactions", null, JsonStreamContent.Create(parameters), nameof(OrderServiceAsync), partnerId, cancellationToken, ReadLocationFunc);
         }
 
         /// <inheritdoc/>
@@ -79,7 +114,7 @@ namespace EncompassRest.Services
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
             Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
 
-            return PostAsync($"{partnerId}/transactions", queryString, new JsonStringContent(parameters), nameof(OrderServiceRawAsync), partnerId, cancellationToken, ReadAsStringElseLocationFunc);
+            return PostAsync($"v1/partners/{partnerId}/transactions", queryString, new JsonStringContent(parameters), nameof(OrderServiceRawAsync), partnerId, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
         /// <inheritdoc/>
@@ -97,7 +132,7 @@ namespace EncompassRest.Services
                 queryParameters.Add("generateFileUrls", generateFileUrls.ToString().ToLower());
             }
 
-            return GetAsync<ServiceTransaction>($"{partnerId}/transactions/{transactionId}", queryParameters.ToString(), nameof(GetServiceOrderStatusAsync), $"{partnerId}/{transactionId}", cancellationToken);
+            return GetAsync<ServiceTransaction>($"v1/partners/{partnerId}/transactions/{transactionId}", queryParameters.ToString(), nameof(GetServiceOrderStatusAsync), $"{partnerId}/{transactionId}", cancellationToken);
         }
 
         /// <inheritdoc/>
@@ -106,7 +141,39 @@ namespace EncompassRest.Services
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
             Preconditions.NotNullOrEmpty(transactionId, nameof(transactionId));
 
-            return GetRawAsync($"{partnerId}/transactions/{transactionId}", queryString, nameof(GetServiceOrderStatusRawAsync), $"{partnerId}/{transactionId}", cancellationToken);
+            return GetRawAsync($"v1/partners/{partnerId}/transactions/{transactionId}", queryString, nameof(GetServiceOrderStatusRawAsync), $"{partnerId}/{transactionId}", cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<byte[]> ExportLoanToMismoAsync(string loanId, MismoFormat format, CancellationToken cancellationToken = default) => ExportLoanToMismoAsync(loanId, format.Validate(nameof(format)).GetValue()!, cancellationToken);
+
+        /// <inheritdoc/>
+        public Task<byte[]> ExportLoanToMismoAsync(string loanId, string format, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
+            Preconditions.NotNullOrEmpty(format, nameof(format));
+
+            var queryParamerters = new QueryParameters();
+            queryParamerters.Add("loanId", loanId);
+            queryParamerters.Add("format", format);
+
+            return SendAsync(HttpMethod.Get, "services/v1/transformer", queryParamerters.ToString(), null, nameof(ExportLoanToMismoAsync), loanId, cancellationToken, ReadAsByteArrayFunc);
+        }
+
+        /// <inheritdoc/>
+        public Task<Stream> ExportLoanToMismoStreamAsync(string loanId, MismoFormat format, CancellationToken cancellationToken = default) => ExportLoanToMismoStreamAsync(loanId, format.Validate(nameof(format)).GetValue()!, cancellationToken);
+
+        /// <inheritdoc/>
+        public Task<Stream> ExportLoanToMismoStreamAsync(string loanId, string format, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
+            Preconditions.NotNullOrEmpty(format, nameof(format));
+
+            var queryParamerters = new QueryParameters();
+            queryParamerters.Add("loanId", loanId);
+            queryParamerters.Add("format", format);
+
+            return SendAsync(HttpMethod.Get, "services/v1/transformer", queryParamerters.ToString(), null, nameof(ExportLoanToMismoAsync), loanId, cancellationToken, ReadAsStreamFunc);
         }
     }
 }
