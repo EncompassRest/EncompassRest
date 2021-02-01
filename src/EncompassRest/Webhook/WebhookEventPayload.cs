@@ -7,6 +7,7 @@ namespace EncompassRest.Webhook
     /// </summary>
     public sealed class WebhookEventPayload : ExtensibleObject
     {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         /// <summary>
         /// Unique identifier per client assigned by Ellie Mae. This is an optional field. It will be populated automatically based on authentication details.
         /// </summary>
@@ -61,5 +62,6 @@ namespace EncompassRest.Webhook
         /// The unique ID assigned to the subscription when it is created.
         /// </summary>
         public string? SubscriptionId { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     }
 }

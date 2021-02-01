@@ -175,7 +175,7 @@ namespace EncompassRest.Tests
   },
   ""TestString"": ""TESTING""
 }", json);
-            var newValue = JsonConvert.DeserializeAnonymousType(json, value);
+            _ = JsonConvert.DeserializeAnonymousType(json, value);
         }
 
         [TestMethod]
@@ -468,7 +468,7 @@ namespace EncompassRest.Tests
             {
                 var loan = new Loan(client);
                 var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
-                var metaData = await loan.LoanApis.GetMetadataAsync();
+                _ = await loan.LoanApis.GetMetadataAsync();
                 await Task.Delay(5000);
                 await client.Loans.DeleteLoanAsync(loanId);
             }
@@ -484,7 +484,7 @@ namespace EncompassRest.Tests
                 var loan = new Loan(client);
                 var loanId = await client.Loans.CreateLoanAsync(loan, true);
                 await client.Loans.UpdateLoanAsync(loan, new UpdateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
-                var metaData = await loan.LoanApis.GetMetadataAsync();
+                _ = await loan.LoanApis.GetMetadataAsync();
                 await Task.Delay(5000);
                 await client.Loans.DeleteLoanAsync(loanId);
             }
@@ -1599,7 +1599,7 @@ namespace EncompassRest.Tests
 
             var fieldDescriptors = client.Loans.FieldDescriptors;
 
-            FieldDescriptor fieldDescriptor = null;
+            FieldDescriptor fieldDescriptor;
 
             foreach (var pair in LoanFieldDescriptors.FieldMappings)
             {

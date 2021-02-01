@@ -7,6 +7,7 @@ namespace EncompassRest.Webhook
     /// </summary>
     public sealed class WebhookEvent : ExtensibleObject
     {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         /// <summary>
         /// The unique identifier of the event.
         /// </summary>
@@ -26,5 +27,6 @@ namespace EncompassRest.Webhook
         /// Object containing the payload.
         /// </summary>
         public WebhookEventPayload Event { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     }
 }

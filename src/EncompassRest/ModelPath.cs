@@ -500,7 +500,7 @@ namespace EncompassRest
                             }
                         }
                         break;
-                    case JsonLinqContract linqContract:
+                    case JsonLinqContract:
                         if (parent is JObject jObject)
                         {
                             if (jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out tokenValue))
@@ -561,7 +561,7 @@ namespace EncompassRest
                             objectContract.ExtensionDataSetter?.Invoke(parent, propertyName, value);
                         }
                         break;
-                    case JsonLinqContract linqContract:
+                    case JsonLinqContract:
                         if (parent is JObject jObject)
                         {
                             value = valueProvider(null);
