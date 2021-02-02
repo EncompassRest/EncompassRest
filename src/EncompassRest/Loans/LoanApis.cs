@@ -9,6 +9,7 @@ using EncompassRest.Loans.Documents;
 using EncompassRest.Loans.FieldReader;
 using EncompassRest.Loans.MilestoneFreeRoles;
 using EncompassRest.Loans.Milestones;
+using EncompassRest.Loans.RateLocks;
 using EncompassRest.ResourceLocks;
 using EnumsNET;
 
@@ -55,6 +56,10 @@ namespace EncompassRest.Loans
         /// The Loan Milestone Apis.
         /// </summary>
         ILoanMilestones Milestones { get; }
+        /// <summary>
+        /// The Loan Rate Lock Apis.
+        /// </summary>
+        ILoanRateLocks RateLocks { get; }
 
         /// <summary>
         /// Retrieves the loan lock information with the specified <paramref name="lockId"/>.
@@ -157,6 +162,7 @@ namespace EncompassRest.Loans
         private LoanMilestoneFreeRoles? _milestoneFreeRoles;
         private LoanFieldReader? _fieldReader;
         private LoanConditions? _conditions;
+        private LoanRateLocks? _rateLocks;
         private BorrowerPairs? _borrowerPairs;
 
         /// <summary>
@@ -214,6 +220,13 @@ namespace EncompassRest.Loans
         public LoanConditions Conditions => _conditions ?? (_conditions = new LoanConditions(Client, LoanId));
 
         ILoanConditions ILoanApis.Conditions => Conditions;
+
+        /// <summary>
+        /// The Loan Rate Lock Apis.
+        /// </summary>
+        public LoanRateLocks RateLocks => _rateLocks ?? (_rateLocks = new LoanRateLocks(Client, LoanId));
+
+        ILoanRateLocks ILoanApis.RateLocks => RateLocks;
 
         /// <summary>
         /// The Loan Borrower Pairs Apis.
