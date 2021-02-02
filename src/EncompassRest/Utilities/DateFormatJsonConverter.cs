@@ -4,11 +4,11 @@ using Newtonsoft.Json.Converters;
 
 namespace EncompassRest.Utilities
 {
-    internal sealed class DateFormatJsonConverter : IsoDateTimeConverter
+    internal sealed class ElliDateJsonConverter : IsoDateTimeConverter
     {
-        public DateFormatJsonConverter(string format)
+        public ElliDateJsonConverter()
         {
-            DateTimeFormat = format;
+            DateTimeFormat = "yyyy-MM-dd";
         }
     }
 }

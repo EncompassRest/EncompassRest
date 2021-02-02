@@ -36,13 +36,13 @@ namespace EncompassRest.Loans.RateLocks
         /// <summary>
         /// Investor Delivery Date
         /// </summary>
-        [JsonConverter(typeof(DateFormatJsonConverter), "yyyy-MM-dd")]
+        [JsonConverter(typeof(ElliDateJsonConverter))]
         public DateTime? DeliveryDate { get => _deliveryDate; set => SetField(ref _deliveryDate, value); }
 
         /// <summary>
         /// Investor Target Delivery Date
         /// </summary>
-        [JsonConverter(typeof(DateFormatJsonConverter), "yyyy-MM-dd")]
+        [JsonConverter(typeof(ElliDateJsonConverter))]
         public DateTime? TargetDeliveryDate { get => _targetDeliveryDate; set => SetField(ref _targetDeliveryDate, value); }
 
         /// <summary>

@@ -171,7 +171,7 @@ namespace EncompassRest.Loans.RateLocks
         public string? RequestImpoundWaived { get => _requestImpoundWaived; set => SetField(ref _requestImpoundWaived, value); }
 
         /// <summary>
-        /// Request Impound Type. Possible values are: Taxes & Insurance, taxes only, insurance only, no impounds
+        /// Request Impound Type. Possible values are: Taxes and Insurance, taxes only, insurance only, no impounds
         /// </summary>
         public StringEnumValue<ImpoundType> RequestImpoundType { get => _requestImpoundType; set => SetField(ref _requestImpoundType, value); }
 
@@ -291,7 +291,7 @@ namespace EncompassRest.Loans.RateLocks
         public DateTime? PricingUpdated { get => _pricingUpdated; set => SetField(ref _pricingUpdated, value); }
 
         /// <summary>
-        /// Impound type. Possible options are: Taxes and Insurance(T&I), Taxes only(T), Insurance only(I), No impounds\
+        /// Impound type. Possible options are: Taxes and Insurance(T and I), Taxes only(T), Insurance only(I), No impounds\
         /// </summary>
         public StringEnumValue<ImpoundType> ImpoundType { get => _impoundType; set => SetField(ref _impoundType, value); }
 

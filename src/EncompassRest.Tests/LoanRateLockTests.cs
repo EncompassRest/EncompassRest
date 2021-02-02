@@ -60,6 +60,9 @@ namespace EncompassRest.Tests
                 Assert.AreEqual(rateLockRequest.LockRequest.LockExpirationDate, retrievedRateLock.LockRequest.LockExpirationDate);
                 Assert.AreEqual(rateLockRequest.RequestedBy.EntityId, retrievedRateLock.RequestedBy.EntityId);
 
+                // Updating a lock request currently does not work. Appears to be a bug in the Encompass API.
+                // Always returns the same values as the original request.
+
                 //rateLockRequest.LockRequest.BaseRate = 4;
                 //rateLockRequest.LockRequest.BasePrice = 101.85m;
                 //await rateLockApi.UpdateRateLockRequestAsync(rateLockRequest, true);
