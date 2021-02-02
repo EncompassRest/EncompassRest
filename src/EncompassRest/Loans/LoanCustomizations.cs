@@ -34,7 +34,7 @@ namespace EncompassRest.Loans
         /// The loan fields collection.
         /// </summary>
         [JsonIgnore]
-        public LoanFields Fields => _fields ?? (_fields = new LoanFields(this));
+        public LoanFields Fields => _fields ??= new LoanFields(this);
 
         [IdPropertyName(nameof(EncompassId))]
         string? IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }

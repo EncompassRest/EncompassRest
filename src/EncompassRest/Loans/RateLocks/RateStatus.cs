@@ -27,6 +27,5 @@ namespace EncompassRest.Loans.RateLocks
         /// </summary>
         [EnumMember(Value = "cancelled")]
         Cancelled = 3
-        
     }
 }

@@ -32,6 +32,5 @@ namespace EncompassRest.Loans.RateLocks
         /// </summary>
         [EnumMember(Value = "profitMargin")]
         ProfitMargin = 4
-
     }
 }

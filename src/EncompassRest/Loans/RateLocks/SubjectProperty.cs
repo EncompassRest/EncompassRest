@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace EncompassRest.Loans.RateLocks
 {
     /// <summary>
@@ -86,6 +83,5 @@ namespace EncompassRest.Loans.RateLocks
         /// Indicates whether the subject property is a Non-Warrantable Project Property.
         /// </summary>
         public bool? IsNonWarrantableProjectProperty { get => _isNonWarrantableProjectProperty; set => SetField(ref _isNonWarrantableProjectProperty, value); }
-
     }
 }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace EncompassRest.Loans.RateLocks
 {
     /// <summary>
@@ -32,6 +29,5 @@ namespace EncompassRest.Loans.RateLocks
         /// The value of the price adjustment.
         /// </summary>
         public decimal? Adjustment { get => _adjustment; set => SetField(ref _adjustment, value); }
-        
     }
 }

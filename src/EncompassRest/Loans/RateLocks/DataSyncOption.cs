@@ -17,6 +17,5 @@ namespace EncompassRest.Loans.RateLocks
         /// </summary>
         [EnumMember(Value = "syncLockToLoan")]
         SyncLockToLoan = 1
-        
     }
 }

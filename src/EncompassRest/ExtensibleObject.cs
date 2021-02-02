@@ -27,7 +27,7 @@ namespace EncompassRest
             return false;
         }
 
-        internal IDictionary<string, T> GetField<T>(ref DirtyDictionary<string, T>? field) => field ?? (field = new DirtyDictionary<string, T>(StringComparer.OrdinalIgnoreCase));
+        internal IDictionary<string, T> GetField<T>(ref DirtyDictionary<string, T>? field) => field ??= new DirtyDictionary<string, T>(StringComparer.OrdinalIgnoreCase);
 
         internal ExtensibleObject()
         {

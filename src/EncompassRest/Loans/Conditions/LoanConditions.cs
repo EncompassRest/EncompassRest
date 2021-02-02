@@ -38,21 +38,21 @@ namespace EncompassRest.Loans.Conditions
         /// <summary>
         /// The Loan Underwriting Conditions Apis.
         /// </summary>
-        public LoanUnderwritingConditions Underwriting => _underwriting ?? (_underwriting = new LoanUnderwritingConditions(Client, LoanId));
+        public LoanUnderwritingConditions Underwriting => _underwriting ??= new LoanUnderwritingConditions(Client, LoanId);
 
         ILoanUnderwritingConditions ILoanConditions.Underwriting => Underwriting;
 
         /// <summary>
         /// The Loan Preliminary Conditions Apis.
         /// </summary>
-        public LoanPreliminaryConditions Preliminary => _preliminary ?? (_preliminary = new LoanPreliminaryConditions(Client, LoanId));
+        public LoanPreliminaryConditions Preliminary => _preliminary ??= new LoanPreliminaryConditions(Client, LoanId);
 
         ILoanPreliminaryConditions ILoanConditions.Preliminary => Preliminary;
 
         /// <summary>
         /// The Loan PostClosing Conditions Apis.
         /// </summary>
-        public LoanPostClosingConditions PostClosing => _postClosing ?? (_postClosing = new LoanPostClosingConditions(Client, LoanId));
+        public LoanPostClosingConditions PostClosing => _postClosing ??= new LoanPostClosingConditions(Client, LoanId);
 
         ILoanPostClosingConditions ILoanConditions.PostClosing => PostClosing;
 

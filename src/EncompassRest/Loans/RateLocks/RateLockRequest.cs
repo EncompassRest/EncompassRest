@@ -1,8 +1,8 @@
-using EncompassRest.Utilities;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EncompassRest.Utilities;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.RateLocks
 {
@@ -146,5 +146,4 @@ namespace EncompassRest.Loans.RateLocks
         /// </summary>
         public Comparison? Comparison { get => _comparison; set => SetField(ref _comparison, value); }
     }
-
 }

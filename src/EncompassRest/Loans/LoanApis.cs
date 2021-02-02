@@ -168,70 +168,70 @@ namespace EncompassRest.Loans
         /// <summary>
         /// The Loan Documents Apis.
         /// </summary>
-        public LoanDocuments Documents => _documents ?? (_documents = new LoanDocuments(Client, LoanId));
+        public LoanDocuments Documents => _documents ??= new LoanDocuments(Client, LoanId);
 
         ILoanDocuments ILoanApis.Documents => Documents;
 
         /// <summary>
         /// The Loan Attachments Apis.
         /// </summary>
-        public LoanAttachments Attachments => _attachments ?? (_attachments = new LoanAttachments(Client, LoanId));
+        public LoanAttachments Attachments => _attachments ??= new LoanAttachments(Client, LoanId);
 
         ILoanAttachments ILoanApis.Attachments => Attachments;
 
         /// <summary>
         /// The Loan Custom Data Objects Apis.
         /// </summary>
-        public LoanCustomDataObjects CustomDataObjects => _customDataObjects ?? (_customDataObjects = new LoanCustomDataObjects(Client, LoanId));
+        public LoanCustomDataObjects CustomDataObjects => _customDataObjects ??= new LoanCustomDataObjects(Client, LoanId);
 
         ILoanCustomDataObjects ILoanApis.CustomDataObjects => CustomDataObjects;
 
         /// <summary>
         /// The Loan Associates Apis.
         /// </summary>
-        public LoanAssociates Associates => _associates ?? (_associates = new LoanAssociates(Client, LoanId));
+        public LoanAssociates Associates => _associates ??= new LoanAssociates(Client, LoanId);
 
         ILoanAssociates ILoanApis.Associates => Associates;
 
         /// <summary>
         /// The Loan Milestone Apis.
         /// </summary>
-        public LoanMilestones Milestones => _milestones ?? (_milestones = new LoanMilestones(Client, LoanId));
+        public LoanMilestones Milestones => _milestones ??= new LoanMilestones(Client, LoanId);
 
         ILoanMilestones ILoanApis.Milestones => Milestones;
 
         /// <summary>
         /// The Loan Milestone Free Roles Apis.
         /// </summary>
-        public LoanMilestoneFreeRoles MilestoneFreeRoles => _milestoneFreeRoles ?? (_milestoneFreeRoles = new LoanMilestoneFreeRoles(Client, LoanId));
+        public LoanMilestoneFreeRoles MilestoneFreeRoles => _milestoneFreeRoles ??= new LoanMilestoneFreeRoles(Client, LoanId);
 
         ILoanMilestoneFreeRoles ILoanApis.MilestoneFreeRoles => MilestoneFreeRoles;
 
         /// <summary>
         /// The Loan Field Reader Apis.
         /// </summary>
-        public LoanFieldReader FieldReader => _fieldReader ?? (_fieldReader = new LoanFieldReader(Client, LoanId));
+        public LoanFieldReader FieldReader => _fieldReader ??= new LoanFieldReader(Client, LoanId);
 
         ILoanFieldReader ILoanApis.FieldReader => FieldReader;
 
         /// <summary>
         /// The Loan Conditions Apis.
         /// </summary>
-        public LoanConditions Conditions => _conditions ?? (_conditions = new LoanConditions(Client, LoanId));
+        public LoanConditions Conditions => _conditions ??= new LoanConditions(Client, LoanId);
 
         ILoanConditions ILoanApis.Conditions => Conditions;
 
         /// <summary>
         /// The Loan Rate Lock Apis.
         /// </summary>
-        public LoanRateLocks RateLocks => _rateLocks ?? (_rateLocks = new LoanRateLocks(Client, LoanId));
+        public LoanRateLocks RateLocks => _rateLocks ??= new LoanRateLocks(Client, LoanId);
 
         ILoanRateLocks ILoanApis.RateLocks => RateLocks;
 
         /// <summary>
         /// The Loan Borrower Pairs Apis.
         /// </summary>
-        public BorrowerPairs BorrowerPairs => _borrowerPairs ?? (_borrowerPairs = new BorrowerPairs(Client, this as LoanObjectBoundApis, LoanId));
+        public BorrowerPairs BorrowerPairs => _borrowerPairs ??= new BorrowerPairs(Client, this as LoanObjectBoundApis, LoanId);
 
         IBorrowerPairs ILoanApis.BorrowerPairs => BorrowerPairs;
 
