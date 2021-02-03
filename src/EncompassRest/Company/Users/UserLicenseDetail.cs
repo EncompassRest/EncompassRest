@@ -11,6 +11,7 @@ namespace EncompassRest.Company.Users
         private DirtyValue<bool>? _enabled;
         private DirtyValue<string?>? _license;
         private DirtyValue<DateTime?>? _expirationDate;
+        private DirtyValue<DateTime?>? _issueDate;
 
         /// <summary>
         /// UserLicenseDetail State
@@ -31,5 +32,10 @@ namespace EncompassRest.Company.Users
         /// UserLicenseDetail ExpirationDate
         /// </summary>
         public DateTime? ExpirationDate { get => _expirationDate; set => SetField(ref _expirationDate, value); }
+
+        /// <summary>
+        /// UserLicenseDetail IssueDate
+        /// </summary>
+        public DateTime? IssueDate { get => _issueDate; set => SetField(ref _issueDate, value); }
     }
 }
