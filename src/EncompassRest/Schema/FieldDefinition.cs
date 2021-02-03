@@ -29,7 +29,7 @@ namespace EncompassRest.Schema
         /// <summary>
         /// FieldDefinition ParentField
         /// </summary>
-        public ParentFieldDefinition? ParentField { get; set; }
+        public FieldDefinition? ParentField { get; set; }
 
         /// <summary>
         /// FieldDefinition InstanceSpecifier
