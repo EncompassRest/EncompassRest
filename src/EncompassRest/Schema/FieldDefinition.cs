@@ -29,7 +29,7 @@ namespace EncompassRest.Schema
         /// <summary>
         /// FieldDefinition ParentField
         /// </summary>
-        public ParentFieldDefinition? ParentField { get; set; }
+        public FieldDefinition? ParentField { get; set; }
 
         /// <summary>
         /// FieldDefinition InstanceSpecifier
@@ -100,5 +100,15 @@ namespace EncompassRest.Schema
         /// FieldDefinition RequiresExclusiveLock
         /// </summary>
         public bool? RequiresExclusiveLock { get; set; }
+
+        /// <summary>
+        /// PipelineFieldDefinition MultiInstance
+        /// </summary>
+        public bool? MultiInstance { get; set; }
+
+        /// <summary>
+        /// PipelineFieldDefinition InstanceSpecifierType
+        /// </summary>
+        public int? InstanceSpecifierType { get; set; }
     }
 }
