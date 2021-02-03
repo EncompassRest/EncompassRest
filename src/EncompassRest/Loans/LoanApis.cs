@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Loans.Apis;
@@ -11,6 +12,7 @@ using EncompassRest.Loans.MilestoneFreeRoles;
 using EncompassRest.Loans.Milestones;
 using EncompassRest.Loans.RateLocks;
 using EncompassRest.ResourceLocks;
+using EncompassRest.Services;
 using EnumsNET;
 
 namespace EncompassRest.Loans
@@ -147,6 +149,34 @@ namespace EncompassRest.Loans
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
+        /// </summary>
+        /// <param name="format">Format that you want to export the loan to.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<byte[]> ExportToMismoAsync(MismoFormat format, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
+        /// </summary>
+        /// <param name="format">Format that you want to export the loan to.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<byte[]> ExportToMismoAsync(string format, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
+        /// </summary>
+        /// <param name="format">Format that you want to export the loan to.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Stream> ExportToMismoStreamAsync(MismoFormat format, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
+        /// </summary>
+        /// <param name="format">Format that you want to export the loan to.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns></returns>
+        Task<Stream> ExportToMismoStreamAsync(string format, CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -275,5 +305,17 @@ namespace EncompassRest.Loans
 
         /// <inheritdoc/>
         public Task UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.UnlockResourceAsync(lockId, LoanId, EntityType.Loan.GetValue()!, force, cancellationToken);
+
+        /// <inheritdoc/>
+        public Task<byte[]> ExportToMismoAsync(MismoFormat format, CancellationToken cancellationToken = default) => Client.Services.ExportLoanToMismoAsync(LoanId, format, cancellationToken);
+
+        /// <inheritdoc/>
+        public Task<byte[]> ExportToMismoAsync(string format, CancellationToken cancellationToken = default) => Client.Services.ExportLoanToMismoAsync(LoanId, format, cancellationToken);
+
+        /// <inheritdoc/>
+        public Task<Stream> ExportToMismoStreamAsync(MismoFormat format, CancellationToken cancellationToken = default) => Client.Services.ExportLoanToMismoStreamAsync(LoanId, format, cancellationToken);
+
+        /// <inheritdoc/>
+        public Task<Stream> ExportToMismoStreamAsync(string format, CancellationToken cancellationToken = default) => Client.Services.ExportLoanToMismoStreamAsync(LoanId, format, cancellationToken);
     }
 }
