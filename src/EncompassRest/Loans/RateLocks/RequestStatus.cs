@@ -27,6 +27,5 @@ namespace EncompassRest.Loans.RateLocks
         /// </summary>
         [EnumMember(Value = "Expired Lock")]
         ExpiredLock = 3
-        
     }
 }

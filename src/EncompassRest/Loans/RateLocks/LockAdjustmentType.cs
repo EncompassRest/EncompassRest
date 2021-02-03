@@ -22,6 +22,5 @@ namespace EncompassRest.Loans.RateLocks
         /// </summary>
         [EnumMember(Value = "lockExtensionAdjustment")]
         LockExtensionAdjustment = 2
-
     }
 }

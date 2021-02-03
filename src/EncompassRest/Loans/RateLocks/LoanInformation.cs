@@ -1,6 +1,6 @@
-using EncompassRest.Loans.Enums;
 using System;
 using System.Collections.Generic;
+using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans.RateLocks
 {
@@ -309,6 +309,5 @@ namespace EncompassRest.Loans.RateLocks
         /// Pricing history data.
         /// </summary>
         public string? PricingHistoryData { get => _pricingHistoryData; set => SetField(ref _pricingHistoryData, value); }
-
     }
 }

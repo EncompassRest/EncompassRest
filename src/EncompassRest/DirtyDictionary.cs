@@ -17,7 +17,7 @@ namespace EncompassRest
 
         public ICollection<TKey> Keys => _dictionary.Keys;
 
-        public ICollection<TValue> Values => _values ?? (_values = new ValueCollection(this));
+        public ICollection<TValue> Values => _values ??= new ValueCollection(this);
 
         public int Count => _dictionary.Count;
 

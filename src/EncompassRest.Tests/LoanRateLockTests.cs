@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Loans.RateLocks;
@@ -100,8 +99,6 @@ namespace EncompassRest.Tests
                 retrievedRateLock = await rateLockApi.GetRateLockAsync(requestId, LockView.Detailed);
                 Assert.IsNotNull(retrievedRateLock);
                 Assert.AreEqual(LockStatus.Denied, retrievedRateLock.LockStatus);
-
-
             }
             finally
             {
@@ -157,6 +154,5 @@ namespace EncompassRest.Tests
                 }
             }
         }
-
     }
 }

@@ -33,7 +33,7 @@ namespace EncompassRest.Utilities
 
         public Type Type { get; }
 
-        public TypeInfo TypeInfo => _typeInfo ?? (_typeInfo = Type.GetTypeInfo());
+        public TypeInfo TypeInfo => _typeInfo ??= Type.GetTypeInfo();
 
         public bool IsNullable => _isNullable ?? (_isNullable = !IsValueType || (TypeInfo.IsGenericType && !TypeInfo.IsGenericTypeDefinition && Type.GetGenericTypeDefinition() == OpenNullableType)).GetValueOrDefault();
 
@@ -43,7 +43,7 @@ namespace EncompassRest.Utilities
 
         public bool IsEnum => _isEnum ?? (_isEnum = TypeInfo.IsEnum).GetValueOrDefault();
 
-        public TypeData? NonNullableValueTypeData => IsNullableValueType ? _nonNullableTypeData ?? (_nonNullableTypeData = Get(Type.GenericTypeArguments[0])) : null;
+        public TypeData? NonNullableValueTypeData => IsNullableValueType ? (_nonNullableTypeData ??= Get(Type.GenericTypeArguments[0])) : null;
 
         public TypeData(Type type)
         {

@@ -73,11 +73,11 @@ namespace EncompassRest
             }
         }
 
-        internal T GetField<T>(ref T? field) where T : DirtyExtensibleObject, new() => field ?? (field = new T());
+        internal T GetField<T>(ref T? field) where T : DirtyExtensibleObject, new() => field ??= new T();
 
-        internal IList<T> GetField<T>(ref DirtyList<T>? field) => field ?? (field = new DirtyList<T>());
+        internal IList<T> GetField<T>(ref DirtyList<T>? field) => field ??= new DirtyList<T>();
 
-        internal IList<T> GetField<T>(ref List<T>? field) => field ?? (field = new List<T>());
+        internal IList<T> GetField<T>(ref List<T>? field) => field ??= new List<T>();
 
         internal new IDictionary<string, T> GetField<T>(ref DirtyDictionary<string, T>? field) => base.GetField(ref field);
 

@@ -1,6 +1,4 @@
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 
 namespace EncompassRest.Loans.RateLocks
 {
@@ -42,6 +40,5 @@ namespace EncompassRest.Loans.RateLocks
             : base(entityId, entityType)
         {
         }
-
     }
 }

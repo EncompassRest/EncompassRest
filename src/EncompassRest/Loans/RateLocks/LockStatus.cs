@@ -57,6 +57,5 @@ namespace EncompassRest.Loans.RateLocks
         /// </summary>
         [EnumMember(Value = "Old Registration")]
         OldRegistration = 9
-        
     }
 }

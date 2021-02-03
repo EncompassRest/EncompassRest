@@ -1,8 +1,7 @@
+using System;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 
 namespace EncompassRest.Loans.RateLocks
 {
