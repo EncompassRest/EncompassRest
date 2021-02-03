@@ -122,5 +122,20 @@ namespace EncompassRest.Tests
                 await client.Webhook.DeleteSubscriptionAsync(subscriptionId);
             }
         }
+
+        [TestMethod]
+        [ApiTest]
+        public async Task Webhook_GetEvents()
+        {
+            var client = await GetTestClientAsync();
+            var events = await client.Webhook.GetEventsAsync();
+            Assert.IsTrue(events.Count > 0);
+            AssertNoExtensionData(events, "Events", null, true);
+            foreach (var @event in events.Take(10))
+            {
+                var e = await client.Webhook.GetEventAsync(@event.Event.EventId);
+                AssertNoExtensionData(e, "Event", @event.Event.EventId, true);
+            }
+        }
     }
 }

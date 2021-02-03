@@ -42,20 +42,24 @@
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <AssemblyTitle>EncompassRest .NET Standard 2.0</AssemblyTitle>
     <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
+    <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
     <AssemblyTitle>EncompassRest .NET Standard 1.1</AssemblyTitle>
     <DefineConstants></DefineConstants>
+    <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
     <AssemblyTitle>EncompassRest .NET 4.5</AssemblyTitle>
     <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
+    <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
     <AssemblyTitle>EncompassRest .NET 4.6</AssemblyTitle>
     <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
+    <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>
 </Project>

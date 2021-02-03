@@ -105,9 +105,9 @@ namespace EncompassRest.Loans
         /// <param name="fieldPattern">The field pattern to search for.</param>
         /// <param name="modelPathPattern">The model path pattern associated with the field pattern.</param>
         /// <returns></returns>
-#pragma warning disable CS8614 // Nullability of reference types in type of parameter doesn't match implicitly implemented member.
+#pragma warning disable CS8767 // Nullability of reference types in type of parameter doesn't match implicitly implemented member (possibly because of nullability attributes).
         public bool TryGetValue(string fieldPattern, [NotNullWhen(true)] out string? modelPathPattern)
-#pragma warning restore CS8614 // Nullability of reference types in type of parameter doesn't match implicitly implemented member.
+#pragma warning restore CS8767 // Nullability of reference types in type of parameter doesn't match implicitly implemented member (possibly because of nullability attributes).
         {
             Preconditions.NotNullOrEmpty(fieldPattern, nameof(fieldPattern));
 
