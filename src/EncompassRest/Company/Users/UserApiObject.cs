@@ -21,7 +21,7 @@ namespace EncompassRest.Company.Users
         /// <inheritdoc/>
         public string UserId { get; }
 
-        internal UserApiObject(EncompassRestClient client, string userId, string? baseApiPath)
+        internal UserApiObject(IEncompassRestClient client, string userId, string? baseApiPath)
             : base(client, $"encompass/v1/company/users/{userId}{baseApiPath?.PrecedeWith("/")}")
         {
             UserId = userId;

@@ -195,7 +195,7 @@ namespace EncompassRest.Webhook
     /// </summary>
     public sealed class Webhook : ApiObject, IWebhook
     {
-        internal Webhook(EncompassRestClient client)
+        internal Webhook(IEncompassRestClient client)
             : base(client, "webhook/v1")
         {
         }

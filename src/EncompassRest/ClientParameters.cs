@@ -89,7 +89,7 @@ namespace EncompassRest
             ApiClientSecret = apiClientSecret;
         }
 
-        internal async Task TryInitializeAsync(EncompassRestClient client, CommonCache commonCache, CancellationToken cancellationToken)
+        internal async Task TryInitializeAsync(IEncompassRestClient client, CommonCache commonCache, CancellationToken cancellationToken)
         {
             if (CustomFieldsCacheInitialization != CacheInitialization.Never && !((DateTime.UtcNow - commonCache.CustomFieldsLastRefreshedUtc)?.TotalMinutes < (int)CustomFieldsCacheInitialization))
             {

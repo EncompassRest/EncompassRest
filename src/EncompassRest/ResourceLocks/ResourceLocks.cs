@@ -6,9 +6,9 @@ using EnumsNET;
 
 namespace EncompassRest.ResourceLocks
 {
-    internal sealed class ResourceLocks : ApiObject
+    public sealed class ResourceLocks : ApiObject
     {
-        internal ResourceLocks(EncompassRestClient client)
+        public ResourceLocks(IEncompassRestClient client)
             : base(client, "encompass/v1/resourceLocks")
         {
         }

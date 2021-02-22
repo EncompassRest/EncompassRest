@@ -157,13 +157,6 @@ namespace EncompassRest.Contacts
         /// </summary>
         /// <param name="client">The <see cref="EncompassRestClient"/> to associate with this object.</param>
         /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
-        public void Initialize(EncompassRestClient client, string contactId) => Initialize((IEncompassRestClient)client, contactId);
-
-        /// <summary>
-        /// Initializes the contact object with the specified <paramref name="client"/> and <paramref name="contactId"/>. This allows the use of the <see cref="Notes"/> property.
-        /// </summary>
-        /// <param name="client">The <see cref="EncompassRestClient"/> to associate with this object.</param>
-        /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
         public void Initialize(IEncompassRestClient client, string contactId)
         {
             Preconditions.NotNull(client, nameof(client));

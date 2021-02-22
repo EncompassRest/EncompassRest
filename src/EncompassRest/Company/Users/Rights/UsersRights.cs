@@ -48,7 +48,7 @@ namespace EncompassRest.Company.Users.Rights
     /// </summary>
     public sealed class UsersRights : UserApiObject, IUsersRights
     {
-        internal UsersRights(EncompassRestClient client, string userId)
+        internal UsersRights(IEncompassRestClient client, string userId)
             : base(client, userId, null)
         {
         }

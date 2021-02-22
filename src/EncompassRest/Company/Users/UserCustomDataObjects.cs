@@ -17,7 +17,7 @@ namespace EncompassRest.Company.Users
         /// <inheritdoc/>
         public string UserId { get; }
 
-        internal UserCustomDataObjects(EncompassRestClient client, string userId)
+        internal UserCustomDataObjects(IEncompassRestClient client, string userId)
             : base(client, $"encompass/v1/users/{userId}/customObjects")
         {
             UserId = userId;

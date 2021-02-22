@@ -31,6 +31,10 @@ namespace EncompassRest
 #endif
     {
         /// <summary>
+        /// The http client
+        /// </summary>
+        HttpClient HttpClient { get; }
+        /// <summary>
         /// The access token and related Apis.
         /// </summary>
         IAccessToken AccessToken { get; }
@@ -94,6 +98,8 @@ namespace EncompassRest
         /// The number of times to retry requests when there's a gateway timeout. Default is 0.
         /// </summary>
         int TimeoutRetryCount { get; set; }
+        
+        Func<TokenCreator, Task<string>>? TokenInitializer { get; }
         /// <summary>
         /// Indicates how an expired token is handled by the client.
         /// </summary>
@@ -106,6 +112,10 @@ namespace EncompassRest
         /// The Webhook Apis.
         /// </summary>
         IWebhook Webhook { get; }
+        /// <summary>
+        /// Expose Resource Locks from Interface
+        /// </summary>
+        ResourceLocks.ResourceLocks ResourceLocks { get; }
         /// <summary>
         /// Property for sharing common cache between multiple clients such as custom field descriptors.
         /// </summary>
@@ -124,6 +134,7 @@ namespace EncompassRest
         /// An event that occurs before attempting to retry a request when there's a gateway timeout.
         /// </summary>
         event EventHandler<ITimeoutRetryEventArgs> TimeoutRetry;
+        void InvokeApiResponse(HttpResponseMessage response);
     }
 
     /// <summary>
@@ -265,10 +276,12 @@ namespace EncompassRest
         /// </summary>
         public AccessToken AccessToken { get; }
 
+        public Func<TokenCreator, Task<string>>? TokenInitializer { get; private set; }
+
         IAccessToken IEncompassRestClient.AccessToken => AccessToken;
 
         /// <inheritdoc/>
-        public TokenExpirationHandling TokenExpirationHandling => _tokenInitializer != null ? TokenExpirationHandling.RetrieveNewToken : TokenExpirationHandling.Default;
+        public TokenExpirationHandling TokenExpirationHandling => TokenInitializer != null ? TokenExpirationHandling.RetrieveNewToken : TokenExpirationHandling.Default;
 
         /// <inheritdoc/>
         public TimeSpan Timeout { get; }
@@ -405,7 +418,7 @@ namespace EncompassRest
 
         IContacts IEncompassRestClient.Contacts => Contacts;
 
-        internal ResourceLocks.ResourceLocks ResourceLocks
+        public ResourceLocks.ResourceLocks ResourceLocks
         {
             get
             {
@@ -515,14 +528,14 @@ namespace EncompassRest
         /// <inheritdoc/>
         public CommonCache CommonCache { get; }
 
-        internal HttpClient HttpClient
+        public HttpClient HttpClient
         {
             get
             {
                 var httpClient = _httpClient;
                 if (httpClient == null)
                 {
-                    httpClient = new HttpClient(new RetryHandler(this, _tokenInitializer != null))
+                    httpClient = new HttpClient(new RetryHandler(this, TokenInitializer != null))
                     {
                         Timeout = Timeout
                     };
@@ -583,7 +596,7 @@ namespace EncompassRest
             _interfaceApiResponse?.Invoke(sender, e);
         }
         
-        internal void InvokeApiResponse(HttpResponseMessage response)
+        public void InvokeApiResponse(HttpResponseMessage response)
         {
             ApiResponse?.Invoke(this, new ApiResponseEventArgs(response));
         }
@@ -593,7 +606,7 @@ namespace EncompassRest
             Timeout = parameters.Timeout > TimeSpan.Zero ? parameters.Timeout : TimeSpan.FromSeconds(100);
             _timeoutRetryCount = parameters.TimeoutRetryCount;
             AccessToken = new AccessToken(parameters.ApiClientId, parameters.ApiClientSecret, this);
-            _tokenInitializer = tokenInitializer;
+            TokenInitializer = tokenInitializer;
             ApiResponse = parameters.ApiResponse;
             CommonCache = (parameters.CommonCache ??= new CommonCache());
             UndefinedCustomFieldHandling = parameters.UndefinedCustomFieldHandling;
@@ -624,11 +637,11 @@ namespace EncompassRest
 
         internal sealed class RetryHandler : DelegatingHandler
         {
-            private readonly EncompassRestClient _client;
+            private readonly IEncompassRestClient _client;
             private readonly bool _retryOnUnauthorized;
             private readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1);
 
-            public RetryHandler(EncompassRestClient client, bool retryOnUnauthorized)
+            public RetryHandler(IEncompassRestClient client, bool retryOnUnauthorized)
                 : base(new HttpClientHandler())
             {
                 _client = client;
@@ -650,7 +663,7 @@ namespace EncompassRest
                                 {
                                     if (string.Equals(request.Headers.Authorization.Parameter, _client.AccessToken.Token, StringComparison.Ordinal))
                                     {
-                                        _client.AccessToken.Token = await _client._tokenInitializer!(new TokenCreator(_client, cancellationToken)).ConfigureAwait(false);
+                                        _client.AccessToken.Token = await _client.TokenInitializer!(new TokenCreator(_client, cancellationToken)).ConfigureAwait(false);
                                         _client.HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_client.AccessToken.Type, _client.AccessToken.Token);
                                     }
                                 }
@@ -662,15 +675,15 @@ namespace EncompassRest
                                 response = await SendRequestAsync(request, cancellationToken).ConfigureAwait(false);
                             }
                             break;
-                        case HttpStatusCode.GatewayTimeout:
-                            var retryCount = 0;
-                            while (response.StatusCode == HttpStatusCode.GatewayTimeout && retryCount < _client.TimeoutRetryCount)
-                            {
-                                ++retryCount;
-                                _client.TimeoutRetry?.Invoke(_client, new TimeoutRetryEventArgs(request, response, retryCount));
-                                response = await SendRequestAsync(request, cancellationToken).ConfigureAwait(false);
-                            }
-                            break;
+                        //case HttpStatusCode.GatewayTimeout:
+                        //    var retryCount = 0;
+                        //    while (response.StatusCode == HttpStatusCode.GatewayTimeout && retryCount < _client.TimeoutRetryCount)
+                        //    {
+                        //        ++retryCount;
+                        //        _client.TimeoutRetry?.Invoke(_client, new TimeoutRetryEventArgs(request, response, retryCount));
+                        //        response = await SendRequestAsync(request, cancellationToken).ConfigureAwait(false);
+                        //    }
+                        //    break;
                     }
                 }
                 return response;

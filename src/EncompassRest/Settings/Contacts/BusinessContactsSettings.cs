@@ -12,7 +12,7 @@
     /// </summary>
     public sealed class BusinessContactsSettings : ContactsSettings, IBusinessContactsSettings
     {
-        internal BusinessContactsSettings(EncompassRestClient client)
+        internal BusinessContactsSettings(IEncompassRestClient client)
             : base(client, "encompass/v1/settings/businessContacts")
         {
         }
