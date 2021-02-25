@@ -1,9 +1,9 @@
-![GitHub last commit (master)](https://img.shields.io/github/last-commit/EncompassRest/EncompassRest/master.svg?logo=github&logoColor=lightgray&style=popout-square)
-[![NuGet Version](https://img.shields.io/nuget/v/EncompassRest.svg?style=popout-square&logoColor=lightgray&logo=nuget)](https://www.nuget.org/packages/EncompassRest/)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/EncompassRest.svg?style=popout-square&logoColor=lightgray&logo=nuget)](https://www.nuget.org/packages/EncompassRest/)
+![GitHub last commit (master)](https://img.shields.io/github/last-commit/EncompassApi/EncompassApi/master.svg?logo=github&logoColor=lightgray&style=popout-square)
+[![NuGet Version](https://img.shields.io/nuget/v/EncompassApi.svg?style=popout-square&logoColor=lightgray&logo=nuget)](https://www.nuget.org/packages/EncompassApi/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/EncompassApi.svg?style=popout-square&logoColor=lightgray&logo=nuget)](https://www.nuget.org/packages/EncompassApi/)
 [![Build status](https://img.shields.io/azure-devops/build/tydude4christ/Public/1.svg?style=popout-square&logoColor=lightgray&logo=azuredevops)](https://dev.azure.com/tydude4christ/Public/_build?definitionId=1)
 
-# EncompassRest
+# EncompassApi
 Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+.
 
 ## Why does this exist?
@@ -11,7 +11,7 @@ You may wonder why this library exists when Ellie Mae has provided their own [En
 
 First, the Encompass API .NET Language Bindings were released long after the API's became available so users needed a common .NET library for consuming the Encompass API's, hence this library was born.
 
-Second, the swagger generated Encompass API .NET Language Bindings are less robust compared to the custom crafted, well thought-out, and thoroughly tested EncompassRest library.
+Second, the swagger generated Encompass API .NET Language Bindings are less robust compared to the custom crafted, well thought-out, and thoroughly tested EncompassApi library.
 
 ### More features
 * Field ID support
@@ -28,7 +28,7 @@ Second, the swagger generated Encompass API .NET Language Bindings are less robu
 * Uses `decimal` instead of `double` to prevent precision loss
 
 ### Simpler
-* More convenient interface with a single defined entry point, the `EncompassRestClient` object which is the equivalent of the `Session` object in the SDK
+* More convenient interface with a single defined entry point, the `EncompassApiClient` object which is the equivalent of the `Session` object in the SDK
 * Simpler Type names, e.g. `UCDDetail` instead of `LoanContractClosingCostClosingDisclosure3UCDDetails`
 * Single NuGet package
 * No configuration files
@@ -40,13 +40,13 @@ Second, the swagger generated Encompass API .NET Language Bindings are less robu
 * `HttpClient` is in general more performant over `RestSharp`
 
 ## Getting started
-1. Install the [EncompassRest](https://www.nuget.org/packages/EncompassRest) Nuget package.
+1. Install the [EncompassApi](https://www.nuget.org/packages/EncompassApi) Nuget package.
 2. [Create an async method](#create-an-async-method) in your consuming code.
-3. [Create an `EncompassRestClient` object](#create-an-encompassrestclient-object).
-4. [Use `EncompassRestClient` object](#use-encompassrestclient-object) to make API calls.
+3. [Create an `EncompassApiClient` object](#create-an-EncompassApiclient-object).
+4. [Use `EncompassApiClient` object](#use-EncompassApiclient-object) to make API calls.
 
 ### Create an async method
-EncompassRest is a fully asynchronous library meaning all of it's Encompass API calls are made asynchronously to allow great performance for maximum throughput. To get started using the library you need to create an `async` method. To avoid deadlocks with async code it is recommended you **_DO NOT_** use `Task.Result` or the `Task.Wait` methods and instead implement `async` all the way from the top, e.g. `Main` or your `Controller`s actions.
+EncompassApi is a fully asynchronous library meaning all of it's Encompass API calls are made asynchronously to allow great performance for maximum throughput. To get started using the library you need to create an `async` method. To avoid deadlocks with async code it is recommended you **_DO NOT_** use `Task.Result` or the `Task.Wait` methods and instead implement `async` all the way from the top, e.g. `Main` or your `Controller`s actions.
 
 #### Web apps:
 ```c#
@@ -77,12 +77,12 @@ public void Main()
 }
 ```
 
-### Create an `EncompassRestClient` object
-The `EncompassRestClient` class implements `IDisposable` so it is recommended to use a `using` statement to automatically dispose of the object.
+### Create an `EncompassApiClient` object
+The `EncompassApiClient` class implements `IDisposable` so it is recommended to use a `using` statement to automatically dispose of the object.
 
 #### From user credentials which auto-retrieves new token when expired
 ```c#
-using (var client = await EncompassRestClient.CreateAsync(
+using (var client = await EncompassApiClient.CreateAsync(
     new ClientParameters("apiClientId", "apiClientSecret"),
     tokenCreator => tokenCreator.FromUserCredentialsAsync("encompassInstanceId", "encompassUserId", "encompassPassword")))
 {
@@ -92,7 +92,7 @@ using (var client = await EncompassRestClient.CreateAsync(
 
 #### From authorization code
 ```c#
-using (var client = await EncompassRestClient.CreateFromAuthorizationCodeAsync(
+using (var client = await EncompassApiClient.CreateFromAuthorizationCodeAsync(
     new ClientParameters("apiClientId", "apiClientSecret"), "redirectUri", "authorizationCode"))
 {
     // use client
@@ -101,15 +101,15 @@ using (var client = await EncompassRestClient.CreateFromAuthorizationCodeAsync(
 
 #### From access token
 ```c#
-using (var client = await EncompassRestClient.CreateFromAccessTokenAsync(
+using (var client = await EncompassApiClient.CreateFromAccessTokenAsync(
     new ClientParameters("apiClientId", "apiClientSecret"), "accessToken"))
 {
     // use client
 }
 ```
 
-### Use `EncompassRestClient` object
-Use the various properties on `EncompassRestClient` such as `Loans`, `Schema`, `Webhook`, `Pipeline`, and `BatchUpdate` to make Encompass API calls.
+### Use `EncompassApiClient` object
+Use the various properties on `EncompassApiClient` such as `Loans`, `Schema`, `Webhook`, `Pipeline`, and `BatchUpdate` to make Encompass API calls.
 
 ---
 

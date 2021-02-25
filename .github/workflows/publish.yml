@@ -24,10 +24,10 @@ jobs:
         NUGET_AUTH_TOKEN: ${{ github.token }}
 
     - name: Restore NuGet Packages
-      run: dotnet restore src/EncompassRest/EncompassRest.csproj
+      run: dotnet restore src/EncompassApi/EncompassApi.csproj
 
     - name: Build Solution
-      run: dotnet build -c $env:CONFIGURATION src/EncompassRest/EncompassRest.csproj
+      run: dotnet build -c $env:CONFIGURATION src/EncompassApi/EncompassApi.csproj
 
     - name: Push NuGet Package
-      run: dotnet nuget push --no-symbols --skip-duplicates --api-key ${{ github.token }} "src/EncompassRest/bin/Release/**/*.nupkg"
+      run: dotnet nuget push --no-symbols --skip-duplicates --api-key ${{ github.token }} "src/EncompassApi/bin/Release/**/*.nupkg"
