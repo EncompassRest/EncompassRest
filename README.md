@@ -1,7 +1,4 @@
 ![GitHub last commit (master)](https://img.shields.io/github/last-commit/EncompassApi/EncompassApi/master.svg?logo=github&logoColor=lightgray&style=popout-square)
-[![NuGet Version](https://img.shields.io/nuget/v/EncompassApi.svg?style=popout-square&logoColor=lightgray&logo=nuget)](https://www.nuget.org/packages/EncompassApi/)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/EncompassApi.svg?style=popout-square&logoColor=lightgray&logo=nuget)](https://www.nuget.org/packages/EncompassApi/)
-[![Build status](https://img.shields.io/azure-devops/build/tydude4christ/Public/1.svg?style=popout-square&logoColor=lightgray&logo=azuredevops)](https://dev.azure.com/tydude4christ/Public/_build?definitionId=1)
 
 # EncompassApi
 Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+.
