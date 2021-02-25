@@ -4,7 +4,6 @@ on:
     workflows: ["Build"]
     branches:
       - master
-      - feature/*
     types:
       - completed
 
@@ -30,5 +29,5 @@ jobs:
     - name: Build Solution
       run: dotnet build -c $env:CONFIGURATION src/EncompassRest/EncompassRest.csproj
 
-    # - name: Push NuGet Package
-    #   run: dotnet nuget push --no-symbols --skip-duplicates --api-key ${{ github.token }} "src/EncompassRest/bin/Release/**/*.nupkg"
+    - name: Push NuGet Package
+      run: dotnet nuget push --no-symbols --skip-duplicates --api-key ${{ github.token }} "src/EncompassRest/bin/Release/**/*.nupkg"
