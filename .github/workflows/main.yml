@@ -1,0 +1,24 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+      - feature/*
+
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      CONFIGURATION: Release
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+
+    - name: Restore NuGet Packages
+      run: dotnet restore src/EncompassRest/EncompassRest.csproj
+
+    - name: Build Solution
+      run: dotnet build -c $env:CONFIGURATION src/EncompassRest/EncompassRest.csproj
