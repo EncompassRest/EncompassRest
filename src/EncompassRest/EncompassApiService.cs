@@ -27,13 +27,9 @@ namespace EncompassRest
 {
     public class EncompassApiService : IEncompassRestClient
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly HttpClient _httpClient;
         private readonly IClientParameters _clientParameters;
 
-        private readonly Func<TokenCreator, Task<string>>? _tokenInitializer;
-        private int _timeoutRetryCount;
-
-        private HttpClient? _httpClient;
         private Loans.Loans? _loans;
         private Schema.Schema? _schema;
         private Webhook.Webhook? _webhook;
@@ -50,88 +46,17 @@ namespace EncompassRest
         private BaseApiClient? _baseApiClient;
         private EFolder.EFolder? _eFolder;
 
-        public EncompassApiService(IHttpClientFactory httpClientFactory, IClientParameters parameters)
+        public EncompassApiService(HttpClient httpClient, IClientParameters parameters)
         {
-            _httpClientFactory = httpClientFactory;
+            _httpClient = httpClient;
             _clientParameters = parameters;
 
-            Timeout = parameters.Timeout > TimeSpan.Zero ? parameters.Timeout : TimeSpan.FromSeconds(100);
-            _timeoutRetryCount = parameters.TimeoutRetryCount;
-            AccessToken = new AccessToken(parameters.ApiClientId, parameters.ApiClientSecret, this);
-            //_tokenInitializer = tokenInitializer;
             ApiResponse = parameters.ApiResponse;
             CommonCache = parameters.CommonCache ?? (parameters.CommonCache = new CommonCache());
             UndefinedCustomFieldHandling = parameters.UndefinedCustomFieldHandling;
-            BaseAddress = (parameters.BaseAddress?.Length ?? 0) == 0 ? "https://api.elliemae.com/" : parameters.BaseAddress!;
-
         }
 
         #region Properties
-        /// <summary>
-        /// The access token and related Apis.
-        /// </summary>
-        public AccessToken AccessToken { get; }
-
-        public Func<TokenCreator, Task<string>>? TokenInitializer { get; private set; }
-
-        IAccessToken IEncompassRestClient.AccessToken => AccessToken;
-
-        /// <summary>
-        /// Indicates how an expired token is handled by the client.
-        /// </summary>
-        public TokenExpirationHandling TokenExpirationHandling => _tokenInitializer != null ? TokenExpirationHandling.RetrieveNewToken : TokenExpirationHandling.Default;
-
-        /// <summary>
-        /// The time span before Api requests are considered timed-out. Default is 100 seconds.
-        /// </summary>
-        public TimeSpan Timeout { get; }
-
-        /// <summary>
-        /// The number of times to retry requests when there's a gateway timeout. Default is 0.
-        /// </summary>
-        public int TimeoutRetryCount
-        {
-            get => _timeoutRetryCount;
-            set
-            {
-                Preconditions.GreaterThanOrEquals(value, nameof(TimeoutRetryCount), 0);
-                Preconditions.LessThanOrEquals(value, nameof(TimeoutRetryCount), 3);
-
-                _timeoutRetryCount = value;
-            }
-        }
-
-        /// <summary>
-        /// An event that occurs before attempting to retry a request when there's a gateway timeout.
-        /// </summary>
-        public event EventHandler<TimeoutRetryEventArgs>? TimeoutRetry;
-
-        private EventHandler<ITimeoutRetryEventArgs>? _interfaceTimeoutRetry;
-
-        event EventHandler<ITimeoutRetryEventArgs>? IEncompassRestClient.TimeoutRetry
-        {
-            add
-            {
-                var result = _interfaceTimeoutRetry += value;
-                if (result != null)
-                {
-                    TimeoutRetry += InterfaceTimeoutRetry;
-                }
-            }
-            remove
-            {
-                var result = _interfaceTimeoutRetry -= value;
-                if (result == null)
-                {
-                    TimeoutRetry -= InterfaceTimeoutRetry;
-                }
-            }
-        }
-
-        private void InterfaceTimeoutRetry(object sender, TimeoutRetryEventArgs e)
-        {
-            _interfaceTimeoutRetry?.Invoke(sender, e);
-        }
 
         /// <summary>
         /// Specifies how the client should handle undefined custom fields.
@@ -364,19 +289,16 @@ namespace EncompassRest
         /// </summary>
         public CommonCache CommonCache { get; }
 
+        /// <summary>
+        /// Set by ClientParameters.BaseAddress. The URL to call for API calls. Defaults to "https://api.elliemae.com/".
+        /// </summary>
+        public string BaseAddress { get; set; }
+
         public HttpClient HttpClient
         {
             get
-            {
-                var httpClient = _httpClient;
-                if (httpClient == null)
-                {
-                    httpClient = _httpClientFactory.CreateClient();
-                    //TODO timeout in client
-                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(AccessToken.Type, AccessToken.Token);
-                    httpClient = Interlocked.CompareExchange(ref _httpClient, httpClient, null) ?? httpClient;
-                }
-                return httpClient;
+            {                
+                return _httpClient;
             }
         }
 
@@ -393,11 +315,6 @@ namespace EncompassRest
         }
 
         IBaseApiClient IEncompassRestClient.BaseApiClient => BaseApiClient;
-
-        /// <summary>
-        /// Set by ClientParameters.BaseAddress. The URL to call for API calls. Defaults to "https://api.elliemae.com/".
-        /// </summary>
-        public string BaseAddress { get; set; }
         #endregion
 
         /// <summary>
@@ -442,7 +359,6 @@ namespace EncompassRest
         /// </summary>
         public void Dispose()
         {
-            AccessToken.Dispose();
             _httpClient?.Dispose();
         }
 #if IASYNC_DISPOSABLE
@@ -452,7 +368,6 @@ namespace EncompassRest
         /// <returns></returns>
         public async ValueTask DisposeAsync()
         {
-            await AccessToken.RevokeAsync().ConfigureAwait(false);
             Dispose();
         }
 #endif

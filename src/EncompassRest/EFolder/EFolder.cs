@@ -170,10 +170,7 @@ namespace EncompassRest.EFolder
                 : base(client, null)
             {
                 //TODO: httpClient
-                _httpClient = new HttpClient
-                {
-                    Timeout = Client.Timeout
-                };
+                
             }
 
             internal override string? BaseAddress => null;

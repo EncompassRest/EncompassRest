@@ -25,6 +25,7 @@
   <ItemGroup>
     <PackageReference Include="Enums.NET" Version="4.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.12" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="3.1.12" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <EmbeddedResource Include="LoanFields.zip" />
