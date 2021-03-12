@@ -14,7 +14,7 @@ namespace EncompassApi.Contacts
     /// </summary>
     public sealed class ContactCursor : Cursor<ContactData>, IContactCursor
     {
-        internal ContactCursor(ApiObject apiObject, EncompassApiClient client, string? cursorId, int count, IEnumerable<string>? fields)
+        internal ContactCursor(ApiObject apiObject, IEncompassApiClient client, string? cursorId, int count, IEnumerable<string>? fields)
             : base(apiObject, client, cursorId, count, fields)
         {
         }

@@ -14,8 +14,8 @@ namespace EncompassApi.LoanPipeline
     /// </summary>
     public sealed class LoanPipelineCursor : Cursor<LoanPipelineData>, ILoanPipelineCursor
     {
-        internal LoanPipelineCursor(EncompassApiClient client, string? cursorId, int count, IEnumerable<string>? fields)
-            : base(client.Pipeline, client, cursorId, count, fields)
+        internal LoanPipelineCursor(IEncompassApiClient client, string? cursorId, int count, IEnumerable<string>? fields)
+            : base((ApiObject)client.Pipeline, client, cursorId, count, fields)
         {
         }
     }

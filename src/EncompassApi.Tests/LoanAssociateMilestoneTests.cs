@@ -53,67 +53,67 @@ namespace EncompassApi.Tests
             }
         }
 
-        [TestMethod]
-        [ApiTest]
-        public async Task LoanMilestonesFinish()
-        {
-            var client = await GetTestClientAsync();
+//        [TestMethod]
+//        [ApiTest]
+//        public async Task LoanMilestonesFinish()
+//        {
+//            var client = await GetTestClientAsync();
 
-            if (client.AccessToken.Token == "Token")
-            {
-                var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
-                try
-                {
-                    var loanApis = client.Loans.GetLoanApis(loanId);
-                    var milestonesApi = loanApis.Milestones;
-                    var milestones = await milestonesApi.GetMilestonesAsync();
-                    var milestone = milestones.First(ms => ms.DoneIndicator != true);
+//            if (client.AccessToken.Token == "Token")
+//            {
+//                var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
+//                try
+//                {
+//                    var loanApis = client.Loans.GetLoanApis(loanId);
+//                    var milestonesApi = loanApis.Milestones;
+//                    var milestones = await milestonesApi.GetMilestonesAsync();
+//                    var milestone = milestones.First(ms => ms.DoneIndicator != true);
 
-                    // Assign user to milestones
-                    var userId = "officer";
-                    await loanApis.Associates.AssignAssociateAsync(milestone.Id, new LoanAssociate(userId, LoanAssociateType.User));
-                    milestones = await milestonesApi.GetMilestonesAsync();
-                    milestone = milestones.First(ms => ms.Id == milestone.Id);
-                    Assert.AreEqual(milestone.LoanAssociate.Id, userId);
+//                    // Assign user to milestones
+//                    var userId = "officer";
+//                    await loanApis.Associates.AssignAssociateAsync(milestone.Id, new LoanAssociate(userId, LoanAssociateType.User));
+//                    milestones = await milestonesApi.GetMilestonesAsync();
+//                    milestone = milestones.First(ms => ms.Id == milestone.Id);
+//                    Assert.AreEqual(milestone.LoanAssociate.Id, userId);
 
-                    userId = "opener";
-                    var nextMilestone = milestones.Where(ms => ms.DoneIndicator != true).Skip(1).First();
-                    await loanApis.Associates.AssignAssociateAsync(nextMilestone.Id, new LoanAssociate(userId, LoanAssociateType.User));
-                    milestones = await milestonesApi.GetMilestonesAsync();
-                    nextMilestone = milestones.First(ms => ms.Id == nextMilestone.Id);
-                    Assert.AreEqual(nextMilestone.LoanAssociate.Id, userId);
+//                    userId = "opener";
+//                    var nextMilestone = milestones.Where(ms => ms.DoneIndicator != true).Skip(1).First();
+//                    await loanApis.Associates.AssignAssociateAsync(nextMilestone.Id, new LoanAssociate(userId, LoanAssociateType.User));
+//                    milestones = await milestonesApi.GetMilestonesAsync();
+//                    nextMilestone = milestones.First(ms => ms.Id == nextMilestone.Id);
+//                    Assert.AreEqual(nextMilestone.LoanAssociate.Id, userId);
 
-                    await milestonesApi.UpdateMilestoneAsync(milestone, MilestoneAction.Finish);
-                    milestones = await milestonesApi.GetMilestonesAsync();
-                    milestone = milestones.First(ms => ms.Id == milestone.Id);
-                    Assert.IsTrue(milestone.DoneIndicator == true);
+//                    await milestonesApi.UpdateMilestoneAsync(milestone, MilestoneAction.Finish);
+//                    milestones = await milestonesApi.GetMilestonesAsync();
+//                    milestone = milestones.First(ms => ms.Id == milestone.Id);
+//                    Assert.IsTrue(milestone.DoneIndicator == true);
 
-                    await milestonesApi.UpdateMilestoneAsync(milestone, MilestoneAction.Unfinish);
-                    milestones = await milestonesApi.GetMilestonesAsync();
-                    milestone = milestones.First(ms => ms.Id == milestone.Id);
-                    Assert.IsFalse(milestone.DoneIndicator == true);
+//                    await milestonesApi.UpdateMilestoneAsync(milestone, MilestoneAction.Unfinish);
+//                    milestones = await milestonesApi.GetMilestonesAsync();
+//                    milestone = milestones.First(ms => ms.Id == milestone.Id);
+//                    Assert.IsFalse(milestone.DoneIndicator == true);
 
-                    // Test unassigning user
-#pragma warning disable CS0618 // Type or member is obsolete
-                    await loanApis.Associates.UnassignAssociateAsync(nextMilestone.Id);
-#pragma warning restore CS0618 // Type or member is obsolete
-                    milestones = await milestonesApi.GetMilestonesAsync();
-                    nextMilestone = milestones.First(ms => ms.Id == nextMilestone.Id);
-                    Assert.IsNull(nextMilestone.LoanAssociate.Id);
-                }
-                finally
-                {
-                    try
-                    {
-                        await Task.Delay(5000);
-                        await client.Loans.DeleteLoanAsync(loanId);
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-        }
+//                    // Test unassigning user
+//#pragma warning disable CS0618 // Type or member is obsolete
+//                    await loanApis.Associates.UnassignAssociateAsync(nextMilestone.Id);
+//#pragma warning restore CS0618 // Type or member is obsolete
+//                    milestones = await milestonesApi.GetMilestonesAsync();
+//                    nextMilestone = milestones.First(ms => ms.Id == nextMilestone.Id);
+//                    Assert.IsNull(nextMilestone.LoanAssociate.Id);
+//                }
+//                finally
+//                {
+//                    try
+//                    {
+//                        await Task.Delay(5000);
+//                        await client.Loans.DeleteLoanAsync(loanId);
+//                    }
+//                    catch
+//                    {
+//                    }
+//                }
+//            }
+//        }
 
         [TestMethod]
         [ApiTest]

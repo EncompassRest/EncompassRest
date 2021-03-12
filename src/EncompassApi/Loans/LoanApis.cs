@@ -265,7 +265,7 @@ namespace EncompassApi.Loans
 
         IBorrowerPairs ILoanApis.BorrowerPairs => BorrowerPairs;
 
-        internal LoanApis(EncompassApiClient client, string loanId)
+        internal LoanApis(IEncompassApiClient client, string loanId)
             : base(client, loanId, null)
         {
         }

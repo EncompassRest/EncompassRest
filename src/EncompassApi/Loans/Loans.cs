@@ -271,7 +271,7 @@ namespace EncompassApi.Loans
 
         ILoanFieldDescriptors ILoans.FieldDescriptors => FieldDescriptors;
 
-        internal Loans(EncompassApiClient client)
+        internal Loans(IEncompassApiClient client)
             : base(client, "encompass/v1")
         {
         }

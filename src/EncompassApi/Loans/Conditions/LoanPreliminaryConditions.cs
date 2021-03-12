@@ -12,7 +12,7 @@
     /// </summary>
     public sealed class LoanPreliminaryConditions : LoanConditions<PreliminaryCondition>, ILoanPreliminaryConditions
     {
-        internal LoanPreliminaryConditions(EncompassApiClient client, string loanId)
+        internal LoanPreliminaryConditions(IEncompassApiClient client, string loanId)
             : base(client, loanId, "preliminary")
         {
         }

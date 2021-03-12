@@ -17,7 +17,7 @@ namespace EncompassApi.Loans
         /// <inheritdoc/>
         public string LoanId { get; }
 
-        internal LoanCustomDataObjects(EncompassApiClient client, string loanId)
+        internal LoanCustomDataObjects(IEncompassApiClient client, string loanId)
             : base(client, $"encompass/v1/loans/{loanId}/customObjects")
         {
             LoanId = loanId;

@@ -90,7 +90,7 @@ namespace EncompassApi.Contacts
     /// </summary>
     public sealed class ContactNotes : ContactApiObject, IContactNotes
     {
-        internal ContactNotes(EncompassApiClient client, string contactId, string baseApiPath)
+        internal ContactNotes(IEncompassApiClient client, string contactId, string baseApiPath)
             : base(client, contactId, $"{baseApiPath}/{contactId}/notes")
         {
         }

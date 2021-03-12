@@ -100,7 +100,7 @@ namespace EncompassApi.Company.Users
 
         IUserApis IUsers.CurrentUserApis => CurrentUserApis;
 
-        internal Users(EncompassApiClient client)
+        internal Users(IEncompassApiClient client)
             : base(client, "encompass/v1/company/users")
         {
         }

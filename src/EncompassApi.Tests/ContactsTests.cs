@@ -33,50 +33,50 @@ namespace EncompassApi.Tests
             Assert.AreEqual("{}", businessContact.ToString(SerializationOptions.Dirty));
         }
 
-        [TestMethod]
-        [ApiTest]
-        public async Task BorrowerContact_CreateRetrieveAndDelete()
-        {
-            var client = await GetTestClientAsync();
-            if (client.AccessToken.Token != "Token")
-            {
-                var borrowerContact = new BorrowerContact("Bob", "Bob@gmail.com");
-                var contactId = await client.Contacts.BorrowerContacts.CreateContactAsync(borrowerContact);
+        //[TestMethod]
+        //[ApiTest]
+        //public async Task BorrowerContact_CreateRetrieveAndDelete()
+        //{
+        //    var client = await GetTestClientAsync();
+        //    if (client.AccessToken.Token != "Token")
+        //    {
+        //        var borrowerContact = new BorrowerContact("Bob", "Bob@gmail.com");
+        //        var contactId = await client.Contacts.BorrowerContacts.CreateContactAsync(borrowerContact);
 
-                try
-                {
+        //        try
+        //        {
 
-                    Assert.IsNotNull(contactId);
-                    Assert.AreEqual(contactId, borrowerContact.Id);
+        //            Assert.IsNotNull(contactId);
+        //            Assert.AreEqual(contactId, borrowerContact.Id);
 
-                    var retrievedContact = await client.Contacts.BorrowerContacts.GetContactAsync(contactId);
-                    Assert.IsNotNull(retrievedContact);
-                    Assert.AreEqual(contactId, retrievedContact.Id);
-                    Assert.AreEqual(borrowerContact.FirstName, retrievedContact.FirstName);
-                    Assert.AreEqual(borrowerContact.PersonalEmail, retrievedContact.PersonalEmail);
-                    Assert.IsTrue(string.IsNullOrEmpty(retrievedContact.LastName));
+        //            var retrievedContact = await client.Contacts.BorrowerContacts.GetContactAsync(contactId);
+        //            Assert.IsNotNull(retrievedContact);
+        //            Assert.AreEqual(contactId, retrievedContact.Id);
+        //            Assert.AreEqual(borrowerContact.FirstName, retrievedContact.FirstName);
+        //            Assert.AreEqual(borrowerContact.PersonalEmail, retrievedContact.PersonalEmail);
+        //            Assert.IsTrue(string.IsNullOrEmpty(retrievedContact.LastName));
 
-                    borrowerContact = new BorrowerContact(client, contactId, "Bob", "Bob@gmail.com") { LastName = "Smith" };
-                    await client.Contacts.BorrowerContacts.UpdateContactAsync(borrowerContact);
-                    retrievedContact = await client.Contacts.BorrowerContacts.GetContactAsync(contactId);
-                    Assert.IsNotNull(retrievedContact);
-                    Assert.AreEqual(contactId, retrievedContact.Id);
-                    Assert.AreEqual("Bob", retrievedContact.FirstName);
-                    Assert.AreEqual("Bob@gmail.com", retrievedContact.PersonalEmail);
-                    Assert.AreEqual("Smith", retrievedContact.LastName);
-                }
-                finally
-                {
-                    try
-                    {
-                        await client.Contacts.BorrowerContacts.DeleteContactAsync(contactId);
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-        }
+        //            borrowerContact = new BorrowerContact(client, contactId, "Bob", "Bob@gmail.com") { LastName = "Smith" };
+        //            await client.Contacts.BorrowerContacts.UpdateContactAsync(borrowerContact);
+        //            retrievedContact = await client.Contacts.BorrowerContacts.GetContactAsync(contactId);
+        //            Assert.IsNotNull(retrievedContact);
+        //            Assert.AreEqual(contactId, retrievedContact.Id);
+        //            Assert.AreEqual("Bob", retrievedContact.FirstName);
+        //            Assert.AreEqual("Bob@gmail.com", retrievedContact.PersonalEmail);
+        //            Assert.AreEqual("Smith", retrievedContact.LastName);
+        //        }
+        //        finally
+        //        {
+        //            try
+        //            {
+        //                await client.Contacts.BorrowerContacts.DeleteContactAsync(contactId);
+        //            }
+        //            catch
+        //            {
+        //            }
+        //        }
+        //    }
+        //}
 
         [TestMethod]
         [ApiTest]

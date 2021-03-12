@@ -21,7 +21,7 @@ namespace EncompassApi.Contacts
         /// <inheritdoc/>
         public string ContactId { get; }
 
-        internal ContactApiObject(EncompassApiClient client, string contactId, string baseApiPath)
+        internal ContactApiObject(IEncompassApiClient client, string contactId, string baseApiPath)
             : base(client, baseApiPath)
         {
             ContactId = contactId;

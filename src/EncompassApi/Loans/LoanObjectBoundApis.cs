@@ -26,7 +26,7 @@
         /// <inheritdoc/>
         public bool ReflectToLoanObject { get; set; }
 
-        internal LoanObjectBoundApis(EncompassApiClient client, Loan loan)
+        internal LoanObjectBoundApis(IEncompassApiClient client, Loan loan)
             : base(client, loan.EncompassId!)
         {
             Loan = loan;

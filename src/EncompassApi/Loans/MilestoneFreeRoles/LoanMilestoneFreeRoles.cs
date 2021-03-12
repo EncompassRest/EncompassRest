@@ -61,7 +61,7 @@ namespace EncompassApi.Loans.MilestoneFreeRoles
     /// </summary>
     public sealed class LoanMilestoneFreeRoles : LoanApiObject, ILoanMilestoneFreeRoles
     {
-        internal LoanMilestoneFreeRoles(EncompassApiClient client, string loanId)
+        internal LoanMilestoneFreeRoles(IEncompassApiClient client, string loanId)
             : base(client, loanId, "milestoneFreeRoles")
         {
         }

@@ -170,7 +170,7 @@ namespace EncompassApi
         /// <inheritdoc/>
         public HttpClient HttpClient => Client.HttpClient;
 
-        internal BaseApiClient(EncompassApiClient client)
+        internal BaseApiClient(IEncompassApiClient client)
             : base(client, null)
         {
         }

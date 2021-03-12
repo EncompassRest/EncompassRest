@@ -112,7 +112,7 @@ namespace EncompassApi.Settings
 
         Personas.IPersonas ISettings.Personas => Personas;
 
-        internal Settings(EncompassApiClient client)
+        internal Settings(IEncompassApiClient client)
             : base(client, "encompass/v1/settings")
         {
         }

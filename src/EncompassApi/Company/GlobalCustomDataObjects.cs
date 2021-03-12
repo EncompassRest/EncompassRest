@@ -12,7 +12,7 @@
     /// </summary>
     public sealed class GlobalCustomDataObjects : CustomDataObjects.CustomDataObjects, IGlobalCustomDataObjects
     {
-        internal GlobalCustomDataObjects(EncompassApiClient client)
+        internal GlobalCustomDataObjects(IEncompassApiClient client)
             : base(client, "encompass/v1/company/customObjects")
         {
         }

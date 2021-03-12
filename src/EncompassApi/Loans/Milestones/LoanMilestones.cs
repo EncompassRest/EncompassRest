@@ -78,7 +78,7 @@ namespace EncompassApi.Loans.Milestones
     /// </summary>
     public sealed class LoanMilestones : LoanApiObject, ILoanMilestones
     {
-        internal LoanMilestones(EncompassApiClient client, string loanId)
+        internal LoanMilestones(IEncompassApiClient client, string loanId)
             : base(client, loanId, "milestones")
         {
         }

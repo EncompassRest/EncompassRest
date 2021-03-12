@@ -12,7 +12,7 @@
     /// </summary>
     public sealed class BusinessContacts : Contacts<BusinessContact>, IBusinessContacts
     {
-        internal BusinessContacts(EncompassApiClient client)
+        internal BusinessContacts(IEncompassApiClient client)
             : base(client, "encompass/v1/businessContacts")
         {
         }

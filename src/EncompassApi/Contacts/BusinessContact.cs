@@ -83,18 +83,6 @@ namespace EncompassApi.Contacts
         /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
         /// <param name="firstName">The contact's first name.</param>
         /// <param name="personalEmail">The contact's personal email address.</param>
-        public BusinessContact(EncompassApiClient client, string contactId, string firstName, string personalEmail)
-            : this((IEncompassApiClient)client, contactId, firstName, personalEmail)
-        {
-        }
-
-        /// <summary>
-        /// Business contact update constructor
-        /// </summary>
-        /// <param name="client">The client to initialize the contact object with.</param>
-        /// <param name="contactId">The contactId (or id) is the unique identifier of the contact.</param>
-        /// <param name="firstName">The contact's first name.</param>
-        /// <param name="personalEmail">The contact's personal email address.</param>
         public BusinessContact(IEncompassApiClient client, string contactId, string firstName, string personalEmail)
             : base(client, contactId, firstName, personalEmail)
         {

@@ -119,7 +119,7 @@ namespace EncompassApi.Organizations
     /// </summary>
     public sealed class Organizations : ApiObject, IOrganizations
     {
-        internal Organizations(EncompassApiClient client)
+        internal Organizations(IEncompassApiClient client)
             : base(client, "encompass/v1/organizations")
         {
         }

@@ -12,7 +12,7 @@
     /// </summary>
     public sealed class BorrowerContactSelector : ContactSelector, IBorrowerContactSelector
     {
-        internal BorrowerContactSelector(EncompassApiClient client)
+        internal BorrowerContactSelector(IEncompassApiClient client)
             : base(client, "encompass/v1/borrowerContactSelector")
         {
         }

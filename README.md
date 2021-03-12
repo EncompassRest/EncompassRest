@@ -1,118 +1,27 @@
-![GitHub last commit (master)](https://img.shields.io/github/last-commit/EncompassApi/EncompassApi/master.svg?logo=github&logoColor=lightgray&style=popout-square)
-
-# EncompassApi
-Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+.
+# EncompassAPI
+Encompass API Client and Service Library for .Net Standard 2.0 and .Net Standard 2.1.
 
 ## Why does this exist?
-You may wonder why this library exists when Ellie Mae has provided their own [Encompass API .NET Language Bindings](https://github.com/EllieMae/developerconnect-dotnet-bindings).
+This is a fork of the EncompassRest Library found here [Encompass Rest](https://github.com/EncompassRest/EncompassRest).
 
-First, the Encompass API .NET Language Bindings were released long after the API's became available so users needed a common .NET library for consuming the Encompass API's, hence this library was born.
+This fork is intended to centralize HttpClient management using the new features available to .Net Core 2.1+ while providing the same feature set as the original library.
 
-Second, the swagger generated Encompass API .NET Language Bindings are less robust compared to the custom crafted, well thought-out, and thoroughly tested EncompassApi library.
+New features in the upstream branch will be evaluated for inclusion but due to the altered dependency structure further changes are expected.
 
-### More features
-* Field ID support
-* Dirty checking serialization to only send back the updated data
-* Option to auto retrieve new token and resend the request when using an expired token
-* Option to auto resend the request on server timeouts
-* Raw API calls support
-* Ability to assign and retrieve string properties as enum values to reduce the need of magic strings
-* .NET Standard support
-* Extension data support, for when Ellie Mae adds properties to the returned json objects but the library isn't updated yet
-* `CancellationToken` support
-* Properties are lazily created upon gets so you don't need to new them up first to use them
-* `INotifyPropertyChanged` support
-* Uses `decimal` instead of `double` to prevent precision loss
+### Upcoming features
+* Extension methods for easy inclusion of EncompassApiService in ServiceCollection DI container on application startup.
+* Refactored unit tests using Mocked message handlers for Mock results
+* Token HttpMessageHandlers for authentication using all authentication mechanisms available to Encompass integrations. (Current Token Handler is custom and internal to Fairway Mortgage)
+* Separation of client managed dependencies into a client package to remove added dependencies on Polly to separate
+* Documentation for usage of EncompassApiService
+* Concurrency and Rate Limit throttling via HttpMessageHandlers
 
-### Simpler
-* More convenient interface with a single defined entry point, the `EncompassApiClient` object which is the equivalent of the `Session` object in the SDK
-* Simpler Type names, e.g. `UCDDetail` instead of `LoanContractClosingCostClosingDisclosure3UCDDetails`
-* Single NuGet package
-* No configuration files
-* Publicly exposes only relevant .NET API
+### EncompassApiService
 
-### Optimized for performance
-* Serializes directly to output `Stream` meaning no string allocation
-* Reuses one `JsonSerializer` instance so it's cache isn't needed to be repopulated on each request
-* `HttpClient` is in general more performant over `RestSharp`
+In your startup.cs add EncompassApiService for IEncompassRestClient dependency. Currently you will need to inject a custom HttpMessageHandler for Encompass token management. For retry you can also provide Polly policy/messageHandler for management of retry.
 
-## Getting started
-1. Install the [EncompassApi](https://www.nuget.org/packages/EncompassApi) Nuget package.
-2. [Create an async method](#create-an-async-method) in your consuming code.
-3. [Create an `EncompassApiClient` object](#create-an-EncompassApiclient-object).
-4. [Use `EncompassApiClient` object](#use-EncompassApiclient-object) to make API calls.
-
-### Create an async method
-EncompassApi is a fully asynchronous library meaning all of it's Encompass API calls are made asynchronously to allow great performance for maximum throughput. To get started using the library you need to create an `async` method. To avoid deadlocks with async code it is recommended you **_DO NOT_** use `Task.Result` or the `Task.Wait` methods and instead implement `async` all the way from the top, e.g. `Main` or your `Controller`s actions.
-
-#### Web apps:
-```c#
-public async Task<IActionResult> GetAsync()
-{
-    // Your async code goes here
-}
-```
-
-#### Console apps:
-For C#7.1 and up you should use an async `Main` method like so.
-
-```c#
-public async Task Main()
-{
-    // Your async code goes here
-}
-```
-
-For C#7 and below you should use `Task.Run` inside of `Main` to use async methods.
-
-```c#
-public void Main()
-{
-    Task.Run(async () => {
-        // Your async code goes here
-    }).GetAwaiter().GetResult();
-}
-```
-
-### Create an `EncompassApiClient` object
-The `EncompassApiClient` class implements `IDisposable` so it is recommended to use a `using` statement to automatically dispose of the object.
-
-#### From user credentials which auto-retrieves new token when expired
-```c#
-using (var client = await EncompassApiClient.CreateAsync(
-    new ClientParameters("apiClientId", "apiClientSecret"),
-    tokenCreator => tokenCreator.FromUserCredentialsAsync("encompassInstanceId", "encompassUserId", "encompassPassword")))
-{
-    // use client
-}
-```
-
-#### From authorization code
-```c#
-using (var client = await EncompassApiClient.CreateFromAuthorizationCodeAsync(
-    new ClientParameters("apiClientId", "apiClientSecret"), "redirectUri", "authorizationCode"))
-{
-    // use client
-}
-```
-
-#### From access token
-```c#
-using (var client = await EncompassApiClient.CreateFromAccessTokenAsync(
-    new ClientParameters("apiClientId", "apiClientSecret"), "accessToken"))
-{
-    // use client
-}
-```
-
-### Use `EncompassApiClient` object
-Use the various properties on `EncompassApiClient` such as `Loans`, `Schema`, `Webhook`, `Pipeline`, and `BatchUpdate` to make Encompass API calls.
-
----
+EncompassApiService can then be injected into needed classes.
 
 ## Resources
 * [Developer Connect](https://docs.developer.elliemae.com/reference) - Encompass API's reference location.
 
-* If you'd like to join our Slack channel please reach out to one of the repo's maintainers.
-
-If you're interested in contributing please look over the [Guidelines Doc](Guidelines.md).

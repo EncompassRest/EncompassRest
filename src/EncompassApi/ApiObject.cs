@@ -17,6 +17,9 @@ namespace EncompassApi
         /// The <see cref="IEncompassApiClient"/> associated with the Api object.
         /// </summary>
         IEncompassApiClient Client { get; }
+
+        Task<T> PostAsync<T>(string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, CancellationToken cancellationToken);
+        Task<string> PostRawAsync(string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, CancellationToken cancellationToken);
     }
 
     /// <summary>
@@ -47,11 +50,11 @@ namespace EncompassApi
         /// <summary>
         /// The <see cref="EncompassApiClient"/> associated with the Api object.
         /// </summary>
-        public EncompassApiClient Client { get; }
+        public IEncompassApiClient Client { get; }
 
         IEncompassApiClient IApiObject.Client => Client;
 
-        internal ApiObject(EncompassApiClient client, string? baseApiPath)
+        internal ApiObject(IEncompassApiClient client, string? baseApiPath)
         {
             Client = client;
             _baseApiPath = baseApiPath;
@@ -69,9 +72,9 @@ namespace EncompassApi
 
         internal Task<string> GetRawAsync(string? requestUri, string? queryString, string methodName, string? resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
-        internal Task<T> PostAsync<T>(string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, FuncCache<T>.ReadAsFunc);
+        public Task<T> PostAsync<T>(string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, FuncCache<T>.ReadAsFunc);
 
-        internal Task<string> PostRawAsync(string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
+        public Task<string> PostRawAsync(string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
         internal Task<string> PostPopulateDirtyAsync<T>(string? requestUri, string methodName, T value, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => PostPopulateDirtyAsync(requestUri, populate ? ViewEntityQueryString : null, methodName, value, populate, cancellationToken);
 

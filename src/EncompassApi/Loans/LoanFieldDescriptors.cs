@@ -634,7 +634,7 @@ namespace EncompassApi.Loans
         /// <inheritdoc/>
         public DateTime? CustomFieldsLastRefreshedUtc => Client.CommonCache.CustomFieldsLastRefreshedUtc;
 
-        internal LoanFieldDescriptors(EncompassApiClient client)
+        internal LoanFieldDescriptors(IEncompassApiClient client)
             : base(client, null)
         {
         }

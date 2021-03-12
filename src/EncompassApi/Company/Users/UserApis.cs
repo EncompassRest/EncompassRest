@@ -111,7 +111,7 @@ namespace EncompassApi.Company.Users
 
         IUsersRights IUserApis.Rights => Rights;
 
-        internal UserApis(EncompassApiClient client, string userId)
+        internal UserApis(IEncompassApiClient client, string userId)
             : base(client, userId, null)
         {
         }

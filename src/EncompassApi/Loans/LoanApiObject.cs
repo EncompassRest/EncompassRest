@@ -24,7 +24,7 @@ namespace EncompassApi.Loans
         /// <inheritdoc/>
         public string LoanId { get; }
 
-        internal LoanApiObject(EncompassApiClient client, string loanId, string? baseApiPath)
+        internal LoanApiObject(IEncompassApiClient client, string loanId, string? baseApiPath)
             : base(client, $"encompass/v1/loans/{loanId}{baseApiPath?.PrecedeWith("/")}")
         {
             LoanId = loanId;
@@ -42,7 +42,7 @@ namespace EncompassApi.Loans
     {
         internal readonly LoanObjectBoundApis? LoanObjectBoundApis;
 
-        internal LoanApiObject(EncompassApiClient client, LoanObjectBoundApis? loanObjectBoundApis, string loanId, string baseApiPath)
+        internal LoanApiObject(IEncompassApiClient client, LoanObjectBoundApis? loanObjectBoundApis, string loanId, string baseApiPath)
             : base(client, loanId, baseApiPath)
         {
             LoanObjectBoundApis = loanObjectBoundApis;

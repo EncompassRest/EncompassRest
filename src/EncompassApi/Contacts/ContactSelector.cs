@@ -42,7 +42,7 @@ namespace EncompassApi.Contacts
     /// </summary>
     public abstract class ContactSelector : ApiObject, IContactSelector
     {
-        internal ContactSelector(EncompassApiClient client, string baseApiPath)
+        internal ContactSelector(IEncompassApiClient client, string baseApiPath)
             : base(client, baseApiPath)
         {
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassApi.Utilities;
@@ -116,7 +117,7 @@ namespace EncompassApi
         /// <summary>
         /// The <see cref="EncompassApiClient"/> associated with the cursor.
         /// </summary>
-        public EncompassApiClient Client { get; }
+        public IEncompassApiClient Client { get; }
 
         IEncompassApiClient IApiObject.Client => Client;
 
@@ -129,7 +130,7 @@ namespace EncompassApi
         /// <inheritdoc/>
         public IEnumerable<string> Fields { get; }
 
-        internal Cursor(ApiObject apiObject, EncompassApiClient client, string? cursorId, int count, IEnumerable<string>? fields)
+        internal Cursor(ApiObject apiObject, IEncompassApiClient client, string? cursorId, int count, IEnumerable<string>? fields)
         {
             _apiObject = apiObject;
             Client = client;
@@ -209,5 +210,10 @@ namespace EncompassApi
 
             return _apiObject.PostRawAsync(null, queryParameters.ToString(), content, nameof(GetItemsRawAsync), null, cancellationToken);
         }
+
+        // Only exist to match interface. Call path for this is weird. Unused in this class. 
+        //Middle ground before full HttpClient refactor.
+        public Task<string> PostRawAsync(string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, CancellationToken cancellationToken) => throw new System.NotImplementedException();
+        public Task<T> PostAsync<T>(string? requestUri, string? queryString, HttpContent? content, string methodName, string? resourceId, CancellationToken cancellationToken) => throw new System.NotImplementedException();
     }
 }

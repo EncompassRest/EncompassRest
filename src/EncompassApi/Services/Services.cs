@@ -94,7 +94,7 @@ namespace EncompassApi.Services
     /// </summary>
     public sealed class Services : ApiObject, IServices
     {
-        internal Services(EncompassApiClient client)
+        internal Services(IEncompassApiClient client)
             : base(client, "services")
         {
         }

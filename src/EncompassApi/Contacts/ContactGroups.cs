@@ -161,7 +161,7 @@ namespace EncompassApi.Contacts
     /// </summary>
     public sealed class ContactGroups : ApiObject, IContactGroups
     {
-        internal ContactGroups(EncompassApiClient client)
+        internal ContactGroups(IEncompassApiClient client)
             : base(client, "encompass/v1/contactGroups")
         {
         }

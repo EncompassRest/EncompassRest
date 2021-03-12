@@ -53,7 +53,7 @@ namespace EncompassApi.Loans.FieldReader
     /// </summary>
     public sealed class LoanFieldReader : LoanApiObject, ILoanFieldReader
     {
-        internal LoanFieldReader(EncompassApiClient client, string loanId)
+        internal LoanFieldReader(IEncompassApiClient client, string loanId)
             : base(client, loanId, "fieldReader")
         {
         }

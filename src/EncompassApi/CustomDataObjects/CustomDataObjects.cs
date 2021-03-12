@@ -99,7 +99,7 @@ namespace EncompassApi.CustomDataObjects
     /// </summary>
     public abstract class CustomDataObjects : ApiObject, ICustomDataObjects
     {
-        internal CustomDataObjects(EncompassApiClient client, string baseApiPath)
+        internal CustomDataObjects(IEncompassApiClient client, string baseApiPath)
             : base(client, baseApiPath)
         {
         }

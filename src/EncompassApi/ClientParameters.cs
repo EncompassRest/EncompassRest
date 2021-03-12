@@ -7,10 +7,21 @@ using Newtonsoft.Json;
 
 namespace EncompassApi
 {
+    public interface IClientParameters
+    {
+        string ApiClientId { get; }
+        string ApiClientSecret { get; }
+        EventHandler<ApiResponseEventArgs>? ApiResponse { get; set; }
+        string? BaseAddress { get; set; }
+        CommonCache? CommonCache { get; set; }
+        TimeSpan Timeout { get; set; }
+        int TimeoutRetryCount { get; set; }
+        UndefinedCustomFieldHandling UndefinedCustomFieldHandling { get; set; }
+    }
     /// <summary>
     /// The parameters for initializing a client object.
     /// </summary>
-    public sealed class ClientParameters
+    public sealed class ClientParameters : IClientParameters
     {
         private int _timeoutRetryCount;
 
@@ -89,7 +100,7 @@ namespace EncompassApi
             ApiClientSecret = apiClientSecret;
         }
 
-        internal async Task TryInitializeAsync(EncompassApiClient client, CommonCache commonCache, CancellationToken cancellationToken)
+        internal async Task TryInitializeAsync(IEncompassApiClient client, CommonCache commonCache, CancellationToken cancellationToken)
         {
             if (CustomFieldsCacheInitialization != CacheInitialization.Never && !((DateTime.UtcNow - commonCache.CustomFieldsLastRefreshedUtc)?.TotalMinutes < (int)CustomFieldsCacheInitialization))
             {

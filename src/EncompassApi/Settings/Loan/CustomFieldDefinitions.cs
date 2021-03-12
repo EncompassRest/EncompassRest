@@ -60,7 +60,7 @@ namespace EncompassApi.Settings.Loan
     /// </summary>
     public sealed class CustomFieldDefinitions : ApiObject, ICustomFieldDefinitions
     {
-        internal CustomFieldDefinitions(EncompassApiClient client)
+        internal CustomFieldDefinitions(IEncompassApiClient client)
             : base(client, "encompass/v1/settings/loan/customFields")
         {
         }

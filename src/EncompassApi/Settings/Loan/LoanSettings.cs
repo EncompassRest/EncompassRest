@@ -34,7 +34,7 @@ namespace EncompassApi.Settings.Loan
 
         ICustomFieldDefinitions ILoanSettings.CustomFields => CustomFields;
 
-        internal LoanSettings(EncompassApiClient client)
+        internal LoanSettings(IEncompassApiClient client)
             : base(client, "encompass/v1/settings/loan")
         {
         }

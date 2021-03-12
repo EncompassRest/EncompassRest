@@ -86,7 +86,7 @@ namespace EncompassApi.LoanPipeline
     /// </summary>
     public sealed class Pipeline : ApiObject, IPipeline
     {
-        internal Pipeline(EncompassApiClient client)
+        internal Pipeline(IEncompassApiClient client)
             : base(client, "encompass/v1/loanPipeline")
         {
         }

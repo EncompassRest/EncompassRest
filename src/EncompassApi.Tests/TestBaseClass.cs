@@ -27,41 +27,42 @@ namespace EncompassApi.Tests
             if (client == null || parametersInitializer != null)
             {
                 const string testClientCredentialsFile = "C:\\EncompassApiTestClientCredentials.json"; // Never include this file in source control
-                if (File.Exists(testClientCredentialsFile))
-                {
-                    TestClientCredentials credentials;
-                    using (var fs = File.OpenRead(testClientCredentialsFile))
-                    {
-                        using (var sr = new StreamReader(fs))
-                        {
-                            credentials = JsonHelper.FromJson<TestClientCredentials>(sr);
-                        }
-                    }
-                    var effectiveParameters = credentials.Parameters;
-                    if (parametersInitializer != null)
-                    {
-                        effectiveParameters = JsonHelper.DefaultPublicSerializer.Clone(effectiveParameters);
-                        parametersInitializer(effectiveParameters);
-                    }
-                    client = await EncompassApiClient.CreateAsync(effectiveParameters, tc => tc.FromUserCredentialsAsync(credentials.InstanceId, credentials.UserId, credentials.Password));
-                    Console.WriteLine("Using test client credentials file");
-                }
-                else
-                {
-                    var parameters = new ClientParameters("ApiClientId", "ApiClientSecret");
-                    parametersInitializer?.Invoke(parameters);
+                //if (File.Exists(testClientCredentialsFile))
+                //{
+                //    TestClientCredentials credentials;
+                //    using (var fs = File.OpenRead(testClientCredentialsFile))
+                //    {
+                //        using (var sr = new StreamReader(fs))
+                //        {
+                //            credentials = JsonHelper.FromJson<TestClientCredentials>(sr);
+                //        }
+                //    }
+                //    var effectiveParameters = credentials.Parameters;
+                //    if (parametersInitializer != null)
+                //    {
+                //        effectiveParameters = JsonHelper.DefaultPublicSerializer.Clone(effectiveParameters);
+                //        parametersInitializer(effectiveParameters);
+                //    }
+                //    //TODO Rewrite
+                //    client = await EncompassApiClient.CreateAsync(effectiveParameters, tc => tc.FromUserCredentialsAsync(credentials.InstanceId, credentials.UserId, credentials.Password));
+                //    Console.WriteLine("Using test client credentials file");
+                //}
+                //else
+                //{
+                    IClientParameters parameters = new ClientParameters("ApiClientId", "ApiClientSecret");
                     client = new EncompassApiClient(parameters);
-                    var accessToken = client.AccessToken;
-                    accessToken.Token = "Token";
+                    //TODO Rewrite
+                    //var accessToken = client.AccessToken;
+                    //accessToken.Token = "Token";
                     var httpClient = client.HttpClient;
                     httpClient.BaseAddress = new Uri("https://try.readme.io/");
                     var defaultRequestHeaders = httpClient.DefaultRequestHeaders;
                     defaultRequestHeaders.Clear();
                     defaultRequestHeaders.Add("x-api-key", "9JsmcmHyzJuokoWeJJ8HGiRgS5GR8cSKVswz");
                     defaultRequestHeaders.Add("origin", string.Empty);
-                    await parameters.TryInitializeAsync(client, client.CommonCache, CancellationToken.None);
+                    //await parameters.TryInitializeAsync(client, client.CommonCache, CancellationToken.None);
                     Console.WriteLine("Using Encompass Developer Connect Try It endpoint");
-                }
+                //}
                 if (parametersInitializer == null)
                 {
                     client = Interlocked.CompareExchange(ref s_testClient, client, null) ?? client;

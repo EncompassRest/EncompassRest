@@ -85,7 +85,7 @@ namespace EncompassApi.EFolder
             }
         }
 
-        internal EFolder(EncompassApiClient client)
+        internal EFolder(IEncompassApiClient client)
             : base(client, "efolder/v1/exportjobs")
         {
         }
@@ -166,13 +166,11 @@ namespace EncompassApi.EFolder
         {
             private readonly HttpClient _httpClient;
 
-            internal AttachmentJobApiObject(EncompassApiClient client)
+            internal AttachmentJobApiObject(IEncompassApiClient client)
                 : base(client, null)
             {
-                _httpClient = new HttpClient
-                {
-                    Timeout = Client.Timeout
-                };
+                //TODO: httpClient
+                
             }
 
             internal override string? BaseAddress => null;
