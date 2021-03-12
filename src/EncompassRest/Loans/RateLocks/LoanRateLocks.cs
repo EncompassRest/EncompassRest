@@ -147,7 +147,7 @@ namespace EncompassRest.Loans.RateLocks
     /// </summary>
     public sealed class LoanRateLocks : LoanApiObject, ILoanRateLocks
     {
-        internal LoanRateLocks(EncompassRestClient client, string loanId)
+        internal LoanRateLocks(IEncompassRestClient client, string loanId)
             : base(client, loanId, "ratelockRequests")
         {
         }

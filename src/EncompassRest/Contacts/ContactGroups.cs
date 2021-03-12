@@ -161,7 +161,7 @@ namespace EncompassRest.Contacts
     /// </summary>
     public sealed class ContactGroups : ApiObject, IContactGroups
     {
-        internal ContactGroups(EncompassRestClient client)
+        internal ContactGroups(IEncompassRestClient client)
             : base(client, "encompass/v1/contactGroups")
         {
         }

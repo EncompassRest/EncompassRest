@@ -79,7 +79,7 @@ namespace EncompassRest.Calculators
     /// </summary>
     public sealed class Calculators : ApiObject, ICalculators
     {
-        internal Calculators(EncompassRestClient client)
+        internal Calculators(IEncompassRestClient client)
             : base(client, "encompass/v1/calculators")
         {
         }

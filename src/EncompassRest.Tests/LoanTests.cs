@@ -355,140 +355,140 @@ namespace EncompassRest.Tests
             }
         }
 
-        [TestMethod]
-        [ApiTest]
-        public async Task Loan_GetMetadata()
-        {
-            var client = await GetTestClientAsync();
-            if (client.AccessToken.Token == "Token")
-            {
-                var loan = new Loan(client);
-                var loanId = await client.Loans.CreateLoanAsync(loan);
-                try
-                {
-                    var metaData = await loan.LoanApis.GetMetadataAsync();
-                    AssertNoExtensionData(metaData, "LoanMetaData", loanId, true);
-                }
-                finally
-                {
-                    try
-                    {
-                        await Task.Delay(5000);
-                        await client.Loans.DeleteLoanAsync(loanId);
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-        }
+        //[TestMethod]
+        //[ApiTest]
+        //public async Task Loan_GetMetadata()
+        //{
+        //    var client = await GetTestClientAsync();
+        //    if (client.AccessToken.Token == "Token")
+        //    {
+        //        var loan = new Loan(client);
+        //        var loanId = await client.Loans.CreateLoanAsync(loan);
+        //        try
+        //        {
+        //            var metaData = await loan.LoanApis.GetMetadataAsync();
+        //            AssertNoExtensionData(metaData, "LoanMetaData", loanId, true);
+        //        }
+        //        finally
+        //        {
+        //            try
+        //            {
+        //                await Task.Delay(5000);
+        //                await client.Loans.DeleteLoanAsync(loanId);
+        //            }
+        //            catch
+        //            {
+        //            }
+        //        }
+        //    }
+        //}
 
-        [TestMethod]
-        [ApiTest]
-        public async Task Loan_CreateInLoanFolder()
-        {
-            var client = await GetTestClientAsync();
-            if (client.AccessToken.Token == "Token")
-            {
-                var loan = new Loan(client);
-                var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanFolder = "My Pipeline" });
-                try
-                {
-                    var metaData = await loan.LoanApis.GetMetadataAsync();
-                    Assert.AreEqual("My Pipeline", metaData.LoanFolder);
-                    //await client.LoanFolders.MoveLoanToFolderAsync(loanId, "OAPI"); // Unauthorized error
-                    //metaData = await loan.LoanApis.GetMetadataAsync();
-                    //Assert.AreEqual("OAPI", metaData.LoanFolder);
-                }
-                finally
-                {
-                    try
-                    {
-                        await Task.Delay(5000);
-                        await client.Loans.DeleteLoanAsync(loanId);
-                    }
-                    catch
-                    {
-                    }
-                }
-                var loan2 = new Loan(client);
-                var loanId2 = await client.Loans.CreateLoanAsync(loan2, new CreateLoanOptions { LoanFolder = "OAPI" });
-                try
-                {
-                    var metaData2 = await loan2.LoanApis.GetMetadataAsync();
-                    Assert.AreEqual("OAPI", metaData2.LoanFolder);
-                }
-                finally
-                {
-                    try
-                    {
-                        await Task.Delay(5000);
-                        await client.Loans.DeleteLoanAsync(loanId2);
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-        }
+        //[TestMethod]
+        //[ApiTest]
+        //public async Task Loan_CreateInLoanFolder()
+        //{
+        //    var client = await GetTestClientAsync();
+        //    if (client.AccessToken.Token == "Token")
+        //    {
+        //        var loan = new Loan(client);
+        //        var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanFolder = "My Pipeline" });
+        //        try
+        //        {
+        //            var metaData = await loan.LoanApis.GetMetadataAsync();
+        //            Assert.AreEqual("My Pipeline", metaData.LoanFolder);
+        //            //await client.LoanFolders.MoveLoanToFolderAsync(loanId, "OAPI"); // Unauthorized error
+        //            //metaData = await loan.LoanApis.GetMetadataAsync();
+        //            //Assert.AreEqual("OAPI", metaData.LoanFolder);
+        //        }
+        //        finally
+        //        {
+        //            try
+        //            {
+        //                await Task.Delay(5000);
+        //                await client.Loans.DeleteLoanAsync(loanId);
+        //            }
+        //            catch
+        //            {
+        //            }
+        //        }
+        //        var loan2 = new Loan(client);
+        //        var loanId2 = await client.Loans.CreateLoanAsync(loan2, new CreateLoanOptions { LoanFolder = "OAPI" });
+        //        try
+        //        {
+        //            var metaData2 = await loan2.LoanApis.GetMetadataAsync();
+        //            Assert.AreEqual("OAPI", metaData2.LoanFolder);
+        //        }
+        //        finally
+        //        {
+        //            try
+        //            {
+        //                await Task.Delay(5000);
+        //                await client.Loans.DeleteLoanAsync(loanId2);
+        //            }
+        //            catch
+        //            {
+        //            }
+        //        }
+        //    }
+        //}
 
-        [TestMethod]
-        [ApiTest]
-        public async Task Loan_CreateWithLoanOfficer()
-        {
-            var client = await GetTestClientAsync();
-            if (client.AccessToken.Token == "Token")
-            {
-                var loan = new Loan(client);
-                var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoId = "officer", Populate = true });
-                try
-                {
-                    Assert.AreEqual("officer", loan.Contacts.First(c => c.ContactType == ContactType.LOANOFFICER).LoginId);
-                }
-                finally
-                {
-                    try
-                    {
-                        await Task.Delay(5000);
-                        await client.Loans.DeleteLoanAsync(loanId);
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-        }
+        //[TestMethod]
+        //[ApiTest]
+        //public async Task Loan_CreateWithLoanOfficer()
+        //{
+        //    var client = await GetTestClientAsync();
+        //    if (client.AccessToken.Token == "Token")
+        //    {
+        //        var loan = new Loan(client);
+        //        var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoId = "officer", Populate = true });
+        //        try
+        //        {
+        //            Assert.AreEqual("officer", loan.Contacts.First(c => c.ContactType == ContactType.LOANOFFICER).LoginId);
+        //        }
+        //        finally
+        //        {
+        //            try
+        //            {
+        //                await Task.Delay(5000);
+        //                await client.Loans.DeleteLoanAsync(loanId);
+        //            }
+        //            catch
+        //            {
+        //            }
+        //        }
+        //    }
+        //}
 
-        [TestMethod]
-        [ApiTest]
-        public async Task Loan_CreateWithLoanTemplate()
-        {
-            var client = await GetTestClientAsync();
-            if (client.AccessToken.Token == "Token")
-            {
-                var loan = new Loan(client);
-                var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
-                _ = await loan.LoanApis.GetMetadataAsync();
-                await Task.Delay(5000);
-                await client.Loans.DeleteLoanAsync(loanId);
-            }
-        }
+        //[TestMethod]
+        //[ApiTest]
+        //public async Task Loan_CreateWithLoanTemplate()
+        //{
+        //    var client = await GetTestClientAsync();
+        //    if (client.AccessToken.Token == "Token")
+        //    {
+        //        var loan = new Loan(client);
+        //        var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
+        //        _ = await loan.LoanApis.GetMetadataAsync();
+        //        await Task.Delay(5000);
+        //        await client.Loans.DeleteLoanAsync(loanId);
+        //    }
+        //}
 
-        [TestMethod]
-        [ApiTest]
-        public async Task Loan_UpdateWithLoanTemplate()
-        {
-            var client = await GetTestClientAsync();
-            if (client.AccessToken.Token == "Token")
-            {
-                var loan = new Loan(client);
-                var loanId = await client.Loans.CreateLoanAsync(loan, true);
-                await client.Loans.UpdateLoanAsync(loan, new UpdateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
-                _ = await loan.LoanApis.GetMetadataAsync();
-                await Task.Delay(5000);
-                await client.Loans.DeleteLoanAsync(loanId);
-            }
-        }
+        //[TestMethod]
+        //[ApiTest]
+        //public async Task Loan_UpdateWithLoanTemplate()
+        //{
+        //    var client = await GetTestClientAsync();
+        //    if (client.AccessToken.Token == "Token")
+        //    {
+        //        var loan = new Loan(client);
+        //        var loanId = await client.Loans.CreateLoanAsync(loan, true);
+        //        await client.Loans.UpdateLoanAsync(loan, new UpdateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
+        //        _ = await loan.LoanApis.GetMetadataAsync();
+        //        await Task.Delay(5000);
+        //        await client.Loans.DeleteLoanAsync(loanId);
+        //    }
+        //}
 
         [TestMethod]
         [TestCategory("SkipWhenLiveUnitTesting")]

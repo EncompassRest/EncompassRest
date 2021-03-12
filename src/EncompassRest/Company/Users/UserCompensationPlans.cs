@@ -28,7 +28,7 @@ namespace EncompassRest.Company.Users
     /// </summary>
     public sealed class UserCompensationPlans : UserApiObject, IUserCompensationPlans
     {
-        internal UserCompensationPlans(EncompassRestClient client, string userId)
+        internal UserCompensationPlans(IEncompassRestClient client, string userId)
             : base(client, userId, "compensation")
         {
         }

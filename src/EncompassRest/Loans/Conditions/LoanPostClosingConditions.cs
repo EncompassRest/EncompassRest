@@ -12,7 +12,7 @@
     /// </summary>
     public sealed class LoanPostClosingConditions : LoanConditions<PostClosingCondition>, ILoanPostClosingConditions
     {
-        internal LoanPostClosingConditions(EncompassRestClient client, string loanId)
+        internal LoanPostClosingConditions(IEncompassRestClient client, string loanId)
             : base(client, loanId, "postclosing")
         {
         }

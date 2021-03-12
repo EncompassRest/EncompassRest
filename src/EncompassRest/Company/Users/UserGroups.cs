@@ -29,7 +29,7 @@ namespace EncompassRest.Company.Users
     /// </summary>
     public sealed class UserGroups : UserApiObject, IUserGroups
     {
-        internal UserGroups(EncompassRestClient client, string userId)
+        internal UserGroups(IEncompassRestClient client, string userId)
             : base(client, userId, "groups")
         {
         }

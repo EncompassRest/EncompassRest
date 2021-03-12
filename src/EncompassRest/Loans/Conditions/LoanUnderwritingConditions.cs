@@ -12,7 +12,7 @@
     /// </summary>
     public sealed class LoanUnderwritingConditions : LoanConditions<UnderwritingCondition>, ILoanUnderwritingConditions
     {
-        internal LoanUnderwritingConditions(EncompassRestClient client, string loanId)
+        internal LoanUnderwritingConditions(IEncompassRestClient client, string loanId)
             : base(client, loanId, "underwriting")
         {
         }
