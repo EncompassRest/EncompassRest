@@ -1,6 +1,8 @@
 ﻿using EncompassApi.FuncApp.Configuration;
+using EncompassApi.MessageHandlers;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Polly;
 using Polly.Extensions.Http;
 using Serilog;
@@ -76,6 +78,27 @@ namespace EncompassApi.FuncApp
                       c.Timeout = TimeSpan.FromSeconds(httpOptions.TimeoutInSeconds);
                   });
             }
+        }
+
+        public void AddFairwayTokenHandlerWithRetry(IFunctionsHostBuilder builder, HttpClientOptions httpOptions, TokenServiceClientOptions tokenServiceOptions)
+        {
+            IOptions<TokenServiceClientOptions> tokenClientIOptions = Options.Create(tokenServiceOptions);
+
+            var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(httpOptions.RetryCount);
+            var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(httpOptions.TimeoutInSeconds);
+
+            builder.Services.AddSingleton(tokenClientIOptions);
+            builder.Services.AddHttpClient("TokenClient")
+                .AddPolicyHandler(retryPolicy)
+                .AddPolicyHandler(timeoutPolicy);
+
+            builder.Services.AddScoped<ITokenServiceClient>(sp => 
+                new TokenServiceClient(sp.GetService<IHttpClientFactory>().CreateClient("TokenClient"), tokenClientIOptions));
+
+            builder.Services.AddHttpClient("EncompassHttpClient", c => c.BaseAddress = new Uri(tokenServiceOptions.BaseUrl))
+                .AddPolicyHandler(retryPolicy)
+                .AddPolicyHandler(timeoutPolicy)
+                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenServiceClient>()));
         }
     }
 }
