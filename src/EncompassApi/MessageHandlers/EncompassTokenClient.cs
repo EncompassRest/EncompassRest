@@ -22,7 +22,7 @@ namespace EncompassApi.MessageHandlers
         {
             try
             {
-                if (_httpClient.DefaultRequestHeaders.Authorization == null)
+                if (_httpClient.DefaultRequestHeaders.Authorization != null)
                 {
                     var postData = $"grant_type=password&username={_options.Username}@encompass:{_options.EncompassInstanceId}&password={_options.Password}";
                     var httpResponse = await _httpClient.PostAsync(_options.BaseUrl + "/oauth2/v1/token", new StringContent(postData, Encoding.UTF8, "application/x-www-form-urlencoded"));

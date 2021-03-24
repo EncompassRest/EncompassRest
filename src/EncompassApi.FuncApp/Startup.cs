@@ -13,7 +13,9 @@ using Serilog.Events;
 using Serilog.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 
 [assembly: FunctionsStartup(typeof(EncompassApi.FuncApp.Startup))]
@@ -117,14 +119,22 @@ namespace EncompassApi.FuncApp
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(encompassTokenClientOptions.TimeoutInSeconds);
 
             builder.Services.AddSingleton(options);
-            builder.Services.AddHttpClient(encompassTokenClientOptions.ClientName)
+            builder.Services.AddHttpClient(encompassTokenClientOptions.ClientName, c => {
+                c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                    Convert.ToBase64String(
+                        Encoding.UTF8.GetBytes(
+                            $"{WebUtility.UrlEncode(encompassTokenClientOptions.ClientId)}:{WebUtility.UrlEncode(encompassTokenClientOptions.ClientSecret)}")));
+            })
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
 
             builder.Services.AddScoped<ITokenClient>(sp =>
                 new EncompassTokenClient(sp.GetService<IHttpClientFactory>().CreateClient(encompassTokenClientOptions.ClientName), options));
 
-            builder.Services.AddHttpClient("EncompassClient")
+            builder.Services.AddHttpClient("EncompassClient", c =>
+            {
+                c.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);
+            })
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy)
                 .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()));
@@ -181,18 +191,26 @@ namespace EncompassApi.FuncApp
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(encompassTokenClientOptions.TimeoutInSeconds);
 
             builder.Services.AddSingleton(options);
-            builder.Services.AddHttpClient(encompassTokenClientOptions.ClientName)
+            builder.Services.AddHttpClient(encompassTokenClientOptions.ClientName, c => {
+                c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                    Convert.ToBase64String(
+                        Encoding.UTF8.GetBytes(
+                            $"{WebUtility.UrlEncode(encompassTokenClientOptions.ClientId)}:{WebUtility.UrlEncode(encompassTokenClientOptions.ClientSecret)}")));
+            })
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
 
             builder.Services.AddScoped<ITokenClient>(sp =>
                 new EncompassTokenClient(sp.GetService<IHttpClientFactory>().CreateClient(encompassTokenClientOptions.ClientName), options));
 
-            builder.Services.AddHttpClient("EncompassClient")
-                .AddPolicyHandler(retryPolicy)
-                .AddPolicyHandler(timeoutPolicy)
+            builder.Services.AddHttpClient("EncompassClient", c =>
+            {
+                c.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);                
+            })
                 .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()))
-                .AddHttpMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()));
+                .AddHttpMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
+                .AddPolicyHandler(retryPolicy)
+                .AddPolicyHandler(timeoutPolicy);
 
             builder.Services.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), clientParameters));
         }
