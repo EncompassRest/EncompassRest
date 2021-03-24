@@ -11,8 +11,8 @@ namespace EncompassApi.MessageHandlers
 {
     public class TokenHandler : DelegatingHandler
     {
-        private readonly ITokenServiceClient _tokenServiceClient;
-        public TokenHandler(ITokenServiceClient tokenServiceClient)
+        private readonly ITokenClient _tokenServiceClient;
+        public TokenHandler(ITokenClient tokenServiceClient)
         {
             _tokenServiceClient = tokenServiceClient;
         }

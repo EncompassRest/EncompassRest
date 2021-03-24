@@ -169,17 +169,14 @@ namespace EncompassApi
             Preconditions.NotNullOrEmpty(userId, nameof(userId));
             Preconditions.NotNullOrEmpty(password, nameof(password));
 
-            var tokenServiceClientOptions = new TokenServiceClientOptions
+            var tokenServiceClientOptions = new FairwayTokenClientOptions
             {
                 BaseUrl = parameters.BaseAddress,
                 ClientId = parameters.ApiClientId,
                 ClientSecret = parameters.ApiClientSecret,
-                Username = userId,
-                Password = password,
-                EncompassInstanceId = instanceId
             };
 
-            IOptions<TokenServiceClientOptions> tokenClientIOptions = Options.Create(tokenServiceClientOptions);
+            IOptions<FairwayTokenClientOptions> tokenClientIOptions = Options.Create(tokenServiceClientOptions);
 
             var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(parameters.TimeoutRetryCount);
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(parameters.Timeout);
@@ -192,12 +189,12 @@ namespace EncompassApi
                 .AddPolicyHandler(HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(parameters.TimeoutRetryCount))
                 .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(parameters.Timeout));
 
-            serviceCollection.AddScoped<ITokenServiceClient>(sp => new TokenServiceClient(sp.GetService<IHttpClientFactory>().CreateClient("TokenClient"), tokenClientIOptions));
+            serviceCollection.AddScoped<ITokenClient>(sp => new FairwayTokenClient(sp.GetService<IHttpClientFactory>().CreateClient("TokenClient"), tokenClientIOptions));
 
-            serviceCollection.AddHttpClient("EncompassHttpClient", c => c.BaseAddress = new Uri(parameters.BaseAddress))
+            serviceCollection.AddHttpClient("EncompassHttpClient")
                 .AddPolicyHandler(HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(parameters.TimeoutRetryCount))
                 .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(parameters.Timeout))
-                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenServiceClient>()));
+                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()));
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
 

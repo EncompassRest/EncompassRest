@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace EncompassApi.MessageHandlers
 {
-    public class TokenServiceClient : ITokenServiceClient
+    public class EncompassTokenClient : ITokenClient
     {
         private readonly HttpClient _httpClient;
-        private readonly TokenServiceClientOptions _options;
-        public TokenServiceClient(HttpClient httpClient, IOptions<TokenServiceClientOptions> options)
+        private readonly EncompassTokenClientOptions _options;
+        public EncompassTokenClient(HttpClient httpClient, IOptions<EncompassTokenClientOptions> options)
         {
             _httpClient = httpClient;
             _options = options.Value;
@@ -22,7 +22,7 @@ namespace EncompassApi.MessageHandlers
         {
             try
             {
-                if (_httpClient.DefaultRequestHeaders.Authorization != null)
+                if (_httpClient.DefaultRequestHeaders.Authorization == null)
                 {
                     var postData = $"grant_type=password&username={_options.Username}@encompass:{_options.EncompassInstanceId}&password={_options.Password}";
                     var httpResponse = await _httpClient.PostAsync(_options.BaseUrl + "/oauth2/v1/token", new StringContent(postData, Encoding.UTF8, "application/x-www-form-urlencoded"));
@@ -43,10 +43,5 @@ namespace EncompassApi.MessageHandlers
                 throw;
             }
         }
-    }
-
-    public interface ITokenServiceClient
-    {
-        Task<string> GetToken();
     }
 }

@@ -31,6 +31,10 @@
     <EmbeddedResource Include="LoanFields.zip" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
     <AssemblyTitle>EncompassApi .NET Standard 2.1</AssemblyTitle>
     <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE;NULLABLE_ATTRIBUTES;KEYVALUEPAIR_CREATE;IASYNC_DISPOSABLE</DefineConstants>

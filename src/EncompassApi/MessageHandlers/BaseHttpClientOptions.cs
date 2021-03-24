@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EncompassApi.FuncApp.Configuration
+namespace EncompassApi.MessageHandlers
 {
-    public class HttpClientOptions
+    public class BaseHttpClientOptions
     {
         /// <summary>
         /// HttpOptions
@@ -13,6 +13,6 @@ namespace EncompassApi.FuncApp.Configuration
         public int RetryCount { get; set; }
         public int TimeoutInSeconds { get; set; }
         public string ClientName { get; set; }
-        public string ClientURL { get; set; }
+        public string BaseUrl { get; set; }
     }
 }

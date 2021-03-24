@@ -1,4 +1,4 @@
-﻿using EncompassApi.FuncApp.Configuration;
+﻿using EncompassApi.FuncApp.MessageHandlers;
 using EncompassApi.MessageHandlers;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,12 +38,12 @@ namespace EncompassApi.FuncApp
             builder.Services.AddLogging(p => p.AddSerilog(logger));
 
             //TODO: Real dev values and Options Pattern
-            var httpClientOptions = new HttpClientOptions
+            var httpClientOptions = new BaseHttpClientOptions
             {
                 Retry = true,
                 RetryCount = 3,
                 TimeoutInSeconds = 30,
-                ClientURL = "http://localhost:7071/api/",
+                BaseUrl = "http://localhost:7071/api/",
                 ClientName = "TestClient"
             };
 
@@ -51,54 +51,93 @@ namespace EncompassApi.FuncApp
 
             clientParameters.CustomFieldsCacheInitialization = EncompassApi.CacheInitialization.Never;
             builder.Services.AddSingleton(clientParameters);
-            AddSingleClientHttpClient(builder, httpClientOptions);
+            
         }
 
-        public void AddSingleClientHttpClient(IFunctionsHostBuilder builder, HttpClientOptions httpOptions)
+        public void AddFairwayTokenHandlerWithRetry(IFunctionsHostBuilder builder, FairwayTokenClientOptions fairwayTokenClientOptions)
         {
-            if (httpOptions.Retry)
-            {
-                var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(httpOptions.RetryCount);
-                var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(httpOptions.TimeoutInSeconds);
+            IOptions<FairwayTokenClientOptions> tokenClientIOptions = Options.Create(fairwayTokenClientOptions);
 
-                builder.Services.AddHttpClient(httpOptions.ClientName,
-                  c => c.BaseAddress = new Uri(httpOptions.ClientURL))
-                  .AddPolicyHandler(retryPolicy)
-                  .AddPolicyHandler(timeoutPolicy);
-                //token handler config here, calls will fail without token handler config and insert of handler using .AddHttpMessageHandler
-                //TODO for MOR-177
-                //TODO convert to Extension method in the library 
-            }
-            else
-            {
-                builder.Services.AddHttpClient(httpOptions.ClientName,
-                  c =>
-                  {
-                      c.BaseAddress = new Uri(httpOptions.ClientURL);
-                      c.Timeout = TimeSpan.FromSeconds(httpOptions.TimeoutInSeconds);
-                  });
-            }
-        }
-
-        public void AddFairwayTokenHandlerWithRetry(IFunctionsHostBuilder builder, HttpClientOptions httpOptions, TokenServiceClientOptions tokenServiceOptions)
-        {
-            IOptions<TokenServiceClientOptions> tokenClientIOptions = Options.Create(tokenServiceOptions);
-
-            var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(httpOptions.RetryCount);
-            var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(httpOptions.TimeoutInSeconds);
+            var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(fairwayTokenClientOptions.RetryCount);
+            var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(fairwayTokenClientOptions.TimeoutInSeconds);
 
             builder.Services.AddSingleton(tokenClientIOptions);
-            builder.Services.AddHttpClient("TokenClient")
+            builder.Services.AddHttpClient("FairwayTokenClient")
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
 
-            builder.Services.AddScoped<ITokenServiceClient>(sp => 
-                new TokenServiceClient(sp.GetService<IHttpClientFactory>().CreateClient("TokenClient"), tokenClientIOptions));
+            builder.Services.AddScoped<ITokenClient>(sp => 
+                new FairwayTokenClient(sp.GetService<IHttpClientFactory>().CreateClient("FairwayTokenClient"), tokenClientIOptions));
 
-            builder.Services.AddHttpClient("EncompassHttpClient", c => c.BaseAddress = new Uri(tokenServiceOptions.BaseUrl))
+            builder.Services.AddHttpClient("EncompassClient")
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy)
-                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenServiceClient>()));
+                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()));
+        }
+
+        public void AddEncompassTokenHandlerWithRetry(IFunctionsHostBuilder builder, EncompassTokenClientOptions encompassTokenClientOptions)
+        {
+            IOptions<EncompassTokenClientOptions> options = Options.Create(encompassTokenClientOptions);
+
+            var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(encompassTokenClientOptions.RetryCount);
+            var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(encompassTokenClientOptions.TimeoutInSeconds);
+
+            builder.Services.AddSingleton(options);
+            builder.Services.AddHttpClient("EncompassTokenClient")
+                .AddPolicyHandler(retryPolicy)
+                .AddPolicyHandler(timeoutPolicy);
+
+            builder.Services.AddScoped<ITokenClient>(sp =>
+                new EncompassTokenClient(sp.GetService<IHttpClientFactory>().CreateClient("EncompassTokenClient"), options));
+
+            builder.Services.AddHttpClient("EncompassClient")
+                .AddPolicyHandler(retryPolicy)
+                .AddPolicyHandler(timeoutPolicy)
+                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()));
+        }
+
+        public void AddFairwayTokenHandlerWithInterceptor(IFunctionsHostBuilder builder, FairwayTokenClientOptions fairwayTokenClientOptions)
+        {
+            IOptions<FairwayTokenClientOptions> tokenClientIOptions = Options.Create(fairwayTokenClientOptions);
+
+            var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(fairwayTokenClientOptions.RetryCount);
+            var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(fairwayTokenClientOptions.TimeoutInSeconds);
+
+            builder.Services.AddSingleton(tokenClientIOptions);
+            builder.Services.AddHttpClient("FairwayTokenClient")
+                .AddPolicyHandler(retryPolicy)
+                .AddPolicyHandler(timeoutPolicy);
+
+            builder.Services.AddScoped<ITokenClient>(sp =>
+                new FairwayTokenClient(sp.GetService<IHttpClientFactory>().CreateClient("FairwayTokenClient"), tokenClientIOptions));
+
+            builder.Services.AddHttpClient("EncompassClient")
+                .AddPolicyHandler(retryPolicy)
+                .AddPolicyHandler(timeoutPolicy)
+                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()))
+                .AddHttpMessageHandler<AuthHeaderInterceptorHandler>();
+        }
+
+        public void AddEncompassTokenHandlerWithInterceptor(IFunctionsHostBuilder builder, EncompassTokenClientOptions encompassTokenClientOptions)
+        {
+            IOptions<EncompassTokenClientOptions> options = Options.Create(encompassTokenClientOptions);
+
+            var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(encompassTokenClientOptions.RetryCount);
+            var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(encompassTokenClientOptions.TimeoutInSeconds);
+
+            builder.Services.AddSingleton(options);
+            builder.Services.AddHttpClient("EncompassTokenClient")
+                .AddPolicyHandler(retryPolicy)
+                .AddPolicyHandler(timeoutPolicy);
+
+            builder.Services.AddScoped<ITokenClient>(sp =>
+                new EncompassTokenClient(sp.GetService<IHttpClientFactory>().CreateClient("EncompassTokenClient"), options));
+
+            builder.Services.AddHttpClient("EncompassClient")
+                .AddPolicyHandler(retryPolicy)
+                .AddPolicyHandler(timeoutPolicy)
+                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()))
+                .AddHttpMessageHandler<AuthHeaderInterceptorHandler>();
         }
     }
 }
