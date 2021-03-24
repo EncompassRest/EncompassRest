@@ -6,11 +6,11 @@ on:
       - feature/*
 
 jobs:
-  determine_version:
-    name: Determine Version
-    runs-on: ubuntu-latest
-    outputs:
-      semVer: ${{ steps.gitversion.outputs.semVer }}
+  build:
+    runs-on: windows-latest
+    needs: determine_version
+    env:
+      CONFIGURATION: Release
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
@@ -26,26 +26,9 @@ jobs:
       id: gitversion
       uses: gittools/actions/gitversion/execute@v0.9.9
       with:
+        targetPath: src/EncompassApi
         useConfigFile: true
-
-  display_semver:
-    name: Display Semantic Version
-    runs-on: ubuntu-latest
-    needs: determine_version
-    env:
-      SEMVER: ${{ needs.determine_version.outputs.semVer }}
-    steps:
-    - name: Display Version
-      run: |
-        echo "SemVer: $SEMVER"
-
-  build:
-    runs-on: windows-latest
-    env:
-      CONFIGURATION: Release
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
+        updateAssemblyInfo: true
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
