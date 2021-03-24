@@ -1,6 +1,7 @@
 ﻿using EncompassApi.FuncApp.MessageHandlers;
 using EncompassApi.MessageHandlers;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Polly;
@@ -37,18 +38,37 @@ namespace EncompassApi.FuncApp
 
             builder.Services.AddLogging(p => p.AddSerilog(logger));
 
-            
-            
+            var encompassTokenClientOptions = new EncompassTokenClientOptions();
+            var fairwayTokenClientOptions = new FairwayTokenClientOptions();
 
-            var clientParameters = new ClientParameters("ApiClientId", "ApiClientSecret");
+            builder.Services.AddOptions<EncompassTokenClientOptions>()
+                .Configure<IConfiguration>((settings, configuration) =>
+                {
+                    configuration.GetSection(EncompassTokenClientOptions.EncompassTokenClient).Bind(settings);
+                    encompassTokenClientOptions = configuration.GetSection(EncompassTokenClientOptions.EncompassTokenClient).Get<EncompassTokenClientOptions>();
+                });
 
-            clientParameters.CustomFieldsCacheInitialization = EncompassApi.CacheInitialization.Never;
-            builder.Services.AddSingleton(clientParameters);
-            
+            builder.Services.AddOptions<FairwayTokenClientOptions>()
+                .Configure<IConfiguration>((settings, configuration) =>
+                {
+                    configuration.GetSection(FairwayTokenClientOptions.FairwayTokenClient).Bind(settings);
+                    fairwayTokenClientOptions = configuration.GetSection(FairwayTokenClientOptions.FairwayTokenClient).Get<FairwayTokenClientOptions>();
+                });
+
+            AddEncompassTokenHandlerWithInterceptor(builder, encompassTokenClientOptions);
         }
 
         public void AddFairwayTokenHandlerWithRetry(IFunctionsHostBuilder builder, FairwayTokenClientOptions fairwayTokenClientOptions)
         {
+            var clientParameters = new ClientParameters
+            {
+                ApiClientId = fairwayTokenClientOptions.ClientId,
+                ApiClientSecret = fairwayTokenClientOptions.ClientSecret
+            };
+
+            clientParameters.CustomFieldsCacheInitialization = EncompassApi.CacheInitialization.Never;
+            builder.Services.AddSingleton(clientParameters);
+
             IOptions<FairwayTokenClientOptions> tokenClientIOptions = Options.Create(fairwayTokenClientOptions);
 
             var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(fairwayTokenClientOptions.RetryCount);
@@ -66,10 +86,21 @@ namespace EncompassApi.FuncApp
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy)
                 .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()));
+
+            builder.Services.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), clientParameters));
         }
 
         public void AddEncompassTokenHandlerWithRetry(IFunctionsHostBuilder builder, EncompassTokenClientOptions encompassTokenClientOptions)
         {
+            var clientParameters = new ClientParameters
+            {
+                ApiClientId = encompassTokenClientOptions.ClientId,
+                ApiClientSecret = encompassTokenClientOptions.ClientSecret
+            };
+
+            clientParameters.CustomFieldsCacheInitialization = EncompassApi.CacheInitialization.Never;
+            builder.Services.AddSingleton(clientParameters);
+
             IOptions<EncompassTokenClientOptions> options = Options.Create(encompassTokenClientOptions);
 
             var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(encompassTokenClientOptions.RetryCount);
@@ -87,10 +118,21 @@ namespace EncompassApi.FuncApp
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy)
                 .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()));
+
+            builder.Services.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), clientParameters));
         }
 
         public void AddFairwayTokenHandlerWithInterceptor(IFunctionsHostBuilder builder, FairwayTokenClientOptions fairwayTokenClientOptions)
         {
+            var clientParameters = new ClientParameters
+            {
+                ApiClientId = fairwayTokenClientOptions.ClientId,
+                ApiClientSecret = fairwayTokenClientOptions.ClientSecret
+            };
+
+            clientParameters.CustomFieldsCacheInitialization = EncompassApi.CacheInitialization.Never;
+            builder.Services.AddSingleton(clientParameters);
+
             IOptions<FairwayTokenClientOptions> tokenClientIOptions = Options.Create(fairwayTokenClientOptions);
 
             var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(fairwayTokenClientOptions.RetryCount);
@@ -109,10 +151,20 @@ namespace EncompassApi.FuncApp
                 .AddPolicyHandler(timeoutPolicy)
                 .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()))
                 .AddHttpMessageHandler<AuthHeaderInterceptorHandler>();
+
+            builder.Services.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), clientParameters));
         }
 
         public void AddEncompassTokenHandlerWithInterceptor(IFunctionsHostBuilder builder, EncompassTokenClientOptions encompassTokenClientOptions)
         {
+            var clientParameters = new ClientParameters
+            {
+                ApiClientId = encompassTokenClientOptions.ClientId,
+                ApiClientSecret = encompassTokenClientOptions.ClientSecret
+            };
+            clientParameters.CustomFieldsCacheInitialization = EncompassApi.CacheInitialization.Never;
+            builder.Services.AddSingleton(clientParameters);
+
             IOptions<EncompassTokenClientOptions> options = Options.Create(encompassTokenClientOptions);
 
             var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(encompassTokenClientOptions.RetryCount);
@@ -131,6 +183,8 @@ namespace EncompassApi.FuncApp
                 .AddPolicyHandler(timeoutPolicy)
                 .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()))
                 .AddHttpMessageHandler<AuthHeaderInterceptorHandler>();
+
+            builder.Services.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), clientParameters));
         }
     }
 }

@@ -24,13 +24,15 @@ namespace EncompassApi.FuncApp
         public async Task<IActionResult> GetToken(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req)
         {
-            _log.LogInformation("C# HTTP trigger function processed a request.");
+            _log.LogInformation("Token Service Validation start");
 
-            string name = req.Query["name"];
+            //this call will fail but should call correct handlers to validate token
+            var result = _client.Webhook.GetSubscriptionsAsync();
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
+
+            var name = "Bruh";
 
             string responseMessage = string.IsNullOrEmpty(name)
                 ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."

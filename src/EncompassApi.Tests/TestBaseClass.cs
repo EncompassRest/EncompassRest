@@ -49,7 +49,11 @@ namespace EncompassApi.Tests
                 //}
                 //else
                 //{
-                    IClientParameters parameters = new ClientParameters("ApiClientId", "ApiClientSecret");
+                    IClientParameters parameters = new ClientParameters 
+                    {                   
+                        ApiClientId = "ApiClientId",
+                        ApiClientSecret = "ApiClientSecret"
+                    };
                     client = new EncompassApiClient(parameters);
                     //TODO Rewrite
                     //var accessToken = client.AccessToken;
