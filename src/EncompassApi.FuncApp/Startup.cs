@@ -1,8 +1,10 @@
-﻿using EncompassApi.FuncApp.MessageHandlers;
+﻿using EncompassApi.FuncApp.Configuration;
+using EncompassApi.FuncApp.MessageHandlers;
 using EncompassApi.MessageHandlers;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Polly;
 using Polly.Extensions.Http;
@@ -38,22 +40,30 @@ namespace EncompassApi.FuncApp
 
             builder.Services.AddLogging(p => p.AddSerilog(logger));
 
-            var encompassTokenClientOptions = new EncompassTokenClientOptions();
-            var fairwayTokenClientOptions = new FairwayTokenClientOptions();
+            var encompassTokenClientOptions = ConfigHelper.GetEncompassTokenClientOptions();
+            var fairwayTokenClientOptions = ConfigHelper.GetFairwayTokenClientOptions();
 
-            builder.Services.AddOptions<EncompassTokenClientOptions>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                {
-                    configuration.GetSection(EncompassTokenClientOptions.EncompassTokenClient).Bind(settings);
-                    encompassTokenClientOptions = configuration.GetSection(EncompassTokenClientOptions.EncompassTokenClient).Get<EncompassTokenClientOptions>();
-                });
+            var encompassIOptions = Options.Create(encompassTokenClientOptions);
+            var fairwayIOptions = Options.Create(fairwayTokenClientOptions);
 
-            builder.Services.AddOptions<FairwayTokenClientOptions>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                {
-                    configuration.GetSection(FairwayTokenClientOptions.FairwayTokenClient).Bind(settings);
-                    fairwayTokenClientOptions = configuration.GetSection(FairwayTokenClientOptions.FairwayTokenClient).Get<FairwayTokenClientOptions>();
-                });
+            builder.Services.AddSingleton(encompassIOptions);
+            builder.Services.AddSingleton(fairwayIOptions);
+
+            //builder.Services.AddOptions<EncompassTokenClientOptions>()
+            //    .Configure<IConfiguration>((settings, configuration) =>
+            //    {
+            //        var configSection = configuration.GetSection(EncompassTokenClientOptions.EncompassTokenClient);
+            //        encompassTokenClientOptions = configSection?.Get<EncompassTokenClientOptions>();
+            //        configSection.Bind(settings);
+            //    });
+
+            //builder.Services.AddOptions<FairwayTokenClientOptions>()
+            //    .Configure<IConfiguration>((settings, configuration) =>
+            //    {
+            //        var configSection = configuration.GetSection(FairwayTokenClientOptions.FairwayTokenClient);
+            //        fairwayTokenClientOptions = configSection?.Get<FairwayTokenClientOptions>();
+            //        configSection.Bind(settings);
+            //    });
 
             AddEncompassTokenHandlerWithInterceptor(builder, encompassTokenClientOptions);
         }
@@ -182,7 +192,7 @@ namespace EncompassApi.FuncApp
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy)
                 .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()))
-                .AddHttpMessageHandler<AuthHeaderInterceptorHandler>();
+                .AddHttpMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()));
 
             builder.Services.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), clientParameters));
         }
