@@ -37,15 +37,8 @@ namespace EncompassApi.FuncApp
 
             builder.Services.AddLogging(p => p.AddSerilog(logger));
 
-            //TODO: Real dev values and Options Pattern
-            var httpClientOptions = new BaseHttpClientOptions
-            {
-                Retry = true,
-                RetryCount = 3,
-                TimeoutInSeconds = 30,
-                BaseUrl = "http://localhost:7071/api/",
-                ClientName = "TestClient"
-            };
+            
+            
 
             var clientParameters = new ClientParameters("ApiClientId", "ApiClientSecret");
 
@@ -62,12 +55,12 @@ namespace EncompassApi.FuncApp
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(fairwayTokenClientOptions.TimeoutInSeconds);
 
             builder.Services.AddSingleton(tokenClientIOptions);
-            builder.Services.AddHttpClient("FairwayTokenClient")
+            builder.Services.AddHttpClient(fairwayTokenClientOptions.ClientName)
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
 
             builder.Services.AddScoped<ITokenClient>(sp => 
-                new FairwayTokenClient(sp.GetService<IHttpClientFactory>().CreateClient("FairwayTokenClient"), tokenClientIOptions));
+                new FairwayTokenClient(sp.GetService<IHttpClientFactory>().CreateClient(fairwayTokenClientOptions.ClientName), tokenClientIOptions));
 
             builder.Services.AddHttpClient("EncompassClient")
                 .AddPolicyHandler(retryPolicy)
@@ -83,12 +76,12 @@ namespace EncompassApi.FuncApp
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(encompassTokenClientOptions.TimeoutInSeconds);
 
             builder.Services.AddSingleton(options);
-            builder.Services.AddHttpClient("EncompassTokenClient")
+            builder.Services.AddHttpClient(encompassTokenClientOptions.ClientName)
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
 
             builder.Services.AddScoped<ITokenClient>(sp =>
-                new EncompassTokenClient(sp.GetService<IHttpClientFactory>().CreateClient("EncompassTokenClient"), options));
+                new EncompassTokenClient(sp.GetService<IHttpClientFactory>().CreateClient(encompassTokenClientOptions.ClientName), options));
 
             builder.Services.AddHttpClient("EncompassClient")
                 .AddPolicyHandler(retryPolicy)
@@ -104,12 +97,12 @@ namespace EncompassApi.FuncApp
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(fairwayTokenClientOptions.TimeoutInSeconds);
 
             builder.Services.AddSingleton(tokenClientIOptions);
-            builder.Services.AddHttpClient("FairwayTokenClient")
+            builder.Services.AddHttpClient(fairwayTokenClientOptions.ClientName)
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
 
             builder.Services.AddScoped<ITokenClient>(sp =>
-                new FairwayTokenClient(sp.GetService<IHttpClientFactory>().CreateClient("FairwayTokenClient"), tokenClientIOptions));
+                new FairwayTokenClient(sp.GetService<IHttpClientFactory>().CreateClient(fairwayTokenClientOptions.ClientName), tokenClientIOptions));
 
             builder.Services.AddHttpClient("EncompassClient")
                 .AddPolicyHandler(retryPolicy)
@@ -126,12 +119,12 @@ namespace EncompassApi.FuncApp
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(encompassTokenClientOptions.TimeoutInSeconds);
 
             builder.Services.AddSingleton(options);
-            builder.Services.AddHttpClient("EncompassTokenClient")
+            builder.Services.AddHttpClient(encompassTokenClientOptions.ClientName)
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
 
             builder.Services.AddScoped<ITokenClient>(sp =>
-                new EncompassTokenClient(sp.GetService<IHttpClientFactory>().CreateClient("EncompassTokenClient"), options));
+                new EncompassTokenClient(sp.GetService<IHttpClientFactory>().CreateClient(encompassTokenClientOptions.ClientName), options));
 
             builder.Services.AddHttpClient("EncompassClient")
                 .AddPolicyHandler(retryPolicy)
