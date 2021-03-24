@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    needs: determine_version
     env:
       CONFIGURATION: Release
     steps:
