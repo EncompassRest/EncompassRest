@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Security;
+using System.Reflection;
 
 [assembly: AllowPartiallyTrustedCallers]
 [assembly: CLSCompliant(true)]
