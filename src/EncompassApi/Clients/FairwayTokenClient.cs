@@ -37,7 +37,7 @@ namespace EncompassApi.Clients
                 var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(contents);
                 return tokenResponse.access_token;
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 throw;
             }

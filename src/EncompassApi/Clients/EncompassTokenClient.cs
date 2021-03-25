@@ -38,7 +38,7 @@ namespace EncompassApi.Clients
                 return tokenResponse.access_token;                    
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }
