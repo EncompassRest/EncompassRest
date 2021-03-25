@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using EncompassApi.Utilities;
 using EnumsNET;
 
-namespace EncompassApi
+namespace EncompassApi.Extensions
 {
     /// <summary>
     /// General Extensions.

@@ -1,12 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿using EncompassApi.Configuration;
+using EncompassApi.MessageHandlers;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace EncompassApi.MessageHandlers
+namespace EncompassApi.Clients
 {
     public class FairwayTokenClient : ITokenClient
     {

@@ -1,4 +1,5 @@
-﻿using EncompassApi.MessageHandlers;
+﻿using EncompassApi.Configuration;
+using EncompassApi.MessageHandlers;
 using System;
 using System.Collections.Generic;
 using System.Text;

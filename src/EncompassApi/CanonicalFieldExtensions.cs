@@ -1,4 +1,6 @@
-﻿namespace EncompassApi
+﻿using EncompassApi.Extensions;
+
+namespace EncompassApi
 {
     /// <summary>
     /// Extensions for canonical fields.

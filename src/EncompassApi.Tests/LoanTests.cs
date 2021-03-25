@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
+using EncompassApi.Extensions;
 using EncompassApi.Filters;
 using EncompassApi.LoanPipeline;
 using EncompassApi.Loans;

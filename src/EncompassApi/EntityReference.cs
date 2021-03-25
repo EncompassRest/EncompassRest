@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using EncompassApi.Extensions;
 using EncompassApi.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;

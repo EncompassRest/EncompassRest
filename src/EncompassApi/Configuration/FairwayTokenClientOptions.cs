@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EncompassApi.MessageHandlers
+﻿namespace EncompassApi.Configuration
 {
     public class FairwayTokenClientOptions : BaseHttpClientOptions
     {

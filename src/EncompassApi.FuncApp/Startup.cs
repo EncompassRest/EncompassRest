@@ -1,8 +1,10 @@
-﻿using EncompassApi.FuncApp.Configuration;
+﻿using EncompassApi.Clients;
+using EncompassApi.Configuration;
+using EncompassApi.FuncApp.Configuration;
 using EncompassApi.FuncApp.MessageHandlers;
 using EncompassApi.MessageHandlers;
+using EncompassApi.Extensions;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -12,7 +14,6 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -66,6 +67,9 @@ namespace EncompassApi.FuncApp
             //        fairwayTokenClientOptions = configSection?.Get<FairwayTokenClientOptions>();
             //        configSection.Bind(settings);
             //    });
+
+            //builder.Services.AddEncompassTokenHandlerWithRetry(encompassTokenClientOptions);
+            //builder.Services.AddFairwayTokenHandlerWithRetry(fairwayTokenClientOptions);
 
             AddEncompassTokenHandlerWithInterceptor(builder, encompassTokenClientOptions);
         }

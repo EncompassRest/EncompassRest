@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EncompassApi.MessageHandlers
+namespace EncompassApi.Clients
 {
     public interface ITokenClient
     {
