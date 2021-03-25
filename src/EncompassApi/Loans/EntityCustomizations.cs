@@ -1,4 +1,5 @@
-﻿using EncompassApi.Loans.Enums;
+﻿using EncompassApi.Extensions;
+using EncompassApi.Loans.Enums;
 using EncompassApi.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;

@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassApi.Extensions;
 using EncompassApi.Utilities;
 using EnumsNET;
 

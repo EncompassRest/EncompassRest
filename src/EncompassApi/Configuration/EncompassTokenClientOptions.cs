@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EncompassApi.MessageHandlers
+﻿namespace EncompassApi.Configuration
 {
-    public class TokenServiceClientOptions
+    public class EncompassTokenClientOptions : BaseHttpClientOptions
     {
-        public const string TokenServiceClient = "TokenServiceClient";
+        public const string EncompassTokenClient = "EncompassTokenClient";
 
         public string AuthKey { get; set; }
         public string ClientId { get; set; }
@@ -14,6 +10,5 @@ namespace EncompassApi.MessageHandlers
         public string Username { get; set; }
         public string Password { get; set; }
         public string EncompassInstanceId { get; set; }
-        public string BaseUrl { get; set; }
     }
 }

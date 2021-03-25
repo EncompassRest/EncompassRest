@@ -9,8 +9,8 @@ namespace EncompassApi
 {
     public interface IClientParameters
     {
-        string ApiClientId { get; }
-        string ApiClientSecret { get; }
+        string ApiClientId { get; set; }
+        string ApiClientSecret { get; set; }
         EventHandler<ApiResponseEventArgs>? ApiResponse { get; set; }
         string? BaseAddress { get; set; }
         CommonCache? CommonCache { get; set; }
@@ -28,12 +28,12 @@ namespace EncompassApi
         /// <summary>
         /// The Api Client Id.
         /// </summary>
-        public string ApiClientId { get; }
+        public string ApiClientId { get; set; }
 
         /// <summary>
         /// The Api Client Secret.
         /// </summary>
-        public string ApiClientSecret { get; }
+        public string ApiClientSecret { get; set; }
 
         /// <summary>
         /// The time span before Api requests are considered timed-out. Default is 100 seconds.
@@ -91,14 +91,6 @@ namespace EncompassApi
         /// </summary>
         /// <param name="apiClientId">The Api Client Id.</param>
         /// <param name="apiClientSecret">The Api Client Secret.</param>
-        public ClientParameters(string apiClientId, string apiClientSecret)
-        {
-            Preconditions.NotNullOrEmpty(apiClientId, nameof(apiClientId));
-            Preconditions.NotNullOrEmpty(apiClientSecret, nameof(apiClientSecret));
-
-            ApiClientId = apiClientId;
-            ApiClientSecret = apiClientSecret;
-        }
 
         internal async Task TryInitializeAsync(IEncompassApiClient client, CommonCache commonCache, CancellationToken cancellationToken)
         {

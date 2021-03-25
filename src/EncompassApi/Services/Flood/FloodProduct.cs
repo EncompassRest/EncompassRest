@@ -1,4 +1,5 @@
 ﻿using System;
+using EncompassApi.Extensions;
 using Newtonsoft.Json;
 
 namespace EncompassApi.Services.Flood

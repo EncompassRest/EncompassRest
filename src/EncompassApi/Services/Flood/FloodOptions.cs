@@ -1,4 +1,5 @@
-﻿using EnumsNET;
+﻿using EncompassApi.Extensions;
+using EnumsNET;
 using Newtonsoft.Json;
 
 namespace EncompassApi.Services.Flood

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using EncompassApi.Extensions;
 using EncompassApi.Schema;
 using EncompassApi.Utilities;
 using EnumsNET;
