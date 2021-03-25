@@ -169,8 +169,7 @@ namespace EncompassApi.EFolder
             internal AttachmentJobApiObject(IEncompassApiClient client)
                 : base(client, null)
             {
-                //TODO: httpClient
-                
+                _httpClient = client.HttpClient;                
             }
 
             internal override string? BaseAddress => null;
