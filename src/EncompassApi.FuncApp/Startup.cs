@@ -208,14 +208,16 @@ namespace EncompassApi.FuncApp
                 new EncompassTokenClient(sp.GetService<IHttpClientFactory>().CreateClient(encompassTokenClientOptions.ClientName), options));
 
             builder.Services
-                .AddEncompassHttpClient(o =>
+                .AddEncompassHttpClient(
+                options =>
                 {
-                    o.CompressionOptions = new HttpClientCompressionHandlerOptions()
+                    options.CompressionOptions = new HttpClientCompressionHandlerOptions()
                     {
                         DecompressionMethods = new DecompressionMethods[] { DecompressionMethods.GZip, DecompressionMethods.Deflate },
                         EnableAutoDecompression = true
                     };
-                }, config =>
+                }, 
+                config =>
                 {
                     config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);
                 })
@@ -226,7 +228,5 @@ namespace EncompassApi.FuncApp
 
             builder.Services.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), clientParameters));
         }
-
-        
     }
 }

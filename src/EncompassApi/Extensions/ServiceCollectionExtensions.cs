@@ -116,7 +116,7 @@ namespace EncompassApi.Extensions
                      }
                  }
 
-             }).AddHttpClientHandlerFactory(services.BuildServiceProvider());
+             }).ConfigurPrimaryHttpClientHandler(services.BuildServiceProvider());
 
 
             return httpClient;
@@ -138,7 +138,7 @@ namespace EncompassApi.Extensions
                     }
                 }
 
-            }).AddHttpClientHandlerFactory(services.BuildServiceProvider());
+            }).ConfigurPrimaryHttpClientHandler(services.BuildServiceProvider());
 
             httpClient.ConfigureHttpClient(configureClient);
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -9,7 +10,7 @@ namespace EncompassApi.Extensions
 {
     public static class HttpClientBuilderExtensions
     {
-        public static IHttpClientBuilder AddHttpClientHandlerFactory(this IHttpClientBuilder httpClientBuilder, IServiceProvider s)
+        public static IHttpClientBuilder ConfigurPrimaryHttpClientHandler(this IHttpClientBuilder httpClientBuilder, IServiceProvider s)
         {
             var options = s.GetService<Configuration.HttpClientOptions>();
             if (options != null)
@@ -18,10 +19,12 @@ namespace EncompassApi.Extensions
 
                 if (options.CompressionOptions.DecompressionMethods != null && options.CompressionOptions.EnableAutoDecompression)
                 {
+                    // DecompressionMethods.None should be removed
                     DecompressionMethods decompressionMethods = DecompressionMethods.None;
-                    foreach (var method in options.CompressionOptions.DecompressionMethods)
+                    for (int i = 0; i < options.CompressionOptions.DecompressionMethods.Count(); i++)
                     {
-                        decompressionMethods |= method;
+                        if (i == 0) { decompressionMethods = options.CompressionOptions.DecompressionMethods.ElementAt(i); }
+                        else { decompressionMethods |= options.CompressionOptions.DecompressionMethods.ElementAt(i); }
 
                     }
                 }
