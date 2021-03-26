@@ -36,4 +36,4 @@ jobs:
       run: dotnet restore src/EncompassApi/EncompassApi.csproj
 
     - name: Build Solution
-      run: dotnet build -c $env:CONFIGURATION -p:Version=${{ steps.gitversion.outputs.MajorMinorPatch }} --version-suffix ${{ steps.gitversion.outputs.PreReleaseTag }} src/EncompassApi/EncompassApi.csproj
+      run: dotnet build -c $env:CONFIGURATION -p:Version=${{ steps.gitversion.outputs.MajorMinorPatch }} -p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersionV2 }} --version-suffix ${{ steps.gitversion.outputs.PreReleaseTag }} src/EncompassApi/EncompassApi.csproj
