@@ -18,6 +18,8 @@
     <Configurations>Debug;Release;CI</Configurations>
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
     <AssemblyOriginatorKeyFile>EncompassApi.snk</AssemblyOriginatorKeyFile>
     <Nullable>enable</Nullable>
   </PropertyGroup>

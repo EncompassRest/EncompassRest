@@ -13,6 +13,21 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Setup GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.9
+      with:
+        versionSpec: '5.x'
+
+    - name: Calculate Version
+      id: gitversion
+      uses: gittools/actions/gitversion/execute@v0.9.9
+      with:
+        targetPath: src/EncompassApi
+        useConfigFile: true
+        updateAssemblyInfo: true
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
@@ -21,4 +36,4 @@ jobs:
       run: dotnet restore src/EncompassApi/EncompassApi.csproj
 
     - name: Build Solution
-      run: dotnet build -c $env:CONFIGURATION src/EncompassApi/EncompassApi.csproj
+      run: dotnet build -c $env:CONFIGURATION -p:Version=${{ steps.gitversion.outputs.MajorMinorPatch }} --version-suffix ${{ steps.gitversion.outputs.PreReleaseTag }} src/EncompassApi/EncompassApi.csproj
