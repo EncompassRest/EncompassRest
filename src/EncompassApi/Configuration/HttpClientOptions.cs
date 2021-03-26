@@ -10,5 +10,9 @@ namespace EncompassApi.Configuration
 
 
         public HttpClientCompressionHandlerOptions CompressionOptions { get; set; }
+
+        public ClientParameters ClientParameters { get; set; }
+
+        public EncompassTokenClientOptions TokenClientOptions { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using EncompassApi.Clients;
 using EncompassApi.Configuration;
 using EncompassApi.MessageHandlers;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
@@ -92,25 +93,25 @@ namespace EncompassApi.Extensions
             return services;
         }
 
-        public static IHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services, Action<HttpClient> configureClient)
-        {
-
-            var httpClient = services.AddHttpClient("EncompassClient", configureClient);
-
-            return httpClient;
-        }
-
-        public static IHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services , Action<HttpClientOptions> config)
+        public static EncompassHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services, Action<HttpClient> config)
         {
             services.Configure(config);
-            
+            var httpClient = services.AddHttpClient("EncompassClient", config);
+
+            return new EncompassHttpClientBuilder(httpClient, services);
+        }
+
+        public static EncompassHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services , Action<HttpClientOptions> config)
+        {
+            services._addHttpClientOptions(config);
+
             var httpClient = services.AddHttpClient("EncompassClient", (s, c) =>
              {
-                 var options = s.GetService<HttpClientOptions>();
+                 var options = s.GetRequiredService<IOptions<HttpClientOptions>>();
                  if (options != null)
                  {
                      
-                     foreach (var encoding in options.CompressionOptions.DecompressionMethods)
+                     foreach (var encoding in options.Value.CompressionOptions.DecompressionMethods)
                      {
                          c.DefaultRequestHeaders.Add(name: "Accept-Encoding", value: encoding.ToString());
                      }
@@ -118,21 +119,19 @@ namespace EncompassApi.Extensions
 
              }).ConfigurPrimaryHttpClientHandler(services.BuildServiceProvider());
 
-
-            return httpClient;
+            return new EncompassHttpClientBuilder(httpClient, services);
         }
 
-
-        public static IHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services, Action<HttpClientOptions> config, Action<HttpClient> configureClient)
+        public static EncompassHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services, Action<HttpClientOptions> config, Action<HttpClient> configureClient)
         {
-            services.Configure(config);
-
+            services._addHttpClientOptions(config);
+      
             var httpClient = services.AddHttpClient("EncompassClient", (s, c) =>
             {
-                var options = s.GetService<HttpClientOptions>();
-                if (options != null)
+                var options = s.GetRequiredService<IOptions<HttpClientOptions>>();
+                if (options != null && options.Value.CompressionOptions.DecompressionMethods != null)
                 {
-                    foreach (var encoding in options.CompressionOptions.DecompressionMethods)
+                    foreach (var encoding in options.Value.CompressionOptions.DecompressionMethods)
                     {
                         c.DefaultRequestHeaders.Add(name: "Accept-Encoding", value: encoding.ToString());
                     }
@@ -141,10 +140,71 @@ namespace EncompassApi.Extensions
             }).ConfigurPrimaryHttpClientHandler(services.BuildServiceProvider());
 
             httpClient.ConfigureHttpClient(configureClient);
+            
+            return new EncompassHttpClientBuilder(httpClient, services);
 
-            return httpClient;
+        }
+
+        static void _addHttpClientOptions(this IServiceCollection services, Action<HttpClientOptions> config)
+        {
+            HttpClientOptions httpClientOptions = new HttpClientOptions();
+            config(httpClientOptions);
+            services.PostConfigure(config);
+        }
+    }
+
+
+    public class EncompassHttpClientBuilder
+    {
+        private readonly IHttpClientBuilder _builder;
+        private readonly HttpClientOptions _options;
+
+        public EncompassHttpClientBuilder(IHttpClientBuilder builder, IServiceCollection services)
+        {
+            var options = services.BuildServiceProvider().GetRequiredService<IOptions<HttpClientOptions>>();
+            if (options == null) throw new NullReferenceException("Options cannot be null!");
+            _builder = builder;
+            _options = options.Value;
+        }
+
+        public  EncompassHttpClientBuilder AddEncompassTokenMessageHandler()
+        {
+            _builder.AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()));
+            return this;
+        }
+
+        public EncompassHttpClientBuilder AddEncompassMessageHandler (Func<IServiceProvider, DelegatingHandler> func)
+        {
+            _builder.AddHttpMessageHandler(func);
+            return this;
+        }
+
+        public EncompassHttpClientBuilder AddEncompassRetryPolicyHandler()
+        {
+            var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(_options.TokenClientOptions.RetryCount);
+            _builder.AddPolicyHandler(retryPolicy);
+            return this;
+        }
+
+        public EncompassHttpClientBuilder AddEncompassTimeoutPolicyHandler()
+        {
+            var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(_options.TokenClientOptions.TimeoutInSeconds);
+            _builder.AddPolicyHandler(timeoutPolicy);
+            return this;
+        }
+
+        public EncompassHttpClientBuilder AddEncompassPolicyHandler(IAsyncPolicy<HttpResponseMessage> policy)
+        {
+            _builder.AddPolicyHandler(policy);
+            return this;
+        }
+
+        public void Build(IServiceCollection service)
+        {
+            service.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), _options.ClientParameters));
 
         }
 
     }
+
 }

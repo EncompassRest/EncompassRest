@@ -216,17 +216,19 @@ namespace EncompassApi.FuncApp
                         DecompressionMethods = new DecompressionMethods[] { DecompressionMethods.GZip, DecompressionMethods.Deflate },
                         EnableAutoDecompression = true
                     };
-                }, 
+                    options.ClientParameters = clientParameters;
+                    options.TokenClientOptions = encompassTokenClientOptions;
+                },
                 config =>
                 {
                     config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);
                 })
-                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()))
-                .AddHttpMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
-                .AddPolicyHandler(retryPolicy)
-                .AddPolicyHandler(timeoutPolicy);
-
-            builder.Services.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), clientParameters));
+                .AddEncompassTokenMessageHandler()
+                 // .AddEncompassMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
+                .AddEncompassRetryPolicyHandler()
+                .AddEncompassTimeoutPolicyHandler()
+                .Build(builder.Services);
+         
         }
     }
 }

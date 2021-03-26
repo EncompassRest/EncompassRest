@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,21 +13,22 @@ namespace EncompassApi.Extensions
     {
         public static IHttpClientBuilder ConfigurPrimaryHttpClientHandler(this IHttpClientBuilder httpClientBuilder, IServiceProvider s)
         {
-            var options = s.GetService<Configuration.HttpClientOptions>();
+            var options = s.GetRequiredService<IOptions<Configuration.HttpClientOptions>>();
             if (options != null)
             {
                 var handler = new HttpClientHandler();
 
-                if (options.CompressionOptions.DecompressionMethods != null && options.CompressionOptions.EnableAutoDecompression)
+                if (options.Value.CompressionOptions.DecompressionMethods != null && options.Value.CompressionOptions.EnableAutoDecompression)
                 {
                     // DecompressionMethods.None should be removed
                     DecompressionMethods decompressionMethods = DecompressionMethods.None;
-                    for (int i = 0; i < options.CompressionOptions.DecompressionMethods.Count(); i++)
+                    for (int i = 0; i < options.Value.CompressionOptions.DecompressionMethods.Count(); i++)
                     {
-                        if (i == 0) { decompressionMethods = options.CompressionOptions.DecompressionMethods.ElementAt(i); }
-                        else { decompressionMethods |= options.CompressionOptions.DecompressionMethods.ElementAt(i); }
+                        if (i == 0) { decompressionMethods = options.Value.CompressionOptions.DecompressionMethods.ElementAt(i); }
+                        else { decompressionMethods |= options.Value.CompressionOptions.DecompressionMethods.ElementAt(i); }
 
                     }
+                    handler.AutomaticDecompression = decompressionMethods;
                 }
 
                 httpClientBuilder.ConfigurePrimaryHttpMessageHandler(h => handler);
