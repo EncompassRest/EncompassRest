@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassApi.Extensions;
 using EncompassApi.Loans.Apis;
 using EncompassApi.Loans.Associates;
 using EncompassApi.Loans.Attachments;

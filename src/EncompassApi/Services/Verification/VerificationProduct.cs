@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EncompassApi.Extensions;
+using Newtonsoft.Json;
 
 namespace EncompassApi.Services.Verification
 {

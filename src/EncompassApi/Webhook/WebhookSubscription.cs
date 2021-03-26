@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using EncompassApi.Extensions;
 using EncompassApi.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;

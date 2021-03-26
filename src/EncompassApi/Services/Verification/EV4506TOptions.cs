@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EncompassApi.Extensions;
 using EnumsNET;
 using Newtonsoft.Json;
 

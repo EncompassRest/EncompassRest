@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using EncompassApi.Extensions;
 using EncompassApi.Utilities;
 using Newtonsoft.Json.Serialization;
 

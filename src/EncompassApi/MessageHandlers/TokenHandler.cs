@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
+﻿using EncompassApi.Clients;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,8 +8,8 @@ namespace EncompassApi.MessageHandlers
 {
     public class TokenHandler : DelegatingHandler
     {
-        private readonly ITokenServiceClient _tokenServiceClient;
-        public TokenHandler(ITokenServiceClient tokenServiceClient)
+        private readonly ITokenClient _tokenServiceClient;
+        public TokenHandler(ITokenClient tokenServiceClient)
         {
             _tokenServiceClient = tokenServiceClient;
         }

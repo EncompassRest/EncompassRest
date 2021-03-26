@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EncompassApi.Extensions;
+using System;
 
 namespace EncompassApi.Loans
 {

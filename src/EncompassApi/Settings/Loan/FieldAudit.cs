@@ -1,4 +1,5 @@
-﻿using EncompassApi.Utilities;
+﻿using EncompassApi.Extensions;
+using EncompassApi.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
 

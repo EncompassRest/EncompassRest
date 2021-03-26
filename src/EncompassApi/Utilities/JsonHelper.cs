@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using EncompassApi.Extensions;
 
 namespace EncompassApi.Utilities
 {
@@ -230,7 +231,7 @@ namespace EncompassApi.Utilities
                 {
                     var targetItem = (DirtyExtensibleObject?)target[i];
                     var id = ((IIdentifiable?)targetItem)?.Id;
-                    if (!string.IsNullOrEmpty(id) && Extensions.IndexOf(sourceEnumerable, id!) < 0)
+                    if (!string.IsNullOrEmpty(id) && Extensions.Extensions.IndexOf(sourceEnumerable, id!) < 0)
                     {
                         target.RemoveAt(i);
                         targetItem!.ClearPropertyChangedEvent();
@@ -248,7 +249,7 @@ namespace EncompassApi.Utilities
                         DirtyExtensibleObject? existing;
                         var id = ((IIdentifiable?)sourceItem)?.Id;
                         int index;
-                        if (!string.IsNullOrEmpty(id) && (index = Extensions.IndexOf(targetEnumerable, id!)) >= i)
+                        if (!string.IsNullOrEmpty(id) && (index = Extensions.Extensions.IndexOf(targetEnumerable, id!)) >= i)
                         {
                             existing = (DirtyExtensibleObject)target[index];
                             for (var j = i; j < index; ++j)
