@@ -210,12 +210,14 @@ namespace EncompassApi.FuncApp
             builder.Services
                 .AddEncompassHttpClient(o =>
                 {
-                    o.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);
                     o.CompressionOptions = new HttpClientCompressionHandlerOptions()
                     {
                         DecompressionMethods = new DecompressionMethods[] { DecompressionMethods.GZip, DecompressionMethods.Deflate },
                         EnableAutoDecompression = true
                     };
+                }, config =>
+                {
+                    config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);
                 })
                 .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()))
                 .AddHttpMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))

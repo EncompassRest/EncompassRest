@@ -5,9 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 
-namespace EncompassApi.Factories
+namespace EncompassApi.Extensions
 {
-    public static class HttpClientHandlerFactory
+    public static class HttpClientBuilderExtensions
     {
         public static IHttpClientBuilder AddHttpClientHandlerFactory(this IHttpClientBuilder httpClientBuilder, IServiceProvider s)
         {

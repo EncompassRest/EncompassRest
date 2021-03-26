@@ -1,6 +1,5 @@
 ﻿using EncompassApi.Clients;
 using EncompassApi.Configuration;
-using EncompassApi.Factories;
 using EncompassApi.MessageHandlers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -93,6 +92,14 @@ namespace EncompassApi.Extensions
             return services;
         }
 
+        public static IHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services, Action<HttpClient> configureClient)
+        {
+
+            var httpClient = services.AddHttpClient("EncompassClient", configureClient);
+
+            return httpClient;
+        }
+
         public static IHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services , Action<HttpClientOptions> config)
         {
             services.Configure(config);
@@ -102,11 +109,7 @@ namespace EncompassApi.Extensions
                  var options = s.GetService<HttpClientOptions>();
                  if (options != null)
                  {
-                     if (options.BaseAddress != null)
-                     {
-                         c.BaseAddress = options.BaseAddress;
-                     }
-
+                     
                      foreach (var encoding in options.CompressionOptions.DecompressionMethods)
                      {
                          c.DefaultRequestHeaders.Add(name: "Accept-Encoding", value: encoding.ToString());
@@ -118,5 +121,30 @@ namespace EncompassApi.Extensions
 
             return httpClient;
         }
+
+
+        public static IHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services, Action<HttpClientOptions> config, Action<HttpClient> configureClient)
+        {
+            services.Configure(config);
+
+            var httpClient = services.AddHttpClient("EncompassClient", (s, c) =>
+            {
+                var options = s.GetService<HttpClientOptions>();
+                if (options != null)
+                {
+                    foreach (var encoding in options.CompressionOptions.DecompressionMethods)
+                    {
+                        c.DefaultRequestHeaders.Add(name: "Accept-Encoding", value: encoding.ToString());
+                    }
+                }
+
+            }).AddHttpClientHandlerFactory(services.BuildServiceProvider());
+
+            httpClient.ConfigureHttpClient(configureClient);
+
+            return httpClient;
+
+        }
+
     }
 }
