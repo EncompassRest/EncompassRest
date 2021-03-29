@@ -12,5 +12,7 @@ namespace EncompassApi.Configuration
         public ClientParameters ClientParameters { get; set; }
 
         public EncompassTokenClientOptions TokenClientOptions { get; set; }
+
+        public EncompassHttpResponseHeaderLoggerOptions EncompassHttpResponseHeaderLoggerOptions { get; set; }
     }
 }
