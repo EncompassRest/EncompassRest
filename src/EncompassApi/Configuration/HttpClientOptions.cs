@@ -7,8 +7,6 @@ namespace EncompassApi.Configuration
 {
     public class HttpClientOptions
     {
-
-
         public HttpClientCompressionHandlerOptions CompressionOptions { get; set; }
 
         public ClientParameters ClientParameters { get; set; }

@@ -11,16 +11,16 @@ using System.Linq;
 
 namespace EncompassApi.MessageHandlers
 {
-    public class LoggingResponseHeadersHandler : DelegatingHandler
+    public class EncompassResponseHeadersLoggingHandler : DelegatingHandler
     {
-        private readonly IOptions<HttpResponseHeaderLogOptions> _options;
-        private readonly ILogger<LoggingResponseHeadersHandler> _logger;
+        private readonly IEnumerable<string> _headers;
+        private readonly ILogger<EncompassResponseHeadersLoggingHandler> _logger;
 
-        public LoggingResponseHeadersHandler(
-            ILogger<LoggingResponseHeadersHandler> logger,
-            IOptions<Configuration.HttpResponseHeaderLogOptions> options)
+        public EncompassResponseHeadersLoggingHandler(
+            ILogger<EncompassResponseHeadersLoggingHandler> logger,
+            IEnumerable<string> headers)
         {
-            _options = options;
+            _headers = headers;
             _logger = logger;
         }
 
@@ -36,7 +36,7 @@ namespace EncompassApi.MessageHandlers
             var headers = resp.Headers;
             if (headers != null)
             {
-                foreach (var key in _options?.Value.Headers)
+                foreach (var key in _headers)
                 {
                     if (headers.TryGetValues(key, out IEnumerable<string> values))
                     {

@@ -224,6 +224,7 @@ namespace EncompassApi.FuncApp
                     config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);
                 })
                 .AddEncompassTokenMessageHandler()
+                .AddEncompassHttpResponseHeaderLoggingHandler("X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining")
                  // .AddEncompassMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
                 .AddEncompassRetryPolicyHandler()
                 .AddEncompassTimeoutPolicyHandler()
