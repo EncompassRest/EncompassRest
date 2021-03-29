@@ -10,6 +10,8 @@ using Polly;
 using Polly.Extensions.Http;
 using System;
 using System.Net.Http;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace EncompassApi.Extensions
 {
@@ -32,10 +34,17 @@ namespace EncompassApi.Extensions
             return this;
         }
 
-
-        public EncompassHttpClientBuilder AddEncompassHttpResponseHeaderLoggingHandler(params string[] headers)
+        /// <summary>
+        /// Logs all response headers added in EncompassHttpResponseHeaderLoggerOptions from HttpClientOptions
+        /// </summary>
+        public EncompassHttpClientBuilder AddEncompassHttpResponseHeaderLoggingHandler()
         {
-            _builder.AddHttpMessageHandler(sp => new EncompassResponseHeadersLoggingHandler(sp.GetService<ILogger<EncompassResponseHeadersLoggingHandler>>(), headers));
+            var headers = _options.EncompassHttpResponseHeaderLoggerOptions;
+            if (headers.Count() > 0) {
+                _builder.AddHttpMessageHandler(sp => new EncompassResponseHeadersLoggingHandler(
+                    sp.GetService<ILogger<EncompassResponseHeadersLoggingHandler>>(),
+                    headers));
+            }
             return this;
         }
 
