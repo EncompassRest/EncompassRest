@@ -218,8 +218,6 @@ namespace EncompassApi.FuncApp
                     };
                     options.ClientParameters = clientParameters;
                     options.TokenClientOptions = encompassTokenClientOptions;
-                    options.EncompassHttpResponseHeaderLoggerOptions = new EncompassHttpResponseHeaderLoggerOptions(
-                        "X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining");
                 },
                 config =>
                 {

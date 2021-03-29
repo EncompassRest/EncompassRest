@@ -15,6 +15,20 @@ namespace EncompassApi.Configuration
             TList = new List<string>(headers);
         }
 
+
+        public EncompassHttpResponseHeaderLoggerOptions AddRange(params string[] items)
+        {
+            foreach (var item in items)
+            {
+                if (!TList.Any(h => h.Equals(item, StringComparison.OrdinalIgnoreCase)))
+                {
+                    TList.Add(item);
+                }
+            }
+           
+            return this;
+        }
+
         public IEnumerator<string> GetEnumerator()
         {
             return TList.GetEnumerator();
