@@ -15,6 +15,7 @@ namespace EncompassApi.MessageHandlers
     {
         private readonly IEnumerable<string> _headers;
         private readonly ILogger<EncompassResponseHeadersLoggingHandler> _logger;
+        const string CONCURRENCYTAG = "ConcurrencyTag";
 
         public EncompassResponseHeadersLoggingHandler(
             ILogger<EncompassResponseHeadersLoggingHandler> logger,
@@ -26,7 +27,8 @@ namespace EncompassApi.MessageHandlers
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var resp= await base.SendAsync(request, cancellationToken);
+            var resp = await base.SendAsync(request, cancellationToken);
+            resp.Headers.Add(CONCURRENCYTAG, Guid.NewGuid().ToString());
             _logHeaders(resp);
             return resp;
         }
@@ -38,13 +40,23 @@ namespace EncompassApi.MessageHandlers
             {
                 foreach (var key in _headers)
                 {
-                    if (headers.TryGetValues(key, out IEnumerable<string> values))
+                    if (headers.TryGetValues(key, out IEnumerable<string> values) && headers.TryGetValues(CONCURRENCYTAG, out IEnumerable<string> tag))
                     {
-                        _logger.LogDebug("Header {0} : {1}", key, values.FirstOrDefault());
+                        if (key.Contains("Concurrency"))
+                        {
+                           
+                           ConcurrencyLimitHeaderFactory.Factory
+                                .Add(tag.FirstOrDefault(), key, values.FirstOrDefault())
+                                .Log(tag.FirstOrDefault(),_logger);
+                        }
+                    
+                        _logger.LogDebug("Header {0} : {1} for tag: {2}", key, values.FirstOrDefault(), tag.FirstOrDefault());
                     }
                 }
+                
             }
         }
 
     }
+
 }
