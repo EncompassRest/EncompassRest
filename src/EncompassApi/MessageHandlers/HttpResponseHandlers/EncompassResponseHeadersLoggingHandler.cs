@@ -48,13 +48,13 @@ namespace EncompassApi.MessageHandlers
 
                         if (key.Contains("Concurrency"))
                         {
-                            var header = new ConcurrencyHeaderLimit(tag.FirstOrDefault(), uri.FirstOrDefault());
-                           HeaderLimitFactory<ConcurrencyHeaderLimit>.Factory
-                                .Add(header, key, values.FirstOrDefault())
-                                .Log(header,_logger);
+                            var header = new ConcurrencyHeaderLimit("Concurrency", tag.FirstOrDefault(), uri.FirstOrDefault(), true);
+                            HeaderLimitFactory<ConcurrencyHeaderLimit>.Factory
+                                 .Add(header, key, values.FirstOrDefault(), _logger)
+                                 .Log(header, _logger);
                         }
-                    
-                        
+
+
                     }
                 }
                 
