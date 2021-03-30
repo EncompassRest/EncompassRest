@@ -36,7 +36,7 @@ namespace EncompassApi.FuncApp
                 result.AddRange(await _client.Webhook.GetSubscriptionsAsync());
             }catch(Exception ex)
             {
-
+                _log.LogError(ex, "Error while getting subscriptions");
             }
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
