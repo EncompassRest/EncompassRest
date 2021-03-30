@@ -40,6 +40,8 @@ namespace EncompassApi.Extensions
         public EncompassHttpClientBuilder AddEncompassHttpResponseHeaderLoggingHandler()
         {
             var headers = _options.EncompassHttpResponseHeaderLoggerOptions;
+            if(headers == null) { headers = new EncompassHttpResponseHeaderLoggerOptions(); }
+            headers.AddRange("X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining");
             if (headers.Count() > 0) {
                 _builder.AddHttpMessageHandler(sp => new EncompassResponseHeadersLoggingHandler(
                     sp.GetService<ILogger<EncompassResponseHeadersLoggingHandler>>(),
