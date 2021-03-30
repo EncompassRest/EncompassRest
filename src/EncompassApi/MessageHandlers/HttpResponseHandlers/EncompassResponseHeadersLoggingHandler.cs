@@ -16,6 +16,7 @@ namespace EncompassApi.MessageHandlers
         private readonly IEnumerable<string> _headers;
         private readonly ILogger<EncompassResponseHeadersLoggingHandler> _logger;
         const string CONCURRENCYTAG = "ConcurrencyTag";
+        const string Uri = "Uri";
 
         public EncompassResponseHeadersLoggingHandler(
             ILogger<EncompassResponseHeadersLoggingHandler> logger,
@@ -29,6 +30,7 @@ namespace EncompassApi.MessageHandlers
         {
             var resp = await base.SendAsync(request, cancellationToken);
             resp.Headers.Add(CONCURRENCYTAG, Guid.NewGuid().ToString());
+            resp.Headers.Add(Uri, request.RequestUri.ToString());
             _logHeaders(resp);
             return resp;
         }
@@ -40,17 +42,19 @@ namespace EncompassApi.MessageHandlers
             {
                 foreach (var key in _headers)
                 {
-                    if (headers.TryGetValues(key, out IEnumerable<string> values) && headers.TryGetValues(CONCURRENCYTAG, out IEnumerable<string> tag))
+                    if (headers.TryGetValues(key, out IEnumerable<string> values) && headers.TryGetValues(CONCURRENCYTAG, out IEnumerable<string> tag) && headers.TryGetValues(Uri, out IEnumerable<string> uri))
                     {
+                        _logger.LogDebug("Header {0} : {1} for tag: {2}", key, values.FirstOrDefault(), tag.FirstOrDefault());
+
                         if (key.Contains("Concurrency"))
                         {
-                           
-                           ConcurrencyLimitHeaderFactory.Factory
-                                .Add(tag.FirstOrDefault(), key, values.FirstOrDefault())
-                                .Log(tag.FirstOrDefault(),_logger);
+                            var header = new ConcurrencyHeaderLimit(tag.FirstOrDefault(), uri.FirstOrDefault());
+                           HeaderLimitFactory<ConcurrencyHeaderLimit>.Factory
+                                .Add(header, key, values.FirstOrDefault())
+                                .Log(header,_logger);
                         }
                     
-                        _logger.LogDebug("Header {0} : {1} for tag: {2}", key, values.FirstOrDefault(), tag.FirstOrDefault());
+                        
                     }
                 }
                 
