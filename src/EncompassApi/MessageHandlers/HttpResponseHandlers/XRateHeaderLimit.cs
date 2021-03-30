@@ -4,9 +4,9 @@ using System.Text;
 
 namespace EncompassApi.MessageHandlers
 {
-    public class ConcurrencyHeaderLimit : IHeaderLimit
+    public class XRateHeaderLimit : IHeaderLimit
     {
-        public ConcurrencyHeaderLimit(string name,  string tag, string uri, bool logAll = false)
+        public XRateHeaderLimit(string name, string tag, string uri, bool logAll = false)
         {
             Name = name;
             Tag = tag;
@@ -14,17 +14,17 @@ namespace EncompassApi.MessageHandlers
             Collection = new Dictionary<string, decimal>();
             LogAll = logAll;
         }
-
         public Dictionary<string, decimal> Collection { get; set; }
 
-        public string Tag { get; }
-        public string Uri { get; }
+        public string Tag { get;  }
+
+        public string Uri { get;  }
 
         public string Name { get; }
 
-        public string RemainingName => "X-Concurrency-Limit-Remaining";
+        public string RemainingName => "X-Rate-Limit-Remaining";
 
-        public string LimitName => "X-Concurrency-Limit-Limit";
+        public string LimitName => "X-Rate-Limit-Limit";
 
         public bool LogAll { get; }
     }

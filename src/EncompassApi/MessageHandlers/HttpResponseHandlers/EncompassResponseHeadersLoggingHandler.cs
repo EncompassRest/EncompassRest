@@ -15,8 +15,8 @@ namespace EncompassApi.MessageHandlers
     {
         private readonly IEnumerable<string> _headers;
         private readonly ILogger<EncompassResponseHeadersLoggingHandler> _logger;
-        const string CONCURRENCYTAG = "ConcurrencyTag";
-        const string Uri = "Uri";
+        const string HANDLERTAG = "HandlerTag";
+        const string URI = "Uri";
 
         public EncompassResponseHeadersLoggingHandler(
             ILogger<EncompassResponseHeadersLoggingHandler> logger,
@@ -29,8 +29,8 @@ namespace EncompassApi.MessageHandlers
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var resp = await base.SendAsync(request, cancellationToken);
-            resp.Headers.Add(CONCURRENCYTAG, Guid.NewGuid().ToString());
-            resp.Headers.Add(Uri, request.RequestUri.ToString());
+            resp.Headers.Add(HANDLERTAG, Guid.NewGuid().ToString());
+            resp.Headers.Add(URI, request.RequestUri.ToString());
             _logHeaders(resp);
             return resp;
         }
@@ -42,18 +42,22 @@ namespace EncompassApi.MessageHandlers
             {
                 foreach (var key in _headers)
                 {
-                    if (headers.TryGetValues(key, out IEnumerable<string> values) && headers.TryGetValues(CONCURRENCYTAG, out IEnumerable<string> tag) && headers.TryGetValues(Uri, out IEnumerable<string> uri))
+                    if (headers.TryGetValues(key, out IEnumerable<string> values) && headers.TryGetValues(HANDLERTAG, out IEnumerable<string> tag) && headers.TryGetValues(URI, out IEnumerable<string> uri))
                     {
-                        _logger.LogDebug("Header {0} : {1} for tag: {2}", key, values.FirstOrDefault(), tag.FirstOrDefault());
-
+                        
                         if (key.Contains("Concurrency"))
                         {
-                            var header = new ConcurrencyHeaderLimit(tag.FirstOrDefault(), uri.FirstOrDefault());
+                            var header = new ConcurrencyHeaderLimit("Concurrency", tag.FirstOrDefault(), uri.FirstOrDefault(), true);
                            HeaderLimitFactory<ConcurrencyHeaderLimit>.Factory
-                                .Add(header, key, values.FirstOrDefault())
+                                .Add(header, key, values.FirstOrDefault(), _logger)
                                 .Log(header,_logger);
+                        }else if (key.Contains("X-Rate"))
+                        {
+                            var header = new XRateHeaderLimit("XRate", tag.FirstOrDefault(), uri.FirstOrDefault(), true);
+                            HeaderLimitFactory<XRateHeaderLimit>.Factory
+                                 .Add(header, key, values.FirstOrDefault(), _logger)
+                                 .Log(header, _logger);
                         }
-                    
                         
                     }
                 }
