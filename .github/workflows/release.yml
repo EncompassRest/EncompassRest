@@ -1,12 +1,11 @@
-name: Build
+name: Release
 on:
   push:
-    branches:
-      - master
-      - feature/*
+    tags:
+      - '*'
 
 jobs:
-  build:
+  release:
     runs-on: windows-latest
     env:
       CONFIGURATION: Release
@@ -31,9 +30,16 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
+      with:
+        source-url: https://api.nuget.org/v3/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }}
 
     - name: Restore NuGet Packages
       run: dotnet restore src/EncompassApi/EncompassApi.csproj
 
     - name: Build Solution
-      run: dotnet build -c $env:CONFIGURATION -p:Version=${{ steps.gitversion.outputs.MajorMinorPatch }} -p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersionV2 }} --version-suffix ${{ steps.gitversion.outputs.PreReleaseTag }} src/EncompassApi/EncompassApi.csproj
+      run: dotnet build -c $env:CONFIGURATION -p:Version=${{ steps.gitversion.outputs.MajorMinorPatch }} -p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersionV2 }} src/EncompassApi/EncompassApi.csproj
+
+    - name: Push NuGet Package
+      run: dotnet nuget push --no-symbols --skip-duplicates --api-key ${{ secrets.NUGET_API_KEY }} "src/EncompassApi/bin/Release/**/*.nupkg"

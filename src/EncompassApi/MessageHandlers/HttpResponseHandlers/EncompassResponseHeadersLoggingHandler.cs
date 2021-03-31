@@ -31,11 +31,11 @@ namespace EncompassApi.MessageHandlers
             var resp = await base.SendAsync(request, cancellationToken);
             resp.Headers.Add(HANDLERTAG, Guid.NewGuid().ToString());
             resp.Headers.Add(URI, request.RequestUri.ToString());
-            _logHeaders(resp);
+            LogHeaders(resp);
             return resp;
         }
 
-        private void _logHeaders(HttpResponseMessage resp)
+        private void LogHeaders(HttpResponseMessage resp)
         {
             var headers = resp.Headers;
             if (headers != null)
@@ -44,21 +44,22 @@ namespace EncompassApi.MessageHandlers
                 {
                     if (headers.TryGetValues(key, out IEnumerable<string> values) && headers.TryGetValues(HANDLERTAG, out IEnumerable<string> tag) && headers.TryGetValues(URI, out IEnumerable<string> uri))
                     {
-                        
+                        _logger.LogDebug("Header {0} : {1} for tag: {2}", key, values.FirstOrDefault(), tag.FirstOrDefault());
+
                         if (key.Contains("Concurrency"))
                         {
                             var header = new ConcurrencyHeaderLimit("Concurrency", tag.FirstOrDefault(), uri.FirstOrDefault(), true);
-                           HeaderLimitFactory<ConcurrencyHeaderLimit>.Factory
-                                .Add(header, key, values.FirstOrDefault(), _logger)
-                                .Log(header,_logger);
-                        }else if (key.Contains("X-Rate"))
+                            HeaderLimitFactory<ConcurrencyHeaderLimit>.Factory
+                                 .Add(header, key, values.FirstOrDefault(), _logger)
+                                 .Log(header, _logger);
+                        }
+                        else if (key.Contains("X-Rate"))
                         {
                             var header = new XRateHeaderLimit("XRate", tag.FirstOrDefault(), uri.FirstOrDefault(), true);
                             HeaderLimitFactory<XRateHeaderLimit>.Factory
                                  .Add(header, key, values.FirstOrDefault(), _logger)
                                  .Log(header, _logger);
                         }
-                        
                     }
                 }
                 
