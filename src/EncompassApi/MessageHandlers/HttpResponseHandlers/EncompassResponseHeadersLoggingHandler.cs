@@ -31,11 +31,11 @@ namespace EncompassApi.MessageHandlers
             var resp = await base.SendAsync(request, cancellationToken);
             resp.Headers.Add(HANDLERTAG, Guid.NewGuid().ToString());
             resp.Headers.Add(URI, request.RequestUri.ToString());
-            _logHeaders(resp);
+            LogHeaders(resp);
             return resp;
         }
 
-        private void _logHeaders(HttpResponseMessage resp)
+        private void LogHeaders(HttpResponseMessage resp)
         {
             var headers = resp.Headers;
             if (headers != null)
