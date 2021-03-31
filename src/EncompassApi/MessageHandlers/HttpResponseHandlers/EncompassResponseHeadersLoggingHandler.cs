@@ -62,7 +62,7 @@ namespace EncompassApi.MessageHandlers
                         }
                     }
                 }
-                
+
             }
         }
 
