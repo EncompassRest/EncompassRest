@@ -6,7 +6,7 @@ namespace EncompassApi.MessageHandlers
 {
     public class ConcurrencyHeaderLimit : IHeaderLimit
     {
-        public ConcurrencyHeaderLimit(string name,  string tag, string uri, bool logAll = false)
+        public ConcurrencyHeaderLimit(string name, string tag, string uri, bool logAll = false)
         {
             Name = name;
             Tag = tag;
