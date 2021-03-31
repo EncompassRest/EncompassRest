@@ -53,12 +53,10 @@ namespace EncompassApi.MessageHandlers
             }
 
             return -1;
-           
         }
 
- 
-
     }
+
     public static class HeaderLimitFactoryExtensions
     {
         public static HeaderLimitFactory<THeader> Log<THeader, TLogger>(this HeaderLimitFactory<THeader> factory, THeader header, ILogger<TLogger> logger) where THeader : IHeaderLimit
