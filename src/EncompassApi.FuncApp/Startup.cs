@@ -224,7 +224,8 @@ namespace EncompassApi.FuncApp
                     config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);
                 })
                 .AddEncompassTokenMessageHandler()
-                 // .AddEncompassMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
+                .AddEncompassHttpResponseHeaderLoggingHandler()
+                // .AddEncompassMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
                 .AddEncompassRetryPolicyHandler()
                 .AddEncompassTimeoutPolicyHandler()
                 .Build(builder.Services);
