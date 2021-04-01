@@ -103,7 +103,7 @@ namespace EncompassApi.Extensions
 
         public static EncompassHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services , Action<HttpClientOptions> config)
         {
-            services._addHttpClientOptions(config);
+            services.AddHttpClientOptions(config);
 
             var httpClient = services.AddHttpClient("EncompassClient", (s, c) =>
              {
@@ -124,7 +124,7 @@ namespace EncompassApi.Extensions
 
         public static EncompassHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services, Action<HttpClientOptions> config, Action<HttpClient> configureClient)
         {
-            services._addHttpClientOptions(config);
+            services.AddHttpClientOptions(config);
       
             var httpClient = services.AddHttpClient("EncompassClient", (s, c) =>
             {
@@ -145,7 +145,7 @@ namespace EncompassApi.Extensions
 
         }
 
-        static void _addHttpClientOptions(this IServiceCollection services, Action<HttpClientOptions> config)
+        static void AddHttpClientOptions(this IServiceCollection services, Action<HttpClientOptions> config)
         {
             HttpClientOptions httpClientOptions = new HttpClientOptions();
             config(httpClientOptions);
