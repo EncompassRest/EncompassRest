@@ -41,7 +41,7 @@ namespace EncompassApi.Extensions
         {
             var headers = _options.EncompassHttpResponseHeaderLoggerOptions;
             if(headers == null) { headers = new EncompassHttpResponseHeaderLoggerOptions(); }
-            headers.AddRange("X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining");
+            headers.AddRange("X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining" , "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset");
             if (headers.Count() > 0) {
                 _builder.AddHttpMessageHandler(sp => new EncompassResponseHeadersLoggingHandler(
                     sp.GetService<ILogger<EncompassResponseHeadersLoggingHandler>>(),

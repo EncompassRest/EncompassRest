@@ -44,6 +44,7 @@ namespace EncompassApi.MessageHandlers
                 {
                     if (headers.TryGetValues(key, out IEnumerable<string> values) && headers.TryGetValues(HANDLERTAG, out IEnumerable<string> tag) && headers.TryGetValues(URI, out IEnumerable<string> uri))
                     {
+                        _logger.LogDebug("Header {0} : {1} for tag: {2}", key, values.FirstOrDefault(), tag.FirstOrDefault());
 
                         if (key.Contains("Concurrency"))
                         {
@@ -52,8 +53,13 @@ namespace EncompassApi.MessageHandlers
                                  .Add(header, key, values.FirstOrDefault(), _logger)
                                  .Log(header, _logger);
                         }
-    
-
+                        else if (key.Contains("X-Rate"))
+                        {
+                            var header = new XRateHeaderLimit("XRate", tag.FirstOrDefault(), uri.FirstOrDefault(), true);
+                            HeaderLimitFactory<XRateHeaderLimit>.Factory
+                                 .Add(header, key, values.FirstOrDefault(), _logger)
+                                 .Log(header, _logger);
+                        }
                     }
                 }
 
