@@ -225,7 +225,7 @@ namespace EncompassApi.FuncApp
                 })
                 .AddEncompassTokenMessageHandler()
                 .AddEncompassHttpResponseHeaderLoggingHandler()
-                // .AddEncompassMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
+                 // .AddEncompassMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
                 .AddEncompassRetryPolicyHandler()
                 .AddEncompassTimeoutPolicyHandler()
                 .Build(builder.Services);
