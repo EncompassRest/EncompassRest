@@ -108,15 +108,7 @@ namespace EncompassApi.Extensions
             var httpClient = services.AddHttpClient("EncompassClient", (s, c) =>
              {
                  var options = s.GetRequiredService<IOptions<HttpClientOptions>>();
-                 if (options != null)
-                 {
-                     
-                     foreach (var encoding in options.Value.CompressionOptions.DecompressionMethods)
-                     {
-                         c.DefaultRequestHeaders.Add(name: "Accept-Encoding", value: encoding.ToString());
-                     }
-                 }
-
+                 c.AddDefaultRequestHeaders(options.Value);
              }).ConfigurPrimaryHttpClientHandler(services.BuildServiceProvider());
 
             return new EncompassHttpClientBuilder(httpClient, services);
@@ -129,14 +121,7 @@ namespace EncompassApi.Extensions
             var httpClient = services.AddHttpClient("EncompassClient", (s, c) =>
             {
                 var options = s.GetRequiredService<IOptions<HttpClientOptions>>();
-                if (options != null && options.Value.CompressionOptions.DecompressionMethods != null)
-                {
-                    foreach (var encoding in options.Value.CompressionOptions.DecompressionMethods)
-                    {
-                        c.DefaultRequestHeaders.Add(name: "Accept-Encoding", value: encoding.ToString());
-                    }
-                }
-
+                c.AddDefaultRequestHeaders(options.Value);
             }).ConfigurPrimaryHttpClientHandler(services.BuildServiceProvider());
 
             httpClient.ConfigureHttpClient(configureClient);
