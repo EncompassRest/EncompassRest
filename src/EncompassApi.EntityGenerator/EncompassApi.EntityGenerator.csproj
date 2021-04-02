@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net46</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Configurations>Debug;Release;CI</Configurations>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>EncompassApi.snk</AssemblyOriginatorKeyFile>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CI|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Elli.Api.Loans" Version="1.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EncompassApi.Tests\EncompassApi.Tests.csproj" />
+    <ProjectReference Include="..\EncompassApi\EncompassApi.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EncompassObjects">
+      <HintPath>C:\SmartClientCache\Apps\Ellie Mae\Encompass\SDK\EncompassObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+  </ItemGroup>
+</Project>
