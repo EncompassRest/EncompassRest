@@ -1,17 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using Moq.Contrib.HttpClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using FluentAssertions;
-using System.IO;
 using System.Net;
-using Faker.Extensions;
 using System.Threading;
 using Moq.Protected;
 
@@ -21,20 +15,12 @@ namespace EncompassApi.xUnitTests
     public class MessageHandlerTest
     {
         private readonly ILogger<MessageHandlerTest> _logger;
-        private  Mock<IHttpMessageHandler> _handler;
-        private Mock<IHttpClientFactory> _clientFactory;
-        private readonly HttpClient _client;
 
         public MessageHandlerTest(ILogger<MessageHandlerTest> logger)
         {
             _logger = logger;
-            _handler = new Mock<IHttpMessageHandler>();
-            _clientFactory = new Mock<IHttpClientFactory>();
            
         }
-
-
-
 
         [Theory]
         [InlineData("X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset")]
