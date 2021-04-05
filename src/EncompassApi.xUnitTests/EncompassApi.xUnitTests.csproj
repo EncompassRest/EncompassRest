@@ -35,4 +35,10 @@
     <ProjectReference Include="..\EncompassApi\EncompassApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Payloads\WebhookResources.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
