@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassApi.Tests", "Encom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassApi.FuncApp", "EncompassApi.FuncApp\EncompassApi.FuncApp.csproj", "{F15033BF-6DC4-4D3A-94CD-71A1FE362110}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassApi.xUnitTests", "EncompassApi.xUnitTests\EncompassApi.xUnitTests.csproj", "{09183476-7F6C-4EE9-8DF6-51D2D2EDC4EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CI|Any CPU = CI|Any CPU
@@ -40,6 +42,12 @@ Global
 		{F15033BF-6DC4-4D3A-94CD-71A1FE362110}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F15033BF-6DC4-4D3A-94CD-71A1FE362110}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F15033BF-6DC4-4D3A-94CD-71A1FE362110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09183476-7F6C-4EE9-8DF6-51D2D2EDC4EA}.CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{09183476-7F6C-4EE9-8DF6-51D2D2EDC4EA}.CI|Any CPU.Build.0 = Debug|Any CPU
+		{09183476-7F6C-4EE9-8DF6-51D2D2EDC4EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09183476-7F6C-4EE9-8DF6-51D2D2EDC4EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09183476-7F6C-4EE9-8DF6-51D2D2EDC4EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09183476-7F6C-4EE9-8DF6-51D2D2EDC4EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
