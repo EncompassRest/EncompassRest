@@ -8,12 +8,13 @@ namespace EncompassApi.MessageHandlers
 {
     public class HeaderLimitFactory<THeader> where THeader : IHeaderLimit
     {
-        private ConcurrentDictionary<string, THeader> _dic;
+        public virtual ConcurrentDictionary<string, THeader> Dic { get; private set; }
         private readonly ILogger<HeaderLimitFactory<THeader>> _logger;
+        public decimal? Ratio { get; private set; }
 
         public HeaderLimitFactory()
         {
-            _dic = new ConcurrentDictionary<string, THeader>();
+            Dic = new ConcurrentDictionary<string, THeader>();
         }
 
         private static HeaderLimitFactory<THeader> _factory;
@@ -28,30 +29,30 @@ namespace EncompassApi.MessageHandlers
 
         public void AddToDictionary(THeader header, string key, int value)
         {
-            if (_dic.TryGetValue(header.Tag, out THeader obj))
+            if (Dic.TryGetValue(header.Tag, out THeader obj))
             {
                 obj.Collection.Add(key, value);
             }
             else
             {
                 header.Collection.Add(key, value);
-                _dic.TryAdd(header.Tag, header);
+                Dic.TryAdd(header.Tag, header);
             }
-
         }
 
-        public decimal GetRemainingLimitRatio(IHeaderLimit header)
+        public decimal? GetRemainingLimitRatio(IHeaderLimit header)
         {
-            if (_dic.TryGetValue(header.Tag, out THeader scopedHeader))
+            if (Dic.TryGetValue(header.Tag, out THeader scopedHeader))
             {
                 if (scopedHeader.Collection.TryGetValue(header.LimitName, out decimal limit) && scopedHeader.Collection.TryGetValue(header.RemainingName, out decimal remaining))
                 {
-                    _dic.TryRemove(header.Tag, out THeader concurrencyLimit);
-                    return Math.Round(remaining / limit, 2) * 100;
+                    Dic.TryRemove(header.Tag, out THeader concurrencyLimit);
+                    Ratio = Math.Round(remaining / limit, 2) * 100;
+                    return Ratio;
                 }
-                return -1;
+                return null;
             }
-            return -1;
+            return null;
         }
 
     }
@@ -62,6 +63,7 @@ namespace EncompassApi.MessageHandlers
         {
 
             var ratio = factory.GetRemainingLimitRatio(header);
+            if (!ratio.HasValue) return factory;
             var message = $"{header.Name} remaining is {ratio}% of limits for tag : {header.Tag} and Uri : {header.Uri}";
             if (ratio <= 70m && ratio > 0)
             {
