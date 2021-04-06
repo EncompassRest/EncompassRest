@@ -1,13 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using Moq;
 using System.Net.Http;
-using Moq.Contrib.HttpClient;
 using System.Net;
-using Moq.Protected;
-using System.Threading;
 using FluentAssertions;
 using Newtonsoft.Json.Linq;
 using EncompassApi.xUnitTests.TestServices;
@@ -19,13 +14,13 @@ namespace EncompassApi.xUnitTests.Webhook
 {
     public class WebhookTest
     {
-        private readonly ITestOutputHelper _logger;
+        private readonly ITestOutputHelper _outputWriter;
         private readonly IMockedEncompassHttpClientService _mockedEncompassClient;
 
-        public WebhookTest(ITestOutputHelper logger, IMockedEncompassHttpClientService mockedEncompassHttpClient)
+        public WebhookTest(ITestOutputHelper outputWriter, IMockedEncompassHttpClientService mockedEncompassHttpClient)
         {
-            logger.WriteLine("### WebhookTest initiating! ###");
-            _logger = logger;
+            outputWriter.WriteLine("### WebhookTest initiating! ###");
+            _outputWriter = outputWriter;
             _mockedEncompassClient = mockedEncompassHttpClient;
         }
 
@@ -36,7 +31,7 @@ namespace EncompassApi.xUnitTests.Webhook
         [JsonFileData("Payloads/WebhookResources.json", false)]
         public async Task GetResourcesAsyncTestAsync(params JObject[] payloads)
         {
-            _logger.WriteLine("### Starting GetResourcesAsyncTestAsync! ###");
+            _outputWriter.WriteLine("### Starting GetResourcesAsyncTestAsync! ###");
             payloads.ShouldBeOfType<EncompassApi.Webhook.WebhookResource>();
            
             // SET THE EXPECTED RESPONSE AND A HEADER FOR TESTING
@@ -59,7 +54,7 @@ namespace EncompassApi.xUnitTests.Webhook
         [JsonFileData("Payloads/WebhookResources.json", false)]
         public async Task GetResourcesRawAsyncTestAsync(params JObject[] payloads)
         {
-            _logger.WriteLine("### Starting GetResourcesRawAsyncTestAsync! ###");
+            _outputWriter.WriteLine("### Starting GetResourcesRawAsyncTestAsync! ###");
             payloads.ShouldBeOfType<EncompassApi.Webhook.WebhookResource>();
 
             // SET THE EXPECTED RESPONSE AND A HEADER FOR TESTING

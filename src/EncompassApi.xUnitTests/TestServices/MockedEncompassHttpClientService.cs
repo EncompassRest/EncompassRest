@@ -13,6 +13,8 @@ using System.Threading;
 using System.Net;
 using Newtonsoft.Json.Linq;
 using Xunit;
+using EncompassApi.Configuration;
+using EncompassApi.Extensions;
 
 namespace EncompassApi.xUnitTests.TestServices
 {
@@ -25,13 +27,34 @@ namespace EncompassApi.xUnitTests.TestServices
         public HttpClient MockedClient { get; private set; }
         public EncompassApiService MockedEncompassClient { get; private set; }
 
+        public Uri BaseAddress { get; private set; }
+        public Mock<IHttpClientOptions> Options { get; private set; }
+
+        public void SetOptions(Action<Mock<IHttpClientOptions>> options)
+        {
+            Options = new Mock<IHttpClientOptions>();
+            Options.SetupProperty(m => m.CompressionOptions);
+            options(Options);
+        }
+
+        public void SetOptions(Mock<IHttpClientOptions> options)
+        {
+            Options = options;
+        }
+
+        public void AddDefaultRequestHeaders()
+        {
+            MockedClient.AddDefaultRequestHeaders(Options.Object);
+        }
+
         public MockedEncompassHttpClientService(ILogger<MockedEncompassHttpClientService> logger)
         {
             _logger = logger;
             MockedHandler = new Mock<HttpMessageHandler>();
             HttpFactory = MockedHandler.CreateClientFactory();
             MockedClient = HttpFactory.CreateClient("EncompassClient");
-            MockedClient.BaseAddress = new Uri("https://api.elliemae.com");
+            BaseAddress = new Uri(Faker.Internet.Url());
+            MockedClient.BaseAddress = BaseAddress;
             MockedEncompassClient = new EncompassApiService(MockedClient, new ClientParameters());
         }
 

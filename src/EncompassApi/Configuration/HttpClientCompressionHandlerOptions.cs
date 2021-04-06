@@ -11,7 +11,7 @@ namespace EncompassApi.Configuration
         /// Decopression methods
         /// </summary>
         /// <example>System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.Deflate</example>
-        public IEnumerable<System.Net.DecompressionMethods> DecompressionMethods { get; set; }
+        public virtual IEnumerable<System.Net.DecompressionMethods> DecompressionMethods { get; set; }
 
         /// <summary>
         /// Allow to auto decompress if set to true

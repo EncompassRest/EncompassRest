@@ -15,23 +15,23 @@ namespace EncompassApi.xUnitTests.Extensions
 {
    public static class ServiceExtensions
     {
-        public static IServiceCollection AddMockedEncompassHttpClient(this IServiceCollection services, Action<HttpClientOptions> config, Action<HttpClient> configureClient)
-        {
-            services.AddTransient<IMockedEncompassHttpClientService, MockedEncompassHttpClientService>();
-            return services;
-        }
+        //public static IServiceCollection AddMockedEncompassHttpClient(this IServiceCollection services, Action<HttpClientOptions> config, Action<HttpClient> configureClient)
+        //{
+        //    services.AddTransient<IMockedEncompassHttpClientService, MockedEncompassHttpClientService>();
+        //    return services;
+        //}
 
-        public static IServiceCollection AddMockedEncompassHttpClient(this IServiceCollection services,  Action<HttpClient> configureClient)
-        {
-            services.AddTransient<IMockedEncompassHttpClientService, MockedEncompassHttpClientService>();
-            return services;
-        }
+        //public static IServiceCollection AddMockedEncompassHttpClient(this IServiceCollection services,  Action<HttpClient> configureClient)
+        //{
+        //    services.AddTransient<IMockedEncompassHttpClientService, MockedEncompassHttpClientService>();
+        //    return services;
+        //}
 
-        public static IServiceCollection AddMockedEncompassHttpClient(this IServiceCollection services, Action<HttpClientOptions> config)
-        {
-            services.AddTransient<IMockedEncompassHttpClientService, MockedEncompassHttpClientService>();
-            return services;
-        }
+        //public static IServiceCollection AddMockedEncompassHttpClient(this IServiceCollection services, Action<HttpClientOptions> config)
+        //{
+        //    services.AddTransient<IMockedEncompassHttpClientService, MockedEncompassHttpClientService>();
+        //    return services;
+        //}
 
         public static IServiceCollection AddMockedEncompassHttpClient(this IServiceCollection services)
         {
