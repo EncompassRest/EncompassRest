@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -11,29 +10,24 @@ using Moq.Protected;
 using System.Threading;
 using FluentAssertions;
 using Newtonsoft.Json.Linq;
+using EncompassApi.xUnitTests.TestServices;
+using EncompassApi.xUnitTests.Extensions;
+using System;
+using Xunit.Abstractions;
 
 namespace EncompassApi.xUnitTests.Webhook
 {
     public class WebhookTest
     {
-        private readonly ILogger<WebhookTest> _logger;
-        private readonly Mock<HttpMessageHandler> _mockedHandler;
-        private readonly IHttpClientFactory _factory;
-        private readonly HttpClient _mockedClient;
-        private readonly EncompassApiService _mockedEncompassClient;
+        private readonly ITestOutputHelper _logger;
+        private readonly IMockedEncompassHttpClientService _mockedEncompassClient;
 
-        public WebhookTest(ILogger<WebhookTest> logger)
+        public WebhookTest(ITestOutputHelper logger, IMockedEncompassHttpClientService mockedEncompassHttpClient)
         {
+            logger.WriteLine("### WebhookTest initiating! ###");
             _logger = logger;
-
-
-            _mockedHandler = new Mock<HttpMessageHandler>();
-            _factory = _mockedHandler.CreateClientFactory();
-            _mockedClient = _factory.CreateClient("EncompassClient");
-            _mockedClient.BaseAddress = new Uri("https://api.elliemae.com");
-            _mockedEncompassClient = new EncompassApiService(_mockedClient, new ClientParameters());
+            _mockedEncompassClient = mockedEncompassHttpClient;
         }
-
 
         /// <summary>
         ///  Test EncompassApi.Webhook.ResourcesAsyncTestAsync()
@@ -42,40 +36,23 @@ namespace EncompassApi.xUnitTests.Webhook
         [JsonFileData("Payloads/WebhookResources.json", false)]
         public async Task GetResourcesAsyncTestAsync(params JObject[] payloads)
         {
-            foreach (var item in payloads)
+            _logger.WriteLine("### Starting GetResourcesAsyncTestAsync! ###");
+            payloads.ShouldBeOfType<EncompassApi.Webhook.WebhookResource>();
+           
+            // SET THE EXPECTED RESPONSE AND A HEADER FOR TESTING
+            _mockedEncompassClient.SetupResponseMessage((response) =>
             {
-                Assert.IsType<EncompassApi.Webhook.WebhookResource>(item.ToObject<EncompassApi.Webhook.WebhookResource>());
-            }
-            var response = new HttpResponseMessage
+                response.StatusCode = HttpStatusCode.OK;
+                response.Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(payloads));
+            }, testHeader: new System.Collections.Generic.KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString()));
+
+            var webhookResources = await _mockedEncompassClient.MockedEncompassClient.Webhook.GetResourcesAsync();
+
+            webhookResources.Count().Should().Be(payloads.Length);
+            payloads.AreEqual(webhookResources.ToArray(), (source, target) =>
             {
-                StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(payloads))
-                // new StringContent(@"[{ ""id"": 1, ""title"": ""Cool post!""}, { ""id"": 100, ""title"": ""Some title""}]"),
-
-            };
-            response.Headers.Add("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString());
-
-            _mockedHandler.Protected().Setup<Task<HttpResponseMessage>>(
-                "SendAsync",
-                ItExpr.IsAny<HttpRequestMessage>(),
-                ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(response);
-
-            var resps = await _mockedEncompassClient.Webhook.GetResourcesAsync();
-            resps.Count().Should().Be(payloads.Length);
-            for (int i = 0; i < payloads.Length; i++)
-            {
-                resps[i].IsEqual(payloads[i].ToObject<EncompassApi.Webhook.WebhookResource>()).Should().Be(true);
-            }
-        }
-       
-    }
-
-    public static class MockWebhookResource
-    {
-        public static bool IsEqual(this EncompassApi.Webhook.WebhookResource source, EncompassApi.Webhook.WebhookResource target)
-        {
-            return source.Description.Equals(target.Description, StringComparison.OrdinalIgnoreCase);
+                return source.Description.Equals(target.Description, StringComparison.OrdinalIgnoreCase);
+            });
         }
     }
 }
