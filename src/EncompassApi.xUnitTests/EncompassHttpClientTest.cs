@@ -6,14 +6,15 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using EncompassApi.xUnitTests.TestServices;
 
 namespace EncompassApi.xUnitTests
 {
     public class EncompassHttpClientTest
     {
-        private readonly IEncompassApiClient _client;
+        private readonly IMockedEncompassHttpClientService _client;
 
-        public EncompassHttpClientTest(IEncompassApiClient client)
+        public EncompassHttpClientTest(IMockedEncompassHttpClientService client)
         {
             _client = client;
         }
@@ -21,22 +22,10 @@ namespace EncompassApi.xUnitTests
         [Fact]
         public void ClientBaseAddressTest()
         {
-            var baseUri = _client.HttpClient.BaseAddress;
-            Assert.Equal("https://fakerapi.it/api", baseUri.AbsoluteUri);
+            var baseUri = _client.MockedClient.BaseAddress;
+            Assert.Equal(_client.BaseAddress.ToString(), baseUri.AbsoluteUri);
         }
 
-        [Fact]
-        public async Task ClientTest()
-        {
-            try
-            {
-               var subs = await _client.Webhook.GetSubscriptionsAsync();
-               await Assert.ThrowsAsync<HttpRequestException>(( ) => _client.HttpClient.GetAsync("v1"));
-            }
-            catch(Exception ex)
-            {
-                var t = ex.GetType();
-            }
-        }
+      
     }
 }
