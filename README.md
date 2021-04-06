@@ -8,19 +8,52 @@ This fork is intended to centralize HttpClient management using the new features
 
 New features in the upstream branch will be evaluated for inclusion but due to the altered dependency structure further changes are expected.
 
+### EncompassApiService
+Encompass Api Service is a new class that has the same functionality as the now deprecated EncompassRestClient (EncompassApiClient after rename in this fork), but built to use the IOptions pattern and MS ServiceCollection Dependency injection to manage the HttpClient, TokenHander, and various configurations for logging and content encoding.
+
+### Get Started
+Create an `EncompassTokenClientOptions` object. and populate all values. This has been built to follow the IOptions pattern if you so choose.
+
+Pass your `EncompassTokenClientOptions` object into the `AddEncompassTokenHandlerWithRetry` extension method (Note: this method name will be changed in an upcoming release).
+
+```cs
+builder.Services.AddEncompassTokenHandlerWithRetry(encompassTokenClientOptions);
+```
+
+This will add your `IOptions EncompassTokenClientOptons` dependency, a `TokenHandler` for direct calls to Encompass, as well as a default retry and timeout policy for the embedded `HttpClient`.
+
+### Advanced Configuration
+Additional `HttpClientBuilderExtensions`, and `ServiceCollectionExtensions` have been included for more granular configuration of `EncompassApiService` dependencies.
+
+```cs
+ builder.Services
+    .AddEncompassHttpClient(
+    options =>
+    {
+        options.CompressionOptions = new HttpClientCompressionHandlerOptions()
+        {
+            DecompressionMethods = new DecompressionMethods[] { DecompressionMethods.GZiDecompressionMethods.Deflate },
+            EnableAutoDecompression = true
+        };
+        options.ClientParameters = clientParameters;
+        options.TokenClientOptions = encompassTokenClientOptions;
+    },
+    config =>
+    {
+        config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);
+    })
+    .AddEncompassTokenMessageHandler()
+    .AddEncompassHttpResponseHeaderLoggingHandler()
+    .AddEncompassRetryPolicyHandler()
+    .AddEncompassTimeoutPolicyHandler()
+    .Build(builder.Services);
+```
+
 ### Upcoming features
-* Extension methods for easy inclusion of EncompassApiService in ServiceCollection DI container on application startup.
 * Refactored unit tests using Mocked message handlers for Mock results
-* Token HttpMessageHandlers for authentication using all authentication mechanisms available to Encompass integrations. (Current Token Handler is custom and internal to Fairway Mortgage)
 * Separation of client managed dependencies into a client package to remove added dependencies on Polly to separate
 * Documentation for usage of EncompassApiService
 * Concurrency and Rate Limit throttling via HttpMessageHandlers
-
-### EncompassApiService
-
-In your startup.cs add EncompassApiService for IEncompassRestClient dependency. Currently you will need to inject a custom HttpMessageHandler for Encompass token management. For retry you can also provide Polly policy/messageHandler for management of retry.
-
-EncompassApiService can then be injected into needed classes.
 
 ## Resources
 * [Developer Connect](https://docs.developer.elliemae.com/reference) - Encompass API's reference location.
