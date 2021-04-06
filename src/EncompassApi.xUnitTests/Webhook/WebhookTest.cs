@@ -54,5 +54,29 @@ namespace EncompassApi.xUnitTests.Webhook
                 return source.Description.Equals(target.Description, StringComparison.OrdinalIgnoreCase);
             });
         }
+
+        [Theory]
+        [JsonFileData("Payloads/WebhookResources.json", false)]
+        public async Task GetResourcesRawAsyncTestAsync(params JObject[] payloads)
+        {
+            _logger.WriteLine("### Starting GetResourcesRawAsyncTestAsync! ###");
+            payloads.ShouldBeOfType<EncompassApi.Webhook.WebhookResource>();
+
+            // SET THE EXPECTED RESPONSE AND A HEADER FOR TESTING
+            _mockedEncompassClient.SetupResponseMessage((response) =>
+            {
+                response.StatusCode = HttpStatusCode.OK;
+                response.Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(payloads));
+            }, testHeader: new System.Collections.Generic.KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString()));
+
+            var webhookResourcesString = await _mockedEncompassClient.MockedEncompassClient.Webhook.GetResourcesRawAsync();
+
+            var webhookResources = webhookResourcesString.ShouldBeObjectArray<EncompassApi.Webhook.WebhookResource>("Description", "Events");
+            webhookResources.Count().Should().Be(payloads.Length);
+            payloads.AreEqual(webhookResources.ToArray(), (source, target) =>
+            {
+                return source.Description.Equals(target.Description, StringComparison.OrdinalIgnoreCase);
+            });
+        }
     }
 }

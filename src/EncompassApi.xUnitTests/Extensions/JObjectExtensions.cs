@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 using Xunit;
 
 namespace EncompassApi.xUnitTests.Extensions
@@ -35,6 +36,19 @@ namespace EncompassApi.xUnitTests.Extensions
             {
                 Assert.True(isEqualFunc(source[i], target[i].ToObject<TObject>()));
             }
+        }
+
+        public static TObject[] ShouldBeObjectArray<TObject>(this string source, params string[] properties)
+        {
+            var objs = Newtonsoft.Json.JsonConvert.DeserializeObject<TObject[]>(source);
+            foreach (var property in properties)
+            {
+                var p = objs[0].GetType().GetProperty(property);
+                Assert.True(p != null);
+                Assert.True(p.GetValue(objs[0]) != null);
+            }
+            
+            return objs;
         }
     }
 }
