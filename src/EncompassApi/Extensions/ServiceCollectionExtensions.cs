@@ -17,7 +17,7 @@ namespace EncompassApi.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddEncompassTokenHandlerWithRetry(this IServiceCollection services, EncompassTokenClientOptions encompassTokenClientOptions)
+        public static IServiceCollection AddClientWithEncompassTokenHandler(this IServiceCollection services, EncompassTokenClientOptions encompassTokenClientOptions)
         {
             var clientParameters = new ClientParameters
             {
@@ -34,7 +34,9 @@ namespace EncompassApi.Extensions
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(encompassTokenClientOptions.TimeoutInSeconds);
 
             services.AddSingleton(options);
-            services.AddHttpClient(encompassTokenClientOptions.ClientName, c => {
+
+            services.AddHttpClient<ITokenClient, EncompassTokenClient>(c => 
+            {
                 c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
                     Convert.ToBase64String(
                         Encoding.UTF8.GetBytes(
@@ -43,23 +45,19 @@ namespace EncompassApi.Extensions
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
 
-            services.AddScoped<ITokenClient>(sp =>
-                new EncompassTokenClient(sp.GetService<IHttpClientFactory>().CreateClient(encompassTokenClientOptions.ClientName), options));
 
-            services.AddHttpClient("EncompassClient", c =>
+            services.AddHttpClient<IEncompassApiClient, EncompassApiService>(c =>
             {
                 c.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);
             })
-                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()))
+                .AddHttpMessageHandler<TokenHandler>()
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
-
-            services.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), clientParameters));
 
             return services;
         }
 
-        public static IServiceCollection AddFairwayTokenHandlerWithRetry(this IServiceCollection services, FairwayTokenClientOptions fairwayTokenClientOptions)
+        public static IServiceCollection AddClientWithFairwayTokenHandler(this IServiceCollection services, FairwayTokenClientOptions fairwayTokenClientOptions)
         {
             var clientParameters = new ClientParameters
             {
@@ -76,21 +74,66 @@ namespace EncompassApi.Extensions
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(fairwayTokenClientOptions.TimeoutInSeconds);
 
             services.AddSingleton(tokenClientIOptions);
-            services.AddHttpClient(fairwayTokenClientOptions.ClientName)
+            services.AddHttpClient<ITokenClient, FairwayTokenClient>()
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
 
-            services.AddScoped<ITokenClient>(sp =>
-                new FairwayTokenClient(sp.GetService<IHttpClientFactory>().CreateClient(fairwayTokenClientOptions.ClientName), tokenClientIOptions));
-
-            services.AddHttpClient("EncompassClient")                
-                .AddHttpMessageHandler(sp => new TokenHandler(sp.GetService<ITokenClient>()))
+            services.AddHttpClient<IEncompassApiClient, EncompassApiService>(c =>
+            {
+                c.BaseAddress = new Uri(fairwayTokenClientOptions.BaseUrl);
+            })
+                .AddHttpMessageHandler<TokenHandler>()
                 .AddPolicyHandler(retryPolicy)
                 .AddPolicyHandler(timeoutPolicy);
 
             services.AddTransient<IEncompassApiClient>(sp => new EncompassApiService(sp.GetService<IHttpClientFactory>().CreateClient("EncompassClient"), clientParameters));
 
             return services;
+        }
+        [Obsolete("This method is deprecated. Use AddClientWithEncompassTokenHandler instead")]
+        public static IServiceCollection AddEncompassTokenHandlerWithRetry(this IServiceCollection services, EncompassTokenClientOptions encompassTokenClientOptions) => AddClientWithEncompassTokenHandler(services, encompassTokenClientOptions);
+
+        [Obsolete("This method is deprecated. Use AddClientWithFairwayTokenHandler instead")]
+        public static IServiceCollection AddFairwayTokenHandlerWithRetry(this IServiceCollection services, FairwayTokenClientOptions fairwayTokenClientOptions) => AddClientWithFairwayTokenHandler(services, fairwayTokenClientOptions);
+
+        public static IHttpClientBuilder AddEncompassTokenHandler(this IServiceCollection services, EncompassTokenClientOptions encompassTokenClientOptions)
+        {
+            IOptions<EncompassTokenClientOptions> options = Options.Create(encompassTokenClientOptions);
+            services.AddSingleton(options);
+
+            return services.AddHttpClient<ITokenClient, EncompassTokenClient>(c =>
+            {
+                c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                    Convert.ToBase64String(
+                        Encoding.UTF8.GetBytes(
+                            $"{WebUtility.UrlEncode(encompassTokenClientOptions.ClientId)}:{WebUtility.UrlEncode(encompassTokenClientOptions.ClientSecret)}")));
+            });
+        }
+
+        public static IHttpClientBuilder AddFairwayTokenHandler(this IServiceCollection services, FairwayTokenClientOptions fairwayTokenClientOptions)
+        {
+            IOptions<FairwayTokenClientOptions> options = Options.Create(fairwayTokenClientOptions);
+            services.AddSingleton(options);
+
+            return services.AddHttpClient<ITokenClient, FairwayTokenClient>();
+        }
+
+        public static IHttpClientBuilder AddEncompassApiClient(this IServiceCollection services, BaseHttpClientOptions baseOptions, string clientId, string clientSecret, CacheInitialization cacheInitialization = CacheInitialization.Never)
+        {
+            var clientParameters = new ClientParameters
+            {
+                ApiClientId = clientId,
+                ApiClientSecret = clientSecret
+            };
+
+            clientParameters.CustomFieldsCacheInitialization = cacheInitialization;
+            services.AddSingleton(clientParameters);
+
+            return services.AddHttpClient<IEncompassApiClient, EncompassApiService>(c =>
+            {
+                c.BaseAddress = new Uri(baseOptions.BaseUrl);
+            })
+                .AddHttpMessageHandler<TokenHandler>();
         }
 
         public static EncompassHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services, Action<HttpClient> config)
