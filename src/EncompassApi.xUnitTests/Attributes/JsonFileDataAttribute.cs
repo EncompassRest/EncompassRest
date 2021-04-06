@@ -23,9 +23,9 @@ namespace EncompassApi.xUnitTests
         /// Load data from a JSON file as the data source for a theory
         /// </summary>
         /// <param name="filePath">The absolute or relative path to the JSON file to load</param>
-        public JsonFileDataAttribute(string filePath, bool allowListOfObjects)
-            : this(filePath, string.Empty) {
-            _allowListOfObjects = allowListOfObjects;
+        /// <param name="allowListOfObjectArrays">True if the payload is a list of list of objects (List<Object[]>)</param>
+        public JsonFileDataAttribute(string filePath, bool allowListOfObjectArrays)
+            : this(filePath, string.Empty, allowListOfObjectArrays) {
         }
 
         /// <summary>
@@ -33,15 +33,12 @@ namespace EncompassApi.xUnitTests
         /// </summary>
         /// <param name="filePath">The absolute or relative path to the JSON file to load</param>
         /// <param name="propertyName">The name of the property on the JSON file that contains the data for the test</param>
-        public JsonFileDataAttribute(string filePath, string propertyName) 
+        public JsonFileDataAttribute(string filePath, string propertyName, bool allowListOfObjectArrays) 
         {
             _filePath = filePath;
             _propertyName = propertyName;
-            
-            
+            _allowListOfObjects = allowListOfObjectArrays;
         }
-
-        
 
         /// <inheritDoc />
         public override  IEnumerable<object[]> GetData(MethodInfo testMethod)
@@ -79,6 +76,5 @@ namespace EncompassApi.xUnitTests
             return data.ToObject<IEnumerable<object[]>>();
         }
 
-       
     }
 }
