@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EncompassApi.Configuration
 {
-    public class HttpClientOptions
+    public class HttpClientOptions : IHttpClientOptions
     {
         public HttpClientCompressionHandlerOptions CompressionOptions { get; set; }
 

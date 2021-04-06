@@ -103,20 +103,12 @@ namespace EncompassApi.Extensions
 
         public static EncompassHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services , Action<HttpClientOptions> config)
         {
-            services._addHttpClientOptions(config);
+            services.AddHttpClientOptions(config);
 
             var httpClient = services.AddHttpClient("EncompassClient", (s, c) =>
              {
                  var options = s.GetRequiredService<IOptions<HttpClientOptions>>();
-                 if (options != null)
-                 {
-                     
-                     foreach (var encoding in options.Value.CompressionOptions.DecompressionMethods)
-                     {
-                         c.DefaultRequestHeaders.Add(name: "Accept-Encoding", value: encoding.ToString());
-                     }
-                 }
-
+                 c.AddDefaultRequestHeaders(options.Value);
              }).ConfigurPrimaryHttpClientHandler(services.BuildServiceProvider());
 
             return new EncompassHttpClientBuilder(httpClient, services);
@@ -124,19 +116,12 @@ namespace EncompassApi.Extensions
 
         public static EncompassHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services, Action<HttpClientOptions> config, Action<HttpClient> configureClient)
         {
-            services._addHttpClientOptions(config);
+            services.AddHttpClientOptions(config);
       
             var httpClient = services.AddHttpClient("EncompassClient", (s, c) =>
             {
                 var options = s.GetRequiredService<IOptions<HttpClientOptions>>();
-                if (options != null && options.Value.CompressionOptions.DecompressionMethods != null)
-                {
-                    foreach (var encoding in options.Value.CompressionOptions.DecompressionMethods)
-                    {
-                        c.DefaultRequestHeaders.Add(name: "Accept-Encoding", value: encoding.ToString());
-                    }
-                }
-
+                c.AddDefaultRequestHeaders(options.Value);
             }).ConfigurPrimaryHttpClientHandler(services.BuildServiceProvider());
 
             httpClient.ConfigureHttpClient(configureClient);
@@ -145,7 +130,7 @@ namespace EncompassApi.Extensions
 
         }
 
-        static void _addHttpClientOptions(this IServiceCollection services, Action<HttpClientOptions> config)
+        static void AddHttpClientOptions(this IServiceCollection services, Action<HttpClientOptions> config)
         {
             HttpClientOptions httpClientOptions = new HttpClientOptions();
             config(httpClientOptions);
