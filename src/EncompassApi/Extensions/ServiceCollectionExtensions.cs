@@ -118,24 +118,6 @@ namespace EncompassApi.Extensions
             return services.AddHttpClient<ITokenClient, FairwayTokenClient>();
         }
 
-        public static IHttpClientBuilder AddEncompassApiClient(this IServiceCollection services, BaseHttpClientOptions baseOptions, string clientId, string clientSecret, CacheInitialization cacheInitialization = CacheInitialization.Never)
-        {
-            var clientParameters = new ClientParameters
-            {
-                ApiClientId = clientId,
-                ApiClientSecret = clientSecret
-            };
-
-            clientParameters.CustomFieldsCacheInitialization = cacheInitialization;
-            services.AddSingleton(clientParameters);
-
-            return services.AddHttpClient<IEncompassApiClient, EncompassApiService>(c =>
-            {
-                c.BaseAddress = new Uri(baseOptions.BaseUrl);
-            })
-                .AddHttpMessageHandler<TokenHandler>();
-        }
-
         public static EncompassHttpClientBuilder AddEncompassHttpClient(this IServiceCollection services, Action<HttpClient> config)
         {
             services.Configure(config);
