@@ -26,7 +26,7 @@ This will add your `IOptions EncompassTokenClientOptons` dependency, a `TokenHan
 Additional `HttpClientBuilderExtensions`, and `ServiceCollectionExtensions` have been included for more granular configuration of `EncompassApiService` dependencies. And example off all features configured is provided below.
 
 ```cs
- var clientParameters = new ClientParameters
+var clientParameters = new ClientParameters
 {
     ApiClientId = encompassTokenClientOptions.ClientId,
     ApiClientSecret = encompassTokenClientOptions.ClientSecret
@@ -38,19 +38,6 @@ var headers = new EncompassHttpResponseHeaderLoggerOptions();
 headers.AddRange("X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset");
 
 
-var httpClientOptions = new HttpClientOptions
-{
-    ClientParameters = clientParameters,
-    CompressionOptions = new HttpClientCompressionHandlerOptions()
-    {
-        DecompressionMethods = new DecompressionMethods[] { DecompressionMethods.GZip },
-        EnableAutoDecompression = true
-    },
-    TokenClientOptions = encompassTokenClientOptions,
-    EncompassHttpResponseHeaderLoggerOptions = headers
-};
-
-var httpClientIOptions = Options.Create(httpClientOptions);            
 var encompassIOptions = Options.Create(encompassTokenClientOptions);
 
 builder.Services.AddSingleton(clientParameters);
@@ -69,6 +56,7 @@ builder.Services.AddEncompassHttpClient(options =>
     };
     options.ClientParameters = clientParameters;
     options.TokenClientOptions = encompassTokenClientOptions;
+    options.EncompassHttpResponseHeaderLoggerOptions = headers;
 },
 config => config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl) )
     .AddEncompassTokenMessageHandler()
