@@ -56,24 +56,10 @@ namespace EncompassApi.FuncApp
             var headers = new EncompassHttpResponseHeaderLoggerOptions();
             headers.AddRange("X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset");
             
-
-            var httpClientOptions = new HttpClientOptions
-            {
-                ClientParameters = clientParameters,
-                CompressionOptions = new HttpClientCompressionHandlerOptions()
-                {
-                    DecompressionMethods = new DecompressionMethods[] { DecompressionMethods.GZip },
-                    EnableAutoDecompression = true
-                },
-                TokenClientOptions = encompassTokenClientOptions,
-                EncompassHttpResponseHeaderLoggerOptions = headers
-            };
-
-            var httpClientIOptions = Options.Create(httpClientOptions);            
+            
             var encompassIOptions = Options.Create(encompassTokenClientOptions);
 
             builder.Services.AddSingleton(clientParameters);
-            //builder.Services.AddSingleton(httpClientIOptions); //this is added upon creation
             builder.Services.AddSingleton(encompassIOptions);
 
             builder.Services.AddEncompassTokenHandler(encompassTokenClientOptions)
@@ -89,6 +75,7 @@ namespace EncompassApi.FuncApp
                 };
                 options.ClientParameters = clientParameters;
                 options.TokenClientOptions = encompassTokenClientOptions;
+                options.EncompassHttpResponseHeaderLoggerOptions = headers;
             },
             config => config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl) )
                 .AddEncompassTokenMessageHandler()
