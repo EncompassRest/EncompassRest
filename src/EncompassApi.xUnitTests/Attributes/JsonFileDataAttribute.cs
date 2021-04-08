@@ -15,10 +15,10 @@ namespace EncompassApi.xUnitTests
 {
     public class JsonFileDataAttribute : DataAttribute
     {
-        private readonly string _fileName;
+        protected string _fileName;
         private readonly string _propertyName;
-        private readonly JsonFileTypes _type;
-        private readonly List<string> _args;
+        protected readonly JsonFileTypes _type;
+        protected readonly List<string> _args;
 
 
 
@@ -95,7 +95,29 @@ namespace EncompassApi.xUnitTests
 
         }
 
-        
+        protected string GetFileString(string fileName, string arg = null)
+        {
+            
+            var fullPath = $"Payloads/{_fileName}.{getFileSuffix(arg)}json";
+
+            // Get the absolute path to the JSON file
+            var path = Path.IsPathRooted(fullPath)
+                ? fullPath
+                : Path.GetRelativePath(Directory.GetCurrentDirectory(), fullPath);
+
+            if (!File.Exists(path))
+            {
+                throw new ArgumentException($"Could not find file at path: {path}");
+            }
+            // Load the file
+            var fileData = File.ReadAllText(fullPath);
+            return fileData;
+        }
+
+        private string getFileSuffix(string arg)
+        {
+            return string.IsNullOrEmpty(arg) ? "" : $"{arg}.";
+        }
     }
 
     public enum JsonFileTypes
