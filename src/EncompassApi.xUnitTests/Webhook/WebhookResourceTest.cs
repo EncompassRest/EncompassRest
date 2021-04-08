@@ -14,12 +14,11 @@ using System.Collections.Generic;
 
 namespace EncompassApi.xUnitTests.Webhook
 {
-    public class WebhookTest
+    public class WebhookResourceTest
     {
         private readonly ITestOutputHelper _outputWriter;
         private readonly IMockedEncompassHttpClientService _mockedEncompassClient;
-
-        public WebhookTest(ITestOutputHelper outputWriter, IMockedEncompassHttpClientService mockedEncompassHttpClient)
+        public WebhookResourceTest(ITestOutputHelper outputWriter, IMockedEncompassHttpClientService mockedEncompassHttpClient)
         {
             outputWriter.WriteLine("### WebhookTest initiating! ###");
             _outputWriter = outputWriter;
@@ -30,7 +29,7 @@ namespace EncompassApi.xUnitTests.Webhook
         ///  Test EncompassApi.Webhook.ResourcesAsyncTestAsync()
         /// </summary>
         [Theory]
-        [JsonFileData("WebhookResources", null,  JsonFileTypes.Array)]
+        [WebhookResourceFile(JsonFileTypes.Array)]
         public async Task GetResourcesAsyncTestAsync(params JObject[] payloads)
         {
             _outputWriter.WriteLine("### Starting GetResourcesAsyncTestAsync! ###");
@@ -57,7 +56,7 @@ namespace EncompassApi.xUnitTests.Webhook
         }
 
         [Theory]
-        [JsonFileData("WebhookResources", null,  JsonFileTypes.Array)]
+        [WebhookResourceFile(JsonFileTypes.Array)]
         public async Task GetResourcesRawAsyncTestAsync(params JObject[] payloads)
         {
             _outputWriter.WriteLine("### Starting GetResourcesRawAsyncTestAsync! ###");
@@ -82,26 +81,25 @@ namespace EncompassApi.xUnitTests.Webhook
         }
 
         [Theory]
-        [JsonFileData("WebhookResource.Loan", null,  JsonFileTypes.Single, "Loan")]
-        [JsonFileData("WebhookResource.Transaction", null, JsonFileTypes.Single, "Transaction")]
-        public async Task  GetResourceAsyncByEnumTestAsync(params object[] args)
+        [WebhookResourceFile(JsonFileTypes.Single, "Loan" , "Transaction", "TaskGroup")]
+        public async Task GetResourceAsyncByEnumTestAsync(params object[] args)
         {
             var resourceType = (string)args[0];
             _outputWriter.WriteLine("### Starting GetResourceAsyncByEnumTestAsync! with resourcetype {0}###", resourceType);
-           
+
             Enum.TryParse(resourceType, out WebhookResourceType resourceTypeEnum)
-                .Should().BeTrue(because:"{0} must be of type WebhookResourceType", resourceType);
+                .Should().BeTrue(because: "{0} must be of type WebhookResourceType", resourceType);
             var target = ((JObject)args[1]).ToObject<WebhookResource>();
             target.Should().NotBeNull();
 
             // SET THE EXPECTED RESPONSE AND A HEADER FOR TESTING
             // CALL THE API
             // RETURN THE EXPECTED RESPONSE OBJECT
-            var source = await(_mockedEncompassClient.SetupResponseMessage((response) =>
-            {
-                response.StatusCode = HttpStatusCode.OK;
-                response.Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(target));
-            }, testHeader: new KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString())))
+            var source = await (_mockedEncompassClient.SetupResponseMessage((response) =>
+             {
+                 response.StatusCode = HttpStatusCode.OK;
+                 response.Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(target));
+             }, testHeader: new KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString())))
             .MockedEncompassClient.Webhook.GetResourceAsync(resourceTypeEnum);
 
             source.Should()
@@ -119,13 +117,12 @@ namespace EncompassApi.xUnitTests.Webhook
         }
 
         [Theory]
-        [JsonFileData("WebhookResource.Loan", null, JsonFileTypes.Single, "Loan")]
-        [JsonFileData("WebhookResource.Transaction", null, JsonFileTypes.Single, "Transaction")]
+        [WebhookResourceFile(JsonFileTypes.Single, "Loan", "Transaction" , "TaskGroup")]
         public async Task GetResourceAsyncByStringTestAsync(params object[] args)
         {
             var resourceType = (string)args[0];
             _outputWriter.WriteLine("### Starting GetResourceAsyncByStringTestAsync! with resourcetype {0} ###", resourceType);
-           
+
             Enum.TryParse(resourceType, out WebhookResourceType resourceTypeEnum)
                 .Should().BeTrue(because: "{0} must be of type WebhookResourceType", resourceType);
             var target = ((JObject)args[1]).ToObject<WebhookResource>();
@@ -156,7 +153,7 @@ namespace EncompassApi.xUnitTests.Webhook
         }
 
         [Theory]
-        [JsonFileData("WebhookResource.Loan", null, JsonFileTypes.Single, "Loan")]
+        [WebhookResourceFile(type: JsonFileTypes.Single, "Loan", "Transaction", "TaskGroup")]
         public async Task GetResourceRawAsync(params object[] args)
         {
             var resourceType = (string)args[0];
@@ -190,7 +187,5 @@ namespace EncompassApi.xUnitTests.Webhook
                     return s.Name.Equals(resourceType);
                 });
         }
-
-        
     }
 }
