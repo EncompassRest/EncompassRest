@@ -14,9 +14,9 @@ namespace EncompassApi.xUnitTests.TestServices
         EncompassApiService MockedEncompassClient { get; }
         Mock<HttpMessageHandler> MockedHandler { get; }
 
-        void SetupResponseMessage(Action<HttpResponseMessage> action, KeyValuePair<string, string>? testHeader = null);
-        void SetOptions(Action<Mock<IHttpClientOptions>> options);
-        void SetOptions(Mock<IHttpClientOptions> options);
-        void AddDefaultRequestHeaders();
+        IMockedEncompassHttpClientService SetupResponseMessage(Action<HttpResponseMessage> action, KeyValuePair<string, string>? testHeader = null);
+        IMockedEncompassHttpClientService SetOptions(Action<Mock<IHttpClientOptions>> options);
+        IMockedEncompassHttpClientService SetOptions(Mock<IHttpClientOptions> options);
+        IMockedEncompassHttpClientService AddDefaultRequestHeaders();
     }
 }

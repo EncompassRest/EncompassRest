@@ -30,21 +30,24 @@ namespace EncompassApi.xUnitTests.TestServices
         public Uri BaseAddress { get; private set; }
         public Mock<IHttpClientOptions> Options { get; private set; }
 
-        public void SetOptions(Action<Mock<IHttpClientOptions>> options)
+        public IMockedEncompassHttpClientService SetOptions(Action<Mock<IHttpClientOptions>> options)
         {
             Options = new Mock<IHttpClientOptions>();
             Options.SetupProperty(m => m.CompressionOptions);
             options(Options);
+            return this;
         }
 
-        public void SetOptions(Mock<IHttpClientOptions> options)
+        public IMockedEncompassHttpClientService SetOptions(Mock<IHttpClientOptions> options)
         {
             Options = options;
+            return this;
         }
 
-        public void AddDefaultRequestHeaders()
+        public IMockedEncompassHttpClientService AddDefaultRequestHeaders()
         {
             MockedClient.AddDefaultRequestHeaders(Options.Object);
+            return this;
         }
 
         public MockedEncompassHttpClientService(ILogger<MockedEncompassHttpClientService> logger)
@@ -58,7 +61,7 @@ namespace EncompassApi.xUnitTests.TestServices
             MockedEncompassClient = new EncompassApiService(MockedClient, new ClientParameters());
         }
 
-        public void SetupResponseMessage(Action<HttpResponseMessage> action, KeyValuePair<string, string>? testHeader = null)
+        public IMockedEncompassHttpClientService SetupResponseMessage(Action<HttpResponseMessage> action, KeyValuePair<string, string>? testHeader = null)
         {
             var respMsg = new HttpResponseMessage();
             action(respMsg);
@@ -71,6 +74,7 @@ namespace EncompassApi.xUnitTests.TestServices
                 ItExpr.IsAny<HttpRequestMessage>(),
                 ItExpr.IsAny<CancellationToken>())
                 .ReturnsAsync(respMsg);
+            return this;
         }
     }
 
