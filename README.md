@@ -23,25 +23,42 @@ builder.Services.AddEncompassTokenHandlerWithRetry(encompassTokenClientOptions);
 This will add your `IOptions EncompassTokenClientOptons` dependency, a `TokenHandler` for direct calls to Encompass, as well as a default retry and timeout policy for the embedded `HttpClient`.
 
 ### Advanced Configuration
-Additional `HttpClientBuilderExtensions`, and `ServiceCollectionExtensions` have been included for more granular configuration of `EncompassApiService` dependencies.
+Additional `HttpClientBuilderExtensions`, and `ServiceCollectionExtensions` have been included for more granular configuration of `EncompassApiService` dependencies. And example off all features configured is provided below.
 
 ```cs
- builder.Services
-    .AddEncompassHttpClient(
-    options =>
+var clientParameters = new ClientParameters
+{
+    ApiClientId = encompassTokenClientOptions.ClientId,
+    ApiClientSecret = encompassTokenClientOptions.ClientSecret
+};
+
+clientParameters.CustomFieldsCacheInitialization = EncompassApi.CacheInitialization.Never;
+
+var headers = new EncompassHttpResponseHeaderLoggerOptions();
+headers.AddRange("X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset");
+
+
+var encompassIOptions = Options.Create(encompassTokenClientOptions);
+
+builder.Services.AddSingleton(clientParameters);
+builder.Services.AddSingleton(encompassIOptions);
+
+builder.Services.AddEncompassTokenHandler(encompassTokenClientOptions)
+    .AddPolicyHandler(HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(encompassTokenClientOptions.RetryCount))
+    .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(encompassTokenClientOptions.TimeoutInSeconds));
+
+builder.Services.AddEncompassHttpClient(options =>
+{
+    options.CompressionOptions = new HttpClientCompressionHandlerOptions()
     {
-        options.CompressionOptions = new HttpClientCompressionHandlerOptions()
-        {
-            DecompressionMethods = new DecompressionMethods[] { DecompressionMethods.GZiDecompressionMethods.Deflate },
-            EnableAutoDecompression = true
-        };
-        options.ClientParameters = clientParameters;
-        options.TokenClientOptions = encompassTokenClientOptions;
-    },
-    config =>
-    {
-        config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl);
-    })
+        DecompressionMethods = new DecompressionMethods[] { DecompressionMethods.GZip },
+        EnableAutoDecompression = true
+    };
+    options.ClientParameters = clientParameters;
+    options.TokenClientOptions = encompassTokenClientOptions;
+    options.EncompassHttpResponseHeaderLoggerOptions = headers;
+},
+config => config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl) )
     .AddEncompassTokenMessageHandler()
     .AddEncompassHttpResponseHeaderLoggingHandler()
     .AddEncompassRetryPolicyHandler()
