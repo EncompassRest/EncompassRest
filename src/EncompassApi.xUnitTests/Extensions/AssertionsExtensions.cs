@@ -56,13 +56,21 @@ namespace EncompassApi.xUnitTests.Extensions
 
         }
 
+        public static AndConstraint<StringAssertions> BeEqual<TAssertion>(this StringAssertions assert,
+         TAssertion target, string source, Func<TAssertion, TAssertion, bool> isEqualFunc)
+        {
+            source.Should().NotBeNull(because: "Source cannot be null!").And.NotBeEmpty(because: "Source cannot be empty!");
+            var srcObj = Newtonsoft.Json.JsonConvert.DeserializeObject<TAssertion>(source);
+            Assert.True(isEqualFunc(target, srcObj));
+            return assert.NotBeEmpty(because: "it must not be an emoty string");
+        }
+
         public static AndConstraint<ObjectAssertions> BeEqual<TAssertion>(this ObjectAssertions assert,
             TAssertion target, TAssertion source, Func<TAssertion, TAssertion, bool> isEqualFunc)
         {
 
             Assert.True(isEqualFunc(source, target));
             return assert.NotBeNull(because: "it must not be null");
-
         }
 
         /// <summary>
@@ -73,7 +81,7 @@ namespace EncompassApi.xUnitTests.Extensions
         /// <param name="source"></param>
         /// <param name="properties">Properties to validate</param>
         /// <returns></returns>
-        public static AndConstraint<StringAssertions> BeObjectArray<TAssertion>(this StringAssertions assert, 
+        public static AndConstraint<StringAssertions> BeOfObjectArray<TAssertion>(this StringAssertions assert, 
             string source, params string[] properties)
         {
             var srcAry = Newtonsoft.Json.JsonConvert.DeserializeObject<TAssertion[]>(source);
@@ -87,7 +95,7 @@ namespace EncompassApi.xUnitTests.Extensions
             return assert.NotBeEmpty(because: "it must not be an emoty string");
         }
 
-        public static AndConstraint<ObjectAssertions> BeObject<TAssertion>(this ObjectAssertions assert,
+        public static AndConstraint<ObjectAssertions> BeOfObject<TAssertion>(this ObjectAssertions assert,
             TAssertion source, params string[] properties)
         {
             foreach (var property in properties)
@@ -95,6 +103,20 @@ namespace EncompassApi.xUnitTests.Extensions
                 var p = source.GetType().GetProperty(property);
                 Assert.True(p != null);
                 Assert.True(p.GetValue(source) != null);
+            }
+
+            return assert.NotBeNull(because: "it must not be null");
+        }
+
+        public static AndConstraint<StringAssertions> BeOfObject<TAssertion>(this StringAssertions assert,
+            string source, params string[] properties)
+        {
+            var src = Newtonsoft.Json.JsonConvert.DeserializeObject<TAssertion>(source);
+            foreach (var property in properties)
+            {
+                var p = src.GetType().GetProperty(property);
+                Assert.True(p != null);
+                Assert.True(p.GetValue(src) != null);
             }
 
             return assert.NotBeNull(because: "it must not be null");

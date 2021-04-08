@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net;
 using FluentAssertions;
 using Newtonsoft.Json.Linq;
+using EncompassApi.Webhook;
 using EncompassApi.xUnitTests.TestServices;
 using EncompassApi.xUnitTests.Extensions;
 using System;
@@ -33,7 +34,7 @@ namespace EncompassApi.xUnitTests.Webhook
         public async Task GetResourcesAsyncTestAsync(params JObject[] payloads)
         {
             _outputWriter.WriteLine("### Starting GetResourcesAsyncTestAsync! ###");
-            var target = payloads.Should().BeOfType<JObject, EncompassApi.Webhook.WebhookResource>(payloads);
+            var target = payloads.Should().BeOfType<JObject, WebhookResource>(payloads);
             // SET THE EXPECTED RESPONSE AND A HEADER FOR TESTING
             // CALL THE API
             // RETURN THE EXPECTED RESPONSE OBJECT
@@ -41,11 +42,11 @@ namespace EncompassApi.xUnitTests.Webhook
                 {
                     response.StatusCode = HttpStatusCode.OK;
                     response.Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(payloads));
-                }, testHeader: new System.Collections.Generic.KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString())))
+                }, testHeader: new KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString())))
                 .MockedEncompassClient.Webhook.GetResourcesAsync();
 
             source.Should()
-                .AllBeOfType<EncompassApi.Webhook.WebhookResource>()
+                .AllBeOfType<WebhookResource>()
                 .And
                 .HaveCount(target.Count())
                 .And
@@ -60,7 +61,7 @@ namespace EncompassApi.xUnitTests.Webhook
         public async Task GetResourcesRawAsyncTestAsync(params JObject[] payloads)
         {
             _outputWriter.WriteLine("### Starting GetResourcesRawAsyncTestAsync! ###");
-            var target = payloads.Should().BeOfType<JObject, EncompassApi.Webhook.WebhookResource>(payloads);
+            var target = payloads.Should().BeOfType<JObject, WebhookResource>(payloads);
             // SET THE EXPECTED RESPONSE AND A HEADER FOR TESTING
             // CALL THE API
             // RETURN THE EXPECTED RESPONSE OBJECT
@@ -68,11 +69,11 @@ namespace EncompassApi.xUnitTests.Webhook
             {
                 response.StatusCode = HttpStatusCode.OK;
                 response.Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(payloads));
-            }, testHeader: new System.Collections.Generic.KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString())))
+            }, testHeader: new KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString())))
             .MockedEncompassClient.Webhook.GetResourcesRawAsync();
 
             source.Should()
-                .BeObjectArray<EncompassApi.Webhook.WebhookResource>(source, "Description", "Events")
+                .BeOfObjectArray<WebhookResource>(source, "Description", "Events")
                 .And
                 .BeEqual(target, source, (t, s) =>
                 {
@@ -83,11 +84,14 @@ namespace EncompassApi.xUnitTests.Webhook
         [Theory]
         [JsonFileData("WebhookResource.Loan", null,  JsonFileTypes.Single, "Loan")]
         [JsonFileData("WebhookResource.Transaction", null, JsonFileTypes.Single, "Transaction")]
-        public async Task  GetResourceAsyncTestAsync(params object[] args)
+        public async Task  GetResourceAsyncByEnumTestAsync(params object[] args)
         {
-            _outputWriter.WriteLine("### Starting GetResourceAsyncTestAsync! ###");
             var resourceType = (string)args[0];
-            var target = ((JObject)args[1]).ToObject<EncompassApi.Webhook.WebhookResource>();
+            _outputWriter.WriteLine("### Starting GetResourceAsyncByEnumTestAsync! with resourcetype {0}###", resourceType);
+           
+            Enum.TryParse(resourceType, out WebhookResourceType resourceTypeEnum)
+                .Should().BeTrue(because:"{0} must be of type WebhookResourceType", resourceType);
+            var target = ((JObject)args[1]).ToObject<WebhookResource>();
             target.Should().NotBeNull();
 
             // SET THE EXPECTED RESPONSE AND A HEADER FOR TESTING
@@ -97,11 +101,11 @@ namespace EncompassApi.xUnitTests.Webhook
             {
                 response.StatusCode = HttpStatusCode.OK;
                 response.Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(target));
-            }, testHeader: new System.Collections.Generic.KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString())))
-            .MockedEncompassClient.Webhook.GetResourceAsync(EncompassApi.Webhook.WebhookResourceType.Loan);
+            }, testHeader: new KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString())))
+            .MockedEncompassClient.Webhook.GetResourceAsync(resourceTypeEnum);
 
             source.Should()
-                .BeObject<EncompassApi.Webhook.WebhookResource>(source, nameof(EncompassApi.Webhook.WebhookResource.Description), nameof(EncompassApi.Webhook.WebhookResource.Events))
+                .BeOfObject(source, nameof(WebhookResource.Description), nameof(WebhookResource.Events))
                 .And
                 .BeEqual(target, source, (t, s) =>
                 {
@@ -113,5 +117,80 @@ namespace EncompassApi.xUnitTests.Webhook
                     return s.Name.Equals(resourceType);
                 });
         }
+
+        [Theory]
+        [JsonFileData("WebhookResource.Loan", null, JsonFileTypes.Single, "Loan")]
+        [JsonFileData("WebhookResource.Transaction", null, JsonFileTypes.Single, "Transaction")]
+        public async Task GetResourceAsyncByStringTestAsync(params object[] args)
+        {
+            var resourceType = (string)args[0];
+            _outputWriter.WriteLine("### Starting GetResourceAsyncByStringTestAsync! with resourcetype {0} ###", resourceType);
+           
+            Enum.TryParse(resourceType, out WebhookResourceType resourceTypeEnum)
+                .Should().BeTrue(because: "{0} must be of type WebhookResourceType", resourceType);
+            var target = ((JObject)args[1]).ToObject<WebhookResource>();
+            target.Should().NotBeNull();
+
+            // SET THE EXPECTED RESPONSE AND A HEADER FOR TESTING
+            // CALL THE API
+            // RETURN THE EXPECTED RESPONSE OBJECT
+            var source = await (_mockedEncompassClient.SetupResponseMessage((response) =>
+            {
+                response.StatusCode = HttpStatusCode.OK;
+                response.Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(target));
+            }, testHeader: new KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString())))
+            .MockedEncompassClient.Webhook.GetResourceAsync(resourceType);
+
+            source.Should()
+                .BeOfObject(source, nameof(WebhookResource.Description), nameof(WebhookResource.Events))
+                .And
+                .BeEqual(target, source, (t, s) =>
+                {
+                    return s.Description.Equals(t.Description, StringComparison.OrdinalIgnoreCase);
+                })
+                .And
+                .BeEqual(target, source, (t, s) =>
+                {
+                    return s.Name.Equals(resourceType);
+                });
+        }
+
+        [Theory]
+        [JsonFileData("WebhookResource.Loan", null, JsonFileTypes.Single, "Loan")]
+        public async Task GetResourceRawAsync(params object[] args)
+        {
+            var resourceType = (string)args[0];
+            _outputWriter.WriteLine("### Starting GetResourceAsyncByStringTestAsync! with resourcetype {0} ###", resourceType);
+
+            Enum.TryParse(resourceType, out WebhookResourceType resourceTypeEnum)
+                .Should().BeTrue(because: "{0} must be of type WebhookResourceType", resourceType);
+            var target = ((JObject)args[1]).ToObject<WebhookResource>();
+            target.Should().NotBeNull();
+
+            // SET THE EXPECTED RESPONSE AND A HEADER FOR TESTING
+            // CALL THE API
+            // RETURN THE EXPECTED RESPONSE OBJECT
+            var source = await (_mockedEncompassClient.SetupResponseMessage((response) =>
+            {
+                response.StatusCode = HttpStatusCode.OK;
+                response.Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(target));
+            }, testHeader: new KeyValuePair<string, string>("TestResponseHeader", Faker.RandomNumber.Next(10, 9999).ToString())))
+            .MockedEncompassClient.Webhook.GetResourcesRawAsync(resourceType);
+
+            source.Should()
+                .BeOfObject<WebhookResource>(source, nameof(WebhookResource.Description), nameof(WebhookResource.Events))
+                .And
+                .BeEqual(target, source, (t, s) =>
+                {
+                    return s.Description.Equals(t.Description, StringComparison.OrdinalIgnoreCase);
+                })
+                .And
+                .BeEqual(target, source, (t, s) =>
+                {
+                    return s.Name.Equals(resourceType);
+                });
+        }
+
+        
     }
 }
