@@ -25,7 +25,5 @@ namespace EncompassApi.xUnitTests
             var baseUri = _client.MockedClient.BaseAddress;
             Assert.Equal(_client.BaseAddress.ToString(), baseUri.AbsoluteUri);
         }
-
-      
     }
 }

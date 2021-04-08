@@ -1,0 +1,10 @@
+{
+  "description": "Transaction corresponding to service orders, such as credit service order etc.",
+  "events": [
+    {
+      "name": "update"
+    }
+  ],
+  "name": "Transaction",
+  "status": "active"
+}

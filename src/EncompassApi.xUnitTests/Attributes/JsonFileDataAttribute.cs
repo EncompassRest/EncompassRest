@@ -15,66 +15,92 @@ namespace EncompassApi.xUnitTests
 {
     public class JsonFileDataAttribute : DataAttribute
     {
-        private readonly string _filePath;
+        private readonly string _fileName;
         private readonly string _propertyName;
-        private readonly bool _allowListOfObjects;
+        private readonly JsonFileTypes _type;
+        private readonly List<string> _args;
 
-        /// <summary>
-        /// Load data from a JSON file as the data source for a theory
-        /// </summary>
-        /// <param name="filePath">The absolute or relative path to the JSON file to load</param>
-        /// <param name="allowListOfObjectArrays">True if the payload is a list of list of objects (List<Object[]>)</param>
-        public JsonFileDataAttribute(string filePath, bool allowListOfObjectArrays)
-            : this(filePath, string.Empty, allowListOfObjectArrays) {
-        }
+
 
         /// <summary>
         /// Load data from a JSON file as the data source for a theory
         /// </summary>
         /// <param name="filePath">The absolute or relative path to the JSON file to load</param>
         /// <param name="propertyName">The name of the property on the JSON file that contains the data for the test</param>
-        public JsonFileDataAttribute(string filePath, string propertyName, bool allowListOfObjectArrays) 
+        public JsonFileDataAttribute(string jsonFileName, string propertyName, JsonFileTypes type, params string[] args) 
         {
-            _filePath = filePath;
+            _fileName = jsonFileName;
             _propertyName = propertyName;
-            _allowListOfObjects = allowListOfObjectArrays;
+            _type = type;
+
+            _args = new List<string>();
+            foreach (var item in args)
+            {
+                _args.Add(item);
+            }
         }
 
         /// <inheritDoc />
-        public override  IEnumerable<object[]> GetData(MethodInfo testMethod)
+        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
             if (testMethod == null) { throw new ArgumentNullException(nameof(testMethod)); }
+            var fullPath = $"Payloads/{_fileName}.json";
 
             // Get the absolute path to the JSON file
-            var path = Path.IsPathRooted(_filePath)
-                ? _filePath
-                : Path.GetRelativePath(Directory.GetCurrentDirectory(), _filePath);
+            var path = Path.IsPathRooted(fullPath)
+                ? fullPath
+                : Path.GetRelativePath(Directory.GetCurrentDirectory(), fullPath);
 
             if (!File.Exists(path))
             {
                 throw new ArgumentException($"Could not find file at path: {path}");
             }
-
             // Load the file
-            var fileData = File.ReadAllText(_filePath);
+            var fileData = File.ReadAllText(fullPath);
 
             if (string.IsNullOrEmpty(_propertyName))
             {
-                ////whole file is the data
-                if (_allowListOfObjects)
-                    return JsonConvert.DeserializeObject<List<object[]>>(fileData);
-
-                var obj = JsonConvert.DeserializeObject<object[]>(fileData);
-                var objs = new List<object[]>() { obj  };
-                return objs;
                 
+                var rtrn1 = new List<object[]>();
+
+                switch (_type)
+                {
+                    case JsonFileTypes.Single:
+                        var allData1 = JObject.Parse(fileData);
+                        var snglObj = allData1.ToObject<object>();
+                        if (_args.Count() > 0)
+                            foreach (var arg in _args)
+                                rtrn1.Add(new object[] { arg, snglObj });
+                        else
+                            rtrn1.Add(new object[] { snglObj });
+                        return rtrn1.AsEnumerable();
+                    case JsonFileTypes.Array:
+                        var arylObj = JsonConvert.DeserializeObject<object[]>(fileData);
+                        if (_args.Count() > 0)
+                            foreach (var arg in _args)
+                                rtrn1.Add(new object[] { arg, arylObj });
+                        else
+                            rtrn1.Add( arylObj );
+                        return rtrn1.AsEnumerable();
+                    default:
+                        return rtrn1.AsEnumerable();
+
+                }
             }
 
-            // Only use the specified property as the data
+
             var allData = JObject.Parse(fileData);
             var data = allData[_propertyName];
             return data.ToObject<IEnumerable<object[]>>();
+
         }
 
+        
+    }
+
+    public enum JsonFileTypes
+    {
+        Single = 0,
+        Array = 1
     }
 }
