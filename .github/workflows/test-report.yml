@@ -15,3 +15,4 @@ jobs:
           name: xUnit Tests
           path: '*.trx'
           reporter: dotnet-trx
+          fail-on-error: false
