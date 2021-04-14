@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassApi.Extensions;
@@ -201,6 +202,13 @@ namespace EncompassApi.Webhook
         {
         }
 
+        public event EventHandler<ApiResponseEventArgs> ApiResponseEventHandler;
+        internal override void ApiResponse(HttpResponseMessage response)
+        {
+            if (ApiResponseEventHandler != null)
+                ApiResponseEventHandler(null, new ApiResponseEventArgs(response));
+        }
+
         /// <inheritdoc/>
         public Task<List<WebhookResource>> GetResourcesAsync(CancellationToken cancellationToken = default) => GetAsync<List<WebhookResource>>("resources", null, nameof(GetResourcesAsync), null, cancellationToken);
 
@@ -366,5 +374,6 @@ namespace EncompassApi.Webhook
 
             return GetRawAsync($"events/{eventId}", queryString, nameof(GetEventRawAsync), eventId, cancellationToken);
         }
+
     }
 }
