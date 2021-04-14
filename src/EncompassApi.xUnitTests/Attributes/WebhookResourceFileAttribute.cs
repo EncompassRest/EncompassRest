@@ -11,7 +11,6 @@ namespace EncompassApi.xUnitTests
 {
     public class WebhookResourceFileAttribute : JsonFileDataAttribute
     {
-
         protected WebhookResourceFileAttribute(string fileName, JsonFileTypes type, params string[] args)
            : base(fileName, null, type, args)
         {
