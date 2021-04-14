@@ -32,9 +32,8 @@ namespace EncompassRest.Tests
             {
                 var attachment = new LoanAttachment("Testing Attachment", "Text.txt", AttachmentCreateReason.Upload);
                 var text = "TESTING, TESTING, 1, 2, 3";
-                var attachmentId = await loan.LoanApis.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text));
+                var attachmentId = await loan.LoanApis.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text), true);
                 Assert.IsFalse(string.IsNullOrEmpty(attachmentId));
-                attachment = await loan.LoanApis.Attachments.GetAttachmentAsync(attachmentId);
                 await Task.Delay(10000);
                 var retrievedText = Encoding.UTF8.GetString(await loan.LoanApis.Attachments.DownloadAttachmentAsync(attachmentId));
                 Assert.AreEqual(text, retrievedText);
@@ -72,9 +71,8 @@ namespace EncompassRest.Tests
 
                 var newAttachment = new LoanAttachment("Bob", "Bobby.txt", AttachmentCreateReason.Upload);
                 var newText = "This is a test of the emergency broadcast system, this is only a test.";
-                var newAttachmentId = await loan.LoanApis.Attachments.UploadAttachmentAsync(newAttachment, new MemoryStream(Encoding.UTF8.GetBytes(newText)));
+                var newAttachmentId = await loan.LoanApis.Attachments.UploadAttachmentAsync(newAttachment, new MemoryStream(Encoding.UTF8.GetBytes(newText)), true);
                 Assert.IsFalse(string.IsNullOrEmpty(newAttachmentId));
-                newAttachment = await loan.LoanApis.Attachments.GetAttachmentAsync(newAttachmentId);
                 await Task.Delay(10000);
                 var newRetrievedText = Encoding.UTF8.GetString(await loan.LoanApis.Attachments.DownloadAttachmentAsync(newAttachmentId));
                 Assert.AreEqual(newText, newRetrievedText);
