@@ -10,6 +10,7 @@ namespace EncompassRest.Company.Users.Rights
     {
         private ClosingPackageManagmentDigitalClosingRights? _closingPackageManagmentDigitalClosing;
         private DirtyValue<bool?>? _closingPackageManagmentDigitalClosingValue;
+        private DirtyValue<bool?>? _configureClosingOptionsDigitalClosing;
         private OrderClosingDocsDigitalClosingRights? _orderClosingDocsDigitalClosing;
         private DirtyValue<bool?>? _orderClosingDocsDigitalClosingValue;
 
@@ -24,6 +25,11 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [JsonProperty("closingPackageManagmentDigitalClosing_")]
         public bool? ClosingPackageManagmentDigitalClosingValue { get => _closingPackageManagmentDigitalClosingValue; set => SetField(ref _closingPackageManagmentDigitalClosingValue, value); }
+
+        /// <summary>
+        /// DigitalClosingRights ConfigureClosingOptionsDigitalClosing
+        /// </summary>
+        public bool? ConfigureClosingOptionsDigitalClosing { get => _configureClosingOptionsDigitalClosing; set => SetField(ref _configureClosingOptionsDigitalClosing, value); }
 
         /// <summary>
         /// DigitalClosingRights OrderClosingDocsDigitalClosing

@@ -27,7 +27,7 @@ namespace EncompassRest.Loans.Attachments
         private DirtyValue<string?>? _createdBy;
         private DirtyValue<string?>? _createdByName;
         private DirtyValue<AttachmentCreateReason?>? _createReason;
-        private DirtyValue<AttachmentType?>? _attachmentType;
+        private DirtyValue<StringEnumValue<AttachmentType>>? _attachmentType;
         private DirtyValue<long?>? _fileSize;
         private DirtyValue<bool?>? _isActive;
         private DirtyList<PageImage>? _pages;
@@ -67,8 +67,7 @@ namespace EncompassRest.Loans.Attachments
         /// <summary>
         /// LoanAttachment AttachmentType
         /// </summary>
-        [EnumFormat(EnumFormat.DecimalValue)]
-        public AttachmentType? AttachmentType { get => _attachmentType; set => SetField(ref _attachmentType, value); }
+        public StringEnumValue<AttachmentType> AttachmentType { get => _attachmentType; set => SetField(ref _attachmentType, value); }
 
         /// <summary>
         /// The size of the image file.

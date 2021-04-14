@@ -2584,6 +2584,14 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// AdditionalTermsConditions
         /// </summary>
-        AdditionalTermsConditions = 633
+        AdditionalTermsConditions = 633,
+        /// <summary>
+        /// RateLockAgmtGuarantorName
+        /// </summary>
+        RateLockAgmtGuarantorName = 634,
+        /// <summary>
+        /// PaymentCalculationMethod
+        /// </summary>
+        PaymentCalculationMethod = 635
     }
 }

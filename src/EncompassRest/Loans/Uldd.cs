@@ -67,6 +67,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<CounselingFormatTypeOtherDescription>>? _counselingFormatTypeOtherDescription;
         private DirtyValue<StringEnumValue<CounselTypeOther>>? _counselTypeOther;
         private DirtyValue<string?>? _countryCode;
+        private DirtyValue<StringEnumValue<CreditRepositorySourceType>>? _creditRepositorySourceType;
         private DirtyValue<StringEnumValue<CreditScoreImpairmentType>>? _creditScoreImpairmentType;
         private DirtyValue<decimal?>? _currentAccruedInterestAmount;
         private DirtyValue<int?>? _delinquentPaymentsOverPastTwelveMonthsCount;
@@ -610,6 +611,11 @@ namespace EncompassRest.Loans
         /// ULDD - Country Code [ULDD.X27]
         /// </summary>
         public string? CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
+
+        /// <summary>
+        /// ULDD - Credit Repository Source Type [ULDD.X198]
+        /// </summary>
+        public StringEnumValue<CreditRepositorySourceType> CreditRepositorySourceType { get => _creditRepositorySourceType; set => SetField(ref _creditRepositorySourceType, value); }
 
         /// <summary>
         /// ULDD - Freddie Mac - Credit Score Impairment Type [ULDD.X104]
@@ -1676,7 +1682,7 @@ namespace EncompassRest.Loans
         public StringEnumValue<RefinanceCashOutDeterminationType> RefinanceCashOutDeterminationType { get => _refinanceCashOutDeterminationType; set => SetField(ref _refinanceCashOutDeterminationType, value); }
 
         /// <summary>
-        /// Related Loan Affordable Loan Indicator [ULDD.X194]
+        /// Related Loan Affordable Indicator [ULDD.X194]
         /// </summary>
         public bool? RelatedLoanAffordableIndicator { get => _relatedLoanAffordableIndicator; set => SetField(ref _relatedLoanAffordableIndicator, value); }
 
