@@ -1,0 +1,18 @@
+name: 'Test Report'
+on:
+  workflow_run:
+    workflows: ['CI']
+    types:
+      - completed
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dorny/test-reporter@v1
+        with:
+          artifact: test-results
+          name: xUnit Tests
+          path: '*.trx'
+          reporter: dotnet-trx
+          fail-on-error: false
