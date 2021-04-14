@@ -336,7 +336,7 @@ namespace EncompassApi.xUnitTests.Webhook
 
             Guid.TryParse(source, out Guid result).Should().BeTrue(because: "source is not a guid");
             source.Should()
-                .BeEqual(target, source, (t, s) =>
+                .BeEqual<WebhookSubscription, string>(target, source, (t, s) =>
                 {
                     return t.SubscriptionId.Equals(s);
                 });

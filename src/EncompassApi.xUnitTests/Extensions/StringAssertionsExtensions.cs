@@ -66,10 +66,20 @@ namespace EncompassApi.xUnitTests.Extensions
 
         }
 
-        public static AndConstraint<StringAssertions> BeEqual<TAssertion>(this StringAssertions assert,
-         TAssertion target, string source, Func<TAssertion, TAssertion, bool> isEqualFunc, bool sourceIsJson = true)
+        public static AndConstraint<StringAssertions> BeEqual<TAssertion, TSource>(this StringAssertions assert,
+         TAssertion target, string source, Func<TAssertion, TSource, bool> isEqualFunc, bool sourceIsJson = true)
         {
-            source.Should().NotBeNull(because: "Source cannot be null!").And.NotBeEmpty(because: "Source cannot be empty!");
+            source.Should().NotBeNull(because: "Source cannot be null!"); // .And.NotBeEmpty(because: "Source cannot be empty!");
+            source.Should().IsSerializable<TSource>(source, out TSource srcObj);
+            // var srcObj = Newtonsoft.Json.JsonConvert.DeserializeObject<TAssertion>(source);
+            Assert.True(isEqualFunc(target, srcObj));
+            return assert.NotBeEmpty(because: "it must not be an emoty string");
+        }
+
+        public static AndConstraint<StringAssertions> BeEqual<TAssertion>(this StringAssertions assert,
+             TAssertion target, string source, Func<TAssertion, TAssertion, bool> isEqualFunc, bool sourceIsJson = true)
+        {
+            source.Should().NotBeNull(because: "Source cannot be null!"); // .And.NotBeEmpty(because: "Source cannot be empty!");
             source.Should().IsSerializable<TAssertion>(source, out TAssertion srcObj);
             // var srcObj = Newtonsoft.Json.JsonConvert.DeserializeObject<TAssertion>(source);
             Assert.True(isEqualFunc(target, srcObj));
