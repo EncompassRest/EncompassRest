@@ -1,4 +1,4 @@
-name: Build
+name: CI
 on:
   push:
     branches:
@@ -37,3 +37,14 @@ jobs:
 
     - name: Build Solution
       run: dotnet build -c $env:CONFIGURATION -p:Version=${{ steps.gitversion.outputs.MajorMinorPatch }} -p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersionV2 }} --version-suffix ${{ steps.gitversion.outputs.PreReleaseTag }} src/EncompassApi/EncompassApi.csproj
+
+    - name: Run Tests
+      run: dotnet test src/EncompassApi.xUnitTests/EncompassApi.xUnitTests.csproj --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+      continue-on-error: true
+
+    - name: Publish Test Results
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: test-results
+        path: 'TestResults/*.trx'
