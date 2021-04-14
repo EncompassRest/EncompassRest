@@ -63,7 +63,10 @@ namespace EncompassApi.xUnitTests.Extensions
             return list;
         }
 
-       
+        public static AndConstraint<GenericCollectionAssertions<TAssertion>> BeOfType<TAssertion>(this GenericCollectionAssertions<TAssertion> assert)
+        {
+            return assert.HaveCount(0);
+        }
 
     }
 }
