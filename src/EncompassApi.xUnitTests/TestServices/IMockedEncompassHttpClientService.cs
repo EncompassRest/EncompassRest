@@ -18,5 +18,7 @@ namespace EncompassApi.xUnitTests.TestServices
         IMockedEncompassHttpClientService SetOptions(Action<Mock<IHttpClientOptions>> options);
         IMockedEncompassHttpClientService SetOptions(Mock<IHttpClientOptions> options);
         IMockedEncompassHttpClientService AddDefaultRequestHeaders();
+
+        EncompassApi.Webhook.Webhook SetWebhookApiResponseCallback(EventHandler<ApiResponseEventArgs> action);
     }
 }

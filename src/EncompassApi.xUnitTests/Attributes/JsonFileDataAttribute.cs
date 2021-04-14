@@ -67,22 +67,22 @@ namespace EncompassApi.xUnitTests
                 {
                     case JsonFileTypes.Single:
                         var allData1 = JObject.Parse(fileData);
-                        var snglObj = allData1.ToObject<object>();
                         if (_args.Count() > 0)
                             foreach (var arg in _args)
-                                rtrn1.Add(new object[] { arg, snglObj });
+                                rtrn1.Add(new object[] {testMethod.Name, arg, allData1 });
                         else
-                            rtrn1.Add(new object[] { snglObj });
+                            rtrn1.Add(new object[] { testMethod.Name, allData1 });
                         return rtrn1.AsEnumerable();
                     case JsonFileTypes.Array:
-                        var arylObj = JsonConvert.DeserializeObject<object[]>(fileData);
+                        var arylObj = JsonConvert.DeserializeObject<JObject[]>(fileData);
                         if (_args.Count() > 0)
                             foreach (var arg in _args)
-                                rtrn1.Add(new object[] { arg, arylObj });
+                                rtrn1.Add(new object[] { testMethod.Name, arg, arylObj });
                         else
-                            rtrn1.Add( arylObj );
+                            rtrn1.Add(new object[] { testMethod.Name, arylObj } );
                         return rtrn1.AsEnumerable();
                     default:
+                        rtrn1.Add(new object[] { testMethod.Name , Enumerable.Empty<object>()});
                         return rtrn1.AsEnumerable();
 
                 }
@@ -95,7 +95,7 @@ namespace EncompassApi.xUnitTests
 
         }
 
-        protected string GetFileString(string fileName, string arg = null)
+        protected virtual string GetFileString(string fileName, string arg = null)
         {
             
             var fullPath = $"Payloads/{_fileName}.{getFileSuffix(arg)}json";
