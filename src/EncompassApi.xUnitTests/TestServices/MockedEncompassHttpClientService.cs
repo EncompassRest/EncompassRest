@@ -61,6 +61,14 @@ namespace EncompassApi.xUnitTests.TestServices
             MockedEncompassClient = new EncompassApiService(MockedClient, new ClientParameters());
         }
 
+        private void _mockedEncompassClient_ApiResponse(object sender, ApiResponseEventArgs e)
+        {
+            if (MockedEncompassClient_ApiResponse != null)
+                MockedEncompassClient_ApiResponse(sender, e);
+        }
+
+        
+
         public IMockedEncompassHttpClientService SetupResponseMessage(Action<HttpResponseMessage> action, KeyValuePair<string, string>? testHeader = null)
         {
             var respMsg = new HttpResponseMessage();
@@ -76,6 +84,16 @@ namespace EncompassApi.xUnitTests.TestServices
                 .ReturnsAsync(respMsg);
             return this;
         }
+
+        public EncompassApi.Webhook.Webhook SetWebhookApiResponseCallback(EventHandler<ApiResponseEventArgs> action)
+        {
+            MockedEncompassClient.Webhook.ApiResponseEventHandler += action;
+            return MockedEncompassClient.Webhook;
+        } 
+
+
+        public event EventHandler<ApiResponseEventArgs> MockedEncompassClient_ApiResponse;
+       
     }
 
 }

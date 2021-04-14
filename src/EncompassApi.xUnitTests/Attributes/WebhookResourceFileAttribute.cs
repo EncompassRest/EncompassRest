@@ -11,6 +11,13 @@ namespace EncompassApi.xUnitTests
 {
     public class WebhookResourceFileAttribute : JsonFileDataAttribute
     {
+
+        protected WebhookResourceFileAttribute(string fileName, JsonFileTypes type, params string[] args)
+           : base(fileName, null, type, args)
+        {
+            if (type == JsonFileTypes.Array) _fileName += "s";
+        }
+
         public WebhookResourceFileAttribute(JsonFileTypes type, params string[] args)
             : base("WebhookResource", null, type, args)
         {
@@ -31,15 +38,13 @@ namespace EncompassApi.xUnitTests
                         {
                             var fileData = GetFileString(_fileName, arg);
                             var allData1 = JObject.Parse(fileData);
-                            var snglObj = allData1.ToObject<object>();
-                            rtrn1.Add(new object[] { arg, snglObj });
+                            rtrn1.Add(new object[] {testMethod.Name, arg, allData1 });
                         }
                     else
                     {
                         var fileData = GetFileString(_fileName);
                         var allData1 = JObject.Parse(fileData);
-                        var snglObj = allData1.ToObject<object>();
-                        rtrn1.Add(new object[] { snglObj });
+                        rtrn1.Add(new object[] { testMethod.Name, allData1 });
                     }
                     return rtrn1.AsEnumerable();
                 case JsonFileTypes.Array:
@@ -48,14 +53,14 @@ namespace EncompassApi.xUnitTests
                         foreach (var arg in _args)
                         {
                             var fileData = GetFileString(_fileName, arg);
-                            var arylObj = JsonConvert.DeserializeObject<object[]>(fileData);
-                            rtrn1.Add(new object[] { arg, arylObj });
+                            var arylObj = JsonConvert.DeserializeObject<JObject[]>(fileData);
+                            rtrn1.Add(new object[] {testMethod.Name, arg, arylObj });
                         }
                     else
                     {
                         var fileData = GetFileString(_fileName);
-                        var arylObj = JsonConvert.DeserializeObject<object[]>(fileData);
-                        rtrn1.Add(arylObj);
+                        var arylObj = JsonConvert.DeserializeObject<JObject[]>(fileData);
+                        rtrn1.Add(new object[] { testMethod.Name,  arylObj });
                     }
                     return rtrn1.AsEnumerable();
                 default:
