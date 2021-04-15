@@ -110,6 +110,16 @@ namespace EncompassRest.Loans.Enums
         /// Severance Package (FHA/VA)
         /// </summary>
         [Description("Severance Package (FHA/VA)")]
-        SeverancePackage = 20
+        SeverancePackage = 20,
+        /// <summary>
+        /// Lot Equity
+        /// </summary>
+        [Description("Lot Equity")]
+        LotEquity = 21,
+        /// <summary>
+        /// Relocation Funds
+        /// </summary>
+        [Description("Relocation Funds")]
+        RelocationFunds = 22
     }
 }

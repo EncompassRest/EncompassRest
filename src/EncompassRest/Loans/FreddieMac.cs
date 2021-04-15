@@ -34,6 +34,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _freddieFiel15;
         private DirtyValue<string?>? _freddieField3;
         private DirtyValue<string?>? _freddieField7;
+        private DirtyValue<string?>? _freddieMacAppraisalHybrid;
         private DirtyValue<string?>? _freddieMacOwnedMessage;
         private DirtyValue<string?>? _hELOCActualBalance;
         private DirtyValue<string?>? _hELOCCreditLimit;
@@ -227,6 +228,11 @@ namespace EncompassRest.Loans
         /// LoanBeam [CASASRN.X166]
         /// </summary>
         public string? FreddieField7 { get => _freddieField7; set => SetField(ref _freddieField7, value); }
+
+        /// <summary>
+        /// Freddie Mac Appraisal Hybrid [CASASRN.X205]
+        /// </summary>
+        public string? FreddieMacAppraisalHybrid { get => _freddieMacAppraisalHybrid; set => SetField(ref _freddieMacAppraisalHybrid, value); }
 
         /// <summary>
         /// Freddie Mac Owned Message [CASASRN.X204]

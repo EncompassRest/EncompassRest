@@ -241,7 +241,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _wireFee;
 
         /// <summary>
-        /// HELOC Agreement Ammends Restates Indicator [4671]
+        /// HELOC Agreement Amends and Restates Indicator [4671]
         /// </summary>
         public bool? AgreementAmmendsRestatesIndicator { get => _agreementAmmendsRestatesIndicator; set => SetField(ref _agreementAmmendsRestatesIndicator, value); }
 

@@ -20,9 +20,11 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?>? _loanCriteriaTab;
         private DirtyValue<bool?>? _lOCompTab;
         private DirtyValue<bool?>? _notesTab;
+        private DirtyValue<bool?>? _oNRPTab;
         private DirtyValue<bool?>? _salesRepsAETab;
         private DirtyValue<bool?>? _tPOWebCenterDocsTab;
         private DirtyValue<bool?>? _tPOWebCenterSetupTab;
+        private DirtyValue<bool?>? _tradeMgmtTab;
         private DirtyValue<bool?>? _warehouseTab;
 
         /// <summary>
@@ -87,6 +89,11 @@ namespace EncompassRest.Company.Users.Rights
         public bool? NotesTab { get => _notesTab; set => SetField(ref _notesTab, value); }
 
         /// <summary>
+        /// TPOInformationRights ONRPTab
+        /// </summary>
+        public bool? ONRPTab { get => _oNRPTab; set => SetField(ref _oNRPTab, value); }
+
+        /// <summary>
         /// TPOInformationRights SalesRepsAETab
         /// </summary>
         [JsonProperty("salesReps/AETab")]
@@ -101,6 +108,11 @@ namespace EncompassRest.Company.Users.Rights
         /// TPOInformationRights TPOWebCenterSetupTab
         /// </summary>
         public bool? TPOWebCenterSetupTab { get => _tPOWebCenterSetupTab; set => SetField(ref _tPOWebCenterSetupTab, value); }
+
+        /// <summary>
+        /// TPOInformationRights TradeMgmtTab
+        /// </summary>
+        public bool? TradeMgmtTab { get => _tradeMgmtTab; set => SetField(ref _tradeMgmtTab, value); }
 
         /// <summary>
         /// TPOInformationRights WarehouseTab

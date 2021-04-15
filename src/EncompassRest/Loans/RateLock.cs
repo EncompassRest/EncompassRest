@@ -448,6 +448,8 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _requestLockExtendPriceAdjustment;
         private DirtyValue<string?>? _requestLockStatus;
         private DirtyValue<string?>? _requestLockType;
+        private DirtyValue<string?>? _requestLockVoidComment;
+        private DirtyValue<DateTime?>? _requestLockVoidDate;
         private DirtyValue<decimal?>? _requestMarginRate;
         private DirtyValue<decimal?>? _requestMarginRateRequested;
         private DirtyValue<decimal?>? _requestMarginSRPPaidOut;
@@ -2828,6 +2830,16 @@ namespace EncompassRest.Loans
         /// Rate Lock Request Type [3841]
         /// </summary>
         public string? RequestLockType { get => _requestLockType; set => SetField(ref _requestLockType, value); }
+
+        /// <summary>
+        /// Rate Lock Request Void Lock Comment [4686]
+        /// </summary>
+        public string? RequestLockVoidComment { get => _requestLockVoidComment; set => SetField(ref _requestLockVoidComment, value); }
+
+        /// <summary>
+        /// Rate Lock Request Void Lock Date [4687]
+        /// </summary>
+        public DateTime? RequestLockVoidDate { get => _requestLockVoidDate; set => SetField(ref _requestLockVoidDate, value); }
 
         /// <summary>
         /// Rate Lock Request Base Margin Rate [2647]

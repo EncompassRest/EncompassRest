@@ -23,6 +23,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _changedCircumstanceDescription;
         private DirtyValue<string?>? _changedCircumstanceReason;
         private DirtyValue<string?>? _changedCircumstanceReasonOther;
+        private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<string?>? _id;
         private DirtyValue<DateTime?>? _revisedDueDate;
 
@@ -102,6 +103,11 @@ namespace EncompassRest.Loans
         /// Good Faith Change of Circumstance - Changed Circumstance Reason Other [XCOCNN08]
         /// </summary>
         public string? ChangedCircumstanceReasonOther { get => _changedCircumstanceReasonOther; set => SetField(ref _changedCircumstanceReasonOther, value); }
+
+        /// <summary>
+        /// AlertChangeCircumstance EntityDeleted
+        /// </summary>
+        public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
 
         /// <summary>
         /// AlertChangeCircumstance Id
