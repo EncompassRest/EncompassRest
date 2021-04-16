@@ -24,7 +24,7 @@ namespace EncompassApi.xUnitTests.Extensions
             foreach (var item in events)
             {
                 if (item.EnumValue.HasValue)
-                    yield return (WebhookResourceEvent)item.EnumValue;
+                    yield return item.EnumValue!.Value;
             }
             
         }
