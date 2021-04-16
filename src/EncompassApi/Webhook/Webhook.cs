@@ -374,6 +374,5 @@ namespace EncompassApi.Webhook
 
             return GetRawAsync($"events/{eventId}", queryString, nameof(GetEventRawAsync), eventId, cancellationToken);
         }
-
     }
 }
