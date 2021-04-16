@@ -1,0 +1,49 @@
+{
+  "description": "Encompass Loan Object",
+  "events": [
+    {
+      "name": "create"
+    },
+    {
+      "name": "update"
+    },
+    {
+      "name": "submit",
+      "extraPayload": true
+    },
+    {
+      "name": "move",
+      "extraPayload": true
+    },
+    {
+      "name": "document",
+      "extraPayload": true
+    },
+    {
+      "name": "attachment"
+    },
+    {
+      "name": "condition",
+      "extraPayload": true
+    },
+    {
+      "name": "reportingdbupdate",
+      "extraPayload": true
+    },
+    {
+      "name": "milestone",
+      "extraPayload": true
+    },
+    {
+      "name": "change"
+    },
+    {
+      "name": "lock"
+    },
+    {
+      "name": "unlock"
+    }
+  ],
+  "name": "Loan",
+  "status": "active"
+}

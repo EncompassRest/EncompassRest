@@ -5,16 +5,17 @@ using Xunit;
 using FluentAssertions;
 using EncompassApi.MessageHandlers;
 using System.Collections.Generic;
+using Xunit.Abstractions;
 
 namespace EncompassApi.xUnitTests
 {
     public class HeaderLimitFactoryTest
     {
-        private readonly ILogger<HeaderLimitFactoryTest> _logger;
+        private readonly ITestOutputHelper _outputWriter;
 
-        public HeaderLimitFactoryTest(ILogger<HeaderLimitFactoryTest> logger)
+        public HeaderLimitFactoryTest(ITestOutputHelper outputWriter)
         {
-            _logger = logger;
+            _outputWriter = outputWriter;
         }
 
         [Theory]
@@ -22,6 +23,7 @@ namespace EncompassApi.xUnitTests
         [InlineData("X-Rate-Limit-Limit", "X-Rate-Limit-Remaining")]
         public void GetRemainingLimitRatioTest(string header1, string header2)
         {
+            _outputWriter.WriteLine("### Start GetRemainingLimitRatioTest! ###");
             var mockedFactory = new Mock<HeaderLimitFactory<IHeaderLimit>>();
             mockedFactory.SetupGet(_ => _.Dic).Returns(new System.Collections.Concurrent.ConcurrentDictionary<string, IHeaderLimit>());
             
@@ -39,7 +41,6 @@ namespace EncompassApi.xUnitTests
             mockedFactory.Object.AddToDictionary(mockedHeader.Object, header2, remainingFakerNum);
             var mockedRatio = mockedFactory.Object.GetRemainingLimitRatio(mockedHeader.Object);
             mockedRatio.Should().Be(expectedValue);
-
         }
     }
 }

@@ -1,0 +1,27 @@
+[
+  {
+    "description": "Encompass TaskGroup Object",
+    "events": [
+      {
+        "name": "create",
+        "extraPayload": true
+      },
+      {
+        "name": "update",
+        "extraPayload": true
+      },
+      {
+        "name": "delete",
+        "extraPayload": true
+      }
+    ],
+    "name": "TaskGroup",
+    "status": "active"
+  },
+  {
+    "description": "Transaction corresponding to service orders, such as credit service order etc.",
+    "events": [ { "name": "update" } ],
+    "name": "Transaction",
+    "status": "active"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "create",
+    "extraPayload": true
+  },
+  {
+    "name": "update",
+    "extraPayload": true
+  },
+  {
+    "name": "delete",
+    "extraPayload": true
+  }
+]
