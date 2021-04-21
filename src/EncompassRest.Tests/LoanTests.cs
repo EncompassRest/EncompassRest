@@ -2056,7 +2056,7 @@ namespace EncompassRest.Tests
             try
             {
                 var loan = new Loan(client, loanId);
-                loan.Fields["101"].Value = 500;
+                loan.Fields["FE0119"].Value = 500;
 
                 await client.Loans.UpdateLoanAsync(loan);
 
