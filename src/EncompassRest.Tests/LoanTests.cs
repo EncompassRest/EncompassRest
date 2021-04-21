@@ -2062,7 +2062,7 @@ namespace EncompassRest.Tests
 
                 loan = await client.Loans.GetLoanAsync(loanId);
 
-                Assert.AreEqual(500M, loan.Fields["BE0119"].Value);
+                Assert.AreEqual(500M, loan.Fields["101"].Value);
             }
             finally
             {
