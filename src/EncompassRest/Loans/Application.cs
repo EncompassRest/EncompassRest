@@ -152,6 +152,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _otherTotalIncome;
         private DirtyValue<StringEnumValue<PastCreditRecord>>? _pastCreditRecord;
         private DirtyValue<decimal?>? _presentHousingExpComortSet;
+        private DirtyValue<decimal?>? _presentSupplementalPropertyInsuranceAmount;
         private DirtyValue<decimal?>? _primaryResidenceComortSet;
         private DirtyValue<StringEnumValue<PropertyUsageType>>? _propertyUsageType;
         private DirtyValue<string?>? _proposedDuesAmount;
@@ -1004,6 +1005,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public decimal? PresentHousingExpComortSet { get => _presentHousingExpComortSet; set => SetField(ref _presentHousingExpComortSet, value); }
+
+        /// <summary>
+        /// Present Supplemental Property Insurance Amount [URLA.X212]
+        /// </summary>
+        public decimal? PresentSupplementalPropertyInsuranceAmount { get => _presentSupplementalPropertyInsuranceAmount; set => SetField(ref _presentSupplementalPropertyInsuranceAmount, value); }
 
         /// <summary>
         /// Underwriting Co-Mortgagor Primary Exp [1379]

@@ -928,6 +928,10 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CorrOtherInsurance
         /// </summary>
-        CorrOtherInsurance = 232
+        CorrOtherInsurance = 232,
+        /// <summary>
+        /// LockVoidLog
+        /// </summary>
+        LockVoidLog = 233
     }
 }

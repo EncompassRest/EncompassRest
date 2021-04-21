@@ -9,6 +9,7 @@ namespace EncompassRest.Company.Users.Rights
     {
         private DirtyValue<bool?>? _activateDeactivateConditions;
         private DirtyValue<bool?>? _addEditCopyConditions;
+        private DirtyValue<bool?>? _aDR;
         private DirtyValue<bool?>? _conditions;
         private DirtyValue<bool?>? _conditionSets;
         private DirtyValue<bool?>? _conditionTypeSettings;
@@ -39,6 +40,11 @@ namespace EncompassRest.Company.Users.Rights
         /// EFolderSetupRights AddEditCopyConditions
         /// </summary>
         public bool? AddEditCopyConditions { get => _addEditCopyConditions; set => SetField(ref _addEditCopyConditions, value); }
+
+        /// <summary>
+        /// EFolderSetupRights ADR
+        /// </summary>
+        public bool? ADR { get => _aDR; set => SetField(ref _aDR, value); }
 
         /// <summary>
         /// EFolderSetupRights Conditions

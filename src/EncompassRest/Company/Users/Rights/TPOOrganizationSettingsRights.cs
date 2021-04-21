@@ -20,11 +20,13 @@ namespace EncompassRest.Company.Users.Rights
         private LoanCriteriaRights? _loanCriteria;
         private LOCompRights? _lOComp;
         private NotesRights? _notes;
+        private ONRPRights? _oNRP;
         private SalesRepsAERights? _salesRepsAE;
         private TPOOrganizationSettingsContactsRights? _tPOContacts;
         private TPOWebCenterDocumentsTabRights? _tPOWebCenterDocumentsTab;
         private TPOWebCenterSetupRights? _tPOWebCenterSetup;
         private DirtyValue<bool?>? _tPOWebCenterSiteManagement;
+        private TradeMgmtRights? _tradeMgmt;
         private WarehouseTabRights? _warehouseTab;
 
         /// <summary>
@@ -103,6 +105,12 @@ namespace EncompassRest.Company.Users.Rights
         public NotesRights Notes { get => GetField(ref _notes); set => SetField(ref _notes, value); }
 
         /// <summary>
+        /// TPOOrganizationSettingsRights ONRP
+        /// </summary>
+        [AllowNull]
+        public ONRPRights ONRP { get => GetField(ref _oNRP); set => SetField(ref _oNRP, value); }
+
+        /// <summary>
         /// TPOOrganizationSettingsRights SalesRepsAE
         /// </summary>
         [JsonProperty("salesReps/AE")]
@@ -131,6 +139,12 @@ namespace EncompassRest.Company.Users.Rights
         /// TPOOrganizationSettingsRights TPOWebCenterSiteManagement
         /// </summary>
         public bool? TPOWebCenterSiteManagement { get => _tPOWebCenterSiteManagement; set => SetField(ref _tPOWebCenterSiteManagement, value); }
+
+        /// <summary>
+        /// TPOOrganizationSettingsRights TradeMgmt
+        /// </summary>
+        [AllowNull]
+        public TradeMgmtRights TradeMgmt { get => GetField(ref _tradeMgmt); set => SetField(ref _tradeMgmt, value); }
 
         /// <summary>
         /// TPOOrganizationSettingsRights WarehouseTab

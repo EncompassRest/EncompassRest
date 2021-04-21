@@ -250,6 +250,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _housingRatio;
         private DirtyValue<string?>? _id;
         private DirtyValue<decimal?>? _ieadInitialDeposit;
+        private DirtyValue<bool?>? _includesWallsIn;
         private DirtyValue<bool?>? _includesWindOrHail;
         private DirtyValue<string?>? _incomeType;
         private DirtyValue<string?>? _indexType;
@@ -258,6 +259,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _initialSuspenseDate;
         private DirtyValue<DateTime?>? _initialTilDisclosureProvidedDate;
         private DirtyValue<DateTime?>? _initialTilDisclosureReceivedDate;
+        private DirtyValue<string?>? _insuranceType;
         private DirtyValue<bool?>? _isAdditionalInsurance;
         private DirtyValue<bool?>? _isFloodInsurance;
         private DirtyValue<bool?>? _isHazardIncludedMasterPolicy;
@@ -290,6 +292,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _lFSCalculateAs;
         private DirtyValue<int?>? _lFSDayCleared;
         private DirtyValue<string?>? _lFSDayClearedOtherDate;
+        private DirtyValue<string?>? _lfsDayClearedOtherDateDescription;
         private DirtyValue<string?>? _lFSDayClearedOtherDateValue;
         private DirtyValue<int?>? _lFSFeeHandledAs;
         private DirtyValue<int?>? _lFSGracePeriodCalendar;
@@ -433,6 +436,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _receivedDate;
         private DirtyValue<int?>? _recoupmentNumberOfMonths;
         private DirtyValue<bool?>? _reducedMiIndicator;
+        private DirtyValue<StringEnumValue<CorrespondentRefinanceType>>? _refinanceType;
         private DirtyValue<bool?>? _refundUnearnedMipIndicator;
         private DirtyValue<DateTime?>? _rejectedDate;
         private DirtyValue<bool?>? _renovation;
@@ -1739,6 +1743,11 @@ namespace EncompassRest.Loans
         public decimal? IeadInitialDeposit { get => _ieadInitialDeposit; set => SetField(ref _ieadInitialDeposit, value); }
 
         /// <summary>
+        /// Correspondent Includes Walls In [CORRESPONDENT.X502]
+        /// </summary>
+        public bool? IncludesWallsIn { get => _includesWallsIn; set => SetField(ref _includesWallsIn, value); }
+
+        /// <summary>
         /// Correspondent - Includes Wind/Hail [CORRESPONDENT.X478]
         /// </summary>
         public bool? IncludesWindOrHail { get => _includesWindOrHail; set => SetField(ref _includesWindOrHail, value); }
@@ -1779,6 +1788,11 @@ namespace EncompassRest.Loans
         /// Correspondent TIL Intl TIL Disclosure Rcvd Date [CORRESPONDENT.X22]
         /// </summary>
         public DateTime? InitialTilDisclosureReceivedDate { get => _initialTilDisclosureReceivedDate; set => SetField(ref _initialTilDisclosureReceivedDate, value); }
+
+        /// <summary>
+        /// Correspondent Insurance Type [CORRESPONDENT.X501]
+        /// </summary>
+        public string? InsuranceType { get => _insuranceType; set => SetField(ref _insuranceType, value); }
 
         /// <summary>
         /// Correspondent Additional Insurance included [CORRESPONDENT.X217]
@@ -1944,6 +1958,11 @@ namespace EncompassRest.Loans
         /// Correspondent Loan Status - External Late Fee Settings - DayClearedOtherDate [LATEFEESETTING.X13]
         /// </summary>
         public string? LFSDayClearedOtherDate { get => _lFSDayClearedOtherDate; set => SetField(ref _lFSDayClearedOtherDate, value); }
+
+        /// <summary>
+        /// Correspondent Loan Status - External Late Fee Settings - DayClearedOtherDate Description [LATEFEESETTING.X18]
+        /// </summary>
+        public string? LfsDayClearedOtherDateDescription { get => _lfsDayClearedOtherDateDescription; set => SetField(ref _lfsDayClearedOtherDateDescription, value); }
 
         /// <summary>
         /// Correspondent Loan Status - External Late Fee Settings - DayClearedOtherDate Value [LATEFEESETTING.X15]
@@ -2676,6 +2695,11 @@ namespace EncompassRest.Loans
         /// Correspondent Reduced MI Indicator [CORRESPONDENT.X312]
         /// </summary>
         public bool? ReducedMiIndicator { get => _reducedMiIndicator; set => SetField(ref _reducedMiIndicator, value); }
+
+        /// <summary>
+        /// Correspondent Refinance Type [CORRESPONDENT.X503]
+        /// </summary>
+        public StringEnumValue<CorrespondentRefinanceType> RefinanceType { get => _refinanceType; set => SetField(ref _refinanceType, value); }
 
         /// <summary>
         /// Correspondent Refund prorated unearned Up Front MI Premiums [CORRESPONDENT.X15]

@@ -329,7 +329,6 @@ namespace EncompassRest.Loans
         private DirtyList<PreliminaryConditionLog>? _preliminaryConditionLogs;
         private DirtyValue<bool?>? _prepaymentPenaltyTerm;
         private Prequalification? _prequalification;
-        private DirtyValue<decimal?>? _presentSupplementalPropertyInsuranceAmount;
         private DirtyValue<decimal?>? _principalAndInterestMonthlyPaymentAmount;
         private DirtyValue<StringEnumValue<Print2003Application>>? _print2003Application;
         private DirtyValue<bool?>? _printLenderPages;
@@ -472,6 +471,7 @@ namespace EncompassRest.Loans
         private DirtyList<VerificationLog>? _verificationLogs;
         private DirtyDictionary<string, string?>? _virtualFields;
         private DirtyValue<string?>? _websiteId;
+        private DirtyValue<string?>? _workFlowId;
 
         /// <summary>
         /// 4b. Other New Mortgage Loans on the Property You are Buying or Refinancing Does not Apply [URLA.X237]
@@ -2227,11 +2227,6 @@ namespace EncompassRest.Loans
         public Prequalification Prequalification { get => GetField(ref _prequalification); set => SetField(ref _prequalification, value); }
 
         /// <summary>
-        /// Present Supplemental Property Insurance Amount [URLA.X212]
-        /// </summary>
-        public decimal? PresentSupplementalPropertyInsuranceAmount { get => _presentSupplementalPropertyInsuranceAmount; set => SetField(ref _presentSupplementalPropertyInsuranceAmount, value); }
-
-        /// <summary>
         /// Trans Details Mo Pymt (P&amp;I) [5]
         /// </summary>
         public decimal? PrincipalAndInterestMonthlyPaymentAmount { get => _principalAndInterestMonthlyPaymentAmount; set => SetField(ref _principalAndInterestMonthlyPaymentAmount, value); }
@@ -3000,5 +2995,10 @@ namespace EncompassRest.Loans
         /// Website ID [WEBSITEID]
         /// </summary>
         public string? WebsiteId { get => _websiteId; set => SetField(ref _websiteId, value); }
+
+        /// <summary>
+        /// Loan Workflow Id [4685]
+        /// </summary>
+        public string? WorkFlowId { get => _workFlowId; set => SetField(ref _workFlowId, value); }
     }
 }

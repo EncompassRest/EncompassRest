@@ -101,7 +101,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _totalToleranceIncreaseAmount;
 
         /// <summary>
-        /// Years Until Balloon Pymt Due [NEWHUD.X348]
+        /// Years/Months Until Balloon Pymt Due [NEWHUD.X348]
         /// </summary>
         public int? BalloonPaymentDueInYears { get => _balloonPaymentDueInYears; set => SetField(ref _balloonPaymentDueInYears, value); }
 

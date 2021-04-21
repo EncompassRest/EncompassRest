@@ -13,6 +13,7 @@ namespace EncompassRest.Company.Users.Rights
         private DirtyValue<bool?>? _creditReport;
         private DirtyValue<bool?>? _customLinks;
         private DirtyValue<bool?>? _docPreparation;
+        private DirtyValue<bool?>? _dueDiligence;
         private DirtyValue<bool?>? _floodCertification;
         private DirtyValue<bool?>? _fraudAuditServices;
         private DirtyValue<bool?>? _hMDAManagement;
@@ -59,6 +60,12 @@ namespace EncompassRest.Company.Users.Rights
         /// </summary>
         [JsonProperty("doc Preparation")]
         public bool? DocPreparation { get => _docPreparation; set => SetField(ref _docPreparation, value); }
+
+        /// <summary>
+        /// EllieMaeNetworkServiceCategoriesClassRights DueDiligence
+        /// </summary>
+        [JsonProperty("due Diligence")]
+        public bool? DueDiligence { get => _dueDiligence; set => SetField(ref _dueDiligence, value); }
 
         /// <summary>
         /// EllieMaeNetworkServiceCategoriesClassRights FloodCertification

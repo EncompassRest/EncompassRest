@@ -196,6 +196,16 @@ namespace EncompassRest.Webhook
         /// formsdeliveryfailed
         /// </summary>
         [EnumMember(Value = "formsdeliveryfailed")]
-        FormsDeliveryFailed = 37
+        FormsDeliveryFailed = 37,
+        /// <summary>
+        /// openingappenddocumentssucceeded
+        /// </summary>
+        [EnumMember(Value = "openingappenddocumentssucceeded")]
+        OpeningAppendDocumentsSucceeded = 38,
+        /// <summary>
+        /// openingappenddocumentsfailed
+        /// </summary>
+        [EnumMember(Value = "openingappenddocumentsfailed")]
+        OpeningAppendDocumentsFailed = 39
     }
 }

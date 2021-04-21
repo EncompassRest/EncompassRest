@@ -9,6 +9,7 @@ namespace EncompassRest.Loans
     public sealed partial class LoanEstimate1 : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<TermType>>? _adjustsTermType;
+        private DirtyValue<StringEnumValue<MonthOrYear>>? _balloonPaymentDueInTermLabel;
         private DirtyValue<string?>? _changedCircumstanceComments;
         private DirtyValue<DateTime?>? _closingCostEstimateExpirationDate;
         private DirtyValue<string?>? _closingCostEstimateExpirationDateUI;
@@ -35,6 +36,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _inEscrowPropertyTaxes;
         private DirtyValue<decimal?>? _initialMonthlyPaymentFor10000Loan;
         private DirtyValue<decimal?>? _initialMonthlyPaymentFor60000Loan;
+        private DirtyValue<StringEnumValue<MonthOrYear>>? _interestRateAdjTermLabel;
         private DirtyValue<string?>? _interestRateAdjustsEveryYears;
         private DirtyValue<int?>? _interestRateAdjustsInYear;
         private DirtyValue<StringEnumValue<MonthOrYear>>? _interestRateAdjustsStartingInType;
@@ -144,6 +146,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(MissingOptionsJson = "[\"Month\"]")]
         public StringEnumValue<TermType> AdjustsTermType { get => _adjustsTermType; set => SetField(ref _adjustsTermType, value); }
+
+        /// <summary>
+        /// Balloon Payment Period [LE1.X98]
+        /// </summary>
+        public StringEnumValue<MonthOrYear> BalloonPaymentDueInTermLabel { get => _balloonPaymentDueInTermLabel; set => SetField(ref _balloonPaymentDueInTermLabel, value); }
 
         /// <summary>
         /// Comments [LE1.X86]
@@ -277,12 +284,17 @@ namespace EncompassRest.Loans
         public decimal? InitialMonthlyPaymentFor60000Loan { get => _initialMonthlyPaymentFor60000Loan; set => SetField(ref _initialMonthlyPaymentFor60000Loan, value); }
 
         /// <summary>
+        /// Maximum Interest Period [LE1.X99]
+        /// </summary>
+        public StringEnumValue<MonthOrYear> InterestRateAdjTermLabel { get => _interestRateAdjTermLabel; set => SetField(ref _interestRateAdjTermLabel, value); }
+
+        /// <summary>
         /// Loan Estimate - Interest Rate will Adjusts Every [LE1.X13]
         /// </summary>
         public string? InterestRateAdjustsEveryYears { get => _interestRateAdjustsEveryYears; set => SetField(ref _interestRateAdjustsEveryYears, value); }
 
         /// <summary>
-        /// Loan Estimate - Interest Rate Will be Adjusted in Year [LE1.X18]
+        /// Loan Estimate - Interest Rate Will be Adjusted in Year/Month [LE1.X18]
         /// </summary>
         public int? InterestRateAdjustsInYear { get => _interestRateAdjustsInYear; set => SetField(ref _interestRateAdjustsInYear, value); }
 
