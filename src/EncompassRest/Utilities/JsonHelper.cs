@@ -413,14 +413,22 @@ namespace EncompassRest.Utilities
                 if (member is PropertyInfo propertyInfo)
                 {
                     var propertyType = propertyInfo.PropertyType;
-                    var propertyTypeInfo = propertyType.GetTypeInfo();
-                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition)
+                    if (propertyType == TypeData<StringDecimalValue>.Type)
                     {
-                        var genericTypeDefinition = propertyTypeInfo.GetGenericTypeDefinition();
-                        if (genericTypeDefinition == TypeData.OpenStringEnumValueType || genericTypeDefinition == TypeData.OpenNaType)
+                        var propertyContract = ResolveContract(propertyType);
+                        valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter);
+                    }
+                    else
+                    {
+                        var propertyTypeInfo = propertyType.GetTypeInfo();
+                        if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition)
                         {
-                            var propertyContract = ResolveContract(propertyType);
-                            valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter);
+                            var genericTypeDefinition = propertyTypeInfo.GetGenericTypeDefinition();
+                            if (genericTypeDefinition == TypeData.OpenStringEnumValueType || genericTypeDefinition == TypeData.OpenNaType)
+                            {
+                                var propertyContract = ResolveContract(propertyType);
+                                valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter);
+                            }
                         }
                     }
                 }
@@ -438,7 +446,7 @@ namespace EncompassRest.Utilities
                 });
             }
 
-            // Required for proper serialization of StringEnumValue and NA
+            // Required for proper serialization of StringEnumValue, NA, and StringDecimalValue
             private class StringValueProvider : IValueProvider
             {
                 private readonly IValueProvider _valueProvider;

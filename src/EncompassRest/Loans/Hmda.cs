@@ -24,7 +24,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<BusinessOrCommercialPurpose>>? _businessOrCommercialPurpose;
         private DirtyValue<bool?>? _cDRequired;
         private DirtyValue<string?>? _censusTrack;
-        private DirtyValue<NA<decimal>>? _cLTV;
+        private DirtyValue<StringDecimalValue>? _cLTV;
         private DirtyValue<string?>? _contactEmailAddress;
         private DirtyValue<string?>? _contactFaxNumber;
         private DirtyValue<string?>? _contactName;
@@ -34,12 +34,12 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _contactOfficeZIPCode;
         private DirtyValue<string?>? _contactPhoneNumber;
         private DirtyValue<string?>? _countyCode;
-        private DirtyValue<NA<decimal>>? _debtToIncomeRatio;
+        private DirtyValue<StringDecimalValue>? _debtToIncomeRatio;
         private DirtyValue<StringEnumValue<DenialReason>>? _denialReason1;
         private DirtyValue<StringEnumValue<DenialReason>>? _denialReason2;
         private DirtyValue<StringEnumValue<DenialReason>>? _denialReason3;
         private DirtyValue<StringEnumValue<DenialReason>>? _denialReason4;
-        private DirtyValue<NA<decimal>>? _discountPoints;
+        private DirtyValue<StringDecimalValue>? _discountPoints;
         private DirtyValue<bool?>? _excludeLoanFromHMDAReportIndicator;
         private DirtyValue<StringEnumValue<FederalAgency>>? _federalAgency;
         private DirtyValue<string?>? _federalTaxpayerIdNumber;
@@ -68,12 +68,12 @@ namespace EncompassRest.Loans
         private DirtyValue<NA<decimal>>? _income;
         private DirtyValue<decimal?>? _incomeExcludedFromHmda;
         private DirtyValue<StringEnumValue<InitiallyPayableToYourInstitution>>? _initiallyPayableToYourInstitution;
-        private DirtyValue<NA<decimal>>? _interestRate;
+        private DirtyValue<StringDecimalValue>? _interestRate;
         private DirtyValue<string?>? _introRatePeriod;
         private DirtyValue<string?>? _legalEntityIdentifier;
         private DirtyValue<string?>? _legalEntityIdentifierReporting;
         private DirtyValue<StringEnumValue<LegalEntityIdentifierUsed>>? _legalEntityIdentifierUsed;
-        private DirtyValue<NA<decimal>>? _lenderCredits;
+        private DirtyValue<StringDecimalValue>? _lenderCredits;
         private DirtyValue<StringEnumValue<LienStatus>>? _lienStatus;
         private DirtyValue<decimal?>? _loanAmount;
         private DirtyValue<StringEnumValue<YNOrExempt>>? _loanBalanceRiseIndicator;
@@ -100,9 +100,9 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<Preapprovals>>? _preapprovals;
         private DirtyValue<string?>? _prepaymentPenaltyPeriod;
         private DirtyValue<StringEnumValue<HmdaPropertyType>>? _propertyType;
-        private DirtyValue<NA<decimal>>? _propertyValue;
+        private DirtyValue<StringDecimalValue>? _propertyValue;
         private DirtyValue<StringEnumValue<QMStatus>>? _qMStatus;
-        private DirtyValue<NA<decimal>>? _rateSpread;
+        private DirtyValue<StringDecimalValue>? _rateSpread;
         private DirtyValue<int?>? _reportingYear;
         private DirtyValue<bool?>? _reportPurposeOfLoanIndicator;
         private DirtyValue<string?>? _repurchasedActionDate;
@@ -210,7 +210,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CLTV [HMDA.X37]
         /// </summary>
-        public NA<decimal> CLTV { get => _cLTV; set => SetField(ref _cLTV, value); }
+        public StringDecimalValue CLTV { get => _cLTV; set => SetField(ref _cLTV, value); }
 
         /// <summary>
         /// HMDA Contact Person Email [HMDA.X62]
@@ -262,7 +262,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Debt to Income Ratio [HMDA.X36]
         /// </summary>
-        public NA<decimal> DebtToIncomeRatio { get => _debtToIncomeRatio; set => SetField(ref _debtToIncomeRatio, value); }
+        public StringDecimalValue DebtToIncomeRatio { get => _debtToIncomeRatio; set => SetField(ref _debtToIncomeRatio, value); }
 
         /// <summary>
         /// Denial Reason 1 [HMDA.X21]
@@ -290,7 +290,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Discount Points [HMDA.X35]
         /// </summary>
-        public NA<decimal> DiscountPoints { get => _discountPoints; set => SetField(ref _discountPoints, value); }
+        public StringDecimalValue DiscountPoints { get => _discountPoints; set => SetField(ref _discountPoints, value); }
 
         /// <summary>
         /// Subject Property Exclude from HMDA Report [HMDA.X24]
@@ -446,7 +446,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Interest Rate [HMDA.X81]
         /// </summary>
-        public NA<decimal> InterestRate { get => _interestRate; set => SetField(ref _interestRate, value); }
+        public StringDecimalValue InterestRate { get => _interestRate; set => SetField(ref _interestRate, value); }
 
         /// <summary>
         /// Intro Rate Period [HMDA.X84]
@@ -471,7 +471,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lender Credits [HMDA.X80]
         /// </summary>
-        public NA<decimal> LenderCredits { get => _lenderCredits; set => SetField(ref _lenderCredits, value); }
+        public StringDecimalValue LenderCredits { get => _lenderCredits; set => SetField(ref _lenderCredits, value); }
 
         /// <summary>
         /// Trans Details Lien Status [HMDA.X14]
@@ -608,7 +608,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Property Value [HMDA.X85]
         /// </summary>
-        public NA<decimal> PropertyValue { get => _propertyValue; set => SetField(ref _propertyValue, value); }
+        public StringDecimalValue PropertyValue { get => _propertyValue; set => SetField(ref _propertyValue, value); }
 
         /// <summary>
         /// QM Status [HMDA.X26]
@@ -618,7 +618,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Rate Spread [HMDA.X15]
         /// </summary>
-        public NA<decimal> RateSpread { get => _rateSpread; set => SetField(ref _rateSpread, value); }
+        public StringDecimalValue RateSpread { get => _rateSpread; set => SetField(ref _rateSpread, value); }
 
         /// <summary>
         /// HMDA Reporting Year [HMDA.X27]
