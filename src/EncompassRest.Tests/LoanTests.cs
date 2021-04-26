@@ -2056,13 +2056,13 @@ namespace EncompassRest.Tests
             try
             {
                 var loan = new Loan(client, loanId);
-                loan.Fields["BE0119"].Value = 500;
+                loan.Fields["FE0119"].Value = 500;
 
                 await client.Loans.UpdateLoanAsync(loan);
 
                 loan = await client.Loans.GetLoanAsync(loanId);
 
-                Assert.AreEqual(500M, loan.Fields["BE0119"].Value);
+                Assert.AreEqual(500M, loan.Fields["101"].Value);
             }
             finally
             {
