@@ -40,6 +40,18 @@ namespace EncompassApi.FuncApp.Configuration
             };
         }
 
+        public static BaseHttpClientOptions GetEncompassClientOptions()
+        {
+            return new BaseHttpClientOptions
+            {
+                BaseUrl = GetStringValue("EncompassClient:BaseUrl"),
+                ClientName = GetStringValue("EncompassClient:ClientName"),
+                Retry = GetBoolValue("EncompassClient:Retry", true),
+                RetryCount = GetIntValue("EncompassClient:RetryCount", 3),
+                TimeoutInSeconds = GetIntValue("EncompassClient:TimeoutInSeconds", 30)
+            };
+        }
+
         private static string GetStringValue(string name)
         {
             return Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);

@@ -43,6 +43,12 @@ namespace EncompassApi.FuncApp
 
             builder.Services.AddLogging(p => p.AddSerilog(logger));
 
+            AddClientWithEncompassTokenHandlerandInterceptor(builder);
+                   
+        }
+
+        private void AddClientWithEncompassTokenHandlerandInterceptor(IFunctionsHostBuilder builder)
+        {
             var encompassTokenClientOptions = ConfigHelper.GetEncompassTokenClientOptions();
 
             var clientParameters = new ClientParameters
@@ -55,8 +61,8 @@ namespace EncompassApi.FuncApp
 
             var headers = new EncompassHttpResponseHeaderLoggerOptions();
             headers.AddRange("X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset");
-            
-            
+
+
             var encompassIOptions = Options.Create(encompassTokenClientOptions);
 
             builder.Services.AddSingleton(clientParameters);
@@ -77,13 +83,57 @@ namespace EncompassApi.FuncApp
                 options.TokenClientOptions = encompassTokenClientOptions;
                 options.EncompassHttpResponseHeaderLoggerOptions = headers;
             },
-            config => config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl) )
+            config => config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl))
                 .AddEncompassTokenMessageHandler()
                 .AddEncompassHttpResponseHeaderLoggingHandler()
-                //.AddEncompassMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
+                .AddEncompassMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
                 .AddEncompassRetryPolicyHandler()
                 .AddEncompassTimeoutPolicyHandler()
-                .Build(builder.Services);            
+                .Build(builder.Services);
+        }
+
+        private void AddClientWithFairwayTokenHandlerandInterceptor(IFunctionsHostBuilder builder)
+        {
+            var fairwayTokenClientOptions = ConfigHelper.GetFairwayTokenClientOptions();
+            var encompassClientOptions = ConfigHelper.GetEncompassClientOptions();
+
+            var clientParameters = new ClientParameters
+            {
+                ApiClientId = fairwayTokenClientOptions.ClientId,
+                ApiClientSecret = fairwayTokenClientOptions.ClientSecret
+            };
+
+            clientParameters.CustomFieldsCacheInitialization = EncompassApi.CacheInitialization.Never;
+
+            var headers = new EncompassHttpResponseHeaderLoggerOptions();
+            headers.AddRange("X-Concurrency-Limit-Limit", "X-Concurrency-Limit-Remaining", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset");
+
+            var fairwayIOptions = Options.Create(fairwayTokenClientOptions);
+
+            builder.Services.AddSingleton(clientParameters);
+            builder.Services.AddSingleton(fairwayIOptions);
+
+            builder.Services.AddFairwayTokenHandler(fairwayTokenClientOptions)
+                .AddPolicyHandler(HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(fairwayTokenClientOptions.RetryCount))
+                .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(fairwayTokenClientOptions.TimeoutInSeconds));
+
+            builder.Services.AddEncompassHttpClient(options =>
+            {
+                options.CompressionOptions = new HttpClientCompressionHandlerOptions()
+                {
+                    DecompressionMethods = new DecompressionMethods[] { DecompressionMethods.GZip },
+                    EnableAutoDecompression = true
+                };
+                options.ClientParameters = clientParameters;
+                options.EncompassHttpResponseHeaderLoggerOptions = headers;
+            },
+            config => config.BaseAddress = new Uri(encompassClientOptions.BaseUrl))
+                .AddEncompassTokenMessageHandler()
+                .AddEncompassHttpResponseHeaderLoggingHandler()
+                .AddEncompassMessageHandler(sp => new AuthHeaderInterceptorHandler(sp.GetService<ILogger<AuthHeaderInterceptorHandler>>()))
+                .AddEncompassRetryPolicyHandler()
+                .AddEncompassTimeoutPolicyHandler()
+                .Build(builder.Services);
         }
     }
 }
