@@ -43,7 +43,7 @@ namespace EncompassApi.FuncApp
 
             builder.Services.AddLogging(p => p.AddSerilog(logger));
 
-            AddClientWithEncompassTokenHandlerandInterceptor(builder);
+            AddClientWithFairwayTokenHandlerandInterceptor(builder);
                    
         }
 
@@ -80,7 +80,7 @@ namespace EncompassApi.FuncApp
                     EnableAutoDecompression = true
                 };
                 options.ClientParameters = clientParameters;
-                options.TokenClientOptions = encompassTokenClientOptions;
+                options.EncompassClientOptions = encompassTokenClientOptions;
                 options.EncompassHttpResponseHeaderLoggerOptions = headers;
             },
             config => config.BaseAddress = new Uri(encompassTokenClientOptions.BaseUrl))
@@ -126,6 +126,7 @@ namespace EncompassApi.FuncApp
                 };
                 options.ClientParameters = clientParameters;
                 options.EncompassHttpResponseHeaderLoggerOptions = headers;
+                options.EncompassClientOptions = encompassClientOptions;
             },
             config => config.BaseAddress = new Uri(encompassClientOptions.BaseUrl))
                 .AddEncompassTokenMessageHandler()

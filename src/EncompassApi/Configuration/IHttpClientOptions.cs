@@ -5,6 +5,6 @@
         ClientParameters ClientParameters { get; set; }
         HttpClientCompressionHandlerOptions CompressionOptions { get; set; }
         EncompassHttpResponseHeaderLoggerOptions EncompassHttpResponseHeaderLoggerOptions { get; set; }
-        BaseHttpClientOptions TokenClientOptions { get; set; }
+        BaseHttpClientOptions EncompassClientOptions { get; set; }
     }
 }
