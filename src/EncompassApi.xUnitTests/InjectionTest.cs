@@ -6,20 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 using Xunit.DependencyInjection.Logging;
 
 namespace EncompassApi.xUnitTests
 {
     public class InjectionTest
     {
-        private readonly ILogger<InjectionTest> _logger;
+        private readonly ITestOutputHelper _outputWriter;
 
         public ITestDependencycs _testService { get; }
 
-        public InjectionTest(ILogger<InjectionTest> logger, TestServices.ITestDependencycs testDependencycs) 
+        private readonly ILogger<InjectionTest> _logger;
+
+        public InjectionTest(ITestOutputHelper outputWriter, ILogger<InjectionTest> logger, TestServices.ITestDependencycs testDependencycs) 
         {
-            _logger = logger;
+            _outputWriter = outputWriter;
             _testService = testDependencycs;
+            _logger = logger;
         }
 
         [Fact]
@@ -29,6 +33,7 @@ namespace EncompassApi.xUnitTests
             _logger.LogDebug("LogDebug");
             _logger.LogInformation("LogInformation");
             _logger.LogError("LogError");
+            _outputWriter.WriteLine("Test completed!");
             Assert.Equal( 5, result);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassApi.Extensions;
@@ -199,6 +200,13 @@ namespace EncompassApi.Webhook
         internal Webhook(IEncompassApiClient client)
             : base(client, "webhook/v1")
         {
+        }
+
+        public event EventHandler<ApiResponseEventArgs> ApiResponseEventHandler;
+        internal override void ApiResponse(HttpResponseMessage response)
+        {
+            if (ApiResponseEventHandler != null)
+                ApiResponseEventHandler(null, new ApiResponseEventArgs(response));
         }
 
         /// <inheritdoc/>
