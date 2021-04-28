@@ -33,10 +33,22 @@ namespace EncompassApi.FuncApp.Configuration
                 ClientId = GetStringValue("FairwayTokenClient:ClientId"),
                 ClientName = GetStringValue("FairwayTokenClient:ClientName"),
                 ClientSecret = GetStringValue("FairwayTokenClient:ClientSecret"),
-                HostKey = GetStringValue("w9SojZeo2TLvE7aXadnyUJ9aoP1RZJjT8JjG3oE7jDwqCPxYar9C4g=="),
+                HostKey = GetStringValue("FairwayTokenClient:HostKey"),
                 Retry = GetBoolValue("FairwayTokenClient:Retry", true),
                 RetryCount = GetIntValue("FairwayTokenClient:RetryCount", 3),
                 TimeoutInSeconds = GetIntValue("FairwayTokenClient:TimeoutInSeconds", 30)
+            };
+        }
+
+        public static BaseHttpClientOptions GetEncompassClientOptions()
+        {
+            return new BaseHttpClientOptions
+            {
+                BaseUrl = GetStringValue("EncompassClient:BaseUrl"),
+                ClientName = GetStringValue("EncompassClient:ClientName"),
+                Retry = GetBoolValue("EncompassClient:Retry", true),
+                RetryCount = GetIntValue("EncompassClient:RetryCount", 3),
+                TimeoutInSeconds = GetIntValue("EncompassClient:TimeoutInSeconds", 30)
             };
         }
 

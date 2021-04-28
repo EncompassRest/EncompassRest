@@ -59,7 +59,7 @@ namespace EncompassApi.Extensions
 
         public EncompassHttpClientBuilder AddEncompassRetryPolicyHandler()
         {
-            var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(_options.TokenClientOptions.RetryCount);
+            var retryPolicy = HttpPolicyExtensions.HandleTransientHttpError().RetryAsync(_options.EncompassClientOptions.RetryCount);
             _builder.AddPolicyHandler(retryPolicy);
             return this;
         }
@@ -67,7 +67,7 @@ namespace EncompassApi.Extensions
 
         public EncompassHttpClientBuilder AddEncompassTimeoutPolicyHandler()
         {
-            var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(_options.TokenClientOptions.TimeoutInSeconds);
+            var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(_options.EncompassClientOptions.TimeoutInSeconds);
             _builder.AddPolicyHandler(timeoutPolicy);
             return this;
         }
