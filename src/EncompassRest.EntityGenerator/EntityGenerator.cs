@@ -7,9 +7,10 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Elli.Api.Loans.Model;
-using EncompassRest.Loans;
-using EncompassRest.Loans.Enums;
+using EncompassRest.Loans.v1;
+using EncompassRest.Loans.v1.Enums;
 using EncompassRest.Schema;
+using EncompassRest.Schema.v1;
 using EncompassRest.Tests;
 using EnumsNET;
 using Newtonsoft.Json;
@@ -376,8 +377,8 @@ namespace EncompassRest
                     }
                 }
 
-                var destinationPath = "Loans";
-                var @namespace = "EncompassRest.Loans";
+                var destinationPath = "Loans.v1";
+                var @namespace = "EncompassRest.Loans.v1";
                 Directory.CreateDirectory(destinationPath);
 
                 var loanEntitySchema = entityTypes["Loan"];
@@ -786,7 +787,7 @@ namespace EncompassRest
                                         attributeProperties.Add($@"MissingOptionsJson = ""{JsonConvert.SerializeObject(missingOptions).Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                                     }
                                     enumName = enumPair.Key;
-                                    var existingEnumType = typeof(EncompassRestClient).Assembly.GetType($"{@namespace}.Enums.{enumName}");
+                                    var existingEnumType = typeof(Loan).Assembly.GetType($"{@namespace}.Enums.{enumName}");
                                     foreach (var member in Enums.GetMembers(existingEnumType))
                                     {
                                         var existingText = member.AsString(EnumFormat.Description, EnumFormat.EnumMemberValue, EnumFormat.Name);
@@ -922,7 +923,7 @@ namespace EncompassRest
             var members = new StringBuilder();
 
             var enumMemberNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-            var existingEnumType = typeof(EncompassRestClient).Assembly.GetType($"{@namespace}.{enumName}");
+            var existingEnumType = typeof(Loan).Assembly.GetType($"{@namespace}.{enumName}");
             var existingEnumValues = new HashSet<int>();
             var first = true;
             if (existingEnumType != null)

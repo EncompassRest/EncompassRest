@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EncompassRest.Loans;
+using EncompassRest.Loans.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
@@ -54,7 +54,7 @@ namespace EncompassRest.Tests
         [ApiTest]
         public async Task FieldReader_GetValuesWithMetadata()
         {
-            using (var client = await GetTestClientAsync(p => p.CustomFieldsCacheInitialization = CacheInitialization.IfNotAlready))
+            using (var client = await GetTestClientAsync(p => p.AddV1CacheInitialization().CustomFieldsCacheInitialization = CacheInitialization.IfNotAlready))
             {
                 var loan = new Loan(client);
                 var fieldValues = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)

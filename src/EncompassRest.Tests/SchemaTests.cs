@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EncompassRest.Loans;
+using EncompassRest.Loans.v1;
+using EncompassRest.Schema.v1;
 using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

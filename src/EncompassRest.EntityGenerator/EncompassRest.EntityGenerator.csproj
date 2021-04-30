@@ -24,7 +24,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EncompassRest.Tests\EncompassRest.Tests.csproj" />
-    <ProjectReference Include="..\EncompassRest\EncompassRest.csproj" />
+    <ProjectReference Include="..\EncompassRest.Core\EncompassRest.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EncompassObjects">

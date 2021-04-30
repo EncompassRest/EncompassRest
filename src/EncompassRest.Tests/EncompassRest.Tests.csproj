@@ -19,7 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EncompassRest\EncompassRest.csproj" />
+    <ProjectReference Include="..\EncompassRest.Core\EncompassRest.Core.csproj" />
+    <ProjectReference Include="..\EncompassRest.Loans.v1\EncompassRest.Loans.v1.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">

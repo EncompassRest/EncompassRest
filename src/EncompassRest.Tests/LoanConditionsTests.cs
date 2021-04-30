@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using EncompassRest.Loans;
-using EncompassRest.Loans.Conditions;
+using EncompassRest.Loans.v1;
+using EncompassRest.Loans.Conditions.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests

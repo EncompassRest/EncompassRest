@@ -1,6 +1,6 @@
 ﻿using EncompassRest.Filters;
-using EncompassRest.LoanBatch;
-using EncompassRest.Loans;
+using EncompassRest.LoanBatch.v1;
+using EncompassRest.Loans.v1;
 using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

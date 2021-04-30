@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using EncompassRest.Loans.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests

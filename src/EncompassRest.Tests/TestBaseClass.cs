@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.Token;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -51,7 +52,7 @@ namespace EncompassRest.Tests
                     var parameters = new ClientParameters("ApiClientId", "ApiClientSecret");
                     parametersInitializer?.Invoke(parameters);
                     client = new EncompassRestClient(parameters);
-                    var accessToken = client.AccessToken;
+                    var accessToken = client._accessToken;
                     accessToken.Token = "Token";
                     var httpClient = client.HttpClient;
                     httpClient.BaseAddress = new Uri("https://try.readme.io/");

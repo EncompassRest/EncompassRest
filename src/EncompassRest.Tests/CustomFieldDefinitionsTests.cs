@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using EncompassRest.Loans.v1;
 using EncompassRest.Schema;
 using EncompassRest.Settings.Loan;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -108,7 +109,7 @@ namespace EncompassRest.Tests
         public async Task FieldDescriptors_RefreshCustomFields()
         {
             var client = await GetTestClientAsync();
-            var fieldDescriptors = client.Loans.FieldDescriptors;
+            var fieldDescriptors = client.Loans.GetFieldDescriptors();
             var customFields = fieldDescriptors.CustomFields;
             Assert.AreEqual(0, customFields.Count);
             await fieldDescriptors.RefreshCustomFieldsAsync();

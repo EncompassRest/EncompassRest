@@ -5,10 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
+using EncompassRest.Calculators.v1;
 using EncompassRest.Filters;
-using EncompassRest.LoanPipeline;
-using EncompassRest.Loans;
-using EncompassRest.Loans.Enums;
+using EncompassRest.LoanPipeline.v1;
+using EncompassRest.Loans.v1;
+using EncompassRest.Loans.v1.Enums;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -1597,7 +1598,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
 
-            var fieldDescriptors = client.Loans.FieldDescriptors;
+            var fieldDescriptors = client.Loans.GetFieldDescriptors();
 
             FieldDescriptor fieldDescriptor;
 
@@ -1639,7 +1640,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
 
-            var fieldDescriptors = client.Loans.FieldDescriptors;
+            var fieldDescriptors = client.Loans.GetFieldDescriptors();
             var loanFields = new Loan(client).Fields;
 
             foreach (var pair in LoanFieldDescriptors.FieldMappings)
@@ -2013,7 +2014,7 @@ namespace EncompassRest.Tests
         {
             using (var client = await GetTestClientAsync(p => p.UndefinedCustomFieldHandling = UndefinedCustomFieldHandling.Error))
             {
-                Assert.ThrowsException<ArgumentException>(() => client.Loans.FieldDescriptors["CX.ABC"]);
+                Assert.ThrowsException<ArgumentException>(() => client.Loans.GetFieldDescriptors()["CX.ABC"]);
                 Assert.ThrowsException<ArgumentException>(() => new Loan(client).Fields["CX.123"]);
             }
         }
@@ -2025,10 +2026,10 @@ namespace EncompassRest.Tests
             using (var client = await GetTestClientAsync(p =>
                 {
                     p.UndefinedCustomFieldHandling = UndefinedCustomFieldHandling.ErrorIfCustomFieldsInitialized;
-                    p.CustomFieldsCacheInitialization = CacheInitialization.IfNotAlready;
+                    p.AddV1CacheInitialization().CustomFieldsCacheInitialization = CacheInitialization.IfNotAlready;
                 }))
             {
-                Assert.ThrowsException<ArgumentException>(() => client.Loans.FieldDescriptors["CX.ABC"]);
+                Assert.ThrowsException<ArgumentException>(() => client.Loans.GetFieldDescriptors()["CX.ABC"]);
                 Assert.ThrowsException<ArgumentException>(() => new Loan(client).Fields["CX.123"]);
             }
         }
@@ -2042,7 +2043,7 @@ namespace EncompassRest.Tests
                     p.UndefinedCustomFieldHandling = UndefinedCustomFieldHandling.ErrorIfCustomFieldsInitialized;
                 }))
             {
-                Assert.IsNotNull(client.Loans.FieldDescriptors["CX.ABC"]);
+                Assert.IsNotNull(client.Loans.GetFieldDescriptors()["CX.ABC"]);
                 Assert.IsNotNull(new Loan(client).Fields["CX.123"]);
             }
         }

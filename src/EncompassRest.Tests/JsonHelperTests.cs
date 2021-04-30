@@ -1,4 +1,4 @@
-﻿using EncompassRest.Loans;
+﻿using EncompassRest.Loans.v1;
 using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

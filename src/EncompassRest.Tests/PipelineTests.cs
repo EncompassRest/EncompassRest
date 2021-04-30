@@ -2,8 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Filters;
-using EncompassRest.LoanPipeline;
-using EncompassRest.Utilities;
+using EncompassRest.LoanPipeline.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests

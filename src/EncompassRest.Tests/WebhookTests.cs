@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using EncompassRest.Loans;
+using EncompassRest.Loans.v1;
 using EncompassRest.Webhook;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -102,7 +102,7 @@ namespace EncompassRest.Tests
             }
             var subscription = new WebhookSubscription(endpoint, WebhookResourceType.Loan, new[] { WebhookResourceEvent.Change });
             var attributes = subscription.Filters.Attributes;
-            var fieldDescriptors = client.Loans.FieldDescriptors;
+            var fieldDescriptors = client.Loans.GetFieldDescriptors();
             foreach (var pair in LoanFieldDescriptors.StandardFields.Skip(new Random().Next(10000)).Where(p => !p.Value.MultiInstance && p.Value.AttributePath.IndexOf('[') < 0).Take(10))
             {
                 attributes.Add(pair.Value.AttributePath);
