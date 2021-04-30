@@ -257,7 +257,14 @@ namespace EncompassApi.Loans
     public sealed class Loans : ApiObject, ILoans
     {
         private LoanFieldDescriptors? _fieldDescriptors;
-
+        public event EventHandler<ApiResponseEventArgs> ApiResponseEventHandler;
+        internal override void ApiResponse(HttpResponseMessage response)
+        {
+            if (ApiResponseEventHandler != null)
+            {
+                ApiResponseEventHandler(null, new ApiResponseEventArgs(response));
+            }
+        }
         /// <summary>
         /// The loan field descriptors.
         /// </summary>
