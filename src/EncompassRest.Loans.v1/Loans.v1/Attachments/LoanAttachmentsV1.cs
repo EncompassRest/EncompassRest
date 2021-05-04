@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.EFolder;
-using EncompassRest.Loans.v1;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.Attachments.v1
@@ -13,7 +13,7 @@ namespace EncompassRest.Loans.Attachments.v1
     /// <summary>
     /// The Loan Attachments Apis.
     /// </summary>
-    public interface ILoanAttachments : ILoanApiObject
+    public interface ILoanAttachmentsV1 : ILoanApiObject
     {
         /// <summary>
         /// Downloads the attachment's file contents as a byte array by first getting the download url and then getting the file contents.
@@ -61,13 +61,6 @@ namespace EncompassRest.Loans.Attachments.v1
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task<Stream> DownloadAttachmentStreamAsync(string attachmentId, CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Retrieves properties for the file attachment with the specified <paramref name="attachmentId"/>.
-        /// </summary>
-        /// <param name="attachmentId">The unique identifier assigned to the attachment.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task<LoanAttachment> GetAttachmentAsync(string attachmentId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves properties for the file attachment with the specified <paramref name="attachmentId"/> and optionally generates the <see cref="LoanAttachment.MediaUrl"/> for use in downloading the attachment.
         /// </summary>
@@ -162,13 +155,6 @@ namespace EncompassRest.Loans.Attachments.v1
         /// <returns></returns>
         Task<string> GetUploadAttachmentUrlRawAsync(string attachment, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
-        /// Updates properties for a specified file attachment.
-        /// </summary>
-        /// <param name="attachment">The attachment properties to update.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task UpdateAttachmentAsync(LoanAttachment attachment, CancellationToken cancellationToken = default);
-        /// <summary>
         /// Updates properties for a specified file attachment and optionally populates the attachment object with the response's body through the use of the entity view query parameter.
         /// </summary>
         /// <param name="attachment">The attachment properties to update.</param>
@@ -186,14 +172,6 @@ namespace EncompassRest.Loans.Attachments.v1
         /// <returns></returns>
         Task<string> UpdateAttachmentRawAsync(string attachmentId, string attachment, string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
-        /// Uploads the attachment and it's data to the loan and returns the uploaded attachment's id.
-        /// </summary>
-        /// <param name="attachment">The attachment properties to upload.</param>
-        /// <param name="attachmentData">The attachment data to upload.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task<string> UploadAttachmentAsync(LoanAttachment attachment, byte[] attachmentData, CancellationToken cancellationToken = default);
-        /// <summary>
         /// Uploads the attachment and it's data to the loan and returns the uploaded attachment's id and optionally populates the attachment object with the response's body through the use of the entity view query parameter.
         /// </summary>
         /// <param name="attachment">The attachment properties to upload.</param>
@@ -202,13 +180,6 @@ namespace EncompassRest.Loans.Attachments.v1
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task<string> UploadAttachmentAsync(LoanAttachment attachment, byte[] attachmentData, bool populate, CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Uploads the attachment and it's data to the loan and returns the uploaded attachment's id.
-        /// </summary>
-        /// <param name="attachment">The attachment properties to upload.</param>
-        /// <param name="attachmentData">The attachment data to upload.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        Task<string> UploadAttachmentAsync(LoanAttachment attachment, Stream attachmentData, CancellationToken cancellationToken = default);
         /// <summary>
         /// Uploads the attachment and it's data to the loan and returns the uploaded attachment's id and optionally populates the attachment object with the response's body through the use of the entity view query parameter.
         /// </summary>
@@ -237,7 +208,9 @@ namespace EncompassRest.Loans.Attachments.v1
         /// <returns></returns>
         Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, string? queryString = null, CancellationToken cancellationToken = default);
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+        [EditorBrowsable(EditorBrowsableState.Never)]
         Task<byte[]> DownloadAttachmentFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default);
+        [EditorBrowsable(EditorBrowsableState.Never)]
         Task<Stream> DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default);
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         /// <summary>
@@ -251,34 +224,25 @@ namespace EncompassRest.Loans.Attachments.v1
         Task<ExportAttachmentsJob> ExportAttachmentsAsync(IEnumerable<EntityReference> entities, AnnotationSettings? annotationSettings = null, ExportAttachmentsOptions? options = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Loan Attachments Apis.
-    /// </summary>
-    public sealed class LoanAttachments : LoanApiObject, ILoanAttachments
+    internal sealed class LoanAttachmentsV1 : LoanApiObject, ILoanAttachmentsV1
     {
-        internal LoanAttachments(EncompassRestClient client, string loanId)
-            : base(client, loanId, "attachments")
+        internal LoanAttachmentsV1(EncompassRestClient client, ILoanApis loanApis, string loanId)
+            : base(client, loanApis, loanId, "attachments")
         {
         }
 
-        /// <inheritdoc/>
         public async Task<List<LoanAttachment>> GetAttachmentsAsync(CancellationToken cancellationToken = default)
         {
             var list = await GetDirtyListAsync<LoanAttachment>(null, null, nameof(GetAttachmentsAsync), null, cancellationToken).ConfigureAwait(false);
             foreach (var attachment in list)
             {
-                attachment.Initialize(this);
+                attachment.Initialize(LoanApis.Attachments);
             }
             return list;
         }
 
-        /// <inheritdoc/>
         public Task<string> GetAttachmentsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetAttachmentsRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
-        public Task<LoanAttachment> GetAttachmentAsync(string attachmentId, CancellationToken cancellationToken = default) => GetAttachmentAsync(attachmentId, null, cancellationToken);
-
-        /// <inheritdoc/>
         public async Task<LoanAttachment> GetAttachmentAsync(string attachmentId, bool? generateUrl, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
@@ -291,11 +255,10 @@ namespace EncompassRest.Loans.Attachments.v1
             }
 
             var attachment = await GetDirtyAsync<LoanAttachment>(attachmentId, queryParameters.ToString(), nameof(GetAttachmentAsync), attachmentId, cancellationToken).ConfigureAwait(false);
-            attachment.Initialize(this);
+            attachment.Initialize(LoanApis.Attachments);
             return attachment;
         }
 
-        /// <inheritdoc/>
         public Task<string> GetAttachmentRawAsync(string attachmentId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
@@ -303,7 +266,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return GetRawAsync(attachmentId, queryString, nameof(GetAttachmentRawAsync), attachmentId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<MediaUrlObject> GetUploadAttachmentUrlAsync(LoanAttachment attachment, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(attachment, nameof(attachment));
@@ -312,7 +274,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return GetUploadAttachmentUrlInternalAsync(null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetUploadAttachmentUrlRawAsync(string attachment, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
@@ -320,38 +281,28 @@ namespace EncompassRest.Loans.Attachments.v1
             return GetUploadAttachmentUrlInternalAsync(queryString, new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, ReadAsStringFunc);
         }
 
-        private Task<T> GetUploadAttachmentUrlInternalAsync<T>(string? queryString, HttpContent content, string methodName, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) =>
-            PostAsync("url", queryString, content, methodName, null, cancellationToken, func);
+        private Task<T> GetUploadAttachmentUrlInternalAsync<T>(string? queryString, HttpContent content, string methodName, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) => PostAsync("url", queryString, content, methodName, null, cancellationToken, func);
 
-        /// <inheritdoc/>
-        public Task<string> UploadAttachmentAsync(LoanAttachment attachment, byte[] attachmentData, CancellationToken cancellationToken = default) => UploadAttachmentAsync(attachment, attachmentData, false, cancellationToken);
-
-        /// <inheritdoc/>
         public async Task<string> UploadAttachmentAsync(LoanAttachment attachment, byte[] attachmentData, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
 
-            attachment.Initialize(this);
+            attachment.Initialize(LoanApis.Attachments);
             var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(populate ? ViewEntityQueryString : null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
 
             return await SendFullUriPopulateDirtyAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new ByteArrayContent(attachmentData), nameof(UploadAttachmentAsync), attachment, populate, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <inheritdoc/>
-        public Task<string> UploadAttachmentAsync(LoanAttachment attachment, Stream attachmentData, CancellationToken cancellationToken = default) => UploadAttachmentAsync(attachment, attachmentData, false, cancellationToken);
-
-        /// <inheritdoc/>
         public async Task<string> UploadAttachmentAsync(LoanAttachment attachment, Stream attachmentData, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
 
-            attachment.Initialize(this);
+            attachment.Initialize(LoanApis.Attachments);
             var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(populate ? ViewEntityQueryString : null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
 
             return await SendFullUriPopulateDirtyAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new StreamContent(attachmentData), nameof(UploadAttachmentAsync), attachment, populate, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <inheritdoc/>
         public async Task<string> UploadAttachmentRawAsync(string attachment, byte[] attachmentData, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
@@ -362,7 +313,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new ByteArrayContent(attachmentData), nameof(UploadAttachmentRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc).ConfigureAwait(false);
         }
 
-        /// <inheritdoc/>
         public async Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
@@ -373,7 +323,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new StreamContent(attachmentData), nameof(UploadAttachmentRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc).ConfigureAwait(false);
         }
 
-        /// <inheritdoc/>
         public Task<MediaUrlObject> GetDownloadAttachmentUrlAsync(string attachmentId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
@@ -381,7 +330,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return PostAsync<MediaUrlObject>($"{attachmentId}/url", null, null, nameof(GetDownloadAttachmentUrlAsync), attachmentId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetDownloadAttachmentUrlRawAsync(string attachmentId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
@@ -389,27 +337,24 @@ namespace EncompassRest.Loans.Attachments.v1
             return PostRawAsync($"{attachmentId}/url", queryString, null, nameof(GetDownloadAttachmentUrlRawAsync), attachmentId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public async Task<byte[]> DownloadAttachmentAsync(string attachmentId, CancellationToken cancellationToken = default)
         {
             var mediaUrlObject = await GetDownloadAttachmentUrlAsync(attachmentId, cancellationToken).ConfigureAwait(false);
 
-            return await ((ILoanAttachments)this).DownloadAttachmentFromMediaUrlAsync(mediaUrlObject.MediaUrl!, cancellationToken).ConfigureAwait(false);
+            return await DownloadAttachmentFromMediaUrlAsync(mediaUrlObject.MediaUrl!, cancellationToken).ConfigureAwait(false);
         }
 
-        Task<byte[]> ILoanAttachments.DownloadAttachmentFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentAsync), null, cancellationToken, ReadAsByteArrayFunc);
+        public Task<byte[]> DownloadAttachmentFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentAsync), null, cancellationToken, ReadAsByteArrayFunc);
 
-        /// <inheritdoc/>
         public async Task<Stream> DownloadAttachmentStreamAsync(string attachmentId, CancellationToken cancellationToken = default)
         {
             var mediaUrlObject = await GetDownloadAttachmentUrlAsync(attachmentId, cancellationToken).ConfigureAwait(false);
 
-            return await ((ILoanAttachments)this).DownloadAttachmentStreamFromMediaUrlAsync(mediaUrlObject.MediaUrl!, cancellationToken).ConfigureAwait(false);
+            return await DownloadAttachmentStreamFromMediaUrlAsync(mediaUrlObject.MediaUrl!, cancellationToken).ConfigureAwait(false);
         }
 
-        Task<Stream> ILoanAttachments.DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentStreamAsync), null, cancellationToken, ReadAsStreamFunc, true, false);
+        public Task<Stream> DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentStreamAsync), null, cancellationToken, ReadAsStreamFunc, true, false);
 
-        /// <inheritdoc/>
         public Task<MediaUrlObject> GetDownloadAttachmentPageThumbnailUrlAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
@@ -418,7 +363,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return PostAsync<MediaUrlObject>($"{attachmentId}/pages/{pageId}/thumbnail/url", null, null, nameof(GetDownloadAttachmentPageThumbnailUrlAsync), $"{attachmentId}/{pageId}", cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetDownloadAttachmentPageThumbnailUrlRawAsync(string attachmentId, string pageId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
@@ -427,7 +371,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return PostRawAsync($"{attachmentId}/pages/{pageId}/thumbnail/url", queryString, null, nameof(GetDownloadAttachmentPageThumbnailUrlRawAsync), $"{attachmentId}/{pageId}", cancellationToken);
         }
 
-        /// <inheritdoc/>
         public async Task<byte[]> DownloadAttachmentPageThumbnailAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
         {
             var mediaUrlObject = await GetDownloadAttachmentPageThumbnailUrlAsync(attachmentId, pageId, cancellationToken).ConfigureAwait(false);
@@ -435,7 +378,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageThumbnailAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsByteArrayFunc).ConfigureAwait(false);
         }
 
-        /// <inheritdoc/>
         public async Task<Stream> DownloadAttachmentPageThumbnailStreamAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
         {
             var mediaUrlObject = await GetDownloadAttachmentPageThumbnailUrlAsync(attachmentId, pageId, cancellationToken).ConfigureAwait(false);
@@ -443,7 +385,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageThumbnailStreamAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsStreamFunc, true, false).ConfigureAwait(false);
         }
 
-        /// <inheritdoc/>
         public Task<MediaUrlObject> GetDownloadAttachmentPageUrlAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
@@ -452,7 +393,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return PostAsync<MediaUrlObject>($"{attachmentId}/pages/{pageId}/url", null, null, nameof(GetDownloadAttachmentPageUrlAsync), $"{attachmentId}/{pageId}", cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetDownloadAttachmentPageUrlRawAsync(string attachmentId, string pageId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
@@ -461,7 +401,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return PostRawAsync($"{attachmentId}/pages/{pageId}/url", queryString, null, nameof(GetDownloadAttachmentPageUrlRawAsync), $"{attachmentId}/{pageId}", cancellationToken);
         }
 
-        /// <inheritdoc/>
         public async Task<byte[]> DownloadAttachmentPageAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
         {
             var mediaUrlObject = await GetDownloadAttachmentPageUrlAsync(attachmentId, pageId, cancellationToken).ConfigureAwait(false);
@@ -469,7 +408,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsByteArrayFunc).ConfigureAwait(false);
         }
 
-        /// <inheritdoc/>
         public async Task<Stream> DownloadAttachmentPageStreamAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
         {
             var mediaUrlObject = await GetDownloadAttachmentPageUrlAsync(attachmentId, pageId, cancellationToken).ConfigureAwait(false);
@@ -477,20 +415,15 @@ namespace EncompassRest.Loans.Attachments.v1
             return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageStreamAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsStreamFunc, true, false).ConfigureAwait(false);
         }
 
-        /// <inheritdoc/>
-        public Task UpdateAttachmentAsync(LoanAttachment attachment, CancellationToken cancellationToken = default) => UpdateAttachmentAsync(attachment, false, cancellationToken);
-
-        /// <inheritdoc/>
         public Task UpdateAttachmentAsync(LoanAttachment attachment, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(attachment, nameof(attachment));
             Preconditions.NotNullOrEmpty(attachment.AttachmentId, $"{nameof(attachment)}{nameof(attachment.AttachmentId)}");
 
-            attachment.Initialize(this);
+            attachment.Initialize(LoanApis.Attachments);
             return PatchPopulateDirtyAsync(attachment.AttachmentId, JsonStreamContent.Create(attachment), nameof(UpdateAttachmentAsync), attachment.AttachmentId, attachment, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> UpdateAttachmentRawAsync(string attachmentId, string attachment, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
@@ -499,7 +432,6 @@ namespace EncompassRest.Loans.Attachments.v1
             return PatchRawAsync(attachmentId, queryString, new JsonStringContent(attachment), nameof(UpdateAttachmentRawAsync), attachmentId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<ExportAttachmentsJob> ExportAttachmentsAsync(IEnumerable<EntityReference> entities, AnnotationSettings? annotationSettings = null, ExportAttachmentsOptions? options = null, CancellationToken cancellationToken = default)
         {
             return Client.EFolder.ExportAttachmentsAsync(new ExportAttachmentsParameters(new EntityReference(LoanId, EntityType.Loan), entities) { AnnotationSettings = annotationSettings }, options, cancellationToken);

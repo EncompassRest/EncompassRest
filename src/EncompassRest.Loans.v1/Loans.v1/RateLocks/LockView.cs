@@ -8,12 +8,12 @@ namespace EncompassRest.Loans.RateLocks.v1
     public enum LockView
     {
         /// <summary>
-        /// Detailed
+        /// detailed
         /// </summary>
         [EnumMember(Value = "detailed")]
         Detailed = 0,
         /// <summary>
-        /// Summary
+        /// summary
         /// </summary>
         [EnumMember(Value = "summary")]
         Summary = 1

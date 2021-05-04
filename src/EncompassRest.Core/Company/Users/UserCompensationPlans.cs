@@ -23,20 +23,15 @@ namespace EncompassRest.Company.Users
         Task<string> GetCompensationPlansRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// User Compensation Apis
-    /// </summary>
-    public sealed class UserCompensationPlans : UserApiObject, IUserCompensationPlans
+    internal sealed class UserCompensationPlans : UserApiObject, IUserCompensationPlans
     {
         internal UserCompensationPlans(EncompassRestClient client, string userId)
             : base(client, userId, "compensation")
         {
         }
 
-        /// <inheritdoc/>
         public Task<CompensationPlans> GetCompensationPlansAsync(CancellationToken cancellationToken = default) => GetDirtyAsync<CompensationPlans>(null, null, nameof(GetCompensationPlansAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetCompensationPlansRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetCompensationPlansRawAsync), null, cancellationToken);
     }
 }

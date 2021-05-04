@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using EncompassRest.Loans.v1;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.MilestoneFreeRoles.v1
@@ -9,7 +8,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
     /// <summary>
     /// The Loan Milestone Free Roles Apis.
     /// </summary>
-    public interface ILoanMilestoneFreeRoles : ILoanApiObject
+    public interface ILoanMilestoneFreeRolesV1 : ILoanApiObject
     {
         /// <summary>
         /// Retrieves the milestone-free log with the specified <paramref name="logId"/>.
@@ -57,23 +56,17 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
         Task UpdateMilestoneFreeRoleRawAsync(string logId, string milestoneFreeRole, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Loan Milestone Free Roles Apis.
-    /// </summary>
-    public sealed class LoanMilestoneFreeRoles : LoanApiObject, ILoanMilestoneFreeRoles
+    internal sealed class LoanMilestoneFreeRolesV1 : LoanApiObject, ILoanMilestoneFreeRolesV1
     {
-        internal LoanMilestoneFreeRoles(EncompassRestClient client, string loanId)
-            : base(client, loanId, "milestoneFreeRoles")
+        internal LoanMilestoneFreeRolesV1(EncompassRestClient client, ILoanApis loanApis, string loanId)
+            : base(client, loanApis, loanId, "milestoneFreeRoles")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<LoanMilestoneFreeRole>> GetMilestoneFreeRolesAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<LoanMilestoneFreeRole>(null, null, nameof(GetMilestoneFreeRolesAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetMilestoneFreeRolesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetMilestoneFreeRolesRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<LoanMilestoneFreeRole> GetMilestoneFreeRoleAsync(string logId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
@@ -81,7 +74,6 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
             return GetAsync<LoanMilestoneFreeRole>(logId, null, nameof(GetMilestoneFreeRoleAsync), logId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetMilestoneFreeRoleRawAsync(string logId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
@@ -89,7 +81,6 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
             return GetRawAsync(logId, queryString, nameof(GetMilestoneFreeRoleRawAsync), logId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task UpdateMilestoneFreeRoleAsync(LoanMilestoneFreeRole milestoneFreeRole, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(milestoneFreeRole, nameof(milestoneFreeRole));
@@ -98,7 +89,6 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
             return PatchAsync(milestoneFreeRole.Id, null, JsonStreamContent.Create(milestoneFreeRole), nameof(UpdateMilestoneFreeRoleAsync), milestoneFreeRole.Id, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task UpdateMilestoneFreeRoleRawAsync(string logId, string milestoneFreeRole, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));

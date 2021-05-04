@@ -24,20 +24,15 @@ namespace EncompassRest.Settings.Contacts
         Task<string> GetCanonicalNamesRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// Base Contacts Settings Apis.
-    /// </summary>
-    public abstract class ContactsSettings : ApiObject, IContactsSettings
+    internal abstract class ContactsSettings : ApiObject, IContactsSettings
     {
         internal ContactsSettings(EncompassRestClient client, string baseApiPath)
             : base(client, baseApiPath)
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<ContactFieldDefinition>> GetCanonicalNamesAsync(CancellationToken cancellationToken = default) => GetAsync<List<ContactFieldDefinition>>("fieldDefinitions", null, nameof(GetCanonicalNamesAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetCanonicalNamesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", queryString, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
     }
 }

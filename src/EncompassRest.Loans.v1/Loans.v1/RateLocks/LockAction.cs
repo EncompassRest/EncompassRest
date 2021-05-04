@@ -8,22 +8,22 @@ namespace EncompassRest.Loans.RateLocks.v1
     public enum LockAction
     {
         /// <summary>
-        /// Confirm
+        /// confirm
         /// </summary>
         [EnumMember(Value = "confirm")]
         Confirm = 0,
         /// <summary>
-        /// Relock
+        /// relock
         /// </summary>
         [EnumMember(Value = "relock")]
         Relock = 1,
         /// <summary>
-        /// Extend
+        /// extend
         /// </summary>
         [EnumMember(Value = "extend")]
         Extend = 2,
         /// <summary>
-        /// Cancel
+        /// cancel
         /// </summary>
         [EnumMember(Value = "cancel")]
         Cancel = 3

@@ -1,25 +1,25 @@
-﻿using EncompassRest.Utilities;
+﻿using EncompassRest.CustomDataObjects;
+using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.v1
 {
     /// <summary>
     /// The Loan Custom Data Objects Apis.
     /// </summary>
-    public interface ILoanCustomDataObjects : CustomDataObjects.ICustomDataObjects, ILoanApiObject
+    public interface ILoanCustomDataObjectsV1 : ICustomDataObjects, ILoanApiObject
     {
     }
 
-    /// <summary>
-    /// The Loan Custom Data Objects Apis.
-    /// </summary>
-    public sealed class LoanCustomDataObjects : CustomDataObjects.CustomDataObjects, ILoanCustomDataObjects
+    internal sealed class LoanCustomDataObjectsV1 : CustomDataObjects.CustomDataObjects, ILoanCustomDataObjectsV1
     {
-        /// <inheritdoc/>
+        public ILoanApis LoanApis { get; }
+
         public string LoanId { get; }
 
-        internal LoanCustomDataObjects(EncompassRestClient client, string loanId)
+        internal LoanCustomDataObjectsV1(EncompassRestClient client, ILoanApis loanApis, string loanId)
             : base(client, $"encompass/v1/loans/{loanId}/customObjects")
         {
+            LoanApis = loanApis;
             LoanId = loanId;
         }
 

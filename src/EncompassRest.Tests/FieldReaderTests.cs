@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EncompassRest.Loans.FieldReader.v1;
 using EncompassRest.Loans.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

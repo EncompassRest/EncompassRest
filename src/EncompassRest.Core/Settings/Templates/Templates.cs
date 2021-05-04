@@ -13,17 +13,11 @@ namespace EncompassRest.Settings.Templates
         ILoanTemplateSet LoanTemplateSet { get; }
     }
 
-    /// <summary>
-    /// The Templates Apis.
-    /// </summary>
-    public sealed class Templates : ApiObject, ITemplates
+    internal sealed class Templates : ApiObject, ITemplates
     {
         private LoanTemplateSet? _loanTemplateSet;
 
-        /// <summary>
-        /// The Loan Template Set Apis.
-        /// </summary>
-        public LoanTemplateSet LoanTemplateSet
+        public ILoanTemplateSet LoanTemplateSet
         {
             get
             {
@@ -31,8 +25,6 @@ namespace EncompassRest.Settings.Templates
                 return loanTemplateSet ?? Interlocked.CompareExchange(ref _loanTemplateSet, (loanTemplateSet = new LoanTemplateSet(Client)), null) ?? loanTemplateSet;
             }
         }
-
-        ILoanTemplateSet ITemplates.LoanTemplateSet => LoanTemplateSet;
 
         internal Templates(EncompassRestClient client)
             : base(client, "encompass/v1/settings/templates")

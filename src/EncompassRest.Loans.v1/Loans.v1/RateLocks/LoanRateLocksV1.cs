@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using EncompassRest.Loans.v1;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.RateLocks.v1
@@ -9,7 +8,7 @@ namespace EncompassRest.Loans.RateLocks.v1
     /// <summary>
     /// The Loan Rate Lock Apis.
     /// </summary>
-    public interface ILoanRateLocks : ILoanApiObject
+    public interface ILoanRateLocksV1 : ILoanApiObject
     {
         /// <summary>
         /// Retrieves rate lock information for a specified request ID in a loan.
@@ -18,7 +17,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <param name="view">Specifies the level of detail to be returned for the ratelockrequest. Possible values are: Detailed and Summary. Summary is the default.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<RateLockRequest> GetRateLockAsync(string requestId, LockView? view = LockView.Summary, CancellationToken cancellationToken = default);
+        Task<RateLockRequest> GetRateLockAsync(string requestId, string? view = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves rate lock information for a specified request ID in a loan as raw json.
         /// </summary>
@@ -64,7 +63,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <param name="populate">Indicates if the lock request object should be populated with the response's body through the use of the entity view query parameter.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task<string> SubmitRateLockRequestAsync(RateLockRequest lockRequest, bool populate, LockAction? action = null, DataSyncOption? dataSyncOption = null, CancellationToken cancellationToken = default);
+        Task<string> SubmitRateLockRequestAsync(RateLockRequest lockRequest, bool populate, string? action = null, string? dataSyncOption = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Use this API to create a new rate lock request if you are a Loan Officer. If you are a Secondary user, use this API to perform an action on an existing rate lock request for a specified loan, or submit and confirm a new rate lock request for the loan.
         /// </summary>
@@ -143,38 +142,31 @@ namespace EncompassRest.Loans.RateLocks.v1
         Task<string> DenyRateLockRequestRawAsync(string requestId, string denialOptions, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Loan Rate Lock Apis.
-    /// </summary>
-    public sealed class LoanRateLocks : LoanApiObject, ILoanRateLocks
+    internal sealed class LoanRateLocksV1 : LoanApiObject, ILoanRateLocksV1
     {
-        internal LoanRateLocks(EncompassRestClient client, string loanId)
-            : base(client, loanId, "ratelockRequests")
+        internal LoanRateLocksV1(EncompassRestClient client, ILoanApis loanApis, string loanId)
+            : base(client, loanApis, loanId, "ratelockRequests")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<RateLockRequest>> GetRateLocksAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<RateLockRequest>(null, null, nameof(GetRateLocksAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetRateLocksRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetRateLocksRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
-        public Task<RateLockRequest> GetRateLockAsync(string requestId, LockView? view = LockView.Summary, CancellationToken cancellationToken = default)
+        public Task<RateLockRequest> GetRateLockAsync(string requestId, string? view = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
             var queryParameters = new QueryParameters();
 
-            if (view.HasValue)
+            if (view != null)
             {
-                queryParameters.Add("view", view.ToString().ToLower());
+                queryParameters.Add("view", view.ToLower());
             }
 
             return GetDirtyAsync<RateLockRequest>(requestId, queryParameters.ToString(), nameof(GetRateLockAsync), requestId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetRateLockRawAsync(string requestId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
@@ -182,7 +174,6 @@ namespace EncompassRest.Loans.RateLocks.v1
             return GetRawAsync(requestId, queryString, nameof(GetRateLockRawAsync), requestId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<Dictionary<string, string>> GetRateLockSnapshotAsync(string requestId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
@@ -190,7 +181,6 @@ namespace EncompassRest.Loans.RateLocks.v1
             return GetAsync<Dictionary<string, string>>($"{requestId}/snapshot", null, nameof(GetRateLockSnapshotAsync), requestId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetRateLockSnapshotRawAsync(string requestId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
@@ -198,18 +188,17 @@ namespace EncompassRest.Loans.RateLocks.v1
             return GetRawAsync($"{requestId}/snapshot", queryString, nameof(GetRateLockSnapshotRawAsync), requestId, cancellationToken);
         }
 
-        /// <inheritdoc/>
-        public Task<string> SubmitRateLockRequestAsync(RateLockRequest lockRequest, bool populate, LockAction? action = null, DataSyncOption? dataSyncOption = null, CancellationToken cancellationToken = default)
+        public Task<string> SubmitRateLockRequestAsync(RateLockRequest lockRequest, bool populate, string? action = null, string? dataSyncOption = null, CancellationToken cancellationToken = default)
         {
             var queryParameters = new QueryParameters();
 
-            if (action.HasValue)
+            if (action != null)
             {
-                queryParameters.Add("action", action.ToString().ToLower());
+                queryParameters.Add("action", action.ToLower());
             }
-            if (dataSyncOption.HasValue)
+            if (dataSyncOption != null)
             {
-                queryParameters.Add("dataSyncOption", dataSyncOption.ToString().ToLower());
+                queryParameters.Add("dataSyncOption", dataSyncOption.ToLower());
             }
             if (lockRequest.Id != null)
             {
@@ -221,7 +210,6 @@ namespace EncompassRest.Loans.RateLocks.v1
             return PostPopulateDirtyAsync(null, queryParameters.ToString(), nameof(SubmitRateLockRequestAsync), lockRequest, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> SubmitRateLockRequestRawAsync(string lockRequest, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(lockRequest, nameof(lockRequest));
@@ -229,7 +217,6 @@ namespace EncompassRest.Loans.RateLocks.v1
             return PostRawAsync(null, queryString, JsonStreamContent.Create(lockRequest), nameof(SubmitRateLockRequestRawAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task UpdateRateLockRequestAsync(RateLockRequest lockRequest, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(lockRequest, nameof(lockRequest));
@@ -238,7 +225,6 @@ namespace EncompassRest.Loans.RateLocks.v1
             return PatchPopulateDirtyAsync(lockRequest.Id, JsonStreamContent.Create(lockRequest), nameof(UpdateRateLockRequestAsync), lockRequest.Id, lockRequest, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> UpdateRateLockRequestRawAsync(string requestId, string lockRequest, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
@@ -247,7 +233,6 @@ namespace EncompassRest.Loans.RateLocks.v1
             return PatchRawAsync(requestId, queryString, JsonStreamContent.Create(lockRequest), nameof(UpdateRateLockRequestRawAsync), requestId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task ConfirmRateLockRequestAsync(RateLockRequest lockRequest, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(lockRequest.Id, nameof(lockRequest.Id));
@@ -255,7 +240,6 @@ namespace EncompassRest.Loans.RateLocks.v1
             return PutPopulateDirtyAsync($"{lockRequest.Id}/confirmation", JsonStreamContent.Create(lockRequest), nameof(ConfirmRateLockRequestAsync), lockRequest.Id, lockRequest, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> ConfirmRateLockRequestRawAsync(string requestId, string lockRequest, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
@@ -264,12 +248,11 @@ namespace EncompassRest.Loans.RateLocks.v1
             return PutRawAsync($"{requestId}/confirmation", queryString, JsonStreamContent.Create(lockRequest), nameof(ConfirmRateLockRequestRawAsync), requestId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<RateLockRequest> CancelRateLockRequestAsync(string requestId, RateLockCancelDenyOptions? cancellationOptions = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
-            cancellationOptions = cancellationOptions ?? new RateLockCancelDenyOptions();
+            cancellationOptions ??= new RateLockCancelDenyOptions();
 
             var queryParameters = new QueryParameters();
             queryParameters.Add("view", "entity");
@@ -277,7 +260,6 @@ namespace EncompassRest.Loans.RateLocks.v1
             return PutAsync($"{requestId}/cancellation", queryParameters.ToString(), JsonStreamContent.Create(cancellationOptions), nameof(CancelRateLockRequestAsync), requestId, cancellationToken, FuncCache<RateLockRequest>.ReadAsFunc);
         }
 
-        /// <inheritdoc/>
         public Task<string> CancelRateLockRequestRawAsync(string requestId, string cancellationOptions, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
@@ -285,12 +267,11 @@ namespace EncompassRest.Loans.RateLocks.v1
             return PutRawAsync($"{requestId}/cancellation", queryString, JsonStreamContent.Create(cancellationOptions), nameof(CancelRateLockRequestRawAsync), requestId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<RateLockRequest> DenyRateLockRequestAsync(string requestId, RateLockCancelDenyOptions? denialOptions = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
-            denialOptions = denialOptions ?? new RateLockCancelDenyOptions();
+            denialOptions ??= new RateLockCancelDenyOptions();
 
             var queryParameters = new QueryParameters();
             queryParameters.Add("view", "entity");
@@ -298,7 +279,6 @@ namespace EncompassRest.Loans.RateLocks.v1
             return PutAsync($"{requestId}/denial", queryParameters.ToString(), JsonStreamContent.Create(denialOptions), nameof(DenyRateLockRequestAsync), requestId, cancellationToken, FuncCache<RateLockRequest>.ReadAsFunc);
         }
 
-        /// <inheritdoc/>
         public Task<string> DenyRateLockRequestRawAsync(string requestId, string denialOptions, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));

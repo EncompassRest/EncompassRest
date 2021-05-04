@@ -7,10 +7,7 @@
     {
     }
 
-    /// <summary>
-    /// The Borrower Contacts Apis.
-    /// </summary>
-    public sealed class BorrowerContacts : Contacts<BorrowerContact>, IBorrowerContacts
+    internal sealed class BorrowerContacts : Contacts<BorrowerContact>, IBorrowerContacts
     {
         internal BorrowerContacts(EncompassRestClient client)
             : base(client, "encompass/v1/borrowerContacts")

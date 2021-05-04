@@ -24,20 +24,15 @@ namespace EncompassRest.Company.Users
         Task<string> GetGroupsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// User Groups Apis
-    /// </summary>
-    public sealed class UserGroups : UserApiObject, IUserGroups
+    internal sealed class UserGroups : UserApiObject, IUserGroups
     {
         internal UserGroups(EncompassRestClient client, string userId)
             : base(client, userId, "groups")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<EntityReference>> GetGroupsAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<EntityReference>(null, null, nameof(GetGroupsAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetGroupsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetGroupsRawAsync), null, cancellationToken);
     }
 }

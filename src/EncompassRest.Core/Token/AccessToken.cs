@@ -46,19 +46,14 @@ namespace EncompassRest.Token
         Task<bool> RevokeAsync(CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The access token and related Apis.
-    /// </summary>
-    public sealed class AccessToken : ApiObject, IAccessToken
+    internal sealed class AccessToken : ApiObject, IAccessToken
     {
         private HttpClient? _tokenClient;
         private readonly string _apiClientId;
         private readonly string _apiClientSecret;
 
-        /// <inheritdoc/>
         public string Token { get; internal set; }
 
-        /// <inheritdoc/>
         public string Type => "Bearer";
 
         internal HttpClient TokenClient
@@ -87,19 +82,12 @@ namespace EncompassRest.Token
             Token = string.Empty;
         }
 
-        /// <inheritdoc/>
         public Task<TokenIntrospectionResponse?> IntrospectAsync(CancellationToken cancellationToken = default) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse?>() : Task.FromResult<TokenIntrospectionResponse?>(null), false);
 
-        /// <inheritdoc/>
         public Task<string?> IntrospectRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => PostAsync("introspection", queryString, CreateAccessTokenContent(), nameof(IntrospectRawAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string?>(null), false);
 
-        /// <inheritdoc/>
         public Task<bool> RevokeAsync(CancellationToken cancellationToken = default) => PostAsync("revocation", null, CreateAccessTokenContent(), nameof(RevokeAsync), Token, cancellationToken, IsSuccessStatusCodeFunc, false);
 
-        /// <summary>
-        /// Returns the string representation of the access token.
-        /// </summary>
-        /// <returns></returns>
         public override string ToString() => $"{Type} {Token}";
 
         internal void Dispose() => _tokenClient?.Dispose();

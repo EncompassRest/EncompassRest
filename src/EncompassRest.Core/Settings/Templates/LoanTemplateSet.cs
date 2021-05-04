@@ -7,10 +7,7 @@
     {
     }
 
-    /// <summary>
-    /// The Loan Template Set Apis.
-    /// </summary>
-    public sealed class LoanTemplateSet : TemplateApiObject, ILoanTemplateSet
+    internal sealed class LoanTemplateSet : TemplateApiObject, ILoanTemplateSet
     {
         internal LoanTemplateSet(EncompassRestClient client)
             : base(client, "loanTemplateSet")

@@ -40,23 +40,17 @@ namespace EncompassRest.Company.Users
         Task<string> GetLicenseDetailsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// User Licenses Apis
-    /// </summary>
-    public sealed class UserLicenseDetails : UserApiObject, IUserLicenseDetails
+    internal sealed class UserLicenseDetails : UserApiObject, IUserLicenseDetails
     {
         internal UserLicenseDetails(EncompassRestClient client, string userId)
             : base(client, userId, "licenses")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<UserLicenseDetail>> GetLicenseDetailsAsync(CancellationToken cancellationToken = default) => GetLicenseDetailsAsync(null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<List<UserLicenseDetail>> GetLicenseDetailsAsync(State state, CancellationToken cancellationToken = default) => GetLicenseDetailsAsync(state.Validate(nameof(state)).GetValue(), cancellationToken);
 
-        /// <inheritdoc/>
         public Task<List<UserLicenseDetail>> GetLicenseDetailsAsync(string? state, CancellationToken cancellationToken = default)
         {
             var queryParameters = new QueryParameters();
@@ -67,7 +61,6 @@ namespace EncompassRest.Company.Users
             return GetDirtyListAsync<UserLicenseDetail>(null, queryParameters.ToString(), nameof(GetLicenseDetailsAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetLicenseDetailsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetLicenseDetailsRawAsync), null, cancellationToken);
     }
 }

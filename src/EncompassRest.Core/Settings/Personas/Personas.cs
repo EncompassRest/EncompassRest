@@ -58,29 +58,21 @@ namespace EncompassRest.Settings.Personas
         Task<string> GetPersonasRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Personas Apis.
-    /// </summary>
-    public sealed class Personas : ApiObject, IPersonas
+    internal sealed class Personas : ApiObject, IPersonas
     {
         internal Personas(EncompassRestClient client)
             : base(client, "encompass/v1/settings/personas")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<Persona>> GetPersonasAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<Persona>(null, null, nameof(GetPersonasAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetPersonasRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetPersonasRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<Persona> GetPersonaAsync(string id, CancellationToken cancellationToken = default) => GetPersonaAsync(id, (IEnumerable<string>?)null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<Persona> GetPersonaAsync(string id, IEnumerable<PersonaCategory>? categories, CancellationToken cancellationToken = default) => GetPersonaAsync(id, categories?.Select(c => c.Validate(nameof(categories)).GetValue()!), cancellationToken);
 
-        /// <inheritdoc/>
         public Task<Persona> GetPersonaAsync(string id, IEnumerable<string>? categories, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(id, nameof(id));
@@ -93,7 +85,6 @@ namespace EncompassRest.Settings.Personas
             return GetDirtyAsync<Persona>(id, queryParams.ToString(), nameof(GetPersonaAsync), id, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetPersonaRawAsync(string id, string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(id, queryString, nameof(GetPersonaRawAsync), id, cancellationToken);
     }
 }

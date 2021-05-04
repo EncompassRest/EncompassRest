@@ -46,7 +46,7 @@ namespace EncompassRest.Loans.v1
     /// <summary>
     /// LoanFieldDescriptors
     /// </summary>
-    public sealed class LoanFieldDescriptors : ApiObject, ILoanFieldDescriptors
+    internal sealed class LoanFieldDescriptors : ApiObject, ILoanFieldDescriptors
     {
         private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new[]
         {

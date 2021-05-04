@@ -13,12 +13,8 @@ namespace EncompassRest.Company.Users
         string UserId { get; }
     }
 
-    /// <summary>
-    /// Base class for User Apis
-    /// </summary>
-    public abstract class UserApiObject : ApiObject, IUserApiObject
+    internal abstract class UserApiObject : ApiObject, IUserApiObject
     {
-        /// <inheritdoc/>
         public string UserId { get; }
 
         internal UserApiObject(EncompassRestClient client, string userId, string? baseApiPath)

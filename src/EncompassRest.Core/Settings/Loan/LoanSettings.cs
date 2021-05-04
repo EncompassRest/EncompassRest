@@ -13,17 +13,11 @@ namespace EncompassRest.Settings.Loan
         ICustomFieldDefinitions CustomFields { get; }
     }
 
-    /// <summary>
-    /// The Loan Settings Apis.
-    /// </summary>
-    public sealed class LoanSettings : ApiObject, ILoanSettings
+    internal sealed class LoanSettings : ApiObject, ILoanSettings
     {
         private CustomFieldDefinitions? _customFields;
 
-        /// <summary>
-        /// The Loan Custom Fields Apis.
-        /// </summary>
-        public CustomFieldDefinitions CustomFields
+        public ICustomFieldDefinitions CustomFields
         {
             get
             {
@@ -31,8 +25,6 @@ namespace EncompassRest.Settings.Loan
                 return customFields ?? Interlocked.CompareExchange(ref _customFields, (customFields = new CustomFieldDefinitions(Client)), null) ?? customFields;
             }
         }
-
-        ICustomFieldDefinitions ILoanSettings.CustomFields => CustomFields;
 
         internal LoanSettings(EncompassRestClient client)
             : base(client, "encompass/v1/settings/loan")

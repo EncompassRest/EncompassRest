@@ -79,17 +79,11 @@ namespace EncompassRest.Company.Users
         Task<string> GetUsersRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// Users Apis
-    /// </summary>
-    public sealed class Users : ApiObject, IUsers
+    internal sealed class Users : ApiObject, IUsers
     {
         private UserApis? _currentUserApis;
 
-        /// <summary>
-        /// Gets the Current User's Apis. Custom Data Objects are not currently supported through this property.
-        /// </summary>
-        public UserApis CurrentUserApis
+        public IUserApis CurrentUserApis
         {
             get
             {
@@ -98,31 +92,20 @@ namespace EncompassRest.Company.Users
             }
         }
 
-        IUserApis IUsers.CurrentUserApis => CurrentUserApis;
-
         internal Users(EncompassRestClient client)
             : base(client, "encompass/v1/company/users")
         {
         }
 
-        /// <summary>
-        /// Gets the User Apis for the specified <paramref name="userId"/>.
-        /// </summary>
-        /// <param name="userId">The user's id.</param>
-        /// <returns></returns>
-        public UserApis GetUserApis(string userId)
+        public IUserApis GetUserApis(string userId)
         {
             Preconditions.NotNullOrEmpty(userId, nameof(userId));
 
             return new UserApis(Client, userId);
         }
 
-        IUserApis IUsers.GetUserApis(string userId) => GetUserApis(userId);
-
-        /// <inheritdoc/>
         public Task<List<User>> GetUsersAsync(CancellationToken cancellationToken = default) => GetUsersAsync(null, cancellationToken);
 
-        /// <inheritdoc/>
         public async Task<List<User>> GetUsersAsync(UsersRetrievalOptions? options, CancellationToken cancellationToken = default)
         {
             var users = await GetDirtyListAsync<User>(null, options?.ToQueryParameters().ToString(), nameof(GetUsersAsync), null, cancellationToken).ConfigureAwait(false);
@@ -133,19 +116,14 @@ namespace EncompassRest.Company.Users
             return users;
         }
 
-        /// <inheritdoc/>
         public Task<string> GetUsersRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetUsersRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<User> GetCurrentUserAsync(CancellationToken cancellationToken = default) => GetUserAsync("me", null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<User> GetCurrentUserAsync(bool? viewEmailSignature, CancellationToken cancellationToken = default) => GetUserAsync("me", viewEmailSignature, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<User> GetUserAsync(string userId, CancellationToken cancellationToken = default) => GetUserAsync(userId, null, cancellationToken);
 
-        /// <inheritdoc/>
         public async Task<User> GetUserAsync(string userId, bool? viewEmailSignature, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(userId, nameof(userId));
@@ -160,7 +138,6 @@ namespace EncompassRest.Company.Users
             return user;
         }
 
-        /// <inheritdoc/>
         public Task<string> GetUserRawAsync(string userId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(userId, nameof(userId));

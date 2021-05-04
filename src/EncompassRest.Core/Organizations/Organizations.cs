@@ -114,44 +114,31 @@ namespace EncompassRest.Organizations
         Task<string> GetRootOrganizationRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// Organizations Apis
-    /// </summary>
-    public sealed class Organizations : ApiObject, IOrganizations
+    internal sealed class Organizations : ApiObject, IOrganizations
     {
         internal Organizations(EncompassRestClient client)
             : base(client, "encompass/v1/organizations")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<Organization>> GetOrganizationsAsync(CancellationToken cancellationToken = default) => GetOrganizationsAsync(null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<List<Organization>> GetOrganizationsAsync(OrganizationsRetrievalOptions? options, CancellationToken cancellationToken = default) => GetDirtyListAsync<Organization>(null, options?.GetQueryParameters().ToString(), nameof(GetOrganizationsAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetOrganizationsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetOrganizationsRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<Organization> GetRootOrganizationAsync(CancellationToken cancellationToken = default) => GetRootOrganizationAsync(null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<Organization> GetRootOrganizationAsync(OrganizationView view, CancellationToken cancellationToken = default) => GetRootOrganizationAsync(view.Validate(nameof(view)).GetValue(), cancellationToken);
 
-        /// <inheritdoc/>
         public Task<Organization> GetRootOrganizationAsync(string? view, CancellationToken cancellationToken = default) => GetOrganizationAsync("root", view, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetRootOrganizationRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetOrganizationRawAsync("root", queryString, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<Organization> GetOrganizationAsync(string orgId, CancellationToken cancellationToken = default) => GetOrganizationAsync(orgId, null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<Organization> GetOrganizationAsync(string orgId, OrganizationView view, CancellationToken cancellationToken = default) => GetOrganizationAsync(orgId, view.Validate(nameof(view)).GetValue(), cancellationToken);
 
-        /// <inheritdoc/>
         public Task<Organization> GetOrganizationAsync(string orgId, string? view, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(orgId, nameof(orgId));
@@ -164,7 +151,6 @@ namespace EncompassRest.Organizations
             return GetDirtyAsync<Organization>(orgId, queryParameters.ToString(), orgId == "root" ? nameof(GetRootOrganizationAsync) : nameof(GetOrganizationAsync), orgId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetOrganizationRawAsync(string orgId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(orgId, nameof(orgId));
@@ -172,10 +158,8 @@ namespace EncompassRest.Organizations
             return GetRawAsync(orgId, queryString, orgId == "root" ? nameof(GetRootOrganizationRawAsync) : nameof(GetOrganizationRawAsync), orgId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<List<OrganizationReference>> GetOrganizationChildrenAsync(string orgId, CancellationToken cancellationToken = default) => GetOrganizationChildrenAsync(orgId, null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<List<OrganizationReference>> GetOrganizationChildrenAsync(string orgId, OrganizationChildrenRetrievalOptions? options, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(orgId, nameof(orgId));
@@ -183,7 +167,6 @@ namespace EncompassRest.Organizations
             return GetDirtyListAsync<OrganizationReference>($"{orgId}/children", options?.GetQueryParameters().ToString(), nameof(GetOrganizationChildrenAsync), orgId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetOrganizationChildrenRawAsync(string orgId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(orgId, nameof(orgId));

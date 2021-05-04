@@ -20,7 +20,7 @@ namespace EncompassRest.Company
     /// <summary>
     /// Company Apis
     /// </summary>
-    public sealed class Company : ApiObject, ICompany
+    internal sealed class Company : ApiObject, ICompany
     {
         private Users.Users? _users;
         private GlobalCustomDataObjects? _globalCustomDataObjects;
@@ -28,7 +28,7 @@ namespace EncompassRest.Company
         /// <summary>
         /// Users Apis
         /// </summary>
-        public Users.Users Users
+        public Users.IUsers Users
         {
             get
             {
@@ -37,12 +37,10 @@ namespace EncompassRest.Company
             }
         }
 
-        Users.IUsers ICompany.Users => Users;
-
         /// <summary>
         /// Global Custom Data Objects Apis
         /// </summary>
-        public GlobalCustomDataObjects GlobalCustomDataObjects
+        public IGlobalCustomDataObjects GlobalCustomDataObjects
         {
             get
             {
@@ -50,8 +48,6 @@ namespace EncompassRest.Company
                 return globalCustomDataObjects ?? Interlocked.CompareExchange(ref _globalCustomDataObjects, (globalCustomDataObjects = new GlobalCustomDataObjects(Client)), null) ?? globalCustomDataObjects;
             }
         }
-
-        IGlobalCustomDataObjects ICompany.GlobalCustomDataObjects => GlobalCustomDataObjects;
 
         internal Company(EncompassRestClient client)
             : base(client, "encompass/v1/company")

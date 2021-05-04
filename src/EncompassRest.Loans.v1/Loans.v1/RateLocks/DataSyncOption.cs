@@ -8,12 +8,12 @@ namespace EncompassRest.Loans.RateLocks.v1
     public enum DataSyncOption
     {
         /// <summary>
-        /// NoSync
+        /// noSync
         /// </summary>
         [EnumMember(Value = "noSync")]
         NoSync = 0,
         /// <summary>
-        /// SyncLockToLoan
+        /// syncLockToLoan
         /// </summary>
         [EnumMember(Value = "syncLockToLoan")]
         SyncLockToLoan = 1

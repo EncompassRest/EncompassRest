@@ -39,10 +39,7 @@ namespace EncompassRest.Contacts
         IContactNotes GetContactNotes(ContactType type, string contactId);
     }
 
-    /// <summary>
-    /// The Contacts Apis.
-    /// </summary>
-    public sealed class Contacts : ApiObject, IContacts
+    internal sealed class Contacts : ApiObject, IContacts
     {
         private BorrowerContacts? _borrowerContacts;
         private BusinessContacts? _businessContacts;
@@ -50,10 +47,7 @@ namespace EncompassRest.Contacts
         private BusinessContactSelector? _businessContactSelector;
         private ContactGroups? _groups;
 
-        /// <summary>
-        /// The Borrower Contacts Apis.
-        /// </summary>
-        public BorrowerContacts BorrowerContacts
+        public IBorrowerContacts BorrowerContacts
         {
             get
             {
@@ -62,12 +56,7 @@ namespace EncompassRest.Contacts
             }
         }
 
-        IBorrowerContacts IContacts.BorrowerContacts => BorrowerContacts;
-
-        /// <summary>
-        /// The Business Contacts Apis.
-        /// </summary>
-        public BusinessContacts BusinessContacts
+        public IBusinessContacts BusinessContacts
         {
             get
             {
@@ -76,12 +65,7 @@ namespace EncompassRest.Contacts
             }
         }
 
-        IBusinessContacts IContacts.BusinessContacts => BusinessContacts;
-
-        /// <summary>
-        /// The Borrower Contact Selector Apis.
-        /// </summary>
-        public BorrowerContactSelector BorrowerContactSelector
+        public IBorrowerContactSelector BorrowerContactSelector
         {
             get
             {
@@ -90,12 +74,7 @@ namespace EncompassRest.Contacts
             }
         }
 
-        IBorrowerContactSelector IContacts.BorrowerContactSelector => BorrowerContactSelector;
-
-        /// <summary>
-        /// The Business Contact Selector Apis.
-        /// </summary>
-        public BusinessContactSelector BusinessContactSelector
+        public IBusinessContactSelector BusinessContactSelector
         {
             get
             {
@@ -104,12 +83,7 @@ namespace EncompassRest.Contacts
             }
         }
 
-        IBusinessContactSelector IContacts.BusinessContactSelector => BusinessContactSelector;
-
-        /// <summary>
-        /// The Contact Groups Apis.
-        /// </summary>
-        public ContactGroups Groups
+        public IContactGroups Groups
         {
             get
             {
@@ -117,8 +91,6 @@ namespace EncompassRest.Contacts
                 return groups ?? Interlocked.CompareExchange(ref _groups, (groups = new ContactGroups(Client)), null) ?? groups;
             }
         }
-
-        IContactGroups IContacts.Groups => Groups;
 
         internal Contacts(EncompassRestClient client)
             : base(client, null)
@@ -215,11 +187,7 @@ namespace EncompassRest.Contacts
         Task UpdateContactAsync(TContact contact, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Base Contacts Apis.
-    /// </summary>
-    /// <typeparam name="TContact">The contact type.</typeparam>
-    public abstract class Contacts<TContact> : ApiObject, IContacts<TContact>
+    internal abstract class Contacts<TContact> : ApiObject, IContacts<TContact>
         where TContact : Contact
     {
         private readonly string _apiPath;
@@ -230,21 +198,13 @@ namespace EncompassRest.Contacts
             _apiPath = baseApiPath;
         }
 
-        /// <summary>
-        /// Gets the Contact Notes Apis for the contact with the specified <paramref name="contactId"/>.
-        /// </summary>
-        /// <param name="contactId">The unique identifier that is returned in the response when the contact is created.</param>
-        /// <returns></returns>
-        public ContactNotes GetContactNotes(string contactId)
+        public IContactNotes GetContactNotes(string contactId)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
             return new ContactNotes(Client, contactId, _apiPath);
         }
 
-        IContactNotes IContacts<TContact>.GetContactNotes(string contactId) => GetContactNotes(contactId);
-
-        /// <inheritdoc/>
         public async Task<TContact> GetContactAsync(string contactId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -254,7 +214,6 @@ namespace EncompassRest.Contacts
             return contact;
         }
 
-        /// <inheritdoc/>
         public Task<string> GetContactRawAsync(string contactId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -262,7 +221,6 @@ namespace EncompassRest.Contacts
             return GetRawAsync(contactId, queryString, nameof(GetContactRawAsync), contactId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateContactAsync(TContact contact, CancellationToken cancellationToken = default) => CreateContactAsync(contact, false, cancellationToken);
 
         private async Task<string> CreateContactAsync(TContact contact, bool populate, CancellationToken cancellationToken = default)
@@ -275,7 +233,6 @@ namespace EncompassRest.Contacts
             return contactId;
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateContactRawAsync(string contact, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
@@ -283,7 +240,6 @@ namespace EncompassRest.Contacts
             return PostAsync(null, queryString, new JsonStringContent(contact), nameof(CreateContactRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
-        /// <inheritdoc/>
         public Task UpdateContactAsync(TContact contact, CancellationToken cancellationToken = default) => UpdateContactAsync(contact, false, cancellationToken);
 
         private Task UpdateContactAsync(TContact contact, bool populate, CancellationToken cancellationToken = default)
@@ -296,7 +252,6 @@ namespace EncompassRest.Contacts
             return PatchPopulateDirtyAsync(contact.Id, JsonStreamContent.Create(contact), nameof(UpdateContactAsync), contact.Id, contact, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> UpdateContactRawAsync(string contactId, string contact, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -305,7 +260,6 @@ namespace EncompassRest.Contacts
             return PatchRawAsync(contactId, queryString, new JsonStringContent(contact), nameof(UpdateContactRawAsync), contactId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<bool> TryDeleteContactAsync(string contactId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -313,7 +267,6 @@ namespace EncompassRest.Contacts
             return TryDeleteAsync(contactId, null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task DeleteContactAsync(string contactId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));

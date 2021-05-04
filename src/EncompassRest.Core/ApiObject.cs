@@ -18,7 +18,7 @@ namespace EncompassRest
     /// <summary>
     /// Base Api Class.
     /// </summary>
-    public abstract class ApiObject : IApiObject
+    internal abstract class ApiObject : IApiObject
     {
         internal static readonly HttpMethod PatchMethod = new HttpMethod("PATCH");
 

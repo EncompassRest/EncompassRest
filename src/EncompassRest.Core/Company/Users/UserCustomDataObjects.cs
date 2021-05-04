@@ -9,12 +9,8 @@ namespace EncompassRest.Company.Users
     {
     }
 
-    /// <summary>
-    /// User Custom Data Objects Apis
-    /// </summary>
-    public sealed class UserCustomDataObjects : CustomDataObjects.CustomDataObjects, IUserCustomDataObjects
+    internal sealed class UserCustomDataObjects : CustomDataObjects.CustomDataObjects, IUserCustomDataObjects
     {
-        /// <inheritdoc/>
         public string UserId { get; }
 
         internal UserCustomDataObjects(EncompassRestClient client, string userId)

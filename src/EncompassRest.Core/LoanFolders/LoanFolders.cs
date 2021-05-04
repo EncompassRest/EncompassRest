@@ -20,17 +20,13 @@ namespace EncompassRest.LoanFolders
         Task MoveLoanToFolderAsync(string loanId, string loanFolder, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Loan Folders Apis.
-    /// </summary>
-    public sealed class LoanFolders : ApiObject, ILoanFolders
+    internal sealed class LoanFolders : ApiObject, ILoanFolders
     {
         internal LoanFolders(EncompassRestClient client)
             : base(client, "encompass/v1/loanfolders")
         {
         }
 
-        /// <inheritdoc/>
         public Task MoveLoanToFolderAsync(string loanId, string loanFolder, CancellationToken cancellationToken = default) => PatchAsync($"{Uri.EscapeDataString(loanFolder)}/loans", "?action=add", new JsonStringContent($@"{{""loanGuid"":""{loanId}""}}"), nameof(MoveLoanToFolderAsync), loanId, cancellationToken);
     }
 }

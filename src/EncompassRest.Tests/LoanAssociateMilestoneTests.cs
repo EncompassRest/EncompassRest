@@ -4,6 +4,8 @@ using EncompassRest.Loans.v1;
 using EncompassRest.Loans.v1.Enums;
 using EncompassRest.Loans.Milestones.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EncompassRest.Loans.Associates.v1;
+using EncompassRest.Loans.MilestoneFreeRoles.v1;
 
 namespace EncompassRest.Tests
 {

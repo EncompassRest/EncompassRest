@@ -85,23 +85,17 @@ namespace EncompassRest.Contacts
         Task<string> UpdateNoteRawAsync(string noteId, string note, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Contact Notes Apis.
-    /// </summary>
-    public sealed class ContactNotes : ContactApiObject, IContactNotes
+    internal sealed class ContactNotes : ContactApiObject, IContactNotes
     {
         internal ContactNotes(EncompassRestClient client, string contactId, string baseApiPath)
             : base(client, contactId, $"{baseApiPath}/{contactId}/notes")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<ContactNote>> GetNotesAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<ContactNote>(null, null, nameof(GetNotesAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetNotesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetNotesRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<ContactNote> GetNoteAsync(string noteId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
@@ -109,7 +103,6 @@ namespace EncompassRest.Contacts
             return GetDirtyAsync<ContactNote>(noteId, null, nameof(GetNoteAsync), noteId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetNoteRawAsync(string noteId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
@@ -117,7 +110,6 @@ namespace EncompassRest.Contacts
             return GetRawAsync(noteId, queryString, nameof(GetNoteRawAsync), noteId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateNoteAsync(ContactNote note, CancellationToken cancellationToken = default) => CreateNoteAsync(note, false, cancellationToken);
 
         private Task<string> CreateNoteAsync(ContactNote note, bool populate, CancellationToken cancellationToken = default)
@@ -128,7 +120,6 @@ namespace EncompassRest.Contacts
             return PostPopulateDirtyAsync(null, nameof(CreateNoteAsync), note, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateNoteRawAsync(string note, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(note, nameof(note));
@@ -136,7 +127,6 @@ namespace EncompassRest.Contacts
             return PostAsync(null, queryString, new JsonStringContent(note), nameof(CreateNoteRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
-        /// <inheritdoc/>
         public Task UpdateNoteAsync(ContactNote note, CancellationToken cancellationToken = default) => UpdateNoteAsync(note, false, cancellationToken);
 
         private Task UpdateNoteAsync(ContactNote note, bool populate, CancellationToken cancellationToken = default)
@@ -148,7 +138,6 @@ namespace EncompassRest.Contacts
             return PatchPopulateDirtyAsync(note.NoteId, JsonStreamContent.Create(note), nameof(UpdateNoteAsync), note.NoteId, note, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> UpdateNoteRawAsync(string noteId, string note, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
@@ -157,7 +146,6 @@ namespace EncompassRest.Contacts
             return PatchRawAsync(noteId, queryString, new JsonStringContent(note), nameof(UpdateNoteRawAsync), noteId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<bool> TryDeleteNoteAsync(string noteId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
@@ -165,7 +153,6 @@ namespace EncompassRest.Contacts
             return TryDeleteAsync(noteId, null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task DeleteNoteAsync(string noteId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));

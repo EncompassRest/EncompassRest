@@ -190,26 +190,19 @@ namespace EncompassRest.Webhook
         Task<string> GetEventRawAsync(string eventId, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Webhook Apis.
-    /// </summary>
-    public sealed class Webhook : ApiObject, IWebhook
+    internal sealed class Webhook : ApiObject, IWebhook
     {
         internal Webhook(EncompassRestClient client)
             : base(client, "webhook/v1")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<WebhookResource>> GetResourcesAsync(CancellationToken cancellationToken = default) => GetAsync<List<WebhookResource>>("resources", null, nameof(GetResourcesAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetResourcesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("resources", queryString, nameof(GetResourcesRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<WebhookResource> GetResourceAsync(WebhookResourceType resourceName, CancellationToken cancellationToken = default) => GetResourceAsync(resourceName.Validate(nameof(resourceName)).GetValue()!, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<WebhookResource> GetResourceAsync(string resourceName, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(resourceName, nameof(resourceName));
@@ -217,7 +210,6 @@ namespace EncompassRest.Webhook
             return GetAsync<WebhookResource>($"resources/{resourceName}", null, nameof(GetResourcesAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetResourceRawAsync(string resourceName, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(resourceName, nameof(resourceName));
@@ -225,10 +217,8 @@ namespace EncompassRest.Webhook
             return GetRawAsync($"resources/{resourceName}", queryString, nameof(GetResourcesRawAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<List<WebhookResourceEventObject>> GetResourceEventsAsync(WebhookResourceType resourceName, CancellationToken cancellationToken = default) => GetResourceEventsAsync(resourceName.Validate(nameof(resourceName)).GetValue()!, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<List<WebhookResourceEventObject>> GetResourceEventsAsync(string resourceName, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(resourceName, nameof(resourceName));
@@ -236,7 +226,6 @@ namespace EncompassRest.Webhook
             return GetAsync<List<WebhookResourceEventObject>>($"resources/{resourceName}/events", null, nameof(GetResourceEventsAsync), resourceName, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetResourceEventsRawAsync(string resourceName, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(resourceName, nameof(resourceName));
@@ -244,17 +233,10 @@ namespace EncompassRest.Webhook
             return GetRawAsync($"resources/{resourceName}/events", queryString, nameof(GetResourceEventsRawAsync), resourceName, cancellationToken);
         }
 
-        /// <summary>
-        /// Returns a list of subscriptions.
-        /// </summary>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
         public Task<List<WebhookSubscription>> GetSubscriptionsAsync(CancellationToken cancellationToken = default) => GetSubscriptionsAsync((IEnumerable<string>?)null, null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<WebhookResourceType>? resources, IEnumerable<WebhookResourceEvent>? events, CancellationToken cancellationToken = default) => GetSubscriptionsAsync(resources?.Select(r => r.Validate(nameof(resources)).GetValue()!), events?.Select(e => e.Validate(nameof(events)).GetValue()!), cancellationToken);
 
-        /// <inheritdoc/>
         public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<string>? resources, IEnumerable<string>? events, CancellationToken cancellationToken = default)
         {
             var queryParameters = new QueryParameters();
@@ -270,10 +252,8 @@ namespace EncompassRest.Webhook
             return GetDirtyListAsync<WebhookSubscription>("subscriptions", queryParameters.ToString(), nameof(GetSubscriptionsAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetSubscriptionsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("subscriptions", queryString, nameof(GetSubscriptionsRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<WebhookSubscription> GetSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
@@ -281,7 +261,6 @@ namespace EncompassRest.Webhook
             return GetDirtyAsync<WebhookSubscription>($"subscriptions/{subscriptionId}", null, nameof(GetSubscriptionAsync), subscriptionId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetSubscriptionRawAsync(string subscriptionId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
@@ -289,7 +268,6 @@ namespace EncompassRest.Webhook
             return GetRawAsync($"subscriptions/{subscriptionId}", queryString, nameof(GetSubscriptionRawAsync), subscriptionId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateSubscriptionAsync(WebhookSubscription subscription, CancellationToken cancellationToken = default) => CreateSubscriptionAsync(subscription, false, cancellationToken);
 
         private Task<string> CreateSubscriptionAsync(WebhookSubscription subscription, bool populate, CancellationToken cancellationToken = default)
@@ -300,7 +278,6 @@ namespace EncompassRest.Webhook
             return PostPopulateDirtyAsync("subscriptions", nameof(CreateSubscriptionAsync), subscription, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateSubscriptionRawAsync(string subscription, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(subscription, nameof(subscription));
@@ -308,7 +285,6 @@ namespace EncompassRest.Webhook
             return PostAsync("subscriptions", queryString, new JsonStringContent(subscription), nameof(CreateSubscriptionRawAsync), null, cancellationToken, ReadLocationFunc);
         }
 
-        /// <inheritdoc/>
         public Task UpdateSubscriptionAsync(WebhookSubscription subscription, CancellationToken cancellationToken = default) => UpdateSubscriptionAsync(subscription, false, cancellationToken);
 
         private Task UpdateSubscriptionAsync(WebhookSubscription subscription, bool populate, CancellationToken cancellationToken = default)
@@ -319,7 +295,6 @@ namespace EncompassRest.Webhook
             return PutPopulateDirtyAsync($"subscriptions/{subscription.SubscriptionId}", JsonStreamContent.Create(subscription), nameof(UpdateSubscriptionAsync), subscription.SubscriptionId, subscription, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> UpdateSubscriptionRawAsync(string subscriptionId, string subscription, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
@@ -328,7 +303,6 @@ namespace EncompassRest.Webhook
             return PutRawAsync($"subscriptions/{subscriptionId}", queryString, new JsonStringContent(subscription), nameof(UpdateSubscriptionRawAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<bool> TryDeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
@@ -336,7 +310,6 @@ namespace EncompassRest.Webhook
             return TryDeleteAsync($"subscriptions/{subscriptionId}", null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task DeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
@@ -344,13 +317,10 @@ namespace EncompassRest.Webhook
             return DeleteAsync($"subscriptions/{subscriptionId}", null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<List<WebhookEvent>> GetEventsAsync(WebhookEventOptions? options = null, CancellationToken cancellationToken = default) => GetAsync<List<WebhookEvent>>("events", options?.ToQueryParameters().ToString(), nameof(GetEventsAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetEventsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("events", queryString, nameof(GetEventsRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<List<WebhookEvent>> GetEventAsync(string eventId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(eventId, nameof(eventId));
@@ -358,7 +328,6 @@ namespace EncompassRest.Webhook
             return GetAsync<List<WebhookEvent>>($"events/{eventId}", null, nameof(GetEventAsync), eventId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetEventRawAsync(string eventId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(eventId, nameof(eventId));

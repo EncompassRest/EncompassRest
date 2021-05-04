@@ -1,73 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using EncompassRest.Loans.v1;
 using EncompassRest.Utilities;
 using EnumsNET;
 
 namespace EncompassRest.Loans.Conditions.v1
 {
     /// <summary>
-    /// The Loan Conditions Apis.
-    /// </summary>
-    public interface ILoanConditions : ILoanApiObject
-    {
-        /// <summary>
-        /// The Loan PostClosing Conditions Apis.
-        /// </summary>
-        ILoanPostClosingConditions PostClosing { get; }
-        /// <summary>
-        /// The Loan Preliminary Conditions Apis.
-        /// </summary>
-        ILoanPreliminaryConditions Preliminary { get; }
-        /// <summary>
-        /// The Loan Underwriting Conditions Apis.
-        /// </summary>
-        ILoanUnderwritingConditions Underwriting { get; }
-    }
-
-    /// <summary>
-    /// The Loan Conditions Apis.
-    /// </summary>
-    public sealed class LoanConditions : LoanApiObject, ILoanConditions
-    {
-        private LoanUnderwritingConditions? _underwriting;
-        private LoanPreliminaryConditions? _preliminary;
-        private LoanPostClosingConditions? _postClosing;
-
-        /// <summary>
-        /// The Loan Underwriting Conditions Apis.
-        /// </summary>
-        public LoanUnderwritingConditions Underwriting => _underwriting ??= new LoanUnderwritingConditions(Client, LoanId);
-
-        ILoanUnderwritingConditions ILoanConditions.Underwriting => Underwriting;
-
-        /// <summary>
-        /// The Loan Preliminary Conditions Apis.
-        /// </summary>
-        public LoanPreliminaryConditions Preliminary => _preliminary ??= new LoanPreliminaryConditions(Client, LoanId);
-
-        ILoanPreliminaryConditions ILoanConditions.Preliminary => Preliminary;
-
-        /// <summary>
-        /// The Loan PostClosing Conditions Apis.
-        /// </summary>
-        public LoanPostClosingConditions PostClosing => _postClosing ??= new LoanPostClosingConditions(Client, LoanId);
-
-        ILoanPostClosingConditions ILoanConditions.PostClosing => PostClosing;
-
-        internal LoanConditions(EncompassRestClient client, string loanId)
-            : base(client, loanId, "conditions")
-        {
-        }
-    }
-
-    /// <summary>
     /// The Base Loan Conditions Apis Interface.
     /// </summary>
     /// <typeparam name="TCondition"></typeparam>
-    public interface ILoanConditions<TCondition> : ILoanApiObject
+    public interface ILoanConditionsV1<TCondition> : ILoanApiObject
         where TCondition : LoanCondition
     {
         /// <summary>
@@ -78,23 +23,7 @@ namespace EncompassRest.Loans.Conditions.v1
         /// <param name="documents">The documents to assign or unassign.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        Task AssignConditionDocumentsAsync(string conditionId, AssignmentAction action, IEnumerable<EntityReference> documents, CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Assigns or unassigns documents from the specified condition.
-        /// </summary>
-        /// <param name="conditionId">The unique identifier assigned to the condition for which to assign or unassign documents.</param>
-        /// <param name="action">Action to perform.</param>
-        /// <param name="documents">The documents to assign or unassign.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
         Task AssignConditionDocumentsAsync(string conditionId, string action, IEnumerable<EntityReference> documents, CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Creates a condition for the loan and returns the id of the condition created.
-        /// </summary>
-        /// <param name="condition">The condition to create.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task<string> CreateConditionAsync(TCondition condition, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a condion for the loan and returns the id of the condition created and optionally populates the condition object with the response's body through the use of the entity view query parameter.
         /// </summary>
@@ -103,14 +32,6 @@ namespace EncompassRest.Loans.Conditions.v1
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task<string> CreateConditionAsync(TCondition condition, bool populate, CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Creates multiple comments for the loan condition.
-        /// </summary>
-        /// <param name="conditionId">The unique identifier assigned to the condition for which to add comments.</param>
-        /// <param name="comments">The condition comments to create.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task CreateConditionCommentsAsync(string conditionId, IEnumerable<Comment> comments, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates multiple comments for the loan condition and optionally populates the comment objects with the response's body through the use of the entity view query parameter.
         /// </summary>
@@ -128,13 +49,6 @@ namespace EncompassRest.Loans.Conditions.v1
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task<string> CreateConditionRawAsync(string condition, string? queryString = null, CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Creates multiple conditions for the loan.
-        /// </summary>
-        /// <param name="conditions">The conditions to create.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task CreateConditionsAsync(IEnumerable<TCondition> conditions, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates multiple conditions for the loan and optionally populates the condition objects with the response's body through the use of the entity view query parameter.
         /// </summary>
@@ -214,13 +128,6 @@ namespace EncompassRest.Loans.Conditions.v1
         /// <returns></returns>
         Task<string> ManageConditionsRawAsync(string content, string queryString, CancellationToken cancellationToken = default);
         /// <summary>
-        /// Updates multiple conditions for the loan.
-        /// </summary>
-        /// <param name="conditions">The conditions to update.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task UpdateConditionsAsync(IEnumerable<TCondition> conditions, CancellationToken cancellationToken = default);
-        /// <summary>
         /// Updates multiple conditions for the loan and optionally populates the condition objects with the response's body through the use of the entity view query parameter.
         /// </summary>
         /// <param name="conditions">The conditions to update.</param>
@@ -230,25 +137,18 @@ namespace EncompassRest.Loans.Conditions.v1
         Task UpdateConditionsAsync(IEnumerable<TCondition> conditions, bool populate, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Base Loan Conditions Apis Class.
-    /// </summary>
-    /// <typeparam name="TCondition"></typeparam>
-    public abstract class LoanConditions<TCondition> : LoanApiObject, ILoanConditions<TCondition>
+    internal abstract class LoanConditionsV1<TCondition> : LoanApiObject, ILoanConditionsV1<TCondition>
         where TCondition : LoanCondition
     {
-        internal LoanConditions(EncompassRestClient client, string loanId, string baseApiPath)
-            : base(client, loanId, $"conditions{baseApiPath?.PrecedeWith("/")}")
+        internal LoanConditionsV1(EncompassRestClient client, ILoanApis loanApis, string loanId, string baseApiPath)
+            : base(client, loanApis, loanId, $"conditions{baseApiPath?.PrecedeWith("/")}")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<TCondition>> GetConditionsAsync(ConditionQueryParameters? queryParameters = null, CancellationToken cancellationToken = default) => GetDirtyListAsync<TCondition>(null, queryParameters?.ToString(), nameof(GetConditionsAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetConditionsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetConditionsRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<TCondition> GetConditionAsync(string conditionId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(conditionId, nameof(conditionId));
@@ -256,7 +156,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return GetDirtyAsync<TCondition>(conditionId, null, nameof(GetConditionAsync), conditionId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetConditionRawAsync(string conditionId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(conditionId, nameof(conditionId));
@@ -264,10 +163,8 @@ namespace EncompassRest.Loans.Conditions.v1
             return GetRawAsync(conditionId, queryString, nameof(GetConditionRawAsync), conditionId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateConditionAsync(TCondition condition, CancellationToken cancellationToken = default) => CreateConditionAsync(condition, false, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> CreateConditionAsync(TCondition condition, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(condition, nameof(condition));
@@ -276,7 +173,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return PostPopulateDirtyAsync(null, nameof(CreateConditionAsync), condition, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateConditionRawAsync(string condition, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(condition, nameof(condition));
@@ -284,10 +180,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return PostAsync(null, queryString, new JsonStringContent(condition), nameof(CreateConditionRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
-        /// <inheritdoc/>
-        public Task CreateConditionsAsync(IEnumerable<TCondition> conditions, CancellationToken cancellationToken = default) => CreateConditionsAsync(conditions, false, cancellationToken);
-
-        /// <inheritdoc/>
         public Task CreateConditionsAsync(IEnumerable<TCondition> conditions, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(conditions, nameof(conditions));
@@ -309,10 +201,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return PatchPopulateDirtyAsync(null, queryParameters.ToString(), JsonStreamContent.Create(conditions), nameof(CreateConditionsAsync), null, dirtyList, true, cancellationToken);
         }
 
-        /// <inheritdoc/>
-        public Task UpdateConditionsAsync(IEnumerable<TCondition> conditions, CancellationToken cancellationToken = default) => UpdateConditionsAsync(conditions, false, cancellationToken);
-
-        /// <inheritdoc/>
         public Task UpdateConditionsAsync(IEnumerable<TCondition> conditions, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(conditions, nameof(conditions));
@@ -337,7 +225,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return PatchPopulateDirtyAsync(null, queryParameters.ToString(), JsonStreamContent.Create(conditions), nameof(UpdateConditionsAsync), null, dirtyList, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<bool> DeleteConditionsAsync(IEnumerable<string> conditionIds, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(conditionIds, nameof(conditionIds));
@@ -355,7 +242,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return SendAsync(PatchMethod, null, "action=remove", JsonStreamContent.Create(list), nameof(DeleteConditionsAsync), null, cancellationToken, r => Task.FromResult(r.IsSuccessStatusCode), false);
         }
 
-        /// <inheritdoc/>
         public Task<string> ManageConditionsRawAsync(string content, string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(content, nameof(content));
@@ -364,10 +250,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return PatchRawAsync(null, queryString, new JsonStringContent(content), nameof(ManageConditionsRawAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
-        public Task CreateConditionCommentsAsync(string conditionId, IEnumerable<Comment> comments, CancellationToken cancellationToken = default) => CreateConditionCommentsAsync(conditionId, comments, false, cancellationToken);
-
-        /// <inheritdoc/>
         public Task CreateConditionCommentsAsync(string conditionId, IEnumerable<Comment> comments, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(conditionId, nameof(conditionId));
@@ -388,7 +270,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return PatchPopulateDirtyAsync($"{conditionId}/comments", JsonStreamContent.Create(dirtyList), nameof(CreateConditionCommentsAsync), conditionId, dirtyList, true, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<bool> DeleteConditionCommentsAsync(string conditionId, IEnumerable<string> commentIds, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(commentIds, nameof(commentIds));
@@ -406,7 +287,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return SendAsync(PatchMethod, $"{conditionId}/comments", "action=remove", JsonStreamContent.Create(list), nameof(DeleteConditionCommentsAsync), conditionId, cancellationToken, r => Task.FromResult(r.IsSuccessStatusCode), false);
         }
 
-        /// <inheritdoc/>
         public Task<string> ManageConditionCommentsRawAsync(string conditionId, string content, string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(conditionId, nameof(conditionId));
@@ -416,10 +296,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return PatchRawAsync($"{conditionId}/comments", queryString, new JsonStringContent(content), nameof(ManageConditionCommentsRawAsync), conditionId, cancellationToken);
         }
 
-        /// <inheritdoc/>
-        public Task AssignConditionDocumentsAsync(string conditionId, AssignmentAction action, IEnumerable<EntityReference> documents, CancellationToken cancellationToken = default) => AssignConditionDocumentsAsync(conditionId, action.Validate(nameof(action)).GetValue()!, documents, cancellationToken);
-
-        /// <inheritdoc/>
         public Task AssignConditionDocumentsAsync(string conditionId, string action, IEnumerable<EntityReference> documents, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(conditionId, nameof(conditionId));
@@ -431,7 +307,6 @@ namespace EncompassRest.Loans.Conditions.v1
             return PatchAsync($"{conditionId}/documents", queryParameters.ToString(), JsonStreamContent.Create(documents), nameof(AssignConditionDocumentsAsync), conditionId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> ManageConditionDocumentsRawAsync(string conditionId, string documents, string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(conditionId, nameof(conditionId));

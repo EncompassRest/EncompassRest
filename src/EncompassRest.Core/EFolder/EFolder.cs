@@ -69,10 +69,7 @@ namespace EncompassRest.EFolder
         Task RefreshExportJobAsync(ExportAttachmentsJob job, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The EFolder Apis.
-    /// </summary>
-    public sealed class EFolder : ApiObject, IEFolder
+    internal sealed class EFolder : ApiObject, IEFolder
     {
         private AttachmentJobApiObject? _attachmentJobApi;
 
@@ -90,7 +87,6 @@ namespace EncompassRest.EFolder
         {
         }
 
-        /// <inheritdoc/>
         public async Task<ExportAttachmentsJob> ExportAttachmentsAsync(ExportAttachmentsParameters parameters, ExportAttachmentsOptions? options = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
@@ -100,10 +96,8 @@ namespace EncompassRest.EFolder
             return job;
         }
 
-        /// <inheritdoc/>
         public Task<string> ExportAttachmentsRawAsync(string parameters, string? queryString = null, CancellationToken cancellationToken = default) => PostRawAsync(null, queryString, new JsonStringContent(parameters), nameof(ExportAttachmentsRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public async Task<ExportAttachmentsJob> GetExportStatusAsync(string jobId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(jobId, nameof(jobId));
@@ -113,7 +107,6 @@ namespace EncompassRest.EFolder
             return job;
         }
 
-        /// <inheritdoc/>
         public Task<string> GetExportStatusRawAsync(string jobId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(jobId, nameof(jobId));
@@ -121,10 +114,8 @@ namespace EncompassRest.EFolder
             return GetRawAsync(jobId, queryString, nameof(GetExportStatusRawAsync), jobId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<byte[]> DownloadAttachmentsAsync(ExportAttachmentsJob job, CancellationToken cancellationToken = default) => DownloadAttachmentsInternalAsync(job, nameof(DownloadAttachmentsAsync), cancellationToken, ReadAsByteArrayFunc, disposeResponse: true);
 
-        /// <inheritdoc/>
         public Task<Stream> DownloadAttachmentsStreamAsync(ExportAttachmentsJob job, CancellationToken cancellationToken = default) => DownloadAttachmentsInternalAsync(job, nameof(DownloadAttachmentsStreamAsync), cancellationToken, ReadAsStreamFunc, disposeResponse: false);
 
         private Task<T> DownloadAttachmentsInternalAsync<T>(ExportAttachmentsJob job, string methodName, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool disposeResponse)
@@ -147,7 +138,6 @@ namespace EncompassRest.EFolder
             return AttachmentJobApi.DownloadAttachmentsAsync(job, methodName, cancellationToken, func, disposeResponse);
         }
 
-        /// <inheritdoc/>
         public Task RefreshExportJobAsync(ExportAttachmentsJob job, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(job, nameof(job));

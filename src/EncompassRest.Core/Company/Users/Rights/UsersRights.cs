@@ -43,23 +43,17 @@ namespace EncompassRest.Company.Users.Rights
         Task<string> GetRightsRawAsync(UserRightsType type, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// User Rights Apis
-    /// </summary>
-    public sealed class UsersRights : UserApiObject, IUsersRights
+    internal sealed class UsersRights : UserApiObject, IUsersRights
     {
         internal UsersRights(EncompassRestClient client, string userId)
             : base(client, userId, null)
         {
         }
 
-        /// <inheritdoc/>
         public Task<UserRights> GetRightsAsync(UserRightsType type, CancellationToken cancellationToken = default) => GetRightsAsync(type, null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<UserRights> GetRightsAsync(UserRightsType type, UserRightsCategory category, CancellationToken cancellationToken = default) => GetRightsAsync(type, category.Validate(nameof(category)).GetValue(), cancellationToken);
 
-        /// <inheritdoc/>
         public Task<UserRights> GetRightsAsync(UserRightsType type, string? category, CancellationToken cancellationToken = default)
         {
             type.Validate(nameof(type));
@@ -73,7 +67,6 @@ namespace EncompassRest.Company.Users.Rights
             return GetDirtyAsync<UserRights>(path, queryParameters.ToString(), nameof(GetRightsAsync), path, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetRightsRawAsync(UserRightsType type, string? queryString = null, CancellationToken cancellationToken = default)
         {
             type.Validate(nameof(type));

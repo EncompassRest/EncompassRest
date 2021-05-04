@@ -89,17 +89,13 @@ namespace EncompassRest.Services
         Task<Stream> ExportLoanToMismoStreamAsync(string loanId, string format, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Services Apis.
-    /// </summary>
-    public sealed class Services : ApiObject, IServices
+    internal sealed class Services : ApiObject, IServices
     {
         internal Services(EncompassRestClient client)
             : base(client, "services")
         {
         }
 
-        /// <inheritdoc/>
         public Task<string> OrderServiceAsync(string partnerId, OrderServiceParameters parameters, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
@@ -108,7 +104,6 @@ namespace EncompassRest.Services
             return PostAsync($"v1/partners/{partnerId}/transactions", null, JsonStreamContent.Create(parameters), nameof(OrderServiceAsync), partnerId, cancellationToken, ReadLocationFunc);
         }
 
-        /// <inheritdoc/>
         public Task<string> OrderServiceRawAsync(string partnerId, string parameters, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
@@ -117,10 +112,8 @@ namespace EncompassRest.Services
             return PostAsync($"v1/partners/{partnerId}/transactions", queryString, new JsonStringContent(parameters), nameof(OrderServiceRawAsync), partnerId, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
-        /// <inheritdoc/>
         public Task<ServiceTransaction> GetServiceOrderStatusAsync(string partnerId, string transactionId, CancellationToken cancellationToken = default) => GetServiceOrderStatusAsync(partnerId, transactionId, null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<ServiceTransaction> GetServiceOrderStatusAsync(string partnerId, string transactionId, bool? generateFileUrls, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
@@ -135,7 +128,6 @@ namespace EncompassRest.Services
             return GetAsync<ServiceTransaction>($"v1/partners/{partnerId}/transactions/{transactionId}", queryParameters.ToString(), nameof(GetServiceOrderStatusAsync), $"{partnerId}/{transactionId}", cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetServiceOrderStatusRawAsync(string partnerId, string transactionId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
@@ -144,10 +136,8 @@ namespace EncompassRest.Services
             return GetRawAsync($"v1/partners/{partnerId}/transactions/{transactionId}", queryString, nameof(GetServiceOrderStatusRawAsync), $"{partnerId}/{transactionId}", cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<byte[]> ExportLoanToMismoAsync(string loanId, MismoFormat format, CancellationToken cancellationToken = default) => ExportLoanToMismoAsync(loanId, format.Validate(nameof(format)).GetValue()!, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<byte[]> ExportLoanToMismoAsync(string loanId, string format, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
@@ -160,10 +150,8 @@ namespace EncompassRest.Services
             return SendAsync(HttpMethod.Get, "v1/transformer", queryParamerters.ToString(), null, nameof(ExportLoanToMismoAsync), loanId, cancellationToken, ReadAsByteArrayFunc);
         }
 
-        /// <inheritdoc/>
         public Task<Stream> ExportLoanToMismoStreamAsync(string loanId, MismoFormat format, CancellationToken cancellationToken = default) => ExportLoanToMismoStreamAsync(loanId, format.Validate(nameof(format)).GetValue()!, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<Stream> ExportLoanToMismoStreamAsync(string loanId, string format, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));

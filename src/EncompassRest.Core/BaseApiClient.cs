@@ -163,7 +163,7 @@ namespace EncompassRest
     /// <summary>
     /// A base Api client for use when Apis aren't supported directly.
     /// </summary>
-    public sealed class BaseApiClient : ApiObject, IBaseApiClient
+    internal sealed class BaseApiClient : ApiObject, IBaseApiClient
     {
         internal override string? BaseAddress => null;
 

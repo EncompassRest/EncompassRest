@@ -37,23 +37,14 @@ namespace EncompassRest.Contacts
         Task<string> GetContactListRawAsync(string parameters, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Base Contact Selector Apis.
-    /// </summary>
-    public abstract class ContactSelector : ApiObject, IContactSelector
+    internal abstract class ContactSelector : ApiObject, IContactSelector
     {
         internal ContactSelector(EncompassRestClient client, string baseApiPath)
             : base(client, baseApiPath)
         {
         }
 
-        /// <summary>
-        /// Creates a cursor to paginate large data sets.
-        /// </summary>
-        /// <param name="parameters">The contact list parameters used to specify the contacts and fields to include.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        public Task<ContactCursor> CreateCursorAsync(ContactListParameters parameters, CancellationToken cancellationToken = default)
+        public Task<IContactCursor> CreateCursorAsync(ContactListParameters parameters, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
@@ -84,13 +75,10 @@ namespace EncompassRest.Contacts
                     }
                     cursorId = cursorIds.First();
                 }
-                return new ContactCursor(this, Client, cursorId, count, parameters.Fields);
+                return (IContactCursor)new ContactCursor(this, Client, cursorId, count, parameters.Fields);
             });
         }
 
-        async Task<IContactCursor> IContactSelector.CreateCursorAsync(ContactListParameters parameters, CancellationToken cancellationToken) => await CreateCursorAsync(parameters, cancellationToken).ConfigureAwait(false);
-
-        /// <inheritdoc/>
         public Task<List<ContactData>> GetContactListAsync(ContactListParameters parameters, int? start = null, int? limit = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
@@ -108,7 +96,6 @@ namespace EncompassRest.Contacts
             return PostAsync<List<ContactData>>(null, queryParameters.ToString(), JsonStreamContent.Create(parameters), nameof(GetContactListAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetContactListRawAsync(string parameters, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(parameters, nameof(parameters));

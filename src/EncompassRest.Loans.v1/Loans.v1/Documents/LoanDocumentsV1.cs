@@ -1,26 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using EncompassRest.Loans.v1;
 using EncompassRest.Utilities;
-using EnumsNET;
 
 namespace EncompassRest.Loans.Documents.v1
 {
     /// <summary>
     /// The Loan Documents Apis.
     /// </summary>
-    public interface ILoanDocuments : ILoanApiObject
+    public interface ILoanDocumentsV1 : ILoanApiObject
     {
-        /// <summary>
-        /// Assigns or unassigns attachments.
-        /// </summary>
-        /// <param name="documentId">The unique identifier assigned to the document.</param>
-        /// <param name="action">The action to perform, assign or unassign.</param>
-        /// <param name="attachmentEntities">The attachment entity references to assign or unassign.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken = default);
         /// <summary>
         /// Assigns or unassigns attachments.
         /// </summary>
@@ -39,13 +28,6 @@ namespace EncompassRest.Loans.Documents.v1
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task AssignDocumentAttachmentsRawAsync(string documentId, string attachmentEntities, string queryString, CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Creates a new document for the loan and returns the document ID.
-        /// </summary>
-        /// <param name="document">The document to create.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task<string> CreateDocumentAsync(LoanDocument document, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new document for the loan and returns the document ID and optionally populates the document object with the response's body through the use of the entity view query parameter.
         /// </summary>
@@ -106,13 +88,6 @@ namespace EncompassRest.Loans.Documents.v1
         /// <returns></returns>
         Task<string> GetDocumentsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
         /// <summary>
-        /// Updates properties of the specified <paramref name="document"/>.
-        /// </summary>
-        /// <param name="document">The document to update.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task UpdateDocumentAsync(LoanDocument document, CancellationToken cancellationToken = default);
-        /// <summary>
         /// Updates properties of the specified <paramref name="document"/> and optionally populates the document object with the response's body through the use of the entity view query parameter.
         /// </summary>
         /// <param name="document">The document to update.</param>
@@ -131,23 +106,18 @@ namespace EncompassRest.Loans.Documents.v1
         Task<string> UpdateDocumentRawAsync(string documentId, string document, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Loan Documents Apis.
-    /// </summary>
-    public sealed class LoanDocuments : LoanApiObject, ILoanDocuments
+    internal sealed class LoanDocumentsV1 : LoanApiObject, ILoanDocumentsV1
     {
-        internal LoanDocuments(EncompassRestClient client, string loanId)
-            : base(client, loanId, "documents")
+        internal LoanDocumentsV1(EncompassRestClient client, ILoanApis loanApis, string loanId)
+            : base(client, loanApis, loanId, "documents")
         {
         }
 
-        /// <inheritdoc/>
+
         public Task<List<LoanDocument>> GetDocumentsAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<LoanDocument>(null, null, nameof(GetDocumentsAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetDocumentsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetDocumentsRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<LoanDocument> GetDocumentAsync(string documentId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
@@ -155,7 +125,6 @@ namespace EncompassRest.Loans.Documents.v1
             return GetDirtyAsync<LoanDocument>(documentId, null, nameof(GetDocumentAsync), documentId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetDocumentRawAsync(string documentId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
@@ -163,7 +132,6 @@ namespace EncompassRest.Loans.Documents.v1
             return GetRawAsync(documentId, queryString, nameof(GetDocumentRawAsync), documentId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<List<EntityReference>> GetDocumentAttachmentsAsync(string documentId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
@@ -171,7 +139,6 @@ namespace EncompassRest.Loans.Documents.v1
             return GetAsync<List<EntityReference>>($"{documentId}/attachments", null, nameof(GetDocumentAttachmentsAsync), documentId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetDocumentAttachmentsRawAsync(string documentId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
@@ -179,10 +146,6 @@ namespace EncompassRest.Loans.Documents.v1
             return GetRawAsync($"{documentId}/attachments", queryString, nameof(GetDocumentAttachmentsRawAsync), documentId, cancellationToken);
         }
 
-        /// <inheritdoc/>
-        public Task<string> CreateDocumentAsync(LoanDocument document, CancellationToken cancellationToken = default) => CreateDocumentAsync(document, false, cancellationToken);
-
-        /// <inheritdoc/>
         public Task<string> CreateDocumentAsync(LoanDocument document, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(document, nameof(document));
@@ -191,7 +154,6 @@ namespace EncompassRest.Loans.Documents.v1
             return PostPopulateDirtyAsync(null, nameof(CreateDocumentAsync), document, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateDocumentRawAsync(string document, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(document, nameof(document));
@@ -199,10 +161,6 @@ namespace EncompassRest.Loans.Documents.v1
             return PostAsync(null, queryString, new JsonStringContent(document), nameof(CreateDocumentRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
-        /// <inheritdoc/>
-        public Task UpdateDocumentAsync(LoanDocument document, CancellationToken cancellationToken = default) => UpdateDocumentAsync(document, false, cancellationToken);
-
-        /// <inheritdoc/>
         public Task UpdateDocumentAsync(LoanDocument document, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(document, nameof(document));
@@ -211,7 +169,6 @@ namespace EncompassRest.Loans.Documents.v1
             return PatchPopulateDirtyAsync(document.DocumentId, JsonStreamContent.Create(document), nameof(UpdateDocumentAsync), document.DocumentId, document, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> UpdateDocumentRawAsync(string documentId, string document, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
@@ -220,10 +177,6 @@ namespace EncompassRest.Loans.Documents.v1
             return PatchRawAsync(documentId, queryString, new JsonStringContent(document), nameof(UpdateDocumentRawAsync), documentId, cancellationToken);
         }
 
-        /// <inheritdoc/>
-        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken = default) => AssignDocumentAttachmentsAsync(documentId, action.Validate(nameof(action)).GetValue()!, attachmentEntities, cancellationToken);
-
-        /// <inheritdoc/>
         public Task AssignDocumentAttachmentsAsync(string documentId, string action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
@@ -234,7 +187,6 @@ namespace EncompassRest.Loans.Documents.v1
             return PatchAsync($"{documentId}/attachments", queryParameters.ToString(), JsonStreamContent.Create(attachmentEntities), nameof(AssignDocumentAttachmentsAsync), documentId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task AssignDocumentAttachmentsRawAsync(string documentId, string attachmentEntities, string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));

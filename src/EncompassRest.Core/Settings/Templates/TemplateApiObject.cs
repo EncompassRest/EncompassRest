@@ -41,17 +41,13 @@ namespace EncompassRest.Settings.Templates
         Task<string> GetTemplateFoldersRawAsync(string path, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The base class for Template Apis.
-    /// </summary>
-    public abstract class TemplateApiObject : ApiObject, ITemplateApiObject
+    internal abstract class TemplateApiObject : ApiObject, ITemplateApiObject
     {
         internal TemplateApiObject(EncompassRestClient client, string baseApiPath)
             : base(client, $"encompass/v1/settings/templates{baseApiPath?.PrecedeWith("/")}")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<EntityReference>> GetTemplateFoldersAsync(string path, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(path, nameof(path));
@@ -59,7 +55,6 @@ namespace EncompassRest.Settings.Templates
             return GetAsync<List<EntityReference>>($"folders{path.PrecedeWith("/")}", null, nameof(GetTemplateFoldersAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetTemplateFoldersRawAsync(string path, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(path, nameof(path));
@@ -67,7 +62,6 @@ namespace EncompassRest.Settings.Templates
             return GetRawAsync($"folders{path.PrecedeWith("/")}", queryString, nameof(GetTemplateFoldersRawAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<List<EntityReference>> GetTemplateFilesAsync(string path, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(path, nameof(path));
@@ -78,7 +72,6 @@ namespace EncompassRest.Settings.Templates
             return GetAsync<List<EntityReference>>("items", queryParameters.ToString(), nameof(GetTemplateFilesAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetTemplateFilesRawAsync(string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(queryString, nameof(queryString));

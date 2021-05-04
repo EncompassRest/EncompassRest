@@ -156,20 +156,15 @@ namespace EncompassRest.Contacts
         Task<string> UpdateGroupRawAsync(string groupId, string group, string? queryString = null, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Contact Groups Apis.
-    /// </summary>
-    public sealed class ContactGroups : ApiObject, IContactGroups
+    internal sealed class ContactGroups : ApiObject, IContactGroups
     {
         internal ContactGroups(EncompassRestClient client)
             : base(client, "encompass/v1/contactGroups")
         {
         }
 
-        /// <inheritdoc/>
         public Task<List<ContactGroup>> GetGroupsAsync(ContactType contactType, ContactGroupType? groupType = null, CancellationToken cancellationToken = default) => GetGroupsAsync(contactType.Validate(nameof(contactType)).GetValue()!, groupType?.Validate(nameof(groupType)).GetValue(), cancellationToken);
 
-        /// <inheritdoc/>
         public Task<List<ContactGroup>> GetGroupsAsync(string contactType, string? groupType = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactType, nameof(contactType));
@@ -184,7 +179,6 @@ namespace EncompassRest.Contacts
             return GetDirtyListAsync<ContactGroup>(null, queryParameters.ToString(), nameof(GetGroupsAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetGroupsRawAsync(string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(queryString, nameof(queryString));
@@ -192,7 +186,6 @@ namespace EncompassRest.Contacts
             return GetRawAsync(null, queryString, nameof(GetGroupsRawAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<ContactGroup> GetGroupAsync(string groupId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
@@ -200,7 +193,6 @@ namespace EncompassRest.Contacts
             return GetDirtyAsync<ContactGroup>(groupId, null, nameof(GetGroupAsync), groupId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetGroupRawAsync(string groupId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
@@ -208,7 +200,6 @@ namespace EncompassRest.Contacts
             return GetRawAsync(groupId, queryString, nameof(GetGroupRawAsync), groupId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<List<EntityReference>> GetGroupContactsAsync(string groupId, int? start = null, int? limit = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
@@ -227,7 +218,6 @@ namespace EncompassRest.Contacts
             return GetAsync<List<EntityReference>>($"{groupId}/contacts", queryParameters.ToString(), nameof(GetGroupContactsAsync), groupId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetGroupContactsRawAsync(string groupId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
@@ -235,10 +225,8 @@ namespace EncompassRest.Contacts
             return GetRawAsync($"{groupId}/contacts", queryString, nameof(GetGroupContactsRawAsync), groupId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateGroupAsync(ContactGroup group, CancellationToken cancellationToken = default) => CreateGroupAsync(group, false, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> CreateGroupAsync(ContactGroup group, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(group, nameof(group));
@@ -247,7 +235,6 @@ namespace EncompassRest.Contacts
             return PostPopulateDirtyAsync(null, nameof(CreateGroupAsync), group, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> CreateGroupRawAsync(string group, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(group, nameof(group));
@@ -255,10 +242,8 @@ namespace EncompassRest.Contacts
             return PostAsync(null, queryString, new JsonStringContent(group), nameof(CreateGroupRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
-        /// <inheritdoc/>
         public Task AssignGroupContactsAsync(string groupId, AssignmentAction action, IEnumerable<EntityReference> contacts, CancellationToken cancellationToken = default) => AssignGroupContactsAsync(groupId, action.Validate(nameof(action)).GetValue()!, contacts, cancellationToken);
 
-        /// <inheritdoc/>
         public Task AssignGroupContactsAsync(string groupId, string action, IEnumerable<EntityReference> contacts, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
@@ -269,7 +254,6 @@ namespace EncompassRest.Contacts
             return PatchAsync($"{groupId}/contacts", queryParameters.ToString(), JsonStreamContent.Create(contacts), nameof(AssignGroupContactsAsync), groupId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task AssignGroupContactsRawAsync(string groupId, string contacts, string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
@@ -279,10 +263,8 @@ namespace EncompassRest.Contacts
             return PatchAsync($"{groupId}/contacts", queryString, new JsonStringContent(contacts), nameof(AssignGroupContactsRawAsync), groupId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task UpdateGroupAsync(ContactGroup group, CancellationToken cancellationToken = default) => UpdateGroupAsync(group, false, cancellationToken);
 
-        /// <inheritdoc/>
         public Task UpdateGroupAsync(ContactGroup group, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(group, nameof(group));
@@ -291,7 +273,6 @@ namespace EncompassRest.Contacts
             return PatchPopulateDirtyAsync(group.Id, JsonStreamContent.Create(group), nameof(UpdateGroupAsync), group.Id, group, populate, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> UpdateGroupRawAsync(string groupId, string group, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
@@ -300,7 +281,6 @@ namespace EncompassRest.Contacts
             return PatchRawAsync(groupId, queryString, new JsonStringContent(group), nameof(UpdateGroupRawAsync), groupId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<bool> TryDeleteGroupAsync(string groupId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));
@@ -308,7 +288,6 @@ namespace EncompassRest.Contacts
             return TryDeleteAsync(groupId, null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task DeleteGroupAsync(string groupId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(groupId, nameof(groupId));

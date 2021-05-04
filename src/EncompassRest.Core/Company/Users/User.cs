@@ -184,7 +184,7 @@ namespace EncompassRest.Company.Users
         /// User UserApis
         /// </summary>
         [JsonIgnore]
-        public UserApis UserApis => _userApis ?? throw new InvalidOperationException("User object must be initialized to use UserApis");
+        public IUserApis UserApis => _userApis ?? throw new InvalidOperationException("User object must be initialized to use UserApis");
 
         /// <summary>
         /// User Client

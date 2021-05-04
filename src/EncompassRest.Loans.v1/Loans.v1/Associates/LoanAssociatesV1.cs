@@ -10,7 +10,7 @@ namespace EncompassRest.Loans.Associates.v1
     /// <summary>
     /// The Loan Associates Apis.
     /// </summary>
-    public interface ILoanAssociates : ILoanApiObject
+    public interface ILoanAssociatesV1 : ILoanApiObject
     {
         /// <summary>
         /// Assigns a loan associate to a milestone based on the specified milestone or milestone-free ID and log ID.
@@ -47,12 +47,6 @@ namespace EncompassRest.Loans.Associates.v1
         /// <summary>
         /// Retrieves a list of loan associates involved with the loan. The response includes role and contact information for each loan associate.
         /// </summary>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task<List<LoanAssociate>> GetAssociatesAsync(CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Retrieves a list of loan associates involved with the loan. The response includes role and contact information for each loan associate.
-        /// </summary>
         /// <param name="userId">When provided, returns information about the Encompass user associated with the loan.</param>
         /// <param name="roleId">When provided, returns information about all Encompass users associated with the specified role ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -71,6 +65,7 @@ namespace EncompassRest.Loans.Associates.v1
         /// <param name="logId">The milestone or milestone-free log ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
+        [Obsolete("Undocumented API")]
         Task<bool> TryUnassignAssociateAsync(string logId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Unassigns a loan associate from a milestone based on the specified milestone or milestone-free ID.
@@ -78,23 +73,17 @@ namespace EncompassRest.Loans.Associates.v1
         /// <param name="logId">The milestone or milestone-free log ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
+        [Obsolete("Undocumented API")]
         Task UnassignAssociateAsync(string logId, CancellationToken cancellationToken = default);
     }
 
-    /// <summary>
-    /// The Loan Associates Apis.
-    /// </summary>
-    public sealed class LoanAssociates : LoanApiObject, ILoanAssociates
+    internal sealed class LoanAssociatesV1 : LoanApiObject, ILoanAssociatesV1
     {
-        internal LoanAssociates(EncompassRestClient client, string loanId)
-            : base(client, loanId, "associates")
+        internal LoanAssociatesV1(EncompassRestClient client, ILoanApis loanApis, string loanId)
+            : base(client, loanApis, loanId, "associates")
         {
         }
 
-        /// <inheritdoc/>
-        public Task<List<LoanAssociate>> GetAssociatesAsync(CancellationToken cancellationToken = default) => GetAssociatesAsync(null, null, cancellationToken);
-
-        /// <inheritdoc/>
         public Task<List<LoanAssociate>> GetAssociatesAsync(string? userId, string? roleId, CancellationToken cancellationToken = default)
         {
             var queryParameters = new QueryParameters();
@@ -110,10 +99,8 @@ namespace EncompassRest.Loans.Associates.v1
             return GetDirtyListAsync<LoanAssociate>(null, queryParameters.ToString(), nameof(GetAssociatesAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetAssociatesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetAssociatesRawAsync), null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<LoanAssociate> GetAssociateAsync(string logId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
@@ -121,7 +108,6 @@ namespace EncompassRest.Loans.Associates.v1
             return GetAsync<LoanAssociate>(logId, null, nameof(GetAssociateAsync), logId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetAssociateRawAsync(string logId, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
@@ -129,7 +115,6 @@ namespace EncompassRest.Loans.Associates.v1
             return GetRawAsync(logId, queryString, nameof(GetAssociateRawAsync), logId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task AssignAssociateAsync(string logId, LoanAssociate associate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
@@ -140,7 +125,6 @@ namespace EncompassRest.Loans.Associates.v1
             return PutAsync(logId, null, JsonStreamContent.Create(associate), nameof(AssignAssociateAsync), logId, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task AssignAssociateRawAsync(string logId, string associate, string? queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
@@ -149,8 +133,6 @@ namespace EncompassRest.Loans.Associates.v1
             return PutAsync(logId, queryString, new JsonStringContent(associate), nameof(AssignAssociateRawAsync), logId, cancellationToken);
         }
 
-        /// <inheritdoc/>
-        [Obsolete("Undocumented API")]
         public Task<bool> TryUnassignAssociateAsync(string logId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
@@ -158,8 +140,6 @@ namespace EncompassRest.Loans.Associates.v1
             return TryDeleteAsync(logId, null, cancellationToken);
         }
 
-        /// <inheritdoc/>
-        [Obsolete("Undocumented API")]
         public Task UnassignAssociateAsync(string logId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
