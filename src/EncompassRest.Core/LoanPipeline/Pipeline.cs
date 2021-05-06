@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.LoanPipeline
 {
     /// <summary>
-    /// The Loan Pipeline Apis.
+    /// The Loan Pipeline Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+    /// within the EncompassRest.LoanPipeline.v1 namespace.
     /// </summary>
     public interface IPipeline : IApiObject
     {

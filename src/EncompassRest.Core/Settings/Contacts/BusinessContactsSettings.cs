@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.Settings.Contacts
 {
     /// <summary>
-    /// The Business Contacts Settings Apis.
+    /// The Business Contacts Settings Apis exposed as extension methods from the EncompassRest.Contacts.v1 package
+    /// within the EncompassRest.Settings.Contacts.v1 namespace.
     /// </summary>
     public interface IBusinessContactsSettings : IApiObject
     {

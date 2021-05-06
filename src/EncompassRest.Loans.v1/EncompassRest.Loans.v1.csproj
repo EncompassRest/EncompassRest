@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EncompassRest.Core\EncompassRest.Core.csproj" />
+    <ProjectReference Include="..\EncompassRest.Services.v1\EncompassRest.Services.v1.csproj" />
     <EmbeddedResource Include="LoanFields.zip" />
   </ItemGroup>
 

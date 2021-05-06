@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using EncompassRest.Schema;
 using EncompassRest.Schema.v1;
 using EncompassRest.Utilities;
+using EncompassRest.v1;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.v1
@@ -46,7 +47,7 @@ namespace EncompassRest.Loans.v1
     /// <summary>
     /// LoanFieldDescriptors
     /// </summary>
-    internal sealed class LoanFieldDescriptors : ApiObject, ILoanFieldDescriptors
+    public sealed class LoanFieldDescriptors : ILoanFieldDescriptors
     {
         private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new[]
         {
@@ -635,9 +636,13 @@ namespace EncompassRest.Loans.v1
         /// <inheritdoc/>
         public DateTime? CustomFieldsLastRefreshedUtc => Client.CommonCache.GetCustomFieldsLastRefreshedUtc();
 
+        public EncompassRestClient Client { get; }
+
+        IEncompassRestClient IApiObject.Client => Client;
+
         internal LoanFieldDescriptors(EncompassRestClient client)
-            : base(client, null)
         {
+            Client = client;
         }
 
         /// <inheritdoc/>

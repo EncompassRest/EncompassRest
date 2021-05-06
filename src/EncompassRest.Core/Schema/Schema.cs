@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.Schema
 {
     /// <summary>
-    /// The Schema Apis.
+    /// The Schema Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+    /// within the EncompassRest.Schema.v1 namespace.
     /// </summary>
     public interface ISchema : IApiObject
     {

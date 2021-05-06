@@ -10,7 +10,7 @@ using EncompassRest.Schema.v1;
 using EncompassRest.Settings.Loan.v1;
 using EncompassRest.Utilities;
 
-namespace EncompassRest
+namespace EncompassRest.v1
 {
     public static class CommonCacheExtensions
     {

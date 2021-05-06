@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using EncompassRest.Schema;
 using EncompassRest.Schema.v1;
 
 namespace EncompassRest.LoanPipeline.v1

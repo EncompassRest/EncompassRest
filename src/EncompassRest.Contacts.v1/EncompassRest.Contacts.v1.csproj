@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.1;net46;net45</TargetFrameworks>
+    <Version>2.0.0.0</Version>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/EncompassRest/EncompassRest</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Title>EncompassRest.Contacts.v1</Title>
+    <PackageTags>encompass rest api client</PackageTags>
+    <Description>Encompass API Client Library for .NET</Description>
+    <Summary>Encompass API Client Library for .NET</Summary>
+    <PublishRepositoryUrl>True</PublishRepositoryUrl>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <LangVersion>latest</LangVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <Configurations>Debug;Release;CI</Configurations>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>encompassrest.snk</AssemblyOriginatorKeyFile>
+    <Nullable>enable</Nullable>
+    <RootNamespace>EncompassRest</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EncompassRest.Core\EncompassRest.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.IO.Compression" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
+    <AssemblyTitle>EncompassRest.Contacts.v1 .NET Standard 2.1</AssemblyTitle>
+    <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE;NULLABLE_ATTRIBUTES;KEYVALUEPAIR_CREATE;IASYNC_DISPOSABLE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <AssemblyTitle>EncompassRest.Contacts.v1 .NET Standard 2.0</AssemblyTitle>
+    <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
+    <NoWarn>CS8604;CS8777</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
+    <AssemblyTitle>EncompassRest.Contacts.v1 .NET Standard 1.1</AssemblyTitle>
+    <DefineConstants></DefineConstants>
+    <NoWarn>CS8604;CS8777</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
+    <AssemblyTitle>EncompassRest.Contacts.v1 .NET 4.5</AssemblyTitle>
+    <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
+    <NoWarn>CS8604;CS8777</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
+    <AssemblyTitle>EncompassRest.Contacts.v1 .NET 4.6</AssemblyTitle>
+    <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
+    <NoWarn>CS8604;CS8777</NoWarn>
+  </PropertyGroup>
+
+</Project>

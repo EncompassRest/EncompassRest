@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Loans.v1;
 
-namespace EncompassRest
+namespace EncompassRest.v1
 {
     public static class ClientParametersExtensions
     {

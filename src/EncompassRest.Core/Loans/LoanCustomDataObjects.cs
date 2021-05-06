@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.Loans
 {
     /// <summary>
-    /// The Loan Custom Data Objects Apis.
+    /// The Loan Custom Data Objects Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+    /// within the EncompassRest.Loans.v1 namespace.
     /// </summary>
     public interface ILoanCustomDataObjects : ILoanApiObject
     {

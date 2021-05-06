@@ -3,6 +3,10 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Company.Users
 {
+    /// <summary>
+    /// The Users Apis exposed as extension methods from the EncompassRest.Users.v1 package
+    /// within the EncompassRest.Company.Users.v1 namespace.
+    /// </summary>
     public interface IUsers : IApiObject
     {
         /// <summary>

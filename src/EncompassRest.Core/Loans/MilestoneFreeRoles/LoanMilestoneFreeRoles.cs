@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.Loans.MilestoneFreeRoles
 {
     /// <summary>
-    /// The Loan Milestone Free Roles Apis.
+    /// The Loan Milestone Free Roles Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+    /// within the EncompassRest.Loans.MilestoneFreeRoles.v1 namespace.
     /// </summary>
     public interface ILoanMilestoneFreeRoles : ILoanApiObject
     {

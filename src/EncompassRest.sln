@@ -18,6 +18,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Tests", "Enco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Loans.v1", "EncompassRest.Loans.v1\EncompassRest.Loans.v1.csproj", "{33C4C2A5-3E86-4F36-BEA1-62B0046BFB36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Users.v1", "EncompassRest.Users.v1\EncompassRest.Users.v1.csproj", "{6CE6071E-D5A3-4DB4-9B86-1C0760EB413A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Services.v1", "EncompassRest.Services.v1\EncompassRest.Services.v1.csproj", "{6080C7B3-D94A-45B9-A9BA-F1BA2090CF38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Contacts.v1", "EncompassRest.Contacts.v1\EncompassRest.Contacts.v1.csproj", "{ECD44217-7CE6-4055-81F7-ABBCE05C142A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.EFolder.v1", "EncompassRest.EFolder.v1\EncompassRest.EFolder.v1.csproj", "{8653D04A-F554-4424-9C4A-37D25E736880}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CI|Any CPU = CI|Any CPU
@@ -48,6 +56,30 @@ Global
 		{33C4C2A5-3E86-4F36-BEA1-62B0046BFB36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33C4C2A5-3E86-4F36-BEA1-62B0046BFB36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33C4C2A5-3E86-4F36-BEA1-62B0046BFB36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CE6071E-D5A3-4DB4-9B86-1C0760EB413A}.CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE6071E-D5A3-4DB4-9B86-1C0760EB413A}.CI|Any CPU.Build.0 = Debug|Any CPU
+		{6CE6071E-D5A3-4DB4-9B86-1C0760EB413A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE6071E-D5A3-4DB4-9B86-1C0760EB413A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE6071E-D5A3-4DB4-9B86-1C0760EB413A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE6071E-D5A3-4DB4-9B86-1C0760EB413A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6080C7B3-D94A-45B9-A9BA-F1BA2090CF38}.CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{6080C7B3-D94A-45B9-A9BA-F1BA2090CF38}.CI|Any CPU.Build.0 = Debug|Any CPU
+		{6080C7B3-D94A-45B9-A9BA-F1BA2090CF38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6080C7B3-D94A-45B9-A9BA-F1BA2090CF38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6080C7B3-D94A-45B9-A9BA-F1BA2090CF38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6080C7B3-D94A-45B9-A9BA-F1BA2090CF38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECD44217-7CE6-4055-81F7-ABBCE05C142A}.CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECD44217-7CE6-4055-81F7-ABBCE05C142A}.CI|Any CPU.Build.0 = Debug|Any CPU
+		{ECD44217-7CE6-4055-81F7-ABBCE05C142A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECD44217-7CE6-4055-81F7-ABBCE05C142A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECD44217-7CE6-4055-81F7-ABBCE05C142A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECD44217-7CE6-4055-81F7-ABBCE05C142A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8653D04A-F554-4424-9C4A-37D25E736880}.CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{8653D04A-F554-4424-9C4A-37D25E736880}.CI|Any CPU.Build.0 = Debug|Any CPU
+		{8653D04A-F554-4424-9C4A-37D25E736880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8653D04A-F554-4424-9C4A-37D25E736880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8653D04A-F554-4424-9C4A-37D25E736880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8653D04A-F554-4424-9C4A-37D25E736880}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

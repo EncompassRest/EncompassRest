@@ -377,7 +377,7 @@ namespace EncompassRest
                     }
                 }
 
-                var destinationPath = "Loans.v1";
+                var destinationPath = "Loans\\v1";
                 var @namespace = "EncompassRest.Loans.v1";
                 Directory.CreateDirectory(destinationPath);
 

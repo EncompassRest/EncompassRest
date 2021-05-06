@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.Loans.Attachments
 {
     /// <summary>
-    /// The Loan Attachments Apis.
+    /// The Loan Attachments Apis exposed as extension methods from the EncompassRest.EFolder.v1 package
+    /// within the EncompassRest.Loans.Attachments.v1 namespace.
     /// </summary>
     public interface ILoanAttachments : ILoanApiObject
     {

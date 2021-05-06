@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.Loans
 {
     /// <summary>
-    /// The Loans Apis.
+    /// The Loans Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+    /// within the EncompassRest.Loans.v1 namespace.
     /// </summary>
     public interface ILoans : IApiObject
     {

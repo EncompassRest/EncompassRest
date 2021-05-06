@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using EncompassRest.Loans.v1;
 
-namespace EncompassRest
+namespace EncompassRest.v1
 {
     internal sealed class StringModelPathComparer : IEqualityComparer<string>
     {

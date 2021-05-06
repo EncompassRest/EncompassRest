@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.Contacts
 {
     /// <summary>
-    /// The Business Contact Selector Apis.
+    /// The Business Contact Selector Apis exposed as extension methods from the EncompassRest.Contacts.v1 package
+    /// within the EncompassRest.Contacts.v1 namespace.
     /// </summary>
     public interface IBusinessContactSelector : IApiObject
     {

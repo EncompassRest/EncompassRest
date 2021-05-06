@@ -12,6 +12,7 @@ using EncompassRest.LoanPipeline.v1;
 using EncompassRest.Loans.v1;
 using EncompassRest.Loans.v1.Enums;
 using EncompassRest.Utilities;
+using EncompassRest.v1;
 using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
