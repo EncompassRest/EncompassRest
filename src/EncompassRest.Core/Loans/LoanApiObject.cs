@@ -8,6 +8,9 @@ namespace EncompassRest.Loans
     /// </summary>
     public interface ILoanApiObject : IApiObject
     {
+        /// <summary>
+        /// The loan Api's available to the loan.
+        /// </summary>
         ILoanApis LoanApis { get; }
 
         /// <summary>
@@ -23,7 +26,7 @@ namespace EncompassRest.Loans
         public string LoanId { get; }
 
         internal LoanApiObject(EncompassRestClient client, ILoanApis? loanApis, string loanId, string? baseApiPath)
-            : base(client, $"encompass/v1/loans/{loanId}{baseApiPath?.PrecedeWith("/")}")
+            : base(client, baseApiPath)
         {
             LoanApis = loanApis ?? this as ILoanApis ?? throw new ArgumentNullException(nameof(loanApis));
             LoanId = loanId;

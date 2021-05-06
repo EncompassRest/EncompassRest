@@ -1,24 +1,17 @@
-﻿using EncompassRest.Utilities;
-
-namespace EncompassRest.Company.Users
+﻿namespace EncompassRest.Company.Users
 {
     /// <summary>
     /// User Custom Data Objects Apis
     /// </summary>
-    public interface IUserCustomDataObjects : CustomDataObjects.ICustomDataObjects, IUserApiObject
+    public interface IUserCustomDataObjects : IUserApiObject
     {
     }
 
-    internal sealed class UserCustomDataObjects : CustomDataObjects.CustomDataObjects, IUserCustomDataObjects
+    internal sealed class UserCustomDataObjects : UserApiObject, IUserCustomDataObjects
     {
-        public string UserId { get; }
-
-        internal UserCustomDataObjects(EncompassRestClient client, string userId)
-            : base(client, $"encompass/v1/users/{userId}/customObjects")
+        internal UserCustomDataObjects(EncompassRestClient client, IUserApis userApis, string userId)
+            : base(client, userApis, userId, null)
         {
-            UserId = userId;
         }
-
-        internal override string CreateErrorMessage(string methodName, string? resourceId = null) => base.CreateErrorMessage(methodName, $"{UserId}{resourceId?.PrecedeWith("/")}");
     }
 }

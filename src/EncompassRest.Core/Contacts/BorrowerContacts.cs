@@ -3,14 +3,14 @@
     /// <summary>
     /// The Borrower Contacts Apis.
     /// </summary>
-    public interface IBorrowerContacts : IContacts<BorrowerContact>
+    public interface IBorrowerContacts : IApiObject
     {
     }
 
-    internal sealed class BorrowerContacts : Contacts<BorrowerContact>, IBorrowerContacts
+    internal sealed class BorrowerContacts : ApiObject, IBorrowerContacts
     {
         internal BorrowerContacts(EncompassRestClient client)
-            : base(client, "encompass/v1/borrowerContacts")
+            : base(client, null)
         {
         }
     }

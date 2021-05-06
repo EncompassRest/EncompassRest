@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using EncompassRest.Company.Users;
 
 namespace EncompassRest.Company
 {
@@ -14,21 +15,15 @@ namespace EncompassRest.Company
         /// <summary>
         /// Users Apis
         /// </summary>
-        Users.IUsers Users { get; }
+        IUsers Users { get; }
     }
 
-    /// <summary>
-    /// Company Apis
-    /// </summary>
     internal sealed class Company : ApiObject, ICompany
     {
         private Users.Users? _users;
         private GlobalCustomDataObjects? _globalCustomDataObjects;
 
-        /// <summary>
-        /// Users Apis
-        /// </summary>
-        public Users.IUsers Users
+        public IUsers Users
         {
             get
             {
@@ -37,9 +32,6 @@ namespace EncompassRest.Company
             }
         }
 
-        /// <summary>
-        /// Global Custom Data Objects Apis
-        /// </summary>
         public IGlobalCustomDataObjects GlobalCustomDataObjects
         {
             get
@@ -50,7 +42,7 @@ namespace EncompassRest.Company
         }
 
         internal Company(EncompassRestClient client)
-            : base(client, "encompass/v1/company")
+            : base(client, null)
         {
         }
     }

@@ -10,7 +10,7 @@
     internal sealed class LoanFieldReader : LoanApiObject, ILoanFieldReader
     {
         internal LoanFieldReader(EncompassRestClient client, ILoanApis loanApis, string loanId)
-            : base(client, loanApis, loanId, "fieldReader")
+            : base(client, loanApis, loanId, null)
         {
         }
     }

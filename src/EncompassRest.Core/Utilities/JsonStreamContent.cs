@@ -9,8 +9,6 @@ namespace EncompassRest.Utilities
 {
     internal sealed class JsonStreamContent : HttpContent
     {
-        private static readonly Task s_completedTask = Task.FromResult(0);
-
         public static JsonStreamContent Create<T>(T value) => new JsonStreamContent(value!, TypeData<T>.Type);
 
         public object Value { get; }
@@ -36,7 +34,7 @@ namespace EncompassRest.Utilities
             {
                 JsonHelper.ToJson(Value, Type, writer);
             }
-            return s_completedTask;
+            return TaskHelper.CompletedTask;
         }
 
         protected override bool TryComputeLength(out long length)

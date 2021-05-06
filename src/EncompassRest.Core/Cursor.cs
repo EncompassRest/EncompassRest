@@ -105,26 +105,16 @@ namespace EncompassRest
         Task<List<TItem>> GetItemsAsync(int start, int? limit, params string[]? fields);
     }
 
-    /// <summary>
-    /// Cursor for retrieving items.
-    /// </summary>
-    /// <typeparam name="TItem">Cursor's item type.</typeparam>
-    public abstract class Cursor<TItem> : ICursor<TItem>
+    internal abstract class Cursor<TItem> : ICursor<TItem>
     {
         private readonly ApiObject _apiObject;
 
-        /// <summary>
-        /// The <see cref="EncompassRestClient"/> associated with the cursor.
-        /// </summary>
         public IEncompassRestClient Client { get; }
 
-        /// <inheritdoc/>
         public string? CursorId { get; }
 
-        /// <inheritdoc/>
         public int Count { get; }
 
-        /// <inheritdoc/>
         public IEnumerable<string> Fields { get; }
 
         internal Cursor(ApiObject apiObject, EncompassRestClient client, string? cursorId, int count, IEnumerable<string>? fields)
@@ -136,13 +126,10 @@ namespace EncompassRest
             Fields = fields ?? Array<string>.Empty;
         }
 
-        /// <inheritdoc/>
         public Task<TItem> GetItemAsync(int index, CancellationToken cancellationToken = default) => GetItemAsync(index, null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<TItem> GetItemAsync(int index, params string[]? fields) => GetItemAsync(index, fields, CancellationToken.None);
 
-        /// <inheritdoc/>
         public async Task<TItem> GetItemAsync(int index, IEnumerable<string>? fields, CancellationToken cancellationToken = default)
         {
             Preconditions.GreaterThanOrEquals(index, nameof(index), 0);
@@ -152,13 +139,10 @@ namespace EncompassRest
             return data[0];
         }
 
-        /// <inheritdoc/>
         public Task<List<TItem>> GetItemsAsync(int start, int? limit, CancellationToken cancellationToken = default) => GetItemsAsync(start, limit, null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<List<TItem>> GetItemsAsync(int start, int? limit, params string[]? fields) => GetItemsAsync(start, limit, fields, CancellationToken.None);
 
-        /// <inheritdoc/>
         public Task<List<TItem>> GetItemsAsync(int start, int? limit, IEnumerable<string>? fields, CancellationToken cancellationToken = default)
         {
             Preconditions.GreaterThanOrEquals(start, nameof(start), 0);
@@ -180,13 +164,10 @@ namespace EncompassRest
             return _apiObject.PostAsync<List<TItem>>(null, queryParameters.ToString(), content, nameof(GetItemsAsync), null, cancellationToken);
         }
 
-        /// <inheritdoc/>
         public Task<string> GetItemsRawAsync(int start, int? limit, CancellationToken cancellationToken = default) => GetItemsRawAsync(start, limit, null, cancellationToken);
 
-        /// <inheritdoc/>
         public Task<string> GetItemsRawAsync(int start, int? limit, params string[]? fields) => GetItemsRawAsync(start, limit, fields, CancellationToken.None);
 
-        /// <inheritdoc/>
         public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string>? fields, CancellationToken cancellationToken = default)
         {
             Preconditions.GreaterThanOrEquals(start, nameof(start), 0);

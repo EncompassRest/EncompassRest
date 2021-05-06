@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using EncompassRest.Calculators.v1;
 using EncompassRest.Filters;
+using EncompassRest.LoanFolders.v1;
 using EncompassRest.LoanPipeline.v1;
 using EncompassRest.Loans.v1;
 using EncompassRest.Loans.v1.Enums;
@@ -397,9 +398,9 @@ namespace EncompassRest.Tests
                 {
                     var metaData = await loan.LoanApis.GetMetadataAsync();
                     Assert.AreEqual("My Pipeline", metaData.LoanFolder);
-                    //await client.LoanFolders.MoveLoanToFolderAsync(loanId, "OAPI"); // Unauthorized error
-                    //metaData = await loan.LoanApis.GetMetadataAsync();
-                    //Assert.AreEqual("OAPI", metaData.LoanFolder);
+                    await client.LoanFolders.MoveLoanToFolderAsync(loanId, "OAPI");
+                    metaData = await loan.LoanApis.GetMetadataAsync();
+                    Assert.AreEqual("OAPI", metaData.LoanFolder);
                 }
                 finally
                 {

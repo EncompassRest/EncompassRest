@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.ResourceLocks.v1;
 using EncompassRest.Utilities;
 using EnumsNET;
 

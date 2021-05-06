@@ -10,7 +10,7 @@
     internal sealed class LoanRateLocks : LoanApiObject, ILoanRateLocks
     {
         internal LoanRateLocks(EncompassRestClient client, ILoanApis loanApis, string loanId)
-            : base(client, loanApis, loanId, "ratelockRequests")
+            : base(client, loanApis, loanId, null)
         {
         }
     }

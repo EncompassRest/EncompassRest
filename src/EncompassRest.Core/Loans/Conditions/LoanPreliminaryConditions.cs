@@ -10,7 +10,7 @@
     internal sealed class LoanPreliminaryConditions : LoanApiObject, ILoanPreliminaryConditions
     {
         internal LoanPreliminaryConditions(EncompassRestClient client, ILoanApis loanApis, string loanId)
-            : base(client, loanApis, loanId, "preliminary")
+            : base(client, loanApis, loanId, null)
         {
         }
     }

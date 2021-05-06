@@ -1,10 +1,10 @@
-﻿using EncompassRest.Contacts;
-using EncompassRest.Filters;
-using EncompassRest.Utilities;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using EncompassRest.Contacts.v1;
+using EncompassRest.Filters;
+using EncompassRest.Settings.Contacts.v1;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
 {

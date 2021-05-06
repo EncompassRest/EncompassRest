@@ -10,7 +10,7 @@
     internal sealed class LoanUnderwritingConditions : LoanApiObject, ILoanUnderwritingConditions
     {
         internal LoanUnderwritingConditions(EncompassRestClient client, ILoanApis loanApis, string loanId)
-            : base(client, loanApis, loanId, "underwriting")
+            : base(client, loanApis, loanId, null)
         {
         }
     }

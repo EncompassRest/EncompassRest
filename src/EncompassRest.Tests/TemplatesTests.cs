@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using EncompassRest.Settings.Templates;
+using EncompassRest.Settings.Templates.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
@@ -17,13 +18,13 @@ namespace EncompassRest.Tests
             await GetTemplateFoldersAndFiles(client.Settings.Templates.LoanTemplateSet, "Personal\\\\");
         }
 
-        private async Task GetTemplateFoldersAndFiles(ITemplateApiObject templateApiObject, string path)
+        private async Task GetTemplateFoldersAndFiles(ILoanTemplateSet loanTemplateSet, string path)
         {
-            var files = await templateApiObject.GetTemplateFilesAsync(path);
-            var folders = await templateApiObject.GetTemplateFoldersAsync(path);
+            var files = await loanTemplateSet.GetTemplateFilesAsync(path);
+            var folders = await loanTemplateSet.GetTemplateFoldersAsync(path);
             foreach (var folder in folders)
             {
-                await GetTemplateFoldersAndFiles(templateApiObject, WebUtility.UrlDecode(folder.EntityUri));
+                await GetTemplateFoldersAndFiles(loanTemplateSet, WebUtility.UrlDecode(folder.EntityUri));
             }
         }
     }

@@ -43,7 +43,7 @@ namespace EncompassRest.Company.Users
             get
             {
                 var customDataObjects = _customDataObjects;
-                return customDataObjects ?? Interlocked.CompareExchange(ref _customDataObjects, (customDataObjects = new UserCustomDataObjects(Client, UserId)), null) ?? customDataObjects;
+                return customDataObjects ?? Interlocked.CompareExchange(ref _customDataObjects, (customDataObjects = new UserCustomDataObjects(Client, this, UserId)), null) ?? customDataObjects;
             }
         }
 
@@ -52,7 +52,7 @@ namespace EncompassRest.Company.Users
             get
             {
                 var groups = _groups;
-                return groups ?? Interlocked.CompareExchange(ref _groups, (groups = new UserGroups(Client, UserId)), null) ?? groups;
+                return groups ?? Interlocked.CompareExchange(ref _groups, (groups = new UserGroups(Client, this, UserId)), null) ?? groups;
             }
         }
 
@@ -61,7 +61,7 @@ namespace EncompassRest.Company.Users
             get
             {
                 var compensation = _compensation;
-                return compensation ?? Interlocked.CompareExchange(ref _compensation, (compensation = new UserCompensationPlans(Client, UserId)), null) ?? compensation;
+                return compensation ?? Interlocked.CompareExchange(ref _compensation, (compensation = new UserCompensationPlans(Client, this, UserId)), null) ?? compensation;
             }
         }
 
@@ -70,7 +70,7 @@ namespace EncompassRest.Company.Users
             get
             {
                 var licenses = _licenses;
-                return licenses ?? Interlocked.CompareExchange(ref _licenses, (licenses = new UserLicenseDetails(Client, UserId)), null) ?? licenses;
+                return licenses ?? Interlocked.CompareExchange(ref _licenses, (licenses = new UserLicenseDetails(Client, this, UserId)), null) ?? licenses;
             }
         }
 
@@ -79,12 +79,12 @@ namespace EncompassRest.Company.Users
             get
             {
                 var rights = _rights;
-                return rights ?? Interlocked.CompareExchange(ref _rights, (rights = new UsersRights(Client, UserId)), null) ?? rights;
+                return rights ?? Interlocked.CompareExchange(ref _rights, (rights = new UsersRights(Client, this, UserId)), null) ?? rights;
             }
         }
 
         internal UserApis(EncompassRestClient client, string userId)
-            : base(client, userId, null)
+            : base(client, null!, userId, null)
         {
         }
     }

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Loans.v1;
-using EncompassRest.Webhook;
+using EncompassRest.Webhook.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests

@@ -1,0 +1,20 @@
+using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json;
+
+namespace EncompassRest.Company.Users.Rights.v1
+{
+    /// <summary>
+    /// TPOFeesRights
+    /// </summary>
+    public sealed class TPOFeesRights : ParentAccessRights
+    {
+        private AddEditTPOFeesRights? _addEditTPOFees;
+
+        /// <summary>
+        /// TPOFeesRights AddEditTPOFees
+        /// </summary>
+        [JsonProperty("add/EditTPOFees")]
+        [AllowNull]
+        public AddEditTPOFeesRights AddEditTPOFees { get => GetField(ref _addEditTPOFees); set => SetField(ref _addEditTPOFees, value); }
+    }
+}

@@ -10,7 +10,7 @@
     internal sealed class LoanMilestones : LoanApiObject, ILoanMilestones
     {
         internal LoanMilestones(EncompassRestClient client, ILoanApis loanApis, string loanId)
-            : base(client, loanApis, loanId, "milestones")
+            : base(client, loanApis, loanId, null)
         {
         }
     }

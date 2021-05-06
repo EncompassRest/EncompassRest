@@ -1,7 +1,6 @@
-﻿using EncompassRest.Contacts;
-using EncompassRest.Utilities;
+﻿using System.Threading.Tasks;
+using EncompassRest.Contacts.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
 
 namespace EncompassRest.Tests
 {

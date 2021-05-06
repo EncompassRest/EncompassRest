@@ -3,14 +3,14 @@
     /// <summary>
     /// The Business Contacts Apis.
     /// </summary>
-    public interface IBusinessContacts : IContacts<BusinessContact>
+    public interface IBusinessContacts : IApiObject
     {
     }
 
-    internal sealed class BusinessContacts : Contacts<BusinessContact>, IBusinessContacts
+    internal sealed class BusinessContacts : ApiObject, IBusinessContacts
     {
         internal BusinessContacts(EncompassRestClient client)
-            : base(client, "encompass/v1/businessContacts")
+            : base(client, null)
         {
         }
     }

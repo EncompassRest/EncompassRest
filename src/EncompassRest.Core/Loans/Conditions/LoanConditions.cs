@@ -32,7 +32,7 @@
         public ILoanPostClosingConditions PostClosing => _postClosing ??= new LoanPostClosingConditions(Client, LoanApis, LoanId);
 
         internal LoanConditions(EncompassRestClient client, ILoanApis loanApis, string loanId)
-            : base(client, loanApis, loanId, "conditions")
+            : base(client, loanApis, loanId, null)
         {
         }
     }

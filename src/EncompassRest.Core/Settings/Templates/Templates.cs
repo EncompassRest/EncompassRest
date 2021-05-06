@@ -27,7 +27,7 @@ namespace EncompassRest.Settings.Templates
         }
 
         internal Templates(EncompassRestClient client)
-            : base(client, "encompass/v1/settings/templates")
+            : base(client, null)
         {
         }
     }

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EncompassRest.Loans.v1;
-using EncompassRest.Services;
+using EncompassRest.Services.v1;
 using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

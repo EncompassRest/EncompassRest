@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using EncompassRest.Loans.v1;
 using EncompassRest.Schema;
-using EncompassRest.Settings.Loan;
+using EncompassRest.Settings.Loan.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests

@@ -1,0 +1,18 @@
+using Newtonsoft.Json;
+
+namespace EncompassRest.Company.Users.Rights.v1
+{
+    /// <summary>
+    /// LoanReportsRights
+    /// </summary>
+    public sealed class LoanReportsRights : ParentAccessRights
+    {
+        private DirtyValue<bool?>? _allowLoanFilesToBeOpenForData;
+
+        /// <summary>
+        /// LoanReportsRights AllowLoanFilesToBeOpenForData
+        /// </summary>
+        [JsonProperty("allowLoanFilesToBeOpenForData(slowerperformance)")]
+        public bool? AllowLoanFilesToBeOpenForData { get => _allowLoanFilesToBeOpenForData; set => SetField(ref _allowLoanFilesToBeOpenForData, value); }
+    }
+}

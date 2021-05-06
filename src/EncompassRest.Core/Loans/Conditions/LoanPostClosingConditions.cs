@@ -10,7 +10,7 @@
     internal sealed class LoanPostClosingConditions : LoanApiObject, ILoanPostClosingConditions
     {
         internal LoanPostClosingConditions(EncompassRestClient client, ILoanApis loanApis, string loanId)
-            : base(client, loanApis, loanId, "postclosing")
+            : base(client, loanApis, loanId, null)
         {
         }
     }

@@ -539,7 +539,16 @@ namespace EncompassRest
         {
             _accessToken.Dispose();
             _httpClient?.Dispose();
-            _eFolder?.Dispose();
+            if (_eFolder != null)
+            {
+                foreach (var value in _eFolder.ExtensionData.Values)
+                {
+                    if (value is IDisposable disposable)
+                    {
+                        disposable.Dispose();
+                    }
+                }
+            }
         }
 
         internal sealed class RetryHandler : DelegatingHandler

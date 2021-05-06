@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EncompassRest.Settings.Personas;
+using EncompassRest.Settings.Personas.v1;
 using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

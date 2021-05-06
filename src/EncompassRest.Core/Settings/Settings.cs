@@ -87,7 +87,7 @@ namespace EncompassRest.Settings
         }
 
         internal Settings(EncompassRestClient client)
-            : base(client, "encompass/v1/settings")
+            : base(client, null)
         {
         }
     }

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
-using EncompassRest.CustomDataObjects;
+using EncompassRest.Company.v1;
+using EncompassRest.CustomDataObjects.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests

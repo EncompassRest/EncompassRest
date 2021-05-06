@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using EncompassRest.Services;
-using EncompassRest.Services.Appraisal;
-using EncompassRest.Services.AUS;
-using EncompassRest.Services.Credit;
-using EncompassRest.Services.Flood;
-using EncompassRest.Services.Verification;
-using EncompassRest.Utilities;
+using EncompassRest.Services.v1;
+using EncompassRest.Services.v1.Appraisal;
+using EncompassRest.Services.v1.AUS;
+using EncompassRest.Services.v1.Credit;
+using EncompassRest.Services.v1.Flood;
+using EncompassRest.Services.v1.Verification;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests

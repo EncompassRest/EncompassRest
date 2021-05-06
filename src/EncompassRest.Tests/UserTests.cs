@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using EncompassRest.Company.Users.Rights;
+using EncompassRest.Company.Users.Rights.v1;
+using EncompassRest.Company.Users.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests

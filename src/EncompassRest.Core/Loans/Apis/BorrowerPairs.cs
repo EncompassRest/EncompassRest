@@ -10,7 +10,7 @@
     internal sealed class BorrowerPairs : LoanApiObject, IBorrowerPairs
     {
         internal BorrowerPairs(EncompassRestClient client, ILoanApis loanApis, string loanId)
-            : base(client, loanApis, loanId, "applications")
+            : base(client, loanApis, loanId, null)
         {
         }
     }

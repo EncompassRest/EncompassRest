@@ -3,14 +3,14 @@
     /// <summary>
     /// Global Custom Data Objects Apis
     /// </summary>
-    public interface IGlobalCustomDataObjects : CustomDataObjects.ICustomDataObjects
+    public interface IGlobalCustomDataObjects : IApiObject
     {
     }
 
-    internal sealed class GlobalCustomDataObjects : CustomDataObjects.CustomDataObjects, IGlobalCustomDataObjects
+    internal sealed class GlobalCustomDataObjects : ApiObject, IGlobalCustomDataObjects
     {
         internal GlobalCustomDataObjects(EncompassRestClient client)
-            : base(client, "encompass/v1/company/customObjects")
+            : base(client, null)
         {
         }
     }

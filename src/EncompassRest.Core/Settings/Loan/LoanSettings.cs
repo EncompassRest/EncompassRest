@@ -27,7 +27,7 @@ namespace EncompassRest.Settings.Loan
         }
 
         internal LoanSettings(EncompassRestClient client)
-            : base(client, "encompass/v1/settings/loan")
+            : base(client, null)
         {
         }
     }
