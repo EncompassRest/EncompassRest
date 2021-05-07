@@ -1,7 +1,7 @@
 ﻿namespace EncompassRest.EFolder
 {
     /// <summary>
-    /// The EFolder Apis exposed as extension methods from the EncompassRest.EFolder.v1 package
+    /// The EFolder Apis exposed as extension methods from the EncompassRest.EFolder package
     /// within the EncompassRest.EFolder.v1 namespace.
     /// </summary>
     public interface IEFolder : IApiObject

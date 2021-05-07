@@ -1,7 +1,7 @@
 ﻿namespace EncompassRest.Company.Users.Rights
 {
     /// <summary>
-    /// User Rights Apis exposed as extension methods from the EncompassRest.Users.v1 package
+    /// User Rights Apis exposed as extension methods from the EncompassRest.Users package
     /// within the EncompassRest.Company.Users.Rights.v1 namespace.
     /// </summary>
     public interface IUsersRights : IUserApiObject

@@ -6,9 +6,6 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.LoanPipeline.v1
 {
-    /// <summary>
-    /// The Loan Pipeline Apis.
-    /// </summary>
     public static class PipelineExtensions
     {
         public static IPipelineV1? V1 { get; set; }
@@ -28,10 +25,8 @@ namespace EncompassRest.LoanPipeline.v1
             return v1;
         }
 
-        /// <inheritdoc/>
         public static Task<PipelineCanonicalNames> GetCanonicalNamesAsync(this IPipeline pipeline, CancellationToken cancellationToken = default) => GetV1(pipeline).GetCanonicalNamesAsync(cancellationToken);
 
-        /// <inheritdoc/>
         public static Task<string> GetCanonicalNamesRawAsync(this IPipeline pipeline, string? queryString = null, CancellationToken cancellationToken = default) => GetV1(pipeline).GetCanonicalNamesRawAsync(queryString, cancellationToken);
 
         /// <summary>
@@ -51,19 +46,14 @@ namespace EncompassRest.LoanPipeline.v1
         /// <returns></returns>
         public static Task<ILoanPipelineCursor> CreateCursorAsync(this IPipeline pipeline, PipelineParameters parameters, bool? ignoreInvalidFields, CancellationToken cancellationToken = default) => GetV1(pipeline).CreateCursorAsync(parameters, ignoreInvalidFields, cancellationToken);
 
-        /// <inheritdoc/>
         public static Task<List<LoanPipelineData>> ViewPipelineAsync(this IPipeline pipeline, PipelineParameters parameters, CancellationToken cancellationToken = default) => ViewPipelineAsync(pipeline, parameters, null, null, cancellationToken);
 
-        /// <inheritdoc/>
         public static Task<List<LoanPipelineData>> ViewPipelineAsync(this IPipeline pipeline, PipelineParameters parameters, int? limit, CancellationToken cancellationToken = default) => ViewPipelineAsync(pipeline, parameters, limit, null, cancellationToken);
 
-        /// <inheritdoc/>
         public static Task<List<LoanPipelineData>> ViewPipelineAsync(this IPipeline pipeline, PipelineParameters parameters, bool? ignoreInvalidFields, CancellationToken cancellationToken = default) => ViewPipelineAsync(pipeline, parameters, null, ignoreInvalidFields, cancellationToken);
 
-        /// <inheritdoc/>
         public static Task<List<LoanPipelineData>> ViewPipelineAsync(this IPipeline pipeline, PipelineParameters parameters, int? limit, bool? ignoreInvalidFields, CancellationToken cancellationToken = default) => GetV1(pipeline).ViewPipelineAsync(parameters, limit, ignoreInvalidFields, cancellationToken);
 
-        /// <inheritdoc/>
         public static Task<string> ViewPipelineRawAsync(this IPipeline pipeline, string parameters, string? queryString = null, CancellationToken cancellationToken = default) => GetV1(pipeline).ViewPipelineRawAsync(parameters, queryString, cancellationToken);
     }
 }

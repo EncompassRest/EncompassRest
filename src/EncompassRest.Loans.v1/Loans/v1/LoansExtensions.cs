@@ -38,14 +38,6 @@ namespace EncompassRest.Loans.v1
         /// <returns></returns>
         public static ILoanFieldDescriptors GetFieldDescriptors(this ILoans loans) => GetV1(loans).FieldDescriptors;
 
-        /// <summary>
-        /// Gets the Loan Apis for the loan with the specified <paramref name="loanId"/>.
-        /// </summary>
-        /// <param name="loans"></param>
-        /// <param name="loanId">The loan id.</param>
-        /// <returns></returns>
-        public static ILoanApis GetLoanApis(this ILoans loans, string loanId) => GetV1(loans).GetLoanApis(loanId);
-
         internal static ILoanObjectBoundApis GetLoanApis(this ILoans loans, Loan loan) => GetV1(loans).GetLoanApis(loan);
 
         /// <inheritdoc/>

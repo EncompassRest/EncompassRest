@@ -9,23 +9,28 @@ namespace EncompassRest.Company.Users
     public interface IUserApis : IUserApiObject
     {
         /// <summary>
-        /// User Compensation Apis
+        /// User Compensation Apis exposed as extension methods from the EncompassRest.Users package
+        /// within the EncompassRest.Company.Users.v1 namespace.
         /// </summary>
         IUserCompensationPlans Compensation { get; }
         /// <summary>
-        /// User Custom Data Objects Apis
+        /// User Custom Data Objects Apis exposed as extension methods from the EncompassRest.Users package
+        /// within the EncompassRest.Company.Users.v1 namespace.
         /// </summary>
         IUserCustomDataObjects CustomDataObjects { get; }
         /// <summary>
-        /// User Groups Apis
+        /// User Groups Apis exposed as extension methods from the EncompassRest.Users package
+        /// within the EncompassRest.Company.Users.v1 namespace.
         /// </summary>
         IUserGroups Groups { get; }
         /// <summary>
-        /// User Licenses Apis
+        /// User Licenses Apis exposed as extension methods from the EncompassRest.Users package
+        /// within the EncompassRest.Company.Users.v1 namespace.
         /// </summary>
         IUserLicenseDetails Licenses { get; }
         /// <summary>
-        /// User Rights Apis
+        /// User Rights Apis exposed as extension methods from the EncompassRest.Users package
+        /// within the EncompassRest.Company.Users.Rights.v1 namespace.
         /// </summary>
         IUsersRights Rights { get; }
     }

@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.LoanFolders
 {
     /// <summary>
-    /// The Loan Folders Apis.
+    /// The Loan Folders Apis exposed as extension methods
+    /// within the EncompassRest.LoanFolders.v1 namespace.
     /// </summary>
     public interface ILoanFolders : IApiObject
     {

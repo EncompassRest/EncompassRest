@@ -20,7 +20,13 @@
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>encompassrest.snk</AssemblyOriginatorKeyFile>
     <Nullable>enable</Nullable>
+    <RootNamespace>EncompassRest</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Loans\v1\Enums\**" />
+    <EmbeddedResource Remove="Loans\v1\Enums\**" />
+    <None Remove="Loans\v1\Enums\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Enums.NET" Version="4.0.0" />

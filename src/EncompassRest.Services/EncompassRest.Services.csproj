@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/EncompassRest/EncompassRest</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Title>EncompassRest.EFolder.v1</Title>
+    <Title>EncompassRest.Services</Title>
     <PackageTags>encompass rest api client</PackageTags>
     <Description>Encompass API Client Library for .NET</Description>
     <Summary>Encompass API Client Library for .NET</Summary>
@@ -34,30 +34,30 @@
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
-    <AssemblyTitle>EncompassRest.EFolder.v1 .NET Standard 2.1</AssemblyTitle>
+    <AssemblyTitle>EncompassRest.Services .NET Standard 2.1</AssemblyTitle>
     <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE;NULLABLE_ATTRIBUTES;KEYVALUEPAIR_CREATE;IASYNC_DISPOSABLE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-    <AssemblyTitle>EncompassRest.EFolder.v1 .NET Standard 2.0</AssemblyTitle>
+    <AssemblyTitle>EncompassRest.Services .NET Standard 2.0</AssemblyTitle>
     <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
     <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
-    <AssemblyTitle>EncompassRest.EFolder.v1 .NET Standard 1.1</AssemblyTitle>
+    <AssemblyTitle>EncompassRest.Services .NET Standard 1.1</AssemblyTitle>
     <DefineConstants></DefineConstants>
     <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
-    <AssemblyTitle>EncompassRest.EFolder.v1 .NET 4.5</AssemblyTitle>
+    <AssemblyTitle>EncompassRest.Services .NET 4.5</AssemblyTitle>
     <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
     <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
-    <AssemblyTitle>EncompassRest.EFolder.v1 .NET 4.6</AssemblyTitle>
+    <AssemblyTitle>EncompassRest.Services .NET 4.6</AssemblyTitle>
     <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
     <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>

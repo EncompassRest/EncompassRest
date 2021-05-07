@@ -88,12 +88,6 @@ namespace EncompassRest.Loans.v1
         /// <returns></returns>
         Task<bool> TryDeleteLoanAsync(string loanId, CancellationToken cancellationToken = default);
         /// <summary>
-        /// Gets the Loan Apis for the loan with the specified <paramref name="loanId"/>.
-        /// </summary>
-        /// <param name="loanId">The loan id.</param>
-        /// <returns></returns>
-        ILoanApis GetLoanApis(string loanId);
-        /// <summary>
         /// Gets the Loan Apis for the loan.
         /// </summary>
         /// <param name="loan">The loan.</param>
@@ -163,13 +157,6 @@ namespace EncompassRest.Loans.v1
         internal LoansV1(EncompassRestClient client)
             : base(client, "encompass/v1")
         {
-        }
-
-        public ILoanApis GetLoanApis(string loanId)
-        {
-            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
-
-            return new LoanApis(Client, loanId);
         }
 
         public ILoanObjectBoundApis GetLoanApis(Loan loan)

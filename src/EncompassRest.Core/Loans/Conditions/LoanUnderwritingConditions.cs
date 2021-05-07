@@ -1,7 +1,7 @@
 ﻿namespace EncompassRest.Loans.Conditions
 {
     /// <summary>
-    /// The Loan Underwriting Conditions Apis exposed as extension methods from the EncompassRest.EFolder.v1 package
+    /// The Loan Underwriting Conditions Apis exposed as extension methods from the EncompassRest.EFolder package
     /// within the EncompassRest.Loans.Conditions.v1 namespace.
     /// </summary>
     public interface ILoanUnderwritingConditions : ILoanApiObject

@@ -12,11 +12,13 @@ namespace EncompassRest.Settings
     public interface ISettings : IApiObject
     {
         /// <summary>
-        /// The Borrower Contacts Settings Apis.
+        /// The Borrower Contacts Settings Apis exposed as extension methods from the EncompassRest.Contacts package
+        /// within the EncompassRest.Settings.Contacts.v1 namespace.
         /// </summary>
         IBorrowerContactsSettings BorrowerContacts { get; }
         /// <summary>
-        /// The Business Contacts Settings Apis.
+        /// The Business Contacts Settings Apis exposed as extension methods from the EncompassRest.Contacts package
+        /// within the EncompassRest.Settings.Contacts.v1 namespace.
         /// </summary>
         IBusinessContactsSettings BusinessContacts { get; }
         /// <summary>
@@ -24,7 +26,8 @@ namespace EncompassRest.Settings
         /// </summary>
         ILoanSettings Loan { get; }
         /// <summary>
-        /// The Personas Apis.
+        /// The Personas Apis exposed as extension methods from the EncompassRest.Users package
+        /// within the EncompassRest.Settings.Personas.v1 namespace.
         /// </summary>
         IPersonas Personas { get; }
         /// <summary>

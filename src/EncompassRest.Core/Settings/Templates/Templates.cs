@@ -8,7 +8,8 @@ namespace EncompassRest.Settings.Templates
     public interface ITemplates : IApiObject
     {
         /// <summary>
-        /// The Loan Template Set Apis.
+        /// The Loan Template Set Apis exposed as extension methods
+        /// within the EncompassRest.Settings.Templates.v1 namespace.
         /// </summary>
         ILoanTemplateSet LoanTemplateSet { get; }
     }

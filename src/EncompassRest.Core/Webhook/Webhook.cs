@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.Webhook
 {
     /// <summary>
-    /// The Webhook Apis.
+    /// The Webhook Apis exposed as extension methods
+    /// within the EncompassRest.Webhook.v1 namespace.
     /// </summary>
     public interface IWebhook : IApiObject
     {

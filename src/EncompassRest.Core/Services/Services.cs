@@ -1,7 +1,7 @@
 ﻿namespace EncompassRest.Services
 {
     /// <summary>
-    /// The Services Apis exposed as extension methods from the EncompassRest.Services.v1 package
+    /// The Services Apis exposed as extension methods from the EncompassRest.Services package
     /// within the EncompassRest.Services.v1 namespace.
     /// </summary>
     public interface IServices : IApiObject

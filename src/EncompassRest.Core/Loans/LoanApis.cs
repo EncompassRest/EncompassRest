@@ -17,15 +17,18 @@ namespace EncompassRest.Loans
     public interface ILoanApis : ILoanApiObject
     {
         /// <summary>
-        /// The Loan Associates Apis.
+        /// The Loan Associates Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.Loans.Associates.v1 namespace.
         /// </summary>
         ILoanAssociates Associates { get; }
         /// <summary>
-        /// The Loan Attachments Apis.
+        /// The Loan Attachments Apis exposed as extension methods from the EncompassRest.EFolder package
+        /// within the EncompassRest.Loans.Attachments.v1 namespace.
         /// </summary>
         ILoanAttachments Attachments { get; }
         /// <summary>
-        /// The Loan Borrower Pairs Apis.
+        /// The Loan Borrower Pairs Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.Loans.Apis.v1 namespace.
         /// </summary>
         IBorrowerPairs BorrowerPairs { get; }
         /// <summary>
@@ -33,27 +36,33 @@ namespace EncompassRest.Loans
         /// </summary>
         ILoanConditions Conditions { get; }
         /// <summary>
-        /// The Loan Custom Data Objects Apis.
+        /// The Loan Custom Data Objects Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.Loans.v1 namespace.
         /// </summary>
         ILoanCustomDataObjects CustomDataObjects { get; }
         /// <summary>
-        /// The Loan Documents Apis.
+        /// The Loan Documents Apis exposed as extension methods from the EncompassRest.EFolder package
+        /// within the EncompassRest.Loans.Documents.v1 namespace.
         /// </summary>
         ILoanDocuments Documents { get; }
         /// <summary>
-        /// The Loan Field Reader Apis.
+        /// The Loan Field Reader Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.Loans.FieldReader.v1 namespace.
         /// </summary>
         ILoanFieldReader FieldReader { get; }
         /// <summary>
-        /// The Loan Milestone Free Roles Apis.
+        /// The Loan Milestone Free Roles Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.Loans.MilestoneFreeRoles.v1 namespace.
         /// </summary>
         ILoanMilestoneFreeRoles MilestoneFreeRoles { get; }
         /// <summary>
-        /// The Loan Milestone Apis.
+        /// The Loan Milestones Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.Loans.Milestones.v1 namespace.
         /// </summary>
         ILoanMilestones Milestones { get; }
         /// <summary>
-        /// The Loan Rate Lock Apis.
+        /// The Loan Rate Lock Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.Loans.RateLocks.v1 namespace.
         /// </summary>
         ILoanRateLocks RateLocks { get; }
     }

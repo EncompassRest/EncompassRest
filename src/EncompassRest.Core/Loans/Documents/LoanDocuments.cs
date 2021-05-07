@@ -1,7 +1,7 @@
 ﻿namespace EncompassRest.Loans.Documents
 {
     /// <summary>
-    /// The Loan Documents Apis exposed as extension methods from the EncompassRest.EFolder.v1 package
+    /// The Loan Documents Apis exposed as extension methods from the EncompassRest.EFolder package
     /// within the EncompassRest.Loans.Documents.v1 namespace.
     /// </summary>
     public interface ILoanDocuments : ILoanApiObject

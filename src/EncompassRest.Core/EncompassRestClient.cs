@@ -13,6 +13,7 @@ using EncompassRest.LoanFolders;
 using EncompassRest.LoanPipeline;
 using EncompassRest.Loans;
 using EncompassRest.Organizations;
+using EncompassRest.ResourceLocks;
 using EncompassRest.Schema;
 using EncompassRest.Services;
 using EncompassRest.Settings;
@@ -23,7 +24,7 @@ using EncompassRest.Webhook;
 namespace EncompassRest
 {
     /// <summary>
-    /// The client object to make calls to the Encompass Apis. Use the static factory Create* methods to create a client object.
+    /// The client object to make calls to the Encompass Apis.
     /// </summary>
     public interface IEncompassRestClient : IDisposable
 #if IASYNC_DISPOSABLE
@@ -39,11 +40,13 @@ namespace EncompassRest
         /// </summary>
         IBaseApiClient BaseApiClient { get; }
         /// <summary>
-        /// The Loan Batch Update Apis.
+        /// The Loan Batch Update Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.LoanBatch.v1 namespace.
         /// </summary>
         IBatchUpdate BatchUpdate { get; }
         /// <summary>
-        /// The Calculators Apis.
+        /// The Calculators Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.Calculators.v1 namespace.
         /// </summary>
         ICalculators Calculators { get; }
         /// <summary>
@@ -55,31 +58,43 @@ namespace EncompassRest
         /// </summary>
         IContacts Contacts { get; }
         /// <summary>
-        /// The EFolder Apis.
+        /// The EFolder Apis exposed as extension methods from the EncompassRest.EFolder package
+        /// within the EncompassRest.EFolder.v1 namespace.
         /// </summary>
         IEFolder EFolder { get; }
         /// <summary>
-        /// The Loan Folders Apis.
+        /// The Loan Folders Apis exposed as extension methods
+        /// within the EncompassRest.LoanFolders.v1 namespace.
         /// </summary>
         ILoanFolders LoanFolders { get; }
         /// <summary>
-        /// The Loans Apis.
+        /// The Loans Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.Loans.v1 namespace.
         /// </summary>
         ILoans Loans { get; }
         /// <summary>
-        /// The Organizations Apis.
+        /// The Organizations Apis exposed as extension methods
+        /// within the EncompassRest.Organizations.v1 namespace.
         /// </summary>
         IOrganizations Organizations { get; }
         /// <summary>
-        /// The Loan Pipeline Apis.
+        /// The Loan Pipeline Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.LoanPipeline.v1 namespace.
         /// </summary>
         IPipeline Pipeline { get; }
         /// <summary>
-        /// The Schema Apis.
+        /// The Resource Locks Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.ResourceLocks.v1 namespace.
+        /// </summary>
+        IResourceLocks ResourceLocks { get; }
+        /// <summary>
+        /// The Schema Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// within the EncompassRest.Schema.v1 namespace.
         /// </summary>
         ISchema Schema { get; }
         /// <summary>
-        /// The Services Apis.
+        /// The Services Apis exposed as extension methods from the EncompassRest.Services package
+        /// within the EncompassRest.Services.v1 namespace.
         /// </summary>
         IServices Services { get; }
         /// <summary>
@@ -103,7 +118,8 @@ namespace EncompassRest
         /// </summary>
         UndefinedCustomFieldHandling UndefinedCustomFieldHandling { get; set; }
         /// <summary>
-        /// The Webhook Apis.
+        /// The Webhook Apis exposed as extension methods
+        /// within the EncompassRest.Webhook.v1 namespace.
         /// </summary>
         IWebhook Webhook { get; }
         /// <summary>
@@ -264,9 +280,7 @@ namespace EncompassRest
         private EFolder.EFolder? _eFolder;
 
         #region Properties
-        /// <summary>
-        /// The access token and related Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public IAccessToken AccessToken => _accessToken;
 
         /// <inheritdoc/>
@@ -288,17 +302,13 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// An event that occurs before attempting to retry a request when there's a gateway timeout.
-        /// </summary>
+        /// <inheritdoc/>
         public event EventHandler<ITimeoutRetryEventArgs>? TimeoutRetry;
 
         /// <inheritdoc/>
         public UndefinedCustomFieldHandling UndefinedCustomFieldHandling { get; set; }
 
-        /// <summary>
-        /// The Loans Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public ILoans Loans
         {
             get
@@ -308,9 +318,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Schema Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public ISchema Schema
         {
             get
@@ -320,9 +328,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Webhook Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public IWebhook Webhook
         {
             get
@@ -332,9 +338,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Loan Pipeline Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public IPipeline Pipeline
         {
             get
@@ -344,9 +348,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Loan Batch Update Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public IBatchUpdate BatchUpdate
         {
             get
@@ -356,9 +358,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Contacts Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public IContacts Contacts
         {
             get
@@ -368,7 +368,8 @@ namespace EncompassRest
             }
         }
 
-        internal ResourceLocks.ResourceLocks ResourceLocks
+        /// <inheritdoc/>
+        public IResourceLocks ResourceLocks
         {
             get
             {
@@ -377,9 +378,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Loan Folders Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public ILoanFolders LoanFolders
         {
             get
@@ -389,9 +388,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Settings Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public ISettings Settings
         {
             get
@@ -401,9 +398,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Services Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public IServices Services
         {
             get
@@ -413,9 +408,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Company Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public ICompany Company
         {
             get
@@ -425,9 +418,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Organizations Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public IOrganizations Organizations
         {
             get
@@ -437,9 +428,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The Calculators Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public ICalculators Calculators
         {
             get
@@ -449,9 +438,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// The EFolder Apis.
-        /// </summary>
+        /// <inheritdoc/>
         public IEFolder EFolder
         {
             get
@@ -482,9 +469,7 @@ namespace EncompassRest
             }
         }
 
-        /// <summary>
-        /// A base Api client for use when Apis aren't supported directly.
-        /// </summary>
+        /// <inheritdoc/>
         public IBaseApiClient BaseApiClient
         {
             get
@@ -498,9 +483,7 @@ namespace EncompassRest
         public string BaseAddress { get; set; }
         #endregion
 
-        /// <summary>
-        /// An event that occurs when an Api response is received.
-        /// </summary>
+        /// <inheritdoc/>
         public event EventHandler<IApiResponseEventArgs>? ApiResponse;
 
         internal void InvokeApiResponse(HttpResponseMessage response)

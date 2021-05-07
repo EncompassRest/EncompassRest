@@ -30,6 +30,8 @@ namespace EncompassRest.Loans.v1
         [JsonIgnore]
         public ILoanObjectBoundApis LoanApis => _loanApis ?? throw new InvalidOperationException("Loan object must be initialized to use LoanApis");
 
+        ILoanApis ILoan.LoanApis => LoanApis;
+
         /// <summary>
         /// The loan fields collection.
         /// </summary>

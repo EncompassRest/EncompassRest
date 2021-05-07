@@ -8,7 +8,8 @@ namespace EncompassRest.Settings.Loan
     public interface ILoanSettings : IApiObject
     {
         /// <summary>
-        /// The Loan Custom Fields Apis.
+        /// The Loan Custom Fields Apis exposed as extension methods
+        /// within the EncompassRest.Settings.Loan.v1 namespace.
         /// </summary>
         ICustomFieldDefinitions CustomFields { get; }
     }

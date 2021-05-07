@@ -9,11 +9,13 @@ namespace EncompassRest.Company
     public interface ICompany : IApiObject
     {
         /// <summary>
-        /// Global Custom Data Objects Apis
+        /// Global Custom Data Objects Apis exposed as extension methods
+        /// within the EncompassRest.Company.v1 namespace.
         /// </summary>
         IGlobalCustomDataObjects GlobalCustomDataObjects { get; }
         /// <summary>
-        /// Users Apis
+        /// The Users Apis exposed as extension methods from the EncompassRest.Users package
+        /// within the EncompassRest.Company.Users.v1 namespace.
         /// </summary>
         IUsers Users { get; }
     }

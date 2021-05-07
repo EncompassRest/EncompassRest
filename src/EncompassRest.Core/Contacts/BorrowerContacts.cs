@@ -1,7 +1,7 @@
 ﻿namespace EncompassRest.Contacts
 {
     /// <summary>
-    /// The Borrower Contacts Apis exposed as extension methods from the EncompassRest.Contacts.v1 package
+    /// The Borrower Contacts Apis exposed as extension methods from the EncompassRest.Contacts package
     /// within the EncompassRest.Contacts.v1 namespace.
     /// </summary>
     public interface IBorrowerContacts : IApiObject

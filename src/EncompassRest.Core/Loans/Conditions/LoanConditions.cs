@@ -6,15 +6,18 @@
     public interface ILoanConditions : ILoanApiObject
     {
         /// <summary>
-        /// The Loan PostClosing Conditions Apis.
+        /// The Loan PostClosing Conditions Apis exposed as extension methods from the EncompassRest.EFolder package
+        /// within the EncompassRest.Loans.Conditions.v1 namespace.
         /// </summary>
         ILoanPostClosingConditions PostClosing { get; }
         /// <summary>
-        /// The Loan Preliminary Conditions Apis.
+        /// The Loan Preliminary Conditions Apis exposed as extension methods from the EncompassRest.EFolder package
+        /// within the EncompassRest.Loans.Conditions.v1 namespace.
         /// </summary>
         ILoanPreliminaryConditions Preliminary { get; }
         /// <summary>
-        /// The Loan Underwriting Conditions Apis.
+        /// The Loan Underwriting Conditions Apis exposed as extension methods from the EncompassRest.EFolder package
+        /// within the EncompassRest.Loans.Conditions.v1 namespace.
         /// </summary>
         ILoanUnderwritingConditions Underwriting { get; }
     }

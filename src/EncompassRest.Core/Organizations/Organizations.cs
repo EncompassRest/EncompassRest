@@ -1,7 +1,8 @@
 ﻿namespace EncompassRest.Organizations
 {
     /// <summary>
-    /// Organizations Apis
+    /// The Organizations Apis exposed as extension methods
+    /// within the EncompassRest.Organizations.v1 namespace.
     /// </summary>
     public interface IOrganizations : IApiObject
     {

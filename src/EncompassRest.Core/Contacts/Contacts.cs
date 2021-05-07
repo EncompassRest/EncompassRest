@@ -10,27 +10,33 @@ namespace EncompassRest.Contacts
     public interface IContacts : IApiObject
     {
         /// <summary>
-        /// The Borrower Contacts Apis.
+        /// The Borrower Contacts Apis exposed as extension methods from the EncompassRest.Contacts package
+        /// within the EncompassRest.Contacts.v1 namespace.
         /// </summary>
         IBorrowerContacts BorrowerContacts { get; }
         /// <summary>
-        /// The Borrower Contact Selector Apis.
+        /// The Borrower Contact Selector Apis exposed as extension methods from the EncompassRest.Contacts package
+        /// within the EncompassRest.Contacts.v1 namespace.
         /// </summary>
         IBorrowerContactSelector BorrowerContactSelector { get; }
         /// <summary>
-        /// The Business Contacts Apis.
+        /// The Business Contacts Apis exposed as extension methods from the EncompassRest.Contacts package
+        /// within the EncompassRest.Contacts.v1 namespace.
         /// </summary>
         IBusinessContacts BusinessContacts { get; }
         /// <summary>
-        /// The Business Contact Selector Apis.
+        /// The Business Contact Selector Apis exposed as extension methods from the EncompassRest.Contacts package
+        /// within the EncompassRest.Contacts.v1 namespace.
         /// </summary>
         IBusinessContactSelector BusinessContactSelector { get; }
         /// <summary>
-        /// The Contact Groups Apis.
+        /// The Contact Groups Apis exposed as extension methods from the EncompassRest.Contacts package
+        /// within the EncompassRest.Contacts.v1 namespace.
         /// </summary>
         IContactGroups Groups { get; }
         /// <summary>
-        /// Gets the Contact Notes Apis associated with the given contact.
+        /// Gets the Contact Notes Apis associated with the given contact. The Contact Notes Apis are exposed as extension methods from the EncompassRest.Contacts package
+        /// within the EncompassRest.Contacts.v1 namespace.
         /// </summary>
         /// <param name="type">The contact type.</param>
         /// <param name="contactId">The contact id.</param>

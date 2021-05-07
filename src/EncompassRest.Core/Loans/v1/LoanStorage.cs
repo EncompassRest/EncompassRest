@@ -1,4 +1,4 @@
-﻿namespace EncompassRest.Loans
+﻿namespace EncompassRest.Loans.v1
 {
     /// <summary>
     /// LoanStorage
