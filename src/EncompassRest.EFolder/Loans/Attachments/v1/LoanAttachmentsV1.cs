@@ -355,7 +355,7 @@ namespace EncompassRest.Loans.Attachments.v1
             return await DownloadAttachmentStreamFromMediaUrlAsync(mediaUrlObject.MediaUrl!, cancellationToken).ConfigureAwait(false);
         }
 
-        public Task<Stream> DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentStreamAsync), null, cancellationToken, ReadAsStreamFunc, true, false);
+        public Task<Stream> DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentStreamAsync), null, cancellationToken, ReadAsStreamFunc, disposeResponse: false);
 
         public Task<MediaUrlObject> GetDownloadAttachmentPageThumbnailUrlAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
         {
@@ -384,7 +384,7 @@ namespace EncompassRest.Loans.Attachments.v1
         {
             var mediaUrlObject = await GetDownloadAttachmentPageThumbnailUrlAsync(attachmentId, pageId, cancellationToken).ConfigureAwait(false);
 
-            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageThumbnailStreamAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsStreamFunc, true, false).ConfigureAwait(false);
+            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageThumbnailStreamAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsStreamFunc, disposeResponse: false).ConfigureAwait(false);
         }
 
         public Task<MediaUrlObject> GetDownloadAttachmentPageUrlAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
@@ -414,7 +414,7 @@ namespace EncompassRest.Loans.Attachments.v1
         {
             var mediaUrlObject = await GetDownloadAttachmentPageUrlAsync(attachmentId, pageId, cancellationToken).ConfigureAwait(false);
 
-            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageStreamAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsStreamFunc, true, false).ConfigureAwait(false);
+            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageStreamAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsStreamFunc, disposeResponse: false).ConfigureAwait(false);
         }
 
         public Task UpdateAttachmentAsync(LoanAttachment attachment, bool populate, CancellationToken cancellationToken = default)

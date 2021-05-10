@@ -167,7 +167,7 @@ namespace EncompassRest.Webhook.v1
         {
         }
 
-        public Task<List<WebhookResource>> GetResourcesAsync(CancellationToken cancellationToken = default) => GetAsync<List<WebhookResource>>("resources", null, nameof(GetResourcesAsync), null, cancellationToken);
+        public Task<List<WebhookResource>> GetResourcesAsync(CancellationToken cancellationToken = default) => GetListAsync<WebhookResource>("resources", null, nameof(GetResourcesAsync), null, cancellationToken);
 
         public Task<string> GetResourcesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("resources", queryString, nameof(GetResourcesRawAsync), null, cancellationToken);
 
@@ -189,7 +189,7 @@ namespace EncompassRest.Webhook.v1
         {
             Preconditions.NotNullOrEmpty(resourceName, nameof(resourceName));
 
-            return GetAsync<List<WebhookResourceEventObject>>($"resources/{resourceName}/events", null, nameof(GetResourceEventsAsync), resourceName, cancellationToken);
+            return GetListAsync<WebhookResourceEventObject>($"resources/{resourceName}/events", null, nameof(GetResourceEventsAsync), resourceName, cancellationToken);
         }
 
         public Task<string> GetResourceEventsRawAsync(string resourceName, string? queryString = null, CancellationToken cancellationToken = default)
@@ -279,7 +279,7 @@ namespace EncompassRest.Webhook.v1
             return DeleteAsync($"subscriptions/{subscriptionId}", null, cancellationToken);
         }
 
-        public Task<List<WebhookEvent>> GetEventsAsync(WebhookEventOptions? options = null, CancellationToken cancellationToken = default) => GetAsync<List<WebhookEvent>>("events", options?.ToQueryParameters().ToString(), nameof(GetEventsAsync), null, cancellationToken);
+        public Task<List<WebhookEvent>> GetEventsAsync(WebhookEventOptions? options = null, CancellationToken cancellationToken = default) => GetListAsync<WebhookEvent>("events", options?.ToQueryParameters().ToString(), nameof(GetEventsAsync), null, cancellationToken);
 
         public Task<string> GetEventsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("events", queryString, nameof(GetEventsRawAsync), null, cancellationToken);
 
@@ -287,7 +287,7 @@ namespace EncompassRest.Webhook.v1
         {
             Preconditions.NotNullOrEmpty(eventId, nameof(eventId));
 
-            return GetAsync<List<WebhookEvent>>($"events/{eventId}", null, nameof(GetEventAsync), eventId, cancellationToken);
+            return GetListAsync<WebhookEvent>($"events/{eventId}", null, nameof(GetEventAsync), eventId, cancellationToken);
         }
 
         public Task<string> GetEventRawAsync(string eventId, string? queryString = null, CancellationToken cancellationToken = default)

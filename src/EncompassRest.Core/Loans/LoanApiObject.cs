@@ -9,7 +9,8 @@ namespace EncompassRest.Loans
     public interface ILoanApiObject : IApiObject
     {
         /// <summary>
-        /// The loan Api's available to the loan.
+        /// The Loan Apis exposed as extension methods from the Core and EncompassRest.Services packages
+        /// within the EncompassRest.Loans.v1 namespace.
         /// </summary>
         ILoanApis LoanApis { get; }
 

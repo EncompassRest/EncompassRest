@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.ResourceLocks.v1;
-using EncompassRest.Services.v1;
 
 namespace EncompassRest.Loans.v1
 {
     /// <summary>
     /// The Loan Apis.
     /// </summary>
-    public interface ILoanApisV1 : ILoanApiObject
+    public interface ILoanApisV1Core : ILoanApiObject
     {
         /// <summary>
         /// Retrieves the loan lock information with the specified <paramref name="lockId"/>.
@@ -62,25 +60,11 @@ namespace EncompassRest.Loans.v1
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         Task UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
-        /// </summary>
-        /// <param name="format">Format that you want to export the loan to.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task<byte[]> ExportToMismoAsync(string format, CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
-        /// </summary>
-        /// <param name="format">Format that you want to export the loan to.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        Task<Stream> ExportToMismoStreamAsync(string format, CancellationToken cancellationToken = default);
     }
 
-    internal sealed class LoanApisV1 : LoanApiObjectV1, ILoanApisV1
+    internal sealed class LoanApisV1Core : LoanApiObjectV1, ILoanApisV1Core
     {
-        internal LoanApisV1(EncompassRestClient client, ILoanApis loanApis, string loanId)
+        internal LoanApisV1Core(EncompassRestClient client, ILoanApis loanApis, string loanId)
             : base(client, loanApis, loanId, null)
         {
         }
@@ -99,8 +83,6 @@ namespace EncompassRest.Loans.v1
 
         public Task UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.UnlockResourceAsync(lockId, LoanId, EntityType.Loan.GetValue()!, force, cancellationToken);
 
-        public Task<byte[]> ExportToMismoAsync(string format, CancellationToken cancellationToken = default) => Client.Services.ExportLoanToMismoAsync(LoanId, format, cancellationToken);
-
-        public Task<Stream> ExportToMismoStreamAsync(string format, CancellationToken cancellationToken = default) => Client.Services.ExportLoanToMismoStreamAsync(LoanId, format, cancellationToken);
+        
     }
 }

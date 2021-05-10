@@ -181,7 +181,7 @@ namespace EncompassRest.Contacts.v1
                 Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
                 queryParameters.Add(nameof(limit), limit.ToString());
             }
-            return GetAsync<List<EntityReference>>($"{groupId}/contacts", queryParameters.ToString(), nameof(GetGroupContactsAsync), groupId, cancellationToken);
+            return GetListAsync<EntityReference>($"{groupId}/contacts", queryParameters.ToString(), nameof(GetGroupContactsAsync), groupId, cancellationToken);
         }
 
         public Task<string> GetGroupContactsRawAsync(string groupId, string? queryString = null, CancellationToken cancellationToken = default)

@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.ResourceLocks.v1;
-using EncompassRest.Services.v1;
 using EncompassRest.Utilities;
 using EnumsNET;
 
 namespace EncompassRest.Loans.v1
 {
-    public static class LoanApisExtensions
+    public static class LoanApisCoreExtensions
     {
-        public static ILoanApisV1? V1 { get; set; }
+        public static ILoanApisV1Core? V1 { get; set; }
 
-        private static ILoanApisV1 GetV1(ILoanApis loanApis)
+        private static ILoanApisV1Core GetV1(ILoanApis loanApis)
         {
             var v1 = V1;
             if (loanApis is LoanApis a)
             {
-                v1 = (ILoanApisV1)a.ExtensionData.GetOrAdd("v1", k => new LoanApisV1(a.Client, a.LoanApis, a.LoanId));
+                v1 = (ILoanApisV1Core)a.ExtensionData.GetOrAdd("v1Core", k => new LoanApisV1Core(a.Client, a.LoanApis, a.LoanId));
             }
             else if (v1 == null)
             {
@@ -126,37 +124,5 @@ namespace EncompassRest.Loans.v1
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task UnlockAsync(this ILoanApis loanApis, string lockId, bool force, CancellationToken cancellationToken = default) => GetV1(loanApis).UnlockAsync(lockId, force, cancellationToken);
-
-        /// <summary>
-        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
-        /// </summary>
-        /// <param name="format">Format that you want to export the loan to.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        public static Task<byte[]> ExportToMismoAsync(this ILoanApis loanApis, MismoFormat format, CancellationToken cancellationToken = default) => ExportToMismoAsync(loanApis, format.Validate(nameof(format)).GetValue()!, cancellationToken);
-
-        /// <summary>
-        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
-        /// </summary>
-        /// <param name="format">Format that you want to export the loan to.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        public static Task<byte[]> ExportToMismoAsync(this ILoanApis loanApis, string format, CancellationToken cancellationToken = default) => GetV1(loanApis).ExportToMismoAsync(format, cancellationToken);
-
-        /// <summary>
-        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
-        /// </summary>
-        /// <param name="format">Format that you want to export the loan to.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        public static Task<Stream> ExportToMismoStreamAsync(this ILoanApis loanApis, MismoFormat format, CancellationToken cancellationToken = default) => ExportToMismoStreamAsync(loanApis, format.Validate(nameof(format)).GetValue()!, cancellationToken);
-
-        /// <summary>
-        /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
-        /// </summary>
-        /// <param name="format">Format that you want to export the loan to.</param>
-        /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-        /// <returns></returns>
-        public static Task<Stream> ExportToMismoStreamAsync(this ILoanApis loanApis, string format, CancellationToken cancellationToken = default) => GetV1(loanApis).ExportToMismoStreamAsync(format, cancellationToken);
     }
 }

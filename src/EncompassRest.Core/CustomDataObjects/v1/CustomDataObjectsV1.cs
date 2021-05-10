@@ -101,7 +101,7 @@ namespace EncompassRest.CustomDataObjects.v1
         {
         }
 
-        public Task<List<string>> GetCustomDataObjectsAsync(CancellationToken cancellationToken = default) => GetAsync<List<string>>(null, null, nameof(GetCustomDataObjectsAsync), null, cancellationToken);
+        public Task<List<string>> GetCustomDataObjectsAsync(CancellationToken cancellationToken = default) => GetListAsync<string>(null, null, nameof(GetCustomDataObjectsAsync), null, cancellationToken);
 
         public Task<string> GetCustomDataObjectsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetCustomDataObjectsRawAsync), null, cancellationToken);
 

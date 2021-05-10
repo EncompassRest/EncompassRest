@@ -11,7 +11,7 @@ using EncompassRest.Loans.RateLocks;
 namespace EncompassRest.Loans
 {
     /// <summary>
-    /// The Loan Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+    /// The Loan Apis exposed as extension methods from the Core and EncompassRest.Services packages
     /// within the EncompassRest.Loans.v1 namespace.
     /// </summary>
     public interface ILoanApis : ILoanApiObject

@@ -12,7 +12,7 @@ namespace EncompassRest
     public class ClientParameters
     {
         private int _timeoutRetryCount;
-        internal event Func<ClientParameters, EncompassRestClient, CommonCache, CancellationToken, Task> Initialization;
+        internal event Func<ClientParameters, EncompassRestClient, CommonCache, CancellationToken, Task>? Initialization;
 
         /// <summary>
         /// The Api Client Id.

@@ -66,7 +66,7 @@ namespace EncompassRest.ResourceLocks.v1
                 new QueryParameter("resourceType", resourceType),
                 new QueryParameter("resourceId", resourceId));
 
-            return GetAsync<List<ResourceLock>>(null, queryParameters.ToString(), nameof(GetResourceLocksAsync), null, cancellationToken);
+            return GetListAsync<ResourceLock>(null, queryParameters.ToString(), nameof(GetResourceLocksAsync), null, cancellationToken);
         }
 
         public Task<string> GetResourceLocksRawAsync(string queryString, CancellationToken cancellationToken = default)

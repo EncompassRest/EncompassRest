@@ -189,7 +189,7 @@ namespace EncompassRest.Loans.v1
             return GetRawAsync($"loans/{loanId}", queryString, nameof(GetLoanRawAsync), loanId, cancellationToken);
         }
 
-        public Task<List<StringEnumValue<LoanEntity>>> GetSupportedEntitiesAsync(CancellationToken cancellationToken = default) => GetAsync<List<StringEnumValue<LoanEntity>>>("loans/supportedEntities", null, nameof(GetSupportedEntitiesAsync), null, cancellationToken);
+        public Task<List<StringEnumValue<LoanEntity>>> GetSupportedEntitiesAsync(CancellationToken cancellationToken = default) => GetListAsync<StringEnumValue<LoanEntity>>("loans/supportedEntities", null, nameof(GetSupportedEntitiesAsync), null, cancellationToken);
 
         public Task<string> GetSupportedEntitiesRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("loans/supportedEntities", queryString, nameof(GetSupportedEntitiesRawAsync), null, cancellationToken);
 

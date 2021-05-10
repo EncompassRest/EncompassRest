@@ -240,7 +240,7 @@ namespace EncompassRest.Loans.Conditions.v1
                 Preconditions.NotNullOrEmpty(condition.Id, $"{nameof(conditionIds)}[{i++}]");
             }
 
-            return SendAsync(PatchMethod, null, "action=remove", JsonStreamContent.Create(list), nameof(DeleteConditionsAsync), null, cancellationToken, r => Task.FromResult(r.IsSuccessStatusCode), false);
+            return SendAsync(PatchMethod, null, "action=remove", JsonStreamContent.Create(list), nameof(DeleteConditionsAsync), null, cancellationToken, r => Task.FromResult(r.IsSuccessStatusCode), NonSuccessStatusCodeHandling.NoThrow);
         }
 
         public Task<string> ManageConditionsRawAsync(string content, string queryString, CancellationToken cancellationToken = default)
@@ -285,7 +285,7 @@ namespace EncompassRest.Loans.Conditions.v1
                 Preconditions.NotNullOrEmpty(comment.CommentId, $"{nameof(commentIds)}[{i++}]");
             }
 
-            return SendAsync(PatchMethod, $"{conditionId}/comments", "action=remove", JsonStreamContent.Create(list), nameof(DeleteConditionCommentsAsync), conditionId, cancellationToken, r => Task.FromResult(r.IsSuccessStatusCode), false);
+            return SendAsync(PatchMethod, $"{conditionId}/comments", "action=remove", JsonStreamContent.Create(list), nameof(DeleteConditionCommentsAsync), conditionId, cancellationToken, r => Task.FromResult(r.IsSuccessStatusCode), NonSuccessStatusCodeHandling.NoThrow);
         }
 
         public Task<string> ManageConditionCommentsRawAsync(string conditionId, string content, string queryString, CancellationToken cancellationToken = default)

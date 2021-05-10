@@ -137,7 +137,7 @@ namespace EncompassRest.Loans.Documents.v1
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            return GetAsync<List<EntityReference>>($"{documentId}/attachments", null, nameof(GetDocumentAttachmentsAsync), documentId, cancellationToken);
+            return GetListAsync<EntityReference>($"{documentId}/attachments", null, nameof(GetDocumentAttachmentsAsync), documentId, cancellationToken);
         }
 
         public Task<string> GetDocumentAttachmentsRawAsync(string documentId, string? queryString = null, CancellationToken cancellationToken = default)

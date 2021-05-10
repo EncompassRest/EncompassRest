@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     public interface ILoans : IApiObject
     {
         /// <summary>
-        /// Gets the Loan Apis for the loan with the specified <paramref name="loanId"/>. The Loan Apis exposed as extension methods from the EncompassRest.Loans.v1 package
+        /// Gets the Loan Apis for the loan with the specified <paramref name="loanId"/>. The Loan Apis exposed as extension methods from the Core and EncompassRest.Services packages
         /// within the EncompassRest.Loans.v1 namespace.
         /// </summary>
         /// <param name="loanId">The loan id.</param>

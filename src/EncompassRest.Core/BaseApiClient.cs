@@ -180,9 +180,7 @@ namespace EncompassRest
 
 
         /// <inheritdoc/>
-#pragma warning disable IDE0060 // Remove unused parameter
         public Task<TResponse> GetAnonymousTypeAsync<TResponse>(string uri, TResponse anonymousTypeObject, CancellationToken cancellationToken = default) => GetAsync<TResponse>(uri, null, nameof(GetAnonymousTypeAsync), null, cancellationToken);
-#pragma warning restore IDE0060 // Remove unused parameter
 
         /// <inheritdoc/>
         public Task<string> GetRawAsync(string uri, CancellationToken cancellationToken = default) => GetRawAsync(uri, null, nameof(GetRawAsync), null, cancellationToken);
@@ -194,9 +192,7 @@ namespace EncompassRest
         public Task<TResponse> PostAsync<TResponse>(string uri, object content, CancellationToken cancellationToken = default) => PostAsync<TResponse>(uri, null, JsonStreamContent.Create(content), nameof(PostAsync), null, cancellationToken);
 
         /// <inheritdoc/>
-#pragma warning disable IDE0060 // Remove unused parameter
         public Task<TResponse> PostAnonymousTypeAsync<TResponse>(string uri, object content, TResponse anonymousTypeObject, CancellationToken cancellationToken = default) => PostAsync<TResponse>(uri, null, JsonStreamContent.Create(content), nameof(PostAnonymousTypeAsync), null, cancellationToken);
-#pragma warning restore IDE0060 // Remove unused parameter
 
         /// <inheritdoc/>
         public Task<string> PostRawAsync(string uri, string content, CancellationToken cancellationToken = default) => PostRawAsync(uri, null, new JsonStringContent(content), nameof(PostRawAsync), null, cancellationToken);
@@ -208,9 +204,7 @@ namespace EncompassRest
         public Task<TResponse> PatchAsync<TResponse>(string uri, object content, CancellationToken cancellationToken = default) => PatchAsync(uri, null, JsonStreamContent.Create(content), nameof(PatchAsync), null, cancellationToken, FuncCache<TResponse>.ReadAsFunc);
 
         /// <inheritdoc/>
-#pragma warning disable IDE0060 // Remove unused parameter
         public Task<TResponse> PatchAnonymousTypeAsync<TResponse>(string uri, object content, TResponse anonymousTypeObject, CancellationToken cancellationToken = default) => PatchAsync(uri, null, JsonStreamContent.Create(content), nameof(PatchAnonymousTypeAsync), null, cancellationToken, FuncCache<TResponse>.ReadAsFunc);
-#pragma warning restore IDE0060 // Remove unused parameter
 
         /// <inheritdoc/>
         public Task<string> PatchRawAsync(string uri, string content, CancellationToken cancellationToken = default) => PatchRawAsync(uri, null, new JsonStringContent(content), nameof(PatchRawAsync), null, cancellationToken);
@@ -222,9 +216,7 @@ namespace EncompassRest
         public Task<TResponse> PutAsync<TResponse>(string uri, object content, CancellationToken cancellationToken = default) => PutAsync(uri, null, JsonStreamContent.Create(content), nameof(PutAsync), null, cancellationToken, FuncCache<TResponse>.ReadAsFunc);
 
         /// <inheritdoc/>
-#pragma warning disable IDE0060 // Remove unused parameter
         public Task<TResponse> PutAnonymousTypeAsync<TResponse>(string uri, object content, TResponse anonymousTypeObject, CancellationToken cancellationToken = default) => PutAsync(uri, null, JsonStreamContent.Create(content), nameof(PutAnonymousTypeAsync), null, cancellationToken, FuncCache<TResponse>.ReadAsFunc);
-#pragma warning restore IDE0060 // Remove unused parameter
 
         /// <inheritdoc/>
         public Task<string> PutRawAsync(string uri, string content, CancellationToken cancellationToken = default) => PutRawAsync(uri, null, new JsonStringContent(content), nameof(PutRawAsync), null, cancellationToken);

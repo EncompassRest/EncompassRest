@@ -53,7 +53,7 @@ namespace EncompassRest.Settings.Templates.v1
         {
             Preconditions.NotNullOrEmpty(path, nameof(path));
 
-            return GetAsync<List<EntityReference>>($"folders{path.PrecedeWith("/")}", null, nameof(GetTemplateFoldersAsync), null, cancellationToken);
+            return GetListAsync<EntityReference>($"folders{path.PrecedeWith("/")}", null, nameof(GetTemplateFoldersAsync), null, cancellationToken);
         }
 
         public Task<string> GetTemplateFoldersRawAsync(string path, string? queryString = null, CancellationToken cancellationToken = default)
@@ -70,7 +70,7 @@ namespace EncompassRest.Settings.Templates.v1
             var queryParameters = new QueryParameters(
                 new QueryParameter("path", path));
 
-            return GetAsync<List<EntityReference>>("items", queryParameters.ToString(), nameof(GetTemplateFilesAsync), null, cancellationToken);
+            return GetListAsync<EntityReference>("items", queryParameters.ToString(), nameof(GetTemplateFilesAsync), null, cancellationToken);
         }
 
         public Task<string> GetTemplateFilesRawAsync(string queryString, CancellationToken cancellationToken = default)

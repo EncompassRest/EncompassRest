@@ -2,25 +2,26 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.Services.v1;
 using EncompassRest.Utilities;
 using EnumsNET;
 
-namespace EncompassRest.Services.v1
+namespace EncompassRest.Loans.v1
 {
-    public static class ServicesCoreExtensions
+    public static class LoanApisV1ServicesExtensions
     {
-        public static IServicesCoreV1? V1 { get; set; }
+        public static ILoanApisV1Services? V1 { get; set; }
 
-        private static IServicesCoreV1 GetV1(IServices services)
+        private static ILoanApisV1Services GetV1(ILoanApis loanApis)
         {
             var v1 = V1;
-            if (services is Services s)
+            if (loanApis is LoanApis a)
             {
-                v1 = (IServicesCoreV1)s.ExtensionData.GetOrAdd("v1Core", k => new ServicesCoreV1(s.Client));
+                v1 = (ILoanApisV1Services)a.ExtensionData.GetOrAdd("v1Services", k => new LoanApisV1Services(a.Client, a.LoanApis, a.LoanId));
             }
             else if (v1 == null)
             {
-                Preconditions.NotNull(services, nameof(services));
+                Preconditions.NotNull(loanApis, nameof(loanApis));
                 throw new InvalidOperationException("Must set V1 property when not using the default implementation");
             }
             return v1;
@@ -29,37 +30,33 @@ namespace EncompassRest.Services.v1
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
         /// </summary>
-        /// <param name="loanId">Unique identifier of the Encompass Loan</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<byte[]> ExportLoanToMismoAsync(this IServices services, string loanId, MismoFormat format, CancellationToken cancellationToken = default) => ExportLoanToMismoAsync(services, loanId, format.Validate(nameof(format)).GetValue()!, cancellationToken);
+        public static Task<byte[]> ExportToMismoAsync(this ILoanApis loanApis, MismoFormat format, CancellationToken cancellationToken = default) => ExportToMismoAsync(loanApis, format.Validate(nameof(format)).GetValue()!, cancellationToken);
 
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
         /// </summary>
-        /// <param name="loanId">Unique identifier of the Encompass Loan</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<byte[]> ExportLoanToMismoAsync(this IServices services, string loanId, string format, CancellationToken cancellationToken = default) => GetV1(services).ExportLoanToMismoAsync(loanId, format, cancellationToken);
+        public static Task<byte[]> ExportToMismoAsync(this ILoanApis loanApis, string format, CancellationToken cancellationToken = default) => GetV1(loanApis).ExportToMismoAsync(format, cancellationToken);
 
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
         /// </summary>
-        /// <param name="loanId">Unique identifier of the Encompass Loan</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<Stream> ExportLoanToMismoStreamAsync(this IServices services, string loanId, MismoFormat format, CancellationToken cancellationToken = default) => ExportLoanToMismoStreamAsync(services, loanId, format.Validate(nameof(format)).GetValue()!, cancellationToken);
+        public static Task<Stream> ExportToMismoStreamAsync(this ILoanApis loanApis, MismoFormat format, CancellationToken cancellationToken = default) => ExportToMismoStreamAsync(loanApis, format.Validate(nameof(format)).GetValue()!, cancellationToken);
 
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
         /// </summary>
-        /// <param name="loanId">Unique identifier of the Encompass Loan</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<Stream> ExportLoanToMismoStreamAsync(this IServices services, string loanId, string format, CancellationToken cancellationToken = default) => GetV1(services).ExportLoanToMismoStreamAsync(loanId, format, cancellationToken);
+        public static Task<Stream> ExportToMismoStreamAsync(this ILoanApis loanApis, string format, CancellationToken cancellationToken = default) => GetV1(loanApis).ExportToMismoStreamAsync(format, cancellationToken);
     }
 }

@@ -48,36 +48,24 @@ namespace EncompassRest
         HttpStatusCode StatusCode { get; }
     }
 
-    /// <summary>
-    /// Api response event arguments.
-    /// </summary>
-    public sealed class ApiResponseEventArgs : EventArgs, IApiResponseEventArgs
+    internal sealed class ApiResponseEventArgs : EventArgs, IApiResponseEventArgs
     {
-        /// <inheritdoc/>
         public HttpRequestMessage Request => Response.RequestMessage;
 
-        /// <inheritdoc/>
         public HttpStatusCode StatusCode => Response.StatusCode;
 
-        /// <inheritdoc/>
         public HttpResponseMessage Response { get; }
 
-        /// <inheritdoc/>
         public string? CorrelationId => Response.Headers.TryGetValues("X-Correlation-ID", out var values) ? values.FirstOrDefault() : null;
 
-        /// <inheritdoc/>
         public int? ConcurrencyLimit => Response.Headers.TryGetValues("X-Concurrency-Limit-Limit", out var values) && int.TryParse(values.FirstOrDefault() ?? string.Empty, out var value) ? value : default;
 
-        /// <inheritdoc/>
         public int? ConcurrencyLimitRemaining => Response.Headers.TryGetValues("X-Concurrency-Limit-Remaining", out var values) && int.TryParse(values.FirstOrDefault() ?? string.Empty, out var value) ? value : default;
 
-        /// <inheritdoc/>
         public int? RateLimit => Response.Headers.TryGetValues("X-Rate-Limit-Limit", out var values) && int.TryParse(values.FirstOrDefault() ?? string.Empty, out var value) ? value : default;
 
-        /// <inheritdoc/>
         public int? RateLimitRemaining => Response.Headers.TryGetValues("X-Rate-Limit-Remaining", out var values) && int.TryParse(values.FirstOrDefault() ?? string.Empty, out var value) ? value : default;
 
-        /// <inheritdoc/>
         public DateTime? RateLimitReset => Response.Headers.TryGetValues("X-Rate-Limit-Reset", out var values) && int.TryParse(values.FirstOrDefault() ?? string.Empty, out var value) ? new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(value) : default;
 
         internal ApiResponseEventArgs(HttpResponseMessage response)
