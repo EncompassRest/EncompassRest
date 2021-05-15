@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.v1
 {
-    partial class Loan
+    partial class Loan : ILoan
     {
         /// <summary>
         /// Implicitly converts the specified loan to an <see cref="EntityReference"/>.

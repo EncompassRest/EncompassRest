@@ -1857,7 +1857,7 @@
   {
     "Format": 201,
     "FieldId": "DISCLOSEDGFE.Snapshot.NEWHUD.X348.{0}",
-    "Description": "GFE Snapshot - Years Until Balloon Pymt Due - {0}"
+    "Description": "GFE Snapshot - Years/Months Until Balloon Pymt Due - {0}"
   },
   {
     "Format": 102,

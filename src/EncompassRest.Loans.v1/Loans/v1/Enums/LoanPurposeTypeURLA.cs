@@ -1,5 +1,3 @@
-using System.Runtime.Serialization;
-
 namespace EncompassRest.Loans.v1.Enums
 {
     /// <summary>

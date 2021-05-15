@@ -25577,6 +25577,10 @@
       {
         "value": "Locked-Cancellation-Request",
         "text": "Locked, Cancellation Requested"
+      },
+      {
+        "value": "Voided",
+        "text": "Lock Voided"
       }
     ],
     "FieldId": "LOCKRATE.RATEREQUESTSTATUS",
@@ -25600,6 +25604,10 @@
       {
         "value": "Cancelled",
         "text": "Cancelled"
+      },
+      {
+        "value": "Voided",
+        "text": "Voided"
       }
     ],
     "FieldId": "LOCKRATE.RATESTATUS",

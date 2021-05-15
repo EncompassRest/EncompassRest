@@ -9,7 +9,7 @@ namespace EncompassRest.Loans.v1
     /// <summary>
     /// Loan
     /// </summary>
-    public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable, ILoan
+    public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?>? _additionalLoanDoesNotApply;
         private AdditionalRequests? _additionalRequests;
