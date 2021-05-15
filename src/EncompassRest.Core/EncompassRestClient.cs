@@ -64,7 +64,7 @@ namespace EncompassRest
         IEFolder EFolder { get; }
         /// <summary>
         /// The Loan Folders Apis exposed as extension methods
-        /// within the EncompassRest.LoanFolders.v1 namespace.
+        /// within the EncompassRest.LoanFolders.v1 and v3 namespaces.
         /// </summary>
         ILoanFolders LoanFolders { get; }
         /// <summary>
