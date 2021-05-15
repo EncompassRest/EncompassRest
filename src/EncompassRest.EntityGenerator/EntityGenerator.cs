@@ -278,7 +278,8 @@ namespace EncompassRest
 
         private static readonly Dictionary<string, HashSet<string>> s_enumOptionsToIgnore = new Dictionary<string, HashSet<string>>
         {
-            { "LoanDocumentationType", new HashSet<string> { "NoIncomeon1003" } }
+            { nameof(LoanDocumentationType), new HashSet<string> { "NoIncomeon1003" } },
+            { nameof(PriorPropertyTitleType), new HashSet<string> { "SoleOwnership" } }
         };
 
         private static readonly HashSet<string> s_ignoredEntities = new HashSet<string> { "EntityRefContract" };
@@ -928,6 +929,7 @@ namespace EncompassRest
             var first = true;
             if (existingEnumType != null)
             {
+                var existingMembersNowMissing = new List<EnumMember>();
                 foreach (var member in Enums.GetMembers(existingEnumType))
                 {
                     if (!first)
@@ -956,11 +958,18 @@ namespace EncompassRest
                         serializationNamespace = true;
                     }
                     enumMemberNames.Add(name);
-                    options.Remove(value ?? name);
+                    if (!options.Remove(value ?? name))
+                    {
+                        existingMembersNowMissing.Add(member);
+                    }
                     var intValue = member.ToInt32();
                     existingEnumValues.Add(intValue);
                     members.Append($"        {name} = {intValue}");
                     first = false;
+                }
+                if (existingMembersNowMissing.Count > 0)
+                {
+                    Console.WriteLine($"{existingEnumType} is now missing the existing members {string.Join(", ", existingMembersNowMissing)}");
                 }
             }
             var i = 0;

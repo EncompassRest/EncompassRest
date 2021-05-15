@@ -5,8 +5,14 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.LoanFolders.v1
 {
+    /// <summary>
+    /// The Loan Folders Api extension methods.
+    /// </summary>
     public static class LoanFoldersExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static ILoanFoldersV1? V1 { get; set; }
 
         private static ILoanFoldersV1 GetV1(ILoanFolders eFolder)
@@ -14,7 +20,7 @@ namespace EncompassRest.LoanFolders.v1
             var v1 = V1;
             if (eFolder is LoanFolders f)
             {
-                v1 = (ILoanFoldersV1)f.ExtensionData.GetOrAdd("v1", k => new LoanFoldersV1(f.Client));
+                v1 = f.ExtensionData.GetOrAdd(() => new LoanFoldersV1(f.Client));
             }
             else if (v1 == null)
             {
@@ -27,6 +33,7 @@ namespace EncompassRest.LoanFolders.v1
         /// <summary>
         /// Move a loan from one folder to another folder.
         /// </summary>
+        /// <param name="loanFolders">The Loan Folders Api Object.</param>
         /// <param name="loanId">The id of the loan to move.</param>
         /// <param name="loanFolder">The name of the target folder in which to move the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>

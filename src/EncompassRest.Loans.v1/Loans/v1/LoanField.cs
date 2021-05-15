@@ -19,39 +19,25 @@ namespace EncompassRest.Loans.v1
         /// </summary>
         public FieldDescriptor Descriptor { get; }
 
-        /// <summary>
-        /// The field id.
-        /// </summary>
+        /// <inheritdoc/>
         public string FieldId => Descriptor.FieldId;
 
-        /// <summary>
-        /// The field model path for use with loan field locking.
-        /// </summary>
+        /// <inheritdoc/>
         public string ModelPath => _modelPath.ToString();
 
-        /// <summary>
-        /// The field attribute path for use with Webhook filter attributes.
-        /// </summary>
+        /// <inheritdoc/>
         public string AttributePath => _modelPath.ToString(name => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(name, false), true).Replace("/currentApplication", "/applications/*");
 
-        /// <summary>
-        /// The field's borrower pair index.
-        /// </summary>
+        /// <inheritdoc/>
         public int? BorrowerPairIndex { get; }
 
-        /// <summary>
-        /// The loan field's format.
-        /// </summary>
+        /// <inheritdoc/>
         public LoanFieldFormat? Format => Descriptor.Format;
 
-        /// <summary>
-        /// Indicates if the field is read only.
-        /// </summary>
+        /// <inheritdoc/>
         public bool ReadOnly => Descriptor.ReadOnly;
 
-        /// <summary>
-        /// The field's unformatted value.
-        /// </summary>
+        /// <inheritdoc/>
         public string UnformattedValue => GetUnformattedValue() ?? string.Empty;
 
         private string? GetUnformattedValue()
@@ -86,9 +72,7 @@ namespace EncompassRest.Loans.v1
             return ToString();
         }
 
-        /// <summary>
-        /// The field's formatted value.
-        /// </summary>
+        /// <inheritdoc/>
         public string FormattedValue => GetFormattedValue() ?? string.Empty;
 
         private string? GetFormattedValue()
@@ -134,9 +118,7 @@ namespace EncompassRest.Loans.v1
             return ToString();
         }
 
-        /// <summary>
-        /// The field's value.
-        /// </summary>
+        /// <inheritdoc/>
         public virtual object? Value
         {
             get
@@ -204,9 +186,7 @@ namespace EncompassRest.Loans.v1
             }
         }
 
-        /// <summary>
-        /// Indicates if the field is empty.
-        /// </summary>
+        /// <inheritdoc/>
         public bool IsEmpty
         {
             get
@@ -216,9 +196,7 @@ namespace EncompassRest.Loans.v1
             }
         }
 
-        /// <summary>
-        /// The field's locked status.
-        /// </summary>
+        /// <inheritdoc/>
         public virtual bool Locked
         {
             get
@@ -270,92 +248,45 @@ namespace EncompassRest.Loans.v1
             return Value?.ToString();
         }
 
-        /// <summary>
-        /// Returns the field's value as a <see cref="DateTime"/>.
-        /// </summary>
-        /// <returns></returns>
-        public DateTime? ToDateTime()
+        /// <inheritdoc/>
+        public DateTime? ToDateTime() => Value switch
         {
-            var value = Value;
-            switch (value)
-            {
-                case DateTime dateTime:
-                    return dateTime;
-                case string str:
-                    return DateTime.TryParse(str, out var dt) ? dt : (DateTime?)null;
-            }
-            return null;
-        }
+            DateTime dateTime => dateTime,
+            string str => DateTime.TryParse(str, out var dt) ? dt : null,
+            _ => null,
+        };
 
-        /// <summary>
-        /// Returns the field's value as a <see cref="decimal"/>.
-        /// </summary>
-        /// <returns></returns>
-        public decimal? ToDecimal()
+        /// <inheritdoc/>
+        public decimal? ToDecimal() => Value switch
         {
-            var value = Value;
-            switch (value)
-            {
-                case string str:
-                    return decimal.TryParse(str, out var n) ? n : (decimal?)null;
-                case decimal d:
-                    return d;
-                case int i:
-                    return i;
-            }
-            return null;
-        }
+            string str => decimal.TryParse(str, out var n) ? n : null,
+            decimal d => d,
+            int i => i,
+            _ => null,
+        };
 
-        /// <summary>
-        /// Returns the field's value as an <see cref="int"/>.
-        /// </summary>
-        /// <returns></returns>
-        public int? ToInt32()
+        /// <inheritdoc/>
+        public int? ToInt32() => Value switch
         {
-            var value = Value;
-            switch (value)
-            {
-                case string str:
-                    return int.TryParse(str, out var n) ? n : (int?)null;
-                case decimal d:
-                    return d <= int.MaxValue && d >= int.MinValue ? Convert.ToInt32(d) : (int?)null;
-                case int i:
-                    return i;
-            }
-            return null;
-        }
+            string str => int.TryParse(str, out var n) ? n : null,
+            decimal d => d <= int.MaxValue && d >= int.MinValue ? Convert.ToInt32(d) : null,
+            int i => i,
+            _ => null,
+        };
 
-        /// <summary>
-        /// Returns the field's value as a <see cref="bool"/>.
-        /// </summary>
-        /// <returns></returns>
-        public bool? ToBoolean()
+        /// <inheritdoc/>
+        public bool? ToBoolean() => Value switch
         {
-            var value = Value;
-            switch (value)
-            {
-                case string str:
-                    return ToBoolean(str);
-                case bool boolean:
-                    return boolean;
-            }
-            return null;
-        }
+            string str => ToBoolean(str),
+            bool boolean => boolean,
+            _ => null,
+        };
 
-        private static bool? ToBoolean(string value)
+        private static bool? ToBoolean(string value) => value.ToUpper() switch
         {
-            switch (value.ToUpper())
-            {
-                case "Y":
-                case "YES":
-                case "TRUE":
-                    return true;
-                case "N":
-                case "NO":
-                case "FALSE":
-                    return false;
-            }
-            return null;
-        }
+            "Y" or "YES" or "TRUE" => true,
+            "N" or "NO" or "FALSE" => false,
+            _ => null,
+        };
     }
 }

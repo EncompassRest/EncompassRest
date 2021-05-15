@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.v1.Enums
 {
@@ -12,7 +11,6 @@ namespace EncompassRest.Loans.v1.Enums
         /// Concurrent Date
         /// </summary>
         [Description("Concurrent Date")]
-        [EnumMember(Value = "ConcurrentDate ")]
         ConcurrentDate = 0,
         /// <summary>
         /// Internal Reserve

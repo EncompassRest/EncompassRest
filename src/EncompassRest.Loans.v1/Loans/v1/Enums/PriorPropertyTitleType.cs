@@ -21,11 +21,6 @@ namespace EncompassRest.Loans.v1.Enums
         /// Joint With Other Than Spouse
         /// </summary>
         [Description("Joint With Other Than Spouse")]
-        JointWithOtherThanSpouse = 2,
-        /// <summary>
-        /// Sole Ownership
-        /// </summary>
-        [Description("Sole Ownership")]
-        SoleOwnership = 3
+        JointWithOtherThanSpouse = 2
     }
 }

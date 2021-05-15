@@ -11,7 +11,7 @@ namespace EncompassRest.Loans.v1.Enums
         /// Gift of Cash
         /// </summary>
         [Description("Gift of Cash")]
-        GiftofCash = 0,
+        GiftOfCash = 0,
         /// <summary>
         /// Gift Of Property Equity
         /// </summary>

@@ -8,10 +8,13 @@ using EncompassRest.Utilities;
 namespace EncompassRest.Loans.Associates.v1
 {
     /// <summary>
-    /// The Loan Associates Apis.
+    /// The Loan Associates Api extension methods.
     /// </summary>
     public static class LoanAssociatesExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static ILoanAssociatesV1? V1 { get; set; }
 
         private static ILoanAssociatesV1 GetV1(ILoanAssociates loanAssociates)
@@ -19,7 +22,7 @@ namespace EncompassRest.Loans.Associates.v1
             var v1 = V1;
             if (loanAssociates is LoanAssociates a)
             {
-                v1 = (ILoanAssociatesV1)a.ExtensionData.GetOrAdd("v1", k => new LoanAssociatesV1(a.Client, a.LoanApis, a.LoanId));
+                v1 = a.ExtensionData.GetOrAdd(() => new LoanAssociatesV1(a.Client, a.LoanApis, a.LoanId));
             }
             else if (v1 == null)
             {
@@ -32,6 +35,7 @@ namespace EncompassRest.Loans.Associates.v1
         /// <summary>
         /// Assigns a loan associate to a milestone based on the specified milestone or milestone-free ID and log ID.
         /// </summary>
+        /// <param name="loanAssociates">The Loan Associates Api Object.</param>
         /// <param name="logId">The milestone or milestone-free log ID.</param>
         /// <param name="associate">The loan associate to assign.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -41,6 +45,7 @@ namespace EncompassRest.Loans.Associates.v1
         /// <summary>
         /// Assigns a loan associate to a milestone based on the specified milestone or milestone-free ID and log ID from raw json.
         /// </summary>
+        /// <param name="loanAssociates">The Loan Associates Api Object.</param>
         /// <param name="logId">The milestone or milestone-free log ID.</param>
         /// <param name="associate">The loan associate to assign as raw json.</param>
         /// <param name="queryString">The query string to include in the request.</param>
@@ -51,6 +56,7 @@ namespace EncompassRest.Loans.Associates.v1
         /// <summary>
         /// Retrieves information about a loan associate based on the milestone or milestone-free role ID. The response includes the associate's role and contact information.
         /// </summary>
+        /// <param name="loanAssociates">The Loan Associates Api Object.</param>
         /// <param name="logId">The milestone or milestone-free log ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -59,6 +65,7 @@ namespace EncompassRest.Loans.Associates.v1
         /// <summary>
         /// Retrieves information about a loan associate based on the milestone or milestone-free role ID as raw json.
         /// </summary>
+        /// <param name="loanAssociates">The Loan Associates Api Object.</param>
         /// <param name="logId">The milestone or milestone-free log ID.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -68,6 +75,7 @@ namespace EncompassRest.Loans.Associates.v1
         /// <summary>
         /// Retrieves a list of loan associates involved with the loan. The response includes role and contact information for each loan associate.
         /// </summary>
+        /// <param name="loanAssociates">The Loan Associates Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<List<LoanAssociate>> GetAssociatesAsync(this ILoanAssociates loanAssociates, CancellationToken cancellationToken = default) => GetAssociatesAsync(loanAssociates, null, null, cancellationToken);
@@ -75,6 +83,7 @@ namespace EncompassRest.Loans.Associates.v1
         /// <summary>
         /// Retrieves a list of loan associates involved with the loan. The response includes role and contact information for each loan associate.
         /// </summary>
+        /// <param name="loanAssociates">The Loan Associates Api Object.</param>
         /// <param name="userId">When provided, returns information about the Encompass user associated with the loan.</param>
         /// <param name="roleId">When provided, returns information about all Encompass users associated with the specified role ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -84,6 +93,7 @@ namespace EncompassRest.Loans.Associates.v1
         /// <summary>
         /// Retrieves a list of loan associates involved with the loan as raw json.
         /// </summary>
+        /// <param name="loanAssociates">The Loan Associates Api Object.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -92,6 +102,7 @@ namespace EncompassRest.Loans.Associates.v1
         /// <summary>
         /// Unassigns a loan associate from a milestone based on the specified milestone or milestone-free ID.
         /// </summary>
+        /// <param name="loanAssociates">The Loan Associates Api Object.</param>
         /// <param name="logId">The milestone or milestone-free log ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -101,6 +112,7 @@ namespace EncompassRest.Loans.Associates.v1
         /// <summary>
         /// Unassigns a loan associate from a milestone based on the specified milestone or milestone-free ID.
         /// </summary>
+        /// <param name="loanAssociates">The Loan Associates Api Object.</param>
         /// <param name="logId">The milestone or milestone-free log ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>

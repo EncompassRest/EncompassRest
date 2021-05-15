@@ -6,8 +6,14 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.FieldReader.v1
 {
+    /// <summary>
+    /// The Loan Field Reader Api extension methods.
+    /// </summary>
     public static class LoanFieldReaderExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static ILoanFieldReaderV1? V1 { get; set; }
 
         private static ILoanFieldReaderV1 GetV1(ILoanFieldReader fieldReader)
@@ -15,7 +21,7 @@ namespace EncompassRest.Loans.FieldReader.v1
             var v1 = V1;
             if (fieldReader is LoanFieldReader r)
             {
-                v1 = (ILoanFieldReaderV1)r.ExtensionData.GetOrAdd("v1", k => new LoanFieldReaderV1(r.Client, r.LoanApis, r.LoanId));
+                v1 = r.ExtensionData.GetOrAdd(() => new LoanFieldReaderV1(r.Client, r.LoanApis, r.LoanId));
             }
             else if (v1 == null)
             {
@@ -28,6 +34,7 @@ namespace EncompassRest.Loans.FieldReader.v1
         /// <summary>
         /// Retrieve values for specific fields in a loan.
         /// </summary>
+        /// <param name="fieldReader">The Loan Field Reader Api Object.</param>
         /// <param name="fieldIds">Field IDs of the values you want to retrieve from the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -36,6 +43,7 @@ namespace EncompassRest.Loans.FieldReader.v1
         /// <summary>
         /// Retrieve values for specific fields in a loan.
         /// </summary>
+        /// <param name="fieldReader">The Loan Field Reader Api Object.</param>
         /// <param name="fieldIds">Field IDs of the values you want to retrieve from the loan.</param>
         /// <returns></returns>
         public static Task<List<LoanFieldValue>> GetLoanFieldValuesAsync(this ILoanFieldReader fieldReader, params string[] fieldIds) => GetLoanFieldValuesAsync(fieldReader, includeMetadata: null, fieldIds, default);
@@ -43,6 +51,7 @@ namespace EncompassRest.Loans.FieldReader.v1
         /// <summary>
         /// Retrieve values for specific fields in a loan as raw json.
         /// </summary>
+        /// <param name="fieldReader">The Loan Field Reader Api Object.</param>
         /// <param name="fieldIds">Field IDs of the values you want to retrieve from the loan as raw json.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -52,6 +61,7 @@ namespace EncompassRest.Loans.FieldReader.v1
         /// <summary>
         /// Retrieve values for specific fields in a loan.
         /// </summary>
+        /// <param name="fieldReader">The Loan Field Reader Api Object.</param>
         /// <param name="includeMetadata">If set to true, the response will include the metadata for the fields specified, and returns details such as format, description, type, options and readOnly indicator.Default behavior is false, in which case, only the fieldId and value are returned for the fields in the request body.</param>
         /// <param name="fieldIds">Field IDs of the values you want to retrieve from the loan.</param>
         /// <returns></returns>
@@ -60,6 +70,7 @@ namespace EncompassRest.Loans.FieldReader.v1
         /// <summary>
         /// Retrieve values for specific fields in a loan.
         /// </summary>
+        /// <param name="fieldReader">The Loan Field Reader Api Object.</param>
         /// <param name="includeMetadata">If set to true, the response will include the metadata for the fields specified, and returns details such as format, description, type, options and readOnly indicator.Default behavior is false, in which case, only the fieldId and value are returned for the fields in the request body.</param>
         /// <param name="fieldIds">Field IDs of the values you want to retrieve from the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>

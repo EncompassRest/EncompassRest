@@ -7,8 +7,14 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Company.v1
 {
+    /// <summary>
+    /// The Global Custom Data Objects extension methods.
+    /// </summary>
     public static class GlobalCustomDataObjectsExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static IGlobalCustomDataObjectsV1? V1 { get; set; }
 
         private static IGlobalCustomDataObjectsV1 GetV1(IGlobalCustomDataObjects customDataObjects)
@@ -16,7 +22,7 @@ namespace EncompassRest.Company.v1
             var v1 = V1;
             if (customDataObjects is GlobalCustomDataObjects o)
             {
-                v1 = (IGlobalCustomDataObjectsV1)o.ExtensionData.GetOrAdd("v1", k => new GlobalCustomDataObjectsV1(o.Client));
+                v1 = o.ExtensionData.GetOrAdd(() => new GlobalCustomDataObjectsV1(o.Client));
             }
             else if (v1 == null)
             {
@@ -29,6 +35,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Updates the specified custom data object. This call adds the data provided in the body to the end of the dataObject.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="cdo">The custom data object to update.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -37,6 +44,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Updates the specified custom data object. This call adds the data provided in the body to the end of the dataObject. Optionally populates the custom data object with the response's body through the use of the entity view query parameter.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="cdo">The custom data object to update.</param>
         /// <param name="populate">Indicates if the custom data object should be populated with the response's body through the use of the entity view query parameter.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -46,6 +54,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Updates the specified custom data object from raw json. This call adds the data provided in the body to the end of the dataObject.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="objectName">Name of the custom data object to update.</param>
         /// <param name="cdo">The custom data object to update as raw json.</param>
         /// <param name="queryString">The query string to include in the request.</param>
@@ -56,6 +65,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Creates or replaces a custom data object.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="cdo">The custom data object to create or replace.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -64,6 +74,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Creates or replaces a custom data object from raw json.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="objectName">Name to assign to the custom data object. Or, the name of an existing custom data object to replace.</param>
         /// <param name="cdo">The custom data object to create or replace as raw json.</param>
         /// <param name="queryString">The query string to include in the request.</param>
@@ -74,6 +85,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Removes a custom data object.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="objectName">Name of the custom data object to delete.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -82,6 +94,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Retrieves the contents of a custom data object. Contents are retrieved as a Base64 string.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="objectName">The name of the custom data object to retrieve.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -90,6 +103,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Retrieves the contents of a custom data object as raw json. Contents are retrieved as a Base64 string.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="objectName">The name of the custom data object to retrieve.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -99,6 +113,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Provides a list of names of custom data objects.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<List<string>> GetCustomDataObjectsAsync(this IGlobalCustomDataObjects customDataObjects, CancellationToken cancellationToken = default) => GetV1(customDataObjects).GetCustomDataObjectsAsync(cancellationToken);
@@ -106,6 +121,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Provides a list of names of custom data objects as raw json.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -114,6 +130,7 @@ namespace EncompassRest.Company.v1
         /// <summary>
         /// Removes a custom data object.
         /// </summary>
+        /// <param name="customDataObjects">The Global Custom Data Objects Api Object.</param>
         /// <param name="objectName">Name of the custom data object to delete.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>

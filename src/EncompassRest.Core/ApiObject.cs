@@ -16,6 +16,9 @@ namespace EncompassRest
     /// </summary>
     public interface IApiObject
     {
+        /// <summary>
+        /// The <see cref="IEncompassRestClient"/> associated with the Api object.
+        /// </summary>
         IEncompassRestClient Client { get; }
     }
 
@@ -40,19 +43,19 @@ namespace EncompassRest
         internal static string GetLocation(HttpResponseMessage response) => Path.GetFileName(response.Headers.Location.OriginalString);
 
         private readonly string? _baseApiPath;
-        private ConcurrentDictionary<string, object>? _extensionData;
+        private TypeDictionary? _extensionData;
 
-        internal ConcurrentDictionary<string, object> ExtensionData
+        internal TypeDictionary ExtensionData
         {
             get
             {
                 var extensionData = _extensionData;
-                return extensionData ?? Interlocked.CompareExchange(ref _extensionData, (extensionData = new ConcurrentDictionary<string, object>(StringComparer.OrdinalIgnoreCase)), null) ?? extensionData;
+                return extensionData ?? Interlocked.CompareExchange(ref _extensionData, (extensionData = new TypeDictionary()), null) ?? extensionData;
             }
         }
 
         /// <summary>
-        /// The <see cref="IEncompassRestClient"/> associated with the Api object.
+        /// The <see cref="EncompassRestClient"/> associated with the Api object.
         /// </summary>
         public EncompassRestClient Client { get; }
 

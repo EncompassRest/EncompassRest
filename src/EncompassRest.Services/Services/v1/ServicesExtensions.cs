@@ -7,8 +7,14 @@ using EnumsNET;
 
 namespace EncompassRest.Services.v1
 {
+    /// <summary>
+    /// The Services Api extension methods.
+    /// </summary>
     public static class ServicesExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static IServicesV1? V1 { get; set; }
 
         private static IServicesV1 GetV1(IServices services)
@@ -16,7 +22,7 @@ namespace EncompassRest.Services.v1
             var v1 = V1;
             if (services is Services s)
             {
-                v1 = (IServicesV1)s.ExtensionData.GetOrAdd("v1", k => new ServicesV1(s.Client));
+                v1 = s.ExtensionData.GetOrAdd(() => new ServicesV1(s.Client));
             }
             else if (v1 == null)
             {
@@ -29,6 +35,7 @@ namespace EncompassRest.Services.v1
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
         /// </summary>
+        /// <param name="services">The Services Api Object.</param>
         /// <param name="loanId">Unique identifier of the Encompass Loan</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -38,6 +45,7 @@ namespace EncompassRest.Services.v1
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
         /// </summary>
+        /// <param name="services">The Services Api Object.</param>
         /// <param name="loanId">Unique identifier of the Encompass Loan</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -47,6 +55,7 @@ namespace EncompassRest.Services.v1
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
         /// </summary>
+        /// <param name="services">The Services Api Object.</param>
         /// <param name="loanId">Unique identifier of the Encompass Loan</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -56,6 +65,7 @@ namespace EncompassRest.Services.v1
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
         /// </summary>
+        /// <param name="services">The Services Api Object.</param>
         /// <param name="loanId">Unique identifier of the Encompass Loan</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -65,6 +75,7 @@ namespace EncompassRest.Services.v1
         /// <summary>
         /// Retrieves details on a service order transaction.
         /// </summary>
+        /// <param name="services">The Services Api Object.</param>
         /// <param name="partnerId">Ellie Mae's unique identifier for the Partner service provider.</param>
         /// <param name="transactionId">The unique identifier of the transaction provided in the response header when the order was submitted.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -74,6 +85,7 @@ namespace EncompassRest.Services.v1
         /// <summary>
         /// Retrieves details on a service order transaction.
         /// </summary>
+        /// <param name="services">The Services Api Object.</param>
         /// <param name="partnerId">Ellie Mae's unique identifier for the Partner service provider.</param>
         /// <param name="transactionId">The unique identifier of the transaction provided in the response header when the order was submitted.</param>
         /// <param name="generateFileUrls">Generates temporary URL's for the resources returned by the service provider as part of their response.</param>
@@ -84,6 +96,7 @@ namespace EncompassRest.Services.v1
         /// <summary>
         /// Retrieves details on a service order transaction as raw json.
         /// </summary>
+        /// <param name="services">The Services Api Object.</param>
         /// <param name="partnerId">Ellie Mae's unique identifier for the Partner service provider.</param>
         /// <param name="transactionId">The unique identifier of the transaction provided in the response header when the order was submitted.</param>
         /// <param name="queryString">The query string to include in the request.</param>
@@ -94,6 +107,7 @@ namespace EncompassRest.Services.v1
         /// <summary>
         /// Submits an order for a service and creates a transaction object and returns the transaction id.
         /// </summary>
+        /// <param name="services">The Services Api Object.</param>
         /// <param name="partnerId">Ellie Mae's unique identifier for the Partner service provider.</param>
         /// <param name="parameters">The parameters for ordering a service.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -103,6 +117,7 @@ namespace EncompassRest.Services.v1
         /// <summary>
         /// Submits an order for a service from raw json and creates a transaction object and returns the response body if not empty else the transaction id.
         /// </summary>
+        /// <param name="services">The Services Api Object.</param>
         /// <param name="partnerId">Ellie Mae's unique identifier for the Partner service provider.</param>
         /// <param name="parameters">The parameters for ordering a service as raw json.</param>
         /// <param name="queryString">The query string to include in the request.</param>

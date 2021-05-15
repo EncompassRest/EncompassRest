@@ -6,8 +6,14 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.MilestoneFreeRoles.v1
 {
+    /// <summary>
+    /// The Loan Milestone Free Roles Api extension methods.
+    /// </summary>
     public static class LoanMilestoneFreeRolesExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static ILoanMilestoneFreeRolesV1? V1 { get; set; }
 
         private static ILoanMilestoneFreeRolesV1 GetV1(ILoanMilestoneFreeRoles milestoneFreeRoles)
@@ -15,7 +21,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
             var v1 = V1;
             if (milestoneFreeRoles is LoanMilestoneFreeRoles r)
             {
-                v1 = (ILoanMilestoneFreeRolesV1)r.ExtensionData.GetOrAdd("v1", k => new LoanMilestoneFreeRolesV1(r.Client, r.LoanApis, r.LoanId));
+                v1 = r.ExtensionData.GetOrAdd(() => new LoanMilestoneFreeRolesV1(r.Client, r.LoanApis, r.LoanId));
             }
             else if (v1 == null)
             {
@@ -28,6 +34,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
         /// <summary>
         /// Retrieves the milestone-free log with the specified <paramref name="logId"/>.
         /// </summary>
+        /// <param name="milestoneFreeRoles">The Loan Milestone Free Roles Api Object.</param>
         /// <param name="logId">The milestone-free log ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -36,6 +43,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
         /// <summary>
         /// Retrieves the milestone-free log with the specified <paramref name="logId"/> as raw json.
         /// </summary>
+        /// <param name="milestoneFreeRoles">The Loan Milestone Free Roles Api Object.</param>
         /// <param name="logId">The milestone-free log ID.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -45,6 +53,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
         /// <summary>
         /// Retrieves all milestone-free logs for the loan.
         /// </summary>
+        /// <param name="milestoneFreeRoles">The Loan Milestone Free Roles Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<List<LoanMilestoneFreeRole>> GetMilestoneFreeRolesAsync(this ILoanMilestoneFreeRoles milestoneFreeRoles, CancellationToken cancellationToken = default) => GetV1(milestoneFreeRoles).GetMilestoneFreeRolesAsync(cancellationToken);
@@ -52,6 +61,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
         /// <summary>
         /// Retrieves all milestone-free logs for the loan as raw json.
         /// </summary>
+        /// <param name="milestoneFreeRoles">The Loan Milestone Free Roles Api Object.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -60,6 +70,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
         /// <summary>
         /// Updates the specified milestone-free role for the loan.
         /// </summary>
+        /// <param name="milestoneFreeRoles">The Loan Milestone Free Roles Api Object.</param>
         /// <param name="milestoneFreeRole">The milestone-free role to update.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -68,6 +79,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles.v1
         /// <summary>
         /// Updates the milestone-free role with the specified <paramref name="logId"/> for the loan from raw json.
         /// </summary>
+        /// <param name="milestoneFreeRoles">The Loan Milestone Free Roles Api Object.</param>
         /// <param name="logId">The milestone-free log ID.</param>
         /// <param name="milestoneFreeRole">The milestone-free role to update as raw json.</param>
         /// <param name="queryString">The query string to include in the request.</param>

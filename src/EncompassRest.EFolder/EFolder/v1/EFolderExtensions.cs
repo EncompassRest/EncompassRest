@@ -6,8 +6,14 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.EFolder.v1
 {
+    /// <summary>
+    /// The EFolder Api extension methods.
+    /// </summary>
     public static class EFolderExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static IEFolderV1? V1 { get; set; }
 
         private static IEFolderV1 GetV1(IEFolder eFolder)
@@ -15,7 +21,7 @@ namespace EncompassRest.EFolder.v1
             var v1 = V1;
             if (eFolder is EFolder f)
             {
-                v1 = (IEFolderV1)f.ExtensionData.GetOrAdd("v1", k => new EFolderV1(f.Client));
+                v1 = f.ExtensionData.GetOrAdd(() => new EFolderV1(f.Client));
             }
             else if (v1 == null)
             {
@@ -28,6 +34,7 @@ namespace EncompassRest.EFolder.v1
         /// <summary>
         /// This API starts the export job. When attachments are exported, they are merged for download. Files of native and cloud types are supported with this API.
         /// </summary>
+        /// <param name="eFolder">The EFolder Api Object.</param>
         /// <param name="parameters">The export attachments parameters.</param>
         /// <param name="options">The export attachments options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -37,6 +44,7 @@ namespace EncompassRest.EFolder.v1
         /// <summary>
         /// This API starts the export job from raw json. When attachments are exported, they are merged for download. Files of native and cloud types are supported with this API.
         /// </summary>
+        /// <param name="eFolder">The EFolder Api Object.</param>
         /// <param name="parameters">The export attachments parameters as raw json.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -47,6 +55,7 @@ namespace EncompassRest.EFolder.v1
         /// Returns the status of the specified export job. If the job was a success, the URL to download the PDF document will be provided along with the status of the job.
         /// The authorizationHeader value that is returned as part of the response must be sent as a Request Header for the GET call with the URL when downloading the PDF file.
         /// </summary>
+        /// <param name="eFolder">The EFolder Api Object.</param>
         /// <param name="jobId">Unique identifier of the export job.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -56,6 +65,7 @@ namespace EncompassRest.EFolder.v1
         /// Returns the status of the specified export job as raw json. If the job was a success, the URL to download the PDF document will be provided along with the status of the job.
         /// The authorizationHeader value that is returned as part of the response must be sent as a Request Header for the GET call with the URL when downloading the PDF file.
         /// </summary>
+        /// <param name="eFolder">The EFolder Api Object.</param>
         /// <param name="jobId">Unique identifier of the export job.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -65,6 +75,7 @@ namespace EncompassRest.EFolder.v1
         /// <summary>
         /// Downloads the attachments for the specified export job as a pdf file byte array.
         /// </summary>
+        /// <param name="eFolder">The EFolder Api Object.</param>
         /// <param name="job">The export job whose file entity uri and authorization header is populated.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -73,6 +84,7 @@ namespace EncompassRest.EFolder.v1
         /// <summary>
         /// Downloads the attachments for the specified export job as a pdf file stream.
         /// </summary>
+        /// <param name="eFolder">The EFolder Api Object.</param>
         /// <param name="job">The export job whose file entity uri and authorization header is populated.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -81,6 +93,7 @@ namespace EncompassRest.EFolder.v1
         /// <summary>
         /// Refreshes the specified export job's status.
         /// </summary>
+        /// <param name="eFolder">The EFolder Api Object.</param>
         /// <param name="job">The export job to refresh.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>

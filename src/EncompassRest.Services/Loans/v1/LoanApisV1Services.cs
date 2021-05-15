@@ -5,6 +5,9 @@ using EncompassRest.Services.v1;
 
 namespace EncompassRest.Loans.v1
 {
+    /// <summary>
+    /// The Services Loan Apis.
+    /// </summary>
     public interface ILoanApisV1Services : IApiObject
     {
         /// <summary>

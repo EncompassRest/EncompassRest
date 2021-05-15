@@ -6,8 +6,14 @@ using EnumsNET;
 
 namespace EncompassRest.Company.Users.Rights.v1
 {
+    /// <summary>
+    /// The Users Rights Api extension methods.
+    /// </summary>
     public static class UsersRightsExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static IUsersRightsV1? V1 { get; set; }
 
         private static IUsersRightsV1 GetV1(IUsersRights usersRights)
@@ -15,7 +21,7 @@ namespace EncompassRest.Company.Users.Rights.v1
             var v1 = V1;
             if (usersRights is UsersRights r)
             {
-                v1 = (IUsersRightsV1)r.ExtensionData.GetOrAdd("v1", k => new UsersRightsV1(r.Client, r.UserApis, r.UserId));
+                v1 = r.ExtensionData.GetOrAdd(() => new UsersRightsV1(r.Client, r.UserApis, r.UserId));
             }
             else if (v1 == null)
             {
@@ -28,6 +34,7 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// <summary>
         /// Gets the users rights for the specified rights <paramref name="type"/>.
         /// </summary>
+        /// <param name="usersRights">The Users Rights Api Object.</param>
         /// <param name="type">The user rights type.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -36,6 +43,7 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// <summary>
         /// Gets the users rights for the specified rights <paramref name="type"/> and optionally filtered to include only the specified <paramref name="category"/>.
         /// </summary>
+        /// <param name="usersRights">The Users Rights Api Object.</param>
         /// <param name="type">The user rights type.</param>
         /// <param name="category">User settings category. You can filter the access rights by their tabs in Encompass.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -45,6 +53,7 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// <summary>
         /// Gets the users rights for the specified rights <paramref name="type"/> and filtered to include only the specified <paramref name="category"/>.
         /// </summary>
+        /// <param name="usersRights">The Users Rights Api Object.</param>
         /// <param name="type">The user rights type.</param>
         /// <param name="category">User settings category. You can filter the access rights by their tabs in Encompass.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -54,6 +63,7 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// <summary>
         /// Gets the users rights as raw json for the specified rights <paramref name="type"/>.
         /// </summary>
+        /// <param name="usersRights">The Users Rights Api Object.</param>
         /// <param name="type">The user rights type.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>

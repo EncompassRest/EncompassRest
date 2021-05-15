@@ -6,8 +6,14 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Company.Users.v1
 {
+    /// <summary>
+    /// The Users Api extension methods.
+    /// </summary>
     public static class UsersExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static IUsersV1? V1 { get; set; }
 
         private static IUsersV1 GetV1(IUsers users)
@@ -15,7 +21,7 @@ namespace EncompassRest.Company.Users.v1
             var v1 = V1;
             if (users is Users u)
             {
-                v1 = (IUsersV1)u.ExtensionData.GetOrAdd("v1", k => new UsersV1(u.Client));
+                v1 = u.ExtensionData.GetOrAdd(() => new UsersV1(u.Client));
             }
             else if (v1 == null)
             {
@@ -28,6 +34,7 @@ namespace EncompassRest.Company.Users.v1
         /// <summary>
         /// Gets the current user.
         /// </summary>
+        /// <param name="users">The Users Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<User> GetCurrentUserAsync(this IUsers users, CancellationToken cancellationToken = default) => GetCurrentUserAsync(users, viewEmailSignature: null, cancellationToken);
@@ -35,6 +42,7 @@ namespace EncompassRest.Company.Users.v1
         /// <summary>
         /// Gets the current user and optionally includes the email signature in the response object.
         /// </summary>
+        /// <param name="users">The Users Api Object.</param>
         /// <param name="viewEmailSignature">Indicates whether the email signature should be returned as part of the response.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -43,6 +51,7 @@ namespace EncompassRest.Company.Users.v1
         /// <summary>
         /// Gets the user with the specified <paramref name="userId"/>.
         /// </summary>
+        /// <param name="users">The Users Api Object.</param>
         /// <param name="userId">The user's id.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -51,6 +60,7 @@ namespace EncompassRest.Company.Users.v1
         /// <summary>
         /// Gets the user with the specified <paramref name="userId"/> and optionally includes the email signature in the response object.
         /// </summary>
+        /// <param name="users">The Users Api Object.</param>
         /// <param name="userId">The user's id.</param>
         /// <param name="viewEmailSignature">Indicates whether the email signature should be returned as part of the response.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -60,6 +70,7 @@ namespace EncompassRest.Company.Users.v1
         /// <summary>
         /// Gets user as raw json.
         /// </summary>
+        /// <param name="users">The Users Api Object.</param>
         /// <param name="userId">The user's id.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -69,6 +80,7 @@ namespace EncompassRest.Company.Users.v1
         /// <summary>
         /// Gets all users.
         /// </summary>
+        /// <param name="users">The Users Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<List<User>> GetUsersAsync(this IUsers users, CancellationToken cancellationToken = default) => GetUsersAsync(users, options: null, cancellationToken);
@@ -76,6 +88,7 @@ namespace EncompassRest.Company.Users.v1
         /// <summary>
         /// Gets users using the specified <paramref name="options"/>.
         /// </summary>
+        /// <param name="users">The Users Api Object.</param>
         /// <param name="options">The users retrieval options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -84,6 +97,7 @@ namespace EncompassRest.Company.Users.v1
         /// <summary>
         /// Gets users as raw json.
         /// </summary>
+        /// <param name="users">The Users Api Object.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>

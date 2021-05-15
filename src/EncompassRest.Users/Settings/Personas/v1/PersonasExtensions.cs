@@ -8,8 +8,14 @@ using EnumsNET;
 
 namespace EncompassRest.Settings.Personas.v1
 {
+    /// <summary>
+    /// The Personas Api extension methods.
+    /// </summary>
     public static class PersonasExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static IPersonasV1? V1 { get; set; }
 
         private static IPersonasV1 GetV1(IPersonas personas)
@@ -17,7 +23,7 @@ namespace EncompassRest.Settings.Personas.v1
             var v1 = V1;
             if (personas is Personas p)
             {
-                v1 = (IPersonasV1)p.ExtensionData.GetOrAdd("v1", k => new PersonasV1(p.Client));
+                v1 = p.ExtensionData.GetOrAdd(() => new PersonasV1(p.Client));
             }
             else if (v1 == null)
             {
@@ -30,6 +36,7 @@ namespace EncompassRest.Settings.Personas.v1
         /// <summary>
         /// Returns details for a specified persona.
         /// </summary>
+        /// <param name="personas">The Personas Api Object.</param>
         /// <param name="id">Unique Identifier of the persona.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -38,6 +45,7 @@ namespace EncompassRest.Settings.Personas.v1
         /// <summary>
         /// Returns details for a specified persona.
         /// </summary>
+        /// <param name="personas">The Personas Api Object.</param>
         /// <param name="id">Unique Identifier of the persona.</param>
         /// <param name="categories">The Persona Categories.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -47,6 +55,7 @@ namespace EncompassRest.Settings.Personas.v1
         /// <summary>
         /// Returns details for a specified persona.
         /// </summary>
+        /// <param name="personas">The Personas Api Object.</param>
         /// <param name="id">Unique Identifier of the persona.</param>
         /// <param name="categories">The Persona Categories.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -56,6 +65,7 @@ namespace EncompassRest.Settings.Personas.v1
         /// <summary>
         /// Returns details for a specified persona as raw json.
         /// </summary>
+        /// <param name="personas">The Personas Api Object.</param>
         /// <param name="id">Unique Identifier of the persona.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -65,6 +75,7 @@ namespace EncompassRest.Settings.Personas.v1
         /// <summary>
         /// Returns the list of all personas on the Encompass instance.
         /// </summary>
+        /// <param name="personas">The Personas Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<List<Persona>> GetPersonasAsync(this IPersonas personas, CancellationToken cancellationToken = default) => GetV1(personas).GetPersonasAsync(cancellationToken);
@@ -72,6 +83,7 @@ namespace EncompassRest.Settings.Personas.v1
         /// <summary>
         /// Returns the list of all personas on the Encompass instance as raw json.
         /// </summary>
+        /// <param name="personas">The Personas Api Object.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>

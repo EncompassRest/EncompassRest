@@ -6,8 +6,14 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Settings.Contacts.v1
 {
+    /// <summary>
+    /// The Borrower Contacts Settings Api extension methods.
+    /// </summary>
     public static class BorrowerContactsSettingsExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static IBorrowerContactsSettingsV1? V1 { get; set; }
 
         private static IBorrowerContactsSettingsV1 GetV1(IBorrowerContactsSettings borrowerContactSettings)
@@ -15,7 +21,7 @@ namespace EncompassRest.Settings.Contacts.v1
             var v1 = V1;
             if (borrowerContactSettings is BorrowerContactsSettings s)
             {
-                v1 = (IBorrowerContactsSettingsV1)s.ExtensionData.GetOrAdd("v1", k => new BorrowerContactsSettingsV1(s.Client));
+                v1 = s.ExtensionData.GetOrAdd(() => new BorrowerContactsSettingsV1(s.Client));
             }
             else if (v1 == null)
             {
@@ -28,6 +34,7 @@ namespace EncompassRest.Settings.Contacts.v1
         /// <summary>
         /// Returns a list of canonical field names for contact fields.
         /// </summary>
+        /// <param name="borrowerContactsSettings">The Borrower Contacts Settings Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<List<ContactFieldDefinition>> GetCanonicalNamesAsync(this IBorrowerContactsSettings borrowerContactsSettings, CancellationToken cancellationToken = default) => GetV1(borrowerContactsSettings).GetCanonicalNamesAsync(cancellationToken);
@@ -35,6 +42,7 @@ namespace EncompassRest.Settings.Contacts.v1
         /// <summary>
         /// Returns a list of canonical field names for contact fields as raw json.
         /// </summary>
+        /// <param name="borrowerContactsSettings">The Borrower Contacts Settings Api Object.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>

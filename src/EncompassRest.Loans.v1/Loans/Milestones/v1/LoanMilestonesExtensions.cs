@@ -7,8 +7,14 @@ using EnumsNET;
 
 namespace EncompassRest.Loans.Milestones.v1
 {
+    /// <summary>
+    /// The Loan Milestones Api extension methods.
+    /// </summary>
     public static class LoanMilestonesExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static ILoanMilestonesV1? V1 { get; set; }
 
         private static ILoanMilestonesV1 GetV1(ILoanMilestones loanMilestones)
@@ -16,7 +22,7 @@ namespace EncompassRest.Loans.Milestones.v1
             var v1 = V1;
             if (loanMilestones is LoanMilestones m)
             {
-                v1 = (ILoanMilestonesV1)m.ExtensionData.GetOrAdd("v1", k => new LoanMilestonesV1(m.Client, m.LoanApis, m.LoanId));
+                v1 = m.ExtensionData.GetOrAdd(() => new LoanMilestonesV1(m.Client, m.LoanApis, m.LoanId));
             }
             else if (v1 == null)
             {
@@ -29,6 +35,7 @@ namespace EncompassRest.Loans.Milestones.v1
         /// <summary>
         /// Retrieves the milestone with the specified <paramref name="logId"/> for the loan.
         /// </summary>
+        /// <param name="loanMilestones">The Loan Milestones Api Object.</param>
         /// <param name="logId">The milestone log ID.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -37,6 +44,7 @@ namespace EncompassRest.Loans.Milestones.v1
         /// <summary>
         /// Retrieves the milestone with the specified <paramref name="logId"/> for the loan as raw json.
         /// </summary>
+        /// <param name="loanMilestones">The Loan Milestones Api Object.</param>
         /// <param name="logId">The milestone log ID.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -46,6 +54,7 @@ namespace EncompassRest.Loans.Milestones.v1
         /// <summary>
         /// Retrieves all milestones for the loan.
         /// </summary>
+        /// <param name="loanMilestones">The Loan Milestones Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<List<LoanMilestone>> GetMilestonesAsync(this ILoanMilestones loanMilestones, CancellationToken cancellationToken = default) => GetV1(loanMilestones).GetMilestonesAsync(cancellationToken);
@@ -53,6 +62,7 @@ namespace EncompassRest.Loans.Milestones.v1
         /// <summary>
         /// Retrieves all milestones for the loan as raw json.
         /// </summary>
+        /// <param name="loanMilestones">The Loan Milestones Api Object.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -61,6 +71,7 @@ namespace EncompassRest.Loans.Milestones.v1
         /// <summary>
         /// Updates the specified <paramref name="milestone"/> for the loan.
         /// </summary>
+        /// <param name="loanMilestones">The Loan Milestones Api Object.</param>
         /// <param name="milestone">The milestone to update.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -69,6 +80,7 @@ namespace EncompassRest.Loans.Milestones.v1
         /// <summary>
         /// Updates the specified <paramref name="milestone"/> for the loan.
         /// </summary>
+        /// <param name="loanMilestones">The Loan Milestones Api Object.</param>
         /// <param name="milestone">The milestone to update.</param>
         /// <param name="action">Specify the action to perform on the milestone such as finish or unfinish.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -78,6 +90,7 @@ namespace EncompassRest.Loans.Milestones.v1
         /// <summary>
         /// Updates the specified <paramref name="milestone"/> for the loan.
         /// </summary>
+        /// <param name="loanMilestones">The Loan Milestones Api Object.</param>
         /// <param name="milestone">The milestone to update.</param>
         /// <param name="action">Specify the action to perform on the milestone such as finish or unfinish.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -87,6 +100,7 @@ namespace EncompassRest.Loans.Milestones.v1
         /// <summary>
         /// Updates the milestone with the specified <paramref name="logId"/> for the loan from raw json.
         /// </summary>
+        /// <param name="loanMilestones">The Loan Milestones Api Object.</param>
         /// <param name="logId">The milestone log ID.</param>
         /// <param name="milestone">The milestone to update as raw json.</param>
         /// <param name="queryString">The query string to include in the request.</param>

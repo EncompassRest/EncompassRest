@@ -636,9 +636,8 @@ namespace EncompassRest.Loans.v1
         /// <inheritdoc/>
         public DateTime? CustomFieldsLastRefreshedUtc => Client.CommonCache.GetCustomFieldsLastRefreshedUtc();
 
-        public EncompassRestClient Client { get; }
-
-        IEncompassRestClient IApiObject.Client => Client;
+        /// <inheritdoc/>
+        public IEncompassRestClient Client { get; }
 
         internal LoanFieldDescriptors(EncompassRestClient client)
         {

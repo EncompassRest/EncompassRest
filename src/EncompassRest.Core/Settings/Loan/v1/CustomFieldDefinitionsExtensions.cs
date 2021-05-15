@@ -6,8 +6,14 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Settings.Loan.v1
 {
+    /// <summary>
+    /// The Custom Field Definitions Api extension methods.
+    /// </summary>
     public static class CustomFieldDefinitionsExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static ICustomFieldDefinitionsV1? V1 { get; set; }
 
         private static ICustomFieldDefinitionsV1 GetV1(ICustomFieldDefinitions customFieldDefinitions)
@@ -15,7 +21,7 @@ namespace EncompassRest.Settings.Loan.v1
             var v1 = V1;
             if (customFieldDefinitions is CustomFieldDefinitions f)
             {
-                v1 = (ICustomFieldDefinitionsV1)f.ExtensionData.GetOrAdd("v1", k => new CustomFieldDefinitionsV1(f.Client));
+                v1 = f.ExtensionData.GetOrAdd(() => new CustomFieldDefinitionsV1(f.Client));
             }
             else if (v1 == null)
             {
@@ -28,6 +34,7 @@ namespace EncompassRest.Settings.Loan.v1
         /// <summary>
         /// Gets the custom field definition with the specified <paramref name="fieldId"/>.
         /// </summary>
+        /// <param name="customFieldDefinitions">The Custom Field Definitions Api Object.</param>
         /// <param name="fieldId">The field id of the custom field definition to get.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -36,6 +43,7 @@ namespace EncompassRest.Settings.Loan.v1
         /// <summary>
         /// Gets the custom field definition with the specified <paramref name="fieldId"/> as raw json.
         /// </summary>
+        /// <param name="customFieldDefinitions">The Custom Field Definitions Api Object.</param>
         /// <param name="fieldId">The field id of the custom field definition to get.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -45,6 +53,7 @@ namespace EncompassRest.Settings.Loan.v1
         /// <summary>
         /// Gets all custom field definitions.
         /// </summary>
+        /// <param name="customFieldDefinitions">The Custom Field Definitions Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<List<CustomFieldDefinition>> GetCustomFieldsAsync(this ICustomFieldDefinitions customFieldDefinitions, CancellationToken cancellationToken = default) => GetV1(customFieldDefinitions).GetCustomFieldsAsync(cancellationToken);
@@ -52,6 +61,7 @@ namespace EncompassRest.Settings.Loan.v1
         /// <summary>
         /// Gets all custom field definitions as raw json.
         /// </summary>
+        /// <param name="customFieldDefinitions">The Custom Field Definitions Api Object.</param>
         /// <param name="queryString">The query string to include in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>

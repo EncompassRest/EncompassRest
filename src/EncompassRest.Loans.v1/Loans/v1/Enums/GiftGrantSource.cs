@@ -17,10 +17,6 @@ namespace EncompassRest.Loans.v1.Enums
         /// </summary>
         Employer = 1,
         /// <summary>
-        /// Grant
-        /// </summary>
-        Grant = 2,
-        /// <summary>
         /// Federal Agency
         /// </summary>
         [Description("Federal Agency")]

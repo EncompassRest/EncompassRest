@@ -7,8 +7,14 @@ using EnumsNET;
 
 namespace EncompassRest.Organizations.v1
 {
+    /// <summary>
+    /// The Organizations Api extension methods.
+    /// </summary>
     public static class OrganizationsExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static IOrganizationsV1? V1 { get; set; }
 
         private static IOrganizationsV1 GetV1(IOrganizations organizations)
@@ -16,7 +22,7 @@ namespace EncompassRest.Organizations.v1
             var v1 = V1;
             if (organizations is Organizations o)
             {
-                v1 = (IOrganizationsV1)o.ExtensionData.GetOrAdd("v1", k => new OrganizationsV1(o.Client));
+                v1 = o.ExtensionData.GetOrAdd(() => new OrganizationsV1(o.Client));
             }
             else if (v1 == null)
             {
@@ -29,6 +35,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets a summary view of the organization with the specified <paramref name="orgId"/>.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="orgId">The organization's id.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -37,6 +44,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets the organization with the specified <paramref name="orgId"/> using the specified <paramref name="view"/>.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="orgId">The organization's id.</param>
         /// <param name="view">The view of the organization to get.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -46,6 +54,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets the organization with the specified <paramref name="orgId"/> using the specified <paramref name="view"/>.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="orgId">The organization's id.</param>
         /// <param name="view">The view of the organization to get.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -55,6 +64,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets the children of the organization with the specified <paramref name="orgId"/>.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="orgId">The organization's id.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -63,6 +73,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets the children of the organization with the specified <paramref name="orgId"/> using the specified <paramref name="options"/>.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="orgId">The organization's id.</param>
         /// <param name="options">The organization children retrieval options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -72,6 +83,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets the children of the organization with the specified <paramref name="orgId"/> as raw json.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="orgId">The organization's id.</param>
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -81,6 +93,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets the organization with the specified <paramref name="orgId"/> as raw json.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="orgId">The organization's id.</param>
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
@@ -90,6 +103,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets a summary view of all organizations.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<List<Organization>> GetOrganizationsAsync(this IOrganizations organizations, CancellationToken cancellationToken = default) => GetOrganizationsAsync(organizations, options: null, cancellationToken);
@@ -97,6 +111,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets organizations using the specified <paramref name="options"/>.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="options">The organizations retrieval options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -105,6 +120,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets organizations as raw json.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -113,6 +129,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets a summary view of the root organization.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
         public static Task<Organization> GetRootOrganizationAsync(this IOrganizations organizations, CancellationToken cancellationToken = default) => GetRootOrganizationAsync(organizations, view: null, cancellationToken);
@@ -120,6 +137,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets the root organization using the specified <paramref name="view"/>.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="view">The view of the organization to get.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -128,6 +146,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets the root organization using the specified <paramref name="view"/>.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="view">The view of the organization to get.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -136,6 +155,7 @@ namespace EncompassRest.Organizations.v1
         /// <summary>
         /// Gets the root organization as raw json.
         /// </summary>
+        /// <param name="organizations">The Organizations Api Object.</param>
         /// <param name="queryString">The query string to send in the request.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>

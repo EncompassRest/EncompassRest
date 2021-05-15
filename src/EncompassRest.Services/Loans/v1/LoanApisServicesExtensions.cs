@@ -8,8 +8,14 @@ using EnumsNET;
 
 namespace EncompassRest.Loans.v1
 {
-    public static class LoanApisV1ServicesExtensions
+    /// <summary>
+    /// The Loan Apis Services extension methods.
+    /// </summary>
+    public static class LoanApisServicesExtensions
     {
+        /// <summary>
+        /// The custom v1 Api implementation for unit testing.
+        /// </summary>
         public static ILoanApisV1Services? V1 { get; set; }
 
         private static ILoanApisV1Services GetV1(ILoanApis loanApis)
@@ -17,7 +23,7 @@ namespace EncompassRest.Loans.v1
             var v1 = V1;
             if (loanApis is LoanApis a)
             {
-                v1 = (ILoanApisV1Services)a.ExtensionData.GetOrAdd("v1Services", k => new LoanApisV1Services(a.Client, a.LoanApis, a.LoanId));
+                v1 = a.ExtensionData.GetOrAdd(() => new LoanApisV1Services(a.Client, a.LoanApis, a.LoanId));
             }
             else if (v1 == null)
             {
@@ -30,6 +36,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
         /// </summary>
+        /// <param name="loanApis">The Loan Apis Object.</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -38,6 +45,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
         /// </summary>
+        /// <param name="loanApis">The Loan Apis Object.</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -46,6 +54,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
         /// </summary>
+        /// <param name="loanApis">The Loan Apis Object.</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
@@ -54,6 +63,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.
         /// </summary>
+        /// <param name="loanApis">The Loan Apis Object.</param>
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>

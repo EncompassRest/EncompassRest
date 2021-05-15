@@ -5,7 +5,6 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using EncompassRest.Token;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -162,8 +161,6 @@ namespace EncompassRest.Tests
                     }
                 }
             }
-
-            
         }
 
         protected static void AssertNoUndefinedEnumOptions(IEnumerable stringEnumValues, string rootName, Dictionary<Type, HashSet<string>> enumOptionsToIgnore)
