@@ -59,6 +59,25 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _dulyAgentFunction2;
         private DirtyValue<string?>? _dulyAgentName;
         private DirtyValue<string?>? _dulyAgentState;
+        private DirtyValue<string?>? _dulyAuthAgentAddress2;
+        private DirtyValue<string?>? _dulyAuthAgentAddress3;
+        private DirtyValue<string?>? _dulyAuthAgentAddress4;
+        private DirtyValue<string?>? _dulyAuthAgentAddress5;
+        private DirtyValue<string?>? _dulyAuthAgentCity2;
+        private DirtyValue<string?>? _dulyAuthAgentCity3;
+        private DirtyValue<string?>? _dulyAuthAgentCity4;
+        private DirtyValue<string?>? _dulyAuthAgentCity5;
+        private DirtyValue<string?>? _dulyAuthAgentFunction3;
+        private DirtyValue<string?>? _dulyAuthAgentFunction4;
+        private DirtyValue<string?>? _dulyAuthAgentFunction5;
+        private DirtyValue<string?>? _dulyAuthAgentName2;
+        private DirtyValue<string?>? _dulyAuthAgentName3;
+        private DirtyValue<string?>? _dulyAuthAgentName4;
+        private DirtyValue<string?>? _dulyAuthAgentName5;
+        private DirtyValue<string?>? _dulyAuthAgentState2;
+        private DirtyValue<string?>? _dulyAuthAgentState3;
+        private DirtyValue<string?>? _dulyAuthAgentState4;
+        private DirtyValue<string?>? _dulyAuthAgentState5;
         private DirtyValue<bool?>? _dwellingCoveredBy;
         private EnergyEfficientMortgage? _eem;
         private DirtyValue<StringEnumValue<EligibilityAssessment>>? _eligibilityAssessment;
@@ -89,6 +108,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<bool?>? _haveReceivedLeadPaintPoisoningInfo;
         private DirtyValue<StringEnumValue<HUD1003AddendumApproved>>? _hUD1003AddendumApproved;
         private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _isEntityActingAsAgent;
         private DirtyValue<DateTime?>? _lastRefiDate;
         private DirtyValue<DateTime?>? _lDPGSASearchDate;
         private DirtyValue<string?>? _lDPGSASearchedBy;
@@ -415,6 +435,101 @@ namespace EncompassRest.Loans.v1
         public string? DulyAgentState { get => _dulyAgentState; set => SetField(ref _dulyAgentState, value); }
 
         /// <summary>
+        /// HUD Duly Auth Agent Addr 2 [4691]
+        /// </summary>
+        public string? DulyAuthAgentAddress2 { get => _dulyAuthAgentAddress2; set => SetField(ref _dulyAuthAgentAddress2, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent Addr 3 [4695]
+        /// </summary>
+        public string? DulyAuthAgentAddress3 { get => _dulyAuthAgentAddress3; set => SetField(ref _dulyAuthAgentAddress3, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent Addr 4 [4700]
+        /// </summary>
+        public string? DulyAuthAgentAddress4 { get => _dulyAuthAgentAddress4; set => SetField(ref _dulyAuthAgentAddress4, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent Addr 5 [4705]
+        /// </summary>
+        public string? DulyAuthAgentAddress5 { get => _dulyAuthAgentAddress5; set => SetField(ref _dulyAuthAgentAddress5, value); }
+
+        /// <summary>
+        /// HUD Lender Cert Author Agent City 2 [4692]
+        /// </summary>
+        public string? DulyAuthAgentCity2 { get => _dulyAuthAgentCity2; set => SetField(ref _dulyAuthAgentCity2, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Author Agent City 3 [4696]
+        /// </summary>
+        public string? DulyAuthAgentCity3 { get => _dulyAuthAgentCity3; set => SetField(ref _dulyAuthAgentCity3, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Author Agent City 4 [4701]
+        /// </summary>
+        public string? DulyAuthAgentCity4 { get => _dulyAuthAgentCity4; set => SetField(ref _dulyAuthAgentCity4, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Author Agent City 5 [4706]
+        /// </summary>
+        public string? DulyAuthAgentCity5 { get => _dulyAuthAgentCity5; set => SetField(ref _dulyAuthAgentCity5, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent Function 3 [4698]
+        /// </summary>
+        public string? DulyAuthAgentFunction3 { get => _dulyAuthAgentFunction3; set => SetField(ref _dulyAuthAgentFunction3, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent Function 4 [4703]
+        /// </summary>
+        public string? DulyAuthAgentFunction4 { get => _dulyAuthAgentFunction4; set => SetField(ref _dulyAuthAgentFunction4, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent Function 5 [4708]
+        /// </summary>
+        public string? DulyAuthAgentFunction5 { get => _dulyAuthAgentFunction5; set => SetField(ref _dulyAuthAgentFunction5, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent Name 2 [4690]
+        /// </summary>
+        public string? DulyAuthAgentName2 { get => _dulyAuthAgentName2; set => SetField(ref _dulyAuthAgentName2, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent Name 3 [4694]
+        /// </summary>
+        public string? DulyAuthAgentName3 { get => _dulyAuthAgentName3; set => SetField(ref _dulyAuthAgentName3, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent Name 4 [4699]
+        /// </summary>
+        public string? DulyAuthAgentName4 { get => _dulyAuthAgentName4; set => SetField(ref _dulyAuthAgentName4, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent Name 5 [4704]
+        /// </summary>
+        public string? DulyAuthAgentName5 { get => _dulyAuthAgentName5; set => SetField(ref _dulyAuthAgentName5, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent State 2 [4693]
+        /// </summary>
+        public string? DulyAuthAgentState2 { get => _dulyAuthAgentState2; set => SetField(ref _dulyAuthAgentState2, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent State 3 [4697]
+        /// </summary>
+        public string? DulyAuthAgentState3 { get => _dulyAuthAgentState3; set => SetField(ref _dulyAuthAgentState3, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent State 4 [4702]
+        /// </summary>
+        public string? DulyAuthAgentState4 { get => _dulyAuthAgentState4; set => SetField(ref _dulyAuthAgentState4, value); }
+
+        /// <summary>
+        /// HUD Duly Auth Agent State 5 [4707]
+        /// </summary>
+        public string? DulyAuthAgentState5 { get => _dulyAuthAgentState5; set => SetField(ref _dulyAuthAgentState5, value); }
+
+        /// <summary>
         /// Borr Cert Dwelling To Be Covered By Yes/No [1016]
         /// </summary>
         public bool? DwellingCoveredBy { get => _dwellingCoveredBy; set => SetField(ref _dwellingCoveredBy, value); }
@@ -566,6 +681,11 @@ namespace EncompassRest.Loans.v1
         /// FhaVaLoan Id
         /// </summary>
         public string? Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// Entity Acting As Agent [4688]
+        /// </summary>
+        public bool? IsEntityActingAsAgent { get => _isEntityActingAsAgent; set => SetField(ref _isEntityActingAsAgent, value); }
 
         /// <summary>
         /// FHA Management Last Refi Date [3057]

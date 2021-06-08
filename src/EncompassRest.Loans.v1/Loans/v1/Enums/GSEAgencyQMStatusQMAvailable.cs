@@ -16,6 +16,10 @@ namespace EncompassRest.Loans.v1.Enums
         /// Not Meet
         /// </summary>
         [EnumMember(Value = "Not Meet")]
-        NotMeet = 1
+        NotMeet = 1,
+        /// <summary>
+        /// NA
+        /// </summary>
+        NA = 2
     }
 }

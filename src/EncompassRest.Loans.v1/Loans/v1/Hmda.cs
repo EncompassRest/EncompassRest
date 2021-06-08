@@ -137,25 +137,25 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// AUS #2 [HMDA.X45]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Exempt\",\"Internal Proprietary System\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Exempt\"]")]
         public StringEnumValue<AUS> AUS2 { get => _aUS2; set => SetField(ref _aUS2, value); }
 
         /// <summary>
         /// AUS #3 [HMDA.X46]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Exempt\",\"Internal Proprietary System\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Exempt\"]")]
         public StringEnumValue<AUS> AUS3 { get => _aUS3; set => SetField(ref _aUS3, value); }
 
         /// <summary>
         /// AUS #4 [HMDA.X47]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Exempt\",\"Internal Proprietary System\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Exempt\"]")]
         public StringEnumValue<AUS> AUS4 { get => _aUS4; set => SetField(ref _aUS4, value); }
 
         /// <summary>
         /// AUS #5 [HMDA.X48]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Exempt\",\"Internal Proprietary System\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\",\"Exempt\"]")]
         public StringEnumValue<AUS> AUS5 { get => _aUS5; set => SetField(ref _aUS5, value); }
 
         /// <summary>

@@ -118,8 +118,8 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<StringEnumValue<FreddieARMIndexType>>? _freddieARMIndexType;
         private DirtyValue<StringEnumValue<FreddieAutoUWDec>>? _freddieAutoUWDec;
         private DirtyValue<StringEnumValue<FreddieAVMModelNameTypeExpl>>? _freddieAVMModelNameTypeExpl;
-        private DirtyValue<StringEnumValue<FeddieBorrowerAlienStatus>>? _freddieBorrowerAlienStatus;
-        private DirtyValue<StringEnumValue<FeddieBorrowerAlienStatus>>? _freddieCoBorrowerAlienStatus;
+        private DirtyValue<StringEnumValue<FreddieBorrowerAlienStatus>>? _freddieBorrowerAlienStatus;
+        private DirtyValue<StringEnumValue<FreddieBorrowerAlienStatus>>? _freddieCoBorrowerAlienStatus;
         private DirtyValue<string?>? _freddieCreditScoreProviderName;
         private DirtyValue<StringEnumValue<FreddieDownPaymentType>>? _freddieDownPaymentType;
         private DirtyValue<StringEnumValue<DownPaymentSourceType>>? _freddieDownPmt2SourceType;
@@ -872,12 +872,12 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Freddie Borr Declarations Alien Status [ULDD.X123]
         /// </summary>
-        public StringEnumValue<FeddieBorrowerAlienStatus> FreddieBorrowerAlienStatus { get => _freddieBorrowerAlienStatus; set => SetField(ref _freddieBorrowerAlienStatus, value); }
+        public StringEnumValue<FreddieBorrowerAlienStatus> FreddieBorrowerAlienStatus { get => _freddieBorrowerAlienStatus; set => SetField(ref _freddieBorrowerAlienStatus, value); }
 
         /// <summary>
         /// Freddie Co Borr Declarations Alien Status [ULDD.X148]
         /// </summary>
-        public StringEnumValue<FeddieBorrowerAlienStatus> FreddieCoBorrowerAlienStatus { get => _freddieCoBorrowerAlienStatus; set => SetField(ref _freddieCoBorrowerAlienStatus, value); }
+        public StringEnumValue<FreddieBorrowerAlienStatus> FreddieCoBorrowerAlienStatus { get => _freddieCoBorrowerAlienStatus; set => SetField(ref _freddieCoBorrowerAlienStatus, value); }
 
         /// <summary>
         /// Credit Score Provider Name [ULDD.FRE.CreditScoreProviderName]

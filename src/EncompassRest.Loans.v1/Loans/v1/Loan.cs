@@ -235,6 +235,7 @@ namespace EncompassRest.Loans.v1
         private DirtyList<LockDenialLog>? _lockDenialLogs;
         private DirtyList<LockRemovedLog>? _lockRemovedLogs;
         private DirtyList<LockRequestLog>? _lockRequestLogs;
+        private DirtyList<LockVoidLog>? _lockVoidLogs;
         private ElliLOCompensation? _lOCompensation;
         private DirtyList<LogEntryLog>? _logEntryLogs;
         private DirtyValue<DateTime?>? _lotAcquiredDate;
@@ -1708,6 +1709,12 @@ namespace EncompassRest.Loans.v1
         /// </summary>
         [AllowNull]
         public IList<LockRequestLog> LockRequestLogs { get => GetField(ref _lockRequestLogs); set => SetField(ref _lockRequestLogs, value); }
+
+        /// <summary>
+        /// Loan LockVoidLogs
+        /// </summary>
+        [AllowNull]
+        public IList<LockVoidLog> LockVoidLogs { get => GetField(ref _lockVoidLogs); set => SetField(ref _lockVoidLogs, value); }
 
         /// <summary>
         /// Loan LOCompensation

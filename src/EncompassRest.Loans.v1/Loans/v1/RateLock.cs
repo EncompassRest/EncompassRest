@@ -124,9 +124,11 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<decimal?>? _compSideSRPPaidOut;
         private DirtyValue<string?>? _compSideTradeGuid;
         private DirtyValue<string?>? _compSideTradeNumber;
+        private DirtyValue<bool?>? _condominiumIndicator;
         private DirtyValue<bool?>? _confirmAdviceIndicator;
         private DirtyValue<string?>? _confirmedBy;
         private DirtyValue<DateTime?>? _confirmedDate;
+        private DirtyValue<bool?>? _cooperativeIndicator;
         private DirtyValue<DateTime?>? _corporateApprovalDate;
         private DirtyValue<string?>? _corporateApprovedby;
         private DirtyValue<decimal?>? _corporatePrice;
@@ -404,6 +406,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<decimal?>? _netSellPrice;
         private DirtyValue<DateTime?>? _nextPaymentDate;
         private DirtyValue<bool?>? _noClosingCostOption;
+        private DirtyValue<bool?>? _notInProjectIndicator;
         private DirtyValue<StringEnumValue<YOrN>>? _oNRPLock;
         private DirtyValue<string?>? _otherAmortizationTypeDescription;
         private DirtyValue<decimal?>? _otherSubordinateAmount;
@@ -421,6 +424,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<int?>? _propertyAppraisedValueAmount;
         private DirtyValue<int?>? _propertyEstimatedValueAmount;
         private DirtyValue<StringEnumValue<PropertyUsageType>>? _propertyUsageType;
+        private DirtyValue<bool?>? _pudIndicator;
         private DirtyValue<int?>? _purchaseAdviceNumberOfDays;
         private DirtyList<PurchaseAdvicePayout>? _purchaseAdvicePayouts;
         private DirtyValue<decimal?>? _purchasePriceAmount;
@@ -1152,6 +1156,11 @@ namespace EncompassRest.Loans.v1
         public string? CompSideTradeNumber { get => _compSideTradeNumber; set => SetField(ref _compSideTradeNumber, value); }
 
         /// <summary>
+        /// Condominium Project Type Indicator [4711]
+        /// </summary>
+        public bool? CondominiumIndicator { get => _condominiumIndicator; set => SetField(ref _condominiumIndicator, value); }
+
+        /// <summary>
         /// Correspondent Purchase Advice Confirm Advice Indicator [4666]
         /// </summary>
         public bool? ConfirmAdviceIndicator { get => _confirmAdviceIndicator; set => SetField(ref _confirmAdviceIndicator, value); }
@@ -1165,6 +1174,11 @@ namespace EncompassRest.Loans.v1
         /// Purchase Advice Confirmed Date [2630]
         /// </summary>
         public DateTime? ConfirmedDate { get => _confirmedDate; set => SetField(ref _confirmedDate, value); }
+
+        /// <summary>
+        /// Cooperative Project Type Indicator [4712]
+        /// </summary>
+        public bool? CooperativeIndicator { get => _cooperativeIndicator; set => SetField(ref _cooperativeIndicator, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Corporate Concession Approval Date [3372]
@@ -2604,6 +2618,11 @@ namespace EncompassRest.Loans.v1
         public bool? NoClosingCostOption { get => _noClosingCostOption; set => SetField(ref _noClosingCostOption, value); }
 
         /// <summary>
+        /// Property is not located in a project Indicator [4714]
+        /// </summary>
+        public bool? NotInProjectIndicator { get => _notInProjectIndicator; set => SetField(ref _notInProjectIndicator, value); }
+
+        /// <summary>
         /// Locked during ONRP Window [4057]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
@@ -2691,6 +2710,11 @@ namespace EncompassRest.Loans.v1
         /// Lock Request Subject Property Occupancy Status [2950]
         /// </summary>
         public StringEnumValue<PropertyUsageType> PropertyUsageType { get => _propertyUsageType; set => SetField(ref _propertyUsageType, value); }
+
+        /// <summary>
+        /// Planned Unit Development Project Type Indicator [4713]
+        /// </summary>
+        public bool? PudIndicator { get => _pudIndicator; set => SetField(ref _pudIndicator, value); }
 
         /// <summary>
         /// Purchase Adv Interest Calcuation - Number of Days [3549]

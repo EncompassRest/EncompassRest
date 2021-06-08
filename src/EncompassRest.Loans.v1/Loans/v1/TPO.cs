@@ -9,7 +9,9 @@ namespace EncompassRest.Loans.v1
     /// </summary>
     public sealed partial class TPO : DirtyExtensibleObject, IIdentifiable
     {
+        private DirtyValue<DateTime?>? _appraisalOrderedDate;
         private DirtyValue<bool?>? _archived;
+        private DirtyValue<DateTime?>? _ausOrderedDate;
         private DirtyValue<string?>? _branchAddress;
         private DirtyValue<string?>? _branchAEName;
         private DirtyValue<string?>? _branchAEUserName;
@@ -67,6 +69,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<DateTime?>? _initialApplicationDate;
         private DirtyValue<DateTime?>? _initialSubmitDate;
         private DirtyValue<StringEnumValue<LEIssuedBy>>? _lEIssuedBy;
+        private DirtyValue<DateTime?>? _leOrDisclosuresGeneratedDate;
         private DirtyValue<string?>? _lOAddress;
         private DirtyValue<string?>? _lOAEName;
         private DirtyValue<string?>? _lOAEUserName;
@@ -103,6 +106,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _sITEID;
         private DirtyValue<DateTime?>? _submitDate;
         private DirtyValue<bool?>? _testAccountField;
+        private DirtyValue<DateTime?>? _titleFeesRequestedDate;
         private DirtyValue<bool?>? _underwriterReviewed;
         private DirtyValue<bool?>? _underwritingDelegated;
         private DirtyValue<bool?>? _watchListFlag;
@@ -110,9 +114,21 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<DateTime?>? _wholesaleWithdrawalDate;
 
         /// <summary>
+        /// Appraisal Ordered Date [TPO.X117]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? AppraisalOrderedDate { get => _appraisalOrderedDate; set => SetField(ref _appraisalOrderedDate, value); }
+
+        /// <summary>
         /// TPO Archived [TPO.X8]
         /// </summary>
         public bool? Archived { get => _archived; set => SetField(ref _archived, value); }
+
+        /// <summary>
+        /// AUS Ordered Date [TPO.X118]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? AusOrderedDate { get => _ausOrderedDate; set => SetField(ref _ausOrderedDate, value); }
 
         /// <summary>
         /// TPO Branch Address [TPO.X42]
@@ -405,6 +421,12 @@ namespace EncompassRest.Loans.v1
         public StringEnumValue<LEIssuedBy> LEIssuedBy { get => _lEIssuedBy; set => SetField(ref _lEIssuedBy, value); }
 
         /// <summary>
+        /// LE or Disclosures Generated Date [TPO.X116]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? LeOrDisclosuresGeneratedDate { get => _leOrDisclosuresGeneratedDate; set => SetField(ref _leOrDisclosuresGeneratedDate, value); }
+
+        /// <summary>
         /// TPO Loan Officer Address [TPO.X68]
         /// </summary>
         public string? LOAddress { get => _lOAddress; set => SetField(ref _lOAddress, value); }
@@ -586,6 +608,12 @@ namespace EncompassRest.Loans.v1
         /// Indicator that the user logged in using a TPO test account [TPO.X91]
         /// </summary>
         public bool? TestAccountField { get => _testAccountField; set => SetField(ref _testAccountField, value); }
+
+        /// <summary>
+        /// Title Fees Requested Date [TPO.X115]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? TitleFeesRequestedDate { get => _titleFeesRequestedDate; set => SetField(ref _titleFeesRequestedDate, value); }
 
         /// <summary>
         /// TPO Documents and Conditions are Ready for Underwriter Review [TPO.X5]

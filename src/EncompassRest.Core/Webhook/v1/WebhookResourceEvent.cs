@@ -206,6 +206,41 @@ namespace EncompassRest.Webhook.v1
         /// openingappenddocumentsfailed
         /// </summary>
         [EnumMember(Value = "openingappenddocumentsfailed")]
-        OpeningAppendDocumentsFailed = 39
+        OpeningAppendDocumentsFailed = 39,
+        /// <summary>
+        /// closingappenddocumentssucceeded
+        /// </summary>
+        [EnumMember(Value = "closingappenddocumentssucceeded")]
+        ClosingAppendDocumentsSucceeded = 40,
+        /// <summary>
+        /// closingappenddocumentsfailed
+        /// </summary>
+        [EnumMember(Value = "closingappenddocumentsfailed")]
+        ClosingAppendDocumentsFailed = 41,
+        /// <summary>
+        /// openingaddtoefoldersucceeded
+        /// </summary>
+        [EnumMember(Value = "openingaddtoefoldersucceeded")]
+        OpeningAddToEFolderSucceeded = 42,
+        /// <summary>
+        /// openingaddtoefolderfailed
+        /// </summary>
+        [EnumMember(Value = "openingaddtoefolderfailed")]
+        OpeningAddToEFolderFailed = 43,
+        /// <summary>
+        /// closingaddtoefoldersucceeded
+        /// </summary>
+        [EnumMember(Value = "closingaddtoefoldersucceeded")]
+        ClosingAddToEFolderSucceeded = 44,
+        /// <summary>
+        /// closingaddtoefolderfailed
+        /// </summary>
+        [EnumMember(Value = "closingaddtoefolderfailed")]
+        ClosingAddToEFolderFailed = 45,
+        /// <summary>
+        /// fieldchange
+        /// </summary>
+        [EnumMember(Value = "fieldchange")]
+        FieldChange = 46
     }
 }

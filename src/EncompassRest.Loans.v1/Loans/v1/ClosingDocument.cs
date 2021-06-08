@@ -106,6 +106,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _drawCity;
         private DirtyValue<string?>? _drawCounty;
         private DirtyValue<StringEnumValue<State>>? _drawState;
+        private DirtyValue<StringEnumValue<eCloseClosingType>>? _eCloseClosingType;
         private DirtyValue<StringEnumValue<YNOrOther>>? _employeeofMortgageLender;
         private DirtyValue<string?>? _expectToAssignSellOrTransferPercent;
         private DirtyValue<string?>? _finalVestingDescription;
@@ -720,6 +721,11 @@ namespace EncompassRest.Loans.v1
         /// Closing Draw State [L812]
         /// </summary>
         public StringEnumValue<State> DrawState { get => _drawState; set => SetField(ref _drawState, value); }
+
+        /// <summary>
+        /// eClose Closing Type [4689]
+        /// </summary>
+        public StringEnumValue<eCloseClosingType> eCloseClosingType { get => _eCloseClosingType; set => SetField(ref _eCloseClosingType, value); }
 
         /// <summary>
         /// State Disc - Broker Is Employee of Mtg Lender [DISCLOSURE.X208]

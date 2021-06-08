@@ -31,6 +31,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<decimal?>? _landEstimatedValueAmount;
         private DirtyValue<string?>? _legalDescriptionText1;
         private DirtyValue<string?>? _legalDescriptionText2;
+        private DirtyValue<bool?>? _linkedAffordableLoan;
         private DirtyValue<decimal?>? _linkedAmountApplyToDownPayment;
         private DirtyValue<decimal?>? _linkedBaseLoanAmount;
         private DirtyValue<decimal?>? _linkedClosedEndPrimaryMortgageLoanAmount;
@@ -203,6 +204,12 @@ namespace EncompassRest.Loans.v1
         /// Subject Property Legal Descr 2 [1824]
         /// </summary>
         public string? LegalDescriptionText2 { get => _legalDescriptionText2; set => SetField(ref _legalDescriptionText2, value); }
+
+        /// <summary>
+        /// Linked Affordable Loan Indicator [LINK_URLA.X210]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Affordable Loan\"}")]
+        public bool? LinkedAffordableLoan { get => _linkedAffordableLoan; set => SetField(ref _linkedAffordableLoan, value); }
 
         /// <summary>
         /// HELOC Amount Apply To Down Payment - Copied from Linked Loan [LINK_4493]

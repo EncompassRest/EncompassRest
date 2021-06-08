@@ -29,7 +29,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var supportedEntities = await client.Loans.GetSupportedEntitiesAsync();
-            AssertNoUndefinedEnumOptions(supportedEntities, "SupportedEntities", new Dictionary<Type, HashSet<string>> { { typeof(LoanEntity), new HashSet<string>(new[] { "CoBorrower", "LOCompensation", "GffVAlertTriggerFieldLog", "ConditionLog", "EntityRef" }, StringComparer.OrdinalIgnoreCase) } });
+            AssertNoUndefinedEnumOptions(supportedEntities, "SupportedEntities", new Dictionary<Type, HashSet<string>> { { typeof(LoanEntity), new HashSet<string>(new[] { "CoBorrower", "LOCompensation", "GffVAlertTriggerFieldLog", "ConditionLog", "EntityRef", "ElliUCD" }, StringComparer.OrdinalIgnoreCase) } });
         }
 
         [TestMethod]
@@ -1198,7 +1198,7 @@ namespace EncompassRest.Tests
             try
             {
                 const int patternCount = 10;
-                var fieldPatternMappings = LoanFieldDescriptors.FieldPatternMappings.Where(p => !p.Key.StartsWith("TQL4506T") && !p.Key.StartsWith("LP") && !p.Key.StartsWith("CX.") && !p.Key.StartsWith("FBE") && !p.Key.StartsWith("FCE") && !p.Key.StartsWith("XCOC") && !p.Key.StartsWith("CUST") && !p.Key.StartsWith("DD") && !p.Key.StartsWith("URLAROIS") && !p.Key.StartsWith("URLARGG") && !p.Key.StartsWith("URLAROA") && !p.Key.StartsWith("URLAROL") && !p.Key.StartsWith("HHI") && !p.Key.StartsWith("DOCPROV") && !p.Key.StartsWith("HTD") && !p.Key.StartsWith("URLARAL")).ToList();
+                var fieldPatternMappings = LoanFieldDescriptors.FieldPatternMappings.Where(p => !p.Key.StartsWith("TQL4506T") && !p.Key.StartsWith("LP") && !p.Key.StartsWith("CX.") && !p.Key.StartsWith("FBE") && !p.Key.StartsWith("FCE") && !p.Key.StartsWith("XCOC") && !p.Key.StartsWith("CUST") && !p.Key.StartsWith("DD") && !p.Key.StartsWith("URLAROIS") && !p.Key.StartsWith("URLARGG") && !p.Key.StartsWith("URLAROA") && !p.Key.StartsWith("URLAROL") && !p.Key.StartsWith("HHI") && !p.Key.StartsWith("DOCPROV") && !p.Key.StartsWith("HTD") && !p.Key.StartsWith("URLARAL") && !p.Key.StartsWith("BR") && !p.Key.StartsWith("CR")).ToList();
                 foreach (var pair in fieldPatternMappings)
                 {
                     var fieldPattern = pair.Key;
@@ -1793,7 +1793,8 @@ namespace EncompassRest.Tests
                 AddressStreetLine1 = "20153 Fifth Street",
                 AddressCity = "Saint Charles",
                 AddressState = State.MO,
-                AddressPostalCode = "63303"
+                AddressPostalCode = "63303",
+                ApplicantType = BorrowerOrCoBorrower.Borrower
             };
             var currentResidence = new Residence
             {
@@ -1801,7 +1802,8 @@ namespace EncompassRest.Tests
                 AddressStreetLine1 = "123 Main Street",
                 AddressCity = "Beverly Hills",
                 AddressState = State.CA,
-                AddressPostalCode = "90210"
+                AddressPostalCode = "90210",
+                ApplicantType = BorrowerOrCoBorrower.Borrower
             };
             var application = new Application
             {

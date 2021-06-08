@@ -38,6 +38,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<int?>? _reLockSequenceNumberForInactiveLock;
         private DirtyValue<string?>? _requestedBy;
         private DirtyValue<string?>? _requestedName;
+        private DirtyValue<string?>? _requestedOldStatus;
         private DirtyValue<string?>? _requestedStatus;
         private DirtyValue<string?>? _reviseAction;
         private DirtyValue<string?>? _sellSideDeliveredBy;
@@ -49,6 +50,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _systemId;
         private DirtyValue<string?>? _timeRequested;
         private DirtyValue<DateTime?>? _updatedDateUtc;
+        private DirtyValue<bool?>? _voided;
 
         /// <summary>
         /// LockRequestLog Alerts
@@ -198,6 +200,11 @@ namespace EncompassRest.Loans.v1
         public string? RequestedName { get => _requestedName; set => SetField(ref _requestedName, value); }
 
         /// <summary>
+        /// LockRequestLog RequestedOldStatus
+        /// </summary>
+        public string? RequestedOldStatus { get => _requestedOldStatus; set => SetField(ref _requestedOldStatus, value); }
+
+        /// <summary>
         /// LockRequestLog RequestedStatus
         /// </summary>
         public string? RequestedStatus { get => _requestedStatus; set => SetField(ref _requestedStatus, value); }
@@ -251,5 +258,10 @@ namespace EncompassRest.Loans.v1
         /// LockRequestLog UpdatedDateUtc
         /// </summary>
         public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+
+        /// <summary>
+        /// LockRequestLog Voided
+        /// </summary>
+        public bool? Voided { get => _voided; set => SetField(ref _voided, value); }
     }
 }

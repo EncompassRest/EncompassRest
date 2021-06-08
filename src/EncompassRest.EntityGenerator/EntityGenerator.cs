@@ -57,7 +57,7 @@ namespace EncompassRest
                 typeof(Hud1EsPayToFeeType),
                 typeof(RefundableType),
                 typeof(RecSamePtyTypeDesc),
-                typeof(FeddieBorrowerAlienStatus),
+                typeof(FreddieBorrowerAlienStatus),
                 typeof(FreddieDownPaymentType),
                 typeof(FullPrepaymentPenaltyOptionType),
                 typeof(ATRQMStatus),

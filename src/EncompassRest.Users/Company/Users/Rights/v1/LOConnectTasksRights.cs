@@ -9,6 +9,7 @@ namespace EncompassRest.Company.Users.Rights.v1
     {
         private DirtyValue<bool?>? _addAdhocSubTasks;
         private DirtyValue<bool?>? _addAllTasks;
+        private DirtyValue<bool?>? _addCommentsForAllTasks;
         private DirtyValue<bool?>? _addMyTasks;
         private DirtyValue<bool?>? _addSubTasks;
         private DirtyValue<bool?>? _addTasks;
@@ -19,6 +20,7 @@ namespace EncompassRest.Company.Users.Rights.v1
         private DirtyValue<bool?>? _manageTasks;
         private DirtyValue<bool?>? _modifyAllTasks;
         private DirtyValue<bool?>? _updatePriority;
+        private DirtyValue<bool?>? _updateTaskPriority;
         private DirtyValue<bool?>? _viewAllTasks;
         private WorkflowTasksToolRights? _workflowTasksTool;
 
@@ -31,6 +33,11 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// LOConnectTasksRights AddAllTasks
         /// </summary>
         public bool? AddAllTasks { get => _addAllTasks; set => SetField(ref _addAllTasks, value); }
+
+        /// <summary>
+        /// LOConnectTasksRights AddCommentsForAllTasks
+        /// </summary>
+        public bool? AddCommentsForAllTasks { get => _addCommentsForAllTasks; set => SetField(ref _addCommentsForAllTasks, value); }
 
         /// <summary>
         /// LOConnectTasksRights AddMyTasks
@@ -81,6 +88,11 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// LOConnectTasksRights UpdatePriority
         /// </summary>
         public bool? UpdatePriority { get => _updatePriority; set => SetField(ref _updatePriority, value); }
+
+        /// <summary>
+        /// LOConnectTasksRights UpdateTaskPriority
+        /// </summary>
+        public bool? UpdateTaskPriority { get => _updateTaskPriority; set => SetField(ref _updateTaskPriority, value); }
 
         /// <summary>
         /// LOConnectTasksRights ViewAllTasks
