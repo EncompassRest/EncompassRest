@@ -131,7 +131,7 @@ namespace EncompassRest.Tests
                                     {
                                         TestForExtensionData(extObj, path, fails, testForUndefinedEnumOptions, enumOptionsToIgnore);
                                     }
-                                    else
+                                    else if (testForUndefinedEnumOptions)
                                     {
                                         TestForUndefinedEnumOptions(path, fails, enumOptionsToIgnore, element);
                                     }
@@ -181,10 +181,10 @@ namespace EncompassRest.Tests
 
         private static void TestForUndefinedEnumOptions(List<string> path, List<string> fails, Dictionary<Type, HashSet<string>> enumOptionsToIgnore, object itemValue, Type type = null)
         {
-            var typeInfo = (type ?? itemValue.GetType()).GetTypeInfo();
-            if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition && typeInfo.GetGenericTypeDefinition() == TypeData.OpenStringEnumValueType)
+            var typeInfo = (type ?? itemValue?.GetType())?.GetTypeInfo();
+            if (typeInfo?.IsGenericType == true && !typeInfo.IsGenericTypeDefinition && typeInfo.GetGenericTypeDefinition() == TypeData.OpenStringEnumValueType)
             {
-                var stringValue = itemValue.ToString();
+                var stringValue = itemValue?.ToString();
                 if (!string.IsNullOrEmpty(stringValue))
                 {
                     var enumType = typeInfo.GenericTypeArguments[0];

@@ -28,6 +28,10 @@
         /// <summary>
         /// Subservicing
         /// </summary>
-        Subservicing = 5
+        Subservicing = 5,
+        /// <summary>
+        /// QCAudit
+        /// </summary>
+        QCAudit = 6
     }
 }

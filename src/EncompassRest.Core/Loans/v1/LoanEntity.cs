@@ -932,6 +932,14 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// LockVoidLog
         /// </summary>
-        LockVoidLog = 233
+        LockVoidLog = 233,
+        /// <summary>
+        /// InvestorDeliveryLog
+        /// </summary>
+        InvestorDeliveryLog = 234,
+        /// <summary>
+        /// Aiq
+        /// </summary>
+        Aiq = 235
     }
 }

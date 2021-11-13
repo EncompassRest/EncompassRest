@@ -25,6 +25,7 @@ namespace EncompassRest.Company.Users.Rights.v1
         private ManagePipelineServicesRights? _managePipelineServices;
         private MoveLoansRights? _moveLoans;
         private NewLoansRights? _newLoans;
+        private DirtyValue<bool?>? _qCAudit;
         private DirtyValue<bool?>? _subservicing;
         private DirtyValue<bool?>? _transferLoans;
         private TrashFolderTasksRights? _trashFolderTasks;
@@ -126,6 +127,11 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// </summary>
         [AllowNull]
         public NewLoansRights NewLoans { get => GetField(ref _newLoans); set => SetField(ref _newLoans, value); }
+
+        /// <summary>
+        /// PipelineTasksRights QCAudit
+        /// </summary>
+        public bool? QCAudit { get => _qCAudit; set => SetField(ref _qCAudit, value); }
 
         /// <summary>
         /// PipelineTasksRights Subservicing

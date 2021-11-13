@@ -29,6 +29,7 @@ namespace EncompassRest.Settings.Personas.v1
         private EDisclosuresRights? _eDisclosures;
         private EFolderHistoryRights? _eFolderHistory;
         private EFolderSetupRights? _eFolderSetup;
+        private EncompassWebServicesRights? _encompassWebServices;
         private EnhancedConditionsRights? _enhancedConditions;
         private DirtyList<string>? _externalSettings;
         private FileContactsRights? _fileContacts;
@@ -36,7 +37,6 @@ namespace EncompassRest.Settings.Personas.v1
         private GseServicesRights? _gseServices;
         private DirtyList<string>? _home;
         private DirtyList<EntityReference>? _importLoans;
-        private DirtyList<ServiceRights>? _services;
         private DirtyList<string>? _itemizationFee;
         private DirtyList<string>? _loan;
         private LoanSetupRights? _loanSetup;
@@ -55,6 +55,7 @@ namespace EncompassRest.Settings.Personas.v1
         private PrintRights? _print;
         private SecondarySetupRights? _secondarySetup;
         private SellConditionsRights? _sellConditions;
+        private DirtyList<ServiceRights>? _services;
         private DirtyList<string>? _settings;
         private DirtyList<string>? _smartClient;
         private SystemAdministrationRights? _systemAdministration;
@@ -68,6 +69,7 @@ namespace EncompassRest.Settings.Personas.v1
         private TpoOrganizationSettingsRights? _tpoOrganizationSettings;
         private TqlServicesRights? _tqlServices;
         private TradesRights? _trades;
+        private UnderwritingCenterRights? _underwritingCenter;
         private UnderwritingConditionsRights? _underwritingConditions;
 
         /// <summary>
@@ -197,6 +199,12 @@ namespace EncompassRest.Settings.Personas.v1
         public EFolderSetupRights EFolderSetup { get => GetField(ref _eFolderSetup); set => SetField(ref _eFolderSetup, value); }
 
         /// <summary>
+        /// AclRights EncompassWebServices
+        /// </summary>
+        [AllowNull]
+        public EncompassWebServicesRights EncompassWebServices { get => GetField(ref _encompassWebServices); set => SetField(ref _encompassWebServices, value); }
+
+        /// <summary>
         /// AclRights EnhancedConditions
         /// </summary>
         [AllowNull]
@@ -237,12 +245,6 @@ namespace EncompassRest.Settings.Personas.v1
         /// </summary>
         [AllowNull]
         public IList<EntityReference> ImportLoans { get => GetField(ref _importLoans); set => SetField(ref _importLoans, value); }
-
-        /// <summary>
-        /// AclRights Services
-        /// </summary>
-        [AllowNull]
-        public IList<ServiceRights> Services { get => GetField(ref _services); set => SetField(ref _services, value); }
 
         /// <summary>
         /// AclRights ItemizationFee
@@ -353,6 +355,12 @@ namespace EncompassRest.Settings.Personas.v1
         public SellConditionsRights SellConditions { get => GetField(ref _sellConditions); set => SetField(ref _sellConditions, value); }
 
         /// <summary>
+        /// AclRights Services
+        /// </summary>
+        [AllowNull]
+        public IList<ServiceRights> Services { get => GetField(ref _services); set => SetField(ref _services, value); }
+
+        /// <summary>
         /// AclRights Settings
         /// </summary>
         [AllowNull]
@@ -429,6 +437,12 @@ namespace EncompassRest.Settings.Personas.v1
         /// </summary>
         [AllowNull]
         public TradesRights Trades { get => GetField(ref _trades); set => SetField(ref _trades, value); }
+
+        /// <summary>
+        /// AclRights UnderwritingCenter
+        /// </summary>
+        [AllowNull]
+        public UnderwritingCenterRights UnderwritingCenter { get => GetField(ref _underwritingCenter); set => SetField(ref _underwritingCenter, value); }
 
         /// <summary>
         /// AclRights UnderwritingConditions

@@ -9,16 +9,22 @@ namespace EncompassRest.Company.Users.Rights.v1
     {
         private DirtyValue<bool?>? _addAdhocSubTasks;
         private DirtyValue<bool?>? _addAllTasks;
+        private DirtyValue<bool?>? _addCommentsForAllTasks;
         private DirtyValue<bool?>? _addMyTasks;
         private DirtyValue<bool?>? _addSubTasks;
         private DirtyValue<bool?>? _addTasks;
         private DirtyValue<bool?>? _assignAllTasks;
+        private DirtyValue<bool?>? _changeDueDate;
+        private DirtyValue<bool?>? _changeDueDateForAllTasks;
+        private DirtyValue<bool?>? _changeDueDateForMyTasks;
         private DirtyValue<bool?>? _deleteAllTasks;
         private DirtyValue<bool?>? _deleteMyTasks;
         private DirtyValue<bool?>? _deleteTasks;
+        private EncompassWebServicesRights? _encompassWebServices;
         private DirtyValue<bool?>? _manageTasks;
         private DirtyValue<bool?>? _modifyAllTasks;
         private DirtyValue<bool?>? _updatePriority;
+        private DirtyValue<bool?>? _updateTaskPriority;
         private DirtyValue<bool?>? _viewAllTasks;
         private WorkflowTasksToolRights? _workflowTasksTool;
 
@@ -31,6 +37,11 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// LOConnectTasksRights AddAllTasks
         /// </summary>
         public bool? AddAllTasks { get => _addAllTasks; set => SetField(ref _addAllTasks, value); }
+
+        /// <summary>
+        /// LOConnectTasksRights AddCommentsForAllTasks
+        /// </summary>
+        public bool? AddCommentsForAllTasks { get => _addCommentsForAllTasks; set => SetField(ref _addCommentsForAllTasks, value); }
 
         /// <summary>
         /// LOConnectTasksRights AddMyTasks
@@ -53,6 +64,21 @@ namespace EncompassRest.Company.Users.Rights.v1
         public bool? AssignAllTasks { get => _assignAllTasks; set => SetField(ref _assignAllTasks, value); }
 
         /// <summary>
+        /// LOConnectTasksRights ChangeDueDate
+        /// </summary>
+        public bool? ChangeDueDate { get => _changeDueDate; set => SetField(ref _changeDueDate, value); }
+
+        /// <summary>
+        /// LOConnectTasksRights ChangeDueDateForMyTasks
+        /// </summary>
+        public bool? ChangeDueDateForMyTasks { get => _changeDueDateForMyTasks; set => SetField(ref _changeDueDateForMyTasks, value); }
+
+        /// <summary>
+        /// LOConnectTasksRights ChangeDueDateForAllTasks
+        /// </summary>
+        public bool? ChangeDueDateForAllTasks { get => _changeDueDateForAllTasks; set => SetField(ref _changeDueDateForAllTasks, value); }
+
+        /// <summary>
         /// LOConnectTasksRights DeleteAllTasks
         /// </summary>
         public bool? DeleteAllTasks { get => _deleteAllTasks; set => SetField(ref _deleteAllTasks, value); }
@@ -68,6 +94,12 @@ namespace EncompassRest.Company.Users.Rights.v1
         public bool? DeleteTasks { get => _deleteTasks; set => SetField(ref _deleteTasks, value); }
 
         /// <summary>
+        /// LOConnectTasksRights EncompassWebServices
+        /// </summary>
+        [AllowNull]
+        public EncompassWebServicesRights EncompassWebServices { get => GetField(ref _encompassWebServices); set => SetField(ref _encompassWebServices, value); }
+
+        /// <summary>
         /// LOConnectTasksRights ManageTasks
         /// </summary>
         public bool? ManageTasks { get => _manageTasks; set => SetField(ref _manageTasks, value); }
@@ -81,6 +113,11 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// LOConnectTasksRights UpdatePriority
         /// </summary>
         public bool? UpdatePriority { get => _updatePriority; set => SetField(ref _updatePriority, value); }
+
+        /// <summary>
+        /// LOConnectTasksRights UpdateTaskPriority
+        /// </summary>
+        public bool? UpdateTaskPriority { get => _updateTaskPriority; set => SetField(ref _updateTaskPriority, value); }
 
         /// <summary>
         /// LOConnectTasksRights ViewAllTasks

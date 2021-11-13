@@ -23,6 +23,7 @@
     <ProjectReference Include="..\EncompassRest.Core\EncompassRest.Core.csproj" />
     <ProjectReference Include="..\EncompassRest.EFolder\EncompassRest.EFolder.csproj" />
     <ProjectReference Include="..\EncompassRest.Loans.v1\EncompassRest.Loans.v1.csproj" />
+    <ProjectReference Include="..\EncompassRest.Loans.v3\EncompassRest.Loans.v3.csproj" />
     <ProjectReference Include="..\EncompassRest.Services\EncompassRest.Services.csproj" />
     <ProjectReference Include="..\EncompassRest.Users\EncompassRest.Users.csproj" />
   </ItemGroup>

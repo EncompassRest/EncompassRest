@@ -18,13 +18,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Tests", "Enco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Loans.v1", "EncompassRest.Loans.v1\EncompassRest.Loans.v1.csproj", "{33C4C2A5-3E86-4F36-BEA1-62B0046BFB36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Users", "EncompassRest.Users\EncompassRest.Users.csproj", "{6CE6071E-D5A3-4DB4-9B86-1C0760EB413A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Users", "EncompassRest.Users\EncompassRest.Users.csproj", "{6CE6071E-D5A3-4DB4-9B86-1C0760EB413A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Services", "EncompassRest.Services\EncompassRest.Services.csproj", "{6080C7B3-D94A-45B9-A9BA-F1BA2090CF38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Services", "EncompassRest.Services\EncompassRest.Services.csproj", "{6080C7B3-D94A-45B9-A9BA-F1BA2090CF38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Contacts", "EncompassRest.Contacts\EncompassRest.Contacts.csproj", "{ECD44217-7CE6-4055-81F7-ABBCE05C142A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Contacts", "EncompassRest.Contacts\EncompassRest.Contacts.csproj", "{ECD44217-7CE6-4055-81F7-ABBCE05C142A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.EFolder", "EncompassRest.EFolder\EncompassRest.EFolder.csproj", "{8653D04A-F554-4424-9C4A-37D25E736880}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.EFolder", "EncompassRest.EFolder\EncompassRest.EFolder.csproj", "{8653D04A-F554-4424-9C4A-37D25E736880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Loans.v3", "EncompassRest.Loans.v3\EncompassRest.Loans.v3.csproj", "{EB94DD70-C3A6-4551-BB28-B2A14D970D14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +82,12 @@ Global
 		{8653D04A-F554-4424-9C4A-37D25E736880}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8653D04A-F554-4424-9C4A-37D25E736880}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8653D04A-F554-4424-9C4A-37D25E736880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB94DD70-C3A6-4551-BB28-B2A14D970D14}.CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB94DD70-C3A6-4551-BB28-B2A14D970D14}.CI|Any CPU.Build.0 = Debug|Any CPU
+		{EB94DD70-C3A6-4551-BB28-B2A14D970D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB94DD70-C3A6-4551-BB28-B2A14D970D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB94DD70-C3A6-4551-BB28-B2A14D970D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB94DD70-C3A6-4551-BB28-B2A14D970D14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,6 +8,7 @@ namespace EncompassRest.Company.Users.Rights.v1
     public sealed class ClosingDocsRights : DirtyExtensibleObject
     {
         private DigitalClosingRights? _digitalClosing;
+        private ENoteTabRights? _eNoteTab;
         private DirtyValue<bool?>? _manageAltLenders;
         private OrderClosingDocsRights? _orderClosingDocs;
         private ViewClosingDocumentDataRights? _viewClosingDocumentData;
@@ -17,6 +18,12 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// </summary>
         [AllowNull]
         public DigitalClosingRights DigitalClosing { get => GetField(ref _digitalClosing); set => SetField(ref _digitalClosing, value); }
+
+        /// <summary>
+        /// ClosingDocsRights ENoteTab
+        /// </summary>
+        [AllowNull]
+        public ENoteTabRights ENoteTab { get => GetField(ref _eNoteTab); set => SetField(ref _eNoteTab, value); }
 
         /// <summary>
         /// ClosingDocsRights ManageAltLenders
