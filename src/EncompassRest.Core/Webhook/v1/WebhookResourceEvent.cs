@@ -238,14 +238,14 @@ namespace EncompassRest.Webhook.v1
         [EnumMember(Value = "closingaddtoefolderfailed")]
         ClosingAddToEFolderFailed = 45,
         /// <summary>
-        /// eventreceived
-        /// </summary>
-        [EnumMember(Value = "eventreceived")]
-        EventReceived = 46,
-        /// <summary>
         /// fieldchange
         /// </summary>
         [EnumMember(Value = "fieldchange")]
-        FieldChange = 47
+        FieldChange = 46,
+        /// <summary>
+        /// eventreceived
+        /// </summary>
+        [EnumMember(Value = "eventreceived")]
+        EventReceived = 47
     }
 }

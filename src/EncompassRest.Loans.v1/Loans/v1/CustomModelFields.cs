@@ -12,6 +12,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<bool?>? _provideCpaPaymentSchedule;
         private DirtyValue<bool?>? _provideFHAScenario;
         private DirtyValue<bool?>? _provideHelocExampleSchedules;
+        private DirtyValue<bool?>? _provideQmPaymentSchedule;
         private DirtyValue<bool?>? _provideWorstCaseScenario;
 
         /// <summary>
@@ -48,6 +49,11 @@ namespace EncompassRest.Loans.v1
         /// CustomModelFields ProvideHelocExampleSchedules
         /// </summary>
         public bool? ProvideHelocExampleSchedules { get => _provideHelocExampleSchedules; set => SetField(ref _provideHelocExampleSchedules, value); }
+
+        /// <summary>
+        /// CustomModelFields ProvideQmPaymentSchedule
+        /// </summary>
+        public bool? ProvideQmPaymentSchedule { get => _provideQmPaymentSchedule; set => SetField(ref _provideQmPaymentSchedule, value); }
 
         /// <summary>
         /// CustomModelFields ProvideWorstCaseScenario

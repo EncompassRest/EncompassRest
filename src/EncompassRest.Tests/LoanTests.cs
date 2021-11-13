@@ -1793,7 +1793,8 @@ namespace EncompassRest.Tests
                 AddressStreetLine1 = "20153 Fifth Street",
                 AddressCity = "Saint Charles",
                 AddressState = State.MO,
-                AddressPostalCode = "63303"
+                AddressPostalCode = "63303",
+                ApplicantType = BorrowerOrCoBorrower.Borrower
             };
             var currentResidence = new Residence
             {
@@ -1801,7 +1802,8 @@ namespace EncompassRest.Tests
                 AddressStreetLine1 = "123 Main Street",
                 AddressCity = "Beverly Hills",
                 AddressState = State.CA,
-                AddressPostalCode = "90210"
+                AddressPostalCode = "90210",
+                ApplicantType = BorrowerOrCoBorrower.Borrower
             };
             var application = new Application
             {

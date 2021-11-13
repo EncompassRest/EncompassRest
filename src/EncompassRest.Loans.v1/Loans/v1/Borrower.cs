@@ -53,6 +53,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<int?>? _borrowerIndex;
         private DirtyValue<StringEnumValue<BorrowerType>>? _borrowerType;
         private DirtyValue<StringEnumValue<BorrowerType>>? _borrowerTypeInSummary;
+        private DirtyValue<decimal?>? _bottomRatioPercent;
         private DirtyValue<string?>? _caivrsIdentifier;
         private DirtyValue<string?>? _cdDeliveryMethod;
         private DirtyValue<string?>? _citizenshipResidencyType;
@@ -142,6 +143,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<bool?>? _firstTimeHomeBuyer;
         private DirtyValue<DateTime?>? _foreclosureSatisfied;
         private DirtyValue<StringEnumValue<BankruptcyForeclosureStatus>>? _foreclosureStatus;
+        private DirtyValue<StringEnumValue<FreddieBorrowerAlienStatus>>? _freddieAlienStatus;
         private DirtyValue<string?>? _freddieMacPerson1;
         private DirtyValue<string?>? _freddieMacPerson2;
         private DirtyValue<string?>? _fullName;
@@ -392,10 +394,12 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<decimal?>? _tax4506TotalYearlyVarianceJointIncome4;
         private DirtyValue<string?>? _taxIdentificationIdentifier;
         private DirtyValue<string?>? _taxReturnValidationMessage;
+        private DirtyValue<decimal?>? _topRatioPercent;
         private DirtyValue<decimal?>? _totalAdditionalLiabilitiesAmount;
         private DirtyValue<decimal?>? _totalAdditionalOtherLiabilitiesAmount;
         private DirtyValue<decimal?>? _totalAnnualIncome;
         private DirtyValue<decimal?>? _totalAssets;
+        private DirtyValue<decimal?>? _totalGrossMonthlyIncomeAmount;
         private DirtyValue<decimal?>? _totalGrossMonthlySalary;
         private DirtyValue<decimal?>? _totalLiabilitiesAmount;
         private DirtyValue<decimal?>? _totalLiabilitiesBalanceAmount;
@@ -712,6 +716,12 @@ namespace EncompassRest.Loans.v1
         /// Borrower BorrowerTypeInSummary [4008], [4009]
         /// </summary>
         public StringEnumValue<BorrowerType> BorrowerTypeInSummary { get => _borrowerTypeInSummary; set => SetField(ref _borrowerTypeInSummary, value); }
+
+        /// <summary>
+        /// Fannie Mae Bottom Ratio [MORNET.X159]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
+        public decimal? BottomRatioPercent { get => _bottomRatioPercent; set => SetField(ref _bottomRatioPercent, value); }
 
         /// <summary>
         /// Borrower CaivrsIdentifier [1018], [1144]
@@ -1160,6 +1170,11 @@ namespace EncompassRest.Loans.v1
         /// Underwriting Foreclosure Status [2572]
         /// </summary>
         public StringEnumValue<BankruptcyForeclosureStatus> ForeclosureStatus { get => _foreclosureStatus; set => SetField(ref _foreclosureStatus, value); }
+
+        /// <summary>
+        /// Borrower FreddieAlienStatus [4709], [4710]
+        /// </summary>
+        public StringEnumValue<FreddieBorrowerAlienStatus> FreddieAlienStatus { get => _freddieAlienStatus; set => SetField(ref _freddieAlienStatus, value); }
 
         /// <summary>
         /// Borrower FreddieMacPerson1 [CASASRN.X170], [CASASRN.X180]
@@ -2460,6 +2475,12 @@ namespace EncompassRest.Loans.v1
         public string? TaxReturnValidationMessage { get => _taxReturnValidationMessage; set => SetField(ref _taxReturnValidationMessage, value); }
 
         /// <summary>
+        /// Fannie Mae Top Ratio [MORNET.X158]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
+        public decimal? TopRatioPercent { get => _topRatioPercent; set => SetField(ref _topRatioPercent, value); }
+
+        /// <summary>
         /// Total Additional Liabilities Amount [URLA.X61]
         /// </summary>
         public decimal? TotalAdditionalLiabilitiesAmount { get => _totalAdditionalLiabilitiesAmount; set => SetField(ref _totalAdditionalLiabilitiesAmount, value); }
@@ -2478,6 +2499,12 @@ namespace EncompassRest.Loans.v1
         /// Borrower TotalAssets [URLA.X55], [URLA.X56]
         /// </summary>
         public decimal? TotalAssets { get => _totalAssets; set => SetField(ref _totalAssets, value); }
+
+        /// <summary>
+        /// Income Total Mo Income (Borr/Co-Borr) [MORNET.X160]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public decimal? TotalGrossMonthlyIncomeAmount { get => _totalGrossMonthlyIncomeAmount; set => SetField(ref _totalGrossMonthlyIncomeAmount, value); }
 
         /// <summary>
         /// Borrower TotalGrossMonthlySalary [CORRESPONDENT.X47], [CORRESPONDENT.X48]

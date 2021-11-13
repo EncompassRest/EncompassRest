@@ -31,6 +31,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _systemId;
         private DirtyValue<string?>? _timeConfirmed;
         private DirtyValue<DateTime?>? _updatedDateUtc;
+        private DirtyValue<bool?>? _voided;
 
         /// <summary>
         /// LockConfirmLog AlertIndicator
@@ -143,5 +144,10 @@ namespace EncompassRest.Loans.v1
         /// LockConfirmLog UpdatedDateUtc
         /// </summary>
         public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+
+        /// <summary>
+        /// LockConfirmLog Voided
+        /// </summary>
+        public bool? Voided { get => _voided; set => SetField(ref _voided, value); }
     }
 }
