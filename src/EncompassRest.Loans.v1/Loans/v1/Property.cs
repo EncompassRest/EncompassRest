@@ -50,6 +50,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<decimal?>? _linkedProposedFirstMortgageAmount;
         private DirtyValue<decimal?>? _linkedProposedOtherAmount;
         private DirtyValue<decimal?>? _linkedProposedOtherMortgagesAmount;
+        private DirtyValue<decimal?>? _linkedRequestedInterestRatePercent;
         private DirtyValue<StringEnumValue<LoanPurposeType>>? _loanPurposeType;
         private DirtyValue<string?>? _loanPurposeTypeOtherDescription;
         private DirtyValue<StringEnumValue<LoanPurposeTypeURLA>>? _loanPurposeTypeURLA;
@@ -300,6 +301,12 @@ namespace EncompassRest.Loans.v1
         /// Linked Expenses Proposed Other Pymt [LINK_229]
         /// </summary>
         public decimal? LinkedProposedOtherMortgagesAmount { get => _linkedProposedOtherMortgagesAmount; set => SetField(ref _linkedProposedOtherMortgagesAmount, value); }
+
+        /// <summary>
+        /// Linked Trans Details Interest Rate [LINK_3]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? LinkedRequestedInterestRatePercent { get => _linkedRequestedInterestRatePercent; set => SetField(ref _linkedRequestedInterestRatePercent, value); }
 
         /// <summary>
         /// Trans Details Loan Purpose [19]

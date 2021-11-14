@@ -38,9 +38,9 @@ namespace EncompassRest.Loans.v1.Enums
         [Description("Lender Credit")]
         LenderCredit = 5,
         /// <summary>
-        /// Borrower Paid Fees
+        /// Borrower Paid Fees - Retired
         /// </summary>
-        [Description("Borrower Paid Fees")]
+        [Description("Borrower Paid Fees - Retired")]
         BorrowerPaidFees = 6,
         /// <summary>
         /// Sweat Equity
@@ -57,9 +57,9 @@ namespace EncompassRest.Loans.v1.Enums
         [Description("Trade Equity From Property Swap")]
         TradeEquityFromPropertySwap = 9,
         /// <summary>
-        /// MI Premium Refund
+        /// MI Premium Refund - Retired
         /// </summary>
-        [Description("MI Premium Refund")]
+        [Description("MI Premium Refund - Retired")]
         MIPremiumRefund = 10,
         /// <summary>
         /// Lot Equity

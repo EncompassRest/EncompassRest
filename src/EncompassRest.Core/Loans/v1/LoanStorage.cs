@@ -8,6 +8,10 @@
         /// <summary>
         /// MediaServer
         /// </summary>
-        MediaServer = 0
+        MediaServer = 0,
+        /// <summary>
+        /// Cloud
+        /// </summary>
+        Cloud = 1
     }
 }

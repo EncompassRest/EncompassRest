@@ -165,6 +165,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<decimal?>? _prepaymentPenaltyPayoffFees;
         private DirtyValue<decimal?>? _prepayPenaltyPercentage;
         private DirtyValue<bool?>? _preventConsumersDefault;
+        private DirtyValue<string?>? _primaryAusId;
         private DirtyValue<bool?>? _principalBalanceIncreased;
         private DirtyValue<bool?>? _principalHasDeferred;
         private DirtyValue<decimal?>? _qmAprPercentage;
@@ -1025,6 +1026,11 @@ namespace EncompassRest.Loans.v1
         /// ATR QM - Non-Stardard to Standard Refinance Eligibility - New Loan - Is the New loan likely to prevent the Consumers default? [QM.X22]
         /// </summary>
         public bool? PreventConsumersDefault { get => _preventConsumersDefault; set => SetField(ref _preventConsumersDefault, value); }
+
+        /// <summary>
+        /// AUS Tracking - Primary Aus Id [AUSF.X71]
+        /// </summary>
+        public string? PrimaryAusId { get => _primaryAusId; set => SetField(ref _primaryAusId, value); }
 
         /// <summary>
         /// ATR QM - Non-Stardard to Standard Refinance Eligibility - Will this refinance cause the Principal Balance to increase? [QM.X6]

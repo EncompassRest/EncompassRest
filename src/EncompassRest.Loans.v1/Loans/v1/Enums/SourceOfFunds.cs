@@ -22,8 +22,9 @@ namespace EncompassRest.Loans.v1.Enums
         [Description("Federal Agency")]
         FederalAgency = 2,
         /// <summary>
-        /// Institutional
+        /// Institutional - Retired
         /// </summary>
+        [Description("Institutional - Retired")]
         Institutional = 3,
         /// <summary>
         /// Lender
@@ -39,9 +40,9 @@ namespace EncompassRest.Loans.v1.Enums
         /// </summary>
         Other = 6,
         /// <summary>
-        /// Non Parent Relative
+        /// Non Parent Relative - Retired
         /// </summary>
-        [Description("Non Parent Relative")]
+        [Description("Non Parent Relative - Retired")]
         NonParentRelative = 7,
         /// <summary>
         /// Parent
@@ -70,6 +71,16 @@ namespace EncompassRest.Loans.v1.Enums
         /// Unmarried Partner
         /// </summary>
         [Description("Unmarried Partner")]
-        UnmarriedPartner = 13
+        UnmarriedPartner = 13,
+        /// <summary>
+        /// Non Profit Instrumentality Of Government
+        /// </summary>
+        [Description("Non Profit Instrumentality Of Government")]
+        NonProfitInstrumentalityOfGovernment = 14,
+        /// <summary>
+        /// Property Seller
+        /// </summary>
+        [Description("Property Seller")]
+        PropertySeller = 15
     }
 }

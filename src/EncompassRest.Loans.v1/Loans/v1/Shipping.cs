@@ -61,22 +61,25 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Investor Connect Delivered To Category [INVESTORCONN.X4]
         /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
         public string? InvestorConnectDeliveredToCategory { get => _investorConnectDeliveredToCategory; set => SetField(ref _investorConnectDeliveredToCategory, value); }
 
         /// <summary>
         /// Investor Connect Delivered To Company [INVESTORCONN.X3]
         /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
         public string? InvestorConnectDeliveredToCompany { get => _investorConnectDeliveredToCompany; set => SetField(ref _investorConnectDeliveredToCompany, value); }
 
         /// <summary>
         /// Investor Connect Delivery Status [INVESTORCONN.X1]
         /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
         public string? InvestorConnectDeliveryStatus { get => _investorConnectDeliveryStatus; set => SetField(ref _investorConnectDeliveryStatus, value); }
 
         /// <summary>
         /// Investor Connect Delivery Status Date Time [INVESTORCONN.X2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, ReadOnly = true)]
         public DateTime? InvestorConnectDeliveryStatusDateTime { get => _investorConnectDeliveryStatusDateTime; set => SetField(ref _investorConnectDeliveryStatusDateTime, value); }
 
         /// <summary>

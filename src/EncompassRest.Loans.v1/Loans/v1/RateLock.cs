@@ -40,6 +40,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _buySideDeliveryType;
         private DirtyValue<DateTime?>? _buySideExpirationDate;
         private DirtyValue<DateTime?>? _buySideExtendedLockExpires;
+        private DirtyValue<string?>? _buySideInvestor;
         private DirtyValue<DateTime?>? _buySideLockDate;
         private DirtyValue<DateTime?>? _buySideLockExpires;
         private DirtyValue<decimal?>? _buySideLockExtendPriceAdjustment;
@@ -699,6 +700,11 @@ namespace EncompassRest.Loans.v1
         /// Rate Lock Buy Side Extended Lock Expires Date [3364]
         /// </summary>
         public DateTime? BuySideExtendedLockExpires { get => _buySideExtendedLockExpires; set => SetField(ref _buySideExtendedLockExpires, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Investor  [4751]
+        /// </summary>
+        public string? BuySideInvestor { get => _buySideInvestor; set => SetField(ref _buySideInvestor, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Lock Date [2149]

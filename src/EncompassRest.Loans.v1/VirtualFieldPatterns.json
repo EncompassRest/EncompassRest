@@ -2911,6 +2911,111 @@
   },
   {
     "Format": 101,
+    "FieldId": "Enhanced.ADBY.{0}",
+    "Description": "Status Added by User"
+  },
+  {
+    "Format": 304,
+    "FieldId": "Enhanced.ADTE.{0}",
+    "Description": "Date of Status Added"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.CAT.{0}",
+    "Description": "Category"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.ECOM.{0}",
+    "Description": "External Comment"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.EDES.{0}",
+    "Description": "External Description"
+  },
+  {
+    "Format": 301,
+    "FieldId": "Enhanced.EDTE.{0}",
+    "Description": "Effective End Date"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.EID.{0}",
+    "Description": "External ID"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.ICOM.{0}",
+    "Description": "Internal Comment"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.IDES.{0}",
+    "Description": "Internal Description"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.IID.{0}",
+    "Description": "Internal ID"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.NAME.{0}",
+    "Description": "Condition Name"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.PAIR.{0}",
+    "Description": "For Borrower Pair"
+  },
+  {
+    "Format": 102,
+    "FieldId": "Enhanced.PEXT.{0}",
+    "Description": "Print Externally"
+  },
+  {
+    "Format": 102,
+    "FieldId": "Enhanced.PINT.{0}",
+    "Description": "Print Internally"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.PTO.{0}",
+    "Description": "Prior To"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.RDTL.{0}",
+    "Description": "Recipient Details"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.SCON.{0}",
+    "Description": "Source Of Condition"
+  },
+  {
+    "Format": 301,
+    "FieldId": "Enhanced.SDTE.{0}",
+    "Description": "Effective Start Date"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.SRC.{0}",
+    "Description": "Source"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.TOW.{0}",
+    "Description": "Tracking Owner"
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.TYPE.{0}",
+    "Description": "Condition Type"
+  },
+  {
+    "Format": 101,
     "FieldId": "ENHCOND.EXT.OPEN.TYPE.{0}",
     "Description": "All Open External Enhanced Conditions - {0}"
   },
@@ -2968,6 +3073,36 @@
     "Format": 201,
     "FieldId": "ENHCOND.INT.TYPE.COUNT.{0}",
     "Description": "Number of Internal Conditions of specific condition type - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.COP.{0}",
+    "Description": "Category Options"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.PTO.{0}",
+    "Description": "Prior To"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.ROP.{0}",
+    "Description": "Recipient Options"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.SOP.{0}",
+    "Description": "Source Options"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.TOP.{0}",
+    "Description": "Tracking Options"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.TOW.{0}",
+    "Description": "Tracking Owners"
   },
   {
     "Format": 101,

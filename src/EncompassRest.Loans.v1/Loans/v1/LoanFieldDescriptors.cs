@@ -520,7 +520,15 @@ namespace EncompassRest.Loans.v1
                                     }
                                 }
 
-                                fieldId = fieldPattern.StartsWith("NBOCNB") ? fieldPattern.Replace("NBOCNB", "NBOC{0:00}") : fieldPattern.Replace("NN", "{0:00}");
+                                if (fieldPattern.StartsWith("NBOCNB"))
+                                {
+                                    fieldId = fieldPattern.Replace("NBOCNB", "NBOC{0:00}");
+                                }
+                                else
+                                {
+                                    var index = fieldPattern.LastIndexOf("NN");
+                                    fieldId = $"{fieldPattern.Substring(0, index)}{{0:00}}{fieldPattern.Substring(index + 2)}";
+                                }
 
                                 if (descriptionRetriever != null)
                                 {

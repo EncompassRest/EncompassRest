@@ -66,6 +66,12 @@ namespace EncompassRest.Loans.v1.Enums
         /// 1111. Exempt
         /// </summary>
         [Description("1111. Exempt")]
-        Exempt = 9
+        Exempt = 9,
+        /// <summary>
+        /// 11. FICO Score 9
+        /// </summary>
+        [Description("11. FICO Score 9")]
+        [EnumMember(Value = "FICO Score 9")]
+        FICOScore9 = 10
     }
 }

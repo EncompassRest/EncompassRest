@@ -875,7 +875,7 @@ namespace EncompassRest.Loans.v1
         public string? HelocTAInstallmentLoanDiscountWord { get => _helocTAInstallmentLoanDiscountWord; set => SetField(ref _helocTAInstallmentLoanDiscountWord, value); }
 
         /// <summary>
-        /// Installment loan payments applied method  [4620]
+        /// Installment loan payments applied method [4620]
         /// </summary>
         public string? HelocTAInstallmentLoanPaymentAppliedMethod { get => _helocTAInstallmentLoanPaymentAppliedMethod; set => SetField(ref _helocTAInstallmentLoanPaymentAppliedMethod, value); }
 

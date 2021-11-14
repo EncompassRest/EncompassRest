@@ -32,6 +32,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<int?>? _numberOfUnits;
         private DirtyValue<StringEnumValue<Owner>>? _owner;
         private DirtyValue<decimal?>? _participationPercentage;
+        private DirtyValue<DateTime?>? _pendingSaleDate;
         private DirtyValue<decimal?>? _percentageofRental;
         private DirtyValue<string?>? _postalCode;
         private DirtyValue<bool?>? _printAttachIndicator;
@@ -167,6 +168,11 @@ namespace EncompassRest.Loans.v1
         /// Mortgage Property Participation Percent [FMNN14]
         /// </summary>
         public decimal? ParticipationPercentage { get => _participationPercentage; set => SetField(ref _participationPercentage, value); }
+
+        /// <summary>
+        /// Mortgage Property Date Acquired [FMNN59]
+        /// </summary>
+        public DateTime? PendingSaleDate { get => _pendingSaleDate; set => SetField(ref _pendingSaleDate, value); }
 
         /// <summary>
         /// Mortgage Property Percent of Units Rented [FMNN26]

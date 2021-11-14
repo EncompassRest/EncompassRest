@@ -73,6 +73,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _lOAddress;
         private DirtyValue<string?>? _lOAEName;
         private DirtyValue<string?>? _lOAEUserName;
+        private DirtyValue<string?>? _loanEstimateRequestComments;
         private DirtyValue<DateTime?>? _loanEstimateRequestedDate;
         private DirtyValue<string?>? _lOBusinessFax;
         private DirtyValue<string?>? _lOBusinessPhone;
@@ -99,6 +100,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<StringEnumValue<State>>? _lPState;
         private DirtyValue<string?>? _lPStatus;
         private DirtyValue<string?>? _lPZip;
+        private DirtyValue<StringEnumValue<PreferredAus>>? _preferredAus;
         private DirtyValue<DateTime?>? _purchaseStipsReadyDate;
         private DirtyValue<bool?>? _purchaseStipsReviewed;
         private DirtyValue<DateTime?>? _readytoDiscloseDateUtc;
@@ -442,6 +444,11 @@ namespace EncompassRest.Loans.v1
         public string? LOAEUserName { get => _lOAEUserName; set => SetField(ref _lOAEUserName, value); }
 
         /// <summary>
+        /// Loan Estimate Request Comments [TPO.X120]
+        /// </summary>
+        public string? LoanEstimateRequestComments { get => _loanEstimateRequestComments; set => SetField(ref _loanEstimateRequestComments, value); }
+
+        /// <summary>
         /// Loan Estimate Requested Date [TPO.X111]
         /// </summary>
         public DateTime? LoanEstimateRequestedDate { get => _loanEstimateRequestedDate; set => SetField(ref _loanEstimateRequestedDate, value); }
@@ -572,6 +579,11 @@ namespace EncompassRest.Loans.v1
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string? LPZip { get => _lPZip; set => SetField(ref _lPZip, value); }
+
+        /// <summary>
+        /// Preferred AUS [TPO.X119]
+        /// </summary>
+        public StringEnumValue<PreferredAus> PreferredAus { get => _preferredAus; set => SetField(ref _preferredAus, value); }
 
         /// <summary>
         /// Purch Conds Ready Date [TPO.X94]

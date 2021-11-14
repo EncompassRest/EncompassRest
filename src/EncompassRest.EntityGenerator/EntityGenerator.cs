@@ -150,7 +150,8 @@ namespace EncompassRest
                 typeof(BuildingStatusType),
                 typeof(AttachmentType),
                 typeof(PropertyImprovementsType),
-                typeof(PropertyRightsType)
+                typeof(PropertyRightsType),
+                typeof(DeliveryStatus)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (var sharedEnumType in sharedEnumTypes)
@@ -453,16 +454,24 @@ namespace EncompassRest
                     if (virtualField.MultiInstance)
                     {
                         virtualFieldInfo = new LoanFieldDescriptors.VirtualFieldInfo($"{virtualField.FieldID}.{{0}}");
-                        var instanceField = virtualField.GetInstanceDescriptor(virtualField.InstanceSpecifierType == EllieMae.Encompass.BusinessObjects.Loans.MultiInstanceSpecifierType.Index ? (object)1 : "1");
-                        var instanceFieldId = instanceField.FieldID;
-                        var instanceFieldId2 = string.Format(virtualFieldInfo.FieldId, 1);
-                        if (instanceFieldId != instanceFieldId2)
+                        try
                         {
-                            Console.WriteLine($"{instanceFieldId} != {instanceFieldId2}");
+                            var instanceField = virtualField.GetInstanceDescriptor(virtualField.InstanceSpecifierType == EllieMae.Encompass.BusinessObjects.Loans.MultiInstanceSpecifierType.Index ? (object)1 : "1");
+                            var instanceFieldId = instanceField.FieldID;
+                            var instanceFieldId2 = string.Format(virtualFieldInfo.FieldId, 1);
+                            if (instanceFieldId != instanceFieldId2)
+                            {
+                                Console.WriteLine($"{instanceFieldId} != {instanceFieldId2}");
+                            }
+                            var description = instanceField.Description;
+                            description = description.Replace(" - 1", " - {0}");
+                            virtualFieldInfo.Description = description;
                         }
-                        var description = instanceField.Description;
-                        description = description.Replace(" - 1", " - {0}");
-                        virtualFieldInfo.Description = description;
+                        catch
+                        {
+                            Console.WriteLine($"Failed to get description for multi-instance field {virtualField.FieldID}");
+                            virtualFieldInfo.Description = virtualField.Description;
+                        }
                         virtualFieldPatterns.Add(virtualFieldInfo);
                     }
                     else

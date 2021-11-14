@@ -17,14 +17,14 @@ namespace EncompassRest.Loans.v1.Enums
         /// </summary>
         Hybrid = 1,
         /// <summary>
-        /// Hybrid With ENote
+        /// Hybrid With eNote
         /// </summary>
-        [Description("Hybrid With ENote")]
+        [Description("Hybrid With eNote")]
         HybridWithENote = 2,
         /// <summary>
-        /// ESign Only
+        /// eSign Only
         /// </summary>
-        [Description("ESign Only")]
+        [Description("eSign Only")]
         ESignOnly = 3
     }
 }

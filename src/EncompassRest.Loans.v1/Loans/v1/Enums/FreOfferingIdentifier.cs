@@ -9,6 +9,28 @@ namespace EncompassRest.Loans.v1.Enums
     public enum FreOfferingIdentifier
     {
         /// <summary>
+        /// CHOICEHome
+        /// </summary>
+        CHOICEHome = 0,
+        /// <summary>
+        /// CHOICERenovation
+        /// </summary>
+        CHOICERenovation = 1,
+        /// <summary>
+        /// Community Land Trust
+        /// </summary>
+        [Description("Community Land Trust")]
+        CommunityLandTrust = 2,
+        /// <summary>
+        /// GreenCHOICE
+        /// </summary>
+        GreenCHOICE = 3,
+        /// <summary>
+        /// Refi Possible
+        /// </summary>
+        [EnumMember(Value = "Refi Possible")]
+        RefiPossible = 4,
+        /// <summary>
         /// 241:Home Possible
         /// </summary>
         [Description("241:Home Possible")]

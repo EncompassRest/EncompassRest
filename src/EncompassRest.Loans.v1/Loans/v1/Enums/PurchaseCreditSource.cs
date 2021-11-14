@@ -45,9 +45,9 @@ namespace EncompassRest.Loans.v1.Enums
         /// </summary>
         Parent = 7,
         /// <summary>
-        /// Property Seller
+        /// Property Seller - Retired
         /// </summary>
-        [Description("Property Seller")]
+        [Description("Property Seller - Retired")]
         PropertySeller = 8,
         /// <summary>
         /// Real Estate Agent
@@ -63,6 +63,21 @@ namespace EncompassRest.Loans.v1.Enums
         /// Unrelated Friend
         /// </summary>
         [Description("Unrelated Friend")]
-        UnrelatedFriend = 11
+        UnrelatedFriend = 11,
+        /// <summary>
+        /// Employer Affiliate
+        /// </summary>
+        [Description("Employer Affiliate")]
+        EmployerAffiliate = 12,
+        /// <summary>
+        /// Lender Affiliate
+        /// </summary>
+        [Description("Lender Affiliate")]
+        LenderAffiliate = 13,
+        /// <summary>
+        /// Other Interested Party
+        /// </summary>
+        [Description("Other Interested Party")]
+        OtherInterestedParty = 14
     }
 }

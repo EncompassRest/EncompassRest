@@ -63,6 +63,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<DateTime?>? _lastAttachmentDateUtc;
         private DirtyValue<int?>? _logRecordIndex;
         private DirtyValue<DateTime?>? _orderDateUtc;
+        private DirtyValue<string?>? _packageId;
         private DirtyValue<string?>? _pairId;
         private DirtyValue<bool?>? _preClosingDocumentIndicator;
         private DirtyValue<bool?>? _received;
@@ -363,6 +364,11 @@ namespace EncompassRest.Loans.v1
         /// DocumentLog OrderDateUtc
         /// </summary>
         public DateTime? OrderDateUtc { get => _orderDateUtc; set => SetField(ref _orderDateUtc, value); }
+
+        /// <summary>
+        /// DocumentLog PackageId
+        /// </summary>
+        public string? PackageId { get => _packageId; set => SetField(ref _packageId, value); }
 
         /// <summary>
         /// DocumentLog PairId

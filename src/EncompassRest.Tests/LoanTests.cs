@@ -1016,7 +1016,7 @@ namespace EncompassRest.Tests
             }
         }
 
-        private static readonly HashSet<string> _fieldsWhereLockingCausesEncompassError = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "MORNET.X97", "MORNET.X98", "MORNET.X100", "MORNET.X103", "MORNET.X102" };
+        private static readonly HashSet<string> _fieldsWhereLockingCausesEncompassError = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { };
 
         [TestMethod]
         [ApiTest]
@@ -1503,7 +1503,7 @@ namespace EncompassRest.Tests
             field = loan.Fields["HMDA.X45"];
             options = field.Descriptor.Options;
             attribute = typeof(Hmda).GetTypeInfo().GetProperty(nameof(Hmda.AUS2)).GetCustomAttribute<LoanFieldPropertyAttribute>();
-            Assert.AreEqual(3, attribute.MissingOptions.Count);
+            Assert.AreEqual(2, attribute.MissingOptions.Count);
             Assert.AreEqual(members.Count - attribute.MissingOptions.Count, options.Count);
             foreach (var member in members)
             {

@@ -445,8 +445,9 @@ namespace EncompassRest.Loans.v1
         public string? ApplicantHmdaGenderType { get => _applicantHmdaGenderType; set => SetField(ref _applicantHmdaGenderType, value); }
 
         /// <summary>
-        /// VaLoanData ApplicantHomePhoneNumber
+        /// VA Veteran Daytime Phone [VAELIG.X74]
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true)]
         public string? ApplicantHomePhoneNumber { get => _applicantHomePhoneNumber; set => SetField(ref _applicantHomePhoneNumber, value); }
 
         /// <summary>

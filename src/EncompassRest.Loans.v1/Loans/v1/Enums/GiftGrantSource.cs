@@ -17,6 +17,10 @@ namespace EncompassRest.Loans.v1.Enums
         /// </summary>
         Employer = 1,
         /// <summary>
+        /// Borrower
+        /// </summary>
+        Borrower = 2,
+        /// <summary>
         /// Federal Agency
         /// </summary>
         [Description("Federal Agency")]
@@ -50,17 +54,18 @@ namespace EncompassRest.Loans.v1.Enums
         [Description("Unmarried Partner")]
         UnmarriedPartner = 9,
         /// <summary>
-        /// Institutional
+        /// Institutional - Retired
         /// </summary>
+        [Description("Institutional - Retired")]
         Institutional = 10,
         /// <summary>
         /// Lender
         /// </summary>
         Lender = 11,
         /// <summary>
-        /// Non Parent Relative
+        /// Non Parent Relative - Retired
         /// </summary>
-        [Description("Non Parent Relative")]
+        [Description("Non Parent Relative - Retired")]
         NonParentRelative = 12,
         /// <summary>
         /// Parent
@@ -70,6 +75,11 @@ namespace EncompassRest.Loans.v1.Enums
         /// Unrelated Friend
         /// </summary>
         [Description("Unrelated Friend")]
-        UnrelatedFriend = 14
+        UnrelatedFriend = 14,
+        /// <summary>
+        /// Property Seller
+        /// </summary>
+        [Description("Property Seller")]
+        PropertySeller = 15
     }
 }

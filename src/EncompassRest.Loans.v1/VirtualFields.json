@@ -10383,6 +10383,66 @@
     "Description": "Rate Lock - Temporary Buydown (Most Recent)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.4711",
+    "Description": "Rate Lock - Condominium Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.4712",
+    "Description": "Rate Lock - Cooperative Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.4713",
+    "Description": "Rate Lock - Planned Unit Development Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.4714",
+    "Description": "Rate Lock - Property is not located in a project Indicator (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.60",
     "Description": "Rate Lock - Co-Borr Experian FICO (Most Recent)"
@@ -17517,6 +17577,66 @@
     "Description": "Rate Request - Temporary Buydown (Mostly Recent Confirmed)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.4711",
+    "Description": "Rate Request - Condominium Project Type Indicator (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.4712",
+    "Description": "Rate Request - Cooperative Project Type Indicator (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.4713",
+    "Description": "Rate Request - Planned Unit Development Project Type Indicator (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.4714",
+    "Description": "Rate Request - Property is not located in a project Indicator (Mostly Recent Confirmed)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.CONFIRMED.60",
     "Description": "Rate Request - Co-Borr Experian FICO (Mostly Recent Confirmed)"
@@ -17781,6 +17901,66 @@
     ],
     "FieldId": "LOCKRATE.CONFIRMED.MORNET.X67",
     "Description": "Rate Request - Fannie Mae Loan Doc Type Code (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.URLA.X205",
+    "Description": "Rate Request - Condominium Project Type Indicator (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.URLA.X206",
+    "Description": "Rate Request - Cooperative Project Type Indicator (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.URLA.X207",
+    "Description": "Rate Request - Planned Unit Development Project Type Indicator (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.CONFIRMED.URLA.X208",
+    "Description": "Rate Request - Property is not located in a project Indicator (Mostly Recent Confirmed)"
   },
   {
     "Format": 101,
@@ -24987,6 +25167,66 @@
     "Description": "Rate Lock Denial - Temporary Buydown (Most Recent)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.4711",
+    "Description": "Rate Lock Denial - Condominium Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.4712",
+    "Description": "Rate Lock Denial - Cooperative Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.4713",
+    "Description": "Rate Lock Denial - Planned Unit Development Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.4714",
+    "Description": "Rate Lock Denial - Property is not located in a project Indicator (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.DENIED.60",
     "Description": "Rate Lock Denial - Co-Borr Experian FICO (Most Recent)"
@@ -25251,6 +25491,66 @@
     ],
     "FieldId": "LOCKRATE.DENIED.MORNET.X67",
     "Description": "Rate Lock Denial - Fannie Mae Loan Doc Type Code (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.URLA.X205",
+    "Description": "Rate Lock Denial - Condominium Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.URLA.X206",
+    "Description": "Rate Lock Denial - Cooperative Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.URLA.X207",
+    "Description": "Rate Lock Denial - Planned Unit Development Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.DENIED.URLA.X208",
+    "Description": "Rate Lock Denial - Property is not located in a project Indicator (Most Recent)"
   },
   {
     "Format": 101,
@@ -32602,6 +32902,66 @@
     "Description": "Rate Lock Request - Temporary Buydown (Most Recent)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.4711",
+    "Description": "Rate Lock Request - Condominium Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.4712",
+    "Description": "Rate Lock Request - Cooperative Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.4713",
+    "Description": "Rate Lock Request - Planned Unit Development Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.4714",
+    "Description": "Rate Lock Request - Property is not located in a project Indicator (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.REQUEST.60",
     "Description": "Rate Lock Request - Co-Borr Experian FICO (Most Recent)"
@@ -32868,6 +33228,66 @@
     "Description": "Rate Lock Request - Fannie Mae Loan Doc Type Code (Most Recent)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.URLA.X205",
+    "Description": "Rate Lock Request - Condominium Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.URLA.X206",
+    "Description": "Rate Lock Request - Cooperative Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.URLA.X207",
+    "Description": "Rate Lock Request - Planned Unit Development Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.REQUEST.URLA.X208",
+    "Description": "Rate Lock Request - Property is not located in a project Indicator (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.REQUEST.URLA.X73",
     "Description": "Rate Lock Request - Property Address Line Text (Most Recent)"
@@ -33056,6 +33476,66 @@
     "Format": 201,
     "FieldId": "LOCKRATE.SELLLOCKCOUNT",
     "Description": "Rate Lock - Count of the number of sell side locks"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.URLA.X205",
+    "Description": "Rate Lock - Condominium Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.URLA.X206",
+    "Description": "Rate Lock - Cooperative Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.URLA.X207",
+    "Description": "Rate Lock - Planned Unit Development Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE.URLA.X208",
+    "Description": "Rate Lock - Property is not located in a project Indicator (Most Recent)"
   },
   {
     "Format": 101,
@@ -40172,6 +40652,66 @@
     "Format": 101,
     "FieldId": "LOCKRATE1.4645",
     "Description": "Rate Lock - Temporary Buydown (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.4711",
+    "Description": "Rate Lock - Condominium Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.4712",
+    "Description": "Rate Lock - Cooperative Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.4713",
+    "Description": "Rate Lock - Planned Unit Development Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.4714",
+    "Description": "Rate Lock - Property is not located in a project Indicator (Previous 1)"
   },
   {
     "Format": 101,
@@ -47303,6 +47843,66 @@
     "Description": "Rate Lock Denial - Temporary Buydown (Previous 1)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.4711",
+    "Description": "Rate Lock Denial - Condominium Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.4712",
+    "Description": "Rate Lock Denial - Cooperative Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.4713",
+    "Description": "Rate Lock Denial - Planned Unit Development Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.4714",
+    "Description": "Rate Lock Denial - Property is not located in a project Indicator (Previous 1)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE1.DENIED.60",
     "Description": "Rate Lock Denial - Co-Borr Experian FICO (Previous 1)"
@@ -47567,6 +48167,66 @@
     ],
     "FieldId": "LOCKRATE1.DENIED.MORNET.X67",
     "Description": "Rate Lock Denial - Fannie Mae Loan Doc Type Code (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.URLA.X205",
+    "Description": "Rate Lock Denial - Condominium Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.URLA.X206",
+    "Description": "Rate Lock Denial - Cooperative Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.URLA.X207",
+    "Description": "Rate Lock Denial - Planned Unit Development Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.DENIED.URLA.X208",
+    "Description": "Rate Lock Denial - Property is not located in a project Indicator (Previous 1)"
   },
   {
     "Format": 101,
@@ -54820,6 +55480,66 @@
     "Description": "Rate Lock Request - Temporary Buydown (Previous 1)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.4711",
+    "Description": "Rate Lock Request - Condominium Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.4712",
+    "Description": "Rate Lock Request - Cooperative Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.4713",
+    "Description": "Rate Lock Request - Planned Unit Development Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.4714",
+    "Description": "Rate Lock Request - Property is not located in a project Indicator (Previous 1)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE1.REQUEST.60",
     "Description": "Rate Lock Request - Co-Borr Experian FICO (Previous 1)"
@@ -55086,6 +55806,66 @@
     "Description": "Rate Lock Request - Fannie Mae Loan Doc Type Code (Previous 1)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.URLA.X205",
+    "Description": "Rate Lock Request - Condominium Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.URLA.X206",
+    "Description": "Rate Lock Request - Cooperative Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.URLA.X207",
+    "Description": "Rate Lock Request - Planned Unit Development Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.REQUEST.URLA.X208",
+    "Description": "Rate Lock Request - Property is not located in a project Indicator (Previous 1)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE1.REQUEST.URLA.X73",
     "Description": "Rate Lock Request - Property Address Line Text (Previous 1)"
@@ -55222,6 +56002,66 @@
     "Format": 101,
     "FieldId": "LOCKRATE1.REQUESTEDBY",
     "Description": "Rate Lock - Rate Requested By (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.URLA.X205",
+    "Description": "Rate Lock - Condominium Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.URLA.X206",
+    "Description": "Rate Lock - Cooperative Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.URLA.X207",
+    "Description": "Rate Lock - Planned Unit Development Project Type Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE1.URLA.X208",
+    "Description": "Rate Lock - Property is not located in a project Indicator (Previous 1)"
   },
   {
     "Format": 101,
@@ -62338,6 +63178,66 @@
     "Format": 101,
     "FieldId": "LOCKRATE2.4645",
     "Description": "Rate Lock - Temporary Buydown (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.4711",
+    "Description": "Rate Lock - Condominium Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.4712",
+    "Description": "Rate Lock - Cooperative Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.4713",
+    "Description": "Rate Lock - Planned Unit Development Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.4714",
+    "Description": "Rate Lock - Property is not located in a project Indicator (Previous 2)"
   },
   {
     "Format": 101,
@@ -69469,6 +70369,66 @@
     "Description": "Rate Lock Denial - Temporary Buydown (Previous 2)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.4711",
+    "Description": "Rate Lock Denial - Condominium Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.4712",
+    "Description": "Rate Lock Denial - Cooperative Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.4713",
+    "Description": "Rate Lock Denial - Planned Unit Development Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.4714",
+    "Description": "Rate Lock Denial - Property is not located in a project Indicator (Previous 2)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE2.DENIED.60",
     "Description": "Rate Lock Denial - Co-Borr Experian FICO (Previous 2)"
@@ -69733,6 +70693,66 @@
     ],
     "FieldId": "LOCKRATE2.DENIED.MORNET.X67",
     "Description": "Rate Lock Denial - Fannie Mae Loan Doc Type Code (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.URLA.X205",
+    "Description": "Rate Lock Denial - Condominium Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.URLA.X206",
+    "Description": "Rate Lock Denial - Cooperative Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.URLA.X207",
+    "Description": "Rate Lock Denial - Planned Unit Development Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.DENIED.URLA.X208",
+    "Description": "Rate Lock Denial - Property is not located in a project Indicator (Previous 2)"
   },
   {
     "Format": 101,
@@ -76986,6 +78006,66 @@
     "Description": "Rate Lock Request - Temporary Buydown (Previous 2)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.4711",
+    "Description": "Rate Lock Request - Condominium Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.4712",
+    "Description": "Rate Lock Request - Cooperative Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.4713",
+    "Description": "Rate Lock Request - Planned Unit Development Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.4714",
+    "Description": "Rate Lock Request - Property is not located in a project Indicator (Previous 2)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE2.REQUEST.60",
     "Description": "Rate Lock Request - Co-Borr Experian FICO (Previous 2)"
@@ -77252,6 +78332,66 @@
     "Description": "Rate Lock Request - Fannie Mae Loan Doc Type Code (Previous 2)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.URLA.X205",
+    "Description": "Rate Lock Request - Condominium Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.URLA.X206",
+    "Description": "Rate Lock Request - Cooperative Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.URLA.X207",
+    "Description": "Rate Lock Request - Planned Unit Development Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.REQUEST.URLA.X208",
+    "Description": "Rate Lock Request - Property is not located in a project Indicator (Previous 2)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE2.REQUEST.URLA.X73",
     "Description": "Rate Lock Request - Property Address Line Text (Previous 2)"
@@ -77388,6 +78528,66 @@
     "Format": 101,
     "FieldId": "LOCKRATE2.REQUESTEDBY",
     "Description": "Rate Lock - Rate Requested By (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.URLA.X205",
+    "Description": "Rate Lock - Condominium Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.URLA.X206",
+    "Description": "Rate Lock - Cooperative Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.URLA.X207",
+    "Description": "Rate Lock - Planned Unit Development Project Type Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE2.URLA.X208",
+    "Description": "Rate Lock - Property is not located in a project Indicator (Previous 2)"
   },
   {
     "Format": 101,
@@ -84506,6 +85706,66 @@
     "Description": "Rate Request - Temporary Buydown (Most Recent)"
   },
   {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE3.4711",
+    "Description": "Rate Request - Condominium Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE3.4712",
+    "Description": "Rate Request - Cooperative Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE3.4713",
+    "Description": "Rate Request - Planned Unit Development Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE3.4714",
+    "Description": "Rate Request - Property is not located in a project Indicator (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE3.60",
     "Description": "Rate Request - Co-Borr Experian FICO (Most Recent)"
@@ -84770,6 +86030,66 @@
     ],
     "FieldId": "LOCKRATE3.MORNET.X67",
     "Description": "Rate Request - Fannie Mae Loan Doc Type Code (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE3.URLA.X205",
+    "Description": "Rate Request - Condominium Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE3.URLA.X206",
+    "Description": "Rate Request - Cooperative Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE3.URLA.X207",
+    "Description": "Rate Request - Planned Unit Development Project Type Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "Options": [
+      {
+        "value": "Y",
+        "text": "Yes"
+      },
+      {
+        "value": "N",
+        "text": "No"
+      }
+    ],
+    "FieldId": "LOCKRATE3.URLA.X208",
+    "Description": "Rate Request - Property is not located in a project Indicator (Most Recent)"
   },
   {
     "Format": 101,

@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.v1.Enums
@@ -17,8 +18,9 @@ namespace EncompassRest.Loans.v1.Enums
         /// </summary>
         DU = 1,
         /// <summary>
-        /// LP
+        /// LPA
         /// </summary>
+        [Description("LPA")]
         LP = 2,
         /// <summary>
         /// LQA
@@ -27,6 +29,11 @@ namespace EncompassRest.Loans.v1.Enums
         /// <summary>
         /// Other
         /// </summary>
-        Other = 4
+        Other = 4,
+        /// <summary>
+        /// Early Check
+        /// </summary>
+        [Description("Early Check")]
+        EarlyCheck = 5
     }
 }

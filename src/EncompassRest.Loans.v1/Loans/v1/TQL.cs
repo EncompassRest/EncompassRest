@@ -16,7 +16,10 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _citibankComplianceBaselineReportRequired;
         private DirtyValue<string?>? _citibankFloodBaselineReportRequired;
         private DirtyValue<string?>? _citibankFraudBaselineReportRequired;
+        private DirtyValue<DateTime?>? _collRiskScoreDate;
+        private DirtyValue<DateTime?>? _cuRiskScoreDate;
         private DirtyValue<string?>? _currentInvestorPublishingStatus;
+        private DirtyValue<DateTime?>? _documentationLevelDate;
         private DirtyValue<int?>? _driveAppVerifyScore;
         private DirtyValue<int?>? _driveIDVerifyScore;
         private DirtyValue<int?>? _drivePropertyVerifyScore;
@@ -25,12 +28,28 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<DateTime?>? _dUFindingsMessageDateTime;
         private DirtyValue<string?>? _dUPropertyDataID;
         private DirtyValue<string?>? _dUPropertyDataMessage;
+        private DirtyValue<DateTime?>? _duRecommendationDate;
+        private DirtyValue<DateTime?>? _ecStatus1003Date;
+        private DirtyValue<DateTime?>? _ecStatusUlddDate;
+        private DirtyValue<DateTime?>? _fannieApprWaiverOfferedDate;
+        private DirtyValue<DateTime?>? _fannieAssetRepAndWarrantDate;
+        private DirtyValue<DateTime?>? _fannieMiscDate1;
+        private DirtyValue<DateTime?>? _fannieMiscDate2;
+        private DirtyValue<DateTime?>? _fannieUcdpStatusDate;
+        private DirtyValue<DateTime?>? _fannieValueRepAndWarrantDate;
         private DirtyValue<DateTime?>? _floodOrderDate;
         private DirtyValue<string?>? _floodProductType;
         private DirtyValue<StringEnumValue<FloodProgramCode>>? _floodProgramCode;
         private DirtyValue<DateTime?>? _floodReceivedDate;
         private DirtyValue<string?>? _floodStatus;
         private DirtyValue<string?>? _floodTransactionType;
+        private DirtyValue<DateTime?>? _freddieApprWaiverOfferedDate;
+        private DirtyValue<DateTime?>? _freddieAssetRepAndWarrantDate;
+        private DirtyValue<DateTime?>? _freddieColRepAndWarrantDate;
+        private DirtyValue<DateTime?>? _freddieIncomeRepAndWarrantDate;
+        private DirtyValue<DateTime?>? _freddieMiscDate1;
+        private DirtyValue<DateTime?>? _freddieMiscDate2;
+        private DirtyValue<DateTime?>? _freddieUcdpStatusDate;
         private DirtyList<GSETracker>? _gSETrackers;
         private DirtyValue<string?>? _homeward4506TBaselineReportRequired;
         private DirtyValue<string?>? _homewardComplianceBaselineReportRequired;
@@ -65,12 +84,15 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _lastUserIDWhoOrderedCCVP;
         private DirtyValue<string?>? _lastUserIDWhoOrderedCompliance;
         private DirtyValue<string?>? _lastUserIDWhoOrderedFraudOrder;
+        private DirtyValue<DateTime?>? _lclaUcdReqDate;
         private DirtyValue<string?>? _lomaOrLomrCaseNumber;
         private DirtyValue<DateTime?>? _lomaOrLomrDate;
         private DirtyValue<bool?>? _lomaOrLomrIndicator;
         private DirtyValue<string?>? _lPAppraisalWaiverMessage;
         private DirtyValue<bool?>? _lPAppraisalWaiverOffered;
         private DirtyValue<string?>? _lPAPurchaseEligibility;
+        private DirtyValue<DateTime?>? _lpaPurchEligDate;
+        private DirtyValue<DateTime?>? _lpaRiskClassDate;
         private DirtyValue<bool?>? _lPAssetRepWarrantyIndicator;
         private DirtyValue<string?>? _lPAssetRepWarrantyMessage;
         private DirtyValue<string?>? _lPCollateralRepWarrantyMessage;
@@ -78,6 +100,8 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _lPDocumentationLevelMessage;
         private DirtyValue<bool?>? _lPIncomeRepWarrantyIndicator;
         private DirtyValue<string?>? _lPIncomeRepWarrantyMessage;
+        private DirtyValue<DateTime?>? _lqaPurchEligDate;
+        private DirtyValue<DateTime?>? _lqaRiskAssessmentDate;
         private DirtyValue<bool?>? _mIVendorsArchAutoOrderIndicator;
         private DirtyValue<bool?>? _mIVendorsMgicAutoOrderIndicator;
         private DirtyValue<bool?>? _mIVendorsRadianAutoOrderIndicator;
@@ -85,6 +109,12 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _pHHComplianceBaselineReportRequired;
         private DirtyValue<string?>? _pHHFloodBaselineReportRequired;
         private DirtyValue<string?>? _pHHFraudBaselineReportRequired;
+        private DirtyValue<string?>? _rwtMisc1;
+        private DirtyValue<string?>? _rwtMisc2;
+        private DirtyValue<string?>? _rwtMisc3;
+        private DirtyValue<DateTime?>? _rwtMiscDate1;
+        private DirtyValue<DateTime?>? _rwtMiscDate2;
+        private DirtyValue<DateTime?>? _rwtMiscDate3;
         private DirtyValue<string?>? _stonegate4506TBaselineReport;
         private DirtyValue<string?>? _stonegateComplianceBaselineReportRequired;
         private DirtyValue<string?>? _stonegateFloodBaselineReportRequired;
@@ -99,6 +129,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<int?>? _tQLFraudAlertsTotalLowUnaddressed;
         private DirtyValue<int?>? _tQLFraudAlertsTotalMedium;
         private DirtyValue<int?>? _tQLFraudAlertsTotalMediumUnaddressed;
+        private DirtyValue<DateTime?>? _ucdCollectionDate;
         private DirtyValue<string?>? _wellsFargo4506TBaselineReportRequired;
         private DirtyValue<string?>? _wellsFargoComplianceBaselineReportRequired;
         private DirtyValue<string?>? _wellsFargoFloodBaselineReportRequired;
@@ -130,9 +161,27 @@ namespace EncompassRest.Loans.v1
         public string? CitibankFraudBaselineReportRequired { get => _citibankFraudBaselineReportRequired; set => SetField(ref _citibankFraudBaselineReportRequired, value); }
 
         /// <summary>
+        /// TQL - Coll Risk Score Date [TQL.X121]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? CollRiskScoreDate { get => _collRiskScoreDate; set => SetField(ref _collRiskScoreDate, value); }
+
+        /// <summary>
+        /// TQL - Cu Risk Score Date [TQL.X113]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? CuRiskScoreDate { get => _cuRiskScoreDate; set => SetField(ref _cuRiskScoreDate, value); }
+
+        /// <summary>
         /// TQL - Investor Publishing - Current Publishing Status [TQL.X1]
         /// </summary>
         public string? CurrentInvestorPublishingStatus { get => _currentInvestorPublishingStatus; set => SetField(ref _currentInvestorPublishingStatus, value); }
+
+        /// <summary>
+        /// TQL - Documentation Level Date [TQL.X119]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? DocumentationLevelDate { get => _documentationLevelDate; set => SetField(ref _documentationLevelDate, value); }
 
         /// <summary>
         /// DRIVE - AppVerify Score [TQL.X83]
@@ -176,6 +225,60 @@ namespace EncompassRest.Loans.v1
         public string? DUPropertyDataMessage { get => _dUPropertyDataMessage; set => SetField(ref _dUPropertyDataMessage, value); }
 
         /// <summary>
+        /// TQL - Du Recommendation Date [TQL.X111]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? DuRecommendationDate { get => _duRecommendationDate; set => SetField(ref _duRecommendationDate, value); }
+
+        /// <summary>
+        /// TQL - Ec Status1003 Date [TQL.X114]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? EcStatus1003Date { get => _ecStatus1003Date; set => SetField(ref _ecStatus1003Date, value); }
+
+        /// <summary>
+        /// TQL - Ec Status Uldd Date [TQL.X115]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? EcStatusUlddDate { get => _ecStatusUlddDate; set => SetField(ref _ecStatusUlddDate, value); }
+
+        /// <summary>
+        /// TQL - Fannie Appr Waiver Offered Date [TQL.X125]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FannieApprWaiverOfferedDate { get => _fannieApprWaiverOfferedDate; set => SetField(ref _fannieApprWaiverOfferedDate, value); }
+
+        /// <summary>
+        /// TQL - Fannie Asset Rep And Warrant Date [TQL.X127]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FannieAssetRepAndWarrantDate { get => _fannieAssetRepAndWarrantDate; set => SetField(ref _fannieAssetRepAndWarrantDate, value); }
+
+        /// <summary>
+        /// TQL - Fannie Misc Date 1 [TQL.X128]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FannieMiscDate1 { get => _fannieMiscDate1; set => SetField(ref _fannieMiscDate1, value); }
+
+        /// <summary>
+        /// TQL - Fannie Misc Date 2 [TQL.X129]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FannieMiscDate2 { get => _fannieMiscDate2; set => SetField(ref _fannieMiscDate2, value); }
+
+        /// <summary>
+        /// TQL - Fannie Ucdp Status Date [TQL.X112]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FannieUcdpStatusDate { get => _fannieUcdpStatusDate; set => SetField(ref _fannieUcdpStatusDate, value); }
+
+        /// <summary>
+        /// TQL - Fannie Value Rep And Warrant Date [TQL.X126]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FannieValueRepAndWarrantDate { get => _fannieValueRepAndWarrantDate; set => SetField(ref _fannieValueRepAndWarrantDate, value); }
+
+        /// <summary>
         /// TQL - Flood billing - Flood Order Date [TQL.X105]
         /// </summary>
         public DateTime? FloodOrderDate { get => _floodOrderDate; set => SetField(ref _floodOrderDate, value); }
@@ -204,6 +307,48 @@ namespace EncompassRest.Loans.v1
         /// TQL - Flood billing - Flood Transaction Type [TQL.X102]
         /// </summary>
         public string? FloodTransactionType { get => _floodTransactionType; set => SetField(ref _floodTransactionType, value); }
+
+        /// <summary>
+        /// TQL - Freddie Appr Waiver Offered Date [TQL.X130]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FreddieApprWaiverOfferedDate { get => _freddieApprWaiverOfferedDate; set => SetField(ref _freddieApprWaiverOfferedDate, value); }
+
+        /// <summary>
+        /// TQL - Freddie Asset Rep And Warrant Date [TQL.X132]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FreddieAssetRepAndWarrantDate { get => _freddieAssetRepAndWarrantDate; set => SetField(ref _freddieAssetRepAndWarrantDate, value); }
+
+        /// <summary>
+        /// TQL - Freddie Col Rep And Warrant Date [TQL.X131]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FreddieColRepAndWarrantDate { get => _freddieColRepAndWarrantDate; set => SetField(ref _freddieColRepAndWarrantDate, value); }
+
+        /// <summary>
+        /// TQL - Freddie Income Rep And Warrant Date [TQL.X133]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FreddieIncomeRepAndWarrantDate { get => _freddieIncomeRepAndWarrantDate; set => SetField(ref _freddieIncomeRepAndWarrantDate, value); }
+
+        /// <summary>
+        /// TQL - Freddie Misc Date 1 [TQL.X134]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FreddieMiscDate1 { get => _freddieMiscDate1; set => SetField(ref _freddieMiscDate1, value); }
+
+        /// <summary>
+        /// TQL - Freddie Misc Date 2 [TQL.X135]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FreddieMiscDate2 { get => _freddieMiscDate2; set => SetField(ref _freddieMiscDate2, value); }
+
+        /// <summary>
+        /// TQL - Freddie Ucdp Status Date [TQL.X120]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? FreddieUcdpStatusDate { get => _freddieUcdpStatusDate; set => SetField(ref _freddieUcdpStatusDate, value); }
 
         /// <summary>
         /// TQL GSETrackers
@@ -378,6 +523,12 @@ namespace EncompassRest.Loans.v1
         public string? LastUserIDWhoOrderedFraudOrder { get => _lastUserIDWhoOrderedFraudOrder; set => SetField(ref _lastUserIDWhoOrderedFraudOrder, value); }
 
         /// <summary>
+        /// TQL - Lcla Ucd Req Date [TQL.X124]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? LclaUcdReqDate { get => _lclaUcdReqDate; set => SetField(ref _lclaUcdReqDate, value); }
+
+        /// <summary>
         /// TQL - LOMA/LOMR Case Number [TQL.X109]
         /// </summary>
         public string? LomaOrLomrCaseNumber { get => _lomaOrLomrCaseNumber; set => SetField(ref _lomaOrLomrCaseNumber, value); }
@@ -407,6 +558,18 @@ namespace EncompassRest.Loans.v1
         /// GSE Rep and Warrant Tracker - LPA Purchase Eligibility [TQL.X89]
         /// </summary>
         public string? LPAPurchaseEligibility { get => _lPAPurchaseEligibility; set => SetField(ref _lPAPurchaseEligibility, value); }
+
+        /// <summary>
+        /// TQL - Lpa Purch Elig Date [TQL.X118]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? LpaPurchEligDate { get => _lpaPurchEligDate; set => SetField(ref _lpaPurchEligDate, value); }
+
+        /// <summary>
+        /// TQL - Lpa Risk Class Date [TQL.X117]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? LpaRiskClassDate { get => _lpaRiskClassDate; set => SetField(ref _lpaRiskClassDate, value); }
 
         /// <summary>
         /// GSE Rep and Warrant Tracker - Freddie Mac Asset Rep and Warranty [TQL.X91]
@@ -442,6 +605,18 @@ namespace EncompassRest.Loans.v1
         /// GSE Rep and Warrant Tracker - Freddie Mac Income Rep and Warranty Message [TQL.X94]
         /// </summary>
         public string? LPIncomeRepWarrantyMessage { get => _lPIncomeRepWarrantyMessage; set => SetField(ref _lPIncomeRepWarrantyMessage, value); }
+
+        /// <summary>
+        /// TQL - Lqa Purch Elig Date [TQL.X122]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? LqaPurchEligDate { get => _lqaPurchEligDate; set => SetField(ref _lqaPurchEligDate, value); }
+
+        /// <summary>
+        /// TQL - Lqa Risk Assessment Date [TQL.X123]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? LqaRiskAssessmentDate { get => _lqaRiskAssessmentDate; set => SetField(ref _lqaRiskAssessmentDate, value); }
 
         /// <summary>
         /// MIVendors Arch Report Auto Order Indicator [MISERVICE.X1]
@@ -480,6 +655,39 @@ namespace EncompassRest.Loans.v1
         /// PHH Fraud Baseline Report Required [TQL.X70]
         /// </summary>
         public string? PHHFraudBaselineReportRequired { get => _pHHFraudBaselineReportRequired; set => SetField(ref _pHHFraudBaselineReportRequired, value); }
+
+        /// <summary>
+        /// TQL - Rwt Misc 1 [TQL.X136]
+        /// </summary>
+        public string? RwtMisc1 { get => _rwtMisc1; set => SetField(ref _rwtMisc1, value); }
+
+        /// <summary>
+        /// TQL - Rwt Misc 2 [TQL.X137]
+        /// </summary>
+        public string? RwtMisc2 { get => _rwtMisc2; set => SetField(ref _rwtMisc2, value); }
+
+        /// <summary>
+        /// TQL - Rwt Misc 3 [TQL.X138]
+        /// </summary>
+        public string? RwtMisc3 { get => _rwtMisc3; set => SetField(ref _rwtMisc3, value); }
+
+        /// <summary>
+        /// TQL - Rwt Misc Date 1 [TQL.X139]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtMiscDate1 { get => _rwtMiscDate1; set => SetField(ref _rwtMiscDate1, value); }
+
+        /// <summary>
+        /// TQL - Rwt Misc Date 2 [TQL.X140]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtMiscDate2 { get => _rwtMiscDate2; set => SetField(ref _rwtMiscDate2, value); }
+
+        /// <summary>
+        /// TQL - Rwt Misc Date 3 [TQL.X141]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtMiscDate3 { get => _rwtMiscDate3; set => SetField(ref _rwtMiscDate3, value); }
 
         /// <summary>
         /// Stonegate 4506T Baseline Report Required [TQL.X65]
@@ -553,6 +761,12 @@ namespace EncompassRest.Loans.v1
         /// Fraud Alerts - Total # Medium Unaddressed [TQL.X78]
         /// </summary>
         public int? TQLFraudAlertsTotalMediumUnaddressed { get => _tQLFraudAlertsTotalMediumUnaddressed; set => SetField(ref _tQLFraudAlertsTotalMediumUnaddressed, value); }
+
+        /// <summary>
+        /// TQL - Ucd Collection Date [TQL.X116]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? UcdCollectionDate { get => _ucdCollectionDate; set => SetField(ref _ucdCollectionDate, value); }
 
         /// <summary>
         /// Wells Fargo 4506T Baseline Report Required [TQL.X52]

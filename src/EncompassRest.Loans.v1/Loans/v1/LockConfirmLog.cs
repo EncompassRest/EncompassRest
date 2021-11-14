@@ -21,6 +21,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<DateTime?>? _dateUtc;
         private DirtyValue<bool?>? _fileAttachmentsMigrated;
         private DirtyValue<string?>? _guid;
+        private DirtyValue<bool?>? _hideLog;
         private DirtyValue<string?>? _id;
         private DirtyValue<bool?>? _isSystemSpecificIndicator;
         private DirtyValue<int?>? _logRecordIndex;
@@ -94,6 +95,11 @@ namespace EncompassRest.Loans.v1
         /// LockConfirmLog Guid
         /// </summary>
         public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+
+        /// <summary>
+        /// LockConfirmLog HideLog
+        /// </summary>
+        public bool? HideLog { get => _hideLog; set => SetField(ref _hideLog, value); }
 
         /// <summary>
         /// LockConfirmLog Id

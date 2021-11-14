@@ -21,6 +21,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<DateTime?>? _date;
         private DirtyValue<string?>? _description;
         private DirtyValue<string?>? _descriptionOfPurpose;
+        private DirtyValue<bool?>? _energyEfficientDebts;
         private DirtyValue<bool?>? _entityDeleted;
         private DirtyValue<bool?>? _exclusionIndicator;
         private DirtyValue<bool?>? _foreignAddressIndicator;
@@ -135,6 +136,12 @@ namespace EncompassRest.Loans.v1
         /// .Description Of Purpose [FLNN43]
         /// </summary>
         public string? DescriptionOfPurpose { get => _descriptionOfPurpose; set => SetField(ref _descriptionOfPurpose, value); }
+
+        /// <summary>
+        /// Energy Efficient Debts including PACE loans [FLNN69]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"PACE Loan\",\"N\":\"Energy Improvement\"}")]
+        public bool? EnergyEfficientDebts { get => _energyEfficientDebts; set => SetField(ref _energyEfficientDebts, value); }
 
         /// <summary>
         /// Liability EntityDeleted

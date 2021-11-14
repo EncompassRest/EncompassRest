@@ -7,6 +7,8 @@ namespace EncompassRest.Loans.v1
     /// </summary>
     public sealed partial class FannieMae : DirtyExtensibleObject, IIdentifiable
     {
+        private DirtyValue<string?>? _assetRepAndWarrantyMessage;
+        private DirtyValue<bool?>? _assetRepAndWarrantyReliefAvailable;
         private DirtyValue<bool?>? _caseIDAssignedByUCDIndicator;
         private DirtyValue<decimal?>? _cltv;
         private DirtyValue<string?>? _collateralUnderwriterScore;
@@ -21,11 +23,24 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<decimal?>? _interestedPartyContribution;
         private DirtyValue<decimal?>? _ltv;
         private DirtyValue<string?>? _mornetPlusCaseFileId;
+        private DirtyValue<string?>? _pIWMessage;
         private DirtyValue<string?>? _propertyInspectionWaiverMessage;
         private DirtyValue<bool?>? _startUpMortgage;
         private DirtyValue<string?>? _uCDCollectionStatus;
         private DirtyValue<string?>? _uCDPStatus;
         private DirtyValue<string?>? _uLDDECStatus;
+        private DirtyValue<bool?>? _valueRepAndWarrantyAvailable;
+        private DirtyValue<string?>? _valueRepAndWarrantyMessage;
+
+        /// <summary>
+        /// Fannie Mae - Borrower - Asset Validation Message [MORNET.X100]
+        /// </summary>
+        public string? AssetRepAndWarrantyMessage { get => _assetRepAndWarrantyMessage; set => SetField(ref _assetRepAndWarrantyMessage, value); }
+
+        /// <summary>
+        /// Fannie Mae - Borrower - Asset Validation [MORNET.X103]
+        /// </summary>
+        public bool? AssetRepAndWarrantyReliefAvailable { get => _assetRepAndWarrantyReliefAvailable; set => SetField(ref _assetRepAndWarrantyReliefAvailable, value); }
 
         /// <summary>
         /// Fannie Mae Case File ID # Assigned by UCD [MORNET.X125]
@@ -99,6 +114,11 @@ namespace EncompassRest.Loans.v1
         public string? MornetPlusCaseFileId { get => _mornetPlusCaseFileId; set => SetField(ref _mornetPlusCaseFileId, value); }
 
         /// <summary>
+        /// Fannie Mae - Borrower - PIW Message [MORNET.X97]
+        /// </summary>
+        public string? PIWMessage { get => _pIWMessage; set => SetField(ref _pIWMessage, value); }
+
+        /// <summary>
         /// Fannie Mae Property Inspection Waiver Message [MORNET.X91]
         /// </summary>
         public string? PropertyInspectionWaiverMessage { get => _propertyInspectionWaiverMessage; set => SetField(ref _propertyInspectionWaiverMessage, value); }
@@ -123,5 +143,15 @@ namespace EncompassRest.Loans.v1
         /// Fannie Mae ULDD EC Status [MORNET.X95]
         /// </summary>
         public string? ULDDECStatus { get => _uLDDECStatus; set => SetField(ref _uLDDECStatus, value); }
+
+        /// <summary>
+        /// Fannie Mae - Borrower - Value Rep and Warranty [MORNET.X102]
+        /// </summary>
+        public bool? ValueRepAndWarrantyAvailable { get => _valueRepAndWarrantyAvailable; set => SetField(ref _valueRepAndWarrantyAvailable, value); }
+
+        /// <summary>
+        /// Fannie Mae - Borrower - Value Rep and Warranty Message [MORNET.X98]
+        /// </summary>
+        public string? ValueRepAndWarrantyMessage { get => _valueRepAndWarrantyMessage; set => SetField(ref _valueRepAndWarrantyMessage, value); }
     }
 }
