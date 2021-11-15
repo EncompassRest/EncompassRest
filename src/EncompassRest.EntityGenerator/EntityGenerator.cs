@@ -266,7 +266,7 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_explicitDateTimeProperties = new HashSet<string> { "DisclosureTracking2015Log.ActualFulfillmentDate", "DisclosureTracking2015Log.ApplicationDate", "DisclosureTracking2015Log.BorrowerActualReceivedDate", "DisclosureTracking2015Log.BorrowerPresumedReceivedDate", "DisclosureTracking2015Log.CDDateIssued", "DisclosureTracking2015Log.ClosingDate", "DisclosureTracking2015Log.CoBorrowerActualReceivedDate", "DisclosureTracking2015Log.CoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.DisclosedDate", "DisclosureTracking2015Log.IntentToProceedDate", "DisclosureTracking2015Log.LockedBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedCoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedDisclosedDateField", "DisclosureTracking2015Log.LockedDisclosedReceivedDate", "DisclosureTracking2015Log.PresumedFulfillmentDate", "DisclosureTracking2015Log.ReceivedDate", "DisclosureTracking2015Log.RevisedDueDate", "DisclosureTracking2015Log.ChangesReceivedDate" };
 
-        private static readonly HashSet<string> s_explicitNADecimalProperties = new HashSet<string>
+        private static readonly HashSet<string> s_explicitStringDecimalValueProperties = new HashSet<string>
         {
             "Hmda.CLTV",
             "Hmda.DebtToIncomeRatio",
@@ -770,9 +770,9 @@ namespace EncompassRest
                     {
                         propertyType = "DateTime?";
                     }
-                    else if (s_explicitNADecimalProperties.Contains(entityPropertyName))
+                    else if (s_explicitStringDecimalValueProperties.Contains(entityPropertyName))
                     {
-                        propertyType = "NA<decimal>";
+                        propertyType = "StringDecimalValue";
                     }
                     else if (propertySchema.AllowedValues?.Count > 0)
                     {

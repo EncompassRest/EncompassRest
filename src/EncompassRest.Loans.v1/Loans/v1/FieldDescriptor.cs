@@ -86,23 +86,23 @@ namespace EncompassRest.Loans.v1
                 if (!valueType.HasValue)
                 {
                     var declaredType = DeclaredType;
-                    if (declaredType == typeof(string))
+                    if (declaredType == TypeData<string>.Type || declaredType == TypeData<StringDecimalValue>.Type)
                     {
                         valueType = LoanFieldValueType.String;
                     }
-                    else if (declaredType == typeof(DateTime?))
+                    else if (declaredType == TypeData<DateTime?>.Type)
                     {
                         valueType = LoanFieldValueType.DateTime;
                     }
-                    else if (declaredType == typeof(decimal?))
+                    else if (declaredType == TypeData<decimal?>.Type)
                     {
                         valueType = LoanFieldValueType.Decimal;
                     }
-                    else if (declaredType == typeof(int?))
+                    else if (declaredType == TypeData<int?>.Type)
                     {
                         valueType = LoanFieldValueType.Int32;
                     }
-                    else if (declaredType == typeof(bool?))
+                    else if (declaredType == TypeData<bool?>.Type)
                     {
                         valueType = LoanFieldValueType.Boolean;
                     }

@@ -140,7 +140,6 @@ namespace EncompassRest.Tests
             {
                 await Task.Delay(5000);
                 var loan = await client.Loans.GetLoanAsync(loanId);
-                loan.Fees.First(f => f.FeeType == "TitleExamination").NewHUDBorPaidAmount = 0.0M; // Required due to issue with number of decimals serialized
                 var clonedLoan = loan.Clone();
                 var loanAsJson = loan.ToString(SerializationOptions.Indent);
                 var clonedLoanAsJson = clonedLoan.ToString(SerializationOptions.Indent);
@@ -201,6 +200,28 @@ namespace EncompassRest.Tests
             Assert.IsTrue(na.IsNA);
             na = JsonHelper.FromJson<NA<decimal>>(@"""5.08""");
             Assert.AreEqual(5.08M, na.Value);
+        }
+
+        [TestMethod]
+        public void StringDecimalValue_Serialization()
+        {
+            StringDecimalValue stringDecimalValue = (string)null;
+            Assert.AreEqual("null", stringDecimalValue.ToJson());
+            stringDecimalValue = "abc";
+            Assert.AreEqual(@"""abc""", stringDecimalValue.ToJson());
+            stringDecimalValue = 5.08M;
+            Assert.AreEqual(@"""5.08""", stringDecimalValue.ToJson());
+        }
+
+        [TestMethod]
+        public void StringDecimalValue_Deserialization()
+        {
+            var stringDecimalValue = JsonHelper.FromJson<StringDecimalValue>("null");
+            Assert.IsNull(stringDecimalValue.StringValue);
+            stringDecimalValue = JsonHelper.FromJson<StringDecimalValue>(@"""abc""");
+            Assert.AreEqual("abc", stringDecimalValue.StringValue);
+            stringDecimalValue = JsonHelper.FromJson<StringDecimalValue>(@"""5.08""");
+            Assert.AreEqual(5.08M, stringDecimalValue.Value);
         }
 
         [TestMethod]
@@ -471,9 +492,21 @@ namespace EncompassRest.Tests
             {
                 var loan = new Loan(client);
                 var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
-                _ = await loan.LoanApis.GetMetadataAsync();
-                await Task.Delay(5000);
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    _ = await loan.LoanApis.GetMetadataAsync();
+                }
+                finally
+                {
+                    try
+                    {
+                        await Task.Delay(5000);
+                        await client.Loans.DeleteLoanAsync(loanId);
+                    }
+                    catch
+                    {
+                    }
+                }
             }
         }
 
@@ -486,10 +519,22 @@ namespace EncompassRest.Tests
             {
                 var loan = new Loan(client);
                 var loanId = await client.Loans.CreateLoanAsync(loan, true);
-                await client.Loans.UpdateLoanAsync(loan, new UpdateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
-                _ = await loan.LoanApis.GetMetadataAsync();
-                await Task.Delay(5000);
-                await client.Loans.DeleteLoanAsync(loanId);
+                try
+                {
+                    await client.Loans.UpdateLoanAsync(loan, new UpdateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
+                    _ = await loan.LoanApis.GetMetadataAsync();
+                }
+                finally
+                {
+                    try
+                    {
+                        await Task.Delay(5000);
+                        await client.Loans.DeleteLoanAsync(loanId);
+                    }
+                    catch
+                    {
+                    }
+                }
             }
         }
 
@@ -560,7 +605,7 @@ namespace EncompassRest.Tests
                                     Assert.AreEqual(n, field.ToDecimal(), fieldId);
                                     break;
                                 default:
-                                    Assert.Fail($"Invalid LoanFieldType for {fieldId}");
+                                    Assert.Fail($"Invalid LoanFieldValueType for {fieldId}");
                                     break;
                             }
                             Assert.IsFalse(field.IsEmpty);
@@ -800,6 +845,47 @@ namespace EncompassRest.Tests
             Assert.IsNull(field.ToInt32());
             Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual(@"{""hmda"":{""income"":null}}", loan.ToString(SerializationOptions.Dirty));
+        }
+
+        [TestMethod]
+        public void Loan_FieldsStringDecimalValue()
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            var loan = new Loan();
+#pragma warning restore CS0618 // Type or member is obsolete
+            var rateSpread = 3;
+            var field = loan.Fields["HMDA.X15"];
+            Assert.AreEqual("Loan.Hmda.RateSpread", field.ModelPath);
+            field.Value = rateSpread;
+            Assert.AreEqual(rateSpread.ToString(), (string)field.Value);
+            Assert.AreEqual(rateSpread.ToString(), field.ToString());
+            Assert.AreEqual(rateSpread, field.ToDecimal());
+            Assert.AreEqual(rateSpread, field.ToInt32());
+            Assert.IsFalse(field.IsEmpty);
+            Assert.AreEqual($@"{{""hmda"":{{""rateSpread"":""{rateSpread}""}}}}", loan.ToString(SerializationOptions.Dirty));
+            rateSpread = 5;
+            field.Value = rateSpread.ToString();
+            Assert.AreEqual(rateSpread.ToString(), (string)field.Value);
+            Assert.AreEqual(rateSpread.ToString(), field.ToString());
+            Assert.AreEqual(rateSpread, field.ToDecimal());
+            Assert.AreEqual(rateSpread, field.ToInt32());
+            Assert.IsFalse(field.IsEmpty);
+            Assert.AreEqual($@"{{""hmda"":{{""rateSpread"":""{rateSpread}""}}}}", loan.ToString(SerializationOptions.Dirty));
+            var stringValue = "Exempt";
+            field.Value = stringValue;
+            Assert.AreEqual(stringValue, (string)field.Value);
+            Assert.AreEqual(stringValue, field.ToString());
+            Assert.IsNull(field.ToDecimal());
+            Assert.IsNull(field.ToInt32());
+            Assert.IsFalse(field.IsEmpty);
+            Assert.AreEqual($@"{{""hmda"":{{""rateSpread"":""{stringValue}""}}}}", loan.ToString(SerializationOptions.Dirty));
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToString());
+            Assert.IsNull(field.ToDecimal());
+            Assert.IsNull(field.ToInt32());
+            Assert.IsTrue(field.IsEmpty);
+            Assert.AreEqual(@"{""hmda"":{""rateSpread"":null}}", loan.ToString(SerializationOptions.Dirty));
         }
 
         [TestMethod]
@@ -1561,6 +1647,8 @@ namespace EncompassRest.Tests
                 {
                     var loan = await task;
                     AssertNoExtensionData(loan, "Loan", loan.EncompassId, true);
+                    Assert.IsFalse(loan.Dirty);
+                    Assert.AreEqual($@"{{""encompassId:""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
                 }));
             }
             await Task.WhenAll(tasks);
