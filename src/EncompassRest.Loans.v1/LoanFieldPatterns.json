@@ -5971,8 +5971,8 @@
   },
   {
     "ModelPath": "Loan.TrustAccount.TrustAccountItems[{0}].Notes",
-    "FieldId": "TAN{0:00}O",
-    "Description": "Trust Acct Trans Descr Notes"
+    "FieldId": "TA{0:00}NO",
+    "Description": "Trust Acct Trans Descr Notes #{0}"
   },
   {
     "ModelPath": "Loan.TrustAccount.TrustAccountItems[{0}].PaymentAmount",

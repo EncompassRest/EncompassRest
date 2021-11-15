@@ -524,6 +524,10 @@ namespace EncompassRest.Loans.v1
                                 {
                                     fieldId = fieldPattern.Replace("NBOCNB", "NBOC{0:00}");
                                 }
+                                else if (fieldPattern.StartsWith("TANN"))
+                                {
+                                    fieldId = fieldPattern.Replace("NN", "{0:00}");
+                                }
                                 else
                                 {
                                     var index = fieldPattern.LastIndexOf("NN");

@@ -1198,7 +1198,7 @@ namespace EncompassRest.Tests
             try
             {
                 const int patternCount = 10;
-                var fieldPatternMappings = LoanFieldDescriptors.FieldPatternMappings.Where(p => !p.Key.StartsWith("TQL4506T") && !p.Key.StartsWith("LP") && !p.Key.StartsWith("CX.") && !p.Key.StartsWith("FBE") && !p.Key.StartsWith("FCE") && !p.Key.StartsWith("XCOC") && !p.Key.StartsWith("CUST") && !p.Key.StartsWith("DD") && !p.Key.StartsWith("URLAROIS") && !p.Key.StartsWith("URLARGG") && !p.Key.StartsWith("URLAROA") && !p.Key.StartsWith("URLAROL") && !p.Key.StartsWith("HHI") && !p.Key.StartsWith("DOCPROV") && !p.Key.StartsWith("HTD") && !p.Key.StartsWith("URLARAL") && !p.Key.StartsWith("BR") && !p.Key.StartsWith("CR")).ToList();
+                var fieldPatternMappings = LoanFieldDescriptors.FieldPatternMappings.Where(p => !p.Key.StartsWith("TQL4506T") && !p.Key.StartsWith("LP") && !p.Key.StartsWith("CX.") && !p.Key.StartsWith("FBE") && !p.Key.StartsWith("FCE") && !p.Key.StartsWith("XCOC") && !p.Key.StartsWith("CUST") && !p.Key.StartsWith("DD") && !p.Key.StartsWith("URLAROIS") && !p.Key.StartsWith("URLARGG") && !p.Key.StartsWith("URLAROA") && !p.Key.StartsWith("URLAROL") && !p.Key.StartsWith("HHI") && !p.Key.StartsWith("DOCPROV") && !p.Key.StartsWith("HTD") && !p.Key.StartsWith("URLARAL") && !p.Key.StartsWith("BR") && !p.Key.StartsWith("CR") && !p.Key.StartsWith("FM")).ToList();
                 foreach (var pair in fieldPatternMappings)
                 {
                     var fieldPattern = pair.Key;
@@ -1825,7 +1825,6 @@ namespace EncompassRest.Tests
                 Assert.AreSame(application, applications[0]);
                 Assert.AreSame(borrower, application.Borrower);
                 Assert.AreSame(residences, application.Residences);
-                Assert.AreEqual(2, residences.Count);
                 Assert.AreSame(currentResidence, residences[0]);
                 Assert.AreEqual(ResidencyType.Current.GetValue(), currentResidence.ResidencyType.Value);
                 Assert.AreSame(priorResidence, residences[1]);
