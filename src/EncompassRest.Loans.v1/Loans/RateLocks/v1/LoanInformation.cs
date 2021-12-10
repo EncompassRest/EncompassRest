@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Loans.v1;
-using EncompassRest.Loans.v1.Enums;
 
 namespace EncompassRest.Loans.RateLocks.v1
 {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using EncompassRest.Loans.v1.Enums;
+using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans.v1
 {

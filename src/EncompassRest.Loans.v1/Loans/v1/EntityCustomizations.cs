@@ -1,4 +1,4 @@
-﻿using EncompassRest.Loans.v1.Enums;
+﻿using EncompassRest.Loans.Enums;
 using EncompassRest.Utilities;
 using EncompassRest.v1;
 using EnumsNET;

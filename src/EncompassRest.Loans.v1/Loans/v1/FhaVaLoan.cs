@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using EncompassRest.Loans.v1.Enums;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans.v1
@@ -191,7 +191,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<bool?>? _useDefaultLenderInfo;
         private DirtyValue<bool?>? _utilityIncluded;
         private DirtyValue<DateTime?>? _validateAddressDate;
-        private DirtyValue<StringEnumValue<Enums.Valuation>>? _valuation;
+        private DirtyValue<StringEnumValue<ValuationAwareness>>? _valuation;
 
         /// <summary>
         /// HUD Addendum Type [1711]
@@ -1110,6 +1110,6 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Borr Cert Aware/Unaware of Valuation [1399]
         /// </summary>
-        public StringEnumValue<Enums.Valuation> Valuation { get => _valuation; set => SetField(ref _valuation, value); }
+        public StringEnumValue<ValuationAwareness> Valuation { get => _valuation; set => SetField(ref _valuation, value); }
     }
 }

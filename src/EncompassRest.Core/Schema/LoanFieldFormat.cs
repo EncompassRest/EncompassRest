@@ -124,6 +124,14 @@
         /// <summary>
         /// NONE
         /// </summary>
-        NONE = 0
+        NONE = 0,
+        /// <summary>
+        /// COMMENT
+        /// </summary>
+        COMMENT = 9998,
+        /// <summary>
+        /// UNDEFINED
+        /// </summary>
+        UNDEFINED = 9999
     }
 }

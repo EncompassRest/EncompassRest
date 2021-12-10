@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using EncompassRest.Loans.v1.Enums;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans.v1
@@ -212,8 +212,8 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _specialAssessmentComments1;
         private DirtyValue<string?>? _specialAssessmentComments2;
         private DirtyValue<string?>? _specialAssessmentComments3;
-        private DirtyValue<StringEnumValue<StreetAccess>>? _streetAccess;
-        private DirtyValue<StringEnumValue<StreetMaintenance>>? _streetMaintenance;
+        private DirtyValue<StringEnumValue<PublicOrPrivate>>? _streetAccess;
+        private DirtyValue<StringEnumValue<PublicOrPrivate>>? _streetMaintenance;
         private DirtyValue<StringEnumValue<SystemUsed>>? _systemUsed;
         private DirtyValue<string?>? _title;
         private DirtyValue<string?>? _titleLimitations1;
@@ -1375,12 +1375,12 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Subject Property Street Access [720]
         /// </summary>
-        public StringEnumValue<StreetAccess> StreetAccess { get => _streetAccess; set => SetField(ref _streetAccess, value); }
+        public StringEnumValue<PublicOrPrivate> StreetAccess { get => _streetAccess; set => SetField(ref _streetAccess, value); }
 
         /// <summary>
         /// Subject Property Street Maint [721]
         /// </summary>
-        public StringEnumValue<StreetMaintenance> StreetMaintenance { get => _streetMaintenance; set => SetField(ref _streetMaintenance, value); }
+        public StringEnumValue<PublicOrPrivate> StreetMaintenance { get => _streetMaintenance; set => SetField(ref _streetMaintenance, value); }
 
         /// <summary>
         /// VA Loan Summ Underwriting System Used [VASUMM.X17]

@@ -1,5 +1,5 @@
 using System;
-using EncompassRest.Loans.v1.Enums;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans.v1
@@ -144,7 +144,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<StringEnumValue<FreddieLoanProgramIdentifier>>? _freddieLoanProgramIdentifier;
         private DirtyValue<StringEnumValue<FreddieLoanTypePublicAndIndianHousingIndicator>>? _freddieLoanTypePublicAndIndianHousingIndicator;
         private DirtyValue<StringEnumValue<FreddieMICompanyNameTypeOther>>? _freddieMICompanyNameTypeOther;
-        private DirtyValue<StringEnumValue<FreddieMortgageType>>? _freddieMortgageType;
+        private DirtyValue<StringEnumValue<LoanType>>? _freddieMortgageType;
         private DirtyValue<StringEnumValue<FreddieProjectClassificationType>>? _freddieProjectClassificationType;
         private DirtyValue<StringEnumValue<PropertyFormType>>? _freddiePropertyFormType;
         private DirtyValue<StringEnumValue<FreddieRefinanceCashOutDeterminationType>>? _freddieRefinanceCashOutDeterminationType;
@@ -164,7 +164,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<StringEnumValue<GovernmentRefinanceType>>? _governmentRefinanceType;
         private DirtyValue<decimal?>? _governmentUpfrontPremiumAmount;
         private DirtyValue<decimal?>? _governmentUpfrontPremiumPercent;
-        private DirtyValue<StringEnumValue<GSEProjectType>>? _gSEProjectType;
+        private DirtyValue<StringEnumValue<ProjectLegalStructureType>>? _gSEProjectType;
         private DirtyValue<bool?>? _guaranteeFeeAddOnIndicator;
         private DirtyValue<decimal?>? _guarantyFeeAfterAlternatePaymentMethodPercent;
         private DirtyValue<decimal?>? _guarantyFeePercent;
@@ -1002,7 +1002,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Trans Details Loan Type [ULDD.FRE.X1172]
         /// </summary>
-        public StringEnumValue<FreddieMortgageType> FreddieMortgageType { get => _freddieMortgageType; set => SetField(ref _freddieMortgageType, value); }
+        public StringEnumValue<LoanType> FreddieMortgageType { get => _freddieMortgageType; set => SetField(ref _freddieMortgageType, value); }
 
         /// <summary>
         /// Freddie Project Classification Type [ULDD.X141]
@@ -1105,7 +1105,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Subject Property Project Classification [ULDD.X182]
         /// </summary>
-        public StringEnumValue<GSEProjectType> GSEProjectType { get => _gSEProjectType; set => SetField(ref _gSEProjectType, value); }
+        public StringEnumValue<ProjectLegalStructureType> GSEProjectType { get => _gSEProjectType; set => SetField(ref _gSEProjectType, value); }
 
         /// <summary>
         /// ULDD - Guaranty Fee Add On [ULDD.X96]

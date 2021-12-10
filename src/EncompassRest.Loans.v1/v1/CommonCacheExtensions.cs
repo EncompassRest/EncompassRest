@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Loans.v1;
-using EncompassRest.Schema.v1;
+using EncompassRest.Schema;
 using EncompassRest.Settings.Loan.v1;
 using EncompassRest.Utilities;
 

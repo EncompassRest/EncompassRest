@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.452
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Core", "EncompassRest.Core\EncompassRest.Core.csproj", "{1BC65F57-9279-4E7E-A43F-0DE40DE559E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.EntityGenerator", "EncompassRest.EntityGenerator\EncompassRest.EntityGenerator.csproj", "{7E9302C6-748E-478C-A6A2-5B9C5D4A13E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.EntityGenerator.v1", "EncompassRest.EntityGenerator.v1\EncompassRest.EntityGenerator.v1.csproj", "{7E9302C6-748E-478C-A6A2-5B9C5D4A13E2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B2DB6A70-7E62-4997-913B-115BB98E9FEF}"
 	ProjectSection(SolutionItems) = preProject
@@ -26,7 +26,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Contacts", "E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.EFolder", "EncompassRest.EFolder\EncompassRest.EFolder.csproj", "{8653D04A-F554-4424-9C4A-37D25E736880}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Loans.v3", "EncompassRest.Loans.v3\EncompassRest.Loans.v3.csproj", "{EB94DD70-C3A6-4551-BB28-B2A14D970D14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Loans.v3", "EncompassRest.Loans.v3\EncompassRest.Loans.v3.csproj", "{EB94DD70-C3A6-4551-BB28-B2A14D970D14}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.EntityGenerator.v3", "EncompassRest.EntityGenerator.v3\EncompassRest.EntityGenerator.v3.csproj", "{8BAE45F5-EF48-47CC-83C0-5222D49F2851}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Loans.Enums", "EncompassRest.Loans.Enums\EncompassRest.Loans.Enums.csproj", "{09E887CA-6292-465A-926B-F7A234A265A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,6 +92,18 @@ Global
 		{EB94DD70-C3A6-4551-BB28-B2A14D970D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB94DD70-C3A6-4551-BB28-B2A14D970D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB94DD70-C3A6-4551-BB28-B2A14D970D14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BAE45F5-EF48-47CC-83C0-5222D49F2851}.CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BAE45F5-EF48-47CC-83C0-5222D49F2851}.CI|Any CPU.Build.0 = Debug|Any CPU
+		{8BAE45F5-EF48-47CC-83C0-5222D49F2851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BAE45F5-EF48-47CC-83C0-5222D49F2851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BAE45F5-EF48-47CC-83C0-5222D49F2851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BAE45F5-EF48-47CC-83C0-5222D49F2851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09E887CA-6292-465A-926B-F7A234A265A5}.CI|Any CPU.ActiveCfg = Debug|Any CPU
+		{09E887CA-6292-465A-926B-F7A234A265A5}.CI|Any CPU.Build.0 = Debug|Any CPU
+		{09E887CA-6292-465A-926B-F7A234A265A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09E887CA-6292-465A-926B-F7A234A265A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09E887CA-6292-465A-926B-F7A234A265A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09E887CA-6292-465A-926B-F7A234A265A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

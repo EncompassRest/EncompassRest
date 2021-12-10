@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using EncompassRest.Loans.v1;
-using EncompassRest.Loans.v1.Enums;
-using EncompassRest.Loans.Milestones.v1;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EncompassRest.Loans.Associates.v1;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Loans.MilestoneFreeRoles.v1;
+using EncompassRest.Loans.Milestones.v1;
+using EncompassRest.Loans.v1;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
 {

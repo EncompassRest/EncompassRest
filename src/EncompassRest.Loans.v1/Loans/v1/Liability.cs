@@ -1,5 +1,5 @@
 using System;
-using EncompassRest.Loans.v1.Enums;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans.v1
@@ -56,7 +56,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<StringEnumValue<LiabilityType>>? _liabilityType;
         private DirtyValue<decimal?>? _monthlyPaymentAmount;
         private DirtyValue<int?>? _monthsToExclude;
-        private DirtyValue<StringEnumValue<LiabilityMortgageType>>? _mortgageType;
+        private DirtyValue<StringEnumValue<LoanType>>? _mortgageType;
         private DirtyValue<string?>? _nameInAccount;
         private DirtyValue<bool?>? _noLinkToDocTrackIndicator;
         private DirtyValue<string?>? _otherDescription;
@@ -322,7 +322,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Mortgage Type [FLNN32]
         /// </summary>
-        public StringEnumValue<LiabilityMortgageType> MortgageType { get => _mortgageType; set => SetField(ref _mortgageType, value); }
+        public StringEnumValue<LoanType> MortgageType { get => _mortgageType; set => SetField(ref _mortgageType, value); }
 
         /// <summary>
         /// Liability Account Name [FLNN09]

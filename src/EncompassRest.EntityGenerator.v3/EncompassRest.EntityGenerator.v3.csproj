@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net46</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>10</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EncompassRest.Loans.v3\EncompassRest.Loans.v3.csproj" />
+    <ProjectReference Include="..\EncompassRest.Tests\EncompassRest.Tests.csproj" />
+  </ItemGroup>
+
+</Project>

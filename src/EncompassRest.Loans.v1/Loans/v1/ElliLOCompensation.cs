@@ -1,5 +1,5 @@
 using System;
-using EncompassRest.Loans.v1.Enums;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans.v1
@@ -47,7 +47,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<StringEnumValue<RoundingMethod>>? _roundingMethod;
         private DirtyValue<StringEnumValue<RoundingMethod>>? _roundingMethodForOfficer;
         private DirtyValue<string?>? _triggerField;
-        private DirtyValue<StringEnumValue<WhoPaidCompensation>>? _whoPaidCompensation;
+        private DirtyValue<StringEnumValue<BorrLenderPaid>>? _whoPaidCompensation;
 
         /// <summary>
         /// Loan Compensation Plan - Wholesale/Broker Plan Details - Adjusted Plan Additional Amount [LCP.X12]
@@ -249,6 +249,6 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Loan Compensation Plan - Brrower/Lender Paid [LCP.X1]
         /// </summary>
-        public StringEnumValue<WhoPaidCompensation> WhoPaidCompensation { get => _whoPaidCompensation; set => SetField(ref _whoPaidCompensation, value); }
+        public StringEnumValue<BorrLenderPaid> WhoPaidCompensation { get => _whoPaidCompensation; set => SetField(ref _whoPaidCompensation, value); }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using EncompassRest.Loans.v1.Enums;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans.v1
@@ -193,7 +193,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<bool?>? _nmlsOptionARMIndicator;
         private DirtyValue<bool?>? _nmlsPiggyBackOrFundedHELOCIndicator;
         private DirtyValue<StringEnumValue<NmlsProductionSoldToType>>? _nmlsProductionSoldToType;
-        private DirtyValue<StringEnumValue<NmlsPropertyType>>? _nmlsPropertyType;
+        private DirtyValue<StringEnumValue<HmdaPropertyType>>? _nmlsPropertyType;
         private DirtyValue<StringEnumValue<NmlsRefinancePurposeType>>? _nmlsRefinancePurposeType;
         private DirtyValue<StringEnumValue<NmlsReverseMortgageType>>? _nmlsReverseMortgageType;
         private DirtyValue<bool?>? _oralRequestForExtensionOfCreditIndicator;
@@ -1211,7 +1211,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// NMLS Subject Property Type [NMLS.X16]
         /// </summary>
-        public StringEnumValue<NmlsPropertyType> NmlsPropertyType { get => _nmlsPropertyType; set => SetField(ref _nmlsPropertyType, value); }
+        public StringEnumValue<HmdaPropertyType> NmlsPropertyType { get => _nmlsPropertyType; set => SetField(ref _nmlsPropertyType, value); }
 
         /// <summary>
         /// NMLS Refinance Purpose [NMLS.X6]
