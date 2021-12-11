@@ -111,7 +111,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<StringEnumValue<FannieSectionOfAct>>? _fannieSectionOfAct;
         private DirtyValue<int?>? _fannieTLTV;
         private DirtyValue<string?>? _fannieTrustName;
-        private DirtyValue<StringEnumValue<FannnieMortgageType>>? _fannnieMortgageType;
+        private DirtyValue<StringEnumValue<LoanType>>? _fannnieMortgageType;
         private DirtyValue<int?>? _financedUnitCount;
         private DirtyValue<DateTime?>? _firstRateChangePaymentEffectiveDate;
         private DirtyValue<StringEnumValue<FNMHomeImprovementProductType>>? _fNMHomeImprovementProductType;
@@ -837,7 +837,8 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Trans Details Loan Type [ULDD.FNM.X1172]
         /// </summary>
-        public StringEnumValue<FannnieMortgageType> FannnieMortgageType { get => _fannnieMortgageType; set => SetField(ref _fannnieMortgageType, value); }
+        [LoanFieldProperty(MissingOptionsJson = "[\"Other\"]")]
+        public StringEnumValue<LoanType> FannnieMortgageType { get => _fannnieMortgageType; set => SetField(ref _fannnieMortgageType, value); }
 
         /// <summary>
         /// Financed Unit Count [ULDD.X139]
@@ -1002,6 +1003,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Trans Details Loan Type [ULDD.FRE.X1172]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"HELOC\"]")]
         public StringEnumValue<LoanType> FreddieMortgageType { get => _freddieMortgageType; set => SetField(ref _freddieMortgageType, value); }
 
         /// <summary>
@@ -1105,6 +1107,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Subject Property Project Classification [ULDD.X182]
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"Cooperative\":\"Co-Operative\"}")]
         public StringEnumValue<ProjectLegalStructureType> GSEProjectType { get => _gSEProjectType; set => SetField(ref _gSEProjectType, value); }
 
         /// <summary>

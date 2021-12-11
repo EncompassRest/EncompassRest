@@ -322,6 +322,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Mortgage Type [FLNN32]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"HELOC\"]")]
         public StringEnumValue<LoanType> MortgageType { get => _mortgageType; set => SetField(ref _mortgageType, value); }
 
         /// <summary>

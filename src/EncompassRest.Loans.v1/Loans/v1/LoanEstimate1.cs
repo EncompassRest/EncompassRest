@@ -15,7 +15,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _closingCostEstimateExpirationDateUI;
         private DirtyValue<string?>? _closingCostEstimateExpirationTime;
         private DirtyValue<string?>? _closingCostEstimateExpirationTimeUI;
-        private DirtyValue<string?>? _closingCostEstimateExpirationTimeZone;
+        private DirtyValue<StringEnumValue<SpecificTimeZone>>? _closingCostEstimateExpirationTimeZone;
         private DirtyValue<string?>? _closingCostEstimateExpirationTimeZoneUI;
         private DirtyValue<StringEnumValue<Conversion>>? _conversionBegin;
         private DirtyValue<StringEnumValue<Conversion>>? _conversionEnd;
@@ -181,7 +181,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Loan Estimate - Closing Costs Estimate Expiration Time Zone [LE1.X9]
         /// </summary>
-        public string? ClosingCostEstimateExpirationTimeZone { get => _closingCostEstimateExpirationTimeZone; set => SetField(ref _closingCostEstimateExpirationTimeZone, value); }
+        public StringEnumValue<SpecificTimeZone> ClosingCostEstimateExpirationTimeZone { get => _closingCostEstimateExpirationTimeZone; set => SetField(ref _closingCostEstimateExpirationTimeZone, value); }
 
         /// <summary>
         /// Loan Estimate - Closing Costs Estimate Expiration Time Zone UI Value [LE1.XD9]

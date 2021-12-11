@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans.v1
 {
@@ -15,7 +16,7 @@ namespace EncompassRest.Loans.v1
         private DirtyDictionary<string, string?>? _documentFields;
         private DirtyList<OrderedDocument>? _orderedDocuments;
         private DirtyValue<string?>? _orderId;
-        private DirtyValue<string?>? _orderType;
+        private DirtyValue<StringEnumValue<OrderType>>? _orderType;
         private DirtyValue<DateTime?>? _updatedDateUtc;
         private DirtyValue<string?>? _userId;
 
@@ -54,7 +55,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// DocumentOrderLog OrderType
         /// </summary>
-        public string? OrderType { get => _orderType; set => SetField(ref _orderType, value); }
+        public StringEnumValue<OrderType> OrderType { get => _orderType; set => SetField(ref _orderType, value); }
 
         /// <summary>
         /// DocumentOrderLog UpdatedDateUtc

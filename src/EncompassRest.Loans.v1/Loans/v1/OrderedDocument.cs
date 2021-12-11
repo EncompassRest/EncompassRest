@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans.v1
 {
@@ -15,11 +16,11 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _overflowDataKey;
         private DirtyList<OrderedDocumentOverflow>? _overflows;
         private DirtyValue<string?>? _pairId;
-        private DirtyValue<string?>? _signatureType;
+        private DirtyValue<StringEnumValue<OrderedDocumentSignatureType>>? _signatureType;
         private DirtyValue<int?>? _size;
         private DirtyValue<string?>? _templateId;
         private DirtyValue<string?>? _title;
-        private DirtyValue<string?>? _type;
+        private DirtyValue<StringEnumValue<OrderedDocumentType>>? _type;
 
         /// <summary>
         /// OrderedDocument Category
@@ -60,7 +61,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// OrderedDocument SignatureType
         /// </summary>
-        public string? SignatureType { get => _signatureType; set => SetField(ref _signatureType, value); }
+        public StringEnumValue<OrderedDocumentSignatureType> SignatureType { get => _signatureType; set => SetField(ref _signatureType, value); }
 
         /// <summary>
         /// OrderedDocument Size
@@ -80,6 +81,6 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// OrderedDocument Type
         /// </summary>
-        public string? Type { get => _type; set => SetField(ref _type, value); }
+        public StringEnumValue<OrderedDocumentType> Type { get => _type; set => SetField(ref _type, value); }
     }
 }

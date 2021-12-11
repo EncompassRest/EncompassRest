@@ -49,7 +49,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<bool?>? _printUserNameIndicator;
         private DirtyValue<int?>? _rent;
         private DirtyValue<DateTime?>? _requestDate;
-        private DirtyValue<string?>? _residencyBasisType;
+        private DirtyValue<StringEnumValue<ResidencyBasisType>>? _residencyBasisType;
         private DirtyValue<StringEnumValue<ResidencyType>>? _residencyType;
         private DirtyValue<string?>? _title;
         private DirtyValue<string?>? _titleFax;
@@ -260,7 +260,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Residence ResidencyBasisType [BRNN15], [CRNN15]
         /// </summary>
-        public string? ResidencyBasisType { get => _residencyBasisType; set => SetField(ref _residencyBasisType, value); }
+        public StringEnumValue<ResidencyBasisType> ResidencyBasisType { get => _residencyBasisType; set => SetField(ref _residencyBasisType, value); }
 
         /// <summary>
         /// Residence ResidencyType [BRNN23], [CRNN23]

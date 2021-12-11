@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans.v1
 {
@@ -40,7 +41,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<string?>? _recipient;
         private DirtyValue<string?>? _requestedFrom;
         private DirtyValue<string?>? _source;
-        private DirtyValue<string?>? _sourceOfCondition;
+        private DirtyValue<StringEnumValue<SourceOfCondition>>? _sourceOfCondition;
         private DirtyValue<DateTime?>? _startDate;
         private DirtyValue<string?>? _status;
         private DirtyValue<DateTime?>? _statusDate;
@@ -208,7 +209,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// EnhancedConditionLog SourceOfCondition
         /// </summary>
-        public string? SourceOfCondition { get => _sourceOfCondition; set => SetField(ref _sourceOfCondition, value); }
+        public StringEnumValue<SourceOfCondition> SourceOfCondition { get => _sourceOfCondition; set => SetField(ref _sourceOfCondition, value); }
 
         /// <summary>
         /// EnhancedConditionLog StartDate

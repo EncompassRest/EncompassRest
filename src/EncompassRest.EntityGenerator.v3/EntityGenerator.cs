@@ -53,7 +53,7 @@ public static class EntityGenerator
         { nameof(LoanEstimate1), new() { nameof(LoanEstimate1.AdjustsTermType), nameof(LoanEstimate1.PrepaymentPenaltyPayOffInDateType) } },
         { nameof(Property), new() { nameof(Property.PropertyRightsType) } },
         { nameof(Tsum), new() { nameof(Tsum.PropertyFormType) } },
-        { nameof(Uldd), new() { nameof(Uldd.ClosingCostFundsTypeOtherDescription), nameof(Uldd.ClosingCost2FundsTypeOtherDescription), nameof(Uldd.ClosingCost3FundsTypeOtherDescription), nameof(Uldd.ClosingCost4FundsTypeOtherDescription), nameof(Uldd.DownPaymentOtherTypeDescription), nameof(Uldd.FreddieMortgageType) } },
+        { nameof(Uldd), new() { nameof(Uldd.ClosingCostFundsTypeOtherDescription), nameof(Uldd.ClosingCost2FundsTypeOtherDescription), nameof(Uldd.ClosingCost3FundsTypeOtherDescription), nameof(Uldd.ClosingCost4FundsTypeOtherDescription), nameof(Uldd.DownPaymentOtherTypeDescription), nameof(Uldd.FreddieMortgageType), nameof(Uldd.FannieMortgageType) } },
         { nameof(VodItem), new() { nameof(VodItem.Type) } },
         { nameof(Vol), new() { nameof(Vol.LiabilityType), nameof(Vol.MortgageType) } }
     };

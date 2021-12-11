@@ -188,7 +188,7 @@ namespace EncompassRest.Loans.v1
         private DirtyValue<decimal?>? _netInitialAndFinal;
         private DirtyValue<StringEnumValue<NmlsDocumentationType>>? _nmlsDocumentationType;
         private DirtyValue<StringEnumValue<NmlsFirstMortgageType>>? _nmlsFirstMortgageType;
-        private DirtyValue<StringEnumValue<NmlsLienStatus>>? _nmlsLienStatus;
+        private DirtyValue<StringEnumValue<LienStatus>>? _nmlsLienStatus;
         private DirtyValue<StringEnumValue<NmlsLoanType>>? _nmlsLoanType;
         private DirtyValue<bool?>? _nmlsOptionARMIndicator;
         private DirtyValue<bool?>? _nmlsPiggyBackOrFundedHELOCIndicator;
@@ -1184,7 +1184,8 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// NMLS Trans Details Lien Status [NMLS.X17]
         /// </summary>
-        public StringEnumValue<NmlsLienStatus> NmlsLienStatus { get => _nmlsLienStatus; set => SetField(ref _nmlsLienStatus, value); }
+        [LoanFieldProperty(MissingOptionsJson = "[\"Not applicable\"]")]
+        public StringEnumValue<LienStatus> NmlsLienStatus { get => _nmlsLienStatus; set => SetField(ref _nmlsLienStatus, value); }
 
         /// <summary>
         /// NMLS Loan Type [NMLS.X1]

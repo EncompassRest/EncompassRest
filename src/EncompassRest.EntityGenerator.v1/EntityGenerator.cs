@@ -152,7 +152,12 @@ namespace EncompassRest
                 typeof(PropertyImprovementsType),
                 typeof(PropertyRightsType),
                 typeof(DeliveryStatus),
-                typeof(ValuationAwareness)
+                typeof(ValuationAwareness),
+                typeof(PublicOrPrivate),
+                typeof(LienStatus),
+                typeof(HmdaPropertyType),
+                typeof(BorrLenderPaid),
+                typeof(ProjectLegalStructureType)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (var sharedEnumType in sharedEnumTypes)
@@ -185,14 +190,21 @@ namespace EncompassRest
             "ClosingCostFundsTypeOtherDescription",
             "DownPaymentOtherTypeDescription",
             "HmdaCreditScoreForDecisionMaking",
+            "Hmda2CreditScoreForDecisionMaking",
             "HmdaCreditScoringModel",
+            "Hmda2CreditScoringModel",
             "GovernmentRefinanceType",
             "PropertyFormType",
             "InsuranceProjectType",
             "LogLPPropertyType",
             "PropertyRightsType",
             "MortgageType",
-            "FreddieMortgageType"
+            "FreddieMortgageType",
+            "FannnieMortgageType",
+            "IsEthnicityBasedOnVisual",
+            "IsRaceBasedOnVisual",
+            "IsSexBasedOnVisual",
+            "NmlsLienStatus"
         };
 
         private static readonly HashSet<string> s_enumPropertyNamesToUseEntityTypeInName = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -564,7 +576,10 @@ namespace EncompassRest
                         {
                             if (innerEnumPair.Value.SetEquals(enumPair.Value))
                             {
-                                Console.WriteLine($"{enumPair.Key} and {innerEnumPair.Key} are equal");
+                                if (enumPair.Key.CompareTo(innerEnumPair.Key) < 0)
+                                {
+                                    Console.WriteLine($"{enumPair.Key} and {innerEnumPair.Key} are equal");
+                                }
                             }
                             else
                             {

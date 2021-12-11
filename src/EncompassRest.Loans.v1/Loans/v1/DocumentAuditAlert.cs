@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans.v1
 {
@@ -9,9 +10,9 @@ namespace EncompassRest.Loans.v1
     public sealed partial class DocumentAuditAlert : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<string>? _fields;
-        private DirtyValue<string?>? _source;
+        private DirtyValue<StringEnumValue<DocumentAuditAlertSource>>? _source;
         private DirtyValue<string?>? _text;
-        private DirtyValue<string?>? _type;
+        private DirtyValue<StringEnumValue<AlertType>>? _type;
 
         /// <summary>
         /// DocumentAuditAlert Fields
@@ -22,7 +23,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// DocumentAuditAlert Source
         /// </summary>
-        public string? Source { get => _source; set => SetField(ref _source, value); }
+        public StringEnumValue<DocumentAuditAlertSource> Source { get => _source; set => SetField(ref _source, value); }
 
         /// <summary>
         /// DocumentAuditAlert Text
@@ -32,6 +33,6 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// DocumentAuditAlert Type
         /// </summary>
-        public string? Type { get => _type; set => SetField(ref _type, value); }
+        public StringEnumValue<AlertType> Type { get => _type; set => SetField(ref _type, value); }
     }
 }

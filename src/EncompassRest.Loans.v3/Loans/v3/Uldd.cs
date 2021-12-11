@@ -99,7 +99,7 @@ public sealed partial class Uldd : DirtyExtensibleObject, IIdentifiable
     private DirtyValue<int?>? _fannieLtv;
     private DirtyValue<StringEnumValue<FannieMICompanyNameTypeOther>>? _fannieMiCompanyNameTypeOther;
     private DirtyValue<int?>? _fannieMiCoveragePercent;
-    private DirtyValue<StringEnumValue<FannnieMortgageType>>? _fannieMortgageType;
+    private DirtyValue<StringEnumValue<LoanType>>? _fannieMortgageType;
     private DirtyValue<int?>? _fanniePoolOwnershipPercent;
     private DirtyValue<StringEnumValue<FannieProjectClassificationType>>? _fannieProjectClassificationType;
     private DirtyValue<StringEnumValue<FanniePropertyFormType>>? _fanniePropertyFormType;
@@ -775,7 +775,8 @@ public sealed partial class Uldd : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Trans Details Loan Type [ULDD.FNM.X1172]
     /// </summary>
-    public StringEnumValue<FannnieMortgageType> FannieMortgageType { get => _fannieMortgageType; set => SetField(ref _fannieMortgageType, value); }
+    [LoanFieldProperty(MissingOptionsJson = "[\"Other\"]")]
+    public StringEnumValue<LoanType> FannieMortgageType { get => _fannieMortgageType; set => SetField(ref _fannieMortgageType, value); }
 
     /// <summary>
     /// ULDD Fannie - Pool Ownership [ULDD.FNM.X70]

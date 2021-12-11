@@ -1271,11 +1271,13 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Borrower Hmda2CreditScoreForDecisionMaking [HMDA.X116], [HMDA.X118]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"9999\"]")]
         public StringEnumValue<HmdaCreditScoreForDecisionMaking> Hmda2CreditScoreForDecisionMaking { get => _hmda2CreditScoreForDecisionMaking; set => SetField(ref _hmda2CreditScoreForDecisionMaking, value); }
 
         /// <summary>
         /// Borrower Hmda2CreditScoringModel [HMDA.X117], [HMDA.X119]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"No co-applicant\"]")]
         public StringEnumValue<HmdaCreditScoringModel> Hmda2CreditScoringModel { get => _hmda2CreditScoringModel; set => SetField(ref _hmda2CreditScoringModel, value); }
 
         /// <summary>
@@ -1324,13 +1326,13 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Borrower HmdaCreditScoreForDecisionMaking [4174], [4177]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Exempt\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Exempt\",\"9999\"]")]
         public StringEnumValue<HmdaCreditScoreForDecisionMaking> HmdaCreditScoreForDecisionMaking { get => _hmdaCreditScoreForDecisionMaking; set => SetField(ref _hmdaCreditScoreForDecisionMaking, value); }
 
         /// <summary>
         /// Borrower HmdaCreditScoringModel [4175], [4178]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Exempt\"]")]
+        [LoanFieldProperty(MissingOptionsJson = "[\"Exempt\",\"No co-applicant\"]")]
         public StringEnumValue<HmdaCreditScoringModel> HmdaCreditScoringModel { get => _hmdaCreditScoringModel; set => SetField(ref _hmdaCreditScoringModel, value); }
 
         /// <summary>
@@ -1667,6 +1669,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Borrower IsEthnicityBasedOnVisual [4121], [4132]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"NoCoApplicant\"]")]
         public StringEnumValue<YNOrNA> IsEthnicityBasedOnVisual { get => _isEthnicityBasedOnVisual; set => SetField(ref _isEthnicityBasedOnVisual, value); }
 
         /// <summary>
@@ -1677,6 +1680,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Borrower IsRaceBasedOnVisual [4122], [4133]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"NoCoApplicant\"]")]
         public StringEnumValue<YNOrNA> IsRaceBasedOnVisual { get => _isRaceBasedOnVisual; set => SetField(ref _isRaceBasedOnVisual, value); }
 
         /// <summary>
@@ -1687,6 +1691,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// Borrower IsSexBasedOnVisual [4123], [4134]
         /// </summary>
+        [LoanFieldProperty(MissingOptionsJson = "[\"NoCoApplicant\"]")]
         public StringEnumValue<YNOrNA> IsSexBasedOnVisual { get => _isSexBasedOnVisual; set => SetField(ref _isSexBasedOnVisual, value); }
 
         /// <summary>

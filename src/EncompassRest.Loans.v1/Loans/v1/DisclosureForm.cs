@@ -1,3 +1,5 @@
+using EncompassRest.Loans.Enums;
+
 namespace EncompassRest.Loans.v1
 {
     /// <summary>
@@ -6,7 +8,7 @@ namespace EncompassRest.Loans.v1
     public sealed partial class DisclosureForm : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string?>? _formName;
-        private DirtyValue<string?>? _formType;
+        private DirtyValue<StringEnumValue<DisclosureFormType>>? _formType;
         private DirtyValue<string?>? _id;
 
         /// <summary>
@@ -17,7 +19,7 @@ namespace EncompassRest.Loans.v1
         /// <summary>
         /// DisclosureForm FormType
         /// </summary>
-        public string? FormType { get => _formType; set => SetField(ref _formType, value); }
+        public StringEnumValue<DisclosureFormType> FormType { get => _formType; set => SetField(ref _formType, value); }
 
         /// <summary>
         /// DisclosureForm Id
