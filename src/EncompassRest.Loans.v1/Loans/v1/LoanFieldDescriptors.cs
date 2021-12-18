@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 using EncompassRest.Schema.v1;
 using EncompassRest.Utilities;
@@ -87,7 +88,7 @@ namespace EncompassRest.Loans.v1
         static LoanFieldDescriptors()
         {
             // Use embedded resource file for built-in field mappings to save assembly space
-            using (var stream = typeof(LoanFieldDescriptors).GetTypeInfo().Assembly.GetManifestResourceStream("EncompassRest.LoanFields.zip"))
+            using (var stream = typeof(YOrN).GetTypeInfo().Assembly.GetManifestResourceStream("EncompassRest.LoanFields.zip"))
             {
                 using (var zip = new ZipArchive(stream))
                 {
@@ -101,7 +102,7 @@ namespace EncompassRest.Loans.v1
 
                                 foreach (var loanField in loanFields)
                                 {
-                                    var modelPathString = loanField.ModelPath;
+                                    var modelPathString = loanField.ModelPathV1;
                                     var modelPath = CreateModelPath(modelPathString)!;
                                     modelPathString = modelPath.ToString();
                                     FieldDescriptor descriptor;
@@ -147,7 +148,7 @@ namespace EncompassRest.Loans.v1
 
                                 foreach (var loanFieldPattern in loanFieldPatterns)
                                 {
-                                    var modelPathPattern = loanFieldPattern.ModelPath;
+                                    var modelPathPattern = loanFieldPattern.ModelPathV1;
                                     var descriptor = new FieldDescriptor(loanFieldPattern.FieldId, CreateModelPath(string.Format(modelPathPattern, 1))!, modelPathPattern, loanFieldPattern.Description, multiInstance: true);
                                     FieldPatternMappings.AddField(descriptor);
                                 }
@@ -203,9 +204,9 @@ namespace EncompassRest.Loans.v1
                 if (fields.TryGetValue(fieldId, out var fieldInfo))
                 {
                     fields.Remove(fieldId);
-                    if ((!string.IsNullOrEmpty(fieldInfo.Description) && currentDescriptor.Description != fieldInfo.Description) || currentDescriptor.ReadOnly != (fieldInfo.ReadOnly == true) || (!string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) && !string.Equals(currentDescriptor.ModelPath, CreateModelPath(fieldInfo.ModelPath)!.ToString(), StringComparison.OrdinalIgnoreCase)))
+                    if ((!string.IsNullOrEmpty(fieldInfo.Description) && currentDescriptor.Description != fieldInfo.Description) || currentDescriptor.ReadOnly != (fieldInfo.ReadOnly == true) || (!string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPathV1, StringComparison.OrdinalIgnoreCase) && !string.Equals(currentDescriptor.ModelPath, CreateModelPath(fieldInfo.ModelPathV1)!.ToString(), StringComparison.OrdinalIgnoreCase)))
                     {
-                        var modelPath = CreateModelPath(string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) ? currentDescriptor.ModelPath : fieldInfo.ModelPath)!;
+                        var modelPath = CreateModelPath(string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPathV1, StringComparison.OrdinalIgnoreCase) ? currentDescriptor.ModelPath : fieldInfo.ModelPathV1)!;
                         var modelPathString = modelPath.ToString();
                         var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, modelPath, modelPathString, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
                         FieldMappings._standardFields[fieldId] = descriptor;
@@ -220,7 +221,7 @@ namespace EncompassRest.Loans.v1
             foreach (var pair in fields)
             {
                 var fieldInfo = pair.Value;
-                var modelPath = CreateModelPath(fieldInfo.ModelPath)!;
+                var modelPath = CreateModelPath(fieldInfo.ModelPathV1)!;
                 var modelPathString = modelPath.ToString();
                 var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, modelPath, modelPathString, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true);
                 FieldMappings.AddField(descriptor);
@@ -233,9 +234,9 @@ namespace EncompassRest.Loans.v1
                 if (fieldPatterns.TryGetValue(fieldPattern, out var fieldInfo))
                 {
                     fieldPatterns.Remove(fieldPattern);
-                    if (!string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) || currentDescriptor.ReadOnly != (fieldInfo.ReadOnly == true))
+                    if (!string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPathV1, StringComparison.OrdinalIgnoreCase) || currentDescriptor.ReadOnly != (fieldInfo.ReadOnly == true))
                     {
-                        var modelPathPattern = string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPath, StringComparison.OrdinalIgnoreCase) ? currentDescriptor.ModelPath : fieldInfo.ModelPath;
+                        var modelPathPattern = string.Equals(currentDescriptor.ModelPath, fieldInfo.ModelPathV1, StringComparison.OrdinalIgnoreCase) ? currentDescriptor.ModelPath : fieldInfo.ModelPathV1;
                         var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, CreateModelPath(string.Format(modelPathPattern, 1))!, modelPathPattern, currentDescriptor.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true, multiInstance: true);
                         FieldPatternMappings._standardFieldPatterns[fieldPattern] = descriptor;
                     }
@@ -249,7 +250,7 @@ namespace EncompassRest.Loans.v1
             foreach (var pair in fieldPatterns)
             {
                 var fieldInfo = pair.Value;
-                var modelPathPattern = fieldInfo.ModelPath;
+                var modelPathPattern = fieldInfo.ModelPathV1;
                 var descriptor = new NonStandardFieldDescriptor(fieldInfo.FieldId, CreateModelPath(string.Format(modelPathPattern, 1))!, modelPathPattern, fieldInfo.Description, fieldInfo.Format, fieldInfo.Options, fieldInfo.ReadOnly == true, multiInstance: true);
                 FieldPatternMappings.AddField(descriptor);
             }
@@ -538,8 +539,11 @@ namespace EncompassRest.Loans.v1
                                 {
                                     try
                                     {
-                                        description = descriptionRetriever(string.Format(fieldId, 1)) ?? description;
-                                        description = description?.Replace(" #11", " #{0}")?.Replace(" #1", " #{0}");
+                                        description = descriptionRetriever(string.Format(fieldId, 0)) ?? description;
+                                        if (description != null)
+                                        {
+                                            description = $@"{description.Replace("#1-99", string.Empty)} #{{0}}";
+                                        }
                                     }
                                     catch
                                     {
@@ -679,7 +683,9 @@ namespace EncompassRest.Loans.v1
 
         internal sealed class StandardFieldInfo : FieldInfo
         {
-            public string ModelPath { get; }
+            public string ModelPathV1 { get; }
+
+            public string? ModelPathV3 { get; set; }
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public bool? ReadOnly { get; set; }
@@ -687,10 +693,10 @@ namespace EncompassRest.Loans.v1
             [JsonIgnore]
             public LoanFieldFormat? NonSerializedFormat { get; set; }
 
-            public StandardFieldInfo(string fieldId, string modelPath)
+            public StandardFieldInfo(string fieldId, string modelPathV1)
                 : base(fieldId)
             {
-                ModelPath = modelPath;
+                ModelPathV1 = modelPathV1;
             }
         }
 

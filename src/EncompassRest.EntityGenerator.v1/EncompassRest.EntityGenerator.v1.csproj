@@ -26,9 +26,6 @@
     <ProjectReference Include="..\EncompassRest.Core\EncompassRest.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EncompassObjects">
-      <HintPath>C:\SmartClientCache\Apps\Ellie Mae\Encompass\SDK\EncompassObjects.dll</HintPath>
-    </Reference>
     <Reference Include="System.IO.Compression" />
   </ItemGroup>
 </Project>

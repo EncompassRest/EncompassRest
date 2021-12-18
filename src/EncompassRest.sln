@@ -30,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.Loans.v3", "E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncompassRest.EntityGenerator.v3", "EncompassRest.EntityGenerator.v3\EncompassRest.EntityGenerator.v3.csproj", "{8BAE45F5-EF48-47CC-83C0-5222D49F2851}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Loans.Enums", "EncompassRest.Loans.Enums\EncompassRest.Loans.Enums.csproj", "{09E887CA-6292-465A-926B-F7A234A265A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest.Loans.Shared", "EncompassRest.Loans.Shared\EncompassRest.Loans.Shared.csproj", "{09E887CA-6292-465A-926B-F7A234A265A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
