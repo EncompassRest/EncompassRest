@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PublicOrPrivate
+/// </summary>
+public enum PublicOrPrivate
 {
     /// <summary>
-    /// PublicOrPrivate
+    /// Private
     /// </summary>
-    public enum PublicOrPrivate
-    {
-        /// <summary>
-        /// Private
-        /// </summary>
-        Private = 0,
-        /// <summary>
-        /// Public
-        /// </summary>
-        Public = 1
-    }
+    Private = 0,
+    /// <summary>
+    /// Public
+    /// </summary>
+    Public = 1
 }

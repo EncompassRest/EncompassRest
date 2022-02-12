@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// CreditDebt
+/// </summary>
+public enum CreditDebt
 {
     /// <summary>
-    /// CreditDebt
+    /// C
     /// </summary>
-    public enum CreditDebt
-    {
-        /// <summary>
-        /// C
-        /// </summary>
-        [Description("C")]
-        Credit = 0,
-        /// <summary>
-        /// D
-        /// </summary>
-        [Description("D")]
-        Debt = 1
-    }
+    [Description("C")]
+    Credit = 0,
+    /// <summary>
+    /// D
+    /// </summary>
+    [Description("D")]
+    Debt = 1
 }

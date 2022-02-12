@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// NoAppraisalMAF
+/// </summary>
+public enum NoAppraisalMAF
 {
     /// <summary>
-    /// NoAppraisalMAF
+    /// Apply
     /// </summary>
-    public enum NoAppraisalMAF
-    {
-        /// <summary>
-        /// Apply
-        /// </summary>
-        Apply = 0,
-        /// <summary>
-        /// Cancel
-        /// </summary>
-        Cancel = 1
-    }
+    Apply = 0,
+    /// <summary>
+    /// Cancel
+    /// </summary>
+    Cancel = 1
 }

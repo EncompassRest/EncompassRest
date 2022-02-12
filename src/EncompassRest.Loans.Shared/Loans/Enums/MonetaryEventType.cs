@@ -1,13 +1,12 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// MonetaryEventType
+/// </summary>
+public enum MonetaryEventType
 {
     /// <summary>
-    /// MonetaryEventType
+    /// CurtailmentToUPB
     /// </summary>
-    public enum MonetaryEventType
-    {
-        /// <summary>
-        /// CurtailmentToUPB
-        /// </summary>
-        CurtailmentToUPB = 0
-    }
+    CurtailmentToUPB = 0
 }

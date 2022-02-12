@@ -1,29 +1,28 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PriceAdjustmentType
+/// </summary>
+public enum PriceAdjustmentType
 {
     /// <summary>
-    /// PriceAdjustmentType
+    /// BaseRate
     /// </summary>
-    public enum PriceAdjustmentType
-    {
-        /// <summary>
-        /// BaseRate
-        /// </summary>
-        BaseRate = 0,
-        /// <summary>
-        /// BasePrice
-        /// </summary>
-        BasePrice = 1,
-        /// <summary>
-        /// BaseMargin
-        /// </summary>
-        BaseMargin = 2,
-        /// <summary>
-        /// ProfitMargin
-        /// </summary>
-        ProfitMargin = 3,
-        /// <summary>
-        /// Undefined
-        /// </summary>
-        Undefined = 4
-    }
+    BaseRate = 0,
+    /// <summary>
+    /// BasePrice
+    /// </summary>
+    BasePrice = 1,
+    /// <summary>
+    /// BaseMargin
+    /// </summary>
+    BaseMargin = 2,
+    /// <summary>
+    /// ProfitMargin
+    /// </summary>
+    ProfitMargin = 3,
+    /// <summary>
+    /// Undefined
+    /// </summary>
+    Undefined = 4
 }

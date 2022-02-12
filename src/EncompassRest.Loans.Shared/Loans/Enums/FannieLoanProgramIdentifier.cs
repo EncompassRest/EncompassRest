@@ -1,13 +1,12 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// FannieLoanProgramIdentifier
+/// </summary>
+public enum FannieLoanProgramIdentifier
 {
     /// <summary>
-    /// FannieLoanProgramIdentifier
+    /// LoanFirstTimeHomebuyer
     /// </summary>
-    public enum FannieLoanProgramIdentifier
-    {
-        /// <summary>
-        /// LoanFirstTimeHomebuyer
-        /// </summary>
-        LoanFirstTimeHomebuyer = 0
-    }
+    LoanFirstTimeHomebuyer = 0
 }

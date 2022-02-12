@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PartialPrepaymentsElection
+/// </summary>
+public enum PartialPrepaymentsElection
 {
     /// <summary>
-    /// PartialPrepaymentsElection
+    /// amount
     /// </summary>
-    public enum PartialPrepaymentsElection
-    {
-        /// <summary>
-        /// amount
-        /// </summary>
-        [Description("amount")]
-        Amount = 0,
-        /// <summary>
-        /// number
-        /// </summary>
-        [Description("number")]
-        Number = 1
-    }
+    [Description("amount")]
+    Amount = 0,
+    /// <summary>
+    /// number
+    /// </summary>
+    [Description("number")]
+    Number = 1
 }

@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// BankAccountType
+/// </summary>
+public enum BankAccountType
 {
     /// <summary>
-    /// BankAccountType
+    /// Checking
     /// </summary>
-    public enum BankAccountType
-    {
-        /// <summary>
-        /// Checking
-        /// </summary>
-        Checking = 0,
-        /// <summary>
-        /// Savings
-        /// </summary>
-        Savings = 1
-    }
+    Checking = 0,
+    /// <summary>
+    /// Savings
+    /// </summary>
+    Savings = 1
 }

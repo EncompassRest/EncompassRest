@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// IncreaseOrDecrease
+/// </summary>
+public enum IncreaseOrDecrease
 {
     /// <summary>
-    /// IncreaseOrDecrease
+    /// Increase
     /// </summary>
-    public enum IncreaseOrDecrease
-    {
-        /// <summary>
-        /// Increase
-        /// </summary>
-        Increase = 0,
-        /// <summary>
-        /// Decrease
-        /// </summary>
-        Decrease = 1
-    }
+    Increase = 0,
+    /// <summary>
+    /// Decrease
+    /// </summary>
+    Decrease = 1
 }

@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// MfgHomeNewOrUsed
+/// </summary>
+public enum MfgHomeNewOrUsed
 {
     /// <summary>
-    /// MfgHomeNewOrUsed
+    /// New
     /// </summary>
-    public enum MfgHomeNewOrUsed
-    {
-        /// <summary>
-        /// New
-        /// </summary>
-        New = 0,
-        /// <summary>
-        /// Used
-        /// </summary>
-        Used = 1
-    }
+    New = 0,
+    /// <summary>
+    /// Used
+    /// </summary>
+    Used = 1
 }

@@ -1,28 +1,27 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PoolMortgageType
+/// </summary>
+public enum PoolMortgageType
 {
     /// <summary>
-    /// PoolMortgageType
+    /// Conventional
     /// </summary>
-    public enum PoolMortgageType
-    {
-        /// <summary>
-        /// Conventional
-        /// </summary>
-        Conventional = 0,
-        /// <summary>
-        /// FHA
-        /// </summary>
-        FHA = 1,
-        /// <summary>
-        /// USDA Rural Housing
-        /// </summary>
-        [Description("USDA Rural Housing")]
-        USDARuralHousing = 2,
-        /// <summary>
-        /// VA
-        /// </summary>
-        VA = 3
-    }
+    Conventional = 0,
+    /// <summary>
+    /// FHA
+    /// </summary>
+    FHA = 1,
+    /// <summary>
+    /// USDA Rural Housing
+    /// </summary>
+    [Description("USDA Rural Housing")]
+    USDARuralHousing = 2,
+    /// <summary>
+    /// VA
+    /// </summary>
+    VA = 3
 }

@@ -1,16 +1,15 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// LogLCLAEvaluatedServiceType3
+/// </summary>
+public enum LogLCLAEvaluatedServiceType3
 {
     /// <summary>
-    /// LogLCLAEvaluatedServiceType3
+    /// Product Eligibility
     /// </summary>
-    public enum LogLCLAEvaluatedServiceType3
-    {
-        /// <summary>
-        /// Product Eligibility
-        /// </summary>
-        [Description("Product Eligibility")]
-        ProductEligibility = 0
-    }
+    [Description("Product Eligibility")]
+    ProductEligibility = 0
 }

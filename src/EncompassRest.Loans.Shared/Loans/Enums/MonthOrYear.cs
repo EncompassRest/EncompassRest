@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// MonthOrYear
+/// </summary>
+public enum MonthOrYear
 {
     /// <summary>
-    /// MonthOrYear
+    /// Month
     /// </summary>
-    public enum MonthOrYear
-    {
-        /// <summary>
-        /// Month
-        /// </summary>
-        Month = 0,
-        /// <summary>
-        /// Year
-        /// </summary>
-        Year = 1
-    }
+    Month = 0,
+    /// <summary>
+    /// Year
+    /// </summary>
+    Year = 1
 }

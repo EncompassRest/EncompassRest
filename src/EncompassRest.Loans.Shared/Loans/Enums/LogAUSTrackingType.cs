@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// LogAUSTrackingType
+/// </summary>
+public enum LogAUSTrackingType
 {
     /// <summary>
-    /// LogAUSTrackingType
+    /// Manual
     /// </summary>
-    public enum LogAUSTrackingType
-    {
-        /// <summary>
-        /// Manual
-        /// </summary>
-        Manual = 0,
-        /// <summary>
-        /// Automation
-        /// </summary>
-        Automation = 1
-    }
+    Manual = 0,
+    /// <summary>
+    /// Automation
+    /// </summary>
+    Automation = 1
 }

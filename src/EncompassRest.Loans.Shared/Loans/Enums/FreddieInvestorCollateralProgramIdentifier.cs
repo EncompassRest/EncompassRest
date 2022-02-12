@@ -1,29 +1,28 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// FreddieInvestorCollateralProgramIdentifier
+/// </summary>
+public enum FreddieInvestorCollateralProgramIdentifier
 {
     /// <summary>
-    /// FreddieInvestorCollateralProgramIdentifier
+    /// Property Inspection Alternative
     /// </summary>
-    public enum FreddieInvestorCollateralProgramIdentifier
-    {
-        /// <summary>
-        /// Property Inspection Alternative
-        /// </summary>
-        [EnumMember(Value = "Property Inspection Alternative")]
-        PropertyInspectionAlternative = 0,
-        /// <summary>
-        /// Property Inspection Waiver
-        /// </summary>
-        [EnumMember(Value = "Property Inspection Waiver")]
-        PropertyInspectionWaiver = 1,
-        /// <summary>
-        /// Form2070
-        /// </summary>
-        Form2070 = 2,
-        /// <summary>
-        /// Form2075
-        /// </summary>
-        Form2075 = 3
-    }
+    [EnumMember(Value = "Property Inspection Alternative")]
+    PropertyInspectionAlternative = 0,
+    /// <summary>
+    /// Property Inspection Waiver
+    /// </summary>
+    [EnumMember(Value = "Property Inspection Waiver")]
+    PropertyInspectionWaiver = 1,
+    /// <summary>
+    /// Form2070
+    /// </summary>
+    Form2070 = 2,
+    /// <summary>
+    /// Form2075
+    /// </summary>
+    Form2075 = 3
 }

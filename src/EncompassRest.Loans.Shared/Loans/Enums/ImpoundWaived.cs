@@ -1,20 +1,19 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ImpoundWaived
+/// </summary>
+public enum ImpoundWaived
 {
     /// <summary>
-    /// ImpoundWaived
+    /// Waived
     /// </summary>
-    public enum ImpoundWaived
-    {
-        /// <summary>
-        /// Waived
-        /// </summary>
-        Waived = 0,
-        /// <summary>
-        /// Not Waived
-        /// </summary>
-        [EnumMember(Value = "Not Waived")]
-        NotWaived = 1
-    }
+    Waived = 0,
+    /// <summary>
+    /// Not Waived
+    /// </summary>
+    [EnumMember(Value = "Not Waived")]
+    NotWaived = 1
 }

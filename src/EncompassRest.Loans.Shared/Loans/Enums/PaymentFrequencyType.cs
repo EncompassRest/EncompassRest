@@ -1,13 +1,12 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PaymentFrequencyType
+/// </summary>
+public enum PaymentFrequencyType
 {
     /// <summary>
-    /// PaymentFrequencyType
+    /// Biweekly
     /// </summary>
-    public enum PaymentFrequencyType
-    {
-        /// <summary>
-        /// Biweekly
-        /// </summary>
-        Biweekly = 0
-    }
+    Biweekly = 0
 }

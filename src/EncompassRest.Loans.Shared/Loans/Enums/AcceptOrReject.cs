@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// AcceptOrReject
+/// </summary>
+public enum AcceptOrReject
 {
     /// <summary>
-    /// AcceptOrReject
+    /// Accept
     /// </summary>
-    public enum AcceptOrReject
-    {
-        /// <summary>
-        /// Accept
-        /// </summary>
-        Accept = 0,
-        /// <summary>
-        /// Reject
-        /// </summary>
-        Reject = 1
-    }
+    Accept = 0,
+    /// <summary>
+    /// Reject
+    /// </summary>
+    Reject = 1
 }

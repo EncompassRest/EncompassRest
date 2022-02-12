@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// YesOrNo
+/// </summary>
+public enum YesOrNo
 {
     /// <summary>
-    /// YesOrNo
+    /// No
     /// </summary>
-    public enum YesOrNo
-    {
-        /// <summary>
-        /// No
-        /// </summary>
-        No = 0,
-        /// <summary>
-        /// Yes
-        /// </summary>
-        Yes = 1
-    }
+    No = 0,
+    /// <summary>
+    /// Yes
+    /// </summary>
+    Yes = 1
 }

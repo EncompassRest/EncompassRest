@@ -1,23 +1,22 @@
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// EscrowedPropertyCostsBasis
+/// </summary>
+public enum EscrowedPropertyCostsBasis
 {
     /// <summary>
-    /// EscrowedPropertyCostsBasis
+    /// Consummation Date
     /// </summary>
-    public enum EscrowedPropertyCostsBasis
-    {
-        /// <summary>
-        /// Consummation Date
-        /// </summary>
-        [Description("Consummation Date")]
-        ConsummationDate = 0,
-        /// <summary>
-        /// 1st Payment Date
-        /// </summary>
-        [Description("1st Payment Date")]
-        [EnumMember(Value = "1stPaymentDate")]
-        n1stPaymentDate = 1
-    }
+    [Description("Consummation Date")]
+    ConsummationDate = 0,
+    /// <summary>
+    /// 1st Payment Date
+    /// </summary>
+    [Description("1st Payment Date")]
+    [EnumMember(Value = "1stPaymentDate")]
+    n1stPaymentDate = 1
 }

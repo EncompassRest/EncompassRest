@@ -1,20 +1,19 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// CanIncreaseOrIncreases
+/// </summary>
+public enum CanIncreaseOrIncreases
 {
     /// <summary>
-    /// CanIncreaseOrIncreases
+    /// Can increase
     /// </summary>
-    public enum CanIncreaseOrIncreases
-    {
-        /// <summary>
-        /// Can increase
-        /// </summary>
-        [EnumMember(Value = "Can increase")]
-        CanIncrease = 0,
-        /// <summary>
-        /// Increases
-        /// </summary>
-        Increases = 1
-    }
+    [EnumMember(Value = "Can increase")]
+    CanIncrease = 0,
+    /// <summary>
+    /// Increases
+    /// </summary>
+    Increases = 1
 }

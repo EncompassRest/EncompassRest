@@ -1,21 +1,20 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ExeClosDocExprDt
+/// </summary>
+public enum ExeClosDocExprDt
 {
     /// <summary>
-    /// ExeClosDocExprDt
+    /// Funding Date
     /// </summary>
-    public enum ExeClosDocExprDt
-    {
-        /// <summary>
-        /// Funding Date
-        /// </summary>
-        [EnumMember(Value = "Funding Date")]
-        FundingDate = 0,
-        /// <summary>
-        /// Closing Date
-        /// </summary>
-        [EnumMember(Value = "Closing Date")]
-        ClosingDate = 1
-    }
+    [EnumMember(Value = "Funding Date")]
+    FundingDate = 0,
+    /// <summary>
+    /// Closing Date
+    /// </summary>
+    [EnumMember(Value = "Closing Date")]
+    ClosingDate = 1
 }

@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// TermsChange
+/// </summary>
+public enum TermsChange
 {
     /// <summary>
-    /// TermsChange
+    /// are not
     /// </summary>
-    public enum TermsChange
-    {
-        /// <summary>
-        /// are not
-        /// </summary>
-        [Description("are not")]
-        AreNot = 0,
-        /// <summary>
-        /// are
-        /// </summary>
-        [Description("are")]
-        Are = 1
-    }
+    [Description("are not")]
+    AreNot = 0,
+    /// <summary>
+    /// are
+    /// </summary>
+    [Description("are")]
+    Are = 1
 }

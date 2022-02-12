@@ -1,26 +1,25 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// NegativeAmortization
+/// </summary>
+public enum NegativeAmortization
 {
     /// <summary>
-    /// NegativeAmortization
+    /// scheduled
     /// </summary>
-    public enum NegativeAmortization
-    {
-        /// <summary>
-        /// scheduled
-        /// </summary>
-        [EnumMember(Value = "scheduled")]
-        Scheduled = 0,
-        /// <summary>
-        /// potential
-        /// </summary>
-        [EnumMember(Value = "potential")]
-        Potential = 1,
-        /// <summary>
-        /// none
-        /// </summary>
-        [EnumMember(Value = "none")]
-        None = 2
-    }
+    [EnumMember(Value = "scheduled")]
+    Scheduled = 0,
+    /// <summary>
+    /// potential
+    /// </summary>
+    [EnumMember(Value = "potential")]
+    Potential = 1,
+    /// <summary>
+    /// none
+    /// </summary>
+    [EnumMember(Value = "none")]
+    None = 2
 }

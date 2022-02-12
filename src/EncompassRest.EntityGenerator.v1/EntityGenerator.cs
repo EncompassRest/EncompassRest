@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Loans.Enums;
@@ -702,17 +701,16 @@ namespace EncompassRest
                 sw.Write($@"{(systemNamespace ? @"using System;
 " : string.Empty)}{(collectionsNamespace ? @"using System.Collections.Generic;
 " : string.Empty)}{(newtonsoftNamespace ? @"using Newtonsoft.Json;
-" : string.Empty)}{(systemNamespace || collectionsNamespace || newtonsoftNamespace ? Environment.NewLine : string.Empty)}namespace {@namespace}
+" : string.Empty)}{(systemNamespace || collectionsNamespace || newtonsoftNamespace ? Environment.NewLine : string.Empty)}namespace {@namespace};
+
+/// <summary>
+/// {entityName}
+/// </summary>
+public sealed class {entityName} : DirtyExtensibleObject
 {{
-    /// <summary>
-    /// {entityName}
-    /// </summary>
-    public sealed class {entityName} : DirtyExtensibleObject
-    {{
 {fields}
 
 {properties}
-    }}
 }}");
             }
 
@@ -914,20 +912,20 @@ namespace EncompassRest
                     {
                         propertyType = $"{propertyType}?";
                     }
-                    fields.AppendLine($"        {(s_propertiesWithInternalFields.TryGetValue(entityName, out props) && props.Contains(propertyName) ? "internal" : "private")} {(isEntity && !isNullable ? $"{propertyType}?" : (isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>?"))} {fieldName};");
-                    properties.AppendLine($@"        /// <summary>
-        /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count >= 1 && propertySchema.FieldInstances.Count <= 2 ? $" [{string.Join("], [", propertySchema.FieldInstances.Keys)}]" : (propertySchema.FieldPatterns?.Count >= 1 && propertySchema.FieldPatterns.Count <= 2 ? $" [{string.Join("], [", propertySchema.FieldPatterns.Keys)}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
-        /// </summary>");
+                    fields.AppendLine($"    {(s_propertiesWithInternalFields.TryGetValue(entityName, out props) && props.Contains(propertyName) ? "internal" : "private")} {(isEntity && !isNullable ? $"{propertyType}?" : (isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>?"))} {fieldName};");
+                    properties.AppendLine($@"    /// <summary>
+    /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count >= 1 && propertySchema.FieldInstances.Count <= 2 ? $" [{string.Join("], [", propertySchema.FieldInstances.Keys)}]" : (propertySchema.FieldPatterns?.Count >= 1 && propertySchema.FieldPatterns.Count <= 2 ? $" [{string.Join("], [", propertySchema.FieldPatterns.Keys)}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
+    /// </summary>");
                     if ((isEntity && !isNullable) || isList || isStringDictionary)
                     {
-                        properties.AppendLine($"        [AllowNull]");
+                        properties.AppendLine($"    [AllowNull]");
                         codeAnalysisNamespace = true;
                     }
                     if (isField && attributeProperties.Count > 0)
                     {
-                        properties.AppendLine($"        [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
+                        properties.AppendLine($"    [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
                     }
-                    properties.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string?>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {((isEntity && !isNullable) || isList || isStringDictionary ? $"GetField(ref {fieldName})" : fieldName)}; set => SetField(ref {fieldName}, value); }}").AppendLine();
+                    properties.AppendLine($"    public {(isStringDictionary ? $"IDictionary<string, string?>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {((isEntity && !isNullable) || isList || isStringDictionary ? $"GetField(ref {fieldName})" : fieldName)}; set => SetField(ref {fieldName}, value); }}").AppendLine();
                 }
             }
 
@@ -941,18 +939,17 @@ namespace EncompassRest
 " : string.Empty)}{(codeAnalysisNamespace ? @"using System.Diagnostics.CodeAnalysis;
 " : string.Empty)}{(enumsNamespace ? $@"using EncompassRest.Loans.Enums;
 " : string.Empty)}{(schemaNamespace ? @"using EncompassRest.Schema;
-" : string.Empty)}{(systemNamespace || collectionsNamespace || enumsNamespace || schemaNamespace ? Environment.NewLine : string.Empty)}namespace {@namespace}
+" : string.Empty)}{(systemNamespace || collectionsNamespace || enumsNamespace || schemaNamespace ? Environment.NewLine : string.Empty)}namespace {@namespace};
+
+/// <summary>
+/// {entityName}
+/// </summary>
+{(entityArguments.Length > 0 ? $@"[Entity({entityArguments})]
+" : string.Empty)}public sealed partial class {entityName} : DirtyExtensibleObject, IIdentifiable
 {{
-    /// <summary>
-    /// {entityName}
-    /// </summary>
-    {(entityArguments.Length > 0 ? $@"[Entity({entityArguments})]
-    " : string.Empty)}public sealed partial class {entityName} : DirtyExtensibleObject, IIdentifiable
-    {{
 {fields}
 
 {properties}
-    }}
 }}");
             }
         }
@@ -984,18 +981,18 @@ namespace EncompassRest
                     {
                         text = optionText;
                     }
-                    members.AppendLine($@"        /// <summary>
-        /// {(text ?? value ?? name).Replace("&", "&amp;")}
-        /// </summary>");
+                    members.AppendLine($@"    /// <summary>
+    /// {(text ?? value ?? name).Replace("&", "&amp;")}
+    /// </summary>");
 
                     if (!string.IsNullOrEmpty(text) && !string.Equals(text, value ?? name, StringComparison.Ordinal))
                     {
-                        members.AppendLine($@"        [Description(""{text.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        members.AppendLine($@"    [Description(""{text.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
                         componentModelNamespace = true;
                     }
                     if (value != null && !string.Equals(value, name, StringComparison.Ordinal))
                     {
-                        members.AppendLine($@"        [EnumMember(Value = ""{value.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        members.AppendLine($@"    [EnumMember(Value = ""{value.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
                         serializationNamespace = true;
                     }
                     enumMemberNames.Add(name);
@@ -1005,7 +1002,7 @@ namespace EncompassRest
                     }
                     var intValue = member.ToInt32();
                     existingEnumValues.Add(intValue);
-                    members.Append($"        {name} = {intValue}");
+                    members.Append($"    {name} = {intValue}");
                     first = false;
                 }
                 if (existingMembersNowMissing.Count > 0)
@@ -1060,20 +1057,20 @@ namespace EncompassRest
                 var name = nameBuilder.ToString();
                 if (name.Length > 0 && enumMemberNames.Add(name))
                 {
-                    members.AppendLine($@"        /// <summary>
-        /// {(text ?? value).Replace("&", "&amp;")}
-        /// </summary>");
+                    members.AppendLine($@"    /// <summary>
+    /// {(text ?? value).Replace("&", "&amp;")}
+    /// </summary>");
                     if (!string.IsNullOrEmpty(text) && !string.Equals(value, text, StringComparison.Ordinal))
                     {
-                        members.AppendLine($@"        [Description(""{text.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        members.AppendLine($@"    [Description(""{text.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
                         componentModelNamespace = true;
                     }
                     if (!string.Equals(value, name, StringComparison.Ordinal))
                     {
-                        members.AppendLine($@"        [EnumMember(Value = ""{value.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                        members.AppendLine($@"    [EnumMember(Value = ""{value.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
                         serializationNamespace = true;
                     }
-                    members.Append($"        {name} = {i}");
+                    members.Append($"    {name} = {i}");
                     first = false;
                     ++i;
                 }
@@ -1087,15 +1084,14 @@ namespace EncompassRest
             {
                 sw.Write($@"{(componentModelNamespace ? @"using System.ComponentModel;
 " : string.Empty)}{(serializationNamespace ? @"using System.Runtime.Serialization;
-" : string.Empty)}{(componentModelNamespace || serializationNamespace ? Environment.NewLine : string.Empty)}namespace {@namespace}
+" : string.Empty)}{(componentModelNamespace || serializationNamespace ? Environment.NewLine : string.Empty)}namespace {@namespace};
+
+/// <summary>
+/// {enumName}
+/// </summary>
+public enum {enumName}
 {{
-    /// <summary>
-    /// {enumName}
-    /// </summary>
-    public enum {enumName}
-    {{
 {members}
-    }}
 }}");
             }
         }

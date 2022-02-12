@@ -1,20 +1,19 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// CanGoOrGoes
+/// </summary>
+public enum CanGoOrGoes
 {
     /// <summary>
-    /// CanGoOrGoes
+    /// Can go
     /// </summary>
-    public enum CanGoOrGoes
-    {
-        /// <summary>
-        /// Can go
-        /// </summary>
-        [EnumMember(Value = "Can go")]
-        CanGo = 0,
-        /// <summary>
-        /// Goes
-        /// </summary>
-        Goes = 1
-    }
+    [EnumMember(Value = "Can go")]
+    CanGo = 0,
+    /// <summary>
+    /// Goes
+    /// </summary>
+    Goes = 1
 }

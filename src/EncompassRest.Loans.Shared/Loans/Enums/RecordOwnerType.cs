@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// RecordOwnerType
+/// </summary>
+public enum RecordOwnerType
 {
     /// <summary>
-    /// RecordOwnerType
+    /// B
     /// </summary>
-    public enum RecordOwnerType
-    {
-        /// <summary>
-        /// B
-        /// </summary>
-        [Description("B")]
-        Borrower = 0,
-        /// <summary>
-        /// C
-        /// </summary>
-        [Description("C")]
-        Coborrower = 1
-    }
+    [Description("B")]
+    Borrower = 0,
+    /// <summary>
+    /// C
+    /// </summary>
+    [Description("C")]
+    Coborrower = 1
 }

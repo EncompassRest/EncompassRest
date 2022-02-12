@@ -1,21 +1,20 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// Appraisal
+/// </summary>
+public enum Appraisal
 {
     /// <summary>
-    /// Appraisal
+    /// Omit from print
     /// </summary>
-    public enum Appraisal
-    {
-        /// <summary>
-        /// Omit from print
-        /// </summary>
-        [EnumMember(Value = "Omit from print")]
-        OmitFromPrint = 0,
-        /// <summary>
-        /// Use Section 35
-        /// </summary>
-        [EnumMember(Value = "Use Section 35")]
-        UseSection35 = 1
-    }
+    [EnumMember(Value = "Omit from print")]
+    OmitFromPrint = 0,
+    /// <summary>
+    /// Use Section 35
+    /// </summary>
+    [EnumMember(Value = "Use Section 35")]
+    UseSection35 = 1
 }

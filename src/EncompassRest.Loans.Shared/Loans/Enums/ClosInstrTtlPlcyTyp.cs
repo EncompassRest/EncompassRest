@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ClosInstrTtlPlcyTyp
+/// </summary>
+public enum ClosInstrTtlPlcyTyp
 {
     /// <summary>
-    /// ClosInstrTtlPlcyTyp
+    /// ALTA
     /// </summary>
-    public enum ClosInstrTtlPlcyTyp
-    {
-        /// <summary>
-        /// ALTA
-        /// </summary>
-        ALTA = 0,
-        /// <summary>
-        /// TLTA
-        /// </summary>
-        TLTA = 1
-    }
+    ALTA = 0,
+    /// <summary>
+    /// TLTA
+    /// </summary>
+    TLTA = 1
 }

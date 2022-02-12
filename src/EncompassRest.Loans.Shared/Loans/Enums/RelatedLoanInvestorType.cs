@@ -1,13 +1,12 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// RelatedLoanInvestorType
+/// </summary>
+public enum RelatedLoanInvestorType
 {
     /// <summary>
-    /// RelatedLoanInvestorType
+    /// FNM
     /// </summary>
-    public enum RelatedLoanInvestorType
-    {
-        /// <summary>
-        /// FNM
-        /// </summary>
-        FNM = 0
-    }
+    FNM = 0
 }

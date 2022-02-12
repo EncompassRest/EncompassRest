@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// HowToShare
+/// </summary>
+public enum HowToShare
 {
     /// <summary>
-    /// HowToShare
+    /// Customers
     /// </summary>
-    public enum HowToShare
-    {
-        /// <summary>
-        /// Customers
-        /// </summary>
-        Customers = 0,
-        /// <summary>
-        /// Members
-        /// </summary>
-        Members = 1
-    }
+    Customers = 0,
+    /// <summary>
+    /// Members
+    /// </summary>
+    Members = 1
 }

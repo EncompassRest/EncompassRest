@@ -1,28 +1,27 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PoolInterestRateRoundingType
+/// </summary>
+public enum PoolInterestRateRoundingType
 {
     /// <summary>
-    /// PoolInterestRateRoundingType
+    /// Down
     /// </summary>
-    public enum PoolInterestRateRoundingType
-    {
-        /// <summary>
-        /// Down
-        /// </summary>
-        Down = 0,
-        /// <summary>
-        /// Nearest
-        /// </summary>
-        Nearest = 1,
-        /// <summary>
-        /// No Rounding
-        /// </summary>
-        [Description("No Rounding")]
-        NoRounding = 2,
-        /// <summary>
-        /// Up
-        /// </summary>
-        Up = 3
-    }
+    Down = 0,
+    /// <summary>
+    /// Nearest
+    /// </summary>
+    Nearest = 1,
+    /// <summary>
+    /// No Rounding
+    /// </summary>
+    [Description("No Rounding")]
+    NoRounding = 2,
+    /// <summary>
+    /// Up
+    /// </summary>
+    Up = 3
 }

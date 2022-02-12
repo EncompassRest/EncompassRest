@@ -1,16 +1,15 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// OtherTypeDescription
+/// </summary>
+public enum OtherTypeDescription
 {
     /// <summary>
-    /// OtherTypeDescription
+    /// Guaranteed Underwriting System
     /// </summary>
-    public enum OtherTypeDescription
-    {
-        /// <summary>
-        /// Guaranteed Underwriting System
-        /// </summary>
-        [EnumMember(Value = "Guaranteed Underwriting System")]
-        GuaranteedUnderwritingSystem = 0
-    }
+    [EnumMember(Value = "Guaranteed Underwriting System")]
+    GuaranteedUnderwritingSystem = 0
 }

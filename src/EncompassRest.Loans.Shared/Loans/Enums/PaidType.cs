@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PaidType
+/// </summary>
+public enum PaidType
 {
     /// <summary>
-    /// PaidType
+    /// Cash
     /// </summary>
-    public enum PaidType
-    {
-        /// <summary>
-        /// Cash
-        /// </summary>
-        Cash = 0,
-        /// <summary>
-        /// Other
-        /// </summary>
-        Other = 1
-    }
+    Cash = 0,
+    /// <summary>
+    /// Other
+    /// </summary>
+    Other = 1
 }

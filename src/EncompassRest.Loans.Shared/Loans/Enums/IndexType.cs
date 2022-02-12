@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// IndexType
+/// </summary>
+public enum IndexType
 {
     /// <summary>
-    /// IndexType
+    /// ConstantMaturityTreasury
     /// </summary>
-    public enum IndexType
-    {
-        /// <summary>
-        /// ConstantMaturityTreasury
-        /// </summary>
-        ConstantMaturityTreasury = 0,
-        /// <summary>
-        /// LIBOR
-        /// </summary>
-        LIBOR = 1
-    }
+    ConstantMaturityTreasury = 0,
+    /// <summary>
+    /// LIBOR
+    /// </summary>
+    LIBOR = 1
 }

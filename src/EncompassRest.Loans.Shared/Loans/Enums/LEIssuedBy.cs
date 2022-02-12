@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// LEIssuedBy
+/// </summary>
+public enum LEIssuedBy
 {
     /// <summary>
-    /// LEIssuedBy
+    /// Broker
     /// </summary>
-    public enum LEIssuedBy
-    {
-        /// <summary>
-        /// Broker
-        /// </summary>
-        Broker = 0,
-        /// <summary>
-        /// Lender
-        /// </summary>
-        Lender = 1
-    }
+    Broker = 0,
+    /// <summary>
+    /// Lender
+    /// </summary>
+    Lender = 1
 }

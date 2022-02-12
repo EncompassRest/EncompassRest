@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ResidencyType
+/// </summary>
+public enum ResidencyType
 {
     /// <summary>
-    /// ResidencyType
+    /// Current
     /// </summary>
-    public enum ResidencyType
-    {
-        /// <summary>
-        /// Current
-        /// </summary>
-        Current = 0,
-        /// <summary>
-        /// Prior
-        /// </summary>
-        Prior = 1
-    }
+    Current = 0,
+    /// <summary>
+    /// Prior
+    /// </summary>
+    Prior = 1
 }

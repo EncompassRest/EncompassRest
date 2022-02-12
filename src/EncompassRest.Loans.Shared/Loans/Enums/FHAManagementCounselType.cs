@@ -1,21 +1,20 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// FHAManagementCounselType
+/// </summary>
+public enum FHAManagementCounselType
 {
     /// <summary>
-    /// FHAManagementCounselType
+    /// Not Counseled
     /// </summary>
-    public enum FHAManagementCounselType
-    {
-        /// <summary>
-        /// Not Counseled
-        /// </summary>
-        [EnumMember(Value = "Not Counseled")]
-        NotCounseled = 0,
-        /// <summary>
-        /// HUD Approved Counseling Agency
-        /// </summary>
-        [EnumMember(Value = "HUD Approved Counseling Agency")]
-        HUDApprovedCounselingAgency = 1
-    }
+    [EnumMember(Value = "Not Counseled")]
+    NotCounseled = 0,
+    /// <summary>
+    /// HUD Approved Counseling Agency
+    /// </summary>
+    [EnumMember(Value = "HUD Approved Counseling Agency")]
+    HUDApprovedCounselingAgency = 1
 }

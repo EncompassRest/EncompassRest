@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ConstructionToPermanentClosingType
+/// </summary>
+public enum ConstructionToPermanentClosingType
 {
     /// <summary>
-    /// ConstructionToPermanentClosingType
+    /// One Closing
     /// </summary>
-    public enum ConstructionToPermanentClosingType
-    {
-        /// <summary>
-        /// One Closing
-        /// </summary>
-        [Description("One Closing")]
-        OneClosing = 1,
-        /// <summary>
-        /// Two Closing
-        /// </summary>
-        [Description("Two Closing")]
-        TwoClosing = 2
-    }
+    [Description("One Closing")]
+    OneClosing = 1,
+    /// <summary>
+    /// Two Closing
+    /// </summary>
+    [Description("Two Closing")]
+    TwoClosing = 2
 }

@@ -1,26 +1,25 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// YNOrExempt
+/// </summary>
+public enum YNOrExempt
 {
     /// <summary>
-    /// YNOrExempt
+    /// Yes
     /// </summary>
-    public enum YNOrExempt
-    {
-        /// <summary>
-        /// Yes
-        /// </summary>
-        [Description("Yes")]
-        Y = 0,
-        /// <summary>
-        /// No
-        /// </summary>
-        [Description("No")]
-        N = 1,
-        /// <summary>
-        /// 1111. Exempt
-        /// </summary>
-        [Description("1111. Exempt")]
-        Exempt = 2
-    }
+    [Description("Yes")]
+    Y = 0,
+    /// <summary>
+    /// No
+    /// </summary>
+    [Description("No")]
+    N = 1,
+    /// <summary>
+    /// 1111. Exempt
+    /// </summary>
+    [Description("1111. Exempt")]
+    Exempt = 2
 }

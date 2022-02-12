@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// LegalEntityIdentifierUsed
+/// </summary>
+public enum LegalEntityIdentifierUsed
 {
     /// <summary>
-    /// LegalEntityIdentifierUsed
+    /// Profile
     /// </summary>
-    public enum LegalEntityIdentifierUsed
-    {
-        /// <summary>
-        /// Profile
-        /// </summary>
-        Profile = 0,
-        /// <summary>
-        /// Reporting
-        /// </summary>
-        Reporting = 1
-    }
+    Profile = 0,
+    /// <summary>
+    /// Reporting
+    /// </summary>
+    Reporting = 1
 }

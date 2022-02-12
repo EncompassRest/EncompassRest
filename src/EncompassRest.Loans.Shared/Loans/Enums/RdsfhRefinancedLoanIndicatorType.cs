@@ -1,21 +1,20 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// RdsfhRefinancedLoanIndicatorType
+/// </summary>
+public enum RdsfhRefinancedLoanIndicatorType
 {
     /// <summary>
-    /// RdsfhRefinancedLoanIndicatorType
+    /// Guaranteed Loan
     /// </summary>
-    public enum RdsfhRefinancedLoanIndicatorType
-    {
-        /// <summary>
-        /// Guaranteed Loan
-        /// </summary>
-        [EnumMember(Value = "Guaranteed Loan")]
-        GuaranteedLoan = 0,
-        /// <summary>
-        /// Direct Loan
-        /// </summary>
-        [EnumMember(Value = "Direct Loan")]
-        DirectLoan = 1
-    }
+    [EnumMember(Value = "Guaranteed Loan")]
+    GuaranteedLoan = 0,
+    /// <summary>
+    /// Direct Loan
+    /// </summary>
+    [EnumMember(Value = "Direct Loan")]
+    DirectLoan = 1
 }

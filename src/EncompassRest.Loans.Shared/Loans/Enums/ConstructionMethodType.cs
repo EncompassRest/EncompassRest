@@ -1,23 +1,22 @@
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ConstructionMethodType
+/// </summary>
+public enum ConstructionMethodType
 {
     /// <summary>
-    /// ConstructionMethodType
+    /// 1. Site-built
     /// </summary>
-    public enum ConstructionMethodType
-    {
-        /// <summary>
-        /// 1. Site-built
-        /// </summary>
-        [Description("1. Site-built")]
-        [EnumMember(Value = "Site Built")]
-        SiteBuilt = 0,
-        /// <summary>
-        /// 2. Manufactured Home
-        /// </summary>
-        [Description("2. Manufactured Home")]
-        Manufactured = 1
-    }
+    [Description("1. Site-built")]
+    [EnumMember(Value = "Site Built")]
+    SiteBuilt = 0,
+    /// <summary>
+    /// 2. Manufactured Home
+    /// </summary>
+    [Description("2. Manufactured Home")]
+    Manufactured = 1
 }

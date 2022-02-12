@@ -1,20 +1,19 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// EligibleNonStandardToStandard
+/// </summary>
+public enum EligibleNonStandardToStandard
 {
     /// <summary>
-    /// EligibleNonStandardToStandard
+    /// May
     /// </summary>
-    public enum EligibleNonStandardToStandard
-    {
-        /// <summary>
-        /// May
-        /// </summary>
-        May = 0,
-        /// <summary>
-        /// May Not
-        /// </summary>
-        [EnumMember(Value = "May Not")]
-        MayNot = 1
-    }
+    May = 0,
+    /// <summary>
+    /// May Not
+    /// </summary>
+    [EnumMember(Value = "May Not")]
+    MayNot = 1
 }

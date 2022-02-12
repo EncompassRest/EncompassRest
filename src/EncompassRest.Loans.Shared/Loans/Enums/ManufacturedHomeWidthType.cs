@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ManufacturedHomeWidthType
+/// </summary>
+public enum ManufacturedHomeWidthType
 {
     /// <summary>
-    /// ManufacturedHomeWidthType
+    /// Manufactured Single Wide
     /// </summary>
-    public enum ManufacturedHomeWidthType
-    {
-        /// <summary>
-        /// Manufactured Single Wide
-        /// </summary>
-        [Description("Manufactured Single Wide")]
-        ManufacturedSingleWide = 0,
-        /// <summary>
-        /// Manufactured Multiwide
-        /// </summary>
-        [Description("Manufactured Multiwide")]
-        ManufacturedMultiwide = 1
-    }
+    [Description("Manufactured Single Wide")]
+    ManufacturedSingleWide = 0,
+    /// <summary>
+    /// Manufactured Multiwide
+    /// </summary>
+    [Description("Manufactured Multiwide")]
+    ManufacturedMultiwide = 1
 }

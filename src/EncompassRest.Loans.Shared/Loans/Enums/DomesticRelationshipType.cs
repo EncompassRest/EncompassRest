@@ -1,30 +1,29 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// DomesticRelationshipType
+/// </summary>
+public enum DomesticRelationshipType
 {
     /// <summary>
-    /// DomesticRelationshipType
+    /// Civil Union
     /// </summary>
-    public enum DomesticRelationshipType
-    {
-        /// <summary>
-        /// Civil Union
-        /// </summary>
-        [Description("Civil Union")]
-        CivilUnion = 0,
-        /// <summary>
-        /// Domestic Partnership
-        /// </summary>
-        [Description("Domestic Partnership")]
-        DomesticPartnership = 1,
-        /// <summary>
-        /// Other
-        /// </summary>
-        Other = 2,
-        /// <summary>
-        /// Registered Reciprocal Beneficiary Relationship
-        /// </summary>
-        [Description("Registered Reciprocal Beneficiary Relationship")]
-        RegisteredReciprocalBeneficiaryRelationship = 3
-    }
+    [Description("Civil Union")]
+    CivilUnion = 0,
+    /// <summary>
+    /// Domestic Partnership
+    /// </summary>
+    [Description("Domestic Partnership")]
+    DomesticPartnership = 1,
+    /// <summary>
+    /// Other
+    /// </summary>
+    Other = 2,
+    /// <summary>
+    /// Registered Reciprocal Beneficiary Relationship
+    /// </summary>
+    [Description("Registered Reciprocal Beneficiary Relationship")]
+    RegisteredReciprocalBeneficiaryRelationship = 3
 }

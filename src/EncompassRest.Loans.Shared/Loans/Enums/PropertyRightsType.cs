@@ -1,24 +1,23 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PropertyRightsType
+/// </summary>
+public enum PropertyRightsType
 {
     /// <summary>
-    /// PropertyRightsType
+    /// Fee Simple
     /// </summary>
-    public enum PropertyRightsType
-    {
-        /// <summary>
-        /// Fee Simple
-        /// </summary>
-        [Description("Fee Simple")]
-        FeeSimple = 0,
-        /// <summary>
-        /// Leasehold
-        /// </summary>
-        Leasehold = 1,
-        /// <summary>
-        /// Other
-        /// </summary>
-        Other = 2
-    }
+    [Description("Fee Simple")]
+    FeeSimple = 0,
+    /// <summary>
+    /// Leasehold
+    /// </summary>
+    Leasehold = 1,
+    /// <summary>
+    /// Other
+    /// </summary>
+    Other = 2
 }

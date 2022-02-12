@@ -1,29 +1,28 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// Conversion
+/// </summary>
+public enum Conversion
 {
     /// <summary>
-    /// Conversion
+    /// First
     /// </summary>
-    public enum Conversion
-    {
-        /// <summary>
-        /// First
-        /// </summary>
-        First = 0,
-        /// <summary>
-        /// Second
-        /// </summary>
-        Second = 1,
-        /// <summary>
-        /// Third
-        /// </summary>
-        Third = 2,
-        /// <summary>
-        /// Fourth
-        /// </summary>
-        Fourth = 3,
-        /// <summary>
-        /// Fifth
-        /// </summary>
-        Fifth = 4
-    }
+    First = 0,
+    /// <summary>
+    /// Second
+    /// </summary>
+    Second = 1,
+    /// <summary>
+    /// Third
+    /// </summary>
+    Third = 2,
+    /// <summary>
+    /// Fourth
+    /// </summary>
+    Fourth = 3,
+    /// <summary>
+    /// Fifth
+    /// </summary>
+    Fifth = 4
 }

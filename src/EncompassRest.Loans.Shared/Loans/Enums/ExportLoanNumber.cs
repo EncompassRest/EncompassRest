@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ExportLoanNumber
+/// </summary>
+public enum ExportLoanNumber
 {
     /// <summary>
-    /// ExportLoanNumber
+    /// Inv. loan # as Lender loan #
     /// </summary>
-    public enum ExportLoanNumber
-    {
-        /// <summary>
-        /// Inv. loan # as Lender loan #
-        /// </summary>
-        [Description("Inv. loan # as Lender loan #")]
-        UseInvestorNumber = 0,
-        /// <summary>
-        /// Lender loan # as Inv. loan #
-        /// </summary>
-        [Description("Lender loan # as Inv. loan #")]
-        UseLoanNumber = 1
-    }
+    [Description("Inv. loan # as Lender loan #")]
+    UseInvestorNumber = 0,
+    /// <summary>
+    /// Lender loan # as Inv. loan #
+    /// </summary>
+    [Description("Lender loan # as Inv. loan #")]
+    UseLoanNumber = 1
 }

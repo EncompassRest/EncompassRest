@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PastCreditRecord
+/// </summary>
+public enum PastCreditRecord
 {
     /// <summary>
-    /// PastCreditRecord
+    /// Satisfactory
     /// </summary>
-    public enum PastCreditRecord
-    {
-        /// <summary>
-        /// Satisfactory
-        /// </summary>
-        Satisfactory = 0,
-        /// <summary>
-        /// Unsatisfactory
-        /// </summary>
-        Unsatisfactory = 1
-    }
+    Satisfactory = 0,
+    /// <summary>
+    /// Unsatisfactory
+    /// </summary>
+    Unsatisfactory = 1
 }

@@ -1,16 +1,15 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// FreddieUnderwritingTypeOther
+/// </summary>
+public enum FreddieUnderwritingTypeOther
 {
     /// <summary>
-    /// FreddieUnderwritingTypeOther
+    /// First Mortgage Credit Score
     /// </summary>
-    public enum FreddieUnderwritingTypeOther
-    {
-        /// <summary>
-        /// First Mortgage Credit Score
-        /// </summary>
-        [EnumMember(Value = "First Mortgage Credit Score")]
-        FirstMortgageCreditScore = 0
-    }
+    [EnumMember(Value = "First Mortgage Credit Score")]
+    FirstMortgageCreditScore = 0
 }

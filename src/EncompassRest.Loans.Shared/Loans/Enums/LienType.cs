@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// LienType
+/// </summary>
+public enum LienType
 {
     /// <summary>
-    /// LienType
+    /// First
     /// </summary>
-    public enum LienType
-    {
-        /// <summary>
-        /// First
-        /// </summary>
-        [Description("First")]
-        FirstLien = 1,
-        /// <summary>
-        /// Second
-        /// </summary>
-        [Description("Second")]
-        SecondLien = 2
-    }
+    [Description("First")]
+    FirstLien = 1,
+    /// <summary>
+    /// Second
+    /// </summary>
+    [Description("Second")]
+    SecondLien = 2
 }

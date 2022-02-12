@@ -1,24 +1,23 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PreferredAus
+/// </summary>
+public enum PreferredAus
 {
     /// <summary>
-    /// PreferredAus
+    /// No Preference
     /// </summary>
-    public enum PreferredAus
-    {
-        /// <summary>
-        /// No Preference
-        /// </summary>
-        [Description("No Preference")]
-        NoPreference = 0,
-        /// <summary>
-        /// DU
-        /// </summary>
-        DU = 1,
-        /// <summary>
-        /// LPA
-        /// </summary>
-        LPA = 2
-    }
+    [Description("No Preference")]
+    NoPreference = 0,
+    /// <summary>
+    /// DU
+    /// </summary>
+    DU = 1,
+    /// <summary>
+    /// LPA
+    /// </summary>
+    LPA = 2
 }

@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// OtherDescription
+/// </summary>
+public enum OtherDescription
 {
     /// <summary>
-    /// OtherDescription
+    /// Other Liquid Asset
     /// </summary>
-    public enum OtherDescription
-    {
-        /// <summary>
-        /// Other Liquid Asset
-        /// </summary>
-        [Description("Other Liquid Asset")]
-        OtherLiquidAsset = 0,
-        /// <summary>
-        /// Other Non-LiquidAsset
-        /// </summary>
-        [Description("Other Non-LiquidAsset")]
-        OtherNonLiquidAsset = 1
-    }
+    [Description("Other Liquid Asset")]
+    OtherLiquidAsset = 0,
+    /// <summary>
+    /// Other Non-LiquidAsset
+    /// </summary>
+    [Description("Other Non-LiquidAsset")]
+    OtherNonLiquidAsset = 1
 }

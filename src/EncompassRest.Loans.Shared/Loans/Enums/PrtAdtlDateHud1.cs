@@ -1,20 +1,19 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// PrtAdtlDateHud1
+/// </summary>
+public enum PrtAdtlDateHud1
 {
     /// <summary>
-    /// PrtAdtlDateHud1
+    /// Disbursement Date
     /// </summary>
-    public enum PrtAdtlDateHud1
-    {
-        /// <summary>
-        /// Disbursement Date
-        /// </summary>
-        [Description("Disbursement Date")]
-        DisbDate = 0,
-        /// <summary>
-        /// ClosingDate
-        /// </summary>
-        ClosingDate = 1
-    }
+    [Description("Disbursement Date")]
+    DisbDate = 0,
+    /// <summary>
+    /// ClosingDate
+    /// </summary>
+    ClosingDate = 1
 }

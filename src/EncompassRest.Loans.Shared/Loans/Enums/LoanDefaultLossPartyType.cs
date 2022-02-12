@@ -1,21 +1,20 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// LoanDefaultLossPartyType
+/// </summary>
+public enum LoanDefaultLossPartyType
 {
     /// <summary>
-    /// LoanDefaultLossPartyType
+    /// Investor
     /// </summary>
-    public enum LoanDefaultLossPartyType
-    {
-        /// <summary>
-        /// Investor
-        /// </summary>
-        Investor = 0,
-        /// <summary>
-        /// Lender
-        /// </summary>
-        Lender = 1,
-        /// <summary>
-        /// Shared
-        /// </summary>
-        Shared = 2
-    }
+    Investor = 0,
+    /// <summary>
+    /// Lender
+    /// </summary>
+    Lender = 1,
+    /// <summary>
+    /// Shared
+    /// </summary>
+    Shared = 2
 }

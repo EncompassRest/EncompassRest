@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// FreddieRefinanceCashOutDeterminationType
+/// </summary>
+public enum FreddieRefinanceCashOutDeterminationType
 {
     /// <summary>
-    /// FreddieRefinanceCashOutDeterminationType
+    /// Cash Out
     /// </summary>
-    public enum FreddieRefinanceCashOutDeterminationType
-    {
-        /// <summary>
-        /// Cash Out
-        /// </summary>
-        [Description("Cash Out")]
-        CashOut = 0,
-        /// <summary>
-        /// No Cash Out
-        /// </summary>
-        [Description("No Cash Out")]
-        NoCashOut = 1
-    }
+    [Description("Cash Out")]
+    CashOut = 0,
+    /// <summary>
+    /// No Cash Out
+    /// </summary>
+    [Description("No Cash Out")]
+    NoCashOut = 1
 }

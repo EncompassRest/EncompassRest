@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ProfitManagementItemType
+/// </summary>
+public enum ProfitManagementItemType
 {
     /// <summary>
-    /// ProfitManagementItemType
+    /// Profit
     /// </summary>
-    public enum ProfitManagementItemType
-    {
-        /// <summary>
-        /// Profit
-        /// </summary>
-        Profit = 0,
-        /// <summary>
-        /// Loan
-        /// </summary>
-        Loan = 1
-    }
+    Profit = 0,
+    /// <summary>
+    /// Loan
+    /// </summary>
+    Loan = 1
 }

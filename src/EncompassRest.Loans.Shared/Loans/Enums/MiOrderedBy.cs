@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// MiOrderedBy
+/// </summary>
+public enum MiOrderedBy
 {
     /// <summary>
-    /// MiOrderedBy
+    /// Client
     /// </summary>
-    public enum MiOrderedBy
-    {
-        /// <summary>
-        /// Client
-        /// </summary>
-        Client = 0,
-        /// <summary>
-        /// Internal
-        /// </summary>
-        Internal = 1
-    }
+    Client = 0,
+    /// <summary>
+    /// Internal
+    /// </summary>
+    Internal = 1
 }

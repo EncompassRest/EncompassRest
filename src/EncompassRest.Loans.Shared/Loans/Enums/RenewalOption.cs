@@ -1,31 +1,30 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// RenewalOption
+/// </summary>
+public enum RenewalOption
 {
     /// <summary>
-    /// RenewalOption
+    /// Constant balance
     /// </summary>
-    public enum RenewalOption
-    {
-        /// <summary>
-        /// Constant balance
-        /// </summary>
-        [Description("Constant balance")]
-        C = 0,
-        /// <summary>
-        /// Declining balance
-        /// </summary>
-        [Description("Declining balance")]
-        D = 1,
-        /// <summary>
-        /// No renewal
-        /// </summary>
-        [Description("No renewal")]
-        N = 2,
-        /// <summary>
-        /// Not applicable
-        /// </summary>
-        [Description("Not applicable")]
-        X = 3
-    }
+    [Description("Constant balance")]
+    C = 0,
+    /// <summary>
+    /// Declining balance
+    /// </summary>
+    [Description("Declining balance")]
+    D = 1,
+    /// <summary>
+    /// No renewal
+    /// </summary>
+    [Description("No renewal")]
+    N = 2,
+    /// <summary>
+    /// Not applicable
+    /// </summary>
+    [Description("Not applicable")]
+    X = 3
 }

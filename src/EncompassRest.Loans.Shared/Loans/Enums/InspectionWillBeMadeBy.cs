@@ -1,21 +1,20 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// InspectionWillBeMadeBy
+/// </summary>
+public enum InspectionWillBeMadeBy
 {
     /// <summary>
-    /// InspectionWillBeMadeBy
+    /// FHA
     /// </summary>
-    public enum InspectionWillBeMadeBy
-    {
-        /// <summary>
-        /// FHA
-        /// </summary>
-        FHA = 0,
-        /// <summary>
-        /// VA
-        /// </summary>
-        VA = 1,
-        /// <summary>
-        /// None
-        /// </summary>
-        None = 2
-    }
+    FHA = 0,
+    /// <summary>
+    /// VA
+    /// </summary>
+    VA = 1,
+    /// <summary>
+    /// None
+    /// </summary>
+    None = 2
 }

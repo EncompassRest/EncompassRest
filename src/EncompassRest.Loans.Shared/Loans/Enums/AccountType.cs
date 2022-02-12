@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// AccountType
+/// </summary>
+public enum AccountType
 {
     /// <summary>
-    /// AccountType
+    /// HELOC
     /// </summary>
-    public enum AccountType
-    {
-        /// <summary>
-        /// HELOC
-        /// </summary>
-        HELOC = 0,
-        /// <summary>
-        /// Mortgage
-        /// </summary>
-        Mortgage = 1
-    }
+    HELOC = 0,
+    /// <summary>
+    /// Mortgage
+    /// </summary>
+    Mortgage = 1
 }

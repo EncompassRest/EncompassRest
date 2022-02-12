@@ -1,21 +1,20 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// DocsLoanProgramType
+/// </summary>
+public enum DocsLoanProgramType
 {
     /// <summary>
-    /// DocsLoanProgramType
+    /// Opening
     /// </summary>
-    public enum DocsLoanProgramType
-    {
-        /// <summary>
-        /// Opening
-        /// </summary>
-        Opening = 0,
-        /// <summary>
-        /// Closing
-        /// </summary>
-        Closing = 1,
-        /// <summary>
-        /// Both
-        /// </summary>
-        Both = 2
-    }
+    Opening = 0,
+    /// <summary>
+    /// Closing
+    /// </summary>
+    Closing = 1,
+    /// <summary>
+    /// Both
+    /// </summary>
+    Both = 2
 }

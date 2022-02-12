@@ -1,21 +1,20 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// WatchListReason
+/// </summary>
+public enum WatchListReason
 {
     /// <summary>
-    /// WatchListReason
+    /// Company
     /// </summary>
-    public enum WatchListReason
-    {
-        /// <summary>
-        /// Company
-        /// </summary>
-        Company = 0,
-        /// <summary>
-        /// User
-        /// </summary>
-        User = 1,
-        /// <summary>
-        /// Both
-        /// </summary>
-        Both = 2
-    }
+    Company = 0,
+    /// <summary>
+    /// User
+    /// </summary>
+    User = 1,
+    /// <summary>
+    /// Both
+    /// </summary>
+    Both = 2
 }

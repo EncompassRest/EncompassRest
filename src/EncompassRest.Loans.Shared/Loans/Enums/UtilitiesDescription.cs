@@ -1,21 +1,20 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// UtilitiesDescription
+/// </summary>
+public enum UtilitiesDescription
 {
     /// <summary>
-    /// UtilitiesDescription
+    /// Public
     /// </summary>
-    public enum UtilitiesDescription
-    {
-        /// <summary>
-        /// Public
-        /// </summary>
-        Public = 0,
-        /// <summary>
-        /// Community
-        /// </summary>
-        Community = 1,
-        /// <summary>
-        /// Individual
-        /// </summary>
-        Individual = 2
-    }
+    Public = 0,
+    /// <summary>
+    /// Community
+    /// </summary>
+    Community = 1,
+    /// <summary>
+    /// Individual
+    /// </summary>
+    Individual = 2
 }

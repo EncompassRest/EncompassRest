@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// UsdaGovernmentLoanType
+/// </summary>
+public enum UsdaGovernmentLoanType
 {
     /// <summary>
-    /// UsdaGovernmentLoanType
+    /// VA
     /// </summary>
-    public enum UsdaGovernmentLoanType
-    {
-        /// <summary>
-        /// VA
-        /// </summary>
-        VA = 0,
-        /// <summary>
-        /// FHA
-        /// </summary>
-        FHA = 1
-    }
+    VA = 0,
+    /// <summary>
+    /// FHA
+    /// </summary>
+    FHA = 1
 }

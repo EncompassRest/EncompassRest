@@ -1,16 +1,15 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ConstOnlyAmortizationType
+/// </summary>
+public enum ConstOnlyAmortizationType
 {
     /// <summary>
-    /// ConstOnlyAmortizationType
+    /// Fixed Rate
     /// </summary>
-    public enum ConstOnlyAmortizationType
-    {
-        /// <summary>
-        /// Fixed Rate
-        /// </summary>
-        [Description("Fixed Rate")]
-        Fixed = 0
-    }
+    [Description("Fixed Rate")]
+    Fixed = 0
 }

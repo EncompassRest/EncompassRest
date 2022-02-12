@@ -1,28 +1,27 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// Person
+/// </summary>
+public enum Person
 {
     /// <summary>
-    /// Person
+    /// Borrower
     /// </summary>
-    public enum Person
-    {
-        /// <summary>
-        /// Borrower
-        /// </summary>
-        Borrower = 0,
-        /// <summary>
-        /// Co-Borrower
-        /// </summary>
-        [Description("Co-Borrower")]
-        CoBorrower = 1,
-        /// <summary>
-        /// Both
-        /// </summary>
-        Both = 2,
-        /// <summary>
-        /// Other
-        /// </summary>
-        Other = 3
-    }
+    Borrower = 0,
+    /// <summary>
+    /// Co-Borrower
+    /// </summary>
+    [Description("Co-Borrower")]
+    CoBorrower = 1,
+    /// <summary>
+    /// Both
+    /// </summary>
+    Both = 2,
+    /// <summary>
+    /// Other
+    /// </summary>
+    Other = 3
 }

@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// BankruptcyForeclosureStatus
+/// </summary>
+public enum BankruptcyForeclosureStatus
 {
     /// <summary>
-    /// BankruptcyForeclosureStatus
+    /// Discharged
     /// </summary>
-    public enum BankruptcyForeclosureStatus
-    {
-        /// <summary>
-        /// Discharged
-        /// </summary>
-        Discharged = 0,
-        /// <summary>
-        /// Dismissed
-        /// </summary>
-        Dismissed = 1
-    }
+    Discharged = 0,
+    /// <summary>
+    /// Dismissed
+    /// </summary>
+    Dismissed = 1
 }

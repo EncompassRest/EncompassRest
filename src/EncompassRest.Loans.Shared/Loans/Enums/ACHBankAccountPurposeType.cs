@@ -1,17 +1,16 @@
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ACHBankAccountPurposeType
+/// </summary>
+public enum ACHBankAccountPurposeType
 {
     /// <summary>
-    /// ACHBankAccountPurposeType
+    /// PrincipalAndInterest
     /// </summary>
-    public enum ACHBankAccountPurposeType
-    {
-        /// <summary>
-        /// PrincipalAndInterest
-        /// </summary>
-        PrincipalAndInterest = 0,
-        /// <summary>
-        /// TaxesAndInsurance
-        /// </summary>
-        TaxesAndInsurance = 1
-    }
+    PrincipalAndInterest = 0,
+    /// <summary>
+    /// TaxesAndInsurance
+    /// </summary>
+    TaxesAndInsurance = 1
 }

@@ -1,26 +1,25 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// TotalClosingCostRemark
+/// </summary>
+public enum TotalClosingCostRemark
 {
     /// <summary>
-    /// TotalClosingCostRemark
+    /// Total Loan Costs (D)
     /// </summary>
-    public enum TotalClosingCostRemark
-    {
-        /// <summary>
-        /// Total Loan Costs (D)
-        /// </summary>
-        [EnumMember(Value = "Total Loan Costs (D)")]
-        TotalLoanCostsD = 0,
-        /// <summary>
-        /// Total Other Costs (I)
-        /// </summary>
-        [EnumMember(Value = "Total Other Costs (I)")]
-        TotalOtherCostsI = 1,
-        /// <summary>
-        /// Total Loan Costs (D) and Total Other Costs (I)
-        /// </summary>
-        [EnumMember(Value = "Total Loan Costs (D) and Total Other Costs (I)")]
-        TotalLoanCostsDAndTotalOtherCostsI = 2
-    }
+    [EnumMember(Value = "Total Loan Costs (D)")]
+    TotalLoanCostsD = 0,
+    /// <summary>
+    /// Total Other Costs (I)
+    /// </summary>
+    [EnumMember(Value = "Total Other Costs (I)")]
+    TotalOtherCostsI = 1,
+    /// <summary>
+    /// Total Loan Costs (D) and Total Other Costs (I)
+    /// </summary>
+    [EnumMember(Value = "Total Loan Costs (D) and Total Other Costs (I)")]
+    TotalLoanCostsDAndTotalOtherCostsI = 2
 }

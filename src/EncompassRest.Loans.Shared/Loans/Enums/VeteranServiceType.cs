@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// VeteranServiceType
+/// </summary>
+public enum VeteranServiceType
 {
     /// <summary>
-    /// VeteranServiceType
+    /// Separated from Service
     /// </summary>
-    public enum VeteranServiceType
-    {
-        /// <summary>
-        /// Separated from Service
-        /// </summary>
-        [Description("Separated from Service")]
-        SeparatedFromService = 0,
-        /// <summary>
-        /// In Service
-        /// </summary>
-        [Description("In Service")]
-        InService = 1
-    }
+    [Description("Separated from Service")]
+    SeparatedFromService = 0,
+    /// <summary>
+    /// In Service
+    /// </summary>
+    [Description("In Service")]
+    InService = 1
 }

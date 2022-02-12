@@ -1,20 +1,19 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// DoesOrDoesNot
+/// </summary>
+public enum DoesOrDoesNot
 {
     /// <summary>
-    /// DoesOrDoesNot
+    /// Does not
     /// </summary>
-    public enum DoesOrDoesNot
-    {
-        /// <summary>
-        /// Does not
-        /// </summary>
-        [EnumMember(Value = "Does not")]
-        DoesNot = 0,
-        /// <summary>
-        /// Does
-        /// </summary>
-        Does = 1
-    }
+    [EnumMember(Value = "Does not")]
+    DoesNot = 0,
+    /// <summary>
+    /// Does
+    /// </summary>
+    Does = 1
 }

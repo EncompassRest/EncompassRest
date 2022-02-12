@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// TrustClassificationType
+/// </summary>
+public enum TrustClassificationType
 {
     /// <summary>
-    /// TrustClassificationType
+    /// Land Trust
     /// </summary>
-    public enum TrustClassificationType
-    {
-        /// <summary>
-        /// Land Trust
-        /// </summary>
-        [Description("Land Trust")]
-        LandTrust = 0,
-        /// <summary>
-        /// Living Trust
-        /// </summary>
-        [Description("Living Trust")]
-        LivingTrust = 1
-    }
+    [Description("Land Trust")]
+    LandTrust = 0,
+    /// <summary>
+    /// Living Trust
+    /// </summary>
+    [Description("Living Trust")]
+    LivingTrust = 1
 }

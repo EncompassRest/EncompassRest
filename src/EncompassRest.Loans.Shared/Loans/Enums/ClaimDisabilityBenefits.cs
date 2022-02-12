@@ -1,20 +1,19 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// ClaimDisabilityBenefits
+/// </summary>
+public enum ClaimDisabilityBenefits
 {
     /// <summary>
-    /// ClaimDisabilityBenefits
+    /// Have Not
     /// </summary>
-    public enum ClaimDisabilityBenefits
-    {
-        /// <summary>
-        /// Have Not
-        /// </summary>
-        [EnumMember(Value = "Have Not")]
-        HaveNot = 0,
-        /// <summary>
-        /// Have
-        /// </summary>
-        Have = 1
-    }
+    [EnumMember(Value = "Have Not")]
+    HaveNot = 0,
+    /// <summary>
+    /// Have
+    /// </summary>
+    Have = 1
 }

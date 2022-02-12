@@ -1,21 +1,20 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// AlsoCollectFrom
+/// </summary>
+public enum AlsoCollectFrom
 {
     /// <summary>
-    /// AlsoCollectFrom
+    /// We also collect your personal information from others, such as credit bureaus, affiliates, or other companies
     /// </summary>
-    public enum AlsoCollectFrom
-    {
-        /// <summary>
-        /// We also collect your personal information from others, such as credit bureaus, affiliates, or other companies
-        /// </summary>
-        [EnumMember(Value = "We also collect your personal information from others, such as credit bureaus, affiliates, or other companies")]
-        WeAlsoCollectYourPersonalInformationFromOthersSuchAsCreditBureausAffiliatesOrOtherCompanies = 0,
-        /// <summary>
-        /// We also collect your personal information from other companies
-        /// </summary>
-        [EnumMember(Value = "We also collect your personal information from other companies")]
-        WeAlsoCollectYourPersonalInformationFromOtherCompanies = 1
-    }
+    [EnumMember(Value = "We also collect your personal information from others, such as credit bureaus, affiliates, or other companies")]
+    WeAlsoCollectYourPersonalInformationFromOthersSuchAsCreditBureausAffiliatesOrOtherCompanies = 0,
+    /// <summary>
+    /// We also collect your personal information from other companies
+    /// </summary>
+    [EnumMember(Value = "We also collect your personal information from other companies")]
+    WeAlsoCollectYourPersonalInformationFromOtherCompanies = 1
 }

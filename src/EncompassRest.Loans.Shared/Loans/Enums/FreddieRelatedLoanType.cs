@@ -1,20 +1,19 @@
 using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// FreddieRelatedLoanType
+/// </summary>
+public enum FreddieRelatedLoanType
 {
     /// <summary>
-    /// FreddieRelatedLoanType
+    /// Conventional
     /// </summary>
-    public enum FreddieRelatedLoanType
-    {
-        /// <summary>
-        /// Conventional
-        /// </summary>
-        Conventional = 0,
-        /// <summary>
-        /// USDA Rural Housing
-        /// </summary>
-        [EnumMember(Value = "USDA Rural Housing")]
-        USDARuralHousing = 1
-    }
+    Conventional = 0,
+    /// <summary>
+    /// USDA Rural Housing
+    /// </summary>
+    [EnumMember(Value = "USDA Rural Housing")]
+    USDARuralHousing = 1
 }

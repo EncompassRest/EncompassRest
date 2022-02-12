@@ -1,21 +1,20 @@
 using System.ComponentModel;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest.Loans.Enums;
+
+/// <summary>
+/// NewConstructionType
+/// </summary>
+public enum NewConstructionType
 {
     /// <summary>
-    /// NewConstructionType
+    /// Newly Built
     /// </summary>
-    public enum NewConstructionType
-    {
-        /// <summary>
-        /// Newly Built
-        /// </summary>
-        [Description("Newly Built")]
-        NewlyBuilt = 0,
-        /// <summary>
-        /// Construction Conversion
-        /// </summary>
-        [Description("Construction Conversion")]
-        ConstructionConversion = 1
-    }
+    [Description("Newly Built")]
+    NewlyBuilt = 0,
+    /// <summary>
+    /// Construction Conversion
+    /// </summary>
+    [Description("Construction Conversion")]
+    ConstructionConversion = 1
 }
