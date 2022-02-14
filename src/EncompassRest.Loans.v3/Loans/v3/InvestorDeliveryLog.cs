@@ -1,5 +1,4 @@
 using System;
-using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans.v3;
@@ -12,7 +11,7 @@ public sealed partial class InvestorDeliveryLog : DirtyExtensibleObject, IIdenti
 {
     private DirtyValue<string?>? _categoryDeliveredTo;
     private DirtyValue<string?>? _companyDeliveredTo;
-    private DirtyValue<StringEnumValue<DeliveryStatus>>? _deliveryStatus;
+    private DirtyValue<string?>? _deliveryStatus;
     private DirtyValue<DateTime?>? _deliveryStatusDate;
     private DirtyValue<string?>? _id;
 
@@ -29,7 +28,7 @@ public sealed partial class InvestorDeliveryLog : DirtyExtensibleObject, IIdenti
     /// <summary>
     /// Delivery Status [INVESTORCONN0002]
     /// </summary>
-    public StringEnumValue<DeliveryStatus> DeliveryStatus { get => _deliveryStatus; set => SetField(ref _deliveryStatus, value); }
+    public string? DeliveryStatus { get => _deliveryStatus; set => SetField(ref _deliveryStatus, value); }
 
     /// <summary>
     /// Delivery Status Date/Time [INVESTORCONN0001]

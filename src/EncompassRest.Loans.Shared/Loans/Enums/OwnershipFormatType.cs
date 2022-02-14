@@ -29,5 +29,9 @@ public enum OwnershipFormatType
     /// <summary>
     /// Telephone
     /// </summary>
-    Telephone = 4
+    Telephone = 4,
+    /// <summary>
+    /// Hybrid
+    /// </summary>
+    Hybrid = 5
 }

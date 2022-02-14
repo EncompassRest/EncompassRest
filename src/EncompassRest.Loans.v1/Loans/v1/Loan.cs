@@ -1441,6 +1441,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Government Refinance Type [URLA.X166]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"FullDocumentation\":\"Full Documentation (FNMA/FRE)\",\"InterestRateReductionRefinanceLoan\":\"Interest Rate Reduction Refinance Loan (FNMA/FRE)\",\"Other\":\"Other (FNMA Retired/FRE)\",\"StreamlineWithAppraisal\":\"Streamline With Appraisal (FNMA)\",\"StreamlineWithoutAppraisal\":\"Streamline Without Appraisal (FNMA/FRE)\"}")]
     public StringEnumValue<GovernmentRefinanceType> GovernmentRefinanceType { get => _governmentRefinanceType; set => SetField(ref _governmentRefinanceType, value); }
 
     /// <summary>
