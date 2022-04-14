@@ -98,7 +98,7 @@ namespace EncompassRest.Loans.v1
                         {
                             using (var jr = new JsonTextReader(sr))
                             {
-                                var loanFields = JsonHelper.DefaultPublicSerializer.Deserialize<List<StandardFieldInfo>>(jr);
+                                var loanFields = JsonHelper.DefaultPublicSerializer.Deserialize<List<StandardFieldInfo>>(jr)!;
 
                                 foreach (var loanField in loanFields)
                                 {
@@ -126,7 +126,7 @@ namespace EncompassRest.Loans.v1
                         {
                             using (var jr = new JsonTextReader(sr))
                             {
-                                var virtualFields = JsonHelper.DefaultPublicSerializer.Deserialize<List<VirtualFieldInfo>>(jr);
+                                var virtualFields = JsonHelper.DefaultPublicSerializer.Deserialize<List<VirtualFieldInfo>>(jr)!;
 
                                 foreach (var virtualField in virtualFields)
                                 {
@@ -144,7 +144,7 @@ namespace EncompassRest.Loans.v1
                         {
                             using (var jr = new JsonTextReader(sr))
                             {
-                                var loanFieldPatterns = JsonHelper.DefaultPublicSerializer.Deserialize<List<StandardFieldInfo>>(jr);
+                                var loanFieldPatterns = JsonHelper.DefaultPublicSerializer.Deserialize<List<StandardFieldInfo>>(jr)!;
 
                                 foreach (var loanFieldPattern in loanFieldPatterns)
                                 {
@@ -162,7 +162,7 @@ namespace EncompassRest.Loans.v1
                         {
                             using (var jr = new JsonTextReader(sr))
                             {
-                                var virtualFieldPatterns = JsonHelper.DefaultPublicSerializer.Deserialize<List<VirtualFieldInfo>>(jr);
+                                var virtualFieldPatterns = JsonHelper.DefaultPublicSerializer.Deserialize<List<VirtualFieldInfo>>(jr)!;
 
                                 foreach (var virtualFieldPattern in virtualFieldPatterns)
                                 {

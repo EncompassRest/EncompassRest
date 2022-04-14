@@ -84,7 +84,7 @@ namespace EncompassRest.Loans.v1
         /// <param name="force">Forcefully locks a loan. This parameter allows an administrator to lock a loan that holds an exclusive lock. When set to <c>true</c>, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is <c>false</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<string> LockAsync(this ILoanApis loanApis, ResourceLockType lockType, bool force, CancellationToken cancellationToken = default) => LockAsync(loanApis, lockType.Validate(nameof(lockType)).GetValue()!, force, cancellationToken);
+        public static Task<string> LockAsync(this ILoanApis loanApis, ResourceLockType lockType, bool force, CancellationToken cancellationToken = default) => LockAsync(loanApis, lockType.Validate(nameof(lockType)).GetValue(), force, cancellationToken);
 
         /// <summary>
         /// Locks the loan in Encompass and returns the lock id.

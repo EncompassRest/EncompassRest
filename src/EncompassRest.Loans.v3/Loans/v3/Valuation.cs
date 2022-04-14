@@ -72,7 +72,7 @@ public sealed partial class Valuation : DirtyExtensibleObject, IIdentifiable
     private DirtyValue<string?>? _standardDeviation;
     private DirtyValue<decimal?>? _statedGrossRent;
     private DirtyValue<string?>? _statedPropertyCondition;
-    private DirtyValue<string?>? _statedPropertyType;
+    private DirtyValue<StringEnumValue<PropertyType>>? _statedPropertyType;
     private DirtyValue<string?>? _subjectAddressCity;
     private DirtyValue<string?>? _subjectPropertyState;
     private DirtyValue<string?>? _subjectPropertyUnitNumber;
@@ -109,6 +109,7 @@ public sealed partial class Valuation : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Correspondent Flood Zone [VAL0008]
     /// </summary>
+    [LoanFieldProperty(MissingOptionsJson = "[\"None\"]")]
     public StringEnumValue<FloodZone> AppraisalFloodZone { get => _appraisalFloodZone; set => SetField(ref _appraisalFloodZone, value); }
 
     /// <summary>
@@ -395,7 +396,7 @@ public sealed partial class Valuation : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Correspondent Stated Property Type [VAL0058]
     /// </summary>
-    public string? StatedPropertyType { get => _statedPropertyType; set => SetField(ref _statedPropertyType, value); }
+    public StringEnumValue<PropertyType> StatedPropertyType { get => _statedPropertyType; set => SetField(ref _statedPropertyType, value); }
 
     /// <summary>
     /// Correspondent Subject Address City [VAL0059]

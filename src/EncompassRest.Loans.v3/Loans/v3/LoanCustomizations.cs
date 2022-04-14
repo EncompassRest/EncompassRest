@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.v3
 {
-    partial class Loan
+    partial class Loan : ILoan
     {
         /// <summary>
         /// Implicitly converts the specified loan to an <see cref="EntityReference"/>.
@@ -14,8 +14,8 @@ namespace EncompassRest.Loans.v3
         /// <param name="loan">The loan to convert to an <see cref="EntityReference"/>.</param>
         public static implicit operator EntityReference?(Loan? loan) => loan != null && loan.Id != null ? new EntityReference(loan.Id, EntityType.Loan) : null;
 
-        //private LoanFields? _fields;
-        //private ILoanObjectBoundApis? _loanApis;
+        private LoanFields? _fields;
+        private ILoanObjectBoundApis? _loanApis;
 
         /// <summary>
         /// The <see cref="IEncompassRestClient"/> associated with this object.
@@ -23,21 +23,21 @@ namespace EncompassRest.Loans.v3
         [JsonIgnore]
         public IEncompassRestClient? Client { get; internal set; }
 
-        ///// <summary>
-        ///// The Loan Apis for this loan. Loan object must be initialized to use this.
-        ///// </summary>
-        //[JsonIgnore]
-        //public ILoanObjectBoundApis LoanApis => _loanApis ?? throw new InvalidOperationException("Loan object must be initialized to use LoanApis");
+        /// <summary>
+        /// The Loan Apis for this loan. Loan object must be initialized to use this.
+        /// </summary>
+        [JsonIgnore]
+        public ILoanObjectBoundApis LoanApis => _loanApis ?? throw new InvalidOperationException("Loan object must be initialized to use LoanApis");
 
-        //ILoanApis ILoan.LoanApis => LoanApis;
+        ILoanApis ILoan.LoanApis => LoanApis;
 
-        ///// <summary>
-        ///// The loan fields collection.
-        ///// </summary>
-        //[JsonIgnore]
-        //public LoanFields Fields => _fields ??= new LoanFields(this);
+        /// <summary>
+        /// The loan fields collection.
+        /// </summary>
+        [JsonIgnore]
+        public LoanFields Fields => _fields ??= new LoanFields(this);
 
-        //ILoanFields ILoan.Fields => Fields;
+        ILoanFields ILoan.Fields => Fields;
 
         private Application? _currentApplication;
 
@@ -114,12 +114,12 @@ namespace EncompassRest.Loans.v3
                 throw new InvalidOperationException("Cannot initialize with different loanId");
             }
 
-            //if (!ReferenceEquals(Client, client) || _loanApis == null)
-            //{
-            //    Client = client;
-            //    Id = loanId;
-            //    _loanApis = client.Loans.GetLoanApis(this);
-            //}
+            if (!ReferenceEquals(Client, client) || _loanApis == null)
+            {
+                Client = client;
+                Id = loanId;
+                _loanApis = client.Loans.GetLoanApis(this);
+            }
         }
 
         internal override void OnPropertyChanged([CallerMemberName] string? propertyName = null)

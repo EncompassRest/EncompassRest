@@ -40,7 +40,7 @@ namespace EncompassRest.Services.v1
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<byte[]> ExportLoanToMismoAsync(this IServices services, string loanId, MismoFormat format, CancellationToken cancellationToken = default) => ExportLoanToMismoAsync(services, loanId, format.Validate(nameof(format)).GetValue()!, cancellationToken);
+        public static Task<byte[]> ExportLoanToMismoAsync(this IServices services, string loanId, MismoFormat format, CancellationToken cancellationToken = default) => ExportLoanToMismoAsync(services, loanId, format.Validate(nameof(format)).GetValue(), cancellationToken);
 
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a byte array.
@@ -60,7 +60,7 @@ namespace EncompassRest.Services.v1
         /// <param name="format">Format that you want to export the loan to.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<Stream> ExportLoanToMismoStreamAsync(this IServices services, string loanId, MismoFormat format, CancellationToken cancellationToken = default) => ExportLoanToMismoStreamAsync(services, loanId, format.Validate(nameof(format)).GetValue()!, cancellationToken);
+        public static Task<Stream> ExportLoanToMismoStreamAsync(this IServices services, string loanId, MismoFormat format, CancellationToken cancellationToken = default) => ExportLoanToMismoStreamAsync(services, loanId, format.Validate(nameof(format)).GetValue(), cancellationToken);
 
         /// <summary>
         /// Use this API transforms an Encompass Loan to a MISMO 3.4 XML format for ULAD (DU or LPA) and iLAD as a stream.

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EncompassRest.Loans;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Loans.v3;
 using EncompassRest.Schema;
@@ -68,6 +69,15 @@ public static class EntityGenerator
     {
     };
 
+    private static readonly Dictionary<string, Dictionary<string, Type>> s_explicitStringEnumValues = new()
+    {
+        { nameof(MilestoneTaskContact), new() { { nameof(MilestoneTaskContact.State), typeof(State) } } },
+        { nameof(Miscellaneous), new() { { nameof(Miscellaneous.State), typeof(State) } } },
+        { nameof(Correspondent), new() { { nameof(Correspondent.ProjectClass), typeof(ProjectType) } } },
+        { nameof(Valuation), new() { { nameof(Valuation.StatedPropertyType), typeof(PropertyType) } } },
+        { nameof(Document), new() { { nameof(Document.Status), typeof(DocumentStatus) } } }
+    };
+
     public static async Task Main()
     {
         try
@@ -85,6 +95,25 @@ public static class EntityGenerator
                     var newFields = await client.Schema.GetStandardFieldSchemaAsync(null, start, limit);
                     standardFields.AddRange(newFields);
                 } while (standardFields.Count > start);
+            }
+
+            foreach (var pair in s_explicitStringEnumValues)
+            {
+                var entity = loanSchema.Definitions.TryGetValue(pair.Key, out var s) || loanSchema.Definitions.TryGetValue(pair.Key + "Contract", out s) ? s : null;
+                if (entity == null)
+                {
+                    Console.WriteLine($"Could not find {pair.Key} for setting an explicit StringEnumValue property");
+                    continue;
+                }
+                foreach (var p in pair.Value)
+                {
+                    var prop = entity.Properties[$"{char.ToLower(p.Key[0])}{p.Key.Substring(1)}"];
+                    if (prop.Enum?.Count > 0)
+                    {
+                        Console.WriteLine($"Already found some enum values for {pair.Key}.{p.Key}");
+                    }
+                    prop.Enum = Enums.GetMembers(p.Value).Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)).ToList();
+                }
             }
 
             loanSchema.Definitions["ApplicationReferenceContract"].Title = "ApplicationReference";
@@ -149,7 +178,7 @@ public static class EntityGenerator
             var enumTypes = typeof(ActionTaken).Assembly.GetTypes()
                 .Concat(typeof(ConditionStatus).Assembly.GetTypes())
                 .Where(t => t.IsPublic && t.IsEnum && t.Namespace == "EncompassRest.Loans.Enums")
-                .Concat(new[] { typeof(State), typeof(LoanFieldFormat), typeof(EntityType) })
+                .Concat(new[] { typeof(State), typeof(LoanFieldFormat), typeof(EntityType), typeof(DocumentStatus) })
                 .Select(e =>
                     new KeyValuePair<Type, HashSet<string>>(e, new HashSet<string>(
                         Enums.GetMembers(e).Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)!))))
@@ -205,10 +234,12 @@ public static class EntityGenerator
 
         var entityReferenceDerived = false;
         var isEntityReference = false;
+        var isFileAttachmentReference = false;
         if (entityName.EndsWith("Reference"))
         {
             entityReferenceDerived = entityName != "EntityReference";
             isEntityReference = !entityReferenceDerived;
+            isFileAttachmentReference = entityName == "FileAttachmentReference";
         }
 
         var serializeWholeList = false;
@@ -460,14 +491,14 @@ public static class EntityGenerator
             entityArguments += $"{(entityArguments.Length > 0 ? ", " : string.Empty)}SerializeWholeListWhenDirty = true";
         }
 
-        using (var sw = new StreamWriter(Path.Combine(isEntityReference ? "Generated" : destinationPath, entityName + ".cs")))
+        using (var sw = new StreamWriter(Path.Combine(isEntityReference ? "Generated" : (isFileAttachmentReference ? "Generated\\Loans" : destinationPath), entityName + ".cs")))
         {
             sw.Write($@"{(systemNamespace ? @"using System;
 " : string.Empty)}{(collectionsNamespace ? @"using System.Collections.Generic;
 " : string.Empty)}{(codeAnalysisNamespace ? @"using System.Diagnostics.CodeAnalysis;
 " : string.Empty)}{(enumsNamespace ? $@"using EncompassRest.Loans.Enums;
 " : string.Empty)}{(schemaNamespace ? @"using EncompassRest.Schema;
-" : string.Empty)}{(systemNamespace || collectionsNamespace || enumsNamespace || schemaNamespace ? Environment.NewLine : string.Empty)}namespace {(isEntityReference ? "EncompassRest" : @namespace)};
+" : string.Empty)}{(systemNamespace || collectionsNamespace || enumsNamespace || schemaNamespace ? Environment.NewLine : string.Empty)}namespace {(isEntityReference ? "EncompassRest" : (isFileAttachmentReference ? "EncompassRest.Loans" : @namespace))};
 
 /// <summary>
 /// {entityName}

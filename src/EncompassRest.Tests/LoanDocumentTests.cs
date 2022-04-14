@@ -5,6 +5,7 @@ using EncompassRest.Loans.v1;
 using EncompassRest.Loans.Attachments.v1;
 using EncompassRest.Loans.Documents.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EncompassRest.Loans;
 
 namespace EncompassRest.Tests
 {

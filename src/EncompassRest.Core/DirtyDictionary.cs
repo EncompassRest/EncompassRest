@@ -271,17 +271,15 @@ namespace EncompassRest
         }
     }
 
-    internal sealed class DirtyDictionaryConverter<TKey, TValue> : JsonConverter
+    internal sealed class DirtyDictionaryConverter<TKey, TValue> : JsonConverter<DirtyDictionary<TKey, TValue>>
     {
-        public override bool CanConvert(Type objectType) => objectType == TypeData<DirtyDictionary<TKey, TValue>>.Type;
-
         public override bool CanRead => false;
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => throw new NotSupportedException();
+        public override DirtyDictionary<TKey, TValue> ReadJson(JsonReader reader, Type objectType, DirtyDictionary<TKey, TValue>? existingValue, bool hasExistingValue, JsonSerializer serializer) => throw new NotSupportedException();
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, DirtyDictionary<TKey, TValue>? value, JsonSerializer serializer)
         {
-            var dirtyDictionary = (DirtyDictionary<TKey, TValue>)value;
+            var dirtyDictionary = value!;
             var dirtyItems = dirtyDictionary.GetDirtyItems();
             var dictionary = new Dictionary<TKey, TValue>(dirtyDictionary._dictionary.Comparer);
             foreach (var dirtyItem in dirtyItems)

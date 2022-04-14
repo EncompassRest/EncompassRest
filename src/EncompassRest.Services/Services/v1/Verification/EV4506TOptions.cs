@@ -169,7 +169,7 @@ namespace EncompassRest.Services.v1.Verification
         /// </summary>
         /// <param name="requestType">Indicates the type of order.</param>
         public EV4506TOptions(EV4506TRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).GetValue()!)
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 

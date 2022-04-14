@@ -21,7 +21,7 @@ namespace EncompassRest.EFolder.v1
         /// </summary>
         /// <param name="visibility">Defines the annotation visibility settings.</param>
         public AnnotationSettings(IEnumerable<AnnotationVisibilityType> visibility)
-            : this(visibility?.Select(e => e.Validate(nameof(visibility)).GetValue()!)!)
+            : this(visibility?.Select(e => e.Validate(nameof(visibility)).GetValue())!)
         {
         }
 

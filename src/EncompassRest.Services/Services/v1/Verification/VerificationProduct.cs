@@ -20,7 +20,7 @@ namespace EncompassRest.Services.v1.Verification
         public string? BranchId { get; set; }
 
         internal VerificationProduct(EntityReference entityRef, ServiceOptions options)
-            : this(entityRef, options, ServiceType.Verification.GetValue()!)
+            : this(entityRef, options, ServiceType.Verification.GetValue())
         {
         }
 

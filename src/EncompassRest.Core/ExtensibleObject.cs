@@ -5,15 +5,24 @@ using Newtonsoft.Json;
 namespace EncompassRest
 {
     /// <summary>
-    /// Base class that supports extension data and json serialization.
+    /// Base interface that supports extension data and json serialization.
     /// </summary>
-    public abstract class ExtensibleObject : SerializableObject
+    public interface IExtensibleObject : ISerializableObject
     {
-        private protected DirtyDictionary<string, object?>? _extensionData;
-
         /// <summary>
         /// Extension Data
         /// </summary>
+        IDictionary<string, object?> ExtensionData { get; set; }
+    }
+
+    /// <summary>
+    /// Base class that supports extension data and json serialization.
+    /// </summary>
+    public abstract class ExtensibleObject : SerializableObject, IExtensibleObject
+    {
+        private protected DirtyDictionary<string, object?>? _extensionData;
+
+        /// <inheritdoc/>
         [JsonExtensionData]
         public IDictionary<string, object?> ExtensionData { get => GetField(ref _extensionData); set => SetField(ref _extensionData, value); }
 

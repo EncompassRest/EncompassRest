@@ -4,28 +4,6 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.v3;
 
-partial class ApplicationReference
-{
-    /// <summary>
-    /// ApplicationReference constructor.
-    /// </summary>
-    /// <param name="entityId">The entity id.</param>
-    public ApplicationReference(string entityId)
-        : base(entityId, EncompassRest.EntityType.Application)
-    {
-    }
-
-    /// <summary>
-    /// ApplicationReference deserialization constructor.
-    /// </summary>
-    [Obsolete("Use another constructor instead.")]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    [JsonConstructor]
-    public ApplicationReference()
-    {
-    }
-}
-
 partial class DisclosureRecipientRoleReference
 {
     /// <summary>
@@ -55,39 +33,6 @@ partial class DisclosureRecipientRoleReference
     [EditorBrowsable(EditorBrowsableState.Never)]
     [JsonConstructor]
     public DisclosureRecipientRoleReference()
-    {
-    }
-}
-
-partial class FileAttachmentReference
-{
-    /// <summary>
-    /// FileAttachmentReference constructor.
-    /// </summary>
-    /// <param name="entityId">The entity id.</param>
-    /// <param name="entityType">The entity type.</param>
-    public FileAttachmentReference(string entityId, EntityType entityType)
-        : base(entityId, entityType)
-    {
-    }
-
-    /// <summary>
-    /// FileAttachmentReference constructor.
-    /// </summary>
-    /// <param name="entityId">The entity id.</param>
-    /// <param name="entityType">The entity type.</param>
-    public FileAttachmentReference(string entityId, string entityType)
-        : base(entityId, entityType)
-    {
-    }
-
-    /// <summary>
-    /// FileAttachmentReference deserialization constructor.
-    /// </summary>
-    [Obsolete("Use another constructor instead.")]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    [JsonConstructor]
-    public FileAttachmentReference()
     {
     }
 }

@@ -429,7 +429,6 @@ public sealed partial class FreddieMac : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Freddie Mac Total Reserves [CASASRN.X78]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
     public decimal? Reserves { get => _reserves; set => SetField(ref _reserves, value); }
 
     /// <summary>

@@ -37,7 +37,7 @@ namespace EncompassRest.Loans.v1
         /// <param name="id">The loan associate id.</param>
         /// <param name="loanAssociateType">The loan associate type.</param>
         public LoanAssociate(string id, LoanAssociateType loanAssociateType)
-            : this(id, loanAssociateType.Validate(nameof(loanAssociateType)).GetValue()!)
+            : this(id, loanAssociateType.Validate(nameof(loanAssociateType)).GetValue())
         {
         }
 

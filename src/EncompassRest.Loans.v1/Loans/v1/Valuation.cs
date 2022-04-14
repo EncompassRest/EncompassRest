@@ -110,6 +110,7 @@ public sealed partial class Valuation : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Correspondent Flood Zone [VALNN08]
     /// </summary>
+    [LoanFieldProperty(MissingOptionsJson = "[\"None\"]")]
     public StringEnumValue<FloodZone> AppraisalFloodZone { get => _appraisalFloodZone; set => SetField(ref _appraisalFloodZone, value); }
 
     /// <summary>

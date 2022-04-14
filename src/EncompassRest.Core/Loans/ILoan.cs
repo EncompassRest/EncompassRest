@@ -3,7 +3,7 @@
     /// <summary>
     /// The loan interface.
     /// </summary>
-    public interface ILoan
+    public interface ILoan : IDirtyExtensibleObject
     {
         /// <summary>
         /// The loan fields collection.

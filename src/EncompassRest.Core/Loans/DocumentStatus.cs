@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Documents.v1
+namespace EncompassRest.Loans
 {
     /// <summary>
     /// DocumentStatus
@@ -61,6 +61,11 @@ namespace EncompassRest.Loans.Documents.v1
         /// waived
         /// </summary>
         [EnumMember(Value = "waived")]
-        Waived = 11
+        Waived = 11,
+        /// <summary>
+        /// needed
+        /// </summary>
+        [EnumMember(Value = "needed")]
+        Needed = 12
     }
 }

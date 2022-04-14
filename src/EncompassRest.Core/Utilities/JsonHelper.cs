@@ -81,7 +81,7 @@ namespace EncompassRest.Utilities
 
         public static object FromJson(TextReader reader) => FromJson(reader, null);
 
-        public static object FromJson(TextReader reader, Type? type) => DefaultDirtySerializer.Deserialize(reader, type);
+        public static object FromJson(TextReader reader, Type? type) => DefaultDirtySerializer.Deserialize(reader, type!)!;
 
         public static void PopulateFromJson(string json, object target)
         {
@@ -98,8 +98,8 @@ namespace EncompassRest.Utilities
             var type = target.GetType();
             using (var jReader = new JsonTextReader(reader))
             {
-                var jToken = DefaultDirtySerializer.Deserialize<JToken>(jReader);
-                var source = jToken.ToObject(type, DefaultDirtySerializer);
+                var jToken = DefaultDirtySerializer.Deserialize<JToken>(jReader)!;
+                var source = jToken.ToObject(type, DefaultDirtySerializer)!;
 
                 var contract = InternalPrivateContractResolver.ResolveContract(type);
                 switch (contract)
@@ -119,7 +119,7 @@ namespace EncompassRest.Utilities
             }
         }
 
-        private static void PopulateObject(JObject jObject, JsonObjectContract objectContract, ExtensibleObject? source, ExtensibleObject target)
+        private static void PopulateObject(JObject jObject, JsonObjectContract objectContract, ExtensibleObject source, ExtensibleObject target)
         {
             var targetExtensionData = target.ExtensionData;
             foreach (var jProperty in jObject.Properties())
@@ -131,8 +131,8 @@ namespace EncompassRest.Utilities
                 }
                 else
                 {
-                    var propertyValueProvider = property.ValueProvider;
-                    var valueProvider = InternalPrivateContractResolver.GetBackingFieldInfo(objectContract.UnderlyingType, property.UnderlyingName)?.ValueProvider ?? propertyValueProvider;
+                    var propertyValueProvider = property.ValueProvider!;
+                    var valueProvider = InternalPrivateContractResolver.GetBackingFieldInfo(objectContract.UnderlyingType, property.UnderlyingName!)?.ValueProvider ?? propertyValueProvider;
                     object? targetValue = valueProvider.GetValue(target);
                     targetValue = targetValue is IValue tv ? tv.Value : targetValue;
                     object? sourceValue = valueProvider.GetValue(source);
@@ -141,7 +141,7 @@ namespace EncompassRest.Utilities
                     var setValue = true;
                     if (targetValue != null && sourceValue != null && !(value is JValue))
                     {
-                        var propertyContract = InternalPrivateContractResolver.ResolveContract(property.PropertyType);
+                        var propertyContract = InternalPrivateContractResolver.ResolveContract(property.PropertyType!);
                         switch (propertyContract)
                         {
                             case JsonObjectContract propertyObjectContract:
@@ -168,7 +168,7 @@ namespace EncompassRest.Utilities
 
         private static void PopulateDictionary(JObject jObject, JsonDictionaryContract dictionaryContract, IDictionary source, IDictionary target)
         {
-            var valueContract = InternalPrivateContractResolver.ResolveContract(dictionaryContract.DictionaryValueType);
+            var valueContract = InternalPrivateContractResolver.ResolveContract(dictionaryContract.DictionaryValueType!);
             foreach (DictionaryEntry entry in source)
             {
                 var key = entry.Key;
@@ -179,7 +179,7 @@ namespace EncompassRest.Utilities
                     var existingValue = target[key];
                     if (existingValue != null)
                     {
-                        var jToken = jObject[key];
+                        var jToken = jObject[key]!;
                         switch (valueContract)
                         {
                             case JsonObjectContract objectContract:
@@ -224,7 +224,7 @@ namespace EncompassRest.Utilities
         {
             if (target.Count > 0 && target is IEnumerable<DirtyExtensibleObject> targetEnumerable)
             {
-                var objectContract = (JsonObjectContract)InternalPrivateContractResolver.ResolveContract(arrayContract.CollectionItemType);
+                var objectContract = (JsonObjectContract)InternalPrivateContractResolver.ResolveContract(arrayContract.CollectionItemType!);
                 var sourceEnumerable = (IEnumerable<DirtyExtensibleObject>)source;
                 for (var i = target.Count - 1; i >= 0; --i)
                 {
@@ -268,7 +268,7 @@ namespace EncompassRest.Utilities
                         }
                         if (existing != null)
                         {
-                            PopulateObject((JObject)jArray[i], objectContract, sourceItem, existing);
+                            PopulateObject((JObject)jArray[i], objectContract, sourceItem!, existing);
                         }
                     }
                 }
@@ -306,7 +306,7 @@ namespace EncompassRest.Utilities
 
         public static void ToJson(object? value, TextWriter writer) => ToJson(value, null, writer);
 
-        public static void ToJson(object? value, Type? type, TextWriter writer) => DefaultDirtySerializer.Serialize(writer, value, type);
+        public static void ToJson(object? value, Type? type, TextWriter writer) => DefaultDirtySerializer.Serialize(writer, value, type!);
 
         public static T Clone<T>(this JsonSerializer jsonSerializer, T value)
         {
@@ -320,7 +320,7 @@ namespace EncompassRest.Utilities
                 ms.Position = 0;
                 using (var sr = new StreamReader(ms))
                 {
-                    return (T)jsonSerializer.Deserialize(sr, objectType);
+                    return (T)jsonSerializer.Deserialize(sr, objectType!)!;
                 }
             }
         }
@@ -363,7 +363,7 @@ namespace EncompassRest.Utilities
                 var property = base.CreateProperty(member, memberSerialization);
                 if (member is PropertyInfo propertyInfo)
                 {
-                    var enumFormatAttribute = (EnumFormatAttribute)property.AttributeProvider.GetAttributes(TypeData<EnumFormatAttribute>.Type, false).FirstOrDefault();
+                    var enumFormatAttribute = (EnumFormatAttribute)property.AttributeProvider!.GetAttributes(TypeData<EnumFormatAttribute>.Type, false).FirstOrDefault();
                     if (enumFormatAttribute != null)
                     {
                         property.Converter = new EnumJsonConverter(enumFormatAttribute.EnumFormat);
@@ -416,7 +416,7 @@ namespace EncompassRest.Utilities
                     if (propertyType == TypeData<StringDecimalValue>.Type)
                     {
                         var propertyContract = ResolveContract(propertyType);
-                        valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter);
+                        valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter!);
                     }
                     else
                     {
@@ -427,7 +427,7 @@ namespace EncompassRest.Utilities
                             if (genericTypeDefinition == TypeData.OpenStringEnumValueType || genericTypeDefinition == TypeData.OpenNaType)
                             {
                                 var propertyContract = ResolveContract(propertyType);
-                                valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter);
+                                valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter!);
                             }
                         }
                     }
@@ -458,9 +458,9 @@ namespace EncompassRest.Utilities
                     _stringCreator = stringCreator;
                 }
 
-                public object GetValue(object target) => _valueProvider.GetValue(target).ToString();
+                public object GetValue(object target) => _valueProvider.GetValue(target)!.ToString();
 
-                public void SetValue(object target, object value) => _valueProvider.SetValue(target, value is string str ? _stringCreator.Create(str) : value);
+                public void SetValue(object target, object? value) => _valueProvider.SetValue(target, value is string str ? _stringCreator.Create(str) : value);
             }
         }
 
@@ -512,7 +512,7 @@ namespace EncompassRest.Utilities
                 var objectTypeInfo = objectType.GetTypeInfo();
                 if (TypeData<ExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                 {
-                    contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object?>)((ExtensibleObject)o).ExtensionData).GetDirtyItems().Select(p => KeyValuePair.Create((object)p.Key, p.Value));
+                    contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object?>)((ExtensibleObject)o).ExtensionData).GetDirtyItems().Select(p => KeyValuePair.Create((object)p.Key, p.Value!));
                     contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
                     if (TypeData<DirtyExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                     {
@@ -544,8 +544,8 @@ namespace EncompassRest.Utilities
                     var propertiesToAlwaysSerialize = entityAttribute.PropertiesToAlwaysSerialize!.Split(',');
                     foreach (var propertyToAlwaysSerialize in propertiesToAlwaysSerialize)
                     {
-                        var property = contract.Properties.GetClosestMatchProperty(propertyToAlwaysSerialize);
-                        var valueProvider = property.ValueProvider;
+                        var property = contract.Properties.GetClosestMatchProperty(propertyToAlwaysSerialize)!;
+                        var valueProvider = property.ValueProvider!;
                         property.ShouldSerialize = o => valueProvider.GetValue(o) != null;
                     }
                 }
@@ -565,7 +565,7 @@ namespace EncompassRest.Utilities
                 }
                 if (valueProvider != null)
                 {
-                    property.ShouldSerialize = o => ((IDirty)valueProvider.GetValue(o))?.Dirty == true;
+                    property.ShouldSerialize = o => ((IDirty?)valueProvider.GetValue(o))?.Dirty == true;
                 }
             }
         }

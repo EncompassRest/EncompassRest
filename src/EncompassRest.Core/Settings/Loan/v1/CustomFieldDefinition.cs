@@ -79,7 +79,7 @@ namespace EncompassRest.Settings.Loan.v1
         /// <param name="description">Description for loan custom field.</param>
         /// <param name="format">Indicates the range and format of values the custom field can store.</param>
         public CustomFieldDefinition(string id, string description, LoanFieldFormat format)
-            : this(id, description, format.Validate(nameof(format)).GetValue()!)
+            : this(id, description, format.Validate(nameof(format)).GetValue())
         {
         }
 

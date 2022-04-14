@@ -41,7 +41,7 @@ namespace EncompassRest.Contacts.v1
         /// <param name="contacts">The contacts to add or remove.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task AssignGroupContactsAsync(this IContactGroups contactGroups, string groupId, AssignmentAction action, IEnumerable<EntityReference> contacts, CancellationToken cancellationToken = default) => AssignGroupContactsAsync(contactGroups, groupId, action.Validate(nameof(action)).GetValue()!, contacts, cancellationToken);
+        public static Task AssignGroupContactsAsync(this IContactGroups contactGroups, string groupId, AssignmentAction action, IEnumerable<EntityReference> contacts, CancellationToken cancellationToken = default) => AssignGroupContactsAsync(contactGroups, groupId, action.Validate(nameof(action)).GetValue(), contacts, cancellationToken);
 
         /// <summary>
         /// Adds or removes contacts in a contact group.
@@ -151,7 +151,7 @@ namespace EncompassRest.Contacts.v1
         /// <param name="groupType">The contact group type.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<List<ContactGroup>> GetGroupsAsync(this IContactGroups contactGroups, ContactType contactType, ContactGroupType? groupType = null, CancellationToken cancellationToken = default) => GetGroupsAsync(contactGroups, contactType.Validate(nameof(contactType)).GetValue()!, groupType?.Validate(nameof(groupType)).GetValue(), cancellationToken);
+        public static Task<List<ContactGroup>> GetGroupsAsync(this IContactGroups contactGroups, ContactType contactType, ContactGroupType? groupType = null, CancellationToken cancellationToken = default) => GetGroupsAsync(contactGroups, contactType.Validate(nameof(contactType)).GetValue(), groupType?.Validate(nameof(groupType)).GetValue(), cancellationToken);
 
         /// <summary>
         /// Retrieves all contact groups for a given contact type and group type.

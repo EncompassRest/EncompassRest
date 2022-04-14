@@ -134,7 +134,7 @@ namespace EncompassRest.Schema.v1
                 queryParameters.Add("fieldNamePattern", fieldNamePattern);
             }
 
-            return PostAsync<Dictionary<string, string>>("pathGenerator", queryParameters.ToString(), JsonStreamContent.Create(fieldIds ?? new string[0]), nameof(GeneratePathsAsync), null, cancellationToken);
+            return PostAsync<Dictionary<string, string>>("pathGenerator", queryParameters.ToString(), JsonStreamContent.Create(fieldIds ?? Array<string>.Empty), nameof(GeneratePathsAsync), null, cancellationToken);
         }
 
         public Task<string> GeneratePathsRawAsync(string fieldIds, string? queryString = null, CancellationToken cancellationToken = default) => PostRawAsync("encompass/v1/schema/loan/pathGenerator", queryString, string.IsNullOrEmpty(fieldIds) ? null : new JsonStringContent(fieldIds), nameof(GeneratePathsRawAsync), null, cancellationToken);

@@ -60,7 +60,7 @@ namespace EncompassRest.Loans.v1
         /// <param name="entities">The list of loan entities to retrieve from the loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<Loan> GetLoanAsync(this ILoans loans, string loanId, IEnumerable<LoanEntity>? entities, CancellationToken cancellationToken = default) => GetLoanAsync(loans, loanId, entities?.Select(e => e.Validate(nameof(entities)).GetValue()!), cancellationToken);
+        public static Task<Loan> GetLoanAsync(this ILoans loans, string loanId, IEnumerable<LoanEntity>? entities, CancellationToken cancellationToken = default) => GetLoanAsync(loans, loanId, entities?.Select(e => e.Validate(nameof(entities)).GetValue()), cancellationToken);
 
         /// <summary>
         /// Returns the specific entities of a loan.
@@ -225,7 +225,7 @@ namespace EncompassRest.Loans.v1
         /// <param name="loan">Returns a loan object if <paramref name="createLoanOptions"/>.Populate is <c>true</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<string> CreateLoanFromImportFileAsync(this ILoans loans, ImportFileType importFileType, string importFile, CreateLoanOptions? createLoanOptions, out Loan? loan, CancellationToken cancellationToken = default) => CreateLoanFromImportFileAsync(loans, importFileType.Validate(nameof(importFileType)).GetValue()!, importFile, createLoanOptions, out loan, cancellationToken);
+        public static Task<string> CreateLoanFromImportFileAsync(this ILoans loans, ImportFileType importFileType, string importFile, CreateLoanOptions? createLoanOptions, out Loan? loan, CancellationToken cancellationToken = default) => CreateLoanFromImportFileAsync(loans, importFileType.Validate(nameof(importFileType)).GetValue(), importFile, createLoanOptions, out loan, cancellationToken);
 
         /// <summary>
         /// Creates a new loan in Encompass using loan data imported from a Fannie Mae 3.x loan file and returns the loan id of the loan created.
@@ -256,7 +256,7 @@ namespace EncompassRest.Loans.v1
         /// <param name="loan">Returns a loan object if <paramref name="createLoanOptions"/>.Populate is <c>true</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<string> CreateLoanFromImportFileAsync(this ILoans loans, ImportFileType importFileType, Stream importFile, CreateLoanOptions? createLoanOptions, out Loan? loan, CancellationToken cancellationToken = default) => CreateLoanFromImportFileAsync(loans, importFileType.Validate(nameof(importFileType)).GetValue()!, importFile, createLoanOptions, out loan, cancellationToken);
+        public static Task<string> CreateLoanFromImportFileAsync(this ILoans loans, ImportFileType importFileType, Stream importFile, CreateLoanOptions? createLoanOptions, out Loan? loan, CancellationToken cancellationToken = default) => CreateLoanFromImportFileAsync(loans, importFileType.Validate(nameof(importFileType)).GetValue(), importFile, createLoanOptions, out loan, cancellationToken);
 
         /// <summary>
         /// Creates a new loan in Encompass using loan data imported from a Fannie Mae 3.x loan file and returns the loan id of the loan created.

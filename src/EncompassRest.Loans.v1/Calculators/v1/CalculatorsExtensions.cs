@@ -82,7 +82,7 @@ namespace EncompassRest.Calculators.v1
         /// <param name="calcAllOnly">Indicates whether calculations will be executed for all fields. The default is <c>true</c>.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task CalculateLoanAsync(this ICalculators calculators, Loan loan, IEnumerable<LoanEntity>? entities, bool? calcAllOnly, CancellationToken cancellationToken = default) => CalculateLoanAsync(calculators, loan, entities?.Select(e => e.Validate(nameof(entities)).GetValue()!), calcAllOnly, cancellationToken);
+        public static Task CalculateLoanAsync(this ICalculators calculators, Loan loan, IEnumerable<LoanEntity>? entities, bool? calcAllOnly, CancellationToken cancellationToken = default) => CalculateLoanAsync(calculators, loan, entities?.Select(e => e.Validate(nameof(entities)).GetValue()), calcAllOnly, cancellationToken);
 
         /// <summary>
         /// Preview calculations for a loan. This API calculates fields similar to the calculations performed in Update Loan, however, the transient calculations provide a preview and do not save to the loan file.

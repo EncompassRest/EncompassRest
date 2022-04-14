@@ -19,20 +19,18 @@ namespace EncompassRest.Schema.v1
         public abstract InstanceType Type { get; }
     }
 
-    internal sealed class InstanceConverter : JsonConverter
+    internal sealed class InstanceConverter : JsonConverter<Instance>
     {
-        public override bool CanConvert(Type objectType) => objectType == TypeData<Instance>.Type;
-
         public override bool CanWrite => false;
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override Instance ReadJson(JsonReader reader, Type objectType, Instance? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             switch (reader.TokenType)
             {
                 case JsonToken.StartObject:
-                    return new StringDictionaryInstance(serializer.Deserialize<Dictionary<string, string>>(reader));
+                    return new StringDictionaryInstance(serializer.Deserialize<Dictionary<string, string>>(reader)!);
                 case JsonToken.StartArray:
-                    var list = serializer.Deserialize<List<object>>(reader);
+                    var list = serializer.Deserialize<List<object>>(reader)!;
                     if (list.Count > 0)
                     {
                         var first = list[0];
@@ -54,6 +52,6 @@ namespace EncompassRest.Schema.v1
             }
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotSupportedException();
+        public override void WriteJson(JsonWriter writer, Instance? value, JsonSerializer serializer) => throw new NotSupportedException();
     }
 }

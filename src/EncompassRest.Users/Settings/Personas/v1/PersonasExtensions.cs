@@ -50,7 +50,7 @@ namespace EncompassRest.Settings.Personas.v1
         /// <param name="categories">The Persona Categories.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<Persona> GetPersonaAsync(this IPersonas personas, string id, IEnumerable<PersonaCategory>? categories, CancellationToken cancellationToken = default) => GetPersonaAsync(personas, id, categories?.Select(c => c.Validate(nameof(categories)).GetValue()!), cancellationToken);
+        public static Task<Persona> GetPersonaAsync(this IPersonas personas, string id, IEnumerable<PersonaCategory>? categories, CancellationToken cancellationToken = default) => GetPersonaAsync(personas, id, categories?.Select(c => c.Validate(nameof(categories)).GetValue()), cancellationToken);
 
         /// <summary>
         /// Returns details for a specified persona.

@@ -42,9 +42,9 @@ namespace EncompassRest.Utilities
                         }
                         return null;
                     case JsonToken.String:
-                        return Enums.Parse(typeData.NonNullableValueTypeData?.Type ?? objectType, (string)reader.Value, ignoreCase: false, EnumFormat);
+                        return Enums.Parse(typeData.NonNullableValueTypeData?.Type ?? objectType, (string)reader.Value!, ignoreCase: false, EnumFormat);
                     case JsonToken.Integer:
-                        return Enums.ToObject(typeData.NonNullableValueTypeData?.Type ?? objectType, reader.Value);
+                        return Enums.ToObject(typeData.NonNullableValueTypeData?.Type ?? objectType, reader.Value!);
                     default:
                         throw new JsonSerializationException($"Unexpected token {reader.TokenType} when parsing enum.");
                 }
@@ -55,7 +55,7 @@ namespace EncompassRest.Utilities
             }
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             if (value == null)
             {

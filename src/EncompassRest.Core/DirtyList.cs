@@ -298,7 +298,7 @@ namespace EncompassRest
         private T ValidateValue(object? value) => value is T tValue ? tValue : (value is null && TypeData<T>.Data.IsNullable ? default(T)! : throw new ArgumentException($"must be of type {TypeData<T>.Type.Name}", nameof(value)));
     }
 
-    internal sealed class DirtyListConverter<T> : JsonConverter
+    internal sealed class DirtyListConverter<T> : JsonConverter<DirtyList<T>>
     {
         private static readonly bool s_serializeWholeList = (!TypeData<T>.TypeInfo.IsSubclassOf(TypeData<DirtyExtensibleObject>.Type)) || TypeData<T>.TypeInfo.GetCustomAttribute<EntityAttribute>(false)?.SerializeWholeListWhenDirty == true;
         private readonly bool _serializeWholeList;
@@ -312,12 +312,10 @@ namespace EncompassRest
             _serializeWholeList = serializeWholeList;
         }
 
-        public override bool CanConvert(Type objectType) => objectType == TypeData<DirtyList<T>>.Type;
-
         public override bool CanRead => false;
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => throw new NotSupportedException();
+        public override DirtyList<T> ReadJson(JsonReader reader, Type objectType, DirtyList<T>? existingValue, bool hasExistingValue, JsonSerializer serializer) => throw new NotSupportedException();
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => serializer.Serialize(writer, (_serializeWholeList || s_serializeWholeList ? ((DirtyList<T>)value)._list : ((DirtyList<T>)value)._list.Where(item => item.Dirty)).Select(item => (T)item));
+        public override void WriteJson(JsonWriter writer, DirtyList<T>? value, JsonSerializer serializer) => serializer.Serialize(writer, (_serializeWholeList || s_serializeWholeList ? value!._list : value!._list.Where(item => item.Dirty)).Select(item => (T)item));
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace EncompassRest.Schema.v3;
 
@@ -24,7 +23,8 @@ public abstract class SchemaBase : ExtensibleObject
     /// <summary>
     /// PropertySchema AdditionalProperties
     /// </summary>
-    public JToken? AdditionalProperties { get; set; }
+    [JsonConverter(typeof(AdditionalPropertiesConverter))]
+    public AdditionalProperties? AdditionalProperties { get; set; }
 
     /// <summary>
     /// PropertySchema Enum

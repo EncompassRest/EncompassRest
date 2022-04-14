@@ -15,6 +15,7 @@ public sealed partial class LockConfirm : DirtyExtensibleObject, IIdentifiable
     private DirtyValue<string?>? _confirmedById;
     private DirtyValue<bool?>? _confirmedByIdIndicator;
     private DirtyValue<bool?>? _hideLog;
+    private DirtyValue<bool?>? _includeConfirmCount;
     private DirtyValue<string?>? _requestGuid;
     private DirtyValue<string?>? _sellSideDeliveredBy;
     private DirtyValue<DateTime?>? _sellSideDeliveryDate;
@@ -61,6 +62,11 @@ public sealed partial class LockConfirm : DirtyExtensibleObject, IIdentifiable
     /// LockConfirmContract HideLog
     /// </summary>
     public bool? HideLog { get => _hideLog; set => SetField(ref _hideLog, value); }
+
+    /// <summary>
+    /// LockConfirmContract IncludeConfirmCount
+    /// </summary>
+    public bool? IncludeConfirmCount { get => _includeConfirmCount; set => SetField(ref _includeConfirmCount, value); }
 
     /// <summary>
     /// LockConfirmContract RequestGuid

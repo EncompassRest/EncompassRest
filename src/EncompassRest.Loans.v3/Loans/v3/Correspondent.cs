@@ -413,7 +413,7 @@ public sealed partial class Correspondent : DirtyExtensibleObject, IIdentifiable
     private DirtyValue<DateTime?>? _priorApplicationDate;
     private DirtyValue<decimal?>? _priorDisclosedDailyInterest;
     private DirtyValue<DateTime?>? _priorDisclosureDate;
-    private DirtyValue<string?>? _projectClass;
+    private DirtyValue<StringEnumValue<ProjectType>>? _projectClass;
     private DirtyValue<string?>? _projectName;
     private DirtyValue<bool?>? _propertyAcquiredLessThanOneYearAgo;
     private DirtyValue<string?>? _propertyAppraisalType;
@@ -713,6 +713,7 @@ public sealed partial class Correspondent : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Correspondent Flood Zone [CORRESPONDENT.X92]
     /// </summary>
+    [LoanFieldProperty(MissingOptionsJson = "[\"None\"]")]
     public StringEnumValue<FloodZone> AppraisalFloodZone { get => _appraisalFloodZone; set => SetField(ref _appraisalFloodZone, value); }
 
     /// <summary>
@@ -2580,7 +2581,7 @@ public sealed partial class Correspondent : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Correspondent Project Class [CORRESPONDENT.X301]
     /// </summary>
-    public string? ProjectClass { get => _projectClass; set => SetField(ref _projectClass, value); }
+    public StringEnumValue<ProjectType> ProjectClass { get => _projectClass; set => SetField(ref _projectClass, value); }
 
     /// <summary>
     /// Correspondent Project Name [CORRESPONDENT.X302]

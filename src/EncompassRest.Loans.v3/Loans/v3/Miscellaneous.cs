@@ -108,7 +108,7 @@ public sealed partial class Miscellaneous : DirtyExtensibleObject, IIdentifiable
     private DirtyValue<decimal?>? _refundOrOverpaidInterest;
     private DirtyValue<string?>? _savedLogVersion;
     private DirtyValue<string?>? _schoolTaxExcluded;
-    private DirtyValue<string?>? _state;
+    private DirtyValue<StringEnumValue<State>>? _state;
     private DirtyValue<string?>? _statusUrl;
     private DirtyValue<DateTime?>? _submitDate;
     private DirtyValue<string?>? _subTaxYear;
@@ -682,7 +682,7 @@ public sealed partial class Miscellaneous : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borr Info State [4099]
     /// </summary>
-    public string? State { get => _state; set => SetField(ref _state, value); }
+    public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
 
     /// <summary>
     /// Trans Details Processing Network Status URL [EPN.X4]

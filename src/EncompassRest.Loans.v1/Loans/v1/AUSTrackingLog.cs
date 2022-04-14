@@ -25,8 +25,10 @@ public sealed partial class AUSTrackingLog : DirtyExtensibleObject, IIdentifiabl
     private DirtyValue<int?>? _logAppraisedValue;
     private DirtyValue<decimal?>? _logARMQualifyingRate;
     private DirtyValue<string?>? _logAssessmentType;
+    private DirtyValue<string?>? _logAusLogExtensionId;
     private DirtyValue<string?>? _logAusOrderLinkId;
     private DirtyValue<string?>? _logAUSRecommendation;
+    private DirtyValue<string?>? _logAusResponseFileName;
     private DirtyValue<string?>? _logAUSStatus;
     private DirtyValue<StringEnumValue<LogAUSTrackingType>>? _logAUSTrackingType;
     private DirtyValue<string?>? _logAUSTransactionID;
@@ -308,6 +310,12 @@ public sealed partial class AUSTrackingLog : DirtyExtensibleObject, IIdentifiabl
     public string? LogAssessmentType { get => _logAssessmentType; set => SetField(ref _logAssessmentType, value); }
 
     /// <summary>
+    /// AUS Tracking - AUS Log Extension Id [AUS.X197]
+    /// </summary>
+    [LoanFieldProperty(ReadOnly = true)]
+    public string? LogAusLogExtensionId { get => _logAusLogExtensionId; set => SetField(ref _logAusLogExtensionId, value); }
+
+    /// <summary>
     /// AUS Tracking - AUS Order LinkId  [AUS.X196]
     /// </summary>
     public string? LogAusOrderLinkId { get => _logAusOrderLinkId; set => SetField(ref _logAusOrderLinkId, value); }
@@ -316,6 +324,12 @@ public sealed partial class AUSTrackingLog : DirtyExtensibleObject, IIdentifiabl
     /// AUS Tracking - AUS Recommendation [AUS.X6]
     /// </summary>
     public string? LogAUSRecommendation { get => _logAUSRecommendation; set => SetField(ref _logAUSRecommendation, value); }
+
+    /// <summary>
+    /// AUS Tracking - Aus Response File Name [AUS.X198]
+    /// </summary>
+    [LoanFieldProperty(ReadOnly = true)]
+    public string? LogAusResponseFileName { get => _logAusResponseFileName; set => SetField(ref _logAusResponseFileName, value); }
 
     /// <summary>
     /// AUS Tracking - Freddie Mac - AUS Status [AUS.X121]

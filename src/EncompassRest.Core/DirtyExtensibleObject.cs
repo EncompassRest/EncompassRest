@@ -9,10 +9,14 @@ using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest
 {
+    public interface IDirtyExtensibleObject : IExtensibleObject, INotifyPropertyChanged
+    {
+    }
+
     /// <summary>
     /// Base class that supports extension data and dirty json serialization.
     /// </summary>
-    public abstract class DirtyExtensibleObject : ExtensibleObject, IDirty, IIdentifiable, INotifyPropertyChanged
+    public abstract class DirtyExtensibleObject : ExtensibleObject, IDirty, IIdentifiable, IDirtyExtensibleObject
 #if ICLONEABLE
         , ICloneable
 #endif
@@ -101,7 +105,7 @@ namespace EncompassRest
                     {
                         if (!property.Ignored)
                         {
-                            var valueProvider = customContractResolver.GetBackingFieldInfo(property.DeclaringType, property.UnderlyingName)?.ValueProvider ?? property.ValueProvider;
+                            var valueProvider = customContractResolver.GetBackingFieldInfo(property.DeclaringType!, property.UnderlyingName!)?.ValueProvider ?? property.ValueProvider!;
                             if ((valueProvider.GetValue(this) as IDirty)?.Dirty == true)
                             {
                                 dirty = true;
@@ -124,7 +128,7 @@ namespace EncompassRest
                     {
                         if (!property.Ignored)
                         {
-                            var valueProvider = customContractResolver.GetBackingFieldInfo(property.DeclaringType, property.UnderlyingName)?.ValueProvider ?? property.ValueProvider;
+                            var valueProvider = customContractResolver.GetBackingFieldInfo(property.DeclaringType!, property.UnderlyingName!)?.ValueProvider ?? property.ValueProvider!;
                             if (valueProvider.GetValue(this) is IDirty dirtyObject)
                             {
                                 dirtyObject.Dirty = value;

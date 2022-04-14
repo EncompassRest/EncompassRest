@@ -78,7 +78,7 @@ namespace EncompassRest.Tests
             public string Password { get; set; }
         }
 
-        protected static void AssertNoExtensionData(IEnumerable<ExtensibleObject> values, string rootName, string id, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore = null)
+        protected static void AssertNoExtensionData(IEnumerable<IExtensibleObject> values, string rootName, string id, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore = null)
         {
             var fails = new List<string>();
             var i = 0;
@@ -91,7 +91,7 @@ namespace EncompassRest.Tests
 {string.Join(Environment.NewLine, fails)}");
         }
 
-        protected static void AssertNoExtensionData(ExtensibleObject value, string rootName, string id, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore = null)
+        protected static void AssertNoExtensionData(IExtensibleObject value, string rootName, string id, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore = null)
         {
             var fails = new List<string>();
             TestForExtensionData(value, new List<string> { rootName }, fails, testForUndefinedEnumOptions, enumOptionsToIgnore);
@@ -99,7 +99,7 @@ namespace EncompassRest.Tests
 {string.Join(Environment.NewLine, fails)}");
         }
 
-        private static void TestForExtensionData(ExtensibleObject value, List<string> path, List<string> fails, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore)
+        private static void TestForExtensionData(IExtensibleObject value, List<string> path, List<string> fails, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore)
         {
             if (value.ExtensionData.Count > 0)
             {

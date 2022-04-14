@@ -46,7 +46,7 @@ namespace EncompassRest
         /// <param name="entityId">The entity id.</param>
         /// <param name="entityType">The entity type.</param>
         public EntityReference(string entityId, EntityType entityType)
-            : this(entityId, entityType.Validate(nameof(entityType)).GetValue()!)
+            : this(entityId, entityType.Validate(nameof(entityType)).GetValue())
         {
         }
 

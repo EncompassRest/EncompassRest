@@ -42,7 +42,7 @@ public sealed partial class Document : DirtyExtensibleObject, IIdentifiable
     private EntityReference? _reviewedBy;
     private DirtyValue<DateTime?>? _reviewedDate;
     private DirtyList<EntityReference>? _roles;
-    private DirtyValue<string?>? _status;
+    private DirtyValue<StringEnumValue<DocumentStatus>>? _status;
     private DirtyValue<DateTime?>? _statusDate;
     private DirtyValue<string?>? _title;
     private EntityReference? _verification;
@@ -230,7 +230,7 @@ public sealed partial class Document : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// DocumentContract Status
     /// </summary>
-    public string? Status { get => _status; set => SetField(ref _status, value); }
+    public StringEnumValue<DocumentStatus> Status { get => _status; set => SetField(ref _status, value); }
 
     /// <summary>
     /// DocumentContract StatusDate

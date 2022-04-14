@@ -45,7 +45,7 @@ namespace EncompassRest.Services.v1.Flood
         /// <param name="entityRef">References the entity ID and entity type.</param>
         /// <param name="options">FloodProduct options.</param>
         public FloodProduct(EntityReference entityRef, FloodOptions options)
-            : base(entityRef, options, ServiceType.Flood.GetValue()!)
+            : base(entityRef, options, ServiceType.Flood.GetValue())
         {
         }
 

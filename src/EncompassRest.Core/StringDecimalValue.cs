@@ -112,9 +112,9 @@ namespace EncompassRest
     {
         public override bool CanConvert(Type objectType) => objectType == TypeData<StringDecimalValue>.Type;
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => new StringDecimalValue(reader.Value?.ToString());
+        public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) => new StringDecimalValue(reader.Value?.ToString());
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value is StringDecimalValue sdv ? sdv.StringValue : value?.ToString());
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) => writer.WriteValue(value is StringDecimalValue sdv ? sdv.StringValue : value?.ToString());
 
         public object Create(string? value) => new StringDecimalValue(value);
     }

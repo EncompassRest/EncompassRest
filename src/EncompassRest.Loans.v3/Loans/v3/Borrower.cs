@@ -2426,142 +2426,142 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     public int? SchoolingTermYears { get => _schoolingTermYears; set => SetField(ref _schoolingTermYears, value); }
 
     /// <summary>
-    /// Declarations Section A Occupancy Explanation [URLA.X216]
+    /// BorrowerContract SectionAExplanation [URLA.X216], [URLA.X271]
     /// </summary>
     public string? SectionAExplanation { get => _sectionAExplanation; set => SetField(ref _sectionAExplanation, value); }
 
     /// <summary>
-    /// Print Section A explanation - Borrower [URLA.X247]
+    /// BorrowerContract SectionAprintexplanation [URLA.X247], [URLA.X285]
     /// </summary>
     public bool? SectionAprintexplanation { get => _sectionAprintexplanation; set => SetField(ref _sectionAprintexplanation, value); }
 
     /// <summary>
-    /// Declarations Section B Explanation [URLA.X217]
+    /// BorrowerContract SectionBExplanation [URLA.X217], [URLA.X272]
     /// </summary>
     public string? SectionBExplanation { get => _sectionBExplanation; set => SetField(ref _sectionBExplanation, value); }
 
     /// <summary>
-    /// Print Section B explanation - Borrower [URLA.X248]
+    /// BorrowerContract SectionBprintexplanation [URLA.X248], [URLA.X286]
     /// </summary>
     public bool? SectionBprintexplanation { get => _sectionBprintexplanation; set => SetField(ref _sectionBprintexplanation, value); }
 
     /// <summary>
-    /// Declarations Section C Explanation [URLA.X218]
+    /// BorrowerContract SectionCExplanation [URLA.X218], [URLA.X273]
     /// </summary>
     public string? SectionCExplanation { get => _sectionCExplanation; set => SetField(ref _sectionCExplanation, value); }
 
     /// <summary>
-    /// Print Section C explanation - Borrower [URLA.X249]
+    /// BorrowerContract SectionCprintexplanation [URLA.X249], [URLA.X287]
     /// </summary>
     public bool? SectionCprintexplanation { get => _sectionCprintexplanation; set => SetField(ref _sectionCprintexplanation, value); }
 
     /// <summary>
-    /// Print Section D1 explanation - Borrower [URLA.X250]
+    /// BorrowerContract SectionD1printexplanation [URLA.X250], [URLA.X288]
     /// </summary>
     public bool? SectionD1printexplanation { get => _sectionD1printexplanation; set => SetField(ref _sectionD1printexplanation, value); }
 
     /// <summary>
-    /// Declarations Section D2 Explanation [URLA.X235]
+    /// BorrowerContract SectionD2Explanation [URLA.X235], [URLA.X275]
     /// </summary>
     public string? SectionD2Explanation { get => _sectionD2Explanation; set => SetField(ref _sectionD2Explanation, value); }
 
     /// <summary>
-    /// Print Section D2 explanation - Borrower [URLA.X251]
+    /// BorrowerContract SectionD2printexplanation [URLA.X251], [URLA.X289]
     /// </summary>
     public bool? SectionD2printexplanation { get => _sectionD2printexplanation; set => SetField(ref _sectionD2printexplanation, value); }
 
     /// <summary>
-    /// Declarations Section D Explanation [URLA.X219]
+    /// BorrowerContract SectionDExplanation [URLA.X219], [URLA.X274]
     /// </summary>
     public string? SectionDExplanation { get => _sectionDExplanation; set => SetField(ref _sectionDExplanation, value); }
 
     /// <summary>
-    /// Declarations Section E Explanation [URLA.X220]
+    /// BorrowerContract SectionEExplanation [URLA.X220], [URLA.X276]
     /// </summary>
     public string? SectionEExplanation { get => _sectionEExplanation; set => SetField(ref _sectionEExplanation, value); }
 
     /// <summary>
-    /// Print Section E explanation - Borrower [URLA.X252]
+    /// BorrowerContract SectionEprintexplanation [URLA.X252], [URLA.X290]
     /// </summary>
     public bool? SectionEprintexplanation { get => _sectionEprintexplanation; set => SetField(ref _sectionEprintexplanation, value); }
 
     /// <summary>
-    /// Declarations Section F Explanation [URLA.X221]
+    /// BorrowerContract SectionFExplanation [URLA.X221], [URLA.X277]
     /// </summary>
     public string? SectionFExplanation { get => _sectionFExplanation; set => SetField(ref _sectionFExplanation, value); }
 
     /// <summary>
-    /// Print Section F explanation - Borrower [URLA.X253]
+    /// BorrowerContract SectionFprintexplanation [URLA.X253], [URLA.X291]
     /// </summary>
     public bool? SectionFprintexplanation { get => _sectionFprintexplanation; set => SetField(ref _sectionFprintexplanation, value); }
 
     /// <summary>
-    /// Declarations Section G Explanation [URLA.X222]
+    /// BorrowerContract SectionGExplanation [URLA.X222], [URLA.X278]
     /// </summary>
     public string? SectionGExplanation { get => _sectionGExplanation; set => SetField(ref _sectionGExplanation, value); }
 
     /// <summary>
-    /// Print Section G explanation - Borrower [URLA.X254]
+    /// BorrowerContract SectionGprintexplanation [URLA.X254], [URLA.X292]
     /// </summary>
     public bool? SectionGprintexplanation { get => _sectionGprintexplanation; set => SetField(ref _sectionGprintexplanation, value); }
 
     /// <summary>
-    /// Declarations Section H Explanation [URLA.X223]
+    /// BorrowerContract SectionHExplanation [URLA.X223], [URLA.X279]
     /// </summary>
     public string? SectionHExplanation { get => _sectionHExplanation; set => SetField(ref _sectionHExplanation, value); }
 
     /// <summary>
-    /// Print Section H explanation - Borrower [URLA.X255]
+    /// BorrowerContract SectionHprintexplanation [URLA.X255], [URLA.X293]
     /// </summary>
     public bool? SectionHprintexplanation { get => _sectionHprintexplanation; set => SetField(ref _sectionHprintexplanation, value); }
 
     /// <summary>
-    /// Declarations Section I Explanation [URLA.X224]
+    /// BorrowerContract SectionIExplanation [URLA.X224], [URLA.X280]
     /// </summary>
     public string? SectionIExplanation { get => _sectionIExplanation; set => SetField(ref _sectionIExplanation, value); }
 
     /// <summary>
-    /// Print Section I explanation - Borrower [URLA.X256]
+    /// BorrowerContract SectionIprintexplanation [URLA.X256], [URLA.X294]
     /// </summary>
     public bool? SectionIprintexplanation { get => _sectionIprintexplanation; set => SetField(ref _sectionIprintexplanation, value); }
 
     /// <summary>
-    /// Declarations Section J Explanation [URLA.X225]
+    /// BorrowerContract SectionJExplanation [URLA.X225], [URLA.X281]
     /// </summary>
     public string? SectionJExplanation { get => _sectionJExplanation; set => SetField(ref _sectionJExplanation, value); }
 
     /// <summary>
-    /// Print Section J explanation - Borrower [URLA.X257]
+    /// BorrowerContract SectionJprintexplanation [URLA.X257], [URLA.X295]
     /// </summary>
     public bool? SectionJprintexplanation { get => _sectionJprintexplanation; set => SetField(ref _sectionJprintexplanation, value); }
 
     /// <summary>
-    /// Declarations Section K Explanation [URLA.X226]
+    /// BorrowerContract SectionKExplanation [URLA.X226], [URLA.X282]
     /// </summary>
     public string? SectionKExplanation { get => _sectionKExplanation; set => SetField(ref _sectionKExplanation, value); }
 
     /// <summary>
-    /// Print Section K explanation - Borrower [URLA.X258]
+    /// BorrowerContract SectionKprintexplanation [URLA.X258], [URLA.X296]
     /// </summary>
     public bool? SectionKprintexplanation { get => _sectionKprintexplanation; set => SetField(ref _sectionKprintexplanation, value); }
 
     /// <summary>
-    /// Declarations Section L Explanation [URLA.X227]
+    /// BorrowerContract SectionLExplanation [URLA.X227], [URLA.X283]
     /// </summary>
     public string? SectionLExplanation { get => _sectionLExplanation; set => SetField(ref _sectionLExplanation, value); }
 
     /// <summary>
-    /// Print Section L explanation - Borrower [URLA.X259]
+    /// BorrowerContract SectionLprintexplanation [URLA.X259], [URLA.X297]
     /// </summary>
     public bool? SectionLprintexplanation { get => _sectionLprintexplanation; set => SetField(ref _sectionLprintexplanation, value); }
 
     /// <summary>
-    /// Declarations Section M Explanation [URLA.X228]
+    /// BorrowerContract SectionMExplanation [URLA.X228], [URLA.X284]
     /// </summary>
     public string? SectionMExplanation { get => _sectionMExplanation; set => SetField(ref _sectionMExplanation, value); }
 
     /// <summary>
-    /// Print Section M explanation - Borrower [URLA.X260]
+    /// BorrowerContract SectionMprintexplanation [URLA.X260], [URLA.X298]
     /// </summary>
     public bool? SectionMprintexplanation { get => _sectionMprintexplanation; set => SetField(ref _sectionMprintexplanation, value); }
 

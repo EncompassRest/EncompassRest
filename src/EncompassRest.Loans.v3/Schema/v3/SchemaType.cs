@@ -47,18 +47,16 @@ public enum SchemaType
     Array
 }
 
-internal sealed class SchemaTypeConverter : JsonConverter
+internal sealed class SchemaTypeConverter : JsonConverter<List<StringEnumValue<SchemaType>>>
 {
-    public override bool CanConvert(Type objectType) => false;
-
     public override bool CanWrite => false;
 
-    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => reader.TokenType switch
+    public override List<StringEnumValue<SchemaType>> ReadJson(JsonReader reader, Type objectType, List<StringEnumValue<SchemaType>>? existingValue, bool hasExistingValue, JsonSerializer serializer) => reader.TokenType switch
     {
-        JsonToken.StartArray => serializer.Deserialize<List<StringEnumValue<SchemaType>>>(reader),
+        JsonToken.StartArray => serializer.Deserialize<List<StringEnumValue<SchemaType>>>(reader)!,
         JsonToken.String => new List<StringEnumValue<SchemaType>> { serializer.Deserialize<string>(reader) },
         _ => throw new InvalidOperationException($"Cannot handle token type of {reader.TokenType}"),
     };
 
-    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotSupportedException();
+    public override void WriteJson(JsonWriter writer, List<StringEnumValue<SchemaType>>? value, JsonSerializer serializer) => throw new NotSupportedException();
 }

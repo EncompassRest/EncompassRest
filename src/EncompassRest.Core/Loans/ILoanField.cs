@@ -32,10 +32,10 @@ namespace EncompassRest.Loans
         /// Indicates if the field is empty.
         /// </summary>
         bool IsEmpty { get; }
-        /// <summary>
-        /// The field's locked status.
-        /// </summary>
-        bool Locked { get; set; }
+        ///// <summary>
+        ///// The field's locked status.
+        ///// </summary>
+        //bool Locked { get; set; }
         /// <summary>
         /// The field model path for use with loan field locking.
         /// </summary>

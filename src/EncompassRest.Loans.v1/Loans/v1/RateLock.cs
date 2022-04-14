@@ -25,8 +25,20 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     private DirtyValue<StringEnumValue<BorrLenderPaid>>? _borrLenderPaid;
     private DirtyValue<decimal?>? _borrowerRequestedLoanAmount;
     private DirtyValue<DateTime?>? _branchApprovalDate;
+    private DirtyValue<DateTime?>? _branchApprovalDate2;
+    private DirtyValue<DateTime?>? _branchApprovalDate3;
+    private DirtyValue<DateTime?>? _branchApprovalDate4;
+    private DirtyValue<DateTime?>? _branchApprovalDate5;
     private DirtyValue<string?>? _branchApprovedby;
+    private DirtyValue<string?>? _branchApprovedBy2;
+    private DirtyValue<string?>? _branchApprovedBy3;
+    private DirtyValue<string?>? _branchApprovedBy4;
+    private DirtyValue<string?>? _branchApprovedBy5;
     private DirtyValue<decimal?>? _branchPrice;
+    private DirtyValue<decimal?>? _branchPrice2;
+    private DirtyValue<decimal?>? _branchPrice3;
+    private DirtyValue<decimal?>? _branchPrice4;
+    private DirtyValue<decimal?>? _branchPrice5;
     private DirtyValue<StringEnumValue<BuydownContributor>>? _buydownContributor;
     private DirtyValue<string?>? _buydownType;
     private DirtyList<PriceAdjustment>? _buySideAdjustments;
@@ -131,8 +143,20 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     private DirtyValue<DateTime?>? _confirmedDate;
     private DirtyValue<bool?>? _cooperativeIndicator;
     private DirtyValue<DateTime?>? _corporateApprovalDate;
+    private DirtyValue<DateTime?>? _corporateApprovalDate2;
+    private DirtyValue<DateTime?>? _corporateApprovalDate3;
+    private DirtyValue<DateTime?>? _corporateApprovalDate4;
+    private DirtyValue<DateTime?>? _corporateApprovalDate5;
     private DirtyValue<string?>? _corporateApprovedby;
+    private DirtyValue<string?>? _corporateApprovedBy2;
+    private DirtyValue<string?>? _corporateApprovedBy3;
+    private DirtyValue<string?>? _corporateApprovedBy4;
+    private DirtyValue<string?>? _corporateApprovedBy5;
     private DirtyValue<decimal?>? _corporatePrice;
+    private DirtyValue<decimal?>? _corporatePrice2;
+    private DirtyValue<decimal?>? _corporatePrice3;
+    private DirtyValue<decimal?>? _corporatePrice4;
+    private DirtyValue<decimal?>? _corporatePrice5;
     private DirtyValue<decimal?>? _correspondentAdditionalEscrowAdditionalEscrow;
     private DirtyValue<decimal?>? _correspondentAdditionalEscrowAmount1007;
     private DirtyValue<decimal?>? _correspondentAdditionalEscrowAmount1008;
@@ -433,7 +457,15 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     private DirtyValue<string?>? _rateRequestStatus;
     private DirtyValue<string?>? _rateStatus;
     private DirtyValue<string?>? _reasonforBranchApproval;
+    private DirtyValue<string?>? _reasonForBranchApproval2;
+    private DirtyValue<string?>? _reasonForBranchApproval3;
+    private DirtyValue<string?>? _reasonForBranchApproval4;
+    private DirtyValue<string?>? _reasonForBranchApproval5;
     private DirtyValue<string?>? _reasonforCorporateApproval;
+    private DirtyValue<string?>? _reasonForCorporateApproval2;
+    private DirtyValue<string?>? _reasonForCorporateApproval3;
+    private DirtyValue<string?>? _reasonForCorporateApproval4;
+    private DirtyValue<string?>? _reasonForCorporateApproval5;
     private DirtyValue<decimal?>? _reconciledDiff;
     private DirtyValue<string?>? _reLockRequestPending;
     private DirtyValue<decimal?>? _remainingBuydownFunds;
@@ -625,15 +657,79 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     public DateTime? BranchApprovalDate { get => _branchApprovalDate; set => SetField(ref _branchApprovalDate, value); }
 
     /// <summary>
+    /// Rate Lock Buy Side Branch Concession Approval Date 2 [4770]
+    /// </summary>
+    public DateTime? BranchApprovalDate2 { get => _branchApprovalDate2; set => SetField(ref _branchApprovalDate2, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Concession Approval Date 3 [4774]
+    /// </summary>
+    public DateTime? BranchApprovalDate3 { get => _branchApprovalDate3; set => SetField(ref _branchApprovalDate3, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Concession Approval Date 4 [4778]
+    /// </summary>
+    public DateTime? BranchApprovalDate4 { get => _branchApprovalDate4; set => SetField(ref _branchApprovalDate4, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Concession Approval Date 5 [4782]
+    /// </summary>
+    public DateTime? BranchApprovalDate5 { get => _branchApprovalDate5; set => SetField(ref _branchApprovalDate5, value); }
+
+    /// <summary>
     /// Rate Lock Buy Side Branch Concession Approved by [3377]
     /// </summary>
     public string? BranchApprovedby { get => _branchApprovedby; set => SetField(ref _branchApprovedby, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Concession Approved by 2 [4771]
+    /// </summary>
+    public string? BranchApprovedBy2 { get => _branchApprovedBy2; set => SetField(ref _branchApprovedBy2, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Concession Approved by 3 [4775]
+    /// </summary>
+    public string? BranchApprovedBy3 { get => _branchApprovedBy3; set => SetField(ref _branchApprovedBy3, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Concession Approved by 4 [4779]
+    /// </summary>
+    public string? BranchApprovedBy4 { get => _branchApprovedBy4; set => SetField(ref _branchApprovedBy4, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Concession Approved by 5 [4783]
+    /// </summary>
+    public string? BranchApprovedBy5 { get => _branchApprovedBy5; set => SetField(ref _branchApprovedBy5, value); }
 
     /// <summary>
     /// Rate Lock Buy Side Branch Price Concession [3375]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
     public decimal? BranchPrice { get => _branchPrice; set => SetField(ref _branchPrice, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Price Concession 2 [4769]
+    /// </summary>
+    [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+    public decimal? BranchPrice2 { get => _branchPrice2; set => SetField(ref _branchPrice2, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Price Concession 3 [4773]
+    /// </summary>
+    [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+    public decimal? BranchPrice3 { get => _branchPrice3; set => SetField(ref _branchPrice3, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Price Concession 4 [4777]
+    /// </summary>
+    [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+    public decimal? BranchPrice4 { get => _branchPrice4; set => SetField(ref _branchPrice4, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Branch Price Concession 5 [4781]
+    /// </summary>
+    [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+    public decimal? BranchPrice5 { get => _branchPrice5; set => SetField(ref _branchPrice5, value); }
 
     /// <summary>
     /// Lock Request Buydown Contributor [4631]
@@ -1192,15 +1288,79 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     public DateTime? CorporateApprovalDate { get => _corporateApprovalDate; set => SetField(ref _corporateApprovalDate, value); }
 
     /// <summary>
+    /// Rate Lock Buy Side Corporate Concession Approval Date 2 [4754]
+    /// </summary>
+    public DateTime? CorporateApprovalDate2 { get => _corporateApprovalDate2; set => SetField(ref _corporateApprovalDate2, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Concession Approval Date 3 [4758]
+    /// </summary>
+    public DateTime? CorporateApprovalDate3 { get => _corporateApprovalDate3; set => SetField(ref _corporateApprovalDate3, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Concession Approval Date 4 [4762]
+    /// </summary>
+    public DateTime? CorporateApprovalDate4 { get => _corporateApprovalDate4; set => SetField(ref _corporateApprovalDate4, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Concession Approval Date 5 [4766]
+    /// </summary>
+    public DateTime? CorporateApprovalDate5 { get => _corporateApprovalDate5; set => SetField(ref _corporateApprovalDate5, value); }
+
+    /// <summary>
     /// Rate Lock Buy Side Corporate Concession Approved by [3373]
     /// </summary>
     public string? CorporateApprovedby { get => _corporateApprovedby; set => SetField(ref _corporateApprovedby, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Concession Approved by 2 [4755]
+    /// </summary>
+    public string? CorporateApprovedBy2 { get => _corporateApprovedBy2; set => SetField(ref _corporateApprovedBy2, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Concession Approved by 3 [4759]
+    /// </summary>
+    public string? CorporateApprovedBy3 { get => _corporateApprovedBy3; set => SetField(ref _corporateApprovedBy3, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Concession Approved by 4 [4763]
+    /// </summary>
+    public string? CorporateApprovedBy4 { get => _corporateApprovedBy4; set => SetField(ref _corporateApprovedBy4, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Concession Approved by 5 [4767]
+    /// </summary>
+    public string? CorporateApprovedBy5 { get => _corporateApprovedBy5; set => SetField(ref _corporateApprovedBy5, value); }
 
     /// <summary>
     /// Rate Lock Buy Side Corporate Price Concession [3371]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
     public decimal? CorporatePrice { get => _corporatePrice; set => SetField(ref _corporatePrice, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Price Concession 2 [4753]
+    /// </summary>
+    [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+    public decimal? CorporatePrice2 { get => _corporatePrice2; set => SetField(ref _corporatePrice2, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Price Concession 3 [4757]
+    /// </summary>
+    [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+    public decimal? CorporatePrice3 { get => _corporatePrice3; set => SetField(ref _corporatePrice3, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Price Concession 4 [4761]
+    /// </summary>
+    [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+    public decimal? CorporatePrice4 { get => _corporatePrice4; set => SetField(ref _corporatePrice4, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Corporate Price Concession 5 [4765]
+    /// </summary>
+    [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+    public decimal? CorporatePrice5 { get => _corporatePrice5; set => SetField(ref _corporatePrice5, value); }
 
     /// <summary>
     /// Additional Escrow Payment Collection - Additional Escrow [CPA.ADDLESCROW.AdditionalEscrow]
@@ -2761,9 +2921,49 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     public string? ReasonforBranchApproval { get => _reasonforBranchApproval; set => SetField(ref _reasonforBranchApproval, value); }
 
     /// <summary>
+    /// Rate Lock Buy Side Reason for Branch Concession Approval 2 [4772]
+    /// </summary>
+    public string? ReasonForBranchApproval2 { get => _reasonForBranchApproval2; set => SetField(ref _reasonForBranchApproval2, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Reason for Branch Concession Approval 3 [4776]
+    /// </summary>
+    public string? ReasonForBranchApproval3 { get => _reasonForBranchApproval3; set => SetField(ref _reasonForBranchApproval3, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Reason for Branch Concession Approval 4 [4780]
+    /// </summary>
+    public string? ReasonForBranchApproval4 { get => _reasonForBranchApproval4; set => SetField(ref _reasonForBranchApproval4, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Reason for Branch Concession Approval 5 [4784]
+    /// </summary>
+    public string? ReasonForBranchApproval5 { get => _reasonForBranchApproval5; set => SetField(ref _reasonForBranchApproval5, value); }
+
+    /// <summary>
     /// Rate Lock Buy Side Reason for Corporate  Concession Approval [3374]
     /// </summary>
     public string? ReasonforCorporateApproval { get => _reasonforCorporateApproval; set => SetField(ref _reasonforCorporateApproval, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Reason for Corporate Concession Approval 2 [4756]
+    /// </summary>
+    public string? ReasonForCorporateApproval2 { get => _reasonForCorporateApproval2; set => SetField(ref _reasonForCorporateApproval2, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Reason for Corporate Concession Approval 3 [4760]
+    /// </summary>
+    public string? ReasonForCorporateApproval3 { get => _reasonForCorporateApproval3; set => SetField(ref _reasonForCorporateApproval3, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Reason for Corporate Concession Approval 4 [4764]
+    /// </summary>
+    public string? ReasonForCorporateApproval4 { get => _reasonForCorporateApproval4; set => SetField(ref _reasonForCorporateApproval4, value); }
+
+    /// <summary>
+    /// Rate Lock Buy Side Reason for Corporate Concession Approval 5 [4768]
+    /// </summary>
+    public string? ReasonForCorporateApproval5 { get => _reasonForCorporateApproval5; set => SetField(ref _reasonForCorporateApproval5, value); }
 
     /// <summary>
     /// Purchase Advice Reconciled Differences [2629]

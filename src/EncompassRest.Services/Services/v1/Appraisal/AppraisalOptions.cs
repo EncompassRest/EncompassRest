@@ -133,7 +133,7 @@ namespace EncompassRest.Services.v1.Appraisal
         /// </summary>
         /// <param name="requestType">Type of appraisal service request.</param>
         public AppraisalOptions(AppraisalRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).GetValue()!)
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 

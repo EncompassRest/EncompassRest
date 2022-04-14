@@ -83,7 +83,7 @@ namespace EncompassRest.Webhook.v1
         /// <param name="resource">Refers to the resource that is part of subscription.</param>
         /// <param name="events">Defines the events that make up the subscription.</param>
         public WebhookSubscription(string endpoint, WebhookResourceType resource, IEnumerable<WebhookResourceEvent> events)
-            : this(endpoint, resource.Validate(nameof(resource)).GetValue()!, events?.Select(e => e.Validate(nameof(events)).GetValue()!)!)
+            : this(endpoint, resource.Validate(nameof(resource)).GetValue(), events?.Select(e => e.Validate(nameof(events)).GetValue())!)
         {
         }
 

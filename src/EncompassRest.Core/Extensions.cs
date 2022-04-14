@@ -17,7 +17,7 @@ namespace EncompassRest
         /// <param name="value">The object to clone.</param>
         /// <returns></returns>
         public static T Clone<T>(this T value)
-            where T : DirtyExtensibleObject
+            where T : IDirtyExtensibleObject
         {
             Preconditions.NotNull(value, nameof(value));
 
@@ -32,7 +32,7 @@ namespace EncompassRest
         /// <param name="id">The id to search for.</param>
         /// <returns></returns>
         public static T? GetById<T>(this IList<T> list, string id)
-            where T : DirtyExtensibleObject
+            where T : IDirtyExtensibleObject
         {
             var index = list.IndexOf(id);
             return index >= 0 ? list[index] : default;
@@ -46,9 +46,9 @@ namespace EncompassRest
         /// <param name="id">The id to search for.</param>
         /// <returns></returns>
         public static int IndexOf<T>(this IList<T> list, string id)
-            where T : DirtyExtensibleObject => IndexOf((IEnumerable<DirtyExtensibleObject>)list, id);
+            where T : IDirtyExtensibleObject => IndexOf((IEnumerable<IDirtyExtensibleObject>)list, id);
 
-        internal static int IndexOf(IEnumerable<DirtyExtensibleObject> list, string id)
+        internal static int IndexOf(IEnumerable<IDirtyExtensibleObject> list, string id)
         {
             Preconditions.NotNull(list, nameof(list));
             Preconditions.NotNullOrEmpty(id, nameof(id));
@@ -69,6 +69,6 @@ namespace EncompassRest
             return -1;
         }
 
-        internal static string? GetValue<TEnum>(this TEnum value) where TEnum : struct, Enum => value.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
+        internal static string GetValue<TEnum>(this TEnum value) where TEnum : struct, Enum => value.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)!;
     }
 }

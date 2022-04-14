@@ -41,7 +41,7 @@ namespace EncompassRest.Loans.Documents.v1
         /// <param name="attachmentEntities">The attachment entity references to assign or unassign.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task AssignDocumentAttachmentsAsync(this ILoanDocuments loanDocuments, string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken = default) => AssignDocumentAttachmentsAsync(loanDocuments, documentId, action.Validate(nameof(action)).GetValue()!, attachmentEntities, cancellationToken);
+        public static Task AssignDocumentAttachmentsAsync(this ILoanDocuments loanDocuments, string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken = default) => AssignDocumentAttachmentsAsync(loanDocuments, documentId, action.Validate(nameof(action)).GetValue(), attachmentEntities, cancellationToken);
 
         /// <summary>
         /// Assigns or unassigns attachments.

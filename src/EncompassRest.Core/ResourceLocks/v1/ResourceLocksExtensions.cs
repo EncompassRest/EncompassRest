@@ -50,7 +50,7 @@ namespace EncompassRest.ResourceLocks.v1
         /// <param name="resourceType">The type of resource is loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<ResourceLock> GetResourceLockAsync(this IResourceLocks resourceLocks, string lockId, string resourceId, EntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLockAsync(resourceLocks, lockId, resourceId, resourceType.Validate(nameof(resourceType)).GetValue()!, cancellationToken);
+        public static Task<ResourceLock> GetResourceLockAsync(this IResourceLocks resourceLocks, string lockId, string resourceId, EntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLockAsync(resourceLocks, lockId, resourceId, resourceType.Validate(nameof(resourceType)).GetValue(), cancellationToken);
 
         /// <summary>
         /// Retrieves lock information for the specified resource.
@@ -81,7 +81,7 @@ namespace EncompassRest.ResourceLocks.v1
         /// <param name="resourceType">The type of resource is loan.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<List<ResourceLock>> GetResourceLocksAsync(this IResourceLocks resourceLocks, string resourceId, EntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLocksAsync(resourceLocks, resourceId, resourceType.Validate(nameof(resourceType)).GetValue()!, cancellationToken);
+        public static Task<List<ResourceLock>> GetResourceLocksAsync(this IResourceLocks resourceLocks, string resourceId, EntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLocksAsync(resourceLocks, resourceId, resourceType.Validate(nameof(resourceType)).GetValue(), cancellationToken);
 
         /// <summary>
         /// Retrieves a list of locked resources and metadata from Encompass.
@@ -123,7 +123,7 @@ namespace EncompassRest.ResourceLocks.v1
         /// <param name="force">Forcefully locks a loan. This parameter allows an administrator to unlock a loan that holds an exclusive lock. When set to true, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is false.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<string> LockResourceAsync(this IResourceLocks resourceLocks, ResourceLockType lockType, string resourceId, EntityType resourceType, bool force = false, CancellationToken cancellationToken = default) => LockResourceAsync(resourceLocks, lockType.Validate(nameof(lockType)).GetValue()!, resourceId, resourceType.Validate(nameof(resourceType)).GetValue()!, force, cancellationToken);
+        public static Task<string> LockResourceAsync(this IResourceLocks resourceLocks, ResourceLockType lockType, string resourceId, EntityType resourceType, bool force = false, CancellationToken cancellationToken = default) => LockResourceAsync(resourceLocks, lockType.Validate(nameof(lockType)).GetValue(), resourceId, resourceType.Validate(nameof(resourceType)).GetValue(), force, cancellationToken);
 
         /// <summary>
         /// Locks the specified resource in Encompass and returns the lock id.
@@ -167,7 +167,7 @@ namespace EncompassRest.ResourceLocks.v1
         /// <param name="force">Forcefully unlocks a loan. This parameter allows an administrator to unlock a loan that holds an exclusive lock. When set to true, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is false.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<bool> TryUnlockResourceAsync(this IResourceLocks resourceLocks, string lockId, string resourceId, EntityType resourceType, bool force = false, CancellationToken cancellationToken = default) => TryUnlockResourceAsync(resourceLocks, lockId, resourceId, resourceType.Validate(nameof(resourceType)).GetValue()!, force, cancellationToken);
+        public static Task<bool> TryUnlockResourceAsync(this IResourceLocks resourceLocks, string lockId, string resourceId, EntityType resourceType, bool force = false, CancellationToken cancellationToken = default) => TryUnlockResourceAsync(resourceLocks, lockId, resourceId, resourceType.Validate(nameof(resourceType)).GetValue(), force, cancellationToken);
 
         /// <summary>
         /// Unlocks the specified resource in Encompass.
@@ -201,7 +201,7 @@ namespace EncompassRest.ResourceLocks.v1
         /// <param name="force">Forcefully unlocks a loan. This parameter allows an administrator to unlock a loan that holds an exclusive lock. When set to true, the exclusive lock is released from the loan. The user holding the exclusive lock is notified about the lock being released and that changes cannot be saved. The default value is false.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task UnlockResourceAsync(this IResourceLocks resourceLocks, string lockId, string resourceId, EntityType resourceType, bool force = false, CancellationToken cancellationToken = default) => UnlockResourceAsync(resourceLocks, lockId, resourceId, resourceType.Validate(nameof(resourceType)).GetValue()!, force, cancellationToken);
+        public static Task UnlockResourceAsync(this IResourceLocks resourceLocks, string lockId, string resourceId, EntityType resourceType, bool force = false, CancellationToken cancellationToken = default) => UnlockResourceAsync(resourceLocks, lockId, resourceId, resourceType.Validate(nameof(resourceType)).GetValue(), force, cancellationToken);
 
         /// <summary>
         /// Unlocks the specified resource in Encompass.

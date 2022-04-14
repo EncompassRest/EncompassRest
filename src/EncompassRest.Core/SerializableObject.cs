@@ -8,10 +8,23 @@ using Newtonsoft.Json;
 namespace EncompassRest
 {
     /// <summary>
+    /// Base interface that supports json serialization.
+    /// </summary>
+    public interface ISerializableObject
+    {
+        /// <summary>
+        /// Serializes object to it's json representation using the specified <paramref name="options"/>.
+        /// </summary>
+        /// <param name="options">The serialization options.</param>
+        /// <returns>Json representation of the object.</returns>
+        string ToString(SerializationOptions options);
+    }
+
+    /// <summary>
     /// Base class that supports json serialization.
     /// </summary>
     [JsonConverter(typeof(PublicallySerializableConverter))]
-    public abstract class SerializableObject
+    public abstract class SerializableObject : ISerializableObject
     {
         internal SerializableObject()
         {
@@ -23,11 +36,7 @@ namespace EncompassRest
         /// <returns>Json representation of the object.</returns>
         public override string ToString() => ToString(SerializationOptions.None);
 
-        /// <summary>
-        /// Serializes object to it's json representation using the specified <paramref name="options"/>.
-        /// </summary>
-        /// <param name="options">The serialization options.</param>
-        /// <returns>Json representation of the object.</returns>
+        /// <inheritdoc/>
         public string ToString(SerializationOptions options)
         {
             options.Validate(nameof(options));

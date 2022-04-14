@@ -22,8 +22,41 @@ using Newtonsoft.Json.Linq;
 namespace EncompassRest.Tests
 {
     [TestClass]
-    public class LoanTests : TestBaseClass
+    public sealed class LoanV1Tests : LoanTests
     {
+#pragma warning disable CS0618 // Type or member is obsolete
+        public override ILoan ConstructLoan() => new Loan();
+#pragma warning restore CS0618 // Type or member is obsolete
+
+        public override ILoan ConstructLoan(IEncompassRestClient client) => new Loan(client);
+
+        public override ILoan ConstructLoan(IEncompassRestClient client, string loanId) => new Loan(client, loanId);
+
+        public override Task<string> CreateLoanAsync(IEncompassRestClient client, ILoan loan, bool populate = false) => client.Loans.CreateLoanAsync((Loan)loan, populate);
+
+        public override Task DeleteLoanAsync(IEncompassRestClient client, string loanId) => client.Loans.DeleteLoanAsync(loanId);
+
+        public override async Task<ILoan> GetLoanAsync(IEncompassRestClient client, string loanId) => await client.Loans.GetLoanAsync(loanId);
+
+        public override Task UpdateLoanAsync(IEncompassRestClient client, ILoan loan, bool populate = false) => client.Loans.UpdateLoanAsync((Loan)loan, populate);
+    }
+
+    public abstract class LoanTests : TestBaseClass
+    {
+        public abstract ILoan ConstructLoan();
+
+        public abstract ILoan ConstructLoan(IEncompassRestClient client);
+
+        public abstract ILoan ConstructLoan(IEncompassRestClient client, string loanId);
+
+        public abstract Task<string> CreateLoanAsync(IEncompassRestClient client, ILoan loan, bool populate = false);
+
+        public abstract Task DeleteLoanAsync(IEncompassRestClient client, string loanId);
+
+        public abstract Task<ILoan> GetLoanAsync(IEncompassRestClient client, string loanId);
+
+        public abstract Task UpdateLoanAsync(IEncompassRestClient client, ILoan loan, bool populate = false);
+
         [TestMethod]
         [ApiTest]
         public async Task Loan_GetSupportedEntities()
@@ -77,12 +110,12 @@ namespace EncompassRest.Tests
   ""dog"": true
 }", JsonConvert.SerializeObject(loan, serializerSettings));
             
-            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+            var loanId = await CreateLoanAsync(client, loan, true);
             Assert.IsNotNull(loanId);
 
             try
             {
-                Assert.AreEqual(loanId, loan.EncompassId);
+                Assert.AreEqual(loanId, loan.Id);
                 var json = JsonConvert.SerializeObject(loan, serializerSettings);
                 var deserializedLoan = JsonConvert.DeserializeObject<Loan>(json, serializerSettings);
                 var newJson = JsonConvert.SerializeObject(loan, serializerSettings);
@@ -93,7 +126,7 @@ namespace EncompassRest.Tests
                 try
                 {
                     await Task.Delay(5000);
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -136,11 +169,11 @@ namespace EncompassRest.Tests
         public async Task Loan_Clone()
         {
             var client = await GetTestClientAsync();
-            var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
+            var loanId = await CreateLoanAsync(client, ConstructLoan(client));
             try
             {
                 await Task.Delay(5000);
-                var loan = await client.Loans.GetLoanAsync(loanId);
+                var loan = await GetLoanAsync(client, loanId);
                 var clonedLoan = loan.Clone();
                 var loanAsJson = loan.ToString(SerializationOptions.Indent);
                 var clonedLoanAsJson = clonedLoan.ToString(SerializationOptions.Indent);
@@ -150,7 +183,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -318,12 +351,12 @@ namespace EncompassRest.Tests
         public async Task Loan_CreateAndDelete()
         {
             var client = await GetTestClientAsync();
-            var loan = new Loan(client);
-            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+            var loan = ConstructLoan(client);
+            var loanId = await CreateLoanAsync(client, loan, true);
             Assert.IsNotNull(loanId);
-            Assert.AreEqual(loanId, loan.EncompassId);
+            Assert.AreEqual(loanId, loan.Id);
             await Task.Delay(5000);
-            await client.Loans.DeleteLoanAsync(loanId);
+            await DeleteLoanAsync(client, loanId);
         }
 
         [TestMethod]
@@ -351,7 +384,7 @@ namespace EncompassRest.Tests
         public async Task Loan_BadUpdateException()
         {
             var client = await GetTestClientAsync();
-            var loanId = await client.Loans.CreateLoanRawAsync("{}");
+            var loanId = await CreateLoanAsync(client, ConstructLoan(client));
             Assert.IsNotNull(loanId);
 
             try
@@ -363,7 +396,7 @@ namespace EncompassRest.Tests
                 {
                     Tltv = 85.00M
                 };
-                ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanAsync(loan));
+                ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => UpdateLoanAsync(client, loan));
                 Assert.AreEqual(HttpStatusCode.NotFound, ex.StatusCode);
                 Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}"",""tltv"":85.00}}", ex.RequestContent);
             }
@@ -372,7 +405,7 @@ namespace EncompassRest.Tests
                 try
                 {
                     await Task.Delay(5000);
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -430,7 +463,7 @@ namespace EncompassRest.Tests
                     try
                     {
                         await Task.Delay(5000);
-                        await client.Loans.DeleteLoanAsync(loanId);
+                        await DeleteLoanAsync(client, loanId);
                     }
                     catch
                     {
@@ -448,7 +481,7 @@ namespace EncompassRest.Tests
                     try
                     {
                         await Task.Delay(5000);
-                        await client.Loans.DeleteLoanAsync(loanId2);
+                        await DeleteLoanAsync(client, loanId2);
                     }
                     catch
                     {
@@ -475,7 +508,7 @@ namespace EncompassRest.Tests
                     try
                     {
                         await Task.Delay(5000);
-                        await client.Loans.DeleteLoanAsync(loanId);
+                        await DeleteLoanAsync(client, loanId);
                     }
                     catch
                     {
@@ -502,7 +535,7 @@ namespace EncompassRest.Tests
                     try
                     {
                         await Task.Delay(5000);
-                        await client.Loans.DeleteLoanAsync(loanId);
+                        await DeleteLoanAsync(client, loanId);
                     }
                     catch
                     {
@@ -530,7 +563,7 @@ namespace EncompassRest.Tests
                     try
                     {
                         await Task.Delay(5000);
-                        await client.Loans.DeleteLoanAsync(loanId);
+                        await DeleteLoanAsync(client, loanId);
                     }
                     catch
                     {
@@ -658,9 +691,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsAssignField()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var today = DateTime.Today;
             var field = loan.Fields["745"];
             field.Value = today;
@@ -675,9 +706,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsString()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var loanNumber = "9876543210";
             var field = loan.Fields["364"];
             Assert.AreEqual("Loan.LoanNumber", field.ModelPath);
@@ -696,9 +725,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsDateTime()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var now = DateTime.Now;
             var field = loan.Fields["CD1.X1"];
             Assert.AreEqual("Loan.ClosingCost.ClosingDisclosure1.CDDateIssued", field.ModelPath);
@@ -717,9 +744,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsDecimal()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var borrowerRequestedLoanAmount = 185000;
             var field = loan.Fields["1109"];
             Assert.AreEqual("Loan.BorrowerRequestedLoanAmount", field.ModelPath);
@@ -740,9 +765,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsInt()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var bltv = 75;
             var field = loan.Fields["4012"];
             Assert.AreEqual("Loan.BLTV", field.ModelPath);
@@ -763,9 +786,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsBool()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var borrowerCoBorrowerMarriedIndicator = true;
             var field = loan.Fields["100"];
             Assert.AreEqual("Loan.BorrowerCoBorrowerMarriedIndicator", field.ModelPath);
@@ -790,9 +811,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsStringEnumValue()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var applicationTakenMethodType = "Internet";
             var field = loan.Fields["479"];
             Assert.AreEqual("Loan.ApplicationTakenMethodType", field.ModelPath);
@@ -811,9 +830,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsNADecimal()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var income = 4000;
             var field = loan.Fields["HMDA.X32"];
             Assert.AreEqual("Loan.Hmda.Income", field.ModelPath);
@@ -851,9 +868,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsStringDecimalValue()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var rateSpread = 3;
             var field = loan.Fields["HMDA.X15"];
             Assert.AreEqual("Loan.Hmda.RateSpread", field.ModelPath);
@@ -892,9 +907,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsCustomString()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var value = "ABC";
             var field = loan.Fields["CX.NAME"];
             Assert.AreEqual("Loan.CustomFields[(FieldName == 'CX.NAME')].StringValue", field.ModelPath);
@@ -913,9 +926,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsCustomDate()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var value = DateTime.Now;
             var field = loan.Fields["CX.NOW"];
             Assert.AreEqual("Loan.CustomFields[(FieldName == 'CX.NOW')].StringValue", field.ModelPath);
@@ -939,9 +950,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsCustomNumeric()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var value = 1234.56M;
             var field = loan.Fields["CX.NUMBER"];
             Assert.AreEqual("Loan.CustomFields[(FieldName == 'CX.NUMBER')].StringValue", field.ModelPath);
@@ -975,9 +984,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsCUST100FV()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var value = 987.65M;
             var field = loan.Fields["CUST100FV"];
             Assert.AreEqual("Loan.CustomFields[(FieldName == 'CUST100FV')].StringValue", field.ModelPath);
@@ -992,9 +999,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsLPNN126()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var field = loan.Fields["LP01126"];
             Assert.AreEqual("Loan.LoanPrograms[1].TerminationFeeAmount", field.ModelPath);
         }
@@ -1025,9 +1030,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsInvalidField()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             Assert.ThrowsException<ArgumentException>(() => loan.Fields["1"]);
         }
 
@@ -1059,7 +1062,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var loan = new Loan(client);
-            var loanId = await client.Loans.CreateLoanAsync(loan);
+            var loanId = await CreateLoanAsync(client, loan);
 
             try
             {
@@ -1074,7 +1077,7 @@ namespace EncompassRest.Tests
 
                 Assert.AreEqual(fields.Count, loan.FieldLockData.Count);
 
-                await client.Loans.UpdateLoanAsync(loan);
+                await UpdateLoanAsync(client, loan);
 
                 loan = await client.Loans.GetLoanAsync(loanId, new[] { LoanEntity.FieldLockData });
 
@@ -1095,7 +1098,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -1110,7 +1113,7 @@ namespace EncompassRest.Tests
         public async Task Loan_CheckKnownBadLockingFields()
         {
             var client = await GetTestClientAsync();
-            var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
+            var loanId = await CreateLoanAsync(client, ConstructLoan(client));
 
             try
             {
@@ -1122,7 +1125,7 @@ namespace EncompassRest.Tests
                         var field = newLoan.Fields[fieldId];
                         field.Locked = true;
                         Assert.IsTrue(field.Locked);
-                        return client.Loans.UpdateLoanAsync(newLoan);
+                        return UpdateLoanAsync(client, newLoan);
                     }, $"Locking field {fieldId} did not cause an error.");
                 }
             }
@@ -1130,7 +1133,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -1143,7 +1146,7 @@ namespace EncompassRest.Tests
         public async Task Loan_CheckForNewBadLockingFields()
         {
             var client = await GetTestClientAsync();
-            var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
+            var loanId = await CreateLoanAsync(client, ConstructLoan(client));
             var fieldsWhereLockingCausesEncompassError = new List<string>();
             var distinctFieldMappings = LoanFieldDescriptors.FieldMappings._standardFields.Distinct(new FieldMappingComparer()).ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase).Keys.Where(f => !_fieldsWhereLockingCausesEncompassError.Contains(f)).ToList();
 
@@ -1159,7 +1162,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -1195,7 +1198,7 @@ namespace EncompassRest.Tests
                 }
                 try
                 {
-                    await client.Loans.UpdateLoanAsync(loan);
+                    await UpdateLoanAsync(client, loan);
                 }
                 catch
                 {
@@ -1210,7 +1213,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var loan = new Loan(client);
-            var loanId = await client.Loans.CreateLoanAsync(loan);
+            var loanId = await CreateLoanAsync(client, loan);
 
             try
             {
@@ -1228,7 +1231,7 @@ namespace EncompassRest.Tests
                     }
                 }
 
-                await client.Loans.UpdateLoanAsync(loan);
+                await UpdateLoanAsync(client, loan);
                 
                 loan = await client.Loans.GetLoanAsync(loanId, new[] { LoanEntity.FieldLockData });
 
@@ -1266,7 +1269,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -1280,7 +1283,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var loan = new Loan(client);
-            var loanId = await client.Loans.CreateLoanAsync(loan);
+            var loanId = await CreateLoanAsync(client, loan);
 
             try
             {
@@ -1302,7 +1305,7 @@ namespace EncompassRest.Tests
                     }
                 }
 
-                await client.Loans.UpdateLoanAsync(loan);
+                await UpdateLoanAsync(client, loan);
 
                 loan = await client.Loans.GetLoanAsync(loanId, new[] { LoanEntity.FieldLockData });
 
@@ -1332,7 +1335,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -1350,9 +1353,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsComplex()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
-#pragma warning restore CS0618 // Type or member is obsolete
+            var loan = ConstructLoan();
             var field = loan.Fields["VEND.X5"];
             Assert.AreEqual("Loan.Contacts[(ContactType == 'CUSTOM')][4].State", field.ModelPath);
             Assert.IsTrue(field.IsEmpty);
@@ -1363,7 +1364,7 @@ namespace EncompassRest.Tests
             Assert.AreEqual(value, field.ToString());
             Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""contacts"":[{{""contactType"":""CUSTOM""}},{{""contactType"":""CUSTOM""}},{{""contactType"":""CUSTOM""}},{{""contactType"":""CUSTOM"",""state"":""{value}""}}]}}", loan.ToString(SerializationOptions.Dirty));
-            loan.Dirty = false;
+            ((IDirty)loan).Dirty = false;
             Assert.AreEqual("{}", loan.ToString(SerializationOptions.Dirty));
             value = "NY";
             field.Value = value;
@@ -1644,12 +1645,12 @@ namespace EncompassRest.Tests
             var tasks = new List<Task>();
             foreach (var item in list)
             {
-                tasks.Add(client.Loans.GetLoanAsync(item.LoanGuid).ContinueWith(async task =>
+                tasks.Add(GetLoanAsync(client, item.LoanGuid).ContinueWith(async (Task<ILoan> task) =>
                 {
                     var loan = await task;
-                    AssertNoExtensionData(loan, "Loan", loan.EncompassId, true);
-                    Assert.IsFalse(loan.Dirty);
-                    Assert.AreEqual($@"{{""encompassId:""{loan.EncompassId}""}}", loan.ToString(SerializationOptions.Dirty));
+                    AssertNoExtensionData(loan, "Loan", loan.Id, true);
+                    Assert.IsFalse(((IDirty)loan).Dirty);
+                    Assert.AreEqual($@"{{""encompassId:""{loan.Id}""}}", loan.ToString(SerializationOptions.Dirty));
                 }));
             }
             await Task.WhenAll(tasks);
@@ -1660,22 +1661,22 @@ namespace EncompassRest.Tests
         public async Task Loan_FieldsPresentAddress()
         {
             var client = await GetTestClientAsync();
-            var loan = new Loan(client);
+            var loan = ConstructLoan(client);
             const string address = "123 Main Street";
             const string addressFieldId = "FR0104";
             loan.Fields[addressFieldId].Value = address;
-            var loanId = await client.Loans.CreateLoanAsync(loan);
+            var loanId = await CreateLoanAsync(client, loan);
             try
             {
                 await Task.Delay(1000);
-                loan = await client.Loans.GetLoanAsync(loanId);
+                loan = await GetLoanAsync(client, loanId);
                 Assert.AreEqual(address, loan.Fields[addressFieldId].ToString());
             }
             finally
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -1732,7 +1733,7 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
 
             var fieldDescriptors = client.Loans.GetFieldDescriptors();
-            var loanFields = new Loan(client).Fields;
+            var loanFields = ConstructLoan(client).Fields;
 
             foreach (var pair in LoanFieldDescriptors.FieldMappings)
             {
@@ -1813,7 +1814,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -1906,7 +1907,7 @@ namespace EncompassRest.Tests
             };
             var applications = loan.Applications;
 
-            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+            var loanId = await CreateLoanAsync(client, loan, true);
             try
             {
                 Assert.AreSame(applications, loan.Applications);
@@ -1923,7 +1924,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -2068,8 +2069,10 @@ namespace EncompassRest.Tests
         public async Task Loan_UpdateIncome()
         {
             var client = await GetTestClientAsync();
+#pragma warning disable CS0618 // Type or member is obsolete
             var loan = new Loan(client);
-            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+#pragma warning restore CS0618 // Type or member is obsolete
+            var loanId = await CreateLoanAsync(client, loan, true);
 
             try
             {
@@ -2078,7 +2081,7 @@ namespace EncompassRest.Tests
                 income.Description = Description.MilitaryCombatPay;
                 income.Amount = 10000M;
 
-                await client.Loans.UpdateLoanAsync(loan);
+                await UpdateLoanAsync(client, loan);
 
                 loan = await client.Loans.GetLoanAsync(loanId);
 
@@ -2092,7 +2095,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -2107,7 +2110,7 @@ namespace EncompassRest.Tests
             using (var client = await GetTestClientAsync(p => p.UndefinedCustomFieldHandling = UndefinedCustomFieldHandling.Error))
             {
                 Assert.ThrowsException<ArgumentException>(() => client.Loans.GetFieldDescriptors()["CX.ABC"]);
-                Assert.ThrowsException<ArgumentException>(() => new Loan(client).Fields["CX.123"]);
+                Assert.ThrowsException<ArgumentException>(() => ConstructLoan(client).Fields["CX.123"]);
             }
         }
 
@@ -2122,7 +2125,7 @@ namespace EncompassRest.Tests
                 }))
             {
                 Assert.ThrowsException<ArgumentException>(() => client.Loans.GetFieldDescriptors()["CX.ABC"]);
-                Assert.ThrowsException<ArgumentException>(() => new Loan(client).Fields["CX.123"]);
+                Assert.ThrowsException<ArgumentException>(() => ConstructLoan(client).Fields["CX.123"]);
             }
         }
 
@@ -2136,7 +2139,7 @@ namespace EncompassRest.Tests
                 }))
             {
                 Assert.IsNotNull(client.Loans.GetFieldDescriptors()["CX.ABC"]);
-                Assert.IsNotNull(new Loan(client).Fields["CX.123"]);
+                Assert.IsNotNull(ConstructLoan(client).Fields["CX.123"]);
             }
         }
 
@@ -2145,15 +2148,15 @@ namespace EncompassRest.Tests
         public async Task Loan_UpdateBaseIncome()
         {
             var client = await GetTestClientAsync();
-            var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
+            var loanId = await CreateLoanAsync(client, ConstructLoan(client));
             try
             {
-                var loan = new Loan(client, loanId);
+                var loan = ConstructLoan(client, loanId);
                 loan.Fields["FE0119"].Value = 500;
 
-                await client.Loans.UpdateLoanAsync(loan);
+                await UpdateLoanAsync(client, loan);
 
-                loan = await client.Loans.GetLoanAsync(loanId);
+                loan = await GetLoanAsync(client, loanId);
 
                 Assert.AreEqual(500M, loan.Fields["101"].Value);
             }
@@ -2161,7 +2164,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -2174,15 +2177,15 @@ namespace EncompassRest.Tests
         public async Task Loan_UpdateOtherIncome()
         {
             var client = await GetTestClientAsync();
-            var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
+            var loanId = await CreateLoanAsync(client, ConstructLoan(client));
             try
             {
-                var loan = new Loan(client, loanId);
+                var loan = ConstructLoan(client, loanId);
                 loan.Fields["149"].Value = 500;
 
-                await client.Loans.UpdateLoanAsync(loan);
+                await UpdateLoanAsync(client, loan);
 
-                loan = await client.Loans.GetLoanAsync(loanId);
+                loan = await GetLoanAsync(client, loanId);
 
                 Assert.AreEqual(500M, loan.Fields["149"].Value);
             }
@@ -2190,7 +2193,7 @@ namespace EncompassRest.Tests
             {
                 try
                 {
-                    await client.Loans.DeleteLoanAsync(loanId);
+                    await DeleteLoanAsync(client, loanId);
                 }
                 catch
                 {
@@ -2235,7 +2238,7 @@ TPI1.00 01                              N
         public void Loan_SetReadOnlyFields()
         {
 #pragma warning disable CS0618 // Type or member is obsolete
-            var loan = new Loan();
+            var loan = ConstructLoan();
 #pragma warning restore CS0618 // Type or member is obsolete
             Assert.IsFalse(loan.Fields.AllowWritesToReadOnlyFieldsLocally);
             var standardField = loan.Fields["2"];

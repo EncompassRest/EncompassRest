@@ -151,20 +151,20 @@ namespace EncompassRest
     {
         public override bool CanConvert(Type objectType) => objectType == TypeData<NA<T>>.Type || objectType == TypeData<NA<T>?>.Type;
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             switch (reader.TokenType)
             {
                 case JsonToken.Null:
                     return new NA<T>();
-                case JsonToken.String when IsNA(reader.Value.ToString()):
+                case JsonToken.String when IsNA(reader.Value!.ToString()):
                     return new NA<T>("NA");
                 default:
-                    return new NA<T>(serializer.Deserialize<T>(reader));
+                    return new NA<T>(serializer.Deserialize<T>(reader)!);
             }
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
 
         public object Create(string? value) => value == null
             ? new NA<T>()

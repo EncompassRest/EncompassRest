@@ -75,6 +75,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     private ConstructionManagement? _constructionManagement;
     private DirtyValue<StringEnumValue<ConstructionToPermanentClosingType>>? _constructionToPermanentClosingType;
     private DirtyValue<string?>? _consumerConnectSiteID;
+    private DirtyValue<bool?>? _consumerHomeInsuranceOrderEligible;
     private DirtyList<Contact>? _contacts;
     private DirtyValue<bool?>? _contactUpdatedIndicator;
     private DirtyValue<decimal?>? _contractSellerCreditAmount;
@@ -321,6 +322,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     private DirtyValue<decimal?>? _newMortgageMonthlyPayment;
     private DirtyValue<string?>? _newSubordinateCreditorName;
     private DirtyValue<decimal?>? _newSubordinateMonthlyPayment;
+    private DirtyValue<bool?>? _newVestingNboAlert;
     private DirtyValue<string?>? _nmlsLoanOriginatorId;
     private DirtyValue<bool?>? _noClosingCostOption;
     private DirtyList<NonBorrowingOwner>? _nonBorrowingOwners;
@@ -857,6 +859,12 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// Consumer Connect SiteID [ConsumerConnectSiteID]
     /// </summary>
     public string? ConsumerConnectSiteID { get => _consumerConnectSiteID; set => SetField(ref _consumerConnectSiteID, value); }
+
+    /// <summary>
+    /// Consumer Eligible to Order Home Insurance [ConsumerHIOrderEligible]
+    /// </summary>
+    [LoanFieldProperty(ReadOnly = true)]
+    public bool? ConsumerHomeInsuranceOrderEligible { get => _consumerHomeInsuranceOrderEligible; set => SetField(ref _consumerHomeInsuranceOrderEligible, value); }
 
     /// <summary>
     /// Loan Contacts
@@ -2214,6 +2222,12 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     public decimal? NewSubordinateMonthlyPayment { get => _newSubordinateMonthlyPayment; set => SetField(ref _newSubordinateMonthlyPayment, value); }
 
     /// <summary>
+    /// New Non-Borrowing Owner linked to vesting added [NewVestingNboAlert]
+    /// </summary>
+    [LoanFieldProperty(ReadOnly = true)]
+    public bool? NewVestingNboAlert { get => _newVestingNboAlert; set => SetField(ref _newVestingNboAlert, value); }
+
+    /// <summary>
     /// NMLS Loan Originator ID [3238]
     /// </summary>
     public string? NmlsLoanOriginatorId { get => _nmlsLoanOriginatorId; set => SetField(ref _nmlsLoanOriginatorId, value); }
@@ -2936,7 +2950,6 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Fees Total Costs [1073]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
     public decimal? TotalFeesCostAmount { get => _totalFeesCostAmount; set => SetField(ref _totalFeesCostAmount, value); }
 
     /// <summary>

@@ -77,7 +77,7 @@ namespace EncompassRest.Webhook.v1
         /// <param name="resourceName">Name of the resource for which to return results.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<WebhookResource> GetResourceAsync(this IWebhook webhook, WebhookResourceType resourceName, CancellationToken cancellationToken = default) => GetResourceAsync(webhook, resourceName.Validate(nameof(resourceName)).GetValue()!, cancellationToken);
+        public static Task<WebhookResource> GetResourceAsync(this IWebhook webhook, WebhookResourceType resourceName, CancellationToken cancellationToken = default) => GetResourceAsync(webhook, resourceName.Validate(nameof(resourceName)).GetValue(), cancellationToken);
 
         /// <summary>
         /// Returns the specified webhook resource events that are available.
@@ -95,7 +95,7 @@ namespace EncompassRest.Webhook.v1
         /// <param name="resourceName">The resource name.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<List<WebhookResourceEventObject>> GetResourceEventsAsync(this IWebhook webhook, WebhookResourceType resourceName, CancellationToken cancellationToken = default) => GetResourceEventsAsync(webhook, resourceName.Validate(nameof(resourceName)).GetValue()!, cancellationToken);
+        public static Task<List<WebhookResourceEventObject>> GetResourceEventsAsync(this IWebhook webhook, WebhookResourceType resourceName, CancellationToken cancellationToken = default) => GetResourceEventsAsync(webhook, resourceName.Validate(nameof(resourceName)).GetValue(), cancellationToken);
 
         /// <summary>
         /// Returns the specified webhook resource events that are available as raw json.
@@ -179,7 +179,7 @@ namespace EncompassRest.Webhook.v1
         /// <param name="events">Include subscriptions with these specified events.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<List<WebhookSubscription>> GetSubscriptionsAsync(this IWebhook webhook, IEnumerable<WebhookResourceType>? resources, IEnumerable<WebhookResourceEvent>? events, CancellationToken cancellationToken = default) => GetSubscriptionsAsync(webhook, resources?.Select(r => r.Validate(nameof(resources)).GetValue()!), events?.Select(e => e.Validate(nameof(events)).GetValue()!), cancellationToken);
+        public static Task<List<WebhookSubscription>> GetSubscriptionsAsync(this IWebhook webhook, IEnumerable<WebhookResourceType>? resources, IEnumerable<WebhookResourceEvent>? events, CancellationToken cancellationToken = default) => GetSubscriptionsAsync(webhook, resources?.Select(r => r.Validate(nameof(resources)).GetValue()), events?.Select(e => e.Validate(nameof(events)).GetValue()), cancellationToken);
 
         /// <summary>
         /// Returns a list of subscriptions as raw json.

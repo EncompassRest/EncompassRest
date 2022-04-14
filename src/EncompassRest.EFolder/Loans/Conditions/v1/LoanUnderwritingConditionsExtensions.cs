@@ -41,7 +41,7 @@ namespace EncompassRest.Loans.Conditions.v1
         /// <param name="documents">The documents to assign or unassign.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task AssignConditionDocumentsAsync(this ILoanUnderwritingConditions underwritingConditions, string conditionId, AssignmentAction action, IEnumerable<EntityReference> documents, CancellationToken cancellationToken = default) => AssignConditionDocumentsAsync(underwritingConditions, conditionId, action.Validate(nameof(action)).GetValue()!, documents, cancellationToken);
+        public static Task AssignConditionDocumentsAsync(this ILoanUnderwritingConditions underwritingConditions, string conditionId, AssignmentAction action, IEnumerable<EntityReference> documents, CancellationToken cancellationToken = default) => AssignConditionDocumentsAsync(underwritingConditions, conditionId, action.Validate(nameof(action)).GetValue(), documents, cancellationToken);
 
         /// <summary>
         /// Assigns or unassigns documents from the specified condition.

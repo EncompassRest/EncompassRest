@@ -717,6 +717,7 @@ public sealed partial class Correspondent : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Correspondent Flood Zone [CORRESPONDENT.X92]
     /// </summary>
+    [LoanFieldProperty(MissingOptionsJson = "[\"None\"]")]
     public StringEnumValue<FloodZone> AppraisalFloodZone { get => _appraisalFloodZone; set => SetField(ref _appraisalFloodZone, value); }
 
     /// <summary>

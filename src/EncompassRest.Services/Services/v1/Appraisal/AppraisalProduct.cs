@@ -45,7 +45,7 @@ namespace EncompassRest.Services.v1.Appraisal
         /// <param name="entityRef">References the entity ID and entity type. Both must include the loan ID and borrower application ID associated with the loan.</param>
         /// <param name="options">AppraisalProduct options.</param>
         public AppraisalProduct(EntityReference entityRef, AppraisalOptions options)
-            : this(entityRef, options, ServiceType.Appraisal.GetValue()!)
+            : this(entityRef, options, ServiceType.Appraisal.GetValue())
         {
         }
 

@@ -13,7 +13,7 @@ public sealed partial class MilestoneTaskContact : DirtyExtensibleObject, IIdent
     private DirtyValue<string?>? _name;
     private DirtyValue<string?>? _phone;
     private DirtyValue<string?>? _role;
-    private DirtyValue<string?>? _state;
+    private DirtyValue<StringEnumValue<State>>? _state;
     private DirtyValue<string?>? _zip;
 
     /// <summary>
@@ -59,7 +59,7 @@ public sealed partial class MilestoneTaskContact : DirtyExtensibleObject, IIdent
     /// <summary>
     /// MilestoneTaskContactContract State
     /// </summary>
-    public string? State { get => _state; set => SetField(ref _state, value); }
+    public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
 
     /// <summary>
     /// MilestoneTaskContactContract Zip

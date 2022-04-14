@@ -115,9 +115,9 @@ namespace EncompassRest
     {
         public override bool CanConvert(Type objectType) => objectType == TypeData<StringEnumValue<TEnum>>.Type;
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => new StringEnumValue<TEnum>(reader.Value?.ToString());
+        public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) => new StringEnumValue<TEnum>(reader.Value?.ToString());
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value is StringEnumValue<TEnum> sev ? sev.Value : value?.ToString());
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) => writer.WriteValue(value is StringEnumValue<TEnum> sev ? sev.Value : value?.ToString());
 
         public object Create(string? value) => new StringEnumValue<TEnum>(value);
     }

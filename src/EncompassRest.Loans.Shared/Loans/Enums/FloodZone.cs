@@ -116,5 +116,9 @@ public enum FloodZone
     /// <summary>
     /// Yes
     /// </summary>
-    Yes = 25
+    Yes = 25,
+    /// <summary>
+    /// None
+    /// </summary>
+    None = 26
 }

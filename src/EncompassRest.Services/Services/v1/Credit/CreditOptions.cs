@@ -90,7 +90,7 @@ namespace EncompassRest.Services.v1.Credit
         /// </summary>
         /// <param name="requestType">Indicates the request type being submitted.</param>
         public CreditOptions(CreditRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).GetValue()!)
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 

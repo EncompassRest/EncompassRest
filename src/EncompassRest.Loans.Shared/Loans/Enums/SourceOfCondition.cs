@@ -32,5 +32,9 @@ public enum SourceOfCondition
     /// <summary>
     /// Duplicate
     /// </summary>
-    Duplicate = 6
+    Duplicate = 6,
+    /// <summary>
+    /// FHA
+    /// </summary>
+    FHA = 7
 }

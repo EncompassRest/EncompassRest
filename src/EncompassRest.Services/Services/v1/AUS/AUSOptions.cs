@@ -55,7 +55,7 @@ namespace EncompassRest.Services.v1.AUS
         /// </summary>
         /// <param name="requestType">The type of underwriting request to place with the AUS provider.</param>
         public AUSOptions(AUSRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).GetValue()!)
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 

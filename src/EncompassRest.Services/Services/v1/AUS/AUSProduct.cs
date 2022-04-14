@@ -50,7 +50,7 @@ namespace EncompassRest.Services.v1.AUS
         /// <param name="entityRef">References the entity ID and entity type. Both must include the loan ID and borrower application ID associated with the loan.</param>
         /// <param name="options">AUSProduct options.</param>
         public AUSProduct(EntityReference entityRef, AUSOptions options)
-            : this(entityRef, options, ServiceType.AUS.GetValue()!)
+            : this(entityRef, options, ServiceType.AUS.GetValue())
         {
         }
 

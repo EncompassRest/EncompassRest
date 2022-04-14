@@ -8,12 +8,12 @@ namespace EncompassRest
     public enum AssignmentAction
     {
         /// <summary>
-        /// Add
+        /// add
         /// </summary>
         [EnumMember(Value = "add")]
         Add = 0,
         /// <summary>
-        /// Remove
+        /// remove
         /// </summary>
         [EnumMember(Value = "remove")]
         Remove = 1

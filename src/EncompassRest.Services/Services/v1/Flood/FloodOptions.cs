@@ -58,7 +58,7 @@ namespace EncompassRest.Services.v1.Flood
         /// </summary>
         /// <param name="requestType">The type of Flood service request being placed.</param>
         public FloodOptions(FloodRequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).GetValue()!)
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 

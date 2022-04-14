@@ -62,7 +62,7 @@ namespace EncompassRest.Contacts.v1
         /// <param name="contactType">The contact type.</param>
         /// <param name="groupType">The contact group type.</param>
         public ContactGroup(string name, ContactType contactType, ContactGroupType groupType)
-            : this(name, contactType.Validate(nameof(contactType)).GetValue()!, groupType.Validate(nameof(groupType)).GetValue()!)
+            : this(name, contactType.Validate(nameof(contactType)).GetValue(), groupType.Validate(nameof(groupType)).GetValue())
         {
         }
 
@@ -91,7 +91,7 @@ namespace EncompassRest.Contacts.v1
         /// <param name="contactType">The contact type.</param>
         /// <param name="groupType">The contact group type.</param>
         public ContactGroup(string id, string name, ContactType contactType, ContactGroupType groupType)
-            : this(id, name, contactType.Validate(nameof(contactType)).GetValue()!, groupType.Validate(nameof(groupType)).GetValue()!)
+            : this(id, name, contactType.Validate(nameof(contactType)).GetValue(), groupType.Validate(nameof(groupType)).GetValue())
         {
         }
 

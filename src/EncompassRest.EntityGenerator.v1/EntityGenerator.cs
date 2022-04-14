@@ -150,7 +150,6 @@ namespace EncompassRest
                 typeof(AttachmentType),
                 typeof(PropertyImprovementsType),
                 typeof(PropertyRightsType),
-                typeof(DeliveryStatus),
                 typeof(ValuationAwareness),
                 typeof(PublicOrPrivate),
                 typeof(LienStatus),
@@ -203,7 +202,8 @@ namespace EncompassRest
             "IsEthnicityBasedOnVisual",
             "IsRaceBasedOnVisual",
             "IsSexBasedOnVisual",
-            "NmlsLienStatus"
+            "NmlsLienStatus",
+            "AppraisalFloodZone"
         };
 
         private static readonly HashSet<string> s_enumPropertyNamesToUseEntityTypeInName = new(StringComparer.OrdinalIgnoreCase)
@@ -314,7 +314,7 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_ignoredEntities = new() { "EntityRefContract" };
 
-        private static readonly Dictionary<string, List<string>> s_mergeEntities = new() { { "NonBorrowingOwner", new List<string> { "NonBorrowingOwnerContract" } }, { "AlertChangeCircumstance", new List<string> { "AlertChangeCircumstanceContract" } }, { "OtherIncomeSource", new List<string> { "OtherIncomeSourceContract" } } };
+        private static readonly Dictionary<string, List<string>> s_mergeEntities = new() { };
 
         public static async Task Main()
         {

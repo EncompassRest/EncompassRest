@@ -72,7 +72,7 @@ namespace EncompassRest.Services.v1.Verification
         /// </summary>
         /// <param name="requestType">Indicates the type of request you are submitting.</param>
         public EVVOEOptions(EVVOERequestType requestType)
-            : this(requestType.Validate(nameof(requestType)).GetValue()!)
+            : this(requestType.Validate(nameof(requestType)).GetValue())
         {
         }
 

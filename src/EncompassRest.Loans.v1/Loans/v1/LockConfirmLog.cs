@@ -23,6 +23,7 @@ public sealed partial class LockConfirmLog : DirtyExtensibleObject, IIdentifiabl
     private DirtyValue<string?>? _guid;
     private DirtyValue<bool?>? _hideLog;
     private DirtyValue<string?>? _id;
+    private DirtyValue<bool?>? _includeConfirmCount;
     private DirtyValue<bool?>? _isSystemSpecificIndicator;
     private DirtyValue<int?>? _logRecordIndex;
     private DirtyValue<string?>? _requestGuid;
@@ -105,6 +106,11 @@ public sealed partial class LockConfirmLog : DirtyExtensibleObject, IIdentifiabl
     /// LockConfirmLog Id
     /// </summary>
     public string? Id { get => _id; set => SetField(ref _id, value); }
+
+    /// <summary>
+    /// LockConfirmLog IncludeConfirmCount
+    /// </summary>
+    public bool? IncludeConfirmCount { get => _includeConfirmCount; set => SetField(ref _includeConfirmCount, value); }
 
     /// <summary>
     /// LockConfirmLog IsSystemSpecificIndicator

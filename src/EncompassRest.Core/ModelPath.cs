@@ -354,18 +354,18 @@ namespace EncompassRest
                         var property = objectContract.Properties.GetClosestMatchProperty(propertyName);
                         if (property != null)
                         {
-                            var attributeProvider = property.AttributeProvider;
+                            var attributeProvider = property.AttributeProvider!;
                             return attributeType != null ? attributeProvider.GetAttributes(attributeType, false) : attributeProvider.GetAttributes(false);
                         }
                     }
                 }
             }
-            return new Attribute[0];
+            return Array<Attribute>.Empty;
         }
 
         public override string ToString() => ToString(null, false);
 
-        public string ToString(Func<string?, string>? propertyNameTransformer, bool attributePath) => $"{(attributePath ? null : propertyNameTransformer?.Invoke(RootObjectName) ?? RootObjectName)}{string.Concat(Segments.Select(segment => segment.ToString(propertyNameTransformer, attributePath)))}";
+        public string ToString(Func<string, string>? propertyNameTransformer, bool attributePath) => $"{(attributePath ? null : propertyNameTransformer?.Invoke(RootObjectName!) ?? RootObjectName)}{string.Concat(Segments.Select(segment => segment.ToString(propertyNameTransformer, attributePath)))}";
 
         public override int GetHashCode() => Segments.Aggregate(StringComparer.OrdinalIgnoreCase.GetHashCode(RootObjectName), (current, segment) => current ^ segment.GetHashCode());
 
@@ -457,8 +457,8 @@ namespace EncompassRest
                 Preconditions.NotNull(parent, nameof(parent));
                 
                 var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(parent.GetType());
-                JToken tokenValue;
-                object value;
+                JToken? tokenValue;
+                object? value;
                 var propertyName = GetPropertyName();
                 switch (contract)
                 {
@@ -467,7 +467,7 @@ namespace EncompassRest
                         if (property != null)
                         {
                             declaredType = property.PropertyType;
-                            value = property.ValueProvider.GetValue(parent);
+                            value = property.ValueProvider!.GetValue(parent);
                             if (createIfNotExists && value == null)
                             {
                                 var json = nextIsProperty ? "{}" : "[]";
@@ -478,7 +478,7 @@ namespace EncompassRest
                         }
                         else
                         {
-                            var extensionData = objectContract.ExtensionDataGetter(parent);
+                            var extensionData = objectContract.ExtensionDataGetter!(parent);
                             if (extensionData != null)
                             {
                                 foreach (var pair in extensionData)
@@ -493,7 +493,7 @@ namespace EncompassRest
                                 if (createIfNotExists)
                                 {
                                     tokenValue = nextIsProperty ? new JObject() : (JToken)new JArray();
-                                    objectContract.ExtensionDataSetter(parent, propertyName, tokenValue);
+                                    objectContract.ExtensionDataSetter!(parent, propertyName, tokenValue);
                                     declaredType = tokenValue.GetType();
                                     return tokenValue;
                                 }
@@ -553,7 +553,7 @@ namespace EncompassRest
                         if (property != null)
                         {
                             value = valueProvider(property.PropertyType);
-                            property.ValueProvider.SetValue(parent, value);
+                            property.ValueProvider!.SetValue(parent, value);
                         }
                         else
                         {
@@ -861,7 +861,7 @@ namespace EncompassRest
                     throw new InvalidOperationException($"Could not find property {propertyName} on {valueType}");
                 }
 
-                var retrievedValue = property.ValueProvider.GetValue(value);
+                var retrievedValue = property.ValueProvider!.GetValue(value);
                 string? defaultValue = null;
                 if (retrievedValue == null && settings != null && settings.DefaultValues?.TryGetValue(propertyName, out defaultValue) == true)
                 {
