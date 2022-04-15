@@ -5,7 +5,7 @@ namespace EncompassRest.Company.Users.v1
     /// <summary>
     /// Users retrieval options.
     /// </summary>
-    public sealed class UsersRetrievalOptions
+    public sealed class UsersRetrievalOptions : Options
     {
         /// <summary>
         /// Indicates whether the email signature should be returned as part of the response.
@@ -47,9 +47,9 @@ namespace EncompassRest.Company.Users.v1
         /// </summary>
         public int? Limit { get; set; }
 
-        internal QueryParameters ToQueryParameters()
+        internal override QueryParameters ToQueryParameters()
         {
-            var queryParameters = new QueryParameters();
+            var queryParameters = base.ToQueryParameters();
             if (ViewEmailSignature.HasValue)
             {
                 queryParameters.Add("viewEmailSignature", ViewEmailSignature.ToString().ToLower());

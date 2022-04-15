@@ -58,7 +58,7 @@ namespace EncompassRest.Company.Users.v1
 
         public async Task<List<User>> GetUsersAsync(UsersRetrievalOptions? options, CancellationToken cancellationToken = default)
         {
-            var users = await GetDirtyListAsync<User>(null, options?.ToQueryParameters().ToString(), nameof(GetUsersAsync), null, cancellationToken).ConfigureAwait(false);
+            var users = await GetDirtyListAsync<User>(null, options?.ToString(), nameof(GetUsersAsync), null, cancellationToken).ConfigureAwait(false);
             foreach (var user in users)
             {
                 user.Initialize(Client, user.Id!);

@@ -6,7 +6,7 @@ namespace EncompassRest.Webhook.v1
     /// <summary>
     /// WebhookEventOptions
     /// </summary>
-    public sealed class WebhookEventOptions : ExtensibleObject
+    public sealed class WebhookEventOptions : Options
     {
         /// <summary>
         /// The type of resource.
@@ -53,9 +53,9 @@ namespace EncompassRest.Webhook.v1
         /// </summary>
         public StringEnumValue<WebhookStatus> Status { get; set; }
 
-        internal QueryParameters ToQueryParameters()
+        internal override QueryParameters ToQueryParameters()
         {
-            var queryParameters = new QueryParameters();
+            var queryParameters = base.ToQueryParameters();
             if (!string.IsNullOrEmpty(ResourceType))
             {
                 queryParameters.Add("resourceType", ResourceType);

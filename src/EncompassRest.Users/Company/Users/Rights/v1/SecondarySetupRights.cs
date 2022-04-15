@@ -14,6 +14,7 @@ namespace EncompassRest.Company.Users.Rights.v1
         private DirtyValue<bool?>? _fundingTemplates;
         private DirtyValue<bool?>? _investorTemplates;
         private DirtyValue<bool?>? _loanPricingDecimalPlaces;
+        private DirtyValue<bool?>? _lockComparisonTool;
         private DirtyValue<bool?>? _lockDeskSetup;
         private DirtyValue<bool?>? _lockRequestAdditionalFields;
         private DirtyValue<bool?>? _normalizedBidTapeTemplate;
@@ -59,6 +60,11 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// SecondarySetupRights LoanPricingDecimalPlaces
         /// </summary>
         public bool? LoanPricingDecimalPlaces { get => _loanPricingDecimalPlaces; set => SetField(ref _loanPricingDecimalPlaces, value); }
+
+        /// <summary>
+        /// SecondarySetupRights LockComparisonTool
+        /// </summary>
+        public bool? LockComparisonTool { get => _lockComparisonTool; set => SetField(ref _lockComparisonTool, value); }
 
         /// <summary>
         /// SecondarySetupRights LockDeskSetup

@@ -9,6 +9,9 @@ using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest
 {
+    /// <summary>
+    /// Base interface that supports extension data and dirty json serialization.
+    /// </summary>
     public interface IDirtyExtensibleObject : IExtensibleObject, INotifyPropertyChanged
     {
     }

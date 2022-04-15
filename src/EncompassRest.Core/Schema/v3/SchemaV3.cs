@@ -29,12 +29,10 @@ public interface ISchemaV3 : IApiObject
     /// <summary>
     /// Returns the standard field definitions in a loan.
     /// </summary>
-    /// <param name="ids">List of field IDs for which you want field definitions.</param>
-    /// <param name="start">Starting number on the page. Zero-based starting index. The default is zero.</param>
-    /// <param name="limit">The maximum number of items to return.</param>
+    /// <param name="options">The standard field retrieval options.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
     /// <returns></returns>
-    Task<List<StandardFieldSchema>> GetStandardFieldSchemaAsync(IEnumerable<string>? ids = null, int? start = null, int? limit = null, CancellationToken cancellationToken = default);
+    Task<List<StandardFieldSchema>> GetStandardFieldSchemaAsync(StandardFieldRetrievalOptions options, CancellationToken cancellationToken = default);
     /// <summary>
     /// Returns the standard field definitions in a loan as raw json.
     /// </summary>
@@ -45,9 +43,10 @@ public interface ISchemaV3 : IApiObject
     /// <summary>
     /// Returns the virtual field definitions in a loan.
     /// </summary>
+    /// <param name="options">The virtual field retrieval options.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
     /// <returns></returns>
-    Task<List<VirtualFieldSchema>> GetVirtualFieldSchemaAsync(CancellationToken cancellationToken = default);
+    Task<List<VirtualFieldSchema>> GetVirtualFieldSchemaAsync(VirtualFieldRetrievalOptions? options = null, CancellationToken cancellationToken = default);
     /// <summary>
     /// Returns the virtual field definitions in a loan as raw json.
     /// </summary>
@@ -77,27 +76,16 @@ internal sealed class SchemaV3 : ApiObject, ISchemaV3
 
     public Task<string> GetLoanSchemaRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetLoanSchemaRawAsync), null, cancellationToken);
 
-    public Task<List<StandardFieldSchema>> GetStandardFieldSchemaAsync(IEnumerable<string>? ids = null, int? start = null, int? limit = null, CancellationToken cancellationToken = default)
+    public Task<List<StandardFieldSchema>> GetStandardFieldSchemaAsync(StandardFieldRetrievalOptions options, CancellationToken cancellationToken = default)
     {
-        var queryParameters = new QueryParameters();
-        if (ids?.Any() == true)
-        {
-            queryParameters.Add("ids", string.Join(",", ids));
-        }
-        if (start != null)
-        {
-            queryParameters.Add("start", start.ToString());
-        }
-        if (limit != null)
-        {
-            queryParameters.Add("limit", limit.ToString());
-        }
-        return GetListAsync<StandardFieldSchema>("standardFields", queryParameters.ToString(), nameof(GetStandardFieldSchemaAsync), null, cancellationToken);
+        Preconditions.NotNull(options, nameof(options));
+
+        return GetListAsync<StandardFieldSchema>("standardFields", options.ToString(), nameof(GetStandardFieldSchemaAsync), null, cancellationToken);
     }
 
     public Task<string> GetStandardFieldSchemaRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("standardFields", queryString, nameof(GetStandardFieldSchemaRawAsync), null, cancellationToken);
 
-    public Task<List<VirtualFieldSchema>> GetVirtualFieldSchemaAsync(CancellationToken cancellationToken = default) => GetListAsync<VirtualFieldSchema>("virtualFields", null, nameof(GetVirtualFieldSchemaAsync), null, cancellationToken);
+    public Task<List<VirtualFieldSchema>> GetVirtualFieldSchemaAsync(VirtualFieldRetrievalOptions? options = null, CancellationToken cancellationToken = default) => GetListAsync<VirtualFieldSchema>("virtualFields", options?.ToString(), nameof(GetVirtualFieldSchemaAsync), null, cancellationToken);
 
     public Task<string> GetVirtualFieldSchemaRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("virtualFields", queryString, nameof(GetVirtualFieldSchemaRawAsync), null, cancellationToken);
 }

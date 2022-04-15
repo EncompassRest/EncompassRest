@@ -331,7 +331,7 @@ namespace EncompassRest
                     do
                     {
                         start = standardFields.Count;
-                        var newFields = await Schema.v3.SchemaExtensions.GetStandardFieldSchemaAsync(client.Schema, null, start, limit);
+                        var newFields = await Schema.v3.SchemaExtensions.GetStandardFieldSchemaAsync(client.Schema, new Schema.v3.StandardFieldRetrievalOptions(start, limit));
                         foreach (var newField in newFields)
                         {
                             standardFields.Add(newField.Id, newField);

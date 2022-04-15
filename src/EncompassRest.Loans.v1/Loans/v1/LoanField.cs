@@ -177,7 +177,7 @@ namespace EncompassRest.Loans.v1
                             var propertyTypeContract = JsonHelper.InternalPrivateContractResolver.ResolveContract(propertyType);
                             if (propertyTypeContract.Converter is IStringCreator stringCreator)
                             {
-                                return stringCreator.Create(value?.ToString());
+                                return stringCreator.Create(propertyType, value?.ToString());
                             }
                         }
                     }

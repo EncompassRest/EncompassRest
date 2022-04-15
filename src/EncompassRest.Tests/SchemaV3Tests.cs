@@ -29,7 +29,7 @@ namespace EncompassRest.Tests
             do
             {
                 start = standardFields.Count;
-                var newFields = await client.Schema.GetStandardFieldSchemaAsync(null, start, limit);
+                var newFields = await client.Schema.GetStandardFieldSchemaAsync(new StandardFieldRetrievalOptions(start, limit));
                 standardFields.AddRange(newFields);
             } while (standardFields.Count > start);
 

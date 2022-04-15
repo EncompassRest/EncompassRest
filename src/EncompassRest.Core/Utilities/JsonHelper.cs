@@ -416,7 +416,7 @@ namespace EncompassRest.Utilities
                     if (propertyType == TypeData<StringDecimalValue>.Type)
                     {
                         var propertyContract = ResolveContract(propertyType);
-                        valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter!);
+                        valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter!, propertyType);
                     }
                     else
                     {
@@ -427,7 +427,7 @@ namespace EncompassRest.Utilities
                             if (genericTypeDefinition == TypeData.OpenStringEnumValueType || genericTypeDefinition == TypeData.OpenNaType)
                             {
                                 var propertyContract = ResolveContract(propertyType);
-                                valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter!);
+                                valueProvider = new StringValueProvider(valueProvider, (IStringCreator)propertyContract.Converter!, propertyType);
                             }
                         }
                     }
@@ -451,16 +451,18 @@ namespace EncompassRest.Utilities
             {
                 private readonly IValueProvider _valueProvider;
                 private readonly IStringCreator _stringCreator;
+                private readonly Type _type;
 
-                public StringValueProvider(IValueProvider valueProvider, IStringCreator stringCreator)
+                public StringValueProvider(IValueProvider valueProvider, IStringCreator stringCreator, Type type)
                 {
                     _valueProvider = valueProvider;
                     _stringCreator = stringCreator;
+                    _type = type;
                 }
 
                 public object GetValue(object target) => _valueProvider.GetValue(target)!.ToString();
 
-                public void SetValue(object target, object? value) => _valueProvider.SetValue(target, value is string str ? _stringCreator.Create(str) : value);
+                public void SetValue(object target, object? value) => _valueProvider.SetValue(target, value is string str ? _stringCreator.Create(_type, str) : value);
             }
         }
 

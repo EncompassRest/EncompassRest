@@ -198,7 +198,7 @@ namespace EncompassRest.Loans.v1
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
-            var loanId = await PostPopulateDirtyAsync("loans", createLoanOptions?.ToQueryParameters().ToString(), nameof(CreateLoanAsync), loan, createLoanOptions?.Populate == true, cancellationToken).ConfigureAwait(false);
+            var loanId = await PostPopulateDirtyAsync("loans", createLoanOptions?.ToString(), nameof(CreateLoanAsync), loan, createLoanOptions?.Populate == true, cancellationToken).ConfigureAwait(false);
             loan.Initialize(Client, loanId);
             return loanId;
         }
@@ -216,7 +216,7 @@ namespace EncompassRest.Loans.v1
             Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
             loan.Initialize(Client, loan.EncompassId);
-            return PatchPopulateDirtyAsync($"loans/{loan.EncompassId}", updateLoanOptions?.ToQueryParameters().ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, loan, updateLoanOptions?.Populate == true, cancellationToken);
+            return PatchPopulateDirtyAsync($"loans/{loan.EncompassId}", updateLoanOptions?.ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, loan, updateLoanOptions?.Populate == true, cancellationToken);
         }
 
         public Task<string> UpdateLoanRawAsync(string loanId, string loan, string? queryString = null, CancellationToken cancellationToken = default)
@@ -267,7 +267,7 @@ namespace EncompassRest.Loans.v1
 
         private async Task<string> CreateLoanFromImportFileInternalAsync(HttpContent content, Loan? loan, bool populate, CreateLoanOptions? createLoanOptions, CancellationToken cancellationToken)
         {
-            var loanId = await PostPopulateDirtyAsync("importers/loan", createLoanOptions?.ToQueryParameters().ToString(), content, nameof(CreateLoanFromImportFileAsync), loan, populate, cancellationToken).ConfigureAwait(false);
+            var loanId = await PostPopulateDirtyAsync("importers/loan", createLoanOptions?.ToString(), content, nameof(CreateLoanFromImportFileAsync), loan, populate, cancellationToken).ConfigureAwait(false);
             loan?.Initialize(Client, loanId);
             return loanId;
         }

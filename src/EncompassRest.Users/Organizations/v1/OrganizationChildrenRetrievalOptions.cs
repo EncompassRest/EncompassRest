@@ -5,7 +5,7 @@ namespace EncompassRest.Organizations.v1
     /// <summary>
     /// Organization children retrieval options.
     /// </summary>
-    public sealed class OrganizationChildrenRetrievalOptions
+    public sealed class OrganizationChildrenRetrievalOptions : Options
     {
         /// <summary>
         /// When set to <c>true</c>, the response includes references to all child organizations and users under this organization's hierarchy. 
@@ -28,9 +28,9 @@ namespace EncompassRest.Organizations.v1
         /// </summary>
         public int? Limit { get; set; }
 
-        internal QueryParameters GetQueryParameters()
+        internal override QueryParameters ToQueryParameters()
         {
-            var queryParameters = new QueryParameters();
+            var queryParameters = base.ToQueryParameters();
             if (Recursive.HasValue)
             {
                 queryParameters.Add("recursive", Recursive.ToString().ToLower());

@@ -1,7 +1,9 @@
-﻿namespace EncompassRest
+﻿using System;
+
+namespace EncompassRest
 {
     internal interface IStringCreator
     {
-        object Create(string? value);
+        object Create(Type type, string? value);
     }
 }

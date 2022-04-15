@@ -81,7 +81,7 @@ namespace EncompassRest.Organizations.v1
         {
         }
 
-        public Task<List<Organization>> GetOrganizationsAsync(OrganizationsRetrievalOptions? options, CancellationToken cancellationToken = default) => GetDirtyListAsync<Organization>(null, options?.GetQueryParameters().ToString(), nameof(GetOrganizationsAsync), null, cancellationToken);
+        public Task<List<Organization>> GetOrganizationsAsync(OrganizationsRetrievalOptions? options, CancellationToken cancellationToken = default) => GetDirtyListAsync<Organization>(null, options?.ToString(), nameof(GetOrganizationsAsync), null, cancellationToken);
 
         public Task<string> GetOrganizationsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetOrganizationsRawAsync), null, cancellationToken);
 
@@ -112,7 +112,7 @@ namespace EncompassRest.Organizations.v1
         {
             Preconditions.NotNullOrEmpty(orgId, nameof(orgId));
 
-            return GetDirtyListAsync<OrganizationReference>($"{orgId}/children", options?.GetQueryParameters().ToString(), nameof(GetOrganizationChildrenAsync), orgId, cancellationToken);
+            return GetDirtyListAsync<OrganizationReference>($"{orgId}/children", options?.ToString(), nameof(GetOrganizationChildrenAsync), orgId, cancellationToken);
         }
 
         public Task<string> GetOrganizationChildrenRawAsync(string orgId, string? queryString = null, CancellationToken cancellationToken = default)

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Reflection;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
@@ -11,7 +13,7 @@ namespace EncompassRest
     /// support for any string value for when the Enum is not updated to support the given option.
     /// </summary>
     /// <typeparam name="TEnum">The enum type.</typeparam>
-    [JsonConverter(typeof(StringEnumValueConverter<>))]
+    [JsonConverter(typeof(StringEnumValueConverter))]
     public struct StringEnumValue<TEnum> : IEquatable<StringEnumValue<TEnum>>
         where TEnum : struct, Enum
     {
@@ -110,15 +112,44 @@ namespace EncompassRest
         public static bool operator !=(StringEnumValue<TEnum> left, StringEnumValue<TEnum> right) => !(left == right);
     }
 
-    internal sealed class StringEnumValueConverter<TEnum> : JsonConverter, IStringCreator
-        where TEnum : struct, Enum
+    internal sealed class StringEnumValueConverter : JsonConverter, IStringCreator
     {
-        public override bool CanConvert(Type objectType) => objectType == TypeData<StringEnumValue<TEnum>>.Type;
+        private static readonly ConcurrentDictionary<Type, InternalConverter> _converters = new();
 
-        public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) => new StringEnumValue<TEnum>(reader.Value?.ToString());
+        private static InternalConverter? GetConverter(Type type, bool throwOnNull = false)
+        {
+            if (!_converters.TryGetValue(type, out var converter) && type.GetTypeInfo().IsGenericType && !type.GetTypeInfo().IsGenericTypeDefinition && type.GetGenericTypeDefinition() == typeof(StringEnumValue<>))
+            {
+                converter = _converters.GetOrAdd(type, t => (InternalConverter)Activator.CreateInstance(typeof(InternalConverter<>).MakeGenericType(t.GenericTypeArguments[0])));
+            }
+            if (converter == null && throwOnNull)
+            {
+                throw new InvalidOperationException("Converter only supports StringEnumValue<TEnum> type");
+            }
+            return converter;
+        }
 
-        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) => writer.WriteValue(value is StringEnumValue<TEnum> sev ? sev.Value : value?.ToString());
+        public override bool CanConvert(Type objectType) => GetConverter(objectType) != null;
 
-        public object Create(string? value) => new StringEnumValue<TEnum>(value);
+        public object Create(Type type, string? value) => GetConverter(type, throwOnNull: true)!.Create(value);
+
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) => GetConverter(objectType, throwOnNull: true)!.ReadJson(reader, objectType, existingValue, serializer);
+
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
+
+        private abstract class InternalConverter
+        {
+            public abstract object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer);
+
+            public abstract object Create(string? value);
+        }
+
+        private sealed class InternalConverter<TEnum> : InternalConverter
+            where TEnum : struct, Enum
+        {
+            public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) => new StringEnumValue<TEnum>(reader.Value?.ToString());
+
+            public override object Create(string? value) => new StringEnumValue<TEnum>(value);
+        }
     }
 }

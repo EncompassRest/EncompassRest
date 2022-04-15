@@ -5,7 +5,7 @@ namespace EncompassRest.Organizations.v1
     /// <summary>
     /// Organizations retrieval options.
     /// </summary>
-    public sealed class OrganizationsRetrievalOptions
+    public sealed class OrganizationsRetrievalOptions : Options
     {
         /// <summary>
         /// The view of the organizations to get.
@@ -27,9 +27,9 @@ namespace EncompassRest.Organizations.v1
         /// </summary>
         public int? Limit { get; set; }
 
-        internal QueryParameters GetQueryParameters()
+        internal override QueryParameters ToQueryParameters()
         {
-            var queryParameters = new QueryParameters();
+            var queryParameters = base.ToQueryParameters();
             if (!string.IsNullOrEmpty(View))
             {
                 queryParameters.Add("view", View);

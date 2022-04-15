@@ -6,7 +6,7 @@ namespace EncompassRest.Loans.Documents.v3
     /// <summary>
     /// The eFolder management options.
     /// </summary>
-    public sealed class EFolderManagementOptions
+    public sealed class EFolderManagementOptions : Options
     {
         /// <summary>
         /// The document management action.
@@ -42,9 +42,9 @@ namespace EncompassRest.Loans.Documents.v3
             Action = action;
         }
 
-        internal QueryParameters ToQueryParameters()
+        internal override QueryParameters ToQueryParameters()
         {
-            var queryParameters = new QueryParameters();
+            var queryParameters = base.ToQueryParameters();
             queryParameters.Add("action", Action.Value);
             if (!string.IsNullOrEmpty(LockId))
             {

@@ -6,7 +6,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// The loan options for loan retrieval.
 /// </summary>
-public abstract class LoanOptions
+public abstract class LoanOptions : Options
 {
     /// <summary>
     /// List of loan entities to retrieve from the loan.
@@ -52,9 +52,9 @@ public abstract class LoanOptions
     {
     }
 
-    internal virtual QueryParameters ToQueryParameters()
+    internal override QueryParameters ToQueryParameters()
     {
-        var queryParameters = new QueryParameters();
+        var queryParameters = base.ToQueryParameters();
         if (Entities?.Count > 0)
         {
             queryParameters.Add("entities", string.Join(",", Entities));

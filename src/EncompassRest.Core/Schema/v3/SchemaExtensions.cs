@@ -102,12 +102,10 @@ public static class SchemaExtensions
     /// Returns the standard field definitions in a loan.
     /// </summary>
     /// <param name="schema">The Schema Api Object.</param>
-    /// <param name="ids">List of field IDs for which you want field definitions.</param>
-    /// <param name="start">Starting number on the page. Zero-based starting index. The default is zero.</param>
-    /// <param name="limit">The maximum number of items to return.</param>
+    /// <param name="options">The standard field retrieval options.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
     /// <returns></returns>
-    public static Task<List<StandardFieldSchema>> GetStandardFieldSchemaAsync(this ISchema schema, IEnumerable<string>? ids = null, int? start = null, int? limit = null, CancellationToken cancellationToken = default) => GetV3(schema).GetStandardFieldSchemaAsync(ids, start, limit, cancellationToken);
+    public static Task<List<StandardFieldSchema>> GetStandardFieldSchemaAsync(this ISchema schema, StandardFieldRetrievalOptions options, CancellationToken cancellationToken = default) => GetV3(schema).GetStandardFieldSchemaAsync(options, cancellationToken);
 
     /// <summary>
     /// Returns the standard field definitions in a loan as raw json.
@@ -122,9 +120,10 @@ public static class SchemaExtensions
     /// Returns the virtual field definitions in a loan.
     /// </summary>
     /// <param name="schema">The Schema Api Object.</param>
+    /// <param name="options">The virtual field retrieval options.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
     /// <returns></returns>
-    public static Task<List<VirtualFieldSchema>> GetVirtualFieldSchemaAsync(this ISchema schema, CancellationToken cancellationToken = default) => GetV3(schema).GetVirtualFieldSchemaAsync(cancellationToken);
+    public static Task<List<VirtualFieldSchema>> GetVirtualFieldSchemaAsync(this ISchema schema, VirtualFieldRetrievalOptions? options = null, CancellationToken cancellationToken = default) => GetV3(schema).GetVirtualFieldSchemaAsync(options, cancellationToken);
 
     /// <summary>
     /// Returns the virtual field definitions in a loan as raw json.

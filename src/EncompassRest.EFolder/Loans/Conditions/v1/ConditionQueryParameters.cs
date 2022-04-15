@@ -9,7 +9,7 @@ namespace EncompassRest.Loans.Conditions.v1
     /// <summary>
     /// ConditionQueryParameters
     /// </summary>
-    public sealed class ConditionQueryParameters
+    public sealed class ConditionQueryParameters : Options
     {
         private ReadOnlyCollection<FieldSort>? _sort;
         private ReadOnlyCollection<FieldFilter>? _filter;
@@ -101,9 +101,9 @@ namespace EncompassRest.Loans.Conditions.v1
         /// Gets the query parameters string representation.
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        internal override QueryParameters ToQueryParameters()
         {
-            var queryParameters = new QueryParameters();
+            var queryParameters = base.ToQueryParameters();
             if (Sort != null)
             {
                 queryParameters.Add("sort", string.Join(",", Sort.Select(fieldSort => $"{(fieldSort.Order == SortOrder.Ascending ? "+" : "-")}{fieldSort.CanonicalName}")));
@@ -124,7 +124,7 @@ namespace EncompassRest.Loans.Conditions.v1
             {
                 queryParameters.Add("includeRemoved", IncludeRemoved.ToString().ToLower());
             }
-            return queryParameters.ToString();
+            return queryParameters;
         }
     }
 }

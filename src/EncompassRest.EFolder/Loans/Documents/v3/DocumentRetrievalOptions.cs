@@ -5,7 +5,7 @@ namespace EncompassRest.Loans.Documents.v3
     /// <summary>
     /// The document retrieval options.
     /// </summary>
-    public sealed class DocumentRetrievalOptions
+    public sealed class DocumentRetrievalOptions : Options
     {
         /// <summary>
         /// When set to <c>true</c> only documents with active attachments are returned.
@@ -17,9 +17,9 @@ namespace EncompassRest.Loans.Documents.v3
         /// </summary>
         public bool? IncludeRemoved { get; set; }
 
-        internal QueryParameters ToQueryParameters()
+        internal override QueryParameters ToQueryParameters()
         {
-            var queryParameters = new QueryParameters();
+            var queryParameters = base.ToQueryParameters();
             if (RequireActiveAttachments.HasValue)
             {
                 queryParameters.Add("requireActiveAttachments", RequireActiveAttachments.ToString().ToLower());

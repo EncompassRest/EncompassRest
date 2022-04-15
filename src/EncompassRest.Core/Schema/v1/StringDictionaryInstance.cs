@@ -1,6 +1,6 @@
-﻿using EncompassRest.Utilities;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using EncompassRest.Utilities;
 
 namespace EncompassRest.Schema.v1
 {

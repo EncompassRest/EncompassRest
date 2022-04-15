@@ -1,8 +1,7 @@
-﻿using EncompassRest.Utilities;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Schema.v1
 {

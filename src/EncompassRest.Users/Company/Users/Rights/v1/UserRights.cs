@@ -12,6 +12,7 @@ namespace EncompassRest.Company.Users.Rights.v1
         private ContactsRights? _contacts;
         private DashboardRights? _dashboard;
         private EFolderRights? _eFolder;
+        private EVaultRights? _eVault;
         private ExternalSettingsRights? _externalSettings;
         private FormsRights? _forms;
         private HomeRights? _home;
@@ -55,6 +56,12 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// </summary>
         [AllowNull]
         public EFolderRights EFolder { get => GetField(ref _eFolder); set => SetField(ref _eFolder, value); }
+
+        /// <summary>
+        /// UserRights EVault
+        /// </summary>
+        [AllowNull]
+        public EVaultRights EVault { get => GetField(ref _eVault); set => SetField(ref _eVault, value); }
 
         /// <summary>
         /// UserRights ExternalSettings

@@ -91,7 +91,7 @@ namespace EncompassRest.EFolder.v1
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            var job = await PostAsync<ExportAttachmentsJob>(null, options?.GetQueryParameters().ToString(), new JsonStreamContent(parameters), nameof(ExportAttachmentsAsync), null, cancellationToken).ConfigureAwait(false);
+            var job = await PostAsync<ExportAttachmentsJob>(null, options?.ToQueryParameters().ToString(), new JsonStreamContent(parameters), nameof(ExportAttachmentsAsync), null, cancellationToken).ConfigureAwait(false);
             job.Initialize(Client);
             return job;
         }

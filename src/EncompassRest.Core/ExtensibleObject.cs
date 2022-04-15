@@ -37,9 +37,5 @@ namespace EncompassRest
         }
 
         internal IDictionary<string, T> GetField<T>(ref DirtyDictionary<string, T>? field) => field ??= new DirtyDictionary<string, T>(StringComparer.OrdinalIgnoreCase);
-
-        internal ExtensibleObject()
-        {
-        }
     }
 }

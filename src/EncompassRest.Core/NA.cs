@@ -1,8 +1,10 @@
 ﻿using System;
-using Newtonsoft.Json;
-using EncompassRest.Utilities;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using EncompassRest.Utilities;
+using Newtonsoft.Json;
 
 namespace EncompassRest
 {
@@ -10,7 +12,7 @@ namespace EncompassRest
     /// The <see cref="NA{T}"/> type accepts any value of <typeparamref name="T"/> as well as "NA" and null.
     /// </summary>
     /// <typeparam name="T">The type parameter.</typeparam>
-    [JsonConverter(typeof(NAConverter<>))]
+    [JsonConverter(typeof(NAConverter))]
     public struct NA<T> : IEquatable<NA<T>>
     {
         /// <summary>
@@ -147,35 +149,64 @@ namespace EncompassRest
         public static bool operator !=(NA<T> left, NA<T> right) => !(left == right);
     }
 
-    internal sealed class NAConverter<T> : JsonConverter, IStringCreator
+    internal sealed class NAConverter : JsonConverter, IStringCreator
     {
-        public override bool CanConvert(Type objectType) => objectType == TypeData<NA<T>>.Type || objectType == TypeData<NA<T>?>.Type;
+        private static readonly ConcurrentDictionary<Type, InternalConverter> _converters = new();
 
-        public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        private static InternalConverter? GetConverter(Type type, bool throwOnNull = false)
         {
-            switch (reader.TokenType)
+            if (!_converters.TryGetValue(type, out var converter) && type.GetTypeInfo().IsGenericType && !type.GetTypeInfo().IsGenericTypeDefinition && type.GetGenericTypeDefinition() == typeof(NA<>))
             {
-                case JsonToken.Null:
-                    return new NA<T>();
-                case JsonToken.String when IsNA(reader.Value!.ToString()):
-                    return new NA<T>("NA");
-                default:
-                    return new NA<T>(serializer.Deserialize<T>(reader)!);
+                converter = _converters.GetOrAdd(type, t => (InternalConverter)Activator.CreateInstance(typeof(InternalConverter<>).MakeGenericType(t.GenericTypeArguments[0])));
             }
+            if (converter == null && throwOnNull)
+            {
+                throw new InvalidOperationException("Converter only supports NA<T> type");
+            }
+            return converter;
         }
+
+        public override bool CanConvert(Type objectType) => GetConverter(objectType) != null;
+
+        public object Create(Type type, string? value) => GetConverter(type, throwOnNull: true)!.Create(value);
+
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) => GetConverter(objectType, throwOnNull: true)!.ReadJson(reader, objectType, existingValue, serializer);
 
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
 
-        public object Create(string? value) => value == null
-            ? new NA<T>()
-            : (IsNA(value)
-                ? new NA<T>("NA")
-                : (object)new NA<T>(JsonHelper.FromJson<T>(value)));
+        private abstract class InternalConverter
+        {
+            public abstract object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer);
 
-        private static bool IsNA(string value) => string.Equals(new string(value
+            public abstract object Create(string? value);
+        }
+
+        private sealed class InternalConverter<T> : InternalConverter
+        {
+            public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                switch (reader.TokenType)
+                {
+                    case JsonToken.Null:
+                        return new NA<T>();
+                    case JsonToken.String when IsNA(reader.Value!.ToString()):
+                        return new NA<T>("NA");
+                    default:
+                        return new NA<T>(serializer.Deserialize<T>(reader)!);
+                }
+            }
+
+            public override object Create(string? value) => value == null
+                ? new NA<T>()
+                : (IsNA(value)
+                    ? new NA<T>("NA")
+                    : (object)new NA<T>(JsonHelper.FromJson<T>(value)));
+
+            private static bool IsNA(string value) => string.Equals(new string(value
 #if !STRING_GENERIC_IENUMERABLE
             .Cast<char>()
 #endif
             .Where(c => !char.IsPunctuation(c) && !char.IsWhiteSpace(c)).ToArray()), "NA", StringComparison.OrdinalIgnoreCase);
+        }
     }
 }

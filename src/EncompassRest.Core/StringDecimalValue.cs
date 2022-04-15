@@ -116,6 +116,6 @@ namespace EncompassRest
 
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) => writer.WriteValue(value is StringDecimalValue sdv ? sdv.StringValue : value?.ToString());
 
-        public object Create(string? value) => new StringDecimalValue(value);
+        public object Create(Type type, string? value) => new StringDecimalValue(value);
     }
 }

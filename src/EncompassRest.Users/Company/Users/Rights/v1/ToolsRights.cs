@@ -32,6 +32,7 @@ namespace EncompassRest.Company.Users.Rights.v1
         private DirtyValue<bool?>? _importFundingWorksheet;
         private InterimServicingRights? _interimServicing;
         private DirtyValue<bool?>? _loanComparison;
+        private DirtyValue<bool?>? _lockComparisonTool;
         private DirtyValue<bool?>? _lockRequestForm;
         private LOCompToolRights? _lOCompTool;
         private DirtyValue<bool?>? _netTangibleBenefit;
@@ -179,6 +180,12 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// ToolsRights LoanComparison
         /// </summary>
         public bool? LoanComparison { get => _loanComparison; set => SetField(ref _loanComparison, value); }
+
+        /// <summary>
+        /// ToolsRights LockComparisonTool
+        /// </summary>
+        [JsonProperty("lockComparisionTool")]
+        public bool? LockComparisonTool { get => _lockComparisonTool; set => SetField(ref _lockComparisonTool, value); }
 
         /// <summary>
         /// ToolsRights LockRequestForm

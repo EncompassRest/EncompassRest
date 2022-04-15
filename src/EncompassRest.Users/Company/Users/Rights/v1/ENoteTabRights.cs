@@ -5,8 +5,20 @@
     /// </summary>
     public sealed class ENoteTabRights : ParentAccessRights
     {
+        private DirtyValue<bool?>? _deactivateEnote;
+        private DirtyValue<bool?>? _reverseDeactivateEnote;
         private DirtyValue<bool?>? _reverseRegistration;
         private DirtyValue<bool?>? _transfer;
+
+        /// <summary>
+        /// ENoteTabRights DeactivateEnote
+        /// </summary>
+        public bool? DeactivateEnote { get => _deactivateEnote; set => SetField(ref _deactivateEnote, value); }
+
+        /// <summary>
+        /// ENoteTabRights ReverseDeactivateEnote
+        /// </summary>
+        public bool? ReverseDeactivateEnote { get => _reverseDeactivateEnote; set => SetField(ref _reverseDeactivateEnote, value); }
 
         /// <summary>
         /// ENoteTabRights ReverseRegistration

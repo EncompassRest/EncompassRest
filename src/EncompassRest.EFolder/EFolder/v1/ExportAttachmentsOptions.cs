@@ -5,7 +5,7 @@ namespace EncompassRest.EFolder.v1
     /// <summary>
     /// ExportAttachmentsOptions
     /// </summary>
-    public sealed class ExportAttachmentsOptions
+    public sealed class ExportAttachmentsOptions : Options
     {
         /// <summary>
         /// ExportAttachmentsOptions IncludeNotActive
@@ -27,9 +27,9 @@ namespace EncompassRest.EFolder.v1
         /// </summary>
         public bool? Priority { get; set; }
 
-        internal QueryParameters GetQueryParameters()
+        internal override QueryParameters ToQueryParameters()
         {
-            var queryParameters = new QueryParameters();
+            var queryParameters = base.ToQueryParameters();
             if (IncludeNotActive.HasValue)
             {
                 queryParameters.Add("includeNotActive", IncludeNotActive.ToString());
