@@ -5,17 +5,14 @@
     /// </summary>
     public sealed class UnderwritingCenterRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _createManualEntry;
-        private DirtyValue<bool?>? _repWarrantTracker;
-
         /// <summary>
         /// UnderwritingCenterRights CreateManualEntry
         /// </summary>
-        public bool? CreateManualEntry { get => _createManualEntry; set => SetField(ref _createManualEntry, value); }
+        public bool? CreateManualEntry { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// UnderwritingCenterRights RepWarrantTracker
         /// </summary>
-        public bool? RepWarrantTracker { get => _repWarrantTracker; set => SetField(ref _repWarrantTracker, value); }
+        public bool? RepWarrantTracker { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

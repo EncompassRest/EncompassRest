@@ -7,12 +7,10 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class StartServicingRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _reStartServicing;
-
         /// <summary>
         /// StartServicingRights ReStartServicing
         /// </summary>
         [JsonProperty("re-StartServicing")]
-        public bool? ReStartServicing { get => _reStartServicing; set => SetField(ref _reStartServicing, value); }
+        public bool? ReStartServicing { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

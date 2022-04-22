@@ -8,46 +8,38 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class MilestoneTemplateLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<int?>? _elliLogRecordId;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isTemplateDatesLocked;
-    private DirtyValue<bool?>? _isTemplateLocked;
-    private DirtyValue<string?>? _milestoneTemplateID;
-    private DirtyValue<string?>? _milestoneTemplateName;
-    private DirtyValue<DateTime?>? _updatedDateUtc;
-
     /// <summary>
     /// MilestoneTemplateLog ElliLogRecordId
     /// </summary>
-    public int? ElliLogRecordId { get => _elliLogRecordId; set => SetField(ref _elliLogRecordId, value); }
+    public int? ElliLogRecordId { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// MilestoneTemplateLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Milestone Dates Mode [3670]
     /// </summary>
-    public bool? IsTemplateDatesLocked { get => _isTemplateDatesLocked; set => SetField(ref _isTemplateDatesLocked, value); }
+    public bool? IsTemplateDatesLocked { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Milestones List Lock [3669]
     /// </summary>
-    public bool? IsTemplateLocked { get => _isTemplateLocked; set => SetField(ref _isTemplateLocked, value); }
+    public bool? IsTemplateLocked { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// MilestoneTemplateLog MilestoneTemplateID
     /// </summary>
-    public string? MilestoneTemplateID { get => _milestoneTemplateID; set => SetField(ref _milestoneTemplateID, value); }
+    public string? MilestoneTemplateID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MilestoneTemplateLog MilestoneTemplateName
     /// </summary>
-    public string? MilestoneTemplateName { get => _milestoneTemplateName; set => SetField(ref _milestoneTemplateName, value); }
+    public string? MilestoneTemplateName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MilestoneTemplateLog UpdatedDateUtc
     /// </summary>
-    public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+    public DateTime? UpdatedDateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

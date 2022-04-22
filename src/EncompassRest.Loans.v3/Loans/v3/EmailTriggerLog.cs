@@ -9,66 +9,55 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class EmailTriggerLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyValue<string?>? _body;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _inLogIndicator;
-    private DirtyValue<string?>? _recipients;
-    private DirtyValue<string?>? _sender;
-    private DirtyValue<string?>? _subject;
-
     /// <summary>
-    /// EmailTriggerLogContract Alerts
+    /// EmailTriggerLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
-    /// EmailTriggerLogContract Body
+    /// EmailTriggerLog Body
     /// </summary>
-    public string? Body { get => _body; set => SetField(ref _body, value); }
+    public string? Body { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmailTriggerLogContract CommentList
+    /// EmailTriggerLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
-    /// EmailTriggerLogContract Comments
+    /// EmailTriggerLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmailTriggerLogContract Date
+    /// EmailTriggerLog Date
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmailTriggerLogContract Id
+    /// EmailTriggerLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmailTriggerLogContract InLogIndicator
+    /// EmailTriggerLog InLogIndicator
     /// </summary>
-    public bool? InLogIndicator { get => _inLogIndicator; set => SetField(ref _inLogIndicator, value); }
+    public bool? InLogIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmailTriggerLogContract Recipients
+    /// EmailTriggerLog Recipients
     /// </summary>
-    public string? Recipients { get => _recipients; set => SetField(ref _recipients, value); }
+    public string? Recipients { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmailTriggerLogContract Sender
+    /// EmailTriggerLog Sender
     /// </summary>
-    public string? Sender { get => _sender; set => SetField(ref _sender, value); }
+    public string? Sender { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmailTriggerLogContract Subject
+    /// EmailTriggerLog Subject
     /// </summary>
-    public string? Subject { get => _subject; set => SetField(ref _subject, value); }
+    public string? Subject { get => GetValue<string?>(); set => SetValue(value); }
 }

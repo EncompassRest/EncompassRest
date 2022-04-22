@@ -6,28 +6,23 @@ namespace EncompassRest.Loans.v3;
 [Entity(PropertiesToAlwaysSerialize = nameof(Left) + "," + nameof(Top))]
 public sealed partial class LocationCoordinates : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<int?>? _bottom;
-    private DirtyValue<int?>? _left;
-    private DirtyValue<int?>? _right;
-    private DirtyValue<int?>? _top;
+    /// <summary>
+    /// LocationCoordinates Bottom
+    /// </summary>
+    public int? Bottom { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LocationCoordinatesContract Bottom
+    /// LocationCoordinates Left
     /// </summary>
-    public int? Bottom { get => _bottom; set => SetField(ref _bottom, value); }
+    public int? Left { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LocationCoordinatesContract Left
+    /// LocationCoordinates Right
     /// </summary>
-    public int? Left { get => _left; set => SetField(ref _left, value); }
+    public int? Right { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LocationCoordinatesContract Right
+    /// LocationCoordinates Top
     /// </summary>
-    public int? Right { get => _right; set => SetField(ref _right, value); }
-
-    /// <summary>
-    /// LocationCoordinatesContract Top
-    /// </summary>
-    public int? Top { get => _top; set => SetField(ref _top, value); }
+    public int? Top { get => GetValue<int?>(); set => SetValue(value); }
 }

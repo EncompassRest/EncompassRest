@@ -10,135 +10,113 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class Shipping : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _actualShipDate;
-    private DirtyValue<string?>? _carrierName;
-    private DirtyValue<decimal?>? _downPaymentAmount;
-    private DirtyValue<string?>? _investorCode;
-    private DirtyValue<string?>? _investorConnectDeliveredToCategory;
-    private DirtyValue<string?>? _investorConnectDeliveredToCompany;
-    private DirtyValue<string?>? _investorConnectDeliveryStatus;
-    private DirtyValue<DateTime?>? _investorConnectDeliveryStatusDateTime;
-    private DirtyValue<DateTime?>? _investorDeliveryDate;
-    private DirtyValue<string?>? _locationCode;
-    private DirtyValue<string?>? _packageTrackingNumber;
-    private DirtyValue<string?>? _physicalFileStorageComments;
-    private DirtyValue<string?>? _physicalFileStorageId;
-    private DirtyValue<string?>? _physicalFileStorageLocation;
-    private DirtyValue<string?>? _poolId;
-    private DirtyValue<string?>? _poolNumber;
-    private DirtyValue<string?>? _recordingNumber;
-    private DirtyValue<string?>? _shipmentMethod;
-    private DirtyValue<string?>? _shipperName;
-    private DirtyList<ShippingContact>? _shippingContacts;
-    private DirtyValue<DateTime?>? _targetDeliveryDate;
-
     /// <summary>
     /// Shipping Actual Shipping Date [2014]
     /// </summary>
-    public DateTime? ActualShipDate { get => _actualShipDate; set => SetField(ref _actualShipDate, value); }
+    public DateTime? ActualShipDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping Carrier Name [2017]
     /// </summary>
-    public string? CarrierName { get => _carrierName; set => SetField(ref _carrierName, value); }
+    public string? CarrierName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContract DownPaymentAmount
+    /// Shipping DownPaymentAmount
     /// </summary>
-    public decimal? DownPaymentAmount { get => _downPaymentAmount; set => SetField(ref _downPaymentAmount, value); }
+    public decimal? DownPaymentAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Investor Code [4664]
     /// </summary>
-    public string? InvestorCode { get => _investorCode; set => SetField(ref _investorCode, value); }
+    public string? InvestorCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Investor Connect Delivered To Category [INVESTORCONN.X4]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? InvestorConnectDeliveredToCategory { get => _investorConnectDeliveredToCategory; set => SetField(ref _investorConnectDeliveredToCategory, value); }
+    public string? InvestorConnectDeliveredToCategory { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Investor Connect Delivered To Company [INVESTORCONN.X3]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? InvestorConnectDeliveredToCompany { get => _investorConnectDeliveredToCompany; set => SetField(ref _investorConnectDeliveredToCompany, value); }
+    public string? InvestorConnectDeliveredToCompany { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Investor Connect Delivery Status [INVESTORCONN.X1]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? InvestorConnectDeliveryStatus { get => _investorConnectDeliveryStatus; set => SetField(ref _investorConnectDeliveryStatus, value); }
+    public string? InvestorConnectDeliveryStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Investor Connect Delivery Status Date Time [INVESTORCONN.X2]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, ReadOnly = true)]
-    public DateTime? InvestorConnectDeliveryStatusDateTime { get => _investorConnectDeliveryStatusDateTime; set => SetField(ref _investorConnectDeliveryStatusDateTime, value); }
+    public DateTime? InvestorConnectDeliveryStatusDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping Investor Delivery Date [2012]
     /// </summary>
-    public DateTime? InvestorDeliveryDate { get => _investorDeliveryDate; set => SetField(ref _investorDeliveryDate, value); }
+    public DateTime? InvestorDeliveryDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Location Code [4663]
     /// </summary>
-    public string? LocationCode { get => _locationCode; set => SetField(ref _locationCode, value); }
+    public string? LocationCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping Pkg Tracking Number [2018]
     /// </summary>
-    public string? PackageTrackingNumber { get => _packageTrackingNumber; set => SetField(ref _packageTrackingNumber, value); }
+    public string? PackageTrackingNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping File Storage Comments [2022]
     /// </summary>
-    public string? PhysicalFileStorageComments { get => _physicalFileStorageComments; set => SetField(ref _physicalFileStorageComments, value); }
+    public string? PhysicalFileStorageComments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping File Storage ID [2021]
     /// </summary>
-    public string? PhysicalFileStorageId { get => _physicalFileStorageId; set => SetField(ref _physicalFileStorageId, value); }
+    public string? PhysicalFileStorageId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping File Storage Location [2020]
     /// </summary>
-    public string? PhysicalFileStorageLocation { get => _physicalFileStorageLocation; set => SetField(ref _physicalFileStorageLocation, value); }
+    public string? PhysicalFileStorageLocation { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping Pool ID [4020]
     /// </summary>
-    public string? PoolId { get => _poolId; set => SetField(ref _poolId, value); }
+    public string? PoolId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping Pool Number [4021]
     /// </summary>
-    public string? PoolNumber { get => _poolNumber; set => SetField(ref _poolNumber, value); }
+    public string? PoolNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping Recording Number [2015]
     /// </summary>
-    public string? RecordingNumber { get => _recordingNumber; set => SetField(ref _recordingNumber, value); }
+    public string? RecordingNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping Shipment Method [2016]
     /// </summary>
-    public string? ShipmentMethod { get => _shipmentMethod; set => SetField(ref _shipmentMethod, value); }
+    public string? ShipmentMethod { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Shipping Shipper Name [2019]
     /// </summary>
-    public string? ShipperName { get => _shipperName; set => SetField(ref _shipperName, value); }
+    public string? ShipperName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContract ShippingContacts
+    /// Shipping ShippingContacts
     /// </summary>
     [AllowNull]
-    public IList<ShippingContact> ShippingContacts { get => GetField(ref _shippingContacts); set => SetField(ref _shippingContacts, value); }
+    public IList<ShippingContact> ShippingContacts { get => GetList<ShippingContact>(); set => SetList(value); }
 
     /// <summary>
     /// Shipping Target Delivery Date [2013]
     /// </summary>
-    public DateTime? TargetDeliveryDate { get => _targetDeliveryDate; set => SetField(ref _targetDeliveryDate, value); }
+    public DateTime? TargetDeliveryDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

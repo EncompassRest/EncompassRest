@@ -8,57 +8,48 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class LoanOtherRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _applyLoanTemplates;
-        private DirtyValue<bool?>? _applyMilestoneTemplate;
-        private DirtyValue<bool?>? _deleteBorrowers;
-        private ManageBorrowersRights? _manageBorrowers;
-        private DirtyValue<bool?>? _manageMilestoneDatesMode;
-        private DirtyValue<bool?>? _manageMilestoneTemplatesMode;
-        private ManageServiceProvidersListRights? _manageServiceProvidersList;
-        private DirtyValue<bool?>? _manuallyBlockMultiUserEditing;
-
         /// <summary>
         /// UserOtherRights ApplyLoanTemplates
         /// </summary>
-        public bool? ApplyLoanTemplates { get => _applyLoanTemplates; set => SetField(ref _applyLoanTemplates, value); }
+        public bool? ApplyLoanTemplates { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// UserOtherRights ApplyMilestoneTemplate
         /// </summary>
-        public bool? ApplyMilestoneTemplate { get => _applyMilestoneTemplate; set => SetField(ref _applyMilestoneTemplate, value); }
+        public bool? ApplyMilestoneTemplate { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// UserOtherRights DeleteBorrowers
         /// </summary>
         [JsonProperty("delete Borrowers")]
-        public bool? DeleteBorrowers { get => _deleteBorrowers; set => SetField(ref _deleteBorrowers, value); }
+        public bool? DeleteBorrowers { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// UserOtherRights ManageBorrowers
         /// </summary>
         [AllowNull]
-        public ManageBorrowersRights ManageBorrowers { get => GetField(ref _manageBorrowers); set => SetField(ref _manageBorrowers, value); }
+        public ManageBorrowersRights ManageBorrowers { get => GetEntity<ManageBorrowersRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserOtherRights ManageMilestoneDatesMode
         /// </summary>
-        public bool? ManageMilestoneDatesMode { get => _manageMilestoneDatesMode; set => SetField(ref _manageMilestoneDatesMode, value); }
+        public bool? ManageMilestoneDatesMode { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// UserOtherRights ManageMilestoneTemplatesMode
         /// </summary>
-        public bool? ManageMilestoneTemplatesMode { get => _manageMilestoneTemplatesMode; set => SetField(ref _manageMilestoneTemplatesMode, value); }
+        public bool? ManageMilestoneTemplatesMode { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// UserOtherRights ManageServiceProvidersList
         /// </summary>
         [AllowNull]
-        public ManageServiceProvidersListRights ManageServiceProvidersList { get => GetField(ref _manageServiceProvidersList); set => SetField(ref _manageServiceProvidersList, value); }
+        public ManageServiceProvidersListRights ManageServiceProvidersList { get => GetEntity<ManageServiceProvidersListRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserOtherRights ManuallyBlockMultiUserEditing
         /// </summary>
         [JsonProperty("manuallyBlockMulti-UserEditing")]
-        public bool? ManuallyBlockMultiUserEditing { get => _manuallyBlockMultiUserEditing; set => SetField(ref _manuallyBlockMultiUserEditing, value); }
+        public bool? ManuallyBlockMultiUserEditing { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

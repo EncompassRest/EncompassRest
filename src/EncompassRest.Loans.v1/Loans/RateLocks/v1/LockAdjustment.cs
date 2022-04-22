@@ -5,29 +5,24 @@ namespace EncompassRest.Loans.RateLocks.v1
     /// </summary>
     public sealed partial class LockAdjustment : DirtyExtensibleObject
     {
-        private DirtyValue<StringEnumValue<LockAdjustmentType>>? _adjustmentType;
-        private DirtyValue<string?>? _description;
-        private DirtyValue<StringEnumValue<PriceAdjustmentType>>? _priceAdjustmentType;
-        private DirtyValue<decimal?>? _adjustment;
-
         /// <summary>
         /// Type of rate lock adjustment.
         /// </summary>
-        public StringEnumValue<LockAdjustmentType> AdjustmentType { get => _adjustmentType; set => SetField(ref _adjustmentType, value); }
+        public StringEnumValue<LockAdjustmentType> AdjustmentType { get => GetValue<StringEnumValue<LockAdjustmentType>>(); set => SetValue(value); }
 
         /// <summary>
         /// Description of the rate lock profit margin adjustment.
         /// </summary>
-        public string? Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Price adjustment type
         /// </summary>
-        public StringEnumValue<PriceAdjustmentType> PriceAdjustmentType { get => _priceAdjustmentType; set => SetField(ref _priceAdjustmentType, value); }
+        public StringEnumValue<PriceAdjustmentType> PriceAdjustmentType { get => GetValue<StringEnumValue<PriceAdjustmentType>>(); set => SetValue(value); }
 
         /// <summary>
         /// The value of the price adjustment.
         /// </summary>
-        public decimal? Adjustment { get => _adjustment; set => SetField(ref _adjustment, value); }
+        public decimal? Adjustment { get => GetValue<decimal?>(); set => SetValue(value); }
     }
 }

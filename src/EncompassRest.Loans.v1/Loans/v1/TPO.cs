@@ -9,646 +9,540 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class TPO : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _appraisalOrderedDate;
-    private DirtyValue<bool?>? _archived;
-    private DirtyValue<DateTime?>? _ausOrderedDate;
-    private DirtyValue<string?>? _branchAddress;
-    private DirtyValue<string?>? _branchAEName;
-    private DirtyValue<string?>? _branchAEUserName;
-    private DirtyValue<string?>? _branchCity;
-    private DirtyValue<string?>? _branchDBAName;
-    private DirtyValue<string?>? _branchFax;
-    private DirtyValue<string?>? _branchID;
-    private DirtyValue<string?>? _branchLegalName;
-    private DirtyValue<string?>? _branchManagerEmail;
-    private DirtyValue<string?>? _branchManagerName;
-    private DirtyValue<string?>? _branchName;
-    private DirtyValue<string?>? _branchOrganizationID;
-    private DirtyValue<string?>? _branchPhone;
-    private DirtyValue<string?>? _branchRating;
-    private DirtyValue<StringEnumValue<State>>? _branchState;
-    private DirtyValue<string?>? _branchZip;
-    private DirtyValue<string?>? _cFCAddress;
-    private DirtyValue<string?>? _cFCBusinessFax;
-    private DirtyValue<string?>? _cFCBusinessPhone;
-    private DirtyValue<string?>? _cFCCellPhone;
-    private DirtyValue<string?>? _cFCCity;
-    private DirtyValue<string?>? _cFCEmail;
-    private DirtyValue<string?>? _cFCName;
-    private DirtyValue<string?>? _cFCNotes;
-    private DirtyValue<string?>? _cFCRepAE;
-    private DirtyValue<string?>? _cFCSRAEUserName;
-    private DirtyValue<StringEnumValue<State>>? _cFCState;
-    private DirtyValue<string?>? _cFCStatus;
-    private DirtyValue<string?>? _cFCUserID;
-    private DirtyValue<string?>? _cFCZip;
-    private DirtyValue<string?>? _companyAddress;
-    private DirtyValue<string?>? _companyAEName;
-    private DirtyValue<string?>? _companyAEUserName;
-    private DirtyValue<string?>? _companyCity;
-    private DirtyValue<string?>? _companyDBAName;
-    private DirtyValue<string?>? _companyFax;
-    private DirtyValue<string?>? _companyID;
-    private DirtyValue<string?>? _companyLegalName;
-    private DirtyValue<string?>? _companyManagerEmail;
-    private DirtyValue<string?>? _companyManagerName;
-    private DirtyValue<string?>? _companyName;
-    private DirtyValue<string?>? _companyOrganizationID;
-    private DirtyValue<string?>? _companyPhone;
-    private DirtyValue<string?>? _companyRating;
-    private DirtyValue<StringEnumValue<State>>? _companyState;
-    private DirtyValue<string?>? _companyZip;
-    private DirtyValue<DateTime?>? _completeLoanPackageSubmissionDate;
-    private DirtyValue<DateTime?>? _documentsReadyDate;
-    private DirtyValue<DateTime?>? _eligibilityPackageSubmissionDate;
-    private DirtyValue<string?>? _feeReviewComments;
-    private DirtyValue<string?>? _feeReviewStatus;
-    private DirtyValue<DateTime?>? _feeReviewStatusDate;
-    private DirtyValue<string?>? _importSource;
-    private DirtyValue<DateTime?>? _importSourceLastUpdatedDate;
-    private DirtyValue<DateTime?>? _initialApplicationDate;
-    private DirtyValue<DateTime?>? _initialSubmitDate;
-    private DirtyValue<StringEnumValue<LEIssuedBy>>? _lEIssuedBy;
-    private DirtyValue<DateTime?>? _leOrDisclosuresGeneratedDate;
-    private DirtyValue<string?>? _lOAddress;
-    private DirtyValue<string?>? _lOAEName;
-    private DirtyValue<string?>? _lOAEUserName;
-    private DirtyValue<string?>? _loanEstimateRequestComments;
-    private DirtyValue<DateTime?>? _loanEstimateRequestedDate;
-    private DirtyValue<string?>? _lOBusinessFax;
-    private DirtyValue<string?>? _lOBusinessPhone;
-    private DirtyValue<string?>? _lOCellPhone;
-    private DirtyValue<string?>? _lOCity;
-    private DirtyValue<string?>? _lOEmail;
-    private DirtyValue<string?>? _lOID;
-    private DirtyValue<string?>? _lOName;
-    private DirtyValue<string?>? _lONotes;
-    private DirtyValue<StringEnumValue<State>>? _lOState;
-    private DirtyValue<string?>? _lOStatus;
-    private DirtyValue<string?>? _lOZip;
-    private DirtyValue<string?>? _lPAddress;
-    private DirtyValue<string?>? _lPAEName;
-    private DirtyValue<string?>? _lPAEUserName;
-    private DirtyValue<string?>? _lPBusinessFax;
-    private DirtyValue<string?>? _lPBusinessPhone;
-    private DirtyValue<string?>? _lPCellPhone;
-    private DirtyValue<string?>? _lPCity;
-    private DirtyValue<string?>? _lPEmail;
-    private DirtyValue<string?>? _lPID;
-    private DirtyValue<string?>? _lPName;
-    private DirtyValue<string?>? _lPNotes;
-    private DirtyValue<StringEnumValue<State>>? _lPState;
-    private DirtyValue<string?>? _lPStatus;
-    private DirtyValue<string?>? _lPZip;
-    private DirtyValue<StringEnumValue<PreferredAus>>? _preferredAus;
-    private DirtyValue<DateTime?>? _purchaseStipsReadyDate;
-    private DirtyValue<bool?>? _purchaseStipsReviewed;
-    private DirtyValue<DateTime?>? _readytoDiscloseDateUtc;
-    private DirtyValue<DateTime?>? _registerDate;
-    private DirtyValue<string?>? _sITEID;
-    private DirtyValue<DateTime?>? _submitDate;
-    private DirtyValue<bool?>? _testAccountField;
-    private DirtyValue<DateTime?>? _titleFeesRequestedDate;
-    private DirtyValue<bool?>? _underwriterReviewed;
-    private DirtyValue<bool?>? _underwritingDelegated;
-    private DirtyValue<bool?>? _watchListFlag;
-    private DirtyValue<StringEnumValue<WatchListReason>>? _watchListReason;
-    private DirtyValue<DateTime?>? _wholesaleWithdrawalDate;
-
     /// <summary>
     /// Appraisal Ordered Date [TPO.X117]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-    public DateTime? AppraisalOrderedDate { get => _appraisalOrderedDate; set => SetField(ref _appraisalOrderedDate, value); }
+    public DateTime? AppraisalOrderedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Archived [TPO.X8]
     /// </summary>
-    public bool? Archived { get => _archived; set => SetField(ref _archived, value); }
+    public bool? Archived { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// AUS Ordered Date [TPO.X118]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-    public DateTime? AusOrderedDate { get => _ausOrderedDate; set => SetField(ref _ausOrderedDate, value); }
+    public DateTime? AusOrderedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Address [TPO.X42]
     /// </summary>
-    public string? BranchAddress { get => _branchAddress; set => SetField(ref _branchAddress, value); }
+    public string? BranchAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch AE Name [TPO.X54]
     /// </summary>
-    public string? BranchAEName { get => _branchAEName; set => SetField(ref _branchAEName, value); }
+    public string? BranchAEName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch AE User Name [TPO.X55]
     /// </summary>
-    public string? BranchAEUserName { get => _branchAEUserName; set => SetField(ref _branchAEUserName, value); }
+    public string? BranchAEUserName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Address City [TPO.X43]
     /// </summary>
-    public string? BranchCity { get => _branchCity; set => SetField(ref _branchCity, value); }
+    public string? BranchCity { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch DBA Name [TPO.X48]
     /// </summary>
-    public string? BranchDBAName { get => _branchDBAName; set => SetField(ref _branchDBAName, value); }
+    public string? BranchDBAName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Fax [TPO.X47]
     /// </summary>
-    public string? BranchFax { get => _branchFax; set => SetField(ref _branchFax, value); }
+    public string? BranchFax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch ID [TPO.X39]
     /// </summary>
-    public string? BranchID { get => _branchID; set => SetField(ref _branchID, value); }
+    public string? BranchID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Legal Name [TPO.X41]
     /// </summary>
-    public string? BranchLegalName { get => _branchLegalName; set => SetField(ref _branchLegalName, value); }
+    public string? BranchLegalName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Manager Email [TPO.X53]
     /// </summary>
-    public string? BranchManagerEmail { get => _branchManagerEmail; set => SetField(ref _branchManagerEmail, value); }
+    public string? BranchManagerEmail { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Manager Name [TPO.X52]
     /// </summary>
-    public string? BranchManagerName { get => _branchManagerName; set => SetField(ref _branchManagerName, value); }
+    public string? BranchManagerName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Name [TPO.X38]
     /// </summary>
-    public string? BranchName { get => _branchName; set => SetField(ref _branchName, value); }
+    public string? BranchName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Organization ID [TPO.X40]
     /// </summary>
-    public string? BranchOrganizationID { get => _branchOrganizationID; set => SetField(ref _branchOrganizationID, value); }
+    public string? BranchOrganizationID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Phone [TPO.X46]
     /// </summary>
-    public string? BranchPhone { get => _branchPhone; set => SetField(ref _branchPhone, value); }
+    public string? BranchPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Rating [TPO.X51]
     /// </summary>
-    public string? BranchRating { get => _branchRating; set => SetField(ref _branchRating, value); }
+    public string? BranchRating { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Address State [TPO.X44]
     /// </summary>
-    public StringEnumValue<State> BranchState { get => _branchState; set => SetField(ref _branchState, value); }
+    public StringEnumValue<State> BranchState { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Branch Address Zipcode [TPO.X45]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? BranchZip { get => _branchZip; set => SetField(ref _branchZip, value); }
+    public string? BranchZip { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Address [TPO.X102]
     /// </summary>
-    public string? CFCAddress { get => _cFCAddress; set => SetField(ref _cFCAddress, value); }
+    public string? CFCAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Business Fax [TPO.X100]
     /// </summary>
-    public string? CFCBusinessFax { get => _cFCBusinessFax; set => SetField(ref _cFCBusinessFax, value); }
+    public string? CFCBusinessFax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Business Phone [TPO.X99]
     /// </summary>
-    public string? CFCBusinessPhone { get => _cFCBusinessPhone; set => SetField(ref _cFCBusinessPhone, value); }
+    public string? CFCBusinessPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Cell Phone [TPO.X101]
     /// </summary>
-    public string? CFCCellPhone { get => _cFCCellPhone; set => SetField(ref _cFCCellPhone, value); }
+    public string? CFCCellPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Address City [TPO.X103]
     /// </summary>
-    public string? CFCCity { get => _cFCCity; set => SetField(ref _cFCCity, value); }
+    public string? CFCCity { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Email/User Name [TPO.X97]
     /// </summary>
-    public string? CFCEmail { get => _cFCEmail; set => SetField(ref _cFCEmail, value); }
+    public string? CFCEmail { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Name [TPO.X95]
     /// </summary>
-    public string? CFCName { get => _cFCName; set => SetField(ref _cFCName, value); }
+    public string? CFCName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Notes [TPO.X106]
     /// </summary>
-    public string? CFCNotes { get => _cFCNotes; set => SetField(ref _cFCNotes, value); }
+    public string? CFCNotes { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Rep/AE [TPO.X107]
     /// </summary>
-    public string? CFCRepAE { get => _cFCRepAE; set => SetField(ref _cFCRepAE, value); }
+    public string? CFCRepAE { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact SR/AE User ID [TPO.X108]
     /// </summary>
-    public string? CFCSRAEUserName { get => _cFCSRAEUserName; set => SetField(ref _cFCSRAEUserName, value); }
+    public string? CFCSRAEUserName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Address State [TPO.X104]
     /// </summary>
-    public StringEnumValue<State> CFCState { get => _cFCState; set => SetField(ref _cFCState, value); }
+    public StringEnumValue<State> CFCState { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Status [TPO.X98]
     /// </summary>
-    public string? CFCStatus { get => _cFCStatus; set => SetField(ref _cFCStatus, value); }
+    public string? CFCStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact User ID [TPO.X96]
     /// </summary>
-    public string? CFCUserID { get => _cFCUserID; set => SetField(ref _cFCUserID, value); }
+    public string? CFCUserID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Correspondent File Contact Address Zipcode [TPO.X105]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? CFCZip { get => _cFCZip; set => SetField(ref _cFCZip, value); }
+    public string? CFCZip { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Address [TPO.X18]
     /// </summary>
-    public string? CompanyAddress { get => _companyAddress; set => SetField(ref _companyAddress, value); }
+    public string? CompanyAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company AE Name [TPO.X30]
     /// </summary>
-    public string? CompanyAEName { get => _companyAEName; set => SetField(ref _companyAEName, value); }
+    public string? CompanyAEName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company AE User Name [TPO.X31]
     /// </summary>
-    public string? CompanyAEUserName { get => _companyAEUserName; set => SetField(ref _companyAEUserName, value); }
+    public string? CompanyAEUserName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Address City [TPO.X19]
     /// </summary>
-    public string? CompanyCity { get => _companyCity; set => SetField(ref _companyCity, value); }
+    public string? CompanyCity { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company DBA Name [TPO.X24]
     /// </summary>
-    public string? CompanyDBAName { get => _companyDBAName; set => SetField(ref _companyDBAName, value); }
+    public string? CompanyDBAName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Fax [TPO.X23]
     /// </summary>
-    public string? CompanyFax { get => _companyFax; set => SetField(ref _companyFax, value); }
+    public string? CompanyFax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company ID [TPO.X15]
     /// </summary>
-    public string? CompanyID { get => _companyID; set => SetField(ref _companyID, value); }
+    public string? CompanyID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Legal Name [TPO.X17]
     /// </summary>
-    public string? CompanyLegalName { get => _companyLegalName; set => SetField(ref _companyLegalName, value); }
+    public string? CompanyLegalName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Manager Email [TPO.X29]
     /// </summary>
-    public string? CompanyManagerEmail { get => _companyManagerEmail; set => SetField(ref _companyManagerEmail, value); }
+    public string? CompanyManagerEmail { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Manager Name [TPO.X28]
     /// </summary>
-    public string? CompanyManagerName { get => _companyManagerName; set => SetField(ref _companyManagerName, value); }
+    public string? CompanyManagerName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Name [TPO.X14]
     /// </summary>
-    public string? CompanyName { get => _companyName; set => SetField(ref _companyName, value); }
+    public string? CompanyName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Organization ID [TPO.X16]
     /// </summary>
-    public string? CompanyOrganizationID { get => _companyOrganizationID; set => SetField(ref _companyOrganizationID, value); }
+    public string? CompanyOrganizationID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Phone [TPO.X22]
     /// </summary>
-    public string? CompanyPhone { get => _companyPhone; set => SetField(ref _companyPhone, value); }
+    public string? CompanyPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Rating [TPO.X27]
     /// </summary>
-    public string? CompanyRating { get => _companyRating; set => SetField(ref _companyRating, value); }
+    public string? CompanyRating { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Address State [TPO.X20]
     /// </summary>
-    public StringEnumValue<State> CompanyState { get => _companyState; set => SetField(ref _companyState, value); }
+    public StringEnumValue<State> CompanyState { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Company Address Zipcode [TPO.X21]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? CompanyZip { get => _companyZip; set => SetField(ref _companyZip, value); }
+    public string? CompanyZip { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Complete Loan Package Submission Date [TPO.X114]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-    public DateTime? CompleteLoanPackageSubmissionDate { get => _completeLoanPackageSubmissionDate; set => SetField(ref _completeLoanPackageSubmissionDate, value); }
+    public DateTime? CompleteLoanPackageSubmissionDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Documents and Conditions are Ready for Underwriter Review Date [TPO.X10]
     /// </summary>
-    public DateTime? DocumentsReadyDate { get => _documentsReadyDate; set => SetField(ref _documentsReadyDate, value); }
+    public DateTime? DocumentsReadyDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Eligibility Package Submission Date [TPO.X113]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-    public DateTime? EligibilityPackageSubmissionDate { get => _eligibilityPackageSubmissionDate; set => SetField(ref _eligibilityPackageSubmissionDate, value); }
+    public DateTime? EligibilityPackageSubmissionDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Fee Review Comments [TPO.X12]
     /// </summary>
-    public string? FeeReviewComments { get => _feeReviewComments; set => SetField(ref _feeReviewComments, value); }
+    public string? FeeReviewComments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Fee Review Status [TPO.X6]
     /// </summary>
-    public string? FeeReviewStatus { get => _feeReviewStatus; set => SetField(ref _feeReviewStatus, value); }
+    public string? FeeReviewStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Fee Review Status Date [TPO.X11]
     /// </summary>
-    public DateTime? FeeReviewStatusDate { get => _feeReviewStatusDate; set => SetField(ref _feeReviewStatusDate, value); }
+    public DateTime? FeeReviewStatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Import Source [TPO.X9]
     /// </summary>
-    public string? ImportSource { get => _importSource; set => SetField(ref _importSource, value); }
+    public string? ImportSource { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Import Source Last Updated Date [TPO.X112]
     /// </summary>
-    public DateTime? ImportSourceLastUpdatedDate { get => _importSourceLastUpdatedDate; set => SetField(ref _importSourceLastUpdatedDate, value); }
+    public DateTime? ImportSourceLastUpdatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Initial TPO Application Date [TPO.X89]
     /// </summary>
-    public DateTime? InitialApplicationDate { get => _initialApplicationDate; set => SetField(ref _initialApplicationDate, value); }
+    public DateTime? InitialApplicationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Initial TPO Submittal Date [TPO.X90]
     /// </summary>
-    public DateTime? InitialSubmitDate { get => _initialSubmitDate; set => SetField(ref _initialSubmitDate, value); }
+    public DateTime? InitialSubmitDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Estimate Issued By [TPO.X109]
     /// </summary>
-    public StringEnumValue<LEIssuedBy> LEIssuedBy { get => _lEIssuedBy; set => SetField(ref _lEIssuedBy, value); }
+    public StringEnumValue<LEIssuedBy> LEIssuedBy { get => GetValue<StringEnumValue<LEIssuedBy>>(); set => SetValue(value); }
 
     /// <summary>
     /// LE or Disclosures Generated Date [TPO.X116]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-    public DateTime? LeOrDisclosuresGeneratedDate { get => _leOrDisclosuresGeneratedDate; set => SetField(ref _leOrDisclosuresGeneratedDate, value); }
+    public DateTime? LeOrDisclosuresGeneratedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Address [TPO.X68]
     /// </summary>
-    public string? LOAddress { get => _lOAddress; set => SetField(ref _lOAddress, value); }
+    public string? LOAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Sales Rep/AE [TPO.X56]
     /// </summary>
-    public string? LOAEName { get => _lOAEName; set => SetField(ref _lOAEName, value); }
+    public string? LOAEName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Sales Rep/AE User ID [TPO.X57]
     /// </summary>
-    public string? LOAEUserName { get => _lOAEUserName; set => SetField(ref _lOAEUserName, value); }
+    public string? LOAEUserName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Estimate Request Comments [TPO.X120]
     /// </summary>
-    public string? LoanEstimateRequestComments { get => _loanEstimateRequestComments; set => SetField(ref _loanEstimateRequestComments, value); }
+    public string? LoanEstimateRequestComments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Estimate Requested Date [TPO.X111]
     /// </summary>
-    public DateTime? LoanEstimateRequestedDate { get => _loanEstimateRequestedDate; set => SetField(ref _loanEstimateRequestedDate, value); }
+    public DateTime? LoanEstimateRequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Business Fax [TPO.X66]
     /// </summary>
-    public string? LOBusinessFax { get => _lOBusinessFax; set => SetField(ref _lOBusinessFax, value); }
+    public string? LOBusinessFax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Business Phone [TPO.X65]
     /// </summary>
-    public string? LOBusinessPhone { get => _lOBusinessPhone; set => SetField(ref _lOBusinessPhone, value); }
+    public string? LOBusinessPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Cell Phone [TPO.X67]
     /// </summary>
-    public string? LOCellPhone { get => _lOCellPhone; set => SetField(ref _lOCellPhone, value); }
+    public string? LOCellPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Address City [TPO.X69]
     /// </summary>
-    public string? LOCity { get => _lOCity; set => SetField(ref _lOCity, value); }
+    public string? LOCity { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Email/User Name [TPO.X63]
     /// </summary>
-    public string? LOEmail { get => _lOEmail; set => SetField(ref _lOEmail, value); }
+    public string? LOEmail { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer ID [TPO.X62]
     /// </summary>
-    public string? LOID { get => _lOID; set => SetField(ref _lOID, value); }
+    public string? LOID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Name [TPO.X61]
     /// </summary>
-    public string? LOName { get => _lOName; set => SetField(ref _lOName, value); }
+    public string? LOName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Notes [TPO.X72]
     /// </summary>
-    public string? LONotes { get => _lONotes; set => SetField(ref _lONotes, value); }
+    public string? LONotes { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Address State [TPO.X70]
     /// </summary>
-    public StringEnumValue<State> LOState { get => _lOState; set => SetField(ref _lOState, value); }
+    public StringEnumValue<State> LOState { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Status [TPO.X64]
     /// </summary>
-    public string? LOStatus { get => _lOStatus; set => SetField(ref _lOStatus, value); }
+    public string? LOStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Officer Address Zipcode [TPO.X71]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? LOZip { get => _lOZip; set => SetField(ref _lOZip, value); }
+    public string? LOZip { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Address [TPO.X81]
     /// </summary>
-    public string? LPAddress { get => _lPAddress; set => SetField(ref _lPAddress, value); }
+    public string? LPAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Sales Rep/AE [TPO.X58]
     /// </summary>
-    public string? LPAEName { get => _lPAEName; set => SetField(ref _lPAEName, value); }
+    public string? LPAEName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Sales Rep/AE User ID [TPO.X59]
     /// </summary>
-    public string? LPAEUserName { get => _lPAEUserName; set => SetField(ref _lPAEUserName, value); }
+    public string? LPAEUserName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Business Fax [TPO.X79]
     /// </summary>
-    public string? LPBusinessFax { get => _lPBusinessFax; set => SetField(ref _lPBusinessFax, value); }
+    public string? LPBusinessFax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Business Phone [TPO.X78]
     /// </summary>
-    public string? LPBusinessPhone { get => _lPBusinessPhone; set => SetField(ref _lPBusinessPhone, value); }
+    public string? LPBusinessPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Cell Phone [TPO.X80]
     /// </summary>
-    public string? LPCellPhone { get => _lPCellPhone; set => SetField(ref _lPCellPhone, value); }
+    public string? LPCellPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Address City [TPO.X82]
     /// </summary>
-    public string? LPCity { get => _lPCity; set => SetField(ref _lPCity, value); }
+    public string? LPCity { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Email/User Name [TPO.X76]
     /// </summary>
-    public string? LPEmail { get => _lPEmail; set => SetField(ref _lPEmail, value); }
+    public string? LPEmail { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor ID [TPO.X75]
     /// </summary>
-    public string? LPID { get => _lPID; set => SetField(ref _lPID, value); }
+    public string? LPID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Name [TPO.X74]
     /// </summary>
-    public string? LPName { get => _lPName; set => SetField(ref _lPName, value); }
+    public string? LPName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Notes [TPO.X85]
     /// </summary>
-    public string? LPNotes { get => _lPNotes; set => SetField(ref _lPNotes, value); }
+    public string? LPNotes { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Address State [TPO.X83]
     /// </summary>
-    public StringEnumValue<State> LPState { get => _lPState; set => SetField(ref _lPState, value); }
+    public StringEnumValue<State> LPState { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Status [TPO.X77]
     /// </summary>
-    public string? LPStatus { get => _lPStatus; set => SetField(ref _lPStatus, value); }
+    public string? LPStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Loan Processor Address Zipcode [TPO.X84]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? LPZip { get => _lPZip; set => SetField(ref _lPZip, value); }
+    public string? LPZip { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Preferred AUS [TPO.X119]
     /// </summary>
-    public StringEnumValue<PreferredAus> PreferredAus { get => _preferredAus; set => SetField(ref _preferredAus, value); }
+    public StringEnumValue<PreferredAus> PreferredAus { get => GetValue<StringEnumValue<PreferredAus>>(); set => SetValue(value); }
 
     /// <summary>
     /// Purch Conds Ready Date [TPO.X94]
     /// </summary>
-    public DateTime? PurchaseStipsReadyDate { get => _purchaseStipsReadyDate; set => SetField(ref _purchaseStipsReadyDate, value); }
+    public DateTime? PurchaseStipsReadyDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Purch Conds Ready for Review [TPO.X93]
     /// </summary>
-    public bool? PurchaseStipsReviewed { get => _purchaseStipsReviewed; set => SetField(ref _purchaseStipsReviewed, value); }
+    public bool? PurchaseStipsReviewed { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Ready to Disclose Date [TPO.X92]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-    public DateTime? ReadytoDiscloseDateUtc { get => _readytoDiscloseDateUtc; set => SetField(ref _readytoDiscloseDateUtc, value); }
+    public DateTime? ReadytoDiscloseDateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Registration Date [TPO.X3]
     /// </summary>
-    public DateTime? RegisterDate { get => _registerDate; set => SetField(ref _registerDate, value); }
+    public DateTime? RegisterDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Site ID [TPO.X1]
     /// </summary>
-    public string? SITEID { get => _sITEID; set => SetField(ref _sITEID, value); }
+    public string? SITEID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Submittal Date [TPO.X4]
     /// </summary>
-    public DateTime? SubmitDate { get => _submitDate; set => SetField(ref _submitDate, value); }
+    public DateTime? SubmitDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Indicator that the user logged in using a TPO test account [TPO.X91]
     /// </summary>
-    public bool? TestAccountField { get => _testAccountField; set => SetField(ref _testAccountField, value); }
+    public bool? TestAccountField { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Title Fees Requested Date [TPO.X115]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-    public DateTime? TitleFeesRequestedDate { get => _titleFeesRequestedDate; set => SetField(ref _titleFeesRequestedDate, value); }
+    public DateTime? TitleFeesRequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Documents and Conditions are Ready for Underwriter Review [TPO.X5]
     /// </summary>
-    public bool? UnderwriterReviewed { get => _underwriterReviewed; set => SetField(ref _underwriterReviewed, value); }
+    public bool? UnderwriterReviewed { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO Underwriting Delegated [TPO.X88]
     /// </summary>
-    public bool? UnderwritingDelegated { get => _underwritingDelegated; set => SetField(ref _underwritingDelegated, value); }
+    public bool? UnderwritingDelegated { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO WatchList Flag [TPO.X86]
     /// </summary>
-    public bool? WatchListFlag { get => _watchListFlag; set => SetField(ref _watchListFlag, value); }
+    public bool? WatchListFlag { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// TPO WatchList Reason [TPO.X87]
     /// </summary>
-    public StringEnumValue<WatchListReason> WatchListReason { get => _watchListReason; set => SetField(ref _watchListReason, value); }
+    public StringEnumValue<WatchListReason> WatchListReason { get => GetValue<StringEnumValue<WatchListReason>>(); set => SetValue(value); }
 
     /// <summary>
     /// Wholesale Withdrawal Requested Date [TPO.X110]
     /// </summary>
-    public DateTime? WholesaleWithdrawalDate { get => _wholesaleWithdrawalDate; set => SetField(ref _wholesaleWithdrawalDate, value); }
+    public DateTime? WholesaleWithdrawalDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

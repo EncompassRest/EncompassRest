@@ -5,35 +5,29 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class CustomFieldsTabRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _customFieldsTab1;
-        private DirtyValue<bool?>? _customFieldsTab2;
-        private DirtyValue<bool?>? _customFieldsTab3;
-        private DirtyValue<bool?>? _customFieldsTab4;
-        private DirtyValue<bool?>? _customFieldsTab5;
-
         /// <summary>
         /// CustomFieldsTabRights CustomFieldsTab1
         /// </summary>
-        public bool? CustomFieldsTab1 { get => _customFieldsTab1; set => SetField(ref _customFieldsTab1, value); }
+        public bool? CustomFieldsTab1 { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// CustomFieldsTabRights CustomFieldsTab2
         /// </summary>
-        public bool? CustomFieldsTab2 { get => _customFieldsTab2; set => SetField(ref _customFieldsTab2, value); }
+        public bool? CustomFieldsTab2 { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// CustomFieldsTabRights CustomFieldsTab3
         /// </summary>
-        public bool? CustomFieldsTab3 { get => _customFieldsTab3; set => SetField(ref _customFieldsTab3, value); }
+        public bool? CustomFieldsTab3 { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// CustomFieldsTabRights CustomFieldsTab4
         /// </summary>
-        public bool? CustomFieldsTab4 { get => _customFieldsTab4; set => SetField(ref _customFieldsTab4, value); }
+        public bool? CustomFieldsTab4 { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// CustomFieldsTabRights CustomFieldsTab5
         /// </summary>
-        public bool? CustomFieldsTab5 { get => _customFieldsTab5; set => SetField(ref _customFieldsTab5, value); }
+        public bool? CustomFieldsTab5 { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

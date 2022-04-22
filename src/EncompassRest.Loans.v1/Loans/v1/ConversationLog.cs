@@ -9,114 +9,95 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class ConversationLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _company;
-    private DirtyValue<DateTime?>? _dateUtc;
-    private DirtyValue<string?>? _email;
-    private DirtyValue<bool?>? _fileAttachmentsMigrated;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _inLogIndicator;
-    private DirtyValue<bool?>? _isEmailIndicator;
-    private DirtyValue<bool?>? _isSystemSpecificIndicator;
-    private DirtyValue<int?>? _logRecordIndex;
-    private DirtyValue<string?>? _name;
-    private DirtyValue<string?>? _phone;
-    private DirtyValue<string?>? _systemId;
-    private DirtyValue<DateTime?>? _updatedDateUtc;
-    private DirtyValue<string?>? _userId;
-
     /// <summary>
     /// ConversationLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
     /// ConversationLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
     /// ConversationLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog Company
     /// </summary>
-    public string? Company { get => _company; set => SetField(ref _company, value); }
+    public string? Company { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog DateUtc
     /// </summary>
-    public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
+    public DateTime? DateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog Email
     /// </summary>
-    public string? Email { get => _email; set => SetField(ref _email, value); }
+    public string? Email { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog FileAttachmentsMigrated
     /// </summary>
-    public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
+    public bool? FileAttachmentsMigrated { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog Guid
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog InLogIndicator
     /// </summary>
-    public bool? InLogIndicator { get => _inLogIndicator; set => SetField(ref _inLogIndicator, value); }
+    public bool? InLogIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog IsEmailIndicator
     /// </summary>
-    public bool? IsEmailIndicator { get => _isEmailIndicator; set => SetField(ref _isEmailIndicator, value); }
+    public bool? IsEmailIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog IsSystemSpecificIndicator
     /// </summary>
-    public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
+    public bool? IsSystemSpecificIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog LogRecordIndex
     /// </summary>
-    public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
+    public int? LogRecordIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog Phone
     /// </summary>
-    public string? Phone { get => _phone; set => SetField(ref _phone, value); }
+    public string? Phone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog SystemId
     /// </summary>
-    public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+    public string? SystemId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog UpdatedDateUtc
     /// </summary>
-    public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+    public DateTime? UpdatedDateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// ConversationLog UserId
     /// </summary>
-    public string? UserId { get => _userId; set => SetField(ref _userId, value); }
+    public string? UserId { get => GetValue<string?>(); set => SetValue(value); }
 }

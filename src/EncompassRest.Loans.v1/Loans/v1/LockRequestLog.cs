@@ -9,258 +9,215 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class LockRequestLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyValue<string?>? _alertsXml;
-    private DirtyValue<DateTime?>? _buySideExpirationDate;
-    private DirtyValue<DateTime?>? _buySideNewLockExtensionDate;
-    private DirtyValue<int?>? _buySideNumDayExtended;
-    private DirtyValue<int?>? _buySideNumDayLocked;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _commentListXml;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<int?>? _cumulatedDaystoExtend;
-    private DirtyValue<DateTime?>? _dateUtc;
-    private DirtyValue<bool?>? _fileAttachmentsMigrated;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<bool?>? _hideLogIndicator;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _investorCommitment;
-    private DirtyValue<string?>? _investorName;
-    private DirtyValue<bool?>? _isFakeRequestIndicator;
-    private DirtyValue<bool?>? _isLockCancellationIndicator;
-    private DirtyValue<bool?>? _isLockExtensionIndicator;
-    private DirtyValue<bool?>? _isReLockIndicator;
-    private DirtyValue<bool?>? _isSystemSpecificIndicator;
-    private DirtyValue<int?>? _logRecordIndex;
-    private DirtyValue<int?>? _numDayLocked;
-    private DirtyValue<string?>? _parentLockGuid;
-    private DirtyValue<string?>? _rateLockAction;
-    private DirtyValue<int?>? _reLockSequenceNumberForInactiveLock;
-    private DirtyValue<string?>? _requestedBy;
-    private DirtyValue<string?>? _requestedName;
-    private DirtyValue<string?>? _requestedOldStatus;
-    private DirtyValue<string?>? _requestedStatus;
-    private DirtyValue<string?>? _reviseAction;
-    private DirtyValue<string?>? _sellSideDeliveredBy;
-    private DirtyValue<DateTime?>? _sellSideDeliveryDate;
-    private DirtyValue<DateTime?>? _sellSideExpirationDate;
-    private DirtyValue<DateTime?>? _sellSideNewLockExtensionDate;
-    private DirtyValue<int?>? _sellSideNumDayExtended;
-    private DirtyValue<string?>? _snapshotXml;
-    private DirtyValue<string?>? _systemId;
-    private DirtyValue<string?>? _timeRequested;
-    private DirtyValue<DateTime?>? _updatedDateUtc;
-    private DirtyValue<bool?>? _voided;
-
     /// <summary>
     /// LockRequestLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
     /// LockRequestLog AlertsXml
     /// </summary>
-    public string? AlertsXml { get => _alertsXml; set => SetField(ref _alertsXml, value); }
+    public string? AlertsXml { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog BuySideExpirationDate
     /// </summary>
-    public DateTime? BuySideExpirationDate { get => _buySideExpirationDate; set => SetField(ref _buySideExpirationDate, value); }
+    public DateTime? BuySideExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog BuySideNewLockExtensionDate
     /// </summary>
-    public DateTime? BuySideNewLockExtensionDate { get => _buySideNewLockExtensionDate; set => SetField(ref _buySideNewLockExtensionDate, value); }
+    public DateTime? BuySideNewLockExtensionDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog BuySideNumDayExtended
     /// </summary>
-    public int? BuySideNumDayExtended { get => _buySideNumDayExtended; set => SetField(ref _buySideNumDayExtended, value); }
+    public int? BuySideNumDayExtended { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog BuySideNumDayLocked
     /// </summary>
-    public int? BuySideNumDayLocked { get => _buySideNumDayLocked; set => SetField(ref _buySideNumDayLocked, value); }
+    public int? BuySideNumDayLocked { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
     /// LockRequestLog CommentListXml
     /// </summary>
-    public string? CommentListXml { get => _commentListXml; set => SetField(ref _commentListXml, value); }
+    public string? CommentListXml { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog CumulatedDaystoExtend
     /// </summary>
-    public int? CumulatedDaystoExtend { get => _cumulatedDaystoExtend; set => SetField(ref _cumulatedDaystoExtend, value); }
+    public int? CumulatedDaystoExtend { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog DateUtc
     /// </summary>
-    public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
+    public DateTime? DateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog FileAttachmentsMigrated
     /// </summary>
-    public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
+    public bool? FileAttachmentsMigrated { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog Guid
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog HideLogIndicator
     /// </summary>
-    public bool? HideLogIndicator { get => _hideLogIndicator; set => SetField(ref _hideLogIndicator, value); }
+    public bool? HideLogIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog InvestorCommitment
     /// </summary>
-    public string? InvestorCommitment { get => _investorCommitment; set => SetField(ref _investorCommitment, value); }
+    public string? InvestorCommitment { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog InvestorName
     /// </summary>
-    public string? InvestorName { get => _investorName; set => SetField(ref _investorName, value); }
+    public string? InvestorName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog IsFakeRequestIndicator
     /// </summary>
-    public bool? IsFakeRequestIndicator { get => _isFakeRequestIndicator; set => SetField(ref _isFakeRequestIndicator, value); }
+    public bool? IsFakeRequestIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog IsLockCancellationIndicator
     /// </summary>
-    public bool? IsLockCancellationIndicator { get => _isLockCancellationIndicator; set => SetField(ref _isLockCancellationIndicator, value); }
+    public bool? IsLockCancellationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog IsLockExtensionIndicator
     /// </summary>
-    public bool? IsLockExtensionIndicator { get => _isLockExtensionIndicator; set => SetField(ref _isLockExtensionIndicator, value); }
+    public bool? IsLockExtensionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog IsReLockIndicator
     /// </summary>
-    public bool? IsReLockIndicator { get => _isReLockIndicator; set => SetField(ref _isReLockIndicator, value); }
+    public bool? IsReLockIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog IsSystemSpecificIndicator
     /// </summary>
-    public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
+    public bool? IsSystemSpecificIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog LogRecordIndex
     /// </summary>
-    public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
+    public int? LogRecordIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog NumDayLocked
     /// </summary>
-    public int? NumDayLocked { get => _numDayLocked; set => SetField(ref _numDayLocked, value); }
+    public int? NumDayLocked { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog ParentLockGuid
     /// </summary>
-    public string? ParentLockGuid { get => _parentLockGuid; set => SetField(ref _parentLockGuid, value); }
+    public string? ParentLockGuid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog RateLockAction
     /// </summary>
-    public string? RateLockAction { get => _rateLockAction; set => SetField(ref _rateLockAction, value); }
+    public string? RateLockAction { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog ReLockSequenceNumberForInactiveLock
     /// </summary>
-    public int? ReLockSequenceNumberForInactiveLock { get => _reLockSequenceNumberForInactiveLock; set => SetField(ref _reLockSequenceNumberForInactiveLock, value); }
+    public int? ReLockSequenceNumberForInactiveLock { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog RequestedBy
     /// </summary>
-    public string? RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
+    public string? RequestedBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog RequestedName
     /// </summary>
-    public string? RequestedName { get => _requestedName; set => SetField(ref _requestedName, value); }
+    public string? RequestedName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog RequestedOldStatus
     /// </summary>
-    public string? RequestedOldStatus { get => _requestedOldStatus; set => SetField(ref _requestedOldStatus, value); }
+    public string? RequestedOldStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog RequestedStatus
     /// </summary>
-    public string? RequestedStatus { get => _requestedStatus; set => SetField(ref _requestedStatus, value); }
+    public string? RequestedStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog ReviseAction
     /// </summary>
-    public string? ReviseAction { get => _reviseAction; set => SetField(ref _reviseAction, value); }
+    public string? ReviseAction { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog SellSideDeliveredBy
     /// </summary>
-    public string? SellSideDeliveredBy { get => _sellSideDeliveredBy; set => SetField(ref _sellSideDeliveredBy, value); }
+    public string? SellSideDeliveredBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog SellSideDeliveryDate
     /// </summary>
-    public DateTime? SellSideDeliveryDate { get => _sellSideDeliveryDate; set => SetField(ref _sellSideDeliveryDate, value); }
+    public DateTime? SellSideDeliveryDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog SellSideExpirationDate
     /// </summary>
-    public DateTime? SellSideExpirationDate { get => _sellSideExpirationDate; set => SetField(ref _sellSideExpirationDate, value); }
+    public DateTime? SellSideExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog SellSideNewLockExtensionDate
     /// </summary>
-    public DateTime? SellSideNewLockExtensionDate { get => _sellSideNewLockExtensionDate; set => SetField(ref _sellSideNewLockExtensionDate, value); }
+    public DateTime? SellSideNewLockExtensionDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog SellSideNumDayExtended
     /// </summary>
-    public int? SellSideNumDayExtended { get => _sellSideNumDayExtended; set => SetField(ref _sellSideNumDayExtended, value); }
+    public int? SellSideNumDayExtended { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog SnapshotXml
     /// </summary>
-    public string? SnapshotXml { get => _snapshotXml; set => SetField(ref _snapshotXml, value); }
+    public string? SnapshotXml { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog SystemId
     /// </summary>
-    public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+    public string? SystemId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog TimeRequested
     /// </summary>
-    public string? TimeRequested { get => _timeRequested; set => SetField(ref _timeRequested, value); }
+    public string? TimeRequested { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog UpdatedDateUtc
     /// </summary>
-    public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+    public DateTime? UpdatedDateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// LockRequestLog Voided
     /// </summary>
-    public bool? Voided { get => _voided; set => SetField(ref _voided, value); }
+    public bool? Voided { get => GetValue<bool?>(); set => SetValue(value); }
 }

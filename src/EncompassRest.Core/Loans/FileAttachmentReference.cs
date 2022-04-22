@@ -5,10 +5,8 @@ namespace EncompassRest.Loans;
 /// </summary>
 public sealed partial class FileAttachmentReference : EntityReference, IIdentifiable
 {
-    private DirtyValue<bool?>? _isActive;
-
     /// <summary>
-    /// FileAttachmentReferenceContract IsActive
+    /// FileAttachmentReference IsActive
     /// </summary>
-    public bool? IsActive { get => _isActive; set => SetField(ref _isActive, value); }
+    public bool? IsActive { get => GetValue<bool?>(); set => SetValue(value); }
 }

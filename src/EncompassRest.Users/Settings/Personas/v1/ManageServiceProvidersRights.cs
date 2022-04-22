@@ -8,18 +8,15 @@ namespace EncompassRest.Settings.Personas.v1
     /// </summary>
     public sealed class ManageServiceProvidersRights : DirtyExtensibleObject
     {
-        private DirtyValue<StringEnumValue<AccessSetting>>? _accessSetting;
-        private DirtyList<string>? _rights;
-
         /// <summary>
         /// ManageServiceProvidersRights AccessSetting
         /// </summary>
-        public StringEnumValue<AccessSetting> AccessSetting { get => _accessSetting; set => SetField(ref _accessSetting, value); }
+        public StringEnumValue<AccessSetting> AccessSetting { get => GetValue<StringEnumValue<AccessSetting>>(); set => SetValue(value); }
 
         /// <summary>
         /// ManageServiceProvidersRights Rights
         /// </summary>
         [AllowNull]
-        public IList<string> Rights { get => GetField(ref _rights); set => SetField(ref _rights, value); }
+        public IList<string> Rights { get => GetList<string>(); set => SetList(value); }
     }
 }

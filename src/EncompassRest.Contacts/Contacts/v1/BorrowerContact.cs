@@ -9,24 +9,20 @@ namespace EncompassRest.Contacts.v1
     /// </summary>
     public sealed class BorrowerContact : Contact
     {
-        private DirtyValue<string?>? _employerName;
-        private DirtyValue<DateTime?>? _birthdate;
-        private DirtyValue<string?>? _referral;
-
         /// <summary>
         /// The name of the contact's employer.
         /// </summary>
-        public string? EmployerName { get => _employerName; set => SetField(ref _employerName, value); }
+        public string? EmployerName { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact's date of birth.
         /// </summary>
-        public DateTime? Birthdate { get => _birthdate; set => SetField(ref _birthdate, value); }
+        public DateTime? Birthdate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The name of a person or company, if any, who referred the borrower to you.
         /// </summary>
-        public string? Referral { get => _referral; set => SetField(ref _referral, value); }
+        public string? Referral { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact type.

@@ -5,11 +5,9 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class AccessToFeesRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _acceptFees;
-
         /// <summary>
         /// AccessToFeesRights AcceptFees
         /// </summary>
-        public bool? AcceptFees { get => _acceptFees; set => SetField(ref _acceptFees, value); }
+        public bool? AcceptFees { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

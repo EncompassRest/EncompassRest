@@ -7,12 +7,10 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class PurchaseAdviceFormRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _createEditTemplate;
-
         /// <summary>
         /// PurchaseAdviceFormRights CreateEditTemplate
         /// </summary>
         [JsonProperty("create/EditTemplate")]
-        public bool? CreateEditTemplate { get => _createEditTemplate; set => SetField(ref _createEditTemplate, value); }
+        public bool? CreateEditTemplate { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

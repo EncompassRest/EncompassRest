@@ -6,34 +6,28 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class TQLComplianceAlert : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _lastComplianceOrderAlertCategories;
-    private DirtyValue<string?>? _lastComplianceOrderAlertMessage;
-    private DirtyValue<string?>? _lastComplianceOrderDescriptionOfAlerts;
-    private DirtyValue<int?>? _tQLComplianceAlertIndex;
-
     /// <summary>
     /// TQLComplianceAlert Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TQL - Compliance Orders - Last Alert Categories [TQLCOMPLIANCEALERTNN01]
     /// </summary>
-    public string? LastComplianceOrderAlertCategories { get => _lastComplianceOrderAlertCategories; set => SetField(ref _lastComplianceOrderAlertCategories, value); }
+    public string? LastComplianceOrderAlertCategories { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TQL - Compliance Orders - Last Alert Message [TQLCOMPLIANCEALERTNN03]
     /// </summary>
-    public string? LastComplianceOrderAlertMessage { get => _lastComplianceOrderAlertMessage; set => SetField(ref _lastComplianceOrderAlertMessage, value); }
+    public string? LastComplianceOrderAlertMessage { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TQL - Compliance Orders - Last Alert Category Result [TQLCOMPLIANCEALERTNN02]
     /// </summary>
-    public string? LastComplianceOrderDescriptionOfAlerts { get => _lastComplianceOrderDescriptionOfAlerts; set => SetField(ref _lastComplianceOrderDescriptionOfAlerts, value); }
+    public string? LastComplianceOrderDescriptionOfAlerts { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TQLComplianceAlert TQLComplianceAlertIndex
     /// </summary>
-    public int? TQLComplianceAlertIndex { get => _tQLComplianceAlertIndex; set => SetField(ref _tQLComplianceAlertIndex, value); }
+    public int? TQLComplianceAlertIndex { get => GetValue<int?>(); set => SetValue(value); }
 }

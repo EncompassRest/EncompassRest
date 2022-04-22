@@ -9,20 +9,17 @@ namespace EncompassRest.Organizations.v1
     /// </summary>
     public sealed class OrganizationReference : EntityReference
     {
-        private DirtyValue<string?>? _parentOrgId;
-        private DirtyValue<string?>? _orgId;
-
         /// <summary>
         /// OrganizationReference ParentOrgId
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string? ParentOrgId { get => _parentOrgId; set => SetField(ref _parentOrgId, value); }
+        public string? ParentOrgId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// OrganizationReference OrgId
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string? OrgId { get => _orgId; set => SetField(ref _orgId, value); }
+        public string? OrgId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// OrganizationReference constructor.

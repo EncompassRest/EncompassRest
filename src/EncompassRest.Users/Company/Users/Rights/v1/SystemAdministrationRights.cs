@@ -7,55 +7,46 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class SystemAdministrationRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _allUserInformation;
-        private DirtyValue<bool?>? _analysisTools;
-        private CurrentLoginsRights? _currentLogins;
-        private DirtyValue<bool?>? _loanReassignment;
-        private SettingsReportRights? _settingsReport;
-        private DirtyValue<bool?>? _systemAuditTrail;
-        private DirtyValue<bool?>? _unlockLoanFile;
-        private DirtyValue<bool?>? _unlockTrade;
-
         /// <summary>
         /// SystemAdministrationRights AllUserInformation
         /// </summary>
-        public bool? AllUserInformation { get => _allUserInformation; set => SetField(ref _allUserInformation, value); }
+        public bool? AllUserInformation { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SystemAdministrationRights AnalysisTools
         /// </summary>
-        public bool? AnalysisTools { get => _analysisTools; set => SetField(ref _analysisTools, value); }
+        public bool? AnalysisTools { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SystemAdministrationRights CurrentLogins
         /// </summary>
         [AllowNull]
-        public CurrentLoginsRights CurrentLogins { get => GetField(ref _currentLogins); set => SetField(ref _currentLogins, value); }
+        public CurrentLoginsRights CurrentLogins { get => GetEntity<CurrentLoginsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// SystemAdministrationRights LoanReassignment
         /// </summary>
-        public bool? LoanReassignment { get => _loanReassignment; set => SetField(ref _loanReassignment, value); }
+        public bool? LoanReassignment { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SystemAdministrationRights SettingsReport
         /// </summary>
         [AllowNull]
-        public SettingsReportRights SettingsReport { get => GetField(ref _settingsReport); set => SetField(ref _settingsReport, value); }
+        public SettingsReportRights SettingsReport { get => GetEntity<SettingsReportRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// SystemAdministrationRights SystemAuditTrail
         /// </summary>
-        public bool? SystemAuditTrail { get => _systemAuditTrail; set => SetField(ref _systemAuditTrail, value); }
+        public bool? SystemAuditTrail { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SystemAdministrationRights UnlockLoanFile
         /// </summary>
-        public bool? UnlockLoanFile { get => _unlockLoanFile; set => SetField(ref _unlockLoanFile, value); }
+        public bool? UnlockLoanFile { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SystemAdministrationRights UnlockTrade
         /// </summary>
-        public bool? UnlockTrade { get => _unlockTrade; set => SetField(ref _unlockTrade, value); }
+        public bool? UnlockTrade { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

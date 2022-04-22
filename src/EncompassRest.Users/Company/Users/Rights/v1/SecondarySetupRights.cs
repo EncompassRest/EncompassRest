@@ -7,108 +7,90 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class SecondarySetupRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _adjustmentTemplates;
-        private DirtyValue<bool?>? _autoLock;
-        private DirtyValue<bool?>? _correspondentPurchaseAdviceManagementSetup;
-        private DirtyValue<bool?>? _ePPSLoanProgramTable;
-        private DirtyValue<bool?>? _fundingTemplates;
-        private DirtyValue<bool?>? _investorTemplates;
-        private DirtyValue<bool?>? _loanPricingDecimalPlaces;
-        private DirtyValue<bool?>? _lockComparisonTool;
-        private DirtyValue<bool?>? _lockDeskSetup;
-        private DirtyValue<bool?>? _lockRequestAdditionalFields;
-        private DirtyValue<bool?>? _normalizedBidTapeTemplate;
-        private DirtyValue<bool?>? _productandPricing;
-        private DirtyValue<bool?>? _purchaseAdviceForm;
-        private DirtyValue<bool?>? _secondaryLockFields;
-        private DirtyValue<bool?>? _servicing;
-        private DirtyValue<bool?>? _sRPTemplates;
-        private DirtyValue<bool?>? _tradeManagementSetup;
-
         /// <summary>
         /// SecondarySetupRights AdjustmentTemplates
         /// </summary>
-        public bool? AdjustmentTemplates { get => _adjustmentTemplates; set => SetField(ref _adjustmentTemplates, value); }
+        public bool? AdjustmentTemplates { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights AutoLock
         /// </summary>
         [JsonProperty("auto-Lock")]
-        public bool? AutoLock { get => _autoLock; set => SetField(ref _autoLock, value); }
+        public bool? AutoLock { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights CorrespondentPurchaseAdviceManagementSetup
         /// </summary>
-        public bool? CorrespondentPurchaseAdviceManagementSetup { get => _correspondentPurchaseAdviceManagementSetup; set => SetField(ref _correspondentPurchaseAdviceManagementSetup, value); }
+        public bool? CorrespondentPurchaseAdviceManagementSetup { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights EPPSLoanProgramTable
         /// </summary>
-        public bool? EPPSLoanProgramTable { get => _ePPSLoanProgramTable; set => SetField(ref _ePPSLoanProgramTable, value); }
+        public bool? EPPSLoanProgramTable { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights FundingTemplates
         /// </summary>
-        public bool? FundingTemplates { get => _fundingTemplates; set => SetField(ref _fundingTemplates, value); }
+        public bool? FundingTemplates { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights InvestorTemplates
         /// </summary>
-        public bool? InvestorTemplates { get => _investorTemplates; set => SetField(ref _investorTemplates, value); }
+        public bool? InvestorTemplates { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights LoanPricingDecimalPlaces
         /// </summary>
-        public bool? LoanPricingDecimalPlaces { get => _loanPricingDecimalPlaces; set => SetField(ref _loanPricingDecimalPlaces, value); }
+        public bool? LoanPricingDecimalPlaces { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights LockComparisonTool
         /// </summary>
-        public bool? LockComparisonTool { get => _lockComparisonTool; set => SetField(ref _lockComparisonTool, value); }
+        public bool? LockComparisonTool { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights LockDeskSetup
         /// </summary>
-        public bool? LockDeskSetup { get => _lockDeskSetup; set => SetField(ref _lockDeskSetup, value); }
+        public bool? LockDeskSetup { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights LockRequestAdditionalFields
         /// </summary>
-        public bool? LockRequestAdditionalFields { get => _lockRequestAdditionalFields; set => SetField(ref _lockRequestAdditionalFields, value); }
+        public bool? LockRequestAdditionalFields { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights NormalizedBidTapeTemplate
         /// </summary>
-        public bool? NormalizedBidTapeTemplate { get => _normalizedBidTapeTemplate; set => SetField(ref _normalizedBidTapeTemplate, value); }
+        public bool? NormalizedBidTapeTemplate { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights ProductandPricing
         /// </summary>
-        public bool? ProductandPricing { get => _productandPricing; set => SetField(ref _productandPricing, value); }
+        public bool? ProductandPricing { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights PurchaseAdviceForm
         /// </summary>
-        public bool? PurchaseAdviceForm { get => _purchaseAdviceForm; set => SetField(ref _purchaseAdviceForm, value); }
+        public bool? PurchaseAdviceForm { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights SecondaryLockFields
         /// </summary>
-        public bool? SecondaryLockFields { get => _secondaryLockFields; set => SetField(ref _secondaryLockFields, value); }
+        public bool? SecondaryLockFields { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights Servicing
         /// </summary>
-        public bool? Servicing { get => _servicing; set => SetField(ref _servicing, value); }
+        public bool? Servicing { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights SRPTemplates
         /// </summary>
-        public bool? SRPTemplates { get => _sRPTemplates; set => SetField(ref _sRPTemplates, value); }
+        public bool? SRPTemplates { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// SecondarySetupRights TradeManagementSetup
         /// </summary>
-        public bool? TradeManagementSetup { get => _tradeManagementSetup; set => SetField(ref _tradeManagementSetup, value); }
+        public bool? TradeManagementSetup { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

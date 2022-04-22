@@ -8,30 +8,25 @@ namespace EncompassRest.Settings.Personas.v1
     /// </summary>
     public sealed class ServiceRights : DirtyExtensibleObject
     {
-        private DirtyValue<StringEnumValue<AccessSetting>>? _accessSetting;
-        private DirtyList<string>? _allowedServices;
-        private DirtyValue<StringEnumValue<ServiceCategory>>? _category;
-        private DirtyValue<StringEnumValue<RightsDefaultAccess>>? _defaultAccess;
-
         /// <summary>
         /// ServiceRights AccessSetting
         /// </summary>
-        public StringEnumValue<AccessSetting> AccessSetting { get => _accessSetting; set => SetField(ref _accessSetting, value); }
+        public StringEnumValue<AccessSetting> AccessSetting { get => GetValue<StringEnumValue<AccessSetting>>(); set => SetValue(value); }
 
         /// <summary>
         /// ServiceRights AllowedServices
         /// </summary>
         [AllowNull]
-        public IList<string> AllowedServices { get => GetField(ref _allowedServices); set => SetField(ref _allowedServices, value); }
+        public IList<string> AllowedServices { get => GetList<string>(); set => SetList(value); }
 
         /// <summary>
         /// ServiceRights Category
         /// </summary>
-        public StringEnumValue<ServiceCategory> Category { get => _category; set => SetField(ref _category, value); }
+        public StringEnumValue<ServiceCategory> Category { get => GetValue<StringEnumValue<ServiceCategory>>(); set => SetValue(value); }
 
         /// <summary>
         /// ServiceRights DefaultAccess
         /// </summary>
-        public StringEnumValue<RightsDefaultAccess> DefaultAccess { get => _defaultAccess; set => SetField(ref _defaultAccess, value); }
+        public StringEnumValue<RightsDefaultAccess> DefaultAccess { get => GetValue<StringEnumValue<RightsDefaultAccess>>(); set => SetValue(value); }
     }
 }

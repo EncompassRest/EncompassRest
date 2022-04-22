@@ -8,78 +8,65 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class NonVol : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _adjustmentAmount;
-    private DirtyValue<string?>? _adjustmentDescription;
-    private DirtyValue<string?>? _adjustmentOtherDescription;
-    private DirtyValue<StringEnumValue<NonVolAdjustmentType>>? _adjustmentType;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _includedIndicator;
-    private DirtyValue<string?>? _nonVolId;
-    private DirtyValue<int?>? _nonVolIndex;
-    private DirtyValue<StringEnumValue<PaidToOrBy>>? _paidBy;
-    private DirtyValue<StringEnumValue<PaidToOrBy>>? _paidTo;
-    private DirtyValue<bool?>? _pOCIndicator;
-    private DirtyValue<string?>? _principalCureAddendum;
-
     /// <summary>
     /// Adjustment Amount [UNFLNN04]
     /// </summary>
-    public decimal? AdjustmentAmount { get => _adjustmentAmount; set => SetField(ref _adjustmentAmount, value); }
+    public decimal? AdjustmentAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Adjustment Description [UNFLNN02]
     /// </summary>
-    public string? AdjustmentDescription { get => _adjustmentDescription; set => SetField(ref _adjustmentDescription, value); }
+    public string? AdjustmentDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Adjustment Other Description [UNFLNN03]
     /// </summary>
-    public string? AdjustmentOtherDescription { get => _adjustmentOtherDescription; set => SetField(ref _adjustmentOtherDescription, value); }
+    public string? AdjustmentOtherDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCD Adjustment Type [UNFLNN01]
     /// </summary>
-    public StringEnumValue<NonVolAdjustmentType> AdjustmentType { get => _adjustmentType; set => SetField(ref _adjustmentType, value); }
+    public StringEnumValue<NonVolAdjustmentType> AdjustmentType { get => GetValue<StringEnumValue<NonVolAdjustmentType>>(); set => SetValue(value); }
 
     /// <summary>
     /// NonVol Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Liability Will be Paid Off and will be included [UNFLNN05]
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Y\":\"Paid off (*) will be included\"}")]
-    public bool? IncludedIndicator { get => _includedIndicator; set => SetField(ref _includedIndicator, value); }
+    public bool? IncludedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// NonVol NonVolId
     /// </summary>
-    public string? NonVolId { get => _nonVolId; set => SetField(ref _nonVolId, value); }
+    public string? NonVolId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// NonVol NonVolIndex
     /// </summary>
-    public int? NonVolIndex { get => _nonVolIndex; set => SetField(ref _nonVolIndex, value); }
+    public int? NonVolIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Paid By [UNFLNN07]
     /// </summary>
-    public StringEnumValue<PaidToOrBy> PaidBy { get => _paidBy; set => SetField(ref _paidBy, value); }
+    public StringEnumValue<PaidToOrBy> PaidBy { get => GetValue<StringEnumValue<PaidToOrBy>>(); set => SetValue(value); }
 
     /// <summary>
     /// Paid To [UNFLNN09]
     /// </summary>
-    public StringEnumValue<PaidToOrBy> PaidTo { get => _paidTo; set => SetField(ref _paidTo, value); }
+    public StringEnumValue<PaidToOrBy> PaidTo { get => GetValue<StringEnumValue<PaidToOrBy>>(); set => SetValue(value); }
 
     /// <summary>
     /// POC Indicator [UNFLNN06]
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Y\":\"Paid off (*) will be included\"}")]
-    public bool? POCIndicator { get => _pOCIndicator; set => SetField(ref _pOCIndicator, value); }
+    public bool? POCIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// PrincipalCureAddendum Amount [UNFLNN08]
     /// </summary>
-    public string? PrincipalCureAddendum { get => _principalCureAddendum; set => SetField(ref _principalCureAddendum, value); }
+    public string? PrincipalCureAddendum { get => GetValue<string?>(); set => SetValue(value); }
 }

@@ -6,22 +6,18 @@ namespace EncompassRest.Loans.v3;
 [Entity(PropertiesToAlwaysSerialize = nameof(UseUserValue))]
 public sealed partial class LockableStringField : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _computedValue;
-    private DirtyValue<string?>? _userValue;
-    private DirtyValue<bool?>? _useUserValue;
+    /// <summary>
+    /// LockableStringField ComputedValue
+    /// </summary>
+    public string? ComputedValue { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockableStringFieldContract ComputedValue
+    /// LockableStringField UserValue
     /// </summary>
-    public string? ComputedValue { get => _computedValue; set => SetField(ref _computedValue, value); }
+    public string? UserValue { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockableStringFieldContract UserValue
+    /// LockableStringField UseUserValue
     /// </summary>
-    public string? UserValue { get => _userValue; set => SetField(ref _userValue, value); }
-
-    /// <summary>
-    /// LockableStringFieldContract UseUserValue
-    /// </summary>
-    public bool? UseUserValue { get => _useUserValue; set => SetField(ref _useUserValue, value); }
+    public bool? UseUserValue { get => GetValue<bool?>(); set => SetValue(value); }
 }

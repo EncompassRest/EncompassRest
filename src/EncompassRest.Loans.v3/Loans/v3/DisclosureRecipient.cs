@@ -9,74 +9,62 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class DisclosureRecipient : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _actualReceivedDate;
-    private LockableBorrowerTypeField? _borrowerType;
-    private DirtyValue<StringEnumValue<DisclosedOrReceivedMethod>>? _disclosedMethod;
-    private DirtyValue<string?>? _disclosedMethodDescription;
-    private DirtyValue<string?>? _email;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _name;
-    private LockableDateField? _presumedReceivedDate;
-    private DirtyValue<StringEnumValue<RecipientType>>? _recipientType;
-    private DisclosureRecipientRoleReference? _role;
-    private DisclosureRecipientTracking? _tracking;
-
     /// <summary>
-    /// DisclosureRecipientContract ActualReceivedDate
+    /// DisclosureRecipient ActualReceivedDate
     /// </summary>
-    public DateTime? ActualReceivedDate { get => _actualReceivedDate; set => SetField(ref _actualReceivedDate, value); }
+    public DateTime? ActualReceivedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientContract BorrowerType
+    /// DisclosureRecipient BorrowerType
     /// </summary>
     [AllowNull]
-    public LockableBorrowerTypeField BorrowerType { get => GetField(ref _borrowerType); set => SetField(ref _borrowerType, value); }
+    public LockableBorrowerTypeField BorrowerType { get => GetEntity<LockableBorrowerTypeField>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DisclosureRecipientContract DisclosedMethod
+    /// DisclosureRecipient DisclosedMethod
     /// </summary>
-    public StringEnumValue<DisclosedOrReceivedMethod> DisclosedMethod { get => _disclosedMethod; set => SetField(ref _disclosedMethod, value); }
+    public StringEnumValue<DisclosedOrReceivedMethod> DisclosedMethod { get => GetValue<StringEnumValue<DisclosedOrReceivedMethod>>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientContract DisclosedMethodDescription
+    /// DisclosureRecipient DisclosedMethodDescription
     /// </summary>
-    public string? DisclosedMethodDescription { get => _disclosedMethodDescription; set => SetField(ref _disclosedMethodDescription, value); }
+    public string? DisclosedMethodDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientContract Email
+    /// DisclosureRecipient Email
     /// </summary>
-    public string? Email { get => _email; set => SetField(ref _email, value); }
+    public string? Email { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientContract Id
+    /// DisclosureRecipient Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientContract Name
+    /// DisclosureRecipient Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientContract PresumedReceivedDate
-    /// </summary>
-    [AllowNull]
-    public LockableDateField PresumedReceivedDate { get => GetField(ref _presumedReceivedDate); set => SetField(ref _presumedReceivedDate, value); }
-
-    /// <summary>
-    /// DisclosureRecipientContract RecipientType
-    /// </summary>
-    public StringEnumValue<RecipientType> RecipientType { get => _recipientType; set => SetField(ref _recipientType, value); }
-
-    /// <summary>
-    /// DisclosureRecipientContract Role
+    /// DisclosureRecipient PresumedReceivedDate
     /// </summary>
     [AllowNull]
-    public DisclosureRecipientRoleReference Role { get => GetField(ref _role); set => SetField(ref _role, value); }
+    public LockableDateField PresumedReceivedDate { get => GetEntity<LockableDateField>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DisclosureRecipientContract Tracking
+    /// DisclosureRecipient RecipientType
+    /// </summary>
+    public StringEnumValue<RecipientType> RecipientType { get => GetValue<StringEnumValue<RecipientType>>(); set => SetValue(value); }
+
+    /// <summary>
+    /// DisclosureRecipient Role
     /// </summary>
     [AllowNull]
-    public DisclosureRecipientTracking Tracking { get => GetField(ref _tracking); set => SetField(ref _tracking, value); }
+    public DisclosureRecipientRoleReference Role { get => GetEntity<DisclosureRecipientRoleReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// DisclosureRecipient Tracking
+    /// </summary>
+    [AllowNull]
+    public DisclosureRecipientTracking Tracking { get => GetEntity<DisclosureRecipientTracking>(); set => SetEntity(value); }
 }

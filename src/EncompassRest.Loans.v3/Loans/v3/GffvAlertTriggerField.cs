@@ -5,52 +5,43 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class GffvAlertTriggerField : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _baseline;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<decimal?>? _disclosedValue;
-    private DirtyValue<string?>? _fieldId;
-    private DirtyValue<decimal?>? _initialLeValue;
-    private DirtyValue<decimal?>? _itemizationValue;
-    private DirtyValue<string?>? _varianceLimit;
-    private DirtyValue<decimal?>? _varianceValue;
+    /// <summary>
+    /// GffvAlertTriggerField Baseline
+    /// </summary>
+    public string? Baseline { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GffvAlertTriggerFieldContract Baseline
+    /// GffvAlertTriggerField Description
     /// </summary>
-    public string? Baseline { get => _baseline; set => SetField(ref _baseline, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GffvAlertTriggerFieldContract Description
+    /// GffvAlertTriggerField DisclosedValue
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public decimal? DisclosedValue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GffvAlertTriggerFieldContract DisclosedValue
+    /// GffvAlertTriggerField FieldId
     /// </summary>
-    public decimal? DisclosedValue { get => _disclosedValue; set => SetField(ref _disclosedValue, value); }
+    public string? FieldId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GffvAlertTriggerFieldContract FieldId
+    /// GffvAlertTriggerField InitialLeValue
     /// </summary>
-    public string? FieldId { get => _fieldId; set => SetField(ref _fieldId, value); }
+    public decimal? InitialLeValue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GffvAlertTriggerFieldContract InitialLeValue
+    /// GffvAlertTriggerField ItemizationValue
     /// </summary>
-    public decimal? InitialLeValue { get => _initialLeValue; set => SetField(ref _initialLeValue, value); }
+    public decimal? ItemizationValue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GffvAlertTriggerFieldContract ItemizationValue
+    /// GffvAlertTriggerField VarianceLimit
     /// </summary>
-    public decimal? ItemizationValue { get => _itemizationValue; set => SetField(ref _itemizationValue, value); }
+    public string? VarianceLimit { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GffvAlertTriggerFieldContract VarianceLimit
+    /// GffvAlertTriggerField VarianceValue
     /// </summary>
-    public string? VarianceLimit { get => _varianceLimit; set => SetField(ref _varianceLimit, value); }
-
-    /// <summary>
-    /// GffvAlertTriggerFieldContract VarianceValue
-    /// </summary>
-    public decimal? VarianceValue { get => _varianceValue; set => SetField(ref _varianceValue, value); }
+    public decimal? VarianceValue { get => GetValue<decimal?>(); set => SetValue(value); }
 }

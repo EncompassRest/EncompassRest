@@ -5,11 +5,9 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class LicenseRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _editLicenseInformation;
-
         /// <summary>
         /// LicenseRights EditLicenseInformation
         /// </summary>
-        public bool? EditLicenseInformation { get => _editLicenseInformation; set => SetField(ref _editLicenseInformation, value); }
+        public bool? EditLicenseInformation { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

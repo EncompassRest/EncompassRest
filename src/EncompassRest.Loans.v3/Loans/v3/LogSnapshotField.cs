@@ -5,16 +5,13 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LogSnapshotField : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _fieldId;
-    private DirtyValue<string?>? _value;
+    /// <summary>
+    /// LogSnapshotField FieldId
+    /// </summary>
+    public string? FieldId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LogSnapshotFieldContract FieldId
+    /// LogSnapshotField Value
     /// </summary>
-    public string? FieldId { get => _fieldId; set => SetField(ref _fieldId, value); }
-
-    /// <summary>
-    /// LogSnapshotFieldContract Value
-    /// </summary>
-    public string? Value { get => _value; set => SetField(ref _value, value); }
+    public string? Value { get => GetValue<string?>(); set => SetValue(value); }
 }

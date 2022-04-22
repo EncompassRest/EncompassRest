@@ -1,4 +1,4 @@
-﻿namespace EncompassRest.EFolder.v1
+﻿namespace EncompassRest.Loans.Attachments
 {
     /// <summary>
     /// AnnotationVisibilityType

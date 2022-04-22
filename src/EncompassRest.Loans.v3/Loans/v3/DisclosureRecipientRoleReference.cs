@@ -7,23 +7,19 @@ namespace EncompassRest.Loans.v3;
 [Entity(PropertiesToAlwaysSerialize = nameof(EntityType))]
 public sealed partial class DisclosureRecipientRoleReference : EntityReference, IIdentifiable
 {
-    private ApplicationReference? _application;
-    private DirtyValue<string?>? _entityDescription;
-    private DirtyValue<string?>? _legacyId;
-
     /// <summary>
-    /// DisclosureRecipientRoleReferenceContract Application
+    /// DisclosureRecipientRoleReference Application
     /// </summary>
     [AllowNull]
-    public ApplicationReference Application { get => GetField(ref _application); set => SetField(ref _application, value); }
+    public ApplicationReference Application { get => GetEntity<ApplicationReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DisclosureRecipientRoleReferenceContract EntityDescription
+    /// DisclosureRecipientRoleReference EntityDescription
     /// </summary>
-    public string? EntityDescription { get => _entityDescription; set => SetField(ref _entityDescription, value); }
+    public string? EntityDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientRoleReferenceContract LegacyId
+    /// DisclosureRecipientRoleReference LegacyId
     /// </summary>
-    public string? LegacyId { get => _legacyId; set => SetField(ref _legacyId, value); }
+    public string? LegacyId { get => GetValue<string?>(); set => SetValue(value); }
 }

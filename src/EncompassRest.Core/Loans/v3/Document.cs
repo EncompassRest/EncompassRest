@@ -9,242 +9,204 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class Document : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<string?>? _accessibleTo;
-    private ApplicationReference? _application;
-    private DirtyList<FileAttachmentReference>? _attachments;
-    private DirtyList<EntityReference>? _conditions;
-    private EntityReference? _createdBy;
-    private DirtyValue<DateTime?>? _createdDate;
-    private DirtyValue<int?>? _daysDue;
-    private DirtyValue<int?>? _daysTillExpire;
-    private DirtyValue<string?>? _description;
-    private DirtyList<string?>? _documentGroups;
-    private DirtyList<string?>? _documentTypes;
-    private DirtyValue<string?>? _emnSignature;
-    private DirtyValue<DateTime?>? _expectedDate;
-    private DirtyValue<DateTime?>? _expirationDate;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isMarkedRemoved;
-    private DirtyValue<bool?>? _isProtected;
-    private EntityReference? _milestone;
-    private DirtyValue<string?>? _packageId;
-    private EntityReference? _readyForUwBy;
-    private DirtyValue<DateTime?>? _readyForUwDate;
-    private EntityReference? _readyToShipBy;
-    private DirtyValue<DateTime?>? _readyToShipDate;
-    private EntityReference? _receivedBy;
-    private DirtyValue<DateTime?>? _receivedDate;
-    private EntityReference? _requestedBy;
-    private DirtyValue<DateTime?>? _requestedDate;
-    private DirtyValue<string?>? _requestedFrom;
-    private EntityReference? _rerequestedBy;
-    private DirtyValue<DateTime?>? _rerequestedDate;
-    private EntityReference? _reviewedBy;
-    private DirtyValue<DateTime?>? _reviewedDate;
-    private DirtyList<EntityReference>? _roles;
-    private DirtyValue<StringEnumValue<DocumentStatus>>? _status;
-    private DirtyValue<DateTime?>? _statusDate;
-    private DirtyValue<string?>? _title;
-    private EntityReference? _verification;
-
     /// <summary>
-    /// DocumentContract AccessibleTo
+    /// Document AccessibleTo
     /// </summary>
     [AllowNull]
-    public IList<string?> AccessibleTo { get => GetField(ref _accessibleTo); set => SetField(ref _accessibleTo, value); }
+    public IList<string?> AccessibleTo { get => GetList<string?>(); set => SetList(value); }
 
     /// <summary>
-    /// DocumentContract Application
+    /// Document Application
     /// </summary>
     [AllowNull]
-    public ApplicationReference Application { get => GetField(ref _application); set => SetField(ref _application, value); }
+    public ApplicationReference Application { get => GetEntity<ApplicationReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DocumentContract Attachments
+    /// Document Attachments
     /// </summary>
     [AllowNull]
-    public IList<FileAttachmentReference> Attachments { get => GetField(ref _attachments); set => SetField(ref _attachments, value); }
+    public IList<FileAttachmentReference> Attachments { get => GetList<FileAttachmentReference>(); set => SetList(value); }
 
     /// <summary>
-    /// DocumentContract Conditions
+    /// Document Conditions
     /// </summary>
     [AllowNull]
-    public IList<EntityReference> Conditions { get => GetField(ref _conditions); set => SetField(ref _conditions, value); }
+    public IList<EntityReference> Conditions { get => GetList<EntityReference>(); set => SetList(value); }
 
     /// <summary>
-    /// DocumentContract CreatedBy
+    /// Document CreatedBy
     /// </summary>
     [AllowNull]
-    public EntityReference CreatedBy { get => GetField(ref _createdBy); set => SetField(ref _createdBy, value); }
+    public EntityReference CreatedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DocumentContract CreatedDate
+    /// Document CreatedDate
     /// </summary>
-    public DateTime? CreatedDate { get => _createdDate; set => SetField(ref _createdDate, value); }
+    public DateTime? CreatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract DaysDue
+    /// Document DaysDue
     /// </summary>
-    public int? DaysDue { get => _daysDue; set => SetField(ref _daysDue, value); }
+    public int? DaysDue { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract DaysTillExpire
+    /// Document DaysTillExpire
     /// </summary>
-    public int? DaysTillExpire { get => _daysTillExpire; set => SetField(ref _daysTillExpire, value); }
+    public int? DaysTillExpire { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract Description
+    /// Document Description
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract DocumentGroups
-    /// </summary>
-    [AllowNull]
-    public IList<string?> DocumentGroups { get => GetField(ref _documentGroups); set => SetField(ref _documentGroups, value); }
-
-    /// <summary>
-    /// DocumentContract DocumentTypes
+    /// Document DocumentGroups
     /// </summary>
     [AllowNull]
-    public IList<string?> DocumentTypes { get => GetField(ref _documentTypes); set => SetField(ref _documentTypes, value); }
+    public IList<string?> DocumentGroups { get => GetList<string?>(); set => SetList(value); }
 
     /// <summary>
-    /// DocumentContract EmnSignature
-    /// </summary>
-    public string? EmnSignature { get => _emnSignature; set => SetField(ref _emnSignature, value); }
-
-    /// <summary>
-    /// DocumentContract ExpectedDate
-    /// </summary>
-    public DateTime? ExpectedDate { get => _expectedDate; set => SetField(ref _expectedDate, value); }
-
-    /// <summary>
-    /// DocumentContract ExpirationDate
-    /// </summary>
-    public DateTime? ExpirationDate { get => _expirationDate; set => SetField(ref _expirationDate, value); }
-
-    /// <summary>
-    /// DocumentContract Id
-    /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
-
-    /// <summary>
-    /// DocumentContract IsMarkedRemoved
-    /// </summary>
-    public bool? IsMarkedRemoved { get => _isMarkedRemoved; set => SetField(ref _isMarkedRemoved, value); }
-
-    /// <summary>
-    /// DocumentContract IsProtected
-    /// </summary>
-    public bool? IsProtected { get => _isProtected; set => SetField(ref _isProtected, value); }
-
-    /// <summary>
-    /// DocumentContract Milestone
+    /// Document DocumentTypes
     /// </summary>
     [AllowNull]
-    public EntityReference Milestone { get => GetField(ref _milestone); set => SetField(ref _milestone, value); }
+    public IList<string?> DocumentTypes { get => GetList<string?>(); set => SetList(value); }
 
     /// <summary>
-    /// DocumentContract PackageId
+    /// Document EmnSignature
     /// </summary>
-    public string? PackageId { get => _packageId; set => SetField(ref _packageId, value); }
+    public string? EmnSignature { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract ReadyForUwBy
+    /// Document ExpectedDate
     /// </summary>
-    [AllowNull]
-    public EntityReference ReadyForUwBy { get => GetField(ref _readyForUwBy); set => SetField(ref _readyForUwBy, value); }
+    public DateTime? ExpectedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract ReadyForUwDate
+    /// Document ExpirationDate
     /// </summary>
-    public DateTime? ReadyForUwDate { get => _readyForUwDate; set => SetField(ref _readyForUwDate, value); }
+    public DateTime? ExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract ReadyToShipBy
+    /// Document Id
     /// </summary>
-    [AllowNull]
-    public EntityReference ReadyToShipBy { get => GetField(ref _readyToShipBy); set => SetField(ref _readyToShipBy, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract ReadyToShipDate
+    /// Document IsMarkedRemoved
     /// </summary>
-    public DateTime? ReadyToShipDate { get => _readyToShipDate; set => SetField(ref _readyToShipDate, value); }
+    public bool? IsMarkedRemoved { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract ReceivedBy
+    /// Document IsProtected
     /// </summary>
-    [AllowNull]
-    public EntityReference ReceivedBy { get => GetField(ref _receivedBy); set => SetField(ref _receivedBy, value); }
+    public bool? IsProtected { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract ReceivedDate
-    /// </summary>
-    public DateTime? ReceivedDate { get => _receivedDate; set => SetField(ref _receivedDate, value); }
-
-    /// <summary>
-    /// DocumentContract RequestedBy
+    /// Document Milestone
     /// </summary>
     [AllowNull]
-    public EntityReference RequestedBy { get => GetField(ref _requestedBy); set => SetField(ref _requestedBy, value); }
+    public EntityReference Milestone { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DocumentContract RequestedDate
+    /// Document PackageId
     /// </summary>
-    public DateTime? RequestedDate { get => _requestedDate; set => SetField(ref _requestedDate, value); }
+    public string? PackageId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract RequestedFrom
-    /// </summary>
-    public string? RequestedFrom { get => _requestedFrom; set => SetField(ref _requestedFrom, value); }
-
-    /// <summary>
-    /// DocumentContract RerequestedBy
+    /// Document ReadyForUwBy
     /// </summary>
     [AllowNull]
-    public EntityReference RerequestedBy { get => GetField(ref _rerequestedBy); set => SetField(ref _rerequestedBy, value); }
+    public EntityReference ReadyForUwBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DocumentContract RerequestedDate
+    /// Document ReadyForUwDate
     /// </summary>
-    public DateTime? RerequestedDate { get => _rerequestedDate; set => SetField(ref _rerequestedDate, value); }
+    public DateTime? ReadyForUwDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract ReviewedBy
-    /// </summary>
-    [AllowNull]
-    public EntityReference ReviewedBy { get => GetField(ref _reviewedBy); set => SetField(ref _reviewedBy, value); }
-
-    /// <summary>
-    /// DocumentContract ReviewedDate
-    /// </summary>
-    public DateTime? ReviewedDate { get => _reviewedDate; set => SetField(ref _reviewedDate, value); }
-
-    /// <summary>
-    /// DocumentContract Roles
+    /// Document ReadyToShipBy
     /// </summary>
     [AllowNull]
-    public IList<EntityReference> Roles { get => GetField(ref _roles); set => SetField(ref _roles, value); }
+    public EntityReference ReadyToShipBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DocumentContract Status
+    /// Document ReadyToShipDate
     /// </summary>
-    public StringEnumValue<DocumentStatus> Status { get => _status; set => SetField(ref _status, value); }
+    public DateTime? ReadyToShipDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentContract StatusDate
-    /// </summary>
-    public DateTime? StatusDate { get => _statusDate; set => SetField(ref _statusDate, value); }
-
-    /// <summary>
-    /// DocumentContract Title
-    /// </summary>
-    public string? Title { get => _title; set => SetField(ref _title, value); }
-
-    /// <summary>
-    /// DocumentContract Verification
+    /// Document ReceivedBy
     /// </summary>
     [AllowNull]
-    public EntityReference Verification { get => GetField(ref _verification); set => SetField(ref _verification, value); }
+    public EntityReference ReceivedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// Document ReceivedDate
+    /// </summary>
+    public DateTime? ReceivedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Document RequestedBy
+    /// </summary>
+    [AllowNull]
+    public EntityReference RequestedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// Document RequestedDate
+    /// </summary>
+    public DateTime? RequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Document RequestedFrom
+    /// </summary>
+    public string? RequestedFrom { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Document RerequestedBy
+    /// </summary>
+    [AllowNull]
+    public EntityReference RerequestedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// Document RerequestedDate
+    /// </summary>
+    public DateTime? RerequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Document ReviewedBy
+    /// </summary>
+    [AllowNull]
+    public EntityReference ReviewedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// Document ReviewedDate
+    /// </summary>
+    public DateTime? ReviewedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Document Roles
+    /// </summary>
+    [AllowNull]
+    public IList<EntityReference> Roles { get => GetList<EntityReference>(); set => SetList(value); }
+
+    /// <summary>
+    /// Document Status
+    /// </summary>
+    public StringEnumValue<DocumentStatus> Status { get => GetValue<StringEnumValue<DocumentStatus>>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Document StatusDate
+    /// </summary>
+    public DateTime? StatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Document Title
+    /// </summary>
+    public string? Title { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Document Verification
+    /// </summary>
+    [AllowNull]
+    public EntityReference Verification { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 }

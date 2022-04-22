@@ -6,22 +6,18 @@ namespace EncompassRest.Loans.v3;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class ServiceProviderContactFee : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _amount;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<int?>? _itemNumber;
+    /// <summary>
+    /// ServiceProviderContactFee Amount
+    /// </summary>
+    public decimal? Amount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ServiceProviderContactFeeContract Amount
+    /// ServiceProviderContactFee Description
     /// </summary>
-    public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ServiceProviderContactFeeContract Description
+    /// ServiceProviderContactFee ItemNumber
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
-
-    /// <summary>
-    /// ServiceProviderContactFeeContract ItemNumber
-    /// </summary>
-    public int? ItemNumber { get => _itemNumber; set => SetField(ref _itemNumber, value); }
+    public int? ItemNumber { get => GetValue<int?>(); set => SetValue(value); }
 }

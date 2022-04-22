@@ -10,305 +10,254 @@ namespace EncompassRest.Loans.RateLocks.v1
     /// </summary>
     public sealed partial class LoanInformation : DirtyExtensibleObject
     {
-        private DirtyValue<List<LockRequestBorrower>?>? _lockRequestBorrowers;
-        private DirtyValue<string?>? _planCode;
-        private DirtyValue<string?>? _loanDocumentationType;
-        private DirtyValue<string?>? _borrowerMinimumFico;
-        private DirtyValue<string?>? _coBorrowerMinimumFico;
-        private DirtyValue<string?>? _creditScoreToUse;
-        private DirtyValue<bool?>? _isFirstTimeHomeBuyer;
-        private DirtyValue<bool?>? _canDemonstrateTwelveMonthMortgageRentalHistory;
-        private DirtyValue<SubjectProperty?>? _subjectProperty;
-        private DirtyValue<StringEnumValue<LoanPurposeType>>? _loanPurposeType;
-        private DirtyValue<bool?>? _currentAcquisition;
-        private DirtyValue<bool?>? _currentConstructionRefinance;
-        private DirtyValue<bool?>? _loanFor203K;
-        private DirtyValue<decimal?>? _totalForLesserOfSumAsIs;
-        private DirtyValue<string?>? _lienPriorityType;
-        private DirtyValue<StringEnumValue<LoanType>>? _mortgageType;
-        private DirtyValue<StringEnumValue<AmortizationType>>? _loanAmortizationType;
-        private DirtyValue<decimal?>? _gpmRate;
-        private DirtyValue<int?>? _gpmYears;
-        private DirtyValue<string?>? _fnmProductPlanIdentifier;
-        private DirtyValue<string?>? _otherAmortizationTypeDescription;
-        private DirtyValue<string?>? _requestImpoundWaived;
-        private DirtyValue<StringEnumValue<ImpoundType>>? _requestImpoundType;
-        private DirtyValue<bool?>? _prepayPenalty;
-        private DirtyValue<int?>? _penaltyTerm;
-        private DirtyValue<bool?>? _noClosingCost;
-        private DirtyValue<bool?>? _lenderFeeWaiver;
-        private DirtyValue<DateTime?>? _estimatedClosingDate;
-        private DirtyValue<decimal?>? _sellerPaidMiPremium;
-        private DirtyValue<decimal?>? _fhaUpfrontMiPremiumPercent;
-        private DirtyValue<decimal?>? _fundingAmount;
-        private DirtyValue<decimal?>? _ltv;
-        private DirtyValue<decimal?>? _combinedLtv;
-        private DirtyValue<decimal?>? _mipPaidInCash;
-        private DirtyValue<bool?>? _roundToNearestFifty;
-        private DirtyValue<int?>? _balloonLoanMaturityTerms;
-        private DirtyValue<int?>? _loanAmortizationTerms;
-        private DirtyValue<decimal?>? _baseLoanAmount;
-        private DirtyValue<decimal?>? _borrowerRequestedLoanAmount;
-        private DirtyValue<decimal?>? _helocActualBalance;
-        private DirtyValue<decimal?>? _firstSubordinateAmount;
-        private DirtyValue<decimal?>? _secondSubordinateAmount;
-        private DirtyValue<decimal?>? _otherSubordinateAmount;
-        private DirtyValue<bool?>? _lockField;
-        private DirtyValue<decimal?>? _totalSubordinateFinancing;
-        private DirtyValue<DateTime?>? _pricingUpdated;
-        private DirtyValue<StringEnumValue<ImpoundType>>? _impoundType;
-        private DirtyValue<StringEnumValue<ImpoundWaived>>? _impoundWaived;
-        private DirtyValue<bool?>? _isLenderPaidMortgageInsurance;
-        private DirtyValue<string?>? _pricingHistoryData;
-
         /// <summary>
         /// Object containing the borrowers' information.
         /// </summary>
-        public List<LockRequestBorrower>? LockRequestBorrowers { get => _lockRequestBorrowers; set => SetField(ref _lockRequestBorrowers, value); }
+        public List<LockRequestBorrower>? LockRequestBorrowers { get => GetValue<List<LockRequestBorrower>?>(); set => SetValue(value); }
 
         /// <summary>
         /// The plan code associated with the lock request.
         /// </summary>
-        public string? PlanCode { get => _planCode; set => SetField(ref _planCode, value); }
+        public string? PlanCode { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Fannie Mae loan documentation type code.
         /// </summary>
-        public string? LoanDocumentationType { get => _loanDocumentationType; set => SetField(ref _loanDocumentationType, value); }
+        public string? LoanDocumentationType { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The minimum FICO score allowed for the borrower to qualify for the loan program.
         /// </summary>
-        public string? BorrowerMinimumFico { get => _borrowerMinimumFico; set => SetField(ref _borrowerMinimumFico, value); }
+        public string? BorrowerMinimumFico { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The minimum FICO score allowed for the co-borrower to qualify for the loan program.
         /// </summary>
-        public string? CoBorrowerMinimumFico { get => _coBorrowerMinimumFico; set => SetField(ref _coBorrowerMinimumFico, value); }
+        public string? CoBorrowerMinimumFico { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The credit score to use when qualifying the loan for a loan product. Depending on the loan product and the scores of the applicants, the credit score may come from the borrower, co-borrower, or even co-mortgagors.
         /// </summary>
-        public string? CreditScoreToUse { get => _creditScoreToUse; set => SetField(ref _creditScoreToUse, value); }
+        public string? CreditScoreToUse { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the borrower is a first time home buyer.
         /// </summary>
-        public bool? IsFirstTimeHomeBuyer { get => _isFirstTimeHomeBuyer; set => SetField(ref _isFirstTimeHomeBuyer, value); }
+        public bool? IsFirstTimeHomeBuyer { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the borrower can demonstrate twelve months mortgage rental history.
         /// </summary>
-        public bool? CanDemonstrateTwelveMonthMortgageRentalHistory { get => _canDemonstrateTwelveMonthMortgageRentalHistory; set => SetField(ref _canDemonstrateTwelveMonthMortgageRentalHistory, value); }
+        public bool? CanDemonstrateTwelveMonthMortgageRentalHistory { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Attributes that define the subject property.
         /// </summary>
-        public SubjectProperty? SubjectProperty { get => _subjectProperty; set => SetField(ref _subjectProperty, value); }
+        public SubjectProperty? SubjectProperty { get => GetValue<SubjectProperty?>(); set => SetValue(value); }
 
         /// <summary>
         /// Loan Purpose Type. Possible values are: construction-perm, no cash-out refi, purchase, construction, cash-out refi, other
         /// </summary>
-        public StringEnumValue<LoanPurposeType> LoanPurposeType { get => _loanPurposeType; set => SetField(ref _loanPurposeType, value); }
+        public StringEnumValue<LoanPurposeType> LoanPurposeType { get => GetValue<StringEnumValue<LoanPurposeType>>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the loan is a current Acquisition.
         /// </summary>
-        public bool? CurrentAcquisition { get => _currentAcquisition; set => SetField(ref _currentAcquisition, value); }
+        public bool? CurrentAcquisition { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the loan is a current Construction Refinance.
         /// </summary>
-        public bool? CurrentConstructionRefinance { get => _currentConstructionRefinance; set => SetField(ref _currentConstructionRefinance, value); }
+        public bool? CurrentConstructionRefinance { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the loan is for a 203K.
         /// </summary>
-        public bool? LoanFor203K { get => _loanFor203K; set => SetField(ref _loanFor203K, value); }
+        public bool? LoanFor203K { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Total for lesser of sum as is.
         /// </summary>
-        public decimal? TotalForLesserOfSumAsIs { get => _totalForLesserOfSumAsIs; set => SetField(ref _totalForLesserOfSumAsIs, value); }
+        public decimal? TotalForLesserOfSumAsIs { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Lien priority type.
         /// </summary>
-        public string? LienPriorityType { get => _lienPriorityType; set => SetField(ref _lienPriorityType, value); }
+        public string? LienPriorityType { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Mortgage type. Possible values are: Conventional, VA, FHA, USDA-RHS, Other, HELOC
         /// </summary>
-        public StringEnumValue<LoanType>? MortgageType { get => _mortgageType; set => SetField(ref _mortgageType, value); }
+        public StringEnumValue<LoanType>? MortgageType { get => GetValue<StringEnumValue<LoanType>?>(); set => SetValue(value); }
 
         /// <summary>
         /// Loan Amortization Type. Possible values are fixed rate, gpm-rate, arm, other
         /// </summary>
-        public StringEnumValue<AmortizationType> LoanAmortizationType { get => _loanAmortizationType; set => SetField(ref _loanAmortizationType, value); }
+        public StringEnumValue<AmortizationType> LoanAmortizationType { get => GetValue<StringEnumValue<AmortizationType>>(); set => SetValue(value); }
 
         /// <summary>
         /// GPM rate. A mortgage in which the payments are lower in the first years, and then increase annually until a level that fully amortizes the loan within its term.
         /// </summary>
-        public decimal? GpmRate { get => _gpmRate; set => SetField(ref _gpmRate, value); }
+        public decimal? GpmRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// GPM years. The number of years the rate (as defined by the GPM attribute) is in effect before the loan is reamortized.
         /// </summary>
-        public int? GpmYears { get => _gpmYears; set => SetField(ref _gpmYears, value); }
+        public int? GpmYears { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// FNM Product Plan Identifier.
         /// </summary>
-        public string? FnmProductPlanIdentifier { get => _fnmProductPlanIdentifier; set => SetField(ref _fnmProductPlanIdentifier, value); }
+        public string? FnmProductPlanIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Description if the amortization type is set to Other.
         /// </summary>
-        public string? OtherAmortizationTypeDescription { get => _otherAmortizationTypeDescription; set => SetField(ref _otherAmortizationTypeDescription, value); }
+        public string? OtherAmortizationTypeDescription { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Request Impound Waived indicator.
         /// </summary>
-        public string? RequestImpoundWaived { get => _requestImpoundWaived; set => SetField(ref _requestImpoundWaived, value); }
+        public string? RequestImpoundWaived { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Request Impound Type. Possible values are: Taxes and Insurance, taxes only, insurance only, no impounds
         /// </summary>
-        public StringEnumValue<ImpoundType> RequestImpoundType { get => _requestImpoundType; set => SetField(ref _requestImpoundType, value); }
+        public StringEnumValue<ImpoundType> RequestImpoundType { get => GetValue<StringEnumValue<ImpoundType>>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the Penalty is prepaid.
         /// </summary>
-        public bool? PrepayPenalty { get => _prepayPenalty; set => SetField(ref _prepayPenalty, value); }
+        public bool? PrepayPenalty { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Term of the penalty in months.
         /// </summary>
-        public int? PenaltyTerm { get => _penaltyTerm; set => SetField(ref _penaltyTerm, value); }
+        public int? PenaltyTerm { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether there is a closing cost.
         /// </summary>
-        public bool? NoClosingCost { get => _noClosingCost; set => SetField(ref _noClosingCost, value); }
+        public bool? NoClosingCost { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether there is a lender fee waiver.
         /// </summary>
-        public bool? LenderFeeWaiver { get => _lenderFeeWaiver; set => SetField(ref _lenderFeeWaiver, value); }
+        public bool? LenderFeeWaiver { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Estimated closing date of the loan.
         /// </summary>
-        public DateTime? EstimatedClosingDate { get => _estimatedClosingDate; set => SetField(ref _estimatedClosingDate, value); }
+        public DateTime? EstimatedClosingDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Seller paid MI premium.
         /// </summary>
-        public decimal? SellerPaidMiPremium { get => _sellerPaidMiPremium; set => SetField(ref _sellerPaidMiPremium, value); }
+        public decimal? SellerPaidMiPremium { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// FHA upfront MI premium percentage
         /// </summary>
-        public decimal? FhaUpfrontMiPremiumPercent { get => _fhaUpfrontMiPremiumPercent; set => SetField(ref _fhaUpfrontMiPremiumPercent, value); }
+        public decimal? FhaUpfrontMiPremiumPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Funding amount.
         /// </summary>
-        public decimal? FundingAmount { get => _fundingAmount; set => SetField(ref _fundingAmount, value); }
+        public decimal? FundingAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The Loan-to-Value (LTV) ratio used for the lock request.
         /// </summary>
-        public decimal? Ltv { get => _ltv; set => SetField(ref _ltv, value); }
+        public decimal? Ltv { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The combined Loan-to-Value (CLTV) ratio used for the lock request.
         /// </summary>
-        public decimal? CombinedLtv { get => _combinedLtv; set => SetField(ref _combinedLtv, value); }
+        public decimal? CombinedLtv { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The Amount Paid in Cash or the MIP/Funding amount.
         /// </summary>
-        public decimal? MipPaidInCash { get => _mipPaidInCash; set => SetField(ref _mipPaidInCash, value); }
+        public decimal? MipPaidInCash { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Round the Total Loan Amount to the nearest $50 increment.
         /// </summary>
-        public bool? RoundToNearestFifty { get => _roundToNearestFifty; set => SetField(ref _roundToNearestFifty, value); }
+        public bool? RoundToNearestFifty { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Balloon loan maturity terms.
         /// </summary>
-        public int? BalloonLoanMaturityTerms { get => _balloonLoanMaturityTerms; set => SetField(ref _balloonLoanMaturityTerms, value); }
+        public int? BalloonLoanMaturityTerms { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// Loan amortization terms.
         /// </summary>
-        public int? LoanAmortizationTerms { get => _loanAmortizationTerms; set => SetField(ref _loanAmortizationTerms, value); }
+        public int? LoanAmortizationTerms { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// Base loan amount.
         /// </summary>
-        public decimal? BaseLoanAmount { get => _baseLoanAmount; set => SetField(ref _baseLoanAmount, value); }
+        public decimal? BaseLoanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Borrower requested loan amount.
         /// </summary>
-        public decimal? BorrowerRequestedLoanAmount { get => _borrowerRequestedLoanAmount; set => SetField(ref _borrowerRequestedLoanAmount, value); }
+        public decimal? BorrowerRequestedLoanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// HELOC actual balance.
         /// </summary>
-        public decimal? HelocActualBalance { get => _helocActualBalance; set => SetField(ref _helocActualBalance, value); }
+        public decimal? HelocActualBalance { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// First subordinate amount.
         /// </summary>
-        public decimal? FirstSubordinateAmount { get => _firstSubordinateAmount; set => SetField(ref _firstSubordinateAmount, value); }
+        public decimal? FirstSubordinateAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Second subordinate amount.
         /// </summary>
-        public decimal? SecondSubordinateAmount { get => _secondSubordinateAmount; set => SetField(ref _secondSubordinateAmount, value); }
+        public decimal? SecondSubordinateAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Other subordinate amount.
         /// </summary>
-        public decimal? OtherSubordinateAmount { get => _otherSubordinateAmount; set => SetField(ref _otherSubordinateAmount, value); }
+        public decimal? OtherSubordinateAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Lock field.
         /// </summary>
-        public bool? LockField { get => _lockField; set => SetField(ref _lockField, value); }
+        public bool? LockField { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Total subordinate financing.
         /// </summary>
-        public decimal? TotalSubordinateFinancing { get => _totalSubordinateFinancing; set => SetField(ref _totalSubordinateFinancing, value); }
+        public decimal? TotalSubordinateFinancing { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The last date and time that pricing was imported.
         /// </summary>
-        public DateTime? PricingUpdated { get => _pricingUpdated; set => SetField(ref _pricingUpdated, value); }
+        public DateTime? PricingUpdated { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Impound type. Possible options are: Taxes and Insurance(T and I), Taxes only(T), Insurance only(I), No impounds\
         /// </summary>
-        public StringEnumValue<ImpoundType> ImpoundType { get => _impoundType; set => SetField(ref _impoundType, value); }
+        public StringEnumValue<ImpoundType> ImpoundType { get => GetValue<StringEnumValue<ImpoundType>>(); set => SetValue(value); }
 
         /// <summary>
         /// Whether the impound is waived or not waived.
         /// </summary>
-        public StringEnumValue<ImpoundWaived> ImpoundWaived { get => _impoundWaived; set => SetField(ref _impoundWaived, value); }
+        public StringEnumValue<ImpoundWaived> ImpoundWaived { get => GetValue<StringEnumValue<ImpoundWaived>>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the lender has paid MI.
         /// </summary>
-        public bool? IsLenderPaidMortgageInsurance { get => _isLenderPaidMortgageInsurance; set => SetField(ref _isLenderPaidMortgageInsurance, value); }
+        public bool? IsLenderPaidMortgageInsurance { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Pricing history data.
         /// </summary>
-        public string? PricingHistoryData { get => _pricingHistoryData; set => SetField(ref _pricingHistoryData, value); }
+        public string? PricingHistoryData { get => GetValue<string?>(); set => SetValue(value); }
     }
 }

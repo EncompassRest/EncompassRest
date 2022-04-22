@@ -7,138 +7,118 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class UserRights : DirtyExtensibleObject
     {
-        private AccessRights? _access;
-        private ConsumerConnectRights? _consumerConnect;
-        private ContactsRights? _contacts;
-        private DashboardRights? _dashboard;
-        private EFolderRights? _eFolder;
-        private EVaultRights? _eVault;
-        private ExternalSettingsRights? _externalSettings;
-        private FormsRights? _forms;
-        private HomeRights? _home;
-        private LoanRights? _loan;
-        private LOConnectTabRights? _lOConnectTab;
-        private LOConnectTasksRights? _lOConnectTasks;
-        private MiscellaneousRights? _miscellaneous;
-        private PipelineRights? _pipeline;
-        private ReportsRights? _reports;
-        private SettingsRights? _settings;
-        private ToolsRights? _tools;
-        private TPOConnectRights? _tPOConnect;
-        private TradesRights? _trades;
-
         /// <summary>
         /// UserRights Access
         /// </summary>
         [AllowNull]
-        public AccessRights Access { get => GetField(ref _access); set => SetField(ref _access, value); }
+        public AccessRights Access { get => GetEntity<AccessRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights ConsumerConnect
         /// </summary>
         [AllowNull]
-        public ConsumerConnectRights ConsumerConnect { get => GetField(ref _consumerConnect); set => SetField(ref _consumerConnect, value); }
+        public ConsumerConnectRights ConsumerConnect { get => GetEntity<ConsumerConnectRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Contacts
         /// </summary>
         [AllowNull]
-        public ContactsRights Contacts { get => GetField(ref _contacts); set => SetField(ref _contacts, value); }
+        public ContactsRights Contacts { get => GetEntity<ContactsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Dashboard
         /// </summary>
         [AllowNull]
-        public DashboardRights Dashboard { get => GetField(ref _dashboard); set => SetField(ref _dashboard, value); }
+        public DashboardRights Dashboard { get => GetEntity<DashboardRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights EFolder
         /// </summary>
         [AllowNull]
-        public EFolderRights EFolder { get => GetField(ref _eFolder); set => SetField(ref _eFolder, value); }
+        public EFolderRights EFolder { get => GetEntity<EFolderRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights EVault
         /// </summary>
         [AllowNull]
-        public EVaultRights EVault { get => GetField(ref _eVault); set => SetField(ref _eVault, value); }
+        public EVaultRights EVault { get => GetEntity<EVaultRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights ExternalSettings
         /// </summary>
         [AllowNull]
-        public ExternalSettingsRights ExternalSettings { get => GetField(ref _externalSettings); set => SetField(ref _externalSettings, value); }
+        public ExternalSettingsRights ExternalSettings { get => GetEntity<ExternalSettingsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Forms
         /// </summary>
         [AllowNull]
-        public FormsRights Forms { get => GetField(ref _forms); set => SetField(ref _forms, value); }
+        public FormsRights Forms { get => GetEntity<FormsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Home
         /// </summary>
         [AllowNull]
-        public HomeRights Home { get => GetField(ref _home); set => SetField(ref _home, value); }
+        public HomeRights Home { get => GetEntity<HomeRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Loan
         /// </summary>
         [AllowNull]
-        public LoanRights Loan { get => GetField(ref _loan); set => SetField(ref _loan, value); }
+        public LoanRights Loan { get => GetEntity<LoanRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights LOConnectTab
         /// </summary>
         [AllowNull]
-        public LOConnectTabRights LOConnectTab { get => GetField(ref _lOConnectTab); set => SetField(ref _lOConnectTab, value); }
+        public LOConnectTabRights LOConnectTab { get => GetEntity<LOConnectTabRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights LOConnectTasks
         /// </summary>
         [AllowNull]
-        public LOConnectTasksRights LOConnectTasks { get => GetField(ref _lOConnectTasks); set => SetField(ref _lOConnectTasks, value); }
+        public LOConnectTasksRights LOConnectTasks { get => GetEntity<LOConnectTasksRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Miscellaneous
         /// </summary>
         [AllowNull]
-        public MiscellaneousRights Miscellaneous { get => GetField(ref _miscellaneous); set => SetField(ref _miscellaneous, value); }
+        public MiscellaneousRights Miscellaneous { get => GetEntity<MiscellaneousRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Pipeline
         /// </summary>
         [AllowNull]
-        public PipelineRights Pipeline { get => GetField(ref _pipeline); set => SetField(ref _pipeline, value); }
+        public PipelineRights Pipeline { get => GetEntity<PipelineRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Reports
         /// </summary>
         [AllowNull]
-        public ReportsRights Reports { get => GetField(ref _reports); set => SetField(ref _reports, value); }
+        public ReportsRights Reports { get => GetEntity<ReportsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Settings
         /// </summary>
         [AllowNull]
-        public SettingsRights Settings { get => GetField(ref _settings); set => SetField(ref _settings, value); }
+        public SettingsRights Settings { get => GetEntity<SettingsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Tools
         /// </summary>
         [AllowNull]
-        public ToolsRights Tools { get => GetField(ref _tools); set => SetField(ref _tools, value); }
+        public ToolsRights Tools { get => GetEntity<ToolsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights TPOConnect
         /// </summary>
         [AllowNull]
-        public TPOConnectRights TPOConnect { get => GetField(ref _tPOConnect); set => SetField(ref _tPOConnect, value); }
+        public TPOConnectRights TPOConnect { get => GetEntity<TPOConnectRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// UserRights Trades
         /// </summary>
         [AllowNull]
-        public TradesRights Trades { get => GetField(ref _trades); set => SetField(ref _trades, value); }
+        public TradesRights Trades { get => GetEntity<TradesRights>(); set => SetEntity(value); }
     }
 }

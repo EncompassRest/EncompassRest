@@ -10,235 +10,196 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class EnhancedConditionLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<int?>? _age;
-    private DirtyValue<DateTime?>? _ageClosedDate;
-    private DirtyValue<DateTime?>? _ageStartDate;
-    private DirtyValue<EntityReference?>? _application;
-    private DirtyList<EntityReference>? _assignedTo;
-    private DirtyValue<string?>? _category;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<int?>? _commentsCount;
-    private DirtyValue<string?>? _conditionType;
-    private DirtyValue<EntityReference?>? _createdBy;
-    private DirtyValue<DateTime?>? _createdDate;
-    private DirtyValue<int?>? _daysToReceive;
-    private DirtyValue<EnhancedConditionDefinition?>? _definitions;
-    private DirtyValue<DateTime?>? _documentReceiptDate;
-    private DirtyValue<DateTime?>? _endDate;
-    private DirtyValue<string?>? _externalDescription;
-    private DirtyValue<string?>? _externalId;
-    private DirtyValue<bool?>? _externalPrint;
-    private DirtyValue<DateTime?>? _externalPrintDate;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _internalDescription;
-    private DirtyValue<string?>? _internalId;
-    private DirtyValue<bool?>? _internalPrint;
-    private DirtyValue<bool?>? _isRemoved;
-    private DirtyValue<EntityReference?>? _lastModifiedBy;
-    private DirtyValue<DateTime?>? _lastModifiedDate;
-    private DirtyValue<string?>? _priorTo;
-    private DirtyValue<DateTime?>? _publishedDate;
-    private DirtyValue<string?>? _recipient;
-    private DirtyValue<string?>? _requestedFrom;
-    private DirtyValue<string?>? _source;
-    private DirtyValue<StringEnumValue<SourceOfCondition>>? _sourceOfCondition;
-    private DirtyValue<DateTime?>? _startDate;
-    private DirtyValue<string?>? _status;
-    private DirtyValue<DateTime?>? _statusDate;
-    private DirtyValue<bool?>? _statusOpen;
-    private DirtyValue<string?>? _title;
-    private DirtyList<TrackingEntryLog>? _tracking;
-
     /// <summary>
     /// EnhancedConditionLog Age
     /// </summary>
-    public int? Age { get => _age; set => SetField(ref _age, value); }
+    public int? Age { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog AgeClosedDate
     /// </summary>
-    public DateTime? AgeClosedDate { get => _ageClosedDate; set => SetField(ref _ageClosedDate, value); }
+    public DateTime? AgeClosedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog AgeStartDate
     /// </summary>
-    public DateTime? AgeStartDate { get => _ageStartDate; set => SetField(ref _ageStartDate, value); }
+    public DateTime? AgeStartDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog Application
     /// </summary>
-    public EntityReference? Application { get => _application; set => SetField(ref _application, value); }
+    public EntityReference? Application { get => GetValue<EntityReference?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog AssignedTo
     /// </summary>
     [AllowNull]
-    public IList<EntityReference> AssignedTo { get => GetField(ref _assignedTo); set => SetField(ref _assignedTo, value); }
+    public IList<EntityReference> AssignedTo { get => GetList<EntityReference>(); set => SetList(value); }
 
     /// <summary>
     /// EnhancedConditionLog Category
     /// </summary>
-    public string? Category { get => _category; set => SetField(ref _category, value); }
+    public string? Category { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
     /// EnhancedConditionLog CommentsCount
     /// </summary>
-    public int? CommentsCount { get => _commentsCount; set => SetField(ref _commentsCount, value); }
+    public int? CommentsCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog ConditionType
     /// </summary>
-    public string? ConditionType { get => _conditionType; set => SetField(ref _conditionType, value); }
+    public string? ConditionType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog CreatedBy
     /// </summary>
-    public EntityReference? CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
+    public EntityReference? CreatedBy { get => GetValue<EntityReference?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog CreatedDate
     /// </summary>
-    public DateTime? CreatedDate { get => _createdDate; set => SetField(ref _createdDate, value); }
+    public DateTime? CreatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog DaysToReceive
     /// </summary>
-    public int? DaysToReceive { get => _daysToReceive; set => SetField(ref _daysToReceive, value); }
+    public int? DaysToReceive { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog Definitions
     /// </summary>
-    public EnhancedConditionDefinition? Definitions { get => _definitions; set => SetField(ref _definitions, value); }
+    public EnhancedConditionDefinition? Definitions { get => GetValue<EnhancedConditionDefinition?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog DocumentReceiptDate
     /// </summary>
-    public DateTime? DocumentReceiptDate { get => _documentReceiptDate; set => SetField(ref _documentReceiptDate, value); }
+    public DateTime? DocumentReceiptDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog EndDate
     /// </summary>
-    public DateTime? EndDate { get => _endDate; set => SetField(ref _endDate, value); }
+    public DateTime? EndDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog ExternalDescription
     /// </summary>
-    public string? ExternalDescription { get => _externalDescription; set => SetField(ref _externalDescription, value); }
+    public string? ExternalDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog ExternalId
     /// </summary>
-    public string? ExternalId { get => _externalId; set => SetField(ref _externalId, value); }
+    public string? ExternalId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog ExternalPrint
     /// </summary>
-    public bool? ExternalPrint { get => _externalPrint; set => SetField(ref _externalPrint, value); }
+    public bool? ExternalPrint { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog ExternalPrintDate
     /// </summary>
-    public DateTime? ExternalPrintDate { get => _externalPrintDate; set => SetField(ref _externalPrintDate, value); }
+    public DateTime? ExternalPrintDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog InternalDescription
     /// </summary>
-    public string? InternalDescription { get => _internalDescription; set => SetField(ref _internalDescription, value); }
+    public string? InternalDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog InternalId
     /// </summary>
-    public string? InternalId { get => _internalId; set => SetField(ref _internalId, value); }
+    public string? InternalId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog InternalPrint
     /// </summary>
-    public bool? InternalPrint { get => _internalPrint; set => SetField(ref _internalPrint, value); }
+    public bool? InternalPrint { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog IsRemoved
     /// </summary>
-    public bool? IsRemoved { get => _isRemoved; set => SetField(ref _isRemoved, value); }
+    public bool? IsRemoved { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog LastModifiedBy
     /// </summary>
-    public EntityReference? LastModifiedBy { get => _lastModifiedBy; set => SetField(ref _lastModifiedBy, value); }
+    public EntityReference? LastModifiedBy { get => GetValue<EntityReference?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog LastModifiedDate
     /// </summary>
-    public DateTime? LastModifiedDate { get => _lastModifiedDate; set => SetField(ref _lastModifiedDate, value); }
+    public DateTime? LastModifiedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog PriorTo
     /// </summary>
-    public string? PriorTo { get => _priorTo; set => SetField(ref _priorTo, value); }
+    public string? PriorTo { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog PublishedDate
     /// </summary>
-    public DateTime? PublishedDate { get => _publishedDate; set => SetField(ref _publishedDate, value); }
+    public DateTime? PublishedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog Recipient
     /// </summary>
-    public string? Recipient { get => _recipient; set => SetField(ref _recipient, value); }
+    public string? Recipient { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog RequestedFrom
     /// </summary>
-    public string? RequestedFrom { get => _requestedFrom; set => SetField(ref _requestedFrom, value); }
+    public string? RequestedFrom { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog Source
     /// </summary>
-    public string? Source { get => _source; set => SetField(ref _source, value); }
+    public string? Source { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog SourceOfCondition
     /// </summary>
-    public StringEnumValue<SourceOfCondition> SourceOfCondition { get => _sourceOfCondition; set => SetField(ref _sourceOfCondition, value); }
+    public StringEnumValue<SourceOfCondition> SourceOfCondition { get => GetValue<StringEnumValue<SourceOfCondition>>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog StartDate
     /// </summary>
-    public DateTime? StartDate { get => _startDate; set => SetField(ref _startDate, value); }
+    public DateTime? StartDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog Status
     /// </summary>
-    public string? Status { get => _status; set => SetField(ref _status, value); }
+    public string? Status { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog StatusDate
     /// </summary>
-    public DateTime? StatusDate { get => _statusDate; set => SetField(ref _statusDate, value); }
+    public DateTime? StatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog StatusOpen
     /// </summary>
-    public bool? StatusOpen { get => _statusOpen; set => SetField(ref _statusOpen, value); }
+    public bool? StatusOpen { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog Title
     /// </summary>
-    public string? Title { get => _title; set => SetField(ref _title, value); }
+    public string? Title { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnhancedConditionLog Tracking
     /// </summary>
     [AllowNull]
-    public IList<TrackingEntryLog> Tracking { get => GetField(ref _tracking); set => SetField(ref _tracking, value); }
+    public IList<TrackingEntryLog> Tracking { get => GetList<TrackingEntryLog>(); set => SetList(value); }
 }

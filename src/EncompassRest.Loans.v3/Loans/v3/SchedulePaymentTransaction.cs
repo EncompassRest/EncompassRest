@@ -7,304 +7,253 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class SchedulePaymentTransaction : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _additionalEscrow;
-    private DirtyValue<decimal?>? _additionalPrincipal;
-    private DirtyValue<decimal?>? _buydownSubsidyAmount;
-    private DirtyValue<decimal?>? _buydownSubsidyAmountDue;
-    private DirtyValue<decimal?>? _cityPropertyTax;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _createdById;
-    private DirtyValue<string?>? _createdByName;
-    private DirtyValue<DateTime?>? _createdDateTime;
-    private DirtyValue<decimal?>? _escrow;
-    private DirtyValue<decimal?>? _escrowCityPropertyTaxDue;
-    private DirtyValue<decimal?>? _escrowDue;
-    private DirtyValue<decimal?>? _escrowFloodInsuranceDue;
-    private DirtyValue<decimal?>? _escrowHazardInsuranceDue;
-    private DirtyValue<decimal?>? _escrowMortgageInsuranceDue;
-    private DirtyValue<decimal?>? _escrowOther1Due;
-    private DirtyValue<decimal?>? _escrowOther2Due;
-    private DirtyValue<decimal?>? _escrowOther3Due;
-    private DirtyValue<decimal?>? _escrowTaxDue;
-    private DirtyValue<decimal?>? _escrowUsdaMonthlyPremiumDue;
-    private DirtyValue<decimal?>? _floodInsurance;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<decimal?>? _hazardInsurance;
-    private DirtyValue<decimal?>? _indexRate;
-    private DirtyValue<decimal?>? _interest;
-    private DirtyValue<decimal?>? _interestDue;
-    private DirtyValue<decimal?>? _interestRate;
-    private DirtyValue<decimal?>? _lateFee;
-    private DirtyValue<DateTime?>? _latePaymentDate;
-    private DirtyValue<decimal?>? _miscFee;
-    private DirtyValue<decimal?>? _miscFeeDue;
-    private DirtyValue<string?>? _modifiedById;
-    private DirtyValue<string?>? _modifiedByName;
-    private DirtyValue<DateTime?>? _modifiedDateTime;
-    private DirtyValue<decimal?>? _mortgageInsurance;
-    private DirtyValue<decimal?>? _other1Escrow;
-    private DirtyValue<decimal?>? _other2Escrow;
-    private DirtyValue<decimal?>? _other3Escrow;
-    private DirtyValue<int?>? _paymentNumber;
-    private DirtyValue<DateTime?>? _paymentReceiveDate;
-    private DirtyValue<decimal?>? _principal;
-    private DirtyValue<decimal?>? _principalDue;
-    private DirtyValue<string?>? _servicingPaymentMethod;
-    private DirtyValue<string?>? _servicingTransactionType;
-    private DirtyValue<decimal?>? _taxes;
-    private DirtyValue<decimal?>? _totalPastDue;
-    private DirtyValue<decimal?>? _transactionAmount;
-    private DirtyValue<DateTime?>? _transactionDate;
-    private DirtyValue<decimal?>? _unpaidLateFeeDue;
-    private DirtyValue<decimal?>? _usdaMonthlyPremium;
+    /// <summary>
+    /// SchedulePaymentTransaction AdditionalEscrow
+    /// </summary>
+    public decimal? AdditionalEscrow { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract AdditionalEscrow
+    /// SchedulePaymentTransaction AdditionalPrincipal
     /// </summary>
-    public decimal? AdditionalEscrow { get => _additionalEscrow; set => SetField(ref _additionalEscrow, value); }
+    public decimal? AdditionalPrincipal { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract AdditionalPrincipal
+    /// SchedulePaymentTransaction BuydownSubsidyAmount
     /// </summary>
-    public decimal? AdditionalPrincipal { get => _additionalPrincipal; set => SetField(ref _additionalPrincipal, value); }
+    public decimal? BuydownSubsidyAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract BuydownSubsidyAmount
+    /// SchedulePaymentTransaction BuydownSubsidyAmountDue
     /// </summary>
-    public decimal? BuydownSubsidyAmount { get => _buydownSubsidyAmount; set => SetField(ref _buydownSubsidyAmount, value); }
+    public decimal? BuydownSubsidyAmountDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract BuydownSubsidyAmountDue
+    /// SchedulePaymentTransaction CityPropertyTax
     /// </summary>
-    public decimal? BuydownSubsidyAmountDue { get => _buydownSubsidyAmountDue; set => SetField(ref _buydownSubsidyAmountDue, value); }
+    public decimal? CityPropertyTax { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract CityPropertyTax
+    /// SchedulePaymentTransaction Comments
     /// </summary>
-    public decimal? CityPropertyTax { get => _cityPropertyTax; set => SetField(ref _cityPropertyTax, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract Comments
+    /// SchedulePaymentTransaction CreatedById
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? CreatedById { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract CreatedById
+    /// SchedulePaymentTransaction CreatedByName
     /// </summary>
-    public string? CreatedById { get => _createdById; set => SetField(ref _createdById, value); }
+    public string? CreatedByName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract CreatedByName
+    /// SchedulePaymentTransaction CreatedDateTime
     /// </summary>
-    public string? CreatedByName { get => _createdByName; set => SetField(ref _createdByName, value); }
+    public DateTime? CreatedDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract CreatedDateTime
+    /// SchedulePaymentTransaction Escrow
     /// </summary>
-    public DateTime? CreatedDateTime { get => _createdDateTime; set => SetField(ref _createdDateTime, value); }
+    public decimal? Escrow { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract Escrow
+    /// SchedulePaymentTransaction EscrowCityPropertyTaxDue
     /// </summary>
-    public decimal? Escrow { get => _escrow; set => SetField(ref _escrow, value); }
+    public decimal? EscrowCityPropertyTaxDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract EscrowCityPropertyTaxDue
+    /// SchedulePaymentTransaction EscrowDue
     /// </summary>
-    public decimal? EscrowCityPropertyTaxDue { get => _escrowCityPropertyTaxDue; set => SetField(ref _escrowCityPropertyTaxDue, value); }
+    public decimal? EscrowDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract EscrowDue
+    /// SchedulePaymentTransaction EscrowFloodInsuranceDue
     /// </summary>
-    public decimal? EscrowDue { get => _escrowDue; set => SetField(ref _escrowDue, value); }
+    public decimal? EscrowFloodInsuranceDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract EscrowFloodInsuranceDue
+    /// SchedulePaymentTransaction EscrowHazardInsuranceDue
     /// </summary>
-    public decimal? EscrowFloodInsuranceDue { get => _escrowFloodInsuranceDue; set => SetField(ref _escrowFloodInsuranceDue, value); }
+    public decimal? EscrowHazardInsuranceDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract EscrowHazardInsuranceDue
+    /// SchedulePaymentTransaction EscrowMortgageInsuranceDue
     /// </summary>
-    public decimal? EscrowHazardInsuranceDue { get => _escrowHazardInsuranceDue; set => SetField(ref _escrowHazardInsuranceDue, value); }
+    public decimal? EscrowMortgageInsuranceDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract EscrowMortgageInsuranceDue
+    /// SchedulePaymentTransaction EscrowOther1Due
     /// </summary>
-    public decimal? EscrowMortgageInsuranceDue { get => _escrowMortgageInsuranceDue; set => SetField(ref _escrowMortgageInsuranceDue, value); }
+    public decimal? EscrowOther1Due { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract EscrowOther1Due
+    /// SchedulePaymentTransaction EscrowOther2Due
     /// </summary>
-    public decimal? EscrowOther1Due { get => _escrowOther1Due; set => SetField(ref _escrowOther1Due, value); }
+    public decimal? EscrowOther2Due { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract EscrowOther2Due
+    /// SchedulePaymentTransaction EscrowOther3Due
     /// </summary>
-    public decimal? EscrowOther2Due { get => _escrowOther2Due; set => SetField(ref _escrowOther2Due, value); }
+    public decimal? EscrowOther3Due { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract EscrowOther3Due
+    /// SchedulePaymentTransaction EscrowTaxDue
     /// </summary>
-    public decimal? EscrowOther3Due { get => _escrowOther3Due; set => SetField(ref _escrowOther3Due, value); }
+    public decimal? EscrowTaxDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract EscrowTaxDue
+    /// SchedulePaymentTransaction EscrowUsdaMonthlyPremiumDue
     /// </summary>
-    public decimal? EscrowTaxDue { get => _escrowTaxDue; set => SetField(ref _escrowTaxDue, value); }
+    public decimal? EscrowUsdaMonthlyPremiumDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract EscrowUsdaMonthlyPremiumDue
+    /// SchedulePaymentTransaction FloodInsurance
     /// </summary>
-    public decimal? EscrowUsdaMonthlyPremiumDue { get => _escrowUsdaMonthlyPremiumDue; set => SetField(ref _escrowUsdaMonthlyPremiumDue, value); }
+    public decimal? FloodInsurance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract FloodInsurance
+    /// SchedulePaymentTransaction Guid
     /// </summary>
-    public decimal? FloodInsurance { get => _floodInsurance; set => SetField(ref _floodInsurance, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract Guid
+    /// SchedulePaymentTransaction HazardInsurance
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public decimal? HazardInsurance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract HazardInsurance
+    /// SchedulePaymentTransaction IndexRate
     /// </summary>
-    public decimal? HazardInsurance { get => _hazardInsurance; set => SetField(ref _hazardInsurance, value); }
+    public decimal? IndexRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract IndexRate
+    /// SchedulePaymentTransaction Interest
     /// </summary>
-    public decimal? IndexRate { get => _indexRate; set => SetField(ref _indexRate, value); }
+    public decimal? Interest { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract Interest
+    /// SchedulePaymentTransaction InterestDue
     /// </summary>
-    public decimal? Interest { get => _interest; set => SetField(ref _interest, value); }
+    public decimal? InterestDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract InterestDue
+    /// SchedulePaymentTransaction InterestRate
     /// </summary>
-    public decimal? InterestDue { get => _interestDue; set => SetField(ref _interestDue, value); }
+    public decimal? InterestRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract InterestRate
+    /// SchedulePaymentTransaction LateFee
     /// </summary>
-    public decimal? InterestRate { get => _interestRate; set => SetField(ref _interestRate, value); }
+    public decimal? LateFee { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract LateFee
+    /// SchedulePaymentTransaction LatePaymentDate
     /// </summary>
-    public decimal? LateFee { get => _lateFee; set => SetField(ref _lateFee, value); }
+    public DateTime? LatePaymentDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract LatePaymentDate
+    /// SchedulePaymentTransaction MiscFee
     /// </summary>
-    public DateTime? LatePaymentDate { get => _latePaymentDate; set => SetField(ref _latePaymentDate, value); }
+    public decimal? MiscFee { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract MiscFee
+    /// SchedulePaymentTransaction MiscFeeDue
     /// </summary>
-    public decimal? MiscFee { get => _miscFee; set => SetField(ref _miscFee, value); }
+    public decimal? MiscFeeDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract MiscFeeDue
+    /// SchedulePaymentTransaction ModifiedById
     /// </summary>
-    public decimal? MiscFeeDue { get => _miscFeeDue; set => SetField(ref _miscFeeDue, value); }
+    public string? ModifiedById { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract ModifiedById
+    /// SchedulePaymentTransaction ModifiedByName
     /// </summary>
-    public string? ModifiedById { get => _modifiedById; set => SetField(ref _modifiedById, value); }
+    public string? ModifiedByName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract ModifiedByName
+    /// SchedulePaymentTransaction ModifiedDateTime
     /// </summary>
-    public string? ModifiedByName { get => _modifiedByName; set => SetField(ref _modifiedByName, value); }
+    public DateTime? ModifiedDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract ModifiedDateTime
+    /// SchedulePaymentTransaction MortgageInsurance
     /// </summary>
-    public DateTime? ModifiedDateTime { get => _modifiedDateTime; set => SetField(ref _modifiedDateTime, value); }
+    public decimal? MortgageInsurance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract MortgageInsurance
+    /// SchedulePaymentTransaction Other1Escrow
     /// </summary>
-    public decimal? MortgageInsurance { get => _mortgageInsurance; set => SetField(ref _mortgageInsurance, value); }
+    public decimal? Other1Escrow { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract Other1Escrow
+    /// SchedulePaymentTransaction Other2Escrow
     /// </summary>
-    public decimal? Other1Escrow { get => _other1Escrow; set => SetField(ref _other1Escrow, value); }
+    public decimal? Other2Escrow { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract Other2Escrow
+    /// SchedulePaymentTransaction Other3Escrow
     /// </summary>
-    public decimal? Other2Escrow { get => _other2Escrow; set => SetField(ref _other2Escrow, value); }
+    public decimal? Other3Escrow { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract Other3Escrow
+    /// SchedulePaymentTransaction PaymentNumber
     /// </summary>
-    public decimal? Other3Escrow { get => _other3Escrow; set => SetField(ref _other3Escrow, value); }
+    public int? PaymentNumber { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract PaymentNumber
+    /// SchedulePaymentTransaction PaymentReceiveDate
     /// </summary>
-    public int? PaymentNumber { get => _paymentNumber; set => SetField(ref _paymentNumber, value); }
+    public DateTime? PaymentReceiveDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract PaymentReceiveDate
+    /// SchedulePaymentTransaction Principal
     /// </summary>
-    public DateTime? PaymentReceiveDate { get => _paymentReceiveDate; set => SetField(ref _paymentReceiveDate, value); }
+    public decimal? Principal { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract Principal
+    /// SchedulePaymentTransaction PrincipalDue
     /// </summary>
-    public decimal? Principal { get => _principal; set => SetField(ref _principal, value); }
+    public decimal? PrincipalDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract PrincipalDue
+    /// SchedulePaymentTransaction ServicingPaymentMethod
     /// </summary>
-    public decimal? PrincipalDue { get => _principalDue; set => SetField(ref _principalDue, value); }
+    public string? ServicingPaymentMethod { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract ServicingPaymentMethod
+    /// SchedulePaymentTransaction ServicingTransactionType
     /// </summary>
-    public string? ServicingPaymentMethod { get => _servicingPaymentMethod; set => SetField(ref _servicingPaymentMethod, value); }
+    public string? ServicingTransactionType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract ServicingTransactionType
+    /// SchedulePaymentTransaction Taxes
     /// </summary>
-    public string? ServicingTransactionType { get => _servicingTransactionType; set => SetField(ref _servicingTransactionType, value); }
+    public decimal? Taxes { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract Taxes
+    /// SchedulePaymentTransaction TotalPastDue
     /// </summary>
-    public decimal? Taxes { get => _taxes; set => SetField(ref _taxes, value); }
+    public decimal? TotalPastDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract TotalPastDue
+    /// SchedulePaymentTransaction TransactionAmount
     /// </summary>
-    public decimal? TotalPastDue { get => _totalPastDue; set => SetField(ref _totalPastDue, value); }
+    public decimal? TransactionAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract TransactionAmount
+    /// SchedulePaymentTransaction TransactionDate
     /// </summary>
-    public decimal? TransactionAmount { get => _transactionAmount; set => SetField(ref _transactionAmount, value); }
+    public DateTime? TransactionDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract TransactionDate
+    /// SchedulePaymentTransaction UnpaidLateFeeDue
     /// </summary>
-    public DateTime? TransactionDate { get => _transactionDate; set => SetField(ref _transactionDate, value); }
+    public decimal? UnpaidLateFeeDue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SchedulePaymentTransactionContract UnpaidLateFeeDue
+    /// SchedulePaymentTransaction UsdaMonthlyPremium
     /// </summary>
-    public decimal? UnpaidLateFeeDue { get => _unpaidLateFeeDue; set => SetField(ref _unpaidLateFeeDue, value); }
-
-    /// <summary>
-    /// SchedulePaymentTransactionContract UsdaMonthlyPremium
-    /// </summary>
-    public decimal? UsdaMonthlyPremium { get => _usdaMonthlyPremium; set => SetField(ref _usdaMonthlyPremium, value); }
+    public decimal? UsdaMonthlyPremium { get => GetValue<decimal?>(); set => SetValue(value); }
 }

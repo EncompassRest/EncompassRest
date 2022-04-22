@@ -7,12 +7,10 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class AccessRights : DirtyExtensibleObject
     {
-        private MobileAccessRights? _mobileAccess;
-
         /// <summary>
         /// AccessRights MobileAccess
         /// </summary>
         [AllowNull]
-        public MobileAccessRights MobileAccess { get => GetField(ref _mobileAccess); set => SetField(ref _mobileAccess, value); }
+        public MobileAccessRights MobileAccess { get => GetEntity<MobileAccessRights>(); set => SetEntity(value); }
     }
 }

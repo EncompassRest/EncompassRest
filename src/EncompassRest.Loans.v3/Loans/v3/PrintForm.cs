@@ -5,10 +5,8 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class PrintForm : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _name;
-
     /// <summary>
-    /// PrintFormContract Name
+    /// PrintForm Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 }

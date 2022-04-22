@@ -10,61 +10,51 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class DocumentOrder : DirtyExtensibleObject, IIdentifiable
 {
-    private EntityReference? _createdBy;
-    private DirtyValue<DateTime?>? _createdDate;
-    private DocumentAudit? _documentAudit;
-    private DirtyValue<object?>? _documentFields;
-    private DirtyList<OrderedDocument>? _documents;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<DateTime?>? _lastModifiedDate;
-    private DirtyValue<string?>? _orderId;
-    private DirtyValue<StringEnumValue<OrderType>>? _orderType;
-
     /// <summary>
-    /// DocumentOrderContract CreatedBy
+    /// DocumentOrder CreatedBy
     /// </summary>
     [AllowNull]
-    public EntityReference CreatedBy { get => GetField(ref _createdBy); set => SetField(ref _createdBy, value); }
+    public EntityReference CreatedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DocumentOrderContract CreatedDate
+    /// DocumentOrder CreatedDate
     /// </summary>
-    public DateTime? CreatedDate { get => _createdDate; set => SetField(ref _createdDate, value); }
+    public DateTime? CreatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentOrderContract DocumentAudit
-    /// </summary>
-    [AllowNull]
-    public DocumentAudit DocumentAudit { get => GetField(ref _documentAudit); set => SetField(ref _documentAudit, value); }
-
-    /// <summary>
-    /// DocumentOrderContract DocumentFields
-    /// </summary>
-    public object? DocumentFields { get => _documentFields; set => SetField(ref _documentFields, value); }
-
-    /// <summary>
-    /// DocumentOrderContract Documents
+    /// DocumentOrder DocumentAudit
     /// </summary>
     [AllowNull]
-    public IList<OrderedDocument> Documents { get => GetField(ref _documents); set => SetField(ref _documents, value); }
+    public DocumentAudit DocumentAudit { get => GetEntity<DocumentAudit>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DocumentOrderContract Id
+    /// DocumentOrder DocumentFields
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public object? DocumentFields { get => GetValue<object?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentOrderContract LastModifiedDate
+    /// DocumentOrder Documents
     /// </summary>
-    public DateTime? LastModifiedDate { get => _lastModifiedDate; set => SetField(ref _lastModifiedDate, value); }
+    [AllowNull]
+    public IList<OrderedDocument> Documents { get => GetList<OrderedDocument>(); set => SetList(value); }
 
     /// <summary>
-    /// DocumentOrderContract OrderId
+    /// DocumentOrder Id
     /// </summary>
-    public string? OrderId { get => _orderId; set => SetField(ref _orderId, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentOrderContract OrderType
+    /// DocumentOrder LastModifiedDate
     /// </summary>
-    public StringEnumValue<OrderType> OrderType { get => _orderType; set => SetField(ref _orderType, value); }
+    public DateTime? LastModifiedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// DocumentOrder OrderId
+    /// </summary>
+    public string? OrderId { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// DocumentOrder OrderType
+    /// </summary>
+    public StringEnumValue<OrderType> OrderType { get => GetValue<StringEnumValue<OrderType>>(); set => SetValue(value); }
 }

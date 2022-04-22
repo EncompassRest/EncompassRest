@@ -62,7 +62,7 @@ namespace EncompassRest.Settings.Loan.v1
         {
         }
 
-        public Task<List<CustomFieldDefinition>> GetCustomFieldsAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<CustomFieldDefinition>(null, null, nameof(GetCustomFieldsAsync), null, cancellationToken);
+        public Task<List<CustomFieldDefinition>> GetCustomFieldsAsync(CancellationToken cancellationToken = default) => GetListAsync<CustomFieldDefinition>(null, null, nameof(GetCustomFieldsAsync), null, cancellationToken);
 
         public Task<string> GetCustomFieldsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetCustomFieldsRawAsync), null, cancellationToken);
 
@@ -70,7 +70,7 @@ namespace EncompassRest.Settings.Loan.v1
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            return GetDirtyAsync<CustomFieldDefinition>(fieldId, null, nameof(GetCustomFieldAsync), fieldId, cancellationToken);
+            return GetAsync<CustomFieldDefinition>(fieldId, null, nameof(GetCustomFieldAsync), fieldId, cancellationToken);
         }
 
         public Task<string> GetCustomFieldRawAsync(string fieldId, string? queryString = null, CancellationToken cancellationToken = default)

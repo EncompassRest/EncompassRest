@@ -6,88 +6,73 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class Hud1EsDate : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _aggrMthDisb;
-    private DirtyValue<decimal?>? _annualFee;
-    private DirtyValue<decimal?>? _balance;
-    private DirtyValue<string?>? _date;
-    private DirtyValue<decimal?>? _floodInsDisb;
-    private DirtyValue<decimal?>? _hazInsDisb;
-    private DirtyValue<int?>? _hud1EsDateIndex;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<decimal?>? _mtgInsDisb;
-    private DirtyValue<decimal?>? _schoolTaxes;
-    private DirtyValue<decimal?>? _taxDisb;
-    private DirtyValue<decimal?>? _userDefined1;
-    private DirtyValue<decimal?>? _userDefined2;
-    private DirtyValue<decimal?>? _userDefined3;
-
     /// <summary>
     /// Escrow Aggr Mthd Disb [HUDNN10]
     /// </summary>
-    public decimal? AggrMthDisb { get => _aggrMthDisb; set => SetField(ref _aggrMthDisb, value); }
+    public decimal? AggrMthDisb { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow Annual Fee [HUDNN60]
     /// </summary>
-    public decimal? AnnualFee { get => _annualFee; set => SetField(ref _annualFee, value); }
+    public decimal? AnnualFee { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow Date Balance [HUDNN11]
     /// </summary>
-    public decimal? Balance { get => _balance; set => SetField(ref _balance, value); }
+    public decimal? Balance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow Payment Date [HUDNN01]
     /// </summary>
-    public string? Date { get => _date; set => SetField(ref _date, value); }
+    public string? Date { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow Flood Ins Disb [HUDNN05]
     /// </summary>
-    public decimal? FloodInsDisb { get => _floodInsDisb; set => SetField(ref _floodInsDisb, value); }
+    public decimal? FloodInsDisb { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow Haz Ins Disb [HUDNN03]
     /// </summary>
-    public decimal? HazInsDisb { get => _hazInsDisb; set => SetField(ref _hazInsDisb, value); }
+    public decimal? HazInsDisb { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Hud1EsDate Hud1EsDateIndex
     /// </summary>
-    public int? Hud1EsDateIndex { get => _hud1EsDateIndex; set => SetField(ref _hud1EsDateIndex, value); }
+    public int? Hud1EsDateIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Hud1EsDate Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow Mtg Ins Disb [HUDNN04]
     /// </summary>
-    public decimal? MtgInsDisb { get => _mtgInsDisb; set => SetField(ref _mtgInsDisb, value); }
+    public decimal? MtgInsDisb { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow City Taxes [HUDNN06]
     /// </summary>
-    public decimal? SchoolTaxes { get => _schoolTaxes; set => SetField(ref _schoolTaxes, value); }
+    public decimal? SchoolTaxes { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow Tax Disb [HUDNN02]
     /// </summary>
-    public decimal? TaxDisb { get => _taxDisb; set => SetField(ref _taxDisb, value); }
+    public decimal? TaxDisb { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow User Defined 1 [HUDNN07]
     /// </summary>
-    public decimal? UserDefined1 { get => _userDefined1; set => SetField(ref _userDefined1, value); }
+    public decimal? UserDefined1 { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow User Defined 2 [HUDNN08]
     /// </summary>
-    public decimal? UserDefined2 { get => _userDefined2; set => SetField(ref _userDefined2, value); }
+    public decimal? UserDefined2 { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Escrow User Defined 3 [HUDNN09]
     /// </summary>
-    public decimal? UserDefined3 { get => _userDefined3; set => SetField(ref _userDefined3, value); }
+    public decimal? UserDefined3 { get => GetValue<decimal?>(); set => SetValue(value); }
 }

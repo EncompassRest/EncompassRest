@@ -8,12 +8,10 @@ namespace EncompassRest.Settings.Personas.v1
     /// </summary>
     public sealed class GrantWriteAccessRights : PersonaAccess
     {
-        private DirtyList<LoanTeamMemberRights>? _loanTeam;
-
         /// <summary>
         /// GrantWriteAccessRights LoanTeam
         /// </summary>
         [AllowNull]
-        public IList<LoanTeamMemberRights> LoanTeam { get => GetField(ref _loanTeam); set => SetField(ref _loanTeam, value); }
+        public IList<LoanTeamMemberRights> LoanTeam { get => GetList<LoanTeamMemberRights>(); set => SetList(value); }
     }
 }

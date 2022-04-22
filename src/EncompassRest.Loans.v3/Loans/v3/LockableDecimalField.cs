@@ -6,22 +6,18 @@ namespace EncompassRest.Loans.v3;
 [Entity(PropertiesToAlwaysSerialize = nameof(UseUserValue))]
 public sealed partial class LockableDecimalField : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _computedValue;
-    private DirtyValue<decimal?>? _userValue;
-    private DirtyValue<bool?>? _useUserValue;
+    /// <summary>
+    /// LockableDecimalField ComputedValue
+    /// </summary>
+    public decimal? ComputedValue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockableDecimalFieldContract ComputedValue
+    /// LockableDecimalField UserValue
     /// </summary>
-    public decimal? ComputedValue { get => _computedValue; set => SetField(ref _computedValue, value); }
+    public decimal? UserValue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockableDecimalFieldContract UserValue
+    /// LockableDecimalField UseUserValue
     /// </summary>
-    public decimal? UserValue { get => _userValue; set => SetField(ref _userValue, value); }
-
-    /// <summary>
-    /// LockableDecimalFieldContract UseUserValue
-    /// </summary>
-    public bool? UseUserValue { get => _useUserValue; set => SetField(ref _useUserValue, value); }
+    public bool? UseUserValue { get => GetValue<bool?>(); set => SetValue(value); }
 }

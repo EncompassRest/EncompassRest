@@ -5,64 +5,53 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class MilestoneTaskContact : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _address;
-    private DirtyValue<string?>? _city;
-    private DirtyValue<string?>? _contactId;
-    private DirtyValue<string?>? _email;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<string?>? _name;
-    private DirtyValue<string?>? _phone;
-    private DirtyValue<string?>? _role;
-    private DirtyValue<StringEnumValue<State>>? _state;
-    private DirtyValue<string?>? _zip;
+    /// <summary>
+    /// MilestoneTaskContact Address
+    /// </summary>
+    public string? Address { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContactContract Address
+    /// MilestoneTaskContact City
     /// </summary>
-    public string? Address { get => _address; set => SetField(ref _address, value); }
+    public string? City { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContactContract City
+    /// MilestoneTaskContact ContactId
     /// </summary>
-    public string? City { get => _city; set => SetField(ref _city, value); }
+    public string? ContactId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContactContract ContactId
+    /// MilestoneTaskContact Email
     /// </summary>
-    public string? ContactId { get => _contactId; set => SetField(ref _contactId, value); }
+    public string? Email { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContactContract Email
+    /// MilestoneTaskContact Guid
     /// </summary>
-    public string? Email { get => _email; set => SetField(ref _email, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContactContract Guid
+    /// MilestoneTaskContact Name
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContactContract Name
+    /// MilestoneTaskContact Phone
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Phone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContactContract Phone
+    /// MilestoneTaskContact Role
     /// </summary>
-    public string? Phone { get => _phone; set => SetField(ref _phone, value); }
+    public string? Role { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContactContract Role
+    /// MilestoneTaskContact State
     /// </summary>
-    public string? Role { get => _role; set => SetField(ref _role, value); }
+    public StringEnumValue<State> State { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContactContract State
+    /// MilestoneTaskContact Zip
     /// </summary>
-    public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
-
-    /// <summary>
-    /// MilestoneTaskContactContract Zip
-    /// </summary>
-    public string? Zip { get => _zip; set => SetField(ref _zip, value); }
+    public string? Zip { get => GetValue<string?>(); set => SetValue(value); }
 }

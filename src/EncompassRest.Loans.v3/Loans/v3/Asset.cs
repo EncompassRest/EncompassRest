@@ -7,58 +7,48 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class Asset : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _accountIdentifier;
-    private DirtyValue<StringEnumValue<AssetType>>? _assetType;
-    private DirtyValue<int?>? _assetTypeIndex;
-    private DirtyValue<decimal?>? _cashOrMarketValueAmount;
-    private DirtyValue<string?>? _country;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<bool?>? _foreignAddressIndicator;
-    private DirtyValue<string?>? _holderName;
-    private DirtyValue<decimal?>? _lifeInsuranceFaceValueAmount;
+    /// <summary>
+    /// Asset AccountIdentifier [182], [1715]
+    /// </summary>
+    public string? AccountIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AssetContract AccountIdentifier [182], [1715]
+    /// Asset AssetType
     /// </summary>
-    public string? AccountIdentifier { get => _accountIdentifier; set => SetField(ref _accountIdentifier, value); }
+    public StringEnumValue<AssetType> AssetType { get => GetValue<StringEnumValue<AssetType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// AssetContract AssetType
+    /// Asset AssetTypeIndex
     /// </summary>
-    public StringEnumValue<AssetType> AssetType { get => _assetType; set => SetField(ref _assetType, value); }
+    public int? AssetTypeIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AssetContract AssetTypeIndex
+    /// Asset CashOrMarketValueAmount
     /// </summary>
-    public int? AssetTypeIndex { get => _assetTypeIndex; set => SetField(ref _assetTypeIndex, value); }
+    public decimal? CashOrMarketValueAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AssetContract CashOrMarketValueAmount
+    /// Asset Country
     /// </summary>
-    public decimal? CashOrMarketValueAmount { get => _cashOrMarketValueAmount; set => SetField(ref _cashOrMarketValueAmount, value); }
+    public string? Country { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AssetContract Country
+    /// Asset Description
     /// </summary>
-    public string? Country { get => _country; set => SetField(ref _country, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AssetContract Description
+    /// Asset ForeignAddressIndicator
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public bool? ForeignAddressIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AssetContract ForeignAddressIndicator
+    /// Asset HolderName
     /// </summary>
-    public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
-
-    /// <summary>
-    /// AssetContract HolderName
-    /// </summary>
-    public string? HolderName { get => _holderName; set => SetField(ref _holderName, value); }
+    public string? HolderName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Assets Life Ins Face Amt [303]
     /// </summary>
-    public decimal? LifeInsuranceFaceValueAmount { get => _lifeInsuranceFaceValueAmount; set => SetField(ref _lifeInsuranceFaceValueAmount, value); }
+    public decimal? LifeInsuranceFaceValueAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 }

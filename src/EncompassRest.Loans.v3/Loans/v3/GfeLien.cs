@@ -7,34 +7,28 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class GfeLien : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _amountOwing;
-    private DirtyValue<int?>? _gfeLienIndex;
-    private DirtyValue<StringEnumValue<GfeLienType>>? _gfeLienType;
-    private DirtyValue<string?>? _holderName;
-    private DirtyValue<string?>? _priority;
+    /// <summary>
+    /// GfeLien AmountOwing
+    /// </summary>
+    public decimal? AmountOwing { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfeLienContract AmountOwing
+    /// GfeLien GfeLienIndex
     /// </summary>
-    public decimal? AmountOwing { get => _amountOwing; set => SetField(ref _amountOwing, value); }
+    public int? GfeLienIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfeLienContract GfeLienIndex
+    /// GfeLien GfeLienType
     /// </summary>
-    public int? GfeLienIndex { get => _gfeLienIndex; set => SetField(ref _gfeLienIndex, value); }
+    public StringEnumValue<GfeLienType> GfeLienType { get => GetValue<StringEnumValue<GfeLienType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfeLienContract GfeLienType
+    /// GfeLien HolderName
     /// </summary>
-    public StringEnumValue<GfeLienType> GfeLienType { get => _gfeLienType; set => SetField(ref _gfeLienType, value); }
+    public string? HolderName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfeLienContract HolderName
+    /// GfeLien Priority
     /// </summary>
-    public string? HolderName { get => _holderName; set => SetField(ref _holderName, value); }
-
-    /// <summary>
-    /// GfeLienContract Priority
-    /// </summary>
-    public string? Priority { get => _priority; set => SetField(ref _priority, value); }
+    public string? Priority { get => GetValue<string?>(); set => SetValue(value); }
 }

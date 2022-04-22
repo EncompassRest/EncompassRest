@@ -5,22 +5,18 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class FieldLockData : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<bool?>? _lockRemoved;
-    internal DirtyValue<string?>? _modelPath;
-    private DirtyValue<string?>? _value;
-
     /// <summary>
     /// FieldLockData LockRemoved
     /// </summary>
-    public bool? LockRemoved { get => _lockRemoved; set => SetField(ref _lockRemoved, value); }
+    public bool? LockRemoved { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// FieldLockData ModelPath
     /// </summary>
-    public string? ModelPath { get => _modelPath; set => SetField(ref _modelPath, value); }
+    public string? ModelPath { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// FieldLockData Value
     /// </summary>
-    public string? Value { get => _value; set => SetField(ref _value, value); }
+    public string? Value { get => GetValue<string?>(); set => SetValue(value); }
 }

@@ -5,16 +5,13 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class Form : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<int?>? _formId;
-    private DirtyValue<string?>? _name;
+    /// <summary>
+    /// Form FormId
+    /// </summary>
+    public int? FormId { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FormContract FormId
+    /// Form Name
     /// </summary>
-    public int? FormId { get => _formId; set => SetField(ref _formId, value); }
-
-    /// <summary>
-    /// FormContract Name
-    /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 }

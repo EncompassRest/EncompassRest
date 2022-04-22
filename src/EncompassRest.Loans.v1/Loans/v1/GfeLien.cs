@@ -8,40 +8,33 @@ namespace EncompassRest.Loans.v1;
 [Entity(PropertiesToAlwaysSerialize = nameof(GfeLienIndex) + "," + nameof(GfeLienType))]
 public sealed partial class GfeLien : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _amountOwing;
-    private DirtyValue<int?>? _gfeLienIndex;
-    private DirtyValue<StringEnumValue<GfeLienType>>? _gfeLienType;
-    private DirtyValue<string?>? _holderName;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _priority;
-
     /// <summary>
     /// GfeLien AmountOwing
     /// </summary>
-    public decimal? AmountOwing { get => _amountOwing; set => SetField(ref _amountOwing, value); }
+    public decimal? AmountOwing { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// GfeLien GfeLienIndex
     /// </summary>
-    public int? GfeLienIndex { get => _gfeLienIndex; set => SetField(ref _gfeLienIndex, value); }
+    public int? GfeLienIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// GfeLien GfeLienType
     /// </summary>
-    public StringEnumValue<GfeLienType> GfeLienType { get => _gfeLienType; set => SetField(ref _gfeLienType, value); }
+    public StringEnumValue<GfeLienType> GfeLienType { get => GetValue<StringEnumValue<GfeLienType>>(); set => SetValue(value); }
 
     /// <summary>
     /// GfeLien HolderName
     /// </summary>
-    public string? HolderName { get => _holderName; set => SetField(ref _holderName, value); }
+    public string? HolderName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// GfeLien Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// GfeLien Priority
     /// </summary>
-    public string? Priority { get => _priority; set => SetField(ref _priority, value); }
+    public string? Priority { get => GetValue<string?>(); set => SetValue(value); }
 }

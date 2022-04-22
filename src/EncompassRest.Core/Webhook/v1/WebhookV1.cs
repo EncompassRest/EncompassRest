@@ -211,7 +211,7 @@ namespace EncompassRest.Webhook.v1
                 queryParameters.Add("events", string.Join(",", events));
             }
 
-            return GetDirtyListAsync<WebhookSubscription>("subscriptions", queryParameters.ToString(), nameof(GetSubscriptionsAsync), null, cancellationToken);
+            return GetListAsync<WebhookSubscription>("subscriptions", queryParameters.ToString(), nameof(GetSubscriptionsAsync), null, cancellationToken);
         }
 
         public Task<string> GetSubscriptionsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("subscriptions", queryString, nameof(GetSubscriptionsRawAsync), null, cancellationToken);
@@ -220,7 +220,7 @@ namespace EncompassRest.Webhook.v1
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
-            return GetDirtyAsync<WebhookSubscription>($"subscriptions/{subscriptionId}", null, nameof(GetSubscriptionAsync), subscriptionId, cancellationToken);
+            return GetAsync<WebhookSubscription>($"subscriptions/{subscriptionId}", null, nameof(GetSubscriptionAsync), subscriptionId, cancellationToken);
         }
 
         public Task<string> GetSubscriptionRawAsync(string subscriptionId, string? queryString = null, CancellationToken cancellationToken = default)

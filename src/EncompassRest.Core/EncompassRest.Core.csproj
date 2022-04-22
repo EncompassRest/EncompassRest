@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.1;net46;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;net46</TargetFrameworks>
     <Version>2.0.0.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/EncompassRest/EncompassRest</PackageProjectUrl>
@@ -29,7 +29,7 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net46'">
     <Reference Include="System.Net.Http" />
     <Reference Include="System.IO.Compression" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2">
@@ -40,30 +40,18 @@
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.1'">
     <AssemblyTitle>EncompassRest .NET Standard 2.1</AssemblyTitle>
-    <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE;NULLABLE_ATTRIBUTES;KEYVALUEPAIR_CREATE;IASYNC_DISPOSABLE</DefineConstants>
+    <DefineConstants>NULLABLE_ATTRIBUTES;KEYVALUEPAIR_CREATE;IASYNC_DISPOSABLE</DefineConstants>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <AssemblyTitle>EncompassRest .NET Standard 2.0</AssemblyTitle>
-    <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
-    <NoWarn>CS8604;CS8777</NoWarn>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
-    <AssemblyTitle>EncompassRest .NET Standard 1.1</AssemblyTitle>
     <DefineConstants></DefineConstants>
-    <NoWarn>CS8604;CS8777</NoWarn>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
-    <AssemblyTitle>EncompassRest .NET 4.5</AssemblyTitle>
-    <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
     <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
     <AssemblyTitle>EncompassRest .NET 4.6</AssemblyTitle>
-    <DefineConstants>STRING_GENERIC_IENUMERABLE;ICLONEABLE</DefineConstants>
+    <DefineConstants></DefineConstants>
     <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>
 </Project>

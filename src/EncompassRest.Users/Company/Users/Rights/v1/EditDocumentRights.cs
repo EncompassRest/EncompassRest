@@ -8,99 +8,83 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class EditDocumentRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _addComment;
-        private AddNotesToFileRights? _addNotesToFile;
-        private DirtyValue<bool?>? _attachEncompassForms;
-        private DirtyValue<bool?>? _attachUnassignedFiles;
-        private DirtyValue<bool?>? _browseAndAttach;
-        private DirtyValue<bool?>? _deleteComment;
-        private EditDocumentDetailsRights? _editDocumentDetails;
-        private EditFileRights? _editFile;
-        private DirtyValue<bool?>? _markFileAsCurrentVersion;
-        private DirtyValue<bool?>? _markStatusAsReviewed;
-        private DirtyValue<bool?>? _mergeFiles;
-        private DirtyValue<bool?>? _moveFileUpDown;
-        private DirtyValue<bool?>? _removeFilefromDocument;
-        private DirtyValue<bool?>? _scanAndAttach;
-        private DirtyValue<bool?>? _splitFile;
-
         /// <summary>
         /// EditDocumentRights AddComment
         /// </summary>
-        public bool? AddComment { get => _addComment; set => SetField(ref _addComment, value); }
+        public bool? AddComment { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights AddNotesToFile
         /// </summary>
         [AllowNull]
-        public AddNotesToFileRights AddNotesToFile { get => GetField(ref _addNotesToFile); set => SetField(ref _addNotesToFile, value); }
+        public AddNotesToFileRights AddNotesToFile { get => GetEntity<AddNotesToFileRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// EditDocumentRights AttachEncompassForms
         /// </summary>
-        public bool? AttachEncompassForms { get => _attachEncompassForms; set => SetField(ref _attachEncompassForms, value); }
+        public bool? AttachEncompassForms { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights AttachUnassignedFiles
         /// </summary>
-        public bool? AttachUnassignedFiles { get => _attachUnassignedFiles; set => SetField(ref _attachUnassignedFiles, value); }
+        public bool? AttachUnassignedFiles { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights BrowseAndAttach
         /// </summary>
-        public bool? BrowseAndAttach { get => _browseAndAttach; set => SetField(ref _browseAndAttach, value); }
+        public bool? BrowseAndAttach { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights DeleteComment
         /// </summary>
-        public bool? DeleteComment { get => _deleteComment; set => SetField(ref _deleteComment, value); }
+        public bool? DeleteComment { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights EditDocumentDetails
         /// </summary>
         [AllowNull]
-        public EditDocumentDetailsRights EditDocumentDetails { get => GetField(ref _editDocumentDetails); set => SetField(ref _editDocumentDetails, value); }
+        public EditDocumentDetailsRights EditDocumentDetails { get => GetEntity<EditDocumentDetailsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// EditDocumentRights EditFile
         /// </summary>
         [AllowNull]
-        public EditFileRights EditFile { get => GetField(ref _editFile); set => SetField(ref _editFile, value); }
+        public EditFileRights EditFile { get => GetEntity<EditFileRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// EditDocumentRights MarkFileAsCurrentVersion
         /// </summary>
-        public bool? MarkFileAsCurrentVersion { get => _markFileAsCurrentVersion; set => SetField(ref _markFileAsCurrentVersion, value); }
+        public bool? MarkFileAsCurrentVersion { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights MarkStatusAsReviewed
         /// </summary>
-        public bool? MarkStatusAsReviewed { get => _markStatusAsReviewed; set => SetField(ref _markStatusAsReviewed, value); }
+        public bool? MarkStatusAsReviewed { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights MergeFiles
         /// </summary>
-        public bool? MergeFiles { get => _mergeFiles; set => SetField(ref _mergeFiles, value); }
+        public bool? MergeFiles { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights MoveFileUpDown
         /// </summary>
         [JsonProperty("moveFileUp/Down")]
-        public bool? MoveFileUpDown { get => _moveFileUpDown; set => SetField(ref _moveFileUpDown, value); }
+        public bool? MoveFileUpDown { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights RemoveFilefromDocument
         /// </summary>
-        public bool? RemoveFilefromDocument { get => _removeFilefromDocument; set => SetField(ref _removeFilefromDocument, value); }
+        public bool? RemoveFilefromDocument { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights ScanAndAttach
         /// </summary>
-        public bool? ScanAndAttach { get => _scanAndAttach; set => SetField(ref _scanAndAttach, value); }
+        public bool? ScanAndAttach { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EditDocumentRights SplitFile
         /// </summary>
-        public bool? SplitFile { get => _splitFile; set => SetField(ref _splitFile, value); }
+        public bool? SplitFile { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

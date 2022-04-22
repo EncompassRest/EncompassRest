@@ -5,29 +5,24 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class DynamicDataManagementRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _dataTables;
-        private DirtyValue<bool?>? _feeRules;
-        private DirtyValue<bool?>? _fieldRules;
-        private DirtyValue<bool?>? _globalDDMSettings;
-
         /// <summary>
         /// DynamicDataManagementRights DataTables
         /// </summary>
-        public bool? DataTables { get => _dataTables; set => SetField(ref _dataTables, value); }
+        public bool? DataTables { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// DynamicDataManagementRights FeeRules
         /// </summary>
-        public bool? FeeRules { get => _feeRules; set => SetField(ref _feeRules, value); }
+        public bool? FeeRules { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// DynamicDataManagementRights FieldRules
         /// </summary>
-        public bool? FieldRules { get => _fieldRules; set => SetField(ref _fieldRules, value); }
+        public bool? FieldRules { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// DynamicDataManagementRights GlobalDDMSettings
         /// </summary>
-        public bool? GlobalDDMSettings { get => _globalDDMSettings; set => SetField(ref _globalDDMSettings, value); }
+        public bool? GlobalDDMSettings { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

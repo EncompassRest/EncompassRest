@@ -7,35 +7,29 @@ namespace EncompassRest.Company.Users.v1
     /// </summary>
     public sealed class UserLicenseDetail : DirtyExtensibleObject
     {
-        private DirtyValue<StringEnumValue<State>>? _state;
-        private DirtyValue<bool>? _enabled;
-        private DirtyValue<string?>? _license;
-        private DirtyValue<DateTime?>? _expirationDate;
-        private DirtyValue<DateTime?>? _issueDate;
-
         /// <summary>
         /// UserLicenseDetail State
         /// </summary>
-        public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
+        public StringEnumValue<State> State { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
         /// <summary>
         /// UserLicenseDetail Enabled
         /// </summary>
-        public bool Enabled { get => _enabled; set => SetField(ref _enabled, value); }
+        public bool Enabled { get => GetValue<bool>(); set => SetValue(value); }
 
         /// <summary>
         /// UserLicenseDetail License
         /// </summary>
-        public string? License { get => _license; set => SetField(ref _license, value); }
+        public string? License { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// UserLicenseDetail ExpirationDate
         /// </summary>
-        public DateTime? ExpirationDate { get => _expirationDate; set => SetField(ref _expirationDate, value); }
+        public DateTime? ExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// UserLicenseDetail IssueDate
         /// </summary>
-        public DateTime? IssueDate { get => _issueDate; set => SetField(ref _issueDate, value); }
+        public DateTime? IssueDate { get => GetValue<DateTime?>(); set => SetValue(value); }
     }
 }

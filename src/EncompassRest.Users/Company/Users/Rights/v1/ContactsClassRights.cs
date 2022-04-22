@@ -5,60 +5,50 @@
     /// </summary>
     public abstract class ContactsClassRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _accessToLoanstab;
-        private DirtyValue<bool?>? _createNewContacts;
-        private DirtyValue<bool?>? _deleteContacts;
-        private DirtyValue<bool?>? _duplicateContacts;
-        private DirtyValue<bool?>? _exportContacts;
-        private DirtyValue<bool?>? _importContacts;
-        private DirtyValue<bool?>? _mailMerge;
-        private DirtyValue<bool?>? _managePersonalCustomLetter;
-        private DirtyValue<bool?>? _print;
-
         /// <summary>
         /// ContactsClassRights AccessToLoanstab
         /// </summary>
-        public bool? AccessToLoanstab { get => _accessToLoanstab; set => SetField(ref _accessToLoanstab, value); }
+        public bool? AccessToLoanstab { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ContactsClassRights CreateNewContacts
         /// </summary>
-        public bool? CreateNewContacts { get => _createNewContacts; set => SetField(ref _createNewContacts, value); }
+        public bool? CreateNewContacts { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ContactsClassRights DeleteContacts
         /// </summary>
-        public bool? DeleteContacts { get => _deleteContacts; set => SetField(ref _deleteContacts, value); }
+        public bool? DeleteContacts { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ContactsClassRights DuplicateContacts
         /// </summary>
-        public bool? DuplicateContacts { get => _duplicateContacts; set => SetField(ref _duplicateContacts, value); }
+        public bool? DuplicateContacts { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ContactsClassRights ExportContacts
         /// </summary>
-        public bool? ExportContacts { get => _exportContacts; set => SetField(ref _exportContacts, value); }
+        public bool? ExportContacts { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ContactsClassRights ImportContacts
         /// </summary>
-        public bool? ImportContacts { get => _importContacts; set => SetField(ref _importContacts, value); }
+        public bool? ImportContacts { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ContactsClassRights MailMerge
         /// </summary>
-        public bool? MailMerge { get => _mailMerge; set => SetField(ref _mailMerge, value); }
+        public bool? MailMerge { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ContactsClassRights ManagePersonalCustomLetter
         /// </summary>
-        public bool? ManagePersonalCustomLetter { get => _managePersonalCustomLetter; set => SetField(ref _managePersonalCustomLetter, value); }
+        public bool? ManagePersonalCustomLetter { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ContactsClassRights Print
         /// </summary>
-        public bool? Print { get => _print; set => SetField(ref _print, value); }
+        public bool? Print { get => GetValue<bool?>(); set => SetValue(value); }
 
         internal ContactsClassRights()
         {

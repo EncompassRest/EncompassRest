@@ -9,55 +9,46 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class MilestoneHistoryLog : DirtyExtensibleObject, IIdentifiable
 {
-    private EntityReference? _addedBy;
-    private DirtyValue<DateTime?>? _addedDate;
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyValue<string?>? _changeReason;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _milestoneTemplate;
-
     /// <summary>
-    /// MilestoneHistoryLogContract AddedBy
+    /// MilestoneHistoryLog AddedBy
     /// </summary>
     [AllowNull]
-    public EntityReference AddedBy { get => GetField(ref _addedBy); set => SetField(ref _addedBy, value); }
+    public EntityReference AddedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// MilestoneHistoryLogContract AddedDate
+    /// MilestoneHistoryLog AddedDate
     /// </summary>
-    public DateTime? AddedDate { get => _addedDate; set => SetField(ref _addedDate, value); }
+    public DateTime? AddedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneHistoryLogContract Alerts
-    /// </summary>
-    [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
-
-    /// <summary>
-    /// MilestoneHistoryLogContract ChangeReason
-    /// </summary>
-    public string? ChangeReason { get => _changeReason; set => SetField(ref _changeReason, value); }
-
-    /// <summary>
-    /// MilestoneHistoryLogContract CommentList
+    /// MilestoneHistoryLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
-    /// MilestoneHistoryLogContract Comments
+    /// MilestoneHistoryLog ChangeReason
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? ChangeReason { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneHistoryLogContract Id
+    /// MilestoneHistoryLog CommentList
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    [AllowNull]
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
-    /// MilestoneHistoryLogContract MilestoneTemplate
+    /// MilestoneHistoryLog Comments
     /// </summary>
-    public string? MilestoneTemplate { get => _milestoneTemplate; set => SetField(ref _milestoneTemplate, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// MilestoneHistoryLog Id
+    /// </summary>
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// MilestoneHistoryLog MilestoneTemplate
+    /// </summary>
+    public string? MilestoneTemplate { get => GetValue<string?>(); set => SetValue(value); }
 }

@@ -5,28 +5,23 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class EnergyEfficientMortgageItem : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _actualAmount;
-    private DirtyValue<decimal?>? _allowedAmount;
-    private DirtyValue<string?>? _item;
-    private DirtyValue<int?>? _lineNumber;
+    /// <summary>
+    /// EnergyEfficientMortgageItem ActualAmount
+    /// </summary>
+    public decimal? ActualAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnergyEfficientMortgageItemContract ActualAmount
+    /// EnergyEfficientMortgageItem AllowedAmount
     /// </summary>
-    public decimal? ActualAmount { get => _actualAmount; set => SetField(ref _actualAmount, value); }
+    public decimal? AllowedAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnergyEfficientMortgageItemContract AllowedAmount
+    /// EnergyEfficientMortgageItem Item
     /// </summary>
-    public decimal? AllowedAmount { get => _allowedAmount; set => SetField(ref _allowedAmount, value); }
+    public string? Item { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnergyEfficientMortgageItemContract Item
+    /// EnergyEfficientMortgageItem LineNumber
     /// </summary>
-    public string? Item { get => _item; set => SetField(ref _item, value); }
-
-    /// <summary>
-    /// EnergyEfficientMortgageItemContract LineNumber
-    /// </summary>
-    public int? LineNumber { get => _lineNumber; set => SetField(ref _lineNumber, value); }
+    public int? LineNumber { get => GetValue<int?>(); set => SetValue(value); }
 }

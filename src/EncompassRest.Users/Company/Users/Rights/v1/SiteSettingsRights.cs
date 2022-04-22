@@ -7,26 +7,22 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class SiteSettingsRights : DirtyExtensibleObject
     {
-        private AccessToTPOTradeManagementRights? _accessToTPOTradeManagement;
-        private GeneralRights? _general;
-        private PipelineAndLoansRights? _pipelineAndLoans;
-
         /// <summary>
         /// SiteSettingsRights AccessToTPOTradeManagement
         /// </summary>
         [AllowNull]
-        public AccessToTPOTradeManagementRights AccessToTPOTradeManagement { get => GetField(ref _accessToTPOTradeManagement); set => SetField(ref _accessToTPOTradeManagement, value); }
+        public AccessToTPOTradeManagementRights AccessToTPOTradeManagement { get => GetEntity<AccessToTPOTradeManagementRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// SiteSettingsRights General
         /// </summary>
         [AllowNull]
-        public GeneralRights General { get => GetField(ref _general); set => SetField(ref _general, value); }
+        public GeneralRights General { get => GetEntity<GeneralRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// SiteSettingsRights PipelineAndLoans
         /// </summary>
         [AllowNull]
-        public PipelineAndLoansRights PipelineAndLoans { get => GetField(ref _pipelineAndLoans); set => SetField(ref _pipelineAndLoans, value); }
+        public PipelineAndLoansRights PipelineAndLoans { get => GetEntity<PipelineAndLoansRights>(); set => SetEntity(value); }
     }
 }

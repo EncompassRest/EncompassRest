@@ -14,105 +14,88 @@ namespace EncompassRest.Contacts.v1
     {
         private IContactNotes? _notes;
 
-        private DirtyValue<string?>? _firstName;
-        private DirtyValue<string?>? _lastName;
-        private DirtyValue<string?>? _ownerId;
-        private DirtyValue<ContactAccessLevel?>? _accessLevel;
-        private Address? _currentMailingAddress;
-        private DirtyValue<string?>? _businessWebUrl;
-        private DirtyValue<string?>? _jobTitle;
-        private DirtyValue<string?>? _workPhone;
-        private DirtyValue<string?>? _homePhone;
-        private DirtyValue<string?>? _mobilePhone;
-        private DirtyValue<string?>? _faxNumber;
-        private DirtyValue<string?>? _personalEmail;
-        private DirtyValue<string?>? _businessEmail;
-        private DirtyValue<string?>? _salutation;
-        private DirtyValue<string?>? _id;
-        private DirtyList<int?>? _groupIDs;
-
         /// <summary>
         /// The contact's first name.
         /// </summary>
-        public string? FirstName { get => _firstName; set => SetField(ref _firstName, value); }
+        public string? FirstName { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact's last name.
         /// </summary>
-        public string? LastName { get => _lastName; set => SetField(ref _lastName, value); }
+        public string? LastName { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// User ID of the user who submitted the API request.
         /// </summary>
-        public string? OwnerId { get => _ownerId; set => SetField(ref _ownerId, value); }
+        public string? OwnerId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Contact AccessLevel
         /// </summary>
         [EnumFormat(EnumFormat.DecimalValue)]
-        public ContactAccessLevel? AccessLevel { get => _accessLevel; set => SetField(ref _accessLevel, value); }
+        public ContactAccessLevel? AccessLevel { get => GetValue<ContactAccessLevel?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact's home address.
         /// </summary>
         [AllowNull]
-        public Address CurrentMailingAddress { get => GetField(ref _currentMailingAddress); set => SetField(ref _currentMailingAddress, value); }
+        public Address CurrentMailingAddress { get => GetEntity<Address>(); set => SetEntity(value); }
 
         /// <summary>
         /// Website address for the business.
         /// </summary>
-        public string? BusinessWebUrl { get => _businessWebUrl; set => SetField(ref _businessWebUrl, value); }
+        public string? BusinessWebUrl { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact's job title.
         /// </summary>
-        public string? JobTitle { get => _jobTitle; set => SetField(ref _jobTitle, value); }
+        public string? JobTitle { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact's work phone number.
         /// </summary>
-        public string? WorkPhone { get => _workPhone; set => SetField(ref _workPhone, value); }
+        public string? WorkPhone { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact's home phone number.
         /// </summary>
-        public string? HomePhone { get => _homePhone; set => SetField(ref _homePhone, value); }
+        public string? HomePhone { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact's cell phone number.
         /// </summary>
-        public string? MobilePhone { get => _mobilePhone; set => SetField(ref _mobilePhone, value); }
+        public string? MobilePhone { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact's fax number.
         /// </summary>
-        public string? FaxNumber { get => _faxNumber; set => SetField(ref _faxNumber, value); }
+        public string? FaxNumber { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact's personal email address.
         /// </summary>
-        public string? PersonalEmail { get => _personalEmail; set => SetField(ref _personalEmail, value); }
+        public string? PersonalEmail { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact's work email address.
         /// </summary>
-        public string? BusinessEmail { get => _businessEmail; set => SetField(ref _businessEmail, value); }
+        public string? BusinessEmail { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Contact Salutation
         /// </summary>
-        public string? Salutation { get => _salutation; set => SetField(ref _salutation, value); }
+        public string? Salutation { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contactId (or id) is the unique identifier of the contact.
         /// </summary>
-        public string? Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Contact GroupIDs
         /// </summary>
         [AllowNull]
-        public IList<int?> GroupIDs { get => GetField(ref _groupIDs); set => SetField(ref _groupIDs, value); }
+        public IList<int?> GroupIDs { get => GetList<int?>(); set => SetList(value); }
 
         /// <summary>
         /// The <see cref="EncompassRestClient"/> associated with this object.

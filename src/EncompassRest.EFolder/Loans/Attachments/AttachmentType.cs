@@ -1,4 +1,4 @@
-﻿namespace EncompassRest.Loans.Attachments.v1
+﻿namespace EncompassRest.Loans.Attachments
 {
     /// <summary>
     /// AttachmentType
@@ -16,6 +16,10 @@
         /// <summary>
         /// Background
         /// </summary>
-        Background = 2
+        Background = 2,
+        /// <summary>
+        /// Cloud
+        /// </summary>
+        Cloud = 3
     }
 }

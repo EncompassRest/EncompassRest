@@ -1,17 +1,13 @@
-﻿using Newtonsoft.Json;
-
-namespace EncompassRest.Company.Users.Rights.v1
+﻿namespace EncompassRest.Company.Users.Rights.v1
 {
     /// <summary>
     /// PostClosingConditionRights
     /// </summary>
     public sealed class PostClosingConditionRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _importConditions;
-
         /// <summary>
         /// PostClosingConditionRights ImportConditions
         /// </summary>
-        public bool? ImportConditions { get => _importConditions; set => SetField(ref _importConditions, value); }
+        public bool? ImportConditions { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

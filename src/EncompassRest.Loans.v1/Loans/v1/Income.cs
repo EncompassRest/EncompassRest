@@ -8,46 +8,38 @@ namespace EncompassRest.Loans.v1;
 [Entity(PropertiesToAlwaysSerialize = nameof(IncomeType) + "," + nameof(OtherIncomeIndex) + "," + nameof(Owner))]
 public sealed partial class Income : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _amount;
-    private DirtyValue<bool?>? _currentIndicator;
-    private DirtyValue<StringEnumValue<Description>>? _description;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<StringEnumValue<IncomeType>>? _incomeType;
-    private DirtyValue<int?>? _otherIncomeIndex;
-    private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>>? _owner;
-
     /// <summary>
     /// Income Amount
     /// </summary>
-    public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
+    public decimal? Amount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Income CurrentIndicator
     /// </summary>
-    public bool? CurrentIndicator { get => _currentIndicator; set => SetField(ref _currentIndicator, value); }
+    public bool? CurrentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Income Description
     /// </summary>
-    public StringEnumValue<Description> Description { get => _description; set => SetField(ref _description, value); }
+    public StringEnumValue<Description> Description { get => GetValue<StringEnumValue<Description>>(); set => SetValue(value); }
 
     /// <summary>
     /// Income Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Income IncomeType
     /// </summary>
-    public StringEnumValue<IncomeType> IncomeType { get => _incomeType; set => SetField(ref _incomeType, value); }
+    public StringEnumValue<IncomeType> IncomeType { get => GetValue<StringEnumValue<IncomeType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Income OtherIncomeIndex
     /// </summary>
-    public int? OtherIncomeIndex { get => _otherIncomeIndex; set => SetField(ref _otherIncomeIndex, value); }
+    public int? OtherIncomeIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Income Owner
     /// </summary>
-    public StringEnumValue<BorrowerOrCoBorrower> Owner { get => _owner; set => SetField(ref _owner, value); }
+    public StringEnumValue<BorrowerOrCoBorrower> Owner { get => GetValue<StringEnumValue<BorrowerOrCoBorrower>>(); set => SetValue(value); }
 }

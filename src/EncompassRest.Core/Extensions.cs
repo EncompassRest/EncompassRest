@@ -17,7 +17,7 @@ namespace EncompassRest
         /// <param name="value">The object to clone.</param>
         /// <returns></returns>
         public static T Clone<T>(this T value)
-            where T : IDirtyExtensibleObject
+            where T : ISerializableObject
         {
             Preconditions.NotNull(value, nameof(value));
 
@@ -32,7 +32,7 @@ namespace EncompassRest
         /// <param name="id">The id to search for.</param>
         /// <returns></returns>
         public static T? GetById<T>(this IList<T> list, string id)
-            where T : IDirtyExtensibleObject
+            where T : DirtyExtensibleObject
         {
             var index = list.IndexOf(id);
             return index >= 0 ? list[index] : default;
@@ -46,9 +46,9 @@ namespace EncompassRest
         /// <param name="id">The id to search for.</param>
         /// <returns></returns>
         public static int IndexOf<T>(this IList<T> list, string id)
-            where T : IDirtyExtensibleObject => IndexOf((IEnumerable<IDirtyExtensibleObject>)list, id);
+            where T : DirtyExtensibleObject => IndexOf((IEnumerable<DirtyExtensibleObject>)list, id);
 
-        internal static int IndexOf(IEnumerable<IDirtyExtensibleObject> list, string id)
+        internal static int IndexOf(IEnumerable<DirtyExtensibleObject> list, string id)
         {
             Preconditions.NotNull(list, nameof(list));
             Preconditions.NotNullOrEmpty(id, nameof(id));

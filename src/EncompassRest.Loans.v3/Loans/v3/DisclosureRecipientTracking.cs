@@ -8,88 +8,73 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class DisclosureRecipientTracking : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _acceptConsentDate;
-    private DirtyValue<string?>? _acceptConsentIP;
-    private DirtyValue<DateTime?>? _authenticatedDate;
-    private DirtyValue<string?>? _authenticatedIP;
-    private DirtyValue<DateTime?>? _eSignedDate;
-    private DirtyValue<string?>? _eSignedIP;
-    private DirtyValue<StringEnumValue<LoanLevelConsent>>? _loanLevelConsent;
-    private DirtyValue<DateTime?>? _rejectConsentDate;
-    private DirtyValue<string?>? _rejectConsentIP;
-    private DirtyValue<DateTime?>? _viewConsentDate;
-    private DirtyValue<DateTime?>? _viewESignedDate;
-    private DirtyValue<DateTime?>? _viewMessageDate;
-    private DirtyValue<DateTime?>? _viewWetSignedDate;
-    private DirtyValue<DateTime?>? _wetSignedDate;
+    /// <summary>
+    /// DisclosureRecipientTracking AcceptConsentDate
+    /// </summary>
+    public DateTime? AcceptConsentDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract AcceptConsentDate
+    /// DisclosureRecipientTracking AcceptConsentIP
     /// </summary>
-    public DateTime? AcceptConsentDate { get => _acceptConsentDate; set => SetField(ref _acceptConsentDate, value); }
+    public string? AcceptConsentIP { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract AcceptConsentIP
+    /// DisclosureRecipientTracking AuthenticatedDate
     /// </summary>
-    public string? AcceptConsentIP { get => _acceptConsentIP; set => SetField(ref _acceptConsentIP, value); }
+    public DateTime? AuthenticatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract AuthenticatedDate
+    /// DisclosureRecipientTracking AuthenticatedIP
     /// </summary>
-    public DateTime? AuthenticatedDate { get => _authenticatedDate; set => SetField(ref _authenticatedDate, value); }
+    public string? AuthenticatedIP { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract AuthenticatedIP
+    /// DisclosureRecipientTracking ESignedDate
     /// </summary>
-    public string? AuthenticatedIP { get => _authenticatedIP; set => SetField(ref _authenticatedIP, value); }
+    public DateTime? ESignedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract ESignedDate
+    /// DisclosureRecipientTracking ESignedIP
     /// </summary>
-    public DateTime? ESignedDate { get => _eSignedDate; set => SetField(ref _eSignedDate, value); }
+    public string? ESignedIP { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract ESignedIP
+    /// DisclosureRecipientTracking LoanLevelConsent
     /// </summary>
-    public string? ESignedIP { get => _eSignedIP; set => SetField(ref _eSignedIP, value); }
+    public StringEnumValue<LoanLevelConsent> LoanLevelConsent { get => GetValue<StringEnumValue<LoanLevelConsent>>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract LoanLevelConsent
+    /// DisclosureRecipientTracking RejectConsentDate
     /// </summary>
-    public StringEnumValue<LoanLevelConsent> LoanLevelConsent { get => _loanLevelConsent; set => SetField(ref _loanLevelConsent, value); }
+    public DateTime? RejectConsentDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract RejectConsentDate
+    /// DisclosureRecipientTracking RejectConsentIP
     /// </summary>
-    public DateTime? RejectConsentDate { get => _rejectConsentDate; set => SetField(ref _rejectConsentDate, value); }
+    public string? RejectConsentIP { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract RejectConsentIP
+    /// DisclosureRecipientTracking ViewConsentDate
     /// </summary>
-    public string? RejectConsentIP { get => _rejectConsentIP; set => SetField(ref _rejectConsentIP, value); }
+    public DateTime? ViewConsentDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract ViewConsentDate
+    /// DisclosureRecipientTracking ViewESignedDate
     /// </summary>
-    public DateTime? ViewConsentDate { get => _viewConsentDate; set => SetField(ref _viewConsentDate, value); }
+    public DateTime? ViewESignedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract ViewESignedDate
+    /// DisclosureRecipientTracking ViewMessageDate
     /// </summary>
-    public DateTime? ViewESignedDate { get => _viewESignedDate; set => SetField(ref _viewESignedDate, value); }
+    public DateTime? ViewMessageDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract ViewMessageDate
+    /// DisclosureRecipientTracking ViewWetSignedDate
     /// </summary>
-    public DateTime? ViewMessageDate { get => _viewMessageDate; set => SetField(ref _viewMessageDate, value); }
+    public DateTime? ViewWetSignedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureRecipientTrackingContract ViewWetSignedDate
+    /// DisclosureRecipientTracking WetSignedDate
     /// </summary>
-    public DateTime? ViewWetSignedDate { get => _viewWetSignedDate; set => SetField(ref _viewWetSignedDate, value); }
-
-    /// <summary>
-    /// DisclosureRecipientTrackingContract WetSignedDate
-    /// </summary>
-    public DateTime? WetSignedDate { get => _wetSignedDate; set => SetField(ref _wetSignedDate, value); }
+    public DateTime? WetSignedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

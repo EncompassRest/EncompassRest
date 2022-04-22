@@ -5,11 +5,9 @@
     /// </summary>
     public sealed class CorrespondentTradesRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _editCorrespondentTrades;
-
         /// <summary>
         /// CorrespondentTradesRights EditCorrespondentTrades
         /// </summary>
-        public bool? EditCorrespondentTrades { get => _editCorrespondentTrades; set => SetField(ref _editCorrespondentTrades, value); }
+        public bool? EditCorrespondentTrades { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

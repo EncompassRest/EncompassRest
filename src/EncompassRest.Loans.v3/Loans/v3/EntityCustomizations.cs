@@ -39,12 +39,10 @@ partial class DisclosureRecipientRoleReference
 
 partial class CustomField
 {
-    private DirtyValue<object?>? _value;
-
     /// <summary>
     /// Custom Field Value
     /// </summary>
-    public object? Value { get => _value; set => SetField(ref _value, value); }
+    public object? Value { get => GetValue<object?>(); set => SetValue(value); }
 
     [IdPropertyName(nameof(FieldName))]
     string? IIdentifiable.Id { get => FieldName; set => FieldName = value; }
@@ -52,12 +50,10 @@ partial class CustomField
 
 partial class AdditionalStateDisclosure
 {
-    private DirtyValue<object?>? _disclosureValue;
-
     /// <summary>
     /// AdditionalStateDisclosureContract DisclosureValue
     /// </summary>
-    public object? DisclosureValue { get => _disclosureValue; set => SetField(ref _disclosureValue, value); }
+    public object? DisclosureValue { get => GetValue<object?>(); set => SetValue(value); }
 }
 
 partial class DisclosureForm

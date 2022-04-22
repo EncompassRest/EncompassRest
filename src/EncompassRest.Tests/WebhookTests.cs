@@ -37,7 +37,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void WebhookSubscription_Serialization()
         {
-            var subscription = new WebhookSubscription("https://google.com", WebhookResourceType.Loan, new[] { WebhookResourceEvent.Create, WebhookResourceEvent.Update }) { ClientId = "1234567890" };
+            var subscription = new WebhookSubscription("https://google.com", WebhookResourceType.Loan, new[] { WebhookResourceEvent.Create, WebhookResourceEvent.Update });
             Assert.AreEqual(@"{""events"":[""create"",""update""],""endpoint"":""https://google.com"",""resource"":""loan""}", subscription.ToString(SerializationOptions.Dirty));
         }
 

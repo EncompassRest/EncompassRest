@@ -8,17 +8,14 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class DisclosureTrackingDocuments : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<DisclosureForm>? _forms;
-    private DirtyValue<string?>? _viewableFormsFile;
-
     /// <summary>
-    /// DisclosureTrackingDocumentsContract Forms
+    /// DisclosureTrackingDocuments Forms
     /// </summary>
     [AllowNull]
-    public IList<DisclosureForm> Forms { get => GetField(ref _forms); set => SetField(ref _forms, value); }
+    public IList<DisclosureForm> Forms { get => GetList<DisclosureForm>(); set => SetList(value); }
 
     /// <summary>
-    /// DisclosureTrackingDocumentsContract ViewableFormsFile
+    /// DisclosureTrackingDocuments ViewableFormsFile
     /// </summary>
-    public string? ViewableFormsFile { get => _viewableFormsFile; set => SetField(ref _viewableFormsFile, value); }
+    public string? ViewableFormsFile { get => GetValue<string?>(); set => SetValue(value); }
 }

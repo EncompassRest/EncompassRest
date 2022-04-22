@@ -5,11 +5,9 @@
     /// </summary>
     public sealed class LoanProgramsRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _allowImport;
-
         /// <summary>
         /// LoanProgramsRights AllowImport
         /// </summary>
-        public bool? AllowImport { get => _allowImport; set => SetField(ref _allowImport, value); }
+        public bool? AllowImport { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

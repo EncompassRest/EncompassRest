@@ -7,18 +7,15 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class ProtectedDocumentsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _deleteDocument;
-        private EditDocumentRights? _editDocument;
-
         /// <summary>
         /// ProtectedDocumentsRights DeleteDocument
         /// </summary>
-        public bool? DeleteDocument { get => _deleteDocument; set => SetField(ref _deleteDocument, value); }
+        public bool? DeleteDocument { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ProtectedDocumentsRights EditDocument
         /// </summary>
         [AllowNull]
-        public EditDocumentRights EditDocument { get => GetField(ref _editDocument); set => SetField(ref _editDocument, value); }
+        public EditDocumentRights EditDocument { get => GetEntity<EditDocumentRights>(); set => SetEntity(value); }
     }
 }

@@ -11,1416 +11,1188 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<bool?>? _agreementAmmendsRestatesIndicator;
-    private DirtyValue<decimal?>? _amountApplyToDownPayment;
-    private DirtyValue<decimal?>? _annualFeeNeededAmount;
-    private DirtyValue<bool?>? _applyLifeCapLowIndicator;
-    private DirtyValue<StringEnumValue<IndexMargin>>? _armDisclosureType;
-    private DirtyValue<StringEnumValue<ArmIndexType>>? _armIndexType;
-    private DirtyValue<bool?>? _balloonIndicator;
-    private DirtyValue<int?>? _balloonLoanMaturityTermMonthsCount;
-    private DirtyValue<DateTime?>? _borrowerEstimatedClosingDate;
-    private DirtyValue<string?>? _branchLocationNmlsId;
-    private DirtyValue<string?>? _branchManagerNmlsId;
-    private DirtyList<Buydown>? _buydowns;
-    private DirtyValue<bool?>? _convertibleIndicator;
-    private DirtyValue<StringEnumValue<IsOrIsNot>>? _discounted;
-    private DirtyValue<decimal?>? _discountedRate;
-    private DirtyValue<int?>? _drawPeriodMonthsCount;
-    private DirtyValue<bool?>? _escrowWaiverIndicator;
-    private DirtyValue<bool?>? _excludeLoanFromNmlsReportIndicator;
-    private DirtyValue<StringEnumValue<FloorBasis>>? _floorBasis;
-    private DirtyValue<decimal?>? _floorPercent;
-    private DirtyValue<string?>? _floorPercentUi;
-    private DirtyValue<StringEnumValue<FloorVerbiage>>? _floorVerbiage;
-    private DirtyValue<string?>? _fnmProductPlanIdentifier;
-    private DirtyValue<StringEnumValue<FreddieMacArmIndexType>>? _freddieMacArmIndexType;
-    private DirtyValue<StringEnumValue<FreOfferingIdentifier>>? _freOfferingIdentifier;
-    private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>>? _fullPrepaymentPenaltyOptionType;
-    private DirtyValue<StringEnumValue<ProjectType>>? _gseProjectClassificationType;
-    private DirtyValue<StringEnumValue<PropertyType>>? _gsePropertyType;
-    private DirtyValue<int?>? _hardPrepaymentPenaltyMonths;
-    private DirtyValue<decimal?>? _helocAutoDebitDiscount;
-    private DirtyValue<bool?>? _helocAutoDebitFeature;
-    private DirtyValue<StringEnumValue<HelocCalcSign>>? _helocCalcSign;
-    private DirtyValue<bool?>? _helocCollectInterimInterestIndicator;
-    private DirtyValue<decimal?>? _helocDailyPeriodicRate;
-    private DirtyValue<int?>? _helocDrawExtensionMonths;
-    private DirtyValue<int?>? _helocDrawFractionBalancedividend;
-    private DirtyValue<int?>? _helocDrawFractionBalancedivisor;
-    private DirtyValue<bool?>? _helocDrawPaymentBasis;
-    private DirtyValue<StringEnumValue<PaymentBasisType>>? _helocDrawPaymentBasisType;
-    private DirtyValue<bool?>? _helocEscrowAccountIndicator;
-    private DirtyValue<bool?>? _helocForceMinimumPayment;
-    private DirtyValue<int?>? _helocFractionBalancedividend;
-    private DirtyValue<int?>? _helocFractionBalancedivisor;
-    private DirtyList<HelocHistoricalIndexYearSetting>? _helocHistoricalIndexYearSettings;
-    private DirtyValue<int?>? _helocHistoricalTableDayIndex;
-    private DirtyValue<decimal?>? _helocHistoricalTableDefaultMargin;
-    private DirtyValue<int?>? _helocHistoricalTableMonthIndex;
-    private DirtyValue<string?>? _helocHistoricalTableName;
-    private DirtyValue<StringEnumValue<HelocBalance>>? _helocInitialBalanceUsed;
-    private DirtyValue<StringEnumValue<HelocCalcSign>>? _helocInitialCalcSign;
-    private DirtyValue<bool?>? _helocInitialForceMinimumPayment;
-    private DirtyValue<int?>? _helocInitialFractionBalancedividend;
-    private DirtyValue<int?>? _helocInitialFractionBalancedivisor;
-    private DirtyValue<StringEnumValue<HelocPaymentBasis>>? _helocInitialPaymentBasis;
-    private DirtyValue<StringEnumValue<PaymentBasisType>>? _helocInitialPaymentBasisType;
-    private DirtyValue<decimal?>? _helocInitialPercent;
-    private DirtyValue<decimal?>? _helocInitialPercentageofBalance;
-    private DirtyValue<bool?>? _helocInitialPi;
-    private DirtyValue<StringEnumValue<HelocInitialRate>>? _helocInitialRate;
-    private DirtyValue<int?>? _helocInitialTerm;
-    private DirtyValue<StringEnumValue<PerDiemCalculationMethodType>>? _helocInitPerDiemCalculationMethodType;
-    private DirtyValue<decimal?>? _helocInstallmentLoanApr;
-    private DirtyValue<decimal?>? _helocInstallmentLoanFinanceCharge;
-    private DirtyValue<decimal?>? _helocInstallmentLoanMargin;
-    private DirtyValue<decimal?>? _helocInstallmentLoanMaxApr;
-    private DirtyValue<decimal?>? _helocInstallmentLoanMinApr;
-    private DirtyValue<bool?>? _helocInstallmentLoanOptionIndicator;
-    private DirtyValue<int?>? _helocInstallmentLoanTermYearFrom;
-    private DirtyValue<int?>? _helocInstallmentLoanTermYearTo;
-    private DirtyValue<bool?>? _helocInterestOnly;
-    private DirtyValue<StringEnumValue<LienPosition>>? _helocLienPosition;
-    private DirtyValue<int?>? _helocMaxOpenInstallmentLoans;
-    private DirtyValue<decimal?>? _helocMinimumInitialAdvancePercent;
-    private DirtyValue<bool?>? _helocMinimumInitialAdvanceRequiredIndicator;
-    private DirtyValue<decimal?>? _helocMinimumSubsequentAdvanceAmount;
-    private DirtyValue<decimal?>? _helocMinimumSubsequentAdvancePercent;
-    private DirtyValue<decimal?>? _helocMinInstallmentLoanAmount;
-    private DirtyValue<decimal?>? _helocMonthlyPeriodicRate;
-    private DirtyValue<decimal?>? _helocNewFinancingNotLinkedCreditLimit;
-    private DirtyValue<decimal?>? _helocNewFinancingNotLinkedDrawAmount;
-    private DirtyValue<decimal?>? _helocPaperBillingFee;
-    private DirtyValue<StringEnumValue<HelocPaymentBasis>>? _helocPaymentBasis;
-    private DirtyValue<StringEnumValue<PaymentBasisType>>? _helocPaymentBasisType;
-    private DirtyValue<decimal?>? _helocPercent;
-    private DirtyValue<decimal?>? _helocPercentageofBalance;
-    private DirtyValue<StringEnumValue<HelocPeriodicRateIndicator>>? _helocPeriodicRateIndicator;
-    private DirtyValue<string?>? _helocPeriodTemplateName;
-    private DirtyValue<decimal?>? _helocPhotocopyFee;
-    private DirtyValue<bool?>? _helocPropertyInsuranceIndicator;
-    private DirtyValue<StringEnumValue<HelocBalance>>? _helocQualifyingBalance;
-    private DirtyValue<int?>? _helocQualifyingTerm;
-    private DirtyValue<StringEnumValue<HelocRate>>? _helocRate;
-    private DirtyValue<string?>? _helocRefundableFee;
-    private DirtyValue<bool?>? _helocRepaymentBasis;
-    private DirtyValue<StringEnumValue<PaymentBasisType>>? _helocRepaymentBasisType;
-    private DirtyList<HelocRepaymentDrawPeriod>? _helocRepaymentDrawPeriods;
-    private DirtyValue<int?>? _helocRepaymentFractionBalancedividend;
-    private DirtyValue<int?>? _helocRepaymentFractionBalancedivisor;
-    private DirtyValue<bool?>? _helocRepaymentInterestOnlyIndicator;
-    private DirtyValue<decimal?>? _helocRepaymentMinPayment;
-    private DirtyValue<decimal?>? _helocResearchFee;
-    private DirtyValue<bool?>? _helocStandardHistoricalTableIndicator;
-    private DirtyValue<bool?>? _helocTaAlNonDepositoryIndicator;
-    private DirtyValue<StringEnumValue<HelocTAAPPChangeOption>>? _helocTaAppChangeOption;
-    private DirtyValue<StringEnumValue<HelocTAAPPRoundingOption>>? _helocTaAppRoundingOption;
-    private DirtyValue<decimal?>? _helocTaAprCharged;
-    private DirtyValue<bool?>? _helocTaCreditCardIndicator;
-    private DirtyValue<string?>? _helocTaCreditCardMisuseNotificationAddr;
-    private DirtyValue<string?>? _helocTaCreditCardMisuseNotificationEmailAddr;
-    private DirtyValue<string?>? _helocTaCreditCardMisuseNotificationPhoneNumber;
-    private DirtyValue<string?>? _helocTaCreditCardMisuseNotificationWebAddr;
-    private DirtyValue<StringEnumValue<HelocTADailyBalanceType>>? _helocTaDailyBalanceType;
-    private DirtyValue<StringEnumValue<HelocTADailyRateRoundingOption>>? _helocTaDailyRateRoundingOption;
-    private DirtyValue<StringEnumValue<HelocTADrawCheckIndicator>>? _helocTaDrawCheckIndicator;
-    private DirtyValue<string?>? _helocTaFeesCharged;
-    private DirtyValue<StringEnumValue<HelocTAIndexRefDateOption>>? _helocTaIndexRefDateOption;
-    private DirtyValue<StringEnumValue<HelocTAInstallmentIndexRefDateOption>>? _helocTaInstallmentIndexRefDateOption;
-    private DirtyValue<bool?>? _helocTaInstallmentLoanDiscountedAprIndicator;
-    private DirtyValue<string?>? _helocTaInstallmentLoanDiscountWord;
-    private DirtyValue<string?>? _helocTaInstallmentLoanPaymentAppliedMethod;
-    private DirtyValue<decimal?>? _helocTaInstallmentLoanPeriodicRateRoundingPercent;
-    private DirtyValue<string?>? _helocTaInstallmentLoanTerminationMethod;
-    private DirtyValue<StringEnumValue<HelocTAIntroRateAppliedOn>>? _helocTaIntroRateAppliedOn;
-    private DirtyValue<string?>? _helocTaLenderToPay3rdPartyCost;
-    private DirtyValue<bool?>? _helocTaOverdraftProtectionIndicator;
-    private DirtyValue<StringEnumValue<HelocTAOverLimitChargeOption>>? _helocTaOverLimitChargeOption;
-    private DirtyValue<bool?>? _helocTaPeriodicCapAppliedToAdvancePeriod;
-    private DirtyValue<bool?>? _helocTaPeriodicCapAppliedToRepaymentPeriod;
-    private DirtyValue<StringEnumValue<HelocTAPeriodicRateAdjDayOption>>? _helocTaPeriodicRateAdjDayOption;
-    private DirtyValue<StringEnumValue<HelocTARepaymentTermEndBy>>? _helocTaRepaymentTermEndBy;
-    private DirtyValue<bool?>? _helocTaRequestAdvanceInPersonIndicator;
-    private DirtyValue<string?>? _helocTaRequestAdvanceInPersonLocation;
-    private DirtyValue<bool?>? _helocTaRequestAdvanceViaInternetIndicator;
-    private DirtyValue<string?>? _helocTaRequestAdvanceViaInternetUrl;
-    private DirtyValue<bool?>? _helocTaRequestByPhoneIndicator;
-    private DirtyValue<bool?>? _helocTaRequireRepayIndicator;
-    private DirtyValue<bool?>? _helocTaRightToSetoffIndicator;
-    private DirtyValue<bool?>? _helocTaWrittenAuthorizationIndicator;
-    private DirtyValue<decimal?>? _indexCurrentValuePercent;
-    private DirtyValue<StringEnumValue<IndexLookbackPeriod>>? _indexLookbackPeriod;
-    private DirtyValue<decimal?>? _indexMarginPercent;
-    private DirtyValue<string?>? _indexMarginPercentUi;
-    private DirtyValue<decimal?>? _initialAdvanceAmount;
-    private DirtyValue<decimal?>? _initialApplicationAmount;
-    private DirtyValue<bool?>? _inquiryOrPreQualificationIndicator;
-    private DirtyValue<string?>? _lenderRepresentative;
-    private DirtyValue<string?>? _lenderRepresentativeCellPhone;
-    private DirtyValue<string?>? _lenderRepresentativeEmailAddress;
-    private DirtyValue<string?>? _lenderRepresentativeFirstLastName;
-    private DirtyValue<string?>? _lenderRepresentativeJobTitle;
-    private DirtyValue<string?>? _lenderRepresentativeRoleId;
-    private DirtyValue<string?>? _lenderRepresentativeUserId;
-    private DirtyValue<string?>? _lenderRepresentativeUserType;
-    private DirtyValue<string?>? _lenderRepresentativeWorkPhone;
-    private DirtyValue<StringEnumValue<LienType>>? _lienPriorityType;
-    private DirtyValue<StringEnumValue<LoanDocumentationType>>? _loanDocumentationType;
-    private DirtyValue<StringEnumValue<LoanRepaymentType>>? _loanRepaymentType;
-    private DirtyValue<DateTime?>? _loanScheduledClosingDate;
-    private DirtyValue<decimal?>? _maximumMonthlyPayment;
-    private DirtyValue<decimal?>? _maxLifeInterestCapPercent;
-    private DirtyValue<string?>? _maxLifeInterestCapPercentUi;
-    private DirtyValue<decimal?>? _miCoveragePercent;
-    private DirtyValue<decimal?>? _minimumAdvanceAmount;
-    private DirtyValue<decimal?>? _minimumAllowableApr;
-    private DirtyValue<decimal?>? _minimumDrawPeriodPaymentPercent;
-    private DirtyValue<decimal?>? _minimumPaymentAmount;
-    private DirtyValue<decimal?>? _minimumPaymentLessThanAmount;
-    private DirtyValue<decimal?>? _minimumPaymentPercent;
-    private DirtyValue<decimal?>? _minimumPaymentUpbAmount;
-    private DirtyValue<decimal?>? _minimumPaymentUpbPercent;
-    private DirtyValue<decimal?>? _minimumRepayPeriodPaymentPercent;
-    private DirtyValue<int?>? _monthsAppliedToPrepaymentPenaltyFeeCount;
-    private DirtyValue<decimal?>? _negativeAmortizationLimitPercent;
-    private DirtyValue<decimal?>? _netInitialAndFinal;
-    private DirtyValue<StringEnumValue<NmlsDocumentationType>>? _nmlsDocumentationType;
-    private DirtyValue<StringEnumValue<NmlsFirstMortgageType>>? _nmlsFirstMortgageType;
-    private DirtyValue<StringEnumValue<NmlsLienStatus>>? _nmlsLienStatus;
-    private DirtyValue<StringEnumValue<NmlsLoanType>>? _nmlsLoanType;
-    private DirtyValue<bool?>? _nmlsOptionArmIndicator;
-    private DirtyValue<bool?>? _nmlsPiggyBackOrFundedHelocIndicator;
-    private DirtyValue<StringEnumValue<NmlsProductionSoldToType>>? _nmlsProductionSoldToType;
-    private DirtyValue<StringEnumValue<HmdaPropertyType>>? _nmlsPropertyType;
-    private DirtyValue<StringEnumValue<NmlsRefinancePurposeType>>? _nmlsRefinancePurposeType;
-    private DirtyValue<StringEnumValue<NmlsReverseMortgageType>>? _nmlsReverseMortgageType;
-    private DirtyValue<bool?>? _oralRequestForExtensionOfCreditIndicator;
-    private DirtyValue<decimal?>? _overLimitCharge;
-    private DirtyValue<decimal?>? _overLimitReturnCharge;
-    private DirtyValue<decimal?>? _participationFees;
-    private DirtyValue<int?>? _paymentAdjustmentDurationMonthsCount;
-    private DirtyValue<decimal?>? _paymentAdjustmentPeriodicCapPercent;
-    private DirtyValue<StringEnumValue<PaymentFrequencyType>>? _paymentFrequencyType;
-    private DirtyList<PrepaymentPenalty>? _prepaymentPenalties;
-    private DirtyValue<StringEnumValue<PrepaymentPenaltyBasedOn>>? _prepaymentPenaltyBasedOn;
-    private DirtyValue<bool?>? _prepaymentPenaltyIndicator;
-    private DirtyValue<decimal?>? _prepaymentPenaltyPercent;
-    private DirtyValue<int?>? _prepaymentPenaltyTermMonthsCount;
-    private DirtyValue<StringEnumValue<PrepaymentPenaltyVerbiage>>? _prepaymentPenaltyVerbiage;
-    private DirtyValue<string?>? _productName;
-    private DirtyValue<decimal?>? _qualifyingRatePercent;
-    private DirtyValue<int?>? _rateAdjustmentDurationMonthsCount;
-    private DirtyValue<decimal?>? _rateAdjustmentLifetimeCapPercent;
-    private DirtyValue<decimal?>? _rateAdjustmentPercent;
-    private DirtyValue<string?>? _rateAdjustmentPercentUi;
-    private DirtyValue<decimal?>? _rateAdjustmentSubsequentCapPercent;
-    private DirtyValue<string?>? _rateAdjustmentSubsequentCapPercentUi;
-    private DirtyValue<decimal?>? _releaseRecoringCharge;
-    private DirtyValue<decimal?>? _remainingBuydownAmount;
-    private DirtyValue<int?>? _repayPeriodMonthsCount;
-    private DirtyValue<decimal?>? _returnedCheckCharge;
-    private DirtyValue<decimal?>? _returnedCheckChargeRatePercent;
-    private DirtyValue<decimal?>? _returnedCheckMaxCharge;
-    private DirtyValue<decimal?>? _returnedCheckMinCharge;
-    private DirtyValue<decimal?>? _roundPercent;
-    private DirtyValue<StringEnumValue<RoundType>>? _roundType;
-    private DirtyValue<DateTime?>? _scheduledFirstPaymentAdjustmentDate;
-    private DirtyValue<DateTime?>? _scheduledFirstPaymentDate;
-    private DirtyValue<decimal?>? _stopPaymentCharge;
-    private DirtyValue<int?>? _subsequentRateAdjustmentMonthsCount;
-    private DirtyValue<decimal?>? _terminationFeeAmount;
-    private DirtyValue<int?>? _terminationPeriodMonthsCount;
-    private DirtyValue<decimal?>? _thirdPartyFeeFromAmount;
-    private DirtyValue<decimal?>? _thirdPartyFeeToAmount;
-    private DirtyValue<decimal?>? _timelyPaymentRateReductionPercent;
-    private DirtyValue<StringEnumValue<TimelyPaymentRewards>>? _timelyPaymentRewards;
-    private DirtyValue<decimal?>? _totalSubsidyAmount;
-    private DirtyValue<decimal?>? _transactionFees;
-    private DirtyValue<decimal?>? _wireFee;
-
     /// <summary>
     /// HELOC Agreement Amends and Restates Indicator [4671]
     /// </summary>
-    public bool? AgreementAmmendsRestatesIndicator { get => _agreementAmmendsRestatesIndicator; set => SetField(ref _agreementAmmendsRestatesIndicator, value); }
+    public bool? AgreementAmmendsRestatesIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Amount Apply To Down Payment [4493]
     /// </summary>
-    public decimal? AmountApplyToDownPayment { get => _amountApplyToDownPayment; set => SetField(ref _amountApplyToDownPayment, value); }
+    public decimal? AmountApplyToDownPayment { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Annual Fee [1891]
     /// </summary>
-    public decimal? AnnualFeeNeededAmount { get => _annualFeeNeededAmount; set => SetField(ref _annualFeeNeededAmount, value); }
+    public decimal? AnnualFeeNeededAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// ARM Apply Life Cap Low [ARM.ApplyLfCpLow]
     /// </summary>
-    public bool? ApplyLifeCapLowIndicator { get => _applyLifeCapLowIndicator; set => SetField(ref _applyLifeCapLowIndicator, value); }
+    public bool? ApplyLifeCapLowIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Disclosure Type [1959]
     /// </summary>
-    public StringEnumValue<IndexMargin> ArmDisclosureType { get => _armDisclosureType; set => SetField(ref _armDisclosureType, value); }
+    public StringEnumValue<IndexMargin> ArmDisclosureType { get => GetValue<StringEnumValue<IndexMargin>>(); set => SetValue(value); }
 
     /// <summary>
     /// Fannie Mae ARM Index Type [MORNET.X70]
     /// </summary>
-    public StringEnumValue<ArmIndexType> ArmIndexType { get => _armIndexType; set => SetField(ref _armIndexType, value); }
+    public StringEnumValue<ArmIndexType> ArmIndexType { get => GetValue<StringEnumValue<ArmIndexType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Amort Type Balloon [1659]
     /// </summary>
-    public bool? BalloonIndicator { get => _balloonIndicator; set => SetField(ref _balloonIndicator, value); }
+    public bool? BalloonIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Term Due In [325]
     /// </summary>
-    public int? BalloonLoanMaturityTermMonthsCount { get => _balloonLoanMaturityTermMonthsCount; set => SetField(ref _balloonLoanMaturityTermMonthsCount, value); }
+    public int? BalloonLoanMaturityTermMonthsCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower Est Closing Date [4114]
     /// </summary>
-    public DateTime? BorrowerEstimatedClosingDate { get => _borrowerEstimatedClosingDate; set => SetField(ref _borrowerEstimatedClosingDate, value); }
+    public DateTime? BorrowerEstimatedClosingDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Branch Location NMLS ID [NMLS.X9]
     /// </summary>
-    public string? BranchLocationNmlsId { get => _branchLocationNmlsId; set => SetField(ref _branchLocationNmlsId, value); }
+    public string? BranchLocationNmlsId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Branch Manager NMLS ID [NMLS.X8]
     /// </summary>
-    public string? BranchManagerNmlsId { get => _branchManagerNmlsId; set => SetField(ref _branchManagerNmlsId, value); }
+    public string? BranchManagerNmlsId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanProductDataContract Buydowns
+    /// LoanProductData Buydowns
     /// </summary>
     [AllowNull]
-    public IList<Buydown> Buydowns { get => GetField(ref _buydowns); set => SetField(ref _buydowns, value); }
+    public IList<Buydown> Buydowns { get => GetList<Buydown>(); set => SetList(value); }
 
     /// <summary>
     /// Freddie Mac Lender Rate Adj Convertible [1290]
     /// </summary>
-    public bool? ConvertibleIndicator { get => _convertibleIndicator; set => SetField(ref _convertibleIndicator, value); }
+    public bool? ConvertibleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Discounted [1967]
     /// </summary>
-    public StringEnumValue<IsOrIsNot> Discounted { get => _discounted; set => SetField(ref _discounted, value); }
+    public StringEnumValue<IsOrIsNot> Discounted { get => GetValue<StringEnumValue<IsOrIsNot>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Discounted Rate [1968]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? DiscountedRate { get => _discountedRate; set => SetField(ref _discountedRate, value); }
+    public decimal? DiscountedRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Period Mos [1889]
     /// </summary>
-    public int? DrawPeriodMonthsCount { get => _drawPeriodMonthsCount; set => SetField(ref _drawPeriodMonthsCount, value); }
+    public int? DrawPeriodMonthsCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Fannie Mae Escrow Waived [MORNET.X15]
     /// </summary>
-    public bool? EscrowWaiverIndicator { get => _escrowWaiverIndicator; set => SetField(ref _escrowWaiverIndicator, value); }
+    public bool? EscrowWaiverIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Exclude this Loan from the NMLS Report [NMLS.X15]
     /// </summary>
-    public bool? ExcludeLoanFromNmlsReportIndicator { get => _excludeLoanFromNmlsReportIndicator; set => SetField(ref _excludeLoanFromNmlsReportIndicator, value); }
+    public bool? ExcludeLoanFromNmlsReportIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// ARM Floor Basis [ARM.FlrBasis]
     /// </summary>
-    public StringEnumValue<FloorBasis> FloorBasis { get => _floorBasis; set => SetField(ref _floorBasis, value); }
+    public StringEnumValue<FloorBasis> FloorBasis { get => GetValue<StringEnumValue<FloorBasis>>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Floor Rate [1699]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? FloorPercent { get => _floorPercent; set => SetField(ref _floorPercent, value); }
+    public decimal? FloorPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Floor Rate - Display field with KBYO rounding rules [KBYO.XD1699]
     /// </summary>
-    public string? FloorPercentUi { get => _floorPercentUi; set => SetField(ref _floorPercentUi, value); }
+    public string? FloorPercentUi { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ARM Floor Verbiage Type [ARM.FlrVerbgTyp]
     /// </summary>
-    public StringEnumValue<FloorVerbiage> FloorVerbiage { get => _floorVerbiage; set => SetField(ref _floorVerbiage, value); }
+    public StringEnumValue<FloorVerbiage> FloorVerbiage { get => GetValue<StringEnumValue<FloorVerbiage>>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Amort Type ARM Descr [995]
     /// </summary>
-    public string? FnmProductPlanIdentifier { get => _fnmProductPlanIdentifier; set => SetField(ref _fnmProductPlanIdentifier, value); }
+    public string? FnmProductPlanIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Freddie Mac Lender ARM Index [CASASRN.X135]
     /// </summary>
-    public StringEnumValue<FreddieMacArmIndexType> FreddieMacArmIndexType { get => _freddieMacArmIndexType; set => SetField(ref _freddieMacArmIndexType, value); }
+    public StringEnumValue<FreddieMacArmIndexType> FreddieMacArmIndexType { get => GetValue<StringEnumValue<FreddieMacArmIndexType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Freddie Mac Offering Identifier [CASASRN.X163]
     /// </summary>
-    public StringEnumValue<FreOfferingIdentifier> FreOfferingIdentifier { get => _freOfferingIdentifier; set => SetField(ref _freOfferingIdentifier, value); }
+    public StringEnumValue<FreOfferingIdentifier> FreOfferingIdentifier { get => GetValue<StringEnumValue<FreOfferingIdentifier>>(); set => SetValue(value); }
 
     /// <summary>
     /// REGZ Prepymt Penalty Type of Prepay 1 [1946]
     /// </summary>
-    public StringEnumValue<FullPrepaymentPenaltyOptionType> FullPrepaymentPenaltyOptionType { get => _fullPrepaymentPenaltyOptionType; set => SetField(ref _fullPrepaymentPenaltyOptionType, value); }
+    public StringEnumValue<FullPrepaymentPenaltyOptionType> FullPrepaymentPenaltyOptionType { get => GetValue<StringEnumValue<FullPrepaymentPenaltyOptionType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Project Classification [1012]
     /// </summary>
-    public StringEnumValue<ProjectType> GseProjectClassificationType { get => _gseProjectClassificationType; set => SetField(ref _gseProjectClassificationType, value); }
+    public StringEnumValue<ProjectType> GseProjectClassificationType { get => GetValue<StringEnumValue<ProjectType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Type Fannie Mae [1041]
     /// </summary>
-    public StringEnumValue<PropertyType> GsePropertyType { get => _gsePropertyType; set => SetField(ref _gsePropertyType, value); }
+    public StringEnumValue<PropertyType> GsePropertyType { get => GetValue<StringEnumValue<PropertyType>>(); set => SetValue(value); }
 
     /// <summary>
     /// REGZ Prepay Penalty Mths Hard Prepayment Period [3536]
     /// </summary>
-    public int? HardPrepaymentPenaltyMonths { get => _hardPrepaymentPenaltyMonths; set => SetField(ref _hardPrepaymentPenaltyMonths, value); }
+    public int? HardPrepaymentPenaltyMonths { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Auto Debit Discount Percent [4587]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocAutoDebitDiscount { get => _helocAutoDebitDiscount; set => SetField(ref _helocAutoDebitDiscount, value); }
+    public decimal? HelocAutoDebitDiscount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Auto Debit Feature [4586]
     /// </summary>
-    public bool? HelocAutoDebitFeature { get => _helocAutoDebitFeature; set => SetField(ref _helocAutoDebitFeature, value); }
+    public bool? HelocAutoDebitFeature { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Calculation Sign [4466]
     /// </summary>
-    public StringEnumValue<HelocCalcSign> HelocCalcSign { get => _helocCalcSign; set => SetField(ref _helocCalcSign, value); }
+    public StringEnumValue<HelocCalcSign> HelocCalcSign { get => GetValue<StringEnumValue<HelocCalcSign>>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc Collect Interim Interest Indicator [4665]
     /// </summary>
-    public bool? HelocCollectInterimInterestIndicator { get => _helocCollectInterimInterestIndicator; set => SetField(ref _helocCollectInterimInterestIndicator, value); }
+    public bool? HelocCollectInterimInterestIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Daily Periodic Rate Percent [4549]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
-    public decimal? HelocDailyPeriodicRate { get => _helocDailyPeriodicRate; set => SetField(ref _helocDailyPeriodicRate, value); }
+    public decimal? HelocDailyPeriodicRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Extension Months [4567]
     /// </summary>
-    public int? HelocDrawExtensionMonths { get => _helocDrawExtensionMonths; set => SetField(ref _helocDrawExtensionMonths, value); }
+    public int? HelocDrawExtensionMonths { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Fraction Balance Dividend [4564]
     /// </summary>
-    public int? HelocDrawFractionBalancedividend { get => _helocDrawFractionBalancedividend; set => SetField(ref _helocDrawFractionBalancedividend, value); }
+    public int? HelocDrawFractionBalancedividend { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Fraction Balance Divisor [4565]
     /// </summary>
-    public int? HelocDrawFractionBalancedivisor { get => _helocDrawFractionBalancedivisor; set => SetField(ref _helocDrawFractionBalancedivisor, value); }
+    public int? HelocDrawFractionBalancedivisor { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Payment Basis [4559]
     /// </summary>
-    public bool? HelocDrawPaymentBasis { get => _helocDrawPaymentBasis; set => SetField(ref _helocDrawPaymentBasis, value); }
+    public bool? HelocDrawPaymentBasis { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Payment Basis Type [4560]
     /// </summary>
-    public StringEnumValue<PaymentBasisType> HelocDrawPaymentBasisType { get => _helocDrawPaymentBasisType; set => SetField(ref _helocDrawPaymentBasisType, value); }
+    public StringEnumValue<PaymentBasisType> HelocDrawPaymentBasisType { get => GetValue<StringEnumValue<PaymentBasisType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc Escrow Account Indicator [4556]
     /// </summary>
-    public bool? HelocEscrowAccountIndicator { get => _helocEscrowAccountIndicator; set => SetField(ref _helocEscrowAccountIndicator, value); }
+    public bool? HelocEscrowAccountIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Force Minimum Payment [4472]
     /// </summary>
-    public bool? HelocForceMinimumPayment { get => _helocForceMinimumPayment; set => SetField(ref _helocForceMinimumPayment, value); }
+    public bool? HelocForceMinimumPayment { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Fraction Balance Dividend [4469]
     /// </summary>
-    public int? HelocFractionBalancedividend { get => _helocFractionBalancedividend; set => SetField(ref _helocFractionBalancedividend, value); }
+    public int? HelocFractionBalancedividend { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Fraction Balance Divisor [4470]
     /// </summary>
-    public int? HelocFractionBalancedivisor { get => _helocFractionBalancedivisor; set => SetField(ref _helocFractionBalancedivisor, value); }
+    public int? HelocFractionBalancedivisor { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanProductDataContract HelocHistoricalIndexYearSettings
+    /// LoanProductData HelocHistoricalIndexYearSettings
     /// </summary>
     [AllowNull]
-    public IList<HelocHistoricalIndexYearSetting> HelocHistoricalIndexYearSettings { get => GetField(ref _helocHistoricalIndexYearSettings); set => SetField(ref _helocHistoricalIndexYearSettings, value); }
+    public IList<HelocHistoricalIndexYearSetting> HelocHistoricalIndexYearSettings { get => GetList<HelocHistoricalIndexYearSetting>(); set => SetList(value); }
 
     /// <summary>
     /// HELOC Historical Table Day Index [HHI.X1]
     /// </summary>
-    public int? HelocHistoricalTableDayIndex { get => _helocHistoricalTableDayIndex; set => SetField(ref _helocHistoricalTableDayIndex, value); }
+    public int? HelocHistoricalTableDayIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Historical Table Default Margin [HHI.X3]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocHistoricalTableDefaultMargin { get => _helocHistoricalTableDefaultMargin; set => SetField(ref _helocHistoricalTableDefaultMargin, value); }
+    public decimal? HelocHistoricalTableDefaultMargin { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Historical Table Month Index [HHI.X2]
     /// </summary>
-    public int? HelocHistoricalTableMonthIndex { get => _helocHistoricalTableMonthIndex; set => SetField(ref _helocHistoricalTableMonthIndex, value); }
+    public int? HelocHistoricalTableMonthIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Historical Table Name [4629]
     /// </summary>
-    public string? HelocHistoricalTableName { get => _helocHistoricalTableName; set => SetField(ref _helocHistoricalTableName, value); }
+    public string? HelocHistoricalTableName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc Initial Balance Used [4484]
     /// </summary>
-    public StringEnumValue<HelocBalance> HelocInitialBalanceUsed { get => _helocInitialBalanceUsed; set => SetField(ref _helocInitialBalanceUsed, value); }
+    public StringEnumValue<HelocBalance> HelocInitialBalanceUsed { get => GetValue<StringEnumValue<HelocBalance>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Calculation Sign [4477]
     /// </summary>
-    public StringEnumValue<HelocCalcSign> HelocInitialCalcSign { get => _helocInitialCalcSign; set => SetField(ref _helocInitialCalcSign, value); }
+    public StringEnumValue<HelocCalcSign> HelocInitialCalcSign { get => GetValue<StringEnumValue<HelocCalcSign>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Force Minimum Payment [4483]
     /// </summary>
-    public bool? HelocInitialForceMinimumPayment { get => _helocInitialForceMinimumPayment; set => SetField(ref _helocInitialForceMinimumPayment, value); }
+    public bool? HelocInitialForceMinimumPayment { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Fraction Balance Dividend [4480]
     /// </summary>
-    public int? HelocInitialFractionBalancedividend { get => _helocInitialFractionBalancedividend; set => SetField(ref _helocInitialFractionBalancedividend, value); }
+    public int? HelocInitialFractionBalancedividend { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Fraction Balance Divisor [4481]
     /// </summary>
-    public int? HelocInitialFractionBalancedivisor { get => _helocInitialFractionBalancedivisor; set => SetField(ref _helocInitialFractionBalancedivisor, value); }
+    public int? HelocInitialFractionBalancedivisor { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Payment Basis [4475]
     /// </summary>
-    public StringEnumValue<HelocPaymentBasis> HelocInitialPaymentBasis { get => _helocInitialPaymentBasis; set => SetField(ref _helocInitialPaymentBasis, value); }
+    public StringEnumValue<HelocPaymentBasis> HelocInitialPaymentBasis { get => GetValue<StringEnumValue<HelocPaymentBasis>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Payment Basis Type [4530]
     /// </summary>
-    public StringEnumValue<PaymentBasisType> HelocInitialPaymentBasisType { get => _helocInitialPaymentBasisType; set => SetField(ref _helocInitialPaymentBasisType, value); }
+    public StringEnumValue<PaymentBasisType> HelocInitialPaymentBasisType { get => GetValue<StringEnumValue<PaymentBasisType>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Percent [4478]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocInitialPercent { get => _helocInitialPercent; set => SetField(ref _helocInitialPercent, value); }
+    public decimal? HelocInitialPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Percentage of Balance [4482]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocInitialPercentageofBalance { get => _helocInitialPercentageofBalance; set => SetField(ref _helocInitialPercentageofBalance, value); }
+    public decimal? HelocInitialPercentageofBalance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc initial P &amp; I [4479]
     /// </summary>
-    public bool? HelocInitialPi { get => _helocInitialPi; set => SetField(ref _helocInitialPi, value); }
+    public bool? HelocInitialPi { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Rate [4476]
     /// </summary>
-    public StringEnumValue<HelocInitialRate> HelocInitialRate { get => _helocInitialRate; set => SetField(ref _helocInitialRate, value); }
+    public StringEnumValue<HelocInitialRate> HelocInitialRate { get => GetValue<StringEnumValue<HelocInitialRate>>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc Initial Term [4485]
     /// </summary>
-    public int? HelocInitialTerm { get => _helocInitialTerm; set => SetField(ref _helocInitialTerm, value); }
+    public int? HelocInitialTerm { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Mortgage Number of Days [4491]
     /// </summary>
-    public StringEnumValue<PerDiemCalculationMethodType> HelocInitPerDiemCalculationMethodType { get => _helocInitPerDiemCalculationMethodType; set => SetField(ref _helocInitPerDiemCalculationMethodType, value); }
+    public StringEnumValue<PerDiemCalculationMethodType> HelocInitPerDiemCalculationMethodType { get => GetValue<StringEnumValue<PerDiemCalculationMethodType>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Installment Loan APR [4585]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocInstallmentLoanApr { get => _helocInstallmentLoanApr; set => SetField(ref _helocInstallmentLoanApr, value); }
+    public decimal? HelocInstallmentLoanApr { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Installment Loan Fincance Charge [4581]
     /// </summary>
-    public decimal? HelocInstallmentLoanFinanceCharge { get => _helocInstallmentLoanFinanceCharge; set => SetField(ref _helocInstallmentLoanFinanceCharge, value); }
+    public decimal? HelocInstallmentLoanFinanceCharge { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Installment Loan Margin [4582]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocInstallmentLoanMargin { get => _helocInstallmentLoanMargin; set => SetField(ref _helocInstallmentLoanMargin, value); }
+    public decimal? HelocInstallmentLoanMargin { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Installment Loan Max APR [4583]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocInstallmentLoanMaxApr { get => _helocInstallmentLoanMaxApr; set => SetField(ref _helocInstallmentLoanMaxApr, value); }
+    public decimal? HelocInstallmentLoanMaxApr { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Installment Loan Min APR [4584]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocInstallmentLoanMinApr { get => _helocInstallmentLoanMinApr; set => SetField(ref _helocInstallmentLoanMinApr, value); }
+    public decimal? HelocInstallmentLoanMinApr { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc Installment Loan Option Indicator [4557]
     /// </summary>
-    public bool? HelocInstallmentLoanOptionIndicator { get => _helocInstallmentLoanOptionIndicator; set => SetField(ref _helocInstallmentLoanOptionIndicator, value); }
+    public bool? HelocInstallmentLoanOptionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Installment Loan Term Year From [4579]
     /// </summary>
-    public int? HelocInstallmentLoanTermYearFrom { get => _helocInstallmentLoanTermYearFrom; set => SetField(ref _helocInstallmentLoanTermYearFrom, value); }
+    public int? HelocInstallmentLoanTermYearFrom { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Installment Loan Term Year To [4580]
     /// </summary>
-    public int? HelocInstallmentLoanTermYearTo { get => _helocInstallmentLoanTermYearTo; set => SetField(ref _helocInstallmentLoanTermYearTo, value); }
+    public int? HelocInstallmentLoanTermYearTo { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc Interest Only [4468]
     /// </summary>
-    public bool? HelocInterestOnly { get => _helocInterestOnly; set => SetField(ref _helocInterestOnly, value); }
+    public bool? HelocInterestOnly { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Lien Position [4494]
     /// </summary>
-    public StringEnumValue<LienPosition> HelocLienPosition { get => _helocLienPosition; set => SetField(ref _helocLienPosition, value); }
+    public StringEnumValue<LienPosition> HelocLienPosition { get => GetValue<StringEnumValue<LienPosition>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Maximum Open Installment Loans [4578]
     /// </summary>
-    public int? HelocMaxOpenInstallmentLoans { get => _helocMaxOpenInstallmentLoans; set => SetField(ref _helocMaxOpenInstallmentLoans, value); }
+    public int? HelocMaxOpenInstallmentLoans { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Minimum Initial Advance Percent [4553]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocMinimumInitialAdvancePercent { get => _helocMinimumInitialAdvancePercent; set => SetField(ref _helocMinimumInitialAdvancePercent, value); }
+    public decimal? HelocMinimumInitialAdvancePercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc Minimum Initial Advance Required Indicator [4552]
     /// </summary>
-    public bool? HelocMinimumInitialAdvanceRequiredIndicator { get => _helocMinimumInitialAdvanceRequiredIndicator; set => SetField(ref _helocMinimumInitialAdvanceRequiredIndicator, value); }
+    public bool? HelocMinimumInitialAdvanceRequiredIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Minimum Subsequent Advance Amount [4554]
     /// </summary>
-    public decimal? HelocMinimumSubsequentAdvanceAmount { get => _helocMinimumSubsequentAdvanceAmount; set => SetField(ref _helocMinimumSubsequentAdvanceAmount, value); }
+    public decimal? HelocMinimumSubsequentAdvanceAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Minimum Subsequent Advance Percent [4555]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocMinimumSubsequentAdvancePercent { get => _helocMinimumSubsequentAdvancePercent; set => SetField(ref _helocMinimumSubsequentAdvancePercent, value); }
+    public decimal? HelocMinimumSubsequentAdvancePercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Minimum Installment Loan Amount [4577]
     /// </summary>
-    public decimal? HelocMinInstallmentLoanAmount { get => _helocMinInstallmentLoanAmount; set => SetField(ref _helocMinInstallmentLoanAmount, value); }
+    public decimal? HelocMinInstallmentLoanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Monthly Periodic Rate Percent [4550]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
-    public decimal? HelocMonthlyPeriodicRate { get => _helocMonthlyPeriodicRate; set => SetField(ref _helocMonthlyPeriodicRate, value); }
+    public decimal? HelocMonthlyPeriodicRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc New Financing Not Linked Credit Limit  [4490]
     /// </summary>
-    public decimal? HelocNewFinancingNotLinkedCreditLimit { get => _helocNewFinancingNotLinkedCreditLimit; set => SetField(ref _helocNewFinancingNotLinkedCreditLimit, value); }
+    public decimal? HelocNewFinancingNotLinkedCreditLimit { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc New Financing Not Linked Draw Amount [4489]
     /// </summary>
-    public decimal? HelocNewFinancingNotLinkedDrawAmount { get => _helocNewFinancingNotLinkedDrawAmount; set => SetField(ref _helocNewFinancingNotLinkedDrawAmount, value); }
+    public decimal? HelocNewFinancingNotLinkedDrawAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Paper Billing Fee [4588]
     /// </summary>
-    public decimal? HelocPaperBillingFee { get => _helocPaperBillingFee; set => SetField(ref _helocPaperBillingFee, value); }
+    public decimal? HelocPaperBillingFee { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Payment Basis [4464]
     /// </summary>
-    public StringEnumValue<HelocPaymentBasis> HelocPaymentBasis { get => _helocPaymentBasis; set => SetField(ref _helocPaymentBasis, value); }
+    public StringEnumValue<HelocPaymentBasis> HelocPaymentBasis { get => GetValue<StringEnumValue<HelocPaymentBasis>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Payment Basis Type [4531]
     /// </summary>
-    public StringEnumValue<PaymentBasisType> HelocPaymentBasisType { get => _helocPaymentBasisType; set => SetField(ref _helocPaymentBasisType, value); }
+    public StringEnumValue<PaymentBasisType> HelocPaymentBasisType { get => GetValue<StringEnumValue<PaymentBasisType>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Percent [4467]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocPercent { get => _helocPercent; set => SetField(ref _helocPercent, value); }
+    public decimal? HelocPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Percentage of Balance [4471]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocPercentageofBalance { get => _helocPercentageofBalance; set => SetField(ref _helocPercentageofBalance, value); }
+    public decimal? HelocPercentageofBalance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Periodic Rate Indicator [4551]
     /// </summary>
-    public StringEnumValue<HelocPeriodicRateIndicator> HelocPeriodicRateIndicator { get => _helocPeriodicRateIndicator; set => SetField(ref _helocPeriodicRateIndicator, value); }
+    public StringEnumValue<HelocPeriodicRateIndicator> HelocPeriodicRateIndicator { get => GetValue<StringEnumValue<HelocPeriodicRateIndicator>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Period Template Name [1985]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? HelocPeriodTemplateName { get => _helocPeriodTemplateName; set => SetField(ref _helocPeriodTemplateName, value); }
+    public string? HelocPeriodTemplateName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Photocopy Fee [4589]
     /// </summary>
-    public decimal? HelocPhotocopyFee { get => _helocPhotocopyFee; set => SetField(ref _helocPhotocopyFee, value); }
+    public decimal? HelocPhotocopyFee { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Heloc Property Insurance Indicator [4661]
     /// </summary>
-    public bool? HelocPropertyInsuranceIndicator { get => _helocPropertyInsuranceIndicator; set => SetField(ref _helocPropertyInsuranceIndicator, value); }
+    public bool? HelocPropertyInsuranceIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Qualifying Balance [4473]
     /// </summary>
-    public StringEnumValue<HelocBalance> HelocQualifyingBalance { get => _helocQualifyingBalance; set => SetField(ref _helocQualifyingBalance, value); }
+    public StringEnumValue<HelocBalance> HelocQualifyingBalance { get => GetValue<StringEnumValue<HelocBalance>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Qualifying Term [4474]
     /// </summary>
-    public int? HelocQualifyingTerm { get => _helocQualifyingTerm; set => SetField(ref _helocQualifyingTerm, value); }
+    public int? HelocQualifyingTerm { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Rate [4465]
     /// </summary>
-    public StringEnumValue<HelocRate> HelocRate { get => _helocRate; set => SetField(ref _helocRate, value); }
+    public StringEnumValue<HelocRate> HelocRate { get => GetValue<StringEnumValue<HelocRate>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Refundable Fee [4591]
     /// </summary>
-    public string? HelocRefundableFee { get => _helocRefundableFee; set => SetField(ref _helocRefundableFee, value); }
+    public string? HelocRefundableFee { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Repayment Basis [4568]
     /// </summary>
-    public bool? HelocRepaymentBasis { get => _helocRepaymentBasis; set => SetField(ref _helocRepaymentBasis, value); }
+    public bool? HelocRepaymentBasis { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Repayment Basis Type [4569]
     /// </summary>
-    public StringEnumValue<PaymentBasisType> HelocRepaymentBasisType { get => _helocRepaymentBasisType; set => SetField(ref _helocRepaymentBasisType, value); }
+    public StringEnumValue<PaymentBasisType> HelocRepaymentBasisType { get => GetValue<StringEnumValue<PaymentBasisType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanProductDataContract HelocRepaymentDrawPeriods
+    /// LoanProductData HelocRepaymentDrawPeriods
     /// </summary>
     [AllowNull]
-    public IList<HelocRepaymentDrawPeriod> HelocRepaymentDrawPeriods { get => GetField(ref _helocRepaymentDrawPeriods); set => SetField(ref _helocRepaymentDrawPeriods, value); }
+    public IList<HelocRepaymentDrawPeriod> HelocRepaymentDrawPeriods { get => GetList<HelocRepaymentDrawPeriod>(); set => SetList(value); }
 
     /// <summary>
     /// HELOC Repayment Fraction Balance Dividend [4574]
     /// </summary>
-    public int? HelocRepaymentFractionBalancedividend { get => _helocRepaymentFractionBalancedividend; set => SetField(ref _helocRepaymentFractionBalancedividend, value); }
+    public int? HelocRepaymentFractionBalancedividend { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Repayment Fraction Balance Divisor [4575]
     /// </summary>
-    public int? HelocRepaymentFractionBalancedivisor { get => _helocRepaymentFractionBalancedivisor; set => SetField(ref _helocRepaymentFractionBalancedivisor, value); }
+    public int? HelocRepaymentFractionBalancedivisor { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Repayment Interest Only Indicator [4573]
     /// </summary>
-    public bool? HelocRepaymentInterestOnlyIndicator { get => _helocRepaymentInterestOnlyIndicator; set => SetField(ref _helocRepaymentInterestOnlyIndicator, value); }
+    public bool? HelocRepaymentInterestOnlyIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Repayment Minimum Payment Amount [4576]
     /// </summary>
-    public decimal? HelocRepaymentMinPayment { get => _helocRepaymentMinPayment; set => SetField(ref _helocRepaymentMinPayment, value); }
+    public decimal? HelocRepaymentMinPayment { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Research Fee [4590]
     /// </summary>
-    public decimal? HelocResearchFee { get => _helocResearchFee; set => SetField(ref _helocResearchFee, value); }
+    public decimal? HelocResearchFee { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Standard Historical Table Indicator [4630]
     /// </summary>
-    public bool? HelocStandardHistoricalTableIndicator { get => _helocStandardHistoricalTableIndicator; set => SetField(ref _helocStandardHistoricalTableIndicator, value); }
+    public bool? HelocStandardHistoricalTableIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// AL Non-Depository Institution [4624]
     /// </summary>
-    public bool? HelocTaAlNonDepositoryIndicator { get => _helocTaAlNonDepositoryIndicator; set => SetField(ref _helocTaAlNonDepositoryIndicator, value); }
+    public bool? HelocTaAlNonDepositoryIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// APR cannot [4611]
     /// </summary>
-    public StringEnumValue<HelocTAAPPChangeOption> HelocTaAppChangeOption { get => _helocTaAppChangeOption; set => SetField(ref _helocTaAppChangeOption, value); }
+    public StringEnumValue<HelocTAAPPChangeOption> HelocTaAppChangeOption { get => GetValue<StringEnumValue<HelocTAAPPChangeOption>>(); set => SetValue(value); }
 
     /// <summary>
     /// Advance Period Payment Rounding options [4607]
     /// </summary>
-    public StringEnumValue<HelocTAAPPRoundingOption> HelocTaAppRoundingOption { get => _helocTaAppRoundingOption; set => SetField(ref _helocTaAppRoundingOption, value); }
+    public StringEnumValue<HelocTAAPPRoundingOption> HelocTaAppRoundingOption { get => GetValue<StringEnumValue<HelocTAAPPRoundingOption>>(); set => SetValue(value); }
 
     /// <summary>
     /// Recent APR lender has charged [4593]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocTaAprCharged { get => _helocTaAprCharged; set => SetField(ref _helocTaAprCharged, value); }
+    public decimal? HelocTaAprCharged { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Option: Credit Card [4601]
     /// </summary>
-    public bool? HelocTaCreditCardIndicator { get => _helocTaCreditCardIndicator; set => SetField(ref _helocTaCreditCardIndicator, value); }
+    public bool? HelocTaCreditCardIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Unauthorized Use of Credit Card notification address [4625]
     /// </summary>
-    public string? HelocTaCreditCardMisuseNotificationAddr { get => _helocTaCreditCardMisuseNotificationAddr; set => SetField(ref _helocTaCreditCardMisuseNotificationAddr, value); }
+    public string? HelocTaCreditCardMisuseNotificationAddr { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Unauthorized Use of Credit Card email address [4628]
     /// </summary>
-    public string? HelocTaCreditCardMisuseNotificationEmailAddr { get => _helocTaCreditCardMisuseNotificationEmailAddr; set => SetField(ref _helocTaCreditCardMisuseNotificationEmailAddr, value); }
+    public string? HelocTaCreditCardMisuseNotificationEmailAddr { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Unauthorized Use of Credit Card notification toll free phone number [4626]
     /// </summary>
-    public string? HelocTaCreditCardMisuseNotificationPhoneNumber { get => _helocTaCreditCardMisuseNotificationPhoneNumber; set => SetField(ref _helocTaCreditCardMisuseNotificationPhoneNumber, value); }
+    public string? HelocTaCreditCardMisuseNotificationPhoneNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Unauthorized Use of Credit Card web address [4627]
     /// </summary>
-    public string? HelocTaCreditCardMisuseNotificationWebAddr { get => _helocTaCreditCardMisuseNotificationWebAddr; set => SetField(ref _helocTaCreditCardMisuseNotificationWebAddr, value); }
+    public string? HelocTaCreditCardMisuseNotificationWebAddr { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Finance charges on your Credit Account determined by applying [4608]
     /// </summary>
-    public StringEnumValue<HelocTADailyBalanceType> HelocTaDailyBalanceType { get => _helocTaDailyBalanceType; set => SetField(ref _helocTaDailyBalanceType, value); }
+    public StringEnumValue<HelocTADailyBalanceType> HelocTaDailyBalanceType { get => GetValue<StringEnumValue<HelocTADailyBalanceType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Fixed daily periodic rate for Installment Loan rounding [4614]
     /// </summary>
-    public StringEnumValue<HelocTADailyRateRoundingOption> HelocTaDailyRateRoundingOption { get => _helocTaDailyRateRoundingOption; set => SetField(ref _helocTaDailyRateRoundingOption, value); }
+    public StringEnumValue<HelocTADailyRateRoundingOption> HelocTaDailyRateRoundingOption { get => GetValue<StringEnumValue<HelocTADailyRateRoundingOption>>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Option: Draw Check or Draw Draft [4597]
     /// </summary>
-    public StringEnumValue<HelocTADrawCheckIndicator> HelocTaDrawCheckIndicator { get => _helocTaDrawCheckIndicator; set => SetField(ref _helocTaDrawCheckIndicator, value); }
+    public StringEnumValue<HelocTADrawCheckIndicator> HelocTaDrawCheckIndicator { get => GetValue<StringEnumValue<HelocTADrawCheckIndicator>>(); set => SetValue(value); }
 
     /// <summary>
     /// Fees charged to borrower to use the HELOC account (what and when) [4594]
     /// </summary>
-    public string? HelocTaFeesCharged { get => _helocTaFeesCharged; set => SetField(ref _helocTaFeesCharged, value); }
+    public string? HelocTaFeesCharged { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Index Reference date options [4609]
     /// </summary>
-    public StringEnumValue<HelocTAIndexRefDateOption> HelocTaIndexRefDateOption { get => _helocTaIndexRefDateOption; set => SetField(ref _helocTaIndexRefDateOption, value); }
+    public StringEnumValue<HelocTAIndexRefDateOption> HelocTaIndexRefDateOption { get => GetValue<StringEnumValue<HelocTAIndexRefDateOption>>(); set => SetValue(value); }
 
     /// <summary>
     /// Installment Loan Index Reference Date [4618]
     /// </summary>
-    public StringEnumValue<HelocTAInstallmentIndexRefDateOption> HelocTaInstallmentIndexRefDateOption { get => _helocTaInstallmentIndexRefDateOption; set => SetField(ref _helocTaInstallmentIndexRefDateOption, value); }
+    public StringEnumValue<HelocTAInstallmentIndexRefDateOption> HelocTaInstallmentIndexRefDateOption { get => GetValue<StringEnumValue<HelocTAInstallmentIndexRefDateOption>>(); set => SetValue(value); }
 
     /// <summary>
     /// Installment loan discounted APR [4616]
     /// </summary>
-    public bool? HelocTaInstallmentLoanDiscountedAprIndicator { get => _helocTaInstallmentLoanDiscountedAprIndicator; set => SetField(ref _helocTaInstallmentLoanDiscountedAprIndicator, value); }
+    public bool? HelocTaInstallmentLoanDiscountedAprIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Installment Loan - word to use to replace "discount" [4617]
     /// </summary>
-    public string? HelocTaInstallmentLoanDiscountWord { get => _helocTaInstallmentLoanDiscountWord; set => SetField(ref _helocTaInstallmentLoanDiscountWord, value); }
+    public string? HelocTaInstallmentLoanDiscountWord { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Installment loan payments applied method [4620]
     /// </summary>
-    public string? HelocTaInstallmentLoanPaymentAppliedMethod { get => _helocTaInstallmentLoanPaymentAppliedMethod; set => SetField(ref _helocTaInstallmentLoanPaymentAppliedMethod, value); }
+    public string? HelocTaInstallmentLoanPaymentAppliedMethod { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Installment Loan Periodic Rate Rounding Percentage [4615]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? HelocTaInstallmentLoanPeriodicRateRoundingPercent { get => _helocTaInstallmentLoanPeriodicRateRoundingPercent; set => SetField(ref _helocTaInstallmentLoanPeriodicRateRoundingPercent, value); }
+    public decimal? HelocTaInstallmentLoanPeriodicRateRoundingPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Installment Loan Termination Method [4619]
     /// </summary>
-    public string? HelocTaInstallmentLoanTerminationMethod { get => _helocTaInstallmentLoanTerminationMethod; set => SetField(ref _helocTaInstallmentLoanTerminationMethod, value); }
+    public string? HelocTaInstallmentLoanTerminationMethod { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Intro Rate applied if monthly periodic rate is used [4595]
     /// </summary>
-    public StringEnumValue<HelocTAIntroRateAppliedOn> HelocTaIntroRateAppliedOn { get => _helocTaIntroRateAppliedOn; set => SetField(ref _helocTaIntroRateAppliedOn, value); }
+    public StringEnumValue<HelocTAIntroRateAppliedOn> HelocTaIntroRateAppliedOn { get => GetValue<StringEnumValue<HelocTAIntroRateAppliedOn>>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender will pay the following third-party closing costs at closing [4622]
     /// </summary>
-    public string? HelocTaLenderToPay3rdPartyCost { get => _helocTaLenderToPay3rdPartyCost; set => SetField(ref _helocTaLenderToPay3rdPartyCost, value); }
+    public string? HelocTaLenderToPay3rdPartyCost { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Option: Overdraft Protection [4602]
     /// </summary>
-    public bool? HelocTaOverdraftProtectionIndicator { get => _helocTaOverdraftProtectionIndicator; set => SetField(ref _helocTaOverdraftProtectionIndicator, value); }
+    public bool? HelocTaOverdraftProtectionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// If charging an Over Limit charge choose an Over Limit Charge Imposed option [4596]
     /// </summary>
-    public StringEnumValue<HelocTAOverLimitChargeOption> HelocTaOverLimitChargeOption { get => _helocTaOverLimitChargeOption; set => SetField(ref _helocTaOverLimitChargeOption, value); }
+    public StringEnumValue<HelocTAOverLimitChargeOption> HelocTaOverLimitChargeOption { get => GetValue<StringEnumValue<HelocTAOverLimitChargeOption>>(); set => SetValue(value); }
 
     /// <summary>
     /// Periodic Cap Applied to Advance Period [4612]
     /// </summary>
-    public bool? HelocTaPeriodicCapAppliedToAdvancePeriod { get => _helocTaPeriodicCapAppliedToAdvancePeriod; set => SetField(ref _helocTaPeriodicCapAppliedToAdvancePeriod, value); }
+    public bool? HelocTaPeriodicCapAppliedToAdvancePeriod { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Periodic Cap Applied to Repayment Period [4613]
     /// </summary>
-    public bool? HelocTaPeriodicCapAppliedToRepaymentPeriod { get => _helocTaPeriodicCapAppliedToRepaymentPeriod; set => SetField(ref _helocTaPeriodicCapAppliedToRepaymentPeriod, value); }
+    public bool? HelocTaPeriodicCapAppliedToRepaymentPeriod { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Periodic Rate and APR Adjustments [4610]
     /// </summary>
-    public StringEnumValue<HelocTAPeriodicRateAdjDayOption> HelocTaPeriodicRateAdjDayOption { get => _helocTaPeriodicRateAdjDayOption; set => SetField(ref _helocTaPeriodicRateAdjDayOption, value); }
+    public StringEnumValue<HelocTAPeriodicRateAdjDayOption> HelocTaPeriodicRateAdjDayOption { get => GetValue<StringEnumValue<HelocTAPeriodicRateAdjDayOption>>(); set => SetValue(value); }
 
     /// <summary>
     /// The fixed repayment term must be in one-year (12-month) increments, and may not end later than [4592]
     /// </summary>
-    public StringEnumValue<HelocTARepaymentTermEndBy> HelocTaRepaymentTermEndBy { get => _helocTaRepaymentTermEndBy; set => SetField(ref _helocTaRepaymentTermEndBy, value); }
+    public StringEnumValue<HelocTARepaymentTermEndBy> HelocTaRepaymentTermEndBy { get => GetValue<StringEnumValue<HelocTARepaymentTermEndBy>>(); set => SetValue(value); }
 
     /// <summary>
     /// Request an Advance by Written Authorization: In Person [4603]
     /// </summary>
-    public bool? HelocTaRequestAdvanceInPersonIndicator { get => _helocTaRequestAdvanceInPersonIndicator; set => SetField(ref _helocTaRequestAdvanceInPersonIndicator, value); }
+    public bool? HelocTaRequestAdvanceInPersonIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Request an Advance by Written Authorization: In Person location [4605]
     /// </summary>
-    public string? HelocTaRequestAdvanceInPersonLocation { get => _helocTaRequestAdvanceInPersonLocation; set => SetField(ref _helocTaRequestAdvanceInPersonLocation, value); }
+    public string? HelocTaRequestAdvanceInPersonLocation { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Request an Advance by Written Authorization: Via the Internet [4604]
     /// </summary>
-    public bool? HelocTaRequestAdvanceViaInternetIndicator { get => _helocTaRequestAdvanceViaInternetIndicator; set => SetField(ref _helocTaRequestAdvanceViaInternetIndicator, value); }
+    public bool? HelocTaRequestAdvanceViaInternetIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Request an Advance by Written Authorization: Written Authoirzation web address [4606]
     /// </summary>
-    public string? HelocTaRequestAdvanceViaInternetUrl { get => _helocTaRequestAdvanceViaInternetUrl; set => SetField(ref _helocTaRequestAdvanceViaInternetUrl, value); }
+    public string? HelocTaRequestAdvanceViaInternetUrl { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Option: Request by Phone [4599]
     /// </summary>
-    public bool? HelocTaRequestByPhoneIndicator { get => _helocTaRequestByPhoneIndicator; set => SetField(ref _helocTaRequestByPhoneIndicator, value); }
+    public bool? HelocTaRequestByPhoneIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender intends to require repay of some/all third-party closing costs at closing [4621]
     /// </summary>
-    public bool? HelocTaRequireRepayIndicator { get => _helocTaRequireRepayIndicator; set => SetField(ref _helocTaRequireRepayIndicator, value); }
+    public bool? HelocTaRequireRepayIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Right to Setoff [4623]
     /// </summary>
-    public bool? HelocTaRightToSetoffIndicator { get => _helocTaRightToSetoffIndicator; set => SetField(ref _helocTaRightToSetoffIndicator, value); }
+    public bool? HelocTaRightToSetoffIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Draw Option: Written Authorization [4600]
     /// </summary>
-    public bool? HelocTaWrittenAuthorizationIndicator { get => _helocTaWrittenAuthorizationIndicator; set => SetField(ref _helocTaWrittenAuthorizationIndicator, value); }
+    public bool? HelocTaWrittenAuthorizationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Index [688]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? IndexCurrentValuePercent { get => _indexCurrentValuePercent; set => SetField(ref _indexCurrentValuePercent, value); }
+    public decimal? IndexCurrentValuePercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// ARM Index Lookback Period [ARM.IdxLkbckPrd]
     /// </summary>
-    public StringEnumValue<IndexLookbackPeriod> IndexLookbackPeriod { get => _indexLookbackPeriod; set => SetField(ref _indexLookbackPeriod, value); }
+    public StringEnumValue<IndexLookbackPeriod> IndexLookbackPeriod { get => GetValue<StringEnumValue<IndexLookbackPeriod>>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Margin [689]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? IndexMarginPercent { get => _indexMarginPercent; set => SetField(ref _indexMarginPercent, value); }
+    public decimal? IndexMarginPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Margin - Display field with KBYO rounding rules [KBYO.XD689]
     /// </summary>
-    public string? IndexMarginPercentUi { get => _indexMarginPercentUi; set => SetField(ref _indexMarginPercentUi, value); }
+    public string? IndexMarginPercentUi { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Advance [1888]
     /// </summary>
-    public decimal? InitialAdvanceAmount { get => _initialAdvanceAmount; set => SetField(ref _initialAdvanceAmount, value); }
+    public decimal? InitialAdvanceAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Initial Application Amount [NMLS.X11]
     /// </summary>
-    public decimal? InitialApplicationAmount { get => _initialApplicationAmount; set => SetField(ref _initialApplicationAmount, value); }
+    public decimal? InitialApplicationAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Inquiry Or Pre-Qualification [NMLS.X13]
     /// </summary>
-    public bool? InquiryOrPreQualificationIndicator { get => _inquiryOrPreQualificationIndicator; set => SetField(ref _inquiryOrPreQualificationIndicator, value); }
+    public bool? InquiryOrPreQualificationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender Representative [4672]
     /// </summary>
-    public string? LenderRepresentative { get => _lenderRepresentative; set => SetField(ref _lenderRepresentative, value); }
+    public string? LenderRepresentative { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender Representative Cell Phone [4677]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? LenderRepresentativeCellPhone { get => _lenderRepresentativeCellPhone; set => SetField(ref _lenderRepresentativeCellPhone, value); }
+    public string? LenderRepresentativeCellPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender Representative Email address [4674]
     /// </summary>
-    public string? LenderRepresentativeEmailAddress { get => _lenderRepresentativeEmailAddress; set => SetField(ref _lenderRepresentativeEmailAddress, value); }
+    public string? LenderRepresentativeEmailAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender Representative First/ Last Name [4673]
     /// </summary>
-    public string? LenderRepresentativeFirstLastName { get => _lenderRepresentativeFirstLastName; set => SetField(ref _lenderRepresentativeFirstLastName, value); }
+    public string? LenderRepresentativeFirstLastName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender Representative Job Title [4683]
     /// </summary>
-    public string? LenderRepresentativeJobTitle { get => _lenderRepresentativeJobTitle; set => SetField(ref _lenderRepresentativeJobTitle, value); }
+    public string? LenderRepresentativeJobTitle { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender Representative Role ID [4675]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? LenderRepresentativeRoleId { get => _lenderRepresentativeRoleId; set => SetField(ref _lenderRepresentativeRoleId, value); }
+    public string? LenderRepresentativeRoleId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender Representative User ID [4682]
     /// </summary>
-    public string? LenderRepresentativeUserId { get => _lenderRepresentativeUserId; set => SetField(ref _lenderRepresentativeUserId, value); }
+    public string? LenderRepresentativeUserId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender Representative User Type [4684]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? LenderRepresentativeUserType { get => _lenderRepresentativeUserType; set => SetField(ref _lenderRepresentativeUserType, value); }
+    public string? LenderRepresentativeUserType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Lender Representative Work Phone [4676]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? LenderRepresentativeWorkPhone { get => _lenderRepresentativeWorkPhone; set => SetField(ref _lenderRepresentativeWorkPhone, value); }
+    public string? LenderRepresentativeWorkPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Lien Position [420]
     /// </summary>
-    public StringEnumValue<LienType> LienPriorityType { get => _lienPriorityType; set => SetField(ref _lienPriorityType, value); }
+    public StringEnumValue<LienType> LienPriorityType { get => GetValue<StringEnumValue<LienType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Fannie Mae Loan Doc Type Code [MORNET.X67]
     /// </summary>
-    public StringEnumValue<LoanDocumentationType> LoanDocumentationType { get => _loanDocumentationType; set => SetField(ref _loanDocumentationType, value); }
+    public StringEnumValue<LoanDocumentationType> LoanDocumentationType { get => GetValue<StringEnumValue<LoanDocumentationType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Fannie Mae Repymt Type Code [424]
     /// </summary>
-    public StringEnumValue<LoanRepaymentType> LoanRepaymentType { get => _loanRepaymentType; set => SetField(ref _loanRepaymentType, value); }
+    public StringEnumValue<LoanRepaymentType> LoanRepaymentType { get => GetValue<StringEnumValue<LoanRepaymentType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Est Closing Date [763]
     /// </summary>
-    public DateTime? LoanScheduledClosingDate { get => _loanScheduledClosingDate; set => SetField(ref _loanScheduledClosingDate, value); }
+    public DateTime? LoanScheduledClosingDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Maximum Monthly Payment [NEWHUD.X11]
     /// </summary>
-    public decimal? MaximumMonthlyPayment { get => _maximumMonthlyPayment; set => SetField(ref _maximumMonthlyPayment, value); }
+    public decimal? MaximumMonthlyPayment { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Max Life Interest Cap [2625]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
-    public decimal? MaxLifeInterestCapPercent { get => _maxLifeInterestCapPercent; set => SetField(ref _maxLifeInterestCapPercent, value); }
+    public decimal? MaxLifeInterestCapPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Max Life Interest Cap - Display field with KBYO rounding rules [KBYO.XD2625]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? MaxLifeInterestCapPercentUi { get => _maxLifeInterestCapPercentUi; set => SetField(ref _maxLifeInterestCapPercentUi, value); }
+    public string? MaxLifeInterestCapPercentUi { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Insurance Mtg Ins Coverage Factor [430]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? MiCoveragePercent { get => _miCoveragePercent; set => SetField(ref _miCoveragePercent, value); }
+    public decimal? MiCoveragePercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Min Advance Amt [1892]
     /// </summary>
-    public decimal? MinimumAdvanceAmount { get => _minimumAdvanceAmount; set => SetField(ref _minimumAdvanceAmount, value); }
+    public decimal? MinimumAdvanceAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Max Allowable APR [1893]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? MinimumAllowableApr { get => _minimumAllowableApr; set => SetField(ref _minimumAllowableApr, value); }
+    public decimal? MinimumAllowableApr { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Minimum Draw Period Payment [HELOC.MinAdvPct]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? MinimumDrawPeriodPaymentPercent { get => _minimumDrawPeriodPaymentPercent; set => SetField(ref _minimumDrawPeriodPaymentPercent, value); }
+    public decimal? MinimumDrawPeriodPaymentPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Minimum Payment [1483]
     /// </summary>
-    public decimal? MinimumPaymentAmount { get => _minimumPaymentAmount; set => SetField(ref _minimumPaymentAmount, value); }
+    public decimal? MinimumPaymentAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Minimum Payment Less Than Amt [HELOC.MinPmtLessThanAmt]
     /// </summary>
-    public decimal? MinimumPaymentLessThanAmount { get => _minimumPaymentLessThanAmount; set => SetField(ref _minimumPaymentLessThanAmount, value); }
+    public decimal? MinimumPaymentLessThanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Pymt Factor [1413]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? MinimumPaymentPercent { get => _minimumPaymentPercent; set => SetField(ref _minimumPaymentPercent, value); }
+    public decimal? MinimumPaymentPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Minimum Payment UPB Amt [HELOC.MinPmtUnpdBalAmt]
     /// </summary>
-    public decimal? MinimumPaymentUpbAmount { get => _minimumPaymentUpbAmount; set => SetField(ref _minimumPaymentUpbAmount, value); }
+    public decimal? MinimumPaymentUpbAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Min. Payment UPB [HELOC.MinPmtUPB]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? MinimumPaymentUpbPercent { get => _minimumPaymentUpbPercent; set => SetField(ref _minimumPaymentUpbPercent, value); }
+    public decimal? MinimumPaymentUpbPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Minimum Repay Period Payment [HELOC.MinRepmtPct]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? MinimumRepayPeriodPaymentPercent { get => _minimumRepayPeriodPaymentPercent; set => SetField(ref _minimumRepayPeriodPaymentPercent, value); }
+    public decimal? MinimumRepayPeriodPaymentPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// REGZ Prepay Penalty Mths Applied To Prpymt Pnlty Fee [2829]
     /// </summary>
-    public int? MonthsAppliedToPrepaymentPenaltyFeeCount { get => _monthsAppliedToPrepaymentPenaltyFeeCount; set => SetField(ref _monthsAppliedToPrepaymentPenaltyFeeCount, value); }
+    public int? MonthsAppliedToPrepaymentPenaltyFeeCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Max Bal % [698]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? NegativeAmortizationLimitPercent { get => _negativeAmortizationLimitPercent; set => SetField(ref _negativeAmortizationLimitPercent, value); }
+    public decimal? NegativeAmortizationLimitPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Net (Initial and Final) [NMLS.X12]
     /// </summary>
-    public decimal? NetInitialAndFinal { get => _netInitialAndFinal; set => SetField(ref _netInitialAndFinal, value); }
+    public decimal? NetInitialAndFinal { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Documentation Type [NMLS.X3]
     /// </summary>
-    public StringEnumValue<NmlsDocumentationType> NmlsDocumentationType { get => _nmlsDocumentationType; set => SetField(ref _nmlsDocumentationType, value); }
+    public StringEnumValue<NmlsDocumentationType> NmlsDocumentationType { get => GetValue<StringEnumValue<NmlsDocumentationType>>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Residential First Mortgage Type [NMLS.X2]
     /// </summary>
-    public StringEnumValue<NmlsFirstMortgageType> NmlsFirstMortgageType { get => _nmlsFirstMortgageType; set => SetField(ref _nmlsFirstMortgageType, value); }
+    public StringEnumValue<NmlsFirstMortgageType> NmlsFirstMortgageType { get => GetValue<StringEnumValue<NmlsFirstMortgageType>>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Trans Details Lien Status [NMLS.X17]
     /// </summary>
-    public StringEnumValue<NmlsLienStatus> NmlsLienStatus { get => _nmlsLienStatus; set => SetField(ref _nmlsLienStatus, value); }
+    public StringEnumValue<NmlsLienStatus> NmlsLienStatus { get => GetValue<StringEnumValue<NmlsLienStatus>>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Loan Type [NMLS.X1]
     /// </summary>
-    public StringEnumValue<NmlsLoanType> NmlsLoanType { get => _nmlsLoanType; set => SetField(ref _nmlsLoanType, value); }
+    public StringEnumValue<NmlsLoanType> NmlsLoanType { get => GetValue<StringEnumValue<NmlsLoanType>>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Option ARM Indicator [NMLS.X4]
     /// </summary>
-    public bool? NmlsOptionArmIndicator { get => _nmlsOptionArmIndicator; set => SetField(ref _nmlsOptionArmIndicator, value); }
+    public bool? NmlsOptionArmIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Piggyback or Funded HELOC Indicator [NMLS.X5]
     /// </summary>
-    public bool? NmlsPiggyBackOrFundedHelocIndicator { get => _nmlsPiggyBackOrFundedHelocIndicator; set => SetField(ref _nmlsPiggyBackOrFundedHelocIndicator, value); }
+    public bool? NmlsPiggyBackOrFundedHelocIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Production Sold To [NMLS.X7]
     /// </summary>
-    public StringEnumValue<NmlsProductionSoldToType> NmlsProductionSoldToType { get => _nmlsProductionSoldToType; set => SetField(ref _nmlsProductionSoldToType, value); }
+    public StringEnumValue<NmlsProductionSoldToType> NmlsProductionSoldToType { get => GetValue<StringEnumValue<NmlsProductionSoldToType>>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Subject Property Type [NMLS.X16]
     /// </summary>
-    public StringEnumValue<HmdaPropertyType> NmlsPropertyType { get => _nmlsPropertyType; set => SetField(ref _nmlsPropertyType, value); }
+    public StringEnumValue<HmdaPropertyType> NmlsPropertyType { get => GetValue<StringEnumValue<HmdaPropertyType>>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Refinance Purpose [NMLS.X6]
     /// </summary>
-    public StringEnumValue<NmlsRefinancePurposeType> NmlsRefinancePurposeType { get => _nmlsRefinancePurposeType; set => SetField(ref _nmlsRefinancePurposeType, value); }
+    public StringEnumValue<NmlsRefinancePurposeType> NmlsRefinancePurposeType { get => GetValue<StringEnumValue<NmlsRefinancePurposeType>>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Reverse Mortgage Type [NMLS.X10]
     /// </summary>
-    public StringEnumValue<NmlsReverseMortgageType> NmlsReverseMortgageType { get => _nmlsReverseMortgageType; set => SetField(ref _nmlsReverseMortgageType, value); }
+    public StringEnumValue<NmlsReverseMortgageType> NmlsReverseMortgageType { get => GetValue<StringEnumValue<NmlsReverseMortgageType>>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Oral Request for Extension of Credit [NMLS.X14]
     /// </summary>
-    public bool? OralRequestForExtensionOfCreditIndicator { get => _oralRequestForExtensionOfCreditIndicator; set => SetField(ref _oralRequestForExtensionOfCreditIndicator, value); }
+    public bool? OralRequestForExtensionOfCreditIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Over Limit Charge [HELOC.OvrLmtChg]
     /// </summary>
-    public decimal? OverLimitCharge { get => _overLimitCharge; set => SetField(ref _overLimitCharge, value); }
+    public decimal? OverLimitCharge { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Over Limit Return Charge [HELOC.OvrLmtRtnChg]
     /// </summary>
-    public decimal? OverLimitReturnCharge { get => _overLimitReturnCharge; set => SetField(ref _overLimitReturnCharge, value); }
+    public decimal? OverLimitReturnCharge { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Participation Fees: The total amount(s) payable at or before account opening for participation in an open-end credit plan. [HELOC.ParticipationFees]
     /// </summary>
-    public decimal? ParticipationFees { get => _participationFees; set => SetField(ref _participationFees, value); }
+    public decimal? ParticipationFees { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Pymt Adj Period [690]
     /// </summary>
-    public int? PaymentAdjustmentDurationMonthsCount { get => _paymentAdjustmentDurationMonthsCount; set => SetField(ref _paymentAdjustmentDurationMonthsCount, value); }
+    public int? PaymentAdjustmentDurationMonthsCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Pymt Adj Cap [691]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? PaymentAdjustmentPeriodicCapPercent { get => _paymentAdjustmentPeriodicCapPercent; set => SetField(ref _paymentAdjustmentPeriodicCapPercent, value); }
+    public decimal? PaymentAdjustmentPeriodicCapPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Amort Type Biweekly [423]
     /// </summary>
-    public StringEnumValue<PaymentFrequencyType> PaymentFrequencyType { get => _paymentFrequencyType; set => SetField(ref _paymentFrequencyType, value); }
+    public StringEnumValue<PaymentFrequencyType> PaymentFrequencyType { get => GetValue<StringEnumValue<PaymentFrequencyType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanProductDataContract PrepaymentPenalties
+    /// LoanProductData PrepaymentPenalties
     /// </summary>
     [AllowNull]
-    public IList<PrepaymentPenalty> PrepaymentPenalties { get => GetField(ref _prepaymentPenalties); set => SetField(ref _prepaymentPenalties, value); }
+    public IList<PrepaymentPenalty> PrepaymentPenalties { get => GetList<PrepaymentPenalty>(); set => SetList(value); }
 
     /// <summary>
     /// Amount REGZ Prepayment Penalty Based On [2830]
     /// </summary>
-    public StringEnumValue<PrepaymentPenaltyBasedOn> PrepaymentPenaltyBasedOn { get => _prepaymentPenaltyBasedOn; set => SetField(ref _prepaymentPenaltyBasedOn, value); }
+    public StringEnumValue<PrepaymentPenaltyBasedOn> PrepaymentPenaltyBasedOn { get => GetValue<StringEnumValue<PrepaymentPenaltyBasedOn>>(); set => SetValue(value); }
 
     /// <summary>
     /// Prepayment Penalty [675]
     /// </summary>
-    public bool? PrepaymentPenaltyIndicator { get => _prepaymentPenaltyIndicator; set => SetField(ref _prepaymentPenaltyIndicator, value); }
+    public bool? PrepaymentPenaltyIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// REGZ Prepymt Penalty Prepymt as a % 1 [1948]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? PrepaymentPenaltyPercent { get => _prepaymentPenaltyPercent; set => SetField(ref _prepaymentPenaltyPercent, value); }
+    public decimal? PrepaymentPenaltyPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// REGZ Prepymt Penalty Prepymt Period 1 [1947]
     /// </summary>
-    public int? PrepaymentPenaltyTermMonthsCount { get => _prepaymentPenaltyTermMonthsCount; set => SetField(ref _prepaymentPenaltyTermMonthsCount, value); }
+    public int? PrepaymentPenaltyTermMonthsCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Prepay Verbiage Type [Terms.PrepyVrbgTyp]
     /// </summary>
-    public StringEnumValue<PrepaymentPenaltyVerbiage> PrepaymentPenaltyVerbiage { get => _prepaymentPenaltyVerbiage; set => SetField(ref _prepaymentPenaltyVerbiage, value); }
+    public StringEnumValue<PrepaymentPenaltyVerbiage> PrepaymentPenaltyVerbiage { get => GetValue<StringEnumValue<PrepaymentPenaltyVerbiage>>(); set => SetValue(value); }
 
     /// <summary>
     /// Fannie Mae Product Name [MORNET.X66]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? ProductName { get => _productName; set => SetField(ref _productName, value); }
+    public string? ProductName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Qual Rate [1014]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? QualifyingRatePercent { get => _qualifyingRatePercent; set => SetField(ref _qualifyingRatePercent, value); }
+    public decimal? QualifyingRatePercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Rate Adj Period [694]
     /// </summary>
-    public int? RateAdjustmentDurationMonthsCount { get => _rateAdjustmentDurationMonthsCount; set => SetField(ref _rateAdjustmentDurationMonthsCount, value); }
+    public int? RateAdjustmentDurationMonthsCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Life Cap [247]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? RateAdjustmentLifetimeCapPercent { get => _rateAdjustmentLifetimeCapPercent; set => SetField(ref _rateAdjustmentLifetimeCapPercent, value); }
+    public decimal? RateAdjustmentLifetimeCapPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM First Rate Adj Cap [697]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? RateAdjustmentPercent { get => _rateAdjustmentPercent; set => SetField(ref _rateAdjustmentPercent, value); }
+    public decimal? RateAdjustmentPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM First Rate Adj Cap - Display fields with KBYO rounding rules [KBYO.XD697]
     /// </summary>
-    public string? RateAdjustmentPercentUi { get => _rateAdjustmentPercentUi; set => SetField(ref _rateAdjustmentPercentUi, value); }
+    public string? RateAdjustmentPercentUi { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Rate Cap [695]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? RateAdjustmentSubsequentCapPercent { get => _rateAdjustmentSubsequentCapPercent; set => SetField(ref _rateAdjustmentSubsequentCapPercent, value); }
+    public decimal? RateAdjustmentSubsequentCapPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Rate Cap - Display fields with KBYO rounding rules [KBYO.XD695]
     /// </summary>
-    public string? RateAdjustmentSubsequentCapPercentUi { get => _rateAdjustmentSubsequentCapPercentUi; set => SetField(ref _rateAdjustmentSubsequentCapPercentUi, value); }
+    public string? RateAdjustmentSubsequentCapPercentUi { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Release Recording Charge [HELOC.RlsRecgChg]
     /// </summary>
-    public decimal? ReleaseRecoringCharge { get => _releaseRecoringCharge; set => SetField(ref _releaseRecoringCharge, value); }
+    public decimal? ReleaseRecoringCharge { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Buydown Dsbmt Sum Total Subsidy Bal [3120]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public decimal? RemainingBuydownAmount { get => _remainingBuydownAmount; set => SetField(ref _remainingBuydownAmount, value); }
+    public decimal? RemainingBuydownAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Repay Period Mos [1890]
     /// </summary>
-    public int? RepayPeriodMonthsCount { get => _repayPeriodMonthsCount; set => SetField(ref _repayPeriodMonthsCount, value); }
+    public int? RepayPeriodMonthsCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Returned Check Charge Amt. [HELOC.RtdChkChgAmt]
     /// </summary>
-    public decimal? ReturnedCheckCharge { get => _returnedCheckCharge; set => SetField(ref _returnedCheckCharge, value); }
+    public decimal? ReturnedCheckCharge { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Returned Check Charge Rate [HELOC.RtdChkChgRat]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? ReturnedCheckChargeRatePercent { get => _returnedCheckChargeRatePercent; set => SetField(ref _returnedCheckChargeRatePercent, value); }
+    public decimal? ReturnedCheckChargeRatePercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Returned Check Charge Max. [HELOC.RtdChkChgMax]
     /// </summary>
-    public decimal? ReturnedCheckMaxCharge { get => _returnedCheckMaxCharge; set => SetField(ref _returnedCheckMaxCharge, value); }
+    public decimal? ReturnedCheckMaxCharge { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Returned Check Charge Min. [HELOC.RtdChkChgMin]
     /// </summary>
-    public decimal? ReturnedCheckMinCharge { get => _returnedCheckMinCharge; set => SetField(ref _returnedCheckMinCharge, value); }
+    public decimal? ReturnedCheckMinCharge { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Round Index To % [1700]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? RoundPercent { get => _roundPercent; set => SetField(ref _roundPercent, value); }
+    public decimal? RoundPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Round Index Up/Down [SYS.X1]
     /// </summary>
-    public StringEnumValue<RoundType> RoundType { get => _roundType; set => SetField(ref _roundType, value); }
+    public StringEnumValue<RoundType> RoundType { get => GetValue<StringEnumValue<RoundType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details First Pymt Adj Date [3054]
     /// </summary>
-    public DateTime? ScheduledFirstPaymentAdjustmentDate { get => _scheduledFirstPaymentAdjustmentDate; set => SetField(ref _scheduledFirstPaymentAdjustmentDate, value); }
+    public DateTime? ScheduledFirstPaymentAdjustmentDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details First Pymt Date [682]
     /// </summary>
-    public DateTime? ScheduledFirstPaymentDate { get => _scheduledFirstPaymentDate; set => SetField(ref _scheduledFirstPaymentDate, value); }
+    public DateTime? ScheduledFirstPaymentDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Stop Payment Charge [HELOC.StopPmtChrg]
     /// </summary>
-    public decimal? StopPaymentCharge { get => _stopPaymentCharge; set => SetField(ref _stopPaymentCharge, value); }
+    public decimal? StopPaymentCharge { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM First Period Change [696]
     /// </summary>
-    public int? SubsequentRateAdjustmentMonthsCount { get => _subsequentRateAdjustmentMonthsCount; set => SetField(ref _subsequentRateAdjustmentMonthsCount, value); }
+    public int? SubsequentRateAdjustmentMonthsCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Termination Fee [1986]
     /// </summary>
-    public decimal? TerminationFeeAmount { get => _terminationFeeAmount; set => SetField(ref _terminationFeeAmount, value); }
+    public decimal? TerminationFeeAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Termination Fee Mos [1987]
     /// </summary>
-    public int? TerminationPeriodMonthsCount { get => _terminationPeriodMonthsCount; set => SetField(ref _terminationPeriodMonthsCount, value); }
+    public int? TerminationPeriodMonthsCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Third Party Fees Range - From [1965]
     /// </summary>
-    public decimal? ThirdPartyFeeFromAmount { get => _thirdPartyFeeFromAmount; set => SetField(ref _thirdPartyFeeFromAmount, value); }
+    public decimal? ThirdPartyFeeFromAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Third Party Fees Range - To [1966]
     /// </summary>
-    public decimal? ThirdPartyFeeToAmount { get => _thirdPartyFeeToAmount; set => SetField(ref _thirdPartyFeeToAmount, value); }
+    public decimal? ThirdPartyFeeToAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Timely Payment Reduction Percent [2634]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? TimelyPaymentRateReductionPercent { get => _timelyPaymentRateReductionPercent; set => SetField(ref _timelyPaymentRateReductionPercent, value); }
+    public decimal? TimelyPaymentRateReductionPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Timely Payment Rewards [2633]
     /// </summary>
-    public StringEnumValue<TimelyPaymentRewards> TimelyPaymentRewards { get => _timelyPaymentRewards; set => SetField(ref _timelyPaymentRewards, value); }
+    public StringEnumValue<TimelyPaymentRewards> TimelyPaymentRewards { get => GetValue<StringEnumValue<TimelyPaymentRewards>>(); set => SetValue(value); }
 
     /// <summary>
     /// Buydown Dsbmt Sum Tot. Subsidy Amt [3119]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public decimal? TotalSubsidyAmount { get => _totalSubsidyAmount; set => SetField(ref _totalSubsidyAmount, value); }
+    public decimal? TotalSubsidyAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Transaction Fees: The total amount of fees charged each time a withdrawal or other specified transaction is made on a line of credit, such as a balance transfer fee or a cash advance fee. [HELOC.TransactionFees]
     /// </summary>
-    public decimal? TransactionFees { get => _transactionFees; set => SetField(ref _transactionFees, value); }
+    public decimal? TransactionFees { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Wire Fee [HELOC.WireFee]
     /// </summary>
-    public decimal? WireFee { get => _wireFee; set => SetField(ref _wireFee, value); }
+    public decimal? WireFee { get => GetValue<decimal?>(); set => SetValue(value); }
 }

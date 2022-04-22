@@ -7,18 +7,15 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class PostClosingConditionsTabRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _addEditDeleteConditions;
-        private DirtyValue<bool?>? _addAutomatedConditions;
-
         /// <summary>
         /// PostClosingConditionsTabRights AddEditDeleteConditions
         /// </summary>
         [JsonProperty("add/Edit/DeleteConditions")]
-        public bool? AddEditDeleteConditions { get => _addEditDeleteConditions; set => SetField(ref _addEditDeleteConditions, value); }
+        public bool? AddEditDeleteConditions { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PostClosingConditionsTabRights AddAutomatedConditions
         /// </summary>
-        public bool? AddAutomatedConditions { get => _addAutomatedConditions; set => SetField(ref _addAutomatedConditions, value); }
+        public bool? AddAutomatedConditions { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

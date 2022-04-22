@@ -8,45 +8,38 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class CompanyDetailsRights : ParentAccessRights
     {
-        private CreateEditBanksRights? _createEditBanks;
-        private DirtyValue<bool?>? _createOrganizations;
-        private DirtyValue<bool?>? _deleteOrganizations;
-        private DirtyValue<bool?>? _exportOrganizations;
-        private TPOContactsRights? _tPOContacts;
-        private TPOOrganizationSettingsRights? _tPOOrganizationSettings;
-
         /// <summary>
         /// CompanyDetailsRights CreateEditBanks
         /// </summary>
         [JsonProperty("create/EditBanks")]
         [AllowNull]
-        public CreateEditBanksRights CreateEditBanks { get => GetField(ref _createEditBanks); set => SetField(ref _createEditBanks, value); }
+        public CreateEditBanksRights CreateEditBanks { get => GetEntity<CreateEditBanksRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// CompanyDetailsRights CreateOrganizations
         /// </summary>
-        public bool? CreateOrganizations { get => _createOrganizations; set => SetField(ref _createOrganizations, value); }
+        public bool? CreateOrganizations { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// CompanyDetailsRights DeleteOrganizations
         /// </summary>
-        public bool? DeleteOrganizations { get => _deleteOrganizations; set => SetField(ref _deleteOrganizations, value); }
+        public bool? DeleteOrganizations { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// CompanyDetailsRights ExportOrganizations
         /// </summary>
-        public bool? ExportOrganizations { get => _exportOrganizations; set => SetField(ref _exportOrganizations, value); }
+        public bool? ExportOrganizations { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// CompanyDetailsRights TPOContacts
         /// </summary>
         [AllowNull]
-        public TPOContactsRights TPOContacts { get => GetField(ref _tPOContacts); set => SetField(ref _tPOContacts, value); }
+        public TPOContactsRights TPOContacts { get => GetEntity<TPOContactsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// CompanyDetailsRights TPOOrganizationSettings
         /// </summary>
         [AllowNull]
-        public TPOOrganizationSettingsRights TPOOrganizationSettings { get => GetField(ref _tPOOrganizationSettings); set => SetField(ref _tPOOrganizationSettings, value); }
+        public TPOOrganizationSettingsRights TPOOrganizationSettings { get => GetEntity<TPOOrganizationSettingsRights>(); set => SetEntity(value); }
     }
 }

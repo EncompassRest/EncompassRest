@@ -7,40 +7,33 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class PriceAdjustment : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<StringEnumValue<AdjustmentType>>? _adjustmentType;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<StringEnumValue<PriceAdjustmentType>>? _priceAdjustmentType;
-    private DirtyValue<int?>? _priceAdjustmentTypeIndex;
-    private DirtyValue<decimal?>? _rate;
-    private DirtyValue<StringEnumValue<RateLockAdjustmentType>>? _rateLockAdjustmentType;
+    /// <summary>
+    /// PriceAdjustment AdjustmentType
+    /// </summary>
+    public StringEnumValue<AdjustmentType> AdjustmentType { get => GetValue<StringEnumValue<AdjustmentType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// PriceAdjustmentContract AdjustmentType
+    /// PriceAdjustment Description
     /// </summary>
-    public StringEnumValue<AdjustmentType> AdjustmentType { get => _adjustmentType; set => SetField(ref _adjustmentType, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PriceAdjustmentContract Description
+    /// PriceAdjustment PriceAdjustmentType
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public StringEnumValue<PriceAdjustmentType> PriceAdjustmentType { get => GetValue<StringEnumValue<PriceAdjustmentType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// PriceAdjustmentContract PriceAdjustmentType
+    /// PriceAdjustment PriceAdjustmentTypeIndex
     /// </summary>
-    public StringEnumValue<PriceAdjustmentType> PriceAdjustmentType { get => _priceAdjustmentType; set => SetField(ref _priceAdjustmentType, value); }
+    public int? PriceAdjustmentTypeIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PriceAdjustmentContract PriceAdjustmentTypeIndex
+    /// PriceAdjustment Rate
     /// </summary>
-    public int? PriceAdjustmentTypeIndex { get => _priceAdjustmentTypeIndex; set => SetField(ref _priceAdjustmentTypeIndex, value); }
+    public decimal? Rate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PriceAdjustmentContract Rate
+    /// PriceAdjustment RateLockAdjustmentType
     /// </summary>
-    public decimal? Rate { get => _rate; set => SetField(ref _rate, value); }
-
-    /// <summary>
-    /// PriceAdjustmentContract RateLockAdjustmentType
-    /// </summary>
-    public StringEnumValue<RateLockAdjustmentType> RateLockAdjustmentType { get => _rateLockAdjustmentType; set => SetField(ref _rateLockAdjustmentType, value); }
+    public StringEnumValue<RateLockAdjustmentType> RateLockAdjustmentType { get => GetValue<StringEnumValue<RateLockAdjustmentType>>(); set => SetValue(value); }
 }

@@ -5,11 +5,9 @@
     /// </summary>
     public sealed class LoanSearchRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _editLoanSearch;
-
         /// <summary>
         /// LoanSearchRights EditLoanSearch
         /// </summary>
-        public bool? EditLoanSearch { get => _editLoanSearch; set => SetField(ref _editLoanSearch, value); }
+        public bool? EditLoanSearch { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

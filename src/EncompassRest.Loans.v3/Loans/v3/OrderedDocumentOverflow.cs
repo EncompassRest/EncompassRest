@@ -7,29 +7,24 @@ namespace EncompassRest.Loans.v3;
 [Entity(PropertiesToAlwaysSerialize = nameof(OriginalText))]
 public sealed partial class OrderedDocumentOverflow : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _fieldName;
-    private LocationCoordinates? _location;
-    private DirtyValue<string?>? _originalText;
-    private DirtyValue<int?>? _pageNumber;
-
     /// <summary>
-    /// OrderedDocumentOverflowContract FieldName
+    /// OrderedDocumentOverflow FieldName
     /// </summary>
-    public string? FieldName { get => _fieldName; set => SetField(ref _fieldName, value); }
+    public string? FieldName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OrderedDocumentOverflowContract Location
+    /// OrderedDocumentOverflow Location
     /// </summary>
     [AllowNull]
-    public LocationCoordinates Location { get => GetField(ref _location); set => SetField(ref _location, value); }
+    public LocationCoordinates Location { get => GetEntity<LocationCoordinates>(); set => SetEntity(value); }
 
     /// <summary>
-    /// OrderedDocumentOverflowContract OriginalText
+    /// OrderedDocumentOverflow OriginalText
     /// </summary>
-    public string? OriginalText { get => _originalText; set => SetField(ref _originalText, value); }
+    public string? OriginalText { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OrderedDocumentOverflowContract PageNumber
+    /// OrderedDocumentOverflow PageNumber
     /// </summary>
-    public int? PageNumber { get => _pageNumber; set => SetField(ref _pageNumber, value); }
+    public int? PageNumber { get => GetValue<int?>(); set => SetValue(value); }
 }

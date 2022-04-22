@@ -8,70 +8,58 @@ namespace EncompassRest.Loans.v3;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class NonVol : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _adjustmentAmount;
-    private DirtyValue<string?>? _adjustmentDescription;
-    private DirtyValue<string?>? _adjustmentOtherDescription;
-    private DirtyValue<StringEnumValue<NonVolAdjustmentType>>? _adjustmentType;
-    private DirtyValue<string?>? _altId;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _includedIndicator;
-    private DirtyValue<StringEnumValue<PaidToOrBy>>? _paidBy;
-    private DirtyValue<StringEnumValue<PaidToOrBy>>? _paidTo;
-    private DirtyValue<bool?>? _pocIndicator;
-    private DirtyValue<string?>? _principalCureAddendum;
-
     /// <summary>
     /// Adjustment Amount [UNFL0004]
     /// </summary>
-    public decimal? AdjustmentAmount { get => _adjustmentAmount; set => SetField(ref _adjustmentAmount, value); }
+    public decimal? AdjustmentAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Adjustment Description [UNFL0002]
     /// </summary>
-    public string? AdjustmentDescription { get => _adjustmentDescription; set => SetField(ref _adjustmentDescription, value); }
+    public string? AdjustmentDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Adjustment Other Description [UNFL0003]
     /// </summary>
-    public string? AdjustmentOtherDescription { get => _adjustmentOtherDescription; set => SetField(ref _adjustmentOtherDescription, value); }
+    public string? AdjustmentOtherDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCD Adjustment Type [UNFL0001]
     /// </summary>
-    public StringEnumValue<NonVolAdjustmentType> AdjustmentType { get => _adjustmentType; set => SetField(ref _adjustmentType, value); }
+    public StringEnumValue<NonVolAdjustmentType> AdjustmentType { get => GetValue<StringEnumValue<NonVolAdjustmentType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// NonVolContract AltId
+    /// NonVol AltId
     /// </summary>
-    public string? AltId { get => _altId; set => SetField(ref _altId, value); }
+    public string? AltId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// NonVolContract Id
+    /// NonVol Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Liability Will be Paid Off and will be included [UNFL0005]
     /// </summary>
-    public bool? IncludedIndicator { get => _includedIndicator; set => SetField(ref _includedIndicator, value); }
+    public bool? IncludedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Paid By [UNFL0007]
     /// </summary>
-    public StringEnumValue<PaidToOrBy> PaidBy { get => _paidBy; set => SetField(ref _paidBy, value); }
+    public StringEnumValue<PaidToOrBy> PaidBy { get => GetValue<StringEnumValue<PaidToOrBy>>(); set => SetValue(value); }
 
     /// <summary>
     /// Paid To [UNFL0009]
     /// </summary>
-    public StringEnumValue<PaidToOrBy> PaidTo { get => _paidTo; set => SetField(ref _paidTo, value); }
+    public StringEnumValue<PaidToOrBy> PaidTo { get => GetValue<StringEnumValue<PaidToOrBy>>(); set => SetValue(value); }
 
     /// <summary>
     /// POC Indicator [UNFL0006]
     /// </summary>
-    public bool? PocIndicator { get => _pocIndicator; set => SetField(ref _pocIndicator, value); }
+    public bool? PocIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// PrincipalCureAddendum Amount [UNFL0008]
     /// </summary>
-    public string? PrincipalCureAddendum { get => _principalCureAddendum; set => SetField(ref _principalCureAddendum, value); }
+    public string? PrincipalCureAddendum { get => GetValue<string?>(); set => SetValue(value); }
 }

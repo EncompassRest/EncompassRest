@@ -7,52 +7,43 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class FeeVariance : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _cd;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<int?>? _feeVarianceChargeIndex;
-    private DirtyValue<StringEnumValue<FeeVarianceFeeType>>? _feeVarianceFeeType;
-    private DirtyValue<decimal?>? _initialLe;
-    private DirtyValue<decimal?>? _itemization;
-    private DirtyValue<decimal?>? _le;
-    private DirtyValue<string?>? _line;
+    /// <summary>
+    /// FeeVariance Cd
+    /// </summary>
+    public decimal? Cd { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeVarianceContract Cd
+    /// FeeVariance Description
     /// </summary>
-    public decimal? Cd { get => _cd; set => SetField(ref _cd, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeVarianceContract Description
+    /// FeeVariance FeeVarianceChargeIndex
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public int? FeeVarianceChargeIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeVarianceContract FeeVarianceChargeIndex
+    /// FeeVariance FeeVarianceFeeType
     /// </summary>
-    public int? FeeVarianceChargeIndex { get => _feeVarianceChargeIndex; set => SetField(ref _feeVarianceChargeIndex, value); }
+    public StringEnumValue<FeeVarianceFeeType> FeeVarianceFeeType { get => GetValue<StringEnumValue<FeeVarianceFeeType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeVarianceContract FeeVarianceFeeType
+    /// FeeVariance InitialLe
     /// </summary>
-    public StringEnumValue<FeeVarianceFeeType> FeeVarianceFeeType { get => _feeVarianceFeeType; set => SetField(ref _feeVarianceFeeType, value); }
+    public decimal? InitialLe { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeVarianceContract InitialLe
+    /// FeeVariance Itemization
     /// </summary>
-    public decimal? InitialLe { get => _initialLe; set => SetField(ref _initialLe, value); }
+    public decimal? Itemization { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeVarianceContract Itemization
+    /// FeeVariance Le
     /// </summary>
-    public decimal? Itemization { get => _itemization; set => SetField(ref _itemization, value); }
+    public decimal? Le { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeVarianceContract Le
+    /// FeeVariance Line
     /// </summary>
-    public decimal? Le { get => _le; set => SetField(ref _le, value); }
-
-    /// <summary>
-    /// FeeVarianceContract Line
-    /// </summary>
-    public string? Line { get => _line; set => SetField(ref _line, value); }
+    public string? Line { get => GetValue<string?>(); set => SetValue(value); }
 }

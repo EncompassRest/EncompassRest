@@ -8,13 +8,11 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class TPOFeesRights : ParentAccessRights
     {
-        private AddEditTPOFeesRights? _addEditTPOFees;
-
         /// <summary>
         /// TPOFeesRights AddEditTPOFees
         /// </summary>
         [JsonProperty("add/EditTPOFees")]
         [AllowNull]
-        public AddEditTPOFeesRights AddEditTPOFees { get => GetField(ref _addEditTPOFees); set => SetField(ref _addEditTPOFees, value); }
+        public AddEditTPOFeesRights AddEditTPOFees { get => GetEntity<AddEditTPOFeesRights>(); set => SetEntity(value); }
     }
 }

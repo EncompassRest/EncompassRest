@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Configurations>Debug;Release;CI</Configurations>
     <SignAssembly>true</SignAssembly>
@@ -26,7 +26,6 @@
     <ProjectReference Include="..\EncompassRest.Core\EncompassRest.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.IO.Compression" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

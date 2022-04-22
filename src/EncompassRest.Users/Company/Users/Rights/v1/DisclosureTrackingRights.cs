@@ -8,32 +8,27 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class DisclosureTrackingRights : ParentAccessRights
     {
-        private ChangeDisclosureInformationRights? _changeDisclosureInformation;
-        private CreateManualEntryRights? _createManualEntry;
-        private DirtyValue<bool?>? _excludeIncludeRecords;
-        private DirtyValue<bool?>? _manuallyFulfill;
-
         /// <summary>
         /// DisclosureTrackingRights ChangeDisclosureInformation
         /// </summary>
         [AllowNull]
-        public ChangeDisclosureInformationRights ChangeDisclosureInformation { get => GetField(ref _changeDisclosureInformation); set => SetField(ref _changeDisclosureInformation, value); }
+        public ChangeDisclosureInformationRights ChangeDisclosureInformation { get => GetEntity<ChangeDisclosureInformationRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// DisclosureTrackingRights CreateManualEntry
         /// </summary>
         [AllowNull]
-        public CreateManualEntryRights CreateManualEntry { get => GetField(ref _createManualEntry); set => SetField(ref _createManualEntry, value); }
+        public CreateManualEntryRights CreateManualEntry { get => GetEntity<CreateManualEntryRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// DisclosureTrackingRights ExcludeIncludeRecords
         /// </summary>
         [JsonProperty("exclude/IncludeRecords")]
-        public bool? ExcludeIncludeRecords { get => _excludeIncludeRecords; set => SetField(ref _excludeIncludeRecords, value); }
+        public bool? ExcludeIncludeRecords { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// DisclosureTrackingRights ManuallyFulfill
         /// </summary>
-        public bool? ManuallyFulfill { get => _manuallyFulfill; set => SetField(ref _manuallyFulfill, value); }
+        public bool? ManuallyFulfill { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

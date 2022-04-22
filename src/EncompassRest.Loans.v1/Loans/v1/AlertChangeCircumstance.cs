@@ -9,113 +9,95 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class AlertChangeCircumstance : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _alertTriggerFieldID;
-    private DirtyValue<string?>? _altId;
-    private DirtyValue<string?>? _changedCircumstanceAlertBaseline;
-    private DirtyValue<decimal?>? _changedCircumstanceAlertDisclosedAmount;
-    private DirtyValue<string?>? _changedCircumstanceAlertFeeDescription;
-    private DirtyValue<decimal?>? _changedCircumstanceAlertInitialAmount;
-    private DirtyValue<decimal?>? _changedCircumstanceAlertItemizationAmount;
-    private DirtyValue<decimal?>? _changedCircumstanceAlertVarianceAmount;
-    private DirtyValue<StringEnumValue<ChangedCircumstanceCategory>>? _changedCircumstanceCategory;
-    private DirtyValue<string?>? _changedCircumstanceComments;
-    private DirtyValue<DateTime?>? _changedCircumstanceDate;
-    private DirtyValue<string?>? _changedCircumstanceDescription;
-    private DirtyValue<string?>? _changedCircumstanceReason;
-    private DirtyValue<string?>? _changedCircumstanceReasonOther;
-    private DirtyValue<bool?>? _entityDeleted;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<DateTime?>? _revisedDueDate;
-
     /// <summary>
     /// Good Faith Change of Circumstance - Alert Trigger Field ID [XCOCNN01]
     /// </summary>
-    public string? AlertTriggerFieldID { get => _alertTriggerFieldID; set => SetField(ref _alertTriggerFieldID, value); }
+    public string? AlertTriggerFieldID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Record ID [XCOCNN98]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? AltId { get => _altId; set => SetField(ref _altId, value); }
+    public string? AltId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Alert - Baseline [XCOCNN12]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? ChangedCircumstanceAlertBaseline { get => _changedCircumstanceAlertBaseline; set => SetField(ref _changedCircumstanceAlertBaseline, value); }
+    public string? ChangedCircumstanceAlertBaseline { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Alert - Disclosed Amount [XCOCNN13]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public decimal? ChangedCircumstanceAlertDisclosedAmount { get => _changedCircumstanceAlertDisclosedAmount; set => SetField(ref _changedCircumstanceAlertDisclosedAmount, value); }
+    public decimal? ChangedCircumstanceAlertDisclosedAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Alert - Fee Description [XCOCNN10]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? ChangedCircumstanceAlertFeeDescription { get => _changedCircumstanceAlertFeeDescription; set => SetField(ref _changedCircumstanceAlertFeeDescription, value); }
+    public string? ChangedCircumstanceAlertFeeDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Alert - Initial Amount [XCOCNN11]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public decimal? ChangedCircumstanceAlertInitialAmount { get => _changedCircumstanceAlertInitialAmount; set => SetField(ref _changedCircumstanceAlertInitialAmount, value); }
+    public decimal? ChangedCircumstanceAlertInitialAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Alert - Itemization Amount [XCOCNN14]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public decimal? ChangedCircumstanceAlertItemizationAmount { get => _changedCircumstanceAlertItemizationAmount; set => SetField(ref _changedCircumstanceAlertItemizationAmount, value); }
+    public decimal? ChangedCircumstanceAlertItemizationAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Alert - Variance Amount [XCOCNN15]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public decimal? ChangedCircumstanceAlertVarianceAmount { get => _changedCircumstanceAlertVarianceAmount; set => SetField(ref _changedCircumstanceAlertVarianceAmount, value); }
+    public decimal? ChangedCircumstanceAlertVarianceAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Changed Circumstance Category [XCOCNN09]
     /// </summary>
-    public StringEnumValue<ChangedCircumstanceCategory> ChangedCircumstanceCategory { get => _changedCircumstanceCategory; set => SetField(ref _changedCircumstanceCategory, value); }
+    public StringEnumValue<ChangedCircumstanceCategory> ChangedCircumstanceCategory { get => GetValue<StringEnumValue<ChangedCircumstanceCategory>>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Changed Circumstance Comments [XCOCNN06]
     /// </summary>
-    public string? ChangedCircumstanceComments { get => _changedCircumstanceComments; set => SetField(ref _changedCircumstanceComments, value); }
+    public string? ChangedCircumstanceComments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Changes Received Date [XCOCNN03]
     /// </summary>
-    public DateTime? ChangedCircumstanceDate { get => _changedCircumstanceDate; set => SetField(ref _changedCircumstanceDate, value); }
+    public DateTime? ChangedCircumstanceDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Changed Circumstance Description [XCOCNN05]
     /// </summary>
-    public string? ChangedCircumstanceDescription { get => _changedCircumstanceDescription; set => SetField(ref _changedCircumstanceDescription, value); }
+    public string? ChangedCircumstanceDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Changed Circumstance Reason [XCOCNN07]
     /// </summary>
-    public string? ChangedCircumstanceReason { get => _changedCircumstanceReason; set => SetField(ref _changedCircumstanceReason, value); }
+    public string? ChangedCircumstanceReason { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Changed Circumstance Reason Other [XCOCNN08]
     /// </summary>
-    public string? ChangedCircumstanceReasonOther { get => _changedCircumstanceReasonOther; set => SetField(ref _changedCircumstanceReasonOther, value); }
+    public string? ChangedCircumstanceReasonOther { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// AlertChangeCircumstance EntityDeleted
     /// </summary>
-    public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
+    public bool? EntityDeleted { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// AlertChangeCircumstance Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Good Faith Change of Circumstance - Revised LE/CD Due Date [XCOCNN04]
     /// </summary>
-    public DateTime? RevisedDueDate { get => _revisedDueDate; set => SetField(ref _revisedDueDate, value); }
+    public DateTime? RevisedDueDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

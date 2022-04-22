@@ -8,29 +8,16 @@ namespace EncompassRest.Organizations.v1
     /// </summary>
     public sealed class StateLicenseExtType : DirtyExtensibleObject
     {
-        private DirtyValue<StringEnumValue<State>>? _stateAbbreviation;
-        private DirtyValue<string?>? _licenseType;
-        private DirtyValue<bool?>? _isExempted;
-        private DirtyValue<string?>? _licenseNo;
-        private DirtyValue<DateTime?>? _issueDate;
-        private DirtyValue<DateTime?>? _startDate;
-        private DirtyValue<DateTime?>? _endDate;
-        private DirtyValue<StringEnumValue<LicenseStatus>>? _licenseStatus;
-        private DirtyValue<DateTime?>? _statusDate;
-        private DirtyValue<bool?>? _isApproved;
-        private DirtyValue<DateTime?>? _lastChecked;
-        private DirtyValue<bool?>? _isSelected;
-
         /// <summary>
         /// The State code for which the license applies.
         /// </summary>
         [JsonProperty("stateAbbrevation")]
-        public StringEnumValue<State> StateAbbreviation { get => _stateAbbreviation; set => SetField(ref _stateAbbreviation, value); }
+        public StringEnumValue<State> StateAbbreviation { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
         /// <summary>
         /// The type of license.
         /// </summary>
-        public string? LicenseType { get => _licenseType; set => SetField(ref _licenseType, value); }
+        public string? LicenseType { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the state license is exempt.
@@ -38,22 +25,22 @@ namespace EncompassRest.Organizations.v1
         /// <remarks>
         /// When a license is exempt, the Encompass Compliance Service does not apply any license or compliance rules associated with that license in the property state.
         /// </remarks>
-        public bool? IsExempted { get => _isExempted; set => SetField(ref _isExempted, value); }
+        public bool? IsExempted { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// The license number.
         /// </summary>
-        public string? LicenseNo { get => _licenseNo; set => SetField(ref _licenseNo, value); }
+        public string? LicenseNo { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The date the license is issued to the loan officer.
         /// </summary>
-        public DateTime? IssueDate { get => _issueDate; set => SetField(ref _issueDate, value); }
+        public DateTime? IssueDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The Start Date is the date that the loan officer’s license becomes associated with the company and they can start taking loan applications on behalf of the company. In most states this is referred to as the Sponsorship Date (not required in all states).
         /// </summary>
-        public DateTime? StartDate { get => _startDate; set => SetField(ref _startDate, value); }
+        public DateTime? StartDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The expiration date of the license, type the expiration date.
@@ -61,31 +48,31 @@ namespace EncompassRest.Organizations.v1
         /// <remarks>
         /// When a state license expires, loan team members will not be able to assign loans in that state to the loan officer.If a loan has already been assigned to the loan officer and their license subsequently expires (or if the loan officer tries to originate a new loan after their license expires) they will not be able to enter the Subject Property State in the loan file.If the End Date field is left blank, Encompass assumes the license never expires.
         /// </remarks>
-        public DateTime? EndDate { get => _endDate; set => SetField(ref _endDate, value); }
+        public DateTime? EndDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The status of the license.
         /// </summary>
-        public StringEnumValue<LicenseStatus> LicenseStatus { get => _licenseStatus; set => SetField(ref _licenseStatus, value); }
+        public StringEnumValue<LicenseStatus> LicenseStatus { get => GetValue<StringEnumValue<LicenseStatus>>(); set => SetValue(value); }
 
         /// <summary>
         /// The date that the status is in effect.
         /// </summary>
-        public DateTime? StatusDate { get => _statusDate; set => SetField(ref _statusDate, value); }
+        public DateTime? StatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the license is approved.
         /// </summary>
-        public bool? IsApproved { get => _isApproved; set => SetField(ref _isApproved, value); }
+        public bool? IsApproved { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// The date that the license was last checked.
         /// </summary>
-        public DateTime? LastChecked { get => _lastChecked; set => SetField(ref _lastChecked, value); }
+        public DateTime? LastChecked { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the license is selected for this organization.
         /// </summary>
-        public bool? IsSelected { get => _isSelected; set => SetField(ref _isSelected, value); }
+        public bool? IsSelected { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

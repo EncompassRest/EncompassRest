@@ -9,77 +9,64 @@ namespace EncompassRest.Loans.v1;
 [Entity(PropertiesToAlwaysSerialize = nameof(FeeIndex) + "," + nameof(LineNumber) + "," + nameof(Section))]
 public sealed partial class UCDDetail : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<StringEnumValue<UCDPayoffType>>? _feeAccountType;
-    private DirtyValue<decimal?>? _feeAmount;
-    private DirtyValue<DateTime?>? _feeDateFrom;
-    private DirtyValue<DateTime?>? _feeDateTo;
-    private DirtyValue<string?>? _feeDesc;
-    private DirtyValue<int?>? _feeIndex;
-    private DirtyValue<StringEnumValue<PaidToOrBy>>? _feePaidBy;
-    private DirtyValue<string?>? _feePaidTo;
-    private DirtyValue<bool?>? _feePOC;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<int?>? _lineNumber;
-    private DirtyValue<StringEnumValue<Section>>? _section;
-
     /// <summary>
     /// UCDDetail FeeAccountType
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Open30DayChargeAccount\":\"Open 30 Day Charge Account\"}")]
-    public StringEnumValue<UCDPayoffType> FeeAccountType { get => _feeAccountType; set => SetField(ref _feeAccountType, value); }
+    public StringEnumValue<UCDPayoffType> FeeAccountType { get => GetValue<StringEnumValue<UCDPayoffType>>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail FeeAmount
     /// </summary>
-    public decimal? FeeAmount { get => _feeAmount; set => SetField(ref _feeAmount, value); }
+    public decimal? FeeAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail FeeDateFrom
     /// </summary>
-    public DateTime? FeeDateFrom { get => _feeDateFrom; set => SetField(ref _feeDateFrom, value); }
+    public DateTime? FeeDateFrom { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail FeeDateTo
     /// </summary>
-    public DateTime? FeeDateTo { get => _feeDateTo; set => SetField(ref _feeDateTo, value); }
+    public DateTime? FeeDateTo { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail FeeDesc
     /// </summary>
-    public string? FeeDesc { get => _feeDesc; set => SetField(ref _feeDesc, value); }
+    public string? FeeDesc { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail FeeIndex
     /// </summary>
-    public int? FeeIndex { get => _feeIndex; set => SetField(ref _feeIndex, value); }
+    public int? FeeIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail FeePaidBy
     /// </summary>
-    public StringEnumValue<PaidToOrBy> FeePaidBy { get => _feePaidBy; set => SetField(ref _feePaidBy, value); }
+    public StringEnumValue<PaidToOrBy> FeePaidBy { get => GetValue<StringEnumValue<PaidToOrBy>>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail FeePaidTo
     /// </summary>
-    public string? FeePaidTo { get => _feePaidTo; set => SetField(ref _feePaidTo, value); }
+    public string? FeePaidTo { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail FeePOC
     /// </summary>
-    public bool? FeePOC { get => _feePOC; set => SetField(ref _feePOC, value); }
+    public bool? FeePOC { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail LineNumber
     /// </summary>
-    public int? LineNumber { get => _lineNumber; set => SetField(ref _lineNumber, value); }
+    public int? LineNumber { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// UCDDetail Section
     /// </summary>
-    public StringEnumValue<Section> Section { get => _section; set => SetField(ref _section, value); }
+    public StringEnumValue<Section> Section { get => GetValue<StringEnumValue<Section>>(); set => SetValue(value); }
 }

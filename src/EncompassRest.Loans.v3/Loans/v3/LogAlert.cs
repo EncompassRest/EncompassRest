@@ -8,36 +8,30 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LogAlert : DirtyExtensibleObject, IIdentifiable
 {
-    private EntityReference? _createdBy;
-    private DirtyValue<DateTime?>? _dueDate;
-    private DirtyValue<DateTime?>? _followedUpDate;
-    private DirtyValue<string?>? _id;
-    private EntityReference? _role;
-
     /// <summary>
-    /// LogAlertContract CreatedBy
+    /// LogAlert CreatedBy
     /// </summary>
     [AllowNull]
-    public EntityReference CreatedBy { get => GetField(ref _createdBy); set => SetField(ref _createdBy, value); }
+    public EntityReference CreatedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// LogAlertContract DueDate
+    /// LogAlert DueDate
     /// </summary>
-    public DateTime? DueDate { get => _dueDate; set => SetField(ref _dueDate, value); }
+    public DateTime? DueDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LogAlertContract FollowedUpDate
+    /// LogAlert FollowedUpDate
     /// </summary>
-    public DateTime? FollowedUpDate { get => _followedUpDate; set => SetField(ref _followedUpDate, value); }
+    public DateTime? FollowedUpDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LogAlertContract Id
+    /// LogAlert Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LogAlertContract Role
+    /// LogAlert Role
     /// </summary>
     [AllowNull]
-    public EntityReference Role { get => GetField(ref _role); set => SetField(ref _role, value); }
+    public EntityReference Role { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 }

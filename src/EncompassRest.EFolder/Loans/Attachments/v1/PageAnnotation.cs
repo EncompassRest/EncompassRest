@@ -1,5 +1,4 @@
 ﻿using System;
-using EncompassRest.EFolder.v1;
 using EncompassRest.Utilities;
 using EnumsNET;
 
@@ -10,54 +9,45 @@ namespace EncompassRest.Loans.Attachments.v1
     /// </summary>
     public sealed class PageAnnotation : DirtyExtensibleObject
     {
-        private DirtyValue<DateTime?>? _dateCreated;
-        private DirtyValue<string?>? _createdBy;
-        private DirtyValue<string?>? _text;
-        private DirtyValue<int?>? _left;
-        private DirtyValue<int?>? _top;
-        private DirtyValue<int?>? _width;
-        private DirtyValue<int?>? _height;
-        private DirtyValue<AnnotationVisibilityType?>? _visibilityType;
-
         /// <summary>
         /// Date the attachment or page annotation was created.
         /// </summary>
-        public DateTime? DateCreated { get => _dateCreated; set => SetField(ref _dateCreated, value); }
+        public DateTime? DateCreated { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// UserID of the user who created the attachment or annotation.
         /// </summary>
-        public string? CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
+        public string? CreatedBy { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The text of the annotation.
         /// </summary>
-        public string? Text { get => _text; set => SetField(ref _text, value); }
+        public string? Text { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The horizontal location of the annotation.
         /// </summary>
-        public int? Left { get => _left; set => SetField(ref _left, value); }
+        public int? Left { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// The vertical location of the annotation.
         /// </summary>
-        public int? Top { get => _top; set => SetField(ref _top, value); }
+        public int? Top { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// The width of the annotation.
         /// </summary>
-        public int? Width { get => _width; set => SetField(ref _width, value); }
+        public int? Width { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// The height of the annotation.
         /// </summary>
-        public int? Height { get => _height; set => SetField(ref _height, value); }
+        public int? Height { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// The visibility type of the annotation.
         /// </summary>
         [EnumFormat(EnumFormat.DecimalValue)]
-        public AnnotationVisibilityType? VisibilityType { get => _visibilityType; set => SetField(ref _visibilityType, value); }
+        public AnnotationVisibilityType? VisibilityType { get => GetValue<AnnotationVisibilityType?>(); set => SetValue(value); }
     }
 }

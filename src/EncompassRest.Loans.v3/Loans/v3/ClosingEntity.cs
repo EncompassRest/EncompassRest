@@ -11,238 +11,200 @@ namespace EncompassRest.Loans.v3;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class ClosingEntity : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _alias;
-    private EntityReference? _application;
-    private DirtyValue<string?>? _assignee;
-    private DirtyValue<bool?>? _authorizedToSignIndicator;
-    private DirtyValue<DateTime?>? _birthDate;
-    private DirtyValue<string?>? _city;
-    private DirtyValue<StringEnumValue<ClosingEntityType>>? _closingEntityType;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _county;
-    private DirtyValue<string?>? _fax;
-    private EntityReference? _nonBorrowingOwner;
-    private DirtyValue<StringEnumValue<OccupancyIntent>>? _occupancyIntent;
-    private DirtyValue<StringEnumValue<PropertyUsageType>>? _occupancyStatus;
-    private DirtyValue<string?>? _organizationType;
-    private DirtyValue<string?>? _organizedUnderTheLawsOfJurisdictionName;
-    private DirtyValue<string?>? _phone;
-    private DirtyValue<string?>? _phone1;
-    private DirtyValue<string?>? _phone2;
-    private DirtyValue<string?>? _poaSignatureText;
-    private DirtyValue<string?>? _postalCode;
-    private DirtyValue<string?>? _powerOfAttorney;
-    private DirtyValue<DateTime?>? _recordableDocumentTrustDate;
-    private DirtyValue<string?>? _recordCity;
-    private DirtyValue<string?>? _ssn;
-    private DirtyValue<string?>? _state;
-    private DirtyValue<string?>? _streetAddress;
-    private DirtyValue<string?>? _taxIdentificationNumberIdentifier;
-    private DirtyValue<int?>? _trusteeIndex;
-    private DirtyValue<string?>? _trustOfficerName1;
-    private DirtyValue<string?>? _trustOfficerName2;
-    private DirtyValue<string?>? _trustOfficerTitle1;
-    private DirtyValue<string?>? _trustOfficerTitle2;
-    private DirtyValue<string?>? _unparsedName;
-    private DirtyValue<string?>? _vesting;
-    private DirtyValue<string?>? _vestingGuid;
-    private DirtyValue<StringEnumValue<VestingTrusteeOfType>>? _vestingTrusteeOfType;
-    private DirtyValue<StringEnumValue<BorrowerType>>? _vestingType;
-
     /// <summary>
     /// Vesting Party - Alias [TR0002]
     /// </summary>
-    public string? Alias { get => _alias; set => SetField(ref _alias, value); }
+    public string? Alias { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract Application
+    /// ClosingEntity Application
     /// </summary>
     [AllowNull]
-    public EntityReference Application { get => GetField(ref _application); set => SetField(ref _application, value); }
+    public EntityReference Application { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
     /// Closing Docs Loss Payee Assignee [1953]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? Assignee { get => _assignee; set => SetField(ref _assignee, value); }
+    public string? Assignee { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Party - Authorized to Sign [TR0009]
     /// </summary>
-    public bool? AuthorizedToSignIndicator { get => _authorizedToSignIndicator; set => SetField(ref _authorizedToSignIndicator, value); }
+    public bool? AuthorizedToSignIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Party - POA Date of Birth [TR0012]
     /// </summary>
-    public DateTime? BirthDate { get => _birthDate; set => SetField(ref _birthDate, value); }
+    public DateTime? BirthDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract City
+    /// ClosingEntity City
     /// </summary>
-    public string? City { get => _city; set => SetField(ref _city, value); }
+    public string? City { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract ClosingEntityType
+    /// ClosingEntity ClosingEntityType
     /// </summary>
-    public StringEnumValue<ClosingEntityType> ClosingEntityType { get => _closingEntityType; set => SetField(ref _closingEntityType, value); }
+    public StringEnumValue<ClosingEntityType> ClosingEntityType { get => GetValue<StringEnumValue<ClosingEntityType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Closing docs Recordable Doc Comments [2980]
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Closing Docs Recordable Doc Trustee County [3901]
     /// </summary>
-    public string? County { get => _county; set => SetField(ref _county, value); }
+    public string? County { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Closing Docs Lender Fax [1922]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true)]
-    public string? Fax { get => _fax; set => SetField(ref _fax, value); }
+    public string? Fax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract NonBorrowingOwner
+    /// ClosingEntity NonBorrowingOwner
     /// </summary>
     [AllowNull]
-    public EntityReference NonBorrowingOwner { get => GetField(ref _nonBorrowingOwner); set => SetField(ref _nonBorrowingOwner, value); }
+    public EntityReference NonBorrowingOwner { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
     /// Vesting Party - POA Occupancy Intent [TR0014]
     /// </summary>
-    public StringEnumValue<OccupancyIntent> OccupancyIntent { get => _occupancyIntent; set => SetField(ref _occupancyIntent, value); }
+    public StringEnumValue<OccupancyIntent> OccupancyIntent { get => GetValue<StringEnumValue<OccupancyIntent>>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Party - POA Occupancy Status [TR0013]
     /// </summary>
-    public StringEnumValue<PropertyUsageType> OccupancyStatus { get => _occupancyStatus; set => SetField(ref _occupancyStatus, value); }
+    public StringEnumValue<PropertyUsageType> OccupancyStatus { get => GetValue<StringEnumValue<PropertyUsageType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract OrganizationType
+    /// ClosingEntity OrganizationType
     /// </summary>
-    public string? OrganizationType { get => _organizationType; set => SetField(ref _organizationType, value); }
+    public string? OrganizationType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract OrganizedUnderTheLawsOfJurisdictionName
+    /// ClosingEntity OrganizedUnderTheLawsOfJurisdictionName
     /// </summary>
-    public string? OrganizedUnderTheLawsOfJurisdictionName { get => _organizedUnderTheLawsOfJurisdictionName; set => SetField(ref _organizedUnderTheLawsOfJurisdictionName, value); }
+    public string? OrganizedUnderTheLawsOfJurisdictionName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Closing Docs Recordable Doc Trustee Phone Number [3552]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? Phone { get => _phone; set => SetField(ref _phone, value); }
+    public string? Phone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Closing Docs Lender Phone 1 [1920]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true)]
-    public string? Phone1 { get => _phone1; set => SetField(ref _phone1, value); }
+    public string? Phone1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Closing Docs Lender Phone 2 [1921]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE, ReadOnly = true)]
-    public string? Phone2 { get => _phone2; set => SetField(ref _phone2, value); }
+    public string? Phone2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Party - POA Signature Text [TR0011]
     /// </summary>
-    public string? PoaSignatureText { get => _poaSignatureText; set => SetField(ref _poaSignatureText, value); }
+    public string? PoaSignatureText { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract PostalCode
+    /// ClosingEntity PostalCode
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+    public string? PostalCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Party - Power of Attroney [TR0007]
     /// </summary>
-    public string? PowerOfAttorney { get => _powerOfAttorney; set => SetField(ref _powerOfAttorney, value); }
+    public string? PowerOfAttorney { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Closing docs Recordable Doc Trust Date [2979]
     /// </summary>
-    public DateTime? RecordableDocumentTrustDate { get => _recordableDocumentTrustDate; set => SetField(ref _recordableDocumentTrustDate, value); }
+    public DateTime? RecordableDocumentTrustDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Closing Docs Lender Record City [1923]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? RecordCity { get => _recordCity; set => SetField(ref _recordCity, value); }
+    public string? RecordCity { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Party - Social Security Number [TR0003]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.SSN)]
-    public string? Ssn { get => _ssn; set => SetField(ref _ssn, value); }
+    public string? Ssn { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract State
+    /// ClosingEntity State
     /// </summary>
-    public string? State { get => _state; set => SetField(ref _state, value); }
+    public string? State { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract StreetAddress
+    /// ClosingEntity StreetAddress
     /// </summary>
-    public string? StreetAddress { get => _streetAddress; set => SetField(ref _streetAddress, value); }
+    public string? StreetAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower Vesting Seller Org Tax ID [1866]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? TaxIdentificationNumberIdentifier { get => _taxIdentificationNumberIdentifier; set => SetField(ref _taxIdentificationNumberIdentifier, value); }
+    public string? TaxIdentificationNumberIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract TrusteeIndex
+    /// ClosingEntity TrusteeIndex
     /// </summary>
-    public int? TrusteeIndex { get => _trusteeIndex; set => SetField(ref _trusteeIndex, value); }
+    public int? TrusteeIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Seller Corp/Trust Officer 1 Name [Vesting.SelOfcr1Nm]
     /// </summary>
-    public string? TrustOfficerName1 { get => _trustOfficerName1; set => SetField(ref _trustOfficerName1, value); }
+    public string? TrustOfficerName1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Seller Corp/Trust Officer 2 Name [Vesting.SelOfcr2Nm]
     /// </summary>
-    public string? TrustOfficerName2 { get => _trustOfficerName2; set => SetField(ref _trustOfficerName2, value); }
+    public string? TrustOfficerName2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Seller Corp/Trust Officer 1 Title [Vesting.SelOfcr1Titl]
     /// </summary>
-    public string? TrustOfficerTitle1 { get => _trustOfficerTitle1; set => SetField(ref _trustOfficerTitle1, value); }
+    public string? TrustOfficerTitle1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Seller Corp/Trust Officer 2 Title [Vesting.SelOfcr2Titl]
     /// </summary>
-    public string? TrustOfficerTitle2 { get => _trustOfficerTitle2; set => SetField(ref _trustOfficerTitle2, value); }
+    public string? TrustOfficerTitle2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ClosingEntityContract UnparsedName
+    /// ClosingEntity UnparsedName
     /// </summary>
-    public string? UnparsedName { get => _unparsedName; set => SetField(ref _unparsedName, value); }
+    public string? UnparsedName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Party - Vesting [TR0008]
     /// </summary>
-    public string? Vesting { get => _vesting; set => SetField(ref _vesting, value); }
+    public string? Vesting { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Party - Unique ID [TR0010]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? VestingGuid { get => _vestingGuid; set => SetField(ref _vestingGuid, value); }
+    public string? VestingGuid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Party - Trustee Of [TR0006]
     /// </summary>
-    public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get => _vestingTrusteeOfType; set => SetField(ref _vestingTrusteeOfType, value); }
+    public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get => GetValue<StringEnumValue<VestingTrusteeOfType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Vesting Party - Vesting Type [TR0004]
     /// </summary>
-    public StringEnumValue<BorrowerType> VestingType { get => _vestingType; set => SetField(ref _vestingType, value); }
+    public StringEnumValue<BorrowerType> VestingType { get => GetValue<StringEnumValue<BorrowerType>>(); set => SetValue(value); }
 }

@@ -9,29 +9,24 @@ namespace EncompassRest.Loans.v3;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class EarlyCheck : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _ecAppraisalValue;
-    private DirtyValue<string?>? _ecDocumentFileId;
-    private DirtyValue<DateTime?>? _ecUcdpLastSubmissionDateTimeEarly;
-    private DirtyValue<string?>? _id;
-
     /// <summary>
     /// Early Check Appraisal Value [EC0002]
     /// </summary>
-    public decimal? EcAppraisalValue { get => _ecAppraisalValue; set => SetField(ref _ecAppraisalValue, value); }
+    public decimal? EcAppraisalValue { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Early Check Document File Id [EC0003]
     /// </summary>
-    public string? EcDocumentFileId { get => _ecDocumentFileId; set => SetField(ref _ecDocumentFileId, value); }
+    public string? EcDocumentFileId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Early Check UCDP Last Submission Date Time Early [EC0001]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-    public DateTime? EcUcdpLastSubmissionDateTimeEarly { get => _ecUcdpLastSubmissionDateTimeEarly; set => SetField(ref _ecUcdpLastSubmissionDateTimeEarly, value); }
+    public DateTime? EcUcdpLastSubmissionDateTimeEarly { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EarlyCheckContract Id
+    /// EarlyCheck Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 }

@@ -9,91 +9,76 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class StatusOnlineLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _creator;
-    private DirtyValue<DateTime?>? _dateUtc;
-    private DirtyValue<string?>? _description;
-    private DirtyList<StatusOnlineEvent>? _events;
-    private DirtyValue<bool?>? _fileAttachmentsMigrated;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isSystemSpecificIndicator;
-    private DirtyValue<int?>? _logRecordIndex;
-    private DirtyValue<string?>? _systemId;
-    private DirtyValue<DateTime?>? _updatedDateUtc;
-
     /// <summary>
     /// StatusOnlineLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
     /// StatusOnlineLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
     /// StatusOnlineLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineLog Creator
     /// </summary>
-    public string? Creator { get => _creator; set => SetField(ref _creator, value); }
+    public string? Creator { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineLog DateUtc
     /// </summary>
-    public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
+    public DateTime? DateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineLog Description
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineLog Events
     /// </summary>
     [AllowNull]
-    public IList<StatusOnlineEvent> Events { get => GetField(ref _events); set => SetField(ref _events, value); }
+    public IList<StatusOnlineEvent> Events { get => GetList<StatusOnlineEvent>(); set => SetList(value); }
 
     /// <summary>
     /// StatusOnlineLog FileAttachmentsMigrated
     /// </summary>
-    public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
+    public bool? FileAttachmentsMigrated { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineLog Guid
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineLog IsSystemSpecificIndicator
     /// </summary>
-    public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
+    public bool? IsSystemSpecificIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineLog LogRecordIndex
     /// </summary>
-    public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
+    public int? LogRecordIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineLog SystemId
     /// </summary>
-    public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+    public string? SystemId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineLog UpdatedDateUtc
     /// </summary>
-    public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+    public DateTime? UpdatedDateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

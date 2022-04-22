@@ -10,98 +10,81 @@ namespace EncompassRest.Loans.RateLocks.v1
     /// </summary>
     public sealed partial class Investor : DirtyExtensibleObject
     {
-        private DirtyValue<DateTime?>? _lockedDate;
-        private DirtyValue<DateTime?>? _deliveryDate;
-        private DirtyValue<DateTime?>? _targetDeliveryDate;
-        private DirtyValue<string?>? _name;
-        private DirtyValue<string?>? _contact;
-        private DirtyValue<string?>? _phone;
-        private DirtyValue<string?>? _email;
-        private DirtyValue<string?>? _city;
-        private DirtyValue<string?>? _state;
-        private DirtyValue<string?>? _postalCode;
-        private DirtyValue<string?>? _website;
-        private DirtyValue<StringEnumValue<CommitmentType>>? _lockType;
-        private DirtyValue<string?>? _status;
-        private DirtyValue<DateTime?>? _statusDate;
-        private DirtyValue<string?>? _commitment;
-
-
         /// <summary>
         /// Investor Locked Date
         /// </summary>
-        public DateTime? LockedDate { get => _lockedDate; set => SetField(ref _lockedDate, value); }
+        public DateTime? LockedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Delivery Date
         /// </summary>
         [JsonConverter(typeof(ElliDateJsonConverter))]
-        public DateTime? DeliveryDate { get => _deliveryDate; set => SetField(ref _deliveryDate, value); }
+        public DateTime? DeliveryDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Target Delivery Date
         /// </summary>
         [JsonConverter(typeof(ElliDateJsonConverter))]
-        public DateTime? TargetDeliveryDate { get => _targetDeliveryDate; set => SetField(ref _targetDeliveryDate, value); }
+        public DateTime? TargetDeliveryDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Name
         /// </summary>
-        public string? Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Contact
         /// </summary>
-        public string? Contact { get => _contact; set => SetField(ref _contact, value); }
+        public string? Contact { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Contact Phone
         /// </summary>
-        public string? Phone { get => _phone; set => SetField(ref _phone, value); }
+        public string? Phone { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Contact Email
         /// </summary>
-        public string? Email { get => _email; set => SetField(ref _email, value); }
+        public string? Email { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Contact City
         /// </summary>
-        public string? City { get => _city; set => SetField(ref _city, value); }
+        public string? City { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Contact State
         /// </summary>
-        public string? State { get => _state; set => SetField(ref _state, value); }
+        public string? State { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Contact PostalCode
         /// </summary>
-        public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+        public string? PostalCode { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Contact Website
         /// </summary>
-        public string? Website { get => _website; set => SetField(ref _website, value); }
+        public string? Website { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Lock type. Possible values are Mandatory or Best Efforts
         /// </summary>
-        public StringEnumValue<CommitmentType> LockType { get => _lockType; set => SetField(ref _lockType, value); }
+        public StringEnumValue<CommitmentType> LockType { get => GetValue<StringEnumValue<CommitmentType>>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor status
         /// </summary>
-        public string? Status { get => _status; set => SetField(ref _status, value); }
+        public string? Status { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Status Date
         /// </summary>
-        public DateTime? StatusDate { get => _statusDate; set => SetField(ref _statusDate, value); }
+        public DateTime? StatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Investor Commitment Identifier
         /// </summary>
-        public string? Commitment { get => _commitment; set => SetField(ref _commitment, value); }
+        public string? Commitment { get => GetValue<string?>(); set => SetValue(value); }
     }
 }

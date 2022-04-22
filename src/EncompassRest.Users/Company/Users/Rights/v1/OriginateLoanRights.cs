@@ -5,17 +5,14 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class OriginateLoanRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _newBlankLoan;
-        private DirtyValue<bool?>? _newFromTemplate;
-
         /// <summary>
         /// OriginateLoanRights NewBlankLoan
         /// </summary>
-        public bool? NewBlankLoan { get => _newBlankLoan; set => SetField(ref _newBlankLoan, value); }
+        public bool? NewBlankLoan { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// OriginateLoanRights NewFromTemplate
         /// </summary>
-        public bool? NewFromTemplate { get => _newFromTemplate; set => SetField(ref _newFromTemplate, value); }
+        public bool? NewFromTemplate { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

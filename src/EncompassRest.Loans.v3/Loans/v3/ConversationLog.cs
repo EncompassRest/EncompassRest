@@ -9,79 +9,66 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class ConversationLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _company;
-    private EntityReference? _createdBy;
-    private DirtyValue<DateTime?>? _createdDate;
-    private DirtyValue<string?>? _email;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _inLogIndicator;
-    private DirtyValue<bool?>? _isEmailIndicator;
-    private DirtyValue<string?>? _name;
-    private DirtyValue<string?>? _phone;
-
     /// <summary>
-    /// ConversationLogContract Alerts
+    /// ConversationLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
-    /// ConversationLogContract CommentList
+    /// ConversationLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
-    /// ConversationLogContract Comments
+    /// ConversationLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ConversationLogContract Company
+    /// ConversationLog Company
     /// </summary>
-    public string? Company { get => _company; set => SetField(ref _company, value); }
+    public string? Company { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ConversationLogContract CreatedBy
+    /// ConversationLog CreatedBy
     /// </summary>
     [AllowNull]
-    public EntityReference CreatedBy { get => GetField(ref _createdBy); set => SetField(ref _createdBy, value); }
+    public EntityReference CreatedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// ConversationLogContract CreatedDate
+    /// ConversationLog CreatedDate
     /// </summary>
-    public DateTime? CreatedDate { get => _createdDate; set => SetField(ref _createdDate, value); }
+    public DateTime? CreatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ConversationLogContract Email
+    /// ConversationLog Email
     /// </summary>
-    public string? Email { get => _email; set => SetField(ref _email, value); }
+    public string? Email { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ConversationLogContract Id
+    /// ConversationLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ConversationLogContract InLogIndicator
+    /// ConversationLog InLogIndicator
     /// </summary>
-    public bool? InLogIndicator { get => _inLogIndicator; set => SetField(ref _inLogIndicator, value); }
+    public bool? InLogIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ConversationLogContract IsEmailIndicator
+    /// ConversationLog IsEmailIndicator
     /// </summary>
-    public bool? IsEmailIndicator { get => _isEmailIndicator; set => SetField(ref _isEmailIndicator, value); }
+    public bool? IsEmailIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ConversationLogContract Name
+    /// ConversationLog Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ConversationLogContract Phone
+    /// ConversationLog Phone
     /// </summary>
-    public string? Phone { get => _phone; set => SetField(ref _phone, value); }
+    public string? Phone { get => GetValue<string?>(); set => SetValue(value); }
 }

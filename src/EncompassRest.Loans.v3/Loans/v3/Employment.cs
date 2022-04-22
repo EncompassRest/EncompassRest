@@ -10,458 +10,383 @@ namespace EncompassRest.Loans.v3;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class Employment : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _addressCity;
-    private DirtyValue<string?>? _addressPostalCode;
-    private DirtyValue<string?>? _addressState;
-    private DirtyValue<string?>? _addressStreetLine1;
-    private DirtyValue<string?>? _altId;
-    private DirtyValue<string?>? _attention;
-    private DirtyValue<string?>? _badgeOrEmployeeId;
-    private DirtyValue<decimal?>? _baseIncome;
-    private DirtyValue<decimal?>? _basePayAmount;
-    private DirtyValue<decimal?>? _bonus;
-    private DirtyValue<decimal?>? _bonusAmount;
-    private DirtyValue<string?>? _businessName;
-    private DirtyValue<decimal?>? _businessOwnedPercent;
-    private DirtyValue<string?>? _businessPhone;
-    private DirtyValue<decimal?>? _clothingAllowance;
-    private DirtyValue<decimal?>? _commission;
-    private DirtyValue<decimal?>? _commissionsAmount;
-    private DirtyValue<string?>? _country;
-    private DirtyValue<string?>? _countryCode;
-    private DirtyValue<bool?>? _currentEmploymentIndicator;
-    private DirtyValue<bool?>? _doesNotApply;
-    private DirtyValue<string?>? _email;
-    private DirtyValue<string?>? _employerComments;
-    private DirtyValue<string?>? _employerName;
-    private DirtyValue<decimal?>? _employmentMonthlyIncomeAmount;
-    private DirtyValue<DateTime?>? _employmentStartDate;
-    private DirtyValue<DateTime?>? _endDate;
-    private DirtyValue<string?>? _fax;
-    private DirtyValue<bool?>? _foreignAddressIndicator;
-    private DirtyValue<bool?>? _foreignIncome;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _individualEmployer;
-    private DirtyValue<int?>? _jobTermMonths;
-    private DirtyValue<decimal?>? _militaryCombatPay;
-    private DirtyValue<bool?>? _militaryEmployer;
-    private DirtyValue<decimal?>? _militaryEntitlement;
-    private DirtyValue<decimal?>? _militaryFlightPay;
-    private DirtyValue<decimal?>? _militaryHazardPay;
-    private DirtyValue<decimal?>? _militaryOverseasPay;
-    private DirtyValue<decimal?>? _militaryPropPay;
-    private DirtyValue<int?>? _monthlyIncomeAmount;
-    private DirtyValue<bool?>? _noLinkToDocTrackIndicator;
-    private DirtyValue<string?>? _otherAllowanceDescription;
-    private DirtyValue<decimal?>? _otherAmount;
-    private DirtyValue<decimal?>? _otherIncome;
-    private DirtyValue<decimal?>? _overTime;
-    private DirtyValue<decimal?>? _overtimeAmount;
-    private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>>? _owner;
-    private DirtyValue<StringEnumValue<OwnershipInterestType>>? _ownershipInterestType;
-    private DirtyValue<string?>? _phoneNumber;
-    private DirtyValue<string?>? _positionDescription;
-    private DirtyValue<bool?>? _printAttachmentIndicator;
-    private DirtyValue<bool?>? _printUserJobTitleIndicator;
-    private DirtyValue<bool?>? _printUserNameIndicator;
-    private DirtyValue<decimal?>? _quartersAllowance;
-    private DirtyValue<decimal?>? _rationsAllowance;
-    private DirtyValue<bool?>? _seasonalIncome;
-    private DirtyValue<bool?>? _selfEmployedIndicator;
-    private DirtyValue<bool?>? _specialEmployerRelationshipIndicator;
-    private DirtyValue<DateTime?>? _startDate;
-    private DirtyValue<int?>? _timeInLineOfWorkMonths;
-    private DirtyValue<int?>? _timeInLineOfWorkYears;
-    private DirtyValue<int?>? _timeOnJobTermMonths;
-    private DirtyValue<int?>? _timeOnJobTermYears;
-    private DirtyValue<string?>? _title;
-    private DirtyValue<string?>? _titleFax;
-    private DirtyValue<string?>? _titlePhone;
-    private DirtyValue<decimal?>? _total;
-    private DirtyValue<string?>? _unitNumber;
-    private DirtyValue<StringEnumValue<UnitType>>? _unitType;
-    private DirtyValue<string?>? _urla2020StreetAddress;
-    private DirtyValue<decimal?>? _variableHousingAllowance;
-    private DirtyValue<DateTime?>? _verificationDate;
-    private DirtyValue<DateTime?>? _verificationRequestDate;
-
     /// <summary>
-    /// EmploymentContract AddressCity
+    /// Employment AddressCity
     /// </summary>
-    public string? AddressCity { get => _addressCity; set => SetField(ref _addressCity, value); }
+    public string? AddressCity { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract AddressPostalCode
+    /// Employment AddressPostalCode
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? AddressPostalCode { get => _addressPostalCode; set => SetField(ref _addressPostalCode, value); }
+    public string? AddressPostalCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract AddressState
+    /// Employment AddressState
     /// </summary>
-    public string? AddressState { get => _addressState; set => SetField(ref _addressState, value); }
+    public string? AddressState { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract AddressStreetLine1
+    /// Employment AddressStreetLine1
     /// </summary>
-    public string? AddressStreetLine1 { get => _addressStreetLine1; set => SetField(ref _addressStreetLine1, value); }
+    public string? AddressStreetLine1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract AltId
+    /// Employment AltId
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? AltId { get => _altId; set => SetField(ref _altId, value); }
+    public string? AltId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract Attention
+    /// Employment Attention
     /// </summary>
-    public string? Attention { get => _attention; set => SetField(ref _attention, value); }
+    public string? Attention { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract BadgeOrEmployeeId [BE0039], [CE0039]
+    /// Employment BadgeOrEmployeeId [BE0039], [CE0039]
     /// </summary>
-    public string? BadgeOrEmployeeId { get => _badgeOrEmployeeId; set => SetField(ref _badgeOrEmployeeId, value); }
+    public string? BadgeOrEmployeeId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract BaseIncome
+    /// Employment BaseIncome
     /// </summary>
-    public decimal? BaseIncome { get => _baseIncome; set => SetField(ref _baseIncome, value); }
+    public decimal? BaseIncome { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract BasePayAmount
+    /// Employment BasePayAmount
     /// </summary>
-    public decimal? BasePayAmount { get => _basePayAmount; set => SetField(ref _basePayAmount, value); }
+    public decimal? BasePayAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract Bonus
+    /// Employment Bonus
     /// </summary>
-    public decimal? Bonus { get => _bonus; set => SetField(ref _bonus, value); }
+    public decimal? Bonus { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract BonusAmount
+    /// Employment BonusAmount
     /// </summary>
-    public decimal? BonusAmount { get => _bonusAmount; set => SetField(ref _bonusAmount, value); }
+    public decimal? BonusAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract BusinessName [BE0032], [CE0032]
+    /// Employment BusinessName [BE0032], [CE0032]
     /// </summary>
-    public string? BusinessName { get => _businessName; set => SetField(ref _businessName, value); }
+    public string? BusinessName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract BusinessOwnedPercent [BE0027], [CE0027]
+    /// Employment BusinessOwnedPercent [BE0027], [CE0027]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? BusinessOwnedPercent { get => _businessOwnedPercent; set => SetField(ref _businessOwnedPercent, value); }
+    public decimal? BusinessOwnedPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract BusinessPhone [BE0028], [CE0028]
+    /// Employment BusinessPhone [BE0028], [CE0028]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? BusinessPhone { get => _businessPhone; set => SetField(ref _businessPhone, value); }
+    public string? BusinessPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract ClothingAllowance
+    /// Employment ClothingAllowance
     /// </summary>
-    public decimal? ClothingAllowance { get => _clothingAllowance; set => SetField(ref _clothingAllowance, value); }
+    public decimal? ClothingAllowance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract Commission
+    /// Employment Commission
     /// </summary>
-    public decimal? Commission { get => _commission; set => SetField(ref _commission, value); }
+    public decimal? Commission { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract CommissionsAmount
+    /// Employment CommissionsAmount
     /// </summary>
-    public decimal? CommissionsAmount { get => _commissionsAmount; set => SetField(ref _commissionsAmount, value); }
+    public decimal? CommissionsAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract Country
+    /// Employment Country
     /// </summary>
-    public string? Country { get => _country; set => SetField(ref _country, value); }
+    public string? Country { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract CountryCode
+    /// Employment CountryCode
     /// </summary>
-    public string? CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
+    public string? CountryCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract CurrentEmploymentIndicator
+    /// Employment CurrentEmploymentIndicator
     /// </summary>
-    public bool? CurrentEmploymentIndicator { get => _currentEmploymentIndicator; set => SetField(ref _currentEmploymentIndicator, value); }
+    public bool? CurrentEmploymentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract DoesNotApply
+    /// Employment DoesNotApply
     /// </summary>
-    public bool? DoesNotApply { get => _doesNotApply; set => SetField(ref _doesNotApply, value); }
+    public bool? DoesNotApply { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract Email [BE0030], [CE0030]
+    /// Employment Email [BE0030], [CE0030]
     /// </summary>
-    public string? Email { get => _email; set => SetField(ref _email, value); }
+    public string? Email { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract EmployerComments [BE0031], [CE0031]
+    /// Employment EmployerComments [BE0031], [CE0031]
     /// </summary>
-    public string? EmployerComments { get => _employerComments; set => SetField(ref _employerComments, value); }
+    public string? EmployerComments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract EmployerName
+    /// Employment EmployerName
     /// </summary>
-    public string? EmployerName { get => _employerName; set => SetField(ref _employerName, value); }
+    public string? EmployerName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract EmploymentMonthlyIncomeAmount
+    /// Employment EmploymentMonthlyIncomeAmount
     /// </summary>
-    public decimal? EmploymentMonthlyIncomeAmount { get => _employmentMonthlyIncomeAmount; set => SetField(ref _employmentMonthlyIncomeAmount, value); }
+    public decimal? EmploymentMonthlyIncomeAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract EmploymentStartDate
+    /// Employment EmploymentStartDate
     /// </summary>
-    public DateTime? EmploymentStartDate { get => _employmentStartDate; set => SetField(ref _employmentStartDate, value); }
+    public DateTime? EmploymentStartDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract EndDate
+    /// Employment EndDate
     /// </summary>
-    public DateTime? EndDate { get => _endDate; set => SetField(ref _endDate, value); }
+    public DateTime? EndDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract Fax [BE0029], [CE0029]
+    /// Employment Fax [BE0029], [CE0029]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? Fax { get => _fax; set => SetField(ref _fax, value); }
+    public string? Fax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract ForeignAddressIndicator
+    /// Employment ForeignAddressIndicator
     /// </summary>
-    public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
+    public bool? ForeignAddressIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract ForeignIncome
+    /// Employment ForeignIncome
     /// </summary>
-    public bool? ForeignIncome { get => _foreignIncome; set => SetField(ref _foreignIncome, value); }
+    public bool? ForeignIncome { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract Id
+    /// Employment Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract IndividualEmployer
+    /// Employment IndividualEmployer
     /// </summary>
-    public bool? IndividualEmployer { get => _individualEmployer; set => SetField(ref _individualEmployer, value); }
+    public bool? IndividualEmployer { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract JobTermMonths
+    /// Employment JobTermMonths
     /// </summary>
-    public int? JobTermMonths { get => _jobTermMonths; set => SetField(ref _jobTermMonths, value); }
+    public int? JobTermMonths { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract MilitaryCombatPay
+    /// Employment MilitaryCombatPay
     /// </summary>
-    public decimal? MilitaryCombatPay { get => _militaryCombatPay; set => SetField(ref _militaryCombatPay, value); }
+    public decimal? MilitaryCombatPay { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract MilitaryEmployer
+    /// Employment MilitaryEmployer
     /// </summary>
-    public bool? MilitaryEmployer { get => _militaryEmployer; set => SetField(ref _militaryEmployer, value); }
+    public bool? MilitaryEmployer { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract MilitaryEntitlement
+    /// Employment MilitaryEntitlement
     /// </summary>
-    public decimal? MilitaryEntitlement { get => _militaryEntitlement; set => SetField(ref _militaryEntitlement, value); }
+    public decimal? MilitaryEntitlement { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract MilitaryFlightPay
+    /// Employment MilitaryFlightPay
     /// </summary>
-    public decimal? MilitaryFlightPay { get => _militaryFlightPay; set => SetField(ref _militaryFlightPay, value); }
+    public decimal? MilitaryFlightPay { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract MilitaryHazardPay
+    /// Employment MilitaryHazardPay
     /// </summary>
-    public decimal? MilitaryHazardPay { get => _militaryHazardPay; set => SetField(ref _militaryHazardPay, value); }
+    public decimal? MilitaryHazardPay { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract MilitaryOverseasPay
+    /// Employment MilitaryOverseasPay
     /// </summary>
-    public decimal? MilitaryOverseasPay { get => _militaryOverseasPay; set => SetField(ref _militaryOverseasPay, value); }
+    public decimal? MilitaryOverseasPay { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract MilitaryPropPay
+    /// Employment MilitaryPropPay
     /// </summary>
-    public decimal? MilitaryPropPay { get => _militaryPropPay; set => SetField(ref _militaryPropPay, value); }
+    public decimal? MilitaryPropPay { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract MonthlyIncomeAmount
+    /// Employment MonthlyIncomeAmount
     /// </summary>
-    public int? MonthlyIncomeAmount { get => _monthlyIncomeAmount; set => SetField(ref _monthlyIncomeAmount, value); }
+    public int? MonthlyIncomeAmount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract NoLinkToDocTrackIndicator [BE0097], [CE0097]
+    /// Employment NoLinkToDocTrackIndicator [BE0097], [CE0097]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => SetField(ref _noLinkToDocTrackIndicator, value); }
+    public bool? NoLinkToDocTrackIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract OtherAllowanceDescription
+    /// Employment OtherAllowanceDescription
     /// </summary>
-    public string? OtherAllowanceDescription { get => _otherAllowanceDescription; set => SetField(ref _otherAllowanceDescription, value); }
+    public string? OtherAllowanceDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract OtherAmount
+    /// Employment OtherAmount
     /// </summary>
-    public decimal? OtherAmount { get => _otherAmount; set => SetField(ref _otherAmount, value); }
+    public decimal? OtherAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract OtherIncome
+    /// Employment OtherIncome
     /// </summary>
-    public decimal? OtherIncome { get => _otherIncome; set => SetField(ref _otherIncome, value); }
+    public decimal? OtherIncome { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract OverTime
+    /// Employment OverTime
     /// </summary>
-    public decimal? OverTime { get => _overTime; set => SetField(ref _overTime, value); }
+    public decimal? OverTime { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract OvertimeAmount
+    /// Employment OvertimeAmount
     /// </summary>
-    public decimal? OvertimeAmount { get => _overtimeAmount; set => SetField(ref _overtimeAmount, value); }
+    public decimal? OvertimeAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract Owner [BE0008], [CE0008]
+    /// Employment Owner [BE0008], [CE0008]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public StringEnumValue<BorrowerOrCoBorrower> Owner { get => _owner; set => SetField(ref _owner, value); }
+    public StringEnumValue<BorrowerOrCoBorrower> Owner { get => GetValue<StringEnumValue<BorrowerOrCoBorrower>>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract OwnershipInterestType
+    /// Employment OwnershipInterestType
     /// </summary>
-    public StringEnumValue<OwnershipInterestType> OwnershipInterestType { get => _ownershipInterestType; set => SetField(ref _ownershipInterestType, value); }
+    public StringEnumValue<OwnershipInterestType> OwnershipInterestType { get => GetValue<StringEnumValue<OwnershipInterestType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract PhoneNumber
-    /// </summary>
-    [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? PhoneNumber { get => _phoneNumber; set => SetField(ref _phoneNumber, value); }
-
-    /// <summary>
-    /// EmploymentContract PositionDescription
-    /// </summary>
-    public string? PositionDescription { get => _positionDescription; set => SetField(ref _positionDescription, value); }
-
-    /// <summary>
-    /// EmploymentContract PrintAttachmentIndicator [BE0036], [CE0036]
-    /// </summary>
-    public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
-
-    /// <summary>
-    /// EmploymentContract PrintUserJobTitleIndicator [BE0064], [CE0064]
-    /// </summary>
-    public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
-
-    /// <summary>
-    /// EmploymentContract PrintUserNameIndicator [BE0038], [CE0038]
-    /// </summary>
-    public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
-
-    /// <summary>
-    /// EmploymentContract QuartersAllowance
-    /// </summary>
-    public decimal? QuartersAllowance { get => _quartersAllowance; set => SetField(ref _quartersAllowance, value); }
-
-    /// <summary>
-    /// EmploymentContract RationsAllowance
-    /// </summary>
-    public decimal? RationsAllowance { get => _rationsAllowance; set => SetField(ref _rationsAllowance, value); }
-
-    /// <summary>
-    /// EmploymentContract SeasonalIncome
-    /// </summary>
-    public bool? SeasonalIncome { get => _seasonalIncome; set => SetField(ref _seasonalIncome, value); }
-
-    /// <summary>
-    /// EmploymentContract SelfEmployedIndicator
-    /// </summary>
-    public bool? SelfEmployedIndicator { get => _selfEmployedIndicator; set => SetField(ref _selfEmployedIndicator, value); }
-
-    /// <summary>
-    /// EmploymentContract SpecialEmployerRelationshipIndicator
-    /// </summary>
-    public bool? SpecialEmployerRelationshipIndicator { get => _specialEmployerRelationshipIndicator; set => SetField(ref _specialEmployerRelationshipIndicator, value); }
-
-    /// <summary>
-    /// EmploymentContract StartDate
-    /// </summary>
-    public DateTime? StartDate { get => _startDate; set => SetField(ref _startDate, value); }
-
-    /// <summary>
-    /// EmploymentContract TimeInLineOfWorkMonths
-    /// </summary>
-    public int? TimeInLineOfWorkMonths { get => _timeInLineOfWorkMonths; set => SetField(ref _timeInLineOfWorkMonths, value); }
-
-    /// <summary>
-    /// EmploymentContract TimeInLineOfWorkYears
-    /// </summary>
-    public int? TimeInLineOfWorkYears { get => _timeInLineOfWorkYears; set => SetField(ref _timeInLineOfWorkYears, value); }
-
-    /// <summary>
-    /// EmploymentContract TimeOnJobTermMonths
-    /// </summary>
-    public int? TimeOnJobTermMonths { get => _timeOnJobTermMonths; set => SetField(ref _timeOnJobTermMonths, value); }
-
-    /// <summary>
-    /// EmploymentContract TimeOnJobTermYears
-    /// </summary>
-    public int? TimeOnJobTermYears { get => _timeOnJobTermYears; set => SetField(ref _timeOnJobTermYears, value); }
-
-    /// <summary>
-    /// EmploymentContract Title [BE0037], [CE0037]
-    /// </summary>
-    public string? Title { get => _title; set => SetField(ref _title, value); }
-
-    /// <summary>
-    /// EmploymentContract TitleFax [BE0045], [CE0045]
+    /// Employment PhoneNumber
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
+    public string? PhoneNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract TitlePhone [BE0044], [CE0044]
+    /// Employment PositionDescription
+    /// </summary>
+    public string? PositionDescription { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment PrintAttachmentIndicator [BE0036], [CE0036]
+    /// </summary>
+    public bool? PrintAttachmentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment PrintUserJobTitleIndicator [BE0064], [CE0064]
+    /// </summary>
+    public bool? PrintUserJobTitleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment PrintUserNameIndicator [BE0038], [CE0038]
+    /// </summary>
+    public bool? PrintUserNameIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment QuartersAllowance
+    /// </summary>
+    public decimal? QuartersAllowance { get => GetValue<decimal?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment RationsAllowance
+    /// </summary>
+    public decimal? RationsAllowance { get => GetValue<decimal?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment SeasonalIncome
+    /// </summary>
+    public bool? SeasonalIncome { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment SelfEmployedIndicator
+    /// </summary>
+    public bool? SelfEmployedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment SpecialEmployerRelationshipIndicator
+    /// </summary>
+    public bool? SpecialEmployerRelationshipIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment StartDate
+    /// </summary>
+    public DateTime? StartDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment TimeInLineOfWorkMonths
+    /// </summary>
+    public int? TimeInLineOfWorkMonths { get => GetValue<int?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment TimeInLineOfWorkYears
+    /// </summary>
+    public int? TimeInLineOfWorkYears { get => GetValue<int?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment TimeOnJobTermMonths
+    /// </summary>
+    public int? TimeOnJobTermMonths { get => GetValue<int?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment TimeOnJobTermYears
+    /// </summary>
+    public int? TimeOnJobTermYears { get => GetValue<int?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment Title [BE0037], [CE0037]
+    /// </summary>
+    public string? Title { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment TitleFax [BE0045], [CE0045]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
+    public string? TitleFax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract Total
+    /// Employment TitlePhone [BE0044], [CE0044]
     /// </summary>
-    public decimal? Total { get => _total; set => SetField(ref _total, value); }
+    [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+    public string? TitlePhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract UnitNumber
+    /// Employment Total
     /// </summary>
-    public string? UnitNumber { get => _unitNumber; set => SetField(ref _unitNumber, value); }
+    public decimal? Total { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract UnitType
+    /// Employment UnitNumber
     /// </summary>
-    public StringEnumValue<UnitType> UnitType { get => _unitType; set => SetField(ref _unitType, value); }
+    public string? UnitNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract Urla2020StreetAddress
+    /// Employment UnitType
     /// </summary>
-    public string? Urla2020StreetAddress { get => _urla2020StreetAddress; set => SetField(ref _urla2020StreetAddress, value); }
+    public StringEnumValue<UnitType> UnitType { get => GetValue<StringEnumValue<UnitType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract VariableHousingAllowance
+    /// Employment Urla2020StreetAddress
     /// </summary>
-    public decimal? VariableHousingAllowance { get => _variableHousingAllowance; set => SetField(ref _variableHousingAllowance, value); }
+    public string? Urla2020StreetAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract VerificationDate [BE0078], [CE0078]
+    /// Employment VariableHousingAllowance
     /// </summary>
-    public DateTime? VerificationDate { get => _verificationDate; set => SetField(ref _verificationDate, value); }
+    public decimal? VariableHousingAllowance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EmploymentContract VerificationRequestDate
+    /// Employment VerificationDate [BE0078], [CE0078]
     /// </summary>
-    public DateTime? VerificationRequestDate { get => _verificationRequestDate; set => SetField(ref _verificationRequestDate, value); }
+    public DateTime? VerificationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Employment VerificationRequestDate
+    /// </summary>
+    public DateTime? VerificationRequestDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

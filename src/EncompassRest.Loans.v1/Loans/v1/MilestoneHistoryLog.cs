@@ -7,40 +7,33 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class MilestoneHistoryLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _addedByUserId;
-    private DirtyValue<string?>? _changeReason;
-    private DirtyValue<DateTime?>? _dateAddedUtc;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _milestoneTemplate;
-    private DirtyValue<string?>? _recordXML;
-
     /// <summary>
     /// MilestoneHistoryLog AddedByUserId
     /// </summary>
-    public string? AddedByUserId { get => _addedByUserId; set => SetField(ref _addedByUserId, value); }
+    public string? AddedByUserId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MilestoneHistoryLog ChangeReason
     /// </summary>
-    public string? ChangeReason { get => _changeReason; set => SetField(ref _changeReason, value); }
+    public string? ChangeReason { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MilestoneHistoryLog DateAddedUtc
     /// </summary>
-    public DateTime? DateAddedUtc { get => _dateAddedUtc; set => SetField(ref _dateAddedUtc, value); }
+    public DateTime? DateAddedUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// MilestoneHistoryLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MilestoneHistoryLog MilestoneTemplate
     /// </summary>
-    public string? MilestoneTemplate { get => _milestoneTemplate; set => SetField(ref _milestoneTemplate, value); }
+    public string? MilestoneTemplate { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MilestoneHistoryLog RecordXML
     /// </summary>
-    public string? RecordXML { get => _recordXML; set => SetField(ref _recordXML, value); }
+    public string? RecordXML { get => GetValue<string?>(); set => SetValue(value); }
 }

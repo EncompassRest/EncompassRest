@@ -2,6 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Loans.v1;
+using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Attachments.v1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

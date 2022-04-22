@@ -7,46 +7,38 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class SelfEmployedIncome : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<bool?>? _boolFieldValue;
-    private DirtyValue<string?>? _businessName;
-    private DirtyValue<StringEnumValue<FieldName>>? _fieldName;
-    private DirtyValue<string?>? _fieldValue;
-    private DirtyValue<decimal?>? _firstYearAmount;
-    private DirtyValue<StringEnumValue<FormType>>? _formType;
-    private DirtyValue<decimal?>? _secondYearAmount;
-
     /// <summary>
-    /// SelfEmployedIncomeContract BoolFieldValue
+    /// SelfEmployedIncome BoolFieldValue
     /// </summary>
-    public bool? BoolFieldValue { get => _boolFieldValue; set => SetField(ref _boolFieldValue, value); }
+    public bool? BoolFieldValue { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// 1084A/1040 Business Information - Business Name [FM1084.X177]
     /// </summary>
-    public string? BusinessName { get => _businessName; set => SetField(ref _businessName, value); }
+    public string? BusinessName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// 1084A/1040 Other Descr [FM1084.X18]
     /// </summary>
-    public StringEnumValue<FieldName> FieldName { get => _fieldName; set => SetField(ref _fieldName, value); }
+    public StringEnumValue<FieldName> FieldName { get => GetValue<StringEnumValue<FieldName>>(); set => SetValue(value); }
 
     /// <summary>
-    /// SelfEmployedIncomeContract FieldValue
+    /// SelfEmployedIncome FieldValue
     /// </summary>
-    public string? FieldValue { get => _fieldValue; set => SetField(ref _fieldValue, value); }
+    public string? FieldValue { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SelfEmployedIncomeContract FirstYearAmount
+    /// SelfEmployedIncome FirstYearAmount
     /// </summary>
-    public decimal? FirstYearAmount { get => _firstYearAmount; set => SetField(ref _firstYearAmount, value); }
+    public decimal? FirstYearAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SelfEmployedIncomeContract FormType
+    /// SelfEmployedIncome FormType
     /// </summary>
-    public StringEnumValue<FormType> FormType { get => _formType; set => SetField(ref _formType, value); }
+    public StringEnumValue<FormType> FormType { get => GetValue<StringEnumValue<FormType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// SelfEmployedIncomeContract SecondYearAmount
+    /// SelfEmployedIncome SecondYearAmount
     /// </summary>
-    public decimal? SecondYearAmount { get => _secondYearAmount; set => SetField(ref _secondYearAmount, value); }
+    public decimal? SecondYearAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 }

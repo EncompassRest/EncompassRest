@@ -6,40 +6,33 @@ namespace EncompassRest.Loans.v3;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class Hud1EsItemize : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _date;
-    private DirtyValue<decimal?>? _escrowPaymentBalance;
-    private DirtyValue<string?>? _escrowPaymentDescription;
-    private DirtyValue<decimal?>? _escrowPaymentFrom;
-    private DirtyValue<decimal?>? _escrowPaymentTo;
-    private DirtyValue<string?>? _id;
-
     /// <summary>
     /// Itemize Escrow Payment Date [AEA0001]
     /// </summary>
-    public string? Date { get => _date; set => SetField(ref _date, value); }
+    public string? Date { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Itemize Escrow Payment Balance [AEA0005]
     /// </summary>
-    public decimal? EscrowPaymentBalance { get => _escrowPaymentBalance; set => SetField(ref _escrowPaymentBalance, value); }
+    public decimal? EscrowPaymentBalance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Itemize Escrow Payment Description [AEA0004]
     /// </summary>
-    public string? EscrowPaymentDescription { get => _escrowPaymentDescription; set => SetField(ref _escrowPaymentDescription, value); }
+    public string? EscrowPaymentDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Itemize Escrow Payment From [AEA0003]
     /// </summary>
-    public decimal? EscrowPaymentFrom { get => _escrowPaymentFrom; set => SetField(ref _escrowPaymentFrom, value); }
+    public decimal? EscrowPaymentFrom { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Itemize Escrow Payment To [AEA0002]
     /// </summary>
-    public decimal? EscrowPaymentTo { get => _escrowPaymentTo; set => SetField(ref _escrowPaymentTo, value); }
+    public decimal? EscrowPaymentTo { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Hud1EsItemizeContract Id
+    /// Hud1EsItemize Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 }

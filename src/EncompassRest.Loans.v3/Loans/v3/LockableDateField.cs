@@ -8,22 +8,18 @@ namespace EncompassRest.Loans.v3;
 [Entity(PropertiesToAlwaysSerialize = nameof(UseUserValue))]
 public sealed partial class LockableDateField : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _computedValue;
-    private DirtyValue<DateTime?>? _userValue;
-    private DirtyValue<bool?>? _useUserValue;
+    /// <summary>
+    /// LockableDateField ComputedValue
+    /// </summary>
+    public DateTime? ComputedValue { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockableDateFieldContract ComputedValue
+    /// LockableDateField UserValue
     /// </summary>
-    public DateTime? ComputedValue { get => _computedValue; set => SetField(ref _computedValue, value); }
+    public DateTime? UserValue { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockableDateFieldContract UserValue
+    /// LockableDateField UseUserValue
     /// </summary>
-    public DateTime? UserValue { get => _userValue; set => SetField(ref _userValue, value); }
-
-    /// <summary>
-    /// LockableDateFieldContract UseUserValue
-    /// </summary>
-    public bool? UseUserValue { get => _useUserValue; set => SetField(ref _useUserValue, value); }
+    public bool? UseUserValue { get => GetValue<bool?>(); set => SetValue(value); }
 }

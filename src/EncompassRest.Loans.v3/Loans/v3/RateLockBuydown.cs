@@ -7,23 +7,19 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class RateLockBuydown : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<int?>? _changeFrequencyMonths;
-    private DirtyValue<decimal?>? _increaseRatePercent;
-    private DirtyValue<int?>? _rateLockBuydownIndex;
-
     /// <summary>
-    /// RateLockBuydownContract ChangeFrequencyMonths
+    /// RateLockBuydown ChangeFrequencyMonths
     /// </summary>
-    public int? ChangeFrequencyMonths { get => _changeFrequencyMonths; set => SetField(ref _changeFrequencyMonths, value); }
+    public int? ChangeFrequencyMonths { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RateLockBuydownContract IncreaseRatePercent
+    /// RateLockBuydown IncreaseRatePercent
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? IncreaseRatePercent { get => _increaseRatePercent; set => SetField(ref _increaseRatePercent, value); }
+    public decimal? IncreaseRatePercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RateLockBuydownContract RateLockBuydownIndex
+    /// RateLockBuydown RateLockBuydownIndex
     /// </summary>
-    public int? RateLockBuydownIndex { get => _rateLockBuydownIndex; set => SetField(ref _rateLockBuydownIndex, value); }
+    public int? RateLockBuydownIndex { get => GetValue<int?>(); set => SetValue(value); }
 }

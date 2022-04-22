@@ -7,52 +7,43 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class DisclosureFeeChange : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _amount;
-    private DirtyValue<string?>? _changedCircumstance;
-    private DirtyValue<DateTime?>? _changesReceivedDate;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _feeDescription;
-    private DirtyValue<string?>? _fieldId;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _reason;
+    /// <summary>
+    /// DisclosureFeeChange Amount
+    /// </summary>
+    public string? Amount { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureFeeChangeContract Amount
+    /// DisclosureFeeChange ChangedCircumstance
     /// </summary>
-    public string? Amount { get => _amount; set => SetField(ref _amount, value); }
+    public string? ChangedCircumstance { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureFeeChangeContract ChangedCircumstance
+    /// DisclosureFeeChange ChangesReceivedDate
     /// </summary>
-    public string? ChangedCircumstance { get => _changedCircumstance; set => SetField(ref _changedCircumstance, value); }
+    public DateTime? ChangesReceivedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureFeeChangeContract ChangesReceivedDate
+    /// DisclosureFeeChange Comments
     /// </summary>
-    public DateTime? ChangesReceivedDate { get => _changesReceivedDate; set => SetField(ref _changesReceivedDate, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureFeeChangeContract Comments
+    /// DisclosureFeeChange FeeDescription
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? FeeDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureFeeChangeContract FeeDescription
+    /// DisclosureFeeChange FieldId
     /// </summary>
-    public string? FeeDescription { get => _feeDescription; set => SetField(ref _feeDescription, value); }
+    public string? FieldId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureFeeChangeContract FieldId
+    /// DisclosureFeeChange Id
     /// </summary>
-    public string? FieldId { get => _fieldId; set => SetField(ref _fieldId, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DisclosureFeeChangeContract Id
+    /// DisclosureFeeChange Reason
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
-
-    /// <summary>
-    /// DisclosureFeeChangeContract Reason
-    /// </summary>
-    public string? Reason { get => _reason; set => SetField(ref _reason, value); }
+    public string? Reason { get => GetValue<string?>(); set => SetValue(value); }
 }

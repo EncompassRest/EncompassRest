@@ -7,1306 +7,1088 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class AusTrackingLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _acceptPlusEligible;
-    private DirtyValue<string?>? _affordableProductType;
-    private DirtyValue<decimal?>? _allOtherPayments;
-    private DirtyValue<int?>? _amortizationMonths;
-    private DirtyValue<string?>? _amortizationType;
-    private DirtyValue<decimal?>? _amtSubordinateFin;
-    private DirtyValue<string?>? _appraisalTypeMaf;
-    private DirtyValue<int?>? _appraisedValue;
-    private DirtyValue<decimal?>? _armQualifyingRate;
-    private DirtyValue<DateTime?>? _assessedDateTime;
-    private DirtyValue<string?>? _assessmentType;
-    private DirtyValue<string?>? _ausLogExtensionId;
-    private DirtyValue<string?>? _ausOrderLinkId;
-    private DirtyValue<string?>? _ausRecommendation;
-    private DirtyValue<string?>? _ausResponseFileName;
-    private DirtyValue<string?>? _ausStatus;
-    private DirtyValue<string?>? _ausTrackingType;
-    private DirtyValue<string?>? _ausTransactionId;
-    private DirtyValue<string?>? _ausVersion;
-    private DirtyValue<string?>? _balloon;
-    private DirtyValue<int?>? _balloonTerm;
-    private DirtyValue<decimal?>? _borrowerAssetAmount;
-    private DirtyValue<string?>? _borrowerAssetName;
-    private DirtyValue<string?>? _borrowerAssetType;
-    private DirtyValue<string?>? _borrowerCreditScore1;
-    private DirtyValue<string?>? _borrowerCreditScore2;
-    private DirtyValue<string?>? _borrowerCreditScore3;
-    private DirtyValue<string?>? _borrowerEquifaxBeacon;
-    private DirtyValue<string?>? _borrowerExperianFico;
-    private DirtyValue<decimal?>? _borrowerIncomeAmount;
-    private DirtyValue<string?>? _borrowerIncomeName;
-    private DirtyValue<string?>? _borrowerIncomeType;
-    private DirtyValue<string?>? _borrowerInstitutionName;
-    private DirtyValue<string?>? _borrowerName;
-    private DirtyValue<string?>? _borrowerScoreName;
-    private DirtyValue<string?>? _borrowerTransUnionEmpirica;
-    private DirtyValue<string?>? _borrowerType1;
-    private DirtyValue<string?>? _borrowerType2;
-    private DirtyValue<decimal?>? _boughtDownRate;
-    private DirtyValue<string?>? _buydown;
-    private DirtyValue<decimal?>? _cashBack;
-    private DirtyValue<decimal?>? _cashOutAmount;
-    private DirtyValue<decimal?>? _cltv;
-    private DirtyValue<decimal?>? _coBorrowerAssetAmount;
-    private DirtyValue<string?>? _coBorrowerAssetName;
-    private DirtyValue<string?>? _coBorrowerAssetType;
-    private DirtyValue<string?>? _coBorrowerCreditScore1;
-    private DirtyValue<string?>? _coBorrowerCreditScore2;
-    private DirtyValue<string?>? _coBorrowerCreditScore3;
-    private DirtyValue<string?>? _coBorrowerEquifaxBeacon;
-    private DirtyValue<string?>? _coBorrowerExperianFico;
-    private DirtyValue<decimal?>? _coBorrowerIncomeAmount;
-    private DirtyValue<string?>? _coBorrowerIncomeName;
-    private DirtyValue<string?>? _coBorrowerIncomeType;
-    private DirtyValue<string?>? _coBorrowerInstitutionName;
-    private DirtyValue<string?>? _coborrowerName;
-    private DirtyValue<string?>? _coBorrowerScoreName;
-    private DirtyValue<string?>? _coBorrowerTransUnionEmpirica;
-    private DirtyValue<string?>? _code1;
-    private DirtyValue<string?>? _code2;
-    private DirtyValue<string?>? _codeDescription1;
-    private DirtyValue<string?>? _codeDescription2;
-    private DirtyValue<string?>? _communityLending;
-    private DirtyValue<DateTime?>? _createdOn;
-    private DirtyValue<string?>? _creditAgency1;
-    private DirtyValue<string?>? _creditAgency2;
-    private DirtyValue<DateTime?>? _creditReportDate1;
-    private DirtyValue<DateTime?>? _creditReportDate2;
-    private DirtyValue<string?>? _creditReportId1;
-    private DirtyValue<string?>? _creditReportId2;
-    private DirtyValue<string?>? _curedAmortizationType;
-    private DirtyValue<int?>? _curedAppraisedValue;
-    private DirtyValue<decimal?>? _curedCltv;
-    private DirtyValue<decimal?>? _curedHousingExpenseRatio;
-    private DirtyValue<string?>? _curedLoanPurpose;
-    private DirtyValue<int?>? _curedLoanTerm;
-    private DirtyValue<string?>? _curedLoanType;
-    private DirtyValue<decimal?>? _curedLtv;
-    private DirtyValue<decimal?>? _curedNoteRate;
-    private DirtyValue<decimal?>? _curedProposedTotalHousingPayment;
-    private DirtyValue<string?>? _curedRefinancePurpose;
-    private DirtyValue<decimal?>? _curedTotalExpenseRatio;
-    private DirtyValue<decimal?>? _curedTotalLoanAmount;
-    private DirtyValue<decimal?>? _curedTotalMonthlyIncome;
-    private DirtyValue<decimal?>? _debtRatio;
-    private DirtyValue<string?>? _documentationLevel;
-    private DirtyValue<string?>? _duCaseIdorLpausKey;
-    private DirtyValue<string?>? _duPropertyType;
-    private DirtyValue<string?>? _eFolderGuid;
-    private DirtyValue<string?>? _errorInfo;
-    private DirtyValue<decimal?>? _excessAvailableAssetsNoVerified;
-    private DirtyValue<string?>? _fatalEditInfo;
-    private DirtyValue<string?>? _fileType;
-    private DirtyValue<decimal?>? _financedMiAmount;
-    private DirtyValue<decimal?>? _firstPandI;
-    private DirtyValue<DateTime?>? _firstSubmissionDate;
-    private DirtyValue<string?>? _firstSubmissionTime;
-    private DirtyValue<string?>? _freddieDocClass;
-    private DirtyValue<decimal?>? _fundsRequiredClose;
-    private DirtyValue<decimal?>? _hlctv;
-    private DirtyValue<decimal?>? _housingExpense;
-    private DirtyValue<decimal?>? _housingExpenseRatio;
-    private DirtyValue<decimal?>? _housingRatio;
-    private DirtyValue<decimal?>? _htltv;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _includingLess10Mos;
-    private DirtyValue<decimal?>? _incomeAssetBase;
-    private DirtyValue<decimal?>? _incomeAssetBonus;
-    private DirtyValue<decimal?>? _incomeAssetCommission;
-    private DirtyValue<decimal?>? _incomeAssetOther;
-    private DirtyValue<decimal?>? _incomeAssetOvertime;
-    private DirtyValue<decimal?>? _incomeAssetPosCashFlow;
-    private DirtyValue<decimal?>? _incomeAssetPositiveNetRental;
-    private DirtyValue<string?>? _indicatorScore;
-    private DirtyValue<string?>? _intendedUseofProperty;
-    private DirtyValue<string?>? _lclaEvaluatedServiceConclusion1;
-    private DirtyValue<string?>? _lclaEvaluatedServiceConclusion2;
-    private DirtyValue<string?>? _lclaEvaluatedServiceConclusion3;
-    private DirtyValue<string?>? _lclaEvaluatedServiceConclusion4;
-    private DirtyValue<string?>? _lclaEvaluatedServiceType1;
-    private DirtyValue<string?>? _lclaEvaluatedServiceType2;
-    private DirtyValue<string?>? _lclaEvaluatedServiceType3;
-    private DirtyValue<string?>? _lclaEvaluatedServiceType4;
-    private DirtyValue<string?>? _lenderLoan;
-    private DirtyValue<string?>? _lienType;
-    private DirtyValue<decimal?>? _loanAmount;
-    private DirtyValue<string?>? _loanApplicationId;
-    private DirtyValue<string?>? _loanProcessingStage;
-    private DirtyValue<string?>? _loanProspectorId;
-    private DirtyValue<string?>? _loanPurpose;
-    private DirtyValue<int?>? _loanTerm;
-    private DirtyValue<string?>? _loanType;
-    private DirtyValue<DateTime?>? _lpAssmtExpDate;
-    private DirtyValue<string?>? _lpPropertyType;
-    private DirtyValue<string?>? _lpVersion;
-    private DirtyValue<string?>? _lqaCollateralRepWarrantyServiceConclusion;
-    private DirtyValue<string?>? _lqaCreditRiskAssessmentConclusion;
-    private DirtyValue<string?>? _lqaDataCompareFieldConclusion;
-    private DirtyValue<string?>? _lqaDataCompareFieldName;
-    private DirtyValue<string?>? _lqaDataCompareResult;
-    private DirtyValue<string?>? _lqalpKey;
-    private DirtyValue<string?>? _lqaPurchaseEligibilityResult;
-    private DirtyValue<string?>? _lqaRiskAssessmentKey;
-    private DirtyValue<DateTime?>? _lqaSubmissionDateTime;
-    private DirtyValue<decimal?>? _ltv;
-    private DirtyValue<decimal?>? _maxMortgageLimit;
-    private DirtyValue<string?>? _miDecision;
-    private DirtyValue<string?>? _mortgageType;
-    private DirtyValue<string?>? _negAmortizationType;
-    private DirtyValue<decimal?>? _negativeNetRental;
-    private DirtyValue<decimal?>? _netCashBack;
-    private DirtyValue<string?>? _newConstruction;
-    private DirtyValue<decimal?>? _noteRate;
-    private DirtyValue<string?>? _notpNumber;
-    private DirtyValue<int?>? _noUnits;
-    private DirtyValue<string?>? _numberOfSubmissions;
-    private DirtyValue<string?>? _occupancyStatus;
-    private DirtyValue<decimal?>? _occupantDebtRatio;
-    private DirtyValue<decimal?>? _occupantHousingRatio;
-    private DirtyValue<string?>? _offeringIdentifier;
-    private DirtyValue<string?>? _orderStatus;
-    private DirtyValue<string?>? _originatingCompany;
-    private DirtyValue<decimal?>? _ownerExistingMtg;
-    private DirtyValue<decimal?>? _pandI;
-    private DirtyValue<int?>? _paymentFrequency;
-    private DirtyValue<string?>? _presentAddress;
-    private DirtyValue<string?>? _presentAddressCity;
-    private DirtyValue<string?>? _presentAddressState;
-    private DirtyValue<string?>? _presentAddressZipCode;
-    private DirtyValue<decimal?>? _presentHousingExpense;
-    private DirtyValue<decimal?>? _presentPrincipalHousingPayment;
-    private DirtyValue<string?>? _propertyAddress;
-    private DirtyValue<string?>? _propertyCity;
-    private DirtyValue<string?>? _propertyState;
-    private DirtyValue<string?>? _propertyZipcode;
-    private DirtyValue<decimal?>? _proposedHazardInsurance;
-    private DirtyValue<decimal?>? _proposedHoaFees;
-    private DirtyValue<decimal?>? _proposedHousingPiti;
-    private DirtyValue<decimal?>? _proposedMortgageInsurance;
-    private DirtyValue<decimal?>? _proposedOtherPayment;
-    private DirtyValue<decimal?>? _proposedTaxes;
-    private DirtyValue<decimal?>? _proposedTotalHousingPayment;
-    private DirtyValue<decimal?>? _proposedTotalMonthlyDebt;
-    private DirtyValue<string?>? _purchaseEligibility;
-    private DirtyValue<decimal?>? _qualifyingRate;
-    private DirtyValue<string?>? _recordType;
-    private DirtyValue<string?>? _refinancePurpose;
-    private DirtyValue<DateTime?>? _requestedDateTime;
-    private DirtyValue<decimal?>? _reserves;
-    private DirtyValue<decimal?>? _reservesRequiredVerified;
-    private DirtyValue<string?>? _riskClass;
-    private DirtyValue<string?>? _salesConcessions;
-    private DirtyValue<decimal?>? _salesPrice;
-    private DirtyValue<decimal?>? _secondPandI;
-    private DirtyValue<string?>? _selectedBorrower;
-    private DirtyValue<string?>? _selectedRepository;
-    private DirtyValue<string?>? _sellerNumber;
-    private DirtyValue<decimal?>? _subjNegCashFlow;
-    private DirtyValue<DateTime?>? _submissionDate;
-    private DirtyValue<string?>? _submissionNumber;
-    private DirtyValue<string?>? _submissionTime;
-    private DirtyValue<string?>? _submittedBy;
-    private DirtyValue<string?>? _submittingCompany;
-    private DirtyValue<string?>? _temporarySubsidyBuydown;
-    private DirtyValue<decimal?>? _tltv;
-    private DirtyValue<decimal?>? _totalAsset;
-    private DirtyValue<decimal?>? _totalExpense;
-    private DirtyValue<decimal?>? _totalExpensePmt;
-    private DirtyValue<decimal?>? _totalExpenseRatio;
-    private DirtyValue<decimal?>? _totalFundsVerified;
-    private DirtyValue<decimal?>? _totalLoanAmount;
-    private DirtyValue<decimal?>? _totalMonthlyIncome;
-    private DirtyValue<string?>? _tpoNumber;
-    private DirtyValue<string?>? _transactionId;
-    private DirtyValue<string?>? _underwritingRiskAssessOther;
-    private DirtyValue<string?>? _underwritingRiskAssessType;
-    private DirtyValue<string?>? _withUndisclosedDebt;
-
     /// <summary>
-    /// AUSTrackingLogContract AcceptPlusEligible
+    /// AusTrackingLog AcceptPlusEligible
     /// </summary>
-    public string? AcceptPlusEligible { get => _acceptPlusEligible; set => SetField(ref _acceptPlusEligible, value); }
+    public string? AcceptPlusEligible { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AffordableProductType
+    /// AusTrackingLog AffordableProductType
     /// </summary>
-    public string? AffordableProductType { get => _affordableProductType; set => SetField(ref _affordableProductType, value); }
+    public string? AffordableProductType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AllOtherPayments
+    /// AusTrackingLog AllOtherPayments
     /// </summary>
-    public decimal? AllOtherPayments { get => _allOtherPayments; set => SetField(ref _allOtherPayments, value); }
+    public decimal? AllOtherPayments { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AmortizationMonths
+    /// AusTrackingLog AmortizationMonths
     /// </summary>
-    public int? AmortizationMonths { get => _amortizationMonths; set => SetField(ref _amortizationMonths, value); }
+    public int? AmortizationMonths { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AmortizationType
+    /// AusTrackingLog AmortizationType
     /// </summary>
-    public string? AmortizationType { get => _amortizationType; set => SetField(ref _amortizationType, value); }
+    public string? AmortizationType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AmtSubordinateFin
+    /// AusTrackingLog AmtSubordinateFin
     /// </summary>
-    public decimal? AmtSubordinateFin { get => _amtSubordinateFin; set => SetField(ref _amtSubordinateFin, value); }
+    public decimal? AmtSubordinateFin { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AppraisalTypeMaf
+    /// AusTrackingLog AppraisalTypeMaf
     /// </summary>
-    public string? AppraisalTypeMaf { get => _appraisalTypeMaf; set => SetField(ref _appraisalTypeMaf, value); }
+    public string? AppraisalTypeMaf { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AppraisedValue
+    /// AusTrackingLog AppraisedValue
     /// </summary>
-    public int? AppraisedValue { get => _appraisedValue; set => SetField(ref _appraisedValue, value); }
+    public int? AppraisedValue { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ArmQualifyingRate
+    /// AusTrackingLog ArmQualifyingRate
     /// </summary>
-    public decimal? ArmQualifyingRate { get => _armQualifyingRate; set => SetField(ref _armQualifyingRate, value); }
+    public decimal? ArmQualifyingRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AssessedDateTime
+    /// AusTrackingLog AssessedDateTime
     /// </summary>
-    public DateTime? AssessedDateTime { get => _assessedDateTime; set => SetField(ref _assessedDateTime, value); }
+    public DateTime? AssessedDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AssessmentType
+    /// AusTrackingLog AssessmentType
     /// </summary>
-    public string? AssessmentType { get => _assessmentType; set => SetField(ref _assessmentType, value); }
+    public string? AssessmentType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AusLogExtensionId
+    /// AusTrackingLog AusLogExtensionId
     /// </summary>
-    public string? AusLogExtensionId { get => _ausLogExtensionId; set => SetField(ref _ausLogExtensionId, value); }
+    public string? AusLogExtensionId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AusOrderLinkId
+    /// AusTrackingLog AusOrderLinkId
     /// </summary>
-    public string? AusOrderLinkId { get => _ausOrderLinkId; set => SetField(ref _ausOrderLinkId, value); }
+    public string? AusOrderLinkId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AusRecommendation
+    /// AusTrackingLog AusRecommendation
     /// </summary>
-    public string? AusRecommendation { get => _ausRecommendation; set => SetField(ref _ausRecommendation, value); }
+    public string? AusRecommendation { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AusResponseFileName
+    /// AusTrackingLog AusResponseFileName
     /// </summary>
-    public string? AusResponseFileName { get => _ausResponseFileName; set => SetField(ref _ausResponseFileName, value); }
+    public string? AusResponseFileName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AusStatus
+    /// AusTrackingLog AusStatus
     /// </summary>
-    public string? AusStatus { get => _ausStatus; set => SetField(ref _ausStatus, value); }
+    public string? AusStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AusTrackingType
+    /// AusTrackingLog AusTrackingType
     /// </summary>
-    public string? AusTrackingType { get => _ausTrackingType; set => SetField(ref _ausTrackingType, value); }
+    public string? AusTrackingType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AusTransactionId
+    /// AusTrackingLog AusTransactionId
     /// </summary>
-    public string? AusTransactionId { get => _ausTransactionId; set => SetField(ref _ausTransactionId, value); }
+    public string? AusTransactionId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract AusVersion
+    /// AusTrackingLog AusVersion
     /// </summary>
-    public string? AusVersion { get => _ausVersion; set => SetField(ref _ausVersion, value); }
+    public string? AusVersion { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Balloon
+    /// AusTrackingLog Balloon
     /// </summary>
-    public string? Balloon { get => _balloon; set => SetField(ref _balloon, value); }
+    public string? Balloon { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BalloonTerm
+    /// AusTrackingLog BalloonTerm
     /// </summary>
-    public int? BalloonTerm { get => _balloonTerm; set => SetField(ref _balloonTerm, value); }
+    public int? BalloonTerm { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerAssetAmount
+    /// AusTrackingLog BorrowerAssetAmount
     /// </summary>
-    public decimal? BorrowerAssetAmount { get => _borrowerAssetAmount; set => SetField(ref _borrowerAssetAmount, value); }
+    public decimal? BorrowerAssetAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerAssetName
+    /// AusTrackingLog BorrowerAssetName
     /// </summary>
-    public string? BorrowerAssetName { get => _borrowerAssetName; set => SetField(ref _borrowerAssetName, value); }
+    public string? BorrowerAssetName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerAssetType
+    /// AusTrackingLog BorrowerAssetType
     /// </summary>
-    public string? BorrowerAssetType { get => _borrowerAssetType; set => SetField(ref _borrowerAssetType, value); }
+    public string? BorrowerAssetType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerCreditScore1
+    /// AusTrackingLog BorrowerCreditScore1
     /// </summary>
-    public string? BorrowerCreditScore1 { get => _borrowerCreditScore1; set => SetField(ref _borrowerCreditScore1, value); }
+    public string? BorrowerCreditScore1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerCreditScore2
+    /// AusTrackingLog BorrowerCreditScore2
     /// </summary>
-    public string? BorrowerCreditScore2 { get => _borrowerCreditScore2; set => SetField(ref _borrowerCreditScore2, value); }
+    public string? BorrowerCreditScore2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerCreditScore3
+    /// AusTrackingLog BorrowerCreditScore3
     /// </summary>
-    public string? BorrowerCreditScore3 { get => _borrowerCreditScore3; set => SetField(ref _borrowerCreditScore3, value); }
+    public string? BorrowerCreditScore3 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerEquifaxBeacon
+    /// AusTrackingLog BorrowerEquifaxBeacon
     /// </summary>
-    public string? BorrowerEquifaxBeacon { get => _borrowerEquifaxBeacon; set => SetField(ref _borrowerEquifaxBeacon, value); }
+    public string? BorrowerEquifaxBeacon { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerExperianFico
+    /// AusTrackingLog BorrowerExperianFico
     /// </summary>
-    public string? BorrowerExperianFico { get => _borrowerExperianFico; set => SetField(ref _borrowerExperianFico, value); }
+    public string? BorrowerExperianFico { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerIncomeAmount
+    /// AusTrackingLog BorrowerIncomeAmount
     /// </summary>
-    public decimal? BorrowerIncomeAmount { get => _borrowerIncomeAmount; set => SetField(ref _borrowerIncomeAmount, value); }
+    public decimal? BorrowerIncomeAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerIncomeName
+    /// AusTrackingLog BorrowerIncomeName
     /// </summary>
-    public string? BorrowerIncomeName { get => _borrowerIncomeName; set => SetField(ref _borrowerIncomeName, value); }
+    public string? BorrowerIncomeName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerIncomeType
+    /// AusTrackingLog BorrowerIncomeType
     /// </summary>
-    public string? BorrowerIncomeType { get => _borrowerIncomeType; set => SetField(ref _borrowerIncomeType, value); }
+    public string? BorrowerIncomeType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerInstitutionName
+    /// AusTrackingLog BorrowerInstitutionName
     /// </summary>
-    public string? BorrowerInstitutionName { get => _borrowerInstitutionName; set => SetField(ref _borrowerInstitutionName, value); }
+    public string? BorrowerInstitutionName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerName
+    /// AusTrackingLog BorrowerName
     /// </summary>
-    public string? BorrowerName { get => _borrowerName; set => SetField(ref _borrowerName, value); }
+    public string? BorrowerName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerScoreName
+    /// AusTrackingLog BorrowerScoreName
     /// </summary>
-    public string? BorrowerScoreName { get => _borrowerScoreName; set => SetField(ref _borrowerScoreName, value); }
+    public string? BorrowerScoreName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerTransUnionEmpirica
+    /// AusTrackingLog BorrowerTransUnionEmpirica
     /// </summary>
-    public string? BorrowerTransUnionEmpirica { get => _borrowerTransUnionEmpirica; set => SetField(ref _borrowerTransUnionEmpirica, value); }
+    public string? BorrowerTransUnionEmpirica { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerType1
+    /// AusTrackingLog BorrowerType1
     /// </summary>
-    public string? BorrowerType1 { get => _borrowerType1; set => SetField(ref _borrowerType1, value); }
+    public string? BorrowerType1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BorrowerType2
+    /// AusTrackingLog BorrowerType2
     /// </summary>
-    public string? BorrowerType2 { get => _borrowerType2; set => SetField(ref _borrowerType2, value); }
+    public string? BorrowerType2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract BoughtDownRate
+    /// AusTrackingLog BoughtDownRate
     /// </summary>
-    public decimal? BoughtDownRate { get => _boughtDownRate; set => SetField(ref _boughtDownRate, value); }
+    public decimal? BoughtDownRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Buydown
+    /// AusTrackingLog Buydown
     /// </summary>
-    public string? Buydown { get => _buydown; set => SetField(ref _buydown, value); }
+    public string? Buydown { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CashBack
+    /// AusTrackingLog CashBack
     /// </summary>
-    public decimal? CashBack { get => _cashBack; set => SetField(ref _cashBack, value); }
+    public decimal? CashBack { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CashOutAmount
+    /// AusTrackingLog CashOutAmount
     /// </summary>
-    public decimal? CashOutAmount { get => _cashOutAmount; set => SetField(ref _cashOutAmount, value); }
+    public decimal? CashOutAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Cltv
+    /// AusTrackingLog Cltv
     /// </summary>
-    public decimal? Cltv { get => _cltv; set => SetField(ref _cltv, value); }
+    public decimal? Cltv { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerAssetAmount
+    /// AusTrackingLog CoBorrowerAssetAmount
     /// </summary>
-    public decimal? CoBorrowerAssetAmount { get => _coBorrowerAssetAmount; set => SetField(ref _coBorrowerAssetAmount, value); }
+    public decimal? CoBorrowerAssetAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerAssetName
+    /// AusTrackingLog CoBorrowerAssetName
     /// </summary>
-    public string? CoBorrowerAssetName { get => _coBorrowerAssetName; set => SetField(ref _coBorrowerAssetName, value); }
+    public string? CoBorrowerAssetName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerAssetType
+    /// AusTrackingLog CoBorrowerAssetType
     /// </summary>
-    public string? CoBorrowerAssetType { get => _coBorrowerAssetType; set => SetField(ref _coBorrowerAssetType, value); }
+    public string? CoBorrowerAssetType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerCreditScore1
+    /// AusTrackingLog CoBorrowerCreditScore1
     /// </summary>
-    public string? CoBorrowerCreditScore1 { get => _coBorrowerCreditScore1; set => SetField(ref _coBorrowerCreditScore1, value); }
+    public string? CoBorrowerCreditScore1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerCreditScore2
+    /// AusTrackingLog CoBorrowerCreditScore2
     /// </summary>
-    public string? CoBorrowerCreditScore2 { get => _coBorrowerCreditScore2; set => SetField(ref _coBorrowerCreditScore2, value); }
+    public string? CoBorrowerCreditScore2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerCreditScore3
+    /// AusTrackingLog CoBorrowerCreditScore3
     /// </summary>
-    public string? CoBorrowerCreditScore3 { get => _coBorrowerCreditScore3; set => SetField(ref _coBorrowerCreditScore3, value); }
+    public string? CoBorrowerCreditScore3 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerEquifaxBeacon
+    /// AusTrackingLog CoBorrowerEquifaxBeacon
     /// </summary>
-    public string? CoBorrowerEquifaxBeacon { get => _coBorrowerEquifaxBeacon; set => SetField(ref _coBorrowerEquifaxBeacon, value); }
+    public string? CoBorrowerEquifaxBeacon { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerExperianFico
+    /// AusTrackingLog CoBorrowerExperianFico
     /// </summary>
-    public string? CoBorrowerExperianFico { get => _coBorrowerExperianFico; set => SetField(ref _coBorrowerExperianFico, value); }
+    public string? CoBorrowerExperianFico { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerIncomeAmount
+    /// AusTrackingLog CoBorrowerIncomeAmount
     /// </summary>
-    public decimal? CoBorrowerIncomeAmount { get => _coBorrowerIncomeAmount; set => SetField(ref _coBorrowerIncomeAmount, value); }
+    public decimal? CoBorrowerIncomeAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerIncomeName
+    /// AusTrackingLog CoBorrowerIncomeName
     /// </summary>
-    public string? CoBorrowerIncomeName { get => _coBorrowerIncomeName; set => SetField(ref _coBorrowerIncomeName, value); }
+    public string? CoBorrowerIncomeName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerIncomeType
+    /// AusTrackingLog CoBorrowerIncomeType
     /// </summary>
-    public string? CoBorrowerIncomeType { get => _coBorrowerIncomeType; set => SetField(ref _coBorrowerIncomeType, value); }
+    public string? CoBorrowerIncomeType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerInstitutionName
+    /// AusTrackingLog CoBorrowerInstitutionName
     /// </summary>
-    public string? CoBorrowerInstitutionName { get => _coBorrowerInstitutionName; set => SetField(ref _coBorrowerInstitutionName, value); }
+    public string? CoBorrowerInstitutionName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoborrowerName
+    /// AusTrackingLog CoborrowerName
     /// </summary>
-    public string? CoborrowerName { get => _coborrowerName; set => SetField(ref _coborrowerName, value); }
+    public string? CoborrowerName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerScoreName
+    /// AusTrackingLog CoBorrowerScoreName
     /// </summary>
-    public string? CoBorrowerScoreName { get => _coBorrowerScoreName; set => SetField(ref _coBorrowerScoreName, value); }
+    public string? CoBorrowerScoreName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CoBorrowerTransUnionEmpirica
+    /// AusTrackingLog CoBorrowerTransUnionEmpirica
     /// </summary>
-    public string? CoBorrowerTransUnionEmpirica { get => _coBorrowerTransUnionEmpirica; set => SetField(ref _coBorrowerTransUnionEmpirica, value); }
+    public string? CoBorrowerTransUnionEmpirica { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Code1
+    /// AusTrackingLog Code1
     /// </summary>
-    public string? Code1 { get => _code1; set => SetField(ref _code1, value); }
+    public string? Code1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Code2
+    /// AusTrackingLog Code2
     /// </summary>
-    public string? Code2 { get => _code2; set => SetField(ref _code2, value); }
+    public string? Code2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CodeDescription1
+    /// AusTrackingLog CodeDescription1
     /// </summary>
-    public string? CodeDescription1 { get => _codeDescription1; set => SetField(ref _codeDescription1, value); }
+    public string? CodeDescription1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CodeDescription2
+    /// AusTrackingLog CodeDescription2
     /// </summary>
-    public string? CodeDescription2 { get => _codeDescription2; set => SetField(ref _codeDescription2, value); }
+    public string? CodeDescription2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CommunityLending
+    /// AusTrackingLog CommunityLending
     /// </summary>
-    public string? CommunityLending { get => _communityLending; set => SetField(ref _communityLending, value); }
+    public string? CommunityLending { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CreatedOn
+    /// AusTrackingLog CreatedOn
     /// </summary>
-    public DateTime? CreatedOn { get => _createdOn; set => SetField(ref _createdOn, value); }
+    public DateTime? CreatedOn { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CreditAgency1
+    /// AusTrackingLog CreditAgency1
     /// </summary>
-    public string? CreditAgency1 { get => _creditAgency1; set => SetField(ref _creditAgency1, value); }
+    public string? CreditAgency1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CreditAgency2
+    /// AusTrackingLog CreditAgency2
     /// </summary>
-    public string? CreditAgency2 { get => _creditAgency2; set => SetField(ref _creditAgency2, value); }
+    public string? CreditAgency2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CreditReportDate1
+    /// AusTrackingLog CreditReportDate1
     /// </summary>
-    public DateTime? CreditReportDate1 { get => _creditReportDate1; set => SetField(ref _creditReportDate1, value); }
+    public DateTime? CreditReportDate1 { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CreditReportDate2
+    /// AusTrackingLog CreditReportDate2
     /// </summary>
-    public DateTime? CreditReportDate2 { get => _creditReportDate2; set => SetField(ref _creditReportDate2, value); }
+    public DateTime? CreditReportDate2 { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CreditReportId1
+    /// AusTrackingLog CreditReportId1
     /// </summary>
-    public string? CreditReportId1 { get => _creditReportId1; set => SetField(ref _creditReportId1, value); }
+    public string? CreditReportId1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CreditReportId2
+    /// AusTrackingLog CreditReportId2
     /// </summary>
-    public string? CreditReportId2 { get => _creditReportId2; set => SetField(ref _creditReportId2, value); }
+    public string? CreditReportId2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredAmortizationType
+    /// AusTrackingLog CuredAmortizationType
     /// </summary>
-    public string? CuredAmortizationType { get => _curedAmortizationType; set => SetField(ref _curedAmortizationType, value); }
+    public string? CuredAmortizationType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredAppraisedValue
+    /// AusTrackingLog CuredAppraisedValue
     /// </summary>
-    public int? CuredAppraisedValue { get => _curedAppraisedValue; set => SetField(ref _curedAppraisedValue, value); }
+    public int? CuredAppraisedValue { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredCltv
+    /// AusTrackingLog CuredCltv
     /// </summary>
-    public decimal? CuredCltv { get => _curedCltv; set => SetField(ref _curedCltv, value); }
+    public decimal? CuredCltv { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredHousingExpenseRatio
+    /// AusTrackingLog CuredHousingExpenseRatio
     /// </summary>
-    public decimal? CuredHousingExpenseRatio { get => _curedHousingExpenseRatio; set => SetField(ref _curedHousingExpenseRatio, value); }
+    public decimal? CuredHousingExpenseRatio { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredLoanPurpose
+    /// AusTrackingLog CuredLoanPurpose
     /// </summary>
-    public string? CuredLoanPurpose { get => _curedLoanPurpose; set => SetField(ref _curedLoanPurpose, value); }
+    public string? CuredLoanPurpose { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredLoanTerm
+    /// AusTrackingLog CuredLoanTerm
     /// </summary>
-    public int? CuredLoanTerm { get => _curedLoanTerm; set => SetField(ref _curedLoanTerm, value); }
+    public int? CuredLoanTerm { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredLoanType
+    /// AusTrackingLog CuredLoanType
     /// </summary>
-    public string? CuredLoanType { get => _curedLoanType; set => SetField(ref _curedLoanType, value); }
+    public string? CuredLoanType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredLtv
+    /// AusTrackingLog CuredLtv
     /// </summary>
-    public decimal? CuredLtv { get => _curedLtv; set => SetField(ref _curedLtv, value); }
+    public decimal? CuredLtv { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredNoteRate
+    /// AusTrackingLog CuredNoteRate
     /// </summary>
-    public decimal? CuredNoteRate { get => _curedNoteRate; set => SetField(ref _curedNoteRate, value); }
+    public decimal? CuredNoteRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredProposedTotalHousingPayment
+    /// AusTrackingLog CuredProposedTotalHousingPayment
     /// </summary>
-    public decimal? CuredProposedTotalHousingPayment { get => _curedProposedTotalHousingPayment; set => SetField(ref _curedProposedTotalHousingPayment, value); }
+    public decimal? CuredProposedTotalHousingPayment { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredRefinancePurpose
+    /// AusTrackingLog CuredRefinancePurpose
     /// </summary>
-    public string? CuredRefinancePurpose { get => _curedRefinancePurpose; set => SetField(ref _curedRefinancePurpose, value); }
+    public string? CuredRefinancePurpose { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredTotalExpenseRatio
+    /// AusTrackingLog CuredTotalExpenseRatio
     /// </summary>
-    public decimal? CuredTotalExpenseRatio { get => _curedTotalExpenseRatio; set => SetField(ref _curedTotalExpenseRatio, value); }
+    public decimal? CuredTotalExpenseRatio { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredTotalLoanAmount
+    /// AusTrackingLog CuredTotalLoanAmount
     /// </summary>
-    public decimal? CuredTotalLoanAmount { get => _curedTotalLoanAmount; set => SetField(ref _curedTotalLoanAmount, value); }
+    public decimal? CuredTotalLoanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract CuredTotalMonthlyIncome
+    /// AusTrackingLog CuredTotalMonthlyIncome
     /// </summary>
-    public decimal? CuredTotalMonthlyIncome { get => _curedTotalMonthlyIncome; set => SetField(ref _curedTotalMonthlyIncome, value); }
+    public decimal? CuredTotalMonthlyIncome { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract DebtRatio
+    /// AusTrackingLog DebtRatio
     /// </summary>
-    public decimal? DebtRatio { get => _debtRatio; set => SetField(ref _debtRatio, value); }
+    public decimal? DebtRatio { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract DocumentationLevel
+    /// AusTrackingLog DocumentationLevel
     /// </summary>
-    public string? DocumentationLevel { get => _documentationLevel; set => SetField(ref _documentationLevel, value); }
+    public string? DocumentationLevel { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract DuCaseIdorLpausKey
+    /// AusTrackingLog DuCaseIdorLpausKey
     /// </summary>
-    public string? DuCaseIdorLpausKey { get => _duCaseIdorLpausKey; set => SetField(ref _duCaseIdorLpausKey, value); }
+    public string? DuCaseIdorLpausKey { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract DuPropertyType
+    /// AusTrackingLog DuPropertyType
     /// </summary>
-    public string? DuPropertyType { get => _duPropertyType; set => SetField(ref _duPropertyType, value); }
+    public string? DuPropertyType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract EFolderGuid
+    /// AusTrackingLog EFolderGuid
     /// </summary>
-    public string? EFolderGuid { get => _eFolderGuid; set => SetField(ref _eFolderGuid, value); }
+    public string? EFolderGuid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ErrorInfo
+    /// AusTrackingLog ErrorInfo
     /// </summary>
-    public string? ErrorInfo { get => _errorInfo; set => SetField(ref _errorInfo, value); }
+    public string? ErrorInfo { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ExcessAvailableAssetsNoVerified
+    /// AusTrackingLog ExcessAvailableAssetsNoVerified
     /// </summary>
-    public decimal? ExcessAvailableAssetsNoVerified { get => _excessAvailableAssetsNoVerified; set => SetField(ref _excessAvailableAssetsNoVerified, value); }
+    public decimal? ExcessAvailableAssetsNoVerified { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract FatalEditInfo
+    /// AusTrackingLog FatalEditInfo
     /// </summary>
-    public string? FatalEditInfo { get => _fatalEditInfo; set => SetField(ref _fatalEditInfo, value); }
+    public string? FatalEditInfo { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract FileType
+    /// AusTrackingLog FileType
     /// </summary>
-    public string? FileType { get => _fileType; set => SetField(ref _fileType, value); }
+    public string? FileType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract FinancedMiAmount
+    /// AusTrackingLog FinancedMiAmount
     /// </summary>
-    public decimal? FinancedMiAmount { get => _financedMiAmount; set => SetField(ref _financedMiAmount, value); }
+    public decimal? FinancedMiAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract FirstPandI
+    /// AusTrackingLog FirstPandI
     /// </summary>
-    public decimal? FirstPandI { get => _firstPandI; set => SetField(ref _firstPandI, value); }
+    public decimal? FirstPandI { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract FirstSubmissionDate
+    /// AusTrackingLog FirstSubmissionDate
     /// </summary>
-    public DateTime? FirstSubmissionDate { get => _firstSubmissionDate; set => SetField(ref _firstSubmissionDate, value); }
+    public DateTime? FirstSubmissionDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract FirstSubmissionTime
+    /// AusTrackingLog FirstSubmissionTime
     /// </summary>
-    public string? FirstSubmissionTime { get => _firstSubmissionTime; set => SetField(ref _firstSubmissionTime, value); }
+    public string? FirstSubmissionTime { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract FreddieDocClass
+    /// AusTrackingLog FreddieDocClass
     /// </summary>
-    public string? FreddieDocClass { get => _freddieDocClass; set => SetField(ref _freddieDocClass, value); }
+    public string? FreddieDocClass { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract FundsRequiredClose
+    /// AusTrackingLog FundsRequiredClose
     /// </summary>
-    public decimal? FundsRequiredClose { get => _fundsRequiredClose; set => SetField(ref _fundsRequiredClose, value); }
+    public decimal? FundsRequiredClose { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Hlctv
+    /// AusTrackingLog Hlctv
     /// </summary>
-    public decimal? Hlctv { get => _hlctv; set => SetField(ref _hlctv, value); }
+    public decimal? Hlctv { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract HousingExpense
+    /// AusTrackingLog HousingExpense
     /// </summary>
-    public decimal? HousingExpense { get => _housingExpense; set => SetField(ref _housingExpense, value); }
+    public decimal? HousingExpense { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract HousingExpenseRatio
+    /// AusTrackingLog HousingExpenseRatio
     /// </summary>
-    public decimal? HousingExpenseRatio { get => _housingExpenseRatio; set => SetField(ref _housingExpenseRatio, value); }
+    public decimal? HousingExpenseRatio { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract HousingRatio
+    /// AusTrackingLog HousingRatio
     /// </summary>
-    public decimal? HousingRatio { get => _housingRatio; set => SetField(ref _housingRatio, value); }
+    public decimal? HousingRatio { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Htltv
+    /// AusTrackingLog Htltv
     /// </summary>
-    public decimal? Htltv { get => _htltv; set => SetField(ref _htltv, value); }
+    public decimal? Htltv { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Id
+    /// AusTrackingLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract IncludingLess10Mos
+    /// AusTrackingLog IncludingLess10Mos
     /// </summary>
-    public string? IncludingLess10Mos { get => _includingLess10Mos; set => SetField(ref _includingLess10Mos, value); }
+    public string? IncludingLess10Mos { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract IncomeAssetBase
+    /// AusTrackingLog IncomeAssetBase
     /// </summary>
-    public decimal? IncomeAssetBase { get => _incomeAssetBase; set => SetField(ref _incomeAssetBase, value); }
+    public decimal? IncomeAssetBase { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract IncomeAssetBonus
+    /// AusTrackingLog IncomeAssetBonus
     /// </summary>
-    public decimal? IncomeAssetBonus { get => _incomeAssetBonus; set => SetField(ref _incomeAssetBonus, value); }
+    public decimal? IncomeAssetBonus { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract IncomeAssetCommission
+    /// AusTrackingLog IncomeAssetCommission
     /// </summary>
-    public decimal? IncomeAssetCommission { get => _incomeAssetCommission; set => SetField(ref _incomeAssetCommission, value); }
+    public decimal? IncomeAssetCommission { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract IncomeAssetOther
+    /// AusTrackingLog IncomeAssetOther
     /// </summary>
-    public decimal? IncomeAssetOther { get => _incomeAssetOther; set => SetField(ref _incomeAssetOther, value); }
+    public decimal? IncomeAssetOther { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract IncomeAssetOvertime
+    /// AusTrackingLog IncomeAssetOvertime
     /// </summary>
-    public decimal? IncomeAssetOvertime { get => _incomeAssetOvertime; set => SetField(ref _incomeAssetOvertime, value); }
+    public decimal? IncomeAssetOvertime { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract IncomeAssetPosCashFlow
+    /// AusTrackingLog IncomeAssetPosCashFlow
     /// </summary>
-    public decimal? IncomeAssetPosCashFlow { get => _incomeAssetPosCashFlow; set => SetField(ref _incomeAssetPosCashFlow, value); }
+    public decimal? IncomeAssetPosCashFlow { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract IncomeAssetPositiveNetRental
+    /// AusTrackingLog IncomeAssetPositiveNetRental
     /// </summary>
-    public decimal? IncomeAssetPositiveNetRental { get => _incomeAssetPositiveNetRental; set => SetField(ref _incomeAssetPositiveNetRental, value); }
+    public decimal? IncomeAssetPositiveNetRental { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract IndicatorScore
+    /// AusTrackingLog IndicatorScore
     /// </summary>
-    public string? IndicatorScore { get => _indicatorScore; set => SetField(ref _indicatorScore, value); }
+    public string? IndicatorScore { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract IntendedUseofProperty
+    /// AusTrackingLog IntendedUseofProperty
     /// </summary>
-    public string? IntendedUseofProperty { get => _intendedUseofProperty; set => SetField(ref _intendedUseofProperty, value); }
+    public string? IntendedUseofProperty { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LclaEvaluatedServiceConclusion1
+    /// AusTrackingLog LclaEvaluatedServiceConclusion1
     /// </summary>
-    public string? LclaEvaluatedServiceConclusion1 { get => _lclaEvaluatedServiceConclusion1; set => SetField(ref _lclaEvaluatedServiceConclusion1, value); }
+    public string? LclaEvaluatedServiceConclusion1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LclaEvaluatedServiceConclusion2
+    /// AusTrackingLog LclaEvaluatedServiceConclusion2
     /// </summary>
-    public string? LclaEvaluatedServiceConclusion2 { get => _lclaEvaluatedServiceConclusion2; set => SetField(ref _lclaEvaluatedServiceConclusion2, value); }
+    public string? LclaEvaluatedServiceConclusion2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LclaEvaluatedServiceConclusion3
+    /// AusTrackingLog LclaEvaluatedServiceConclusion3
     /// </summary>
-    public string? LclaEvaluatedServiceConclusion3 { get => _lclaEvaluatedServiceConclusion3; set => SetField(ref _lclaEvaluatedServiceConclusion3, value); }
+    public string? LclaEvaluatedServiceConclusion3 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LclaEvaluatedServiceConclusion4
+    /// AusTrackingLog LclaEvaluatedServiceConclusion4
     /// </summary>
-    public string? LclaEvaluatedServiceConclusion4 { get => _lclaEvaluatedServiceConclusion4; set => SetField(ref _lclaEvaluatedServiceConclusion4, value); }
+    public string? LclaEvaluatedServiceConclusion4 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LclaEvaluatedServiceType1
+    /// AusTrackingLog LclaEvaluatedServiceType1
     /// </summary>
-    public string? LclaEvaluatedServiceType1 { get => _lclaEvaluatedServiceType1; set => SetField(ref _lclaEvaluatedServiceType1, value); }
+    public string? LclaEvaluatedServiceType1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LclaEvaluatedServiceType2
+    /// AusTrackingLog LclaEvaluatedServiceType2
     /// </summary>
-    public string? LclaEvaluatedServiceType2 { get => _lclaEvaluatedServiceType2; set => SetField(ref _lclaEvaluatedServiceType2, value); }
+    public string? LclaEvaluatedServiceType2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LclaEvaluatedServiceType3
+    /// AusTrackingLog LclaEvaluatedServiceType3
     /// </summary>
-    public string? LclaEvaluatedServiceType3 { get => _lclaEvaluatedServiceType3; set => SetField(ref _lclaEvaluatedServiceType3, value); }
+    public string? LclaEvaluatedServiceType3 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LclaEvaluatedServiceType4
+    /// AusTrackingLog LclaEvaluatedServiceType4
     /// </summary>
-    public string? LclaEvaluatedServiceType4 { get => _lclaEvaluatedServiceType4; set => SetField(ref _lclaEvaluatedServiceType4, value); }
+    public string? LclaEvaluatedServiceType4 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LenderLoan
+    /// AusTrackingLog LenderLoan
     /// </summary>
-    public string? LenderLoan { get => _lenderLoan; set => SetField(ref _lenderLoan, value); }
+    public string? LenderLoan { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LienType
+    /// AusTrackingLog LienType
     /// </summary>
-    public string? LienType { get => _lienType; set => SetField(ref _lienType, value); }
+    public string? LienType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LoanAmount
+    /// AusTrackingLog LoanAmount
     /// </summary>
-    public decimal? LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
+    public decimal? LoanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LoanApplicationId
+    /// AusTrackingLog LoanApplicationId
     /// </summary>
-    public string? LoanApplicationId { get => _loanApplicationId; set => SetField(ref _loanApplicationId, value); }
+    public string? LoanApplicationId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LoanProcessingStage
+    /// AusTrackingLog LoanProcessingStage
     /// </summary>
-    public string? LoanProcessingStage { get => _loanProcessingStage; set => SetField(ref _loanProcessingStage, value); }
+    public string? LoanProcessingStage { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LoanProspectorId
+    /// AusTrackingLog LoanProspectorId
     /// </summary>
-    public string? LoanProspectorId { get => _loanProspectorId; set => SetField(ref _loanProspectorId, value); }
+    public string? LoanProspectorId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LoanPurpose
+    /// AusTrackingLog LoanPurpose
     /// </summary>
-    public string? LoanPurpose { get => _loanPurpose; set => SetField(ref _loanPurpose, value); }
+    public string? LoanPurpose { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LoanTerm
+    /// AusTrackingLog LoanTerm
     /// </summary>
-    public int? LoanTerm { get => _loanTerm; set => SetField(ref _loanTerm, value); }
+    public int? LoanTerm { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LoanType
+    /// AusTrackingLog LoanType
     /// </summary>
-    public string? LoanType { get => _loanType; set => SetField(ref _loanType, value); }
+    public string? LoanType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LpAssmtExpDate
+    /// AusTrackingLog LpAssmtExpDate
     /// </summary>
-    public DateTime? LpAssmtExpDate { get => _lpAssmtExpDate; set => SetField(ref _lpAssmtExpDate, value); }
+    public DateTime? LpAssmtExpDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LpPropertyType
+    /// AusTrackingLog LpPropertyType
     /// </summary>
-    public string? LpPropertyType { get => _lpPropertyType; set => SetField(ref _lpPropertyType, value); }
+    public string? LpPropertyType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LpVersion
+    /// AusTrackingLog LpVersion
     /// </summary>
-    public string? LpVersion { get => _lpVersion; set => SetField(ref _lpVersion, value); }
+    public string? LpVersion { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LqaCollateralRepWarrantyServiceConclusion
+    /// AusTrackingLog LqaCollateralRepWarrantyServiceConclusion
     /// </summary>
-    public string? LqaCollateralRepWarrantyServiceConclusion { get => _lqaCollateralRepWarrantyServiceConclusion; set => SetField(ref _lqaCollateralRepWarrantyServiceConclusion, value); }
+    public string? LqaCollateralRepWarrantyServiceConclusion { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LqaCreditRiskAssessmentConclusion
+    /// AusTrackingLog LqaCreditRiskAssessmentConclusion
     /// </summary>
-    public string? LqaCreditRiskAssessmentConclusion { get => _lqaCreditRiskAssessmentConclusion; set => SetField(ref _lqaCreditRiskAssessmentConclusion, value); }
+    public string? LqaCreditRiskAssessmentConclusion { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LqaDataCompareFieldConclusion
+    /// AusTrackingLog LqaDataCompareFieldConclusion
     /// </summary>
-    public string? LqaDataCompareFieldConclusion { get => _lqaDataCompareFieldConclusion; set => SetField(ref _lqaDataCompareFieldConclusion, value); }
+    public string? LqaDataCompareFieldConclusion { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LqaDataCompareFieldName
+    /// AusTrackingLog LqaDataCompareFieldName
     /// </summary>
-    public string? LqaDataCompareFieldName { get => _lqaDataCompareFieldName; set => SetField(ref _lqaDataCompareFieldName, value); }
+    public string? LqaDataCompareFieldName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LqaDataCompareResult
+    /// AusTrackingLog LqaDataCompareResult
     /// </summary>
-    public string? LqaDataCompareResult { get => _lqaDataCompareResult; set => SetField(ref _lqaDataCompareResult, value); }
+    public string? LqaDataCompareResult { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LqalpKey
+    /// AusTrackingLog LqalpKey
     /// </summary>
-    public string? LqalpKey { get => _lqalpKey; set => SetField(ref _lqalpKey, value); }
+    public string? LqalpKey { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LqaPurchaseEligibilityResult
+    /// AusTrackingLog LqaPurchaseEligibilityResult
     /// </summary>
-    public string? LqaPurchaseEligibilityResult { get => _lqaPurchaseEligibilityResult; set => SetField(ref _lqaPurchaseEligibilityResult, value); }
+    public string? LqaPurchaseEligibilityResult { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LqaRiskAssessmentKey
+    /// AusTrackingLog LqaRiskAssessmentKey
     /// </summary>
-    public string? LqaRiskAssessmentKey { get => _lqaRiskAssessmentKey; set => SetField(ref _lqaRiskAssessmentKey, value); }
+    public string? LqaRiskAssessmentKey { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract LqaSubmissionDateTime
+    /// AusTrackingLog LqaSubmissionDateTime
     /// </summary>
-    public DateTime? LqaSubmissionDateTime { get => _lqaSubmissionDateTime; set => SetField(ref _lqaSubmissionDateTime, value); }
+    public DateTime? LqaSubmissionDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Ltv
+    /// AusTrackingLog Ltv
     /// </summary>
-    public decimal? Ltv { get => _ltv; set => SetField(ref _ltv, value); }
+    public decimal? Ltv { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract MaxMortgageLimit
+    /// AusTrackingLog MaxMortgageLimit
     /// </summary>
-    public decimal? MaxMortgageLimit { get => _maxMortgageLimit; set => SetField(ref _maxMortgageLimit, value); }
+    public decimal? MaxMortgageLimit { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract MiDecision
+    /// AusTrackingLog MiDecision
     /// </summary>
-    public string? MiDecision { get => _miDecision; set => SetField(ref _miDecision, value); }
+    public string? MiDecision { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract MortgageType
+    /// AusTrackingLog MortgageType
     /// </summary>
-    public string? MortgageType { get => _mortgageType; set => SetField(ref _mortgageType, value); }
+    public string? MortgageType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract NegAmortizationType
+    /// AusTrackingLog NegAmortizationType
     /// </summary>
-    public string? NegAmortizationType { get => _negAmortizationType; set => SetField(ref _negAmortizationType, value); }
+    public string? NegAmortizationType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract NegativeNetRental
+    /// AusTrackingLog NegativeNetRental
     /// </summary>
-    public decimal? NegativeNetRental { get => _negativeNetRental; set => SetField(ref _negativeNetRental, value); }
+    public decimal? NegativeNetRental { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract NetCashBack
+    /// AusTrackingLog NetCashBack
     /// </summary>
-    public decimal? NetCashBack { get => _netCashBack; set => SetField(ref _netCashBack, value); }
+    public decimal? NetCashBack { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract NewConstruction
+    /// AusTrackingLog NewConstruction
     /// </summary>
-    public string? NewConstruction { get => _newConstruction; set => SetField(ref _newConstruction, value); }
+    public string? NewConstruction { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract NoteRate
+    /// AusTrackingLog NoteRate
     /// </summary>
-    public decimal? NoteRate { get => _noteRate; set => SetField(ref _noteRate, value); }
+    public decimal? NoteRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract NotpNumber
+    /// AusTrackingLog NotpNumber
     /// </summary>
-    public string? NotpNumber { get => _notpNumber; set => SetField(ref _notpNumber, value); }
+    public string? NotpNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract NoUnits
+    /// AusTrackingLog NoUnits
     /// </summary>
-    public int? NoUnits { get => _noUnits; set => SetField(ref _noUnits, value); }
+    public int? NoUnits { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract NumberOfSubmissions
+    /// AusTrackingLog NumberOfSubmissions
     /// </summary>
-    public string? NumberOfSubmissions { get => _numberOfSubmissions; set => SetField(ref _numberOfSubmissions, value); }
+    public string? NumberOfSubmissions { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract OccupancyStatus
+    /// AusTrackingLog OccupancyStatus
     /// </summary>
-    public string? OccupancyStatus { get => _occupancyStatus; set => SetField(ref _occupancyStatus, value); }
+    public string? OccupancyStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract OccupantDebtRatio
+    /// AusTrackingLog OccupantDebtRatio
     /// </summary>
-    public decimal? OccupantDebtRatio { get => _occupantDebtRatio; set => SetField(ref _occupantDebtRatio, value); }
+    public decimal? OccupantDebtRatio { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract OccupantHousingRatio
+    /// AusTrackingLog OccupantHousingRatio
     /// </summary>
-    public decimal? OccupantHousingRatio { get => _occupantHousingRatio; set => SetField(ref _occupantHousingRatio, value); }
+    public decimal? OccupantHousingRatio { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract OfferingIdentifier
+    /// AusTrackingLog OfferingIdentifier
     /// </summary>
-    public string? OfferingIdentifier { get => _offeringIdentifier; set => SetField(ref _offeringIdentifier, value); }
+    public string? OfferingIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract OrderStatus
+    /// AusTrackingLog OrderStatus
     /// </summary>
-    public string? OrderStatus { get => _orderStatus; set => SetField(ref _orderStatus, value); }
+    public string? OrderStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract OriginatingCompany
+    /// AusTrackingLog OriginatingCompany
     /// </summary>
-    public string? OriginatingCompany { get => _originatingCompany; set => SetField(ref _originatingCompany, value); }
+    public string? OriginatingCompany { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract OwnerExistingMtg
+    /// AusTrackingLog OwnerExistingMtg
     /// </summary>
-    public decimal? OwnerExistingMtg { get => _ownerExistingMtg; set => SetField(ref _ownerExistingMtg, value); }
+    public decimal? OwnerExistingMtg { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PandI
+    /// AusTrackingLog PandI
     /// </summary>
-    public decimal? PandI { get => _pandI; set => SetField(ref _pandI, value); }
+    public decimal? PandI { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PaymentFrequency
+    /// AusTrackingLog PaymentFrequency
     /// </summary>
-    public int? PaymentFrequency { get => _paymentFrequency; set => SetField(ref _paymentFrequency, value); }
+    public int? PaymentFrequency { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PresentAddress
+    /// AusTrackingLog PresentAddress
     /// </summary>
-    public string? PresentAddress { get => _presentAddress; set => SetField(ref _presentAddress, value); }
+    public string? PresentAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PresentAddressCity
+    /// AusTrackingLog PresentAddressCity
     /// </summary>
-    public string? PresentAddressCity { get => _presentAddressCity; set => SetField(ref _presentAddressCity, value); }
+    public string? PresentAddressCity { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PresentAddressState
+    /// AusTrackingLog PresentAddressState
     /// </summary>
-    public string? PresentAddressState { get => _presentAddressState; set => SetField(ref _presentAddressState, value); }
+    public string? PresentAddressState { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PresentAddressZipCode
+    /// AusTrackingLog PresentAddressZipCode
     /// </summary>
-    public string? PresentAddressZipCode { get => _presentAddressZipCode; set => SetField(ref _presentAddressZipCode, value); }
+    public string? PresentAddressZipCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PresentHousingExpense
+    /// AusTrackingLog PresentHousingExpense
     /// </summary>
-    public decimal? PresentHousingExpense { get => _presentHousingExpense; set => SetField(ref _presentHousingExpense, value); }
+    public decimal? PresentHousingExpense { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PresentPrincipalHousingPayment
+    /// AusTrackingLog PresentPrincipalHousingPayment
     /// </summary>
-    public decimal? PresentPrincipalHousingPayment { get => _presentPrincipalHousingPayment; set => SetField(ref _presentPrincipalHousingPayment, value); }
+    public decimal? PresentPrincipalHousingPayment { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PropertyAddress
+    /// AusTrackingLog PropertyAddress
     /// </summary>
-    public string? PropertyAddress { get => _propertyAddress; set => SetField(ref _propertyAddress, value); }
+    public string? PropertyAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PropertyCity
+    /// AusTrackingLog PropertyCity
     /// </summary>
-    public string? PropertyCity { get => _propertyCity; set => SetField(ref _propertyCity, value); }
+    public string? PropertyCity { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PropertyState
+    /// AusTrackingLog PropertyState
     /// </summary>
-    public string? PropertyState { get => _propertyState; set => SetField(ref _propertyState, value); }
+    public string? PropertyState { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PropertyZipcode
+    /// AusTrackingLog PropertyZipcode
     /// </summary>
-    public string? PropertyZipcode { get => _propertyZipcode; set => SetField(ref _propertyZipcode, value); }
+    public string? PropertyZipcode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ProposedHazardInsurance
+    /// AusTrackingLog ProposedHazardInsurance
     /// </summary>
-    public decimal? ProposedHazardInsurance { get => _proposedHazardInsurance; set => SetField(ref _proposedHazardInsurance, value); }
+    public decimal? ProposedHazardInsurance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ProposedHoaFees
+    /// AusTrackingLog ProposedHoaFees
     /// </summary>
-    public decimal? ProposedHoaFees { get => _proposedHoaFees; set => SetField(ref _proposedHoaFees, value); }
+    public decimal? ProposedHoaFees { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ProposedHousingPiti
+    /// AusTrackingLog ProposedHousingPiti
     /// </summary>
-    public decimal? ProposedHousingPiti { get => _proposedHousingPiti; set => SetField(ref _proposedHousingPiti, value); }
+    public decimal? ProposedHousingPiti { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ProposedMortgageInsurance
+    /// AusTrackingLog ProposedMortgageInsurance
     /// </summary>
-    public decimal? ProposedMortgageInsurance { get => _proposedMortgageInsurance; set => SetField(ref _proposedMortgageInsurance, value); }
+    public decimal? ProposedMortgageInsurance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ProposedOtherPayment
+    /// AusTrackingLog ProposedOtherPayment
     /// </summary>
-    public decimal? ProposedOtherPayment { get => _proposedOtherPayment; set => SetField(ref _proposedOtherPayment, value); }
+    public decimal? ProposedOtherPayment { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ProposedTaxes
+    /// AusTrackingLog ProposedTaxes
     /// </summary>
-    public decimal? ProposedTaxes { get => _proposedTaxes; set => SetField(ref _proposedTaxes, value); }
+    public decimal? ProposedTaxes { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ProposedTotalHousingPayment
+    /// AusTrackingLog ProposedTotalHousingPayment
     /// </summary>
-    public decimal? ProposedTotalHousingPayment { get => _proposedTotalHousingPayment; set => SetField(ref _proposedTotalHousingPayment, value); }
+    public decimal? ProposedTotalHousingPayment { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ProposedTotalMonthlyDebt
+    /// AusTrackingLog ProposedTotalMonthlyDebt
     /// </summary>
-    public decimal? ProposedTotalMonthlyDebt { get => _proposedTotalMonthlyDebt; set => SetField(ref _proposedTotalMonthlyDebt, value); }
+    public decimal? ProposedTotalMonthlyDebt { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract PurchaseEligibility
+    /// AusTrackingLog PurchaseEligibility
     /// </summary>
-    public string? PurchaseEligibility { get => _purchaseEligibility; set => SetField(ref _purchaseEligibility, value); }
+    public string? PurchaseEligibility { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract QualifyingRate
+    /// AusTrackingLog QualifyingRate
     /// </summary>
-    public decimal? QualifyingRate { get => _qualifyingRate; set => SetField(ref _qualifyingRate, value); }
+    public decimal? QualifyingRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract RecordType
+    /// AusTrackingLog RecordType
     /// </summary>
-    public string? RecordType { get => _recordType; set => SetField(ref _recordType, value); }
+    public string? RecordType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract RefinancePurpose
+    /// AusTrackingLog RefinancePurpose
     /// </summary>
-    public string? RefinancePurpose { get => _refinancePurpose; set => SetField(ref _refinancePurpose, value); }
+    public string? RefinancePurpose { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract RequestedDateTime
+    /// AusTrackingLog RequestedDateTime
     /// </summary>
-    public DateTime? RequestedDateTime { get => _requestedDateTime; set => SetField(ref _requestedDateTime, value); }
+    public DateTime? RequestedDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Reserves
+    /// AusTrackingLog Reserves
     /// </summary>
-    public decimal? Reserves { get => _reserves; set => SetField(ref _reserves, value); }
+    public decimal? Reserves { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract ReservesRequiredVerified
+    /// AusTrackingLog ReservesRequiredVerified
     /// </summary>
-    public decimal? ReservesRequiredVerified { get => _reservesRequiredVerified; set => SetField(ref _reservesRequiredVerified, value); }
+    public decimal? ReservesRequiredVerified { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract RiskClass
+    /// AusTrackingLog RiskClass
     /// </summary>
-    public string? RiskClass { get => _riskClass; set => SetField(ref _riskClass, value); }
+    public string? RiskClass { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SalesConcessions
+    /// AusTrackingLog SalesConcessions
     /// </summary>
-    public string? SalesConcessions { get => _salesConcessions; set => SetField(ref _salesConcessions, value); }
+    public string? SalesConcessions { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SalesPrice
+    /// AusTrackingLog SalesPrice
     /// </summary>
-    public decimal? SalesPrice { get => _salesPrice; set => SetField(ref _salesPrice, value); }
+    public decimal? SalesPrice { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SecondPandI
+    /// AusTrackingLog SecondPandI
     /// </summary>
-    public decimal? SecondPandI { get => _secondPandI; set => SetField(ref _secondPandI, value); }
+    public decimal? SecondPandI { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SelectedBorrower
+    /// AusTrackingLog SelectedBorrower
     /// </summary>
-    public string? SelectedBorrower { get => _selectedBorrower; set => SetField(ref _selectedBorrower, value); }
+    public string? SelectedBorrower { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SelectedRepository
+    /// AusTrackingLog SelectedRepository
     /// </summary>
-    public string? SelectedRepository { get => _selectedRepository; set => SetField(ref _selectedRepository, value); }
+    public string? SelectedRepository { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SellerNumber
+    /// AusTrackingLog SellerNumber
     /// </summary>
-    public string? SellerNumber { get => _sellerNumber; set => SetField(ref _sellerNumber, value); }
+    public string? SellerNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SubjNegCashFlow
+    /// AusTrackingLog SubjNegCashFlow
     /// </summary>
-    public decimal? SubjNegCashFlow { get => _subjNegCashFlow; set => SetField(ref _subjNegCashFlow, value); }
+    public decimal? SubjNegCashFlow { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SubmissionDate
+    /// AusTrackingLog SubmissionDate
     /// </summary>
-    public DateTime? SubmissionDate { get => _submissionDate; set => SetField(ref _submissionDate, value); }
+    public DateTime? SubmissionDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SubmissionNumber
+    /// AusTrackingLog SubmissionNumber
     /// </summary>
-    public string? SubmissionNumber { get => _submissionNumber; set => SetField(ref _submissionNumber, value); }
+    public string? SubmissionNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SubmissionTime
+    /// AusTrackingLog SubmissionTime
     /// </summary>
-    public string? SubmissionTime { get => _submissionTime; set => SetField(ref _submissionTime, value); }
+    public string? SubmissionTime { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SubmittedBy
+    /// AusTrackingLog SubmittedBy
     /// </summary>
-    public string? SubmittedBy { get => _submittedBy; set => SetField(ref _submittedBy, value); }
+    public string? SubmittedBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract SubmittingCompany
+    /// AusTrackingLog SubmittingCompany
     /// </summary>
-    public string? SubmittingCompany { get => _submittingCompany; set => SetField(ref _submittingCompany, value); }
+    public string? SubmittingCompany { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract TemporarySubsidyBuydown
+    /// AusTrackingLog TemporarySubsidyBuydown
     /// </summary>
-    public string? TemporarySubsidyBuydown { get => _temporarySubsidyBuydown; set => SetField(ref _temporarySubsidyBuydown, value); }
+    public string? TemporarySubsidyBuydown { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract Tltv
+    /// AusTrackingLog Tltv
     /// </summary>
-    public decimal? Tltv { get => _tltv; set => SetField(ref _tltv, value); }
+    public decimal? Tltv { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract TotalAsset
+    /// AusTrackingLog TotalAsset
     /// </summary>
-    public decimal? TotalAsset { get => _totalAsset; set => SetField(ref _totalAsset, value); }
+    public decimal? TotalAsset { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract TotalExpense
+    /// AusTrackingLog TotalExpense
     /// </summary>
-    public decimal? TotalExpense { get => _totalExpense; set => SetField(ref _totalExpense, value); }
+    public decimal? TotalExpense { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract TotalExpensePmt
+    /// AusTrackingLog TotalExpensePmt
     /// </summary>
-    public decimal? TotalExpensePmt { get => _totalExpensePmt; set => SetField(ref _totalExpensePmt, value); }
+    public decimal? TotalExpensePmt { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract TotalExpenseRatio
+    /// AusTrackingLog TotalExpenseRatio
     /// </summary>
-    public decimal? TotalExpenseRatio { get => _totalExpenseRatio; set => SetField(ref _totalExpenseRatio, value); }
+    public decimal? TotalExpenseRatio { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract TotalFundsVerified
+    /// AusTrackingLog TotalFundsVerified
     /// </summary>
-    public decimal? TotalFundsVerified { get => _totalFundsVerified; set => SetField(ref _totalFundsVerified, value); }
+    public decimal? TotalFundsVerified { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract TotalLoanAmount
+    /// AusTrackingLog TotalLoanAmount
     /// </summary>
-    public decimal? TotalLoanAmount { get => _totalLoanAmount; set => SetField(ref _totalLoanAmount, value); }
+    public decimal? TotalLoanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract TotalMonthlyIncome
+    /// AusTrackingLog TotalMonthlyIncome
     /// </summary>
-    public decimal? TotalMonthlyIncome { get => _totalMonthlyIncome; set => SetField(ref _totalMonthlyIncome, value); }
+    public decimal? TotalMonthlyIncome { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract TpoNumber
+    /// AusTrackingLog TpoNumber
     /// </summary>
-    public string? TpoNumber { get => _tpoNumber; set => SetField(ref _tpoNumber, value); }
+    public string? TpoNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract TransactionId
+    /// AusTrackingLog TransactionId
     /// </summary>
-    public string? TransactionId { get => _transactionId; set => SetField(ref _transactionId, value); }
+    public string? TransactionId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract UnderwritingRiskAssessOther
+    /// AusTrackingLog UnderwritingRiskAssessOther
     /// </summary>
-    public string? UnderwritingRiskAssessOther { get => _underwritingRiskAssessOther; set => SetField(ref _underwritingRiskAssessOther, value); }
+    public string? UnderwritingRiskAssessOther { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract UnderwritingRiskAssessType
+    /// AusTrackingLog UnderwritingRiskAssessType
     /// </summary>
-    public string? UnderwritingRiskAssessType { get => _underwritingRiskAssessType; set => SetField(ref _underwritingRiskAssessType, value); }
+    public string? UnderwritingRiskAssessType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AUSTrackingLogContract WithUndisclosedDebt
+    /// AusTrackingLog WithUndisclosedDebt
     /// </summary>
-    public string? WithUndisclosedDebt { get => _withUndisclosedDebt; set => SetField(ref _withUndisclosedDebt, value); }
+    public string? WithUndisclosedDebt { get => GetValue<string?>(); set => SetValue(value); }
 }

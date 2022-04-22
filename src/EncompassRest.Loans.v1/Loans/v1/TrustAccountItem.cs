@@ -8,58 +8,48 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class TrustAccountItem : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _notes;
-    private DirtyValue<decimal?>? _paymentAmount;
-    private DirtyValue<string?>? _paymentCheckNo;
-    private DirtyValue<decimal?>? _receiptAmount;
-    private DirtyValue<string?>? _receiptCheckNo;
-    private DirtyValue<int?>? _trustAccountItemIndex;
-
     /// <summary>
     /// Trust Acct Trans Descr Date [TANNDT]
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trust Acct Trans Descr [TANNDS]
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TrustAccountItem Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trust Acct Trans Descr Notes [TANNNO]
     /// </summary>
-    public string? Notes { get => _notes; set => SetField(ref _notes, value); }
+    public string? Notes { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trust Acct Trans Descr Pymt Amt [TANNPA]
     /// </summary>
-    public decimal? PaymentAmount { get => _paymentAmount; set => SetField(ref _paymentAmount, value); }
+    public decimal? PaymentAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trust Acct Trans Descr Pymt Check [TANNPC]
     /// </summary>
-    public string? PaymentCheckNo { get => _paymentCheckNo; set => SetField(ref _paymentCheckNo, value); }
+    public string? PaymentCheckNo { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trust Acct Trans Descr Receipt Amt [TANNRA]
     /// </summary>
-    public decimal? ReceiptAmount { get => _receiptAmount; set => SetField(ref _receiptAmount, value); }
+    public decimal? ReceiptAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trust Acct Trans Descr Receipt Check [TANNRC]
     /// </summary>
-    public string? ReceiptCheckNo { get => _receiptCheckNo; set => SetField(ref _receiptCheckNo, value); }
+    public string? ReceiptCheckNo { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TrustAccountItem TrustAccountItemIndex
     /// </summary>
-    public int? TrustAccountItemIndex { get => _trustAccountItemIndex; set => SetField(ref _trustAccountItemIndex, value); }
+    public int? TrustAccountItemIndex { get => GetValue<int?>(); set => SetValue(value); }
 }

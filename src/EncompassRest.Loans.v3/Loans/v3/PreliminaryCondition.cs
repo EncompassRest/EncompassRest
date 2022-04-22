@@ -9,154 +9,129 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class PreliminaryCondition : DirtyExtensibleObject, IIdentifiable
 {
-    private EntityReference? _addedBy;
-    private DirtyValue<DateTime?>? _addedDate;
-    private DirtyValue<bool?>? _allowUnderwriterAccess;
-    private EntityReference? _borrowerPair;
-    private DirtyValue<string?>? _category;
-    private DirtyValue<int?>? _daysTillDue;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<DateTime?>? _expectedDate;
-    private EntityReference? _fulfilledBy;
-    private DirtyValue<DateTime?>? _fulfilledDate;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isMarkedRemoved;
-    private DirtyValue<string?>? _priorTo;
-    private EntityReference? _receivedBy;
-    private DirtyValue<DateTime?>? _receivedDate;
-    private EntityReference? _requestedBy;
-    private DirtyValue<DateTime?>? _requestedDate;
-    private DirtyValue<string?>? _requestedFrom;
-    private EntityReference? _rerequestedBy;
-    private DirtyValue<DateTime?>? _rerequestedDate;
-    private DirtyValue<string?>? _source;
-    private DirtyValue<StringEnumValue<ConditionStatus>>? _status;
-    private DirtyValue<DateTime?>? _statusDate;
-    private DirtyValue<string?>? _title;
-
     /// <summary>
-    /// PreliminaryConditionContract AddedBy
+    /// PreliminaryCondition AddedBy
     /// </summary>
     [AllowNull]
-    public EntityReference AddedBy { get => GetField(ref _addedBy); set => SetField(ref _addedBy, value); }
+    public EntityReference AddedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract AddedDate
+    /// PreliminaryCondition AddedDate
     /// </summary>
-    public DateTime? AddedDate { get => _addedDate; set => SetField(ref _addedDate, value); }
+    public DateTime? AddedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract AllowUnderwriterAccess
+    /// PreliminaryCondition AllowUnderwriterAccess
     /// </summary>
-    public bool? AllowUnderwriterAccess { get => _allowUnderwriterAccess; set => SetField(ref _allowUnderwriterAccess, value); }
+    public bool? AllowUnderwriterAccess { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract BorrowerPair
-    /// </summary>
-    [AllowNull]
-    public EntityReference BorrowerPair { get => GetField(ref _borrowerPair); set => SetField(ref _borrowerPair, value); }
-
-    /// <summary>
-    /// PreliminaryConditionContract Category
-    /// </summary>
-    public string? Category { get => _category; set => SetField(ref _category, value); }
-
-    /// <summary>
-    /// PreliminaryConditionContract DaysTillDue
-    /// </summary>
-    public int? DaysTillDue { get => _daysTillDue; set => SetField(ref _daysTillDue, value); }
-
-    /// <summary>
-    /// PreliminaryConditionContract Description
-    /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
-
-    /// <summary>
-    /// PreliminaryConditionContract ExpectedDate
-    /// </summary>
-    public DateTime? ExpectedDate { get => _expectedDate; set => SetField(ref _expectedDate, value); }
-
-    /// <summary>
-    /// PreliminaryConditionContract FulfilledBy
+    /// PreliminaryCondition BorrowerPair
     /// </summary>
     [AllowNull]
-    public EntityReference FulfilledBy { get => GetField(ref _fulfilledBy); set => SetField(ref _fulfilledBy, value); }
+    public EntityReference BorrowerPair { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract FulfilledDate
+    /// PreliminaryCondition Category
     /// </summary>
-    public DateTime? FulfilledDate { get => _fulfilledDate; set => SetField(ref _fulfilledDate, value); }
+    public string? Category { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract Id
+    /// PreliminaryCondition DaysTillDue
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public int? DaysTillDue { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract IsMarkedRemoved
+    /// PreliminaryCondition Description
     /// </summary>
-    public bool? IsMarkedRemoved { get => _isMarkedRemoved; set => SetField(ref _isMarkedRemoved, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract PriorTo
+    /// PreliminaryCondition ExpectedDate
     /// </summary>
-    public string? PriorTo { get => _priorTo; set => SetField(ref _priorTo, value); }
+    public DateTime? ExpectedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract ReceivedBy
-    /// </summary>
-    [AllowNull]
-    public EntityReference ReceivedBy { get => GetField(ref _receivedBy); set => SetField(ref _receivedBy, value); }
-
-    /// <summary>
-    /// PreliminaryConditionContract ReceivedDate
-    /// </summary>
-    public DateTime? ReceivedDate { get => _receivedDate; set => SetField(ref _receivedDate, value); }
-
-    /// <summary>
-    /// PreliminaryConditionContract RequestedBy
+    /// PreliminaryCondition FulfilledBy
     /// </summary>
     [AllowNull]
-    public EntityReference RequestedBy { get => GetField(ref _requestedBy); set => SetField(ref _requestedBy, value); }
+    public EntityReference FulfilledBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract RequestedDate
+    /// PreliminaryCondition FulfilledDate
     /// </summary>
-    public DateTime? RequestedDate { get => _requestedDate; set => SetField(ref _requestedDate, value); }
+    public DateTime? FulfilledDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract RequestedFrom
+    /// PreliminaryCondition Id
     /// </summary>
-    public string? RequestedFrom { get => _requestedFrom; set => SetField(ref _requestedFrom, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract RerequestedBy
+    /// PreliminaryCondition IsMarkedRemoved
+    /// </summary>
+    public bool? IsMarkedRemoved { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// PreliminaryCondition PriorTo
+    /// </summary>
+    public string? PriorTo { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// PreliminaryCondition ReceivedBy
     /// </summary>
     [AllowNull]
-    public EntityReference RerequestedBy { get => GetField(ref _rerequestedBy); set => SetField(ref _rerequestedBy, value); }
+    public EntityReference ReceivedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract RerequestedDate
+    /// PreliminaryCondition ReceivedDate
     /// </summary>
-    public DateTime? RerequestedDate { get => _rerequestedDate; set => SetField(ref _rerequestedDate, value); }
+    public DateTime? ReceivedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract Source
+    /// PreliminaryCondition RequestedBy
     /// </summary>
-    public string? Source { get => _source; set => SetField(ref _source, value); }
+    [AllowNull]
+    public EntityReference RequestedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract Status
+    /// PreliminaryCondition RequestedDate
     /// </summary>
-    public StringEnumValue<ConditionStatus> Status { get => _status; set => SetField(ref _status, value); }
+    public DateTime? RequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract StatusDate
+    /// PreliminaryCondition RequestedFrom
     /// </summary>
-    public DateTime? StatusDate { get => _statusDate; set => SetField(ref _statusDate, value); }
+    public string? RequestedFrom { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreliminaryConditionContract Title
+    /// PreliminaryCondition RerequestedBy
     /// </summary>
-    public string? Title { get => _title; set => SetField(ref _title, value); }
+    [AllowNull]
+    public EntityReference RerequestedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// PreliminaryCondition RerequestedDate
+    /// </summary>
+    public DateTime? RerequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// PreliminaryCondition Source
+    /// </summary>
+    public string? Source { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// PreliminaryCondition Status
+    /// </summary>
+    public StringEnumValue<ConditionStatus> Status { get => GetValue<StringEnumValue<ConditionStatus>>(); set => SetValue(value); }
+
+    /// <summary>
+    /// PreliminaryCondition StatusDate
+    /// </summary>
+    public DateTime? StatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// PreliminaryCondition Title
+    /// </summary>
+    public string? Title { get => GetValue<string?>(); set => SetValue(value); }
 }

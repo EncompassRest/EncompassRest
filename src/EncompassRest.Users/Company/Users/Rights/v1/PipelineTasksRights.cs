@@ -7,151 +7,127 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class PipelineTasksRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _automaticRefreshConfiguration;
-        private DirtyValue<bool?>? _bidTape;
-        private DirtyValue<bool?>? _deleteLoans;
-        private DirtyValue<bool?>? _dueDiligence;
-        private DuplicateLoansRights? _duplicateLoans;
-        private DirtyValue<bool?>? _duplicateLoansforSecond;
-        private DirtyValue<bool?>? _exportDatatoExcel;
-        private DirtyValue<bool?>? _generateNMLSReport;
-        private GSEServicesRights? _gSEServices;
-        private DirtyValue<bool?>? _hedgeAdvisory;
-        private HMDAServicesRights? _hMDAServices;
-        private ImportLoansRights? _importLoans;
-        private DirtyValue<bool?>? _includeArchiveFolders;
-        private DirtyValue<bool?>? _investorServices;
-        private DirtyValue<bool?>? _manageAlerts;
-        private ManagePipelineServicesRights? _managePipelineServices;
-        private MoveLoansRights? _moveLoans;
-        private NewLoansRights? _newLoans;
-        private DirtyValue<bool?>? _qCAudit;
-        private DirtyValue<bool?>? _subservicing;
-        private DirtyValue<bool?>? _transferLoans;
-        private TrashFolderTasksRights? _trashFolderTasks;
-        private DirtyValue<bool?>? _warehouseLenders;
-
         /// <summary>
         /// PipelineTasksRights AutomaticRefreshConfiguration
         /// </summary>
-        public bool? AutomaticRefreshConfiguration { get => _automaticRefreshConfiguration; set => SetField(ref _automaticRefreshConfiguration, value); }
+        public bool? AutomaticRefreshConfiguration { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights BidTape
         /// </summary>
-        public bool? BidTape { get => _bidTape; set => SetField(ref _bidTape, value); }
+        public bool? BidTape { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights DeleteLoans
         /// </summary>
-        public bool? DeleteLoans { get => _deleteLoans; set => SetField(ref _deleteLoans, value); }
+        public bool? DeleteLoans { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights DueDiligence
         /// </summary>
-        public bool? DueDiligence { get => _dueDiligence; set => SetField(ref _dueDiligence, value); }
+        public bool? DueDiligence { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights DuplicateLoans
         /// </summary>
         [AllowNull]
-        public DuplicateLoansRights DuplicateLoans { get => GetField(ref _duplicateLoans); set => SetField(ref _duplicateLoans, value); }
+        public DuplicateLoansRights DuplicateLoans { get => GetEntity<DuplicateLoansRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// PipelineTasksRights DuplicateLoansforSecond
         /// </summary>
-        public bool? DuplicateLoansforSecond { get => _duplicateLoansforSecond; set => SetField(ref _duplicateLoansforSecond, value); }
+        public bool? DuplicateLoansforSecond { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights ExportDatatoExcel
         /// </summary>
-        public bool? ExportDatatoExcel { get => _exportDatatoExcel; set => SetField(ref _exportDatatoExcel, value); }
+        public bool? ExportDatatoExcel { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights GenerateNMLSReport
         /// </summary>
-        public bool? GenerateNMLSReport { get => _generateNMLSReport; set => SetField(ref _generateNMLSReport, value); }
+        public bool? GenerateNMLSReport { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights GSEServices
         /// </summary>
         [AllowNull]
-        public GSEServicesRights GSEServices { get => GetField(ref _gSEServices); set => SetField(ref _gSEServices, value); }
+        public GSEServicesRights GSEServices { get => GetEntity<GSEServicesRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// PipelineTasksRights HedgeAdvisory
         /// </summary>
-        public bool? HedgeAdvisory { get => _hedgeAdvisory; set => SetField(ref _hedgeAdvisory, value); }
+        public bool? HedgeAdvisory { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights HMDAServices
         /// </summary>
         [AllowNull]
-        public HMDAServicesRights HMDAServices { get => GetField(ref _hMDAServices); set => SetField(ref _hMDAServices, value); }
+        public HMDAServicesRights HMDAServices { get => GetEntity<HMDAServicesRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// PipelineTasksRights ImportLoans
         /// </summary>
         [AllowNull]
-        public ImportLoansRights ImportLoans { get => GetField(ref _importLoans); set => SetField(ref _importLoans, value); }
+        public ImportLoansRights ImportLoans { get => GetEntity<ImportLoansRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// PipelineTasksRights IncludeArchiveFolders
         /// </summary>
-        public bool? IncludeArchiveFolders { get => _includeArchiveFolders; set => SetField(ref _includeArchiveFolders, value); }
+        public bool? IncludeArchiveFolders { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights InvestorServices
         /// </summary>
-        public bool? InvestorServices { get => _investorServices; set => SetField(ref _investorServices, value); }
+        public bool? InvestorServices { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights ManageAlerts
         /// </summary>
-        public bool? ManageAlerts { get => _manageAlerts; set => SetField(ref _manageAlerts, value); }
+        public bool? ManageAlerts { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights ManagePipelineServices
         /// </summary>
         [AllowNull]
-        public ManagePipelineServicesRights ManagePipelineServices { get => GetField(ref _managePipelineServices); set => SetField(ref _managePipelineServices, value); }
+        public ManagePipelineServicesRights ManagePipelineServices { get => GetEntity<ManagePipelineServicesRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// PipelineTasksRights MoveLoans
         /// </summary>
         [AllowNull]
-        public MoveLoansRights MoveLoans { get => GetField(ref _moveLoans); set => SetField(ref _moveLoans, value); }
+        public MoveLoansRights MoveLoans { get => GetEntity<MoveLoansRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// PipelineTasksRights NewLoans
         /// </summary>
         [AllowNull]
-        public NewLoansRights NewLoans { get => GetField(ref _newLoans); set => SetField(ref _newLoans, value); }
+        public NewLoansRights NewLoans { get => GetEntity<NewLoansRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// PipelineTasksRights QCAudit
         /// </summary>
-        public bool? QCAudit { get => _qCAudit; set => SetField(ref _qCAudit, value); }
+        public bool? QCAudit { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights Subservicing
         /// </summary>
-        public bool? Subservicing { get => _subservicing; set => SetField(ref _subservicing, value); }
+        public bool? Subservicing { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights TransferLoans
         /// </summary>
-        public bool? TransferLoans { get => _transferLoans; set => SetField(ref _transferLoans, value); }
+        public bool? TransferLoans { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PipelineTasksRights TrashFolderTasks
         /// </summary>
         [AllowNull]
-        public TrashFolderTasksRights TrashFolderTasks { get => GetField(ref _trashFolderTasks); set => SetField(ref _trashFolderTasks, value); }
+        public TrashFolderTasksRights TrashFolderTasks { get => GetEntity<TrashFolderTasksRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// PipelineTasksRights WarehouseLenders
         /// </summary>
-        public bool? WarehouseLenders { get => _warehouseLenders; set => SetField(ref _warehouseLenders, value); }
+        public bool? WarehouseLenders { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

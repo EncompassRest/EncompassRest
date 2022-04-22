@@ -10,29 +10,24 @@ namespace EncompassRest.Loans.v3;
 [Entity(PropertiesToAlwaysSerialize = nameof(AlertType) + "," + nameof(Source))]
 public sealed partial class DocumentAuditAlert : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<StringEnumValue<AlertType>>? _alertType;
-    private DirtyValue<string?>? _details;
-    private DirtyList<string?>? _fields;
-    private DirtyValue<StringEnumValue<DocumentAuditAlertSource>>? _source;
-
     /// <summary>
-    /// DocumentAuditAlertContract AlertType
+    /// DocumentAuditAlert AlertType
     /// </summary>
-    public StringEnumValue<AlertType> AlertType { get => _alertType; set => SetField(ref _alertType, value); }
+    public StringEnumValue<AlertType> AlertType { get => GetValue<StringEnumValue<AlertType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentAuditAlertContract Details
+    /// DocumentAuditAlert Details
     /// </summary>
-    public string? Details { get => _details; set => SetField(ref _details, value); }
+    public string? Details { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentAuditAlertContract Fields
+    /// DocumentAuditAlert Fields
     /// </summary>
     [AllowNull]
-    public IList<string?> Fields { get => GetField(ref _fields); set => SetField(ref _fields, value); }
+    public IList<string?> Fields { get => GetList<string?>(); set => SetList(value); }
 
     /// <summary>
-    /// DocumentAuditAlertContract Source
+    /// DocumentAuditAlert Source
     /// </summary>
-    public StringEnumValue<DocumentAuditAlertSource> Source { get => _source; set => SetField(ref _source, value); }
+    public StringEnumValue<DocumentAuditAlertSource> Source { get => GetValue<StringEnumValue<DocumentAuditAlertSource>>(); set => SetValue(value); }
 }

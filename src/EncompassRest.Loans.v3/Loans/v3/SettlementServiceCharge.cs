@@ -5,22 +5,18 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class SettlementServiceCharge : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _amount;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<int?>? _settlementServiceChargeIndex;
+    /// <summary>
+    /// SettlementServiceCharge Amount
+    /// </summary>
+    public string? Amount { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SettlementServiceChargeContract Amount
+    /// SettlementServiceCharge Description
     /// </summary>
-    public string? Amount { get => _amount; set => SetField(ref _amount, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SettlementServiceChargeContract Description
+    /// SettlementServiceCharge SettlementServiceChargeIndex
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
-
-    /// <summary>
-    /// SettlementServiceChargeContract SettlementServiceChargeIndex
-    /// </summary>
-    public int? SettlementServiceChargeIndex { get => _settlementServiceChargeIndex; set => SetField(ref _settlementServiceChargeIndex, value); }
+    public int? SettlementServiceChargeIndex { get => GetValue<int?>(); set => SetValue(value); }
 }

@@ -8,19 +8,16 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class GrantWriteAccessToLoanTeamMembersRights : ParentAccessRights
     {
-        private DirtyDictionary<string, bool>? _freeRoles;
-        private DirtyDictionary<string, bool>? _milestones;
-
         /// <summary>
         /// GrantWriteAccessToLoanTeamMembersRights FreeRoles
         /// </summary>
         [AllowNull]
-        public IDictionary<string, bool> FreeRoles { get => GetField(ref _freeRoles); set => SetField(ref _freeRoles, value); }
+        public IDictionary<string, bool> FreeRoles { get => GetDictionary<string, bool>(); set => SetDictionary(value); }
 
         /// <summary>
         /// GrantWriteAccessToLoanTeamMembersRights Milestones
         /// </summary>
         [AllowNull]
-        public IDictionary<string, bool> Milestones { get => GetField(ref _milestones); set => SetField(ref _milestones, value); }
+        public IDictionary<string, bool> Milestones { get => GetDictionary<string, bool>(); set => SetDictionary(value); }
     }
 }

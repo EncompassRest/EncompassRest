@@ -7,70 +7,58 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LoanEstimateFields : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _changesReceivedDate;
-    private DirtyValue<bool?>? _isChangedCircumstanceEligibility;
-    private DirtyValue<bool?>? _isChangedCircumstanceSettlementCharges;
-    private DirtyValue<bool?>? _isDelayedSettlementOnConstructionLoans;
-    private DirtyValue<bool?>? _isDisclosedByBroker;
-    private DirtyValue<bool?>? _isExpiration;
-    private DirtyValue<bool?>? _isInterestRateDependentCharges;
-    private DirtyValue<bool?>? _isOther;
-    private DirtyValue<bool?>? _isRevisionsRequestedByConsumer;
-    private DirtyValue<string?>? _otherDescription;
-    private DirtyValue<DateTime?>? _revisedDueDate;
+    /// <summary>
+    /// LoanEstimateFields ChangesReceivedDate
+    /// </summary>
+    public DateTime? ChangesReceivedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanEstimateFieldsContract ChangesReceivedDate
+    /// LoanEstimateFields IsChangedCircumstanceEligibility
     /// </summary>
-    public DateTime? ChangesReceivedDate { get => _changesReceivedDate; set => SetField(ref _changesReceivedDate, value); }
+    public bool? IsChangedCircumstanceEligibility { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanEstimateFieldsContract IsChangedCircumstanceEligibility
+    /// LoanEstimateFields IsChangedCircumstanceSettlementCharges
     /// </summary>
-    public bool? IsChangedCircumstanceEligibility { get => _isChangedCircumstanceEligibility; set => SetField(ref _isChangedCircumstanceEligibility, value); }
+    public bool? IsChangedCircumstanceSettlementCharges { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanEstimateFieldsContract IsChangedCircumstanceSettlementCharges
+    /// LoanEstimateFields IsDelayedSettlementOnConstructionLoans
     /// </summary>
-    public bool? IsChangedCircumstanceSettlementCharges { get => _isChangedCircumstanceSettlementCharges; set => SetField(ref _isChangedCircumstanceSettlementCharges, value); }
+    public bool? IsDelayedSettlementOnConstructionLoans { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanEstimateFieldsContract IsDelayedSettlementOnConstructionLoans
+    /// LoanEstimateFields IsDisclosedByBroker
     /// </summary>
-    public bool? IsDelayedSettlementOnConstructionLoans { get => _isDelayedSettlementOnConstructionLoans; set => SetField(ref _isDelayedSettlementOnConstructionLoans, value); }
+    public bool? IsDisclosedByBroker { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanEstimateFieldsContract IsDisclosedByBroker
+    /// LoanEstimateFields IsExpiration
     /// </summary>
-    public bool? IsDisclosedByBroker { get => _isDisclosedByBroker; set => SetField(ref _isDisclosedByBroker, value); }
+    public bool? IsExpiration { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanEstimateFieldsContract IsExpiration
+    /// LoanEstimateFields IsInterestRateDependentCharges
     /// </summary>
-    public bool? IsExpiration { get => _isExpiration; set => SetField(ref _isExpiration, value); }
+    public bool? IsInterestRateDependentCharges { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanEstimateFieldsContract IsInterestRateDependentCharges
+    /// LoanEstimateFields IsOther
     /// </summary>
-    public bool? IsInterestRateDependentCharges { get => _isInterestRateDependentCharges; set => SetField(ref _isInterestRateDependentCharges, value); }
+    public bool? IsOther { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanEstimateFieldsContract IsOther
+    /// LoanEstimateFields IsRevisionsRequestedByConsumer
     /// </summary>
-    public bool? IsOther { get => _isOther; set => SetField(ref _isOther, value); }
+    public bool? IsRevisionsRequestedByConsumer { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanEstimateFieldsContract IsRevisionsRequestedByConsumer
+    /// LoanEstimateFields OtherDescription
     /// </summary>
-    public bool? IsRevisionsRequestedByConsumer { get => _isRevisionsRequestedByConsumer; set => SetField(ref _isRevisionsRequestedByConsumer, value); }
+    public string? OtherDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanEstimateFieldsContract OtherDescription
+    /// LoanEstimateFields RevisedDueDate
     /// </summary>
-    public string? OtherDescription { get => _otherDescription; set => SetField(ref _otherDescription, value); }
-
-    /// <summary>
-    /// LoanEstimateFieldsContract RevisedDueDate
-    /// </summary>
-    public DateTime? RevisedDueDate { get => _revisedDueDate; set => SetField(ref _revisedDueDate, value); }
+    public DateTime? RevisedDueDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

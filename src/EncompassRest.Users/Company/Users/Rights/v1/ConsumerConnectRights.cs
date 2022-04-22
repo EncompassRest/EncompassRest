@@ -8,13 +8,11 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class ConsumerConnectRights : DirtyExtensibleObject
     {
-        private ConsumerConnectWebsiteBuilderSettingsRights? _cosumerConnectWebsiteBuilderSettings;
-
         /// <summary>
         /// ConsumerConnectRights ConsumerConnectWebsiteBuilderSettings
         /// </summary>
         [JsonProperty("cosumerConnectWebsiteBuilderSettings")]
         [AllowNull]
-        public ConsumerConnectWebsiteBuilderSettingsRights ConsumerConnectWebsiteBuilderSettings { get => GetField(ref _cosumerConnectWebsiteBuilderSettings); set => SetField(ref _cosumerConnectWebsiteBuilderSettings, value); }
+        public ConsumerConnectWebsiteBuilderSettingsRights ConsumerConnectWebsiteBuilderSettings { get => GetEntity<ConsumerConnectWebsiteBuilderSettingsRights>(); set => SetEntity(value); }
     }
 }

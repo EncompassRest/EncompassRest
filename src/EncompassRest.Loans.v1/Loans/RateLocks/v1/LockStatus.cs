@@ -10,12 +10,10 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Requested
         /// </summary>
-        [EnumMember(Value = "Requested")]
         Requested = 0,
         /// <summary>
         /// Locked
         /// </summary>
-        [EnumMember(Value = "Locked")]
         Locked = 1,
         /// <summary>
         /// Old Lock
@@ -30,12 +28,10 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Expired
         /// </summary>
-        [EnumMember(Value = "Expired")]
         Expired = 4,
         /// <summary>
         /// Cancelled
         /// </summary>
-        [EnumMember(Value = "Cancelled")]
         Cancelled = 5,
         /// <summary>
         /// Extension Requested
@@ -45,12 +41,10 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Denied
         /// </summary>
-        [EnumMember(Value = "Denied")]
         Denied = 7,
         /// <summary>
         /// Registered
         /// </summary>
-        [EnumMember(Value = "Registered")]
         Registered = 8,
         /// <summary>
         /// Old Registration

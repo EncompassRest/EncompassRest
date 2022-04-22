@@ -5,11 +5,9 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class CommitmentsRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _editCommitments;
-
         /// <summary>
         /// CommitmentsRights EditCommitments
         /// </summary>
-        public bool? EditCommitments { get => _editCommitments; set => SetField(ref _editCommitments, value); }
+        public bool? EditCommitments { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

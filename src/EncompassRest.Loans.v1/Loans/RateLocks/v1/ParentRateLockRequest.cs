@@ -7,18 +7,15 @@ namespace EncompassRest.Loans.RateLocks.v1
     /// </summary>
     public sealed partial class ParentRateLockRequest : EntityReference
     {
-        private DirtyValue<string?>? _requestType;
-        private DirtyValue<string?>? _lockStatus;
-
         /// <summary>
         /// Lock request type of the parent lock request.
         /// </summary>
-        public string? RequestType { get => _requestType; set => SetField(ref _requestType, value); }
+        public string? RequestType { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Lock status of the parent lock request.
         /// </summary>
-        public string? LockStatus { get => _lockStatus; set => SetField(ref _lockStatus, value); }
+        public string? LockStatus { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// ParentRateLockRequest constructor.

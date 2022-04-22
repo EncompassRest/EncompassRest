@@ -2,7 +2,6 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
@@ -155,7 +154,7 @@ namespace EncompassRest
 
         private static InternalConverter? GetConverter(Type type, bool throwOnNull = false)
         {
-            if (!_converters.TryGetValue(type, out var converter) && type.GetTypeInfo().IsGenericType && !type.GetTypeInfo().IsGenericTypeDefinition && type.GetGenericTypeDefinition() == typeof(NA<>))
+            if (!_converters.TryGetValue(type, out var converter) && type.IsGenericType && !type.IsGenericTypeDefinition && type.GetGenericTypeDefinition() == typeof(NA<>))
             {
                 converter = _converters.GetOrAdd(type, t => (InternalConverter)Activator.CreateInstance(typeof(InternalConverter<>).MakeGenericType(t.GenericTypeArguments[0])));
             }
@@ -202,11 +201,7 @@ namespace EncompassRest
                     ? new NA<T>("NA")
                     : (object)new NA<T>(JsonHelper.FromJson<T>(value)));
 
-            private static bool IsNA(string value) => string.Equals(new string(value
-#if !STRING_GENERIC_IENUMERABLE
-            .Cast<char>()
-#endif
-            .Where(c => !char.IsPunctuation(c) && !char.IsWhiteSpace(c)).ToArray()), "NA", StringComparison.OrdinalIgnoreCase);
+            private static bool IsNA(string value) => string.Equals(new string(value.Where(c => !char.IsPunctuation(c) && !char.IsWhiteSpace(c)).ToArray()), "NA", StringComparison.OrdinalIgnoreCase);
         }
     }
 }

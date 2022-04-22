@@ -7,44 +7,37 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class MyProfileRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _cell;
-        private DirtyValue<bool?>? _email;
-        private DirtyValue<bool?>? _fax;
-        private DirtyValue<bool?>? _name;
-        private DirtyValue<bool?>? _phone;
-        private DirtyValue<bool?>? _publicProfile;
-
         /// <summary>
         /// MyProfileRights Cell
         /// </summary>
         [JsonProperty("cell#")]
-        public bool? Cell { get => _cell; set => SetField(ref _cell, value); }
+        public bool? Cell { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// MyProfileRights Email
         /// </summary>
-        public bool? Email { get => _email; set => SetField(ref _email, value); }
+        public bool? Email { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// MyProfileRights Fax
         /// </summary>
         [JsonProperty("fax#")]
-        public bool? Fax { get => _fax; set => SetField(ref _fax, value); }
+        public bool? Fax { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// MyProfileRights Name
         /// </summary>
-        public bool? Name { get => _name; set => SetField(ref _name, value); }
+        public bool? Name { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// MyProfileRights Phone
         /// </summary>
         [JsonProperty("phone#")]
-        public bool? Phone { get => _phone; set => SetField(ref _phone, value); }
+        public bool? Phone { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// MyProfileRights PublicProfile
         /// </summary>
-        public bool? PublicProfile { get => _publicProfile; set => SetField(ref _publicProfile, value); }
+        public bool? PublicProfile { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

@@ -5,11 +5,9 @@
     /// </summary>
     public sealed class TradeMgmtRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _editTradeMgmt;
-
         /// <summary>
         /// TradeMgmtRights EditTradeMgmt
         /// </summary>
-        public bool? EditTradeMgmt { get => _editTradeMgmt; set => SetField(ref _editTradeMgmt, value); }
+        public bool? EditTradeMgmt { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

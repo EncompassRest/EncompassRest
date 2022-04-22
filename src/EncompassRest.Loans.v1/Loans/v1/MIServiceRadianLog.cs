@@ -9,96 +9,80 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class MIServiceRadianLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<DateTime?>? _dateUtc;
-    private DirtyValue<string?>? _details;
-    private DirtyValue<bool?>? _fileAttachmentsMigrated;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isSystemSpecificIndicator;
-    private DirtyValue<int?>? _logRecordIndex;
-    private DirtyValue<string?>? _name;
-    private DirtyValue<string?>? _result;
-    private DirtyValue<bool?>? _showAlert;
-    private DirtyValue<string?>? _systemId;
-    private DirtyValue<DateTime?>? _updatedDateUtc;
-
     /// <summary>
     /// MIServiceRadianLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
     /// MIServiceRadianLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
     /// MIServiceRadianLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog DateUtc
     /// </summary>
-    public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
+    public DateTime? DateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog Details
     /// </summary>
-    public string? Details { get => _details; set => SetField(ref _details, value); }
+    public string? Details { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog FileAttachmentsMigrated
     /// </summary>
-    public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
+    public bool? FileAttachmentsMigrated { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog Guid
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog IsSystemSpecificIndicator
     /// </summary>
-    public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
+    public bool? IsSystemSpecificIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog LogRecordIndex
     /// </summary>
-    public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
+    public int? LogRecordIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog Result
     /// </summary>
-    public string? Result { get => _result; set => SetField(ref _result, value); }
+    public string? Result { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog ShowAlert
     /// </summary>
-    public bool? ShowAlert { get => _showAlert; set => SetField(ref _showAlert, value); }
+    public bool? ShowAlert { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog SystemId
     /// </summary>
-    public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+    public string? SystemId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// MIServiceRadianLog UpdatedDateUtc
     /// </summary>
-    public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+    public DateTime? UpdatedDateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

@@ -8,47 +8,40 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class MilestoneWorkFlowManagementRights : DirtyExtensibleObject
     {
-        private DirtyDictionary<string, bool>? _acceptFiles;
-        private AssignLoanTeamMembersRights? _assignLoanTeamMembers;
-        private DirtyDictionary<string, bool>? _changeExpectedDate;
-        private DirtyDictionary<string, bool>? _editMilestoneComments;
-        private DirtyDictionary<string, bool>? _finishMilestones;
-        private DirtyDictionary<string, bool>? _returnFiles;
-
         /// <summary>
         /// MilestoneWorkFlowManagementRights AcceptFiles
         /// </summary>
         [AllowNull]
-        public IDictionary<string, bool> AcceptFiles { get => GetField(ref _acceptFiles); set => SetField(ref _acceptFiles, value); }
+        public IDictionary<string, bool> AcceptFiles { get => GetDictionary<string, bool>(); set => SetDictionary(value); }
 
         /// <summary>
         /// MilestoneWorkFlowManagementRights AssignLoanTeamMembers
         /// </summary>
         [AllowNull]
-        public AssignLoanTeamMembersRights AssignLoanTeamMembers { get => GetField(ref _assignLoanTeamMembers); set => SetField(ref _assignLoanTeamMembers, value); }
+        public AssignLoanTeamMembersRights AssignLoanTeamMembers { get => GetEntity<AssignLoanTeamMembersRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// MilestoneWorkFlowManagementRights ChangeExpectedDate
         /// </summary>
         [AllowNull]
-        public IDictionary<string, bool> ChangeExpectedDate { get => GetField(ref _changeExpectedDate); set => SetField(ref _changeExpectedDate, value); }
+        public IDictionary<string, bool> ChangeExpectedDate { get => GetDictionary<string, bool>(); set => SetDictionary(value); }
 
         /// <summary>
         /// MilestoneWorkFlowManagementRights EditMilestoneComments
         /// </summary>
         [AllowNull]
-        public IDictionary<string, bool> EditMilestoneComments { get => GetField(ref _editMilestoneComments); set => SetField(ref _editMilestoneComments, value); }
+        public IDictionary<string, bool> EditMilestoneComments { get => GetDictionary<string, bool>(); set => SetDictionary(value); }
 
         /// <summary>
         /// MilestoneWorkFlowManagementRights FinishMilestones
         /// </summary>
         [AllowNull]
-        public IDictionary<string, bool> FinishMilestones { get => GetField(ref _finishMilestones); set => SetField(ref _finishMilestones, value); }
+        public IDictionary<string, bool> FinishMilestones { get => GetDictionary<string, bool>(); set => SetDictionary(value); }
 
         /// <summary>
         /// MilestoneWorkFlowManagementRights ReturnFiles
         /// </summary>
         [AllowNull]
-        public IDictionary<string, bool> ReturnFiles { get => GetField(ref _returnFiles); set => SetField(ref _returnFiles, value); }
+        public IDictionary<string, bool> ReturnFiles { get => GetDictionary<string, bool>(); set => SetDictionary(value); }
     }
 }

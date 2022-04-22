@@ -7,18 +7,15 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class ManageBorrowersRights : ParentAccessRights
     {
-        private ImportBorrowersRights? _importBorrowers;
-        private DirtyValue<bool?>? _moveBorrowers;
-
         /// <summary>
         /// ManageBorrowersRights ImportBorrowers
         /// </summary>
         [AllowNull]
-        public ImportBorrowersRights ImportBorrowers { get => GetField(ref _importBorrowers); set => SetField(ref _importBorrowers, value); }
+        public ImportBorrowersRights ImportBorrowers { get => GetEntity<ImportBorrowersRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ManageBorrowersRights MoveBorrowers
         /// </summary>
-        public bool? MoveBorrowers { get => _moveBorrowers; set => SetField(ref _moveBorrowers, value); }
+        public bool? MoveBorrowers { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

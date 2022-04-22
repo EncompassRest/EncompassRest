@@ -7,12 +7,10 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class NotesRights : ParentAccessRights
     {
-        private EditNotesRights? _editNotes;
-
         /// <summary>
         /// NotesRights EditNotes
         /// </summary>
         [AllowNull]
-        public EditNotesRights EditNotes { get => GetField(ref _editNotes); set => SetField(ref _editNotes, value); }
+        public EditNotesRights EditNotes { get => GetEntity<EditNotesRights>(); set => SetEntity(value); }
     }
 }

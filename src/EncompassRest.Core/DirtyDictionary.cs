@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace EncompassRest
 {
     [JsonConverter(typeof(DirtyDictionaryConverter<,>))]
-    internal sealed class DirtyDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IReadOnlyDictionary<TKey, TValue>, IDictionary, IDirty
+    internal sealed class DirtyDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IReadOnlyDictionary<TKey, TValue>, IDictionary, IDirtyDictionary<TKey>
     {
         internal readonly Dictionary<TKey, DirtyValue<TValue>> _dictionary;
         private ValueCollection? _values;
@@ -33,6 +33,18 @@ namespace EncompassRest
                     pair.Value.Dirty = value;
                 }
             }
+        }
+
+        public bool IsValueDirty(TKey key) => _dictionary.TryGetValue(key, out var value) && value.Dirty;
+
+        public bool SetValueDirty(TKey key, bool value)
+        {
+            if (_dictionary.TryGetValue(key, out var v))
+            {
+                v.Dirty = value;
+                return true;
+            }
+            return false;
         }
 
         IEnumerable<TKey> IReadOnlyDictionary<TKey, TValue>.Keys => Keys;

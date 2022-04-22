@@ -9,48 +9,40 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LoanActionLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _loanActionType;
-    private DirtyValue<string?>? _triggeredBy;
-
     /// <summary>
-    /// LoanActionLogContract Alerts
+    /// LoanActionLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
-    /// LoanActionLogContract CommentList
+    /// LoanActionLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
-    /// LoanActionLogContract Comments
+    /// LoanActionLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanActionLogContract Date
+    /// LoanActionLog Date
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanActionLogContract Id
+    /// LoanActionLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanActionLogContract LoanActionType
+    /// LoanActionLog LoanActionType
     /// </summary>
-    public string? LoanActionType { get => _loanActionType; set => SetField(ref _loanActionType, value); }
+    public string? LoanActionType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanActionLogContract TriggeredBy
+    /// LoanActionLog TriggeredBy
     /// </summary>
-    public string? TriggeredBy { get => _triggeredBy; set => SetField(ref _triggeredBy, value); }
+    public string? TriggeredBy { get => GetValue<string?>(); set => SetValue(value); }
 }

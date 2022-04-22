@@ -150,13 +150,6 @@ namespace EncompassRest
         , IAsyncDisposable
 #endif
     {
-#if NET45
-        static EncompassRestClient()
-        {
-            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
-        }
-#endif
-
         /// <summary>
         /// Creates a client object which will automatically invoke the tokenInitializer when making an Api call with an expired token.
         /// </summary>

@@ -5,11 +5,9 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class EditNotesRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _deleteNotes;
-
         /// <summary>
         /// EditNotesRights DeleteNotes
         /// </summary>
-        public bool? DeleteNotes { get => _deleteNotes; set => SetField(ref _deleteNotes, value); }
+        public bool? DeleteNotes { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

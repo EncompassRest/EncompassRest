@@ -9,199 +9,166 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class Fee : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _amount;
-    private DirtyValue<decimal?>? _amountPerDay;
-    private DirtyValue<decimal?>? _borPaidAmount;
-    private DirtyValue<int?>? _days;
-    private DirtyValue<decimal?>? _deedAmount;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<StringEnumValue<FeeFeeType>>? _feeType;
-    private DirtyValue<bool?>? _fha;
-    private DirtyValue<DateTime?>? _fromDate;
-    private DirtyValue<string?>? _fwbc;
-    private DirtyValue<string?>? _fwsc;
-    private DirtyValue<string?>? _includeAboveNumber;
-    private DirtyValue<decimal?>? _lenderCoverage;
-    private DirtyValue<decimal?>? _monthlyPayment;
-    private DirtyValue<decimal?>? _mortgageAmount;
-    private DirtyValue<string?>? _newHudBorPaidAmount;
-    private DirtyValue<int?>? _numberOfMonths;
-    private DirtyValue<decimal?>? _ownerCoverage;
-    private DirtyValue<StringEnumValue<PaidBy>>? _paidBy;
-    private DirtyValue<decimal?>? _paidInAdvance;
-    private DirtyValue<decimal?>? _paidToBroker;
-    private DirtyValue<string?>? _paidToName;
-    private DirtyValue<decimal?>? _paidToOthers;
-    private DirtyValue<decimal?>? _percentage;
-    private DirtyValue<bool?>? _pfc;
-    private DirtyValue<bool?>? _poc;
-    private DirtyValue<StringEnumValue<PTB>>? _ptb;
-    private DirtyValue<decimal?>? _releasesAmount;
-    private DirtyValue<decimal?>? _sellerPaidAmount;
-    private DirtyValue<DateTime?>? _toDate;
-    private DirtyValue<decimal?>? _truncatedAmountPerDay;
-    private DirtyValue<bool?>? _use4Decimals;
-
     /// <summary>
-    /// FeeContract Amount
+    /// Fee Amount
     /// </summary>
-    public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
+    public decimal? Amount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Fees Interest Per Day [333]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_4)]
-    public decimal? AmountPerDay { get => _amountPerDay; set => SetField(ref _amountPerDay, value); }
+    public decimal? AmountPerDay { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract BorPaidAmount
+    /// Fee BorPaidAmount
     /// </summary>
-    public decimal? BorPaidAmount { get => _borPaidAmount; set => SetField(ref _borPaidAmount, value); }
+    public decimal? BorPaidAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Fees Interest # of Days [332]
     /// </summary>
-    public int? Days { get => _days; set => SetField(ref _days, value); }
+    public int? Days { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract DeedAmount
+    /// Fee DeedAmount
     /// </summary>
-    public decimal? DeedAmount { get => _deedAmount; set => SetField(ref _deedAmount, value); }
+    public decimal? DeedAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract Description
+    /// Fee Description
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract FeeType
+    /// Fee FeeType
     /// </summary>
-    public StringEnumValue<FeeFeeType> FeeType { get => _feeType; set => SetField(ref _feeType, value); }
+    public StringEnumValue<FeeFeeType> FeeType { get => GetValue<StringEnumValue<FeeFeeType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract Fha
+    /// Fee Fha
     /// </summary>
-    public bool? Fha { get => _fha; set => SetField(ref _fha, value); }
+    public bool? Fha { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Fees Interest From [L244]
     /// </summary>
-    public DateTime? FromDate { get => _fromDate; set => SetField(ref _fromDate, value); }
+    public DateTime? FromDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract Fwbc
+    /// Fee Fwbc
     /// </summary>
-    public string? Fwbc { get => _fwbc; set => SetField(ref _fwbc, value); }
+    public string? Fwbc { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract Fwsc
+    /// Fee Fwsc
     /// </summary>
-    public string? Fwsc { get => _fwsc; set => SetField(ref _fwsc, value); }
+    public string? Fwsc { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract IncludeAboveNumber [1879], [1880]
+    /// Fee IncludeAboveNumber [1879], [1880]
     /// </summary>
-    public string? IncludeAboveNumber { get => _includeAboveNumber; set => SetField(ref _includeAboveNumber, value); }
+    public string? IncludeAboveNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Fees Line 1109 Lender's Coverage Amount [2409]
     /// </summary>
-    public decimal? LenderCoverage { get => _lenderCoverage; set => SetField(ref _lenderCoverage, value); }
+    public decimal? LenderCoverage { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract MonthlyPayment
+    /// Fee MonthlyPayment
     /// </summary>
-    public decimal? MonthlyPayment { get => _monthlyPayment; set => SetField(ref _monthlyPayment, value); }
+    public decimal? MonthlyPayment { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract MortgageAmount
+    /// Fee MortgageAmount
     /// </summary>
-    public decimal? MortgageAmount { get => _mortgageAmount; set => SetField(ref _mortgageAmount, value); }
+    public decimal? MortgageAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract NewHudBorPaidAmount [NEWHUD.X571], [NEWHUD.X572]
+    /// Fee NewHudBorPaidAmount [NEWHUD.X571], [NEWHUD.X572]
     /// </summary>
-    public string? NewHudBorPaidAmount { get => _newHudBorPaidAmount; set => SetField(ref _newHudBorPaidAmount, value); }
+    public string? NewHudBorPaidAmount { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract NumberOfMonths
+    /// Fee NumberOfMonths
     /// </summary>
-    public int? NumberOfMonths { get => _numberOfMonths; set => SetField(ref _numberOfMonths, value); }
+    public int? NumberOfMonths { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Fees Line 1110 Owner's Coverage Amount [2410]
     /// </summary>
-    public decimal? OwnerCoverage { get => _ownerCoverage; set => SetField(ref _ownerCoverage, value); }
+    public decimal? OwnerCoverage { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract PaidBy
+    /// Fee PaidBy
     /// </summary>
-    public StringEnumValue<PaidBy> PaidBy { get => _paidBy; set => SetField(ref _paidBy, value); }
+    public StringEnumValue<PaidBy> PaidBy { get => GetValue<StringEnumValue<PaidBy>>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract PaidInAdvance
+    /// Fee PaidInAdvance
     /// </summary>
-    public decimal? PaidInAdvance { get => _paidInAdvance; set => SetField(ref _paidInAdvance, value); }
+    public decimal? PaidInAdvance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract PaidToBroker
+    /// Fee PaidToBroker
     /// </summary>
-    public decimal? PaidToBroker { get => _paidToBroker; set => SetField(ref _paidToBroker, value); }
+    public decimal? PaidToBroker { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract PaidToName
+    /// Fee PaidToName
     /// </summary>
-    public string? PaidToName { get => _paidToName; set => SetField(ref _paidToName, value); }
+    public string? PaidToName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract PaidToOthers
+    /// Fee PaidToOthers
     /// </summary>
-    public decimal? PaidToOthers { get => _paidToOthers; set => SetField(ref _paidToOthers, value); }
+    public decimal? PaidToOthers { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract Percentage
+    /// Fee Percentage
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? Percentage { get => _percentage; set => SetField(ref _percentage, value); }
+    public decimal? Percentage { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract Pfc
+    /// Fee Pfc
     /// </summary>
-    public bool? Pfc { get => _pfc; set => SetField(ref _pfc, value); }
+    public bool? Pfc { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract Poc
+    /// Fee Poc
     /// </summary>
-    public bool? Poc { get => _poc; set => SetField(ref _poc, value); }
+    public bool? Poc { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract Ptb
+    /// Fee Ptb
     /// </summary>
-    public StringEnumValue<PTB> Ptb { get => _ptb; set => SetField(ref _ptb, value); }
+    public StringEnumValue<PTB> Ptb { get => GetValue<StringEnumValue<PTB>>(); set => SetValue(value); }
 
     /// <summary>
     /// Fees Recording Fee Releases Amount [2404]
     /// </summary>
-    public decimal? ReleasesAmount { get => _releasesAmount; set => SetField(ref _releasesAmount, value); }
+    public decimal? ReleasesAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FeeContract SellerPaidAmount
+    /// Fee SellerPaidAmount
     /// </summary>
-    public decimal? SellerPaidAmount { get => _sellerPaidAmount; set => SetField(ref _sellerPaidAmount, value); }
+    public decimal? SellerPaidAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Fees Interest To [L245]
     /// </summary>
-    public DateTime? ToDate { get => _toDate; set => SetField(ref _toDate, value); }
+    public DateTime? ToDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Unrounded and Truncated Fees Interest Per Day [335]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public decimal? TruncatedAmountPerDay { get => _truncatedAmountPerDay; set => SetField(ref _truncatedAmountPerDay, value); }
+    public decimal? TruncatedAmountPerDay { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Number of Decimals for Fees Interest # of Days [SYS.X8]
     /// </summary>
-    public bool? Use4Decimals { get => _use4Decimals; set => SetField(ref _use4Decimals, value); }
+    public bool? Use4Decimals { get => GetValue<bool?>(); set => SetValue(value); }
 }

@@ -7,70 +7,58 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class LogComment : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _addedBy;
-    private DirtyValue<string?>? _addedByName;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<int?>? _forRoleId;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isExternal;
-    private DirtyValue<bool?>? _isInternal;
-    private DirtyValue<string?>? _reviewedBy;
-    private DirtyValue<DateTime?>? _reviewedDate;
-
     /// <summary>
     /// LogComment AddedBy
     /// </summary>
-    public string? AddedBy { get => _addedBy; set => SetField(ref _addedBy, value); }
+    public string? AddedBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogComment AddedByName
     /// </summary>
-    public string? AddedByName { get => _addedByName; set => SetField(ref _addedByName, value); }
+    public string? AddedByName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogComment Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogComment Date
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogComment ForRoleId
     /// </summary>
-    public int? ForRoleId { get => _forRoleId; set => SetField(ref _forRoleId, value); }
+    public int? ForRoleId { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogComment Guid
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogComment Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogComment IsExternal
     /// </summary>
-    public bool? IsExternal { get => _isExternal; set => SetField(ref _isExternal, value); }
+    public bool? IsExternal { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogComment IsInternal
     /// </summary>
-    public bool? IsInternal { get => _isInternal; set => SetField(ref _isInternal, value); }
+    public bool? IsInternal { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogComment ReviewedBy
     /// </summary>
-    public string? ReviewedBy { get => _reviewedBy; set => SetField(ref _reviewedBy, value); }
+    public string? ReviewedBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogComment ReviewedDate
     /// </summary>
-    public DateTime? ReviewedDate { get => _reviewedDate; set => SetField(ref _reviewedDate, value); }
+    public DateTime? ReviewedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

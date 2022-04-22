@@ -7,100 +7,83 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class OtherTransaction : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _accountNumber;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _createdById;
-    private DirtyValue<string?>? _createdByName;
-    private DirtyValue<DateTime?>? _createdDateTime;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<string?>? _institutionName;
-    private DirtyValue<string?>? _institutionRouting;
-    private DirtyValue<string?>? _modifiedById;
-    private DirtyValue<string?>? _modifiedByName;
-    private DirtyValue<DateTime?>? _modifiedDateTime;
-    private DirtyValue<string?>? _reference;
-    private DirtyValue<string?>? _servicingPaymentMethod;
-    private DirtyValue<string?>? _servicingTransactionType;
-    private DirtyValue<decimal?>? _transactionAmount;
-    private DirtyValue<DateTime?>? _transactionDate;
+    /// <summary>
+    /// OtherTransaction AccountNumber
+    /// </summary>
+    public string? AccountNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract AccountNumber
+    /// OtherTransaction Comments
     /// </summary>
-    public string? AccountNumber { get => _accountNumber; set => SetField(ref _accountNumber, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract Comments
+    /// OtherTransaction CreatedById
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? CreatedById { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract CreatedById
+    /// OtherTransaction CreatedByName
     /// </summary>
-    public string? CreatedById { get => _createdById; set => SetField(ref _createdById, value); }
+    public string? CreatedByName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract CreatedByName
+    /// OtherTransaction CreatedDateTime
     /// </summary>
-    public string? CreatedByName { get => _createdByName; set => SetField(ref _createdByName, value); }
+    public DateTime? CreatedDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract CreatedDateTime
+    /// OtherTransaction Guid
     /// </summary>
-    public DateTime? CreatedDateTime { get => _createdDateTime; set => SetField(ref _createdDateTime, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract Guid
+    /// OtherTransaction InstitutionName
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public string? InstitutionName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract InstitutionName
+    /// OtherTransaction InstitutionRouting
     /// </summary>
-    public string? InstitutionName { get => _institutionName; set => SetField(ref _institutionName, value); }
+    public string? InstitutionRouting { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract InstitutionRouting
+    /// OtherTransaction ModifiedById
     /// </summary>
-    public string? InstitutionRouting { get => _institutionRouting; set => SetField(ref _institutionRouting, value); }
+    public string? ModifiedById { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract ModifiedById
+    /// OtherTransaction ModifiedByName
     /// </summary>
-    public string? ModifiedById { get => _modifiedById; set => SetField(ref _modifiedById, value); }
+    public string? ModifiedByName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract ModifiedByName
+    /// OtherTransaction ModifiedDateTime
     /// </summary>
-    public string? ModifiedByName { get => _modifiedByName; set => SetField(ref _modifiedByName, value); }
+    public DateTime? ModifiedDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract ModifiedDateTime
+    /// OtherTransaction Reference
     /// </summary>
-    public DateTime? ModifiedDateTime { get => _modifiedDateTime; set => SetField(ref _modifiedDateTime, value); }
+    public string? Reference { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract Reference
+    /// OtherTransaction ServicingPaymentMethod
     /// </summary>
-    public string? Reference { get => _reference; set => SetField(ref _reference, value); }
+    public string? ServicingPaymentMethod { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract ServicingPaymentMethod
+    /// OtherTransaction ServicingTransactionType
     /// </summary>
-    public string? ServicingPaymentMethod { get => _servicingPaymentMethod; set => SetField(ref _servicingPaymentMethod, value); }
+    public string? ServicingTransactionType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract ServicingTransactionType
+    /// OtherTransaction TransactionAmount
     /// </summary>
-    public string? ServicingTransactionType { get => _servicingTransactionType; set => SetField(ref _servicingTransactionType, value); }
+    public decimal? TransactionAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OtherTransactionContract TransactionAmount
+    /// OtherTransaction TransactionDate
     /// </summary>
-    public decimal? TransactionAmount { get => _transactionAmount; set => SetField(ref _transactionAmount, value); }
-
-    /// <summary>
-    /// OtherTransactionContract TransactionDate
-    /// </summary>
-    public DateTime? TransactionDate { get => _transactionDate; set => SetField(ref _transactionDate, value); }
+    public DateTime? TransactionDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

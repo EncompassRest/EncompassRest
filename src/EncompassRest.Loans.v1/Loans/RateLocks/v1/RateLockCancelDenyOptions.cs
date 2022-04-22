@@ -3,13 +3,11 @@ namespace EncompassRest.Loans.RateLocks.v1
     /// <summary>
     /// RateLockCancelDenyOptions
     /// </summary>
-    public sealed partial class RateLockCancelDenyOptions
+    public sealed partial class RateLockCancelDenyOptions : ExtensibleObject
     {
-        private string? _comments;
-
         /// <summary>
         /// Rate Lock cancellation or denial comments
         /// </summary>
-        public string? Comments { get => _comments; set => _comments = value; }
+        public string? Comments { get; set; }
     }
 }

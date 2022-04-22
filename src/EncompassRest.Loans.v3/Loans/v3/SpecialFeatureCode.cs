@@ -8,40 +8,33 @@ namespace EncompassRest.Loans.v3;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class SpecialFeatureCode : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _code;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<StringEnumValue<SpecialFeatureCodeSource>>? _source;
-    private DirtyValue<string?>? _sourceOther;
-
     /// <summary>
     /// Special Feature Code - Code [SFC0001]
     /// </summary>
-    public string? Code { get => _code; set => SetField(ref _code, value); }
+    public string? Code { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Special Feature Code - Comments [SFC0003]
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Special Feature Code - Description [SFC0002]
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// SpecialFeatureCodeContract Id
+    /// SpecialFeatureCode Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Special Feature Code - Source [SFC0004]
     /// </summary>
-    public StringEnumValue<SpecialFeatureCodeSource> Source { get => _source; set => SetField(ref _source, value); }
+    public StringEnumValue<SpecialFeatureCodeSource> Source { get => GetValue<StringEnumValue<SpecialFeatureCodeSource>>(); set => SetValue(value); }
 
     /// <summary>
     /// Special Feature Code - Source Other [SFC0005]
     /// </summary>
-    public string? SourceOther { get => _sourceOther; set => SetField(ref _sourceOther, value); }
+    public string? SourceOther { get => GetValue<string?>(); set => SetValue(value); }
 }

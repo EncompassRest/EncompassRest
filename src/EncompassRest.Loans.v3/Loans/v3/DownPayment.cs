@@ -7,22 +7,18 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class DownPayment : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _amount;
-    private DirtyValue<StringEnumValue<DownPaymentType>>? _downPaymentType;
-    private DirtyValue<string?>? _sourceDescription;
-
     /// <summary>
     /// Trans Details Down Pymt Amt [1335]
     /// </summary>
-    public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
+    public decimal? Amount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borr Funds to Close - Down Pymt Source [34]
     /// </summary>
-    public StringEnumValue<DownPaymentType> DownPaymentType { get => _downPaymentType; set => SetField(ref _downPaymentType, value); }
+    public StringEnumValue<DownPaymentType> DownPaymentType { get => GetValue<StringEnumValue<DownPaymentType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Borr Funds to Close - Down Pymt Source Descr [191]
     /// </summary>
-    public string? SourceDescription { get => _sourceDescription; set => SetField(ref _sourceDescription, value); }
+    public string? SourceDescription { get => GetValue<string?>(); set => SetValue(value); }
 }

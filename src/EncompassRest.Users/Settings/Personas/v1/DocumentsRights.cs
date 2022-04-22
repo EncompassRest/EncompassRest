@@ -8,26 +8,22 @@ namespace EncompassRest.Settings.Personas.v1
     /// </summary>
     public sealed class DocumentsRights : PersonaAccessRights
     {
-        private DirtyList<string>? _protectedDocuments;
-        private DirtyList<string>? _unprotectedDocuments;
-        private DirtyList<string>? _unassignedFiles;
-
         /// <summary>
         /// DocumentsRights ProtectedDocuments
         /// </summary>
         [AllowNull]
-        public IList<string> ProtectedDocuments { get => GetField(ref _protectedDocuments); set => SetField(ref _protectedDocuments, value); }
+        public IList<string> ProtectedDocuments { get => GetList<string>(); set => SetList(value); }
 
         /// <summary>
         /// DocumentsRights UnprotectedDocuments
         /// </summary>
         [AllowNull]
-        public IList<string> UnprotectedDocuments { get => GetField(ref _unprotectedDocuments); set => SetField(ref _unprotectedDocuments, value); }
+        public IList<string> UnprotectedDocuments { get => GetList<string>(); set => SetList(value); }
 
         /// <summary>
         /// DocumentsRights UnassignedFields
         /// </summary>
         [AllowNull]
-        public IList<string> UnassignedFiles { get => GetField(ref _unassignedFiles); set => SetField(ref _unassignedFiles, value); }
+        public IList<string> UnassignedFiles { get => GetList<string>(); set => SetList(value); }
     }
 }

@@ -5,34 +5,28 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class Address : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _city;
-    private DirtyValue<string?>? _state;
-    private DirtyValue<string?>? _street1;
-    private DirtyValue<string?>? _street2;
-    private DirtyValue<string?>? _zip;
+    /// <summary>
+    /// Address City
+    /// </summary>
+    public string? City { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AddressContract City
+    /// Address State
     /// </summary>
-    public string? City { get => _city; set => SetField(ref _city, value); }
+    public string? State { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AddressContract State
+    /// Address Street1
     /// </summary>
-    public string? State { get => _state; set => SetField(ref _state, value); }
+    public string? Street1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AddressContract Street1
+    /// Address Street2
     /// </summary>
-    public string? Street1 { get => _street1; set => SetField(ref _street1, value); }
+    public string? Street2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// AddressContract Street2
+    /// Address Zip
     /// </summary>
-    public string? Street2 { get => _street2; set => SetField(ref _street2, value); }
-
-    /// <summary>
-    /// AddressContract Zip
-    /// </summary>
-    public string? Zip { get => _zip; set => SetField(ref _zip, value); }
+    public string? Zip { get => GetValue<string?>(); set => SetValue(value); }
 }

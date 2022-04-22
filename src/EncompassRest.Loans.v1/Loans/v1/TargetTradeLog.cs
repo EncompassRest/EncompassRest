@@ -9,41 +9,34 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class TargetTradeLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _basePrice;
-    private DirtyValue<string?>? _commitmentID;
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<string?>? _id;
-    private DirtyList<PriceAdjustmentLogRecord>? _priceAdjustmentLogRecord;
-    private DirtyValue<decimal?>? _sRPPaidOut;
-
     /// <summary>
     /// TargetTradeLog BasePrice
     /// </summary>
-    public decimal? BasePrice { get => _basePrice; set => SetField(ref _basePrice, value); }
+    public decimal? BasePrice { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// TargetTradeLog CommitmentID
     /// </summary>
-    public string? CommitmentID { get => _commitmentID; set => SetField(ref _commitmentID, value); }
+    public string? CommitmentID { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TargetTradeLog Date
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// TargetTradeLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// TargetTradeLog PriceAdjustmentLogRecord
     /// </summary>
     [AllowNull]
-    public IList<PriceAdjustmentLogRecord> PriceAdjustmentLogRecord { get => GetField(ref _priceAdjustmentLogRecord); set => SetField(ref _priceAdjustmentLogRecord, value); }
+    public IList<PriceAdjustmentLogRecord> PriceAdjustmentLogRecord { get => GetList<PriceAdjustmentLogRecord>(); set => SetList(value); }
 
     /// <summary>
     /// TargetTradeLog SRPPaidOut
     /// </summary>
-    public decimal? SRPPaidOut { get => _sRPPaidOut; set => SetField(ref _sRPPaidOut, value); }
+    public decimal? SRPPaidOut { get => GetValue<decimal?>(); set => SetValue(value); }
 }

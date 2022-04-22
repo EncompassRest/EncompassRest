@@ -10,290 +10,243 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class ReoProperty : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _acquiredDate;
-    private DirtyValue<string?>? _city;
-    private DirtyValue<string?>? _country;
-    private DirtyValue<string?>? _countryCode;
-    private DirtyValue<StringEnumValue<DispositionStatusType>>? _dispositionStatusType;
-    private DirtyValue<bool?>? _entityDeleted;
-    private DirtyValue<bool?>? _foreignAddressIndicator;
-    private DirtyValue<StringEnumValue<FuturePropertyUsageType>>? _futurePropertyUsageType;
-    private DirtyValue<string?>? _futureUsageTypeOtherDesc;
-    private DirtyValue<StringEnumValue<GsePropertyType>>? _gsePropertyType;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _includeInAusExport;
-    private DirtyValue<bool?>? _isEmpty;
-    private DirtyValue<bool?>? _liabilityDoesNotApply;
-    private DirtyValue<decimal?>? _lienInstallmentAmount;
-    private DirtyValue<decimal?>? _lienUpbAmount;
-    private DirtyValue<string?>? _maintenanceExpenseAmount;
-    private DirtyValue<decimal?>? _marketValueAmount;
-    private DirtyValue<bool?>? _noLinkToDocTrackIndicator;
-    private DirtyValue<int?>? _numberOfUnits;
-    private DirtyValue<StringEnumValue<Owner>>? _owner;
-    private DirtyValue<decimal?>? _participationPercentage;
-    private DirtyValue<DateTime?>? _pendingSaleDate;
-    private DirtyValue<decimal?>? _percentageofRental;
-    private DirtyValue<string?>? _postalCode;
-    private DirtyValue<bool?>? _printAttachIndicator;
-    private DirtyValue<bool?>? _printUserJobTitleIndicator;
-    private DirtyValue<bool?>? _printUserNameIndicator;
-    private DirtyValue<StringEnumValue<ReoPropertyUsageType>>? _propertyUsageType;
-    private DirtyValue<int?>? _purchasePrice;
-    private DirtyValue<decimal?>? _rentalIncomeGrossAmount;
-    private DirtyValue<decimal?>? _rentalIncomeNetAmount;
-    private DirtyValue<string?>? _reoComments;
-    private DirtyValue<string?>? _reoId;
-    private DirtyValue<int?>? _reoPropertyIndex;
-    private DirtyValue<DateTime?>? _requestDate;
-    private DirtyValue<StringEnumValue<State>>? _state;
-    private DirtyValue<string?>? _streetAddress;
-    private DirtyValue<bool?>? _subjectIndicator;
-    private DirtyValue<string?>? _title;
-    private DirtyValue<string?>? _titleFax;
-    private DirtyValue<string?>? _titlePhone;
-    private DirtyValue<string?>? _unitNumber;
-    private DirtyValue<StringEnumValue<UnitType>>? _unitType;
-    private DirtyValue<string?>? _uRLA2020StreetAddress;
-    private DirtyValue<string?>? _yearBuilt;
-
     /// <summary>
     /// Mortgage Property Date Acquired [FMNN22]
     /// </summary>
-    public DateTime? AcquiredDate { get => _acquiredDate; set => SetField(ref _acquiredDate, value); }
+    public DateTime? AcquiredDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property City [FMNN06]
     /// </summary>
-    public string? City { get => _city; set => SetField(ref _city, value); }
+    public string? City { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Country [FMNN57]
     /// </summary>
-    public string? Country { get => _country; set => SetField(ref _country, value); }
+    public string? Country { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Country Code [FMNN51]
     /// </summary>
-    public string? CountryCode { get => _countryCode; set => SetField(ref _countryCode, value); }
+    public string? CountryCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Disposition Status [FMNN24]
     /// </summary>
-    public StringEnumValue<DispositionStatusType> DispositionStatusType { get => _dispositionStatusType; set => SetField(ref _dispositionStatusType, value); }
+    public StringEnumValue<DispositionStatusType> DispositionStatusType { get => GetValue<StringEnumValue<DispositionStatusType>>(); set => SetValue(value); }
 
     /// <summary>
     /// ReoProperty EntityDeleted
     /// </summary>
-    public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
+    public bool? EntityDeleted { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Foreign Address Indicator [FMNN58]
     /// </summary>
-    public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
+    public bool? ForeignAddressIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Future Use of Property [FMNN55]
     /// </summary>
-    public StringEnumValue<FuturePropertyUsageType> FuturePropertyUsageType { get => _futurePropertyUsageType; set => SetField(ref _futurePropertyUsageType, value); }
+    public StringEnumValue<FuturePropertyUsageType> FuturePropertyUsageType { get => GetValue<StringEnumValue<FuturePropertyUsageType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Description If Future Use of Property Is Other [FMNN56]
     /// </summary>
-    public string? FutureUsageTypeOtherDesc { get => _futureUsageTypeOtherDesc; set => SetField(ref _futureUsageTypeOtherDesc, value); }
+    public string? FutureUsageTypeOtherDesc { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Type [FMNN18]
     /// </summary>
-    public StringEnumValue<GsePropertyType> GsePropertyType { get => _gsePropertyType; set => SetField(ref _gsePropertyType, value); }
+    public StringEnumValue<GsePropertyType> GsePropertyType { get => GetValue<StringEnumValue<GsePropertyType>>(); set => SetValue(value); }
 
     /// <summary>
     /// ReoProperty Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Include In AUS/Export [FMNN52]
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Y\":\"Include In AUS/Export\"}")]
-    public bool? IncludeInAusExport { get => _includeInAusExport; set => SetField(ref _includeInAusExport, value); }
+    public bool? IncludeInAusExport { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// ReoProperty IsEmpty
     /// </summary>
-    public bool? IsEmpty { get => _isEmpty; set => SetField(ref _isEmpty, value); }
+    public bool? IsEmpty { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Not linked to Liability [FMNN49]
     /// </summary>
-    public bool? LiabilityDoesNotApply { get => _liabilityDoesNotApply; set => SetField(ref _liabilityDoesNotApply, value); }
+    public bool? LiabilityDoesNotApply { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Monthly Payment [FMNN16]
     /// </summary>
-    public decimal? LienInstallmentAmount { get => _lienInstallmentAmount; set => SetField(ref _lienInstallmentAmount, value); }
+    public decimal? LienInstallmentAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Unpaid Balance [FMNN17]
     /// </summary>
-    public decimal? LienUpbAmount { get => _lienUpbAmount; set => SetField(ref _lienUpbAmount, value); }
+    public decimal? LienUpbAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Monthly Expense [FMNN21]
     /// </summary>
-    public string? MaintenanceExpenseAmount { get => _maintenanceExpenseAmount; set => SetField(ref _maintenanceExpenseAmount, value); }
+    public string? MaintenanceExpenseAmount { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Market Value [FMNN19]
     /// </summary>
-    public decimal? MarketValueAmount { get => _marketValueAmount; set => SetField(ref _marketValueAmount, value); }
+    public decimal? MarketValueAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property No Link to Doc Tracking [FMNN97]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => SetField(ref _noLinkToDocTrackIndicator, value); }
+    public bool? NoLinkToDocTrackIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Number of Units [FMNN54]
     /// </summary>
-    public int? NumberOfUnits { get => _numberOfUnits; set => SetField(ref _numberOfUnits, value); }
+    public int? NumberOfUnits { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Owner [FMNN46]
     /// </summary>
-    public StringEnumValue<Owner> Owner { get => _owner; set => SetField(ref _owner, value); }
+    public StringEnumValue<Owner> Owner { get => GetValue<StringEnumValue<Owner>>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Participation Percent [FMNN14]
     /// </summary>
-    public decimal? ParticipationPercentage { get => _participationPercentage; set => SetField(ref _participationPercentage, value); }
+    public decimal? ParticipationPercentage { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Date Acquired [FMNN59]
     /// </summary>
-    public DateTime? PendingSaleDate { get => _pendingSaleDate; set => SetField(ref _pendingSaleDate, value); }
+    public DateTime? PendingSaleDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Percent of Units Rented [FMNN26]
     /// </summary>
-    public decimal? PercentageofRental { get => _percentageofRental; set => SetField(ref _percentageofRental, value); }
+    public decimal? PercentageofRental { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Zipcode [FMNN08]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+    public string? PostalCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Print - See Attached Authorization [FMNN36]
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
-    public bool? PrintAttachIndicator { get => _printAttachIndicator; set => SetField(ref _printAttachIndicator, value); }
+    public bool? PrintAttachIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Print User Job Title [FMNN64]
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
-    public bool? PrintUserJobTitleIndicator { get => _printUserJobTitleIndicator; set => SetField(ref _printUserJobTitleIndicator, value); }
+    public bool? PrintUserJobTitleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Print User Name as Title [FMNN38]
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name as title\"}")]
-    public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
+    public bool? PrintUserNameIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Use of Property [FMNN41]
     /// </summary>
-    public StringEnumValue<ReoPropertyUsageType> PropertyUsageType { get => _propertyUsageType; set => SetField(ref _propertyUsageType, value); }
+    public StringEnumValue<ReoPropertyUsageType> PropertyUsageType { get => GetValue<StringEnumValue<ReoPropertyUsageType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Purchase Price [FMNN23]
     /// </summary>
-    public int? PurchasePrice { get => _purchasePrice; set => SetField(ref _purchasePrice, value); }
+    public int? PurchasePrice { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Monthly Gross Rental Income [FMNN20]
     /// </summary>
-    public decimal? RentalIncomeGrossAmount { get => _rentalIncomeGrossAmount; set => SetField(ref _rentalIncomeGrossAmount, value); }
+    public decimal? RentalIncomeGrossAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Net Rental Income [FMNN32]
     /// </summary>
-    public decimal? RentalIncomeNetAmount { get => _rentalIncomeNetAmount; set => SetField(ref _rentalIncomeNetAmount, value); }
+    public decimal? RentalIncomeNetAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Comments [FMNN25]
     /// </summary>
-    public string? ReoComments { get => _reoComments; set => SetField(ref _reoComments, value); }
+    public string? ReoComments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property REO ID [FMNN43]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? ReoId { get => _reoId; set => SetField(ref _reoId, value); }
+    public string? ReoId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ReoProperty ReoPropertyIndex
     /// </summary>
-    public int? ReoPropertyIndex { get => _reoPropertyIndex; set => SetField(ref _reoPropertyIndex, value); }
+    public int? ReoPropertyIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Request Date [FMNN98]
     /// </summary>
-    public DateTime? RequestDate { get => _requestDate; set => SetField(ref _requestDate, value); }
+    public DateTime? RequestDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property State [FMNN07]
     /// </summary>
-    public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
+    public StringEnumValue<State> State { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Address [FMNN04]
     /// </summary>
-    public string? StreetAddress { get => _streetAddress; set => SetField(ref _streetAddress, value); }
+    public string? StreetAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Is the Subject Property [FMNN28]
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Y\":\"Subject Property\"}")]
-    public bool? SubjectIndicator { get => _subjectIndicator; set => SetField(ref _subjectIndicator, value); }
+    public bool? SubjectIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property From Title [FMNN37]
     /// </summary>
-    public string? Title { get => _title; set => SetField(ref _title, value); }
+    public string? Title { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property From Fax [FMNN45]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
+    public string? TitleFax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property From Phone [FMNN44]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
+    public string? TitlePhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Unit Number [FMNN48]
     /// </summary>
-    public string? UnitNumber { get => _unitNumber; set => SetField(ref _unitNumber, value); }
+    public string? UnitNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Unit Type [FMNN47]
     /// </summary>
-    public StringEnumValue<UnitType> UnitType { get => _unitType; set => SetField(ref _unitType, value); }
+    public StringEnumValue<UnitType> UnitType { get => GetValue<StringEnumValue<UnitType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property URLA 2020 Street Address [FMNN50]
     /// </summary>
-    public string? URLA2020StreetAddress { get => _uRLA2020StreetAddress; set => SetField(ref _uRLA2020StreetAddress, value); }
+    public string? URLA2020StreetAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mortgage Property Year in Which Built [FMNN53]
     /// </summary>
-    public string? YearBuilt { get => _yearBuilt; set => SetField(ref _yearBuilt, value); }
+    public string? YearBuilt { get => GetValue<string?>(); set => SetValue(value); }
 }

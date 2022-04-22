@@ -8,53 +8,44 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class RespaHudDetail : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<StringEnumValue<CreditDebt>>? _creditDebt;
-    private DirtyValue<string?>? _fwbc;
-    private DirtyValue<DateTime?>? _hud1LineItemFromDate;
-    private DirtyValue<DateTime?>? _hud1LineItemToDate;
-    private DirtyValue<decimal?>? _lineItemAmount;
-    private DirtyValue<string?>? _lineItemDescription;
-    private DirtyValue<int?>? _lineNumber;
-    private DirtyValue<decimal?>? _realValue;
-
     /// <summary>
-    /// RespaHudDetailContract CreditDebt
+    /// RespaHudDetail CreditDebt
     /// </summary>
-    public StringEnumValue<CreditDebt> CreditDebt { get => _creditDebt; set => SetField(ref _creditDebt, value); }
+    public StringEnumValue<CreditDebt> CreditDebt { get => GetValue<StringEnumValue<CreditDebt>>(); set => SetValue(value); }
 
     /// <summary>
-    /// RespaHudDetailContract Fwbc
+    /// RespaHudDetail Fwbc
     /// </summary>
-    public string? Fwbc { get => _fwbc; set => SetField(ref _fwbc, value); }
+    public string? Fwbc { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RespaHudDetailContract Hud1LineItemFromDate
+    /// RespaHudDetail Hud1LineItemFromDate
     /// </summary>
-    public DateTime? Hud1LineItemFromDate { get => _hud1LineItemFromDate; set => SetField(ref _hud1LineItemFromDate, value); }
+    public DateTime? Hud1LineItemFromDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RespaHudDetailContract Hud1LineItemToDate
+    /// RespaHudDetail Hud1LineItemToDate
     /// </summary>
-    public DateTime? Hud1LineItemToDate { get => _hud1LineItemToDate; set => SetField(ref _hud1LineItemToDate, value); }
+    public DateTime? Hud1LineItemToDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RespaHudDetailContract LineItemAmount
+    /// RespaHudDetail LineItemAmount
     /// </summary>
-    public decimal? LineItemAmount { get => _lineItemAmount; set => SetField(ref _lineItemAmount, value); }
+    public decimal? LineItemAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RespaHudDetailContract LineItemDescription
+    /// RespaHudDetail LineItemDescription
     /// </summary>
-    public string? LineItemDescription { get => _lineItemDescription; set => SetField(ref _lineItemDescription, value); }
+    public string? LineItemDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RespaHudDetailContract LineNumber
+    /// RespaHudDetail LineNumber
     /// </summary>
-    public int? LineNumber { get => _lineNumber; set => SetField(ref _lineNumber, value); }
+    public int? LineNumber { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RespaHudDetailContract RealValue [L206R], [L207R]
+    /// RespaHudDetail RealValue [L206R], [L207R]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public decimal? RealValue { get => _realValue; set => SetField(ref _realValue, value); }
+    public decimal? RealValue { get => GetValue<decimal?>(); set => SetValue(value); }
 }

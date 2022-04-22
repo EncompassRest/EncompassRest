@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.1;net46;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;net46</TargetFrameworks>
     <Version>2.0.0.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/EncompassRest/EncompassRest</PackageProjectUrl>
@@ -24,12 +24,7 @@
     <RootNamespace>EncompassRest</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
-    <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
-    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net46'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -45,16 +40,6 @@
     <NoWarn>CS8604;CS8777</NoWarn>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
-    <AssemblyTitle>EncompassRest.Loans.Shared .NET Standard 1.1</AssemblyTitle>
-    <NoWarn>CS8604;CS8777</NoWarn>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
-    <AssemblyTitle>EncompassRest.Loans.Shared .NET 4.5</AssemblyTitle>
-    <NoWarn>CS8604;CS8777</NoWarn>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
     <AssemblyTitle>EncompassRest.Loans.Shared .NET 4.6</AssemblyTitle>
     <NoWarn>CS8604;CS8777</NoWarn>
@@ -62,6 +47,10 @@
 
   <ItemGroup>
     <EmbeddedResource Include="LoanFields.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EncompassRest.Core\EncompassRest.Core.csproj" />
   </ItemGroup>
 
 </Project>

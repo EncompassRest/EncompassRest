@@ -7,48 +7,40 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class ReportsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _borrowerContactReports;
-        private DirtyValue<bool?>? _businessContactReports;
-        private DirtyValue<bool?>? _dynamicReporting;
-        private LoanReportsRights? _loanReports;
-        private DirtyValue<bool?>? _managePersonalReports;
-        private DirtyValue<bool?>? _tPOSettingsReports;
-        private DirtyValue<bool?>? _tradeReports;
-
         /// <summary>
         /// ReportsRights BorrowerContactReports
         /// </summary>
-        public bool? BorrowerContactReports { get => _borrowerContactReports; set => SetField(ref _borrowerContactReports, value); }
+        public bool? BorrowerContactReports { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ReportsRights BusinessContactReports
         /// </summary>
-        public bool? BusinessContactReports { get => _businessContactReports; set => SetField(ref _businessContactReports, value); }
+        public bool? BusinessContactReports { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ReportsRights DynamicReporting
         /// </summary>
-        public bool? DynamicReporting { get => _dynamicReporting; set => SetField(ref _dynamicReporting, value); }
+        public bool? DynamicReporting { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ReportsRights LoanReports
         /// </summary>
         [AllowNull]
-        public LoanReportsRights LoanReports { get => GetField(ref _loanReports); set => SetField(ref _loanReports, value); }
+        public LoanReportsRights LoanReports { get => GetEntity<LoanReportsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ReportsRights ManagePersonalReports
         /// </summary>
-        public bool? ManagePersonalReports { get => _managePersonalReports; set => SetField(ref _managePersonalReports, value); }
+        public bool? ManagePersonalReports { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ReportsRights TPOSettingsReports
         /// </summary>
-        public bool? TPOSettingsReports { get => _tPOSettingsReports; set => SetField(ref _tPOSettingsReports, value); }
+        public bool? TPOSettingsReports { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ReportsRights TradeReports
         /// </summary>
-        public bool? TradeReports { get => _tradeReports; set => SetField(ref _tradeReports, value); }
+        public bool? TradeReports { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

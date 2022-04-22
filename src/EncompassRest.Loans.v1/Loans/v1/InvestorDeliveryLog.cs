@@ -9,47 +9,39 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class InvestorDeliveryLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _categoryDeliveredTo;
-    private DirtyValue<string?>? _companyDeliveredTo;
-    private DirtyValue<string?>? _deliveryStatus;
-    private DirtyValue<DateTime?>? _deliveryStatusDate;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _status;
-    private DirtyValue<DateTime?>? _statusDate;
-
     /// <summary>
     /// Category Delivered To [INVESTORCONNNN04]
     /// </summary>
-    public string? CategoryDeliveredTo { get => _categoryDeliveredTo; set => SetField(ref _categoryDeliveredTo, value); }
+    public string? CategoryDeliveredTo { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Company Delivered To [INVESTORCONNNN03]
     /// </summary>
-    public string? CompanyDeliveredTo { get => _companyDeliveredTo; set => SetField(ref _companyDeliveredTo, value); }
+    public string? CompanyDeliveredTo { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// InvestorDeliveryLog DeliveryStatus
     /// </summary>
-    public string? DeliveryStatus { get => _deliveryStatus; set => SetField(ref _deliveryStatus, value); }
+    public string? DeliveryStatus { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// InvestorDeliveryLog DeliveryStatusDate
     /// </summary>
-    public DateTime? DeliveryStatusDate { get => _deliveryStatusDate; set => SetField(ref _deliveryStatusDate, value); }
+    public DateTime? DeliveryStatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// InvestorDeliveryLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Delivery Status [INVESTORCONNNN02]
     /// </summary>
-    public string? Status { get => _status; set => SetField(ref _status, value); }
+    public string? Status { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Delivery Status Date/Time [INVESTORCONNNN01]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-    public DateTime? StatusDate { get => _statusDate; set => SetField(ref _statusDate, value); }
+    public DateTime? StatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

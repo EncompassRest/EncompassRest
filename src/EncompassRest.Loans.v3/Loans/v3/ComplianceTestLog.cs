@@ -9,54 +9,45 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class ComplianceTestLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<string?>? _details;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _name;
-    private DirtyValue<string?>? _result;
-    private DirtyValue<bool?>? _showAlert;
-
     /// <summary>
-    /// ComplianceTestLogContract Alerts
+    /// ComplianceTestLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
-    /// ComplianceTestLogContract CommentList
+    /// ComplianceTestLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
-    /// ComplianceTestLogContract Date
+    /// ComplianceTestLog Date
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ComplianceTestLogContract Details
+    /// ComplianceTestLog Details
     /// </summary>
-    public string? Details { get => _details; set => SetField(ref _details, value); }
+    public string? Details { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ComplianceTestLogContract Id
+    /// ComplianceTestLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ComplianceTestLogContract Name
+    /// ComplianceTestLog Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ComplianceTestLogContract Result
+    /// ComplianceTestLog Result
     /// </summary>
-    public string? Result { get => _result; set => SetField(ref _result, value); }
+    public string? Result { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ComplianceTestLogContract ShowAlert
+    /// ComplianceTestLog ShowAlert
     /// </summary>
-    public bool? ShowAlert { get => _showAlert; set => SetField(ref _showAlert, value); }
+    public bool? ShowAlert { get => GetValue<bool?>(); set => SetValue(value); }
 }

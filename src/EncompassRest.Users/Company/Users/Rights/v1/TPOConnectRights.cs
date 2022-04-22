@@ -7,19 +7,16 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class TPOConnectRights : DirtyExtensibleObject
     {
-        private AdministrationSettingsRights? _administrationSettings;
-        private SiteSettingsRights? _siteSettings;
-
         /// <summary>
         /// TPOConnectRights AdministrationSettings
         /// </summary>
         [AllowNull]
-        public AdministrationSettingsRights AdministrationSettings { get => GetField(ref _administrationSettings); set => SetField(ref _administrationSettings, value); }
+        public AdministrationSettingsRights AdministrationSettings { get => GetEntity<AdministrationSettingsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// TPOConnectRights SiteSettings
         /// </summary>
         [AllowNull]
-        public SiteSettingsRights SiteSettings { get => GetField(ref _siteSettings); set => SetField(ref _siteSettings, value); }
+        public SiteSettingsRights SiteSettings { get => GetEntity<SiteSettingsRights>(); set => SetEntity(value); }
     }
 }

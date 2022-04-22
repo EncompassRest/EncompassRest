@@ -7,47 +7,39 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LockRequestBorrower : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _equifaxScore;
-    private DirtyValue<string?>? _experianScore;
-    private DirtyValue<string?>? _firstName;
-    private DirtyValue<string?>? _lastName;
-    private DirtyValue<int?>? _lrbIndex;
-    private DirtyValue<string?>? _ssn;
-    private DirtyValue<string?>? _transUnionScore;
-
     /// <summary>
-    /// LockRequestBorrowerContract EquifaxScore
+    /// LockRequestBorrower EquifaxScore
     /// </summary>
-    public string? EquifaxScore { get => _equifaxScore; set => SetField(ref _equifaxScore, value); }
+    public string? EquifaxScore { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockRequestBorrowerContract ExperianScore
+    /// LockRequestBorrower ExperianScore
     /// </summary>
-    public string? ExperianScore { get => _experianScore; set => SetField(ref _experianScore, value); }
+    public string? ExperianScore { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockRequestBorrowerContract FirstName
+    /// LockRequestBorrower FirstName
     /// </summary>
-    public string? FirstName { get => _firstName; set => SetField(ref _firstName, value); }
+    public string? FirstName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockRequestBorrowerContract LastName
+    /// LockRequestBorrower LastName
     /// </summary>
-    public string? LastName { get => _lastName; set => SetField(ref _lastName, value); }
+    public string? LastName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockRequestBorrowerContract LrbIndex
+    /// LockRequestBorrower LrbIndex
     /// </summary>
-    public int? LrbIndex { get => _lrbIndex; set => SetField(ref _lrbIndex, value); }
+    public int? LrbIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockRequestBorrowerContract Ssn
+    /// LockRequestBorrower Ssn
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.SSN)]
-    public string? Ssn { get => _ssn; set => SetField(ref _ssn, value); }
+    public string? Ssn { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockRequestBorrowerContract TransUnionScore
+    /// LockRequestBorrower TransUnionScore
     /// </summary>
-    public string? TransUnionScore { get => _transUnionScore; set => SetField(ref _transUnionScore, value); }
+    public string? TransUnionScore { get => GetValue<string?>(); set => SetValue(value); }
 }

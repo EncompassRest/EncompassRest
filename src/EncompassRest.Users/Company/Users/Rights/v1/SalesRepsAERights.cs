@@ -7,12 +7,10 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class SalesRepsAERights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _editSalesRepsAE;
-
         /// <summary>
         /// SalesRepsAERights EditSalesRepsAE
         /// </summary>
         [JsonProperty("editSalesReps/AE")]
-        public bool? EditSalesRepsAE { get => _editSalesRepsAE; set => SetField(ref _editSalesRepsAE, value); }
+        public bool? EditSalesRepsAE { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

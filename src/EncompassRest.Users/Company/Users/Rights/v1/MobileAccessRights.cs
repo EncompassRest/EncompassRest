@@ -5,17 +5,14 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class MobileAccessRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _encompassWindowsClient;
-        private DirtyValue<bool?>? _encompassWindowsClientAndMobile;
-
         /// <summary>
         /// MobileAccessRights EncompassWindowsClient
         /// </summary>
-        public bool? EncompassWindowsClient { get => _encompassWindowsClient; set => SetField(ref _encompassWindowsClient, value); }
+        public bool? EncompassWindowsClient { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// MobileAccessRights EncompassWindowsClientAndMobile
         /// </summary>
-        public bool? EncompassWindowsClientAndMobile { get => _encompassWindowsClientAndMobile; set => SetField(ref _encompassWindowsClientAndMobile, value); }
+        public bool? EncompassWindowsClientAndMobile { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

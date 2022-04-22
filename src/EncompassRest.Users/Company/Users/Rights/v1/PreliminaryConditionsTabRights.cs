@@ -5,17 +5,14 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class PreliminaryConditionsTabRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _addAutomatedConditions;
-        private DirtyValue<bool?>? _addEditDeleteConditions;
-
         /// <summary>
         /// PreliminaryConditionsTabRights AddAutomatedConditions
         /// </summary>
-        public bool? AddAutomatedConditions { get => _addAutomatedConditions; set => SetField(ref _addAutomatedConditions, value); }
+        public bool? AddAutomatedConditions { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// PreliminaryConditionsTabRights AddEditDeleteConditions
         /// </summary>
-        public bool? AddEditDeleteConditions { get => _addEditDeleteConditions; set => SetField(ref _addEditDeleteConditions, value); }
+        public bool? AddEditDeleteConditions { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

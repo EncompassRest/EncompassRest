@@ -7,18 +7,15 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class TradesRights : DirtyExtensibleObject
     {
-        private AccessToTradesTabRights? _accessToTradesTab;
-        private DirtyValue<bool?>? _editTrades;
-
         /// <summary>
         /// TradesRights AccessToTradesTab
         /// </summary>
         [AllowNull]
-        public AccessToTradesTabRights AccessToTradesTab { get => GetField(ref _accessToTradesTab); set => SetField(ref _accessToTradesTab, value); }
+        public AccessToTradesTabRights AccessToTradesTab { get => GetEntity<AccessToTradesTabRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// TradesRights EditTrades
         /// </summary>
-        public bool? EditTrades { get => _editTrades; set => SetField(ref _editTrades, value); }
+        public bool? EditTrades { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

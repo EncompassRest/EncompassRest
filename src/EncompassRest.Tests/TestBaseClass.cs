@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.Loans;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -78,7 +78,7 @@ namespace EncompassRest.Tests
             public string Password { get; set; }
         }
 
-        protected static void AssertNoExtensionData(IEnumerable<IExtensibleObject> values, string rootName, string id, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore = null)
+        protected static void AssertNoExtensionData(IEnumerable<ExtensibleObject> values, string rootName, string id, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore = null)
         {
             var fails = new List<string>();
             var i = 0;
@@ -91,7 +91,9 @@ namespace EncompassRest.Tests
 {string.Join(Environment.NewLine, fails)}");
         }
 
-        protected static void AssertNoExtensionData(IExtensibleObject value, string rootName, string id, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore = null)
+        protected static void AssertNoExtensionData(ILoan value, string rootName, string id, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore = null) => AssertNoExtensionData((ExtensibleObject)value, rootName, id, testForUndefinedEnumOptions);
+
+        protected static void AssertNoExtensionData(ExtensibleObject value, string rootName, string id, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore = null)
         {
             var fails = new List<string>();
             TestForExtensionData(value, new List<string> { rootName }, fails, testForUndefinedEnumOptions, enumOptionsToIgnore);
@@ -99,7 +101,7 @@ namespace EncompassRest.Tests
 {string.Join(Environment.NewLine, fails)}");
         }
 
-        private static void TestForExtensionData(IExtensibleObject value, List<string> path, List<string> fails, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore)
+        private static void TestForExtensionData(ExtensibleObject value, List<string> path, List<string> fails, bool testForUndefinedEnumOptions, Dictionary<Type, HashSet<string>> enumOptionsToIgnore)
         {
             if (value.ExtensionData.Count > 0)
             {
@@ -112,8 +114,9 @@ namespace EncompassRest.Tests
                 foreach (var property in jsonObjectContract.Properties)
                 {
                     var propertyUnderlyingName = property.UnderlyingName;
-                    var valueProvider = JsonHelper.InternalPrivateContractResolver.GetBackingFieldInfo(contract.UnderlyingType, propertyUnderlyingName)?.ValueProvider ?? property.ValueProvider;
-                    var propertyValue = valueProvider.GetValue(value);
+                    var propertyValue = value is DirtyExtensibleObject dirtyExtensibleObject
+                        ? dirtyExtensibleObject.Properties.TryGetValue(propertyUnderlyingName, out var v) ? v : null
+                        : property.ValueProvider.GetValue(value);
                     if (propertyValue != null)
                     {
                         path.Add($".{propertyUnderlyingName}");
@@ -181,13 +184,13 @@ namespace EncompassRest.Tests
 
         private static void TestForUndefinedEnumOptions(List<string> path, List<string> fails, Dictionary<Type, HashSet<string>> enumOptionsToIgnore, object itemValue, Type type = null)
         {
-            var typeInfo = (type ?? itemValue?.GetType())?.GetTypeInfo();
-            if (typeInfo?.IsGenericType == true && !typeInfo.IsGenericTypeDefinition && typeInfo.GetGenericTypeDefinition() == TypeData.OpenStringEnumValueType)
+            var itemType = type ?? itemValue?.GetType();
+            if (itemType?.IsGenericType == true && !itemType.IsGenericTypeDefinition && itemType.GetGenericTypeDefinition() == TypeData.OpenStringEnumValueType)
             {
                 var stringValue = itemValue?.ToString();
                 if (!string.IsNullOrEmpty(stringValue))
                 {
-                    var enumType = typeInfo.GenericTypeArguments[0];
+                    var enumType = itemType.GenericTypeArguments[0];
                     if (!Enums.TryParse(enumType, stringValue, ignoreCase: true, out _, EnumFormat.EnumMemberValue, EnumFormat.Name) && (enumOptionsToIgnore == null || !enumOptionsToIgnore.TryGetValue(enumType, out var optionsToIgnore) || !optionsToIgnore.Contains(stringValue)))
                     {
                         fails.Add($"{string.Concat(path)} value of '{stringValue}' is not defined in {enumType.Name}");

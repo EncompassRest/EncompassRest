@@ -8,66 +8,55 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LoanAssociate : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _apiClientId;
-    private DirtyValue<string?>? _cellPhone;
-    private DirtyValue<string?>? _email;
-    private DirtyValue<string?>? _fax;
-    private DirtyValue<StringEnumValue<LoanAssociateType>>? _loanAssociateType;
-    private DirtyValue<string?>? _phone;
-    private EntityReference? _role;
-    private DirtyValue<string?>? _title;
-    private EntityReference? _user;
-    private DirtyValue<bool?>? _writeAccess;
-
     /// <summary>
-    /// LoanAssociateContract ApiClientId
+    /// LoanAssociate ApiClientId
     /// </summary>
-    public string? ApiClientId { get => _apiClientId; set => SetField(ref _apiClientId, value); }
+    public string? ApiClientId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanAssociateContract CellPhone
+    /// LoanAssociate CellPhone
     /// </summary>
-    public string? CellPhone { get => _cellPhone; set => SetField(ref _cellPhone, value); }
+    public string? CellPhone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanAssociateContract Email
+    /// LoanAssociate Email
     /// </summary>
-    public string? Email { get => _email; set => SetField(ref _email, value); }
+    public string? Email { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanAssociateContract Fax
+    /// LoanAssociate Fax
     /// </summary>
-    public string? Fax { get => _fax; set => SetField(ref _fax, value); }
+    public string? Fax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanAssociateContract LoanAssociateType
+    /// LoanAssociate LoanAssociateType
     /// </summary>
-    public StringEnumValue<LoanAssociateType> LoanAssociateType { get => _loanAssociateType; set => SetField(ref _loanAssociateType, value); }
+    public StringEnumValue<LoanAssociateType> LoanAssociateType { get => GetValue<StringEnumValue<LoanAssociateType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanAssociateContract Phone
+    /// LoanAssociate Phone
     /// </summary>
-    public string? Phone { get => _phone; set => SetField(ref _phone, value); }
+    public string? Phone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanAssociateContract Role
+    /// LoanAssociate Role
     /// </summary>
     [AllowNull]
-    public EntityReference Role { get => GetField(ref _role); set => SetField(ref _role, value); }
+    public EntityReference Role { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// LoanAssociateContract Title
+    /// LoanAssociate Title
     /// </summary>
-    public string? Title { get => _title; set => SetField(ref _title, value); }
+    public string? Title { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LoanAssociateContract User
+    /// LoanAssociate User
     /// </summary>
     [AllowNull]
-    public EntityReference User { get => GetField(ref _user); set => SetField(ref _user, value); }
+    public EntityReference User { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// LoanAssociateContract WriteAccess
+    /// LoanAssociate WriteAccess
     /// </summary>
-    public bool? WriteAccess { get => _writeAccess; set => SetField(ref _writeAccess, value); }
+    public bool? WriteAccess { get => GetValue<bool?>(); set => SetValue(value); }
 }

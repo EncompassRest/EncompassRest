@@ -5,23 +5,19 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class HMDAProfilesRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _addHMDAProfile;
-        private DirtyValue<bool?>? _deleteHMDAProfile;
-        private DirtyValue<bool?>? _editHMDAProfile;
-
         /// <summary>
         /// HMDAProfilesRights AddHMDAProfile
         /// </summary>
-        public bool? AddHMDAProfile { get => _addHMDAProfile; set => SetField(ref _addHMDAProfile, value); }
+        public bool? AddHMDAProfile { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// HMDAProfilesRights DeleteHMDAProfile
         /// </summary>
-        public bool? DeleteHMDAProfile { get => _deleteHMDAProfile; set => SetField(ref _deleteHMDAProfile, value); }
+        public bool? DeleteHMDAProfile { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// HMDAProfilesRights EditHMDAProfile
         /// </summary>
-        public bool? EditHMDAProfile { get => _editHMDAProfile; set => SetField(ref _editHMDAProfile, value); }
+        public bool? EditHMDAProfile { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

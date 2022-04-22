@@ -8,55 +8,46 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LogComment : DirtyExtensibleObject, IIdentifiable
 {
-    private EntityReference? _addedBy;
-    private DirtyValue<DateTime?>? _addedDate;
-    private DirtyValue<string?>? _comments;
-    private EntityReference? _forRole;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isExternal;
-    private EntityReference? _reviewedBy;
-    private DirtyValue<DateTime?>? _reviewedDate;
-
     /// <summary>
-    /// LogCommentContract AddedBy
+    /// LogComment AddedBy
     /// </summary>
     [AllowNull]
-    public EntityReference AddedBy { get => GetField(ref _addedBy); set => SetField(ref _addedBy, value); }
+    public EntityReference AddedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// LogCommentContract AddedDate
+    /// LogComment AddedDate
     /// </summary>
-    public DateTime? AddedDate { get => _addedDate; set => SetField(ref _addedDate, value); }
+    public DateTime? AddedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LogCommentContract Comments
+    /// LogComment Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LogCommentContract ForRole
-    /// </summary>
-    [AllowNull]
-    public EntityReference ForRole { get => GetField(ref _forRole); set => SetField(ref _forRole, value); }
-
-    /// <summary>
-    /// LogCommentContract Id
-    /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
-
-    /// <summary>
-    /// LogCommentContract IsExternal
-    /// </summary>
-    public bool? IsExternal { get => _isExternal; set => SetField(ref _isExternal, value); }
-
-    /// <summary>
-    /// LogCommentContract ReviewedBy
+    /// LogComment ForRole
     /// </summary>
     [AllowNull]
-    public EntityReference ReviewedBy { get => GetField(ref _reviewedBy); set => SetField(ref _reviewedBy, value); }
+    public EntityReference ForRole { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// LogCommentContract ReviewedDate
+    /// LogComment Id
     /// </summary>
-    public DateTime? ReviewedDate { get => _reviewedDate; set => SetField(ref _reviewedDate, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// LogComment IsExternal
+    /// </summary>
+    public bool? IsExternal { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// LogComment ReviewedBy
+    /// </summary>
+    [AllowNull]
+    public EntityReference ReviewedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// LogComment ReviewedDate
+    /// </summary>
+    public DateTime? ReviewedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

@@ -5,6 +5,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EncompassRest.Loans;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Loans.v1;
 using EncompassRest.Schema;
@@ -256,12 +257,6 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_propertiesToNotGenerate = new() { "Contact.Contact", "Loan.CurrentApplication", "Borrower.Application", "Uldd.ENoteIndicator", "GoodFaithFeeVarianceCureLog.GffVAlertTriggerFieldLog", "VaLoanData.VaEemIncludedinBaseLoanAmountIndicator", "VaLoanData.VaEnergyEfficientImprovementsFinancedAmount", "VaLoanData.VaFinancedClosingCostsToExcludeAmount", "VaLoanData.VaRateReducedSolelybyDiscountPointsIndicator", "VaLoanData.VaStatutoryClosingCosts", "VaLoanData.VaStatutoryMonthlyPayment", "VaLoanData.VaStatutoryMonthlyReduction", "VaLoanData.VaStatutoryRecoupmentMonths" };
 
-        private static readonly Dictionary<string, HashSet<string>> s_propertiesWithInternalFields = new()
-        {
-            { nameof(CustomField), new() { nameof(CustomField.DateValue), nameof(CustomField.NumericValue), nameof(CustomField.StringValue) } },
-            { nameof(FieldLockData), new() { nameof(FieldLockData.ModelPath) } }
-        };
-
         private static readonly Dictionary<string, Dictionary<string, string>> s_propertiesToRename = new()
         {
             { nameof(AlertChangeCircumstance), new Dictionary<string, string> { { "AlertTriggerFielDID", "AlertTriggerFieldID" } } },
@@ -420,11 +415,11 @@ namespace EncompassRest
                 Directory.CreateDirectory(destinationPath);
 
                 var loanEntitySchema = entityTypes["Loan"];
-                var fields = new Dictionary<string, LoanFieldDescriptors.StandardFieldInfo>(StringComparer.OrdinalIgnoreCase);
-                var fieldPatterns = new Dictionary<string, LoanFieldDescriptors.StandardFieldInfo>(StringComparer.OrdinalIgnoreCase)
+                var fields = new Dictionary<string, StandardFieldInfo>(StringComparer.OrdinalIgnoreCase);
+                var fieldPatterns = new Dictionary<string, StandardFieldInfo>(StringComparer.OrdinalIgnoreCase)
                 {
-                    { "CX.{0}", new LoanFieldDescriptors.StandardFieldInfo("CX.{0}", "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue") },
-                    { "CUST{0:00}FV", new LoanFieldDescriptors.StandardFieldInfo("CUST{0:00}FV", "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue") }
+                    { "CX.{0}", new StandardFieldInfo("CX.{0}", "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue", "loan.customFields[(fieldName == 'CX.{0}')].value") },
+                    { "CUST{0:00}FV", new StandardFieldInfo("CUST{0:00}FV", "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue", "loan.customFields[(fieldName == 'CUST{0:00}FV')].value") }
                 };
 
                 var otherEnums = new Dictionary<string, Dictionary<string, string>>();
@@ -502,20 +497,20 @@ namespace EncompassRest
                     }
                 }
 
-                var virtualFieldInfos = new List<LoanFieldDescriptors.VirtualFieldInfo>();
-                var virtualFieldPatterns = new List<LoanFieldDescriptors.VirtualFieldInfo>();
+                var virtualFieldInfos = new List<VirtualFieldInfo>();
+                var virtualFieldPatterns = new List<VirtualFieldInfo>();
                 foreach (var virtualField in virtualFields.Values)
                 {
-                    LoanFieldDescriptors.VirtualFieldInfo virtualFieldInfo;
+                    VirtualFieldInfo virtualFieldInfo;
                     if (virtualField.MultiInstance)
                     {
-                        virtualFieldInfo = new LoanFieldDescriptors.VirtualFieldInfo($"{virtualField.Id}.{{0}}");
+                        virtualFieldInfo = new VirtualFieldInfo($"{virtualField.Id}.{{0}}");
                         virtualFieldInfo.Description = $@"{virtualField.Description} - {{0}}";
                         virtualFieldPatterns.Add(virtualFieldInfo);
                     }
                     else
                     {
-                        virtualFieldInfo = new LoanFieldDescriptors.VirtualFieldInfo(virtualField.Id);
+                        virtualFieldInfo = new VirtualFieldInfo(virtualField.Id);
                         virtualFieldInfo.Description = virtualField.Description;
                         virtualFieldInfos.Add(virtualFieldInfo);
                     }
@@ -620,7 +615,6 @@ namespace EncompassRest
             var collectionsNamespace = false;
             var newtonsoftNamespace = false;
 
-            var fields = new StringBuilder();
             var properties = new StringBuilder();
             var entities = new List<(string entityName, JObject jObject)>();
 
@@ -628,30 +622,29 @@ namespace EncompassRest
             {
                 var name = property.Name;
                 var cleanName = new string(name.Where(c => char.IsLetterOrDigit(c)).ToArray());
-                var fieldName = $"_{cleanName}";
                 var propertyName = $"{char.ToUpper(cleanName[0])}{cleanName.Substring(1)}";
-                string fieldType;
                 string propertyType;
-                var getter = fieldName;
+                string getter;
+                var setter = "SetValue(value)";
                 switch (property.Value.Type)
                 {
                     case JTokenType.Boolean:
                         propertyType = "bool?";
-                        fieldType = "DirtyValue<bool?>";
+                        getter = $"GetValue<{propertyType}>";
                         break;
                     case JTokenType.Date:
                         propertyType = "DateTime?";
-                        fieldType = "DirtyValue<DateTime?>";
                         systemNamespace = true;
+                        getter = $"GetValue<{propertyType}>";
                         break;
                     case JTokenType.Float:
                         propertyType = "decimal?";
-                        fieldType = "DirtyValue<decimal?>";
+                        getter = $"GetValue<{propertyType}>";
                         break;
                     case JTokenType.Guid:
                     case JTokenType.String:
                         propertyType = "string?";
-                        fieldType = "DirtyValue<string?>";
+                        getter = $"GetValue<{propertyType}>";
                         break;
                     case JTokenType.Object:
                         propertyType = $"{propertyName}{nameSuffix}?";
@@ -671,30 +664,25 @@ namespace EncompassRest
                                 }
                             }
                         }
-                        fieldType = propertyType;
                         entities.Add((propertyType, (JObject)property.Value));
-                        getter = $"GetField(ref {fieldName})";
+                        getter = $"GetEntity<{propertyType}>";
+                        setter = "SetEntity(value)";
                         break;
                     default:
                         // Need to handle the array case
                         throw new NotSupportedException();
                 }
 
-                fields.AppendLine($"        private {fieldType} {fieldName};");
-                properties.AppendLine($@"        /// <summary>
-        /// {entityName} {propertyName}
-        /// </summary>");
+                properties.AppendLine().AppendLine($@"    /// <summary>
+    /// {entityName} {propertyName}
+    /// </summary>");
                 if (cleanName != name)
                 {
-                    properties.AppendLine($"        [JsonProperty(\"{name}\")]");
+                    properties.AppendLine($"    [JsonProperty(\"{name}\")]");
                     newtonsoftNamespace = true;
                 }
-                properties.AppendLine($"        public {propertyType} {propertyName} {{ get => {getter}; set => SetField(ref {fieldName}, value); }}")
-                    .AppendLine();
+                properties.AppendLine($"    public {propertyType} {propertyName} {{ get => {getter}; set => {setter}; }}");
             }
-
-            fields.Length -= Environment.NewLine.Length;
-            properties.Length -= 2 * Environment.NewLine.Length;
 
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityName + ".cs")))
             {
@@ -706,12 +694,8 @@ namespace EncompassRest
 /// <summary>
 /// {entityName}
 /// </summary>
-public sealed class {entityName} : DirtyExtensibleObject
-{{
-{fields}
-
-{properties}
-}}");
+public sealed class {entityName} : DirtyExtensibleObject, IIdentifiable
+{{{properties}}}");
             }
 
             foreach (var entity in entities)
@@ -751,7 +735,6 @@ public sealed class {entityName} : DirtyExtensibleObject
                 }
             }
 
-            var fields = new StringBuilder();
             var properties = new StringBuilder();
 
             foreach (var pair in entitySchema.Properties.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
@@ -896,24 +879,16 @@ public sealed class {entityName} : DirtyExtensibleObject
                     }
                     var elementType = propertyType;
                     var isStringDictionary = s_stringDictionaryProperties.TryGetValue(entityName, out props) && props.Contains(propertyName);
-                    if (isStringDictionary)
+                    if (isStringDictionary || isList)
                     {
-                        propertyType = "DirtyDictionary<string, string?>?";
                         collectionsNamespace = true;
                     }
-                    else if (isList)
-                    {
-                        propertyType = $"DirtyList<{elementType}>?";
-                        collectionsNamespace = true;
-                    }
-                    var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
                     var isNullable = propertySchema.Nullable == true;
                     if (isEntity && isNullable)
                     {
                         propertyType = $"{propertyType}?";
                     }
-                    fields.AppendLine($"    {(s_propertiesWithInternalFields.TryGetValue(entityName, out props) && props.Contains(propertyName) ? "internal" : "private")} {(isEntity && !isNullable ? $"{propertyType}?" : (isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>?"))} {fieldName};");
-                    properties.AppendLine($@"    /// <summary>
+                    properties.AppendLine().AppendLine($@"    /// <summary>
     /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count >= 1 && propertySchema.FieldInstances.Count <= 2 ? $" [{string.Join("], [", propertySchema.FieldInstances.Keys)}]" : (propertySchema.FieldPatterns?.Count >= 1 && propertySchema.FieldPatterns.Count <= 2 ? $" [{string.Join("], [", propertySchema.FieldPatterns.Keys)}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
     /// </summary>");
                     if ((isEntity && !isNullable) || isList || isStringDictionary)
@@ -925,12 +900,24 @@ public sealed class {entityName} : DirtyExtensibleObject
                     {
                         properties.AppendLine($"    [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
                     }
-                    properties.AppendLine($"    public {(isStringDictionary ? $"IDictionary<string, string?>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {((isEntity && !isNullable) || isList || isStringDictionary ? $"GetField(ref {fieldName})" : fieldName)}; set => SetField(ref {fieldName}, value); }}").AppendLine();
+                    if (isEntity && !isNullable)
+                    {
+                        properties.AppendLine($"    public {propertyType} {propertyName} {{ get => GetEntity<{propertyType}>(); set => SetEntity(value); }}");
+                    }
+                    else if (isList)
+                    {
+                        properties.AppendLine($"    public IList<{elementType}> {propertyName} {{ get => GetList<{elementType}>(); set => SetList(value); }}");
+                    }
+                    else if (isStringDictionary)
+                    {
+                        properties.AppendLine($"    public IDictionary<string, string?> {propertyName} {{ get => GetDictionary<string, string?>(); set => SetDictionary(value); }}");
+                    }
+                    else
+                    {
+                        properties.AppendLine($"    public {propertyType} {propertyName} {{ get => GetValue<{propertyType}>(); set => SetValue(value); }}");
+                    }
                 }
             }
-
-            fields.Length -= Environment.NewLine.Length;
-            properties.Length -= 2 * Environment.NewLine.Length;
 
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityName + ".cs")))
             {
@@ -946,11 +933,7 @@ public sealed class {entityName} : DirtyExtensibleObject
 /// </summary>
 {(entityArguments.Length > 0 ? $@"[Entity({entityArguments})]
 " : string.Empty)}public sealed partial class {entityName} : DirtyExtensibleObject, IIdentifiable
-{{
-{fields}
-
-{properties}
-}}");
+{{{properties}}}");
             }
         }
 

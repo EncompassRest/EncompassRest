@@ -8,17 +8,14 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class ServicingPrintLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<ServicingPrintLogFieldList>? _fieldLists;
-    private DirtyValue<string?>? _id;
-
     /// <summary>
     /// ServicingPrintLog FieldLists
     /// </summary>
     [AllowNull]
-    public IList<ServicingPrintLogFieldList> FieldLists { get => GetField(ref _fieldLists); set => SetField(ref _fieldLists, value); }
+    public IList<ServicingPrintLogFieldList> FieldLists { get => GetList<ServicingPrintLogFieldList>(); set => SetList(value); }
 
     /// <summary>
     /// ServicingPrintLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 }

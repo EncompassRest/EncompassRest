@@ -22,99 +22,83 @@ namespace EncompassRest.Loans.Attachments.v1
         /// <param name="attachment">The attachment to convert to an <see cref="EntityReference"/>.</param>
         public static implicit operator EntityReference?(LoanAttachment? attachment) => attachment != null && attachment.AttachmentId != null ? new EntityReference(attachment.AttachmentId, EntityType.Attachment) : null;
 
-        private NeverSerializeValue<string?>? _attachmentId;
-        private DirtyValue<DateTime?>? _dateCreated;
-        private DirtyValue<string?>? _createdBy;
-        private DirtyValue<string?>? _createdByName;
-        private DirtyValue<AttachmentCreateReason?>? _createReason;
-        private DirtyValue<StringEnumValue<AttachmentType>>? _attachmentType;
-        private DirtyValue<long?>? _fileSize;
-        private DirtyValue<bool?>? _isActive;
-        private DirtyList<PageImage>? _pages;
-        private DirtyValue<int?>? _rotation;
-        private DirtyValue<string?>? _title;
-        private DirtyValue<string?>? _fileWithExtension;
-        private DirtyValue<string?>? _documentRefId;
-        private DirtyValue<EntityReference?>? _document;
-        private NeverSerializeValue<string?>? _mediaUrl;
-
         /// <summary>
         /// The unique identifier assigned to the attachment.
         /// </summary>
-        public string? AttachmentId { get => _attachmentId; set => SetField(ref _attachmentId, value); }
+        public string? AttachmentId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Date the attachment or page annotation was created.
         /// </summary>
-        public DateTime? DateCreated { get => _dateCreated; set => SetField(ref _dateCreated, value); }
+        public DateTime? DateCreated { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// UserID of the user who created the attachment or annotation.
         /// </summary>
-        public string? CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
+        public string? CreatedBy { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// User Name of the user who created the attachment.
         /// </summary>
-        public string? CreatedByName { get => _createdByName; set => SetField(ref _createdByName, value); }
+        public string? CreatedByName { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The attachment create reason.
         /// </summary>
         [EnumFormat(EnumFormat.DecimalValue)]
-        public AttachmentCreateReason? CreateReason { get => _createReason; set => SetField(ref _createReason, value); }
+        public AttachmentCreateReason? CreateReason { get => GetValue<AttachmentCreateReason?>(); set => SetValue(value); }
 
         /// <summary>
         /// LoanAttachment AttachmentType
         /// </summary>
-        public StringEnumValue<AttachmentType> AttachmentType { get => _attachmentType; set => SetField(ref _attachmentType, value); }
+        public StringEnumValue<AttachmentType> AttachmentType { get => GetValue<StringEnumValue<AttachmentType>>(); set => SetValue(value); }
 
         /// <summary>
         /// The size of the image file.
         /// </summary>
-        public long? FileSize { get => _fileSize; set => SetField(ref _fileSize, value); }
+        public long? FileSize { get => GetValue<long?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates the attachment is the active attachment on the document.
         /// </summary>
-        public bool? IsActive { get => _isActive; set => SetField(ref _isActive, value); }
+        public bool? IsActive { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// LoanAttachment Pages
         /// </summary>
         [AllowNull]
-        public IList<PageImage> Pages { get => GetField(ref _pages); set => SetField(ref _pages, value); }
+        public IList<PageImage> Pages { get => GetList<PageImage>(); set => SetList(value); }
 
         /// <summary>
         /// The rotation of the image.
         /// </summary>
-        public int? Rotation { get => _rotation; set => SetField(ref _rotation, value); }
+        public int? Rotation { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// The title of the attachment.
         /// </summary>
-        public string? Title { get => _title; set => SetField(ref _title, value); }
+        public string? Title { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The attachment's file name and extension.
         /// </summary>
-        public string? FileWithExtension { get => _fileWithExtension; set => SetField(ref _fileWithExtension, value); }
+        public string? FileWithExtension { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Reference to the document object upon upload.
         /// </summary>
-        public string? DocumentRefId { get => _documentRefId; set => SetField(ref _documentRefId, value); }
+        public string? DocumentRefId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// LoanAttachment Document
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public EntityReference? Document { get => _document; set => SetField(ref _document, value); }
+        public EntityReference? Document { get => GetValue<EntityReference?>(); set => SetValue(value); }
 
         /// <summary>
         /// The location or path where the media attachment is located.
         /// </summary>
-        public string? MediaUrl { get => _mediaUrl; set => SetField(ref _mediaUrl, value); }
+        public string? MediaUrl { get => GetValue<string?>(); set => SetValue(value); }
 
         [IdPropertyName(nameof(AttachmentId))]
         string? IIdentifiable.Id { get => AttachmentId; set => AttachmentId = value; }

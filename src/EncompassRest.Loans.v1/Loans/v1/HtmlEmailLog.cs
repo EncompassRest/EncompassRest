@@ -9,121 +9,101 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class HtmlEmailLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyValue<string?>? _body;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _creator;
-    private DirtyValue<DateTime?>? _dateUtc;
-    private DirtyValue<string?>? _description;
-    private DirtyList<EmailDocument>? _docList;
-    private DirtyValue<bool?>? _fileAttachmentsMigrated;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isSystemSpecificIndicator;
-    private DirtyValue<int?>? _logRecordIndex;
-    private DirtyValue<bool?>? _readReceipt;
-    private DirtyValue<string?>? _recipient;
-    private DirtyValue<string?>? _sender;
-    private DirtyValue<string?>? _subject;
-    private DirtyValue<string?>? _systemId;
-    private DirtyValue<DateTime?>? _updatedDateUtc;
-
     /// <summary>
     /// HtmlEmailLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
     /// HtmlEmailLog Body
     /// </summary>
-    public string? Body { get => _body; set => SetField(ref _body, value); }
+    public string? Body { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
     /// HtmlEmailLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog Creator
     /// </summary>
-    public string? Creator { get => _creator; set => SetField(ref _creator, value); }
+    public string? Creator { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog DateUtc
     /// </summary>
-    public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
+    public DateTime? DateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog Description
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog DocList
     /// </summary>
     [AllowNull]
-    public IList<EmailDocument> DocList { get => GetField(ref _docList); set => SetField(ref _docList, value); }
+    public IList<EmailDocument> DocList { get => GetList<EmailDocument>(); set => SetList(value); }
 
     /// <summary>
     /// HtmlEmailLog FileAttachmentsMigrated
     /// </summary>
-    public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
+    public bool? FileAttachmentsMigrated { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog Guid
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog IsSystemSpecificIndicator
     /// </summary>
-    public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
+    public bool? IsSystemSpecificIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog LogRecordIndex
     /// </summary>
-    public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
+    public int? LogRecordIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog ReadReceipt
     /// </summary>
-    public bool? ReadReceipt { get => _readReceipt; set => SetField(ref _readReceipt, value); }
+    public bool? ReadReceipt { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog Recipient
     /// </summary>
-    public string? Recipient { get => _recipient; set => SetField(ref _recipient, value); }
+    public string? Recipient { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog Sender
     /// </summary>
-    public string? Sender { get => _sender; set => SetField(ref _sender, value); }
+    public string? Sender { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog Subject
     /// </summary>
-    public string? Subject { get => _subject; set => SetField(ref _subject, value); }
+    public string? Subject { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog SystemId
     /// </summary>
-    public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+    public string? SystemId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// HtmlEmailLog UpdatedDateUtc
     /// </summary>
-    public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+    public DateTime? UpdatedDateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

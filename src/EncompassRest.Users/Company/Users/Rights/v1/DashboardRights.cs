@@ -7,12 +7,10 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class DashboardRights : DirtyExtensibleObject
     {
-        private AccessToDashboardTabRights? _accessToDashboardTab;
-
         /// <summary>
         /// DashboardRights AccessToDashboardTab
         /// </summary>
         [AllowNull]
-        public AccessToDashboardTabRights AccessToDashboardTab { get => GetField(ref _accessToDashboardTab); set => SetField(ref _accessToDashboardTab, value); }
+        public AccessToDashboardTabRights AccessToDashboardTab { get => GetEntity<AccessToDashboardTabRights>(); set => SetEntity(value); }
     }
 }

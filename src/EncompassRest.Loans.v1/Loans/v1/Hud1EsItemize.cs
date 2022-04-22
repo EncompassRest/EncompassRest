@@ -6,46 +6,38 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class Hud1EsItemize : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _date;
-    private DirtyValue<decimal?>? _escrowPaymentBalance;
-    private DirtyValue<string?>? _escrowPaymentDescription;
-    private DirtyValue<decimal?>? _escrowPaymentFrom;
-    private DirtyValue<decimal?>? _escrowPaymentTo;
-    private DirtyValue<int?>? _hud1EsItemizeIndex;
-    private DirtyValue<string?>? _id;
-
     /// <summary>
     /// Itemize Escrow Payment Date [AEANN01]
     /// </summary>
-    public string? Date { get => _date; set => SetField(ref _date, value); }
+    public string? Date { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Itemize Escrow Payment Balance [AEANN05]
     /// </summary>
-    public decimal? EscrowPaymentBalance { get => _escrowPaymentBalance; set => SetField(ref _escrowPaymentBalance, value); }
+    public decimal? EscrowPaymentBalance { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Itemize Escrow Payment Description [AEANN04]
     /// </summary>
-    public string? EscrowPaymentDescription { get => _escrowPaymentDescription; set => SetField(ref _escrowPaymentDescription, value); }
+    public string? EscrowPaymentDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Itemize Escrow Payment From [AEANN03]
     /// </summary>
-    public decimal? EscrowPaymentFrom { get => _escrowPaymentFrom; set => SetField(ref _escrowPaymentFrom, value); }
+    public decimal? EscrowPaymentFrom { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Itemize Escrow Payment To [AEANN02]
     /// </summary>
-    public decimal? EscrowPaymentTo { get => _escrowPaymentTo; set => SetField(ref _escrowPaymentTo, value); }
+    public decimal? EscrowPaymentTo { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Hud1EsItemize Hud1EsItemizeIndex
     /// </summary>
-    public int? Hud1EsItemizeIndex { get => _hud1EsItemizeIndex; set => SetField(ref _hud1EsItemizeIndex, value); }
+    public int? Hud1EsItemizeIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Hud1EsItemize Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 }

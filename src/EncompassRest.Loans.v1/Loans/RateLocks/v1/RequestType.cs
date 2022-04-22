@@ -10,7 +10,6 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Lock
         /// </summary>
-        [EnumMember(Value = "Lock")]
         Lock = 0,
         /// <summary>
         /// Re-Lock
@@ -25,7 +24,6 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Cancellation
         /// </summary>
-        [EnumMember(Value = "Cancellation")]
         Cancellation = 3
     }
 }

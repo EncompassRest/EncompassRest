@@ -5,77 +5,64 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class TablesAndFeesRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _cityTax;
-        private DirtyValue<bool?>? _escrow;
-        private DirtyValue<bool?>? _fHACountyLimits;
-        private DirtyValue<bool?>? _hELOCTable;
-        private DirtyValue<bool?>? _itemizationFeeManagement;
-        private DirtyValue<bool?>? _lOCompensation;
-        private DirtyValue<bool?>? _mITables;
-        private DirtyValue<bool?>? _specialFeatureCodes;
-        private DirtyValue<bool?>? _stateTax;
-        private DirtyValue<bool?>? _temporaryBuydown;
-        private DirtyValue<bool?>? _title;
-        private DirtyValue<bool?>? _userDefinedFee;
-
         /// <summary>
         /// TablesAndFeesRights CityTax
         /// </summary>
-        public bool? CityTax { get => _cityTax; set => SetField(ref _cityTax, value); }
+        public bool? CityTax { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights Escrow
         /// </summary>
-        public bool? Escrow { get => _escrow; set => SetField(ref _escrow, value); }
+        public bool? Escrow { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights FHACountyLimits
         /// </summary>
-        public bool? FHACountyLimits { get => _fHACountyLimits; set => SetField(ref _fHACountyLimits, value); }
+        public bool? FHACountyLimits { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights HELOCTable
         /// </summary>
-        public bool? HELOCTable { get => _hELOCTable; set => SetField(ref _hELOCTable, value); }
+        public bool? HELOCTable { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights ItemizationFeeManagement
         /// </summary>
-        public bool? ItemizationFeeManagement { get => _itemizationFeeManagement; set => SetField(ref _itemizationFeeManagement, value); }
+        public bool? ItemizationFeeManagement { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights LOCompensation
         /// </summary>
-        public bool? LOCompensation { get => _lOCompensation; set => SetField(ref _lOCompensation, value); }
+        public bool? LOCompensation { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights MITables
         /// </summary>
-        public bool? MITables { get => _mITables; set => SetField(ref _mITables, value); }
+        public bool? MITables { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights SpecialFeatureCodes
         /// </summary>
-        public bool? SpecialFeatureCodes { get => _specialFeatureCodes; set => SetField(ref _specialFeatureCodes, value); }
+        public bool? SpecialFeatureCodes { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights StateTax
         /// </summary>
-        public bool? StateTax { get => _stateTax; set => SetField(ref _stateTax, value); }
+        public bool? StateTax { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights TemporaryBuydown
         /// </summary>
-        public bool? TemporaryBuydown { get => _temporaryBuydown; set => SetField(ref _temporaryBuydown, value); }
+        public bool? TemporaryBuydown { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights Title
         /// </summary>
-        public bool? Title { get => _title; set => SetField(ref _title, value); }
+        public bool? Title { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TablesAndFeesRights UserDefinedFee
         /// </summary>
-        public bool? UserDefinedFee { get => _userDefinedFee; set => SetField(ref _userDefinedFee, value); }
+        public bool? UserDefinedFee { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

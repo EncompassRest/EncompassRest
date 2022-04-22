@@ -9,29 +9,24 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class PrepaymentPenalty : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>>? _fullPrepaymentPenaltyOptionType;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<decimal?>? _prepaymentPenaltyPercent;
-    private DirtyValue<int?>? _termMonthsCount;
-
     /// <summary>
     /// PrepaymentPenalty FullPrepaymentPenaltyOptionType
     /// </summary>
-    public StringEnumValue<FullPrepaymentPenaltyOptionType> FullPrepaymentPenaltyOptionType { get => _fullPrepaymentPenaltyOptionType; set => SetField(ref _fullPrepaymentPenaltyOptionType, value); }
+    public StringEnumValue<FullPrepaymentPenaltyOptionType> FullPrepaymentPenaltyOptionType { get => GetValue<StringEnumValue<FullPrepaymentPenaltyOptionType>>(); set => SetValue(value); }
 
     /// <summary>
     /// PrepaymentPenalty Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// PrepaymentPenalty PrepaymentPenaltyPercent
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? PrepaymentPenaltyPercent { get => _prepaymentPenaltyPercent; set => SetField(ref _prepaymentPenaltyPercent, value); }
+    public decimal? PrepaymentPenaltyPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// PrepaymentPenalty TermMonthsCount
     /// </summary>
-    public int? TermMonthsCount { get => _termMonthsCount; set => SetField(ref _termMonthsCount, value); }
+    public int? TermMonthsCount { get => GetValue<int?>(); set => SetValue(value); }
 }

@@ -7,34 +7,28 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class ComplianceTestLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _details;
-    private DirtyValue<string?>? _name;
-    private DirtyValue<string?>? _result;
-    private DirtyValue<bool?>? _showAlert;
-    private DirtyValue<DateTime?>? _updatedDateUtc;
-
     /// <summary>
     /// ComplianceTestLog Details
     /// </summary>
-    public string? Details { get => _details; set => SetField(ref _details, value); }
+    public string? Details { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ComplianceTestLog Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ComplianceTestLog Result
     /// </summary>
-    public string? Result { get => _result; set => SetField(ref _result, value); }
+    public string? Result { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ComplianceTestLog ShowAlert
     /// </summary>
-    public bool? ShowAlert { get => _showAlert; set => SetField(ref _showAlert, value); }
+    public bool? ShowAlert { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// ComplianceTestLog UpdatedDateUtc
     /// </summary>
-    public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+    public DateTime? UpdatedDateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

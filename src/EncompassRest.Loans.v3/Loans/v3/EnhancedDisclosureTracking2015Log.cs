@@ -10,229 +10,193 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class EnhancedDisclosureTracking2015Log : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _applicationDate;
-    private DirtyValue<bool?>? _changedCircumstanceIndicator;
-    private DirtyValue<string?>? _changeInCircumstance;
-    private DirtyValue<string?>? _changeInCircumstanceComments;
-    private ClosingDisclosureFields? _closingDisclosure;
-    private DirtyList<string?>? _contents;
-    private LockableDecimalField? _disclosedApr;
-    private LockableUserRefField? _disclosedBy;
-    private LockableDecimalField? _disclosedDailyInterest;
-    private DisclosedDateField? _disclosedDate;
-    private LockableDecimalField? _disclosedFinanceCharge;
-    private DirtyValue<StringEnumValue<DisclosedOrReceivedMethod>>? _disclosedMethod;
-    private DirtyValue<string?>? _disclosedMethodDescription;
-    private DirtyValue<DateTime?>? _disclosureCreatedDate;
-    private DirtyList<DisclosureRecipient>? _disclosureRecipients;
-    private DirtyValue<StringEnumValue<EnhancedDisclosureTracking2015LogDisclosureType>>? _disclosureType;
-    private DisclosureTrackingDocuments? _documents;
-    private DirtyList<DisclosureFeeChange>? _feeChanges;
-    private DirtyValue<bool?>? _feeLevelDisclosuresIndicator;
-    private DirtyList<Fulfillment>? _fulfillments;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _includedInTimeline;
-    private IntentToProceed? _intentToProceed;
-    private DirtyValue<string?>? _linkedLogId;
-    private DirtyValue<decimal?>? _loanAmount;
-    private LoanEstimateFields? _loanEstimate;
-    private DirtyValue<string?>? _loanProgram;
-    private DirtyValue<string?>? _loanXml;
-    private Address? _propertyAddress;
-    private DirtyValue<StringEnumValue<EnhancedDisclosureTracking2015LogProvider>>? _provider;
-    private DirtyValue<string?>? _providerDescription;
-    private DirtyValue<object?>? _snapshot;
-    private DirtyValue<StringEnumValue<EnhancedDisclosureTracking2015LogStatus>>? _status;
-    private TrackingFields? _tracking;
-    private DirtyValue<bool?>? _useForUcdExport;
-
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract ApplicationDate
+    /// EnhancedDisclosureTracking2015Log ApplicationDate
     /// </summary>
-    public DateTime? ApplicationDate { get => _applicationDate; set => SetField(ref _applicationDate, value); }
+    public DateTime? ApplicationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract ChangedCircumstanceIndicator
+    /// EnhancedDisclosureTracking2015Log ChangedCircumstanceIndicator
     /// </summary>
-    public bool? ChangedCircumstanceIndicator { get => _changedCircumstanceIndicator; set => SetField(ref _changedCircumstanceIndicator, value); }
+    public bool? ChangedCircumstanceIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract ChangeInCircumstance
+    /// EnhancedDisclosureTracking2015Log ChangeInCircumstance
     /// </summary>
-    public string? ChangeInCircumstance { get => _changeInCircumstance; set => SetField(ref _changeInCircumstance, value); }
+    public string? ChangeInCircumstance { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract ChangeInCircumstanceComments
+    /// EnhancedDisclosureTracking2015Log ChangeInCircumstanceComments
     /// </summary>
-    public string? ChangeInCircumstanceComments { get => _changeInCircumstanceComments; set => SetField(ref _changeInCircumstanceComments, value); }
+    public string? ChangeInCircumstanceComments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract ClosingDisclosure
+    /// EnhancedDisclosureTracking2015Log ClosingDisclosure
     /// </summary>
     [AllowNull]
-    public ClosingDisclosureFields ClosingDisclosure { get => GetField(ref _closingDisclosure); set => SetField(ref _closingDisclosure, value); }
+    public ClosingDisclosureFields ClosingDisclosure { get => GetEntity<ClosingDisclosureFields>(); set => SetEntity(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract Contents
+    /// EnhancedDisclosureTracking2015Log Contents
     /// </summary>
     [AllowNull]
-    public IList<string?> Contents { get => GetField(ref _contents); set => SetField(ref _contents, value); }
+    public IList<string?> Contents { get => GetList<string?>(); set => SetList(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract DisclosedApr
+    /// EnhancedDisclosureTracking2015Log DisclosedApr
     /// </summary>
     [AllowNull]
-    public LockableDecimalField DisclosedApr { get => GetField(ref _disclosedApr); set => SetField(ref _disclosedApr, value); }
+    public LockableDecimalField DisclosedApr { get => GetEntity<LockableDecimalField>(); set => SetEntity(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract DisclosedBy
+    /// EnhancedDisclosureTracking2015Log DisclosedBy
     /// </summary>
     [AllowNull]
-    public LockableUserRefField DisclosedBy { get => GetField(ref _disclosedBy); set => SetField(ref _disclosedBy, value); }
+    public LockableUserRefField DisclosedBy { get => GetEntity<LockableUserRefField>(); set => SetEntity(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract DisclosedDailyInterest
+    /// EnhancedDisclosureTracking2015Log DisclosedDailyInterest
     /// </summary>
     [AllowNull]
-    public LockableDecimalField DisclosedDailyInterest { get => GetField(ref _disclosedDailyInterest); set => SetField(ref _disclosedDailyInterest, value); }
+    public LockableDecimalField DisclosedDailyInterest { get => GetEntity<LockableDecimalField>(); set => SetEntity(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract DisclosedDate
+    /// EnhancedDisclosureTracking2015Log DisclosedDate
     /// </summary>
     [AllowNull]
-    public DisclosedDateField DisclosedDate { get => GetField(ref _disclosedDate); set => SetField(ref _disclosedDate, value); }
+    public DisclosedDateField DisclosedDate { get => GetEntity<DisclosedDateField>(); set => SetEntity(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract DisclosedFinanceCharge
+    /// EnhancedDisclosureTracking2015Log DisclosedFinanceCharge
     /// </summary>
     [AllowNull]
-    public LockableDecimalField DisclosedFinanceCharge { get => GetField(ref _disclosedFinanceCharge); set => SetField(ref _disclosedFinanceCharge, value); }
+    public LockableDecimalField DisclosedFinanceCharge { get => GetEntity<LockableDecimalField>(); set => SetEntity(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract DisclosedMethod
+    /// EnhancedDisclosureTracking2015Log DisclosedMethod
     /// </summary>
-    public StringEnumValue<DisclosedOrReceivedMethod> DisclosedMethod { get => _disclosedMethod; set => SetField(ref _disclosedMethod, value); }
+    public StringEnumValue<DisclosedOrReceivedMethod> DisclosedMethod { get => GetValue<StringEnumValue<DisclosedOrReceivedMethod>>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract DisclosedMethodDescription
+    /// EnhancedDisclosureTracking2015Log DisclosedMethodDescription
     /// </summary>
-    public string? DisclosedMethodDescription { get => _disclosedMethodDescription; set => SetField(ref _disclosedMethodDescription, value); }
+    public string? DisclosedMethodDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract DisclosureCreatedDate
+    /// EnhancedDisclosureTracking2015Log DisclosureCreatedDate
     /// </summary>
-    public DateTime? DisclosureCreatedDate { get => _disclosureCreatedDate; set => SetField(ref _disclosureCreatedDate, value); }
+    public DateTime? DisclosureCreatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract DisclosureRecipients
-    /// </summary>
-    [AllowNull]
-    public IList<DisclosureRecipient> DisclosureRecipients { get => GetField(ref _disclosureRecipients); set => SetField(ref _disclosureRecipients, value); }
-
-    /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract DisclosureType
-    /// </summary>
-    public StringEnumValue<EnhancedDisclosureTracking2015LogDisclosureType> DisclosureType { get => _disclosureType; set => SetField(ref _disclosureType, value); }
-
-    /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract Documents
+    /// EnhancedDisclosureTracking2015Log DisclosureRecipients
     /// </summary>
     [AllowNull]
-    public DisclosureTrackingDocuments Documents { get => GetField(ref _documents); set => SetField(ref _documents, value); }
+    public IList<DisclosureRecipient> DisclosureRecipients { get => GetList<DisclosureRecipient>(); set => SetList(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract FeeChanges
+    /// EnhancedDisclosureTracking2015Log DisclosureType
+    /// </summary>
+    public StringEnumValue<EnhancedDisclosureTracking2015LogDisclosureType> DisclosureType { get => GetValue<StringEnumValue<EnhancedDisclosureTracking2015LogDisclosureType>>(); set => SetValue(value); }
+
+    /// <summary>
+    /// EnhancedDisclosureTracking2015Log Documents
     /// </summary>
     [AllowNull]
-    public IList<DisclosureFeeChange> FeeChanges { get => GetField(ref _feeChanges); set => SetField(ref _feeChanges, value); }
+    public DisclosureTrackingDocuments Documents { get => GetEntity<DisclosureTrackingDocuments>(); set => SetEntity(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract FeeLevelDisclosuresIndicator
-    /// </summary>
-    public bool? FeeLevelDisclosuresIndicator { get => _feeLevelDisclosuresIndicator; set => SetField(ref _feeLevelDisclosuresIndicator, value); }
-
-    /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract Fulfillments
+    /// EnhancedDisclosureTracking2015Log FeeChanges
     /// </summary>
     [AllowNull]
-    public IList<Fulfillment> Fulfillments { get => GetField(ref _fulfillments); set => SetField(ref _fulfillments, value); }
+    public IList<DisclosureFeeChange> FeeChanges { get => GetList<DisclosureFeeChange>(); set => SetList(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract Id
+    /// EnhancedDisclosureTracking2015Log FeeLevelDisclosuresIndicator
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public bool? FeeLevelDisclosuresIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract IncludedInTimeline
-    /// </summary>
-    public bool? IncludedInTimeline { get => _includedInTimeline; set => SetField(ref _includedInTimeline, value); }
-
-    /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract IntentToProceed
+    /// EnhancedDisclosureTracking2015Log Fulfillments
     /// </summary>
     [AllowNull]
-    public IntentToProceed IntentToProceed { get => GetField(ref _intentToProceed); set => SetField(ref _intentToProceed, value); }
+    public IList<Fulfillment> Fulfillments { get => GetList<Fulfillment>(); set => SetList(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract LinkedLogId
+    /// EnhancedDisclosureTracking2015Log Id
     /// </summary>
-    public string? LinkedLogId { get => _linkedLogId; set => SetField(ref _linkedLogId, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract LoanAmount
+    /// EnhancedDisclosureTracking2015Log IncludedInTimeline
     /// </summary>
-    public decimal? LoanAmount { get => _loanAmount; set => SetField(ref _loanAmount, value); }
+    public bool? IncludedInTimeline { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract LoanEstimate
-    /// </summary>
-    [AllowNull]
-    public LoanEstimateFields LoanEstimate { get => GetField(ref _loanEstimate); set => SetField(ref _loanEstimate, value); }
-
-    /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract LoanProgram
-    /// </summary>
-    public string? LoanProgram { get => _loanProgram; set => SetField(ref _loanProgram, value); }
-
-    /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract LoanXml
-    /// </summary>
-    public string? LoanXml { get => _loanXml; set => SetField(ref _loanXml, value); }
-
-    /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract PropertyAddress
+    /// EnhancedDisclosureTracking2015Log IntentToProceed
     /// </summary>
     [AllowNull]
-    public Address PropertyAddress { get => GetField(ref _propertyAddress); set => SetField(ref _propertyAddress, value); }
+    public IntentToProceed IntentToProceed { get => GetEntity<IntentToProceed>(); set => SetEntity(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract Provider
+    /// EnhancedDisclosureTracking2015Log LinkedLogId
     /// </summary>
-    public StringEnumValue<EnhancedDisclosureTracking2015LogProvider> Provider { get => _provider; set => SetField(ref _provider, value); }
+    public string? LinkedLogId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract ProviderDescription
+    /// EnhancedDisclosureTracking2015Log LoanAmount
     /// </summary>
-    public string? ProviderDescription { get => _providerDescription; set => SetField(ref _providerDescription, value); }
+    public decimal? LoanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract Snapshot
-    /// </summary>
-    public object? Snapshot { get => _snapshot; set => SetField(ref _snapshot, value); }
-
-    /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract Status
-    /// </summary>
-    public StringEnumValue<EnhancedDisclosureTracking2015LogStatus> Status { get => _status; set => SetField(ref _status, value); }
-
-    /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract Tracking
+    /// EnhancedDisclosureTracking2015Log LoanEstimate
     /// </summary>
     [AllowNull]
-    public TrackingFields Tracking { get => GetField(ref _tracking); set => SetField(ref _tracking, value); }
+    public LoanEstimateFields LoanEstimate { get => GetEntity<LoanEstimateFields>(); set => SetEntity(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015LogContract UseForUcdExport
+    /// EnhancedDisclosureTracking2015Log LoanProgram
     /// </summary>
-    public bool? UseForUcdExport { get => _useForUcdExport; set => SetField(ref _useForUcdExport, value); }
+    public string? LoanProgram { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// EnhancedDisclosureTracking2015Log LoanXml
+    /// </summary>
+    public string? LoanXml { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// EnhancedDisclosureTracking2015Log PropertyAddress
+    /// </summary>
+    [AllowNull]
+    public Address PropertyAddress { get => GetEntity<Address>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// EnhancedDisclosureTracking2015Log Provider
+    /// </summary>
+    public StringEnumValue<EnhancedDisclosureTracking2015LogProvider> Provider { get => GetValue<StringEnumValue<EnhancedDisclosureTracking2015LogProvider>>(); set => SetValue(value); }
+
+    /// <summary>
+    /// EnhancedDisclosureTracking2015Log ProviderDescription
+    /// </summary>
+    public string? ProviderDescription { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// EnhancedDisclosureTracking2015Log Snapshot
+    /// </summary>
+    public object? Snapshot { get => GetValue<object?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// EnhancedDisclosureTracking2015Log Status
+    /// </summary>
+    public StringEnumValue<EnhancedDisclosureTracking2015LogStatus> Status { get => GetValue<StringEnumValue<EnhancedDisclosureTracking2015LogStatus>>(); set => SetValue(value); }
+
+    /// <summary>
+    /// EnhancedDisclosureTracking2015Log Tracking
+    /// </summary>
+    [AllowNull]
+    public TrackingFields Tracking { get => GetEntity<TrackingFields>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// EnhancedDisclosureTracking2015Log UseForUcdExport
+    /// </summary>
+    public bool? UseForUcdExport { get => GetValue<bool?>(); set => SetValue(value); }
 }

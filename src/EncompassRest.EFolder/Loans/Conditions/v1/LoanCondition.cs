@@ -11,182 +11,152 @@ namespace EncompassRest.Loans.Conditions.v1
     [Entity(PropertiesToAlwaysSerialize = nameof(ForAllApplications) + "," + nameof(Application))]
     public abstract class LoanCondition : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string?>? _id;
-        private DirtyValue<string?>? _templateId;
-        private DirtyValue<StringEnumValue<ConditionType>>? _conditionType;
-        private DirtyValue<bool?>? _isRemoved;
-        private DirtyValue<string?>? _title;
-        private DirtyValue<string?>? _description;
-        private DirtyValue<EntityReference?>? _application;
-        private DirtyValue<bool?>? _forAllApplications;
-        private DirtyValue<StringEnumValue<ConditionSource>>? _source;
-        private DirtyValue<DateTime?>? _expectedDate;
-        private DirtyValue<StringEnumValue<ConditionStatus>>? _status;
-        private DirtyValue<DateTime?>? _statusDate;
-        private DirtyValue<int?>? _daysToReceive;
-        private DirtyValue<string?>? _requestedFrom;
-        private DirtyValue<DateTime?>? _createdDate;
-        private DirtyValue<EntityReference?>? _createdBy;
-        private DirtyValue<bool?>? _isRequested;
-        private DirtyValue<DateTime?>? _requestedDate;
-        private DirtyValue<EntityReference?>? _requestedBy;
-        private DirtyValue<bool?>? _isRerequested;
-        private DirtyValue<DateTime?>? _rerequestedDate;
-        private DirtyValue<EntityReference?>? _rerequestedBy;
-        private DirtyValue<bool?>? _isReceived;
-        private DirtyValue<DateTime?>? _receivedDate;
-        private DirtyValue<EntityReference?>? _receivedBy;
-        private DirtyValue<bool?>? _isAddedToConditionSet;
-        private DirtyList<Comment>? _comments;
-        private DirtyList<EntityReference>? _documents;
-        private DirtyValue<string?>? _descriptionDetails;
-
         /// <summary>
         /// Unique identifier of a condition.
         /// </summary>
-        public string? Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The ID of the template used to create the condition.
         /// </summary>
-        public string? TemplateId { get => _templateId; set => SetField(ref _templateId, value); }
+        public string? TemplateId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Type of a condition.
         /// </summary>
-        public StringEnumValue<ConditionType> ConditionType { get => _conditionType; set => SetField(ref _conditionType, value); }
+        public StringEnumValue<ConditionType> ConditionType { get => GetValue<StringEnumValue<ConditionType>>(); set => SetValue(value); }
 
         /// <summary>
         /// Whether the condition's status is Removed.
         /// </summary>
-        public bool? IsRemoved { get => _isRemoved; set => SetField(ref _isRemoved, value); }
+        public bool? IsRemoved { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Title of the document.
         /// </summary>
-        public string? Title { get => _title; set => SetField(ref _title, value); }
+        public string? Title { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Description of the document.
         /// </summary>
-        public string? Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Loan application to which to apply the condition. Required if applying condition to a specific application. If you want to apply the condition to all applications of the loan, set <see cref="ForAllApplications"/> to <c>true</c>.
         /// </summary>
-        public EntityReference? Application { get => _application; set => SetField(ref _application, value); }
+        public EntityReference? Application { get => GetValue<EntityReference?>(); set => SetValue(value); }
 
         /// <summary>
         /// A value of <c>true</c> indicates the condition will be linked to all applications or only for a specified application. If linked to a specified application, the application ID must be provided.
         /// </summary>
-        public bool? ForAllApplications { get => _forAllApplications; set => SetField(ref _forAllApplications, value); }
+        public bool? ForAllApplications { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Source of the condition.
         /// </summary>
-        public StringEnumValue<ConditionSource> Source { get => _source; set => SetField(ref _source, value); }
+        public StringEnumValue<ConditionSource> Source { get => GetValue<StringEnumValue<ConditionSource>>(); set => SetValue(value); }
 
         /// <summary>
         /// Date and time the condition is waiting to be received by.
         /// </summary>
-        public DateTime? ExpectedDate { get => _expectedDate; set => SetField(ref _expectedDate, value); }
+        public DateTime? ExpectedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates the status of the condition.
         /// </summary>
-        public StringEnumValue<ConditionStatus> Status { get => _status; set => SetField(ref _status, value); }
+        public StringEnumValue<ConditionStatus> Status { get => GetValue<StringEnumValue<ConditionStatus>>(); set => SetValue(value); }
 
         /// <summary>
         /// Date and time the condition's status was last changed.
         /// </summary>
-        public DateTime? StatusDate { get => _statusDate; set => SetField(ref _statusDate, value); }
+        public DateTime? StatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Number of days for the condition to be received.
         /// </summary>
-        public int? DaysToReceive { get => _daysToReceive; set => SetField(ref _daysToReceive, value); }
+        public int? DaysToReceive { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// User who requested the condition.
         /// </summary>
-        public string? RequestedFrom { get => _requestedFrom; set => SetField(ref _requestedFrom, value); }
+        public string? RequestedFrom { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Date and time the condition was created.
         /// </summary>
-        public DateTime? CreatedDate { get => _createdDate; set => SetField(ref _createdDate, value); }
+        public DateTime? CreatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Information about the Encompass user who created the condition.
         /// </summary>
-        public EntityReference? CreatedBy { get => _createdBy; set => SetField(ref _createdBy, value); }
+        public EntityReference? CreatedBy { get => GetValue<EntityReference?>(); set => SetValue(value); }
 
         /// <summary>
         /// Whether the condition's status is Requested.
         /// </summary>
-        public bool? IsRequested { get => _isRequested; set => SetField(ref _isRequested, value); }
+        public bool? IsRequested { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Date and time the condition was requested.
         /// </summary>
-        public DateTime? RequestedDate { get => _requestedDate; set => SetField(ref _requestedDate, value); }
+        public DateTime? RequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Information about the Encompass user who requested the condition.
         /// </summary>
-        public EntityReference? RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
+        public EntityReference? RequestedBy { get => GetValue<EntityReference?>(); set => SetValue(value); }
 
         /// <summary>
         /// Whether the condition's status is Re-requested.
         /// </summary>
-        public bool? IsRerequested { get => _isRerequested; set => SetField(ref _isRerequested, value); }
+        public bool? IsRerequested { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Date and time the condition was rerequested.
         /// </summary>
-        public DateTime? RerequestedDate { get => _rerequestedDate; set => SetField(ref _rerequestedDate, value); }
+        public DateTime? RerequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Information about the Encompass user who re-requested the condition.
         /// </summary>
-        public EntityReference? RerequestedBy { get => _rerequestedBy; set => SetField(ref _rerequestedBy, value); }
+        public EntityReference? RerequestedBy { get => GetValue<EntityReference?>(); set => SetValue(value); }
 
         /// <summary>
         /// Whether the condition's status is Received.
         /// </summary>
-        public bool? IsReceived { get => _isReceived; set => SetField(ref _isReceived, value); }
+        public bool? IsReceived { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Date and time the condition was received.
         /// </summary>
-        public DateTime? ReceivedDate { get => _receivedDate; set => SetField(ref _receivedDate, value); }
+        public DateTime? ReceivedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Information about the Encompass user who received the condition.
         /// </summary>
-        public EntityReference? ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
+        public EntityReference? ReceivedBy { get => GetValue<EntityReference?>(); set => SetValue(value); }
 
         /// <summary>
         /// Whether the condition belongs to a condition set.
         /// </summary>
-        public bool? IsAddedToConditionSet { get => _isAddedToConditionSet; set => SetField(ref _isAddedToConditionSet, value); }
+        public bool? IsAddedToConditionSet { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Any comments for the condition.
         /// </summary>
         [AllowNull]
-        public IList<Comment> Comments { get => GetField(ref _comments); set => SetField(ref _comments, value); }
+        public IList<Comment> Comments { get => GetList<Comment>(); set => SetList(value); }
 
         /// <summary>
         /// Any supporting documents.
         /// </summary>
         [AllowNull]
-        public IList<EntityReference> Documents { get => GetField(ref _documents); set => SetField(ref _documents, value); }
+        public IList<EntityReference> Documents { get => GetList<EntityReference>(); set => SetList(value); }
 
         /// <summary>
         /// LoanCondition DescriptionDetails
         /// </summary>
-        public string? DescriptionDetails { get => _descriptionDetails; set => SetField(ref _descriptionDetails, value); }
+        public string? DescriptionDetails { get => GetValue<string?>(); set => SetValue(value); }
 
         internal LoanCondition()
         {

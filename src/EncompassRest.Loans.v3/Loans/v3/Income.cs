@@ -7,34 +7,28 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class Income : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _amount;
-    private DirtyValue<StringEnumValue<Description>>? _description;
-    private DirtyValue<StringEnumValue<IncomeType>>? _incomeType;
-    private DirtyValue<int?>? _otherIncomeIndex;
-    private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>>? _owner;
+    /// <summary>
+    /// Income Amount
+    /// </summary>
+    public decimal? Amount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// IncomeContract Amount
+    /// Income Description
     /// </summary>
-    public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
+    public StringEnumValue<Description> Description { get => GetValue<StringEnumValue<Description>>(); set => SetValue(value); }
 
     /// <summary>
-    /// IncomeContract Description
+    /// Income IncomeType
     /// </summary>
-    public StringEnumValue<Description> Description { get => _description; set => SetField(ref _description, value); }
+    public StringEnumValue<IncomeType> IncomeType { get => GetValue<StringEnumValue<IncomeType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// IncomeContract IncomeType
+    /// Income OtherIncomeIndex
     /// </summary>
-    public StringEnumValue<IncomeType> IncomeType { get => _incomeType; set => SetField(ref _incomeType, value); }
+    public int? OtherIncomeIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// IncomeContract OtherIncomeIndex
+    /// Income Owner
     /// </summary>
-    public int? OtherIncomeIndex { get => _otherIncomeIndex; set => SetField(ref _otherIncomeIndex, value); }
-
-    /// <summary>
-    /// IncomeContract Owner
-    /// </summary>
-    public StringEnumValue<BorrowerOrCoBorrower> Owner { get => _owner; set => SetField(ref _owner, value); }
+    public StringEnumValue<BorrowerOrCoBorrower> Owner { get => GetValue<StringEnumValue<BorrowerOrCoBorrower>>(); set => SetValue(value); }
 }

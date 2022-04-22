@@ -9,48 +9,40 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LogEntryLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _userId;
-
     /// <summary>
-    /// LogEntryLogContract Alerts
+    /// LogEntryLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
-    /// LogEntryLogContract CommentList
+    /// LogEntryLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
-    /// LogEntryLogContract Comments
+    /// LogEntryLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LogEntryLogContract Date
+    /// LogEntryLog Date
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LogEntryLogContract Description
+    /// LogEntryLog Description
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LogEntryLogContract Id
+    /// LogEntryLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LogEntryLogContract UserId
+    /// LogEntryLog UserId
     /// </summary>
-    public string? UserId { get => _userId; set => SetField(ref _userId, value); }
+    public string? UserId { get => GetValue<string?>(); set => SetValue(value); }
 }

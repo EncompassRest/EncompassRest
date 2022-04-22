@@ -13,52 +13,44 @@ namespace EncompassRest.Contacts.v1
     /// </summary>
     public sealed class BusinessContact : Contact
     {
-        private DirtyValue<BusinessContactCategory?>? _categoryId;
-        private DirtyList<BusinessCategoryField>? _categoryFields;
-        private DirtyValue<string?>? _companyName;
-        private DirtyValue<int?>? _fees;
-        private BusinessContactLicense? _personalContactLicense;
-        private BusinessContactLicense? _businessContactLicense;
-        private DirtyValue<bool?>? _noSpam;
-
         /// <summary>
         /// The business category ID for the business contact.
         /// </summary>
         [EnumFormat(EnumFormat.DecimalValue)]
-        public BusinessContactCategory? CategoryId { get => _categoryId; set => SetField(ref _categoryId, value); }
+        public BusinessContactCategory? CategoryId { get => GetValue<BusinessContactCategory?>(); set => SetValue(value); }
 
         /// <summary>
         /// BusinessContact CategoryFields
         /// </summary>
         [AllowNull]
-        public IList<BusinessCategoryField> CategoryFields { get => GetField(ref _categoryFields); set => SetField(ref _categoryFields, value); }
+        public IList<BusinessCategoryField> CategoryFields { get => GetList<BusinessCategoryField>(); set => SetList(value); }
 
         /// <summary>
         /// The contact's company name.
         /// </summary>
-        public string? CompanyName { get => _companyName; set => SetField(ref _companyName, value); }
+        public string? CompanyName { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate or fee charged by the contact’s services.
         /// </summary>
-        public int? Fees { get => _fees; set => SetField(ref _fees, value); }
+        public int? Fees { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// Licensing information.
         /// </summary>
         [AllowNull]
-        public BusinessContactLicense PersonalContactLicense { get => GetField(ref _personalContactLicense); set => SetField(ref _personalContactLicense, value); }
+        public BusinessContactLicense PersonalContactLicense { get => GetEntity<BusinessContactLicense>(); set => SetEntity(value); }
 
         /// <summary>
         /// Business licensing information.
         /// </summary>
         [AllowNull]
-        public BusinessContactLicense BusinessContactLicense { get => GetField(ref _businessContactLicense); set => SetField(ref _businessContactLicense, value); }
+        public BusinessContactLicense BusinessContactLicense { get => GetEntity<BusinessContactLicense>(); set => SetEntity(value); }
 
         /// <summary>
         /// BusinessContact NoSpam
         /// </summary>
-        public bool? NoSpam { get => _noSpam; set => SetField(ref _noSpam, value); }
+        public bool? NoSpam { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact type.

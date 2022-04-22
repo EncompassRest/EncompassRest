@@ -5,22 +5,18 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class GfePayoff : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _amount;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<int?>? _gfePayoffIndex;
+    /// <summary>
+    /// GfePayoff Amount
+    /// </summary>
+    public decimal? Amount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfePayoffContract Amount
+    /// GfePayoff Description
     /// </summary>
-    public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfePayoffContract Description
+    /// GfePayoff GfePayoffIndex
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
-
-    /// <summary>
-    /// GfePayoffContract GfePayoffIndex
-    /// </summary>
-    public int? GfePayoffIndex { get => _gfePayoffIndex; set => SetField(ref _gfePayoffIndex, value); }
+    public int? GfePayoffIndex { get => GetValue<int?>(); set => SetValue(value); }
 }

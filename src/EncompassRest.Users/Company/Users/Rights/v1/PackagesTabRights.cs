@@ -5,11 +5,9 @@
     /// </summary>
     public sealed class PackagesTabRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _eSignPackages;
-
         /// <summary>
         /// PackagesTabRights ESignPackages
         /// </summary>
-        public bool? ESignPackages { get => _eSignPackages; set => SetField(ref _eSignPackages, value); }
+        public bool? ESignPackages { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

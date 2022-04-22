@@ -7,94 +7,78 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LockConfirm : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<bool?>? _alertIndicator;
-    private DirtyValue<DateTime?>? _buySideExpirationDate;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<bool?>? _commitmentTermEnabled;
-    private DirtyValue<string?>? _confirmedBy;
-    private DirtyValue<string?>? _confirmedById;
-    private DirtyValue<bool?>? _confirmedByIdIndicator;
-    private DirtyValue<bool?>? _hideLog;
-    private DirtyValue<bool?>? _includeConfirmCount;
-    private DirtyValue<string?>? _requestGuid;
-    private DirtyValue<string?>? _sellSideDeliveredBy;
-    private DirtyValue<DateTime?>? _sellSideDeliveryDate;
-    private DirtyValue<DateTime?>? _sellSideExpirationDate;
-    private DirtyValue<string?>? _timeConfirmed;
-    private DirtyValue<bool?>? _voided;
+    /// <summary>
+    /// LockConfirm AlertIndicator
+    /// </summary>
+    public bool? AlertIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract AlertIndicator
+    /// LockConfirm BuySideExpirationDate
     /// </summary>
-    public bool? AlertIndicator { get => _alertIndicator; set => SetField(ref _alertIndicator, value); }
+    public DateTime? BuySideExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract BuySideExpirationDate
+    /// LockConfirm Comments
     /// </summary>
-    public DateTime? BuySideExpirationDate { get => _buySideExpirationDate; set => SetField(ref _buySideExpirationDate, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract Comments
+    /// LockConfirm CommitmentTermEnabled
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public bool? CommitmentTermEnabled { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract CommitmentTermEnabled
+    /// LockConfirm ConfirmedBy
     /// </summary>
-    public bool? CommitmentTermEnabled { get => _commitmentTermEnabled; set => SetField(ref _commitmentTermEnabled, value); }
+    public string? ConfirmedBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract ConfirmedBy
+    /// LockConfirm ConfirmedById
     /// </summary>
-    public string? ConfirmedBy { get => _confirmedBy; set => SetField(ref _confirmedBy, value); }
+    public string? ConfirmedById { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract ConfirmedById
+    /// LockConfirm ConfirmedByIdIndicator
     /// </summary>
-    public string? ConfirmedById { get => _confirmedById; set => SetField(ref _confirmedById, value); }
+    public bool? ConfirmedByIdIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract ConfirmedByIdIndicator
+    /// LockConfirm HideLog
     /// </summary>
-    public bool? ConfirmedByIdIndicator { get => _confirmedByIdIndicator; set => SetField(ref _confirmedByIdIndicator, value); }
+    public bool? HideLog { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract HideLog
+    /// LockConfirm IncludeConfirmCount
     /// </summary>
-    public bool? HideLog { get => _hideLog; set => SetField(ref _hideLog, value); }
+    public bool? IncludeConfirmCount { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract IncludeConfirmCount
+    /// LockConfirm RequestGuid
     /// </summary>
-    public bool? IncludeConfirmCount { get => _includeConfirmCount; set => SetField(ref _includeConfirmCount, value); }
+    public string? RequestGuid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract RequestGuid
+    /// LockConfirm SellSideDeliveredBy
     /// </summary>
-    public string? RequestGuid { get => _requestGuid; set => SetField(ref _requestGuid, value); }
+    public string? SellSideDeliveredBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract SellSideDeliveredBy
+    /// LockConfirm SellSideDeliveryDate
     /// </summary>
-    public string? SellSideDeliveredBy { get => _sellSideDeliveredBy; set => SetField(ref _sellSideDeliveredBy, value); }
+    public DateTime? SellSideDeliveryDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract SellSideDeliveryDate
+    /// LockConfirm SellSideExpirationDate
     /// </summary>
-    public DateTime? SellSideDeliveryDate { get => _sellSideDeliveryDate; set => SetField(ref _sellSideDeliveryDate, value); }
+    public DateTime? SellSideExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract SellSideExpirationDate
+    /// LockConfirm TimeConfirmed
     /// </summary>
-    public DateTime? SellSideExpirationDate { get => _sellSideExpirationDate; set => SetField(ref _sellSideExpirationDate, value); }
+    public string? TimeConfirmed { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockConfirmContract TimeConfirmed
+    /// LockConfirm Voided
     /// </summary>
-    public string? TimeConfirmed { get => _timeConfirmed; set => SetField(ref _timeConfirmed, value); }
-
-    /// <summary>
-    /// LockConfirmContract Voided
-    /// </summary>
-    public bool? Voided { get => _voided; set => SetField(ref _voided, value); }
+    public bool? Voided { get => GetValue<bool?>(); set => SetValue(value); }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using EncompassRest.Loans.Attachments;
 using EncompassRest.Utilities;
 using EnumsNET;
 

@@ -9,523 +9,437 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class Property : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _addressLineText;
-    private DirtyValue<StringEnumValue<UnitType>>? _addressUnitDesignatorType;
-    private DirtyValue<string?>? _addressUnitIdentifier;
-    private DirtyValue<string?>? _assessorsParcelIdentifier;
-    private DirtyValue<string?>? _blockIdentifier;
-    private DirtyValue<bool?>? _borrowerHomesteadIndicator;
-    private DirtyValue<StringEnumValue<BuildingStatusType>>? _buildingStatusType;
-    private DirtyValue<string?>? _city;
-    private DirtyValue<bool?>? _condotelIndicator;
-    private DirtyValue<decimal?>? _constructionImprovementCostsAmount;
-    private DirtyValue<string?>? _county;
-    private DirtyValue<bool?>? _fHASecondaryResidenceIndicator;
-    private DirtyValue<int?>? _financedNumberOfUnits;
-    private DirtyValue<string?>? _floodCertificationIdentifier;
-    private DirtyValue<decimal?>? _freCashOutAmount;
-    private DirtyValue<StringEnumValue<RefinancePurpose>>? _gseRefinancePurposeType;
-    private DirtyValue<StringEnumValue<GseTitleMannerHeldDescription>>? _gseTitleMannerHeldDescription;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isConstructionPhaseDisclosedSeparately;
-    private DirtyValue<decimal?>? _landEstimatedValueAmount;
-    private DirtyValue<string?>? _legalDescriptionText1;
-    private DirtyValue<string?>? _legalDescriptionText2;
-    private DirtyValue<bool?>? _linkedAffordableLoan;
-    private DirtyValue<decimal?>? _linkedAmountApplyToDownPayment;
-    private DirtyValue<decimal?>? _linkedBaseLoanAmount;
-    private DirtyValue<decimal?>? _linkedClosedEndPrimaryMortgageLoanAmount;
-    private DirtyValue<decimal?>? _linkedClosedEndSubordinateMortgageLoanAmount;
-    private DirtyValue<StringEnumValue<LienPosition>>? _linkedHELOCLienPosition;
-    private DirtyValue<decimal?>? _linkedHelocNewFinancingNotLinkedCreditLimit;
-    private DirtyValue<decimal?>? _linkedHelocNewFinancingNotLinkedDrawAmount;
-    private DirtyValue<decimal?>? _linkedInitialAdvanceAmount;
-    private DirtyValue<bool?>? _linkedIsConstructionPhaseDisclosedSeparately;
-    private DirtyValue<string?>? _linkedLenderName;
-    private DirtyValue<StringEnumValue<LienType>>? _linkedLienPriorityType;
-    private DirtyValue<string?>? _linkedLoanNumber;
-    private DirtyValue<string?>? _linkedLoanPurposeType;
-    private DirtyValue<decimal?>? _linkedMax5YrsPrincipleAndInterest;
-    private DirtyValue<StringEnumValue<LoanType>>? _linkedMortgageType;
-    private DirtyValue<decimal?>? _linkedProposedFirstMortgageAmount;
-    private DirtyValue<decimal?>? _linkedProposedOtherAmount;
-    private DirtyValue<decimal?>? _linkedProposedOtherMortgagesAmount;
-    private DirtyValue<decimal?>? _linkedRequestedInterestRatePercent;
-    private DirtyValue<StringEnumValue<LoanPurposeType>>? _loanPurposeType;
-    private DirtyValue<string?>? _loanPurposeTypeOtherDescription;
-    private DirtyValue<StringEnumValue<LoanPurposeTypeURLA>>? _loanPurposeTypeURLA;
-    private DirtyValue<decimal?>? _lotAcres;
-    private DirtyValue<string?>? _lotIdentifier;
-    private DirtyValue<string?>? _nameRecordingJurisdiction;
-    private DirtyValue<bool?>? _nonwarrantableProjectIndicator;
-    private DirtyValue<decimal?>? _numberOfStories;
-    private DirtyValue<string?>? _occupancyDisplayField;
-    private DirtyValue<bool?>? _oneTimeClose;
-    private DirtyValue<string?>? _otherLoanPurposeDescription;
-    private DirtyValue<string?>? _postalCode;
-    private DirtyValue<string?>? _priorLoanRecordationBookNumber;
-    private DirtyValue<decimal?>? _priorLoanRecordationCurrentPrincipalAmount;
-    private DirtyValue<DateTime?>? _priorLoanRecordationDated;
-    private DirtyValue<string?>? _priorLoanRecordationOriginalLoanNumber;
-    private DirtyValue<decimal?>? _priorLoanRecordationOriginalPrincipalAmount;
-    private DirtyValue<string?>? _priorLoanRecordationPageNumber;
-    private DirtyValue<bool?>? _prodIsSpInUnderservedArea;
-    private DirtyValue<string?>? _propertyAcquiredYear;
-    private DirtyValue<decimal?>? _propertyExistingLienAmount;
-    private DirtyValue<DateTime?>? _propertyLeaseholdExpirationDate;
-    private DirtyValue<bool?>? _propertyMixedUsageIndicator;
-    private DirtyValue<decimal?>? _propertyOriginalCostAmount;
-    private DirtyValue<StringEnumValue<PropertyRightsType>>? _propertyRightsType;
-    private DirtyValue<string?>? _propertyUsageType;
-    private DirtyValue<decimal?>? _refinanceImprovementCostsAmount;
-    private DirtyValue<StringEnumValue<PropertyImprovementsType>>? _refinanceImprovementsType;
-    private DirtyValue<string?>? _refinancePropertyAcquiredYear;
-    private DirtyValue<decimal?>? _refinancePropertyExistingLienAmount;
-    private DirtyValue<decimal?>? _refinancePropertyOriginalCostAmount;
-    private DirtyValue<string?>? _refinanceProposedImprovementsDescription;
-    private DirtyValue<bool?>? _ruralAreaIndicator;
-    private DirtyValue<string?>? _sectionIdentifier;
-    private DirtyValue<StringEnumValue<State>>? _state;
-    private DirtyValue<string?>? _streetAddress;
-    private DirtyValue<string?>? _streetAddress2;
-    private DirtyValue<string?>? _structureBuiltYear;
-    private DirtyValue<bool?>? _texasContinuousMoneyLoanIndicator;
-    private DirtyValue<decimal?>? _totalConstructionValueAmount;
-    private DirtyValue<bool?>? _twoTimeClose;
-    private DirtyValue<string?>? _typeRecordingJurisdiction;
-    private DirtyValue<string?>? _unincorporatedAreaName;
-
     /// <summary>
     /// Property Address Line Text [URLA.X73]
     /// </summary>
-    public string? AddressLineText { get => _addressLineText; set => SetField(ref _addressLineText, value); }
+    public string? AddressLineText { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Address Unit Type Identifier [URLA.X74]
     /// </summary>
-    public StringEnumValue<UnitType> AddressUnitDesignatorType { get => _addressUnitDesignatorType; set => SetField(ref _addressUnitDesignatorType, value); }
+    public StringEnumValue<UnitType> AddressUnitDesignatorType { get => GetValue<StringEnumValue<UnitType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Address Unit Identifier [URLA.X75]
     /// </summary>
-    public string? AddressUnitIdentifier { get => _addressUnitIdentifier; set => SetField(ref _addressUnitIdentifier, value); }
+    public string? AddressUnitIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Parcel # [1894]
     /// </summary>
-    public string? AssessorsParcelIdentifier { get => _assessorsParcelIdentifier; set => SetField(ref _assessorsParcelIdentifier, value); }
+    public string? AssessorsParcelIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Block Identifier [2974]
     /// </summary>
-    public string? BlockIdentifier { get => _blockIdentifier; set => SetField(ref _blockIdentifier, value); }
+    public string? BlockIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property is Borrower's Homestead [3198]
     /// </summary>
-    public bool? BorrowerHomesteadIndicator { get => _borrowerHomesteadIndicator; set => SetField(ref _borrowerHomesteadIndicator, value); }
+    public bool? BorrowerHomesteadIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Building Status [601]
     /// </summary>
-    public StringEnumValue<BuildingStatusType> BuildingStatusType { get => _buildingStatusType; set => SetField(ref _buildingStatusType, value); }
+    public StringEnumValue<BuildingStatusType> BuildingStatusType { get => GetValue<StringEnumValue<BuildingStatusType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property City [12]
     /// </summary>
-    public string? City { get => _city; set => SetField(ref _city, value); }
+    public string? City { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Is Condotel [3315]
     /// </summary>
-    public bool? CondotelIndicator { get => _condotelIndicator; set => SetField(ref _condotelIndicator, value); }
+    public bool? CondotelIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Constr Loan Improvement Cost [23]
     /// </summary>
-    public decimal? ConstructionImprovementCostsAmount { get => _constructionImprovementCostsAmount; set => SetField(ref _constructionImprovementCostsAmount, value); }
+    public decimal? ConstructionImprovementCostsAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property County [13]
     /// </summary>
-    public string? County { get => _county; set => SetField(ref _county, value); }
+    public string? County { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// FHA Secondary Residence Indicator [URLA.X76]
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Y\":\"FHA Secondary Residence\"}")]
-    public bool? FHASecondaryResidenceIndicator { get => _fHASecondaryResidenceIndicator; set => SetField(ref _fHASecondaryResidenceIndicator, value); }
+    public bool? FHASecondaryResidenceIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property # Units [16]
     /// </summary>
-    public int? FinancedNumberOfUnits { get => _financedNumberOfUnits; set => SetField(ref _financedNumberOfUnits, value); }
+    public int? FinancedNumberOfUnits { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Flood Certification Identifier [2977]
     /// </summary>
-    public string? FloodCertificationIdentifier { get => _floodCertificationIdentifier; set => SetField(ref _floodCertificationIdentifier, value); }
+    public string? FloodCertificationIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Freddie Mac Lender Cash Out Amt [CASASRN.X79]
     /// </summary>
-    public decimal? FreCashOutAmount { get => _freCashOutAmount; set => SetField(ref _freCashOutAmount, value); }
+    public decimal? FreCashOutAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Refi Purpose [299]
     /// </summary>
-    public StringEnumValue<RefinancePurpose> GseRefinancePurposeType { get => _gseRefinancePurposeType; set => SetField(ref _gseRefinancePurposeType, value); }
+    public StringEnumValue<RefinancePurpose> GseRefinancePurposeType { get => GetValue<StringEnumValue<RefinancePurpose>>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Manner Held [33]
     /// </summary>
-    public StringEnumValue<GseTitleMannerHeldDescription> GseTitleMannerHeldDescription { get => _gseTitleMannerHeldDescription; set => SetField(ref _gseTitleMannerHeldDescription, value); }
+    public StringEnumValue<GseTitleMannerHeldDescription> GseTitleMannerHeldDescription { get => GetValue<StringEnumValue<GseTitleMannerHeldDescription>>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Construction Phase Disclosed Separately [4084]
     /// </summary>
-    public bool? IsConstructionPhaseDisclosedSeparately { get => _isConstructionPhaseDisclosedSeparately; set => SetField(ref _isConstructionPhaseDisclosedSeparately, value); }
+    public bool? IsConstructionPhaseDisclosedSeparately { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Constr Loan Lot Value [22]
     /// </summary>
-    public decimal? LandEstimatedValueAmount { get => _landEstimatedValueAmount; set => SetField(ref _landEstimatedValueAmount, value); }
+    public decimal? LandEstimatedValueAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Legal Desc1 [17]
     /// </summary>
-    public string? LegalDescriptionText1 { get => _legalDescriptionText1; set => SetField(ref _legalDescriptionText1, value); }
+    public string? LegalDescriptionText1 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Legal Descr 2 [1824]
     /// </summary>
-    public string? LegalDescriptionText2 { get => _legalDescriptionText2; set => SetField(ref _legalDescriptionText2, value); }
+    public string? LegalDescriptionText2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Linked Affordable Loan Indicator [LINK_URLA.X210]
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Y\":\"Affordable Loan\"}")]
-    public bool? LinkedAffordableLoan { get => _linkedAffordableLoan; set => SetField(ref _linkedAffordableLoan, value); }
+    public bool? LinkedAffordableLoan { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Amount Apply To Down Payment - Copied from Linked Loan [LINK_4493]
     /// </summary>
-    public decimal? LinkedAmountApplyToDownPayment { get => _linkedAmountApplyToDownPayment; set => SetField(ref _linkedAmountApplyToDownPayment, value); }
+    public decimal? LinkedAmountApplyToDownPayment { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Linked Trans Details Total Loan Amt (w/ MIP/FF) [LINK_2]
     /// </summary>
-    public decimal? LinkedBaseLoanAmount { get => _linkedBaseLoanAmount; set => SetField(ref _linkedBaseLoanAmount, value); }
+    public decimal? LinkedBaseLoanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Closed End Primary Mortgage Loan Amount Copied from Linked Loan [LINK_4487]
     /// </summary>
-    public decimal? LinkedClosedEndPrimaryMortgageLoanAmount { get => _linkedClosedEndPrimaryMortgageLoanAmount; set => SetField(ref _linkedClosedEndPrimaryMortgageLoanAmount, value); }
+    public decimal? LinkedClosedEndPrimaryMortgageLoanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Closed End Subordinate Mortgage Loan Amount - Copied from Linked Loan [LINK_4488]
     /// </summary>
-    public decimal? LinkedClosedEndSubordinateMortgageLoanAmount { get => _linkedClosedEndSubordinateMortgageLoanAmount; set => SetField(ref _linkedClosedEndSubordinateMortgageLoanAmount, value); }
+    public decimal? LinkedClosedEndSubordinateMortgageLoanAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Lien Position - Copied from Linked Loan [LINK_4494]
     /// </summary>
-    public StringEnumValue<LienPosition> LinkedHELOCLienPosition { get => _linkedHELOCLienPosition; set => SetField(ref _linkedHELOCLienPosition, value); }
+    public StringEnumValue<LienPosition> LinkedHELOCLienPosition { get => GetValue<StringEnumValue<LienPosition>>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc New Financing Not Linked Credit Limit - Copied from Linked Loan [LINK_4490]
     /// </summary>
-    public decimal? LinkedHelocNewFinancingNotLinkedCreditLimit { get => _linkedHelocNewFinancingNotLinkedCreditLimit; set => SetField(ref _linkedHelocNewFinancingNotLinkedCreditLimit, value); }
+    public decimal? LinkedHelocNewFinancingNotLinkedCreditLimit { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Heloc New Financing Not Linked Draw Amount - Copied from Linked Loan [LINK_4489]
     /// </summary>
-    public decimal? LinkedHelocNewFinancingNotLinkedDrawAmount { get => _linkedHelocNewFinancingNotLinkedDrawAmount; set => SetField(ref _linkedHelocNewFinancingNotLinkedDrawAmount, value); }
+    public decimal? LinkedHelocNewFinancingNotLinkedDrawAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Initial Advance - Copied from Linked Loan [LINK_1888]
     /// </summary>
-    public decimal? LinkedInitialAdvanceAmount { get => _linkedInitialAdvanceAmount; set => SetField(ref _linkedInitialAdvanceAmount, value); }
+    public decimal? LinkedInitialAdvanceAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Construction Phase Disclosed Separately - Copied from Linked Loan [LINK_4084]
     /// </summary>
-    public bool? LinkedIsConstructionPhaseDisclosedSeparately { get => _linkedIsConstructionPhaseDisclosedSeparately; set => SetField(ref _linkedIsConstructionPhaseDisclosedSeparately, value); }
+    public bool? LinkedIsConstructionPhaseDisclosedSeparately { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Linked File Contacts Lender Co Name [LINK_1264]
     /// </summary>
-    public string? LinkedLenderName { get => _linkedLenderName; set => SetField(ref _linkedLenderName, value); }
+    public string? LinkedLenderName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Lien Position - Copied from Linked Loan [LINK_420]
     /// </summary>
-    public StringEnumValue<LienType> LinkedLienPriorityType { get => _linkedLienPriorityType; set => SetField(ref _linkedLienPriorityType, value); }
+    public StringEnumValue<LienType> LinkedLienPriorityType { get => GetValue<StringEnumValue<LienType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Loan # - Copied from Linked Loan [LINK_364]
     /// </summary>
-    public string? LinkedLoanNumber { get => _linkedLoanNumber; set => SetField(ref _linkedLoanNumber, value); }
+    public string? LinkedLoanNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Loan Purpose - Copied from Linked Loan [LINK_19]
     /// </summary>
-    public string? LinkedLoanPurposeType { get => _linkedLoanPurposeType; set => SetField(ref _linkedLoanPurposeType, value); }
+    public string? LinkedLoanPurposeType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Linked ATR QM - Qualification - Max Rate During First 5 Years - Max P &amp; I [LINK_QM.X337]
     /// </summary>
-    public decimal? LinkedMax5YrsPrincipleAndInterest { get => _linkedMax5YrsPrincipleAndInterest; set => SetField(ref _linkedMax5YrsPrincipleAndInterest, value); }
+    public decimal? LinkedMax5YrsPrincipleAndInterest { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Loan Type - Copied from Linked Loan [LINK_1172]
     /// </summary>
-    public StringEnumValue<LoanType> LinkedMortgageType { get => _linkedMortgageType; set => SetField(ref _linkedMortgageType, value); }
+    public StringEnumValue<LoanType> LinkedMortgageType { get => GetValue<StringEnumValue<LoanType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Linked Expenses Proposed Mtg Pymt [LINK_228]
     /// </summary>
-    public decimal? LinkedProposedFirstMortgageAmount { get => _linkedProposedFirstMortgageAmount; set => SetField(ref _linkedProposedFirstMortgageAmount, value); }
+    public decimal? LinkedProposedFirstMortgageAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Linked Expenses Proposed Other Housing [LINK_234]
     /// </summary>
-    public decimal? LinkedProposedOtherAmount { get => _linkedProposedOtherAmount; set => SetField(ref _linkedProposedOtherAmount, value); }
+    public decimal? LinkedProposedOtherAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Linked Expenses Proposed Other Pymt [LINK_229]
     /// </summary>
-    public decimal? LinkedProposedOtherMortgagesAmount { get => _linkedProposedOtherMortgagesAmount; set => SetField(ref _linkedProposedOtherMortgagesAmount, value); }
+    public decimal? LinkedProposedOtherMortgagesAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Linked Trans Details Interest Rate [LINK_3]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? LinkedRequestedInterestRatePercent { get => _linkedRequestedInterestRatePercent; set => SetField(ref _linkedRequestedInterestRatePercent, value); }
+    public decimal? LinkedRequestedInterestRatePercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Loan Purpose [19]
     /// </summary>
-    public StringEnumValue<LoanPurposeType> LoanPurposeType { get => _loanPurposeType; set => SetField(ref _loanPurposeType, value); }
+    public StringEnumValue<LoanPurposeType> LoanPurposeType { get => GetValue<StringEnumValue<LoanPurposeType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Purpose Other Description URLA [URLA.X72]
     /// </summary>
-    public string? LoanPurposeTypeOtherDescription { get => _loanPurposeTypeOtherDescription; set => SetField(ref _loanPurposeTypeOtherDescription, value); }
+    public string? LoanPurposeTypeOtherDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Display Loan Purpose Type for Property [URLA.X71]
     /// </summary>
-    public StringEnumValue<LoanPurposeTypeURLA> LoanPurposeTypeURLA { get => _loanPurposeTypeURLA; set => SetField(ref _loanPurposeTypeURLA, value); }
+    public StringEnumValue<LoanPurposeTypeURLA> LoanPurposeTypeURLA { get => GetValue<StringEnumValue<LoanPurposeTypeURLA>>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info # of Lot Acres [3543]
     /// </summary>
-    public decimal? LotAcres { get => _lotAcres; set => SetField(ref _lotAcres, value); }
+    public decimal? LotAcres { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Lot Identifier [2973]
     /// </summary>
-    public string? LotIdentifier { get => _lotIdentifier; set => SetField(ref _lotIdentifier, value); }
+    public string? LotIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Name of Recording Jurisdiction [3559]
     /// </summary>
-    public string? NameRecordingJurisdiction { get => _nameRecordingJurisdiction; set => SetField(ref _nameRecordingJurisdiction, value); }
+    public string? NameRecordingJurisdiction { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Is Non-Warrantable Project [3316]
     /// </summary>
-    public bool? NonwarrantableProjectIndicator { get => _nonwarrantableProjectIndicator; set => SetField(ref _nonwarrantableProjectIndicator, value); }
+    public bool? NonwarrantableProjectIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Number of Stories [3245]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_1)]
-    public decimal? NumberOfStories { get => _numberOfStories; set => SetField(ref _numberOfStories, value); }
+    public decimal? NumberOfStories { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Address Occupancy Display Field [URLA.X108]
     /// </summary>
-    public string? OccupancyDisplayField { get => _occupancyDisplayField; set => SetField(ref _occupancyDisplayField, value); }
+    public string? OccupancyDisplayField { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Construction Type one time close  [URLA.X192]
     /// </summary>
-    public bool? OneTimeClose { get => _oneTimeClose; set => SetField(ref _oneTimeClose, value); }
+    public bool? OneTimeClose { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Loan Purpose other [9]
     /// </summary>
-    public string? OtherLoanPurposeDescription { get => _otherLoanPurposeDescription; set => SetField(ref _otherLoanPurposeDescription, value); }
+    public string? OtherLoanPurposeDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Zip [15]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+    public string? PostalCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info The Book Number of the County Records in Which The Prior Mortgage is Recorded [3553]
     /// </summary>
-    public string? PriorLoanRecordationBookNumber { get => _priorLoanRecordationBookNumber; set => SetField(ref _priorLoanRecordationBookNumber, value); }
+    public string? PriorLoanRecordationBookNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info The Outstanding Unpaid Principal Balance of The Prior Mortgage [3556]
     /// </summary>
-    public decimal? PriorLoanRecordationCurrentPrincipalAmount { get => _priorLoanRecordationCurrentPrincipalAmount; set => SetField(ref _priorLoanRecordationCurrentPrincipalAmount, value); }
+    public decimal? PriorLoanRecordationCurrentPrincipalAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// The date of the prior mortgage as recorded [4241]
     /// </summary>
-    public DateTime? PriorLoanRecordationDated { get => _priorLoanRecordationDated; set => SetField(ref _priorLoanRecordationDated, value); }
+    public DateTime? PriorLoanRecordationDated { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// The original loan number of the prior mortgage [4240]
     /// </summary>
-    public string? PriorLoanRecordationOriginalLoanNumber { get => _priorLoanRecordationOriginalLoanNumber; set => SetField(ref _priorLoanRecordationOriginalLoanNumber, value); }
+    public string? PriorLoanRecordationOriginalLoanNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info The Original Principal Amount of The Prior Mortgage as Recorded [3555]
     /// </summary>
-    public decimal? PriorLoanRecordationOriginalPrincipalAmount { get => _priorLoanRecordationOriginalPrincipalAmount; set => SetField(ref _priorLoanRecordationOriginalPrincipalAmount, value); }
+    public decimal? PriorLoanRecordationOriginalPrincipalAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info The Page Number of The County Records in Which The Prior Mortgage is Recorded [3554]
     /// </summary>
-    public string? PriorLoanRecordationPageNumber { get => _priorLoanRecordationPageNumber; set => SetField(ref _priorLoanRecordationPageNumber, value); }
+    public string? PriorLoanRecordationPageNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ATR\QM Management Tool - Basic Info - Subject Property is in an Underserved Area [3850]
     /// </summary>
-    public bool? ProdIsSpInUnderservedArea { get => _prodIsSpInUnderservedArea; set => SetField(ref _prodIsSpInUnderservedArea, value); }
+    public bool? ProdIsSpInUnderservedArea { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Constr Loan Yr Acquired [20]
     /// </summary>
-    public string? PropertyAcquiredYear { get => _propertyAcquiredYear; set => SetField(ref _propertyAcquiredYear, value); }
+    public string? PropertyAcquiredYear { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Constr Loan Existing Lien [10]
     /// </summary>
-    public decimal? PropertyExistingLienAmount { get => _propertyExistingLienAmount; set => SetField(ref _propertyExistingLienAmount, value); }
+    public decimal? PropertyExistingLienAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Leasehold Expir Date [1034]
     /// </summary>
-    public DateTime? PropertyLeaseholdExpirationDate { get => _propertyLeaseholdExpirationDate; set => SetField(ref _propertyLeaseholdExpirationDate, value); }
+    public DateTime? PropertyLeaseholdExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Mixed Use Property Indicator [URLA.X77]
     /// </summary>
     [LoanFieldProperty(OptionsJson = "{\"Y\":\"If you will occupy the property, will you set aside space within the property to operate your own business? \"}")]
-    public bool? PropertyMixedUsageIndicator { get => _propertyMixedUsageIndicator; set => SetField(ref _propertyMixedUsageIndicator, value); }
+    public bool? PropertyMixedUsageIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Constr Loan Original Cost [21]
     /// </summary>
-    public decimal? PropertyOriginalCostAmount { get => _propertyOriginalCostAmount; set => SetField(ref _propertyOriginalCostAmount, value); }
+    public decimal? PropertyOriginalCostAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Estate Held [1066]
     /// </summary>
     [LoanFieldProperty(MissingOptionsJson = "[\"Other\"]")]
-    public StringEnumValue<PropertyRightsType> PropertyRightsType { get => _propertyRightsType; set => SetField(ref _propertyRightsType, value); }
+    public StringEnumValue<PropertyRightsType> PropertyRightsType { get => GetValue<StringEnumValue<PropertyRightsType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Use Type [190]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? PropertyUsageType { get => _propertyUsageType; set => SetField(ref _propertyUsageType, value); }
+    public string? PropertyUsageType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Refi Improvement Cost [29]
     /// </summary>
-    public decimal? RefinanceImprovementCostsAmount { get => _refinanceImprovementCostsAmount; set => SetField(ref _refinanceImprovementCostsAmount, value); }
+    public decimal? RefinanceImprovementCostsAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Refi Improve made/to be made [30]
     /// </summary>
-    public StringEnumValue<PropertyImprovementsType> RefinanceImprovementsType { get => _refinanceImprovementsType; set => SetField(ref _refinanceImprovementsType, value); }
+    public StringEnumValue<PropertyImprovementsType> RefinanceImprovementsType { get => GetValue<StringEnumValue<PropertyImprovementsType>>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Refi Yr Acquired [24]
     /// </summary>
-    public string? RefinancePropertyAcquiredYear { get => _refinancePropertyAcquiredYear; set => SetField(ref _refinancePropertyAcquiredYear, value); }
+    public string? RefinancePropertyAcquiredYear { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Refi Existing Lien [26]
     /// </summary>
-    public decimal? RefinancePropertyExistingLienAmount { get => _refinancePropertyExistingLienAmount; set => SetField(ref _refinancePropertyExistingLienAmount, value); }
+    public decimal? RefinancePropertyExistingLienAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Refi Original Cost [25]
     /// </summary>
-    public decimal? RefinancePropertyOriginalCostAmount { get => _refinancePropertyOriginalCostAmount; set => SetField(ref _refinancePropertyOriginalCostAmount, value); }
+    public decimal? RefinancePropertyOriginalCostAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Refi Improvement Descr [205]
     /// </summary>
-    public string? RefinanceProposedImprovementsDescription { get => _refinanceProposedImprovementsDescription; set => SetField(ref _refinanceProposedImprovementsDescription, value); }
+    public string? RefinanceProposedImprovementsDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Is Rural Area [3314]
     /// </summary>
-    public bool? RuralAreaIndicator { get => _ruralAreaIndicator; set => SetField(ref _ruralAreaIndicator, value); }
+    public bool? RuralAreaIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Section Identifier [2975]
     /// </summary>
-    public string? SectionIdentifier { get => _sectionIdentifier; set => SetField(ref _sectionIdentifier, value); }
+    public string? SectionIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property State [14]
     /// </summary>
-    public StringEnumValue<State> State { get => _state; set => SetField(ref _state, value); }
+    public StringEnumValue<State> State { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Street [11]
     /// </summary>
-    public string? StreetAddress { get => _streetAddress; set => SetField(ref _streetAddress, value); }
+    public string? StreetAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Street 2 [3893]
     /// </summary>
-    public string? StreetAddress2 { get => _streetAddress2; set => SetField(ref _streetAddress2, value); }
+    public string? StreetAddress2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Yr Built [18]
     /// </summary>
-    public string? StructureBuiltYear { get => _structureBuiltYear; set => SetField(ref _structureBuiltYear, value); }
+    public string? StructureBuiltYear { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Continuous Money Loan (Texas Only) [3199]
     /// </summary>
-    public bool? TexasContinuousMoneyLoanIndicator { get => _texasContinuousMoneyLoanIndicator; set => SetField(ref _texasContinuousMoneyLoanIndicator, value); }
+    public bool? TexasContinuousMoneyLoanIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info Constr Loan Total [1074]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public decimal? TotalConstructionValueAmount { get => _totalConstructionValueAmount; set => SetField(ref _totalConstructionValueAmount, value); }
+    public decimal? TotalConstructionValueAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Constrution Type two time close [URLA.X193]
     /// </summary>
-    public bool? TwoTimeClose { get => _twoTimeClose; set => SetField(ref _twoTimeClose, value); }
+    public bool? TwoTimeClose { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Type of Recording Jurisdiction [3558]
     /// </summary>
-    public string? TypeRecordingJurisdiction { get => _typeRecordingJurisdiction; set => SetField(ref _typeRecordingJurisdiction, value); }
+    public string? TypeRecordingJurisdiction { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Property Info Unincorporated Area Name [3258]
     /// </summary>
-    public string? UnincorporatedAreaName { get => _unincorporatedAreaName; set => SetField(ref _unincorporatedAreaName, value); }
+    public string? UnincorporatedAreaName { get => GetValue<string?>(); set => SetValue(value); }
 }

@@ -7,82 +7,68 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class DocumentTrackingLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _action;
-    private DirtyValue<string?>? _actionCd;
-    private DirtyValue<string?>? _contact;
-    private DirtyValue<bool?>? _dOT;
-    private DirtyValue<bool?>? _email;
-    private DirtyValue<bool?>? _executedNote;
-    private DirtyValue<bool?>? _fTP;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _logBy;
-    private DirtyValue<string?>? _logDate;
-    private DirtyValue<string?>? _organization;
-    private DirtyValue<bool?>? _phone;
-    private DirtyValue<DateTime?>? _updatedDateUtc;
-
     /// <summary>
     /// DocumentTrackingLog Action
     /// </summary>
-    public string? Action { get => _action; set => SetField(ref _action, value); }
+    public string? Action { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog ActionCd
     /// </summary>
-    public string? ActionCd { get => _actionCd; set => SetField(ref _actionCd, value); }
+    public string? ActionCd { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog Contact
     /// </summary>
-    public string? Contact { get => _contact; set => SetField(ref _contact, value); }
+    public string? Contact { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog DOT
     /// </summary>
-    public bool? DOT { get => _dOT; set => SetField(ref _dOT, value); }
+    public bool? DOT { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog Email
     /// </summary>
-    public bool? Email { get => _email; set => SetField(ref _email, value); }
+    public bool? Email { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog ExecutedNote
     /// </summary>
-    public bool? ExecutedNote { get => _executedNote; set => SetField(ref _executedNote, value); }
+    public bool? ExecutedNote { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog FTP
     /// </summary>
-    public bool? FTP { get => _fTP; set => SetField(ref _fTP, value); }
+    public bool? FTP { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog LogBy
     /// </summary>
-    public string? LogBy { get => _logBy; set => SetField(ref _logBy, value); }
+    public string? LogBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog LogDate
     /// </summary>
-    public string? LogDate { get => _logDate; set => SetField(ref _logDate, value); }
+    public string? LogDate { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog Organization
     /// </summary>
-    public string? Organization { get => _organization; set => SetField(ref _organization, value); }
+    public string? Organization { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog Phone
     /// </summary>
-    public bool? Phone { get => _phone; set => SetField(ref _phone, value); }
+    public bool? Phone { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentTrackingLog UpdatedDateUtc
     /// </summary>
-    public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+    public DateTime? UpdatedDateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

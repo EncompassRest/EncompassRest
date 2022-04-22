@@ -8,29 +8,24 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class PrepaymentPenalty : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>>? _fullPrepaymentPenaltyOptionType;
-    private DirtyValue<int?>? _prepaymentPenaltyIndex;
-    private DirtyValue<decimal?>? _prepaymentPenaltyPercent;
-    private DirtyValue<int?>? _termMonthsCount;
-
     /// <summary>
-    /// PrepaymentPenaltyContract FullPrepaymentPenaltyOptionType
+    /// PrepaymentPenalty FullPrepaymentPenaltyOptionType
     /// </summary>
-    public StringEnumValue<FullPrepaymentPenaltyOptionType> FullPrepaymentPenaltyOptionType { get => _fullPrepaymentPenaltyOptionType; set => SetField(ref _fullPrepaymentPenaltyOptionType, value); }
+    public StringEnumValue<FullPrepaymentPenaltyOptionType> FullPrepaymentPenaltyOptionType { get => GetValue<StringEnumValue<FullPrepaymentPenaltyOptionType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// PrepaymentPenaltyContract PrepaymentPenaltyIndex
+    /// PrepaymentPenalty PrepaymentPenaltyIndex
     /// </summary>
-    public int? PrepaymentPenaltyIndex { get => _prepaymentPenaltyIndex; set => SetField(ref _prepaymentPenaltyIndex, value); }
+    public int? PrepaymentPenaltyIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PrepaymentPenaltyContract PrepaymentPenaltyPercent
+    /// PrepaymentPenalty PrepaymentPenaltyPercent
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
-    public decimal? PrepaymentPenaltyPercent { get => _prepaymentPenaltyPercent; set => SetField(ref _prepaymentPenaltyPercent, value); }
+    public decimal? PrepaymentPenaltyPercent { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PrepaymentPenaltyContract TermMonthsCount
+    /// PrepaymentPenalty TermMonthsCount
     /// </summary>
-    public int? TermMonthsCount { get => _termMonthsCount; set => SetField(ref _termMonthsCount, value); }
+    public int? TermMonthsCount { get => GetValue<int?>(); set => SetValue(value); }
 }

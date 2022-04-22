@@ -9,79 +9,66 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class OrderedDocument : DirtyExtensibleObject, IIdentifiable
 {
-    private ApplicationReference? _application;
-    private DirtyValue<string?>? _category;
-    private DirtyValue<string?>? _dataKey;
-    private DirtyValue<StringEnumValue<OrderedDocumentType>>? _documentType;
-    private DirtyValue<string?>? _externalDocumentId;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _overflowDataKey;
-    private DirtyList<OrderedDocumentOverflow>? _overflows;
-    private DirtyValue<StringEnumValue<OrderedDocumentSignatureType>>? _signatureType;
-    private DirtyValue<int?>? _size;
-    private EntityReference? _templateId;
-    private DirtyValue<string?>? _title;
-
     /// <summary>
-    /// OrderedDocumentContract Application
+    /// OrderedDocument Application
     /// </summary>
     [AllowNull]
-    public ApplicationReference Application { get => GetField(ref _application); set => SetField(ref _application, value); }
+    public ApplicationReference Application { get => GetEntity<ApplicationReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// OrderedDocumentContract Category
+    /// OrderedDocument Category
     /// </summary>
-    public string? Category { get => _category; set => SetField(ref _category, value); }
+    public string? Category { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OrderedDocumentContract DataKey
+    /// OrderedDocument DataKey
     /// </summary>
-    public string? DataKey { get => _dataKey; set => SetField(ref _dataKey, value); }
+    public string? DataKey { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OrderedDocumentContract DocumentType
+    /// OrderedDocument DocumentType
     /// </summary>
-    public StringEnumValue<OrderedDocumentType> DocumentType { get => _documentType; set => SetField(ref _documentType, value); }
+    public StringEnumValue<OrderedDocumentType> DocumentType { get => GetValue<StringEnumValue<OrderedDocumentType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// OrderedDocumentContract ExternalDocumentId
+    /// OrderedDocument ExternalDocumentId
     /// </summary>
-    public string? ExternalDocumentId { get => _externalDocumentId; set => SetField(ref _externalDocumentId, value); }
+    public string? ExternalDocumentId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OrderedDocumentContract Id
+    /// OrderedDocument Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OrderedDocumentContract OverflowDataKey
+    /// OrderedDocument OverflowDataKey
     /// </summary>
-    public string? OverflowDataKey { get => _overflowDataKey; set => SetField(ref _overflowDataKey, value); }
+    public string? OverflowDataKey { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// OrderedDocumentContract Overflows
-    /// </summary>
-    [AllowNull]
-    public IList<OrderedDocumentOverflow> Overflows { get => GetField(ref _overflows); set => SetField(ref _overflows, value); }
-
-    /// <summary>
-    /// OrderedDocumentContract SignatureType
-    /// </summary>
-    public StringEnumValue<OrderedDocumentSignatureType> SignatureType { get => _signatureType; set => SetField(ref _signatureType, value); }
-
-    /// <summary>
-    /// OrderedDocumentContract Size
-    /// </summary>
-    public int? Size { get => _size; set => SetField(ref _size, value); }
-
-    /// <summary>
-    /// OrderedDocumentContract TemplateId
+    /// OrderedDocument Overflows
     /// </summary>
     [AllowNull]
-    public EntityReference TemplateId { get => GetField(ref _templateId); set => SetField(ref _templateId, value); }
+    public IList<OrderedDocumentOverflow> Overflows { get => GetList<OrderedDocumentOverflow>(); set => SetList(value); }
 
     /// <summary>
-    /// OrderedDocumentContract Title
+    /// OrderedDocument SignatureType
     /// </summary>
-    public string? Title { get => _title; set => SetField(ref _title, value); }
+    public StringEnumValue<OrderedDocumentSignatureType> SignatureType { get => GetValue<StringEnumValue<OrderedDocumentSignatureType>>(); set => SetValue(value); }
+
+    /// <summary>
+    /// OrderedDocument Size
+    /// </summary>
+    public int? Size { get => GetValue<int?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// OrderedDocument TemplateId
+    /// </summary>
+    [AllowNull]
+    public EntityReference TemplateId { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// OrderedDocument Title
+    /// </summary>
+    public string? Title { get => GetValue<string?>(); set => SetValue(value); }
 }

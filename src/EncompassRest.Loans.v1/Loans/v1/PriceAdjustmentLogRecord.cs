@@ -5,22 +5,18 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class PriceAdjustmentLogRecord : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _description;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<decimal?>? _rate;
-
     /// <summary>
     /// PriceAdjustmentLogRecord Description
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// PriceAdjustmentLogRecord Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// PriceAdjustmentLogRecord Rate
     /// </summary>
-    public decimal? Rate { get => _rate; set => SetField(ref _rate, value); }
+    public decimal? Rate { get => GetValue<decimal?>(); set => SetValue(value); }
 }

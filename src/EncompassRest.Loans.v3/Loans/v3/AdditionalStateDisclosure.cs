@@ -7,16 +7,13 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class AdditionalStateDisclosure : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<StringEnumValue<DisclosureName>>? _disclosureName;
-    private DirtyValue<StringEnumValue<State>>? _stateCode;
+    /// <summary>
+    /// AdditionalStateDisclosure DisclosureName
+    /// </summary>
+    public StringEnumValue<DisclosureName> DisclosureName { get => GetValue<StringEnumValue<DisclosureName>>(); set => SetValue(value); }
 
     /// <summary>
-    /// AdditionalStateDisclosureContract DisclosureName
+    /// AdditionalStateDisclosure StateCode
     /// </summary>
-    public StringEnumValue<DisclosureName> DisclosureName { get => _disclosureName; set => SetField(ref _disclosureName, value); }
-
-    /// <summary>
-    /// AdditionalStateDisclosureContract StateCode
-    /// </summary>
-    public StringEnumValue<State> StateCode { get => _stateCode; set => SetField(ref _stateCode, value); }
+    public StringEnumValue<State> StateCode { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 }

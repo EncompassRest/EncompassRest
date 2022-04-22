@@ -5,17 +5,14 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class HMDAServicesRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _generateHMDALAR;
-        private DirtyValue<bool?>? _orderHMDAServices;
-
         /// <summary>
         /// HMDAServicesRights GenerateHMDALAR
         /// </summary>
-        public bool? GenerateHMDALAR { get => _generateHMDALAR; set => SetField(ref _generateHMDALAR, value); }
+        public bool? GenerateHMDALAR { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// HMDAServicesRights OrderHMDAServices
         /// </summary>
-        public bool? OrderHMDAServices { get => _orderHMDAServices; set => SetField(ref _orderHMDAServices, value); }
+        public bool? OrderHMDAServices { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

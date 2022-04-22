@@ -36,19 +36,25 @@ namespace EncompassRest.Loans.v1
                     customField = new CustomField { FieldName = FieldId };
                     Loan.CustomFields.Add(customField);
                 }
-                if (customField.DateValue.HasValue || customField._dateValue?.Dirty == true)
+                if (customField.DateValue.HasValue || (customField.Properties.TryGetValue(nameof(CustomField.DateValue), out var existing) && existing.Dirty))
                 {
                     customField.DateValue = value != null ? Convert.ToDateTime(value) : (DateTime?)null;
                     customField.StringValue = value?.ToString();
-                    customField._stringValue!.Dirty = false;
+                    if (customField.Properties.TryGetValue(nameof(CustomField.StringValue), out var v))
+                    {
+                        v.Dirty = false;
+                    }
                 }
-                else if (customField.NumericValue.HasValue || customField._numericValue?.Dirty == true)
+                else if (customField.NumericValue.HasValue || (customField.Properties.TryGetValue(nameof(CustomField.NumericValue), out existing) && existing.Dirty))
                 {
                     customField.NumericValue = value != null ? Convert.ToDecimal(value) : (decimal?)null;
                     customField.StringValue = value != null ? FormattedValue : null;
-                    customField._stringValue!.Dirty = false;
+                    if (customField.Properties.TryGetValue(nameof(CustomField.StringValue), out var v))
+                    {
+                        v.Dirty = false;
+                    }
                 }
-                else if (customField.StringValue != null || customField._stringValue?.Dirty == true)
+                else if (customField.StringValue != null || (customField.Properties.TryGetValue(nameof(CustomField.StringValue), out existing) && existing.Dirty))
                 {
                     customField.StringValue = value?.ToString();
                 }

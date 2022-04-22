@@ -5,29 +5,24 @@
     /// </summary>
     public sealed class EVaultPortalRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _deactivateENote;
-        private DirtyValue<bool?>? _reverseDeactivateENote;
-        private DirtyValue<bool?>? _reverseRegistration;
-        private DirtyValue<bool?>? _transferServicing;
-
         /// <summary>
         /// EVaultPortalRights DeactivateENote
         /// </summary>
-        public bool? DeactivateENote { get => _deactivateENote; set => SetField(ref _deactivateENote, value); }
+        public bool? DeactivateENote { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EVaultPortalRights ReverseDeactivateENote
         /// </summary>
-        public bool? ReverseDeactivateENote { get => _reverseDeactivateENote; set => SetField(ref _reverseDeactivateENote, value); }
+        public bool? ReverseDeactivateENote { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EVaultPortalRights ReverseRegistration
         /// </summary>
-        public bool? ReverseRegistration { get => _reverseRegistration; set => SetField(ref _reverseRegistration, value); }
+        public bool? ReverseRegistration { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// EVaultPortalRights TransferServicing
         /// </summary>
-        public bool? TransferServicing { get => _transferServicing; set => SetField(ref _transferServicing, value); }
+        public bool? TransferServicing { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

@@ -7,28 +7,23 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class PurchaseCredit : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _amount;
-    private DirtyValue<int?>? _purchaseCreditIndex;
-    private DirtyValue<StringEnumValue<PurchaseCreditSource>>? _purchaseCreditSource;
-    private DirtyValue<StringEnumValue<PurchaseCreditType>>? _purchaseCreditType;
+    /// <summary>
+    /// PurchaseCredit Amount
+    /// </summary>
+    public decimal? Amount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PurchaseCreditContract Amount
+    /// PurchaseCredit PurchaseCreditIndex
     /// </summary>
-    public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
+    public int? PurchaseCreditIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PurchaseCreditContract PurchaseCreditIndex
+    /// PurchaseCredit PurchaseCreditSource
     /// </summary>
-    public int? PurchaseCreditIndex { get => _purchaseCreditIndex; set => SetField(ref _purchaseCreditIndex, value); }
+    public StringEnumValue<PurchaseCreditSource> PurchaseCreditSource { get => GetValue<StringEnumValue<PurchaseCreditSource>>(); set => SetValue(value); }
 
     /// <summary>
-    /// PurchaseCreditContract PurchaseCreditSource
+    /// PurchaseCredit PurchaseCreditType
     /// </summary>
-    public StringEnumValue<PurchaseCreditSource> PurchaseCreditSource { get => _purchaseCreditSource; set => SetField(ref _purchaseCreditSource, value); }
-
-    /// <summary>
-    /// PurchaseCreditContract PurchaseCreditType
-    /// </summary>
-    public StringEnumValue<PurchaseCreditType> PurchaseCreditType { get => _purchaseCreditType; set => SetField(ref _purchaseCreditType, value); }
+    public StringEnumValue<PurchaseCreditType> PurchaseCreditType { get => GetValue<StringEnumValue<PurchaseCreditType>>(); set => SetValue(value); }
 }

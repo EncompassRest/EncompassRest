@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace EncompassRest.Utilities
 {
@@ -13,6 +12,8 @@ namespace EncompassRest.Utilities
 
         public static Type OpenIEnumerableType { get; } = typeof(IEnumerable<>);
 
+        public static Type OpenIDictionaryType { get; } = typeof(IDictionary<,>);
+
         public static Type OpenStringEnumValueType = typeof(StringEnumValue<>);
 
         public static Type OpenNaType = typeof(NA<>);
@@ -21,27 +22,22 @@ namespace EncompassRest.Utilities
 
         public static Type OpenDirtyDictionaryType = typeof(DirtyDictionary<,>);
 
-        public static Type OpenNeverSerializeValueType = typeof(NeverSerializeValue<>);
-
         public static TypeData Get(Type type) => s_typeDatas.GetOrAdd(type, t => new TypeData(t));
 
         private bool? _isNullable;
         private bool? _isValueType;
         private bool? _isEnum;
-        private TypeInfo? _typeInfo;
         private TypeData? _nonNullableTypeData;
 
         public Type Type { get; }
 
-        public TypeInfo TypeInfo => _typeInfo ??= Type.GetTypeInfo();
+        public bool IsNullable => _isNullable ?? (_isNullable = !IsValueType || (Type.IsGenericType && !Type.IsGenericTypeDefinition && Type.GetGenericTypeDefinition() == OpenNullableType)).GetValueOrDefault();
 
-        public bool IsNullable => _isNullable ?? (_isNullable = !IsValueType || (TypeInfo.IsGenericType && !TypeInfo.IsGenericTypeDefinition && Type.GetGenericTypeDefinition() == OpenNullableType)).GetValueOrDefault();
-
-        public bool IsValueType => _isValueType ?? (_isValueType = TypeInfo.IsValueType).GetValueOrDefault();
+        public bool IsValueType => _isValueType ?? (_isValueType = Type.IsValueType).GetValueOrDefault();
 
         public bool IsNullableValueType => IsValueType && IsNullable;
 
-        public bool IsEnum => _isEnum ?? (_isEnum = TypeInfo.IsEnum).GetValueOrDefault();
+        public bool IsEnum => _isEnum ?? (_isEnum = Type.IsEnum).GetValueOrDefault();
 
         public TypeData? NonNullableValueTypeData => IsNullableValueType ? (_nonNullableTypeData ??= Get(Type.GenericTypeArguments[0])) : null;
 
@@ -56,8 +52,6 @@ namespace EncompassRest.Utilities
         public static TypeData Data { get; } = TypeData.Get(typeof(T));
 
         public static Type Type => Data.Type;
-
-        public static TypeInfo TypeInfo => Data.TypeInfo;
 
         public static IEqualityComparer<string>? CustomStringComparer { get; set; }
     }

@@ -10,60 +10,50 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class DocumentOrderLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _dateFilesPurged;
-    private DirtyValue<DateTime?>? _dateUtc;
-    private DirtyValue<DocumentAudit?>? _documentAudit;
-    private DirtyDictionary<string, string?>? _documentFields;
-    private DirtyList<OrderedDocument>? _orderedDocuments;
-    private DirtyValue<string?>? _orderId;
-    private DirtyValue<StringEnumValue<OrderType>>? _orderType;
-    private DirtyValue<DateTime?>? _updatedDateUtc;
-    private DirtyValue<string?>? _userId;
-
     /// <summary>
     /// DocumentOrderLog DateFilesPurged
     /// </summary>
-    public DateTime? DateFilesPurged { get => _dateFilesPurged; set => SetField(ref _dateFilesPurged, value); }
+    public DateTime? DateFilesPurged { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentOrderLog DateUtc
     /// </summary>
-    public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
+    public DateTime? DateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentOrderLog DocumentAudit
     /// </summary>
-    public DocumentAudit? DocumentAudit { get => _documentAudit; set => SetField(ref _documentAudit, value); }
+    public DocumentAudit? DocumentAudit { get => GetValue<DocumentAudit?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentOrderLog DocumentFields
     /// </summary>
     [AllowNull]
-    public IDictionary<string, string?> DocumentFields { get => GetField(ref _documentFields); set => SetField(ref _documentFields, value); }
+    public IDictionary<string, string?> DocumentFields { get => GetDictionary<string, string?>(); set => SetDictionary(value); }
 
     /// <summary>
     /// DocumentOrderLog OrderedDocuments
     /// </summary>
     [AllowNull]
-    public IList<OrderedDocument> OrderedDocuments { get => GetField(ref _orderedDocuments); set => SetField(ref _orderedDocuments, value); }
+    public IList<OrderedDocument> OrderedDocuments { get => GetList<OrderedDocument>(); set => SetList(value); }
 
     /// <summary>
     /// DocumentOrderLog OrderId
     /// </summary>
-    public string? OrderId { get => _orderId; set => SetField(ref _orderId, value); }
+    public string? OrderId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentOrderLog OrderType
     /// </summary>
-    public StringEnumValue<OrderType> OrderType { get => _orderType; set => SetField(ref _orderType, value); }
+    public StringEnumValue<OrderType> OrderType { get => GetValue<StringEnumValue<OrderType>>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentOrderLog UpdatedDateUtc
     /// </summary>
-    public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+    public DateTime? UpdatedDateUtc { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentOrderLog UserId
     /// </summary>
-    public string? UserId { get => _userId; set => SetField(ref _userId, value); }
+    public string? UserId { get => GetValue<string?>(); set => SetValue(value); }
 }

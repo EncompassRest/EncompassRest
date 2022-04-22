@@ -9,61 +9,51 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class PrintLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _action;
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _printedBy;
-    private DirtyValue<string?>? _printedByFullName;
-    private DirtyList<PrintForm>? _printForms;
-
     /// <summary>
-    /// PrintLogContract Action
+    /// PrintLog Action
     /// </summary>
-    public string? Action { get => _action; set => SetField(ref _action, value); }
+    public string? Action { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PrintLogContract Alerts
+    /// PrintLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
-    /// PrintLogContract CommentList
+    /// PrintLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
-    /// PrintLogContract Comments
+    /// PrintLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PrintLogContract Date
+    /// PrintLog Date
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PrintLogContract Id
+    /// PrintLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PrintLogContract PrintedBy
+    /// PrintLog PrintedBy
     /// </summary>
-    public string? PrintedBy { get => _printedBy; set => SetField(ref _printedBy, value); }
+    public string? PrintedBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PrintLogContract PrintedByFullName
+    /// PrintLog PrintedByFullName
     /// </summary>
-    public string? PrintedByFullName { get => _printedByFullName; set => SetField(ref _printedByFullName, value); }
+    public string? PrintedByFullName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PrintLogContract PrintForms
+    /// PrintLog PrintForms
     /// </summary>
     [AllowNull]
-    public IList<PrintForm> PrintForms { get => GetField(ref _printForms); set => SetField(ref _printForms, value); }
+    public IList<PrintForm> PrintForms { get => GetList<PrintForm>(); set => SetList(value); }
 }

@@ -5,37 +5,26 @@ using Newtonsoft.Json;
 namespace EncompassRest
 {
     /// <summary>
-    /// Base interface that supports extension data and json serialization.
-    /// </summary>
-    public interface IExtensibleObject : ISerializableObject
-    {
-        /// <summary>
-        /// Extension Data
-        /// </summary>
-        IDictionary<string, object?> ExtensionData { get; set; }
-    }
-
-    /// <summary>
     /// Base class that supports extension data and json serialization.
     /// </summary>
-    public abstract class ExtensibleObject : SerializableObject, IExtensibleObject
+    public abstract class ExtensibleObject : SerializableObject
     {
         private protected DirtyDictionary<string, object?>? _extensionData;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Extension Data
+        /// </summary>
         [JsonExtensionData]
-        public IDictionary<string, object?> ExtensionData { get => GetField(ref _extensionData); set => SetField(ref _extensionData, value); }
-
-        internal bool SetField<T>(ref DirtyDictionary<string, T>? field, IDictionary<string, T>? value)
+        public IDictionary<string, object?> ExtensionData
         {
-            if (!ReferenceEquals(field, value))
+            get => _extensionData ??= new(StringComparer.OrdinalIgnoreCase);
+            set
             {
-                field = value != null ? new DirtyDictionary<string, T>(value, StringComparer.OrdinalIgnoreCase) : null;
-                return true;
+                if (!ReferenceEquals(_extensionData, value))
+                {
+                    _extensionData = value != null ? new(value, StringComparer.OrdinalIgnoreCase) : null;
+                }
             }
-            return false;
         }
-
-        internal IDictionary<string, T> GetField<T>(ref DirtyDictionary<string, T>? field) => field ??= new DirtyDictionary<string, T>(StringComparer.OrdinalIgnoreCase);
     }
 }

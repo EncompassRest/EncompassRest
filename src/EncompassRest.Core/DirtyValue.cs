@@ -13,7 +13,7 @@ namespace EncompassRest
 
         public static implicit operator DirtyValue<T>(T value) => new DirtyValue<T>(value);
 
-        private static readonly bool s_tImplementsIDirty = TypeData<T>.Data.TypeInfo.ImplementedInterfaces.Any(implInterface => implInterface == TypeData<IDirty>.Type);
+        private static readonly bool s_tImplementsIDirty = TypeData<T>.Data.Type.GetInterfaces().Any(implInterface => implInterface == TypeData<IDirty>.Type);
 
         internal readonly T _value;
         private bool _dirty;

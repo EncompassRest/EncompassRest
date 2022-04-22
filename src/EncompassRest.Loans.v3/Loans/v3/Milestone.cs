@@ -8,66 +8,55 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class Milestone : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<int?>? _days;
-    private DirtyValue<bool?>? _doneIndicator;
-    private DirtyValue<int?>? _duration;
-    private DirtyValue<string?>? _id;
-    private LoanAssociate? _loanAssociate;
-    private EntityReference? _milestoneSetting;
-    private DirtyValue<string?>? _name;
-    private DirtyValue<bool?>? _reviewedIndicator;
-    private DirtyValue<string?>? _roleRequired;
-    private DirtyValue<DateTime?>? _startDate;
-
     /// <summary>
-    /// MilestoneContract Days
+    /// Milestone Days
     /// </summary>
-    public int? Days { get => _days; set => SetField(ref _days, value); }
+    public int? Days { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneContract DoneIndicator
+    /// Milestone DoneIndicator
     /// </summary>
-    public bool? DoneIndicator { get => _doneIndicator; set => SetField(ref _doneIndicator, value); }
+    public bool? DoneIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneContract Duration
+    /// Milestone Duration
     /// </summary>
-    public int? Duration { get => _duration; set => SetField(ref _duration, value); }
+    public int? Duration { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneContract Id
+    /// Milestone Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneContract LoanAssociate
+    /// Milestone LoanAssociate
     /// </summary>
     [AllowNull]
-    public LoanAssociate LoanAssociate { get => GetField(ref _loanAssociate); set => SetField(ref _loanAssociate, value); }
+    public LoanAssociate LoanAssociate { get => GetEntity<LoanAssociate>(); set => SetEntity(value); }
 
     /// <summary>
-    /// MilestoneContract MilestoneSetting
+    /// Milestone MilestoneSetting
     /// </summary>
     [AllowNull]
-    public EntityReference MilestoneSetting { get => GetField(ref _milestoneSetting); set => SetField(ref _milestoneSetting, value); }
+    public EntityReference MilestoneSetting { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// MilestoneContract Name
+    /// Milestone Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneContract ReviewedIndicator
+    /// Milestone ReviewedIndicator
     /// </summary>
-    public bool? ReviewedIndicator { get => _reviewedIndicator; set => SetField(ref _reviewedIndicator, value); }
+    public bool? ReviewedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneContract RoleRequired
+    /// Milestone RoleRequired
     /// </summary>
-    public string? RoleRequired { get => _roleRequired; set => SetField(ref _roleRequired, value); }
+    public string? RoleRequired { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneContract StartDate
+    /// Milestone StartDate
     /// </summary>
-    public DateTime? StartDate { get => _startDate; set => SetField(ref _startDate, value); }
+    public DateTime? StartDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

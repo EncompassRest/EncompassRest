@@ -7,12 +7,10 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class TPOWebCenterDocumentListSettingsRights : ParentAccessRights
     {
-        private TPOWebCenterDocumentListSettingsEditDocumentRights? _editDocument;
-
         /// <summary>
         /// TPOWebCenterDocumentListSettingsRights EditDocument
         /// </summary>
         [AllowNull]
-        public TPOWebCenterDocumentListSettingsEditDocumentRights EditDocument { get => GetField(ref _editDocument); set => SetField(ref _editDocument, value); }
+        public TPOWebCenterDocumentListSettingsEditDocumentRights EditDocument { get => GetEntity<TPOWebCenterDocumentListSettingsEditDocumentRights>(); set => SetEntity(value); }
     }
 }

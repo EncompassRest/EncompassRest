@@ -8,12 +8,10 @@ namespace EncompassRest.Settings.Personas.v1
     /// </summary>
     public sealed class LoConnectTasksRights : PersonaAccessRights
     {
-        private DirtyList<StandardWebFormRights>? _standardWebForms;
-
         /// <summary>
         /// LoConnectTasksRights StandardWebForms
         /// </summary>
         [AllowNull]
-        public IList<StandardWebFormRights> StandardWebForms { get => GetField(ref _standardWebForms); set => SetField(ref _standardWebForms, value); }
+        public IList<StandardWebFormRights> StandardWebForms { get => GetList<StandardWebFormRights>(); set => SetList(value); }
     }
 }

@@ -10,23 +10,19 @@ namespace EncompassRest.Loans.v3;
 [Entity(PropertiesToAlwaysSerialize = nameof(AuditDateTime) + "," + nameof(ReportKey))]
 public sealed partial class DocumentAudit : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<DocumentAuditAlert>? _alerts;
-    private DirtyValue<DateTime?>? _auditDateTime;
-    private DirtyValue<string?>? _reportKey;
-
     /// <summary>
-    /// DocumentAuditContract Alerts
+    /// DocumentAudit Alerts
     /// </summary>
     [AllowNull]
-    public IList<DocumentAuditAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<DocumentAuditAlert> Alerts { get => GetList<DocumentAuditAlert>(); set => SetList(value); }
 
     /// <summary>
-    /// DocumentAuditContract AuditDateTime
+    /// DocumentAudit AuditDateTime
     /// </summary>
-    public DateTime? AuditDateTime { get => _auditDateTime; set => SetField(ref _auditDateTime, value); }
+    public DateTime? AuditDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DocumentAuditContract ReportKey
+    /// DocumentAudit ReportKey
     /// </summary>
-    public string? ReportKey { get => _reportKey; set => SetField(ref _reportKey, value); }
+    public string? ReportKey { get => GetValue<string?>(); set => SetValue(value); }
 }

@@ -8,270 +8,228 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class ToolsRights : DirtyExtensibleObject
     {
-        private PurchaseAdviceFormRights? _purchaseAdviceForm;
-        private DirtyValue<bool?>? _shippingDetail;
-        private DirtyValue<bool?>? _amortizationSchedule;
-        private DirtyValue<bool?>? _antiSteeringSafeHarborDisclosure;
-        private DirtyValue<bool?>? _auditTrail;
-        private AUSTrackingRights? _aUSTracking;
-        private DirtyValue<bool?>? _brokerCheckCalculation;
-        private DirtyValue<bool?>? _businessContacts;
-        private DirtyValue<bool?>? _cashtoClose;
-        private CollateralTrackingRights? _collateralTracking;
-        private DirtyValue<bool?>? _conversationLog;
-        private DirtyValue<bool?>? _correspondentComplianceReviewData;
-        private DirtyValue<bool?>? _correspondentLoanStatus;
-        private DirtyValue<bool?>? _correspondentPurchaseAdviceForm;
-        private DirtyValue<bool?>? _debtConsolidation;
-        private DisclosureTrackingRights? _disclosureTracking;
-        private DirtyValue<bool?>? _eCSDataViewer;
-        private FeeVarianceWorksheetRights? _feeVarianceWorksheet;
-        private FileContactsRights? _fileContacts;
-        private DirtyValue<bool?>? _fundingBalancingWorksheet;
-        private DirtyValue<bool?>? _fundingWorksheet;
-        private DirtyValue<bool?>? _importFundingWorksheet;
-        private InterimServicingRights? _interimServicing;
-        private DirtyValue<bool?>? _loanComparison;
-        private DirtyValue<bool?>? _lockComparisonTool;
-        private DirtyValue<bool?>? _lockRequestForm;
-        private LOCompToolRights? _lOCompTool;
-        private DirtyValue<bool?>? _netTangibleBenefit;
-        private DirtyValue<bool?>? _piggybackLoans;
-        private DirtyValue<bool?>? _prequalification;
-        private DirtyValue<bool?>? _profitManagement;
-        private DirtyValue<bool?>? _rentVsOwn;
-        private RepAndWarrantTrackerRights? _repAndWarrantTracker;
-        private DirtyValue<bool?>? _secondaryRegistration;
-        private DirtyValue<bool?>? _secureFormTransfer;
-        private TasksRights? _tasks;
-        private TPOInformationRights? _tPOInformation;
-        private TQLServicesRights? _tQLServices;
-        private DirtyValue<bool?>? _trustAccount;
-        private DirtyValue<bool?>? _underwriterSummary;
-        private VerificationAndDocumentationTrackingRights? _verificationAndDocumentationTracking;
-
         /// <summary>
         /// ToolsRights PurchaseAdviceForm
         /// </summary>
         [JsonProperty(" PurchaseAdviceForm")]
         [AllowNull]
-        public PurchaseAdviceFormRights PurchaseAdviceForm { get => GetField(ref _purchaseAdviceForm); set => SetField(ref _purchaseAdviceForm, value); }
+        public PurchaseAdviceFormRights PurchaseAdviceForm { get => GetEntity<PurchaseAdviceFormRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights ShippingDetail
         /// </summary>
         [JsonProperty(" ShippingDetail")]
-        public bool? ShippingDetail { get => _shippingDetail; set => SetField(ref _shippingDetail, value); }
+        public bool? ShippingDetail { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights AmortizationSchedule
         /// </summary>
-        public bool? AmortizationSchedule { get => _amortizationSchedule; set => SetField(ref _amortizationSchedule, value); }
+        public bool? AmortizationSchedule { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights AntiSteeringSafeHarborDisclosure
         /// </summary>
         [JsonProperty("anti-SteeringSafeHarborDisclosure")]
-        public bool? AntiSteeringSafeHarborDisclosure { get => _antiSteeringSafeHarborDisclosure; set => SetField(ref _antiSteeringSafeHarborDisclosure, value); }
+        public bool? AntiSteeringSafeHarborDisclosure { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights AuditTrail
         /// </summary>
-        public bool? AuditTrail { get => _auditTrail; set => SetField(ref _auditTrail, value); }
+        public bool? AuditTrail { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights AUSTracking
         /// </summary>
         [AllowNull]
-        public AUSTrackingRights AUSTracking { get => GetField(ref _aUSTracking); set => SetField(ref _aUSTracking, value); }
+        public AUSTrackingRights AUSTracking { get => GetEntity<AUSTrackingRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights BrokerCheckCalculation
         /// </summary>
-        public bool? BrokerCheckCalculation { get => _brokerCheckCalculation; set => SetField(ref _brokerCheckCalculation, value); }
+        public bool? BrokerCheckCalculation { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights BusinessContacts
         /// </summary>
-        public bool? BusinessContacts { get => _businessContacts; set => SetField(ref _businessContacts, value); }
+        public bool? BusinessContacts { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights CashtoClose
         /// </summary>
         [JsonProperty("cash-to-Close")]
-        public bool? CashtoClose { get => _cashtoClose; set => SetField(ref _cashtoClose, value); }
+        public bool? CashtoClose { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights CollateralTracking
         /// </summary>
         [AllowNull]
-        public CollateralTrackingRights CollateralTracking { get => GetField(ref _collateralTracking); set => SetField(ref _collateralTracking, value); }
+        public CollateralTrackingRights CollateralTracking { get => GetEntity<CollateralTrackingRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights ConversationLog
         /// </summary>
-        public bool? ConversationLog { get => _conversationLog; set => SetField(ref _conversationLog, value); }
+        public bool? ConversationLog { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights CorrespondentComplianceReviewData
         /// </summary>
-        public bool? CorrespondentComplianceReviewData { get => _correspondentComplianceReviewData; set => SetField(ref _correspondentComplianceReviewData, value); }
+        public bool? CorrespondentComplianceReviewData { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights CorrespondentLoanStatus
         /// </summary>
-        public bool? CorrespondentLoanStatus { get => _correspondentLoanStatus; set => SetField(ref _correspondentLoanStatus, value); }
+        public bool? CorrespondentLoanStatus { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights CorrespondentPurchaseAdviceForm
         /// </summary>
-        public bool? CorrespondentPurchaseAdviceForm { get => _correspondentPurchaseAdviceForm; set => SetField(ref _correspondentPurchaseAdviceForm, value); }
+        public bool? CorrespondentPurchaseAdviceForm { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights DebtConsolidation
         /// </summary>
-        public bool? DebtConsolidation { get => _debtConsolidation; set => SetField(ref _debtConsolidation, value); }
+        public bool? DebtConsolidation { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights DisclosureTracking
         /// </summary>
         [AllowNull]
-        public DisclosureTrackingRights DisclosureTracking { get => GetField(ref _disclosureTracking); set => SetField(ref _disclosureTracking, value); }
+        public DisclosureTrackingRights DisclosureTracking { get => GetEntity<DisclosureTrackingRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights ECSDataViewer
         /// </summary>
-        public bool? ECSDataViewer { get => _eCSDataViewer; set => SetField(ref _eCSDataViewer, value); }
+        public bool? ECSDataViewer { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights FeeVarianceWorksheet
         /// </summary>
         [AllowNull]
-        public FeeVarianceWorksheetRights FeeVarianceWorksheet { get => GetField(ref _feeVarianceWorksheet); set => SetField(ref _feeVarianceWorksheet, value); }
+        public FeeVarianceWorksheetRights FeeVarianceWorksheet { get => GetEntity<FeeVarianceWorksheetRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights FileContacts
         /// </summary>
         [AllowNull]
-        public FileContactsRights FileContacts { get => GetField(ref _fileContacts); set => SetField(ref _fileContacts, value); }
+        public FileContactsRights FileContacts { get => GetEntity<FileContactsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights FundingBalancingWorksheet
         /// </summary>
-        public bool? FundingBalancingWorksheet { get => _fundingBalancingWorksheet; set => SetField(ref _fundingBalancingWorksheet, value); }
+        public bool? FundingBalancingWorksheet { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights FundingWorksheet
         /// </summary>
-        public bool? FundingWorksheet { get => _fundingWorksheet; set => SetField(ref _fundingWorksheet, value); }
+        public bool? FundingWorksheet { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights ImportFundingWorksheet
         /// </summary>
-        public bool? ImportFundingWorksheet { get => _importFundingWorksheet; set => SetField(ref _importFundingWorksheet, value); }
+        public bool? ImportFundingWorksheet { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights InterimServicing
         /// </summary>
         [AllowNull]
-        public InterimServicingRights InterimServicing { get => GetField(ref _interimServicing); set => SetField(ref _interimServicing, value); }
+        public InterimServicingRights InterimServicing { get => GetEntity<InterimServicingRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights LoanComparison
         /// </summary>
-        public bool? LoanComparison { get => _loanComparison; set => SetField(ref _loanComparison, value); }
+        public bool? LoanComparison { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights LockComparisonTool
         /// </summary>
         [JsonProperty("lockComparisionTool")]
-        public bool? LockComparisonTool { get => _lockComparisonTool; set => SetField(ref _lockComparisonTool, value); }
+        public bool? LockComparisonTool { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights LockRequestForm
         /// </summary>
-        public bool? LockRequestForm { get => _lockRequestForm; set => SetField(ref _lockRequestForm, value); }
+        public bool? LockRequestForm { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights LOCompTool
         /// </summary>
         [AllowNull]
-        public LOCompToolRights LOCompTool { get => GetField(ref _lOCompTool); set => SetField(ref _lOCompTool, value); }
+        public LOCompToolRights LOCompTool { get => GetEntity<LOCompToolRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights NetTangibleBenefit
         /// </summary>
-        public bool? NetTangibleBenefit { get => _netTangibleBenefit; set => SetField(ref _netTangibleBenefit, value); }
+        public bool? NetTangibleBenefit { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights PiggybackLoans
         /// </summary>
-        public bool? PiggybackLoans { get => _piggybackLoans; set => SetField(ref _piggybackLoans, value); }
+        public bool? PiggybackLoans { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights Prequalification
         /// </summary>
-        public bool? Prequalification { get => _prequalification; set => SetField(ref _prequalification, value); }
+        public bool? Prequalification { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights ProfitManagement
         /// </summary>
-        public bool? ProfitManagement { get => _profitManagement; set => SetField(ref _profitManagement, value); }
+        public bool? ProfitManagement { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights RentVsOwn
         /// </summary>
         [JsonProperty("rentVs.Own")]
-        public bool? RentVsOwn { get => _rentVsOwn; set => SetField(ref _rentVsOwn, value); }
+        public bool? RentVsOwn { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights RepAndWarrantTracker
         /// </summary>
         [AllowNull]
-        public RepAndWarrantTrackerRights RepAndWarrantTracker { get => GetField(ref _repAndWarrantTracker); set => SetField(ref _repAndWarrantTracker, value); }
+        public RepAndWarrantTrackerRights RepAndWarrantTracker { get => GetEntity<RepAndWarrantTrackerRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights SecondaryRegistration
         /// </summary>
-        public bool? SecondaryRegistration { get => _secondaryRegistration; set => SetField(ref _secondaryRegistration, value); }
+        public bool? SecondaryRegistration { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights SecureFormTransfer
         /// </summary>
-        public bool? SecureFormTransfer { get => _secureFormTransfer; set => SetField(ref _secureFormTransfer, value); }
+        public bool? SecureFormTransfer { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights Tasks
         /// </summary>
         [AllowNull]
-        public TasksRights Tasks { get => GetField(ref _tasks); set => SetField(ref _tasks, value); }
+        public TasksRights Tasks { get => GetEntity<TasksRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights TPOInformation
         /// </summary>
         [AllowNull]
-        public TPOInformationRights TPOInformation { get => GetField(ref _tPOInformation); set => SetField(ref _tPOInformation, value); }
+        public TPOInformationRights TPOInformation { get => GetEntity<TPOInformationRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights TQLServices
         /// </summary>
         [AllowNull]
-        public TQLServicesRights TQLServices { get => GetField(ref _tQLServices); set => SetField(ref _tQLServices, value); }
+        public TQLServicesRights TQLServices { get => GetEntity<TQLServicesRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ToolsRights TrustAccount
         /// </summary>
-        public bool? TrustAccount { get => _trustAccount; set => SetField(ref _trustAccount, value); }
+        public bool? TrustAccount { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights UnderwriterSummary
         /// </summary>
-        public bool? UnderwriterSummary { get => _underwriterSummary; set => SetField(ref _underwriterSummary, value); }
+        public bool? UnderwriterSummary { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights VerificationAndDocumentationTracking
         /// </summary>
         [AllowNull]
-        public VerificationAndDocumentationTrackingRights VerificationAndDocumentationTracking { get => GetField(ref _verificationAndDocumentationTracking); set => SetField(ref _verificationAndDocumentationTracking, value); }
+        public VerificationAndDocumentationTrackingRights VerificationAndDocumentationTracking { get => GetEntity<VerificationAndDocumentationTrackingRights>(); set => SetEntity(value); }
     }
 }

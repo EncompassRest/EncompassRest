@@ -5,23 +5,19 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class TasksRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _addTasks;
-        private DirtyValue<bool?>? _deleteTasks;
-        private DirtyValue<bool?>? _editTasks;
-
         /// <summary>
         /// TasksRights AddTasks
         /// </summary>
-        public bool? AddTasks { get => _addTasks; set => SetField(ref _addTasks, value); }
+        public bool? AddTasks { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TasksRights DeleteTasks
         /// </summary>
-        public bool? DeleteTasks { get => _deleteTasks; set => SetField(ref _deleteTasks, value); }
+        public bool? DeleteTasks { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// TasksRights EditTasks
         /// </summary>
-        public bool? EditTasks { get => _editTasks; set => SetField(ref _editTasks, value); }
+        public bool? EditTasks { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

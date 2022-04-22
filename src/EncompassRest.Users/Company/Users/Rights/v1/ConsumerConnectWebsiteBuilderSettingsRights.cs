@@ -5,17 +5,14 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class ConsumerConnectWebsiteBuilderSettingsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _webAdmin;
-        private DirtyValue<bool?>? _webContent;
-
         /// <summary>
         /// ConsumerConnectWebsiteBuilderSettingsRights WebAdmin
         /// </summary>
-        public bool? WebAdmin { get => _webAdmin; set => SetField(ref _webAdmin, value); }
+        public bool? WebAdmin { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ConsumerConnectWebsiteBuilderSettingsRights WebContent
         /// </summary>
-        public bool? WebContent { get => _webContent; set => SetField(ref _webContent, value); }
+        public bool? WebContent { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

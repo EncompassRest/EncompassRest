@@ -7,47 +7,39 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class NewYorkPrimaryLender : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _address;
-    private DirtyValue<string?>? _city;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _name;
-    private DirtyValue<int?>? _newYorkPrimaryLenderIndex;
-    private DirtyValue<string?>? _postalCode;
-    private DirtyValue<string?>? _state;
-
     /// <summary>
-    /// NewYorkPrimaryLenderContract Address
+    /// NewYorkPrimaryLender Address
     /// </summary>
-    public string? Address { get => _address; set => SetField(ref _address, value); }
+    public string? Address { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// NewYorkPrimaryLenderContract City
+    /// NewYorkPrimaryLender City
     /// </summary>
-    public string? City { get => _city; set => SetField(ref _city, value); }
+    public string? City { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// NewYorkPrimaryLenderContract Comments
+    /// NewYorkPrimaryLender Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// NewYorkPrimaryLenderContract Name
+    /// NewYorkPrimaryLender Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// NewYorkPrimaryLenderContract NewYorkPrimaryLenderIndex
+    /// NewYorkPrimaryLender NewYorkPrimaryLenderIndex
     /// </summary>
-    public int? NewYorkPrimaryLenderIndex { get => _newYorkPrimaryLenderIndex; set => SetField(ref _newYorkPrimaryLenderIndex, value); }
+    public int? NewYorkPrimaryLenderIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// NewYorkPrimaryLenderContract PostalCode
+    /// NewYorkPrimaryLender PostalCode
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+    public string? PostalCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// NewYorkPrimaryLenderContract State
+    /// NewYorkPrimaryLender State
     /// </summary>
-    public string? State { get => _state; set => SetField(ref _state, value); }
+    public string? State { get => GetValue<string?>(); set => SetValue(value); }
 }

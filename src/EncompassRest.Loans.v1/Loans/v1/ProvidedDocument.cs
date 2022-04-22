@@ -9,47 +9,39 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class ProvidedDocument : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _altId;
-    private DirtyValue<StringEnumValue<Owner>>? _borrowerType;
-    private DirtyValue<DateTime?>? _dateProvided;
-    private DirtyValue<string?>? _documentName;
-    private DirtyValue<bool?>? _entityDeleted;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _requiredIndicator;
-
     /// <summary>
     /// Documents Provided - ID [DOCPROVNN99]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? AltId { get => _altId; set => SetField(ref _altId, value); }
+    public string? AltId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Documents Provided - Borrower Type [DOCPROVNN01]
     /// </summary>
-    public StringEnumValue<Owner> BorrowerType { get => _borrowerType; set => SetField(ref _borrowerType, value); }
+    public StringEnumValue<Owner> BorrowerType { get => GetValue<StringEnumValue<Owner>>(); set => SetValue(value); }
 
     /// <summary>
     /// Documents Provided - Date Provided [DOCPROVNN04]
     /// </summary>
-    public DateTime? DateProvided { get => _dateProvided; set => SetField(ref _dateProvided, value); }
+    public DateTime? DateProvided { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// Documents Provided - Document Name [DOCPROVNN02]
     /// </summary>
-    public string? DocumentName { get => _documentName; set => SetField(ref _documentName, value); }
+    public string? DocumentName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// ProvidedDocument EntityDeleted
     /// </summary>
-    public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
+    public bool? EntityDeleted { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// ProvidedDocument Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Documents Provided - Required Indicator [DOCPROVNN03]
     /// </summary>
-    public bool? RequiredIndicator { get => _requiredIndicator; set => SetField(ref _requiredIndicator, value); }
+    public bool? RequiredIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 }

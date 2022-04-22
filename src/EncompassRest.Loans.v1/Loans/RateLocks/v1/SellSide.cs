@@ -12,330 +12,276 @@ namespace EncompassRest.Loans.RateLocks.v1
     /// </summary>
     public sealed partial class SellSide : DirtyExtensibleObject
     {
-        private DirtyValue<string?>? _requestedBy;
-        private DirtyValue<decimal?>? _srp;
-        private DirtyValue<Investor?>? _investor;
-        private DirtyValue<string?>? _servicer;
-        private DirtyValue<decimal?>? _servicingFee;
-        private DirtyValue<decimal?>? _guarantyBaseFee;
-        private DirtyValue<decimal?>? _guaranteeFee;
-        private DirtyValue<string?>? _poolNumber;
-        private DirtyValue<string?>? _poolId;
-        private DirtyValue<string?>? _commitmentContractNumber;
-        private DirtyValue<string?>? _productName;
-        private DirtyValue<decimal?>? _msrValue;
-        private DirtyValue<DateTime?>? _commitmentDate;
-        private DirtyValue<decimal?>? _actualAmount;
-        private DirtyValue<decimal?>? _actualPrice;
-        private DirtyValue<decimal?>? _actualSrp;
-        private DirtyValue<decimal?>? _diffAmount;
-        private DirtyValue<decimal?>? _diffPrice;
-        private DirtyValue<decimal?>? _diffSrp;
-        private DirtyValue<decimal?>? _netAmount;
-        private DirtyValue<decimal?>? _paidMiPremium;
-        private DirtyValue<decimal?>? _correspondentEscrowDisbursementsToBePaid;
-        private DirtyValue<string?>? _tradeMgmtPrevConfirmedLockGuid;
-        private DirtyValue<string?>? _tradeId;
-        private DirtyValue<string?>? _tradeNumber;
-        private DirtyValue<int?>? _daysToExtend;
-        private DirtyValue<DateTime?>? _extendedLockExpirationDate;
-        private DirtyValue<decimal?>? _lockExtendPriceAdjustment;
-        private DirtyValue<StringEnumValue<ServicingType>>? _servicingType;
-        private DirtyValue<decimal?>? _discountYsp;
-        private DirtyValue<string?>? _masterContractNumber;
-        private DirtyValue<decimal?>? _gainLossPercentage;
-        private DirtyValue<decimal?>? _gainLossPrice;
-        private DirtyValue<decimal?>? _gainLossTotalPrice;
-        private DirtyValue<string?>? _rateSheetId;
-        private DirtyValue<DateTime?>? _lastRateSetDate;
-        private DirtyValue<int?>? _lockNumberOfDays;
-        private DirtyValue<DateTime?>? _lockExpirationDate;
-        private DirtyValue<DateTime?>? _lockDate;
-        private DirtyValue<decimal?>? _baseRate;
-        private DirtyList<LockAdjustment>? _adjustments;
-        private DirtyValue<decimal?>? _netRate;
-        private DirtyValue<decimal?>? _totalRateAdjustments;
-        private DirtyValue<decimal?>? _basePrice;
-        private DirtyValue<decimal?>? _totalPriceAdjustments;
-        private DirtyValue<decimal?>? _netPrice;
-        private DirtyValue<decimal?>? _baseMarginRate;
-        private DirtyValue<decimal?>? _totalMarginAdjustments;
-        private DirtyValue<decimal?>? _netMarginRate;
-        private DirtyValue<string?>? _comments;
-        private DirtyValue<DateTime?>? _originalLockExpirationDate;
-        private DirtyValue<decimal?>? _srpPaidOut;
-        private DirtyValue<string?>? _loanProgram;
-
         /// <summary>
         /// The individual who entered the sell side lock and pricing information.
         /// </summary>
-        public string? RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
+        public string? RequestedBy { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Service release premium percentage (SRP) from investor.
         /// </summary>
-        public decimal? Srp { get => _srp; set => SetField(ref _srp, value); }
+        public decimal? Srp { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Array containing information about the investor.
         /// </summary>
-        public Investor? Investor { get => _investor; set => SetField(ref _investor, value); }
+        public Investor? Investor { get => GetValue<Investor?>(); set => SetValue(value); }
 
         /// <summary>
         /// Name of the servicer.
         /// </summary>
-        public string? Servicer { get => _servicer; set => SetField(ref _servicer, value); }
+        public string? Servicer { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side servicing fee.
         /// </summary>
-        public decimal? ServicingFee { get => _servicingFee; set => SetField(ref _servicingFee, value); }
+        public decimal? ServicingFee { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side guarantee base fee.
         /// </summary>
-        public decimal? GuarantyBaseFee { get => _guarantyBaseFee; set => SetField(ref _guarantyBaseFee, value); }
+        public decimal? GuarantyBaseFee { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side guarantee fee.
         /// </summary>
-        public decimal? GuaranteeFee { get => _guaranteeFee; set => SetField(ref _guaranteeFee, value); }
+        public decimal? GuaranteeFee { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The pool number assigned by the investor.
         /// </summary>
-        public string? PoolNumber { get => _poolNumber; set => SetField(ref _poolNumber, value); }
+        public string? PoolNumber { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Unique identifier for a group or pool of loans.
         /// </summary>
-        public string? PoolId { get => _poolId; set => SetField(ref _poolId, value); }
+        public string? PoolId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The commitment contract number.
         /// </summary>
-        public string? CommitmentContractNumber { get => _commitmentContractNumber; set => SetField(ref _commitmentContractNumber, value); }
+        public string? CommitmentContractNumber { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side product name.
         /// </summary>
-        public string? ProductName { get => _productName; set => SetField(ref _productName, value); }
+        public string? ProductName { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Mortgage servicing rights (MSR) value.
         /// </summary>
-        public decimal? MsrValue { get => _msrValue; set => SetField(ref _msrValue, value); }
+        public decimal? MsrValue { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side commitment date.
         /// </summary>
         [JsonConverter(typeof(ElliDateJsonConverter))]
-        public DateTime? CommitmentDate { get => _commitmentDate; set => SetField(ref _commitmentDate, value); }
+        public DateTime? CommitmentDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side actual amount.
         /// </summary>
-        public decimal? ActualAmount { get => _actualAmount; set => SetField(ref _actualAmount, value); }
+        public decimal? ActualAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side actual price.
         /// </summary>
-        public decimal? ActualPrice { get => _actualPrice; set => SetField(ref _actualPrice, value); }
+        public decimal? ActualPrice { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The service release premium (SRP) from the Sell Side on the Secondary Registration tool.
         /// </summary>
-        public decimal? ActualSrp { get => _actualSrp; set => SetField(ref _actualSrp, value); }
+        public decimal? ActualSrp { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side different amount.
         /// </summary>
-        public decimal? DiffAmount { get => _diffAmount; set => SetField(ref _diffAmount, value); }
+        public decimal? DiffAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side different price.
         /// </summary>
-        public decimal? DiffPrice { get => _diffPrice; set => SetField(ref _diffPrice, value); }
+        public decimal? DiffPrice { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side different SRP.
         /// </summary>
-        public decimal? DiffSrp { get => _diffSrp; set => SetField(ref _diffSrp, value); }
+        public decimal? DiffSrp { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The Base Sell Price plus the Total Price Adjustments.
         /// </summary>
-        public decimal? NetAmount { get => _netAmount; set => SetField(ref _netAmount, value); }
+        public decimal? NetAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side paid MI premium.
         /// </summary>
-        public decimal? PaidMiPremium { get => _paidMiPremium; set => SetField(ref _paidMiPremium, value); }
+        public decimal? PaidMiPremium { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Correspondent escrow disbursements to be paid by the seller.
         /// </summary>
-        public decimal? CorrespondentEscrowDisbursementsToBePaid { get => _correspondentEscrowDisbursementsToBePaid; set => SetField(ref _correspondentEscrowDisbursementsToBePaid, value); }
+        public decimal? CorrespondentEscrowDisbursementsToBePaid { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// TradeMgmtPrevConfirmedLockGuid
         /// </summary>
-        public string? TradeMgmtPrevConfirmedLockGuid { get => _tradeMgmtPrevConfirmedLockGuid; set => SetField(ref _tradeMgmtPrevConfirmedLockGuid, value); }
+        public string? TradeMgmtPrevConfirmedLockGuid { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side trade ID.
         /// </summary>
-        public string? TradeId { get => _tradeId; set => SetField(ref _tradeId, value); }
+        public string? TradeId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side trade number.
         /// </summary>
-        public string? TradeNumber { get => _tradeNumber; set => SetField(ref _tradeNumber, value); }
+        public string? TradeNumber { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Sell side number of additional days for the rate lock extension.
         /// </summary>
-        public int? DaysToExtend { get => _daysToExtend; set => SetField(ref _daysToExtend, value); }
+        public int? DaysToExtend { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// Sell side expiration date for the requested rate lock extension.
         /// </summary>
         [JsonConverter(typeof(ElliDateJsonConverter))]
-        public DateTime? ExtendedLockExpirationDate { get => _extendedLockExpirationDate; set => SetField(ref _extendedLockExpirationDate, value); }
+        public DateTime? ExtendedLockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Sell side price adjustment for the requested rate lock extension.
         /// </summary>
-        public decimal? LockExtendPriceAdjustment { get => _lockExtendPriceAdjustment; set => SetField(ref _lockExtendPriceAdjustment, value); }
+        public decimal? LockExtendPriceAdjustment { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side servicing type.
         /// </summary>
-        public StringEnumValue<ServicingType> ServicingType { get => _servicingType; set => SetField(ref _servicingType, value); }
+        public StringEnumValue<ServicingType> ServicingType { get => GetValue<StringEnumValue<ServicingType>>(); set => SetValue(value); }
 
         /// <summary>
         /// The discount yield spread premium
         /// </summary>
-        public decimal? DiscountYsp { get => _discountYsp; set => SetField(ref _discountYsp, value); }
+        public decimal? DiscountYsp { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The master contract number.
         /// </summary>
-        public string? MasterContractNumber { get => _masterContractNumber; set => SetField(ref _masterContractNumber, value); }
+        public string? MasterContractNumber { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side gain loss percentage.
         /// </summary>
-        public decimal? GainLossPercentage { get => _gainLossPercentage; set => SetField(ref _gainLossPercentage, value); }
+        public decimal? GainLossPercentage { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side gain loss price.
         /// </summary>
-        public decimal? GainLossPrice { get => _gainLossPrice; set => SetField(ref _gainLossPrice, value); }
+        public decimal? GainLossPrice { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Rate lock sell side gain loss total price.
         /// </summary>
-        public decimal? GainLossTotalPrice { get => _gainLossTotalPrice; set => SetField(ref _gainLossTotalPrice, value); }
+        public decimal? GainLossTotalPrice { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The ID from the investor's rate sheet.
         /// </summary>
-        public string? RateSheetId { get => _rateSheetId; set => SetField(ref _rateSheetId, value); }
+        public string? RateSheetId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Date when the interest rate for the loan was last locked.
         /// </summary>
         [JsonConverter(typeof(ElliDateJsonConverter))]
-        public DateTime? LastRateSetDate { get => _lastRateSetDate; set => SetField(ref _lastRateSetDate, value); }
+        public DateTime? LastRateSetDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The number of days for the sell side lock.
         /// </summary>
-        public int? LockNumberOfDays { get => _lockNumberOfDays; set => SetField(ref _lockNumberOfDays, value); }
+        public int? LockNumberOfDays { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// The date the sell side rate lock expires, calculated by adding the value in the # of Days field to the date in the Lock Date field on the Secondary Lock Tool.
         /// </summary>
         [JsonConverter(typeof(ElliDateJsonConverter))]
-        public DateTime? LockExpirationDate { get => _lockExpirationDate; set => SetField(ref _lockExpirationDate, value); }
+        public DateTime? LockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The sell side lock date.
         /// </summary>
         [JsonConverter(typeof(ElliDateJsonConverter))]
-        public DateTime? LockDate { get => _lockDate; set => SetField(ref _lockDate, value); }
+        public DateTime? LockDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The base sell side rate (as a percentage) for the lock. The rate is populated from the Sell Side Lock and Pricing column on the Secondary Lock Tool.
         /// </summary>
-        public decimal? BaseRate { get => _baseRate; set => SetField(ref _baseRate, value); }
+        public decimal? BaseRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Object containing attributes that describe sell side rate lock adjustments.
         /// </summary>
         [AllowNull]
-        public IList<LockAdjustment> Adjustments { get => GetField(ref _adjustments); set => SetField(ref _adjustments, value); }
+        public IList<LockAdjustment> Adjustments { get => GetList<LockAdjustment>(); set => SetList(value); }
 
         /// <summary>
         /// The total value of the sell side rate adjustments.
         /// </summary>
-        public decimal? TotalRateAdjustments { get => _totalRateAdjustments; set => SetField(ref _totalRateAdjustments, value); }
+        public decimal? TotalRateAdjustments { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The base sell side rate plus the total rate adjustments.
         /// </summary>
-        public decimal? NetRate { get => _netRate; set => SetField(ref _netRate, value); }
+        public decimal? NetRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The base sell side price for the lock. Enter pricing using 100 as par. Example 1: If the base price is .25 above par, enter 100.25. A loan amount of $100,000 with pricing of 100.25 would result in $100,250 being received. Example 2: If the base price is .25 below par, enter 99.75. A loan amount of $100,000 with pricing of 99.75 would result in $99,750 being received.
         /// </summary>
-        public decimal? BasePrice { get => _basePrice; set => SetField(ref _basePrice, value); }
+        public decimal? BasePrice { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The total value of the sell side price adjustments.
         /// </summary>
-        public decimal? TotalPriceAdjustments { get => _totalPriceAdjustments; set => SetField(ref _totalPriceAdjustments, value); }
+        public decimal? TotalPriceAdjustments { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The base sell side price plus the total rate adjustments.
         /// </summary>
-        public decimal? NetPrice { get => _netPrice; set => SetField(ref _netPrice, value); }
+        public decimal? NetPrice { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The sell side base margin rate.
         /// </summary>
-        public decimal? BaseMarginRate { get => _baseMarginRate; set => SetField(ref _baseMarginRate, value); }
+        public decimal? BaseMarginRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The sell side total margin adjustment.
         /// </summary>
-        public decimal? TotalMarginAdjustments { get => _totalMarginAdjustments; set => SetField(ref _totalMarginAdjustments, value); }
+        public decimal? TotalMarginAdjustments { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// The base sell side net margin rate.
         /// </summary>
-        public decimal? NetMarginRate { get => _netMarginRate; set => SetField(ref _netMarginRate, value); }
+        public decimal? NetMarginRate { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Additional notes and comments.
         /// </summary>
-        public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+        public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Original lock expiration date.
         /// </summary>
         [JsonConverter(typeof(ElliDateJsonConverter))]
-        public DateTime? OriginalLockExpirationDate { get => _originalLockExpirationDate; set => SetField(ref _originalLockExpirationDate, value); }
+        public DateTime? OriginalLockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// Service release premium percentage (SRP) paid out.
         /// </summary>
-        public decimal? SrpPaidOut { get => _srpPaidOut; set => SetField(ref _srpPaidOut, value); }
+        public decimal? SrpPaidOut { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Sell side loan program.
         /// </summary>
-        public string? LoanProgram { get => _loanProgram; set => SetField(ref _loanProgram, value); }
+        public string? LoanProgram { get => GetValue<string?>(); set => SetValue(value); }
     }
 }

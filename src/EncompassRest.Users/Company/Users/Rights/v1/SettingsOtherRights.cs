@@ -5,17 +5,14 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class SettingsOtherRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _accessToInputFormBuilder;
-        private DirtyValue<bool?>? _diagnosticMode;
-
         /// <summary>
         /// OtherClassRights AccessToInputFormBuilder
         /// </summary>
-        public bool? AccessToInputFormBuilder { get => _accessToInputFormBuilder; set => SetField(ref _accessToInputFormBuilder, value); }
+        public bool? AccessToInputFormBuilder { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// OtherClassRights DiagnosticMode
         /// </summary>
-        public bool? DiagnosticMode { get => _diagnosticMode; set => SetField(ref _diagnosticMode, value); }
+        public bool? DiagnosticMode { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

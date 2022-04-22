@@ -5,22 +5,18 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class StatusOnlineEvent : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _dateText;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<string?>? _id;
-
     /// <summary>
     /// StatusOnlineEvent DateText
     /// </summary>
-    public string? DateText { get => _dateText; set => SetField(ref _dateText, value); }
+    public string? DateText { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineEvent Description
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// StatusOnlineEvent Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 }

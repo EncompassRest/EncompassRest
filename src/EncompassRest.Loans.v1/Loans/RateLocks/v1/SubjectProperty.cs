@@ -5,83 +5,69 @@ namespace EncompassRest.Loans.RateLocks.v1
     /// </summary>
     public sealed partial class SubjectProperty : DirtyExtensibleObject
     {
-        private DirtyValue<string?>? _address;
-        private DirtyValue<string?>? _city;
-        private DirtyValue<string?>? _state;
-        private DirtyValue<string?>? _postalCode;
-        private DirtyValue<string?>? _county;
-        private DirtyValue<int?>? _estimatedAmount;
-        private DirtyValue<int?>? _appraisedAmount;
-        private DirtyValue<decimal?>? _purchasePrice;
-        private DirtyValue<string?>? _usageType;
-        private DirtyValue<int?>? _numberOfUnits;
-        private DirtyValue<string?>? _gsePropertyType;
-        private DirtyValue<bool?>? _isCondotelProperty;
-        private DirtyValue<bool?>? _isNonWarrantableProjectProperty;
-
         /// <summary>
         /// Address of the subject property.
         /// </summary>
-        public string? Address { get => _address; set => SetField(ref _address, value); }
+        public string? Address { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// City of the subject property.
         /// </summary>
-        public string? City { get => _city; set => SetField(ref _city, value); }
+        public string? City { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// State of the subject property.
         /// </summary>
-        public string? State { get => _state; set => SetField(ref _state, value); }
+        public string? State { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Postal code of the subject property.
         /// </summary>
-        public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+        public string? PostalCode { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// County of the subject property.
         /// </summary>
-        public string? County { get => _county; set => SetField(ref _county, value); }
+        public string? County { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Estimated Amount of the subject property.
         /// </summary>
-        public int? EstimatedAmount { get => _estimatedAmount; set => SetField(ref _estimatedAmount, value); }
+        public int? EstimatedAmount { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// Appraised Amount of the subject property.
         /// </summary>
-        public int? AppraisedAmount { get => _appraisedAmount; set => SetField(ref _appraisedAmount, value); }
+        public int? AppraisedAmount { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// Purchase Price of the subject property.
         /// </summary>
-        public decimal? PurchasePrice { get => _purchasePrice; set => SetField(ref _purchasePrice, value); }
+        public decimal? PurchasePrice { get => GetValue<decimal?>(); set => SetValue(value); }
 
         /// <summary>
         /// Usage Type of the subject property.
         /// </summary>
-        public string? UsageType { get => _usageType; set => SetField(ref _usageType, value); }
+        public string? UsageType { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Number Of Units in the subject property.
         /// </summary>
-        public int? NumberOfUnits { get => _numberOfUnits; set => SetField(ref _numberOfUnits, value); }
+        public int? NumberOfUnits { get => GetValue<int?>(); set => SetValue(value); }
 
         /// <summary>
         /// GSE property type.
         /// </summary>
-        public string? GsePropertyType { get => _gsePropertyType; set => SetField(ref _gsePropertyType, value); }
+        public string? GsePropertyType { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the subject property is a Condotel Property.
         /// </summary>
-        public bool? IsCondotelProperty { get => _isCondotelProperty; set => SetField(ref _isCondotelProperty, value); }
+        public bool? IsCondotelProperty { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// Indicates whether the subject property is a Non-Warrantable Project Property.
         /// </summary>
-        public bool? IsNonWarrantableProjectProperty { get => _isNonWarrantableProjectProperty; set => SetField(ref _isNonWarrantableProjectProperty, value); }
+        public bool? IsNonWarrantableProjectProperty { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

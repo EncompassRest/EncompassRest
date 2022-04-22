@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using EncompassRest.Utilities;
@@ -43,31 +44,35 @@ namespace EncompassRest.Loans.v1
         [IdPropertyName(nameof(EncompassId))]
         string? IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }
 
-        private Application? _currentApplication;
-
         /// <summary>
         /// The current application/borrower pair.
         /// </summary>
         [JsonIgnore]
+        [AllowNull]
         public Application CurrentApplication
         {
             get
             {
-                var currentApplication = _currentApplication;
+                var currentApplication = GetValue<Application?>();
                 if (currentApplication == null)
                 {
-                    var applicationIndex = CurrentApplicationIndex ?? 0;
-                    CurrentApplicationIndex = applicationIndex;
+                    var applicationIndex = CurrentApplicationIndex;
+                    if (applicationIndex == null)
+                    {
+                        applicationIndex = 0;
+                        CurrentApplicationIndex = applicationIndex;
+                    }
                     currentApplication = Applications.FirstOrDefault(a => a.ApplicationIndex == applicationIndex);
                     if (currentApplication == null)
                     {
                         currentApplication = new Application { ApplicationIndex = applicationIndex };
                         Applications.Add(currentApplication);
                     }
-                    _currentApplication = currentApplication;
+                    CurrentApplication = currentApplication;
                 }
                 return currentApplication;
             }
+            private set => SetValue(value);
         }
 
         /// <summary>
@@ -120,7 +125,7 @@ namespace EncompassRest.Loans.v1
             {
                 Client = client;
                 EncompassId = loanId;
-                _encompassId!.Dirty = false;
+                SetPropertyDirty(nameof(EncompassId), false);
                 _loanApis = client.Loans.GetLoanApis(this);
             }
         }
@@ -131,7 +136,7 @@ namespace EncompassRest.Loans.v1
             switch (propertyName)
             {
                 case nameof(CurrentApplicationIndex):
-                    _currentApplication = null;
+                    CurrentApplication = null;
                     break;
             }
         }

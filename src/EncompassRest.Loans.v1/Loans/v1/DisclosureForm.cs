@@ -7,22 +7,18 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class DisclosureForm : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _formName;
-    private DirtyValue<StringEnumValue<DisclosureFormType>>? _formType;
-    private DirtyValue<string?>? _id;
-
     /// <summary>
     /// DisclosureForm FormName
     /// </summary>
-    public string? FormName { get => _formName; set => SetField(ref _formName, value); }
+    public string? FormName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// DisclosureForm FormType
     /// </summary>
-    public StringEnumValue<DisclosureFormType> FormType { get => _formType; set => SetField(ref _formType, value); }
+    public StringEnumValue<DisclosureFormType> FormType { get => GetValue<StringEnumValue<DisclosureFormType>>(); set => SetValue(value); }
 
     /// <summary>
     /// DisclosureForm Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 }

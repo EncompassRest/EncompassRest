@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EncompassRest.Webhook.v1
 {
     /// <summary>
     /// WebhookFilters
     /// </summary>
-    public sealed class WebhookFilters : DirtyExtensibleObject, IDirty
+    public sealed class WebhookFilters : ExtensibleObject, IDirty
     {
-        private List<string>? _attributes;
+        private IList<string>? _attributes;
 
         /// <summary>
         /// List of attribute paths to which to subscribe.
         /// </summary>
-        public IList<string>? Attributes { get => GetField(ref _attributes); set => SetField(ref _attributes, value?.ToList()); }
+        [AllowNull]
+        public IList<string> Attributes { get => _attributes ??= new List<string>(); set => _attributes = value; }
 
         bool IDirty.Dirty { get => true; set { } }
     }

@@ -5,11 +5,9 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class CustomFieldsTab1Rights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _editTab1CustomFields;
-
         /// <summary>
         /// CustomFieldsTab1Rights EditTab1CustomFields
         /// </summary>
-        public bool? EditTab1CustomFields { get => _editTab1CustomFields; set => SetField(ref _editTab1CustomFields, value); }
+        public bool? EditTab1CustomFields { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

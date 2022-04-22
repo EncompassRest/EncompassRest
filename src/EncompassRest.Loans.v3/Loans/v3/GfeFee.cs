@@ -7,46 +7,38 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class GfeFee : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _amountDescription;
-    private DirtyValue<decimal?>? _brokerAmount;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<int?>? _gfeFeeIndex;
-    private DirtyValue<StringEnumValue<GfeFeeType>>? _gfeFeeType;
-    private DirtyValue<decimal?>? _otherAmount;
-    private DirtyValue<string?>? _rate;
+    /// <summary>
+    /// GfeFee AmountDescription [1663], [1665]
+    /// </summary>
+    public string? AmountDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfeFeeContract AmountDescription [1663], [1665]
+    /// GfeFee BrokerAmount
     /// </summary>
-    public string? AmountDescription { get => _amountDescription; set => SetField(ref _amountDescription, value); }
+    public decimal? BrokerAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfeFeeContract BrokerAmount
+    /// GfeFee Description
     /// </summary>
-    public decimal? BrokerAmount { get => _brokerAmount; set => SetField(ref _brokerAmount, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfeFeeContract Description
+    /// GfeFee GfeFeeIndex
     /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
+    public int? GfeFeeIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfeFeeContract GfeFeeIndex
+    /// GfeFee GfeFeeType
     /// </summary>
-    public int? GfeFeeIndex { get => _gfeFeeIndex; set => SetField(ref _gfeFeeIndex, value); }
+    public StringEnumValue<GfeFeeType> GfeFeeType { get => GetValue<StringEnumValue<GfeFeeType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfeFeeContract GfeFeeType
+    /// GfeFee OtherAmount
     /// </summary>
-    public StringEnumValue<GfeFeeType> GfeFeeType { get => _gfeFeeType; set => SetField(ref _gfeFeeType, value); }
+    public decimal? OtherAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// GfeFeeContract OtherAmount
+    /// GfeFee Rate [1847], [1848]
     /// </summary>
-    public decimal? OtherAmount { get => _otherAmount; set => SetField(ref _otherAmount, value); }
-
-    /// <summary>
-    /// GfeFeeContract Rate [1847], [1848]
-    /// </summary>
-    public string? Rate { get => _rate; set => SetField(ref _rate, value); }
+    public string? Rate { get => GetValue<string?>(); set => SetValue(value); }
 }

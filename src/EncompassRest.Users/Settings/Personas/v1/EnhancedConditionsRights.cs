@@ -5,11 +5,9 @@
     /// </summary>
     public sealed class EnhancedConditionsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _access;
-
         /// <summary>
         /// EnhancedConditionsRights Access
         /// </summary>
-        public bool? Access { get => _access; set => SetField(ref _access, value); }
+        public bool? Access { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

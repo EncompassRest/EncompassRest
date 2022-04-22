@@ -8,29 +8,24 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class TrackingEntry : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<bool?>? _isChecked;
-    private DirtyValue<string?>? _status;
-    private EntityReference? _user;
-
     /// <summary>
-    /// TrackingEntryContract Date
+    /// TrackingEntry Date
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// TrackingEntryContract IsChecked
+    /// TrackingEntry IsChecked
     /// </summary>
-    public bool? IsChecked { get => _isChecked; set => SetField(ref _isChecked, value); }
+    public bool? IsChecked { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// TrackingEntryContract Status
+    /// TrackingEntry Status
     /// </summary>
-    public string? Status { get => _status; set => SetField(ref _status, value); }
+    public string? Status { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// TrackingEntryContract User
+    /// TrackingEntry User
     /// </summary>
     [AllowNull]
-    public EntityReference User { get => GetField(ref _user); set => SetField(ref _user, value); }
+    public EntityReference User { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 }

@@ -8,18 +8,15 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class ElliUCDDetail : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyDictionary<string, string?>? _cDFields;
-    private DirtyDictionary<string, string?>? _lEFields;
-
     /// <summary>
     /// ElliUCDDetail CDFields
     /// </summary>
     [AllowNull]
-    public IDictionary<string, string?> CDFields { get => GetField(ref _cDFields); set => SetField(ref _cDFields, value); }
+    public IDictionary<string, string?> CDFields { get => GetDictionary<string, string?>(); set => SetDictionary(value); }
 
     /// <summary>
     /// ElliUCDDetail LEFields
     /// </summary>
     [AllowNull]
-    public IDictionary<string, string?> LEFields { get => GetField(ref _lEFields); set => SetField(ref _lEFields, value); }
+    public IDictionary<string, string?> LEFields { get => GetDictionary<string, string?>(); set => SetDictionary(value); }
 }

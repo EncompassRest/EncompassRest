@@ -12,30 +12,25 @@ namespace EncompassRest
     [Entity(SerializeWholeListWhenDirty = true, PropertiesToAlwaysSerialize = nameof(EntityType))]
     public class EntityReference : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string?>? _entityId;
-        private DirtyValue<StringEnumValue<EntityType>>? _entityType;
-        private DirtyValue<string?>? _entityName;
-        private DirtyValue<string?>? _entityUri;
-
         /// <summary>
         /// The ID of the entity.
         /// </summary>
-        public string? EntityId { get => _entityId; set => SetField(ref _entityId, value); }
+        public string? EntityId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The entity type.
         /// </summary>
-        public StringEnumValue<EntityType> EntityType { get => _entityType; set => SetField(ref _entityType, value); }
+        public StringEnumValue<EntityType> EntityType { get => GetValue<StringEnumValue<EntityType>>(); set => SetValue(value); }
 
         /// <summary>
         /// The name of the entity.
         /// </summary>
-        public string? EntityName { get => _entityName; set => SetField(ref _entityName, value); }
+        public string? EntityName { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Entity reference URI.
         /// </summary>
-        public string? EntityUri { get => _entityUri; set => SetField(ref _entityUri, value); }
+        public string? EntityUri { get => GetValue<string?>(); set => SetValue(value); }
 
         [IdPropertyName(nameof(EntityId))]
         string? IIdentifiable.Id { get => EntityId; set => EntityId = value; }

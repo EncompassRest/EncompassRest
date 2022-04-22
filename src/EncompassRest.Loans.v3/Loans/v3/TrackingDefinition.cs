@@ -8,23 +8,19 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class TrackingDefinition : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _name;
-    private DirtyValue<bool?>? _open;
-    private DirtyList<EntityReference>? _roles;
-
     /// <summary>
-    /// TrackingDefinitionContract Name
+    /// TrackingDefinition Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// TrackingDefinitionContract Open
+    /// TrackingDefinition Open
     /// </summary>
-    public bool? Open { get => _open; set => SetField(ref _open, value); }
+    public bool? Open { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// TrackingDefinitionContract Roles
+    /// TrackingDefinition Roles
     /// </summary>
     [AllowNull]
-    public IList<EntityReference> Roles { get => GetField(ref _roles); set => SetField(ref _roles, value); }
+    public IList<EntityReference> Roles { get => GetList<EntityReference>(); set => SetList(value); }
 }

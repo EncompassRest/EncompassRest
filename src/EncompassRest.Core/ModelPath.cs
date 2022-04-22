@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using EncompassRest.Utilities;
 using Newtonsoft.Json.Linq;
@@ -467,12 +466,20 @@ namespace EncompassRest
                         if (property != null)
                         {
                             declaredType = property.PropertyType;
-                            value = property.ValueProvider!.GetValue(parent);
+                            if (createIfNotExists || parent is not DirtyExtensibleObject dirtyExtensibleObject || dirtyExtensibleObject.Properties.ContainsKey(property.UnderlyingName!.Replace("_", string.Empty)) || (contract.UnderlyingType.Name == "Loan" && property.UnderlyingName == "CurrentApplication"))
+                            {
+                                value = property.ValueProvider!.GetValue(parent);
+                            }
+                            else
+                            {
+                                value = null;
+                            }
                             if (createIfNotExists && value == null)
                             {
                                 var json = nextIsProperty ? "{}" : "[]";
                                 value = JsonHelper.FromJson(json, declaredType);
-                                property.ValueProvider.SetValue(parent, value);
+                                property.ValueProvider!.SetValue(parent, value);
+                                value = property.ValueProvider.GetValue(parent);
                             }
                             return value;
                         }
@@ -619,17 +626,15 @@ namespace EncompassRest
 
             public override Type GetDeclaredType(Type parentType)
             {
-                var parentTypeInfo = parentType.GetTypeInfo();
                 var declaredType = TypeData<JToken>.Type;
-                foreach (var implementedInterface in parentTypeInfo.ImplementedInterfaces)
+                foreach (var implementedInterface in parentType.GetInterfaces())
                 {
-                    var implementedInterfaceTypeInfo = implementedInterface.GetTypeInfo();
-                    if (implementedInterfaceTypeInfo.IsGenericType && !implementedInterfaceTypeInfo.IsGenericTypeDefinition)
+                    if (implementedInterface.IsGenericType && !implementedInterface.IsGenericTypeDefinition)
                     {
                         var genericTypeDefinition = implementedInterface.GetGenericTypeDefinition();
                         if (genericTypeDefinition == TypeData.OpenIEnumerableType)
                         {
-                            declaredType = implementedInterfaceTypeInfo.GenericTypeArguments[0];
+                            declaredType = implementedInterface.GenericTypeArguments[0];
                         }
                     }
                 }

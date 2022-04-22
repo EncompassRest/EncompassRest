@@ -7,39 +7,33 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class ClosingDocsRights : DirtyExtensibleObject
     {
-        private DigitalClosingRights? _digitalClosing;
-        private ENoteTabRights? _eNoteTab;
-        private DirtyValue<bool?>? _manageAltLenders;
-        private OrderClosingDocsRights? _orderClosingDocs;
-        private ViewClosingDocumentDataRights? _viewClosingDocumentData;
-
         /// <summary>
         /// ClosingDocsRights DigitalClosing
         /// </summary>
         [AllowNull]
-        public DigitalClosingRights DigitalClosing { get => GetField(ref _digitalClosing); set => SetField(ref _digitalClosing, value); }
+        public DigitalClosingRights DigitalClosing { get => GetEntity<DigitalClosingRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ClosingDocsRights ENoteTab
         /// </summary>
         [AllowNull]
-        public ENoteTabRights ENoteTab { get => GetField(ref _eNoteTab); set => SetField(ref _eNoteTab, value); }
+        public ENoteTabRights ENoteTab { get => GetEntity<ENoteTabRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ClosingDocsRights ManageAltLenders
         /// </summary>
-        public bool? ManageAltLenders { get => _manageAltLenders; set => SetField(ref _manageAltLenders, value); }
+        public bool? ManageAltLenders { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ClosingDocsRights OrderClosingDocs
         /// </summary>
         [AllowNull]
-        public OrderClosingDocsRights OrderClosingDocs { get => GetField(ref _orderClosingDocs); set => SetField(ref _orderClosingDocs, value); }
+        public OrderClosingDocsRights OrderClosingDocs { get => GetEntity<OrderClosingDocsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ClosingDocsRights ViewClosingDocumentData
         /// </summary>
         [AllowNull]
-        public ViewClosingDocumentDataRights ViewClosingDocumentData { get => GetField(ref _viewClosingDocumentData); set => SetField(ref _viewClosingDocumentData, value); }
+        public ViewClosingDocumentDataRights ViewClosingDocumentData { get => GetEntity<ViewClosingDocumentDataRights>(); set => SetEntity(value); }
     }
 }

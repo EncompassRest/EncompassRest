@@ -8,19 +8,16 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class TPOWebCenterDocumentsTabRights : ParentAccessRights
     {
-        private AddEditTPOWebCenterAdditionalDocumentsRights? _addEditTPOWebCenterAdditionalDocuments;
-        private DirtyValue<bool?>? _disableTPOWebCenterGlobalDocuments;
-
         /// <summary>
         /// TPOWebCenterDocumentsTabRights AddEditTPOWebCenterAdditionalDocuments
         /// </summary>
         [JsonProperty("add/EditTPOWebCenterAdditionalDocuments")]
         [AllowNull]
-        public AddEditTPOWebCenterAdditionalDocumentsRights AddEditTPOWebCenterAdditionalDocuments { get => GetField(ref _addEditTPOWebCenterAdditionalDocuments); set => SetField(ref _addEditTPOWebCenterAdditionalDocuments, value); }
+        public AddEditTPOWebCenterAdditionalDocumentsRights AddEditTPOWebCenterAdditionalDocuments { get => GetEntity<AddEditTPOWebCenterAdditionalDocumentsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// TPOWebCenterDocumentsTabRights DisableTPOWebCenterGlobalDocuments
         /// </summary>
-        public bool? DisableTPOWebCenterGlobalDocuments { get => _disableTPOWebCenterGlobalDocuments; set => SetField(ref _disableTPOWebCenterGlobalDocuments, value); }
+        public bool? DisableTPOWebCenterGlobalDocuments { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

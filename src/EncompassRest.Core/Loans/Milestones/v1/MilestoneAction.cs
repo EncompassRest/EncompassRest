@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace EncompassRest.Loans.Milestones.v1
+﻿namespace EncompassRest.Loans.Milestones.v1
 {
     /// <summary>
     /// MilestoneAction

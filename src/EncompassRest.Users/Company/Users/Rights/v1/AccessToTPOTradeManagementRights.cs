@@ -5,23 +5,19 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class AccessToTPOTradeManagementRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _updateCorrespondentTrades;
-        private DirtyValue<bool?>? _viewCorrespondentMasterCommitments;
-        private DirtyValue<bool?>? _viewCorrespondentTrades;
-
         /// <summary>
         /// AccessToTPOTradeManagementRights UpdateCorrespondentTrades
         /// </summary>
-        public bool? UpdateCorrespondentTrades { get => _updateCorrespondentTrades; set => SetField(ref _updateCorrespondentTrades, value); }
+        public bool? UpdateCorrespondentTrades { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// AccessToTPOTradeManagementRights ViewCorrespondentMasterCommitments
         /// </summary>
-        public bool? ViewCorrespondentMasterCommitments { get => _viewCorrespondentMasterCommitments; set => SetField(ref _viewCorrespondentMasterCommitments, value); }
+        public bool? ViewCorrespondentMasterCommitments { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// AccessToTPOTradeManagementRights ViewCorrespondentTrades
         /// </summary>
-        public bool? ViewCorrespondentTrades { get => _viewCorrespondentTrades; set => SetField(ref _viewCorrespondentTrades, value); }
+        public bool? ViewCorrespondentTrades { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

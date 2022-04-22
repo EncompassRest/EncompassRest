@@ -5,17 +5,14 @@
     /// </summary>
     public sealed class LoanTeamMemberRights : DirtyExtensibleObject
     {
-        private EntityReference? _role;
-        private EntityReference? _milestone;
-
         /// <summary>
         /// LoanTeamMemberRights Role
         /// </summary>
-        public EntityReference? Role { get => _role; set => SetField(ref _role, value); }
+        public EntityReference? Role { get => GetValue<EntityReference?>(); set => SetValue(value); }
 
         /// <summary>
         /// EntityReference Milestone
         /// </summary>
-        public EntityReference? Milestone { get => _milestone; set => SetField(ref _milestone, value); }
+        public EntityReference? Milestone { get => GetValue<EntityReference?>(); set => SetValue(value); }
     }
 }

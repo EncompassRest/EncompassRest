@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using EncompassRest.Schema;
-using EncompassRest.Schema.v1;
 using EncompassRest.Utilities;
 using EnumsNET;
 
@@ -111,10 +109,9 @@ namespace EncompassRest.Loans.v1
                         valueType = LoanFieldValueType.Unknown;
                         if (declaredType != null)
                         {
-                            var typeInfo = declaredType.GetTypeInfo();
-                            if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                            if (declaredType.IsGenericType && !declaredType.IsGenericTypeDefinition)
                             {
-                                var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
+                                var genericTypeDefinition = declaredType.GetGenericTypeDefinition();
                                 if (genericTypeDefinition == TypeData.OpenStringEnumValueType)
                                 {
                                     valueType = LoanFieldValueType.String;
@@ -329,13 +326,12 @@ namespace EncompassRest.Loans.v1
                     var declaredType = DeclaredType;
                     if (declaredType != null)
                     {
-                        var typeInfo = declaredType.GetTypeInfo();
-                        if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                        if (declaredType.IsGenericType && !declaredType.IsGenericTypeDefinition)
                         {
-                            var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
+                            var genericTypeDefinition = declaredType.GetGenericTypeDefinition();
                             if (genericTypeDefinition == TypeData.OpenStringEnumValueType)
                             {
-                                enumType = typeInfo.GenericTypeArguments[0];
+                                enumType = declaredType.GenericTypeArguments[0];
                                 _enumType = enumType;
                             }
                         }

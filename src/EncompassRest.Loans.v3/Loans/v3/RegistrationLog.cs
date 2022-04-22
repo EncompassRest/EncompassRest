@@ -8,53 +8,44 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class RegistrationLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _createdDate;
-    private DirtyValue<DateTime?>? _expirationDate;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _investorName;
-    private DirtyValue<bool?>? _isCurrent;
-    private DirtyValue<string?>? _referenceNumber;
-    private EntityReference? _registeredBy;
-    private DirtyValue<DateTime?>? _registrationDate;
-
     /// <summary>
-    /// RegistrationLogContract CreatedDate
+    /// RegistrationLog CreatedDate
     /// </summary>
-    public DateTime? CreatedDate { get => _createdDate; set => SetField(ref _createdDate, value); }
+    public DateTime? CreatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RegistrationLogContract ExpirationDate
+    /// RegistrationLog ExpirationDate
     /// </summary>
-    public DateTime? ExpirationDate { get => _expirationDate; set => SetField(ref _expirationDate, value); }
+    public DateTime? ExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RegistrationLogContract Id
+    /// RegistrationLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RegistrationLogContract InvestorName
+    /// RegistrationLog InvestorName
     /// </summary>
-    public string? InvestorName { get => _investorName; set => SetField(ref _investorName, value); }
+    public string? InvestorName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RegistrationLogContract IsCurrent
+    /// RegistrationLog IsCurrent
     /// </summary>
-    public bool? IsCurrent { get => _isCurrent; set => SetField(ref _isCurrent, value); }
+    public bool? IsCurrent { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RegistrationLogContract ReferenceNumber
+    /// RegistrationLog ReferenceNumber
     /// </summary>
-    public string? ReferenceNumber { get => _referenceNumber; set => SetField(ref _referenceNumber, value); }
+    public string? ReferenceNumber { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// RegistrationLogContract RegisteredBy
+    /// RegistrationLog RegisteredBy
     /// </summary>
     [AllowNull]
-    public EntityReference RegisteredBy { get => GetField(ref _registeredBy); set => SetField(ref _registeredBy, value); }
+    public EntityReference RegisteredBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// RegistrationLogContract RegistrationDate
+    /// RegistrationLog RegistrationDate
     /// </summary>
-    public DateTime? RegistrationDate { get => _registrationDate; set => SetField(ref _registrationDate, value); }
+    public DateTime? RegistrationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

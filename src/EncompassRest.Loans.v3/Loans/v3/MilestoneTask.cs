@@ -9,139 +9,116 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class MilestoneTask : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _addDate;
-    private DirtyValue<string?>? _addedBy;
-    private DirtyValue<string?>? _addedByUserId;
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<bool?>? _completed;
-    private DirtyValue<string?>? _completedBy;
-    private DirtyValue<string?>? _completedByUserId;
-    private DirtyValue<DateTime?>? _completedDate;
-    private DirtyValue<int?>? _contactCount;
-    private DirtyList<MilestoneTaskContact>? _contacts;
-    private DirtyValue<int?>? _daysToComplete;
-    private DirtyValue<int?>? _daysToCompleteFromSetting;
-    private DirtyValue<DateTime?>? _expectedDate;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isRequiredIndicator;
-    private EntityReference? _milestoneRef;
-    private DirtyValue<DateTime?>? _milestoneTaskLogDate;
-    private DirtyValue<string?>? _priority;
-    private DirtyValue<string?>? _taskDescription;
-    private DirtyValue<string?>? _taskGuid;
-    private DirtyValue<string?>? _taskName;
-
     /// <summary>
-    /// MilestoneTaskContract AddDate
+    /// MilestoneTask AddDate
     /// </summary>
-    public DateTime? AddDate { get => _addDate; set => SetField(ref _addDate, value); }
+    public DateTime? AddDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract AddedBy
+    /// MilestoneTask AddedBy
     /// </summary>
-    public string? AddedBy { get => _addedBy; set => SetField(ref _addedBy, value); }
+    public string? AddedBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract AddedByUserId
+    /// MilestoneTask AddedByUserId
     /// </summary>
-    public string? AddedByUserId { get => _addedByUserId; set => SetField(ref _addedByUserId, value); }
+    public string? AddedByUserId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract Alerts
+    /// MilestoneTask Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
-    /// MilestoneTaskContract Comments
+    /// MilestoneTask Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract Completed
+    /// MilestoneTask Completed
     /// </summary>
-    public bool? Completed { get => _completed; set => SetField(ref _completed, value); }
+    public bool? Completed { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract CompletedBy
+    /// MilestoneTask CompletedBy
     /// </summary>
-    public string? CompletedBy { get => _completedBy; set => SetField(ref _completedBy, value); }
+    public string? CompletedBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract CompletedByUserId
+    /// MilestoneTask CompletedByUserId
     /// </summary>
-    public string? CompletedByUserId { get => _completedByUserId; set => SetField(ref _completedByUserId, value); }
+    public string? CompletedByUserId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract CompletedDate
+    /// MilestoneTask CompletedDate
     /// </summary>
-    public DateTime? CompletedDate { get => _completedDate; set => SetField(ref _completedDate, value); }
+    public DateTime? CompletedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract ContactCount
+    /// MilestoneTask ContactCount
     /// </summary>
-    public int? ContactCount { get => _contactCount; set => SetField(ref _contactCount, value); }
+    public int? ContactCount { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract Contacts
-    /// </summary>
-    [AllowNull]
-    public IList<MilestoneTaskContact> Contacts { get => GetField(ref _contacts); set => SetField(ref _contacts, value); }
-
-    /// <summary>
-    /// MilestoneTaskContract DaysToComplete
-    /// </summary>
-    public int? DaysToComplete { get => _daysToComplete; set => SetField(ref _daysToComplete, value); }
-
-    /// <summary>
-    /// MilestoneTaskContract DaysToCompleteFromSetting
-    /// </summary>
-    public int? DaysToCompleteFromSetting { get => _daysToCompleteFromSetting; set => SetField(ref _daysToCompleteFromSetting, value); }
-
-    /// <summary>
-    /// MilestoneTaskContract ExpectedDate
-    /// </summary>
-    public DateTime? ExpectedDate { get => _expectedDate; set => SetField(ref _expectedDate, value); }
-
-    /// <summary>
-    /// MilestoneTaskContract Id
-    /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
-
-    /// <summary>
-    /// MilestoneTaskContract IsRequiredIndicator
-    /// </summary>
-    public bool? IsRequiredIndicator { get => _isRequiredIndicator; set => SetField(ref _isRequiredIndicator, value); }
-
-    /// <summary>
-    /// MilestoneTaskContract MilestoneRef
+    /// MilestoneTask Contacts
     /// </summary>
     [AllowNull]
-    public EntityReference MilestoneRef { get => GetField(ref _milestoneRef); set => SetField(ref _milestoneRef, value); }
+    public IList<MilestoneTaskContact> Contacts { get => GetList<MilestoneTaskContact>(); set => SetList(value); }
 
     /// <summary>
-    /// MilestoneTaskContract MilestoneTaskLogDate
+    /// MilestoneTask DaysToComplete
     /// </summary>
-    public DateTime? MilestoneTaskLogDate { get => _milestoneTaskLogDate; set => SetField(ref _milestoneTaskLogDate, value); }
+    public int? DaysToComplete { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract Priority
+    /// MilestoneTask DaysToCompleteFromSetting
     /// </summary>
-    public string? Priority { get => _priority; set => SetField(ref _priority, value); }
+    public int? DaysToCompleteFromSetting { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract TaskDescription
+    /// MilestoneTask ExpectedDate
     /// </summary>
-    public string? TaskDescription { get => _taskDescription; set => SetField(ref _taskDescription, value); }
+    public DateTime? ExpectedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract TaskGuid
+    /// MilestoneTask Id
     /// </summary>
-    public string? TaskGuid { get => _taskGuid; set => SetField(ref _taskGuid, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTaskContract TaskName
+    /// MilestoneTask IsRequiredIndicator
     /// </summary>
-    public string? TaskName { get => _taskName; set => SetField(ref _taskName, value); }
+    public bool? IsRequiredIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// MilestoneTask MilestoneRef
+    /// </summary>
+    [AllowNull]
+    public EntityReference MilestoneRef { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// MilestoneTask MilestoneTaskLogDate
+    /// </summary>
+    public DateTime? MilestoneTaskLogDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// MilestoneTask Priority
+    /// </summary>
+    public string? Priority { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// MilestoneTask TaskDescription
+    /// </summary>
+    public string? TaskDescription { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// MilestoneTask TaskGuid
+    /// </summary>
+    public string? TaskGuid { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// MilestoneTask TaskName
+    /// </summary>
+    public string? TaskName { get => GetValue<string?>(); set => SetValue(value); }
 }

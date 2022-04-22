@@ -9,68 +9,57 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class PreviousVaLoan : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _loanDate;
-    private DirtyValue<StringEnumValue<PreviousVaLoanLoanType>>? _loanType;
-    private DirtyValue<int?>? _previousVaLoanIndex;
-    private DirtyValue<string?>? _propertyAddress;
-    private DirtyValue<string?>? _propertyCity;
-    private DirtyValue<bool?>? _propertyOwned;
-    private DirtyValue<string?>? _propertyPostalCode;
-    private DirtyValue<string?>? _propertyState;
-    private DirtyValue<DateTime?>? _soldDate;
-    private DirtyValue<string?>? _vaLoanNumber;
-
     /// <summary>
-    /// PreviousVaLoanContract LoanDate
+    /// PreviousVaLoan LoanDate
     /// </summary>
-    public DateTime? LoanDate { get => _loanDate; set => SetField(ref _loanDate, value); }
+    public DateTime? LoanDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreviousVaLoanContract LoanType
+    /// PreviousVaLoan LoanType
     /// </summary>
-    public StringEnumValue<PreviousVaLoanLoanType> LoanType { get => _loanType; set => SetField(ref _loanType, value); }
+    public StringEnumValue<PreviousVaLoanLoanType> LoanType { get => GetValue<StringEnumValue<PreviousVaLoanLoanType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreviousVaLoanContract PreviousVaLoanIndex
+    /// PreviousVaLoan PreviousVaLoanIndex
     /// </summary>
-    public int? PreviousVaLoanIndex { get => _previousVaLoanIndex; set => SetField(ref _previousVaLoanIndex, value); }
+    public int? PreviousVaLoanIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreviousVaLoanContract PropertyAddress
+    /// PreviousVaLoan PropertyAddress
     /// </summary>
-    public string? PropertyAddress { get => _propertyAddress; set => SetField(ref _propertyAddress, value); }
+    public string? PropertyAddress { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreviousVaLoanContract PropertyCity
+    /// PreviousVaLoan PropertyCity
     /// </summary>
-    public string? PropertyCity { get => _propertyCity; set => SetField(ref _propertyCity, value); }
+    public string? PropertyCity { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreviousVaLoanContract PropertyOwned
+    /// PreviousVaLoan PropertyOwned
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public bool? PropertyOwned { get => _propertyOwned; set => SetField(ref _propertyOwned, value); }
+    public bool? PropertyOwned { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreviousVaLoanContract PropertyPostalCode
+    /// PreviousVaLoan PropertyPostalCode
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? PropertyPostalCode { get => _propertyPostalCode; set => SetField(ref _propertyPostalCode, value); }
+    public string? PropertyPostalCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreviousVaLoanContract PropertyState
+    /// PreviousVaLoan PropertyState
     /// </summary>
-    public string? PropertyState { get => _propertyState; set => SetField(ref _propertyState, value); }
+    public string? PropertyState { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PreviousVaLoanContract SoldDate
-    /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
-    public DateTime? SoldDate { get => _soldDate; set => SetField(ref _soldDate, value); }
-
-    /// <summary>
-    /// PreviousVaLoanContract VaLoanNumber
+    /// PreviousVaLoan SoldDate
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
-    public string? VaLoanNumber { get => _vaLoanNumber; set => SetField(ref _vaLoanNumber, value); }
+    public DateTime? SoldDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// PreviousVaLoan VaLoanNumber
+    /// </summary>
+    [LoanFieldProperty(ReadOnly = true)]
+    public string? VaLoanNumber { get => GetValue<string?>(); set => SetValue(value); }
 }

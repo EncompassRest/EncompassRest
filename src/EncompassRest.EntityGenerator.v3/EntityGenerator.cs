@@ -158,7 +158,7 @@ public static class EntityGenerator
                     Console.WriteLine($"Could not find field [{field.Id}] path {field.ContractPath}");
                     continue;
                 }
-                if (!property.ExtensionData.TryGetValue("Fields", out var fields))
+                if (!property!.ExtensionData.TryGetValue("Fields", out var fields))
                 {
                     fields = new List<StandardFieldSchema>();
                     property.ExtensionData.Add("Fields", fields);
@@ -173,7 +173,7 @@ public static class EntityGenerator
             Directory.CreateDirectory(destinationPath);
             Directory.CreateDirectory("Generated\\Loans\\Enums");
 
-            GenerateEnumFileFromOptions(destinationPath, @namespace, "LoanEntityFilterKey", standardFields.Select(f => f.EntitiesFilterKey.Value).Distinct().Where(v => v != null).Concat(new[] { "loan" }).OrderBy(v => v).ToDictionary(v => v!, v => v!));
+            GenerateEnumFileFromOptions(destinationPath, @namespace, nameof(LoanEntityFilterKey), standardFields.Select(f => f.EntitiesFilterKey.Value).Distinct().Where(v => v != null).Concat(new[] { "loan" }).OrderBy(v => v).ToDictionary(v => v!, v => v!));
 
             var enumTypes = typeof(ActionTaken).Assembly.GetTypes()
                 .Concat(typeof(ConditionStatus).Assembly.GetTypes())
@@ -212,7 +212,6 @@ public static class EntityGenerator
 
     private static void GenerateClass(string key, EntitySchema entitySchema, Dictionary<string, EntitySchema> definitions, string destinationPath, string @namespace, HashSet<string> entityNames, Dictionary<Type, HashSet<string>> enumTypes)
     {
-        var fields = new StringBuilder();
         var properties = new StringBuilder();
         var entityName = GetEntityName(key, entitySchema);
 
@@ -270,7 +269,7 @@ public static class EntityGenerator
                         optionValues = new Dictionary<string, string>();
                         foreach (var field in standardFields)
                         {
-                            if (field.ContractPath.Contains("%"))
+                            if (field.ContractPath.Contains('%'))
                             {
                                 serializeWholeList = true;
                             }
@@ -316,7 +315,7 @@ public static class EntityGenerator
                         }
                         else
                         {
-                            enumValues = propertySchema.Enum.ToList()!;
+                            enumValues = propertySchema.Enum!.ToList()!;
                             enumValues.Remove(null!);
                         }
                         if (type == "string?")
@@ -336,7 +335,7 @@ public static class EntityGenerator
                                 {
                                     foreach (var matchingEnum in matchingEnums)
                                     {
-                                        if (propertyName.IndexOf(matchingEnum.Name, StringComparison.OrdinalIgnoreCase) >= 0 || matchingEnum.Name.IndexOf(propertyName, StringComparison.OrdinalIgnoreCase) >= 0)
+                                        if (propertyName.Contains(matchingEnum.Name, StringComparison.OrdinalIgnoreCase) || matchingEnum.Name.Contains(propertyName, StringComparison.OrdinalIgnoreCase))
                                         {
                                             match = matchingEnum;
                                             break;
@@ -439,9 +438,7 @@ public static class EntityGenerator
                     {
                         collectionsNamespace = true;
                     }
-                    var fieldName = $"_{pair.Key}";
-                    fields.AppendLine($"    private {(isEntity ? $"{type}?" : (isList ? $"DirtyList<{type}>?" : $"DirtyValue<{type}>?"))} {fieldName};");
-                    var summary = $"{key} {propertyName}";
+                    var summary = $"{entityName} {propertyName}";
                     if (standardFields?.Count == 1)
                     {
                         summary = $"{standardFields[0].Description.Replace("&", "&amp;")} [{standardFields[0].Id}]";
@@ -464,7 +461,18 @@ public static class EntityGenerator
                     {
                         properties.AppendLine($"    [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
                     }
-                    properties.AppendLine($@"    public {(isList ? $"IList<{type}>" : type)} {propertyName} {{ get => {(isEntity || isList ? $"GetField(ref {fieldName})" : fieldName)}; set => SetField(ref {fieldName}, value); }}");
+                    if (isEntity)
+                    {
+                        properties.AppendLine($@"    public {type} {propertyName} {{ get => GetEntity<{type}>(); set => SetEntity(value); }}");
+                    }
+                    else if (isList)
+                    {
+                        properties.AppendLine($@"    public IList<{type}> {propertyName} {{ get => GetList<{type}>(); set => SetList(value); }}");
+                    }
+                    else
+                    {
+                        properties.AppendLine($@"    public {type} {propertyName} {{ get => GetValue<{type}>(); set => SetValue(value); }}");
+                    }
                 }
             }
         }
@@ -505,8 +513,7 @@ public static class EntityGenerator
 /// </summary>
 {(entityArguments.Length > 0 ? $@"[Entity({entityArguments})]
 " : string.Empty)}public {(isEntityReference ? string.Empty : "sealed ")}partial class {entityName} : {(entityReferenceDerived ? "EntityReference" : "DirtyExtensibleObject")}, IIdentifiable
-{{
-{fields}{properties}}}");
+{{{properties}}}");
         }
     }
 

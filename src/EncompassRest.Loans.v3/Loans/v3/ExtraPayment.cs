@@ -7,22 +7,18 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class ExtraPayment : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _amount;
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<int?>? _lineNumber;
+    /// <summary>
+    /// ExtraPayment Amount
+    /// </summary>
+    public decimal? Amount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ExtraPaymentContract Amount
+    /// ExtraPayment Date
     /// </summary>
-    public decimal? Amount { get => _amount; set => SetField(ref _amount, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ExtraPaymentContract Date
+    /// ExtraPayment LineNumber
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
-
-    /// <summary>
-    /// ExtraPaymentContract LineNumber
-    /// </summary>
-    public int? LineNumber { get => _lineNumber; set => SetField(ref _lineNumber, value); }
+    public int? LineNumber { get => GetValue<int?>(); set => SetValue(value); }
 }

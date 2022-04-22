@@ -7,28 +7,23 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class FulfillmentRecipient : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _actualDate;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<DateTime?>? _presumedDate;
+    /// <summary>
+    /// FulfillmentRecipient ActualDate
+    /// </summary>
+    public DateTime? ActualDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FulfillmentRecipientContract ActualDate
+    /// FulfillmentRecipient Comments
     /// </summary>
-    public DateTime? ActualDate { get => _actualDate; set => SetField(ref _actualDate, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FulfillmentRecipientContract Comments
+    /// FulfillmentRecipient Id
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FulfillmentRecipientContract Id
+    /// FulfillmentRecipient PresumedDate
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
-
-    /// <summary>
-    /// FulfillmentRecipientContract PresumedDate
-    /// </summary>
-    public DateTime? PresumedDate { get => _presumedDate; set => SetField(ref _presumedDate, value); }
+    public DateTime? PresumedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

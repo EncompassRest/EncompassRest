@@ -7,34 +7,28 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class Gfe2010FwbcFwsc : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<StringEnumValue<YOrN>>? _fwbc;
-    private DirtyValue<string?>? _fwsc;
-    private DirtyValue<int?>? _gfe2010FwbcFwscIndex;
-    private DirtyValue<StringEnumValue<LineLetter>>? _lineLetter;
-    private DirtyValue<int?>? _lineNumber;
+    /// <summary>
+    /// Gfe2010FwbcFwsc Fwbc
+    /// </summary>
+    public StringEnumValue<YOrN> Fwbc { get => GetValue<StringEnumValue<YOrN>>(); set => SetValue(value); }
 
     /// <summary>
-    /// Gfe2010FwbcFwscContract Fwbc
+    /// Gfe2010FwbcFwsc Fwsc
     /// </summary>
-    public StringEnumValue<YOrN> Fwbc { get => _fwbc; set => SetField(ref _fwbc, value); }
+    public string? Fwsc { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Gfe2010FwbcFwscContract Fwsc
+    /// Gfe2010FwbcFwsc Gfe2010FwbcFwscIndex
     /// </summary>
-    public string? Fwsc { get => _fwsc; set => SetField(ref _fwsc, value); }
+    public int? Gfe2010FwbcFwscIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Gfe2010FwbcFwscContract Gfe2010FwbcFwscIndex
+    /// Gfe2010FwbcFwsc LineLetter
     /// </summary>
-    public int? Gfe2010FwbcFwscIndex { get => _gfe2010FwbcFwscIndex; set => SetField(ref _gfe2010FwbcFwscIndex, value); }
+    public StringEnumValue<LineLetter> LineLetter { get => GetValue<StringEnumValue<LineLetter>>(); set => SetValue(value); }
 
     /// <summary>
-    /// Gfe2010FwbcFwscContract LineLetter
+    /// Gfe2010FwbcFwsc LineNumber
     /// </summary>
-    public StringEnumValue<LineLetter> LineLetter { get => _lineLetter; set => SetField(ref _lineLetter, value); }
-
-    /// <summary>
-    /// Gfe2010FwbcFwscContract LineNumber
-    /// </summary>
-    public int? LineNumber { get => _lineNumber; set => SetField(ref _lineNumber, value); }
+    public int? LineNumber { get => GetValue<int?>(); set => SetValue(value); }
 }

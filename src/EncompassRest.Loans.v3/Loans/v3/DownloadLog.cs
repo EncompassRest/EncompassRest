@@ -9,90 +9,75 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class DownloadLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<LogAlert>? _alerts;
-    private DirtyValue<string?>? _barcodePage;
-    private DirtyList<LogComment>? _commentList;
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<DateTime?>? _date;
-    private DirtyValue<string?>? _documentId;
-    private DirtyValue<string?>? _downloadId;
-    private DirtyValue<string?>? _fileSource;
-    private DirtyValue<string?>? _fileType;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _receivedBy;
-    private DirtyValue<DateTime?>? _receivedDate;
-    private DirtyValue<string?>? _sender;
-    private DirtyValue<string?>? _title;
-
     /// <summary>
-    /// DownloadLogContract Alerts
+    /// DownloadLog Alerts
     /// </summary>
     [AllowNull]
-    public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<LogAlert> Alerts { get => GetList<LogAlert>(); set => SetList(value); }
 
     /// <summary>
-    /// DownloadLogContract BarcodePage
+    /// DownloadLog BarcodePage
     /// </summary>
-    public string? BarcodePage { get => _barcodePage; set => SetField(ref _barcodePage, value); }
+    public string? BarcodePage { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract CommentList
+    /// DownloadLog CommentList
     /// </summary>
     [AllowNull]
-    public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
+    public IList<LogComment> CommentList { get => GetList<LogComment>(); set => SetList(value); }
 
     /// <summary>
-    /// DownloadLogContract Comments
+    /// DownloadLog Comments
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract Date
+    /// DownloadLog Date
     /// </summary>
-    public DateTime? Date { get => _date; set => SetField(ref _date, value); }
+    public DateTime? Date { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract DocumentId
+    /// DownloadLog DocumentId
     /// </summary>
-    public string? DocumentId { get => _documentId; set => SetField(ref _documentId, value); }
+    public string? DocumentId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract DownloadId
+    /// DownloadLog DownloadId
     /// </summary>
-    public string? DownloadId { get => _downloadId; set => SetField(ref _downloadId, value); }
+    public string? DownloadId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract FileSource
+    /// DownloadLog FileSource
     /// </summary>
-    public string? FileSource { get => _fileSource; set => SetField(ref _fileSource, value); }
+    public string? FileSource { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract FileType
+    /// DownloadLog FileType
     /// </summary>
-    public string? FileType { get => _fileType; set => SetField(ref _fileType, value); }
+    public string? FileType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract Id
+    /// DownloadLog Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract ReceivedBy
+    /// DownloadLog ReceivedBy
     /// </summary>
-    public string? ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
+    public string? ReceivedBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract ReceivedDate
+    /// DownloadLog ReceivedDate
     /// </summary>
-    public DateTime? ReceivedDate { get => _receivedDate; set => SetField(ref _receivedDate, value); }
+    public DateTime? ReceivedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract Sender
+    /// DownloadLog Sender
     /// </summary>
-    public string? Sender { get => _sender; set => SetField(ref _sender, value); }
+    public string? Sender { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// DownloadLogContract Title
+    /// DownloadLog Title
     /// </summary>
-    public string? Title { get => _title; set => SetField(ref _title, value); }
+    public string? Title { get => GetValue<string?>(); set => SetValue(value); }
 }

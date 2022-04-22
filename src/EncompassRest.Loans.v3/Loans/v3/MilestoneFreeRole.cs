@@ -6,17 +6,14 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class MilestoneFreeRole : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _id;
-    private LoanAssociate? _loanAssociate;
-
     /// <summary>
-    /// MilestoneFreeRoleContract Id
+    /// MilestoneFreeRole Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneFreeRoleContract LoanAssociate
+    /// MilestoneFreeRole LoanAssociate
     /// </summary>
     [AllowNull]
-    public LoanAssociate LoanAssociate { get => GetField(ref _loanAssociate); set => SetField(ref _loanAssociate, value); }
+    public LoanAssociate LoanAssociate { get => GetEntity<LoanAssociate>(); set => SetEntity(value); }
 }

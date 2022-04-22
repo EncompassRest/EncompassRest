@@ -14,10 +14,10 @@ namespace EncompassRest
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [JsonConverter(typeof(DirtyListConverter<>))]
-    internal sealed class DirtyList<T> : IList<T>, IReadOnlyList<T>, IList, IDirty, IIndexOfId
+    internal sealed class DirtyList<T> : IList<T>, IReadOnlyList<T>, IList, IDirtyList, IIndexOfId
     {
-        private static readonly bool s_tIsIIdentifiable = TypeData<T>.TypeInfo.IsSubclassOf(TypeData<DirtyExtensibleObject>.Type);
-        private static string s_idPropertyName = s_tIsIIdentifiable ? DirtyExtensibleObject.GetIdPropertyName(TypeData<T>.TypeInfo) : string.Empty;
+        private static readonly bool s_tIsIIdentifiable = TypeData<T>.Type.IsSubclassOf(TypeData<DirtyExtensibleObject>.Type);
+        private static string s_idPropertyName = s_tIsIIdentifiable ? DirtyExtensibleObject.GetIdPropertyName(TypeData<T>.Type) : string.Empty;
 
         internal readonly List<DirtyValue<T>> _list = new List<DirtyValue<T>>();
         private readonly Dictionary<string, WrapperObject<int>>? _dictionary;
@@ -66,6 +66,10 @@ namespace EncompassRest
                 }
             }
         }
+
+        public bool IsElementDirty(int index) => _list[index].Dirty;
+
+        public void SetElementDirty(int index, bool value) => _list[index].Dirty = value;
 
         public int Count => _list.Count;
 
@@ -300,7 +304,7 @@ namespace EncompassRest
 
     internal sealed class DirtyListConverter<T> : JsonConverter<DirtyList<T>>
     {
-        private static readonly bool s_serializeWholeList = (!TypeData<T>.TypeInfo.IsSubclassOf(TypeData<DirtyExtensibleObject>.Type)) || TypeData<T>.TypeInfo.GetCustomAttribute<EntityAttribute>(false)?.SerializeWholeListWhenDirty == true;
+        private static readonly bool s_serializeWholeList = (!TypeData<T>.Type.IsSubclassOf(TypeData<DirtyExtensibleObject>.Type)) || TypeData<T>.Type.GetCustomAttribute<EntityAttribute>(false)?.SerializeWholeListWhenDirty == true;
         private readonly bool _serializeWholeList;
 
         public DirtyListConverter()

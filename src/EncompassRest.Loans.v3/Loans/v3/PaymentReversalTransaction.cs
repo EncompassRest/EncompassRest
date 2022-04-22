@@ -7,88 +7,73 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class PaymentReversalTransaction : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _createdById;
-    private DirtyValue<string?>? _createdByName;
-    private DirtyValue<DateTime?>? _createdDateTime;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<string?>? _modifiedById;
-    private DirtyValue<string?>? _modifiedByName;
-    private DirtyValue<DateTime?>? _modifiedDateTime;
-    private DirtyValue<string?>? _paymentId;
-    private DirtyValue<string?>? _reversalType;
-    private DirtyValue<string?>? _servicingPaymentMethod;
-    private DirtyValue<string?>? _servicingTransactionType;
-    private DirtyValue<decimal?>? _transactionAmount;
-    private DirtyValue<DateTime?>? _transactionDate;
+    /// <summary>
+    /// PaymentReversalTransaction Comments
+    /// </summary>
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract Comments
+    /// PaymentReversalTransaction CreatedById
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? CreatedById { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract CreatedById
+    /// PaymentReversalTransaction CreatedByName
     /// </summary>
-    public string? CreatedById { get => _createdById; set => SetField(ref _createdById, value); }
+    public string? CreatedByName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract CreatedByName
+    /// PaymentReversalTransaction CreatedDateTime
     /// </summary>
-    public string? CreatedByName { get => _createdByName; set => SetField(ref _createdByName, value); }
+    public DateTime? CreatedDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract CreatedDateTime
+    /// PaymentReversalTransaction Guid
     /// </summary>
-    public DateTime? CreatedDateTime { get => _createdDateTime; set => SetField(ref _createdDateTime, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract Guid
+    /// PaymentReversalTransaction ModifiedById
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public string? ModifiedById { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract ModifiedById
+    /// PaymentReversalTransaction ModifiedByName
     /// </summary>
-    public string? ModifiedById { get => _modifiedById; set => SetField(ref _modifiedById, value); }
+    public string? ModifiedByName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract ModifiedByName
+    /// PaymentReversalTransaction ModifiedDateTime
     /// </summary>
-    public string? ModifiedByName { get => _modifiedByName; set => SetField(ref _modifiedByName, value); }
+    public DateTime? ModifiedDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract ModifiedDateTime
+    /// PaymentReversalTransaction PaymentId
     /// </summary>
-    public DateTime? ModifiedDateTime { get => _modifiedDateTime; set => SetField(ref _modifiedDateTime, value); }
+    public string? PaymentId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract PaymentId
+    /// PaymentReversalTransaction ReversalType
     /// </summary>
-    public string? PaymentId { get => _paymentId; set => SetField(ref _paymentId, value); }
+    public string? ReversalType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract ReversalType
+    /// PaymentReversalTransaction ServicingPaymentMethod
     /// </summary>
-    public string? ReversalType { get => _reversalType; set => SetField(ref _reversalType, value); }
+    public string? ServicingPaymentMethod { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract ServicingPaymentMethod
+    /// PaymentReversalTransaction ServicingTransactionType
     /// </summary>
-    public string? ServicingPaymentMethod { get => _servicingPaymentMethod; set => SetField(ref _servicingPaymentMethod, value); }
+    public string? ServicingTransactionType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract ServicingTransactionType
+    /// PaymentReversalTransaction TransactionAmount
     /// </summary>
-    public string? ServicingTransactionType { get => _servicingTransactionType; set => SetField(ref _servicingTransactionType, value); }
+    public decimal? TransactionAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// PaymentReversalTransactionContract TransactionAmount
+    /// PaymentReversalTransaction TransactionDate
     /// </summary>
-    public decimal? TransactionAmount { get => _transactionAmount; set => SetField(ref _transactionAmount, value); }
-
-    /// <summary>
-    /// PaymentReversalTransactionContract TransactionDate
-    /// </summary>
-    public DateTime? TransactionDate { get => _transactionDate; set => SetField(ref _transactionDate, value); }
+    public DateTime? TransactionDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

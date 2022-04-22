@@ -5,10 +5,8 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class EdmDocument : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _title;
-
     /// <summary>
-    /// EdmDocumentContract Title
+    /// EdmDocument Title
     /// </summary>
-    public string? Title { get => _title; set => SetField(ref _title, value); }
+    public string? Title { get => GetValue<string?>(); set => SetValue(value); }
 }

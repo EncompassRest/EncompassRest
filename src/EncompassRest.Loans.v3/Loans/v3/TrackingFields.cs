@@ -9,29 +9,24 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class TrackingFields : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<string?>? _disclosurePackageTypes;
-    private DirtyValue<string?>? _docPackageId;
-    private DirtyValue<DateTime?>? _packageCreatedDate;
-    private DirtyValue<string?>? _packageId;
-
     /// <summary>
-    /// TrackingFieldsContract DisclosurePackageTypes
+    /// TrackingFields DisclosurePackageTypes
     /// </summary>
     [AllowNull]
-    public IList<string?> DisclosurePackageTypes { get => GetField(ref _disclosurePackageTypes); set => SetField(ref _disclosurePackageTypes, value); }
+    public IList<string?> DisclosurePackageTypes { get => GetList<string?>(); set => SetList(value); }
 
     /// <summary>
-    /// TrackingFieldsContract DocPackageId
+    /// TrackingFields DocPackageId
     /// </summary>
-    public string? DocPackageId { get => _docPackageId; set => SetField(ref _docPackageId, value); }
+    public string? DocPackageId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// TrackingFieldsContract PackageCreatedDate
+    /// TrackingFields PackageCreatedDate
     /// </summary>
-    public DateTime? PackageCreatedDate { get => _packageCreatedDate; set => SetField(ref _packageCreatedDate, value); }
+    public DateTime? PackageCreatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// TrackingFieldsContract PackageId
+    /// TrackingFields PackageId
     /// </summary>
-    public string? PackageId { get => _packageId; set => SetField(ref _packageId, value); }
+    public string? PackageId { get => GetValue<string?>(); set => SetValue(value); }
 }

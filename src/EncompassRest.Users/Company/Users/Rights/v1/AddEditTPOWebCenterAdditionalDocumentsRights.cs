@@ -5,11 +5,9 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class AddEditTPOWebCenterAdditionalDocumentsRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _deleteTPOWebCenterDocuments;
-
         /// <summary>
         /// AddEditTPOWebCenterAdditionalDocumentsRights DeleteTPOWebCenterDocuments
         /// </summary>
-        public bool? DeleteTPOWebCenterDocuments { get => _deleteTPOWebCenterDocuments; set => SetField(ref _deleteTPOWebCenterDocuments, value); }
+        public bool? DeleteTPOWebCenterDocuments { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

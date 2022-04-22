@@ -6,40 +6,33 @@ namespace EncompassRest.Loans.v1;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class EnergyEfficientMortgageItem : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<decimal?>? _actualAmount;
-    private DirtyValue<decimal?>? _allowedAmount;
-    private DirtyValue<int?>? _energyEfficientMortgageItemIndex;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<string?>? _item;
-    private DirtyValue<int?>? _lineNumber;
-
     /// <summary>
     /// EnergyEfficientMortgageItem ActualAmount
     /// </summary>
-    public decimal? ActualAmount { get => _actualAmount; set => SetField(ref _actualAmount, value); }
+    public decimal? ActualAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnergyEfficientMortgageItem AllowedAmount
     /// </summary>
-    public decimal? AllowedAmount { get => _allowedAmount; set => SetField(ref _allowedAmount, value); }
+    public decimal? AllowedAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnergyEfficientMortgageItem EnergyEfficientMortgageItemIndex
     /// </summary>
-    public int? EnergyEfficientMortgageItemIndex { get => _energyEfficientMortgageItemIndex; set => SetField(ref _energyEfficientMortgageItemIndex, value); }
+    public int? EnergyEfficientMortgageItemIndex { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnergyEfficientMortgageItem Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnergyEfficientMortgageItem Item
     /// </summary>
-    public string? Item { get => _item; set => SetField(ref _item, value); }
+    public string? Item { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// EnergyEfficientMortgageItem LineNumber
     /// </summary>
-    public int? LineNumber { get => _lineNumber; set => SetField(ref _lineNumber, value); }
+    public int? LineNumber { get => GetValue<int?>(); set => SetValue(value); }
 }

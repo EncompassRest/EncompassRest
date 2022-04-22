@@ -12,48 +12,41 @@ namespace EncompassRest.Contacts.v1
     [Entity(PropertiesToAlwaysSerialize = nameof(Name) + "," + nameof(Description))]
     public sealed class ContactGroup : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string?>? _id;
-        private StringEnumValue<ContactType> _contactType;
-        private StringEnumValue<ContactGroupType> _groupType;
-        private string? _name;
-        private DirtyValue<string?>? _description;
-        private NeverSerializeValue<DateTime?>? _createdDate;
-
         /// <summary>
         /// The unique identifier of the group.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string? Id { get => _id; set => SetField(ref _id, value); }
+        public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact type.
         /// </summary>
         [JsonRequired]
-        public StringEnumValue<ContactType> ContactType { get => _contactType; set => SetField(ref _contactType, value); }
+        public StringEnumValue<ContactType> ContactType { get => GetValue<StringEnumValue<ContactType>>(); set => SetValue(value); }
 
         /// <summary>
         /// The contact group type.
         /// </summary>
         [JsonRequired]
-        public StringEnumValue<ContactGroupType> GroupType { get => _groupType; set => SetField(ref _groupType, value); }
+        public StringEnumValue<ContactGroupType> GroupType { get => GetValue<StringEnumValue<ContactGroupType>>(); set => SetValue(value); }
 
         /// <summary>
         /// The name of the group.
         /// </summary>
         [JsonRequired]
-        public string? Name { get => _name; set => SetField(ref _name, value); }
+        public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// Detailed explanation of a group.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string? Description { get => _description; set => SetField(ref _description, value); }
+        public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// System-generated date and time when the group was created.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime? CreatedDate { get => _createdDate; private set => SetField(ref _createdDate, value); }
+        public DateTime? CreatedDate { get => GetValue<DateTime?>(); private set => SetValue(value); }
 
         /// <summary>
         /// Contact group creation constructor

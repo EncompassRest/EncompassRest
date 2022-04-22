@@ -10,226 +10,190 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class UnderwritingCondition : DirtyExtensibleObject, IIdentifiable
 {
-    private EntityReference? _addedBy;
-    private DirtyValue<DateTime?>? _addedDate;
-    private EntityReference? _borrowerPair;
-    private DirtyValue<string?>? _category;
-    private EntityReference? _clearedBy;
-    private DirtyValue<DateTime?>? _clearedDate;
-    private DirtyValue<int?>? _daysTillDue;
-    private DirtyValue<string?>? _description;
-    private DirtyValue<DateTime?>? _expectedDate;
-    private DirtyValue<DateTime?>? _expiredDate;
-    private EntityReference? _fulfilledBy;
-    private DirtyValue<DateTime?>? _fulfilledDate;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isMarkedRemoved;
-    private DirtyValue<bool?>? _isOwnerAllowedToClear;
-    private EntityReference? _owner;
-    private DirtyList<string?>? _print;
-    private DirtyValue<string?>? _priorTo;
-    private EntityReference? _receivedBy;
-    private DirtyValue<DateTime?>? _receivedDate;
-    private EntityReference? _rejectedBy;
-    private DirtyValue<DateTime?>? _rejectedDate;
-    private EntityReference? _requestedBy;
-    private DirtyValue<DateTime?>? _requestedDate;
-    private DirtyValue<string?>? _requestedFrom;
-    private EntityReference? _rerequestedBy;
-    private DirtyValue<DateTime?>? _rerequestedDate;
-    private EntityReference? _reviewedBy;
-    private DirtyValue<DateTime?>? _reviewedDate;
-    private DirtyValue<string?>? _source;
-    private DirtyValue<StringEnumValue<ConditionStatus>>? _status;
-    private DirtyValue<DateTime?>? _statusDate;
-    private DirtyValue<string?>? _title;
-    private EntityReference? _waivedBy;
-    private DirtyValue<DateTime?>? _waivedDate;
-
     /// <summary>
-    /// UnderwritingConditionContract AddedBy
+    /// UnderwritingCondition AddedBy
     /// </summary>
     [AllowNull]
-    public EntityReference AddedBy { get => GetField(ref _addedBy); set => SetField(ref _addedBy, value); }
+    public EntityReference AddedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract AddedDate
+    /// UnderwritingCondition AddedDate
     /// </summary>
-    public DateTime? AddedDate { get => _addedDate; set => SetField(ref _addedDate, value); }
+    public DateTime? AddedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract BorrowerPair
-    /// </summary>
-    [AllowNull]
-    public EntityReference BorrowerPair { get => GetField(ref _borrowerPair); set => SetField(ref _borrowerPair, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract Category
-    /// </summary>
-    public string? Category { get => _category; set => SetField(ref _category, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract ClearedBy
+    /// UnderwritingCondition BorrowerPair
     /// </summary>
     [AllowNull]
-    public EntityReference ClearedBy { get => GetField(ref _clearedBy); set => SetField(ref _clearedBy, value); }
+    public EntityReference BorrowerPair { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract ClearedDate
+    /// UnderwritingCondition Category
     /// </summary>
-    public DateTime? ClearedDate { get => _clearedDate; set => SetField(ref _clearedDate, value); }
+    public string? Category { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract DaysTillDue
-    /// </summary>
-    public int? DaysTillDue { get => _daysTillDue; set => SetField(ref _daysTillDue, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract Description
-    /// </summary>
-    public string? Description { get => _description; set => SetField(ref _description, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract ExpectedDate
-    /// </summary>
-    public DateTime? ExpectedDate { get => _expectedDate; set => SetField(ref _expectedDate, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract ExpiredDate
-    /// </summary>
-    public DateTime? ExpiredDate { get => _expiredDate; set => SetField(ref _expiredDate, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract FulfilledBy
+    /// UnderwritingCondition ClearedBy
     /// </summary>
     [AllowNull]
-    public EntityReference FulfilledBy { get => GetField(ref _fulfilledBy); set => SetField(ref _fulfilledBy, value); }
+    public EntityReference ClearedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract FulfilledDate
+    /// UnderwritingCondition ClearedDate
     /// </summary>
-    public DateTime? FulfilledDate { get => _fulfilledDate; set => SetField(ref _fulfilledDate, value); }
+    public DateTime? ClearedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract Id
+    /// UnderwritingCondition DaysTillDue
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public int? DaysTillDue { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract IsMarkedRemoved
+    /// UnderwritingCondition Description
     /// </summary>
-    public bool? IsMarkedRemoved { get => _isMarkedRemoved; set => SetField(ref _isMarkedRemoved, value); }
+    public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract IsOwnerAllowedToClear
+    /// UnderwritingCondition ExpectedDate
     /// </summary>
-    public bool? IsOwnerAllowedToClear { get => _isOwnerAllowedToClear; set => SetField(ref _isOwnerAllowedToClear, value); }
+    public DateTime? ExpectedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract Owner
+    /// UnderwritingCondition ExpiredDate
     /// </summary>
-    [AllowNull]
-    public EntityReference Owner { get => GetField(ref _owner); set => SetField(ref _owner, value); }
+    public DateTime? ExpiredDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract Print
-    /// </summary>
-    [AllowNull]
-    public IList<string?> Print { get => GetField(ref _print); set => SetField(ref _print, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract PriorTo
-    /// </summary>
-    public string? PriorTo { get => _priorTo; set => SetField(ref _priorTo, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract ReceivedBy
+    /// UnderwritingCondition FulfilledBy
     /// </summary>
     [AllowNull]
-    public EntityReference ReceivedBy { get => GetField(ref _receivedBy); set => SetField(ref _receivedBy, value); }
+    public EntityReference FulfilledBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract ReceivedDate
+    /// UnderwritingCondition FulfilledDate
     /// </summary>
-    public DateTime? ReceivedDate { get => _receivedDate; set => SetField(ref _receivedDate, value); }
+    public DateTime? FulfilledDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract RejectedBy
+    /// UnderwritingCondition Id
     /// </summary>
-    [AllowNull]
-    public EntityReference RejectedBy { get => GetField(ref _rejectedBy); set => SetField(ref _rejectedBy, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract RejectedDate
+    /// UnderwritingCondition IsMarkedRemoved
     /// </summary>
-    public DateTime? RejectedDate { get => _rejectedDate; set => SetField(ref _rejectedDate, value); }
+    public bool? IsMarkedRemoved { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract RequestedBy
+    /// UnderwritingCondition IsOwnerAllowedToClear
     /// </summary>
-    [AllowNull]
-    public EntityReference RequestedBy { get => GetField(ref _requestedBy); set => SetField(ref _requestedBy, value); }
+    public bool? IsOwnerAllowedToClear { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract RequestedDate
-    /// </summary>
-    public DateTime? RequestedDate { get => _requestedDate; set => SetField(ref _requestedDate, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract RequestedFrom
-    /// </summary>
-    public string? RequestedFrom { get => _requestedFrom; set => SetField(ref _requestedFrom, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract RerequestedBy
+    /// UnderwritingCondition Owner
     /// </summary>
     [AllowNull]
-    public EntityReference RerequestedBy { get => GetField(ref _rerequestedBy); set => SetField(ref _rerequestedBy, value); }
+    public EntityReference Owner { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract RerequestedDate
-    /// </summary>
-    public DateTime? RerequestedDate { get => _rerequestedDate; set => SetField(ref _rerequestedDate, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract ReviewedBy
+    /// UnderwritingCondition Print
     /// </summary>
     [AllowNull]
-    public EntityReference ReviewedBy { get => GetField(ref _reviewedBy); set => SetField(ref _reviewedBy, value); }
+    public IList<string?> Print { get => GetList<string?>(); set => SetList(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract ReviewedDate
+    /// UnderwritingCondition PriorTo
     /// </summary>
-    public DateTime? ReviewedDate { get => _reviewedDate; set => SetField(ref _reviewedDate, value); }
+    public string? PriorTo { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract Source
-    /// </summary>
-    public string? Source { get => _source; set => SetField(ref _source, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract Status
-    /// </summary>
-    public StringEnumValue<ConditionStatus> Status { get => _status; set => SetField(ref _status, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract StatusDate
-    /// </summary>
-    public DateTime? StatusDate { get => _statusDate; set => SetField(ref _statusDate, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract Title
-    /// </summary>
-    public string? Title { get => _title; set => SetField(ref _title, value); }
-
-    /// <summary>
-    /// UnderwritingConditionContract WaivedBy
+    /// UnderwritingCondition ReceivedBy
     /// </summary>
     [AllowNull]
-    public EntityReference WaivedBy { get => GetField(ref _waivedBy); set => SetField(ref _waivedBy, value); }
+    public EntityReference ReceivedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// UnderwritingConditionContract WaivedDate
+    /// UnderwritingCondition ReceivedDate
     /// </summary>
-    public DateTime? WaivedDate { get => _waivedDate; set => SetField(ref _waivedDate, value); }
+    public DateTime? ReceivedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// UnderwritingCondition RejectedBy
+    /// </summary>
+    [AllowNull]
+    public EntityReference RejectedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// UnderwritingCondition RejectedDate
+    /// </summary>
+    public DateTime? RejectedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// UnderwritingCondition RequestedBy
+    /// </summary>
+    [AllowNull]
+    public EntityReference RequestedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// UnderwritingCondition RequestedDate
+    /// </summary>
+    public DateTime? RequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// UnderwritingCondition RequestedFrom
+    /// </summary>
+    public string? RequestedFrom { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// UnderwritingCondition RerequestedBy
+    /// </summary>
+    [AllowNull]
+    public EntityReference RerequestedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// UnderwritingCondition RerequestedDate
+    /// </summary>
+    public DateTime? RerequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// UnderwritingCondition ReviewedBy
+    /// </summary>
+    [AllowNull]
+    public EntityReference ReviewedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// UnderwritingCondition ReviewedDate
+    /// </summary>
+    public DateTime? ReviewedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// UnderwritingCondition Source
+    /// </summary>
+    public string? Source { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// UnderwritingCondition Status
+    /// </summary>
+    public StringEnumValue<ConditionStatus> Status { get => GetValue<StringEnumValue<ConditionStatus>>(); set => SetValue(value); }
+
+    /// <summary>
+    /// UnderwritingCondition StatusDate
+    /// </summary>
+    public DateTime? StatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// UnderwritingCondition Title
+    /// </summary>
+    public string? Title { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// UnderwritingCondition WaivedBy
+    /// </summary>
+    [AllowNull]
+    public EntityReference WaivedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
+
+    /// <summary>
+    /// UnderwritingCondition WaivedDate
+    /// </summary>
+    public DateTime? WaivedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

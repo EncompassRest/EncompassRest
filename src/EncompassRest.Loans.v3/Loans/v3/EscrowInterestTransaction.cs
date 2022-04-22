@@ -7,76 +7,63 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class EscrowInterestTransaction : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<string?>? _createdById;
-    private DirtyValue<string?>? _createdByName;
-    private DirtyValue<DateTime?>? _createdDateTime;
-    private DirtyValue<string?>? _guid;
-    private DirtyValue<string?>? _modifiedById;
-    private DirtyValue<string?>? _modifiedByName;
-    private DirtyValue<DateTime?>? _modifiedDateTime;
-    private DirtyValue<string?>? _servicingPaymentMethod;
-    private DirtyValue<string?>? _servicingTransactionType;
-    private DirtyValue<decimal?>? _transactionAmount;
-    private DirtyValue<DateTime?>? _transactionDate;
+    /// <summary>
+    /// EscrowInterestTransaction Comments
+    /// </summary>
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract Comments
+    /// EscrowInterestTransaction CreatedById
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public string? CreatedById { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract CreatedById
+    /// EscrowInterestTransaction CreatedByName
     /// </summary>
-    public string? CreatedById { get => _createdById; set => SetField(ref _createdById, value); }
+    public string? CreatedByName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract CreatedByName
+    /// EscrowInterestTransaction CreatedDateTime
     /// </summary>
-    public string? CreatedByName { get => _createdByName; set => SetField(ref _createdByName, value); }
+    public DateTime? CreatedDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract CreatedDateTime
+    /// EscrowInterestTransaction Guid
     /// </summary>
-    public DateTime? CreatedDateTime { get => _createdDateTime; set => SetField(ref _createdDateTime, value); }
+    public string? Guid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract Guid
+    /// EscrowInterestTransaction ModifiedById
     /// </summary>
-    public string? Guid { get => _guid; set => SetField(ref _guid, value); }
+    public string? ModifiedById { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract ModifiedById
+    /// EscrowInterestTransaction ModifiedByName
     /// </summary>
-    public string? ModifiedById { get => _modifiedById; set => SetField(ref _modifiedById, value); }
+    public string? ModifiedByName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract ModifiedByName
+    /// EscrowInterestTransaction ModifiedDateTime
     /// </summary>
-    public string? ModifiedByName { get => _modifiedByName; set => SetField(ref _modifiedByName, value); }
+    public DateTime? ModifiedDateTime { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract ModifiedDateTime
+    /// EscrowInterestTransaction ServicingPaymentMethod
     /// </summary>
-    public DateTime? ModifiedDateTime { get => _modifiedDateTime; set => SetField(ref _modifiedDateTime, value); }
+    public string? ServicingPaymentMethod { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract ServicingPaymentMethod
+    /// EscrowInterestTransaction ServicingTransactionType
     /// </summary>
-    public string? ServicingPaymentMethod { get => _servicingPaymentMethod; set => SetField(ref _servicingPaymentMethod, value); }
+    public string? ServicingTransactionType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract ServicingTransactionType
+    /// EscrowInterestTransaction TransactionAmount
     /// </summary>
-    public string? ServicingTransactionType { get => _servicingTransactionType; set => SetField(ref _servicingTransactionType, value); }
+    public decimal? TransactionAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EscrowInterestTransactionContract TransactionAmount
+    /// EscrowInterestTransaction TransactionDate
     /// </summary>
-    public decimal? TransactionAmount { get => _transactionAmount; set => SetField(ref _transactionAmount, value); }
-
-    /// <summary>
-    /// EscrowInterestTransactionContract TransactionDate
-    /// </summary>
-    public DateTime? TransactionDate { get => _transactionDate; set => SetField(ref _transactionDate, value); }
+    public DateTime? TransactionDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

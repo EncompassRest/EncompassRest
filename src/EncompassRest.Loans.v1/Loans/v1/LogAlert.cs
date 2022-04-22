@@ -7,46 +7,38 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class LogAlert : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<DateTime?>? _dueDate;
-    private DirtyValue<DateTime?>? _followedUpDate;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<LogRecord?>? _logRecord;
-    private DirtyValue<int?>? _roleId;
-    private DirtyValue<string?>? _systemId;
-    private DirtyValue<string?>? _userId;
-
     /// <summary>
     /// LogAlert DueDate
     /// </summary>
-    public DateTime? DueDate { get => _dueDate; set => SetField(ref _dueDate, value); }
+    public DateTime? DueDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogAlert FollowedUpDate
     /// </summary>
-    public DateTime? FollowedUpDate { get => _followedUpDate; set => SetField(ref _followedUpDate, value); }
+    public DateTime? FollowedUpDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogAlert Id
     /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogAlert LogRecord
     /// </summary>
-    public LogRecord? LogRecord { get => _logRecord; set => SetField(ref _logRecord, value); }
+    public LogRecord? LogRecord { get => GetValue<LogRecord?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogAlert RoleId
     /// </summary>
-    public int? RoleId { get => _roleId; set => SetField(ref _roleId, value); }
+    public int? RoleId { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogAlert SystemId
     /// </summary>
-    public string? SystemId { get => _systemId; set => SetField(ref _systemId, value); }
+    public string? SystemId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// LogAlert UserId
     /// </summary>
-    public string? UserId { get => _userId; set => SetField(ref _userId, value); }
+    public string? UserId { get => GetValue<string?>(); set => SetValue(value); }
 }

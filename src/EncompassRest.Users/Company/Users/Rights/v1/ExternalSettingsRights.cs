@@ -8,87 +8,73 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class ExternalSettingsRights : DirtyExtensibleObject
     {
-        private DirtyValue<bool?>? _allTPOContactInformation;
-        private CompanyDetailsRights? _companyDetails;
-        private DirtyValue<bool?>? _companyUserAccountManagement;
-        private DirtyValue<bool?>? _globalAccess;
-        private DirtyValue<bool?>? _investorConnectSettings;
-        private DirtyValue<bool?>? _tPOConnectSiteManagement;
-        private DirtyValue<bool?>? _tPOCustomFields;
-        private DirtyValue<bool?>? _tPODisclosureSettings;
-        private TPOFeesRights? _tPOFees;
-        private DirtyValue<bool?>? _tPOGlobalLenderContacts;
-        private DirtyValue<bool?>? _tPOReassignment;
-        private DirtyValue<bool?>? _tPOSettings;
-        private TPOWebCenterDocumentListSettingsRights? _tPOWebCenterDocumentListSettings;
-
         /// <summary>
         /// ExternalSettingsRights AllTPOContactInformation
         /// </summary>
-        public bool? AllTPOContactInformation { get => _allTPOContactInformation; set => SetField(ref _allTPOContactInformation, value); }
+        public bool? AllTPOContactInformation { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ExternalSettingsRights CompanyDetails
         /// </summary>
         [AllowNull]
-        public CompanyDetailsRights CompanyDetails { get => GetField(ref _companyDetails); set => SetField(ref _companyDetails, value); }
+        public CompanyDetailsRights CompanyDetails { get => GetEntity<CompanyDetailsRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ExternalSettingsRights CompanyUserAccountManagement
         /// </summary>
         [JsonProperty("company/UserAccountManagement")]
-        public bool? CompanyUserAccountManagement { get => _companyUserAccountManagement; set => SetField(ref _companyUserAccountManagement, value); }
+        public bool? CompanyUserAccountManagement { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ExternalSettingsRights GlobalAccess
         /// </summary>
-        public bool? GlobalAccess { get => _globalAccess; set => SetField(ref _globalAccess, value); }
+        public bool? GlobalAccess { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ExternalSettingsRights InvestorConnectSettings
         /// </summary>
-        public bool? InvestorConnectSettings { get => _investorConnectSettings; set => SetField(ref _investorConnectSettings, value); }
+        public bool? InvestorConnectSettings { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ExternalSettingsRights TPOConnectSiteManagement
         /// </summary>
-        public bool? TPOConnectSiteManagement { get => _tPOConnectSiteManagement; set => SetField(ref _tPOConnectSiteManagement, value); }
+        public bool? TPOConnectSiteManagement { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ExternalSettingsRights TPOCustomFields
         /// </summary>
-        public bool? TPOCustomFields { get => _tPOCustomFields; set => SetField(ref _tPOCustomFields, value); }
+        public bool? TPOCustomFields { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ExternalSettingsRights TPODisclosureSettings
         /// </summary>
-        public bool? TPODisclosureSettings { get => _tPODisclosureSettings; set => SetField(ref _tPODisclosureSettings, value); }
+        public bool? TPODisclosureSettings { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ExternalSettingsRights TPOFees
         /// </summary>
         [AllowNull]
-        public TPOFeesRights TPOFees { get => GetField(ref _tPOFees); set => SetField(ref _tPOFees, value); }
+        public TPOFeesRights TPOFees { get => GetEntity<TPOFeesRights>(); set => SetEntity(value); }
 
         /// <summary>
         /// ExternalSettingsRights TPOGlobalLenderContacts
         /// </summary>
-        public bool? TPOGlobalLenderContacts { get => _tPOGlobalLenderContacts; set => SetField(ref _tPOGlobalLenderContacts, value); }
+        public bool? TPOGlobalLenderContacts { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ExternalSettingsRights TPOReassignment
         /// </summary>
-        public bool? TPOReassignment { get => _tPOReassignment; set => SetField(ref _tPOReassignment, value); }
+        public bool? TPOReassignment { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ExternalSettingsRights TPOSettings
         /// </summary>
-        public bool? TPOSettings { get => _tPOSettings; set => SetField(ref _tPOSettings, value); }
+        public bool? TPOSettings { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ExternalSettingsRights TPOWebCenterDocumentListSettings
         /// </summary>
         [AllowNull]
-        public TPOWebCenterDocumentListSettingsRights TPOWebCenterDocumentListSettings { get => GetField(ref _tPOWebCenterDocumentListSettings); set => SetField(ref _tPOWebCenterDocumentListSettings, value); }
+        public TPOWebCenterDocumentListSettingsRights TPOWebCenterDocumentListSettings { get => GetEntity<TPOWebCenterDocumentListSettingsRights>(); set => SetEntity(value); }
     }
 }

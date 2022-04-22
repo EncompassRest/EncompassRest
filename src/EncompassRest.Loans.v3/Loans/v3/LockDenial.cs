@@ -5,34 +5,28 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class LockDenial : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<bool?>? _alertIndicator;
-    private DirtyValue<string?>? _deniedBy;
-    private DirtyValue<string?>? _deniedById;
-    private DirtyValue<string?>? _requestGuid;
-    private DirtyValue<string?>? _timeDenied;
+    /// <summary>
+    /// LockDenial AlertIndicator
+    /// </summary>
+    public bool? AlertIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockDenialContract AlertIndicator
+    /// LockDenial DeniedBy
     /// </summary>
-    public bool? AlertIndicator { get => _alertIndicator; set => SetField(ref _alertIndicator, value); }
+    public string? DeniedBy { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockDenialContract DeniedBy
+    /// LockDenial DeniedById
     /// </summary>
-    public string? DeniedBy { get => _deniedBy; set => SetField(ref _deniedBy, value); }
+    public string? DeniedById { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockDenialContract DeniedById
+    /// LockDenial RequestGuid
     /// </summary>
-    public string? DeniedById { get => _deniedById; set => SetField(ref _deniedById, value); }
+    public string? RequestGuid { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// LockDenialContract RequestGuid
+    /// LockDenial TimeDenied
     /// </summary>
-    public string? RequestGuid { get => _requestGuid; set => SetField(ref _requestGuid, value); }
-
-    /// <summary>
-    /// LockDenialContract TimeDenied
-    /// </summary>
-    public string? TimeDenied { get => _timeDenied; set => SetField(ref _timeDenied, value); }
+    public string? TimeDenied { get => GetValue<string?>(); set => SetValue(value); }
 }

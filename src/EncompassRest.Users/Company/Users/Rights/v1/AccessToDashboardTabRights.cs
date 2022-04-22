@@ -7,31 +7,26 @@ namespace EncompassRest.Company.Users.Rights.v1
     /// </summary>
     public sealed class AccessToDashboardTabRights : ParentAccessRights
     {
-        private DirtyValue<bool?>? _filterDatabyOrganization;
-        private DirtyValue<bool?>? _filterDatabyUserGroup;
-        private DirtyValue<bool?>? _managePersonalSnapshotTemplate;
-        private DirtyValue<bool?>? _managePersonalView;
-
         /// <summary>
         /// AccessToDashboardTabRights FilterDatabyOrganization
         /// </summary>
         [JsonProperty("filterDatabyOrganization*")]
-        public bool? FilterDatabyOrganization { get => _filterDatabyOrganization; set => SetField(ref _filterDatabyOrganization, value); }
+        public bool? FilterDatabyOrganization { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// AccessToDashboardTabRights FilterDatabyUserGroup
         /// </summary>
         [JsonProperty("filterDatabyUserGroup*")]
-        public bool? FilterDatabyUserGroup { get => _filterDatabyUserGroup; set => SetField(ref _filterDatabyUserGroup, value); }
+        public bool? FilterDatabyUserGroup { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// AccessToDashboardTabRights ManagePersonalSnapshotTemplate
         /// </summary>
-        public bool? ManagePersonalSnapshotTemplate { get => _managePersonalSnapshotTemplate; set => SetField(ref _managePersonalSnapshotTemplate, value); }
+        public bool? ManagePersonalSnapshotTemplate { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// AccessToDashboardTabRights ManagePersonalView
         /// </summary>
-        public bool? ManagePersonalView { get => _managePersonalView; set => SetField(ref _managePersonalView, value); }
+        public bool? ManagePersonalView { get => GetValue<bool?>(); set => SetValue(value); }
     }
 }

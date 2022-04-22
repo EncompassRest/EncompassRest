@@ -6,12 +6,10 @@ namespace EncompassRest.Loans
 {
     public sealed partial class FileAttachmentReference : EntityReference
     {
-        private DirtyValue<string?>? _refId;
-
         /// <summary>
         /// FileAttachmentReference RefId
         /// </summary>
-        public string? RefId { get => _refId; set => SetField(ref _refId, value); }
+        public string? RefId { get => GetValue<string?>(); set => SetValue(value); }
 
         /// <summary>
         /// FileAttachmentReference constructor.

@@ -5,46 +5,38 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class MilestoneTemplateLog : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _comments;
-    private DirtyValue<int?>? _elliLogRecordId;
-    private DirtyValue<string?>? _id;
-    private DirtyValue<bool?>? _isTemplateDatesLocked;
-    private DirtyValue<bool?>? _isTemplateLocked;
-    private DirtyValue<string?>? _milestoneTemplateId;
-    private DirtyValue<string?>? _milestoneTemplateName;
+    /// <summary>
+    /// MilestoneTemplateLog Comments
+    /// </summary>
+    public string? Comments { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTemplateLogContract Comments
+    /// MilestoneTemplateLog ElliLogRecordId
     /// </summary>
-    public string? Comments { get => _comments; set => SetField(ref _comments, value); }
+    public int? ElliLogRecordId { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTemplateLogContract ElliLogRecordId
+    /// MilestoneTemplateLog Id
     /// </summary>
-    public int? ElliLogRecordId { get => _elliLogRecordId; set => SetField(ref _elliLogRecordId, value); }
-
-    /// <summary>
-    /// MilestoneTemplateLogContract Id
-    /// </summary>
-    public string? Id { get => _id; set => SetField(ref _id, value); }
+    public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Milestone Dates Mode [3670]
     /// </summary>
-    public bool? IsTemplateDatesLocked { get => _isTemplateDatesLocked; set => SetField(ref _isTemplateDatesLocked, value); }
+    public bool? IsTemplateDatesLocked { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Milestones List Lock [3669]
     /// </summary>
-    public bool? IsTemplateLocked { get => _isTemplateLocked; set => SetField(ref _isTemplateLocked, value); }
+    public bool? IsTemplateLocked { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTemplateLogContract MilestoneTemplateId
+    /// MilestoneTemplateLog MilestoneTemplateId
     /// </summary>
-    public string? MilestoneTemplateId { get => _milestoneTemplateId; set => SetField(ref _milestoneTemplateId, value); }
+    public string? MilestoneTemplateId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// MilestoneTemplateLogContract MilestoneTemplateName
+    /// MilestoneTemplateLog MilestoneTemplateName
     /// </summary>
-    public string? MilestoneTemplateName { get => _milestoneTemplateName; set => SetField(ref _milestoneTemplateName, value); }
+    public string? MilestoneTemplateName { get => GetValue<string?>(); set => SetValue(value); }
 }

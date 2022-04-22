@@ -8,73 +8,61 @@ namespace EncompassRest.Loans.v3;
 /// </summary>
 public sealed partial class ShippingContact : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _address;
-    private DirtyValue<string?>? _address2;
-    private DirtyValue<string?>? _city;
-    private DirtyValue<string?>? _contactName;
-    private DirtyValue<string?>? _email;
-    private DirtyValue<string?>? _fax;
-    private DirtyValue<string?>? _name;
-    private DirtyValue<string?>? _phone;
-    private DirtyValue<string?>? _postalCode;
-    private DirtyValue<StringEnumValue<ShippingContactType>>? _shippingContactType;
-    private DirtyValue<string?>? _state;
-
     /// <summary>
-    /// ShippingContactContract Address
+    /// ShippingContact Address
     /// </summary>
-    public string? Address { get => _address; set => SetField(ref _address, value); }
+    public string? Address { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContactContract Address2
+    /// ShippingContact Address2
     /// </summary>
-    public string? Address2 { get => _address2; set => SetField(ref _address2, value); }
+    public string? Address2 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContactContract City
+    /// ShippingContact City
     /// </summary>
-    public string? City { get => _city; set => SetField(ref _city, value); }
+    public string? City { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContactContract ContactName
+    /// ShippingContact ContactName
     /// </summary>
-    public string? ContactName { get => _contactName; set => SetField(ref _contactName, value); }
+    public string? ContactName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContactContract Email
+    /// ShippingContact Email
     /// </summary>
-    public string? Email { get => _email; set => SetField(ref _email, value); }
+    public string? Email { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContactContract Fax
+    /// ShippingContact Fax
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? Fax { get => _fax; set => SetField(ref _fax, value); }
+    public string? Fax { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContactContract Name
+    /// ShippingContact Name
     /// </summary>
-    public string? Name { get => _name; set => SetField(ref _name, value); }
+    public string? Name { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContactContract Phone
+    /// ShippingContact Phone
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
-    public string? Phone { get => _phone; set => SetField(ref _phone, value); }
+    public string? Phone { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContactContract PostalCode
+    /// ShippingContact PostalCode
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
-    public string? PostalCode { get => _postalCode; set => SetField(ref _postalCode, value); }
+    public string? PostalCode { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContactContract ShippingContactType
+    /// ShippingContact ShippingContactType
     /// </summary>
-    public StringEnumValue<ShippingContactType> ShippingContactType { get => _shippingContactType; set => SetField(ref _shippingContactType, value); }
+    public StringEnumValue<ShippingContactType> ShippingContactType { get => GetValue<StringEnumValue<ShippingContactType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// ShippingContactContract State
+    /// ShippingContact State
     /// </summary>
-    public string? State { get => _state; set => SetField(ref _state, value); }
+    public string? State { get => GetValue<string?>(); set => SetValue(value); }
 }

@@ -9,23 +9,19 @@ namespace EncompassRest.Loans.v1;
 /// </summary>
 public sealed partial class DocumentAudit : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyList<DocumentAuditAlert>? _alerts;
-    private DirtyValue<string?>? _reportKey;
-    private DirtyValue<DateTime?>? _timeStamp;
-
     /// <summary>
     /// DocumentAudit Alerts
     /// </summary>
     [AllowNull]
-    public IList<DocumentAuditAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
+    public IList<DocumentAuditAlert> Alerts { get => GetList<DocumentAuditAlert>(); set => SetList(value); }
 
     /// <summary>
     /// DocumentAudit ReportKey
     /// </summary>
-    public string? ReportKey { get => _reportKey; set => SetField(ref _reportKey, value); }
+    public string? ReportKey { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// DocumentAudit TimeStamp
     /// </summary>
-    public DateTime? TimeStamp { get => _timeStamp; set => SetField(ref _timeStamp, value); }
+    public DateTime? TimeStamp { get => GetValue<DateTime?>(); set => SetValue(value); }
 }

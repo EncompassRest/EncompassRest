@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Reflection;
-using EncompassRest.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
 
@@ -118,7 +116,7 @@ namespace EncompassRest
 
         private static InternalConverter? GetConverter(Type type, bool throwOnNull = false)
         {
-            if (!_converters.TryGetValue(type, out var converter) && type.GetTypeInfo().IsGenericType && !type.GetTypeInfo().IsGenericTypeDefinition && type.GetGenericTypeDefinition() == typeof(StringEnumValue<>))
+            if (!_converters.TryGetValue(type, out var converter) && type.IsGenericType && !type.IsGenericTypeDefinition && type.GetGenericTypeDefinition() == typeof(StringEnumValue<>))
             {
                 converter = _converters.GetOrAdd(type, t => (InternalConverter)Activator.CreateInstance(typeof(InternalConverter<>).MakeGenericType(t.GenericTypeArguments[0])));
             }

@@ -8,53 +8,44 @@ namespace EncompassRest.Loans.v3;
 [Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class VodItem : DirtyExtensibleObject, IIdentifiable
 {
-    private DirtyValue<string?>? _accountIdentifier;
-    private DirtyValue<decimal?>? _cashOrMarketValueAmount;
-    private DirtyValue<string?>? _country;
-    private DirtyValue<string?>? _depositoryAccountName;
-    private DirtyValue<bool?>? _foreignAddressIndicator;
-    private DirtyValue<int?>? _itemNumber;
-    private DirtyValue<StringEnumValue<AssetType>>? _type;
-    private DirtyValue<decimal?>? _urla2020CashOrMarketValueAmount;
-
     /// <summary>
-    /// VodItemContract AccountIdentifier
+    /// VodItem AccountIdentifier
     /// </summary>
-    public string? AccountIdentifier { get => _accountIdentifier; set => SetField(ref _accountIdentifier, value); }
+    public string? AccountIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// VodItemContract CashOrMarketValueAmount
+    /// VodItem CashOrMarketValueAmount
     /// </summary>
-    public decimal? CashOrMarketValueAmount { get => _cashOrMarketValueAmount; set => SetField(ref _cashOrMarketValueAmount, value); }
+    public decimal? CashOrMarketValueAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// VodItemContract Country
+    /// VodItem Country
     /// </summary>
-    public string? Country { get => _country; set => SetField(ref _country, value); }
+    public string? Country { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// VodItemContract DepositoryAccountName
+    /// VodItem DepositoryAccountName
     /// </summary>
-    public string? DepositoryAccountName { get => _depositoryAccountName; set => SetField(ref _depositoryAccountName, value); }
+    public string? DepositoryAccountName { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// VodItemContract ForeignAddressIndicator
+    /// VodItem ForeignAddressIndicator
     /// </summary>
-    public bool? ForeignAddressIndicator { get => _foreignAddressIndicator; set => SetField(ref _foreignAddressIndicator, value); }
+    public bool? ForeignAddressIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// VodItemContract ItemNumber
+    /// VodItem ItemNumber
     /// </summary>
-    public int? ItemNumber { get => _itemNumber; set => SetField(ref _itemNumber, value); }
+    public int? ItemNumber { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// VodItemContract Type
+    /// VodItem Type
     /// </summary>
     [LoanFieldProperty(MissingOptionsJson = "[\"Automobile\"]")]
-    public StringEnumValue<AssetType> Type { get => _type; set => SetField(ref _type, value); }
+    public StringEnumValue<AssetType> Type { get => GetValue<StringEnumValue<AssetType>>(); set => SetValue(value); }
 
     /// <summary>
-    /// VodItemContract Urla2020CashOrMarketValueAmount
+    /// VodItem Urla2020CashOrMarketValueAmount
     /// </summary>
-    public decimal? Urla2020CashOrMarketValueAmount { get => _urla2020CashOrMarketValueAmount; set => SetField(ref _urla2020CashOrMarketValueAmount, value); }
+    public decimal? Urla2020CashOrMarketValueAmount { get => GetValue<decimal?>(); set => SetValue(value); }
 }

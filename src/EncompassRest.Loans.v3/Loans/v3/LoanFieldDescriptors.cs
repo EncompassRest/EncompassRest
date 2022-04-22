@@ -51,15 +51,9 @@ public interface ILoanFieldDescriptors : IApiObject
 /// </summary>
 public sealed class LoanFieldDescriptors : ILoanFieldDescriptors
 {
-    private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new[]
+    private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new KeyValuePair<string, ModelPathSettings>[]
     {
-            new KeyValuePair<string, ModelPathSettings>("Loan.ClosingCost.Gfe2010.Gfe2010Fees", new ModelPathSettings(new Dictionary<string, string> { { nameof(Gfe2010Fee.Gfe2010FeeIndex), "0" }, { nameof(Gfe2010Fee.Gfe2010FeeType), "Undefined" } })),
-            new KeyValuePair<string, ModelPathSettings>("Loan.ClosingCost.Gfe2010.Gfe2010WholePocs", new ModelPathSettings(new Dictionary<string, string> { { nameof(Gfe2010WholePoc.Gfe2010WholePocIndex), "0" } })),
-            new KeyValuePair<string, ModelPathSettings>("Loan.ClosingCost.Gfe2010Page.Gfe2010FwbcFwscs", new ModelPathSettings(new Dictionary<string, string> { { nameof(Gfe2010FwbcFwsc.Gfe2010FwbcFwscIndex), "0" } })),
-            new KeyValuePair<string, ModelPathSettings>("Loan.Gfe.GfeFees", new ModelPathSettings(new Dictionary<string, string> { { nameof(GfeFee.GfeFeeIndex), "0" } })),
-            new KeyValuePair<string, ModelPathSettings>("Loan.MilestoneTemplateLogs", new ModelPathSettings(0)),
-            new KeyValuePair<string, ModelPathSettings>("Loan.CurrentApplication.Employment", new ModelPathSettings(new Dictionary<string, string> { { nameof(Employment.CurrentEmploymentIndicator), "true" } }))
-        }, 1, name => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(name.Replace("_", string.Empty), false));
+    }, 1, name => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(name.Replace("_", string.Empty), false));
 
     /// <summary>
     /// All basic field mappings. e.g. fields 2, VEND.X263, etc.
@@ -89,7 +83,7 @@ public sealed class LoanFieldDescriptors : ILoanFieldDescriptors
     static LoanFieldDescriptors()
     {
         // Use embedded resource file for built-in field mappings to save assembly space
-        using (var stream = typeof(YOrN).GetTypeInfo().Assembly.GetManifestResourceStream("EncompassRest.LoanFields.zip"))
+        using (var stream = typeof(FieldInfo).Assembly.GetManifestResourceStream("EncompassRest.LoanFields.zip"))
         {
             using (var zip = new ZipArchive(stream))
             {
@@ -103,7 +97,7 @@ public sealed class LoanFieldDescriptors : ILoanFieldDescriptors
 
                             foreach (var loanField in loanFields)
                             {
-                                var modelPathString = loanField.ModelPathV1;
+                                var modelPathString = loanField.ModelPathV3!;
                                 var modelPath = CreateModelPath(modelPathString)!;
                                 modelPathString = modelPath.ToString();
                                 FieldDescriptor descriptor;
@@ -149,7 +143,7 @@ public sealed class LoanFieldDescriptors : ILoanFieldDescriptors
 
                             foreach (var loanFieldPattern in loanFieldPatterns)
                             {
-                                var modelPathPattern = loanFieldPattern.ModelPathV1;
+                                var modelPathPattern = loanFieldPattern.ModelPathV3!;
                                 var descriptor = new FieldDescriptor(loanFieldPattern.FieldId, CreateModelPath(string.Format(modelPathPattern, 1))!, modelPathPattern, loanFieldPattern.Description, multiInstance: true);
                                 FieldPatternMappings.AddField(descriptor);
                             }
@@ -622,7 +616,7 @@ public sealed class LoanFieldDescriptors : ILoanFieldDescriptors
         try
         {
             var path = new ModelPath(s_modelPathContext, modelPath);
-            if (string.Equals(path.RootObjectName, "Loan", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(path.RootObjectName, "loan", StringComparison.OrdinalIgnoreCase))
             {
                 return path;
             }
@@ -663,49 +657,4 @@ public sealed class LoanFieldDescriptors : ILoanFieldDescriptors
 
     /// <inheritdoc/>
     public Task RefreshCustomFieldsAsync(CancellationToken cancellationToken = default) => Client.CommonCache.RefreshCustomFieldsAsync(Client, cancellationToken);
-
-    internal abstract class FieldInfo
-    {
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public LoanFieldFormat? Format { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public List<FieldOption>? Options { get; set; }
-
-        public string FieldId { get; }
-
-        public string? Description { get; set; }
-
-        protected FieldInfo(string fieldId)
-        {
-            FieldId = fieldId;
-        }
-    }
-
-    internal sealed class StandardFieldInfo : FieldInfo
-    {
-        public string ModelPathV1 { get; }
-
-        public string? ModelPathV3 { get; set; }
-
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public bool? ReadOnly { get; set; }
-
-        [JsonIgnore]
-        public LoanFieldFormat? NonSerializedFormat { get; set; }
-
-        public StandardFieldInfo(string fieldId, string modelPathV1)
-            : base(fieldId)
-        {
-            ModelPathV1 = modelPathV1;
-        }
-    }
-
-    internal sealed class VirtualFieldInfo : FieldInfo
-    {
-        public VirtualFieldInfo(string fieldId)
-            : base(fieldId)
-        {
-        }
-    }
 }
