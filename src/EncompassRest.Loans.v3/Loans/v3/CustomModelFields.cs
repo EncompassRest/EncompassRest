@@ -15,11 +15,6 @@ public sealed partial class CustomModelFields : DirtyExtensibleObject, IIdentifi
     public IList<object?> CpaPaymentSchedule { get => GetList<object?>(); set => SetList(value); }
 
     /// <summary>
-    /// CustomModelFields HelocExampleScheduleData
-    /// </summary>
-    public object? HelocExampleScheduleData { get => GetValue<object?>(); set => SetValue(value); }
-
-    /// <summary>
     /// CustomModelFields HelocHistoricalPaymentSchedule
     /// </summary>
     [AllowNull]

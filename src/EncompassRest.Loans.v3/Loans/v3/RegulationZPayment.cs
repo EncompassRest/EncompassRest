@@ -6,6 +6,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// RegulationZPayment
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(RegulationZPaymentIndex))]
 public sealed partial class RegulationZPayment : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

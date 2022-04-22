@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// PrequalificationScenario
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(PrequalificationScenarioIndex))]
 public sealed partial class PrequalificationScenario : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

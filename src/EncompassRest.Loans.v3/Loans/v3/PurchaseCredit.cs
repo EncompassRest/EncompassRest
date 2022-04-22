@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// PurchaseCredit
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(PurchaseCreditIndex))]
 public sealed partial class PurchaseCredit : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

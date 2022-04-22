@@ -6,6 +6,9 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>10</LangVersion>
+	<SignAssembly>true</SignAssembly>
+	<DelaySign>false</DelaySign>
+	<AssemblyOriginatorKeyFile>encompassrest.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>

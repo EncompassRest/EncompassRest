@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// UsdaHouseholdIncome
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(UsdaHouseholdIncomeIndex))]
 public sealed partial class UsdaHouseholdIncome : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

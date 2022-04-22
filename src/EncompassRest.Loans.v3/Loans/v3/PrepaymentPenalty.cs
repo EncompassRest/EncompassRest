@@ -6,6 +6,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// PrepaymentPenalty
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(PrepaymentPenaltyIndex))]
 public sealed partial class PrepaymentPenalty : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

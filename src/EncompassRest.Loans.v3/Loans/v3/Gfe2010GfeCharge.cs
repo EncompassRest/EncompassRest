@@ -3,6 +3,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// Gfe2010GfeCharge
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(ChargeBelow10Indicator) + "," + nameof(Gfe2010GfeChargeIndex))]
 public sealed partial class Gfe2010GfeCharge : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

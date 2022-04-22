@@ -7,7 +7,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// Employment
 /// </summary>
-[Entity(SerializeWholeListWhenDirty = true)]
+[Entity(PropertiesToAlwaysSerialize = nameof(CurrentEmploymentIndicator), SerializeWholeListWhenDirty = true)]
 public sealed partial class Employment : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

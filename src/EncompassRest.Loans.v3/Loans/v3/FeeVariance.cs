@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// FeeVariance
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(FeeVarianceChargeIndex) + "," + nameof(FeeVarianceFeeType))]
 public sealed partial class FeeVariance : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

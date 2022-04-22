@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// RateLockBuydown
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(RateLockBuydownIndex))]
 public sealed partial class RateLockBuydown : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

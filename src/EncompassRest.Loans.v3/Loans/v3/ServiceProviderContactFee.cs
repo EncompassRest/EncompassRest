@@ -3,7 +3,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// ServiceProviderContactFee
 /// </summary>
-[Entity(SerializeWholeListWhenDirty = true)]
+[Entity(PropertiesToAlwaysSerialize = nameof(ItemNumber), SerializeWholeListWhenDirty = true)]
 public sealed partial class ServiceProviderContactFee : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

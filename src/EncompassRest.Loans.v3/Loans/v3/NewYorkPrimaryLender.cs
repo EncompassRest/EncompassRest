@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// NewYorkPrimaryLender
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(NewYorkPrimaryLenderIndex))]
 public sealed partial class NewYorkPrimaryLender : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

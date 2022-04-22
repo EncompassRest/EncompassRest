@@ -5,7 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// HelocRepaymentDrawPeriod
 /// </summary>
-[Entity(SerializeWholeListWhenDirty = true)]
+[Entity(PropertiesToAlwaysSerialize = nameof(DrawIndicator), SerializeWholeListWhenDirty = true)]
 public sealed partial class HelocRepaymentDrawPeriod : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

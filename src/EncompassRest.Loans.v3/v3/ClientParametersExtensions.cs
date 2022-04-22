@@ -15,7 +15,7 @@ namespace EncompassRest.v3
         /// </summary>
         /// <param name="parameters">The client parameters to attach v1 cache initialization.</param>
         /// <returns>The client parameters passed in.</returns>
-        public static ClientParameters AddV1CacheInitialization(this ClientParameters parameters)
+        public static ClientParameters AddV3CacheInitialization(this ClientParameters parameters)
         {
             parameters.Initialization -= Parameters_Initialization;
             parameters.Initialization += Parameters_Initialization;

@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// Buydown
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(BuydownIndex))]
 public sealed partial class Buydown : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

@@ -8,6 +8,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// Contact
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(ContactType) + "," + nameof(CustomContactIndex))]
 public sealed partial class Contact : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

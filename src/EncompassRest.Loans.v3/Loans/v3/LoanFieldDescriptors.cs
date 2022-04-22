@@ -53,6 +53,7 @@ public sealed class LoanFieldDescriptors : ILoanFieldDescriptors
 {
     private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new KeyValuePair<string, ModelPathSettings>[]
     {
+        new KeyValuePair<string, ModelPathSettings>("Loan.MilestoneTemplateLogs", new ModelPathSettings(0))
     }, 1, name => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(name.Replace("_", string.Empty), false));
 
     /// <summary>

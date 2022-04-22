@@ -78,6 +78,8 @@ public static class EntityGenerator
         { nameof(Document), new() { { nameof(Document.Status), typeof(DocumentStatus) } } }
     };
 
+    private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new KeyValuePair<string, ModelPathSettings>[0], 0);
+
     public static async Task Main()
     {
         try
@@ -248,6 +250,8 @@ public static class EntityGenerator
         var enumsNamespace = false;
         var schemaNamespace = false;
         var codeAnalysisNamespace = false;
+
+        var propertiesToAlwaysSerialize = new HashSet<string>(entitySchema.Required ?? new());
 
         if (entitySchema.Properties != null)
         {
@@ -433,6 +437,24 @@ public static class EntityGenerator
                     {
                         attributeProperties.Add($"ReadOnly = true");
                     }
+
+                    if (standardFields != null)
+                    {
+                        foreach (var standardField in standardFields)
+                        {
+                            var modelPath = new ModelPath(s_modelPathContext, standardField.ContractPath.Replace("%", "1"));
+                            foreach (var segment in modelPath.Segments)
+                            {
+                                if (segment is ModelPath.ArraySegment arraySegment && arraySegment.Filter != null)
+                                {
+                                    foreach (var propertyFilter in arraySegment.Filter)
+                                    {
+                                        propertiesToAlwaysSerialize.Add(propertyFilter.PropertyName);
+                                    }
+                                }
+                            }
+                        }
+                    }
                     
                     if (isList)
                     {
@@ -482,16 +504,15 @@ public static class EntityGenerator
         }
 
         var entityArguments = string.Empty;
-        if (entitySchema.Required?.Count > 0)
+        if (propertiesToAlwaysSerialize.Count > 0)
         {
-            var required = entitySchema.Required.ToList();
-            required.Remove("id");
-            required.Remove("entityId");
-            required.Remove("formName");
-            required.Remove("fieldName");
-            if (required.Count > 0)
+            propertiesToAlwaysSerialize.Remove("id");
+            propertiesToAlwaysSerialize.Remove("entityId");
+            propertiesToAlwaysSerialize.Remove("formName");
+            propertiesToAlwaysSerialize.Remove("fieldName");
+            if (propertiesToAlwaysSerialize.Count > 0)
             {
-                entityArguments = $"PropertiesToAlwaysSerialize = nameof({string.Join(") + \",\" + nameof(", required.Select(p => $"{char.ToUpper(p[0])}{p.Substring(1)}").OrderBy(p => p))})";
+                entityArguments = $"PropertiesToAlwaysSerialize = nameof({string.Join(") + \",\" + nameof(", propertiesToAlwaysSerialize.Select(p => $"{char.ToUpper(p[0])}{p.Substring(1)}").OrderBy(p => p))})";
             }
         }
         if (serializeWholeList)
@@ -701,8 +722,6 @@ public enum {enumName}
                 return "bool?";
             case SchemaType.Integer:
                 return "int?";
-            case SchemaType.Object:
-                return "object?";
             case SchemaType.Array:
                 isList = true;
                 var elementType = GetPropertyOrElementType(p.Items!, definitions, out _, out _);

@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// PriceAdjustment
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(AdjustmentType) + "," + nameof(PriceAdjustmentType) + "," + nameof(PriceAdjustmentTypeIndex))]
 public sealed partial class PriceAdjustment : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

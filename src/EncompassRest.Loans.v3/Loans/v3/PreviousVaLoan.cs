@@ -7,6 +7,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// PreviousVaLoan
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(PreviousVaLoanIndex))]
 public sealed partial class PreviousVaLoan : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

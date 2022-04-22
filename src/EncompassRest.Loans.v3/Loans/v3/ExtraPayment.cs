@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// ExtraPayment
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(LineNumber))]
 public sealed partial class ExtraPayment : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

@@ -94,6 +94,49 @@ namespace EncompassRest
                                             value = GetPropertyName(ref i);
                                             Increment(ref i);
                                             break;
+                                        case 'f':
+                                            Increment(ref i);
+                                            if (modelPath[i] != 'a')
+                                            {
+                                                throw new ArgumentException("bad path");
+                                            }
+                                            Increment(ref i);
+                                            if (modelPath[i] != 'l')
+                                            {
+                                                throw new ArgumentException("bad path");
+                                            }
+                                            Increment(ref i);
+                                            if (modelPath[i] != 's')
+                                            {
+                                                throw new ArgumentException("bad path");
+                                            }
+                                            Increment(ref i);
+                                            if (modelPath[i] != 'e')
+                                            {
+                                                throw new ArgumentException("bad path");
+                                            }
+                                            value = "false";
+                                            Increment(ref i);
+                                            break;
+                                        case 't':
+                                            Increment(ref i);
+                                            if (modelPath[i] != 'r')
+                                            {
+                                                throw new ArgumentException("bad path");
+                                            }
+                                            Increment(ref i);
+                                            if (modelPath[i] != 'u')
+                                            {
+                                                throw new ArgumentException("bad path");
+                                            }
+                                            Increment(ref i);
+                                            if (modelPath[i] != 'e')
+                                            {
+                                                throw new ArgumentException("bad path");
+                                            }
+                                            value = "true";
+                                            Increment(ref i);
+                                            break;
                                         default:
                                             start = i;
                                             var integerValue = 0;

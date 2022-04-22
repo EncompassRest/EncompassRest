@@ -6,6 +6,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// RespaHudDetail
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(LineNumber))]
 public sealed partial class RespaHudDetail : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

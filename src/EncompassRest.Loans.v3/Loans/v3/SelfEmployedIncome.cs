@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// SelfEmployedIncome
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(FormType))]
 public sealed partial class SelfEmployedIncome : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

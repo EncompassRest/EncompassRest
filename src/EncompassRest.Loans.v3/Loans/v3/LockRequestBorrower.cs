@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// LockRequestBorrower
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(LrbIndex))]
 public sealed partial class LockRequestBorrower : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

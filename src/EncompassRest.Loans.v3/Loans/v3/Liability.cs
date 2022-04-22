@@ -5,6 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// Liability
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(LiabilityType) + "," + nameof(LiabilityTypeIndex))]
 public sealed partial class Liability : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

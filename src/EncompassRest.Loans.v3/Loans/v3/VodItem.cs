@@ -5,7 +5,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// VodItem
 /// </summary>
-[Entity(SerializeWholeListWhenDirty = true)]
+[Entity(PropertiesToAlwaysSerialize = nameof(ItemNumber), SerializeWholeListWhenDirty = true)]
 public sealed partial class VodItem : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

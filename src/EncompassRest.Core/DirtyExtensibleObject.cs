@@ -252,7 +252,7 @@ namespace EncompassRest
             return idPropertyNameAttribute != null ? idPropertyNameAttribute.IdPropertyName : "Id";
         }
 
-        private static PropertyInfo GetIdProperty(Type type) => type.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly).FirstOrDefault(p => p.Name == "EncompassRest.IIdentifiable.Id") ?? type.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly).FirstOrDefault(p => p.Name == "Id") ?? GetIdProperty(type.BaseType);
+        private static PropertyInfo GetIdProperty(Type type) => type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly).FirstOrDefault(p => p.Name == "EncompassRest.IIdentifiable.Id") ?? type.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly).FirstOrDefault(p => p.Name == "Id") ?? GetIdProperty(type.BaseType);
 
         object ICloneable.Clone() => this.Clone();
     }

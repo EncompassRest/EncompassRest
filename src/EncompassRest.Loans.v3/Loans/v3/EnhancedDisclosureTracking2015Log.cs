@@ -180,11 +180,6 @@ public sealed partial class EnhancedDisclosureTracking2015Log : DirtyExtensibleO
     public string? ProviderDescription { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// EnhancedDisclosureTracking2015Log Snapshot
-    /// </summary>
-    public object? Snapshot { get => GetValue<object?>(); set => SetValue(value); }
-
-    /// <summary>
     /// EnhancedDisclosureTracking2015Log Status
     /// </summary>
     public StringEnumValue<EnhancedDisclosureTracking2015LogStatus> Status { get => GetValue<StringEnumValue<EnhancedDisclosureTracking2015LogStatus>>(); set => SetValue(value); }

@@ -28,11 +28,6 @@ public sealed partial class DocumentOrder : DirtyExtensibleObject, IIdentifiable
     public DocumentAudit DocumentAudit { get => GetEntity<DocumentAudit>(); set => SetEntity(value); }
 
     /// <summary>
-    /// DocumentOrder DocumentFields
-    /// </summary>
-    public object? DocumentFields { get => GetValue<object?>(); set => SetValue(value); }
-
-    /// <summary>
     /// DocumentOrder Documents
     /// </summary>
     [AllowNull]

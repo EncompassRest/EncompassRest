@@ -2504,11 +2504,6 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     public decimal? ValuationUsed { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Loan VirtualFields
-    /// </summary>
-    public object? VirtualFields { get => GetValue<object?>(); set => SetValue(value); }
-
-    /// <summary>
     /// Website ID [WEBSITEID]
     /// </summary>
     public string? WebsiteId { get => GetValue<string?>(); set => SetValue(value); }

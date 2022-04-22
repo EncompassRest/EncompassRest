@@ -6,6 +6,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// UcdDetail
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(FeeIndex) + "," + nameof(LineNumber) + "," + nameof(Section))]
 public sealed partial class UcdDetail : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

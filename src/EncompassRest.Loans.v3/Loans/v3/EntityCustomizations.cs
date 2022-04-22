@@ -50,10 +50,10 @@ partial class CustomField
 
 partial class AdditionalStateDisclosure
 {
-    /// <summary>
-    /// AdditionalStateDisclosureContract DisclosureValue
-    /// </summary>
-    public object? DisclosureValue { get => GetValue<object?>(); set => SetValue(value); }
+    ///// <summary>
+    ///// AdditionalStateDisclosureContract DisclosureValue
+    ///// </summary>
+    //public object? DisclosureValue { get => GetValue<object?>(); set => SetValue(value); }
 }
 
 partial class DisclosureForm

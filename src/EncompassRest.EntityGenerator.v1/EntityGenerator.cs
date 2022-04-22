@@ -471,7 +471,7 @@ namespace EncompassRest
 
                 foreach (var field in orderedFieldPatterns)
                 {
-                    if (standardFields.TryGetValue(string.Format(field.FieldId, 0), out var standardFieldSchema))
+                    if (standardFields.TryGetValue(string.Format(field.FieldId, 0), out var standardFieldSchema) && !field.FieldId.StartsWith("CUST"))
                     {
                         field.ModelPathV3 = standardFieldSchema.ContractPath.Replace("%", "{0}");
                     }
@@ -814,7 +814,7 @@ public sealed class {entityName} : DirtyExtensibleObject, IIdentifiable
                                         attributeProperties.Add($@"MissingOptionsJson = ""{JsonConvert.SerializeObject(missingOptions).Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                                     }
                                     enumName = enumPair.Key;
-                                    var existingEnumType = typeof(ActionTaken).Assembly.GetType($"EncompassRest.Loans.Enums.{enumName}");
+                                    var existingEnumType = typeof(ActionTaken).Assembly.GetType($"EncompassRest.Loans.Enums.{enumName}") ?? typeof(YOrN).Assembly.GetType($"EncompassRest.Loans.Enums.{enumName}");
                                     foreach (var member in Enums.GetMembers(existingEnumType))
                                     {
                                         var existingText = member.AsString(EnumFormat.Description, EnumFormat.EnumMemberValue, EnumFormat.Name);

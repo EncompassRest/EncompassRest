@@ -3,6 +3,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// SettlementServiceCharge
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(SettlementServiceChargeIndex))]
 public sealed partial class SettlementServiceCharge : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

@@ -3,6 +3,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// PurchaseAdvicePayout
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(PurchaseAdvicePayoutIndex))]
 public sealed partial class PurchaseAdvicePayout : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

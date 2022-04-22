@@ -191,8 +191,8 @@ namespace EncompassRest.Loans.v1
             var fields = new Dictionary<string, StandardFieldInfo>(StringComparer.OrdinalIgnoreCase);
             var fieldPatterns = new Dictionary<string, StandardFieldInfo>(StringComparer.OrdinalIgnoreCase)
             {
-                { "CX.{0}", new StandardFieldInfo("CX.{0}", "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue", null) { Format = LoanFieldFormat.STRING } },
-                { "CUST{0:00}FV", new StandardFieldInfo("CUST{0:00}FV", "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue", null) { Format = LoanFieldFormat.STRING } }
+                { "CX.{0}", new StandardFieldInfo("CX.{0}", "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue", "loan.customFields[(fieldName == 'CX.{0}')].value") { Format = LoanFieldFormat.STRING } },
+                { "CUST{0:00}FV", new StandardFieldInfo("CUST{0:00}FV", "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue", "loan.customFields[(fieldName == 'CUST{0:00}FV')].value") { Format = LoanFieldFormat.STRING } }
             };
             PopulateFieldMappings("Loan", "Loan", null, loanEntitySchema, null, entityTypes, fields, fieldPatterns, extendedFieldInfo: true, null, null, null);
 

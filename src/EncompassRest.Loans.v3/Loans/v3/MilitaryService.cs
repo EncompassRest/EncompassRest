@@ -7,6 +7,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// MilitaryService
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(MilitaryServiceIndex))]
 public sealed partial class MilitaryService : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

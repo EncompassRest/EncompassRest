@@ -5227,13 +5227,13 @@
   },
   {
     "ModelPathV1": "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue",
-    "ModelPathV3": "loan.customFields[{0}].value",
+    "ModelPathV3": "loan.customFields[(fieldName == 'CUST{0:00}FV')].value",
     "FieldId": "CUST{0:00}FV",
     "Description": null
   },
   {
     "ModelPathV1": "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue",
-    "ModelPathV3": null,
+    "ModelPathV3": "loan.customFields[(fieldName == 'CX.{0}')].value",
     "FieldId": "CX.{0}",
     "Description": null
   },
