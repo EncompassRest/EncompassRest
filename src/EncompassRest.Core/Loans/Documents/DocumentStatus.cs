@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans
+namespace EncompassRest.Loans.Documents
 {
     /// <summary>
     /// DocumentStatus

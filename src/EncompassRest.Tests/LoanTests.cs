@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -286,98 +287,6 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
-        public void Loan_FieldsCustomString()
-        {
-            var loan = ConstructLoan();
-            var value = "ABC";
-            var field = loan.Fields["CX.NAME"];
-            Assert.AreEqual("Loan.CustomFields[(FieldName == 'CX.NAME')].StringValue", field.ModelPath, ignoreCase: true);
-            field.Value = value;
-            Assert.AreEqual(value, (string)field.Value);
-            Assert.AreEqual(value, field.ToString());
-            Assert.IsFalse(field.IsEmpty);
-            Assert.AreEqual($@"{{""customFields"":[{{""fieldName"":""CX.NAME"",""stringValue"":""{value}""}}]}}", loan.ToString(SerializationOptions.Dirty));
-            field.Value = null;
-            Assert.IsNull(field.Value);
-            Assert.IsNull(field.ToString());
-            Assert.IsTrue(field.IsEmpty);
-            Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CX.NAME"",""stringValue"":null}]}", loan.ToString(SerializationOptions.Dirty));
-        }
-
-        [TestMethod]
-        public void Loan_FieldsCustomDate()
-        {
-            var loan = ConstructLoan();
-            var value = DateTime.Now;
-            var field = loan.Fields["CX.NOW"];
-            Assert.AreEqual("Loan.CustomFields[(FieldName == 'CX.NOW')].StringValue", field.ModelPath, ignoreCase: true);
-            field.Value = value;
-            Assert.AreEqual(value, (DateTime?)field.Value);
-            Assert.AreEqual(value, field.ToDateTime());
-            Assert.IsFalse(field.IsEmpty);
-            Assert.AreEqual($@"{{""customFields"":[{{""dateValue"":{value.ToJson()},""fieldName"":""CX.NOW""}}]}}", loan.ToString(SerializationOptions.Dirty));
-            field.Value = null;
-            Assert.IsNull(field.Value);
-            Assert.IsNull(field.ToDateTime());
-            Assert.IsTrue(field.IsEmpty);
-            Assert.AreEqual(@"{""customFields"":[{""dateValue"":null,""fieldName"":""CX.NOW""}]}", loan.ToString(SerializationOptions.Dirty));
-            field.Value = null;
-            Assert.IsNull(field.Value);
-            Assert.IsNull(field.ToDateTime());
-            Assert.IsTrue(field.IsEmpty);
-            Assert.AreEqual(@"{""customFields"":[{""dateValue"":null,""fieldName"":""CX.NOW""}]}", loan.ToString(SerializationOptions.Dirty));
-        }
-
-        [TestMethod]
-        public void Loan_FieldsCustomNumeric()
-        {
-            var loan = ConstructLoan();
-            var value = 1234.56M;
-            var field = loan.Fields["CX.NUMBER"];
-            Assert.AreEqual("Loan.CustomFields[(FieldName == 'CX.NUMBER')].StringValue", field.ModelPath, ignoreCase: true);
-            field.Value = value;
-            Assert.AreEqual(value, (decimal?)field.Value);
-            Assert.AreEqual(value, field.ToDecimal());
-            Assert.AreEqual(1235, field.ToInt32());
-            Assert.IsFalse(field.IsEmpty);
-            Assert.AreEqual($@"{{""customFields"":[{{""fieldName"":""CX.NUMBER"",""numericValue"":{value}}}]}}", loan.ToString(SerializationOptions.Dirty));
-            var integerValue = 98765;
-            field.Value = integerValue;
-            Assert.AreEqual(integerValue, (decimal?)field.Value);
-            Assert.AreEqual(integerValue, field.ToDecimal());
-            Assert.AreEqual(integerValue, field.ToInt32());
-            Assert.IsFalse(field.IsEmpty);
-            Assert.AreEqual($@"{{""customFields"":[{{""fieldName"":""CX.NUMBER"",""numericValue"":{integerValue}.0}}]}}", loan.ToString(SerializationOptions.Dirty));
-            field.Value = null;
-            Assert.IsNull(field.Value);
-            Assert.IsNull(field.ToDecimal());
-            Assert.IsNull(field.ToInt32());
-            Assert.IsTrue(field.IsEmpty);
-            Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CX.NUMBER"",""numericValue"":null}]}", loan.ToString(SerializationOptions.Dirty));
-            field.Value = null;
-            Assert.IsNull(field.Value);
-            Assert.IsNull(field.ToDecimal());
-            Assert.IsNull(field.ToInt32());
-            Assert.IsTrue(field.IsEmpty);
-            Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CX.NUMBER"",""numericValue"":null}]}", loan.ToString(SerializationOptions.Dirty));
-        }
-
-        [TestMethod]
-        public void Loan_FieldsCUST100FV()
-        {
-            var loan = ConstructLoan();
-            var value = 987.65M;
-            var field = loan.Fields["CUST100FV"];
-            Assert.AreEqual("Loan.CustomFields[(FieldName == 'CUST100FV')].StringValue", field.ModelPath, ignoreCase: true);
-            field.Value = value;
-            Assert.AreEqual(value, (decimal?)field.Value);
-            Assert.AreEqual(value, field.ToDecimal());
-            Assert.AreEqual(988, field.ToInt32());
-            Assert.IsFalse(field.IsEmpty);
-            Assert.AreEqual($@"{{""customFields"":[{{""fieldName"":""CUST100FV"",""numericValue"":{value}}}]}}", loan.ToString(SerializationOptions.Dirty));
-        }
-
-        [TestMethod]
         public void Loan_FieldsLPNN126()
         {
             var loan = ConstructLoan();
@@ -480,22 +389,27 @@ namespace EncompassRest.Tests
             }
         }
 
-        [ApiTest]
         [TestMethod]
-        public async Task Loan_UpdateBaseIncome()
+        [ApiTest]
+        public async Task Loan_UpdateIncome()
         {
             var client = await GetTestClientAsync();
-            var loanId = await CreateLoanAsync(client, ConstructLoan(client));
+            var loan = ConstructLoan(client);
+            var loanId = await CreateLoanAsync(client, loan, populate: true);
+
             try
             {
-                var loan = ConstructLoan(client, loanId);
-                loan.Fields["FE0119"].Value = 500;
+                loan.Fields["144"].Value = BorrowerOrCoBorrower.CoBorrower;
+                loan.Fields["145"].Value = Description.MilitaryCombatPay;
+                loan.Fields["146"].Value = 10000M;
 
                 await UpdateLoanAsync(client, loan);
 
                 loan = await GetLoanAsync(client, loanId);
 
-                Assert.AreEqual(500M, loan.Fields["101"].Value);
+                Assert.AreEqual("CoBorrower", loan.Fields["144"].ToString());
+                Assert.AreEqual("MilitaryCombatPay", loan.Fields["145"].ToString());
+                Assert.AreEqual(10000M, loan.Fields["146"].ToDecimal());
             }
             finally
             {
@@ -514,11 +428,13 @@ namespace EncompassRest.Tests
         public async Task Loan_UpdateOtherIncome()
         {
             var client = await GetTestClientAsync();
-            var loanId = await CreateLoanAsync(client, ConstructLoan(client));
+            var loan = ConstructLoan(client);
+            var loanId = await CreateLoanAsync(client, loan, populate: true);
             try
             {
-                var loan = ConstructLoan(client, loanId);
                 loan.Fields["149"].Value = 500;
+
+                Assert.AreEqual(500M, loan.Fields["149"].Value);
 
                 await UpdateLoanAsync(client, loan);
 

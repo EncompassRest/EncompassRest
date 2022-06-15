@@ -21,6 +21,7 @@ public sealed partial class ClosingDisclosure4 : DirtyExtensibleObject, IIdentif
     /// <summary>
     /// Closing Disclosure Page 4 Escrow Indicator [CD4.X9]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Escrow (T&I)\"}")]
     public bool? EscrowIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -81,6 +82,7 @@ public sealed partial class ClosingDisclosure4 : DirtyExtensibleObject, IIdentif
     /// <summary>
     /// your lender does not offer one. [CD4.X7]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"your lender does not offer one\"}")]
     public bool? Lender { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

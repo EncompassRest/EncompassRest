@@ -13,6 +13,7 @@ public sealed partial class Tax4506T : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// IRS Transcript - History Record - Account Transcript [IR0047]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"b\"}")]
     public bool? AccountTranscript { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -125,6 +126,7 @@ public sealed partial class Tax4506T : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// IRS Transcript - History Record - Record of Account [IR0048]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"c\"}")]
     public bool? RecordOfAccount { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -196,6 +198,7 @@ public sealed partial class Tax4506T : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// IRS Transcript - History Record - Return Transcript [IR0046]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"a\"}")]
     public bool? ReturnTranscript { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

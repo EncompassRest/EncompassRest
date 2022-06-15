@@ -246,6 +246,71 @@ namespace EncompassRest.Webhook.v1
         /// eventreceived
         /// </summary>
         [EnumMember(Value = "eventreceived")]
-        EventReceived = 47
+        EventReceived = 47,
+        /// <summary>
+        /// created
+        /// </summary>
+        [EnumMember(Value = "created")]
+        Created = 48,
+        /// <summary>
+        /// updated
+        /// </summary>
+        [EnumMember(Value = "updated")]
+        Updated = 49,
+        /// <summary>
+        /// deleted
+        /// </summary>
+        [EnumMember(Value = "deleted")]
+        Deleted = 50,
+        /// <summary>
+        /// activated
+        /// </summary>
+        [EnumMember(Value = "activated")]
+        Activated = 51,
+        /// <summary>
+        /// dataingestion
+        /// </summary>
+        [EnumMember(Value = "dataingestion")]
+        DataIngestion = 52,
+        /// <summary>
+        /// completed
+        /// </summary>
+        [EnumMember(Value = "completed")]
+        Completed = 53,
+        /// <summary>
+        /// failed
+        /// </summary>
+        [EnumMember(Value = "failed")]
+        Failed = 54,
+        /// <summary>
+        /// moved
+        /// </summary>
+        [EnumMember(Value = "moved")]
+        Moved = 55,
+        /// <summary>
+        /// filed
+        /// </summary>
+        [EnumMember(Value = "filed")]
+        Filed = 56,
+        /// <summary>
+        /// autoindexed
+        /// </summary>
+        [EnumMember(Value = "autoindexed")]
+        AutoIndexed = 57,
+        /// <summary>
+        /// autoextraction
+        /// </summary>
+        [EnumMember(Value = "autoextraction")]
+        AutoExtraction = 58,
+        /// <summary>
+        /// indexingvalidation
+        /// </summary>
+        [EnumMember(Value = "indexingvalidation")]
+        IndexingValidation = 59,
+        /// <summary>
+        /// extractionvalidation
+        /// </summary>
+        [EnumMember(Value = "extractionvalidation")]
+        ExtractionValidation = 60
     }
 }

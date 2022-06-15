@@ -117,6 +117,7 @@ public sealed partial class Employment : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Employment DoesNotApply
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
     public bool? DoesNotApply { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -163,6 +164,7 @@ public sealed partial class Employment : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Employment ForeignIncome
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Foreign Income\"}")]
     public bool? ForeignIncome { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -173,6 +175,7 @@ public sealed partial class Employment : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Employment IndividualEmployer
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Employer is an Individual\"}")]
     public bool? IndividualEmployer { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -188,6 +191,7 @@ public sealed partial class Employment : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Employment MilitaryEmployer
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Employer is Military\"}")]
     public bool? MilitaryEmployer { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -301,16 +305,19 @@ public sealed partial class Employment : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Employment SeasonalIncome
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Seasonal Income\"}")]
     public bool? SeasonalIncome { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Employment SelfEmployedIndicator
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Self-Employed\"}")]
     public bool? SelfEmployedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Employment SpecialEmployerRelationshipIndicator
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"I am employed by a family member, property seller, real estate agent, or other party to the transaction\"}")]
     public bool? SpecialEmployerRelationshipIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

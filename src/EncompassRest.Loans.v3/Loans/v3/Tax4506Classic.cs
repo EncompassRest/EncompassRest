@@ -12,6 +12,7 @@ public sealed partial class Tax4506Classic : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// IRS Transcript - Account Transcript [IRS4506.X47]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"b\"}")]
     public bool? AccountTranscript { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -67,6 +68,7 @@ public sealed partial class Tax4506Classic : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// IRS - Refund to Third Party [IRS4506.X14]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"If we cannot find the tax return, we will refund the fee. If the refund should go to the third party listed on line 5, check here.\"}")]
     public bool? IfTaxRecordNotFound { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -97,6 +99,7 @@ public sealed partial class Tax4506Classic : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// IRS - Identified IRS Identity Theft [IRS4506.X60]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
     public bool? NotifiedIrsIdentityTheftIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -112,6 +115,7 @@ public sealed partial class Tax4506Classic : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// IRS Transcript - Record of Account [IRS4506.X48]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"c\"}")]
     public bool? RecordOfAccount { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -183,6 +187,7 @@ public sealed partial class Tax4506Classic : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// IRS Transcript - Return Transcript [IRS4506.X46]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"a\"}")]
     public bool? ReturnTranscript { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -282,6 +287,7 @@ public sealed partial class Tax4506Classic : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// IRS - Copies Certified [IRS4506.X18]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Copies must be certified for court or administrative proceedings\"}")]
     public bool? TheseCopiesMustBeCertified { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

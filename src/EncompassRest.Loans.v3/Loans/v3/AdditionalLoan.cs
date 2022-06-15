@@ -23,6 +23,7 @@ public sealed partial class AdditionalLoan : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// Additional Loans  Affordable Loan Indicator [URLARAL0024]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Affordable Loan\"}")]
     public bool? AffordableLoan { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -107,6 +108,7 @@ public sealed partial class AdditionalLoan : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// Creditor is an individual Indicator [URLARAL0032]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Creditor is an individual\"}")]
     public bool? IndividualCreditorIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -117,7 +119,7 @@ public sealed partial class AdditionalLoan : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// Additional Loans Linked Piggyback Indicator [URLARAL0025]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Linked Piggyback Indicator\"}", ReadOnly = true)]
     public bool? LinkedPiggybackIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -163,21 +165,25 @@ public sealed partial class AdditionalLoan : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// Additional Loans Payment Deferred First Five Years [URLARAL0023]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Payment Deferred for First Five Years\"}")]
     public bool? PaymentDeferredFirstFiveYears { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Depository Print - See Attached Authorization [URLARAL0015]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
     public bool? PrintAttachmentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Depository Print User Job Title [URLARAL0064]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
     public bool? PrintUserJobTitleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Depository Print User Name as Title [URLARAL0012]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name as title\"}")]
     public bool? PrintUserNameIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

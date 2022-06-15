@@ -258,5 +258,6 @@ public sealed partial class Mcaw : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// FHA MCAW Appraised Value - Mult by 85% Check Box [1983]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"multiplied by 85%\"}")]
     public bool? Use85PercentRuleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 }

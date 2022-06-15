@@ -59,7 +59,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Date when the interest rate for the loan was last locked.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LastRateSetDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -70,13 +70,13 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// The date the rate comparison lock expires, calculated by adding the value in the # of Days field to the date in the Lock Date field on the Secondary Lock Tool.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The rate comparison lock date.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LockDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Original lock expiration date.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? OriginalLockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>

@@ -94,6 +94,7 @@ public sealed partial class Vod : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Include In AUS/Export [DD0052]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Include In AUS/Export\"}")]
     public bool? IncludeInAusExport { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -116,16 +117,19 @@ public sealed partial class Vod : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Depository Print - See Attached Authorization [DD0036]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
     public bool? PrintAttachmentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Depository Print User Job Title [DD0064]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
     public bool? PrintUserJobTitleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Depository Print User Name as Title [DD0038]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name as title\"}")]
     public bool? PrintUserNameIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

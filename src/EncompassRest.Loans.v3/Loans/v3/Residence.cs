@@ -34,7 +34,7 @@ public sealed partial class Residence : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Residence AddressState
     /// </summary>
-    public string? AddressState { get => GetValue<string?>(); set => SetValue(value); }
+    public StringEnumValue<State> AddressState { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }
 
     /// <summary>
     /// Residence AddressStreetLine1

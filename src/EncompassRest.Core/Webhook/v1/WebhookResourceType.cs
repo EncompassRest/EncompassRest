@@ -51,6 +51,30 @@ namespace EncompassRest.Webhook.v1
         /// <summary>
         /// DocumentOrder
         /// </summary>
-        DocumentOrder = 10
+        DocumentOrder = 10,
+        /// <summary>
+        /// EFolder
+        /// </summary>
+        EFolder = 11,
+        /// <summary>
+        /// DataSource
+        /// </summary>
+        DataSource = 12,
+        /// <summary>
+        /// Document
+        /// </summary>
+        Document = 13,
+        /// <summary>
+        /// AnalyzerResult
+        /// </summary>
+        AnalyzerResult = 14,
+        /// <summary>
+        /// ReceivedMailItem
+        /// </summary>
+        ReceivedMailItem = 15,
+        /// <summary>
+        /// AnalyzerDocumentValidationResult
+        /// </summary>
+        AnalyzerDocumentValidationResult = 16
     }
 }

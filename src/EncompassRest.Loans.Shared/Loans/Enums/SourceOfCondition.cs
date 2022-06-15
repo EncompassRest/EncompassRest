@@ -36,5 +36,21 @@ public enum SourceOfCondition
     /// <summary>
     /// FHA
     /// </summary>
-    FHA = 7
+    FHA = 7,
+    /// <summary>
+    /// DUFindings
+    /// </summary>
+    DUFindings = 8,
+    /// <summary>
+    /// EarlyCheckFindings
+    /// </summary>
+    EarlyCheckFindings = 9,
+    /// <summary>
+    /// LPAFindings
+    /// </summary>
+    LPAFindings = 10,
+    /// <summary>
+    /// FHAFindings
+    /// </summary>
+    FHAFindings = 11
 }

@@ -469,7 +469,7 @@ public sealed partial class Miscellaneous : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Home Points Program Loan will Participate [2859]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Loan Will Participate in the HomePoints Program\"}", ReadOnly = true)]
     public bool? ParticipateHomePoints { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

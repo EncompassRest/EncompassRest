@@ -11,7 +11,7 @@ public abstract class LoanOptions : Options
     /// <summary>
     /// List of loan entities to retrieve from the loan.
     /// </summary>
-    public List<string>? Entities { get; set; }
+    public List<StringEnumValue<LoanEntity>>? Entities { get; set; }
 
     /// <summary>
     /// Indicate whether or not to ignore blank template values for the loan program template.

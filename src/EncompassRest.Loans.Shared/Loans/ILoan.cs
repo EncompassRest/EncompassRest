@@ -17,7 +17,7 @@
         /// The Loan Apis exposed as extension methods from the Core and EncompassRest.Services packages
         /// within the EncompassRest.Loans.v1 namespace.
         /// </summary>
-        ILoanApis LoanApis { get; }
+        ILoanObjectBoundApis LoanApis { get; }
         /// <summary>
         /// Trans Details Loan # [364]
         /// </summary>

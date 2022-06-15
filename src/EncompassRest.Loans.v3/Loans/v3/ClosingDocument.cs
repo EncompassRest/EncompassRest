@@ -619,6 +619,7 @@ public sealed partial class ClosingDocument : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Property Info Attach Legal Descr [1884]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Attach legal description\"}")]
     public bool? LegalAttached { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -863,6 +864,11 @@ public sealed partial class ClosingDocument : DirtyExtensibleObject, IIdentifiab
     public string? PrepaymentPenaltyDescriptions3 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
+    /// Print 01/2001 Version of Uniform Instruments [4793]
+    /// </summary>
+    public bool? Print2001UniformInstrumentsIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
     /// Print Trust Name(s) on LE/CD Addendum [4662]
     /// </summary>
     public bool? PrintTrustNameIndicator { get => GetValue<bool?>(); set => SetValue(value); }
@@ -985,6 +991,7 @@ public sealed partial class ClosingDocument : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Closing Docs REGZ Loan Info Sync Prepaid Int [2852]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
     public bool? SyncInterestDateDisbursementDate { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1041,6 +1048,12 @@ public sealed partial class ClosingDocument : DirtyExtensibleObject, IIdentifiab
     /// Borrower Vesting Corp/Trust 2 Beneficiaries [Vesting.Trst2Bfcry]
     /// </summary>
     public string? Trust2Beneficiaries { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// ClosingDocument VestingEntities
+    /// </summary>
+    [AllowNull]
+    public IList<VestingEntity> VestingEntities { get => GetList<VestingEntity>(); set => SetList(value); }
 
     /// <summary>
     /// State Disc - We Conduct Business As [DISCLOSURE.X205]

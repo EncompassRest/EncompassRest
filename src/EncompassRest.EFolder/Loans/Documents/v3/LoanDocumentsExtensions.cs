@@ -73,7 +73,7 @@ namespace EncompassRest.Loans.Documents.v3
         /// <param name="documentId">The unique identifier assigned to the document.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<Document> GetDocumentAsync(this ILoanDocuments loanDocuments, string documentId, CancellationToken cancellationToken = default) => GetV3(loanDocuments).GetDocumentAsync(documentId, cancellationToken);
+        public static Task<LoanDocument> GetDocumentAsync(this ILoanDocuments loanDocuments, string documentId, CancellationToken cancellationToken = default) => GetV3(loanDocuments).GetDocumentAsync(documentId, cancellationToken);
 
         /// <summary>
         /// Retrieves properties for the specified eFolder document as raw json.
@@ -92,7 +92,7 @@ namespace EncompassRest.Loans.Documents.v3
         /// <param name="options">The document retrieval options.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task<List<Document>> GetDocumentsAsync(this ILoanDocuments loanDocuments, DocumentRetrievalOptions? options, CancellationToken cancellationToken = default) => GetV3(loanDocuments).GetDocumentsAsync(options, cancellationToken);
+        public static Task<List<LoanDocument>> GetDocumentsAsync(this ILoanDocuments loanDocuments, DocumentRetrievalOptions? options, CancellationToken cancellationToken = default) => GetV3(loanDocuments).GetDocumentsAsync(options, cancellationToken);
 
         /// <summary>
         /// Returns all eFolder documents for the loan as raw json.
@@ -111,7 +111,7 @@ namespace EncompassRest.Loans.Documents.v3
         /// <param name="documents">The documents to add, update, or remove.</param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
         /// <returns></returns>
-        public static Task ManageDocumentsAsync(this ILoanDocuments loanDocuments, EFolderManagementOptions options, IEnumerable<Document> documents, CancellationToken cancellationToken = default) => GetV3(loanDocuments).ManageDocumentsAsync(options, documents, cancellationToken);
+        public static Task ManageDocumentsAsync(this ILoanDocuments loanDocuments, EFolderManagementOptions options, IEnumerable<LoanDocument> documents, CancellationToken cancellationToken = default) => GetV3(loanDocuments).ManageDocumentsAsync(options, documents, cancellationToken);
 
         /// <summary>
         /// Use this API to add a document, update an existing document, or remove a document from a loan file as raw json.

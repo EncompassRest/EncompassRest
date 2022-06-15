@@ -14,6 +14,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-FL Borr Accept [FLMTGCM.X10]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"The date by which the commitment must be accepted by the borrower is\"}")]
     public bool? AcceptedByBorrowerIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -34,6 +35,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-TX Act as Follows [DISCLOSURE.X76]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"We will be acting as follows:\"}")]
     public bool? ActingOthersIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -89,26 +91,31 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-TX Role - Attorney [DISCLOSURE.X99]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"as an attorney for\"}")]
     public bool? AsAttorneyIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure-TX Role - RE Broker/Agent [DISCLOSURE.X95]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"as a real estate broker, agent, or salesperson for\"}")]
     public bool? AsRealBrokerIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure-TX Attorney for Buyer [DISCLOSURE.X101]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"you (the buyer)\"}")]
     public bool? AttorneyForTheBuyerIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure-TX Attorney for Buyer/Seller [DISCLOSURE.X102]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"the lender\"}")]
     public bool? AttorneyForTheLenderIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure-TX Attorney for Seller [DISCLOSURE.X100]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"the seller\"}")]
     public bool? AttorneyForTheSellerIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -154,6 +161,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-TX Compensated Wholesale Options [DISCLOSURE.X80]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Our pricing for your loan is based upon current wholesale options available to us\"}")]
     public bool? BasedOnWholesaleOptionsIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -260,6 +268,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-NY Broker Paid Fee [DISCLOSURE.X114]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"I will pay you a fee of\"}")]
     public bool? BrokerPayIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -344,7 +353,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-FL Deposit Refundable [FLGFE.X55]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Refundable by\"}", ReadOnly = true)]
     public bool? DepositRefundableIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -371,6 +380,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-NY Broker Paid Direct [DISCLOSURE.X117]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"I will pay you directly, upon my signed acceptance of a commitment\"}")]
     public bool? DirectPayIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -493,6 +503,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-TX Act as Independent Contractor [DISCLOSURE.X75]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"We are acting as an independent contractor\"}")]
     public bool? IndependentContractorIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -518,16 +529,19 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-FL is Estimate [FLMTGCM.X12]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"This disclosure is an ESTIMATE. Some of the information necessary for an accurate disclosure is unknown to the lender. This disclosure is based upon the best information reasonably available to the lender at this time.\"}")]
     public bool? IsEstimateIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure - KS - Kansas UCCC Election [DISCLOSURE.X954]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
     public bool? KsUcccElectionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure - KY - Kentucky Home Solicitation Loan [DISCLOSURE.X956]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
     public bool? KyHomeSolicitationLoanIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -558,6 +572,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-NY Lender Paid Fee [DISCLOSURE.X109]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"The lender will pay you a fee of\"}")]
     public bool? LenderPayIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -579,6 +594,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-NY Lender Fee Unknown [DISCLOSURE.X97]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"The fee the lender will pay you is not known. The maximum points paid including premium pricing shall not\"}")]
     public bool? LenderPayUnknownIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -672,6 +688,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-TX Compensated Retail Price [DISCLOSURE.X79]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"The retail price we offer you\"}")]
     public bool? OfferRetailPriceIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -754,11 +771,13 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure - AK - Print Certification O fCosts [DISCLOSURE.X962]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
     public bool? PrintCertificationOfCosts { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure - AK - Print Interest Rate Reduction Rider [DISCLOSURE.X961]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
     public bool? PrintInterestRateReductionRider { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -812,6 +831,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-FL Commitment Fee Refundable If [FLMTGCM.X8]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Refundable If\"}")]
     public bool? RefundableIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -966,6 +986,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure-TX Will Submit to Lender [DISCLOSURE.X74]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"We will submit your loan application to a participating lender\"}")]
     public bool? SubmitToLenderIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1081,6 +1102,7 @@ public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Disclosure - TX - Texas Veterans Land Board [DISCLOSURE.X955]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
     public bool? TxVeteransLandBoardIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

@@ -2,36 +2,35 @@
 using EncompassRest.v1;
 using Newtonsoft.Json;
 
-namespace EncompassRest.Loans.v1
+namespace EncompassRest.Loans.v1;
+
+partial class Application
 {
-    partial class Application
+    string? IIdentifiable.Id { get => Id ?? ApplicationId; set { Id = value; ApplicationId = value; } }
+}
+
+partial class CustomField
+{
+    [IdPropertyName(nameof(FieldName))]
+    string? IIdentifiable.Id { get => FieldName; set => FieldName = value; }
+}
+
+partial class FieldLockData
+{
+    static FieldLockData()
     {
-        string? IIdentifiable.Id { get => Id ?? ApplicationId; set { Id = value; ApplicationId = value; } }
+        TypeData<FieldLockData>.CustomStringComparer = new StringModelPathComparer();
     }
 
-    partial class CustomField
-    {
-        [IdPropertyName(nameof(FieldName))]
-        string? IIdentifiable.Id { get => FieldName; set => FieldName = value; }
-    }
+    [IdPropertyName(nameof(ModelPath))]
+    string? IIdentifiable.Id { get => ModelPath; set => ModelPath = value; }
+}
 
-    partial class FieldLockData
-    {
-        static FieldLockData()
-        {
-            TypeData<FieldLockData>.CustomStringComparer = new StringModelPathComparer();
-        }
-
-        [IdPropertyName(nameof(ModelPath))]
-        string? IIdentifiable.Id { get => ModelPath; set => ModelPath = value; }
-    }
-
-    partial class Contact
-    {
-        /// <summary>
-        /// Contact ContactValue
-        /// </summary>
-        [JsonProperty("contact")]
-        public EntityReference? ContactValue { get => GetValue<EntityReference?>(); set => SetValue(value); }
-    }
+partial class Contact
+{
+    /// <summary>
+    /// Contact ContactValue
+    /// </summary>
+    [JsonProperty("contact")]
+    public EntityReference? ContactValue { get => GetValue<EntityReference?>(); set => SetValue(value); }
 }

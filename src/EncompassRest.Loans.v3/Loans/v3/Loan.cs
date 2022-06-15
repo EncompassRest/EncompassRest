@@ -14,6 +14,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// 4b. Other New Mortgage Loans on the Property You are Buying or Refinancing Does not Apply [URLA.X237]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does not apply\"}")]
     public bool? AdditionalLoanDoesNotApply { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -36,6 +37,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Affordable Loan Indicator [URLA.X210]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Affordable Loan\"}")]
     public bool? AffordableLoan { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -106,6 +108,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Fannie Mae Seller Prov Below Mkt Financing [MORNET.X12]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Seller Provided Below Market Financing\"}")]
     public bool? BelowMarketSubordinateFinancingIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -128,6 +131,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// BORROWER Community Property State Resident Indicator [URLA.X129]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"At least one borrower lives in a community property state.\"}")]
     public bool? BorrCommunityPropertyStateResidentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -138,6 +142,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borr/Co-Borr Married Indicator [100]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Borrower / Co-Borrower are Married\"}")]
     public bool? BorrowerCoBorrowerMarriedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -190,6 +195,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Loan Info Buydown [425]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Buydown\"}")]
     public bool? BuydownIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -306,11 +312,13 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Community Property State Resident Indicator [URLA.X130]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"The property is in a community property state.\"}")]
     public bool? CommunityPropertyStateResidentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Compliance Review Type [4721]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Correspondent Compliance Review\",\"N\":\"Retail Compliance Review\"}")]
     public bool? ComplianceReviewType { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -338,6 +346,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Construction Loan Indicator [URLA.X133]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Construction-Conversion/Construction-to-Permanent\"}")]
     public bool? ConstructionLoanIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -388,6 +397,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Conversion Of Contract For Deed Indicator [URLA.X131]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Conversion of Contract for Deed or Land Contract\"}")]
     public bool? ConversionOfContractForDeedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -398,6 +408,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Trans Details Copy to Lender Check Box [1969]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Copy to Lender\"}")]
     public bool? CopyBrokerToLenderIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -504,12 +515,6 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     public IList<DocumentOrder> DocumentOrders { get => GetList<DocumentOrder>(); set => SetList(value); }
 
     /// <summary>
-    /// Loan Documents
-    /// </summary>
-    [AllowNull]
-    public IList<Document> Documents { get => GetList<Document>(); set => SetList(value); }
-
-    /// <summary>
     /// Do Not Check Email When Loan File Is Saved [3040]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
@@ -518,6 +523,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Fees Do not print line 824 and 825 Check Box [1970]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Do not print line 824 and 825\"}")]
     public bool? DoNotPrintCompensationFees { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -792,11 +798,13 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Fannie Mae Community Seconds [MORNET.X29]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Community Seconds\"}")]
     public bool? FnmCommunitySecondsIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Fannie Mae FannieNeighbors Elig [MORNET.X28]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"FannieNeighbors Eligible\"}")]
     public bool? FnmNeighborsMortgageEligibilityIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -967,6 +975,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// Loan Info Loan ID [GUID]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
+    [NeverSerialize]
     public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1172,6 +1181,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Loan Features Other Indicator [URLA.X242]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Other\"}")]
     public bool? LoanFeaturesOtherIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1545,6 +1555,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Negative Amortization Indicator [URLA.X239]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Negative Amortization\"}")]
     public bool? NegativeAmortization { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1624,11 +1635,13 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Disclosure Purchase Sale or Refi [AFF.X6]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"purchase, sale, or refinance of, the subject property.\"}")]
     public bool? NotRequiredForPurchaseSaleOrRefinance { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure Settlement of Loan [AFF.X5]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"settlement of your loan on,\"}")]
     public bool? NotRequiredForSettlementOfYourLoan { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1744,6 +1757,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     ///  Payment Deferred for First Five Years Indicator [URLA.X209]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Payment Deferred for First Five Years\"}")]
     public bool? PaymentDeferredFirstFiveYears { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1764,6 +1778,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Private Mortgage Insurance Indicator [3336]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"PMI Included\",\"N\":\"PMI Not Included\"}")]
     public bool? PmiIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1781,6 +1796,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Undefined [URLA.X240]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Prepayment Penalty / Prepayment Penalty Term\"}")]
     public bool? PrepaymentPenaltyTerm { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1813,6 +1829,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Print both ULI / NULI and Loan Number [URLA.X238]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print both ULI / NULI and Loan Number\"}")]
     public bool? PrintUliAndLoanNoUrla { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1856,6 +1873,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Fannie Mae Energy Effic Mtg Indicator [157]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Energy Efficient Mortgage\"}")]
     public bool? PropertyEnergyEfficientHomeIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1866,6 +1884,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Property Existing Clean Energy Lien Indicator [URLA.X135]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Property is currently subject to a lien that could take priority over the first mortgage lien, such as a clean energy lien paid through property taxes (e.g., the Property Assessed  Clean Energy program).\"}")]
     public bool? PropertyExistingCleanEnergyLienIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -2011,6 +2030,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Renovation Loan Indicator [URLA.X132]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Renovation\"}")]
     public bool? RenovationLoanIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -2021,6 +2041,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// 4c. Rental Income onthe Property You want to Purchase - For Purchase Only Does not Apply [URLA.X80]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does not apply\"}")]
     public bool? RentalIncomeSectionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -2217,6 +2238,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Temporary Interest Rate Buydown/Initial Buydown Rate [URLA.X241]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Temporary Interest Rate Buydown/Initial Buydown Rate\"}")]
     public bool? TemporaryOrInitialInterestRateBuydown { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -2411,6 +2433,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Underwriting Escrow [1550]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Escrow (T&I)\"}")]
     public bool? UnderwritingEscrowIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -2468,6 +2491,7 @@ public sealed partial class Loan : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Use 2018 DI [4142]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Use 2018 DI\"}")]
     public bool? Use2018DiIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

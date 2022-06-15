@@ -79,6 +79,7 @@ public sealed partial class Tax4506 : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// IRS4506 Record - Refund to Third Party [AR0014]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"If we cannot find the tax return, we will refund the fee. If the refund should go to the third party listed on line 5, check here.\"}")]
     public bool? IfTaxRecordNotFound { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -294,6 +295,7 @@ public sealed partial class Tax4506 : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// IRS4506 Record - Copies Certified [AR0018]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Copies must be certified for court or administrative proceedings\"}")]
     public bool? TheseCopiesMustBeCertified { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

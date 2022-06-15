@@ -20,7 +20,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Lock date for overnight rate protection (ONRP) for an initial lock.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? OnrpDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// The commitment date for the loan.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? CommitmentDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -72,13 +72,13 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// The date the commitment expires.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? ExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The day the note was drawn on the loan.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? DeliveryExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Date when the branch price concession was approved.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? BranchApprovalDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Date when the corporate price concession was approved.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? CorporateApprovalDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Buy side expiration date for the requested rate lock extension.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? ExtendedLockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Date when the interest rate for the loan was last locked.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LastRateSetDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -203,13 +203,13 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// The expiration date of the current lock.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The buy side lock day.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LockDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -271,7 +271,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Original lock expiration date for the requested rate lock extension.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? OriginalLockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>

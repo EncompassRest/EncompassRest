@@ -11,6 +11,7 @@ public sealed partial class SelfEmployedIncome : DirtyExtensibleObject, IIdentif
     /// <summary>
     /// SelfEmployedIncome BoolFieldValue
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"The business has positive sales and earnings trends\"}")]
     public bool? BoolFieldValue { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

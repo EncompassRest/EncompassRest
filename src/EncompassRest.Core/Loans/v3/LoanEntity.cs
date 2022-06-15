@@ -3,9 +3,9 @@ using System.Runtime.Serialization;
 namespace EncompassRest.Loans.v3;
 
 /// <summary>
-/// LoanEntityFilterKey
+/// LoanEntity
 /// </summary>
-public enum LoanEntityFilterKey
+public enum LoanEntity
 {
     /// <summary>
     /// additionalLoans
@@ -826,5 +826,15 @@ public enum LoanEntityFilterKey
     /// vols
     /// </summary>
     [EnumMember(Value = "vols")]
-    Vols = 163
+    Vols = 163,
+    /// <summary>
+    /// virtualFields
+    /// </summary>
+    [EnumMember(Value = "virtualFields")]
+    VirtualFields = 164,
+    /// <summary>
+    /// vestingEntities
+    /// </summary>
+    [EnumMember(Value = "vestingEntities")]
+    VestingEntities = 165
 }

@@ -16,5 +16,10 @@ public enum PropertyFormat
     /// date-time
     /// </summary>
     [EnumMember(Value = "date-time")]
-    DateTime = 1
+    DateTime = 1,
+    /// <summary>
+    /// email
+    /// </summary>
+    [EnumMember(Value = "email")]
+    Email = 2
 }

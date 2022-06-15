@@ -19,11 +19,13 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower ActiveDuty [URLA.X123], [URLA.X126]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Currently serving on active duty\"}")]
     public bool? ActiveDuty { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower AdditionalEmploymentDoesNotApply [URLA.X201], [URLA.X202]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
     public bool? AdditionalEmploymentDoesNotApply { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -104,6 +106,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower AuthorizedToSignIndicator [2968], [2969]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Authorized to Sign\"}")]
     public bool? AuthorizedToSignIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -359,6 +362,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower CurrentEmploymentDoesNotApply [URLA.X199], [URLA.X200]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
     public bool? CurrentEmploymentDoesNotApply { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -700,6 +704,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower GiftsAndGrantsIndicatorBor [URLA.X82], [URLA.X83]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does not apply\"}")]
     public bool? GiftsAndGrantsIndicatorBor { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -731,6 +736,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower HmdaAfricanAmericanIndicator [1526], [1534]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Black or African American\"}")]
     public bool? HmdaAfricanAmericanIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -742,6 +748,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower HmdaAmericanIndianIndicator [1524], [1532]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"American Indian or Alaska Native\"}")]
     public bool? HmdaAmericanIndianIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -757,6 +764,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower HmdaAsianIndicator [1525], [1533]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Asian\"}")]
     public bool? HmdaAsianIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -789,26 +797,31 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower HmdaEthnicityDoNotWishIndicator [4205], [4206]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
     public bool? HmdaEthnicityDoNotWishIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower HmdaEthnicityHispanicLatinoIndicator [4210], [4213]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Hispanic or Latino\"}")]
     public bool? HmdaEthnicityHispanicLatinoIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower HmdaEthnicityInfoNotProvided [4243], [4246]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Not Provided\"}")]
     public bool? HmdaEthnicityInfoNotProvided { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower HmdaEthnicityNotApplicableIndicator [4212], [4215]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not Applicable\"}")]
     public bool? HmdaEthnicityNotApplicableIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower HmdaEthnicityNotHispanicLatinoIndicator [4211], [4214]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not Hispanic or Latino\"}")]
     public bool? HmdaEthnicityNotHispanicLatinoIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -860,21 +873,25 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower HmdaGendertypeDoNotWishIndicator [4195], [4199]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
     public bool? HmdaGendertypeDoNotWishIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower HmdaGendertypeFemaleIndicator [4193], [4197]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Female\"}")]
     public bool? HmdaGendertypeFemaleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower HmdaGendertypeMaleIndicator [4194], [4198]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Male\"}")]
     public bool? HmdaGendertypeMaleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower HmdaGendertypeNotApplicableIndicator [4196], [4200]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not Applicable\"}")]
     public bool? HmdaGendertypeNotApplicableIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -910,16 +927,19 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// No Co-applicant Indicator [3840]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"No Co-applicant\"}")]
     public bool? HmdaNoCoApplicantIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower HmdaNotApplicableIndicator [1530], [1538]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Not applicable\"}")]
     public bool? HmdaNotApplicableIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower HmdaNotProvidedIndicator [1529], [1537]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
     public bool? HmdaNotProvidedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -945,6 +965,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower HmdaPacificIslanderIndicator [1527], [1535]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Native Hawaiian or Other Pacific Islander\"}")]
     public bool? HmdaPacificIslanderIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -960,11 +981,13 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower HmdaRaceDoNotWishProvideIndicator [4252], [4253]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to provide this information\"}")]
     public bool? HmdaRaceDoNotWishProvideIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borrower HmdaRaceInfoNotProvided [4244], [4247]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Not Provided\"}")]
     public bool? HmdaRaceInfoNotProvided { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1001,6 +1024,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower HmdaRefusalIndicator [188], [189]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"I do not wish to furnish this info\"}")]
     public bool? HmdaRefusalIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1011,6 +1035,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower HmdaSexInfoNotProvided [4245], [4248]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Not Provided\"}")]
     public bool? HmdaSexInfoNotProvided { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1021,6 +1046,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower HmdaWhiteIndicator [1528], [1536]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"White\"}")]
     public bool? HmdaWhiteIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1203,6 +1229,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower MailingAddressSameAsPresentIndicator [1819], [1820]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Same as present address\"}")]
     public bool? MailingAddressSameAsPresentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1306,21 +1333,25 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower No3rdPartyEmailIndicator [2857], [2858]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Co-Borrower No Third-Party Email for HomePoints\"}")]
     public bool? No3rdPartyEmailIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Co-Borr Ethnicity No Co Applicant [4188]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"No co-applicant\"}")]
     public bool? NoCoApplicantEthnicityIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Co-Borr Race No Co Applicant [3174]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"No co-applicant\"}")]
     public bool? NoCoApplicantIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Co-Borr Sex No Co Applicant [4189]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"No co-applicant\"}")]
     public bool? NoCoApplicantSexIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1362,6 +1393,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower OtherSrcIncomeDoesNotApply [URLA.X40], [URLA.X41]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
     public bool? OtherSrcIncomeDoesNotApply { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1512,6 +1544,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower PreviousEmploymentDoesNotApply [URLA.X203], [URLA.X204]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Does Not Apply\"}")]
     public bool? PreviousEmploymentDoesNotApply { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1592,6 +1625,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower ReserveNationalGuardReserveActivated [URLA.X125], [URLA.X128]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Only period of service was as a non-activated member of the Reserve or National Guard\"}")]
     public bool? ReserveNationalGuardReserveActivated { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -2038,6 +2072,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower SpousalVaBenefitsEligibilityIndicator [URLA.X19], [URLA.X20]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Surviving Spouse\"}")]
     public bool? SpousalVaBenefitsEligibilityIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -2758,6 +2793,7 @@ public sealed partial class Borrower : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Borrower Veteran [URLA.X124], [URLA.X127]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Currently retired, discharged, or separated from service\"}")]
     public bool? Veteran { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

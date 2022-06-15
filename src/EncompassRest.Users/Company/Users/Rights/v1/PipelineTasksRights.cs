@@ -18,6 +18,11 @@ namespace EncompassRest.Company.Users.Rights.v1
         public bool? BidTape { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
+        /// PipelineTasksRights CreatePipelineViews
+        /// </summary>
+        public bool? CreatePipelineViews { get => GetValue<bool?>(); set => SetValue(value); }
+
+        /// <summary>
         /// PipelineTasksRights DeleteLoans
         /// </summary>
         public bool? DeleteLoans { get => GetValue<bool?>(); set => SetValue(value); }

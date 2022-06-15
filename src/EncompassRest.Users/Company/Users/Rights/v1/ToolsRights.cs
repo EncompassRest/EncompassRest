@@ -142,8 +142,14 @@ namespace EncompassRest.Company.Users.Rights.v1
         /// <summary>
         /// ToolsRights LockComparisonTool
         /// </summary>
-        [JsonProperty("lockComparisionTool")]
-        public bool? LockComparisonTool { get => GetValue<bool?>(); set => SetValue(value); }
+        [AllowNull]
+        public LockComparisonToolRights LockComparisonTool { get => GetEntity<LockComparisonToolRights>(); set => SetEntity(value); }
+
+        /// <summary>
+        /// ToolsRights LockComparisonToolParentAccess
+        /// </summary>
+        [JsonProperty("lockComparisonTool|_ParentAccess")]
+        public bool? LockComparisonToolParentAccess { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
         /// ToolsRights LockRequestForm

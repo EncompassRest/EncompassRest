@@ -21,11 +21,13 @@ public sealed partial class LoanEstimate3 : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Loan Estimate - Construction Loan [LE3.X15]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Settlement will occur more than 60 days after initial disclosure.\"}")]
     public bool? ConstructionLoan { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Estimate - Homeowner Insurance [LE3.X13]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Omit from print\"}")]
     public bool? HomeownerInsurance { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

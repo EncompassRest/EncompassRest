@@ -65,16 +65,19 @@ public sealed partial class AdditionalRequests : DirtyExtensibleObject, IIdentif
     /// <summary>
     /// Request Appraisal Prprty Access Key Pick Up [REQUEST.X24]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Key Pick Up\"}")]
     public bool? AppraisalKeyPickUp { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Request Appraisal Prprty Access Lockbox [REQUEST.X23]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Lock Box\"}")]
     public bool? AppraisalLockBox { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Request Appraisal Prprty Access Vacant [REQUEST.X22]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Vacant\"}")]
     public bool? AppraisalVacant { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -152,6 +155,7 @@ public sealed partial class AdditionalRequests : DirtyExtensibleObject, IIdentif
     /// <summary>
     /// Request Title Commit Attach Contract [REQUEST.X13]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Contract\"}")]
     public bool? TitleContract { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -172,6 +176,7 @@ public sealed partial class AdditionalRequests : DirtyExtensibleObject, IIdentif
     /// <summary>
     /// Request Title Commit Attach Title Ins Req [REQUEST.X12]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Title Insurance Requirements\"}")]
     public bool? TitleInsRequirements { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -182,11 +187,13 @@ public sealed partial class AdditionalRequests : DirtyExtensibleObject, IIdentif
     /// <summary>
     /// Request Title Commit Attach Prior Title Policy [REQUEST.X11]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Prior Title Policy\"}")]
     public bool? TitlePriorTitlePolicy { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Request Title Commit Attach Survey [REQUEST.X15]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Survey\"}")]
     public bool? TitleSurvey { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -197,5 +204,6 @@ public sealed partial class AdditionalRequests : DirtyExtensibleObject, IIdentif
     /// <summary>
     /// Request Title Commit Attach Warranty Deed [REQUEST.X14]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Warranty Deed\"}")]
     public bool? TitleWarrantyDeed { get => GetValue<bool?>(); set => SetValue(value); }
 }

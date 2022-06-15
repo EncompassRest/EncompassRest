@@ -1842,6 +1842,11 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     public decimal? ExpectedSRP { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
+    /// Rate Lock Extension Indicator [4790]
+    /// </summary>
+    public bool? ExtensionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
     /// RateLock ExtensionRequestPending
     /// </summary>
     public string? ExtensionRequestPending { get => GetValue<string?>(); set => SetValue(value); }
@@ -2167,6 +2172,11 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     public StringEnumValue<LockRequestLoanPurposeType> LockRequestLoanPurposeType { get => GetValue<StringEnumValue<LockRequestLoanPurposeType>>(); set => SetValue(value); }
 
     /// <summary>
+    /// Rate Lock Validation Status [4788]
+    /// </summary>
+    public StringEnumValue<LockValidationStatus> LockValidationStatus { get => GetValue<StringEnumValue<LockValidationStatus>>(); set => SetValue(value); }
+
+    /// <summary>
     /// Lock Request Loan to Value (LTV) [3241]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
@@ -2270,6 +2280,22 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     /// </summary>
     [AllowNull]
     public IList<PriceAdjustment> PriceAdjustments { get => GetList<PriceAdjustment>(); set => SetList(value); }
+
+    /// <summary>
+    /// Rate Lock Price Concession Indicator [4789]
+    /// </summary>
+    public bool? PriceConcessionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Rate Lock Price Concession Request Status [4791]
+    /// </summary>
+    public StringEnumValue<ApprovalStatus> PriceConcessionRequestStatus { get => GetValue<StringEnumValue<ApprovalStatus>>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Rate Lock Pricing Concession Requested [4787]
+    /// </summary>
+    [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+    public decimal? PricingConcessionRequested { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// RateLock PricingHistoryData

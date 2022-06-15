@@ -67,6 +67,11 @@ public sealed partial class AusTracking : DirtyExtensibleObject, IIdentifiable
     public string? AssessmentType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
+    /// AUS Tracking - AUS Average Median Credit Score [AUS.X199]
+    /// </summary>
+    public string? AusAverageMedianCreditScore { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
     /// AUS Tracking - AUS Log Extension Id [AUS.X197]
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
@@ -376,6 +381,11 @@ public sealed partial class AusTracking : DirtyExtensibleObject, IIdentifiable
     /// </summary>
     [LoanFieldProperty(ReadOnly = true)]
     public int? CuredAppraisedValue { get => GetValue<int?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// AUS Tracking - Cured AUS Average Median Credit Score [AUS.CuredX199]
+    /// </summary>
+    public string? CuredAusAverageMedianCreditScore { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// CuredAUS Tracking - CLTV [AUS.CuredX12]

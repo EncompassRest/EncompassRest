@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EncompassRest.Loans;
+using EncompassRest.Loans.Documents;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Loans.v3;
 using EncompassRest.Schema;
@@ -21,8 +21,10 @@ public static class EntityGenerator
     private static readonly Dictionary<string, HashSet<string>> _ignoredProperties = new()
     {
         { nameof(FundingFee), new() { "tag" } },
-        { nameof(CustomField), new() { "value" } },
-        { nameof(AdditionalStateDisclosure), new() { "disclosureValue" } }
+        { nameof(Loan), new() { "documents", "virtualFields" } },
+        { nameof(CustomModelFields), new() { "helocExampleScheduleData" } },
+        { nameof(DocumentOrder), new() { "documentFields" } },
+        { nameof(EnhancedDisclosureTracking2015Log), new() { "snapshot" } }
     };
 
     private static readonly HashSet<string> _ignoredEntities = new()
@@ -46,7 +48,9 @@ public static class EntityGenerator
         { nameof(Asset), new() { nameof(Asset.AssetType) } },
         { nameof(AusTracking), new() { nameof(AusTracking.DuPropertyType), nameof(AusTracking.LpPropertyType) } },
         { nameof(Borrower), new() { nameof(Borrower.HmdaCreditScoreForDecisionMaking), nameof(Borrower.HmdaCreditScoringModel) } },
+        { nameof(ClosingEntity), new() { nameof(ClosingEntity.ClosingEntityType) } },
         { nameof(Contact), new() { nameof(Contact.InsuranceProjectType) } },
+        { nameof(Correspondent), new() { nameof(Correspondent.AppraisalFloodZone) } },
         { nameof(CustomField), new() { nameof(CustomField.Format) } },
         { nameof(EntityReference), new() { nameof(EntityReference.EntityType) } },
         { nameof(Gfe2010Fee), new() { nameof(Gfe2010Fee.Gfe2010FeeType) } },
@@ -55,6 +59,7 @@ public static class EntityGenerator
         { nameof(Property), new() { nameof(Property.PropertyRightsType) } },
         { nameof(Tsum), new() { nameof(Tsum.PropertyFormType) } },
         { nameof(Uldd), new() { nameof(Uldd.ClosingCostFundsTypeOtherDescription), nameof(Uldd.ClosingCost2FundsTypeOtherDescription), nameof(Uldd.ClosingCost3FundsTypeOtherDescription), nameof(Uldd.ClosingCost4FundsTypeOtherDescription), nameof(Uldd.DownPaymentOtherTypeDescription), nameof(Uldd.FreddieMortgageType), nameof(Uldd.FannieMortgageType) } },
+        { nameof(Valuation), new() { nameof(Valuation.AppraisalFloodZone) } },
         { nameof(VodItem), new() { nameof(VodItem.Type) } },
         { nameof(Vol), new() { nameof(Vol.LiabilityType), nameof(Vol.MortgageType) } }
     };
@@ -73,12 +78,12 @@ public static class EntityGenerator
     {
         { nameof(MilestoneTaskContact), new() { { nameof(MilestoneTaskContact.State), typeof(State) } } },
         { nameof(Miscellaneous), new() { { nameof(Miscellaneous.State), typeof(State) } } },
+        { nameof(Residence), new() { { nameof(Residence.AddressState), typeof(State) } } },
         { nameof(Correspondent), new() { { nameof(Correspondent.ProjectClass), typeof(ProjectType) } } },
-        { nameof(Valuation), new() { { nameof(Valuation.StatedPropertyType), typeof(PropertyType) } } },
-        { nameof(Document), new() { { nameof(Document.Status), typeof(DocumentStatus) } } }
+        { nameof(Valuation), new() { { nameof(Valuation.StatedPropertyType), typeof(PropertyType) } } }
     };
 
-    private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(new KeyValuePair<string, ModelPathSettings>[0], 0);
+    private static readonly ModelPathContext s_modelPathContext = new ModelPathContext(Array.Empty<KeyValuePair<string, ModelPathSettings>>(), 1);
 
     public static async Task Main()
     {
@@ -119,10 +124,13 @@ public static class EntityGenerator
             }
 
             loanSchema.Definitions["ApplicationReferenceContract"].Title = "ApplicationReference";
+            loanSchema.Definitions.Remove("DocumentContract");
             loanSchema.Definitions.Remove("LogSnapshotField");
             loanSchema.Properties.Add("currentApplication", new() { Ref = "#/definitions/ApplicationContract" });
             loanSchema.Definitions["EmploymentContract"].Properties.Add("owner", new() { Type = new() { SchemaType.String, SchemaType.Null }, Enum = new() { "Borrower", "CoBorrower" } });
             loanSchema.Definitions["ResidenceContract"].Properties.Add("applicantType", new() { Type = new() { SchemaType.String, SchemaType.Null }, Enum = new() { "Borrower", "CoBorrower" } });
+            loanSchema.Definitions["MilestoneContract"].Properties["loanAssociate"].Ref = "#/definitions/LoanAssociateContract";
+            loanSchema.Definitions.Remove("LoanAssociateContract-1");
 
             foreach (var field in standardFields)
             {
@@ -175,7 +183,7 @@ public static class EntityGenerator
             Directory.CreateDirectory(destinationPath);
             Directory.CreateDirectory("Generated\\Loans\\Enums");
 
-            GenerateEnumFileFromOptions(destinationPath, @namespace, nameof(LoanEntityFilterKey), standardFields.Select(f => f.EntitiesFilterKey.Value).Distinct().Where(v => v != null).Concat(new[] { "loan" }).OrderBy(v => v).ToDictionary(v => v!, v => v!));
+            GenerateEnumFileFromOptions(destinationPath, @namespace, nameof(LoanEntity), standardFields.Select(f => f.EntitiesFilterKey.Value).Distinct().Where(v => v != null).Concat(new[] { "loan", "virtualFields" }).OrderBy(v => v).ToDictionary(v => v!, v => v!));
 
             var enumTypes = typeof(ActionTaken).Assembly.GetTypes()
                 .Concat(typeof(ConditionStatus).Assembly.GetTypes())
@@ -243,7 +251,7 @@ public static class EntityGenerator
             isFileAttachmentReference = entityName == "FileAttachmentReference";
         }
 
-        var serializeWholeList = false;
+        var serializeWholeList = entityName == "Application";
 
         var systemNamespace = false;
         var collectionsNamespace = false;
@@ -273,7 +281,7 @@ public static class EntityGenerator
                         optionValues = new Dictionary<string, string>();
                         foreach (var field in standardFields)
                         {
-                            if (field.ContractPath.Contains('%'))
+                            if (field.ContractPath.Contains('%') && !field.ContractPath.StartsWith("loan.customFields["))
                             {
                                 serializeWholeList = true;
                             }
@@ -417,13 +425,13 @@ public static class EntityGenerator
                         }
                         else if (type == "bool?" && optionValues != null)
                         {
-                            optionValues = optionValues.Where(o => !string.IsNullOrEmpty(o.Value) && ((string.Equals(o.Key, "true", StringComparison.Ordinal) && !string.Equals(o.Value, "Yes", StringComparison.Ordinal)) || (string.Equals(o.Key, "false", StringComparison.Ordinal) && !string.Equals(o.Value, "No", StringComparison.Ordinal)))).ToDictionary(o => string.Equals(o.Key, "true", StringComparison.Ordinal) ? "Y" : "N", o => o.Value);
+                            optionValues = optionValues.Where(o => !string.IsNullOrEmpty(o.Value) && (((o.Key == "true" || o.Key == "Y") && o.Value != "Yes") || ((o.Key == "false" || o.Key == "N") && o.Value != "No"))).ToDictionary(o => (o.Key == "true" || o.Key == "Y") ? "Y" : "N", o => o.Value);
                             if (optionValues.Count > 0)
                             {
                                 attributeProperties.Add($@"OptionsJson = ""{JsonConvert.SerializeObject(optionValues).Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                             }
                         }
-                        else if (optionValues != null)
+                        else if (type != "object?" && optionValues != null)
                         {
                             optionValues = optionValues.Where(o => !string.IsNullOrEmpty(o.Key) || !string.IsNullOrEmpty(o.Value)).ToDictionary(o => o.Key, o => o.Value);
                             if (optionValues.Count > 0)
@@ -449,7 +457,10 @@ public static class EntityGenerator
                                 {
                                     foreach (var propertyFilter in arraySegment.Filter)
                                     {
-                                        propertiesToAlwaysSerialize.Add(propertyFilter.PropertyName);
+                                        if (entitySchema.Properties.ContainsKey(propertyFilter.PropertyName))
+                                        {
+                                            propertiesToAlwaysSerialize.Add(propertyFilter.PropertyName);
+                                        }
                                     }
                                 }
                             }
@@ -482,6 +493,10 @@ public static class EntityGenerator
                     if (attributeProperties.Count > 0 && standardFields?.Count > 0)
                     {
                         properties.AppendLine($"    [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
+                    }
+                    if (entityName == "Loan" && propertyName == "Id")
+                    {
+                        properties.AppendLine("    [NeverSerialize]");
                     }
                     if (isEntity)
                     {
@@ -722,6 +737,8 @@ public enum {enumName}
                 return "bool?";
             case SchemaType.Integer:
                 return "int?";
+            case SchemaType.Object:
+                return "object?";
             case SchemaType.Array:
                 isList = true;
                 var elementType = GetPropertyOrElementType(p.Items!, definitions, out _, out _);

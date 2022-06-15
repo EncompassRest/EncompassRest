@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EncompassRest.Loans.v3
+﻿namespace EncompassRest.Loans.v3
 {
     internal sealed class VirtualLoanField : LoanField
     {
@@ -17,11 +15,7 @@ namespace EncompassRest.Loans.v3
         //    }
         //}
 
-        //public override bool Locked
-        //{
-        //    get => false;
-        //    set => throw new InvalidOperationException($"cannot lock/unlock field '{FieldId}' as it's virtual");
-        //}
+        internal override bool LockedInternal => false;
 
         internal VirtualLoanField(FieldDescriptor descriptor, Loan loan)
             : base(descriptor, loan)

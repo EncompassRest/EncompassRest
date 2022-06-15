@@ -27,6 +27,7 @@ public sealed partial class FreddieMac : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Freddie Mac Lender Allows Neg Amort [CASASRN.X85]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Allows Negative Amortization\"}")]
     public bool? AllowsNegativeAmortizationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -42,11 +43,13 @@ public sealed partial class FreddieMac : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Freddie Mac Lender Arms-Length Trans [CASASRN.X81]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Arms-Length Transaction\"}")]
     public bool? ArmsLengthTransactionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Borr Qualifies as Veteran [156]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"One or more borrowers qualifies as a veteran\"}")]
     public bool? BorrowerQualifiesAsVeteranIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -241,13 +244,13 @@ public sealed partial class FreddieMac : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Freddie Mac Order Credit [CASASRN.X1]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Order Credit Evaluation\"}", ReadOnly = true)]
     public bool? OrderCreditEvaluationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Freddie Mac Order Merged Credit Rpt [CASASRN.X88]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Order Merged Credit Report\"}", ReadOnly = true)]
     public bool? OrderMergedCreditReportIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -259,7 +262,7 @@ public sealed partial class FreddieMac : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Freddie Mac Order Risk Grade Eval [CASASRN.X4]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Order Risk Grade Evaluation\"}", ReadOnly = true)]
     public bool? OrderRiskGradeEvaluationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -352,6 +355,7 @@ public sealed partial class FreddieMac : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Freddie Mac Lender Retail Loan [CASASRN.X77]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Retail loan\"}")]
     public bool? RetailLoanIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -379,6 +383,7 @@ public sealed partial class FreddieMac : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Freddie Mac Lender 2nd Trust Pd on Closing [CASASRN.X30]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Second Trust Paid on closing\"}")]
     public bool? SecondTrustRefiIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -424,7 +429,7 @@ public sealed partial class FreddieMac : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Freddie Mac Transfer Loan to Conduit [CASASRN.X10]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Transfer Loan to Conduit\"}", ReadOnly = true)]
     public bool? TransferLoanToConduitIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

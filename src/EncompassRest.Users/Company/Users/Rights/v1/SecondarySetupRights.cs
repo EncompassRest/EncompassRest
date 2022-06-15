@@ -49,6 +49,11 @@ namespace EncompassRest.Company.Users.Rights.v1
         public bool? LockComparisonTool { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
+        /// SecondarySetupRights LockComparisonToolFields
+        /// </summary>
+        public bool? LockComparisonToolFields { get => GetValue<bool?>(); set => SetValue(value); }
+
+        /// <summary>
         /// SecondarySetupRights LockDeskSetup
         /// </summary>
         public bool? LockDeskSetup { get => GetValue<bool?>(); set => SetValue(value); }

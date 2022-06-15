@@ -64,6 +64,7 @@ public sealed partial class Tsum : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Underwriting Commun Lending/AHI [1551]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Community Lending/Affordable Housing Initiative\"}")]
     public bool? CommunityLendingAffordableHousingInitiative { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

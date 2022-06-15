@@ -398,6 +398,11 @@ public sealed partial class Property : DirtyExtensibleObject, IIdentifiable
     public string? SectionIdentifier { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
+    /// Property Info Square [4792]
+    /// </summary>
+    public string? Square { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
     /// Subject Property State [14]
     /// </summary>
     public StringEnumValue<State> State { get => GetValue<StringEnumValue<State>>(); set => SetValue(value); }

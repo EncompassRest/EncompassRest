@@ -67,6 +67,7 @@ public sealed partial class Property : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// FHA Secondary Residence Indicator [URLA.X76]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"FHA Secondary Residence\"}")]
     public bool? FhaSecondaryResidenceIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -117,6 +118,7 @@ public sealed partial class Property : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Linked Affordable Loan Indicator [LINK_URLA.X210]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Affordable Loan\"}")]
     public bool? LinkedAffordableLoan { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -330,6 +332,7 @@ public sealed partial class Property : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Mixed Use Property Indicator [URLA.X77]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"If you will occupy the property, will you set aside space within the property to operate your own business?\"}")]
     public bool? PropertyMixedUsageIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -388,6 +391,11 @@ public sealed partial class Property : DirtyExtensibleObject, IIdentifiable
     /// Property Info Section Identifier [2975]
     /// </summary>
     public string? SectionIdentifier { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Property Info Square [4792]
+    /// </summary>
+    public string? Square { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property State [14]

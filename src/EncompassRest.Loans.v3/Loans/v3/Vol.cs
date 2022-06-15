@@ -29,6 +29,7 @@ public sealed partial class Vol : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Bank Liability Considered in Exposure Indicator [FL0030]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Bank Liability Considered in Exposure Indicator\"}")]
     public bool? BankLiabilityConsideredIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -59,11 +60,13 @@ public sealed partial class Vol : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Energy Efficient Debts including PACE loans [FL0069]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"PACE Loan\",\"N\":\"Energy Improvement\"}")]
     public bool? EnergyEfficientDebts { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Liability Exclude from URLA Total [FL0017]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Exclude from URLA page 2 Liabilities Total\"}")]
     public bool? ExclusionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -127,11 +130,13 @@ public sealed partial class Vol : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Payment includes Taxes and Insurance [FL0066]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Payment includes Taxes and Insurance\"}")]
     public bool? IncludeTaxesAndInsuranceIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Liability Debt is NOT secured to Subject Property [FL0061]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"This Debt is NOT secured to Subject Property?\"}")]
     public bool? IsDebtNotSecuredToSubjectPropertyIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -255,11 +260,13 @@ public sealed partial class Vol : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Liability Will be Paid Off and will be included [FL0063]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Paid off (*) will be included\"}")]
     public bool? PayoffIncludedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Liability Will be Paid Off [FL0018]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Will be paid off (*)\"}")]
     public bool? PayoffStatusIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -270,16 +277,19 @@ public sealed partial class Vol : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Liability Print - See Attached Authorization [FL0036]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
     public bool? PrintAttachmentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Liability Print User Job Title [FL0064]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
     public bool? PrintUserJobTitleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Liability Print User Name as Title [FL0038]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name as title\"}")]
     public bool? PrintUserNameIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -307,11 +317,13 @@ public sealed partial class Vol : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Liability Resubordinated Indicator [FL0026]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Resubordinated Indicator\"}")]
     public bool? SubjectLoanResubordinationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Subject Property Indicator [FL0027]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Subject Property Indicator\"}")]
     public bool? SubjectPropertyIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

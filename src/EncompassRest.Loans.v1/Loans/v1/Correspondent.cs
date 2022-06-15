@@ -205,7 +205,7 @@ public sealed partial class Correspondent : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Correspondent Flood Zone [CORRESPONDENT.X92]
     /// </summary>
-    [LoanFieldProperty(MissingOptionsJson = "[\"None\"]")]
+    [LoanFieldProperty(MissingOptionsJson = "[\"None\",\"A1\",\"A2\",\"A3\",\"A4\",\"A5\",\"A6\",\"A7\",\"A8\",\"A9\",\"A10\",\"A11\",\"A12\",\"A13\",\"A14\",\"A15\",\"A16\",\"A17\",\"A18\",\"A19\",\"A20\",\"A21\",\"A22\",\"A23\",\"A24\",\"A25\",\"A26\",\"A27\",\"A28\",\"A29\",\"A30\",\"V1\",\"V2\",\"V3\",\"V4\",\"V5\",\"V6\",\"V7\",\"V8\",\"V9\",\"V10\",\"V11\",\"V12\",\"V13\",\"V14\",\"V15\",\"V16\",\"V17\",\"V18\",\"V19\",\"V20\",\"V21\",\"V22\",\"V23\",\"V24\",\"V25\",\"V26\",\"V27\",\"V28\",\"V29\",\"V30\"]")]
     public StringEnumValue<FloodZone> AppraisalFloodZone { get => GetValue<StringEnumValue<FloodZone>>(); set => SetValue(value); }
 
     /// <summary>

@@ -36,6 +36,7 @@ public sealed partial class CommitmentTerms : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// HUD Commit Terms See Below [1365]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"See Below  (Appraisal done)\"}")]
     public bool? AppraisalDone { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -61,11 +62,13 @@ public sealed partial class CommitmentTerms : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// HUD Conditional Commit Under Act [1141]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Conditional Commitment under Act\"}")]
     public bool? ConditionalCommitmentUnderActg { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HUD Conditions Elig High Loan to Value Ratio [1342]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Eligible for high loan to value ratio\"}")]
     public bool? EligibleForHighLtv { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -81,6 +84,7 @@ public sealed partial class CommitmentTerms : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Subject Property Manufactured Housing [603]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Manufactured Housing\"}")]
     public bool? ManufacturedHousing { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

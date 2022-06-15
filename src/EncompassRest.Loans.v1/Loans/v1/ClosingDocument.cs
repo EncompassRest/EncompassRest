@@ -869,6 +869,11 @@ public sealed partial class ClosingDocument : DirtyExtensibleObject, IIdentifiab
     public string? PrepaymentPenaltyDescriptions3 { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
+    /// Print 01/2001 Version of Uniform Instruments [4793]
+    /// </summary>
+    public bool? Print2001UniformInstrumentsIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
     /// Print Trust Name(s) on LE/CD Addendum [4662]
     /// </summary>
     public bool? PrintTrustNameIndicator { get => GetValue<bool?>(); set => SetValue(value); }

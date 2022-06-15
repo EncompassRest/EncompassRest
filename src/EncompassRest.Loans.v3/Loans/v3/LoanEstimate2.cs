@@ -296,5 +296,6 @@ public sealed partial class LoanEstimate2 : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Loan Estimate - Use Alternate [LE2.X28]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Use Alternate\"}")]
     public bool? UseAlternate { get => GetValue<bool?>(); set => SetValue(value); }
 }

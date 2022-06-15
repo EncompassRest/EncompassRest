@@ -67,7 +67,7 @@ public sealed class StandardFieldSchema : ExtensibleObject
     /// <summary>
     /// Indicates the entity the field ID belongs to in the loan object.
     /// </summary>
-    public StringEnumValue<LoanEntityFilterKey> EntitiesFilterKey { get; set; }
+    public StringEnumValue<LoanEntity> EntitiesFilterKey { get; set; }
 
     /// <summary>
     /// Values depend on the field type.

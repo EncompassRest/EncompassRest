@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Diagnostics.CodeAnalysis;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
@@ -23,13 +23,9 @@ namespace EncompassRest.Loans.v3
         [JsonIgnore]
         public IEncompassRestClient? Client { get; internal set; }
 
-        /// <summary>
-        /// The Loan Apis for this loan. Loan object must be initialized to use this.
-        /// </summary>
+        /// <inheritdoc/>
         [JsonIgnore]
         public ILoanObjectBoundApis LoanApis => _loanApis ?? throw new InvalidOperationException("Loan object must be initialized to use LoanApis");
-
-        ILoanApis ILoan.LoanApis => LoanApis;
 
         /// <summary>
         /// The loan fields collection.
@@ -39,33 +35,42 @@ namespace EncompassRest.Loans.v3
 
         ILoanFields ILoan.Fields => Fields;
 
-        private Application? _currentApplication;
-
         /// <summary>
         /// The current application/borrower pair.
         /// </summary>
         [JsonIgnore]
+        [AllowNull]
         public Application CurrentApplication
         {
             get
             {
-                var currentApplication = _currentApplication;
+                var currentApplication = GetValue<Application?>();
                 if (currentApplication == null)
                 {
-                    var applicationIndex = CurrentApplicationIndex ?? 0;
-                    CurrentApplicationIndex = applicationIndex;
-                    if (Applications.Count <= applicationIndex)
+                    var applicationIndex = CurrentApplicationIndex;
+                    if (applicationIndex == null)
                     {
-                        for (var i = Applications.Count; i <= applicationIndex; ++i)
+                        applicationIndex = 0;
+                        CurrentApplicationIndex = applicationIndex;
+                    }
+                    var applications = Applications;
+                    if (applicationIndex < applications.Count)
+                    {
+                        currentApplication = applications[applicationIndex.GetValueOrDefault()];
+                    }
+                    else
+                    {
+                        for (var i = applications.Count; i <= applicationIndex; ++i)
                         {
-                            Applications.Add(new Application());
+                            currentApplication = new Application();
+                            applications.Add(currentApplication);
                         }
                     }
-                    currentApplication = Applications[applicationIndex];
-                    _currentApplication = currentApplication;
+                    CurrentApplication = currentApplication!;
                 }
-                return currentApplication;
+                return currentApplication!;
             }
+            private set => SetValue(value);
         }
 
         /// <summary>
@@ -122,13 +127,13 @@ namespace EncompassRest.Loans.v3
             }
         }
 
-        internal override void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        internal override void OnPropertyChanged(string propertyName)
         {
             base.OnPropertyChanged(propertyName);
             switch (propertyName)
             {
                 case nameof(CurrentApplicationIndex):
-                    _currentApplication = null;
+                    CurrentApplication = null;
                     break;
             }
         }

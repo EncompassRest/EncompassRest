@@ -4,6 +4,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// MilestoneFreeRole
 /// </summary>
+[Entity(PropertiesToAlwaysSerialize = nameof(LoanAssociate))]
 public sealed partial class MilestoneFreeRole : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>

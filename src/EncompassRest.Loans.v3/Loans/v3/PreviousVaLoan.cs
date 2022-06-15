@@ -38,7 +38,7 @@ public sealed partial class PreviousVaLoan : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// PreviousVaLoan PropertyOwned
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Property Owned\"}", ReadOnly = true)]
     public bool? PropertyOwned { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

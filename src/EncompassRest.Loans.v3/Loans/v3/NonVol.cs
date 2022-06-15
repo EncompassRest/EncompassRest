@@ -41,6 +41,7 @@ public sealed partial class NonVol : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Liability Will be Paid Off and will be included [UNFL0005]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Paid off (*) will be included\"}")]
     public bool? IncludedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -56,6 +57,7 @@ public sealed partial class NonVol : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// POC Indicator [UNFL0006]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Paid off (*) will be included\"}")]
     public bool? PocIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

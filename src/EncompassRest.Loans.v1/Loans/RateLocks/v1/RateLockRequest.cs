@@ -40,7 +40,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Date on which the rate lock expires.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>

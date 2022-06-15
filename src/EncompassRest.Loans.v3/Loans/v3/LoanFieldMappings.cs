@@ -221,9 +221,9 @@ public sealed class LoanFieldMappings : IDictionary<string, string>, IReadOnlyDi
         {
             throw new ArgumentException("bad modelPath");
         }
-        if (!string.Equals(path.RootObjectName, "Loan", StringComparison.Ordinal))
+        if (!string.Equals(path.RootObjectName, "loan", StringComparison.Ordinal))
         {
-            throw new ArgumentException("modelPath must start with Loan");
+            throw new ArgumentException("modelPath must start with loan");
         }
 
         var descriptor = new FieldDescriptor(fieldId, path, modelPath, string.Empty);

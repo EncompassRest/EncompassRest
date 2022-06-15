@@ -1,211 +1,212 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EncompassRest.Loans.v3;
 
-namespace EncompassRest.Loans.v3;
+namespace EncompassRest.Loans.Documents.v3;
 
 /// <summary>
-/// Document
+/// LoanDocument
 /// </summary>
-public sealed partial class Document : DirtyExtensibleObject, IIdentifiable
+public sealed partial class LoanDocument : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>
-    /// Document AccessibleTo
+    /// LoanDocument AccessibleTo
     /// </summary>
     [AllowNull]
     public IList<string?> AccessibleTo { get => GetList<string?>(); set => SetList(value); }
 
     /// <summary>
-    /// Document Application
+    /// LoanDocument Application
     /// </summary>
     [AllowNull]
     public ApplicationReference Application { get => GetEntity<ApplicationReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// Document Attachments
+    /// LoanDocument Attachments
     /// </summary>
     [AllowNull]
     public IList<FileAttachmentReference> Attachments { get => GetList<FileAttachmentReference>(); set => SetList(value); }
 
     /// <summary>
-    /// Document Conditions
+    /// LoanDocument Conditions
     /// </summary>
     [AllowNull]
     public IList<EntityReference> Conditions { get => GetList<EntityReference>(); set => SetList(value); }
 
     /// <summary>
-    /// Document CreatedBy
+    /// LoanDocument CreatedBy
     /// </summary>
     [AllowNull]
     public EntityReference CreatedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// Document CreatedDate
+    /// LoanDocument CreatedDate
     /// </summary>
     public DateTime? CreatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document DaysDue
+    /// LoanDocument DaysDue
     /// </summary>
     public int? DaysDue { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document DaysTillExpire
+    /// LoanDocument DaysTillExpire
     /// </summary>
     public int? DaysTillExpire { get => GetValue<int?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document Description
+    /// LoanDocument Description
     /// </summary>
     public string? Description { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document DocumentGroups
+    /// LoanDocument DocumentGroups
     /// </summary>
     [AllowNull]
     public IList<string?> DocumentGroups { get => GetList<string?>(); set => SetList(value); }
 
     /// <summary>
-    /// Document DocumentTypes
+    /// LoanDocument DocumentTypes
     /// </summary>
     [AllowNull]
     public IList<string?> DocumentTypes { get => GetList<string?>(); set => SetList(value); }
 
     /// <summary>
-    /// Document EmnSignature
+    /// LoanDocument EmnSignature
     /// </summary>
     public string? EmnSignature { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document ExpectedDate
+    /// LoanDocument ExpectedDate
     /// </summary>
     public DateTime? ExpectedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document ExpirationDate
+    /// LoanDocument ExpirationDate
     /// </summary>
     public DateTime? ExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document Id
+    /// LoanDocument Id
     /// </summary>
     public string? Id { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document IsMarkedRemoved
+    /// LoanDocument IsMarkedRemoved
     /// </summary>
     public bool? IsMarkedRemoved { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document IsProtected
+    /// LoanDocument IsProtected
     /// </summary>
     public bool? IsProtected { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document Milestone
+    /// LoanDocument Milestone
     /// </summary>
     [AllowNull]
     public EntityReference Milestone { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// Document PackageId
+    /// LoanDocument PackageId
     /// </summary>
     public string? PackageId { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document ReadyForUwBy
+    /// LoanDocument ReadyForUwBy
     /// </summary>
     [AllowNull]
     public EntityReference ReadyForUwBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// Document ReadyForUwDate
+    /// LoanDocument ReadyForUwDate
     /// </summary>
     public DateTime? ReadyForUwDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document ReadyToShipBy
+    /// LoanDocument ReadyToShipBy
     /// </summary>
     [AllowNull]
     public EntityReference ReadyToShipBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// Document ReadyToShipDate
+    /// LoanDocument ReadyToShipDate
     /// </summary>
     public DateTime? ReadyToShipDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document ReceivedBy
+    /// LoanDocument ReceivedBy
     /// </summary>
     [AllowNull]
     public EntityReference ReceivedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// Document ReceivedDate
+    /// LoanDocument ReceivedDate
     /// </summary>
     public DateTime? ReceivedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document RequestedBy
+    /// LoanDocument RequestedBy
     /// </summary>
     [AllowNull]
     public EntityReference RequestedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// Document RequestedDate
+    /// LoanDocument RequestedDate
     /// </summary>
     public DateTime? RequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document RequestedFrom
+    /// LoanDocument RequestedFrom
     /// </summary>
     public string? RequestedFrom { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document RerequestedBy
+    /// LoanDocument RerequestedBy
     /// </summary>
     [AllowNull]
     public EntityReference RerequestedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// Document RerequestedDate
+    /// LoanDocument RerequestedDate
     /// </summary>
     public DateTime? RerequestedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document ReviewedBy
+    /// LoanDocument ReviewedBy
     /// </summary>
     [AllowNull]
     public EntityReference ReviewedBy { get => GetEntity<EntityReference>(); set => SetEntity(value); }
 
     /// <summary>
-    /// Document ReviewedDate
+    /// LoanDocument ReviewedDate
     /// </summary>
     public DateTime? ReviewedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document Roles
+    /// LoanDocument Roles
     /// </summary>
     [AllowNull]
     public IList<EntityReference> Roles { get => GetList<EntityReference>(); set => SetList(value); }
 
     /// <summary>
-    /// Document Status
+    /// LoanDocument Status
     /// </summary>
     public StringEnumValue<DocumentStatus> Status { get => GetValue<StringEnumValue<DocumentStatus>>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document StatusDate
+    /// LoanDocument StatusDate
     /// </summary>
     public DateTime? StatusDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document Title
+    /// LoanDocument Title
     /// </summary>
     public string? Title { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
-    /// Document Verification
+    /// LoanDocument Verification
     /// </summary>
     [AllowNull]
     public EntityReference Verification { get => GetEntity<EntityReference>(); set => SetEntity(value); }

@@ -39,21 +39,8 @@ partial class DisclosureRecipientRoleReference
 
 partial class CustomField
 {
-    /// <summary>
-    /// Custom Field Value
-    /// </summary>
-    public object? Value { get => GetValue<object?>(); set => SetValue(value); }
-
     [IdPropertyName(nameof(FieldName))]
     string? IIdentifiable.Id { get => FieldName; set => FieldName = value; }
-}
-
-partial class AdditionalStateDisclosure
-{
-    ///// <summary>
-    ///// AdditionalStateDisclosureContract DisclosureValue
-    ///// </summary>
-    //public object? DisclosureValue { get => GetValue<object?>(); set => SetValue(value); }
 }
 
 partial class DisclosureForm

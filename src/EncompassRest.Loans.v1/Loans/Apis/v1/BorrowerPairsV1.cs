@@ -110,7 +110,7 @@ namespace EncompassRest.Loans.Apis.v1
         {
         }
 
-        internal override IList<Application> GetInLoan(Loan loan) => loan.Applications;
+        internal override IList<Application> GetInLoan(ILoan loan) => ((Loan)loan).Applications;
 
         public Task<IList<Application>> GetBorrowerPairsAsync(CancellationToken cancellationToken = default) => GetAllAsync(nameof(GetBorrowerPairsAsync), cancellationToken);
 
@@ -187,7 +187,7 @@ namespace EncompassRest.Loans.Apis.v1
             await PatchAsync(null, null, JsonStreamContent.Create(applications), nameof(MoveBorrowerPairsAsync), null, cancellationToken).ConfigureAwait(false);
             if (LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
-                var bps = LoanObjectBoundApis.Loan.Applications;
+                var bps = ((Loan)LoanObjectBoundApis.Loan).Applications;
                 var borrowers = new Dictionary<string, Tuple<int, Borrower>>(StringComparer.OrdinalIgnoreCase);
                 foreach (var bp in bps)
                 {

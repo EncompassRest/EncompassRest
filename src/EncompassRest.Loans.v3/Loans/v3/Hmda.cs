@@ -188,6 +188,7 @@ public sealed partial class Hmda : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Subject Property Exclude from HMDA Report [HMDA.X24]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Exclude loan from HMDA report\"}")]
     public bool? ExcludeLoanFromHmdaReportIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -218,6 +219,7 @@ public sealed partial class Hmda : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HMDA CLTV [HMDA.X98]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"HMDA CLTV\"}")]
     public bool? HmdaCltvIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -228,11 +230,13 @@ public sealed partial class Hmda : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HMDA DTI [HMDA.X97]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"HMDA DTI\"}")]
     public bool? HmdaDtiIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HMDA Income [HMDA.X99]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"HMDA Income\"}")]
     public bool? HmdaIncomeIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -292,6 +296,7 @@ public sealed partial class Hmda : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Property Value Not Relied Upon [HMDA.X108]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Property Value Not Relied Upon\"}")]
     public bool? HmdaPropertyValueNotReliedUponIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -302,6 +307,7 @@ public sealed partial class Hmda : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HMDA Sync address fields with subject property address [HMDA.X91]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"HMDA Sync Address Indicator\"}")]
     public bool? HmdaSyncAddressIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -476,6 +482,7 @@ public sealed partial class Hmda : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Report loan as Partially Exempt [HMDA.X113]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Loan is Partially Exempt\"}")]
     public bool? PartiallyExemptLoanIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -519,6 +526,7 @@ public sealed partial class Hmda : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Loan Purpose is Home Improvement [HMDA.X25]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Report the purpose of this loan as Home Improvement (one to four family)\"}")]
     public bool? ReportPurposeOfLoanIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

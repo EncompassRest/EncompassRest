@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using EncompassRest.Utilities;
+using Newtonsoft.Json;
 
 namespace EncompassRest
 {
@@ -21,7 +22,7 @@ namespace EncompassRest
         /// <typeparam name="T">The property type.</typeparam>
         /// <param name="propertyName">The property name.</param>
         /// <returns></returns>
-        protected T? GetValue<T>([CallerMemberName] string? propertyName = null) => Properties.TryGetValue(propertyName!, out var value) ? (value is T t ? t : (T?)((IValue)value).Value) : default;
+        protected T? GetValue<T>([CallerMemberName] string propertyName = "") => Properties.TryGetValue(propertyName!, out var value) ? (value is IValue v ? (T?)v.Value : (T?)value) : default;
 
         /// <summary>
         /// Sets the value for the <paramref name="propertyName"/>.
@@ -29,15 +30,15 @@ namespace EncompassRest
         /// <typeparam name="T">The property type.</typeparam>
         /// <param name="value">The property value to set.</param>
         /// <param name="propertyName">The property name.</param>
-        protected void SetValue<T>(T? value, [CallerMemberName] string? propertyName = null)
+        protected void SetValue<T>(T? value, [CallerMemberName] string propertyName = "")
         {
-            Properties.TryGetValue(propertyName!, out var existing);
+            Properties.TryGetValue(propertyName, out var existing);
             var changing = !EqualityComparer<T>.Default.Equals((T)((existing is IValue existingValue ? existingValue.Value : existing) ?? default(T))!, value!);
             if (changing)
             {
                 OnPropertyChanging(propertyName);
             }
-            Properties[propertyName!] = value is IDirty dirty ? dirty : new DirtyValue<T?>(value);
+            Properties[propertyName] = value is IDirty dirty ? dirty : new DirtyValue<T?>(value);
             if (changing)
             {
                 OnPropertyChanged(propertyName);
@@ -50,12 +51,12 @@ namespace EncompassRest
         /// <typeparam name="T">The property type.</typeparam>
         /// <param name="propertyName">The property name.</param>
         /// <returns></returns>
-        protected T GetEntity<T>([CallerMemberName] string? propertyName = null) where T : DirtyExtensibleObject, new()
+        protected T GetEntity<T>([CallerMemberName] string propertyName = "") where T : DirtyExtensibleObject, new()
         {
-            if (!Properties.TryGetValue(propertyName!, out var value))
+            if (!Properties.TryGetValue(propertyName, out var value))
             {
                 value = new T();
-                Properties[propertyName!] = value;
+                Properties[propertyName] = value;
             }
             return (T)value;
         }
@@ -66,19 +67,19 @@ namespace EncompassRest
         /// <typeparam name="T">The property type.</typeparam>
         /// <param name="value">The value to set.</param>
         /// <param name="propertyName">The property name.</param>
-        protected void SetEntity<T>(T? value, [CallerMemberName] string? propertyName = null) where T : DirtyExtensibleObject, new()
+        protected void SetEntity<T>(T? value, [CallerMemberName] string propertyName = "") where T : DirtyExtensibleObject, new()
         {
-            Properties.TryGetValue(propertyName!, out var existing);
+            Properties.TryGetValue(propertyName, out var existing);
             if (!ReferenceEquals(existing, value))
             {
                 OnPropertyChanging(propertyName);
                 if (value is null)
                 {
-                    Properties.Remove(propertyName!);
+                    Properties.Remove(propertyName);
                 }
                 else
                 {
-                    Properties[propertyName!] = value;
+                    Properties[propertyName] = value;
                 }
                 OnPropertyChanged(propertyName);
             }
@@ -90,12 +91,12 @@ namespace EncompassRest
         /// <typeparam name="T"></typeparam>
         /// <param name="propertyName">The property name.</param>
         /// <returns></returns>
-        protected IList<T> GetList<T>([CallerMemberName] string? propertyName = null)
+        protected IList<T> GetList<T>([CallerMemberName] string propertyName = "")
         {
-            if (!Properties.TryGetValue(propertyName!, out var value))
+            if (!Properties.TryGetValue(propertyName, out var value))
             {
                 value = new DirtyList<T>();
-                Properties[propertyName!] = value;
+                Properties[propertyName] = value;
             }
             return (IList<T>)value;
         }
@@ -106,19 +107,19 @@ namespace EncompassRest
         /// <typeparam name="T"></typeparam>
         /// <param name="value">The value to set.</param>
         /// <param name="propertyName">The property name.</param>
-        protected void SetList<T>(IList<T>? value, [CallerMemberName] string? propertyName = null)
+        protected void SetList<T>(IList<T>? value, [CallerMemberName] string propertyName = "")
         {
-            Properties.TryGetValue(propertyName!, out var existing);
+            Properties.TryGetValue(propertyName, out var existing);
             if (!ReferenceEquals(existing, value))
             {
                 OnPropertyChanging(propertyName);
                 if (value is null)
                 {
-                    Properties.Remove(propertyName!);
+                    Properties.Remove(propertyName);
                 }
                 else
                 {
-                    Properties[propertyName!] = new DirtyList<T>(value);
+                    Properties[propertyName] = new DirtyList<T>(value);
                 }
                 OnPropertyChanged(propertyName);
             }
@@ -131,12 +132,12 @@ namespace EncompassRest
         /// <typeparam name="TValue"></typeparam>
         /// <param name="propertyName">The property name.</param>
         /// <returns></returns>
-        protected IDictionary<TKey, TValue> GetDictionary<TKey, TValue>([CallerMemberName] string? propertyName = null)
+        protected IDictionary<TKey, TValue> GetDictionary<TKey, TValue>([CallerMemberName] string propertyName = "")
         {
-            if (!Properties.TryGetValue(propertyName!, out var value))
+            if (!Properties.TryGetValue(propertyName, out var value))
             {
                 value = new DirtyDictionary<TKey, TValue>();
-                Properties[propertyName!] = value;
+                Properties[propertyName] = value;
             }
             return (IDictionary<TKey, TValue>)value;
         }
@@ -148,19 +149,19 @@ namespace EncompassRest
         /// <typeparam name="TValue"></typeparam>
         /// <param name="value">The value to set.</param>
         /// <param name="propertyName">The property name.</param>
-        protected void SetDictionary<TKey, TValue>(IDictionary<TKey, TValue>? value, [CallerMemberName] string? propertyName = null)
+        protected void SetDictionary<TKey, TValue>(IDictionary<TKey, TValue>? value, [CallerMemberName] string propertyName = "")
         {
-            Properties.TryGetValue(propertyName!, out var existing);
+            Properties.TryGetValue(propertyName, out var existing);
             if (!ReferenceEquals(existing, value))
             {
                 OnPropertyChanging(propertyName);
                 if (value is null)
                 {
-                    Properties.Remove(propertyName!);
+                    Properties.Remove(propertyName);
                 }
                 else
                 {
-                    Properties[propertyName!] = new DirtyDictionary<TKey, TValue>(value);
+                    Properties[propertyName] = new DirtyDictionary<TKey, TValue>(value);
                 }
                 OnPropertyChanged(propertyName);
             }
@@ -172,9 +173,9 @@ namespace EncompassRest
         /// <inheritdoc/>
         public event PropertyChangingEventHandler? PropertyChanging;
 
-        internal virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        internal virtual void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        internal virtual void OnPropertyChanging([CallerMemberName] string? propertyName = null) => PropertyChanging?.Invoke(this, new PropertyChangingEventArgs(propertyName));
+        private void OnPropertyChanging(string propertyName) => PropertyChanging?.Invoke(this, new PropertyChangingEventArgs(propertyName));
 
         internal void ClearPropertyChangedEvent() => PropertyChanged = null;
 
@@ -184,6 +185,7 @@ namespace EncompassRest
         private bool _settingDirty;
 
         /// <inheritdoc/>
+        [JsonIgnore]
         public bool Dirty
         {
             get

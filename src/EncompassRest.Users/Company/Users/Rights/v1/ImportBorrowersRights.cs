@@ -19,6 +19,12 @@ namespace EncompassRest.Company.Users.Rights.v1
         public bool? FromAnotherLoan { get => GetValue<bool?>(); set => SetValue(value); }
 
         /// <summary>
+        /// ImportBorrowersRights FromaULADILADMISMO34
+        /// </summary>
+        [JsonProperty("fromaULAD/iLAD(MISMO3.4)")]
+        public bool? FromaULADILADMISMO34 { get => GetValue<bool?>(); set => SetValue(value); }
+
+        /// <summary>
         /// ImportBorrowersRights FromContacts
         /// </summary>
         public bool? FromContacts { get => GetValue<bool?>(); set => SetValue(value); }

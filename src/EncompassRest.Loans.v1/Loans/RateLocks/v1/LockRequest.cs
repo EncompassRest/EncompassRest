@@ -40,7 +40,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// The time and date of overnight rate protection applied.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? OnrpDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Expiration date of the extended rate lock.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? ExtendedLockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Date on which the lock was cancelled.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LockCancellationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Date when the interest rate for the loan was last locked.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LastRateSetDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -184,13 +184,13 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Expiration date of the rate lock.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
         /// The lock date of the current lock.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? LockDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace EncompassRest.Loans.RateLocks.v1
         /// <summary>
         /// Original lock expiration date for the requested rate lock extension.
         /// </summary>
-        [JsonConverter(typeof(ElliDateJsonConverter))]
+        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime? OriginalLockExpirationDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
         /// <summary>

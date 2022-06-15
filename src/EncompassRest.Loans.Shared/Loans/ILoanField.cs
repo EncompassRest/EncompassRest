@@ -9,13 +9,13 @@ namespace EncompassRest.Loans
     public interface ILoanField
     {
         /// <summary>
-        /// The field attribute path for use with Webhook filter attributes.
-        /// </summary>
-        string AttributePath { get; }
-        /// <summary>
         /// The field's borrower pair index.
         /// </summary>
         int? BorrowerPairIndex { get; }
+        /// <summary>
+        /// The field descriptor.
+        /// </summary>
+        IFieldDescriptor Descriptor { get; }
         /// <summary>
         /// The field id.
         /// </summary>
@@ -32,10 +32,10 @@ namespace EncompassRest.Loans
         /// Indicates if the field is empty.
         /// </summary>
         bool IsEmpty { get; }
-        ///// <summary>
-        ///// The field's locked status.
-        ///// </summary>
-        //bool Locked { get; set; }
+        /// <summary>
+        /// The field's locked status.
+        /// </summary>
+        bool Locked { get; }
         /// <summary>
         /// The field model path for use with loan field locking.
         /// </summary>

@@ -96,6 +96,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Fannie Mae Escrow Waived [MORNET.X15]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Escrow will be waived\"}")]
     public bool? EscrowWaiverIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -168,6 +169,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// HELOC Auto Debit Feature [4586]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Auto Debit Feature\"}")]
     public bool? HelocAutoDebitFeature { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -178,6 +180,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Heloc Collect Interim Interest Indicator [4665]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Collect Interim Interest\"}")]
     public bool? HelocCollectInterimInterestIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -204,6 +207,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// HELOC Draw Payment Basis [4559]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Rate\"}")]
     public bool? HelocDrawPaymentBasis { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -214,11 +218,13 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Heloc Escrow Account Indicator [4556]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Escrow Account\"}")]
     public bool? HelocEscrowAccountIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HELOC Force Minimum Payment [4472]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Force Minimum Payment\"}")]
     public bool? HelocForceMinimumPayment { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -271,6 +277,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// HELOC Initial Force Minimum Payment [4483]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Force Minimum Payment\"}")]
     public bool? HelocInitialForceMinimumPayment { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -308,6 +315,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Heloc initial P &amp; I [4479]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"P & I\"}")]
     public bool? HelocInitialPi { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -357,6 +365,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Heloc Installment Loan Option Indicator [4557]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Installment Loan Option\"}")]
     public bool? HelocInstallmentLoanOptionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -372,6 +381,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Heloc Interest Only [4468]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Interest Only\"}")]
     public bool? HelocInterestOnly { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -393,6 +403,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// Heloc Minimum Initial Advance Required Indicator [4552]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Minimum Initial Advance Required\"}")]
     public bool? HelocMinimumInitialAdvanceRequiredIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -473,6 +484,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// HELOC Heloc Property Insurance Indicator [4661]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Borrower can obtain property insurance from or through Lender\"}")]
     public bool? HelocPropertyInsuranceIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -498,6 +510,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// HELOC Repayment Basis [4568]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Rate\"}")]
     public bool? HelocRepaymentBasis { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -524,6 +537,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// HELOC Repayment Interest Only Indicator [4573]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"I/O\"}")]
     public bool? HelocRepaymentInterestOnlyIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -539,6 +553,7 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// HELOC Standard Historical Table Indicator [4630]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Standard Historical Table\"}")]
     public bool? HelocStandardHistoricalTableIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -941,11 +956,13 @@ public sealed partial class LoanProductData : DirtyExtensibleObject, IIdentifiab
     /// <summary>
     /// NMLS Option ARM Indicator [NMLS.X4]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Option ARM\",\"N\":\"Not Option ARM\"}")]
     public bool? NmlsOptionArmIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// NMLS Piggyback or Funded HELOC Indicator [NMLS.X5]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Includes piggyback second or funded HELOC\",\"N\":\"Does not include piggyback second or funded HELOC\"}")]
     public bool? NmlsPiggyBackOrFundedHelocIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

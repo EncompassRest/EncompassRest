@@ -47,7 +47,7 @@ public sealed class LoanFields : ILoanFields
                     throw new ArgumentException($"Could not find field '{fieldId}'");
                 }
 
-                modelPath = LoanFieldDescriptors.CreateModelPath($"Loan.Applications[(ApplicationIndex == '{borrowerPairIndex}')]{descriptor.ModelPath.Substring(23)}");
+                modelPath = LoanFieldDescriptors.CreateModelPath($"loan.applications[{borrowerPairIndex + 1}]{descriptor.ModelPath.Substring(23)}");
             }
             else
             {

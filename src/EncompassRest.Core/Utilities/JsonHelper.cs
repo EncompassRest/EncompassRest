@@ -478,7 +478,6 @@ namespace EncompassRest.Utilities
 
             protected override JsonConverter? ResolveContractConverter(Type objectType)
             {
-                var typeData = TypeData.Get(objectType);
                 if (objectType.IsGenericType && !objectType.IsGenericTypeDefinition)
                 {
                     var genericTypeDefinition = objectType.GetGenericTypeDefinition();
@@ -505,7 +504,7 @@ namespace EncompassRest.Utilities
                         var idPropertyName = DirtyExtensibleObject.GetIdPropertyName(objectType);
                         idPropertyName = CamelCaseNamingStrategy.GetPropertyName(idPropertyName, false);
                         var idProperty = contract.Properties.GetClosestMatchProperty(idPropertyName);
-                        if (idProperty != null)
+                        if (idProperty != null && idProperty.DeclaringType!.GetProperty(idProperty.UnderlyingName).GetCustomAttribute<NeverSerializeAttribute>() == null)
                         {
                             idProperty.ShouldSerialize = o => ((IIdentifiable)o).Id != null;
                         }

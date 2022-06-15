@@ -31,7 +31,6 @@
 
   <ItemGroup Condition="'$(TargetFramework)'=='net46'">
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.IO.Compression" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

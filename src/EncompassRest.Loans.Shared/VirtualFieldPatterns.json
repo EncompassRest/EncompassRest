@@ -516,6 +516,46 @@
   },
   {
     "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X192.{0}",
+    "Description": "Last Snapshot - AUS Tracking - File Type - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X193.{0}",
+    "Description": "Last Snapshot - AUS Tracking - Fatal Edit Info - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X194.{0}",
+    "Description": "Last Snapshot - AUS Tracking - Order Status - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X195.{0}",
+    "Description": "Last Snapshot - AUS Tracking - Error Info - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X196.{0}",
+    "Description": "Last Snapshot - AUS Tracking - AUS Order LinkId  - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X197.{0}",
+    "Description": "Last Snapshot - AUS Tracking - AUS Log Extension Id - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X198.{0}",
+    "Description": "Last Snapshot - AUS Tracking - Aus Response File Name - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X199.{0}",
+    "Description": "Last Snapshot - AUS Tracking - AUS Average Median Credit Score - {0}"
+  },
+  {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X2.{0}",
     "Description": "Last Snapshot - AUS Tracking - Underwriting Risk Assess Other Type - {0}"
   },

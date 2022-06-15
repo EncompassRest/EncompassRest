@@ -1,4 +1,4 @@
-﻿namespace EncompassRest.Loans.v1
+﻿namespace EncompassRest.Loans
 {
     /// <summary>
     /// LoanFieldValueType
@@ -32,6 +32,10 @@
         /// <summary>
         /// NADecimal
         /// </summary>
-        NADecimal = 6
+        NADecimal = 6,
+        /// <summary>
+        /// Object
+        /// </summary>
+        Object = 7
     }
 }

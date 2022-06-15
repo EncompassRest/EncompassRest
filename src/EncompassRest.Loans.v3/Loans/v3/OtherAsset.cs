@@ -97,16 +97,19 @@ public sealed partial class OtherAsset : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Other Assets Print - See Attached Authorization [URLAROA0018]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
     public bool? PrintAttachmentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Other Assets Print User Job Title [URLAROA0020]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
     public bool? PrintUserJobTitleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Other Assets Print User Name as Title [URLAROA0015]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name as title\"}")]
     public bool? PrintUserNameIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

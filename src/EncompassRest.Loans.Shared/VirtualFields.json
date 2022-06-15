@@ -9370,6 +9370,26 @@
     "Description": "Rate Lock - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Most Recent)"
   },
   {
+    "Format": 211,
+    "FieldId": "LOCKRATE.4787",
+    "Description": "Rate Lock - Rate Lock Pricing Concession Requested (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE.4789",
+    "Description": "Rate Lock - Rate Lock Price Concession Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE.4790",
+    "Description": "Rate Lock - Rate Lock Extension Indicator (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.4791",
+    "Description": "Rate Lock - Rate Lock Price Concession Request Status (Most Recent)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE.60",
     "Description": "Rate Lock - Co-Borr Experian FICO (Most Recent)"
@@ -15443,6 +15463,26 @@
     "Format": 101,
     "FieldId": "LOCKRATE.CONFIRMED.4784",
     "Description": "Rate Request - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 211,
+    "FieldId": "LOCKRATE.CONFIRMED.4787",
+    "Description": "Rate Request - Rate Lock Pricing Concession Requested (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE.CONFIRMED.4789",
+    "Description": "Rate Request - Rate Lock Price Concession Indicator (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE.CONFIRMED.4790",
+    "Description": "Rate Request - Rate Lock Extension Indicator (Mostly Recent Confirmed)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.CONFIRMED.4791",
+    "Description": "Rate Request - Rate Lock Price Concession Request Status (Mostly Recent Confirmed)"
   },
   {
     "Format": 101,
@@ -21598,6 +21638,26 @@
     "Format": 101,
     "FieldId": "LOCKRATE.DENIED.4784",
     "Description": "Rate Lock Denial - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Most Recent)"
+  },
+  {
+    "Format": 211,
+    "FieldId": "LOCKRATE.DENIED.4787",
+    "Description": "Rate Lock Denial - Rate Lock Pricing Concession Requested (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE.DENIED.4789",
+    "Description": "Rate Lock Denial - Rate Lock Price Concession Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE.DENIED.4790",
+    "Description": "Rate Lock Denial - Rate Lock Extension Indicator (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.DENIED.4791",
+    "Description": "Rate Lock Denial - Rate Lock Price Concession Request Status (Most Recent)"
   },
   {
     "Format": 101,
@@ -27768,6 +27828,26 @@
     "Format": 101,
     "FieldId": "LOCKRATE.REQUEST.4784",
     "Description": "Rate Lock Request - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Most Recent)"
+  },
+  {
+    "Format": 211,
+    "FieldId": "LOCKRATE.REQUEST.4787",
+    "Description": "Rate Lock Request - Rate Lock Pricing Concession Requested (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE.REQUEST.4789",
+    "Description": "Rate Lock Request - Rate Lock Price Concession Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE.REQUEST.4790",
+    "Description": "Rate Lock Request - Rate Lock Extension Indicator (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE.REQUEST.4791",
+    "Description": "Rate Lock Request - Rate Lock Price Concession Request Status (Most Recent)"
   },
   {
     "Format": 101,
@@ -33965,6 +34045,26 @@
     "Description": "Rate Lock - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Previous 1)"
   },
   {
+    "Format": 211,
+    "FieldId": "LOCKRATE1.4787",
+    "Description": "Rate Lock - Rate Lock Pricing Concession Requested (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE1.4789",
+    "Description": "Rate Lock - Rate Lock Price Concession Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE1.4790",
+    "Description": "Rate Lock - Rate Lock Extension Indicator (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.4791",
+    "Description": "Rate Lock - Rate Lock Price Concession Request Status (Previous 1)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE1.60",
     "Description": "Rate Lock - Co-Borr Experian FICO (Previous 1)"
@@ -40023,6 +40123,26 @@
     "Format": 101,
     "FieldId": "LOCKRATE1.DENIED.4784",
     "Description": "Rate Lock Denial - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Previous 1)"
+  },
+  {
+    "Format": 211,
+    "FieldId": "LOCKRATE1.DENIED.4787",
+    "Description": "Rate Lock Denial - Rate Lock Pricing Concession Requested (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE1.DENIED.4789",
+    "Description": "Rate Lock Denial - Rate Lock Price Concession Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE1.DENIED.4790",
+    "Description": "Rate Lock Denial - Rate Lock Extension Indicator (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.DENIED.4791",
+    "Description": "Rate Lock Denial - Rate Lock Price Concession Request Status (Previous 1)"
   },
   {
     "Format": 101,
@@ -46163,6 +46283,26 @@
     "Format": 101,
     "FieldId": "LOCKRATE1.REQUEST.4784",
     "Description": "Rate Lock Request - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Previous 1)"
+  },
+  {
+    "Format": 211,
+    "FieldId": "LOCKRATE1.REQUEST.4787",
+    "Description": "Rate Lock Request - Rate Lock Pricing Concession Requested (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE1.REQUEST.4789",
+    "Description": "Rate Lock Request - Rate Lock Price Concession Indicator (Previous 1)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE1.REQUEST.4790",
+    "Description": "Rate Lock Request - Rate Lock Extension Indicator (Previous 1)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE1.REQUEST.4791",
+    "Description": "Rate Lock Request - Rate Lock Price Concession Request Status (Previous 1)"
   },
   {
     "Format": 101,
@@ -52330,6 +52470,26 @@
     "Description": "Rate Lock - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Previous 2)"
   },
   {
+    "Format": 211,
+    "FieldId": "LOCKRATE2.4787",
+    "Description": "Rate Lock - Rate Lock Pricing Concession Requested (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE2.4789",
+    "Description": "Rate Lock - Rate Lock Price Concession Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE2.4790",
+    "Description": "Rate Lock - Rate Lock Extension Indicator (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.4791",
+    "Description": "Rate Lock - Rate Lock Price Concession Request Status (Previous 2)"
+  },
+  {
     "Format": 101,
     "FieldId": "LOCKRATE2.60",
     "Description": "Rate Lock - Co-Borr Experian FICO (Previous 2)"
@@ -58388,6 +58548,26 @@
     "Format": 101,
     "FieldId": "LOCKRATE2.DENIED.4784",
     "Description": "Rate Lock Denial - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Previous 2)"
+  },
+  {
+    "Format": 211,
+    "FieldId": "LOCKRATE2.DENIED.4787",
+    "Description": "Rate Lock Denial - Rate Lock Pricing Concession Requested (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE2.DENIED.4789",
+    "Description": "Rate Lock Denial - Rate Lock Price Concession Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE2.DENIED.4790",
+    "Description": "Rate Lock Denial - Rate Lock Extension Indicator (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.DENIED.4791",
+    "Description": "Rate Lock Denial - Rate Lock Price Concession Request Status (Previous 2)"
   },
   {
     "Format": 101,
@@ -64528,6 +64708,26 @@
     "Format": 101,
     "FieldId": "LOCKRATE2.REQUEST.4784",
     "Description": "Rate Lock Request - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Previous 2)"
+  },
+  {
+    "Format": 211,
+    "FieldId": "LOCKRATE2.REQUEST.4787",
+    "Description": "Rate Lock Request - Rate Lock Pricing Concession Requested (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE2.REQUEST.4789",
+    "Description": "Rate Lock Request - Rate Lock Price Concession Indicator (Previous 2)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE2.REQUEST.4790",
+    "Description": "Rate Lock Request - Rate Lock Extension Indicator (Previous 2)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE2.REQUEST.4791",
+    "Description": "Rate Lock Request - Rate Lock Price Concession Request Status (Previous 2)"
   },
   {
     "Format": 101,
@@ -70693,6 +70893,26 @@
     "Format": 101,
     "FieldId": "LOCKRATE3.4784",
     "Description": "Rate Request - Rate Lock Buy Side Reason for Branch Concession Approval 5 (Most Recent)"
+  },
+  {
+    "Format": 211,
+    "FieldId": "LOCKRATE3.4787",
+    "Description": "Rate Request - Rate Lock Pricing Concession Requested (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE3.4789",
+    "Description": "Rate Request - Rate Lock Price Concession Indicator (Most Recent)"
+  },
+  {
+    "Format": 102,
+    "FieldId": "LOCKRATE3.4790",
+    "Description": "Rate Request - Rate Lock Extension Indicator (Most Recent)"
+  },
+  {
+    "Format": 101,
+    "FieldId": "LOCKRATE3.4791",
+    "Description": "Rate Request - Rate Lock Price Concession Request Status (Most Recent)"
   },
   {
     "Format": 101,

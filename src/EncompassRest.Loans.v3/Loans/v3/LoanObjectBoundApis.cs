@@ -1,30 +1,16 @@
-﻿namespace EncompassRest.Loans.v3
+﻿namespace EncompassRest.Loans.v3;
+
+internal sealed class LoanObjectBoundApis : LoanApis, ILoanObjectBoundApis
 {
-    /// <summary>
-    /// The Loan Apis with optional support to reflect Api calls to the associated loan object.
-    /// </summary>
-    public interface ILoanObjectBoundApis : ILoanApis
+    public Loan Loan { get; }
+
+    ILoan ILoanObjectBoundApis.Loan => Loan;
+
+    public bool ReflectToLoanObject { get; set; }
+
+    internal LoanObjectBoundApis(EncompassRestClient client, Loan loan)
+        : base(client, loan.Id!)
     {
-        /// <summary>
-        /// The associated loan object.
-        /// </summary>
-        Loan Loan { get; }
-        /// <summary>
-        /// Indicates if Api calls should reflect in the associated loan object.
-        /// </summary>
-        bool ReflectToLoanObject { get; set; }
-    }
-
-    internal sealed class LoanObjectBoundApis : LoanApis, ILoanObjectBoundApis
-    {
-        public Loan Loan { get; }
-
-        public bool ReflectToLoanObject { get; set; }
-
-        internal LoanObjectBoundApis(EncompassRestClient client, Loan loan)
-            : base(client, loan.Id!)
-        {
-            Loan = loan;
-        }
+        Loan = loan;
     }
 }

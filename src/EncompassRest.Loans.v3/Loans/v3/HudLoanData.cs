@@ -221,6 +221,7 @@ public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// FHA 203k A1 Existing Debt [MAX23K.X75]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Existing Debt\"}")]
     public bool? ExistingDebt { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -272,11 +273,13 @@ public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HUD Property Improve Other Pending Appl [CAPIAP.X1]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Have other pending application for FHA Title I Loan\"}")]
     public bool? HaveOtherPendingApplicationForFha { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// FHA 203k Property HUD-Owned [MAX23K.X1]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"HUD-Owned\"}")]
     public bool? HudOwned { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -352,6 +355,7 @@ public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HUD Property Improve Leased from Other [CAPIAP.X46]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Leased from someone else\"}")]
     public bool? LeasedFromSomeoneElse { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -457,6 +461,7 @@ public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HUD Property Improve Mtg/Deed of Trust [CAPIAP.X48]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Mtg or deed of trust on property\"}")]
     public bool? MtgOrDeedOfTrustOnProperty { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -482,6 +487,7 @@ public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HUD Property Improve New Res/Occ > 90 Days [CAPIAP.X56]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"This property is a new residential, and it has been occupied for longer than 90 days\"}")]
     public bool? NewResidential { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -507,6 +513,7 @@ public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HUD Property Improve Owned by Borr [CAPIAP.X45]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Owned by Borrower\"}")]
     public bool? OwnedByBorrower { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -583,6 +590,7 @@ public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HUD Property Improve Purch on Contract [CAPIAP.X47]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Being Purchased on contract\"}")]
     public bool? PurchasedOnContract { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -609,6 +617,7 @@ public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HUD Property Improve Refi Title 1 Loan [CAPIAP.X2]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Refinancing a Title I loan\"}")]
     public bool? RefinancingATitleILoan { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -677,6 +686,7 @@ public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// FHA 203k Streamlined [MAX23K.X78]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Streamlined (k)\"}")]
     public bool? Streamlined { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

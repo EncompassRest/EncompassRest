@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using EncompassRest.Loans.Enums;
-using EncompassRest.Schema;
-using EncompassRest.Schema.v3;
 using EncompassRest.Utilities;
-using EncompassRest;
-using Newtonsoft.Json;
 using EncompassRest.v3;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.v3;
 

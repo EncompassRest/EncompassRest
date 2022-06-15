@@ -122,16 +122,19 @@ public sealed partial class OtherLiability : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// Depository Print - See Attached Authorization [URLAROL0018]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
     public bool? PrintAttachmentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Depository Print User Job Title [URLAROL0064]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
     public bool? PrintUserJobTitleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Depository Print User Name as Title [URLAROL0015]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name as title\"}")]
     public bool? PrintUserNameIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

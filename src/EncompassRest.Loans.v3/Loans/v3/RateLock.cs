@@ -279,7 +279,7 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Rate Lock Buy Side ONRP Eligible Flag [4059]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}", ReadOnly = true)]
     public bool? BuySideOnrpEligible { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -686,6 +686,16 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     /// RateLock CompSideTradeNumber
     /// </summary>
     public string? CompSideTradeNumber { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// RateLock ComputedExpectedImpounds
+    /// </summary>
+    public decimal? ComputedExpectedImpounds { get => GetValue<decimal?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// RateLock ComputedExpectedPrinciple
+    /// </summary>
+    public decimal? ComputedExpectedPrinciple { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// Condominium Project Type Indicator [4711]
@@ -1821,6 +1831,11 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     public decimal? ExpectedSrp { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
+    /// Rate Lock Extension Indicator [4790]
+    /// </summary>
+    public bool? ExtensionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
     /// RateLock ExtensionRequestPending
     /// </summary>
     public string? ExtensionRequestPending { get => GetValue<string?>(); set => SetValue(value); }
@@ -2150,6 +2165,11 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     public StringEnumValue<LockRequestLoanPurposeType> LockRequestLoanPurposeType { get => GetValue<StringEnumValue<LockRequestLoanPurposeType>>(); set => SetValue(value); }
 
     /// <summary>
+    /// Rate Lock Validation Status [4788]
+    /// </summary>
+    public StringEnumValue<LockValidationStatus> LockValidationStatus { get => GetValue<StringEnumValue<LockValidationStatus>>(); set => SetValue(value); }
+
+    /// <summary>
     /// Lock Request Loan to Value (LTV) [3241]
     /// </summary>
     [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
@@ -2247,6 +2267,22 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     /// </summary>
     [AllowNull]
     public IList<PriceAdjustment> PriceAdjustments { get => GetList<PriceAdjustment>(); set => SetList(value); }
+
+    /// <summary>
+    /// Rate Lock Price Concession Indicator [4789]
+    /// </summary>
+    public bool? PriceConcessionIndicator { get => GetValue<bool?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Rate Lock Price Concession Request Status [4791]
+    /// </summary>
+    public StringEnumValue<ApprovalStatus> PriceConcessionRequestStatus { get => GetValue<StringEnumValue<ApprovalStatus>>(); set => SetValue(value); }
+
+    /// <summary>
+    /// Rate Lock Pricing Concession Requested [4787]
+    /// </summary>
+    [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+    public decimal? PricingConcessionRequested { get => GetValue<decimal?>(); set => SetValue(value); }
 
     /// <summary>
     /// RateLock PricingHistoryData
@@ -2506,7 +2542,7 @@ public sealed partial class RateLock : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Rate Lock Request ONRP Eligible Flag [4061]
     /// </summary>
-    [LoanFieldProperty(ReadOnly = true)]
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}", ReadOnly = true)]
     public bool? RequestOnrpEligible { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

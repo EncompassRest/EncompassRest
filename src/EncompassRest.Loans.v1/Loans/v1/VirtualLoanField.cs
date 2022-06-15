@@ -1,31 +1,30 @@
 ﻿using System;
 
-namespace EncompassRest.Loans.v1
+namespace EncompassRest.Loans.v1;
+
+internal sealed class VirtualLoanField : LoanField
 {
-    internal sealed class VirtualLoanField : LoanField
+    public override object? Value
     {
-        public override object? Value
+        get => Loan.VirtualFields.TryGetValue(FieldId, out var value) ? value : null;
+        set
         {
-            get => Loan.VirtualFields.TryGetValue(FieldId, out var value) ? value : null;
-            set
+            if (!Loan.Fields.AllowWritesToReadOnlyFieldsLocally)
             {
-                if (!Loan.Fields.AllowWritesToReadOnlyFieldsLocally)
-                {
-                    throw new InvalidOperationException($"cannot set value of field '{FieldId}' as it's virtual");
-                }
-                Loan.VirtualFields[FieldId] = value?.ToString();
+                throw new InvalidOperationException($"cannot set value of field '{FieldId}' as it's virtual");
             }
+            Loan.VirtualFields[FieldId] = value?.ToString();
         }
+    }
 
-        public override bool Locked
-        {
-            get => false;
-            set => throw new InvalidOperationException($"cannot lock/unlock field '{FieldId}' as it's virtual");
-        }
+    public override bool Locked
+    {
+        get => false;
+        set => throw new InvalidOperationException($"cannot lock/unlock field '{FieldId}' as it's virtual");
+    }
 
-        internal VirtualLoanField(FieldDescriptor descriptor, Loan loan)
-            : base(descriptor, loan)
-        {
-        }
+    internal VirtualLoanField(FieldDescriptor descriptor, Loan loan)
+        : base(descriptor, loan)
+    {
     }
 }

@@ -40,6 +40,7 @@ public sealed partial class FannieMae : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Fannie Mae Community Lending [MORNET.X72]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Community Lending\"}")]
     public bool? CommunityLending { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -95,6 +96,7 @@ public sealed partial class FannieMae : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Fannie Mae Start-Up Mtg [MORNET.X11]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Start-up Mortgage\"}")]
     public bool? StartUpMortgage { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

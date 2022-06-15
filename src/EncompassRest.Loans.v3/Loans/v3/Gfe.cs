@@ -138,6 +138,7 @@ public sealed partial class Gfe : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Trans Details GFE Provided By Broker [1814]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"This Good Faith Estimate is being provided by broker...\"}")]
     public bool? GfeProvidedByBrokerIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -153,6 +154,7 @@ public sealed partial class Gfe : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// MLDS Prepymt Penalty [RE88395.X322]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Prepayment penalty\"}")]
     public bool? HasPrepaymentPenaltyIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -234,6 +236,7 @@ public sealed partial class Gfe : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// MLDS Prepymt Penalty [RE88395.X191]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Any payment of principle in excess of 20% of the\"}")]
     public bool? PaymentOfPrincipleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -278,6 +281,7 @@ public sealed partial class Gfe : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// MLDS Prepymt - Other [RE88395.X124]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Other (see loan documents for details)\"}")]
     public bool? PrepaymentOtherTypeIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -288,6 +292,7 @@ public sealed partial class Gfe : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// MLDS Prepymt Penalty None [RE88395.X123]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"No prepayment penalty\"}")]
     public bool? PrepaymentPenaltyIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

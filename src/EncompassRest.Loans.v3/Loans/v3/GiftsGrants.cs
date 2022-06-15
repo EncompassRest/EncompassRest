@@ -34,6 +34,7 @@ public sealed partial class GiftsGrants : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Deposited [URLARGG0020]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Deposited\"}")]
     public bool? DepositedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -102,16 +103,19 @@ public sealed partial class GiftsGrants : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Gift or Grant Print - See Attached Authorization [URLARGG0004]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
     public bool? PrintAttachmentIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Gift or Grant Print user's job title [URLARGG0064]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's job title\"}")]
     public bool? PrintUserJobTitleIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Gift or Grant Print User Name [URLARGG0015]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Print user's name\"}")]
     public bool? PrintUserNameIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

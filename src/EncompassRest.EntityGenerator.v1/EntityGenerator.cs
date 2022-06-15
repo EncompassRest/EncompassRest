@@ -156,7 +156,8 @@ namespace EncompassRest
                 typeof(LienStatus),
                 typeof(HmdaPropertyType),
                 typeof(BorrLenderPaid),
-                typeof(ProjectLegalStructureType)
+                typeof(ProjectLegalStructureType),
+                typeof(ApprovalStatus)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (var sharedEnumType in sharedEnumTypes)
@@ -504,14 +505,18 @@ namespace EncompassRest
                     VirtualFieldInfo virtualFieldInfo;
                     if (virtualField.MultiInstance)
                     {
-                        virtualFieldInfo = new VirtualFieldInfo($"{virtualField.Id}.{{0}}");
-                        virtualFieldInfo.Description = $@"{virtualField.Description} - {{0}}";
+                        virtualFieldInfo = new VirtualFieldInfo($"{virtualField.Id}.{{0}}")
+                        {
+                            Description = $@"{virtualField.Description} - {{0}}"
+                        };
                         virtualFieldPatterns.Add(virtualFieldInfo);
                     }
                     else
                     {
-                        virtualFieldInfo = new VirtualFieldInfo(virtualField.Id);
-                        virtualFieldInfo.Description = virtualField.Description;
+                        virtualFieldInfo = new VirtualFieldInfo(virtualField.Id)
+                        {
+                            Description = virtualField.Description
+                        };
                         virtualFieldInfos.Add(virtualFieldInfo);
                     }
                     virtualFieldInfo.Format = virtualField.Format;

@@ -12,6 +12,7 @@ public sealed partial class DisclosureNotices : DirtyExtensibleObject, IIdentifi
     /// <summary>
     /// Disclosure Anti-Coerc Stmnt [NOTICES.X16]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Anti-Coercion Statement\"}")]
     public bool? AntiCoercionStatementIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -157,11 +158,13 @@ public sealed partial class DisclosureNotices : DirtyExtensibleObject, IIdentifi
     /// <summary>
     /// Disclosure Flood Ins Notif [NOTICES.X17]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Flood Insurance Notification\"}")]
     public bool? FloodInsuranceNotificationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure Info Discl Auth [NOTICES.X10]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Information Disclosure Authorization\"}")]
     public bool? InformationDisclosureAuthorizationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -172,6 +175,7 @@ public sealed partial class DisclosureNotices : DirtyExtensibleObject, IIdentifi
     /// <summary>
     /// Property Community participates in NFIP [NOTICES.X48]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Community in which the property is located participates in the National Flood Insurance Program (NFIP) where federal flood insurance is available.\"}")]
     public bool? LocatedInNfipIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -226,11 +230,13 @@ public sealed partial class DisclosureNotices : DirtyExtensibleObject, IIdentifi
     /// <summary>
     /// Property Community does not participates in NFIP [NOTICES.X49]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Community in which the property is located does not participate in the NFIP.Federal flood insurance is not available.\"}")]
     public bool? NotLocatedInNfipIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure Occupancy Stmnt [NOTICES.X1]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Occupancy Statement\"}")]
     public bool? OccupancyStatementIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -248,25 +254,30 @@ public sealed partial class DisclosureNotices : DirtyExtensibleObject, IIdentifi
     /// <summary>
     /// Disclosure Auth Bank Acct Verif [NOTICES.X13]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Banking (checking & savings) account of record\"}")]
     public bool? ReleaseBankingInformationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure Auth Empl Hist Verif [NOTICES.X12]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Employment History, dates, title(s), income, hours worked, etc.\"}")]
     public bool? ReleaseEmploymentInformationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure Auth Any Info Necessary [NOTICES.X15]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Any information deemed necessary in connection with consumer credit report for real estate transaction\"}")]
     public bool? ReleaseInformationInConnectionWithCreditReportIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure Auth Loan Rating Verif [NOTICES.X14]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Mortgage loan rating, (opening date, high credit, payment amount, loan balance and payment)\"}")]
     public bool? ReleaseMortgageInformationIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Disclosure Right to Privacy Act [NOTICES.X9]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Right to Financial Privacy Act\"}")]
     public bool? RightToFinancialPrivacyActIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 }

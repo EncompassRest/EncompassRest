@@ -43,11 +43,13 @@ public sealed partial class LoanSubmission : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// Loan Info ARM Impounds Flood [LOANSUB.X13]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Flood\"}")]
     public bool? FloodIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Loan Info ARM Impounds Hazard [LOANSUB.X11]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Hazard\"}")]
     public bool? HazardIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -85,6 +87,7 @@ public sealed partial class LoanSubmission : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// Loan Info ARM Impounds MMI/PMI [LOANSUB.X12]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"MMI / PMI\"}")]
     public bool? MmmPmiIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -125,6 +128,7 @@ public sealed partial class LoanSubmission : DirtyExtensibleObject, IIdentifiabl
     /// <summary>
     /// Loan Info ARM Impounds Taxes [LOANSUB.X10]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Taxes\"}")]
     public bool? TaxesIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

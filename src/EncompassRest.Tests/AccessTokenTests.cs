@@ -43,7 +43,7 @@ namespace EncompassRest.Tests
             }
         }
 
-#if NETCOREAPP3_0
+#if NET6_0_OR_GREATER
         [TestMethod]
         [ApiTest]
         public async Task AccessToken_RevokeOnDisposeAsync()

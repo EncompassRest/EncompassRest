@@ -489,6 +489,8 @@ namespace EncompassRest
                     case JsonObjectContract objectContract:
                         var propertyName = GetPropertyName();
                         return objectContract.Properties.GetClosestMatchProperty(propertyName)?.PropertyType;
+                    case JsonArrayContract arrayContract:
+                        return GetDeclaredType(arrayContract.CollectionItemType!);
                     default:
                         return null;
                 }
@@ -542,7 +544,7 @@ namespace EncompassRest
 
                                 if (createIfNotExists)
                                 {
-                                    tokenValue = nextIsProperty ? new JObject() : (JToken)new JArray();
+                                    tokenValue = nextIsProperty ? new JObject() : new JArray();
                                     objectContract.ExtensionDataSetter!(parent, propertyName, tokenValue);
                                     declaredType = tokenValue.GetType();
                                     return tokenValue;
@@ -560,7 +562,7 @@ namespace EncompassRest
                             }
                             else if (createIfNotExists)
                             {
-                                tokenValue = nextIsProperty ? new JObject() : (JToken)new JArray();
+                                tokenValue = nextIsProperty ? new JObject() : new JArray();
                                 jObject.Add(propertyName, tokenValue);
                                 declaredType = tokenValue.GetType();
                                 return tokenValue;
@@ -581,6 +583,21 @@ namespace EncompassRest
                                 value = JsonHelper.FromJson(json, declaredType);
                                 dictionary[propertyName] = value;
                                 return value;
+                            }
+                        }
+                        break;
+                    case JsonArrayContract arrayContract:
+                        if (parent is IList list)
+                        {
+                            if (list.Count > 0)
+                            {
+                                return GetValue(list[0], out declaredType, createIfNotExists, nextIsProperty);
+                            }
+                            else if (createIfNotExists)
+                            {
+                                var element = JsonHelper.FromJson("{}", arrayContract.CollectionItemType);
+                                list.Add(element);
+                                return GetValue(element, out declaredType, createIfNotExists, nextIsProperty);
                             }
                         }
                         break;
@@ -625,6 +642,17 @@ namespace EncompassRest
                             dictionary[propertyName] = value;
                         }
                         break;
+                    case JsonArrayContract arrayContract:
+                        if (parent is IList list)
+                        {
+                            if (list.Count == 0)
+                            {
+                                var element = JsonHelper.FromJson("{}", arrayContract.CollectionItemType);
+                                list.Add(element);
+                            }
+                            SetValue(list[0], valueProvider);
+                        }
+                        break;
                 }
             }
 
@@ -648,7 +676,7 @@ namespace EncompassRest
         {
             public int? Index { get; }
 
-            public ObjectFilter? Filter { get; }
+            public ObjectFilter? Filter { get; internal set; }
 
             public ArraySegment(ModelPath path, int index)
                 : this(path, null, index)

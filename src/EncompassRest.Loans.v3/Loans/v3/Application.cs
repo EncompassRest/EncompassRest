@@ -9,6 +9,7 @@ namespace EncompassRest.Loans.v3;
 /// <summary>
 /// Application
 /// </summary>
+[Entity(SerializeWholeListWhenDirty = true)]
 public sealed partial class Application : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>
@@ -477,11 +478,13 @@ public sealed partial class Application : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// HUD Property Improve RE 1 FHA Insured [CAPIAP.X28]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"FHA Insured\"}")]
     public bool? HudRealEstateFhaInsured1 { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// HUD Property Improve RE 2 FHA Insured [CAPIAP.X30]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"FHA Insured\"}")]
     public bool? HudRealEstateFhaInsured2 { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -538,11 +541,13 @@ public sealed partial class Application : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Trans Details Income of Spouse will not be used [35]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"The income/assets of the Borrower's spouse will not be used..\"}")]
     public bool? IncomeOfBorrowersSpouseUsedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// Trans Details Income of Other will be used [307]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"The income/assets of a person other than Borrower will be used...\"}")]
     public bool? IncomeOtherThanBorrowerUsedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>

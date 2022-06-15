@@ -63,6 +63,11 @@ public sealed partial class AusTrackingLog : DirtyExtensibleObject, IIdentifiabl
     public string? AssessmentType { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
+    /// AusTrackingLog AusAverageMedianCreditScore
+    /// </summary>
+    public string? AusAverageMedianCreditScore { get => GetValue<string?>(); set => SetValue(value); }
+
+    /// <summary>
     /// AusTrackingLog AusLogExtensionId
     /// </summary>
     public string? AusLogExtensionId { get => GetValue<string?>(); set => SetValue(value); }
@@ -366,6 +371,11 @@ public sealed partial class AusTrackingLog : DirtyExtensibleObject, IIdentifiabl
     /// AusTrackingLog CuredAppraisedValue
     /// </summary>
     public int? CuredAppraisedValue { get => GetValue<int?>(); set => SetValue(value); }
+
+    /// <summary>
+    /// AusTrackingLog CuredAusAverageMedianCreditScore
+    /// </summary>
+    public string? CuredAusAverageMedianCreditScore { get => GetValue<string?>(); set => SetValue(value); }
 
     /// <summary>
     /// AusTrackingLog CuredCltv

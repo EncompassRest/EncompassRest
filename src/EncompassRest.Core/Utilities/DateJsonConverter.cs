@@ -2,9 +2,9 @@
 
 namespace EncompassRest.Utilities
 {
-    internal sealed class ElliDateJsonConverter : IsoDateTimeConverter
+    internal sealed class DateJsonConverter : IsoDateTimeConverter
     {
-        public ElliDateJsonConverter()
+        public DateJsonConverter()
         {
             DateTimeFormat = "yyyy-MM-dd";
         }

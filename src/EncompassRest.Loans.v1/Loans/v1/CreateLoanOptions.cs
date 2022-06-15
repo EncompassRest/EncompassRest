@@ -1,34 +1,33 @@
 ﻿using EncompassRest.Utilities;
 
-namespace EncompassRest.Loans.v1
+namespace EncompassRest.Loans.v1;
+
+/// <summary>
+/// The loan creation options.
+/// </summary>
+public sealed class CreateLoanOptions : LoanOptions
 {
     /// <summary>
-    /// The loan creation options.
+    /// Name of the loan folder.
     /// </summary>
-    public sealed class CreateLoanOptions : LoanOptions
-    {
-        /// <summary>
-        /// Name of the loan folder.
-        /// </summary>
-        public string? LoanFolder { get; set; }
-        
-        /// <summary>
-        /// The unique identifier of the User you want to assign as Loan Officer to the loan at the time of loan creation.
-        /// </summary>
-        public string? LoId { get; set; }
+    public string? LoanFolder { get; set; }
+    
+    /// <summary>
+    /// The unique identifier of the User you want to assign as Loan Officer to the loan at the time of loan creation.
+    /// </summary>
+    public string? LoId { get; set; }
 
-        internal override QueryParameters ToQueryParameters()
+    internal override QueryParameters ToQueryParameters()
+    {
+        var queryParameters = base.ToQueryParameters();
+        if (!string.IsNullOrEmpty(LoanFolder))
         {
-            var queryParameters = base.ToQueryParameters();
-            if (!string.IsNullOrEmpty(LoanFolder))
-            {
-                queryParameters.Add("loanFolder", LoanFolder);
-            }
-            if (!string.IsNullOrEmpty(LoId))
-            {
-                queryParameters.Add("loId", LoId);
-            }
-            return queryParameters;
+            queryParameters.Add("loanFolder", LoanFolder);
         }
+        if (!string.IsNullOrEmpty(LoId))
+        {
+            queryParameters.Add("loId", LoId);
+        }
+        return queryParameters;
     }
 }

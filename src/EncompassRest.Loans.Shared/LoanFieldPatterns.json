@@ -259,91 +259,91 @@
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].Alias",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].alias",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].alias",
     "FieldId": "TR{0:00}02",
     "Description": "Vesting Party - Alias #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].AuthorizedToSignIndicator",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].authorizedToSignIndicator",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].authorizedToSignIndicator",
     "FieldId": "TR{0:00}09",
     "Description": "Vesting Party - Authorized to Sign #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].BorrowerPair",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].application.entityId",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].application.entityId",
     "FieldId": "TR{0:00}05",
     "Description": "Vesting Party - Borrower Pair ID #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].DateOfBirth",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].birthDate",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].birthDate",
     "FieldId": "TR{0:00}12",
     "Description": "Vesting Party - POA Date of Birth #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].NBORecordID",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].nonBorrowingOwner.entityId",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].nonBorrowingOwner.entityId",
     "FieldId": "TR{0:00}99",
     "Description": "Vesting Party - Non-Borrowing Owner Record ID #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].OccupancyIntent",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].occupancyIntent",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].occupancyIntent",
     "FieldId": "TR{0:00}14",
     "Description": "Vesting Party - POA Occupancy Intent #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].OccupancyStatus",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].occupancyStatus",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].occupancyStatus",
     "FieldId": "TR{0:00}13",
     "Description": "Vesting Party - POA Occupancy Status #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].PoaSignatureText",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].poaSignatureText",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].poaSignatureText",
     "FieldId": "TR{0:00}11",
     "Description": "Vesting Party - POA Signature Text #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].PowerOfAttorney",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].powerOfAttorney",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].powerOfAttorney",
     "FieldId": "TR{0:00}07",
     "Description": "Vesting Party - Power of Attroney #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].Ssn",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].ssn",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].ssn",
     "FieldId": "TR{0:00}03",
     "Description": "Vesting Party - Social Security Number #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].UnparsedName",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].unparsedName",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].unparsedName",
     "FieldId": "TR{0:00}01",
     "Description": "Vesting Party - Name #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].Vesting",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].vesting",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].vesting",
     "FieldId": "TR{0:00}08",
     "Description": "Vesting Party - Vesting #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].VestingGuid",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].vestingGuid",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].vestingGuid",
     "FieldId": "TR{0:00}10",
     "Description": "Vesting Party - Unique ID #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].VestingTrusteeOfType",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].vestingTrusteeOfType",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].vestingTrusteeOfType",
     "FieldId": "TR{0:00}06",
     "Description": "Vesting Party - Trustee Of #{0}"
   },
   {
     "ModelPathV1": "Loan.ClosingDocument.ClosingEntities[(ClosingEntityType == 'Trustee')][{0}].VestingType",
-    "ModelPathV3": "loan.closingDocument.closingEntities[(closingEntityType == 'Trustee')][{0}].vestingType",
+    "ModelPathV3": "loan.closingDocument.vestingEntities[{0}].vestingType",
     "FieldId": "TR{0:00}04",
     "Description": "Vesting Party - Vesting Type #{0}"
   },

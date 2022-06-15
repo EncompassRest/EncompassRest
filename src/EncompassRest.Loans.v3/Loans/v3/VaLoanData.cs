@@ -213,6 +213,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Buyer Purch Lot Separately [1344]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Buyer is purchasing lot separately\"}")]
     public bool? BuyerPurchasingLotSeparately { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -238,6 +239,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Equipment Clothes Washer [302]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Clothes / Washer\"}")]
     public bool? ClothesWasherIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -254,6 +256,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Subject Property Constr Warranty Incl [722]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Construction Warranty Included\"}")]
     public bool? ConstructionWarrantyIncluded { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -270,6 +273,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Currently on Military Duty [VAVOB.X68]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Currently on military duty\"}")]
     public bool? CurrentlyOnMilitaryDuty { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -297,11 +301,13 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Equipment Dishwasher [301]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Dish Washer\"}")]
     public bool? DishwasherIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// VA Equipment Dryer [308]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Dryer\"}")]
     public bool? DryerIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -312,6 +318,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Energy Improvements Addition of Feature [379]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Addition of Feature\"}")]
     public bool? EnergyImprovementsAdditionOfFeature { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -421,11 +428,13 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Loan Summ Discount Info [990]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Exempt\",\"N\":\"Not Exempt\"}")]
     public bool? FundingFeeExempt { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// VA Equipment Garbage Disposal [309]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Garbage Disposal\"}")]
     public bool? GarbageDisposalIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -492,6 +501,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Energy Improvements Insulation [380]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Insulation, Caulking\"}")]
     public bool? Insulation { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -715,6 +725,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Energy Improvements None [376]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"None\"}")]
     public bool? NoEnergyImprovements { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -736,6 +747,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA On Military Duty Day Following Separation [VAVOB.X69]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"On military duty on the day following separation\"}")]
     public bool? OnMilitaryDutyFollowingSeparation { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -788,6 +800,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Other Improvements [381]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Other Improvements\"}")]
     public bool? OtherImprovements { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -970,6 +983,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Proposed Sale Contract Attached [1036]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Proposed sale contract attached\"}")]
     public bool? ProposedSaleContractAttached { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -990,6 +1004,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Equipment Range Oven [204]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Range / Oven\"}")]
     public bool? RangeOvenIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1005,6 +1020,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Equipment Refrigerator [209]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Refrigerator\"}")]
     public bool? RefrigeratorIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1015,6 +1031,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Energy Improvements Replacement of System [378]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Replacement of System\"}")]
     public bool? ReplacementOfSystem { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1035,6 +1052,7 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// Fees Survey to Seller [377]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Solar Heating / Cooling\"}")]
     public bool? SolarHeatingOrCooling { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1493,11 +1511,13 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Equipment Vent Fan [316]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Vent / Fan\"}")]
     public bool? VentFanIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
     /// VA Discharged/Have Svc-Connected Disabilities [VAELIG.X22]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"Discharged / have any service-connected disabilities\"}")]
     public bool? VeteranDischargedIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 
     /// <summary>
@@ -1545,5 +1565,6 @@ public sealed partial class VaLoanData : DirtyExtensibleObject, IIdentifiable
     /// <summary>
     /// VA Equipment W/W Carpet [318]
     /// </summary>
+    [LoanFieldProperty(OptionsJson = "{\"Y\":\"W / W Carpet\"}")]
     public bool? WwCarpetIndicator { get => GetValue<bool?>(); set => SetValue(value); }
 }

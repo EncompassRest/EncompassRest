@@ -16,15 +16,15 @@ namespace EncompassRest.Loans.Documents.v3
         /// <inheritdoc cref="LoanDocumentsExtensions.AssignDocumentAttachmentsRawAsync(ILoanDocuments, string, string, string, CancellationToken)"/>
         Task AssignDocumentAttachmentsRawAsync(string documentId, string attachmentEntities, string queryString, CancellationToken cancellationToken = default);
         /// <inheritdoc cref="LoanDocumentsExtensions.GetDocumentAsync(ILoanDocuments, string, CancellationToken)"/>
-        Task<Document> GetDocumentAsync(string documentId, CancellationToken cancellationToken = default);
+        Task<LoanDocument> GetDocumentAsync(string documentId, CancellationToken cancellationToken = default);
         /// <inheritdoc cref="LoanDocumentsExtensions.GetDocumentRawAsync(ILoanDocuments, string, string?, CancellationToken)"/>
         Task<string> GetDocumentRawAsync(string documentId, string? queryString = null, CancellationToken cancellationToken = default);
         /// <inheritdoc cref="LoanDocumentsExtensions.GetDocumentsAsync(ILoanDocuments, DocumentRetrievalOptions?, CancellationToken)"/>
-        Task<List<Document>> GetDocumentsAsync(DocumentRetrievalOptions? options = null, CancellationToken cancellationToken = default);
+        Task<List<LoanDocument>> GetDocumentsAsync(DocumentRetrievalOptions? options = null, CancellationToken cancellationToken = default);
         /// <inheritdoc cref="LoanDocumentsExtensions.GetDocumentsRawAsync(ILoanDocuments, string?, CancellationToken)"/>
         Task<string> GetDocumentsRawAsync(string? queryString = null, CancellationToken cancellationToken = default);
-        /// <inheritdoc cref="LoanDocumentsExtensions.ManageDocumentsAsync(ILoanDocuments, EFolderManagementOptions, IEnumerable{Document}, CancellationToken)"/>
-        Task ManageDocumentsAsync(EFolderManagementOptions options, IEnumerable<Document> documents, CancellationToken cancellationToken = default);
+        /// <inheritdoc cref="LoanDocumentsExtensions.ManageDocumentsAsync(ILoanDocuments, EFolderManagementOptions, IEnumerable{LoanDocument}, CancellationToken)"/>
+        Task ManageDocumentsAsync(EFolderManagementOptions options, IEnumerable<LoanDocument> documents, CancellationToken cancellationToken = default);
         /// <inheritdoc cref="LoanDocumentsExtensions.ManageDocumentsRawAsync(ILoanDocuments, string, string, CancellationToken)"/>
         Task<string> ManageDocumentsRawAsync(string documents, string queryString, CancellationToken cancellationToken = default);
         /// <inheritdoc cref="LoanDocumentsExtensions.ManageDocumentCommentsAsync(ILoanDocuments, string, EFolderManagementOptions, IEnumerable{LogComment}, CancellationToken)"/>
@@ -44,15 +44,15 @@ namespace EncompassRest.Loans.Documents.v3
         {
         }
 
-        public Task<List<Document>> GetDocumentsAsync(DocumentRetrievalOptions? options = null, CancellationToken cancellationToken = default) => GetDirtyListAsync<Document>(null, options?.ToQueryParameters().ToString(), nameof(GetDocumentsAsync), null, cancellationToken);
+        public Task<List<LoanDocument>> GetDocumentsAsync(DocumentRetrievalOptions? options = null, CancellationToken cancellationToken = default) => GetDirtyListAsync<LoanDocument>(null, options?.ToQueryParameters().ToString(), nameof(GetDocumentsAsync), null, cancellationToken);
 
         public Task<string> GetDocumentsRawAsync(string? queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetDocumentsRawAsync), null, cancellationToken);
 
-        public Task<Document> GetDocumentAsync(string documentId, CancellationToken cancellationToken = default)
+        public Task<LoanDocument> GetDocumentAsync(string documentId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            return GetDirtyAsync<Document>(documentId, null, nameof(GetDocumentAsync), documentId, cancellationToken);
+            return GetDirtyAsync<LoanDocument>(documentId, null, nameof(GetDocumentAsync), documentId, cancellationToken);
         }
 
         public Task<string> GetDocumentRawAsync(string documentId, string? queryString = null, CancellationToken cancellationToken = default)
@@ -62,12 +62,12 @@ namespace EncompassRest.Loans.Documents.v3
             return GetRawAsync(documentId, queryString, nameof(GetDocumentRawAsync), documentId, cancellationToken);
         }
 
-        public Task ManageDocumentsAsync(EFolderManagementOptions options, IEnumerable<Document> documents, CancellationToken cancellationToken = default)
+        public Task ManageDocumentsAsync(EFolderManagementOptions options, IEnumerable<LoanDocument> documents, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(options, nameof(options));
             Preconditions.NotNull(documents, nameof(documents));
 
-            var dirtyList = new DirtyList<Document>(documents);
+            var dirtyList = new DirtyList<LoanDocument>(documents);
 
             Preconditions.NotNullOrEmpty(dirtyList, nameof(documents));
 

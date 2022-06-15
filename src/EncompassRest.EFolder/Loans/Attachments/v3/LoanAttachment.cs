@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace EncompassRest.Loans.Attachments.v3;
 
 /// <summary>
-/// FileAttachment
+/// LoanAttachment
 /// </summary>
-public sealed class FileAttachment : DirtyExtensibleObject, IIdentifiable
+public sealed class LoanAttachment : DirtyExtensibleObject, IIdentifiable
 {
     /// <summary>
     /// Gets or sets the unqiue identifier for this attachment.
@@ -71,7 +71,7 @@ public sealed class FileAttachment : DirtyExtensibleObject, IIdentifiable
     public DateTime? CreatedDate { get => GetValue<DateTime?>(); set => SetValue(value); }
 
     /// <summary>
-    /// FileAttachment ObjectId
+    /// LoanAttachment ObjectId
     /// </summary>
     public string? ObjectId { get => GetValue<string?>(); set => SetValue(value); }
 }

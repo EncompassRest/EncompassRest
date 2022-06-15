@@ -272,5 +272,9 @@ public enum EntityType
     /// <summary>
     /// Vor
     /// </summary>
-    Vor = 66
+    Vor = 66,
+    /// <summary>
+    /// DesignatedRole
+    /// </summary>
+    DesignatedRole = 67
 }

@@ -1,4 +1,4 @@
-﻿namespace EncompassRest.Loans.v1
+﻿namespace EncompassRest.Loans
 {
     /// <summary>
     /// LoanFieldType
