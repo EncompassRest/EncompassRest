@@ -47,7 +47,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _printAttachmentIndicator;
         private DirtyValue<bool?>? _printUserJobTitleIndicator;
         private DirtyValue<bool?>? _printUserNameIndicator;
-        private DirtyValue<int?>? _rent;
+        private DirtyValue<decimal?>? _rent;
         private DirtyValue<DateTime?>? _requestDate;
         private DirtyValue<string?>? _residencyBasisType;
         private DirtyValue<StringEnumValue<ResidencyType>>? _residencyType;
@@ -250,7 +250,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Residence Rent [BRNN16], [CRNN16]
         /// </summary>
-        public int? Rent { get => _rent; set => SetField(ref _rent, value); }
+        public decimal? Rent { get => _rent; set => SetField(ref _rent, value); }
 
         /// <summary>
         /// Residence RequestDate [BRNN98], [CRNN98]

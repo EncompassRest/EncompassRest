@@ -38,7 +38,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _printUserJobTitleIndicator;
         private DirtyValue<bool?>? _printUserNameIndicator;
         private DirtyValue<StringEnumValue<ReoPropertyUsageType>>? _propertyUsageType;
-        private DirtyValue<int?>? _purchasePrice;
+        private DirtyValue<decimal?>? _purchasePrice;
         private DirtyValue<decimal?>? _rentalIncomeGrossAmount;
         private DirtyValue<decimal?>? _rentalIncomeNetAmount;
         private DirtyValue<string?>? _reoComments;
@@ -205,7 +205,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Mortgage Property Purchase Price [FMNN23]
         /// </summary>
-        public int? PurchasePrice { get => _purchasePrice; set => SetField(ref _purchasePrice, value); }
+        public decimal? PurchasePrice { get => _purchasePrice; set => SetField(ref _purchasePrice, value); }
 
         /// <summary>
         /// Mortgage Property Monthly Gross Rental Income [FMNN20]
