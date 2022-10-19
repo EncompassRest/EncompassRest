@@ -49,7 +49,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _militaryHazardPay;
         private DirtyValue<decimal?>? _militaryOverseasPay;
         private DirtyValue<decimal?>? _militaryPropPay;
-        private DirtyValue<int?>? _monthlyIncomeAmount;
+        private DirtyValue<decimal?>? _monthlyIncomeAmount;
         private DirtyValue<bool?>? _noLinkToDocTrackIndicator;
         private DirtyValue<string?>? _otherAllowanceDescription;
         private DirtyValue<decimal?>? _otherAmount;
@@ -289,7 +289,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Employment MonthlyIncomeAmount
         /// </summary>
-        public int? MonthlyIncomeAmount { get => _monthlyIncomeAmount; set => SetField(ref _monthlyIncomeAmount, value); }
+        public decimal? MonthlyIncomeAmount { get => _monthlyIncomeAmount; set => SetField(ref _monthlyIncomeAmount, value); }
 
         /// <summary>
         /// Employment NoLinkToDocTrackIndicator [BENN97], [CENN97]
