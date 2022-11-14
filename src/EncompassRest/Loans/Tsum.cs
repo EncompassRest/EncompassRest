@@ -289,7 +289,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Underwriting Risk Assess Type [1543]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"LP\":\"LPA\"}")]
         public StringEnumValue<RiskAssessmentType> RiskAssessmentType { get => _riskAssessmentType; set => SetField(ref _riskAssessmentType, value); }
 
         /// <summary>

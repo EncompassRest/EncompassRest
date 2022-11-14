@@ -136,6 +136,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _isEvaluatedMonthlySimultaneousLoanPayment;
         private DirtyValue<bool?>? _isEvaluatedResidualIncome;
         private DirtyValue<StringEnumValue<IsOrIsNot>>? _isHigherPricedLoan;
+        private DirtyValue<StringEnumValue<IsOrIsNot>>? _isQmHigherPricedLoan;
         private DirtyValue<string?>? _loanProcessingInformationCode24;
         private DirtyValue<string?>? _loanProcessingInformationCode31;
         private DirtyValue<string?>? _loanProcessingInformationCode32;
@@ -164,8 +165,10 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _prepaymentPenaltyPayoffFees;
         private DirtyValue<decimal?>? _prepayPenaltyPercentage;
         private DirtyValue<bool?>? _preventConsumersDefault;
+        private DirtyValue<string?>? _primaryAusId;
         private DirtyValue<bool?>? _principalBalanceIncreased;
         private DirtyValue<bool?>? _principalHasDeferred;
+        private DirtyValue<decimal?>? _qmAprPercentage;
         private DirtyValue<StringEnumValue<QMLoanType>>? _qMLoanType;
         private DirtyValue<decimal?>? _rateReductionBasisPoints;
         private DirtyValue<decimal?>? _rateReductionDiscountPoints;
@@ -210,6 +213,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusOverall;
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusPointsFeesLimit;
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusPrepaymentPenalty;
+        private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusPriceLimit;
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusResidualIncome;
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusSafeHarborEligibility;
         private DirtyValue<StringEnumValue<ATRQMStatus>>? _standardQMStatusSimultaneousLoan;
@@ -225,6 +229,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _ucdRequirement;
         private DirtyValue<bool?>? _unitCount;
         private DirtyValue<decimal?>? _upfrontPMIFees;
+        private DirtyValue<bool?>? _usePriceBasedLimitTest;
         private DirtyValue<bool?>? _withOriginalCreditor;
         private DirtyValue<DateTime?>? _writtenApplicationDate;
 
@@ -875,6 +880,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<IsOrIsNot> IsHigherPricedLoan { get => _isHigherPricedLoan; set => SetField(ref _isHigherPricedLoan, value); }
 
         /// <summary>
+        /// ATR QM - Qualification - QM HPCT Test [QM.X382]
+        /// </summary>
+        public StringEnumValue<IsOrIsNot> IsQmHigherPricedLoan { get => _isQmHigherPricedLoan; set => SetField(ref _isQmHigherPricedLoan, value); }
+
+        /// <summary>
         /// AUS Tracking - Freddie Mac LPA - Loan Processing Information - Message Code 24 [AUSF.X63]
         /// </summary>
         public string? LoanProcessingInformationCode24 { get => _loanProcessingInformationCode24; set => SetField(ref _loanProcessingInformationCode24, value); }
@@ -1018,6 +1028,11 @@ namespace EncompassRest.Loans
         public bool? PreventConsumersDefault { get => _preventConsumersDefault; set => SetField(ref _preventConsumersDefault, value); }
 
         /// <summary>
+        /// AUS Tracking - Primary Aus Id [AUSF.X71]
+        /// </summary>
+        public string? PrimaryAusId { get => _primaryAusId; set => SetField(ref _primaryAusId, value); }
+
+        /// <summary>
         /// ATR QM - Non-Stardard to Standard Refinance Eligibility - Will this refinance cause the Principal Balance to increase? [QM.X6]
         /// </summary>
         public bool? PrincipalBalanceIncreased { get => _principalBalanceIncreased; set => SetField(ref _principalBalanceIncreased, value); }
@@ -1026,6 +1041,12 @@ namespace EncompassRest.Loans
         /// ATR QM - Non-Stardard to Standard Refinance Eligibility - New Loan - Does the New Loan have deferred Principal payments? [QM.X20]
         /// </summary>
         public bool? PrincipalHasDeferred { get => _principalHasDeferred; set => SetField(ref _principalHasDeferred, value); }
+
+        /// <summary>
+        /// ATR QM - Qualification - QM APR % [QM.X381]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? QmAprPercentage { get => _qmAprPercentage; set => SetField(ref _qmAprPercentage, value); }
 
         /// <summary>
         /// ATR QM - Eligibility - Qualified Mortgage Loan Type [QM.X24]
@@ -1253,6 +1274,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<ATRQMStatus> StandardQMStatusPrepaymentPenalty { get => _standardQMStatusPrepaymentPenalty; set => SetField(ref _standardQMStatusPrepaymentPenalty, value); }
 
         /// <summary>
+        /// ATR QM - Eligibility - Results of the QM APR to APOR Test [QM.X384]
+        /// </summary>
+        public StringEnumValue<ATRQMStatus> StandardQMStatusPriceLimit { get => _standardQMStatusPriceLimit; set => SetField(ref _standardQMStatusPriceLimit, value); }
+
+        /// <summary>
         /// ATR QM - Eligibility - Standard Qualified Mortgage - Residual Income [QM.X48]
         /// </summary>
         public StringEnumValue<ATRQMStatus> StandardQMStatusResidualIncome { get => _standardQMStatusResidualIncome; set => SetField(ref _standardQMStatusResidualIncome, value); }
@@ -1328,6 +1354,11 @@ namespace EncompassRest.Loans
         /// ATR QM - Qualification - Fees Included in Points and Fees Test - Upfront PMI [QM.X129]
         /// </summary>
         public decimal? UpfrontPMIFees { get => _upfrontPMIFees; set => SetField(ref _upfrontPMIFees, value); }
+
+        /// <summary>
+        /// ATR QM - Qualification - Use Price-Based Limit for General QM [QM.X383]
+        /// </summary>
+        public bool? UsePriceBasedLimitTest { get => _usePriceBasedLimitTest; set => SetField(ref _usePriceBasedLimitTest, value); }
 
         /// <summary>
         /// ATR QM - Non-Stardard to Standard Refinance Eligibility - Refinance with Original Creditor  [QM.X2]

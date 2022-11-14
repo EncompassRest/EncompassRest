@@ -15,10 +15,20 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<Owner>>? _authorizedSignor;
         private DirtyValue<StringEnumValue<Owner>>? _authorizedSignorSpouse;
         private DirtyValue<string?>? _city;
+        private DirtyValue<string?>? _clientAddress;
+        private DirtyValue<string?>? _clientCity;
+        private DirtyValue<string?>? _clientName;
+        private DirtyValue<string?>? _clientPhone;
+        private DirtyValue<StringEnumValue<State>>? _clientState;
+        private DirtyValue<string?>? _clientZip;
         private DirtyValue<decimal?>? _costForEachPeriod;
         private DirtyValue<string?>? _currentFirst;
         private DirtyValue<string?>? _currentLast;
+        private DirtyValue<string?>? _customerFileNumber;
         private DirtyValue<string?>? _first;
+        private DirtyValue<bool?>? _firstAuthorizedRepSigning;
+        private DirtyValue<bool?>? _firstTaxpayer;
+        private DirtyValue<string?>? _firstWageOrIncomeForm;
         private DirtyValue<bool?>? _formsSeriesTranscript;
         private DirtyValue<string?>? _historyId;
         private DirtyValue<bool?>? _historyIndicator;
@@ -29,9 +39,13 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _lastUpdatedDate;
         private DirtyValue<int?>? _lastUpdatedHistory;
         private DirtyValue<string?>? _lastUpdatedTime;
+        private DirtyValue<string?>? _middleInitial;
         private DirtyValue<bool?>? _notifiedIrsIdentityTheftIndicator;
         private DirtyValue<int?>? _numberOfPeriods;
         private DirtyValue<StringEnumValue<Person>>? _person;
+        private DirtyValue<string?>? _previousFirstName;
+        private DirtyValue<string?>? _previousLastName;
+        private DirtyValue<string?>? _previousMiddleInitial;
         private DirtyValue<bool?>? _recordOfAccount;
         private DirtyValue<string?>? _requestorPhoneNumber;
         private DirtyValue<StringEnumValue<RequestorTitle>>? _requestorTitle;
@@ -48,6 +62,9 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<State>>? _returnState;
         private DirtyValue<bool?>? _returnTranscript;
         private DirtyValue<string?>? _returnZip;
+        private DirtyValue<bool?>? _secondAuthorizedRepSigning;
+        private DirtyValue<bool?>? _secondTaxpayer;
+        private DirtyValue<string?>? _secondWageOrIncomeForm;
         private DirtyValue<string?>? _selectedRecordNumber;
         private DirtyValue<string?>? _sendAddress;
         private DirtyValue<string?>? _sendCity;
@@ -58,8 +75,13 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _sendZip;
         private DirtyValue<bool?>? _signatoryAttestation;
         private DirtyValue<bool?>? _signatoryAttestationT;
+        private DirtyValue<string?>? _sorMailboxId;
         private DirtyValue<string?>? _spouseFirst;
         private DirtyValue<string?>? _spouseLast;
+        private DirtyValue<string?>? _spouseMiddleInitial;
+        private DirtyValue<string?>? _spousePreviousFirst;
+        private DirtyValue<string?>? _spousePreviousLast;
+        private DirtyValue<string?>? _spousePreviousMiddleInitial;
         private DirtyValue<string?>? _spouseSSN;
         private DirtyValue<bool?>? _spouseUseEIN;
         private DirtyValue<string?>? _sSN;
@@ -68,7 +90,9 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _tax4506TIndicator;
         private DirtyValue<string?>? _taxFormNumber;
         private DirtyValue<bool?>? _theseCopiesMustBeCertified;
+        private DirtyValue<string?>? _thirdWageOrIncomeForm;
         private DirtyValue<decimal?>? _totalCost;
+        private DirtyValue<string?>? _uniqueIdentifierNumber;
         private DirtyValue<bool?>? _useEIN;
         private DirtyValue<bool?>? _useWellsFargoRules;
         private DirtyValue<bool?>? _verificationOfNonfiling;
@@ -103,6 +127,38 @@ namespace EncompassRest.Loans
         public string? City { get => _city; set => SetField(ref _city, value); }
 
         /// <summary>
+        /// Tax4506 ClientAddress [IRS4506.X81]
+        /// </summary>
+        public string? ClientAddress { get => _clientAddress; set => SetField(ref _clientAddress, value); }
+
+        /// <summary>
+        /// Tax4506 ClientCity [IRS4506.X82]
+        /// </summary>
+        public string? ClientCity { get => _clientCity; set => SetField(ref _clientCity, value); }
+
+        /// <summary>
+        /// Tax4506 ClientName [IRS4506.X79]
+        /// </summary>
+        public string? ClientName { get => _clientName; set => SetField(ref _clientName, value); }
+
+        /// <summary>
+        /// Tax4506 ClientPhone [IRS4506.X80]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+        public string? ClientPhone { get => _clientPhone; set => SetField(ref _clientPhone, value); }
+
+        /// <summary>
+        /// Tax4506 ClientState [IRS4506.X83]
+        /// </summary>
+        public StringEnumValue<State> ClientState { get => _clientState; set => SetField(ref _clientState, value); }
+
+        /// <summary>
+        /// Tax4506 ClientZip [IRS4506.X84]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
+        public string? ClientZip { get => _clientZip; set => SetField(ref _clientZip, value); }
+
+        /// <summary>
         /// Tax4506 CostForEachPeriod [IRS4506.X52]
         /// </summary>
         public decimal? CostForEachPeriod { get => _costForEachPeriod; set => SetField(ref _costForEachPeriod, value); }
@@ -118,9 +174,29 @@ namespace EncompassRest.Loans
         public string? CurrentLast { get => _currentLast; set => SetField(ref _currentLast, value); }
 
         /// <summary>
+        /// Tax4506 CustomerFileNumber [IRS4506.X77]
+        /// </summary>
+        public string? CustomerFileNumber { get => _customerFileNumber; set => SetField(ref _customerFileNumber, value); }
+
+        /// <summary>
         /// Tax4506 First [IRS4506.X2]
         /// </summary>
         public string? First { get => _first; set => SetField(ref _first, value); }
+
+        /// <summary>
+        /// Tax4506 FirstAuthorizedRepSigning [IRS4506.X90]
+        /// </summary>
+        public bool? FirstAuthorizedRepSigning { get => _firstAuthorizedRepSigning; set => SetField(ref _firstAuthorizedRepSigning, value); }
+
+        /// <summary>
+        /// Tax4506 FirstTaxpayer [IRS4506.X88]
+        /// </summary>
+        public bool? FirstTaxpayer { get => _firstTaxpayer; set => SetField(ref _firstTaxpayer, value); }
+
+        /// <summary>
+        /// Tax4506 FirstWageOrIncomeForm [IRS4506.X85]
+        /// </summary>
+        public string? FirstWageOrIncomeForm { get => _firstWageOrIncomeForm; set => SetField(ref _firstWageOrIncomeForm, value); }
 
         /// <summary>
         /// Tax4506 FormsSeriesTranscript [IRS4506.X50]
@@ -175,6 +251,11 @@ namespace EncompassRest.Loans
         public string? LastUpdatedTime { get => _lastUpdatedTime; set => SetField(ref _lastUpdatedTime, value); }
 
         /// <summary>
+        /// Tax4506 MiddleInitial [IRS4506.X68]
+        /// </summary>
+        public string? MiddleInitial { get => _middleInitial; set => SetField(ref _middleInitial, value); }
+
+        /// <summary>
         /// Tax4506 NotifiedIrsIdentityTheftIndicator [IRS4506.X60]
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Y\":\"Y\",\"N\":\"N\"}")]
@@ -189,6 +270,21 @@ namespace EncompassRest.Loans
         /// Tax4506 Person [IRS4506.X1]
         /// </summary>
         public StringEnumValue<Person> Person { get => _person; set => SetField(ref _person, value); }
+
+        /// <summary>
+        /// Tax4506 PreviousFirstName [IRS4506.X70]
+        /// </summary>
+        public string? PreviousFirstName { get => _previousFirstName; set => SetField(ref _previousFirstName, value); }
+
+        /// <summary>
+        /// Tax4506 PreviousLastName [IRS4506.X72]
+        /// </summary>
+        public string? PreviousLastName { get => _previousLastName; set => SetField(ref _previousLastName, value); }
+
+        /// <summary>
+        /// Tax4506 PreviousMiddleInitial [IRS4506.X71]
+        /// </summary>
+        public string? PreviousMiddleInitial { get => _previousMiddleInitial; set => SetField(ref _previousMiddleInitial, value); }
 
         /// <summary>
         /// Tax4506 RecordOfAccount [IRS4506.X48]
@@ -275,6 +371,21 @@ namespace EncompassRest.Loans
         public string? ReturnZip { get => _returnZip; set => SetField(ref _returnZip, value); }
 
         /// <summary>
+        /// Tax4506 SecondAuthorizedRepSigning [IRS4506.X91]
+        /// </summary>
+        public bool? SecondAuthorizedRepSigning { get => _secondAuthorizedRepSigning; set => SetField(ref _secondAuthorizedRepSigning, value); }
+
+        /// <summary>
+        /// Tax4506 SecondTaxpayer [IRS4506.X89]
+        /// </summary>
+        public bool? SecondTaxpayer { get => _secondTaxpayer; set => SetField(ref _secondTaxpayer, value); }
+
+        /// <summary>
+        /// Tax4506 SecondWageOrIncomeForm [IRS4506.X86]
+        /// </summary>
+        public string? SecondWageOrIncomeForm { get => _secondWageOrIncomeForm; set => SetField(ref _secondWageOrIncomeForm, value); }
+
+        /// <summary>
         /// IRS - Selected Record Number [IRS4506.X98]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
@@ -328,6 +439,11 @@ namespace EncompassRest.Loans
         public bool? SignatoryAttestationT { get => _signatoryAttestationT; set => SetField(ref _signatoryAttestationT, value); }
 
         /// <summary>
+        /// Tax4506 SorMailboxId [IRS4506.X76]
+        /// </summary>
+        public string? SorMailboxId { get => _sorMailboxId; set => SetField(ref _sorMailboxId, value); }
+
+        /// <summary>
         /// Tax4506 SpouseFirst [IRS4506.X6]
         /// </summary>
         public string? SpouseFirst { get => _spouseFirst; set => SetField(ref _spouseFirst, value); }
@@ -336,6 +452,26 @@ namespace EncompassRest.Loans
         /// Tax4506 SpouseLast [IRS4506.X7]
         /// </summary>
         public string? SpouseLast { get => _spouseLast; set => SetField(ref _spouseLast, value); }
+
+        /// <summary>
+        /// Tax4506 SpouseMiddleInitial [IRS4506.X69]
+        /// </summary>
+        public string? SpouseMiddleInitial { get => _spouseMiddleInitial; set => SetField(ref _spouseMiddleInitial, value); }
+
+        /// <summary>
+        /// Tax4506 SpousePreviousFirst [IRS4506.X73]
+        /// </summary>
+        public string? SpousePreviousFirst { get => _spousePreviousFirst; set => SetField(ref _spousePreviousFirst, value); }
+
+        /// <summary>
+        /// Tax4506 SpousePreviousLast [IRS4506.X75]
+        /// </summary>
+        public string? SpousePreviousLast { get => _spousePreviousLast; set => SetField(ref _spousePreviousLast, value); }
+
+        /// <summary>
+        /// Tax4506 SpousePreviousMiddleInitial [IRS4506.X74]
+        /// </summary>
+        public string? SpousePreviousMiddleInitial { get => _spousePreviousMiddleInitial; set => SetField(ref _spousePreviousMiddleInitial, value); }
 
         /// <summary>
         /// Tax4506 SpouseSSN [IRS4506.X5]
@@ -379,9 +515,19 @@ namespace EncompassRest.Loans
         public bool? TheseCopiesMustBeCertified { get => _theseCopiesMustBeCertified; set => SetField(ref _theseCopiesMustBeCertified, value); }
 
         /// <summary>
+        /// Tax4506 ThirdWageOrIncomeForm [IRS4506.X87]
+        /// </summary>
+        public string? ThirdWageOrIncomeForm { get => _thirdWageOrIncomeForm; set => SetField(ref _thirdWageOrIncomeForm, value); }
+
+        /// <summary>
         /// Tax4506 TotalCost [IRS4506.X32]
         /// </summary>
         public decimal? TotalCost { get => _totalCost; set => SetField(ref _totalCost, value); }
+
+        /// <summary>
+        /// Tax4506 UniqueIdentifierNumber [IRS4506.X78]
+        /// </summary>
+        public string? UniqueIdentifierNumber { get => _uniqueIdentifierNumber; set => SetField(ref _uniqueIdentifierNumber, value); }
 
         /// <summary>
         /// Tax4506 UseEIN [IRS4506.X57]

@@ -106,6 +106,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _drawCity;
         private DirtyValue<string?>? _drawCounty;
         private DirtyValue<StringEnumValue<State>>? _drawState;
+        private DirtyValue<StringEnumValue<eCloseClosingType>>? _eCloseClosingType;
         private DirtyValue<StringEnumValue<YNOrOther>>? _employeeofMortgageLender;
         private DirtyValue<string?>? _expectToAssignSellOrTransferPercent;
         private DirtyValue<string?>? _finalVestingDescription;
@@ -171,6 +172,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _prepaymentPenaltyDescriptions1;
         private DirtyValue<string?>? _prepaymentPenaltyDescriptions2;
         private DirtyValue<string?>? _prepaymentPenaltyDescriptions3;
+        private DirtyValue<bool?>? _print2001UniformInstrumentsIndicator;
         private DirtyValue<bool?>? _printTrustNameIndicator;
         private DirtyValue<int?>? _processingNumberDays;
         private DirtyValue<string?>? _programCode;
@@ -191,7 +193,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _secondTransferYear;
         private DirtyValue<decimal?>? _secondTransferYearValue;
         private DirtyValue<DateTime?>? _signatureDateFor1003;
-        private DirtyValue<StringEnumValue<FloodZone>>? _specialFloodHazardAreaIndictor;
+        private DirtyValue<StringEnumValue<SpecialFloodHazardAreaIndictor>>? _specialFloodHazardAreaIndictor;
         private DirtyList<StateLicense>? _stateLicenses;
         private DirtyValue<string?>? _suretyCompanyName;
         private DirtyValue<bool?>? _syncInterestDateDisbursementDate;
@@ -722,6 +724,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<State> DrawState { get => _drawState; set => SetField(ref _drawState, value); }
 
         /// <summary>
+        /// eClose Closing Type [4689]
+        /// </summary>
+        public StringEnumValue<eCloseClosingType> eCloseClosingType { get => _eCloseClosingType; set => SetField(ref _eCloseClosingType, value); }
+
+        /// <summary>
         /// State Disc - Broker Is Employee of Mtg Lender [DISCLOSURE.X208]
         /// </summary>
         public StringEnumValue<YNOrOther> EmployeeofMortgageLender { get => _employeeofMortgageLender; set => SetField(ref _employeeofMortgageLender, value); }
@@ -1060,6 +1067,11 @@ namespace EncompassRest.Loans
         public string? PrepaymentPenaltyDescriptions3 { get => _prepaymentPenaltyDescriptions3; set => SetField(ref _prepaymentPenaltyDescriptions3, value); }
 
         /// <summary>
+        /// Print 01/2001 Version of Uniform Instruments [4793]
+        /// </summary>
+        public bool? Print2001UniformInstrumentsIndicator { get => _print2001UniformInstrumentsIndicator; set => SetField(ref _print2001UniformInstrumentsIndicator, value); }
+
+        /// <summary>
         /// Print Trust Name(s) on LE/CD Addendum [4662]
         /// </summary>
         public bool? PrintTrustNameIndicator { get => _printTrustNameIndicator; set => SetField(ref _printTrustNameIndicator, value); }
@@ -1166,7 +1178,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Property Info Flood Zone [541]
         /// </summary>
-        public StringEnumValue<FloodZone> SpecialFloodHazardAreaIndictor { get => _specialFloodHazardAreaIndictor; set => SetField(ref _specialFloodHazardAreaIndictor, value); }
+        public StringEnumValue<SpecialFloodHazardAreaIndictor> SpecialFloodHazardAreaIndictor { get => _specialFloodHazardAreaIndictor; set => SetField(ref _specialFloodHazardAreaIndictor, value); }
 
         /// <summary>
         /// ClosingDocument StateLicenses

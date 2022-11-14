@@ -29,6 +29,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _disclosureSentMethod;
         private DirtyValue<decimal?>? _estimatedTaxesInsuranceAssessments;
         private DirtyValue<string?>? _estimatedTaxesInsuranceAssessmentsUI;
+        private DirtyValue<StringEnumValue<ExpirationGenericTimeZone>>? _expirationGenericTimeZone;
         private DirtyValue<decimal?>? _highestMonthlyPI;
         private DirtyValue<string?>? _id;
         private DirtyValue<string?>? _inEscrowHomeownerInsurance;
@@ -247,6 +248,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string? EstimatedTaxesInsuranceAssessmentsUI { get => _estimatedTaxesInsuranceAssessmentsUI; set => SetField(ref _estimatedTaxesInsuranceAssessmentsUI, value); }
+
+        /// <summary>
+        /// Loan Estimate - Closing Costs Estimate Expiration Generic Time Zone [LE1.XG9]
+        /// </summary>
+        public StringEnumValue<ExpirationGenericTimeZone> ExpirationGenericTimeZone { get => _expirationGenericTimeZone; set => SetField(ref _expirationGenericTimeZone, value); }
 
         /// <summary>
         /// Loan Estimate - Monthly Principal and Interest Will be Adjusted in Year [LE1.X24]

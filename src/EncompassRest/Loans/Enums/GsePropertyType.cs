@@ -1,66 +1,68 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.Enums
 {
     /// <summary>
-    /// GsePropertyType
+    /// GSEPropertyType
     /// </summary>
     public enum GsePropertyType
     {
         /// <summary>
-        /// Single Family
+        /// Attached
         /// </summary>
-        [Description("Single Family")]
-        SingleFamily = 0,
+        Attached = 0,
         /// <summary>
         /// Condominium
         /// </summary>
         Condominium = 1,
         /// <summary>
-        /// Townhouse
+        /// Co-Operative
         /// </summary>
-        Townhouse = 2,
+        [Description("Co-Operative")]
+        Cooperative = 2,
         /// <summary>
-        /// Cooperative
+        /// Detached
         /// </summary>
-        Cooperative = 3,
+        Detached = 3,
         /// <summary>
-        /// 2 to 4 Units
+        /// High Rise Condominium
         /// </summary>
-        [Description("2 to 4 Units")]
-        TwoToFourUnitProperty = 4,
+        [Description("High Rise Condominium")]
+        HighRiseCondominium = 4,
         /// <summary>
-        /// Multi-Family+4
+        /// Manufactured Housing
         /// </summary>
-        [Description("Multi-Family+4")]
-        MultifamilyMoreThanFourUnits = 5,
+        [Description("Manufactured Housing")]
+        ManufacturedHousing = 5,
         /// <summary>
-        /// Mobile Home
+        /// PUD
         /// </summary>
-        [Description("Mobile Home")]
-        ManufacturedMobileHome = 6,
+        PUD = 6,
         /// <summary>
-        /// Commercial
+        /// Detached Condo
         /// </summary>
-        [Description("Commercial")]
-        CommercialNonResidential = 7,
+        [Description("Detached Condo")]
+        DetachedCondo = 7,
         /// <summary>
-        /// Home And Business Combined
+        /// Mfd Home/Condo/PUD/Co-Op
         /// </summary>
-        [Description("Home And Business Combined")]
-        HomeAndBusinessCombined = 8,
+        [Description("Mfd Home/Condo/PUD/Co-Op")]
+        ManufacturedHomeCondoPUDCoOp = 8,
         /// <summary>
-        /// Mixed Use
+        /// MH HomeChoice
         /// </summary>
-        [Description("Mixed Use")]
-        MixedUseResidential = 9,
+        [EnumMember(Value = "MH HomeChoice")]
+        MHHomeChoice = 9,
         /// <summary>
-        /// Farm
+        /// MH Select
         /// </summary>
-        Farm = 10,
+        [Description("MH Select")]
+        MHSelect = 10,
         /// <summary>
-        /// Land
+        /// MH Advantage
         /// </summary>
-        Land = 11
+        [Description("MH Advantage")]
+        MHAdvantage = 11
     }
 }

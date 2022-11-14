@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.Enums
@@ -45,8 +46,9 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         Caution = 7,
         /// <summary>
-        /// Caution Eligible For A Minus
+        /// Caution Eligible For A Minus - Retired
         /// </summary>
+        [Description("Caution Eligible For A Minus - Retired")]
         [EnumMember(Value = "Caution Eligible For A Minus")]
         CautionEligibleForAMinus = 8
     }

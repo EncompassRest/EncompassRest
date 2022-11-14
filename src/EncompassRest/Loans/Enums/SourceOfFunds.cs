@@ -8,68 +8,84 @@ namespace EncompassRest.Loans.Enums
     public enum SourceOfFunds
     {
         /// <summary>
-        /// Community Nonprofit
+        /// Community Nonprofit (FNMA/FRE)
         /// </summary>
-        [Description("Community Nonprofit")]
+        [Description("Community Nonprofit (FNMA/FRE)")]
         CommunityNonprofit = 0,
         /// <summary>
-        /// Employer
+        /// Employer (FNMA/FRE)
         /// </summary>
+        [Description("Employer (FNMA/FRE)")]
         Employer = 1,
         /// <summary>
-        /// Federal Agency
+        /// Federal Agency (FNMA/FRE)
         /// </summary>
-        [Description("Federal Agency")]
+        [Description("Federal Agency (FNMA/FRE)")]
         FederalAgency = 2,
         /// <summary>
-        /// Institutional
+        /// Institutional (FNMA Retired)
         /// </summary>
+        [Description("Institutional (FNMA Retired)")]
         Institutional = 3,
         /// <summary>
-        /// Lender
+        /// Lender (FNMA/FRE)
         /// </summary>
+        [Description("Lender (FNMA/FRE)")]
         Lender = 4,
         /// <summary>
-        /// Local Agency
+        /// Local Agency (FNMA/FRE)
         /// </summary>
-        [Description("Local Agency")]
+        [Description("Local Agency (FNMA/FRE)")]
         LocalAgency = 5,
         /// <summary>
-        /// Other
+        /// Other (FNMA/FRE)
         /// </summary>
+        [Description("Other (FNMA/FRE)")]
         Other = 6,
         /// <summary>
-        /// Non Parent Relative
+        /// Non Parent Relative (FNMA Retired)
         /// </summary>
-        [Description("Non Parent Relative")]
+        [Description("Non Parent Relative (FNMA Retired)")]
         NonParentRelative = 7,
         /// <summary>
-        /// Parent
+        /// Parent (FNMA/FRE)
         /// </summary>
+        [Description("Parent (FNMA/FRE)")]
         Parent = 8,
         /// <summary>
-        /// Relative
+        /// Relative (FNMA/FRE)
         /// </summary>
+        [Description("Relative (FNMA/FRE)")]
         Relative = 9,
         /// <summary>
-        /// Religious Nonprofit
+        /// Religious Nonprofit (FNMA/FRE)
         /// </summary>
-        [Description("Religious Nonprofit")]
+        [Description("Religious Nonprofit (FNMA/FRE)")]
         ReligiousNonprofit = 10,
         /// <summary>
-        /// State Agency
+        /// State Agency (FNMA/FRE)
         /// </summary>
-        [Description("State Agency")]
+        [Description("State Agency (FNMA/FRE)")]
         StateAgency = 11,
         /// <summary>
-        /// Unrelated Friend
+        /// Unrelated Friend (FNMA)
         /// </summary>
-        [Description("Unrelated Friend")]
+        [Description("Unrelated Friend (FNMA)")]
         UnrelatedFriend = 12,
         /// <summary>
-        /// Unmarried Partner
+        /// Unmarried Partner (FNMA)
         /// </summary>
-        [Description("Unmarried Partner")]
-        UnmarriedPartner = 13
+        [Description("Unmarried Partner (FNMA)")]
+        UnmarriedPartner = 13,
+        /// <summary>
+        /// Non Profit Instrumentality Of Government (FRE)
+        /// </summary>
+        [Description("Non Profit Instrumentality Of Government (FRE)")]
+        NonProfitInstrumentalityOfGovernment = 14,
+        /// <summary>
+        /// Property Seller (FNMA/FRE)
+        /// </summary>
+        [Description("Property Seller (FNMA/FRE)")]
+        PropertySeller = 15
     }
 }

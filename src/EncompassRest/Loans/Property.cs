@@ -31,6 +31,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _landEstimatedValueAmount;
         private DirtyValue<string?>? _legalDescriptionText1;
         private DirtyValue<string?>? _legalDescriptionText2;
+        private DirtyValue<bool?>? _linkedAffordableLoan;
         private DirtyValue<decimal?>? _linkedAmountApplyToDownPayment;
         private DirtyValue<decimal?>? _linkedBaseLoanAmount;
         private DirtyValue<decimal?>? _linkedClosedEndPrimaryMortgageLoanAmount;
@@ -46,9 +47,11 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _linkedLoanPurposeType;
         private DirtyValue<decimal?>? _linkedMax5YrsPrincipleAndInterest;
         private DirtyValue<StringEnumValue<LoanType>>? _linkedMortgageType;
+        private DirtyValue<bool?>? _linkedPaymentDeferredFirstFiveYears;
         private DirtyValue<decimal?>? _linkedProposedFirstMortgageAmount;
         private DirtyValue<decimal?>? _linkedProposedOtherAmount;
         private DirtyValue<decimal?>? _linkedProposedOtherMortgagesAmount;
+        private DirtyValue<decimal?>? _linkedRequestedInterestRatePercent;
         private DirtyValue<StringEnumValue<LoanPurposeType>>? _loanPurposeType;
         private DirtyValue<string?>? _loanPurposeTypeOtherDescription;
         private DirtyValue<StringEnumValue<LoanPurposeTypeURLA>>? _loanPurposeTypeURLA;
@@ -83,6 +86,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _refinanceProposedImprovementsDescription;
         private DirtyValue<bool?>? _ruralAreaIndicator;
         private DirtyValue<string?>? _sectionIdentifier;
+        private DirtyValue<string?>? _square;
         private DirtyValue<StringEnumValue<State>>? _state;
         private DirtyValue<string?>? _streetAddress;
         private DirtyValue<string?>? _streetAddress2;
@@ -205,6 +209,12 @@ namespace EncompassRest.Loans
         public string? LegalDescriptionText2 { get => _legalDescriptionText2; set => SetField(ref _legalDescriptionText2, value); }
 
         /// <summary>
+        /// Linked Affordable Loan Indicator [LINK_URLA.X210]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Affordable Loan\"}")]
+        public bool? LinkedAffordableLoan { get => _linkedAffordableLoan; set => SetField(ref _linkedAffordableLoan, value); }
+
+        /// <summary>
         /// HELOC Amount Apply To Down Payment - Copied from Linked Loan [LINK_4493]
         /// </summary>
         public decimal? LinkedAmountApplyToDownPayment { get => _linkedAmountApplyToDownPayment; set => SetField(ref _linkedAmountApplyToDownPayment, value); }
@@ -280,6 +290,12 @@ namespace EncompassRest.Loans
         public StringEnumValue<LoanType> LinkedMortgageType { get => _linkedMortgageType; set => SetField(ref _linkedMortgageType, value); }
 
         /// <summary>
+        /// Linked Payment Deferred for First Five Years Indicator [LINK_URLA.X209]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"Payment Deferred for First Five Years\"}")]
+        public bool? LinkedPaymentDeferredFirstFiveYears { get => _linkedPaymentDeferredFirstFiveYears; set => SetField(ref _linkedPaymentDeferredFirstFiveYears, value); }
+
+        /// <summary>
         /// Linked Expenses Proposed Mtg Pymt [LINK_228]
         /// </summary>
         public decimal? LinkedProposedFirstMortgageAmount { get => _linkedProposedFirstMortgageAmount; set => SetField(ref _linkedProposedFirstMortgageAmount, value); }
@@ -293,6 +309,12 @@ namespace EncompassRest.Loans
         /// Linked Expenses Proposed Other Pymt [LINK_229]
         /// </summary>
         public decimal? LinkedProposedOtherMortgagesAmount { get => _linkedProposedOtherMortgagesAmount; set => SetField(ref _linkedProposedOtherMortgagesAmount, value); }
+
+        /// <summary>
+        /// Linked Trans Details Interest Rate [LINK_3]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? LinkedRequestedInterestRatePercent { get => _linkedRequestedInterestRatePercent; set => SetField(ref _linkedRequestedInterestRatePercent, value); }
 
         /// <summary>
         /// Trans Details Loan Purpose [19]
@@ -468,6 +490,11 @@ namespace EncompassRest.Loans
         /// Property Info Section Identifier [2975]
         /// </summary>
         public string? SectionIdentifier { get => _sectionIdentifier; set => SetField(ref _sectionIdentifier, value); }
+
+        /// <summary>
+        /// Property Info Square [4792]
+        /// </summary>
+        public string? Square { get => _square; set => SetField(ref _square, value); }
 
         /// <summary>
         /// Subject Property State [14]

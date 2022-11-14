@@ -235,7 +235,7 @@ namespace EncompassRest
 
         private static readonly Dictionary<string, EntitySchema> s_explicitSchemas = new Dictionary<string, EntitySchema>
         {
-            { "ElliUCDDetail", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "CDFields", new PropertySchema { Type = PropertySchemaType.String } }, { "LEFields", new PropertySchema { Type = PropertySchemaType.String } } } } },
+            //{ "ElliUCDDetail", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "CDFields", new PropertySchema { Type = PropertySchemaType.String } }, { "LEFields", new PropertySchema { Type = PropertySchemaType.String } } } } },
             { "DocumentAudit", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "ReportKey", new PropertySchema { Type = PropertySchemaType.String } }, { "TimeStamp", new PropertySchema { Type = PropertySchemaType.DateTime } }, { "Alerts", new PropertySchema { Type = PropertySchemaType.List, ElementType = "DocumentAuditAlert" } } } } },
             { "DocumentAuditAlert", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "Source", new PropertySchema { Type = PropertySchemaType.String } }, { "Type", new PropertySchema { Type = PropertySchemaType.String } }, { "Text", new PropertySchema { Type = PropertySchemaType.String } }, { "Fields", new PropertySchema { Type = PropertySchemaType.List, ElementType = "string" } } } } },
             { "EmailDocument", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "DocId", new PropertySchema { Type = PropertySchemaType.String } }, { "DocTitle", new PropertySchema { Type = PropertySchemaType.String } } } } },
@@ -250,16 +250,16 @@ namespace EncompassRest
             { "DocumentOrderLog", new Dictionary<string, PropertySchema> { { "OrderedDocuments", new PropertySchema { Type = PropertySchemaType.List, ElementType = "OrderedDocument" } } } },
             { "FundingFee", new Dictionary<string, PropertySchema> { { "Amount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PtcAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocBorrower2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocSeller2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocBroker2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocOther2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacBroker2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacLender2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacOther2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocLender2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, } },
             { "HtmlEmailLog", new Dictionary<string, PropertySchema> { { "DocList", new PropertySchema { Type = PropertySchemaType.List, ElementType = "EmailDocument" } } } },
-            { "SelfEmployedIncome", new Dictionary<string, PropertySchema> { { "FieldValue", new PropertySchema { Type = PropertySchemaType.String, FieldInstances = new Dictionary<string, List<string>>
-                {
-                    { "FM1084.X105", new List<string> { "Application_SelfEmployedIncomes_Form1065_OwnershipPercent" } },
-                    { "FM1084.X114", new List<string> { "Application_SelfEmployedIncomes_Form1120S_OwnershipPercent" } },
-                    { "FM1084.X127", new List<string> { "Application_SelfEmployedIncomes_Form1120_OwnershipPercent" } },
-                    { "FM1084.X134", new List<string> { "Application_SelfEmployedIncomes_None_Year2_FormB" } },
-                    { "FM1084.X50", new List<string> { "Application_SelfEmployedIncomes_None_Year2_FormA" } },
-                    { "FM1084.X6", new List<string> { "Application_SelfEmployedIncomes_None_Year1_FormA" } },
-                    { "FM1084.X96", new List<string> { "Application_SelfEmployedIncomes_None_Year1_FormB" } }
-                } } } } }
+            //{ "SelfEmployedIncome", new Dictionary<string, PropertySchema> { { "FieldValue", new PropertySchema { Type = PropertySchemaType.String, FieldInstances = new Dictionary<string, List<string>>
+            //    {
+            //        { "FM1084.X105", new List<string> { "Application_SelfEmployedIncomes_Form1065_OwnershipPercent" } },
+            //        { "FM1084.X114", new List<string> { "Application_SelfEmployedIncomes_Form1120S_OwnershipPercent" } },
+            //        { "FM1084.X127", new List<string> { "Application_SelfEmployedIncomes_Form1120_OwnershipPercent" } },
+            //        { "FM1084.X134", new List<string> { "Application_SelfEmployedIncomes_None_Year2_FormB" } },
+            //        { "FM1084.X50", new List<string> { "Application_SelfEmployedIncomes_None_Year2_FormA" } },
+            //        { "FM1084.X6", new List<string> { "Application_SelfEmployedIncomes_None_Year1_FormA" } },
+            //        { "FM1084.X96", new List<string> { "Application_SelfEmployedIncomes_None_Year1_FormB" } }
+            //    } } } } }
         };
 
         private static readonly HashSet<string> s_explicitDateTimeProperties = new HashSet<string> { "DisclosureTracking2015Log.ActualFulfillmentDate", "DisclosureTracking2015Log.ApplicationDate", "DisclosureTracking2015Log.BorrowerActualReceivedDate", "DisclosureTracking2015Log.BorrowerPresumedReceivedDate", "DisclosureTracking2015Log.CDDateIssued", "DisclosureTracking2015Log.ClosingDate", "DisclosureTracking2015Log.CoBorrowerActualReceivedDate", "DisclosureTracking2015Log.CoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.DisclosedDate", "DisclosureTracking2015Log.IntentToProceedDate", "DisclosureTracking2015Log.LockedBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedCoBorrowerPresumedReceivedDate", "DisclosureTracking2015Log.LockedDisclosedDateField", "DisclosureTracking2015Log.LockedDisclosedReceivedDate", "DisclosureTracking2015Log.PresumedFulfillmentDate", "DisclosureTracking2015Log.ReceivedDate", "DisclosureTracking2015Log.RevisedDueDate", "DisclosureTracking2015Log.ChangesReceivedDate" };
@@ -282,7 +282,7 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_ignoredEntities = new HashSet<string> { "EntityRefContract" };
 
-        private static readonly Dictionary<string, List<string>> s_mergeEntities = new Dictionary<string, List<string>> { { "NonBorrowingOwner", new List<string> { "NonBorrowingOwnerContract" } }, { "AlertChangeCircumstance", new List<string> { "AlertChangeCircumstanceContract" } }, { "OtherIncomeSource", new List<string> { "OtherIncomeSourceContract" } } };
+        private static readonly Dictionary<string, List<string>> s_mergeEntities = new Dictionary<string, List<string>> {  { "AlertChangeCircumstance", new List<string> { "AlertChangeCircumstanceContract" } }, { "OtherIncomeSource", new List<string> { "OtherIncomeSourceContract" } } };
 
         private static readonly string s_encompassSDKFolder = Path.Combine(Directory.EnumerateDirectories("C:\\SmartClientCache\\Apps\\UAC\\Ellie Mae\\").First(), "Encompass360");
 
@@ -310,24 +310,24 @@ namespace EncompassRest
                     entityTypes.Remove(ignoredEntity);
                 }
 
-                foreach (var pair in s_mergeEntities)
-                {
-                    var properties = entityTypes[pair.Key].Properties;
-                    foreach (var entityToMerge in pair.Value)
-                    {
-                        var entityTypeToMerge = entityTypes[entityToMerge];
-                        foreach (var p in entityTypeToMerge.Properties)
-                        {
-                            var name = p.Key;
-                            if (!properties.ContainsKey(name))
-                            {
-                                properties.Add(name, p.Value);
-                                Console.WriteLine($"Merged {entityToMerge}.{name} into {pair.Key}");
-                            }
-                        }
-                        entityTypes.Remove(entityToMerge);
-                    }
-                }
+                //foreach (var pair in s_mergeEntities)
+                //{
+                //    var properties = entityTypes[pair.Key].Properties;
+                //    foreach (var entityToMerge in pair.Value)
+                //    {
+                //        var entityTypeToMerge = entityTypes[entityToMerge];
+                //        foreach (var p in entityTypeToMerge.Properties)
+                //        {
+                //            var name = p.Key;
+                //            if (!properties.ContainsKey(name))
+                //            {
+                //                properties.Add(name, p.Value);
+                //                Console.WriteLine($"Merged {entityToMerge}.{name} into {pair.Key}");
+                //            }
+                //        }
+                //        entityTypes.Remove(entityToMerge);
+                //    }
+                //}
 
                 foreach (var pair in s_explicitSchemas)
                 {
@@ -458,7 +458,7 @@ namespace EncompassRest
                         {
                             Console.WriteLine($"{instanceFieldId} != {instanceFieldId2}");
                         }
-                        var description = instanceField.Description;
+                        var description = instanceField.Description??"";
                         description = description.Replace(" - 1", " - {0}");
                         virtualFieldInfo.Description = description;
                         virtualFieldPatterns.Add(virtualFieldInfo);

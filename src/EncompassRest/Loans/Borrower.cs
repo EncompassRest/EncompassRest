@@ -53,6 +53,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _borrowerIndex;
         private DirtyValue<StringEnumValue<BorrowerType>>? _borrowerType;
         private DirtyValue<StringEnumValue<BorrowerType>>? _borrowerTypeInSummary;
+        private DirtyValue<decimal?>? _bottomRatioPercent;
         private DirtyValue<string?>? _caivrsIdentifier;
         private DirtyValue<string?>? _cdDeliveryMethod;
         private DirtyValue<string?>? _citizenshipResidencyType;
@@ -142,6 +143,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _firstTimeHomeBuyer;
         private DirtyValue<DateTime?>? _foreclosureSatisfied;
         private DirtyValue<StringEnumValue<BankruptcyForeclosureStatus>>? _foreclosureStatus;
+        private DirtyValue<StringEnumValue<FeddieBorrowerAlienStatus>>? _freddieAlienStatus;
         private DirtyValue<string?>? _freddieMacPerson1;
         private DirtyValue<string?>? _freddieMacPerson2;
         private DirtyValue<string?>? _fullName;
@@ -151,7 +153,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _hmda2003OtherRaceNationalOriginDescription;
         private DirtyValue<StringEnumValue<Hmda2003RaceNationalOriginType>>? _hmda2003RaceNationalOriginType;
         private DirtyValue<StringEnumValue<HmdaCreditScoreForDecisionMaking>>? _hmda2CreditScoreForDecisionMaking;
-        private DirtyValue<StringEnumValue<HmdaCreditScoringModel>>? _hmda2CreditScoringModel;
+        private DirtyValue<StringEnumValue<Hmda2CreditScoringModel>>? _hmda2CreditScoringModel;
         private DirtyValue<bool?>? _hmdaAfricanAmericanIndicator;
         private DirtyValue<StringEnumValue<HmdaAge>>? _hmdaAge;
         private DirtyValue<bool?>? _hmdaAmericanIndianIndicator;
@@ -279,6 +281,11 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _outstandingJudgementsIndicator;
         private DirtyValue<string?>? _overtimeValidationMessage;
         private DirtyValue<bool?>? _ownershipConfirmationIndicator;
+        private DirtyValue<string?>? _ownershipEducationAgencyName;
+        private DirtyValue<DateTime?>? _ownershipEducationCompletionDate;
+        private DirtyValue<bool?>? _ownershipEducationConfirmationIndicator;
+        private DirtyValue<StringEnumValue<OwnershipEducationFormatType>>? _ownershipEducationFormatType;
+        private DirtyValue<string?>? _ownershipEducationPartyRoleIdentifier;
         private DirtyValue<StringEnumValue<OwnershipFormatType>>? _ownershipFormatType;
         private DirtyValue<string?>? _ownershipPartyRoleIdentifier;
         private DirtyValue<bool?>? _partyToLawsuitIndicator;
@@ -321,6 +328,56 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _relationshipWithRDEmployeeIndicator;
         private DirtyValue<bool?>? _reserveNationalGuardReserveActivated;
         private DirtyValue<bool?>? _retirementPensionIncomeAvailable;
+        private DirtyValue<DateTime?>? _rwtFannieVoe1Date;
+        private DirtyValue<string?>? _rwtFannieVoe1Description;
+        private DirtyValue<DateTime?>? _rwtFannieVoe2Date;
+        private DirtyValue<string?>? _rwtFannieVoe2Description;
+        private DirtyValue<string?>? _rwtFannieVoe2Message;
+        private DirtyValue<string?>? _rwtFannieVoe2Status;
+        private DirtyValue<DateTime?>? _rwtFannieVoe3Date;
+        private DirtyValue<string?>? _rwtFannieVoe3Description;
+        private DirtyValue<string?>? _rwtFannieVoe3Message;
+        private DirtyValue<string?>? _rwtFannieVoe3Status;
+        private DirtyValue<DateTime?>? _rwtFannieVoiBaseIncomeDate;
+        private DirtyValue<DateTime?>? _rwtFannieVoiBonusDate;
+        private DirtyValue<DateTime?>? _rwtFannieVoiCommissionDate;
+        private DirtyValue<DateTime?>? _rwtFannieVoiOvertimeDate;
+        private DirtyValue<DateTime?>? _rwtFannieVoiRetirementDate;
+        private DirtyValue<DateTime?>? _rwtFannieVoiSelfEmployedDate;
+        private DirtyValue<DateTime?>? _rwtFannieVoiSocialSecurityDate;
+        private DirtyValue<DateTime?>? _rwtFreddieVoe1Date;
+        private DirtyValue<string?>? _rwtFreddieVoe1Description;
+        private DirtyValue<string?>? _rwtFreddieVoe1Message;
+        private DirtyValue<string?>? _rwtFreddieVoe1Status;
+        private DirtyValue<DateTime?>? _rwtFreddieVoe2Date;
+        private DirtyValue<string?>? _rwtFreddieVoe2Description;
+        private DirtyValue<string?>? _rwtFreddieVoe2Message;
+        private DirtyValue<string?>? _rwtFreddieVoe2Status;
+        private DirtyValue<DateTime?>? _rwtFreddieVoe3Date;
+        private DirtyValue<string?>? _rwtFreddieVoe3Description;
+        private DirtyValue<string?>? _rwtFreddieVoe3Message;
+        private DirtyValue<string?>? _rwtFreddieVoe3Status;
+        private DirtyValue<DateTime?>? _rwtFreddieVoiChildSupportDate;
+        private DirtyValue<string?>? _rwtFreddieVoiChildSupportMessage;
+        private DirtyValue<string?>? _rwtFreddieVoiChildSupportStatus;
+        private DirtyValue<DateTime?>? _rwtFreddieVoiMilitaryDate;
+        private DirtyValue<string?>? _rwtFreddieVoiMilitaryMessage;
+        private DirtyValue<string?>? _rwtFreddieVoiMilitaryStatus;
+        private DirtyValue<DateTime?>? _rwtFreddieVoiPayrollDate;
+        private DirtyValue<string?>? _rwtFreddieVoiPayrollMessage;
+        private DirtyValue<string?>? _rwtFreddieVoiPayrollStatus;
+        private DirtyValue<DateTime?>? _rwtFreddieVoiPensionDate;
+        private DirtyValue<string?>? _rwtFreddieVoiPensionMessage;
+        private DirtyValue<string?>? _rwtFreddieVoiPensionStatus;
+        private DirtyValue<DateTime?>? _rwtFreddieVoiSelfEmployedDate;
+        private DirtyValue<string?>? _rwtFreddieVoiSelfEmployedMessage;
+        private DirtyValue<string?>? _rwtFreddieVoiSelfEmployedStatus;
+        private DirtyValue<DateTime?>? _rwtFreddieVoiSocialSecurityDate;
+        private DirtyValue<string?>? _rwtFreddieVoiSocialSecurityMessage;
+        private DirtyValue<string?>? _rwtFreddieVoiSocialSecurityStatus;
+        private DirtyValue<DateTime?>? _rwtFreddieVoiVaBenefitsDate;
+        private DirtyValue<string?>? _rwtFreddieVoiVaBenefitsMessage;
+        private DirtyValue<string?>? _rwtFreddieVoiVaBenefitsStatus;
         private DirtyValue<int?>? _schoolingTermYears;
         private DirtyValue<string?>? _sectionAExplanation;
         private DirtyValue<bool?>? _sectionAPrintExplanation;
@@ -354,11 +411,14 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _selfEmployedValidationMessage;
         private DirtyValue<bool?>? _specialBorrowerSellerRelationshipIndicator;
         private DirtyValue<bool?>? _spousalVABenefitsEligibilityIndicator;
+        private DirtyValue<bool?>? _sSA89ApplyForLoan;
         private DirtyValue<bool?>? _sSA89BackgroundCheckIndicator;
         private DirtyValue<bool?>? _sSA89BankingServiceIndicator;
         private DirtyValue<bool?>? _sSA89CreditCheckIndicator;
+        private DirtyValue<string?>? _sSA89DescriptionForOther;
         private DirtyValue<bool?>? _sSA89LicenseRequirementIndicator;
         private DirtyValue<bool?>? _sSA89MortgageServiceIndicator;
+        private DirtyValue<bool?>? _sSA89OpenRetirementAcct;
         private DirtyValue<bool?>? _sSA89OtherIndicator;
         private DirtyValue<string?>? _sSNValidationMessage;
         private DirtyValue<StringEnumValue<State>>? _state;
@@ -392,10 +452,12 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _tax4506TotalYearlyVarianceJointIncome4;
         private DirtyValue<string?>? _taxIdentificationIdentifier;
         private DirtyValue<string?>? _taxReturnValidationMessage;
+        private DirtyValue<decimal?>? _topRatioPercent;
         private DirtyValue<decimal?>? _totalAdditionalLiabilitiesAmount;
         private DirtyValue<decimal?>? _totalAdditionalOtherLiabilitiesAmount;
         private DirtyValue<decimal?>? _totalAnnualIncome;
         private DirtyValue<decimal?>? _totalAssets;
+        private DirtyValue<decimal?>? _totalGrossMonthlyIncomeAmount;
         private DirtyValue<decimal?>? _totalGrossMonthlySalary;
         private DirtyValue<decimal?>? _totalLiabilitiesAmount;
         private DirtyValue<decimal?>? _totalLiabilitiesBalanceAmount;
@@ -483,6 +545,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _vendor39;
         private DirtyValue<string?>? _vendor4;
         private DirtyValue<string?>? _vendor40;
+        private DirtyValue<string?>? _vendor41;
         private DirtyValue<string?>? _vendor5;
         private DirtyValue<string?>? _vendor6;
         private DirtyValue<string?>? _vendor7;
@@ -531,7 +594,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Adjusted Annual income for the household [USDA.X17]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public decimal? AdjustedAnnualIncome { get => _adjustedAnnualIncome; set => SetField(ref _adjustedAnnualIncome, value); }
 
         /// <summary>
@@ -557,7 +619,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// USDA - Annual income for the household [USDA.X16]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public decimal? AnnualIncome { get => _annualIncome; set => SetField(ref _annualIncome, value); }
 
         /// <summary>
@@ -577,12 +638,12 @@ namespace EncompassRest.Loans
         public decimal? AssetIncome { get => _assetIncome; set => SetField(ref _assetIncome, value); }
 
         /// <summary>
-        /// Borrower AssetRepAndWarrantyMessage [MORNET.X100], [MORNET.X114]
+        /// Fannie Mae - Coborrower - Asset Validation Message [MORNET.X114]
         /// </summary>
         public string? AssetRepAndWarrantyMessage { get => _assetRepAndWarrantyMessage; set => SetField(ref _assetRepAndWarrantyMessage, value); }
 
         /// <summary>
-        /// Borrower AssetRepAndWarrantyReliefAvailable [MORNET.X103], [MORNET.X117]
+        /// Fannie Mae - Coborrower - Asset Validation [MORNET.X117]
         /// </summary>
         public bool? AssetRepAndWarrantyReliefAvailable { get => _assetRepAndWarrantyReliefAvailable; set => SetField(ref _assetRepAndWarrantyReliefAvailable, value); }
 
@@ -712,6 +773,12 @@ namespace EncompassRest.Loans
         /// Borrower BorrowerTypeInSummary [4008], [4009]
         /// </summary>
         public StringEnumValue<BorrowerType> BorrowerTypeInSummary { get => _borrowerTypeInSummary; set => SetField(ref _borrowerTypeInSummary, value); }
+
+        /// <summary>
+        /// Fannie Mae Bottom Ratio [MORNET.X159]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
+        public decimal? BottomRatioPercent { get => _bottomRatioPercent; set => SetField(ref _bottomRatioPercent, value); }
 
         /// <summary>
         /// Borrower CaivrsIdentifier [1018], [1144]
@@ -1162,6 +1229,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<BankruptcyForeclosureStatus> ForeclosureStatus { get => _foreclosureStatus; set => SetField(ref _foreclosureStatus, value); }
 
         /// <summary>
+        /// Borrower FreddieAlienStatus [4709], [4710]
+        /// </summary>
+        public StringEnumValue<FeddieBorrowerAlienStatus> FreddieAlienStatus { get => _freddieAlienStatus; set => SetField(ref _freddieAlienStatus, value); }
+
+        /// <summary>
         /// Borrower FreddieMacPerson1 [CASASRN.X170], [CASASRN.X180]
         /// </summary>
         public string? FreddieMacPerson1 { get => _freddieMacPerson1; set => SetField(ref _freddieMacPerson1, value); }
@@ -1210,7 +1282,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower Hmda2CreditScoringModel [HMDA.X117], [HMDA.X119]
         /// </summary>
-        public StringEnumValue<HmdaCreditScoringModel> Hmda2CreditScoringModel { get => _hmda2CreditScoringModel; set => SetField(ref _hmda2CreditScoringModel, value); }
+        public StringEnumValue<Hmda2CreditScoringModel> Hmda2CreditScoringModel { get => _hmda2CreditScoringModel; set => SetField(ref _hmda2CreditScoringModel, value); }
 
         /// <summary>
         /// Borrower HmdaAfricanAmericanIndicator [1526], [1534]
@@ -1264,7 +1336,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Borrower HmdaCreditScoringModel [4175], [4178]
         /// </summary>
-        [LoanFieldProperty(MissingOptionsJson = "[\"Exempt\"]")]
         public StringEnumValue<HmdaCreditScoringModel> HmdaCreditScoringModel { get => _hmdaCreditScoringModel; set => SetField(ref _hmdaCreditScoringModel, value); }
 
         /// <summary>
@@ -1543,7 +1614,7 @@ namespace EncompassRest.Loans
         public bool? HomeownerPastThreeYearsIndicator { get => _homeownerPastThreeYearsIndicator; set => SetField(ref _homeownerPastThreeYearsIndicator, value); }
 
         /// <summary>
-        /// Borrower HomePhoneNumber
+        /// Borrower HomePhoneNumber [66], [98]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string? HomePhoneNumber { get => _homePhoneNumber; set => SetField(ref _homePhoneNumber, value); }
@@ -1885,6 +1956,31 @@ namespace EncompassRest.Loans
         public bool? OwnershipConfirmationIndicator { get => _ownershipConfirmationIndicator; set => SetField(ref _ownershipConfirmationIndicator, value); }
 
         /// <summary>
+        /// Borrower OwnershipEducationAgencyName [URLA.X305], [URLA.X306]
+        /// </summary>
+        public string? OwnershipEducationAgencyName { get => _ownershipEducationAgencyName; set => SetField(ref _ownershipEducationAgencyName, value); }
+
+        /// <summary>
+        /// Borrower OwnershipEducationCompletionDate [URLA.X307], [URLA.X308]
+        /// </summary>
+        public DateTime? OwnershipEducationCompletionDate { get => _ownershipEducationCompletionDate; set => SetField(ref _ownershipEducationCompletionDate, value); }
+
+        /// <summary>
+        /// Borrower OwnershipEducationConfirmationIndicator [URLA.X299], [URLA.X300]
+        /// </summary>
+        public bool? OwnershipEducationConfirmationIndicator { get => _ownershipEducationConfirmationIndicator; set => SetField(ref _ownershipEducationConfirmationIndicator, value); }
+
+        /// <summary>
+        /// Borrower OwnershipEducationFormatType [URLA.X301], [URLA.X302]
+        /// </summary>
+        public StringEnumValue<OwnershipEducationFormatType> OwnershipEducationFormatType { get => _ownershipEducationFormatType; set => SetField(ref _ownershipEducationFormatType, value); }
+
+        /// <summary>
+        /// Borrower OwnershipEducationPartyRoleIdentifier [URLA.X303], [URLA.X304]
+        /// </summary>
+        public string? OwnershipEducationPartyRoleIdentifier { get => _ownershipEducationPartyRoleIdentifier; set => SetField(ref _ownershipEducationPartyRoleIdentifier, value); }
+
+        /// <summary>
         /// Borrower OwnershipFormatType [URLA.X154], [URLA.X160]
         /// </summary>
         public StringEnumValue<OwnershipFormatType> OwnershipFormatType { get => _ownershipFormatType; set => SetField(ref _ownershipFormatType, value); }
@@ -1968,7 +2064,7 @@ namespace EncompassRest.Loans
         public bool? PIWAccepted { get => _pIWAccepted; set => SetField(ref _pIWAccepted, value); }
 
         /// <summary>
-        /// Borrower PIWMessage [MORNET.X97], [MORNET.X111]
+        /// Fannie Mae - Coborrower - PIW Message [MORNET.X111]
         /// </summary>
         public string? PIWMessage { get => _pIWMessage; set => SetField(ref _pIWMessage, value); }
 
@@ -2102,147 +2198,417 @@ namespace EncompassRest.Loans
         public bool? RetirementPensionIncomeAvailable { get => _retirementPensionIncomeAvailable; set => SetField(ref _retirementPensionIncomeAvailable, value); }
 
         /// <summary>
+        /// Borrower RwtFannieVoe1Date [TQL.X147], [TQL.X197]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFannieVoe1Date { get => _rwtFannieVoe1Date; set => SetField(ref _rwtFannieVoe1Date, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoe1Description [TQL.X142], [TQL.X192]
+        /// </summary>
+        public string? RwtFannieVoe1Description { get => _rwtFannieVoe1Description; set => SetField(ref _rwtFannieVoe1Description, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoe2Date [TQL.X148], [TQL.X198]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFannieVoe2Date { get => _rwtFannieVoe2Date; set => SetField(ref _rwtFannieVoe2Date, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoe2Description [TQL.X143], [TQL.X193]
+        /// </summary>
+        public string? RwtFannieVoe2Description { get => _rwtFannieVoe2Description; set => SetField(ref _rwtFannieVoe2Description, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoe2Message [TQL.X150], [TQL.X200]
+        /// </summary>
+        public string? RwtFannieVoe2Message { get => _rwtFannieVoe2Message; set => SetField(ref _rwtFannieVoe2Message, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoe2Status [TQL.X145], [TQL.X195]
+        /// </summary>
+        public string? RwtFannieVoe2Status { get => _rwtFannieVoe2Status; set => SetField(ref _rwtFannieVoe2Status, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoe3Date [TQL.X149], [TQL.X199]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFannieVoe3Date { get => _rwtFannieVoe3Date; set => SetField(ref _rwtFannieVoe3Date, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoe3Description [TQL.X144], [TQL.X194]
+        /// </summary>
+        public string? RwtFannieVoe3Description { get => _rwtFannieVoe3Description; set => SetField(ref _rwtFannieVoe3Description, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoe3Message [TQL.X151], [TQL.X201]
+        /// </summary>
+        public string? RwtFannieVoe3Message { get => _rwtFannieVoe3Message; set => SetField(ref _rwtFannieVoe3Message, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoe3Status [TQL.X146], [TQL.X196]
+        /// </summary>
+        public string? RwtFannieVoe3Status { get => _rwtFannieVoe3Status; set => SetField(ref _rwtFannieVoe3Status, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoiBaseIncomeDate [TQL.X164], [TQL.X214]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFannieVoiBaseIncomeDate { get => _rwtFannieVoiBaseIncomeDate; set => SetField(ref _rwtFannieVoiBaseIncomeDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoiBonusDate [TQL.X165], [TQL.X215]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFannieVoiBonusDate { get => _rwtFannieVoiBonusDate; set => SetField(ref _rwtFannieVoiBonusDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoiCommissionDate [TQL.X167], [TQL.X217]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFannieVoiCommissionDate { get => _rwtFannieVoiCommissionDate; set => SetField(ref _rwtFannieVoiCommissionDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoiOvertimeDate [TQL.X166], [TQL.X216]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFannieVoiOvertimeDate { get => _rwtFannieVoiOvertimeDate; set => SetField(ref _rwtFannieVoiOvertimeDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoiRetirementDate [TQL.X169], [TQL.X219]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFannieVoiRetirementDate { get => _rwtFannieVoiRetirementDate; set => SetField(ref _rwtFannieVoiRetirementDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoiSelfEmployedDate [TQL.X170], [TQL.X220]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFannieVoiSelfEmployedDate { get => _rwtFannieVoiSelfEmployedDate; set => SetField(ref _rwtFannieVoiSelfEmployedDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFannieVoiSocialSecurityDate [TQL.X168], [TQL.X218]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFannieVoiSocialSecurityDate { get => _rwtFannieVoiSocialSecurityDate; set => SetField(ref _rwtFannieVoiSocialSecurityDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe1Date [TQL.X158], [TQL.X208]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFreddieVoe1Date { get => _rwtFreddieVoe1Date; set => SetField(ref _rwtFreddieVoe1Date, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe1Description [TQL.X152], [TQL.X202]
+        /// </summary>
+        public string? RwtFreddieVoe1Description { get => _rwtFreddieVoe1Description; set => SetField(ref _rwtFreddieVoe1Description, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe1Message [TQL.X161], [TQL.X211]
+        /// </summary>
+        public string? RwtFreddieVoe1Message { get => _rwtFreddieVoe1Message; set => SetField(ref _rwtFreddieVoe1Message, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe1Status [TQL.X155], [TQL.X205]
+        /// </summary>
+        public string? RwtFreddieVoe1Status { get => _rwtFreddieVoe1Status; set => SetField(ref _rwtFreddieVoe1Status, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe2Date [TQL.X159], [TQL.X209]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFreddieVoe2Date { get => _rwtFreddieVoe2Date; set => SetField(ref _rwtFreddieVoe2Date, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe2Description [TQL.X153], [TQL.X203]
+        /// </summary>
+        public string? RwtFreddieVoe2Description { get => _rwtFreddieVoe2Description; set => SetField(ref _rwtFreddieVoe2Description, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe2Message [TQL.X162], [TQL.X212]
+        /// </summary>
+        public string? RwtFreddieVoe2Message { get => _rwtFreddieVoe2Message; set => SetField(ref _rwtFreddieVoe2Message, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe2Status [TQL.X156], [TQL.X206]
+        /// </summary>
+        public string? RwtFreddieVoe2Status { get => _rwtFreddieVoe2Status; set => SetField(ref _rwtFreddieVoe2Status, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe3Date [TQL.X160], [TQL.X210]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFreddieVoe3Date { get => _rwtFreddieVoe3Date; set => SetField(ref _rwtFreddieVoe3Date, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe3Description [TQL.X154], [TQL.X204]
+        /// </summary>
+        public string? RwtFreddieVoe3Description { get => _rwtFreddieVoe3Description; set => SetField(ref _rwtFreddieVoe3Description, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe3Message [TQL.X163], [TQL.X213]
+        /// </summary>
+        public string? RwtFreddieVoe3Message { get => _rwtFreddieVoe3Message; set => SetField(ref _rwtFreddieVoe3Message, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoe3Status [TQL.X157], [TQL.X207]
+        /// </summary>
+        public string? RwtFreddieVoe3Status { get => _rwtFreddieVoe3Status; set => SetField(ref _rwtFreddieVoe3Status, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiChildSupportDate [TQL.X183], [TQL.X233]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFreddieVoiChildSupportDate { get => _rwtFreddieVoiChildSupportDate; set => SetField(ref _rwtFreddieVoiChildSupportDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiChildSupportMessage [TQL.X190], [TQL.X240]
+        /// </summary>
+        public string? RwtFreddieVoiChildSupportMessage { get => _rwtFreddieVoiChildSupportMessage; set => SetField(ref _rwtFreddieVoiChildSupportMessage, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiChildSupportStatus [TQL.X176], [TQL.X226]
+        /// </summary>
+        public string? RwtFreddieVoiChildSupportStatus { get => _rwtFreddieVoiChildSupportStatus; set => SetField(ref _rwtFreddieVoiChildSupportStatus, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiMilitaryDate [TQL.X182], [TQL.X232]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFreddieVoiMilitaryDate { get => _rwtFreddieVoiMilitaryDate; set => SetField(ref _rwtFreddieVoiMilitaryDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiMilitaryMessage [TQL.X189], [TQL.X239]
+        /// </summary>
+        public string? RwtFreddieVoiMilitaryMessage { get => _rwtFreddieVoiMilitaryMessage; set => SetField(ref _rwtFreddieVoiMilitaryMessage, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiMilitaryStatus [TQL.X175], [TQL.X225]
+        /// </summary>
+        public string? RwtFreddieVoiMilitaryStatus { get => _rwtFreddieVoiMilitaryStatus; set => SetField(ref _rwtFreddieVoiMilitaryStatus, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiPayrollDate [TQL.X178], [TQL.X228]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFreddieVoiPayrollDate { get => _rwtFreddieVoiPayrollDate; set => SetField(ref _rwtFreddieVoiPayrollDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiPayrollMessage [TQL.X185], [TQL.X235]
+        /// </summary>
+        public string? RwtFreddieVoiPayrollMessage { get => _rwtFreddieVoiPayrollMessage; set => SetField(ref _rwtFreddieVoiPayrollMessage, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiPayrollStatus [TQL.X171], [TQL.X221]
+        /// </summary>
+        public string? RwtFreddieVoiPayrollStatus { get => _rwtFreddieVoiPayrollStatus; set => SetField(ref _rwtFreddieVoiPayrollStatus, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiPensionDate [TQL.X179], [TQL.X229]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFreddieVoiPensionDate { get => _rwtFreddieVoiPensionDate; set => SetField(ref _rwtFreddieVoiPensionDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiPensionMessage [TQL.X186], [TQL.X236]
+        /// </summary>
+        public string? RwtFreddieVoiPensionMessage { get => _rwtFreddieVoiPensionMessage; set => SetField(ref _rwtFreddieVoiPensionMessage, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiPensionStatus [TQL.X172], [TQL.X222]
+        /// </summary>
+        public string? RwtFreddieVoiPensionStatus { get => _rwtFreddieVoiPensionStatus; set => SetField(ref _rwtFreddieVoiPensionStatus, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiSelfEmployedDate [TQL.X184], [TQL.X234]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFreddieVoiSelfEmployedDate { get => _rwtFreddieVoiSelfEmployedDate; set => SetField(ref _rwtFreddieVoiSelfEmployedDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiSelfEmployedMessage [TQL.X191], [TQL.X241]
+        /// </summary>
+        public string? RwtFreddieVoiSelfEmployedMessage { get => _rwtFreddieVoiSelfEmployedMessage; set => SetField(ref _rwtFreddieVoiSelfEmployedMessage, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiSelfEmployedStatus [TQL.X177], [TQL.X227]
+        /// </summary>
+        public string? RwtFreddieVoiSelfEmployedStatus { get => _rwtFreddieVoiSelfEmployedStatus; set => SetField(ref _rwtFreddieVoiSelfEmployedStatus, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiSocialSecurityDate [TQL.X180], [TQL.X230]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFreddieVoiSocialSecurityDate { get => _rwtFreddieVoiSocialSecurityDate; set => SetField(ref _rwtFreddieVoiSocialSecurityDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiSocialSecurityMessage [TQL.X187], [TQL.X237]
+        /// </summary>
+        public string? RwtFreddieVoiSocialSecurityMessage { get => _rwtFreddieVoiSocialSecurityMessage; set => SetField(ref _rwtFreddieVoiSocialSecurityMessage, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiSocialSecurityStatus [TQL.X173], [TQL.X223]
+        /// </summary>
+        public string? RwtFreddieVoiSocialSecurityStatus { get => _rwtFreddieVoiSocialSecurityStatus; set => SetField(ref _rwtFreddieVoiSocialSecurityStatus, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiVaBenefitsDate [TQL.X181], [TQL.X231]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        public DateTime? RwtFreddieVoiVaBenefitsDate { get => _rwtFreddieVoiVaBenefitsDate; set => SetField(ref _rwtFreddieVoiVaBenefitsDate, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiVaBenefitsMessage [TQL.X188], [TQL.X238]
+        /// </summary>
+        public string? RwtFreddieVoiVaBenefitsMessage { get => _rwtFreddieVoiVaBenefitsMessage; set => SetField(ref _rwtFreddieVoiVaBenefitsMessage, value); }
+
+        /// <summary>
+        /// Borrower RwtFreddieVoiVaBenefitsStatus [TQL.X174], [TQL.X224]
+        /// </summary>
+        public string? RwtFreddieVoiVaBenefitsStatus { get => _rwtFreddieVoiVaBenefitsStatus; set => SetField(ref _rwtFreddieVoiVaBenefitsStatus, value); }
+
+        /// <summary>
         /// Borrower SchoolingTermYears [39], [71]
         /// </summary>
         public int? SchoolingTermYears { get => _schoolingTermYears; set => SetField(ref _schoolingTermYears, value); }
 
         /// <summary>
-        /// Declarations Section A Occupancy Explanation [URLA.X216]
+        /// Borrower SectionAExplanation [URLA.X216], [URLA.X271]
         /// </summary>
         public string? SectionAExplanation { get => _sectionAExplanation; set => SetField(ref _sectionAExplanation, value); }
 
         /// <summary>
-        /// Print Section A explanation - Borrower [URLA.X247]
+        /// Borrower SectionAPrintExplanation [URLA.X247], [URLA.X285]
         /// </summary>
         public bool? SectionAPrintExplanation { get => _sectionAPrintExplanation; set => SetField(ref _sectionAPrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section B Explanation [URLA.X217]
+        /// Borrower SectionBExplanation [URLA.X217], [URLA.X272]
         /// </summary>
         public string? SectionBExplanation { get => _sectionBExplanation; set => SetField(ref _sectionBExplanation, value); }
 
         /// <summary>
-        /// Print Section B explanation - Borrower [URLA.X248]
+        /// Borrower SectionBPrintExplanation [URLA.X248], [URLA.X286]
         /// </summary>
         public bool? SectionBPrintExplanation { get => _sectionBPrintExplanation; set => SetField(ref _sectionBPrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section C Explanation [URLA.X218]
+        /// Borrower SectionCExplanation [URLA.X218], [URLA.X273]
         /// </summary>
         public string? SectionCExplanation { get => _sectionCExplanation; set => SetField(ref _sectionCExplanation, value); }
 
         /// <summary>
-        /// Print Section C explanation - Borrower [URLA.X249]
+        /// Borrower SectionCPrintExplanation [URLA.X249], [URLA.X287]
         /// </summary>
         public bool? SectionCPrintExplanation { get => _sectionCPrintExplanation; set => SetField(ref _sectionCPrintExplanation, value); }
 
         /// <summary>
-        /// Print Section D1 explanation - Borrower [URLA.X250]
+        /// Borrower SectionD1PrintExplanation [URLA.X250], [URLA.X288]
         /// </summary>
         public bool? SectionD1PrintExplanation { get => _sectionD1PrintExplanation; set => SetField(ref _sectionD1PrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section D2 Explanation [URLA.X235]
+        /// Borrower SectionD2Explanation [URLA.X235], [URLA.X275]
         /// </summary>
         public string? SectionD2Explanation { get => _sectionD2Explanation; set => SetField(ref _sectionD2Explanation, value); }
 
         /// <summary>
-        /// Print Section D2 explanation - Borrower [URLA.X251]
+        /// Borrower SectionD2PrintExplanation [URLA.X251], [URLA.X289]
         /// </summary>
         public bool? SectionD2PrintExplanation { get => _sectionD2PrintExplanation; set => SetField(ref _sectionD2PrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section D Explanation [URLA.X219]
+        /// Borrower SectionDExplanation [URLA.X219], [URLA.X274]
         /// </summary>
         public string? SectionDExplanation { get => _sectionDExplanation; set => SetField(ref _sectionDExplanation, value); }
 
         /// <summary>
-        /// Declarations Section E Explanation [URLA.X220]
+        /// Borrower SectionEExplanation [URLA.X220], [URLA.X276]
         /// </summary>
         public string? SectionEExplanation { get => _sectionEExplanation; set => SetField(ref _sectionEExplanation, value); }
 
         /// <summary>
-        /// Print Section E explanation - Borrower [URLA.X252]
+        /// Borrower SectionEPrintExplanation [URLA.X252], [URLA.X290]
         /// </summary>
         public bool? SectionEPrintExplanation { get => _sectionEPrintExplanation; set => SetField(ref _sectionEPrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section F Explanation [URLA.X221]
+        /// Borrower SectionFExplanation [URLA.X221], [URLA.X277]
         /// </summary>
         public string? SectionFExplanation { get => _sectionFExplanation; set => SetField(ref _sectionFExplanation, value); }
 
         /// <summary>
-        /// Print Section F explanation - Borrower [URLA.X253]
+        /// Borrower SectionFPrintExplanation [URLA.X253], [URLA.X291]
         /// </summary>
         public bool? SectionFPrintExplanation { get => _sectionFPrintExplanation; set => SetField(ref _sectionFPrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section G Explanation [URLA.X222]
+        /// Borrower SectionGExplanation [URLA.X222], [URLA.X278]
         /// </summary>
         public string? SectionGExplanation { get => _sectionGExplanation; set => SetField(ref _sectionGExplanation, value); }
 
         /// <summary>
-        /// Print Section G explanation - Borrower [URLA.X254]
+        /// Borrower SectionGPrintExplanation [URLA.X254], [URLA.X292]
         /// </summary>
         public bool? SectionGPrintExplanation { get => _sectionGPrintExplanation; set => SetField(ref _sectionGPrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section H Explanation [URLA.X223]
+        /// Borrower SectionHExplanation [URLA.X223], [URLA.X279]
         /// </summary>
         public string? SectionHExplanation { get => _sectionHExplanation; set => SetField(ref _sectionHExplanation, value); }
 
         /// <summary>
-        /// Print Section H explanation - Borrower [URLA.X255]
+        /// Borrower SectionHPrintExplanation [URLA.X255], [URLA.X293]
         /// </summary>
         public bool? SectionHPrintExplanation { get => _sectionHPrintExplanation; set => SetField(ref _sectionHPrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section I Explanation [URLA.X224]
+        /// Borrower SectionIExplanation [URLA.X224], [URLA.X280]
         /// </summary>
         public string? SectionIExplanation { get => _sectionIExplanation; set => SetField(ref _sectionIExplanation, value); }
 
         /// <summary>
-        /// Print Section I explanation - Borrower [URLA.X256]
+        /// Borrower SectionIPrintExplanation [URLA.X256], [URLA.X294]
         /// </summary>
         public bool? SectionIPrintExplanation { get => _sectionIPrintExplanation; set => SetField(ref _sectionIPrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section J Explanation [URLA.X225]
+        /// Borrower SectionJExplanation [URLA.X225], [URLA.X281]
         /// </summary>
         public string? SectionJExplanation { get => _sectionJExplanation; set => SetField(ref _sectionJExplanation, value); }
 
         /// <summary>
-        /// Print Section J explanation - Borrower [URLA.X257]
+        /// Borrower SectionJPrintExplanation [URLA.X257], [URLA.X295]
         /// </summary>
         public bool? SectionJPrintExplanation { get => _sectionJPrintExplanation; set => SetField(ref _sectionJPrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section K Explanation [URLA.X226]
+        /// Borrower SectionKExplanation [URLA.X226], [URLA.X282]
         /// </summary>
         public string? SectionKExplanation { get => _sectionKExplanation; set => SetField(ref _sectionKExplanation, value); }
 
         /// <summary>
-        /// Print Section K explanation - Borrower [URLA.X258]
+        /// Borrower SectionKPrintExplanation [URLA.X258], [URLA.X296]
         /// </summary>
         public bool? SectionKPrintExplanation { get => _sectionKPrintExplanation; set => SetField(ref _sectionKPrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section L Explanation [URLA.X227]
+        /// Borrower SectionLExplanation [URLA.X227], [URLA.X283]
         /// </summary>
         public string? SectionLExplanation { get => _sectionLExplanation; set => SetField(ref _sectionLExplanation, value); }
 
         /// <summary>
-        /// Print Section L explanation - Borrower [URLA.X259]
+        /// Borrower SectionLPrintExplanation [URLA.X259], [URLA.X297]
         /// </summary>
         public bool? SectionLPrintExplanation { get => _sectionLPrintExplanation; set => SetField(ref _sectionLPrintExplanation, value); }
 
         /// <summary>
-        /// Declarations Section M Explanation [URLA.X228]
+        /// Borrower SectionMExplanation [URLA.X228], [URLA.X284]
         /// </summary>
         public string? SectionMExplanation { get => _sectionMExplanation; set => SetField(ref _sectionMExplanation, value); }
 
         /// <summary>
-        /// Print Section M explanation - Borrower [URLA.X260]
+        /// Borrower SectionMPrintExplanation [URLA.X260], [URLA.X298]
         /// </summary>
         public bool? SectionMPrintExplanation { get => _sectionMPrintExplanation; set => SetField(ref _sectionMPrintExplanation, value); }
 
@@ -2268,6 +2634,11 @@ namespace EncompassRest.Loans
         public bool? SpousalVABenefitsEligibilityIndicator { get => _spousalVABenefitsEligibilityIndicator; set => SetField(ref _spousalVABenefitsEligibilityIndicator, value); }
 
         /// <summary>
+        /// Borrower SSA89ApplyForLoan [4717], [4718]
+        /// </summary>
+        public bool? SSA89ApplyForLoan { get => _sSA89ApplyForLoan; set => SetField(ref _sSA89ApplyForLoan, value); }
+
+        /// <summary>
         /// Borrower SSA89BackgroundCheckIndicator [3862], [3868]
         /// </summary>
         public bool? SSA89BackgroundCheckIndicator { get => _sSA89BackgroundCheckIndicator; set => SetField(ref _sSA89BackgroundCheckIndicator, value); }
@@ -2283,6 +2654,11 @@ namespace EncompassRest.Loans
         public bool? SSA89CreditCheckIndicator { get => _sSA89CreditCheckIndicator; set => SetField(ref _sSA89CreditCheckIndicator, value); }
 
         /// <summary>
+        /// Borrower SSA89DescriptionForOther [4719], [4720]
+        /// </summary>
+        public string? SSA89DescriptionForOther { get => _sSA89DescriptionForOther; set => SetField(ref _sSA89DescriptionForOther, value); }
+
+        /// <summary>
         /// Borrower SSA89LicenseRequirementIndicator [3863], [3869]
         /// </summary>
         public bool? SSA89LicenseRequirementIndicator { get => _sSA89LicenseRequirementIndicator; set => SetField(ref _sSA89LicenseRequirementIndicator, value); }
@@ -2291,6 +2667,11 @@ namespace EncompassRest.Loans
         /// Borrower SSA89MortgageServiceIndicator [3860], [3866]
         /// </summary>
         public bool? SSA89MortgageServiceIndicator { get => _sSA89MortgageServiceIndicator; set => SetField(ref _sSA89MortgageServiceIndicator, value); }
+
+        /// <summary>
+        /// Borrower SSA89OpenRetirementAcct [4715], [4716]
+        /// </summary>
+        public bool? SSA89OpenRetirementAcct { get => _sSA89OpenRetirementAcct; set => SetField(ref _sSA89OpenRetirementAcct, value); }
 
         /// <summary>
         /// Borrower SSA89OtherIndicator [3865], [3871]
@@ -2310,7 +2691,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Assets Subtotal Liquid Assets [915]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public decimal? SubtotalLiquidAssetsMinusGiftAmount { get => _subtotalLiquidAssetsMinusGiftAmount; set => SetField(ref _subtotalLiquidAssetsMinusGiftAmount, value); }
 
         /// <summary>
@@ -2460,6 +2840,12 @@ namespace EncompassRest.Loans
         public string? TaxReturnValidationMessage { get => _taxReturnValidationMessage; set => SetField(ref _taxReturnValidationMessage, value); }
 
         /// <summary>
+        /// Fannie Mae Top Ratio [MORNET.X158]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
+        public decimal? TopRatioPercent { get => _topRatioPercent; set => SetField(ref _topRatioPercent, value); }
+
+        /// <summary>
         /// Total Additional Liabilities Amount [URLA.X61]
         /// </summary>
         public decimal? TotalAdditionalLiabilitiesAmount { get => _totalAdditionalLiabilitiesAmount; set => SetField(ref _totalAdditionalLiabilitiesAmount, value); }
@@ -2478,6 +2864,12 @@ namespace EncompassRest.Loans
         /// Borrower TotalAssets [URLA.X55], [URLA.X56]
         /// </summary>
         public decimal? TotalAssets { get => _totalAssets; set => SetField(ref _totalAssets, value); }
+
+        /// <summary>
+        /// Income Total Mo Income (Borr/Co-Borr) [MORNET.X160]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public decimal? TotalGrossMonthlyIncomeAmount { get => _totalGrossMonthlyIncomeAmount; set => SetField(ref _totalGrossMonthlyIncomeAmount, value); }
 
         /// <summary>
         /// Borrower TotalGrossMonthlySalary [CORRESPONDENT.X47], [CORRESPONDENT.X48]
@@ -2698,12 +3090,12 @@ namespace EncompassRest.Loans
         public int? ValidDaysForConsentCount { get => _validDaysForConsentCount; set => SetField(ref _validDaysForConsentCount, value); }
 
         /// <summary>
-        /// Borrower ValueRepAndWarrantyAvailable [MORNET.X102], [MORNET.X116]
+        /// Fannie Mae - Coborrower - Value Rep and Warranty [MORNET.X116]
         /// </summary>
         public bool? ValueRepAndWarrantyAvailable { get => _valueRepAndWarrantyAvailable; set => SetField(ref _valueRepAndWarrantyAvailable, value); }
 
         /// <summary>
-        /// Borrower ValueRepAndWarrantyMessage [MORNET.X98], [MORNET.X112]
+        /// Fannie Mae - Coborrower - Value Rep and Warranty Message [MORNET.X112]
         /// </summary>
         public string? ValueRepAndWarrantyMessage { get => _valueRepAndWarrantyMessage; set => SetField(ref _valueRepAndWarrantyMessage, value); }
 
@@ -2919,6 +3311,11 @@ namespace EncompassRest.Loans
         /// Borrower Vendor40 [GSEVENDOR.X45], [GSEVENDOR.X46]
         /// </summary>
         public string? Vendor40 { get => _vendor40; set => SetField(ref _vendor40, value); }
+
+        /// <summary>
+        /// GSE Vendor Provider Data - Day 1 Certainty provider Experian (Bor, CoBor) [GSEVENDOR.X59]
+        /// </summary>
+        public string? Vendor41 { get => _vendor41; set => SetField(ref _vendor41, value); }
 
         /// <summary>
         /// Borrower Vendor5 [GSEVENDOR.X10], [GSEVENDOR.X11]

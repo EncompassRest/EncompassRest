@@ -65,6 +65,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _rationsAllowance;
         private DirtyValue<bool?>? _seasonalIncome;
         private DirtyValue<bool?>? _selfEmployedIndicator;
+        private DirtyValue<string?>? _sourceOfIncomeData;
         private DirtyValue<bool?>? _specialEmployerRelationshipIndicator;
         private DirtyValue<DateTime?>? _startDate;
         private DirtyValue<int?>? _timeInLineOfWorkMonths;
@@ -369,6 +370,11 @@ namespace EncompassRest.Loans
         /// Employment SelfEmployedIndicator
         /// </summary>
         public bool? SelfEmployedIndicator { get => _selfEmployedIndicator; set => SetField(ref _selfEmployedIndicator, value); }
+
+        /// <summary>
+        /// Employment SourceOfIncomeData [BENN81], [CENN81]
+        /// </summary>
+        public string? SourceOfIncomeData { get => _sourceOfIncomeData; set => SetField(ref _sourceOfIncomeData, value); }
 
         /// <summary>
         /// Employment SpecialEmployerRelationshipIndicator [BENN54], [CENN54]

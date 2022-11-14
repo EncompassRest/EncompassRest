@@ -26,6 +26,8 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _correspondentAssignmentID;
         private DirtyValue<string?>? _county;
         private DirtyValue<StringEnumValue<CreditReportCompany>>? _creditReportCompany;
+        private DirtyValue<int?>? _deedRestrictionTermInMonth;
+        private DirtyValue<bool?>? _energyImprovementIndicator;
         private DirtyValue<decimal?>? _financingConcessions;
         private DirtyValue<string?>? _freddieFiel11;
         private DirtyValue<string?>? _freddieFiel12;
@@ -35,9 +37,14 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _freddieField3;
         private DirtyValue<string?>? _freddieField7;
         private DirtyValue<string?>? _freddieMacAppraisalHybrid;
+        private DirtyValue<StringEnumValue<FreddieMacChoiceOfferingType>>? _freddieMacChoiceOfferingType;
+        private DirtyValue<bool?>? _freddieMacCommunityLandTrustIndicator;
+        private DirtyValue<StringEnumValue<FreddieMacIncomeBasedDeedRestrictions>>? _freddieMacIncomeBasedDeedRestrictions;
+        private DirtyValue<StringEnumValue<FreddieMacOfferingIdentifier>>? _freddieMacOfferingIdentifier;
         private DirtyValue<string?>? _freddieMacOwnedMessage;
         private DirtyValue<string?>? _hELOCActualBalance;
         private DirtyValue<string?>? _hELOCCreditLimit;
+        private DirtyValue<bool?>? _homeOne;
         private DirtyValue<string?>? _id;
         private DirtyValue<string?>? _lenderAltPhone;
         private DirtyValue<string?>? _lenderRegistration;
@@ -70,6 +77,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<ProcessingPoint>>? _processingPoint;
         private DirtyValue<StringEnumValue<FreddieMacPropertyType>>? _propertyType;
         private DirtyValue<StringEnumValue<FreddieMacPurposeOfLoan>>? _purposeOfLoan;
+        private DirtyValue<StringEnumValue<RenewableEnergyComponentType>>? _renewableEnergyComponentType;
         private DirtyValue<StringEnumValue<RenewalOption>>? _renewalOption;
         private DirtyValue<StringEnumValue<RenewalType>>? _renewalType;
         private DirtyValue<StringEnumValue<RequiredDocumentType>>? _requiredDocumentType;
@@ -190,6 +198,16 @@ namespace EncompassRest.Loans
         public StringEnumValue<CreditReportCompany> CreditReportCompany { get => _creditReportCompany; set => SetField(ref _creditReportCompany, value); }
 
         /// <summary>
+        /// Deeds Restriction Term Months Count [CASASRN.X206]
+        /// </summary>
+        public int? DeedRestrictionTermInMonth { get => _deedRestrictionTermInMonth; set => SetField(ref _deedRestrictionTermInMonth, value); }
+
+        /// <summary>
+        /// Freddie Mac Energy Improvement [CASASRN.X208]
+        /// </summary>
+        public bool? EnergyImprovementIndicator { get => _energyImprovementIndicator; set => SetField(ref _energyImprovementIndicator, value); }
+
+        /// <summary>
         /// Freddie Mac Financing Concessions [CASASRN.X20]
         /// </summary>
         public decimal? FinancingConcessions { get => _financingConcessions; set => SetField(ref _financingConcessions, value); }
@@ -235,6 +253,27 @@ namespace EncompassRest.Loans
         public string? FreddieMacAppraisalHybrid { get => _freddieMacAppraisalHybrid; set => SetField(ref _freddieMacAppraisalHybrid, value); }
 
         /// <summary>
+        /// Freddie Mac CHOICE Offering Type [CASASRN.X212]
+        /// </summary>
+        public StringEnumValue<FreddieMacChoiceOfferingType> FreddieMacChoiceOfferingType { get => _freddieMacChoiceOfferingType; set => SetField(ref _freddieMacChoiceOfferingType, value); }
+
+        /// <summary>
+        /// Freddie Mac Community Land Trust Indicator [CASASRN.X211]
+        /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"Y\":\"True\",\"N\":\"False\"}")]
+        public bool? FreddieMacCommunityLandTrustIndicator { get => _freddieMacCommunityLandTrustIndicator; set => SetField(ref _freddieMacCommunityLandTrustIndicator, value); }
+
+        /// <summary>
+        /// Freddie Mac Income Based Deed Restrictions [CASASRN.X210]
+        /// </summary>
+        public StringEnumValue<FreddieMacIncomeBasedDeedRestrictions> FreddieMacIncomeBasedDeedRestrictions { get => _freddieMacIncomeBasedDeedRestrictions; set => SetField(ref _freddieMacIncomeBasedDeedRestrictions, value); }
+
+        /// <summary>
+        /// Freddie Mac Offering identifier [CASASRN.X209]
+        /// </summary>
+        public StringEnumValue<FreddieMacOfferingIdentifier> FreddieMacOfferingIdentifier { get => _freddieMacOfferingIdentifier; set => SetField(ref _freddieMacOfferingIdentifier, value); }
+
+        /// <summary>
         /// Freddie Mac Owned Message [CASASRN.X204]
         /// </summary>
         public string? FreddieMacOwnedMessage { get => _freddieMacOwnedMessage; set => SetField(ref _freddieMacOwnedMessage, value); }
@@ -248,6 +287,11 @@ namespace EncompassRest.Loans
         /// Freddie Mac HELOC Credit Limit [CASASRN.X168]
         /// </summary>
         public string? HELOCCreditLimit { get => _hELOCCreditLimit; set => SetField(ref _hELOCCreditLimit, value); }
+
+        /// <summary>
+        /// HomeOne [CASASRN.X213]
+        /// </summary>
+        public bool? HomeOne { get => _homeOne; set => SetField(ref _homeOne, value); }
 
         /// <summary>
         /// FreddieMac Id
@@ -421,6 +465,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<FreddieMacPurposeOfLoan> PurposeOfLoan { get => _purposeOfLoan; set => SetField(ref _purposeOfLoan, value); }
 
         /// <summary>
+        /// Renewable Energy Component Type [CASASRN.X207]
+        /// </summary>
+        public StringEnumValue<RenewableEnergyComponentType> RenewableEnergyComponentType { get => _renewableEnergyComponentType; set => SetField(ref _renewableEnergyComponentType, value); }
+
+        /// <summary>
         /// Freddie Mac MI Renewal Option [CASASRN.X150]
         /// </summary>
         public StringEnumValue<RenewalOption> RenewalOption { get => _renewalOption; set => SetField(ref _renewalOption, value); }
@@ -438,7 +487,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Freddie Mac Total Reserves [CASASRN.X78]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public decimal? Reserves { get => _reserves; set => SetField(ref _reserves, value); }
 
         /// <summary>

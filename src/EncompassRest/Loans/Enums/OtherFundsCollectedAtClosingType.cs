@@ -8,9 +8,9 @@ namespace EncompassRest.Loans.Enums
     public enum OtherFundsCollectedAtClosingType
     {
         /// <summary>
-        /// Advanced PITI Payment
+        /// Advanced PITI Payment - Retired
         /// </summary>
-        [Description("Advanced PITI Payment")]
+        [Description("Advanced PITI Payment - Retired")]
         AdvancedPITIPayment = 0,
         /// <summary>
         /// Escrow Funds
@@ -22,9 +22,9 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         Other = 2,
         /// <summary>
-        /// Principal Curtailment
+        /// Principal Curtailment - Retired
         /// </summary>
-        [Description("Principal Curtailment")]
+        [Description("Principal Curtailment - Retired")]
         PrincipalCurtailment = 3
     }
 }

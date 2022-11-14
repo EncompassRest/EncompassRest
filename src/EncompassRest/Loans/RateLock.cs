@@ -25,8 +25,20 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<BorrLenderPaid>>? _borrLenderPaid;
         private DirtyValue<decimal?>? _borrowerRequestedLoanAmount;
         private DirtyValue<DateTime?>? _branchApprovalDate;
+        private DirtyValue<DateTime?>? _branchApprovalDate2;
+        private DirtyValue<DateTime?>? _branchApprovalDate3;
+        private DirtyValue<DateTime?>? _branchApprovalDate4;
+        private DirtyValue<DateTime?>? _branchApprovalDate5;
         private DirtyValue<string?>? _branchApprovedby;
+        private DirtyValue<string?>? _branchApprovedBy2;
+        private DirtyValue<string?>? _branchApprovedBy3;
+        private DirtyValue<string?>? _branchApprovedBy4;
+        private DirtyValue<string?>? _branchApprovedBy5;
         private DirtyValue<decimal?>? _branchPrice;
+        private DirtyValue<decimal?>? _branchPrice2;
+        private DirtyValue<decimal?>? _branchPrice3;
+        private DirtyValue<decimal?>? _branchPrice4;
+        private DirtyValue<decimal?>? _branchPrice5;
         private DirtyValue<StringEnumValue<BuydownContributor>>? _buydownContributor;
         private DirtyValue<string?>? _buydownType;
         private DirtyList<PriceAdjustment>? _buySideAdjustments;
@@ -40,6 +52,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _buySideDeliveryType;
         private DirtyValue<DateTime?>? _buySideExpirationDate;
         private DirtyValue<DateTime?>? _buySideExtendedLockExpires;
+        private DirtyValue<string?>? _buySideInvestor;
         private DirtyValue<DateTime?>? _buySideLockDate;
         private DirtyValue<DateTime?>? _buySideLockExpires;
         private DirtyValue<decimal?>? _buySideLockExtendPriceAdjustment;
@@ -124,12 +137,26 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _compSideSRPPaidOut;
         private DirtyValue<string?>? _compSideTradeGuid;
         private DirtyValue<string?>? _compSideTradeNumber;
+        private DirtyValue<bool?>? _condominiumIndicator;
         private DirtyValue<bool?>? _confirmAdviceIndicator;
         private DirtyValue<string?>? _confirmedBy;
         private DirtyValue<DateTime?>? _confirmedDate;
+        private DirtyValue<bool?>? _cooperativeIndicator;
         private DirtyValue<DateTime?>? _corporateApprovalDate;
+        private DirtyValue<DateTime?>? _corporateApprovalDate2;
+        private DirtyValue<DateTime?>? _corporateApprovalDate3;
+        private DirtyValue<DateTime?>? _corporateApprovalDate4;
+        private DirtyValue<DateTime?>? _corporateApprovalDate5;
         private DirtyValue<string?>? _corporateApprovedby;
+        private DirtyValue<string?>? _corporateApprovedBy2;
+        private DirtyValue<string?>? _corporateApprovedBy3;
+        private DirtyValue<string?>? _corporateApprovedBy4;
+        private DirtyValue<string?>? _corporateApprovedBy5;
         private DirtyValue<decimal?>? _corporatePrice;
+        private DirtyValue<decimal?>? _corporatePrice2;
+        private DirtyValue<decimal?>? _corporatePrice3;
+        private DirtyValue<decimal?>? _corporatePrice4;
+        private DirtyValue<decimal?>? _corporatePrice5;
         private DirtyValue<decimal?>? _correspondentAdditionalEscrowAdditionalEscrow;
         private DirtyValue<decimal?>? _correspondentAdditionalEscrowAmount1007;
         private DirtyValue<decimal?>? _correspondentAdditionalEscrowAmount1008;
@@ -333,6 +360,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _expectedPrinciple;
         private DirtyValue<decimal?>? _expectedRemainingBuydownFunds;
         private DirtyValue<decimal?>? _expectedSRP;
+        private DirtyValue<bool?>? _extensionIndicator;
         private DirtyValue<string?>? _extensionRequestPending;
         private DirtyValue<int?>? _extensionSequenceNumber;
         private DirtyList<ExtraPayment>? _extraPayments;
@@ -349,7 +377,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _gainLossTotalBuyPrice;
         private DirtyValue<decimal?>? _gPMRate;
         private DirtyValue<int?>? _gPMYears;
-        private DirtyValue<StringEnumValue<PropertyType>>? _gSEPropertyType;
+        private DirtyValue<StringEnumValue<GsePropertyType>>? _gSEPropertyType;
         private DirtyValue<decimal?>? _hCLTVHTLTV;
         private DirtyValue<StringEnumValue<YOrN>>? _hedging;
         private DirtyValue<string?>? _hELOCActualBalance;
@@ -395,6 +423,7 @@ namespace EncompassRest.Loans
         private DirtyList<PriceAdjustment>? _lockRequestAdjustments;
         private DirtyList<LockRequestBorrower>? _lockRequestBorrowers;
         private DirtyValue<StringEnumValue<LockRequestLoanPurposeType>>? _lockRequestLoanPurposeType;
+        private DirtyValue<StringEnumValue<LockValidationStatus>>? _lockValidationStatus;
         private DirtyValue<decimal?>? _lTV;
         private DirtyValue<string?>? _minFICO;
         private DirtyValue<string?>? _minFICO2;
@@ -404,6 +433,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _netSellPrice;
         private DirtyValue<DateTime?>? _nextPaymentDate;
         private DirtyValue<bool?>? _noClosingCostOption;
+        private DirtyValue<bool?>? _notInProjectIndicator;
         private DirtyValue<StringEnumValue<YOrN>>? _oNRPLock;
         private DirtyValue<string?>? _otherAmortizationTypeDescription;
         private DirtyValue<decimal?>? _otherSubordinateAmount;
@@ -414,6 +444,9 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<YOrN>>? _prepayPenalty;
         private DirtyValue<decimal?>? _priceAdjustment;
         private DirtyList<PriceAdjustment>? _priceAdjustments;
+        private DirtyValue<bool?>? _priceConcessionIndicator;
+        private DirtyValue<StringEnumValue<PriceConcessionRequestStatus>>? _priceConcessionRequestStatus;
+        private DirtyValue<decimal?>? _pricingConcessionRequested;
         private DirtyValue<string?>? _pricingHistoryData;
         private DirtyValue<string?>? _pricingUpdated;
         private DirtyValue<decimal?>? _principle;
@@ -421,6 +454,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _propertyAppraisedValueAmount;
         private DirtyValue<int?>? _propertyEstimatedValueAmount;
         private DirtyValue<StringEnumValue<PropertyUsageType>>? _propertyUsageType;
+        private DirtyValue<bool?>? _pudIndicator;
         private DirtyValue<int?>? _purchaseAdviceNumberOfDays;
         private DirtyList<PurchaseAdvicePayout>? _purchaseAdvicePayouts;
         private DirtyValue<decimal?>? _purchasePriceAmount;
@@ -428,7 +462,15 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _rateRequestStatus;
         private DirtyValue<string?>? _rateStatus;
         private DirtyValue<string?>? _reasonforBranchApproval;
+        private DirtyValue<string?>? _reasonForBranchApproval2;
+        private DirtyValue<string?>? _reasonForBranchApproval3;
+        private DirtyValue<string?>? _reasonForBranchApproval4;
+        private DirtyValue<string?>? _reasonForBranchApproval5;
         private DirtyValue<string?>? _reasonforCorporateApproval;
+        private DirtyValue<string?>? _reasonForCorporateApproval2;
+        private DirtyValue<string?>? _reasonForCorporateApproval3;
+        private DirtyValue<string?>? _reasonForCorporateApproval4;
+        private DirtyValue<string?>? _reasonForCorporateApproval5;
         private DirtyValue<decimal?>? _reconciledDiff;
         private DirtyValue<string?>? _reLockRequestPending;
         private DirtyValue<decimal?>? _remainingBuydownFunds;
@@ -620,15 +662,79 @@ namespace EncompassRest.Loans
         public DateTime? BranchApprovalDate { get => _branchApprovalDate; set => SetField(ref _branchApprovalDate, value); }
 
         /// <summary>
+        /// Rate Lock Buy Side Branch Concession Approval Date 2 [4770]
+        /// </summary>
+        public DateTime? BranchApprovalDate2 { get => _branchApprovalDate2; set => SetField(ref _branchApprovalDate2, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Concession Approval Date 3 [4774]
+        /// </summary>
+        public DateTime? BranchApprovalDate3 { get => _branchApprovalDate3; set => SetField(ref _branchApprovalDate3, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Concession Approval Date 4 [4778]
+        /// </summary>
+        public DateTime? BranchApprovalDate4 { get => _branchApprovalDate4; set => SetField(ref _branchApprovalDate4, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Concession Approval Date 5 [4782]
+        /// </summary>
+        public DateTime? BranchApprovalDate5 { get => _branchApprovalDate5; set => SetField(ref _branchApprovalDate5, value); }
+
+        /// <summary>
         /// Rate Lock Buy Side Branch Concession Approved by [3377]
         /// </summary>
         public string? BranchApprovedby { get => _branchApprovedby; set => SetField(ref _branchApprovedby, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Concession Approved by 2 [4771]
+        /// </summary>
+        public string? BranchApprovedBy2 { get => _branchApprovedBy2; set => SetField(ref _branchApprovedBy2, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Concession Approved by 3 [4775]
+        /// </summary>
+        public string? BranchApprovedBy3 { get => _branchApprovedBy3; set => SetField(ref _branchApprovedBy3, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Concession Approved by 4 [4779]
+        /// </summary>
+        public string? BranchApprovedBy4 { get => _branchApprovedBy4; set => SetField(ref _branchApprovedBy4, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Concession Approved by 5 [4783]
+        /// </summary>
+        public string? BranchApprovedBy5 { get => _branchApprovedBy5; set => SetField(ref _branchApprovedBy5, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Branch Price Concession [3375]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? BranchPrice { get => _branchPrice; set => SetField(ref _branchPrice, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Price Concession 2 [4769]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+        public decimal? BranchPrice2 { get => _branchPrice2; set => SetField(ref _branchPrice2, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Price Concession 3 [4773]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+        public decimal? BranchPrice3 { get => _branchPrice3; set => SetField(ref _branchPrice3, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Price Concession 4 [4777]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+        public decimal? BranchPrice4 { get => _branchPrice4; set => SetField(ref _branchPrice4, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Branch Price Concession 5 [4781]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+        public decimal? BranchPrice5 { get => _branchPrice5; set => SetField(ref _branchPrice5, value); }
 
         /// <summary>
         /// Lock Request Buydown Contributor [4631]
@@ -695,6 +801,11 @@ namespace EncompassRest.Loans
         /// Rate Lock Buy Side Extended Lock Expires Date [3364]
         /// </summary>
         public DateTime? BuySideExtendedLockExpires { get => _buySideExtendedLockExpires; set => SetField(ref _buySideExtendedLockExpires, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Investor  [4751]
+        /// </summary>
+        public string? BuySideInvestor { get => _buySideInvestor; set => SetField(ref _buySideInvestor, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Lock Date [2149]
@@ -1152,6 +1263,11 @@ namespace EncompassRest.Loans
         public string? CompSideTradeNumber { get => _compSideTradeNumber; set => SetField(ref _compSideTradeNumber, value); }
 
         /// <summary>
+        /// Condominium Project Type Indicator [4711]
+        /// </summary>
+        public bool? CondominiumIndicator { get => _condominiumIndicator; set => SetField(ref _condominiumIndicator, value); }
+
+        /// <summary>
         /// Correspondent Purchase Advice Confirm Advice Indicator [4666]
         /// </summary>
         public bool? ConfirmAdviceIndicator { get => _confirmAdviceIndicator; set => SetField(ref _confirmAdviceIndicator, value); }
@@ -1167,9 +1283,34 @@ namespace EncompassRest.Loans
         public DateTime? ConfirmedDate { get => _confirmedDate; set => SetField(ref _confirmedDate, value); }
 
         /// <summary>
+        /// Cooperative Project Type Indicator [4712]
+        /// </summary>
+        public bool? CooperativeIndicator { get => _cooperativeIndicator; set => SetField(ref _cooperativeIndicator, value); }
+
+        /// <summary>
         /// Rate Lock Buy Side Corporate Concession Approval Date [3372]
         /// </summary>
         public DateTime? CorporateApprovalDate { get => _corporateApprovalDate; set => SetField(ref _corporateApprovalDate, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Concession Approval Date 2 [4754]
+        /// </summary>
+        public DateTime? CorporateApprovalDate2 { get => _corporateApprovalDate2; set => SetField(ref _corporateApprovalDate2, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Concession Approval Date 3 [4758]
+        /// </summary>
+        public DateTime? CorporateApprovalDate3 { get => _corporateApprovalDate3; set => SetField(ref _corporateApprovalDate3, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Concession Approval Date 4 [4762]
+        /// </summary>
+        public DateTime? CorporateApprovalDate4 { get => _corporateApprovalDate4; set => SetField(ref _corporateApprovalDate4, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Concession Approval Date 5 [4766]
+        /// </summary>
+        public DateTime? CorporateApprovalDate5 { get => _corporateApprovalDate5; set => SetField(ref _corporateApprovalDate5, value); }
 
         /// <summary>
         /// Rate Lock Buy Side Corporate Concession Approved by [3373]
@@ -1177,10 +1318,54 @@ namespace EncompassRest.Loans
         public string? CorporateApprovedby { get => _corporateApprovedby; set => SetField(ref _corporateApprovedby, value); }
 
         /// <summary>
+        /// Rate Lock Buy Side Corporate Concession Approved by 2 [4755]
+        /// </summary>
+        public string? CorporateApprovedBy2 { get => _corporateApprovedBy2; set => SetField(ref _corporateApprovedBy2, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Concession Approved by 3 [4759]
+        /// </summary>
+        public string? CorporateApprovedBy3 { get => _corporateApprovedBy3; set => SetField(ref _corporateApprovedBy3, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Concession Approved by 4 [4763]
+        /// </summary>
+        public string? CorporateApprovedBy4 { get => _corporateApprovedBy4; set => SetField(ref _corporateApprovedBy4, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Concession Approved by 5 [4767]
+        /// </summary>
+        public string? CorporateApprovedBy5 { get => _corporateApprovedBy5; set => SetField(ref _corporateApprovedBy5, value); }
+
+        /// <summary>
         /// Rate Lock Buy Side Corporate Price Concession [3371]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
         public decimal? CorporatePrice { get => _corporatePrice; set => SetField(ref _corporatePrice, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Price Concession 2 [4753]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+        public decimal? CorporatePrice2 { get => _corporatePrice2; set => SetField(ref _corporatePrice2, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Price Concession 3 [4757]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+        public decimal? CorporatePrice3 { get => _corporatePrice3; set => SetField(ref _corporatePrice3, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Price Concession 4 [4761]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+        public decimal? CorporatePrice4 { get => _corporatePrice4; set => SetField(ref _corporatePrice4, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Corporate Price Concession 5 [4765]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+        public decimal? CorporatePrice5 { get => _corporatePrice5; set => SetField(ref _corporatePrice5, value); }
 
         /// <summary>
         /// Additional Escrow Payment Collection - Additional Escrow [CPA.ADDLESCROW.AdditionalEscrow]
@@ -2232,6 +2417,11 @@ namespace EncompassRest.Loans
         public decimal? ExpectedSRP { get => _expectedSRP; set => SetField(ref _expectedSRP, value); }
 
         /// <summary>
+        /// Rate Lock Extension Indicator [4790]
+        /// </summary>
+        public bool? ExtensionIndicator { get => _extensionIndicator; set => SetField(ref _extensionIndicator, value); }
+
+        /// <summary>
         /// RateLock ExtensionRequestPending
         /// </summary>
         public string? ExtensionRequestPending { get => _extensionRequestPending; set => SetField(ref _extensionRequestPending, value); }
@@ -2321,7 +2511,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Lock Request Subject Property Type [2947]
         /// </summary>
-        public StringEnumValue<PropertyType> GSEPropertyType { get => _gSEPropertyType; set => SetField(ref _gSEPropertyType, value); }
+        public StringEnumValue<GsePropertyType> GSEPropertyType { get => _gSEPropertyType; set => SetField(ref _gSEPropertyType, value); }
 
         /// <summary>
         /// Rate Lock Request - Trans Details HCLTV/HTLTV [4514]
@@ -2557,6 +2747,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<LockRequestLoanPurposeType> LockRequestLoanPurposeType { get => _lockRequestLoanPurposeType; set => SetField(ref _lockRequestLoanPurposeType, value); }
 
         /// <summary>
+        /// Rate Lock Validation Status [4788]
+        /// </summary>
+        public StringEnumValue<LockValidationStatus> LockValidationStatus { get => _lockValidationStatus; set => SetField(ref _lockValidationStatus, value); }
+
+        /// <summary>
         /// Lock Request Loan to Value (LTV) [3241]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
@@ -2602,6 +2797,11 @@ namespace EncompassRest.Loans
         /// Rate Lock Request No Closing Cost Option [3892]
         /// </summary>
         public bool? NoClosingCostOption { get => _noClosingCostOption; set => SetField(ref _noClosingCostOption, value); }
+
+        /// <summary>
+        /// Property is not located in a project Indicator [4714]
+        /// </summary>
+        public bool? NotInProjectIndicator { get => _notInProjectIndicator; set => SetField(ref _notInProjectIndicator, value); }
 
         /// <summary>
         /// Locked during ONRP Window [4057]
@@ -2657,6 +2857,22 @@ namespace EncompassRest.Loans
         public IList<PriceAdjustment> PriceAdjustments { get => GetField(ref _priceAdjustments); set => SetField(ref _priceAdjustments, value); }
 
         /// <summary>
+        /// Rate Lock Price Concession Indicator [4789]
+        /// </summary>
+        public bool? PriceConcessionIndicator { get => _priceConcessionIndicator; set => SetField(ref _priceConcessionIndicator, value); }
+
+        /// <summary>
+        /// Rate Lock Price Concession Request Status [4791]
+        /// </summary>
+        public StringEnumValue<PriceConcessionRequestStatus> PriceConcessionRequestStatus { get => _priceConcessionRequestStatus; set => SetField(ref _priceConcessionRequestStatus, value); }
+
+        /// <summary>
+        /// Rate Lock Pricing Concession Requested [4787]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
+        public decimal? PricingConcessionRequested { get => _pricingConcessionRequested; set => SetField(ref _pricingConcessionRequested, value); }
+
+        /// <summary>
         /// RateLock PricingHistoryData
         /// </summary>
         public string? PricingHistoryData { get => _pricingHistoryData; set => SetField(ref _pricingHistoryData, value); }
@@ -2691,6 +2907,11 @@ namespace EncompassRest.Loans
         /// Lock Request Subject Property Occupancy Status [2950]
         /// </summary>
         public StringEnumValue<PropertyUsageType> PropertyUsageType { get => _propertyUsageType; set => SetField(ref _propertyUsageType, value); }
+
+        /// <summary>
+        /// Planned Unit Development Project Type Indicator [4713]
+        /// </summary>
+        public bool? PudIndicator { get => _pudIndicator; set => SetField(ref _pudIndicator, value); }
 
         /// <summary>
         /// Purchase Adv Interest Calcuation - Number of Days [3549]
@@ -2731,9 +2952,49 @@ namespace EncompassRest.Loans
         public string? ReasonforBranchApproval { get => _reasonforBranchApproval; set => SetField(ref _reasonforBranchApproval, value); }
 
         /// <summary>
+        /// Rate Lock Buy Side Reason for Branch Concession Approval 2 [4772]
+        /// </summary>
+        public string? ReasonForBranchApproval2 { get => _reasonForBranchApproval2; set => SetField(ref _reasonForBranchApproval2, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Reason for Branch Concession Approval 3 [4776]
+        /// </summary>
+        public string? ReasonForBranchApproval3 { get => _reasonForBranchApproval3; set => SetField(ref _reasonForBranchApproval3, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Reason for Branch Concession Approval 4 [4780]
+        /// </summary>
+        public string? ReasonForBranchApproval4 { get => _reasonForBranchApproval4; set => SetField(ref _reasonForBranchApproval4, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Reason for Branch Concession Approval 5 [4784]
+        /// </summary>
+        public string? ReasonForBranchApproval5 { get => _reasonForBranchApproval5; set => SetField(ref _reasonForBranchApproval5, value); }
+
+        /// <summary>
         /// Rate Lock Buy Side Reason for Corporate  Concession Approval [3374]
         /// </summary>
         public string? ReasonforCorporateApproval { get => _reasonforCorporateApproval; set => SetField(ref _reasonforCorporateApproval, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Reason for Corporate Concession Approval 2 [4756]
+        /// </summary>
+        public string? ReasonForCorporateApproval2 { get => _reasonForCorporateApproval2; set => SetField(ref _reasonForCorporateApproval2, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Reason for Corporate Concession Approval 3 [4760]
+        /// </summary>
+        public string? ReasonForCorporateApproval3 { get => _reasonForCorporateApproval3; set => SetField(ref _reasonForCorporateApproval3, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Reason for Corporate Concession Approval 4 [4764]
+        /// </summary>
+        public string? ReasonForCorporateApproval4 { get => _reasonForCorporateApproval4; set => SetField(ref _reasonForCorporateApproval4, value); }
+
+        /// <summary>
+        /// Rate Lock Buy Side Reason for Corporate Concession Approval 5 [4768]
+        /// </summary>
+        public string? ReasonForCorporateApproval5 { get => _reasonForCorporateApproval5; set => SetField(ref _reasonForCorporateApproval5, value); }
 
         /// <summary>
         /// Purchase Advice Reconciled Differences [2629]
@@ -3211,7 +3472,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Rate Lock Sell Side SRP Paid Out [2276]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_10)]
         public decimal? SellSideSRPPaidOut { get => _sellSideSRPPaidOut; set => SetField(ref _sellSideSRPPaidOut, value); }
 
         /// <summary>

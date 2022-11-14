@@ -1,4 +1,5 @@
 using EncompassRest.Loans.Enums;
+using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -11,7 +12,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _boolFieldValue;
         private DirtyValue<string?>? _businessName;
         private DirtyValue<StringEnumValue<FieldName>>? _fieldName;
-        private DirtyValue<string?>? _fieldValue;
+        private DirtyValue<decimal?>? _fieldValue;
         private DirtyValue<decimal?>? _firstYearAmount;
         private DirtyValue<StringEnumValue<FormType>>? _formType;
         private DirtyValue<string?>? _id;
@@ -36,7 +37,8 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SelfEmployedIncome FieldValue
         /// </summary>
-        public string? FieldValue { get => _fieldValue; set => SetField(ref _fieldValue, value); }
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? FieldValue { get => _fieldValue; set => SetField(ref _fieldValue, value); }
 
         /// <summary>
         /// SelfEmployedIncome FirstYearAmount

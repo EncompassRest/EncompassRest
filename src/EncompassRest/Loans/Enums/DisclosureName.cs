@@ -2592,6 +2592,14 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// PaymentCalculationMethod
         /// </summary>
-        PaymentCalculationMethod = 635
+        PaymentCalculationMethod = 635,
+        /// <summary>
+        /// StatutoryElectionInKansas
+        /// </summary>
+        StatutoryElectionInKansas = 636,
+        /// <summary>
+        /// StatutoryElectionInMaryland
+        /// </summary>
+        StatutoryElectionInMaryland = 637
     }
 }

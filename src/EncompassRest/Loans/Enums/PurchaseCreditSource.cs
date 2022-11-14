@@ -8,61 +8,79 @@ namespace EncompassRest.Loans.Enums
     public enum PurchaseCreditSource
     {
         /// <summary>
-        /// Borrower Paid Outside Closing
+        /// Borrower Paid Outside Closing (FNMA/FRE)
         /// </summary>
-        [Description("Borrower Paid Outside Closing")]
+        [Description("Borrower Paid Outside Closing (FNMA/FRE)")]
         BorrowerPaidOutsideClosing = 0,
         /// <summary>
-        /// Builder Developer
+        /// Builder Developer (FNMA/FRE)
         /// </summary>
-        [Description("Builder Developer")]
+        [Description("Builder Developer (FNMA/FRE)")]
         BuilderDeveloper = 1,
         /// <summary>
-        /// Employer
+        /// Employer (FRE)
         /// </summary>
+        [Description("Employer (FRE)")]
         Employer = 2,
         /// <summary>
-        /// Federal Agency
+        /// Federal Agency (FRE)
         /// </summary>
-        [Description("Federal Agency")]
+        [Description("Federal Agency (FRE)")]
         FederalAgency = 3,
         /// <summary>
-        /// Lender
+        /// Lender (FRE)
         /// </summary>
+        [Description("Lender (FRE)")]
         Lender = 4,
         /// <summary>
-        /// Local Agency
+        /// Local Agency (FRE)
         /// </summary>
-        [Description("Local Agency")]
+        [Description("Local Agency (FRE)")]
         LocalAgency = 5,
         /// <summary>
-        /// Non-Parent Relative
+        /// Non-Parent Relative (FRE)
         /// </summary>
-        [Description("Non-Parent Relative")]
+        [Description("Non-Parent Relative (FRE)")]
         NonParentRelative = 6,
         /// <summary>
-        /// Parent
+        /// Parent (FRE)
         /// </summary>
+        [Description("Parent (FRE)")]
         Parent = 7,
         /// <summary>
-        /// Property Seller
+        /// Property Seller (FRE Retired)
         /// </summary>
-        [Description("Property Seller")]
+        [Description("Property Seller (FRE Retired)")]
         PropertySeller = 8,
         /// <summary>
-        /// Real Estate Agent
+        /// Real Estate Agent (FNMA/FRE)
         /// </summary>
-        [Description("Real Estate Agent")]
+        [Description("Real Estate Agent (FNMA/FRE)")]
         RealEstateAgent = 9,
         /// <summary>
-        /// State Agency
+        /// State Agency (FRE)
         /// </summary>
-        [Description("State Agency")]
+        [Description("State Agency (FRE)")]
         StateAgency = 10,
         /// <summary>
-        /// Unrelated Friend
+        /// Unrelated Friend (FRE)
         /// </summary>
-        [Description("Unrelated Friend")]
-        UnrelatedFriend = 11
+        [Description("Unrelated Friend (FRE)")]
+        UnrelatedFriend = 11,
+        /// <summary>
+        /// Employer Affiliate (FNMA/FRE)
+        /// </summary>
+        [Description("Employer Affiliate (FNMA/FRE)")]
+        EmployerAffiliate = 12,
+        /// <summary>
+        /// Lender Affiliate (FNMA/FRE)
+        /// </summary>
+        [Description("Lender Affiliate (FNMA/FRE)")]
+        LenderAffiliate = 13,
+        /// <summary>
+        /// Other Interested Party (FNMA)
+        /// </summary>
+        [Description("Other Interested Party (FNMA)")]
+        OtherInterestedParty = 14
     }
 }

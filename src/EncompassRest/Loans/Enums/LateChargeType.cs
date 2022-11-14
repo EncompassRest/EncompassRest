@@ -26,6 +26,11 @@ namespace EncompassRest.Loans.Enums
         /// of the principal and interest overdue
         /// </summary>
         [EnumMember(Value = "of the principal and interest overdue")]
-        OfThePrincipalAndInterestOverdue = 3
+        OfThePrincipalAndInterestOverdue = 3,
+        /// <summary>
+        /// of any installment
+        /// </summary>
+        [EnumMember(Value = "of any installment")]
+        OfAnyInstallment = 4
     }
 }
