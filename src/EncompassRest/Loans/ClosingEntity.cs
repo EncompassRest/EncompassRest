@@ -232,7 +232,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ClosingEntity UnparsedName [TRNN01]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public string? UnparsedName { get => _unparsedName; set => SetField(ref _unparsedName, value); }
 
         /// <summary>

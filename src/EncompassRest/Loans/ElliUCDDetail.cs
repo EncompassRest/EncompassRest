@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-
 namespace EncompassRest.Loans
 {
     /// <summary>
@@ -8,19 +5,17 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class ElliUCDDetail : DirtyExtensibleObject, IIdentifiable
     {
-        private DirtyDictionary<string, string?>? _cDFields;
-        private DirtyDictionary<string, string?>? _lEFields;
+        private DirtyValue<string?>? _cdFields;
+        private DirtyValue<string?>? _leFields;
 
         /// <summary>
-        /// ElliUCDDetail CDFields
+        /// ElliUCDDetail cdFields
         /// </summary>
-        [AllowNull]
-        public IDictionary<string, string?> CDFields { get => GetField(ref _cDFields); set => SetField(ref _cDFields, value); }
+        public string? cdFields { get => _cdFields; set => SetField(ref _cdFields, value); }
 
         /// <summary>
-        /// ElliUCDDetail LEFields
+        /// ElliUCDDetail leFields
         /// </summary>
-        [AllowNull]
-        public IDictionary<string, string?> LEFields { get => GetField(ref _lEFields); set => SetField(ref _lEFields, value); }
+        public string? leFields { get => _leFields; set => SetField(ref _leFields, value); }
     }
 }

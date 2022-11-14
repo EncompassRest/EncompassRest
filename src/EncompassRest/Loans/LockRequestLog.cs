@@ -31,13 +31,17 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _isLockExtensionIndicator;
         private DirtyValue<bool?>? _isReLockIndicator;
         private DirtyValue<bool?>? _isSystemSpecificIndicator;
+        private DirtyValue<string?>? _lockExtensionIndicator;
         private DirtyValue<int?>? _logRecordIndex;
         private DirtyValue<int?>? _numDayLocked;
         private DirtyValue<string?>? _parentLockGuid;
+        private DirtyValue<string?>? _priceConcessionIndicator;
+        private DirtyValue<string?>? _priceConcessionRequestStatus;
         private DirtyValue<string?>? _rateLockAction;
         private DirtyValue<int?>? _reLockSequenceNumberForInactiveLock;
         private DirtyValue<string?>? _requestedBy;
         private DirtyValue<string?>? _requestedName;
+        private DirtyValue<string?>? _requestedOldStatus;
         private DirtyValue<string?>? _requestedStatus;
         private DirtyValue<string?>? _reviseAction;
         private DirtyValue<string?>? _sellSideDeliveredBy;
@@ -49,6 +53,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _systemId;
         private DirtyValue<string?>? _timeRequested;
         private DirtyValue<DateTime?>? _updatedDateUtc;
+        private DirtyValue<bool?>? _voided;
 
         /// <summary>
         /// LockRequestLog Alerts
@@ -163,6 +168,11 @@ namespace EncompassRest.Loans
         public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
 
         /// <summary>
+        /// LockRequestLog LockExtensionIndicator
+        /// </summary>
+        public string? LockExtensionIndicator { get => _lockExtensionIndicator; set => SetField(ref _lockExtensionIndicator, value); }
+
+        /// <summary>
         /// LockRequestLog LogRecordIndex
         /// </summary>
         public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
@@ -176,6 +186,16 @@ namespace EncompassRest.Loans
         /// LockRequestLog ParentLockGuid
         /// </summary>
         public string? ParentLockGuid { get => _parentLockGuid; set => SetField(ref _parentLockGuid, value); }
+
+        /// <summary>
+        /// LockRequestLog PriceConcessionIndicator
+        /// </summary>
+        public string? PriceConcessionIndicator { get => _priceConcessionIndicator; set => SetField(ref _priceConcessionIndicator, value); }
+
+        /// <summary>
+        /// LockRequestLog PriceConcessionRequestStatus
+        /// </summary>
+        public string? PriceConcessionRequestStatus { get => _priceConcessionRequestStatus; set => SetField(ref _priceConcessionRequestStatus, value); }
 
         /// <summary>
         /// LockRequestLog RateLockAction
@@ -196,6 +216,11 @@ namespace EncompassRest.Loans
         /// LockRequestLog RequestedName
         /// </summary>
         public string? RequestedName { get => _requestedName; set => SetField(ref _requestedName, value); }
+
+        /// <summary>
+        /// LockRequestLog RequestedOldStatus
+        /// </summary>
+        public string? RequestedOldStatus { get => _requestedOldStatus; set => SetField(ref _requestedOldStatus, value); }
 
         /// <summary>
         /// LockRequestLog RequestedStatus
@@ -251,5 +276,10 @@ namespace EncompassRest.Loans
         /// LockRequestLog UpdatedDateUtc
         /// </summary>
         public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+
+        /// <summary>
+        /// LockRequestLog Voided
+        /// </summary>
+        public bool? Voided { get => _voided; set => SetField(ref _voided, value); }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
@@ -35,11 +36,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GSE Rep and Warrant Tracker - GSE Close By Date [TQLGSENN03]
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? GSECloseByDate { get => _gSECloseByDate; set => SetField(ref _gSECloseByDate, value); }
 
         /// <summary>
         /// GSE Rep and Warrant Tracker - GSE Close By Date 2 [TQLGSENN04]
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? GSECloseByDate2 { get => _gSECloseByDate2; set => SetField(ref _gSECloseByDate2, value); }
 
         /// <summary>

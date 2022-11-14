@@ -35,6 +35,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _isRemoved;
         private DirtyValue<EntityReference?>? _lastModifiedBy;
         private DirtyValue<DateTime?>? _lastModifiedDate;
+        private DirtyValue<EntityReference?>? _owner;
         private DirtyValue<string?>? _priorTo;
         private DirtyValue<DateTime?>? _publishedDate;
         private DirtyValue<string?>? _recipient;
@@ -179,6 +180,11 @@ namespace EncompassRest.Loans
         /// EnhancedConditionLog LastModifiedDate
         /// </summary>
         public DateTime? LastModifiedDate { get => _lastModifiedDate; set => SetField(ref _lastModifiedDate, value); }
+
+        /// <summary>
+        /// EnhancedConditionLog Owner
+        /// </summary>
+        public EntityReference? Owner { get => _owner; set => SetField(ref _owner, value); }
 
         /// <summary>
         /// EnhancedConditionLog PriorTo

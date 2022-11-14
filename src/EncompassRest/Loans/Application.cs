@@ -151,6 +151,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _otherMortgagePrincipalAndInterestAmount;
         private DirtyValue<decimal?>? _otherTotalIncome;
         private DirtyValue<StringEnumValue<PastCreditRecord>>? _pastCreditRecord;
+        private DirtyValue<bool?>? _prequalCreditReportIndicator;
         private DirtyValue<decimal?>? _presentHousingExpComortSet;
         private DirtyValue<decimal?>? _presentSupplementalPropertyInsuranceAmount;
         private DirtyValue<decimal?>? _primaryResidenceComortSet;
@@ -999,6 +1000,11 @@ namespace EncompassRest.Loans
         /// VA Past Credit Record [1326]
         /// </summary>
         public StringEnumValue<PastCreditRecord> PastCreditRecord { get => _pastCreditRecord; set => SetField(ref _pastCreditRecord, value); }
+
+        /// <summary>
+        /// Prequal Credit Report Indicator  [4750]
+        /// </summary>
+        public bool? PrequalCreditReportIndicator { get => _prequalCreditReportIndicator; set => SetField(ref _prequalCreditReportIndicator, value); }
 
         /// <summary>
         /// Expenses Co-Borr Present Mo Hous Exp [268]

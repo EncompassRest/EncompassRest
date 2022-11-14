@@ -137,11 +137,17 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<FreddieDownPaymentType>>? _freddieDownPmt4Type;
         private DirtyValue<StringEnumValue<FundsTypeDescription>>? _freddieDownPmt4TypeExpl;
         private DirtyValue<StringEnumValue<FundsTypeDescription>>? _freddieExplanationOfDownPayment;
+        private DirtyValue<string?>? _freddieHousingFinanceAgencyId;
         private DirtyValue<StringEnumValue<FreddieInvestorCollateralProgramIdentifier>>? _freddieInvestorCollateralProgramIdentifier;
         private DirtyValue<string?>? _freddieInvestorFeatureIdentifier;
         private DirtyValue<StringEnumValue<FreddieLegalEntityType>>? _freddieLegalEntityType;
         private DirtyValue<StringEnumValue<FreddieLegalEntityTypeOther>>? _freddieLegalEntityTypeOther;
+        private DirtyValue<decimal?>? _freddieLoanInitialPrincipalInterestPayment;
         private DirtyValue<StringEnumValue<FreddieLoanProgramIdentifier>>? _freddieLoanProgramIdentifier;
+        private DirtyValue<StringEnumValue<FreddieLoanProgramIdentifier2>>? _freddieLoanProgramIdentifier2;
+        private DirtyValue<StringEnumValue<FreddieLoanProgramIdentifier3>>? _freddieLoanProgramIdentifier3;
+        private DirtyValue<StringEnumValue<FreddieLoanProgramIdentifier4>>? _freddieLoanProgramIdentifier4;
+        private DirtyValue<StringEnumValue<FreddieLoanProgramIdentifier5>>? _freddieLoanProgramIdentifier5;
         private DirtyValue<StringEnumValue<FreddieLoanTypePublicAndIndianHousingIndicator>>? _freddieLoanTypePublicAndIndianHousingIndicator;
         private DirtyValue<StringEnumValue<FreddieMICompanyNameTypeOther>>? _freddieMICompanyNameTypeOther;
         private DirtyValue<StringEnumValue<FreddieMortgageType>>? _freddieMortgageType;
@@ -965,6 +971,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<FundsTypeDescription> FreddieExplanationOfDownPayment { get => _freddieExplanationOfDownPayment; set => SetField(ref _freddieExplanationOfDownPayment, value); }
 
         /// <summary>
+        /// ULDD Freddie Housing Finance Agency ID [ULDD.FRE.HousingFinanceAgencyId]
+        /// </summary>
+        public string? FreddieHousingFinanceAgencyId { get => _freddieHousingFinanceAgencyId; set => SetField(ref _freddieHousingFinanceAgencyId, value); }
+
+        /// <summary>
         /// ULDD - Investor Collateral Program ID [ULDD.X95]
         /// </summary>
         public StringEnumValue<FreddieInvestorCollateralProgramIdentifier> FreddieInvestorCollateralProgramIdentifier { get => _freddieInvestorCollateralProgramIdentifier; set => SetField(ref _freddieInvestorCollateralProgramIdentifier, value); }
@@ -985,9 +996,34 @@ namespace EncompassRest.Loans
         public StringEnumValue<FreddieLegalEntityTypeOther> FreddieLegalEntityTypeOther { get => _freddieLegalEntityTypeOther; set => SetField(ref _freddieLegalEntityTypeOther, value); }
 
         /// <summary>
+        /// ULDD Freddie Related Loan Initial Principal And Interest Payment Amount [ULDD.FRE.LoanInitialPrincipalInterestPayment]
+        /// </summary>
+        public decimal? FreddieLoanInitialPrincipalInterestPayment { get => _freddieLoanInitialPrincipalInterestPayment; set => SetField(ref _freddieLoanInitialPrincipalInterestPayment, value); }
+
+        /// <summary>
         /// ULDD Freddie Loan Program Identifier [ULDD.FRE.LoanProgramIdentifier]
         /// </summary>
         public StringEnumValue<FreddieLoanProgramIdentifier> FreddieLoanProgramIdentifier { get => _freddieLoanProgramIdentifier; set => SetField(ref _freddieLoanProgramIdentifier, value); }
+
+        /// <summary>
+        /// ULDD Freddie Loan Program Identifier [ULDD.FRE.LoanProgramIdentifier2]
+        /// </summary>
+        public StringEnumValue<FreddieLoanProgramIdentifier2> FreddieLoanProgramIdentifier2 { get => _freddieLoanProgramIdentifier2; set => SetField(ref _freddieLoanProgramIdentifier2, value); }
+
+        /// <summary>
+        /// ULDD Freddie Loan Program Identifier [ULDD.FRE.LoanProgramIdentifier3]
+        /// </summary>
+        public StringEnumValue<FreddieLoanProgramIdentifier3> FreddieLoanProgramIdentifier3 { get => _freddieLoanProgramIdentifier3; set => SetField(ref _freddieLoanProgramIdentifier3, value); }
+
+        /// <summary>
+        /// ULDD Freddie Loan Program Identifier [ULDD.FRE.LoanProgramIdentifier4]
+        /// </summary>
+        public StringEnumValue<FreddieLoanProgramIdentifier4> FreddieLoanProgramIdentifier4 { get => _freddieLoanProgramIdentifier4; set => SetField(ref _freddieLoanProgramIdentifier4, value); }
+
+        /// <summary>
+        /// ULDD Freddie Loan Program Identifier [ULDD.FRE.LoanProgramIdentifier5]
+        /// </summary>
+        public StringEnumValue<FreddieLoanProgramIdentifier5> FreddieLoanProgramIdentifier5 { get => _freddieLoanProgramIdentifier5; set => SetField(ref _freddieLoanProgramIdentifier5, value); }
 
         /// <summary>
         /// Freddie Loan Type Other [ULDD.X153]
@@ -1012,6 +1048,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Property Valuation Form Type [ULDD.FRE.PropertyFormType]
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"Desktop Underwriter Property Inspection Report\":\"Desktop Underwriter Property Inspection Report - Retired\"}")]
         public StringEnumValue<PropertyFormType> FreddiePropertyFormType { get => _freddiePropertyFormType; set => SetField(ref _freddiePropertyFormType, value); }
 
         /// <summary>

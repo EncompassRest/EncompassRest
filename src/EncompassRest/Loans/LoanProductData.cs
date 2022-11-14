@@ -22,13 +22,31 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _borrowerEstimatedClosingDate;
         private DirtyValue<string?>? _branchLocationNmlsId;
         private DirtyValue<string?>? _branchManagerNmlsId;
+        private DirtyValue<string?>? _brokerCurrentAssignedUserId;
+        private DirtyValue<StringEnumValue<BrokerRepresentative>>? _brokerRepresentative;
         private DirtyList<Buydown>? _buydowns;
+        private DirtyValue<string?>? _commitmentIssuedByEsignerCurrentAssignedCellPhone;
+        private DirtyValue<string?>? _commitmentIssuedByEsignerCurrentAssignedEmail;
+        private DirtyValue<string?>? _commitmentIssuedByEsignerCurrentAssignedTitle;
+        private DirtyValue<string?>? _commitmentIssuedByEsignerCurrentAssignedUserId;
+        private DirtyValue<string?>? _commitmentIssuedByEsignerCurrentAssignedWorkPhone;
+        private DirtyValue<StringEnumValue<CommitmentIssuedByEsignerRepresentative>>? _commitmentIssuedByEsignerRepresentative;
         private DirtyValue<bool?>? _convertibleIndicator;
         private DirtyValue<StringEnumValue<IsOrIsNot>>? _discounted;
         private DirtyValue<decimal?>? _discountedRate;
         private DirtyValue<int?>? _drawPeriodMonthsCount;
         private DirtyValue<bool?>? _escrowWaiverIndicator;
         private DirtyValue<bool?>? _excludeLoanFromNMLSReportIndicator;
+        private DirtyValue<string?>? _fhaVaEsignerCurrentAssignedCellPhone;
+        private DirtyValue<string?>? _fhaVaEsignerCurrentAssignedEmail;
+        private DirtyValue<string?>? _fhaVaEsignerCurrentAssignedUserId;
+        private DirtyValue<StringEnumValue<FhaVaEsignerRepresentative>>? _fhaVaEsignerRepresentative;
+        private DirtyValue<string?>? _fhaVaMortgageEsignerCurrentAssignedCellPhone;
+        private DirtyValue<string?>? _fhaVaMortgageEsignerCurrentAssignedEmail;
+        private DirtyValue<string?>? _fhaVaMortgageEsignerCurrentAssignedTitle;
+        private DirtyValue<string?>? _fhaVaMortgageEsignerCurrentAssignedUserId;
+        private DirtyValue<string?>? _fhaVaMortgageEsignerCurrentAssignedWorkPhone;
+        private DirtyValue<StringEnumValue<FhaVaMortgageEsignerRepresentative>>? _fhaVaMortgageEsignerRepresentative;
         private DirtyValue<StringEnumValue<FloorBasis>>? _floorBasis;
         private DirtyValue<decimal?>? _floorPercent;
         private DirtyValue<string?>? _floorPercentUI;
@@ -38,7 +56,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<FreOfferingIdentifier>>? _freOfferingIdentifier;
         private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>>? _fullPrepaymentPenaltyOptionType;
         private DirtyValue<StringEnumValue<ProjectType>>? _gseProjectClassificationType;
-        private DirtyValue<StringEnumValue<PropertyType>>? _gsePropertyType;
+        private DirtyValue<StringEnumValue<GsePropertyType>>? _gsePropertyType;
         private DirtyValue<int?>? _hardPrepaymentPenaltyMonths;
         private DirtyValue<decimal?>? _helocAutoDebitDiscount;
         private DirtyValue<bool?>? _helocAutoDebitFeature;
@@ -157,6 +175,9 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _initialAdvanceAmount;
         private DirtyValue<decimal?>? _initialApplicationAmount;
         private DirtyValue<bool?>? _inquiryOrPreQualificationIndicator;
+        private DirtyValue<string?>? _lenderEsignerCurrentAssignedCellPhone;
+        private DirtyValue<string?>? _lenderEsignerCurrentAssignedUserId;
+        private DirtyValue<StringEnumValue<LenderEsignerRepresentative>>? _lenderEsignerRepresentative;
         private DirtyValue<string?>? _lenderRepresentative;
         private DirtyValue<string?>? _lenderRepresentativeCellPhone;
         private DirtyValue<string?>? _lenderRepresentativeEmailAddress;
@@ -168,6 +189,10 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _lenderRepresentativeWorkPhone;
         private DirtyValue<StringEnumValue<LienType>>? _lienPriorityType;
         private DirtyValue<StringEnumValue<LoanDocumentationType>>? _loanDocumentationType;
+        private DirtyValue<string?>? _loanOriginatorCurrentAssignedCellPhone;
+        private DirtyValue<string?>? _loanOriginatorCurrentAssignedTitle;
+        private DirtyValue<string?>? _loanOriginatorCurrentAssignedUserId;
+        private DirtyValue<StringEnumValue<LoanOriginatorRepresentative>>? _loanOriginatorRepresentative;
         private DirtyValue<StringEnumValue<LoanRepaymentType>>? _loanRepaymentType;
         private DirtyValue<DateTime?>? _loanScheduledClosingDate;
         private DirtyValue<decimal?>? _maximumMonthlyPayment;
@@ -238,6 +263,9 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<TimelyPaymentRewards>>? _timelyPaymentRewards;
         private DirtyValue<decimal?>? _totalSubsidyAmount;
         private DirtyValue<decimal?>? _transactionFees;
+        private DirtyValue<string?>? _usdaCurrentAssignedEmail;
+        private DirtyValue<string?>? _usdaCurrentAssignedUserId;
+        private DirtyValue<StringEnumValue<UsdaEsignerRepresentative>>? _usdaEsignerRepresentative;
         private DirtyValue<decimal?>? _wireFee;
 
         /// <summary>
@@ -297,10 +325,52 @@ namespace EncompassRest.Loans
         public string? BranchManagerNmlsId { get => _branchManagerNmlsId; set => SetField(ref _branchManagerNmlsId, value); }
 
         /// <summary>
+        /// Current Assigned User ID [4810]
+        /// </summary>
+        public string? BrokerCurrentAssignedUserId { get => _brokerCurrentAssignedUserId; set => SetField(ref _brokerCurrentAssignedUserId, value); }
+
+        /// <summary>
+        /// eSigner Representative / Broker [4809]
+        /// </summary>
+        public StringEnumValue<BrokerRepresentative> BrokerRepresentative { get => _brokerRepresentative; set => SetField(ref _brokerRepresentative, value); }
+
+        /// <summary>
         /// LoanProductData Buydowns
         /// </summary>
         [AllowNull]
         public IList<Buydown> Buydowns { get => GetField(ref _buydowns); set => SetField(ref _buydowns, value); }
+
+        /// <summary>
+        /// Current Assigned Cell Phone [4829]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+        public string? CommitmentIssuedByEsignerCurrentAssignedCellPhone { get => _commitmentIssuedByEsignerCurrentAssignedCellPhone; set => SetField(ref _commitmentIssuedByEsignerCurrentAssignedCellPhone, value); }
+
+        /// <summary>
+        /// Current Assigned Email [4825]
+        /// </summary>
+        public string? CommitmentIssuedByEsignerCurrentAssignedEmail { get => _commitmentIssuedByEsignerCurrentAssignedEmail; set => SetField(ref _commitmentIssuedByEsignerCurrentAssignedEmail, value); }
+
+        /// <summary>
+        /// Current Assigned Title [4826]
+        /// </summary>
+        public string? CommitmentIssuedByEsignerCurrentAssignedTitle { get => _commitmentIssuedByEsignerCurrentAssignedTitle; set => SetField(ref _commitmentIssuedByEsignerCurrentAssignedTitle, value); }
+
+        /// <summary>
+        /// Current Assigned User ID [4827]
+        /// </summary>
+        public string? CommitmentIssuedByEsignerCurrentAssignedUserId { get => _commitmentIssuedByEsignerCurrentAssignedUserId; set => SetField(ref _commitmentIssuedByEsignerCurrentAssignedUserId, value); }
+
+        /// <summary>
+        /// Current Assigned Work Phone [4828]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+        public string? CommitmentIssuedByEsignerCurrentAssignedWorkPhone { get => _commitmentIssuedByEsignerCurrentAssignedWorkPhone; set => SetField(ref _commitmentIssuedByEsignerCurrentAssignedWorkPhone, value); }
+
+        /// <summary>
+        /// eSigner Representative / Commitment Issued By [4824]
+        /// </summary>
+        public StringEnumValue<CommitmentIssuedByEsignerRepresentative> CommitmentIssuedByEsignerRepresentative { get => _commitmentIssuedByEsignerRepresentative; set => SetField(ref _commitmentIssuedByEsignerRepresentative, value); }
 
         /// <summary>
         /// Freddie Mac Lender Rate Adj Convertible [1290]
@@ -334,6 +404,59 @@ namespace EncompassRest.Loans
         /// NMLS Exclude this Loan from the NMLS Report [NMLS.X15]
         /// </summary>
         public bool? ExcludeLoanFromNMLSReportIndicator { get => _excludeLoanFromNMLSReportIndicator; set => SetField(ref _excludeLoanFromNMLSReportIndicator, value); }
+
+        /// <summary>
+        /// Current Assigned Cell Phone [4817]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+        public string? FhaVaEsignerCurrentAssignedCellPhone { get => _fhaVaEsignerCurrentAssignedCellPhone; set => SetField(ref _fhaVaEsignerCurrentAssignedCellPhone, value); }
+
+        /// <summary>
+        /// Current Assigned Email [4815]
+        /// </summary>
+        public string? FhaVaEsignerCurrentAssignedEmail { get => _fhaVaEsignerCurrentAssignedEmail; set => SetField(ref _fhaVaEsignerCurrentAssignedEmail, value); }
+
+        /// <summary>
+        /// Current Assigned User ID [4816]
+        /// </summary>
+        public string? FhaVaEsignerCurrentAssignedUserId { get => _fhaVaEsignerCurrentAssignedUserId; set => SetField(ref _fhaVaEsignerCurrentAssignedUserId, value); }
+
+        /// <summary>
+        /// eSigner Representative / FHA/VA [4814]
+        /// </summary>
+        public StringEnumValue<FhaVaEsignerRepresentative> FhaVaEsignerRepresentative { get => _fhaVaEsignerRepresentative; set => SetField(ref _fhaVaEsignerRepresentative, value); }
+
+        /// <summary>
+        /// Current Assigned Cell Phone [4823]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+        public string? FhaVaMortgageEsignerCurrentAssignedCellPhone { get => _fhaVaMortgageEsignerCurrentAssignedCellPhone; set => SetField(ref _fhaVaMortgageEsignerCurrentAssignedCellPhone, value); }
+
+        /// <summary>
+        /// Current Assigned Email [4819]
+        /// </summary>
+        public string? FhaVaMortgageEsignerCurrentAssignedEmail { get => _fhaVaMortgageEsignerCurrentAssignedEmail; set => SetField(ref _fhaVaMortgageEsignerCurrentAssignedEmail, value); }
+
+        /// <summary>
+        /// Current Assigned Title [4820]
+        /// </summary>
+        public string? FhaVaMortgageEsignerCurrentAssignedTitle { get => _fhaVaMortgageEsignerCurrentAssignedTitle; set => SetField(ref _fhaVaMortgageEsignerCurrentAssignedTitle, value); }
+
+        /// <summary>
+        /// Current Assigned User ID [4821]
+        /// </summary>
+        public string? FhaVaMortgageEsignerCurrentAssignedUserId { get => _fhaVaMortgageEsignerCurrentAssignedUserId; set => SetField(ref _fhaVaMortgageEsignerCurrentAssignedUserId, value); }
+
+        /// <summary>
+        /// Current Assigned Work Phone [4822]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+        public string? FhaVaMortgageEsignerCurrentAssignedWorkPhone { get => _fhaVaMortgageEsignerCurrentAssignedWorkPhone; set => SetField(ref _fhaVaMortgageEsignerCurrentAssignedWorkPhone, value); }
+
+        /// <summary>
+        /// eSigner Representative / FHA/VA Mortgagee [4818]
+        /// </summary>
+        public StringEnumValue<FhaVaMortgageEsignerRepresentative> FhaVaMortgageEsignerRepresentative { get => _fhaVaMortgageEsignerRepresentative; set => SetField(ref _fhaVaMortgageEsignerRepresentative, value); }
 
         /// <summary>
         /// ARM Floor Basis [ARM.FlrBasis]
@@ -385,7 +508,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Subject Property Type Fannie Mae [1041]
         /// </summary>
-        public StringEnumValue<PropertyType> GsePropertyType { get => _gsePropertyType; set => SetField(ref _gsePropertyType, value); }
+        public StringEnumValue<GsePropertyType> GsePropertyType { get => _gsePropertyType; set => SetField(ref _gsePropertyType, value); }
 
         /// <summary>
         /// REGZ Prepay Penalty Mths Hard Prepayment Period [3536]
@@ -875,7 +998,7 @@ namespace EncompassRest.Loans
         public string? HelocTAInstallmentLoanDiscountWord { get => _helocTAInstallmentLoanDiscountWord; set => SetField(ref _helocTAInstallmentLoanDiscountWord, value); }
 
         /// <summary>
-        /// Installment loan payments applied method  [4620]
+        /// Installment loan payments applied method [4620]
         /// </summary>
         public string? HelocTAInstallmentLoanPaymentAppliedMethod { get => _helocTAInstallmentLoanPaymentAppliedMethod; set => SetField(ref _helocTAInstallmentLoanPaymentAppliedMethod, value); }
 
@@ -1013,6 +1136,22 @@ namespace EncompassRest.Loans
         public bool? InquiryOrPreQualificationIndicator { get => _inquiryOrPreQualificationIndicator; set => SetField(ref _inquiryOrPreQualificationIndicator, value); }
 
         /// <summary>
+        /// Current Assigned Cell Phone [4808]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+        public string? LenderEsignerCurrentAssignedCellPhone { get => _lenderEsignerCurrentAssignedCellPhone; set => SetField(ref _lenderEsignerCurrentAssignedCellPhone, value); }
+
+        /// <summary>
+        /// Current Assigned User ID [4807]
+        /// </summary>
+        public string? LenderEsignerCurrentAssignedUserId { get => _lenderEsignerCurrentAssignedUserId; set => SetField(ref _lenderEsignerCurrentAssignedUserId, value); }
+
+        /// <summary>
+        /// eSigner Representative Lender (Generic Signature Block) [4806]
+        /// </summary>
+        public StringEnumValue<LenderEsignerRepresentative> LenderEsignerRepresentative { get => _lenderEsignerRepresentative; set => SetField(ref _lenderEsignerRepresentative, value); }
+
+        /// <summary>
         /// Lender Representative [4672]
         /// </summary>
         public string? LenderRepresentative { get => _lenderRepresentative; set => SetField(ref _lenderRepresentative, value); }
@@ -1071,6 +1210,27 @@ namespace EncompassRest.Loans
         /// Fannie Mae Loan Doc Type Code [MORNET.X67]
         /// </summary>
         public StringEnumValue<LoanDocumentationType> LoanDocumentationType { get => _loanDocumentationType; set => SetField(ref _loanDocumentationType, value); }
+
+        /// <summary>
+        /// Current Assigned Cell Phone [4805]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
+        public string? LoanOriginatorCurrentAssignedCellPhone { get => _loanOriginatorCurrentAssignedCellPhone; set => SetField(ref _loanOriginatorCurrentAssignedCellPhone, value); }
+
+        /// <summary>
+        /// Current Assigned Title [4803]
+        /// </summary>
+        public string? LoanOriginatorCurrentAssignedTitle { get => _loanOriginatorCurrentAssignedTitle; set => SetField(ref _loanOriginatorCurrentAssignedTitle, value); }
+
+        /// <summary>
+        /// Current Assigned User ID [4804]
+        /// </summary>
+        public string? LoanOriginatorCurrentAssignedUserId { get => _loanOriginatorCurrentAssignedUserId; set => SetField(ref _loanOriginatorCurrentAssignedUserId, value); }
+
+        /// <summary>
+        /// eSigner Representative Loan Originator [4802]
+        /// </summary>
+        public StringEnumValue<LoanOriginatorRepresentative> LoanOriginatorRepresentative { get => _loanOriginatorRepresentative; set => SetField(ref _loanOriginatorRepresentative, value); }
 
         /// <summary>
         /// Fannie Mae Repymt Type Code [424]
@@ -1445,6 +1605,21 @@ namespace EncompassRest.Loans
         /// HELOC Transaction Fees: The total amount of fees charged each time a withdrawal or other specified transaction is made on a line of credit, such as a balance transfer fee or a cash advance fee. [HELOC.TransactionFees]
         /// </summary>
         public decimal? TransactionFees { get => _transactionFees; set => SetField(ref _transactionFees, value); }
+
+        /// <summary>
+        /// Current Assigned Email [4812]
+        /// </summary>
+        public string? UsdaCurrentAssignedEmail { get => _usdaCurrentAssignedEmail; set => SetField(ref _usdaCurrentAssignedEmail, value); }
+
+        /// <summary>
+        /// Current Assigned User ID [4813]
+        /// </summary>
+        public string? UsdaCurrentAssignedUserId { get => _usdaCurrentAssignedUserId; set => SetField(ref _usdaCurrentAssignedUserId, value); }
+
+        /// <summary>
+        /// eSigner Representative / USDA [4811]
+        /// </summary>
+        public StringEnumValue<UsdaEsignerRepresentative> UsdaEsignerRepresentative { get => _usdaEsignerRepresentative; set => SetField(ref _usdaEsignerRepresentative, value); }
 
         /// <summary>
         /// HELOC Wire Fee [HELOC.WireFee]

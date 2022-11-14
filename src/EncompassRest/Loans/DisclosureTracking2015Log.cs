@@ -267,6 +267,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _systemId;
         private DirtyValue<bool?>? _uCDCreationError;
         private DirtyValue<DateTime?>? _updatedDateUtc;
+        private DirtyValue<bool?>? _useForUcdExport;
 
         /// <summary>
         /// DisclosureTracking2015Log ActualFulfillmentDate
@@ -1561,5 +1562,10 @@ namespace EncompassRest.Loans
         /// DisclosureTracking2015Log UpdatedDateUtc
         /// </summary>
         public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+
+        /// <summary>
+        /// DisclosureTracking2015Log UseForUcdExport
+        /// </summary>
+        public bool? UseForUcdExport { get => _useForUcdExport; set => SetField(ref _useForUcdExport, value); }
     }
 }

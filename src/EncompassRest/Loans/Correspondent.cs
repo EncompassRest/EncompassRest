@@ -56,7 +56,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _appraisalUsage;
         private DirtyValue<bool?>? _appraisalWaiver;
         private DirtyValue<string?>? _appraisedCondition;
-        private DirtyValue<decimal?>? _appraisedValue;
+        private DirtyValue<int?>? _appraisedValue;
         private DirtyValue<string?>? _appraiserName;
         private DirtyValue<string?>? _appraisersLicenseNumber;
         private DirtyValue<string?>? _appraisersPropertyAddress1;
@@ -260,6 +260,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _initialTilDisclosureProvidedDate;
         private DirtyValue<DateTime?>? _initialTilDisclosureReceivedDate;
         private DirtyValue<string?>? _insuranceType;
+        private DirtyValue<bool?>? _interestRateExportationIndicator;
         private DirtyValue<bool?>? _isAdditionalInsurance;
         private DirtyValue<bool?>? _isFloodInsurance;
         private DirtyValue<bool?>? _isHazardIncludedMasterPolicy;
@@ -402,6 +403,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _paymentAmount;
         private DirtyValue<decimal?>? _periodicChangePercent1;
         private DirtyValue<decimal?>? _periodicChangePercent2;
+        private DirtyValue<decimal?>? _pointsInInitialAdjustedRate;
         private DirtyValue<string?>? _postalCode;
         private DirtyValue<bool?>? _powerofAttorneyIndicator;
         private DirtyValue<string?>? _premiumTerm;
@@ -487,7 +489,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _ucdpOverValuation;
         private DirtyValue<DateTime?>? _ucdSubmissionDate;
         private DirtyValue<string?>? _ucdSubmissionResult;
-        private DirtyValue<StringEnumValue<RiskAssessmentType>>? _underwritingMethod;
+        private DirtyValue<StringEnumValue<UnderwritingMethod>>? _underwritingMethod;
         private DirtyValue<decimal?>? _undiscountedRate;
         private DirtyValue<decimal?>? _unpaidPrincipalBalance;
         private DirtyValue<decimal?>? _upfrontMipRate;
@@ -750,7 +752,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Appraised Value [CORRESPONDENT.X96]
         /// </summary>
-        public decimal? AppraisedValue { get => _appraisedValue; set => SetField(ref _appraisedValue, value); }
+        public int? AppraisedValue { get => _appraisedValue; set => SetField(ref _appraisedValue, value); }
 
         /// <summary>
         /// Correspondent Appraiser Name [CORRESPONDENT.X97]
@@ -1795,6 +1797,11 @@ namespace EncompassRest.Loans
         public string? InsuranceType { get => _insuranceType; set => SetField(ref _insuranceType, value); }
 
         /// <summary>
+        /// Correspondent My Company Wishes to not apply interest rate exportation [CORRESPONDENT.X504]
+        /// </summary>
+        public bool? InterestRateExportationIndicator { get => _interestRateExportationIndicator; set => SetField(ref _interestRateExportationIndicator, value); }
+
+        /// <summary>
         /// Correspondent Additional Insurance included [CORRESPONDENT.X217]
         /// </summary>
         public bool? IsAdditionalInsurance { get => _isAdditionalInsurance; set => SetField(ref _isAdditionalInsurance, value); }
@@ -2522,6 +2529,12 @@ namespace EncompassRest.Loans
         public decimal? PeriodicChangePercent2 { get => _periodicChangePercent2; set => SetField(ref _periodicChangePercent2, value); }
 
         /// <summary>
+        /// Correspondent Points in Initial Adjusted Rate [CORRESPONDENT.X505]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3)]
+        public decimal? PointsInInitialAdjustedRate { get => _pointsInInitialAdjustedRate; set => SetField(ref _pointsInInitialAdjustedRate, value); }
+
+        /// <summary>
         /// Correspondent Zip Code 4 digits [CORRESPONDENT.X358]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
@@ -2959,8 +2972,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Underwriting Method [CORRESPONDENT.X347]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"LP\":\"LPA\"}")]
-        public StringEnumValue<RiskAssessmentType> UnderwritingMethod { get => _underwritingMethod; set => SetField(ref _underwritingMethod, value); }
+        public StringEnumValue<UnderwritingMethod> UnderwritingMethod { get => _underwritingMethod; set => SetField(ref _underwritingMethod, value); }
 
         /// <summary>
         /// Correspondent UnDiscounted Rate Permanent Phase [CORRESPONDENT.X4]

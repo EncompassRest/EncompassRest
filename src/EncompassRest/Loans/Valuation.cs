@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<StringEnumValue<AppraisalPropertyType>>? _appraisalPropertyType;
         private DirtyValue<string?>? _appraisalUsage;
         private DirtyValue<string?>? _appraisedCondition;
-        private DirtyValue<int?>? _appraisedValue;
+        private DirtyValue<decimal?>? _appraisedValue;
         private DirtyValue<string?>? _appraiserName;
         private DirtyValue<string?>? _appraisersLicenseNumber;
         private DirtyValue<string?>? _appraisersPropertyAddress1;
@@ -140,7 +140,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Correspondent Appraised Value [VALNN11]
         /// </summary>
-        public int? AppraisedValue { get => _appraisedValue; set => SetField(ref _appraisedValue, value); }
+        public decimal? AppraisedValue { get => _appraisedValue; set => SetField(ref _appraisedValue, value); }
 
         /// <summary>
         /// Correspondent Appraiser Name [VALNN12]

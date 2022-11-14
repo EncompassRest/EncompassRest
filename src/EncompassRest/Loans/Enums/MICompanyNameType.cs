@@ -17,8 +17,9 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         Essent = 1,
         /// <summary>
-        /// Genworth
+        /// Genworth - Retired
         /// </summary>
+        [Description("Genworth - Retired")]
         Genworth = 2,
         /// <summary>
         /// MGIC
@@ -47,6 +48,10 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// UGI
         /// </summary>
-        UGI = 9
+        UGI = 9,
+        /// <summary>
+        /// Enact
+        /// </summary>
+        Enact = 10
     }
 }

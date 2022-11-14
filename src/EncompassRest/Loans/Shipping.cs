@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
@@ -13,6 +14,11 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _actualShipDate;
         private DirtyValue<string?>? _carrierName;
         private DirtyValue<decimal?>? _downPaymentAmount;
+        private DirtyValue<string?>? _ecReceivedFrom;
+        private DirtyValue<string?>? _ecStatus;
+        private DirtyValue<DateTime?>? _ecStatusUpdateDate;
+        private DirtyValue<string?>? _ecSubmissionType;
+        private DirtyValue<StringEnumValue<EcUpdatesAllowed>>? _ecUpdatesAllowed;
         private DirtyValue<string?>? _id;
         private DirtyValue<string?>? _investorCode;
         private DirtyValue<string?>? _investorConnectDeliveredToCategory;
@@ -49,6 +55,35 @@ namespace EncompassRest.Loans
         public decimal? DownPaymentAmount { get => _downPaymentAmount; set => SetField(ref _downPaymentAmount, value); }
 
         /// <summary>
+        /// Investor Connect EC Received From [INVESTOREC.X1]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? EcReceivedFrom { get => _ecReceivedFrom; set => SetField(ref _ecReceivedFrom, value); }
+
+        /// <summary>
+        /// Investor Connect EC Status [INVESTOREC.X2]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? EcStatus { get => _ecStatus; set => SetField(ref _ecStatus, value); }
+
+        /// <summary>
+        /// Investor Connect EC Status Update Date [INVESTOREC.X3]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, ReadOnly = true)]
+        public DateTime? EcStatusUpdateDate { get => _ecStatusUpdateDate; set => SetField(ref _ecStatusUpdateDate, value); }
+
+        /// <summary>
+        /// Investor Connect EC Submission Type [INVESTOREC.X4]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? EcSubmissionType { get => _ecSubmissionType; set => SetField(ref _ecSubmissionType, value); }
+
+        /// <summary>
+        /// Investor Connect EC Updates Allowed [INVESTOREC.X5]
+        /// </summary>
+        public StringEnumValue<EcUpdatesAllowed> EcUpdatesAllowed { get => _ecUpdatesAllowed; set => SetField(ref _ecUpdatesAllowed, value); }
+
+        /// <summary>
         /// Shipping Id
         /// </summary>
         public string? Id { get => _id; set => SetField(ref _id, value); }
@@ -61,22 +96,25 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Investor Connect Delivered To Category [INVESTORCONN.X4]
         /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
         public string? InvestorConnectDeliveredToCategory { get => _investorConnectDeliveredToCategory; set => SetField(ref _investorConnectDeliveredToCategory, value); }
 
         /// <summary>
         /// Investor Connect Delivered To Company [INVESTORCONN.X3]
         /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
         public string? InvestorConnectDeliveredToCompany { get => _investorConnectDeliveredToCompany; set => SetField(ref _investorConnectDeliveredToCompany, value); }
 
         /// <summary>
         /// Investor Connect Delivery Status [INVESTORCONN.X1]
         /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
         public string? InvestorConnectDeliveryStatus { get => _investorConnectDeliveryStatus; set => SetField(ref _investorConnectDeliveryStatus, value); }
 
         /// <summary>
         /// Investor Connect Delivery Status Date Time [INVESTORCONN.X2]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, ReadOnly = true)]
         public DateTime? InvestorConnectDeliveryStatusDateTime { get => _investorConnectDeliveryStatusDateTime; set => SetField(ref _investorConnectDeliveryStatusDateTime, value); }
 
         /// <summary>

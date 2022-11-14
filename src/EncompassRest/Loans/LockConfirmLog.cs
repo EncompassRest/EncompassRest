@@ -21,7 +21,9 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _dateUtc;
         private DirtyValue<bool?>? _fileAttachmentsMigrated;
         private DirtyValue<string?>? _guid;
+        private DirtyValue<bool?>? _hideLog;
         private DirtyValue<string?>? _id;
+        private DirtyValue<bool?>? _includeConfirmCount;
         private DirtyValue<bool?>? _isSystemSpecificIndicator;
         private DirtyValue<int?>? _logRecordIndex;
         private DirtyValue<string?>? _requestGuid;
@@ -31,6 +33,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _systemId;
         private DirtyValue<string?>? _timeConfirmed;
         private DirtyValue<DateTime?>? _updatedDateUtc;
+        private DirtyValue<bool?>? _voided;
 
         /// <summary>
         /// LockConfirmLog AlertIndicator
@@ -95,9 +98,19 @@ namespace EncompassRest.Loans
         public string? Guid { get => _guid; set => SetField(ref _guid, value); }
 
         /// <summary>
+        /// LockConfirmLog HideLog
+        /// </summary>
+        public bool? HideLog { get => _hideLog; set => SetField(ref _hideLog, value); }
+
+        /// <summary>
         /// LockConfirmLog Id
         /// </summary>
         public string? Id { get => _id; set => SetField(ref _id, value); }
+
+        /// <summary>
+        /// LockConfirmLog IncludeConfirmCount
+        /// </summary>
+        public bool? IncludeConfirmCount { get => _includeConfirmCount; set => SetField(ref _includeConfirmCount, value); }
 
         /// <summary>
         /// LockConfirmLog IsSystemSpecificIndicator
@@ -143,5 +156,10 @@ namespace EncompassRest.Loans
         /// LockConfirmLog UpdatedDateUtc
         /// </summary>
         public DateTime? UpdatedDateUtc { get => _updatedDateUtc; set => SetField(ref _updatedDateUtc, value); }
+
+        /// <summary>
+        /// LockConfirmLog Voided
+        /// </summary>
+        public bool? Voided { get => _voided; set => SetField(ref _voided, value); }
     }
 }

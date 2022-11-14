@@ -54,6 +54,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?>? _isExpired;
         private DirtyValue<bool?>? _isExternalIndicator;
         private DirtyValue<bool?>? _isIncomeVerification;
+        private DirtyValue<bool?>? _isMarkedRemoved;
         private DirtyValue<bool?>? _isObligationVerification;
         private DirtyValue<bool?>? _isPastDue;
         private DirtyValue<bool?>? _isSystemSpecificIndicator;
@@ -63,6 +64,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _lastAttachmentDateUtc;
         private DirtyValue<int?>? _logRecordIndex;
         private DirtyValue<DateTime?>? _orderDateUtc;
+        private DirtyValue<string?>? _packageId;
         private DirtyValue<string?>? _pairId;
         private DirtyValue<bool?>? _preClosingDocumentIndicator;
         private DirtyValue<bool?>? _received;
@@ -320,6 +322,11 @@ namespace EncompassRest.Loans
         public bool? IsIncomeVerification { get => _isIncomeVerification; set => SetField(ref _isIncomeVerification, value); }
 
         /// <summary>
+        /// DocumentLog IsMarkedRemoved
+        /// </summary>
+        public bool? IsMarkedRemoved { get => _isMarkedRemoved; set => SetField(ref _isMarkedRemoved, value); }
+
+        /// <summary>
         /// DocumentLog IsObligationVerification
         /// </summary>
         public bool? IsObligationVerification { get => _isObligationVerification; set => SetField(ref _isObligationVerification, value); }
@@ -363,6 +370,11 @@ namespace EncompassRest.Loans
         /// DocumentLog OrderDateUtc
         /// </summary>
         public DateTime? OrderDateUtc { get => _orderDateUtc; set => SetField(ref _orderDateUtc, value); }
+
+        /// <summary>
+        /// DocumentLog PackageId
+        /// </summary>
+        public string? PackageId { get => _packageId; set => SetField(ref _packageId, value); }
 
         /// <summary>
         /// DocumentLog PairId

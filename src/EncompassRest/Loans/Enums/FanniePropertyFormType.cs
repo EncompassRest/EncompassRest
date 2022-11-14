@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.Enums
@@ -58,8 +59,9 @@ namespace EncompassRest.Loans.Enums
         [EnumMember(Value = "FNM 2095 = Exterior Only Inspection Individual Cooperative Interest Appraisal Report")]
         FNM2095ExteriorOnlyInspectionIndividualCooperativeInterestAppraisalReport = 10,
         /// <summary>
-        /// DU Form 2075 = Desktop Underwriter Property Inspection Report
+        /// DU Form 2075 = Desktop Underwriter Property Inspection Report - Retired
         /// </summary>
+        [Description("DU Form 2075 = Desktop Underwriter Property Inspection Report - Retired")]
         [EnumMember(Value = "DU Form 2075 = Desktop Underwriter Property Inspection Report")]
         DUForm2075DesktopUnderwriterPropertyInspectionReport = 11,
         /// <summary>

@@ -301,7 +301,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Sec 32 Max Allowed Points/Fees [S32DISC.X101]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public decimal? MaximumPointsAndFees { get => _maximumPointsAndFees; set => SetField(ref _maximumPointsAndFees, value); }
 
         /// <summary>

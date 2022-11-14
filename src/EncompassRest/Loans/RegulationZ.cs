@@ -162,6 +162,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _initialTilDisclosureProvidedDate;
         private DirtyValue<DateTime?>? _initialTilDisclosureReceivedDate;
         private DirtyValue<string?>? _insuranceRequiredDescription;
+        private DirtyValue<StringEnumValue<InterestAccrual>>? _interestAccrual;
         private DirtyValue<string?>? _interestInNameOf;
         private DirtyValue<bool?>? _interestOnly;
         private DirtyValue<bool?>? _interestOnlyIndicator;
@@ -238,6 +239,8 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?>? _safeHarborSentDate;
         private DirtyValue<decimal?>? _samplePayments;
         private DirtyValue<StringEnumValue<SecurityType>>? _securityType;
+        private DirtyValue<bool?>? _simpleInterestAccrualIndicator;
+        private DirtyValue<bool?>? _simpleInterestLeapYearIndicator;
         private DirtyValue<DateTime?>? _sSPLSentDate;
         private DirtyValue<DateTime?>? _tilDate;
         private DirtyValue<string?>? _tilDisclosedComments;
@@ -259,6 +262,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _yearlyTerm;
         private DirtyValue<string?>? _yearOfMaximumPayment;
         private DirtyValue<int?>? _years;
+        private DirtyValue<StringEnumValue<ZeroPercentPaymentOption>>? _zeroPercentPaymentOption;
 
         /// <summary>
         /// REGZ Acknowledgement Day [REGZ_DAY]
@@ -771,7 +775,6 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Flag to know whether loan is external eConsent [4499]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true)]
         public string? ExternaleConsent { get => _externaleConsent; set => SetField(ref _externaleConsent, value); }
 
         /// <summary>
@@ -1049,6 +1052,12 @@ namespace EncompassRest.Loans
         /// Insurance Required [1702]
         /// </summary>
         public string? InsuranceRequiredDescription { get => _insuranceRequiredDescription; set => SetField(ref _insuranceRequiredDescription, value); }
+
+        /// <summary>
+        /// Interest Accrual for APR [4747]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public StringEnumValue<InterestAccrual> InterestAccrual { get => _interestAccrual; set => SetField(ref _interestAccrual, value); }
 
         /// <summary>
         /// Trans Details Security Interest [1603]
@@ -1470,6 +1479,16 @@ namespace EncompassRest.Loans
         public StringEnumValue<SecurityType> SecurityType { get => _securityType; set => SetField(ref _securityType, value); }
 
         /// <summary>
+        /// Use Simple Interest Accrual [4749]
+        /// </summary>
+        public bool? SimpleInterestAccrualIndicator { get => _simpleInterestAccrualIndicator; set => SetField(ref _simpleInterestAccrualIndicator, value); }
+
+        /// <summary>
+        /// Simple Interest Uses Leap Year [4748]
+        /// </summary>
+        public bool? SimpleInterestLeapYearIndicator { get => _simpleInterestLeapYearIndicator; set => SetField(ref _simpleInterestLeapYearIndicator, value); }
+
+        /// <summary>
         /// Settlement Services Provider List Sent Date [4014]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
@@ -1584,5 +1603,10 @@ namespace EncompassRest.Loans
         /// Trans Details Amort Type GPM Yrs [1266]
         /// </summary>
         public int? Years { get => _years; set => SetField(ref _years, value); }
+
+        /// <summary>
+        /// Zero Percent Payment Options [4746]
+        /// </summary>
+        public StringEnumValue<ZeroPercentPaymentOption> ZeroPercentPaymentOption { get => _zeroPercentPaymentOption; set => SetField(ref _zeroPercentPaymentOption, value); }
     }
 }

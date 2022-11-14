@@ -25,7 +25,11 @@ namespace EncompassRest.Loans
         private DirtyValue<int?>? _logAppraisedValue;
         private DirtyValue<decimal?>? _logARMQualifyingRate;
         private DirtyValue<string?>? _logAssessmentType;
+        private DirtyValue<string?>? _logAusAverageMedianCreditScore;
+        private DirtyValue<string?>? _logAusLogExtensionId;
+        private DirtyValue<string?>? _logAusOrderLinkId;
         private DirtyValue<string?>? _logAUSRecommendation;
+        private DirtyValue<string?>? _logAusResponseFileName;
         private DirtyValue<string?>? _logAUSStatus;
         private DirtyValue<StringEnumValue<LogAUSTrackingType>>? _logAUSTrackingType;
         private DirtyValue<string?>? _logAUSTransactionID;
@@ -83,6 +87,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _logCreditReportID2;
         private DirtyValue<StringEnumValue<AmortizationType>>? _logCuredAmortizationType;
         private DirtyValue<int?>? _logCuredAppraisedValue;
+        private DirtyValue<string?>? _logCuredAusAverageMedianCreditScore;
         private DirtyValue<decimal?>? _logCuredCLTV;
         private DirtyValue<decimal?>? _logCuredHousingExpenseRatio;
         private DirtyValue<StringEnumValue<LoanPurposeType>>? _logCuredLoanPurpose;
@@ -102,7 +107,10 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _logDUCaseIDorLPAUSKey;
         private DirtyValue<StringEnumValue<PropertyType>>? _logDUPropertyType;
         private DirtyValue<string?>? _logeFolderGUID;
+        private DirtyValue<string?>? _logErrorInfo;
         private DirtyValue<decimal?>? _logExcessAvailableAssetsNoVerified;
+        private DirtyValue<string?>? _logFatalEditInfo;
+        private DirtyValue<StringEnumValue<LogFileType>>? _logFileType;
         private DirtyValue<decimal?>? _logFinancedMIAmount;
         private DirtyValue<decimal?>? _logFirstPandI;
         private DirtyValue<DateTime?>? _logFirstSubmissionDate;
@@ -170,6 +178,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?>? _logOccupantDebtRatio;
         private DirtyValue<decimal?>? _logOccupantHousingRatio;
         private DirtyValue<string?>? _logOfferingIdentifier;
+        private DirtyValue<string?>? _logOrderStatus;
         private DirtyValue<string?>? _logOriginatingCompany;
         private DirtyValue<decimal?>? _logOwnerExistingMtg;
         private DirtyValue<decimal?>? _logPandI;
@@ -223,7 +232,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string?>? _logTPONumber;
         private DirtyValue<string?>? _logTransactionID;
         private DirtyValue<string?>? _logUnderwritingRiskAssessOther;
-        private DirtyValue<StringEnumValue<RiskAssessmentType>>? _logUnderwritingRiskAssessType;
+        private DirtyValue<StringEnumValue<LogUnderwritingRiskAssessType>>? _logUnderwritingRiskAssessType;
         private DirtyValue<string?>? _logWithUndisclosedDebt;
 
         /// <summary>
@@ -303,9 +312,31 @@ namespace EncompassRest.Loans
         public string? LogAssessmentType { get => _logAssessmentType; set => SetField(ref _logAssessmentType, value); }
 
         /// <summary>
+        /// AUS Tracking - AUS Average Median Credit Score [AUS.X199]
+        /// </summary>
+        public string? LogAusAverageMedianCreditScore { get => _logAusAverageMedianCreditScore; set => SetField(ref _logAusAverageMedianCreditScore, value); }
+
+        /// <summary>
+        /// AUS Tracking - AUS Log Extension Id [AUS.X197]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? LogAusLogExtensionId { get => _logAusLogExtensionId; set => SetField(ref _logAusLogExtensionId, value); }
+
+        /// <summary>
+        /// AUS Tracking - AUS Order LinkId  [AUS.X196]
+        /// </summary>
+        public string? LogAusOrderLinkId { get => _logAusOrderLinkId; set => SetField(ref _logAusOrderLinkId, value); }
+
+        /// <summary>
         /// AUS Tracking - AUS Recommendation [AUS.X6]
         /// </summary>
         public string? LogAUSRecommendation { get => _logAUSRecommendation; set => SetField(ref _logAUSRecommendation, value); }
+
+        /// <summary>
+        /// AUS Tracking - Aus Response File Name [AUS.X198]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true)]
+        public string? LogAusResponseFileName { get => _logAusResponseFileName; set => SetField(ref _logAusResponseFileName, value); }
 
         /// <summary>
         /// AUS Tracking - Freddie Mac - AUS Status [AUS.X121]
@@ -597,6 +628,11 @@ namespace EncompassRest.Loans
         public int? LogCuredAppraisedValue { get => _logCuredAppraisedValue; set => SetField(ref _logCuredAppraisedValue, value); }
 
         /// <summary>
+        /// AUS Tracking - Cured AUS Average Median Credit Score [AUS.CuredX199]
+        /// </summary>
+        public string? LogCuredAusAverageMedianCreditScore { get => _logCuredAusAverageMedianCreditScore; set => SetField(ref _logCuredAusAverageMedianCreditScore, value); }
+
+        /// <summary>
         /// CuredAUS Tracking - CLTV [AUS.CuredX12]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, ReadOnly = true)]
@@ -707,9 +743,24 @@ namespace EncompassRest.Loans
         public string? LogeFolderGUID { get => _logeFolderGUID; set => SetField(ref _logeFolderGUID, value); }
 
         /// <summary>
+        /// AUS Tracking - Error Info [AUS.X195]
+        /// </summary>
+        public string? LogErrorInfo { get => _logErrorInfo; set => SetField(ref _logErrorInfo, value); }
+
+        /// <summary>
         /// AUS Tracking - Fannie Mae - Excess Available Assets, not required to be Verified [AUS.X79]
         /// </summary>
         public decimal? LogExcessAvailableAssetsNoVerified { get => _logExcessAvailableAssetsNoVerified; set => SetField(ref _logExcessAvailableAssetsNoVerified, value); }
+
+        /// <summary>
+        /// AUS Tracking - Fatal Edit Info [AUS.X193]
+        /// </summary>
+        public string? LogFatalEditInfo { get => _logFatalEditInfo; set => SetField(ref _logFatalEditInfo, value); }
+
+        /// <summary>
+        /// AUS Tracking - File Type [AUS.X192]
+        /// </summary>
+        public StringEnumValue<LogFileType> LogFileType { get => _logFileType; set => SetField(ref _logFileType, value); }
 
         /// <summary>
         /// AUS Tracking - Fannie Mae - Financed MI Amount [AUS.X61]
@@ -1057,6 +1108,11 @@ namespace EncompassRest.Loans
         public string? LogOfferingIdentifier { get => _logOfferingIdentifier; set => SetField(ref _logOfferingIdentifier, value); }
 
         /// <summary>
+        /// AUS Tracking - Order Status [AUS.X194]
+        /// </summary>
+        public string? LogOrderStatus { get => _logOrderStatus; set => SetField(ref _logOrderStatus, value); }
+
+        /// <summary>
         /// AUS Tracking - Freddie Mac - Originating Company [AUS.X164]
         /// </summary>
         public string? LogOriginatingCompany { get => _logOriginatingCompany; set => SetField(ref _logOriginatingCompany, value); }
@@ -1329,8 +1385,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Underwriting Risk Assess Type [AUS.X1]
         /// </summary>
-        [LoanFieldProperty(OptionsJson = "{\"LP\":\"LPA\"}")]
-        public StringEnumValue<RiskAssessmentType> LogUnderwritingRiskAssessType { get => _logUnderwritingRiskAssessType; set => SetField(ref _logUnderwritingRiskAssessType, value); }
+        public StringEnumValue<LogUnderwritingRiskAssessType> LogUnderwritingRiskAssessType { get => _logUnderwritingRiskAssessType; set => SetField(ref _logUnderwritingRiskAssessType, value); }
 
         /// <summary>
         /// AUS Tracking - Fannie Mae - With Undisclosed Debt [AUS.X68]

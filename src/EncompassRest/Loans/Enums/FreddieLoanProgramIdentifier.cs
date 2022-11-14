@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace EncompassRest.Loans.Enums
 {
     /// <summary>
@@ -14,8 +16,9 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         AlternativeFullInformation = 1,
         /// <summary>
-        /// AMinusMortgage
+        /// AMinusMortgage - Retired
         /// </summary>
+        [Description("AMinusMortgage - Retired")]
         AMinusMortgage = 2,
         /// <summary>
         /// BuilderOrDeveloperAffiliated
@@ -166,8 +169,57 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         HomePossibleAdvantage = 39,
         /// <summary>
-        /// HomePossibleAdvantageHFA
+        /// HomePossibleAdvantageHFA - Retired
         /// </summary>
-        HomePossibleAdvantageHFA = 40
+        [Description("HomePossibleAdvantageHFA - Retired")]
+        HomePossibleAdvantageHFA = 40,
+        /// <summary>
+        /// CHOICEHome
+        /// </summary>
+        CHOICEHome = 41,
+        /// <summary>
+        /// CHOICERenoEXpress
+        /// </summary>
+        CHOICERenoEXpress = 42,
+        /// <summary>
+        /// CHOICERenoEXpressDTSArea
+        /// </summary>
+        CHOICERenoEXpressDTSArea = 43,
+        /// <summary>
+        /// CHOICERenovation
+        /// </summary>
+        CHOICERenovation = 44,
+        /// <summary>
+        /// CHOICERenovationMortgageWithRecourse
+        /// </summary>
+        CHOICERenovationMortgageWithRecourse = 45,
+        /// <summary>
+        /// CommunityLandTrust
+        /// </summary>
+        CommunityLandTrust = 46,
+        /// <summary>
+        /// GreenCHOICE
+        /// </summary>
+        GreenCHOICE = 47,
+        /// <summary>
+        /// GreenCHOICEToPayOffOutstandingEnergyDebt
+        /// </summary>
+        GreenCHOICEToPayOffOutstandingEnergyDebt = 48,
+        /// <summary>
+        /// HFAAdvantage
+        /// </summary>
+        HFAAdvantage = 49,
+        /// <summary>
+        /// HomeOne
+        /// </summary>
+        HomeOne = 50,
+        /// <summary>
+        /// IncomeBasedDeedRestrictionsSurvive
+        /// </summary>
+        IncomeBasedDeedRestrictionsSurvive = 51,
+        /// <summary>
+        /// IncomeBasedDeedRestrictionsTerminate
+        /// </summary>
+        IncomeBasedDeedRestrictionsTerminate = 52
     }
 }
