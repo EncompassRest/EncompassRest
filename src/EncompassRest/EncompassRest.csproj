@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="Enums.NET" Version="4.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <EmbeddedResource Include="LoanFields.zip" />
   </ItemGroup>
