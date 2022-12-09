@@ -516,6 +516,46 @@
   },
   {
     "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X192.{0}",
+    "Description": "Last Snapshot - AUS Tracking - File Type - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X193.{0}",
+    "Description": "Last Snapshot - AUS Tracking - Fatal Edit Info - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X194.{0}",
+    "Description": "Last Snapshot - AUS Tracking - Order Status - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X195.{0}",
+    "Description": "Last Snapshot - AUS Tracking - Error Info - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X196.{0}",
+    "Description": "Last Snapshot - AUS Tracking - AUS Order LinkId  - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X197.{0}",
+    "Description": "Last Snapshot - AUS Tracking - AUS Log Extension Id - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X198.{0}",
+    "Description": "Last Snapshot - AUS Tracking - Aus Response File Name - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "AUSTRACKING.AUS.X199.{0}",
+    "Description": "Last Snapshot - AUS Tracking - AUS Average Median Credit Score - {0}"
+  },
+  {
+    "Format": 101,
     "FieldId": "AUSTRACKING.AUS.X2.{0}",
     "Description": "Last Snapshot - AUS Tracking - Underwriting Risk Assess Other Type - {0}"
   },
@@ -2911,6 +2951,116 @@
   },
   {
     "Format": 101,
+    "FieldId": "Enhanced.ADBY.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 304,
+    "FieldId": "Enhanced.ADTE.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.CAT.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.ECOM.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.EDES.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 301,
+    "FieldId": "Enhanced.EDTE.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.EID.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.ICOM.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.IDES.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.IID.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.NAME.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.OWN.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.PAIR.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 102,
+    "FieldId": "Enhanced.PEXT.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 102,
+    "FieldId": "Enhanced.PINT.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.PTO.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.RDTL.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.SCON.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 301,
+    "FieldId": "Enhanced.SDTE.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.SRC.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.TOW.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "Enhanced.TYPE.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
     "FieldId": "ENHCOND.EXT.OPEN.TYPE.{0}",
     "Description": "All Open External Enhanced Conditions - {0}"
   },
@@ -2968,6 +3118,36 @@
     "Format": 201,
     "FieldId": "ENHCOND.INT.TYPE.COUNT.{0}",
     "Description": "Number of Internal Conditions of specific condition type - {0}"
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.COP.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.PTO.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.ROP.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.SOP.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.TOP.{0}",
+    "Description": ""
+  },
+  {
+    "Format": 101,
+    "FieldId": "ENHOP.TOW.{0}",
+    "Description": ""
   },
   {
     "Format": 101,
